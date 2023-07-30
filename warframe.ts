@@ -1,7 +1,7 @@
 import axios, { AxiosInstance } from "axios";
 import { SocksProxyAgent } from "socks-proxy-agent";
 import { MongooseServer, Schema } from "./database";
-import { Item, OrdersWarframe, StatisticsWarframe, WarframeItemSingle, WarframeItems } from "./interface";
+import { Item, StatisticsWarframe, WarframeItemSingle, WarframeItems } from "./interface";
 import privateProxy from "./proxy";
 class Warframe {
     db: MongooseServer;
@@ -32,6 +32,9 @@ class Warframe {
     async getWarframeItems() : Promise<WarframeItems> {
         const res = await this.axios.get('https://api.warframe.market/v1/items').then(res => res.data);
         return res;
+    }
+    async getSingleItemDB(item: Item) {
+        return this.db.findEntry({ url_name: item.url_name });
     }
     async getSingleItemData(item: Item): Promise<WarframeItemSingle> {
         const url = `https://api.warframe.market/v1/items/${item.url_name}`;

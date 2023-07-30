@@ -10,9 +10,12 @@ async function main() {
         let idx = 1;
         for (let item of items) {
             console.log("Loading", idx, items.length);
-            const itemData = await m.getSingleItemData(item);
-            const itemToSave = itemData.payload.item;
-            await m.saveItem(itemToSave.id, { ...itemToSave, ...item });
+            const itemDB = await m.getSingleItemDB(item);
+            if (!itemDB) {
+                const itemData = await m.getSingleItemData(item);
+                const itemToSave = itemData.payload.item;
+                await m.saveItem(itemToSave.id, { ...itemToSave, ...item });
+            }
             idx++;
         }
         console.timeEnd('warframe');
