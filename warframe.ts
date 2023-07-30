@@ -1,8 +1,10 @@
 import axios, { AxiosInstance } from "axios";
+import axiosRetry from 'axios-retry';
 import { SocksProxyAgent } from "socks-proxy-agent";
 import { MongooseServer, Schema } from "./database";
-import { Item, OrdersWarframe, StatisticsWarframe, WarframeItemSingle, WarframeItems } from "./interface";
+import { StatisticsWarframe } from "./interface";
 import privateProxy from "./proxy";
+
 class Warframe {
     db: MongooseServer;
     axios: AxiosInstance;
@@ -16,6 +18,11 @@ class Warframe {
             httpAgent: proxy,
             httpsAgent: proxy
         });
+        axiosRetry(axios, {
+            retryDelay: axiosRetry.exponentialDelay, onRetry: (retryCount, error, requestConfig) => {
+                console.log("Retry", retryCount);
+            }
+         });
     }
     async saveItem(id: string, item:any) {
         await this.db.getAnUpdateEntry({id}, item)
