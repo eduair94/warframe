@@ -10,8 +10,8 @@ class Warframe {
         this.db = MongooseServer.getInstance('warframe-items', new Schema({
           id: { type: String, unique: true },
         },
-            { strict: false }))
-        const proxy = new SocksProxyAgent(privateProxy), ;
+        { strict: false }))
+        const proxy = new SocksProxyAgent(privateProxy);
         this.axios = axios.create({
             httpAgent: proxy,
             httpsAgent: proxy
