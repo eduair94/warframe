@@ -12,6 +12,12 @@ class Warframe {
     async saveItem(id: string, item:any) {
         await this.db.getAnUpdateEntry({id}, item)
     }
+    async getItemsDatabaseServer() {
+        const entries = await this.db.allEntries({});
+        return entries.map(({item_name, thumb, market}) => {
+            return {item_name, thumb, market}
+        })
+    }
     async getItemsDatabase() {
         return await this.db.allEntries({});
     }
@@ -26,23 +32,25 @@ class Warframe {
     }
     async getWarframeItemOrders(item: Item): Promise<{buy: number, sell:number, volume:number}> {
         const url = `https://api.warframe.market/v1/items/${item.url_name}/orders`;
-        console.log(url);
         const res = await axios.get(url).then(res => res.data);
-        const { volume } = await this.getWarframeItemStatistics(item);
-        return { ...this.getWarframeItemBuySellPrice(res), volume };
+        const itemSet = item.items_in_set[0];
+        let max_rank = itemSet.mod_max_rank;
+        console.log("Max Rank", max_rank);
+        const { volume } = await this.getWarframeItemStatistics(item, max_rank);
+        return { ...this.getWarframeItemBuySellPrice(res, max_rank), volume };
     }
-    async getWarframeItemStatistics(item: Item): Promise<{volume:number}> {
+    async getWarframeItemStatistics(item: Item, max_rank: number | undefined): Promise<{volume:number}> {
         const url = `https://api.warframe.market/v1/items/${item.url_name}/statistics`;
         const res: StatisticsWarframe = await axios.get(url).then(res => res.data);
-        const volume = res.payload.statistics_closed['48hours'].reduce((prev, curr) => prev + curr.volume, 0);
+        const volume = res.payload.statistics_closed['48hours'].reduce((prev, curr) => (max_rank === undefined || curr.mod_rank === max_rank) ? prev + curr.volume: prev, 0);
         return {
             volume
         };
     }
-    getWarframeItemBuySellPrice(data: OrdersWarframe) {
+    getWarframeItemBuySellPrice(data: OrdersWarframe, max_rank: number | undefined) {
         const orders = data.payload.orders;
-        const buyOrders = orders.filter(order => order.order_type === 'buy' && order.user.status === 'ingame');
-        const sellOrders = orders.filter(order => order.order_type === 'sell' && order.user.status === 'ingame');
+        const buyOrders = orders.filter(order => order.order_type === 'buy' && order.user.status === 'ingame' && (max_rank === undefined || order.mod_rank === max_rank));
+        const sellOrders = orders.filter(order => order.order_type === 'sell' && order.user.status === 'ingame' && (max_rank === undefined || order.mod_rank === max_rank));
         // Find the lowest buy order by the property platinum
         let buyPlat = 0;
         if (buyOrders.length) {

@@ -24,6 +24,7 @@ interface Payload {
 
 interface Order {
   visible: boolean;
+  mod_rank?: number;
   platform: string;
   creation_date: string;
   quantity: number;

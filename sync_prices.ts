@@ -9,9 +9,8 @@ async function main() {
         let idx = 0;
         for (let item of items) {
             console.log("Loading", idx, items.length);
-            const itemOrderData = await m.getWarframeItemOrders(item);
-            console.log("ItemOrderData", itemOrderData);
-            await m.saveItem(item.id, itemOrderData);
+            const market = await m.getWarframeItemOrders(item);
+            await m.saveItem(item.id, { market });
             idx++;
         }
         console.timeEnd('warframe');
