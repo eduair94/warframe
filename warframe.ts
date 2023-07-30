@@ -2,7 +2,7 @@ import axios, { AxiosInstance } from "axios";
 import axiosRetry from 'axios-retry';
 import { SocksProxyAgent } from "socks-proxy-agent";
 import { MongooseServer, Schema } from "./database";
-import { StatisticsWarframe } from "./interface";
+import { Item, OrdersWarframe, StatisticsWarframe, WarframeItemSingle, WarframeItems } from "./interface";
 import privateProxy from "./proxy";
 
 class Warframe {
