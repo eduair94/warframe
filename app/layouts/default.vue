@@ -5,7 +5,7 @@
         max-height="90%"
         max-width="65vw"
         contain
-        alt="logo cambio uruguay"
+        alt="logo warframe analytics"
         class="logo_image"
         position="left center"
         src="./img/logo.png"
@@ -25,7 +25,9 @@
     </v-main>
     <v-footer :fixed="false">
       <div class="d-flex footer_content">
-        <span>Cambio Uruguay &copy; {{ new Date().getFullYear() }}</span>
+        <span
+          >Warframe Market Analytics &copy; {{ new Date().getFullYear() }}</span
+        >
         <v-spacer />
         <span
           >{{ $t('madeWith') }} <v-icon color="red">mdi-heart</v-icon>
