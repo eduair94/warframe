@@ -52,10 +52,9 @@ class Warframe {
         const res = await this.axios.get(url).then(res => res.data);
         return res;
     }
-    async getWarframeItemOrders(item: Item): Promise<{ buy: number, sell: number, volume: number }> {
+    async getWarframeItemOrders(item: Item, att = 0): Promise<{ buy: number, sell: number, volume: number }> {
         try {
             const proxy: any = proxies.getProxy();
-            console.log("Proxy", proxy);
             const httpAgent = new ProxyAgent(proxy);
             const url = `https://api.warframe.market/v1/items/${item.url_name}/orders`;
             const res = await this.axios.get(url, {
@@ -64,12 +63,10 @@ class Warframe {
             }).then(res => res.data);
             const itemSet = item.items_in_set[0];
             let max_rank = itemSet.mod_max_rank;
-            console.log("Max Rank", max_rank);
             const { volume } = await this.getWarframeItemStatistics(item, max_rank, httpAgent);
             return { ...this.getWarframeItemBuySellPrice(res, max_rank), volume };
         } catch (e) {
-            console.log("Error, try again in 5000ms", e.message);
-            await sleep(5000);
+            await sleep(1000);
             return this.getWarframeItemOrders(item);
         }    
     }

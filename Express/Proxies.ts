@@ -6,16 +6,23 @@ class Proxies {
   private proxies = "proxies/proxies.txt";
   private banned_proxies = "proxies/banned.txt";
   private idx = 0;
-  private apiKey = process.env.apiKey || "cxgkz5524huimg0qmnfs";
+  private apiKey = process.env.apiKey || "l0dpqikj1eup8mmc7zy8";
   private proxyType = process.env.proxyType || "http";
   bProxyList: string[];
   proxieList: string[];
   constructor() {
+    const directoryPath = 'proxies';
+    if (!fs.existsSync(directoryPath)) {
+      // If the directory doesn't exist, create it
+      fs.mkdirSync(directoryPath);
+      console.log(`Directory "${directoryPath}" created.`);
+    } else {
+      console.log(`Directory "${directoryPath}" already exists.`);
+    }
     if (!this.proxyType) {
       this.proxyType = "http";
     }
     this.readProxyFile();
-    this.setProxies();
   }
   getProxy() {
     if (!this.proxieList[this.idx]) {
@@ -46,6 +53,7 @@ class Proxies {
     if (this.apiKey) {
       console.log("Api Key", this.apiKey);
       const endpoint = `https://api.proxyscrape.com/v2/account/datacenter_shared/proxy-list?auth=${this.apiKey}&protocol=http`;
+      console.log("endpoint", endpoint);
       const proxies = await axios
         .get(endpoint)
         .then((res) => {
