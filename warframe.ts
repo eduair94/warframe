@@ -1,6 +1,8 @@
 import axios, { AxiosInstance } from "axios";
 import axiosRetry from 'axios-retry';
+import { ProxyAgent } from "proxy-agent";
 import { SocksProxyAgent } from "socks-proxy-agent";
+import proxies from "./Express/Proxies";
 import { sleep } from "./Express/config";
 import { MongooseServer, Schema } from "./database";
 import { Item, OrdersWarframe, StatisticsWarframe, WarframeItemSingle, WarframeItems } from "./interface";
@@ -52,12 +54,18 @@ class Warframe {
     }
     async getWarframeItemOrders(item: Item): Promise<{ buy: number, sell: number, volume: number }> {
         try {
+            const proxy: any = proxies.getProxy();
+            console.log("Proxy", proxy);
+            const httpAgent = new ProxyAgent(proxy);
             const url = `https://api.warframe.market/v1/items/${item.url_name}/orders`;
-            const res = await this.axios.get(url).then(res => res.data);
+            const res = await this.axios.get(url, {
+                httpAgent: httpAgent,
+                httpsAgent: httpAgent
+            }).then(res => res.data);
             const itemSet = item.items_in_set[0];
             let max_rank = itemSet.mod_max_rank;
             console.log("Max Rank", max_rank);
-            const { volume } = await this.getWarframeItemStatistics(item, max_rank);
+            const { volume } = await this.getWarframeItemStatistics(item, max_rank, httpAgent);
             return { ...this.getWarframeItemBuySellPrice(res, max_rank), volume };
         } catch (e) {
             console.log("Error, try again in 5000ms", e.message);
@@ -65,9 +73,12 @@ class Warframe {
             return this.getWarframeItemOrders(item);
         }    
     }
-    async getWarframeItemStatistics(item: Item, max_rank: number | undefined): Promise<{volume:number}> {
+    async getWarframeItemStatistics(item: Item, max_rank: number | undefined, httpAgent:ProxyAgent): Promise<{volume:number}> {
         const url = `https://api.warframe.market/v1/items/${item.url_name}/statistics`;
-        const res: StatisticsWarframe = await this.axios.get(url).then(res => res.data);
+        const res: StatisticsWarframe = await this.axios.get(url, {
+            httpAgent: httpAgent,
+            httpsAgent: httpAgent
+        }).then(res => res.data);
         const volume = res.payload.statistics_closed['48hours'].reduce((prev, curr) => (max_rank === undefined || curr.mod_rank === max_rank) ? prev + curr.volume: prev, 0);
         return {
             volume
