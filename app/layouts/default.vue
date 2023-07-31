@@ -1,6 +1,6 @@
 <template>
   <v-app dark>
-    <v-app-bar :clipped-left="clipped" fixed app>
+    <v-app-bar color="#1f1f2f" :clipped-left="clipped" fixed app>
       <v-img
         max-height="90%"
         max-width="65vw"
@@ -18,7 +18,7 @@
       <v-spacer />
       <LanguageMenu />
     </v-app-bar>
-    <v-main>
+    <v-main class="main">
       <v-container>
         <Nuxt />
       </v-container>
@@ -32,21 +32,16 @@
         <span
           >{{ $t('madeWith') }} <v-icon color="red">mdi-heart</v-icon>
           {{ $t('por') }}
-          <a
-            class="white--text"
-            href="https://www.linkedin.com/in/eduardo-airaudo/"
+          <a href="https://www.linkedin.com/in/eduardo-airaudo/"
             >Eduardo Airaudo</a
           >
           {{ $t('and') }}
-          <a
-            class="white--text"
-            href="https://www.linkedin.com/in/reginascagliotti/"
+          <a href="https://www.linkedin.com/in/reginascagliotti/"
             >Regina Scagliotti</a
           >
         </span>
       </div>
     </v-footer>
-    <JoinTwitter />
   </v-app>
 </template>
 
@@ -55,7 +50,6 @@ export default {
   name: 'DefaultLayout',
   components: {
     LanguageMenu: () => import('../components/LanguageMenu.vue'),
-    JoinTwitter: () => import('../components/JoinTwitter.vue'),
   },
   data() {
     return {
@@ -93,6 +87,9 @@ export default {
 
 
 <style>
+.main {
+  background: #dedfdf;
+}
 .logo_image {
   cursor: pointer;
 }

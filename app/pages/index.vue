@@ -5,6 +5,7 @@
       <client-only>
         <v-data-table
           ref="dataTable"
+          color="#f5f5f5"
           sort-by="market.volume"
           sort-desc
           :item-class="row_classes"
@@ -33,19 +34,45 @@
               </div>
             </div>
             <div>
-              <div class="pa-3">
+              <div style="background: #1f1f2f" class="pa-3 white--text">
                 <form
-                  style="max-width: 500px"
-                  class="d-flex align-center"
+                  id="form_warframe"
+                  class="d-flex align-center flex-wrap"
                   @submit.prevent="filter"
                 >
                   <v-text-field
                     v-model="min_volume"
+                    dark
                     type="number"
                     width="200px"
                     label="Min Volume"
                   ></v-text-field>
+                  <v-select
+                    v-model="selection"
+                    label="Select"
+                    dark
+                    :items="[
+                      'All',
+                      'Warframe',
+                      'Arcane',
+                      'Weapon',
+                      'Sentinel',
+                      'Imprint',
+                      'Mod',
+                    ]"
+                  ></v-select>
+                  <v-text-field
+                    v-model="search"
+                    type="text"
+                    dark
+                    width="200px"
+                    label="Search"
+                  >
+                  </v-text-field>
                   <v-btn type="submit" color="primary"> Search </v-btn>
+                  <v-btn color="primary" @click.prevent="reset">
+                    <v-icon>mdi-restore</v-icon>
+                  </v-btn>
                 </form>
               </div>
               <v-data-footer
@@ -64,7 +91,7 @@
                 :src="'https://warframe.market/static/assets/' + item.thumb"
               />
               <a
-                class="no_link white--text"
+                class="no_link"
                 target="_blank"
                 :href="'https://warframe.market/items/' + item.url_name"
               >
@@ -73,9 +100,16 @@
             </div>
           </template>
           <template #item.thumb="{ item }"> </template>
+          <template #item.tags="{ item }">
+            <v-chip-group selected-class="text-primary" column>
+              <v-chip v-for="(tag, index) in item.tags" :key="index">
+                {{ tag }}
+              </v-chip>
+            </v-chip-group>
+          </template>
         </v-data-table>
       </client-only>
-      <div class="px-3 pt-3">
+      <div class="px-0 pt-3">
         <div>
           <div
             class="d-flex flex-wrap align-center top_container justify-space-between mb-md-4"
@@ -83,7 +117,8 @@
             <div
               class="my-3 mb-0 md-md-3 grey darken-3 pa-3 px-lg-5 text-subtitle-1 d-flex align-center flex-wrap donation_container"
             >
-              <div class="d-flex mt-2">
+              <div class="d-flex mt-2 align-center">
+                <div class="white--text mr-3">Help us donating!</div>
                 <a
                   target="_blank"
                   aria-label="Donar con Paypal"
@@ -146,6 +181,8 @@ export default {
     return {
       all_items: [],
       min_volume: 0,
+      search: '',
+      selection: 'All',
       hasScroll: false,
       scrollWidth: 0,
     }
@@ -175,9 +212,53 @@ export default {
     this.setScrollBar()
   },
   methods: {
+    reset() {
+      this.selection = ''
+      this.search = ''
+      this.min_volume = 0
+      this.all_items = this.allItems
+    },
+    filterSelect(el: any) {
+      const selection = this.selection
+      let val = true
+      switch (selection) {
+        case 'Warframe':
+          val =
+            el.set === true &&
+            el.item_name.includes(' Set') &&
+            el.tags.includes('component') &&
+            el.tags.includes('warframe')
+          break
+        case 'Arcane':
+          val = el.tags.includes('arcane_enhancement')
+          break
+        case 'Weapon':
+          val =
+            el.set === true &&
+            el.item_name.includes(' Set') &&
+            el.tags.includes('weapon')
+          break
+        case 'Sentinel':
+          val = el.tags.includes('sentinel') && el.item_name.includes(' Set')
+          break
+        case 'Imprint':
+          val = el.item_name.includes('Imprint')
+          break
+        case 'Mod':
+          val = el.tags.includes('mod')
+          break
+        default:
+          break
+      }
+      return val
+    },
     filter() {
       this.all_items = this.allItems.filter(
-        (el) => el.market.volume >= this.min_volume
+        (el) =>
+          el.market.volume >= this.min_volume &&
+          this.filterSelect(el) &&
+          (!this.search ||
+            el.item_name.toLowerCase().includes(this.search.toLowerCase()))
       )
     },
     changeCode(code: string, codeWith: string) {
@@ -366,6 +447,10 @@ export default {
           value: 'market.volume',
           width: 'auto',
         },
+        {
+          text: 'Tags',
+          value: 'tags',
+        },
       ]
       return toReturn
     },
@@ -441,6 +526,7 @@ body {
 
 .no_link {
   text-decoration: none;
+  color: #399ea5;
 }
 .website_link {
   word-break: break-all;
@@ -527,5 +613,14 @@ body {
       max-width: calc(80vw / 5);
     }
   }
+}
+
+#form_warframe {
+  max-width: 100%;
+  gap: 10px;
+}
+
+tbody tr:nth-of-type(odd) {
+  background-color: rgba(0, 0, 0, 0.05);
 }
 </style>
