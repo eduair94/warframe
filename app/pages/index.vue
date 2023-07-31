@@ -4,110 +4,21 @@
       <h1 style="display: none"></h1>
       <client-only>
         <v-data-table
+          ref="dataTable"
+          sort-by="market.volume"
+          sort-desc
           :item-class="row_classes"
           :headers="getHeaders()"
-          :items="allItems"
+          :items="all_items"
           :footer-props="{
             'items-per-page-options': [10, 20, 30, 40, 50],
           }"
           :items-per-page="50"
           class="elevation-1 money_table"
+          @update:page="$vuetify.goTo($refs.dataTable)"
         >
-          <template #top>
+          <template #top="{ pagination, options, updateOptions }">
             <div>
-              <div class="px-3 pt-3">
-                <div>
-                  <div
-                    class="d-flex flex-wrap align-center top_container justify-space-between mb-md-4"
-                  >
-                    <div
-                      class="my-3 mb-0 md-md-3 grey darken-3 pa-3 px-lg-5 text-subtitle-1 d-flex align-center flex-wrap donation_container"
-                    >
-                      <span class="mr-3 text_info"
-                        >{{ $t('info') }}
-                        <a
-                          target="_blank"
-                          class="white--text"
-                          href="https://www.trustpilot.com/review/cambio-uruguay.com"
-                        >
-                          {{ $t('here') }}</a
-                        ></span
-                      >
-                      <div class="d-flex mt-2">
-                        <a
-                          target="_blank"
-                          aria-label="Donar con Paypal"
-                          class="white--text d-flex mr-4 align-center justify-content-left donation_logo"
-                          href="https://ko-fi.com/cambio_uruguay"
-                        >
-                          <v-img
-                            max-width="50px"
-                            height="50px"
-                            contain
-                            src="/img/paypal_icon.png"
-                          >
-                            <template #sources>
-                              <source srcset="/img/paypal_icon.webp" />
-                            </template>
-                          </v-img>
-                        </a>
-                        <a
-                          aria-label="Donar con Mercado Pago"
-                          class="white--text d-flex align-center justify-content-left donation_logo"
-                          target="_blank"
-                          href="https://mpago.la/19j46vX"
-                        >
-                          <v-img
-                            max-width="50px"
-                            height="50px"
-                            contain
-                            src="/img/mercadopago_icon.png"
-                          >
-                            <template #sources>
-                              <source srcset="/img/mercadopago_icon.webp" />
-                            </template>
-                          </v-img>
-                        </a>
-                      </div>
-                    </div>
-                    <div class="button_section mb-3">
-                      <v-btn
-                        color="#78C257"
-                        link
-                        target="_blank"
-                        href="https://play.google.com/store/apps/details?id=com.cambio_uruguay.twa"
-                      >
-                        <v-icon> mdi-android </v-icon>
-                      </v-btn>
-                      <a
-                        ref="pwa_open"
-                        style="display: none"
-                        target="_blank"
-                        href="https://cambio-uruguay.com"
-                        >PWA</a
-                      >
-                      <v-btn
-                        aria-label="twitter"
-                        link
-                        color="#00acee"
-                        target="_blank"
-                        href="https://twitter.com/cambio_uruguay"
-                      >
-                        <v-icon large> mdi-twitter </v-icon>
-                      </v-btn>
-                      <v-btn
-                        aria-label="linkedin"
-                        link
-                        color="#0e76a8"
-                        target="_blank"
-                        href="https://www.linkedin.com/company/cambio-uruguay/"
-                      >
-                        <v-icon large> mdi-linkedin </v-icon>
-                      </v-btn>
-                    </div>
-                  </div>
-                </div>
-              </div>
               <div
                 v-show="hasScroll"
                 id="wrapper2"
@@ -121,6 +32,29 @@
                 ></div>
               </div>
             </div>
+            <div>
+              <div class="pa-3">
+                <form
+                  style="max-width: 500px"
+                  class="d-flex align-center"
+                  @submit.prevent="filter"
+                >
+                  <v-text-field
+                    v-model="min_volume"
+                    type="number"
+                    width="200px"
+                    label="Min Volume"
+                  ></v-text-field>
+                  <v-btn type="submit" color="primary"> Search </v-btn>
+                </form>
+              </div>
+              <v-data-footer
+                :pagination="pagination"
+                :options="options"
+                items-per-page-text="$vuetify.dataTable.itemsPerPageText"
+                @update:options="updateOptions"
+              />
+            </div>
           </template>
           <template #item.item_name="{ item }">
             <div class="d-flex justify-start align-center py-3">
@@ -132,7 +66,7 @@
               <a
                 class="no_link white--text"
                 target="_blank"
-                :href="'https://warframe.market/items/' + item.item_url"
+                :href="'https://warframe.market/items/' + item.url_name"
               >
                 {{ item.item_name }}</a
               >
@@ -141,6 +75,54 @@
           <template #item.thumb="{ item }"> </template>
         </v-data-table>
       </client-only>
+      <div class="px-3 pt-3">
+        <div>
+          <div
+            class="d-flex flex-wrap align-center top_container justify-space-between mb-md-4"
+          >
+            <div
+              class="my-3 mb-0 md-md-3 grey darken-3 pa-3 px-lg-5 text-subtitle-1 d-flex align-center flex-wrap donation_container"
+            >
+              <div class="d-flex mt-2">
+                <a
+                  target="_blank"
+                  aria-label="Donar con Paypal"
+                  class="white--text d-flex mr-4 align-center justify-content-left donation_logo"
+                  href="https://ko-fi.com/cambio_uruguay"
+                >
+                  <v-img
+                    max-width="50px"
+                    height="50px"
+                    contain
+                    src="/img/paypal_icon.png"
+                  >
+                    <template #sources>
+                      <source srcset="/img/paypal_icon.webp" />
+                    </template>
+                  </v-img>
+                </a>
+                <a
+                  aria-label="Donar con Mercado Pago"
+                  class="white--text d-flex align-center justify-content-left donation_logo"
+                  target="_blank"
+                  href="https://mpago.la/19j46vX"
+                >
+                  <v-img
+                    max-width="50px"
+                    height="50px"
+                    contain
+                    src="/img/mercadopago_icon.png"
+                  >
+                    <template #sources>
+                      <source srcset="/img/mercadopago_icon.webp" />
+                    </template>
+                  </v-img>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <v-alert class="mt-3 mt-md-4 mb-0 mb-md-3 blue darken-4" type="info" dense>
       {{ $t('disclaimer') }}
@@ -162,6 +144,8 @@ export default {
   },
   data() {
     return {
+      all_items: [],
+      min_volume: 0,
       hasScroll: false,
       scrollWidth: 0,
     }
@@ -191,6 +175,11 @@ export default {
     this.setScrollBar()
   },
   methods: {
+    filter() {
+      this.all_items = this.allItems.filter(
+        (el) => el.market.volume >= this.min_volume
+      )
+    },
     changeCode(code: string, codeWith: string) {
       this.code = codeWith
       this.code_with = code
@@ -259,6 +248,7 @@ export default {
           }
         })
       }
+      this.all_items = this.allItems
       this.finishLoading()
     },
     plusUy(array: string[]) {
@@ -372,7 +362,7 @@ export default {
           width: 'auto',
         },
         {
-          text: 'Volume',
+          text: 'Volume (Last 48hrs)',
           value: 'market.volume',
           width: 'auto',
         },
