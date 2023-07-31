@@ -59,6 +59,7 @@
                       'Sentinel',
                       'Imprint',
                       'Mod',
+                      'Relic',
                     ]"
                   ></v-select>
                   <v-text-field
@@ -246,6 +247,9 @@ export default {
           break
         case 'Mod':
           val = el.tags.includes('mod')
+          break
+        case 'Relic':
+          val = el.tags.includes('relic')
           break
         default:
           break
