@@ -14,6 +14,7 @@ async function main() {
             idx++;
         }
         console.timeEnd('warframe');
+        process.exit(1);
     });
 }
 
