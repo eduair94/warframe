@@ -227,7 +227,7 @@ export default {
           val =
             el.set === true &&
             el.item_name.includes(' Set') &&
-            el.tags.includes('component') &&
+            (el.tags.includes('component') || el.tags.includes('blueprint')) &&
             el.tags.includes('warframe')
           break
         case 'Arcane':
