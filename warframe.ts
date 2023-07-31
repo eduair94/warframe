@@ -29,8 +29,8 @@ class Warframe {
     }
     async getItemsDatabaseServer() {
         const entries = await this.db.allEntries({});
-        return entries.map(({item_name, thumb, market, item_url}) => {
-            return {item_name, thumb, market: {...market, diff: market.sell - market.buy}, item_url}
+        return entries.map(({item_name, thumb, market, url_name}) => {
+            return {item_name, thumb, market: {...market, diff: market.sell - market.buy}, url_name}
         })
     }
     async getItemsDatabase() {
