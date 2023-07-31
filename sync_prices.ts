@@ -9,16 +9,16 @@ async function main() {
     const m = new Warframe();
     console.time('warframe');
     let idx = 0;
-    let concurrencyLimit = 5;
+    let concurrencyLimit = 20;
     async function processEntry(item) {
         const market = await m.getWarframeItemOrders(item);
-        await m.saveItem(item.id, { market });
+        await m.saveItem(item.id, { market, priceUpdate: new Date() });
     }
-    m.getItemsDatabase().then(async items => {
+    m.getItemsDatabaseDate().then(async items => {
         const processQueue = items.map((entry: Item) => {
             return async () => {
                 await processEntry(entry);
-                console.log(`Finish processing entry ${idx + 1}/${items.length}	`);
+                console.log(`${idx + 1}/${items.length}`);
                 idx++;
             }
         });

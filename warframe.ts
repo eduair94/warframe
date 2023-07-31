@@ -40,6 +40,9 @@ class Warframe {
     async getItemsDatabase() {
         return await this.db.allEntries({});
     }
+    async getItemsDatabaseDate() {
+        return await this.db.allEntriesSort({}, {priceUpdate: 1});
+    }
     async getWarframeItems() : Promise<WarframeItems> {
         const res = await this.axios.get('https://api.warframe.market/v1/items').then(res => res.data);
         return res;
