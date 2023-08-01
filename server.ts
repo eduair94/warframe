@@ -10,6 +10,10 @@ async function main() {
         const results = await m.getItemsDatabaseServer();
         return results;
     });
+    server.postJson('/set', async (req: Request): Promise<any> => {
+        const results = await m.getSet(req.body as any);
+        return results;
+    });
 }
 
 main();

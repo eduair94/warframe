@@ -9,6 +9,7 @@ interface Payload {
 interface Item {
   item_name: string;
   id: string;
+  market?: any;
   thumb: string;
   url_name: string;
   vaulted?: boolean;
