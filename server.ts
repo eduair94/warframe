@@ -11,7 +11,7 @@ async function main() {
         const results = await m.getItemsDatabaseServer();
         return results;
     });
-    server.getJson('/set/:url_name', async (req: Request): Promise<any> => {
+    server.getJson('set/:url_name', async (req: Request): Promise<any> => {
         const url_name = req.params.url_name;
         const results = await m.getSet(url_name);
         return results;
