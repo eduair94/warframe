@@ -32,7 +32,7 @@ class Warframe {
     }
     async getSet(url_name: string) {
         const res:any = await this.getSingleItemDB({url_name} as any);
-        const items = res.items_in_set.map(el => el.url_name);
+        const items = res.items_in_set.filter((el:any)=> el.url_name !== url_name).map(el => el.url_name);
         const results = await this.db.allEntries({ url_name: { $in: items } });
         return { set: this.processItem(res), items: results.map(el=> this.processItem(el)) }
     }
