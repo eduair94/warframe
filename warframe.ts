@@ -34,7 +34,7 @@ class Warframe {
         const res:any = await this.getSingleItemDB({url_name} as any);
         const items = res.items_in_set.filter((el:any)=> el.url_name !== url_name).map(el => el.url_name);
         const results = await this.db.allEntries({ url_name: { $in: items } });
-        const itemByParts = { ...res };
+        const itemByParts = JSON.parse(JSON.stringify(res));
         itemByParts.item_name = `${res.item_name} by Parts`;
         itemByParts.market.buy = results.reduce((prev: any, curr: any) => prev + curr.market.buy, 0);
         itemByParts.market.sell = results.reduce((prev: any, curr: any) => prev + curr.market.sell, 0);
