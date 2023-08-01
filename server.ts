@@ -1,3 +1,4 @@
+import { Request } from 'express';
 import server from "./Express/ExpressSetup";
 import { MongooseServer } from "./database";
 import { Warframe } from "./warframe";
@@ -10,8 +11,9 @@ async function main() {
         const results = await m.getItemsDatabaseServer();
         return results;
     });
-    server.postJson('/set', async (req: Request): Promise<any> => {
-        const results = await m.getSet(req.body as any);
+    server.getJson('/set/:url_name', async (req: Request): Promise<any> => {
+        const url_name = req.params.url_name;
+        const results = await m.getSet(url_name);
         return results;
     });
 }

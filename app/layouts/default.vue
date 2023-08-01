@@ -20,6 +20,10 @@
     </v-app-bar>
     <v-main class="main">
       <v-container>
+        <div id="menu">
+          <v-btn color="primary" link to="/">Home</v-btn>
+          <v-btn color="primary" link to="/set">Set Price Calculator</v-btn>
+        </div>
         <Nuxt />
       </v-container>
     </v-main>
@@ -50,6 +54,14 @@ export default {
   name: 'DefaultLayout',
   components: {
     LanguageMenu: () => import('../components/LanguageMenu.vue'),
+  },
+  async middleware({ store, redirect, $axios, $i18n, query }) {
+    if (process.server) {
+      const data = await $axios
+        .get('https://warframe.digitalshopuy.com')
+        .then((res) => res.data)
+      store.dispatch('setItems', data)
+    }
   },
   data() {
     return {
@@ -142,5 +154,115 @@ body .v-app-bar.v-app-bar--fixed {
   .v-data-table > .v-data-table__wrapper > table > tfoot > tr > td {
     padding-bottom: 12px;
   }
+}
+
+#menu {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.no_link {
+  text-decoration: none;
+  color: #399ea5;
+}
+.website_link {
+  word-break: break-all;
+  max-width: 100%;
+  min-width: 150px;
+}
+
+.button_section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+@media (min-width: 768px) {
+  .website_link {
+    min-width: 200px;
+  }
+}
+
+@media (max-width: 1750px) {
+  body .container {
+    max-width: 100% !important;
+  }
+}
+
+.v-data-table__mobile-row {
+  width: 100%;
+}
+
+.money_table
+  .v-data-table__mobile-table-row
+  > .v-data-table__mobile-row:nth-child(10) {
+  flex-direction: column;
+  justify-content: flex-start;
+  .v-data-table__mobile-row__header {
+    width: 100%;
+  }
+  .v-data-table__mobile-row__cell {
+    text-align: left;
+    div {
+      margin-bottom: 12px;
+    }
+  }
+}
+
+.top_container {
+  gap: 12px;
+}
+
+.donation_logo {
+  transition: ease-in-out 0.3s;
+}
+.donation_logo:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0px 0px 3px black);
+}
+
+.gap-10 {
+  gap: 10px;
+}
+
+#wrapper2 {
+  width: 100%;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+
+/* This div allow to make the scroll function and show the scrollbar */
+#div2 {
+  height: 1px;
+  overflow: scroll;
+}
+
+.text_info {
+  max-width: 490px;
+}
+
+@media (max-width: 768px) {
+  .button_section {
+    gap: 5px !important;
+    button,
+    a {
+      min-width: 30px !important;
+      max-width: calc(80vw / 5);
+    }
+  }
+}
+
+#form_warframe {
+  max-width: 100%;
+  gap: 10px;
+}
+
+tbody tr:nth-of-type(odd) {
+  background-color: rgba(0, 0, 0, 0.05);
 }
 </style>

@@ -29,8 +29,11 @@ export const actions = {
 }
 
 export const getters = {
-  all_items(state: any): boolean {
+  all_items(state: any): any {
     return state.items
+  },
+  all_sets(state: any): any {
+    return state.items.filter(el=>el.item_name.includes(' Set'))
   },
   locations(state: any) {
     return state.locations

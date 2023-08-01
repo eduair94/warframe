@@ -40,35 +40,14 @@
                   class="d-flex align-center flex-wrap"
                   @submit.prevent="filter"
                 >
-                  <v-text-field
-                    v-model="min_volume"
-                    dark
-                    type="number"
-                    width="200px"
-                    label="Min Volume"
-                  ></v-text-field>
-                  <v-select
-                    v-model="selection"
-                    label="Select"
-                    dark
-                    :items="[
-                      'All',
-                      'Warframe',
-                      'Arcane',
-                      'Weapon',
-                      'Sentinel',
-                      'Imprint',
-                      'Mod',
-                      'Relic',
-                    ]"
-                  ></v-select>
-                  <v-combobox
+                  <v-autocomplete
                     v-model="search"
                     label="Search"
                     width="200px"
+                    :items="allSets"
                     dark
-                    :items="allItems.map((el) => el.item_name)"
-                  ></v-combobox>
+                    item-text="item_name"
+                  ></v-autocomplete>
                   <v-btn type="submit" color="primary"> Search </v-btn>
                   <v-btn color="primary" @click.prevent="reset">
                     <v-icon>mdi-restore</v-icon>
@@ -173,6 +152,7 @@ export default {
   components: {},
   data() {
     return {
+      allItems: [],
       all_items: [],
       min_volume: 0,
       search: '',
@@ -188,7 +168,7 @@ export default {
   },
   computed: {
     ...mapGetters({
-      allItems: 'all_items',
+      allSets: 'all_sets',
     }),
   },
   beforeMount() {
@@ -212,51 +192,14 @@ export default {
       this.min_volume = 0
       this.all_items = this.allItems
     },
-    filterSelect(el: any) {
-      const selection = this.selection
-      let val = true
-      switch (selection) {
-        case 'Warframe':
-          val =
-            el.set === true &&
-            el.item_name.includes(' Set') &&
-            (el.tags.includes('component') || el.tags.includes('blueprint')) &&
-            el.tags.includes('warframe')
-          break
-        case 'Arcane':
-          val = el.tags.includes('arcane_enhancement')
-          break
-        case 'Weapon':
-          val =
-            el.set === true &&
-            el.item_name.includes(' Set') &&
-            el.tags.includes('weapon')
-          break
-        case 'Sentinel':
-          val = el.tags.includes('sentinel') && el.item_name.includes(' Set')
-          break
-        case 'Imprint':
-          val = el.item_name.includes('Imprint')
-          break
-        case 'Mod':
-          val = el.tags.includes('mod')
-          break
-        case 'Relic':
-          val = el.tags.includes('relic')
-          break
-        default:
-          break
+    async filter() {
+      const search = this.search
+      if (search) {
+        const data = await this.$axios
+          .post('https://warframe.digitalshopuy.com/set', search)
+          .then((res) => res.data)
+        this.allItems = data.items
       }
-      return val
-    },
-    filter() {
-      this.all_items = this.allItems.filter(
-        (el) =>
-          el.market.volume >= this.min_volume &&
-          this.filterSelect(el) &&
-          (!this.search ||
-            el.item_name.toLowerCase().includes(this.search.toLowerCase()))
-      )
     },
     changeCode(code: string, codeWith: string) {
       this.code = codeWith

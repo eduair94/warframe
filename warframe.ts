@@ -30,9 +30,9 @@ class Warframe {
     async saveItem(id: string, item:any) {
         await this.db.getAnUpdateEntry({id}, item)
     }
-    async getSet(item: Item) {
-        const res:any = await this.getSingleItemDB(item);
-        const items = item.items_in_set.map(el => el.url_name);
+    async getSet(url_name: string) {
+        const res:any = await this.getSingleItemDB({url_name} as any);
+        const items = res.items_in_set.map(el => el.url_name);
         const results = await this.db.allEntries({ url_name: { $in: items } });
         return { set: this.processItem(res), items: results.map(el=> this.processItem(el)) }
     }
