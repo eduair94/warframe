@@ -3,10 +3,10 @@
     <div class="my-4">
       <h1 style="display: none"></h1>
       <client-only>
-        <v-data-table :items="set"> </v-data-table>
         <v-data-table
           ref="dataTable"
           color="#f5f5f5"
+          :hide-default-footer="true"
           sort-by="market.volume"
           sort-desc
           :item-class="row_classes"
@@ -56,13 +56,47 @@
                   </v-btn>
                 </form>
               </div>
-              <v-data-footer
-                :pagination="pagination"
-                :options="options"
-                items-per-page-text="$vuetify.dataTable.itemsPerPageText"
-                @update:options="updateOptions"
-              />
+              <div>
+                <v-alert dense>
+                  Purchasing by parts can save you up to:
+                  <b>{{ save }}</b> platinum
+                </v-alert>
+              </div>
+              <v-data-table
+                :headers="getHeaders()"
+                :hide-default-footer="true"
+                :items="set"
+                :items-per-page="50"
+              >
+                <template #item.item_name="{ item }">
+                  <div class="d-flex justify-start align-center py-3">
+                    <img
+                      class="mr-3"
+                      width="50px"
+                      :src="
+                        'https://warframe.market/static/assets/' + item.thumb
+                      "
+                    />
+                    <a
+                      class="no_link"
+                      target="_blank"
+                      :href="'https://warframe.market/items/' + item.url_name"
+                    >
+                      {{ item.item_name }}</a
+                    >
+                  </div>
+                </template>
+                <template #item.thumb="{ item }"> </template>
+                <template #item.tags="{ item }">
+                  <v-chip-group selected-class="text-primary" column>
+                    <v-chip v-for="(tag, index) in item.tags" :key="index">
+                      {{ tag }}
+                    </v-chip>
+                  </v-chip-group>
+                </template>
+              </v-data-table>
             </div>
+            <v-divider></v-divider>
           </template>
           <template #item.item_name="{ item }">
             <div class="d-flex justify-start align-center py-3">
@@ -148,14 +182,16 @@
 
 <script lang="ts">
 import { mapGetters, mapActions } from 'vuex'
-import { notFound } from '../services/not_found'
+import { notFound } from '../../services/not_found'
 export default {
   name: 'HomePage',
   components: {},
   data() {
     return {
+      save: 0,
       allItems: [],
       all_items: [],
+      set: [],
       min_volume: 0,
       search: '',
       selection: 'All',
@@ -173,6 +209,11 @@ export default {
       allSets: 'all_sets',
     }),
   },
+  watch: {
+    $route(newVal) {
+      console.log('NEW VAL', newVal)
+    },
+  },
   beforeMount() {
     this.beforeMount()
   },
@@ -189,19 +230,25 @@ export default {
   },
   methods: {
     reset() {
-      this.selection = ''
-      this.search = ''
-      this.min_volume = 0
-      this.all_items = this.allItems
+      this.$router.push('/set')
     },
-    async filter() {
-      const search = this.search
+    async loadFilters() {
+      const search = this.$route.params.set
       if (search) {
-        const data = await this.$axios
-          .get('https://warframe.digitalshopuy.com/set/' + search)
-          .then((res) => res.data)
-        this.all_items = data.items
+        this.search = search
+        if (search) {
+          const data = await this.$axios
+            .get('https://warframe.digitalshopuy.com/set/' + search)
+            .then((res) => res.data)
+          this.all_items = data.items
+          this.set = data.set
+          this.save = this.set[0].market.sell - this.set[1].market.sell
+        }
       }
+    },
+    filter() {
+      const search = this.search
+      this.$router.push('/set/' + search)
     },
     changeCode(code: string, codeWith: string) {
       this.code = codeWith
@@ -272,6 +319,7 @@ export default {
         })
       }
       this.all_items = this.allItems
+      this.loadFilters()
       this.finishLoading()
     },
     plusUy(array: string[]) {
