@@ -3,6 +3,7 @@
     <div class="my-4">
       <h1 style="display: none"></h1>
       <client-only>
+        <v-data-table :items="set"> </v-data-table>
         <v-data-table
           ref="dataTable"
           color="#f5f5f5"
@@ -47,6 +48,7 @@
                     :items="allSets"
                     dark
                     item-text="item_name"
+                    item-value="url_name"
                   ></v-autocomplete>
                   <v-btn type="submit" color="primary"> Search </v-btn>
                   <v-btn color="primary" @click.prevent="reset">
@@ -196,9 +198,9 @@ export default {
       const search = this.search
       if (search) {
         const data = await this.$axios
-          .post('https://warframe.digitalshopuy.com/set', search)
+          .get('https://warframe.digitalshopuy.com/set/' + search)
           .then((res) => res.data)
-        this.allItems = data.items
+        this.all_items = data.items
       }
     },
     changeCode(code: string, codeWith: string) {
