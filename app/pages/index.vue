@@ -107,6 +107,9 @@
               </v-chip>
             </v-chip-group>
           </template>
+          <template #item.drops="{ item }">
+            <a target="_blank" :href="getLink(item.item_name)"> Drops </a>
+          </template>
         </v-data-table>
       </client-only>
       <div class="px-0 pt-3">
@@ -206,6 +209,18 @@ export default {
     this.setScrollBar()
   },
   methods: {
+    getLink(name: string) {
+      let s = '^' + name
+      if (s.includes('(')) {
+        s = s.split('(')[0].trim()
+      }
+      if (s.includes('Set')) {
+        s = s.replace('Set', '').trim()
+      }
+      const encoded = encodeURIComponent(s)
+      const url = `https://drops.warframestat.us/#/search/${encoded}/items/regex`
+      return url
+    },
     reset() {
       this.selection = ''
       this.search = ''
@@ -447,6 +462,10 @@ export default {
         {
           text: 'Tags',
           value: 'tags',
+        },
+        {
+          text: 'Drops',
+          value: 'drops',
         },
       ]
       return toReturn

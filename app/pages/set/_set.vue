@@ -94,6 +94,9 @@
                     </v-chip>
                   </v-chip-group>
                 </template>
+                <template #item.drops="{ item }">
+                  <a target="_blank" :href="getLink(item.item_name)"> Drops </a>
+                </template>
               </v-data-table>
             </div>
             <v-divider></v-divider>
@@ -121,6 +124,9 @@
                 {{ tag }}
               </v-chip>
             </v-chip-group>
+          </template>
+          <template #item.drops="{ item }">
+            <a target="_blank" :href="getLink(item.item_name)"> Drops </a>
           </template>
         </v-data-table>
       </client-only>
@@ -441,6 +447,10 @@ export default {
           text: 'Tags',
           value: 'tags',
         },
+        {
+          text: 'Drops',
+          value: 'drops',
+        },
       ]
       return toReturn
     },
@@ -495,6 +505,18 @@ export default {
         return 'grey darken-3'
       }
       return ''
+    },
+    getLink(name: string) {
+      let s = '^' + name
+      if (s.includes('(')) {
+        s = s.split('(')[0].trim()
+      }
+      if (s.includes('Set')) {
+        s = s.replace('Set', '').trim()
+      }
+      const encoded = encodeURIComponent(s)
+      const url = `https://drops.warframestat.us/#/search/${encoded}/items/regex`
+      return url
     },
     finishLoading() {
       this.$nextTick(() => {
