@@ -108,6 +108,7 @@ interface Payload {
 interface Item {
   id: string;
   items_in_set: Itemsinset[];
+  priceUpdate?: Date;
 }
 
 interface Itemsinset {

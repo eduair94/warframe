@@ -41,9 +41,9 @@ class Warframe {
         return { set: [this.processItem(res), this.processItem(itemByParts) ], items: results.map(el=> this.processItem(el)) }
     }
     processItem(item:Item) {
-        const { item_name, thumb, market, url_name, items_in_set } = item;
+        const { item_name, thumb, market, url_name, items_in_set, priceUpdate } = item;
         const { tags } = items_in_set[0];
-        return {item_name, thumb, market: {...market, diff: market.sell - market.buy}, url_name, tags, set: items_in_set.length > 1}
+        return {item_name, thumb, market: {...market, diff: market.sell - market.buy}, url_name, tags, set: items_in_set.length > 1, priceUpdate}
     }
     async getItemsDatabaseServer() {
         const entries = await this.db.allEntries({});
@@ -104,19 +104,30 @@ class Warframe {
         const sellOrders = orders.filter(order => order.order_type === 'sell' && order.user.status === 'ingame' && (max_rank === undefined || order.mod_rank === max_rank));
         // Find the lowest buy order by the property platinum
         let buyPlat = 0;
+        let buyAvg = 0;
         if (buyOrders.length) {
-            const lowestBuyOrder = buyOrders.reduce((prev, curr) => prev.platinum > curr.platinum ? prev : curr);   
-            buyPlat = lowestBuyOrder.platinum;
+            // sort orders by platinum ascending
+            const lowestBuyOrders = buyOrders.sort((prev, curr) => prev.platinum - curr.platinum);
+            buyPlat = lowestBuyOrders[0].platinum;
+
+            const max = lowestBuyOrders.length > 5 ? 5 : lowestBuyOrders.length;
+            buyAvg = lowestBuyOrders.slice(0, max).reduce((prev, curr) => prev + curr.platinum, 0) / max;
         }
         // Same for sell Orders.
         let sellPlat = 0;
+        let sellAvg = 0;
         if (sellOrders.length) {
-            const lowestSellOrder = sellOrders.reduce((prev, curr) => prev.platinum < curr.platinum ? prev : curr); 
-            sellPlat = lowestSellOrder.platinum;
+            const lowestSellOrders = sellOrders.sort((prev, curr) => prev.platinum - curr.platinum);
+            sellPlat = lowestSellOrders[0].platinum;
+            // Get average platinum first 5 items array lowestSellOrders
+            const max = lowestSellOrders.length > 5 ? 5 : lowestSellOrders.length;
+            sellAvg = lowestSellOrders.slice(0, max).reduce((prev, curr) => prev + curr.platinum, 0) / max;
         }
         return {
             buy: buyPlat,
-            sell: sellPlat
+            sell: sellPlat,
+            buyAvg,
+            sellAvg
         }
     }
 }
