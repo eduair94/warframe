@@ -74,6 +74,13 @@
                     <v-icon>mdi-restore</v-icon>
                   </v-btn>
                 </form>
+                <div>
+                  <v-checkbox
+                    v-model="avgPrice"
+                    dark
+                    label="Average Prices (5 lower prices)"
+                  ></v-checkbox>
+                </div>
               </div>
               <v-data-footer
                 :pagination="pagination"
@@ -90,16 +97,38 @@
                 width="50px"
                 :src="'https://warframe.market/static/assets/' + item.thumb"
               />
-              <a
-                class="no_link"
-                target="_blank"
-                :href="'https://warframe.market/items/' + item.url_name"
-              >
-                {{ item.item_name }}</a
-              >
+              <div>
+                <a
+                  class="no_link"
+                  target="_blank"
+                  :href="'https://warframe.market/items/' + item.url_name"
+                >
+                  {{ item.item_name }}</a
+                >
+                <br />
+                <v-btn
+                  v-if="item.set && item.item_name.includes(' Set')"
+                  small
+                  target="_blank"
+                  link
+                  color="primary"
+                  class="mt-1"
+                  :to="'/set/' + item.url_name"
+                  >Set vs Parts</v-btn
+                >
+              </div>
             </div>
           </template>
           <template #item.thumb="{ item }"> </template>
+          <template #item.market.buyAvg="{ item }">
+            {{ fixPrice(item.market.buyAvg) }}
+          </template>
+          <template #item.market.sellAvg="{ item }">
+            {{ fixPrice(item.market.sellAvg) }}
+          </template>
+          <template #item.priceUpdate="{ item }">
+            {{ fixDate(item.priceUpdate) }}
+          </template>
           <template #item.tags="{ item }">
             <v-chip-group selected-class="text-primary" column>
               <v-chip v-for="(tag, index) in item.tags" :key="index">
@@ -170,6 +199,7 @@
 
 <script lang="ts">
 import { mapGetters, mapActions } from 'vuex'
+import moment from 'moment'
 import { notFound } from '../services/not_found'
 export default {
   name: 'HomePage',
@@ -179,6 +209,7 @@ export default {
       all_items: [],
       min_volume: 0,
       search: '',
+      avgPrice: false,
       selection: 'All',
       hasScroll: false,
       scrollWidth: 0,
@@ -209,6 +240,13 @@ export default {
     this.setScrollBar()
   },
   methods: {
+    fixPrice(price: number) {
+      if (!price) return 0
+      return Math.round(price * 100) / 100
+    },
+    fixDate(date) {
+      return moment(date).fromNow()
+    },
     getLink(name: string) {
       let s = '^' + name
       if (s.includes('(')) {
@@ -433,7 +471,7 @@ export default {
       return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase()
     },
     getHeaders() {
-      const toReturn = [
+      let toReturn = [
         {
           text: 'Name',
           value: 'item_name',
@@ -464,10 +502,26 @@ export default {
           value: 'tags',
         },
         {
+          text: 'Updated',
+          value: 'priceUpdate',
+        },
+        {
           text: 'Drops',
           value: 'drops',
         },
       ]
+      if (this.avgPrice) {
+        toReturn[1] = {
+          text: 'Buy',
+          value: 'market.buyAvg',
+          width: 'auto',
+        }
+        toReturn[2] = {
+          text: 'Sell',
+          value: 'market.sellAvg',
+          width: 'auto',
+        }
+      }
       return toReturn
     },
     async install_app() {

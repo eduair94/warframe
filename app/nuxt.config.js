@@ -91,7 +91,6 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    '@nuxtjs/sentry',
     'nuxt-leaflet',
     '@nuxtjs/i18n',
     '@nuxtjs/sitemap',
@@ -206,6 +205,9 @@ export default {
           warning: colors.amber.base,
           error: colors.deepOrange.accent4,
           success: colors.green.accent3
+        },
+        light: {
+          primary: '#1f1f2f'
         }
       }
     }
