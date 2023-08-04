@@ -4,10 +4,11 @@ import { ProxyAgent } from "proxy-agent";
 import { SocksProxyAgent } from "socks-proxy-agent";
 import proxies from "./Express/Proxies";
 import { sleep } from "./Express/config";
+import { Auction } from "./auction.interface";
 import { MongooseServer, Schema } from "./database";
 import { Item, OrdersWarframe, StatisticsWarframe, WarframeItemSingle, WarframeItems } from "./interface";
 import privateProxy from "./proxy";
-import { Riven } from "./riven.interface";
+import { RivenItems } from "./riven.items.interface";
 
 class Warframe {
     db: MongooseServer;
@@ -38,22 +39,67 @@ class Warframe {
     async saveItem(id: string, item:any) {
         await this.db.getAnUpdateEntry({id}, item)
     }
-    async saveRivens() {
-
+    async getSaveRivens() {
+        const url = 'https://api.warframe.market/v1/riven/items';
+        const data:RivenItems = await this.axios.get(url).then(res => res.data);
+        const results = data.payload.items;
+        console.log("Rivens", results.length);
+        await this.dbRivens.saveEntries(results);
+    }
+    async getAllRivens(): Promise<RivenItems['payload']['items']> {
+        return this.dbRivens.allEntries({});
+    }
+    async getSaveOffers() {
+        const all_rivens = await this.getAllRivens();
+        let idx = 1;
+        for (let riven of all_rivens) {
+            console.log("Loading", idx, all_rivens.length, riven.item_name);
+            const url_name = riven.url_name;
+            const re_rolls_min = 50;
+            const url = `https://api.warframe.market/v1/auctions/search?type=riven&weapon_url_name=${url_name}&polarity=any&re_rolls_min=${re_rolls_min}&buyout_policy=direct&sort_by=price_asc`;
+            console.log(url);
+            const result: Auction = await this.axios.get(url).then(res => res.data);
+            const items = result.payload.auctions.filter(el => el.buyout_price).map((el) => {
+                const { buyout_price, item } = el;	
+                const {mod_rank, re_rolls, mastery_level} = item;
+                const endo = this.endoRiven(mastery_level, mod_rank, re_rolls);
+                const endoPerPlat = Math.round(endo / buyout_price * 100) / 100;
+                (el as any).endo = endo;
+                (el as any).endoPerPlat = endoPerPlat;
+                return el;
+            });
+            console.log("Total items", items.length);
+            await this.dbRivens.getAnUpdateEntry({ url_name }, { items });
+            idx++;
+        }
     }
     async rivenMods() {
-        const url = 'https://api.warframe.market/v1/auctions?type=riven';
-        const res: Riven = await this.axios.get(url).then(res => res.data);
-        const items = res.payload.auctions.filter(el=> el.buyout_price).map((el:any) => {
-            const { buyout_price, item } = el;	
-            const {mod_rank, re_rolls, mastery_level} = item;
-            const endo = this.endoRiven(mastery_level, mod_rank, re_rolls);
-            const endoPerPlat = Math.round(endo / buyout_price * 100) / 100;
-            el.endo = endo;
-            el.endoPerPlat = endoPerPlat;
-            return el;
-        });
-        return items;
+        const aggregationPipeline = [
+            {
+                $unwind: '$items'
+            },
+            {
+                $sort: {
+                    'items.endoPerPlat': -1
+                }
+            },
+            {
+                $limit: 10
+            }
+        ];
+
+        // Execute the aggregation pipeline
+        const model = this.dbRivens.getModel();
+        return new Promise(resolve=>{
+            model.aggregate(aggregationPipeline)
+            .exec((err, result) => {
+                if (err) {
+                    console.error('Error executing aggregation:', err);
+                } else {
+                    resolve(result);
+                }
+            });
+        });    
     }
     endoRiven(mastery_level:number, mod_rank:number, re_rolls:number) {
         return 100 * (mastery_level - 8) + 22.5 * Math.pow(mod_rank, 2) + 200 * re_rolls;

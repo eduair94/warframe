@@ -4,10 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "sync_auctions": "ts-node sync_auctions.ts",
+    "sync_rivens": "ts-node sync_rivens.ts",
     "build": "tsc -p tsconfig.production.json",
     "sync_items": "ts-node sync_items.ts",
     "sync_prices": "ts-node sync_prices.ts",
-    "dev": "ts-node index.ts",
+    "dev": "ts-node server.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

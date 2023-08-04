@@ -18,5 +18,11 @@ module.exports = {
             script: "dist/server.js",
             log_date_format: "YYYY-MM-DD HH:mm Z",
         },
+       {
+            name: "warframe-sync-auctions",
+            autorestart: true,
+            script: "dist/sync_auctions.js",
+            log_date_format: "YYYY-MM-DD HH:mm Z",
+        },
     ],
 };
