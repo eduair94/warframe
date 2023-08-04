@@ -7,15 +7,23 @@ import { sleep } from "./Express/config";
 import { MongooseServer, Schema } from "./database";
 import { Item, OrdersWarframe, StatisticsWarframe, WarframeItemSingle, WarframeItems } from "./interface";
 import privateProxy from "./proxy";
+import { Riven } from "./riven.interface";
 
 class Warframe {
     db: MongooseServer;
+    dbRivens: MongooseServer;
     axios: AxiosInstance;
     constructor() {
         this.db = MongooseServer.getInstance('warframe-items', new Schema({
           id: { type: String, unique: true },
         },
         { strict: false }))
+
+        this.dbRivens = MongooseServer.getInstance('warframe-rivens', new Schema({
+          id: { type: String, unique: true },
+        },
+        { strict: false }))
+
         const proxy = new SocksProxyAgent(privateProxy);
         this.axios = axios.create({
             httpAgent: proxy,
@@ -29,6 +37,26 @@ class Warframe {
     }
     async saveItem(id: string, item:any) {
         await this.db.getAnUpdateEntry({id}, item)
+    }
+    async saveRivens() {
+
+    },
+    async rivenMods() {
+        const url = 'https://api.warframe.market/v1/auctions?type=riven';
+        const res: Riven = await this.axios.get(url).then(res => res.data);
+        const items = res.payload.auctions.filter(el=> el.buyout_price).map(el => {
+            const { buyout_price, item } = el;	
+            const {mod_rank, re_rolls, mastery_level} = item;
+            const endo = this.platinumRiven(mastery_level, mod_rank, re_rolls);
+            const endoPerPlat = Math.round(endo / buyout_price * 100) / 100;
+            el.endo = endo;
+            el.endoPerPlat = endoPerPlat;
+            return el;
+        });
+        return items;
+    }
+    endoRiven(mastery_level:number, mod_rank:number, re_rolls:number) {
+        return 100 * (mastery_level - 8) + 22.5 * Math.pow(mod_rank, 2) + 200 * re_rolls;
     }
     async getSet(url_name: string) {
         const res:any = await this.getSingleItemDB({url_name} as any);

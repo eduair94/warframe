@@ -16,6 +16,9 @@ async function main() {
         const results = await m.getSet(url_name);
         return results;
     });
+    server.getJson('rivens', async (req: Request): Promise<any> => {
+        return m.rivenMods();
+    });    
 }
 
 main();
