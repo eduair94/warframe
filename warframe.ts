@@ -40,7 +40,7 @@ class Warframe {
     }
     async saveRivens() {
 
-    },
+    }
     async rivenMods() {
         const url = 'https://api.warframe.market/v1/auctions?type=riven';
         const res: Riven = await this.axios.get(url).then(res => res.data);
