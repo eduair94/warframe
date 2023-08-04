@@ -4,6 +4,35 @@
       <h1 style="display: none"></h1>
       <client-only>
         <v-data-table
+          :hide-default-footer="true"
+          :headers="getHeadersRivens()"
+          :items="rivens"
+        >
+          <template #top>
+            <div style="background: #1f1f2f" class="pa-3 white--text">
+              Find the best endo riven deals
+            </div>
+          </template>
+          <template #item.item_name="{ item }">
+            <div class="d-flex justify-start align-center py-3">
+              <img
+                class="mr-3"
+                width="50px"
+                :src="'https://warframe.market/static/assets/' + item.thumb"
+              />
+              <div>
+                <a
+                  class="no_link"
+                  target="_blank"
+                  :href="'https://warframe.market/auction/' + item.items.id"
+                >
+                  {{ item.item_name }} {{ item.items.item.name }}</a
+                >
+              </div>
+            </div>
+          </template>
+        </v-data-table>
+        <v-data-table
           ref="dataTable"
           color="#f5f5f5"
           sort-by="market.endoPlatSell"
@@ -15,6 +44,7 @@
             'items-per-page-options': [10, 20, 30, 40, 50],
           }"
           :items-per-page="50"
+          :hide-default-footer="true"
           class="elevation-1 money_table"
           @update:page="$vuetify.goTo($refs.dataTable)"
         >
@@ -44,12 +74,6 @@
                   ></v-checkbox>
                 </div>
               </div>
-              <v-data-footer
-                :pagination="pagination"
-                :options="options"
-                items-per-page-text="$vuetify.dataTable.itemsPerPageText"
-                @update:options="updateOptions"
-              />
             </div>
           </template>
           <template #item.item_name="{ item }">
@@ -65,8 +89,8 @@
                   target="_blank"
                   :href="'https://warframe.market/items/' + item.url_name"
                 >
-                  {{ item.item_name }}</a
-                >
+                  {{ item.item_name }}
+                </a>
                 <br />
                 <v-btn
                   v-if="item.set && item.item_name.includes(' Set')"
@@ -180,6 +204,8 @@ export default {
         vaya: 1800,
         zambuka: 2600,
       },
+      maxEndoPerPlat: 0,
+      rivens: [],
     }
   },
   head() {
@@ -207,6 +233,15 @@ export default {
     this.setScrollBar()
   },
   methods: {
+    async getRivens() {
+      const rivens = await this.$axios
+        .get('https://warframe.digitalshopuy.com/rivens')
+        .then((res) => res.data)
+      // this.rivens = rivens.filter(
+      //   (el) => el.items.endoPerPlat > this.maxEndoPerPlat
+      // )
+      this.rivens = rivens
+    },
     loadItems() {
       this.all_items = this.allItems
         .filter((el) => el.item_name.includes('Sculpture'))
@@ -225,6 +260,11 @@ export default {
             },
           }
         })
+      // Find max endoPlatBuy
+      this.maxEndoPerPlat = this.all_items.reduce((prev, current) =>
+        prev.market.endoPlatSell > current.market.endoPlatSell ? prev : current
+      ).market.endoPlatSell
+      this.getRivens()
     },
     fixPrice(price: number) {
       if (!price) return 0
@@ -458,6 +498,32 @@ export default {
         str = tr[locale]
       }
       return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase()
+    },
+    getHeadersRivens() {
+      return [
+        {
+          text: 'Riven Weapon',
+          value: 'item_name',
+        },
+        {
+          text: 'Re rolls',
+          value: 'items.item.re_rolls',
+        },
+        {
+          text: 'Buy',
+          value: 'items.buyout_price',
+        },
+        {
+          text: 'Endo',
+          value: 'items.endo',
+          width: 'auto',
+        },
+        {
+          text: 'Endo/Plat Sell',
+          value: 'items.endoPerPlat',
+          width: 'auto',
+        },
+      ]
     },
     getHeaders() {
       let toReturn = [
