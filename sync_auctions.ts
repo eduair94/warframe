@@ -7,6 +7,7 @@ async function main() {
     console.time('warframe');
     await m.getSaveOffers();
     console.timeEnd('warframe');
+    process.exit(1);
 }
 
 main();

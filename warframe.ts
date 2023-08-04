@@ -54,7 +54,6 @@ class Warframe {
             const url_name = riven.url_name;
             const re_rolls_min = 50;
             const url = `https://api.warframe.market/v1/auctions/search?type=riven&weapon_url_name=${url_name}&polarity=any&re_rolls_min=${re_rolls_min}&buyout_policy=direct&sort_by=price_asc`;
-            console.log(url);
             const proxy: any = proxies.getProxy();
             const httpAgent = new ProxyAgent(proxy);
             const result: Auction = await this.axios.get(url, {
@@ -70,10 +69,8 @@ class Warframe {
                 (el as any).endoPerPlat = endoPerPlat;
                 return el;
             });
-            console.log("Total items", items.length);
             await this.dbRivens.getAnUpdateEntry({ url_name }, { items });    
         } catch (e) {
-            console.log("Retry");
             return this.syncSingleRiven(riven);
         }
     }
