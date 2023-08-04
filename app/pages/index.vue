@@ -284,7 +284,9 @@ export default {
             (el.set === true &&
               el.item_name.includes(' Set') &&
               el.tags.includes('weapon')) ||
-            (el.tags.includes('weapon') && el.tags.length === 2)
+            (el.tags.includes('weapon') &&
+              el.tags.length === 2 &&
+              !el.tags.includes('component'))
           break
         case 'Sentinel':
           val = el.tags.includes('sentinel') && el.item_name.includes(' Set')
