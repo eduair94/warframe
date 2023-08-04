@@ -107,11 +107,11 @@ class Warframe {
         let buyAvg = 0;
         if (buyOrders.length) {
             // sort orders by platinum ascending
-            const lowestBuyOrders = buyOrders.sort((prev, curr) => prev.platinum - curr.platinum);
-            buyPlat = lowestBuyOrders[0].platinum;
+            const highestBuyOrders = buyOrders.sort((prev, curr) =>  curr.platinum - prev.platinum);
+            buyPlat = highestBuyOrders[0].platinum;
 
-            const max = lowestBuyOrders.length > 5 ? 5 : lowestBuyOrders.length;
-            buyAvg = lowestBuyOrders.slice(0, max).reduce((prev, curr) => prev + curr.platinum, 0) / max;
+            const max = highestBuyOrders.length > 5 ? 5 : highestBuyOrders.length;
+            buyAvg = highestBuyOrders.slice(0, max).reduce((prev, curr) => prev + curr.platinum, 0) / max;
         }
         // Same for sell Orders.
         let sellPlat = 0;
