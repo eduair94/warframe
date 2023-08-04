@@ -49,16 +49,18 @@ class Warframe {
     async getAllRivens(): Promise<RivenItems['payload']['items']> {
         return this.dbRivens.allEntries({});
     }
-    async getSaveOffers() {
-        const all_rivens = await this.getAllRivens();
-        let idx = 1;
-        for (let riven of all_rivens) {
-            console.log("Loading", idx, all_rivens.length, riven.item_name);
+    async syncSingleRiven(riven: RivenItems['payload']['items'][0]) {
+        try {
             const url_name = riven.url_name;
             const re_rolls_min = 50;
             const url = `https://api.warframe.market/v1/auctions/search?type=riven&weapon_url_name=${url_name}&polarity=any&re_rolls_min=${re_rolls_min}&buyout_policy=direct&sort_by=price_asc`;
             console.log(url);
-            const result: Auction = await this.axios.get(url).then(res => res.data);
+            const proxy: any = proxies.getProxy();
+            const httpAgent = new ProxyAgent(proxy);
+            const result: Auction = await this.axios.get(url, {
+                httpAgent: httpAgent,
+                httpsAgent: httpAgent
+            }).then(res => res.data);
             const items = result.payload.auctions.filter(el => el.buyout_price).map((el) => {
                 const { buyout_price, item } = el;	
                 const {mod_rank, re_rolls, mastery_level} = item;
@@ -69,7 +71,18 @@ class Warframe {
                 return el;
             });
             console.log("Total items", items.length);
-            await this.dbRivens.getAnUpdateEntry({ url_name }, { items });
+            await this.dbRivens.getAnUpdateEntry({ url_name }, { items });    
+        } catch (e) {
+            console.log("Retry");
+            return this.syncSingleRiven(riven);
+        }
+    }
+    async getSaveOffers() {
+        const all_rivens = await this.getAllRivens();
+        let idx = 1;
+        for (let riven of all_rivens) {
+            console.log("Loading", idx, all_rivens.length, riven.item_name);
+            await this.syncSingleRiven(riven);
             idx++;
         }
     }
