@@ -44,10 +44,10 @@ class Warframe {
     async rivenMods() {
         const url = 'https://api.warframe.market/v1/auctions?type=riven';
         const res: Riven = await this.axios.get(url).then(res => res.data);
-        const items = res.payload.auctions.filter(el=> el.buyout_price).map(el => {
+        const items = res.payload.auctions.filter(el=> el.buyout_price).map((el:any) => {
             const { buyout_price, item } = el;	
             const {mod_rank, re_rolls, mastery_level} = item;
-            const endo = this.platinumRiven(mastery_level, mod_rank, re_rolls);
+            const endo = this.endoRiven(mastery_level, mod_rank, re_rolls);
             const endoPerPlat = Math.round(endo / buyout_price * 100) / 100;
             el.endo = endo;
             el.endoPerPlat = endoPerPlat;
