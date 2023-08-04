@@ -6,7 +6,7 @@
         <v-data-table
           ref="dataTable"
           color="#f5f5f5"
-          sort-by="market.volume"
+          sort-by="market.endoPlatSell"
           sort-desc
           :item-class="row_classes"
           :headers="getHeaders()"
@@ -35,50 +35,12 @@
             </div>
             <div>
               <div style="background: #1f1f2f" class="pa-3 white--text">
-                <form
-                  id="form_warframe"
-                  class="d-flex align-center flex-wrap"
-                  @submit.prevent="filter"
-                >
-                  <v-text-field
-                    v-model="min_volume"
-                    dark
-                    type="number"
-                    width="200px"
-                    label="Min Volume"
-                  ></v-text-field>
-                  <v-select
-                    v-model="selection"
-                    label="Select"
-                    dark
-                    :items="[
-                      'All',
-                      'Warframe',
-                      'Arcane',
-                      'Weapon',
-                      'Sentinel',
-                      'Imprint',
-                      'Mod',
-                      'Relic',
-                    ]"
-                  ></v-select>
-                  <v-combobox
-                    v-model="search"
-                    label="Search"
-                    width="200px"
-                    dark
-                    :items="allItems.map((el) => el.item_name)"
-                  ></v-combobox>
-                  <v-btn type="submit" color="primary"> Search </v-btn>
-                  <v-btn color="primary" @click.prevent="reset">
-                    <v-icon>mdi-restore</v-icon>
-                  </v-btn>
-                </form>
                 <div>
                   <v-checkbox
                     v-model="avgPrice"
                     dark
                     label="Average Prices (5 lowest prices)"
+                    @change="loadItems"
                   ></v-checkbox>
                 </div>
               </div>
@@ -128,13 +90,6 @@
           </template>
           <template #item.priceUpdate="{ item }">
             {{ fixDate(item.priceUpdate) }}
-          </template>
-          <template #item.tags="{ item }">
-            <v-chip-group selected-class="text-primary" column>
-              <v-chip v-for="(tag, index) in item.tags" :key="index">
-                {{ tag }}
-              </v-chip>
-            </v-chip-group>
           </template>
           <template #item.drops="{ item }">
             <a target="_blank" :href="getLink(item.item_name)"> Drops </a>
@@ -213,6 +168,18 @@ export default {
       selection: 'All',
       hasScroll: false,
       scrollWidth: 0,
+      sculptures: {
+        anasa: 3450,
+        ayr: 1425,
+        hemakara: 2600,
+        kitha: 3000,
+        orta: 2700,
+        piv: 1725,
+        sah: 1500,
+        valana: 1575,
+        vaya: 1800,
+        zambuka: 2600,
+      },
     }
   },
   head() {
@@ -240,6 +207,25 @@ export default {
     this.setScrollBar()
   },
   methods: {
+    loadItems() {
+      this.all_items = this.allItems
+        .filter((el) => el.item_name.includes('Sculpture'))
+        .map((el) => {
+          const name = el.url_name.split(/_/g)[1]
+          const endo = this.sculptures[name]
+          const buy = this.avgPrice ? el.market.buyAvg : el.market.buy
+          const sell = this.avgPrice ? el.market.sellAvg : el.market.sell
+          return {
+            ...el,
+            market: {
+              ...el.market,
+              endo,
+              endoPlatBuy: buy ? Math.round((endo / buy) * 100) / 100 : '-',
+              endoPlatSell: sell ? Math.round((endo / sell) * 100) / 100 : '-',
+            },
+          }
+        })
+    },
     fixPrice(price: number) {
       if (!price) return 0
       return Math.round(price * 100) / 100
@@ -382,7 +368,7 @@ export default {
           }
         })
       }
-      this.all_items = this.allItems
+      this.loadItems()
       this.finishLoading()
     },
     plusUy(array: string[]) {
@@ -491,18 +477,19 @@ export default {
           width: 'auto',
         },
         {
-          text: 'Diff',
-          value: 'market.diff',
+          text: 'Endo',
+          value: 'market.endo',
           width: 'auto',
         },
         {
-          text: 'Volume (Last 48hrs)',
-          value: 'market.volume',
+          text: 'Endo/Plat Buy',
+          value: 'market.endoPlatBuy',
           width: 'auto',
         },
         {
-          text: 'Tags',
-          value: 'tags',
+          text: 'Endo/Plat Sell',
+          value: 'market.endoPlatSell',
+          width: 'auto',
         },
         {
           text: 'Updated',
