@@ -86,13 +86,12 @@ class Warframe {
     async rivenMods() {
         const aggregationPipeline = [
             {
-                $match: {
-                    'owner.status': 'ingame'
-                }
-            },
-    
-            {
                 $unwind: '$items'
+            },
+            {
+                $match: {
+                    'items.owner.status': 'ingame'
+                }
             },
             {
                 $sort: {
