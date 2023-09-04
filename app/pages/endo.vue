@@ -526,7 +526,7 @@ export default {
       ]
     },
     getHeaders() {
-      let toReturn = [
+      let toReturn: any = [
         {
           text: 'Name',
           value: 'item_name',

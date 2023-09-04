@@ -18,7 +18,13 @@ async function main() {
     });
     server.getJson('rivens', async (req: Request): Promise<any> => {
         return m.rivenMods();
-    });    
+    });   
+    server.getJson('relics', async (req: Request): Promise<any> => {
+        return m.relics();
+    });
+    server.getJson('build_relics', async (req: Request): Promise<any> => {
+         return m.buildRelics();
+    }); 
 }
 
 main();

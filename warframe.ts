@@ -14,6 +14,7 @@ class Warframe {
     db: MongooseServer;
     dbRivens: MongooseServer;
     axios: AxiosInstance;
+    dbRelics: MongooseServer;
     constructor() {
         this.db = MongooseServer.getInstance('warframe-items', new Schema({
           id: { type: String, unique: true },
@@ -22,6 +23,11 @@ class Warframe {
 
         this.dbRivens = MongooseServer.getInstance('warframe-rivens', new Schema({
           id: { type: String, unique: true },
+        },
+        { strict: false }))
+        
+        this.dbRelics = MongooseServer.getInstance('warframe-relics', new Schema({
+          relicName: { type: String, unique: true },
         },
         { strict: false }))
 
@@ -35,6 +41,19 @@ class Warframe {
                 console.log("Retry", retryCount);
             }
          });
+    }
+    async relics() {
+        const r = await this.dbRelics.allEntries({});
+        return r;
+    }
+    async buildRelics() {
+        const url = 'https://drops.warframestat.us/data/relics.json';
+        const res = await axios.get(url).then(res => res.data);
+        const relics = res.relics.filter(el => el.state === 'Intact');
+        for (let relic of relics) {
+            await this.dbRelics.getAnUpdateEntry({relicName: relic.relicName}, relic)      
+        }
+        return { success: true, relics: relics.length };
     }
     async saveItem(id: string, item:any) {
         await this.db.getAnUpdateEntry({id}, item)
