@@ -116,6 +116,16 @@
                   :to="'/set/' + item.url_name"
                   >Set vs Parts</v-btn
                 >
+                <v-btn
+                  v-if="item.tags.includes('relic')"
+                  small
+                  target="_blank"
+                  link
+                  color="primary"
+                  class="mt-1"
+                  :to="'/relic/' + item.url_name"
+                  >Relic calculator</v-btn
+                >
               </div>
             </div>
           </template>
