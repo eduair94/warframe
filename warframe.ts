@@ -139,6 +139,22 @@ class Warframe {
     endoRiven(mastery_level:number, mod_rank:number, re_rolls:number) {
         return 100 * (mastery_level - 8) + 22.5 * Math.pow(mod_rank, 2) + 200 * re_rolls;
     }
+    async getRelic(url_name: string) {
+        const res: any = await this.getSingleItemDB({ url_name } as any);
+        const name = url_name.split(/_/g)[1].toUpperCase();
+        const relic:any = await this.dbRelics.findEntry({relicName: name});
+        const items = relic.rewards.map((el:any) => el.itemName);
+        let results = await this.db.allEntries({ item_name: { $in: items } });
+        results = results.map(el => {
+            el.item_in_set = res.items_in_set.find((x:any) => x.url_name === el.url_name)
+            return el;
+        })
+        const itemByParts = JSON.parse(JSON.stringify(res));
+        itemByParts.item_name = `${res.item_name} by Parts`;
+        itemByParts.market.buy = results.reduce((prev: any, curr: any) => prev + curr.market.buy * curr.item_in_set.quantity_for_set, 0);
+        itemByParts.market.sell = results.reduce((prev: any, curr: any) => prev + curr.market.sell * curr.item_in_set.quantity_for_set, 0);
+        return { set: [this.processItem(res), this.processItem(itemByParts) ], items: results.map(el=> this.processItem(el)) }
+    }
     async getSet(url_name: string) {
         const res:any = await this.getSingleItemDB({url_name} as any);
         const items = res.items_in_set.filter((el:any)=> el.url_name !== url_name).map(el => el.url_name);

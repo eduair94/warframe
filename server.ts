@@ -25,6 +25,11 @@ async function main() {
     server.getJson('build_relics', async (req: Request): Promise<any> => {
          return m.buildRelics();
     }); 
+    server.getJson('relic/:url_name', async (req: Request): Promise<any> => {
+        const url_name = req.params.url_name;
+        const results = await m.getRelic(url_name);
+        return results;
+    });
 }
 
 main();
