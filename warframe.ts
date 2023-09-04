@@ -52,7 +52,7 @@ class Warframe {
         const relics = res.relics.filter(el => el.state === 'Intact');
         for (let relic of relics) {
             delete relic._id;
-            await this.dbRelics.getAnUpdateEntry({relicName: relic.relicName}, relic)      
+            await this.dbRelics.getAnUpdateEntry({relicName: (relic.tier as string).toLowerCase() + ' ' + relic.relicName}, relic)      
         }
         return { success: true, relics: relics.length };
     }
@@ -141,8 +141,9 @@ class Warframe {
     }
     async getRelic(url_name: string) {
         const res: any = await this.getSingleItemDB({ url_name } as any);
+        const tier = url_name.split(/_/g)[0]
         const name = url_name.split(/_/g)[1].toUpperCase();
-        const relic:any = await this.dbRelics.findEntry({relicName: name});
+        const relic:any = await this.dbRelics.findEntry({relicName: tier + ' '  + name});
         const items = relic.rewards.map((el:any) => el.itemName);
         let results = await this.db.allEntries({ item_name: { $in: items } });
         const itemByParts = JSON.parse(JSON.stringify(res));
