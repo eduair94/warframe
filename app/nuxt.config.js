@@ -138,7 +138,7 @@ export default {
         name: 'Português'
       }
     ],
-    defaultLocale: 'es',
+    defaultLocale: 'en',
     detectBrowserLanguage: {
       useCookie: true,
       cookieKey: 'i18n_redirected',
