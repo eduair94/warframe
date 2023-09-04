@@ -51,6 +51,7 @@ class Warframe {
         const res = await axios.get(url).then(res => res.data);
         const relics = res.relics.filter(el => el.state === 'Intact');
         for (let relic of relics) {
+            delete relic._id;
             await this.dbRelics.getAnUpdateEntry({relicName: relic.relicName}, relic)      
         }
         return { success: true, relics: relics.length };
