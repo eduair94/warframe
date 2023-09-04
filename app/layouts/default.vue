@@ -23,6 +23,7 @@
         <div id="menu">
           <v-btn color="primary" link to="/">Home</v-btn>
           <v-btn color="primary" link to="/set">Set Price Calculator</v-btn>
+          <v-btn color="primary" link to="/relic">Relic Price Calculator</v-btn>
           <v-btn color="primary" link to="/endo">Endo / Plat</v-btn>
         </div>
         <Nuxt />

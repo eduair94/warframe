@@ -32,6 +32,9 @@ export const getters = {
   all_items(state: any): any {
     return state.items
   },
+  all_relics(state: any): any {
+    return state.items.filter(el => el.tags.includes('relic'));
+  },
   all_sets(state: any): any {
     return state.items.filter(el=>el.item_name.includes(' Set'))
   },

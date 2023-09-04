@@ -149,7 +149,7 @@ class Warframe {
         itemByParts.item_name = `${res.item_name} by Parts`;
         itemByParts.market.buy = 0;
         itemByParts.market.sell = 0;
-        return { set: [this.processItem(res), this.processItem(itemByParts) ], items: results.map(el=> this.processItem(el)) }
+        return { set: [this.processItem(res)], items: results.map(el=> this.processItem(el)) }
     }
     async getSet(url_name: string) {
         const res:any = await this.getSingleItemDB({url_name} as any);
