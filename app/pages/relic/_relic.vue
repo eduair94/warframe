@@ -253,7 +253,7 @@ export default {
           this.set = data.set
           this.priceRelic = this.set[0].market.sell
             ? this.set[0].market.sell
-            : this.set[0].market.buy[0]
+            : this.set[0].market.buy
           this.maxEarn = this.all_items.reduce((a, b) => {
             return a.market.sell > b.market.sell ? a : b
           }).market.sell
