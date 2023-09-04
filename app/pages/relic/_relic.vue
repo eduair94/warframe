@@ -251,7 +251,6 @@ export default {
             .then((res) => res.data)
           this.all_items = data.items
           this.set = data.set
-          this.save = this.set[0].market.sell - this.set[1].market.sell
           this.priceRelic = this.set[0].market.sell
             ? this.set[0].market.sell
             : this.set[0].market.buy[0]
