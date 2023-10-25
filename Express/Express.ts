@@ -6,6 +6,7 @@ import { ValidationChain, validationResult } from "express-validator";
 import * as http from "http";
 import { bError } from "../utils";
 import { FunctionExpress } from "./Express.interface";
+import routeCache from 'route-cache';
 
 class Express {
   private port: number;
@@ -45,6 +46,18 @@ class Express {
 
   public getRecaptchaMiddleWare() {
     return this.recaptcha.middleware.verify;
+  }
+
+  public getJsonCache(requestUrl: string, f: FunctionExpress): void {
+    this.app.get(
+      `${this.baseUrl}${requestUrl}`, routeCache.cacheSeconds(20, ''),
+      async (req: Request, res: Response) => {
+        const result: any = await f(req, res).catch((e) => {
+          return bError(e.message);
+        });
+        res.json(result);
+      }
+    );
   }
 
   public getJson(requestUrl: string, f: FunctionExpress): void {
