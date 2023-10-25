@@ -168,6 +168,7 @@ class Warframe {
     }
     processItem(item:Item) {
         const { item_name, thumb, market, url_name, items_in_set, priceUpdate } = item;
+        if(!market) return '';
         if (!items_in_set && !items_in_set.length) return '';
         const { tags } = items_in_set[0];
         return {item_name, thumb, market: {...market, diff: market.sell - market.buy}, url_name, tags, set: items_in_set.length > 1, priceUpdate}
