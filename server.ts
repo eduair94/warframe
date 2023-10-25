@@ -7,7 +7,7 @@ async function main() {
     await MongooseServer.startConnectionPromise();
     console.log("Start express");
     const m = new Warframe();
-    server.getJson('/', async (req: Request): Promise<any> => {
+    server.getJsonCache('/', async (req: Request): Promise<any> => {
         const results = await m.getItemsDatabaseServer();
         return results;
     });
