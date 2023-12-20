@@ -236,7 +236,7 @@ class Warframe {
       return { ...this.getWarframeItemBuySellPrice(res, max_rank), volume };
     } catch (e) {
       const err: AxiosError = e;
-      if (err.status === 429) {
+      if (err?.response?.status == 429) {
         console.log("Att", att);
         await sleep(1000);
         return this.getWarframeItemOrders(item, att + 1);
