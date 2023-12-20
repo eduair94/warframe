@@ -240,7 +240,6 @@ class Warframe {
     } catch (e) {
       const err: AxiosError = e;
       if (err?.response?.status == 429) {
-        console.log("Att", att);
         await sleep(1000);
         return this.getWarframeItemOrders(item, att + 1);
       } else if (err?.response?.status == 404) {
