@@ -1,8 +1,9 @@
-import axios, { AxiosInstance } from "axios";
+import axios, { AxiosError, AxiosInstance } from "axios";
 import axiosRetry from "axios-retry";
 import { ProxyAgent } from "proxy-agent";
 import { SocksProxyAgent } from "socks-proxy-agent";
 import proxies from "./Express/Proxies";
+import { sleep } from "./Express/config";
 import { Auction } from "./auction.interface";
 import { MongooseServer, Schema } from "./database";
 import { Item, OrdersWarframe, StatisticsWarframe, WarframeItemSingle, WarframeItems } from "./interface";
@@ -234,6 +235,12 @@ class Warframe {
       const { volume } = await this.getWarframeItemStatistics(item, max_rank, httpAgent);
       return { ...this.getWarframeItemBuySellPrice(res, max_rank), volume };
     } catch (e) {
+      const err: AxiosError = e;
+      if (err.status === 429) {
+        console.log("Att", att);
+        await sleep(1000);
+        return this.getWarframeItemOrders(item, att + 1);
+      }
       console.error(e);
       return null;
     }
