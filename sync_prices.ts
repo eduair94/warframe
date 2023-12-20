@@ -12,7 +12,14 @@ async function main() {
   let concurrencyLimit = 20;
   async function processEntry(item) {
     const market = await m.getWarframeItemOrders(item);
-    if (market) await m.saveItem(item.id, { market, priceUpdate: new Date() });
+    if (market) {
+      if (market.not_found) {
+        console.log("remove not found item", item.id);
+        await m.removeItemDB(item.id);
+      } else {
+        await m.saveItem(item.id, { market, priceUpdate: new Date() });
+      }
+    }
   }
   m.getItemsDatabaseDate().then(async (items) => {
     const processQueue = items.map((entry: Item) => {

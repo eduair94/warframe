@@ -203,6 +203,9 @@ class Warframe {
   async getItemsDatabase() {
     return await this.db.allEntries({});
   }
+  async removeItemDB(id: string) {
+    return await this.db.deleteEntry({ id });
+  }
   async getItemsDatabaseDate() {
     return await this.db.allEntriesSort({}, { priceUpdate: 1 });
   }
@@ -218,7 +221,7 @@ class Warframe {
     const res = await this.axios.get(url).then((res) => res.data);
     return res;
   }
-  async getWarframeItemOrders(item: Item, att = 0): Promise<{ buy: number; sell: number; volume: number }> {
+  async getWarframeItemOrders(item: Item, att = 0): Promise<{ buy: number; sell: number; volume: number; not_found?: boolean }> {
     try {
       const proxy: any = proxies.getProxy();
       const httpAgent = new ProxyAgent(proxy);
@@ -240,8 +243,12 @@ class Warframe {
         console.log("Att", att);
         await sleep(1000);
         return this.getWarframeItemOrders(item, att + 1);
+      } else if (err?.response?.status == 404) {
+        console.log("Item not found", item.url_name);
+        return { buy: 0, sell: 0, volume: 0, not_found: true };
+      } else {
+        console.error(e);
       }
-      console.error(e);
       return null;
     }
   }
