@@ -41,6 +41,7 @@ class Proxies {
     if (!proxy) proxy = this.getProxy();
     console.log("proxy", proxy);
     if (this.proxyType === "socks5") {
+      console.log("SocksProxyAgent");
       return new SocksProxyAgent(proxy);
     } else {
       return new ProxyAgent(proxy as any);
