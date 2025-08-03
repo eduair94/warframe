@@ -1,7 +1,7 @@
-import axios, { AxiosError, AxiosInstance } from "axios";
+import axios, { AxiosError, AxiosInstance, CreateAxiosDefaults } from "axios";
 import axiosRetry from "axios-retry";
+import dotenv from "dotenv";
 import { ProxyAgent } from "proxy-agent";
-import { SocksProxyAgent } from "socks-proxy-agent";
 import proxies from "./Express/Proxies";
 import { sleep } from "./Express/config";
 import { Auction } from "./auction.interface";
@@ -9,6 +9,7 @@ import { MongooseServer, Schema } from "./database";
 import { Item, OrdersWarframe, StatisticsWarframe, WarframeItemSingle, WarframeItems } from "./interface";
 import privateProxy from "./proxy";
 import { RivenItems } from "./riven.items.interface";
+dotenv.config();
 
 class Warframe {
   db: MongooseServer;
@@ -46,15 +47,24 @@ class Warframe {
       )
     );
 
-    const proxy = new SocksProxyAgent(privateProxy);
-    this.axios = axios.create({
-      httpAgent: proxy,
-      httpsAgent: proxy,
-    });
+    const proxy = new ProxyAgent(privateProxy as any);
+    let config: CreateAxiosDefaults = {};
+    if (process.env.proxyless !== "true") {
+      config.httpAgent = proxy;
+      config.httpsAgent = proxy;
+    }
+    this.axios = axios.create(config);
     axiosRetry(axios, {
       retryDelay: axiosRetry.exponentialDelay,
       onRetry: (retryCount, error, requestConfig) => {
         console.log("Retry", retryCount);
+        // Change proxy for a new one if it fails with 503 (Service Unavailable)
+        if (error.response?.status === 503) {
+          const newProxy = proxies.getProxy();
+          const proxyObj = new ProxyAgent(newProxy as any);
+          requestConfig.httpAgent = proxyObj;
+          requestConfig.httpsAgent = proxyObj;
+        }
       },
     });
   }
@@ -218,6 +228,7 @@ class Warframe {
   }
   async getSingleItemData(item: Item): Promise<WarframeItemSingle> {
     const url = `https://api.warframe.market/v1/items/${item.url_name}`;
+    console.log("url", url);
     const res = await this.axios.get(url).then((res) => res.data);
     return res;
   }

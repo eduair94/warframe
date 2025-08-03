@@ -1,2 +1,2 @@
-const privateProxy = 'socks5://38.127.172.90:39080';
+const privateProxy = "http://116858:VVWeyj58TxDD@94.229.71.37:8800";
 export default privateProxy;

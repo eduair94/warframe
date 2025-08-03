@@ -1,11 +1,10 @@
-import proxies from "./Express/Proxies";
 import { MongooseServer } from "./database";
 import { Item } from "./interface";
 import { Warframe } from "./warframe";
 
 async function main() {
   await MongooseServer.startConnectionPromise();
-  await proxies.setProxies();
+  //await proxies.setProxies();
   const m = new Warframe();
   console.time("warframe");
   let idx = 0;

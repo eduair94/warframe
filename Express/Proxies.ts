@@ -11,7 +11,7 @@ class Proxies {
   bProxyList: string[];
   proxieList: string[];
   constructor() {
-    const directoryPath = 'proxies';
+    const directoryPath = "proxies";
     if (!fs.existsSync(directoryPath)) {
       // If the directory doesn't exist, create it
       fs.mkdirSync(directoryPath);
