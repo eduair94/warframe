@@ -2,8 +2,10 @@ import axios, { AxiosError, AxiosInstance, CreateAxiosDefaults } from "axios";
 import axiosRetry from "axios-retry";
 import dotenv from "dotenv";
 import { ProxyAgent } from "proxy-agent";
+import UserAgent from "user-agents";
 import proxies from "./Express/Proxies";
 import { sleep } from "./Express/config";
+import { AntiDetection, ProxyRotation } from "./anti-detection";
 import { Auction } from "./auction.interface";
 import { MongooseServer, Schema } from "./database";
 import { Item, OrdersWarframe, StatisticsWarframe, WarframeItemSingle, WarframeItems } from "./interface";
@@ -16,7 +18,11 @@ class Warframe {
   dbRivens: MongooseServer;
   axios: AxiosInstance;
   dbRelics: MongooseServer;
+  private userAgent: UserAgent;
+
   constructor() {
+    this.userAgent = new UserAgent({ deviceCategory: "desktop" });
+
     this.db = MongooseServer.getInstance(
       "warframe-items",
       new Schema(
@@ -48,7 +54,10 @@ class Warframe {
     );
 
     const proxy = new ProxyAgent(privateProxy as any);
-    let config: CreateAxiosDefaults = {};
+    let config: CreateAxiosDefaults = {
+      timeout: 30000,
+      headers: this.getRandomHeaders(),
+    };
     if (process.env.proxyless !== "true") {
       config.httpAgent = proxy;
       config.httpsAgent = proxy;
@@ -56,28 +65,79 @@ class Warframe {
     console.log("Axios config", privateProxy);
     this.axios = axios.create(config);
     axiosRetry(this.axios, {
-      retryDelay: axiosRetry.exponentialDelay,
+      retryDelay: (retryNumber) => {
+        // Add random jitter to delay to appear more human-like
+        const baseDelay = Math.pow(2, retryNumber) * 1000;
+        const jitter = Math.random() * 1000;
+        return baseDelay + jitter;
+      },
       retries: 10,
       shouldResetTimeout: true,
       retryCondition: (error) => {
         // Retry on network errors, 5xx errors, and specific 4xx errors like 403, 429, 503
-        return axiosRetry.isNetworkOrIdempotentRequestError(error) ||
-               error.response?.status === 403 ||
-               error.response?.status === 429 ||
-               error.response?.status === 503;
+        return axiosRetry.isNetworkOrIdempotentRequestError(error) || error.response?.status === 403 || error.response?.status === 429 || error.response?.status === 503;
       },
       onRetry: (retryCount, error, requestConfig) => {
-        console.log(`Retry attempt ${retryCount} for status ${error.response?.status || 'network error'}`);
-        // Change proxy for a new one if it fails with 403, 503, or 429
+        console.log(`Retry attempt ${retryCount} for status ${error.response?.status || "network error"}`);
+        // Change proxy and headers for a new one if it fails with 403, 503, or 429
         if (error.response?.status === 403 || error.response?.status === 503 || error.response?.status === 429) {
-          const newProxy = proxies.getProxy();
+          let newProxy = proxies.getProxy();
+
+          // Keep trying to get a good proxy
+          let attempts = 0;
+          while (ProxyRotation.shouldAvoidProxy(newProxy) && attempts < 5) {
+            newProxy = proxies.getProxy();
+            attempts++;
+          }
+
           console.log("Update proxy to:", newProxy);
           const proxyObj = new ProxyAgent(newProxy as any);
           requestConfig.httpAgent = proxyObj;
           requestConfig.httpsAgent = proxyObj;
+
+          // Mark old proxy as having issues if we can identify it
+          if (error.response?.status === 403) {
+            // Record this proxy as potentially problematic
+            const currentProxy = requestConfig.httpAgent?.proxy || requestConfig.httpsAgent?.proxy;
+            if (currentProxy) {
+              ProxyRotation.recordProxyPerformance(currentProxy.toString(), false);
+            }
+          }
+
+          // Reset session and update headers with new random values
+          AntiDetection.resetSession();
+          requestConfig.headers = { ...requestConfig.headers, ...this.getRandomHeaders(), ...AntiDetection.getBrowserHeaders() };
         }
       },
     });
+  }
+
+  private getRandomHeaders() {
+    const userAgent = new UserAgent({ deviceCategory: "desktop" });
+    const commonReferers = ["https://www.google.com/", "https://www.bing.com/", "https://duckduckgo.com/", "https://warframe.market/", "https://warframe.market/items", ""];
+
+    const acceptLanguages = ["en-US,en;q=0.9", "en-GB,en;q=0.9", "en-US,en;q=0.8,es;q=0.6", "en-US,en;q=0.9,fr;q=0.8", "en-US,en;q=0.9,de;q=0.8"];
+
+    return {
+      "User-Agent": userAgent.toString(),
+      Accept: "application/json,text/plain,*/*",
+      "Accept-Language": acceptLanguages[Math.floor(Math.random() * acceptLanguages.length)],
+      "Accept-Encoding": "gzip, deflate, br",
+      DNT: Math.random() > 0.5 ? "1" : "0",
+      Connection: "keep-alive",
+      "Sec-Fetch-Dest": "empty",
+      "Sec-Fetch-Mode": "cors",
+      "Sec-Fetch-Site": "same-origin",
+      "Cache-Control": "no-cache",
+      Pragma: "no-cache",
+      Referer: commonReferers[Math.floor(Math.random() * commonReferers.length)],
+      ...AntiDetection.getBrowserHeaders(),
+    };
+  }
+
+  private async addRandomDelay(min = 500, max = 2000) {
+    const delay = Math.floor(Math.random() * (max - min + 1)) + min;
+    await sleep(delay);
   }
   async relics() {
     const r = await this.dbRelics.allEntries({});
@@ -98,7 +158,12 @@ class Warframe {
   }
   async getSaveRivens() {
     const url = "https://api.warframe.market/v1/riven/items";
-    const data: RivenItems = await this.axios.get(url).then((res) => res.data);
+    await this.addRandomDelay();
+    const data: RivenItems = await this.axios
+      .get(url, {
+        headers: this.getRandomHeaders(),
+      })
+      .then((res) => res.data);
     const results = data.payload.items;
     console.log("Rivens", results.length);
     await this.dbRivens.saveEntries(results);
@@ -113,10 +178,13 @@ class Warframe {
       const url = `https://api.warframe.market/v1/auctions/search?type=riven&weapon_url_name=${url_name}&polarity=any&re_rolls_min=${re_rolls_min}&buyout_policy=direct&sort_by=price_asc`;
       const proxy: any = proxies.getProxy();
       const httpAgent = new ProxyAgent(proxy);
+
+      await this.addRandomDelay();
       const result: Auction = await this.axios
         .get(url, {
           httpAgent: httpAgent,
           httpsAgent: httpAgent,
+          headers: this.getRandomHeaders(),
         })
         .then((res) => res.data);
       const items = result.payload.auctions
@@ -132,6 +200,8 @@ class Warframe {
         });
       await this.dbRivens.getAnUpdateEntry({ url_name }, { items });
     } catch (e) {
+      console.log("Retrying riven sync due to error:", e.message);
+      await this.addRandomDelay(1000, 3000);
       return this.syncSingleRiven(riven);
     }
   }
@@ -231,7 +301,12 @@ class Warframe {
     return await this.db.allEntriesSort({}, { priceUpdate: 1 });
   }
   async getWarframeItems(): Promise<WarframeItems> {
-    const res = await this.axios.get("https://api.warframe.market/v1/items").then((res) => res.data);
+    await this.addRandomDelay();
+    const res = await this.axios
+      .get("https://api.warframe.market/v1/items", {
+        headers: this.getRandomHeaders(),
+      })
+      .then((res) => res.data);
     return res;
   }
   async getSingleItemDB(item: Item) {
@@ -240,7 +315,12 @@ class Warframe {
   async getSingleItemData(item: Item): Promise<WarframeItemSingle> {
     const url = `https://api.warframe.market/v1/items/${item.url_name}`;
     console.log("url", url);
-    const res = await this.axios.get(url).then((res) => res.data);
+    await this.addRandomDelay();
+    const res = await this.axios
+      .get(url, {
+        headers: this.getRandomHeaders(),
+      })
+      .then((res) => res.data);
     return res;
   }
   async getWarframeItemOrders(item: Item, att = 0): Promise<{ buy: number; sell: number; volume: number; not_found?: boolean }> {
@@ -248,11 +328,14 @@ class Warframe {
       const proxy: any = proxies.getProxy();
       const httpAgent = new ProxyAgent(proxy);
       const url = `https://api.warframe.market/v1/items/${item.url_name}/orders`;
+
+      await this.addRandomDelay();
       const res = await this.axios
         .get(url, {
           httpAgent: httpAgent,
           httpsAgent: httpAgent,
           timeout: 10000,
+          headers: this.getRandomHeaders(),
         })
         .then((res) => res.data);
       const itemSet = item.items_in_set[0];
@@ -262,7 +345,7 @@ class Warframe {
     } catch (e) {
       const err: AxiosError = e;
       if (err?.response?.status == 429) {
-        await sleep(1000);
+        await sleep(2000 + Math.random() * 3000); // Random delay between 2-5 seconds
         return this.getWarframeItemOrders(item, att + 1);
       } else if (err?.response?.status == 404) {
         console.log("Item not found", item.url_name);
@@ -275,10 +358,13 @@ class Warframe {
   }
   async getWarframeItemStatistics(item: Item, max_rank: number | undefined, httpAgent: ProxyAgent): Promise<{ volume: number }> {
     const url = `https://api.warframe.market/v1/items/${item.url_name}/statistics`;
+
+    await this.addRandomDelay(300, 1000);
     const res: StatisticsWarframe = await this.axios
       .get(url, {
         httpAgent: httpAgent,
         httpsAgent: httpAgent,
+        headers: this.getRandomHeaders(),
       })
       .then((res) => res.data);
     const volume = res.payload.statistics_closed["48hours"].reduce((prev, curr) => (max_rank === undefined || curr.mod_rank === max_rank ? prev + curr.volume : prev), 0);
