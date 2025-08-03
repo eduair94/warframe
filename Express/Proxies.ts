@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 import fs from "fs";
 import { ProxyAgent } from "proxy-agent";
 import { SocksProxyAgent } from "socks-proxy-agent";
-const cfg = dotenv.config();
+dotenv.config();
 class Proxies {
   private proxies = "proxies/proxies.txt";
   private banned_proxies = "proxies/banned.txt";
@@ -21,7 +21,7 @@ class Proxies {
     } else {
       console.log(`Directory "${directoryPath}" already exists.`);
     }
-    this.setProxies();
+    if (!usaProxies) this.setProxies();
     if (!this.proxyType) {
       this.proxyType = usaProxies ? "http" : "socks5";
     }
