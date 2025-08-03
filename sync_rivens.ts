@@ -1,12 +1,12 @@
 import { MongooseServer } from "./database";
-import { Warframe } from "./warframe";
+import WarframeUndici from "./warframe-undici";
 
 async function main() {
-    await MongooseServer.startConnectionPromise();
-    const m = new Warframe();
-    console.time('warframe');
-    await m.getSaveRivens();
-    console.timeEnd('warframe');
+  await MongooseServer.startConnectionPromise();
+  const m = new WarframeUndici();
+  console.time("warframe");
+  await m.getSaveRivens();
+  console.timeEnd("warframe");
 }
 
 main();

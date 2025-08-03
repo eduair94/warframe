@@ -1,11 +1,11 @@
 import { MongooseServer } from "./database";
 import { Item } from "./interface";
-import { Warframe } from "./warframe";
+import WarframeUndici from "./warframe-undici";
 
 async function main() {
   await MongooseServer.startConnectionPromise();
   //await proxies.setProxies();
-  const m = new Warframe();
+  const m = new WarframeUndici();
   console.time("warframe");
   let idx = 0;
   let concurrencyLimit = 20;
