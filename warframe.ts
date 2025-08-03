@@ -53,10 +53,11 @@ class Warframe {
       config.httpAgent = proxy;
       config.httpsAgent = proxy;
     }
+    console.log("Axios config", privateProxy);
     this.axios = axios.create(config);
     axiosRetry(axios, {
       retryDelay: axiosRetry.exponentialDelay,
-      retries: 3,
+      retries: 10,
       shouldResetTimeout: true,
       onRetry: (retryCount, error, requestConfig) => {
         console.log("Retry", retryCount);
