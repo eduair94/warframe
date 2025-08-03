@@ -30,10 +30,12 @@ class Proxies {
       this.banned_proxies = "proxies/usa_banned.txt";
     }
     this.readProxyFile();
-    this.idx = parseInt(fs.readFileSync("proxies/idx.txt", "utf-8")) || 0;
-    if (isNaN(this.idx)) {
-      this.idx = 0;
-    }
+    try {
+      this.idx = parseInt(fs.readFileSync("proxies/idx.txt", "utf-8")) || 0;
+      if (isNaN(this.idx)) {
+        this.idx = 0;
+      }
+    } catch (e) {}
   }
   getProxyAgent(proxy?: string): ProxyAgent | SocksProxyAgent {
     if (!proxy) proxy = this.getProxy();
