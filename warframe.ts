@@ -59,12 +59,19 @@ class Warframe {
       retryDelay: axiosRetry.exponentialDelay,
       retries: 10,
       shouldResetTimeout: true,
+      retryCondition: (error) => {
+        // Retry on network errors, 5xx errors, and specific 4xx errors like 403, 429, 503
+        return axiosRetry.isNetworkOrIdempotentRequestError(error) ||
+               error.response?.status === 403 ||
+               error.response?.status === 429 ||
+               error.response?.status === 503;
+      },
       onRetry: (retryCount, error, requestConfig) => {
-        console.log("Retry", retryCount);
-        // Change proxy for a new one if it fails with 503 (Service Unavailable)
-        if (error.response?.status === 503 || error.response?.status === 429) {
+        console.log(`Retry attempt ${retryCount} for status ${error.response?.status || 'network error'}`);
+        // Change proxy for a new one if it fails with 403, 503, or 429
+        if (error.response?.status === 403 || error.response?.status === 503 || error.response?.status === 429) {
           const newProxy = proxies.getProxy();
-          console.log("Update proxy", newProxy);
+          console.log("Update proxy to:", newProxy);
           const proxyObj = new ProxyAgent(newProxy as any);
           requestConfig.httpAgent = proxyObj;
           requestConfig.httpsAgent = proxyObj;
