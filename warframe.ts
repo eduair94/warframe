@@ -2,6 +2,7 @@ import axios, { AxiosError, AxiosInstance, CreateAxiosDefaults } from "axios";
 import axiosRetry from "axios-retry";
 import dotenv from "dotenv";
 import { ProxyAgent } from "proxy-agent";
+import { SocksProxyAgent } from "socks-proxy-agent";
 import UserAgent from "user-agents";
 import proxies from "./Express/Proxies";
 import { sleep } from "./Express/config";
@@ -100,7 +101,7 @@ class Warframe {
           }
 
           console.log("Update proxy to:", newProxy);
-          const proxyObj = new ProxyAgent(newProxy as any);
+          const proxyObj = new SocksProxyAgent(newProxy as any);
           requestConfig.httpAgent = proxyObj;
           requestConfig.httpsAgent = proxyObj;
 
