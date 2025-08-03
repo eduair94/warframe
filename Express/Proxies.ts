@@ -23,7 +23,7 @@ class Proxies {
     }
     if (!usaProxies) this.setProxies();
     if (!this.proxyType) {
-      this.proxyType = usaProxies ? "http" : "socks5";
+      this.proxyType = "https";
     }
     if (usaProxies) {
       this.proxies = "proxies/usa_proxies.txt";
@@ -48,6 +48,7 @@ class Proxies {
     }
   }
   getProxy() {
+    if (process.env.proxyless === "true") return null;
     if (!this.proxieList[this.idx]) {
       this.idx = 0;
     }
@@ -77,7 +78,7 @@ class Proxies {
   async setProxies(): Promise<void> {
     if (this.apiKey) {
       console.log("Api Key", this.apiKey);
-      const endpoint = `https://api.proxyscrape.com/v2/account/datacenter_shared/proxy-list?auth=${this.apiKey}&protocol=socks`;
+      const endpoint = `https://api.proxyscrape.com/v2/account/datacenter_shared/proxy-list?auth=${this.apiKey}&protocol=http`;
       console.log("endpoint", endpoint);
       const proxies = await axios
         .get(endpoint)
@@ -91,7 +92,7 @@ class Proxies {
         this.proxieList = proxies
           .split("\n")
           .map(function (proxy) {
-            if (proxy) return "socks5://" + proxy.trim();
+            if (proxy) return "http://" + proxy.trim();
             return "";
           })
           .filter((el) => {

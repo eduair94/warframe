@@ -87,12 +87,11 @@ export default class WarframeUndici {
     await sleep(delay);
   }
 
-  private getRandomProxy(): string {
+  private getRandomProxy(): string | null {
     const proxy = proxies.getProxy();
     console.log("proxy", proxy);
-    // For now, use the working HTTP proxy that we tested
-    // Later you can implement rotation between multiple HTTP proxies
-    return proxy;
+    // Return proxy or null for proxyless mode
+    return proxy || null;
   }
 
   private async makeRequest(url: string, options: any = {}): Promise<any> {
@@ -105,18 +104,21 @@ export default class WarframeUndici {
         const proxy = this.getRandomProxy();
         const headers = AntiDetection.getBrowserHeaders();
 
-        console.log(`Attempt ${attempt} using proxy: ${proxy.split("@")[1] || proxy}`);
+        console.log(`Attempt ${attempt} using proxy: ${proxy ? proxy.split("@")[1] || proxy : "direct connection (proxyless)"}`);
 
-        // Create proxy agent
-        const dispatcher = new ProxyAgent({
-          uri: proxy,
-          keepAliveTimeout: 10000,
-          keepAliveMaxTimeout: 10000,
-        });
+        // Create proxy agent only if proxy is available
+        let dispatcher;
+        if (proxy) {
+          dispatcher = new ProxyAgent({
+            uri: proxy,
+            keepAliveTimeout: 10000,
+            keepAliveMaxTimeout: 10000,
+          });
+        }
 
         // Make request with undici
         const response = await request(url, {
-          dispatcher,
+          ...(dispatcher && { dispatcher }),
           headers: {
             ...headers,
             Accept: "application/json",
@@ -130,6 +132,8 @@ export default class WarframeUndici {
             "Sec-Fetch-Mode": "cors",
             "Sec-Fetch-Site": "cross-site",
             "Sec-GPC": "1",
+            // Override with any custom headers from options
+            ...(options.headers || {}),
           },
         });
 
@@ -138,7 +142,9 @@ export default class WarframeUndici {
         // Check if we should retry based on status code
         if (response.statusCode === 403) {
           console.log(`❌ Got 403 Cloudflare block on attempt ${attempt}`);
-          ProxyRotation.recordProxyPerformance(proxy, false);
+          if (proxy) {
+            ProxyRotation.recordProxyPerformance(proxy, false);
+          }
 
           if (attempt < maxRetries) {
             const delay = Math.min(1000 * Math.pow(2, attempt - 1), 10000);
@@ -151,7 +157,9 @@ export default class WarframeUndici {
 
         if (response.statusCode === 429) {
           console.log(`❌ Got 429 Rate Limit on attempt ${attempt}`);
-          ProxyRotation.recordProxyPerformance(proxy, false);
+          if (proxy) {
+            ProxyRotation.recordProxyPerformance(proxy, false);
+          }
 
           if (attempt < maxRetries) {
             const delay = Math.min(2000 * Math.pow(2, attempt - 1), 30000);
@@ -258,7 +266,9 @@ export default class WarframeUndici {
         }
 
         // Mark proxy as successful
-        ProxyRotation.recordProxyPerformance(proxy, true);
+        if (proxy) {
+          ProxyRotation.recordProxyPerformance(proxy, true);
+        }
 
         console.log(
           `✅ Success! Got data with keys: [`,
@@ -371,7 +381,29 @@ export default class WarframeUndici {
     const data: RivenItems = await this.makeRequest(url);
     const results = data.payload.items;
     console.log("Rivens", results.length);
-    await this.dbRivens.saveEntries(results);
+
+    // Use upsert operations to avoid duplicate key errors
+    console.log("Upserting rivens to avoid duplicates...");
+    let upsertedCount = 0;
+    let skippedCount = 0;
+
+    for (const riven of results) {
+      try {
+        await this.dbRivens.getAnUpdateEntry({ id: riven.id }, riven);
+        upsertedCount++;
+      } catch (error: any) {
+        if (error.code === 11000) {
+          // Duplicate key error - item already exists, skip
+          skippedCount++;
+          console.log(`Skipped duplicate riven: ${riven.id}`);
+        } else {
+          console.error(`Error upserting riven ${riven.id}:`, error.message);
+          throw error;
+        }
+      }
+    }
+
+    console.log(`Rivens processing complete: ${upsertedCount} upserted, ${skippedCount} skipped duplicates`);
   }
 
   async getAllRivens(): Promise<RivenItems["payload"]["items"]> {
@@ -383,9 +415,22 @@ export default class WarframeUndici {
       const url_name = riven.url_name;
       const re_rolls_min = 50;
       const url = `https://api.warframe.market/v1/auctions/search?type=riven&weapon_url_name=${url_name}&polarity=any&re_rolls_min=${re_rolls_min}&buyout_policy=direct&sort_by=price_asc`;
-
+      console.log("url riven", url);
       await this.addRandomDelay();
-      const result: Auction = await this.makeRequest(url);
+
+      // Use specific options for riven auctions to avoid 403 errors
+      const result: Auction = await this.makeRequest(url, {
+        headers: {
+          ...this.getRandomHeaders(),
+          Accept: "application/json, text/plain, */*",
+          Referer: "https://warframe.market/",
+          Origin: "https://warframe.market",
+          "Sec-Fetch-Site": "same-origin",
+          "Sec-Fetch-Mode": "cors",
+          "X-Requested-With": "XMLHttpRequest",
+        },
+      });
+
       const items = result.payload.auctions
         .filter((el) => el.buyout_price)
         .map((el) => {
