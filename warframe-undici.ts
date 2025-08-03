@@ -1,7 +1,7 @@
 import { ProxyAgent, request } from "undici";
 import { createBrotliDecompress, createGunzip, createInflate } from "zlib";
 import { AntiDetection, ProxyRotation } from "./anti-detection";
-import privateProxy from "./proxy";
+import proxies from "./Express/Proxies";
 
 export default class WarframeUndici {
   private maxRetries: number = 10;
@@ -12,9 +12,11 @@ export default class WarframeUndici {
   }
 
   private getRandomProxy(): string {
+    const proxy = proxies.getProxy();
+    console.log("proxy", proxy);
     // For now, use the working HTTP proxy that we tested
     // Later you can implement rotation between multiple HTTP proxies
-    return privateProxy;
+    return proxy;
   }
 
   private async makeRequest(url: string, options: any = {}): Promise<any> {
