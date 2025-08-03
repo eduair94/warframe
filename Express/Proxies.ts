@@ -10,7 +10,7 @@ class Proxies {
   private proxyType = process.env.proxyType || "http";
   bProxyList: string[];
   proxieList: string[];
-  constructor() {
+  constructor(usaProxies = false) {
     const directoryPath = "proxies";
     if (!fs.existsSync(directoryPath)) {
       // If the directory doesn't exist, create it
@@ -19,8 +19,13 @@ class Proxies {
     } else {
       console.log(`Directory "${directoryPath}" already exists.`);
     }
+    this.setProxies();
     if (!this.proxyType) {
-      this.proxyType = "http";
+      this.proxyType = usaProxies ? "http" : "socks5";
+    }
+    if (usaProxies) {
+      this.proxies = "proxies/usa_proxies.txt";
+      this.banned_proxies = "proxies/usa_banned.txt";
     }
     this.readProxyFile();
   }
@@ -52,7 +57,7 @@ class Proxies {
   async setProxies(): Promise<void> {
     if (this.apiKey) {
       console.log("Api Key", this.apiKey);
-      const endpoint = `https://api.proxyscrape.com/v2/account/datacenter_shared/proxy-list?auth=${this.apiKey}&protocol=http`;
+      const endpoint = `https://api.proxyscrape.com/v2/account/datacenter_shared/proxy-list?auth=${this.apiKey}&protocol=socks`;
       console.log("endpoint", endpoint);
       const proxies = await axios
         .get(endpoint)
@@ -66,7 +71,7 @@ class Proxies {
         this.proxieList = proxies
           .split("\n")
           .map(function (proxy) {
-            if (proxy) return "http://" + proxy.trim();
+            if (proxy) return "socks5://" + proxy.trim();
             return "";
           })
           .filter((el) => {
@@ -113,5 +118,5 @@ class Proxies {
   }
 }
 
-const proxies = new Proxies();
+const proxies = new Proxies(process.env.proxy_type === "usa");
 export default proxies;
