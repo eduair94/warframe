@@ -55,7 +55,7 @@ class Warframe {
     }
     console.log("Axios config", privateProxy);
     this.axios = axios.create(config);
-    axiosRetry(axios, {
+    axiosRetry(this.axios, {
       retryDelay: axiosRetry.exponentialDelay,
       retries: 10,
       shouldResetTimeout: true,
