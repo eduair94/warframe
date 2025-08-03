@@ -7,7 +7,7 @@ const cfg = dotenv.config();
 class Proxies {
   private proxies = "proxies/proxies.txt";
   private banned_proxies = "proxies/banned.txt";
-  private idx = 0;
+  idx = 0;
   private apiKey = process.env.apiKey || "l0dpqikj1eup8mmc7zy8";
   private proxyType = process.env.proxyType || "http";
   bProxyList: string[];

@@ -8,7 +8,6 @@ import { AntiDetection, ProxyRotation } from "./anti-detection";
 import { Auction } from "./auction.interface";
 import { MongooseServer, Schema } from "./database";
 import { Item, OrdersWarframe, StatisticsWarframe, WarframeItemSingle, WarframeItems } from "./interface";
-import privateProxy from "./proxy";
 import { RivenItems } from "./riven.items.interface";
 dotenv.config();
 
@@ -65,14 +64,15 @@ class Warframe {
       // Disable automatic decompression to handle it manually like browsers
       decompress: true,
     };
-    const initialAgent = proxies.getProxyAgent();
+    const proxy = proxies.getProxy();
+    const initialAgent = proxies.getProxyAgent(proxy);
     if (initialAgent && process.env.proxyless !== "true") {
       config.httpAgent = initialAgent;
       config.httpsAgent = initialAgent;
       config.proxy = false; // Disable axios proxy handling
       config.timeout = 10000;
     }
-    console.log("Axios config", privateProxy);
+    console.log("Axios config", proxy, proxies.idx);
     this.axios = axios.create(config);
     axiosRetry(this.axios, {
       retryDelay: (retryNumber) => {
