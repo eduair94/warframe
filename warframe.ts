@@ -65,6 +65,13 @@ class Warframe {
       // Disable automatic decompression to handle it manually like browsers
       decompress: true,
     };
+    const initialAgent = proxies.getProxyAgent();
+    if (initialAgent && process.env.proxyless !== "true") {
+      config.httpAgent = initialAgent;
+      config.httpsAgent = initialAgent;
+      config.proxy = false; // Disable axios proxy handling
+      config.timeout = 10000;
+    }
     console.log("Axios config", privateProxy);
     this.axios = axios.create(config);
     axiosRetry(this.axios, {
@@ -74,7 +81,7 @@ class Warframe {
         const jitter = Math.random() * 1000;
         return baseDelay + jitter;
       },
-      retries: 10,
+      retries: 100,
       shouldResetTimeout: true,
       retryCondition: (error) => {
         // Retry on network errors, 5xx errors, and specific 4xx errors like 403, 429, 503
