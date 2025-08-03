@@ -57,6 +57,15 @@ class Warframe {
     let config: CreateAxiosDefaults = {
       timeout: 30000,
       headers: this.getRandomHeaders(),
+      maxRedirects: 5,
+      validateStatus: function (status) {
+        return status >= 200 && status < 300; // default
+      },
+      // Add browser-like behavior
+      maxContentLength: Infinity,
+      maxBodyLength: Infinity,
+      // Disable automatic decompression to handle it manually like browsers
+      decompress: true,
     };
     if (process.env.proxyless !== "true") {
       config.httpAgent = proxy;
@@ -118,21 +127,31 @@ class Warframe {
 
     const acceptLanguages = ["en-US,en;q=0.9", "en-GB,en;q=0.9", "en-US,en;q=0.8,es;q=0.6", "en-US,en;q=0.9,fr;q=0.8", "en-US,en;q=0.9,de;q=0.8"];
 
-    return {
+    // More realistic headers that exactly match browser requests
+    const baseHeaders = {
       "User-Agent": userAgent.toString(),
-      Accept: "application/json,text/plain,*/*",
+      Accept: "application/json, text/plain, */*",
       "Accept-Language": acceptLanguages[Math.floor(Math.random() * acceptLanguages.length)],
-      "Accept-Encoding": "gzip, deflate, br",
+      "Accept-Encoding": "gzip, deflate, br, zstd",
       DNT: Math.random() > 0.5 ? "1" : "0",
       Connection: "keep-alive",
       "Sec-Fetch-Dest": "empty",
       "Sec-Fetch-Mode": "cors",
-      "Sec-Fetch-Site": "same-origin",
-      "Cache-Control": "no-cache",
-      Pragma: "no-cache",
-      Referer: commonReferers[Math.floor(Math.random() * commonReferers.length)],
-      ...AntiDetection.getBrowserHeaders(),
+      "Sec-Fetch-Site": "same-site",
+      "sec-ch-ua": '"Google Chrome";v="131", "Chromium";v="131", "Not_A Brand";v="24"',
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": '"Windows"',
+      Priority: "u=1, i",
+      Referer: commonReferers[Math.floor(Math.random() * commonReferers.length)] || "https://warframe.market/",
+      Origin: "https://warframe.market",
     };
+
+    // Remove empty referer if selected
+    if (!baseHeaders.Referer) {
+      delete baseHeaders.Referer;
+    }
+
+    return baseHeaders;
   }
 
   private async addRandomDelay(min = 500, max = 2000) {
