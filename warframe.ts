@@ -1,8 +1,6 @@
 import axios, { AxiosError, AxiosInstance, CreateAxiosDefaults } from "axios";
 import axiosRetry from "axios-retry";
 import dotenv from "dotenv";
-import { ProxyAgent } from "proxy-agent";
-import { SocksProxyAgent } from "socks-proxy-agent";
 import UserAgent from "user-agents";
 import proxies from "./Express/Proxies";
 import { sleep } from "./Express/config";
@@ -54,7 +52,6 @@ class Warframe {
       )
     );
 
-    const proxy = new ProxyAgent(privateProxy as any);
     let config: CreateAxiosDefaults = {
       timeout: 30000,
       headers: this.getRandomHeaders(),
@@ -68,10 +65,6 @@ class Warframe {
       // Disable automatic decompression to handle it manually like browsers
       decompress: true,
     };
-    if (process.env.proxyless !== "true") {
-      config.httpAgent = proxy;
-      config.httpsAgent = proxy;
-    }
     console.log("Axios config", privateProxy);
     this.axios = axios.create(config);
     axiosRetry(this.axios, {
@@ -101,7 +94,7 @@ class Warframe {
           }
 
           console.log("Update proxy to:", newProxy);
-          const proxyObj = new SocksProxyAgent(newProxy as any);
+          const proxyObj = proxies.getProxyAgent(newProxy);
           requestConfig.httpAgent = proxyObj;
           requestConfig.httpsAgent = proxyObj;
 
@@ -196,8 +189,7 @@ class Warframe {
       const url_name = riven.url_name;
       const re_rolls_min = 50;
       const url = `https://api.warframe.market/v1/auctions/search?type=riven&weapon_url_name=${url_name}&polarity=any&re_rolls_min=${re_rolls_min}&buyout_policy=direct&sort_by=price_asc`;
-      const proxy: any = proxies.getProxy();
-      const httpAgent = new ProxyAgent(proxy);
+      const httpAgent = proxies.getProxyAgent();
 
       await this.addRandomDelay();
       const result: Auction = await this.axios
@@ -345,8 +337,7 @@ class Warframe {
   }
   async getWarframeItemOrders(item: Item, att = 0): Promise<{ buy: number; sell: number; volume: number; not_found?: boolean }> {
     try {
-      const proxy: any = proxies.getProxy();
-      const httpAgent = new ProxyAgent(proxy);
+      const httpAgent = proxies.getProxyAgent();
       const url = `https://api.warframe.market/v1/items/${item.url_name}/orders`;
 
       await this.addRandomDelay();
@@ -360,7 +351,7 @@ class Warframe {
         .then((res) => res.data);
       const itemSet = item.items_in_set[0];
       let max_rank = itemSet.mod_max_rank;
-      const { volume } = await this.getWarframeItemStatistics(item, max_rank, httpAgent);
+      const { volume } = await this.getWarframeItemStatistics(item, max_rank);
       return { ...this.getWarframeItemBuySellPrice(res, max_rank), volume };
     } catch (e) {
       const err: AxiosError = e;
@@ -376,14 +367,12 @@ class Warframe {
       return null;
     }
   }
-  async getWarframeItemStatistics(item: Item, max_rank: number | undefined, httpAgent: ProxyAgent): Promise<{ volume: number }> {
+  async getWarframeItemStatistics(item: Item, max_rank: number | undefined): Promise<{ volume: number }> {
     const url = `https://api.warframe.market/v1/items/${item.url_name}/statistics`;
 
     await this.addRandomDelay(300, 1000);
     const res: StatisticsWarframe = await this.axios
       .get(url, {
-        httpAgent: httpAgent,
-        httpsAgent: httpAgent,
         headers: this.getRandomHeaders(),
       })
       .then((res) => res.data);

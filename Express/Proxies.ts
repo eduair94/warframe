@@ -1,6 +1,8 @@
 import axios from "axios";
 import dotenv from "dotenv";
 import fs from "fs";
+import { ProxyAgent } from "proxy-agent";
+import { SocksProxyAgent } from "socks-proxy-agent";
 const cfg = dotenv.config();
 class Proxies {
   private proxies = "proxies/proxies.txt";
@@ -28,6 +30,15 @@ class Proxies {
       this.banned_proxies = "proxies/usa_banned.txt";
     }
     this.readProxyFile();
+  }
+  getProxyAgent(proxy?: string): ProxyAgent | SocksProxyAgent {
+    if (!proxy) proxy = this.getProxy();
+    console.log("proxy", proxy);
+    if (this.proxyType === "socks5") {
+      return new SocksProxyAgent(proxy);
+    } else {
+      return new ProxyAgent(proxy as any);
+    }
   }
   getProxy() {
     if (!this.proxieList[this.idx]) {
