@@ -459,8 +459,9 @@ export class MongooseServer {
 
   public static connectWithRetry = (): any => {
     mongoose.set("strictQuery", false);
+    const mongoUri = process.env.MONGODB_URI || `mongodb://localhost:27017/${mongoConfig.database}`;
     mongoose
-      .connect(`mongodb://localhost:27017/${mongoConfig.database}`, {})
+      .connect(mongoUri, {})
       .catch(() => {});
   };
 

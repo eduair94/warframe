@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:4.4
+    container_name: warframe-mongodb
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_DATABASE: warframe
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+      - mongodb_config:/data/configdb
+
+  api:
+    build: .
+    container_name: warframe-api
+    restart: unless-stopped
+    depends_on:
+      - mongodb
+    environment:
+      - NODE_ENV=production
+      - MONGODB_URI=mongodb://mongodb:27017/warframe
+    env_file:
+      - .env
+    ports:
+      - "${API_PORT:-3529}:3529"
+    volumes:
+      - ./proxies:/app/proxies
+
+  frontend:
+    build: ./app
+    container_name: warframe-frontend
+    restart: unless-stopped
+    depends_on:
+      - api
+    environment:
+      - NODE_ENV=production
+    ports:
+      - "${FRONTEND_PORT:-3312}:3312"
+
+volumes:
+  mongodb_data:
+  mongodb_config:

@@ -8,8 +8,8 @@ class Proxies {
   private proxies = "proxies/proxies.txt";
   private banned_proxies = "proxies/banned.txt";
   idx = 0;
-  private apiKey = process.env.apiKey || "l0dpqikj1eup8mmc7zy8";
-  private proxyType = process.env.proxyType || "http";
+  private apiKey = process.env.PROXY_API_KEY || "";
+  private proxyType = process.env.PROXY_TYPE || "http";
   bProxyList: string[];
   proxieList: string[];
   constructor(usaProxies = false) {
@@ -48,7 +48,7 @@ class Proxies {
     }
   }
   getProxy() {
-    if (process.env.proxyless === "true") return null;
+    if (process.env.PROXY_LESS === "true") return null;
     if (!this.proxieList[this.idx]) {
       this.idx = 0;
     }
@@ -139,5 +139,5 @@ class Proxies {
   }
 }
 
-const proxies = new Proxies(process.env.proxy_type === "usa");
+const proxies = new Proxies(process.env.PROXY_TYPE_REGION === "usa");
 export default proxies;

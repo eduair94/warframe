@@ -46,7 +46,7 @@ export default {
   },
 
   server: {
-    port: 3312, // default: 3000
+    port: process.env.FRONTEND_PORT || 3312, // default: 3000
     host: '0.0.0.0' // default: localhost
   },
 

@@ -1,3 +1,113 @@
-node_modules
-dist
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Logs
+logs
+*.log
+
+# Build outputs
+dist/
+build/
+
+# Environment variables (NEVER COMMIT THESE!)
 .env
+.env.*
+!.env.example
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# 🚨 SENSITIVE: Proxy files (NEVER COMMIT ACTUAL PROXY DATA!)
+proxies/proxies.txt
+proxies/banned.txt
+proxies/usa_proxies.txt
+proxies/usa_banned.txt
+proxies/idx.txt
+# Keep example files for reference
+!proxies/*.example
+!proxies/README.md
+
+# 🚨 SENSITIVE: Files with actual proxy credentials
+proxy.ts
+proxy.js
+**/proxy.ts
+**/proxy.js
+test-proxy.ts
+private-proxy.ts
+
+# PM2 runtime files
+.pm2/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Temporary files
+tmp/
+temp/
+
+# Coverage directory used by tools like istanbul
+coverage/
+
+# Dependency directories
+jspm_packages/
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Nuxt.js build / generate output
+app/.nuxt
+app/dist
+
+# Nuxt generate
+app/dist
+
+# Storybook build outputs
+.out
+.storybook-out
+
+# MongoDB data (if running locally)
+data/
+dump/
+
+# Application specific
+*.cache
+.cache/
+
+# 🚨 SECURITY: Never commit any files containing:
+# - API keys or authentication tokens
+# - Passwords or credentials  
+# - Database connection strings with real credentials
+# - Proxy server lists with real IPs/credentials
+# - Private keys or SSL certificates
+# - Any files with sensitive configuration data
+
+# Examples of patterns to NEVER commit:
+# *.env (except .env.example)
+# proxy.ts, private-proxy.ts, etc.
+# Any files with real IP addresses in proxy context
+# Files with usernames:passwords@host:port patterns

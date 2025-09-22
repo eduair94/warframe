@@ -66,7 +66,7 @@ class Warframe {
     };
     const proxy = proxies.getProxy();
     const initialAgent = proxies.getProxyAgent(proxy);
-    if (initialAgent && process.env.proxyless !== "true") {
+    if (initialAgent && process.env.PROXY_LESS !== "true") {
       config.httpAgent = initialAgent;
       config.httpsAgent = initialAgent;
       config.proxy = false; // Disable axios proxy handling

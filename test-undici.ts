@@ -3,8 +3,9 @@ import { createBrotliDecompress, createGunzip, createInflate } from "zlib";
 
 // Simple proxy list for testing
 const testProxies = [
-  "http://116858:VVWeyj58TxDD@94.229.71.37:8800",
-  // Add more proxies as needed
+  "http://proxy1.example.com:8080",
+  "http://proxy2.example.com:8080",
+  // Add your actual proxies here (from your .env or proxy files)
 ];
 
 let currentProxyIndex = 0;
