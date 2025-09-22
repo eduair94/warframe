@@ -132,7 +132,28 @@ FRONTEND_PORT=3312
 
 **🔒 Security Reminder**: The `.env` file you create will contain your real credentials and should **NEVER** be committed to version control. It's already in `.gitignore` for your protection.
 
-### 4. Set Up MongoDB
+### 4. Configure Frontend Environment
+
+The frontend (Nuxt.js app) also needs environment configuration:
+
+```bash
+cd app
+# The .env file is already created with defaults for local development
+# Edit app/.env if you need to change the API URL or other settings
+```
+
+The default frontend configuration (`app/.env`):
+```env
+# API URL - Points to your local backend server
+API_URL=http://localhost:3529
+
+# Base URL for the frontend application  
+BASE_URL=http://localhost:3312
+```
+
+**💡 Note**: The frontend will automatically use these environment variables through Nuxt.js runtime config.
+
+### 5. Set Up MongoDB
 
 #### Option A: Local MongoDB Installation
 
@@ -155,7 +176,7 @@ FRONTEND_PORT=3312
 2. Create a new cluster
 3. Get your connection string and update `MONGODB_URI` in `.env`
 
-### 5. Configure Proxies (Optional)
+### 6. Configure Proxies (Optional)
 
 For better rate limiting handling, you can configure proxy support:
 

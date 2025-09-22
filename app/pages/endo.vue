@@ -177,9 +177,8 @@
 </template>
 
 <script lang="ts">
-import { mapGetters, mapActions } from 'vuex'
 import moment from 'moment'
-import { notFound } from '../services/not_found'
+import { mapGetters } from 'vuex'
 export default {
   name: 'HomePage',
   components: {},
@@ -235,7 +234,7 @@ export default {
   methods: {
     async getRivens() {
       const rivens = await this.$axios
-        .get('https://warframe.digitalshopuy.com/rivens')
+        .get(`${this.$config.apiURL}/rivens`)
         .then((res) => res.data)
       // this.rivens = rivens.filter(
       //   (el) => el.items.endoPerPlat > this.maxEndoPerPlat
@@ -526,7 +525,7 @@ export default {
       ]
     },
     getHeaders() {
-      let toReturn: any = [
+      const toReturn: any = [
         {
           text: 'Name',
           value: 'item_name',

@@ -187,8 +187,7 @@
 </template>
 
 <script lang="ts">
-import { mapGetters, mapActions } from 'vuex'
-import { notFound } from '../../services/not_found'
+import { mapGetters } from 'vuex'
 export default {
   name: 'HomePage',
   components: {},
@@ -244,7 +243,7 @@ export default {
         this.search = search
         if (search) {
           const data = await this.$axios
-            .get('https://warframe.digitalshopuy.com/set/' + search)
+            .get(`${this.$config.apiURL}/set/${search}`)
             .then((res) => res.data)
           this.all_items = data.items
           this.set = data.set

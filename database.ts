@@ -520,5 +520,5 @@ export class MongooseServer {
   }
 }
 
-export { Schema, mongoose };
+export { mongoose, Schema };
 

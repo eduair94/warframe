@@ -6,6 +6,16 @@ import translations from './translations'
 export default {
   type: 'module',
   loading: '~/components/LoadingBar.vue',
+  
+  // Runtime config
+  publicRuntimeConfig: {
+    apiURL: process.env.API_URL || 'http://localhost:3529'
+  },
+  
+  privateRuntimeConfig: {
+    apiURL: process.env.API_URL || 'http://localhost:3529'
+  },
+
   // Global page headers: https://go.nuxtjs.dev/config-head
 
   head: {

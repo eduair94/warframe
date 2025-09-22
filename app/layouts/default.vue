@@ -16,6 +16,7 @@
         </template>
       </v-img>
       <v-spacer />
+      <GitHubButton icon color="white" class="mr-2" />
       <LanguageMenu />
     </v-app-bar>
     <v-main class="main">
@@ -25,6 +26,7 @@
           <v-btn color="primary" link to="/set">Set Price Calculator</v-btn>
           <v-btn color="primary" link to="/relic">Relic Price Calculator</v-btn>
           <v-btn color="primary" link to="/endo">Endo / Plat</v-btn>
+          <GitHubButton text="Source Code" outlined />
         </div>
         <Nuxt />
       </v-container>
@@ -56,11 +58,12 @@ export default {
   name: 'DefaultLayout',
   components: {
     LanguageMenu: () => import('../components/LanguageMenu.vue'),
+    GitHubButton: () => import('../components/GitHubButton.vue'),
   },
-  async middleware({ store, redirect, $axios, $i18n, query }) {
+  async middleware({ store, redirect, $axios, $i18n, query, $config }) {
     if (process.server) {
       const data = await $axios
-        .get('https://warframe.digitalshopuy.com')
+        .get($config.apiURL)
         .then((res) => res.data)
       store.dispatch('setItems', data)
     }
@@ -266,5 +269,10 @@ body {
 
 tbody tr:nth-of-type(odd) {
   background-color: rgba(0, 0, 0, 0.05);
+}
+
+#menu .v-btn {
+  text-transform: none;
+  font-weight: 500;
 }
 </style>

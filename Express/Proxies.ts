@@ -104,14 +104,23 @@ class Proxies {
     }
   }
   readProxyFile() {
+    if(!fs.existsSync(this.proxies)) {
+      fs.writeFileSync(this.proxies, "");
+    }
     const proxyTxt = fs.readFileSync(this.proxies, "utf-8");
-    let proxies = proxyTxt.split("\n").map((el) => {
-      el = el.trim();
-      if (!el.includes("//")) {
-        el = this.proxyType + "://" + el;
-      }
-      return el;
-    });
+    let proxies: string[] = [];
+    if(proxyTxt.length > 0) {
+      proxies = proxyTxt.split("\n").map((el) => {
+        el = el.trim();
+        if (!el.includes("//")) {
+          el = this.proxyType + "://" + el;
+        }
+        return el;
+      });
+    }
+    if(!fs.existsSync(this.banned_proxies)) {
+      fs.writeFileSync(this.banned_proxies, "");
+    }
     const bProxiesTxt = fs.readFileSync(this.banned_proxies, "utf-8");
     if (bProxiesTxt) {
       this.bProxyList = bProxiesTxt.split("\n").map((el) => {

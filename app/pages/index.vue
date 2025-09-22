@@ -201,6 +201,22 @@
         </div>
       </div>
     </div>
+    
+    <!-- Open Source Project Information -->
+    <v-card class="mt-4 mb-3" color="#2c2c54" dark>
+      <v-card-text class="text-center">
+        <div class="d-flex align-center justify-center mb-3">
+          <v-icon large class="mr-3" color="white">mdi-open-source-initiative</v-icon>
+          <h3>{{ $t('open_source_project') }}</h3>
+        </div>
+        <p class="mb-3">{{ $t('github_description') }}</p>
+        <div class="d-flex flex-wrap justify-center gap-2">
+          <GitHubButton text="View Source Code" />
+          <GitHubShare />
+        </div>
+      </v-card-text>
+    </v-card>
+    
     <v-alert class="mt-3 mt-md-4 mb-0 mb-md-3 blue darken-4" type="info" dense>
       {{ $t('disclaimer') }}
     </v-alert>
@@ -208,12 +224,14 @@
 </template>
 
 <script lang="ts">
-import { mapGetters, mapActions } from 'vuex'
 import moment from 'moment'
-import { notFound } from '../services/not_found'
+import { mapGetters } from 'vuex'
 export default {
   name: 'HomePage',
-  components: {},
+  components: {
+    GitHubButton: () => import('../components/GitHubButton.vue'),
+    GitHubShare: () => import('../components/GitHubShare.vue'),
+  },
   data() {
     return {
       all_items: [],
@@ -484,7 +502,7 @@ export default {
       return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase()
     },
     getHeaders() {
-      let toReturn = [
+      const toReturn = [
         {
           text: 'Name',
           value: 'item_name',
