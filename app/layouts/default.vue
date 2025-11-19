@@ -1,6 +1,6 @@
 <template>
   <v-app dark>
-    <v-app-bar color="#1f1f2f" :clipped-left="clipped" fixed app>
+    <v-app-bar color="#1f1f2f" :clipped-left="clipped" fixed app style="z-index: 100">
       <v-img
         max-height="90%"
         max-width="65vw"
