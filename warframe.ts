@@ -342,7 +342,7 @@ class Warframe {
       .then((res) => res.data);
     return res;
   }
-  async getWarframeItemOrders(item: Item, att = 0): Promise<{ buy: number; sell: number; volume: number; not_found?: boolean }> {
+  async getWarframeItemOrders(item: Item, att = 0): Promise<{ buy: number; sell: number; volume: number; avg_price: number; last_completed: any; not_found?: boolean }> {
     try {
       const httpAgent = proxies.getProxyAgent();
       const url = `https://api.warframe.market/v1/items/${item.url_name}/orders`;
@@ -358,8 +358,8 @@ class Warframe {
         .then((res) => res.data);
       const itemSet = item.items_in_set[0];
       let max_rank = itemSet.mod_max_rank;
-      const { volume } = await this.getWarframeItemStatistics(item, max_rank);
-      return { ...this.getWarframeItemBuySellPrice(res, max_rank), volume };
+      const { volume, avg_price, last_completed } = await this.getWarframeItemStatistics(item, max_rank);
+      return { ...this.getWarframeItemBuySellPrice(res, max_rank), volume, avg_price, last_completed };
     } catch (e) {
       const err: AxiosError = e;
       if (err?.response?.status == 429) {
@@ -367,14 +367,14 @@ class Warframe {
         return this.getWarframeItemOrders(item, att + 1);
       } else if (err?.response?.status == 404) {
         console.log("Item not found", item.url_name);
-        return { buy: 0, sell: 0, volume: 0, not_found: true };
+        return { buy: 0, sell: 0, volume: 0, avg_price: 0, last_completed: null, not_found: true };
       } else {
         console.error(e);
       }
-      return null;
+      return { buy: 0, sell: 0, volume: 0, avg_price: 0, last_completed: null };
     }
   }
-  async getWarframeItemStatistics(item: Item, max_rank: number | undefined): Promise<{ volume: number }> {
+  async getWarframeItemStatistics(item: Item, max_rank: number | undefined): Promise<{ volume: number; avg_price: number; last_completed: any }> {
     const url = `https://api.warframe.market/v1/items/${item.url_name}/statistics`;
 
     await this.addRandomDelay(300, 1000);
@@ -383,9 +383,28 @@ class Warframe {
         headers: this.getRandomHeaders(),
       })
       .then((res) => res.data);
-    const volume = res.payload.statistics_closed["48hours"].reduce((prev, curr) => (max_rank === undefined || curr.mod_rank === max_rank ? prev + curr.volume : prev), 0);
+    
+    const stats = res.payload.statistics_closed["48hours"];
+    let totalVolume = 0;
+    let totalValue = 0;
+
+    const filteredStats = stats.filter(stat => max_rank === undefined || stat.mod_rank === max_rank);
+
+    filteredStats.forEach((stat) => {
+      totalVolume += stat.volume;
+      totalValue += stat.volume * stat.avg_price;
+    });
+
+    const avg_price = totalVolume > 0 ? totalValue / totalVolume : 0;
+
+    // Get last completed transaction
+    const sortedStats = filteredStats.sort((a, b) => new Date(b.datetime).getTime() - new Date(a.datetime).getTime());
+    const last_completed = sortedStats.length > 0 ? sortedStats[0] : null;
+
     return {
-      volume,
+      volume: totalVolume,
+      avg_price,
+      last_completed
     };
   }
   getWarframeItemBuySellPrice(data: OrdersWarframe, max_rank: number | undefined) {

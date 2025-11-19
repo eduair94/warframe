@@ -563,7 +563,7 @@ export default class WarframeUndici {
     return res;
   }
 
-  async getWarframeItemOrders(item: Item, att = 0): Promise<{ buy: number; sell: number; volume: number; avg_price: number; not_found?: boolean }> {
+  async getWarframeItemOrders(item: Item, att = 0): Promise<{ buy: number; sell: number; volume: number; avg_price: number; last_completed: any; not_found?: boolean }> {
     try {
       const url = `https://api.warframe.market/v1/items/${item.url_name}/orders`;
 
@@ -571,23 +571,23 @@ export default class WarframeUndici {
       const res = await this.makeRequest(url);
       const itemSet = item.items_in_set[0];
       let max_rank = itemSet.mod_max_rank;
-      const { volume, avg_price } = await this.getWarframeItemStatistics(item, max_rank);
-      return { ...this.getWarframeItemBuySellPrice(res, max_rank), volume, avg_price };
+      const { volume, avg_price, last_completed } = await this.getWarframeItemStatistics(item, max_rank);
+      return { ...this.getWarframeItemBuySellPrice(res, max_rank), volume, avg_price, last_completed };
     } catch (e: any) {
       if (e.message && e.message.includes("429")) {
         await sleep(2000 + Math.random() * 3000); // Random delay between 2-5 seconds
         return this.getWarframeItemOrders(item, att + 1);
       } else if (e.message && e.message.includes("404")) {
         console.log("Item not found", item.url_name);
-        return { buy: 0, sell: 0, volume: 0, avg_price: 0, not_found: true };
+        return { buy: 0, sell: 0, volume: 0, avg_price: 0, last_completed: null, not_found: true };
       } else {
         console.error(e);
       }
-      return { buy: 0, sell: 0, volume: 0, avg_price: 0 };
+      return { buy: 0, sell: 0, volume: 0, avg_price: 0, last_completed: null };
     }
   }
 
-  async getWarframeItemStatistics(item: Item, max_rank: number | undefined): Promise<{ volume: number; avg_price: number }> {
+  async getWarframeItemStatistics(item: Item, max_rank: number | undefined): Promise<{ volume: number; avg_price: number; last_completed: any }> {
     const url = `https://api.warframe.market/v1/items/${item.url_name}/statistics`;
 
     await this.addRandomDelay(300, 1000);
@@ -597,18 +597,23 @@ export default class WarframeUndici {
     let totalVolume = 0;
     let totalValue = 0;
 
-    stats.forEach((stat) => {
-      if (max_rank === undefined || stat.mod_rank === max_rank) {
-        totalVolume += stat.volume;
-        totalValue += stat.volume * stat.avg_price;
-      }
+    const filteredStats = stats.filter(stat => max_rank === undefined || stat.mod_rank === max_rank);
+
+    filteredStats.forEach((stat) => {
+      totalVolume += stat.volume;
+      totalValue += stat.volume * stat.avg_price;
     });
 
     const avg_price = totalVolume > 0 ? totalValue / totalVolume : 0;
 
+    // Get last completed transaction
+    const sortedStats = filteredStats.sort((a, b) => new Date(b.datetime).getTime() - new Date(a.datetime).getTime());
+    const last_completed = sortedStats.length > 0 ? sortedStats[0] : null;
+
     return {
       volume: totalVolume,
       avg_price,
+      last_completed
     };
   }
 

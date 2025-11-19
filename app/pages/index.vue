@@ -244,6 +244,13 @@
           <template #item.market.avg_price="{ item }">
              {{ fixPrice(item.market.avg_price) }}
           </template>
+          <template #item.market.last_completed="{ item }">
+            <div v-if="item.market.last_completed" @click="openTransactionDetails(item)" style="cursor: pointer; text-decoration: underline; color: #1976d2;">
+              {{ fixPrice(item.market.last_completed.avg_price) }}
+              <v-icon small color="primary">mdi-information-outline</v-icon>
+            </div>
+            <div v-else>-</div>
+          </template>
           <template #item.priceUpdate="{ item }">
             {{ fixDate(item.priceUpdate) }}
           </template>
@@ -273,6 +280,58 @@
         :items="selectedItems"
         :headers="getHeaders()"
       />
+
+      <!-- Transaction Details Dialog -->
+      <v-dialog v-model="transactionDialog" max-width="500">
+        <v-card v-if="selectedTransactionItem">
+          <v-card-title class="headline grey lighten-2">
+            Last Transaction Details
+          </v-card-title>
+          <v-card-text class="pt-4">
+            <h3 class="mb-2">{{ selectedTransactionItem.item_name }}</h3>
+            <div v-if="selectedTransactionItem.market.last_completed">
+               <v-simple-table dense>
+                 <template #default>
+                   <tbody>
+                     <tr>
+                       <td><strong>Date</strong></td>
+                       <td>{{ new Date(selectedTransactionItem.market.last_completed.datetime).toLocaleString() }}</td>
+                     </tr>
+                     <tr>
+                       <td><strong>Volume</strong></td>
+                       <td>{{ selectedTransactionItem.market.last_completed.volume }}</td>
+                     </tr>
+                     <tr>
+                       <td><strong>Avg Price</strong></td>
+                       <td>{{ fixPrice(selectedTransactionItem.market.last_completed.avg_price) }}</td>
+                     </tr>
+                     <tr>
+                       <td><strong>Min Price</strong></td>
+                       <td>{{ selectedTransactionItem.market.last_completed.min_price }}</td>
+                     </tr>
+                     <tr>
+                       <td><strong>Max Price</strong></td>
+                       <td>{{ selectedTransactionItem.market.last_completed.max_price }}</td>
+                     </tr>
+                     <tr>
+                       <td><strong>Open Price</strong></td>
+                       <td>{{ selectedTransactionItem.market.last_completed.open_price }}</td>
+                     </tr>
+                     <tr>
+                       <td><strong>Closed Price</strong></td>
+                       <td>{{ selectedTransactionItem.market.last_completed.closed_price }}</td>
+                     </tr>
+                   </tbody>
+                 </template>
+               </v-simple-table>
+            </div>
+          </v-card-text>
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn color="primary" text @click="transactionDialog = false">Close</v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
 
       <div class="px-0 pt-3">
         <div>
@@ -375,6 +434,8 @@ export default Vue.extend({
       sortBy: 'market.volume',
       sortDesc: true,
       multiSort: false,
+      transactionDialog: false,
+      selectedTransactionItem: null,
     }
   },
   head() {
@@ -445,6 +506,10 @@ export default Vue.extend({
     this.setScrollBar()
   },
   methods: {
+    openTransactionDetails(item) {
+      this.selectedTransactionItem = item;
+      this.transactionDialog = true;
+    },
     fixPrice(price: number) {
       if (!price) return 0
       return Math.round(price * 100) / 100
@@ -750,6 +815,12 @@ export default Vue.extend({
           text: 'Avg Sold (48h)',
           value: 'market.avg_price',
           width: 'auto',
+        },
+        {
+          text: 'Last Transaction',
+          value: 'market.last_completed',
+          width: 'auto',
+          sortable: false,
         },
         {
           text: 'Diff',
