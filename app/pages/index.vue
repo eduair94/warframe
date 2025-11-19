@@ -537,10 +537,12 @@ export default Vue.extend({
       return url
     },
     addTagToFilter(tag) {
-      if (!this.includedTags.includes(tag)) {
+      if (this.includedTags.includes(tag)) {
+        this.includedTags = this.includedTags.filter(t => t !== tag)
+      } else {
         this.includedTags.push(tag)
-        this.filter()
       }
+      this.filter()
     },
     clearTags() {
       this.includedTags = []
@@ -820,7 +822,11 @@ export default Vue.extend({
           text: 'Last Transaction',
           value: 'market.last_completed',
           width: 'auto',
-          sortable: false,
+          sort: (a, b) => {
+            const priceA = a ? a.avg_price : -1;
+            const priceB = b ? b.avg_price : -1;
+            return priceA - priceB;
+          },
         },
         {
           text: 'Diff',
