@@ -6,11 +6,12 @@
         <v-data-table
           ref="dataTable"
           color="#f5f5f5"
-          :multi-sort="true"
           show-select
+          item-key="url_name"
           v-model="selectedItems"
-          sort-by="market.volume"
-          sort-desc
+          :multi-sort="multiSort"
+          :sort-by.sync="sortBy"
+          :sort-desc.sync="sortDesc"
           :item-class="row_classes"
           :headers="getHeaders()"
           :items="all_items"
@@ -86,9 +87,9 @@
                 </form>
 
                 <!-- Advanced Filters Section -->
-                <v-expansion-panels class="mt-2 mb-2" flat>
-                  <v-expansion-panel class="advanced-filter-panel">
-                    <v-expansion-panel-header class="white--text">
+                <v-expansion-panels class="mt-2 mb-2 transparent" flat dark>
+                  <v-expansion-panel class="transparent">
+                    <v-expansion-panel-header>
                       Advanced Filters (Tags & Logic)
                     </v-expansion-panel-header>
                     <v-expansion-panel-content>
@@ -105,7 +106,16 @@
                             dark
                             dense
                             hide-details
-                          ></v-combobox>
+                          >
+                            <template #selection="{ item, index }">
+                              <v-chip small close @click:close="includedTags.splice(index, 1)">
+                                {{ formatTag(item) }}
+                              </v-chip>
+                            </template>
+                            <template #item="{ item }">
+                              {{ formatTag(item) }}
+                            </template>
+                          </v-combobox>
                         </v-col>
                         <v-col cols="12" md="2">
                           <v-radio-group v-model="tagLogic" row dark dense hide-details class="mt-0">
@@ -125,10 +135,26 @@
                             dark
                             dense
                             hide-details
-                          ></v-combobox>
+                          >
+                            <template #selection="{ item, index }">
+                              <v-chip small close @click:close="excludedTags.splice(index, 1)">
+                                {{ formatTag(item) }}
+                              </v-chip>
+                            </template>
+                            <template #item="{ item }">
+                              {{ formatTag(item) }}
+                            </template>
+                          </v-combobox>
                         </v-col>
-                        <v-col cols="12" md="2" class="d-flex align-center">
-                           <v-btn small color="secondary" @click="filter">Apply Filters</v-btn>
+                        <v-col cols="12" md="2" class="d-flex align-center justify-end">
+                          <v-btn
+                            small
+                            color="error"
+                            @click="clearTags"
+                            :disabled="includedTags.length === 0 && excludedTags.length === 0"
+                          >
+                            Clear Tags
+                          </v-btn>
                         </v-col>
                       </v-row>
                     </v-expansion-panel-content>
@@ -146,11 +172,17 @@
                   </v-btn>
                 </div>
 
-                <div>
+                <div class="d-flex">
                   <v-checkbox
                     v-model="avgPrice"
                     dark
                     label="Average Prices (5 lowest prices)"
+                    class="mr-4"
+                  ></v-checkbox>
+                  <v-checkbox
+                    v-model="multiSort"
+                    dark
+                    label="Multi-Sort"
                   ></v-checkbox>
                 </div>
               </div>
@@ -223,8 +255,9 @@
                 small
                 @click.stop="addTagToFilter(tag)"
                 style="cursor: pointer"
+                :color="includedTags.includes(tag) ? 'primary' : ''"
               >
-                {{ tag }}
+                {{ formatTag(tag) }}
               </v-chip>
             </v-chip-group>
           </template>
@@ -235,33 +268,11 @@
       </client-only>
       
       <!-- Comparison Dialog -->
-      <v-dialog v-model="compareDialog" max-width="90vw">
-        <v-card dark>
-          <v-card-title>Item Comparison</v-card-title>
-          <v-card-text>
-            <v-data-table
-              :headers="getHeaders()"
-              :items="selectedItems"
-              hide-default-footer
-              class="elevation-1"
-            >
-              <template #item.market.buyAvg="{ item }">
-                {{ fixPrice(item.market.buyAvg) }}
-              </template>
-              <template #item.market.sellAvg="{ item }">
-                {{ fixPrice(item.market.sellAvg) }}
-              </template>
-              <template #item.market.avg_price="{ item }">
-                {{ fixPrice(item.market.avg_price) }}
-              </template>
-            </v-data-table>
-          </v-card-text>
-          <v-card-actions>
-            <v-spacer></v-spacer>
-            <v-btn color="primary" text @click="compareDialog = false">Close</v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-dialog>
+      <ItemComparison
+        v-model="compareDialog"
+        :items="selectedItems"
+        :headers="getHeaders()"
+      />
 
       <div class="px-0 pt-3">
         <div>
@@ -336,15 +347,16 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-import moment from 'moment'
-import { mapGetters } from 'vuex'
+import moment from 'moment';
+import Vue from 'vue';
+import { mapGetters } from 'vuex';
 
 export default Vue.extend({
   name: 'HomePage',
   components: {
     GitHubButton: () => import('../components/GitHubButton.vue'),
     GitHubShare: () => import('../components/GitHubShare.vue'),
+    ItemComparison: () => import('../components/ItemComparison.vue'),
   },
   data() {
     return {
@@ -360,6 +372,9 @@ export default Vue.extend({
       tagLogic: 'AND',
       selectedItems: [],
       compareDialog: false,
+      sortBy: 'market.volume',
+      sortDesc: true,
+      multiSort: false,
     }
   },
   head() {
@@ -377,6 +392,42 @@ export default Vue.extend({
         if (item.tags) item.tags.forEach(tag => tags.add(tag))
       })
       return Array.from(tags).sort()
+    }
+  },
+  watch: {
+    includedTags() {
+      this.filter()
+    },
+    excludedTags() {
+      this.filter()
+    },
+    tagLogic() {
+      this.filter()
+    },
+    avgPrice(val) {
+      if (Array.isArray(this.sortBy)) {
+        this.sortBy = this.sortBy.map(key => {
+          if (val) {
+            if (key === 'market.buy') return 'market.buyAvg'
+            if (key === 'market.sell') return 'market.sellAvg'
+          } else {
+            if (key === 'market.buyAvg') return 'market.buy'
+            if (key === 'market.sellAvg') return 'market.sell'
+          }
+          return key
+        })
+      } else {
+        let key = this.sortBy
+        if (val) {
+          if (key === 'market.buy') key = 'market.buyAvg'
+          else if (key === 'market.sell') key = 'market.sellAvg'
+        } else if (key === 'market.buyAvg') {
+          key = 'market.buy'
+        } else if (key === 'market.sellAvg') {
+          key = 'market.sell'
+        }
+        this.sortBy = key
+      }
     }
   },
   beforeMount() {
@@ -398,6 +449,13 @@ export default Vue.extend({
       if (!price) return 0
       return Math.round(price * 100) / 100
     },
+    formatTag(tag: string) {
+      if (!tag) return ''
+      return tag
+        .split('_')
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(' ')
+    },
     fixDate(date) {
       return moment(date).fromNow()
     },
@@ -418,6 +476,11 @@ export default Vue.extend({
         this.includedTags.push(tag)
         this.filter()
       }
+    },
+    clearTags() {
+      this.includedTags = []
+      this.excludedTags = []
+      this.tagLogic = 'AND'
     },
     reset() {
       this.selection = ''
@@ -797,9 +860,6 @@ export default Vue.extend({
 .filter-input {
   min-width: 200px;
   flex: 1 1 auto;
-}
-.advanced-filter-panel {
-  background-color: #27273a;
 }
 .clickable-tag {
   cursor: pointer;
