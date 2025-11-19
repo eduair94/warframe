@@ -59,17 +59,17 @@ export default Vue.extend({
   },
   computed: {
     dialog: {
-      get() {
+      get(): boolean {
         return this.value
       },
-      set(val) {
+      set(val: boolean) {
         this.$emit('input', val)
       },
     },
   },
   methods: {
     close() {
-      this.dialog = false
+      this.$emit('input', false)
     },
     fixPrice(price: number) {
       if (!price) return 0
