@@ -6,6 +6,9 @@
         <v-data-table
           ref="dataTable"
           color="#f5f5f5"
+          :multi-sort="true"
+          show-select
+          v-model="selectedItems"
           sort-by="market.volume"
           sort-desc
           :item-class="row_classes"
@@ -34,7 +37,7 @@
               </div>
             </div>
             <div>
-              <div style="background: #1f1f2f" class="pa-3 white--text">
+              <div class="filter-container pa-3 white--text">
                 <form
                   id="form_warframe"
                   class="d-flex align-center flex-wrap"
@@ -44,13 +47,16 @@
                     v-model="min_volume"
                     dark
                     type="number"
-                    width="200px"
+                    class="filter-input mr-2"
                     label="Min Volume"
+                    hide-details
+                    dense
                   ></v-text-field>
                   <v-select
                     v-model="selection"
                     label="Select"
                     dark
+                    class="filter-input mr-2"
                     :items="[
                       'All',
                       'Warframe',
@@ -61,19 +67,85 @@
                       'Mod',
                       'Relic',
                     ]"
+                    hide-details
+                    dense
                   ></v-select>
                   <v-combobox
                     v-model="search"
                     label="Search"
-                    width="200px"
+                    class="filter-input mr-2"
                     dark
                     :items="allItems.map((el) => el.item_name)"
+                    hide-details
+                    dense
                   ></v-combobox>
-                  <v-btn type="submit" color="primary"> Search </v-btn>
-                  <v-btn color="primary" @click.prevent="reset">
+                  <v-btn type="submit" color="primary" class="mr-2 my-1"> Search </v-btn>
+                  <v-btn color="primary" @click.prevent="reset" class="my-1">
                     <v-icon>mdi-restore</v-icon>
                   </v-btn>
                 </form>
+
+                <!-- Advanced Filters Section -->
+                <v-expansion-panels class="mt-2 mb-2" flat>
+                  <v-expansion-panel class="advanced-filter-panel">
+                    <v-expansion-panel-header class="white--text">
+                      Advanced Filters (Tags & Logic)
+                    </v-expansion-panel-header>
+                    <v-expansion-panel-content>
+                      <v-row dense>
+                        <v-col cols="12" md="4">
+                          <v-combobox
+                            v-model="includedTags"
+                            :items="availableTags"
+                            label="Include Tags"
+                            multiple
+                            chips
+                            small-chips
+                            deletable-chips
+                            dark
+                            dense
+                            hide-details
+                          ></v-combobox>
+                        </v-col>
+                        <v-col cols="12" md="2">
+                          <v-radio-group v-model="tagLogic" row dark dense hide-details class="mt-0">
+                            <v-radio label="AND" value="AND"></v-radio>
+                            <v-radio label="OR" value="OR"></v-radio>
+                          </v-radio-group>
+                        </v-col>
+                        <v-col cols="12" md="4">
+                          <v-combobox
+                            v-model="excludedTags"
+                            :items="availableTags"
+                            label="Exclude Tags (NOT)"
+                            multiple
+                            chips
+                            small-chips
+                            deletable-chips
+                            dark
+                            dense
+                            hide-details
+                          ></v-combobox>
+                        </v-col>
+                        <v-col cols="12" md="2" class="d-flex align-center">
+                           <v-btn small color="secondary" @click="filter">Apply Filters</v-btn>
+                        </v-col>
+                      </v-row>
+                    </v-expansion-panel-content>
+                  </v-expansion-panel>
+                </v-expansion-panels>
+
+                <!-- Comparison Action -->
+                <div v-if="selectedItems.length > 0" class="d-flex align-center my-2 pa-2 blue darken-4 rounded">
+                  <span class="white--text mr-4">{{ selectedItems.length }} items selected</span>
+                  <v-btn small color="white" light @click="compareDialog = true">
+                    Compare Selected
+                  </v-btn>
+                  <v-btn icon small color="white" class="ml-2" @click="selectedItems = []">
+                    <v-icon>mdi-close</v-icon>
+                  </v-btn>
+                </div>
+
                 <div>
                   <v-checkbox
                     v-model="avgPrice"
@@ -136,12 +208,22 @@
           <template #item.market.sellAvg="{ item }">
             {{ fixPrice(item.market.sellAvg) }}
           </template>
+          <!-- New Column Template -->
+          <template #item.market.avg_price="{ item }">
+             {{ fixPrice(item.market.avg_price) }}
+          </template>
           <template #item.priceUpdate="{ item }">
             {{ fixDate(item.priceUpdate) }}
           </template>
           <template #item.tags="{ item }">
             <v-chip-group selected-class="text-primary" column>
-              <v-chip v-for="(tag, index) in item.tags" :key="index">
+              <v-chip 
+                v-for="(tag, index) in item.tags" 
+                :key="index"
+                small
+                @click.stop="addTagToFilter(tag)"
+                style="cursor: pointer"
+              >
                 {{ tag }}
               </v-chip>
             </v-chip-group>
@@ -151,6 +233,36 @@
           </template>
         </v-data-table>
       </client-only>
+      
+      <!-- Comparison Dialog -->
+      <v-dialog v-model="compareDialog" max-width="90vw">
+        <v-card dark>
+          <v-card-title>Item Comparison</v-card-title>
+          <v-card-text>
+            <v-data-table
+              :headers="getHeaders()"
+              :items="selectedItems"
+              hide-default-footer
+              class="elevation-1"
+            >
+              <template #item.market.buyAvg="{ item }">
+                {{ fixPrice(item.market.buyAvg) }}
+              </template>
+              <template #item.market.sellAvg="{ item }">
+                {{ fixPrice(item.market.sellAvg) }}
+              </template>
+              <template #item.market.avg_price="{ item }">
+                {{ fixPrice(item.market.avg_price) }}
+              </template>
+            </v-data-table>
+          </v-card-text>
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn color="primary" text @click="compareDialog = false">Close</v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
+
       <div class="px-0 pt-3">
         <div>
           <div
@@ -224,8 +336,8 @@
 </template>
 
 <script lang="ts">
-import moment from 'moment'
-import { mapGetters } from 'vuex'
+import moment from 'moment';
+import { mapGetters } from 'vuex';
 export default {
   name: 'HomePage',
   components: {
@@ -241,6 +353,11 @@ export default {
       selection: 'All',
       hasScroll: false,
       scrollWidth: 0,
+      includedTags: [],
+      excludedTags: [],
+      tagLogic: 'AND',
+      selectedItems: [],
+      compareDialog: false,
     }
   },
   head() {
@@ -252,6 +369,13 @@ export default {
     ...mapGetters({
       allItems: 'all_items',
     }),
+    availableTags() {
+      const tags = new Set()
+      this.allItems.forEach(item => {
+        if (item.tags) item.tags.forEach(tag => tags.add(tag))
+      })
+      return Array.from(tags).sort()
+    }
   },
   beforeMount() {
     this.beforeMount()
@@ -287,10 +411,20 @@ export default {
       const url = `https://drops.warframestat.us/#/search/${encoded}/items/regex`
       return url
     },
+    addTagToFilter(tag) {
+      if (!this.includedTags.includes(tag)) {
+        this.includedTags.push(tag)
+        this.filter()
+      }
+    },
     reset() {
       this.selection = ''
       this.search = ''
       this.min_volume = 0
+      this.includedTags = []
+      this.excludedTags = []
+      this.tagLogic = 'AND'
+      this.selectedItems = []
       this.all_items = this.allItems
     },
     filterSelect(el: any) {
@@ -335,11 +469,39 @@ export default {
     },
     filter() {
       this.all_items = this.allItems.filter(
-        (el) =>
-          el.market.volume >= this.min_volume &&
+        (el) => {
+          // Basic filters
+          const basicMatch = el.market.volume >= this.min_volume &&
           this.filterSelect(el) &&
           (!this.search ||
-            el.item_name.toLowerCase().includes(this.search.toLowerCase()))
+            el.item_name.toLowerCase().includes(this.search.toLowerCase()));
+
+          if (!basicMatch) return false;
+
+          // Advanced Tag Logic
+          const itemTags = el.tags || [];
+          
+          // Exclude Logic (NOT)
+          if (this.excludedTags.length > 0) {
+            const hasExcluded = this.excludedTags.some(tag => itemTags.includes(tag));
+            if (hasExcluded) return false;
+          }
+
+          // Include Logic (AND / OR)
+          if (this.includedTags.length > 0) {
+            if (this.tagLogic === 'AND') {
+              // Must have ALL included tags
+              const hasAll = this.includedTags.every(tag => itemTags.includes(tag));
+              if (!hasAll) return false;
+            } else {
+              // Must have AT LEAST ONE included tag
+              const hasAny = this.includedTags.some(tag => itemTags.includes(tag));
+              if (!hasAny) return false;
+            }
+          }
+
+          return true;
+        }
       )
     },
     changeCode(code: string, codeWith: string) {
@@ -518,6 +680,12 @@ export default {
           value: 'market.sell',
           width: 'auto',
         },
+        // New Column
+        {
+          text: 'Avg Sold (48h)',
+          value: 'market.avg_price',
+          width: 'auto',
+        },
         {
           text: 'Diff',
           value: 'market.diff',
@@ -619,3 +787,19 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.filter-container {
+  background: #1f1f2f;
+}
+.filter-input {
+  min-width: 200px;
+  flex: 1 1 auto;
+}
+.advanced-filter-panel {
+  background-color: #27273a;
+}
+.clickable-tag {
+  cursor: pointer;
+}
+</style>

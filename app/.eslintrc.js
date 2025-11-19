@@ -11,5 +11,16 @@ module.exports = {
   ],
   plugins: [],
   // add your custom rules here
-  rules: {},
+  rules: {
+    'vue/valid-v-slot': [
+      'error',
+      {
+        allowModifiers: true,
+      },
+    ],
+    'no-console': 'off',
+    'vue/no-unused-vars': 'off',
+    'vue/attributes-order': 'off',
+    'vue/no-v-html': 'off',
+  },
 }
