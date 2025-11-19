@@ -336,9 +336,11 @@
 </template>
 
 <script lang="ts">
-import moment from 'moment';
-import { mapGetters } from 'vuex';
-export default {
+import Vue from 'vue'
+import moment from 'moment'
+import { mapGetters } from 'vuex'
+
+export default Vue.extend({
   name: 'HomePage',
   components: {
     GitHubButton: () => import('../components/GitHubButton.vue'),
@@ -785,7 +787,7 @@ export default {
       })
     },
   },
-}
+})
 </script>
 
 <style scoped>
