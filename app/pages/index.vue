@@ -383,6 +383,32 @@
         </div>
       </div>
     </div>
+
+    <!-- Feedback Request -->
+    <v-alert
+      color="#ff4500"
+      dark
+      icon="mdi-reddit"
+      prominent
+      class="mt-4 mb-3"
+    >
+      <div class="d-flex align-center justify-space-between flex-wrap">
+        <div>
+          <h3 class="text-h6 font-weight-bold">We need your feedback!</h3>
+          <div>Help us improve by sharing your thoughts and reviews on our Reddit thread. That will help us a lot!</div>
+        </div>
+        <v-btn
+          href="https://www.reddit.com/r/Warframe/comments/1nnvsep/my_warframe_market_analytics_app_looking_for/"
+          target="_blank"
+          color="white"
+          light
+          class="mt-2 mt-sm-0 ml-sm-4"
+        >
+          <v-icon left color="#ff4500">mdi-reddit</v-icon>
+          Join Discussion
+        </v-btn>
+      </div>
+    </v-alert>
     
     <!-- Open Source Project Information -->
     <v-card class="mt-4 mb-3" color="#2c2c54" dark>
