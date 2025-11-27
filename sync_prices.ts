@@ -75,8 +75,20 @@ async function main() {
     let successCount = 0;
     let errorCount = 0;
     let removedCount = 0;
+    let skippedCount = 0;
     let inFlightCount = 0;
     const concurrencyLimit = CONCURRENCY_LIMIT;
+    
+    // Validate market data before saving - never save all-zero data
+    function isValidMarket(market: any): boolean {
+      if (!market) return false;
+      if (market.not_found) return false;
+      // If all values are 0, something went wrong - don't overwrite good data with zeros
+      if (market.buy === 0 && market.sell === 0 && market.volume === 0 && market.avg_price === 0) {
+        return false;
+      }
+      return true;
+    }
     
     async function processEntry(item: Item) {
       inFlightCount++;
@@ -94,6 +106,10 @@ async function main() {
             log('🗑️', `Removed: ${item.url_name} (${duration}ms)`, colors.yellow);
             await m.removeItemDB(item.id);
             removedCount++;
+          } else if (!isValidMarket(market)) {
+            // Skip saving invalid/zero market data
+            log('⚠️', `Skipped (invalid data): ${item.url_name} (${duration}ms)`, colors.yellow);
+            skippedCount++;
           } else {
             await m.saveItem(item.id, { market, priceUpdate: new Date() });
             successCount++;
@@ -142,7 +158,7 @@ async function main() {
       const rate = (idx / (Date.now() - startTime) * 1000).toFixed(1);
       const eta = idx > 0 ? Math.round((items.length - idx) / (idx / (Date.now() - startTime) * 1000)) : 0;
       
-      log('📈', `Progress: ${idx}/${items.length} (${progress}%) | ✅ ${successCount} | ❌ ${errorCount} | 🗑️ ${removedCount} | ⏱️ ${elapsed}s | ${rate}/s | ETA: ${eta}s`, colors.cyan);
+      log('📈', `Progress: ${idx}/${items.length} (${progress}%) | ✅ ${successCount} | ⚠️ ${skippedCount} | ❌ ${errorCount} | 🗑️ ${removedCount} | ⏱️ ${elapsed}s | ${rate}/s | ETA: ${eta}s`, colors.cyan);
     }
     
     stopActivityMonitor();
@@ -153,6 +169,7 @@ async function main() {
     console.log('='.repeat(60));
     log('📊', `Total items processed: ${idx}`, colors.cyan);
     log('✅', `Successfully updated: ${successCount}`, colors.green);
+    log('⚠️', `Skipped (invalid data): ${skippedCount}`, colors.yellow);
     log('🗑️', `Removed (not found): ${removedCount}`, colors.yellow);
     log('❌', `Errors: ${errorCount}`, colors.red);
     log('⏱️', `Total time: ${totalTime}s`, colors.magenta);

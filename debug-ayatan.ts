@@ -66,6 +66,38 @@ async function debugAyatan() {
   console.log("  - Result:", JSON.stringify(market, null, 2));
   console.log("");
   
+  // Step 2.5: VALIDATE market data before saving
+  console.log("Step 2.5: Validating market data...");
+  const isValidMarket = (m: any): boolean => {
+    if (!m) {
+      console.log("  ❌ INVALID: market is null/undefined");
+      return false;
+    }
+    if (m.not_found) {
+      console.log("  ❌ INVALID: item not found on API");
+      return false;
+    }
+    // Check if all price data is zero (indicates a failed fetch)
+    if (m.buy === 0 && m.sell === 0 && m.volume === 0 && m.avg_price === 0) {
+      console.log("  ❌ INVALID: All market values are 0 (likely failed fetch)");
+      return false;
+    }
+    // At minimum, we should have either buy or sell > 0, or volume > 0
+    if (m.buy === 0 && m.sell === 0 && m.volume === 0) {
+      console.log("  ⚠️ WARNING: No buy/sell orders and no volume - item may have no market activity");
+      // Still valid, just no activity
+    }
+    return true;
+  };
+  
+  if (!isValidMarket(market)) {
+    console.log("  🛑 ABORTING: Will NOT save invalid market data to database!");
+    console.log("  - Current DB market data preserved");
+    process.exit(1);
+  }
+  console.log("  ✅ Market data is valid!");
+  console.log("");
+  
   // Step 3: Save to DB
   console.log("Step 3: Saving market data to database...");
   const itemId = dbItem?.id || dbItem?._id;
