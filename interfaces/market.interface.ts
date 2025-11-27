@@ -37,6 +37,18 @@ export interface IMarketItem {
   priceUpdate?: Date;
   /** Item added to set calculation */
   item_in_set?: IItemInSet;
+  /** Whether item was enriched with v2 API data */
+  v2_enriched?: boolean;
+  /** Timestamp when v2 enrichment was performed */
+  v2_enriched_at?: Date;
+  /** Maximum amber stars for Ayatan sculptures (from v2 API) */
+  max_amber_stars?: number;
+  /** Maximum cyan stars for Ayatan sculptures (from v2 API) */
+  max_cyan_stars?: number;
+  /** Base endo value for Ayatan sculptures (from v2 API) */
+  base_endo?: number;
+  /** Endo multiplier for Ayatan sculptures (from v2 API) */
+  endo_multiplier?: number;
 }
 
 /**

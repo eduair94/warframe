@@ -117,7 +117,11 @@ export class MarketService {
       if (v2Data) {
         // Only add Ayatan-specific fields if they exist in v2 response
         // This preserves v1 data for non-Ayatan items
-        const enrichment: Record<string, any> = {};
+        const enrichment: Record<string, any> = {
+          // Always mark as v2 enriched when we successfully fetch v2 data
+          v2_enriched: true,
+          v2_enriched_at: new Date()
+        };
         
         // Ayatan sculpture fields (only add if present)
         if (v2Data.maxAmberStars !== undefined) {
@@ -133,13 +137,11 @@ export class MarketService {
           enrichment.endo_multiplier = v2Data.endoMultiplier;
         }
         
-        // Only merge if there's something to add
-        if (Object.keys(enrichment).length > 0) {
-          v1Response.payload.item = {
-            ...v1Response.payload.item,
-            ...enrichment
-          };
-        }
+        // Always merge since we at least have v2_enriched flag
+        v1Response.payload.item = {
+          ...v1Response.payload.item,
+          ...enrichment
+        };
       }
     } catch (error) {
       // V2 enrichment is optional, continue with v1 data

@@ -19,6 +19,9 @@ const CONCURRENCY_LIMIT = parseInt(process.env.CONCURRENCY || '30', 10);
 const MIN_DELAY = parseInt(process.env.MIN_DELAY || '100', 10);
 const MAX_DELAY = parseInt(process.env.MAX_DELAY || '300', 10);
 
+// Check if we should force v2 enrichment for all items
+const FORCE_V2_ENRICHMENT = process.env.FORCE_V2 === 'true';
+
 function log(icon: string, message: string, color: string = colors.reset) {
   const timestamp = new Date().toISOString().replace('T', ' ').split('.')[0];
   console.log(`${colors.cyan}[${timestamp}]${colors.reset} ${icon} ${color}${message}${colors.reset}`);
@@ -45,9 +48,26 @@ function updateActivity() {
   lastActivityTime = Date.now();
 }
 
+/**
+ * Check if an item needs v2 enrichment
+ * @param itemDB - The item from database
+ * @returns true if the item needs to be updated with v2 data
+ */
+function needsV2Enrichment(itemDB: any): boolean {
+  if (FORCE_V2_ENRICHMENT) return true;
+  
+  // Item was never enriched with v2 data
+  if (!itemDB.v2_enriched) return true;
+  
+  return false;
+}
+
 async function main() {
   log('🚀', 'Starting Items Sync Process...', colors.bright);
   log('⚙️', `Config: Concurrency=${CONCURRENCY_LIMIT}, Delay=${MIN_DELAY}-${MAX_DELAY}ms`, colors.dim);
+  if (FORCE_V2_ENRICHMENT) {
+    log('🔄', 'FORCE_V2=true - Will re-enrich all items with v2 API data', colors.yellow);
+  }
   
   try {
     log('🔌', 'Connecting to MongoDB...', colors.blue);
@@ -76,6 +96,7 @@ async function main() {
     
     let idx = 0;
     let newItems = 0;
+    let updatedItems = 0;
     let skippedItems = 0;
     let errorCount = 0;
     
@@ -97,13 +118,29 @@ async function main() {
           const itemDB = await m.getSingleItemDB(item);
           
           if (!itemDB) {
-            if (idx < 5) {
+            // New item - fetch and save with v2 enrichment
+            if (newItems < 5) {
               log('➕', `New item: ${item.url_name}`, colors.green);
             }
             const itemData = await m.getSingleItemData(item);
             const itemToSave = itemData.payload.item;
             await m.saveItem(itemToSave.id, { ...itemToSave, ...item });
             return { status: 'new' };
+          } else if (needsV2Enrichment(itemDB)) {
+            // Existing item needs v2 enrichment
+            if (updatedItems < 5) {
+              log('🔄', `Updating v2 data: ${item.url_name}`, colors.yellow);
+            }
+            const itemData = await m.getSingleItemData(item);
+            const itemToSave = itemData.payload.item;
+            // Preserve existing market data and priceUpdate, but update with new v2 enriched data
+            await m.saveItem(itemToSave.id, {
+              ...itemToSave,
+              ...item,
+              market: itemDB.market,
+              priceUpdate: itemDB.priceUpdate
+            });
+            return { status: 'updated' };
           } else {
             return { status: 'skipped' };
           }
@@ -117,6 +154,7 @@ async function main() {
       for (const result of batchResults) {
         idx++;
         if (result.status === 'new') newItems++;
+        else if (result.status === 'updated') updatedItems++;
         else if (result.status === 'skipped') skippedItems++;
         else if (result.status === 'error') errorCount++;
       }
@@ -127,7 +165,7 @@ async function main() {
       const rate = (idx / (Date.now() - startTime) * 1000).toFixed(1);
       const eta = idx > 0 ? Math.round((items.length - idx) / (idx / (Date.now() - startTime) * 1000)) : 0;
       
-      log('📈', `Progress: ${idx}/${items.length} (${progress}%) | ➕ ${newItems} | ⏭️ ${skippedItems} | ❌ ${errorCount} | ⏱️ ${elapsed}s | ${rate}/s | ETA: ${eta}s`, colors.cyan);
+      log('📈', `Progress: ${idx}/${items.length} (${progress}%) | ➕ ${newItems} | 🔄 ${updatedItems} | ⏭️ ${skippedItems} | ❌ ${errorCount} | ⏱️ ${elapsed}s | ${rate}/s | ETA: ${eta}s`, colors.cyan);
     }
     
     stopActivityMonitor();
@@ -138,7 +176,8 @@ async function main() {
     console.log('='.repeat(60));
     log('📊', `Total items checked: ${idx}`, colors.cyan);
     log('➕', `New items added: ${newItems}`, colors.green);
-    log('⏭️', `Already in DB: ${skippedItems}`, colors.yellow);
+    log('🔄', `Updated with v2 data: ${updatedItems}`, colors.yellow);
+    log('⏭️', `Already up-to-date: ${skippedItems}`, colors.dim);
     log('❌', `Errors: ${errorCount}`, colors.red);
     log('⏱️', `Total time: ${totalTime}s`, colors.magenta);
     console.log('='.repeat(60) + '\n');
