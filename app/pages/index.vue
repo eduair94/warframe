@@ -245,11 +245,11 @@
              {{ fixPrice(item.market.avg_price) }}
           </template>
           <template #item.market.last_completed="{ item }">
-            <div v-if="item.market.last_completed" @click="openTransactionDetails(item)" style="cursor: pointer; text-decoration: underline; color: #1976d2;">
-              {{ fixPrice(item.market.last_completed.avg_price) }}
-              <v-icon small color="primary">mdi-information-outline</v-icon>
-            </div>
-            <div v-else>-</div>
+            <LastTransactionCell
+              :last-completed="item.market.last_completed"
+              :show-icon="true"
+              @click="openTransactionDetails(item)"
+            />
           </template>
           <template #item.priceUpdate="{ item }">
             {{ fixDate(item.priceUpdate) }}
@@ -442,6 +442,7 @@ export default Vue.extend({
     GitHubButton: () => import('../components/GitHubButton.vue'),
     GitHubShare: () => import('../components/GitHubShare.vue'),
     ItemComparison: () => import('../components/ItemComparison.vue'),
+    LastTransactionCell: () => import('../components/LastTransactionCell.vue'),
   },
   data() {
     return {

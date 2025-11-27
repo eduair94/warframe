@@ -28,6 +28,11 @@
           <template #item.market.avg_price="{ item }">
             {{ fixPrice(item.market.avg_price) }}
           </template>
+          <template #item.market.last_completed="{ item }">
+            <LastTransactionCell
+              :last-completed="item.market.last_completed"
+            />
+          </template>
         </v-data-table>
       </v-card-text>
       <v-card-actions>
@@ -40,9 +45,13 @@
 
 <script lang="ts">
 import Vue from 'vue';
+import LastTransactionCell from './LastTransactionCell.vue';
 
 export default Vue.extend({
   name: 'ItemComparison',
+  components: {
+    LastTransactionCell,
+  },
   props: {
     value: {
       type: Boolean,
