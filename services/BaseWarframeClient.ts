@@ -22,14 +22,14 @@
  */
 
 import { Schema } from 'mongoose';
-import { MongooseServer } from '../database';
 import { COLLECTIONS } from '../constants';
+import { MongooseServer } from '../database';
+import { ItemProcessor } from './ItemProcessor';
 import { ItemService } from './ItemService';
-import { SetService } from './SetService';
+import { MarketService, PriceCalculationConfig } from './MarketService';
 import { RelicService } from './RelicService';
 import { RivenService } from './RivenService';
-import { MarketService, PriceCalculationConfig } from './MarketService';
-import { ItemProcessor } from './ItemProcessor';
+import { SetService } from './SetService';
 
 /**
  * Configuration options for Warframe clients

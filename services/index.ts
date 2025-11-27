@@ -17,10 +17,10 @@ export { HttpService } from './HttpService';
 export { UndiciHttpService } from './UndiciHttpService';
 
 // Domain Services
-export { MarketService } from './MarketService';
-export { RivenService } from './RivenService';
-export { RelicService } from './RelicService';
 export { ItemService } from './ItemService';
+export { MarketService, PriceCalculationConfig } from './MarketService';
+export { RelicService } from './RelicService';
+export { RivenService } from './RivenService';
 export { SetService } from './SetService';
 
 // Utility Services
@@ -28,9 +28,10 @@ export { HeaderService } from './HeaderService';
 export { ProxyManagerAdapter } from './ProxyManagerAdapter';
 
 // Calculators & Processors (Pure utilities, no dependencies)
-export { OrderCalculator, type IOrderData, type IPriceCalculationResult, type IPriceCalculationOptions } from './OrderCalculator';
-export { StatisticsCalculator, type IStatisticsDataPoint, type IStatisticsResult, type IStatisticsOptions } from './StatisticsCalculator';
 export { ItemProcessor } from './ItemProcessor';
+export { OrderCalculator, type IOrderData, type IPriceCalculationOptions, type IPriceCalculationResult } from './OrderCalculator';
+export { StatisticsCalculator, type IStatisticsDataPoint, type IStatisticsOptions, type IStatisticsResult } from './StatisticsCalculator';
 
 // Base Classes (for extension)
 export { BaseWarframeClient } from './BaseWarframeClient';
+

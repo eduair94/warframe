@@ -17,13 +17,13 @@
  */
 
 import {
-  UndiciHttpService,
   RelicService,
   RivenService,
-  SetService
+  SetService,
+  UndiciHttpService
 } from "./services";
-import { MarketService } from "./services/MarketService";
 import { BaseWarframeClient, WarframeClientConfig } from "./services/BaseWarframeClient";
+import { MarketService } from "./services/MarketService";
 
 // Debug mode - set DEBUG=true environment variable for verbose logging
 const DEBUG = process.env.DEBUG === 'true';

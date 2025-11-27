@@ -13,9 +13,9 @@
  * - Processing items for display
  */
 
-import { IHttpClient } from '../interfaces/http.interface';
 import { API_URLS, PRICE_CONFIG } from '../constants';
 import { sleep } from '../Express/config';
+import { IHttpClient } from '../interfaces/http.interface';
 import { OrderCalculator } from './OrderCalculator';
 import { StatisticsCalculator } from './StatisticsCalculator';
 
