@@ -28,7 +28,7 @@ import { ItemService } from './ItemService';
 import { SetService } from './SetService';
 import { RelicService } from './RelicService';
 import { RivenService } from './RivenService';
-import { MarketService } from './MarketService';
+import { MarketService, PriceCalculationConfig } from './MarketService';
 import { ItemProcessor } from './ItemProcessor';
 
 /**
@@ -45,6 +45,8 @@ export type WarframeClientConfig = {
   maxDelay?: number;
   /** Custom HTTP timeout in milliseconds */
   timeout?: number;
+  /** Price calculation configuration (delays, etc.) */
+  priceConfig?: Partial<PriceCalculationConfig>;
 };
 
 /**

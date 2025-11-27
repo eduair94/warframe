@@ -70,7 +70,7 @@ export default class WarframeUndici extends BaseWarframeClient {
 
     // Initialize MarketService with undici HTTP client
     // All API methods in base class delegate to this service
-    this.marketService = new MarketService(this.httpClient);
+    this.marketService = new MarketService(this.httpClient, config.priceConfig);
 
     // Initialize other services with the same HTTP client
     this.relicService = new RelicService(

@@ -15,6 +15,11 @@ const colors = {
   dim: '\x1b[2m',
 };
 
+// Performance configuration
+const CONCURRENCY_LIMIT = parseInt(process.env.CONCURRENCY || '50', 10);
+const MIN_DELAY = parseInt(process.env.MIN_DELAY || '100', 10);
+const MAX_DELAY = parseInt(process.env.MAX_DELAY || '300', 10);
+
 function log(icon: string, message: string, color: string = colors.reset) {
   const timestamp = new Date().toISOString().replace('T', ' ').split('.')[0];
   console.log(`${colors.cyan}[${timestamp}]${colors.reset} ${icon} ${color}${message}${colors.reset}`);
@@ -43,13 +48,27 @@ function updateActivity() {
 
 async function main() {
   log('🚀', 'Starting Price Sync Process...', colors.bright);
+  log('⚙️', `Config: Concurrency=${CONCURRENCY_LIMIT}, Delay=${MIN_DELAY}-${MAX_DELAY}ms`, colors.dim);
   
   try {
     log('🔌', 'Connecting to MongoDB...', colors.blue);
     await MongooseServer.startConnectionPromise();
     log('✅', 'MongoDB connected successfully', colors.green);
     
-    const m = new WarframeUndici();
+    // Create client with optimized settings for bulk sync
+    // Reduced delays significantly for faster processing
+    const m = new WarframeUndici({
+      minDelay: MIN_DELAY,
+      maxDelay: MAX_DELAY,
+      maxRetries: 5,  // Fewer retries for speed
+      priceConfig: {
+        // Minimal delays - the HTTP client handles rate limiting via retries
+        ordersMinDelay: 0,
+        ordersMaxDelay: 0,
+        statsMinDelay: 0,
+        statsMaxDelay: 0
+      }
+    });
     const startTime = Date.now();
     
     let idx = 0;
@@ -57,7 +76,7 @@ async function main() {
     let errorCount = 0;
     let removedCount = 0;
     let inFlightCount = 0;
-    const concurrencyLimit = 20;
+    const concurrencyLimit = CONCURRENCY_LIMIT;
     
     async function processEntry(item: Item) {
       inFlightCount++;

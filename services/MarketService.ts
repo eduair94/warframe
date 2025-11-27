@@ -30,14 +30,26 @@ export type PriceCalculationConfig = {
   topOrdersCount: number;
   /** Required user status for order consideration */
   requiredStatus: 'ingame' | 'online' | 'offline';
+  /** Minimum delay before fetching orders (default: 500) */
+  ordersMinDelay?: number;
+  /** Maximum delay before fetching orders (default: 2000) */
+  ordersMaxDelay?: number;
+  /** Minimum delay before fetching stats (default: 300) */
+  statsMinDelay?: number;
+  /** Maximum delay before fetching stats (default: 1000) */
+  statsMaxDelay?: number;
 };
 
 /**
  * Default price calculation configuration
  */
-const DEFAULT_PRICE_CONFIG: PriceCalculationConfig = {
+const DEFAULT_PRICE_CONFIG: Required<PriceCalculationConfig> = {
   topOrdersCount: PRICE_CONFIG.TOP_ORDERS_COUNT,
-  requiredStatus: PRICE_CONFIG.REQUIRED_STATUS as 'ingame'
+  requiredStatus: PRICE_CONFIG.REQUIRED_STATUS as 'ingame',
+  ordersMinDelay: 500,
+  ordersMaxDelay: 2000,
+  statsMinDelay: 300,
+  statsMaxDelay: 1000
 };
 
 /**
@@ -72,7 +84,7 @@ export class MarketService {
     private readonly httpClient: IHttpClient,
     priceConfig: Partial<PriceCalculationConfig> = {}
   ) {
-    this.priceConfig = { ...DEFAULT_PRICE_CONFIG, ...priceConfig };
+    this.priceConfig = { ...DEFAULT_PRICE_CONFIG, ...priceConfig } as Required<PriceCalculationConfig>;
   }
 
   // =====================================
@@ -180,8 +192,13 @@ export class MarketService {
     not_found?: boolean;
   }> {
     try {
-      // Add random delay for anti-detection
-      await this.httpClient.addRandomDelay(500, 2000);
+      // Add random delay for anti-detection (configurable)
+      if (this.priceConfig.ordersMinDelay > 0) {
+        await this.httpClient.addRandomDelay(
+          this.priceConfig.ordersMinDelay,
+          this.priceConfig.ordersMaxDelay
+        );
+      }
 
       // Fetch orders
       const ordersResponse = await this.getItemOrders<{ payload: { orders: any[] } }>(item.url_name);
@@ -218,7 +235,13 @@ export class MarketService {
     urlName: string,
     maxRank: number | undefined
   ): Promise<{ volume: number; avg_price: number; last_completed: any }> {
-    await this.httpClient.addRandomDelay(300, 1000);
+    // Add random delay for anti-detection (configurable)
+    if (this.priceConfig.statsMinDelay > 0) {
+      await this.httpClient.addRandomDelay(
+        this.priceConfig.statsMinDelay,
+        this.priceConfig.statsMaxDelay
+      );
+    }
 
     const statsResponse = await this.getItemStatistics<{
       payload: { statistics_closed: { '48hours': any[] } }
