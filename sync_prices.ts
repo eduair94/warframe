@@ -64,17 +64,18 @@ async function main() {
         await processEntry(entry);
         idx++;
         
-        // Progress log every 50 items or at milestones
-        if (idx % 50 === 0 || idx === items.length) {
+        // Progress log every 20 items (matching concurrency) or at milestones
+        if (idx % 20 === 0 || idx === items.length || idx === 1) {
           const progress = ((idx / items.length) * 100).toFixed(1);
           const elapsed = ((Date.now() - startTime) / 1000).toFixed(0);
-          const rate = (idx / (Date.now() - startTime) * 1000).toFixed(1);
+          const rate = idx > 0 ? (idx / (Date.now() - startTime) * 1000).toFixed(1) : '0';
           log('📈', `Progress: ${idx}/${items.length} (${progress}%) | ✅ ${successCount} | ❌ ${errorCount} | 🗑️ ${removedCount} | ⏱️ ${elapsed}s | ${rate} items/s`, colors.cyan);
         }
       };
     });
     
     log('⚡', `Processing with concurrency limit: ${concurrencyLimit}`, colors.blue);
+    log('⏳', 'First batch starting... (this may take a moment)', colors.yellow);
     
     for (let i = 0; i < items.length; i += concurrencyLimit) {
       const chunk = processQueue.slice(i, i + concurrencyLimit);
