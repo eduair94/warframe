@@ -12,11 +12,33 @@ const colors = {
   red: '\x1b[31m',
   cyan: '\x1b[36m',
   magenta: '\x1b[35m',
+  dim: '\x1b[2m',
 };
 
 function log(icon: string, message: string, color: string = colors.reset) {
   const timestamp = new Date().toISOString().replace('T', ' ').split('.')[0];
   console.log(`${colors.cyan}[${timestamp}]${colors.reset} ${icon} ${color}${message}${colors.reset}`);
+}
+
+// Live status indicator
+let lastActivityTime = Date.now();
+let activityInterval: NodeJS.Timeout;
+
+function startActivityMonitor() {
+  activityInterval = setInterval(() => {
+    const timeSinceActivity = Math.floor((Date.now() - lastActivityTime) / 1000);
+    if (timeSinceActivity > 5) {
+      process.stdout.write(`\r${colors.yellow}⏳ Waiting for API response... (${timeSinceActivity}s)${colors.reset}   `);
+    }
+  }, 1000);
+}
+
+function stopActivityMonitor() {
+  if (activityInterval) clearInterval(activityInterval);
+}
+
+function updateActivity() {
+  lastActivityTime = Date.now();
 }
 
 async function main() {
@@ -34,24 +56,39 @@ async function main() {
     let successCount = 0;
     let errorCount = 0;
     let removedCount = 0;
+    let inFlightCount = 0;
     const concurrencyLimit = 20;
     
     async function processEntry(item: Item) {
+      inFlightCount++;
+      const itemStart = Date.now();
+      
       try {
+        updateActivity();
         const market = await m.getWarframeItemOrders(item);
+        updateActivity();
+        
+        const duration = Date.now() - itemStart;
+        
         if (market) {
           if (market.not_found) {
-            log('🗑️', `Removing not found item: ${item.url_name}`, colors.yellow);
+            log('🗑️', `Removed: ${item.url_name} (${duration}ms)`, colors.yellow);
             await m.removeItemDB(item.id);
             removedCount++;
           } else {
             await m.saveItem(item.id, { market, priceUpdate: new Date() });
             successCount++;
+            // Show individual item completion for first few items
+            if (idx < 5) {
+              log('✓', `${item.url_name} synced (${duration}ms)`, colors.dim);
+            }
           }
         }
       } catch (error: any) {
-        log('❌', `Error processing ${item.url_name}: ${error.message}`, colors.red);
+        log('❌', `Error: ${item.url_name} - ${error.message}`, colors.red);
         errorCount++;
+      } finally {
+        inFlightCount--;
       }
     }
     
@@ -59,28 +96,37 @@ async function main() {
     const items = await m.getItemsDatabaseDate();
     log('📊', `Found ${items.length} items to sync`, colors.magenta);
     
-    const processQueue = items.map((entry: Item) => {
-      return async () => {
-        await processEntry(entry);
-        idx++;
-        
-        // Progress log every 20 items (matching concurrency) or at milestones
-        if (idx % 20 === 0 || idx === items.length || idx === 1) {
-          const progress = ((idx / items.length) * 100).toFixed(1);
-          const elapsed = ((Date.now() - startTime) / 1000).toFixed(0);
-          const rate = idx > 0 ? (idx / (Date.now() - startTime) * 1000).toFixed(1) : '0';
-          log('📈', `Progress: ${idx}/${items.length} (${progress}%) | ✅ ${successCount} | ❌ ${errorCount} | 🗑️ ${removedCount} | ⏱️ ${elapsed}s | ${rate} items/s`, colors.cyan);
-        }
-      };
-    });
-    
     log('⚡', `Processing with concurrency limit: ${concurrencyLimit}`, colors.blue);
-    log('⏳', 'First batch starting... (this may take a moment)', colors.yellow);
+    log('⏳', 'Starting first batch...', colors.yellow);
+    
+    startActivityMonitor();
+    
+    // Process in batches
+    let batchNum = 0;
+    const totalBatches = Math.ceil(items.length / concurrencyLimit);
     
     for (let i = 0; i < items.length; i += concurrencyLimit) {
-      const chunk = processQueue.slice(i, i + concurrencyLimit);
-      await Promise.all(chunk.map((fn: any) => fn()));
+      batchNum++;
+      const batchStart = Date.now();
+      const chunk = items.slice(i, i + concurrencyLimit);
+      
+      // Clear activity line and show batch start
+      process.stdout.write('\r' + ' '.repeat(60) + '\r');
+      log('🔄', `Batch ${batchNum}/${totalBatches} - Processing ${chunk.length} items...`, colors.blue);
+      
+      await Promise.all(chunk.map((item: Item) => processEntry(item)));
+      
+      idx += chunk.length;
+      const batchDuration = ((Date.now() - batchStart) / 1000).toFixed(1);
+      const progress = ((idx / items.length) * 100).toFixed(1);
+      const elapsed = ((Date.now() - startTime) / 1000).toFixed(0);
+      const rate = (idx / (Date.now() - startTime) * 1000).toFixed(1);
+      const eta = idx > 0 ? Math.round((items.length - idx) / (idx / (Date.now() - startTime) * 1000)) : 0;
+      
+      log('📈', `Progress: ${idx}/${items.length} (${progress}%) | ✅ ${successCount} | ❌ ${errorCount} | 🗑️ ${removedCount} | ⏱️ ${elapsed}s | ${rate}/s | ETA: ${eta}s`, colors.cyan);
     }
+    
+    stopActivityMonitor();
     
     const totalTime = ((Date.now() - startTime) / 1000).toFixed(2);
     console.log('\n' + '='.repeat(60));
@@ -95,6 +141,7 @@ async function main() {
     
     process.exit(0);
   } catch (error: any) {
+    stopActivityMonitor();
     log('💥', `Fatal error: ${error.message}`, colors.red);
     console.error(error);
     process.exit(1);
