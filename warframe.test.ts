@@ -8,7 +8,7 @@
  * - Item processing
  */
 
-import { describe, it, expect, beforeEach, jest } from '@jest/globals';
+import { describe, expect, it, jest } from '@jest/globals';
 
 // Mock external dependencies before importing the module
 jest.mock('axios');
@@ -17,6 +17,7 @@ jest.mock('./Express/Proxies');
 jest.mock('./anti-detection');
 
 import { ENDO_CONSTANTS, PRICE_CONFIG } from './constants';
+import { OrderCalculator } from './services/OrderCalculator';
 
 /**
  * Helper function to calculate endo (mirrors the actual implementation)
@@ -217,6 +218,8 @@ describe('Price Calculation', () => {
     });
 
     it('should return 0 when no orders match', () => {
+      // With fallback enabled, we need orders that don't match any fallback status
+      // The test helper doesn't support fallback, so this tests the base behavior
       const orders = [
         createOrder('buy', 100, 'offline'),
         createOrder('sell', 80, 'offline'),
@@ -228,6 +231,22 @@ describe('Price Calculation', () => {
       expect(result.sell).toBe(0);
       expect(result.buyAvg).toBe(0);
       expect(result.sellAvg).toBe(0);
+    });
+
+    it('should fallback to online orders when no ingame orders exist', () => {
+      const orders = [
+        createOrder('buy', 100, 'online'),
+        createOrder('sell', 80, 'online'),
+      ];
+
+      // Using OrderCalculator directly to test fallback behavior
+      const result = OrderCalculator.calculatePrices(orders, {
+        requiredStatus: 'ingame',
+        fallbackStatuses: ['online']
+      });
+
+      expect(result.buy).toBe(100);
+      expect(result.sell).toBe(80);
     });
 
     it('should handle empty orders array', () => {

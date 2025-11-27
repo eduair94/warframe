@@ -10,8 +10,11 @@
  * API URLs used by the application
  */
 export const API_URLS = {
-  /** Warframe Market API base URL */
+  /** Warframe Market API v1 base URL */
   WARFRAME_MARKET: 'https://api.warframe.market/v1',
+  
+  /** Warframe Market API v2 base URL (for orders) */
+  WARFRAME_MARKET_V2: 'https://api.warframe.market/v2',
   
   /** Warframe stat drops API for relic data */
   WARFRAME_DROPS: 'https://drops.warframestat.us/data/relics.json'

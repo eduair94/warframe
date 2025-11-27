@@ -101,25 +101,170 @@ export class MarketService {
 
   /**
    * Fetches detailed information for a single item
+   * Uses v1 API for basic details, enriched with v2 data for special items (Ayatan sculptures)
    * 
    * @param urlName - URL-friendly item name
    */
   async getItemDetails<T = any>(urlName: string): Promise<T> {
     const url = `${API_URLS.WARFRAME_MARKET}/items/${urlName}`;
     if (DEBUG) console.log(`🔄 Fetching item: ${urlName}...`);
-    return this.httpClient.get<T>(url);
+    
+    const v1Response = await this.httpClient.get<any>(url);
+    
+    // Enrich with v2 data for special item types (Ayatan sculptures)
+    try {
+      const v2Data = await this.getItemDetailsV2(urlName);
+      if (v2Data) {
+        // Only add Ayatan-specific fields if they exist in v2 response
+        // This preserves v1 data for non-Ayatan items
+        const enrichment: Record<string, any> = {};
+        
+        // Ayatan sculpture fields (only add if present)
+        if (v2Data.maxAmberStars !== undefined) {
+          enrichment.max_amber_stars = v2Data.maxAmberStars;
+        }
+        if (v2Data.maxCyanStars !== undefined) {
+          enrichment.max_cyan_stars = v2Data.maxCyanStars;
+        }
+        if (v2Data.baseEndo !== undefined) {
+          enrichment.base_endo = v2Data.baseEndo;
+        }
+        if (v2Data.endoMultiplier !== undefined) {
+          enrichment.endo_multiplier = v2Data.endoMultiplier;
+        }
+        
+        // Only merge if there's something to add
+        if (Object.keys(enrichment).length > 0) {
+          v1Response.payload.item = {
+            ...v1Response.payload.item,
+            ...enrichment
+          };
+        }
+      }
+    } catch (error) {
+      // V2 enrichment is optional, continue with v1 data
+      if (DEBUG) console.log(`⚠️ Could not enrich with v2 data for: ${urlName}`);
+    }
+    
+    return v1Response as T;
   }
 
   /**
-   * Fetches current orders for an item
+   * Fetches item details from v2 API
+   * Provides additional data like maxAmberStars/maxCyanStars for Ayatan sculptures
+   * 
+   * @param urlName - URL-friendly item name
+   * @returns v2 item data or null if not available
+   */
+  async getItemDetailsV2(urlName: string): Promise<{
+    id: string;
+    slug: string;
+    tags?: string[];
+    maxAmberStars?: number;
+    maxCyanStars?: number;
+    baseEndo?: number;
+    endoMultiplier?: number;
+  } | null> {
+    try {
+      const response = await this.httpClient.get<{ data: any }>(
+        `${API_URLS.WARFRAME_MARKET_V2}/items/${urlName}`
+      );
+      return response.data;
+    } catch {
+      return null;
+    }
+  }
+
+  /**
+   * Fetches current orders for an item using v2 API
+   * Transforms v2 response to v1-compatible format for OrderCalculator
    * 
    * @param urlName - URL-friendly item name
    */
   async getItemOrders<T = any>(urlName: string): Promise<T> {
-    if (DEBUG) console.log(`🔄 Fetching orders for: ${urlName}...`);
-    return this.httpClient.get<T>(
-      `${API_URLS.WARFRAME_MARKET}/items/${urlName}/orders`
+    if (DEBUG) console.log(`🔄 Fetching orders (v2) for: ${urlName}...`);
+    
+    // Use v2 API endpoint
+    const v2Response = await this.httpClient.get<{ data: any[] }>(
+      `${API_URLS.WARFRAME_MARKET_V2}/orders/item/${urlName}`
     );
+    
+    // Transform v2 response to v1-compatible format
+    const transformedOrders = this.transformV2OrdersToV1(v2Response.data || []);
+    
+    // Return in v1-compatible format
+    return {
+      payload: {
+        orders: transformedOrders
+      }
+    } as T;
+  }
+
+  /**
+   * Transforms v2 API orders to v1-compatible format
+   * 
+   * ## Field Mapping (v2 → v1)
+   * 
+   * | v2 Field      | v1 Field        | Description                                    |
+   * |---------------|-----------------|------------------------------------------------|
+   * | type          | order_type      | 'buy' or 'sell'                                |
+   * | platinum      | platinum        | Price in platinum                              |
+   * | modRank       | mod_rank        | Mod rank (0-10 for mods, undefined otherwise)  |
+   * | quantity      | quantity        | Number of items                                |
+   * | createdAt     | creation_date   | ISO date string                                |
+   * | updatedAt     | last_update     | ISO date string                                |
+   * | user.status   | user.status     | 'ingame', 'online', or 'offline'               |
+   * | user.ingameName| user.ingame_name| Player's in-game name                         |
+   * | amberStars    | amber_stars     | Ayatan sculptures: amber stars socketed (0-2)  |
+   * | cyanStars     | cyan_stars      | Ayatan sculptures: cyan stars socketed (0-4)   |
+   * | subtype       | subtype         | Item variant (e.g., 'intact', 'radiant')       |
+   * 
+   * ## mod_rank Usage
+   * 
+   * The `mod_rank` field is used differently depending on item type:
+   * 
+   * 1. **Mods**: Represents the mod's current rank (0 to mod_max_rank)
+   *    - When filtering, only orders matching the item's `mod_max_rank` are considered
+   *    - Example: A rank 10 Vitality mod order has `mod_rank: 10`
+   * 
+   * 2. **Riven Mods**: Represents the riven's rank (typically 0-8)
+   *    - Used in endo calculation formulas
+   * 
+   * 3. **Ayatan Sculptures**: Not used for rank, uses `amber_stars`/`cyan_stars` instead
+   *    - Empty sculpture: amberStars=0, cyanStars=0
+   *    - Filled sculpture: varies by sculpture type
+   * 
+   * 4. **Other Items**: `mod_rank` is undefined
+   * 
+   * @param v2Orders - Orders from v2 API
+   * @returns Orders in v1-compatible format
+   */
+  private transformV2OrdersToV1(v2Orders: any[]): any[] {
+    return v2Orders.map(order => ({
+      order_type: order.type, // v2 uses 'type', v1 uses 'order_type'
+      platinum: order.platinum,
+      mod_rank: order.modRank, // v2 uses camelCase (for mods)
+      quantity: order.quantity,
+      // Ayatan sculpture specific fields
+      amber_stars: order.amberStars,
+      cyan_stars: order.cyanStars,
+      // Item variant (relics: intact/exceptional/flawless/radiant)
+      subtype: order.subtype,
+      user: {
+        status: order.user?.status || 'offline',
+        ingame_name: order.user?.ingameName,
+        id: order.user?.id,
+        region: order.user?.region,
+        reputation: order.user?.reputation,
+        avatar: order.user?.avatar
+      },
+      platform: order.platform,
+      region: order.region,
+      creation_date: order.createdAt,
+      last_update: order.updatedAt,
+      visible: order.visible,
+      id: order.id
+    }));
   }
 
   /**
@@ -175,11 +320,23 @@ export class MarketService {
    * Calculates complete price data for an item
    * Combines order data and statistics for comprehensive pricing
    * 
-   * @param item - Market item with url_name and items_in_set
+   * Handles different item types:
+   * - Mods: filters by mod_max_rank
+   * - Ayatan sculptures: filters for filled sculptures (max amber/cyan stars)
+   * - Other items: no special filtering
+   * 
+   * @param item - Market item with url_name, items_in_set, and optional star capacity
    * @param retryAttempt - Current retry attempt (internal use)
    */
   async getItemPrices(
-    item: { url_name: string; items_in_set?: Array<{ mod_max_rank?: number }> },
+    item: { 
+      url_name: string; 
+      items_in_set?: Array<{ mod_max_rank?: number }>;
+      /** Ayatan: max amber stars for filled sculpture */
+      max_amber_stars?: number;
+      /** Ayatan: max cyan stars for filled sculpture */
+      max_cyan_stars?: number;
+    },
     retryAttempt: number = 0
   ): Promise<{
     buy: number;
@@ -203,13 +360,18 @@ export class MarketService {
       // Fetch orders
       const ordersResponse = await this.getItemOrders<{ payload: { orders: any[] } }>(item.url_name);
 
-      // Get mod max rank if applicable
+      // Get mod max rank if applicable (for mods)
       const maxRank = item.items_in_set?.[0]?.mod_max_rank;
 
-      // Calculate prices using OrderCalculator
+      // Calculate prices using OrderCalculator with appropriate filters
       const prices = OrderCalculator.calculatePrices(
         ordersResponse.payload.orders,
-        { maxRank }
+        { 
+          maxRank,
+          // Ayatan sculpture filtering for filled sculptures
+          maxAmberStars: item.max_amber_stars,
+          maxCyanStars: item.max_cyan_stars
+        }
       );
 
       // Fetch and calculate statistics

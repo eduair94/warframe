@@ -11,18 +11,19 @@
 import dotenv from 'dotenv';
 dotenv.config();
 
-import { 
-  HttpService, 
-  MarketService, 
-  HeaderService,
-  ProxyManagerAdapter 
+import { IStatisticsResponse, IWarframeItemsResponse } from './interfaces/market.interface';
+import {
+    HeaderService,
+    HttpService,
+    MarketService,
+    ProxyManagerAdapter
 } from './services';
-import { IWarframeItemsResponse, IOrdersResponse, IStatisticsResponse } from './interfaces/market.interface';
 
 // Test configuration
 const TEST_TIMEOUT = 30000; // 30 seconds for API calls
 const TEST_ITEM_URL = 'ash_prime_set'; // A popular item for testing
 const API_BASE = 'https://api.warframe.market/v1';
+const API_BASE_V2 = 'https://api.warframe.market/v2';
 
 describe('Integration Tests - Real API Calls', () => {
   // Proxy manager (respects PROXY_LESS env variable)
@@ -105,27 +106,26 @@ describe('Integration Tests - Real API Calls', () => {
       console.log(`   ✓ Fetched ${response.payload.items.length} items`);
     }, TEST_TIMEOUT);
 
-    it('should successfully fetch orders for a specific item', async () => {
-      console.log(`\n📡 Testing: Fetch orders for ${TEST_ITEM_URL}...`);
+    it('should successfully fetch orders for a specific item (v2 API)', async () => {
+      console.log(`\n📡 Testing: Fetch orders for ${TEST_ITEM_URL} using v2 API...`);
       
-      const response = await httpService.get<IOrdersResponse>(
-        `${API_BASE}/items/${TEST_ITEM_URL}/orders`
+      const response = await httpService.get<{ data: any[] }>(
+        `${API_BASE_V2}/orders/item/${TEST_ITEM_URL}`
       );
       
       expect(response).toBeDefined();
-      expect(response.payload).toBeDefined();
-      expect(response.payload.orders).toBeDefined();
-      expect(Array.isArray(response.payload.orders)).toBe(true);
+      expect(response.data).toBeDefined();
+      expect(Array.isArray(response.data)).toBe(true);
       
-      if (response.payload.orders.length > 0) {
-        const firstOrder = response.payload.orders[0];
+      if (response.data.length > 0) {
+        const firstOrder = response.data[0];
         expect(firstOrder.id).toBeDefined();
         expect(firstOrder.platinum).toBeDefined();
-        expect(firstOrder.order_type).toBeDefined();
+        expect(firstOrder.type).toBeDefined(); // v2 uses 'type' not 'order_type'
         expect(firstOrder.user).toBeDefined();
       }
       
-      console.log(`   ✓ Fetched ${response.payload.orders.length} orders`);
+      console.log(`   ✓ Fetched ${response.data.length} orders (v2 API)`);
     }, TEST_TIMEOUT);
 
     it('should successfully fetch statistics for a specific item', async () => {
