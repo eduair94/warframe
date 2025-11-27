@@ -46,7 +46,12 @@ export class ItemProcessor {
       market: {
         buy: market.buy,
         sell: market.sell,
-        diff: market.sell - market.buy
+        diff: market.sell - market.buy,
+        buyAvg: market.buyAvg,
+        sellAvg: market.sellAvg,
+        volume: market.volume,
+        avg_price: market.avg_price,
+        last_completed: market.last_completed
       },
       url_name,
       tags,

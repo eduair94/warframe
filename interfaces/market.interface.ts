@@ -57,6 +57,8 @@ export interface IMarketData {
   avg_price?: number;
   /** Price difference (sell - buy) */
   diff?: number;
+  /** Most recent completed transaction data */
+  last_completed?: IStatisticsDataPoint | null;
 }
 
 /**
