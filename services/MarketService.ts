@@ -245,7 +245,8 @@ export class MarketService {
     return v2Orders.map(order => ({
       order_type: order.type, // v2 uses 'type', v1 uses 'order_type'
       platinum: order.platinum,
-      mod_rank: order.modRank, // v2 uses camelCase (for mods)
+      // v2 API uses 'rank' for mods/arcanes (not modRank)
+      mod_rank: order.rank ?? order.modRank, // v2 uses 'rank', fallback to modRank for compatibility
       quantity: order.quantity,
       // Ayatan sculpture specific fields
       amber_stars: order.amberStars,

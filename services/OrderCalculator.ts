@@ -69,6 +69,8 @@ export interface IPriceCalculationOptions {
   maxAmberStars?: number;
   /** Ayatan: Required cyan stars for filled sculpture (undefined = no filter) */
   maxCyanStars?: number;
+  /** If true, fallback to any rank when no orders found at maxRank (default: true) */
+  fallbackToAnyRank?: boolean;
 }
 
 /**
@@ -98,7 +100,8 @@ export class OrderCalculator {
       topOrdersCount = PRICE_CONFIG.TOP_ORDERS_COUNT,
       fallbackStatuses = ['online'],
       maxAmberStars,
-      maxCyanStars
+      maxCyanStars,
+      fallbackToAnyRank = true
     } = options;
 
     // Build status priority list: primary status first, then fallbacks
@@ -109,10 +112,13 @@ export class OrderCalculator {
      * - Mods: filter by mod_rank matching maxRank
      * - Ayatan sculptures: filter by filled status (amber_stars + cyan_stars matching max values)
      * - Other items: no additional filtering
+     * 
+     * @param order - The order to check
+     * @param skipRankFilter - If true, skip rank filtering (for fallback)
      */
-    const filterByItemCriteria = (order: IOrderData): boolean => {
-      // Mod rank filtering (for mods/rivens)
-      if (maxRank !== undefined && order.mod_rank !== maxRank) return false;
+    const filterByItemCriteria = (order: IOrderData, skipRankFilter = false): boolean => {
+      // Mod rank filtering (for mods/rivens/arcanes)
+      if (!skipRankFilter && maxRank !== undefined && order.mod_rank !== maxRank) return false;
       
       // Ayatan sculpture filtering (only filled sculptures)
       // If maxAmberStars or maxCyanStars is specified, filter for filled sculptures
@@ -134,10 +140,12 @@ export class OrderCalculator {
     // Try each status in priority order until we find orders
     let buyOrders: IOrderData[] = [];
     let sellOrders: IOrderData[] = [];
+    let usedFallbackRank = false;
 
+    // First pass: try with rank filter
     for (const status of statusPriority) {
       const filterByStatus = (order: IOrderData): boolean => {
-        return order.user.status === status && filterByItemCriteria(order);
+        return order.user.status === status && filterByItemCriteria(order, false);
       };
 
       const potentialBuyOrders = orders.filter(
@@ -152,6 +160,30 @@ export class OrderCalculator {
         buyOrders = potentialBuyOrders;
         sellOrders = potentialSellOrders;
         break;
+      }
+    }
+
+    // Second pass: if no orders found and fallback is enabled, try without rank filter
+    if (buyOrders.length === 0 && sellOrders.length === 0 && fallbackToAnyRank && maxRank !== undefined) {
+      for (const status of statusPriority) {
+        const filterByStatus = (order: IOrderData): boolean => {
+          return order.user.status === status && filterByItemCriteria(order, true);
+        };
+
+        const potentialBuyOrders = orders.filter(
+          order => order.order_type === 'buy' && filterByStatus(order)
+        );
+        const potentialSellOrders = orders.filter(
+          order => order.order_type === 'sell' && filterByStatus(order)
+        );
+
+        // If we found any orders with this status, use them
+        if (potentialBuyOrders.length > 0 || potentialSellOrders.length > 0) {
+          buyOrders = potentialBuyOrders;
+          sellOrders = potentialSellOrders;
+          usedFallbackRank = true;
+          break;
+        }
       }
     }
 

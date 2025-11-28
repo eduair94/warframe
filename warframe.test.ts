@@ -249,6 +249,40 @@ describe('Price Calculation', () => {
       expect(result.sell).toBe(80);
     });
 
+    it('should fallback to any rank when no orders exist at maxRank', () => {
+      const orders = [
+        createOrder('buy', 100, 'ingame', 0),  // Rank 0
+        createOrder('buy', 80, 'ingame', 3),   // Rank 3
+        createOrder('sell', 120, 'ingame', 0), // Rank 0
+        createOrder('sell', 150, 'ingame', 3), // Rank 3
+      ];
+
+      // Request maxRank 5, but no orders at that rank - should fallback to any rank
+      const result = OrderCalculator.calculatePrices(orders, {
+        maxRank: 5,
+        fallbackToAnyRank: true
+      });
+
+      expect(result.buy).toBe(100);  // Highest buy from any rank
+      expect(result.sell).toBe(120); // Lowest sell from any rank
+    });
+
+    it('should return 0 when fallbackToAnyRank is disabled and no orders at maxRank', () => {
+      const orders = [
+        createOrder('buy', 100, 'ingame', 0),
+        createOrder('sell', 120, 'ingame', 0),
+      ];
+
+      // Request maxRank 5, no orders at that rank, fallback disabled
+      const result = OrderCalculator.calculatePrices(orders, {
+        maxRank: 5,
+        fallbackToAnyRank: false
+      });
+
+      expect(result.buy).toBe(0);
+      expect(result.sell).toBe(0);
+    });
+
     it('should handle empty orders array', () => {
       const result = calculateOrderPrices([], undefined);
 
