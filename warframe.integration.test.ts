@@ -13,10 +13,10 @@ dotenv.config();
 
 import { IStatisticsResponse, IWarframeItemsResponse } from './interfaces/market.interface';
 import {
-    HeaderService,
-    HttpService,
-    MarketService,
-    ProxyManagerAdapter
+  HeaderService,
+  HttpService,
+  MarketService,
+  ProxyManagerAdapter
 } from './services';
 
 // Test configuration
@@ -151,9 +151,19 @@ describe('Integration Tests - Real API Calls', () => {
       const response = await marketService.getAllItems();
       
       expect(response).toBeDefined();
-      expect(response.payload.items.length).toBeGreaterThan(0);
+      expect(response.apiVersion).toBeDefined();
+      expect(response.data).toBeDefined();
+      expect(Array.isArray(response.data)).toBe(true);
+      expect(response.data.length).toBeGreaterThan(0);
       
-      console.log(`   ✓ MarketService fetched ${response.payload.items.length} items`);
+      // Verify item structure (v2 format)
+      const firstItem = response.data[0];
+      expect(firstItem.id).toBeDefined();
+      expect(firstItem.slug).toBeDefined();
+      expect(firstItem.i18n).toBeDefined();
+      expect(firstItem.i18n.en.name).toBeDefined();
+      
+      console.log(`   ✓ MarketService fetched ${response.data.length} items`);
     }, TEST_TIMEOUT);
 
     it('should successfully get item details using MarketService', async () => {

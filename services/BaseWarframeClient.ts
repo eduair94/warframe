@@ -30,6 +30,7 @@ import { MarketService, PriceCalculationConfig } from './MarketService';
 import { RelicService } from './RelicService';
 import { RivenService } from './RivenService';
 import { SetService } from './SetService';
+import { WarframeItemsResponse } from "./WarframeItems.interface";
 
 /**
  * Configuration options for Warframe clients
@@ -152,14 +153,14 @@ export abstract class BaseWarframeClient {
   /**
    * Fetches all Warframe items from the API
    */
-  async getWarframeItems<T = any>(): Promise<T> {
+  async getWarframeItems<T = any>(): Promise<WarframeItemsResponse> {
     return this.marketService.getAllItems<T>();
   }
 
   /**
    * Alias for getWarframeItems
    */
-  async getItems<T = any>(): Promise<T> {
+  async getItems<T = any>(): Promise<WarframeItemsResponse> {
     return this.marketService.getAllItems<T>();
   }
 

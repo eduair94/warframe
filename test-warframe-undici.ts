@@ -9,8 +9,8 @@ async function testWarframeUndici() {
     // Test 1: Get all items (most stable endpoint)
     console.log("=== Test 1: Get All Items ===");
     const items = await warframe.getItems();
-    if (items && items.payload && items.payload.items) {
-      console.log(`✅ Items: ${items.payload.items.length} items retrieved`);
+    if (items && items.data) {
+      console.log(`✅ Items: ${items.data.length} items retrieved`);
     } else {
       console.log("❌ Items: Failed to get valid response");
     }

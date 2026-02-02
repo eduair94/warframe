@@ -21,12 +21,19 @@ async function debugAyatan() {
   // Step 0: First sync the item from API to DB
   console.log("Step 0: Syncing items from API to database...");
   const apiItems = await client.getItems();
-  console.log("  - Got", apiItems.payload.items.length, "items from API");
+  console.log("  - Got", apiItems.data.length, "items from API");
   
-  // Find ayatan_orta_sculpture in API
-  const ayatanFromApi = apiItems.payload.items.find(
-    (item: any) => item.url_name === 'ayatan_orta_sculpture'
+  // Find ayatan_orta_sculpture in API (v2 uses 'slug' instead of 'url_name')
+  const ayatanFromApiRaw = apiItems.data.find(
+    (item: any) => item.slug === 'ayatan_orta_sculpture'
   );
+  // Map v2 fields to v1 format for database compatibility
+  const ayatanFromApi = ayatanFromApiRaw ? {
+    ...ayatanFromApiRaw,
+    url_name: ayatanFromApiRaw.slug,
+    item_name: ayatanFromApiRaw.i18n?.en?.name || ayatanFromApiRaw.slug,
+    thumb: ayatanFromApiRaw.i18n?.en?.thumb || '',
+  } : null;
   console.log("  - ayatan_orta_sculpture in API:", !!ayatanFromApi);
   if (ayatanFromApi) {
     console.log("  - API data:", JSON.stringify(ayatanFromApi, null, 2));

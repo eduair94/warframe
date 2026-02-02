@@ -8,7 +8,7 @@ async function test403Issue() {
   try {
     console.log("Testing getWarframeItems...");
     const items = await warframe.getWarframeItems();
-    console.log("✅ Success! Got", items.payload?.items?.length || 0, "items");
+    console.log("✅ Success! Got", items.data?.length || 0, "items");
   } catch (error) {
     console.error("❌ Error in getWarframeItems:", error.message);
     console.error("Status:", error.response?.status);

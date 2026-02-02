@@ -9,8 +9,8 @@ async function testProxylessSupport() {
     // Test 1: Get items (should work with or without proxy)
     console.log("=== Test 1: Get Items (with current proxy setup) ===");
     const items = await warframe.getItems();
-    if (items && items.payload && items.payload.items) {
-      console.log(`✅ Items: ${items.payload.items.length} items retrieved`);
+    if (items && items.data) {
+      console.log(`✅ Items: ${items.data.length} items retrieved`);
     } else {
       console.log("❌ Items: Failed to get valid response");
     }

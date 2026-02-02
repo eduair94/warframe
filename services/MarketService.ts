@@ -18,6 +18,7 @@ import { sleep } from '../Express/config';
 import { IHttpClient } from '../interfaces/http.interface';
 import { OrderCalculator } from './OrderCalculator';
 import { StatisticsCalculator } from './StatisticsCalculator';
+import { WarframeItemsResponse } from "./WarframeItems.interface";
 
 // Debug mode - set DEBUG=true environment variable for verbose logging
 const DEBUG = process.env.DEBUG === 'true';
@@ -94,9 +95,9 @@ export class MarketService {
   /**
    * Fetches all available items from Warframe Market
    */
-  async getAllItems<T = any>(): Promise<T> {
+  async getAllItems<T = any>(): Promise<WarframeItemsResponse> {
     if (DEBUG) console.log("🔄 Fetching all Warframe items...");
-    return this.httpClient.get<T>(`${API_URLS.WARFRAME_MARKET}/items`);
+    return this.httpClient.get<WarframeItemsResponse>(`${API_URLS.WARFRAME_MARKET_V2}/items`);
   }
 
   /**
@@ -542,8 +543,8 @@ export class MarketService {
    */
   async testConnection(): Promise<boolean> {
     try {
-      const result = await this.getAllItems<{ payload: { items: any[] } }>();
-      return !!(result && result.payload && result.payload.items);
+      const result = await this.getAllItems();
+      return !!(result && result.data && result.data.length > 0);
     } catch (error: any) {
       console.error("Connection test failed:", error.message);
       return false;

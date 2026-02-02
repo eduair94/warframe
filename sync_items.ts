@@ -90,7 +90,13 @@ async function main() {
     
     log('📦', 'Fetching items from Warframe Market API...', colors.blue);
     const res = await m.getWarframeItems();
-    const items = res.payload.items;
+    // Map v2 API fields to v1 format for database compatibility
+    const items = res.data.map((item: any) => ({
+      ...item,
+      url_name: item.slug,  // v2 uses 'slug' instead of 'url_name'
+      item_name: item.i18n?.en?.name || item.slug,  // v2 uses i18n.en.name
+      thumb: item.i18n?.en?.thumb || '',  // v2 uses i18n.en.thumb
+    }));
     log('📊', `Found ${items.length} items from API`, colors.magenta);
     log('⚡', `Processing with concurrency limit: ${CONCURRENCY_LIMIT}`, colors.blue);
     
