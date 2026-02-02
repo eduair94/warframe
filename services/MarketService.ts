@@ -102,59 +102,182 @@ export class MarketService {
 
   /**
    * Fetches detailed information for a single item
-   * Uses v1 API for basic details, enriched with v2 data for special items (Ayatan sculptures)
+   * Uses v2 API and transforms response to v1-compatible format for database compatibility
    * 
-   * @param urlName - URL-friendly item name
+   * @param urlName - URL-friendly item name (slug)
    */
   async getItemDetails<T = any>(urlName: string): Promise<T> {
-    const url = `${API_URLS.WARFRAME_MARKET}/items/${urlName}`;
     if (DEBUG) console.log(`🔄 Fetching item: ${urlName}...`);
     
-    const v1Response = await this.httpClient.get<any>(url);
+    // Fetch from v2 API
+    const v2Response = await this.httpClient.get<{ data: any }>(
+      `${API_URLS.WARFRAME_MARKET_V2}/items/${urlName}`
+    );
     
-    // Enrich with v2 data for special item types (Ayatan sculptures)
-    try {
-      const v2Data = await this.getItemDetailsV2(urlName);
-      if (v2Data) {
-        // Only add Ayatan-specific fields if they exist in v2 response
-        // This preserves v1 data for non-Ayatan items
-        const enrichment: Record<string, any> = {
-          // Always mark as v2 enriched when we successfully fetch v2 data
-          v2_enriched: true,
-          v2_enriched_at: new Date()
-        };
-        
-        // Ayatan sculpture fields (only add if present)
-        if (v2Data.maxAmberStars !== undefined) {
-          enrichment.max_amber_stars = v2Data.maxAmberStars;
-        }
-        if (v2Data.maxCyanStars !== undefined) {
-          enrichment.max_cyan_stars = v2Data.maxCyanStars;
-        }
-        if (v2Data.baseEndo !== undefined) {
-          enrichment.base_endo = v2Data.baseEndo;
-        }
-        if (v2Data.endoMultiplier !== undefined) {
-          enrichment.endo_multiplier = v2Data.endoMultiplier;
-        }
-        
-        // Always merge since we at least have v2_enriched flag
-        v1Response.payload.item = {
-          ...v1Response.payload.item,
-          ...enrichment
-        };
+    // Transform v2 response to v1-compatible format
+    const v2Item = v2Response.data;
+    const v1Item = this.transformV2ItemToV1(v2Item);
+    
+    // Return in v1-compatible format: { payload: { item: {...} } }
+    return {
+      payload: {
+        item: v1Item
       }
-    } catch (error) {
-      // V2 enrichment is optional, continue with v1 data
-      if (DEBUG) console.log(`⚠️ Could not enrich with v2 data for: ${urlName}`);
-    }
-    
-    return v1Response as T;
+    } as T;
   }
 
   /**
-   * Fetches item details from v2 API
-   * Provides additional data like maxAmberStars/maxCyanStars for Ayatan sculptures
+   * Transforms v2 API item to v1-compatible format for database compatibility
+   * 
+   * ## Field Mapping (v2 → v1/Database)
+   * 
+   * | v2 Field           | v1/DB Field        | Description                              |
+   * |--------------------|--------------------|------------------------------------------|
+   * | id                 | id                 | Unique identifier                        |
+   * | slug               | url_name           | URL-friendly name                        |
+   * | i18n.{lang}.name   | item_name, {lang}.item_name | Localized item names          |
+   * | i18n.{lang}.icon   | icon, {lang}.icon  | Icon paths                               |
+   * | i18n.{lang}.thumb  | thumb, {lang}.thumb| Thumbnail paths                          |
+   * | i18n.{lang}.description | {lang}.description | Localized descriptions             |
+   * | tags               | tags               | Item categorization tags                 |
+   * | maxRank            | mod_max_rank       | Maximum mod rank (for mods)              |
+   * | ducats             | ducats             | Ducat value                              |
+   * | tradingTax         | trading_tax        | Trading tax in credits                   |
+   * | maxAmberStars      | max_amber_stars    | Ayatan: max amber stars                  |
+   * | maxCyanStars       | max_cyan_stars     | Ayatan: max cyan stars                   |
+   * | baseEndo           | base_endo          | Ayatan: base endo value                  |
+   * | endoMultiplier     | endo_multiplier    | Ayatan: endo multiplier                  |
+   * | vaulted            | vaulted            | Whether item is vaulted                  |
+   * | subtypes           | subtypes           | Item variants (relic refinements, etc.)  |
+   * 
+   * @param v2Item - Item from v2 API
+   * @returns Item in v1-compatible format
+   */
+  private transformV2ItemToV1(v2Item: any): any {
+    const i18n = v2Item.i18n || {};
+    const enData = i18n.en || {};
+    
+    // Build the base item structure
+    const v1Item: any = {
+      id: v2Item.id,
+      url_name: v2Item.slug,
+      item_name: enData.name || v2Item.slug,
+      thumb: enData.thumb || '',
+      icon: enData.icon || '',
+      icon_format: 'land',
+      tags: v2Item.tags || [],
+      
+      // V2 enrichment flags
+      v2_enriched: true,
+      v2_enriched_at: new Date()
+    };
+    
+    // Optional fields - only add if present in v2 response
+    if (v2Item.maxRank !== undefined) {
+      v1Item.mod_max_rank = v2Item.maxRank;
+    }
+    if (v2Item.ducats !== undefined) {
+      v1Item.ducats = v2Item.ducats;
+    }
+    if (v2Item.tradingTax !== undefined) {
+      v1Item.trading_tax = v2Item.tradingTax;
+    }
+    if (v2Item.vaulted !== undefined) {
+      v1Item.vaulted = v2Item.vaulted;
+    }
+    if (v2Item.subtypes !== undefined) {
+      v1Item.subtypes = v2Item.subtypes;
+    }
+    if (v2Item.masteryLevel !== undefined) {
+      v1Item.mastery_level = v2Item.masteryLevel;
+    }
+    
+    // Ayatan sculpture specific fields
+    if (v2Item.maxAmberStars !== undefined) {
+      v1Item.max_amber_stars = v2Item.maxAmberStars;
+    }
+    if (v2Item.maxCyanStars !== undefined) {
+      v1Item.max_cyan_stars = v2Item.maxCyanStars;
+    }
+    if (v2Item.baseEndo !== undefined) {
+      v1Item.base_endo = v2Item.baseEndo;
+    }
+    if (v2Item.endoMultiplier !== undefined) {
+      v1Item.endo_multiplier = v2Item.endoMultiplier;
+    }
+    
+    // Build items_in_set array (v2 might have this differently structured)
+    // For now, create a single item entry that mirrors the main item
+    v1Item.items_in_set = [this.buildItemInSetEntry(v2Item, i18n)];
+    
+    // Add all localized data
+    const languages = Object.keys(i18n);
+    for (const lang of languages) {
+      const langData = i18n[lang];
+      v1Item[lang] = {
+        item_name: langData.name || v2Item.slug,
+        description: langData.description || '',
+        wiki_link: langData.wikiLink || `https://warframe.fandom.com/wiki/${encodeURIComponent(enData.name || v2Item.slug)}`,
+        icon: langData.icon || enData.icon || '',
+        thumb: langData.thumb || enData.thumb || '',
+        drop: langData.drop || []
+      };
+    }
+    
+    return v1Item;
+  }
+
+  /**
+   * Builds an items_in_set entry from v2 item data
+   * This creates the nested item structure expected by the database
+   */
+  private buildItemInSetEntry(v2Item: any, i18n: any): any {
+    const enData = i18n.en || {};
+    
+    const entry: any = {
+      id: v2Item.id,
+      url_name: v2Item.slug,
+      icon_format: 'land',
+      sub_icon: enData.subIcon || null,
+      thumb: enData.thumb || '',
+      icon: enData.icon || '',
+      tags: v2Item.tags || []
+    };
+    
+    // Optional fields
+    if (v2Item.maxRank !== undefined) {
+      entry.mod_max_rank = v2Item.maxRank;
+    }
+    if (v2Item.tradingTax !== undefined) {
+      entry.trading_tax = v2Item.tradingTax;
+    }
+    if (v2Item.masteryLevel !== undefined) {
+      entry.mastery_level = v2Item.masteryLevel;
+    }
+    if (v2Item.ducats !== undefined) {
+      entry.ducats = v2Item.ducats;
+    }
+    
+    // Add all localized data to the entry
+    const languages = Object.keys(i18n);
+    for (const lang of languages) {
+      const langData = i18n[lang];
+      entry[lang] = {
+        item_name: langData.name || v2Item.slug,
+        description: langData.description || '',
+        wiki_link: langData.wikiLink || `https://warframe.fandom.com/wiki/${encodeURIComponent(enData.name || v2Item.slug)}`,
+        icon: langData.icon || enData.icon || '',
+        thumb: langData.thumb || enData.thumb || '',
+        drop: langData.drop || []
+      };
+    }
+    
+    return entry;
+  }
+
+  /**
+   * Fetches item details from v2 API (raw response)
+   * Used internally for enrichment data
    * 
    * @param urlName - URL-friendly item name
    * @returns v2 item data or null if not available
