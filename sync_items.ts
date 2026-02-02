@@ -14,10 +14,11 @@ const colors = {
   dim: '\x1b[2m',
 };
 
-// Performance configuration
-const CONCURRENCY_LIMIT = parseInt(process.env.CONCURRENCY || '30', 10);
-const MIN_DELAY = parseInt(process.env.MIN_DELAY || '100', 10);
-const MAX_DELAY = parseInt(process.env.MAX_DELAY || '300', 10);
+// Performance configuration - reduced concurrency to avoid 429 rate limits
+const CONCURRENCY_LIMIT = parseInt(process.env.CONCURRENCY || '5', 10);
+const MIN_DELAY = parseInt(process.env.MIN_DELAY || '500', 10);
+const MAX_DELAY = parseInt(process.env.MAX_DELAY || '1500', 10);
+const BATCH_DELAY = parseInt(process.env.BATCH_DELAY || '2000', 10); // Delay between batches
 
 // Check if we should force v2 enrichment for all items
 const FORCE_V2_ENRICHMENT = process.env.FORCE_V2 === 'true';
@@ -64,7 +65,7 @@ function needsV2Enrichment(itemDB: any): boolean {
 
 async function main() {
   log('🚀', 'Starting Items Sync Process...', colors.bright);
-  log('⚙️', `Config: Concurrency=${CONCURRENCY_LIMIT}, Delay=${MIN_DELAY}-${MAX_DELAY}ms`, colors.dim);
+  log('⚙️', `Config: Concurrency=${CONCURRENCY_LIMIT}, Delay=${MIN_DELAY}-${MAX_DELAY}ms, BatchDelay=${BATCH_DELAY}ms`, colors.dim);
   if (FORCE_V2_ENRICHMENT) {
     log('🔄', 'FORCE_V2=true - Will re-enrich all items with v2 API data', colors.yellow);
   }
@@ -172,6 +173,11 @@ async function main() {
       const eta = idx > 0 ? Math.round((items.length - idx) / (idx / (Date.now() - startTime) * 1000)) : 0;
       
       log('📈', `Progress: ${idx}/${items.length} (${progress}%) | ➕ ${newItems} | 🔄 ${updatedItems} | ⏭️ ${skippedItems} | ❌ ${errorCount} | ⏱️ ${elapsed}s | ${rate}/s | ETA: ${eta}s`, colors.cyan);
+      
+      // Add delay between batches to avoid rate limiting
+      if (batchIdx + CONCURRENCY_LIMIT < items.length) {
+        await new Promise(resolve => setTimeout(resolve, BATCH_DELAY));
+      }
     }
     
     stopActivityMonitor();
