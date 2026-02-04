@@ -38,6 +38,15 @@ export class ItemService {
         { strict: false }
       )
     );
+    // Ensure indexes to avoid large in-memory sorts and speed up frequent queries
+    // Create an index on priceUpdate for sort operations and url_name for quick lookups
+    try {
+      this.db.ensureIndex({ priceUpdate: 1 }).catch(() => {});
+      this.db.ensureIndex({ url_name: 1 }, { unique: true, sparse: true }).catch(() => {});
+    } catch (error) {
+      // Non-fatal: index creation failures should not crash the service
+      console.error('Index creation error (ignored):', error);
+    }
   }
 
   /**

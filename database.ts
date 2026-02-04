@@ -82,6 +82,24 @@ export class MongooseServer {
     return r;
   }
 
+  /**
+   * Ensure an index exists on the underlying collection.
+   * This helps prevent large in-memory sorts when querying/sorting large collections.
+   *
+   * @param indexSpec - index specification object like { priceUpdate: 1 }
+   * @param options - optional index options
+   */
+  public async ensureIndex(indexSpec: any, options: any = {}): Promise<void> {
+    try {
+      // Use the raw collection to create the index
+      await this.Model.collection.createIndex(indexSpec, options);
+      return Promise.resolve();
+    } catch (error) {
+      console.error('Failed to create index', indexSpec, error);
+      return Promise.reject(error);
+    }
+  }
+
   public allEntries(param: any, att = 0): Promise<any> {
     return new Promise((resolve, reject) => {
       this.Model.find(param, (error: Error, result: any) => {
