@@ -12,7 +12,9 @@ class Proxies {
   private proxyType = process.env.PROXY_TYPE || "http";
   bProxyList: string[];
   proxieList: string[];
+  private usaProxies: boolean;
   constructor(usaProxies = false) {
+    this.usaProxies = usaProxies;
     const directoryPath = "proxies";
     if (!fs.existsSync(directoryPath)) {
       // If the directory doesn't exist, create it
@@ -21,7 +23,6 @@ class Proxies {
     } else {
       console.log(`Directory "${directoryPath}" already exists.`);
     }
-    if (!usaProxies) this.setProxies().then(() => this.readProxyFile());
     if (!this.proxyType) {
       this.proxyType = "https";
     }
@@ -29,6 +30,10 @@ class Proxies {
       this.proxies = "proxies/usa_proxies.txt";
       this.banned_proxies = "proxies/usa_banned.txt";
     }
+    // Populate the proxy list for both regions - previously this only ran
+    // for the non-USA branch, leaving usa_proxies.txt permanently empty
+    // whenever PROXY_TYPE_REGION=usa.
+    this.setProxies().then(() => this.readProxyFile());
     this.readProxyFile();
     try {
       this.idx = parseInt(fs.readFileSync("proxies/idx.txt", "utf-8")) || 0;
@@ -126,9 +131,15 @@ class Proxies {
       return;
     }
 
-    this.proxieList = entries
-      .filter((entry: any) => entry && entry.proxy && entry.status !== false)
-      .map((entry: any) => "http://" + entry.proxy.trim());
+    const usable = entries.filter((entry: any) => entry && entry.proxy && entry.status !== false);
+
+    // Prefer US-tagged proxies when running in USA mode, but the local pool
+    // isn't guaranteed to have any - fall back to the full pool rather than
+    // ending up with zero proxies.
+    const usEntries = usable.filter((entry: any) => entry.country === "US");
+    const selected = this.usaProxies && usEntries.length > 0 ? usEntries : usable;
+
+    this.proxieList = selected.map((entry: any) => "http://" + entry.proxy.trim());
 
     fs.writeFileSync(this.proxies, this.proxieList.join("\n"));
     console.log("Total Proxies (local pool)", this.proxieList.length);
