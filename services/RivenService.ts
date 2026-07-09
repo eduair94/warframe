@@ -28,6 +28,28 @@ export interface IRivenItem {
   thumb: string;
   group: string;
   riven_type: string;
+  mastery_level?: number;
+  icon?: string;
+}
+
+/**
+ * Riven weapon entry as returned by Warframe Market's v2 API
+ * (`GET /v2/riven/weapons`), which replaced the retired v1 `/riven/items`
+ */
+interface IRivenWeaponV2 {
+  id: string;
+  slug: string;
+  group: string;
+  rivenType: string;
+  disposition: number;
+  reqMasteryRank: number;
+  i18n?: {
+    en?: {
+      name: string;
+      icon: string;
+      thumb: string;
+    };
+  };
 }
 
 /**
@@ -149,14 +171,36 @@ export class RivenService {
 
   /**
    * Fetches all riven items from the API
-   * 
+   *
+   * v1 `/riven/items` was retired by Warframe Market; riven weapon data now
+   * lives at v2 `/riven/weapons` with a different shape, so the response is
+   * transformed back into the v1-compatible {@link IRivenItem} shape used by
+   * the rest of this service and the database.
+   *
    * @returns Promise resolving to array of riven items
    */
   async fetchAllRivenItems(): Promise<IRivenItem[]> {
-    const response = await this.httpClient.get<{ payload: { items: IRivenItem[] } }>(
-      `${API_URLS.WARFRAME_MARKET}/riven/items`
+    const response = await this.httpClient.get<{ data: IRivenWeaponV2[] }>(
+      `${API_URLS.WARFRAME_MARKET_V2}/riven/weapons`
     );
-    return response.payload.items;
+    return response.data.map(this.transformV2RivenWeaponToV1);
+  }
+
+  /**
+   * Transforms a v2 riven weapon entry into the v1-compatible {@link IRivenItem} shape
+   */
+  private transformV2RivenWeaponToV1(weapon: IRivenWeaponV2): IRivenItem {
+    const enData = weapon.i18n?.en;
+    return {
+      id: weapon.id,
+      url_name: weapon.slug,
+      item_name: enData?.name ?? weapon.slug,
+      group: weapon.group,
+      riven_type: weapon.rivenType,
+      mastery_level: weapon.reqMasteryRank,
+      icon: enData?.icon ?? '',
+      thumb: enData?.thumb ?? ''
+    };
   }
 
   /**

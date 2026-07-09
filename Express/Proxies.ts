@@ -21,7 +21,7 @@ class Proxies {
     } else {
       console.log(`Directory "${directoryPath}" already exists.`);
     }
-    if (!usaProxies) this.setProxies();
+    if (!usaProxies) this.setProxies().then(() => this.readProxyFile());
     if (!this.proxyType) {
       this.proxyType = "https";
     }
@@ -101,7 +101,37 @@ class Proxies {
         fs.writeFileSync(this.proxies, this.proxieList.join("\n"));
         console.log("Total Proxies", this.proxieList.length);
       }
+      return;
     }
+
+    // No PROXY_API_KEY configured - fall back to the local proxyapp pool
+    // (sibling service on this host) so requests don't go out on the
+    // server's own IP, which Cloudflare blocks for api.warframe.market.
+    await this.setProxiesFromLocalPool();
+  }
+
+  /**
+   * Populates the proxy list from a locally-hosted proxy pool service
+   * (see PROXY_SOURCE_URL) when no proxyscrape API key is configured.
+   */
+  async setProxiesFromLocalPool(): Promise<void> {
+    const sourceUrl = process.env.PROXY_SOURCE_URL || "http://localhost:3030/proxy_list";
+    const entries = await axios
+      .get(sourceUrl)
+      .then((res) => res.data)
+      .catch(() => null);
+
+    if (!Array.isArray(entries) || entries.length === 0) {
+      console.log("No proxies available from local pool:", sourceUrl);
+      return;
+    }
+
+    this.proxieList = entries
+      .filter((entry: any) => entry && entry.proxy && entry.status !== false)
+      .map((entry: any) => "http://" + entry.proxy.trim());
+
+    fs.writeFileSync(this.proxies, this.proxieList.join("\n"));
+    console.log("Total Proxies (local pool)", this.proxieList.length);
   }
   readProxyFile() {
     if(!fs.existsSync(this.proxies)) {
