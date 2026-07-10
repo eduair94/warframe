@@ -2,7 +2,7 @@
   <div>
     <div
       v-if="lastCompleted"
-      class="last-transaction-cell"
+      :class="{ 'last-transaction-cell': clickable || showIcon }"
       @click="$emit('click')"
     >
       {{ fixPrice(lastCompleted.avg_price) }}

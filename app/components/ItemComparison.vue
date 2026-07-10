@@ -14,11 +14,26 @@
       </v-card-title>
       <v-card-text>
         <v-data-table
-          :headers="headers"
+          :headers="compareHeaders"
           :items="items"
           hide-default-footer
           class="elevation-1"
         >
+          <template #item.item_name="{ item }">
+            <div class="d-flex justify-start align-center py-2">
+              <img
+                class="mr-3"
+                width="40px"
+                :src="'https://warframe.market/static/assets/' + item.thumb"
+              />
+              <a
+                class="no_link white--text"
+                target="_blank"
+                :href="'https://warframe.market/items/' + item.url_name"
+                >{{ item.item_name }}</a
+              >
+            </div>
+          </template>
           <template #item.market.buyAvg="{ item }">
             {{ fixPrice(item.market.buyAvg) }}
           </template>
@@ -74,6 +89,23 @@ export default Vue.extend({
       set(val: boolean) {
         this.$emit('input', val)
       },
+    },
+    compareHeaders(): any[] {
+      // The parent hands us the full main-table header set. Drop the columns this
+      // dialog has no cell slot for: tags would render as "warframe,component",
+      // priceUpdate as a raw ISO string, and drops as an empty column.
+      const allowed = [
+        'item_name',
+        'market.buy',
+        'market.sell',
+        'market.buyAvg',
+        'market.sellAvg',
+        'market.avg_price',
+        'market.last_completed',
+        'market.diff',
+        'market.volume',
+      ]
+      return (this.headers as any[]).filter((h) => allowed.includes(h.value))
     },
   },
   methods: {

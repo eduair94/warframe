@@ -95,9 +95,11 @@
                     <v-expansion-panel-content>
                       <v-row dense>
                         <v-col cols="12" md="4">
-                          <v-combobox
+                          <v-autocomplete
                             v-model="includedTags"
                             :items="availableTags"
+                            item-text="text"
+                            item-value="value"
                             label="Include Tags"
                             multiple
                             chips
@@ -106,16 +108,7 @@
                             dark
                             dense
                             hide-details
-                          >
-                            <template #selection="{ item, index }">
-                              <v-chip small close @click:close="includedTags.splice(index, 1)">
-                                {{ formatTag(item) }}
-                              </v-chip>
-                            </template>
-                            <template #item="{ item }">
-                              {{ formatTag(item) }}
-                            </template>
-                          </v-combobox>
+                          ></v-autocomplete>
                         </v-col>
                         <v-col cols="12" md="2">
                           <v-radio-group v-model="tagLogic" row dark dense hide-details class="mt-0">
@@ -124,9 +117,11 @@
                           </v-radio-group>
                         </v-col>
                         <v-col cols="12" md="4">
-                          <v-combobox
+                          <v-autocomplete
                             v-model="excludedTags"
                             :items="availableTags"
+                            item-text="text"
+                            item-value="value"
                             label="Exclude Tags (NOT)"
                             multiple
                             chips
@@ -135,16 +130,7 @@
                             dark
                             dense
                             hide-details
-                          >
-                            <template #selection="{ item, index }">
-                              <v-chip small close @click:close="excludedTags.splice(index, 1)">
-                                {{ formatTag(item) }}
-                              </v-chip>
-                            </template>
-                            <template #item="{ item }">
-                              {{ formatTag(item) }}
-                            </template>
-                          </v-combobox>
+                          ></v-autocomplete>
                         </v-col>
                         <v-col cols="12" md="2" class="d-flex align-center justify-end">
                           <v-btn
@@ -176,13 +162,13 @@
                   <v-checkbox
                     v-model="avgPrice"
                     dark
-                    label="Average Prices (5 lowest prices)"
+                    label="Average Prices (top 5 orders)"
                     class="mr-4"
                   ></v-checkbox>
                   <v-checkbox
                     v-model="multiSort"
                     dark
-                    label="Multi-Sort"
+                    label="Multi-Sort (click several column headers)"
                   ></v-checkbox>
                 </div>
               </div>
@@ -255,9 +241,9 @@
             {{ fixDate(item.priceUpdate) }}
           </template>
           <template #item.tags="{ item }">
-            <v-chip-group selected-class="text-primary" column>
-              <v-chip 
-                v-for="(tag, index) in item.tags" 
+            <div class="d-flex flex-wrap tag-cell">
+              <v-chip
+                v-for="(tag, index) in item.tags"
                 :key="index"
                 small
                 @click.stop="addTagToFilter(tag)"
@@ -266,7 +252,7 @@
               >
                 {{ formatTag(tag) }}
               </v-chip>
-            </v-chip-group>
+            </div>
           </template>
           <template #item.drops="{ item }">
             <a target="_blank" :href="getLink(item.item_name)"> Drops </a>
@@ -285,7 +271,7 @@
       <v-dialog v-model="transactionDialog" max-width="500">
         <v-card v-if="selectedTransactionItem">
           <v-card-title class="headline grey lighten-2">
-            Last Transaction Details
+            Latest 48h Trade Data
           </v-card-title>
           <v-card-text class="pt-4">
             <h3 class="mb-2">{{ selectedTransactionItem.item_name }}</h3>
@@ -458,8 +444,11 @@ export default Vue.extend({
       tagLogic: 'AND',
       selectedItems: [],
       compareDialog: false,
-      sortBy: 'market.volume',
-      sortDesc: true,
+      // Must stay arrays: VData only emits the full sort arrays back when the
+      // bound prop is already an array, otherwise it emits sortBy[0] and any
+      // secondary sort column is dropped on the next update.
+      sortBy: ['market.volume'],
+      sortDesc: [true],
       multiSort: false,
       transactionDialog: false,
       selectedTransactionItem: null,
@@ -479,7 +468,11 @@ export default Vue.extend({
       this.allItems.forEach(item => {
         if (item.tags) item.tags.forEach(tag => tags.add(tag))
       })
-      return Array.from(tags).sort()
+      // text is what the user reads and types; value is the raw tag filter() matches on
+      return Array.from(tags).sort().map(tag => ({
+        text: this.formatTag(tag),
+        value: tag,
+      }))
     }
   },
   watch: {
@@ -493,28 +486,23 @@ export default Vue.extend({
       this.filter()
     },
     avgPrice(val) {
-      if (Array.isArray(this.sortBy)) {
-        this.sortBy = this.sortBy.map(key => {
-          if (val) {
-            if (key === 'market.buy') return 'market.buyAvg'
-            if (key === 'market.sell') return 'market.sellAvg'
-          } else {
-            if (key === 'market.buyAvg') return 'market.buy'
-            if (key === 'market.sellAvg') return 'market.sell'
-          }
-          return key
-        })
-      } else {
-        let key = this.sortBy
+      // Keep the sort keys pointing at the columns getHeaders() is now emitting,
+      // without changing the array length that sortDesc is aligned to.
+      this.sortBy = this.sortBy.map(key => {
         if (val) {
-          if (key === 'market.buy') key = 'market.buyAvg'
-          else if (key === 'market.sell') key = 'market.sellAvg'
-        } else if (key === 'market.buyAvg') {
-          key = 'market.buy'
-        } else if (key === 'market.sellAvg') {
-          key = 'market.sell'
+          if (key === 'market.buy') return 'market.buyAvg'
+          if (key === 'market.sell') return 'market.sellAvg'
+        } else {
+          if (key === 'market.buyAvg') return 'market.buy'
+          if (key === 'market.sellAvg') return 'market.sell'
         }
-        this.sortBy = key
+        return key
+      })
+    },
+    multiSort(val) {
+      if (!val && this.sortBy.length > 1) {
+        this.sortBy = this.sortBy.slice(0, 1)
+        this.sortDesc = this.sortDesc.slice(0, 1)
       }
     }
   },
@@ -577,7 +565,7 @@ export default Vue.extend({
       this.tagLogic = 'AND'
     },
     reset() {
-      this.selection = ''
+      this.selection = 'All'
       this.search = ''
       this.min_volume = 0
       this.includedTags = []
@@ -830,23 +818,23 @@ export default Vue.extend({
           width: 'auto',
         },
         {
-          text: 'Buy',
+          text: 'Buy (live listing)',
           value: 'market.buy',
           width: 'auto',
         },
         {
-          text: 'Sell',
+          text: 'Sell (live listing)',
           value: 'market.sell',
           width: 'auto',
         },
-        // New Column
+        // Completed-trade columns, sourced from statistics_closed.48hours
         {
           text: 'Avg Sold (48h)',
           value: 'market.avg_price',
           width: 'auto',
         },
         {
-          text: 'Last Transaction',
+          text: 'Latest 48h Trades',
           value: 'market.last_completed',
           width: 'auto',
           sort: (a, b) => {
@@ -880,12 +868,12 @@ export default Vue.extend({
       ]
       if (this.avgPrice) {
         toReturn[1] = {
-          text: 'Buy',
+          text: 'Buy (live avg)',
           value: 'market.buyAvg',
           width: 'auto',
         }
         toReturn[2] = {
-          text: 'Sell',
+          text: 'Sell (live avg)',
           value: 'market.sellAvg',
           width: 'auto',
         }
@@ -967,5 +955,9 @@ export default Vue.extend({
 }
 .clickable-tag {
   cursor: pointer;
+}
+.tag-cell {
+  gap: 4px;
+  padding: 4px 0;
 }
 </style>
