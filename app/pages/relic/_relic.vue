@@ -248,14 +248,17 @@ export default {
           const data = await this.$axios
             .get(`${this.$config.apiURL}/relic/${search}`)
             .then((res) => res.data)
-          this.all_items = data.items
-          this.set = data.set
-          this.priceRelic = this.set[0].market.sell
-            ? this.set[0].market.sell
-            : this.set[0].market.buy
-          this.maxEarn = this.all_items.reduce((a, b) => {
-            return a.market.sell > b.market.sell ? a : b
-          }).market.sell
+          const hasMarket = (item) => item && typeof item === 'object' && item.market
+          this.all_items = (data.items || []).filter(hasMarket)
+          this.set = (data.set || []).filter(hasMarket)
+          this.priceRelic = this.set.length
+            ? this.set[0].market.sell || this.set[0].market.buy
+            : 0
+          this.maxEarn = this.all_items.length
+            ? this.all_items.reduce((a, b) => {
+                return a.market.sell > b.market.sell ? a : b
+              }).market.sell
+            : 0
         }
       }
     },

@@ -97,15 +97,40 @@ export const ENDO_CONSTANTS = {
 export const RIVEN_DEFAULTS = {
   /** Default minimum re-rolls for auction search */
   MIN_REROLLS: 50,
-  
+
   /** Default polarity filter */
   POLARITY: 'any' as const,
-  
+
   /** Default buyout policy */
   BUYOUT_POLICY: 'direct' as const,
-  
+
   /** Default sort order */
   SORT_BY: 'price_asc' as const
+} as const;
+
+/**
+ * Riven auction sync retry/pacing defaults
+ *
+ * Auction search requests are unauthenticated and easy to rate-limit
+ * (Cloudflare 429s observed after only a handful of back-to-back requests).
+ * These bound retry attempts with backoff instead of retrying forever, and
+ * pace successive weapon syncs so the limit isn't hit in the first place.
+ */
+export const RIVEN_SYNC_DEFAULTS = {
+  /** Max attempts before giving up syncing a single riven's auctions and moving on */
+  MAX_SYNC_ATTEMPTS: 5,
+
+  /** Base delay (ms) for exponential backoff between sync retries */
+  RETRY_BASE_DELAY: 2000,
+
+  /** Max delay (ms) cap for sync retry backoff */
+  RETRY_MAX_DELAY: 30000,
+
+  /** Minimum delay (ms) between syncing successive rivens */
+  INTER_WEAPON_MIN_DELAY: 300,
+
+  /** Maximum delay (ms) between syncing successive rivens */
+  INTER_WEAPON_MAX_DELAY: 800
 } as const;
 
 /**

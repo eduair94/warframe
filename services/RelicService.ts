@@ -174,7 +174,7 @@ export class RelicService {
 
     return {
       set: [processItem(relicItem)],
-      items: rewardItems.map(item => processItem(item))
+      items: rewardItems.map(item => processItem(item)).filter(item => item !== '')
     };
   }
 

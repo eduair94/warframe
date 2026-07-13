@@ -245,9 +245,13 @@ export default {
           const data = await this.$axios
             .get(`${this.$config.apiURL}/set/${search}`)
             .then((res) => res.data)
-          this.all_items = data.items
-          this.set = data.set
-          this.save = this.set[0].market.sell - this.set[1].market.sell
+          const hasMarket = (item) => item && typeof item === 'object' && item.market
+          this.all_items = (data.items || []).filter(hasMarket)
+          this.set = (data.set || []).filter(hasMarket)
+          this.save =
+            this.set.length === 2
+              ? this.set[0].market.sell - this.set[1].market.sell
+              : 0
         }
       }
     },

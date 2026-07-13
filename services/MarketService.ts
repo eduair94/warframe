@@ -23,6 +23,9 @@ import { WarframeItemsResponse } from "./WarframeItems.interface";
 // Debug mode - set DEBUG=true environment variable for verbose logging
 const DEBUG = process.env.DEBUG === 'true';
 
+/** Max backoff retries for a rate-limited price fetch before giving up on an item */
+const PRICE_ERROR_MAX_RETRIES = 6;
+
 /**
  * Configuration for price calculation
  */
@@ -75,6 +78,10 @@ export class MarketService {
   /** Price calculation configuration */
   private readonly priceConfig: PriceCalculationConfig;
 
+  /** Cache of id -> v2 item (from the bulk /v2/items list), used to resolve set sibling parts by id */
+  private itemsListCache: Map<string, any> | null = null;
+  private itemsListCachePromise: Promise<void> | null = null;
+
   /**
    * Creates a new MarketService instance
    * 
@@ -116,7 +123,7 @@ export class MarketService {
     
     // Transform v2 response to v1-compatible format
     const v2Item = v2Response.data;
-    const v1Item = this.transformV2ItemToV1(v2Item);
+    const v1Item = await this.transformV2ItemToV1(v2Item);
     
     // Return in v1-compatible format: { payload: { item: {...} } }
     return {
@@ -153,7 +160,7 @@ export class MarketService {
    * @param v2Item - Item from v2 API
    * @returns Item in v1-compatible format
    */
-  private transformV2ItemToV1(v2Item: any): any {
+  private async transformV2ItemToV1(v2Item: any): Promise<any> {
     const i18n = v2Item.i18n || {};
     const enData = i18n.en || {};
     
@@ -206,9 +213,19 @@ export class MarketService {
       v1Item.endo_multiplier = v2Item.endoMultiplier;
     }
     
-    // Build items_in_set array (v2 might have this differently structured)
-    // For now, create a single item entry that mirrors the main item
-    v1Item.items_in_set = [this.buildItemInSetEntry(v2Item, i18n)];
+    // Build items_in_set array. The v2 API exposes sibling set members via
+    // `setParts` (an array of item ids, including the item's own id) rather
+    // than embedding their full data like v1 did. Resolve each id against the
+    // bulk /v2/items list (cached) to reconstruct the full sibling list; items
+    // with no setParts (standalone, non-set items) keep the single self entry.
+    if (Array.isArray(v2Item.setParts) && v2Item.setParts.length > 1) {
+      await this.ensureItemsListCache();
+      v1Item.items_in_set = v2Item.setParts.map((partId: string) =>
+        this.buildItemInSetEntryFromId(partId, v2Item, i18n)
+      );
+    } else {
+      v1Item.items_in_set = [this.buildItemInSetEntry(v2Item, i18n)];
+    }
     
     // Add all localized data
     const languages = Object.keys(i18n);
@@ -273,6 +290,49 @@ export class MarketService {
     }
     
     return entry;
+  }
+
+  /**
+   * Resolves a set sibling's id against the cached bulk item list and builds
+   * its items_in_set entry. Falls back to the currently-processed item's own
+   * data when the id matches it (avoids an unnecessary cache lookup), and to
+   * a minimal id-only entry if the id isn't found in the cache (e.g. a
+   * newly-added item the cached list snapshot predates).
+   */
+  private buildItemInSetEntryFromId(partId: string, currentV2Item: any, currentI18n: any): any {
+    if (partId === currentV2Item.id) {
+      return this.buildItemInSetEntry(currentV2Item, currentI18n);
+    }
+
+    const cached = this.itemsListCache?.get(partId);
+    if (!cached) {
+      return this.buildItemInSetEntry({ id: partId, slug: partId, tags: [] }, {});
+    }
+
+    return this.buildItemInSetEntry(cached, cached.i18n || {});
+  }
+
+  /**
+   * Lazily fetches and caches the bulk /v2/items list (id -> item), used to
+   * resolve set sibling parts (which the v2 API only references by id via
+   * `setParts`) without an extra HTTP call per sibling.
+   */
+  private async ensureItemsListCache(): Promise<void> {
+    if (this.itemsListCache) return;
+    if (!this.itemsListCachePromise) {
+      this.itemsListCachePromise = this.getAllItems()
+        .then((res: any) => {
+          const map = new Map<string, any>();
+          for (const item of res?.data || []) {
+            map.set(item.id, item);
+          }
+          this.itemsListCache = map;
+        })
+        .catch(() => {
+          this.itemsListCache = new Map();
+        });
+    }
+    await this.itemsListCachePromise;
   }
 
   /**
@@ -493,7 +553,7 @@ export class MarketService {
       // Calculate prices using OrderCalculator with appropriate filters
       const prices = OrderCalculator.calculatePrices(
         ordersResponse.payload.orders,
-        { 
+        {
           maxRank,
           // Ayatan sculpture filtering for filled sculptures
           maxAmberStars: item.max_amber_stars,
@@ -501,8 +561,25 @@ export class MarketService {
         }
       );
 
-      // Fetch and calculate statistics
-      const stats = await this.calculateStatistics(item.url_name, maxRank);
+      // Fetch and calculate statistics. Statistics come from the v1 endpoint
+      // (no v2 equivalent exists) and are only used for volume/avg_price/
+      // last_completed — secondary display data. The buy/sell prices above
+      // (from the v2 orders endpoint) are the primary inputs every calculator
+      // relies on, so a statistics-only failure must NOT discard them.
+      // Degrade gracefully to zero-volume stats instead, and only re-throw so
+      // the outer retry handler kicks in when it's a rate-limit (429) error.
+      let stats: { volume: number; avg_price: number; last_completed: any };
+      try {
+        stats = await this.calculateStatistics(item.url_name, maxRank);
+      } catch (statsError: any) {
+        if (this.isRateLimitError(statsError)) {
+          throw statsError;
+        }
+        if (DEBUG) {
+          console.log(`⚠ Statistics unavailable for ${item.url_name}, using order prices only:`, statsError.message);
+        }
+        stats = { volume: 0, avg_price: 0, last_completed: null };
+      }
 
       return {
         ...prices,
@@ -511,6 +588,16 @@ export class MarketService {
     } catch (error: any) {
       return this.handlePriceError(error, item, retryAttempt);
     }
+  }
+
+  /**
+   * Detects whether an error represents API rate limiting (HTTP 429).
+   * Used to decide when a failure warrants a backoff-and-retry vs. graceful
+   * degradation.
+   */
+  private isRateLimitError(error: any): boolean {
+    const status = error?.response?.status;
+    return status === 429 || !!error?.message?.includes('429');
   }
 
   /**
@@ -575,10 +662,18 @@ export class MarketService {
   }> {
     const status = error?.response?.status || (error?.message?.includes('429') ? 429 : 0);
 
-    // Handle rate limiting with retry
-    if (status === 429 || error?.message?.includes('429')) {
-      const delay = 2000 + Math.random() * 3000;
-      if (DEBUG) console.log(`⏳ Rate limited on ${item.url_name}, waiting ${Math.round(delay)}ms...`);
+    // Handle rate limiting with capped, backing-off retry. The cap prevents a
+    // persistently rate-limited/blocked item from spinning forever and
+    // stalling a bulk sync on a single item.
+    if (this.isRateLimitError(error)) {
+      if (retryAttempt >= PRICE_ERROR_MAX_RETRIES) {
+        console.error(`✗ Rate limit persisted for ${item.url_name} after ${PRICE_ERROR_MAX_RETRIES} retries, skipping.`);
+        return this.createEmptyPriceResult(false);
+      }
+      // Exponential backoff with jitter, capped.
+      const backoff = Math.min(2000 * Math.pow(2, retryAttempt), 30000);
+      const delay = backoff + Math.random() * 1000;
+      if (DEBUG) console.log(`⏳ Rate limited on ${item.url_name}, waiting ${Math.round(delay)}ms (retry ${retryAttempt + 1}/${PRICE_ERROR_MAX_RETRIES})...`);
       await sleep(delay);
       return this.getItemPrices(item, retryAttempt + 1);
     }

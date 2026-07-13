@@ -8,8 +8,8 @@
  */
 
 import { Schema } from 'mongoose';
-import { MongooseServer } from '../database';
 import { COLLECTIONS } from '../constants';
+import { MongooseServer } from '../database';
 import { IMarketItem, IProcessedItem } from '../interfaces/market.interface';
 
 /**

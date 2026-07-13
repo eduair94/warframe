@@ -13,7 +13,8 @@
 
 import { IHttpClient } from '../interfaces/http.interface';
 import { IDatabaseOperations } from '../interfaces/database.interface';
-import { ENDO_CONSTANTS, API_URLS, RIVEN_DEFAULTS, AGGREGATION } from '../constants';
+import { ENDO_CONSTANTS, API_URLS, RIVEN_DEFAULTS, RIVEN_SYNC_DEFAULTS, AGGREGATION } from '../constants';
+import { sleep } from '../Express/config';
 
 // Debug mode - set DEBUG=true environment variable for verbose logging
 const DEBUG = process.env.DEBUG === 'true';
@@ -302,10 +303,17 @@ export class RivenService {
 
   /**
    * Syncs riven auction data for a specific weapon
-   * 
+   *
+   * Retries with exponential backoff on failure (e.g. rate limiting) up to
+   * a bounded number of attempts, then gives up on this weapon and returns
+   * so the caller can move on to the next one. Retrying forever with no
+   * delay would otherwise hammer an already-rate-limited API and stall the
+   * whole sync on a single weapon indefinitely.
+   *
    * @param riven - Riven item to sync
+   * @param attempt - Current attempt number (internal use, for backoff/cap)
    */
-  async syncSingleRiven(riven: IRivenItem): Promise<void> {
+  async syncSingleRiven(riven: IRivenItem, attempt: number = 0): Promise<void> {
     try {
       const auctions = await this.searchAuctions({
         weaponUrlName: riven.url_name,
@@ -321,14 +329,27 @@ export class RivenService {
         { items: processedAuctions }
       );
     } catch (error: any) {
-      if (DEBUG) console.log(`⟳ Retrying riven sync for ${riven.item_name}:`, error.message);
-      return this.syncSingleRiven(riven);
+      if (attempt + 1 >= RIVEN_SYNC_DEFAULTS.MAX_SYNC_ATTEMPTS) {
+        console.error(
+          `✗ Giving up syncing riven ${riven.item_name} after ${RIVEN_SYNC_DEFAULTS.MAX_SYNC_ATTEMPTS} attempts:`,
+          error.message
+        );
+        return;
+      }
+
+      const delay = Math.min(
+        RIVEN_SYNC_DEFAULTS.RETRY_BASE_DELAY * Math.pow(2, attempt),
+        RIVEN_SYNC_DEFAULTS.RETRY_MAX_DELAY
+      );
+      if (DEBUG) console.log(`⟳ Retrying riven sync for ${riven.item_name} (attempt ${attempt + 2}/${RIVEN_SYNC_DEFAULTS.MAX_SYNC_ATTEMPTS}) in ${delay}ms:`, error.message);
+      await sleep(delay);
+      return this.syncSingleRiven(riven, attempt + 1);
     }
   }
 
   /**
    * Syncs all riven auctions with progress logging
-   * 
+   *
    * @param onProgress - Optional progress callback
    */
   async syncAllRivenAuctions(
@@ -346,6 +367,15 @@ export class RivenService {
       }
 
       await this.syncSingleRiven(riven);
+
+      // Pace successive weapon syncs to avoid tripping rate limiting in the
+      // first place (auctions/search is unauthenticated and easy to 429/403).
+      if (idx < allRivens.length) {
+        await this.httpClient.addRandomDelay(
+          RIVEN_SYNC_DEFAULTS.INTER_WEAPON_MIN_DELAY,
+          RIVEN_SYNC_DEFAULTS.INTER_WEAPON_MAX_DELAY
+        );
+      }
       idx++;
     }
   }

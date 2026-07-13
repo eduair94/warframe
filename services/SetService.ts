@@ -74,7 +74,7 @@ export class SetService {
 
     return {
       set: [this.processItem(setItem), this.processItem(setByParts)],
-      items: parts.map(part => this.processItem(part))
+      items: parts.map(part => this.processItem(part)).filter(item => item !== '')
     };
   }
 
