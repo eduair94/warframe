@@ -189,6 +189,12 @@ export default {
         'https://cdn.jsdelivr.net/npm/workbox-cdn/workbox/workbox-sw.js',
       importScripts: [],
       autoRegister: true,
+      // Activate a new service worker (and its fresh precache) IMMEDIATELY on
+      // the next visit instead of waiting for every tab to close. Without this,
+      // a returning visitor kept running the previous build's cached JS/CSS —
+      // deployed fixes appeared to "not take" until the app was fully closed.
+      skipWaiting: true,
+      clientsClaim: true,
       // Cache the API responses this app actually depends on so the PWA is
       // usable (last-loaded data, at least) when offline or on a flaky
       // connection - previously nothing beyond the Nuxt shell was cached.

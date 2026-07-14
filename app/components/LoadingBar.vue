@@ -15,7 +15,7 @@
 export default {
   name: 'LoadingBar',
   data() {
-    return { timer: null, safety: null }
+    return { safety: null, hideTimer: null, shownAt: 0 }
   },
   methods: {
     spinner() {
@@ -33,26 +33,43 @@ export default {
     },
     start() {
       this.clear()
-      // Small delay so instant (cached) transitions don't flash the overlay.
-      this.timer = setTimeout(() => this.show(), 120)
+      // Show IMMEDIATELY so every navigation — including sidebar links to a
+      // page whose chunk is already cached (an otherwise instant transition) —
+      // gives feedback. A throttle here suppressed it for fast/cached routes,
+      // so clicks felt like nothing happened.
+      this.shownAt = Date.now()
+      this.show()
       // Safety net: never let the overlay get stuck if finish() never fires.
       this.safety = setTimeout(() => this.hide(), 15000)
     },
     finish() {
-      this.clear()
-      this.hide()
-    },
-    fail() {
-      this.finish()
-    },
-    clear() {
-      if (this.timer) {
-        clearTimeout(this.timer)
-        this.timer = null
-      }
       if (this.safety) {
         clearTimeout(this.safety)
         this.safety = null
+      }
+      // Keep it up a minimum time so instant transitions don't flash-and-vanish
+      // (reads as a deliberate loading state rather than a glitch).
+      const MIN_VISIBLE = 350
+      const elapsed = Date.now() - (this.shownAt || 0)
+      if (this.hideTimer) {
+        clearTimeout(this.hideTimer)
+        this.hideTimer = null
+      }
+      if (elapsed >= MIN_VISIBLE) this.hide()
+      else this.hideTimer = setTimeout(() => this.hide(), MIN_VISIBLE - elapsed)
+    },
+    fail() {
+      this.clear()
+      this.hide()
+    },
+    clear() {
+      if (this.safety) {
+        clearTimeout(this.safety)
+        this.safety = null
+      }
+      if (this.hideTimer) {
+        clearTimeout(this.hideTimer)
+        this.hideTimer = null
       }
     },
   },
