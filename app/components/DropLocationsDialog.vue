@@ -29,11 +29,11 @@
       <!-- Live market snapshot (from the store; independent of the drops fetch) -->
       <section v-if="marketItem" class="dld__market">
         <div class="dld__market-grid">
-          <div class="dld__mstat"><span class="dld__mlbl">Buy</span><span class="dld__mval">{{ fmtP(m.buy) }}p</span></div>
-          <div class="dld__mstat"><span class="dld__mlbl">Sell</span><span class="dld__mval">{{ fmtP(m.sell) }}p</span></div>
-          <div class="dld__mstat"><span class="dld__mlbl">Avg 48h</span><span class="dld__mval">{{ fmtP(m.avg_price) }}p</span></div>
-          <div class="dld__mstat"><span class="dld__mlbl">Diff</span><span class="dld__mval">{{ fmtP(m.diff) }}p</span></div>
-          <div class="dld__mstat"><span class="dld__mlbl">Vol 48h</span><span class="dld__mval" :class="{ 'is-thin': signal.thin }">{{ fmtInt(m.volume) }}</span></div>
+          <div class="dld__mstat"><span class="dld__mlbl">Buy</span><span class="dld__mval">{{ fmtP(mkt.buy) }}p</span></div>
+          <div class="dld__mstat"><span class="dld__mlbl">Sell</span><span class="dld__mval">{{ fmtP(mkt.sell) }}p</span></div>
+          <div class="dld__mstat"><span class="dld__mlbl">Avg 48h</span><span class="dld__mval">{{ fmtP(mkt.avg_price) }}p</span></div>
+          <div class="dld__mstat"><span class="dld__mlbl">Diff</span><span class="dld__mval">{{ fmtP(mkt.diff) }}p</span></div>
+          <div class="dld__mstat"><span class="dld__mlbl">Vol 48h</span><span class="dld__mval" :class="{ 'is-thin': signal.thin }">{{ fmtInt(mkt.volume) }}</span></div>
           <div v-if="marketItem.priceUpdate" class="dld__mstat"><span class="dld__mlbl">Updated</span><span class="dld__mval">{{ fromNow(marketItem.priceUpdate) }}</span></div>
         </div>
         <div class="dld__market-foot">
@@ -157,11 +157,11 @@ export default {
       if (!this.itemName) return null
       return resolveMarketItem(this.itemName, this.itemIndex)
     },
-    m(): any {
+    mkt(): any {
       return (this.marketItem && this.marketItem.market) || {}
     },
     lastTrade(): any {
-      return this.m && this.m.last_completed ? this.m.last_completed : null
+      return this.mkt && this.mkt.last_completed ? this.mkt.last_completed : null
     },
     signal(): { thin: boolean; overpriced: boolean; note: string } {
       return marketSignal(this.marketItem && this.marketItem.market)
