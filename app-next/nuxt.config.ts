@@ -39,7 +39,29 @@ export default defineNuxtConfig({
   },
 
   // Modules added in later phases: vuetify-nuxt-module, @pinia/nuxt,
-  // @nuxtjs/i18n, @nuxtjs/sitemap, nuxt-gtag, @nuxtjs/google-fonts,
+  // @nuxtjs/sitemap, nuxt-gtag, @nuxtjs/google-fonts,
   // @vite-pwa/nuxt, @nuxtjs/leaflet.
-  modules: []
+  modules: ['@nuxtjs/i18n'],
+
+  // Ported from app/nuxt.config.js `i18n` block. v9 breaking change vs the
+  // old v7 config: locale objects use `language` (not `iso`). Messages stay
+  // inline via `defineI18nConfig` (app-next/i18n/i18n.config.ts) to keep
+  // parity with the old single-file `translations` object.
+  i18n: {
+    strategy: 'prefix_except_default',
+    defaultLocale: 'en',
+    locales: [
+      { code: 'en', language: 'en-US', name: 'English' },
+      { code: 'es', language: 'es-ES', name: 'Español' },
+      { code: 'pt', language: 'pt-BR', name: 'Português' }
+    ],
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'i18n_redirected',
+      redirectOn: 'root'
+    },
+    // baseUrl powers correct hreflang alternate links in SSR head
+    baseUrl: process.env.SITE_URL || 'http://localhost:3312',
+    vueI18n: './i18n.config.ts'
+  }
 })
