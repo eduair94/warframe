@@ -71,6 +71,9 @@ async function main() {
       socket.join(`item:${url}`);
       const current = gateway.handleSubscribe(url);
       if (current) socket.emit('update', current);
+      // Fire-and-forget FV warm-up so the next poll tick has a real baseline
+      // instead of falling back to `hold` for up to fvRefreshMs.
+      fairValue.load([url]).catch(() => {});
     });
     socket.on('unsubscribe', (msg: { url_name?: string }) => {
       const url = (msg && msg.url_name || '').toString();
@@ -109,6 +112,7 @@ async function writeThrough(itemService: ItemService, url: string, book: LiveBoo
   // current item first and merge — otherwise volume/avg_price/last_completed
   // (populated by the daily sync) get clobbered on every live tick.
   const current = await itemService.getItemByUrlName(url);
+  if (!current) return; // never inject a partial item doc for an unknown url_name
   const prevMarket = (current && (current as any).market) || {};
   await itemService.saveItemByUrlName(url, {
     market: {

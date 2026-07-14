@@ -66,9 +66,11 @@ export function computeVerdict(book: LiveBook, fvIn: FairValueInputs, o: Verdict
     reason = `within ${Math.round(band * 100)}% of fair value (${Math.round(fair)}p)`;
   }
 
-  const score = verdict === 'sell'
+  const score = verdict === 'buy'
+    ? Math.round(clamp(buySignal / (band || 1), -1, 1) * 100)
+    : verdict === 'sell'
     ? -Math.round(clamp(sellSignal / (band || 1), -1, 1) * 100)
-    : Math.round(clamp(buySignal / (band || 1), -1, 1) * 100);
+    : 0;
 
   return {
     url_name: book.url_name,

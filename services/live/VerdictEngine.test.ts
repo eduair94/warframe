@@ -40,6 +40,7 @@ describe('computeVerdict', () => {
   it('is fair inside the band', () => {
     const v = computeVerdict(book({ bestSell: 101, bestBuy: 99 }), fv({ volume: 100 }), OPTS);
     expect(v.verdict).toBe('fair');
+    expect(v.score).toBe(0);
   });
   it('holds when confidence is too low (thin book, no history)', () => {
     const v = computeVerdict(
@@ -47,6 +48,7 @@ describe('computeVerdict', () => {
       fv({ volume: 1, dataDays: 0 }), OPTS
     );
     expect(v.verdict).toBe('hold');
+    expect(v.score).toBe(0);
   });
   it('widens the band for volatile items (no buy signal at 8% when volatility is high)', () => {
     const v = computeVerdict(
