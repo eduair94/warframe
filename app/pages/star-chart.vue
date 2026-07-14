@@ -168,7 +168,15 @@
                     />
                     <button class="sc-reward__name" @click="openDrops(rw.itemName)">{{ rw.itemName }}</button>
                     <span class="sc-reward__chance"><i class="sc-dot" :style="{ background: rarityColor(rw.rarity) }"></i>{{ fmtChance(rw.chance) }}%</span>
-                    <span class="sc-reward__plat">{{ rw.tradeable ? fmtPlat(rw.price) + 'p' : '—' }}</span>
+                    <span class="sc-reward__plat">
+                      <template v-if="rw.tradeable">
+                        <span class="sc-reward__price">{{ fmtPlat(rw.price) }}p</span>
+                        <small v-if="rewardMeta(rw).vol !== null" class="sc-reward__vol" :class="{ 'is-thin': rewardMeta(rw).thin }" :title="rewardMeta(rw).note">
+                          vol {{ rewardMeta(rw).vol }}<template v-if="rewardMeta(rw).thin"> ⚠</template>
+                        </small>
+                      </template>
+                      <template v-else>—</template>
+                    </span>
                   </div>
                 </div>
               </div>
@@ -209,6 +217,7 @@
 <script lang="ts">
 import { mapGetters } from 'vuex'
 import DropLocationsDialog from '../components/DropLocationsDialog.vue'
+import { buildItemIndex, resolveMarketItem, marketSignal } from '../utils/marketLookup'
 
 // --- Faithful Star Chart topology (real Solar Rail junction progression) ---
 // The main chain is the order the game unlocks worlds through Junctions.
@@ -290,6 +299,9 @@ export default {
   },
   computed: {
     ...mapGetters({ allItems: 'all_items' }),
+    itemIndex(): any {
+      return buildItemIndex((this.allItems as any[]) || [])
+    },
     planetsByName(): Record<string, any> {
       const map: Record<string, any> = {}
       for (const p of this.planets) map[p.planet] = p
@@ -461,6 +473,13 @@ export default {
     openDrops(name: string) {
       this.dropsItem = name
       this.dropsDialog = true
+    },
+    // Resolve a reward's live market from the store for the inline volume signal.
+    rewardMeta(rw: any): { vol: number | null; thin: boolean; note: string } {
+      const item = resolveMarketItem(rw && rw.itemName, this.itemIndex)
+      const market = item && item.market ? item.market : null
+      const sig = marketSignal(market)
+      return { vol: market ? Number(market.volume) || 0 : null, thin: sig.thin, note: sig.note }
     },
     onFind(name: string) {
       if (name) this.openDrops(name)
@@ -792,7 +811,13 @@ export default {
 }
 .sc-reward__name:hover { color: #35d6d0; text-decoration: underline; }
 .sc-reward__chance { display: inline-flex; align-items: center; gap: 5px; font-size: 0.84rem; color: #b6bcd0; font-variant-numeric: tabular-nums; white-space: nowrap; }
-.sc-reward__plat { font-family: 'Rajdhani', sans-serif; font-weight: 600; color: #e7cf95; font-size: 0.9rem; white-space: nowrap; }
+.sc-reward__plat { display: flex; flex-direction: column; align-items: flex-end; line-height: 1.15; white-space: nowrap; }
+.sc-reward__price { font-family: 'Rajdhani', sans-serif; font-weight: 600; color: #e7cf95; font-size: 0.9rem; }
+.sc-reward__vol {
+  font-family: 'Rajdhani', sans-serif; font-size: 0.62rem; color: #8f95ab;
+  text-transform: uppercase; letter-spacing: 0.04em; white-space: nowrap;
+}
+.sc-reward__vol.is-thin { color: #e0a3a3; }
 .sc-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; flex: none; }
 
 /* ---- find ---- */
