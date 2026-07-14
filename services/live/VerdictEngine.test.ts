@@ -55,4 +55,15 @@ describe('computeVerdict', () => {
     );
     expect(v.verdict).not.toBe('buy'); // 7% deal < widened band
   });
+  it('crossed book (bestBuy > bestSell): sell verdict must carry a negative score', () => {
+    const v = computeVerdict(book({ bestSell: 98, bestBuy: 150 }), fv({ avg_price: 100, medianHistory: 100, volume: 100 }), OPTS);
+    expect(v.verdict).toBe('sell');
+    expect(v.score).toBeLessThan(0);
+  });
+  it('does not NaN when volume and halfVolume are both 0 (fair-value + verdict stay finite)', () => {
+    const fvIn = fv({ avg_price: 100, medianHistory: 100, volume: 0 });
+    expect(Number.isFinite(computeFairValue(fvIn, 0))).toBe(true);
+    const v = computeVerdict(book({ bestSell: 101, bestBuy: 99 }), fvIn, { ...OPTS, halfVolume: 0 });
+    expect(Number.isFinite(v.fv)).toBe(true);
+  });
 });

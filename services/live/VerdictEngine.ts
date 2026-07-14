@@ -21,7 +21,8 @@ export function computeFairValue(fv: FairValueInputs, halfVolume: number): numbe
   if (avg <= 0 && med <= 0) return 0;
   if (avg <= 0) return med;
   if (med <= 0) return avg;
-  const w = fv.volume / (fv.volume + halfVolume);
+  const denom = fv.volume + halfVolume;
+  const w = denom > 0 ? fv.volume / denom : 0;
   return w * avg + (1 - w) * med;
 }
 
@@ -48,11 +49,10 @@ export function computeVerdict(book: LiveBook, fvIn: FairValueInputs, o: Verdict
   const sellSignal = fair > 0 && book.bestBuy > 0 ? (book.bestBuy - fair) / fair : 0;     // + = rich to sell
   const dealPct = fair > 0 && book.bestSell > 0 ? (fair - book.bestSell) / fair : 0;
   const flipMargin = book.bestSell > 0 && book.bestBuy > 0 ? book.bestSell - book.bestBuy : 0;
-  const score = Math.round(clamp(buySignal / (band || 1), -1, 1) * 100);
 
   let verdict: VerdictKind;
   let reason: string;
-  if (fair <= 0 || confidence < o.confMin) {
+  if (!(fair > 0) || confidence < o.confMin) {
     verdict = 'hold';
     reason = fair <= 0 ? 'no fair-value baseline yet' : 'insufficient liquidity/history to trust a signal';
   } else if (buySignal >= band) {
@@ -65,6 +65,10 @@ export function computeVerdict(book: LiveBook, fvIn: FairValueInputs, o: Verdict
     verdict = 'fair';
     reason = `within ${Math.round(band * 100)}% of fair value (${Math.round(fair)}p)`;
   }
+
+  const score = verdict === 'sell'
+    ? -Math.round(clamp(sellSignal / (band || 1), -1, 1) * 100)
+    : Math.round(clamp(buySignal / (band || 1), -1, 1) * 100);
 
   return {
     url_name: book.url_name,
