@@ -26,6 +26,29 @@
         </button>
       </header>
 
+      <!-- Live market snapshot (from the store; independent of the drops fetch) -->
+      <section v-if="marketItem" class="dld__market">
+        <div class="dld__market-grid">
+          <div class="dld__mstat"><span class="dld__mlbl">Buy</span><span class="dld__mval">{{ fmtP(m.buy) }}p</span></div>
+          <div class="dld__mstat"><span class="dld__mlbl">Sell</span><span class="dld__mval">{{ fmtP(m.sell) }}p</span></div>
+          <div class="dld__mstat"><span class="dld__mlbl">Avg 48h</span><span class="dld__mval">{{ fmtP(m.avg_price) }}p</span></div>
+          <div class="dld__mstat"><span class="dld__mlbl">Diff</span><span class="dld__mval">{{ fmtP(m.diff) }}p</span></div>
+          <div class="dld__mstat"><span class="dld__mlbl">Vol 48h</span><span class="dld__mval" :class="{ 'is-thin': signal.thin }">{{ fmtInt(m.volume) }}</span></div>
+          <div v-if="marketItem.priceUpdate" class="dld__mstat"><span class="dld__mlbl">Updated</span><span class="dld__mval">{{ fromNow(marketItem.priceUpdate) }}</span></div>
+        </div>
+        <div class="dld__market-foot">
+          <span v-if="signal.note" class="dld__flag" :class="{ 'is-warn': signal.overpriced }">⚠ {{ signal.note }}</span>
+          <span v-if="lastTrade" class="dld__last">last trade {{ fmtP(lastTrade.avg_price) }}p · {{ fromNow(lastTrade.datetime) }}</span>
+          <div v-if="marketItem.tags && marketItem.tags.length" class="dld__tags">
+            <span v-for="(t, ti) in marketItem.tags.slice(0, 4)" :key="ti" class="dld__tag">{{ fmtTag(t) }}</span>
+          </div>
+          <a v-if="wmUrl" class="dld__wm" :href="wmUrl" target="_blank" rel="noopener">View on Warframe.Market ↗</a>
+        </div>
+      </section>
+      <section v-else-if="itemName" class="dld__market dld__market--none">
+        Not traded on Warframe Market
+      </section>
+
       <div class="dld__body">
         <!-- Loading -->
         <div v-if="loading" class="dld__state">
@@ -63,7 +86,7 @@
                 <span class="dld__mode">{{ m.gameMode }}</span>
                 <span v-if="m.rotation" class="dld__rot" :data-rot="m.rotation">{{ m.rotation }}</span>
                 <span class="dld__chance">
-                  <i class="dld__dot" :style="{ background: rarityColor(m.rarity) }"></i>{{ fmt(m.chance) }}%
+                  <i class="dld__dot" :style="{ background: rarityColor(m.rarity) }"></i>{{ m.rarity }} · {{ fmt(m.chance) }}%
                 </span>
               </li>
             </ul>
@@ -83,12 +106,11 @@
                 </span>
               </div>
               <div v-if="r.farmNodes.length" class="dld__farm">
-                <span class="dld__farm-lbl">Farm the relic at</span>
+                <span class="dld__farm-lbl">Farm the relic at · {{ r.farmNodes.length }} {{ r.farmNodes.length === 1 ? 'node' : 'nodes' }}</span>
                 <div class="dld__farm-nodes">
-                  <span v-for="(n, j) in r.farmNodes.slice(0, 4)" :key="j" class="dld__chip">
-                    {{ n.location }}<small>{{ n.planet }} · {{ n.gameMode }}<template v-if="n.rotation"> · {{ n.rotation }}</template></small>
+                  <span v-for="(n, j) in r.farmNodes" :key="j" class="dld__chip">
+                    {{ n.location }}<small>{{ n.planet }} · {{ n.gameMode }}<template v-if="n.rotation"> · {{ n.rotation }}</template> · {{ fmt(n.chance) }}%</small>
                   </span>
-                  <span v-if="r.farmNodes.length > 4" class="dld__chip dld__chip--more">+{{ r.farmNodes.length - 4 }}</span>
                 </div>
               </div>
               <div v-else class="dld__farm dld__farm--none">Relic currently has no farmable source (likely vaulted).</div>
@@ -98,15 +120,17 @@
       </div>
 
       <footer class="dld__foot">
-        <a class="dld__source" :href="externalLink" target="_blank" rel="noopener noreferrer">
-          Open full data <v-icon size="14">mdi-open-in-new</v-icon>
-        </a>
+        <span class="dld__source">Source · community drop tables + Warframe Market prices</span>
       </footer>
     </div>
   </v-dialog>
 </template>
 
 <script lang="ts">
+import { mapGetters } from 'vuex'
+import moment from 'moment'
+import { buildItemIndex, resolveMarketItem, marketSignal, MarketItem } from '../utils/marketLookup'
+
 export default {
   name: 'DropLocationsDialog',
   props: {
@@ -125,17 +149,33 @@ export default {
     }
   },
   computed: {
+    ...mapGetters({ allItems: 'all_items' }),
+    itemIndex(): Map<string, MarketItem> {
+      return buildItemIndex((this.allItems as MarketItem[]) || [])
+    },
+    marketItem(): MarketItem | null {
+      if (!this.itemName) return null
+      return resolveMarketItem(this.itemName, this.itemIndex)
+    },
+    m(): any {
+      return (this.marketItem && this.marketItem.market) || {}
+    },
+    lastTrade(): any {
+      return this.m && this.m.last_completed ? this.m.last_completed : null
+    },
+    signal(): { thin: boolean; overpriced: boolean; note: string } {
+      return marketSignal(this.marketItem && this.marketItem.market)
+    },
+    wmUrl(): string {
+      return this.marketItem && this.marketItem.url_name
+        ? 'https://warframe.market/items/' + this.marketItem.url_name
+        : ''
+    },
     thumbUrl(): string {
       return 'https://warframe.market/static/assets/' + (this.thumb || '')
     },
     hasResults(): boolean {
       return !!(this.data && (this.data.missions.length || this.data.relics.length))
-    },
-    externalLink(): string {
-      let s = '^' + (this.itemName || '')
-      if (s.includes('(')) s = s.split('(')[0].trim()
-      if (s.includes('Set')) s = s.replace('Set', '').trim()
-      return `https://drops.warframestat.us/#/search/${encodeURIComponent(s)}/items/regex`
     },
   },
   watch: {
@@ -174,6 +214,21 @@ export default {
     fmt(n: number): string {
       const v = Number(n) || 0
       return v >= 10 ? v.toFixed(0) : v.toFixed(2).replace(/\.?0+$/, '')
+    },
+    fmtP(n: number): string {
+      const v = Number(n) || 0
+      return v >= 100 ? Math.round(v).toLocaleString('en-US') : v.toFixed(v % 1 === 0 ? 0 : 1)
+    },
+    fmtInt(n: number): string {
+      return String(Math.round(Number(n) || 0))
+    },
+    fromNow(d: any): string {
+      if (!d) return ''
+      const mm = moment(d)
+      return mm.isValid() ? mm.fromNow() : ''
+    },
+    fmtTag(t: string): string {
+      return (t || '').replace(/_/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase())
     },
     rarityColor(rarity: string): string {
       const r = (rarity || '').toLowerCase()
@@ -249,6 +304,47 @@ export default {
 }
 .dld__close:hover { color: #e7cf95; border-color: rgba(200, 168, 92, 0.5); }
 .dld__close:focus-visible { outline: 2px solid #35d6d0; outline-offset: 2px; }
+
+.dld__market {
+  padding: 12px 20px;
+  border-bottom: 1px solid rgba(200, 168, 92, 0.16);
+  background: rgba(200, 168, 92, 0.03);
+}
+.dld__market-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(74px, 1fr));
+  gap: 8px 14px;
+}
+.dld__mstat { display: flex; flex-direction: column; min-width: 0; }
+.dld__mlbl {
+  font-family: 'Rajdhani', sans-serif; text-transform: uppercase;
+  letter-spacing: 0.1em; font-size: 0.6rem; color: #8f95ab;
+}
+.dld__mval { font-variant-numeric: tabular-nums; color: #eef1f8; font-size: 0.98rem; font-weight: 600; }
+.dld__mval.is-thin { color: #e0a3a3; }
+.dld__market-foot {
+  display: flex; align-items: center; flex-wrap: wrap; gap: 8px 12px; margin-top: 10px;
+}
+.dld__flag {
+  font-family: 'Rajdhani', sans-serif; text-transform: uppercase; letter-spacing: 0.06em;
+  font-size: 0.68rem; color: #c8a85c;
+}
+.dld__flag.is-warn { color: #e0a3a3; }
+.dld__last { font-size: 0.74rem; color: #8f95ab; }
+.dld__tags { display: inline-flex; flex-wrap: wrap; gap: 5px; }
+.dld__tag {
+  font-family: 'Rajdhani', sans-serif; font-size: 0.66rem; color: #b6bcd0;
+  border: 1px solid rgba(255,255,255,0.12); padding: 1px 6px; border-radius: 2px; text-transform: uppercase; letter-spacing: 0.04em;
+}
+.dld__wm {
+  margin-left: auto;
+  font-family: 'Rajdhani', sans-serif; text-transform: uppercase; letter-spacing: 0.08em;
+  font-size: 0.74rem; color: #35d6d0; text-decoration: none; white-space: nowrap;
+}
+.dld__wm:hover { color: #7ff0eb; text-decoration: underline; }
+.dld__market--none {
+  font-family: 'Rajdhani', sans-serif; font-size: 0.82rem; color: #8f95ab; font-style: italic;
+}
 
 .dld__body { padding: 16px 20px; overflow-y: auto; }
 
@@ -364,7 +460,6 @@ export default {
   line-height: 1.25;
 }
 .dld__chip small { color: #7f95a2; font-size: 0.68rem; }
-.dld__chip--more { justify-content: center; color: #8f95ab; background: transparent; border-color: rgba(255,255,255,0.12); }
 
 .dld__foot {
   padding: 12px 20px;
@@ -383,5 +478,4 @@ export default {
   font-size: 0.76rem;
   text-decoration: none;
 }
-.dld__source:hover { color: #35d6d0; }
 </style>
