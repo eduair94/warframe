@@ -161,7 +161,7 @@
                   <div v-for="(rw, i) in sortedRewards(rot.rewards)" :key="i" class="sc-reward" :class="{ 'is-dud': !rw.tradeable }">
                     <img
                       class="sc-reward__thumb"
-                      :src="thumbUrl(rw.thumb)"
+                      :src="itemThumb({ itemName: rw.itemName, thumb: rw.thumb })"
                       :alt="rw.itemName"
                       loading="lazy"
                       @error="onImgError"
@@ -272,7 +272,18 @@ useHead({
   ],
 })
 
+// A single mission reward row (relic/item drop joined with market price).
+interface ScReward {
+  itemName: string
+  thumb?: string
+  chance: number
+  price: number
+  rarity: string
+  tradeable?: boolean
+}
+
 const items = useItemsStore()
+const { itemThumb } = useItemThumb()
 const { mobile } = useDisplay()
 const config = useRuntimeConfig()
 const base = config.public.apiURL
@@ -457,7 +468,7 @@ function onSvgKey(e: KeyboardEvent) {
 function toggleNode(location: string) {
   openNode.value = openNode.value === location ? '' : location
 }
-function sortedRewards(rewards: any[]): any[] {
+function sortedRewards(rewards: ScReward[]): ScReward[] {
   return rewards.slice().sort((a, b) => (b.chance / 100) * b.price - (a.chance / 100) * a.price || b.chance - a.chance)
 }
 function openDrops(name: string) {
@@ -486,10 +497,6 @@ function rarityColor(rarity: string): string {
   if (r === 'rare') return '#e7cf95'
   if (r === 'uncommon') return '#b6c0cc'
   return '#c08457'
-}
-function thumbUrl(thumb: string): string {
-  if (!thumb) return PLACEHOLDER_IMG
-  return 'https://warframe.market/static/assets/' + thumb
 }
 function onImgError(e: any) {
   const img = e.target

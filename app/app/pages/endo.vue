@@ -18,7 +18,8 @@
               <img
                 class="mr-3"
                 width="50px"
-                :src="'https://warframe.market/static/assets/' + item.thumb"
+                :src="RIVEN_TEMPLATE_IMG"
+                @error="($event.target as HTMLImageElement).src = THUMB_PLACEHOLDER"
               />
               <div>
                 <a
@@ -184,6 +185,10 @@ const config = useRuntimeConfig()
 const base = config.public.apiURL
 const { t } = useI18n()
 const goTo = useGoTo()
+
+// Riven rows carry stale per-weapon thumb hashes that 404; use the stable
+// generic veiled-riven card image instead (all rivens render as veiled cards).
+const { RIVEN_TEMPLATE_IMG, THUMB_PLACEHOLDER } = useItemThumb()
 
 // SEO head — old this.$nuxtI18nHead({ addSeoAttributes: true }).
 // @nuxtjs/i18n v9 renamed the option key `addSeoAttributes` -> `seo`.

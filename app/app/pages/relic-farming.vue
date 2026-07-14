@@ -94,6 +94,14 @@
               class="an-field"
               style="flex: 0 1 220px"
             ></v-select>
+            <v-switch
+              v-model="completeOnly"
+              hide-details
+              density="compact"
+              color="#d4af5a"
+              label="Full data only"
+              class="an-complete"
+            ></v-switch>
           </div>
 
           <v-chip-group v-model="tier" mandatory column class="an-cats">
@@ -139,14 +147,19 @@
                 :class="{ 'is-top': row.url_name === topDealUrl }"
               >
                 <td class="col-name">
-                  <nuxt-link class="an-name" :to="'/relic/' + row.url_name">
-                    <img class="an-thumb" :src="assetUrl(row.thumb)" :alt="row.relicName" loading="lazy" @error="onImgError" />
-                    <span>
-                      {{ row.relicName }}
-                      <span v-if="row.url_name === topDealUrl" class="an-badge">TOP</span>
-                      <small class="an-sub">{{ row.tier }} · {{ row.rewards.length }} drops</small>
-                    </span>
-                  </nuxt-link>
+                  <div class="an-namewrap">
+                    <nuxt-link class="an-name" :to="'/relic/' + row.url_name">
+                      <img class="an-thumb" :src="relicThumb(row)" :alt="row.relicName" loading="lazy" @error="onImgError" />
+                      <span>
+                        {{ row.relicName }}
+                        <span v-if="row.url_name === topDealUrl" class="an-badge">TOP</span>
+                        <small class="an-sub">{{ row.tier }} · {{ row.rewards.length }} drops</small>
+                      </span>
+                    </nuxt-link>
+                    <button class="an-drops" title="Where to farm this relic" @click="openDrops(row)">
+                      <v-icon size="18">mdi-map-marker-radius-outline</v-icon>
+                    </button>
+                  </div>
                 </td>
                 <td class="grp-a an-num an-strong up">{{ fmtPlat(platPerHour(row)) }}p/hr</td>
                 <td class="grp-b an-num">{{ fmtPlat(ev(row)) }}p</td>
@@ -170,7 +183,7 @@
             :to="'/relic/' + row.url_name"
           >
             <div class="an-card__head">
-              <img class="an-thumb" :src="assetUrl(row.thumb)" :alt="row.relicName" loading="lazy" @error="onImgError" />
+              <img class="an-thumb" :src="relicThumb(row)" :alt="row.relicName" loading="lazy" @error="onImgError" />
               <div class="an-card__title">
                 <div class="an-card__name">
                   {{ row.relicName }}
@@ -178,6 +191,9 @@
                 </div>
                 <small class="an-sub">{{ row.tier }} · {{ row.rewards.length }} drops · vol {{ fmtPlat(row.relic.volume) }}</small>
               </div>
+              <button class="an-drops" title="Where to farm this relic" @click.prevent.stop="openDrops(row)">
+                <v-icon size="20">mdi-map-marker-radius-outline</v-icon>
+              </button>
               <v-icon color="#4fb3bf">mdi-chevron-right</v-icon>
             </div>
             <div class="an-card__verdict">
@@ -211,6 +227,8 @@
         Radiant costs 100 void traces to refine; actual run time varies by
         fissure and squad. Payout uses each drop's lowest sell order.
       </v-alert>
+
+      <DropLocationsDialog v-model="dropsDialog" :item-name="dropsRelic" :thumb="dropsThumb" />
     </client-only>
   </div>
 </template>
@@ -225,6 +243,31 @@ const CHANCES: Record<string, Record<string, number>> = {
   Radiant: { Common: 16.67, Uncommon: 20, Rare: 10 },
 }
 
+// Shape of a relic row from /relics_ev.
+interface RelicReward {
+  item_name: string
+  url_name?: string
+  thumb?: string
+  price: number
+  rarity: string
+}
+interface RelicMarket {
+  volume: number
+  buy: number
+}
+interface RelicRow {
+  url_name: string
+  relicName: string
+  tier: string
+  thumb: string
+  rewards: RelicReward[]
+  relic: RelicMarket
+}
+
+// Working thumbnails cross-referenced against the fresh catalog (drop data
+// carries stale warframe.market thumb hashes).
+const { itemThumb } = useItemThumb()
+
 const config = useRuntimeConfig()
 const base = config.public.apiURL
 
@@ -232,10 +275,10 @@ const base = config.public.apiURL
 // key ('relic-farming') so the cache doesn't collide with relics-value.vue's
 // 'relics-ev' key, even though both hit the same /relics_ev endpoint.
 const { data, error } = await useAsyncData('relic-farming', () =>
-  $fetch<{ relics: any[] }>(`${base}/relics_ev`),
+  $fetch<{ relics: RelicRow[] }>(`${base}/relics_ev`),
 )
 const loadError = computed(() => !!error.value)
-const relics = computed<any[]>(() => data.value?.relics ?? [])
+const relics = computed<RelicRow[]>(() => data.value?.relics ?? [])
 
 useHead({
   title: 'Relic Farming — best relics by platinum per hour (Warframe)',
@@ -259,6 +302,13 @@ const sortKey = ref('pph')
 const missionMinutes = ref(3)
 const page = ref(1)
 const perPage = 20
+// Only value/show relics that carry full drop + market data by default
+// (relics missing prices for their drops can't get a meaningful plat/hour).
+const completeOnly = ref(true)
+// Drops popup — where to farm the clicked relic.
+const dropsDialog = ref(false)
+const dropsRelic = ref('')
+const dropsThumb = ref('')
 const placeholderImg =
   "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44'%3E%3Crect width='44' height='44' rx='8' fill='%232a2a3d'/%3E%3Cpath d='M22 11 L31 22 L22 33 L13 22 Z' fill='none' stroke='%234fb3bf' stroke-width='2' opacity='0.75'/%3E%3C/svg%3E"
 const sortOptions = [
@@ -268,9 +318,6 @@ const sortOptions = [
   { text: 'Name (A–Z)', value: 'name' },
 ]
 
-function assetUrl(thumb: string): string {
-  return 'https://warframe.market/static/assets/' + (thumb || '')
-}
 function onImgError(e: any) {
   const img = e.target
   if (!img || img.dataset.fallback) return
@@ -298,6 +345,23 @@ function topDrop(relic: any): any {
 function fmtPlat(n: number): string {
   return Math.round(Number(n) || 0).toLocaleString('en-US')
 }
+// A relic has "full data" when it has drops and every drop carries a market
+// price — only then can we assign a trustworthy EV / plat-per-hour.
+function hasFullData(relic: RelicRow): boolean {
+  const rewards = relic.rewards || []
+  if (!rewards.length) return false
+  return rewards.every((r) => Number(r.price) > 0)
+}
+// Working thumbnail for a relic row (falls back through the fresh catalog).
+function relicThumb(relic: RelicRow): string {
+  return itemThumb({ urlName: relic.url_name, itemName: relic.relicName, thumb: relic.thumb })
+}
+// Open the "where to farm" drops popup for a relic.
+function openDrops(relic: RelicRow) {
+  dropsRelic.value = relic.relicName
+  dropsThumb.value = relic.thumb || ''
+  dropsDialog.value = true
+}
 
 const tierOptions = computed<string[]>(() => {
   const present = new Set<string>()
@@ -306,9 +370,15 @@ const tierOptions = computed<string[]>(() => {
   return ['All', ...order.filter((t) => present.has(t))]
 })
 
+// When completeOnly is on (default), only relics with full drop/market data
+// are valued and shown — matching the old page's behavior.
+const valuedRelics = computed<RelicRow[]>(() =>
+  completeOnly.value ? relics.value.filter(hasFullData) : relics.value,
+)
+
 const filtered = computed<any[]>(() => {
   const q = (search.value || '').toString().trim().toLowerCase()
-  const list = relics.value.filter((r) => {
+  const list = valuedRelics.value.filter((r) => {
     if (q && !r.relicName.toLowerCase().includes(q)) return false
     if (tier.value !== 'All' && r.tier !== tier.value) return false
     return true
@@ -332,7 +402,7 @@ const paged = computed<any[]>(() => {
 
 const topDeal = computed<any>(() => {
   let best: any = null
-  for (const r of relics.value) {
+  for (const r of valuedRelics.value) {
     if (!best || platPerHour(r) > platPerHour(best)) best = r
   }
   return best
@@ -347,7 +417,7 @@ const topDealUrl = computed<string>(() => {
 })
 
 const stats = computed<any>(() => {
-  const list = relics.value
+  const list = valuedRelics.value
   const pphs = list.map((r) => platPerHour(r))
   const evs = list.map((r) => ev(r))
   return {
@@ -378,6 +448,41 @@ onMounted(() => {
 </script>
 
 <style scoped>
+.an-namewrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.an-namewrap .an-name {
+  flex: 1;
+  min-width: 0;
+}
+.an-drops {
+  flex: none;
+  color: #4fb3bf;
+  background: transparent;
+  border: 1px solid rgba(79, 179, 191, 0.35);
+  border-radius: 6px;
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+}
+.an-drops:hover {
+  color: #d4af5a;
+  border-color: rgba(212, 175, 90, 0.5);
+  background: rgba(212, 175, 90, 0.08);
+}
+.an-complete {
+  flex: 0 0 auto;
+}
+.an-complete :deep(.v-label) {
+  font-size: 0.8rem;
+  color: #b6bcd0;
+  opacity: 1;
+}
 .an-refine {
   flex: 0 0 auto;
 }

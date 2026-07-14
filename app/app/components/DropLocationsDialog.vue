@@ -9,9 +9,9 @@
     <div class="dld">
       <header class="dld__head">
         <img
-          v-if="thumb"
+          v-if="hasHeadThumb"
           class="dld__thumb"
-          :src="thumbUrl"
+          :src="headThumb"
           :alt="itemName"
           @error="onImgError"
         />
@@ -76,18 +76,51 @@
             </div>
             <div v-for="(r, i) in data.relics" :key="'r' + i" class="dld__relic">
               <div class="dld__relic-head">
-                <span class="dld__relic-name">{{ r.relicName }}</span>
+                <span class="dld__relic-id">
+                  <img
+                    class="dld__relic-thumb"
+                    :src="itemThumb({ itemName: r.relicName })"
+                    :alt="r.relicName"
+                    @error="onImgError"
+                  />
+                  <span class="dld__relic-name">{{ r.relicName }}</span>
+                </span>
                 <span class="dld__chance">
-                  <i class="dld__dot" :style="{ background: rarityColor(r.rarity) }"></i>{{ r.rarity }} · {{ fmt(r.chance) }}%
+                  <i class="dld__dot" :style="{ background: rarityColor(r.rarity) }"></i>{{ r.rarity }}
                 </span>
               </div>
+
+              <!-- Drop chance by relic refinement (Intact/Exceptional/Flawless/Radiant) -->
+              <div class="dld__refine">
+                <div
+                  v-for="ref in refinements(r.chance)"
+                  :key="ref.label"
+                  class="dld__refcell"
+                  :class="'is-' + ref.key"
+                >
+                  <span class="dld__reflbl">{{ ref.label }}</span>
+                  <span class="dld__refval">{{ fmt(ref.chance) }}%</span>
+                </div>
+              </div>
+
               <div v-if="r.farmNodes.length" class="dld__farm">
                 <span class="dld__farm-lbl">Farm the relic at</span>
                 <div class="dld__farm-nodes">
-                  <span v-for="(n, j) in r.farmNodes.slice(0, 4)" :key="j" class="dld__chip">
+                  <span
+                    v-for="(n, j) in (expanded.has(i) ? r.farmNodes : r.farmNodes.slice(0, 6))"
+                    :key="j"
+                    class="dld__chip"
+                  >
                     {{ n.location }}<small>{{ n.planet }} · {{ n.gameMode }}<template v-if="n.rotation"> · {{ n.rotation }}</template></small>
                   </span>
-                  <span v-if="r.farmNodes.length > 4" class="dld__chip dld__chip--more">+{{ r.farmNodes.length - 4 }}</span>
+                  <button
+                    v-if="r.farmNodes.length > 6"
+                    type="button"
+                    class="dld__chip dld__chip--more"
+                    @click="toggle(i)"
+                  >
+                    {{ expanded.has(i) ? 'Show less' : '+' + (r.farmNodes.length - 6) + ' more' }}
+                  </button>
                 </div>
               </div>
               <div v-else class="dld__farm dld__farm--none">Relic currently has no farmable source (likely vaulted).</div>
@@ -98,7 +131,7 @@
 
       <footer class="dld__foot">
         <a class="dld__source" :href="externalLink" target="_blank" rel="noopener noreferrer">
-          Open full data <v-icon size="14">mdi-open-in-new</v-icon>
+          Cross-check on warframestat <v-icon size="14">mdi-open-in-new</v-icon>
         </a>
       </footer>
     </div>
@@ -148,14 +181,20 @@ const emit = defineEmits<{ (e: 'update:modelValue', value: boolean): void }>()
 const config = useRuntimeConfig()
 const base = config.public.apiURL
 
+const { itemThumb, THUMB_PLACEHOLDER } = useItemThumb()
+
 const loading = ref(false)
 const error = ref(false)
 const data = ref<DropData>({ missions: [], relics: [], itemName: '' })
 const lastLoaded = ref('')
 
-const thumbUrl = computed(
-  () => 'https://warframe.market/static/assets/' + (props.thumb || ''),
+// Resolve the header thumbnail against the fresh catalog (the passed `thumb`
+// prop may carry a stale warframe.market hash that 404s). Falls back to the
+// diamond node glyph when nothing resolves.
+const headThumb = computed(() =>
+  itemThumb({ itemName: props.itemName, thumb: props.thumb }),
 )
+const hasHeadThumb = computed(() => headThumb.value !== THUMB_PLACEHOLDER)
 const hasResults = computed(
   () => !!(data.value && (data.value.missions.length || data.value.relics.length)),
 )
@@ -174,6 +213,41 @@ function onImgError(e: Event) {
   // Hide a broken thumbnail and fall back to the diamond node glyph.
   const img = e.target as HTMLImageElement | null
   if (img) img.style.display = 'none'
+}
+
+// Relic reward drop-chance by refinement, derived from the base (Intact) chance
+// so the full drop table (Intact/Exceptional/Flawless/Radiant) shows inline —
+// no need to open warframestat. Warframe's per-slot chances are fixed; we key
+// off the base chance because it's reliable even when a rarity label disagrees.
+interface Refinement {
+  key: string
+  label: string
+  chance: number
+}
+const REFINE_SLOTS: Record<string, number[]> = {
+  common: [25.33, 23.33, 20, 16.67],
+  uncommon: [11, 13, 17, 20],
+  rare: [2, 4, 6, 10],
+}
+const REFINE_LABELS: ReadonlyArray<{ key: string; label: string }> = [
+  { key: 'intact', label: 'Intact' },
+  { key: 'exceptional', label: 'Excep.' },
+  { key: 'flawless', label: 'Flawless' },
+  { key: 'radiant', label: 'Radiant' },
+]
+function refinements(baseChance: number): Refinement[] {
+  const slot = baseChance >= 18 ? 'common' : baseChance >= 6 ? 'uncommon' : 'rare'
+  const vals = REFINE_SLOTS[slot] as number[]
+  return REFINE_LABELS.map((l, i) => ({ ...l, chance: vals[i] as number }))
+}
+
+// Farm-node lists expand inline (show first 6, toggle to all) — no external nav.
+const expanded = ref<Set<number>>(new Set())
+function toggle(i: number) {
+  const s = new Set(expanded.value)
+  if (s.has(i)) s.delete(i)
+  else s.add(i)
+  expanded.value = s
 }
 
 async function load() {
@@ -373,7 +447,36 @@ watch(
   background: rgba(255,255,255,0.014);
 }
 .dld__relic-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.dld__relic-id { display: inline-flex; align-items: center; gap: 8px; min-width: 0; }
+.dld__relic-thumb {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  flex: none;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(200, 168, 92, 0.28);
+  clip-path: polygon(5px 0, 100% 0, 100% calc(100% - 5px), calc(100% - 5px) 100%, 0 100%, 0 5px);
+}
 .dld__relic-name { font-family: 'Cinzel', serif; color: #e7cf95; font-size: 1.02rem; }
+.dld__refine {
+  margin-top: 9px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+}
+.dld__refcell {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  padding: 5px 6px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  text-align: center;
+}
+.dld__refcell.is-radiant { border-color: rgba(200, 168, 92, 0.4); background: rgba(200, 168, 92, 0.08); }
+.dld__reflbl { font-size: 0.62rem; letter-spacing: 0.04em; text-transform: uppercase; color: #8a93ab; }
+.dld__refval { font-size: 0.9rem; font-weight: 700; color: #e8edf6; }
 .dld__farm { margin-top: 9px; }
 .dld__farm-lbl {
   display: block;
