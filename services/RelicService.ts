@@ -230,12 +230,19 @@ export class RelicService {
 
       const rewards = relic.rewards.map((reward) => {
         const item = byName.get(reward.itemName);
+        const m = item?.market;
         return {
           item_name: reward.itemName,
           url_name: item?.url_name ?? '',
           thumb: item?.thumb ?? '',
           rarity: reward.rarity,
-          price: item?.market?.sell ?? 0,
+          price: m?.sell ?? 0,
+          // Liquidity inputs: the client discounts a drop's value by its trade
+          // volume and prefers the 48h average over the raw lowest ask.
+          avgPrice: m?.avg_price ?? 0,
+          volume: m?.volume ?? 0,
+          // Whether the part itself is vaulted (scarce) vs still dropping.
+          vaulted: item?.vaulted === true,
         };
       });
 
@@ -244,10 +251,15 @@ export class RelicService {
         url_name,
         tier: this.capitalize(tier),
         thumb: relicItem?.thumb ?? '',
+        // Vaulted relics no longer drop (can't be farmed). `=== true` collapses
+        // an undefined/not-enriched flag to false so we never hide a relic that
+        // might still drop.
+        vaulted: relicItem?.vaulted === true,
         relic: {
           buy: relicItem?.market?.buy ?? 0,
           sell: relicItem?.market?.sell ?? 0,
           volume: relicItem?.market?.volume ?? 0,
+          avgPrice: relicItem?.market?.avg_price ?? 0,
         },
         rewards,
       });

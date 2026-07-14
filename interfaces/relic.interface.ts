@@ -114,6 +114,24 @@ export interface IRelicEvReward {
   rarity: RewardRarity | string;
   /** Going market price of the reward part (lowest sell order) */
   price: number;
+  /**
+   * 48h average sell price from completed trades. The client prefers this over
+   * the raw `price` (lowest ask) as the value basis, since a single lowball or
+   * lowfill ask distorts the ask. 0 when the part isn't traded / not listed.
+   */
+  avgPrice: number;
+  /**
+   * 48h trade volume for this part. Drives the liquidity weight: a drop nobody
+   * actually buys (0 volume) contributes ~nothing to the relic's realizable
+   * payout, so overpriced illiquid asks can't inflate an EV.
+   */
+  volume: number;
+  /**
+   * Whether this reward part is itself vaulted. A non-vaulted part still drops
+   * from current relics/missions (abundant, ongoing supply); a vaulted part is
+   * scarce. Lets the pages flag which of a relic's drops are currently-farmable.
+   */
+  vaulted: boolean;
 }
 
 /**
@@ -132,8 +150,16 @@ export interface IRelicEvRow {
   tier: string;
   /** Relic thumbnail (from its own market item, if listed) */
   thumb: string;
+  /**
+   * True when the relic is vaulted — it no longer drops from any current
+   * mission, so it can't be farmed (only cracked from an existing inventory).
+   * Sourced from the relic's own warframe.market item (v2 `vaulted` flag).
+   * `false` also covers "unknown / not enriched" so a missing flag never hides
+   * a relic that might still drop.
+   */
+  vaulted: boolean;
   /** The relic's own market data — relics are tradeable */
-  relic: { buy: number; sell: number; volume: number };
+  relic: { buy: number; sell: number; volume: number; avgPrice: number };
   /** The six possible rewards with prices */
   rewards: IRelicEvReward[];
 }

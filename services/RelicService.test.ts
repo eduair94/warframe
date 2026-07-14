@@ -30,9 +30,9 @@ describe('RelicService.buildRelicEvFromData', () => {
 
     const items: IMarketItem[] = [
       // the relic's own market item (listed as "<tier>_<code>_relic")
-      { url_name: 'lith_a1_relic', item_name: 'Lith A1 Relic', thumb: 'relic.png', market: { buy: 10, sell: 15, volume: 100 } } as IMarketItem,
-      { url_name: 'ash_prime_blueprint', item_name: 'Ash Prime Blueprint', thumb: 'bp.png', market: { buy: 45, sell: 50, volume: 0 } } as IMarketItem,
-      { url_name: 'nova_prime_neuroptics', item_name: 'Nova Prime Neuroptics', thumb: 'neu.png', market: { buy: 18, sell: 22, volume: 0 } } as IMarketItem,
+      { url_name: 'lith_a1_relic', item_name: 'Lith A1 Relic', thumb: 'relic.png', vaulted: true, market: { buy: 10, sell: 15, volume: 100, avg_price: 14 } } as IMarketItem,
+      { url_name: 'ash_prime_blueprint', item_name: 'Ash Prime Blueprint', thumb: 'bp.png', vaulted: true, market: { buy: 45, sell: 50, volume: 8, avg_price: 47 } } as IMarketItem,
+      { url_name: 'nova_prime_neuroptics', item_name: 'Nova Prime Neuroptics', thumb: 'neu.png', vaulted: false, market: { buy: 18, sell: 22, volume: 0 } } as IMarketItem,
       // 'Unlisted Part' intentionally absent -> price 0, url/thumb empty
     ];
 
@@ -44,23 +44,45 @@ describe('RelicService.buildRelicEvFromData', () => {
     expect(row.url_name).toBe('lith_a1_relic');
     expect(row.tier).toBe('Lith');
     expect(row.thumb).toBe('relic.png');
-    expect(row.relic).toEqual({ buy: 10, sell: 15, volume: 100 });
+    expect(row.vaulted).toBe(true);
+    expect(row.relic).toEqual({ buy: 10, sell: 15, volume: 100, avgPrice: 14 });
 
     expect(row.rewards).toHaveLength(3);
+    // priced + traded reward carries its liquidity inputs (volume + 48h avg) and
+    // its own vaulted flag
     expect(row.rewards[0]).toEqual({
       item_name: 'Ash Prime Blueprint',
       url_name: 'ash_prime_blueprint',
       thumb: 'bp.png',
       rarity: 'Rare',
       price: 50,
+      avgPrice: 47,
+      volume: 8,
+      vaulted: true,
     });
-    // unlisted reward -> price 0, empty url/thumb
+    // listed-but-untraded reward -> volume 0, avgPrice 0 (falls out of realizable
+    // EV); a currently-dropping part reports vaulted false
+    expect(row.rewards[1]).toEqual({
+      item_name: 'Nova Prime Neuroptics',
+      url_name: 'nova_prime_neuroptics',
+      thumb: 'neu.png',
+      rarity: 'Uncommon',
+      price: 22,
+      avgPrice: 0,
+      volume: 0,
+      vaulted: false,
+    });
+    // unlisted reward -> price 0, empty url/thumb, zero liquidity inputs, and an
+    // unknown part is treated as not vaulted
     expect(row.rewards[2]).toEqual({
       item_name: 'Unlisted Part',
       url_name: '',
       thumb: '',
       rarity: 'Common',
       price: 0,
+      avgPrice: 0,
+      volume: 0,
+      vaulted: false,
     });
   });
 
@@ -77,8 +99,14 @@ describe('RelicService.buildRelicEvFromData', () => {
     expect(rows).toHaveLength(1);
     expect(rows[0].relicName).toBe('Meso B2');
     expect(rows[0].url_name).toBe('meso_b2_relic');
-    expect(rows[0].relic).toEqual({ buy: 0, sell: 0, volume: 0 });
+    // an unlisted relic has no market item -> not flagged vaulted (unknown), so
+    // it is never hidden by the "currently dropping" filter.
+    expect(rows[0].vaulted).toBe(false);
+    expect(rows[0].relic).toEqual({ buy: 0, sell: 0, volume: 0, avgPrice: 0 });
     expect(rows[0].rewards[0].price).toBe(0);
+    expect(rows[0].rewards[0].volume).toBe(0);
+    expect(rows[0].rewards[0].avgPrice).toBe(0);
+    expect(rows[0].rewards[0].vaulted).toBe(false);
   });
 
   it('skips relics with no rewards', () => {

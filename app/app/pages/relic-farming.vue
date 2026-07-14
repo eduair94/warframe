@@ -94,14 +94,6 @@
               class="an-field"
               style="flex: 0 1 220px"
             ></v-select>
-            <v-switch
-              v-model="completeOnly"
-              hide-details
-              density="compact"
-              color="#d4af5a"
-              label="Full data only"
-              class="an-complete"
-            ></v-switch>
           </div>
 
           <v-chip-group v-model="tier" mandatory column class="an-cats">
@@ -116,9 +108,41 @@
             </v-chip>
           </v-chip-group>
 
+          <div class="an-toggles">
+            <v-switch
+              v-model="droppingOnly"
+              hide-details
+              density="compact"
+              inset
+              color="#4fb3bf"
+              label="Currently dropping only"
+              class="an-toggle"
+            ></v-switch>
+            <v-switch
+              v-model="hideNoDemand"
+              hide-details
+              density="compact"
+              inset
+              color="#4fb3bf"
+              label="Hide no-demand relics"
+              class="an-toggle"
+            ></v-switch>
+            <v-switch
+              v-model="completeOnly"
+              hide-details
+              density="compact"
+              inset
+              color="#d4af5a"
+              label="Full data only"
+              class="an-toggle"
+            ></v-switch>
+          </div>
+
           <div class="an-count">
             {{ filtered.length }} {{ filtered.length === 1 ? 'relic' : 'relics' }} match
-            <span v-if="hiddenIncomplete" class="an-hidden">· {{ hiddenIncomplete }} hidden (incomplete data)</span>
+            <span v-if="hiddenVaulted" class="an-hidden">· {{ hiddenVaulted }} vaulted</span>
+            <span v-if="hiddenNoDemand" class="an-hidden">· {{ hiddenNoDemand }} no demand</span>
+            <span v-if="hiddenIncomplete" class="an-hidden">· {{ hiddenIncomplete }} incomplete data</span>
           </div>
         </section>
 
@@ -137,6 +161,7 @@
                 <th class="col-name">Relic</th>
                 <th class="grp-a">Plat / hr</th>
                 <th class="grp-b">EV ({{ refinement }})</th>
+                <th>Demand</th>
                 <th>Top drop</th>
                 <th>Vol</th>
               </tr>
@@ -154,7 +179,11 @@
                       <span>
                         {{ row.relicName }}
                         <span v-if="row.url_name === topDealUrl" class="an-badge">TOP</span>
-                        <small class="an-sub">{{ row.tier }} · {{ row.rewards.length }} drops</small>
+                        <span v-if="row.vaulted" class="an-badge an-badge--vault">VAULTED</span>
+                        <small class="an-sub">
+                          {{ row.tier }} · {{ row.rewards.length }} drops
+                          <template v-if="dropMix(row).vaulted"> · <span class="an-vtag">{{ dropMix(row).vaulted }} vaulted</span></template>
+                        </small>
                       </span>
                     </nuxt-link>
                     <button class="an-drops" title="Where to farm this relic" @click="openDrops(row)">
@@ -164,9 +193,16 @@
                 </td>
                 <td class="grp-a an-num an-strong up">{{ fmtPlat(platPerHour(row)) }}p/hr</td>
                 <td class="grp-b an-num">{{ fmtPlat(ev(row)) }}p</td>
+                <td>
+                  <span class="an-demand" :class="demand(row).cls" :title="`${Math.round(liquidity(row) * 100)}% of payout is liquid`">
+                    <span class="an-demand__bar"><i :style="{ width: Math.round(liquidity(row) * 100) + '%' }"></i></span>
+                    {{ demand(row).label }}
+                  </span>
+                </td>
                 <td class="an-num">
                   <span class="an-topdrop">{{ topDrop(row).item_name }}</span>
-                  <small class="an-sub">{{ fmtPlat(topDrop(row).price) }}p · {{ topDrop(row).rarity }}</small>
+                  <span v-if="rewardVaulted(topDrop(row))" class="an-vtag">vaulted</span>
+                  <small class="an-sub">{{ fmtPlat(topDrop(row).price) }}p · vol {{ fmtPlat(topDrop(row).volume || 0) }}</small>
                 </td>
                 <td class="an-num">{{ fmtPlat(row.relic.volume) }}</td>
               </tr>
@@ -189,8 +225,12 @@
                 <div class="an-card__name">
                   {{ row.relicName }}
                   <span v-if="row.url_name === topDealUrl" class="an-badge">TOP</span>
+                  <span v-if="row.vaulted" class="an-badge an-badge--vault">VAULTED</span>
                 </div>
-                <small class="an-sub">{{ row.tier }} · {{ row.rewards.length }} drops · vol {{ fmtPlat(row.relic.volume) }}</small>
+                <small class="an-sub">
+                  {{ row.tier }} · {{ row.rewards.length }} drops · vol {{ fmtPlat(row.relic.volume) }}
+                  <template v-if="dropMix(row).vaulted"> · <span class="an-vtag">{{ dropMix(row).vaulted }} vaulted</span></template>
+                </small>
               </div>
               <button class="an-drops" title="Where to farm this relic" @click.prevent.stop="openDrops(row)">
                 <v-icon size="20">mdi-map-marker-radius-outline</v-icon>
@@ -200,19 +240,26 @@
             <div class="an-card__verdict">
               <span class="pill pill--good">
                 {{ fmtPlat(platPerHour(row)) }} p/hr
-                <b>avg {{ refinement.toLowerCase() }} payout</b>
+                <b>realizable {{ refinement.toLowerCase() }} payout</b>
+              </span>
+              <span class="an-demand" :class="demand(row).cls">
+                <span class="an-demand__bar"><i :style="{ width: Math.round(liquidity(row) * 100) + '%' }"></i></span>
+                {{ demand(row).label }}
               </span>
             </div>
             <div class="an-card__blocks">
               <div class="an-block">
                 <div class="an-block__lbl">Payout ({{ refinement }})</div>
-                <div class="an-block__row"><span>EV / crack</span><b>{{ fmtPlat(ev(row)) }}p</b></div>
-                <div class="an-block__row"><span>Sell relic</span><b>{{ fmtPlat(row.relic.buy) }}p</b></div>
+                <div class="an-block__row"><span>Realizable EV</span><b>{{ fmtPlat(ev(row)) }}p</b></div>
+                <div class="an-block__row"><span>Raw EV</span><b>{{ fmtPlat(evRaw(row)) }}p</b></div>
               </div>
               <div class="an-block">
                 <div class="an-block__lbl">Top drop</div>
                 <div class="an-block__row"><span>{{ topDrop(row).rarity }}</span><b>{{ fmtPlat(topDrop(row).price) }}p</b></div>
-                <div class="an-block__row an-topdrop-m"><span>{{ topDrop(row).item_name }}</span></div>
+                <div class="an-block__row an-topdrop-m">
+                  <span>{{ topDrop(row).item_name }}</span>
+                  <span v-if="rewardVaulted(topDrop(row))" class="an-vtag">vaulted</span>
+                </div>
               </div>
             </div>
           </nuxt-link>
@@ -224,9 +271,12 @@
       </div>
 
       <v-alert class="an-disclaimer" color="blue-darken-4" type="info" density="compact">
-        Plat/hr = expected {{ refinement }} payout ÷ your minutes-per-run × 60.
-        Radiant costs 100 void traces to refine; actual run time varies by
-        fissure and squad. Payout uses each drop's lowest sell order.
+        Plat/hr = <b>realizable</b> {{ refinement }} payout ÷ your minutes-per-run × 60.
+        Realizable payout weights each drop's price by its 48h trade volume, so a
+        part nobody is buying (0 volume) barely counts — the number reflects plat
+        you can actually sell for, not sticker price. Vaulted relics no longer
+        drop and are hidden by default. Radiant costs 100 void traces; actual run
+        time varies by fissure and squad.
       </v-alert>
 
       <DropLocationsDialog v-model="dropsDialog" :item-name="dropsRelic" :thumb="dropsThumb" />
@@ -237,33 +287,7 @@
 <script setup lang="ts">
 import { computed, nextTick, onMounted, ref, watch } from 'vue'
 import { useDisplay } from 'vuetify'
-
-// Fixed refinement drop-chance table (per rarity), shared by all relics.
-const CHANCES: Record<string, Record<string, number>> = {
-  Intact: { Common: 25.33, Uncommon: 11, Rare: 2 },
-  Radiant: { Common: 16.67, Uncommon: 20, Rare: 10 },
-}
-
-// Shape of a relic row from /relics_ev.
-interface RelicReward {
-  item_name: string
-  url_name?: string
-  thumb?: string
-  price: number
-  rarity: string
-}
-interface RelicMarket {
-  volume: number
-  buy: number
-}
-interface RelicRow {
-  url_name: string
-  relicName: string
-  tier: string
-  thumb: string
-  rewards: RelicReward[]
-  relic: RelicMarket
-}
+import { useRelicValue, type RelicRow } from '~/composables/useRelicValue'
 
 // Working thumbnails cross-referenced against the fresh catalog (drop data
 // carries stale warframe.market thumb hashes).
@@ -306,6 +330,12 @@ const perPage = 20
 // Only value/show relics that carry full drop + market data by default
 // (relics missing prices for their drops can't get a meaningful plat/hour).
 const completeOnly = ref(true)
+// Currently-dropping only (default): vaulted relics can't be farmed, so they
+// have no place on a "what to grind now" board.
+const droppingOnly = ref(true)
+// Hide relics whose entire payout is illiquid — every drop has 0 trade volume,
+// so the plat/hour is theoretical (nobody's buying). Default on.
+const hideNoDemand = ref(true)
 // Drops popup — where to farm the clicked relic.
 const dropsDialog = ref(false)
 const dropsRelic = ref('')
@@ -313,11 +343,18 @@ const dropsThumb = ref('')
 const placeholderImg =
   "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44'%3E%3Crect width='44' height='44' rx='8' fill='%232a2a3d'/%3E%3Cpath d='M22 11 L31 22 L22 33 L13 22 Z' fill='none' stroke='%234fb3bf' stroke-width='2' opacity='0.75'/%3E%3C/svg%3E"
 const sortOptions = [
-  { text: 'Plat / hour', value: 'pph' },
-  { text: 'Payout (EV)', value: 'ev' },
-  { text: 'Volume', value: 'volume' },
+  { text: 'Plat / hour (realizable)', value: 'pph' },
+  { text: 'Payout (realizable EV)', value: 'ev' },
+  { text: 'Demand (liquidity)', value: 'demand' },
+  { text: 'Relic volume', value: 'volume' },
   { text: 'Name (A–Z)', value: 'name' },
 ]
+
+// Shared, liquidity-aware valuation (same basis as the Star Chart): each drop is
+// discounted by its 48h trade volume, so overpriced parts nobody buys don't
+// inflate a relic's plat/hour. `ev` here is the realizable EV.
+const { ev, evRaw, topDrop, liquidity, demand, dropMix, rewardVaulted, isVaulted, hasFullData, fmtPlat } =
+  useRelicValue(refinement)
 
 function onImgError(e: any) {
   const img = e.target
@@ -325,42 +362,15 @@ function onImgError(e: any) {
   img.dataset.fallback = '1'
   img.src = placeholderImg
 }
-function ev(relic: any): number {
-  const table = CHANCES[refinement.value] ?? CHANCES.Intact ?? {}
-  return (relic.rewards || []).reduce((sum: number, r: any) => {
-    const chance = table[r.rarity] || 0
-    return sum + (chance / 100) * (r.price || 0)
-  }, 0)
-}
+// Realizable plat/hour: liquidity-weighted expected payout ÷ minutes × 60.
 function platPerHour(relic: any): number {
   const minutes = Number(missionMinutes.value) || 1
   return (ev(relic) / minutes) * 60
 }
-function topDrop(relic: any): any {
-  let best = { item_name: '—', price: 0, rarity: '' }
-  for (const r of relic.rewards || []) {
-    if (r.price > best.price) best = r
-  }
-  return best
-}
-function fmtPlat(n: number): string {
-  return Math.round(Number(n) || 0).toLocaleString('en-US')
-}
-// A single drop counts as "known" when we have a market price for it. Forma is
-// untradeable filler (no market listing, legitimately 0p) so it never marks an
-// otherwise-complete relic as missing data.
-function rewardPriced(r: any): boolean {
-  if (/forma/i.test(r && r.item_name ? r.item_name : '')) return true
-  return Number(r && r.price) > 0
-}
-// "Full data" = we can actually value the relic: the relic itself is on the
-// market (buy/sell/volume) AND every drop resolved to a market price. Only then
-// is its EV / plat-per-hour trustworthy.
-function hasFullData(relic: RelicRow): boolean {
-  const m: any = (relic && relic.relic) || {}
-  const relicOnMarket = Number(m.buy) > 0 || Number(m.sell) > 0 || Number(m.volume) > 0
-  const rewards = relic.rewards || []
-  return relicOnMarket && rewards.length > 0 && rewards.every((r) => rewardPriced(r))
+// A relic has "no demand" when none of its drops have traded in 48h — its whole
+// payout is theoretical. `liquidity` returns 0 only in that case.
+function noDemand(relic: RelicRow): boolean {
+  return liquidity(relic) <= 0
 }
 // Working thumbnail for a relic row (falls back through the fresh catalog).
 function relicThumb(relic: RelicRow): string {
@@ -380,7 +390,7 @@ const tierOptions = computed<string[]>(() => {
   return ['All', ...order.filter((t) => present.has(t))]
 })
 
-// Search + tier only — the base set the completeness filter narrows.
+// Search + tier only — the base set the quality filters narrow.
 const matched = computed<RelicRow[]>(() => {
   const q = (search.value || '').toString().trim().toLowerCase()
   return relics.value.filter((r) => {
@@ -390,25 +400,38 @@ const matched = computed<RelicRow[]>(() => {
   })
 })
 
-// When completeOnly is on (default), only relics with full drop/market data
-// are valued and shown — matching the old page's behavior.
-const valuedRelics = computed<RelicRow[]>(() =>
-  completeOnly.value ? relics.value.filter(hasFullData) : relics.value,
-)
+// The default board: currently-dropping (not vaulted), fully-priced, and with a
+// real market for its drops. Each is an independent, user-toggleable gate.
+function passesQuality(r: RelicRow): boolean {
+  if (droppingOnly.value && isVaulted(r)) return false
+  if (completeOnly.value && !hasFullData(r)) return false
+  if (hideNoDemand.value && noDemand(r)) return false
+  return true
+}
 
-// How many search/tier matches are hidden purely for missing data.
+// Relics we actually value (base set for hero + stats): quality filters only.
+const valuedRelics = computed<RelicRow[]>(() => relics.value.filter(passesQuality))
+
+// How many search/tier matches each gate hides — surfaced in the count line.
 const hiddenIncomplete = computed<number>(() =>
   completeOnly.value ? matched.value.filter((r) => !hasFullData(r)).length : 0,
 )
+const hiddenVaulted = computed<number>(() =>
+  droppingOnly.value ? matched.value.filter((r) => isVaulted(r)).length : 0,
+)
+const hiddenNoDemand = computed<number>(() =>
+  hideNoDemand.value
+    ? matched.value.filter((r) => !isVaulted(r) && hasFullData(r) && noDemand(r)).length
+    : 0,
+)
 
 const filtered = computed<any[]>(() => {
-  const list = completeOnly.value
-    ? matched.value.filter((r) => hasFullData(r))
-    : matched.value
+  const list = matched.value.filter(passesQuality)
   const dir = (a: number, b: number) => b - a
   const sorters: Record<string, (a: any, b: any) => number> = {
     pph: (a, b) => dir(platPerHour(a), platPerHour(b)),
     ev: (a, b) => dir(ev(a), ev(b)),
+    demand: (a, b) => dir(liquidity(a), liquidity(b)) || dir(ev(a), ev(b)),
     volume: (a, b) => dir(a.relic.volume || 0, b.relic.volume || 0),
     name: (a, b) => a.relicName.localeCompare(b.relicName),
   }
@@ -497,13 +520,82 @@ onMounted(() => {
   border-color: rgba(212, 175, 90, 0.5);
   background: rgba(212, 175, 90, 0.08);
 }
-.an-complete {
+.an-toggles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 20px;
+  margin-top: 4px;
+}
+.an-toggle {
   flex: 0 0 auto;
 }
-.an-complete :deep(.v-label) {
+.an-toggle :deep(.v-label) {
   font-size: 0.8rem;
   color: #b6bcd0;
   opacity: 1;
+}
+/* Verdict row: keep the plat/hr pill and the demand meter on one tidy line so
+   the meter sits next to the pill instead of floating out to the right. */
+.an-card__verdict {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+}
+/* Demand meter — how much of a relic's payout is actually liquid. */
+.an-demand {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+/* "vaulted" tag on an individual scarce drop. */
+.an-vtag {
+  display: inline-block;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #b6bcd0;
+  background: rgba(138, 143, 163, 0.16);
+  border: 1px solid rgba(138, 143, 163, 0.38);
+  border-radius: 4px;
+  padding: 1px 5px;
+  vertical-align: middle;
+}
+.an-demand__bar {
+  display: inline-block;
+  width: 42px;
+  height: 5px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+}
+.an-demand__bar i {
+  display: block;
+  height: 100%;
+  border-radius: 3px;
+  background: currentColor;
+}
+.dem--high {
+  color: #4caf7d;
+}
+.dem--med {
+  color: #d4af5a;
+}
+.dem--low {
+  color: #d98a4f;
+}
+.dem--dead {
+  color: #8a8fa3;
+}
+.an-badge--vault {
+  background: rgba(138, 143, 163, 0.18);
+  color: #b6bcd0;
+  border: 1px solid rgba(138, 143, 163, 0.4);
 }
 .an-refine {
   flex: 0 0 auto;

@@ -108,10 +108,19 @@
               color="#4caf7d"
               label="Only where cracking beats selling"
             ></v-switch>
+            <v-switch
+              v-model="droppingOnly"
+              density="compact"
+              hide-details
+              inset
+              color="#4fb3bf"
+              label="Currently dropping only"
+            ></v-switch>
           </div>
           <div class="an-count">
             {{ filtered.length }} {{ filtered.length === 1 ? 'relic' : 'relics' }} match
-            <span v-if="hiddenIncomplete" class="an-hidden">· {{ hiddenIncomplete }} hidden (incomplete data)</span>
+            <span v-if="hiddenVaulted" class="an-hidden">· {{ hiddenVaulted }} vaulted</span>
+            <span v-if="hiddenIncomplete" class="an-hidden">· {{ hiddenIncomplete }} incomplete data</span>
           </div>
         </section>
 
@@ -131,6 +140,7 @@
                 <th class="grp-a">EV to open</th>
                 <th class="grp-b">Sell relic</th>
                 <th class="grp-a">Verdict</th>
+                <th>Demand</th>
                 <th>Top drop</th>
                 <th>Vol</th>
                 <th></th>
@@ -148,7 +158,11 @@
                     <span>
                       {{ row.relicName }}
                       <span v-if="row.url_name === topDealUrl" class="an-badge">TOP</span>
-                      <small class="an-sub">{{ row.tier }} · {{ row.rewards.length }} drops</small>
+                      <span v-if="row.vaulted" class="an-badge an-badge--vault">VAULTED</span>
+                      <small class="an-sub">
+                        {{ row.tier }} · {{ row.rewards.length }} drops
+                        <template v-if="dropMix(row).vaulted"> · <span class="an-vtag">{{ dropMix(row).vaulted }} vaulted</span></template>
+                      </small>
                     </span>
                   </nuxt-link>
                 </td>
@@ -162,9 +176,16 @@
                     <b v-if="verdict(row).amount">{{ verdict(row).amount }}</b>
                   </span>
                 </td>
+                <td>
+                  <span class="an-demand" :class="demand(row).cls" :title="`${Math.round(liquidity(row) * 100)}% of payout is liquid`">
+                    <span class="an-demand__bar"><i :style="{ width: Math.round(liquidity(row) * 100) + '%' }"></i></span>
+                    {{ demand(row).label }}
+                  </span>
+                </td>
                 <td class="an-num">
                   <span class="an-topdrop">{{ topDrop(row).item_name }}</span>
-                  <small class="an-sub">{{ fmtPlat(topDrop(row).price) }}p · {{ topDrop(row).rarity }}</small>
+                  <span v-if="rewardVaulted(topDrop(row))" class="an-vtag">vaulted</span>
+                  <small class="an-sub">{{ fmtPlat(topDrop(row).price) }}p · vol {{ fmtPlat(topDrop(row).volume || 0) }}</small>
                 </td>
                 <td class="an-num">{{ fmtPlat(row.relic.volume) }}</td>
                 <td>
@@ -192,8 +213,12 @@
                 <div class="an-card__name">
                   {{ row.relicName }}
                   <span v-if="row.url_name === topDealUrl" class="an-badge">TOP</span>
+                  <span v-if="row.vaulted" class="an-badge an-badge--vault">VAULTED</span>
                 </div>
-                <small class="an-sub">{{ row.tier }} · {{ row.rewards.length }} drops · vol {{ fmtPlat(row.relic.volume) }}</small>
+                <small class="an-sub">
+                  {{ row.tier }} · {{ row.rewards.length }} drops · vol {{ fmtPlat(row.relic.volume) }}
+                  <template v-if="dropMix(row).vaulted"> · <span class="an-vtag">{{ dropMix(row).vaulted }} vaulted</span></template>
+                </small>
               </div>
               <v-icon color="#4fb3bf">mdi-chevron-right</v-icon>
             </div>
@@ -202,17 +227,25 @@
                 {{ verdict(row).label }}
                 <b v-if="verdict(row).amount">{{ verdict(row).amount }}</b>
               </span>
+              <span class="an-demand" :class="demand(row).cls">
+                <span class="an-demand__bar"><i :style="{ width: Math.round(liquidity(row) * 100) + '%' }"></i></span>
+                {{ demand(row).label }}
+              </span>
             </div>
             <div class="an-card__blocks">
               <div class="an-block">
                 <div class="an-block__lbl">Open ({{ refinement }})</div>
-                <div class="an-block__row"><span>EV</span><b :class="{ up: ev(row) > row.relic.buy }">{{ fmtPlat(ev(row)) }}p</b></div>
+                <div class="an-block__row"><span>Realizable EV</span><b :class="{ up: ev(row) > row.relic.buy }">{{ fmtPlat(ev(row)) }}p</b></div>
+                <div class="an-block__row"><span>Raw EV</span><b>{{ fmtPlat(evRaw(row)) }}p</b></div>
                 <div class="an-block__row"><span>Sell relic</span><b>{{ fmtPlat(row.relic.buy) }}p</b></div>
               </div>
               <div class="an-block">
                 <div class="an-block__lbl">Top drop</div>
                 <div class="an-block__row"><span>{{ topDrop(row).rarity }}</span><b>{{ fmtPlat(topDrop(row).price) }}p</b></div>
-                <div class="an-block__row an-topdrop-m"><span>{{ topDrop(row).item_name }}</span></div>
+                <div class="an-block__row an-topdrop-m">
+                  <span>{{ topDrop(row).item_name }}</span>
+                  <span v-if="rewardVaulted(topDrop(row))" class="an-vtag">vaulted</span>
+                </div>
               </div>
             </div>
           </nuxt-link>
@@ -224,9 +257,12 @@
       </div>
 
       <v-alert class="an-disclaimer" color="blue-darken-4" type="info" density="compact">
-        EV = expected value: each drop's market price weighted by its
-        {{ refinement }} chance. Radiant costs 100 void traces to refine. Selling
-        value uses the relic's highest buy order.
+        EV = <b>realizable</b> expected value: each drop's price weighted by its
+        {{ refinement }} chance <i>and</i> its 48h trade volume, so a part nobody
+        is buying (0 volume) barely counts — the "crack it" verdict reflects plat
+        you can actually cash out. Demand shows how much of a relic's payout is
+        liquid. Radiant costs 100 void traces; selling uses the relic's highest
+        buy order. Vaulted relics still open from your inventory (toggle to hide).
       </v-alert>
     </client-only>
   </div>
@@ -235,12 +271,7 @@
 <script setup lang="ts">
 import { computed, nextTick, onMounted, ref, watch } from 'vue'
 import { useDisplay } from 'vuetify'
-
-// Fixed refinement drop-chance table (per rarity), shared by all relics.
-const CHANCES: Record<string, Record<string, number>> = {
-  Intact: { Common: 25.33, Uncommon: 11, Rare: 2 },
-  Radiant: { Common: 16.67, Uncommon: 20, Rare: 10 },
-}
+import { useRelicValue, type RelicRow } from '~/composables/useRelicValue'
 
 const config = useRuntimeConfig()
 const base = config.public.apiURL
@@ -275,16 +306,26 @@ const onlyOpenWins = ref(false)
 // Only value/show relics with full drop + market data by default, so stats and
 // verdicts never advertise an EV we can't back with prices.
 const completeOnly = ref(true)
+// Off by default: you value relics you already *own*, which may be vaulted. Turn
+// on to focus the board on relics you can still farm.
+const droppingOnly = ref(false)
 const page = ref(1)
 const perPage = 20
 const placeholderImg =
   "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44'%3E%3Crect width='44' height='44' rx='8' fill='%232a2a3d'/%3E%3Cpath d='M22 11 L31 22 L22 33 L13 22 Z' fill='none' stroke='%234fb3bf' stroke-width='2' opacity='0.75'/%3E%3C/svg%3E"
 const sortOptions = [
-  { text: 'Best payout (EV)', value: 'ev' },
+  { text: 'Best payout (realizable EV)', value: 'ev' },
   { text: 'Crack margin', value: 'margin' },
+  { text: 'Demand (liquidity)', value: 'demand' },
   { text: 'Volume', value: 'volume' },
   { text: 'Name (A–Z)', value: 'name' },
 ]
+
+// Shared, liquidity-aware valuation (same basis as the Star Chart): each drop is
+// discounted by its 48h trade volume, so an overpriced part nobody buys can't
+// inflate the "crack it" verdict. `ev` here is the realizable EV.
+const { ev, evRaw, topDrop, liquidity, demand, dropMix, rewardVaulted, isVaulted, hasFullData, fmtPlat } =
+  useRelicValue(refinement)
 
 // methods
 function assetUrl(thumb: string): string {
@@ -296,39 +337,10 @@ function onImgError(e: any) {
   img.dataset.fallback = '1'
   img.src = placeholderImg
 }
-function ev(relic: any): number {
-  const table = CHANCES[refinement.value] ?? CHANCES.Intact ?? {}
-  return (relic.rewards || []).reduce((sum: number, r: any) => {
-    const chance = table[r.rarity] || 0
-    return sum + (chance / 100) * (r.price || 0)
-  }, 0)
-}
-function topDrop(relic: any): any {
-  let best = { item_name: '—', price: 0, rarity: '' }
-  for (const r of relic.rewards || []) {
-    if (r.price > best.price) best = r
-  }
-  return best
-}
-function fmtPlat(n: number): string {
-  return Math.round(Number(n) || 0).toLocaleString('en-US')
-}
-// A single drop counts as "known" when we have a market price for it. Forma is
-// untradeable filler (no market listing, legitimately 0p) so it never marks an
-// otherwise-complete relic as missing data.
-function rewardPriced(r: any): boolean {
-  if (/forma/i.test(r && r.item_name ? r.item_name : '')) return true
-  return Number(r && r.price) > 0
-}
-// "Complete data" = we can actually value the relic: the relic itself is on the
-// market (buy/sell/volume) AND every drop resolved to a market price.
-function hasFullData(relic: any): boolean {
-  const m = (relic && relic.relic) || {}
-  const relicOnMarket = Number(m.buy) > 0 || Number(m.sell) > 0 || Number(m.volume) > 0
-  const rewards = (relic && relic.rewards) || []
-  return relicOnMarket && rewards.length > 0 && rewards.every((r: any) => rewardPriced(r))
-}
 function verdict(relic: any): { label: string; amount: string; cls: string } {
+  // Crack = realizable payout of the drops; sell = the relic's highest bid (what
+  // you'd actually get hitting the market). Comparing realizable-to-realizable
+  // stops an illiquid drop from advising a "crack it" you can't cash out.
   const open = ev(relic)
   const sell = relic.relic.buy || 0
   if (open > sell + 0.5) {
@@ -356,23 +368,30 @@ const matched = computed<any[]>(() => {
     return true
   })
 })
-// Relics we'll actually value: with completeOnly on, only those with full
-// drop/market data — so stats never advertise an EV we can't back with data.
-const valuedRelics = computed<any[]>(() =>
-  completeOnly.value ? relics.value.filter(hasFullData) : relics.value,
-)
-// How many search/tier matches are hidden purely for missing data.
+// Base quality gates shared by stats + the table: full data, and (optionally)
+// currently-dropping. `onlyOpenWins` is a table-only lens, applied below.
+function passesQuality(r: any): boolean {
+  if (completeOnly.value && !hasFullData(r)) return false
+  if (droppingOnly.value && isVaulted(r)) return false
+  return true
+}
+// Relics we'll actually value — so stats never advertise an EV we can't back.
+const valuedRelics = computed<any[]>(() => relics.value.filter(passesQuality))
+// How many search/tier matches each gate hides.
 const hiddenIncomplete = computed<number>(() =>
   completeOnly.value ? matched.value.filter((r) => !hasFullData(r)).length : 0,
 )
+const hiddenVaulted = computed<number>(() =>
+  droppingOnly.value ? matched.value.filter((r) => isVaulted(r)).length : 0,
+)
 const filtered = computed<any[]>(() => {
-  let list = matched.value as any[]
-  if (completeOnly.value) list = list.filter((r) => hasFullData(r))
+  let list = matched.value.filter(passesQuality)
   if (onlyOpenWins.value) list = list.filter((r) => ev(r) > r.relic.buy)
   const dir = (a: number, b: number) => b - a
   const sorters: Record<string, (a: any, b: any) => number> = {
     ev: (a, b) => dir(ev(a), ev(b)),
     margin: (a, b) => dir(ev(a) - a.relic.buy, ev(b) - b.relic.buy),
+    demand: (a, b) => dir(liquidity(a), liquidity(b)) || dir(ev(a), ev(b)),
     volume: (a, b) => dir(a.relic.volume || 0, b.relic.volume || 0),
     name: (a, b) => a.relicName.localeCompare(b.relicName),
   }
@@ -472,5 +491,68 @@ onMounted(() => {
   color: #9aa0b4;
   margin-left: 6px;
   font-size: 0.92em;
+}
+/* Verdict row: keep the verdict pill and the demand meter on one tidy line so
+   the meter sits next to the pill instead of floating out to the right. */
+.an-card__verdict {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+}
+/* Demand meter — how much of a relic's payout is actually liquid. */
+.an-demand {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+/* "vaulted" tag on an individual scarce drop. */
+.an-vtag {
+  display: inline-block;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #b6bcd0;
+  background: rgba(138, 143, 163, 0.16);
+  border: 1px solid rgba(138, 143, 163, 0.38);
+  border-radius: 4px;
+  padding: 1px 5px;
+  vertical-align: middle;
+}
+.an-demand__bar {
+  display: inline-block;
+  width: 42px;
+  height: 5px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+}
+.an-demand__bar i {
+  display: block;
+  height: 100%;
+  border-radius: 3px;
+  background: currentColor;
+}
+.dem--high {
+  color: #4caf7d;
+}
+.dem--med {
+  color: #d4af5a;
+}
+.dem--low {
+  color: #d98a4f;
+}
+.dem--dead {
+  color: #8a8fa3;
+}
+.an-badge--vault {
+  background: rgba(138, 143, 163, 0.18);
+  color: #b6bcd0;
+  border: 1px solid rgba(138, 143, 163, 0.4);
 }
 </style>

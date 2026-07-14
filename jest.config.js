@@ -108,7 +108,10 @@ module.exports = {
     '^@/(.*)$': '<rootDir>/$1',
     '^@interfaces/(.*)$': '<rootDir>/interfaces/$1',
     '^@services/(.*)$': '<rootDir>/services/$1',
-    '^@constants/(.*)$': '<rootDir>/constants/$1'
+    '^@constants/(.*)$': '<rootDir>/constants/$1',
+    // The app's relic-value composable imports `unref` from 'vue'; stub it so the
+    // pure valuation logic is unit-testable under the backend's Node setup.
+    '^vue$': '<rootDir>/test-helpers/vue-stub.js'
   },
 
   /**
