@@ -6,6 +6,79 @@
   </div>
 </template>
 
+<script>
+// Registered as Nuxt's `loading` component (nuxt.config.js). Previously it had
+// no start()/finish() methods, so Nuxt could never drive it — the overlay only
+// appeared on the very first (SSR) load and never again, leaving client-side
+// navigation with zero feedback while the target page's chunk + data loaded.
+// Implementing the loading interface makes Nuxt show it on every route change.
+export default {
+  name: 'LoadingBar',
+  data() {
+    return { safety: null, hideTimer: null, shownAt: 0 }
+  },
+  methods: {
+    spinner() {
+      return this.$el && this.$el.id === 'spinner-wrapper'
+        ? this.$el
+        : document.getElementById('spinner-wrapper')
+    },
+    show() {
+      const el = this.spinner()
+      if (el) el.style.display = 'flex'
+    },
+    hide() {
+      const el = this.spinner()
+      if (el) el.style.display = 'none'
+    },
+    start() {
+      this.clear()
+      // Show IMMEDIATELY so every navigation — including sidebar links to a
+      // page whose chunk is already cached (an otherwise instant transition) —
+      // gives feedback. A throttle here suppressed it for fast/cached routes,
+      // so clicks felt like nothing happened.
+      this.shownAt = Date.now()
+      this.show()
+      // Safety net: never let the overlay get stuck if finish() never fires.
+      this.safety = setTimeout(() => this.hide(), 15000)
+    },
+    finish() {
+      if (this.safety) {
+        clearTimeout(this.safety)
+        this.safety = null
+      }
+      // Keep it up a minimum time so instant transitions don't flash-and-vanish
+      // (reads as a deliberate loading state rather than a glitch).
+      const MIN_VISIBLE = 350
+      const elapsed = Date.now() - (this.shownAt || 0)
+      if (this.hideTimer) {
+        clearTimeout(this.hideTimer)
+        this.hideTimer = null
+      }
+      if (elapsed >= MIN_VISIBLE) this.hide()
+      else this.hideTimer = setTimeout(() => this.hide(), MIN_VISIBLE - elapsed)
+    },
+    fail() {
+      this.clear()
+      this.hide()
+    },
+    clear() {
+      if (this.safety) {
+        clearTimeout(this.safety)
+        this.safety = null
+      }
+      if (this.hideTimer) {
+        clearTimeout(this.hideTimer)
+        this.hideTimer = null
+      }
+    },
+  },
+  beforeDestroy() {
+    this.clear()
+  },
+}
+</script>
+
 <style>
 #spinner-wrapper {
   position: fixed;
