@@ -63,7 +63,7 @@
           <v-list-item
             v-for="link in section.items"
             :key="link.to"
-            :to="link.to"
+            :to="localePath(link.to)"
             :exact="link.exact"
             :data-tour="link.to"
             color="#e7cf95"
@@ -116,6 +116,8 @@
 <script setup lang="ts">
 // LanguageMenu / GitHubButton auto-import from app/components — no manual import
 const { t } = useI18n()
+// Keep drawer navigation on the visitor's locale (prefix_except_default)
+const localePath = useLocalePath()
 
 interface NavLink {
   to: string
@@ -149,16 +151,18 @@ const navLinks: NavLink[] = [
   { to: '/vault-spikes', title: 'Vault Spikes', icon: 'mdi-rocket-launch-outline', group: 'Analytics' },
   { to: '/vaulted', title: 'Vaulted', icon: 'mdi-lock-outline', group: 'Analytics' },
   { to: '/star-chart', title: 'Star Chart', icon: 'mdi-orbit', group: 'Analytics' },
+  { to: '/star-chart-3d', title: '3D Drop Map', icon: 'mdi-rotate-orbit', group: 'Analytics' },
   { to: '/ducats', title: 'Ducats', icon: 'mdi-cash-multiple', group: 'Analytics' },
   { to: '/endo', title: 'Endo / Plat', icon: 'mdi-swap-horizontal', group: 'Tools' },
   { to: '/relic-farming', title: 'Relic Farming', icon: 'mdi-timer-sand', group: 'Tools' },
   { to: '/riven-value', title: 'Riven Value', icon: 'mdi-star-four-points-outline', group: 'Tools' },
   { to: '/portfolio', title: 'Portfolio', icon: 'mdi-briefcase-variant-outline', group: 'Tools' },
+  { to: '/guides/endo', title: 'Endo Guide', icon: 'mdi-book-open-variant', group: 'Guides' },
 ]
 
 // Groups the nav links for the drawer, in a fixed section order
 const drawerSections = computed(() => {
-  const order: (string | null)[] = [null, 'Prices', 'Analytics', 'Tools']
+  const order: (string | null)[] = [null, 'Prices', 'Analytics', 'Tools', 'Guides']
   return order
     .map((g) => ({
       title: g,

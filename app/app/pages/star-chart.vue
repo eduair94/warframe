@@ -12,6 +12,11 @@
           Market. The brighter a world burns, the more platinum a single reward returns.
           Pick one to see the missions worth your time.
         </p>
+        <NuxtLink :to="localePath('/star-chart-3d')" class="sc-3d-btn">
+          <v-icon size="18">mdi-rotate-orbit</v-icon>
+          Open the 3D map
+          <span class="sc-3d-btn__arrow">→</span>
+        </NuxtLink>
       </div>
       <div v-if="richest" class="sc-hero__deal">
         <div class="sc-hero__deal-label">Richest world</div>
@@ -203,9 +208,19 @@
         class="sc-find__input"
         @update:model-value="onFind"
       ></v-autocomplete>
+      <button class="sc-guide-btn" @click="guideOpen = true">
+        <v-icon size="16">mdi-shield-star-outline</v-icon>
+        Warframe farming guide
+      </button>
     </section>
 
     <DropLocationsDialog v-model="dropsDialog" :item-name="dropsItem" />
+    <WarframeGuideDialog
+      v-model="guideOpen"
+      :planet-names="chartPlanetNames"
+      @select-planet="selectPlanet"
+      @find-item="openDrops"
+    />
 
     <v-alert v-if="!loading && planets.length" class="sc-disclaimer bg-blue-darken-4" type="info" density="compact">
       Expected p/drop = Σ (drop chance × realizable value) across a mission's reward
@@ -300,6 +315,7 @@ interface ScReward {
 const items = useItemsStore()
 const { itemThumb } = useItemThumb()
 const { mobile } = useDisplay()
+const localePath = useLocalePath()
 const config = useRuntimeConfig()
 const base = config.public.apiURL
 
@@ -312,6 +328,7 @@ const openNode = ref('')
 const dropsDialog = ref(false)
 const dropsItem = ref('')
 const findItem = ref('')
+const guideOpen = ref(false)
 const panel = ref<HTMLElement | null>(null)
 
 const allItems = computed(() => items.allItems)
@@ -378,6 +395,7 @@ const selectedData = computed(() =>
 const itemNames = computed<string[]>(() =>
   (allItems.value as any[]).map((i) => i && i.item_name).filter(Boolean),
 )
+const chartPlanetNames = computed(() => new Set(weightedPlanets.value.map((p) => p.planet)))
 
 // Builds every planet's position, size and glow, plus the rail edges.
 const scene = computed(() => {
@@ -672,6 +690,29 @@ function finishLoading(attempt = 0) {
 }
 .sc-hero__deal-plat span { font-size: 0.8rem; color: #8f95ab; margin-left: 4px; }
 .sc-hero__deal-sub { font-size: 0.8rem; color: #9aa0b8; }
+.sc-3d-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  padding: 8px 16px;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 0.86rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #7ff0eb;
+  border: 1px solid rgba(53, 214, 208, 0.45);
+  background: linear-gradient(180deg, rgba(53, 214, 208, 0.1), rgba(12, 13, 24, 0.3));
+  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+.sc-3d-btn:hover {
+  color: #aef6f2;
+  border-color: rgba(127, 240, 235, 0.8);
+}
+.sc-3d-btn__arrow { color: #e7cf95; }
 
 /* ---- stats ---- */
 .sc-stats {
@@ -893,6 +934,24 @@ function finishLoading(attempt = 0) {
 }
 .sc-find__title { font-family: 'Cinzel', serif; font-size: 1.3rem; color: #7ff0eb; margin: 0; }
 .sc-find__input { flex: 1; min-width: 240px; }
+.sc-guide-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(200, 168, 92, 0.08);
+  border: 1px solid rgba(200, 168, 92, 0.45);
+  cursor: pointer;
+  padding: 9px 16px;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #e7cf95;
+  clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+}
+.sc-guide-btn:hover { background: rgba(200, 168, 92, 0.16); }
+.sc-guide-btn:focus-visible { outline: 2px solid #35d6d0; }
 
 .sc-disclaimer { margin-top: 22px; }
 
