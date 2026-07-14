@@ -40,8 +40,9 @@ export default defineNuxtConfig({
     }
   },
 
-  // Modules added in later phases: @pinia/nuxt, @nuxtjs/leaflet.
+  // Modules added in later phases: @nuxtjs/leaflet.
   modules: [
+    '@pinia/nuxt',
     '@nuxtjs/i18n',
     '@nuxtjs/sitemap',
     'nuxt-gtag',
