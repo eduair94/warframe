@@ -46,6 +46,14 @@ export class HeaderService {
   /** Custom user agents list */
   private userAgents: string[];
 
+  /**
+   * Whether to blend in fresh user-agents-library UAs alongside the static
+   * pool. True for the default pool; false once the caller has explicitly
+   * provided a pool (constructor arg or setUserAgents), so an explicit list
+   * is honored exactly rather than diluted with library-generated agents.
+   */
+  private useLibraryBlend: boolean;
+
   /** Configuration options */
   private readonly config: Required<IHeaderServiceConfig>;
 
@@ -84,6 +92,7 @@ export class HeaderService {
   constructor(userAgents?: string[], config: IHeaderServiceConfig = {}) {
     this.userAgent = new UserAgent({ deviceCategory: 'desktop' });
     this.userAgents = userAgents ?? [...DEFAULT_USER_AGENTS];
+    this.useLibraryBlend = userAgents === undefined;
     this.config = {
       origin: config.origin ?? 'https://warframe.market',
       randomizeDnt: config.randomizeDnt ?? true
@@ -152,11 +161,24 @@ export class HeaderService {
   }
 
   /**
-   * Gets a random user agent string
-   * 
+   * Gets a random user agent string. On the default pool, blends in
+   * fresh user-agents-library UAs (matches the documented "uses the
+   * user-agents library" behavior) instead of only ever cycling the
+   * 5 hardcoded defaults. An explicitly-provided pool (constructor arg
+   * or setUserAgents) is honored exactly, with no blending.
+   *
    * @returns Random user agent string
    */
   getRandomUserAgent(): string {
+    if (this.useLibraryBlend && this.userAgents.length > 0 && Math.random() < 0.4) {
+      try {
+        const generated = this.userAgent.random().toString();
+        if (generated) return generated;
+      } catch {
+        // Library can throw if its bundled device list is unavailable -
+        // fall through to the static pool below.
+      }
+    }
     if (this.userAgents.length > 0) {
       return this.selectRandom(this.userAgents);
     }
@@ -179,6 +201,7 @@ export class HeaderService {
    */
   setUserAgents(agents: string[]): void {
     this.userAgents = [...agents];
+    this.useLibraryBlend = false;
   }
 
   /**

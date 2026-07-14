@@ -20,8 +20,8 @@ import { OrderCalculator } from './OrderCalculator';
 import { StatisticsCalculator } from './StatisticsCalculator';
 import { WarframeItemsResponse } from "./WarframeItems.interface";
 
-// Debug mode - set DEBUG=true environment variable for verbose logging
-const DEBUG = process.env.DEBUG === 'true';
+// Debug mode - set DEBUG=true or DEBUG=warframe:* for verbose logging
+import { DEBUG } from '../debug';
 
 /** Max backoff retries for a rate-limited price fetch before giving up on an item */
 const PRICE_ERROR_MAX_RETRIES = 6;
@@ -38,7 +38,7 @@ export type PriceCalculationConfig = {
   ordersMinDelay?: number;
   /** Maximum delay before fetching orders (default: 2000) */
   ordersMaxDelay?: number;
-  /** Minimum delay before fetching stats (default: 300) */
+  /** Minimum delay before fetching stats (default: 500 - the documented anti-bot floor) */
   statsMinDelay?: number;
   /** Maximum delay before fetching stats (default: 1000) */
   statsMaxDelay?: number;
@@ -52,7 +52,8 @@ const DEFAULT_PRICE_CONFIG: Required<PriceCalculationConfig> = {
   requiredStatus: PRICE_CONFIG.REQUIRED_STATUS as 'ingame',
   ordersMinDelay: 500,
   ordersMaxDelay: 2000,
-  statsMinDelay: 300,
+  // Was 300ms - below the documented "minimum 500ms between requests" anti-bot floor.
+  statsMinDelay: 500,
   statsMaxDelay: 1000
 };
 
@@ -536,13 +537,10 @@ export class MarketService {
     not_found?: boolean;
   }> {
     try {
-      // Add random delay for anti-detection (configurable)
-      if (this.priceConfig.ordersMinDelay > 0) {
-        await this.httpClient.addRandomDelay(
-          this.priceConfig.ordersMinDelay,
-          this.priceConfig.ordersMaxDelay
-        );
-      }
+      // Anti-detection pacing now happens once per HTTP request inside
+      // httpClient.get() itself, so every call site is covered (previously
+      // only orders/stats fetches paced themselves here, leaving calls like
+      // getAllItems with no delay at all). No delay call needed here anymore.
 
       // Fetch orders
       const ordersResponse = await this.getItemOrders<{ payload: { orders: any[] } }>(item.url_name);
@@ -611,14 +609,9 @@ export class MarketService {
     urlName: string,
     maxRank: number | undefined
   ): Promise<{ volume: number; avg_price: number; last_completed: any }> {
-    // Add random delay for anti-detection (configurable)
-    if (this.priceConfig.statsMinDelay > 0) {
-      await this.httpClient.addRandomDelay(
-        this.priceConfig.statsMinDelay,
-        this.priceConfig.statsMaxDelay
-      );
-    }
-
+    // Anti-detection pacing now happens once per HTTP request inside
+    // httpClient.get() itself - see calculatePrices() above for why the
+    // explicit per-call-site delay was removed.
     const statsResponse = await this.getItemStatistics<{
       payload: { statistics_closed: { '48hours': any[] } }
     }>(urlName);

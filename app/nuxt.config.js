@@ -61,7 +61,7 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [],
+  css: ['driver.js/dist/driver.css', '~/assets/analytics.css'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [{ src: '~/plugins/vue-plugins', mode: 'client' }],
@@ -166,29 +166,40 @@ export default {
   },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
+  // Previously carried leftover config from a sibling currency-exchange
+  // project: wrong manifest categories/lang, `crossorigin: use-credentials`
+  // (can silently block the install prompt without a matching CORS setup),
+  // and a workbox importScripts pointing at an unrelated third-party
+  // (arc.io) service-worker script that has nothing to do with this app.
   pwa: {
     icon: {
       purpose: 'maskable'
     },
     manifest: {
       theme_color: '#272727',
-      // start_url: 'https://cambio-uruguay.com',
-      crossorigin: 'use-credentials',
       name: 'Warframe Market Analytics App',
-      short_name: 'Warframe Market Analytics',
-      lang: 'es',
-      categories: ['finance', 'business', 'currency'],
+      short_name: 'Warframe Analytics',
+      lang: 'en',
+      categories: ['games', 'utilities', 'shopping'],
       description:
         'Warframe Market Analytics'
     },
     workbox: {
       workboxURL:
         'https://cdn.jsdelivr.net/npm/workbox-cdn/workbox/workbox-sw.js',
-      importScripts:
-        process.env.NODE_ENV === 'production'
-          ? ['https://arc.io/arc-sw-core.js']
-          : [],
-      autoRegister: true
+      importScripts: [],
+      autoRegister: true,
+      // Cache the API responses this app actually depends on so the PWA is
+      // usable (last-loaded data, at least) when offline or on a flaky
+      // connection - previously nothing beyond the Nuxt shell was cached.
+      runtimeCaching: [
+        {
+          urlPattern: new RegExp(`^${(process.env.API_URL || 'http://localhost:3529').replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}/`),
+          handler: 'NetworkFirst',
+          method: 'GET',
+          strategyOptions: { cacheableResponse: { statuses: [0, 200] } }
+        }
+      ]
     }
   },
 
@@ -225,7 +236,37 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    // driver.js ships ESM — transpile so Nuxt 2 (webpack) can bundle it
+    transpile: ['driver.js'],
     extend(config, { isClient }) {
+      // Let webpack 4 parse .mjs ESM modules (e.g. driver.js) instead of
+      // choking on the `export` keyword.
+      config.module.rules.push({
+        test: /\.mjs$/,
+        include: /node_modules/,
+        type: 'javascript/auto',
+      })
+      // driver.js resolves (via package "main") to dist/driver.js.cjs, which
+      // uses optional chaining / nullish coalescing. `build.transpile` only
+      // patches the `.js$` babel rule, so a `.cjs` file slips through untouched
+      // and webpack 4's parser chokes ("Module parse failed: Unexpected token").
+      // Run babel (preset-env) on driver.js's .cjs so it downlevels.
+      config.module.rules.push({
+        test: /\.cjs$/,
+        include: [/node_modules[\\/]driver\.js/],
+        type: 'javascript/auto',
+        use: {
+          loader: 'babel-loader',
+          options: {
+            babelrc: false,
+            configFile: false,
+            // Target IE11 so preset-env fully downlevels optional chaining /
+            // nullish coalescing (a modern "defaults" target leaves them in,
+            // and webpack 4's parser can't handle them).
+            presets: [['@babel/preset-env', { targets: { ie: '11' } }]],
+          },
+        },
+      })
       // Extend only webpack config for client-bundle
       if (isClient) {
         config.devtool = 'source-map'

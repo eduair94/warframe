@@ -101,6 +101,44 @@ export interface IRelicSetResult {
 }
 
 /**
+ * A single reward line in a relic EV row, joined with its market price.
+ */
+export interface IRelicEvReward {
+  /** Reward item display name */
+  item_name: string;
+  /** URL-friendly name for the /items link (empty if not on market) */
+  url_name: string;
+  /** Thumbnail path */
+  thumb: string;
+  /** Drop rarity (drives the refinement chance table on the client) */
+  rarity: RewardRarity | string;
+  /** Going market price of the reward part (lowest sell order) */
+  price: number;
+}
+
+/**
+ * One row of the "open the relic vs sell it" analytics table.
+ *
+ * The expected value of opening is computed on the client from each reward's
+ * rarity and the fixed refinement chance table (Intact / Radiant), so a single
+ * payload serves every refinement without a refetch.
+ */
+export interface IRelicEvRow {
+  /** Display name, e.g. "Lith A1" */
+  relicName: string;
+  /** URL-friendly name, e.g. "lith_a1" (links to /relic/<url_name>) */
+  url_name: string;
+  /** Relic tier (Lith, Meso, Neo, Axi, Requiem) */
+  tier: string;
+  /** Relic thumbnail (from its own market item, if listed) */
+  thumb: string;
+  /** The relic's own market data — relics are tradeable */
+  relic: { buy: number; sell: number; volume: number };
+  /** The six possible rewards with prices */
+  rewards: IRelicEvReward[];
+}
+
+/**
  * Relic sync operation result
  */
 export interface IRelicSyncResult {

@@ -1,0 +1,98 @@
+- generic [ref=e8]:
+  - banner [ref=e9]:
+    - generic [ref=e10]:
+      - img "logo warframe analytics"
+      - link [ref=e11] [cursor=pointer]:
+        - /url: https://github.com/eduair94/warframe
+        - generic [ref=e12]: 󰊤
+      - button [ref=e15] [cursor=pointer]:
+        - generic [ref=e16]:
+          - text: en
+          - generic [ref=e17]: 󰅀
+  - main [ref=e18]:
+    - generic [ref=e20]:
+      - generic [ref=e21]:
+        - link "Home" [ref=e22] [cursor=pointer]:
+          - /url: /
+        - link "Set Price Calculator" [ref=e24] [cursor=pointer]:
+          - /url: /set
+        - link "Set vs Parts" [ref=e26] [cursor=pointer]:
+          - /url: /comparison
+        - link "Relic Price Calculator" [ref=e28] [cursor=pointer]:
+          - /url: /relic
+        - link "Endo / Plat" [ref=e30] [cursor=pointer]:
+          - /url: /endo
+        - link "My Portfolio" [ref=e32] [cursor=pointer]:
+          - /url: /portfolio
+        - link "Source Code" [ref=e34] [cursor=pointer]:
+          - /url: https://github.com/eduair94/warframe
+          - generic [ref=e35]:
+            - generic [ref=e36]: 󰊤
+            - generic [ref=e37]: Source Code
+      - generic [ref=e38]:
+        - generic [ref=e39]:
+          - generic [ref=e41]:
+            - generic [ref=e42]: Warframe Market · Set vs Parts
+            - heading "Buy the set, or the parts?" [level=1] [ref=e43]
+            - paragraph [ref=e44]: "Warframe.market lists set prices and part prices separately — never the decision. This is the decision: acquire the assembled set, or buy each part and combine. Which is cheaper right now, and by how much."
+          - generic [ref=e45]:
+            - generic [ref=e46]:
+              - generic [ref=e47]: "0"
+              - generic [ref=e48]: sets compared
+            - generic [ref=e49]:
+              - generic [ref=e50]: "0"
+              - generic [ref=e51]: cheaper by parts
+            - generic [ref=e52]:
+              - generic [ref=e53]: "0"
+              - generic [ref=e54]: cheaper as a set
+            - generic [ref=e55]:
+              - generic [ref=e56]: 0%
+              - generic [ref=e57]: avg parts saving
+          - generic [ref=e58]:
+            - generic [ref=e59]:
+              - generic [ref=e62]:
+                - generic [ref=e63]: 󰍉
+                - generic [ref=e66]:
+                  - generic: Search a set
+                  - textbox "Search a set" [ref=e67]
+              - generic [ref=e71]:
+                - generic [ref=e72]: Min volume (48h)
+                - spinbutton "Min volume (48h)" [ref=e73]: "0"
+              - button "Sort by Best parts deal (%)" [ref=e76] [cursor=pointer]:
+                - generic [ref=e77]:
+                  - generic [ref=e78]: Sort by
+                  - generic [ref=e79]:
+                    - generic [ref=e80]: Best parts deal (%)
+                    - textbox "Sort by" [ref=e81]
+                  - generic [ref=e82]: 󰍝
+            - generic [ref=e89] [cursor=pointer]:
+              - generic [ref=e90]: 󰄬
+              - text: All
+            - generic [ref=e91]:
+              - generic [ref=e94] [cursor=pointer]:
+                - switch "Only where parts are cheaper to buy" [ref=e96]
+                - generic [ref=e98]: Only where parts are cheaper to buy
+              - generic [ref=e101] [cursor=pointer]:
+                - switch "Only where parts resell for more" [ref=e103]
+                - generic [ref=e105]: Only where parts resell for more
+            - generic [ref=e106]: 0 sets match
+          - alert [ref=e107]:
+            - generic [ref=e108]:
+              - generic [ref=e109]: 󰀦
+              - generic [ref=e110]: Couldn't load comparison data. The market service may be waking up — try a refresh.
+        - alert [ref=e111]:
+          - generic [ref=e112]:
+            - generic [ref=e113]: 󰋼
+            - generic [ref=e114]: Prices are lowest sell orders (cost to buy) and highest buy orders (resale), pulled from Warframe Market. Trading tax and set bonuses aren't included.
+  - contentinfo [ref=e115]:
+    - generic [ref=e116]:
+      - generic [ref=e117]: Warframe Market Analytics © 2026
+      - generic [ref=e119]:
+        - text: Made with
+        - generic [ref=e120]: 󰋑
+        - text: by
+        - link "Eduardo Airaudo" [ref=e121] [cursor=pointer]:
+          - /url: https://www.linkedin.com/in/eduardo-airaudo/
+        - text: and
+        - link "Regina Scagliotti" [ref=e122] [cursor=pointer]:
+          - /url: https://www.linkedin.com/in/reginascagliotti/

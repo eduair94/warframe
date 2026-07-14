@@ -1,3 +1,4 @@
+import "./env";
 import { Warframe } from "./warframe";
 
 async function test403Issue() {

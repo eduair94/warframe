@@ -1,0 +1,159 @@
+- generic [ref=f20e5]:
+  - banner [ref=f20e6]:
+    - generic [ref=f20e7]:
+      - text: 󰍜
+      - img "logo warframe analytics" [ref=f20e8] [cursor=pointer]
+      - link [ref=f20e13] [cursor=pointer]:
+        - /url: https://github.com/eduair94/warframe
+        - generic [ref=f20e14]: 󰊤
+      - button [ref=f20e17] [cursor=pointer]:
+        - generic [ref=f20e18]:
+          - text: en
+          - generic [ref=f20e19]: 󰅀
+  - main [ref=f20e20]:
+    - generic [ref=f20e22]:
+      - navigation "Primary" [ref=f20e23]:
+        - generic [ref=f20e24]:
+          - link "Home" [ref=f20e25] [cursor=pointer]:
+            - /url: /
+            - generic [ref=f20e26]: 󰋞
+          - link "Set Prices" [ref=f20e28] [cursor=pointer]:
+            - /url: /set
+            - generic [ref=f20e29]: 󰆧
+          - link "Relic Prices" [ref=f20e31] [cursor=pointer]:
+            - /url: /relic
+            - generic [ref=f20e32]: 󰇈
+          - link "Set vs Parts" [ref=f20e34] [cursor=pointer]:
+            - /url: /comparison
+            - generic [ref=f20e35]: 󰗑
+          - link "Relic Value" [ref=f20e37] [cursor=pointer]:
+            - /url: /relics-value
+            - generic [ref=f20e38]: 󱱷
+          - link "Flip Finder" [ref=f20e40] [cursor=pointer]:
+            - /url: /flip
+            - generic [ref=f20e41]: 󰔵
+          - link "Screener" [ref=f20e43] [cursor=pointer]:
+            - /url: /screener
+            - generic [ref=f20e44]: 󰤏
+          - link "Top Movers" [ref=f20e46] [cursor=pointer]:
+            - /url: /movers
+            - generic [ref=f20e47]: 󰯎
+          - link "Volatility" [ref=f20e49] [cursor=pointer]:
+            - /url: /volatility
+            - generic [ref=f20e50]: 󰐰
+          - link "Buy / Sell Timing" [ref=f20e52] [cursor=pointer]:
+            - /url: /timing
+            - generic [ref=f20e53]: 󰗎
+          - link "Vault Spikes" [ref=f20e55] [cursor=pointer]:
+            - /url: /vault-spikes
+            - generic [ref=f20e56]: 󱓟
+          - link "Vaulted" [ref=f20e58] [cursor=pointer]:
+            - /url: /vaulted
+            - generic [ref=f20e59]: 󰍁
+          - link "Ducats" [ref=f20e61] [cursor=pointer]:
+            - /url: /ducats
+            - generic [ref=f20e62]: 󰄖
+          - link "Endo / Plat" [ref=f20e64] [cursor=pointer]:
+            - /url: /endo
+            - generic [ref=f20e65]: 󰓡
+          - link "Relic Farming" [ref=f20e67] [cursor=pointer]:
+            - /url: /relic-farming
+            - generic [ref=f20e68]: 󰔟
+          - link "Riven Value" [ref=f20e70] [cursor=pointer]:
+            - /url: /riven-value
+            - generic [ref=f20e71]: 󰫣
+          - link "Portfolio" [ref=f20e73] [cursor=pointer]:
+            - /url: /portfolio
+            - generic [ref=f20e74]: 󱒕
+      - generic [ref=f20e76]:
+        - generic [ref=f20e77]:
+          - generic [ref=f20e78]:
+            - generic [ref=f20e79]:
+              - generic [ref=f20e81]:
+                - combobox [ref=f20e84]:
+                  - generic [ref=f20e85]:
+                    - generic: Search
+                    - textbox "Search" [ref=f20e86]
+                    - generic [ref=f20e87]: 󰍝
+                - button "Search" [ref=f20e92] [cursor=pointer]
+                - button [ref=f20e94] [cursor=pointer]:
+                  - generic [ref=f20e95]: 󰦛
+              - alert [ref=f20e98]:
+                - generic [ref=f20e99]: "Purchasing by parts can save you up to: 0 platinum"
+              - table [ref=f20e103]:
+                - rowgroup [ref=f20e112]:
+                  - row [ref=f20e113]:
+                    - 'columnheader "Name: Not sorted. Activate to sort ascending." [ref=f20e114] [cursor=pointer]':
+                      - text: Name
+                      - generic [ref=f20e115]: 󰁝
+                    - 'columnheader "Buy: Not sorted. Activate to sort ascending." [ref=f20e116] [cursor=pointer]':
+                      - text: Buy
+                      - generic [ref=f20e117]: 󰁝
+                    - 'columnheader "Sell: Not sorted. Activate to sort ascending." [ref=f20e118] [cursor=pointer]':
+                      - text: Sell
+                      - generic [ref=f20e119]: 󰁝
+                    - 'columnheader "Diff: Not sorted. Activate to sort ascending." [ref=f20e120] [cursor=pointer]':
+                      - text: Diff
+                      - generic [ref=f20e121]: 󰁝
+                    - 'columnheader "Volume (Last 48hrs): Not sorted. Activate to sort ascending." [ref=f20e122] [cursor=pointer]':
+                      - text: Volume (Last 48hrs)
+                      - generic [ref=f20e123]: 󰁝
+                    - 'columnheader "Tags: Not sorted. Activate to sort ascending." [ref=f20e124] [cursor=pointer]':
+                      - text: Tags
+                      - generic [ref=f20e125]: 󰁝
+                    - 'columnheader "Drops: Not sorted. Activate to sort ascending." [ref=f20e126] [cursor=pointer]':
+                      - text: Drops
+                      - generic [ref=f20e127]: 󰁝
+                - rowgroup [ref=f20e128]:
+                  - row [ref=f20e129]:
+                    - cell "No data available" [ref=f20e130]
+            - separator [ref=f20e131]
+            - table [ref=f20e133]:
+              - rowgroup [ref=f20e142]:
+                - row [ref=f20e143]:
+                  - 'columnheader "Name: Not sorted. Activate to sort ascending." [ref=f20e144] [cursor=pointer]':
+                    - text: Name
+                    - generic [ref=f20e145]: 󰁝
+                  - 'columnheader "Buy: Not sorted. Activate to sort ascending." [ref=f20e146] [cursor=pointer]':
+                    - text: Buy
+                    - generic [ref=f20e147]: 󰁝
+                  - 'columnheader "Sell: Not sorted. Activate to sort ascending." [ref=f20e148] [cursor=pointer]':
+                    - text: Sell
+                    - generic [ref=f20e149]: 󰁝
+                  - 'columnheader "Diff: Not sorted. Activate to sort ascending." [ref=f20e150] [cursor=pointer]':
+                    - text: Diff
+                    - generic [ref=f20e151]: 󰁝
+                  - 'columnheader "Volume (Last 48hrs): Sorted descending. Activate to remove sorting." [ref=f20e152] [cursor=pointer]':
+                    - text: Volume (Last 48hrs)
+                    - generic [ref=f20e153]: 󰁝
+                  - 'columnheader "Tags: Not sorted. Activate to sort ascending." [ref=f20e154] [cursor=pointer]':
+                    - text: Tags
+                    - generic [ref=f20e155]: 󰁝
+                  - 'columnheader "Drops: Not sorted. Activate to sort ascending." [ref=f20e156] [cursor=pointer]':
+                    - text: Drops
+                    - generic [ref=f20e157]: 󰁝
+              - rowgroup [ref=f20e158]:
+                - row [ref=f20e159]:
+                  - cell "No data available" [ref=f20e160]
+          - generic [ref=f20e165]:
+            - generic [ref=f20e166]: Help us donating!
+            - link "Donar con Paypal" [ref=f20e167] [cursor=pointer]:
+              - /url: https://ko-fi.com/cambio_uruguay
+            - link "Donar con Mercado Pago" [ref=f20e173] [cursor=pointer]:
+              - /url: https://mpago.la/19j46vX
+        - alert [ref=f20e179]:
+          - generic [ref=f20e180]:
+            - generic [ref=f20e181]: 󰋼
+            - generic [ref=f20e182]: This site was created solely for the purpose of education, we are not responsible for the misuse of the information.
+  - contentinfo [ref=f20e183]:
+    - generic [ref=f20e184]:
+      - generic [ref=f20e185]: Warframe Market Analytics © 2026
+      - generic [ref=f20e187]:
+        - text: Made with
+        - generic [ref=f20e188]: 󰋑
+        - text: by
+        - link "Eduardo Airaudo" [ref=f20e189] [cursor=pointer]:
+          - /url: https://www.linkedin.com/in/eduardo-airaudo/
+        - text: and
+        - link "Regina Scagliotti" [ref=f20e190] [cursor=pointer]:
+          - /url: https://www.linkedin.com/in/reginascagliotti/

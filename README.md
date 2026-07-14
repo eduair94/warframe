@@ -251,6 +251,30 @@ pm2 status
 pm2 logs
 ```
 
+### Docker Deployment
+
+`docker-compose.yml` builds the backend, frontend, and a MongoDB container together.
+
+**Prerequisite**: `.env` must exist in the repo root before running any `docker` command -
+Compose loads it both for its own `${API_PORT}`/`${FRONTEND_PORT}` substitution and to pass
+your configuration (proxy settings, reCAPTCHA keys, etc.) into the API container:
+
+```bash
+cp .env.example .env
+# edit .env with your real settings
+```
+
+Then:
+
+```bash
+npm run docker:run    # docker-compose up -d
+npm run docker:stop   # docker-compose down
+npm run docker:build  # build just the backend image
+```
+
+The API container connects to the `mongodb` service directly (`MONGODB_URI` is set to
+`mongodb://mongodb:27017/warframe` in `docker-compose.yml`, overriding whatever is in `.env`).
+
 ### Available Scripts
 
 #### Backend Scripts
@@ -442,13 +466,26 @@ If you encounter any issues or have questions:
 
 ## Roadmap
 
-- [ ] Real-time price alerts
-- [ ] Mobile app development
-- [ ] Advanced market predictions
-- [ ] User portfolio tracking
-- [ ] Integration with Warframe in-game chat
-- [ ] Historical price charts
-- [ ] Market trend analysis
+- [x] Price alerts - set a sell-price threshold on the [Portfolio](#) page; fires a browser
+      notification while the page is open (no push server, so it only works while a tab is
+      open - see `app/services/portfolio.ts`)
+- [x] Mobile - no native app, but the site is a real installable PWA (see `nuxt.config.js` `pwa`
+      section); a dedicated React Native/Flutter app is a separate project, not planned here
+- [ ] Advanced market predictions - a basic trend indicator (% change) now ships (see Market
+      trend analysis below); actual forecasting needs a real historical dataset to train
+      against, which only starts accumulating once `sync_prices` has run daily for a while
+- [x] User portfolio tracking - `/portfolio` page, stored per-browser via `localStorage` (no
+      account system exists, so this isn't synced across devices)
+- [x] ~~Integration with Warframe in-game chat~~ **Not feasible**: Warframe has no public API
+      for reading or writing to its in-game chat, and automating the game client to post there
+      would violate Digital Extremes' ToS. Implemented instead: a "Copy WTS/WTB message" button
+      (see `TradeMessageButtons.vue`) that generates the standard trade-chat shorthand for you
+      to paste in manually.
+- [x] Historical price charts - one price point per item per day, charted on the item detail
+      dialog (see `PriceHistoryService`); starts from zero on a fresh deploy and builds up over
+      time as `sync_prices` runs
+- [x] Market trend analysis - % change trend (up/down/flat) shown alongside the price history
+      chart, computed from the same stored history
 
 ---
 

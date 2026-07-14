@@ -1,24 +1,27 @@
-# Use Node.js 18 LTS
-FROM node:18-alpine
+# Multi-stage build. The previous single-stage build used `npm ci --only=production`
+# then tried to compile TypeScript, but tsc needs @types/node etc from
+# devDependencies - that only worked if npm's global typescript/ts-node install
+# happened to cover it, which it doesn't for type declarations. Building with
+# the full dependency set in one stage, then shipping only dist/ + production
+# deps in a clean runtime stage, is both reliable and produces a smaller image.
 
-# Set working directory
+# ---- Build stage ----
+FROM node:20-alpine AS builder
 WORKDIR /app
-
-# Install dependencies
 COPY package*.json ./
-RUN npm ci --only=production
-
-# Copy TypeScript configuration
-COPY tsconfig*.json ./
-
-# Install TypeScript and build dependencies
-RUN npm install -g typescript ts-node
-
-# Copy source code
+RUN npm ci
 COPY . .
-
-# Build the application
 RUN npm run build
+
+# ---- Runtime stage ----
+FROM node:20-alpine
+WORKDIR /app
+ENV NODE_ENV=production
+
+COPY package*.json ./
+RUN npm ci --omit=dev
+
+COPY --from=builder /app/dist ./dist
 
 # Create non-root user
 RUN addgroup -g 1001 -S nodejs

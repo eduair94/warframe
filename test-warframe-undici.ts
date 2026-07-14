@@ -1,3 +1,4 @@
+import "./env";
 import WarframeUndici from "./warframe-undici";
 
 async function testWarframeUndici() {

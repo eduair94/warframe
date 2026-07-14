@@ -98,7 +98,7 @@ echo 1. Edit the .env file with your configuration
 echo 2. Make sure MongoDB is running
 echo 3. Run 'npm run sync_items' to initialize the database
 echo 4. Run 'npm run dev' to start the development server
-echo 5. Run 'cd app && npm run dev' to start the frontend
+echo 5. Run 'cd app', then 'npm run dev' to start the frontend
 echo.
 echo [INFO] For production deployment, use 'npm run pm2:start'
 echo.

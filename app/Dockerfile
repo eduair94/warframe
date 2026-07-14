@@ -1,18 +1,28 @@
-# Use Node.js 18 LTS
-FROM node:18-alpine
+# Multi-stage build. `npm run build` used to chain `&& pm2 restart
+# ecosystem.config.js`, which made every Docker build fail (pm2 isn't
+# installed in the image and there's nothing running to restart). The build
+# script itself no longer does that (see app/package.json); this also keeps
+# devDependencies out of the runtime image.
 
-# Set working directory
+# ---- Build stage ----
+FROM node:20-alpine AS builder
 WORKDIR /app
-
-# Install dependencies
 COPY package*.json ./
 RUN npm ci
-
-# Copy source code
 COPY . .
-
-# Build the application
 RUN npm run build
+
+# ---- Runtime stage ----
+FROM node:20-alpine
+WORKDIR /app
+ENV NODE_ENV=production
+
+COPY package*.json ./
+RUN npm ci --omit=dev
+
+COPY --from=builder /app/.nuxt ./.nuxt
+COPY --from=builder /app/static ./static
+COPY nuxt.config.js ./
 
 # Create non-root user
 RUN addgroup -g 1001 -S nodejs

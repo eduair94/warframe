@@ -275,6 +275,17 @@
           </v-card-title>
           <v-card-text class="pt-4">
             <h3 class="mb-2">{{ selectedTransactionItem.item_name }}</h3>
+            <PriceHistoryChart
+              class="mb-4"
+              :points="priceHistoryPoints"
+              :trend="priceHistoryTrend"
+            />
+            <TradeMessageButtons
+              class="mb-4"
+              :item-name="selectedTransactionItem.item_name"
+              :sell-price="selectedTransactionItem.market.sell"
+              :buy-price="selectedTransactionItem.market.buy"
+            />
             <div v-if="selectedTransactionItem.market.last_completed">
                <v-simple-table dense>
                  <template #default>
@@ -429,6 +440,8 @@ export default Vue.extend({
     GitHubShare: () => import('../components/GitHubShare.vue'),
     ItemComparison: () => import('../components/ItemComparison.vue'),
     LastTransactionCell: () => import('../components/LastTransactionCell.vue'),
+    PriceHistoryChart: () => import('../components/PriceHistoryChart.vue'),
+    TradeMessageButtons: () => import('../components/TradeMessageButtons.vue'),
   },
   data() {
     return {
@@ -452,6 +465,9 @@ export default Vue.extend({
       multiSort: false,
       transactionDialog: false,
       selectedTransactionItem: null,
+      priceHistoryPoints: [],
+      priceHistoryTrend: null,
+      priceHistoryLoading: false,
     }
   },
   head() {
@@ -521,9 +537,25 @@ export default Vue.extend({
     this.setScrollBar()
   },
   methods: {
-    openTransactionDetails(item) {
+    async openTransactionDetails(item) {
       this.selectedTransactionItem = item;
       this.transactionDialog = true;
+      this.priceHistoryPoints = [];
+      this.priceHistoryTrend = null;
+      if (!item.url_name) return;
+      this.priceHistoryLoading = true;
+      try {
+        const data = await this.$axios
+          .get(`${this.$config.apiURL}/price_history/${item.url_name}`)
+          .then((r) => r.data);
+        this.priceHistoryPoints = data.points || [];
+        this.priceHistoryTrend = data.trend || null;
+      } catch (e) {
+        // Non-fatal: the dialog still shows the existing 48h table below
+        this.priceHistoryPoints = [];
+      } finally {
+        this.priceHistoryLoading = false;
+      }
     },
     fixPrice(price: number) {
       if (!price) return 0

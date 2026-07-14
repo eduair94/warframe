@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "cross-env NODE_OPTIONS=--openssl-legacy-provider nuxt",
-    "build": "cross-env NODE_OPTIONS=--openssl-legacy-provider nuxt build --modern=server && pm2 restart ecosystem.config.js",
+    "build": "cross-env NODE_OPTIONS=--openssl-legacy-provider nuxt build --modern=server",
+    "deploy:restart": "npm run build && pm2 restart ecosystem.config.js",
     "start": "cross-env NODE_OPTIONS=--openssl-legacy-provider nuxt start",
     "build_ghpages": "cross-env NODE_OPTIONS=--openssl-legacy-provider nuxt build --modern=server --config-file ./nuxt.config2.js",
     "generate": "cross-env NODE_OPTIONS=--openssl-legacy-provider nuxt generate",
@@ -28,6 +29,7 @@
     "@sentry/vue": "^7.32.0",
     "autolinker": "^4.0.0",
     "core-js": "^3.19.3",
+    "driver.js": "^1.7.0",
     "moment": "^2.29.4",
     "nuxt": "^2.15.8",
     "nuxt-leaflet": "^0.0.27",

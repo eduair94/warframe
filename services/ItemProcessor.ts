@@ -32,14 +32,14 @@ export class ItemProcessor {
    * @returns Processed item or empty string if invalid
    */
   static processForDisplay(item: IMarketItem): IProcessedItem | string {
-    const { item_name, thumb, market, url_name, items_in_set, priceUpdate } = item;
-    
+    const { item_name, thumb, market, url_name, items_in_set, priceUpdate, ducats, vaulted } = item;
+
     // Validate required fields
     if (!market) return "";
     if (!items_in_set || items_in_set.length === 0) return "";
-    
+
     const { tags } = items_in_set[0];
-    
+
     return {
       item_name,
       thumb,
@@ -56,6 +56,11 @@ export class ItemProcessor {
       url_name,
       tags,
       set: items_in_set.length > 1,
+      // Exposed for the analytics pages (Ducat efficiency, Vaulted investment).
+      // Both come from the v2 API enrichment (see MarketService); may be undefined
+      // for items that haven't been enriched yet.
+      ducats,
+      vaulted,
       priceUpdate
     } as IProcessedItem;
   }

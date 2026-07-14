@@ -1,0 +1,580 @@
+- generic [ref=f13e5]:
+  - banner [ref=f13e6]:
+    - generic [ref=f13e7]:
+      - text: 󰍜
+      - img "logo warframe analytics" [ref=f13e8] [cursor=pointer]
+      - link [ref=f13e13] [cursor=pointer]:
+        - /url: https://github.com/eduair94/warframe
+        - generic [ref=f13e14]: 󰊤
+      - button [ref=f13e17] [cursor=pointer]:
+        - generic [ref=f13e18]:
+          - text: en
+          - generic [ref=f13e19]: 󰅀
+  - main [ref=f13e20]:
+    - generic [ref=f13e22]:
+      - navigation "Primary" [ref=f13e23]:
+        - generic [ref=f13e24]:
+          - link "Home" [ref=f13e25] [cursor=pointer]:
+            - /url: /
+            - generic [ref=f13e26]: 󰋞
+          - link "Set Prices" [ref=f13e28] [cursor=pointer]:
+            - /url: /set
+            - generic [ref=f13e29]: 󰆧
+          - link "Relic Prices" [ref=f13e31] [cursor=pointer]:
+            - /url: /relic
+            - generic [ref=f13e32]: 󰇈
+          - link "Set vs Parts" [ref=f13e34] [cursor=pointer]:
+            - /url: /comparison
+            - generic [ref=f13e35]: 󰗑
+          - link "Relic Value" [ref=f13e37] [cursor=pointer]:
+            - /url: /relics-value
+            - generic [ref=f13e38]: 󱱷
+          - link "Flip Finder" [ref=f13e40] [cursor=pointer]:
+            - /url: /flip
+            - generic [ref=f13e41]: 󰔵
+          - link "Vaulted" [ref=f13e43] [cursor=pointer]:
+            - /url: /vaulted
+            - generic [ref=f13e44]: 󰍁
+          - link "Ducats" [ref=f13e46] [cursor=pointer]:
+            - /url: /ducats
+            - generic [ref=f13e47]: 󰄖
+          - link "Endo / Plat" [ref=f13e49] [cursor=pointer]:
+            - /url: /endo
+            - generic [ref=f13e50]: 󰓡
+          - link "Portfolio" [ref=f13e52] [cursor=pointer]:
+            - /url: /portfolio
+            - generic [ref=f13e53]: 󱒕
+          - link "Source" [ref=f13e55] [cursor=pointer]:
+            - /url: https://github.com/eduair94/warframe
+            - generic [ref=f13e56]: 󰊤
+      - generic [ref=f13e58]:
+        - generic [ref=f13e59]:
+          - generic [ref=f13e60]:
+            - generic [ref=f13e61]:
+              - generic [ref=f13e62]: Warframe Market · Flip Finder
+              - heading "Buy low, sell high." [level=1] [ref=f13e63]
+              - paragraph [ref=f13e64]: The spread between the highest buy order and the lowest sell order is your margin. Post a buy order at the bid, fill it, relist at the ask — these are the widest, liquid spreads to work right now.
+            - generic [ref=f13e65]:
+              - generic [ref=f13e66]: Widest liquid spread
+              - generic [ref=f13e67]: 74p
+              - link "Euphona Prime Barrel →" [ref=f13e68] [cursor=pointer]:
+                - /url: https://warframe.market/items/euphona_prime_barrel
+              - generic [ref=f13e69]: 51% margin · vol 280
+          - generic [ref=f13e70]:
+            - generic [ref=f13e71]:
+              - generic [ref=f13e72]: "500"
+              - generic [ref=f13e73]: items tracked
+            - generic [ref=f13e74]:
+              - generic [ref=f13e75]: 74p
+              - generic [ref=f13e76]: widest spread
+            - generic [ref=f13e77]:
+              - generic [ref=f13e78]: 21p
+              - generic [ref=f13e79]: avg spread
+            - generic [ref=f13e80]:
+              - generic [ref=f13e81]: "332"
+              - generic [ref=f13e82]: spread ≥ 10p
+          - generic [ref=f13e83]:
+            - generic [ref=f13e84]:
+              - generic [ref=f13e87]:
+                - generic [ref=f13e88]: 󰍉
+                - generic [ref=f13e91]:
+                  - generic: Search an item
+                  - textbox "Search an item" [ref=f13e92]
+              - generic [ref=f13e96]:
+                - generic [ref=f13e97]: Min volume (48h)
+                - spinbutton "Min volume (48h)" [ref=f13e98]: "0"
+              - button "Sort by Widest spread" [ref=f13e101] [cursor=pointer]:
+                - generic [ref=f13e102]:
+                  - generic [ref=f13e103]: Sort by
+                  - generic [ref=f13e104]:
+                    - generic [ref=f13e105]: Widest spread
+                    - textbox "Sort by" [ref=f13e106]
+                  - generic [ref=f13e107]: 󰍝
+            - generic [ref=f13e112]:
+              - generic [ref=f13e113] [cursor=pointer]: All
+              - generic [ref=f13e115] [cursor=pointer]: Warframe
+              - generic [ref=f13e117] [cursor=pointer]: Primary
+              - generic [ref=f13e119] [cursor=pointer]: Secondary
+              - generic [ref=f13e121] [cursor=pointer]: Melee
+              - generic [ref=f13e123] [cursor=pointer]: Sentinel
+              - generic [ref=f13e125] [cursor=pointer]: Other
+            - generic [ref=f13e127]: 500 items match
+          - table [ref=f13e129]:
+            - rowgroup [ref=f13e130]:
+              - row [ref=f13e131]:
+                - columnheader "Item" [ref=f13e132]
+                - columnheader "Buy (bid)" [ref=f13e133]
+                - columnheader "Sell (ask)" [ref=f13e134]
+                - columnheader "Spread" [ref=f13e135]
+                - columnheader "Margin" [ref=f13e136]
+                - columnheader "Vol" [ref=f13e137]
+                - columnheader [ref=f13e138]
+            - rowgroup [ref=f13e139]:
+              - row [ref=f13e140]:
+                - cell [ref=f13e141]:
+                  - link "Euphona Prime Barrel Euphona Prime Barrel TOP vol 280" [ref=f13e142] [cursor=pointer]:
+                    - /url: https://warframe.market/items/euphona_prime_barrel
+                    - img "Euphona Prime Barrel" [ref=f13e143]
+                    - generic [ref=f13e144]:
+                      - text: Euphona Prime Barrel
+                      - generic [ref=f13e145]: TOP
+                      - generic [ref=f13e146]: vol 280
+                - cell "145p" [ref=f13e147]
+                - cell "219p" [ref=f13e148]
+                - cell "+74p" [ref=f13e149]
+                - cell "51%" [ref=f13e150]
+                - cell "280" [ref=f13e151]
+                - cell [ref=f13e152]:
+                  - link "Open Euphona Prime Barrel" [ref=f13e153] [cursor=pointer]:
+                    - /url: https://warframe.market/items/euphona_prime_barrel
+                    - generic [ref=f13e154]: 󰏌
+              - row [ref=f13e156]:
+                - cell [ref=f13e157]:
+                  - link "Nikana Prime Set Nikana Prime Set vol 477" [ref=f13e158] [cursor=pointer]:
+                    - /url: https://warframe.market/items/nikana_prime_set
+                    - img "Nikana Prime Set" [ref=f13e159]
+                    - generic [ref=f13e160]:
+                      - text: Nikana Prime Set
+                      - generic [ref=f13e161]: vol 477
+                - cell "145p" [ref=f13e162]
+                - cell "219p" [ref=f13e163]
+                - cell "+74p" [ref=f13e164]
+                - cell "51%" [ref=f13e165]
+                - cell "477" [ref=f13e166]
+                - cell [ref=f13e167]:
+                  - link "Open Nikana Prime Set" [ref=f13e168] [cursor=pointer]:
+                    - /url: https://warframe.market/items/nikana_prime_set
+                    - generic [ref=f13e169]: 󰏌
+              - row [ref=f13e171]:
+                - cell [ref=f13e172]:
+                  - link "Centaur Set Centaur Set vol 420" [ref=f13e173] [cursor=pointer]:
+                    - /url: https://warframe.market/items/centaur_set
+                    - img "Centaur Set" [ref=f13e174]
+                    - generic [ref=f13e175]:
+                      - text: Centaur Set
+                      - generic [ref=f13e176]: vol 420
+                - cell "133p" [ref=f13e177]
+                - cell "205p" [ref=f13e178]
+                - cell "+72p" [ref=f13e179]
+                - cell "54%" [ref=f13e180]
+                - cell "420" [ref=f13e181]
+                - cell [ref=f13e182]:
+                  - link "Open Centaur Set" [ref=f13e183] [cursor=pointer]:
+                    - /url: https://warframe.market/items/centaur_set
+                    - generic [ref=f13e184]: 󰏌
+              - row [ref=f13e186]:
+                - cell [ref=f13e187]:
+                  - link "Shedu Chassis Shedu Chassis vol 858" [ref=f13e188] [cursor=pointer]:
+                    - /url: https://warframe.market/items/shedu_chassis
+                    - img "Shedu Chassis" [ref=f13e189]
+                    - generic [ref=f13e190]:
+                      - text: Shedu Chassis
+                      - generic [ref=f13e191]: vol 858
+                - cell "145p" [ref=f13e192]
+                - cell "216p" [ref=f13e193]
+                - cell "+71p" [ref=f13e194]
+                - cell "49%" [ref=f13e195]
+                - cell "858" [ref=f13e196]
+                - cell [ref=f13e197]:
+                  - link "Open Shedu Chassis" [ref=f13e198] [cursor=pointer]:
+                    - /url: https://warframe.market/items/shedu_chassis
+                    - generic [ref=f13e199]: 󰏌
+              - row [ref=f13e201]:
+                - cell [ref=f13e202]:
+                  - link "Valkyr Prime Chassis Blueprint Valkyr Prime Chassis Blueprint vol 672" [ref=f13e203] [cursor=pointer]:
+                    - /url: https://warframe.market/items/valkyr_prime_chassis_blueprint
+                    - img "Valkyr Prime Chassis Blueprint" [ref=f13e204]
+                    - generic [ref=f13e205]:
+                      - text: Valkyr Prime Chassis Blueprint
+                      - generic [ref=f13e206]: vol 672
+                - cell "147p" [ref=f13e207]
+                - cell "218p" [ref=f13e208]
+                - cell "+71p" [ref=f13e209]
+                - cell "48%" [ref=f13e210]
+                - cell "672" [ref=f13e211]
+                - cell [ref=f13e212]:
+                  - link "Open Valkyr Prime Chassis Blueprint" [ref=f13e213] [cursor=pointer]:
+                    - /url: https://warframe.market/items/valkyr_prime_chassis_blueprint
+                    - generic [ref=f13e214]: 󰏌
+              - row [ref=f13e216]:
+                - cell [ref=f13e217]:
+                  - link "Cortege Set Cortege Set vol 631" [ref=f13e218] [cursor=pointer]:
+                    - /url: https://warframe.market/items/cortege_set
+                    - img "Cortege Set" [ref=f13e219]
+                    - generic [ref=f13e220]:
+                      - text: Cortege Set
+                      - generic [ref=f13e221]: vol 631
+                - cell "132p" [ref=f13e222]
+                - cell "202p" [ref=f13e223]
+                - cell "+70p" [ref=f13e224]
+                - cell "53%" [ref=f13e225]
+                - cell "631" [ref=f13e226]
+                - cell [ref=f13e227]:
+                  - link "Open Cortege Set" [ref=f13e228] [cursor=pointer]:
+                    - /url: https://warframe.market/items/cortege_set
+                    - generic [ref=f13e229]: 󰏌
+              - row [ref=f13e231]:
+                - cell [ref=f13e232]:
+                  - link "Latron Wraith Stock Latron Wraith Stock vol 382" [ref=f13e233] [cursor=pointer]:
+                    - /url: https://warframe.market/items/latron_wraith_stock
+                    - img "Latron Wraith Stock" [ref=f13e234]
+                    - generic [ref=f13e235]:
+                      - text: Latron Wraith Stock
+                      - generic [ref=f13e236]: vol 382
+                - cell "137p" [ref=f13e237]
+                - cell "206p" [ref=f13e238]
+                - cell "+69p" [ref=f13e239]
+                - cell "50%" [ref=f13e240]
+                - cell "382" [ref=f13e241]
+                - cell [ref=f13e242]:
+                  - link "Open Latron Wraith Stock" [ref=f13e243] [cursor=pointer]:
+                    - /url: https://warframe.market/items/latron_wraith_stock
+                    - generic [ref=f13e244]: 󰏌
+              - row [ref=f13e246]:
+                - cell [ref=f13e247]:
+                  - link "Damaged Necramech Weapon Stock Damaged Necramech Weapon Stock vol 883" [ref=f13e248] [cursor=pointer]:
+                    - /url: https://warframe.market/items/damaged_necramech_weapon_stock
+                    - img "Damaged Necramech Weapon Stock" [ref=f13e249]
+                    - generic [ref=f13e250]:
+                      - text: Damaged Necramech Weapon Stock
+                      - generic [ref=f13e251]: vol 883
+                - cell "127p" [ref=f13e252]
+                - cell "194p" [ref=f13e253]
+                - cell "+67p" [ref=f13e254]
+                - cell "53%" [ref=f13e255]
+                - cell "883" [ref=f13e256]
+                - cell [ref=f13e257]:
+                  - link "Open Damaged Necramech Weapon Stock" [ref=f13e258] [cursor=pointer]:
+                    - /url: https://warframe.market/items/damaged_necramech_weapon_stock
+                    - generic [ref=f13e259]: 󰏌
+              - row [ref=f13e261]:
+                - cell [ref=f13e262]:
+                  - link "Frost Prime Set Frost Prime Set vol 193" [ref=f13e263] [cursor=pointer]:
+                    - /url: https://warframe.market/items/frost_prime_set
+                    - img "Frost Prime Set" [ref=f13e264]
+                    - generic [ref=f13e265]:
+                      - text: Frost Prime Set
+                      - generic [ref=f13e266]: vol 193
+                - cell "150p" [ref=f13e267]
+                - cell "215p" [ref=f13e268]
+                - cell "+65p" [ref=f13e269]
+                - cell "43%" [ref=f13e270]
+                - cell "193" [ref=f13e271]
+                - cell [ref=f13e272]:
+                  - link "Open Frost Prime Set" [ref=f13e273] [cursor=pointer]:
+                    - /url: https://warframe.market/items/frost_prime_set
+                    - generic [ref=f13e274]: 󰏌
+              - row [ref=f13e276]:
+                - cell [ref=f13e277]:
+                  - link "Strun Wraith Receiver Strun Wraith Receiver vol 889" [ref=f13e278] [cursor=pointer]:
+                    - /url: https://warframe.market/items/strun_wraith_receiver
+                    - img "Strun Wraith Receiver" [ref=f13e279]
+                    - generic [ref=f13e280]:
+                      - text: Strun Wraith Receiver
+                      - generic [ref=f13e281]: vol 889
+                - cell "123p" [ref=f13e282]
+                - cell "188p" [ref=f13e283]
+                - cell "+65p" [ref=f13e284]
+                - cell "53%" [ref=f13e285]
+                - cell "889" [ref=f13e286]
+                - cell [ref=f13e287]:
+                  - link "Open Strun Wraith Receiver" [ref=f13e288] [cursor=pointer]:
+                    - /url: https://warframe.market/items/strun_wraith_receiver
+                    - generic [ref=f13e289]: 󰏌
+              - row [ref=f13e291]:
+                - cell [ref=f13e292]:
+                  - link "Latron Prime Barrel Latron Prime Barrel vol 851" [ref=f13e293] [cursor=pointer]:
+                    - /url: https://warframe.market/items/latron_prime_barrel
+                    - img "Latron Prime Barrel" [ref=f13e294]
+                    - generic [ref=f13e295]:
+                      - text: Latron Prime Barrel
+                      - generic [ref=f13e296]: vol 851
+                - cell "136p" [ref=f13e297]
+                - cell "201p" [ref=f13e298]
+                - cell "+65p" [ref=f13e299]
+                - cell "48%" [ref=f13e300]
+                - cell "851" [ref=f13e301]
+                - cell [ref=f13e302]:
+                  - link "Open Latron Prime Barrel" [ref=f13e303] [cursor=pointer]:
+                    - /url: https://warframe.market/items/latron_prime_barrel
+                    - generic [ref=f13e304]: 󰏌
+              - row [ref=f13e306]:
+                - cell [ref=f13e307]:
+                  - link "Tekko Prime Set Tekko Prime Set vol 149" [ref=f13e308] [cursor=pointer]:
+                    - /url: https://warframe.market/items/tekko_prime_set
+                    - img "Tekko Prime Set" [ref=f13e309]
+                    - generic [ref=f13e310]:
+                      - text: Tekko Prime Set
+                      - generic [ref=f13e311]: vol 149
+                - cell "154p" [ref=f13e312]
+                - cell "219p" [ref=f13e313]
+                - cell "+65p" [ref=f13e314]
+                - cell "42%" [ref=f13e315]
+                - cell "149" [ref=f13e316]
+                - cell [ref=f13e317]:
+                  - link "Open Tekko Prime Set" [ref=f13e318] [cursor=pointer]:
+                    - /url: https://warframe.market/items/tekko_prime_set
+                    - generic [ref=f13e319]: 󰏌
+              - row [ref=f13e321]:
+                - cell [ref=f13e322]:
+                  - link "Loki Prime Systems Blueprint Loki Prime Systems Blueprint vol 859" [ref=f13e323] [cursor=pointer]:
+                    - /url: https://warframe.market/items/loki_prime_systems_blueprint
+                    - img "Loki Prime Systems Blueprint" [ref=f13e324]
+                    - generic [ref=f13e325]:
+                      - text: Loki Prime Systems Blueprint
+                      - generic [ref=f13e326]: vol 859
+                - cell "131p" [ref=f13e327]
+                - cell "192p" [ref=f13e328]
+                - cell "+61p" [ref=f13e329]
+                - cell "47%" [ref=f13e330]
+                - cell "859" [ref=f13e331]
+                - cell [ref=f13e332]:
+                  - link "Open Loki Prime Systems Blueprint" [ref=f13e333] [cursor=pointer]:
+                    - /url: https://warframe.market/items/loki_prime_systems_blueprint
+                    - generic [ref=f13e334]: 󰏌
+              - row [ref=f13e336]:
+                - cell [ref=f13e337]:
+                  - link "Furax Wraith Right Gauntlet Furax Wraith Right Gauntlet vol 411" [ref=f13e338] [cursor=pointer]:
+                    - /url: https://warframe.market/items/furax_wraith_right_gauntlet
+                    - img "Furax Wraith Right Gauntlet" [ref=f13e339]
+                    - generic [ref=f13e340]:
+                      - text: Furax Wraith Right Gauntlet
+                      - generic [ref=f13e341]: vol 411
+                - cell "134p" [ref=f13e342]
+                - cell "195p" [ref=f13e343]
+                - cell "+61p" [ref=f13e344]
+                - cell "46%" [ref=f13e345]
+                - cell "411" [ref=f13e346]
+                - cell [ref=f13e347]:
+                  - link "Open Furax Wraith Right Gauntlet" [ref=f13e348] [cursor=pointer]:
+                    - /url: https://warframe.market/items/furax_wraith_right_gauntlet
+                    - generic [ref=f13e349]: 󰏌
+              - row [ref=f13e351]:
+                - cell [ref=f13e352]:
+                  - link "Akvasto Prime Set Akvasto Prime Set vol 174" [ref=f13e353] [cursor=pointer]:
+                    - /url: https://warframe.market/items/akvasto_prime_set
+                    - img "Akvasto Prime Set" [ref=f13e354]
+                    - generic [ref=f13e355]:
+                      - text: Akvasto Prime Set
+                      - generic [ref=f13e356]: vol 174
+                - cell "151p" [ref=f13e357]
+                - cell "212p" [ref=f13e358]
+                - cell "+61p" [ref=f13e359]
+                - cell "40%" [ref=f13e360]
+                - cell "174" [ref=f13e361]
+                - cell [ref=f13e362]:
+                  - link "Open Akvasto Prime Set" [ref=f13e363] [cursor=pointer]:
+                    - /url: https://warframe.market/items/akvasto_prime_set
+                    - generic [ref=f13e364]: 󰏌
+              - row [ref=f13e366]:
+                - cell [ref=f13e367]:
+                  - link "Sheev Set Sheev Set vol 738" [ref=f13e368] [cursor=pointer]:
+                    - /url: https://warframe.market/items/sheev_set
+                    - img "Sheev Set" [ref=f13e369]
+                    - generic [ref=f13e370]:
+                      - text: Sheev Set
+                      - generic [ref=f13e371]: vol 738
+                - cell "154p" [ref=f13e372]
+                - cell "215p" [ref=f13e373]
+                - cell "+61p" [ref=f13e374]
+                - cell "40%" [ref=f13e375]
+                - cell "738" [ref=f13e376]
+                - cell [ref=f13e377]:
+                  - link "Open Sheev Set" [ref=f13e378] [cursor=pointer]:
+                    - /url: https://warframe.market/items/sheev_set
+                    - generic [ref=f13e379]: 󰏌
+              - row [ref=f13e381]:
+                - cell [ref=f13e382]:
+                  - link "Snipetron Vandal Stock Snipetron Vandal Stock vol 531" [ref=f13e383] [cursor=pointer]:
+                    - /url: https://warframe.market/items/snipetron_vandal_stock
+                    - img "Snipetron Vandal Stock" [ref=f13e384]
+                    - generic [ref=f13e385]:
+                      - text: Snipetron Vandal Stock
+                      - generic [ref=f13e386]: vol 531
+                - cell "143p" [ref=f13e387]
+                - cell "203p" [ref=f13e388]
+                - cell "+60p" [ref=f13e389]
+                - cell "42%" [ref=f13e390]
+                - cell "531" [ref=f13e391]
+                - cell [ref=f13e392]:
+                  - link "Open Snipetron Vandal Stock" [ref=f13e393] [cursor=pointer]:
+                    - /url: https://warframe.market/items/snipetron_vandal_stock
+                    - generic [ref=f13e394]: 󰏌
+              - row [ref=f13e396]:
+                - cell [ref=f13e397]:
+                  - link "Valkyr Prime Set Valkyr Prime Set vol 184" [ref=f13e398] [cursor=pointer]:
+                    - /url: https://warframe.market/items/valkyr_prime_set
+                    - img "Valkyr Prime Set" [ref=f13e399]
+                    - generic [ref=f13e400]:
+                      - text: Valkyr Prime Set
+                      - generic [ref=f13e401]: vol 184
+                - cell "113p" [ref=f13e402]
+                - cell "173p" [ref=f13e403]
+                - cell "+60p" [ref=f13e404]
+                - cell "53%" [ref=f13e405]
+                - cell "184" [ref=f13e406]
+                - cell [ref=f13e407]:
+                  - link "Open Valkyr Prime Set" [ref=f13e408] [cursor=pointer]:
+                    - /url: https://warframe.market/items/valkyr_prime_set
+                    - generic [ref=f13e409]: 󰏌
+              - row [ref=f13e411]:
+                - cell [ref=f13e412]:
+                  - link "Dual Decurion Set Dual Decurion Set vol 661" [ref=f13e413] [cursor=pointer]:
+                    - /url: https://warframe.market/items/dual_decurion_set
+                    - img "Dual Decurion Set" [ref=f13e414]
+                    - generic [ref=f13e415]:
+                      - text: Dual Decurion Set
+                      - generic [ref=f13e416]: vol 661
+                - cell "146p" [ref=f13e417]
+                - cell "206p" [ref=f13e418]
+                - cell "+60p" [ref=f13e419]
+                - cell "41%" [ref=f13e420]
+                - cell "661" [ref=f13e421]
+                - cell [ref=f13e422]:
+                  - link "Open Dual Decurion Set" [ref=f13e423] [cursor=pointer]:
+                    - /url: https://warframe.market/items/dual_decurion_set
+                    - generic [ref=f13e424]: 󰏌
+              - row [ref=f13e426]:
+                - cell [ref=f13e427]:
+                  - link "Latron Wraith Set Latron Wraith Set vol 198" [ref=f13e428] [cursor=pointer]:
+                    - /url: https://warframe.market/items/latron_wraith_set
+                    - img "Latron Wraith Set" [ref=f13e429]
+                    - generic [ref=f13e430]:
+                      - text: Latron Wraith Set
+                      - generic [ref=f13e431]: vol 198
+                - cell "122p" [ref=f13e432]
+                - cell "181p" [ref=f13e433]
+                - cell "+59p" [ref=f13e434]
+                - cell "48%" [ref=f13e435]
+                - cell "198" [ref=f13e436]
+                - cell [ref=f13e437]:
+                  - link "Open Latron Wraith Set" [ref=f13e438] [cursor=pointer]:
+                    - /url: https://warframe.market/items/latron_wraith_set
+                    - generic [ref=f13e439]: 󰏌
+              - row [ref=f13e441]:
+                - cell [ref=f13e442]:
+                  - link "Oberon Prime Blueprint Oberon Prime Blueprint vol 854" [ref=f13e443] [cursor=pointer]:
+                    - /url: https://warframe.market/items/oberon_prime_blueprint
+                    - img "Oberon Prime Blueprint" [ref=f13e444]
+                    - generic [ref=f13e445]:
+                      - text: Oberon Prime Blueprint
+                      - generic [ref=f13e446]: vol 854
+                - cell "124p" [ref=f13e447]
+                - cell "183p" [ref=f13e448]
+                - cell "+59p" [ref=f13e449]
+                - cell "48%" [ref=f13e450]
+                - cell "854" [ref=f13e451]
+                - cell [ref=f13e452]:
+                  - link "Open Oberon Prime Blueprint" [ref=f13e453] [cursor=pointer]:
+                    - /url: https://warframe.market/items/oberon_prime_blueprint
+                    - generic [ref=f13e454]: 󰏌
+              - row [ref=f13e456]:
+                - cell [ref=f13e457]:
+                  - link "Fang Prime Blueprint Fang Prime Blueprint vol 136" [ref=f13e458] [cursor=pointer]:
+                    - /url: https://warframe.market/items/fang_prime_blueprint
+                    - img "Fang Prime Blueprint" [ref=f13e459]
+                    - generic [ref=f13e460]:
+                      - text: Fang Prime Blueprint
+                      - generic [ref=f13e461]: vol 136
+                - cell "147p" [ref=f13e462]
+                - cell "206p" [ref=f13e463]
+                - cell "+59p" [ref=f13e464]
+                - cell "40%" [ref=f13e465]
+                - cell "136" [ref=f13e466]
+                - cell [ref=f13e467]:
+                  - link "Open Fang Prime Blueprint" [ref=f13e468] [cursor=pointer]:
+                    - /url: https://warframe.market/items/fang_prime_blueprint
+                    - generic [ref=f13e469]: 󰏌
+              - row [ref=f13e471]:
+                - cell [ref=f13e472]:
+                  - link "Damaged Necramech Weapon Set Damaged Necramech Weapon Set vol 595" [ref=f13e473] [cursor=pointer]:
+                    - /url: https://warframe.market/items/damaged_necramech_weapon_set
+                    - img "Damaged Necramech Weapon Set" [ref=f13e474]
+                    - generic [ref=f13e475]:
+                      - text: Damaged Necramech Weapon Set
+                      - generic [ref=f13e476]: vol 595
+                - cell "157p" [ref=f13e477]
+                - cell "215p" [ref=f13e478]
+                - cell "+58p" [ref=f13e479]
+                - cell "37%" [ref=f13e480]
+                - cell "595" [ref=f13e481]
+                - cell [ref=f13e482]:
+                  - link "Open Damaged Necramech Weapon Set" [ref=f13e483] [cursor=pointer]:
+                    - /url: https://warframe.market/items/damaged_necramech_weapon_set
+                    - generic [ref=f13e484]: 󰏌
+              - row [ref=f13e486]:
+                - cell [ref=f13e487]:
+                  - link "Glaive Prime Blueprint Glaive Prime Blueprint vol 605" [ref=f13e488] [cursor=pointer]:
+                    - /url: https://warframe.market/items/glaive_prime_blueprint
+                    - img "Glaive Prime Blueprint" [ref=f13e489]
+                    - generic [ref=f13e490]:
+                      - text: Glaive Prime Blueprint
+                      - generic [ref=f13e491]: vol 605
+                - cell "155p" [ref=f13e492]
+                - cell "212p" [ref=f13e493]
+                - cell "+57p" [ref=f13e494]
+                - cell "37%" [ref=f13e495]
+                - cell "605" [ref=f13e496]
+                - cell [ref=f13e497]:
+                  - link "Open Glaive Prime Blueprint" [ref=f13e498] [cursor=pointer]:
+                    - /url: https://warframe.market/items/glaive_prime_blueprint
+                    - generic [ref=f13e499]: 󰏌
+              - row [ref=f13e501]:
+                - cell [ref=f13e502]:
+                  - link "Bonewidow Set Bonewidow Set vol 772" [ref=f13e503] [cursor=pointer]:
+                    - /url: https://warframe.market/items/bonewidow_set
+                    - img "Bonewidow Set" [ref=f13e504]
+                    - generic [ref=f13e505]:
+                      - text: Bonewidow Set
+                      - generic [ref=f13e506]: vol 772
+                - cell "153p" [ref=f13e507]
+                - cell "210p" [ref=f13e508]
+                - cell "+57p" [ref=f13e509]
+                - cell "37%" [ref=f13e510]
+                - cell "772" [ref=f13e511]
+                - cell [ref=f13e512]:
+                  - link "Open Bonewidow Set" [ref=f13e513] [cursor=pointer]:
+                    - /url: https://warframe.market/items/bonewidow_set
+                    - generic [ref=f13e514]: 󰏌
+          - navigation "Pagination Navigation" [ref=f13e517]:
+            - list [ref=f13e518]:
+              - listitem [ref=f13e519]:
+                - button "Previous page" [disabled]:
+                  - generic: 󰅁
+              - listitem [ref=f13e520]:
+                - button "Current Page, Page 1" [ref=f13e521] [cursor=pointer]: "1"
+              - listitem [ref=f13e522]:
+                - button "Goto Page 2" [ref=f13e523] [cursor=pointer]: "2"
+              - listitem [ref=f13e524]:
+                - button "Goto Page 3" [ref=f13e525] [cursor=pointer]: "3"
+              - listitem [ref=f13e526]:
+                - button "Goto Page 4" [ref=f13e527] [cursor=pointer]: "4"
+              - listitem [ref=f13e528]:
+                - generic [ref=f13e529]: ...
+              - listitem [ref=f13e530]:
+                - button "Goto Page 17" [ref=f13e531] [cursor=pointer]: "17"
+              - listitem [ref=f13e532]:
+                - button "Goto Page 18" [ref=f13e533] [cursor=pointer]: "18"
+              - listitem [ref=f13e534]:
+                - button "Goto Page 19" [ref=f13e535] [cursor=pointer]: "19"
+              - listitem [ref=f13e536]:
+                - button "Goto Page 20" [ref=f13e537] [cursor=pointer]: "20"
+              - listitem [ref=f13e538]:
+                - button "Next page" [ref=f13e539] [cursor=pointer]:
+                  - generic [ref=f13e540]: 󰅂
+        - alert [ref=f13e541]:
+          - generic [ref=f13e542]:
+            - generic [ref=f13e543]: 󰋼
+            - generic [ref=f13e544]: Spread = lowest sell order − highest buy order, from Warframe Market. Wide spreads on low-volume items may not fill quickly — check the volume column.
+  - contentinfo [ref=f13e545]:
+    - generic [ref=f13e546]:
+      - generic [ref=f13e547]: Warframe Market Analytics © 2026
+      - generic [ref=f13e549]:
+        - text: Made with
+        - generic [ref=f13e550]: 󰋑
+        - text: by
+        - link "Eduardo Airaudo" [ref=f13e551] [cursor=pointer]:
+          - /url: https://www.linkedin.com/in/eduardo-airaudo/
+        - text: and
+        - link "Regina Scagliotti" [ref=f13e552] [cursor=pointer]:
+          - /url: https://www.linkedin.com/in/reginascagliotti/

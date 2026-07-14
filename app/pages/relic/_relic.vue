@@ -95,7 +95,13 @@
                   </v-chip-group>
                 </template>
                 <template #item.drops="{ item }">
-                  <a target="_blank" :href="getLink(item.item_name)"> Drops </a>
+                  <button
+                    type="button"
+                    class="drops-btn"
+                    @click="openDrops(item.item_name)"
+                  >
+                    <v-icon small>mdi-map-marker-radius-outline</v-icon> Drops
+                  </button>
                 </template>
               </v-data-table>
             </div>
@@ -126,10 +132,17 @@
             </v-chip-group>
           </template>
           <template #item.drops="{ item }">
-            <a target="_blank" :href="getLink(item.item_name)"> Drops </a>
+            <button
+              type="button"
+              class="drops-btn"
+              @click="openDrops(item.item_name)"
+            >
+              <v-icon small>mdi-map-marker-radius-outline</v-icon> Drops
+            </button>
           </template>
         </v-data-table>
       </client-only>
+      <DropLocationsDialog v-model="dropsDialog" :item-name="dropsItem" />
       <div class="px-0 pt-3">
         <div>
           <div
@@ -188,9 +201,10 @@
 
 <script lang="ts">
 import { mapGetters } from 'vuex'
+import DropLocationsDialog from '../../components/DropLocationsDialog.vue'
 export default {
   name: 'HomePage',
-  components: {},
+  components: { DropLocationsDialog },
   data() {
     return {
       save: 0,
@@ -204,6 +218,8 @@ export default {
       selection: 'All',
       hasScroll: false,
       scrollWidth: 0,
+      dropsDialog: false,
+      dropsItem: '',
     }
   },
   head() {
@@ -499,6 +515,10 @@ export default {
       }
       return ''
     },
+    openDrops(name: string) {
+      this.dropsItem = name
+      this.dropsDialog = true
+    },
     getLink(name: string) {
       let s = '^' + name
       if (s.includes('(')) {
@@ -523,3 +543,33 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.drops-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 0.82rem;
+  color: #35d6d0;
+  background: rgba(53, 214, 208, 0.08);
+  border: 1px solid rgba(53, 214, 208, 0.28);
+  padding: 4px 12px;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.drops-btn:hover {
+  background: rgba(53, 214, 208, 0.16);
+  color: #7ff0eb;
+}
+.drops-btn:focus-visible {
+  outline: 2px solid #35d6d0;
+  outline-offset: 2px;
+}
+.drops-btn .v-icon {
+  color: inherit !important;
+}
+</style>

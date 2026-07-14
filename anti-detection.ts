@@ -52,17 +52,30 @@ export class AntiDetection {
     this.lastRequestTime = Date.now();
   }
 
-  /**
-   * Add TLS fingerprint randomization
-   */
-  static getTLSOptions(): any {
-    const ciphers = ["ECDHE-RSA-AES128-GCM-SHA256", "ECDHE-RSA-AES256-GCM-SHA384", "ECDHE-RSA-AES128-SHA256", "ECDHE-RSA-AES256-SHA384", "AES128-GCM-SHA256", "AES256-GCM-SHA384"];
+  /** Pool of modern cipher suites to rotate through - order is shuffled per call */
+  private static readonly TLS_CIPHER_POOL = [
+    "ECDHE-RSA-AES128-GCM-SHA256",
+    "ECDHE-RSA-AES256-GCM-SHA384",
+    "ECDHE-RSA-CHACHA20-POLY1305",
+    "ECDHE-RSA-AES128-SHA256",
+    "ECDHE-RSA-AES256-SHA384",
+    "AES128-GCM-SHA256",
+    "AES256-GCM-SHA384",
+  ];
 
+  /**
+   * TLS connection options with rotated cipher order, for anti-fingerprinting.
+   * Deliberately does NOT force a legacy secureProtocol (e.g. TLSv1_2_method) -
+   * that both looks more like a bot (real Chrome negotiates TLS 1.3) and risks
+   * breaking connections to servers that require 1.3. minVersion floors at 1.2
+   * for safety; the handshake still negotiates up to whatever the peer supports.
+   */
+  static getTLSOptions(): { ciphers: string; honorCipherOrder: boolean; minVersion: "TLSv1.2" } {
+    const shuffled = [...this.TLS_CIPHER_POOL].sort(() => Math.random() - 0.5);
     return {
-      secureProtocol: "TLSv1_2_method",
-      ciphers: ciphers.join(":"),
+      ciphers: shuffled.join(":"),
       honorCipherOrder: true,
-      secureOptions: crypto.constants.SSL_OP_NO_SSLv2 | crypto.constants.SSL_OP_NO_SSLv3,
+      minVersion: "TLSv1.2",
     };
   }
 
@@ -148,5 +161,21 @@ export class ProxyRotation {
    */
   static getProxyStats(proxy: string) {
     return this.proxyPerformance.get(proxy) || { success: 0, failures: 0, lastUsed: 0 };
+  }
+
+  /**
+   * Get performance stats for every proxy seen so far, plus banned proxies.
+   * Backs WarframeUndici.getProxyStats() (D11) - previously that method
+   * returned a placeholder string instead of real aggregate metrics.
+   */
+  static getAllStats(): {
+    proxies: Record<string, { success: number; failures: number; lastUsed: number }>;
+    banned: string[];
+  } {
+    const proxies: Record<string, { success: number; failures: number; lastUsed: number }> = {};
+    for (const [proxy, stats] of this.proxyPerformance.entries()) {
+      proxies[proxy] = { ...stats };
+    }
+    return { proxies, banned: [...this.bannedProxies] };
   }
 }

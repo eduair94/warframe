@@ -14,7 +14,8 @@ import {
   IRelic,
   IRelicsApiResponse,
   IRelicSyncResult,
-  IParsedRelicName
+  IParsedRelicName,
+  IRelicEvRow
 } from '../interfaces/relic.interface';
 import { IMarketItem, IProcessedItem, ISetResult } from '../interfaces/market.interface';
 import { IDatabaseOperations } from '../interfaces/database.interface';
@@ -180,11 +181,87 @@ export class RelicService {
 
   /**
    * Gets a single item from the database by URL name
-   * 
+   *
    * @param urlName - Item URL name
    * @returns Promise resolving to the item
    */
   async getItemByUrlName(urlName: string): Promise<IMarketItem | null> {
     return this.itemRepository.findEntry({ url_name: urlName });
+  }
+
+  /**
+   * Builds the "open vs sell" EV table for every relic from preloaded data.
+   *
+   * Pure function (no DB access): the caller loads all relics and all market
+   * items once, and this joins each relic's rewards to their market prices and
+   * resolves the relic's own market entry. The expected value of opening is left
+   * to the client, which applies the fixed refinement chance table (Intact /
+   * Radiant) to each reward's rarity — so one payload serves every refinement.
+   *
+   * @param relics - All stored (Intact-state) relics
+   * @param items - All market items
+   * @returns One EV row per relic that has rewards
+   */
+  buildRelicEvFromData(relics: IRelic[], items: IMarketItem[]): IRelicEvRow[] {
+    const byName = new Map<string, IMarketItem>();
+    const byUrl = new Map<string, IMarketItem>();
+    for (const item of items) {
+      if (!item) continue;
+      if (item.item_name) byName.set(item.item_name, item);
+      if (item.url_name) byUrl.set(item.url_name, item);
+    }
+
+    const rows: IRelicEvRow[] = [];
+
+    for (const relic of relics) {
+      if (!relic || !relic.rewards || relic.rewards.length === 0) continue;
+
+      // Stored relicName is "<tier> <code>" e.g. "lith A1"; derive a clean
+      // display name and url_name from the tier + code.
+      const code = (relic.relicName || '').split(/\s+/).slice(1).join(' ').trim();
+      if (!code) continue;
+      const tier = relic.tier || (relic.relicName || '').split(/\s+/)[0] || '';
+      const displayName = `${this.capitalize(tier)} ${code.toUpperCase()}`;
+      // Relics are listed on warframe.market as "<tier>_<code>_relic" (e.g.
+      // lith_a1_relic); the detail page also keys off that url_name.
+      const url_name = `${tier.toLowerCase()}_${code.toLowerCase()}_relic`;
+
+      const relicItem = byUrl.get(url_name) || byUrl.get(`${tier.toLowerCase()}_${code.toLowerCase()}`);
+
+      const rewards = relic.rewards.map((reward) => {
+        const item = byName.get(reward.itemName);
+        return {
+          item_name: reward.itemName,
+          url_name: item?.url_name ?? '',
+          thumb: item?.thumb ?? '',
+          rarity: reward.rarity,
+          price: item?.market?.sell ?? 0,
+        };
+      });
+
+      rows.push({
+        relicName: displayName,
+        url_name,
+        tier: this.capitalize(tier),
+        thumb: relicItem?.thumb ?? '',
+        relic: {
+          buy: relicItem?.market?.buy ?? 0,
+          sell: relicItem?.market?.sell ?? 0,
+          volume: relicItem?.market?.volume ?? 0,
+        },
+        rewards,
+      });
+    }
+
+    return rows;
+  }
+
+  /**
+   * Capitalises the first letter of a word (e.g. "lith" -> "Lith").
+   * @private
+   */
+  private capitalize(word: string): string {
+    if (!word) return '';
+    return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
   }
 }

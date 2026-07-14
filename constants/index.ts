@@ -17,7 +17,14 @@ export const API_URLS = {
   WARFRAME_MARKET_V2: 'https://api.warframe.market/v2',
   
   /** Warframe stat drops API for relic data */
-  WARFRAME_DROPS: 'https://drops.warframestat.us/data/relics.json'
+  WARFRAME_DROPS: 'https://drops.warframestat.us/data/relics.json',
+
+  /** Mission reward tables by planet/node — powers the Star Chart */
+  WARFRAME_DROPS_MISSIONS: 'https://drops.warframestat.us/data/missionRewards.json',
+
+  /** Raw-GitHub mirrors, used as a fallback when drops.warframestat.us is unreachable */
+  WARFRAME_DROPS_RELICS_MIRROR: 'https://raw.githubusercontent.com/WFCD/warframe-drop-data/master/data/relics.json',
+  WARFRAME_DROPS_MISSIONS_MIRROR: 'https://raw.githubusercontent.com/WFCD/warframe-drop-data/master/data/missionRewards.json'
 } as const;
 
 /**
@@ -139,12 +146,26 @@ export const RIVEN_SYNC_DEFAULTS = {
 export const COLLECTIONS = {
   /** Items collection */
   ITEMS: 'warframe-items',
-  
+
   /** Rivens collection */
   RIVENS: 'warframe-rivens',
-  
+
   /** Relics collection */
-  RELICS: 'warframe-relics'
+  RELICS: 'warframe-relics',
+
+  /** Daily price history points, one document per item (see PriceHistoryService) */
+  PRICE_HISTORY: 'warframe-price-history',
+
+  /** WFCD drop-data backup: two documents (map + index), see DropService */
+  DROPS: 'warframe-drops'
+} as const;
+
+/**
+ * Price history retention (README Roadmap: "Historical price charts")
+ */
+export const PRICE_HISTORY_CONFIG = {
+  /** Max stored points per item (roughly 180 days at one point/day) */
+  MAX_POINTS: 180
 } as const;
 
 /**
@@ -182,14 +203,31 @@ export const BROWSER_SIMULATION = {
 } as const;
 
 /**
- * Rate limiting configuration
+ * Rate limiting configuration for OUTBOUND requests to warframe.market
  */
 export const RATE_LIMITING = {
   /** Delay after 429 response (minimum, ms) */
   RATE_LIMIT_MIN_DELAY: 2000,
-  
+
   /** Delay after 429 response (maximum additional, ms) */
   RATE_LIMIT_JITTER: 3000
+} as const;
+
+/**
+ * Rate limiting configuration for INBOUND requests to this app's own API
+ */
+export const INBOUND_RATE_LIMIT = {
+  /** Window size for the general API limiter (ms) */
+  WINDOW_MS: 60_000,
+
+  /** Max requests per IP per window for general read endpoints */
+  MAX_REQUESTS: 60,
+
+  /** Window size for the build_relics limiter (ms) */
+  BUILD_RELICS_WINDOW_MS: 60 * 60_000,
+
+  /** Max build_relics requests per IP per window (it triggers a real DB sync) */
+  BUILD_RELICS_MAX_REQUESTS: 2
 } as const;
 
 /**

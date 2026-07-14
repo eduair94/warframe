@@ -1,0 +1,98 @@
+- generic [ref=f1e8]:
+  - banner [ref=f1e9]:
+    - generic [ref=f1e10]:
+      - img "logo warframe analytics" [ref=f1e11] [cursor=pointer]
+      - link [ref=f1e16] [cursor=pointer]:
+        - /url: https://github.com/eduair94/warframe
+        - generic [ref=f1e17]: 󰊤
+      - button [ref=f1e20] [cursor=pointer]:
+        - generic [ref=f1e21]:
+          - text: en
+          - generic [ref=f1e22]: 󰅀
+  - main [ref=f1e23]:
+    - generic [ref=f1e25]:
+      - generic [ref=f1e26]:
+        - link "Home" [ref=f1e27] [cursor=pointer]:
+          - /url: /
+        - link "Set Price Calculator" [ref=f1e29] [cursor=pointer]:
+          - /url: /set
+        - link "Set vs Parts" [ref=f1e31] [cursor=pointer]:
+          - /url: /comparison
+        - link "Relic Price Calculator" [ref=f1e33] [cursor=pointer]:
+          - /url: /relic
+        - link "Endo / Plat" [ref=f1e35] [cursor=pointer]:
+          - /url: /endo
+        - link "My Portfolio" [ref=f1e37] [cursor=pointer]:
+          - /url: /portfolio
+        - link "Source Code" [ref=f1e39] [cursor=pointer]:
+          - /url: https://github.com/eduair94/warframe
+          - generic [ref=f1e40]:
+            - generic [ref=f1e41]: 󰊤
+            - generic [ref=f1e42]: Source Code
+      - generic [ref=f1e43]:
+        - generic [ref=f1e44]:
+          - generic [ref=f1e46]:
+            - generic [ref=f1e47]: Warframe Market · Set vs Parts
+            - heading "Buy the set, or the parts?" [level=1] [ref=f1e48]
+            - paragraph [ref=f1e49]: "Warframe.market lists set prices and part prices separately — never the decision. This is the decision: acquire the assembled set, or buy each part and combine. Which is cheaper right now, and by how much."
+          - generic [ref=f1e50]:
+            - generic [ref=f1e51]:
+              - generic [ref=f1e52]: "0"
+              - generic [ref=f1e53]: sets compared
+            - generic [ref=f1e54]:
+              - generic [ref=f1e55]: "0"
+              - generic [ref=f1e56]: cheaper by parts
+            - generic [ref=f1e57]:
+              - generic [ref=f1e58]: "0"
+              - generic [ref=f1e59]: cheaper as a set
+            - generic [ref=f1e60]:
+              - generic [ref=f1e61]: 0%
+              - generic [ref=f1e62]: avg parts saving
+          - generic [ref=f1e63]:
+            - generic [ref=f1e64]:
+              - generic [ref=f1e67]:
+                - generic [ref=f1e68]: 󰍉
+                - generic [ref=f1e71]:
+                  - generic: Search a set
+                  - textbox "Search a set" [ref=f1e72]
+              - generic [ref=f1e76]:
+                - generic [ref=f1e77]: Min volume (48h)
+                - spinbutton "Min volume (48h)" [ref=f1e78]: "0"
+              - button "Sort by Best parts deal (%)" [ref=f1e81] [cursor=pointer]:
+                - generic [ref=f1e82]:
+                  - generic [ref=f1e83]: Sort by
+                  - generic [ref=f1e84]:
+                    - generic [ref=f1e85]: Best parts deal (%)
+                    - textbox "Sort by" [ref=f1e86]
+                  - generic [ref=f1e87]: 󰍝
+            - generic [ref=f1e94] [cursor=pointer]:
+              - generic [ref=f1e95]: 󰄬
+              - text: All
+            - generic [ref=f1e96]:
+              - generic [ref=f1e99] [cursor=pointer]:
+                - switch "Only where parts are cheaper to buy" [ref=f1e101]
+                - generic [ref=f1e103]: Only where parts are cheaper to buy
+              - generic [ref=f1e106] [cursor=pointer]:
+                - switch "Only where parts resell for more" [ref=f1e108]
+                - generic [ref=f1e110]: Only where parts resell for more
+            - generic [ref=f1e111]: 0 sets match
+          - alert [ref=f1e112]:
+            - generic [ref=f1e113]:
+              - generic [ref=f1e114]: 󰀦
+              - generic [ref=f1e115]: Couldn't load comparison data. The market service may be waking up — try a refresh.
+        - alert [ref=f1e116]:
+          - generic [ref=f1e117]:
+            - generic [ref=f1e118]: 󰋼
+            - generic [ref=f1e119]: Prices are lowest sell orders (cost to buy) and highest buy orders (resale), pulled from Warframe Market. Trading tax and set bonuses aren't included.
+  - contentinfo [ref=f1e120]:
+    - generic [ref=f1e121]:
+      - generic [ref=f1e122]: Warframe Market Analytics © 2026
+      - generic [ref=f1e124]:
+        - text: Made with
+        - generic [ref=f1e125]: 󰋑
+        - text: by
+        - link "Eduardo Airaudo" [ref=f1e126] [cursor=pointer]:
+          - /url: https://www.linkedin.com/in/eduardo-airaudo/
+        - text: and
+        - link "Regina Scagliotti" [ref=f1e127] [cursor=pointer]:
+          - /url: https://www.linkedin.com/in/reginascagliotti/

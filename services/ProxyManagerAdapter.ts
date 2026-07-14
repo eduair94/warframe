@@ -10,8 +10,8 @@ import { IProxyManager } from '../interfaces/http.interface';
 import proxies from '../Express/Proxies';
 import { ProxyRotation } from '../anti-detection';
 
-// Debug mode - set DEBUG=true environment variable for verbose logging
-const DEBUG = process.env.DEBUG === 'true';
+// Debug mode - set DEBUG=true or DEBUG=warframe:* for verbose logging
+import { DEBUG } from '../debug';
 
 /**
  * Adapter that wraps the legacy Proxies class

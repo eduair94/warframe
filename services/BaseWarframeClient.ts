@@ -24,9 +24,12 @@
 import { Schema } from 'mongoose';
 import { COLLECTIONS } from '../constants';
 import { MongooseServer } from '../database';
+import { DropService } from './DropService';
 import { ItemProcessor } from './ItemProcessor';
 import { ItemService } from './ItemService';
 import { MarketService, PriceCalculationConfig } from './MarketService';
+import { MarketAnalyticsService } from './MarketAnalyticsService';
+import { PriceHistoryService } from './PriceHistoryService';
 import { RelicService } from './RelicService';
 import { RivenService } from './RivenService';
 import { SetService } from './SetService';
@@ -97,6 +100,18 @@ export abstract class BaseWarframeClient {
   /** Database instance for relics */
   public readonly dbRelics: MongooseServer;
 
+  /** Database instance for daily price history points */
+  public readonly dbPriceHistory: MongooseServer;
+
+  /** Backup of WFCD drop data (two docs: 'map' + 'index'), see DropService */
+  public readonly dbDrops: MongooseServer;
+
+  /** Records/serves daily price points and trend analysis (README Roadmap) */
+  protected readonly priceHistoryService: PriceHistoryService;
+
+  /** Drop-data service: mission/relic drops joined with market prices (Star Chart) */
+  protected readonly dropService: DropService;
+
   /** Configuration */
   protected readonly config: WarframeClientConfig;
 
@@ -124,11 +139,31 @@ export abstract class BaseWarframeClient {
       COLLECTIONS.RIVENS,
       new Schema({ id: { type: String, unique: true } }, { strict: false })
     );
+    // syncAllRivenAuctions upserts every weapon by url_name each run - without
+    // this the rivens collection had no index on that field, so every sync
+    // was a full collection scan per weapon.
+    this.dbRivens.ensureIndex({ url_name: 1 }, { sparse: true }).catch(() => {});
 
     this.dbRelics = MongooseServer.getInstance(
       COLLECTIONS.RELICS,
       new Schema({ relicName: { type: String, unique: true } }, { strict: false })
     );
+
+    this.dbPriceHistory = MongooseServer.getInstance(
+      COLLECTIONS.PRICE_HISTORY,
+      new Schema({ url_name: { type: String, unique: true } }, { strict: false })
+    );
+    this.dbPriceHistory.ensureIndex({ url_name: 1 }, { unique: true, sparse: true }).catch(() => {});
+    this.priceHistoryService = new PriceHistoryService(this.dbPriceHistory as any);
+
+    // WFCD drop-data backup: keyed by 'map' / 'index' (see DropService). Reads from
+    // WFCD directly (via axios), so no HTTP client injection is needed here.
+    this.dbDrops = MongooseServer.getInstance(
+      COLLECTIONS.DROPS,
+      new Schema({ key: { type: String, unique: true } }, { strict: false })
+    );
+    this.dbDrops.ensureIndex({ key: 1 }, { unique: true, sparse: true }).catch(() => {});
+    this.dropService = new DropService(this.dbDrops as any, this.db as any);
 
     // Initialize item service (shared, no HTTP dependency)
     this.itemService = new ItemService();
@@ -278,6 +313,82 @@ export abstract class BaseWarframeClient {
   }
 
   // =====================================
+  // Price History Operations (Shared Implementation)
+  // =====================================
+
+  /**
+   * Records today's price point for an item (no-op if already recorded today).
+   * Called by sync_prices after computing/saving an item's market data.
+   */
+  async recordPriceHistoryPoint(
+    urlName: string,
+    point: { buy: number; sell: number; avg_price: number; volume: number }
+  ): Promise<void> {
+    return this.priceHistoryService.recordPoint(urlName, point);
+  }
+
+  /**
+   * Gets an item's stored price history plus a computed trend direction.
+   */
+  async getPriceHistory(urlName: string) {
+    return this.priceHistoryService.getHistoryWithTrend(urlName);
+  }
+
+  // =====================================
+  // Market Analytics (cross-item, Shared Implementation)
+  // =====================================
+
+  /**
+   * Builds the cross-item analytics feed powering the Screener, Top Movers,
+   * Volatility, Buy/Sell-timing and Vault-Spike pages: joins every item's live
+   * snapshot with its stored daily price series (two reads for the whole
+   * catalogue) and derives spread, discount, %-change windows, volatility,
+   * all-time low/high and trend. warframe.market exposes none of this across
+   * items or beyond a 90-day per-item window.
+   */
+  async getMarketAnalytics(): Promise<{
+    meta: { count: number; maxHistoryDays: number; generatedAt: string };
+    items: import('./MarketAnalyticsService').IItemAnalytics[];
+  }> {
+    const [items, historyDocs] = await Promise.all([
+      this.itemService.getAllItems(),
+      this.dbPriceHistory.allEntries({}) as Promise<any[]>,
+    ]);
+    const { items: analytics, maxHistoryDays } = MarketAnalyticsService.buildAnalytics(
+      items as any[],
+      (historyDocs as any[]) || []
+    );
+    return {
+      meta: {
+        count: analytics.length,
+        maxHistoryDays,
+        generatedAt: new Date().toISOString(),
+      },
+      items: analytics,
+    };
+  }
+
+  // =====================================
+  // Riven analytics queries (Delegates to RivenService)
+  // =====================================
+
+  /**
+   * Lightweight list of every riven weapon (with disposition + stored auction
+   * counts) for the fair-value page's weapon picker.
+   */
+  async getRivenWeaponsList() {
+    return this.rivenService.getWeaponsList();
+  }
+
+  /**
+   * Full stored auction corpus + meta for one weapon, for the fair-value
+   * estimator / god-roll grader (client-side maths over the returned auctions).
+   */
+  async getRivenValueData(weaponUrlName: string) {
+    return this.rivenService.getWeaponAuctions(weaponUrlName);
+  }
+
+  // =====================================
   // Set Operations (Shared Implementation)
   // =====================================
 
@@ -289,10 +400,36 @@ export abstract class BaseWarframeClient {
   }
 
   /**
+   * Builds the "set vs parts" comparison for every multi-part set.
+   *
+   * Loads all items once and computes each set's by-parts totals in memory
+   * (see SetService.buildComparisonFromItems) so the aggregate view costs a
+   * single database read rather than one query per set.
+   */
+  async getSetsComparison(): Promise<any[]> {
+    const items = await this.itemService.getAllItems();
+    return this.setService.buildComparisonFromItems(items);
+  }
+
+  /**
    * Gets relic data with associated item prices
    */
   async getRelic(urlName: string): Promise<any> {
     return this.setService.getRelicSetData(urlName);
+  }
+
+  /**
+   * Builds the "open the relic vs sell it" EV table for every relic.
+   *
+   * Loads all relics and all items once, then joins in memory
+   * (see RelicService.buildRelicEvFromData) — two reads for the whole table.
+   */
+  async getRelicsEv(): Promise<any[]> {
+    const [relics, items] = await Promise.all([
+      this.relicService.getAllRelics(),
+      this.itemService.getAllItems(),
+    ]);
+    return this.relicService.buildRelicEvFromData(relics, items);
   }
 
   // =====================================
@@ -311,6 +448,34 @@ export abstract class BaseWarframeClient {
    */
   async buildRelics(): Promise<any> {
     return this.relicService.syncRelicsFromDrops();
+  }
+
+  // =====================================
+  // Drop Operations (Delegates to DropService)
+  // =====================================
+
+  /**
+   * Planets → nodes → missions ranked by expected platinum per run (Star Chart).
+   * WFCD drop chances joined with this app's live market prices.
+   */
+  async getDropsMap() {
+    return this.dropService.getDropsMap();
+  }
+
+  /**
+   * Every place an item drops — direct mission nodes and the relics that contain
+   * it — for the in-app drop-locations dialog.
+   */
+  async getItemDrops(name: string) {
+    return this.dropService.getItemDrops(name);
+  }
+
+  /**
+   * Fetches WFCD mission/relic drop data and replaces the Mongo backup.
+   * Run by sync_drops.ts; also exposed via the protected /build_drops endpoint.
+   */
+  async syncDrops() {
+    return this.dropService.syncDrops();
   }
 
   // =====================================

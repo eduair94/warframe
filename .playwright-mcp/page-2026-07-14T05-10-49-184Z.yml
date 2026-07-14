@@ -1,0 +1,6 @@
+- generic [ref=f1e10]:
+  - heading "An error occured, please see below or look at Nuxt.js terminal for more info." [level=3] [ref=f1e11]
+  - generic [ref=f1e12]:
+    - paragraph [ref=f1e13]: "Error: Could not compile template C:\\\\Users\\\\airau\\\\Desktop\\\\My Proyects\\\\warframe\\\\app\\\\node_modules\\\\@nuxt\\\\vue-app\\\\template\\\\App.js: Cannot resolve \"~/assets/analytics.css\" from \"C:\\Users\\airau\\Desktop\\My Proyects\\warframe\\app\\assets\\analytics.css\""
+    - paragraph [ref=f1e14]: at node_modules\@nuxt\builder\dist\builder.js:723:17 at async Promise.all (index 17) at async Builder.compileTemplates (node_modules\@nuxt\builder\dist\builder.js:701:5) at async Builder.generateRoutesAndFiles (node_modules\@nuxt\builder\dist\builder.js:388:5) at async Builder.build (node_modules\@nuxt\builder\dist\builder.js:319:5) at async Object._buildDev (node_modules\@nuxt\cli\dist\cli-dev.js:107:5) at async Object.startDev (node_modules\@nuxt\cli\dist\cli-dev.js:65:7) at async Object.onWatchRestart (node_modules\@nuxt\cli\dist\cli-dev.js:136:5) at async Nuxt.callHook (node_modules\hable\dist\hable.js:1:959) at async FSWatcher.<anonymous> (node_modules\@nuxt\builder\dist\builder.js:924:9)
+  - paragraph [ref=f1e15]: "Note: A manual restart of the Nuxt.js dev server may be required"

@@ -1,0 +1,553 @@
+- generic [ref=f5e5]:
+  - banner [ref=f5e6]:
+    - generic [ref=f5e7]:
+      - img "logo warframe analytics" [ref=f5e8] [cursor=pointer]
+      - link [ref=f5e13] [cursor=pointer]:
+        - /url: https://github.com/eduair94/warframe
+        - generic [ref=f5e14]: 󰊤
+      - button [ref=f5e17] [cursor=pointer]:
+        - generic [ref=f5e18]:
+          - text: en
+          - generic [ref=f5e19]: 󰅀
+  - main [ref=f5e20]:
+    - generic [ref=f5e22]:
+      - navigation "Primary" [ref=f5e23]:
+        - generic [ref=f5e24]:
+          - link "Home" [ref=f5e25] [cursor=pointer]:
+            - /url: /
+            - generic [ref=f5e26]: 󰋞
+          - link "Set Prices" [ref=f5e28] [cursor=pointer]:
+            - /url: /set
+            - generic [ref=f5e29]: 󰆧
+          - link "Set vs Parts" [ref=f5e31] [cursor=pointer]:
+            - /url: /comparison
+            - generic [ref=f5e32]: 󰗑
+          - link "Relic Prices" [ref=f5e34] [cursor=pointer]:
+            - /url: /relic
+            - generic [ref=f5e35]: 󰇈
+          - link "Relic Value" [ref=f5e37] [cursor=pointer]:
+            - /url: /relics-value
+            - generic [ref=f5e38]: 󱱷
+          - link "Flip Finder" [ref=f5e40] [cursor=pointer]:
+            - /url: /flip
+            - generic [ref=f5e41]: 󰔵
+          - link "Vaulted" [ref=f5e43] [cursor=pointer]:
+            - /url: /vaulted
+            - generic [ref=f5e44]: 󰍁
+          - link "Ducats" [ref=f5e46] [cursor=pointer]:
+            - /url: /ducats
+            - generic [ref=f5e47]: 󰄖
+          - link "Endo / Plat" [ref=f5e49] [cursor=pointer]:
+            - /url: /endo
+            - generic [ref=f5e50]: 󰓡
+          - link "Portfolio" [ref=f5e52] [cursor=pointer]:
+            - /url: /portfolio
+            - generic [ref=f5e53]: 󱒕
+          - link "Source" [ref=f5e55] [cursor=pointer]:
+            - /url: https://github.com/eduair94/warframe
+            - generic [ref=f5e56]: 󰊤
+      - generic [ref=f5e58]:
+        - generic [ref=f5e59]:
+          - generic [ref=f5e60]:
+            - generic [ref=f5e61]:
+              - generic [ref=f5e62]: Warframe Market · Ducat Efficiency
+              - heading "Most ducats per platinum." [level=1] [ref=f5e63]
+              - paragraph [ref=f5e64]: Baro Ki'Teer pays ducats for prime parts. Buy the parts that give the most ducats for the least platinum, and every Void Trader visit costs you less. Ranked by ducats earned per platinum spent.
+            - generic [ref=f5e65]:
+              - generic [ref=f5e66]: Best ducat value
+              - generic [ref=f5e67]: 20.0d/p
+              - link "Venka Prime Gauntlet →" [ref=f5e68] [cursor=pointer]:
+                - /url: https://warframe.market/items/venka_prime_gauntlet
+              - generic [ref=f5e69]: 100 ducats · 5p
+          - generic [ref=f5e70]:
+            - generic [ref=f5e71]:
+              - generic [ref=f5e72]: "336"
+              - generic [ref=f5e73]: prime parts
+            - generic [ref=f5e74]:
+              - generic [ref=f5e75]: "20.0"
+              - generic [ref=f5e76]: best ducats/plat
+            - generic [ref=f5e77]:
+              - generic [ref=f5e78]: "1.2"
+              - generic [ref=f5e79]: avg ducats/plat
+            - generic [ref=f5e80]:
+              - generic [ref=f5e81]: "20"
+              - generic [ref=f5e82]: ≤ 15p parts
+          - generic [ref=f5e83]:
+            - generic [ref=f5e84]:
+              - generic [ref=f5e87]:
+                - generic [ref=f5e88]: 󰍉
+                - generic [ref=f5e91]:
+                  - generic: Search a part
+                  - textbox "Search a part" [ref=f5e92]
+              - generic [ref=f5e96]:
+                - generic [ref=f5e97]: Max price (plat)
+                - spinbutton "Max price (plat)" [ref=f5e98]: "0"
+              - button "Sort by Ducats per plat" [ref=f5e101] [cursor=pointer]:
+                - generic [ref=f5e102]:
+                  - generic [ref=f5e103]: Sort by
+                  - generic [ref=f5e104]:
+                    - generic [ref=f5e105]: Ducats per plat
+                    - textbox "Sort by" [ref=f5e106]
+                  - generic [ref=f5e107]: 󰍝
+            - generic [ref=f5e112]:
+              - generic [ref=f5e113] [cursor=pointer]: All
+              - generic [ref=f5e115] [cursor=pointer]: Warframe
+              - generic [ref=f5e117] [cursor=pointer]: Primary
+              - generic [ref=f5e119] [cursor=pointer]: Secondary
+              - generic [ref=f5e121] [cursor=pointer]: Melee
+              - generic [ref=f5e123] [cursor=pointer]: Sentinel
+              - generic [ref=f5e125] [cursor=pointer]: Other
+            - generic [ref=f5e127]: 336 parts match
+          - table [ref=f5e129]:
+            - rowgroup [ref=f5e130]:
+              - row [ref=f5e131]:
+                - columnheader "Prime part" [ref=f5e132]
+                - columnheader "Plat (ask)" [ref=f5e133]
+                - columnheader "Ducats" [ref=f5e134]
+                - columnheader "Ducats / plat" [ref=f5e135]
+                - columnheader "Vol" [ref=f5e136]
+                - columnheader [ref=f5e137]
+            - rowgroup [ref=f5e138]:
+              - row [ref=f5e139]:
+                - cell [ref=f5e140]:
+                  - link "Venka Prime Gauntlet Venka Prime Gauntlet BEST vol 182" [ref=f5e141] [cursor=pointer]:
+                    - /url: https://warframe.market/items/venka_prime_gauntlet
+                    - img "Venka Prime Gauntlet" [ref=f5e142]
+                    - generic [ref=f5e143]:
+                      - text: Venka Prime Gauntlet
+                      - generic [ref=f5e144]: BEST
+                      - generic [ref=f5e145]: vol 182
+                - cell "5p" [ref=f5e146]
+                - cell "100" [ref=f5e147]
+                - cell "20.0" [ref=f5e148]
+                - cell "182" [ref=f5e149]
+                - cell [ref=f5e150]:
+                  - link "Open Venka Prime Gauntlet" [ref=f5e151] [cursor=pointer]:
+                    - /url: https://warframe.market/items/venka_prime_gauntlet
+                    - generic [ref=f5e152]: 󰏌
+              - row [ref=f5e154]:
+                - cell [ref=f5e155]:
+                  - link "Kronen Prime Set Kronen Prime Set vol 457" [ref=f5e156] [cursor=pointer]:
+                    - /url: https://warframe.market/items/kronen_prime_set
+                    - img "Kronen Prime Set" [ref=f5e157]
+                    - generic [ref=f5e158]:
+                      - text: Kronen Prime Set
+                      - generic [ref=f5e159]: vol 457
+                - cell "20p" [ref=f5e160]
+                - cell "305" [ref=f5e161]
+                - cell "15.3" [ref=f5e162]
+                - cell "457" [ref=f5e163]
+                - cell [ref=f5e164]:
+                  - link "Open Kronen Prime Set" [ref=f5e165] [cursor=pointer]:
+                    - /url: https://warframe.market/items/kronen_prime_set
+                    - generic [ref=f5e166]: 󰏌
+              - row [ref=f5e168]:
+                - cell [ref=f5e169]:
+                  - link "Ninkondi Prime Handle Ninkondi Prime Handle vol 720" [ref=f5e170] [cursor=pointer]:
+                    - /url: https://warframe.market/items/ninkondi_prime_handle
+                    - img "Ninkondi Prime Handle" [ref=f5e171]
+                    - generic [ref=f5e172]:
+                      - text: Ninkondi Prime Handle
+                      - generic [ref=f5e173]: vol 720
+                - cell "7p" [ref=f5e174]
+                - cell "100" [ref=f5e175]
+                - cell "14.3" [ref=f5e176]
+                - cell "720" [ref=f5e177]
+                - cell [ref=f5e178]:
+                  - link "Open Ninkondi Prime Handle" [ref=f5e179] [cursor=pointer]:
+                    - /url: https://warframe.market/items/ninkondi_prime_handle
+                    - generic [ref=f5e180]: 󰏌
+              - row [ref=f5e182]:
+                - cell [ref=f5e183]:
+                  - link "Dethcube Prime Set Dethcube Prime Set vol 133" [ref=f5e184] [cursor=pointer]:
+                    - /url: https://warframe.market/items/dethcube_prime_set
+                    - img "Dethcube Prime Set" [ref=f5e185]
+                    - generic [ref=f5e186]:
+                      - text: Dethcube Prime Set
+                      - generic [ref=f5e187]: vol 133
+                - cell "17p" [ref=f5e188]
+                - cell "225" [ref=f5e189]
+                - cell "13.2" [ref=f5e190]
+                - cell "133" [ref=f5e191]
+                - cell [ref=f5e192]:
+                  - link "Open Dethcube Prime Set" [ref=f5e193] [cursor=pointer]:
+                    - /url: https://warframe.market/items/dethcube_prime_set
+                    - generic [ref=f5e194]: 󰏌
+              - row [ref=f5e196]:
+                - cell [ref=f5e197]:
+                  - link "Ankyros Prime Set Ankyros Prime Set vol 680" [ref=f5e198] [cursor=pointer]:
+                    - /url: https://warframe.market/items/ankyros_prime_set
+                    - img "Ankyros Prime Set" [ref=f5e199]
+                    - generic [ref=f5e200]:
+                      - text: Ankyros Prime Set
+                      - generic [ref=f5e201]: vol 680
+                - cell "15p" [ref=f5e202]
+                - cell "175" [ref=f5e203]
+                - cell "11.7" [ref=f5e204]
+                - cell "680" [ref=f5e205]
+                - cell [ref=f5e206]:
+                  - link "Open Ankyros Prime Set" [ref=f5e207] [cursor=pointer]:
+                    - /url: https://warframe.market/items/ankyros_prime_set
+                    - generic [ref=f5e208]: 󰏌
+              - row [ref=f5e210]:
+                - cell [ref=f5e211]:
+                  - link "Boar Prime Set Boar Prime Set vol 495" [ref=f5e212] [cursor=pointer]:
+                    - /url: https://warframe.market/items/boar_prime_set
+                    - img "Boar Prime Set" [ref=f5e213]
+                    - generic [ref=f5e214]:
+                      - text: Boar Prime Set
+                      - generic [ref=f5e215]: vol 495
+                - cell "17p" [ref=f5e216]
+                - cell "175" [ref=f5e217]
+                - cell "10.3" [ref=f5e218]
+                - cell "495" [ref=f5e219]
+                - cell [ref=f5e220]:
+                  - link "Open Boar Prime Set" [ref=f5e221] [cursor=pointer]:
+                    - /url: https://warframe.market/items/boar_prime_set
+                    - generic [ref=f5e222]: 󰏌
+              - row [ref=f5e224]:
+                - cell [ref=f5e225]:
+                  - link "Dakra Prime Set Dakra Prime Set vol 345" [ref=f5e226] [cursor=pointer]:
+                    - /url: https://warframe.market/items/dakra_prime_set
+                    - img "Dakra Prime Set" [ref=f5e227]
+                    - generic [ref=f5e228]:
+                      - text: Dakra Prime Set
+                      - generic [ref=f5e229]: vol 345
+                - cell "15p" [ref=f5e230]
+                - cell "125" [ref=f5e231]
+                - cell "8.3" [ref=f5e232]
+                - cell "345" [ref=f5e233]
+                - cell [ref=f5e234]:
+                  - link "Open Dakra Prime Set" [ref=f5e235] [cursor=pointer]:
+                    - /url: https://warframe.market/items/dakra_prime_set
+                    - generic [ref=f5e236]: 󰏌
+              - row [ref=f5e238]:
+                - cell [ref=f5e239]:
+                  - link "Reaper Prime Set Reaper Prime Set vol 809" [ref=f5e240] [cursor=pointer]:
+                    - /url: https://warframe.market/items/reaper_prime_set
+                    - img "Reaper Prime Set" [ref=f5e241]
+                    - generic [ref=f5e242]:
+                      - text: Reaper Prime Set
+                      - generic [ref=f5e243]: vol 809
+                - cell "9p" [ref=f5e244]
+                - cell "75" [ref=f5e245]
+                - cell "8.3" [ref=f5e246]
+                - cell "809" [ref=f5e247]
+                - cell [ref=f5e248]:
+                  - link "Open Reaper Prime Set" [ref=f5e249] [cursor=pointer]:
+                    - /url: https://warframe.market/items/reaper_prime_set
+                    - generic [ref=f5e250]: 󰏌
+              - row [ref=f5e252]:
+                - cell [ref=f5e253]:
+                  - link "Wukong Prime Blueprint Wukong Prime Blueprint vol 225" [ref=f5e254] [cursor=pointer]:
+                    - /url: https://warframe.market/items/wukong_prime_blueprint
+                    - img "Wukong Prime Blueprint" [ref=f5e255]
+                    - generic [ref=f5e256]:
+                      - text: Wukong Prime Blueprint
+                      - generic [ref=f5e257]: vol 225
+                - cell "14p" [ref=f5e258]
+                - cell "100" [ref=f5e259]
+                - cell "7.1" [ref=f5e260]
+                - cell "225" [ref=f5e261]
+                - cell [ref=f5e262]:
+                  - link "Open Wukong Prime Blueprint" [ref=f5e263] [cursor=pointer]:
+                    - /url: https://warframe.market/items/wukong_prime_blueprint
+                    - generic [ref=f5e264]: 󰏌
+              - row [ref=f5e266]:
+                - cell [ref=f5e267]:
+                  - link "Helios Prime Cerebrum Helios Prime Cerebrum vol 514" [ref=f5e268] [cursor=pointer]:
+                    - /url: https://warframe.market/items/helios_prime_cerebrum
+                    - img "Helios Prime Cerebrum" [ref=f5e269]
+                    - generic [ref=f5e270]:
+                      - text: Helios Prime Cerebrum
+                      - generic [ref=f5e271]: vol 514
+                - cell "14p" [ref=f5e272]
+                - cell "100" [ref=f5e273]
+                - cell "7.1" [ref=f5e274]
+                - cell "514" [ref=f5e275]
+                - cell [ref=f5e276]:
+                  - link "Open Helios Prime Cerebrum" [ref=f5e277] [cursor=pointer]:
+                    - /url: https://warframe.market/items/helios_prime_cerebrum
+                    - generic [ref=f5e278]: 󰏌
+              - row [ref=f5e280]:
+                - cell [ref=f5e281]:
+                  - link "Vectis Prime Stock Vectis Prime Stock vol 311" [ref=f5e282] [cursor=pointer]:
+                    - /url: https://warframe.market/items/vectis_prime_stock
+                    - img "Vectis Prime Stock" [ref=f5e283]
+                    - generic [ref=f5e284]:
+                      - text: Vectis Prime Stock
+                      - generic [ref=f5e285]: vol 311
+                - cell "10p" [ref=f5e286]
+                - cell "65" [ref=f5e287]
+                - cell "6.5" [ref=f5e288]
+                - cell "311" [ref=f5e289]
+                - cell [ref=f5e290]:
+                  - link "Open Vectis Prime Stock" [ref=f5e291] [cursor=pointer]:
+                    - /url: https://warframe.market/items/vectis_prime_stock
+                    - generic [ref=f5e292]: 󰏌
+              - row [ref=f5e294]:
+                - cell [ref=f5e295]:
+                  - link "Dual Kamas Prime Set Dual Kamas Prime Set vol 320" [ref=f5e296] [cursor=pointer]:
+                    - /url: https://warframe.market/items/dual_kamas_prime_set
+                    - img "Dual Kamas Prime Set" [ref=f5e297]
+                    - generic [ref=f5e298]:
+                      - text: Dual Kamas Prime Set
+                      - generic [ref=f5e299]: vol 320
+                - cell "54p" [ref=f5e300]
+                - cell "305" [ref=f5e301]
+                - cell "5.6" [ref=f5e302]
+                - cell "320" [ref=f5e303]
+                - cell [ref=f5e304]:
+                  - link "Open Dual Kamas Prime Set" [ref=f5e305] [cursor=pointer]:
+                    - /url: https://warframe.market/items/dual_kamas_prime_set
+                    - generic [ref=f5e306]: 󰏌
+              - row [ref=f5e308]:
+                - cell [ref=f5e309]:
+                  - link "Cernos Prime Blueprint Cernos Prime Blueprint vol 329" [ref=f5e310] [cursor=pointer]:
+                    - /url: https://warframe.market/items/cernos_prime_blueprint
+                    - img "Cernos Prime Blueprint" [ref=f5e311]
+                    - generic [ref=f5e312]:
+                      - text: Cernos Prime Blueprint
+                      - generic [ref=f5e313]: vol 329
+                - cell "8p" [ref=f5e314]
+                - cell "45" [ref=f5e315]
+                - cell "5.6" [ref=f5e316]
+                - cell "329" [ref=f5e317]
+                - cell [ref=f5e318]:
+                  - link "Open Cernos Prime Blueprint" [ref=f5e319] [cursor=pointer]:
+                    - /url: https://warframe.market/items/cernos_prime_blueprint
+                    - generic [ref=f5e320]: 󰏌
+              - row [ref=f5e322]:
+                - cell [ref=f5e323]:
+                  - link "Cernos Prime Lower Limb Cernos Prime Lower Limb vol 785" [ref=f5e324] [cursor=pointer]:
+                    - /url: https://warframe.market/items/cernos_prime_lower_limb
+                    - img "Cernos Prime Lower Limb" [ref=f5e325]
+                    - generic [ref=f5e326]:
+                      - text: Cernos Prime Lower Limb
+                      - generic [ref=f5e327]: vol 785
+                - cell "18p" [ref=f5e328]
+                - cell "100" [ref=f5e329]
+                - cell "5.6" [ref=f5e330]
+                - cell "785" [ref=f5e331]
+                - cell [ref=f5e332]:
+                  - link "Open Cernos Prime Lower Limb" [ref=f5e333] [cursor=pointer]:
+                    - /url: https://warframe.market/items/cernos_prime_lower_limb
+                    - generic [ref=f5e334]: 󰏌
+              - row [ref=f5e336]:
+                - cell [ref=f5e337]:
+                  - link "Sybaris Prime Barrel Sybaris Prime Barrel vol 463" [ref=f5e338] [cursor=pointer]:
+                    - /url: https://warframe.market/items/sybaris_prime_barrel
+                    - img "Sybaris Prime Barrel" [ref=f5e339]
+                    - generic [ref=f5e340]:
+                      - text: Sybaris Prime Barrel
+                      - generic [ref=f5e341]: vol 463
+                - cell "19p" [ref=f5e342]
+                - cell "100" [ref=f5e343]
+                - cell "5.3" [ref=f5e344]
+                - cell "463" [ref=f5e345]
+                - cell [ref=f5e346]:
+                  - link "Open Sybaris Prime Barrel" [ref=f5e347] [cursor=pointer]:
+                    - /url: https://warframe.market/items/sybaris_prime_barrel
+                    - generic [ref=f5e348]: 󰏌
+              - row [ref=f5e350]:
+                - cell [ref=f5e351]:
+                  - link "Tipedo Prime Ornament Tipedo Prime Ornament vol 322" [ref=f5e352] [cursor=pointer]:
+                    - /url: https://warframe.market/items/tipedo_prime_ornament
+                    - img "Tipedo Prime Ornament" [ref=f5e353]
+                    - generic [ref=f5e354]:
+                      - text: Tipedo Prime Ornament
+                      - generic [ref=f5e355]: vol 322
+                - cell "9p" [ref=f5e356]
+                - cell "45" [ref=f5e357]
+                - cell "5.0" [ref=f5e358]
+                - cell "322" [ref=f5e359]
+                - cell [ref=f5e360]:
+                  - link "Open Tipedo Prime Ornament" [ref=f5e361] [cursor=pointer]:
+                    - /url: https://warframe.market/items/tipedo_prime_ornament
+                    - generic [ref=f5e362]: 󰏌
+              - row [ref=f5e364]:
+                - cell [ref=f5e365]:
+                  - link "Pyrana Prime Blueprint Pyrana Prime Blueprint vol 685" [ref=f5e366] [cursor=pointer]:
+                    - /url: https://warframe.market/items/pyrana_prime_blueprint
+                    - img "Pyrana Prime Blueprint" [ref=f5e367]
+                    - generic [ref=f5e368]:
+                      - text: Pyrana Prime Blueprint
+                      - generic [ref=f5e369]: vol 685
+                - cell "21p" [ref=f5e370]
+                - cell "100" [ref=f5e371]
+                - cell "4.8" [ref=f5e372]
+                - cell "685" [ref=f5e373]
+                - cell [ref=f5e374]:
+                  - link "Open Pyrana Prime Blueprint" [ref=f5e375] [cursor=pointer]:
+                    - /url: https://warframe.market/items/pyrana_prime_blueprint
+                    - generic [ref=f5e376]: 󰏌
+              - row [ref=f5e378]:
+                - cell [ref=f5e379]:
+                  - link "Tigris Prime Blueprint Tigris Prime Blueprint vol 715" [ref=f5e380] [cursor=pointer]:
+                    - /url: https://warframe.market/items/tigris_prime_blueprint
+                    - img "Tigris Prime Blueprint" [ref=f5e381]
+                    - generic [ref=f5e382]:
+                      - text: Tigris Prime Blueprint
+                      - generic [ref=f5e383]: vol 715
+                - cell "22p" [ref=f5e384]
+                - cell "100" [ref=f5e385]
+                - cell "4.5" [ref=f5e386]
+                - cell "715" [ref=f5e387]
+                - cell [ref=f5e388]:
+                  - link "Open Tigris Prime Blueprint" [ref=f5e389] [cursor=pointer]:
+                    - /url: https://warframe.market/items/tigris_prime_blueprint
+                    - generic [ref=f5e390]: 󰏌
+              - row [ref=f5e392]:
+                - cell [ref=f5e393]:
+                  - link "Scindo Prime Set Scindo Prime Set vol 138" [ref=f5e394] [cursor=pointer]:
+                    - /url: https://warframe.market/items/scindo_prime_set
+                    - img "Scindo Prime Set" [ref=f5e395]
+                    - generic [ref=f5e396]:
+                      - text: Scindo Prime Set
+                      - generic [ref=f5e397]: vol 138
+                - cell "41p" [ref=f5e398]
+                - cell "170" [ref=f5e399]
+                - cell "4.1" [ref=f5e400]
+                - cell "138" [ref=f5e401]
+                - cell [ref=f5e402]:
+                  - link "Open Scindo Prime Set" [ref=f5e403] [cursor=pointer]:
+                    - /url: https://warframe.market/items/scindo_prime_set
+                    - generic [ref=f5e404]: 󰏌
+              - row [ref=f5e406]:
+                - cell [ref=f5e407]:
+                  - link "Aklex Prime Set Aklex Prime Set vol 823" [ref=f5e408] [cursor=pointer]:
+                    - /url: https://warframe.market/items/aklex_prime_set
+                    - img "Aklex Prime Set" [ref=f5e409]
+                    - generic [ref=f5e410]:
+                      - text: Aklex Prime Set
+                      - generic [ref=f5e411]: vol 823
+                - cell "35p" [ref=f5e412]
+                - cell "145" [ref=f5e413]
+                - cell "4.1" [ref=f5e414]
+                - cell "823" [ref=f5e415]
+                - cell [ref=f5e416]:
+                  - link "Open Aklex Prime Set" [ref=f5e417] [cursor=pointer]:
+                    - /url: https://warframe.market/items/aklex_prime_set
+                    - generic [ref=f5e418]: 󰏌
+              - row [ref=f5e420]:
+                - cell [ref=f5e421]:
+                  - link "Titania Prime Set Titania Prime Set vol 441" [ref=f5e422] [cursor=pointer]:
+                    - /url: https://warframe.market/items/titania_prime_set
+                    - img "Titania Prime Set" [ref=f5e423]
+                    - generic [ref=f5e424]:
+                      - text: Titania Prime Set
+                      - generic [ref=f5e425]: vol 441
+                - cell "50p" [ref=f5e426]
+                - cell "205" [ref=f5e427]
+                - cell "4.1" [ref=f5e428]
+                - cell "441" [ref=f5e429]
+                - cell [ref=f5e430]:
+                  - link "Open Titania Prime Set" [ref=f5e431] [cursor=pointer]:
+                    - /url: https://warframe.market/items/titania_prime_set
+                    - generic [ref=f5e432]: 󰏌
+              - row [ref=f5e434]:
+                - cell [ref=f5e435]:
+                  - link "Vasto Prime Set Vasto Prime Set vol 786" [ref=f5e436] [cursor=pointer]:
+                    - /url: https://warframe.market/items/vasto_prime_set
+                    - img "Vasto Prime Set" [ref=f5e437]
+                    - generic [ref=f5e438]:
+                      - text: Vasto Prime Set
+                      - generic [ref=f5e439]: vol 786
+                - cell "19p" [ref=f5e440]
+                - cell "75" [ref=f5e441]
+                - cell "3.9" [ref=f5e442]
+                - cell "786" [ref=f5e443]
+                - cell [ref=f5e444]:
+                  - link "Open Vasto Prime Set" [ref=f5e445] [cursor=pointer]:
+                    - /url: https://warframe.market/items/vasto_prime_set
+                    - generic [ref=f5e446]: 󰏌
+              - row [ref=f5e448]:
+                - cell [ref=f5e449]:
+                  - link "Vectis Prime Set Vectis Prime Set vol 465" [ref=f5e450] [cursor=pointer]:
+                    - /url: https://warframe.market/items/vectis_prime_set
+                    - img "Vectis Prime Set" [ref=f5e451]
+                    - generic [ref=f5e452]:
+                      - text: Vectis Prime Set
+                      - generic [ref=f5e453]: vol 465
+                - cell "60p" [ref=f5e454]
+                - cell "225" [ref=f5e455]
+                - cell "3.8" [ref=f5e456]
+                - cell "465" [ref=f5e457]
+                - cell [ref=f5e458]:
+                  - link "Open Vectis Prime Set" [ref=f5e459] [cursor=pointer]:
+                    - /url: https://warframe.market/items/vectis_prime_set
+                    - generic [ref=f5e460]: 󰏌
+              - row [ref=f5e462]:
+                - cell [ref=f5e463]:
+                  - link "Aksomati Prime Link Aksomati Prime Link vol 882" [ref=f5e464] [cursor=pointer]:
+                    - /url: https://warframe.market/items/aksomati_prime_link
+                    - img "Aksomati Prime Link" [ref=f5e465]
+                    - generic [ref=f5e466]:
+                      - text: Aksomati Prime Link
+                      - generic [ref=f5e467]: vol 882
+                - cell "28p" [ref=f5e468]
+                - cell "100" [ref=f5e469]
+                - cell "3.6" [ref=f5e470]
+                - cell "882" [ref=f5e471]
+                - cell [ref=f5e472]:
+                  - link "Open Aksomati Prime Link" [ref=f5e473] [cursor=pointer]:
+                    - /url: https://warframe.market/items/aksomati_prime_link
+                    - generic [ref=f5e474]: 󰏌
+              - row [ref=f5e476]:
+                - cell [ref=f5e477]:
+                  - link "Kavasa Prime Kubrow Collar Set Kavasa Prime Kubrow Collar Set vol 701" [ref=f5e478] [cursor=pointer]:
+                    - /url: https://warframe.market/items/kavasa_prime_kubrow_collar_set
+                    - img "Kavasa Prime Kubrow Collar Set" [ref=f5e479]
+                    - generic [ref=f5e480]:
+                      - text: Kavasa Prime Kubrow Collar Set
+                      - generic [ref=f5e481]: vol 701
+                - cell "47p" [ref=f5e482]
+                - cell "155" [ref=f5e483]
+                - cell "3.3" [ref=f5e484]
+                - cell "701" [ref=f5e485]
+                - cell [ref=f5e486]:
+                  - link "Open Kavasa Prime Kubrow Collar Set" [ref=f5e487] [cursor=pointer]:
+                    - /url: https://warframe.market/items/kavasa_prime_kubrow_collar_set
+                    - generic [ref=f5e488]: 󰏌
+          - navigation "Pagination Navigation" [ref=f5e491]:
+            - list [ref=f5e492]:
+              - listitem [ref=f5e493]:
+                - button "Previous page" [disabled]:
+                  - generic: 󰅁
+              - listitem [ref=f5e494]:
+                - button "Current Page, Page 1" [ref=f5e495] [cursor=pointer]: "1"
+              - listitem [ref=f5e496]:
+                - button "Goto Page 2" [ref=f5e497] [cursor=pointer]: "2"
+              - listitem [ref=f5e498]:
+                - button "Goto Page 3" [ref=f5e499] [cursor=pointer]: "3"
+              - listitem [ref=f5e500]:
+                - button "Goto Page 4" [ref=f5e501] [cursor=pointer]: "4"
+              - listitem [ref=f5e502]:
+                - generic [ref=f5e503]: ...
+              - listitem [ref=f5e504]:
+                - button "Goto Page 11" [ref=f5e505] [cursor=pointer]: "11"
+              - listitem [ref=f5e506]:
+                - button "Goto Page 12" [ref=f5e507] [cursor=pointer]: "12"
+              - listitem [ref=f5e508]:
+                - button "Goto Page 13" [ref=f5e509] [cursor=pointer]: "13"
+              - listitem [ref=f5e510]:
+                - button "Goto Page 14" [ref=f5e511] [cursor=pointer]: "14"
+              - listitem [ref=f5e512]:
+                - button "Next page" [ref=f5e513] [cursor=pointer]:
+                  - generic [ref=f5e514]: 󰅂
+        - alert [ref=f5e515]:
+          - generic [ref=f5e516]:
+            - generic [ref=f5e517]: 󰋼
+            - generic [ref=f5e518]: Ducats/plat = ducat value ÷ lowest sell order. Baro's ducat prices are fixed by the game; platinum prices are today's Warframe Market orders.
+  - contentinfo [ref=f5e519]:
+    - generic [ref=f5e520]:
+      - generic [ref=f5e521]: Warframe Market Analytics © 2026
+      - generic [ref=f5e523]:
+        - text: Made with
+        - generic [ref=f5e524]: 󰋑
+        - text: by
+        - link "Eduardo Airaudo" [ref=f5e525] [cursor=pointer]:
+          - /url: https://www.linkedin.com/in/eduardo-airaudo/
+        - text: and
+        - link "Regina Scagliotti" [ref=f5e526] [cursor=pointer]:
+          - /url: https://www.linkedin.com/in/reginascagliotti/

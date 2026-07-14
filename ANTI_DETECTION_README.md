@@ -14,8 +14,11 @@ This implementation includes multiple layers of protection against Cloudflare's 
 - **Immediate Rotation**: Switches proxies on 403/429/503 errors with retry logic
 
 ## 3. Request Timing
-- **Human-like Delays**: Random delays between 500ms-2000ms to simulate human behavior
-- **Anti-Bot Timing**: Prevents requests that are too fast (minimum 500ms between requests)
+- **Human-like Delays**: Every HTTP request is paced by a random delay before it fires
+  (default 500ms-2000ms). The `sync_prices` bulk job tunes this down to 100-300ms via
+  `MIN_DELAY`/`MAX_DELAY` env vars and leans on retry/backoff + proxy rotation instead,
+  trading anti-detection margin for throughput across thousands of items - pass your own
+  `minDelay`/`maxDelay` to `WarframeUndici` to change the tradeoff.
 - **Exponential Backoff**: Uses jittered exponential backoff for retries
 
 ## 4. TLS Fingerprinting
@@ -30,7 +33,9 @@ This implementation includes multiple layers of protection against Cloudflare's 
 ## Key Features:
 
 ### Retry Logic
-- Retries up to 10 times on 403 (Forbidden), 429 (Rate Limited), 503 (Service Unavailable)
+- Retries up to 10 times by default on 403 (Forbidden), 429 (Rate Limited), and any 5xx response
+  (the `sync_*` scripts tune this down to 5 to keep multi-thousand-item runs fast; pass
+  `maxRetries` to `WarframeUndici`/`UndiciHttpService` to override)
 - Each retry uses a new proxy and fresh headers
 - Implements jittered exponential backoff to avoid predictable retry patterns
 
@@ -45,8 +50,9 @@ This implementation includes multiple layers of protection against Cloudflare's 
 - Uses realistic Accept headers for JSON API requests
 
 ## Environment Variables:
-- `proxyless=true`: Disable proxy usage for testing
-- Standard proxy configuration through your existing proxy system
+- `PROXY_LESS=true`: Disable proxy usage for testing
+- `DEBUG=true` (or `DEBUG=warframe:*`): verbose anti-detection/retry/rotation logging
+- Standard proxy configuration through your existing proxy system (see README.md)
 
 ## Usage Notes:
 1. The system will automatically handle 403 errors by rotating proxies and headers

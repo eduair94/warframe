@@ -1,3 +1,4 @@
+import "./env";
 import { MongooseServer } from "./database";
 import { Item } from "./interface";
 import WarframeUndici from "./warframe-undici";
@@ -112,6 +113,15 @@ async function main() {
             skippedCount++;
           } else {
             await m.saveItem(item.id, { market, priceUpdate: new Date() });
+            // Best-effort: one history point per item per day (README Roadmap
+            // "Historical price charts" / "Market trend analysis"). Never lets
+            // a history-write failure fail the price sync itself.
+            m.recordPriceHistoryPoint(item.url_name, {
+              buy: market.buy,
+              sell: market.sell,
+              avg_price: market.avg_price,
+              volume: market.volume,
+            }).catch(() => {});
             successCount++;
             // Show individual item completion for first few items
             if (idx < 5) {

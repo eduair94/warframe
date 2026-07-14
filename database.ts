@@ -478,8 +478,15 @@ export class MongooseServer {
   public static connectWithRetry = (): any => {
     mongoose.set("strictQuery", false);
     const mongoUri = process.env.MONGODB_URI || `mongodb://localhost:27017/${mongoConfig.database}`;
+    // Previously connect() was called with an empty options object, so pool
+    // sizing/timeouts only ever came from the driver's implicit defaults -
+    // IDatabaseConfig documented these options but nothing ever passed them.
     mongoose
-      .connect(mongoUri, {})
+      .connect(mongoUri, {
+        maxPoolSize: parseInt(process.env.MONGODB_MAX_POOL_SIZE || "20", 10),
+        serverSelectionTimeoutMS: parseInt(process.env.MONGODB_SERVER_SELECTION_TIMEOUT_MS || "10000", 10),
+        socketTimeoutMS: parseInt(process.env.MONGODB_SOCKET_TIMEOUT_MS || "45000", 10),
+      })
       .catch(() => {});
   };
 

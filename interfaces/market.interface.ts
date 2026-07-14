@@ -29,6 +29,8 @@ export interface IMarketItem {
   thumb: string;
   /** Whether the item is vaulted (prime items) */
   vaulted?: boolean;
+  /** Ducat value when sold to Baro Ki'Teer (from v2 API enrichment) */
+  ducats?: number;
   /** Market data including prices */
   market?: IMarketData;
   /** Items included in this set */
@@ -226,6 +228,10 @@ export interface IProcessedItem {
   tags: string[];
   /** Whether item is part of a set */
   set: boolean;
+  /** Ducat value when sold to Baro Ki'Teer (Ducat efficiency page) */
+  ducats?: number;
+  /** Whether the item is vaulted (Vaulted investment page) */
+  vaulted?: boolean;
   /** Last price update timestamp */
   priceUpdate?: Date;
 }
@@ -260,4 +266,54 @@ export interface ISetResult {
   set: (IProcessedItem | string)[];
   /** Individual parts of the set */
   items: (IProcessedItem | string)[];
+}
+
+/**
+ * A single row in the "set vs parts" comparison table.
+ *
+ * Price semantics (warframe.market): `sell` = lowest sell order = what you PAY to
+ * acquire; `buy` = highest buy order = what you RECEIVE when selling. So the
+ * acquire perspective uses `sell` prices and the resale perspective uses `buy`.
+ */
+export interface ISetComparisonRow {
+  /** Set display name (e.g. "Latron Prime Set") */
+  item_name: string;
+  /** URL-friendly set name, used for the /set/<url_name> detail link */
+  url_name: string;
+  /** Thumbnail image path (warframe.market static asset) */
+  thumb: string;
+  /** Tags for categorization (warframe, primary, melee, ...) */
+  tags: string[];
+  /** Number of distinct parts the set is composed of */
+  partsCount: number;
+  /** Parts that had usable market prices */
+  pricedParts: number;
+  /** Parts with no market price (comparison is a lower bound when > 0) */
+  missingParts: number;
+  /** The assembled-set market data */
+  set: { buy: number; sell: number; volume: number };
+  /** Summed part prices (buy = resale total, sell = acquire total) */
+  byParts: { buy: number; sell: number };
+  /** Buyer's view: cost to acquire the set vs the parts */
+  acquire: {
+    /** Cost to buy the assembled set (set.sell) */
+    setCost: number;
+    /** Cost to buy every part (Σ part.sell × quantity) */
+    partsCost: number;
+    /** setCost - partsCost; positive => buying by parts is cheaper */
+    save: number;
+    /** save as a percentage of setCost */
+    savePct: number;
+  };
+  /** Seller's view: resale value of the set vs the parts */
+  resale: {
+    /** Resale value of the assembled set (set.buy) */
+    setValue: number;
+    /** Resale value of every part (Σ part.buy × quantity) */
+    partsValue: number;
+    /** partsValue - setValue; positive => selling by parts yields more */
+    extra: number;
+    /** extra as a percentage of setValue */
+    extraPct: number;
+  };
 }

@@ -1,16 +1,16 @@
 /**
  * @fileoverview HTTP service using undici for high-performance HTTP requests
  * @module services/UndiciHttpService
- * 
+ *
  * Single Responsibility: Handle all HTTP communication using undici library
- * 
+ *
  * This service provides a robust HTTP client with:
  * - Native HTTP/2 support via undici
  * - Automatic retry with exponential backoff
  * - Proxy rotation support
  * - Anti-detection headers
  * - Compression handling (gzip, deflate, brotli)
- * 
+ *
  * @example
  * ```typescript
  * const httpService = new UndiciHttpService();
@@ -18,16 +18,17 @@
  * ```
  */
 
-import { ProxyAgent, request } from 'undici';
+import { Agent, Dispatcher, ProxyAgent, request } from 'undici';
 import { createBrotliDecompress, createGunzip, createInflate } from 'zlib';
 import { AntiDetection, ProxyRotation } from '../anti-detection';
 import { sleep } from '../Express/config';
 import { IHttpClient, IHttpRequestOptions } from '../interfaces/http.interface';
 import { HeaderService } from './HeaderService';
 import { ProxyManagerAdapter } from './ProxyManagerAdapter';
+import { createSocksConnector } from './SocksConnector';
 
-// Debug mode - set DEBUG=true environment variable for verbose logging
-const DEBUG = process.env.DEBUG === 'true';
+// Debug mode - set DEBUG=true or DEBUG=warframe:* for verbose logging
+import { DEBUG } from '../debug';
 
 /**
  * Configuration options for UndiciHttpService
@@ -56,9 +57,12 @@ const DEFAULT_CONFIG: Required<IUndiciHttpServiceConfig> = {
   keepAliveTimeout: 10000
 };
 
+/** How many requests between periodic proxy-stats log lines (D11, DEBUG-gated) */
+const STATS_LOG_INTERVAL = 50;
+
 /**
  * HTTP Service using undici for high-performance requests
- * 
+ *
  * @implements {IHttpClient}
  */
 export class UndiciHttpService implements IHttpClient {
@@ -71,9 +75,12 @@ export class UndiciHttpService implements IHttpClient {
   /** Proxy manager for rotation */
   private readonly proxyManager: ProxyManagerAdapter;
 
+  /** Requests handled so far, for periodic stats logging (D11) */
+  private requestCount = 0;
+
   /**
    * Creates a new UndiciHttpService instance
-   * 
+   *
    * @param config - Service configuration options
    * @param proxyManager - Optional custom proxy manager
    */
@@ -81,14 +88,14 @@ export class UndiciHttpService implements IHttpClient {
     config: IUndiciHttpServiceConfig = {},
     proxyManager?: ProxyManagerAdapter
   ) {
-    this.config = { 
-      ...DEFAULT_CONFIG, 
+    this.config = {
+      ...DEFAULT_CONFIG,
       ...config,
       useProxies: config.useProxies ?? (process.env.PROXY_LESS !== 'true')
     };
     this.headerService = new HeaderService();
     this.proxyManager = proxyManager ?? new ProxyManagerAdapter(this.config.useProxies);
-    
+
     if (DEBUG) {
       console.log(`✓ UndiciHttpService initialized - Proxies: ${this.config.useProxies ? 'enabled' : 'disabled'}`);
     }
@@ -96,7 +103,7 @@ export class UndiciHttpService implements IHttpClient {
 
   /**
    * Adds a random delay between requests to appear more human-like
-   * 
+   *
    * @param min - Minimum delay in milliseconds
    * @param max - Maximum delay in milliseconds
    */
@@ -109,19 +116,89 @@ export class UndiciHttpService implements IHttpClient {
   }
 
   /**
-   * Creates a proxy agent for the request
-   * 
-   * @param proxy - Proxy URL string
-   * @returns ProxyAgent or undefined
+   * Picks the next proxy, skipping ones with a poor recent success rate
+   * (ProxyRotation.shouldAvoidProxy) for up to 5 attempts before giving up
+   * and using whatever came back last - mirrors HttpService's axios-path
+   * avoidance loop, previously only wired on that path.
+   *
    * @private
    */
-  private createProxyAgent(proxy: string | null): ProxyAgent | undefined {
-    if (!proxy || !this.config.useProxies) {
-      return undefined;
+  private getUsableProxy(): string | null {
+    let proxy = this.proxyManager.getProxy();
+    let attempts = 0;
+    while (proxy && this.proxyManager.shouldAvoid(proxy) && attempts < 5) {
+      proxy = this.proxyManager.getProxy();
+      attempts++;
+    }
+    return proxy;
+  }
+
+  /**
+   * Records a failed request against a proxy and bans it once its failure
+   * rate crosses the ProxyRotation threshold, persisting to banned.txt via
+   * the legacy Proxies class. Previously ProxyRotation tracked performance
+   * but nothing ever called banProxy, so banned.txt never self-populated.
+   *
+   * @private
+   */
+  private recordProxyFailure(proxy: string): void {
+    ProxyRotation.recordProxyPerformance(proxy, false);
+    if (ProxyRotation.shouldAvoidProxy(proxy)) {
+      this.proxyManager.banProxy(proxy);
+      if (DEBUG) console.log(`🚫 Proxy banned after repeated failures: ${proxy}`);
+    }
+  }
+
+  /**
+   * Logs a compact proxy-performance snapshot every STATS_LOG_INTERVAL
+   * requests (D11 monitoring - previously only retry status codes were
+   * logged; rotations, bans and aggregate stats were invisible).
+   *
+   * @private
+   */
+  private maybeLogStats(proxy: string | null): void {
+    this.requestCount++;
+    if (!DEBUG || !proxy || this.requestCount % STATS_LOG_INTERVAL !== 0) return;
+    const stats = ProxyRotation.getProxyStats(proxy);
+    console.log(`📊 Proxy stats @request ${this.requestCount} [${proxy}]: ${stats.success} ok / ${stats.failures} failed`);
+  }
+
+  /**
+   * Creates a dispatcher for the request: a SOCKS5-aware Agent when the
+   * proxy is socks5://, a ProxyAgent for http(s):// proxies, or a plain
+   * Agent for the direct/proxyless path. Every branch applies rotated TLS
+   * options (D9) - previously getTLSOptions() was defined but never called
+   * from any dispatcher, so no request actually varied its TLS fingerprint.
+   *
+   * @param proxy - Proxy URL string, or null for a direct connection
+   * @returns undici Dispatcher
+   * @private
+   */
+  private createDispatcher(proxy: string | null): Dispatcher {
+    const tlsOptions = AntiDetection.getTLSOptions();
+
+    if (proxy && this.config.useProxies) {
+      if (proxy.startsWith('socks5://') || proxy.startsWith('socks4://')) {
+        return new Agent({
+          connect: createSocksConnector(proxy, tlsOptions),
+          keepAliveTimeout: this.config.keepAliveTimeout,
+          keepAliveMaxTimeout: this.config.keepAliveTimeout
+        });
+      }
+      return new ProxyAgent({
+        uri: proxy,
+        keepAliveTimeout: this.config.keepAliveTimeout,
+        keepAliveMaxTimeout: this.config.keepAliveTimeout,
+        // requestTls is the connector undici's ProxyAgent uses for the final
+        // TLS handshake to the origin through the tunnel (see undici's
+        // proxy-agent.js kConnectEndpoint) - the generic `connect` option is
+        // not read by ProxyAgent at all, so this must be requestTls.
+        requestTls: tlsOptions as any
+      });
     }
 
-    return new ProxyAgent({
-      uri: proxy,
+    return new Agent({
+      connect: tlsOptions,
       keepAliveTimeout: this.config.keepAliveTimeout,
       keepAliveMaxTimeout: this.config.keepAliveTimeout
     });
@@ -129,7 +206,7 @@ export class UndiciHttpService implements IHttpClient {
 
   /**
    * Generates request headers combining browser simulation and anti-detection
-   * 
+   *
    * @param customHeaders - Optional custom headers to merge
    * @returns Complete headers object
    * @private
@@ -151,7 +228,7 @@ export class UndiciHttpService implements IHttpClient {
 
   /**
    * Decompresses response body based on content encoding
-   * 
+   *
    * @param body - Response body stream
    * @param contentEncoding - Content-Encoding header value
    * @returns Decompressed string
@@ -227,8 +304,12 @@ export class UndiciHttpService implements IHttpClient {
   }
 
   /**
-   * Calculates retry delay with exponential backoff
-   * 
+   * Calculates retry delay with jittered exponential backoff (D8 - previously
+   * this was pure exponential with no randomization, making retry timing
+   * predictable). Uses "half jitter": uniformly random within the top half
+   * of the exponential window, so waits stay meaningful while avoiding both
+   * a predictable fixed delay and a near-zero degenerate case.
+   *
    * @param attempt - Current attempt number
    * @param statusCode - HTTP status code
    * @returns Delay in milliseconds
@@ -237,12 +318,13 @@ export class UndiciHttpService implements IHttpClient {
   private getRetryDelay(attempt: number, statusCode: number): number {
     const baseDelay = statusCode === 429 ? 2000 : 1000;
     const maxDelay = statusCode === 429 ? 30000 : 10000;
-    return Math.min(baseDelay * Math.pow(2, attempt - 1), maxDelay);
+    const capped = Math.min(baseDelay * Math.pow(2, attempt - 1), maxDelay);
+    return capped / 2 + Math.random() * (capped / 2);
   }
 
   /**
    * Performs a GET request with retry logic
-   * 
+   *
    * @template T - Expected response type
    * @param url - Request URL
    * @param options - Request options
@@ -252,21 +334,29 @@ export class UndiciHttpService implements IHttpClient {
     const maxRetries = options.maxRetries ?? this.config.maxRetries;
     let lastError: Error | null = null;
 
+    // Paced once per logical request (not per retry - retries use their own
+    // error-driven backoff below). Previously only MarketService/RivenService
+    // added this at the orchestration layer for orders/stats/weapon pacing,
+    // so any other call site (e.g. getAllItems) got no delay at all.
+    await this.addRandomDelay();
+
     for (let attempt = 1; attempt <= maxRetries; attempt++) {
+      let proxy: string | null = null;
       try {
-        const proxy = this.proxyManager.getProxy();
-        const dispatcher = this.createProxyAgent(proxy);
+        proxy = this.getUsableProxy();
+        const dispatcher = this.createDispatcher(proxy);
         const headers = this.getRequestHeaders(options.headers);
+        this.maybeLogStats(proxy);
 
         if (DEBUG) {
-          const proxyInfo = proxy 
-            ? proxy.includes('@') ? proxy.split('@')[1] : proxy 
+          const proxyInfo = proxy
+            ? proxy.includes('@') ? proxy.split('@')[1] : proxy
             : 'direct (proxyless)';
           console.log(`Attempt ${attempt} using: ${proxyInfo}`);
         }
 
         const response = await request(url, {
-          ...(dispatcher && { dispatcher }),
+          dispatcher,
           headers
         });
 
@@ -276,20 +366,24 @@ export class UndiciHttpService implements IHttpClient {
 
         // Handle retryable status codes
         if (response.statusCode === 403 || response.statusCode === 429 || response.statusCode >= 500) {
-          const statusName = response.statusCode === 403 ? 'Cloudflare block' 
-            : response.statusCode === 429 ? 'Rate limit' 
+          const statusName = response.statusCode === 403 ? 'Cloudflare block'
+            : response.statusCode === 429 ? 'Rate limit'
             : 'Server error';
-          
+
           console.log(`⚠️  ${response.statusCode} ${statusName} (attempt ${attempt}/${maxRetries})`);
-          
+
           if (proxy) {
-            ProxyRotation.recordProxyPerformance(proxy, false);
+            this.recordProxyFailure(proxy);
           }
+          // Reset session on block/rotation (D10) - previously only wired on
+          // the axios path, so undici (the client every sync script uses)
+          // kept reusing the same session id/counter after a block.
+          AntiDetection.resetSession();
 
           if (attempt < maxRetries) {
             const delay = this.getRetryDelay(attempt, response.statusCode);
             if (DEBUG) {
-              console.log(`⏳ Waiting ${delay}ms before retry...`);
+              console.log(`⏳ Waiting ${Math.round(delay)}ms before retry...`);
             }
             await sleep(delay);
             continue;
@@ -333,9 +427,10 @@ export class UndiciHttpService implements IHttpClient {
         }
 
         if (attempt < maxRetries) {
-          const delay = Math.min(1000 * attempt, 5000);
+          const base = Math.min(1000 * attempt, 5000);
+          const delay = base / 2 + Math.random() * (base / 2);
           if (DEBUG) {
-            console.log(`⏳ Waiting ${delay}ms before next attempt...`);
+            console.log(`⏳ Waiting ${Math.round(delay)}ms before next attempt...`);
           }
           await sleep(delay);
         }
@@ -347,7 +442,7 @@ export class UndiciHttpService implements IHttpClient {
 
   /**
    * Performs a POST request with retry logic
-   * 
+   *
    * @template T - Expected response type
    * @param url - Request URL
    * @param data - Request body data
@@ -358,24 +453,42 @@ export class UndiciHttpService implements IHttpClient {
     const maxRetries = options.maxRetries ?? this.config.maxRetries;
     let lastError: Error | null = null;
 
+    await this.addRandomDelay();
+
     for (let attempt = 1; attempt <= maxRetries; attempt++) {
+      let proxy: string | null = null;
       try {
-        const proxy = this.proxyManager.getProxy();
-        const dispatcher = this.createProxyAgent(proxy);
+        proxy = this.getUsableProxy();
+        const dispatcher = this.createDispatcher(proxy);
         const headers = this.getRequestHeaders({
           'Content-Type': 'application/json',
           ...options.headers
         });
+        this.maybeLogStats(proxy);
 
         const response = await request(url, {
           method: 'POST',
-          ...(dispatcher && { dispatcher }),
+          dispatcher,
           headers,
           body: JSON.stringify(data)
         });
 
+        if (response.statusCode === 403 || response.statusCode === 429 || response.statusCode >= 500) {
+          if (proxy) this.recordProxyFailure(proxy);
+          AntiDetection.resetSession();
+          if (attempt < maxRetries) {
+            await sleep(this.getRetryDelay(attempt, response.statusCode));
+            continue;
+          }
+          throw new Error(`All ${maxRetries} attempts failed with ${response.statusCode} errors`);
+        }
+
         if (response.statusCode >= 400) {
           throw new Error(`HTTP ${response.statusCode}`);
+        }
+
+        if (proxy) {
+          ProxyRotation.recordProxyPerformance(proxy, true);
         }
 
         const contentEncoding = response.headers['content-encoding'] as string | undefined;
@@ -389,7 +502,8 @@ export class UndiciHttpService implements IHttpClient {
       } catch (error) {
         lastError = error as Error;
         if (attempt < maxRetries) {
-          await sleep(1000 * attempt);
+          const base = Math.min(1000 * attempt, 5000);
+          await sleep(base / 2 + Math.random() * (base / 2));
         }
       }
     }
@@ -399,7 +513,7 @@ export class UndiciHttpService implements IHttpClient {
 
   /**
    * Gets the proxy manager instance
-   * 
+   *
    * @returns ProxyManagerAdapter instance
    */
   getProxyManager(): ProxyManagerAdapter {
@@ -408,7 +522,7 @@ export class UndiciHttpService implements IHttpClient {
 
   /**
    * Gets the header service instance
-   * 
+   *
    * @returns HeaderService instance
    */
   getHeaderService(): HeaderService {

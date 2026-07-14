@@ -17,6 +17,7 @@ export { HttpService } from './HttpService';
 export { UndiciHttpService } from './UndiciHttpService';
 
 // Domain Services
+export { DropService } from './DropService';
 export { ItemService } from './ItemService';
 export { MarketService, PriceCalculationConfig } from './MarketService';
 export { RelicService } from './RelicService';

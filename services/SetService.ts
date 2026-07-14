@@ -7,7 +7,7 @@
  * based on individual part prices.
  */
 
-import { IMarketItem, IProcessedItem, ISetResult } from '../interfaces/market.interface';
+import { IMarketItem, IProcessedItem, ISetComparisonRow, ISetResult } from '../interfaces/market.interface';
 import { ItemService } from './ItemService';
 import { RelicService } from './RelicService';
 
@@ -113,8 +113,106 @@ export class SetService {
   }
 
   /**
+   * Builds a "set vs parts" comparison row for every multi-part set found in a
+   * preloaded item array.
+   *
+   * This is a **pure** function: it performs no database or network access, so
+   * the caller loads every item once (a single `getAllItems()` read) and this
+   * method resolves each set's parts against an in-memory map — avoiding the
+   * N+1 queries that per-set lookups would incur.
+   *
+   * A set is any item whose `item_name` contains `" Set"` and that has more than
+   * one entry in `items_in_set`. Parts without a market price are counted in
+   * `missingParts` and excluded from the totals (so the comparison is a lower
+   * bound on part totals when `missingParts > 0`).
+   *
+   * @param items - All raw market items from the database
+   * @returns One comparison row per qualifying set
+   */
+  buildComparisonFromItems(items: IMarketItem[]): ISetComparisonRow[] {
+    const byUrl = new Map<string, IMarketItem>();
+    for (const item of items) {
+      if (item && item.url_name) byUrl.set(item.url_name, item);
+    }
+
+    const rows: ISetComparisonRow[] = [];
+
+    for (const setItem of items) {
+      if (!setItem || !setItem.item_name || !setItem.market) continue;
+      if (!setItem.item_name.includes(' Set')) continue;
+      if (!setItem.items_in_set || setItem.items_in_set.length <= 1) continue;
+
+      // Every entry except the set item itself is a part to buy/assemble.
+      const partRefs = setItem.items_in_set.filter(
+        (part) => part.url_name !== setItem.url_name
+      );
+      if (partRefs.length === 0) continue;
+
+      let partsSell = 0; // acquire total (Σ part.sell × qty)
+      let partsBuy = 0; // resale total (Σ part.buy × qty)
+      let missingParts = 0;
+      let pricedParts = 0;
+
+      for (const ref of partRefs) {
+        const part = byUrl.get(ref.url_name);
+        const quantity = ref.quantity_for_set ?? 1;
+        const sell = part?.market?.sell ?? 0;
+        const buy = part?.market?.buy ?? 0;
+
+        if (!part || !part.market || (!sell && !buy)) {
+          missingParts++;
+          continue;
+        }
+
+        partsSell += sell * quantity;
+        partsBuy += buy * quantity;
+        pricedParts++;
+      }
+
+      const setSell = setItem.market.sell ?? 0;
+      const setBuy = setItem.market.buy ?? 0;
+
+      const acquireSave = setSell - partsSell; // >0 => parts cheaper to buy
+      const resaleExtra = partsBuy - setBuy; // >0 => parts resell for more
+
+      rows.push({
+        item_name: setItem.item_name,
+        url_name: setItem.url_name,
+        thumb: setItem.thumb,
+        tags: setItem.items_in_set[0]?.tags ?? [],
+        partsCount: partRefs.length,
+        pricedParts,
+        missingParts,
+        set: {
+          buy: setBuy,
+          sell: setSell,
+          volume: setItem.market.volume ?? 0,
+        },
+        byParts: {
+          buy: partsBuy,
+          sell: partsSell,
+        },
+        acquire: {
+          setCost: setSell,
+          partsCost: partsSell,
+          save: acquireSave,
+          savePct: setSell > 0 ? (acquireSave / setSell) * 100 : 0,
+        },
+        resale: {
+          setValue: setBuy,
+          partsValue: partsBuy,
+          extra: resaleExtra,
+          extraPct: setBuy > 0 ? (resaleExtra / setBuy) * 100 : 0,
+        },
+      });
+    }
+
+    return rows;
+  }
+
+  /**
    * Gets relic set data with associated item prices
-   * 
+   *
    * @param urlName - URL-friendly relic name (e.g., "lith_a1")
    * @returns Promise resolving to relic set with item prices
    */

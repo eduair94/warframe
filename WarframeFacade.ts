@@ -26,8 +26,8 @@ import {
 import { MarketService } from './services/MarketService';
 import { BaseWarframeClient, WarframeClientConfig } from './services/BaseWarframeClient';
 
-// Debug mode - set DEBUG=true environment variable for verbose logging
-const DEBUG = process.env.DEBUG === 'true';
+// Debug mode - set DEBUG=true or DEBUG=warframe:* for verbose logging
+import { DEBUG } from './debug';
 
 /**
  * Extended configuration for WarframeFacade

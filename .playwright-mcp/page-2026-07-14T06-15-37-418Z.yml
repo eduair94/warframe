@@ -1,0 +1,1270 @@
+- generic [ref=f29e5]:
+  - banner [ref=f29e6]:
+    - generic [ref=f29e7]:
+      - button "Open navigation menu" [ref=f29e8] [cursor=pointer]:
+        - generic [ref=f29e9]:
+          - generic [ref=f29e10]: 󰍜
+          - generic [ref=f29e11]: Menu
+      - img "logo warframe analytics"
+      - button "Take a guided tour" [ref=f29e12] [cursor=pointer]:
+        - generic [ref=f29e13]:
+          - generic [ref=f29e14]: 󰆌
+          - generic [ref=f29e15]: Tour
+      - link [ref=f29e16] [cursor=pointer]:
+        - /url: https://github.com/eduair94/warframe
+        - generic [ref=f29e17]: 󰊤
+      - button [ref=f29e20] [cursor=pointer]:
+        - generic [ref=f29e21]:
+          - text: en
+          - generic [ref=f29e22]: 󰅀
+  - main [ref=f29e23]:
+    - generic [ref=f29e26]:
+      - generic [ref=f29e27]:
+        - generic [ref=f29e28]:
+          - generic [ref=f29e29]:
+            - generic [ref=f29e30]:
+              - generic [ref=f29e31]:
+                - generic [ref=f29e35]:
+                  - generic [ref=f29e36]: Min Volume
+                  - spinbutton "Min Volume" [ref=f29e37]: "0"
+                - button "Select All" [ref=f29e40] [cursor=pointer]:
+                  - generic [ref=f29e41]:
+                    - generic [ref=f29e42]: Select
+                    - generic [ref=f29e43]:
+                      - generic [ref=f29e44]: All
+                      - textbox "Select" [ref=f29e45]
+                    - generic [ref=f29e46]: 󰍝
+                - combobox [ref=f29e51]:
+                  - generic [ref=f29e52]:
+                    - generic: Search
+                    - textbox "Search" [ref=f29e53]
+                    - generic [ref=f29e54]: 󰍝
+                - button "Search" [ref=f29e57] [cursor=pointer]
+                - button [ref=f29e59] [cursor=pointer]:
+                  - generic [ref=f29e60]: 󰦛
+              - button [ref=f29e64] [cursor=pointer]:
+                - text: Advanced Filters (Tags & Logic)
+                - generic [ref=f29e65]: 󰅀
+              - generic [ref=f29e67]:
+                - generic [ref=f29e70] [cursor=pointer]:
+                  - generic [ref=f29e71]:
+                    - generic [ref=f29e72]: 󰄱
+                    - checkbox "Average Prices (top 5 orders)" [ref=f29e73]
+                  - generic [ref=f29e75]: Average Prices (top 5 orders)
+                - generic [ref=f29e79] [cursor=pointer]:
+                  - generic [ref=f29e80]:
+                    - generic [ref=f29e81]: 󰄱
+                    - checkbox "Multi-Sort (click several column headers)" [ref=f29e82]
+                  - generic [ref=f29e84]: Multi-Sort (click several column headers)
+            - generic [ref=f29e86]:
+              - generic [ref=f29e87]:
+                - text: "Rows per page:"
+                - button "5" [ref=f29e90] [cursor=pointer]:
+                  - generic [ref=f29e91]:
+                    - generic [ref=f29e92]:
+                      - generic [ref=f29e93]: "5"
+                      - textbox "Rows per page:"
+                    - generic [ref=f29e94]: 󰍝
+              - generic [ref=f29e97]: 1-50 of 500
+              - generic [ref=f29e98]:
+                - button "Previous page" [disabled]:
+                  - generic: 󰅁
+              - button "Next page" [ref=f29e100] [cursor=pointer]:
+                - generic [ref=f29e101]: 󰅂
+          - table [ref=f29e104]:
+            - rowgroup [ref=f29e117]:
+              - 'row "Name: Not sorted. Activate to sort ascending. Buy (live listing): Not sorted. Activate to sort ascending. Sell (live listing): Not sorted. Activate to sort ascending. Avg Sold (48h): Not sorted. Activate to sort ascending. Latest 48h Trades: Not sorted. Activate to sort ascending. Diff: Not sorted. Activate to sort ascending. Volume (Last 48hrs): Sorted descending. Activate to remove sorting. Tags: Not sorted. Activate to sort ascending. Updated: Not sorted. Activate to sort ascending. Drops: Not sorted. Activate to sort ascending." [ref=f29e118]':
+                - columnheader [ref=f29e119]:
+                  - generic [ref=f29e120]: 󰄱
+                - 'columnheader "Name: Not sorted. Activate to sort ascending." [ref=f29e124] [cursor=pointer]':
+                  - text: Name
+                  - generic [ref=f29e125]: 󰁝
+                - 'columnheader "Buy (live listing): Not sorted. Activate to sort ascending." [ref=f29e126] [cursor=pointer]':
+                  - text: Buy (live listing)
+                  - generic [ref=f29e127]: 󰁝
+                - 'columnheader "Sell (live listing): Not sorted. Activate to sort ascending." [ref=f29e128] [cursor=pointer]':
+                  - text: Sell (live listing)
+                  - generic [ref=f29e129]: 󰁝
+                - 'columnheader "Avg Sold (48h): Not sorted. Activate to sort ascending." [ref=f29e130] [cursor=pointer]':
+                  - text: Avg Sold (48h)
+                  - generic [ref=f29e131]: 󰁝
+                - 'columnheader "Latest 48h Trades: Not sorted. Activate to sort ascending." [ref=f29e132] [cursor=pointer]':
+                  - text: Latest 48h Trades
+                  - generic [ref=f29e133]: 󰁝
+                - 'columnheader "Diff: Not sorted. Activate to sort ascending." [ref=f29e134] [cursor=pointer]':
+                  - text: Diff
+                  - generic [ref=f29e135]: 󰁝
+                - 'columnheader "Volume (Last 48hrs): Sorted descending. Activate to remove sorting." [ref=f29e136] [cursor=pointer]':
+                  - text: Volume (Last 48hrs)
+                  - generic [ref=f29e137]: 󰁝
+                - 'columnheader "Tags: Not sorted. Activate to sort ascending." [ref=f29e138] [cursor=pointer]':
+                  - text: Tags
+                  - generic [ref=f29e139]: 󰁝
+                - 'columnheader "Updated: Not sorted. Activate to sort ascending." [ref=f29e140] [cursor=pointer]':
+                  - text: Updated
+                  - generic [ref=f29e141]: 󰁝
+                - 'columnheader "Drops: Not sorted. Activate to sort ascending." [ref=f29e142] [cursor=pointer]':
+                  - text: Drops
+                  - generic [ref=f29e143]: 󰁝
+            - rowgroup [ref=f29e144]:
+              - row "Orthos Prime Blueprint 132 145 139 - 13 897 Weapon Prime Melee Blueprint a few seconds ago Drops" [ref=f29e145]:
+                - cell [ref=f29e146]:
+                  - generic [ref=f29e147]: 󰄱
+                - cell [ref=f29e151]:
+                  - link "Orthos Prime Blueprint" [ref=f29e155] [cursor=pointer]:
+                    - /url: https://warframe.market/items/orthos_prime_blueprint
+                - cell "132" [ref=f29e156]
+                - cell "145" [ref=f29e157]
+                - cell "139" [ref=f29e158]
+                - cell "-" [ref=f29e159]
+                - cell "13" [ref=f29e162]
+                - cell "897" [ref=f29e163]
+                - cell "Weapon Prime Melee Blueprint" [ref=f29e164]:
+                  - generic [ref=f29e165]:
+                    - generic [ref=f29e166] [cursor=pointer]: Weapon
+                    - generic [ref=f29e168] [cursor=pointer]: Prime
+                    - generic [ref=f29e170] [cursor=pointer]: Melee
+                    - generic [ref=f29e172] [cursor=pointer]: Blueprint
+                - cell "a few seconds ago" [ref=f29e174]
+                - cell [ref=f29e175]:
+                  - link "Drops" [ref=f29e176] [cursor=pointer]:
+                    - /url: https://drops.warframestat.us/#/search/%5EOrthos%20Prime%20Blueprint/items/regex
+              - row "Strun Wraith Receiver 123 188 156 - 65 889 Component Weapon a few seconds ago Drops" [ref=f29e177]:
+                - cell [ref=f29e178]:
+                  - generic [ref=f29e179]: 󰄱
+                - cell [ref=f29e183]:
+                  - link "Strun Wraith Receiver" [ref=f29e187] [cursor=pointer]:
+                    - /url: https://warframe.market/items/strun_wraith_receiver
+                - cell "123" [ref=f29e188]
+                - cell "188" [ref=f29e189]
+                - cell "156" [ref=f29e190]
+                - cell "-" [ref=f29e191]
+                - cell "65" [ref=f29e194]
+                - cell "889" [ref=f29e195]
+                - cell "Component Weapon" [ref=f29e196]:
+                  - generic [ref=f29e197]:
+                    - generic [ref=f29e198] [cursor=pointer]: Component
+                    - generic [ref=f29e200] [cursor=pointer]: Weapon
+                - cell "a few seconds ago" [ref=f29e202]
+                - cell [ref=f29e203]:
+                  - link "Drops" [ref=f29e204] [cursor=pointer]:
+                    - /url: https://drops.warframestat.us/#/search/%5EStrun%20Wraith%20Receiver/items/regex
+              - row "Equinox Prime Neuroptics Blueprint 125 158 142 - 33 888 Component Prime Warframe Blueprint a few seconds ago Drops" [ref=f29e205]:
+                - cell [ref=f29e206]:
+                  - generic [ref=f29e207]: 󰄱
+                - cell [ref=f29e211]:
+                  - link "Equinox Prime Neuroptics Blueprint" [ref=f29e215] [cursor=pointer]:
+                    - /url: https://warframe.market/items/equinox_prime_neuroptics_blueprint
+                - cell "125" [ref=f29e216]
+                - cell "158" [ref=f29e217]
+                - cell "142" [ref=f29e218]
+                - cell "-" [ref=f29e219]
+                - cell "33" [ref=f29e222]
+                - cell "888" [ref=f29e223]
+                - cell "Component Prime Warframe Blueprint" [ref=f29e224]:
+                  - generic [ref=f29e225]:
+                    - generic [ref=f29e226] [cursor=pointer]: Component
+                    - generic [ref=f29e228] [cursor=pointer]: Prime
+                    - generic [ref=f29e230] [cursor=pointer]: Warframe
+                    - generic [ref=f29e232] [cursor=pointer]: Blueprint
+                - cell "a few seconds ago" [ref=f29e234]
+                - cell [ref=f29e235]:
+                  - link "Drops" [ref=f29e236] [cursor=pointer]:
+                    - /url: https://drops.warframestat.us/#/search/%5EEquinox%20Prime%20Neuroptics%20Blueprint/items/regex
+              - row "Damaged Necramech Weapon Receiver 184 198 191 - 14 883 Component Necramech a few seconds ago Drops" [ref=f29e237]:
+                - cell [ref=f29e238]:
+                  - generic [ref=f29e239]: 󰄱
+                - cell [ref=f29e243]:
+                  - link "Damaged Necramech Weapon Receiver" [ref=f29e247] [cursor=pointer]:
+                    - /url: https://warframe.market/items/damaged_necramech_weapon_receiver
+                - cell "184" [ref=f29e248]
+                - cell "198" [ref=f29e249]
+                - cell "191" [ref=f29e250]
+                - cell "-" [ref=f29e251]
+                - cell "14" [ref=f29e254]
+                - cell "883" [ref=f29e255]
+                - cell "Component Necramech" [ref=f29e256]:
+                  - generic [ref=f29e257]:
+                    - generic [ref=f29e258] [cursor=pointer]: Component
+                    - generic [ref=f29e260] [cursor=pointer]: Necramech
+                - cell "a few seconds ago" [ref=f29e262]
+                - cell [ref=f29e263]:
+                  - link "Drops" [ref=f29e264] [cursor=pointer]:
+                    - /url: https://drops.warframestat.us/#/search/%5EDamaged%20Necramech%20Weapon%20Receiver/items/regex
+              - row "Damaged Necramech Weapon Stock 127 194 161 - 67 883 Component Necramech a few seconds ago Drops" [ref=f29e265]:
+                - cell [ref=f29e266]:
+                  - generic [ref=f29e267]: 󰄱
+                - cell [ref=f29e271]:
+                  - link "Damaged Necramech Weapon Stock" [ref=f29e275] [cursor=pointer]:
+                    - /url: https://warframe.market/items/damaged_necramech_weapon_stock
+                - cell "127" [ref=f29e276]
+                - cell "194" [ref=f29e277]
+                - cell "161" [ref=f29e278]
+                - cell "-" [ref=f29e279]
+                - cell "67" [ref=f29e282]
+                - cell "883" [ref=f29e283]
+                - cell "Component Necramech" [ref=f29e284]:
+                  - generic [ref=f29e285]:
+                    - generic [ref=f29e286] [cursor=pointer]: Component
+                    - generic [ref=f29e288] [cursor=pointer]: Necramech
+                - cell "a few seconds ago" [ref=f29e290]
+                - cell [ref=f29e291]:
+                  - link "Drops" [ref=f29e292] [cursor=pointer]:
+                    - /url: https://drops.warframestat.us/#/search/%5EDamaged%20Necramech%20Weapon%20Stock/items/regex
+              - row "Aksomati Prime Link 26 28 27 - 2 882 Component Weapon Prime a few seconds ago Drops" [ref=f29e293]:
+                - cell [ref=f29e294]:
+                  - generic [ref=f29e295]: 󰄱
+                - cell [ref=f29e299]:
+                  - link "Aksomati Prime Link" [ref=f29e303] [cursor=pointer]:
+                    - /url: https://warframe.market/items/aksomati_prime_link
+                - cell "26" [ref=f29e304]
+                - cell "28" [ref=f29e305]
+                - cell "27" [ref=f29e306]
+                - cell "-" [ref=f29e307]
+                - cell "2" [ref=f29e310]
+                - cell "882" [ref=f29e311]
+                - cell "Component Weapon Prime" [ref=f29e312]:
+                  - generic [ref=f29e313]:
+                    - generic [ref=f29e314] [cursor=pointer]: Component
+                    - generic [ref=f29e316] [cursor=pointer]: Weapon
+                    - generic [ref=f29e318] [cursor=pointer]: Prime
+                - cell "a few seconds ago" [ref=f29e320]
+                - cell [ref=f29e321]:
+                  - link "Drops" [ref=f29e322] [cursor=pointer]:
+                    - /url: https://drops.warframestat.us/#/search/%5EAksomati%20Prime%20Link/items/regex
+              - row "Xiphos Engines Blueprint 115 135 125 - 20 877 Blueprint a few seconds ago Drops" [ref=f29e323]:
+                - cell [ref=f29e324]:
+                  - generic [ref=f29e325]: 󰄱
+                - cell [ref=f29e329]:
+                  - link "Xiphos Engines Blueprint" [ref=f29e333] [cursor=pointer]:
+                    - /url: https://warframe.market/items/xiphos_engines_blueprint
+                - cell "115" [ref=f29e334]
+                - cell "135" [ref=f29e335]
+                - cell "125" [ref=f29e336]
+                - cell "-" [ref=f29e337]
+                - cell "20" [ref=f29e340]
+                - cell "877" [ref=f29e341]
+                - cell "Blueprint" [ref=f29e342]
+                - cell "a few seconds ago" [ref=f29e346]
+                - cell [ref=f29e347]:
+                  - link "Drops" [ref=f29e348] [cursor=pointer]:
+                    - /url: https://drops.warframestat.us/#/search/%5EXiphos%20Engines%20Blueprint/items/regex
+              - row "Agkuza Set Set vs Parts 125 167 146 - 42 877 Weapon Set Melee Archwing a few seconds ago Drops" [ref=f29e349]:
+                - cell [ref=f29e350]:
+                  - generic [ref=f29e351]: 󰄱
+                - cell [ref=f29e355]:
+                  - generic [ref=f29e358]:
+                    - link "Agkuza Set" [ref=f29e359] [cursor=pointer]:
+                      - /url: https://warframe.market/items/agkuza_set
+                    - link "Set vs Parts" [ref=f29e360] [cursor=pointer]:
+                      - /url: /set/agkuza_set
+                - cell "125" [ref=f29e362]
+                - cell "167" [ref=f29e363]
+                - cell "146" [ref=f29e364]
+                - cell "-" [ref=f29e365]
+                - cell "42" [ref=f29e368]
+                - cell "877" [ref=f29e369]
+                - cell "Weapon Set Melee Archwing" [ref=f29e370]:
+                  - generic [ref=f29e371]:
+                    - generic [ref=f29e372] [cursor=pointer]: Weapon
+                    - generic [ref=f29e374] [cursor=pointer]: Set
+                    - generic [ref=f29e376] [cursor=pointer]: Melee
+                    - generic [ref=f29e378] [cursor=pointer]: Archwing
+                - cell "a few seconds ago" [ref=f29e380]
+                - cell [ref=f29e381]:
+                  - link "Drops" [ref=f29e382] [cursor=pointer]:
+                    - /url: https://drops.warframestat.us/#/search/%5EAgkuza/items/regex
+              - row "Silva & Aegis Prime Set Set vs Parts 128 172 150 - 44 875 Weapon Prime Melee Set a few seconds ago Drops" [ref=f29e383]:
+                - cell [ref=f29e384]:
+                  - generic [ref=f29e385]: 󰄱
+                - cell [ref=f29e389]:
+                  - generic [ref=f29e392]:
+                    - link "Silva & Aegis Prime Set" [ref=f29e393] [cursor=pointer]:
+                      - /url: https://warframe.market/items/silva_and_aegis_prime_set
+                    - link "Set vs Parts" [ref=f29e394] [cursor=pointer]:
+                      - /url: /set/silva_and_aegis_prime_set
+                - cell "128" [ref=f29e396]
+                - cell "172" [ref=f29e397]
+                - cell "150" [ref=f29e398]
+                - cell "-" [ref=f29e399]
+                - cell "44" [ref=f29e402]
+                - cell "875" [ref=f29e403]
+                - cell "Weapon Prime Melee Set" [ref=f29e404]:
+                  - generic [ref=f29e405]:
+                    - generic [ref=f29e406] [cursor=pointer]: Weapon
+                    - generic [ref=f29e408] [cursor=pointer]: Prime
+                    - generic [ref=f29e410] [cursor=pointer]: Melee
+                    - generic [ref=f29e412] [cursor=pointer]: Set
+                - cell "a few seconds ago" [ref=f29e414]
+                - cell [ref=f29e415]:
+                  - link "Drops" [ref=f29e416] [cursor=pointer]:
+                    - /url: https://drops.warframestat.us/#/search/%5ESilva%20%26%20Aegis%20Prime/items/regex
+              - row "Scindo Prime Handle 98 116 107 - 18 871 Component Weapon Prime a few seconds ago Drops" [ref=f29e417]:
+                - cell [ref=f29e418]:
+                  - generic [ref=f29e419]: 󰄱
+                - cell [ref=f29e423]:
+                  - link "Scindo Prime Handle" [ref=f29e427] [cursor=pointer]:
+                    - /url: https://warframe.market/items/scindo_prime_handle
+                - cell "98" [ref=f29e428]
+                - cell "116" [ref=f29e429]
+                - cell "107" [ref=f29e430]
+                - cell "-" [ref=f29e431]
+                - cell "18" [ref=f29e434]
+                - cell "871" [ref=f29e435]
+                - cell "Component Weapon Prime" [ref=f29e436]:
+                  - generic [ref=f29e437]:
+                    - generic [ref=f29e438] [cursor=pointer]: Component
+                    - generic [ref=f29e440] [cursor=pointer]: Weapon
+                    - generic [ref=f29e442] [cursor=pointer]: Prime
+                - cell "a few seconds ago" [ref=f29e444]
+                - cell [ref=f29e445]:
+                  - link "Drops" [ref=f29e446] [cursor=pointer]:
+                    - /url: https://drops.warframestat.us/#/search/%5EScindo%20Prime%20Handle/items/regex
+              - row "Dera Vandal Set Set vs Parts 183 212 198 - 29 870 Primary Weapon Set a few seconds ago Drops" [ref=f29e447]:
+                - cell [ref=f29e448]:
+                  - generic [ref=f29e449]: 󰄱
+                - cell [ref=f29e453]:
+                  - generic [ref=f29e456]:
+                    - link "Dera Vandal Set" [ref=f29e457] [cursor=pointer]:
+                      - /url: https://warframe.market/items/dera_vandal_set
+                    - link "Set vs Parts" [ref=f29e458] [cursor=pointer]:
+                      - /url: /set/dera_vandal_set
+                - cell "183" [ref=f29e460]
+                - cell "212" [ref=f29e461]
+                - cell "198" [ref=f29e462]
+                - cell "-" [ref=f29e463]
+                - cell "29" [ref=f29e466]
+                - cell "870" [ref=f29e467]
+                - cell "Primary Weapon Set" [ref=f29e468]:
+                  - generic [ref=f29e469]:
+                    - generic [ref=f29e470] [cursor=pointer]: Primary
+                    - generic [ref=f29e472] [cursor=pointer]: Weapon
+                    - generic [ref=f29e474] [cursor=pointer]: Set
+                - cell "a few seconds ago" [ref=f29e476]
+                - cell [ref=f29e477]:
+                  - link "Drops" [ref=f29e478] [cursor=pointer]:
+                    - /url: https://drops.warframestat.us/#/search/%5EDera%20Vandal/items/regex
+              - row "Volt Prime Chassis Blueprint 91 108 100 - 17 867 Component Prime Warframe Blueprint a few seconds ago Drops" [ref=f29e479]:
+                - cell [ref=f29e480]:
+                  - generic [ref=f29e481]: 󰄱
+                - cell [ref=f29e485]:
+                  - link "Volt Prime Chassis Blueprint" [ref=f29e489] [cursor=pointer]:
+                    - /url: https://warframe.market/items/volt_prime_chassis_blueprint
+                - cell "91" [ref=f29e490]
+                - cell "108" [ref=f29e491]
+                - cell "100" [ref=f29e492]
+                - cell "-" [ref=f29e493]
+                - cell "17" [ref=f29e496]
+                - cell "867" [ref=f29e497]
+                - cell "Component Prime Warframe Blueprint" [ref=f29e498]:
+                  - generic [ref=f29e499]:
+                    - generic [ref=f29e500] [cursor=pointer]: Component
+                    - generic [ref=f29e502] [cursor=pointer]: Prime
+                    - generic [ref=f29e504] [cursor=pointer]: Warframe
+                    - generic [ref=f29e506] [cursor=pointer]: Blueprint
+                - cell "a few seconds ago" [ref=f29e508]
+                - cell [ref=f29e509]:
+                  - link "Drops" [ref=f29e510] [cursor=pointer]:
+                    - /url: https://drops.warframestat.us/#/search/%5EVolt%20Prime%20Chassis%20Blueprint/items/regex
+              - row "Stropha Set Set vs Parts 112 129 121 - 17 867 Weapon Melee Set a few seconds ago Drops" [ref=f29e511]:
+                - cell [ref=f29e512]:
+                  - generic [ref=f29e513]: 󰄱
+                - cell [ref=f29e517]:
+                  - generic [ref=f29e520]:
+                    - link "Stropha Set" [ref=f29e521] [cursor=pointer]:
+                      - /url: https://warframe.market/items/stropha_set
+                    - link "Set vs Parts" [ref=f29e522] [cursor=pointer]:
+                      - /url: /set/stropha_set
+                - cell "112" [ref=f29e524]
+                - cell "129" [ref=f29e525]
+                - cell "121" [ref=f29e526]
+                - cell "-" [ref=f29e527]
+                - cell "17" [ref=f29e530]
+                - cell "867" [ref=f29e531]
+                - cell "Weapon Melee Set" [ref=f29e532]:
+                  - generic [ref=f29e533]:
+                    - generic [ref=f29e534] [cursor=pointer]: Weapon
+                    - generic [ref=f29e536] [cursor=pointer]: Melee
+                    - generic [ref=f29e538] [cursor=pointer]: Set
+                - cell "a few seconds ago" [ref=f29e540]
+                - cell [ref=f29e541]:
+                  - link "Drops" [ref=f29e542] [cursor=pointer]:
+                    - /url: https://drops.warframestat.us/#/search/%5EStropha/items/regex
+              - row "Carrier Prime Set Set vs Parts 174 184 179 - 10 863 Sentinel Prime Set a few seconds ago Drops" [ref=f29e543]:
+                - cell [ref=f29e544]:
+                  - generic [ref=f29e545]: 󰄱
+                - cell [ref=f29e549]:
+                  - generic [ref=f29e552]:
+                    - link "Carrier Prime Set" [ref=f29e553] [cursor=pointer]:
+                      - /url: https://warframe.market/items/carrier_prime_set
+                    - link "Set vs Parts" [ref=f29e554] [cursor=pointer]:
+                      - /url: /set/carrier_prime_set
+                - cell "174" [ref=f29e556]
+                - cell "184" [ref=f29e557]
+                - cell "179" [ref=f29e558]
+                - cell "-" [ref=f29e559]
+                - cell "10" [ref=f29e562]
+                - cell "863" [ref=f29e563]
+                - cell "Sentinel Prime Set" [ref=f29e564]:
+                  - generic [ref=f29e565]:
+                    - generic [ref=f29e566] [cursor=pointer]: Sentinel
+                    - generic [ref=f29e568] [cursor=pointer]: Prime
+                    - generic [ref=f29e570] [cursor=pointer]: Set
+                - cell "a few seconds ago" [ref=f29e572]
+                - cell [ref=f29e573]:
+                  - link "Drops" [ref=f29e574] [cursor=pointer]:
+                    - /url: https://drops.warframestat.us/#/search/%5ECarrier%20Prime/items/regex
+              - row "Loki Prime Systems Blueprint 131 192 162 - 61 859 Component Prime Warframe Blueprint a few seconds ago Drops" [ref=f29e575]:
+                - cell [ref=f29e576]:
+                  - generic [ref=f29e577]: 󰄱
+                - cell [ref=f29e581]:
+                  - link "Loki Prime Systems Blueprint" [ref=f29e585] [cursor=pointer]:
+                    - /url: https://warframe.market/items/loki_prime_systems_blueprint
+                - cell "131" [ref=f29e586]
+                - cell "192" [ref=f29e587]
+                - cell "162" [ref=f29e588]
+                - cell "-" [ref=f29e589]
+                - cell "61" [ref=f29e592]
+                - cell "859" [ref=f29e593]
+                - cell "Component Prime Warframe Blueprint" [ref=f29e594]:
+                  - generic [ref=f29e595]:
+                    - generic [ref=f29e596] [cursor=pointer]: Component
+                    - generic [ref=f29e598] [cursor=pointer]: Prime
+                    - generic [ref=f29e600] [cursor=pointer]: Warframe
+                    - generic [ref=f29e602] [cursor=pointer]: Blueprint
+                - cell "a few seconds ago" [ref=f29e604]
+                - cell [ref=f29e605]:
+                  - link "Drops" [ref=f29e606] [cursor=pointer]:
+                    - /url: https://drops.warframestat.us/#/search/%5ELoki%20Prime%20Systems%20Blueprint/items/regex
+              - row "Shedu Chassis 145 216 181 - 71 858 Component Weapon a few seconds ago Drops" [ref=f29e607]:
+                - cell [ref=f29e608]:
+                  - generic [ref=f29e609]: 󰄱
+                - cell [ref=f29e613]:
+                  - link "Shedu Chassis" [ref=f29e617] [cursor=pointer]:
+                    - /url: https://warframe.market/items/shedu_chassis
+                - cell "145" [ref=f29e618]
+                - cell "216" [ref=f29e619]
+                - cell "181" [ref=f29e620]
+                - cell "-" [ref=f29e621]
+                - cell "71" [ref=f29e624]
+                - cell "858" [ref=f29e625]
+                - cell "Component Weapon" [ref=f29e626]:
+                  - generic [ref=f29e627]:
+                    - generic [ref=f29e628] [cursor=pointer]: Component
+                    - generic [ref=f29e630] [cursor=pointer]: Weapon
+                - cell "a few seconds ago" [ref=f29e632]
+                - cell [ref=f29e633]:
+                  - link "Drops" [ref=f29e634] [cursor=pointer]:
+                    - /url: https://drops.warframestat.us/#/search/%5EShedu%20Chassis/items/regex
+              - row "Vasto Prime Barrel 83 95 89 - 12 855 Component Weapon Prime a few seconds ago Drops" [ref=f29e635]:
+                - cell [ref=f29e636]:
+                  - generic [ref=f29e637]: 󰄱
+                - cell [ref=f29e641]:
+                  - link "Vasto Prime Barrel" [ref=f29e645] [cursor=pointer]:
+                    - /url: https://warframe.market/items/vasto_prime_barrel
+                - cell "83" [ref=f29e646]
+                - cell "95" [ref=f29e647]
+                - cell "89" [ref=f29e648]
+                - cell "-" [ref=f29e649]
+                - cell "12" [ref=f29e652]
+                - cell "855" [ref=f29e653]
+                - cell "Component Weapon Prime" [ref=f29e654]:
+                  - generic [ref=f29e655]:
+                    - generic [ref=f29e656] [cursor=pointer]: Component
+                    - generic [ref=f29e658] [cursor=pointer]: Weapon
+                    - generic [ref=f29e660] [cursor=pointer]: Prime
+                - cell "a few seconds ago" [ref=f29e662]
+                - cell [ref=f29e663]:
+                  - link "Drops" [ref=f29e664] [cursor=pointer]:
+                    - /url: https://drops.warframestat.us/#/search/%5EVasto%20Prime%20Barrel/items/regex
+              - row "Oberon Prime Blueprint 124 183 154 - 59 854 Warframe Blueprint Prime a few seconds ago Drops" [ref=f29e665]:
+                - cell [ref=f29e666]:
+                  - generic [ref=f29e667]: 󰄱
+                - cell [ref=f29e671]:
+                  - link "Oberon Prime Blueprint" [ref=f29e675] [cursor=pointer]:
+                    - /url: https://warframe.market/items/oberon_prime_blueprint
+                - cell "124" [ref=f29e676]
+                - cell "183" [ref=f29e677]
+                - cell "154" [ref=f29e678]
+                - cell "-" [ref=f29e679]
+                - cell "59" [ref=f29e682]
+                - cell "854" [ref=f29e683]
+                - cell "Warframe Blueprint Prime" [ref=f29e684]:
+                  - generic [ref=f29e685]:
+                    - generic [ref=f29e686] [cursor=pointer]: Warframe
+                    - generic [ref=f29e688] [cursor=pointer]: Blueprint
+                    - generic [ref=f29e690] [cursor=pointer]: Prime
+                - cell "a few seconds ago" [ref=f29e692]
+                - cell [ref=f29e693]:
+                  - link "Drops" [ref=f29e694] [cursor=pointer]:
+                    - /url: https://drops.warframestat.us/#/search/%5EOberon%20Prime%20Blueprint/items/regex
+              - row "Latron Prime Barrel 136 201 169 - 65 851 Component Weapon Prime a few seconds ago Drops" [ref=f29e695]:
+                - cell [ref=f29e696]:
+                  - generic [ref=f29e697]: 󰄱
+                - cell [ref=f29e701]:
+                  - link "Latron Prime Barrel" [ref=f29e705] [cursor=pointer]:
+                    - /url: https://warframe.market/items/latron_prime_barrel
+                - cell "136" [ref=f29e706]
+                - cell "201" [ref=f29e707]
+                - cell "169" [ref=f29e708]
+                - cell "-" [ref=f29e709]
+                - cell "65" [ref=f29e712]
+                - cell "851" [ref=f29e713]
+                - cell "Component Weapon Prime" [ref=f29e714]:
+                  - generic [ref=f29e715]:
+                    - generic [ref=f29e716] [cursor=pointer]: Component
+                    - generic [ref=f29e718] [cursor=pointer]: Weapon
+                    - generic [ref=f29e720] [cursor=pointer]: Prime
+                - cell "a few seconds ago" [ref=f29e722]
+                - cell [ref=f29e723]:
+                  - link "Drops" [ref=f29e724] [cursor=pointer]:
+                    - /url: https://drops.warframestat.us/#/search/%5ELatron%20Prime%20Barrel/items/regex
+              - row "Oberon Prime Set Set vs Parts 179 205 192 - 26 850 Warframe Prime Set a few seconds ago Drops" [ref=f29e725]:
+                - cell [ref=f29e726]:
+                  - generic [ref=f29e727]: 󰄱
+                - cell [ref=f29e731]:
+                  - generic [ref=f29e734]:
+                    - link "Oberon Prime Set" [ref=f29e735] [cursor=pointer]:
+                      - /url: https://warframe.market/items/oberon_prime_set
+                    - link "Set vs Parts" [ref=f29e736] [cursor=pointer]:
+                      - /url: /set/oberon_prime_set
+                - cell "179" [ref=f29e738]
+                - cell "205" [ref=f29e739]
+                - cell "192" [ref=f29e740]
+                - cell "-" [ref=f29e741]
+                - cell "26" [ref=f29e744]
+                - cell "850" [ref=f29e745]
+                - cell "Warframe Prime Set" [ref=f29e746]:
+                  - generic [ref=f29e747]:
+                    - generic [ref=f29e748] [cursor=pointer]: Warframe
+                    - generic [ref=f29e750] [cursor=pointer]: Prime
+                    - generic [ref=f29e752] [cursor=pointer]: Set
+                - cell "a few seconds ago" [ref=f29e754]
+                - cell [ref=f29e755]:
+                  - link "Drops" [ref=f29e756] [cursor=pointer]:
+                    - /url: https://drops.warframestat.us/#/search/%5EOberon%20Prime/items/regex
+              - row "Itzal Set Set vs Parts 118 155 137 - 37 850 Set Archwing a few seconds ago Drops" [ref=f29e757]:
+                - cell [ref=f29e758]:
+                  - generic [ref=f29e759]: 󰄱
+                - cell [ref=f29e763]:
+                  - generic [ref=f29e766]:
+                    - link "Itzal Set" [ref=f29e767] [cursor=pointer]:
+                      - /url: https://warframe.market/items/itzal_set
+                    - link "Set vs Parts" [ref=f29e768] [cursor=pointer]:
+                      - /url: /set/itzal_set
+                - cell "118" [ref=f29e770]
+                - cell "155" [ref=f29e771]
+                - cell "137" [ref=f29e772]
+                - cell "-" [ref=f29e773]
+                - cell "37" [ref=f29e776]
+                - cell "850" [ref=f29e777]
+                - cell "Set Archwing" [ref=f29e778]:
+                  - generic [ref=f29e779]:
+                    - generic [ref=f29e780] [cursor=pointer]: Set
+                    - generic [ref=f29e782] [cursor=pointer]: Archwing
+                - cell "a few seconds ago" [ref=f29e784]
+                - cell [ref=f29e785]:
+                  - link "Drops" [ref=f29e786] [cursor=pointer]:
+                    - /url: https://drops.warframestat.us/#/search/%5EItzal/items/regex
+              - row "Destreza Prime Handle 31 39 35 - 8 846 Component Weapon Prime a few seconds ago Drops" [ref=f29e787]:
+                - cell [ref=f29e788]:
+                  - generic [ref=f29e789]: 󰄱
+                - cell [ref=f29e793]:
+                  - link "Destreza Prime Handle" [ref=f29e797] [cursor=pointer]:
+                    - /url: https://warframe.market/items/destreza_prime_handle
+                - cell "31" [ref=f29e798]
+                - cell "39" [ref=f29e799]
+                - cell "35" [ref=f29e800]
+                - cell "-" [ref=f29e801]
+                - cell "8" [ref=f29e804]
+                - cell "846" [ref=f29e805]
+                - cell "Component Weapon Prime" [ref=f29e806]:
+                  - generic [ref=f29e807]:
+                    - generic [ref=f29e808] [cursor=pointer]: Component
+                    - generic [ref=f29e810] [cursor=pointer]: Weapon
+                    - generic [ref=f29e812] [cursor=pointer]: Prime
+                - cell "a few seconds ago" [ref=f29e814]
+                - cell [ref=f29e815]:
+                  - link "Drops" [ref=f29e816] [cursor=pointer]:
+                    - /url: https://drops.warframestat.us/#/search/%5EDestreza%20Prime%20Handle/items/regex
+              - row "Lex Prime Blueprint 185 216 201 - 31 846 Weapon Prime Secondary Blueprint a few seconds ago Drops" [ref=f29e817]:
+                - cell [ref=f29e818]:
+                  - generic [ref=f29e819]: 󰄱
+                - cell [ref=f29e823]:
+                  - link "Lex Prime Blueprint" [ref=f29e827] [cursor=pointer]:
+                    - /url: https://warframe.market/items/lex_prime_blueprint
+                - cell "185" [ref=f29e828]
+                - cell "216" [ref=f29e829]
+                - cell "201" [ref=f29e830]
+                - cell "-" [ref=f29e831]
+                - cell "31" [ref=f29e834]
+                - cell "846" [ref=f29e835]
+                - cell "Weapon Prime Secondary Blueprint" [ref=f29e836]:
+                  - generic [ref=f29e837]:
+                    - generic [ref=f29e838] [cursor=pointer]: Weapon
+                    - generic [ref=f29e840] [cursor=pointer]: Prime
+                    - generic [ref=f29e842] [cursor=pointer]: Secondary
+                    - generic [ref=f29e844] [cursor=pointer]: Blueprint
+                - cell "a few seconds ago" [ref=f29e846]
+                - cell [ref=f29e847]:
+                  - link "Drops" [ref=f29e848] [cursor=pointer]:
+                    - /url: https://drops.warframestat.us/#/search/%5ELex%20Prime%20Blueprint/items/regex
+              - row "Burston Prime Barrel 125 135 130 - 10 844 Component Weapon Prime a few seconds ago Drops" [ref=f29e849]:
+                - cell [ref=f29e850]:
+                  - generic [ref=f29e851]: 󰄱
+                - cell [ref=f29e855]:
+                  - link "Burston Prime Barrel" [ref=f29e859] [cursor=pointer]:
+                    - /url: https://warframe.market/items/burston_prime_barrel
+                - cell "125" [ref=f29e860]
+                - cell "135" [ref=f29e861]
+                - cell "130" [ref=f29e862]
+                - cell "-" [ref=f29e863]
+                - cell "10" [ref=f29e866]
+                - cell "844" [ref=f29e867]
+                - cell "Component Weapon Prime" [ref=f29e868]:
+                  - generic [ref=f29e869]:
+                    - generic [ref=f29e870] [cursor=pointer]: Component
+                    - generic [ref=f29e872] [cursor=pointer]: Weapon
+                    - generic [ref=f29e874] [cursor=pointer]: Prime
+                - cell "a few seconds ago" [ref=f29e876]
+                - cell [ref=f29e877]:
+                  - link "Drops" [ref=f29e878] [cursor=pointer]:
+                    - /url: https://drops.warframestat.us/#/search/%5EBurston%20Prime%20Barrel/items/regex
+              - row "Wyrm Prime Cerebrum 141 155 148 - 14 839 Component Weapon Prime a few seconds ago Drops" [ref=f29e879]:
+                - cell [ref=f29e880]:
+                  - generic [ref=f29e881]: 󰄱
+                - cell [ref=f29e885]:
+                  - link "Wyrm Prime Cerebrum" [ref=f29e889] [cursor=pointer]:
+                    - /url: https://warframe.market/items/wyrm_prime_cerebrum
+                - cell "141" [ref=f29e890]
+                - cell "155" [ref=f29e891]
+                - cell "148" [ref=f29e892]
+                - cell "-" [ref=f29e893]
+                - cell "14" [ref=f29e896]
+                - cell "839" [ref=f29e897]
+                - cell "Component Weapon Prime" [ref=f29e898]:
+                  - generic [ref=f29e899]:
+                    - generic [ref=f29e900] [cursor=pointer]: Component
+                    - generic [ref=f29e902] [cursor=pointer]: Weapon
+                    - generic [ref=f29e904] [cursor=pointer]: Prime
+                - cell "a few seconds ago" [ref=f29e906]
+                - cell [ref=f29e907]:
+                  - link "Drops" [ref=f29e908] [cursor=pointer]:
+                    - /url: https://drops.warframestat.us/#/search/%5EWyrm%20Prime%20Cerebrum/items/regex
+              - row "Vauban Prime Chassis Blueprint 94 122 108 - 28 837 Component Prime Warframe Blueprint a few seconds ago Drops" [ref=f29e909]:
+                - cell [ref=f29e910]:
+                  - generic [ref=f29e911]: 󰄱
+                - cell [ref=f29e915]:
+                  - link "Vauban Prime Chassis Blueprint" [ref=f29e919] [cursor=pointer]:
+                    - /url: https://warframe.market/items/vauban_prime_chassis_blueprint
+                - cell "94" [ref=f29e920]
+                - cell "122" [ref=f29e921]
+                - cell "108" [ref=f29e922]
+                - cell "-" [ref=f29e923]
+                - cell "28" [ref=f29e926]
+                - cell "837" [ref=f29e927]
+                - cell "Component Prime Warframe Blueprint" [ref=f29e928]:
+                  - generic [ref=f29e929]:
+                    - generic [ref=f29e930] [cursor=pointer]: Component
+                    - generic [ref=f29e932] [cursor=pointer]: Prime
+                    - generic [ref=f29e934] [cursor=pointer]: Warframe
+                    - generic [ref=f29e936] [cursor=pointer]: Blueprint
+                - cell "a few seconds ago" [ref=f29e938]
+                - cell [ref=f29e939]:
+                  - link "Drops" [ref=f29e940] [cursor=pointer]:
+                    - /url: https://drops.warframestat.us/#/search/%5EVauban%20Prime%20Chassis%20Blueprint/items/regex
+              - row "Aklex Prime Link 58 63 61 - 5 833 Component Weapon Prime a few seconds ago Drops" [ref=f29e941]:
+                - cell [ref=f29e942]:
+                  - generic [ref=f29e943]: 󰄱
+                - cell [ref=f29e947]:
+                  - link "Aklex Prime Link" [ref=f29e951] [cursor=pointer]:
+                    - /url: https://warframe.market/items/aklex_prime_link
+                - cell "58" [ref=f29e952]
+                - cell "63" [ref=f29e953]
+                - cell "61" [ref=f29e954]
+                - cell "-" [ref=f29e955]
+                - cell "5" [ref=f29e958]
+                - cell "833" [ref=f29e959]
+                - cell "Component Weapon Prime" [ref=f29e960]:
+                  - generic [ref=f29e961]:
+                    - generic [ref=f29e962] [cursor=pointer]: Component
+                    - generic [ref=f29e964] [cursor=pointer]: Weapon
+                    - generic [ref=f29e966] [cursor=pointer]: Prime
+                - cell "a few seconds ago" [ref=f29e968]
+                - cell [ref=f29e969]:
+                  - link "Drops" [ref=f29e970] [cursor=pointer]:
+                    - /url: https://drops.warframestat.us/#/search/%5EAklex%20Prime%20Link/items/regex
+              - row "Imperator Vandal Barrel 58 61 60 - 3 831 Component Weapon a few seconds ago Drops" [ref=f29e971]:
+                - cell [ref=f29e972]:
+                  - generic [ref=f29e973]: 󰄱
+                - cell [ref=f29e977]:
+                  - link "Imperator Vandal Barrel" [ref=f29e981] [cursor=pointer]:
+                    - /url: https://warframe.market/items/imperator_vandal_barrel
+                - cell "58" [ref=f29e982]
+                - cell "61" [ref=f29e983]
+                - cell "60" [ref=f29e984]
+                - cell "-" [ref=f29e985]
+                - cell "3" [ref=f29e988]
+                - cell "831" [ref=f29e989]
+                - cell "Component Weapon" [ref=f29e990]:
+                  - generic [ref=f29e991]:
+                    - generic [ref=f29e992] [cursor=pointer]: Component
+                    - generic [ref=f29e994] [cursor=pointer]: Weapon
+                - cell "a few seconds ago" [ref=f29e996]
+                - cell [ref=f29e997]:
+                  - link "Drops" [ref=f29e998] [cursor=pointer]:
+                    - /url: https://drops.warframestat.us/#/search/%5EImperator%20Vandal%20Barrel/items/regex
+              - row "Mag Prime Systems Blueprint 180 197 189 - 17 831 Component Prime Warframe Blueprint a few seconds ago Drops" [ref=f29e999]:
+                - cell [ref=f29e1000]:
+                  - generic [ref=f29e1001]: 󰄱
+                - cell [ref=f29e1005]:
+                  - link "Mag Prime Systems Blueprint" [ref=f29e1009] [cursor=pointer]:
+                    - /url: https://warframe.market/items/mag_prime_systems_blueprint
+                - cell "180" [ref=f29e1010]
+                - cell "197" [ref=f29e1011]
+                - cell "189" [ref=f29e1012]
+                - cell "-" [ref=f29e1013]
+                - cell "17" [ref=f29e1016]
+                - cell "831" [ref=f29e1017]
+                - cell "Component Prime Warframe Blueprint" [ref=f29e1018]:
+                  - generic [ref=f29e1019]:
+                    - generic [ref=f29e1020] [cursor=pointer]: Component
+                    - generic [ref=f29e1022] [cursor=pointer]: Prime
+                    - generic [ref=f29e1024] [cursor=pointer]: Warframe
+                    - generic [ref=f29e1026] [cursor=pointer]: Blueprint
+                - cell "a few seconds ago" [ref=f29e1028]
+                - cell [ref=f29e1029]:
+                  - link "Drops" [ref=f29e1030] [cursor=pointer]:
+                    - /url: https://drops.warframestat.us/#/search/%5EMag%20Prime%20Systems%20Blueprint/items/regex
+              - row "Helios Prime Set Set vs Parts 56 83 70 - 27 829 Prime Sentinel Set a few seconds ago Drops" [ref=f29e1031]:
+                - cell [ref=f29e1032]:
+                  - generic [ref=f29e1033]: 󰄱
+                - cell [ref=f29e1037]:
+                  - generic [ref=f29e1040]:
+                    - link "Helios Prime Set" [ref=f29e1041] [cursor=pointer]:
+                      - /url: https://warframe.market/items/helios_prime_set
+                    - link "Set vs Parts" [ref=f29e1042] [cursor=pointer]:
+                      - /url: /set/helios_prime_set
+                - cell "56" [ref=f29e1044]
+                - cell "83" [ref=f29e1045]
+                - cell "70" [ref=f29e1046]
+                - cell "-" [ref=f29e1047]
+                - cell "27" [ref=f29e1050]
+                - cell "829" [ref=f29e1051]
+                - cell "Prime Sentinel Set" [ref=f29e1052]:
+                  - generic [ref=f29e1053]:
+                    - generic [ref=f29e1054] [cursor=pointer]: Prime
+                    - generic [ref=f29e1056] [cursor=pointer]: Sentinel
+                    - generic [ref=f29e1058] [cursor=pointer]: Set
+                - cell "a few seconds ago" [ref=f29e1060]
+                - cell [ref=f29e1061]:
+                  - link "Drops" [ref=f29e1062] [cursor=pointer]:
+                    - /url: https://drops.warframestat.us/#/search/%5EHelios%20Prime/items/regex
+              - row "Silva & Aegis Prime Blade 20 31 26 - 11 828 Component Weapon Prime a few seconds ago Drops" [ref=f29e1063]:
+                - cell [ref=f29e1064]:
+                  - generic [ref=f29e1065]: 󰄱
+                - cell [ref=f29e1069]:
+                  - link "Silva & Aegis Prime Blade" [ref=f29e1073] [cursor=pointer]:
+                    - /url: https://warframe.market/items/silva_and_aegis_prime_blade
+                - cell "20" [ref=f29e1074]
+                - cell "31" [ref=f29e1075]
+                - cell "26" [ref=f29e1076]
+                - cell "-" [ref=f29e1077]
+                - cell "11" [ref=f29e1080]
+                - cell "828" [ref=f29e1081]
+                - cell "Component Weapon Prime" [ref=f29e1082]:
+                  - generic [ref=f29e1083]:
+                    - generic [ref=f29e1084] [cursor=pointer]: Component
+                    - generic [ref=f29e1086] [cursor=pointer]: Weapon
+                    - generic [ref=f29e1088] [cursor=pointer]: Prime
+                - cell "a few seconds ago" [ref=f29e1090]
+                - cell [ref=f29e1091]:
+                  - link "Drops" [ref=f29e1092] [cursor=pointer]:
+                    - /url: https://drops.warframestat.us/#/search/%5ESilva%20%26%20Aegis%20Prime%20Blade/items/regex
+              - row "Twin Vipers Wraith Blueprint 143 191 167 - 48 824 Weapon Secondary Blueprint a few seconds ago Drops" [ref=f29e1093]:
+                - cell [ref=f29e1094]:
+                  - generic [ref=f29e1095]: 󰄱
+                - cell [ref=f29e1099]:
+                  - link "Twin Vipers Wraith Blueprint" [ref=f29e1103] [cursor=pointer]:
+                    - /url: https://warframe.market/items/twin_vipers_wraith_blueprint
+                - cell "143" [ref=f29e1104]
+                - cell "191" [ref=f29e1105]
+                - cell "167" [ref=f29e1106]
+                - cell "-" [ref=f29e1107]
+                - cell "48" [ref=f29e1110]
+                - cell "824" [ref=f29e1111]
+                - cell "Weapon Secondary Blueprint" [ref=f29e1112]:
+                  - generic [ref=f29e1113]:
+                    - generic [ref=f29e1114] [cursor=pointer]: Weapon
+                    - generic [ref=f29e1116] [cursor=pointer]: Secondary
+                    - generic [ref=f29e1118] [cursor=pointer]: Blueprint
+                - cell "a few seconds ago" [ref=f29e1120]
+                - cell [ref=f29e1121]:
+                  - link "Drops" [ref=f29e1122] [cursor=pointer]:
+                    - /url: https://drops.warframestat.us/#/search/%5ETwin%20Vipers%20Wraith%20Blueprint/items/regex
+              - row "Pyrana Prime Receiver 10 14 12 - 4 823 Component Weapon Prime a few seconds ago Drops" [ref=f29e1123]:
+                - cell [ref=f29e1124]:
+                  - generic [ref=f29e1125]: 󰄱
+                - cell [ref=f29e1129]:
+                  - link "Pyrana Prime Receiver" [ref=f29e1133] [cursor=pointer]:
+                    - /url: https://warframe.market/items/pyrana_prime_receiver
+                - cell "10" [ref=f29e1134]
+                - cell "14" [ref=f29e1135]
+                - cell "12" [ref=f29e1136]
+                - cell "-" [ref=f29e1137]
+                - cell "4" [ref=f29e1140]
+                - cell "823" [ref=f29e1141]
+                - cell "Component Weapon Prime" [ref=f29e1142]:
+                  - generic [ref=f29e1143]:
+                    - generic [ref=f29e1144] [cursor=pointer]: Component
+                    - generic [ref=f29e1146] [cursor=pointer]: Weapon
+                    - generic [ref=f29e1148] [cursor=pointer]: Prime
+                - cell "a few seconds ago" [ref=f29e1150]
+                - cell [ref=f29e1151]:
+                  - link "Drops" [ref=f29e1152] [cursor=pointer]:
+                    - /url: https://drops.warframestat.us/#/search/%5EPyrana%20Prime%20Receiver/items/regex
+              - row "Aklex Prime Set Set vs Parts 31 35 33 - 4 823 Weapon Prime Set Secondary a few seconds ago Drops" [ref=f29e1153]:
+                - cell [ref=f29e1154]:
+                  - generic [ref=f29e1155]: 󰄱
+                - cell [ref=f29e1159]:
+                  - generic [ref=f29e1162]:
+                    - link "Aklex Prime Set" [ref=f29e1163] [cursor=pointer]:
+                      - /url: https://warframe.market/items/aklex_prime_set
+                    - link "Set vs Parts" [ref=f29e1164] [cursor=pointer]:
+                      - /url: /set/aklex_prime_set
+                - cell "31" [ref=f29e1166]
+                - cell "35" [ref=f29e1167]
+                - cell "33" [ref=f29e1168]
+                - cell "-" [ref=f29e1169]
+                - cell "4" [ref=f29e1172]
+                - cell "823" [ref=f29e1173]
+                - cell "Weapon Prime Set Secondary" [ref=f29e1174]:
+                  - generic [ref=f29e1175]:
+                    - generic [ref=f29e1176] [cursor=pointer]: Weapon
+                    - generic [ref=f29e1178] [cursor=pointer]: Prime
+                    - generic [ref=f29e1180] [cursor=pointer]: Set
+                    - generic [ref=f29e1182] [cursor=pointer]: Secondary
+                - cell "a few seconds ago" [ref=f29e1184]
+                - cell [ref=f29e1185]:
+                  - link "Drops" [ref=f29e1186] [cursor=pointer]:
+                    - /url: https://drops.warframestat.us/#/search/%5EAklex%20Prime/items/regex
+              - row "Wolf Sledge Set Set vs Parts 40 61 51 - 21 822 Melee Weapon Set a few seconds ago Drops" [ref=f29e1187]:
+                - cell [ref=f29e1188]:
+                  - generic [ref=f29e1189]: 󰄱
+                - cell [ref=f29e1193]:
+                  - generic [ref=f29e1196]:
+                    - link "Wolf Sledge Set" [ref=f29e1197] [cursor=pointer]:
+                      - /url: https://warframe.market/items/wolf_sledge_set
+                    - link "Set vs Parts" [ref=f29e1198] [cursor=pointer]:
+                      - /url: /set/wolf_sledge_set
+                - cell "40" [ref=f29e1200]
+                - cell "61" [ref=f29e1201]
+                - cell "51" [ref=f29e1202]
+                - cell "-" [ref=f29e1203]
+                - cell "21" [ref=f29e1206]
+                - cell "822" [ref=f29e1207]
+                - cell "Melee Weapon Set" [ref=f29e1208]:
+                  - generic [ref=f29e1209]:
+                    - generic [ref=f29e1210] [cursor=pointer]: Melee
+                    - generic [ref=f29e1212] [cursor=pointer]: Weapon
+                    - generic [ref=f29e1214] [cursor=pointer]: Set
+                - cell "a few seconds ago" [ref=f29e1216]
+                - cell [ref=f29e1217]:
+                  - link "Drops" [ref=f29e1218] [cursor=pointer]:
+                    - /url: https://drops.warframestat.us/#/search/%5EWolf%20Sledge/items/regex
+              - row "Onorix Blade 145 187 166 - 42 818 Component Weapon Archwing a few seconds ago Drops" [ref=f29e1219]:
+                - cell [ref=f29e1220]:
+                  - generic [ref=f29e1221]: 󰄱
+                - cell [ref=f29e1225]:
+                  - link "Onorix Blade" [ref=f29e1229] [cursor=pointer]:
+                    - /url: https://warframe.market/items/onorix_blade
+                - cell "145" [ref=f29e1230]
+                - cell "187" [ref=f29e1231]
+                - cell "166" [ref=f29e1232]
+                - cell "-" [ref=f29e1233]
+                - cell "42" [ref=f29e1236]
+                - cell "818" [ref=f29e1237]
+                - cell "Component Weapon Archwing" [ref=f29e1238]:
+                  - generic [ref=f29e1239]:
+                    - generic [ref=f29e1240] [cursor=pointer]: Component
+                    - generic [ref=f29e1242] [cursor=pointer]: Weapon
+                    - generic [ref=f29e1244] [cursor=pointer]: Archwing
+                - cell "a few seconds ago" [ref=f29e1246]
+                - cell [ref=f29e1247]:
+                  - link "Drops" [ref=f29e1248] [cursor=pointer]:
+                    - /url: https://drops.warframestat.us/#/search/%5EOnorix%20Blade/items/regex
+              - row "Oberon Prime Neuroptics Blueprint 185 198 192 - 13 815 Warframe Component Blueprint Prime a few seconds ago Drops" [ref=f29e1249]:
+                - cell [ref=f29e1250]:
+                  - generic [ref=f29e1251]: 󰄱
+                - cell [ref=f29e1255]:
+                  - link "Oberon Prime Neuroptics Blueprint" [ref=f29e1259] [cursor=pointer]:
+                    - /url: https://warframe.market/items/oberon_prime_neuroptics_blueprint
+                - cell "185" [ref=f29e1260]
+                - cell "198" [ref=f29e1261]
+                - cell "192" [ref=f29e1262]
+                - cell "-" [ref=f29e1263]
+                - cell "13" [ref=f29e1266]
+                - cell "815" [ref=f29e1267]
+                - cell "Warframe Component Blueprint Prime" [ref=f29e1268]:
+                  - generic [ref=f29e1269]:
+                    - generic [ref=f29e1270] [cursor=pointer]: Warframe
+                    - generic [ref=f29e1272] [cursor=pointer]: Component
+                    - generic [ref=f29e1274] [cursor=pointer]: Blueprint
+                    - generic [ref=f29e1276] [cursor=pointer]: Prime
+                - cell "a few seconds ago" [ref=f29e1278]
+                - cell [ref=f29e1279]:
+                  - link "Drops" [ref=f29e1280] [cursor=pointer]:
+                    - /url: https://drops.warframestat.us/#/search/%5EOberon%20Prime%20Neuroptics%20Blueprint/items/regex
+              - row "Narrow Barrel 63 77 70 - 14 811 Mod Rare Primary Shotgun a few seconds ago Drops" [ref=f29e1281]:
+                - cell [ref=f29e1282]:
+                  - generic [ref=f29e1283]: 󰄱
+                - cell [ref=f29e1287]:
+                  - link "Narrow Barrel" [ref=f29e1291] [cursor=pointer]:
+                    - /url: https://warframe.market/items/narrow_barrel
+                - cell "63" [ref=f29e1292]
+                - cell "77" [ref=f29e1293]
+                - cell "70" [ref=f29e1294]
+                - cell "-" [ref=f29e1295]
+                - cell "14" [ref=f29e1298]
+                - cell "811" [ref=f29e1299]
+                - cell "Mod Rare Primary Shotgun" [ref=f29e1300]:
+                  - generic [ref=f29e1301]:
+                    - generic [ref=f29e1302] [cursor=pointer]: Mod
+                    - generic [ref=f29e1304] [cursor=pointer]: Rare
+                    - generic [ref=f29e1306] [cursor=pointer]: Primary
+                    - generic [ref=f29e1308] [cursor=pointer]: Shotgun
+                - cell "a few seconds ago" [ref=f29e1310]
+                - cell [ref=f29e1311]:
+                  - link "Drops" [ref=f29e1312] [cursor=pointer]:
+                    - /url: https://drops.warframestat.us/#/search/%5ENarrow%20Barrel/items/regex
+              - row "Valkyr Prime Neuroptics Blueprint 57 76 67 - 19 809 Warframe Component Blueprint Prime a few seconds ago Drops" [ref=f29e1313]:
+                - cell [ref=f29e1314]:
+                  - generic [ref=f29e1315]: 󰄱
+                - cell [ref=f29e1319]:
+                  - link "Valkyr Prime Neuroptics Blueprint" [ref=f29e1323] [cursor=pointer]:
+                    - /url: https://warframe.market/items/valkyr_prime_neuroptics_blueprint
+                - cell "57" [ref=f29e1324]
+                - cell "76" [ref=f29e1325]
+                - cell "67" [ref=f29e1326]
+                - cell "-" [ref=f29e1327]
+                - cell "19" [ref=f29e1330]
+                - cell "809" [ref=f29e1331]
+                - cell "Warframe Component Blueprint Prime" [ref=f29e1332]:
+                  - generic [ref=f29e1333]:
+                    - generic [ref=f29e1334] [cursor=pointer]: Warframe
+                    - generic [ref=f29e1336] [cursor=pointer]: Component
+                    - generic [ref=f29e1338] [cursor=pointer]: Blueprint
+                    - generic [ref=f29e1340] [cursor=pointer]: Prime
+                - cell "a few seconds ago" [ref=f29e1342]
+                - cell [ref=f29e1343]:
+                  - link "Drops" [ref=f29e1344] [cursor=pointer]:
+                    - /url: https://drops.warframestat.us/#/search/%5EValkyr%20Prime%20Neuroptics%20Blueprint/items/regex
+              - row "Reaper Prime Set Set vs Parts 6 9 8 - 3 809 Prime Weapon Melee Set a few seconds ago Drops" [ref=f29e1345]:
+                - cell [ref=f29e1346]:
+                  - generic [ref=f29e1347]: 󰄱
+                - cell [ref=f29e1351]:
+                  - generic [ref=f29e1354]:
+                    - link "Reaper Prime Set" [ref=f29e1355] [cursor=pointer]:
+                      - /url: https://warframe.market/items/reaper_prime_set
+                    - link "Set vs Parts" [ref=f29e1356] [cursor=pointer]:
+                      - /url: /set/reaper_prime_set
+                - cell "6" [ref=f29e1358]
+                - cell "9" [ref=f29e1359]
+                - cell "8" [ref=f29e1360]
+                - cell "-" [ref=f29e1361]
+                - cell "3" [ref=f29e1364]
+                - cell "809" [ref=f29e1365]
+                - cell "Prime Weapon Melee Set" [ref=f29e1366]:
+                  - generic [ref=f29e1367]:
+                    - generic [ref=f29e1368] [cursor=pointer]: Prime
+                    - generic [ref=f29e1370] [cursor=pointer]: Weapon
+                    - generic [ref=f29e1372] [cursor=pointer]: Melee
+                    - generic [ref=f29e1374] [cursor=pointer]: Set
+                - cell "a few seconds ago" [ref=f29e1376]
+                - cell [ref=f29e1377]:
+                  - link "Drops" [ref=f29e1378] [cursor=pointer]:
+                    - /url: https://drops.warframestat.us/#/search/%5EReaper%20Prime/items/regex
+              - row "Fluctus Barrel 140 164 152 - 24 808 Component Weapon Archwing a few seconds ago Drops" [ref=f29e1379]:
+                - cell [ref=f29e1380]:
+                  - generic [ref=f29e1381]: 󰄱
+                - cell [ref=f29e1385]:
+                  - link "Fluctus Barrel" [ref=f29e1389] [cursor=pointer]:
+                    - /url: https://warframe.market/items/fluctus_barrel
+                - cell "140" [ref=f29e1390]
+                - cell "164" [ref=f29e1391]
+                - cell "152" [ref=f29e1392]
+                - cell "-" [ref=f29e1393]
+                - cell "24" [ref=f29e1396]
+                - cell "808" [ref=f29e1397]
+                - cell "Component Weapon Archwing" [ref=f29e1398]:
+                  - generic [ref=f29e1399]:
+                    - generic [ref=f29e1400] [cursor=pointer]: Component
+                    - generic [ref=f29e1402] [cursor=pointer]: Weapon
+                    - generic [ref=f29e1404] [cursor=pointer]: Archwing
+                - cell "a few seconds ago" [ref=f29e1406]
+                - cell [ref=f29e1407]:
+                  - link "Drops" [ref=f29e1408] [cursor=pointer]:
+                    - /url: https://drops.warframestat.us/#/search/%5EFluctus%20Barrel/items/regex
+              - row "Vectis Prime Barrel 170 174 172 - 4 808 Component Weapon Prime a few seconds ago Drops" [ref=f29e1409]:
+                - cell [ref=f29e1410]:
+                  - generic [ref=f29e1411]: 󰄱
+                - cell [ref=f29e1415]:
+                  - link "Vectis Prime Barrel" [ref=f29e1419] [cursor=pointer]:
+                    - /url: https://warframe.market/items/vectis_prime_barrel
+                - cell "170" [ref=f29e1420]
+                - cell "174" [ref=f29e1421]
+                - cell "172" [ref=f29e1422]
+                - cell "-" [ref=f29e1423]
+                - cell "4" [ref=f29e1426]
+                - cell "808" [ref=f29e1427]
+                - cell "Component Weapon Prime" [ref=f29e1428]:
+                  - generic [ref=f29e1429]:
+                    - generic [ref=f29e1430] [cursor=pointer]: Component
+                    - generic [ref=f29e1432] [cursor=pointer]: Weapon
+                    - generic [ref=f29e1434] [cursor=pointer]: Prime
+                - cell "a few seconds ago" [ref=f29e1436]
+                - cell [ref=f29e1437]:
+                  - link "Drops" [ref=f29e1438] [cursor=pointer]:
+                    - /url: https://drops.warframestat.us/#/search/%5EVectis%20Prime%20Barrel/items/regex
+              - row "Centaur Blade 4 7 6 - 3 807 Component Weapon Archwing a few seconds ago Drops" [ref=f29e1439]:
+                - cell [ref=f29e1440]:
+                  - generic [ref=f29e1441]: 󰄱
+                - cell [ref=f29e1445]:
+                  - link "Centaur Blade" [ref=f29e1449] [cursor=pointer]:
+                    - /url: https://warframe.market/items/centaur_blade
+                - cell "4" [ref=f29e1450]
+                - cell "7" [ref=f29e1451]
+                - cell "6" [ref=f29e1452]
+                - cell "-" [ref=f29e1453]
+                - cell "3" [ref=f29e1456]
+                - cell "807" [ref=f29e1457]
+                - cell "Component Weapon Archwing" [ref=f29e1458]:
+                  - generic [ref=f29e1459]:
+                    - generic [ref=f29e1460] [cursor=pointer]: Component
+                    - generic [ref=f29e1462] [cursor=pointer]: Weapon
+                    - generic [ref=f29e1464] [cursor=pointer]: Archwing
+                - cell "a few seconds ago" [ref=f29e1466]
+                - cell [ref=f29e1467]:
+                  - link "Drops" [ref=f29e1468] [cursor=pointer]:
+                    - /url: https://drops.warframestat.us/#/search/%5ECentaur%20Blade/items/regex
+              - row "Sicarus Prime Set Set vs Parts 73 76 75 - 3 806 Weapon Prime Set Secondary a few seconds ago Drops" [ref=f29e1469]:
+                - cell [ref=f29e1470]:
+                  - generic [ref=f29e1471]: 󰄱
+                - cell [ref=f29e1475]:
+                  - generic [ref=f29e1478]:
+                    - link "Sicarus Prime Set" [ref=f29e1479] [cursor=pointer]:
+                      - /url: https://warframe.market/items/sicarus_prime_set
+                    - link "Set vs Parts" [ref=f29e1480] [cursor=pointer]:
+                      - /url: /set/sicarus_prime_set
+                - cell "73" [ref=f29e1482]
+                - cell "76" [ref=f29e1483]
+                - cell "75" [ref=f29e1484]
+                - cell "-" [ref=f29e1485]
+                - cell "3" [ref=f29e1488]
+                - cell "806" [ref=f29e1489]
+                - cell "Weapon Prime Set Secondary" [ref=f29e1490]:
+                  - generic [ref=f29e1491]:
+                    - generic [ref=f29e1492] [cursor=pointer]: Weapon
+                    - generic [ref=f29e1494] [cursor=pointer]: Prime
+                    - generic [ref=f29e1496] [cursor=pointer]: Set
+                    - generic [ref=f29e1498] [cursor=pointer]: Secondary
+                - cell "a few seconds ago" [ref=f29e1500]
+                - cell [ref=f29e1501]:
+                  - link "Drops" [ref=f29e1502] [cursor=pointer]:
+                    - /url: https://drops.warframestat.us/#/search/%5ESicarus%20Prime/items/regex
+              - row "Venka Prime Set Set vs Parts 79 94 87 - 15 805 Weapon Prime Melee Set a few seconds ago Drops" [ref=f29e1503]:
+                - cell [ref=f29e1504]:
+                  - generic [ref=f29e1505]: 󰄱
+                - cell [ref=f29e1509]:
+                  - generic [ref=f29e1512]:
+                    - link "Venka Prime Set" [ref=f29e1513] [cursor=pointer]:
+                      - /url: https://warframe.market/items/venka_prime_set
+                    - link "Set vs Parts" [ref=f29e1514] [cursor=pointer]:
+                      - /url: /set/venka_prime_set
+                - cell "79" [ref=f29e1516]
+                - cell "94" [ref=f29e1517]
+                - cell "87" [ref=f29e1518]
+                - cell "-" [ref=f29e1519]
+                - cell "15" [ref=f29e1522]
+                - cell "805" [ref=f29e1523]
+                - cell "Weapon Prime Melee Set" [ref=f29e1524]:
+                  - generic [ref=f29e1525]:
+                    - generic [ref=f29e1526] [cursor=pointer]: Weapon
+                    - generic [ref=f29e1528] [cursor=pointer]: Prime
+                    - generic [ref=f29e1530] [cursor=pointer]: Melee
+                    - generic [ref=f29e1532] [cursor=pointer]: Set
+                - cell "a few seconds ago" [ref=f29e1534]
+                - cell [ref=f29e1535]:
+                  - link "Drops" [ref=f29e1536] [cursor=pointer]:
+                    - /url: https://drops.warframestat.us/#/search/%5EVenka%20Prime/items/regex
+              - row "Spira Prime Set Set vs Parts 114 146 130 - 32 805 Weapon Prime Set Secondary a few seconds ago Drops" [ref=f29e1537]:
+                - cell [ref=f29e1538]:
+                  - generic [ref=f29e1539]: 󰄱
+                - cell [ref=f29e1543]:
+                  - generic [ref=f29e1546]:
+                    - link "Spira Prime Set" [ref=f29e1547] [cursor=pointer]:
+                      - /url: https://warframe.market/items/spira_prime_set
+                    - link "Set vs Parts" [ref=f29e1548] [cursor=pointer]:
+                      - /url: /set/spira_prime_set
+                - cell "114" [ref=f29e1550]
+                - cell "146" [ref=f29e1551]
+                - cell "130" [ref=f29e1552]
+                - cell "-" [ref=f29e1553]
+                - cell "32" [ref=f29e1556]
+                - cell "805" [ref=f29e1557]
+                - cell "Weapon Prime Set Secondary" [ref=f29e1558]:
+                  - generic [ref=f29e1559]:
+                    - generic [ref=f29e1560] [cursor=pointer]: Weapon
+                    - generic [ref=f29e1562] [cursor=pointer]: Prime
+                    - generic [ref=f29e1564] [cursor=pointer]: Set
+                    - generic [ref=f29e1566] [cursor=pointer]: Secondary
+                - cell "a few seconds ago" [ref=f29e1568]
+                - cell [ref=f29e1569]:
+                  - link "Drops" [ref=f29e1570] [cursor=pointer]:
+                    - /url: https://drops.warframestat.us/#/search/%5ESpira%20Prime/items/regex
+              - row "Itzal Harness Blueprint 125 134 130 - 9 803 Component Archwing Blueprint a few seconds ago Drops" [ref=f29e1571]:
+                - cell [ref=f29e1572]:
+                  - generic [ref=f29e1573]: 󰄱
+                - cell [ref=f29e1577]:
+                  - link "Itzal Harness Blueprint" [ref=f29e1581] [cursor=pointer]:
+                    - /url: https://warframe.market/items/itzal_harness_blueprint
+                - cell "125" [ref=f29e1582]
+                - cell "134" [ref=f29e1583]
+                - cell "130" [ref=f29e1584]
+                - cell "-" [ref=f29e1585]
+                - cell "9" [ref=f29e1588]
+                - cell "803" [ref=f29e1589]
+                - cell "Component Archwing Blueprint" [ref=f29e1590]:
+                  - generic [ref=f29e1591]:
+                    - generic [ref=f29e1592] [cursor=pointer]: Component
+                    - generic [ref=f29e1594] [cursor=pointer]: Archwing
+                    - generic [ref=f29e1596] [cursor=pointer]: Blueprint
+                - cell "a few seconds ago" [ref=f29e1598]
+                - cell [ref=f29e1599]:
+                  - link "Drops" [ref=f29e1600] [cursor=pointer]:
+                    - /url: https://drops.warframestat.us/#/search/%5EItzal%20Harness%20Blueprint/items/regex
+              - row "Scimitar Set Set vs Parts 116 140 128 - 24 798 Set a few seconds ago Drops" [ref=f29e1601]:
+                - cell [ref=f29e1602]:
+                  - generic [ref=f29e1603]: 󰄱
+                - cell [ref=f29e1607]:
+                  - generic [ref=f29e1610]:
+                    - link "Scimitar Set" [ref=f29e1611] [cursor=pointer]:
+                      - /url: https://warframe.market/items/scimitar_set
+                    - link "Set vs Parts" [ref=f29e1612] [cursor=pointer]:
+                      - /url: /set/scimitar_set
+                - cell "116" [ref=f29e1614]
+                - cell "140" [ref=f29e1615]
+                - cell "128" [ref=f29e1616]
+                - cell "-" [ref=f29e1617]
+                - cell "24" [ref=f29e1620]
+                - cell "798" [ref=f29e1621]
+                - cell "Set" [ref=f29e1622]
+                - cell "a few seconds ago" [ref=f29e1626]
+                - cell [ref=f29e1627]:
+                  - link "Drops" [ref=f29e1628] [cursor=pointer]:
+                    - /url: https://drops.warframestat.us/#/search/%5EScimitar/items/regex
+              - row "Soma Prime Stock 163 173 168 - 10 795 Component Weapon Prime a few seconds ago Drops" [ref=f29e1629]:
+                - cell [ref=f29e1630]:
+                  - generic [ref=f29e1631]: 󰄱
+                - cell [ref=f29e1635]:
+                  - link "Soma Prime Stock" [ref=f29e1639] [cursor=pointer]:
+                    - /url: https://warframe.market/items/soma_prime_stock
+                - cell "163" [ref=f29e1640]
+                - cell "173" [ref=f29e1641]
+                - cell "168" [ref=f29e1642]
+                - cell "-" [ref=f29e1643]
+                - cell "10" [ref=f29e1646]
+                - cell "795" [ref=f29e1647]
+                - cell "Component Weapon Prime" [ref=f29e1648]:
+                  - generic [ref=f29e1649]:
+                    - generic [ref=f29e1650] [cursor=pointer]: Component
+                    - generic [ref=f29e1652] [cursor=pointer]: Weapon
+                    - generic [ref=f29e1654] [cursor=pointer]: Prime
+                - cell "a few seconds ago" [ref=f29e1656]
+                - cell [ref=f29e1657]:
+                  - link "Drops" [ref=f29e1658] [cursor=pointer]:
+                    - /url: https://drops.warframestat.us/#/search/%5ESoma%20Prime%20Stock/items/regex
+              - row "Atlas Prime Chassis Blueprint 124 148 136 - 24 795 Component Prime Warframe Blueprint a few seconds ago Drops" [ref=f29e1659]:
+                - cell [ref=f29e1660]:
+                  - generic [ref=f29e1661]: 󰄱
+                - cell [ref=f29e1665]:
+                  - link "Atlas Prime Chassis Blueprint" [ref=f29e1669] [cursor=pointer]:
+                    - /url: https://warframe.market/items/atlas_prime_chassis_blueprint
+                - cell "124" [ref=f29e1670]
+                - cell "148" [ref=f29e1671]
+                - cell "136" [ref=f29e1672]
+                - cell "-" [ref=f29e1673]
+                - cell "24" [ref=f29e1676]
+                - cell "795" [ref=f29e1677]
+                - cell "Component Prime Warframe Blueprint" [ref=f29e1678]:
+                  - generic [ref=f29e1679]:
+                    - generic [ref=f29e1680] [cursor=pointer]: Component
+                    - generic [ref=f29e1682] [cursor=pointer]: Prime
+                    - generic [ref=f29e1684] [cursor=pointer]: Warframe
+                    - generic [ref=f29e1686] [cursor=pointer]: Blueprint
+                - cell "a few seconds ago" [ref=f29e1688]
+                - cell [ref=f29e1689]:
+                  - link "Drops" [ref=f29e1690] [cursor=pointer]:
+                    - /url: https://drops.warframestat.us/#/search/%5EAtlas%20Prime%20Chassis%20Blueprint/items/regex
+          - generic [ref=f29e1691]:
+            - generic [ref=f29e1692]:
+              - text: "Rows per page:"
+              - button "50" [ref=f29e1695] [cursor=pointer]:
+                - generic [ref=f29e1696]:
+                  - generic [ref=f29e1697]:
+                    - generic [ref=f29e1698]: "50"
+                    - textbox "Rows per page:"
+                  - generic [ref=f29e1699]: 󰍝
+            - generic [ref=f29e1702]: 1-50 of 500
+            - generic [ref=f29e1703]:
+              - button "Previous page" [disabled]:
+                - generic: 󰅁
+            - button "Next page" [ref=f29e1705] [cursor=pointer]:
+              - generic [ref=f29e1706]: 󰅂
+        - generic [ref=f29e1712]:
+          - generic [ref=f29e1713]: Help us donating!
+          - link "Donar con Paypal":
+            - /url: https://ko-fi.com/cambio_uruguay
+          - link "Donar con Mercado Pago":
+            - /url: https://mpago.la/19j46vX
+      - alert [ref=f29e1714]:
+        - generic [ref=f29e1715]:
+          - generic [ref=f29e1716]: 󰑍
+          - generic [ref=f29e1718]:
+            - generic [ref=f29e1719]:
+              - heading "We need your feedback!" [level=3] [ref=f29e1720]
+              - generic [ref=f29e1721]: Help us improve by sharing your thoughts and reviews on our Reddit thread. That will help us a lot!
+            - link [ref=f29e1722] [cursor=pointer]:
+              - /url: https://www.reddit.com/r/Warframe/comments/1nnvsep/my_warframe_market_analytics_app_looking_for/
+              - generic [ref=f29e1723]:
+                - generic [ref=f29e1724]: 󰑍
+                - text: Join Discussion
+      - generic [ref=f29e1726]:
+        - generic [ref=f29e1727]:
+          - generic [ref=f29e1728]: 󰮮
+          - heading "Open Source Project" [level=3] [ref=f29e1729]
+        - paragraph [ref=f29e1730]: This is an open source project! You can view the code, contribute, report issues, or fork it for your own use.
+        - generic [ref=f29e1731]:
+          - link "View Source Code" [ref=f29e1732] [cursor=pointer]:
+            - /url: https://github.com/eduair94/warframe
+            - generic [ref=f29e1733]:
+              - generic [ref=f29e1734]: 󰊤
+              - generic [ref=f29e1735]: View Source Code
+          - button [ref=f29e1737] [cursor=pointer]:
+            - generic [ref=f29e1738]: 󰊤
+      - alert [ref=f29e1740]:
+        - generic [ref=f29e1741]:
+          - generic [ref=f29e1742]: 󰋼
+          - generic [ref=f29e1743]: This site was created solely for the purpose of education, we are not responsible for the misuse of the information.
+  - contentinfo [ref=f29e1744]:
+    - generic [ref=f29e1745]:
+      - generic [ref=f29e1746]: Warframe Market Analytics © 2026
+      - generic [ref=f29e1748]:
+        - text: Made with
+        - generic [ref=f29e1749]: 󰋑
+        - text: by
+        - link "Eduardo Airaudo" [ref=f29e1750] [cursor=pointer]:
+          - /url: https://www.linkedin.com/in/eduardo-airaudo/
+        - text: and
+        - link "Regina Scagliotti" [ref=f29e1751] [cursor=pointer]:
+          - /url: https://www.linkedin.com/in/reginascagliotti/

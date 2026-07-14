@@ -18,8 +18,8 @@ import { HeaderService } from './HeaderService';
 import { sleep } from '../Express/config';
 import { AntiDetection, ProxyRotation } from '../anti-detection';
 
-// Debug mode - set DEBUG=true environment variable for verbose logging
-const DEBUG = process.env.DEBUG === 'true';
+// Debug mode - set DEBUG=true or DEBUG=warframe:* for verbose logging
+import { DEBUG } from '../debug';
 
 /**
  * Default configuration values

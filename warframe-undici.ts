@@ -24,9 +24,10 @@ import {
 } from "./services";
 import { BaseWarframeClient, WarframeClientConfig } from "./services/BaseWarframeClient";
 import { MarketService } from "./services/MarketService";
+import { ProxyRotation } from "./anti-detection";
 
-// Debug mode - set DEBUG=true environment variable for verbose logging
-const DEBUG = process.env.DEBUG === 'true';
+// Debug mode - set DEBUG=true or DEBUG=warframe:* for verbose logging
+import { DEBUG } from './debug';
 
 /**
  * High-performance Warframe Market API client using undici
@@ -101,12 +102,11 @@ export default class WarframeUndici extends BaseWarframeClient {
   }
 
   /**
-   * Gets proxy statistics
+   * Gets proxy statistics: per-proxy success/failure counts plus the
+   * current ban list. Previously returned a placeholder string instead
+   * of real metrics.
    */
-  getProxyStats(): any {
-    return {
-      message: "Proxy stats are managed by ProxyRotation static class",
-      available: "Use ProxyRotation.getProxyStats(proxy) for individual proxy stats"
-    };
+  getProxyStats(): ReturnType<typeof ProxyRotation.getAllStats> {
+    return ProxyRotation.getAllStats();
   }
 }

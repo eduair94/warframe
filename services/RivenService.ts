@@ -16,8 +16,8 @@ import { IDatabaseOperations } from '../interfaces/database.interface';
 import { ENDO_CONSTANTS, API_URLS, RIVEN_DEFAULTS, RIVEN_SYNC_DEFAULTS, AGGREGATION } from '../constants';
 import { sleep } from '../Express/config';
 
-// Debug mode - set DEBUG=true environment variable for verbose logging
-const DEBUG = process.env.DEBUG === 'true';
+// Debug mode - set DEBUG=true or DEBUG=warframe:* for verbose logging
+import { DEBUG } from '../debug';
 
 /**
  * Represents a Riven item from the API
@@ -31,6 +31,12 @@ export interface IRivenItem {
   riven_type: string;
   mastery_level?: number;
   icon?: string;
+  /**
+   * Riven disposition (~0.5–1.55): the multiplier DE applies to a weapon's
+   * riven stat ranges. The v2 weapons API returns it; it is required to grade a
+   * roll against its achievable range (god-roll grader) and to flag nerf risk.
+   */
+  disposition?: number;
 }
 
 /**
@@ -200,7 +206,11 @@ export class RivenService {
       riven_type: weapon.rivenType,
       mastery_level: weapon.reqMasteryRank,
       icon: enData?.icon ?? '',
-      thumb: enData?.thumb ?? ''
+      thumb: enData?.thumb ?? '',
+      // Persist disposition so the god-roll grader / nerf-risk tracker can score
+      // a roll against its weapon's achievable range (v1 /riven/items never
+      // exposed this - it only arrived with the v2 /riven/weapons endpoint).
+      disposition: weapon.disposition
     };
   }
 
@@ -406,5 +416,82 @@ export class RivenService {
         }
       });
     });
+  }
+
+  /**
+   * Lightweight list of every riven weapon we track, with its disposition and a
+   * count of currently-stored auctions - used to populate the weapon picker on
+   * the riven fair-value page. Projects OUT the heavy `items` (auction) array so
+   * the payload stays small.
+   */
+  async getWeaponsList(): Promise<Array<{
+    url_name: string;
+    item_name: string;
+    group?: string;
+    riven_type?: string;
+    disposition?: number;
+    thumb?: string;
+    icon?: string;
+    auctionCount: number;
+    minBuyout: number | null;
+  }>> {
+    const pipeline = [
+      {
+        $project: {
+          _id: 0,
+          url_name: 1,
+          item_name: 1,
+          group: 1,
+          riven_type: 1,
+          disposition: 1,
+          thumb: 1,
+          icon: 1,
+          auctionCount: { $size: { $ifNull: ['$items', []] } },
+          minBuyout: { $min: '$items.buyout_price' }
+        }
+      },
+      { $sort: { item_name: 1 } }
+    ];
+    const rows = await this.repository.aggregate<any>(pipeline);
+    return (rows || []).map((r) => ({
+      url_name: r.url_name,
+      item_name: r.item_name,
+      group: r.group,
+      riven_type: r.riven_type,
+      disposition: r.disposition,
+      thumb: r.thumb,
+      icon: r.icon,
+      auctionCount: r.auctionCount || 0,
+      minBuyout: typeof r.minBuyout === 'number' ? r.minBuyout : null
+    }));
+  }
+
+  /**
+   * Full stored auction corpus for a single weapon, plus its meta (disposition,
+   * group). Powers the fair-value estimator and god-roll grader, which run the
+   * similarity/percentile maths client-side over the returned auctions.
+   */
+  async getWeaponAuctions(weaponUrlName: string): Promise<{
+    url_name: string;
+    item_name: string;
+    group?: string;
+    riven_type?: string;
+    disposition?: number;
+    thumb?: string;
+    icon?: string;
+    items: IProcessedRiven[];
+  } | null> {
+    const doc: any = await this.repository.findEntry({ url_name: weaponUrlName });
+    if (!doc || !doc.url_name) return null;
+    return {
+      url_name: doc.url_name,
+      item_name: doc.item_name,
+      group: doc.group,
+      riven_type: doc.riven_type,
+      disposition: doc.disposition,
+      thumb: doc.thumb,
+      icon: doc.icon,
+      items: Array.isArray(doc.items) ? doc.items : []
+    };
   }
 }

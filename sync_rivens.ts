@@ -1,3 +1,4 @@
+import "./env";
 import { MongooseServer } from "./database";
 import WarframeUndici from "./warframe-undici";
 

@@ -1,0 +1,581 @@
+- generic [ref=f5e5]:
+  - banner [ref=f5e6]:
+    - generic [ref=f5e7]:
+      - img "logo warframe analytics" [ref=f5e8] [cursor=pointer]
+      - link [ref=f5e13] [cursor=pointer]:
+        - /url: https://github.com/eduair94/warframe
+        - generic [ref=f5e14]: 󰊤
+      - button [ref=f5e17] [cursor=pointer]:
+        - generic [ref=f5e18]:
+          - text: en
+          - generic [ref=f5e19]: 󰅀
+  - main [ref=f5e20]:
+    - generic [ref=f5e22]:
+      - generic [ref=f5e23]:
+        - link "Home" [ref=f5e24] [cursor=pointer]:
+          - /url: /
+        - link "Set Price Calculator" [ref=f5e26] [cursor=pointer]:
+          - /url: /set
+        - link "Set vs Parts" [ref=f5e28] [cursor=pointer]:
+          - /url: /comparison
+        - link "Relic Price Calculator" [ref=f5e30] [cursor=pointer]:
+          - /url: /relic
+        - link "Endo / Plat" [ref=f5e32] [cursor=pointer]:
+          - /url: /endo
+        - link "My Portfolio" [ref=f5e34] [cursor=pointer]:
+          - /url: /portfolio
+        - link "Source Code" [ref=f5e36] [cursor=pointer]:
+          - /url: https://github.com/eduair94/warframe
+          - generic [ref=f5e37]:
+            - generic [ref=f5e38]: 󰊤
+            - generic [ref=f5e39]: Source Code
+      - generic [ref=f5e40]:
+        - generic [ref=f5e41]:
+          - generic [ref=f5e42]:
+            - generic [ref=f5e43]:
+              - generic [ref=f5e44]: Warframe Market · Set vs Parts
+              - heading "Buy the set, or the parts?" [level=1] [ref=f5e45]
+              - paragraph [ref=f5e46]: "Warframe.market lists set prices and part prices separately — never the decision. This is the decision: acquire the assembled set, or buy each part and combine. Which is cheaper right now, and by how much."
+            - generic [ref=f5e47]:
+              - generic [ref=f5e48]: Biggest saving right now
+              - generic [ref=f5e49]: 40p
+              - link "Protea Prime →" [ref=f5e50] [cursor=pointer]:
+                - /url: /set/protea_prime_set
+              - generic [ref=f5e51]: buying by parts (+13%)
+          - generic [ref=f5e52]:
+            - generic [ref=f5e53]:
+              - generic [ref=f5e54]: "44"
+              - generic [ref=f5e55]: sets compared
+            - generic [ref=f5e56]:
+              - generic [ref=f5e57]: "39"
+              - generic [ref=f5e58]: cheaper by parts
+            - generic [ref=f5e59]:
+              - generic [ref=f5e60]: "5"
+              - generic [ref=f5e61]: cheaper as a set
+            - generic [ref=f5e62]:
+              - generic [ref=f5e63]: +20%
+              - generic [ref=f5e64]: avg parts saving
+          - generic [ref=f5e65]:
+            - generic [ref=f5e66]:
+              - generic [ref=f5e69]:
+                - generic [ref=f5e70]: 󰍉
+                - generic [ref=f5e73]:
+                  - generic: Search a set
+                  - textbox "Search a set" [ref=f5e74]
+              - generic [ref=f5e78]:
+                - generic [ref=f5e79]: Min volume (48h)
+                - spinbutton "Min volume (48h)" [ref=f5e80]: "0"
+              - button "Sort by Best parts deal (%)" [ref=f5e83] [cursor=pointer]:
+                - generic [ref=f5e84]:
+                  - generic [ref=f5e85]: Sort by
+                  - generic [ref=f5e86]:
+                    - generic [ref=f5e87]: Best parts deal (%)
+                    - textbox "Sort by" [ref=f5e88]
+                  - generic [ref=f5e89]: 󰍝
+            - generic [ref=f5e94]:
+              - generic [ref=f5e95] [cursor=pointer]: All
+              - generic [ref=f5e97] [cursor=pointer]: Warframe
+              - generic [ref=f5e99] [cursor=pointer]: Primary
+              - generic [ref=f5e101] [cursor=pointer]: Secondary
+              - generic [ref=f5e103] [cursor=pointer]: Melee
+              - generic [ref=f5e105] [cursor=pointer]: Sentinel
+              - generic [ref=f5e107] [cursor=pointer]: Companion
+              - generic [ref=f5e109] [cursor=pointer]: Archwing
+            - generic [ref=f5e111]:
+              - generic [ref=f5e114] [cursor=pointer]:
+                - switch "Only where parts are cheaper to buy" [ref=f5e116]
+                - generic [ref=f5e118]: Only where parts are cheaper to buy
+              - generic [ref=f5e121] [cursor=pointer]:
+                - switch "Only where parts resell for more" [ref=f5e123]
+                - generic [ref=f5e125]: Only where parts resell for more
+            - generic [ref=f5e126]: 44 sets match
+          - table [ref=f5e128]:
+            - rowgroup [ref=f5e129]:
+              - row [ref=f5e130]:
+                - columnheader "Set" [ref=f5e131]
+                - columnheader "Cost to acquire" [ref=f5e132]
+                - columnheader "Resale value" [ref=f5e133]
+                - columnheader "Vol" [ref=f5e134]
+                - columnheader [ref=f5e135]
+              - row [ref=f5e136]:
+                - columnheader [ref=f5e137]
+                - columnheader "Set" [ref=f5e138]
+                - columnheader "Parts" [ref=f5e139]
+                - columnheader "Verdict" [ref=f5e140]
+                - columnheader "Set" [ref=f5e141]
+                - columnheader "Parts" [ref=f5e142]
+                - columnheader "Δ" [ref=f5e143]
+                - columnheader [ref=f5e144]
+                - columnheader [ref=f5e145]
+            - rowgroup [ref=f5e146]:
+              - row [ref=f5e147]:
+                - cell [ref=f5e148]:
+                  - link "Latron Prime Set Latron Prime BEST DEAL 4 parts · 1 unpriced" [ref=f5e149] [cursor=pointer]:
+                    - /url: /set/latron_prime_set
+                    - img "Latron Prime Set" [ref=f5e150]
+                    - generic [ref=f5e151]:
+                      - text: Latron Prime
+                      - generic [ref=f5e152]: BEST DEAL
+                      - generic [ref=f5e153]: 4 parts · 1 unpriced
+                - cell "45p" [ref=f5e154]
+                - cell "31p" [ref=f5e155]
+                - cell "Buy parts save 14p (+31%)" [ref=f5e156]:
+                  - generic [ref=f5e157]:
+                    - text: Buy parts
+                    - generic [ref=f5e158]: save 14p (+31%)
+                - cell "40p" [ref=f5e159]
+                - cell "25p" [ref=f5e160]
+                - cell "-15p" [ref=f5e161]
+                - cell "320" [ref=f5e162]
+                - cell [ref=f5e163]:
+                  - link "View Latron Prime Set parts" [ref=f5e164] [cursor=pointer]:
+                    - /url: /set/latron_prime_set
+                    - generic [ref=f5e165]: 󰳟
+              - row [ref=f5e167]:
+                - cell [ref=f5e168]:
+                  - link "Saryn Prime Set Saryn Prime 4 parts" [ref=f5e169] [cursor=pointer]:
+                    - /url: /set/saryn_prime_set
+                    - img "Saryn Prime Set" [ref=f5e170]
+                    - generic [ref=f5e171]:
+                      - text: Saryn Prime
+                      - generic [ref=f5e172]: 4 parts
+                - cell "130p" [ref=f5e173]
+                - cell "96p" [ref=f5e174]
+                - cell "Buy parts save 34p (+26%)" [ref=f5e175]:
+                  - generic [ref=f5e176]:
+                    - text: Buy parts
+                    - generic [ref=f5e177]: save 34p (+26%)
+                - cell "120p" [ref=f5e178]
+                - cell "82p" [ref=f5e179]
+                - cell "-38p" [ref=f5e180]
+                - cell "540" [ref=f5e181]
+                - cell [ref=f5e182]:
+                  - link "View Saryn Prime Set parts" [ref=f5e183] [cursor=pointer]:
+                    - /url: /set/saryn_prime_set
+                    - generic [ref=f5e184]: 󰳟
+              - row [ref=f5e186]:
+                - cell [ref=f5e187]:
+                  - link "Volt Prime Set Volt Prime 4 parts" [ref=f5e188] [cursor=pointer]:
+                    - /url: /set/volt_prime_set
+                    - img "Volt Prime Set" [ref=f5e189]
+                    - generic [ref=f5e190]:
+                      - text: Volt Prime
+                      - generic [ref=f5e191]: 4 parts
+                - cell "70p" [ref=f5e192]
+                - cell "52p" [ref=f5e193]
+                - cell "Buy parts save 18p (+26%)" [ref=f5e194]:
+                  - generic [ref=f5e195]:
+                    - text: Buy parts
+                    - generic [ref=f5e196]: save 18p (+26%)
+                - cell "62p" [ref=f5e197]
+                - cell "44p" [ref=f5e198]
+                - cell "-18p" [ref=f5e199]
+                - cell "390" [ref=f5e200]
+                - cell [ref=f5e201]:
+                  - link "View Volt Prime Set parts" [ref=f5e202] [cursor=pointer]:
+                    - /url: /set/volt_prime_set
+                    - generic [ref=f5e203]: 󰳟
+              - row [ref=f5e205]:
+                - cell [ref=f5e206]:
+                  - link "Nekros Prime Set Nekros Prime 4 parts" [ref=f5e207] [cursor=pointer]:
+                    - /url: /set/nekros_prime_set
+                    - img "Nekros Prime Set" [ref=f5e208]
+                    - generic [ref=f5e209]:
+                      - text: Nekros Prime
+                      - generic [ref=f5e210]: 4 parts
+                - cell "55p" [ref=f5e211]
+                - cell "41p" [ref=f5e212]
+                - cell "Buy parts save 14p (+25%)" [ref=f5e213]:
+                  - generic [ref=f5e214]:
+                    - text: Buy parts
+                    - generic [ref=f5e215]: save 14p (+25%)
+                - cell "48p" [ref=f5e216]
+                - cell "33p" [ref=f5e217]
+                - cell "-15p" [ref=f5e218]
+                - cell "470" [ref=f5e219]
+                - cell [ref=f5e220]:
+                  - link "View Nekros Prime Set parts" [ref=f5e221] [cursor=pointer]:
+                    - /url: /set/nekros_prime_set
+                    - generic [ref=f5e222]: 󰳟
+              - row [ref=f5e224]:
+                - cell [ref=f5e225]:
+                  - link "Trinity Prime Set Trinity Prime 4 parts · 1 unpriced" [ref=f5e226] [cursor=pointer]:
+                    - /url: /set/trinity_prime_set
+                    - img "Trinity Prime Set" [ref=f5e227]
+                    - generic [ref=f5e228]:
+                      - text: Trinity Prime
+                      - generic [ref=f5e229]: 4 parts · 1 unpriced
+                - cell "40p" [ref=f5e230]
+                - cell "30p" [ref=f5e231]
+                - cell "Buy parts save 10p (+25%)" [ref=f5e232]:
+                  - generic [ref=f5e233]:
+                    - text: Buy parts
+                    - generic [ref=f5e234]: save 10p (+25%)
+                - cell "33p" [ref=f5e235]
+                - cell "23p" [ref=f5e236]
+                - cell "-10p" [ref=f5e237]
+                - cell "190" [ref=f5e238]
+                - cell [ref=f5e239]:
+                  - link "View Trinity Prime Set parts" [ref=f5e240] [cursor=pointer]:
+                    - /url: /set/trinity_prime_set
+                    - generic [ref=f5e241]: 󰳟
+              - row [ref=f5e243]:
+                - cell [ref=f5e244]:
+                  - link "Rhino Prime Set Rhino Prime 4 parts" [ref=f5e245] [cursor=pointer]:
+                    - /url: /set/rhino_prime_set
+                    - img "Rhino Prime Set" [ref=f5e246]
+                    - generic [ref=f5e247]:
+                      - text: Rhino Prime
+                      - generic [ref=f5e248]: 4 parts
+                - cell "45p" [ref=f5e249]
+                - cell "34p" [ref=f5e250]
+                - cell "Buy parts save 11p (+24%)" [ref=f5e251]:
+                  - generic [ref=f5e252]:
+                    - text: Buy parts
+                    - generic [ref=f5e253]: save 11p (+24%)
+                - cell "38p" [ref=f5e254]
+                - cell "27p" [ref=f5e255]
+                - cell "-11p" [ref=f5e256]
+                - cell "880" [ref=f5e257]
+                - cell [ref=f5e258]:
+                  - link "View Rhino Prime Set parts" [ref=f5e259] [cursor=pointer]:
+                    - /url: /set/rhino_prime_set
+                    - generic [ref=f5e260]: 󰳟
+              - row [ref=f5e262]:
+                - cell [ref=f5e263]:
+                  - link "Wukong Prime Set Wukong Prime 4 parts" [ref=f5e264] [cursor=pointer]:
+                    - /url: /set/wukong_prime_set
+                    - img "Wukong Prime Set" [ref=f5e265]
+                    - generic [ref=f5e266]:
+                      - text: Wukong Prime
+                      - generic [ref=f5e267]: 4 parts
+                - cell "45p" [ref=f5e268]
+                - cell "34p" [ref=f5e269]
+                - cell "Buy parts save 11p (+24%)" [ref=f5e270]:
+                  - generic [ref=f5e271]:
+                    - text: Buy parts
+                    - generic [ref=f5e272]: save 11p (+24%)
+                - cell "39p" [ref=f5e273]
+                - cell "27p" [ref=f5e274]
+                - cell "-12p" [ref=f5e275]
+                - cell "720" [ref=f5e276]
+                - cell [ref=f5e277]:
+                  - link "View Wukong Prime Set parts" [ref=f5e278] [cursor=pointer]:
+                    - /url: /set/wukong_prime_set
+                    - generic [ref=f5e279]: 󰳟
+              - row [ref=f5e281]:
+                - cell [ref=f5e282]:
+                  - link "Boltor Prime Set Boltor Prime 3 parts" [ref=f5e283] [cursor=pointer]:
+                    - /url: /set/boltor_prime_set
+                    - img "Boltor Prime Set" [ref=f5e284]
+                    - generic [ref=f5e285]:
+                      - text: Boltor Prime
+                      - generic [ref=f5e286]: 3 parts
+                - cell "50p" [ref=f5e287]
+                - cell "38p" [ref=f5e288]
+                - cell "Buy parts save 12p (+24%)" [ref=f5e289]:
+                  - generic [ref=f5e290]:
+                    - text: Buy parts
+                    - generic [ref=f5e291]: save 12p (+24%)
+                - cell "44p" [ref=f5e292]
+                - cell "30p" [ref=f5e293]
+                - cell "-14p" [ref=f5e294]
+                - cell "340" [ref=f5e295]
+                - cell [ref=f5e296]:
+                  - link "View Boltor Prime Set parts" [ref=f5e297] [cursor=pointer]:
+                    - /url: /set/boltor_prime_set
+                    - generic [ref=f5e298]: 󰳟
+              - row [ref=f5e300]:
+                - cell [ref=f5e301]:
+                  - link "Vasto Prime Set Vasto Prime 3 parts" [ref=f5e302] [cursor=pointer]:
+                    - /url: /set/vasto_prime_set
+                    - img "Vasto Prime Set" [ref=f5e303]
+                    - generic [ref=f5e304]:
+                      - text: Vasto Prime
+                      - generic [ref=f5e305]: 3 parts
+                - cell "30p" [ref=f5e306]
+                - cell "23p" [ref=f5e307]
+                - cell "Buy parts save 7p (+23%)" [ref=f5e308]:
+                  - generic [ref=f5e309]:
+                    - text: Buy parts
+                    - generic [ref=f5e310]: save 7p (+23%)
+                - cell "25p" [ref=f5e311]
+                - cell "17p" [ref=f5e312]
+                - cell "-8p" [ref=f5e313]
+                - cell "170" [ref=f5e314]
+                - cell [ref=f5e315]:
+                  - link "View Vasto Prime Set parts" [ref=f5e316] [cursor=pointer]:
+                    - /url: /set/vasto_prime_set
+                    - generic [ref=f5e317]: 󰳟
+              - row [ref=f5e319]:
+                - cell [ref=f5e320]:
+                  - link "Braton Prime Set Braton Prime 4 parts" [ref=f5e321] [cursor=pointer]:
+                    - /url: /set/braton_prime_set
+                    - img "Braton Prime Set" [ref=f5e322]
+                    - generic [ref=f5e323]:
+                      - text: Braton Prime
+                      - generic [ref=f5e324]: 4 parts
+                - cell "35p" [ref=f5e325]
+                - cell "27p" [ref=f5e326]
+                - cell "Buy parts save 8p (+23%)" [ref=f5e327]:
+                  - generic [ref=f5e328]:
+                    - text: Buy parts
+                    - generic [ref=f5e329]: save 8p (+23%)
+                - cell "29p" [ref=f5e330]
+                - cell "21p" [ref=f5e331]
+                - cell "-8p" [ref=f5e332]
+                - cell "260" [ref=f5e333]
+                - cell [ref=f5e334]:
+                  - link "View Braton Prime Set parts" [ref=f5e335] [cursor=pointer]:
+                    - /url: /set/braton_prime_set
+                    - generic [ref=f5e336]: 󰳟
+              - row [ref=f5e338]:
+                - cell [ref=f5e339]:
+                  - link "Tigris Prime Set Tigris Prime 3 parts" [ref=f5e340] [cursor=pointer]:
+                    - /url: /set/tigris_prime_set
+                    - img "Tigris Prime Set" [ref=f5e341]
+                    - generic [ref=f5e342]:
+                      - text: Tigris Prime
+                      - generic [ref=f5e343]: 3 parts
+                - cell "60p" [ref=f5e344]
+                - cell "47p" [ref=f5e345]
+                - cell "Buy parts save 13p (+22%)" [ref=f5e346]:
+                  - generic [ref=f5e347]:
+                    - text: Buy parts
+                    - generic [ref=f5e348]: save 13p (+22%)
+                - cell "52p" [ref=f5e349]
+                - cell "39p" [ref=f5e350]
+                - cell "-13p" [ref=f5e351]
+                - cell "500" [ref=f5e352]
+                - cell [ref=f5e353]:
+                  - link "View Tigris Prime Set parts" [ref=f5e354] [cursor=pointer]:
+                    - /url: /set/tigris_prime_set
+                    - generic [ref=f5e355]: 󰳟
+              - row [ref=f5e357]:
+                - cell [ref=f5e358]:
+                  - link "Zephyr Prime Set Zephyr Prime 4 parts" [ref=f5e359] [cursor=pointer]:
+                    - /url: /set/zephyr_prime_set
+                    - img "Zephyr Prime Set" [ref=f5e360]
+                    - generic [ref=f5e361]:
+                      - text: Zephyr Prime
+                      - generic [ref=f5e362]: 4 parts
+                - cell "60p" [ref=f5e363]
+                - cell "47p" [ref=f5e364]
+                - cell "Buy parts save 13p (+22%)" [ref=f5e365]:
+                  - generic [ref=f5e366]:
+                    - text: Buy parts
+                    - generic [ref=f5e367]: save 13p (+22%)
+                - cell "52p" [ref=f5e368]
+                - cell "39p" [ref=f5e369]
+                - cell "-13p" [ref=f5e370]
+                - cell "250" [ref=f5e371]
+                - cell [ref=f5e372]:
+                  - link "View Zephyr Prime Set parts" [ref=f5e373] [cursor=pointer]:
+                    - /url: /set/zephyr_prime_set
+                    - generic [ref=f5e374]: 󰳟
+              - row [ref=f5e376]:
+                - cell [ref=f5e377]:
+                  - link "Soma Prime Set Soma Prime 3 parts" [ref=f5e378] [cursor=pointer]:
+                    - /url: /set/soma_prime_set
+                    - img "Soma Prime Set" [ref=f5e379]
+                    - generic [ref=f5e380]:
+                      - text: Soma Prime
+                      - generic [ref=f5e381]: 3 parts
+                - cell "55p" [ref=f5e382]
+                - cell "44p" [ref=f5e383]
+                - cell "Buy parts save 11p (+20%)" [ref=f5e384]:
+                  - generic [ref=f5e385]:
+                    - text: Buy parts
+                    - generic [ref=f5e386]: save 11p (+20%)
+                - cell "48p" [ref=f5e387]
+                - cell "36p" [ref=f5e388]
+                - cell "-12p" [ref=f5e389]
+                - cell "410" [ref=f5e390]
+                - cell [ref=f5e391]:
+                  - link "View Soma Prime Set parts" [ref=f5e392] [cursor=pointer]:
+                    - /url: /set/soma_prime_set
+                    - generic [ref=f5e393]: 󰳟
+              - row [ref=f5e395]:
+                - cell [ref=f5e396]:
+                  - link "Akbronco Prime Set Akbronco Prime 3 parts" [ref=f5e397] [cursor=pointer]:
+                    - /url: /set/akbronco_prime_set
+                    - img "Akbronco Prime Set" [ref=f5e398]
+                    - generic [ref=f5e399]:
+                      - text: Akbronco Prime
+                      - generic [ref=f5e400]: 3 parts
+                - cell "30p" [ref=f5e401]
+                - cell "24p" [ref=f5e402]
+                - cell "Buy parts save 6p (+20%)" [ref=f5e403]:
+                  - generic [ref=f5e404]:
+                    - text: Buy parts
+                    - generic [ref=f5e405]: save 6p (+20%)
+                - cell "24p" [ref=f5e406]
+                - cell "18p" [ref=f5e407]
+                - cell "-6p" [ref=f5e408]
+                - cell "130" [ref=f5e409]
+                - cell [ref=f5e410]:
+                  - link "View Akbronco Prime Set parts" [ref=f5e411] [cursor=pointer]:
+                    - /url: /set/akbronco_prime_set
+                    - generic [ref=f5e412]: 󰳟
+              - row [ref=f5e414]:
+                - cell [ref=f5e415]:
+                  - link "Aklex Prime Set Aklex Prime 3 parts" [ref=f5e416] [cursor=pointer]:
+                    - /url: /set/aklex_prime_set
+                    - img "Aklex Prime Set" [ref=f5e417]
+                    - generic [ref=f5e418]:
+                      - text: Aklex Prime
+                      - generic [ref=f5e419]: 3 parts
+                - cell "120p" [ref=f5e420]
+                - cell "96p" [ref=f5e421]
+                - cell "Buy parts save 24p (+20%)" [ref=f5e422]:
+                  - generic [ref=f5e423]:
+                    - text: Buy parts
+                    - generic [ref=f5e424]: save 24p (+20%)
+                - cell "110p" [ref=f5e425]
+                - cell "84p" [ref=f5e426]
+                - cell "-26p" [ref=f5e427]
+                - cell "210" [ref=f5e428]
+                - cell [ref=f5e429]:
+                  - link "View Aklex Prime Set parts" [ref=f5e430] [cursor=pointer]:
+                    - /url: /set/aklex_prime_set
+                    - generic [ref=f5e431]: 󰳟
+              - row [ref=f5e433]:
+                - cell [ref=f5e434]:
+                  - link "Lex Prime Set Lex Prime 2 parts" [ref=f5e435] [cursor=pointer]:
+                    - /url: /set/lex_prime_set
+                    - img "Lex Prime Set" [ref=f5e436]
+                    - generic [ref=f5e437]:
+                      - text: Lex Prime
+                      - generic [ref=f5e438]: 2 parts
+                - cell "35p" [ref=f5e439]
+                - cell "28p" [ref=f5e440]
+                - cell "Buy parts save 7p (+20%)" [ref=f5e441]:
+                  - generic [ref=f5e442]:
+                    - text: Buy parts
+                    - generic [ref=f5e443]: save 7p (+20%)
+                - cell "29p" [ref=f5e444]
+                - cell "22p" [ref=f5e445]
+                - cell "-7p" [ref=f5e446]
+                - cell "380" [ref=f5e447]
+                - cell [ref=f5e448]:
+                  - link "View Lex Prime Set parts" [ref=f5e449] [cursor=pointer]:
+                    - /url: /set/lex_prime_set
+                    - generic [ref=f5e450]: 󰳟
+              - row [ref=f5e452]:
+                - cell [ref=f5e453]:
+                  - link "Fang Prime Set Fang Prime 3 parts" [ref=f5e454] [cursor=pointer]:
+                    - /url: /set/fang_prime_set
+                    - img "Fang Prime Set" [ref=f5e455]
+                    - generic [ref=f5e456]:
+                      - text: Fang Prime
+                      - generic [ref=f5e457]: 3 parts
+                - cell "25p" [ref=f5e458]
+                - cell "20p" [ref=f5e459]
+                - cell "Buy parts save 5p (+20%)" [ref=f5e460]:
+                  - generic [ref=f5e461]:
+                    - text: Buy parts
+                    - generic [ref=f5e462]: save 5p (+20%)
+                - cell "20p" [ref=f5e463]
+                - cell "15p" [ref=f5e464]
+                - cell "-5p" [ref=f5e465]
+                - cell "120" [ref=f5e466]
+                - cell [ref=f5e467]:
+                  - link "View Fang Prime Set parts" [ref=f5e468] [cursor=pointer]:
+                    - /url: /set/fang_prime_set
+                    - generic [ref=f5e469]: 󰳟
+              - row [ref=f5e471]:
+                - cell [ref=f5e472]:
+                  - link "Scindo Prime Set Scindo Prime 3 parts" [ref=f5e473] [cursor=pointer]:
+                    - /url: /set/scindo_prime_set
+                    - img "Scindo Prime Set" [ref=f5e474]
+                    - generic [ref=f5e475]:
+                      - text: Scindo Prime
+                      - generic [ref=f5e476]: 3 parts
+                - cell "40p" [ref=f5e477]
+                - cell "32p" [ref=f5e478]
+                - cell "Buy parts save 8p (+20%)" [ref=f5e479]:
+                  - generic [ref=f5e480]:
+                    - text: Buy parts
+                    - generic [ref=f5e481]: save 8p (+20%)
+                - cell "34p" [ref=f5e482]
+                - cell "25p" [ref=f5e483]
+                - cell "-9p" [ref=f5e484]
+                - cell "200" [ref=f5e485]
+                - cell [ref=f5e486]:
+                  - link "View Scindo Prime Set parts" [ref=f5e487] [cursor=pointer]:
+                    - /url: /set/scindo_prime_set
+                    - generic [ref=f5e488]: 󰳟
+              - row [ref=f5e490]:
+                - cell [ref=f5e491]:
+                  - link "Destreza Prime Set Destreza Prime 3 parts" [ref=f5e492] [cursor=pointer]:
+                    - /url: /set/destreza_prime_set
+                    - img "Destreza Prime Set" [ref=f5e493]
+                    - generic [ref=f5e494]:
+                      - text: Destreza Prime
+                      - generic [ref=f5e495]: 3 parts
+                - cell "55p" [ref=f5e496]
+                - cell "44p" [ref=f5e497]
+                - cell "Buy parts save 11p (+20%)" [ref=f5e498]:
+                  - generic [ref=f5e499]:
+                    - text: Buy parts
+                    - generic [ref=f5e500]: save 11p (+20%)
+                - cell "48p" [ref=f5e501]
+                - cell "36p" [ref=f5e502]
+                - cell "-12p" [ref=f5e503]
+                - cell "180" [ref=f5e504]
+                - cell [ref=f5e505]:
+                  - link "View Destreza Prime Set parts" [ref=f5e506] [cursor=pointer]:
+                    - /url: /set/destreza_prime_set
+                    - generic [ref=f5e507]: 󰳟
+              - row [ref=f5e509]:
+                - cell [ref=f5e510]:
+                  - link "Carrier Prime Set Carrier Prime 4 parts" [ref=f5e511] [cursor=pointer]:
+                    - /url: /set/carrier_prime_set
+                    - img "Carrier Prime Set" [ref=f5e512]
+                    - generic [ref=f5e513]:
+                      - text: Carrier Prime
+                      - generic [ref=f5e514]: 4 parts
+                - cell "45p" [ref=f5e515]
+                - cell "36p" [ref=f5e516]
+                - cell "Buy parts save 9p (+20%)" [ref=f5e517]:
+                  - generic [ref=f5e518]:
+                    - text: Buy parts
+                    - generic [ref=f5e519]: save 9p (+20%)
+                - cell "38p" [ref=f5e520]
+                - cell "29p" [ref=f5e521]
+                - cell "-9p" [ref=f5e522]
+                - cell "110" [ref=f5e523]
+                - cell [ref=f5e524]:
+                  - link "View Carrier Prime Set parts" [ref=f5e525] [cursor=pointer]:
+                    - /url: /set/carrier_prime_set
+                    - generic [ref=f5e526]: 󰳟
+          - navigation "Pagination Navigation" [ref=f5e529]:
+            - list [ref=f5e530]:
+              - listitem [ref=f5e531]:
+                - button "Previous page" [disabled]:
+                  - generic: 󰅁
+              - listitem [ref=f5e532]:
+                - button "Current Page, Page 1" [ref=f5e533] [cursor=pointer]: "1"
+              - listitem [ref=f5e534]:
+                - button "Goto Page 2" [ref=f5e535] [cursor=pointer]: "2"
+              - listitem [ref=f5e536]:
+                - button "Goto Page 3" [ref=f5e537] [cursor=pointer]: "3"
+              - listitem [ref=f5e538]:
+                - button "Next page" [ref=f5e539] [cursor=pointer]:
+                  - generic [ref=f5e540]: 󰅂
+        - alert [ref=f5e541]:
+          - generic [ref=f5e542]:
+            - generic [ref=f5e543]: 󰋼
+            - generic [ref=f5e544]: Prices are lowest sell orders (cost to buy) and highest buy orders (resale), pulled from Warframe Market. Trading tax and set bonuses aren't included.
+  - contentinfo [ref=f5e545]:
+    - generic [ref=f5e546]:
+      - generic [ref=f5e547]: Warframe Market Analytics © 2026
+      - generic [ref=f5e549]:
+        - text: Made with
+        - generic [ref=f5e550]: 󰋑
+        - text: by
+        - link "Eduardo Airaudo" [ref=f5e551] [cursor=pointer]:
+          - /url: https://www.linkedin.com/in/eduardo-airaudo/
+        - text: and
+        - link "Regina Scagliotti" [ref=f5e552] [cursor=pointer]:
+          - /url: https://www.linkedin.com/in/reginascagliotti/

@@ -130,7 +130,13 @@ class Proxies {
 
     if (this.apiKey) {
       console.log("Api Key", this.apiKey);
-      const endpoint = `https://api.proxyscrape.com/v2/account/datacenter_shared/proxy-list?auth=${this.apiKey}&protocol=http`;
+      // country=US narrows the datacenter_shared list to US-tagged proxies
+      // when PROXY_TYPE_REGION=usa - previously this source ignored region
+      // entirely, so usa_proxies.txt filled with proxies from any country.
+      // ProxyScrape ignores unrecognized query params, so this is safe even
+      // if the account tier doesn't support geo-filtering.
+      const countryParam = this.usaProxies ? "&country=US" : "";
+      const endpoint = `https://api.proxyscrape.com/v2/account/datacenter_shared/proxy-list?auth=${this.apiKey}&protocol=http${countryParam}`;
       console.log("endpoint", endpoint);
       const proxies = await axios
         .get(endpoint)
@@ -188,6 +194,10 @@ class Proxies {
               protocol: "http",
               format: "credentials",
               credential_format: 1,
+              // Narrows to US-tagged datacenter proxies in USA mode; ProxyScrape
+              // ignores unrecognized params so this is safe on plans without
+              // geo-filtering too. Previously always requested every country.
+              ...(this.usaProxies ? { country: "US" } : {}),
             },
             responseType: "text",
             timeout: 20000,
