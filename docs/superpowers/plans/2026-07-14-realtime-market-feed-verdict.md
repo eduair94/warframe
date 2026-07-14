@@ -1655,7 +1655,14 @@ git commit -m "test(live): end-to-end poller->gateway->verdict integration"
 
 ---
 
-## Phase 4 — Frontend
+## Phase 4 — Frontend — ⛔ DEFERRED to the Nuxt 4 migration
+
+> **Decision (2026-07-14):** the app is still Nuxt 2; the Nuxt 4 + Vuetify 3 migration
+> is only spec'd, not built. To avoid throwaway Nuxt 2 UI, Tasks 11–14 are **deferred**
+> and built natively during that migration against the finished backend. Task 11's
+> Nuxt-2 client was implemented then **reverted** (commit `bfe09f3`); `socket.io-client`
+> stays in `app/`. The full consumption contract lives in the design spec's
+> "Frontend — DEFERRED" section. Tasks 12–14 below are NOT built now — kept for reference.
 
 ### Task 11: `liveFeed` client — singleton Socket.IO wrapper
 
