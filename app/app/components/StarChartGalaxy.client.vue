@@ -774,10 +774,9 @@ function init() {
   controls.maxDistance = 340
   controls.minPolarAngle = 0.2
   controls.maxPolarAngle = 1.45
-  controls.autoRotate = !reduced
-  controls.autoRotateSpeed = 0.35
+  // No idle auto-rotation — the map stays still until the user drives it.
+  controls.autoRotate = false
   controls.addEventListener('start', () => {
-    controls!.autoRotate = false
     camTween = null
     dragging = true
     if (renderer) renderer.domElement.style.cursor = 'grabbing'
@@ -1024,7 +1023,6 @@ watch(
   (name) => {
     if (disposed) return
     applySelection(name)
-    if (controls) controls.autoRotate = false
     const w = name ? worldObjs.get(name) : undefined
     if (w) flyTo(w.pos, THREE.MathUtils.clamp(w.radius * 13, 26, 60))
     else flyTo(ORIGIN, OVERVIEW_DIST)
