@@ -98,6 +98,9 @@ dump/
 *.cache
 .cache/
 
+# Playwright MCP debug artifacts (screenshots, snapshots, console logs)
+.playwright-mcp/
+
 # 🚨 SECURITY: Never commit any files containing:
 # - API keys or authentication tokens
 # - Passwords or credentials  

@@ -9,7 +9,7 @@
         <p class="sc-lede">
           Every planet on the Star Chart, lit by what its best mission is worth
           right now — drop chances from the Void, priced against today's Warframe
-          Market. The brighter a world burns, the more platinum a single run returns.
+          Market. The brighter a world burns, the more platinum a single reward returns.
           Pick one to see the missions worth your time.
         </p>
       </div>
@@ -18,7 +18,7 @@
         <button class="sc-hero__deal-name" @click="selectPlanet(richest.planet)">
           {{ richest.planet }} →
         </button>
-        <div class="sc-hero__deal-plat">{{ fmtPlat(richest.value) }}<span>p/run</span></div>
+        <div class="sc-hero__deal-plat">{{ fmtPlat(richest.value) }}<span>p/drop</span></div>
         <div class="sc-hero__deal-sub" v-if="richest.bestNode">
           {{ richest.bestNode.location }} · {{ richest.bestNode.gameMode }}
         </div>
@@ -27,7 +27,7 @@
 
     <div class="sc-stats">
       <div class="sc-stat"><div class="sc-stat__num">{{ stats.planets }}</div><div class="sc-stat__lbl">worlds charted</div></div>
-      <div class="sc-stat"><div class="sc-stat__num is-gold">{{ fmtPlat(stats.topValue) }}</div><div class="sc-stat__lbl">best run (p)</div></div>
+      <div class="sc-stat"><div class="sc-stat__num is-gold">{{ fmtPlat(stats.topValue) }}</div><div class="sc-stat__lbl">best drop (p)</div></div>
       <div class="sc-stat"><div class="sc-stat__num is-teal">{{ stats.nodes }}</div><div class="sc-stat__lbl">missions priced</div></div>
       <div class="sc-stat">
         <div class="sc-stat__num">{{ stats.topNode ? stats.topNode.location : '—' }}</div>
@@ -88,8 +88,8 @@
 
           <!-- the Sun -->
           <g aria-hidden="true">
-            <circle :cx="scene.sun.x" :cy="scene.sun.y" r="66" fill="url(#sunGrad)" class="sc-sun-halo" />
-            <circle :cx="scene.sun.x" :cy="scene.sun.y" r="17" fill="#ffe9b0" />
+            <circle :cx="scene.sun.x" :cy="scene.sun.y" r="44" fill="url(#sunGrad)" class="sc-sun-halo" />
+            <circle :cx="scene.sun.x" :cy="scene.sun.y" r="12" fill="#ffe9b0" />
           </g>
 
           <!-- planets -->
@@ -135,7 +135,7 @@
               <h2 class="sc-panel__title">{{ selectedData.planet }}</h2>
             </div>
             <div class="sc-panel__best">
-              <span>{{ fmtPlat(selectedData.value) }}</span><small>p/run best</small>
+              <span>{{ fmtPlat(selectedData.value) }}</span><small>p/drop best</small>
             </div>
           </div>
 
@@ -156,7 +156,7 @@
                 <div v-for="rot in node.rotations" :key="rot.rotation || 'flat'" class="sc-rot">
                   <div class="sc-rot__head" v-if="rot.rotation">
                     <span class="sc-rot__badge" :data-rot="rot.rotation">{{ rot.rotation }}</span>
-                    <span class="sc-rot__val">{{ fmtPlat(rot.value) }} p/run</span>
+                    <span class="sc-rot__val">{{ fmtPlat(rot.value) }} p/drop</span>
                   </div>
                   <div v-for="(rw, i) in sortedRewards(rot.rewards)" :key="i" class="sc-reward" :class="{ 'is-dud': !rw.tradeable }">
                     <img
@@ -198,10 +198,10 @@
     <DropLocationsDialog v-model="dropsDialog" :item-name="dropsItem" />
 
     <v-alert v-if="!loading && planets.length" class="sc-disclaimer blue darken-4" type="info" dense>
-      Expected p/run = Σ (drop chance × lowest sell order) across a mission's reward
-      table. Drop chances come from the community drop data; platinum prices are
-      today's Warframe Market orders. Untradeable rewards (Forma, resources, credits)
-      count as zero.
+      Expected p/drop = Σ (drop chance × lowest sell order) across a mission's reward
+      table — the average platinum one reward is worth. Drop chances come from the
+      community drop data; platinum prices are today's Warframe Market orders.
+      Untradeable rewards (Forma, resources, credits) count as zero.
     </v-alert>
   </div>
 </template>
@@ -229,11 +229,11 @@ const SPECIAL_EDGES: [string, string][] = Object.entries(SATELLITES).map(([s, p]
 // spiral geometry
 const VB = { w: 960, h: 840 }
 const CX = 470
-const CY = 400
-const A0 = -112 // start angle (deg)
-const STEP = 25.4 // deg per chain step
-const R0 = 92
-const RSTEP = 18.4
+const CY = 402
+const A0 = -108 // start angle (deg)
+const STEP = 24.5 // deg per chain step
+const R0 = 122
+const RSTEP = 19
 
 function toRad(deg: number) {
   return (deg * Math.PI) / 180
@@ -254,6 +254,10 @@ function makeStars(n: number) {
   }
   return out
 }
+
+// Fallback thumbnail (void-diamond) for rewards with no market listing.
+const PLACEHOLDER_IMG =
+  "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Crect width='40' height='40' fill='%232a2a3d'/%3E%3Cpath d='M20 9 L29 20 L20 31 L11 20 Z' fill='none' stroke='%23c8a85c' stroke-width='2' opacity='0.7'/%3E%3C/svg%3E"
 
 export default {
   name: 'StarChartPage',
@@ -347,7 +351,7 @@ export default {
           : 'special'
         const pos = posOf(p.planet, specials.indexOf(p), specials.length)
         const t = Math.min(1, (p.value || 0) / this.maxValue)
-        const baseR = type === 'satellite' ? 8 : type === 'special' ? 10 : 11
+        const baseR = type === 'satellite' ? 6.5 : 8.5
         return {
           planet: p.planet,
           value: p.value,
@@ -355,9 +359,9 @@ export default {
           type,
           x: pos.x,
           y: pos.y,
-          r: baseR + t * (type === 'satellite' ? 6 : 11),
-          glowR: baseR + 9 + t * 26,
-          glowO: 0.12 + 0.5 * t,
+          r: baseR + t * (type === 'satellite' ? 4 : 6),
+          glowR: baseR + 4 + t * 12,
+          glowO: 0.1 + 0.34 * t,
           color: this.discColor(t, type),
         }
       })
@@ -455,14 +459,14 @@ export default {
       return '#c08457'
     },
     thumbUrl(thumb: string): string {
-      if (!thumb) return this.placeholderImg
+      if (!thumb) return PLACEHOLDER_IMG
       return 'https://warframe.market/static/assets/' + thumb
     },
     onImgError(e: any) {
       const img = e.target
       if (!img || img.dataset.fallback) return
       img.dataset.fallback = '1'
-      img.src = this.placeholderImg
+      img.src = PLACEHOLDER_IMG
     },
     fmtPlat(n: number): string {
       const v = Number(n) || 0
@@ -480,9 +484,6 @@ export default {
       })
     },
   },
-  // non-reactive constant
-  placeholderImg:
-    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Crect width='40' height='40' fill='%232a2a3d'/%3E%3Cpath d='M20 9 L29 20 L20 31 L11 20 Z' fill='none' stroke='%23c8a85c' stroke-width='2' opacity='0.7'/%3E%3C/svg%3E",
 }
 </script>
 
@@ -656,11 +657,15 @@ export default {
 @keyframes sc-ring { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
 .sc-planet__label {
   font-family: 'Rajdhani', sans-serif;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.04em;
-  fill: #b6bcd0;
+  fill: #c3c8dc;
   pointer-events: none;
+  paint-order: stroke;
+  stroke: #06070e;
+  stroke-width: 3px;
+  stroke-linejoin: round;
 }
 .sc-planet.is-selected .sc-planet__label { fill: #f2ead6; }
 .sc-planet:hover .sc-planet__label { fill: #e7cf95; }

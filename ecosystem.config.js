@@ -55,5 +55,16 @@ module.exports = {
             script: "dist/sync_rivens.js",
             log_date_format: "YYYY-MM-DD HH:mm Z",
         },
+        {
+            // Refreshes the WFCD drop-data backup (mission rewards + relic
+            // contents) that powers the Star Chart and the in-app drop dialog.
+            // WFCD only changes on game patches, so a daily run keeps the
+            // warframe-drops collection current without hammering the source.
+            name: "warframe-sync-drops",
+            autorestart: false,
+            cron_restart: "0 3 * * *",
+            script: "dist/sync_drops.js",
+            log_date_format: "YYYY-MM-DD HH:mm Z",
+        },
     ],
 };
