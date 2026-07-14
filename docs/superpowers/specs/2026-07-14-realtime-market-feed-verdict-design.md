@@ -149,19 +149,46 @@ interface Verdict {
 - **Low liquidity → greyed/weak verdict.** Never advertise a signal we can't back —
   same honesty rule as the relic-farming `completeOnly` filter.
 
-## Frontend
+## Frontend — DEFERRED to the Nuxt 4 + Vuetify 3 migration
 
-- **`<MarketVerdictBadge>`** (reusable Vue component): colored chip (buy = cyan/green,
-  sell = gold, fair = grey), `dealPct`, confidence dot, tooltip with FV / bestBuy /
-  bestSell / reason. Dropped into item/set/screener/flip/portfolio.
-- **`useLiveFeed` composable**: one shared Socket.IO client to the live subdomain;
-  `subscribe(url_name)` on mount, `unsubscribe` on unmount; auto-reconnect. **Falls
-  back to the REST `market_analytics` snapshot** if the socket is unavailable, so
-  pages never break.
-- **New `/live` page**: live order book (online buyers/sellers, updating in place),
-  FV line, verdict, spread/flip, sparkline — the wf.market-style real-time view plus
-  the analytics layer wf.market does not expose. Hides `#spinner-wrapper` on mount
-  (standing project rule).
+**Decision (2026-07-14):** the app is still Nuxt 2 and the Nuxt 4 migration
+([2026-07-14-nuxt4-vuetify3-migration-design.md](2026-07-14-nuxt4-vuetify3-migration-design.md))
+is only spec'd, not built. To avoid throwaway Nuxt 2 UI, the live-feed **frontend is
+built natively as part of that migration**, against the finished, framework-agnostic
+backend below. The Nuxt-2 `liveFeed.ts`/`nuxt.config` client was reverted; only the
+`socket.io-client` dependency remains in `app/`. `LIVE_URL` front wiring is deferred too.
+
+### Consumption contract the Nuxt 4 UI must implement
+
+**Runtime config:** add `liveURL` to `runtimeConfig.public` (Nuxt 4: `useRuntimeConfig().public.liveURL`,
+env `LIVE_URL`, default `http://localhost:3530`).
+
+**`useLiveFeed` composable** — one shared `socket.io-client` connection to `liveURL`, browser-only:
+- `subscribe(url_name, cb): () => void` — emits socket `subscribe {url_name}` to the server
+  **only for the first listener of a url**; returns an unsubscribe fn that emits `unsubscribe {url_name}`
+  **only when the last listener is removed**.
+- Emit the first `subscribe` only when `socket.connected`; otherwise let the `connect` handler
+  re-emit `subscribe` for every active url (this is the single-emit fix — a naive direct emit
+  double-counts viewers server-side). On reconnect, re-subscribe all active urls.
+- Server pushes `update` events carrying `LiveUpdate = { url_name, book: LiveBook, verdict: Verdict }`
+  (shapes exactly mirror `services/live/LiveTypes.ts`).
+- **Fallback:** if the socket is unavailable, read the REST `/market_analytics` snapshot so pages never break.
+
+**`<MarketVerdictBadge>`** (reusable, Vuetify 3): colored chip (buy = cyan/green, sell = gold,
+fair = grey, hold = muted), `dealPct`, confidence dot, tooltip with FV / bestBuy / bestSell / reason.
+Dropped into item/set/screener/flip/portfolio.
+
+**New `/live` page**: searchable item list; per visible row the live best buy/sell, FV, and verdict
+badge, updating in place; cap the number of simultaneously-subscribed rows (~40). wf.market-style
+real-time view plus the analytics layer wf.market does not expose.
+
+**Real-time alerts (portfolio):** drive the existing client-side `checkAlerts()` off live-feed
+`update` events (overlay live sell price onto a component-local map, never mutate store getters),
+keeping the periodic interval as a backstop. No server-side web-push in scope.
+
+> Reference implementation (Nuxt 2 idiom, reverted): the original `app/services/liveFeed.ts`
+> is recoverable from git history (commits `0e6be3a`, `ab935be`) as a design reference; rewrite
+> it for Nuxt 4 (`useRuntimeConfig` instead of `window.$nuxt.$config`).
 
 ## Monitoring integration
 

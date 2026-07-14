@@ -9,13 +9,11 @@ export default {
   
   // Runtime config
   publicRuntimeConfig: {
-    apiURL: process.env.API_URL || 'http://localhost:3529',
-    liveURL: process.env.LIVE_URL || 'http://localhost:3530'
+    apiURL: process.env.API_URL || 'http://localhost:3529'
   },
-
+  
   privateRuntimeConfig: {
-    apiURL: process.env.API_URL || 'http://localhost:3529',
-    liveURL: process.env.LIVE_URL || 'http://localhost:3530'
+    apiURL: process.env.API_URL || 'http://localhost:3529'
   },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
