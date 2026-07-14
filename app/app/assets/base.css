@@ -1,0 +1,10 @@
+/* Base body font. Vuetify 2's `defaultAssets.font` auto-applied Open Sans via
+   an injected stylesheet; Vuetify 3 has no equivalent, so it's set explicitly
+   here. Open Sans itself is loaded by @nuxtjs/google-fonts (see `googleFonts`
+   in nuxt.config.ts) — this file only sets the font-family, it does not
+   re-load the font. */
+html,
+body,
+.v-application {
+  font-family: 'Open Sans', sans-serif;
+}

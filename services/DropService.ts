@@ -344,13 +344,32 @@ export class DropService {
     return [...keys].filter(Boolean);
   }
 
+  /**
+   * Copies of an unranked arcane needed to build a maxed (Rank 5) one. A single
+   * mission drop yields ONE unranked copy, so its per-drop worth is the maxed
+   * market price divided by this — otherwise farming nodes that drop pricey
+   * arcanes (e.g. Duviri) read absurdly high (each drop is ~1/21 of the sellable
+   * maxed arcane, not a whole one).
+   */
+  static readonly ARCANE_BUILD_COPIES = 21;
+
   /** name-key -> price/url/thumb, from the market items collection. */
   static buildPriceMap(items: any[]): Map<string, IPriceInfo> {
     const map = new Map<string, IPriceInfo>();
     for (const item of items || []) {
       if (!item || !item.item_name) continue;
+      let price = item.market?.sell ?? 0;
+      // Arcanes: value a single drop as its share of the buildable maxed arcane.
+      // Raw item docs keep tags nested under items_in_set[0].tags (ItemProcessor
+      // only lifts them to top-level for display), so check both.
+      const tags: unknown = Array.isArray(item?.tags)
+        ? item.tags
+        : item?.items_in_set?.[0]?.tags;
+      if (price && Array.isArray(tags) && tags.includes('arcane_enhancement')) {
+        price = price / DropService.ARCANE_BUILD_COPIES;
+      }
       const info: IPriceInfo = {
-        price: item.market?.sell ?? 0,
+        price,
         url_name: item.url_name ?? '',
         thumb: item.thumb ?? '',
       };
