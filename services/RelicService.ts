@@ -10,6 +10,7 @@
  */
 
 import axios from 'axios';
+import { API_URLS } from '../constants';
 import {
   IRelic,
   IRelicsApiResponse,
@@ -31,8 +32,25 @@ import { IDatabaseOperations } from '../interfaces/database.interface';
  * ```
  */
 export class RelicService {
-  /** External API URL for relic drop data */
-  private static readonly DROPS_API_URL = 'https://drops.warframestat.us/data/relics.json';
+  /**
+   * Relic drop-data sources, tried in order. The primary (drops.warframestat.us)
+   * is Cloudflare-walled and 403s from datacenter IPs, so the raw-GitHub mirror
+   * is the working fallback on the server — WITHOUT it the collection silently
+   * goes stale and newer relics (e.g. Lith T11) never sync. Same approach as
+   * DropService.
+   */
+  private static readonly RELIC_SOURCES = [
+    API_URLS.WARFRAME_DROPS,
+    API_URLS.WARFRAME_DROPS_RELICS_MIRROR,
+  ];
+
+  /** Browser-like headers so drops.warframestat.us (Cloudflare) serves the JSON. */
+  private static readonly FETCH_HEADERS = {
+    'User-Agent':
+      'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36',
+    Accept: 'application/json,text/plain,*/*',
+    'Accept-Language': 'en-US,en;q=0.9',
+  };
 
   /**
    * Creates a new RelicService instance
@@ -61,9 +79,9 @@ export class RelicService {
    */
   async syncRelicsFromDrops(): Promise<IRelicSyncResult> {
     try {
-      // Fetch relic data from external API
-      const response = await axios.get<IRelicsApiResponse>(RelicService.DROPS_API_URL);
-      const allRelics = response.data.relics;
+      // Fetch relic data, falling back to the raw-GitHub mirror when the primary
+      // (Cloudflare-walled) source is unreachable.
+      const allRelics = await this.fetchRelics();
 
       // Filter to only intact relics (base state)
       const intactRelics = allRelics.filter(relic => relic.state === 'Intact');
@@ -92,8 +110,37 @@ export class RelicService {
   }
 
   /**
+   * Fetches the relic drop table from the first source that responds with a
+   * non-empty payload. Browser headers get us past Cloudflare on the primary;
+   * the raw-GitHub mirror is the fallback when the primary is walled entirely.
+   *
+   * @returns All relics (every state) from the winning source
+   * @throws when every source fails or returns an empty payload
+   * @private
+   */
+  private async fetchRelics(): Promise<IRelic[]> {
+    let lastError: Error | null = null;
+    for (const url of RelicService.RELIC_SOURCES) {
+      try {
+        const res = await axios.get<IRelicsApiResponse>(url, {
+          headers: RelicService.FETCH_HEADERS,
+          timeout: 30000,
+        });
+        const relics = res.data?.relics;
+        if (Array.isArray(relics) && relics.length) return relics;
+        lastError = new Error(`Empty relic payload from ${url}`);
+      } catch (error) {
+        lastError = error as Error;
+      }
+    }
+    throw new Error(
+      `Failed to fetch relic drop data from all sources: ${lastError?.message ?? 'unknown error'}`,
+    );
+  }
+
+  /**
    * Formats a relic name for database storage
-   * 
+   *
    * @param tier - Relic tier (Lith, Meso, etc.)
    * @param name - Relic name code (A1, B2, etc.)
    * @returns Formatted relic name
