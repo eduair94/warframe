@@ -2,13 +2,16 @@
 // Pages subscribe by url_name and receive { book, verdict } pushes. Auto-imported.
 // SSR-safe: every entry short-circuits off-browser so useAsyncData/SSR never opens a socket.
 import { io, type Socket } from 'socket.io-client'
-import type { LiveUpdate } from '~/utils/liveTypes'
+import type { LiveUpdate, MarketPulse } from '~/utils/liveTypes'
 
 type Cb = (u: LiveUpdate) => void
 
 let socket: Socket | null = null
 const listeners = new Map<string, Set<Cb>>()
 const connected = ref(false)
+// Global market pulse (online traders, orders/min, latest listings) broadcast to
+// every client by the server — one shared ref, no per-item subscription needed.
+const pulse = ref<MarketPulse | null>(null)
 
 function liveUrl(): string {
   return useRuntimeConfig().public.liveURL as string
@@ -31,7 +34,16 @@ function ensureSocket(): Socket | null {
     const set = listeners.get(u.url_name)
     if (set) set.forEach((cb) => cb(u))
   })
+  socket.on('pulse', (p: MarketPulse) => {
+    pulse.value = p
+  })
   return socket
+}
+
+// Open the shared socket even with no per-item subscription, so a page can receive
+// the global 'pulse' broadcast. No-op off-browser / if already open.
+export function ensureLiveConnected(): void {
+  ensureSocket()
 }
 
 // Subscribe a callback to one item's live updates; returns an unsubscribe fn.
@@ -61,7 +73,7 @@ export function subscribeLive(urlName: string, cb: Cb): () => void {
 }
 
 export function useLiveFeed() {
-  return { connected, subscribe: subscribeLive }
+  return { connected, pulse, subscribe: subscribeLive }
 }
 
 // Component helper: track one item's latest LiveUpdate, auto (un)subscribing with the

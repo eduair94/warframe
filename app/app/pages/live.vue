@@ -18,6 +18,29 @@
           </div>
         </header>
 
+        <div v-if="pulse" class="live-pulse">
+          <div class="live-pulse__stats">
+            <span class="live-pulse__stat"><strong>{{ fmtVol(pulse.online.connections) }}</strong> traders online</span>
+            <span class="live-pulse__sep">·</span>
+            <span class="live-pulse__stat"><strong>{{ fmtVol(pulse.online.authorizedUsers) }}</strong> signed in</span>
+            <span class="live-pulse__sep">·</span>
+            <span class="live-pulse__stat"><strong>{{ pulse.ordersPerMin }}</strong> orders/min</span>
+            <span class="live-pulse__label">latest listings, live from warframe.market →</span>
+          </div>
+          <div class="live-pulse__ticker">
+            <span
+              v-for="o in pulse.recent.slice(0, 14)"
+              :key="o.itemId + '-' + o.at"
+              class="ticker-item"
+              :class="o.type"
+            >
+              <span class="ticker-tag">{{ o.type === 'buy' ? 'WTB' : 'WTS' }}</span>
+              {{ o.item_name }}<template v-if="o.rank != null && o.rank > 0"> r{{ o.rank }}</template>
+              <strong>{{ o.platinum }}p</strong>
+            </span>
+          </div>
+        </div>
+
         <div class="an-stats">
           <div class="an-stat">
             <div class="an-stat__num is-good">{{ buyCount }}</div>
@@ -174,7 +197,7 @@ useHead({
 
 const { mobile } = useDisplay()
 const isMobile = computed(() => mobile.value)
-const { connected } = useLiveFeed()
+const { connected, pulse } = useLiveFeed()
 const { itemThumb } = useItemThumb()
 
 const search = ref('')
@@ -272,6 +295,7 @@ function agoOf(url: string): string {
 
 onMounted(() => {
   finishLoading()
+  ensureLiveConnected() // open the socket so the global market-pulse arrives even before subscribing rows
   syncSubscriptions(paged.value)
   watch(paged, (rows) => syncSubscriptions(rows))
   clock = setInterval(() => {
@@ -353,5 +377,67 @@ function finishLoading(attempt = 0) {
   100% {
     background: transparent;
   }
+}
+/* Market pulse: online traders + live orders/min + latest-listings ticker. */
+.live-pulse {
+  margin: 8px 0 4px;
+  padding: 8px 12px;
+  border: 1px solid rgba(79, 179, 191, 0.18);
+  border-radius: 8px;
+  background: rgba(79, 179, 191, 0.05);
+}
+.live-pulse__stats {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  font-size: 13px;
+  color: #9fb3b3;
+}
+.live-pulse__stat strong {
+  color: #e7cf95;
+}
+.live-pulse__sep {
+  opacity: 0.4;
+}
+.live-pulse__label {
+  margin-left: auto;
+  font-size: 11px;
+  opacity: 0.5;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.live-pulse__ticker {
+  display: flex;
+  gap: 14px;
+  margin-top: 6px;
+  overflow-x: hidden;
+  white-space: nowrap;
+  font-size: 12.5px;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 3%, #000 93%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 3%, #000 93%, transparent);
+}
+.ticker-item {
+  flex: 0 0 auto;
+  color: #c9d4d4;
+}
+.ticker-item strong {
+  color: #e7cf95;
+  margin-left: 4px;
+}
+.ticker-tag {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 0 4px;
+  border-radius: 3px;
+  margin-right: 4px;
+}
+.ticker-item.buy .ticker-tag {
+  background: rgba(76, 175, 125, 0.2);
+  color: #4caf7d;
+}
+.ticker-item.sell .ticker-tag {
+  background: rgba(212, 175, 90, 0.2);
+  color: #d4af5a;
 }
 </style>

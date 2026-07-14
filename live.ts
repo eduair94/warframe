@@ -1,6 +1,8 @@
 import './env';
 import * as http from 'http';
 import { Server, Socket } from 'socket.io';
+import WebSocket from 'ws';
+import { HttpsProxyAgent } from 'https-proxy-agent';
 import { MongooseServer } from './database';
 import WarframeUndici from './warframe-undici';
 import { ItemService } from './services/ItemService';
@@ -12,6 +14,15 @@ import { SubscriptionManager } from './services/live/SubscriptionManager';
 import { HotPoller } from './services/live/HotPoller';
 import { LiveGateway } from './services/live/LiveGateway';
 import { LiveUpdate, LiveBook } from './services/live/LiveTypes';
+import {
+  WfmNewOrders,
+  subscribeNewOrdersMsg,
+  WFM_SOCKET_URL,
+  WFM_SUBPROTOCOL,
+} from './services/live/WfmNewOrders';
+
+const BROWSER_UA =
+  'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36';
 
 async function main() {
   const cfg = readLiveConfig(process.env);
@@ -66,7 +77,52 @@ async function main() {
     writeThrough: (url: string, book: LiveBook) => writeThrough(itemService, url, book).catch(() => {}),
   });
 
+  // --- wf.market live socket: global new-orders firehose -> market pulse ---
+  // Cloudflare-gated, so route the handshake through the same proxy pool the REST
+  // poller uses (a direct connect gets 403). One persistent connection, auto-reconnect.
+  const itemById = new Map<string, { url_name?: string; item_name?: string; thumb?: string }>();
+  const newOrders = new WfmNewOrders({ resolveItem: (id) => itemById.get(id) || null });
+  let wfmUp = false;
+  let wfmReconnecting = false;
+
+  async function loadItemIndex(): Promise<void> {
+    try {
+      const all = (await itemService.getAllItems()) as any[];
+      itemById.clear();
+      for (const it of all) {
+        if (it && it.id) {
+          itemById.set(String(it.id), { url_name: it.url_name, item_name: it.item_name, thumb: it.thumb });
+        }
+      }
+    } catch (e: any) {
+      console.error('[live] item index load failed', e?.message);
+    }
+  }
+
+  function scheduleWfmReconnect(): void {
+    if (wfmReconnecting) return;
+    wfmReconnecting = true;
+    setTimeout(() => { wfmReconnecting = false; connectWfmSocket(); }, 4000);
+  }
+  async function connectWfmSocket(): Promise<void> {
+    if (cfg.feedMode === 'off' || !cfg.newOrders) return;
+    let proxy: string | null = null;
+    try { proxy = await (wf as any).getHttpService().getProxyManager().getProxy(); } catch {}
+    const opts: any = { origin: 'https://warframe.market', headers: { 'User-Agent': BROWSER_UA } };
+    if (proxy) opts.agent = new HttpsProxyAgent(String(proxy));
+    const ws = new WebSocket(WFM_SOCKET_URL, [WFM_SUBPROTOCOL], opts);
+    ws.on('open', () => {
+      wfmUp = true;
+      ws.send(subscribeNewOrdersMsg(cfg.platform));
+      console.log('[live] wfm socket open (newOrders)');
+    });
+    ws.on('message', (d: WebSocket.RawData) => { newOrders.ingest(d.toString()); });
+    ws.on('close', () => { wfmUp = false; scheduleWfmReconnect(); });
+    ws.on('error', () => { wfmUp = false; try { ws.terminate(); } catch {} });
+  }
+
   io.on('connection', (socket: Socket) => {
+    if (cfg.newOrders) socket.emit('pulse', newOrders.getPulse());
     socket.on('subscribe', (msg: { url_name?: string }) => {
       const url = (msg && msg.url_name || '').toString();
       if (!url) return;
@@ -88,8 +144,14 @@ async function main() {
   // Health endpoint on the same http server.
   const httpServer = http.createServer((req, res) => {
     if (req.url && req.url.startsWith('/health')) {
+      const pulse = newOrders.getPulse();
       res.setHeader('content-type', 'application/json');
-      res.end(JSON.stringify(gateway.health()));
+      res.end(JSON.stringify({
+        ...gateway.health(),
+        wfmSocket: wfmUp,
+        online: pulse.online,
+        ordersPerMin: pulse.ordersPerMin,
+      }));
       return;
     }
     res.statusCode = 404;
@@ -98,12 +160,21 @@ async function main() {
   io.attach(httpServer);
   httpServer.listen(cfg.port, () => console.log(`[live] listening on ${cfg.port}`));
 
-  // Prime + periodically refresh the fair-value baseline for the live set.
+  // Prime + periodically refresh the fair-value baseline for the live set (and the
+  // itemId->item index the new-orders ticker resolves against).
   const refresh = async () => {
     try { await fairValue.load(subs.liveSet()); } catch (e: any) { console.error('[live] FV refresh failed', e?.message); }
+    if (cfg.newOrders) loadItemIndex();
   };
   await refresh();
   setInterval(refresh, cfg.fvRefreshMs);
+
+  // wf.market live socket + market-pulse broadcast to every connected client.
+  if (cfg.newOrders && cfg.feedMode !== 'off') {
+    await loadItemIndex();
+    connectWfmSocket();
+    setInterval(() => io.emit('pulse', newOrders.getPulse()), 2000);
+  }
 
   if (cfg.feedMode !== 'off') await gateway.start();
 }

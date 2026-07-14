@@ -11,6 +11,7 @@ describe('readLiveConfig', () => {
     expect(c.confMin).toBeCloseTo(0.25);
     expect(c.thinVolume).toBe(3);
     expect(c.pollConcurrency).toBe(12);
+    expect(c.newOrders).toBe(true);
     expect(c.hotFloorList).toEqual([]);
   });
 

@@ -18,6 +18,7 @@ export interface LiveConfig {
   pollConcurrency: number;// items fetched in parallel per poll sweep
   fvRefreshMs: number;    // how often the FV baseline is reloaded from Mongo
   hotFloorList: string[]; // always-on url_names regardless of viewers
+  newOrders: boolean;     // consume wf.market's live socket for the market-pulse feed
 }
 
 function int(v: string | undefined, dflt: number): number {
@@ -49,6 +50,7 @@ export function readLiveConfig(env: NodeJS.ProcessEnv): LiveConfig {
     pollConcurrency: int(env.LIVE_POLL_CONCURRENCY, 12),
     fvRefreshMs: int(env.LIVE_FV_REFRESH_MS, 10 * 60 * 1000),
     hotFloorList: csv(env.LIVE_HOT_FLOOR),
+    newOrders: env.LIVE_NEWORDERS !== 'off',
   };
 }
 

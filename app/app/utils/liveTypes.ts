@@ -36,3 +36,25 @@ export interface LiveUpdate {
   book: LiveBook
   verdict: Verdict
 }
+
+// One newly-published wf.market order (from the live 'pulse' broadcast).
+export interface RecentOrder {
+  itemId: string
+  url_name: string
+  item_name: string
+  thumb: string
+  type: 'buy' | 'sell'
+  platinum: number
+  quantity: number
+  rank?: number
+  platform: string
+  at: number // epoch ms
+}
+
+// Global 'pulse' broadcast: online traders, live orders/min, latest listings.
+export interface MarketPulse {
+  online: { connections: number; authorizedUsers: number }
+  ordersPerMin: number
+  recent: RecentOrder[]
+  updatedAt: number
+}
