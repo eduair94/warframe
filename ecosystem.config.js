@@ -19,21 +19,24 @@ module.exports = {
             log_date_format: "YYYY-MM-DD HH:mm Z",
         },
         {
-            // Nuxt frontend (SSR). API_URL is baked into publicRuntimeConfig
-            // (nuxt.config.js) and serialized to the client, so it MUST point
-            // at the PUBLIC API origin - otherwise the browser requests
-            // http://localhost:3529 (the visitor's own machine) and every call
-            // fails with ERR_CONNECTION_REFUSED. Set it here so pm2 injects it
-            // regardless of shell env.
+            // Nuxt 4 (Nitro) frontend (SSR). Build first: `cd app && npm ci &&
+            // npm run build`, which emits a self-contained .output/ bundle run
+            // directly by node (no `nuxt start`, no --openssl-legacy-provider).
+            // NUXT_PUBLIC_API_URL overrides runtimeConfig.public.apiURL at
+            // RUNTIME and MUST be the PUBLIC API origin, or the browser would
+            // call localhost and every request fails with ERR_CONNECTION_REFUSED
+            // (API_URL is kept as the build-time default).
             name: "warframe-app",
             cwd: "./app",
-            script: "./node_modules/nuxt/bin/nuxt.js",
-            args: "start",
+            script: ".output/server/index.mjs",
             interpreter: "node",
             autorestart: true,
             env: {
+                NUXT_PUBLIC_API_URL: "https://warframe.digitalshopuy.com",
                 API_URL: "https://warframe.digitalshopuy.com",
-                FRONTEND_PORT: "3312",
+                SITE_URL: "https://warframe.digitalshopuy.com",
+                PORT: "3312",
+                HOST: "0.0.0.0",
             },
             log_date_format: "YYYY-MM-DD HH:mm Z",
         },

@@ -40,7 +40,6 @@ export default defineNuxtConfig({
     }
   },
 
-  // Modules added in later phases: @nuxtjs/leaflet.
   modules: [
     '@pinia/nuxt',
     '@nuxtjs/i18n',
