@@ -39,13 +39,13 @@
                 >
                   <v-autocomplete
                     v-model="search"
-                    label="Search"
+                    :label="t('relic_search')"
                     style="max-width: 200px"
                     :items="allSets"
                     item-title="item_name"
                     item-value="url_name"
                   ></v-autocomplete>
-                  <v-btn type="submit" color="primary"> Search </v-btn>
+                  <v-btn type="submit" color="primary"> {{ t('relic_search') }} </v-btn>
                   <v-btn color="primary" @click.prevent="reset">
                     <v-icon>mdi-restore</v-icon>
                   </v-btn>
@@ -53,8 +53,7 @@
               </div>
               <div>
                 <v-alert density="compact">
-                  You can sell this relic for <b>{{ priceRelic }}</b> or earn up
-                  to <b>{{ maxEarn }}</b> platinum
+                  {{ t('relic_sell_or_earn', { price: priceRelic, max: maxEarn }) }}
                 </v-alert>
               </div>
               <v-data-table
@@ -95,7 +94,7 @@
                     @click="openDrops(item)"
                   >
                     <v-icon size="small">mdi-map-marker-radius-outline</v-icon>
-                    Drops
+                    {{ t('relic_drops') }}
                   </button>
                 </template>
               </v-data-table>
@@ -131,7 +130,7 @@
               class="drops-btn"
               @click="openDrops(item)"
             >
-              <v-icon size="small">mdi-map-marker-radius-outline</v-icon> Drops
+              <v-icon size="small">mdi-map-marker-radius-outline</v-icon> {{ t('relic_drops') }}
             </button>
           </template>
         </v-data-table>
@@ -150,7 +149,7 @@
               class="my-3 mb-0 md-md-3 bg-grey-darken-3 pa-3 px-lg-5 text-subtitle-1 d-flex align-center flex-wrap donation_container"
             >
               <div class="d-flex mt-2 align-center">
-                <div class="text-white mr-3">Help us donating!</div>
+                <div class="text-white mr-3">{{ t('relic_help_donate') }}</div>
                 <a
                   target="_blank"
                   aria-label="Donar con Paypal"
@@ -200,15 +199,15 @@ const allSets = computed(() => items.allRelics)
 // SEO / i18n head (ports this.$nuxtI18nHead({ addSeoAttributes: true }))
 useHead(useLocaleHead({ seo: true }))
 
-const headers = [
-  { title: 'Name', key: 'item_name', width: 'auto' },
-  { title: 'Buy', key: 'market.buy', width: 'auto' },
-  { title: 'Sell', key: 'market.sell', width: 'auto' },
-  { title: 'Diff', key: 'market.diff', width: 'auto' },
-  { title: 'Volume (Last 48hrs)', key: 'market.volume', width: 'auto' },
-  { title: 'Tags', key: 'tags' },
-  { title: 'Drops', key: 'drops' },
-] as const
+const headers = computed(() => [
+  { title: t('col_name'), key: 'item_name', width: 'auto' },
+  { title: t('col_buy'), key: 'market.buy', width: 'auto' },
+  { title: t('col_sell'), key: 'market.sell', width: 'auto' },
+  { title: t('col_diff'), key: 'market.diff', width: 'auto' },
+  { title: t('col_volume'), key: 'market.volume', width: 'auto' },
+  { title: t('col_tags'), key: 'tags' },
+  { title: t('col_drops'), key: 'drops' },
+])
 
 const search = ref('')
 const all_items = ref<any[]>([])
