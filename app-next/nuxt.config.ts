@@ -39,9 +39,8 @@ export default defineNuxtConfig({
   },
 
   // Modules added in later phases: vuetify-nuxt-module, @pinia/nuxt,
-  // @nuxtjs/sitemap, nuxt-gtag, @nuxtjs/google-fonts,
   // @vite-pwa/nuxt, @nuxtjs/leaflet.
-  modules: ['@nuxtjs/i18n'],
+  modules: ['@nuxtjs/i18n', '@nuxtjs/sitemap', 'nuxt-gtag', '@nuxtjs/google-fonts'],
 
   // Ported from app/nuxt.config.js `i18n` block. v9 breaking change vs the
   // old v7 config: locale objects use `language` (not `iso`). Messages stay
@@ -63,5 +62,30 @@ export default defineNuxtConfig({
     // baseUrl powers correct hreflang alternate links in SSR head
     baseUrl: process.env.SITE_URL || 'http://localhost:3312',
     vueI18n: './i18n.config.ts'
+  },
+
+  // Ported from app/nuxt.config.js `sitemap: '@nuxtjs/sitemap'` (bare module,
+  // no config). v7 requires a site URL to emit absolute <loc> entries and
+  // auto-discovers routes from the pages dir like the old default did.
+  site: {
+    url: process.env.SITE_URL || 'https://warframe.digitalshopuy.com'
+  },
+
+  // Ported from app/nuxt.config.js `buildModules` google-gtag entry,
+  // consolidating both the GA4 property (G-) and the Google Ads account (AW-)
+  // that were previously split across `id` + `additionalAccounts`.
+  gtag: {
+    tags: [{ id: 'G-F97PNVRMRF' }, { id: 'AW-972399920', config: { send_page_view: true } }]
+  },
+
+  // Ported verbatim from app/nuxt.config.js `googleFonts` block; v3 keeps the
+  // same `families` shape.
+  googleFonts: {
+    families: {
+      'Open Sans': [400, 600, 700]
+    }
   }
+
+  // (Sentry intentionally omitted — the Nuxt 2 config block was orphaned/inactive.
+  //  Add @sentry/nuxt here later if error tracking is wanted.)
 })
