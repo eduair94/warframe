@@ -92,7 +92,7 @@
                   <button
                     type="button"
                     class="drops-btn"
-                    @click="openDrops(item.item_name)"
+                    @click="openDrops(item)"
                   >
                     <v-icon size="small">mdi-map-marker-radius-outline</v-icon>
                     Drops
@@ -129,14 +129,18 @@
             <button
               type="button"
               class="drops-btn"
-              @click="openDrops(item.item_name)"
+              @click="openDrops(item)"
             >
               <v-icon size="small">mdi-map-marker-radius-outline</v-icon> Drops
             </button>
           </template>
         </v-data-table>
       </ClientOnly>
-      <DropLocationsDialog v-model="dropsDialog" :item-name="dropsItem" />
+      <DropLocationsDialog
+        v-model="dropsDialog"
+        :item-name="dropsItem"
+        :thumb="dropsThumb"
+      />
       <div class="px-0 pt-3">
         <div>
           <div
@@ -180,7 +184,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, watch, nextTick, onMounted } from 'vue'
+import { ref, computed, watch, nextTick, onMounted, onBeforeUnmount } from 'vue'
 import { useGoTo } from 'vuetify'
 
 const config = useRuntimeConfig()
@@ -215,6 +219,7 @@ const hasScroll = ref(false)
 const scrollWidth = ref<string | number>(0)
 const dropsDialog = ref(false)
 const dropsItem = ref('')
+const dropsThumb = ref('')
 const sortBy = ref<{ key: string; order: 'asc' | 'desc' }[]>([{ key: 'market.sell', order: 'desc' }])
 const dataTable = ref<any>(null)
 const wrapper2 = ref<HTMLElement | null>(null)
@@ -239,8 +244,9 @@ function filter() {
 function reset() {
   router.push('/relic')
 }
-function openDrops(name: string) {
-  dropsItem.value = name
+function openDrops(item: any) {
+  dropsItem.value = item?.item_name ?? ''
+  dropsThumb.value = item?.thumb ?? ''
   dropsDialog.value = true
 }
 
@@ -259,59 +265,82 @@ function finishLoading() {
   })
 }
 
+// --- nav-leak cleanup state (ported from the Options-API beforeDestroy fix) ---
+let destroyed = false
+let scrollRetries = 0
+let onResize: (() => void) | null = null
+let scrollSync: { wrapper1: HTMLElement; w2: HTMLElement; wp1: () => void; wp2: () => void } | null =
+  null
+
+function teardownScroll() {
+  if (scrollSync) {
+    scrollSync.wrapper1?.removeEventListener('scroll', scrollSync.wp1)
+    scrollSync.w2?.removeEventListener('scroll', scrollSync.wp2)
+    scrollSync = null
+  }
+}
+
 function setScrollBar() {
+  if (destroyed) return
+  // Drop any scroll-sync listeners from a previous run so they can't stack.
+  teardownScroll()
   // V3 DOM: the scrollable wrapper class is .v-table__wrapper (was .v-data-table__wrapper in V2)
   const tableWrapper = document.querySelector('.money_table .v-table__wrapper') as HTMLElement | null
   if (!tableWrapper) {
-    nextTick(() => setScrollBar())
+    // Table renders async (client-only). Retry a BOUNDED number of times — the
+    // old unbounded nextTick recursion could spin forever on a destroyed page.
+    if (++scrollRetries > 40) return
+    nextTick(() => {
+      if (!destroyed) setScrollBar()
+    })
     return
   }
+  scrollRetries = 0
   const isMobile = document.querySelector('.money_table.v-data-table--mobile')
   hasScroll.value = tableWrapper.scrollWidth > tableWrapper.clientWidth
-  let wp1: any = null
-  let wp2: any = null
-  let wrapper1: HTMLElement | null = null
-  let w2: HTMLElement | null = null
   if (hasScroll.value && !isMobile) {
-    wrapper1 = document.querySelector('.money_table .v-table__wrapper')
-    w2 = wrapper2.value
+    const wrapper1 = document.querySelector('.money_table .v-table__wrapper') as HTMLElement | null
+    const w2 = wrapper2.value
     if (!w2 || !wrapper1) {
-      nextTick(() => setScrollBar())
+      if (++scrollRetries > 40) return
+      nextTick(() => {
+        if (!destroyed) setScrollBar()
+      })
       return
     }
     const table = document.querySelector('.money_table table') as HTMLElement
     scrollWidth.value = table.clientWidth + 10 + 'px'
     let scrolling = false
-    wp1 = () => {
+    const wp1 = () => {
       if (scrolling) {
         scrolling = false
         return
       }
       scrolling = true
-      w2!.scrollLeft = wrapper1!.scrollLeft
+      w2.scrollLeft = wrapper1.scrollLeft
     }
-    wp2 = () => {
+    const wp2 = () => {
       if (scrolling) {
         scrolling = false
         return
       }
       scrolling = true
-      wrapper1!.scrollLeft = w2!.scrollLeft
+      wrapper1.scrollLeft = w2.scrollLeft
     }
     wrapper1.addEventListener('scroll', wp1)
     w2.addEventListener('scroll', wp2)
+    scrollSync = { wrapper1, w2, wp1, wp2 }
   }
-  window.addEventListener(
-    'resize',
-    () => {
-      if (wrapper1) {
-        wrapper1.removeEventListener('scroll', wp1)
-        w2?.removeEventListener('scroll', wp2)
-      }
-      setScrollBar()
-    },
-    { once: true },
-  )
+  // ONE persistent resize handler, added once and removed on unmount. (Previously
+  // a fresh {once:true} resize listener was added on every call; never firing
+  // during navigation, they piled up retaining destroyed page components +
+  // detached DOM until the tab froze.)
+  if (!onResize) {
+    onResize = () => {
+      if (!destroyed) setScrollBar()
+    }
+    window.addEventListener('resize', onResize)
+  }
 }
 
 onMounted(() => {
@@ -326,6 +355,14 @@ onMounted(() => {
   loadFilters()
   finishLoading()
   setScrollBar()
+})
+
+onBeforeUnmount(() => {
+  // Remove every window/element listener this page registered so a minute of
+  // client-side navigation can't stack retained page components and freeze.
+  destroyed = true
+  if (onResize) window.removeEventListener('resize', onResize)
+  teardownScroll()
 })
 
 // param-only navigation (/relic/x -> /relic/y) does not remount the page; reload data

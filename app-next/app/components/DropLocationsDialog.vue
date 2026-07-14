@@ -8,7 +8,14 @@
   >
     <div class="dld">
       <header class="dld__head">
-        <span class="dld__node" aria-hidden="true"></span>
+        <img
+          v-if="thumb"
+          class="dld__thumb"
+          :src="thumbUrl"
+          :alt="itemName"
+          @error="onImgError"
+        />
+        <span v-else class="dld__node" aria-hidden="true"></span>
         <div class="dld__headtext">
           <div class="dld__eyebrow">Drop locations</div>
           <h2 class="dld__title">{{ itemName || 'Item' }}</h2>
@@ -132,8 +139,9 @@ const props = withDefaults(
   defineProps<{
     modelValue?: boolean
     itemName?: string
+    thumb?: string
   }>(),
-  { modelValue: false, itemName: '' },
+  { modelValue: false, itemName: '', thumb: '' },
 )
 const emit = defineEmits<{ (e: 'update:modelValue', value: boolean): void }>()
 
@@ -145,6 +153,9 @@ const error = ref(false)
 const data = ref<DropData>({ missions: [], relics: [], itemName: '' })
 const lastLoaded = ref('')
 
+const thumbUrl = computed(
+  () => 'https://warframe.market/static/assets/' + (props.thumb || ''),
+)
 const hasResults = computed(
   () => !!(data.value && (data.value.missions.length || data.value.relics.length)),
 )
@@ -157,6 +168,12 @@ const externalLink = computed(() => {
 
 function close() {
   emit('update:modelValue', false)
+}
+
+function onImgError(e: Event) {
+  // Hide a broken thumbnail and fall back to the diamond node glyph.
+  const img = e.target as HTMLImageElement | null
+  if (img) img.style.display = 'none'
 }
 
 async function load() {
@@ -226,6 +243,15 @@ watch(
   transform: rotate(45deg);
   box-shadow: 0 0 12px rgba(200, 168, 92, 0.7);
   flex: none;
+}
+.dld__thumb {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  flex: none;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(200, 168, 92, 0.28);
+  clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px);
 }
 .dld__headtext { min-width: 0; flex: 1; }
 .dld__eyebrow {

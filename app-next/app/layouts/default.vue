@@ -37,7 +37,7 @@
     <!-- Mobile / tablet navigation: full page list, grouped and visible at once -->
     <v-navigation-drawer
       v-model="drawer"
-      temporary
+      :temporary="!tourActive"
       color="#0a0b14"
       width="278"
       class="nav-drawer"
@@ -126,6 +126,12 @@ interface NavLink {
 }
 
 const drawer = ref(false)
+// While the guided tour runs the drawer must stay open and NOT auto-close on
+// outside clicks (clicking driver.js's "Next" counts as one) — a temporary
+// drawer slid shut after step 1, leaving every nav-item step pointing at an
+// off-screen element. Non-temporary during the tour keeps the nav visible and
+// static so each step highlights correctly.
+const tourActive = ref(false)
 
 // Single source of truth for the grouped mobile/tablet drawer
 const navLinks: NavLink[] = [
@@ -165,7 +171,9 @@ function scrollTop() {
 }
 
 async function startTour() {
-  // Open the menu so the tour can point at the real navigation items
+  // Open the menu (and pin it open for the tour) so the steps can point at the
+  // real navigation items without the temporary drawer sliding shut.
+  tourActive.value = true
   drawer.value = true
   await nextTick()
   // driver.js touches the DOM — load it (and its base popover CSS) only on the
@@ -186,7 +194,16 @@ async function startTour() {
     nextBtnText: 'Next',
     prevBtnText: 'Back',
     doneBtnText: 'Done',
+    // Belt & suspenders: whenever a step that targets a drawer nav item is
+    // highlighted, make sure the drawer is open.
+    onHighlightStarted: (_el: Element | undefined, step: any) => {
+      const target = step && step.element
+      if (typeof target === 'string' && target.indexOf('[data-tour') === 0) {
+        drawer.value = true
+      }
+    },
     onDestroyed: () => {
+      tourActive.value = false
       drawer.value = false
     },
     steps: [

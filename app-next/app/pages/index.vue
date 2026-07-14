@@ -253,7 +253,11 @@
       />
 
       <!-- Drop Locations Dialog -->
-      <DropLocationsDialog v-model="dropDialog" :item-name="dropItemName" />
+      <DropLocationsDialog
+        v-model="dropDialog"
+        :item-name="dropItemName"
+        :thumb="dropThumb"
+      />
 
       <!-- Transaction Details Dialog -->
       <v-dialog v-model="transactionDialog" max-width="500">
@@ -417,7 +421,7 @@
 <script setup lang="ts">
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
-import { computed, nextTick, onMounted, ref, watch } from 'vue'
+import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useGoTo } from 'vuetify'
 
 dayjs.extend(relativeTime)
@@ -460,9 +464,18 @@ const priceHistoryLoading = ref(false)
 // Drop-locations dialog (Star Chart drops) — replaces the old plain external link.
 const dropDialog = ref(false)
 const dropItemName = ref('')
+const dropThumb = ref('')
 
 // template ref (was this.$refs.wrapper2)
 const wrapper2 = ref<HTMLElement | null>(null)
+
+// Nav-leak guards: without these, ~a minute of client-side navigation stacked
+// dozens of retained page components (resize + beforeinstallprompt listeners)
+// and froze the tab.
+let destroyed = false
+let scrollRetries = 0
+let resizeAdded = false
+let scrollSync: { wrapper1: any; w2: any; wp1: any; wp2: any } | null = null
 
 const availableTags = computed(() => {
   const tags = new Set<string>()
@@ -555,6 +568,7 @@ async function openTransactionDetails(item: any) {
 
 function openDrops(item: any) {
   dropItemName.value = item.item_name
+  dropThumb.value = item.thumb || ''
   dropDialog.value = true
 }
 
@@ -703,26 +717,51 @@ function finishLoading(attempt = 0) {
   })
 }
 
+// Named so onBeforeUnmount can remove it — an anonymous {once:true} resize
+// listener re-added on every call piled up retaining destroyed page components.
+function onResize() {
+  if (!destroyed) setScrollBar()
+}
+
+function teardownScroll() {
+  if (scrollSync) {
+    scrollSync.wrapper1 &&
+      scrollSync.wrapper1.removeEventListener('scroll', scrollSync.wp1)
+    scrollSync.w2 && scrollSync.w2.removeEventListener('scroll', scrollSync.wp2)
+    scrollSync = null
+  }
+}
+
 function setScrollBar() {
+  if (destroyed) return
+  // Drop any scroll-sync listeners from a previous run so they can't stack.
+  teardownScroll()
   const tableWrapper = document.querySelector(
     '.money_table .v-table__wrapper',
   ) as HTMLElement | null
   if (!tableWrapper) {
-    nextTick(() => setScrollBar())
+    // Table renders async (client-only). Retry a BOUNDED number of times — the
+    // old unbounded nextTick recursion could spin forever on a destroyed page.
+    if (++scrollRetries > 40) return
+    nextTick(() => {
+      if (!destroyed) setScrollBar()
+    })
     return
   }
+  scrollRetries = 0
   // Check if resolution is mobile.
   const isMobile = document.querySelector('.money_table.v-data-table--mobile')
   hasScroll.value = tableWrapper.scrollWidth > tableWrapper.clientWidth
-  let wp1: any = null
-  let wp2: any = null
-  let wrapper1: any = null
-  let w2: any = null
   if (hasScroll.value && !isMobile) {
-    wrapper1 = document.querySelector('.money_table .v-table__wrapper')
-    w2 = wrapper2.value
+    const wrapper1: any = document.querySelector(
+      '.money_table .v-table__wrapper',
+    )
+    const w2: any = wrapper2.value
     if (!w2 || !wrapper1) {
-      nextTick(() => setScrollBar())
+      if (++scrollRetries > 40) return
+      nextTick(() => {
+        if (!destroyed) setScrollBar()
+      })
       return
     }
 
@@ -731,19 +770,19 @@ function setScrollBar() {
     scrollWidth.value = table.clientWidth + 10 + 'px'
 
     let scrolling = false
-    wp1 = function () {
+    const wp1 = () => {
       if (scrolling) {
         scrolling = false
-        return true
+        return
       }
       scrolling = true
       w2.scrollLeft = wrapper1.scrollLeft
     }
 
-    wp2 = function () {
+    const wp2 = () => {
       if (scrolling) {
         scrolling = false
-        return true
+        return
       }
       scrolling = true
       wrapper1.scrollLeft = w2.scrollLeft
@@ -751,19 +790,14 @@ function setScrollBar() {
 
     wrapper1.addEventListener('scroll', wp1)
     w2.addEventListener('scroll', wp2)
+    scrollSync = { wrapper1, w2, wp1, wp2 }
   }
 
-  addEventListener(
-    'resize',
-    () => {
-      if (wrapper1) {
-        wrapper1.removeEventListener('scroll', wp1)
-        w2.removeEventListener('scroll', wp2)
-      }
-      setScrollBar()
-    },
-    { once: true },
-  )
+  // ONE persistent resize handler, added once and removed on unmount.
+  if (!resizeAdded) {
+    resizeAdded = true
+    window.addEventListener('resize', onResize)
+  }
 }
 
 onMounted(() => {
@@ -778,9 +812,9 @@ onMounted(() => {
   try {
     if (!window.matchMedia('(display-mode: standalone)').matches) {
       ;(window as any).deferredPrompt = null
-      window.addEventListener('beforeinstallprompt', (e: any) => {
-        ;(window as any).deferredPrompt = e
-      })
+      // Named handler so onBeforeUnmount can remove it — an anonymous listener
+      // re-added on every visit leaked a component per navigation.
+      window.addEventListener('beforeinstallprompt', onBeforeInstallPrompt)
     }
   } catch (e) {
     console.error(e)
@@ -788,6 +822,19 @@ onMounted(() => {
   all_items.value = allItems.value
   finishLoading()
   setScrollBar()
+})
+
+function onBeforeInstallPrompt(e: any) {
+  ;(window as any).deferredPrompt = e
+}
+
+onBeforeUnmount(() => {
+  // Remove every window/element listener this page registered — without this,
+  // client-side navigation stacked retained page components and froze the tab.
+  destroyed = true
+  window.removeEventListener('resize', onResize)
+  window.removeEventListener('beforeinstallprompt', onBeforeInstallPrompt)
+  teardownScroll()
 })
 </script>
 

@@ -52,7 +52,7 @@
       <!-- ===== The chart ===== -->
       <section class="sc-chart" aria-label="Interactive star chart">
         <svg
-          :viewBox="`0 0 ${VB.w} ${VB.h}`"
+          :viewBox="viewBox"
           class="sc-svg"
           role="group"
           aria-roledescription="star chart"
@@ -381,6 +381,34 @@ const scene = computed(() => {
     }))
 
   return { sun: { x: CX, y: CY }, nodes, edges }
+})
+
+// Fit the SVG viewport to every planet's disc, glow AND label. The special
+// worlds (Void/Zariman/Sanctuary/Veil Proxima…) sit on an outer arc that
+// pushed some discs above y=0, so a fixed `0 0 960 840` box sliced their
+// tops off. Expand the box to whatever the scene actually spans, never
+// smaller than the base frame, with padding so nothing touches an edge.
+const viewBox = computed<string>(() => {
+  const nodes = scene.value.nodes
+  let minX = 0
+  let minY = 0
+  let maxX = VB.w
+  let maxY = VB.h
+  for (const n of nodes) {
+    // label sits below the disc, centred; ~6.6px per char at 11px Rajdhani
+    const halfLabel = ((n.planet || '').length * 6.6) / 2 + 4
+    const reach = Math.max(n.glowR, n.r + 4)
+    minX = Math.min(minX, n.x - reach, n.x - halfLabel)
+    maxX = Math.max(maxX, n.x + reach, n.x + halfLabel)
+    minY = Math.min(minY, n.y - reach)
+    maxY = Math.max(maxY, n.y + n.r + 15 + 13) // label baseline + height
+  }
+  const pad = 14
+  minX -= pad
+  minY -= pad
+  maxX += pad
+  maxY += pad
+  return `${minX} ${minY} ${maxX - minX} ${maxY - minY}`
 })
 
 onMounted(() => {

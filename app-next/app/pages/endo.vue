@@ -175,7 +175,7 @@
 <script setup lang="ts">
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
-import { computed, nextTick, onBeforeMount, onMounted, ref } from 'vue'
+import { computed, nextTick, onBeforeMount, onBeforeUnmount, onMounted, ref } from 'vue'
 import { useGoTo } from 'vuetify'
 
 dayjs.extend(relativeTime)
@@ -207,6 +207,15 @@ const hasScroll = ref(false)
 const scrollWidth = ref<string | number>(0)
 const maxEndoPerPlat = ref(0)
 const rivens = ref<any[]>([])
+
+// NAV-LEAK cleanup state. Without removing the listeners this page registers,
+// a minute of client-side navigation stacked dozens of retained page
+// components (resize + beforeinstallprompt listeners) and froze the tab.
+let destroyed = false
+let scrollRetries = 0
+let onResize: (() => void) | null = null
+let pwaHandler: ((e: any) => void) | null = null
+let scrollSync: { wrapper1: any; w2El: any; wp1: any; wp2: any } | null = null
 
 const sculptures: Record<string, number> = {
   anasa: 3450,
@@ -307,61 +316,78 @@ function getHeaders() {
 // `.v-table__wrapper`; local var renamed `w2El` to avoid clashing with the
 // `wrapper2` template ref.
 function setScrollBar() {
+  if (destroyed) return
+  // Drop any scroll-sync listeners from a previous run so they can't stack.
+  teardownScroll()
   const tableWrapper = document.querySelector(
     '.money_table .v-table__wrapper',
   ) as HTMLElement | null
   if (!tableWrapper) {
-    nextTick(() => setScrollBar())
+    // Table renders async (client-only). Retry a BOUNDED number of times — the
+    // old unbounded nextTick recursion could spin forever on a destroyed page.
+    if (++scrollRetries > 40) return
+    nextTick(() => {
+      if (!destroyed) setScrollBar()
+    })
     return
   }
+  scrollRetries = 0
   const isMobile = document.querySelector('.money_table.v-data-table--mobile')
   hasScroll.value = tableWrapper.scrollWidth > tableWrapper.clientWidth
-  let wp1: any = null
-  let wp2: any = null
-  let wrapper1: any = null
-  let w2El: any = null
   if (hasScroll.value && !isMobile) {
-    wrapper1 = document.querySelector('.money_table .v-table__wrapper')
-    w2El = wrapper2.value
+    const wrapper1: any = document.querySelector('.money_table .v-table__wrapper')
+    const w2El: any = wrapper2.value
     if (!w2El || !wrapper1) {
-      nextTick(() => setScrollBar())
+      if (++scrollRetries > 40) return
+      nextTick(() => {
+        if (!destroyed) setScrollBar()
+      })
       return
     }
     const table = document.querySelector('.money_table table') as HTMLElement | null
     scrollWidth.value = (table?.clientWidth ?? 0) + 10 + 'px'
 
     let scrolling = false
-    wp1 = function () {
+    const wp1 = () => {
       if (scrolling) {
         scrolling = false
-        return true
+        return
       }
       scrolling = true
       w2El.scrollLeft = wrapper1.scrollLeft
     }
-    wp2 = function () {
+    const wp2 = () => {
       if (scrolling) {
         scrolling = false
-        return true
+        return
       }
       scrolling = true
       wrapper1.scrollLeft = w2El.scrollLeft
     }
     wrapper1.addEventListener('scroll', wp1)
     w2El.addEventListener('scroll', wp2)
+    scrollSync = { wrapper1, w2El, wp1, wp2 }
   }
 
-  addEventListener(
-    'resize',
-    () => {
-      if (wrapper1) {
-        wrapper1.removeEventListener('scroll', wp1)
-        w2El.removeEventListener('scroll', wp2)
-      }
-      setScrollBar()
-    },
-    { once: true },
-  )
+  // ONE persistent resize handler, added once and removed on unmount.
+  // (Previously a fresh {once:true} resize listener was added on every call;
+  // never firing during navigation, they piled up retaining destroyed page
+  // components + detached DOM until the tab froze.)
+  if (!onResize) {
+    onResize = () => {
+      if (!destroyed) setScrollBar()
+    }
+    window.addEventListener('resize', onResize)
+  }
+}
+
+function teardownScroll() {
+  if (scrollSync) {
+    scrollSync.wrapper1 &&
+      scrollSync.wrapper1.removeEventListener('scroll', scrollSync.wp1)
+    scrollSync.w2El && scrollSync.w2El.removeEventListener('scroll', scrollSync.wp2)
+    scrollSync = null
+  }
 }
 
 // Hide the global loading spinner once mounted (project rule). Bounded retry:
@@ -383,12 +409,22 @@ onBeforeMount(() => {
   }
   if (pwaInstall) {
     ;(window as any).deferredPrompt = null
-    window.addEventListener('beforeinstallprompt', (e) => {
+    // Keep a reference so onBeforeUnmount can remove it — an anonymous listener
+    // re-added on every visit leaked a component per navigation.
+    pwaHandler = (e: any) => {
       ;(window as any).deferredPrompt = e
-    })
+    }
+    window.addEventListener('beforeinstallprompt', pwaHandler)
   }
   loadItems()
   finishLoading()
+})
+
+onBeforeUnmount(() => {
+  destroyed = true
+  if (onResize) window.removeEventListener('resize', onResize)
+  if (pwaHandler) window.removeEventListener('beforeinstallprompt', pwaHandler)
+  teardownScroll()
 })
 
 onMounted(() => {
