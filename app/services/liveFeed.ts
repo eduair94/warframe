@@ -49,7 +49,7 @@ export function subscribe(url_name: string, cb: Cb): () => void {
   if (!set) { set = new Set(); listeners.set(url_name, set); }
   const firstForUrl = set.size === 0;
   set.add(cb);
-  if (s && firstForUrl) s.emit('subscribe', { url_name });
+  if (s && firstForUrl && s.connected) s.emit('subscribe', { url_name });
   return () => {
     const cur = listeners.get(url_name);
     if (!cur) return;
@@ -62,5 +62,6 @@ export function subscribe(url_name: string, cb: Cb): () => void {
 }
 
 export function isConnected(): boolean {
+  if (!isBrowser()) return false;
   return !!socket && socket.connected;
 }
