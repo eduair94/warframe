@@ -12,5 +12,12 @@
         "resolveJsonModule": true
     },
     "include": ["./**/*.ts"],
-    "exclude": ["node_modules", "leak-bot"]
+    "exclude": [
+        "node_modules",
+        "**/node_modules",
+        "leak-bot",
+        "dist",
+        "app",
+        "app_nuxt2_archive"
+    ]
 }
