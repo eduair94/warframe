@@ -10,7 +10,9 @@ export default defineNuxtConfig({
   // Consumers use: const base = useRuntimeConfig().public.apiURL
   runtimeConfig: {
     public: {
-      apiURL: process.env.API_URL || 'http://localhost:3529'
+      apiURL: process.env.API_URL || 'http://localhost:3529',
+      // Live Socket.IO server (warframe-live process) — separate port/origin from the REST API
+      liveURL: process.env.LIVE_URL || 'http://localhost:3530'
     }
   },
 

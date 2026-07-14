@@ -138,6 +138,7 @@ const navLinks: NavLink[] = [
   { to: '/', title: 'Home', icon: 'mdi-home-variant', exact: true, group: null },
   { to: '/set', title: 'Set Prices', icon: 'mdi-cube-outline', group: 'Prices' },
   { to: '/relic', title: 'Relic Prices', icon: 'mdi-diamond-stone', group: 'Prices' },
+  { to: '/live', title: 'Live Signals', icon: 'mdi-access-point', group: 'Analytics' },
   { to: '/comparison', title: 'Set vs Parts', icon: 'mdi-scale-balance', group: 'Analytics' },
   { to: '/relics-value', title: 'Relic Value', icon: 'mdi-treasure-chest-outline', group: 'Analytics' },
   { to: '/flip', title: 'Flip Finder', icon: 'mdi-trending-up', group: 'Analytics' },
