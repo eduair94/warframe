@@ -155,8 +155,11 @@ interface Verdict {
 ([2026-07-14-nuxt4-vuetify3-migration-design.md](2026-07-14-nuxt4-vuetify3-migration-design.md))
 is only spec'd, not built. To avoid throwaway Nuxt 2 UI, the live-feed **frontend is
 built natively as part of that migration**, against the finished, framework-agnostic
-backend below. The Nuxt-2 `liveFeed.ts`/`nuxt.config` client was reverted; only the
-`socket.io-client` dependency remains in `app/`. `LIVE_URL` front wiring is deferred too.
+backend below. The Nuxt-2 `liveFeed.ts`/`nuxt.config` client was reverted, and
+`socket.io-client` was removed from `app/` too — the backend live-feed touches **nothing
+under `app/`**, so it cannot conflict with the Nuxt 4 migration's package/app rewrite. The
+migration **must add `socket.io-client`** when it builds the UI. `LIVE_URL` front wiring is
+deferred too.
 
 ### Consumption contract the Nuxt 4 UI must implement
 
