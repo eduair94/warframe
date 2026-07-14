@@ -25,6 +25,29 @@
         </button>
       </header>
 
+      <!-- Live market snapshot (from the catalog store; independent of the drops fetch) -->
+      <section v-if="marketItem" class="dld__market">
+        <div class="dld__market-grid">
+          <div class="dld__mstat"><span class="dld__mlbl">Buy</span><span class="dld__mval">{{ fmtP(mkt.buy) }}p</span></div>
+          <div class="dld__mstat"><span class="dld__mlbl">Sell</span><span class="dld__mval">{{ fmtP(mkt.sell) }}p</span></div>
+          <div class="dld__mstat"><span class="dld__mlbl">Avg 48h</span><span class="dld__mval">{{ fmtP(mkt.avg_price) }}p</span></div>
+          <div class="dld__mstat"><span class="dld__mlbl">Diff</span><span class="dld__mval">{{ fmtP(mkt.diff) }}p</span></div>
+          <div class="dld__mstat"><span class="dld__mlbl">Vol 48h</span><span class="dld__mval" :class="{ 'is-thin': signal.thin }">{{ fmtInt(mkt.volume) }}</span></div>
+          <div v-if="marketItem.priceUpdate" class="dld__mstat"><span class="dld__mlbl">Updated</span><span class="dld__mval">{{ fromNow(marketItem.priceUpdate) }}</span></div>
+        </div>
+        <div class="dld__market-foot">
+          <span v-if="signal.note" class="dld__flag" :class="{ 'is-warn': signal.overpriced }">⚠ {{ signal.note }}</span>
+          <span v-if="lastTrade" class="dld__last">last trade {{ fmtP(lastTrade.avg_price) }}p · {{ fromNow(lastTrade.datetime) }}</span>
+          <div v-if="marketItem.tags && marketItem.tags.length" class="dld__tags">
+            <span v-for="(t, ti) in marketItem.tags.slice(0, 4)" :key="ti" class="dld__tag">{{ fmtTag(t) }}</span>
+          </div>
+          <a v-if="wmUrl" class="dld__wm" :href="wmUrl" target="_blank" rel="noopener">View on Warframe.Market ↗</a>
+        </div>
+      </section>
+      <section v-else-if="itemName" class="dld__market dld__market--none">
+        Not traded on Warframe Market
+      </section>
+
       <div class="dld__body">
         <!-- Loading -->
         <div v-if="loading" class="dld__state">
@@ -139,6 +162,10 @@
 </template>
 
 <script setup lang="ts">
+import dayjs from 'dayjs'
+import relativeTime from 'dayjs/plugin/relativeTime'
+dayjs.extend(relativeTime)
+
 interface DropMission {
   location: string
   planet: string
@@ -182,6 +209,23 @@ const config = useRuntimeConfig()
 const base = config.public.apiURL
 
 const { itemThumb, THUMB_PLACEHOLDER } = useItemThumb()
+
+// Live market snapshot, cross-referenced from the freshly-synced catalog store
+// by item name (blueprint-tolerant), so the dialog shows buy/sell/volume/etc.
+// without the user having to leave for the home table. See utils/marketLookup.
+const itemsStore = useItemsStore()
+const itemIndex = computed(() => buildItemIndex(itemsStore.allItems as any[]))
+const marketItem = computed<any>(() =>
+  props.itemName ? resolveMarketItem(props.itemName, itemIndex.value) : null,
+)
+const mkt = computed<any>(() => (marketItem.value && marketItem.value.market) || {})
+const lastTrade = computed<any>(() => (mkt.value && mkt.value.last_completed) || null)
+const signal = computed(() => marketSignal(marketItem.value && marketItem.value.market))
+const wmUrl = computed(() =>
+  marketItem.value && marketItem.value.url_name
+    ? 'https://warframe.market/items/' + marketItem.value.url_name
+    : '',
+)
 
 const loading = ref(false)
 const error = ref(false)
@@ -270,6 +314,21 @@ function fmt(n: number): string {
   const v = Number(n) || 0
   return v >= 10 ? v.toFixed(0) : v.toFixed(2).replace(/\.?0+$/, '')
 }
+function fmtP(n: number): string {
+  const v = Number(n) || 0
+  return v >= 100 ? Math.round(v).toLocaleString('en-US') : v.toFixed(v % 1 === 0 ? 0 : 1)
+}
+function fmtInt(n: number): string {
+  return String(Math.round(Number(n) || 0))
+}
+function fromNow(d: any): string {
+  if (!d) return ''
+  const t = dayjs(d)
+  return t.isValid() ? t.fromNow() : ''
+}
+function fmtTag(t: string): string {
+  return (t || '').replace(/_/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase())
+}
 
 function rarityColor(rarity: string): string {
   const r = (rarity || '').toLowerCase()
@@ -356,6 +415,47 @@ watch(
 }
 .dld__close:hover { color: #e7cf95; border-color: rgba(200, 168, 92, 0.5); }
 .dld__close:focus-visible { outline: 2px solid #35d6d0; outline-offset: 2px; }
+
+.dld__market {
+  padding: 12px 20px;
+  border-bottom: 1px solid rgba(200, 168, 92, 0.16);
+  background: rgba(200, 168, 92, 0.03);
+}
+.dld__market-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(74px, 1fr));
+  gap: 8px 14px;
+}
+.dld__mstat { display: flex; flex-direction: column; min-width: 0; }
+.dld__mlbl {
+  font-family: 'Rajdhani', sans-serif; text-transform: uppercase;
+  letter-spacing: 0.1em; font-size: 0.6rem; color: #8f95ab;
+}
+.dld__mval { font-variant-numeric: tabular-nums; color: #eef1f8; font-size: 0.98rem; font-weight: 600; }
+.dld__mval.is-thin { color: #e0a3a3; }
+.dld__market-foot {
+  display: flex; align-items: center; flex-wrap: wrap; gap: 8px 12px; margin-top: 10px;
+}
+.dld__flag {
+  font-family: 'Rajdhani', sans-serif; text-transform: uppercase; letter-spacing: 0.06em;
+  font-size: 0.68rem; color: #c8a85c;
+}
+.dld__flag.is-warn { color: #e0a3a3; }
+.dld__last { font-size: 0.74rem; color: #8f95ab; }
+.dld__tags { display: inline-flex; flex-wrap: wrap; gap: 5px; }
+.dld__tag {
+  font-family: 'Rajdhani', sans-serif; font-size: 0.66rem; color: #b6bcd0;
+  border: 1px solid rgba(255,255,255,0.12); padding: 1px 6px; border-radius: 2px; text-transform: uppercase; letter-spacing: 0.04em;
+}
+.dld__wm {
+  margin-left: auto;
+  font-family: 'Rajdhani', sans-serif; text-transform: uppercase; letter-spacing: 0.08em;
+  font-size: 0.74rem; color: #35d6d0; text-decoration: none; white-space: nowrap;
+}
+.dld__wm:hover { color: #7ff0eb; text-decoration: underline; }
+.dld__market--none {
+  font-family: 'Rajdhani', sans-serif; font-size: 0.82rem; color: #8f95ab; font-style: italic;
+}
 
 .dld__body { padding: 16px 20px; overflow-y: auto; }
 

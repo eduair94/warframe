@@ -168,7 +168,15 @@
                     />
                     <button class="sc-reward__name" @click="openDrops(rw.itemName)">{{ rw.itemName }}</button>
                     <span class="sc-reward__chance"><i class="sc-dot" :style="{ background: rarityColor(rw.rarity) }"></i>{{ fmtChance(rw.chance) }}%</span>
-                    <span class="sc-reward__plat">{{ rw.tradeable ? fmtPlat(rw.price) + 'p' : '—' }}</span>
+                    <span class="sc-reward__plat">
+                      <template v-if="rw.tradeable">
+                        <span class="sc-reward__price">{{ fmtPlat(rw.price) }}p</span>
+                        <small v-if="rewardMeta(rw).vol !== null" class="sc-reward__vol" :class="{ 'is-thin': rewardMeta(rw).thin }" :title="rewardMeta(rw).note">
+                          vol {{ rewardMeta(rw).vol }}<template v-if="rewardMeta(rw).thin"> ⚠</template>
+                        </small>
+                      </template>
+                      <template v-else>—</template>
+                    </span>
                   </div>
                 </div>
               </div>
@@ -200,10 +208,12 @@
     <DropLocationsDialog v-model="dropsDialog" :item-name="dropsItem" />
 
     <v-alert v-if="!loading && planets.length" class="sc-disclaimer bg-blue-darken-4" type="info" density="compact">
-      Expected p/drop = Σ (drop chance × lowest sell order) across a mission's reward
-      table — the average platinum one reward is worth. Drop chances come from the
-      community drop data; platinum prices are today's Warframe Market orders.
-      Untradeable rewards (Forma, resources, credits) count as zero.
+      Expected p/drop = Σ (drop chance × realizable value) across a mission's reward
+      table. Realizable value uses each drop's 48h average sell price, weighted by
+      its 48h trade volume (liquidity) — so overpriced drops nobody actually buys
+      don't inflate a mission's worth. Drop chances come from community drop data;
+      prices and volume are from Warframe Market. Untradeable rewards (Forma,
+      resources, credits) count as zero.
     </v-alert>
   </div>
 </template>
@@ -236,6 +246,11 @@ const A0 = -108 // start angle (deg)
 const STEP = 24.5 // deg per chain step
 const R0 = 122
 const RSTEP = 19
+
+// Liquidity half-weight: a drop's realizable value counts at 50% when its 48h
+// volume equals VOL_K, approaching full value as volume grows and ~0 for unsold
+// (overpriced, zero-volume) drops — so illiquid asks can't inflate a mission.
+const VOL_K = 10
 
 function toRad(deg: number) {
   return (deg * Math.PI) / 180
@@ -300,29 +315,58 @@ const findItem = ref('')
 const panel = ref<HTMLElement | null>(null)
 
 const allItems = computed(() => items.allItems)
+const itemIndex = computed(() => buildItemIndex(allItems.value as any[]))
+
+// Re-scores every mission's plat/drop using each reward's 48h average sell price
+// weighted by its 48h volume (liquidity), instead of the raw lowest ask the API
+// sends. Overpriced zero-volume drops fall out of the ranking (glow + stats too).
+const weightedPlanets = computed<any[]>(() =>
+  planets.value.map((p) => {
+    const nodes = (p.nodes || []).map((n: any) => {
+      const rotations = (n.rotations || []).map((rot: any) => {
+        const value = (rot.rewards || []).reduce(
+          (sum: number, rw: any) => sum + (Number(rw.chance) / 100) * effectivePlat(rw),
+          0,
+        )
+        return { ...rot, value }
+      })
+      const nodeValue = rotations.reduce((mx: number, r: any) => Math.max(mx, r.value), 0)
+      return { ...n, rotations, value: nodeValue }
+    })
+    nodes.sort((a: any, b: any) => b.value - a.value)
+    const best = nodes[0] || null
+    return {
+      ...p,
+      nodes,
+      nodeCount: nodes.length,
+      value: best ? best.value : 0,
+      bestNode: best ? { location: best.location, gameMode: best.gameMode, value: best.value } : null,
+    }
+  }),
+)
 
 const planetsByName = computed<Record<string, any>>(() => {
   const map: Record<string, any> = {}
-  for (const p of planets.value) map[p.planet] = p
+  for (const p of weightedPlanets.value) map[p.planet] = p
   return map
 })
 const maxValue = computed(() =>
-  planets.value.reduce((m, p) => Math.max(m, p.value || 0), 0) || 1,
+  weightedPlanets.value.reduce((m, p) => Math.max(m, p.value || 0), 0) || 1,
 )
 const richest = computed(
-  () => planets.value.slice().sort((a, b) => b.value - a.value)[0] || null,
+  () => weightedPlanets.value.slice().sort((a, b) => b.value - a.value)[0] || null,
 )
 const stats = computed(() => {
   let topNode: any = null
   let nodes = 0
-  for (const p of planets.value) {
+  for (const p of weightedPlanets.value) {
     nodes += p.nodeCount
     if (p.bestNode && (!topNode || p.bestNode.value > topNode.value)) {
       topNode = { ...p.bestNode, planet: p.planet }
     }
   }
   return {
-    planets: planets.value.length,
+    planets: weightedPlanets.value.length,
     nodes,
     topValue: richest.value ? richest.value.value : 0,
     topNode,
@@ -354,8 +398,8 @@ const scene = computed(() => {
     return polar(maxR + 40, deg)
   }
 
-  const specials = planets.value.filter((p) => !chainPolar[p.planet] && !SATELLITES[p.planet])
-  const nodes = planets.value.map((p) => {
+  const specials = weightedPlanets.value.filter((p) => !chainPolar[p.planet] && !SATELLITES[p.planet])
+  const nodes = weightedPlanets.value.map((p) => {
     const type = chainPolar[p.planet]
       ? 'planet'
       : SATELLITES[p.planet]
@@ -469,7 +513,39 @@ function toggleNode(location: string) {
   openNode.value = openNode.value === location ? '' : location
 }
 function sortedRewards(rewards: ScReward[]): ScReward[] {
-  return rewards.slice().sort((a, b) => (b.chance / 100) * b.price - (a.chance / 100) * a.price || b.chance - a.chance)
+  // Items with real 48h volume (actually selling) always rank above zero-volume
+  // / untraded "trash" nobody buys, then by liquidity-weighted expected value
+  // (same basis as the mission's plat/drop).
+  const hasVol = (rw: ScReward) => (rewardMeta(rw).vol || 0) > 0 ? 1 : 0
+  return rewards.slice().sort((a, b) => {
+    const dv = hasVol(b) - hasVol(a)
+    if (dv) return dv
+    return (
+      (b.chance / 100) * effectivePlat(b) - (a.chance / 100) * effectivePlat(a) ||
+      b.chance - a.chance
+    )
+  })
+}
+// Liquidity- and average-weighted realizable plat for one reward: the 48h
+// average sell price (falling back to the live ask) discounted by a volume
+// weight so unsold, overpriced drops contribute ~nothing to a mission.
+function effectivePlat(rw: ScReward): number {
+  if (!rw || !rw.tradeable) return 0
+  const item = resolveMarketItem(rw.itemName, itemIndex.value)
+  const market: any = item && item.market ? item.market : null
+  const sell = market ? Number(market.sell) || 0 : Number(rw.price) || 0
+  const avg = market ? Number(market.avg_price) || 0 : 0
+  const vol = market ? Number(market.volume) || 0 : 0
+  const basis = avg > 0 ? avg : sell
+  const liq = vol / (vol + VOL_K)
+  return basis * liq
+}
+// Live market volume + thin flag for a reward's inline signal.
+function rewardMeta(rw: ScReward): { vol: number | null; thin: boolean; note: string } {
+  const item = resolveMarketItem(rw && rw.itemName, itemIndex.value)
+  const market: any = item && item.market ? item.market : null
+  const sig = marketSignal(market)
+  return { vol: market ? Number(market.volume) || 0 : null, thin: sig.thin, note: sig.note }
 }
 function openDrops(name: string) {
   dropsItem.value = name
@@ -799,7 +875,13 @@ function finishLoading(attempt = 0) {
 }
 .sc-reward__name:hover { color: #35d6d0; text-decoration: underline; }
 .sc-reward__chance { display: inline-flex; align-items: center; gap: 5px; font-size: 0.84rem; color: #b6bcd0; font-variant-numeric: tabular-nums; white-space: nowrap; }
-.sc-reward__plat { font-family: 'Rajdhani', sans-serif; font-weight: 600; color: #e7cf95; font-size: 0.9rem; white-space: nowrap; }
+.sc-reward__plat { display: flex; flex-direction: column; align-items: flex-end; line-height: 1.15; white-space: nowrap; }
+.sc-reward__price { font-family: 'Rajdhani', sans-serif; font-weight: 600; color: #e7cf95; font-size: 0.9rem; }
+.sc-reward__vol {
+  font-family: 'Rajdhani', sans-serif; font-size: 0.62rem; color: #8f95ab;
+  text-transform: uppercase; letter-spacing: 0.04em; white-space: nowrap;
+}
+.sc-reward__vol.is-thin { color: #e0a3a3; }
 .sc-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; flex: none; }
 
 /* ---- find ---- */
