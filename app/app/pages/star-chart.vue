@@ -138,6 +138,21 @@
             <div>
               <div class="an-eyebrow">{{ selectedData.nodeCount }} missions</div>
               <h2 class="sc-panel__title">{{ selectedData.planet }}</h2>
+              <div class="sc-panel__wiki">
+                <a :href="worldWikiUrl(selectedData.planet)" target="_blank" rel="noopener noreferrer">
+                  wiki <v-icon size="11">mdi-open-in-new</v-icon>
+                </a>
+                <a
+                  v-if="selectedWikiMap"
+                  :href="selectedWikiMap.url"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="sc-panel__wiki-map"
+                >
+                  <v-icon size="11">mdi-map-search-outline</v-icon>
+                  {{ selectedWikiMap.title }} interactive map
+                </a>
+              </div>
             </div>
             <div class="sc-panel__best">
               <span>{{ fmtPlat(selectedData.value) }}</span><small>p/drop best</small>
@@ -391,6 +406,9 @@ const stats = computed(() => {
 })
 const selectedData = computed(() =>
   selected.value ? planetsByName.value[selected.value] : null,
+)
+const selectedWikiMap = computed(() =>
+  selectedData.value ? worldWikiMap(selectedData.value.planet) : null,
 )
 const itemNames = computed<string[]>(() =>
   (allItems.value as any[]).map((i) => i && i.item_name).filter(Boolean),
@@ -860,6 +878,15 @@ function finishLoading(attempt = 0) {
   border-bottom: 1px solid rgba(200, 168, 92, 0.18);
 }
 .sc-panel__title { font-family: 'Cinzel', serif; font-size: 1.6rem; color: #e7cf95; margin: 0; }
+.sc-panel__wiki {
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 4px;
+  font-family: 'Rajdhani', sans-serif; font-size: 0.72rem;
+  text-transform: uppercase; letter-spacing: 0.08em;
+}
+.sc-panel__wiki a { color: #8f95ab; text-decoration: none; }
+.sc-panel__wiki a:hover { color: #e7cf95; text-decoration: underline; }
+.sc-panel__wiki .sc-panel__wiki-map { color: #7ff0eb; }
+.sc-panel__wiki .sc-panel__wiki-map:hover { color: #aef6f2; }
 .sc-panel__best { text-align: right; white-space: nowrap; }
 .sc-panel__best span { font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 1.5rem; color: #e7cf95; }
 .sc-panel__best small { display: block; font-size: 0.64rem; color: #8f95ab; text-transform: uppercase; letter-spacing: 0.1em; }

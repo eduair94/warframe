@@ -147,6 +147,21 @@
                     <v-icon size="12" color="#7ff0eb">mdi-diamond-stone</v-icon>
                     showing sources of <strong>{{ focusItem }}</strong>
                   </div>
+                  <div class="sc3-panel__wiki">
+                    <a :href="worldWikiUrl(selectedData.planet)" target="_blank" rel="noopener noreferrer">
+                      wiki <v-icon size="11">mdi-open-in-new</v-icon>
+                    </a>
+                    <a
+                      v-if="selectedWikiMap"
+                      :href="selectedWikiMap.url"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="sc3-panel__wiki-map"
+                    >
+                      <v-icon size="11">mdi-map-search-outline</v-icon>
+                      {{ selectedWikiMap.title }} interactive map
+                    </a>
+                  </div>
                 </div>
                 <div class="sc3-panel__best">
                   <span>{{ fmtPlat(selectedData.value) }}</span
@@ -463,6 +478,9 @@ const highlightedWorlds = computed<string[] | null>(() =>
 
 const selectedData = computed(() => (selected.value ? planetsByName.value[selected.value] : null))
 const panelOpen = computed(() => !!selectedData.value || !!itemHits.value)
+const selectedWikiMap = computed(() =>
+  selectedData.value ? worldWikiMap(selectedData.value.planet) : null,
+)
 
 function onSceneSelect(name: string | null) {
   if (name) {
@@ -1072,6 +1090,31 @@ onBeforeUnmount(() => {
   margin-top: 3px;
 }
 .sc3-panel__focus strong {
+  color: #aef6f2;
+}
+.sc3-panel__wiki {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.sc3-panel__wiki a {
+  color: #8f95ab;
+  text-decoration: none;
+}
+.sc3-panel__wiki a:hover {
+  color: #e7cf95;
+  text-decoration: underline;
+}
+.sc3-panel__wiki .sc3-panel__wiki-map {
+  color: #7ff0eb;
+}
+.sc3-panel__wiki .sc3-panel__wiki-map:hover {
   color: #aef6f2;
 }
 .sc3-node__mark {
