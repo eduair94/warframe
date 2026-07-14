@@ -1,4 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import { es, pt } from 'vuetify/locale'
+
 export default defineNuxtConfig({
   compatibilityDate: '2026-07-01',
   ssr: true,
@@ -38,9 +40,27 @@ export default defineNuxtConfig({
     }
   },
 
-  // Modules added in later phases: vuetify-nuxt-module, @pinia/nuxt,
-  // @nuxtjs/leaflet.
-  modules: ['@nuxtjs/i18n', '@nuxtjs/sitemap', 'nuxt-gtag', '@nuxtjs/google-fonts', '@vite-pwa/nuxt'],
+  // Modules added in later phases: @pinia/nuxt, @nuxtjs/leaflet.
+  modules: [
+    '@nuxtjs/i18n',
+    '@nuxtjs/sitemap',
+    'nuxt-gtag',
+    '@nuxtjs/google-fonts',
+    '@vite-pwa/nuxt',
+    'vuetify-nuxt-module'
+  ],
+
+  // Global stylesheets (Nuxt 2 `css: [...]` -> Nuxt 4 top-level `css`).
+  // `base.css` sets the Open Sans body font (Vuetify 2's `defaultAssets.font`
+  // has no V3 equivalent); `analytics.css` is the verbatim Orokin `.an-*`
+  // design system (app/assets/analytics.css, byte-identical copy). The mdi
+  // font stylesheet is NOT listed here: vuetify-nuxt-module auto-detects the
+  // installed `@mdi/font` package and injects
+  // `@mdi/font/css/materialdesignicons.css` itself when `icons.defaultSet`
+  // is 'mdi' (see vuetify-nuxt-module/dist/module.mjs `resolvedIcons.local`);
+  // adding it here too would double-load it. `driver.js/dist/driver.css`
+  // (old app/nuxt.config.js line 64) is deferred to the driver.js/tour task.
+  css: ['~/assets/base.css', '~/assets/analytics.css'],
 
   // Ported from app/nuxt.config.js `i18n` block. v9 breaking change vs the
   // old v7 config: locale objects use `language` (not `iso`). Messages stay
@@ -135,6 +155,59 @@ export default defineNuxtConfig({
     devOptions: {
       enabled: true,
       type: 'module'
+    }
+  },
+
+  // Ported from app/nuxt.config.js `vuetify: {...}` (lines 206-235), shaped
+  // for vuetify-nuxt-module. V3 deltas vs the old @nuxtjs/vuetify config:
+  //  - `dark: false` -> `defaultTheme: 'dark'`: the old layout forced
+  //    `<v-app dark>` (app/layouts/default.vue:2) despite `dark: false`, so
+  //    the live app always rendered dark. V3 has no `<v-app dark>` prop, so
+  //    the default theme is set to 'dark' directly to preserve appearance.
+  //  - `colors.blue.darken2` etc (vuetify/es5/util/colors, removed in V3)
+  //    resolved to their literal Material hex values, nested under `colors`.
+  //  - `treeShake` dropped: vite-plugin-vuetify tree-shakes automatically.
+  //  - `customVariables: ['~/assets/variables.scss']` dropped: that file is
+  //    comments-only (no active SASS overrides), so `moduleOptions.styles`
+  //    is left at its default (`true`) rather than pointed at an empty file.
+  //  - `defaultAssets.font` dropped (no V3 equivalent) — Open Sans is loaded
+  //    by @nuxtjs/google-fonts (`googleFonts` above) and applied as the body
+  //    font via `~/assets/base.css` in the `css` array.
+  //  - `lang.locales: { pt, es }` -> `locale.messages: { es, pt }` using V3's
+  //    `vuetify/locale` exports; `@nuxtjs/i18n` (already wired) takes over
+  //    the active `locale`/`fallback` at runtime, so only the message packs
+  //    are supplied here.
+  vuetify: {
+    vuetifyOptions: {
+      icons: {
+        defaultSet: 'mdi' // glyphs via @mdi/font, auto-injected by the module (see css comment above)
+      },
+      locale: {
+        messages: { es, pt }
+      },
+      theme: {
+        defaultTheme: 'dark',
+        themes: {
+          dark: {
+            dark: true,
+            colors: {
+              primary: '#1976D2', // colors.blue.darken2
+              accent: '#424242', // colors.grey.darken3
+              secondary: '#FF8F00', // colors.amber.darken3
+              info: '#26A69A', // colors.teal.lighten1
+              warning: '#FFC107', // colors.amber.base
+              error: '#DD2C00', // colors.deepOrange.accent4
+              success: '#00E676' // colors.green.accent3
+            }
+          },
+          light: {
+            dark: false,
+            colors: {
+              primary: '#1f1f2f'
+            }
+          }
+        }
+      }
     }
   }
 
