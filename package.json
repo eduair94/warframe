@@ -5,6 +5,7 @@
   "main": "dist/server.js",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only server.ts",
+    "dev:live": "ts-node-dev --respawn --transpile-only live.ts",
     "build": "tsc -p tsconfig.production.json",
     "start": "node dist/server.js",
     "sync_items": "ts-node sync_items.ts",
@@ -59,6 +60,7 @@
     "mongoose": "^6.10.0",
     "proxy-agent": "^6.5.0",
     "route-cache": "^0.6.1",
+    "socket.io": "^4.8.3",
     "socks": "^2.8.6",
     "socks-proxy-agent": "^8.0.1",
     "tough-cookie": "^5.1.2",

@@ -1,0 +1,52 @@
+/**
+ * Central env-driven config for the warframe-live process. Pure reader
+ * (readLiveConfig) so it is unit-testable; LiveConfig is the frozen instance
+ * built from process.env for real use.
+ */
+export interface LiveConfig {
+  port: number;
+  feedMode: 'socket' | 'poller' | 'off';
+  maxSubscriptions: number;
+  pollIntervalMs: number;
+  platform: string;
+  corsOrigin: string | string[];
+  fvHalfVolume: number;   // volume at which avg_price gets 50% weight vs history median
+  baseBandPct: number;    // base +/- band (fraction) around FV before a signal fires
+  maxBandPct: number;     // cap on the volatility-widened band
+  confMin: number;        // below this confidence -> verdict 'hold'
+  fvRefreshMs: number;    // how often the FV baseline is reloaded from Mongo
+  hotFloorList: string[]; // always-on url_names regardless of viewers
+}
+
+function int(v: string | undefined, dflt: number): number {
+  const n = v == null ? NaN : parseInt(v, 10);
+  return Number.isFinite(n) ? n : dflt;
+}
+function csv(v: string | undefined): string[] {
+  if (!v) return [];
+  return v.split(',').map((s) => s.trim()).filter(Boolean);
+}
+
+export function readLiveConfig(env: NodeJS.ProcessEnv): LiveConfig {
+  const mode = env.LIVE_FEED_MODE;
+  const feedMode: LiveConfig['feedMode'] =
+    mode === 'socket' || mode === 'off' ? mode : 'poller';
+  const origins = csv(env.LIVE_CORS_ORIGIN);
+  return {
+    port: int(env.LIVE_PORT, 3530),
+    feedMode,
+    maxSubscriptions: int(env.LIVE_MAX_SUBSCRIPTIONS, 150),
+    pollIntervalMs: int(env.LIVE_POLL_INTERVAL_MS, 6000),
+    platform: env.LIVE_PLATFORM || 'pc',
+    corsOrigin: origins.length === 0 ? '*' : origins.length === 1 ? origins[0] : origins,
+    fvHalfVolume: int(env.LIVE_FV_HALF_VOLUME, 50),
+    baseBandPct: Number(env.LIVE_BASE_BAND_PCT) || 0.08,
+    maxBandPct: Number(env.LIVE_MAX_BAND_PCT) || 0.25,
+    confMin: Number(env.LIVE_CONF_MIN) || 0.25,
+    fvRefreshMs: int(env.LIVE_FV_REFRESH_MS, 10 * 60 * 1000),
+    hotFloorList: csv(env.LIVE_HOT_FLOOR),
+  };
+}
+
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+export const LiveConfig: LiveConfig = Object.freeze(readLiveConfig(process.env));

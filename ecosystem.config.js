@@ -66,5 +66,11 @@ module.exports = {
             script: "dist/sync_drops.js",
             log_date_format: "YYYY-MM-DD HH:mm Z",
         },
+        {
+            name: "warframe-live",
+            autorestart: true,
+            script: "dist/live.js",
+            log_date_format: "YYYY-MM-DD HH:mm Z",
+        },
     ],
 };
