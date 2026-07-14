@@ -95,9 +95,15 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="row in paged" :key="row.url_name" :class="{ 'row-flash': isFlash(row.url_name) }">
+              <tr
+                v-for="row in paged"
+                :key="row.url_name"
+                class="clickable"
+                :class="{ 'row-flash': isFlash(row.url_name) }"
+                @click="openDetail(row)"
+              >
                 <td class="col-name">
-                  <a class="an-name" :href="mkt(row.url_name)" target="_blank" rel="noopener">
+                  <a class="an-name" :href="mkt(row.url_name)" target="_blank" rel="noopener" @click.stop>
                     <img
                       class="an-thumb"
                       :src="thumbOf(row)"
@@ -125,11 +131,17 @@
         </div>
 
         <div v-else class="an-cards">
-          <div v-for="row in paged" :key="row.url_name" class="an-card" :class="{ 'row-flash': isFlash(row.url_name) }">
+          <div
+            v-for="row in paged"
+            :key="row.url_name"
+            class="an-card clickable"
+            :class="{ 'row-flash': isFlash(row.url_name) }"
+            @click="openDetail(row)"
+          >
             <div class="an-card__head">
               <img class="an-thumb" :src="thumbOf(row)" :alt="row.item_name" loading="lazy" />
               <div class="an-card__title">
-                <a class="an-card__name" :href="mkt(row.url_name)" target="_blank" rel="noopener">
+                <a class="an-card__name" :href="mkt(row.url_name)" target="_blank" rel="noopener" @click.stop>
                   {{ row.item_name }}
                 </a>
                 <span class="an-ago">{{ agoOf(row.url_name) }}</span>
@@ -170,8 +182,73 @@
       <v-alert class="an-disclaimer bg-blue-darken-4" type="info" density="compact">
         Verdicts compare the lowest online sell against a blended fair value (realized average +
         price history). Arcanes/mods price at their max rank. Thin-volume items (⚠) are held, since
-        a couple of orders can rig the price.
+        a couple of orders can rig the price. Click any item for its live order book.
       </v-alert>
+
+      <v-dialog v-model="showDetail" max-width="760">
+        <div v-if="detail && detailRow" class="order-book">
+          <div class="ob-head">
+            <img class="an-thumb" :src="thumbOf(detailRow)" :alt="detailRow.item_name" />
+            <div class="ob-head__title">
+              <div class="ob-head__name">{{ detailRow.item_name }}</div>
+              <a class="ob-head__link" :href="mkt(detailRow.url_name)" target="_blank" rel="noopener">warframe.market ↗</a>
+            </div>
+            <MarketVerdictBadge :verdict="detail.verdict" />
+            <v-btn icon="mdi-close" size="small" variant="text" @click="showDetail = false" />
+          </div>
+
+          <div class="ob-advice">
+            <div class="ob-advice__row"><span class="ob-advice__lbl buy">Buying</span>{{ buyAdvice(detail) }}</div>
+            <div class="ob-advice__row"><span class="ob-advice__lbl sell">Selling</span>{{ sellAdvice(detail) }}</div>
+            <div class="ob-advice__meta">
+              Fair value {{ Math.round(detail.verdict.fv) }}p · spread
+              {{ Math.max(0, detail.book.bestSell - detail.book.bestBuy) }}p · vol {{ detail.verdict.volume }}/48h<span
+                v-if="detail.verdict.thin"
+                class="is-thin"
+              >
+                · ⚠ thin</span
+              >
+              · updated {{ agoOf(detailRow.url_name) }}
+            </div>
+          </div>
+
+          <div class="ob-cols">
+            <div class="ob-col">
+              <div class="ob-col__title sell">Sellers · WTS <span>cheapest first</span></div>
+              <div
+                v-for="(o, i) in detail.book.sellOrders"
+                :key="'s' + i"
+                class="ob-order"
+                :class="{ 'is-best': i === 0 }"
+              >
+                <span class="ob-status" :class="o.status" :title="o.status" />
+                <span class="ob-name">{{ o.ingame_name || '—' }}</span>
+                <span v-if="o.rank != null" class="ob-rank">r{{ o.rank }}</span>
+                <span class="ob-qty">×{{ o.quantity }}</span>
+                <strong class="ob-plat">{{ o.platinum }}p</strong>
+              </div>
+              <div v-if="!detail.book.sellOrders.length" class="ob-empty">No online sellers</div>
+            </div>
+            <div class="ob-col">
+              <div class="ob-col__title buy">Buyers · WTB <span>highest first</span></div>
+              <div
+                v-for="(o, i) in detail.book.buyOrders"
+                :key="'b' + i"
+                class="ob-order"
+                :class="{ 'is-best': i === 0 }"
+              >
+                <span class="ob-status" :class="o.status" :title="o.status" />
+                <span class="ob-name">{{ o.ingame_name || '—' }}</span>
+                <span v-if="o.rank != null" class="ob-rank">r{{ o.rank }}</span>
+                <span class="ob-qty">×{{ o.quantity }}</span>
+                <strong class="ob-plat">{{ o.platinum }}p</strong>
+              </div>
+              <div v-if="!detail.book.buyOrders.length" class="ob-empty">No online buyers</div>
+            </div>
+          </div>
+          <div class="ob-foot">🟢 ingame — trade now · 🟡 online — message them</div>
+        </div>
+      </v-dialog>
     </client-only>
   </div>
 </template>
@@ -291,6 +368,39 @@ function agoOf(url: string): string {
   if (!u) return ''
   const s = Math.max(0, Math.floor((now.value - u.book.updatedAt) / 1000))
   return s < 1 ? 'now' : `${s}s`
+}
+
+// --- order-book detail (click a row to see the real offers + a worth-it call) ---
+const detailRow = ref<any | null>(null)
+const showDetail = ref(false)
+const detail = computed<LiveUpdate | null>(() =>
+  detailRow.value ? live.value[detailRow.value.url_name] || null : null,
+)
+function openDetail(row: any) {
+  detailRow.value = row
+  showDetail.value = true
+}
+function buyAdvice(u: LiveUpdate): string {
+  const b = u.book
+  const v = u.verdict
+  const fv = Math.round(v.fv)
+  if (!b.bestSell) return 'No sellers online right now.'
+  if (v.thin) return `Thin volume (${v.volume}/48h) — a couple of orders can rig this, don't chase.`
+  const pct = v.fv > 0 ? Math.round(((v.fv - b.bestSell) / v.fv) * 100) : 0
+  if (pct >= 8) return `Buy from the cheapest seller at ${b.bestSell}p — ${pct}% below fair (${fv}p). Good buy.`
+  if (pct <= -8) return `Cheapest sell ${b.bestSell}p is ${-pct}% above fair (${fv}p). Overpriced — wait.`
+  return `Cheapest sell ${b.bestSell}p is about fair (${fv}p). No edge either way.`
+}
+function sellAdvice(u: LiveUpdate): string {
+  const b = u.book
+  const v = u.verdict
+  const fv = Math.round(v.fv)
+  if (!b.bestBuy) return 'No buyers online — list a sell order and wait.'
+  if (v.thin) return `Thin volume — few real buyers, price is unreliable.`
+  const pct = v.fv > 0 ? Math.round(((b.bestBuy - v.fv) / v.fv) * 100) : 0
+  if (pct >= 8) return `Sell instantly to the top buyer at ${b.bestBuy}p — ${pct}% above fair. Great sell.`
+  if (pct <= -8) return `Top buyer only ${b.bestBuy}p (${-pct}% below fair). List your own at ~${fv}p instead.`
+  return `Top buyer ${b.bestBuy}p is about fair. Or list your own around ${fv}p.`
 }
 
 onMounted(() => {
@@ -439,5 +549,162 @@ function finishLoading(attempt = 0) {
 .ticker-item.sell .ticker-tag {
   background: rgba(212, 175, 90, 0.2);
   color: #d4af5a;
+}
+/* Order-book detail dialog */
+.clickable {
+  cursor: pointer;
+}
+:deep(tr.clickable:hover) td {
+  background: rgba(79, 179, 191, 0.06);
+}
+.an-card.clickable:hover {
+  border-color: rgba(79, 179, 191, 0.35);
+}
+.order-book {
+  background: #0d0f1a;
+  border: 1px solid rgba(79, 179, 191, 0.2);
+  border-radius: 10px;
+  padding: 16px;
+  color: #c9d4d4;
+}
+.ob-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.ob-head .an-thumb {
+  width: 44px;
+  height: 44px;
+}
+.ob-head__title {
+  flex: 1;
+  min-width: 0;
+}
+.ob-head__name {
+  font-size: 16px;
+  font-weight: 700;
+  color: #e7cf95;
+}
+.ob-head__link {
+  font-size: 11px;
+  color: #4fb3bf;
+  text-decoration: none;
+}
+.ob-advice {
+  background: rgba(79, 179, 191, 0.05);
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+  font-size: 13px;
+}
+.ob-advice__row {
+  margin-bottom: 4px;
+}
+.ob-advice__lbl {
+  display: inline-block;
+  min-width: 58px;
+  font-weight: 700;
+  font-size: 11px;
+  text-transform: uppercase;
+  margin-right: 8px;
+}
+.ob-advice__lbl.buy {
+  color: #4caf7d;
+}
+.ob-advice__lbl.sell {
+  color: #d4af5a;
+}
+.ob-advice__meta {
+  font-size: 11.5px;
+  opacity: 0.6;
+  margin-top: 6px;
+}
+.ob-cols {
+  display: flex;
+  gap: 14px;
+}
+.ob-col {
+  flex: 1;
+  min-width: 0;
+}
+.ob-col__title {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 4px;
+}
+.ob-col__title span {
+  opacity: 0.45;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+  margin-left: 4px;
+}
+.ob-col__title.sell {
+  color: #d4af5a;
+}
+.ob-col__title.buy {
+  color: #4caf7d;
+}
+.ob-order {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 4px 6px;
+  border-radius: 5px;
+  font-size: 13px;
+}
+.ob-order.is-best {
+  background: rgba(255, 255, 255, 0.05);
+}
+.ob-status {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex: 0 0 auto;
+  background: #667;
+}
+.ob-status.ingame {
+  background: #4caf7d;
+}
+.ob-status.online {
+  background: #d4af5a;
+}
+.ob-name {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.ob-rank {
+  font-size: 10px;
+  opacity: 0.6;
+}
+.ob-qty {
+  font-size: 11px;
+  opacity: 0.55;
+}
+.ob-plat {
+  color: #e7cf95;
+}
+.ob-empty {
+  padding: 8px 6px;
+  opacity: 0.5;
+  font-size: 12px;
+}
+.ob-foot {
+  margin-top: 10px;
+  font-size: 11px;
+  opacity: 0.5;
+}
+@media (max-width: 600px) {
+  .ob-cols {
+    flex-direction: column;
+  }
 }
 </style>

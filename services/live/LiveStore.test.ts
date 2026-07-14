@@ -77,4 +77,19 @@ describe('LiveStore', () => {
     ]});
     expect(book.bestSell).toBe(5); // no rank filter -> cheapest overall
   });
+
+  it('exposes the top online orders per side, best offer first (offline excluded)', () => {
+    const s = new LiveStore('pc');
+    const book = s.applySnapshot({ url_name: 'x', orders: [
+      ord({ id: '1', order_type: 'sell', platinum: 20, user: { id: 'a', ingame_name: 'Al', status: 'online' } }),
+      ord({ id: '2', order_type: 'sell', platinum: 15, user: { id: 'b', ingame_name: 'Bo', status: 'ingame' } }),
+      ord({ id: '3', order_type: 'sell', platinum: 9, user: { id: 'c', ingame_name: 'Cy', status: 'offline' } }), // excluded
+      ord({ id: '4', order_type: 'buy', platinum: 12, user: { id: 'd', ingame_name: 'Di', status: 'ingame' } }),
+      ord({ id: '5', order_type: 'buy', platinum: 8, user: { id: 'e', ingame_name: 'Ed', status: 'online' } }),
+    ]});
+    expect(book.sellOrders.map((o) => o.platinum)).toEqual([15, 20]); // cheapest online first, offline excluded
+    expect(book.sellOrders[0].ingame_name).toBe('Bo');
+    expect(book.sellOrders[0].status).toBe('ingame');
+    expect(book.buyOrders.map((o) => o.platinum)).toEqual([12, 8]); // highest first
+  });
 });

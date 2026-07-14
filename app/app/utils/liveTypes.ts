@@ -4,6 +4,14 @@
 
 export type VerdictKind = 'buy' | 'sell' | 'fair' | 'hold'
 
+export interface OrderRow {
+  platinum: number
+  quantity: number
+  rank?: number
+  ingame_name: string
+  status: 'ingame' | 'online' | 'offline'
+}
+
 export interface LiveBook {
   url_name: string
   bestBuy: number // highest online buy (what you get selling now)
@@ -13,6 +21,8 @@ export interface LiveBook {
   onlineBuyCount: number
   onlineSellCount: number
   updatedAt: number // epoch ms
+  sellOrders: OrderRow[] // top online sellers, cheapest first (what you'd buy from)
+  buyOrders: OrderRow[] // top online buyers, highest first (what you'd sell to)
 }
 
 export interface Verdict {

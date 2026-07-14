@@ -1,5 +1,8 @@
 import { OrderCalculator, IOrderData } from '../OrderCalculator';
-import { NormalizedOrder, LiveBook, FeedSnapshot, FeedDelta } from './LiveTypes';
+import { NormalizedOrder, LiveBook, OrderRow, FeedSnapshot, FeedDelta } from './LiveTypes';
+
+/** How many real orders per side to expose in the book (for the detail view). */
+const ORDER_CAP = 8;
 
 /**
  * In-memory order book + presence for the hot set. One instance holds every
@@ -76,6 +79,33 @@ export class LiveStore {
     // intentional: the count reflects book depth, the price reflects the tradeable tier.
     const onlineOf = (t: 'buy' | 'sell') =>
       usable.filter((o) => o.order_type === t && (o.user.status === 'ingame' || o.user.status === 'online')).length;
+
+    // Real order lists for the detail view: online orders in the same tier the best
+    // price uses (max rank if ranked, ingame-preferred), sorted so the top row is the
+    // best offer — sells cheapest-first (what you'd buy from), buys highest-first.
+    const maxRank = this.ranks.get(url_name);
+    const toRow = (o: NormalizedOrder): OrderRow => ({
+      platinum: o.platinum,
+      quantity: o.quantity,
+      rank: o.mod_rank,
+      ingame_name: o.user.ingame_name || '',
+      status: o.user.status,
+    });
+    const sideRows = (type: 'buy' | 'sell'): OrderRow[] => {
+      const online = usable.filter(
+        (o) => o.order_type === type && (o.user.status === 'ingame' || o.user.status === 'online')
+      );
+      let atRank = maxRank === undefined ? online : online.filter((o) => o.mod_rank === maxRank);
+      if (atRank.length === 0) atRank = online; // fallback to any rank (matches OrderCalculator)
+      const dir = type === 'sell' ? 1 : -1; // sells cheapest-first, buys highest-first
+      const rankStatus = (o: NormalizedOrder) => (o.user.status === 'ingame' ? 0 : 1);
+      return atRank
+        .slice()
+        .sort((a, b) => dir * (a.platinum - b.platinum) || rankStatus(a) - rankStatus(b))
+        .slice(0, ORDER_CAP)
+        .map(toRow);
+    };
+
     return {
       url_name,
       bestBuy: prices.buy,
@@ -85,6 +115,8 @@ export class LiveStore {
       onlineBuyCount: onlineOf('buy'),
       onlineSellCount: onlineOf('sell'),
       updatedAt: Date.now(),
+      sellOrders: sideRows('sell'),
+      buyOrders: sideRows('buy'),
     };
   }
 }

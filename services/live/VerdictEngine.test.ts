@@ -4,7 +4,7 @@ import { LiveBook, FairValueInputs } from './LiveTypes';
 const OPTS = { halfVolume: 50, baseBandPct: 0.08, maxBandPct: 0.25, confMin: 0.25, thinVolume: 3 };
 const book = (p: Partial<LiveBook>): LiveBook => ({
   url_name: 'x', bestBuy: 0, bestSell: 0, buyAvg: 0, sellAvg: 0,
-  onlineBuyCount: 5, onlineSellCount: 5, updatedAt: 0, ...p,
+  onlineBuyCount: 5, onlineSellCount: 5, updatedAt: 0, sellOrders: [], buyOrders: [], ...p,
 });
 const fv = (p: Partial<FairValueInputs>): FairValueInputs => ({
   url_name: 'x', avg_price: 100, medianHistory: 100, volatility: 5,

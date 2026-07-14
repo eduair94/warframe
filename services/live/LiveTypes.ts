@@ -11,6 +11,15 @@ export interface NormalizedOrder {
   user: { id?: string; ingame_name?: string; status: 'ingame' | 'online' | 'offline' };
 }
 
+/** One real order shown in the per-item book (top online offers). */
+export interface OrderRow {
+  platinum: number;
+  quantity: number;
+  rank?: number;
+  ingame_name: string;
+  status: 'ingame' | 'online' | 'offline';
+}
+
 /** Best online prices + depth for one item, recomputed on every delta. */
 export interface LiveBook {
   url_name: string;
@@ -21,6 +30,8 @@ export interface LiveBook {
   onlineBuyCount: number;
   onlineSellCount: number;
   updatedAt: number; // epoch ms
+  sellOrders: OrderRow[]; // top online sellers, cheapest first (what you'd buy from)
+  buyOrders: OrderRow[];  // top online buyers, highest first (what you'd sell to)
 }
 
 /** Fair-value baseline inputs, loaded from Mongo (no extra HTTP). */
