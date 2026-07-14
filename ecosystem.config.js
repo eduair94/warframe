@@ -18,6 +18,25 @@ module.exports = {
             script: "dist/server.js",
             log_date_format: "YYYY-MM-DD HH:mm Z",
         },
+        {
+            // Nuxt frontend (SSR). API_URL is baked into publicRuntimeConfig
+            // (nuxt.config.js) and serialized to the client, so it MUST point
+            // at the PUBLIC API origin - otherwise the browser requests
+            // http://localhost:3529 (the visitor's own machine) and every call
+            // fails with ERR_CONNECTION_REFUSED. Set it here so pm2 injects it
+            // regardless of shell env.
+            name: "warframe-app",
+            cwd: "./app",
+            script: "./node_modules/nuxt/bin/nuxt.js",
+            args: "start",
+            interpreter: "node",
+            autorestart: true,
+            env: {
+                API_URL: "https://warframe.digitalshopuy.com",
+                FRONTEND_PORT: "3312",
+            },
+            log_date_format: "YYYY-MM-DD HH:mm Z",
+        },
        {
             name: "warframe-sync-auctions",
             autorestart: true,
