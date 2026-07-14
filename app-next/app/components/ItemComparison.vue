@@ -12,7 +12,7 @@
           <template #item.item_name="{ item }">
             <div class="d-flex justify-start align-center py-2">
               <img class="mr-3" width="40px" :src="'https://warframe.market/static/assets/' + item.thumb" />
-              <a class="no_link white--text" target="_blank" :href="'https://warframe.market/items/' + item.url_name"
+              <a class="no_link text-white" target="_blank" :href="'https://warframe.market/items/' + item.url_name"
                 >{{ item.item_name }}</a
               >
             </div>
