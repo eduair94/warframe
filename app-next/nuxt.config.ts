@@ -39,8 +39,8 @@ export default defineNuxtConfig({
   },
 
   // Modules added in later phases: vuetify-nuxt-module, @pinia/nuxt,
-  // @vite-pwa/nuxt, @nuxtjs/leaflet.
-  modules: ['@nuxtjs/i18n', '@nuxtjs/sitemap', 'nuxt-gtag', '@nuxtjs/google-fonts'],
+  // @nuxtjs/leaflet.
+  modules: ['@nuxtjs/i18n', '@nuxtjs/sitemap', 'nuxt-gtag', '@nuxtjs/google-fonts', '@vite-pwa/nuxt'],
 
   // Ported from app/nuxt.config.js `i18n` block. v9 breaking change vs the
   // old v7 config: locale objects use `language` (not `iso`). Messages stay
@@ -83,6 +83,58 @@ export default defineNuxtConfig({
   googleFonts: {
     families: {
       'Open Sans': [400, 600, 700]
+    }
+  },
+
+  // PWA — @vite-pwa/nuxt (replaces @nuxtjs/pwa). Manifest ported verbatim from
+  // the old pwa{} block (app/nuxt.config.js:174-204); API responses cached
+  // NetworkFirst so last-loaded data survives offline / flaky connections.
+  // The dead arc.io service worker (static/arc-sw.js) and the NekR
+  // self-destroy stub (static/sw.js) are NOT ported — vite-pwa generates and
+  // registers its own sw.js.
+  pwa: {
+    registerType: 'autoUpdate',
+    manifest: {
+      name: 'Warframe Market Analytics App',
+      short_name: 'Warframe Analytics',
+      description: 'Warframe Market Analytics',
+      lang: 'en',
+      theme_color: '#272727',
+      background_color: '#272727',
+      categories: ['games', 'utilities', 'shopping'],
+      display: 'standalone',
+      icons: [
+        { src: '/android-chrome-192x192.png', sizes: '192x192', type: 'image/png', purpose: 'any' },
+        { src: '/android-chrome-384x384.png', sizes: '384x384', type: 'image/png', purpose: 'any' },
+        { src: '/maskable-icon-512x512.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' }
+      ]
+    },
+    workbox: {
+      navigateFallback: null,
+      globPatterns: ['**/*.{js,css,html,png,svg,ico,woff2}'],
+      runtimeCaching: [
+        {
+          // Cache the API origin (build-time env, same as the old config).
+          urlPattern: new RegExp(
+            `^${(process.env.API_URL || 'http://localhost:3529').replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}/`
+          ),
+          handler: 'NetworkFirst',
+          method: 'GET',
+          options: {
+            cacheName: 'warframe-api',
+            cacheableResponse: { statuses: [0, 200] }
+          }
+        }
+      ]
+    },
+    client: {
+      installPrompt: false
+    },
+    // Registers the SW in dev too (default is build-only) so DevTools ->
+    // Application -> Service Workers/Manifest is verifiable via `npm run dev`.
+    devOptions: {
+      enabled: true,
+      type: 'module'
     }
   }
 

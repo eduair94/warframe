@@ -3,6 +3,8 @@
     <h1>app-next scaffold OK</h1>
     <p>Nuxt {{ 4 }} boots. API base: {{ apiURL }}</p>
   </div>
+  <!-- Injects the PWA web-manifest link tag into head (@vite-pwa/nuxt component; renderless). -->
+  <VitePwaManifest />
 </template>
 
 <script setup lang="ts">
