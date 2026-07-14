@@ -26,18 +26,31 @@ describe('RelicService.buildRelicEvFromData', () => {
           { itemName: 'Unlisted Part', rarity: 'Common', chance: 25.33 },
         ],
       },
+      {
+        // A currently-dropping (non-vaulted) relic that ALSO drops Nova Prime
+        // Neuroptics — so that part must read as not-vaulted even inside the
+        // vaulted Lith A1 above.
+        relicName: 'meso B1',
+        tier: 'Meso',
+        state: 'Intact',
+        rewards: [
+          { itemName: 'Nova Prime Neuroptics', rarity: 'Rare', chance: 2 },
+          { itemName: 'Some Common Part', rarity: 'Common', chance: 25.33 },
+        ],
+      },
     ];
 
     const items: IMarketItem[] = [
-      // the relic's own market item (listed as "<tier>_<code>_relic")
+      // relic market items (listed as "<tier>_<code>_relic"); vaulted flag lives here
       { url_name: 'lith_a1_relic', item_name: 'Lith A1 Relic', thumb: 'relic.png', vaulted: true, market: { buy: 10, sell: 15, volume: 100, avg_price: 14 } } as IMarketItem,
-      { url_name: 'ash_prime_blueprint', item_name: 'Ash Prime Blueprint', thumb: 'bp.png', vaulted: true, market: { buy: 45, sell: 50, volume: 8, avg_price: 47 } } as IMarketItem,
-      { url_name: 'nova_prime_neuroptics', item_name: 'Nova Prime Neuroptics', thumb: 'neu.png', vaulted: false, market: { buy: 18, sell: 22, volume: 0 } } as IMarketItem,
-      // 'Unlisted Part' intentionally absent -> price 0, url/thumb empty
+      { url_name: 'meso_b1_relic', item_name: 'Meso B1 Relic', thumb: 'relic2.png', vaulted: false, market: { buy: 3, sell: 6, volume: 40, avg_price: 5 } } as IMarketItem,
+      { url_name: 'ash_prime_blueprint', item_name: 'Ash Prime Blueprint', thumb: 'bp.png', market: { buy: 45, sell: 50, volume: 8, avg_price: 47 } } as IMarketItem,
+      { url_name: 'nova_prime_neuroptics', item_name: 'Nova Prime Neuroptics', thumb: 'neu.png', market: { buy: 18, sell: 22, volume: 0 } } as IMarketItem,
+      // 'Unlisted Part' / 'Some Common Part' intentionally absent -> price 0
     ];
 
     const rows = service.buildRelicEvFromData(relics, items);
-    expect(rows).toHaveLength(1);
+    expect(rows).toHaveLength(2);
     const row = rows[0];
 
     expect(row.relicName).toBe('Lith A1');
@@ -48,8 +61,7 @@ describe('RelicService.buildRelicEvFromData', () => {
     expect(row.relic).toEqual({ buy: 10, sell: 15, volume: 100, avgPrice: 14 });
 
     expect(row.rewards).toHaveLength(3);
-    // priced + traded reward carries its liquidity inputs (volume + 48h avg) and
-    // its own vaulted flag
+    // Ash Prime BP drops ONLY from the vaulted Lith A1 -> effectively vaulted.
     expect(row.rewards[0]).toEqual({
       item_name: 'Ash Prime Blueprint',
       url_name: 'ash_prime_blueprint',
@@ -60,8 +72,9 @@ describe('RelicService.buildRelicEvFromData', () => {
       volume: 8,
       vaulted: true,
     });
-    // listed-but-untraded reward -> volume 0, avgPrice 0 (falls out of realizable
-    // EV); a currently-dropping part reports vaulted false
+    // Nova Prime Neuroptics also drops from the NON-vaulted Meso B1 -> not
+    // vaulted, even though it's listed here inside a vaulted relic. (Untraded:
+    // volume 0, avgPrice 0, so it falls out of the realizable EV client-side.)
     expect(row.rewards[1]).toEqual({
       item_name: 'Nova Prime Neuroptics',
       url_name: 'nova_prime_neuroptics',
@@ -72,8 +85,7 @@ describe('RelicService.buildRelicEvFromData', () => {
       volume: 0,
       vaulted: false,
     });
-    // unlisted reward -> price 0, empty url/thumb, zero liquidity inputs, and an
-    // unknown part is treated as not vaulted
+    // unlisted reward -> price 0, empty url/thumb; only in the vaulted relic -> vaulted
     expect(row.rewards[2]).toEqual({
       item_name: 'Unlisted Part',
       url_name: '',
@@ -82,8 +94,14 @@ describe('RelicService.buildRelicEvFromData', () => {
       price: 0,
       avgPrice: 0,
       volume: 0,
-      vaulted: false,
+      vaulted: true,
     });
+
+    // The non-vaulted Meso B1's own drops are all currently-dropping.
+    const meso = rows[1];
+    expect(meso.relicName).toBe('Meso B1');
+    expect(meso.vaulted).toBe(false);
+    expect(meso.rewards.every((r) => r.vaulted === false)).toBe(true);
   });
 
   it('defaults the relic market to zeros when the relic is not listed', () => {

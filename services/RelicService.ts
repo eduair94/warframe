@@ -211,22 +211,32 @@ export class RelicService {
       if (item.url_name) byUrl.set(item.url_name, item);
     }
 
+    // Whether a relic is vaulted comes from its own warframe.market item flag,
+    // which is only reliably set on RELICS (not individual prime parts). So a
+    // part's "vaulted" status can't be read off the part — it's derived: a part
+    // still drops in fissures iff at least one CURRENTLY-DROPPING (non-vaulted)
+    // relic contains it. Parts found only in vaulted relics are effectively
+    // vaulted (scarce, no longer farmable by cracking new relics).
+    const isRelicVaulted = (relic: IRelic): boolean => {
+      const meta = this.relicMeta(relic);
+      if (!meta) return false;
+      const relicItem = byUrl.get(meta.url_name) || byUrl.get(meta.baseUrl);
+      return relicItem?.vaulted === true;
+    };
+
+    const droppingParts = new Set<string>();
+    for (const relic of relics) {
+      if (!relic?.rewards?.length || isRelicVaulted(relic)) continue;
+      for (const reward of relic.rewards) droppingParts.add(reward.itemName);
+    }
+
     const rows: IRelicEvRow[] = [];
 
     for (const relic of relics) {
-      if (!relic || !relic.rewards || relic.rewards.length === 0) continue;
+      const meta = this.relicMeta(relic);
+      if (!meta) continue;
 
-      // Stored relicName is "<tier> <code>" e.g. "lith A1"; derive a clean
-      // display name and url_name from the tier + code.
-      const code = (relic.relicName || '').split(/\s+/).slice(1).join(' ').trim();
-      if (!code) continue;
-      const tier = relic.tier || (relic.relicName || '').split(/\s+/)[0] || '';
-      const displayName = `${this.capitalize(tier)} ${code.toUpperCase()}`;
-      // Relics are listed on warframe.market as "<tier>_<code>_relic" (e.g.
-      // lith_a1_relic); the detail page also keys off that url_name.
-      const url_name = `${tier.toLowerCase()}_${code.toLowerCase()}_relic`;
-
-      const relicItem = byUrl.get(url_name) || byUrl.get(`${tier.toLowerCase()}_${code.toLowerCase()}`);
+      const relicItem = byUrl.get(meta.url_name) || byUrl.get(meta.baseUrl);
 
       const rewards = relic.rewards.map((reward) => {
         const item = byName.get(reward.itemName);
@@ -241,15 +251,16 @@ export class RelicService {
           // volume and prefers the 48h average over the raw lowest ask.
           avgPrice: m?.avg_price ?? 0,
           volume: m?.volume ?? 0,
-          // Whether the part itself is vaulted (scarce) vs still dropping.
-          vaulted: item?.vaulted === true,
+          // Effectively vaulted: no currently-dropping relic yields this part,
+          // so it can't be farmed from fissures right now (only traded).
+          vaulted: !droppingParts.has(reward.itemName),
         };
       });
 
       rows.push({
-        relicName: displayName,
-        url_name,
-        tier: this.capitalize(tier),
+        relicName: meta.displayName,
+        url_name: meta.url_name,
+        tier: this.capitalize(meta.tier),
         thumb: relicItem?.thumb ?? '',
         // Vaulted relics no longer drop (can't be farmed). `=== true` collapses
         // an undefined/not-enriched flag to false so we never hide a relic that
@@ -266,6 +277,28 @@ export class RelicService {
     }
 
     return rows;
+  }
+
+  /**
+   * Derives a relic's display name and market url_name from its stored
+   * "<tier> <code>" name (e.g. "lith A1"). Returns null for relics with no code
+   * or no rewards. Relics are listed on warframe.market as "<tier>_<code>_relic".
+   * @private
+   */
+  private relicMeta(
+    relic: IRelic,
+  ): { code: string; tier: string; displayName: string; url_name: string; baseUrl: string } | null {
+    if (!relic || !relic.rewards || relic.rewards.length === 0) return null;
+    const code = (relic.relicName || '').split(/\s+/).slice(1).join(' ').trim();
+    if (!code) return null;
+    const tier = relic.tier || (relic.relicName || '').split(/\s+/)[0] || '';
+    return {
+      code,
+      tier,
+      displayName: `${this.capitalize(tier)} ${code.toUpperCase()}`,
+      url_name: `${tier.toLowerCase()}_${code.toLowerCase()}_relic`,
+      baseUrl: `${tier.toLowerCase()}_${code.toLowerCase()}`,
+    };
   }
 
   /**

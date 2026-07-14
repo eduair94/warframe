@@ -127,9 +127,11 @@ export interface IRelicEvReward {
    */
   volume: number;
   /**
-   * Whether this reward part is itself vaulted. A non-vaulted part still drops
-   * from current relics/missions (abundant, ongoing supply); a vaulted part is
-   * scarce. Lets the pages flag which of a relic's drops are currently-farmable.
+   * Whether this reward part is effectively vaulted — obtainable from NO
+   * currently-dropping relic. Derived (not read off the part, since
+   * warframe.market only flags relics): false means at least one non-vaulted
+   * relic still drops it in fissures; true means it survives only in vaulted
+   * relics (scarce, trade-only). Lets the pages flag which drops still farm.
    */
   vaulted: boolean;
 }
