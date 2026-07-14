@@ -28,7 +28,7 @@ it('poller tick flows all the way to a broadcast verdict', async () => {
   const broadcasts: LiveUpdate[] = [];
   const gw = new LiveGateway({
     feed: poller, store, fairValue, subs,
-    config: { halfVolume: 50, baseBandPct: 0.08, maxBandPct: 0.25, confMin: 0.25 },
+    config: { halfVolume: 50, baseBandPct: 0.08, maxBandPct: 0.25, confMin: 0.25, thinVolume: 3 },
     broadcast: (_u, u) => broadcasts.push(u),
     writeThrough: () => {},
   });

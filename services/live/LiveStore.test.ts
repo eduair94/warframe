@@ -54,4 +54,27 @@ describe('LiveStore', () => {
     ]});
     expect(book.bestSell).toBe(13);
   });
+
+  it('prices ranked items (arcanes) at the set max rank, ignoring lower-rank lowballs', () => {
+    const s = new LiveStore('pc');
+    s.setRank('arc', 5);
+    const book = s.applySnapshot({ url_name: 'arc', orders: [
+      ord({ id: '1', order_type: 'sell', platinum: 5, mod_rank: 0, user: { id: 'a', status: 'ingame' } }),  // rank-0 lowball -> ignored
+      ord({ id: '2', order_type: 'sell', platinum: 22, mod_rank: 5, user: { id: 'b', status: 'ingame' } }),
+      ord({ id: '3', order_type: 'sell', platinum: 18, mod_rank: 5, user: { id: 'c', status: 'ingame' } }),
+      ord({ id: '4', order_type: 'buy', platinum: 14, mod_rank: 5, user: { id: 'd', status: 'ingame' } }),
+      ord({ id: '5', order_type: 'buy', platinum: 30, mod_rank: 0, user: { id: 'e', status: 'ingame' } }),  // rank-0 highball -> ignored
+    ]});
+    expect(book.bestSell).toBe(18); // lowest rank-5 sell, not the 5p rank-0
+    expect(book.bestBuy).toBe(14);  // highest rank-5 buy, not the 30p rank-0
+  });
+
+  it('without a set rank, does not filter by rank (non-ranked items)', () => {
+    const s = new LiveStore('pc');
+    const book = s.applySnapshot({ url_name: 'set', orders: [
+      ord({ id: '1', order_type: 'sell', platinum: 5, mod_rank: 0, user: { id: 'a', status: 'ingame' } }),
+      ord({ id: '2', order_type: 'sell', platinum: 9, mod_rank: 3, user: { id: 'b', status: 'ingame' } }),
+    ]});
+    expect(book.bestSell).toBe(5); // no rank filter -> cheapest overall
+  });
 });

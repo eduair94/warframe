@@ -1,7 +1,7 @@
 import { computeFairValue, computeVerdict } from './VerdictEngine';
 import { LiveBook, FairValueInputs } from './LiveTypes';
 
-const OPTS = { halfVolume: 50, baseBandPct: 0.08, maxBandPct: 0.25, confMin: 0.25 };
+const OPTS = { halfVolume: 50, baseBandPct: 0.08, maxBandPct: 0.25, confMin: 0.25, thinVolume: 3 };
 const book = (p: Partial<LiveBook>): LiveBook => ({
   url_name: 'x', bestBuy: 0, bestSell: 0, buyAvg: 0, sellAvg: 0,
   onlineBuyCount: 5, onlineSellCount: 5, updatedAt: 0, ...p,
@@ -42,13 +42,30 @@ describe('computeVerdict', () => {
     expect(v.verdict).toBe('fair');
     expect(v.score).toBe(0);
   });
-  it('holds when confidence is too low (thin book, no history)', () => {
+  it('holds when confidence is too low (shallow book, no history) but volume is above thin', () => {
     const v = computeVerdict(
       book({ bestSell: 50, bestBuy: 40, onlineBuyCount: 1, onlineSellCount: 1 }),
-      fv({ volume: 1, dataDays: 0 }), OPTS
+      fv({ volume: 5, dataDays: 0 }), OPTS
     );
     expect(v.verdict).toBe('hold');
     expect(v.score).toBe(0);
+    expect(v.thin).toBe(false); // volume 5 >= thinVolume 3
+  });
+  it('holds a THIN-volume item (rig risk) even with a strong buy signal', () => {
+    const v = computeVerdict(
+      book({ bestSell: 50, bestBuy: 40 }), // would be a huge buy vs fv 100
+      fv({ avg_price: 100, medianHistory: 100, volume: 1 }), OPTS
+    );
+    expect(v.verdict).toBe('hold');
+    expect(v.thin).toBe(true);
+    expect(v.volume).toBe(1);
+    expect(v.reason).toMatch(/thin volume/i);
+    expect(v.score).toBe(0);
+  });
+  it('carries volume + thin=false on a normal verdict', () => {
+    const v = computeVerdict(book({ bestSell: 80, bestBuy: 70 }), fv({ volume: 100 }), OPTS);
+    expect(v.volume).toBe(100);
+    expect(v.thin).toBe(false);
   });
   it('widens the band for volatile items (no buy signal at 8% when volatility is high)', () => {
     const v = computeVerdict(

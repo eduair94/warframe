@@ -23,7 +23,7 @@ function makeGateway() {
   const writes: Array<{ url: string; book: LiveBook }> = [];
   const gw = new LiveGateway({
     feed, store, fairValue, subs,
-    config: { halfVolume: 50, baseBandPct: 0.08, maxBandPct: 0.25, confMin: 0.25 },
+    config: { halfVolume: 50, baseBandPct: 0.08, maxBandPct: 0.25, confMin: 0.25, thinVolume: 3 },
     broadcast: (_url, u) => broadcasts.push(u),
     writeThrough: (url, book) => writes.push({ url, book }),
   });

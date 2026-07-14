@@ -5,6 +5,7 @@ export interface VerdictOpts {
   baseBandPct: number;
   maxBandPct: number;
   confMin: number;
+  thinVolume: number; // 48h volume below this -> thin/rig-risk, verdict forced to hold
 }
 
 const clamp = (v: number, lo: number, hi: number) => Math.max(lo, Math.min(hi, v));
@@ -50,11 +51,21 @@ export function computeVerdict(book: LiveBook, fvIn: FairValueInputs, o: Verdict
   const dealPct = fair > 0 && book.bestSell > 0 ? (fair - book.bestSell) / fair : 0;
   const flipMargin = book.bestSell > 0 && book.bestBuy > 0 ? book.bestSell - book.bestBuy : 0;
 
+  const volume = Math.max(0, Number(fvIn.volume) || 0);
+  const thin = volume < o.thinVolume;
+
   let verdict: VerdictKind;
   let reason: string;
-  if (!(fair > 0) || confidence < o.confMin) {
+  if (!(fair > 0)) {
     verdict = 'hold';
-    reason = fair <= 0 ? 'no fair-value baseline yet' : 'insufficient liquidity/history to trust a signal';
+    reason = 'no fair-value baseline yet';
+  } else if (thin) {
+    // Low realized volume: a couple of orders can rig the price, so never advise.
+    verdict = 'hold';
+    reason = `thin volume (${Math.round(volume)}/48h) — price easily rigged, not advised`;
+  } else if (confidence < o.confMin) {
+    verdict = 'hold';
+    reason = 'insufficient liquidity/history to trust a signal';
   } else if (buySignal >= band) {
     verdict = 'buy';
     reason = `sell price ${Math.round(buySignal * 100)}% below fair value (${Math.round(fair)}p)`;
@@ -76,6 +87,6 @@ export function computeVerdict(book: LiveBook, fvIn: FairValueInputs, o: Verdict
     url_name: book.url_name,
     verdict, score, confidence,
     fv: fair, bestBuy: book.bestBuy, bestSell: book.bestSell,
-    dealPct, flipMargin, reason,
+    dealPct, flipMargin, volume, thin, reason,
   };
 }

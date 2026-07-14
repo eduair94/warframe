@@ -14,6 +14,8 @@ export interface LiveConfig {
   baseBandPct: number;    // base +/- band (fraction) around FV before a signal fires
   maxBandPct: number;     // cap on the volatility-widened band
   confMin: number;        // below this confidence -> verdict 'hold'
+  thinVolume: number;     // 48h volume below this -> thin/rig-risk, verdict forced 'hold'
+  pollConcurrency: number;// items fetched in parallel per poll sweep
   fvRefreshMs: number;    // how often the FV baseline is reloaded from Mongo
   hotFloorList: string[]; // always-on url_names regardless of viewers
 }
@@ -43,6 +45,8 @@ export function readLiveConfig(env: NodeJS.ProcessEnv): LiveConfig {
     baseBandPct: Number(env.LIVE_BASE_BAND_PCT) || 0.08,
     maxBandPct: Number(env.LIVE_MAX_BAND_PCT) || 0.25,
     confMin: Number(env.LIVE_CONF_MIN) || 0.25,
+    thinVolume: Number(env.LIVE_THIN_VOLUME) || 3,
+    pollConcurrency: int(env.LIVE_POLL_CONCURRENCY, 12),
     fvRefreshMs: int(env.LIVE_FV_REFRESH_MS, 10 * 60 * 1000),
     hotFloorList: csv(env.LIVE_HOT_FLOOR),
   };

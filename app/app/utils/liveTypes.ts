@@ -25,6 +25,8 @@ export interface Verdict {
   bestSell: number
   dealPct: number // (fv - bestSell) / fv
   flipMargin: number // bestSell - bestBuy
+  volume: number // 48h realized trade volume (rig-risk signal)
+  thin: boolean // low volume -> price easily rigged, forced to hold
   reason: string
 }
 

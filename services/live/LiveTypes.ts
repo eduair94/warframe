@@ -31,6 +31,9 @@ export interface FairValueInputs {
   volatility: number | null;
   dataDays: number;
   volume: number;
+  /** Max mod/arcane rank (from items_in_set[0].mod_max_rank); undefined for non-ranked items.
+   *  Ranked items (arcanes, mods, rivens) price at this rank so rank-0 lowballs don't skew "best". */
+  maxRank?: number;
 }
 
 export type VerdictKind = 'buy' | 'sell' | 'fair' | 'hold';
@@ -45,6 +48,8 @@ export interface Verdict {
   bestSell: number;
   dealPct: number;     // (fv - bestSell) / fv
   flipMargin: number;  // bestSell - bestBuy
+  volume: number;      // 48h realized trade volume (rig-risk signal)
+  thin: boolean;       // volume below the thin threshold -> price easily rigged, forced to hold
   reason: string;
 }
 

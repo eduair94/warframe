@@ -46,6 +46,10 @@ export class FairValueService {
     for (const url of urls) {
       const it = byUrl.get(url);
       const market = (it && it.market) || {};
+      // Max rank for arcanes/mods/rivens (same source the daily sync prices at) so the
+      // live book compares like-for-like instead of mixing rank-0 and rank-max orders.
+      const rawRank = it && (it.mod_max_rank ?? it.items_in_set?.[0]?.mod_max_rank);
+      const maxRank = Number.isFinite(Number(rawRank)) ? Number(rawRank) : undefined;
       let points: IPricePoint[] = [];
       try { points = (await this.deps.getHistory(url)) || []; } catch { points = []; }
       const prices = points.map((p) => priceOf(p));
@@ -56,6 +60,7 @@ export class FairValueService {
         volatility: coeffVariation(prices),
         dataDays: points.length,
         volume: Number(market.volume) || 0,
+        maxRank,
       });
     }
     return this.cache;

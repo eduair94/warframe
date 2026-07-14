@@ -43,6 +43,7 @@ async function main() {
   // delegates to MarketService.getItemOrders and returns { payload: { orders } }.
   const poller = new HotPoller({
     intervalMs: cfg.pollIntervalMs,
+    concurrency: cfg.pollConcurrency,
     fetchOrders: async (url) => {
       const res: any = await (wf as any).getItemOrders(url);
       return (res && res.payload && res.payload.orders) || [];
@@ -59,6 +60,7 @@ async function main() {
       baseBandPct: cfg.baseBandPct,
       maxBandPct: cfg.maxBandPct,
       confMin: cfg.confMin,
+      thinVolume: cfg.thinVolume,
     },
     broadcast: (url: string, u: LiveUpdate) => io.to(`item:${url}`).emit('update', u),
     writeThrough: (url: string, book: LiveBook) => writeThrough(itemService, url, book).catch(() => {}),

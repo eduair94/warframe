@@ -45,4 +45,19 @@ describe('FairValueService.load', () => {
     const fv = (await svc.load(['b'])).get('b')!;
     expect(fv.medianHistory).toBe(50); // priceOf falls back to sell
   });
+
+  it('captures maxRank for ranked items and leaves it undefined for non-ranked', async () => {
+    const svc = new FairValueService({
+      getItems: async () => [
+        { url_name: 'arc', market: { avg_price: 30, volume: 20 }, items_in_set: [{ mod_max_rank: 5 }] },
+        { url_name: 'set', market: { avg_price: 100, volume: 50 } },
+        { url_name: 'top', market: { avg_price: 40, volume: 10 }, mod_max_rank: 3 },
+      ],
+      getHistory: async () => [],
+    });
+    const map = await svc.load(['arc', 'set', 'top']);
+    expect(map.get('arc')!.maxRank).toBe(5);
+    expect(map.get('set')!.maxRank).toBeUndefined();
+    expect(map.get('top')!.maxRank).toBe(3);
+  });
 });

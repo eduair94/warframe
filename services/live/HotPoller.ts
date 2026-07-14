@@ -4,6 +4,7 @@ import { WfmFeed, FeedStatus, mapV1OrdersToNormalized } from './WfmFeed';
 export interface HotPollerDeps {
   fetchOrders(url: string): Promise<any[]>; // returns raw v1 orders (res.payload.orders)
   intervalMs: number;
+  concurrency?: number; // items fetched in parallel per sweep (default 12)
   jitterMs?: number;
   now?: () => number;
   setTimer?: (fn: () => void, ms: number) => any;
@@ -13,18 +14,22 @@ export interface HotPollerDeps {
 /**
  * Reliable near-real-time floor: on each tick, fetches orders for every item in
  * the live set through the existing proxy-backed HTTP stack and emits a full
- * snapshot. Sequential fetches with a small gap keep the proxy pool happy. This
- * is the source that ships; the socket client is an optional upgrade.
+ * snapshot. Fetches run with bounded concurrency so a full sweep stays fast (a
+ * sequential sweep of ~40 items took ~20s -> updates felt static); this keeps the
+ * proxy pool busy but bounded. This is the source that ships; the socket client
+ * is an optional upgrade.
  */
 export class HotPoller extends EventEmitter implements WfmFeed {
   private live: string[] = [];
   private timer: any = null;
   private running = false;
   private lastUp = true;
+  private readonly concurrency: number;
   private readonly d: Required<Pick<HotPollerDeps, 'setTimer' | 'clearTimer' | 'now'>> & HotPollerDeps;
 
   constructor(deps: HotPollerDeps) {
     super();
+    this.concurrency = Math.max(1, deps.concurrency ?? 12);
     this.d = {
       ...deps,
       now: deps.now ?? (() => Date.now()),
@@ -55,20 +60,27 @@ export class HotPoller extends EventEmitter implements WfmFeed {
   }
 
   private async tick(): Promise<void> {
+    const urls = this.live.slice();
     let anyOk = false;
     let anyFail = false;
-    for (const url of this.live) {
-      try {
-        const raw = await this.d.fetchOrders(url);
-        const orders = mapV1OrdersToNormalized(raw);
-        this.emit('snapshot', { url_name: url, orders });
-        anyOk = true;
-      } catch (e: any) {
-        anyFail = true;
-        // one failed item shouldn't stop the rest; proxy layer already retried
+    let idx = 0;
+    const worker = async (): Promise<void> => {
+      while (idx < urls.length) {
+        const url = urls[idx++];
+        try {
+          const raw = await this.d.fetchOrders(url);
+          const orders = mapV1OrdersToNormalized(raw);
+          this.emit('snapshot', { url_name: url, orders });
+          anyOk = true;
+        } catch (e: any) {
+          anyFail = true;
+          // one failed item shouldn't stop the rest; proxy layer already retried
+        }
       }
-    }
-    const up = anyOk || (!anyFail && this.live.length === 0);
+    };
+    const workers = Math.max(1, Math.min(this.concurrency, urls.length || 1));
+    await Promise.all(Array.from({ length: workers }, () => worker()));
+    const up = anyOk || (!anyFail && urls.length === 0);
     if (up !== this.lastUp) {
       this.lastUp = up;
       const status: FeedStatus = { source: 'poller', up, detail: up ? 'recovered' : 'fetch failing' };

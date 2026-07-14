@@ -43,10 +43,12 @@ export class LiveGateway {
   }
 
   onSnapshot(s: FeedSnapshot): LiveUpdate | null {
+    this.d.store.setRank(s.url_name, this.d.fairValue.get(s.url_name)?.maxRank);
     this.d.store.applySnapshot(s);
     return this.emitFor(s.url_name);
   }
   onDelta(delta: FeedDelta): LiveUpdate | null {
+    this.d.store.setRank(delta.url_name, this.d.fairValue.get(delta.url_name)?.maxRank);
     this.d.store.applyDelta(delta);
     return this.emitFor(delta.url_name);
   }

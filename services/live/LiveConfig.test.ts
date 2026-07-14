@@ -9,6 +9,8 @@ describe('readLiveConfig', () => {
     expect(c.pollIntervalMs).toBe(6000);
     expect(c.platform).toBe('pc');
     expect(c.confMin).toBeCloseTo(0.25);
+    expect(c.thinVolume).toBe(3);
+    expect(c.pollConcurrency).toBe(12);
     expect(c.hotFloorList).toEqual([]);
   });
 

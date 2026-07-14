@@ -12,7 +12,8 @@
             <h1 class="an-title">Live <span class="accent-a">signals</span>.</h1>
             <p class="an-lede">
               Best online buy/sell straight from the order book, with a buy/sell verdict against a
-              blended fair value. Low-liquidity items are held, never advised.
+              blended fair value. Ranked items (arcanes/mods) price at max rank; thin-volume items
+              are held, never advised.
             </p>
           </div>
         </header>
@@ -64,12 +65,14 @@
                 <th class="an-num">Best buy</th>
                 <th class="an-num">Best sell</th>
                 <th class="an-num">Fair value</th>
+                <th class="an-num">Vol</th>
                 <th class="an-num">Flip</th>
                 <th>Signal</th>
+                <th class="an-num">Updated</th>
               </tr>
             </thead>
             <tbody>
-              <tr v-for="row in paged" :key="row.url_name">
+              <tr v-for="row in paged" :key="row.url_name" :class="{ 'row-flash': isFlash(row.url_name) }">
                 <td class="col-name">
                   <a class="an-name" :href="mkt(row.url_name)" target="_blank" rel="noopener">
                     <img
@@ -84,21 +87,29 @@
                 <td class="an-num">{{ liveVal(row.url_name, (u) => u.book.bestBuy) }}</td>
                 <td class="an-num an-strong">{{ liveVal(row.url_name, (u) => u.book.bestSell) }}</td>
                 <td class="an-num">{{ liveVal(row.url_name, (u) => u.verdict.fv) }}</td>
+                <td class="an-num">
+                  <span :class="{ 'is-thin': live[row.url_name]?.verdict.thin }">
+                    {{ live[row.url_name] ? fmtVol(live[row.url_name].verdict.volume) : '—' }}
+                  </span>
+                  <span v-if="live[row.url_name]?.verdict.thin" class="thin-flag" title="Thin volume — price may be rigged">⚠</span>
+                </td>
                 <td class="an-num">{{ liveVal(row.url_name, (u) => u.verdict.flipMargin) }}</td>
                 <td><MarketVerdictBadge :verdict="live[row.url_name]?.verdict ?? null" /></td>
+                <td class="an-num an-ago">{{ agoOf(row.url_name) }}</td>
               </tr>
             </tbody>
           </table>
         </div>
 
         <div v-else class="an-cards">
-          <div v-for="row in paged" :key="row.url_name" class="an-card">
+          <div v-for="row in paged" :key="row.url_name" class="an-card" :class="{ 'row-flash': isFlash(row.url_name) }">
             <div class="an-card__head">
               <img class="an-thumb" :src="thumbOf(row)" :alt="row.item_name" loading="lazy" />
               <div class="an-card__title">
                 <a class="an-card__name" :href="mkt(row.url_name)" target="_blank" rel="noopener">
                   {{ row.item_name }}
                 </a>
+                <span class="an-ago">{{ agoOf(row.url_name) }}</span>
               </div>
               <MarketVerdictBadge :verdict="live[row.url_name]?.verdict ?? null" compact />
             </div>
@@ -111,6 +122,13 @@
               </div>
               <div class="an-block">
                 <span class="an-block__lbl">Fair</span>{{ liveVal(row.url_name, (u) => u.verdict.fv) }}
+              </div>
+              <div class="an-block">
+                <span class="an-block__lbl">Vol</span>
+                <span :class="{ 'is-thin': live[row.url_name]?.verdict.thin }">
+                  {{ live[row.url_name] ? fmtVol(live[row.url_name].verdict.volume) : '—' }}
+                </span>
+                <span v-if="live[row.url_name]?.verdict.thin" class="thin-flag" title="Thin volume — price may be rigged">⚠</span>
               </div>
             </div>
           </div>
@@ -128,7 +146,8 @@
 
       <v-alert class="an-disclaimer bg-blue-darken-4" type="info" density="compact">
         Verdicts compare the lowest online sell against a blended fair value (realized average +
-        price history). Thin books stay on “hold”, not a signal.
+        price history). Arcanes/mods price at their max rank. Thin-volume items (⚠) are held, since
+        a couple of orders can rig the price.
       </v-alert>
     </client-only>
   </div>
@@ -183,6 +202,20 @@ watch(filtered, () => {
 // Live updates keyed by url_name (only for the rows currently on screen).
 const live = ref<Record<string, LiveUpdate>>({})
 const unsubs = new Map<string, () => void>()
+// Liveness cues: a ticking clock for "updated Xs ago", and a flash timestamp per
+// item so a row briefly highlights whenever its price/verdict actually changes.
+const now = ref(Date.now())
+const flashAt = ref<Record<string, number>>({})
+const prevKey = new Map<string, string>()
+let clock: ReturnType<typeof setInterval> | null = null
+
+function onUpdate(u: LiveUpdate) {
+  const key = `${u.book.bestBuy}|${u.book.bestSell}|${u.verdict.verdict}`
+  const prev = prevKey.get(u.url_name)
+  if (prev !== undefined && prev !== key) flashAt.value[u.url_name] = Date.now()
+  prevKey.set(u.url_name, key)
+  live.value[u.url_name] = u
+}
 
 function syncSubscriptions(rows: any[]) {
   const want = new Set(rows.map((r) => r.url_name))
@@ -191,13 +224,13 @@ function syncSubscriptions(rows: any[]) {
       off()
       unsubs.delete(url)
       delete live.value[url]
+      delete flashAt.value[url]
+      prevKey.delete(url)
     }
   }
   for (const r of rows) {
     if (unsubs.has(r.url_name)) continue
-    const off = subscribeLive(r.url_name, (u) => {
-      live.value[u.url_name] = u
-    })
+    const off = subscribeLive(r.url_name, onUpdate)
     unsubs.set(r.url_name, off)
   }
 }
@@ -219,19 +252,36 @@ function mkt(urlName: string): string {
 function fmtPlat(n: number | undefined): string {
   return Math.round(Number(n) || 0).toLocaleString('en-US')
 }
+function fmtVol(n: number | undefined): string {
+  return Math.round(Number(n) || 0).toLocaleString('en-US')
+}
 function liveVal(url: string, pick: (u: LiveUpdate) => number): string {
   const u = live.value[url]
   return u ? fmtPlat(pick(u)) + 'p' : '—'
+}
+function isFlash(url: string): boolean {
+  const t = flashAt.value[url]
+  return !!t && now.value - t < 1400
+}
+function agoOf(url: string): string {
+  const u = live.value[url]
+  if (!u) return ''
+  const s = Math.max(0, Math.floor((now.value - u.book.updatedAt) / 1000))
+  return s < 1 ? 'now' : `${s}s`
 }
 
 onMounted(() => {
   finishLoading()
   syncSubscriptions(paged.value)
   watch(paged, (rows) => syncSubscriptions(rows))
+  clock = setInterval(() => {
+    now.value = Date.now()
+  }, 1000)
 })
 onBeforeUnmount(() => {
   for (const [, off] of unsubs) off()
   unsubs.clear()
+  if (clock) clearInterval(clock)
 })
 
 // Repo rule: hide the global spinner on mount or the page spins forever.
@@ -257,6 +307,16 @@ function finishLoading(attempt = 0) {
 .live-dot.is-on {
   background: #4caf7d;
   box-shadow: 0 0 6px #4caf7d;
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 4px #4caf7d;
+  }
+  50% {
+    box-shadow: 0 0 9px #4caf7d;
+  }
 }
 .live-state {
   font-size: 0.85em;
@@ -267,5 +327,31 @@ function finishLoading(attempt = 0) {
   display: block;
   opacity: 0.6;
   font-size: 11px;
+}
+.an-ago {
+  font-size: 0.8em;
+  opacity: 0.55;
+  font-variant-numeric: tabular-nums;
+}
+.thin-flag {
+  color: #e0a53a;
+  margin-left: 3px;
+  cursor: help;
+}
+.is-thin {
+  color: #e0a53a;
+}
+/* Brief highlight when a row's price/verdict actually changes — makes the live feed feel alive. */
+.row-flash td,
+.an-card.row-flash {
+  animation: rowflash 1.3s ease-out;
+}
+@keyframes rowflash {
+  0% {
+    background: rgba(79, 179, 191, 0.2);
+  }
+  100% {
+    background: transparent;
+  }
 }
 </style>

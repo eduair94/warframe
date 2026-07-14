@@ -9,8 +9,16 @@ import { NormalizedOrder, LiveBook, FeedSnapshot, FeedDelta } from './LiveTypes'
  */
 export class LiveStore {
   private readonly books = new Map<string, Map<string, NormalizedOrder>>();
+  // Per-item max rank (arcanes/mods/rivens). Set from the fair-value item metadata so
+  // the book prices at the top rank instead of mixing rank-0 lowballs into "best".
+  private readonly ranks = new Map<string, number | undefined>();
 
   constructor(private readonly platform: string) {}
+
+  /** Set the rank the book should price at for a ranked item (undefined = no rank filter). */
+  setRank(url_name: string, maxRank: number | undefined): void {
+    this.ranks.set(url_name, maxRank);
+  }
 
   applySnapshot(s: FeedSnapshot): LiveBook {
     const m = new Map<string, NormalizedOrder>();
@@ -57,6 +65,9 @@ export class LiveStore {
       requiredStatus: 'ingame',
       fallbackStatuses: ['online'],
       topOrdersCount: 5,
+      // Ranked items (arcanes/mods/rivens): price at the item's max rank; falls back to
+      // any rank if no max-rank orders exist. undefined for non-ranked items = no filter.
+      maxRank: this.ranks.get(url_name),
     });
     // Raw liquidity metric: total ingame+online orders on each side. Note this is
     // a UNION of both statuses, whereas bestBuy/bestSell come from OrderCalculator's
