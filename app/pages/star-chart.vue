@@ -206,10 +206,12 @@
     <DropLocationsDialog v-model="dropsDialog" :item-name="dropsItem" />
 
     <v-alert v-if="!loading && planets.length" class="sc-disclaimer blue darken-4" type="info" dense>
-      Expected p/drop = Σ (drop chance × lowest sell order) across a mission's reward
-      table — the average platinum one reward is worth. Drop chances come from the
-      community drop data; platinum prices are today's Warframe Market orders.
-      Untradeable rewards (Forma, resources, credits) count as zero.
+      Expected p/drop = Σ (drop chance × realizable value) across a mission's reward
+      table. Realizable value uses each drop's 48h average sell price, weighted by
+      its 48h trade volume (liquidity) — so overpriced drops nobody actually buys
+      don't inflate a mission's worth. Drop chances come from community drop data;
+      prices and volume are from Warframe Market. Untradeable rewards (Forma,
+      resources, credits) count as zero.
     </v-alert>
   </div>
 </template>
@@ -243,6 +245,11 @@ const A0 = -108 // start angle (deg)
 const STEP = 24.5 // deg per chain step
 const R0 = 122
 const RSTEP = 19
+
+// Liquidity half-weight: a drop's realizable value counts at 50% when its 48h
+// volume equals VOL_K, approaching full value as volume grows and ~0 for unsold
+// (overpriced, zero-volume) drops — so illiquid asks can't inflate a mission.
+const VOL_K = 10
 
 function toRad(deg: number) {
   return (deg * Math.PI) / 180
@@ -302,28 +309,56 @@ export default {
     itemIndex(): any {
       return buildItemIndex((this.allItems as any[]) || [])
     },
+    // Re-scores every mission's plat/drop using each reward's 48h average sell
+    // price weighted by its 48h volume (liquidity), instead of the raw lowest
+    // ask the API sends. Overpriced zero-volume drops fall out of the ranking.
+    weightedPlanets(): any[] {
+      const index = this.itemIndex
+      return (this.planets as any[]).map((p) => {
+        const nodes = (p.nodes || []).map((n: any) => {
+          const rotations = (n.rotations || []).map((rot: any) => {
+            const value = (rot.rewards || []).reduce(
+              (sum: number, rw: any) => sum + (Number(rw.chance) / 100) * this.effectivePlat(rw, index),
+              0
+            )
+            return { ...rot, value }
+          })
+          const nodeValue = rotations.reduce((mx: number, r: any) => Math.max(mx, r.value), 0)
+          return { ...n, rotations, value: nodeValue }
+        })
+        nodes.sort((a: any, b: any) => b.value - a.value)
+        const best = nodes[0] || null
+        return {
+          ...p,
+          nodes,
+          nodeCount: nodes.length,
+          value: best ? best.value : 0,
+          bestNode: best ? { location: best.location, gameMode: best.gameMode, value: best.value } : null,
+        }
+      })
+    },
     planetsByName(): Record<string, any> {
       const map: Record<string, any> = {}
-      for (const p of this.planets) map[p.planet] = p
+      for (const p of this.weightedPlanets) map[p.planet] = p
       return map
     },
     maxValue(): number {
-      return this.planets.reduce((m, p) => Math.max(m, p.value || 0), 0) || 1
+      return this.weightedPlanets.reduce((m, p) => Math.max(m, p.value || 0), 0) || 1
     },
     richest(): any {
-      return this.planets.slice().sort((a, b) => b.value - a.value)[0] || null
+      return this.weightedPlanets.slice().sort((a, b) => b.value - a.value)[0] || null
     },
     stats(): any {
       let topNode: any = null
       let nodes = 0
-      for (const p of this.planets) {
+      for (const p of this.weightedPlanets) {
         nodes += p.nodeCount
         if (p.bestNode && (!topNode || p.bestNode.value > topNode.value)) {
           topNode = { ...p.bestNode, planet: p.planet }
         }
       }
       return {
-        planets: this.planets.length,
+        planets: this.weightedPlanets.length,
         nodes,
         topValue: this.richest ? this.richest.value : 0,
         topNode,
@@ -354,8 +389,8 @@ export default {
         return polar(maxR + 40, deg)
       }
 
-      const specials = this.planets.filter((p) => !chainPolar[p.planet] && !SATELLITES[p.planet])
-      const nodes = this.planets.map((p) => {
+      const specials = this.weightedPlanets.filter((p) => !chainPolar[p.planet] && !SATELLITES[p.planet])
+      const nodes = this.weightedPlanets.map((p) => {
         const type = chainPolar[p.planet]
           ? 'planet'
           : SATELLITES[p.planet]
@@ -468,7 +503,32 @@ export default {
       this.openNode = this.openNode === location ? '' : location
     },
     sortedRewards(rewards: any[]): any[] {
-      return rewards.slice().sort((a, b) => (b.chance / 100) * b.price - (a.chance / 100) * a.price || b.chance - a.chance)
+      // Items with real 48h volume (actually selling) always rank above
+      // zero-volume / untraded "trash" nobody buys, then by liquidity-weighted
+      // expected value (same basis as the mission's plat/drop).
+      const hasVol = (rw: any) => ((this.rewardMeta(rw).vol || 0) > 0 ? 1 : 0)
+      return rewards.slice().sort((a, b) => {
+        const dv = hasVol(b) - hasVol(a)
+        if (dv) return dv
+        return (
+          (b.chance / 100) * this.effectivePlat(b) - (a.chance / 100) * this.effectivePlat(a) ||
+          b.chance - a.chance
+        )
+      })
+    },
+    // Liquidity- and average-weighted realizable plat for one reward: the 48h
+    // average sell price (falling back to the live ask) discounted by a volume
+    // weight so unsold, overpriced drops contribute ~nothing to a mission.
+    effectivePlat(rw: any, index?: any): number {
+      if (!rw || !rw.tradeable) return 0
+      const item = resolveMarketItem(rw.itemName, index || this.itemIndex)
+      const market = item && item.market ? item.market : null
+      const sell = market ? Number(market.sell) || 0 : Number(rw.price) || 0
+      const avg = market ? Number(market.avg_price) || 0 : 0
+      const vol = market ? Number(market.volume) || 0 : 0
+      const basis = avg > 0 ? avg : sell
+      const liq = vol / (vol + VOL_K)
+      return basis * liq
     },
     openDrops(name: string) {
       this.dropsItem = name
