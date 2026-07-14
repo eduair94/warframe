@@ -93,6 +93,14 @@
 
           <div class="an-toggles">
             <v-switch
+              v-model="completeOnly"
+              density="compact"
+              hide-details
+              inset
+              color="#4caf7d"
+              label="Complete data only — verified drops &amp; market prices"
+            ></v-switch>
+            <v-switch
               v-model="onlyOpenWins"
               density="compact"
               hide-details
@@ -103,6 +111,7 @@
           </div>
           <div class="an-count">
             {{ filtered.length }} {{ filtered.length === 1 ? 'relic' : 'relics' }} match
+            <span v-if="hiddenIncomplete" class="an-hidden">· {{ hiddenIncomplete }} hidden (incomplete data)</span>
           </div>
         </section>
 
@@ -263,6 +272,9 @@ const tier = ref('All')
 const refinement = ref('Radiant')
 const sortKey = ref('ev')
 const onlyOpenWins = ref(false)
+// Only value/show relics with full drop + market data by default, so stats and
+// verdicts never advertise an EV we can't back with prices.
+const completeOnly = ref(true)
 const page = ref(1)
 const perPage = 20
 const placeholderImg =
@@ -301,6 +313,21 @@ function topDrop(relic: any): any {
 function fmtPlat(n: number): string {
   return Math.round(Number(n) || 0).toLocaleString('en-US')
 }
+// A single drop counts as "known" when we have a market price for it. Forma is
+// untradeable filler (no market listing, legitimately 0p) so it never marks an
+// otherwise-complete relic as missing data.
+function rewardPriced(r: any): boolean {
+  if (/forma/i.test(r && r.item_name ? r.item_name : '')) return true
+  return Number(r && r.price) > 0
+}
+// "Complete data" = we can actually value the relic: the relic itself is on the
+// market (buy/sell/volume) AND every drop resolved to a market price.
+function hasFullData(relic: any): boolean {
+  const m = (relic && relic.relic) || {}
+  const relicOnMarket = Number(m.buy) > 0 || Number(m.sell) > 0 || Number(m.volume) > 0
+  const rewards = (relic && relic.rewards) || []
+  return relicOnMarket && rewards.length > 0 && rewards.every((r: any) => rewardPriced(r))
+}
 function verdict(relic: any): { label: string; amount: string; cls: string } {
   const open = ev(relic)
   const sell = relic.relic.buy || 0
@@ -320,14 +347,28 @@ const tierOptions = computed<string[]>(() => {
   const order = ['Lith', 'Meso', 'Neo', 'Axi', 'Requiem']
   return ['All', ...order.filter((t) => present.has(t))]
 })
-const filtered = computed<any[]>(() => {
+// Search + tier only — the base set the completeness filter narrows.
+const matched = computed<any[]>(() => {
   const q = (search.value || '').toString().trim().toLowerCase()
-  const list = relics.value.filter((r) => {
+  return relics.value.filter((r) => {
     if (q && !r.relicName.toLowerCase().includes(q)) return false
     if (tier.value !== 'All' && r.tier !== tier.value) return false
-    if (onlyOpenWins.value && ev(r) <= r.relic.buy) return false
     return true
   })
+})
+// Relics we'll actually value: with completeOnly on, only those with full
+// drop/market data — so stats never advertise an EV we can't back with data.
+const valuedRelics = computed<any[]>(() =>
+  completeOnly.value ? relics.value.filter(hasFullData) : relics.value,
+)
+// How many search/tier matches are hidden purely for missing data.
+const hiddenIncomplete = computed<number>(() =>
+  completeOnly.value ? matched.value.filter((r) => !hasFullData(r)).length : 0,
+)
+const filtered = computed<any[]>(() => {
+  let list = matched.value as any[]
+  if (completeOnly.value) list = list.filter((r) => hasFullData(r))
+  if (onlyOpenWins.value) list = list.filter((r) => ev(r) > r.relic.buy)
   const dir = (a: number, b: number) => b - a
   const sorters: Record<string, (a: any, b: any) => number> = {
     ev: (a, b) => dir(ev(a), ev(b)),
@@ -344,7 +385,7 @@ const paged = computed<any[]>(() => {
 })
 const topDeal = computed<any>(() => {
   let best: any = null
-  for (const r of relics.value) {
+  for (const r of valuedRelics.value) {
     if (!best || ev(r) > ev(best)) best = r
   }
   return best
@@ -357,7 +398,7 @@ const topDealUrl = computed<string>(() => {
   return best ? best.url_name : ''
 })
 const stats = computed<any>(() => {
-  const list = relics.value
+  const list = valuedRelics.value
   const evs = list.map((r) => ev(r))
   const openWins = list.filter((r) => ev(r) > r.relic.buy).length
   return {
@@ -426,5 +467,10 @@ onMounted(() => {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+.an-hidden {
+  color: #9aa0b4;
+  margin-left: 6px;
+  font-size: 0.92em;
 }
 </style>

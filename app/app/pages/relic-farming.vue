@@ -118,6 +118,7 @@
 
           <div class="an-count">
             {{ filtered.length }} {{ filtered.length === 1 ? 'relic' : 'relics' }} match
+            <span v-if="hiddenIncomplete" class="an-hidden">· {{ hiddenIncomplete }} hidden (incomplete data)</span>
           </div>
         </section>
 
@@ -345,12 +346,21 @@ function topDrop(relic: any): any {
 function fmtPlat(n: number): string {
   return Math.round(Number(n) || 0).toLocaleString('en-US')
 }
-// A relic has "full data" when it has drops and every drop carries a market
-// price — only then can we assign a trustworthy EV / plat-per-hour.
+// A single drop counts as "known" when we have a market price for it. Forma is
+// untradeable filler (no market listing, legitimately 0p) so it never marks an
+// otherwise-complete relic as missing data.
+function rewardPriced(r: any): boolean {
+  if (/forma/i.test(r && r.item_name ? r.item_name : '')) return true
+  return Number(r && r.price) > 0
+}
+// "Full data" = we can actually value the relic: the relic itself is on the
+// market (buy/sell/volume) AND every drop resolved to a market price. Only then
+// is its EV / plat-per-hour trustworthy.
 function hasFullData(relic: RelicRow): boolean {
+  const m: any = (relic && relic.relic) || {}
+  const relicOnMarket = Number(m.buy) > 0 || Number(m.sell) > 0 || Number(m.volume) > 0
   const rewards = relic.rewards || []
-  if (!rewards.length) return false
-  return rewards.every((r) => Number(r.price) > 0)
+  return relicOnMarket && rewards.length > 0 && rewards.every((r) => rewardPriced(r))
 }
 // Working thumbnail for a relic row (falls back through the fresh catalog).
 function relicThumb(relic: RelicRow): string {
@@ -370,19 +380,31 @@ const tierOptions = computed<string[]>(() => {
   return ['All', ...order.filter((t) => present.has(t))]
 })
 
+// Search + tier only — the base set the completeness filter narrows.
+const matched = computed<RelicRow[]>(() => {
+  const q = (search.value || '').toString().trim().toLowerCase()
+  return relics.value.filter((r) => {
+    if (q && !r.relicName.toLowerCase().includes(q)) return false
+    if (tier.value !== 'All' && r.tier !== tier.value) return false
+    return true
+  })
+})
+
 // When completeOnly is on (default), only relics with full drop/market data
 // are valued and shown — matching the old page's behavior.
 const valuedRelics = computed<RelicRow[]>(() =>
   completeOnly.value ? relics.value.filter(hasFullData) : relics.value,
 )
 
+// How many search/tier matches are hidden purely for missing data.
+const hiddenIncomplete = computed<number>(() =>
+  completeOnly.value ? matched.value.filter((r) => !hasFullData(r)).length : 0,
+)
+
 const filtered = computed<any[]>(() => {
-  const q = (search.value || '').toString().trim().toLowerCase()
-  const list = valuedRelics.value.filter((r) => {
-    if (q && !r.relicName.toLowerCase().includes(q)) return false
-    if (tier.value !== 'All' && r.tier !== tier.value) return false
-    return true
-  })
+  const list = completeOnly.value
+    ? matched.value.filter((r) => hasFullData(r))
+    : matched.value
   const dir = (a: number, b: number) => b - a
   const sorters: Record<string, (a: any, b: any) => number> = {
     pph: (a, b) => dir(platPerHour(a), platPerHour(b)),
@@ -539,5 +561,10 @@ onMounted(() => {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+.an-hidden {
+  color: #9aa0b4;
+  margin-left: 6px;
+  font-size: 0.92em;
 }
 </style>
