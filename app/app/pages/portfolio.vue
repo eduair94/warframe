@@ -146,6 +146,8 @@ import {
   updateEntry,
   type WatchlistEntry,
 } from '../services/portfolio'
+import { subscribeLive } from '~/composables/useLiveFeed'
+import type { LiveUpdate } from '~/utils/liveTypes'
 
 const config = useRuntimeConfig()
 const base = config.public.apiURL
@@ -175,6 +177,10 @@ const watchlist = ref<WatchlistEntry[]>([])
 const itemToAdd = ref('')
 const notificationPermission = ref<string>('default')
 let alertInterval: ReturnType<typeof setInterval> | null = null
+// Real-time alert path: latest live sell price per watched item, overlaid onto the
+// catalog before running the SAME client-side checkAlerts. The 60s interval stays a backstop.
+const livePrices = ref<Record<string, number>>({})
+const liveUnsubs = new Map<string, () => void>()
 
 const itemsByName = computed<Record<string, any>>(() => {
   const map: Record<string, any> = {}
@@ -200,7 +206,8 @@ const analyticsByUrl = computed<Record<string, any>>(() => {
 const enrichedWatchlist = computed(() =>
   watchlist.value.map((entry) => {
     const live = itemsByUrlName.value[entry.url_name]
-    const currentSell = live?.market?.sell ?? null
+    // Prefer the real-time sell price when the feed is streaming this item.
+    const currentSell = livePrices.value[entry.url_name] ?? live?.market?.sell ?? null
     const a = analyticsByUrl.value[entry.url_name]
     return {
       ...entry,
@@ -216,6 +223,7 @@ const totalValue = computed<number>(() =>
 
 function refresh() {
   watchlist.value = getWatchlist()
+  subscribeWatchlistLive()
 }
 function addItem() {
   const item = itemsByName.value[itemToAdd.value]
@@ -234,6 +242,39 @@ function setField(urlName: string, field: keyof WatchlistEntry, value: any) {
 }
 function runAlertCheck() {
   checkAlerts(allItems.value, analyticsByUrl.value)
+}
+// Overlay live sell prices onto a shallow copy of the catalog, then run the same
+// client-side check (never mutate the Pinia getter objects).
+function runLiveAlertCheck() {
+  if (notificationPermission.value !== 'granted') return
+  // Only the watched items need checking — overlay live sell prices onto that small
+  // subset (not the whole catalog) before the same client-side checkAlerts.
+  const overlaid = watchlist.value.map((w) => {
+    const it = itemsByUrlName.value[w.url_name] || { url_name: w.url_name, item_name: w.item_name }
+    const sell = livePrices.value[w.url_name]
+    return sell != null ? { ...it, market: { ...(it.market || {}), sell } } : it
+  })
+  checkAlerts(overlaid, analyticsByUrl.value)
+}
+// Subscribe every watched item to the live feed; fire checkAlerts immediately on each
+// push instead of waiting up to 60s. Re-runs whenever the watchlist changes.
+function subscribeWatchlistLive() {
+  const urls = new Set(watchlist.value.map((w) => w.url_name))
+  for (const [url, off] of liveUnsubs) {
+    if (!urls.has(url)) {
+      off()
+      liveUnsubs.delete(url)
+      delete livePrices.value[url]
+    }
+  }
+  for (const url of urls) {
+    if (liveUnsubs.has(url)) continue
+    const off = subscribeLive(url, (u: LiveUpdate) => {
+      livePrices.value[u.url_name] = u.book.bestSell
+      runLiveAlertCheck()
+    })
+    liveUnsubs.set(url, off)
+  }
 }
 async function enableAlerts() {
   const result = await requestNotificationPermission()
@@ -264,6 +305,8 @@ onMounted(() => {
 })
 onBeforeUnmount(() => {
   if (alertInterval) clearInterval(alertInterval)
+  for (const [, off] of liveUnsubs) off()
+  liveUnsubs.clear()
 })
 </script>
 
