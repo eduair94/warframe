@@ -216,7 +216,14 @@ export default {
       }
     },
     theme: {
-      dark: false,
+      // The whole app is a dark "Void Ledger" design (dark backgrounds via
+      // .main + analytics.css). With dark:false, Vuetify's light theme paints
+      // default text rgba(0,0,0,.87) — near-black on dark surfaces — so any
+      // component that doesn't set its own color (v-card, v-dialog, page
+      // headings on /portfolio, etc.) rendered as unreadable black text.
+      // The design was clearly built for dark (pages sprinkle `dark` props to
+      // force it per-component); make it the global default.
+      dark: true,
       themes: {
         dark: {
           primary: colors.blue.darken2,

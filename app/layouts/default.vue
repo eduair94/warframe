@@ -42,7 +42,8 @@
     <v-navigation-drawer
       v-model="drawer"
       app
-      temporary
+      :temporary="!tourActive"
+      :permanent="tourActive"
       color="#0a0b14"
       width="278"
       class="nav-drawer"
@@ -135,6 +136,12 @@ export default {
     return {
       clipped: false,
       drawer: false,
+      // While the guided tour runs the drawer must stay open and NOT auto-close
+      // on outside clicks (clicking driver.js's "Next" counts as one) — a
+      // temporary drawer slid shut after step 1, leaving every nav-item step
+      // pointing at an off-screen element. Non-temporary during the tour keeps
+      // the nav visible and static so each step highlights correctly.
+      tourActive: false,
       fixed: false,
       items: [
         {
@@ -205,7 +212,9 @@ export default {
       window.scrollTo(0, 0)
     },
     async startTour() {
-      // Open the menu so the tour can point at the real navigation items
+      // Open the menu (and pin it open for the tour) so the steps can point at
+      // the real navigation items without the temporary drawer sliding shut.
+      this.tourActive = true
       this.drawer = true
       await this.$nextTick()
       // driver.js touches the DOM — load it only on the client, on demand
@@ -222,7 +231,16 @@ export default {
         nextBtnText: 'Next',
         prevBtnText: 'Back',
         doneBtnText: 'Done',
+        // Belt & suspenders: whenever a step that targets a drawer nav item is
+        // highlighted, make sure the drawer is open.
+        onHighlightStarted: (_el, step) => {
+          const t = step && step.element
+          if (typeof t === 'string' && t.indexOf('[data-tour') === 0) {
+            this.drawer = true
+          }
+        },
         onDestroyed: () => {
+          this.tourActive = false
           this.drawer = false
         },
         steps: [

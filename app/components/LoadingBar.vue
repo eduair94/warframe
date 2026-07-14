@@ -6,6 +6,62 @@
   </div>
 </template>
 
+<script>
+// Registered as Nuxt's `loading` component (nuxt.config.js). Previously it had
+// no start()/finish() methods, so Nuxt could never drive it — the overlay only
+// appeared on the very first (SSR) load and never again, leaving client-side
+// navigation with zero feedback while the target page's chunk + data loaded.
+// Implementing the loading interface makes Nuxt show it on every route change.
+export default {
+  name: 'LoadingBar',
+  data() {
+    return { timer: null, safety: null }
+  },
+  methods: {
+    spinner() {
+      return this.$el && this.$el.id === 'spinner-wrapper'
+        ? this.$el
+        : document.getElementById('spinner-wrapper')
+    },
+    show() {
+      const el = this.spinner()
+      if (el) el.style.display = 'flex'
+    },
+    hide() {
+      const el = this.spinner()
+      if (el) el.style.display = 'none'
+    },
+    start() {
+      this.clear()
+      // Small delay so instant (cached) transitions don't flash the overlay.
+      this.timer = setTimeout(() => this.show(), 120)
+      // Safety net: never let the overlay get stuck if finish() never fires.
+      this.safety = setTimeout(() => this.hide(), 15000)
+    },
+    finish() {
+      this.clear()
+      this.hide()
+    },
+    fail() {
+      this.finish()
+    },
+    clear() {
+      if (this.timer) {
+        clearTimeout(this.timer)
+        this.timer = null
+      }
+      if (this.safety) {
+        clearTimeout(this.safety)
+        this.safety = null
+      }
+    },
+  },
+  beforeDestroy() {
+    this.clear()
+  },
+}
+</script>
+
 <style>
 #spinner-wrapper {
   position: fixed;

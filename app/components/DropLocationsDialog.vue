@@ -9,7 +9,14 @@
   >
     <div class="dld">
       <header class="dld__head">
-        <span class="dld__node" aria-hidden="true"></span>
+        <img
+          v-if="thumb"
+          class="dld__thumb"
+          :src="thumbUrl"
+          :alt="itemName"
+          @error="onImgError"
+        />
+        <span v-else class="dld__node" aria-hidden="true"></span>
         <div class="dld__headtext">
           <div class="dld__eyebrow">Drop locations</div>
           <h2 class="dld__title">{{ itemName || 'Item' }}</h2>
@@ -105,6 +112,9 @@ export default {
   props: {
     value: { type: Boolean, default: false },
     itemName: { type: String, default: '' },
+    // warframe.market thumb path (e.g. item.thumb) — shown in the header the
+    // same way the home-page table renders item images.
+    thumb: { type: String, default: '' },
   },
   data() {
     return {
@@ -115,6 +125,9 @@ export default {
     }
   },
   computed: {
+    thumbUrl(): string {
+      return 'https://warframe.market/static/assets/' + (this.thumb || '')
+    },
     hasResults(): boolean {
       return !!(this.data && (this.data.missions.length || this.data.relics.length))
     },
@@ -136,6 +149,11 @@ export default {
   methods: {
     close() {
       this.$emit('input', false)
+    },
+    onImgError(e: any) {
+      // Hide a broken thumbnail and fall back to the diamond node glyph.
+      const img = e.target
+      if (img) img.style.display = 'none'
     },
     async load() {
       const name = this.itemName
@@ -192,6 +210,15 @@ export default {
   transform: rotate(45deg);
   box-shadow: 0 0 12px rgba(200, 168, 92, 0.7);
   flex: none;
+}
+.dld__thumb {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  flex: none;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(200, 168, 92, 0.28);
+  clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px);
 }
 .dld__headtext { min-width: 0; flex: 1; }
 .dld__eyebrow {

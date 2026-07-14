@@ -231,6 +231,15 @@ export default {
     }
     this.setScrollBar()
   },
+  beforeDestroy() {
+    // Remove every window/element listener this page registered — without
+    // this, ~a minute of client-side navigation stacked dozens of retained
+    // page components (resize + beforeinstallprompt listeners) and froze the tab.
+    ;(this as any)._destroyed = true
+    if ((this as any)._onResize) window.removeEventListener('resize', (this as any)._onResize)
+    if ((this as any)._pwaHandler) window.removeEventListener('beforeinstallprompt', (this as any)._pwaHandler)
+    this.teardownScroll()
+  },
   methods: {
     async getRivens() {
       const rivens = await this.$axios
@@ -400,12 +409,15 @@ export default {
       }
       if (pwaInstall) {
         ;(window as any).deferredPrompt = null
-        window.addEventListener('beforeinstallprompt', (e) => {
+        // Keep a reference so beforeDestroy can remove it — an anonymous
+        // listener re-added on every visit leaked a component per navigation.
+        ;(this as any)._pwaHandler = (e: any) => {
           ;(window as any).deferredPrompt = e
           if (e !== null) {
             this.show_install = true
           }
-        })
+        }
+        window.addEventListener('beforeinstallprompt', (this as any)._pwaHandler)
       }
       this.loadItems()
       this.finishLoading()
@@ -414,73 +426,72 @@ export default {
       return [...array.filter((el) => el !== this.code), 'UYU']
     },
     setScrollBar() {
+      if ((this as any)._destroyed) return
+      // Drop any scroll-sync listeners from a previous run so they can't stack.
+      this.teardownScroll()
       const tableWrapper = document.querySelector(
         '.money_table .v-data-table__wrapper'
       )
       if (!tableWrapper) {
-        this.$nextTick(() => {
-          this.setScrollBar()
-        })
+        // Table renders async (client-only). Retry a BOUNDED number of times —
+        // the old unbounded $nextTick recursion could spin forever on a
+        // destroyed page and pin the CPU.
+        if (((this as any)._scrollRetries = ((this as any)._scrollRetries || 0) + 1) > 40) return
+        this.$nextTick(() => { if (!(this as any)._destroyed) this.setScrollBar() })
         return
       }
+      ;(this as any)._scrollRetries = 0
       // Check if resolution is mobile.
       const isMobile = document.querySelector(
         '.money_table.v-data-table--mobile'
       )
       this.hasScroll = tableWrapper.scrollWidth > tableWrapper.clientWidth
-      let wp1 = null
-      let wp2 = null
-      let wrapper1 = null
-      let wrapper2 = null
       if (this.hasScroll && !isMobile) {
-        wrapper1 = document.querySelector('.money_table .v-data-table__wrapper')
-        wrapper2 = this.$refs.wrapper2
+        const wrapper1: any = document.querySelector('.money_table .v-data-table__wrapper')
+        const wrapper2: any = this.$refs.wrapper2
         if (!wrapper2 || !wrapper1) {
-          this.$nextTick(() => {
-            this.setScrollBar()
-          })
+          if (((this as any)._scrollRetries = ((this as any)._scrollRetries || 0) + 1) > 40) return
+          this.$nextTick(() => { if (!(this as any)._destroyed) this.setScrollBar() })
           return
         }
 
-        const table = document.querySelector('.money_table table')
+        const table: any = document.querySelector('.money_table table')
 
         this.scrollWidth = table.clientWidth + 10 + 'px'
 
         let scrolling = false
-        wp1 = function () {
-          if (scrolling) {
-            scrolling = false
-            return true
-          }
+        const wp1 = () => {
+          if (scrolling) { scrolling = false; return }
           scrolling = true
-
           wrapper2.scrollLeft = wrapper1.scrollLeft
         }
-
-        wp2 = function () {
-          if (scrolling) {
-            scrolling = false
-            return true
-          }
+        const wp2 = () => {
+          if (scrolling) { scrolling = false; return }
           scrolling = true
           wrapper1.scrollLeft = wrapper2.scrollLeft
         }
 
         wrapper1.addEventListener('scroll', wp1)
         wrapper2.addEventListener('scroll', wp2)
+        ;(this as any)._scrollSync = { wrapper1, wrapper2, wp1, wp2 }
       }
 
-      addEventListener(
-        'resize',
-        () => {
-          if (wrapper1) {
-            wrapper1.removeEventListener('scroll', wp1)
-            wrapper2.removeEventListener('scroll', wp2)
-          }
-          this.setScrollBar()
-        },
-        { once: true }
-      )
+      // ONE persistent resize handler, added once and removed on destroy.
+      // (Previously a fresh {once:true} resize listener was added on every
+      // call; never firing during navigation, they piled up retaining
+      // destroyed page components + detached DOM until the tab froze.)
+      if (!(this as any)._onResize) {
+        ;(this as any)._onResize = () => { if (!(this as any)._destroyed) this.setScrollBar() }
+        window.addEventListener('resize', (this as any)._onResize)
+      }
+    },
+    teardownScroll() {
+      const s = (this as any)._scrollSync
+      if (s) {
+        s.wrapper1 && s.wrapper1.removeEventListener('scroll', s.wp1)
+        s.wrapper2 && s.wrapper2.removeEventListener('scroll', s.wp2)
+        ;(this as any)._scrollSync = null
+      }
     },
     fixTitle(text: string) {
       return text.replace('{{day}}', this.day)

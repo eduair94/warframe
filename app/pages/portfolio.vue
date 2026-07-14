@@ -211,6 +211,9 @@ export default Vue.extend({
   },
   mounted() {
     this.refresh();
+    // Hide the global route spinner — without this it span forever over the
+    // portfolio page (every page must dismiss #spinner-wrapper on mount).
+    this.finishLoading();
     if (typeof window !== 'undefined' && 'Notification' in window) {
       this.notificationPermission = Notification.permission;
     } else {
@@ -228,6 +231,13 @@ export default Vue.extend({
     if (this.alertInterval) clearInterval(this.alertInterval);
   },
   methods: {
+    finishLoading(tries = 0) {
+      this.$nextTick(() => {
+        const el = document.getElementById('spinner-wrapper');
+        if (el) el.style.display = 'none';
+        else if (tries < 40) this.finishLoading(tries + 1);
+      });
+    },
     refresh() {
       this.watchlist = getWatchlist();
     },
