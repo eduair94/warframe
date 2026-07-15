@@ -31,6 +31,7 @@
         <span class="app-tour-btn__label d-none d-md-inline">Tour</span>
       </v-btn>
       <GitHubButton icon color="white" class="mr-2" />
+      <PwaInstall />
       <LanguageMenu />
     </v-app-bar>
 
@@ -125,13 +126,29 @@ const localePath = useLocalePath()
 // and description. resolveSeo() + PAGE_SEO live in app/utils/seo.ts.
 const route = useRoute()
 const seo = computed(() => resolveSeo(route.path))
+
+// Canonical + hreflang alternates for EVERY route (i18n). Previously only a
+// handful of pages called useLocaleHead, so most pages shipped no canonical or
+// hreflang. Centralising it here guarantees full coverage.
+useHead(useLocaleHead({ seo: true }))
+
 useSeoMeta({
   title: () => seo.value.title,
   description: () => seo.value.description,
+  ogType: 'website',
   ogTitle: () => seo.value.title,
   ogDescription: () => seo.value.description,
+  twitterCard: 'summary_large_image',
   twitterTitle: () => seo.value.title,
   twitterDescription: () => seo.value.description
+})
+
+// Default per-route OG card (components/OgImage/Void.vue) baked with this
+// route's title/description. Dynamic entity pages (set/relic) register their
+// own deeper defineOgImageComponent via useSeoPage() to override this.
+defineOgImage('Void', {
+  title: seo.value.title,
+  description: seo.value.description
 })
 
 interface NavLink {
@@ -271,8 +288,20 @@ async function startTour() {
     linear-gradient(180deg, #0c0d17 0%, #080910 100%);
   min-height: 100vh;
 }
-.logo_image {
+/* The logo is a wide banner (441x57). In the flex app-bar it collapsed to ~67px
+   wide (tiny). Give it an explicit width so it renders at a legible size, and
+   keep it from being squeezed by neighbouring buttons. */
+.logo_image.v-img {
   cursor: pointer;
+  width: 220px !important;
+  max-width: 56vw !important;
+  flex: 0 0 auto;
+}
+@media (max-width: 600px) {
+  .logo_image.v-img {
+    width: 190px !important;
+    max-width: 60vw !important;
+  }
 }
 
 /* Orokin app-bar: voidglass with a gold underline */

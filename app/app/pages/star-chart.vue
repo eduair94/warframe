@@ -305,17 +305,6 @@ function makeStars(n: number) {
 const PLACEHOLDER_IMG =
   "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Crect width='40' height='40' fill='%232a2a3d'/%3E%3Cpath d='M20 9 L29 20 L20 31 L11 20 Z' fill='none' stroke='%23c8a85c' stroke-width='2' opacity='0.7'/%3E%3C/svg%3E"
 
-useHead({
-  title: 'Star Chart — what to farm in Warframe, ranked by platinum',
-  meta: [
-    {
-      name: 'description',
-      content:
-        'An interactive Warframe Star Chart that ranks every planet and mission by expected platinum per run — drop chances joined with live Warframe Market prices.',
-    },
-  ],
-})
-
 // A single mission reward row (relic/item drop joined with market price).
 interface ScReward {
   itemName: string

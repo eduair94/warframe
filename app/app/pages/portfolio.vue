@@ -159,17 +159,6 @@ const { data } = await useAsyncData('portfolio-market-analytics', () =>
 )
 const analytics = computed<any[]>(() => (data.value && data.value.items) || [])
 
-useHead({
-  title: 'My Portfolio — track owned Warframe items & price alerts',
-  meta: [
-    {
-      name: 'description',
-      content:
-        'Track items you own or want to watch and get a browser notification when their sell price crosses a threshold you set, or when an item hits its all-time low.',
-    },
-  ],
-})
-
 const itemsStore = useItemsStore()
 const allItems = computed<any[]>(() => itemsStore.allItems as any[])
 

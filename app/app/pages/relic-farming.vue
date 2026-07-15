@@ -308,17 +308,6 @@ const { data, error } = await useAsyncData('relic-farming', () =>
 const loadError = computed(() => !!error.value)
 const relics = computed<RelicRow[]>(() => data.value?.relics ?? [])
 
-useHead({
-  title: 'Relic Farming — best relics by platinum per hour (Warframe)',
-  meta: [
-    {
-      name: 'description',
-      content:
-        'Rank every Warframe void relic by platinum per hour: expected Intact or Radiant payout divided by your minutes-per-run. Find the best relic to farm plat right now.',
-    },
-  ],
-})
-
 const { mobile } = useDisplay()
 const isMobile = computed(() => mobile.value)
 

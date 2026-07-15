@@ -37,6 +37,17 @@ export const VOL_K = 5
 export function rarityTier(rarity: string | undefined | null): number {
   return RARITY_TIER[String(rarity || '').toLowerCase()] ?? 0
 }
+
+/** Requiem (Kuva Lich) mods — murmur-ranked, not endo. Keyed by url_name. */
+const REQUIEM_MODS = new Set(['ash', 'fass', 'jahu', 'khra', 'lohk', 'netra', 'ris', 'vome', 'xata'])
+/** True when a mod can be ranked with endo (excludes Requiem/Kuva + Invocation). */
+export function isEndoRankableMod(urlName: string | undefined | null, tags: string[] = []): boolean {
+  const u = String(urlName || '').toLowerCase()
+  if (REQUIEM_MODS.has(u)) return false
+  if (u.endsWith('_invocation')) return false
+  if ((tags || []).some((t) => String(t).toLowerCase() === 'requiem')) return false
+  return true
+}
 function geo(rank: number): number {
   const n = Number(rank) || 0
   return n <= 0 ? 0 : Math.pow(2, n) - 1

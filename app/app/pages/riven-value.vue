@@ -386,18 +386,6 @@ function fmtPlat(n: number): string {
   return Math.round(Number(n) || 0).toLocaleString('en-US')
 }
 
-// ---- SEO (old head()) ----
-useHead({
-  title: 'Riven Fair Value — price & grade any Warframe riven',
-  meta: [
-    {
-      name: 'description',
-      content:
-        "Estimate a fair platinum price for any Warframe riven by attribute combination, and grade every live listing against the field. Built from the live auction corpus.",
-    },
-  ],
-})
-
 // Hide the global loading spinner once mounted (project rule). Bounded retry:
 // the #spinner-wrapper element is injected by the (not-yet-wired) LoadingBar
 // component; if it never appears we stop after a few ticks instead of looping

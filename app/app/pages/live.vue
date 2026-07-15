@@ -288,16 +288,6 @@ import type { LiveUpdate } from '~/utils/liveTypes'
 const store = useItemsStore()
 const allItems = computed<any[]>(() => store.allItems)
 
-useHead({
-  title: 'Live Signals — real-time Warframe Market buy/sell',
-  meta: [
-    {
-      name: 'description',
-      content: 'Real-time best online buy/sell prices with a fair-value buy/sell verdict.',
-    },
-  ],
-})
-
 const { mobile } = useDisplay()
 const isMobile = computed(() => mobile.value)
 const { connected, pulse } = useLiveFeed()

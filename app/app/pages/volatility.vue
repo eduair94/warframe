@@ -163,17 +163,6 @@ const loadError = computed(() => !!error.value)
 const items = computed<any[]>(() => (data.value && data.value.items) || [])
 const meta = computed<any>(() => (data.value && data.value.meta) || { count: 0, maxHistoryDays: 0 })
 
-useHead({
-  title: 'Volatility Index — Warframe Market price stability ranking',
-  meta: [
-    {
-      name: 'description',
-      content:
-        "Rank every Warframe Market item by price volatility (coefficient of variation) from long-term daily price history — see what's stable to hold or farm and what's swingy and arbitrage-rich.",
-    },
-  ],
-})
-
 const { mobile } = useDisplay()
 
 // old data() locals

@@ -162,17 +162,6 @@ const sortOptions = [
   { title: 'Name (A–Z)', value: 'name' },
 ]
 
-useHead({
-  title: 'Flip Finder — widest Warframe Market spreads',
-  meta: [
-    {
-      name: 'description',
-      content:
-        'Live buy/sell spread ranking across Warframe Market items — the widest, most liquid margins to flip for platinum.',
-    },
-  ],
-})
-
 function categoryOf(tags: string[] = []): string {
   const t = (tags || []).map((x) => (x || '').toLowerCase())
   if (t.includes('warframe')) return 'Warframe'

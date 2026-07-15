@@ -168,17 +168,6 @@ const loadError = computed(() => !!error.value)
 const items = computed<any[]>(() => (data.value && data.value.items) || [])
 const meta = computed<any>(() => (data.value && data.value.meta) || { count: 0, maxHistoryDays: 0 })
 
-useHead({
-  title: 'Buy / Sell Timing — Warframe Market all-time-low & high flags',
-  meta: [
-    {
-      name: 'description',
-      content:
-        "Time your Warframe Market trades: our long-term daily price history flags when an item is near its all-time low (a buy) or all-time high (a sell), with a plain buy / hold / sell read.",
-    },
-  ],
-})
-
 const { mobile } = useDisplay()
 const isMobile = computed(() => mobile.value)
 

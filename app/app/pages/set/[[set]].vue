@@ -200,8 +200,21 @@ const goTo = useGoTo()
 const items = useItemsStore()
 const allSets = computed(() => items.allSets)
 
-// SEO / i18n head (ports this.$nuxtI18nHead({ addSeoAttributes: true }))
-useHead(useLocaleHead({ seo: true }))
+// Entity-specific SEO — the set name comes from the route param, so it can't
+// live in the static seo.ts map. useSeoPage() overrides the layout's generic
+// /set title/description + OG card with this set's name. Canonical/hreflang are
+// still handled centrally by the layout (do NOT call useLocaleHead here).
+const setName = computed(() => prettifySlug(route.params.set as string | undefined))
+useSeoPage({
+  title: () =>
+    setName.value
+      ? `${setName.value} — Price & Set vs Parts (Warframe Market)`
+      : PAGE_SEO['/set'].title,
+  description: () =>
+    setName.value
+      ? `Live Warframe Market platinum prices for the ${setName.value}: assembled set vs individual parts, buy and sell orders, and 48h trade volume.`
+      : PAGE_SEO['/set'].description,
+})
 
 const headers = [
   { title: 'Name', key: 'item_name', width: 'auto' },

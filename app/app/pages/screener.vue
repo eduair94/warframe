@@ -143,19 +143,7 @@
 <script setup lang="ts">
 import { computed, nextTick, onMounted, ref, watch } from 'vue'
 import { useDisplay } from 'vuetify'
-import { useHead } from '#imports'
 import { useItemsStore } from '~/stores/items'
-
-useHead({
-  title: 'Market Screener — scan every Warframe Market item',
-  meta: [
-    {
-      name: 'description',
-      content:
-        'Sortable whole-catalogue Warframe Market screener: bid/ask spread, discount vs average price, 48h volume and ducat value across every tradeable item.',
-    },
-  ],
-})
 
 const store = useItemsStore()
 const allItems = computed<any[]>(() => store.allItems)

@@ -124,11 +124,6 @@ import { computed, nextTick, onMounted, ref, watch } from 'vue'
 import { useDisplay } from 'vuetify'
 import { useItemsStore } from '~/stores/items'
 
-useHead({
-  title: 'Vaulted Investment — priciest vaulted Warframe primes',
-  meta: [{ name: 'description', content: 'Every vaulted (unfarmable) Warframe prime item ranked by market value — track what is appreciating while it can no longer be farmed.' }],
-})
-
 const itemsStore = useItemsStore()
 const allItems = computed(() => itemsStore.allItems)
 

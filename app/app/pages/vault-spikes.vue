@@ -170,17 +170,6 @@ const items = computed<any[]>(() => (data.value && data.value.items) || [])
 // meta preserved for parity (unused in template but part of the old asyncData return)
 const meta = computed<any>(() => (data.value && data.value.meta) || { count: 0, maxHistoryDays: 0 })
 
-useHead({
-  title: 'Vault Spike Feed — rising vaulted Warframe prime prices',
-  meta: [
-    {
-      name: 'description',
-      content:
-        'Every vaulted Warframe prime whose plat price is spiking, ranked by 7-day and 30-day change from our own daily price history. Catch the post-vault sell window before the spike fades.',
-    },
-  ],
-})
-
 const { mobile } = useDisplay()
 const isMobile = computed(() => mobile.value)
 

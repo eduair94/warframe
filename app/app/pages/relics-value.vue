@@ -279,17 +279,6 @@ const base = config.public.apiURL
 const { mobile } = useDisplay()
 const isMobile = computed(() => mobile.value)
 
-useHead({
-  title: 'Relic Value — open vs sell (Warframe Market)',
-  meta: [
-    {
-      name: 'description',
-      content:
-        'Expected platinum value of cracking every Warframe void relic (Intact & Radiant) versus selling it. Per-relic drop breakdown and best relics to open.',
-    },
-  ],
-})
-
 // SSR fetch — preserve old asyncData try/catch -> loadError intent.
 const { data, error } = await useAsyncData('relics-ev', () =>
   $fetch<any>(`${base}/relics_ev`),

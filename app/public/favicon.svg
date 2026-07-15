@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="Warframe Market Analytics">
+  <defs>
+    <linearGradient id="void" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b0c16"/>
+      <stop offset="0.55" stop-color="#14162e"/>
+      <stop offset="1" stop-color="#0d1120"/>
+    </linearGradient>
+  </defs>
+  <!-- Void field -->
+  <rect width="512" height="512" rx="112" fill="url(#void)"/>
+  <!-- Faint gold frame (fades out at favicon sizes, reads at 512) -->
+  <rect x="26" y="26" width="460" height="460" rx="90" fill="none" stroke="#d4af5a" stroke-opacity="0.32" stroke-width="6"/>
+  <!-- Orokin diamond-node mark: gold outer diamond + cyan core, gold vertex nodes -->
+  <path d="M256 84 L428 256 L256 428 L84 256 Z" fill="none" stroke="#d4af5a" stroke-width="26" stroke-linejoin="round"/>
+  <path d="M256 168 L344 256 L256 344 L168 256 Z" fill="#4fb3bf"/>
+  <circle cx="256" cy="84" r="15" fill="#d4af5a"/>
+  <circle cx="428" cy="256" r="15" fill="#d4af5a"/>
+  <circle cx="256" cy="428" r="15" fill="#d4af5a"/>
+  <circle cx="84" cy="256" r="15" fill="#d4af5a"/>
+</svg>

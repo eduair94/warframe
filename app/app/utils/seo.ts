@@ -129,6 +129,16 @@ const PREFIX_SEO: Array<[string, PageSeo]> = [
   ['/relic', PAGE_SEO['/relic']]
 ]
 
+/** Turn a route slug like "ash_prime_set" into a readable "Ash Prime Set". */
+export function prettifySlug(slug?: string | null): string {
+  if (!slug) return ''
+  return decodeURIComponent(slug)
+    .replace(/[_-]+/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .replace(/\b\w/g, (c) => c.toUpperCase())
+}
+
 export function resolveSeo(path: string): PageSeo {
   // Strip locale prefix and any trailing slash
   let p = path.replace(/^\/(es|pt)(?=\/|$)/, '') || '/'

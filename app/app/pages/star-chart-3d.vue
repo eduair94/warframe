@@ -322,23 +322,6 @@
 <script setup lang="ts">
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 
-useHead({
-  title: '3D Star Chart — interactive Warframe drop map',
-  meta: [
-    {
-      name: 'description',
-      content:
-        'A 3D interactive Warframe drop map: every planet, moon and void zone of the Origin System, lit by expected platinum per drop. Search any item to see where it drops.',
-    },
-    { property: 'og:title', content: '3D Star Chart — interactive Warframe drop map' },
-    {
-      property: 'og:description',
-      content:
-        'Explore the Origin System in 3D. Every world glows by what its missions pay — drop chances priced against live Warframe Market data.',
-    },
-    { property: 'og:type', content: 'website' },
-  ],
-})
 
 const { loading, planets, planetsByName, maxValue, stats, load, rewardMeta, sortedRewards } = useDropMap()
 const { itemThumb } = useItemThumb()

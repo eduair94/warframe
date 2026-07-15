@@ -125,17 +125,6 @@ import { computed, nextTick, onMounted, ref, watch } from 'vue'
 import { useDisplay } from 'vuetify'
 import { useItemsStore } from '~/stores/items'
 
-useHead({
-  title: 'Ducat Efficiency — best ducats per platinum (Warframe)',
-  meta: [
-    {
-      name: 'description',
-      content:
-        "Warframe prime parts ranked by ducats earned per platinum spent — the cheapest way to stock ducats for Baro Ki'Teer.",
-    },
-  ],
-})
-
 const itemsStore = useItemsStore()
 const allItems = computed(() => itemsStore.allItems)
 

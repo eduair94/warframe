@@ -69,6 +69,15 @@ export default defineNuxtConfig({
       // Warm up the cross-origin connections used on every page (item thumbnails
       // come from warframe.market; webfonts from Google's font CDN).
       link: [
+        // Favicons — modern browsers prefer the scalable SVG mark; the .ico in
+        // public/ is still auto-served as the legacy fallback.
+        { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
+        { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' },
+        { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' },
+        { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
+        { rel: 'mask-icon', href: '/favicon.svg', color: '#d4af5a' },
+        // Warm up the cross-origin connections used on every page (item thumbnails
+        // come from warframe.market; webfonts from Google's font CDN).
         { rel: 'preconnect', href: 'https://warframe.market', crossorigin: '' },
         { rel: 'dns-prefetch', href: 'https://warframe.market' },
         { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' }
@@ -89,20 +98,17 @@ export default defineNuxtConfig({
         },
         { name: 'referrer', content: 'no-referrer' },
         { name: 'theme-color', content: '#0b0c16' },
-        // Open Graph (per-page og:title/description overridden in the layout)
+        // Open Graph — site-level defaults. Per-page og:title/description come
+        // from useSeoPage(); the og:image (+ dimensions) is injected per-route
+        // by nuxt-og-image (the dynamic Void card), so no static og:image here.
         { property: 'og:type', content: 'website' },
         { property: 'og:site_name', content: 'Warframe Market Analytics' },
         { property: 'og:title', content: SITE_TITLE },
         { property: 'og:description', content: SITE_DESC },
-        { property: 'og:image', content: `${SITE_URL}/img/banner.png` },
-        { property: 'og:image:width', content: '1584' },
-        { property: 'og:image:height', content: '396' },
-        { property: 'og:image:alt', content: 'Warframe Market Analytics' },
-        // Twitter card
+        // Twitter card defaults (per-page title/description/image overridden).
         { name: 'twitter:card', content: 'summary_large_image' },
         { name: 'twitter:title', content: SITE_TITLE },
-        { name: 'twitter:description', content: SITE_DESC },
-        { name: 'twitter:image', content: `${SITE_URL}/img/banner.png` }
+        { name: 'twitter:description', content: SITE_DESC }
       ]
     }
   },
@@ -111,6 +117,7 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@nuxtjs/i18n',
     '@nuxtjs/sitemap',
+    'nuxt-og-image',
     'nuxt-gtag',
     '@nuxtjs/google-fonts',
     '@vite-pwa/nuxt',
@@ -159,6 +166,20 @@ export default defineNuxtConfig({
     url: SITE_URL
   },
 
+  // nuxt-og-image — one branded Orokin card (components/OgImage/Void.vue) is
+  // rendered per route (satori -> resvg). `defaults` makes EVERY page get a
+  // Void card even if it doesn't explicitly call defineOgImageComponent;
+  // useSeoPage() passes each page's clean title/description into it. Fonts are
+  // fetched at build/first-render and cached.
+  ogImage: {
+    fonts: ['Cinzel:700', 'Rajdhani:500', 'Rajdhani:700'],
+    defaults: {
+      component: 'Void',
+      width: 1200,
+      height: 630
+    }
+  },
+
   // Ported from app/nuxt.config.js `buildModules` google-gtag entry,
   // consolidating both the GA4 property (G-) and the Google Ads account (AW-)
   // that were previously split across `id` + `additionalAccounts`.
@@ -183,18 +204,39 @@ export default defineNuxtConfig({
   pwa: {
     registerType: 'autoUpdate',
     manifest: {
-      name: 'Warframe Market Analytics App',
-      short_name: 'Warframe Analytics',
-      description: 'Warframe Market Analytics',
+      id: '/',
+      name: 'Warframe Market Analytics',
+      short_name: 'WF Analytics',
+      description:
+        'Live Warframe Market analytics — prime prices, ducat & relic value, riven pricing, flip finder and trading signals.',
       lang: 'en',
-      theme_color: '#272727',
-      background_color: '#272727',
-      categories: ['games', 'utilities', 'shopping'],
+      dir: 'ltr',
+      // Brand void — matches the theme-color meta (#0b0c16). The old #272727
+      // mismatched it, giving a grey splash/titlebar that clashed with the UI.
+      theme_color: '#0b0c16',
+      background_color: '#0b0c16',
+      categories: ['games', 'utilities', 'shopping', 'finance'],
       display: 'standalone',
+      orientation: 'any',
+      start_url: '/?source=pwa',
+      scope: '/',
       icons: [
+        { src: '/favicon.svg', sizes: 'any', type: 'image/svg+xml', purpose: 'any' },
         { src: '/android-chrome-192x192.png', sizes: '192x192', type: 'image/png', purpose: 'any' },
         { src: '/android-chrome-384x384.png', sizes: '384x384', type: 'image/png', purpose: 'any' },
         { src: '/maskable-icon-512x512.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' }
+      ],
+      // App shortcuts (long-press the installed icon / jump list).
+      shortcuts: [
+        { name: 'Market Screener', short_name: 'Screener', url: '/screener', icons: [{ src: '/android-chrome-192x192.png', sizes: '192x192' }] },
+        { name: 'Top Movers', short_name: 'Movers', url: '/movers', icons: [{ src: '/android-chrome-192x192.png', sizes: '192x192' }] },
+        { name: 'Relic Value', short_name: 'Relics', url: '/relics-value', icons: [{ src: '/android-chrome-192x192.png', sizes: '192x192' }] },
+        { name: 'My Portfolio', short_name: 'Portfolio', url: '/portfolio', icons: [{ src: '/android-chrome-192x192.png', sizes: '192x192' }] }
+      ],
+      // Enables the richer install dialog on Chromium desktop + Android.
+      screenshots: [
+        { src: '/img/screenshot-wide.png', sizes: '1280x672', type: 'image/png', form_factor: 'wide', label: 'Warframe Market Analytics dashboard' },
+        { src: '/img/screenshot-narrow.png', sizes: '720x1232', type: 'image/png', form_factor: 'narrow', label: 'Warframe Market Analytics on mobile' }
       ]
     },
     workbox: {

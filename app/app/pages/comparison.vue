@@ -255,17 +255,6 @@ const { data, error } = await useAsyncData('sets-comparison', () =>
 const loadError = computed(() => !!error.value)
 const sets = computed<any[]>(() => data.value?.sets || [])
 
-useHead({
-  title: 'Set vs Parts — Warframe Market price comparison',
-  meta: [
-    {
-      name: 'description',
-      content:
-        'Compare buying a Warframe Prime set whole vs buying the parts and combining. Live platinum savings, resale value and per-set breakdowns.',
-    },
-  ],
-})
-
 const { mobile } = useDisplay()
 
 const search = ref('')

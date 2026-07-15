@@ -440,10 +440,6 @@ const base = config.public.apiURL
 const { t } = useI18n()
 const goTo = useGoTo()
 
-// SEO head — old this.$nuxtI18nHead({ addSeoAttributes: true }).
-// @nuxtjs/i18n v9 renamed the option key `addSeoAttributes` -> `seo`.
-useHead(useLocaleHead({ seo: true }))
-
 const items = useItemsStore()
 const allItems = computed<any[]>(() => items.allItems)
 

@@ -161,17 +161,6 @@ const loadError = computed(() => !!error.value)
 const items = computed<any[]>(() => (data.value && data.value.items) || [])
 const meta = computed<any>(() => (data.value && data.value.meta) || { count: 0, maxHistoryDays: 0 })
 
-useHead({
-  title: 'Top Movers — Warframe Market gainers, losers & volume',
-  meta: [
-    {
-      name: 'description',
-      content:
-        "Warframe Market's biggest price gainers and losers over 24h / 7d / 30d plus the volume leaderboard, from long-term daily price history.",
-    },
-  ],
-})
-
 const { mobile } = useDisplay()
 const isMobile = computed(() => mobile.value)
 

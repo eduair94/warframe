@@ -305,17 +305,6 @@ function fmt1(n: number): string {
   return (Math.round((Number(n) || 0) * 10) / 10).toLocaleString('en-US')
 }
 
-useHead({
-  title: 'Cheapest Endo per Platinum — the rolled-riven trick (Warframe)',
-  meta: [
-    {
-      name: 'description',
-      content:
-        'A step-by-step Warframe guide: get more Endo for less platinum by buying heavily re-rolled rivens and dissolving them instead of Ayatan sculptures. Find the best live deal with the Endo / Plat tool.',
-    },
-  ],
-})
-
 // Project rule: hide the global loading spinner once mounted (bounded retry).
 function finishLoading(attempt = 0) {
   nextTick(() => {

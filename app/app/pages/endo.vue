@@ -97,11 +97,14 @@
                     <div class="an-set__lbl">Sell maxed at</div>
                     <v-btn-toggle v-model="sellBasis" mandatory density="compact" class="an-minitoggle">
                       <v-btn value="ask" size="x-small">Current ask</v-btn>
-                      <v-btn value="instant" size="x-small">Instant (buyer)</v-btn>
+                      <v-btn value="instant" size="x-small">Instant</v-btn>
                       <v-btn value="avg" size="x-small">48h avg</v-btn>
                     </v-btn-toggle>
                   </div>
-                  <v-switch v-model="buyViaBid" hide-details density="compact" inset color="#4fb3bf" label="Buy via buy order (compete on bids)" class="an-toggle"></v-switch>
+                  <div class="an-set">
+                    <div class="an-set__lbl">Buy-in</div>
+                    <v-switch v-model="buyViaBid" hide-details density="compact" inset color="#4fb3bf" label="Via buy order (compete on bids)" class="an-toggle an-set__switch"></v-switch>
+                  </div>
                 </div>
 
                 <div class="an-adv__section">Filters</div>
@@ -352,11 +355,11 @@
       <v-alert class="an-disclaimer" color="blue-darken-4" type="info" density="compact">
         <template v-if="direction === 'flip'">
           Plat / 1k endo = <b>(maxed sell − buy-in) ÷ endo to finish × 1000</b>.
-          By default prices are the <b>current lowest sell orders of online
-          players</b> (buy-in and maxed sell), not the 48h average — switch the
-          sell basis under Filters &amp; settings if you want the average or an
-          instant sale. Warframe takes no platinum trade tax; your cost is endo +
-          credits. Maxed copies sell slower than unranked, so check demand.
+          By default it shows well-traded mods (≥50 maxed sales in 48h), valued at
+          the <b>48h average</b> price and bought in via a competitive buy order —
+          the most reliable read. Switch the pricing model or lower the volume
+          filter under Filters &amp; settings for current-ask, instant, or thinner
+          mods. Warframe takes no platinum trade tax; your cost is endo + credits.
           {{ t('disclaimer') }}
         </template>
         <template v-else>
@@ -402,6 +405,7 @@ import { useItemsStore } from '~/stores/items'
 import {
   evalFlip,
   hasFlip,
+  isEndoRankableMod,
   modAsEndoSource,
   endoPerPlat,
   buyWhisper,
@@ -422,18 +426,6 @@ dayjs.extend(relativeTime)
 const config = useRuntimeConfig()
 const apiBase = config.public.apiURL
 const { t } = useI18n()
-
-useHead(useLocaleHead({ seo: true }))
-useHead({
-  title: 'Endo Exchange — flip mods for platinum & find the cheapest endo (Warframe)',
-  meta: [
-    {
-      name: 'description',
-      content:
-        'Spend excess endo to earn platinum: buy Warframe mods cheap, max them, resell maxed — ranked by plat per 1,000 endo using live online-player prices, with the cheapest buy-in rank. Plus the cheapest endo sources (sculptures, rivens, mods).',
-    },
-  ],
-})
 
 const { mobile } = useDisplay()
 const isMobile = computed(() => mobile.value)
@@ -503,14 +495,14 @@ function copy(text: string, key: string) {
 
 // ---- Direction A: mod flip ----
 const search = ref('')
-const minVolume = ref<number | null>(null)
+const minVolume = ref<number | null>(50)
 const flipCat = ref('All')
 const flipSortBy = ref('eff')
 const flipSortDir = ref<Dir>('desc')
 const showAdv = ref(false)
 // pricing model
-const sellBasis = ref<SellBasis>('ask')
-const buyViaBid = ref(false)
+const sellBasis = ref<SellBasis>('avg')
+const buyViaBid = ref(true)
 // advanced filters
 const maxBuyIn = ref<number | null>(null)
 const minProfit = ref<number | null>(null)
@@ -540,12 +532,17 @@ const flipRows = computed<FlipRowEval[]>(() => {
   const opts = { buyViaBid: buyViaBid.value, sellBasis: sellBasis.value }
   const out: FlipRowEval[] = []
   for (const r of rows) {
+    // Requiem/Kuva mods rank via murmurs, not endo — never a valid flip.
+    if (!isEndoRankableMod(r.url_name, r.tags)) continue
     const ev = evalFlip(r, opts)
     if (!hasFlip(ev)) continue
     out.push({ ...r, eval: ev as FlipRowEval['eval'] })
   }
   return out
 })
+// Liquid subset (traded in the last 48h) — used for the hero + headline stats so
+// a zero-volume outlier (a lone stale ask) can't become the featured deal.
+const liquidFlips = computed<FlipRowEval[]>(() => flipRows.value.filter((r) => r.eval.maxedVolume >= 1))
 
 const flipAccessors: Record<string, (r: FlipRowEval) => number | string> = {
   name: (r) => r.item_name.toLowerCase(),
@@ -584,7 +581,7 @@ const flipCatOptions = computed<string[]>(() => {
 })
 function resetFlipFilters() {
   search.value = ''
-  minVolume.value = null
+  minVolume.value = 50
   maxBuyIn.value = null
   minProfit.value = null
   minEff.value = null
@@ -624,7 +621,7 @@ const flipPaged = computed<FlipRowEval[]>(() => {
 })
 const topFlip = computed<FlipRowEval | null>(() => {
   let best: FlipRowEval | null = null
-  for (const r of flipRows.value) if (!best || r.eval.best.platPer1kEndo > best.eval.best.platPer1kEndo) best = r
+  for (const r of liquidFlips.value) if (!best || r.eval.best.platPer1kEndo > best.eval.best.platPer1kEndo) best = r
   return best
 })
 const topFlipUrl = computed<string>(() => {
@@ -634,11 +631,14 @@ const topFlipUrl = computed<string>(() => {
 })
 const flipStats = computed(() => {
   const list = flipRows.value
-  const effs = list.map((r) => r.eval.best.platPer1kEndo)
+  // Headline "best" figures use the liquid subset so a zero-volume ask outlier
+  // never becomes the advertised number.
+  const liq = liquidFlips.value
+  const effs = liq.map((r) => r.eval.best.platPer1kEndo)
   return {
     total: list.length,
     best: effs.length ? Math.max(...effs) : 0,
-    topProfit: list.length ? Math.max(...list.map((r) => r.eval.best.profit)) : 0,
+    topProfit: liq.length ? Math.max(...liq.map((r) => r.eval.best.profit)) : 0,
     partial: list.filter((r) => r.eval.best.rank > 0).length,
   }
 })
@@ -735,6 +735,7 @@ const modSources = computed<EndoSourceRow[]>(() => {
   const rows = flipData.value?.mods ?? []
   const out: EndoSourceRow[] = []
   for (const r of rows) {
+    if (!isEndoRankableMod(r.url_name, r.tags)) continue
     const s = modAsEndoSource(r)
     // Require real 48h liquidity so the average cost basis is trustworthy — this
     // keeps single-order noise off the leaderboard.
@@ -784,6 +785,68 @@ const sourceStats = computed(() => {
 watch([flipFiltered, sourceFiltered, direction], () => {
   page.value = 1
 })
+
+// ---- persist view / filters / sort in the URL query (survives reload) ----
+const route = useRoute()
+const router = useRouter()
+type PType = 'str' | 'num' | 'bool' | 'csv'
+const QUERY_PARAMS: Array<[string, any, any, PType]> = [
+  ['dir', direction, 'flip', 'str'],
+  ['q', search, '', 'str'],
+  ['sort', flipSortBy, 'eff', 'str'],
+  ['sdir', flipSortDir, 'desc', 'str'],
+  ['cat', flipCat, 'All', 'str'],
+  ['sell', sellBasis, 'avg', 'str'],
+  ['bid', buyViaBid, true, 'bool'],
+  ['maxbuy', maxBuyIn, null, 'num'],
+  ['minp', minProfit, null, 'num'],
+  ['mineff', minEff, null, 'num'],
+  ['maxendo', maxEndoFinish, null, 'num'],
+  ['minvol', minVolume, 50, 'num'],
+  ['rarity', rarityFilter, [], 'csv'],
+  ['partial', partialOnly, false, 'bool'],
+  ['thin', hideThin, true, 'bool'],
+  ['sq', sourceSearch, '', 'str'],
+  ['kind', sourceKind, 'All', 'str'],
+  ['ssort', srcSortBy, 'rate', 'str'],
+  ['ssdir', srcSortDir, 'desc', 'str'],
+  ['minepp', minEpp, null, 'num'],
+  ['maxcost', maxCost, null, 'num'],
+]
+const sameCsv = (a: string[], b: string[]) => a.length === b.length && a.every((x, i) => x === b[i])
+function hydrateFromQuery() {
+  const q = route.query
+  for (const [key, r, , type] of QUERY_PARAMS) {
+    const raw = q[key as string]
+    if (raw == null) continue
+    const v = Array.isArray(raw) ? raw[0] : raw
+    if (v == null) continue
+    if (type === 'str') r.value = String(v)
+    else if (type === 'bool') r.value = v === '1' || v === 'true'
+    else if (type === 'num') r.value = v === '' ? null : Number(v)
+    else if (type === 'csv') r.value = String(v).split(',').filter(Boolean)
+  }
+}
+function buildQuery(): Record<string, string> {
+  const out: Record<string, string> = {}
+  for (const [key, r, def, type] of QUERY_PARAMS) {
+    const v = r.value
+    if (type === 'str') { if (v && v !== def) out[key] = String(v) }
+    else if (type === 'bool') { if (v !== def) out[key] = v ? '1' : '0' }
+    else if (type === 'num') { if (v != null && v !== def && !Number.isNaN(v)) out[key] = String(v) }
+    else if (type === 'csv') { if (Array.isArray(v) && v.length && !sameCsv(v, def)) out[key] = v.join(',') }
+  }
+  return out
+}
+let queryTimer: any = null
+function writeQuery() {
+  if (queryTimer) clearTimeout(queryTimer)
+  queryTimer = setTimeout(() => {
+    router.replace({ query: buildQuery() }).catch(() => {})
+  }, 300)
+}
+hydrateFromQuery()
+watch(buildQuery, writeQuery, { deep: true })
 
 // ---- helpers ----
 function rankLabel(rank: number): string {
@@ -969,6 +1032,14 @@ onMounted(() => {
   color: #4caf7d;
   border-color: rgba(76, 175, 125, 0.6);
 }
+/* Visible keyboard focus for the interactive controls (quality floor). */
+.an-copy:focus-visible,
+.an-copybtn:focus-visible,
+.an-table th.sortable:focus-visible {
+  outline: 2px solid #4fb3bf;
+  outline-offset: 2px;
+  color: #f4e2b4;
+}
 /* Advanced panel */
 .an-adv {
   margin: 4px 0 8px;
@@ -988,14 +1059,31 @@ onMounted(() => {
 .an-adv__settings {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  gap: 10px 24px;
+  align-items: flex-start;
+  gap: 12px 28px;
   margin-bottom: 10px;
 }
+/* Each setting is a labelled column so the "Sell maxed at" toggle and the
+   "Buy-in" switch line up on the same baseline instead of drifting. */
+.an-set {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+}
 .an-set__lbl {
-  font-size: 0.72rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
   color: #9aa0b4;
-  margin-bottom: 3px;
+}
+/* Keep the switch's control row the same height as the toggle so both settings
+   groups align. */
+.an-set__switch {
+  margin-top: 1px;
+}
+.an-set__switch :deep(.v-selection-control) {
+  min-height: 30px;
 }
 .an-minitoggle :deep(.v-btn-toggle) {
   border: 1px solid rgba(255, 255, 255, 0.12);
@@ -1019,10 +1107,20 @@ onMounted(() => {
 }
 .an-adv__chips {
   display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 8px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
   margin-top: 8px;
+}
+/* Vuetify chip-groups default to a ~48px min-height, which left a big empty gap
+   under the "Rarity" label on mobile. Collapse it and tighten the chip gap. */
+.an-adv__chips :deep(.v-chip-group) {
+  min-height: 0;
+  padding: 0;
+}
+.an-adv__chips :deep(.v-slide-group__content) {
+  padding: 2px 0;
+  gap: 6px;
 }
 .an-adv__lbl {
   font-size: 0.72rem;

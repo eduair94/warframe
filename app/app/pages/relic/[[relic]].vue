@@ -198,8 +198,20 @@ const goTo = useGoTo()
 const items = useItemsStore()
 const allSets = computed(() => items.allRelics)
 
-// SEO / i18n head (ports this.$nuxtI18nHead({ addSeoAttributes: true }))
-useHead(useLocaleHead({ seo: true }))
+// Entity-specific SEO — the relic name comes from the route param. useSeoPage()
+// overrides the layout's generic /relic title/description + OG card. Canonical/
+// hreflang stay centralised in the layout (do NOT call useLocaleHead here).
+const relicName = computed(() => prettifySlug(route.params.relic as string | undefined))
+useSeoPage({
+  title: () =>
+    relicName.value
+      ? `${relicName.value} Relic — Rewards & Platinum Value (Warframe)`
+      : PAGE_SEO['/relic'].title,
+  description: () =>
+    relicName.value
+      ? `Everything the ${relicName.value} relic drops and what each reward is worth on Warframe Market, with expected platinum payout for Intact and Radiant.`
+      : PAGE_SEO['/relic'].description,
+})
 
 const headers = computed(() => [
   { title: t('col_name'), key: 'item_name', width: 'auto' },
