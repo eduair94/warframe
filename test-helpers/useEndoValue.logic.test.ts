@@ -55,6 +55,19 @@ describe('evalFlip — phantom buy-in guard', () => {
     for (const o of ev.options) expect(o.buyIn).toBeGreaterThanOrEqual(230);
   });
 
+  it('ignores a lowball bid even when the rank HAS an ask (real prod case)', () => {
+    // The bug the ask>0 guard missed: rank 1 IS listed (someone selling ~230p)
+    // but the top buy order is a 1p lowball that would never fill. Buy-order
+    // mode must not treat 1p as the buy-in and mint a phantom +262p flip.
+    const row = primedChamber();
+    row.flip.ranks[1] = rung({ rank: 1, ask: 230, bid: 1, sellCount: 2, buyCount: 1 });
+    const ev = evalFlip(row, { buyViaBid: true, sellBasis: 'avg' });
+    const r1 = ev.options.find((o) => o.rank === 1);
+    expect(r1).toBeDefined();
+    expect(r1!.buyIn).toBe(230); // falls back to the ask, not the 1p bid
+    for (const o of ev.options) expect(o.buyIn).toBeGreaterThanOrEqual(230);
+  });
+
   it('carries the seller behind the ask so the WTB whisper gets a /w', () => {
     const ev = evalFlip(primedChamber(), { buyViaBid: true, sellBasis: 'avg' });
     expect(ev.best!.askUser).toBe('Hunk.uss');

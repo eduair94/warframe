@@ -39,6 +39,14 @@ const DISSOLVE_REFUND = 0.75
  */
 const VOL_K = 5
 
+/**
+ * Buy-order mode only treats a rank's top bid as a realizable buy-in when it's
+ * at least this fraction of the ask. A bid far below the ask — e.g. a lone 1p
+ * bid on a ~230p Primed Chamber — will never fill, so using it as the buy-in
+ * manufactures phantom profit and rockets junk to the top of the board.
+ */
+const MIN_BID_RATIO = 0.5
+
 export function rarityTier(rarity: string | undefined | null): number {
   return RARITY_TIER[String(rarity || '').toLowerCase()] ?? 0
 }
@@ -252,10 +260,14 @@ export function evalFlip(row: EndoFlipRow, opts: FlipOpts = {}): FlipEval {
     // (ask > 0). Without a live ask the rung's "bid" is a lone lowball buy order
     // — e.g. a stray 1p bid on a rank nobody lists — which would otherwise be
     // picked as a phantom buy-in (buy a rank-1 Primed Chamber for 1p, sell it
-    // maxed for ~260). Buy-order mode then competes at the TOP bid, but never
-    // above the ask (a crossed book just buys the ask).
+    // maxed for ~260).
     if (ask <= 0) continue
-    const buyIn = opts.buyViaBid && bid > 0 ? Math.min(bid, ask) : ask
+    // Buy-order mode competes at the TOP bid — but only when that bid is a
+    // realistic acquisition price. A bid far below the ask (the 1p-on-230p case)
+    // never fills, so fall back to the ask instead of minting phantom profit.
+    // Never buy above the ask either (a crossed book just takes the ask).
+    const bidIsRealistic = bid > 0 && bid >= ask * MIN_BID_RATIO
+    const buyIn = opts.buyViaBid && bidIsRealistic ? Math.min(bid, ask) : ask
     const endoToFinish = endoFromRankToMax(rarity, rung.rank, maxRank)
     if (endoToFinish <= 0) continue
     const profit = maxedSell - buyIn
