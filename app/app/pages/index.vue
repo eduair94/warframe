@@ -1,7 +1,7 @@
 <template>
   <div class="mt-md-4">
     <div class="my-4">
-      <h1 style="display: none"></h1>
+      <h1 class="visually-hidden">Warframe Market Analytics — live prime prices, ducat, relic &amp; riven values</h1>
       <client-only>
         <v-data-table
           show-select
@@ -18,6 +18,23 @@
           class="elevation-1 money_table"
           @update:page="onPageUpdate"
         >
+          <!-- Accessible row-select checkboxes (Vuetify's built-ins ship no
+               aria-label, which fails the Lighthouse/axe "label" audit). -->
+          <template #header.data-table-select="{ allSelected, selectAll, someSelected }">
+            <v-checkbox-btn
+              :indeterminate="someSelected && !allSelected"
+              :model-value="allSelected"
+              aria-label="Select all rows"
+              @update:model-value="selectAll(!allSelected)"
+            />
+          </template>
+          <template #item.data-table-select="{ internalItem, isSelected, toggleSelect }">
+            <v-checkbox-btn
+              :model-value="isSelected(internalItem)"
+              aria-label="Select row"
+              @update:model-value="toggleSelect(internalItem)"
+            />
+          </template>
           <template #top>
             <div>
               <div
@@ -74,7 +91,7 @@
                     density="compact"
                   ></v-combobox>
                   <v-btn type="submit" color="primary" class="mr-2 my-1"> Search </v-btn>
-                  <v-btn color="primary" @click.prevent="reset" class="my-1">
+                  <v-btn color="primary" @click.prevent="reset" class="my-1" aria-label="Reset filters">
                     <v-icon>mdi-restore</v-icon>
                   </v-btn>
                 </form>
@@ -142,7 +159,7 @@
                   <v-btn size="small" color="white" @click="compareDialog = true">
                     Compare Selected
                   </v-btn>
-                  <v-btn icon size="small" variant="text" color="white" class="ml-2" @click="selectedItems = []">
+                  <v-btn icon size="small" variant="text" color="white" class="ml-2" aria-label="Clear selection" @click="selectedItems = []">
                     <v-icon>mdi-close</v-icon>
                   </v-btn>
                 </div>
@@ -165,7 +182,11 @@
             <div class="d-flex justify-start align-center py-3">
               <img
                 class="mr-3"
-                width="50px"
+                width="50"
+                height="50"
+                loading="lazy"
+                style="object-fit: contain"
+                :alt="item.item_name"
                 :src="'https://warframe.market/static/assets/' + item.thumb"
               />
               <div>
@@ -370,7 +391,7 @@
     >
       <div class="d-flex align-center justify-space-between flex-wrap">
         <div>
-          <h3 class="text-h6 font-weight-bold">We need your feedback!</h3>
+          <h2 class="text-h6 font-weight-bold">We need your feedback!</h2>
           <div>Help us improve by sharing your thoughts and reviews on our Reddit thread. That will help us a lot!</div>
         </div>
         <v-btn
@@ -390,7 +411,7 @@
       <v-card-text class="text-center">
         <div class="d-flex align-center justify-center mb-3">
           <v-icon size="large" class="mr-3" color="white">mdi-open-source-initiative</v-icon>
-          <h3>{{ t('open_source_project') }}</h3>
+          <h2 class="text-h6">{{ t('open_source_project') }}</h2>
         </div>
         <p class="mb-3">{{ t('github_description') }}</p>
         <div class="d-flex flex-wrap justify-center gap-2">
@@ -845,5 +866,18 @@ onBeforeUnmount(() => {
 .tag-cell {
   gap: 4px;
   padding: 4px 0;
+}
+/* Screen-reader-only H1: keeps the real page heading in the DOM (SEO + a11y)
+   without altering the visual layout, which leads with the data table. */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 </style>

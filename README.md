@@ -4,6 +4,31 @@
 
 A comprehensive web application for analyzing Warframe market data, including real-time price tracking, item statistics, and riven mod analytics. This project consists of a Node.js/TypeScript backend API and a Nuxt.js frontend web application.
 
+## 🔗 Live App
+
+**Try it now → [warframe-app.digitalshopuy.com](https://warframe-app.digitalshopuy.com)** — free, no signup, works on mobile (installable PWA).
+
+[![Live site](https://img.shields.io/badge/live-warframe--app.digitalshopuy.com-c8a85c?style=flat-square)](https://warframe-app.digitalshopuy.com)
+![Nuxt](https://img.shields.io/badge/Nuxt-4-00DC82?style=flat-square&logo=nuxtdotjs)
+![Vuetify](https://img.shields.io/badge/Vuetify-3-1867C0?style=flat-square&logo=vuetify)
+![License](https://img.shields.io/badge/license-ISC-blue?style=flat-square)
+
+[![Warframe Market Analytics](app/public/img/banner.png)](https://warframe-app.digitalshopuy.com)
+
+Real-time [Warframe.market](https://warframe.market) analytics and platinum trading tools:
+
+| Tool | What it does |
+|------|--------------|
+| [Live Signals](https://warframe-app.digitalshopuy.com/live) | Real-time order feed with buy / sell / flip verdicts |
+| [Set vs Parts](https://warframe-app.digitalshopuy.com/comparison) | Is a prime set cheaper assembled or bought as parts? |
+| [Relic Value](https://warframe-app.digitalshopuy.com/relics-value) | Expected platinum payout per relic (Intact / Radiant) |
+| [Ducat Efficiency](https://warframe-app.digitalshopuy.com/ducats) | Best ducats-per-platinum parts for Baro Ki'Teer |
+| [Flip Finder](https://warframe-app.digitalshopuy.com/flip) | The widest, most liquid buy/sell spreads |
+| [Riven Value](https://warframe-app.digitalshopuy.com/riven-value) | Estimate a riven mod's platinum worth |
+| [Vaulted](https://warframe-app.digitalshopuy.com/vaulted) · [Vault Spikes](https://warframe-app.digitalshopuy.com/vault-spikes) | Track vaulted prime prices climbing in value |
+
+> Independent fan project — not affiliated with Digital Extremes or Warframe.market.
+
 ## Features
 
 - **Real-time Market Data**: Automatically syncs with Warframe Market API to gather current item prices and statistics

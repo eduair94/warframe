@@ -410,7 +410,7 @@ onMounted(() => {
   font-size: 1.02rem;
   color: var(--ink);
   letter-spacing: 0.02em;
-  text-align: center;
+  text-align: left;
   padding: 6px 0 14px;
   border-bottom: 1px solid var(--line);
   overflow-x: auto;
