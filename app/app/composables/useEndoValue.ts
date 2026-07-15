@@ -109,11 +109,15 @@ export interface EndoFlipRow {
 /** One buy-in candidate: acquire at `rank`, finish to max. */
 export interface FlipOption {
   rank: number
-  /** Buy-in cost (lowest ask at this rank). */
+  /** Lowest sell order at this rank — buy instantly at the ask. */
   ask: number
+  /** Highest buy order at this rank — the competitive buy-order price. */
+  bid: number
+  /** Price actually used as the buy-in (ask by default; bid in buy-order mode). */
+  buyIn: number
   endoToFinish: number
   creditsToFinish: number
-  /** maxedSell − ask (before credits/time). */
+  /** maxedSell − buyIn (before credits/time). */
   profit: number
   /** profit ÷ endoToFinish × 1000 — the ranking metric. */
   platPer1kEndo: number
@@ -123,11 +127,16 @@ export interface FlipOption {
 export interface FlipEval {
   rarity: string
   maxRank: number
-  /** Realizable maxed sell (48h avg, else current lowest maxed ask). */
+  /**
+   * Realizable maxed sell = the CURRENT lowest maxed sell order (what you'd list
+   * at, competing with other sellers). Falls back to the 48h average only when
+   * no maxed sell order exists. NOT the 48h average by default — on thin mods
+   * the average is one stale trade and wildly overstates the sell price.
+   */
   maxedSell: number
   /** Current lowest maxed sell order (list price). */
   maxedAsk: number
-  /** Highest maxed buy order — instant-sell price. */
+  /** Highest maxed buy order — instant-sell price (0 if nobody is buying). */
   maxedBid: number
   maxedAvg: number
   maxedVolume: number
@@ -147,6 +156,8 @@ export interface FlipEval {
   demand: DemandTier
   /** Endo from dissolving a maxed copy (Direction B). */
   dissolveEndoMaxed: number
+  /** When this mod's order-book snapshot was taken (ISO), for the freshness line. */
+  updatedAt: string
 }
 
 export interface DemandTier {
@@ -161,11 +172,33 @@ export function demandTier(liq: number): DemandTier {
   return { key: 'dead', label: 'No demand', cls: 'dem--dead' }
 }
 
+/** How to price the maxed sell side. */
+export type SellBasis =
+  | 'ask' // list at the current lowest maxed ask (default; compete with sellers)
+  | 'avg' // the 48h average traded price (smoother, but can be stale on thin mods)
+  | 'instant' // dump to the highest maxed buy order (fast, usually less)
+
+/** Options for evaluating a flip. */
+export interface FlipOpts {
+  /**
+   * Buy the mod via a competitive BUY ORDER (pay ~the highest existing bid)
+   * instead of taking the lowest ASK. Cheaper when there's a buy-order pool to
+   * compete in, but slower/less certain. Default false (buy at the ask).
+   */
+  buyViaBid?: boolean
+  /** How to value the maxed sell. Default 'ask' (current lowest maxed sell). */
+  sellBasis?: SellBasis
+}
+
 /**
  * Evaluate a mod-flip row: the maxed sell side, every profitable buy-in rank,
  * the best one, and liquidity. Pure — safe to call in a computed.
+ *
+ * Prices come from the CURRENT order-book ladder (lowest ask / highest bid per
+ * rank), not the 48h average — the average can be a single stale trade that
+ * badly overstates a thin mod's value.
  */
-export function evalFlip(row: EndoFlipRow): FlipEval {
+export function evalFlip(row: EndoFlipRow, opts: FlipOpts = {}): FlipEval {
   const flip = row?.flip || ({} as ModFlip)
   const rarity = flip.rarity || ''
   const maxRank = Number(flip.maxRank) || 0
@@ -177,28 +210,39 @@ export function evalFlip(row: EndoFlipRow): FlipEval {
   const maxedBid = Number(maxRung?.bid) || 0
   const maxedAvg = Number(flip.maxed?.avg_price) || 0
   const maxedVolume = Number(flip.maxed?.volume) || 0
-  // Realizable maxed sell: prefer the 48h traded average (what maxed copies
-  // actually change hands for); fall back to the current lowest maxed ask.
-  const maxedSell = maxedAvg > 0 ? maxedAvg : maxedAsk
+  // What you RECEIVE selling maxed. DEFAULT ('ask') = the current lowest maxed
+  // sell order from an online player — the real, present price, so a single
+  // stale/fake 48h trade can't mislead. 'instant' = dump to the top buy order;
+  // 'avg' = opt in to the 48h traded average. Each falls back sensibly.
+  const listSell = maxedAsk > 0 ? maxedAsk : maxedAvg
+  let maxedSell: number
+  if (opts.sellBasis === 'avg') maxedSell = maxedAvg > 0 ? maxedAvg : listSell
+  else if (opts.sellBasis === 'instant') maxedSell = maxedBid > 0 ? maxedBid : listSell
+  else maxedSell = listSell
 
   const unrankedRung = byRank(0)
   const unrankedAsk = Number(unrankedRung?.ask) || 0
   const unrankedVolume = Number(flip.unranked?.volume) || 0
 
-  // Candidate buy-in ranks: every rank below max that has a live ask. Finishing
-  // from a higher rank costs less endo but the copy costs more to buy.
+  // Candidate buy-in ranks: every rank below max where you can acquire a copy.
+  // Finishing from a higher rank costs less endo but the copy costs more to buy.
   const options: FlipOption[] = []
   for (const rung of rungs) {
     if (rung.rank >= maxRank) continue // maxed rung isn't a buy-in
     const ask = Number(rung.ask) || 0
-    if (ask <= 0) continue
+    const bid = Number(rung.bid) || 0
+    // Buy-in: at the ask (instant), or via a buy order competing at the bid.
+    const buyIn = opts.buyViaBid ? (bid > 0 ? bid : ask) : ask
+    if (buyIn <= 0) continue
     const endoToFinish = endoFromRankToMax(rarity, rung.rank, maxRank)
     if (endoToFinish <= 0) continue
-    const profit = maxedSell - ask
+    const profit = maxedSell - buyIn
     const platPer1kEndo = (profit / endoToFinish) * 1000
     options.push({
       rank: rung.rank,
       ask,
+      bid,
+      buyIn,
       endoToFinish,
       creditsToFinish: creditsFromRankToMax(rarity, rung.rank, maxRank),
       profit,
@@ -230,6 +274,7 @@ export function evalFlip(row: EndoFlipRow): FlipEval {
     liquidity,
     demand: demandTier(liquidity),
     dissolveEndoMaxed: dissolveEndo(rarity, maxRank),
+    updatedAt: flip.updatedAt || '',
   }
 }
 
@@ -249,6 +294,10 @@ export interface EndoSourceRow {
   name: string
   url_name?: string
   thumb?: string
+  /** Full warframe.market URL for this source (item page, or riven auction). */
+  link: string
+  /** Ready-to-send WTB whisper for this source. */
+  whisper: string
   /** Endo you get. */
   endo: number
   /** Plat you pay to acquire it. */
@@ -265,6 +314,20 @@ export function endoPerPlat(endo: number, plat: number): number {
   const e = Number(endo) || 0
   const p = Number(plat) || 0
   return p > 0 ? e / p : 0
+}
+
+/** warframe.market item page URL. */
+export function itemUrl(urlName: string): string {
+  return 'https://warframe.market/items/' + urlName
+}
+
+/**
+ * A ready-to-paste warframe.market WTB whisper. The site's own "buy" button
+ * copies the same shape with the seller's name prefixed; we omit the name since
+ * the aggregate feed has no single seller — paste it after picking one.
+ */
+export function buyWhisper(name: string, plat: number): string {
+  return `/w  Hi! I want to buy: "${name}" for ${Math.round(Number(plat) || 0)} platinum. (warframe.market)`
 }
 
 /**
@@ -296,6 +359,8 @@ export function modAsEndoSource(row: EndoFlipRow): EndoSourceRow {
     name: row.item_name,
     url_name: row.url_name,
     thumb: row.thumb,
+    link: itemUrl(row.url_name),
+    whisper: buyWhisper(row.item_name, plat),
     endo,
     plat,
     endoPerPlat: endoPerPlat(endo, plat),

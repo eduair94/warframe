@@ -17,13 +17,14 @@
             <p v-if="direction === 'flip'" class="an-lede">
               Sitting on endo with nothing left to max? Buy a mod cheap — unranked
               <em>or partly ranked</em> — finish it with your endo, and resell it
-              maxed. This ranks every tradeable mod by platinum per 1,000 endo, and
-              tells you the cheapest rank to buy in at.
+              maxed. Ranked by platinum per 1,000 endo, using the <b>live buy/sell
+              prices of online players</b> — not stale averages — so a single old
+              trade can't mislead you.
             </p>
             <p v-else class="an-lede">
-              The cheapest endo per platinum, across Ayatan sculptures, rivens, and
-              normal mods (bought maxed and dissolved). See whether any mod keeps up
-              with a sculpture — and how far ahead a high-rolled riven really is.
+              The cheapest endo per platinum across Ayatan sculptures, rivens, and
+              normal mods (bought maxed and dissolved). Click any source to open it
+              on warframe.market, or copy a ready-to-send buy whisper.
             </p>
           </div>
           <div v-if="direction === 'flip' && topFlip" class="an-hero__deal">
@@ -37,21 +38,23 @@
           <div v-else-if="direction === 'sources' && topSource" class="an-hero__deal">
             <div class="an-hero__deal-label">Best endo / plat</div>
             <div class="an-hero__deal-plat">{{ fmtNum(topSource.endoPerPlat) }}<span>e/p</span></div>
-            <a v-if="topSource.url_name" class="an-hero__deal-name" :href="mkt(topSource.url_name)" target="_blank" rel="noopener">
-              {{ topSource.name }} →
-            </a>
-            <div v-else class="an-hero__deal-name">{{ topSource.name }}</div>
+            <a class="an-hero__deal-name" :href="topSource.link" target="_blank" rel="noopener">{{ topSource.name }} →</a>
             <div class="an-hero__deal-sub">{{ fmtEndo(topSource.endo) }} endo · {{ fmtPlat(topSource.plat) }}p</div>
           </div>
         </header>
 
-        <!-- Direction toggle -->
+        <!-- Direction toggle + freshness -->
         <div class="an-dir">
           <v-btn-toggle v-model="direction" mandatory density="compact" class="an-dir__toggle">
             <v-btn value="flip" size="small">Spend endo → plat</v-btn>
             <v-btn value="sources" size="small">Get endo cheap</v-btn>
           </v-btn-toggle>
-          <NuxtLink to="/guides/endo" class="endo-guide-link">New here? Read the Endo guide →</NuxtLink>
+          <div class="an-dir__right">
+            <span v-if="updatedLabel" class="an-fresh" title="When the newest order-book snapshot was taken">
+              <v-icon size="14">mdi-clock-outline</v-icon> prices updated {{ updatedLabel }}
+            </span>
+            <NuxtLink to="/guides/endo" class="endo-guide-link">Endo guide →</NuxtLink>
+          </div>
         </div>
 
         <!-- ============ DIRECTION A: MOD FLIP ============ -->
@@ -78,38 +81,76 @@
           <section class="an-filters">
             <div class="an-filters__row">
               <v-text-field v-model="search" density="compact" hide-details clearable prepend-inner-icon="mdi-magnify" label="Search a mod" class="an-search"></v-text-field>
-              <v-text-field v-model.number="minVolume" density="compact" hide-details type="number" min="0" label="Min maxed volume (48h)" class="an-field"></v-text-field>
-              <v-select v-model="flipSort" :items="flipSortOptions" item-title="text" item-value="value" density="compact" hide-details label="Sort by" class="an-field" style="flex: 0 1 240px"></v-select>
+              <div class="an-sortctl">
+                <v-select v-model="flipSortBy" :items="flipSortOptions" item-title="text" item-value="value" density="compact" hide-details label="Sort by" class="an-field" style="flex:1 1 190px"></v-select>
+                <v-btn :icon="flipSortDir === 'desc' ? 'mdi-sort-descending' : 'mdi-sort-ascending'" size="small" variant="tonal" color="#d4af5a" :title="flipSortDir === 'desc' ? 'Descending' : 'Ascending'" @click="flipSortDir = flipSortDir === 'desc' ? 'asc' : 'desc'"></v-btn>
+              </div>
+              <v-btn variant="text" size="small" class="an-advbtn" :append-icon="showAdv ? 'mdi-chevron-up' : 'mdi-tune-variant'" @click="showAdv = !showAdv">Filters & settings</v-btn>
             </div>
+
+            <v-expand-transition>
+              <div v-show="showAdv" class="an-adv">
+                <!-- Settings: pricing model -->
+                <div class="an-adv__section">Pricing model</div>
+                <div class="an-adv__settings">
+                  <div class="an-set">
+                    <div class="an-set__lbl">Sell maxed at</div>
+                    <v-btn-toggle v-model="sellBasis" mandatory density="compact" class="an-minitoggle">
+                      <v-btn value="ask" size="x-small">Current ask</v-btn>
+                      <v-btn value="instant" size="x-small">Instant (buyer)</v-btn>
+                      <v-btn value="avg" size="x-small">48h avg</v-btn>
+                    </v-btn-toggle>
+                  </div>
+                  <v-switch v-model="buyViaBid" hide-details density="compact" inset color="#4fb3bf" label="Buy via buy order (compete on bids)" class="an-toggle"></v-switch>
+                </div>
+
+                <div class="an-adv__section">Filters</div>
+                <div class="an-adv__grid">
+                  <v-text-field v-model.number="maxBuyIn" type="number" min="0" density="compact" hide-details clearable label="Max buy-in (p)" class="an-adv__f"></v-text-field>
+                  <v-text-field v-model.number="minProfit" type="number" min="0" density="compact" hide-details clearable label="Min profit (p)" class="an-adv__f"></v-text-field>
+                  <v-text-field v-model.number="minEff" type="number" min="0" density="compact" hide-details clearable label="Min plat / 1k endo" class="an-adv__f"></v-text-field>
+                  <v-text-field v-model.number="maxEndoFinish" type="number" min="0" density="compact" hide-details clearable label="Endo budget (max to finish)" class="an-adv__f"></v-text-field>
+                  <v-text-field v-model.number="minVolume" type="number" min="0" density="compact" hide-details clearable label="Min maxed volume (48h)" class="an-adv__f"></v-text-field>
+                </div>
+                <div class="an-adv__chips">
+                  <span class="an-adv__lbl">Rarity</span>
+                  <v-chip-group v-model="rarityFilter" multiple column class="an-cats">
+                    <v-chip v-for="r in rarityOptions" :key="r" :value="r" size="small" filter active-class="an-chip--on">{{ r }}</v-chip>
+                  </v-chip-group>
+                </div>
+                <div class="an-toggles">
+                  <v-switch v-model="partialOnly" hide-details density="compact" inset color="#4fb3bf" label="Only mods best bought part-ranked (R1+)" class="an-toggle"></v-switch>
+                  <v-switch v-model="hideThin" hide-details density="compact" inset color="#4fb3bf" label="Hide thin demand (maxed barely trades)" class="an-toggle"></v-switch>
+                  <v-btn variant="text" size="x-small" color="#9aa0b4" @click="resetFlipFilters">Reset</v-btn>
+                </div>
+              </div>
+            </v-expand-transition>
+
             <v-chip-group v-model="flipCat" mandatory column class="an-cats">
               <v-chip v-for="c in flipCatOptions" :key="c" :value="c" size="small" active-class="an-chip--on">{{ c }}</v-chip>
             </v-chip-group>
-            <div class="an-toggles">
-              <v-switch v-model="hideThin" hide-details density="compact" inset color="#4fb3bf" label="Hide thin demand (maxed barely trades)" class="an-toggle"></v-switch>
-            </div>
-            <div class="an-count">{{ flipFiltered.length }} {{ flipFiltered.length === 1 ? 'mod' : 'mods' }} match<span v-if="hiddenThin" class="an-hidden">· {{ hiddenThin }} thin demand hidden</span></div>
+            <div class="an-count">{{ flipFiltered.length }} {{ flipFiltered.length === 1 ? 'mod' : 'mods' }} match<span v-if="hiddenThin && hideThin" class="an-hidden">· {{ hiddenThin }} thin demand hidden</span></div>
           </section>
 
           <v-alert v-if="loadError" type="error" density="compact" class="ma-4">
             Couldn't load mod-flip data. The market service may be waking up — try a refresh.
           </v-alert>
-          <div v-else-if="!flipRows.length" class="an-empty">
-            No flip data yet. Run the endo sync (<code>sync_mod_flip</code>) to populate the per-rank ladders.
-          </div>
-          <div v-else-if="!flipFiltered.length" class="an-empty">No mods match these filters. Widen the search or lower the min volume.</div>
+          <div v-else-if="!flipRows.length" class="an-empty">No flip data yet — the market is still syncing.</div>
+          <div v-else-if="!flipFiltered.length" class="an-empty">No mods match these filters. Widen the search or clear a filter.</div>
 
           <!-- Desktop table -->
           <div v-else-if="!isMobile" class="an-tablewrap">
             <table class="an-table">
               <thead>
                 <tr>
-                  <th class="col-name">Mod</th>
-                  <th class="grp-a">Buy @</th>
-                  <th class="grp-b">Sell maxed</th>
-                  <th>Profit</th>
-                  <th>Endo</th>
-                  <th>Plat / 1k endo</th>
-                  <th>Demand</th>
+                  <th class="col-name sortable" :class="thCls('name', 'flip')" @click="sortFlip('name')">Mod <span class="sort-ind">{{ arrow('name', flipSortBy, flipSortDir) }}</span></th>
+                  <th class="grp-a sortable" :class="thCls('buyat', 'flip')" @click="sortFlip('buyat')">Buy @ <span class="sort-ind">{{ arrow('buyat', flipSortBy, flipSortDir) }}</span></th>
+                  <th class="grp-b sortable" :class="thCls('sell', 'flip')" @click="sortFlip('sell')">Sell maxed <span class="sort-ind">{{ arrow('sell', flipSortBy, flipSortDir) }}</span></th>
+                  <th class="sortable" :class="thCls('profit', 'flip')" @click="sortFlip('profit')">Profit <span class="sort-ind">{{ arrow('profit', flipSortBy, flipSortDir) }}</span></th>
+                  <th class="sortable" :class="thCls('endo', 'flip')" @click="sortFlip('endo')">Endo <span class="sort-ind">{{ arrow('endo', flipSortBy, flipSortDir) }}</span></th>
+                  <th class="sortable" :class="thCls('eff', 'flip')" @click="sortFlip('eff')">Plat / 1k endo <span class="sort-ind">{{ arrow('eff', flipSortBy, flipSortDir) }}</span></th>
+                  <th class="sortable" :class="thCls('volume', 'flip')" @click="sortFlip('volume')">Demand <span class="sort-ind">{{ arrow('volume', flipSortBy, flipSortDir) }}</span></th>
+                  <th class="col-act"></th>
                 </tr>
               </thead>
               <tbody>
@@ -126,9 +167,9 @@
                   </td>
                   <td class="grp-a an-num">
                     <b>{{ rankLabel(row.eval.best.rank) }}</b>
-                    <small class="an-sub">{{ fmtPlat(row.eval.best.ask) }}p</small>
+                    <small class="an-sub">{{ fmtPlat(row.eval.best.buyIn) }}p{{ buyViaBid ? ' (bid)' : '' }}</small>
                   </td>
-                  <td class="grp-b an-num">
+                  <td class="grp-b an-num" :title="`ask ${fmtPlat(row.eval.maxedAsk)}p · 48h avg ${fmtPlat(row.eval.maxedAvg)}p · instant ${fmtPlat(row.eval.maxedBid)}p`">
                     {{ fmtPlat(row.eval.maxedSell) }}p
                     <small class="an-sub">instant {{ fmtPlat(row.eval.maxedBid) }}p</small>
                   </td>
@@ -144,6 +185,11 @@
                       {{ fmtPlat(row.eval.maxedVolume) }}
                     </span>
                   </td>
+                  <td class="col-act">
+                    <button class="an-copy" :class="{ 'is-copied': copiedKey === 'f:' + row.url_name }" :title="'Copy WTB whisper (' + fmtPlat(row.eval.best.buyIn) + 'p)'" @click="copy(buyWhisper(row.item_name, row.eval.best.buyIn), 'f:' + row.url_name)">
+                      <v-icon size="16">{{ copiedKey === 'f:' + row.url_name ? 'mdi-check' : 'mdi-content-copy' }}</v-icon>
+                    </button>
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -151,15 +197,15 @@
 
           <!-- Mobile cards -->
           <div v-else class="an-cards">
-            <a v-for="row in flipPaged" :key="row.url_name" class="an-card" :class="{ 'is-top': row.url_name === topFlipUrl }" :href="mkt(row.url_name)" target="_blank" rel="noopener">
-              <div class="an-card__head">
+            <div v-for="row in flipPaged" :key="row.url_name" class="an-card" :class="{ 'is-top': row.url_name === topFlipUrl }">
+              <a class="an-card__head" :href="mkt(row.url_name)" target="_blank" rel="noopener">
                 <img class="an-thumb" :src="assetUrl(row.thumb)" :alt="row.item_name" loading="lazy" @error="onImgError" />
                 <div class="an-card__title">
                   <div class="an-card__name">{{ row.item_name }}<span v-if="row.url_name === topFlipUrl" class="an-badge">TOP</span></div>
                   <small class="an-sub">{{ row.eval.rarity }} · R{{ row.eval.maxRank }} · {{ fmtEndo(row.eval.endoToMax) }} endo to max</small>
                 </div>
                 <v-icon color="#4fb3bf">mdi-open-in-new</v-icon>
-              </div>
+              </a>
               <div class="an-card__verdict">
                 <span class="pill pill--good">{{ fmtNum(row.eval.best.platPer1kEndo) }} <b>plat / 1k endo</b></span>
                 <span class="an-demand" :class="row.eval.demand.cls">
@@ -170,7 +216,7 @@
               <div class="an-card__blocks">
                 <div class="an-block">
                   <div class="an-block__lbl">The flip</div>
-                  <div class="an-block__row"><span>Buy {{ rankLabel(row.eval.best.rank) }}</span><b>{{ fmtPlat(row.eval.best.ask) }}p</b></div>
+                  <div class="an-block__row"><span>Buy {{ rankLabel(row.eval.best.rank) }}</span><b>{{ fmtPlat(row.eval.best.buyIn) }}p</b></div>
                   <div class="an-block__row"><span>Sell maxed</span><b>{{ fmtPlat(row.eval.maxedSell) }}p</b></div>
                   <div class="an-block__row"><span>Profit</span><b class="up">+{{ fmtPlat(row.eval.best.profit) }}p</b></div>
                 </div>
@@ -178,10 +224,14 @@
                   <div class="an-block__lbl">Cost to finish</div>
                   <div class="an-block__row"><span>Endo</span><b>{{ fmtEndo(row.eval.best.endoToFinish) }}</b></div>
                   <div class="an-block__row"><span>Credits</span><b>{{ fmtEndo(row.eval.best.creditsToFinish) }}</b></div>
-                  <div class="an-block__row"><span>Maxed vol (48h)</span><b>{{ fmtPlat(row.eval.maxedVolume) }}</b></div>
+                  <div class="an-block__row"><span>Maxed vol</span><b>{{ fmtPlat(row.eval.maxedVolume) }}</b></div>
                 </div>
               </div>
-            </a>
+              <button class="an-copybtn" :class="{ 'is-copied': copiedKey === 'f:' + row.url_name }" @click="copy(buyWhisper(row.item_name, row.eval.best.buyIn), 'f:' + row.url_name)">
+                <v-icon size="16">{{ copiedKey === 'f:' + row.url_name ? 'mdi-check' : 'mdi-content-copy' }}</v-icon>
+                {{ copiedKey === 'f:' + row.url_name ? 'Copied whisper' : 'Copy buy whisper' }}
+              </button>
+            </div>
           </div>
 
           <div v-if="flipFiltered.length > perPage" class="an-pager">
@@ -213,7 +263,12 @@
           <section class="an-filters">
             <div class="an-filters__row">
               <v-text-field v-model="sourceSearch" density="compact" hide-details clearable prepend-inner-icon="mdi-magnify" label="Search a source" class="an-search"></v-text-field>
-              <v-select v-model="sourceSort" :items="sourceSortOptions" item-title="text" item-value="value" density="compact" hide-details label="Sort by" class="an-field" style="flex: 0 1 220px"></v-select>
+              <div class="an-sortctl">
+                <v-select v-model="srcSortBy" :items="sourceSortOptions" item-title="text" item-value="value" density="compact" hide-details label="Sort by" class="an-field" style="flex:1 1 190px"></v-select>
+                <v-btn :icon="srcSortDir === 'desc' ? 'mdi-sort-descending' : 'mdi-sort-ascending'" size="small" variant="tonal" color="#d4af5a" @click="srcSortDir = srcSortDir === 'desc' ? 'asc' : 'desc'"></v-btn>
+              </div>
+              <v-text-field v-model.number="minEpp" type="number" min="0" density="compact" hide-details clearable label="Min endo / plat" class="an-field" style="flex:0 1 150px"></v-text-field>
+              <v-text-field v-model.number="maxCost" type="number" min="0" density="compact" hide-details clearable label="Max cost (p)" class="an-field" style="flex:0 1 140px"></v-text-field>
             </div>
             <v-chip-group v-model="sourceKind" mandatory column class="an-cats">
               <v-chip v-for="c in sourceKindOptions" :key="c" :value="c" size="small" active-class="an-chip--on">{{ c }}</v-chip>
@@ -228,43 +283,51 @@
             <table class="an-table">
               <thead>
                 <tr>
-                  <th class="col-name">Source</th>
-                  <th class="grp-a">Endo</th>
-                  <th class="grp-b">Cost</th>
-                  <th>Endo / plat</th>
-                  <th>Vol</th>
+                  <th class="col-name sortable" :class="thCls('name', 'src')" @click="sortSrc('name')">Source <span class="sort-ind">{{ arrow('name', srcSortBy, srcSortDir) }}</span></th>
+                  <th class="grp-a sortable" :class="thCls('endo', 'src')" @click="sortSrc('endo')">Endo <span class="sort-ind">{{ arrow('endo', srcSortBy, srcSortDir) }}</span></th>
+                  <th class="grp-b sortable" :class="thCls('cost', 'src')" @click="sortSrc('cost')">Cost <span class="sort-ind">{{ arrow('cost', srcSortBy, srcSortDir) }}</span></th>
+                  <th class="sortable" :class="thCls('rate', 'src')" @click="sortSrc('rate')">Endo / plat <span class="sort-ind">{{ arrow('rate', srcSortBy, srcSortDir) }}</span></th>
+                  <th class="sortable" :class="thCls('volume', 'src')" @click="sortSrc('volume')">Vol <span class="sort-ind">{{ arrow('volume', srcSortBy, srcSortDir) }}</span></th>
+                  <th class="col-act"></th>
                 </tr>
               </thead>
               <tbody>
                 <tr v-for="row in sourcePaged" :key="row.kind + row.name" :class="{ 'is-top': row === topSource }">
                   <td class="col-name">
-                    <component :is="row.url_name ? 'a' : 'div'" class="an-name" :href="row.url_name ? mkt(row.url_name) : undefined" :target="row.url_name ? '_blank' : undefined" rel="noopener">
+                    <a class="an-name" :href="row.link" target="_blank" rel="noopener">
                       <span class="an-kind" :class="'kind--' + row.kind">{{ row.kind }}</span>
                       <span>
                         {{ row.name }}
                         <span v-if="row === topSource" class="an-badge">TOP</span>
                         <small class="an-sub">{{ row.sub }}</small>
                       </span>
-                    </component>
+                    </a>
                   </td>
                   <td class="grp-a an-num">{{ fmtEndo(row.endo) }}</td>
                   <td class="grp-b an-num">{{ fmtPlat(row.plat) }}p</td>
                   <td class="an-num an-strong">{{ fmtNum(row.endoPerPlat) }}</td>
                   <td class="an-num">{{ row.volume != null ? fmtPlat(row.volume) : '—' }}</td>
+                  <td class="col-act">
+                    <a class="an-copy" :href="row.link" target="_blank" rel="noopener" title="Open on warframe.market"><v-icon size="16">mdi-open-in-new</v-icon></a>
+                    <button class="an-copy" :class="{ 'is-copied': copiedKey === 's:' + row.kind + row.name }" title="Copy WTB whisper" @click="copy(row.whisper, 's:' + row.kind + row.name)">
+                      <v-icon size="16">{{ copiedKey === 's:' + row.kind + row.name ? 'mdi-check' : 'mdi-content-copy' }}</v-icon>
+                    </button>
+                  </td>
                 </tr>
               </tbody>
             </table>
           </div>
 
           <div v-else class="an-cards">
-            <component :is="row.url_name ? 'a' : 'div'" v-for="row in sourcePaged" :key="row.kind + row.name" class="an-card" :class="{ 'is-top': row === topSource }" :href="row.url_name ? mkt(row.url_name) : undefined" :target="row.url_name ? '_blank' : undefined" rel="noopener">
-              <div class="an-card__head">
+            <div v-for="row in sourcePaged" :key="row.kind + row.name" class="an-card" :class="{ 'is-top': row === topSource }">
+              <a class="an-card__head" :href="row.link" target="_blank" rel="noopener">
                 <span class="an-kind" :class="'kind--' + row.kind">{{ row.kind }}</span>
                 <div class="an-card__title">
                   <div class="an-card__name">{{ row.name }}<span v-if="row === topSource" class="an-badge">TOP</span></div>
                   <small class="an-sub">{{ row.sub }}</small>
                 </div>
-              </div>
+                <v-icon color="#4fb3bf">mdi-open-in-new</v-icon>
+              </a>
               <div class="an-card__blocks">
                 <div class="an-block">
                   <div class="an-block__lbl">Endo per plat</div>
@@ -273,7 +336,11 @@
                   <div class="an-block__row"><span>Cost</span><b>{{ fmtPlat(row.plat) }}p</b></div>
                 </div>
               </div>
-            </component>
+              <button class="an-copybtn" :class="{ 'is-copied': copiedKey === 's:' + row.kind + row.name }" @click="copy(row.whisper, 's:' + row.kind + row.name)">
+                <v-icon size="16">{{ copiedKey === 's:' + row.kind + row.name ? 'mdi-check' : 'mdi-content-copy' }}</v-icon>
+                {{ copiedKey === 's:' + row.kind + row.name ? 'Copied whisper' : 'Copy buy whisper' }}
+              </button>
+            </div>
           </div>
 
           <div v-if="sourceFiltered.length > perPage" class="an-pager">
@@ -285,20 +352,22 @@
       <v-alert class="an-disclaimer" color="blue-darken-4" type="info" density="compact">
         <template v-if="direction === 'flip'">
           Plat / 1k endo = <b>(maxed sell − buy-in) ÷ endo to finish × 1000</b>.
-          "Sell maxed" is the 48h traded average (fallback: lowest maxed ask);
-          "instant" is the top maxed buy order. Warframe takes no platinum trade
-          tax — your cost is endo + credits (credits are often the bigger
-          bottleneck). Maxed copies sell slower than unranked, so check the
-          demand column. {{ t('disclaimer') }}
+          By default prices are the <b>current lowest sell orders of online
+          players</b> (buy-in and maxed sell), not the 48h average — switch the
+          sell basis under Filters &amp; settings if you want the average or an
+          instant sale. Warframe takes no platinum trade tax; your cost is endo +
+          credits. Maxed copies sell slower than unranked, so check demand.
+          {{ t('disclaimer') }}
         </template>
         <template v-else>
           Endo / plat = endo gained ÷ platinum paid. Sculptures use fully-starred
           endo (always star before dissolving). Mods assume you buy a maxed copy
-          and dissolve it (returns ~75% of the fusion endo). {{ t('disclaimer') }}
+          at its current lowest sell and dissolve it (~75% of the fusion endo
+          back). {{ t('disclaimer') }}
         </template>
       </v-alert>
 
-      <!-- Donations (preserved from the old page) -->
+      <!-- Donations -->
       <div class="px-0 pt-3">
         <div class="d-flex flex-wrap align-center top_container justify-space-between mb-md-4">
           <div class="my-3 mb-0 md-md-3 bg-grey-darken-3 pa-3 px-lg-5 text-subtitle-1 d-flex align-center flex-wrap donation_container">
@@ -325,6 +394,8 @@
 </template>
 
 <script setup lang="ts">
+import dayjs from 'dayjs'
+import relativeTime from 'dayjs/plugin/relativeTime'
 import { computed, nextTick, onMounted, ref, watch } from 'vue'
 import { useDisplay } from 'vuetify'
 import { useItemsStore } from '~/stores/items'
@@ -333,6 +404,8 @@ import {
   hasFlip,
   modAsEndoSource,
   endoPerPlat,
+  buyWhisper,
+  itemUrl,
   SCULPTURE_ENDO,
   fmtPlat,
   fmtEndo,
@@ -341,13 +414,15 @@ import {
   type EndoFlipRow,
   type EndoSourceRow,
   type FlipEval,
+  type SellBasis,
 } from '~/composables/useEndoValue'
 
+dayjs.extend(relativeTime)
+
 const config = useRuntimeConfig()
-const base = config.public.apiURL
+const apiBase = config.public.apiURL
 const { t } = useI18n()
 
-// SEO head (old this.$nuxtI18nHead) — preserve locale alternate links.
 useHead(useLocaleHead({ seo: true }))
 useHead({
   title: 'Endo Exchange — flip mods for platinum & find the cheapest endo (Warframe)',
@@ -355,7 +430,7 @@ useHead({
     {
       name: 'description',
       content:
-        'Spend excess endo to earn platinum: buy Warframe mods cheap, max them, resell maxed — ranked by plat per 1,000 endo, with the cheapest buy-in rank. Plus the cheapest endo sources (sculptures, rivens, mods).',
+        'Spend excess endo to earn platinum: buy Warframe mods cheap, max them, resell maxed — ranked by plat per 1,000 endo using live online-player prices, with the cheapest buy-in rank. Plus the cheapest endo sources (sculptures, rivens, mods).',
     },
   ],
 })
@@ -364,50 +439,131 @@ const { mobile } = useDisplay()
 const isMobile = computed(() => mobile.value)
 const store = useItemsStore()
 
-// ---- data: mod flip rows + rivens (sculptures come from the item store) ----
 const { data: flipData, error } = await useAsyncData('endo-flip', () =>
-  $fetch<{ mods: EndoFlipRow[] }>(`${base}/endo_flip`),
+  $fetch<{ mods: EndoFlipRow[] }>(`${apiBase}/endo_flip`),
 )
 const { data: rivenData } = await useAsyncData('endo-rivens', () =>
-  $fetch<any[]>(`${base}/rivens`).catch(() => []),
+  $fetch<any[]>(`${apiBase}/rivens`).catch(() => []),
 )
 const loadError = computed(() => !!error.value)
 
-// A flip row joined with its evaluation, kept only if it's actually a profitable flip.
+// ---- shared UI state ----
+const direction = ref<'flip' | 'sources'>('flip')
+const page = ref(1)
+const perPage = 25
+const copiedKey = ref('')
+let copyTimer: any = null
+
+type Dir = 'asc' | 'desc'
+function arrow(key: string, activeKey: string, dir: Dir): string {
+  if (key !== activeKey) return '⇅'
+  return dir === 'asc' ? '▲' : '▼'
+}
+function thCls(key: string, which: 'flip' | 'src') {
+  const active = which === 'flip' ? flipSortBy.value : srcSortBy.value
+  return { 'is-sorted': key === active }
+}
+function sortBy<T>(list: T[], acc: (r: T) => number | string, dir: Dir): T[] {
+  const sign = dir === 'asc' ? 1 : -1
+  return list.slice().sort((a, b) => {
+    const va = acc(a)
+    const vb = acc(b)
+    if (typeof va === 'string' || typeof vb === 'string') return sign * String(va).localeCompare(String(vb))
+    return sign * ((va as number) - (vb as number))
+  })
+}
+function copy(text: string, key: string) {
+  const done = () => {
+    copiedKey.value = key
+    if (copyTimer) clearTimeout(copyTimer)
+    copyTimer = setTimeout(() => (copiedKey.value = ''), 1600)
+  }
+  try {
+    if (navigator?.clipboard?.writeText) navigator.clipboard.writeText(text).then(done).catch(fallback)
+    else fallback()
+  } catch {
+    fallback()
+  }
+  function fallback() {
+    try {
+      const ta = document.createElement('textarea')
+      ta.value = text
+      ta.style.position = 'fixed'
+      ta.style.opacity = '0'
+      document.body.appendChild(ta)
+      ta.select()
+      document.execCommand('copy')
+      document.body.removeChild(ta)
+      done()
+    } catch {
+      /* ignore */
+    }
+  }
+}
+
+// ---- Direction A: mod flip ----
+const search = ref('')
+const minVolume = ref<number | null>(null)
+const flipCat = ref('All')
+const flipSortBy = ref('eff')
+const flipSortDir = ref<Dir>('desc')
+const showAdv = ref(false)
+// pricing model
+const sellBasis = ref<SellBasis>('ask')
+const buyViaBid = ref(false)
+// advanced filters
+const maxBuyIn = ref<number | null>(null)
+const minProfit = ref<number | null>(null)
+const minEff = ref<number | null>(null)
+const maxEndoFinish = ref<number | null>(null)
+const rarityFilter = ref<string[]>([])
+const partialOnly = ref(false)
+const hideThin = ref(true)
+
+const flipSortOptions = [
+  { text: 'Plat / 1k endo', value: 'eff' },
+  { text: 'Maxed profit (plat)', value: 'profit' },
+  { text: 'Endo to finish', value: 'endo' },
+  { text: 'Buy-in price', value: 'buyat' },
+  { text: 'Maxed sell price', value: 'sell' },
+  { text: 'Maxed volume', value: 'volume' },
+  { text: 'Name', value: 'name' },
+]
+const rarityOptions = ['Common', 'Uncommon', 'Rare', 'Legendary']
+
 interface FlipRowEval extends EndoFlipRow {
   eval: FlipEval & { best: NonNullable<FlipEval['best']> }
 }
+// Re-evaluated whenever the pricing model (sell basis / buy mode) changes.
 const flipRows = computed<FlipRowEval[]>(() => {
   const rows = flipData.value?.mods ?? []
+  const opts = { buyViaBid: buyViaBid.value, sellBasis: sellBasis.value }
   const out: FlipRowEval[] = []
   for (const r of rows) {
-    const ev = evalFlip(r)
+    const ev = evalFlip(r, opts)
     if (!hasFlip(ev)) continue
     out.push({ ...r, eval: ev as FlipRowEval['eval'] })
   }
   return out
 })
 
-// ---- shared UI state ----
-const direction = ref<'flip' | 'sources'>('flip')
-const page = ref(1)
-const perPage = 25
+const flipAccessors: Record<string, (r: FlipRowEval) => number | string> = {
+  name: (r) => r.item_name.toLowerCase(),
+  buyat: (r) => r.eval.best.buyIn,
+  sell: (r) => r.eval.maxedSell,
+  profit: (r) => r.eval.best.profit,
+  endo: (r) => r.eval.best.endoToFinish,
+  eff: (r) => r.eval.best.platPer1kEndo,
+  volume: (r) => r.eval.maxedVolume,
+}
+function sortFlip(key: string) {
+  if (flipSortBy.value === key) flipSortDir.value = flipSortDir.value === 'asc' ? 'desc' : 'asc'
+  else {
+    flipSortBy.value = key
+    flipSortDir.value = key === 'name' ? 'asc' : 'desc'
+  }
+}
 
-// ---- Direction A: mod flip ----
-const search = ref('')
-const minVolume = ref<number>(0)
-const flipCat = ref('All')
-const flipSort = ref('efficiency')
-const hideThin = ref(true)
-const flipSortOptions = [
-  { text: 'Plat / 1k endo', value: 'efficiency' },
-  { text: 'Maxed profit (plat)', value: 'profit' },
-  { text: 'Cheapest endo to finish', value: 'endo' },
-  { text: 'Maxed volume (liquidity)', value: 'volume' },
-  { text: 'Name (A–Z)', value: 'name' },
-]
-
-// One bucket per mod for the category chips.
 function flipCategory(row: FlipRowEval): string {
   const name = row.item_name || ''
   const tags = (row.tags || []).map((x) => (x || '').toLowerCase())
@@ -426,26 +582,37 @@ const flipCatOptions = computed<string[]>(() => {
   const order = ['Rank 10', 'Rank 8', 'Rank 5', 'Rank ≤3', 'Corrupted', 'Primed/Umbral', 'Aura']
   return ['All', ...order.filter((c) => present.has(c))]
 })
+function resetFlipFilters() {
+  search.value = ''
+  minVolume.value = null
+  maxBuyIn.value = null
+  minProfit.value = null
+  minEff.value = null
+  maxEndoFinish.value = null
+  rarityFilter.value = []
+  partialOnly.value = false
+  flipCat.value = 'All'
+}
 
 const flipFiltered = computed<FlipRowEval[]>(() => {
   const q = (search.value || '').trim().toLowerCase()
   const minV = Number(minVolume.value) || 0
+  const raritySet = new Set(rarityFilter.value.map((x) => x.toLowerCase()))
   const list = flipRows.value.filter((r) => {
+    const b = r.eval.best
     if (q && !r.item_name.toLowerCase().includes(q)) return false
     if (flipCat.value !== 'All' && flipCategory(r) !== flipCat.value) return false
     if (r.eval.maxedVolume < minV) return false
     if (hideThin.value && r.eval.maxedVolume < 1) return false
+    if (maxBuyIn.value != null && b.buyIn > maxBuyIn.value) return false
+    if (minProfit.value != null && b.profit < minProfit.value) return false
+    if (minEff.value != null && b.platPer1kEndo < minEff.value) return false
+    if (maxEndoFinish.value != null && b.endoToFinish > maxEndoFinish.value) return false
+    if (partialOnly.value && b.rank <= 0) return false
+    if (raritySet.size && !raritySet.has((r.eval.rarity || '').toLowerCase())) return false
     return true
   })
-  const dir = (a: number, b: number) => b - a
-  const sorters: Record<string, (a: FlipRowEval, b: FlipRowEval) => number> = {
-    efficiency: (a, b) => dir(a.eval.best.platPer1kEndo, b.eval.best.platPer1kEndo),
-    profit: (a, b) => dir(a.eval.best.profit, b.eval.best.profit),
-    endo: (a, b) => a.eval.best.endoToFinish - b.eval.best.endoToFinish,
-    volume: (a, b) => dir(a.eval.maxedVolume, b.eval.maxedVolume),
-    name: (a, b) => a.item_name.localeCompare(b.item_name),
-  }
-  return list.slice().sort(sorters[flipSort.value] || sorters.efficiency)
+  return sortBy(list, flipAccessors[flipSortBy.value] ?? flipAccessors.eff!, flipSortDir.value)
 })
 const hiddenThin = computed<number>(() =>
   hideThin.value ? flipRows.value.filter((r) => r.eval.maxedVolume < 1).length : 0,
@@ -476,17 +643,45 @@ const flipStats = computed(() => {
   }
 })
 
-// ---- Direction B: endo sources (sculptures + rivens + mods) ----
+// Freshness: newest order-book snapshot across all mods.
+const updatedLabel = computed<string>(() => {
+  let newest = 0
+  for (const r of flipData.value?.mods ?? []) {
+    const t = Date.parse(r.flip?.updatedAt || '')
+    if (!isNaN(t) && t > newest) newest = t
+  }
+  return newest ? dayjs(newest).fromNow() : ''
+})
+
+// ---- Direction B: endo sources ----
 const sourceSearch = ref('')
 const sourceKind = ref('All')
-const sourceSort = ref('rate')
+const srcSortBy = ref('rate')
+const srcSortDir = ref<Dir>('desc')
+const minEpp = ref<number | null>(null)
+const maxCost = ref<number | null>(null)
 const sourceSortOptions = [
   { text: 'Endo / plat', value: 'rate' },
   { text: 'Endo amount', value: 'endo' },
-  { text: 'Cheapest cost', value: 'cost' },
-  { text: 'Name (A–Z)', value: 'name' },
+  { text: 'Cost', value: 'cost' },
+  { text: 'Volume', value: 'volume' },
+  { text: 'Name', value: 'name' },
 ]
 const sourceKindOptions = ['All', 'Sculpture', 'Riven', 'Mod']
+const srcAccessors: Record<string, (r: EndoSourceRow) => number | string> = {
+  rate: (r) => r.endoPerPlat,
+  endo: (r) => r.endo,
+  cost: (r) => r.plat,
+  volume: (r) => r.volume ?? -1,
+  name: (r) => r.name.toLowerCase(),
+}
+function sortSrc(key: string) {
+  if (srcSortBy.value === key) srcSortDir.value = srcSortDir.value === 'asc' ? 'desc' : 'asc'
+  else {
+    srcSortBy.value = key
+    srcSortDir.value = key === 'name' || key === 'cost' ? 'asc' : 'desc'
+  }
+}
 
 const sculptureSources = computed<EndoSourceRow[]>(() => {
   const out: EndoSourceRow[] = []
@@ -502,6 +697,8 @@ const sculptureSources = computed<EndoSourceRow[]>(() => {
       name: el.item_name,
       url_name: el.url_name,
       thumb: el.thumb,
+      link: itemUrl(el.url_name),
+      whisper: buyWhisper(el.item_name, plat),
       endo,
       plat,
       endoPerPlat: endoPerPlat(endo, plat),
@@ -519,10 +716,12 @@ const rivenSources = computed<EndoSourceRow[]>(() => {
     const endo = Number(it.endo) || 0
     const plat = Number(it.buyout_price) || 0
     if (endo <= 0 || plat <= 0) continue
+    const name = `${r.item_name} ${it.item?.name ?? ''}`.trim()
     out.push({
       kind: 'riven',
-      name: `${r.item_name} ${it.item?.name ?? ''}`.trim(),
-      url_name: undefined,
+      name,
+      link: it.id ? `https://warframe.market/auction/${it.id}` : 'https://warframe.market/auctions',
+      whisper: buyWhisper(name + ' (riven)', plat),
       endo,
       plat,
       endoPerPlat: Number(it.endoPerPlat) || endoPerPlat(endo, plat),
@@ -532,7 +731,6 @@ const rivenSources = computed<EndoSourceRow[]>(() => {
   }
   return out
 })
-// Best handful of mods as an endo source (buy maxed, dissolve) — the benchmark.
 const modSources = computed<EndoSourceRow[]>(() => {
   const rows = flipData.value?.mods ?? []
   const out: EndoSourceRow[] = []
@@ -540,7 +738,7 @@ const modSources = computed<EndoSourceRow[]>(() => {
     const s = modAsEndoSource(r)
     if (s.plat > 0 && s.endo > 0 && (s.volume || 0) >= 1) out.push(s)
   }
-  return out.sort((a, b) => b.endoPerPlat - a.endoPerPlat).slice(0, 20)
+  return out.sort((a, b) => b.endoPerPlat - a.endoPerPlat).slice(0, 25)
 })
 const sourceRows = computed<EndoSourceRow[]>(() => [
   ...sculptureSources.value,
@@ -549,19 +747,16 @@ const sourceRows = computed<EndoSourceRow[]>(() => [
 ])
 const sourceFiltered = computed<EndoSourceRow[]>(() => {
   const q = (sourceSearch.value || '').trim().toLowerCase()
+  const minR = Number(minEpp.value) || 0
+  const maxC = maxCost.value != null ? Number(maxCost.value) : null
   const list = sourceRows.value.filter((r) => {
     if (q && !r.name.toLowerCase().includes(q)) return false
     if (sourceKind.value !== 'All' && r.kind !== sourceKind.value.toLowerCase()) return false
+    if (minR && r.endoPerPlat < minR) return false
+    if (maxC != null && r.plat > maxC) return false
     return true
   })
-  const dir = (a: number, b: number) => b - a
-  const sorters: Record<string, (a: EndoSourceRow, b: EndoSourceRow) => number> = {
-    rate: (a, b) => dir(a.endoPerPlat, b.endoPerPlat),
-    endo: (a, b) => dir(a.endo, b.endo),
-    cost: (a, b) => a.plat - b.plat,
-    name: (a, b) => a.name.localeCompare(b.name),
-  }
-  return list.slice().sort(sorters[sourceSort.value] || sorters.rate)
+  return sortBy(list, srcAccessors[srcSortBy.value] ?? srcAccessors.rate!, srcSortDir.value)
 })
 const sourcePageCount = computed(() => Math.max(1, Math.ceil(sourceFiltered.value.length / perPage)))
 const sourcePaged = computed<EndoSourceRow[]>(() => {
@@ -584,7 +779,6 @@ const sourceStats = computed(() => {
   }
 })
 
-// Reset paging whenever the visible list or direction changes.
 watch([flipFiltered, sourceFiltered, direction], () => {
   page.value = 1
 })
@@ -597,7 +791,7 @@ function assetUrl(thumb: string): string {
   return 'https://warframe.market/static/assets/' + (thumb || '')
 }
 function mkt(urlName: string): string {
-  return 'https://warframe.market/items/' + urlName
+  return itemUrl(urlName)
 }
 const placeholderImg =
   "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44'%3E%3Crect width='44' height='44' rx='8' fill='%232a2a3d'/%3E%3Cpath d='M22 11 L31 22 L22 33 L13 22 Z' fill='none' stroke='%234fb3bf' stroke-width='2' opacity='0.75'/%3E%3C/svg%3E"
@@ -629,6 +823,19 @@ onMounted(() => {
   gap: 10px 16px;
   margin: 4px 0 14px;
 }
+.an-dir__right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.an-fresh {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.76rem;
+  color: #9aa0b4;
+}
 .an-dir__toggle :deep(.v-btn-toggle) {
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 8px;
@@ -655,7 +862,149 @@ onMounted(() => {
 .endo-guide-link:hover {
   color: #f4e2b4;
 }
-/* Source-kind badge (Direction B). */
+.an-sortctl {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1 1 240px;
+  min-width: 200px;
+}
+.an-advbtn {
+  color: #d4af5a;
+  flex: 0 0 auto;
+}
+/* Sortable headers */
+.an-table th.sortable {
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+  transition: color 0.12s ease;
+}
+.an-table th.sortable:hover {
+  color: #f4e2b4;
+}
+.an-table th.is-sorted {
+  color: #d4af5a;
+}
+.sort-ind {
+  font-size: 0.72em;
+  opacity: 0.5;
+  margin-left: 2px;
+}
+.an-table th.is-sorted .sort-ind {
+  opacity: 1;
+}
+.col-act {
+  width: 1%;
+  white-space: nowrap;
+  text-align: right;
+}
+/* Copy / open buttons */
+.an-copy {
+  display: inline-grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  border: 1px solid rgba(79, 179, 191, 0.3);
+  color: #4fb3bf;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.14s ease;
+  margin-left: 4px;
+  vertical-align: middle;
+}
+.an-copy:hover {
+  color: #d4af5a;
+  border-color: rgba(212, 175, 90, 0.5);
+  background: rgba(212, 175, 90, 0.08);
+}
+.an-copy.is-copied {
+  color: #4caf7d;
+  border-color: rgba(76, 175, 125, 0.6);
+}
+.an-copybtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+  padding: 5px 12px;
+  border-radius: 7px;
+  border: 1px solid rgba(79, 179, 191, 0.3);
+  color: #4fb3bf;
+  background: transparent;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  justify-content: center;
+}
+.an-copybtn.is-copied {
+  color: #4caf7d;
+  border-color: rgba(76, 175, 125, 0.6);
+}
+/* Advanced panel */
+.an-adv {
+  margin: 4px 0 8px;
+  padding: 12px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.02);
+}
+.an-adv__section {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #d4af5a;
+  margin: 4px 0 8px;
+}
+.an-adv__settings {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 24px;
+  margin-bottom: 10px;
+}
+.an-set__lbl {
+  font-size: 0.72rem;
+  color: #9aa0b4;
+  margin-bottom: 3px;
+}
+.an-minitoggle :deep(.v-btn-toggle) {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.an-minitoggle :deep(.v-btn) {
+  text-transform: none;
+  letter-spacing: 0;
+  color: #b6bcd0 !important;
+  background: transparent !important;
+}
+.an-minitoggle :deep(.v-btn.v-btn--active) {
+  background: rgba(79, 179, 191, 0.85) !important;
+  color: #10171b !important;
+}
+.an-adv__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 10px 14px;
+}
+.an-adv__chips {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+.an-adv__lbl {
+  font-size: 0.72rem;
+  color: #9aa0b4;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+/* Source-kind badge */
 .an-kind {
   display: inline-block;
   flex: none;
@@ -668,22 +1017,10 @@ onMounted(() => {
   margin-right: 4px;
   border: 1px solid transparent;
 }
-.kind--sculpture {
-  color: #d4af5a;
-  background: rgba(212, 175, 90, 0.14);
-  border-color: rgba(212, 175, 90, 0.4);
-}
-.kind--riven {
-  color: #c4b0ee;
-  background: rgba(159, 122, 234, 0.16);
-  border-color: rgba(159, 122, 234, 0.42);
-}
-.kind--mod {
-  color: #4fb3bf;
-  background: rgba(79, 179, 191, 0.14);
-  border-color: rgba(79, 179, 191, 0.4);
-}
-/* Demand meter (reused from relic-farming). */
+.kind--sculpture { color: #d4af5a; background: rgba(212, 175, 90, 0.14); border-color: rgba(212, 175, 90, 0.4); }
+.kind--riven { color: #c4b0ee; background: rgba(159, 122, 234, 0.16); border-color: rgba(159, 122, 234, 0.42); }
+.kind--mod { color: #4fb3bf; background: rgba(79, 179, 191, 0.14); border-color: rgba(79, 179, 191, 0.4); }
+/* Demand meter */
 .an-demand {
   display: inline-flex;
   align-items: center;
@@ -714,8 +1051,9 @@ onMounted(() => {
 .an-toggles {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 4px 20px;
-  margin-top: 4px;
+  margin-top: 6px;
 }
 .an-toggle :deep(.v-label) {
   font-size: 0.8rem;
