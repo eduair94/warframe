@@ -61,7 +61,7 @@
         </div>
 
         <section class="an-filters">
-          <div class="an-filters__row">
+          <div class="an-filters__row live-filters">
             <v-text-field
               v-model="search"
               density="compact"
@@ -71,10 +71,26 @@
               label="Search an item"
               class="an-search"
             />
+            <v-text-field
+              v-model.number="minVol"
+              type="number"
+              min="0"
+              density="compact"
+              hide-details
+              label="Min vol"
+              class="vol-field"
+            />
+            <v-btn-toggle v-model="mode" mandatory density="compact" class="mode-toggle" color="#4fb3bf">
+              <v-btn value="all" size="small">All</v-btn>
+              <v-btn value="buy" size="small">Buy deals</v-btn>
+              <v-btn value="sell" size="small">Sell deals</v-btn>
+              <v-btn value="flip" size="small">Flips</v-btn>
+            </v-btn-toggle>
           </div>
           <div class="an-count">
             Streaming {{ paged.length }} of {{ filtered.length }} ·
             {{ filtered.length === 1 ? 'item' : 'items' }}
+            <span v-if="mode !== 'all'" class="mode-hint">· sorted by best {{ mode === 'buy' ? 'buys' : mode === 'sell' ? 'sells' : 'flips' }}</span>
           </div>
         </section>
 
@@ -84,13 +100,13 @@
           <table class="an-table">
             <thead>
               <tr>
-                <th class="col-name">Item</th>
-                <th class="an-num">Best buy</th>
-                <th class="an-num">Best sell</th>
-                <th class="an-num">Fair value</th>
-                <th class="an-num">Vol</th>
-                <th class="an-num">Flip</th>
-                <th>Signal</th>
+                <th class="col-name sortable" @click="sortBy('name')">Item{{ sortArrow('name') }}</th>
+                <th class="an-num sortable" @click="sortBy('bestBuy')">Best buy{{ sortArrow('bestBuy') }}</th>
+                <th class="an-num sortable" @click="sortBy('bestSell')">Best sell{{ sortArrow('bestSell') }}</th>
+                <th class="an-num sortable" @click="sortBy('fair')">Fair value{{ sortArrow('fair') }}</th>
+                <th class="an-num sortable" @click="sortBy('vol')">Vol{{ sortArrow('vol') }}</th>
+                <th class="an-num sortable" @click="sortBy('flip')">Flip{{ sortArrow('flip') }}</th>
+                <th class="sortable" @click="sortBy('signal')">Signal{{ sortArrow('signal') }}</th>
                 <th class="an-num">Updated</th>
               </tr>
             </thead>
@@ -113,16 +129,14 @@
                     <span>{{ row.item_name }}</span>
                   </a>
                 </td>
-                <td class="an-num">{{ liveVal(row.url_name, (u) => u.book.bestBuy) }}</td>
-                <td class="an-num an-strong">{{ liveVal(row.url_name, (u) => u.book.bestSell) }}</td>
-                <td class="an-num">{{ liveVal(row.url_name, (u) => u.verdict.fv) }}</td>
+                <td class="an-num">{{ plat(row, 'bestBuy') }}</td>
+                <td class="an-num an-strong">{{ plat(row, 'bestSell') }}</td>
+                <td class="an-num">{{ plat(row, 'fair') }}</td>
                 <td class="an-num">
-                  <span :class="{ 'is-thin': live[row.url_name]?.verdict.thin }">
-                    {{ live[row.url_name] ? fmtVol(live[row.url_name].verdict.volume) : '—' }}
-                  </span>
-                  <span v-if="live[row.url_name]?.verdict.thin" class="thin-flag" title="Thin volume — price may be rigged">⚠</span>
+                  <span :class="{ 'is-thin': isThin(row) }">{{ volNum(row) }}</span>
+                  <span v-if="isThin(row)" class="thin-flag" title="Thin volume — price may be rigged">⚠</span>
                 </td>
-                <td class="an-num">{{ liveVal(row.url_name, (u) => u.verdict.flipMargin) }}</td>
+                <td class="an-num">{{ plat(row, 'flip') }}</td>
                 <td><MarketVerdictBadge :verdict="live[row.url_name]?.verdict ?? null" /></td>
                 <td class="an-num an-ago">{{ agoOf(row.url_name) }}</td>
               </tr>
@@ -150,20 +164,18 @@
             </div>
             <div class="an-card__blocks">
               <div class="an-block">
-                <span class="an-block__lbl">Buy</span>{{ liveVal(row.url_name, (u) => u.book.bestBuy) }}
+                <span class="an-block__lbl">Buy</span>{{ plat(row, 'bestBuy') }}
               </div>
               <div class="an-block">
-                <span class="an-block__lbl">Sell</span>{{ liveVal(row.url_name, (u) => u.book.bestSell) }}
+                <span class="an-block__lbl">Sell</span>{{ plat(row, 'bestSell') }}
               </div>
               <div class="an-block">
-                <span class="an-block__lbl">Fair</span>{{ liveVal(row.url_name, (u) => u.verdict.fv) }}
+                <span class="an-block__lbl">Fair</span>{{ plat(row, 'fair') }}
               </div>
               <div class="an-block">
                 <span class="an-block__lbl">Vol</span>
-                <span :class="{ 'is-thin': live[row.url_name]?.verdict.thin }">
-                  {{ live[row.url_name] ? fmtVol(live[row.url_name].verdict.volume) : '—' }}
-                </span>
-                <span v-if="live[row.url_name]?.verdict.thin" class="thin-flag" title="Thin volume — price may be rigged">⚠</span>
+                <span :class="{ 'is-thin': isThin(row) }">{{ volNum(row) }}</span>
+                <span v-if="isThin(row)" class="thin-flag" title="Thin volume — price may be rigged">⚠</span>
               </div>
             </div>
           </div>
@@ -226,6 +238,13 @@
                 <span v-if="o.rank != null" class="ob-rank">r{{ o.rank }}</span>
                 <span class="ob-qty">×{{ o.quantity }}</span>
                 <strong class="ob-plat">{{ o.platinum }}p</strong>
+                <button
+                  class="ob-copy"
+                  title="Copy /w whisper (buy from this seller)"
+                  @click.stop="copyMsg('s' + i, whisper(o.ingame_name, detailRow.item_name, o.platinum, o.rank, 'buy'))"
+                >
+                  {{ copiedKey === 's' + i ? '✓' : '⧉' }}
+                </button>
               </div>
               <div v-if="!detail.book.sellOrders.length" class="ob-empty">No online sellers</div>
             </div>
@@ -242,6 +261,13 @@
                 <span v-if="o.rank != null" class="ob-rank">r{{ o.rank }}</span>
                 <span class="ob-qty">×{{ o.quantity }}</span>
                 <strong class="ob-plat">{{ o.platinum }}p</strong>
+                <button
+                  class="ob-copy"
+                  title="Copy /w whisper (sell to this buyer)"
+                  @click.stop="copyMsg('b' + i, whisper(o.ingame_name, detailRow.item_name, o.platinum, o.rank, 'sell'))"
+                >
+                  {{ copiedKey === 'b' + i ? '✓' : '⧉' }}
+                </button>
               </div>
               <div v-if="!detail.book.buyOrders.length" class="ob-empty">No online buyers</div>
             </div>
@@ -280,15 +306,65 @@ const { itemThumb } = useItemThumb()
 const search = ref('')
 const page = ref(1)
 const perPage = 40
+const minVol = ref(0)
+const mode = ref<'all' | 'buy' | 'sell' | 'flip'>('all')
+const sortKey = ref<string>('vol')
+const sortDir = ref<'asc' | 'desc'>('desc')
 
-const tradeable = computed<any[]>(() =>
-  allItems.value.filter((r) => r && r.url_name && r.market),
-)
+// Sort/filter run over the whole catalog, so they use the static daily-sync market
+// fields (present for every item); the live overlay refines the visible rows.
+const num = (v: any) => Number(v) || 0
+const sellP = (r: any) => num(r.market?.sell)
+const buyP = (r: any) => num(r.market?.buy)
+const volP = (r: any) => num(r.market?.volume)
+const avgP = (r: any) => num(r.market?.avg_price)
+const spreadP = (r: any) => {
+  const s = sellP(r)
+  const b = buyP(r)
+  return s > 0 && b > 0 ? s - b : 0
+}
+const discountP = (r: any) => {
+  const a = avgP(r)
+  const s = sellP(r)
+  return a > 0 && s > 0 ? (a - s) / a : 0 // + = sell below fair -> good buy
+}
+const overP = (r: any) => {
+  const a = avgP(r)
+  const s = sellP(r)
+  return a > 0 && s > 0 ? (s - a) / a : 0 // + = sell above fair -> good to sell
+}
+
+const SORTERS: Record<string, (r: any) => number | string> = {
+  name: (r) => (r.item_name || '').toLowerCase(),
+  bestBuy: buyP,
+  bestSell: sellP,
+  fair: avgP,
+  vol: volP,
+  flip: spreadP,
+  signal: discountP,
+  overprice: overP,
+}
+
+const tradeable = computed<any[]>(() => allItems.value.filter((r) => r && r.url_name && r.market))
 const filtered = computed<any[]>(() => {
   const q = (search.value || '').trim().toLowerCase()
-  return q
-    ? tradeable.value.filter((r) => (r.item_name || '').toLowerCase().includes(q))
-    : tradeable.value
+  const mv = num(minVol.value)
+  const base = tradeable.value.filter((r) => {
+    if (q && !(r.item_name || '').toLowerCase().includes(q)) return false
+    if (volP(r) < mv) return false
+    if (mode.value === 'buy' && discountP(r) < 0.08) return false // ≥8% below fair
+    if (mode.value === 'sell' && overP(r) < 0.08) return false // ≥8% above fair
+    if (mode.value === 'flip' && spreadP(r) <= 0) return false
+    return true
+  })
+  const val = SORTERS[sortKey.value] || volP
+  const dir = sortDir.value === 'asc' ? 1 : -1
+  return base.slice().sort((a, b) => {
+    const va = val(a)
+    const vb = val(b)
+    if (typeof va === 'string' || typeof vb === 'string') return dir * String(va).localeCompare(String(vb))
+    return dir * ((va as number) - (vb as number))
+  })
 })
 const pageCount = computed(() => Math.max(1, Math.ceil(filtered.value.length / perPage)))
 const paged = computed<any[]>(() => {
@@ -297,6 +373,23 @@ const paged = computed<any[]>(() => {
 })
 watch(filtered, () => {
   page.value = 1
+})
+
+function sortBy(key: string) {
+  if (sortKey.value === key) sortDir.value = sortDir.value === 'asc' ? 'desc' : 'asc'
+  else {
+    sortKey.value = key
+    sortDir.value = key === 'name' ? 'asc' : 'desc'
+  }
+}
+function sortArrow(key: string): string {
+  if (sortKey.value !== key) return ''
+  return sortDir.value === 'asc' ? ' ▲' : ' ▼'
+}
+// Picking a mode also sets a sensible default sort for it.
+watch(mode, (m) => {
+  sortDir.value = 'desc'
+  sortKey.value = m === 'buy' ? 'signal' : m === 'sell' ? 'overprice' : m === 'flip' ? 'flip' : 'vol'
 })
 
 // Live updates keyed by url_name (only for the rows currently on screen).
@@ -359,6 +452,34 @@ function liveVal(url: string, pick: (u: LiveUpdate) => number): string {
   const u = live.value[url]
   return u ? fmtPlat(pick(u)) + 'p' : '—'
 }
+// Live value when subscribed, else the static daily-sync value — so the table is
+// always populated and its numbers line up with the static sort.
+function liveOrStatic(row: any, key: 'bestBuy' | 'bestSell' | 'fair' | 'flip' | 'vol'): number {
+  const u = live.value[row.url_name]
+  if (u) {
+    if (key === 'bestBuy') return u.book.bestBuy
+    if (key === 'bestSell') return u.book.bestSell
+    if (key === 'fair') return u.verdict.fv
+    if (key === 'flip') return u.verdict.flipMargin
+    return u.verdict.volume
+  }
+  if (key === 'bestBuy') return buyP(row)
+  if (key === 'bestSell') return sellP(row)
+  if (key === 'fair') return avgP(row)
+  if (key === 'flip') return spreadP(row)
+  return volP(row)
+}
+function plat(row: any, key: 'bestBuy' | 'bestSell' | 'fair' | 'flip'): string {
+  const n = liveOrStatic(row, key)
+  return n > 0 ? fmtPlat(n) + 'p' : '—'
+}
+function volNum(row: any): string {
+  return fmtVol(liveOrStatic(row, 'vol'))
+}
+function isThin(row: any): boolean {
+  const u = live.value[row.url_name]
+  return u ? u.verdict.thin : volP(row) < 3
+}
 function isFlash(url: string): boolean {
   const t = flashAt.value[url]
   return !!t && now.value - t < 1400
@@ -379,6 +500,24 @@ const detail = computed<LiveUpdate | null>(() =>
 function openDetail(row: any) {
   detailRow.value = row
   showDetail.value = true
+}
+
+// Copy-paste-ready wf.market in-game whisper for a specific order.
+const copiedKey = ref<string | null>(null)
+function whisper(name: string, item: string, platinum: number, rank: number | undefined, kind: 'buy' | 'sell'): string {
+  const r = rank != null ? ` (rank ${rank})` : ''
+  return `/w ${name} Hi! I want to ${kind}: "${item}"${r} for ${platinum} platinum. (warframe.market)`
+}
+async function copyMsg(key: string, text: string) {
+  try {
+    await navigator.clipboard.writeText(text)
+    copiedKey.value = key
+    setTimeout(() => {
+      if (copiedKey.value === key) copiedKey.value = null
+    }, 1200)
+  } catch {
+    /* clipboard unavailable */
+  }
 }
 function buyAdvice(u: LiveUpdate): string {
   const b = u.book
@@ -706,5 +845,49 @@ function finishLoading(attempt = 0) {
   .ob-cols {
     flex-direction: column;
   }
+}
+/* sortable headers + filters + copy whisper */
+.sortable {
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+}
+.sortable:hover {
+  color: #e7cf95;
+}
+.live-filters {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.live-filters .an-search {
+  flex: 1;
+  min-width: 180px;
+}
+.vol-field {
+  max-width: 108px;
+}
+.mode-toggle {
+  flex: 0 0 auto;
+}
+.mode-hint {
+  opacity: 0.6;
+}
+.ob-copy {
+  margin-left: 6px;
+  background: rgba(79, 179, 191, 0.15);
+  color: #4fb3bf;
+  border: none;
+  border-radius: 4px;
+  min-width: 22px;
+  height: 20px;
+  font-size: 12px;
+  cursor: pointer;
+  line-height: 1;
+  flex: 0 0 auto;
+}
+.ob-copy:hover {
+  background: rgba(79, 179, 191, 0.32);
 }
 </style>
