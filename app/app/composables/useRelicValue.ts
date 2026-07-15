@@ -88,6 +88,32 @@ export function hasFullData(relic: RelicRow | undefined | null): boolean {
   return relicOnMarket && rewards.length > 0 && rewards.every(rewardPriced)
 }
 
+/**
+ * Realistic "sell this relic right now" price — what you'd actually pocket, not
+ * a sticker number.
+ *
+ * warframe.market relic BUY orders are polluted with non-executable high bids:
+ * Meso V6, for instance, shows standing bids of 120–150p while the relic really
+ * trades at ~30p (its 48h average, matching the lowest live asks). Taking the
+ * top bid as the sell price — the old behaviour — advertised a payout no seller
+ * ever realises and wrongly flipped the "sell it" verdict.
+ *
+ * So we anchor the price to what the relic actually CLEARS at: the 48h
+ * volume-weighted average when it has traded, else the lowest live ask. The best
+ * buyer's standing offer only counts UP TO that going rate — a genuine bid below
+ * the rate still shows through, but a bait bid above it collapses to reality.
+ * Buyer-led where the buyer is real, outlier-proof where they're not.
+ */
+export function relicSellNow(relic: RelicRow | undefined | null): number {
+  const m: any = relic?.relic || {}
+  const bid = Number(m.buy) || 0 // highest live buy order — what a buyer offers now
+  const ask = Number(m.sell) || 0 // lowest live ask — a listed sell price
+  const avg = Number(m.avgPrice) || 0 // 48h volume-weighted average — the true clearing price
+  const rate = avg > 0 ? avg : ask // the realistic going rate
+  if (bid > 0 && rate > 0) return Math.min(bid, rate)
+  return rate > 0 ? rate : bid
+}
+
 /** A vaulted relic no longer drops from missions (can't be farmed). */
 export function isVaulted(relic: RelicRow | undefined | null): boolean {
   return relic?.vaulted === true
@@ -225,6 +251,7 @@ export function useRelicValue(refinement: MaybeRef<string>) {
     rewardBasis,
     rewardLiquidity,
     rewardVaulted,
+    relicSellNow,
     dropMix,
     isVaulted,
     isResurgence,

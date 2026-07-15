@@ -39,6 +39,12 @@ async function main() {
         const results = await m.getRelic(url_name);
         return results;
     });
+    // Live order-book depth (price levels + quantities) for the "bulk buy/sell"
+    // modeler — fetched on demand when a details dialog opens, walked client-side.
+    server.getJson('orders/:url_name', async (req: Request): Promise<any> => {
+        const url_name = req.params.url_name;
+        return m.getOrderBook(url_name);
+    });
     // Star Chart: planets → nodes ranked by expected plat/run (WFCD drop chances
     // joined with live market prices). Cached like the other aggregate views.
     server.getJsonCache('drops/map', async (req: Request): Promise<any> => {

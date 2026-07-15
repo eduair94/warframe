@@ -19,6 +19,7 @@ import {
   hasFullData,
   isVaulted,
   payoutLiquidity,
+  relicSellNow,
   useRelicValue,
   type RelicRow,
 } from '../app/app/composables/useRelicValue';
@@ -130,6 +131,38 @@ describe('payoutLiquidity', () => {
     const l = payoutLiquidity(mixed, 'Radiant');
     expect(l).toBeGreaterThan(0);
     expect(l).toBeLessThanOrEqual(1);
+  });
+});
+
+describe('relicSellNow', () => {
+  // The bug this fixes: wf.market relic bids are polluted with non-executable
+  // high offers, so the top bid alone over-states what a relic sells for.
+  it('caps a bait-high bid at the 48h clearing average', () => {
+    // bid 130, ask 30, avg 30 -> you realistically get the going rate, not 130
+    const r = relic({ relic: { buy: 130, sell: 30, volume: 1, avgPrice: 30 } });
+    expect(relicSellNow(r)).toBe(30);
+  });
+  it('shows a genuine bid that sits below the going rate', () => {
+    // normal book: bid 18 < avg 22 -> the buyer's real offer wins
+    const r = relic({ relic: { buy: 18, sell: 25, volume: 40, avgPrice: 22 } });
+    expect(relicSellNow(r)).toBe(18);
+  });
+  it('falls back to the lowest ask when the relic has not traded (no avg)', () => {
+    const r = relic({ relic: { buy: 0, sell: 40, volume: 0, avgPrice: 0 } });
+    expect(relicSellNow(r)).toBe(40);
+  });
+  it('uses the lowest ask as the rate when there is no 48h average but there are bids', () => {
+    // avg 0 -> rate falls back to ask 12; bid 130 caps to 12
+    const r = relic({ relic: { buy: 130, sell: 12, volume: 0, avgPrice: 0 } });
+    expect(relicSellNow(r)).toBe(12);
+  });
+  it('is 0 for a relic with no market at all', () => {
+    const r = relic({ relic: { buy: 0, sell: 0, volume: 0, avgPrice: 0 } });
+    expect(relicSellNow(r)).toBe(0);
+  });
+  it('returns the bid when there is a bid but no ask/avg to anchor against', () => {
+    const r = relic({ relic: { buy: 9, sell: 0, volume: 0, avgPrice: 0 } });
+    expect(relicSellNow(r)).toBe(9);
   });
 });
 

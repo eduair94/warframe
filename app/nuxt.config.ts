@@ -260,11 +260,15 @@ export default defineNuxtConfig({
     client: {
       installPrompt: false
     },
-    // Registers the SW in dev too (default is build-only) so DevTools ->
-    // Application -> Service Workers/Manifest is verifiable via `npm run dev`.
+    // Dev service worker DISABLED. @vite-pwa/nuxt's dev SW intermittently 404s on
+    // its generated `.nuxt/dev-sw-dist/sw.js`, and that Vite transform error
+    // wedges the whole module graph — the i18n bundle stops loading (every string
+    // renders as its raw key) and an HMR error overlay covers the app. The SW is
+    // only needed to VERIFY the manifest/offline behaviour, which the production
+    // build (`nuxt build`) still generates and registers normally. Flip back to
+    // `enabled: true` for a one-off SW check, then turn it off again.
     devOptions: {
-      enabled: true,
-      type: 'module'
+      enabled: false
     }
   },
 

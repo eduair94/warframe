@@ -134,7 +134,7 @@
               <tr>
                 <th class="col-name">{{ t('relicsValue.table.relic') }}</th>
                 <th class="grp-a">{{ t('relicsValue.table.evToOpen') }}</th>
-                <th class="grp-b">{{ t('relicsValue.table.sellRelic') }}</th>
+                <th class="grp-b" :title="t('relicsValue.table.sellRelicTip')">{{ t('relicsValue.table.sellRelic') }}</th>
                 <th class="grp-a">{{ t('relicsValue.table.verdict') }}</th>
                 <th>{{ t('relicsValue.table.demand') }}</th>
                 <th>{{ t('relicsValue.table.topDrop') }}</th>
@@ -163,10 +163,17 @@
                     </span>
                   </nuxt-link>
                 </td>
-                <td class="grp-a an-num an-strong" :class="{ up: ev(row) > row.relic.buy }">
+                <td class="grp-a an-num an-strong" :class="{ up: ev(row) > relicSellNow(row) }">
                   {{ fmtPlat(ev(row)) }}p
                 </td>
-                <td class="grp-b an-num">{{ fmtPlat(row.relic.buy) }}p</td>
+                <td class="grp-b an-num">
+                  {{ fmtPlat(relicSellNow(row)) }}p
+                  <small
+                    v-if="(row.relic.buy || 0) > relicSellNow(row) * 1.35"
+                    class="an-bidflag"
+                    :title="t('relicsValue.table.bidFlagTip', { bid: fmtPlat(row.relic.buy) })"
+                  >{{ t('relicsValue.table.bidFlag', { bid: fmtPlat(row.relic.buy) }) }}</small>
+                </td>
                 <td class="grp-a">
                   <span class="pill" :class="verdict(row).cls">
                     {{ verdict(row).label }}
@@ -185,10 +192,24 @@
                   <small class="an-sub">{{ fmtPlat(topDrop(row).price) }}p · vol {{ fmtPlat(topDrop(row).volume || 0) }}</small>
                 </td>
                 <td class="an-num">{{ fmtPlat(row.relic.volume) }}</td>
-                <td>
-                  <v-btn icon size="small" color="#4fb3bf" :to="'/relic/' + row.url_name" :aria-label="t('relicsValue.table.view', { name: row.relicName })">
-                    <v-icon>mdi-arrow-right-circle</v-icon>
-                  </v-btn>
+                <td class="an-actions">
+                  <button
+                    type="button"
+                    class="an-iconbtn"
+                    :title="t('relicsValue.table.details', { name: row.relicName })"
+                    :aria-label="t('relicsValue.table.details', { name: row.relicName })"
+                    @click="openDetails(row)"
+                  >
+                    <v-icon size="20">mdi-diamond-stone</v-icon>
+                  </button>
+                  <nuxt-link
+                    class="an-iconbtn an-iconbtn--go"
+                    :to="'/relic/' + row.url_name"
+                    :title="t('relicsValue.table.view', { name: row.relicName })"
+                    :aria-label="t('relicsValue.table.view', { name: row.relicName })"
+                  >
+                    <v-icon size="20">mdi-arrow-right-circle</v-icon>
+                  </nuxt-link>
                 </td>
               </tr>
             </tbody>
@@ -218,6 +239,15 @@
                   <template v-if="dropMix(row).vaulted"> · <span class="an-vtag">{{ t('relicsValue.tags.vaultedCount', { n: dropMix(row).vaulted }) }}</span></template>
                 </small>
               </div>
+              <button
+                type="button"
+                class="an-iconbtn"
+                :title="t('relicsValue.table.details', { name: row.relicName })"
+                :aria-label="t('relicsValue.table.details', { name: row.relicName })"
+                @click.prevent.stop="openDetails(row)"
+              >
+                <v-icon size="20">mdi-diamond-stone</v-icon>
+              </button>
               <v-icon color="#4fb3bf">mdi-chevron-right</v-icon>
             </div>
             <div class="an-card__verdict">
@@ -233,9 +263,9 @@
             <div class="an-card__blocks">
               <div class="an-block">
                 <div class="an-block__lbl">{{ t('relicsValue.card.open', { refinement: refinementLabel }) }}</div>
-                <div class="an-block__row"><span>{{ t('relicsValue.card.realizableEv') }}</span><b :class="{ up: ev(row) > row.relic.buy }">{{ fmtPlat(ev(row)) }}p</b></div>
+                <div class="an-block__row"><span>{{ t('relicsValue.card.realizableEv') }}</span><b :class="{ up: ev(row) > relicSellNow(row) }">{{ fmtPlat(ev(row)) }}p</b></div>
                 <div class="an-block__row"><span>{{ t('relicsValue.card.rawEv') }}</span><b>{{ fmtPlat(evRaw(row)) }}p</b></div>
-                <div class="an-block__row"><span>{{ t('relicsValue.card.sellRelic') }}</span><b>{{ fmtPlat(row.relic.buy) }}p</b></div>
+                <div class="an-block__row"><span>{{ t('relicsValue.card.sellRelic') }}</span><b>{{ fmtPlat(relicSellNow(row)) }}p</b></div>
               </div>
               <div class="an-block">
                 <div class="an-block__lbl">{{ t('relicsValue.card.topDrop') }}</div>
@@ -261,6 +291,14 @@
           <template #refinement>{{ refinementLabel }}</template>
         </i18n-t>
       </v-alert>
+
+      <RelicDetailsDialog
+        v-model="detailsOpen"
+        :relic="selected"
+        :refinement="refinement"
+        @open-item="openItemDrops"
+      />
+      <DropLocationsDialog v-model="dropsOpen" :item-name="dropsItem" :thumb="dropsThumb" />
     </client-only>
   </div>
 </template>
@@ -317,8 +355,27 @@ const sortOptions = computed(() => [
 // Shared, liquidity-aware valuation (same basis as the Star Chart): each drop is
 // discounted by its 48h trade volume, so an overpriced part nobody buys can't
 // inflate the "crack it" verdict. `ev` here is the realizable EV.
-const { ev, evRaw, topDrop, liquidity, demand, dropMix, rewardVaulted, isVaulted, isResurgence, hasFullData, fmtPlat } =
+const { ev, evRaw, topDrop, liquidity, demand, dropMix, rewardVaulted, relicSellNow, isVaulted, isResurgence, hasFullData, fmtPlat } =
   useRelicValue(refinement)
+
+// Relic-details popup — the full drop table, market book and outbound links for
+// one relic, without leaving the board.
+const detailsOpen = ref(false)
+const selected = ref<RelicRow | null>(null)
+function openDetails(row: RelicRow) {
+  selected.value = row
+  detailsOpen.value = true
+}
+// Per-drop "where does this part come from" — delegated to the shared
+// DropLocationsDialog the farming page already uses.
+const dropsOpen = ref(false)
+const dropsItem = ref('')
+const dropsThumb = ref('')
+function openItemDrops(name: string, thumb: string) {
+  dropsItem.value = name
+  dropsThumb.value = thumb || ''
+  dropsOpen.value = true
+}
 
 // methods
 function assetUrl(thumb: string): string {
@@ -331,11 +388,12 @@ function onImgError(e: any) {
   img.src = placeholderImg
 }
 function verdict(relic: any): { label: string; amount: string; cls: string } {
-  // Crack = realizable payout of the drops; sell = the relic's highest bid (what
-  // you'd actually get hitting the market). Comparing realizable-to-realizable
-  // stops an illiquid drop from advising a "crack it" you can't cash out.
+  // Crack = realizable payout of the drops; sell = the relic's realistic going
+  // rate (see relicSellNow — a bait-high bid can't inflate it). Comparing
+  // realizable-to-realizable stops an illiquid drop from advising a "crack it"
+  // you can't cash out, and a fake bid from advising a "sell it" you can't fill.
   const open = ev(relic)
-  const sell = relic.relic.buy || 0
+  const sell = relicSellNow(relic)
   if (open > sell + 0.5) {
     return { label: t('relicsValue.verdict.crack'), amount: t('relicsValue.verdict.crackAmount', { n: fmtPlat(open - sell) }), cls: 'pill--good' }
   }
@@ -387,11 +445,11 @@ const hiddenResurgence = computed<number>(() =>
 )
 const filtered = computed<any[]>(() => {
   let list = matched.value.filter(passesQuality)
-  if (onlyOpenWins.value) list = list.filter((r) => ev(r) > r.relic.buy)
+  if (onlyOpenWins.value) list = list.filter((r) => ev(r) > relicSellNow(r))
   const dir = (a: number, b: number) => b - a
   const sorters: Record<string, (a: any, b: any) => number> = {
     ev: (a, b) => dir(ev(a), ev(b)),
-    margin: (a, b) => dir(ev(a) - a.relic.buy, ev(b) - b.relic.buy),
+    margin: (a, b) => dir(ev(a) - relicSellNow(a), ev(b) - relicSellNow(b)),
     demand: (a, b) => dir(liquidity(a), liquidity(b)) || dir(ev(a), ev(b)),
     volume: (a, b) => dir(a.relic.volume || 0, b.relic.volume || 0),
     name: (a, b) => a.relicName.localeCompare(b.relicName),
@@ -420,7 +478,7 @@ const topDealUrl = computed<string>(() => {
 const stats = computed<any>(() => {
   const list = valuedRelics.value
   const evs = list.map((r) => ev(r))
-  const openWins = list.filter((r) => ev(r) > r.relic.buy).length
+  const openWins = list.filter((r) => ev(r) > relicSellNow(r)).length
   return {
     total: list.length,
     openWins,
@@ -503,6 +561,52 @@ onMounted(() => {
   color: #9aa0b4;
   margin-left: 6px;
   font-size: 0.92em;
+}
+/* Row actions: open the details popup, or jump to the full relic page. */
+.an-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  justify-content: flex-end;
+}
+.an-iconbtn {
+  flex: none;
+  color: #4fb3bf;
+  background: transparent;
+  border: 1px solid rgba(79, 179, 191, 0.35);
+  border-radius: 6px;
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+}
+.an-iconbtn:hover {
+  color: #d4af5a;
+  border-color: rgba(212, 175, 90, 0.5);
+  background: rgba(212, 175, 90, 0.08);
+}
+.an-iconbtn:focus-visible {
+  outline: 2px solid #35d6d0;
+  outline-offset: 2px;
+}
+.an-iconbtn--go {
+  color: #d4af5a;
+  border-color: rgba(212, 175, 90, 0.4);
+}
+.an-iconbtn--go:hover {
+  color: #f0d79a;
+}
+/* Inline warning when the relic's top bid sits far above its realistic sell
+   price — the value nobody actually fills. */
+.an-bidflag {
+  display: block;
+  font-size: 0.62rem;
+  color: #9aa0b4;
+  letter-spacing: 0.02em;
+  margin-top: 2px;
+  white-space: nowrap;
 }
 /* Verdict row: keep the verdict pill and the demand meter on one tidy line so
    the meter sits next to the pill instead of floating out to the right. */

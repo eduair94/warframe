@@ -151,6 +151,15 @@ export interface FlipOption {
   creditsToFinish: number
   /** maxedSell − buyIn (before credits/time). */
   profit: number
+  /**
+   * maxedSell − ask: the profit if you BUY INSTANTLY at the seller's ask (what
+   * the copy-WTB whisper actually pays). Equals `profit` when buy-order mode is
+   * off; in buy-order mode it can be lower — even negative — because the modeled
+   * buy-in is the cheaper bid, not the ask you'd pay to buy right now. Surfaced
+   * so the UI can warn when the actionable whisper price turns the flip into a
+   * loss.
+   */
+  instantProfit: number
   /** profit ÷ endoToFinish × 1000 — the ranking metric. */
   platPer1kEndo: number
 }
@@ -281,6 +290,9 @@ export function evalFlip(row: EndoFlipRow, opts: FlipOpts = {}): FlipEval {
       endoToFinish,
       creditsToFinish: creditsFromRankToMax(rarity, rung.rank, maxRank),
       profit,
+      // Profit if you buy instantly at the ask (the copy-whisper price) rather
+      // than via the modeled buy order — can be lower, or a loss.
+      instantProfit: maxedSell - ask,
       platPer1kEndo,
     })
   }

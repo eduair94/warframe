@@ -97,6 +97,7 @@
                   <div class="an-set">
                     <div class="an-set__lbl">{{ t('endo.filters.buyIn') }}</div>
                     <v-switch v-model="buyViaBid" hide-details density="compact" inset color="#4fb3bf" :label="t('endo.filters.viaBuyOrder')" class="an-toggle an-set__switch"></v-switch>
+                    <div class="an-set__help">{{ t('endo.filters.buyInHelp') }}</div>
                   </div>
                 </div>
 
@@ -164,6 +165,17 @@
                   <td class="grp-a an-num">
                     <b>{{ rankLabel(row.eval.best.rank) }}</b>
                     <small class="an-sub">{{ fmtPlat(row.eval.best.buyIn) }}p{{ buyViaBid ? t('endo.row.bidSuffix') : '' }}</small>
+                    <small
+                      v-if="showInstant(row)"
+                      class="an-instant"
+                      :class="{ 'is-loss': instantIsLoss(row) }"
+                      :title="instantIsLoss(row)
+                        ? t('endo.row.buyNowLossTitle', { n: fmtPlat(-row.eval.best.instantProfit), buyin: fmtPlat(row.eval.best.buyIn) })
+                        : t('endo.row.buyNowOkTitle', { buyin: fmtPlat(row.eval.best.buyIn) })"
+                    >
+                      <v-icon size="11">{{ instantIsLoss(row) ? 'mdi-alert' : 'mdi-flash' }}</v-icon>
+                      {{ t('endo.row.buyNow', { p: fmtPlat(instantAsk(row)) }) }}
+                    </small>
                   </td>
                   <td class="grp-b an-num" :title="t('endo.row.sellTitle', { ask: fmtPlat(row.eval.maxedAsk), avg: fmtPlat(row.eval.maxedAvg), instant: fmtPlat(row.eval.maxedBid) })">
                     {{ fmtPlat(row.eval.maxedSell) }}p
@@ -184,7 +196,7 @@
                   <td class="col-act">
                     <a class="an-copy" :href="wikiHref(row.item_name)" target="_blank" rel="noopener" title="Warframe Wiki"><v-icon size="16">mdi-book-open-variant</v-icon></a>
                     <button class="an-copy" :title="t('endo.actions.whereDrops')" @click="openDrops(row)"><v-icon size="16">mdi-map-marker-radius-outline</v-icon></button>
-                    <button class="an-copy" :class="{ 'is-copied': copiedKey === 'f:' + row.url_name }" :title="t('endo.actions.copyWtb', { price: fmtPlat(row.eval.best.ask || row.eval.best.buyIn), to: row.eval.best.askUser ? t('endo.actions.toUser', { user: row.eval.best.askUser }) : '' })" @click="copy(buyWhisper(row.eval.best.askUser, row.item_name, row.eval.best.ask || row.eval.best.buyIn), 'f:' + row.url_name)">
+                    <button class="an-copy" :class="{ 'is-copied': copiedKey === 'f:' + row.url_name, 'is-warn': showInstant(row) && instantIsLoss(row) }" :title="whisperTitle(row)" @click="copy(buyWhisper(row.eval.best.askUser, row.item_name, row.eval.best.ask || row.eval.best.buyIn), 'f:' + row.url_name)">
                       <v-icon size="16">{{ copiedKey === 'f:' + row.url_name ? 'mdi-check' : 'mdi-content-copy' }}</v-icon>
                     </button>
                   </td>
@@ -214,7 +226,8 @@
               <div class="an-card__blocks">
                 <div class="an-block">
                   <div class="an-block__lbl">{{ t('endo.card.theFlip') }}</div>
-                  <div class="an-block__row"><span>{{ t('endo.card.buy') }} {{ rankLabel(row.eval.best.rank) }}</span><b>{{ fmtPlat(row.eval.best.buyIn) }}p</b></div>
+                  <div class="an-block__row"><span>{{ t('endo.card.buy') }} {{ rankLabel(row.eval.best.rank) }}{{ buyViaBid ? t('endo.row.bidSuffix') : '' }}</span><b>{{ fmtPlat(row.eval.best.buyIn) }}p</b></div>
+                  <div v-if="showInstant(row)" class="an-block__row an-block__row--instant"><span :class="{ 'is-loss': instantIsLoss(row) }">{{ t('endo.card.buyNow') }}</span><b :class="{ 'is-loss': instantIsLoss(row) }">{{ fmtPlat(instantAsk(row)) }}p</b></div>
                   <div class="an-block__row"><span>{{ t('endo.card.sellMaxed') }}</span><b>{{ fmtPlat(row.eval.maxedSell) }}p</b></div>
                   <div class="an-block__row"><span>{{ t('endo.card.profit') }}</span><b class="up">+{{ fmtPlat(row.eval.best.profit) }}p</b></div>
                 </div>
@@ -228,7 +241,7 @@
               <div class="an-card__acts">
                 <a class="an-copy" :href="wikiHref(row.item_name)" target="_blank" rel="noopener" aria-label="Warframe Wiki"><v-icon size="16">mdi-book-open-variant</v-icon></a>
                 <button class="an-copy" :aria-label="t('endo.actions.whereDrops')" @click="openDrops(row)"><v-icon size="16">mdi-map-marker-radius-outline</v-icon></button>
-                <button class="an-copybtn" :class="{ 'is-copied': copiedKey === 'f:' + row.url_name }" @click="copy(buyWhisper(row.eval.best.askUser, row.item_name, row.eval.best.ask || row.eval.best.buyIn), 'f:' + row.url_name)">
+                <button class="an-copybtn" :class="{ 'is-copied': copiedKey === 'f:' + row.url_name, 'is-warn': showInstant(row) && instantIsLoss(row) }" :title="whisperTitle(row)" @click="copy(buyWhisper(row.eval.best.askUser, row.item_name, row.eval.best.ask || row.eval.best.buyIn), 'f:' + row.url_name)">
                   <v-icon size="16">{{ copiedKey === 'f:' + row.url_name ? 'mdi-check' : 'mdi-content-copy' }}</v-icon>
                   {{ copiedKey === 'f:' + row.url_name ? t('endo.actions.copiedWhisper') : t('endo.actions.copyWhisper') }}
                 </button>
@@ -480,6 +493,38 @@ function openDrops(row: { item_name: string; thumb?: string }) {
 }
 function wikiHref(name: string): string {
   return itemWikiUrl(name)
+}
+
+// --- Buy-in vs instant-buy reconciliation -----------------------------------
+// In buy-order mode the "Buy @" price is the modeled BID (post an order, wait),
+// but the copy-WTB whisper buys INSTANTLY at the seller's ask — a higher, and
+// sometimes loss-making, price. These helpers surface that gap so the two
+// numbers never silently contradict, and the disclaimer/toggle explain the fix
+// (turn "Via buy order" off to price every flip at the instant ask).
+function instantAsk(row: FlipRowEval): number {
+  return Number(row.eval.best.ask) || 0
+}
+// Show the instant price beside the buy-in only when it's a distinct, higher
+// number (buy-order mode with a bid below the ask).
+function showInstant(row: FlipRowEval): boolean {
+  return buyViaBid.value && instantAsk(row) > row.eval.best.buyIn + 0.5
+}
+// Buying instantly at the ask is a net loss (the copy-whisper would cost you).
+function instantIsLoss(row: FlipRowEval): boolean {
+  return row.eval.best.instantProfit <= 0
+}
+// Tooltip for the copy-WTB button: it's the INSTANT ask price, flagged when that
+// differs from — or loses against — the modeled buy-order buy-in.
+function whisperTitle(row: FlipRowEval): string {
+  const b = row.eval.best
+  const price = fmtPlat(b.ask || b.buyIn)
+  const to = b.askUser ? t('endo.actions.toUser', { user: b.askUser }) : ''
+  const parts = [t('endo.actions.copyWtbInstant', { price, to })]
+  if (showInstant(row)) {
+    parts.push(t('endo.actions.modeledBuyIn', { buyin: fmtPlat(b.buyIn) }))
+    if (instantIsLoss(row)) parts.push(t('endo.actions.instantLoss', { n: fmtPlat(-b.instantProfit) }))
+  }
+  return parts.join(' · ')
 }
 
 type Dir = 'asc' | 'desc'
@@ -1047,6 +1092,42 @@ onMounted(() => {
 .an-copy.is-copied {
   color: #4caf7d;
   border-color: rgba(76, 175, 125, 0.6);
+}
+/* Whisper button warns when buying instantly (the price it copies) is a loss. */
+.an-copy.is-warn,
+.an-copybtn.is-warn {
+  color: #e0a35a;
+  border-color: rgba(224, 163, 90, 0.55);
+}
+/* Instant-buy price shown beside the modeled buy-order buy-in. */
+.an-instant {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 0.68rem;
+  color: #4fb3bf;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+.an-instant.is-loss {
+  color: #e0a35a;
+}
+.an-instant .v-icon {
+  opacity: 0.9;
+}
+/* Mobile flip block's "buy now" (instant) row: cyan by default, amber on loss. */
+.an-block__row--instant b {
+  color: #4fb3bf;
+}
+.an-block__row .is-loss {
+  color: #e0a35a !important;
+}
+.an-set__help {
+  font-size: 0.66rem;
+  line-height: 1.35;
+  color: #8f95ab;
+  max-width: 300px;
+  margin-top: 2px;
 }
 /* Mobile card action row: wiki + drops icons beside the full-width copy button. */
 .an-card__acts {
