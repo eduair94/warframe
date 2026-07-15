@@ -1,5 +1,5 @@
 import { unref, type MaybeRef } from 'vue'
-import { demandTier } from './marketFormat'
+import { demandTier, fmtPlat } from './marketFormat'
 
 /**
  * Shared relic-valuation logic for the /relic-farming and /relics-value pages.

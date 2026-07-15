@@ -19,10 +19,12 @@ import {
   hasFullData,
   isVaulted,
   payoutLiquidity,
-  demandTier,
   useRelicValue,
   type RelicRow,
 } from '../app/app/composables/useRelicValue';
+// demandTier moved to the shared marketFormat module (dedup of the identical
+// endo/relic copies); import it from there now.
+import { demandTier } from '../app/app/composables/marketFormat';
 
 const reward = (over: Partial<RelicRow['rewards'][number]> = {}) => ({
   item_name: 'Part',
