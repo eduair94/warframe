@@ -314,8 +314,7 @@
     <WarframeGuideDialog
       v-model="guideOpen"
       :planet-names="mapPlanetNames"
-      @select-planet="selectPlanet"
-      @find-item="onGuideItem"
+      @locate="onGuideLocate"
     />
   </div>
 </template>
@@ -386,14 +385,32 @@ const galaxyWorlds = computed(() =>
 
 const mapPlanetNames = computed(() => new Set(planets.value.map((p) => p.planet)))
 
-// Guide → map: relics are themselves drops, so highlight where one drops;
-// anything the map doesn't know falls back to the full drop-locations dialog.
-function onGuideItem(name: string) {
-  if (itemIndexMap.value.has(name)) {
-    selected.value = ''
-    findItem.value = name
+// Guide → map. Both prime relics and standard part-blueprints are real drops
+// in the reward tables, so they highlight the same way:
+//  - light up every world that drops the item (findItem → highlightedWorlds)
+//  - when the source named a planet (standard parts), open that world at the
+//    exact node with the item's reward row highlighted (focusItem)
+//  - relics (no planet) show the full source list instead
+// If the map has never seen the item, fall back to the drop-locations dialog.
+function onGuideLocate(payload: { item: string; planet?: string; node?: string }) {
+  const known = payload.item && itemIndexMap.value.has(payload.item)
+  if (!known) {
+    openDrops(payload.item)
+    return
+  }
+  findItem.value = payload.item
+  if (payload.planet && planetsByName.value[payload.planet]) {
+    selectPlanet(payload.planet) // sets focusItem = findItem, opens the focus node
+    const p = planetsByName.value[payload.planet]
+    if (payload.node && p.nodes.some((n) => n.location === payload.node)) {
+      openNode.value = payload.node
+    }
+    nextTick(() => {
+      const el = document.querySelector('.sc3-panel .sc3-reward.is-focus')
+      if (el && el.scrollIntoView) el.scrollIntoView({ block: 'center' })
+    })
   } else {
-    openDrops(name)
+    selected.value = '' // relic: show the source list + map highlight
   }
 }
 

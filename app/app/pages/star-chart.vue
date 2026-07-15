@@ -178,7 +178,7 @@
                     <span class="sc-rot__badge" :data-rot="rot.rotation">{{ rot.rotation }}</span>
                     <span class="sc-rot__val">{{ fmtPlat(rot.value) }} p/drop</span>
                   </div>
-                  <div v-for="(rw, i) in sortedRewards(rot.rewards)" :key="i" class="sc-reward" :class="{ 'is-dud': !rw.tradeable }">
+                  <div v-for="(rw, i) in sortedRewards(rot.rewards)" :key="i" class="sc-reward" :class="{ 'is-dud': !rw.tradeable, 'is-focus': focusItem && rw.itemName === focusItem }">
                     <img
                       class="sc-reward__thumb"
                       :src="itemThumb({ itemName: rw.itemName, thumb: rw.thumb })"
@@ -233,8 +233,7 @@
     <WarframeGuideDialog
       v-model="guideOpen"
       :planet-names="chartPlanetNames"
-      @select-planet="selectPlanet"
-      @find-item="openDrops"
+      @locate="onGuideLocate"
     />
 
     <v-alert v-if="!loading && planets.length" class="sc-disclaimer bg-blue-darken-4" type="info" density="compact">
@@ -344,6 +343,7 @@ const dropsDialog = ref(false)
 const dropsItem = ref('')
 const findItem = ref('')
 const guideOpen = ref(false)
+const focusItem = ref('')
 const panel = ref<HTMLElement | null>(null)
 
 const allItems = computed(() => items.allItems)
@@ -521,6 +521,7 @@ async function load() {
 function selectPlanet(name: string) {
   selected.value = name
   openNode.value = ''
+  focusItem.value = ''
   const first = planetsByName.value[name]
   if (first && first.nodes && first.nodes.length) openNode.value = first.nodes[0].location
   if (mobile.value) {
@@ -528,6 +529,31 @@ function selectPlanet(name: string) {
       const el = panel.value
       if (el && el.scrollIntoView) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
     })
+  }
+}
+
+// Guide → chart. Standard part-blueprints and prime relics are both real
+// mission drops: open the named world at the exact node and highlight the
+// part's reward row; relics (no planet) open the drop-locations dialog.
+function onGuideLocate(payload: { item: string; planet?: string; node?: string }) {
+  if (payload.planet && planetsByName.value[payload.planet]) {
+    selectPlanet(payload.planet)
+    focusItem.value = payload.item || ''
+    const p = planetsByName.value[payload.planet]
+    const target =
+      (payload.node && p.nodes.find((n: any) => n.location === payload.node)) ||
+      p.nodes.find((n: any) =>
+        (n.rotations || []).some((r: any) =>
+          (r.rewards || []).some((rw: any) => rw.itemName === payload.item),
+        ),
+      )
+    if (target) openNode.value = target.location
+    nextTick(() => {
+      const el = document.querySelector('.sc-reward.is-focus')
+      if (el && el.scrollIntoView) el.scrollIntoView({ block: 'nearest' })
+    })
+  } else if (payload.item) {
+    openDrops(payload.item)
   }
 }
 function onPlanetFocus(name: string) {
@@ -935,6 +961,12 @@ function finishLoading(attempt = 0) {
   padding: 5px 4px;
 }
 .sc-reward.is-dud { opacity: 0.5; }
+.sc-reward.is-focus {
+  background: rgba(53, 214, 208, 0.1);
+  box-shadow: inset 2px 0 0 #35d6d0;
+  border-radius: 2px;
+}
+.sc-reward.is-focus .sc-reward__name { color: #7ff0eb; }
 .sc-reward__thumb { width: 30px; height: 30px; object-fit: contain; }
 .sc-reward__name {
   background: none; border: none; text-align: left; cursor: pointer;

@@ -81,24 +81,24 @@
           </div>
           <div v-if="comp.sources.length" class="wg-sources">
             <template v-for="(src, i) in comp.sources.slice(0, 8)" :key="i">
-              <!-- relic source: highlight it on the map -->
+              <!-- relic source (primes): highlight the relic's drops on the map -->
               <button
                 v-if="src.relic"
                 class="wg-chip wg-chip--relic"
                 :title="`Show where ${src.relic} drops on the map`"
-                @click="pickRelic(src.relic)"
+                @click="locate({ item: src.relic })"
               >
                 <v-icon size="13">mdi-diamond-stone</v-icon>
                 {{ src.relic.replace(' Relic', '') }}
                 <em>{{ fmtChanceRange(src) }}</em>
                 <span v-if="relicVaulted(src.relic)" class="wg-chip__vault">vaulted</span>
               </button>
-              <!-- planet/node source: jump to the world -->
+              <!-- planet/node source (standard): open that world + highlight the part -->
               <button
                 v-else-if="src.planet && planetNames.has(src.planet)"
                 class="wg-chip wg-chip--planet"
-                :title="`Open ${src.planet} on the map`"
-                @click="pickPlanet(src.planet)"
+                :title="`Highlight ${comp.name} on ${src.planet}`"
+                @click="locate({ item: partMapName(comp), planet: src.planet, node: nodeName(src) })"
               >
                 <v-icon size="13">mdi-orbit</v-icon>
                 {{ src.location }}
@@ -175,10 +175,18 @@ const props = defineProps<{
   planetNames: Set<string>
 }>()
 
+export interface GuideLocate {
+  /** the map's reward item name to highlight (relic, or "<Frame> <Part> Blueprint") */
+  item: string
+  /** planet to open on the map, when the source names one */
+  planet?: string
+  /** bare node name (e.g. "Fenton's Field") to expand, best-effort */
+  node?: string
+}
+
 const emit = defineEmits<{
   (e: 'update:modelValue', v: boolean): void
-  (e: 'select-planet', name: string): void
-  (e: 'find-item', name: string): void
+  (e: 'locate', payload: GuideLocate): void
 }>()
 
 // fullscreen below 960px — matches this component's own CSS breakpoint
@@ -255,13 +263,27 @@ function relicVaulted(relicName: string): boolean {
   return item ? item.vaulted === true : false
 }
 
-function pickRelic(relic: string) {
-  emit('find-item', relic)
-  emit('update:modelValue', false)
+// The drop-map reward name for a standard frame's component is
+// "<Frame> <Component> Blueprint" (verified against /drops/map); relics keep
+// their own name. Either resolves to a real reward the map can light up.
+function partMapName(comp: GuideComponent): string {
+  return detail.value ? `${detail.value.name} ${comp.name} Blueprint` : ''
 }
 
-function pickPlanet(planet: string) {
-  emit('select-planet', planet)
+// Bare node name from a WFCD source string:
+// "Pluto/Fenton's Field (Skirmish), Rotation A" -> "Fenton's Field".
+function nodeName(src: GuideDropSource): string {
+  let s = src.location || ''
+  const slash = s.indexOf('/')
+  if (slash >= 0) s = s.slice(slash + 1)
+  return s
+    .replace(/\s*\([^)]*\)/g, '')
+    .replace(/,\s*Rotation.*$/i, '')
+    .trim()
+}
+
+function locate(payload: GuideLocate) {
+  emit('locate', payload)
   emit('update:modelValue', false)
 }
 

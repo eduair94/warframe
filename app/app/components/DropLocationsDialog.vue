@@ -153,6 +153,15 @@
       </div>
 
       <footer class="dld__foot">
+        <a
+          v-if="wikiUrl"
+          class="dld__source dld__source--wiki"
+          :href="wikiUrl"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <v-icon size="14">mdi-book-open-variant</v-icon> Wiki
+        </a>
         <a class="dld__source" :href="externalLink" target="_blank" rel="noopener noreferrer">
           Cross-check on warframestat <v-icon size="14">mdi-open-in-new</v-icon>
         </a>
@@ -248,6 +257,7 @@ const externalLink = computed(() => {
   if (s.includes('Set')) s = s.replace('Set', '').trim()
   return `https://drops.warframestat.us/#/search/${encodeURIComponent(s)}/items/regex`
 })
+const wikiUrl = computed(() => itemWikiUrl(props.itemName))
 
 function close() {
   emit('update:modelValue', false)
@@ -606,6 +616,8 @@ watch(
   padding: 12px 20px;
   border-top: 1px solid rgba(200, 168, 92, 0.22);
   display: flex;
+  align-items: center;
+  gap: 18px;
   justify-content: flex-end;
 }
 .dld__source {
@@ -620,4 +632,6 @@ watch(
   text-decoration: none;
 }
 .dld__source:hover { color: #35d6d0; }
+.dld__source--wiki { color: #7ff0eb; margin-right: auto; }
+.dld__source--wiki:hover { color: #aef6f2; }
 </style>

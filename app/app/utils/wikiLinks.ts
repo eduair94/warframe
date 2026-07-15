@@ -40,3 +40,21 @@ export function worldWikiMap(world: string): { title: string; url: string } | nu
   const m = INTERACTIVE_MAPS[world]
   return m ? { title: m.title, url: WIKI_BASE + m.path } : null
 }
+
+/**
+ * Best-effort wiki article for any drop/reward/item name. Strips a leading
+ * quantity ("100X Rubedo" → "Rubedo", "3,000 Credits Cache" → …) and a
+ * trailing parenthetical ("Cephalon Capture (Extra)" → …) so the link lands on
+ * the real article; the fandom wiki auto-suggests if an exact page is missing.
+ * Returns '' for empty input so callers can v-if it away.
+ */
+export function itemWikiUrl(name: string): string {
+  let s = (name || '').trim()
+  if (!s) return ''
+  s = s
+    .replace(/^\d[\d,.]*\s*[x×]?\s+/i, '') // quantity prefix
+    .replace(/\s*\([^)]*\)\s*$/, '') // trailing (Extra) / (Radiant) …
+    .trim()
+  if (!s) return ''
+  return wikiUrl(s)
+}
