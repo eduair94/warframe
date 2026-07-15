@@ -7,6 +7,7 @@
     :href="githubUrl"
     target="_blank"
     rel="noopener noreferrer"
+    :aria-label="icon ? (text || $t('view_source_code')) : undefined"
     v-bind="$attrs"
   >
     <v-icon :class="{ 'me-2': !icon }" :size="small ? 'small' : undefined">mdi-github</v-icon>

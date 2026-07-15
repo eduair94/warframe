@@ -1,6 +1,17 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import { es, pt } from 'vuetify/locale'
 
+// SITE_URL is the PUBLIC FRONTEND origin — NOT the API. The API lives at
+// warframe.digitalshopuy.com (serves JSON); the app is served from
+// warframe-app.digitalshopuy.com. This value powers canonical/hreflang links
+// (via @nuxtjs/i18n), the sitemap <loc> entries and absolute OG image URLs, so
+// it MUST be the frontend host or search engines canonicalise every page to the
+// JSON API and drop the site from the index.
+const SITE_URL = process.env.SITE_URL || 'https://warframe-app.digitalshopuy.com'
+const SITE_TITLE = 'Warframe Market Analytics — Live Prime Prices & Platinum Tools'
+const SITE_DESC =
+  'Track live Warframe Market prices, prime set values, ducat efficiency, riven worth and trading signals. Free real-time platinum analytics and tools for Tenno.'
+
 export default defineNuxtConfig({
   compatibilityDate: '2026-07-01',
   ssr: true,
@@ -27,17 +38,56 @@ export default defineNuxtConfig({
   // the root-level `description` (not a valid unhead field) were dropped.
   app: {
     head: {
-      titleTemplate: '%s - Warframe',
-      title: 'Warframe Market Analytics',
+      // Titles already carry the brand where natural; append it only when the
+      // page title doesn't already mention Warframe (avoids "Warframe … Warframe").
+      titleTemplate: (title?: string) =>
+        !title
+          ? SITE_TITLE
+          : /warframe/i.test(title)
+            ? title
+            : `${title} — Warframe Market Analytics`,
+      title: SITE_TITLE,
+      // Default locale is English (i18n rewrites this per-locale via useLocaleHead).
       htmlAttrs: {
-        lang: 'es-ES'
+        lang: 'en'
       },
+      // Warm up the cross-origin connections used on every page (item thumbnails
+      // come from warframe.market; webfonts from Google's font CDN).
+      link: [
+        { rel: 'preconnect', href: 'https://warframe.market', crossorigin: '' },
+        { rel: 'dns-prefetch', href: 'https://warframe.market' },
+        { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' }
+      ],
       meta: [
         { charset: 'utf-8' },
-        { name: 'twitter:title', content: 'Warframe Market Analytics' },
-        { name: 'twitter:description', content: 'Warframe Market Analytics' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        { name: 'description', content: SITE_DESC },
+        {
+          name: 'keywords',
+          content:
+            'warframe market, warframe prices, warframe platinum, prime parts, prime set price, ducats, riven value, relic value, vaulted primes, warframe trading, warframe analytics'
+        },
+        { name: 'author', content: 'Eduardo Airaudo' },
+        {
+          name: 'robots',
+          content: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
+        },
         { name: 'referrer', content: 'no-referrer' },
-        { name: 'theme-color', content: '#3B9B85' }
+        { name: 'theme-color', content: '#0b0c16' },
+        // Open Graph (per-page og:title/description overridden in the layout)
+        { property: 'og:type', content: 'website' },
+        { property: 'og:site_name', content: 'Warframe Market Analytics' },
+        { property: 'og:title', content: SITE_TITLE },
+        { property: 'og:description', content: SITE_DESC },
+        { property: 'og:image', content: `${SITE_URL}/img/banner.png` },
+        { property: 'og:image:width', content: '1584' },
+        { property: 'og:image:height', content: '396' },
+        { property: 'og:image:alt', content: 'Warframe Market Analytics' },
+        // Twitter card
+        { name: 'twitter:card', content: 'summary_large_image' },
+        { name: 'twitter:title', content: SITE_TITLE },
+        { name: 'twitter:description', content: SITE_DESC },
+        { name: 'twitter:image', content: `${SITE_URL}/img/banner.png` }
       ]
     }
   },
@@ -81,8 +131,9 @@ export default defineNuxtConfig({
       cookieKey: 'i18n_redirected',
       redirectOn: 'root'
     },
-    // baseUrl powers correct hreflang alternate links in SSR head
-    baseUrl: process.env.SITE_URL || 'http://localhost:3312',
+    // baseUrl powers correct hreflang/canonical alternate links in SSR head —
+    // must be the frontend origin (SITE_URL), never the API host.
+    baseUrl: SITE_URL,
     vueI18n: './i18n.config.ts'
   },
 
@@ -90,7 +141,7 @@ export default defineNuxtConfig({
   // no config). v7 requires a site URL to emit absolute <loc> entries and
   // auto-discovers routes from the pages dir like the old default did.
   site: {
-    url: process.env.SITE_URL || 'https://warframe.digitalshopuy.com'
+    url: SITE_URL
   },
 
   // Ported from app/nuxt.config.js `buildModules` google-gtag entry,

@@ -14,7 +14,9 @@ module.exports = {
         // ERR_CONNECTION_REFUSED bug). API_URL is kept for the build-time default.
         NUXT_PUBLIC_API_URL: 'https://warframe.digitalshopuy.com',
         API_URL: 'https://warframe.digitalshopuy.com',
-        SITE_URL: 'https://warframe.digitalshopuy.com',
+        // FRONTEND origin — powers canonical/hreflang/sitemap/OG. Must be the
+        // app host, NOT the API host (warframe.digitalshopuy.com serves JSON).
+        SITE_URL: 'https://warframe-app.digitalshopuy.com',
         PORT: '3312',
         HOST: '0.0.0.0',
       },

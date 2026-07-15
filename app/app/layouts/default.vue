@@ -119,6 +119,21 @@ const { t } = useI18n()
 // Keep drawer navigation on the visitor's locale (prefix_except_default)
 const localePath = useLocalePath()
 
+// Per-route SEO — one place that gives every page a unique, keyword-rich title
+// and meta description (og/twitter mirrors included). Pages only set i18n
+// canonical/hreflang via useLocaleHead, so these layout values win for title
+// and description. resolveSeo() + PAGE_SEO live in app/utils/seo.ts.
+const route = useRoute()
+const seo = computed(() => resolveSeo(route.path))
+useSeoMeta({
+  title: () => seo.value.title,
+  description: () => seo.value.description,
+  ogTitle: () => seo.value.title,
+  ogDescription: () => seo.value.description,
+  twitterTitle: () => seo.value.title,
+  twitterDescription: () => seo.value.description
+})
+
 interface NavLink {
   to: string
   title: string

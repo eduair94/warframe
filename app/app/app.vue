@@ -17,6 +17,50 @@ const config = useRuntimeConfig()
 const base = config.public.apiURL
 const items = useItemsStore()
 
+// ---- Structured data (JSON-LD) --------------------------------------------
+// WebSite + WebApplication describing the tool, so Google / AI answer engines
+// can identify and cite it. Origin is derived per-request so it's correct in
+// dev and prod without hardcoding. `<` is escaped to keep the inline script
+// safe even though all values here are static.
+const origin = useRequestURL().origin
+const ldjson = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'Warframe Market Analytics',
+    alternateName: 'Warframe Analytics',
+    url: origin,
+    inLanguage: 'en',
+    description:
+      'Free real-time Warframe Market analytics: live prime prices, set-vs-parts, ducat efficiency, relic and riven valuation, vaulted-price tracking and trading signals.'
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    name: 'Warframe Market Analytics',
+    url: origin,
+    applicationCategory: 'GameApplication',
+    operatingSystem: 'Web',
+    browserRequirements: 'Requires JavaScript. Requires HTML5.',
+    description:
+      'Live Warframe Market trading tools — prime set vs parts, ducat and relic value, riven pricing, flip finder, vaulted-price and volatility tracking.',
+    isAccessibleForFree: true,
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+    author: {
+      '@type': 'Person',
+      name: 'Eduardo Airaudo',
+      url: 'https://www.linkedin.com/in/eduardo-airaudo/'
+    },
+    sameAs: ['https://github.com/eduair94/warframe']
+  }
+]
+useHead({
+  script: ldjson.map((node) => ({
+    type: 'application/ld+json',
+    innerHTML: JSON.stringify(node).replace(/</g, '\\u003c')
+  }))
+})
+
 // Global bootstrap: was default.vue middleware ($axios.get($config.apiURL) -> dispatch setItems).
 // useAsyncData swallows fetch errors (data.value stays null) so the shell still renders if the
 // API is down; the items store just stays empty in that case.
