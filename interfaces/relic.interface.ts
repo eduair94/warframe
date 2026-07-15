@@ -155,9 +155,11 @@ export interface IRelicEvRow {
   /**
    * True when the relic is vaulted — it no longer drops from any current
    * mission, so it can't be farmed (only cracked from an existing inventory).
-   * Sourced from the relic's own warframe.market item (v2 `vaulted` flag).
-   * `false` also covers "unknown / not enriched" so a missing flag never hides
-   * a relic that might still drop.
+   * Sourced from the live WFCD drop tables (a relic absent from every mission
+   * node is vaulted) — the same data the drop-locations dialog shows, NOT
+   * warframe.market's per-relic flag, which reads non-vaulted for many relics
+   * that no longer drop. Resurgence relics carry `resurgence` instead of this.
+   * Falls back to the market `vaulted` flag only when no drop data is available.
    */
   vaulted: boolean;
   /**

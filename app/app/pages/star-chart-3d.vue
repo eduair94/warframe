@@ -301,7 +301,7 @@
         Prefer a flat view? The classic <NuxtLink :to="localePath('/star-chart')">2D star chart</NuxtLink> ranks the same
         worlds and missions on a single screen.
       </p>
-      <v-alert class="sc3-disclaimer bg-blue-darken-4" type="info" density="compact">
+      <v-alert class="sc3-disclaimer an-disclaimer" type="info" density="compact">
         Expected p/drop = Σ (drop chance × realizable value) across a mission's reward table. Realizable value
         uses each drop's 48h average sell price, weighted by its 48h trade volume (liquidity) — so overpriced
         drops nobody actually buys don't inflate a mission's worth. Drop chances come from community drop data;

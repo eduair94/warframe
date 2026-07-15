@@ -575,6 +575,9 @@
   border: 1px solid var(--line);
   clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
   padding: 11px 12px;
+  /* Let the 1fr grid tracks actually shrink so long row content (e.g. item
+     names set to ellipsize) can't force the column past the card on mobile. */
+  min-width: 0;
 }
 .an-block--full {
   grid-column: 1 / -1;
@@ -590,6 +593,8 @@
 .an-block__row {
   display: flex;
   justify-content: space-between;
+  gap: 8px;
+  min-width: 0;
   font-size: 0.86rem;
   padding: 2px 0;
 }
@@ -647,5 +652,13 @@
   }
   .an-filters {
     padding: 18px 16px 10px;
+  }
+  /* Give the search its own full-width row on mobile so it never collapses to a
+     few characters when it shares a row with a toggle/price field; the sibling
+     controls wrap onto the next line. Scoped under .an-filters to outrank
+     Vuetify's own `.v-input { flex: 1 1 auto }`. */
+  .an-filters .an-search {
+    flex: 1 1 100%;
+    max-width: 100%;
   }
 }

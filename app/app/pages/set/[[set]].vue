@@ -1,7 +1,21 @@
 <template>
   <div class="mt-md-4">
     <div class="my-4">
-      <h1 style="display: none"></h1>
+      <h1
+        style="
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          padding: 0;
+          margin: -1px;
+          overflow: hidden;
+          clip: rect(0, 0, 0, 0);
+          white-space: nowrap;
+          border: 0;
+        "
+      >
+        {{ setName ? `${setName} — Price & Set vs Parts` : 'Warframe Set Prices' }}
+      </h1>
       <ClientOnly>
         <v-data-table
           mobile-breakpoint="sm"

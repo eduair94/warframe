@@ -167,7 +167,11 @@ const isMobile = computed(() => mobile.value)
 // filter/board/window state (was data())
 const search = ref('')
 const mode = ref('gainers')
-const timeframe = ref('change7d')
+// Default to the widest window the accumulated history can actually fill, so the
+// board isn't empty on first load while snapshots are still building up. Falls
+// back to 7d automatically once ≥7 days of history exist.
+const historyDays = Number(meta.value?.maxHistoryDays) || 0
+const timeframe = ref(historyDays >= 7 ? 'change7d' : 'change24h')
 const category = ref('All')
 const page = ref(1)
 const perPage = 25

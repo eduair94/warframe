@@ -156,3 +156,27 @@ describe('DropService.lookupItem', () => {
     expect(res.relics).toHaveLength(0);
   });
 });
+
+describe('DropService.relicKey / droppingRelicKeys', () => {
+  it('relicKey normalizes a relic item name and strips the trailing " Relic"', () => {
+    expect(DropService.relicKey('Lith A1 Relic')).toBe('lith a1');
+    expect(DropService.relicKey('  Neo   V12   Relic ')).toBe('neo v12');
+    // Not a relic -> no key.
+    expect(DropService.relicKey('Ash Prime Blueprint')).toBeNull();
+    expect(DropService.relicKey('')).toBeNull();
+  });
+
+  it('collects currently-dropping relic keys from mission-source index entries only', () => {
+    const planets = DropService.normalizeMissionRewards(rawMissions);
+    const relics = DropService.normalizeRelics(rawRelics);
+    const index = DropService.buildIndex(planets, relics);
+    const keys = DropService.droppingRelicKeys(index);
+
+    // Lith A1 Relic (Earth/Cervantes) + Meso B2 Relic (Earth/Gaia) drop from nodes.
+    expect(keys.has('lith a1')).toBe(true);
+    expect(keys.has('meso b2')).toBe(true);
+    // Prime parts and Forma are mission drops but not relics -> excluded.
+    // Relic-source entries (a relic's own contents) are not mission drops -> excluded.
+    expect(keys.size).toBe(2);
+  });
+});

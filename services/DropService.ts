@@ -290,6 +290,27 @@ export class DropService {
     return { ...result, meta: { source, found: result.missions.length > 0 || result.relics.length > 0 } };
   }
 
+  /**
+   * The set of relics that currently drop from a mission node (keyed by relicKey),
+   * read from the same flat index backup as getItemDrops — with the same live
+   * fallback so it works before the first sync. Drives the relic EV builder's
+   * "currently dropping" gate. Returns an empty set only when there is genuinely
+   * no drop data, so the caller can fall back rather than hide every relic.
+   */
+  async getDroppingRelicKeys(): Promise<Set<string>> {
+    let entries: IDropIndexEntry[];
+
+    const doc = await this.dropRepository.findEntry({ key: 'index' });
+    if (doc && Array.isArray(doc.entries) && doc.entries.length) {
+      entries = doc.entries;
+    } else {
+      const { planets, relics } = await this.fetchSource();
+      entries = DropService.buildIndex(planets, relics);
+    }
+
+    return DropService.droppingRelicKeys(entries);
+  }
+
   // =====================================
   // Fetch (with mirror fallback)
   // =====================================
@@ -327,6 +348,35 @@ export class DropService {
   /** Collapses a name to a match key: lower-cased, trimmed, single-spaced. */
   static normalizeName(name: string): string {
     return (name || '').toLowerCase().replace(/\s+/g, ' ').trim();
+  }
+
+  /**
+   * Identity key for a relic from an item name, e.g. "Lith A1 Relic" -> "lith a1".
+   * Returns null when the name isn't a relic. This is the join key between the
+   * drop tables and the relic EV builder, so both judge "currently dropping" off
+   * the SAME data the drop-locations dialog shows — not warframe.market's
+   * per-relic `vaulted` flag, which reads non-vaulted for relics that no longer
+   * drop (and vaulted for some that still do).
+   */
+  static relicKey(name: string): string | null {
+    const n = DropService.normalizeName(name);
+    if (!n.endsWith(' relic')) return null;
+    return n.slice(0, -' relic'.length).trim() || null;
+  }
+
+  /**
+   * Keys (see relicKey) of every relic that CURRENTLY drops from a mission node,
+   * read off the flat drop index. A relic absent here is not farmable from a
+   * fissure run right now — the authoritative "currently dropping" signal.
+   */
+  static droppingRelicKeys(entries: IDropIndexEntry[]): Set<string> {
+    const keys = new Set<string>();
+    for (const e of entries || []) {
+      if (e.source !== 'mission') continue;
+      const key = DropService.relicKey(e.itemName);
+      if (key) keys.add(key);
+    }
+    return keys;
   }
 
   /**

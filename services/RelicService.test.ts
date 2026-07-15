@@ -164,3 +164,63 @@ describe('RelicService.buildRelicEvFromData', () => {
     expect(byName['Lith A1'].resurgence).toBe(false);
   });
 });
+
+describe('RelicService.buildRelicEvFromData — currently-dropping (WFCD drop-table authority)', () => {
+  // warframe.market's per-relic `vaulted` flag is unreliable: it read non-vaulted
+  // for dozens of relics that no longer drop, and vaulted for a relic that still
+  // does. The authoritative "currently dropping" signal is the WFCD drop table —
+  // the same source the drop-locations dialog shows — passed in as a key set.
+  const relics: IRelic[] = [
+    // Drops right now per WFCD, but the market wrongly flags its relic vaulted.
+    { relicName: 'neo V12', tier: 'Neo', state: 'Intact', rewards: [{ itemName: 'Part A', rarity: 'Common', chance: 25.33 }] },
+    // NOT in the drop table, yet the market flags it non-vaulted — the reported bug.
+    { relicName: 'axi A2', tier: 'Axi', state: 'Intact', rewards: [{ itemName: 'Part B', rarity: 'Common', chance: 25.33 }] },
+    // Resurgence (non-fissure tier), absent from the drop table.
+    { relicName: 'vanguard C1', tier: 'Vanguard', state: 'Intact', rewards: [{ itemName: 'Part C', rarity: 'Common', chance: 25.33 }] },
+  ];
+  const items: IMarketItem[] = [
+    { url_name: 'neo_v12_relic', item_name: 'Neo V12 Relic', vaulted: true, market: { buy: 0, sell: 3, volume: 12, avg_price: 2 } } as IMarketItem,
+    { url_name: 'axi_a2_relic', item_name: 'Axi A2 Relic', vaulted: false, market: { buy: 3, sell: 5, volume: 6, avg_price: 10 } } as IMarketItem,
+    { url_name: 'vanguard_c1_relic', item_name: 'Vanguard C1 Relic', vaulted: false, market: { buy: 42, sell: 11, volume: 17, avg_price: 8.5 } } as IMarketItem,
+  ];
+  // Only Neo V12 currently drops (keyed as normalized "<tier> <code>").
+  const dropping = new Set(['neo v12']);
+
+  it('judges "currently dropping" off the WFCD drop set, overriding the market flag', () => {
+    const byName = Object.fromEntries(
+      service.buildRelicEvFromData(relics, items, dropping).map((r) => [r.relicName, r]),
+    );
+    // In the drop set -> dropping, even though the market says vaulted.
+    expect(byName['Neo V12'].vaulted).toBe(false);
+    // Not in the drop set, though the market says non-vaulted -> vaulted (the fix).
+    expect(byName['Axi A2'].vaulted).toBe(true);
+    // A resurgence tier stays resurgence (not vaulted) so its own badge wins.
+    expect(byName['Vanguard C1'].resurgence).toBe(true);
+    expect(byName['Vanguard C1'].vaulted).toBe(false);
+  });
+
+  it('derives per-drop vaulted from currently-dropping relics only', () => {
+    const byName = Object.fromEntries(
+      service.buildRelicEvFromData(relics, items, dropping).map((r) => [r.relicName, r]),
+    );
+    // Part A comes from the dropping Neo V12 -> not vaulted.
+    expect(byName['Neo V12'].rewards[0].vaulted).toBe(false);
+    // Part B only in the non-dropping Axi A2 -> vaulted.
+    expect(byName['Axi A2'].rewards[0].vaulted).toBe(true);
+  });
+
+  it('falls back to the market vaulted flag when no drop data is supplied', () => {
+    // No / empty drop set -> keep the legacy market-flag behavior so the board
+    // still renders before the first drops sync (never nuke every relic to vaulted).
+    const legacy = Object.fromEntries(
+      service.buildRelicEvFromData(relics, items).map((r) => [r.relicName, r]),
+    );
+    expect(legacy['Neo V12'].vaulted).toBe(true); // market flag
+    expect(legacy['Axi A2'].vaulted).toBe(false); // market flag
+    const empty = Object.fromEntries(
+      service.buildRelicEvFromData(relics, items, new Set<string>()).map((r) => [r.relicName, r]),
+    );
+    expect(empty['Neo V12'].vaulted).toBe(true);
+    expect(empty['Axi A2'].vaulted).toBe(false);
+  });
+});

@@ -20,6 +20,7 @@ import {
 } from '../interfaces/relic.interface';
 import { IMarketItem, IProcessedItem, ISetResult } from '../interfaces/market.interface';
 import { IDatabaseOperations } from '../interfaces/database.interface';
+import { DropService } from './DropService';
 
 /**
  * Service for managing Void Relic data
@@ -257,9 +258,19 @@ export class RelicService {
    *
    * @param relics - All stored (Intact-state) relics
    * @param items - All market items
+   * @param droppingKeys - Keys (see DropService.relicKey) of relics that CURRENTLY
+   *   drop from a mission node, from the WFCD drop tables — the authoritative
+   *   "currently dropping" signal. When provided (non-empty) it overrides the
+   *   unreliable warframe.market per-relic `vaulted` flag; when omitted/empty the
+   *   builder falls back to that flag so the table still renders before a drops
+   *   sync exists.
    * @returns One EV row per relic that has rewards
    */
-  buildRelicEvFromData(relics: IRelic[], items: IMarketItem[]): IRelicEvRow[] {
+  buildRelicEvFromData(
+    relics: IRelic[],
+    items: IMarketItem[],
+    droppingKeys?: Set<string> | null,
+  ): IRelicEvRow[] {
     const byName = new Map<string, IMarketItem>();
     const byUrl = new Map<string, IMarketItem>();
     for (const item of items) {
@@ -268,22 +279,31 @@ export class RelicService {
       if (item.url_name) byUrl.set(item.url_name, item);
     }
 
-    // Whether a relic is vaulted comes from its own warframe.market item flag,
-    // which is only reliably set on RELICS (not individual prime parts). So a
-    // part's "vaulted" status can't be read off the part — it's derived: a part
-    // still drops in fissures iff at least one CURRENTLY-DROPPING (non-vaulted)
-    // relic contains it. Parts found only in vaulted relics are effectively
-    // vaulted (scarce, no longer farmable by cracking new relics).
-    const isRelicVaulted = (relic: IRelic): boolean => {
+    // Authoritative "currently dropping" = the relic appears in the live WFCD drop
+    // tables (same source the drop-locations dialog shows). warframe.market's own
+    // per-relic `vaulted` flag is unreliable — it read non-vaulted for dozens of
+    // relics that no longer drop, leaking them onto the farming board. We fall
+    // back to that flag ONLY when no drop data is supplied (pre-sync), so the
+    // board never silently marks every relic vaulted.
+    const hasDropData = !!droppingKeys && droppingKeys.size > 0;
+    const isRelicDropping = (relic: IRelic): boolean => {
       const meta = this.relicMeta(relic);
       if (!meta) return false;
+      if (hasDropData) {
+        const key = DropService.relicKey(`${meta.displayName} Relic`);
+        return key ? droppingKeys!.has(key) : false;
+      }
       const relicItem = byUrl.get(meta.url_name) || byUrl.get(meta.baseUrl);
-      return relicItem?.vaulted === true;
+      return !(relicItem?.vaulted === true);
     };
 
+    // A part's "vaulted" status can't be read off the part (warframe.market only
+    // flags relics) — it's derived: a part still drops in fissures iff at least
+    // one CURRENTLY-DROPPING relic contains it. Parts found only in non-dropping
+    // relics are effectively vaulted (scarce, no longer farmable by cracking).
     const droppingParts = new Set<string>();
     for (const relic of relics) {
-      if (!relic?.rewards?.length || isRelicVaulted(relic)) continue;
+      if (!relic?.rewards?.length || !isRelicDropping(relic)) continue;
       for (const reward of relic.rewards) droppingParts.add(reward.itemName);
     }
 
@@ -294,6 +314,17 @@ export class RelicService {
       if (!meta) continue;
 
       const relicItem = byUrl.get(meta.url_name) || byUrl.get(meta.baseUrl);
+
+      // Prime Resurgence (Varzia) relics live under a non-fissure tier and are
+      // Aya-bought, never fissure-dropped — a "currently dropping" board must
+      // exclude them regardless of drop-table / market flags.
+      const resurgence = !RelicService.FISSURE_TIERS.has((meta.tier || '').toLowerCase());
+      // Vaulted = not currently dropping and not a Resurgence relic (so the
+      // Resurgence badge wins for those). Falls back to the market flag when no
+      // drop data is available.
+      const vaulted = hasDropData
+        ? !isRelicDropping(relic) && !resurgence
+        : relicItem?.vaulted === true;
 
       const rewards = relic.rewards.map((reward) => {
         const item = byName.get(reward.itemName);
@@ -319,14 +350,8 @@ export class RelicService {
         url_name: meta.url_name,
         tier: this.capitalize(meta.tier),
         thumb: relicItem?.thumb ?? '',
-        // Vaulted relics no longer drop (can't be farmed). `=== true` collapses
-        // an undefined/not-enriched flag to false so we never hide a relic that
-        // might still drop.
-        vaulted: relicItem?.vaulted === true,
-        // Prime Resurgence (Varzia) relics live under a non-fissure tier and are
-        // Aya-bought, never fissure-dropped — so a "currently dropping" board
-        // must exclude them even when their market flag reads non-vaulted.
-        resurgence: !RelicService.FISSURE_TIERS.has((meta.tier || '').toLowerCase()),
+        vaulted,
+        resurgence,
         relic: {
           buy: relicItem?.market?.buy ?? 0,
           sell: relicItem?.market?.sell ?? 0,

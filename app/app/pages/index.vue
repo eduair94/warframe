@@ -421,7 +421,7 @@
       </v-card-text>
     </v-card>
 
-    <v-alert class="mt-3 mt-md-4 mb-0 mb-md-3 bg-blue-darken-4" type="info" density="compact">
+    <v-alert class="an-disclaimer mt-3 mt-md-4 mb-0 mb-md-3" type="info" density="compact">
       {{ t('disclaimer') }}
     </v-alert>
   </div>

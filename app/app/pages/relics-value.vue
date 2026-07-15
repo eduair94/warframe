@@ -471,10 +471,21 @@ onMounted(() => {
   vertical-align: bottom;
   font-weight: 600;
 }
-.an-topdrop-m span {
+.an-topdrop-m {
+  min-width: 0;
+}
+/* Item name: shrink + ellipsize inside the block instead of forcing the grid
+   column wider than the card on mobile. */
+.an-topdrop-m > span:first-child {
+  min-width: 0;
+  flex: 0 1 auto;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+/* Keep the "vaulted" tag intact — never ellipsize it. */
+.an-topdrop-m > .an-vtag {
+  flex: 0 0 auto;
 }
 .an-hidden {
   color: #9aa0b4;

@@ -1,7 +1,21 @@
 <template>
   <div class="mt-md-4">
     <div class="my-4">
-      <h1 style="display: none"></h1>
+      <h1
+        style="
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          padding: 0;
+          margin: -1px;
+          overflow: hidden;
+          clip: rect(0, 0, 0, 0);
+          white-space: nowrap;
+          border: 0;
+        "
+      >
+        {{ relicName ? `${relicName} — Drops & Value` : 'Warframe Relic Drops' }}
+      </h1>
       <ClientOnly>
         <v-data-table
           mobile-breakpoint="sm"
@@ -178,7 +192,7 @@
         </div>
       </div>
     </div>
-    <v-alert class="mt-3 mt-md-4 mb-0 mb-md-3 bg-blue-darken-4" type="info" density="compact">
+    <v-alert class="an-disclaimer mt-3 mt-md-4 mb-0 mb-md-3" type="info" density="compact">
       {{ t('disclaimer') }}
     </v-alert>
   </div>

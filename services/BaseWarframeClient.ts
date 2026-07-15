@@ -464,11 +464,15 @@ export abstract class BaseWarframeClient {
    * (see RelicService.buildRelicEvFromData) — two reads for the whole table.
    */
   async getRelicsEv(): Promise<any[]> {
-    const [relics, items] = await Promise.all([
+    const [relics, items, droppingKeys] = await Promise.all([
       this.relicService.getAllRelics(),
       this.itemService.getAllItems(),
+      // Authoritative "currently dropping" set from the WFCD drop tables (same
+      // source the drop dialog shows), so the farming board's vault gate matches
+      // reality instead of warframe.market's unreliable per-relic flag.
+      this.dropService.getDroppingRelicKeys(),
     ]);
-    return this.relicService.buildRelicEvFromData(relics, items);
+    return this.relicService.buildRelicEvFromData(relics, items, droppingKeys);
   }
 
   // =====================================
