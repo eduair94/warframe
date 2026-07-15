@@ -95,7 +95,7 @@ export default {
       },
       table: {
         mod: 'Mod',
-        buyAt: 'Buy @',
+        buyAt: "Buy {'@'}",
         sellMaxed: 'Sell maxed',
         profit: 'Profit',
         endo: 'Endo',
@@ -272,7 +272,7 @@ export default {
       },
       table: {
         mod: 'Mod',
-        buyAt: 'Comprar @',
+        buyAt: "Comprar {'@'}",
         sellMaxed: 'Vender al máximo',
         profit: 'Ganancia',
         endo: 'Endo',
@@ -449,7 +449,7 @@ export default {
       },
       table: {
         mod: 'Mod',
-        buyAt: 'Comprar @',
+        buyAt: "Comprar {'@'}",
         sellMaxed: 'Vender no máximo',
         profit: 'Lucro',
         endo: 'Endo',

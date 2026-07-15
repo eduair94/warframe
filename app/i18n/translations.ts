@@ -1,7 +1,7 @@
 const translation = {
 	en: {
 		welcome: 'Find the best exchange rate in the market, comparing between more than 40 exchange houses.',
-		title: 'Quotes of {{day}}. They are updated every 10 minutes with respect to the information on the web.',
+		title: 'Quotes of {day}. They are updated every 10 minutes with respect to the information on the web.',
 		info: 'If you found the information on the site useful, you can help to maintain it or leaving your review ',
 		wantToBuy: 'Want to buy',
 		wantToSell: 'Want to sell',
@@ -88,7 +88,7 @@ const translation = {
 	},
 	pt: {
 		welcome: 'Encontre a melhor taxa de câmbio do mercado, comparando entre mais de 40 casas de câmbio.',
-		title: 'Citações do dia {{day}}. Elas são atualizadas a cada 10 minutos com respeito às informações na web.',
+		title: 'Citações do dia {day}. Elas são atualizadas a cada 10 minutos com respeito às informações na web.',
 		info: 'Se você achou as informações no site úteis, você pode ajudar a mantê-las ou deixando sua avaliação',
 		wantToBuy: 'Eu quero comprar',
 		wantToSell: 'Eu quero vender',
@@ -175,7 +175,7 @@ const translation = {
 	},
 	es: {
 		welcome: 'Encuentra la mejor cotización en el mercado, comparando entre más de 40 casas de cambio.',
-		title: 'Cotizaciones del día {{day}}. Se actualizan cada 10 minutos con respecto a la información de la web.',
+		title: 'Cotizaciones del día {day}. Se actualizan cada 10 minutos con respecto a la información de la web.',
 		info: 'Si la información del sitio te sirvió, puedes ayudar a mantenerlo o dejando tu reseña',
 		wantToBuy: 'Quiero comprar',
 		wantToSell: 'Quiero vender',
