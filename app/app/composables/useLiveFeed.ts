@@ -13,14 +13,25 @@ const connected = ref(false)
 // every client by the server — one shared ref, no per-item subscription needed.
 const pulse = ref<MarketPulse | null>(null)
 
-function liveUrl(): string {
-  return useRuntimeConfig().public.liveURL as string
-}
+// Engine.io mount path, proxied same-origin by Nitro (nuxt.config routeRules
+// '/live-io/**' -> live server). Keep in sync with LIVE_SOCKET_PATH on the server.
+const SOCKET_PATH = '/live-io'
 
 function ensureSocket(): Socket | null {
   if (!import.meta.client) return null
   if (socket) return socket
-  socket = io(liveUrl(), { transports: ['websocket'], reconnection: true })
+  // Same-origin connection — no cross-origin/mixed-content, no need to expose the
+  // live server publicly. Polling-only on purpose: Nitro's routeRules proxy forwards
+  // HTTP (engine.io polling) but NOT the websocket Upgrade, so allowing 'websocket'
+  // makes socket.io attempt an upgrade that the proxy 400s — harmless (it stays on
+  // polling) but it logs a console error on every connect. Polling alone is fully
+  // same-origin and reliable for this pulse/update workload.
+  socket = io(window.location.origin, {
+    path: SOCKET_PATH,
+    transports: ['polling'],
+    upgrade: false,
+    reconnection: true
+  })
   socket.on('connect', () => {
     connected.value = true
     // Re-subscribe every active room on (re)connect. This is also how the FIRST

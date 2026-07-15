@@ -61,7 +61,10 @@ async function main() {
     },
   });
 
-  const io = new Server({ cors: { origin: cfg.corsOrigin } });
+  // Mounted on a custom path (default /live-io) that the Nuxt app proxies
+  // same-origin (nuxt.config routeRules) — so the browser never opens a
+  // cross-origin / mixed-content socket to this port.
+  const io = new Server({ path: cfg.socketPath, cors: { origin: cfg.corsOrigin } });
 
   const gateway = new LiveGateway({
     feed: poller,

@@ -10,6 +10,7 @@ export interface LiveConfig {
   pollIntervalMs: number;
   platform: string;
   corsOrigin: string | string[];
+  socketPath: string;     // engine.io mount path; the Nuxt app proxies this same path same-origin
   fvHalfVolume: number;   // volume at which avg_price gets 50% weight vs history median
   baseBandPct: number;    // base +/- band (fraction) around FV before a signal fires
   maxBandPct: number;     // cap on the volatility-widened band
@@ -42,6 +43,7 @@ export function readLiveConfig(env: NodeJS.ProcessEnv): LiveConfig {
     pollIntervalMs: int(env.LIVE_POLL_INTERVAL_MS, 6000),
     platform: env.LIVE_PLATFORM || 'pc',
     corsOrigin: origins.length === 0 ? '*' : origins.length === 1 ? origins[0] : origins,
+    socketPath: env.LIVE_SOCKET_PATH || '/live-io',
     fvHalfVolume: int(env.LIVE_FV_HALF_VOLUME, 50),
     baseBandPct: Number(env.LIVE_BASE_BAND_PCT) || 0.08,
     maxBandPct: Number(env.LIVE_MAX_BAND_PCT) || 0.25,

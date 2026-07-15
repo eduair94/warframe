@@ -33,6 +33,21 @@ export default defineNuxtConfig({
     host: '0.0.0.0'
   },
 
+  // Same-origin proxy for the live Socket.IO server (warframe-live process).
+  // The browser connects to <origin>/live-io (see composables/useLiveFeed.ts) and
+  // Nitro forwards engine.io polling/websocket to the internal live server. This
+  // removes every cross-origin failure mode the direct localhost:3530 connection
+  // hit — mixed content (https page -> ws://), CORS, and the need to expose the
+  // live port publicly. LIVE_INTERNAL_URL is the server-side (private) target;
+  // LIVE_SOCKET_PATH on the live server must match the '/live-io' path below.
+  nitro: {
+    routeRules: {
+      '/live-io/**': {
+        proxy: `${process.env.LIVE_INTERNAL_URL || 'http://127.0.0.1:3530'}/live-io/**`
+      }
+    }
+  },
+
   // Global page head (Nuxt 2 `head{}` -> Nuxt 4 `app.head`). Ported verbatim
   // from app/nuxt.config.js:21-56. `addSeoAttributes` (i18n-only option) and
   // the root-level `description` (not a valid unhead field) were dropped.
