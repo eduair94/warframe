@@ -736,7 +736,9 @@ const modSources = computed<EndoSourceRow[]>(() => {
   const out: EndoSourceRow[] = []
   for (const r of rows) {
     const s = modAsEndoSource(r)
-    if (s.plat > 0 && s.endo > 0 && (s.volume || 0) >= 1) out.push(s)
+    // Require real 48h liquidity so the average cost basis is trustworthy — this
+    // keeps single-order noise off the leaderboard.
+    if (s.plat > 0 && s.endo > 0 && (s.volume || 0) >= 3) out.push(s)
   }
   return out.sort((a, b) => b.endoPerPlat - a.endoPerPlat).slice(0, 25)
 })

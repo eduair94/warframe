@@ -348,11 +348,16 @@ export const SCULPTURE_ENDO: Record<string, number> = {
   zambuka: 2600,
 }
 
-/** Build an endo-source row for a normal mod: buy a maxed copy, dissolve it. */
+/**
+ * Build an endo-source row for a normal mod: buy a maxed copy, dissolve it.
+ * The cost basis is the 48h AVERAGE maxed price (robust — a single 1p troll ask
+ * can't inflate endo/plat here), falling back to the current ask only when there
+ * is no traded average. The page only feeds liquid mods (real 48h volume) into
+ * this, so the average is meaningful.
+ */
 export function modAsEndoSource(row: EndoFlipRow): EndoSourceRow {
   const ev = evalFlip(row)
-  // Buy the cheapest maxed copy (its ask); dissolve for endo.
-  const plat = ev.maxedAsk || ev.maxedSell
+  const plat = ev.maxedAvg > 0 ? ev.maxedAvg : ev.maxedAsk
   const endo = ev.dissolveEndoMaxed
   return {
     kind: 'mod',
@@ -366,7 +371,7 @@ export function modAsEndoSource(row: EndoFlipRow): EndoSourceRow {
     endoPerPlat: endoPerPlat(endo, plat),
     volume: ev.maxedVolume,
     liquidity: ev.liquidity,
-    sub: `${row.flip.rarity} · dissolve maxed`,
+    sub: `${row.flip.rarity} · dissolve maxed (48h avg)`,
   }
 }
 
