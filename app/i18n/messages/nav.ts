@@ -41,7 +41,7 @@ export default {
         portfolio: 'Portfolio',
         endoGuide: 'Endo Guide',
       },
-      tour: {
+      tourSteps: {
         next: 'Next',
         back: 'Back',
         done: 'Done',
@@ -109,7 +109,7 @@ export default {
         portfolio: 'Portafolio',
         endoGuide: 'Guía de Endo',
       },
-      tour: {
+      tourSteps: {
         next: 'Siguiente',
         back: 'Atrás',
         done: 'Listo',
@@ -178,7 +178,7 @@ export default {
         portfolio: 'Portfólio',
         endoGuide: 'Guia de Endo',
       },
-      tour: {
+      tourSteps: {
         next: 'Próximo',
         back: 'Voltar',
         done: 'Concluir',

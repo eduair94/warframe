@@ -235,9 +235,9 @@ async function startTour() {
     showProgress: true,
     allowClose: true,
     popoverClass: 'driverjs-theme',
-    nextBtnText: t('nav.tour.next'),
-    prevBtnText: t('nav.tour.back'),
-    doneBtnText: t('nav.tour.done'),
+    nextBtnText: t('nav.tourSteps.next'),
+    prevBtnText: t('nav.tourSteps.back'),
+    doneBtnText: t('nav.tourSteps.done'),
     // Belt & suspenders: whenever a step that targets a drawer nav item is
     // highlighted, make sure the drawer is open.
     onHighlightStarted: (_el: Element | undefined, step: any) => {
@@ -253,28 +253,28 @@ async function startTour() {
     steps: [
       {
         popover: {
-          title: t('nav.tour.welcomeTitle'),
-          description: t('nav.tour.welcomeDesc'),
+          title: t('nav.tourSteps.welcomeTitle'),
+          description: t('nav.tourSteps.welcomeDesc'),
         },
       },
       {
         element: '.app-menu-btn',
         popover: {
-          title: t('nav.tour.menuTitle'),
-          description: t('nav.tour.menuDesc'),
+          title: t('nav.tourSteps.menuTitle'),
+          description: t('nav.tourSteps.menuDesc'),
           side: 'bottom',
           align: 'start',
         },
       },
-      step('/comparison', t('nav.tour.comparisonTitle'), t('nav.tour.comparisonDesc')),
-      step('/relics-value', t('nav.tour.relicsValueTitle'), t('nav.tour.relicsValueDesc')),
-      step('/flip', t('nav.tour.flipTitle'), t('nav.tour.flipDesc')),
-      step('/ducats', t('nav.tour.ducatsTitle'), t('nav.tour.ducatsDesc')),
-      step('/vaulted', t('nav.tour.vaultedTitle'), t('nav.tour.vaultedDesc')),
+      step('/comparison', t('nav.tourSteps.comparisonTitle'), t('nav.tourSteps.comparisonDesc')),
+      step('/relics-value', t('nav.tourSteps.relicsValueTitle'), t('nav.tourSteps.relicsValueDesc')),
+      step('/flip', t('nav.tourSteps.flipTitle'), t('nav.tourSteps.flipDesc')),
+      step('/ducats', t('nav.tourSteps.ducatsTitle'), t('nav.tourSteps.ducatsDesc')),
+      step('/vaulted', t('nav.tourSteps.vaultedTitle'), t('nav.tourSteps.vaultedDesc')),
       {
         popover: {
-          title: t('nav.tour.doneTitle'),
-          description: t('nav.tour.doneDesc'),
+          title: t('nav.tourSteps.doneTitle'),
+          description: t('nav.tourSteps.doneDesc'),
         },
       },
     ],
