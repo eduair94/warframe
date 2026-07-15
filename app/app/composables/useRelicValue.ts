@@ -1,4 +1,5 @@
 import { unref, type MaybeRef } from 'vue'
+import { demandTier } from './marketFormat'
 
 /**
  * Shared relic-valuation logic for the /relic-farming and /relics-value pages.
@@ -156,23 +157,10 @@ export function payoutLiquidity(relic: RelicRow | undefined | null, refinement: 
   return weight > 0 ? weighted / weight : 0
 }
 
-export interface DemandTier {
-  key: 'high' | 'med' | 'low' | 'dead'
-  label: string
-  cls: string
-}
-
-/** Buckets a payout-liquidity fraction into a demand badge. */
-export function demandTier(frac: number): DemandTier {
-  if (frac >= 0.66) return { key: 'high', label: 'High demand', cls: 'dem--high' }
-  if (frac >= 0.33) return { key: 'med', label: 'Fair demand', cls: 'dem--med' }
-  if (frac > 0) return { key: 'low', label: 'Thin demand', cls: 'dem--low' }
-  return { key: 'dead', label: 'No demand', cls: 'dem--dead' }
-}
-
-export function fmtPlat(n: number): string {
-  return Math.round(Number(n) || 0).toLocaleString('en-US')
-}
+// DemandTier + demandTier + fmtPlat now live in ./marketFormat (the single
+// auto-import source, shared with useEndoValue). Not re-exported here — doing so
+// would recreate the duplicate-export collision this refactor removes. Pages use
+// fmtPlat via auto-import; nothing imports demandTier/DemandTier off this module.
 
 /**
  * Refinement-bound valuation closures. Pass the page's `refinement` ref (or a

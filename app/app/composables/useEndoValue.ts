@@ -16,6 +16,7 @@
  *
  * Endo/credit maths mirror services/EndoCost.ts (wiki-verified 2026-07-14).
  */
+import { demandTier, type DemandTier } from './marketFormat'
 
 /** rarity string (case-insensitive) → tier; archon=Legendary, peculiar=Uncommon. */
 const RARITY_TIER: Record<string, number> = {
@@ -31,8 +32,12 @@ const CREDIT_BASE_PER_TIER = 483
 const DISSOLVE_BASE_PER_TIER = 5
 const DISSOLVE_REFUND = 0.75
 
-/** Liquidity half-weight — a maxed mod's 48h volume where its demand counts half. */
-export const VOL_K = 5
+/**
+ * Liquidity half-weight — a maxed mod's 48h volume where its demand counts half.
+ * Endo-local (relics use a different weight); not exported, to avoid a duplicate
+ * `VOL_K` auto-import with useRelicValue.
+ */
+const VOL_K = 5
 
 export function rarityTier(rarity: string | undefined | null): number {
   return RARITY_TIER[String(rarity || '').toLowerCase()] ?? 0
@@ -177,17 +182,8 @@ export interface FlipEval {
   updatedAt: string
 }
 
-export interface DemandTier {
-  key: 'high' | 'med' | 'low' | 'dead'
-  label: string
-  cls: string
-}
-export function demandTier(liq: number): DemandTier {
-  if (liq >= 0.66) return { key: 'high', label: 'High demand', cls: 'dem--high' }
-  if (liq >= 0.33) return { key: 'med', label: 'Fair demand', cls: 'dem--med' }
-  if (liq > 0) return { key: 'low', label: 'Thin demand', cls: 'dem--low' }
-  return { key: 'dead', label: 'No demand', cls: 'dem--dead' }
-}
+// DemandTier + demandTier moved to ./marketFormat (imported above) — shared with
+// useRelicValue so Nuxt auto-import has a single source. fmtPlat moved there too.
 
 /** How to price the maxed sell side. */
 export type SellBasis =
@@ -396,9 +392,6 @@ export function modAsEndoSource(row: EndoFlipRow): EndoSourceRow {
   }
 }
 
-export function fmtPlat(n: number): string {
-  return Math.round(Number(n) || 0).toLocaleString('en-US')
-}
 export function fmtEndo(n: number): string {
   return Math.round(Number(n) || 0).toLocaleString('en-US')
 }

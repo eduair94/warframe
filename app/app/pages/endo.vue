@@ -419,7 +419,6 @@ import {
   buyWhisper,
   itemUrl,
   SCULPTURE_ENDO,
-  fmtPlat,
   fmtEndo,
   fmtEndoK,
   fmtNum,
@@ -428,6 +427,7 @@ import {
   type FlipEval,
   type SellBasis,
 } from '~/composables/useEndoValue'
+import { fmtPlat } from '~/composables/marketFormat'
 
 dayjs.extend(relativeTime)
 
