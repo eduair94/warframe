@@ -6,41 +6,45 @@
           <div class="an-hero__text">
             <div class="an-eyebrow">Warframe Market · Flip Finder</div>
             <h1 class="an-title">
-              Buy <span class="accent-a">low</span>, sell
-              <span class="accent-b">high</span>.
+              Buy <span class="accent-a">low</span>, sell what
+              <span class="accent-b">actually clears</span>.
             </h1>
             <p class="an-lede">
-              The spread between the highest buy order and the lowest sell order is
-              your margin. Post a buy order at the bid, fill it, relist at the ask —
-              these are the widest, liquid spreads to work right now.
+              A wide bid–ask spread is only a deal if the item really trades. We
+              rank by <strong>realistic margin</strong> — buy at the bid, resell at
+              the 48h clearing price — and score each flip's <strong>fill
+              confidence</strong> from its volume, price anchor and last trade.
+              Mirages (no volume, junk quotes) are hidden until you ask for them.
             </p>
           </div>
           <div v-if="topDeal" class="an-hero__deal">
-            <div class="an-hero__deal-label">Widest liquid spread</div>
-            <div class="an-hero__deal-plat">{{ fmtPlat(topDeal.market.diff) }}<span>p</span></div>
+            <div class="an-hero__deal-label">Best realizable flip</div>
+            <div class="an-hero__deal-plat">+{{ fmtPlat(topDeal.s.realMargin) }}<span>p</span></div>
             <a class="an-hero__deal-name" :href="mkt(topDeal.url_name)" target="_blank" rel="noopener">
               {{ topDeal.item_name }} →
             </a>
-            <div class="an-hero__deal-sub">{{ fmtPct(marginPct(topDeal)) }} margin · vol {{ fmtPlat(topDeal.market.volume) }}</div>
+            <div class="an-hero__deal-sub">
+              {{ topDeal.s.tier.label }} · conf {{ topDeal.s.confidence }} · vol {{ fmtPlat(topDeal.s.vol) }}
+            </div>
           </div>
         </header>
 
         <div class="an-stats">
           <div class="an-stat">
             <div class="an-stat__num">{{ stats.total }}</div>
-            <div class="an-stat__lbl">items tracked</div>
+            <div class="an-stat__lbl">plausible flips</div>
           </div>
           <div class="an-stat">
-            <div class="an-stat__num is-good">{{ fmtPlat(stats.biggest) }}p</div>
-            <div class="an-stat__lbl">widest spread</div>
+            <div class="an-stat__num is-good">+{{ fmtPlat(stats.bestMargin) }}p</div>
+            <div class="an-stat__lbl">best real margin</div>
           </div>
           <div class="an-stat">
-            <div class="an-stat__num is-gold">{{ fmtPlat(stats.avg) }}p</div>
-            <div class="an-stat__lbl">avg spread</div>
+            <div class="an-stat__num is-gold">{{ stats.avgConfidence }}</div>
+            <div class="an-stat__lbl">avg confidence</div>
           </div>
           <div class="an-stat">
-            <div class="an-stat__num is-alt">{{ stats.profitable }}</div>
-            <div class="an-stat__lbl">spread ≥ 10p</div>
+            <div class="an-stat__num is-alt">{{ stats.strong }}</div>
+            <div class="an-stat__lbl">strong deals</div>
           </div>
         </div>
 
@@ -48,15 +52,21 @@
           <div class="an-filters__row">
             <v-text-field v-model="search" density="compact" hide-details clearable prepend-inner-icon="mdi-magnify" label="Search an item" class="an-search"></v-text-field>
             <v-text-field v-model.number="minVolume" density="compact" hide-details type="number" min="0" label="Min volume (48h)" class="an-field"></v-text-field>
-            <v-select v-model="sortKey" :items="sortOptions" density="compact" hide-details label="Sort by" class="an-field" style="flex: 0 1 220px"></v-select>
+            <v-select v-model="sortKey" :items="sortOptions" density="compact" hide-details label="Sort by" class="an-field" style="flex: 0 1 240px"></v-select>
           </div>
           <v-chip-group v-model="category" mandatory column selected-class="an-chip--on" class="an-cats">
             <v-chip v-for="c in categoryOptions" :key="c" :value="c" size="small">{{ c }}</v-chip>
           </v-chip-group>
+          <div class="an-toggles">
+            <v-switch v-model="includeSpeculative" density="compact" hide-details inset color="#d4af5a" label="Include speculative (thin / junk quotes)"></v-switch>
+          </div>
           <div class="an-count">{{ filtered.length }} {{ filtered.length === 1 ? 'item' : 'items' }} match</div>
         </section>
 
-        <div v-if="!filtered.length" class="an-empty">No items match these filters. Widen the search or lower the min volume.</div>
+        <div v-if="!filtered.length" class="an-empty">
+          No {{ includeSpeculative ? '' : 'plausible ' }}flips match these filters.
+          {{ includeSpeculative ? 'Widen the search or lower the min volume.' : 'Widen the search, lower the min volume, or enable “Include speculative”.' }}
+        </div>
 
         <div v-else-if="!isMobile" class="an-tablewrap">
           <table class="an-table">
@@ -65,9 +75,10 @@
                 <th class="col-name">Item</th>
                 <th class="grp-a">Buy (bid)</th>
                 <th class="grp-b">Sell (ask)</th>
+                <th>Real margin</th>
+                <th>Return</th>
                 <th>Spread</th>
-                <th>Margin</th>
-                <th>Vol</th>
+                <th>Confidence</th>
                 <th></th>
               </tr>
             </thead>
@@ -79,17 +90,27 @@
                     <span>
                       {{ row.item_name }}
                       <span v-if="row.url_name === topDealUrl" class="an-badge">TOP</span>
-                      <small class="an-sub">vol {{ fmtPlat(row.market.volume) }}</small>
+                      <small class="an-sub">avg {{ fmtPlat(row.s.avg) }}p · vol {{ fmtPlat(row.s.vol) }}</small>
                     </span>
                   </a>
                 </td>
-                <td class="grp-a an-num">{{ fmtPlat(row.market.buy) }}p</td>
-                <td class="grp-b an-num">{{ fmtPlat(row.market.sell) }}p</td>
-                <td class="an-num an-strong up">+{{ fmtPlat(row.market.diff) }}p</td>
-                <td class="an-num up">{{ fmtPct(marginPct(row)) }}</td>
-                <td class="an-num">{{ fmtPlat(row.market.volume) }}</td>
+                <td class="grp-a an-num">{{ fmtPlat(row.s.bid) }}p</td>
+                <td class="grp-b an-num">{{ fmtPlat(row.s.ask) }}p</td>
+                <td class="an-num an-strong" :class="marginClass(row.s.realMargin)">{{ fmtSignedPlat(row.s.realMargin) }}p</td>
+                <td class="an-num" :class="marginClass(row.s.realMargin)">{{ fmtPct(row.s.realMarginPct) }}</td>
+                <td class="an-num flat">
+                  {{ fmtSignedPlat(row.s.spread) }}p<span v-if="row.s.junkAsk" class="an-warn" title="Ask far above recent trades — this spread is not realistic"> ⚠</span>
+                </td>
                 <td>
-                  <v-btn icon size="small" color="#4fb3bf" variant="text" :href="mkt(row.url_name)" target="_blank" :aria-label="'Open ' + row.item_name">
+                  <span class="pill" :class="row.s.tier.cls">
+                    {{ row.s.tier.label }}<b>{{ row.s.confidence }}/100</b>
+                  </span>
+                </td>
+                <td class="an-actions">
+                  <v-btn icon size="small" color="#4fb3bf" variant="text" :aria-label="'Drops & wiki for ' + row.item_name" @click="openDrops(row)">
+                    <v-icon>mdi-map-marker-radius-outline</v-icon>
+                  </v-btn>
+                  <v-btn icon size="small" color="#d4af5a" variant="text" :href="mkt(row.url_name)" target="_blank" :aria-label="'Open ' + row.item_name + ' on Warframe Market'">
                     <v-icon>mdi-open-in-new</v-icon>
                   </v-btn>
                 </td>
@@ -99,28 +120,45 @@
         </div>
 
         <div v-else class="an-cards">
-          <a v-for="row in paged" :key="row.url_name" class="an-card" :class="{ 'is-top': row.url_name === topDealUrl }" :href="mkt(row.url_name)" target="_blank" rel="noopener">
+          <div v-for="row in paged" :key="row.url_name" class="an-card" :class="{ 'is-top': row.url_name === topDealUrl }">
             <div class="an-card__head">
               <img class="an-thumb" :src="assetUrl(row.thumb)" :alt="row.item_name" loading="lazy" @error="onImgError" />
               <div class="an-card__title">
                 <div class="an-card__name">{{ row.item_name }}<span v-if="row.url_name === topDealUrl" class="an-badge">TOP</span></div>
-                <small class="an-sub">vol {{ fmtPlat(row.market.volume) }}</small>
+                <small class="an-sub">avg {{ fmtPlat(row.s.avg) }}p · vol {{ fmtPlat(row.s.vol) }}</small>
               </div>
-              <v-icon color="#4fb3bf">mdi-open-in-new</v-icon>
+            </div>
+            <div class="an-card__verdict">
+              <span class="pill" :class="row.s.tier.cls">
+                {{ row.s.tier.label }}<b>fill confidence {{ row.s.confidence }}/100</b>
+              </span>
             </div>
             <div class="an-card__blocks">
               <div class="an-block">
                 <div class="an-block__lbl">Prices</div>
-                <div class="an-block__row"><span>Buy</span><b>{{ fmtPlat(row.market.buy) }}p</b></div>
-                <div class="an-block__row"><span>Sell</span><b>{{ fmtPlat(row.market.sell) }}p</b></div>
+                <div class="an-block__row"><span>Buy (bid)</span><b>{{ fmtPlat(row.s.bid) }}p</b></div>
+                <div class="an-block__row"><span>Sell (ask)</span><b>{{ fmtPlat(row.s.ask) }}p</b></div>
+                <div class="an-block__row">
+                  <span>Spread</span>
+                  <b class="flat">{{ fmtSignedPlat(row.s.spread) }}p<span v-if="row.s.junkAsk" class="an-warn"> ⚠</span></b>
+                </div>
               </div>
               <div class="an-block">
-                <div class="an-block__lbl">Margin</div>
-                <div class="an-block__row"><span>Spread</span><b class="up">+{{ fmtPlat(row.market.diff) }}p</b></div>
-                <div class="an-block__row"><span>Return</span><b class="up">{{ fmtPct(marginPct(row)) }}</b></div>
+                <div class="an-block__lbl">Realistic flip</div>
+                <div class="an-block__row"><span>Margin</span><b :class="marginClass(row.s.realMargin)">{{ fmtSignedPlat(row.s.realMargin) }}p</b></div>
+                <div class="an-block__row"><span>Return</span><b :class="marginClass(row.s.realMargin)">{{ fmtPct(row.s.realMarginPct) }}</b></div>
+                <div class="an-block__row"><span>Clears at</span><b>{{ fmtPlat(row.s.avg) }}p</b></div>
               </div>
             </div>
-          </a>
+            <div class="an-card__actions">
+              <button type="button" class="an-cardbtn" @click="openDrops(row)">
+                <v-icon size="16">mdi-map-marker-radius-outline</v-icon> Drops &amp; wiki
+              </button>
+              <a class="an-cardbtn" :href="mkt(row.url_name)" target="_blank" rel="noopener">
+                <v-icon size="16">mdi-open-in-new</v-icon> Market
+              </a>
+            </div>
+          </div>
         </div>
 
         <div v-if="filtered.length > perPage" class="an-pager">
@@ -129,9 +167,15 @@
       </div>
 
       <v-alert class="an-disclaimer bg-blue-darken-4" type="info" density="compact">
-        Spread = lowest sell order − highest buy order, from Warframe Market. Wide
-        spreads on low-volume items may not fill quickly — check the volume column.
+        <strong>Real margin</strong> = 48h average clearing price − highest buy order
+        (buy at the bid, resell into real demand). <strong>Spread</strong> = lowest
+        sell − highest buy is the best case you rarely get; ⚠ marks a lone-gouger ask.
+        <strong>Confidence</strong> blends volume, price anchor and last-trade recency.
+        Thin / junk-quote items are hidden until “Include speculative”. All data from
+        Warframe Market.
       </v-alert>
+
+      <DropLocationsDialog v-model="dropDialog" :item-name="dropItemName" :thumb="dropThumb" />
     </client-only>
   </div>
 </template>
@@ -140,6 +184,7 @@
 import { computed, nextTick, onMounted, ref, watch } from 'vue'
 import { useDisplay } from 'vuetify'
 import { useItemsStore } from '~/stores/items'
+import { scoreFlip } from '~/composables/useFlipScore'
 
 const itemsStore = useItemsStore()
 const allItems = computed(() => itemsStore.allItems)
@@ -150,17 +195,32 @@ const isMobile = computed(() => mobile.value)
 const search = ref('')
 const minVolume = ref<number>(0)
 const category = ref('All')
-const sortKey = ref('spread')
+const sortKey = ref('opportunity')
+const includeSpeculative = ref(false)
 const page = ref(1)
 const perPage = 25
 const placeholderImg =
   "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44'%3E%3Crect width='44' height='44' rx='8' fill='%232a2a3d'/%3E%3Cpath d='M22 11 L31 22 L22 33 L13 22 Z' fill='none' stroke='%234fb3bf' stroke-width='2' opacity='0.75'/%3E%3C/svg%3E"
 const sortOptions = [
-  { title: 'Widest spread', value: 'spread' },
-  { title: 'Best margin %', value: 'margin' },
+  { title: 'Best opportunity', value: 'opportunity' },
+  { title: 'Fill confidence', value: 'confidence' },
+  { title: 'Realistic margin', value: 'realMargin' },
+  { title: 'Return %', value: 'return' },
+  { title: 'Optimistic spread', value: 'spread' },
   { title: 'Volume', value: 'volume' },
   { title: 'Name (A–Z)', value: 'name' },
 ]
+
+// Drop-locations + wiki dialog (reuses the shared component — it bundles the
+// drop table, wiki link, warframestat cross-ref and a live market snapshot).
+const dropDialog = ref(false)
+const dropItemName = ref('')
+const dropThumb = ref('')
+function openDrops(row: any) {
+  dropItemName.value = row.item_name
+  dropThumb.value = row.thumb || ''
+  dropDialog.value = true
+}
 
 function categoryOf(tags: string[] = []): string {
   const t = (tags || []).map((x) => (x || '').toLowerCase())
@@ -174,19 +234,20 @@ function categoryOf(tags: string[] = []): string {
   if (t.includes('arcane_enhancement') || t.includes('arcane')) return 'Arcane'
   return 'Other'
 }
-function marginPct(row: any): number {
-  return row.market.buy > 0 ? (row.market.diff / row.market.buy) * 100 : 0
-}
 
-const priced = computed<any[]>(() =>
-  (allItems.value as any[]).filter(
-    (i) => i && i.market && i.market.buy > 0 && i.market.sell > 0 && i.market.sell > i.market.buy
-  )
+// Every item that quotes both a bid and an ask, scored once. Base pool for the
+// plausible/speculative split below.
+const scored = computed<any[]>(() =>
+  (allItems.value as any[])
+    .filter((i) => i && i.market && Number(i.market.buy) > 0 && Number(i.market.sell) > 0)
+    .map((i) => ({ ...i, s: scoreFlip(i.market) }))
 )
+
+const plausibleAll = computed<any[]>(() => scored.value.filter((r) => r.s.plausible))
 
 const categoryOptions = computed<string[]>(() => {
   const present = new Set<string>()
-  for (const r of priced.value) present.add(categoryOf(r.tags))
+  for (const r of scored.value) present.add(categoryOf(r.tags))
   const order = ['Warframe', 'Primary', 'Secondary', 'Melee', 'Mod', 'Sentinel', 'Companion', 'Arcane', 'Other']
   return ['All', ...order.filter((c) => present.has(c))]
 })
@@ -194,20 +255,24 @@ const categoryOptions = computed<string[]>(() => {
 const filtered = computed<any[]>(() => {
   const q = (search.value || '').toString().trim().toLowerCase()
   const minV = Number(minVolume.value) || 0
-  const list = priced.value.filter((r) => {
+  const list = scored.value.filter((r) => {
+    if (!includeSpeculative.value && !r.s.plausible) return false
     if (q && !r.item_name.toLowerCase().includes(q)) return false
     if (category.value !== 'All' && categoryOf(r.tags) !== category.value) return false
-    if ((r.market.volume || 0) < minV) return false
+    if (r.s.vol < minV) return false
     return true
   })
   const dir = (a: number, b: number) => b - a
   const sorters: Record<string, (a: any, b: any) => number> = {
-    spread: (a, b) => dir(a.market.diff, b.market.diff),
-    margin: (a, b) => dir(marginPct(a), marginPct(b)),
-    volume: (a, b) => dir(a.market.volume || 0, b.market.volume || 0),
+    opportunity: (a, b) => dir(a.s.opportunity, b.s.opportunity),
+    confidence: (a, b) => dir(a.s.confidence, b.s.confidence) || dir(a.s.realMargin, b.s.realMargin),
+    realMargin: (a, b) => dir(a.s.realMargin, b.s.realMargin),
+    return: (a, b) => dir(a.s.realMarginPct, b.s.realMarginPct),
+    spread: (a, b) => dir(a.s.spread, b.s.spread),
+    volume: (a, b) => dir(a.s.vol, b.s.vol),
     name: (a, b) => a.item_name.localeCompare(b.item_name),
   }
-  return list.slice().sort(sorters[sortKey.value] || sorters.spread)
+  return list.slice().sort(sorters[sortKey.value] || sorters.opportunity)
 })
 
 const pageCount = computed(() => Math.max(1, Math.ceil(filtered.value.length / perPage)))
@@ -217,30 +282,32 @@ const paged = computed<any[]>(() => {
   return filtered.value.slice(start, start + perPage)
 })
 
+// Hero = the single best realizable opportunity across the plausible universe.
 const topDeal = computed<any>(() => {
   let best: any = null
-  for (const r of priced.value) if (!best || r.market.diff > best.market.diff) best = r
+  for (const r of plausibleAll.value) if (!best || r.s.opportunity > best.s.opportunity) best = r
   return best
 })
 
 const topDealUrl = computed<string>(() => {
   let best: any = null
-  for (const r of filtered.value) if (!best || r.market.diff > best.market.diff) best = r
+  for (const r of filtered.value) if (!best || r.s.opportunity > best.s.opportunity) best = r
   return best ? best.url_name : ''
 })
 
 const stats = computed<any>(() => {
-  const list = priced.value
-  const diffs = list.map((r) => r.market.diff)
+  const list = plausibleAll.value
+  const confs = list.map((r) => r.s.confidence)
+  const margins = list.map((r) => r.s.realMargin)
   return {
     total: list.length,
-    biggest: diffs.length ? Math.max(...diffs) : 0,
-    avg: diffs.length ? diffs.reduce((s, v) => s + v, 0) / diffs.length : 0,
-    profitable: list.filter((r) => r.market.diff >= 10).length,
+    bestMargin: margins.length ? Math.max(...margins) : 0,
+    avgConfidence: confs.length ? Math.round(confs.reduce((s, v) => s + v, 0) / confs.length) : 0,
+    strong: list.filter((r) => r.s.tier.key === 'strong').length,
   }
 })
 
-watch(filtered, () => {
+watch([filtered], () => {
   page.value = 1
 })
 
@@ -256,12 +323,22 @@ function onImgError(e: any) {
   img.dataset.fallback = '1'
   img.src = placeholderImg
 }
+function marginClass(n: number): string {
+  const v = Number(n) || 0
+  if (v > 0) return 'up'
+  if (v < 0) return 'down'
+  return 'flat'
+}
 function fmtPlat(n: number): string {
   return Math.round(Number(n) || 0).toLocaleString('en-US')
 }
+function fmtSignedPlat(n: number): string {
+  const v = Math.round(Number(n) || 0)
+  return `${v > 0 ? '+' : ''}${v.toLocaleString('en-US')}`
+}
 function fmtPct(n: number): string {
   const v = Number(n) || 0
-  return `${v.toFixed(0)}%`
+  return `${v > 0 ? '+' : ''}${v.toFixed(0)}%`
 }
 
 function finishLoading(attempt = 0) {
@@ -275,3 +352,41 @@ onMounted(() => {
   finishLoading()
 })
 </script>
+
+<style scoped>
+/* Actions cell keeps its two icon buttons on one row, right-aligned */
+.an-actions {
+  white-space: nowrap;
+  text-align: right;
+}
+/* Mobile card action buttons — angular HUD chips matching the design system */
+.an-card__actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 13px;
+}
+.an-cardbtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+  justify-content: center;
+  padding: 9px 10px;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  color: #cfd4e4;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(200, 168, 92, 0.28);
+  clip-path: polygon(7px 0, 100% 0, 100% calc(100% - 7px), calc(100% - 7px) 100%, 0 100%, 0 7px);
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.an-cardbtn:hover {
+  background: rgba(200, 168, 92, 0.12);
+  color: #e7cf95;
+}
+</style>
