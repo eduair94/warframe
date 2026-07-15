@@ -64,6 +64,12 @@ async function main() {
     server.getJsonCache('market_analytics', async (req: Request): Promise<any> => {
         return m.getMarketAnalytics();
     });
+    // Endo Exchange (mod flipping): every rank-able mod with a stored per-rank
+    // flip ladder, for the endo->plat tool. Cached like the other aggregates;
+    // the client (useEndoValue) computes best buy-rank / profit / plat-per-endo.
+    server.getJsonCache('endo_flip', async (req: Request): Promise<any> => {
+        return m.getEndoFlip();
+    });
     // Riven fair-value page: weapon picker list + one weapon's auction corpus.
     server.getJsonCache('riven_weapons', async (req: Request): Promise<any> => {
         const weapons = await m.getRivenWeaponsList();

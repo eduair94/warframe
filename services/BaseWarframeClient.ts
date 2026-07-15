@@ -34,6 +34,7 @@ import { RelicService } from './RelicService';
 import { RivenService } from './RivenService';
 import { SetService } from './SetService';
 import { WarframeItemsResponse } from "./WarframeItems.interface";
+import { IEndoFlipResponse, IEndoFlipRow } from '../interfaces/endo.interface';
 
 /**
  * Configuration options for Warframe clients
@@ -365,6 +366,40 @@ export abstract class BaseWarframeClient {
         generatedAt: new Date().toISOString(),
       },
       items: analytics,
+    };
+  }
+
+  // =====================================
+  // Endo Exchange (mod-flip, Shared Implementation)
+  // =====================================
+
+  /**
+   * Builds the Endo Exchange payload: every rank-able mod that has a stored
+   * per-rank flip ladder (populated by sync_prices / sync_mod_flip via
+   * MarketService.getItemPrices). One catalogue read; the client (`useEndoValue`)
+   * does all valuation — endo cost, best buy rank, profit, plat-per-endo — so
+   * the maths lives in a single unit-tested place. Same server-thin / client-rich
+   * split as getRelicsEv.
+   */
+  async getEndoFlip(): Promise<IEndoFlipResponse> {
+    const items = (await this.itemService.getAllItems()) as any[];
+    const mods: IEndoFlipRow[] = [];
+    for (const it of items || []) {
+      const flip = it?.market?.flip;
+      // Require a real ladder: a rank-able mod whose fusion cost we can compute
+      // (buildModFlipData already gated on tags/rarity, so presence is enough).
+      if (!flip || !Array.isArray(flip.ranks) || !(Number(flip.maxRank) > 0)) continue;
+      mods.push({
+        item_name: it.item_name,
+        url_name: it.url_name,
+        thumb: it.thumb,
+        tags: it.items_in_set?.[0]?.tags || [],
+        flip,
+      });
+    }
+    return {
+      meta: { count: mods.length, generatedAt: new Date().toISOString() },
+      mods,
     };
   }
 

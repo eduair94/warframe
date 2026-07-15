@@ -17,7 +17,9 @@ import { API_URLS, PRICE_CONFIG } from '../constants';
 import { sleep } from '../Express/config';
 import { IHttpClient } from '../interfaces/http.interface';
 import { OrderCalculator } from './OrderCalculator';
-import { StatisticsCalculator } from './StatisticsCalculator';
+import { StatisticsCalculator, IStatisticsDataPoint } from './StatisticsCalculator';
+import { buildModFlipData, IModFlipData } from './ModFlipCalculator';
+import { rarityTier } from './EndoCost';
 import { WarframeItemsResponse } from "./WarframeItems.interface";
 
 // Debug mode - set DEBUG=true or DEBUG=warframe:* for verbose logging
@@ -535,6 +537,8 @@ export class MarketService {
     avg_price: number;
     last_completed: any;
     not_found?: boolean;
+    /** Per-rank flip ladder + stat blocks — present only for rank-able mods. */
+    flip?: IModFlipData;
   }> {
     try {
       // Anti-detection pacing now happens once per HTTP request inside
@@ -559,16 +563,22 @@ export class MarketService {
         }
       );
 
-      // Fetch and calculate statistics. Statistics come from the v1 endpoint
-      // (no v2 equivalent exists) and are only used for volume/avg_price/
-      // last_completed — secondary display data. The buy/sell prices above
-      // (from the v2 orders endpoint) are the primary inputs every calculator
-      // relies on, so a statistics-only failure must NOT discard them.
-      // Degrade gracefully to zero-volume stats instead, and only re-throw so
-      // the outer retry handler kicks in when it's a rate-limit (429) error.
+      // Fetch statistics ONCE (v1 endpoint, no v2 equivalent). The maxed-rank
+      // aggregate below is secondary display data (volume/avg_price/
+      // last_completed); the buy/sell prices above (v2 orders) are the primary
+      // inputs every calculator relies on, so a statistics-only failure must NOT
+      // discard them — degrade to zero-volume stats. Only re-throw on a
+      // rate-limit (429) so the outer retry handler kicks in. We keep the RAW
+      // 48h array so the mod-flip ladder below can reuse it with zero extra
+      // fetches (the array already carries both the rank-0 and max-rank series).
+      let rawStats48h: IStatisticsDataPoint[] = [];
       let stats: { volume: number; avg_price: number; last_completed: any };
       try {
-        stats = await this.calculateStatistics(item.url_name, maxRank);
+        const statsResponse = await this.getItemStatistics<{
+          payload: { statistics_closed: { '48hours': IStatisticsDataPoint[] } }
+        }>(item.url_name);
+        rawStats48h = statsResponse?.payload?.statistics_closed?.['48hours'] || [];
+        stats = StatisticsCalculator.calculate(rawStats48h, { modRank: maxRank });
       } catch (statsError: any) {
         if (this.isRateLimitError(statsError)) {
           throw statsError;
@@ -576,12 +586,37 @@ export class MarketService {
         if (DEBUG) {
           console.log(`⚠ Statistics unavailable for ${item.url_name}, using order prices only:`, statsError.message);
         }
+        rawStats48h = [];
         stats = { volume: 0, avg_price: 0, last_completed: null };
+      }
+
+      // Mod-flip data (Endo Exchange): for a rank-able mod, extract the full
+      // per-rank ask/bid ladder + the rank-0/max 48h stat blocks from the orders
+      // + stats we ALREADY fetched — no additional requests. Gated to real mods
+      // with a known rarity tier so we don't store ladders for arcanes (ranked
+      // by duplicates, not endo) or items whose fusion cost we can't compute.
+      let flip: IModFlipData | undefined;
+      const set0: any = (item as any).items_in_set?.[0];
+      const modTags: string[] = (set0 && set0.tags) || [];
+      const modRarity: string = (set0 && set0.rarity) || '';
+      const isFlippableMod =
+        typeof maxRank === 'number' && maxRank > 0 && modTags.includes('mod') && rarityTier(modRarity) > 0;
+      if (isFlippableMod) {
+        try {
+          flip = buildModFlipData(ordersResponse.payload.orders, rawStats48h, {
+            rarity: modRarity,
+            maxRank: maxRank as number,
+          });
+        } catch (flipError: any) {
+          // Never let flip extraction fail a price sync — it's additive data.
+          if (DEBUG) console.log(`⚠ Flip data skipped for ${item.url_name}:`, flipError?.message);
+        }
       }
 
       return {
         ...prices,
-        ...stats
+        ...stats,
+        ...(flip ? { flip } : {})
       };
     } catch (error: any) {
       return this.handlePriceError(error, item, retryAttempt);
