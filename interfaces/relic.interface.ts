@@ -160,6 +160,14 @@ export interface IRelicEvRow {
    * a relic that might still drop.
    */
   vaulted: boolean;
+  /**
+   * True when the relic belongs to a non-fissure tier (currently "Vanguard") —
+   * a Prime Resurgence relic bought from Varzia with Aya, which never drops from
+   * a mission or fissure. warframe.market flags it non-vaulted (it IS obtainable
+   * in-game), so `vaulted` alone can't hide it; the farming board keys off this
+   * to keep such relics off a "what can I farm from a run right now" list.
+   */
+  resurgence: boolean;
   /** The relic's own market data — relics are tradeable */
   relic: { buy: number; sell: number; volume: number; avgPrice: number };
   /** The six possible rewards with prices */

@@ -45,6 +45,8 @@ export interface RelicRow {
   tier: string
   thumb: string
   vaulted?: boolean
+  /** Prime Resurgence (Varzia) relic — Aya-bought, never fissure-farmable. */
+  resurgence?: boolean
   rewards: RelicReward[]
   relic: { buy: number; sell: number; volume: number; avgPrice?: number }
 }
@@ -88,6 +90,21 @@ export function hasFullData(relic: RelicRow | undefined | null): boolean {
 /** A vaulted relic no longer drops from missions (can't be farmed). */
 export function isVaulted(relic: RelicRow | undefined | null): boolean {
   return relic?.vaulted === true
+}
+
+/**
+ * A Prime Resurgence (Varzia) relic — a non-fissure tier obtained only by buying
+ * from Varzia with Aya, never dropped by a mission or fissure. warframe.market
+ * flags it non-vaulted (it IS obtainable in-game), so it slips past `isVaulted`;
+ * the farming board excludes it from "currently dropping" via this flag instead.
+ */
+export function isResurgence(relic: RelicRow | undefined | null): boolean {
+  return relic?.resurgence === true
+}
+
+/** Can this relic be farmed by running a fissure right now (not vaulted, not Resurgence-only)? */
+export function isFarmable(relic: RelicRow | undefined | null): boolean {
+  return !isVaulted(relic) && !isResurgence(relic)
 }
 
 /** A reward part that itself no longer drops from any current relic/mission. */
@@ -222,6 +239,8 @@ export function useRelicValue(refinement: MaybeRef<string>) {
     rewardVaulted,
     dropMix,
     isVaulted,
+    isResurgence,
+    isFarmable,
     hasFullData,
     fmtPlat,
   }

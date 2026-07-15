@@ -141,6 +141,7 @@
           <div class="an-count">
             {{ filtered.length }} {{ filtered.length === 1 ? 'relic' : 'relics' }} match
             <span v-if="hiddenVaulted" class="an-hidden">· {{ hiddenVaulted }} vaulted</span>
+            <span v-if="hiddenResurgence" class="an-hidden">· {{ hiddenResurgence }} resurgence</span>
             <span v-if="hiddenNoDemand" class="an-hidden">· {{ hiddenNoDemand }} no demand</span>
             <span v-if="hiddenIncomplete" class="an-hidden">· {{ hiddenIncomplete }} incomplete data</span>
           </div>
@@ -180,6 +181,7 @@
                         {{ row.relicName }}
                         <span v-if="row.url_name === topDealUrl" class="an-badge">TOP</span>
                         <span v-if="row.vaulted" class="an-badge an-badge--vault">VAULTED</span>
+                        <span v-else-if="row.resurgence" class="an-badge an-badge--resurgence" title="Prime Resurgence — buy from Varzia with Aya (not fissure-farmable)">RESURGENCE</span>
                         <small class="an-sub">
                           {{ row.tier }} · {{ row.rewards.length }} drops
                           <template v-if="dropMix(row).vaulted"> · <span class="an-vtag">{{ dropMix(row).vaulted }} vaulted</span></template>
@@ -226,6 +228,7 @@
                   {{ row.relicName }}
                   <span v-if="row.url_name === topDealUrl" class="an-badge">TOP</span>
                   <span v-if="row.vaulted" class="an-badge an-badge--vault">VAULTED</span>
+                  <span v-else-if="row.resurgence" class="an-badge an-badge--resurgence" title="Prime Resurgence — buy from Varzia with Aya (not fissure-farmable)">RESURGENCE</span>
                 </div>
                 <small class="an-sub">
                   {{ row.tier }} · {{ row.rewards.length }} drops · vol {{ fmtPlat(row.relic.volume) }}
@@ -353,7 +356,7 @@ const sortOptions = [
 // Shared, liquidity-aware valuation (same basis as the Star Chart): each drop is
 // discounted by its 48h trade volume, so overpriced parts nobody buys don't
 // inflate a relic's plat/hour. `ev` here is the realizable EV.
-const { ev, evRaw, topDrop, liquidity, demand, dropMix, rewardVaulted, isVaulted, hasFullData, fmtPlat } =
+const { ev, evRaw, topDrop, liquidity, demand, dropMix, rewardVaulted, isVaulted, isResurgence, hasFullData, fmtPlat } =
   useRelicValue(refinement)
 
 function onImgError(e: any) {
@@ -403,7 +406,10 @@ const matched = computed<RelicRow[]>(() => {
 // The default board: currently-dropping (not vaulted), fully-priced, and with a
 // real market for its drops. Each is an independent, user-toggleable gate.
 function passesQuality(r: RelicRow): boolean {
-  if (droppingOnly.value && isVaulted(r)) return false
+  // "Currently dropping" = farmable from a fissure run: excludes both vaulted
+  // relics and Prime Resurgence (Varzia) relics, which are Aya-bought and never
+  // drop from a mission — so they carry no real plat-per-run.
+  if (droppingOnly.value && (isVaulted(r) || isResurgence(r))) return false
   if (completeOnly.value && !hasFullData(r)) return false
   if (hideNoDemand.value && noDemand(r)) return false
   return true
@@ -419,9 +425,14 @@ const hiddenIncomplete = computed<number>(() =>
 const hiddenVaulted = computed<number>(() =>
   droppingOnly.value ? matched.value.filter((r) => isVaulted(r)).length : 0,
 )
+// Prime Resurgence (Varzia) relics the "currently dropping" gate hides — counted
+// apart from vaulted since they're a different kind of "not farmable from a run".
+const hiddenResurgence = computed<number>(() =>
+  droppingOnly.value ? matched.value.filter((r) => !isVaulted(r) && isResurgence(r)).length : 0,
+)
 const hiddenNoDemand = computed<number>(() =>
   hideNoDemand.value
-    ? matched.value.filter((r) => !isVaulted(r) && hasFullData(r) && noDemand(r)).length
+    ? matched.value.filter((r) => !isVaulted(r) && !isResurgence(r) && hasFullData(r) && noDemand(r)).length
     : 0,
 )
 
@@ -596,6 +607,12 @@ onMounted(() => {
   background: rgba(138, 143, 163, 0.18);
   color: #b6bcd0;
   border: 1px solid rgba(138, 143, 163, 0.4);
+}
+/* Prime Resurgence (Varzia) relic — obtainable, but not from a fissure run. */
+.an-badge--resurgence {
+  background: rgba(159, 122, 234, 0.16);
+  color: #c4b0ee;
+  border: 1px solid rgba(159, 122, 234, 0.42);
 }
 .an-refine {
   flex: 0 0 auto;

@@ -44,6 +44,16 @@ export class RelicService {
     API_URLS.WARFRAME_DROPS_RELICS_MIRROR,
   ];
 
+  /**
+   * Canonical fissure relic tiers — the ones you can actually farm by running a
+   * Void Fissure (Requiem included: farmed from Kuva Siphon/Flood). A relic of
+   * any OTHER tier (currently only "Vanguard") is a Prime Resurgence relic: it's
+   * bought from Varzia with Aya and never dropped by a mission or fissure, so it
+   * has no place on a plat-per-run farming board even though warframe.market
+   * flags it non-vaulted (it IS obtainable in-game — just not from a run).
+   */
+  private static readonly FISSURE_TIERS = new Set(['lith', 'meso', 'neo', 'axi', 'requiem']);
+
   /** Browser-like headers so drops.warframestat.us (Cloudflare) serves the JSON. */
   private static readonly FETCH_HEADERS = {
     'User-Agent':
@@ -313,6 +323,10 @@ export class RelicService {
         // an undefined/not-enriched flag to false so we never hide a relic that
         // might still drop.
         vaulted: relicItem?.vaulted === true,
+        // Prime Resurgence (Varzia) relics live under a non-fissure tier and are
+        // Aya-bought, never fissure-dropped — so a "currently dropping" board
+        // must exclude them even when their market flag reads non-vaulted.
+        resurgence: !RelicService.FISSURE_TIERS.has((meta.tier || '').toLowerCase()),
         relic: {
           buy: relicItem?.market?.buy ?? 0,
           sell: relicItem?.market?.sell ?? 0,

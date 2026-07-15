@@ -133,4 +133,34 @@ describe('RelicService.buildRelicEvFromData', () => {
     ];
     expect(service.buildRelicEvFromData(relics, [])).toHaveLength(0);
   });
+
+  it('flags non-fissure tiers (Prime Resurgence / Varzia) as resurgence', () => {
+    const relics: IRelic[] = [
+      // The "Vanguard" tier is Prime Resurgence-only: bought from Varzia with
+      // Aya, never dropped by a fissure — so it can't be farmed by running one.
+      {
+        relicName: 'vanguard C1',
+        tier: 'Vanguard',
+        state: 'Intact',
+        rewards: [{ itemName: 'Ash Prime Systems Blueprint', rarity: 'Uncommon', chance: 11 }],
+      },
+      { relicName: 'requiem I', tier: 'Requiem', state: 'Intact', rewards: [{ itemName: 'Part', rarity: 'Common', chance: 25.33 }] },
+      { relicName: 'lith a1', tier: 'Lith', state: 'Intact', rewards: [{ itemName: 'Part', rarity: 'Common', chance: 25.33 }] },
+    ];
+    // The Vanguard relic IS listed and flagged NOT vaulted (Aya-obtainable) —
+    // the exact case that used to slip past the "currently dropping" filter.
+    const items: IMarketItem[] = [
+      { url_name: 'vanguard_c1_relic', item_name: 'Vanguard C1 Relic', vaulted: false, market: { buy: 42, sell: 11, volume: 17, avg_price: 8.5 } } as IMarketItem,
+    ];
+
+    const byName = Object.fromEntries(
+      service.buildRelicEvFromData(relics, items).map((r) => [r.relicName, r]),
+    );
+    // Non-fissure tier -> resurgence, even though its market flag says not vaulted.
+    expect(byName['Vanguard C1'].resurgence).toBe(true);
+    expect(byName['Vanguard C1'].vaulted).toBe(false);
+    // Real fissure tiers (incl. Requiem, farmed from Kuva Siphon/Flood) -> not resurgence.
+    expect(byName['Requiem I'].resurgence).toBe(false);
+    expect(byName['Lith A1'].resurgence).toBe(false);
+  });
 });
