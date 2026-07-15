@@ -4,6 +4,7 @@
       <h1 style="display: none"></h1>
       <ClientOnly>
         <v-data-table
+          mobile-breakpoint="sm"
           ref="dataTable"
           :hide-default-footer="true"
           :sort-by="sortBy"
@@ -58,6 +59,7 @@
                 </v-alert>
               </div>
               <v-data-table
+                mobile-breakpoint="sm"
                 :headers="headers"
                 :hide-default-footer="true"
                 :items="set"

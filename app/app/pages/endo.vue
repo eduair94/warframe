@@ -858,11 +858,35 @@ onMounted(() => {
   color: #e7cf95;
   text-decoration: none;
   font-weight: 600;
-  border-bottom: 1px solid rgba(200, 168, 92, 0.4);
   white-space: nowrap;
 }
 .endo-guide-link:hover {
   color: #f4e2b4;
+}
+/* Mobile: the direction-toggle bar was space-between + wrap, which left the
+   segmented toggle and the freshness/guide row ragged with a big gap. Stack
+   them: full-width toggle on its own line, meta row beneath. */
+@media (max-width: 640px) {
+  .an-dir {
+    justify-content: flex-start;
+    gap: 8px 12px;
+    margin: 2px 0 12px;
+  }
+  .an-dir__toggle {
+    flex: 1 1 100%;
+  }
+  .an-dir__toggle :deep(.v-btn-toggle) {
+    display: flex;
+    width: 100%;
+  }
+  .an-dir__toggle :deep(.v-btn) {
+    flex: 1 1 0;
+  }
+  .an-dir__right {
+    width: 100%;
+    justify-content: space-between;
+    gap: 10px;
+  }
 }
 .an-sortctl {
   display: flex;

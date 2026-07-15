@@ -8,3 +8,11 @@ body,
 .v-application {
   font-family: 'Open Sans', sans-serif;
 }
+
+/* Links are distinguished by colour, not underline, across the app. */
+a {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+}

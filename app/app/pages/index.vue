@@ -4,6 +4,7 @@
       <h1 class="visually-hidden">Warframe Market Analytics — live prime prices, ducat, relic &amp; riven values</h1>
       <client-only>
         <v-data-table
+          mobile-breakpoint="sm"
           show-select
           return-object
           item-value="url_name"

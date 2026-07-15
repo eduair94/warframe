@@ -8,7 +8,7 @@
         </v-btn>
       </v-card-title>
       <v-card-text>
-        <v-data-table :headers="compareHeaders" :items="props.items ?? []" hide-default-footer class="elevation-1">
+        <v-data-table mobile-breakpoint="sm" :headers="compareHeaders" :items="props.items ?? []" hide-default-footer class="elevation-1">
           <template #item.item_name="{ item }">
             <div class="d-flex justify-start align-center py-2">
               <img class="mr-3" width="40px" :src="'https://warframe.market/static/assets/' + item.thumb" />
