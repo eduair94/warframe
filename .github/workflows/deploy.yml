@@ -63,6 +63,13 @@ jobs:
       - name: Unit tests (API)
         run: npm run test:unit
 
+      # BLOCKING — vue-i18n must compile every message. A literal @ (linked-msg
+      # marker), unescaped {, or {{double-brace}} crashes the page in the prod
+      # build (this exact class blanked /endo). Escape specials: @ -> {'@'}.
+      - name: i18n messages compile (app)
+        run: npm run i18n:check
+        working-directory: app
+
   deploy:
     name: Deploy to prod (pm2)
     needs: ci
