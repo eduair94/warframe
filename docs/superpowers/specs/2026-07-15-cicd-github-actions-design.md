@@ -34,7 +34,7 @@ prod server, with zero manual steps.
 | Deploy trigger | **Push to `main`** → gates → auto-deploy when green |
 | Gates | lint + prettier-check + **unit** tests (root) and typecheck + lint (app). Integration tests that hit live wf.market are **excluded** (flaky/rate-limited in CI) |
 | pm2 scope | **Reload all** — `pm2 reload ecosystem.config.js --update-env` |
-| Node | **20** (matches Dockerfile). Add `.nvmrc`. CI node only runs gates; the prod build runs `npm ci` on the server against the server's node, so native deps (e.g. `@takumi-rs/core`) rebuild there correctly |
+| Node | **24** (`.nvmrc`). Nuxt 4.4.8 requires `^22.12 \|\| ^24.11 \|\| >=26`, so the Dockerfile's `node:20` is too old for the app. Node 24 ships **npm 11**, matching the dev machine (24.15 / npm 11.12) that authored `app/package-lock.json` — critical, because npm 10 (node 20/22) builds a different dependency tree and rejects the lock (`Missing @esbuild/... from lock file`). Prod must also be ≥24.11 for the deploy build. (Stale `Dockerfile` `node:20` should be bumped separately.) |
 
 ## Architecture
 
