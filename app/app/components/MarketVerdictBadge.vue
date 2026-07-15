@@ -5,14 +5,14 @@
         <v-icon size="14" :color="iconColor">{{ icon }}</v-icon>
         <strong>{{ label }}</strong>
         <span v-if="!compact && dealText" class="mvb__deal">{{ dealText }}</span>
-        <span class="mvb__conf" :style="{ opacity: confOpacity }" title="confidence">●</span>
+        <span class="mvb__conf" :style="{ opacity: confOpacity }" :title="t('components.verdict.confidence')">●</span>
       </span>
     </template>
     <div class="mvb__tip">
       <div><strong>{{ label }}</strong> — {{ v.reason }}</div>
-      <div>Fair value: {{ round(v.fv) }}p</div>
-      <div>Best sell: {{ round(v.bestSell) }}p · Best buy: {{ round(v.bestBuy) }}p</div>
-      <div>Flip margin: {{ round(v.flipMargin) }}p · Confidence: {{ Math.round(v.confidence * 100) }}%</div>
+      <div>{{ t('components.verdict.tip.fairValue', { value: round(v.fv) }) }}</div>
+      <div>{{ t('components.verdict.tip.bestSellBuy', { sell: round(v.bestSell), buy: round(v.bestBuy) }) }}</div>
+      <div>{{ t('components.verdict.tip.flipConfidence', { margin: round(v.flipMargin), conf: Math.round(v.confidence * 100) }) }}</div>
     </div>
   </v-tooltip>
   <span v-else class="mvb mvb--hold"><strong>—</strong></span>
@@ -26,9 +26,10 @@ const props = withDefaults(
   { verdict: null, compact: false },
 )
 
+const { t } = useI18n()
+
 const v = computed(() => props.verdict)
 
-const LABELS: Record<string, string> = { buy: 'BUY', sell: 'SELL', fair: 'FAIR', hold: '—' }
 const ICONS: Record<string, string> = {
   buy: 'mdi-trending-down',
   sell: 'mdi-trending-up',
@@ -37,15 +38,18 @@ const ICONS: Record<string, string> = {
 }
 const COLORS: Record<string, string> = { buy: '#4caf7d', sell: '#d4af5a', fair: '#8aa2a2', hold: '#667' }
 
-const label = computed(() => LABELS[v.value?.verdict ?? 'hold'] ?? '—')
+const label = computed(() => {
+  const verdict = v.value?.verdict ?? 'hold'
+  return verdict === 'hold' ? '—' : t(`components.verdict.labels.${verdict}`)
+})
 const icon = computed(() => ICONS[v.value?.verdict ?? 'hold'] ?? 'mdi-help')
 const iconColor = computed(() => COLORS[v.value?.verdict ?? 'hold'] ?? '#667')
 
 const dealText = computed(() => {
   const cur = v.value
   if (!cur || cur.verdict === 'hold' || cur.verdict === 'fair') return ''
-  if (cur.verdict === 'buy') return `${Math.round(cur.dealPct * 100)}% under`
-  if (cur.fv > 0) return `${Math.round(((cur.bestBuy - cur.fv) / cur.fv) * 100)}% over`
+  if (cur.verdict === 'buy') return t('components.verdict.under', { pct: Math.round(cur.dealPct * 100) })
+  if (cur.fv > 0) return t('components.verdict.over', { pct: Math.round(((cur.bestBuy - cur.fv) / cur.fv) * 100) })
   return ''
 })
 

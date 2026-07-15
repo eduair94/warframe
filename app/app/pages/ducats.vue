@@ -4,57 +4,53 @@
       <div class="an-console">
         <header class="an-hero">
           <div class="an-hero__text">
-            <div class="an-eyebrow">Warframe Market · Ducat Efficiency</div>
-            <h1 class="an-title">
-              Most <span class="accent-b">ducats</span> per
-              <span class="accent-a">platinum</span>.
-            </h1>
-            <p class="an-lede">
-              Baro Ki'Teer pays ducats for prime parts. Buy the parts that give the
-              most ducats for the least platinum, and every Void Trader visit costs
-              you less. Ranked by ducats earned per platinum spent.
-            </p>
+            <div class="an-eyebrow">{{ t('ducatsPage.eyebrow') }}</div>
+            <i18n-t keypath="ducatsPage.hero.title" tag="h1" class="an-title">
+              <template #ducats><span class="accent-b">{{ t('ducatsPage.hero.titleDucats') }}</span></template>
+              <template #platinum><span class="accent-a">{{ t('ducatsPage.hero.titlePlatinum') }}</span></template>
+            </i18n-t>
+            <p class="an-lede">{{ t('ducatsPage.hero.lede') }}</p>
           </div>
           <div v-if="topDeal" class="an-hero__deal">
-            <div class="an-hero__deal-label">Best ducat value</div>
+            <div class="an-hero__deal-label">{{ t('ducatsPage.hero.dealLabel') }}</div>
             <div class="an-hero__deal-plat">{{ eff(topDeal).toFixed(1) }}<span>d/p</span></div>
             <a class="an-hero__deal-name" :href="mkt(topDeal.url_name)" target="_blank" rel="noopener">{{ topDeal.item_name }} →</a>
-            <div class="an-hero__deal-sub">{{ topDeal.ducats }} ducats · {{ fmtPlat(topDeal.market.sell) }}p</div>
+            <div class="an-hero__deal-sub">{{ t('ducatsPage.hero.dealSub', { ducats: topDeal.ducats, sell: fmtPlat(topDeal.market.sell) }) }}</div>
           </div>
         </header>
 
         <div class="an-stats">
-          <div class="an-stat"><div class="an-stat__num">{{ stats.total }}</div><div class="an-stat__lbl">prime parts</div></div>
-          <div class="an-stat"><div class="an-stat__num is-good">{{ stats.best.toFixed(1) }}</div><div class="an-stat__lbl">best ducats/plat</div></div>
-          <div class="an-stat"><div class="an-stat__num is-alt">{{ stats.avg.toFixed(1) }}</div><div class="an-stat__lbl">avg ducats/plat</div></div>
-          <div class="an-stat"><div class="an-stat__num is-gold">{{ stats.cheap }}</div><div class="an-stat__lbl">≤ 15p parts</div></div>
+          <div class="an-stat"><div class="an-stat__num">{{ stats.total }}</div><div class="an-stat__lbl">{{ t('ducatsPage.stats.primeParts') }}</div></div>
+          <div class="an-stat"><div class="an-stat__num is-good">{{ stats.best.toFixed(1) }}</div><div class="an-stat__lbl">{{ t('ducatsPage.stats.bestPerPlat') }}</div></div>
+          <div class="an-stat"><div class="an-stat__num is-alt">{{ stats.avg.toFixed(1) }}</div><div class="an-stat__lbl">{{ t('ducatsPage.stats.avgPerPlat') }}</div></div>
+          <div class="an-stat"><div class="an-stat__num is-gold">{{ stats.cheap }}</div><div class="an-stat__lbl">{{ t('ducatsPage.stats.cheapParts') }}</div></div>
         </div>
 
         <section class="an-filters">
           <div class="an-filters__row">
-            <v-text-field v-model="search" density="compact" hide-details clearable prepend-inner-icon="mdi-magnify" label="Search a part" class="an-search"></v-text-field>
-            <v-text-field v-model.number="maxPrice" density="compact" hide-details type="number" min="0" label="Max price (plat)" class="an-field"></v-text-field>
-            <v-select v-model="sortKey" :items="sortOptions" density="compact" hide-details label="Sort by" class="an-field" style="flex: 0 1 220px"></v-select>
+            <v-text-field v-model="search" density="compact" hide-details clearable prepend-inner-icon="mdi-magnify" :label="t('ducatsPage.filters.search')" class="an-search"></v-text-field>
+            <v-text-field v-model.number="maxPrice" density="compact" hide-details type="number" min="0" :label="t('ducatsPage.filters.maxPrice')" class="an-field"></v-text-field>
+            <v-select v-model="sortKey" :items="sortOptions" density="compact" hide-details :label="t('ducatsPage.filters.sortBy')" class="an-field" style="flex: 0 1 220px"></v-select>
           </div>
           <v-chip-group v-model="category" mandatory column selected-class="an-chip--on" class="an-cats">
-            <v-chip v-for="c in categoryOptions" :key="c" :value="c" size="small">{{ c }}</v-chip>
+            <v-chip v-for="c in categoryOptions" :key="c" :value="c" size="small">{{ t('ducatsPage.categories.' + c) }}</v-chip>
           </v-chip-group>
-          <div class="an-count">{{ filtered.length }} {{ filtered.length === 1 ? 'part' : 'parts' }} match</div>
+          <div class="an-count">{{ t('ducatsPage.filters.count', { n: filtered.length }, filtered.length) }}</div>
         </section>
 
         <div v-if="!filtered.length" class="an-empty">
-          No parts match these filters. Some items may not be enriched with ducat values yet.
+          {{ t('ducatsPage.empty') }}
         </div>
 
         <div v-else-if="!isMobile" class="an-tablewrap">
           <table class="an-table">
             <thead>
               <tr>
-                <th class="col-name">Prime part</th>
-                <th class="grp-a">Plat (ask)</th>
-                <th class="grp-b">Ducats</th>
-                <th>Ducats / plat</th>
-                <th>Vol</th>
+                <th class="col-name">{{ t('ducatsPage.table.primePart') }}</th>
+                <th class="grp-a">{{ t('ducatsPage.table.platAsk') }}</th>
+                <th class="grp-b">{{ t('ducatsPage.table.ducats') }}</th>
+                <th>{{ t('ducatsPage.table.ducatsPerPlat') }}</th>
+                <th>{{ t('ducatsPage.table.vol') }}</th>
                 <th></th>
               </tr>
             </thead>
@@ -65,8 +61,8 @@
                     <img class="an-thumb" :src="assetUrl(row.thumb)" :alt="row.item_name" loading="lazy" @error="onImgError" />
                     <span>
                       {{ row.item_name }}
-                      <span v-if="row.url_name === topDealUrl" class="an-badge">BEST</span>
-                      <small class="an-sub">vol {{ fmtPlat(row.market.volume) }}</small>
+                      <span v-if="row.url_name === topDealUrl" class="an-badge">{{ t('ducatsPage.row.best') }}</span>
+                      <small class="an-sub">{{ t('ducatsPage.row.vol', { vol: fmtPlat(row.market.volume) }) }}</small>
                     </span>
                   </a>
                 </td>
@@ -75,7 +71,7 @@
                 <td class="an-num an-strong up">{{ eff(row).toFixed(1) }}</td>
                 <td class="an-num">{{ fmtPlat(row.market.volume) }}</td>
                 <td>
-                  <v-btn icon="mdi-open-in-new" size="small" variant="text" color="#4fb3bf" :href="mkt(row.url_name)" target="_blank" :aria-label="'Open ' + row.item_name"></v-btn>
+                  <v-btn icon="mdi-open-in-new" size="small" variant="text" color="#4fb3bf" :href="mkt(row.url_name)" target="_blank" :aria-label="t('ducatsPage.row.open', { name: row.item_name })"></v-btn>
                 </td>
               </tr>
             </tbody>
@@ -87,21 +83,21 @@
             <div class="an-card__head">
               <img class="an-thumb" :src="assetUrl(row.thumb)" :alt="row.item_name" loading="lazy" @error="onImgError" />
               <div class="an-card__title">
-                <div class="an-card__name">{{ row.item_name }}<span v-if="row.url_name === topDealUrl" class="an-badge">BEST</span></div>
-                <small class="an-sub">vol {{ fmtPlat(row.market.volume) }}</small>
+                <div class="an-card__name">{{ row.item_name }}<span v-if="row.url_name === topDealUrl" class="an-badge">{{ t('ducatsPage.row.best') }}</span></div>
+                <small class="an-sub">{{ t('ducatsPage.row.vol', { vol: fmtPlat(row.market.volume) }) }}</small>
               </div>
               <v-icon color="#4fb3bf">mdi-open-in-new</v-icon>
             </div>
             <div class="an-card__blocks">
               <div class="an-block">
-                <div class="an-block__lbl">Value</div>
-                <div class="an-block__row"><span>Plat</span><b>{{ fmtPlat(row.market.sell) }}p</b></div>
-                <div class="an-block__row"><span>Ducats</span><b>{{ row.ducats }}</b></div>
+                <div class="an-block__lbl">{{ t('ducatsPage.card.value') }}</div>
+                <div class="an-block__row"><span>{{ t('ducatsPage.card.plat') }}</span><b>{{ fmtPlat(row.market.sell) }}p</b></div>
+                <div class="an-block__row"><span>{{ t('ducatsPage.card.ducats') }}</span><b>{{ row.ducats }}</b></div>
               </div>
               <div class="an-block">
-                <div class="an-block__lbl">Efficiency</div>
-                <div class="an-block__row"><span>Ducats/plat</span><b class="up">{{ eff(row).toFixed(1) }}</b></div>
-                <div class="an-block__row"><span>Volume</span><b>{{ fmtPlat(row.market.volume) }}</b></div>
+                <div class="an-block__lbl">{{ t('ducatsPage.card.efficiency') }}</div>
+                <div class="an-block__row"><span>{{ t('ducatsPage.card.ducatsPerPlat') }}</span><b class="up">{{ eff(row).toFixed(1) }}</b></div>
+                <div class="an-block__row"><span>{{ t('ducatsPage.card.volume') }}</span><b>{{ fmtPlat(row.market.volume) }}</b></div>
               </div>
             </div>
           </a>
@@ -113,8 +109,7 @@
       </div>
 
       <v-alert class="an-disclaimer bg-blue-darken-4" type="info" density="compact">
-        Ducats/plat = ducat value ÷ lowest sell order. Baro's ducat prices are fixed
-        by the game; platinum prices are today's Warframe Market orders.
+        {{ t('ducatsPage.disclaimer') }}
       </v-alert>
     </client-only>
   </div>
@@ -125,6 +120,7 @@ import { computed, nextTick, onMounted, ref, watch } from 'vue'
 import { useDisplay } from 'vuetify'
 import { useItemsStore } from '~/stores/items'
 
+const { t } = useI18n()
 const itemsStore = useItemsStore()
 const allItems = computed(() => itemsStore.allItems)
 
@@ -143,12 +139,12 @@ const placeholderImg =
   "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44'%3E%3Crect width='44' height='44' rx='8' fill='%232a2a3d'/%3E%3Cpath d='M22 11 L31 22 L22 33 L13 22 Z' fill='none' stroke='%234fb3bf' stroke-width='2' opacity='0.75'/%3E%3C/svg%3E"
 
 // key renamed text -> title for Vuetify 3 v-select (default item-title is 'title')
-const sortOptions = [
-  { title: 'Ducats per plat', value: 'efficiency' },
-  { title: 'Most ducats', value: 'ducats' },
-  { title: 'Cheapest', value: 'cheapest' },
-  { title: 'Volume', value: 'volume' },
-]
+const sortOptions = computed(() => [
+  { title: t('ducatsPage.sort.efficiency'), value: 'efficiency' },
+  { title: t('ducatsPage.sort.ducats'), value: 'ducats' },
+  { title: t('ducatsPage.sort.cheapest'), value: 'cheapest' },
+  { title: t('ducatsPage.sort.volume'), value: 'volume' },
+])
 
 function assetUrl(thumb: string): string {
   return 'https://warframe.market/static/assets/' + (thumb || '')

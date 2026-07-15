@@ -8,6 +8,10 @@ export interface NormalizedOrder {
   platform: string;
   mod_rank?: number;
   subtype?: string;
+  /** Ayatan sculptures: stars socketed. Needed so a filled sculpture book doesn't
+   *  mix empty (cheap) and filled (endo-valued) orders across buy/sell. */
+  amber_stars?: number;
+  cyan_stars?: number;
   user: { id?: string; ingame_name?: string; status: 'ingame' | 'online' | 'offline' };
 }
 
@@ -45,6 +49,10 @@ export interface FairValueInputs {
   /** Max mod/arcane rank (from items_in_set[0].mod_max_rank); undefined for non-ranked items.
    *  Ranked items (arcanes, mods, rivens) price at this rank so rank-0 lowballs don't skew "best". */
   maxRank?: number;
+  /** Ayatan sculpture star capacity (from max_amber_stars/max_cyan_stars). Present only for
+   *  sculptures; the live book prices the FILLED sculpture so empty lowballs don't skew "best". */
+  maxAmberStars?: number;
+  maxCyanStars?: number;
 }
 
 export type VerdictKind = 'buy' | 'sell' | 'fair' | 'hold';

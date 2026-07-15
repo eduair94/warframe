@@ -36,6 +36,8 @@ export function mapV1OrdersToNormalized(v1Orders: any[]): NormalizedOrder[] {
       platform: o.platform || 'pc',
       mod_rank: o.mod_rank,
       subtype: o.subtype,
+      amber_stars: o.amber_stars,
+      cyan_stars: o.cyan_stars,
       user: { id: o?.user?.id, ingame_name: o?.user?.ingame_name, status },
     });
   }

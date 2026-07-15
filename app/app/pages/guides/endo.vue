@@ -4,30 +4,26 @@
       <!-- ───────────────────────── Hero ───────────────────────── -->
       <header class="an-hero">
         <div class="an-hero__text">
-          <div class="an-eyebrow">Warframe Market · Endo Guide</div>
-          <h1 class="an-title">
-            The <span class="accent-a">cheapest Endo</span> per
-            <span class="accent-b">Platinum</span>
-          </h1>
-          <p class="an-lede">
-            Most Tenno buy filled Ayatan sculptures for Endo. There is a far
-            cheaper route: buy a heavily <strong>re-rolled "trash" riven</strong>
-            and dissolve it. Bad rolls sell for almost nothing, yet every riven
-            pays out thousands of Endo — and each re-roll only makes it worth
-            more. This guide shows why, and how to find the best deal on the
-            <NuxtLink class="eg-inline" to="/endo">Endo / Plat tool</NuxtLink>.
-          </p>
+          <div class="an-eyebrow">{{ t('guideEndo.eyebrow') }}</div>
+          <i18n-t keypath="guideEndo.hero.title" tag="h1" class="an-title">
+            <template #cheapest><span class="accent-a">{{ t('guideEndo.hero.titleCheapest') }}</span></template>
+            <template #platinum><span class="accent-b">{{ t('guideEndo.hero.titlePlatinum') }}</span></template>
+          </i18n-t>
+          <i18n-t keypath="guideEndo.hero.lede" tag="p" class="an-lede">
+            <template #trash><strong>{{ t('guideEndo.hero.ledeTrash') }}</strong></template>
+            <template #tool><NuxtLink class="eg-inline" to="/endo">{{ t('guideEndo.hero.toolName') }}</NuxtLink></template>
+          </i18n-t>
         </div>
         <div class="an-hero__deal">
-          <div class="an-hero__deal-label">Best riven deal right now</div>
+          <div class="an-hero__deal-label">{{ t('guideEndo.hero.dealLabel') }}</div>
           <div class="an-hero__deal-plat">
-            {{ bestRiven ? fmt1(bestRiven.epp) : '300+' }}<span> endo/p</span>
+            {{ bestRiven ? fmt1(bestRiven.epp) : '300+' }}<span> {{ t('guideEndo.hero.dealUnit') }}</span>
           </div>
           <NuxtLink class="an-hero__deal-name" to="/endo">
-            {{ bestRiven ? bestRiven.weapon : 'Open the live table' }}
+            {{ bestRiven ? bestRiven.weapon : t('guideEndo.hero.dealFallbackName') }}
           </NuxtLink>
           <div class="an-hero__deal-sub">
-            {{ bestRiven ? bestRiven.rolls + ' re-rolls · ' + fmt(bestRiven.endo) + ' endo · ' + fmt(bestRiven.buyout) + 'p' : 'sorted by Endo per Platinum' }}
+            {{ bestRiven ? t('guideEndo.hero.dealSub', { rolls: bestRiven.rolls, endo: fmt(bestRiven.endo), buyout: fmt(bestRiven.buyout) }) : t('guideEndo.hero.dealSubFallback') }}
           </div>
         </div>
       </header>
@@ -36,40 +32,35 @@
       <div class="an-stats">
         <div class="an-stat">
           <div class="an-stat__num is-good">{{ bestRiven ? fmt1(bestRiven.epp) : '~300' }}</div>
-          <div class="an-stat__lbl">Endo / plat · best riven</div>
+          <div class="an-stat__lbl">{{ t('guideEndo.stats.bestRiven') }}</div>
         </div>
         <div class="an-stat">
           <div class="an-stat__num is-alt">{{ bestSculpture ? fmt1(bestSculpture.epp) : '~40' }}</div>
-          <div class="an-stat__lbl">Endo / plat · best sculpture</div>
+          <div class="an-stat__lbl">{{ t('guideEndo.stats.bestSculpture') }}</div>
         </div>
         <div class="an-stat">
           <div class="an-stat__num is-gold">{{ multiplier ? multiplier + '×' : '5–10×' }}</div>
-          <div class="an-stat__lbl">More endo for your plat</div>
+          <div class="an-stat__lbl">{{ t('guideEndo.stats.moreEndo') }}</div>
         </div>
         <div class="an-stat">
           <div class="an-stat__num">+200</div>
-          <div class="an-stat__lbl">Endo per re-roll</div>
+          <div class="an-stat__lbl">{{ t('guideEndo.stats.perReroll') }}</div>
         </div>
       </div>
 
       <!-- ───────────────────────── TL;DR ───────────────────────── -->
       <section class="eg-tldr">
-        <span class="eg-tldr__tag">TL;DR</span>
-        Open the <NuxtLink class="eg-inline" to="/endo">Endo / Plat tool</NuxtLink>,
-        sort the riven table by <b>Endo / Plat Sell</b>, buy the top listing (many
-        re-rolls, cheap buyout), then dissolve it in your Orbiter's Mods segment.
-        You will pay less plat per Endo than any Ayatan sculpture on the market.
+        <span class="eg-tldr__tag">{{ t('guideEndo.tldr.tag') }}</span>
+        <i18n-t keypath="guideEndo.tldr.body" tag="span">
+          <template #tool><NuxtLink class="eg-inline" to="/endo">{{ t('guideEndo.hero.toolName') }}</NuxtLink></template>
+          <template #sortCol><b>Endo / Plat Sell</b></template>
+        </i18n-t>
       </section>
 
       <!-- ─────────────────── Why rivens win ─────────────────── -->
       <section class="eg-section">
-        <div class="eg-section__title">Why a rolled riven is the cheapest Endo</div>
-        <p class="eg-p">
-          When you dissolve a riven, the Endo it returns is fixed by a formula —
-          not by how "good" the roll is. That is the whole trick: a riven with
-          terrible stats returns exactly as much Endo as a god roll of the same
-          Mastery, rank and re-roll count, but it costs a fraction of the plat.
-        </p>
+        <div class="eg-section__title">{{ t('guideEndo.why.title') }}</div>
+        <p class="eg-p">{{ t('guideEndo.why.p1') }}</p>
 
         <div class="eg-formula">
           <div class="eg-formula__eq">
@@ -77,38 +68,36 @@
             &nbsp;+&nbsp; <b>200 × Re-rolls</b> &nbsp;−&nbsp; 7
           </div>
           <ul class="eg-formula__legend">
-            <li><b>Re-rolls</b> — every Kuva cycle adds a flat <b>+200 Endo</b>. Heavily-rolled rivens are the ones people dump cheap, and they are worth the most.</li>
-            <li><b>Rank</b> — a maxed riven (rank 8) alone is worth ⌊22.5 × 256⌋ = <b>5,760 Endo</b> before re-rolls even count.</li>
-            <li><b>MR</b> — higher Mastery-requirement rivens add 100 Endo per rank above 8.</li>
+            <i18n-t keypath="guideEndo.why.legendRerolls" tag="li">
+              <template #term><b>{{ t('guideEndo.why.termRerolls') }}</b></template>
+              <template #bonus><b>+200 Endo</b></template>
+            </i18n-t>
+            <i18n-t keypath="guideEndo.why.legendRank" tag="li">
+              <template #term><b>{{ t('guideEndo.why.termRank') }}</b></template>
+              <template #val><b>5,760 Endo</b></template>
+            </i18n-t>
+            <i18n-t keypath="guideEndo.why.legendMr" tag="li">
+              <template #term><b>MR</b></template>
+            </i18n-t>
           </ul>
         </div>
 
-        <p class="eg-p">
-          A maxed MR16 riven with 20 re-rolls dissolves for
-          <b>100×8 + 5,760 + 200×20 − 7 = 10,553 Endo</b>. Even an un-rolled maxed
-          riven is worth ~5,753. Now compare that with what these things sell for:
-          nobody wants a riven with junk stats and 20 wasted rolls, so it goes for
-          pocket change. The tool's <b>Endo</b> column already shows the exact
-          payout for each listing as it stands — you don't need to rank or roll it
-          yourself.
-        </p>
+        <i18n-t keypath="guideEndo.why.p2" tag="p" class="eg-p">
+          <template #payout><b>100×8 + 5,760 + 200×20 − 7 = 10,553 Endo</b></template>
+          <template #endoCol><b>Endo</b></template>
+        </i18n-t>
       </section>
 
       <!-- ─────────────────── Ayatan comparison ─────────────────── -->
       <section class="eg-section">
-        <div class="eg-section__title">What you're beating: Ayatan sculptures</div>
-        <p class="eg-p">
-          Ayatan sculptures give Endo through Maroo's Bazaar, but only once you've
-          socketed them full of Amber and Cyan stars — and both the sculpture and
-          the stars cost plat. Even fully filled, their Endo-per-plat rarely comes
-          close to a rolled riven:
-        </p>
+        <div class="eg-section__title">{{ t('guideEndo.ayatan.title') }}</div>
+        <p class="eg-p">{{ t('guideEndo.ayatan.p') }}</p>
         <div class="an-tablewrap">
           <table class="an-table eg-table">
             <thead>
               <tr>
-                <th class="col-name">Ayatan Sculpture</th>
-                <th>Endo (fully socketed)</th>
+                <th class="col-name">{{ t('guideEndo.ayatan.thName') }}</th>
+                <th>{{ t('guideEndo.ayatan.thEndo') }}</th>
               </tr>
             </thead>
             <tbody>
@@ -119,98 +108,84 @@
             </tbody>
           </table>
         </div>
-        <p class="eg-note">
-          Values are for sculptures socketed with a full set of Amber + Cyan
-          stars. A single maxed, re-rolled riven usually out-values the best
-          sculpture here — for a lot less plat.
-        </p>
+        <p class="eg-note">{{ t('guideEndo.ayatan.note') }}</p>
       </section>
 
       <!-- ─────────────────── Step by step ─────────────────── -->
       <section class="eg-section">
-        <div class="eg-section__title">Step by step: buy the cheapest Endo</div>
+        <div class="eg-section__title">{{ t('guideEndo.steps.title') }}</div>
         <ol class="eg-steps">
           <li>
-            <div class="eg-step__h">Open the Endo / Plat tool</div>
-            <p>
-              Head to <NuxtLink class="eg-inline" to="/endo">the Endo / Plat page</NuxtLink>.
-              It shows two live tables: the top one is <b>the best Endo riven
-              deals</b>, the bottom one ranks every <b>Ayatan sculpture</b> by
-              Endo per platinum — the two routes, side by side.
-            </p>
+            <div class="eg-step__h">{{ t('guideEndo.steps.s1h') }}</div>
+            <i18n-t keypath="guideEndo.steps.s1p" tag="p">
+              <template #page><NuxtLink class="eg-inline" to="/endo">{{ t('guideEndo.steps.s1pPageLink') }}</NuxtLink></template>
+              <template #best><b>{{ t('guideEndo.steps.s1pBest') }}</b></template>
+              <template #sculpture><b>{{ t('guideEndo.steps.s1pSculpture') }}</b></template>
+            </i18n-t>
           </li>
           <li>
-            <div class="eg-step__h">Sort by Endo / Plat Sell</div>
-            <p>
-              In the riven table, sort by the <b>Endo / Plat Sell</b> column,
-              highest first. That number is exactly what matters: how much Endo
-              each platinum buys you. The top row is the cheapest Endo on the
-              market right now.
-            </p>
+            <div class="eg-step__h">{{ t('guideEndo.steps.s2h') }}</div>
+            <i18n-t keypath="guideEndo.steps.s2p" tag="p">
+              <template #col><b>Endo / Plat Sell</b></template>
+            </i18n-t>
           </li>
           <li>
-            <div class="eg-step__h">Pick a heavily re-rolled, cheap listing</div>
-            <p>
-              Look for a high <b>Re rolls</b> count and a low <b>Buy</b> price —
-              that combination gives the most Endo for the least plat. Click the
-              riven to open its warframe.market auction and message the seller to
-              buy it. (Trading a riven costs an 8,000-credit tax and uses one of
-              your daily trades.)
-            </p>
+            <div class="eg-step__h">{{ t('guideEndo.steps.s3h') }}</div>
+            <i18n-t keypath="guideEndo.steps.s3p" tag="p">
+              <template #rerolls><b>Re rolls</b></template>
+              <template #buy><b>Buy</b></template>
+            </i18n-t>
           </li>
           <li>
-            <div class="eg-step__h">Dissolve it for Endo</div>
-            <p>
-              In your Orbiter, open the <b>Mods</b> segment → <b>Actions</b> →
-              <b>Dissolve</b> (convert to Endo), select the riven and confirm. The
-              Endo lands instantly. Rivens take an inventory slot (you hold up to
-              210), so dissolve right after buying instead of hoarding.
-            </p>
+            <div class="eg-step__h">{{ t('guideEndo.steps.s4h') }}</div>
+            <i18n-t keypath="guideEndo.steps.s4p" tag="p">
+              <template #mods><b>Mods</b></template>
+              <template #actions><b>{{ t('guideEndo.steps.menuActions') }}</b></template>
+              <template #dissolve><b>{{ t('guideEndo.steps.menuDissolve') }}</b></template>
+            </i18n-t>
           </li>
         </ol>
       </section>
 
       <!-- ─────────────────── Live worked example ─────────────────── -->
       <section v-if="bestRiven" class="eg-section">
-        <div class="eg-section__title">Right now, on the live table</div>
+        <div class="eg-section__title">{{ t('guideEndo.example.title') }}</div>
         <div class="eg-example">
           <div class="eg-example__side eg-example__side--win">
-            <div class="eg-example__tag">Riven route</div>
+            <div class="eg-example__tag">{{ t('guideEndo.example.tagRiven') }}</div>
             <NuxtLink class="eg-example__name" to="/endo">{{ bestRiven.weapon }}<span v-if="bestRiven.name"> {{ bestRiven.name }}</span></NuxtLink>
-            <div class="eg-example__big">{{ fmt1(bestRiven.epp) }}<span> endo/p</span></div>
+            <div class="eg-example__big">{{ fmt1(bestRiven.epp) }}<span> {{ t('guideEndo.example.unit') }}</span></div>
             <div class="eg-example__meta">
-              {{ fmt(bestRiven.endo) }} Endo · {{ bestRiven.rolls }} re-rolls · {{ fmt(bestRiven.buyout) }}p buyout
+              {{ t('guideEndo.example.metaRiven', { endo: fmt(bestRiven.endo), rolls: bestRiven.rolls, buyout: fmt(bestRiven.buyout) }) }}
             </div>
           </div>
-          <div class="eg-example__vs">vs</div>
+          <div class="eg-example__vs">{{ t('guideEndo.example.vs') }}</div>
           <div class="eg-example__side">
-            <div class="eg-example__tag">Ayatan route</div>
-            <div class="eg-example__name">{{ bestSculpture ? bestSculpture.name : 'Best filled sculpture' }}</div>
-            <div class="eg-example__big eg-example__big--dim">{{ bestSculpture ? fmt1(bestSculpture.epp) : '~40' }}<span> endo/p</span></div>
+            <div class="eg-example__tag">{{ t('guideEndo.example.tagAyatan') }}</div>
+            <div class="eg-example__name">{{ bestSculpture ? bestSculpture.name : t('guideEndo.example.sculptureFallbackName') }}</div>
+            <div class="eg-example__big eg-example__big--dim">{{ bestSculpture ? fmt1(bestSculpture.epp) : '~40' }}<span> {{ t('guideEndo.example.unit') }}</span></div>
             <div class="eg-example__meta">
-              {{ bestSculpture ? fmt(bestSculpture.endo) + ' Endo · ' + fmt(bestSculpture.sell) + 'p' : 'fully socketed' }}
+              {{ bestSculpture ? t('guideEndo.example.metaSculpture', { endo: fmt(bestSculpture.endo), sell: fmt(bestSculpture.sell) }) : t('guideEndo.example.sculptureFallbackMeta') }}
             </div>
           </div>
         </div>
-        <p v-if="multiplier" class="eg-punch">
-          That's <b>{{ multiplier }}×</b> more Endo for every platinum you spend.
-        </p>
+        <i18n-t v-if="multiplier" keypath="guideEndo.example.punch" tag="p" class="eg-punch">
+          <template #mult><b>{{ multiplier }}×</b></template>
+        </i18n-t>
       </section>
 
       <!-- ───────────────────────── CTA ───────────────────────── -->
       <div class="eg-cta">
         <NuxtLink class="eg-cta__btn" to="/endo">
-          Open the Endo / Plat tool →
+          {{ t('guideEndo.cta') }}
         </NuxtLink>
       </div>
     </article>
 
     <v-alert class="an-disclaimer bg-blue-darken-4" type="info" density="compact">
-      Prices are live and move constantly — always check the current
-      <NuxtLink class="eg-inline" to="/endo">Endo / Plat table</NuxtLink> before
-      buying. Endo payouts follow the in-game riven formula (Mastery, rank and
-      re-rolls); the tool computes each listing's payout for you. Trading rivens
-      needs the Trading relay and costs credits.
+      <i18n-t keypath="guideEndo.disclaimer.body" tag="span">
+        <template #table><NuxtLink class="eg-inline" to="/endo">{{ t('guideEndo.disclaimer.tableLink') }}</NuxtLink></template>
+      </i18n-t>
     </v-alert>
   </div>
 </template>
@@ -218,6 +193,7 @@
 <script setup lang="ts">
 import { computed, nextTick, onMounted } from 'vue'
 
+const { t } = useI18n()
 const config = useRuntimeConfig()
 const base = config.public.apiURL
 const store = useItemsStore()

@@ -4,23 +4,18 @@
       <div class="an-console">
         <header class="an-hero">
           <div class="an-hero__text">
-            <div class="an-eyebrow">Warframe Market · Riven Fair Value</div>
-            <h1 class="an-title">
-              What's <span class="accent-a">my roll</span>
-              <span class="accent-b">worth</span>?
-            </h1>
-            <p class="an-lede">
-              Rivens are random, so warframe.market gives you raw listings and no
-              price. Pick a weapon, tick the stats your riven rolled, and we
-              estimate a fair plat range from the live auction corpus — then grade
-              every listing against the field so you can spot a god roll or a deal.
-            </p>
+            <div class="an-eyebrow">{{ t('rivenValue.eyebrow') }}</div>
+            <i18n-t keypath="rivenValue.hero.title" tag="h1" class="an-title">
+              <template #myRoll><span class="accent-a">{{ t('rivenValue.hero.titleMyRoll') }}</span></template>
+              <template #worth><span class="accent-b">{{ t('rivenValue.hero.titleWorth') }}</span></template>
+            </i18n-t>
+            <p class="an-lede">{{ t('rivenValue.hero.lede') }}</p>
           </div>
           <div v-if="estimate.count" class="an-hero__deal">
-            <div class="an-hero__deal-label">Estimated fair value</div>
+            <div class="an-hero__deal-label">{{ t('rivenValue.hero.dealLabel') }}</div>
             <div class="an-hero__deal-plat">{{ fmtPlat(estimate.median) }}<span>p</span></div>
-            <div class="an-hero__deal-name">{{ fmtPlat(estimate.p25) }}–{{ fmtPlat(estimate.p75) }}p range</div>
-            <div class="an-hero__deal-sub">{{ estimate.count }} comparable{{ estimate.count === 1 ? '' : 's' }}{{ estimate.approx ? ' · approx' : '' }}</div>
+            <div class="an-hero__deal-name">{{ t('rivenValue.hero.range', { low: fmtPlat(estimate.p25), high: fmtPlat(estimate.p75) }) }}</div>
+            <div class="an-hero__deal-sub">{{ t('rivenValue.hero.comparables', { n: estimate.count }, estimate.count) }}{{ estimate.approx ? t('rivenValue.hero.approxSuffix') : '' }}</div>
           </div>
         </header>
 
@@ -35,39 +30,39 @@
               hide-details
               clearable
               prepend-inner-icon="mdi-sword"
-              label="Choose a weapon"
+              :label="t('rivenValue.filters.chooseWeapon')"
               class="an-search"
               @update:model-value="onWeaponChange"
             ></v-autocomplete>
             <div v-if="weaponData" class="rv-meta">
-              <span class="rv-meta__lbl">Disposition</span>
+              <span class="rv-meta__lbl">{{ t('rivenValue.meta.disposition') }}</span>
               <span class="rv-meta__val">{{ weaponData.disposition ? weaponData.disposition.toFixed(2) + '×' : '—' }}</span>
-              <span class="rv-meta__lbl">Auctions</span>
+              <span class="rv-meta__lbl">{{ t('rivenValue.meta.auctions') }}</span>
               <span class="rv-meta__val">{{ weaponItems.length }}</span>
             </div>
           </div>
         </section>
 
         <v-alert v-if="loadError" type="error" density="compact" class="ma-4">
-          Couldn't load riven weapons. The market service may be waking up — try a refresh.
+          {{ t('rivenValue.states.loadError') }}
         </v-alert>
 
         <div v-else-if="!selected" class="an-empty">
-          Pick a weapon above to estimate a riven's value and grade the live listings.
+          {{ t('rivenValue.states.pickWeapon') }}
         </div>
 
-        <div v-else-if="loadingWeapon" class="an-empty">Loading auctions…</div>
+        <div v-else-if="loadingWeapon" class="an-empty">{{ t('rivenValue.states.loading') }}</div>
 
         <div v-else-if="!weaponItems.length" class="an-empty">
-          No live direct-sale auctions stored for this weapon right now. Try another weapon.
+          {{ t('rivenValue.states.noAuctions') }}
         </div>
 
         <template v-else>
           <!-- Estimator -->
           <section class="rv-estimator">
-            <div class="rv-panel__title">Tick the stats your riven rolled</div>
+            <div class="rv-panel__title">{{ t('rivenValue.estimator.title') }}</div>
             <div class="rv-group">
-              <div class="rv-group__lbl rv-pos">Positives</div>
+              <div class="rv-group__lbl rv-pos">{{ t('rivenValue.estimator.positives') }}</div>
               <div class="rv-chips">
                 <button
                   v-for="opt in positiveOptions"
@@ -82,7 +77,7 @@
               </div>
             </div>
             <div v-if="negativeOptions.length" class="rv-group">
-              <div class="rv-group__lbl rv-neg">Negative (optional)</div>
+              <div class="rv-group__lbl rv-neg">{{ t('rivenValue.estimator.negativeOptional') }}</div>
               <div class="rv-chips">
                 <button
                   type="button"
@@ -90,7 +85,7 @@
                   :class="{ 'rv-chip--on': selectedNegative === '' }"
                   @click="selectedNegative = ''"
                 >
-                  Any / none
+                  {{ t('rivenValue.estimator.anyNone') }}
                 </button>
                 <button
                   v-for="opt in negativeOptions"
@@ -110,40 +105,42 @@
                 <div class="rv-estimate__main">
                   <div class="rv-estimate__num">{{ fmtPlat(estimate.median) }}<span>p</span></div>
                   <div class="rv-estimate__lbl">
-                    fair value · range {{ fmtPlat(estimate.p25) }}–{{ fmtPlat(estimate.p75) }}p
+                    {{ t('rivenValue.estimate.fairValueRange', { low: fmtPlat(estimate.p25), high: fmtPlat(estimate.p75) }) }}
                     <span class="rv-estimate__note">
-                      from {{ estimate.count }} comparable{{ estimate.count === 1 ? '' : 's' }}{{ estimate.approx ? ' (few exact matches — approximate)' : '' }}
+                      {{ t('rivenValue.estimate.fromComparables', { n: estimate.count }, estimate.count) }}{{ estimate.approx ? t('rivenValue.estimate.approxNote') : '' }}
                     </span>
                   </div>
                 </div>
                 <div class="rv-estimate__cheapest" v-if="estimate.cheapest">
-                  Cheapest listed: <b>{{ fmtPlat(estimate.cheapest) }}p</b>
-                  <span v-if="estimate.cheapest < estimate.median" class="rv-deal">↓ below fair value</span>
+                  <i18n-t keypath="rivenValue.estimate.cheapest" tag="span">
+                    <template #price><b>{{ fmtPlat(estimate.cheapest) }}p</b></template>
+                  </i18n-t>
+                  <span v-if="estimate.cheapest < estimate.median" class="rv-deal">{{ t('rivenValue.estimate.belowFair') }}</span>
                 </div>
               </template>
               <div v-else class="rv-estimate__empty">
-                {{ selectedPositives.length ? 'No comparable auctions with those exact stats — untick one to widen the match.' : 'Select at least one positive stat to get an estimate.' }}
+                {{ selectedPositives.length ? t('rivenValue.estimate.emptyNoMatch') : t('rivenValue.estimate.emptySelect') }}
               </div>
             </div>
           </section>
 
           <!-- Graded live listings -->
           <div class="rv-listhead">
-            <span class="rv-panel__title">Live listings, graded</span>
-            <span class="an-count">{{ gradedAuctions.length }} auctions · sorted by price</span>
+            <span class="rv-panel__title">{{ t('rivenValue.list.title') }}</span>
+            <span class="an-count">{{ t('rivenValue.list.count', { n: gradedAuctions.length }, gradedAuctions.length) }}</span>
           </div>
 
           <div v-if="!isMobile" class="an-tablewrap">
             <table class="an-table rv-table">
               <thead>
                 <tr>
-                  <th class="col-name">Stats</th>
-                  <th>Grade</th>
-                  <th>Rolls</th>
+                  <th class="col-name">{{ t('rivenValue.table.stats') }}</th>
+                  <th>{{ t('rivenValue.table.grade') }}</th>
+                  <th>{{ t('rivenValue.table.rolls') }}</th>
                   <th>MR</th>
-                  <th>Buyout</th>
+                  <th>{{ t('rivenValue.table.buyout') }}</th>
                   <th>Endo/p</th>
-                  <th>Seller</th>
+                  <th>{{ t('rivenValue.table.seller') }}</th>
                 </tr>
               </thead>
               <tbody>
@@ -159,7 +156,7 @@
                   <td class="an-num">{{ a.item.mastery_level }}</td>
                   <td class="an-num an-strong">
                     {{ fmtPlat(a.buyout_price) }}p
-                    <span v-if="a._deal" class="an-badge">DEAL</span>
+                    <span v-if="a._deal" class="an-badge">{{ t('rivenValue.badge.deal') }}</span>
                   </td>
                   <td class="an-num">{{ a.endoPerPlat ? a.endoPerPlat.toFixed(1) : '—' }}</td>
                   <td>
@@ -176,8 +173,8 @@
               <div class="an-card__head">
                 <span class="rv-grade rv-grade--lg" :class="grade(a).cls">{{ grade(a).letter }}</span>
                 <div class="an-card__title">
-                  <div class="an-card__name">{{ fmtPlat(a.buyout_price) }}p<span v-if="a._deal" class="an-badge">DEAL</span></div>
-                  <small class="an-sub">{{ a.item.re_rolls }} rolls · MR{{ a.item.mastery_level }} · {{ a.owner.status }}</small>
+                  <div class="an-card__name">{{ fmtPlat(a.buyout_price) }}p<span v-if="a._deal" class="an-badge">{{ t('rivenValue.badge.deal') }}</span></div>
+                  <small class="an-sub">{{ t('rivenValue.card.sub', { rolls: a.item.re_rolls, mr: a.item.mastery_level, status: a.owner.status }) }}</small>
                 </div>
               </div>
               <div class="rv-attrs">
@@ -194,11 +191,10 @@
       </div>
 
       <v-alert class="an-disclaimer bg-blue-darken-4" type="info" density="compact">
-        Estimates come from stored direct-sale auctions (rolled rivens, 50+
-        re-rolls). The grade is each roll's positive-stat percentile <em>within
-        this weapon's current listings</em> (A = top of the field) — a relative
-        read, not an absolute god-roll score, since base stat ranges aren't
-        modelled. Higher disposition ({{ weaponData && weaponData.disposition ? weaponData.disposition.toFixed(2) + '×' : 'shown above' }}) means bigger stat numbers overall.
+        <i18n-t keypath="rivenValue.disclaimer.text" tag="span">
+          <template #within><em>{{ t('rivenValue.disclaimer.within') }}</em></template>
+          <template #disp>{{ dispLabel }}</template>
+        </i18n-t>
       </v-alert>
     </client-only>
   </div>
@@ -208,6 +204,7 @@
 import { computed, nextTick, onMounted, ref, watch } from 'vue'
 import { useDisplay } from 'vuetify'
 
+const { t } = useI18n()
 const config = useRuntimeConfig()
 const base = config.public.apiURL
 const { mobile } = useDisplay()
@@ -327,6 +324,11 @@ const pagedAuctions = computed<any[]>(() => {
   const start = (page.value - 1) * perPage
   return gradedAuctions.value.slice(start, start + perPage)
 })
+const dispLabel = computed<string>(() =>
+  weaponData.value && weaponData.value.disposition
+    ? weaponData.value.disposition.toFixed(2) + '×'
+    : t('rivenValue.disclaimer.shownAbove'),
+)
 
 // reset to page 1 when the graded list changes (old watch)
 watch(gradedAuctions, () => {

@@ -69,6 +69,35 @@ describe('LiveStore', () => {
     expect(book.bestBuy).toBe(14);  // highest rank-5 buy, not the 30p rank-0
   });
 
+  it('prices a filled Ayatan sculpture, ignoring empty-sculpture orders on both sides', () => {
+    const s = new LiveStore('pc');
+    s.setStars('anasa', 1, 4); // filled = 1 amber + 4 cyan
+    const book = s.applySnapshot({ url_name: 'anasa', orders: [
+      ord({ id: '1', order_type: 'sell', platinum: 12, amber_stars: 0, cyan_stars: 0, user: { id: 'a', status: 'ingame' } }), // empty -> ignored
+      ord({ id: '2', order_type: 'sell', platinum: 45, amber_stars: 1, cyan_stars: 4, user: { id: 'b', status: 'ingame' } }),
+      ord({ id: '3', order_type: 'sell', platinum: 50, amber_stars: 1, cyan_stars: 4, user: { id: 'c', status: 'ingame' } }),
+      ord({ id: '4', order_type: 'buy', platinum: 40, amber_stars: 1, cyan_stars: 4, user: { id: 'd', status: 'ingame' } }),
+      ord({ id: '5', order_type: 'buy', platinum: 60, amber_stars: 0, cyan_stars: 0, user: { id: 'e', status: 'ingame' } }), // empty highball -> ignored
+    ]});
+    expect(book.bestSell).toBe(45); // cheapest filled sell, not the 12p empty
+    expect(book.bestBuy).toBe(40);  // highest filled buy, not the 60p empty
+    expect(book.sellOrders.map((o) => o.platinum)).toEqual([45, 50]); // detail rows filled-only
+  });
+
+  it('prices a relic at its most-liquid subtype, ignoring other refinements', () => {
+    const s = new LiveStore('pc');
+    const book = s.applySnapshot({ url_name: 'axi_a1', orders: [
+      ord({ id: '1', order_type: 'sell', platinum: 5, subtype: 'intact', user: { id: 'a', status: 'ingame' } }),   // minority tier -> ignored
+      ord({ id: '2', order_type: 'sell', platinum: 30, subtype: 'radiant', user: { id: 'b', status: 'ingame' } }),
+      ord({ id: '3', order_type: 'sell', platinum: 25, subtype: 'radiant', user: { id: 'c', status: 'ingame' } }),
+      ord({ id: '4', order_type: 'buy', platinum: 20, subtype: 'radiant', user: { id: 'd', status: 'ingame' } }),
+      ord({ id: '5', order_type: 'buy', platinum: 3, subtype: 'radiant', user: { id: 'f', status: 'ingame' } }),
+    ]});
+    expect(book.bestSell).toBe(25); // cheapest radiant, not the 5p intact
+    expect(book.bestBuy).toBe(20);
+    expect(book.sellOrders.map((o) => o.platinum)).toEqual([25, 30]); // radiant-only rows
+  });
+
   it('without a set rank, does not filter by rank (non-ranked items)', () => {
     const s = new LiveStore('pc');
     const book = s.applySnapshot({ url_name: 'set', orders: [

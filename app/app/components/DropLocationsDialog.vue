@@ -17,10 +17,10 @@
         />
         <span v-else class="dld__node" aria-hidden="true"></span>
         <div class="dld__headtext">
-          <div class="dld__eyebrow">Drop locations</div>
-          <h2 class="dld__title">{{ itemName || 'Item' }}</h2>
+          <div class="dld__eyebrow">{{ t('dropDialog.eyebrow') }}</div>
+          <h2 class="dld__title">{{ itemName || t('dropDialog.itemFallback') }}</h2>
         </div>
-        <button class="dld__close" aria-label="Close drop locations" @click="close">
+        <button class="dld__close" :aria-label="t('dropDialog.closeAria')" @click="close">
           <v-icon>mdi-close</v-icon>
         </button>
       </header>
@@ -28,24 +28,24 @@
       <!-- Live market snapshot (from the catalog store; independent of the drops fetch) -->
       <section v-if="marketItem" class="dld__market">
         <div class="dld__market-grid">
-          <div class="dld__mstat"><span class="dld__mlbl">Buy</span><span class="dld__mval">{{ fmtP(mkt.buy) }}p</span></div>
-          <div class="dld__mstat"><span class="dld__mlbl">Sell</span><span class="dld__mval">{{ fmtP(mkt.sell) }}p</span></div>
-          <div class="dld__mstat"><span class="dld__mlbl">Avg 48h</span><span class="dld__mval">{{ fmtP(mkt.avg_price) }}p</span></div>
-          <div class="dld__mstat"><span class="dld__mlbl">Diff</span><span class="dld__mval">{{ fmtP(mkt.diff) }}p</span></div>
-          <div class="dld__mstat"><span class="dld__mlbl">Vol 48h</span><span class="dld__mval" :class="{ 'is-thin': signal.thin }">{{ fmtInt(mkt.volume) }}</span></div>
-          <div v-if="marketItem.priceUpdate" class="dld__mstat"><span class="dld__mlbl">Updated</span><span class="dld__mval">{{ fromNow(marketItem.priceUpdate) }}</span></div>
+          <div class="dld__mstat"><span class="dld__mlbl">{{ t('dropDialog.market.buy') }}</span><span class="dld__mval">{{ fmtP(mkt.buy) }}p</span></div>
+          <div class="dld__mstat"><span class="dld__mlbl">{{ t('dropDialog.market.sell') }}</span><span class="dld__mval">{{ fmtP(mkt.sell) }}p</span></div>
+          <div class="dld__mstat"><span class="dld__mlbl">{{ t('dropDialog.market.avg48h') }}</span><span class="dld__mval">{{ fmtP(mkt.avg_price) }}p</span></div>
+          <div class="dld__mstat"><span class="dld__mlbl">{{ t('dropDialog.market.diff') }}</span><span class="dld__mval">{{ fmtP(mkt.diff) }}p</span></div>
+          <div class="dld__mstat"><span class="dld__mlbl">{{ t('dropDialog.market.vol48h') }}</span><span class="dld__mval" :class="{ 'is-thin': signal.thin }">{{ fmtInt(mkt.volume) }}</span></div>
+          <div v-if="marketItem.priceUpdate" class="dld__mstat"><span class="dld__mlbl">{{ t('dropDialog.market.updated') }}</span><span class="dld__mval">{{ fromNow(marketItem.priceUpdate) }}</span></div>
         </div>
         <div class="dld__market-foot">
           <span v-if="signal.note" class="dld__flag" :class="{ 'is-warn': signal.overpriced }">⚠ {{ signal.note }}</span>
-          <span v-if="lastTrade" class="dld__last">last trade {{ fmtP(lastTrade.avg_price) }}p · {{ fromNow(lastTrade.datetime) }}</span>
+          <span v-if="lastTrade" class="dld__last">{{ t('dropDialog.market.lastTrade', { price: fmtP(lastTrade.avg_price), time: fromNow(lastTrade.datetime) }) }}</span>
           <div v-if="marketItem.tags && marketItem.tags.length" class="dld__tags">
             <span v-for="(t, ti) in marketItem.tags.slice(0, 4)" :key="ti" class="dld__tag">{{ fmtTag(t) }}</span>
           </div>
-          <a v-if="wmUrl" class="dld__wm" :href="wmUrl" target="_blank" rel="noopener">View on Warframe.Market ↗</a>
+          <a v-if="wmUrl" class="dld__wm" :href="wmUrl" target="_blank" rel="noopener">{{ t('dropDialog.market.viewOnMarket') }}</a>
         </div>
       </section>
       <section v-else-if="itemName" class="dld__market dld__market--none">
-        Not traded on Warframe Market
+        {{ t('dropDialog.market.notTraded') }}
       </section>
 
       <div class="dld__body">
@@ -57,15 +57,15 @@
         <!-- Error -->
         <div v-else-if="error" class="dld__state dld__state--msg">
           <v-icon color="#e0a3a3" size="34">mdi-alert-circle-outline</v-icon>
-          <p>Couldn't load drop data.</p>
-          <button class="dld__retry" @click="load">Retry</button>
+          <p>{{ t('dropDialog.state.error') }}</p>
+          <button class="dld__retry" @click="load">{{ t('dropDialog.state.retry') }}</button>
         </div>
 
         <!-- Empty -->
         <div v-else-if="!hasResults" class="dld__state dld__state--msg">
           <v-icon color="#6b7280" size="34">mdi-map-marker-off-outline</v-icon>
-          <p>No drop sources found for this item.</p>
-          <span class="dld__hint">It may be vaulted, sold by a shop, or traded only between players.</span>
+          <p>{{ t('dropDialog.state.empty') }}</p>
+          <span class="dld__hint">{{ t('dropDialog.state.emptyHint') }}</span>
         </div>
 
         <!-- Results -->
@@ -73,7 +73,7 @@
           <!-- Direct mission drops -->
           <section v-if="data.missions.length" class="dld__sec">
             <div class="dld__sec-head">
-              <span class="dld__sec-title">Drops directly at</span>
+              <span class="dld__sec-title">{{ t('dropDialog.results.directDrops') }}</span>
               <span class="dld__sec-count">{{ data.missions.length }}</span>
             </div>
             <ul class="dld__list">
@@ -94,7 +94,7 @@
           <!-- From relics -->
           <section v-if="data.relics.length" class="dld__sec">
             <div class="dld__sec-head">
-              <span class="dld__sec-title">Found in relics</span>
+              <span class="dld__sec-title">{{ t('dropDialog.results.foundInRelics') }}</span>
               <span class="dld__sec-count">{{ data.relics.length }}</span>
             </div>
             <div v-for="(r, i) in data.relics" :key="'r' + i" class="dld__relic">
@@ -117,17 +117,17 @@
               <div class="dld__refine">
                 <div
                   v-for="ref in refinements(r.chance)"
-                  :key="ref.label"
+                  :key="ref.key"
                   class="dld__refcell"
                   :class="'is-' + ref.key"
                 >
-                  <span class="dld__reflbl">{{ ref.label }}</span>
+                  <span class="dld__reflbl">{{ t('dropDialog.refine.' + ref.key) }}</span>
                   <span class="dld__refval">{{ fmt(ref.chance) }}%</span>
                 </div>
               </div>
 
               <div v-if="r.farmNodes.length" class="dld__farm">
-                <span class="dld__farm-lbl">Farm the relic at</span>
+                <span class="dld__farm-lbl">{{ t('dropDialog.results.farmRelicAt') }}</span>
                 <div class="dld__farm-nodes">
                   <span
                     v-for="(n, j) in (expanded.has(i) ? r.farmNodes : r.farmNodes.slice(0, 6))"
@@ -142,11 +142,11 @@
                     class="dld__chip dld__chip--more"
                     @click="toggle(i)"
                   >
-                    {{ expanded.has(i) ? 'Show less' : '+' + (r.farmNodes.length - 6) + ' more' }}
+                    {{ expanded.has(i) ? t('dropDialog.results.showLess') : t('dropDialog.results.showMore', { n: r.farmNodes.length - 6 }) }}
                   </button>
                 </div>
               </div>
-              <div v-else class="dld__farm dld__farm--none">Relic currently has no farmable source (likely vaulted).</div>
+              <div v-else class="dld__farm dld__farm--none">{{ t('dropDialog.results.noFarmSource') }}</div>
             </div>
           </section>
         </div>
@@ -160,10 +160,10 @@
           target="_blank"
           rel="noopener noreferrer"
         >
-          <v-icon size="14">mdi-book-open-variant</v-icon> Wiki
+          <v-icon size="14">mdi-book-open-variant</v-icon> {{ t('dropDialog.footer.wiki') }}
         </a>
         <a class="dld__source" :href="externalLink" target="_blank" rel="noopener noreferrer">
-          Cross-check on warframestat <v-icon size="14">mdi-open-in-new</v-icon>
+          {{ t('dropDialog.footer.crossCheck') }} <v-icon size="14">mdi-open-in-new</v-icon>
         </a>
       </footer>
     </div>
@@ -213,6 +213,8 @@ const props = withDefaults(
   { modelValue: false, itemName: '', thumb: '' },
 )
 const emit = defineEmits<{ (e: 'update:modelValue', value: boolean): void }>()
+
+const { t } = useI18n()
 
 const config = useRuntimeConfig()
 const base = config.public.apiURL
@@ -275,7 +277,6 @@ function onImgError(e: Event) {
 // off the base chance because it's reliable even when a rarity label disagrees.
 interface Refinement {
   key: string
-  label: string
   chance: number
 }
 const REFINE_SLOTS: Record<string, number[]> = {
@@ -283,16 +284,12 @@ const REFINE_SLOTS: Record<string, number[]> = {
   uncommon: [11, 13, 17, 20],
   rare: [2, 4, 6, 10],
 }
-const REFINE_LABELS: ReadonlyArray<{ key: string; label: string }> = [
-  { key: 'intact', label: 'Intact' },
-  { key: 'exceptional', label: 'Excep.' },
-  { key: 'flawless', label: 'Flawless' },
-  { key: 'radiant', label: 'Radiant' },
-]
+// Refinement tier keys map to translated labels via t('dropDialog.refine.<key>').
+const REFINE_KEYS = ['intact', 'exceptional', 'flawless', 'radiant'] as const
 function refinements(baseChance: number): Refinement[] {
   const slot = baseChance >= 18 ? 'common' : baseChance >= 6 ? 'uncommon' : 'rare'
   const vals = REFINE_SLOTS[slot] as number[]
-  return REFINE_LABELS.map((l, i) => ({ ...l, chance: vals[i] as number }))
+  return REFINE_KEYS.map((key, i) => ({ key, chance: vals[i] as number }))
 }
 
 // Farm-node lists expand inline (show first 6, toggle to all) — no external nav.

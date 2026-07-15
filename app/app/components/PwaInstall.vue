@@ -3,6 +3,7 @@
 // Chromium prompts inline via the captured beforeinstallprompt; iOS Safari has
 // no such event, so it opens a small "Add to Home Screen" steps dialog on tap.
 // No auto-showing banner — the button is the only entry point.
+const { t } = useI18n()
 const { canInstall, installed, isIos, isStandalone, promptInstall } = usePwaInstall()
 
 const iosDialog = ref(false)
@@ -25,8 +26,8 @@ function onInstallClick() {
     size="small"
     variant="text"
     class="pwa-install-btn"
-    aria-label="Install app"
-    title="Install app"
+    :aria-label="t('components.pwa.installApp')"
+    :title="t('components.pwa.installApp')"
     @click="onInstallClick"
   >
     <v-icon>mdi-download-outline</v-icon>
@@ -37,21 +38,28 @@ function onInstallClick() {
     <div class="pwa-ios">
       <div class="pwa-ios__head">
         <span class="pwa-ios__node" aria-hidden="true"></span>
-        Add to Home Screen
+        {{ t('components.pwa.addToHome') }}
       </div>
       <ol class="pwa-ios__steps">
         <li>
-          Tap the <strong>Share</strong> icon
-          <v-icon size="18" color="#4fb3bf">mdi-export-variant</v-icon>
-          in Safari's toolbar.
+          <i18n-t keypath="components.pwa.step1" tag="span">
+            <template #share><strong>{{ t('components.pwa.shareLabel') }}</strong></template>
+            <template #icon><v-icon size="18" color="#4fb3bf">mdi-export-variant</v-icon></template>
+          </i18n-t>
         </li>
         <li>
-          Choose <strong>Add to Home Screen</strong>
-          <v-icon size="18" color="#4fb3bf">mdi-plus-box-outline</v-icon>.
+          <i18n-t keypath="components.pwa.step2" tag="span">
+            <template #add><strong>{{ t('components.pwa.addToHome') }}</strong></template>
+            <template #icon><v-icon size="18" color="#4fb3bf">mdi-plus-box-outline</v-icon></template>
+          </i18n-t>
         </li>
-        <li>Tap <strong>Add</strong> — it installs like a native app.</li>
+        <li>
+          <i18n-t keypath="components.pwa.step3" tag="span">
+            <template #add><strong>{{ t('components.pwa.addLabel') }}</strong></template>
+          </i18n-t>
+        </li>
       </ol>
-      <button class="pwa-ios__close" @click="iosDialog = false">Got it</button>
+      <button class="pwa-ios__close" @click="iosDialog = false">{{ t('components.pwa.gotIt') }}</button>
     </div>
   </v-dialog>
 </template>

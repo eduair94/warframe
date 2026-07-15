@@ -552,11 +552,18 @@ export class MarketService {
       // Get mod max rank if applicable (for mods)
       const maxRank = item.items_in_set?.[0]?.mod_max_rank;
 
+      // Most-liquid variant for subtype-bearing items (relics: intact/exceptional/
+      // flawless/radiant). Undefined for mods/sculptures/plain items. Applied to BOTH
+      // the order prices and the statistics below so the stored baseline is
+      // like-for-like (buy/sell/avg_price all describe the same tier).
+      const subtype = OrderCalculator.dominantSubtype(ordersResponse.payload.orders);
+
       // Calculate prices using OrderCalculator with appropriate filters
       const prices = OrderCalculator.calculatePrices(
         ordersResponse.payload.orders,
         {
           maxRank,
+          subtype,
           // Ayatan sculpture filtering for filled sculptures
           maxAmberStars: item.max_amber_stars,
           maxCyanStars: item.max_cyan_stars
@@ -578,7 +585,7 @@ export class MarketService {
           payload: { statistics_closed: { '48hours': IStatisticsDataPoint[] } }
         }>(item.url_name);
         rawStats48h = statsResponse?.payload?.statistics_closed?.['48hours'] || [];
-        stats = StatisticsCalculator.calculate(rawStats48h, { modRank: maxRank });
+        stats = StatisticsCalculator.calculate(rawStats48h, { modRank: maxRank, subtype });
       } catch (statsError: any) {
         if (this.isRateLimitError(statsError)) {
           throw statsError;

@@ -59,6 +59,10 @@ export interface IPriceCalculationResult {
 export interface IPriceCalculationOptions {
   /** Maximum mod rank to filter by (undefined = no filter) */
   maxRank?: number;
+  /** Variant/subtype to filter by, e.g. 'radiant' for relics (undefined = no filter).
+   *  Both buy and sell are filtered to this subtype so the comparison is like-for-like.
+   *  Use OrderCalculator.dominantSubtype(orders) to pick the most-liquid tier. */
+  subtype?: string;
   /** Required user status (default: 'ingame') */
   requiredStatus?: string;
   /** Number of top orders to average (default: 5) */
@@ -69,7 +73,7 @@ export interface IPriceCalculationOptions {
   maxAmberStars?: number;
   /** Ayatan: Required cyan stars for filled sculpture (undefined = no filter) */
   maxCyanStars?: number;
-  /** If true, fallback to any rank when no orders found at maxRank (default: true) */
+  /** If true, fallback to any variant (rank/subtype/stars) when no orders match (default: true) */
   fallbackToAnyRank?: boolean;
 }
 
@@ -96,6 +100,7 @@ export class OrderCalculator {
   ): IPriceCalculationResult {
     const {
       maxRank,
+      subtype,
       requiredStatus = PRICE_CONFIG.REQUIRED_STATUS,
       topOrdersCount = PRICE_CONFIG.TOP_ORDERS_COUNT,
       fallbackStatuses = ['online'],
@@ -104,22 +109,37 @@ export class OrderCalculator {
       fallbackToAnyRank = true
     } = options;
 
+    // Whether any item-variant filter is active. When one is, an empty result on
+    // both sides triggers the "show any variant" fallback below (previously gated
+    // on maxRank only, so subtype/star items never fell back and could show 0/0).
+    const hasVariantFilter =
+      maxRank !== undefined ||
+      subtype !== undefined ||
+      maxAmberStars !== undefined ||
+      maxCyanStars !== undefined;
+
     // Build status priority list: primary status first, then fallbacks
     const statusPriority = [requiredStatus, ...fallbackStatuses];
 
     /**
      * Filter orders by item-specific criteria:
      * - Mods: filter by mod_rank matching maxRank
+     * - Relics/variants: filter by subtype matching the requested tier (e.g. 'radiant')
      * - Ayatan sculptures: filter by filled status (amber_stars + cyan_stars matching max values)
      * - Other items: no additional filtering
-     * 
+     *
      * @param order - The order to check
-     * @param skipRankFilter - If true, skip rank filtering (for fallback)
+     * @param skipVariantFilter - If true, skip ALL variant filters (rank/subtype/stars) for fallback
      */
-    const filterByItemCriteria = (order: IOrderData, skipRankFilter = false): boolean => {
+    const filterByItemCriteria = (order: IOrderData, skipVariantFilter = false): boolean => {
+      if (skipVariantFilter) return true;
+
       // Mod rank filtering (for mods/rivens/arcanes)
-      if (!skipRankFilter && maxRank !== undefined && order.mod_rank !== maxRank) return false;
-      
+      if (maxRank !== undefined && order.mod_rank !== maxRank) return false;
+
+      // Variant/subtype filtering (relics: intact/exceptional/flawless/radiant, etc.)
+      if (subtype !== undefined && order.subtype !== subtype) return false;
+
       // Ayatan sculpture filtering (only filled sculptures)
       // If maxAmberStars or maxCyanStars is specified, filter for filled sculptures
       if (maxAmberStars !== undefined || maxCyanStars !== undefined) {
@@ -127,13 +147,13 @@ export class OrderCalculator {
         const requiredCyan = maxCyanStars ?? 0;
         const orderAmber = order.amber_stars ?? 0;
         const orderCyan = order.cyan_stars ?? 0;
-        
+
         // Only accept orders with all stars socketed (filled sculpture)
         if (orderAmber !== requiredAmber || orderCyan !== requiredCyan) {
           return false;
         }
       }
-      
+
       return true;
     };
 
@@ -163,8 +183,8 @@ export class OrderCalculator {
       }
     }
 
-    // Second pass: if no orders found and fallback is enabled, try without rank filter
-    if (buyOrders.length === 0 && sellOrders.length === 0 && fallbackToAnyRank && maxRank !== undefined) {
+    // Second pass: if no orders found and fallback is enabled, try without any variant filter
+    if (buyOrders.length === 0 && sellOrders.length === 0 && fallbackToAnyRank && hasVariantFilter) {
       for (const status of statusPriority) {
         const filterByStatus = (order: IOrderData): boolean => {
           return order.user.status === status && filterByItemCriteria(order, true);
@@ -194,8 +214,36 @@ export class OrderCalculator {
   }
 
   /**
+   * Picks the most-liquid variant/subtype among a set of orders — the subtype
+   * value carried by the most orders. Used so buy and sell are compared on the
+   * SAME tier (e.g. relic 'radiant' vs 'intact') instead of mixing variants.
+   *
+   * @param orders - Order array (any statuses; liquidity ~ listing count)
+   * @returns The dominant subtype, or undefined if no order carries one.
+   */
+  static dominantSubtype(orders: IOrderData[]): string | undefined {
+    const counts = new Map<string, number>();
+    for (const order of orders) {
+      const st = order.subtype;
+      if (st === undefined || st === null || st === '') continue;
+      counts.set(st, (counts.get(st) ?? 0) + 1);
+    }
+    if (counts.size === 0) return undefined;
+    let best: string | undefined;
+    let bestCount = -1;
+    // Highest count wins; ties broken lexicographically for deterministic output.
+    for (const [st, count] of counts) {
+      if (count > bestCount || (count === bestCount && (best === undefined || st < best))) {
+        best = st;
+        bestCount = count;
+      }
+    }
+    return best;
+  }
+
+  /**
    * Calculates buy prices (highest buyers)
-   * 
+   *
    * @param buyOrders - Filtered buy orders
    * @param topCount - Number of top orders to average
    * @returns Buy price and average

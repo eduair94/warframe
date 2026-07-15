@@ -5,27 +5,25 @@
         <header class="an-hero">
           <div class="an-hero__text">
             <div class="an-eyebrow">
-              Warframe Market · Real-time
+              {{ t('live.eyebrow') }}
               <span class="live-dot" :class="{ 'is-on': connected }" />
-              <span class="live-state">{{ connected ? 'live' : 'connecting…' }}</span>
+              <span class="live-state">{{ connected ? t('live.status.live') : t('live.status.connecting') }}</span>
             </div>
-            <h1 class="an-title">Live <span class="accent-a">signals</span>.</h1>
-            <p class="an-lede">
-              Best online buy/sell straight from the order book, with a buy/sell verdict against a
-              blended fair value. Ranked items (arcanes/mods) price at max rank; thin-volume items
-              are held, never advised.
-            </p>
+            <i18n-t keypath="live.hero.title" tag="h1" class="an-title">
+              <template #signals><span class="accent-a">{{ t('live.hero.titleSignals') }}</span></template>
+            </i18n-t>
+            <p class="an-lede">{{ t('live.hero.lede') }}</p>
           </div>
         </header>
 
         <div v-if="pulse" class="live-pulse">
           <div class="live-pulse__stats">
-            <span class="live-pulse__stat"><strong>{{ fmtVol(pulse.online.connections) }}</strong> traders online</span>
+            <span class="live-pulse__stat"><strong>{{ fmtVol(pulse.online.connections) }}</strong> {{ t('live.pulse.tradersOnline') }}</span>
             <span class="live-pulse__sep">·</span>
-            <span class="live-pulse__stat"><strong>{{ fmtVol(pulse.online.authorizedUsers) }}</strong> signed in</span>
+            <span class="live-pulse__stat"><strong>{{ fmtVol(pulse.online.authorizedUsers) }}</strong> {{ t('live.pulse.signedIn') }}</span>
             <span class="live-pulse__sep">·</span>
-            <span class="live-pulse__stat"><strong>{{ pulse.ordersPerMin }}</strong> orders/min</span>
-            <span class="live-pulse__label">latest listings, live from warframe.market →</span>
+            <span class="live-pulse__stat"><strong>{{ pulse.ordersPerMin }}</strong> {{ t('live.pulse.ordersPerMin') }}</span>
+            <span class="live-pulse__label">{{ t('live.pulse.latest') }}</span>
           </div>
           <div class="live-pulse__ticker">
             <span
@@ -44,19 +42,19 @@
         <div class="an-stats">
           <div class="an-stat">
             <div class="an-stat__num is-good">{{ buyCount }}</div>
-            <div class="an-stat__lbl">Good buys (page)</div>
+            <div class="an-stat__lbl">{{ t('live.stats.goodBuys') }}</div>
           </div>
           <div class="an-stat">
             <div class="an-stat__num is-gold">{{ sellCount }}</div>
-            <div class="an-stat__lbl">Good sells (page)</div>
+            <div class="an-stat__lbl">{{ t('live.stats.goodSells') }}</div>
           </div>
           <div class="an-stat">
             <div class="an-stat__num">{{ liveCount }}</div>
-            <div class="an-stat__lbl">Streaming</div>
+            <div class="an-stat__lbl">{{ t('live.stats.streaming') }}</div>
           </div>
           <div class="an-stat">
             <div class="an-stat__num is-alt">{{ filtered.length }}</div>
-            <div class="an-stat__lbl">Matches</div>
+            <div class="an-stat__lbl">{{ t('live.stats.matches') }}</div>
           </div>
         </div>
 
@@ -68,7 +66,7 @@
               hide-details
               clearable
               prepend-inner-icon="mdi-magnify"
-              label="Search an item"
+              :label="t('live.filters.search')"
               class="an-search"
             />
             <v-text-field
@@ -77,37 +75,36 @@
               min="0"
               density="compact"
               hide-details
-              label="Min vol"
+              :label="t('live.filters.minVol')"
               class="vol-field"
             />
             <v-btn-toggle v-model="mode" mandatory density="compact" class="mode-toggle" color="#4fb3bf">
-              <v-btn value="all" size="small">All</v-btn>
-              <v-btn value="buy" size="small">Buy deals</v-btn>
-              <v-btn value="sell" size="small">Sell deals</v-btn>
-              <v-btn value="flip" size="small">Flips</v-btn>
+              <v-btn value="all" size="small">{{ t('live.modes.all') }}</v-btn>
+              <v-btn value="buy" size="small">{{ t('live.modes.buy') }}</v-btn>
+              <v-btn value="sell" size="small">{{ t('live.modes.sell') }}</v-btn>
+              <v-btn value="flip" size="small">{{ t('live.modes.flip') }}</v-btn>
             </v-btn-toggle>
           </div>
           <div class="an-count">
-            Streaming {{ paged.length }} of {{ filtered.length }} ·
-            {{ filtered.length === 1 ? 'item' : 'items' }}
-            <span v-if="mode !== 'all'" class="mode-hint">· sorted by best {{ mode === 'buy' ? 'buys' : mode === 'sell' ? 'sells' : 'flips' }}</span>
+            {{ t('live.count.line', { shown: paged.length, total: filtered.length }, filtered.length) }}
+            <span v-if="mode !== 'all'" class="mode-hint">{{ t('live.count.sortedBy', { what: modeHintWhat }) }}</span>
           </div>
         </section>
 
-        <div v-if="!filtered.length" class="an-empty">No tradeable items match this search.</div>
+        <div v-if="!filtered.length" class="an-empty">{{ t('live.empty') }}</div>
 
         <div v-else-if="!isMobile" class="an-tablewrap">
           <table class="an-table">
             <thead>
               <tr>
-                <th class="col-name sortable" @click="sortBy('name')">Item{{ sortArrow('name') }}</th>
-                <th class="an-num sortable" @click="sortBy('bestBuy')">Best buy{{ sortArrow('bestBuy') }}</th>
-                <th class="an-num sortable" @click="sortBy('bestSell')">Best sell{{ sortArrow('bestSell') }}</th>
-                <th class="an-num sortable" @click="sortBy('fair')">Fair value{{ sortArrow('fair') }}</th>
-                <th class="an-num sortable" @click="sortBy('vol')">Vol{{ sortArrow('vol') }}</th>
-                <th class="an-num sortable" @click="sortBy('flip')">Flip{{ sortArrow('flip') }}</th>
-                <th class="sortable" @click="sortBy('signal')">Signal{{ sortArrow('signal') }}</th>
-                <th class="an-num">Updated</th>
+                <th class="col-name sortable" @click="sortBy('name')">{{ t('live.table.item') }}{{ sortArrow('name') }}</th>
+                <th class="an-num sortable" @click="sortBy('bestBuy')">{{ t('live.table.bestBuy') }}{{ sortArrow('bestBuy') }}</th>
+                <th class="an-num sortable" @click="sortBy('bestSell')">{{ t('live.table.bestSell') }}{{ sortArrow('bestSell') }}</th>
+                <th class="an-num sortable" @click="sortBy('fair')">{{ t('live.table.fair') }}{{ sortArrow('fair') }}</th>
+                <th class="an-num sortable" @click="sortBy('vol')">{{ t('live.table.vol') }}{{ sortArrow('vol') }}</th>
+                <th class="an-num sortable" @click="sortBy('flip')">{{ t('live.table.flip') }}{{ sortArrow('flip') }}</th>
+                <th class="sortable" @click="sortBy('signal')">{{ t('live.table.signal') }}{{ sortArrow('signal') }}</th>
+                <th class="an-num">{{ t('live.table.updated') }}</th>
               </tr>
             </thead>
             <tbody>
@@ -134,7 +131,7 @@
                 <td class="an-num">{{ plat(row, 'fair') }}</td>
                 <td class="an-num">
                   <span :class="{ 'is-thin': isThin(row) }">{{ volNum(row) }}</span>
-                  <span v-if="isThin(row)" class="thin-flag" title="Thin volume — price may be rigged">⚠</span>
+                  <span v-if="isThin(row)" class="thin-flag" :title="t('live.thinTitle')">⚠</span>
                 </td>
                 <td class="an-num">{{ plat(row, 'flip') }}</td>
                 <td><MarketVerdictBadge :verdict="live[row.url_name]?.verdict ?? null" /></td>
@@ -164,18 +161,18 @@
             </div>
             <div class="an-card__blocks">
               <div class="an-block">
-                <span class="an-block__lbl">Buy</span>{{ plat(row, 'bestBuy') }}
+                <span class="an-block__lbl">{{ t('live.card.buy') }}</span>{{ plat(row, 'bestBuy') }}
               </div>
               <div class="an-block">
-                <span class="an-block__lbl">Sell</span>{{ plat(row, 'bestSell') }}
+                <span class="an-block__lbl">{{ t('live.card.sell') }}</span>{{ plat(row, 'bestSell') }}
               </div>
               <div class="an-block">
-                <span class="an-block__lbl">Fair</span>{{ plat(row, 'fair') }}
+                <span class="an-block__lbl">{{ t('live.card.fair') }}</span>{{ plat(row, 'fair') }}
               </div>
               <div class="an-block">
-                <span class="an-block__lbl">Vol</span>
+                <span class="an-block__lbl">{{ t('live.card.vol') }}</span>
                 <span :class="{ 'is-thin': isThin(row) }">{{ volNum(row) }}</span>
-                <span v-if="isThin(row)" class="thin-flag" title="Thin volume — price may be rigged">⚠</span>
+                <span v-if="isThin(row)" class="thin-flag" :title="t('live.thinTitle')">⚠</span>
               </div>
             </div>
           </div>
@@ -192,9 +189,7 @@
       </div>
 
       <v-alert class="an-disclaimer bg-blue-darken-4" type="info" density="compact">
-        Verdicts compare the lowest online sell against a blended fair value (realized average +
-        price history). Arcanes/mods price at their max rank. Thin-volume items (⚠) are held, since
-        a couple of orders can rig the price. Click any item for its live order book.
+        {{ t('live.disclaimer') }}
       </v-alert>
 
       <v-dialog v-model="showDetail" max-width="760">
@@ -210,23 +205,22 @@
           </div>
 
           <div class="ob-advice">
-            <div class="ob-advice__row"><span class="ob-advice__lbl buy">Buying</span>{{ buyAdvice(detail) }}</div>
-            <div class="ob-advice__row"><span class="ob-advice__lbl sell">Selling</span>{{ sellAdvice(detail) }}</div>
+            <div class="ob-advice__row"><span class="ob-advice__lbl buy">{{ t('live.ob.buying') }}</span>{{ buyAdvice(detail) }}</div>
+            <div class="ob-advice__row"><span class="ob-advice__lbl sell">{{ t('live.ob.selling') }}</span>{{ sellAdvice(detail) }}</div>
             <div class="ob-advice__meta">
-              Fair value {{ Math.round(detail.verdict.fv) }}p · spread
-              {{ Math.max(0, detail.book.bestSell - detail.book.bestBuy) }}p · vol {{ detail.verdict.volume }}/48h<span
+              {{ t('live.ob.meta', { fv: Math.round(detail.verdict.fv), spread: Math.max(0, detail.book.bestSell - detail.book.bestBuy), vol: detail.verdict.volume }) }}<span
                 v-if="detail.verdict.thin"
                 class="is-thin"
               >
-                · ⚠ thin</span
+                {{ ' ' + t('live.ob.thin') }}</span
               >
-              · updated {{ agoOf(detailRow.url_name) }}
+              {{ ' ' + t('live.ob.updated', { ago: agoOf(detailRow.url_name) }) }}
             </div>
           </div>
 
           <div class="ob-cols">
             <div class="ob-col">
-              <div class="ob-col__title sell">Sellers · WTS <span>cheapest first</span></div>
+              <div class="ob-col__title sell">{{ t('live.ob.sellersTitle') }} <span>{{ t('live.ob.sellersHint') }}</span></div>
               <div
                 v-for="(o, i) in detail.book.sellOrders"
                 :key="'s' + i"
@@ -240,16 +234,16 @@
                 <strong class="ob-plat">{{ o.platinum }}p</strong>
                 <button
                   class="ob-copy"
-                  title="Copy /w whisper (buy from this seller)"
+                  :title="t('live.ob.copyBuy')"
                   @click.stop="copyMsg('s' + i, whisper(o.ingame_name, detailRow.item_name, o.platinum, o.rank, 'buy'))"
                 >
                   {{ copiedKey === 's' + i ? '✓' : '⧉' }}
                 </button>
               </div>
-              <div v-if="!detail.book.sellOrders.length" class="ob-empty">No online sellers</div>
+              <div v-if="!detail.book.sellOrders.length" class="ob-empty">{{ t('live.ob.noSellers') }}</div>
             </div>
             <div class="ob-col">
-              <div class="ob-col__title buy">Buyers · WTB <span>highest first</span></div>
+              <div class="ob-col__title buy">{{ t('live.ob.buyersTitle') }} <span>{{ t('live.ob.buyersHint') }}</span></div>
               <div
                 v-for="(o, i) in detail.book.buyOrders"
                 :key="'b' + i"
@@ -263,16 +257,16 @@
                 <strong class="ob-plat">{{ o.platinum }}p</strong>
                 <button
                   class="ob-copy"
-                  title="Copy /w whisper (sell to this buyer)"
+                  :title="t('live.ob.copySell')"
                   @click.stop="copyMsg('b' + i, whisper(o.ingame_name, detailRow.item_name, o.platinum, o.rank, 'sell'))"
                 >
                   {{ copiedKey === 'b' + i ? '✓' : '⧉' }}
                 </button>
               </div>
-              <div v-if="!detail.book.buyOrders.length" class="ob-empty">No online buyers</div>
+              <div v-if="!detail.book.buyOrders.length" class="ob-empty">{{ t('live.ob.noBuyers') }}</div>
             </div>
           </div>
-          <div class="ob-foot">🟢 ingame — trade now · 🟡 online — message them</div>
+          <div class="ob-foot">{{ t('live.ob.foot') }}</div>
         </div>
       </v-dialog>
     </client-only>
@@ -285,6 +279,7 @@ import { useDisplay } from 'vuetify'
 import { useItemsStore } from '~/stores/items'
 import type { LiveUpdate } from '~/utils/liveTypes'
 
+const { t } = useI18n()
 const store = useItemsStore()
 const allItems = computed<any[]>(() => store.allItems)
 
@@ -364,6 +359,15 @@ const paged = computed<any[]>(() => {
 watch(filtered, () => {
   page.value = 1
 })
+
+// Label for the "sorted by best …" hint next to the count.
+const modeHintWhat = computed(() =>
+  mode.value === 'buy'
+    ? t('live.count.sortBuys')
+    : mode.value === 'sell'
+      ? t('live.count.sortSells')
+      : t('live.count.sortFlips'),
+)
 
 function sortBy(key: string) {
   if (sortKey.value === key) sortDir.value = sortDir.value === 'asc' ? 'desc' : 'asc'
@@ -478,7 +482,7 @@ function agoOf(url: string): string {
   const u = live.value[url]
   if (!u) return ''
   const s = Math.max(0, Math.floor((now.value - u.book.updatedAt) / 1000))
-  return s < 1 ? 'now' : `${s}s`
+  return s < 1 ? t('live.ago.now') : `${s}s`
 }
 
 // --- order-book detail (click a row to see the real offers + a worth-it call) ---
@@ -495,8 +499,8 @@ function openDetail(row: any) {
 // Copy-paste-ready wf.market in-game whisper for a specific order.
 const copiedKey = ref<string | null>(null)
 function whisper(name: string, item: string, platinum: number, rank: number | undefined, kind: 'buy' | 'sell'): string {
-  const r = rank != null ? ` (rank ${rank})` : ''
-  return `/w ${name} Hi! I want to ${kind}: "${item}"${r} for ${platinum} platinum. (warframe.market)`
+  const r = rank != null ? t('live.whisper.rank', { rank }) : ''
+  return t(`live.whisper.${kind}`, { name, item, rank: r, platinum })
 }
 async function copyMsg(key: string, text: string) {
   try {
@@ -513,23 +517,23 @@ function buyAdvice(u: LiveUpdate): string {
   const b = u.book
   const v = u.verdict
   const fv = Math.round(v.fv)
-  if (!b.bestSell) return 'No sellers online right now.'
-  if (v.thin) return `Thin volume (${v.volume}/48h) — a couple of orders can rig this, don't chase.`
+  if (!b.bestSell) return t('live.advice.buy.noSellers')
+  if (v.thin) return t('live.advice.buy.thin', { vol: v.volume })
   const pct = v.fv > 0 ? Math.round(((v.fv - b.bestSell) / v.fv) * 100) : 0
-  if (pct >= 8) return `Buy from the cheapest seller at ${b.bestSell}p — ${pct}% below fair (${fv}p). Good buy.`
-  if (pct <= -8) return `Cheapest sell ${b.bestSell}p is ${-pct}% above fair (${fv}p). Overpriced — wait.`
-  return `Cheapest sell ${b.bestSell}p is about fair (${fv}p). No edge either way.`
+  if (pct >= 8) return t('live.advice.buy.good', { price: b.bestSell, pct, fv })
+  if (pct <= -8) return t('live.advice.buy.over', { price: b.bestSell, pct: -pct, fv })
+  return t('live.advice.buy.fair', { price: b.bestSell, fv })
 }
 function sellAdvice(u: LiveUpdate): string {
   const b = u.book
   const v = u.verdict
   const fv = Math.round(v.fv)
-  if (!b.bestBuy) return 'No buyers online — list a sell order and wait.'
-  if (v.thin) return `Thin volume — few real buyers, price is unreliable.`
+  if (!b.bestBuy) return t('live.advice.sell.noBuyers')
+  if (v.thin) return t('live.advice.sell.thin')
   const pct = v.fv > 0 ? Math.round(((b.bestBuy - v.fv) / v.fv) * 100) : 0
-  if (pct >= 8) return `Sell instantly to the top buyer at ${b.bestBuy}p — ${pct}% above fair. Great sell.`
-  if (pct <= -8) return `Top buyer only ${b.bestBuy}p (${-pct}% below fair). List your own at ~${fv}p instead.`
-  return `Top buyer ${b.bestBuy}p is about fair. Or list your own around ${fv}p.`
+  if (pct >= 8) return t('live.advice.sell.good', { price: b.bestBuy, pct })
+  if (pct <= -8) return t('live.advice.sell.under', { price: b.bestBuy, pct: -pct, fv })
+  return t('live.advice.sell.fair', { price: b.bestBuy, fv })
 }
 
 onMounted(() => {

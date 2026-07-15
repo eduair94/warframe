@@ -8,14 +8,14 @@
   >
     <div class="wg">
       <header class="wg-head">
-        <button v-if="detail" ref="backBtn" class="wg-back" aria-label="Back to all warframes" @click="detail = null">
+        <button v-if="detail" ref="backBtn" class="wg-back" :aria-label="t('guideDialog.backAria')" @click="detail = null">
           <v-icon size="20">mdi-arrow-left</v-icon>
         </button>
         <div class="wg-head__text">
-          <div class="an-eyebrow">Farming guide</div>
-          <h2 class="wg-title">{{ detail ? detail.name : 'Warframes' }}</h2>
+          <div class="an-eyebrow">{{ t('guideDialog.eyebrow') }}</div>
+          <h2 class="wg-title">{{ detail ? detail.name : t('guideDialog.title') }}</h2>
         </div>
-        <v-btn icon variant="text" aria-label="Close guide" @click="emit('update:modelValue', false)">
+        <v-btn icon variant="text" :aria-label="t('guideDialog.closeAria')" @click="emit('update:modelValue', false)">
           <v-icon>mdi-close</v-icon>
         </v-btn>
       </header>
@@ -23,53 +23,52 @@
       <!-- loading / error -->
       <div v-if="loading" class="wg-state">
         <div class="wg-state__orbit"></div>
-        <p>Reading the foundry records…</p>
+        <p>{{ t('guideDialog.loading') }}</p>
       </div>
       <div v-else-if="error" class="wg-state">
         <v-icon color="#e0a3a3" size="34">mdi-alert-circle-outline</v-icon>
         <p>{{ error }}</p>
-        <v-btn size="small" variant="outlined" color="#7ff0eb" @click="load">Retry</v-btn>
+        <v-btn size="small" variant="outlined" color="#7ff0eb" @click="load">{{ t('guideDialog.retry') }}</v-btn>
       </div>
 
       <!-- ============ frame detail ============ -->
       <div v-else-if="detail" class="wg-body">
         <div class="wg-meta">
           <span v-if="detail.isPrime" class="wg-badge wg-badge--prime">Prime</span>
-          <span v-if="detail.vaulted" class="wg-badge wg-badge--vaulted">Vaulted</span>
+          <span v-if="detail.vaulted" class="wg-badge wg-badge--vaulted">{{ t('guideDialog.badge.vaulted') }}</span>
           <span class="wg-badge">MR {{ detail.masteryReq }}</span>
           <a v-if="detail.wikiaUrl" :href="detail.wikiaUrl" target="_blank" rel="noopener noreferrer" class="wg-wiki">
-            wiki <v-icon size="12">mdi-open-in-new</v-icon>
+            {{ t('guideDialog.detail.wiki') }} <v-icon size="12">mdi-open-in-new</v-icon>
           </a>
         </div>
         <p v-if="detail.description" class="wg-desc">{{ detail.description }}</p>
 
         <div v-if="detail.isPrime && setPrice(detail)" class="wg-buyline">
           <v-icon size="16" color="#e7cf95">mdi-cart-outline</v-icon>
-          Skip the farm: full set trades around
-          <strong>{{ fmtPlat(setPrice(detail)) }}p</strong> on Warframe Market.
+          <i18n-t keypath="guideDialog.detail.setBuyline" tag="span">
+            <template #price><strong>{{ fmtPlat(setPrice(detail)) }}p</strong></template>
+          </i18n-t>
         </div>
         <NuxtLink v-if="detail.isPrime && setUrl(detail)" :to="setUrl(detail)" class="wg-setlink">
           <v-icon size="15">mdi-scale-balance</v-icon>
-          Set vs parts — is it cheaper to buy the pieces?
+          {{ t('guideDialog.detail.setVsParts') }}
           <v-icon size="14">mdi-arrow-right</v-icon>
         </NuxtLink>
         <template v-if="!detail.isPrime">
           <div v-if="detail.bpCost > 0" class="wg-buyline">
             <v-icon size="16" color="#e7cf95">mdi-storefront-outline</v-icon>
-            Main blueprint: in-game market, {{ detail.bpCost.toLocaleString('en-US') }} credits.
+            {{ t('guideDialog.detail.mainBlueprint', { credits: detail.bpCost.toLocaleString('en-US') }) }}
           </div>
           <div v-if="detail.marketCost > 0" class="wg-buyline">
             <v-icon size="16" color="#e7cf95">mdi-alpha-p-circle-outline</v-icon>
-            Fully built: in-game market, {{ detail.marketCost.toLocaleString('en-US') }} platinum.
+            {{ t('guideDialog.detail.fullyBuilt', { plat: detail.marketCost.toLocaleString('en-US') }) }}
           </div>
           <div class="wg-note wg-note--muted">
-            Standard warframe blueprints and parts can't be traded between players — the sources
-            below are how you earn them yourself.
+            {{ t('guideDialog.detail.standardNote') }}
           </div>
         </template>
         <div v-if="detail.isPrime && detail.vaulted" class="wg-note">
-          Vaulted — its relics no longer drop; farm them from other players' void fissures or trade
-          for the relics/parts directly.
+          {{ t('guideDialog.detail.vaultedNote') }}
         </div>
 
         <section v-for="comp in detail.components" :key="comp.name" class="wg-comp">
@@ -85,19 +84,19 @@
               <button
                 v-if="src.relic"
                 class="wg-chip wg-chip--relic"
-                :title="`Show where ${src.relic} drops on the map`"
+                :title="t('guideDialog.detail.relicTitle', { relic: src.relic })"
                 @click="locate({ item: src.relic })"
               >
                 <v-icon size="13">mdi-diamond-stone</v-icon>
                 {{ src.relic.replace(' Relic', '') }}
                 <em>{{ fmtChanceRange(src) }}</em>
-                <span v-if="relicVaulted(src.relic)" class="wg-chip__vault">vaulted</span>
+                <span v-if="relicVaulted(src.relic)" class="wg-chip__vault">{{ t('guideDialog.detail.chipVaulted') }}</span>
               </button>
               <!-- planet/node source (standard): open that world + highlight the part -->
               <button
                 v-else-if="src.planet && planetNames.has(src.planet)"
                 class="wg-chip wg-chip--planet"
-                :title="`Highlight ${comp.name} on ${src.planet}`"
+                :title="t('guideDialog.detail.planetTitle', { part: comp.name, planet: src.planet })"
                 @click="locate({ item: partMapName(comp), planet: src.planet, node: nodeName(src) })"
               >
                 <v-icon size="13">mdi-orbit</v-icon>
@@ -109,10 +108,10 @@
                 <em>{{ fmtChanceRange(src) }}</em>
               </span>
             </template>
-            <span v-if="comp.sources.length > 8" class="wg-more">+{{ comp.sources.length - 8 }} more sources</span>
+            <span v-if="comp.sources.length > 8" class="wg-more">{{ t('guideDialog.detail.moreSources', { n: comp.sources.length - 8 }) }}</span>
           </div>
           <div v-else class="wg-sources wg-sources--none">
-            No mission drop — check the wiki (quest, dojo research, syndicate or vendor).
+            {{ t('guideDialog.detail.noDrop') }}
           </div>
         </section>
       </div>
@@ -129,18 +128,18 @@
             variant="solo-filled"
             bg-color="rgba(10,11,20,0.8)"
             prepend-inner-icon="mdi-magnify"
-            label="Search a warframe"
+            :label="t('guideDialog.search')"
           ></v-text-field>
           <div class="wg-tabs">
             <button
-              v-for="t in TABS"
-              :key="t.key"
+              v-for="tb in TABS"
+              :key="tb.key"
               class="wg-tab"
-              :class="{ 'is-active': tab === t.key }"
-              :aria-pressed="tab === t.key ? 'true' : 'false'"
-              @click="tab = t.key"
+              :class="{ 'is-active': tab === tb.key }"
+              :aria-pressed="tab === tb.key ? 'true' : 'false'"
+              @click="tab = tb.key"
             >
-              {{ t.label }}
+              {{ tb.label }}
             </button>
           </div>
         </div>
@@ -148,16 +147,16 @@
           <li v-for="f in filtered" :key="f.name">
             <button class="wg-row" @click="detail = f">
               <span class="wg-row__name">{{ f.name }}</span>
-              <span v-if="f.vaulted" class="wg-badge wg-badge--vaulted">Vaulted</span>
+              <span v-if="f.vaulted" class="wg-badge wg-badge--vaulted">{{ t('guideDialog.badge.vaulted') }}</span>
               <span v-if="f.isPrime" class="wg-badge wg-badge--prime">Prime</span>
               <span v-if="f.isPrime && setPrice(f)" class="wg-row__price">{{ fmtPlat(setPrice(f)) }}p set</span>
               <v-icon size="18" class="wg-row__chev">mdi-chevron-right</v-icon>
             </button>
           </li>
-          <li v-if="!filtered.length" class="wg-empty">No warframe matches "{{ query || '' }}".</li>
+          <li v-if="!filtered.length" class="wg-empty">{{ t('guideDialog.noMatch', { query: query || '' }) }}</li>
         </ul>
         <p class="wg-source-note">
-          Sources: WFCD community drop data (auto-updated with game patches) · prices from Warframe Market.
+          {{ t('guideDialog.sourceNote') }}
         </p>
       </div>
     </div>
@@ -192,6 +191,7 @@ const emit = defineEmits<{
 // fullscreen below 960px — matches this component's own CSS breakpoint
 // (Vuetify's default `mobile` flips at 1280, which would fullscreen desktops)
 const { smAndDown } = useDisplay()
+const { t } = useI18n()
 const { frames, loading, error, load } = useWarframeGuide()
 const items = useItemsStore()
 const localePath = useLocalePath()
@@ -211,11 +211,11 @@ watch(detail, async (d) => {
   else searchField.value?.focus?.()
 })
 
-const TABS = [
-  { key: 'all' as const, label: 'All' },
-  { key: 'prime' as const, label: 'Prime' },
-  { key: 'standard' as const, label: 'Standard' },
-]
+const TABS = computed(() => [
+  { key: 'all' as const, label: t('guideDialog.tabs.all') },
+  { key: 'prime' as const, label: t('guideDialog.tabs.prime') },
+  { key: 'standard' as const, label: t('guideDialog.tabs.standard') },
+])
 
 watch(
   () => props.modelValue,

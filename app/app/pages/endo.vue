@@ -5,55 +5,48 @@
         <!-- Hero -->
         <header class="an-hero">
           <div class="an-hero__text">
-            <div class="an-eyebrow">Warframe Market · Endo Exchange</div>
-            <h1 v-if="direction === 'flip'" class="an-title">
-              Turn <span class="accent-b">endo</span> into
-              <span class="accent-a">platinum</span>
-            </h1>
-            <h1 v-else class="an-title">
-              Buy <span class="accent-a">endo</span> for the least
-              <span class="accent-b">platinum</span>
-            </h1>
-            <p v-if="direction === 'flip'" class="an-lede">
-              Sitting on endo with nothing left to max? Buy a mod cheap — unranked
-              <em>or partly ranked</em> — finish it with your endo, and resell it
-              maxed. Ranked by platinum per 1,000 endo across <b>well-traded
-              mods</b>, so the numbers reflect what actually sells — and it tells
-              you the cheapest rank to buy in at.
-            </p>
-            <p v-else class="an-lede">
-              The cheapest endo per platinum across Ayatan sculptures, rivens, and
-              normal mods (bought maxed and dissolved). Click any source to open it
-              on warframe.market, or copy a ready-to-send buy whisper.
-            </p>
+            <div class="an-eyebrow">{{ t('endo.eyebrow') }}</div>
+            <i18n-t v-if="direction === 'flip'" keypath="endo.hero.titleFlip" tag="h1" class="an-title">
+              <template #endo><span class="accent-b">{{ t('endo.hero.endoWord') }}</span></template>
+              <template #platinum><span class="accent-a">{{ t('endo.hero.platinumWord') }}</span></template>
+            </i18n-t>
+            <i18n-t v-else keypath="endo.hero.titleSources" tag="h1" class="an-title">
+              <template #endo><span class="accent-a">{{ t('endo.hero.endoWord') }}</span></template>
+              <template #platinum><span class="accent-b">{{ t('endo.hero.platinumWord') }}</span></template>
+            </i18n-t>
+            <i18n-t v-if="direction === 'flip'" keypath="endo.hero.ledeFlip" tag="p" class="an-lede">
+              <template #partlyRanked><em>{{ t('endo.hero.ledePartlyRanked') }}</em></template>
+              <template #wellTraded><b>{{ t('endo.hero.ledeWellTraded') }}</b></template>
+            </i18n-t>
+            <p v-else class="an-lede">{{ t('endo.hero.ledeSources') }}</p>
           </div>
           <div v-if="direction === 'flip' && topFlip" class="an-hero__deal">
-            <div class="an-hero__deal-label">Best plat / 1k endo</div>
+            <div class="an-hero__deal-label">{{ t('endo.hero.flipDealLabel') }}</div>
             <div class="an-hero__deal-plat">{{ fmtNum(topFlip.eval.best.platPer1kEndo) }}<span>p/1k</span></div>
             <a class="an-hero__deal-name" :href="mkt(topFlip.url_name)" target="_blank" rel="noopener">
               {{ topFlip.item_name }} →
             </a>
-            <div class="an-hero__deal-sub">buy {{ rankLabel(topFlip.eval.best.rank) }} · +{{ fmtPlat(topFlip.eval.best.profit) }}p maxed</div>
+            <div class="an-hero__deal-sub">{{ t('endo.hero.flipDealSub', { rank: rankLabel(topFlip.eval.best.rank), profit: fmtPlat(topFlip.eval.best.profit) }) }}</div>
           </div>
           <div v-else-if="direction === 'sources' && topSource" class="an-hero__deal">
-            <div class="an-hero__deal-label">Best endo / plat</div>
+            <div class="an-hero__deal-label">{{ t('endo.hero.srcDealLabel') }}</div>
             <div class="an-hero__deal-plat">{{ fmtNum(topSource.endoPerPlat) }}<span>e/p</span></div>
             <a class="an-hero__deal-name" :href="topSource.link" target="_blank" rel="noopener">{{ topSource.name }} →</a>
-            <div class="an-hero__deal-sub">{{ fmtEndo(topSource.endo) }} endo · {{ fmtPlat(topSource.plat) }}p</div>
+            <div class="an-hero__deal-sub">{{ t('endo.hero.srcDealSub', { endo: fmtEndo(topSource.endo), plat: fmtPlat(topSource.plat) }) }}</div>
           </div>
         </header>
 
         <!-- Direction toggle + freshness -->
         <div class="an-dir">
           <v-btn-toggle v-model="direction" mandatory density="compact" class="an-dir__toggle">
-            <v-btn value="flip" size="small">Spend endo → plat</v-btn>
-            <v-btn value="sources" size="small">Get endo cheap</v-btn>
+            <v-btn value="flip" size="small">{{ t('endo.dir.spend') }}</v-btn>
+            <v-btn value="sources" size="small">{{ t('endo.dir.getCheap') }}</v-btn>
           </v-btn-toggle>
           <div class="an-dir__right">
-            <span v-if="updatedLabel" class="an-fresh" title="When the newest order-book snapshot was taken">
-              <v-icon size="14">mdi-clock-outline</v-icon> prices updated {{ updatedLabel }}
+            <span v-if="updatedLabel" class="an-fresh" :title="t('endo.dir.freshTitle')">
+              <v-icon size="14">mdi-clock-outline</v-icon> {{ t('endo.dir.updated', { time: updatedLabel }) }}
             </span>
-            <NuxtLink to="/guides/endo" class="endo-guide-link">Endo guide →</NuxtLink>
+            <NuxtLink to="/guides/endo" class="endo-guide-link">{{ t('endo.dir.guide') }} →</NuxtLink>
           </div>
         </div>
 
@@ -62,97 +55,97 @@
           <div class="an-stats">
             <div class="an-stat">
               <div class="an-stat__num">{{ flipStats.total }}</div>
-              <div class="an-stat__lbl">flippable mods</div>
+              <div class="an-stat__lbl">{{ t('endo.flipStats.flippable') }}</div>
             </div>
             <div class="an-stat">
               <div class="an-stat__num is-good">{{ fmtNum(flipStats.best) }}</div>
-              <div class="an-stat__lbl">best plat / 1k endo</div>
+              <div class="an-stat__lbl">{{ t('endo.flipStats.bestEff') }}</div>
             </div>
             <div class="an-stat">
               <div class="an-stat__num is-gold">{{ fmtPlat(flipStats.topProfit) }}p</div>
-              <div class="an-stat__lbl">biggest maxed profit</div>
+              <div class="an-stat__lbl">{{ t('endo.flipStats.biggestProfit') }}</div>
             </div>
             <div class="an-stat">
               <div class="an-stat__num is-alt">{{ flipStats.partial }}</div>
-              <div class="an-stat__lbl">best bought part-ranked</div>
+              <div class="an-stat__lbl">{{ t('endo.flipStats.bestPartRanked') }}</div>
             </div>
           </div>
 
           <section class="an-filters">
             <div class="an-filters__row">
-              <v-text-field v-model="search" density="compact" hide-details clearable prepend-inner-icon="mdi-magnify" label="Search a mod" class="an-search"></v-text-field>
+              <v-text-field v-model="search" density="compact" hide-details clearable prepend-inner-icon="mdi-magnify" :label="t('endo.filters.searchMod')" class="an-search"></v-text-field>
               <div class="an-sortctl">
-                <v-select v-model="flipSortBy" :items="flipSortOptions" item-title="text" item-value="value" density="compact" hide-details label="Sort by" class="an-field" style="flex:1 1 190px"></v-select>
-                <v-btn :icon="flipSortDir === 'desc' ? 'mdi-sort-descending' : 'mdi-sort-ascending'" size="small" variant="tonal" color="#d4af5a" :title="flipSortDir === 'desc' ? 'Descending' : 'Ascending'" @click="flipSortDir = flipSortDir === 'desc' ? 'asc' : 'desc'"></v-btn>
+                <v-select v-model="flipSortBy" :items="flipSortOptions" item-title="text" item-value="value" density="compact" hide-details :label="t('endo.filters.sortBy')" class="an-field" style="flex:1 1 190px"></v-select>
+                <v-btn :icon="flipSortDir === 'desc' ? 'mdi-sort-descending' : 'mdi-sort-ascending'" size="small" variant="tonal" color="#d4af5a" :title="flipSortDir === 'desc' ? t('endo.filters.descending') : t('endo.filters.ascending')" @click="flipSortDir = flipSortDir === 'desc' ? 'asc' : 'desc'"></v-btn>
               </div>
-              <v-btn variant="text" size="small" class="an-advbtn" :append-icon="showAdv ? 'mdi-chevron-up' : 'mdi-tune-variant'" @click="showAdv = !showAdv">Filters & settings</v-btn>
+              <v-btn variant="text" size="small" class="an-advbtn" :append-icon="showAdv ? 'mdi-chevron-up' : 'mdi-tune-variant'" @click="showAdv = !showAdv">{{ t('endo.filters.filtersSettings') }}</v-btn>
             </div>
 
             <v-expand-transition>
               <div v-show="showAdv" class="an-adv">
                 <!-- Settings: pricing model -->
-                <div class="an-adv__section">Pricing model</div>
+                <div class="an-adv__section">{{ t('endo.filters.pricingModel') }}</div>
                 <div class="an-adv__settings">
                   <div class="an-set">
-                    <div class="an-set__lbl">Sell maxed at</div>
+                    <div class="an-set__lbl">{{ t('endo.filters.sellMaxedAt') }}</div>
                     <v-btn-toggle v-model="sellBasis" mandatory density="compact" class="an-minitoggle">
-                      <v-btn value="ask" size="x-small">Current ask</v-btn>
-                      <v-btn value="instant" size="x-small">Instant</v-btn>
-                      <v-btn value="avg" size="x-small">48h avg</v-btn>
+                      <v-btn value="ask" size="x-small">{{ t('endo.filters.currentAsk') }}</v-btn>
+                      <v-btn value="instant" size="x-small">{{ t('endo.filters.instant') }}</v-btn>
+                      <v-btn value="avg" size="x-small">{{ t('endo.filters.avg48h') }}</v-btn>
                     </v-btn-toggle>
                   </div>
                   <div class="an-set">
-                    <div class="an-set__lbl">Buy-in</div>
-                    <v-switch v-model="buyViaBid" hide-details density="compact" inset color="#4fb3bf" label="Via buy order (compete on bids)" class="an-toggle an-set__switch"></v-switch>
+                    <div class="an-set__lbl">{{ t('endo.filters.buyIn') }}</div>
+                    <v-switch v-model="buyViaBid" hide-details density="compact" inset color="#4fb3bf" :label="t('endo.filters.viaBuyOrder')" class="an-toggle an-set__switch"></v-switch>
                   </div>
                 </div>
 
-                <div class="an-adv__section">Filters</div>
+                <div class="an-adv__section">{{ t('endo.filters.filters') }}</div>
                 <div class="an-adv__grid">
-                  <v-text-field v-model.number="maxBuyIn" type="number" min="0" density="compact" hide-details clearable label="Max buy-in (p)" class="an-adv__f"></v-text-field>
-                  <v-text-field v-model.number="minProfit" type="number" min="0" density="compact" hide-details clearable label="Min profit (p)" class="an-adv__f"></v-text-field>
-                  <v-text-field v-model.number="minEff" type="number" min="0" density="compact" hide-details clearable label="Min plat / 1k endo" class="an-adv__f"></v-text-field>
-                  <v-text-field v-model.number="maxEndoFinish" type="number" min="0" density="compact" hide-details clearable label="Endo budget (max to finish)" class="an-adv__f"></v-text-field>
-                  <v-text-field v-model.number="minVolume" type="number" min="0" density="compact" hide-details clearable label="Min maxed volume (48h)" class="an-adv__f"></v-text-field>
+                  <v-text-field v-model.number="maxBuyIn" type="number" min="0" density="compact" hide-details clearable :label="t('endo.filters.maxBuyIn')" class="an-adv__f"></v-text-field>
+                  <v-text-field v-model.number="minProfit" type="number" min="0" density="compact" hide-details clearable :label="t('endo.filters.minProfit')" class="an-adv__f"></v-text-field>
+                  <v-text-field v-model.number="minEff" type="number" min="0" density="compact" hide-details clearable :label="t('endo.filters.minEff')" class="an-adv__f"></v-text-field>
+                  <v-text-field v-model.number="maxEndoFinish" type="number" min="0" density="compact" hide-details clearable :label="t('endo.filters.endoBudget')" class="an-adv__f"></v-text-field>
+                  <v-text-field v-model.number="minVolume" type="number" min="0" density="compact" hide-details clearable :label="t('endo.filters.minVolume')" class="an-adv__f"></v-text-field>
                 </div>
                 <div class="an-adv__chips">
-                  <span class="an-adv__lbl">Rarity</span>
+                  <span class="an-adv__lbl">{{ t('endo.filters.rarity') }}</span>
                   <v-chip-group v-model="rarityFilter" multiple column class="an-cats">
-                    <v-chip v-for="r in rarityOptions" :key="r" :value="r" size="small" filter active-class="an-chip--on">{{ r }}</v-chip>
+                    <v-chip v-for="r in rarityOptions" :key="r" :value="r" size="small" filter active-class="an-chip--on">{{ rarityLabel(r) }}</v-chip>
                   </v-chip-group>
                 </div>
                 <div class="an-toggles">
-                  <v-switch v-model="partialOnly" hide-details density="compact" inset color="#4fb3bf" label="Only mods best bought part-ranked (R1+)" class="an-toggle"></v-switch>
-                  <v-switch v-model="hideThin" hide-details density="compact" inset color="#4fb3bf" label="Hide thin demand (maxed barely trades)" class="an-toggle"></v-switch>
-                  <v-btn variant="text" size="x-small" color="#9aa0b4" @click="resetFlipFilters">Reset</v-btn>
+                  <v-switch v-model="partialOnly" hide-details density="compact" inset color="#4fb3bf" :label="t('endo.filters.partialOnly')" class="an-toggle"></v-switch>
+                  <v-switch v-model="hideThin" hide-details density="compact" inset color="#4fb3bf" :label="t('endo.filters.hideThin')" class="an-toggle"></v-switch>
+                  <v-btn variant="text" size="x-small" color="#9aa0b4" @click="resetFlipFilters">{{ t('endo.filters.reset') }}</v-btn>
                 </div>
               </div>
             </v-expand-transition>
 
             <v-chip-group v-model="flipCat" mandatory column class="an-cats">
-              <v-chip v-for="c in flipCatOptions" :key="c" :value="c" size="small" active-class="an-chip--on">{{ c }}</v-chip>
+              <v-chip v-for="c in flipCatOptions" :key="c" :value="c" size="small" active-class="an-chip--on">{{ flipCatLabel(c) }}</v-chip>
             </v-chip-group>
-            <div class="an-count">{{ flipFiltered.length }} {{ flipFiltered.length === 1 ? 'mod' : 'mods' }} match<span v-if="hiddenThin && hideThin" class="an-hidden">· {{ hiddenThin }} thin demand hidden</span></div>
+            <div class="an-count">{{ t('endo.flip.count', { n: flipFiltered.length }, flipFiltered.length) }}<span v-if="hiddenThin && hideThin" class="an-hidden">{{ t('endo.flip.thinHidden', { n: hiddenThin }) }}</span></div>
           </section>
 
           <v-alert v-if="loadError" type="error" density="compact" class="ma-4">
-            Couldn't load mod-flip data. The market service may be waking up — try a refresh.
+            {{ t('endo.flip.loadError') }}
           </v-alert>
-          <div v-else-if="!flipRows.length" class="an-empty">No flip data yet — the market is still syncing.</div>
-          <div v-else-if="!flipFiltered.length" class="an-empty">No mods match these filters. Widen the search or clear a filter.</div>
+          <div v-else-if="!flipRows.length" class="an-empty">{{ t('endo.flip.emptyNoData') }}</div>
+          <div v-else-if="!flipFiltered.length" class="an-empty">{{ t('endo.flip.emptyNoMatch') }}</div>
 
           <!-- Desktop table -->
           <div v-else-if="!isMobile" class="an-tablewrap">
             <table class="an-table">
               <thead>
                 <tr>
-                  <th class="col-name sortable" :class="thCls('name', 'flip')" @click="sortFlip('name')">Mod <span class="sort-ind">{{ arrow('name', flipSortBy, flipSortDir) }}</span></th>
-                  <th class="grp-a sortable" :class="thCls('buyat', 'flip')" @click="sortFlip('buyat')">Buy @ <span class="sort-ind">{{ arrow('buyat', flipSortBy, flipSortDir) }}</span></th>
-                  <th class="grp-b sortable" :class="thCls('sell', 'flip')" @click="sortFlip('sell')">Sell maxed <span class="sort-ind">{{ arrow('sell', flipSortBy, flipSortDir) }}</span></th>
-                  <th class="sortable" :class="thCls('profit', 'flip')" @click="sortFlip('profit')">Profit <span class="sort-ind">{{ arrow('profit', flipSortBy, flipSortDir) }}</span></th>
-                  <th class="sortable" :class="thCls('endo', 'flip')" @click="sortFlip('endo')">Endo <span class="sort-ind">{{ arrow('endo', flipSortBy, flipSortDir) }}</span></th>
-                  <th class="sortable" :class="thCls('eff', 'flip')" @click="sortFlip('eff')">Plat / 1k endo <span class="sort-ind">{{ arrow('eff', flipSortBy, flipSortDir) }}</span></th>
-                  <th class="sortable" :class="thCls('volume', 'flip')" @click="sortFlip('volume')">Demand <span class="sort-ind">{{ arrow('volume', flipSortBy, flipSortDir) }}</span></th>
+                  <th class="col-name sortable" :class="thCls('name', 'flip')" @click="sortFlip('name')">{{ t('endo.table.mod') }} <span class="sort-ind">{{ arrow('name', flipSortBy, flipSortDir) }}</span></th>
+                  <th class="grp-a sortable" :class="thCls('buyat', 'flip')" @click="sortFlip('buyat')">{{ t('endo.table.buyAt') }} <span class="sort-ind">{{ arrow('buyat', flipSortBy, flipSortDir) }}</span></th>
+                  <th class="grp-b sortable" :class="thCls('sell', 'flip')" @click="sortFlip('sell')">{{ t('endo.table.sellMaxed') }} <span class="sort-ind">{{ arrow('sell', flipSortBy, flipSortDir) }}</span></th>
+                  <th class="sortable" :class="thCls('profit', 'flip')" @click="sortFlip('profit')">{{ t('endo.table.profit') }} <span class="sort-ind">{{ arrow('profit', flipSortBy, flipSortDir) }}</span></th>
+                  <th class="sortable" :class="thCls('endo', 'flip')" @click="sortFlip('endo')">{{ t('endo.table.endo') }} <span class="sort-ind">{{ arrow('endo', flipSortBy, flipSortDir) }}</span></th>
+                  <th class="sortable" :class="thCls('eff', 'flip')" @click="sortFlip('eff')">{{ t('endo.table.platPer1k') }} <span class="sort-ind">{{ arrow('eff', flipSortBy, flipSortDir) }}</span></th>
+                  <th class="sortable" :class="thCls('volume', 'flip')" @click="sortFlip('volume')">{{ t('endo.table.demand') }} <span class="sort-ind">{{ arrow('volume', flipSortBy, flipSortDir) }}</span></th>
                   <th class="col-act"></th>
                 </tr>
               </thead>
@@ -163,18 +156,18 @@
                       <img class="an-thumb" :src="assetUrl(row.thumb)" :alt="row.item_name" loading="lazy" @error="onImgError" />
                       <span>
                         {{ row.item_name }}
-                        <span v-if="row.url_name === topFlipUrl" class="an-badge">TOP</span>
-                        <small class="an-sub">{{ row.eval.rarity }} · R{{ row.eval.maxRank }} · {{ fmtEndo(row.eval.endoToMax) }} endo to max</small>
+                        <span v-if="row.url_name === topFlipUrl" class="an-badge">{{ t('endo.row.top') }}</span>
+                        <small class="an-sub">{{ t('endo.row.modSub', { rarity: rarityLabel(row.eval.rarity), max: row.eval.maxRank, endo: fmtEndo(row.eval.endoToMax) }) }}</small>
                       </span>
                     </a>
                   </td>
                   <td class="grp-a an-num">
                     <b>{{ rankLabel(row.eval.best.rank) }}</b>
-                    <small class="an-sub">{{ fmtPlat(row.eval.best.buyIn) }}p{{ buyViaBid ? ' (bid)' : '' }}</small>
+                    <small class="an-sub">{{ fmtPlat(row.eval.best.buyIn) }}p{{ buyViaBid ? t('endo.row.bidSuffix') : '' }}</small>
                   </td>
-                  <td class="grp-b an-num" :title="`ask ${fmtPlat(row.eval.maxedAsk)}p · 48h avg ${fmtPlat(row.eval.maxedAvg)}p · instant ${fmtPlat(row.eval.maxedBid)}p`">
+                  <td class="grp-b an-num" :title="t('endo.row.sellTitle', { ask: fmtPlat(row.eval.maxedAsk), avg: fmtPlat(row.eval.maxedAvg), instant: fmtPlat(row.eval.maxedBid) })">
                     {{ fmtPlat(row.eval.maxedSell) }}p
-                    <small class="an-sub">instant {{ fmtPlat(row.eval.maxedBid) }}p</small>
+                    <small class="an-sub">{{ t('endo.row.instant', { v: fmtPlat(row.eval.maxedBid) }) }}</small>
                   </td>
                   <td class="an-num up an-strong">+{{ fmtPlat(row.eval.best.profit) }}p</td>
                   <td class="an-num">
@@ -183,15 +176,15 @@
                   </td>
                   <td class="an-num an-strong">{{ fmtNum(row.eval.best.platPer1kEndo) }}</td>
                   <td>
-                    <span class="an-demand" :class="row.eval.demand.cls" :title="`${Math.round(row.eval.liquidity * 100)}% liquidity · vol ${fmtPlat(row.eval.maxedVolume)}`">
+                    <span class="an-demand" :class="row.eval.demand.cls" :title="t('endo.row.demandTitle', { pct: Math.round(row.eval.liquidity * 100), vol: fmtPlat(row.eval.maxedVolume) })">
                       <span class="an-demand__bar"><i :style="{ width: Math.round(row.eval.liquidity * 100) + '%' }"></i></span>
                       {{ fmtPlat(row.eval.maxedVolume) }}
                     </span>
                   </td>
                   <td class="col-act">
                     <a class="an-copy" :href="wikiHref(row.item_name)" target="_blank" rel="noopener" title="Warframe Wiki"><v-icon size="16">mdi-book-open-variant</v-icon></a>
-                    <button class="an-copy" title="Where it drops" @click="openDrops(row)"><v-icon size="16">mdi-map-marker-radius-outline</v-icon></button>
-                    <button class="an-copy" :class="{ 'is-copied': copiedKey === 'f:' + row.url_name }" :title="'Copy WTB whisper (' + fmtPlat(row.eval.best.ask || row.eval.best.buyIn) + 'p' + (row.eval.best.askUser ? ' to ' + row.eval.best.askUser : '') + ')'" @click="copy(buyWhisper(row.eval.best.askUser, row.item_name, row.eval.best.ask || row.eval.best.buyIn), 'f:' + row.url_name)">
+                    <button class="an-copy" :title="t('endo.actions.whereDrops')" @click="openDrops(row)"><v-icon size="16">mdi-map-marker-radius-outline</v-icon></button>
+                    <button class="an-copy" :class="{ 'is-copied': copiedKey === 'f:' + row.url_name }" :title="t('endo.actions.copyWtb', { price: fmtPlat(row.eval.best.ask || row.eval.best.buyIn), to: row.eval.best.askUser ? t('endo.actions.toUser', { user: row.eval.best.askUser }) : '' })" @click="copy(buyWhisper(row.eval.best.askUser, row.item_name, row.eval.best.ask || row.eval.best.buyIn), 'f:' + row.url_name)">
                       <v-icon size="16">{{ copiedKey === 'f:' + row.url_name ? 'mdi-check' : 'mdi-content-copy' }}</v-icon>
                     </button>
                   </td>
@@ -206,13 +199,13 @@
               <a class="an-card__head" :href="mkt(row.url_name)" target="_blank" rel="noopener">
                 <img class="an-thumb" :src="assetUrl(row.thumb)" :alt="row.item_name" loading="lazy" @error="onImgError" />
                 <div class="an-card__title">
-                  <div class="an-card__name">{{ row.item_name }}<span v-if="row.url_name === topFlipUrl" class="an-badge">TOP</span></div>
-                  <small class="an-sub">{{ row.eval.rarity }} · R{{ row.eval.maxRank }} · {{ fmtEndo(row.eval.endoToMax) }} endo to max</small>
+                  <div class="an-card__name">{{ row.item_name }}<span v-if="row.url_name === topFlipUrl" class="an-badge">{{ t('endo.row.top') }}</span></div>
+                  <small class="an-sub">{{ t('endo.row.modSub', { rarity: rarityLabel(row.eval.rarity), max: row.eval.maxRank, endo: fmtEndo(row.eval.endoToMax) }) }}</small>
                 </div>
                 <v-icon color="#4fb3bf">mdi-open-in-new</v-icon>
               </a>
               <div class="an-card__verdict">
-                <span class="pill pill--good">{{ fmtNum(row.eval.best.platPer1kEndo) }} <b>plat / 1k endo</b></span>
+                <span class="pill pill--good">{{ fmtNum(row.eval.best.platPer1kEndo) }} <b>{{ t('endo.card.platPer1k') }}</b></span>
                 <span class="an-demand" :class="row.eval.demand.cls">
                   <span class="an-demand__bar"><i :style="{ width: Math.round(row.eval.liquidity * 100) + '%' }"></i></span>
                   {{ row.eval.demand.label }}
@@ -220,24 +213,24 @@
               </div>
               <div class="an-card__blocks">
                 <div class="an-block">
-                  <div class="an-block__lbl">The flip</div>
-                  <div class="an-block__row"><span>Buy {{ rankLabel(row.eval.best.rank) }}</span><b>{{ fmtPlat(row.eval.best.buyIn) }}p</b></div>
-                  <div class="an-block__row"><span>Sell maxed</span><b>{{ fmtPlat(row.eval.maxedSell) }}p</b></div>
-                  <div class="an-block__row"><span>Profit</span><b class="up">+{{ fmtPlat(row.eval.best.profit) }}p</b></div>
+                  <div class="an-block__lbl">{{ t('endo.card.theFlip') }}</div>
+                  <div class="an-block__row"><span>{{ t('endo.card.buy') }} {{ rankLabel(row.eval.best.rank) }}</span><b>{{ fmtPlat(row.eval.best.buyIn) }}p</b></div>
+                  <div class="an-block__row"><span>{{ t('endo.card.sellMaxed') }}</span><b>{{ fmtPlat(row.eval.maxedSell) }}p</b></div>
+                  <div class="an-block__row"><span>{{ t('endo.card.profit') }}</span><b class="up">+{{ fmtPlat(row.eval.best.profit) }}p</b></div>
                 </div>
                 <div class="an-block">
-                  <div class="an-block__lbl">Cost to finish</div>
-                  <div class="an-block__row"><span>Endo</span><b>{{ fmtEndo(row.eval.best.endoToFinish) }}</b></div>
-                  <div class="an-block__row"><span>Credits</span><b>{{ fmtEndo(row.eval.best.creditsToFinish) }}</b></div>
-                  <div class="an-block__row"><span>Maxed vol</span><b>{{ fmtPlat(row.eval.maxedVolume) }}</b></div>
+                  <div class="an-block__lbl">{{ t('endo.card.costToFinish') }}</div>
+                  <div class="an-block__row"><span>{{ t('endo.card.endo') }}</span><b>{{ fmtEndo(row.eval.best.endoToFinish) }}</b></div>
+                  <div class="an-block__row"><span>{{ t('endo.card.credits') }}</span><b>{{ fmtEndo(row.eval.best.creditsToFinish) }}</b></div>
+                  <div class="an-block__row"><span>{{ t('endo.card.maxedVol') }}</span><b>{{ fmtPlat(row.eval.maxedVolume) }}</b></div>
                 </div>
               </div>
               <div class="an-card__acts">
                 <a class="an-copy" :href="wikiHref(row.item_name)" target="_blank" rel="noopener" aria-label="Warframe Wiki"><v-icon size="16">mdi-book-open-variant</v-icon></a>
-                <button class="an-copy" aria-label="Where it drops" @click="openDrops(row)"><v-icon size="16">mdi-map-marker-radius-outline</v-icon></button>
+                <button class="an-copy" :aria-label="t('endo.actions.whereDrops')" @click="openDrops(row)"><v-icon size="16">mdi-map-marker-radius-outline</v-icon></button>
                 <button class="an-copybtn" :class="{ 'is-copied': copiedKey === 'f:' + row.url_name }" @click="copy(buyWhisper(row.eval.best.askUser, row.item_name, row.eval.best.ask || row.eval.best.buyIn), 'f:' + row.url_name)">
                   <v-icon size="16">{{ copiedKey === 'f:' + row.url_name ? 'mdi-check' : 'mdi-content-copy' }}</v-icon>
-                  {{ copiedKey === 'f:' + row.url_name ? 'Copied whisper' : 'Copy buy whisper' }}
+                  {{ copiedKey === 'f:' + row.url_name ? t('endo.actions.copiedWhisper') : t('endo.actions.copyWhisper') }}
                 </button>
               </div>
             </div>
@@ -253,50 +246,50 @@
           <div class="an-stats">
             <div class="an-stat">
               <div class="an-stat__num">{{ sourceStats.total }}</div>
-              <div class="an-stat__lbl">endo sources</div>
+              <div class="an-stat__lbl">{{ t('endo.srcStats.sources') }}</div>
             </div>
             <div class="an-stat">
               <div class="an-stat__num is-good">{{ fmtNum(sourceStats.best) }}</div>
-              <div class="an-stat__lbl">best endo / plat</div>
+              <div class="an-stat__lbl">{{ t('endo.srcStats.bestRate') }}</div>
             </div>
             <div class="an-stat">
               <div class="an-stat__num is-gold">{{ fmtNum(sourceStats.bestSculpt) }}</div>
-              <div class="an-stat__lbl">best sculpture e/p</div>
+              <div class="an-stat__lbl">{{ t('endo.srcStats.bestSculpt') }}</div>
             </div>
             <div class="an-stat">
               <div class="an-stat__num is-alt">{{ fmtNum(sourceStats.bestMod) }}</div>
-              <div class="an-stat__lbl">best mod e/p</div>
+              <div class="an-stat__lbl">{{ t('endo.srcStats.bestMod') }}</div>
             </div>
           </div>
 
           <section class="an-filters">
             <div class="an-filters__row">
-              <v-text-field v-model="sourceSearch" density="compact" hide-details clearable prepend-inner-icon="mdi-magnify" label="Search a source" class="an-search"></v-text-field>
+              <v-text-field v-model="sourceSearch" density="compact" hide-details clearable prepend-inner-icon="mdi-magnify" :label="t('endo.sources.searchSource')" class="an-search"></v-text-field>
               <div class="an-sortctl">
-                <v-select v-model="srcSortBy" :items="sourceSortOptions" item-title="text" item-value="value" density="compact" hide-details label="Sort by" class="an-field" style="flex:1 1 190px"></v-select>
+                <v-select v-model="srcSortBy" :items="sourceSortOptions" item-title="text" item-value="value" density="compact" hide-details :label="t('endo.filters.sortBy')" class="an-field" style="flex:1 1 190px"></v-select>
                 <v-btn :icon="srcSortDir === 'desc' ? 'mdi-sort-descending' : 'mdi-sort-ascending'" size="small" variant="tonal" color="#d4af5a" @click="srcSortDir = srcSortDir === 'desc' ? 'asc' : 'desc'"></v-btn>
               </div>
-              <v-text-field v-model.number="minEpp" type="number" min="0" density="compact" hide-details clearable label="Min endo / plat" class="an-field" style="flex:0 1 150px"></v-text-field>
-              <v-text-field v-model.number="maxCost" type="number" min="0" density="compact" hide-details clearable label="Max cost (p)" class="an-field" style="flex:0 1 140px"></v-text-field>
+              <v-text-field v-model.number="minEpp" type="number" min="0" density="compact" hide-details clearable :label="t('endo.sources.minEpp')" class="an-field" style="flex:0 1 150px"></v-text-field>
+              <v-text-field v-model.number="maxCost" type="number" min="0" density="compact" hide-details clearable :label="t('endo.sources.maxCost')" class="an-field" style="flex:0 1 140px"></v-text-field>
             </div>
             <v-chip-group v-model="sourceKind" mandatory column class="an-cats">
-              <v-chip v-for="c in sourceKindOptions" :key="c" :value="c" size="small" active-class="an-chip--on">{{ c }}</v-chip>
+              <v-chip v-for="c in sourceKindOptions" :key="c" :value="c" size="small" active-class="an-chip--on">{{ srcKindLabel(c) }}</v-chip>
             </v-chip-group>
-            <div class="an-count">{{ sourceFiltered.length }} sources match</div>
+            <div class="an-count">{{ t('endo.sources.count', { n: sourceFiltered.length }, sourceFiltered.length) }}</div>
           </section>
 
-          <div v-if="!sourceRows.length" class="an-empty">No endo-source data yet — items and rivens are still syncing.</div>
-          <div v-else-if="!sourceFiltered.length" class="an-empty">No sources match these filters.</div>
+          <div v-if="!sourceRows.length" class="an-empty">{{ t('endo.sources.emptyNoData') }}</div>
+          <div v-else-if="!sourceFiltered.length" class="an-empty">{{ t('endo.sources.emptyNoMatch') }}</div>
 
           <div v-else-if="!isMobile" class="an-tablewrap">
             <table class="an-table">
               <thead>
                 <tr>
-                  <th class="col-name sortable" :class="thCls('name', 'src')" @click="sortSrc('name')">Source <span class="sort-ind">{{ arrow('name', srcSortBy, srcSortDir) }}</span></th>
-                  <th class="grp-a sortable" :class="thCls('endo', 'src')" @click="sortSrc('endo')">Endo <span class="sort-ind">{{ arrow('endo', srcSortBy, srcSortDir) }}</span></th>
-                  <th class="grp-b sortable" :class="thCls('cost', 'src')" @click="sortSrc('cost')">Cost <span class="sort-ind">{{ arrow('cost', srcSortBy, srcSortDir) }}</span></th>
-                  <th class="sortable" :class="thCls('rate', 'src')" @click="sortSrc('rate')">Endo / plat <span class="sort-ind">{{ arrow('rate', srcSortBy, srcSortDir) }}</span></th>
-                  <th class="sortable" :class="thCls('volume', 'src')" @click="sortSrc('volume')">Vol <span class="sort-ind">{{ arrow('volume', srcSortBy, srcSortDir) }}</span></th>
+                  <th class="col-name sortable" :class="thCls('name', 'src')" @click="sortSrc('name')">{{ t('endo.table.source') }} <span class="sort-ind">{{ arrow('name', srcSortBy, srcSortDir) }}</span></th>
+                  <th class="grp-a sortable" :class="thCls('endo', 'src')" @click="sortSrc('endo')">{{ t('endo.table.endo') }} <span class="sort-ind">{{ arrow('endo', srcSortBy, srcSortDir) }}</span></th>
+                  <th class="grp-b sortable" :class="thCls('cost', 'src')" @click="sortSrc('cost')">{{ t('endo.table.cost') }} <span class="sort-ind">{{ arrow('cost', srcSortBy, srcSortDir) }}</span></th>
+                  <th class="sortable" :class="thCls('rate', 'src')" @click="sortSrc('rate')">{{ t('endo.table.endoPerPlat') }} <span class="sort-ind">{{ arrow('rate', srcSortBy, srcSortDir) }}</span></th>
+                  <th class="sortable" :class="thCls('volume', 'src')" @click="sortSrc('volume')">{{ t('endo.table.vol') }} <span class="sort-ind">{{ arrow('volume', srcSortBy, srcSortDir) }}</span></th>
                   <th class="col-act"></th>
                 </tr>
               </thead>
@@ -304,10 +297,10 @@
                 <tr v-for="row in sourcePaged" :key="row.kind + row.name" :class="{ 'is-top': row === topSource }">
                   <td class="col-name">
                     <a class="an-name" :href="row.link" target="_blank" rel="noopener">
-                      <span class="an-kind" :class="'kind--' + row.kind">{{ row.kind }}</span>
+                      <span class="an-kind" :class="'kind--' + row.kind">{{ kindBadge(row.kind) }}</span>
                       <span>
                         {{ row.name }}
-                        <span v-if="row === topSource" class="an-badge">TOP</span>
+                        <span v-if="row === topSource" class="an-badge">{{ t('endo.row.top') }}</span>
                         <small class="an-sub">{{ row.sub }}</small>
                       </span>
                     </a>
@@ -317,8 +310,8 @@
                   <td class="an-num an-strong">{{ fmtNum(row.endoPerPlat) }}</td>
                   <td class="an-num">{{ row.volume != null ? fmtPlat(row.volume) : '—' }}</td>
                   <td class="col-act">
-                    <a class="an-copy" :href="row.link" target="_blank" rel="noopener" title="Open on warframe.market"><v-icon size="16">mdi-open-in-new</v-icon></a>
-                    <button class="an-copy" :class="{ 'is-copied': copiedKey === 's:' + row.kind + row.name }" title="Copy WTB whisper" @click="copy(row.whisper, 's:' + row.kind + row.name)">
+                    <a class="an-copy" :href="row.link" target="_blank" rel="noopener" :title="t('endo.actions.openMarket')"><v-icon size="16">mdi-open-in-new</v-icon></a>
+                    <button class="an-copy" :class="{ 'is-copied': copiedKey === 's:' + row.kind + row.name }" :title="t('endo.actions.copyWtbShort')" @click="copy(row.whisper, 's:' + row.kind + row.name)">
                       <v-icon size="16">{{ copiedKey === 's:' + row.kind + row.name ? 'mdi-check' : 'mdi-content-copy' }}</v-icon>
                     </button>
                   </td>
@@ -330,24 +323,24 @@
           <div v-else class="an-cards">
             <div v-for="row in sourcePaged" :key="row.kind + row.name" class="an-card" :class="{ 'is-top': row === topSource }">
               <a class="an-card__head" :href="row.link" target="_blank" rel="noopener">
-                <span class="an-kind" :class="'kind--' + row.kind">{{ row.kind }}</span>
+                <span class="an-kind" :class="'kind--' + row.kind">{{ kindBadge(row.kind) }}</span>
                 <div class="an-card__title">
-                  <div class="an-card__name">{{ row.name }}<span v-if="row === topSource" class="an-badge">TOP</span></div>
+                  <div class="an-card__name">{{ row.name }}<span v-if="row === topSource" class="an-badge">{{ t('endo.row.top') }}</span></div>
                   <small class="an-sub">{{ row.sub }}</small>
                 </div>
                 <v-icon color="#4fb3bf">mdi-open-in-new</v-icon>
               </a>
               <div class="an-card__blocks">
                 <div class="an-block">
-                  <div class="an-block__lbl">Endo per plat</div>
-                  <div class="an-block__row"><span>Rate</span><b class="up">{{ fmtNum(row.endoPerPlat) }}</b></div>
-                  <div class="an-block__row"><span>Endo</span><b>{{ fmtEndo(row.endo) }}</b></div>
-                  <div class="an-block__row"><span>Cost</span><b>{{ fmtPlat(row.plat) }}p</b></div>
+                  <div class="an-block__lbl">{{ t('endo.card.endoPerPlat') }}</div>
+                  <div class="an-block__row"><span>{{ t('endo.card.rate') }}</span><b class="up">{{ fmtNum(row.endoPerPlat) }}</b></div>
+                  <div class="an-block__row"><span>{{ t('endo.card.endo') }}</span><b>{{ fmtEndo(row.endo) }}</b></div>
+                  <div class="an-block__row"><span>{{ t('endo.card.cost') }}</span><b>{{ fmtPlat(row.plat) }}p</b></div>
                 </div>
               </div>
               <button class="an-copybtn" :class="{ 'is-copied': copiedKey === 's:' + row.kind + row.name }" @click="copy(row.whisper, 's:' + row.kind + row.name)">
                 <v-icon size="16">{{ copiedKey === 's:' + row.kind + row.name ? 'mdi-check' : 'mdi-content-copy' }}</v-icon>
-                {{ copiedKey === 's:' + row.kind + row.name ? 'Copied whisper' : 'Copy buy whisper' }}
+                {{ copiedKey === 's:' + row.kind + row.name ? t('endo.actions.copiedWhisper') : t('endo.actions.copyWhisper') }}
               </button>
             </div>
           </div>
@@ -360,19 +353,14 @@
 
       <v-alert class="an-disclaimer" color="blue-darken-4" type="info" density="compact">
         <template v-if="direction === 'flip'">
-          Plat / 1k endo = <b>(maxed sell − buy-in) ÷ endo to finish × 1000</b>.
-          By default it shows well-traded mods (≥50 maxed sales in 48h), valued at
-          the <b>48h average</b> price and bought in via a competitive buy order —
-          the most reliable read. Switch the pricing model or lower the volume
-          filter under Filters &amp; settings for current-ask, instant, or thinner
-          mods. Warframe takes no platinum trade tax; your cost is endo + credits.
+          <i18n-t keypath="endo.disclaimer.flip" tag="span">
+            <template #formula><b>{{ t('endo.disclaimer.formula') }}</b></template>
+            <template #avg><b>{{ t('endo.disclaimer.avg') }}</b></template>
+          </i18n-t>
           {{ t('disclaimer') }}
         </template>
         <template v-else>
-          Endo / plat = endo gained ÷ platinum paid. Sculptures use fully-starred
-          endo (always star before dissolving). Mods assume you buy a maxed copy
-          at its current lowest sell and dissolve it (~75% of the fusion endo
-          back). {{ t('disclaimer') }}
+          {{ t('endo.disclaimer.sources') }} {{ t('disclaimer') }}
         </template>
       </v-alert>
 
@@ -383,14 +371,14 @@
         <div class="d-flex flex-wrap align-center top_container justify-space-between mb-md-4">
           <div class="my-3 mb-0 md-md-3 bg-grey-darken-3 pa-3 px-lg-5 text-subtitle-1 d-flex align-center flex-wrap donation_container">
             <div class="d-flex mt-2 align-center">
-              <div class="text-white mr-3">Help us donating!</div>
-              <a target="_blank" aria-label="Donar con Paypal" class="text-white d-flex mr-4 align-center justify-content-left donation_logo" href="https://ko-fi.com/cambio_uruguay">
+              <div class="text-white mr-3">{{ t('endo.donate.help') }}</div>
+              <a target="_blank" :aria-label="t('endo.donate.paypalAria')" class="text-white d-flex mr-4 align-center justify-content-left donation_logo" href="https://ko-fi.com/cambio_uruguay">
                 <picture>
                   <source srcset="/img/paypal_icon.webp" type="image/webp" />
                   <img src="/img/paypal_icon.png" alt="PayPal" width="50" height="50" class="donation_icon" />
                 </picture>
               </a>
-              <a aria-label="Donar con Mercado Pago" class="text-white d-flex align-center justify-content-left donation_logo" target="_blank" href="https://mpago.la/19j46vX">
+              <a :aria-label="t('endo.donate.mercadoAria')" class="text-white d-flex align-center justify-content-left donation_logo" target="_blank" href="https://mpago.la/19j46vX">
                 <picture>
                   <source srcset="/img/mercadopago_icon.webp" type="image/webp" />
                   <img src="/img/mercadopago_icon.png" alt="Mercado Pago" width="50" height="50" class="donation_icon" />
@@ -433,7 +421,33 @@ dayjs.extend(relativeTime)
 
 const config = useRuntimeConfig()
 const apiBase = config.public.apiURL
-const { t } = useI18n()
+const { t, te } = useI18n()
+
+// --- i18n label helpers for dynamic values whose English form is also the
+// filter/compare key. Keep the value; translate only the display. ---
+function rarityLabel(r: string): string {
+  const key = 'endo.rarity.' + r
+  return te(key) ? t(key) : r
+}
+const FLIP_CAT_KEY: Record<string, string> = {
+  All: 'all',
+  'Rank 10': 'rank10',
+  'Rank 8': 'rank8',
+  'Rank 5': 'rank5',
+  'Rank ≤3': 'rankLe3',
+}
+function flipCatLabel(c: string): string {
+  const k = FLIP_CAT_KEY[c]
+  return k ? t('endo.flipCat.' + k) : c // Corrupted / Primed-Umbral / Aura kept as-is
+}
+function srcKindLabel(c: string): string {
+  if (c === 'All') return t('endo.kind.all')
+  if (c === 'Sculpture') return t('endo.kind.sculpture')
+  return c // Riven / Mod kept
+}
+function kindBadge(k: string): string {
+  return k === 'sculpture' ? t('endo.kind.sculpture') : k // riven / mod kept
+}
 
 const { mobile } = useDisplay()
 const isMobile = computed(() => mobile.value)
@@ -534,15 +548,15 @@ const rarityFilter = ref<string[]>([])
 const partialOnly = ref(false)
 const hideThin = ref(true)
 
-const flipSortOptions = [
-  { text: 'Plat / 1k endo', value: 'eff' },
-  { text: 'Maxed profit (plat)', value: 'profit' },
-  { text: 'Endo to finish', value: 'endo' },
-  { text: 'Buy-in price', value: 'buyat' },
-  { text: 'Maxed sell price', value: 'sell' },
-  { text: 'Maxed volume', value: 'volume' },
-  { text: 'Name', value: 'name' },
-]
+const flipSortOptions = computed(() => [
+  { text: t('endo.sortFlip.eff'), value: 'eff' },
+  { text: t('endo.sortFlip.profit'), value: 'profit' },
+  { text: t('endo.sortFlip.endo'), value: 'endo' },
+  { text: t('endo.sortFlip.buyat'), value: 'buyat' },
+  { text: t('endo.sortFlip.sell'), value: 'sell' },
+  { text: t('endo.sortFlip.volume'), value: 'volume' },
+  { text: t('endo.sortFlip.name'), value: 'name' },
+])
 const rarityOptions = ['Common', 'Uncommon', 'Rare', 'Legendary']
 
 interface FlipRowEval extends EndoFlipRow {
@@ -682,13 +696,13 @@ const srcSortBy = ref('rate')
 const srcSortDir = ref<Dir>('desc')
 const minEpp = ref<number | null>(null)
 const maxCost = ref<number | null>(null)
-const sourceSortOptions = [
-  { text: 'Endo / plat', value: 'rate' },
-  { text: 'Endo amount', value: 'endo' },
-  { text: 'Cost', value: 'cost' },
-  { text: 'Volume', value: 'volume' },
-  { text: 'Name', value: 'name' },
-]
+const sourceSortOptions = computed(() => [
+  { text: t('endo.sortSrc.rate'), value: 'rate' },
+  { text: t('endo.sortSrc.endo'), value: 'endo' },
+  { text: t('endo.sortSrc.cost'), value: 'cost' },
+  { text: t('endo.sortSrc.volume'), value: 'volume' },
+  { text: t('endo.sortSrc.name'), value: 'name' },
+])
 const sourceKindOptions = ['All', 'Sculpture', 'Riven', 'Mod']
 const srcAccessors: Record<string, (r: EndoSourceRow) => number | string> = {
   rate: (r) => r.endoPerPlat,
@@ -726,7 +740,7 @@ const sculptureSources = computed<EndoSourceRow[]>(() => {
       endoPerPlat: endoPerPlat(endo, plat),
       volume: Number(el.market?.volume) || 0,
       liquidity: 1,
-      sub: 'fully starred',
+      sub: t('endo.sub.fullyStarred'),
     })
   }
   return out
@@ -748,7 +762,7 @@ const rivenSources = computed<EndoSourceRow[]>(() => {
       plat,
       endoPerPlat: Number(it.endoPerPlat) || endoPerPlat(endo, plat),
       liquidity: 1,
-      sub: `${it.item?.re_rolls ?? 0} rerolls`,
+      sub: t('endo.sub.rerolls', { n: it.item?.re_rolls ?? 0 }),
     })
   }
   return out
@@ -872,7 +886,7 @@ watch(buildQuery, writeQuery, { deep: true })
 
 // ---- helpers ----
 function rankLabel(rank: number): string {
-  return rank <= 0 ? 'Unranked' : `Rank ${rank}`
+  return rank <= 0 ? t('endo.rank.unranked') : t('endo.rank.n', { n: rank })
 }
 function assetUrl(thumb: string): string {
   return 'https://warframe.market/static/assets/' + (thumb || '')

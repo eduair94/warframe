@@ -2,7 +2,7 @@
   <div class="price-history-chart">
     <div v-if="points.length < 2" class="empty-state">
       <v-icon size="small" color="grey">mdi-chart-line</v-icon>
-      <span>Not enough history yet - check back after a couple of days.</span>
+      <span>{{ $t('components.priceChart.empty') }}</span>
     </div>
     <template v-else>
       <div class="trend-row">
@@ -10,16 +10,16 @@
           <v-icon size="small" :color="trendColor">{{ trendIcon }}</v-icon>
           {{ trendLabel }}
         </span>
-        <span class="range-label">{{ points.length }}-day avg price trend</span>
+        <span class="range-label">{{ $t('components.priceChart.rangeLabel', { days: points.length }) }}</span>
       </div>
 
       <svg
         :viewBox="`0 0 ${width} ${height}`"
         class="chart-svg"
         role="img"
-        :aria-label="`Average price over the last ${points.length} days, from ${fixPrice(points[0]!.avg_price)} to ${fixPrice(points[points.length - 1]!.avg_price)} platinum`"
+        :aria-label="$t('components.priceChart.ariaLabel', { days: points.length, from: fixPrice(points[0]!.avg_price), to: fixPrice(points[points.length - 1]!.avg_price) })"
       >
-        <title>Price history</title>
+        <title>{{ $t('components.priceChart.title') }}</title>
         <line
           :x1="padding"
           :y1="height - padding"
@@ -33,15 +33,15 @@
 
       <!-- Accessible data table fallback, mirrors the chart -->
       <details class="table-fallback">
-        <summary>View as table</summary>
+        <summary>{{ $t('components.priceChart.viewAsTable') }}</summary>
         <v-table density="compact">
           <template #default>
             <thead>
               <tr>
-                <th>Date</th>
-                <th>Avg Price</th>
-                <th>Buy</th>
-                <th>Sell</th>
+                <th>{{ $t('components.priceChart.table.date') }}</th>
+                <th>{{ $t('components.priceChart.table.avgPrice') }}</th>
+                <th>{{ $t('components.priceChart.table.buy') }}</th>
+                <th>{{ $t('components.priceChart.table.sell') }}</th>
               </tr>
             </thead>
             <tbody>
@@ -144,7 +144,7 @@ export default defineComponent({
     trendLabel(): string {
       if (!this.trend) return '';
       const pct = Math.abs(this.trend.changePercent).toFixed(1);
-      if (this.trend.direction === 'flat') return `Flat (±${pct}%)`;
+      if (this.trend.direction === 'flat') return this.$t('components.priceChart.flat', { pct });
       return `${this.trend.direction === 'up' ? '+' : '-'}${pct}%`;
     },
   },

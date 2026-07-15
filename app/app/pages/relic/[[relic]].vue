@@ -14,7 +14,7 @@
           border: 0;
         "
       >
-        {{ relicName ? `${relicName} — Drops & Value` : 'Warframe Relic Drops' }}
+        {{ relicName ? t('relicDetail.h1Titled', { name: relicName }) : t('relicDetail.h1Fallback') }}
       </h1>
       <ClientOnly>
         <v-data-table
@@ -168,14 +168,14 @@
                 <div class="text-white mr-3">{{ t('relic_help_donate') }}</div>
                 <a
                   target="_blank"
-                  aria-label="Donar con Paypal"
+                  :aria-label="t('relicDetail.donatePaypal')"
                   class="text-white d-flex mr-4 align-center justify-content-left donation_logo"
                   href="https://ko-fi.com/cambio_uruguay"
                 >
                   <v-img max-width="50" height="50" src="/img/paypal_icon.png" />
                 </a>
                 <a
-                  aria-label="Donar con Mercado Pago"
+                  :aria-label="t('relicDetail.donateMercadoPago')"
                   class="text-white d-flex align-center justify-content-left donation_logo"
                   target="_blank"
                   href="https://mpago.la/19j46vX"

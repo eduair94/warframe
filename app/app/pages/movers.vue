@@ -4,62 +4,57 @@
       <div class="an-console">
         <header class="an-hero">
           <div class="an-hero__text">
-            <div class="an-eyebrow">Warframe Market · Top Movers</div>
-            <h1 class="an-title">
-              What's <span class="accent-b">pumping</span>,
-              what's <span class="accent-a">dumping</span>.
-            </h1>
-            <p class="an-lede">
-              The biggest price and volume moves across the whole market, built
-              from our own daily price history — something warframe.market's
-              per-item 90-day chart can't show you. Catch a rally before it peaks
-              or a dip before it recovers.
-            </p>
+            <div class="an-eyebrow">{{ t('movers.eyebrow') }}</div>
+            <i18n-t keypath="movers.hero.title" tag="h1" class="an-title">
+              <template #pumping><span class="accent-b">{{ t('movers.hero.titlePumping') }}</span></template>
+              <template #dumping><span class="accent-a">{{ t('movers.hero.titleDumping') }}</span></template>
+            </i18n-t>
+            <p class="an-lede">{{ t('movers.hero.lede') }}</p>
           </div>
           <div v-if="topDeal" class="an-hero__deal">
-            <div class="an-hero__deal-label">Top gainer · {{ timeframeLabel }}</div>
+            <div class="an-hero__deal-label">{{ t('movers.hero.dealLabel', { tf: timeframeLabel }) }}</div>
             <div class="an-hero__deal-plat" :class="topDeal[changeKey] >= 0 ? 'is-up' : 'is-down'">
               {{ fmtSignedPct(topDeal[changeKey]) }}
             </div>
             <a class="an-hero__deal-name" :href="mkt(topDeal.url_name)" target="_blank" rel="noopener">
               {{ topDeal.item_name }} →
             </a>
-            <div class="an-hero__deal-sub">{{ fmtPlat(priceOf(topDeal)) }}p · vol {{ fmtPlat(topDeal.volume) }}</div>
+            <div class="an-hero__deal-sub">{{ t('movers.hero.dealSub', { price: fmtPlat(priceOf(topDeal)), vol: fmtPlat(topDeal.volume) }) }}</div>
           </div>
         </header>
 
         <div class="an-stats">
           <div class="an-stat">
             <div class="an-stat__num">{{ stats.withHistory }}</div>
-            <div class="an-stat__lbl">items with history</div>
+            <div class="an-stat__lbl">{{ t('movers.stats.withHistory') }}</div>
           </div>
           <div class="an-stat">
             <div class="an-stat__num is-good">{{ fmtSignedPct(stats.topGain) }}</div>
-            <div class="an-stat__lbl">biggest gain</div>
+            <div class="an-stat__lbl">{{ t('movers.stats.biggestGain') }}</div>
           </div>
           <div class="an-stat">
             <div class="an-stat__num is-bad">{{ fmtSignedPct(stats.topLoss) }}</div>
-            <div class="an-stat__lbl">biggest drop</div>
+            <div class="an-stat__lbl">{{ t('movers.stats.biggestDrop') }}</div>
           </div>
           <div class="an-stat">
             <div class="an-stat__num is-alt">{{ meta.maxHistoryDays }}</div>
-            <div class="an-stat__lbl">days of history</div>
+            <div class="an-stat__lbl">{{ t('movers.stats.daysHistory') }}</div>
           </div>
         </div>
 
         <section class="an-filters">
           <div class="an-filters__row">
-            <v-text-field v-model="search" density="compact" hide-details clearable prepend-inner-icon="mdi-magnify" label="Search an item" class="an-search"></v-text-field>
+            <v-text-field v-model="search" density="compact" hide-details clearable prepend-inner-icon="mdi-magnify" :label="t('movers.filters.search')" class="an-search"></v-text-field>
             <div class="an-refine">
-              <div class="an-refine__lbl">Board</div>
+              <div class="an-refine__lbl">{{ t('movers.filters.board') }}</div>
               <v-btn-toggle v-model="mode" mandatory density="compact">
-                <v-btn value="gainers" size="small">Gainers</v-btn>
-                <v-btn value="losers" size="small">Losers</v-btn>
-                <v-btn value="volume" size="small">Volume</v-btn>
+                <v-btn value="gainers" size="small">{{ t('movers.boards.gainers') }}</v-btn>
+                <v-btn value="losers" size="small">{{ t('movers.boards.losers') }}</v-btn>
+                <v-btn value="volume" size="small">{{ t('movers.boards.volume') }}</v-btn>
               </v-btn-toggle>
             </div>
             <div class="an-refine">
-              <div class="an-refine__lbl">Window</div>
+              <div class="an-refine__lbl">{{ t('movers.filters.window') }}</div>
               <v-btn-toggle v-model="timeframe" mandatory density="compact">
                 <v-btn value="change24h" size="small">24h</v-btn>
                 <v-btn value="change7d" size="small">7d</v-btn>
@@ -68,13 +63,13 @@
             </div>
           </div>
           <v-chip-group v-model="category" mandatory column selected-class="an-chip--on" class="an-cats">
-            <v-chip v-for="c in categoryOptions" :key="c" :value="c" size="small">{{ c }}</v-chip>
+            <v-chip v-for="c in categoryOptions" :key="c" :value="c" size="small">{{ t('movers.categories.' + c) }}</v-chip>
           </v-chip-group>
-          <div class="an-count">{{ filtered.length }} {{ filtered.length === 1 ? 'item' : 'items' }}</div>
+          <div class="an-count">{{ t('movers.filters.count', { n: filtered.length }, filtered.length) }}</div>
         </section>
 
         <v-alert v-if="loadError" type="error" density="compact" class="ma-4">
-          Couldn't load analytics. The market service may be waking up — try a refresh.
+          {{ t('movers.loadError') }}
         </v-alert>
         <div v-else-if="!filtered.length" class="an-empty">
           {{ emptyMessage }}
@@ -84,12 +79,12 @@
           <table class="an-table">
             <thead>
               <tr>
-                <th class="col-name">Item</th>
-                <th>Price</th>
-                <th>{{ timeframeLabel }} change</th>
-                <th>Trend</th>
-                <th>Vol</th>
-                <th>History</th>
+                <th class="col-name">{{ t('movers.table.item') }}</th>
+                <th>{{ t('movers.table.price') }}</th>
+                <th>{{ t('movers.table.change', { tf: timeframeLabel }) }}</th>
+                <th>{{ t('movers.table.trend') }}</th>
+                <th>{{ t('movers.table.vol') }}</th>
+                <th>{{ t('movers.table.history') }}</th>
               </tr>
             </thead>
             <tbody>
@@ -99,8 +94,8 @@
                     <img class="an-thumb" :src="assetUrl(row.thumb)" :alt="row.item_name" loading="lazy" @error="onImgError" />
                     <span>
                       {{ row.item_name }}
-                      <span v-if="row.vaulted" class="an-badge">VAULTED</span>
-                      <small class="an-sub">{{ row.dataDays }}d tracked</small>
+                      <span v-if="row.vaulted" class="an-badge">{{ t('movers.row.vaulted') }}</span>
+                      <small class="an-sub">{{ t('movers.row.tracked', { n: row.dataDays }) }}</small>
                     </span>
                   </a>
                 </td>
@@ -119,14 +114,14 @@
             <div class="an-card__head">
               <img class="an-thumb" :src="assetUrl(row.thumb)" :alt="row.item_name" loading="lazy" @error="onImgError" />
               <div class="an-card__title">
-                <div class="an-card__name">{{ row.item_name }}<span v-if="row.vaulted" class="an-badge">VAULTED</span></div>
-                <small class="an-sub">{{ fmtPlat(priceOf(row)) }}p · vol {{ fmtPlat(row.volume) }}</small>
+                <div class="an-card__name">{{ row.item_name }}<span v-if="row.vaulted" class="an-badge">{{ t('movers.row.vaulted') }}</span></div>
+                <small class="an-sub">{{ t('movers.hero.dealSub', { price: fmtPlat(priceOf(row)), vol: fmtPlat(row.volume) }) }}</small>
               </div>
               <span class="an-num an-strong" :class="changeClass(row[changeKey])">{{ fmtSignedPct(row[changeKey]) }}</span>
             </div>
             <div class="an-card__blocks">
               <div class="an-block an-block--full">
-                <div class="an-block__lbl">{{ timeframeLabel }} · {{ row.dataDays }} days tracked</div>
+                <div class="an-block__lbl">{{ t('movers.card.trackedDays', { tf: timeframeLabel, n: row.dataDays }) }}</div>
                 <span class="an-spark an-spark--wide" v-html="sparkSvg(row.spark, row[changeKey])"></span>
               </div>
             </div>
@@ -139,10 +134,7 @@
       </div>
 
       <v-alert class="an-disclaimer bg-blue-darken-4" type="info" density="compact">
-        Change is measured on our own daily price series (average trade price,
-        falling back to the sell order). Items need at least the selected window
-        of history to appear on the gainers/losers boards — coverage grows every
-        day the sync runs.
+        {{ t('movers.disclaimer') }}
       </v-alert>
     </client-only>
   </div>
@@ -152,6 +144,7 @@
 import { computed, nextTick, onMounted, ref, watch } from 'vue'
 import { useDisplay } from 'vuetify'
 
+const { t } = useI18n()
 const config = useRuntimeConfig()
 const base = config.public.apiURL
 
@@ -281,8 +274,8 @@ const paged = computed<any[]>(() => {
 const topDeal = computed<any>(() => (filtered.value.length ? filtered.value[0] : null))
 const topDealUrl = computed(() => (topDeal.value ? topDeal.value.url_name : ''))
 const emptyMessage = computed(() => {
-  if (mode.value === 'volume') return 'No items match these filters.'
-  return `No items have ${timeframeLabel.value} history yet. The movers board fills in as daily snapshots accumulate — check back soon.`
+  if (mode.value === 'volume') return t('movers.empty.volume')
+  return t('movers.empty.history', { tf: timeframeLabel.value })
 })
 const stats = computed<any>(() => {
   const key = changeKey.value

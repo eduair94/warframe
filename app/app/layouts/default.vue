@@ -4,11 +4,11 @@
       <v-btn
         variant="text"
         class="app-menu-btn mr-2"
-        aria-label="Open navigation menu"
+        :aria-label="t('nav.openMenu')"
         @click.stop="drawer = !drawer"
       >
         <v-icon>mdi-menu</v-icon>
-        <span class="app-menu-btn__label d-none d-sm-inline">Menu</span>
+        <span class="app-menu-btn__label d-none d-sm-inline">{{ t('nav.menu') }}</span>
       </v-btn>
       <v-img
         max-height="90%"
@@ -24,11 +24,11 @@
       <v-btn
         variant="text"
         class="app-tour-btn mr-1"
-        aria-label="Take a guided tour"
+        :aria-label="t('nav.tourAria')"
         @click="startTour"
       >
         <v-icon>mdi-compass-outline</v-icon>
-        <span class="app-tour-btn__label d-none d-md-inline">Tour</span>
+        <span class="app-tour-btn__label d-none d-md-inline">{{ t('nav.tour') }}</span>
       </v-btn>
       <GitHubButton icon color="white" class="mr-2" />
       <PwaInstall />
@@ -46,20 +46,20 @@
       <div class="nav-drawer__head">
         <span class="nav-drawer__node"></span>
         <div>
-          <div class="nav-drawer__eyebrow">Warframe Market</div>
-          <div class="nav-drawer__title">Navigation</div>
+          <div class="nav-drawer__eyebrow">{{ t('nav.eyebrow') }}</div>
+          <div class="nav-drawer__title">{{ t('nav.heading') }}</div>
         </div>
       </div>
       <v-list nav density="compact" class="nav-drawer__list">
         <template
           v-for="section in drawerSections"
-          :key="section.title || 'root'"
+          :key="section.key || 'root'"
         >
           <v-list-subheader
-            v-if="section.title"
+            v-if="section.key"
             class="nav-drawer__sub"
           >
-            {{ section.title }}
+            {{ t('nav.sections.' + section.key) }}
           </v-list-subheader>
           <v-list-item
             v-for="link in section.items"
@@ -73,7 +73,7 @@
             <template #prepend>
               <v-icon>{{ link.icon }}</v-icon>
             </template>
-            <v-list-item-title>{{ link.title }}</v-list-item-title>
+            <v-list-item-title>{{ t('nav.items.' + link.key) }}</v-list-item-title>
           </v-list-item>
         </template>
         <v-divider class="nav-drawer__divider" />
@@ -83,7 +83,7 @@
           rel="noopener noreferrer"
         >
           <template #prepend><v-icon>mdi-github</v-icon></template>
-          <v-list-item-title>Source Code</v-list-item-title>
+          <v-list-item-title>{{ t('nav.sourceCode') }}</v-list-item-title>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
@@ -153,7 +153,8 @@ defineOgImage('Void', {
 
 interface NavLink {
   to: string
-  title: string
+  // i18n token resolved via t('nav.items.' + key)
+  key: string
   icon: string
   exact?: boolean
   group?: string | null
@@ -169,35 +170,41 @@ const tourActive = ref(false)
 
 // Single source of truth for the grouped mobile/tablet drawer
 const navLinks: NavLink[] = [
-  { to: '/', title: 'Home', icon: 'mdi-home-variant', exact: true, group: null },
-  { to: '/set', title: 'Set Prices', icon: 'mdi-cube-outline', group: 'Prices' },
-  { to: '/relic', title: 'Relic Prices', icon: 'mdi-diamond-stone', group: 'Prices' },
-  { to: '/live', title: 'Live Signals', icon: 'mdi-access-point', group: 'Analytics' },
-  { to: '/comparison', title: 'Set vs Parts', icon: 'mdi-scale-balance', group: 'Analytics' },
-  { to: '/relics-value', title: 'Relic Value', icon: 'mdi-treasure-chest-outline', group: 'Analytics' },
-  { to: '/flip', title: 'Flip Finder', icon: 'mdi-trending-up', group: 'Analytics' },
-  { to: '/screener', title: 'Screener', icon: 'mdi-table-search', group: 'Analytics' },
-  { to: '/movers', title: 'Top Movers', icon: 'mdi-swap-vertical-bold', group: 'Analytics' },
-  { to: '/volatility', title: 'Volatility', icon: 'mdi-pulse', group: 'Analytics' },
-  { to: '/timing', title: 'Buy / Sell Timing', icon: 'mdi-clock-alert-outline', group: 'Analytics' },
-  { to: '/vault-spikes', title: 'Vault Spikes', icon: 'mdi-rocket-launch-outline', group: 'Analytics' },
-  { to: '/vaulted', title: 'Vaulted', icon: 'mdi-lock-outline', group: 'Analytics' },
-  { to: '/star-chart', title: 'Star Chart', icon: 'mdi-orbit', group: 'Analytics' },
-  { to: '/star-chart-3d', title: '3D Drop Map', icon: 'mdi-rotate-orbit', group: 'Analytics' },
-  { to: '/ducats', title: 'Ducats', icon: 'mdi-cash-multiple', group: 'Analytics' },
-  { to: '/endo', title: 'Endo / Plat', icon: 'mdi-swap-horizontal', group: 'Tools' },
-  { to: '/relic-farming', title: 'Relic Farming', icon: 'mdi-timer-sand', group: 'Tools' },
-  { to: '/riven-value', title: 'Riven Value', icon: 'mdi-star-four-points-outline', group: 'Tools' },
-  { to: '/portfolio', title: 'Portfolio', icon: 'mdi-briefcase-variant-outline', group: 'Tools' },
-  { to: '/guides/endo', title: 'Endo Guide', icon: 'mdi-book-open-variant', group: 'Guides' },
+  { to: '/', key: 'home', icon: 'mdi-home-variant', exact: true, group: null },
+  { to: '/set', key: 'setPrices', icon: 'mdi-cube-outline', group: 'Prices' },
+  { to: '/relic', key: 'relicPrices', icon: 'mdi-diamond-stone', group: 'Prices' },
+  { to: '/live', key: 'liveSignals', icon: 'mdi-access-point', group: 'Analytics' },
+  { to: '/comparison', key: 'setVsParts', icon: 'mdi-scale-balance', group: 'Analytics' },
+  { to: '/relics-value', key: 'relicValue', icon: 'mdi-treasure-chest-outline', group: 'Analytics' },
+  { to: '/flip', key: 'flipFinder', icon: 'mdi-trending-up', group: 'Analytics' },
+  { to: '/screener', key: 'screener', icon: 'mdi-table-search', group: 'Analytics' },
+  { to: '/movers', key: 'topMovers', icon: 'mdi-swap-vertical-bold', group: 'Analytics' },
+  { to: '/volatility', key: 'volatility', icon: 'mdi-pulse', group: 'Analytics' },
+  { to: '/timing', key: 'timing', icon: 'mdi-clock-alert-outline', group: 'Analytics' },
+  { to: '/vault-spikes', key: 'vaultSpikes', icon: 'mdi-rocket-launch-outline', group: 'Analytics' },
+  { to: '/vaulted', key: 'vaulted', icon: 'mdi-lock-outline', group: 'Analytics' },
+  { to: '/star-chart', key: 'starChart', icon: 'mdi-orbit', group: 'Analytics' },
+  { to: '/star-chart-3d', key: 'dropMap3d', icon: 'mdi-rotate-orbit', group: 'Analytics' },
+  { to: '/ducats', key: 'ducats', icon: 'mdi-cash-multiple', group: 'Analytics' },
+  { to: '/endo', key: 'endoPlat', icon: 'mdi-swap-horizontal', group: 'Tools' },
+  { to: '/relic-farming', key: 'relicFarming', icon: 'mdi-timer-sand', group: 'Tools' },
+  { to: '/riven-value', key: 'rivenValue', icon: 'mdi-star-four-points-outline', group: 'Tools' },
+  { to: '/portfolio', key: 'portfolio', icon: 'mdi-briefcase-variant-outline', group: 'Tools' },
+  { to: '/guides/endo', key: 'endoGuide', icon: 'mdi-book-open-variant', group: 'Guides' },
 ]
 
 // Groups the nav links for the drawer, in a fixed section order
+const SECTION_KEYS: Record<string, string> = {
+  Prices: 'prices',
+  Analytics: 'analytics',
+  Tools: 'tools',
+  Guides: 'guides',
+}
 const drawerSections = computed(() => {
   const order: (string | null)[] = [null, 'Prices', 'Analytics', 'Tools', 'Guides']
   return order
     .map((g) => ({
-      title: g,
+      key: g ? SECTION_KEYS[g] : null,
       items: navLinks.filter((l) => (l.group || null) === g),
     }))
     .filter((s) => s.items.length)
@@ -228,9 +235,9 @@ async function startTour() {
     showProgress: true,
     allowClose: true,
     popoverClass: 'driverjs-theme',
-    nextBtnText: 'Next',
-    prevBtnText: 'Back',
-    doneBtnText: 'Done',
+    nextBtnText: t('nav.tour.next'),
+    prevBtnText: t('nav.tour.back'),
+    doneBtnText: t('nav.tour.done'),
     // Belt & suspenders: whenever a step that targets a drawer nav item is
     // highlighted, make sure the drawer is open.
     onHighlightStarted: (_el: Element | undefined, step: any) => {
@@ -246,31 +253,28 @@ async function startTour() {
     steps: [
       {
         popover: {
-          title: 'Welcome, Tenno',
-          description:
-            'This is your void-trade console — every tool for spending and earning platinum smarter. Take the quick tour?',
+          title: t('nav.tour.welcomeTitle'),
+          description: t('nav.tour.welcomeDesc'),
         },
       },
       {
         element: '.app-menu-btn',
         popover: {
-          title: 'Everything lives in the menu',
-          description:
-            'Open it any time. Tools are grouped into Prices, Analytics and Tools.',
+          title: t('nav.tour.menuTitle'),
+          description: t('nav.tour.menuDesc'),
           side: 'bottom',
           align: 'start',
         },
       },
-      step('/comparison', 'Set vs Parts', 'Buy the assembled set, or the parts and combine? We show which is cheaper right now, and by how much.'),
-      step('/relics-value', 'Relic Value', 'Crack a relic or sell it? The expected platinum payout of every relic, for Intact and Radiant.'),
-      step('/flip', 'Flip Finder', 'The widest, most liquid buy/sell spreads — buy at the bid, relist at the ask.'),
-      step('/ducats', 'Ducat Efficiency', "The best ducats-per-platinum parts to stock up for Baro Ki'Teer."),
-      step('/vaulted', 'Vaulted', "Prime gear you can no longer farm — track what's climbing in value."),
+      step('/comparison', t('nav.tour.comparisonTitle'), t('nav.tour.comparisonDesc')),
+      step('/relics-value', t('nav.tour.relicsValueTitle'), t('nav.tour.relicsValueDesc')),
+      step('/flip', t('nav.tour.flipTitle'), t('nav.tour.flipDesc')),
+      step('/ducats', t('nav.tour.ducatsTitle'), t('nav.tour.ducatsDesc')),
+      step('/vaulted', t('nav.tour.vaultedTitle'), t('nav.tour.vaultedDesc')),
       {
         popover: {
-          title: "You're set",
-          description:
-            'Open the menu whenever you want to dig in. Happy trading, Tenno.',
+          title: t('nav.tour.doneTitle'),
+          description: t('nav.tour.doneDesc'),
         },
       },
     ],
@@ -298,11 +302,35 @@ async function startTour() {
   flex: 0 0 auto;
 }
 @media (max-width: 600px) {
+  /* Header must never spill on mobile. Let the logo take leftover space and
+     SHRINK (flex) rather than hold a fixed width that pushes the right-side
+     actions — tour, GitHub, PWA install, language — off the bar. The language
+     button "out of the box" bug was the logo's fixed 150px eating the row. */
   .logo_image.v-img {
-    /* Leave room for the menu button + right-side icons (tour, github, install,
-       language) so nothing spills out of the bar. */
-    width: 150px !important;
-    max-width: 42vw !important;
+    width: 120px !important;
+    max-width: 34vw !important;
+    min-width: 44px !important;
+    flex: 1 1 auto !important;
+  }
+  /* Tighten the action cluster so the row fits even at 320px with the
+     (conditionally shown) PWA install button present. */
+  .app-bar-orokin .app-menu-btn.v-btn {
+    padding: 0 9px !important;
+    margin-right: 4px !important;
+  }
+  .app-bar-orokin .app-tour-btn.v-btn {
+    margin-right: 0 !important;
+  }
+  .app-bar-orokin .v-toolbar__content > .v-btn {
+    margin-right: 2px !important;
+  }
+  .app-bar-orokin .v-btn--icon {
+    width: 38px !important;
+    height: 38px !important;
+  }
+  .app-bar-orokin .text-center .v-btn {
+    min-width: auto !important;
+    padding: 0 6px !important;
   }
 }
 

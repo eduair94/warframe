@@ -4,27 +4,24 @@
       <div class="an-console">
         <header class="an-hero">
           <div class="an-hero__text">
-            <div class="an-eyebrow">Warframe Market · Flip Finder</div>
-            <h1 class="an-title">
-              Buy <span class="accent-a">low</span>, sell what
-              <span class="accent-b">actually clears</span>.
-            </h1>
-            <p class="an-lede">
-              A wide bid–ask spread is only a deal if the item really trades. We
-              rank by <strong>realistic margin</strong> — buy at the bid, resell at
-              the 48h clearing price — and score each flip's <strong>fill
-              confidence</strong> from its volume, price anchor and last trade.
-              Mirages (no volume, junk quotes) are hidden until you ask for them.
-            </p>
+            <div class="an-eyebrow">{{ t('flip.hero.eyebrow') }}</div>
+            <i18n-t keypath="flip.hero.title" tag="h1" class="an-title">
+              <template #low><span class="accent-a">{{ t('flip.hero.titleLow') }}</span></template>
+              <template #clears><span class="accent-b">{{ t('flip.hero.titleClears') }}</span></template>
+            </i18n-t>
+            <i18n-t keypath="flip.hero.lede" tag="p" class="an-lede">
+              <template #realisticMargin><strong>{{ t('flip.hero.ledeRealisticMargin') }}</strong></template>
+              <template #fillConfidence><strong>{{ t('flip.hero.ledeFillConfidence') }}</strong></template>
+            </i18n-t>
           </div>
           <div v-if="topDeal" class="an-hero__deal">
-            <div class="an-hero__deal-label">Best realizable flip</div>
+            <div class="an-hero__deal-label">{{ t('flip.hero.bestFlip') }}</div>
             <div class="an-hero__deal-plat">+{{ fmtPlat(topDeal.s.realMargin) }}<span>p</span></div>
             <a class="an-hero__deal-name" :href="mkt(topDeal.url_name)" target="_blank" rel="noopener">
               {{ topDeal.item_name }} →
             </a>
             <div class="an-hero__deal-sub">
-              {{ topDeal.s.tier.label }} · conf {{ topDeal.s.confidence }} · vol {{ fmtPlat(topDeal.s.vol) }}
+              {{ t('flip.hero.dealSub', { tier: topDeal.s.tier.label, conf: topDeal.s.confidence, vol: fmtPlat(topDeal.s.vol) }) }}
             </div>
           </div>
         </header>
@@ -32,53 +29,53 @@
         <div class="an-stats">
           <div class="an-stat">
             <div class="an-stat__num">{{ stats.total }}</div>
-            <div class="an-stat__lbl">plausible flips</div>
+            <div class="an-stat__lbl">{{ t('flip.stats.plausibleFlips') }}</div>
           </div>
           <div class="an-stat">
             <div class="an-stat__num is-good">+{{ fmtPlat(stats.bestMargin) }}p</div>
-            <div class="an-stat__lbl">best real margin</div>
+            <div class="an-stat__lbl">{{ t('flip.stats.bestRealMargin') }}</div>
           </div>
           <div class="an-stat">
             <div class="an-stat__num is-gold">{{ stats.avgConfidence }}</div>
-            <div class="an-stat__lbl">avg confidence</div>
+            <div class="an-stat__lbl">{{ t('flip.stats.avgConfidence') }}</div>
           </div>
           <div class="an-stat">
             <div class="an-stat__num is-alt">{{ stats.strong }}</div>
-            <div class="an-stat__lbl">strong deals</div>
+            <div class="an-stat__lbl">{{ t('flip.stats.strongDeals') }}</div>
           </div>
         </div>
 
         <section class="an-filters">
           <div class="an-filters__row">
-            <v-text-field v-model="search" density="compact" hide-details clearable prepend-inner-icon="mdi-magnify" label="Search an item" class="an-search"></v-text-field>
-            <v-text-field v-model.number="minVolume" density="compact" hide-details type="number" min="0" label="Min volume (48h)" class="an-field"></v-text-field>
-            <v-select v-model="sortKey" :items="sortOptions" density="compact" hide-details label="Sort by" class="an-field" style="flex: 0 1 240px"></v-select>
+            <v-text-field v-model="search" density="compact" hide-details clearable prepend-inner-icon="mdi-magnify" :label="t('flip.filters.searchItem')" class="an-search"></v-text-field>
+            <v-text-field v-model.number="minVolume" density="compact" hide-details type="number" min="0" :label="t('flip.filters.minVolume')" class="an-field"></v-text-field>
+            <v-select v-model="sortKey" :items="sortOptions" density="compact" hide-details :label="t('flip.filters.sortBy')" class="an-field" style="flex: 0 1 240px"></v-select>
           </div>
           <v-chip-group v-model="category" mandatory column selected-class="an-chip--on" class="an-cats">
-            <v-chip v-for="c in categoryOptions" :key="c" :value="c" size="small">{{ c }}</v-chip>
+            <v-chip v-for="c in categoryOptions" :key="c" :value="c" size="small">{{ catLabel(c) }}</v-chip>
           </v-chip-group>
           <div class="an-toggles">
-            <v-switch v-model="includeSpeculative" density="compact" hide-details inset color="#d4af5a" label="Include speculative (thin / junk quotes)"></v-switch>
+            <v-switch v-model="includeSpeculative" density="compact" hide-details inset color="#d4af5a" :label="t('flip.filters.includeSpeculative')"></v-switch>
           </div>
-          <div class="an-count">{{ filtered.length }} {{ filtered.length === 1 ? 'item' : 'items' }} match</div>
+          <div class="an-count">{{ filtered.length === 1 ? t('flip.filters.matchOne', { n: filtered.length }) : t('flip.filters.matchMany', { n: filtered.length }) }}</div>
         </section>
 
         <div v-if="!filtered.length" class="an-empty">
-          No {{ includeSpeculative ? '' : 'plausible ' }}flips match these filters.
-          {{ includeSpeculative ? 'Widen the search or lower the min volume.' : 'Widen the search, lower the min volume, or enable “Include speculative”.' }}
+          {{ includeSpeculative ? t('flip.empty.any') : t('flip.empty.plausible') }}
+          {{ includeSpeculative ? t('flip.empty.hintSpeculative') : t('flip.empty.hintPlausible') }}
         </div>
 
         <div v-else-if="!isMobile" class="an-tablewrap">
           <table class="an-table">
             <thead>
               <tr>
-                <th class="col-name">Item</th>
-                <th class="grp-a">Buy (bid)</th>
-                <th class="grp-b">Sell (ask)</th>
-                <th>Real margin</th>
-                <th>Return</th>
-                <th>Spread</th>
-                <th>Confidence</th>
+                <th class="col-name">{{ t('flip.table.item') }}</th>
+                <th class="grp-a">{{ t('flip.table.buyBid') }}</th>
+                <th class="grp-b">{{ t('flip.table.sellAsk') }}</th>
+                <th>{{ t('flip.table.realMargin') }}</th>
+                <th>{{ t('flip.table.return') }}</th>
+                <th>{{ t('flip.table.spread') }}</th>
+                <th>{{ t('flip.table.confidence') }}</th>
                 <th></th>
               </tr>
             </thead>
@@ -89,8 +86,8 @@
                     <img class="an-thumb" :src="assetUrl(row.thumb)" :alt="row.item_name" loading="lazy" @error="onImgError" />
                     <span>
                       {{ row.item_name }}
-                      <span v-if="row.url_name === topDealUrl" class="an-badge">TOP</span>
-                      <small class="an-sub">avg {{ fmtPlat(row.s.avg) }}p · vol {{ fmtPlat(row.s.vol) }}</small>
+                      <span v-if="row.url_name === topDealUrl" class="an-badge">{{ t('flip.badge.top') }}</span>
+                      <small class="an-sub">{{ t('flip.table.avgVol', { avg: fmtPlat(row.s.avg), vol: fmtPlat(row.s.vol) }) }}</small>
                     </span>
                   </a>
                 </td>
@@ -99,7 +96,7 @@
                 <td class="an-num an-strong" :class="marginClass(row.s.realMargin)">{{ fmtSignedPlat(row.s.realMargin) }}p</td>
                 <td class="an-num" :class="marginClass(row.s.realMargin)">{{ fmtPct(row.s.realMarginPct) }}</td>
                 <td class="an-num flat">
-                  {{ fmtSignedPlat(row.s.spread) }}p<span v-if="row.s.junkAsk" class="an-warn" title="Ask far above recent trades — this spread is not realistic"> ⚠</span>
+                  {{ fmtSignedPlat(row.s.spread) }}p<span v-if="row.s.junkAsk" class="an-warn" :title="t('flip.table.junkAskTitle')"> ⚠</span>
                 </td>
                 <td>
                   <span class="pill" :class="row.s.tier.cls">
@@ -107,10 +104,10 @@
                   </span>
                 </td>
                 <td class="an-actions">
-                  <v-btn icon size="small" color="#4fb3bf" variant="text" :aria-label="'Drops & wiki for ' + row.item_name" @click="openDrops(row)">
+                  <v-btn icon size="small" color="#4fb3bf" variant="text" :aria-label="t('flip.actions.dropsAria', { name: row.item_name })" @click="openDrops(row)">
                     <v-icon>mdi-map-marker-radius-outline</v-icon>
                   </v-btn>
-                  <v-btn icon size="small" color="#d4af5a" variant="text" :href="mkt(row.url_name)" target="_blank" :aria-label="'Open ' + row.item_name + ' on Warframe Market'">
+                  <v-btn icon size="small" color="#d4af5a" variant="text" :href="mkt(row.url_name)" target="_blank" :aria-label="t('flip.actions.openAria', { name: row.item_name })">
                     <v-icon>mdi-open-in-new</v-icon>
                   </v-btn>
                 </td>
@@ -124,38 +121,38 @@
             <div class="an-card__head">
               <img class="an-thumb" :src="assetUrl(row.thumb)" :alt="row.item_name" loading="lazy" @error="onImgError" />
               <div class="an-card__title">
-                <div class="an-card__name">{{ row.item_name }}<span v-if="row.url_name === topDealUrl" class="an-badge">TOP</span></div>
-                <small class="an-sub">avg {{ fmtPlat(row.s.avg) }}p · vol {{ fmtPlat(row.s.vol) }}</small>
+                <div class="an-card__name">{{ row.item_name }}<span v-if="row.url_name === topDealUrl" class="an-badge">{{ t('flip.badge.top') }}</span></div>
+                <small class="an-sub">{{ t('flip.table.avgVol', { avg: fmtPlat(row.s.avg), vol: fmtPlat(row.s.vol) }) }}</small>
               </div>
             </div>
             <div class="an-card__verdict">
               <span class="pill" :class="row.s.tier.cls">
-                {{ row.s.tier.label }}<b>fill confidence {{ row.s.confidence }}/100</b>
+                {{ row.s.tier.label }}<b>{{ t('flip.card.fillConfidence', { conf: row.s.confidence }) }}</b>
               </span>
             </div>
             <div class="an-card__blocks">
               <div class="an-block">
-                <div class="an-block__lbl">Prices</div>
-                <div class="an-block__row"><span>Buy (bid)</span><b>{{ fmtPlat(row.s.bid) }}p</b></div>
-                <div class="an-block__row"><span>Sell (ask)</span><b>{{ fmtPlat(row.s.ask) }}p</b></div>
+                <div class="an-block__lbl">{{ t('flip.card.prices') }}</div>
+                <div class="an-block__row"><span>{{ t('flip.table.buyBid') }}</span><b>{{ fmtPlat(row.s.bid) }}p</b></div>
+                <div class="an-block__row"><span>{{ t('flip.table.sellAsk') }}</span><b>{{ fmtPlat(row.s.ask) }}p</b></div>
                 <div class="an-block__row">
-                  <span>Spread</span>
+                  <span>{{ t('flip.table.spread') }}</span>
                   <b class="flat">{{ fmtSignedPlat(row.s.spread) }}p<span v-if="row.s.junkAsk" class="an-warn"> ⚠</span></b>
                 </div>
               </div>
               <div class="an-block">
-                <div class="an-block__lbl">Realistic flip</div>
-                <div class="an-block__row"><span>Margin</span><b :class="marginClass(row.s.realMargin)">{{ fmtSignedPlat(row.s.realMargin) }}p</b></div>
-                <div class="an-block__row"><span>Return</span><b :class="marginClass(row.s.realMargin)">{{ fmtPct(row.s.realMarginPct) }}</b></div>
-                <div class="an-block__row"><span>Clears at</span><b>{{ fmtPlat(row.s.avg) }}p</b></div>
+                <div class="an-block__lbl">{{ t('flip.card.realisticFlip') }}</div>
+                <div class="an-block__row"><span>{{ t('flip.card.margin') }}</span><b :class="marginClass(row.s.realMargin)">{{ fmtSignedPlat(row.s.realMargin) }}p</b></div>
+                <div class="an-block__row"><span>{{ t('flip.table.return') }}</span><b :class="marginClass(row.s.realMargin)">{{ fmtPct(row.s.realMarginPct) }}</b></div>
+                <div class="an-block__row"><span>{{ t('flip.card.clearsAt') }}</span><b>{{ fmtPlat(row.s.avg) }}p</b></div>
               </div>
             </div>
             <div class="an-card__actions">
               <button type="button" class="an-cardbtn" @click="openDrops(row)">
-                <v-icon size="16">mdi-map-marker-radius-outline</v-icon> Drops &amp; wiki
+                <v-icon size="16">mdi-map-marker-radius-outline</v-icon> {{ t('flip.actions.dropsWiki') }}
               </button>
               <a class="an-cardbtn" :href="mkt(row.url_name)" target="_blank" rel="noopener">
-                <v-icon size="16">mdi-open-in-new</v-icon> Market
+                <v-icon size="16">mdi-open-in-new</v-icon> {{ t('flip.actions.market') }}
               </a>
             </div>
           </div>
@@ -167,12 +164,11 @@
       </div>
 
       <v-alert class="an-disclaimer bg-blue-darken-4" type="info" density="compact">
-        <strong>Real margin</strong> = 48h average clearing price − highest buy order
-        (buy at the bid, resell into real demand). <strong>Spread</strong> = lowest
-        sell − highest buy is the best case you rarely get; ⚠ marks a lone-gouger ask.
-        <strong>Confidence</strong> blends volume, price anchor and last-trade recency.
-        Thin / junk-quote items are hidden until “Include speculative”. All data from
-        Warframe Market.
+        <i18n-t keypath="flip.disclaimer.body" tag="span">
+          <template #realMargin><strong>{{ t('flip.disclaimer.realMargin') }}</strong></template>
+          <template #spread><strong>{{ t('flip.disclaimer.spread') }}</strong></template>
+          <template #confidence><strong>{{ t('flip.disclaimer.confidence') }}</strong></template>
+        </i18n-t>
       </v-alert>
 
       <DropLocationsDialog v-model="dropDialog" :item-name="dropItemName" :thumb="dropThumb" />
@@ -186,6 +182,7 @@ import { useDisplay } from 'vuetify'
 import { useItemsStore } from '~/stores/items'
 import { scoreFlip } from '~/composables/useFlipScore'
 
+const { t } = useI18n()
 const itemsStore = useItemsStore()
 const allItems = computed(() => itemsStore.allItems)
 
@@ -201,15 +198,21 @@ const page = ref(1)
 const perPage = 25
 const placeholderImg =
   "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44'%3E%3Crect width='44' height='44' rx='8' fill='%232a2a3d'/%3E%3Cpath d='M22 11 L31 22 L22 33 L13 22 Z' fill='none' stroke='%234fb3bf' stroke-width='2' opacity='0.75'/%3E%3C/svg%3E"
-const sortOptions = [
-  { title: 'Best opportunity', value: 'opportunity' },
-  { title: 'Fill confidence', value: 'confidence' },
-  { title: 'Realistic margin', value: 'realMargin' },
-  { title: 'Return %', value: 'return' },
-  { title: 'Optimistic spread', value: 'spread' },
-  { title: 'Volume', value: 'volume' },
-  { title: 'Name (A–Z)', value: 'name' },
-]
+const sortOptions = computed(() => [
+  { title: t('flip.sort.opportunity'), value: 'opportunity' },
+  { title: t('flip.sort.confidence'), value: 'confidence' },
+  { title: t('flip.sort.realMargin'), value: 'realMargin' },
+  { title: t('flip.sort.return'), value: 'return' },
+  { title: t('flip.sort.spread'), value: 'spread' },
+  { title: t('flip.sort.volume'), value: 'volume' },
+  { title: t('flip.sort.name'), value: 'name' },
+])
+
+// Category chip labels: the chip VALUE stays the English key (used in filter
+// logic + as the i18n subkey), only the displayed label is localized.
+function catLabel(c: string): string {
+  return t('flip.categories.' + c.toLowerCase())
+}
 
 // Drop-locations + wiki dialog (reuses the shared component — it bundles the
 // drop table, wiki link, warframestat cross-ref and a live market snapshot).

@@ -4,67 +4,61 @@
       <div class="an-console">
         <header class="an-hero">
           <div class="an-hero__text">
-            <div class="an-eyebrow">Warframe Market · Volatility</div>
-            <h1 class="an-title">
-              What's <span class="accent-a">stable</span>,
-              what's <span class="accent-b">wild</span>.
-            </h1>
-            <p class="an-lede">
-              A volatility index built from our own daily price history — the
-              coefficient of variation of each item's trade price. warframe.market
-              computes no such metric. Low volatility means a price you can trust
-              to hold or farm against; high volatility means swingy, arbitrage-rich
-              markets where timing pays.
-            </p>
+            <div class="an-eyebrow">{{ t('volatility.eyebrow') }}</div>
+            <i18n-t keypath="volatility.hero.title" tag="h1" class="an-title">
+              <template #stable><span class="accent-a">{{ t('volatility.hero.titleStable') }}</span></template>
+              <template #wild><span class="accent-b">{{ t('volatility.hero.titleWild') }}</span></template>
+            </i18n-t>
+            <p class="an-lede">{{ t('volatility.hero.lede') }}</p>
           </div>
           <div v-if="topDeal" class="an-hero__deal">
-            <div class="an-hero__deal-label">Most volatile</div>
-            <div class="an-hero__deal-plat">{{ topDeal.volatility.toFixed(1) }}<span>% cv</span></div>
+            <div class="an-hero__deal-label">{{ t('volatility.hero.dealLabel') }}</div>
+            <div class="an-hero__deal-plat">{{ topDeal.volatility.toFixed(1) }}<span>{{ t('volatility.hero.cv') }}</span></div>
             <a class="an-hero__deal-name" :href="mkt(topDeal.url_name)" target="_blank" rel="noopener">
               {{ topDeal.item_name }} →
             </a>
-            <div class="an-hero__deal-sub">{{ fmtPlat(priceOf(topDeal)) }}p · vol {{ fmtPlat(topDeal.volume) }}</div>
+            <div class="an-hero__deal-sub">{{ t('volatility.hero.dealSub', { price: fmtPlat(priceOf(topDeal)), vol: fmtPlat(topDeal.volume) }) }}</div>
           </div>
         </header>
 
         <div class="an-stats">
           <div class="an-stat">
             <div class="an-stat__num">{{ stats.scored }}</div>
-            <div class="an-stat__lbl">items scored</div>
+            <div class="an-stat__lbl">{{ t('volatility.stats.scored') }}</div>
           </div>
           <div class="an-stat">
             <div class="an-stat__num is-bad">{{ fmtVol(stats.mostVolatile) }}</div>
-            <div class="an-stat__lbl">most volatile</div>
+            <div class="an-stat__lbl">{{ t('volatility.stats.mostVolatile') }}</div>
           </div>
           <div class="an-stat">
             <div class="an-stat__num is-good">{{ fmtVol(stats.mostStable) }}</div>
-            <div class="an-stat__lbl">most stable</div>
+            <div class="an-stat__lbl">{{ t('volatility.stats.mostStable') }}</div>
           </div>
           <div class="an-stat">
             <div class="an-stat__num is-alt">{{ meta.maxHistoryDays }}</div>
-            <div class="an-stat__lbl">days of history</div>
+            <div class="an-stat__lbl">{{ t('volatility.stats.history') }}</div>
           </div>
         </div>
 
         <section class="an-filters">
           <div class="an-filters__row">
-            <v-text-field v-model="search" density="compact" hide-details clearable prepend-inner-icon="mdi-magnify" label="Search an item" class="an-search"></v-text-field>
+            <v-text-field v-model="search" density="compact" hide-details clearable prepend-inner-icon="mdi-magnify" :label="t('volatility.filters.search')" class="an-search"></v-text-field>
             <div class="an-refine">
-              <div class="an-refine__lbl">Board</div>
+              <div class="an-refine__lbl">{{ t('volatility.filters.board') }}</div>
               <v-btn-toggle v-model="mode" mandatory density="compact">
-                <v-btn value="volatile" size="small">Most volatile</v-btn>
-                <v-btn value="stable" size="small">Most stable</v-btn>
+                <v-btn value="volatile" size="small">{{ t('volatility.filters.boardVolatile') }}</v-btn>
+                <v-btn value="stable" size="small">{{ t('volatility.filters.boardStable') }}</v-btn>
               </v-btn-toggle>
             </div>
           </div>
           <v-chip-group v-model="category" mandatory column class="an-cats">
-            <v-chip v-for="c in categoryOptions" :key="c" :value="c" size="small" active-class="an-chip--on">{{ c }}</v-chip>
+            <v-chip v-for="c in categoryOptions" :key="c" :value="c" size="small" active-class="an-chip--on">{{ t('volatility.categories.' + c) }}</v-chip>
           </v-chip-group>
-          <div class="an-count">{{ filtered.length }} {{ filtered.length === 1 ? 'item' : 'items' }}</div>
+          <div class="an-count">{{ t('volatility.filters.count', { n: filtered.length }, filtered.length) }}</div>
         </section>
 
         <v-alert v-if="loadError" type="error" density="compact" class="ma-4">
-          Couldn't load analytics. The market service may be waking up — try a refresh.
+          {{ t('volatility.loadError') }}
         </v-alert>
         <div v-else-if="!filtered.length" class="an-empty">
           {{ emptyMessage }}
@@ -74,12 +68,12 @@
           <table class="an-table">
             <thead>
               <tr>
-                <th class="col-name">Item</th>
-                <th>Price</th>
-                <th>Volatility</th>
-                <th>Trend</th>
-                <th>Vol</th>
-                <th>History</th>
+                <th class="col-name">{{ t('volatility.table.item') }}</th>
+                <th>{{ t('volatility.table.price') }}</th>
+                <th>{{ t('volatility.table.volatility') }}</th>
+                <th>{{ t('volatility.table.trend') }}</th>
+                <th>{{ t('volatility.table.vol') }}</th>
+                <th>{{ t('volatility.table.history') }}</th>
               </tr>
             </thead>
             <tbody>
@@ -89,8 +83,8 @@
                     <img class="an-thumb" :src="assetUrl(row.thumb)" :alt="row.item_name" loading="lazy" @error="onImgError" />
                     <span>
                       {{ row.item_name }}
-                      <span v-if="row.vaulted" class="an-badge">VAULTED</span>
-                      <small class="an-sub">{{ row.dataDays }}d tracked</small>
+                      <span v-if="row.vaulted" class="an-badge">{{ t('volatility.row.vaulted') }}</span>
+                      <small class="an-sub">{{ t('volatility.row.tracked', { days: row.dataDays }) }}</small>
                     </span>
                   </a>
                 </td>
@@ -114,8 +108,8 @@
             <div class="an-card__head">
               <img class="an-thumb" :src="assetUrl(row.thumb)" :alt="row.item_name" loading="lazy" @error="onImgError" />
               <div class="an-card__title">
-                <div class="an-card__name">{{ row.item_name }}<span v-if="row.vaulted" class="an-badge">VAULTED</span></div>
-                <small class="an-sub">{{ fmtPlat(priceOf(row)) }}p · {{ row.dataDays }}d tracked</small>
+                <div class="an-card__name">{{ row.item_name }}<span v-if="row.vaulted" class="an-badge">{{ t('volatility.row.vaulted') }}</span></div>
+                <small class="an-sub">{{ t('volatility.card.priceTracked', { price: fmtPlat(priceOf(row)), days: row.dataDays }) }}</small>
               </div>
               <span class="pill" :class="volClass(row.volatility)">
                 {{ row.volatility.toFixed(1) }}%
@@ -124,7 +118,7 @@
             </div>
             <div class="an-card__blocks">
               <div class="an-block an-block--full">
-                <div class="an-block__lbl">Price history · {{ row.dataDays }} days tracked</div>
+                <div class="an-block__lbl">{{ t('volatility.card.priceHistory', { days: row.dataDays }) }}</div>
                 <span class="an-spark an-spark--wide" v-html="sparkSvg(row.spark, row.change7d)"></span>
               </div>
             </div>
@@ -137,10 +131,7 @@
       </div>
 
       <v-alert class="an-disclaimer bg-blue-darken-4" type="info" density="compact">
-        Volatility is the coefficient of variation (standard deviation ÷ mean, as a
-        %) of our own daily price series — average trade price, falling back to the
-        sell order. Items need at least 3 history points to be scored; the stability
-        board also requires a week of tracking. Coverage grows every day the sync runs.
+        {{ t('volatility.disclaimer') }}
       </v-alert>
     </client-only>
   </div>
@@ -150,6 +141,7 @@
 import { computed, nextTick, onMounted, ref, watch } from 'vue'
 import { useDisplay } from 'vuetify'
 
+const { t } = useI18n()
 const config = useRuntimeConfig()
 const base = config.public.apiURL
 
@@ -207,9 +199,9 @@ function volClass(v: number): string {
   return 'pill--good'
 }
 function volLabel(v: number): string {
-  if (v > 25) return 'High'
-  if (v >= 10) return 'Medium'
-  return 'Low'
+  if (v > 25) return t('volatility.level.high')
+  if (v >= 10) return t('volatility.level.medium')
+  return t('volatility.level.low')
 }
 function trendArrow(t: string): string {
   return t === 'up' ? '▲' : t === 'down' ? '▼' : '▬'
@@ -281,8 +273,8 @@ const topDeal = computed<any>(() => {
 const topDealUrl = computed(() => (filtered.value.length ? filtered.value[0].url_name : ''))
 const emptyMessage = computed(() => {
   const anyScored = items.value.some((r) => r.volatility !== null && r.volatility !== undefined)
-  if (!anyScored) return 'Not enough price history yet — volatility fills in as daily snapshots accumulate.'
-  return 'No items match these filters. Widen the search or reset the category.'
+  if (!anyScored) return t('volatility.empty.noHistory')
+  return t('volatility.empty.noMatch')
 })
 const stats = computed<any>(() => {
   const scored = items.value.filter((r) => r.volatility !== null && r.volatility !== undefined)

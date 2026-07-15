@@ -4,67 +4,62 @@
       <div class="an-console">
         <header class="an-hero">
           <div class="an-hero__text">
-            <div class="an-eyebrow">Warframe Market · Buy / Sell Timing</div>
-            <h1 class="an-title">
-              Buy the <span class="accent-a">low</span>,
-              sell the <span class="accent-b">high</span>.
-            </h1>
-            <p class="an-lede">
-              warframe.market's per-item chart only reaches back 90 days. We keep a
-              longer daily price history, so we can tell you when an item is sitting
-              near its all-time low — a buy — or pressed up against its high — a
-              sell. Every row gets a plain buy / hold / sell read.
-            </p>
+            <div class="an-eyebrow">{{ t('timing.eyebrow') }}</div>
+            <i18n-t keypath="timing.hero.title" tag="h1" class="an-title">
+              <template #low><span class="accent-a">{{ t('timing.hero.low') }}</span></template>
+              <template #high><span class="accent-b">{{ t('timing.hero.high') }}</span></template>
+            </i18n-t>
+            <p class="an-lede">{{ t('timing.hero.lede') }}</p>
           </div>
           <div v-if="topDeal" class="an-hero__deal">
-            <div class="an-hero__deal-label">Strongest buy signal</div>
+            <div class="an-hero__deal-label">{{ t('timing.hero.dealLabel') }}</div>
             <div class="an-hero__deal-plat">{{ fmtPlat(priceOf(topDeal)) }}<span>p</span></div>
             <a class="an-hero__deal-name" :href="mkt(topDeal.url_name)" target="_blank" rel="noopener">
               {{ topDeal.item_name }} →
             </a>
-            <div class="an-hero__deal-sub">+{{ topDeal.pctFromAtl.toFixed(0) }}% above its {{ topDeal.dataDays }}d low</div>
+            <div class="an-hero__deal-sub">+{{ topDeal.pctFromAtl.toFixed(0) }}% {{ t('timing.hero.dealSub', { days: topDeal.dataDays }) }}</div>
           </div>
         </header>
 
         <div class="an-stats">
           <div class="an-stat">
             <div class="an-stat__num">{{ stats.withSignal }}</div>
-            <div class="an-stat__lbl">items with a signal</div>
+            <div class="an-stat__lbl">{{ t('timing.stats.withSignal') }}</div>
           </div>
           <div class="an-stat">
             <div class="an-stat__num is-good">{{ stats.buy }}</div>
-            <div class="an-stat__lbl">buy signals</div>
+            <div class="an-stat__lbl">{{ t('timing.stats.buy') }}</div>
           </div>
           <div class="an-stat">
             <div class="an-stat__num is-gold">{{ stats.sell }}</div>
-            <div class="an-stat__lbl">sell signals</div>
+            <div class="an-stat__lbl">{{ t('timing.stats.sell') }}</div>
           </div>
           <div class="an-stat">
             <div class="an-stat__num is-alt">{{ meta.maxHistoryDays }}</div>
-            <div class="an-stat__lbl">days of history</div>
+            <div class="an-stat__lbl">{{ t('timing.stats.history') }}</div>
           </div>
         </div>
 
         <section class="an-filters">
           <div class="an-filters__row">
-            <v-text-field v-model="search" density="compact" hide-details clearable prepend-inner-icon="mdi-magnify" label="Search an item" class="an-search"></v-text-field>
+            <v-text-field v-model="search" density="compact" hide-details clearable prepend-inner-icon="mdi-magnify" :label="t('timing.filters.search')" class="an-search"></v-text-field>
             <div class="an-refine">
-              <div class="an-refine__lbl">Signal</div>
+              <div class="an-refine__lbl">{{ t('timing.filters.signal') }}</div>
               <v-btn-toggle v-model="mode" mandatory density="compact">
-                <v-btn value="all" size="small">All</v-btn>
-                <v-btn value="buy" size="small">Buy signals</v-btn>
-                <v-btn value="sell" size="small">Sell signals</v-btn>
+                <v-btn value="all" size="small">{{ t('timing.mode.all') }}</v-btn>
+                <v-btn value="buy" size="small">{{ t('timing.mode.buy') }}</v-btn>
+                <v-btn value="sell" size="small">{{ t('timing.mode.sell') }}</v-btn>
               </v-btn-toggle>
             </div>
           </div>
           <v-chip-group v-model="category" mandatory column selected-class="an-chip--on" class="an-cats">
-            <v-chip v-for="c in categoryOptions" :key="c" :value="c" size="small">{{ c }}</v-chip>
+            <v-chip v-for="c in categoryOptions" :key="c" :value="c" size="small">{{ t('timing.categories.' + c) }}</v-chip>
           </v-chip-group>
-          <div class="an-count">{{ filtered.length }} {{ filtered.length === 1 ? 'item' : 'items' }}</div>
+          <div class="an-count">{{ t('timing.filters.count', { n: filtered.length }, filtered.length) }}</div>
         </section>
 
         <v-alert v-if="loadError" type="error" density="compact" class="ma-4">
-          Couldn't load analytics. The market service may be waking up — try a refresh.
+          {{ t('timing.loadError') }}
         </v-alert>
         <div v-else-if="!filtered.length" class="an-empty">
           {{ emptyMessage }}
@@ -74,13 +69,13 @@
           <table class="an-table">
             <thead>
               <tr>
-                <th class="col-name">Item</th>
-                <th>Price</th>
-                <th>vs Low</th>
-                <th>vs High</th>
-                <th>Signal</th>
-                <th>Trend</th>
-                <th>History</th>
+                <th class="col-name">{{ t('timing.table.item') }}</th>
+                <th>{{ t('timing.table.price') }}</th>
+                <th>{{ t('timing.table.vsLow') }}</th>
+                <th>{{ t('timing.table.vsHigh') }}</th>
+                <th>{{ t('timing.table.signal') }}</th>
+                <th>{{ t('timing.table.trend') }}</th>
+                <th>{{ t('timing.table.history') }}</th>
               </tr>
             </thead>
             <tbody>
@@ -90,8 +85,8 @@
                     <img class="an-thumb" :src="assetUrl(row.thumb)" :alt="row.item_name" loading="lazy" @error="onImgError" />
                     <span>
                       {{ row.item_name }}
-                      <span v-if="row.vaulted" class="an-badge">VAULTED</span>
-                      <small class="an-sub">{{ row.dataDays }}d history</small>
+                      <span v-if="row.vaulted" class="an-badge">{{ t('timing.row.vaulted') }}</span>
+                      <small class="an-sub">{{ t('timing.row.history', { days: row.dataDays }) }}</small>
                     </span>
                   </a>
                 </td>
@@ -100,8 +95,8 @@
                 <td class="an-num" :class="vsHighClass(row)">{{ row.pctFromAth.toFixed(0) }}%</td>
                 <td>
                   <span class="pill" :class="signal(row).cls">
-                    {{ signal(row).label }}
-                    <b>{{ signal(row).note }}</b>
+                    {{ t('timing.signal.' + signal(row).key + '.label') }}
+                    <b>{{ t('timing.signal.' + signal(row).key + '.note') }}</b>
                   </span>
                 </td>
                 <td class="an-num"><span :class="trendClass(row.trend)">{{ trendArrow(row.trend) }}</span></td>
@@ -116,24 +111,24 @@
             <div class="an-card__head">
               <img class="an-thumb" :src="assetUrl(row.thumb)" :alt="row.item_name" loading="lazy" @error="onImgError" />
               <div class="an-card__title">
-                <div class="an-card__name">{{ row.item_name }}<span v-if="row.vaulted" class="an-badge">VAULTED</span></div>
-                <small class="an-sub">{{ fmtPlat(priceOf(row)) }}p · {{ row.dataDays }}d history</small>
+                <div class="an-card__name">{{ row.item_name }}<span v-if="row.vaulted" class="an-badge">{{ t('timing.row.vaulted') }}</span></div>
+                <small class="an-sub">{{ fmtPlat(priceOf(row)) }}p · {{ t('timing.row.history', { days: row.dataDays }) }}</small>
               </div>
             </div>
             <div class="an-card__verdict">
               <span class="pill" :class="signal(row).cls">
-                {{ signal(row).label }}
-                <b>{{ signal(row).note }}</b>
+                {{ t('timing.signal.' + signal(row).key + '.label') }}
+                <b>{{ t('timing.signal.' + signal(row).key + '.note') }}</b>
               </span>
             </div>
             <div class="an-card__blocks">
               <div class="an-block">
-                <div class="an-block__lbl">Price bands</div>
-                <div class="an-block__row"><span>vs low</span><b :class="vsLowClass(row)">+{{ row.pctFromAtl.toFixed(0) }}%</b></div>
-                <div class="an-block__row"><span>vs high</span><b :class="vsHighClass(row)">{{ row.pctFromAth.toFixed(0) }}%</b></div>
+                <div class="an-block__lbl">{{ t('timing.card.priceBands') }}</div>
+                <div class="an-block__row"><span>{{ t('timing.card.vsLow') }}</span><b :class="vsLowClass(row)">+{{ row.pctFromAtl.toFixed(0) }}%</b></div>
+                <div class="an-block__row"><span>{{ t('timing.card.vsHigh') }}</span><b :class="vsHighClass(row)">{{ row.pctFromAth.toFixed(0) }}%</b></div>
               </div>
               <div class="an-block">
-                <div class="an-block__lbl">History · {{ row.dataDays }}d</div>
+                <div class="an-block__lbl">{{ t('timing.card.historyDays', { days: row.dataDays }) }}</div>
                 <span class="an-spark an-spark--wide" v-html="sparkSvg(row.spark, row.change7d)"></span>
               </div>
             </div>
@@ -146,10 +141,7 @@
       </div>
 
       <v-alert class="an-disclaimer" type="info" color="blue-darken-4" density="compact">
-        Bands are built from our own daily price series (average trade price,
-        falling back to the sell order). An item needs at least 7 days of history
-        to get a call, and "near its low / high" means within 5% of the extreme we
-        have on record — coverage deepens every day the sync runs.
+        {{ t('timing.disclaimer') }}
       </v-alert>
     </client-only>
   </div>
@@ -159,6 +151,7 @@
 import { computed, nextTick, onMounted, ref, watch } from 'vue'
 import { useDisplay } from 'vuetify'
 
+const { t } = useI18n()
 const config = useRuntimeConfig()
 const base = config.public.apiURL
 
@@ -209,11 +202,13 @@ function categoryOf(tags: string[] = []): string {
 function signalable(row: any): boolean {
   return !!row && row.dataDays >= 7 && row.atl != null && row.ath != null && row.pctFromAtl != null && row.pctFromAth != null
 }
-function signal(row: any): { label: string; cls: string; note: string } {
-  if (!signalable(row)) return { label: 'Hold', cls: 'pill--even', note: 'mid-range' }
-  if (row.pctFromAtl <= 5) return { label: 'Buy', cls: 'pill--good', note: 'near its low' }
-  if (row.pctFromAth >= -5) return { label: 'Sell', cls: 'pill--alt', note: 'near its high' }
-  return { label: 'Hold', cls: 'pill--even', note: 'mid-range' }
+// Returns a stable internal `key` (buy/sell/hold) used for filtering + counting;
+// the displayed label/note are localized in the template via t('timing.signal.<key>.*').
+function signal(row: any): { key: string; cls: string } {
+  if (!signalable(row)) return { key: 'hold', cls: 'pill--even' }
+  if (row.pctFromAtl <= 5) return { key: 'buy', cls: 'pill--good' }
+  if (row.pctFromAth >= -5) return { key: 'sell', cls: 'pill--alt' }
+  return { key: 'hold', cls: 'pill--even' }
 }
 function vsLowClass(row: any): string {
   return row.pctFromAtl != null && row.pctFromAtl <= 5 ? 'up' : 'flat'
@@ -263,9 +258,9 @@ const filtered = computed<any[]>(() => {
   let list = signalItems.value.filter((r) => {
     if (q && !r.item_name.toLowerCase().includes(q)) return false
     if (category.value !== 'All' && categoryOf(r.tags) !== category.value) return false
-    const label = signal(r).label
-    if (mode.value === 'buy' && label !== 'Buy') return false
-    if (mode.value === 'sell' && label !== 'Sell') return false
+    const key = signal(r).key
+    if (mode.value === 'buy' && key !== 'buy') return false
+    if (mode.value === 'sell' && key !== 'sell') return false
     return true
   })
   if (mode.value === 'sell') list = list.slice().sort((a, b) => b.pctFromAth - a.pctFromAth)
@@ -280,24 +275,22 @@ const paged = computed<any[]>(() => {
 const topDeal = computed<any>(() => {
   let best: any = null
   for (const r of signalItems.value) {
-    if (signal(r).label !== 'Buy') continue
+    if (signal(r).key !== 'buy') continue
     if (!(Number(r.volume) > 0)) continue
     if (!best || r.pctFromAtl < best.pctFromAtl) best = r
   }
   return best
 })
 const topDealUrl = computed(() => (topDeal.value ? topDeal.value.url_name : ''))
-const emptyMessage = computed(
-  () => 'No items have enough price history for a timing call yet — this fills in as daily snapshots accumulate.',
-)
+const emptyMessage = computed(() => t('timing.empty'))
 const stats = computed<any>(() => {
   const sig = signalItems.value
   let buy = 0
   let sell = 0
   for (const r of sig) {
-    const label = signal(r).label
-    if (label === 'Buy') buy++
-    else if (label === 'Sell') sell++
+    const key = signal(r).key
+    if (key === 'buy') buy++
+    else if (key === 'sell') sell++
   }
   return { withSignal: sig.length, buy, sell }
 })

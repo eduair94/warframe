@@ -50,6 +50,12 @@ export class FairValueService {
       // live book compares like-for-like instead of mixing rank-0 and rank-max orders.
       const rawRank = it && (it.mod_max_rank ?? it.items_in_set?.[0]?.mod_max_rank);
       const maxRank = Number.isFinite(Number(rawRank)) ? Number(rawRank) : undefined;
+      // Ayatan sculpture star capacity — so the live book prices the FILLED sculpture
+      // (same tier the daily sync prices at), not a mix of empty and filled orders.
+      const rawAmber = it && (it.max_amber_stars ?? it.items_in_set?.[0]?.max_amber_stars);
+      const rawCyan = it && (it.max_cyan_stars ?? it.items_in_set?.[0]?.max_cyan_stars);
+      const maxAmberStars = Number.isFinite(Number(rawAmber)) ? Number(rawAmber) : undefined;
+      const maxCyanStars = Number.isFinite(Number(rawCyan)) ? Number(rawCyan) : undefined;
       let points: IPricePoint[] = [];
       try { points = (await this.deps.getHistory(url)) || []; } catch { points = []; }
       const prices = points.map((p) => priceOf(p));
@@ -61,6 +67,8 @@ export class FairValueService {
         dataDays: points.length,
         volume: Number(market.volume) || 0,
         maxRank,
+        maxAmberStars,
+        maxCyanStars,
       });
     }
     return this.cache;

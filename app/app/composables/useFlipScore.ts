@@ -120,10 +120,13 @@ function hoursSince(iso: string | undefined | null, nowMs: number): number {
  * not a flip.
  */
 export function flipTier(confidence: number, realMargin: number): FlipTier {
-  if (realMargin > 0 && confidence >= 66) return { key: 'strong', label: 'Strong', cls: 'pill--good' }
-  if (realMargin > 0 && confidence >= 40) return { key: 'fair', label: 'Fair', cls: 'pill--alt' }
-  if (realMargin > 0 && confidence >= 20) return { key: 'thin', label: 'Thin', cls: 'pill--even' }
-  return { key: 'spec', label: 'Speculative', cls: 'pill--even' }
+  // Labels resolve through the global i18n `t` by key (English fallback) — see
+  // tLabel in marketFormat.ts (Nuxt auto-imported). Called during render, so the
+  // pill re-labels on locale switch.
+  if (realMargin > 0 && confidence >= 66) return { key: 'strong', label: tLabel('common.flipTier.strong', 'Strong'), cls: 'pill--good' }
+  if (realMargin > 0 && confidence >= 40) return { key: 'fair', label: tLabel('common.flipTier.fair', 'Fair'), cls: 'pill--alt' }
+  if (realMargin > 0 && confidence >= 20) return { key: 'thin', label: tLabel('common.flipTier.thin', 'Thin'), cls: 'pill--even' }
+  return { key: 'spec', label: tLabel('common.flipTier.spec', 'Speculative'), cls: 'pill--even' }
 }
 
 /**

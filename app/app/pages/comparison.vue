@@ -4,25 +4,21 @@
       <div class="an-console">
         <header class="an-hero">
           <div class="an-hero__text">
-            <div class="an-eyebrow">Warframe Market · Set vs Parts</div>
-            <h1 class="an-title">
-              Buy the <span class="accent-a">set</span>, or the
-              <span class="accent-b">parts</span>?
-            </h1>
-            <p class="an-lede">
-              Warframe.market lists set prices and part prices separately — never
-              the decision. This is the decision: acquire the assembled set, or buy
-              each part and combine. Which is cheaper right now, and by how much.
-            </p>
+            <div class="an-eyebrow">{{ t('comparison.eyebrow') }}</div>
+            <i18n-t keypath="comparison.hero.title" tag="h1" class="an-title">
+              <template #set><span class="accent-a">{{ t('comparison.hero.titleSet') }}</span></template>
+              <template #parts><span class="accent-b">{{ t('comparison.hero.titleParts') }}</span></template>
+            </i18n-t>
+            <p class="an-lede">{{ t('comparison.hero.lede') }}</p>
           </div>
           <div v-if="topDeal" class="an-hero__deal">
-            <div class="an-hero__deal-label">Biggest saving right now</div>
+            <div class="an-hero__deal-label">{{ t('comparison.hero.dealLabel') }}</div>
             <div class="an-hero__deal-plat">{{ fmtPlat(topDeal.acquire.save) }}<span>p</span></div>
             <NuxtLink class="an-hero__deal-name" :to="'/set/' + topDeal.url_name">
               {{ topDeal.item_name.replace(' Set', '') }} →
             </NuxtLink>
             <div class="an-hero__deal-sub">
-              buying by parts ({{ fmtPct(topDeal.acquire.savePct) }})
+              {{ t('comparison.hero.dealSub', { pct: fmtPct(topDeal.acquire.savePct) }) }}
             </div>
           </div>
         </header>
@@ -30,19 +26,19 @@
         <div class="an-stats">
           <div class="an-stat">
             <div class="an-stat__num">{{ stats.total }}</div>
-            <div class="an-stat__lbl">sets compared</div>
+            <div class="an-stat__lbl">{{ t('comparison.stats.setsCompared') }}</div>
           </div>
           <div class="an-stat">
             <div class="an-stat__num is-good">{{ stats.partsCheaper }}</div>
-            <div class="an-stat__lbl">cheaper by parts</div>
+            <div class="an-stat__lbl">{{ t('comparison.stats.cheaperByParts') }}</div>
           </div>
           <div class="an-stat">
             <div class="an-stat__num is-alt">{{ stats.setCheaper }}</div>
-            <div class="an-stat__lbl">cheaper as a set</div>
+            <div class="an-stat__lbl">{{ t('comparison.stats.cheaperAsSet') }}</div>
           </div>
           <div class="an-stat">
             <div class="an-stat__num is-good">{{ fmtPct(stats.avgSavePct) }}</div>
-            <div class="an-stat__lbl">avg parts saving</div>
+            <div class="an-stat__lbl">{{ t('comparison.stats.avgPartsSaving') }}</div>
           </div>
         </div>
 
@@ -54,7 +50,7 @@
               hide-details
               clearable
               prepend-inner-icon="mdi-magnify"
-              label="Search a set"
+              :label="t('comparison.filters.search')"
               class="an-search"
             ></v-text-field>
             <v-text-field
@@ -63,7 +59,7 @@
               hide-details
               type="number"
               min="0"
-              label="Min volume (48h)"
+              :label="t('comparison.filters.minVolume')"
               class="an-field"
             ></v-text-field>
             <v-select
@@ -71,7 +67,7 @@
               :items="sortOptions"
               density="compact"
               hide-details
-              label="Sort by"
+              :label="t('comparison.filters.sortBy')"
               class="an-field"
               style="flex: 0 1 220px"
             ></v-select>
@@ -84,7 +80,7 @@
               :value="cat"
               size="small"
             >
-              {{ cat }}
+              {{ t('comparison.categories.' + cat) }}
             </v-chip>
           </v-chip-group>
 
@@ -95,7 +91,7 @@
               hide-details
               inset
               color="#35d6d0"
-              label="Only where parts are cheaper to buy"
+              :label="t('comparison.filters.onlyPartsCheaper')"
             ></v-switch>
             <v-switch
               v-model="onlyResellHigher"
@@ -103,38 +99,38 @@
               hide-details
               inset
               color="#c8a85c"
-              label="Only where parts resell for more"
+              :label="t('comparison.filters.onlyResellHigher')"
             ></v-switch>
           </div>
           <div class="an-count">
-            {{ filtered.length }} {{ filtered.length === 1 ? 'set' : 'sets' }} match
+            {{ t('comparison.filters.count', { n: filtered.length }, filtered.length) }}
           </div>
         </section>
 
         <v-alert v-if="loadError" type="error" density="compact" class="ma-4">
-          Couldn't load comparison data. The market service may be waking up — try a refresh.
+          {{ t('comparison.loadError') }}
         </v-alert>
         <div v-else-if="!filtered.length" class="an-empty">
-          No sets match these filters. Widen the search or reset the category.
+          {{ t('comparison.empty') }}
         </div>
 
         <div v-else-if="!mobile" class="an-tablewrap">
           <table class="an-table">
             <thead>
               <tr>
-                <th class="col-name">Set</th>
-                <th class="col-grp grp-a" colspan="3">Cost to acquire</th>
-                <th class="col-grp grp-b" colspan="3">Resale value</th>
-                <th>Vol</th>
+                <th class="col-name">{{ t('comparison.table.set') }}</th>
+                <th class="col-grp grp-a" colspan="3">{{ t('comparison.table.costToAcquire') }}</th>
+                <th class="col-grp grp-b" colspan="3">{{ t('comparison.table.resaleValue') }}</th>
+                <th>{{ t('comparison.table.vol') }}</th>
                 <th></th>
               </tr>
               <tr class="an-table__subhead">
                 <th></th>
-                <th class="grp-a">Set</th>
-                <th class="grp-a">Parts</th>
-                <th class="grp-a">Verdict</th>
-                <th class="grp-b">Set</th>
-                <th class="grp-b">Parts</th>
+                <th class="grp-a">{{ t('comparison.table.set') }}</th>
+                <th class="grp-a">{{ t('comparison.table.parts') }}</th>
+                <th class="grp-a">{{ t('comparison.table.verdict') }}</th>
+                <th class="grp-b">{{ t('comparison.table.set') }}</th>
+                <th class="grp-b">{{ t('comparison.table.parts') }}</th>
                 <th class="grp-b">Δ</th>
                 <th></th>
                 <th></th>
@@ -151,10 +147,10 @@
                     <img class="an-thumb" :src="assetUrl(row.thumb)" :alt="row.item_name" loading="lazy" @error="onImgError" />
                     <span>
                       {{ row.item_name.replace(' Set', '') }}
-                      <span v-if="row.url_name === topDealUrl" class="an-badge">BEST</span>
+                      <span v-if="row.url_name === topDealUrl" class="an-badge">{{ t('comparison.row.best') }}</span>
                       <small class="an-sub">
-                        {{ row.partsCount }} parts
-                        <span v-if="row.missingParts" class="an-warn">· {{ row.missingParts }} unpriced</span>
+                        {{ t('comparison.row.parts', { n: row.partsCount }) }}
+                        <span v-if="row.missingParts" class="an-warn">{{ t('comparison.row.unpriced', { n: row.missingParts }) }}</span>
                       </small>
                     </span>
                   </NuxtLink>
@@ -172,7 +168,7 @@
                 <td class="grp-b an-num" :class="deltaCls(row.resale.extra)">{{ signed(row.resale.extra) }}p</td>
                 <td class="an-num">{{ fmtPlat(row.set.volume) }}</td>
                 <td>
-                  <v-btn icon size="small" color="#35d6d0" :to="'/set/' + row.url_name" :aria-label="'View ' + row.item_name + ' parts'">
+                  <v-btn icon size="small" color="#35d6d0" :to="'/set/' + row.url_name" :aria-label="t('comparison.row.viewAria', { name: row.item_name })">
                     <v-icon>mdi-arrow-right-circle</v-icon>
                   </v-btn>
                 </td>
@@ -194,12 +190,12 @@
               <div class="an-card__title">
                 <div class="an-card__name">
                   {{ row.item_name.replace(' Set', '') }}
-                  <span v-if="row.url_name === topDealUrl" class="an-badge">BEST</span>
+                  <span v-if="row.url_name === topDealUrl" class="an-badge">{{ t('comparison.row.best') }}</span>
                 </div>
                 <small class="an-sub">
-                  {{ row.partsCount }} parts
-                  <span v-if="row.missingParts" class="an-warn">· {{ row.missingParts }} unpriced</span>
-                  · vol {{ fmtPlat(row.set.volume) }}
+                  {{ t('comparison.row.parts', { n: row.partsCount }) }}
+                  <span v-if="row.missingParts" class="an-warn">{{ t('comparison.row.unpriced', { n: row.missingParts }) }}</span>
+                  {{ t('comparison.row.volSuffix', { vol: fmtPlat(row.set.volume) }) }}
                 </small>
               </div>
               <v-icon color="#35d6d0">mdi-chevron-right</v-icon>
@@ -212,15 +208,15 @@
             </div>
             <div class="an-card__blocks">
               <div class="an-block">
-                <div class="an-block__lbl">Cost to acquire</div>
-                <div class="an-block__row"><span>Set</span><b>{{ fmtPlat(row.acquire.setCost) }}p</b></div>
-                <div class="an-block__row"><span>Parts</span><b>{{ fmtPlat(row.acquire.partsCost) }}p</b></div>
+                <div class="an-block__lbl">{{ t('comparison.table.costToAcquire') }}</div>
+                <div class="an-block__row"><span>{{ t('comparison.table.set') }}</span><b>{{ fmtPlat(row.acquire.setCost) }}p</b></div>
+                <div class="an-block__row"><span>{{ t('comparison.table.parts') }}</span><b>{{ fmtPlat(row.acquire.partsCost) }}p</b></div>
               </div>
               <div class="an-block">
-                <div class="an-block__lbl">Resale value</div>
-                <div class="an-block__row"><span>Set</span><b>{{ fmtPlat(row.resale.setValue) }}p</b></div>
+                <div class="an-block__lbl">{{ t('comparison.table.resaleValue') }}</div>
+                <div class="an-block__row"><span>{{ t('comparison.table.set') }}</span><b>{{ fmtPlat(row.resale.setValue) }}p</b></div>
                 <div class="an-block__row">
-                  <span>Parts</span>
+                  <span>{{ t('comparison.table.parts') }}</span>
                   <b :class="deltaCls(row.resale.extra)">{{ fmtPlat(row.resale.partsValue) }}p ({{ signed(row.resale.extra) }})</b>
                 </div>
               </div>
@@ -234,8 +230,7 @@
       </div>
 
       <v-alert class="an-disclaimer bg-blue-darken-4" type="info" density="compact">
-        Prices are lowest sell orders (cost to buy) and highest buy orders (resale),
-        pulled from Warframe Market. Trading tax and set bonuses aren't included.
+        {{ t('comparison.disclaimer') }}
       </v-alert>
     </client-only>
   </div>
@@ -245,6 +240,7 @@
 import { computed, nextTick, onMounted, ref, watch } from 'vue'
 import { useDisplay } from 'vuetify'
 
+const { t } = useI18n()
 const config = useRuntimeConfig()
 const base = config.public.apiURL
 
@@ -269,13 +265,13 @@ const perPage = 20
 const placeholderImg =
   "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44'%3E%3Crect width='44' height='44' rx='8' fill='%232a2a3d'/%3E%3Cpath d='M22 11 L31 22 L22 33 L13 22 Z' fill='none' stroke='%234fb3bf' stroke-width='2' opacity='0.75'/%3E%3C/svg%3E"
 
-const sortOptions = [
-  { title: 'Best parts deal (%)', value: 'dealPct' },
-  { title: 'Biggest saving (plat)', value: 'dealPlat' },
-  { title: 'Resale edge (parts)', value: 'resale' },
-  { title: 'Volume', value: 'volume' },
-  { title: 'Name (A–Z)', value: 'name' },
-]
+const sortOptions = computed(() => [
+  { title: t('comparison.sort.dealPct'), value: 'dealPct' },
+  { title: t('comparison.sort.dealPlat'), value: 'dealPlat' },
+  { title: t('comparison.sort.resale'), value: 'resale' },
+  { title: t('comparison.sort.volume'), value: 'volume' },
+  { title: t('comparison.sort.name'), value: 'name' },
+])
 
 function assetUrl(thumb: string): string {
   return 'https://warframe.market/static/assets/' + (thumb || '')
@@ -317,15 +313,19 @@ function verdict(row: any): { label: string; amount: string; cls: string } {
   const save = row.acquire.save
   if (save > 0.5) {
     return {
-      label: 'Buy parts',
-      amount: `save ${fmtPlat(save)}p (${fmtPct(row.acquire.savePct)})`,
+      label: t('comparison.verdict.buyParts'),
+      amount: t('comparison.verdict.saveAmount', { plat: fmtPlat(save), pct: fmtPct(row.acquire.savePct) }),
       cls: 'pill--good',
     }
   }
   if (save < -0.5) {
-    return { label: 'Buy set', amount: `save ${fmtPlat(-save)}p`, cls: 'pill--alt' }
+    return {
+      label: t('comparison.verdict.buySet'),
+      amount: t('comparison.verdict.saveSet', { plat: fmtPlat(-save) }),
+      cls: 'pill--alt',
+    }
   }
-  return { label: 'Even', amount: '', cls: 'pill--even' }
+  return { label: t('comparison.verdict.even'), amount: '', cls: 'pill--even' }
 }
 
 const categoryOptions = computed<string[]>(() => {

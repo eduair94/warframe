@@ -1,7 +1,7 @@
 <template>
   <div class="mt-md-4">
     <div class="my-4">
-      <h1 class="visually-hidden">Warframe Market Analytics — live prime prices, ducat, relic &amp; riven values</h1>
+      <h1 class="visually-hidden">{{ t('home.h1') }}</h1>
       <client-only>
         <v-data-table
           mobile-breakpoint="sm"
@@ -25,14 +25,14 @@
             <v-checkbox-btn
               :indeterminate="someSelected && !allSelected"
               :model-value="allSelected"
-              aria-label="Select all rows"
+              :aria-label="t('home.a11y.selectAll')"
               @update:model-value="selectAll(!allSelected)"
             />
           </template>
           <template #item.data-table-select="{ internalItem, isSelected, toggleSelect }">
             <v-checkbox-btn
               :model-value="isSelected(internalItem)"
-              aria-label="Select row"
+              :aria-label="t('home.a11y.selectRow')"
               @update:model-value="toggleSelect(internalItem)"
             />
           </template>
@@ -62,37 +62,28 @@
                     v-model="min_volume"
                     type="number"
                     class="filter-input mr-2"
-                    label="Min Volume"
+                    :label="t('home.filters.minVolume')"
                     hide-details
                     density="compact"
                   ></v-text-field>
                   <v-select
                     v-model="selection"
-                    label="Select"
+                    :label="t('home.filters.select')"
                     class="filter-input mr-2"
-                    :items="[
-                      'All',
-                      'Warframe',
-                      'Arcane',
-                      'Weapon',
-                      'Sentinel',
-                      'Imprint',
-                      'Mod',
-                      'Relic',
-                    ]"
+                    :items="selectionOptions"
                     hide-details
                     density="compact"
                   ></v-select>
                   <v-combobox
                     v-model="search"
-                    label="Search"
+                    :label="t('home.filters.search')"
                     class="filter-input mr-2"
                     :items="allItems.map((el) => el.item_name)"
                     hide-details
                     density="compact"
                   ></v-combobox>
-                  <v-btn type="submit" color="primary" class="mr-2 my-1"> Search </v-btn>
-                  <v-btn color="primary" @click.prevent="reset" class="my-1" aria-label="Reset filters">
+                  <v-btn type="submit" color="primary" class="mr-2 my-1"> {{ t('home.filters.search') }} </v-btn>
+                  <v-btn color="primary" @click.prevent="reset" class="my-1" :aria-label="t('home.a11y.resetFilters')">
                     <v-icon>mdi-restore</v-icon>
                   </v-btn>
                 </form>
@@ -101,7 +92,7 @@
                 <v-expansion-panels class="mt-2 mb-2" flat>
                   <v-expansion-panel>
                     <v-expansion-panel-title>
-                      Advanced Filters (Tags & Logic)
+                      {{ t('home.advanced.title') }}
                     </v-expansion-panel-title>
                     <v-expansion-panel-text>
                       <v-row dense>
@@ -111,7 +102,7 @@
                             :items="availableTags"
                             item-title="text"
                             item-value="value"
-                            label="Include Tags"
+                            :label="t('home.advanced.includeTags')"
                             multiple
                             chips
                             closable-chips
@@ -121,8 +112,8 @@
                         </v-col>
                         <v-col cols="12" md="2">
                           <v-radio-group v-model="tagLogic" inline density="compact" hide-details class="mt-0">
-                            <v-radio label="AND" value="AND"></v-radio>
-                            <v-radio label="OR" value="OR"></v-radio>
+                            <v-radio :label="t('home.advanced.and')" value="AND"></v-radio>
+                            <v-radio :label="t('home.advanced.or')" value="OR"></v-radio>
                           </v-radio-group>
                         </v-col>
                         <v-col cols="12" md="4">
@@ -131,7 +122,7 @@
                             :items="availableTags"
                             item-title="text"
                             item-value="value"
-                            label="Exclude Tags (NOT)"
+                            :label="t('home.advanced.excludeTags')"
                             multiple
                             chips
                             closable-chips
@@ -146,7 +137,7 @@
                             @click="clearTags"
                             :disabled="includedTags.length === 0 && excludedTags.length === 0"
                           >
-                            Clear Tags
+                            {{ t('home.advanced.clearTags') }}
                           </v-btn>
                         </v-col>
                       </v-row>
@@ -156,11 +147,11 @@
 
                 <!-- Comparison Action -->
                 <div v-if="selectedItems.length > 0" class="d-flex align-center my-2 pa-2 bg-blue-darken-4 rounded">
-                  <span class="text-white mr-4">{{ selectedItems.length }} items selected</span>
+                  <span class="text-white mr-4">{{ t('home.compare.selected', { n: selectedItems.length }, selectedItems.length) }}</span>
                   <v-btn size="small" color="white" @click="compareDialog = true">
-                    Compare Selected
+                    {{ t('home.compare.compareBtn') }}
                   </v-btn>
-                  <v-btn icon size="small" variant="text" color="white" class="ml-2" aria-label="Clear selection" @click="selectedItems = []">
+                  <v-btn icon size="small" variant="text" color="white" class="ml-2" :aria-label="t('home.a11y.clearSelection')" @click="selectedItems = []">
                     <v-icon>mdi-close</v-icon>
                   </v-btn>
                 </div>
@@ -168,12 +159,12 @@
                 <div class="d-flex">
                   <v-checkbox
                     v-model="avgPrice"
-                    label="Average Prices (top 5 orders)"
+                    :label="t('home.options.avgPrices')"
                     class="mr-4"
                   ></v-checkbox>
                   <v-checkbox
                     v-model="multiSort"
-                    label="Multi-Sort (click several column headers)"
+                    :label="t('home.options.multiSort')"
                   ></v-checkbox>
                 </div>
               </div>
@@ -205,7 +196,7 @@
                   color="primary"
                   class="mt-1"
                   :to="'/set/' + item.url_name"
-                  >Set vs Parts</v-btn
+                  >{{ t('nav.items.setVsParts') }}</v-btn
                 >
                 <v-btn
                   v-if="item.tags.includes('relic')"
@@ -213,7 +204,7 @@
                   color="primary"
                   class="mt-1"
                   :to="'/relic/' + item.url_name"
-                  >Relic calculator</v-btn
+                  >{{ t('home.row.relicCalculator') }}</v-btn
                 >
               </div>
             </div>
@@ -261,7 +252,7 @@
               class="px-2"
               @click="openDrops(item)"
             >
-              Drops
+              {{ t('col_drops') }}
             </v-btn>
           </template>
         </v-data-table>
@@ -285,7 +276,7 @@
       <v-dialog v-model="transactionDialog" max-width="500">
         <v-card v-if="selectedTransactionItem">
           <v-card-title class="text-h6 bg-grey-lighten-2">
-            Latest 48h Trade Data
+            {{ t('home.txDialog.title') }}
           </v-card-title>
           <v-card-text class="pt-4">
             <h3 class="mb-2">{{ selectedTransactionItem.item_name }}</h3>
@@ -305,31 +296,31 @@
                  <template #default>
                    <tbody>
                      <tr>
-                       <td><strong>Date</strong></td>
+                       <td><strong>{{ t('home.txDialog.date') }}</strong></td>
                        <td>{{ new Date(selectedTransactionItem.market.last_completed.datetime).toLocaleString() }}</td>
                      </tr>
                      <tr>
-                       <td><strong>Volume</strong></td>
+                       <td><strong>{{ t('home.txDialog.volume') }}</strong></td>
                        <td>{{ selectedTransactionItem.market.last_completed.volume }}</td>
                      </tr>
                      <tr>
-                       <td><strong>Avg Price</strong></td>
+                       <td><strong>{{ t('home.txDialog.avgPrice') }}</strong></td>
                        <td>{{ fixPrice(selectedTransactionItem.market.last_completed.avg_price) }}</td>
                      </tr>
                      <tr>
-                       <td><strong>Min Price</strong></td>
+                       <td><strong>{{ t('home.txDialog.minPrice') }}</strong></td>
                        <td>{{ selectedTransactionItem.market.last_completed.min_price }}</td>
                      </tr>
                      <tr>
-                       <td><strong>Max Price</strong></td>
+                       <td><strong>{{ t('home.txDialog.maxPrice') }}</strong></td>
                        <td>{{ selectedTransactionItem.market.last_completed.max_price }}</td>
                      </tr>
                      <tr>
-                       <td><strong>Open Price</strong></td>
+                       <td><strong>{{ t('home.txDialog.openPrice') }}</strong></td>
                        <td>{{ selectedTransactionItem.market.last_completed.open_price }}</td>
                      </tr>
                      <tr>
-                       <td><strong>Closed Price</strong></td>
+                       <td><strong>{{ t('home.txDialog.closedPrice') }}</strong></td>
                        <td>{{ selectedTransactionItem.market.last_completed.closed_price }}</td>
                      </tr>
                    </tbody>
@@ -339,7 +330,7 @@
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn color="primary" variant="text" @click="transactionDialog = false">Close</v-btn>
+            <v-btn color="primary" variant="text" @click="transactionDialog = false">{{ t('cerrar') }}</v-btn>
           </v-card-actions>
         </v-card>
       </v-dialog>
@@ -353,10 +344,10 @@
               class="my-3 mb-0 md-md-3 bg-grey-darken-3 pa-3 px-lg-5 text-subtitle-1 d-flex align-center flex-wrap donation_container"
             >
               <div class="d-flex mt-2 align-center">
-                <div class="text-white mr-3">Help us donating!</div>
+                <div class="text-white mr-3">{{ t('relic_help_donate') }}</div>
                 <a
                   target="_blank"
-                  aria-label="Donar con Paypal"
+                  :aria-label="t('home.donate.paypalAria')"
                   class="text-white d-flex mr-4 align-center justify-content-left donation_logo"
                   href="https://ko-fi.com/cambio_uruguay"
                 >
@@ -366,7 +357,7 @@
                   </picture>
                 </a>
                 <a
-                  aria-label="Donar con Mercado Pago"
+                  :aria-label="t('home.donate.mercadopagoAria')"
                   class="text-white d-flex align-center justify-content-left donation_logo"
                   target="_blank"
                   href="https://mpago.la/19j46vX"
@@ -392,8 +383,8 @@
     >
       <div class="d-flex align-center justify-space-between flex-wrap">
         <div>
-          <h2 class="text-h6 font-weight-bold">We need your feedback!</h2>
-          <div>Help us improve by sharing your thoughts and reviews on our Reddit thread. That will help us a lot!</div>
+          <h2 class="text-h6 font-weight-bold">{{ t('home.feedback.title') }}</h2>
+          <div>{{ t('home.feedback.body') }}</div>
         </div>
         <v-btn
           href="https://www.reddit.com/r/Warframe/comments/1nnvsep/my_warframe_market_analytics_app_looking_for/"
@@ -402,7 +393,7 @@
           class="mt-2 mt-sm-0 ml-sm-4"
         >
           <v-icon start color="#ff4500">mdi-reddit</v-icon>
-          Join Discussion
+          {{ t('home.feedback.join') }}
         </v-btn>
       </div>
     </v-alert>
@@ -416,7 +407,7 @@
         </div>
         <p class="mb-3">{{ t('github_description') }}</p>
         <div class="d-flex flex-wrap justify-center gap-2">
-          <GitHubButton text="View Source Code" />
+          <GitHubButton :text="t('view_source_code')" />
         </div>
       </v-card-text>
     </v-card>
@@ -496,14 +487,21 @@ const availableTags = computed(() => {
     }))
 })
 
+// Category filter options. The `value` stays the English key `filterSelect`
+// switches on; only the displayed `title` is localized.
+const selectionKeys = ['All', 'Warframe', 'Arcane', 'Weapon', 'Sentinel', 'Imprint', 'Mod', 'Relic']
+const selectionOptions = computed(() =>
+  selectionKeys.map((k) => ({ title: t('home.filters.categories.' + k), value: k })),
+)
+
 const headers = computed(() => {
   const toReturn: any[] = [
-    { title: 'Name', key: 'item_name', width: 'auto' },
-    { title: 'Buy (live listing)', key: 'market.buy', width: 'auto' },
-    { title: 'Sell (live listing)', key: 'market.sell', width: 'auto' },
-    { title: 'Avg Sold (48h)', key: 'market.avg_price', width: 'auto' },
+    { title: t('col_name'), key: 'item_name', width: 'auto' },
+    { title: t('home.headers.buyLive'), key: 'market.buy', width: 'auto' },
+    { title: t('home.headers.sellLive'), key: 'market.sell', width: 'auto' },
+    { title: t('home.headers.avgSold'), key: 'market.avg_price', width: 'auto' },
     {
-      title: 'Latest 48h Trades',
+      title: t('home.headers.latestTrades'),
       key: 'market.last_completed',
       width: 'auto',
       sort: (a: any, b: any) => {
@@ -512,15 +510,15 @@ const headers = computed(() => {
         return priceA - priceB
       },
     },
-    { title: 'Diff', key: 'market.diff', width: 'auto' },
-    { title: 'Volume (Last 48hrs)', key: 'market.volume', width: 'auto' },
-    { title: 'Tags', key: 'tags' },
-    { title: 'Updated', key: 'priceUpdate' },
-    { title: 'Drops', key: 'drops' },
+    { title: t('col_diff'), key: 'market.diff', width: 'auto' },
+    { title: t('col_volume'), key: 'market.volume', width: 'auto' },
+    { title: t('col_tags'), key: 'tags' },
+    { title: t('home.headers.updated'), key: 'priceUpdate' },
+    { title: t('col_drops'), key: 'drops' },
   ]
   if (avgPrice.value) {
-    toReturn[1] = { title: 'Buy (live avg)', key: 'market.buyAvg', width: 'auto' }
-    toReturn[2] = { title: 'Sell (live avg)', key: 'market.sellAvg', width: 'auto' }
+    toReturn[1] = { title: t('home.headers.buyAvg'), key: 'market.buyAvg', width: 'auto' }
+    toReturn[2] = { title: t('home.headers.sellAvg'), key: 'market.sellAvg', width: 'auto' }
   }
   return toReturn
 })

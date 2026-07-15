@@ -1,19 +1,15 @@
 <template>
   <div class="my-4">
-    <h1 class="text-h4 mb-2">My Portfolio</h1>
-    <p class="text-body-2 mb-4">
-      Track items you own or want to watch, and get a browser notification when their sell
-      price crosses a threshold you set — or when an item hits its <strong>all-time low</strong>
-      in our long price history (something warframe.market's 90-day chart can't tell you).
-      This is stored only in this browser (no account needed) - clearing your browser data
-      clears your list.
-    </p>
+    <h1 class="text-h4 mb-2">{{ t('portfolio.title') }}</h1>
+    <i18n-t keypath="portfolio.intro.text" tag="p" class="text-body-2 mb-4">
+      <template #atl><strong>{{ t('portfolio.intro.atl') }}</strong></template>
+    </i18n-t>
 
     <v-card class="pa-4 mb-4" variant="outlined">
       <div class="d-flex flex-wrap align-center gap-10">
         <v-combobox
           v-model="itemToAdd"
-          label="Add an item to your portfolio"
+          :label="t('portfolio.addLabel')"
           class="add-input"
           :items="allItems.map((el) => el.item_name)"
           hide-details
@@ -21,7 +17,7 @@
           variant="outlined"
         ></v-combobox>
         <v-btn color="primary" :disabled="!itemToAdd" @click="addItem">
-          <v-icon size="small" class="mr-1">mdi-plus</v-icon> Add
+          <v-icon size="small" class="mr-1">mdi-plus</v-icon> {{ t('portfolio.add') }}
         </v-btn>
         <v-btn
           v-if="notificationPermission !== 'granted'"
@@ -30,34 +26,34 @@
           @click="enableAlerts"
         >
           <v-icon size="small" class="mr-1">mdi-bell-outline</v-icon>
-          Enable price alerts
+          {{ t('portfolio.enableAlerts') }}
         </v-btn>
         <span v-else class="text-caption d-flex align-center">
           <v-icon size="small" color="green" class="mr-1">mdi-bell-check</v-icon>
-          Alerts enabled - checked whenever this page is open
+          {{ t('portfolio.alertsEnabled') }}
         </span>
       </div>
     </v-card>
 
     <v-alert v-if="notificationPermission === 'unsupported'" type="info" density="compact" variant="outlined">
-      Your browser doesn't support notifications. Thresholds are still saved and shown here.
+      {{ t('portfolio.unsupported') }}
     </v-alert>
 
     <div v-if="!watchlist.length" class="text-body-2 text-grey">
-      Your portfolio is empty. Search for an item above to start tracking it.
+      {{ t('portfolio.empty') }}
     </div>
 
     <v-table v-else class="portfolio-table">
       <template #default>
         <thead>
           <tr>
-            <th>Item</th>
-            <th>Owned Qty</th>
-            <th>Sell Price</th>
-            <th>Value</th>
-            <th>Alert Below</th>
-            <th>Alert Above</th>
-            <th>At All-Time Low</th>
+            <th>{{ t('portfolio.table.item') }}</th>
+            <th>{{ t('portfolio.table.ownedQty') }}</th>
+            <th>{{ t('portfolio.table.sellPrice') }}</th>
+            <th>{{ t('portfolio.table.value') }}</th>
+            <th>{{ t('portfolio.table.alertBelow') }}</th>
+            <th>{{ t('portfolio.table.alertAbove') }}</th>
+            <th>{{ t('portfolio.table.atAtl') }}</th>
             <th></th>
           </tr>
         </thead>
@@ -84,7 +80,7 @@
                 type="number"
                 density="compact"
                 hide-details
-                placeholder="none"
+                :placeholder="t('portfolio.none')"
                 style="width: 90px"
                 @change="(e: Event) => { const val = (e.target as HTMLInputElement).value; setField(entry.url_name, 'alertBelow', val === '' ? null : Number(val)); }"
               ></v-text-field>
@@ -95,7 +91,7 @@
                 type="number"
                 density="compact"
                 hide-details
-                placeholder="none"
+                :placeholder="t('portfolio.none')"
                 style="width: 90px"
                 @change="(e: Event) => { const val = (e.target as HTMLInputElement).value; setField(entry.url_name, 'alertAbove', val === '' ? null : Number(val)); }"
               ></v-text-field>
@@ -111,7 +107,7 @@
                   @update:model-value="(v: boolean | null) => setField(entry.url_name, 'alertAtl', !!v)"
                 ></v-checkbox>
                 <span v-if="entry.pctFromAtl != null" class="text-caption" :class="entry.pctFromAtl <= 3 ? 'text-green' : 'text-grey'">
-                  {{ entry.pctFromAtl <= 3 ? 'at low!' : '+' + entry.pctFromAtl.toFixed(0) + '%' }}
+                  {{ entry.pctFromAtl <= 3 ? t('portfolio.atLow') : '+' + entry.pctFromAtl.toFixed(0) + '%' }}
                 </span>
                 <span v-else class="text-caption text-grey">—</span>
               </div>
@@ -125,7 +121,7 @@
         </tbody>
         <tfoot>
           <tr>
-            <td colspan="3" class="text-right font-weight-bold">Total portfolio value:</td>
+            <td colspan="3" class="text-right font-weight-bold">{{ t('portfolio.totalValue') }}</td>
             <td class="font-weight-bold">{{ totalValue.toFixed(0) }}p</td>
             <td colspan="4"></td>
           </tr>
@@ -149,6 +145,7 @@ import {
 import { subscribeLive } from '~/composables/useLiveFeed'
 import type { LiveUpdate } from '~/utils/liveTypes'
 
+const { t } = useI18n()
 const config = useRuntimeConfig()
 const base = config.public.apiURL
 

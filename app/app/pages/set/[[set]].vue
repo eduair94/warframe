@@ -14,7 +14,7 @@
           border: 0;
         "
       >
-        {{ setName ? `${setName} — Price & Set vs Parts` : 'Warframe Set Prices' }}
+        {{ setName ? t('setDetail.h1WithName', { name: setName }) : t('setDetail.h1Fallback') }}
       </h1>
       <ClientOnly>
         <v-data-table
@@ -54,13 +54,13 @@
                 >
                   <v-autocomplete
                     v-model="search"
-                    label="Search"
+                    :label="t('relic_search')"
                     width="200px"
                     :items="allSets"
                     item-title="item_name"
                     item-value="url_name"
                   ></v-autocomplete>
-                  <v-btn type="submit" color="primary"> Search </v-btn>
+                  <v-btn type="submit" color="primary"> {{ t('relic_search') }} </v-btn>
                   <v-btn color="primary" @click.prevent="reset">
                     <v-icon>mdi-restore</v-icon>
                   </v-btn>
@@ -68,8 +68,9 @@
               </div>
               <div>
                 <v-alert density="compact">
-                  Purchasing by parts can save you up to:
-                  <b>{{ save }}</b> platinum
+                  <i18n-t keypath="setDetail.saveAlert" tag="span">
+                    <template #save><b>{{ save }}</b></template>
+                  </i18n-t>
                 </v-alert>
               </div>
               <v-data-table
@@ -105,7 +106,7 @@
                   </v-chip-group>
                 </template>
                 <template #item.drops="{ item }">
-                  <a target="_blank" :href="getLink(item.item_name)"> Drops </a>
+                  <a target="_blank" :href="getLink(item.item_name)"> {{ t('relic_drops') }} </a>
                 </template>
               </v-data-table>
             </div>
@@ -135,7 +136,7 @@
             </v-chip-group>
           </template>
           <template #item.drops="{ item }">
-            <a target="_blank" :href="getLink(item.item_name)"> Drops </a>
+            <a target="_blank" :href="getLink(item.item_name)"> {{ t('relic_drops') }} </a>
           </template>
         </v-data-table>
       </ClientOnly>
@@ -148,10 +149,10 @@
               class="my-3 mb-0 md-md-3 bg-grey-darken-3 pa-3 px-lg-5 text-subtitle-1 d-flex align-center flex-wrap donation_container"
             >
               <div class="d-flex mt-2 align-center">
-                <div class="text-white mr-3">Help us donating!</div>
+                <div class="text-white mr-3">{{ t('setDetail.helpDonating') }}</div>
                 <a
                   target="_blank"
-                  aria-label="Donar con Paypal"
+                  :aria-label="t('setDetail.donatePaypal')"
                   class="text-white d-flex mr-4 align-center justify-content-left donation_logo"
                   href="https://ko-fi.com/cambio_uruguay"
                 >
@@ -162,7 +163,7 @@
                   </v-img>
                 </a>
                 <a
-                  aria-label="Donar con Mercado Pago"
+                  :aria-label="t('setDetail.donateMercadoPago')"
                   class="text-white d-flex align-center justify-content-left donation_logo"
                   target="_blank"
                   href="https://mpago.la/19j46vX"
@@ -230,15 +231,15 @@ useSeoPage({
       : PAGE_SEO['/set'].description,
 })
 
-const headers = [
-  { title: 'Name', key: 'item_name', width: 'auto' },
-  { title: 'Buy', key: 'market.buy', width: 'auto' },
-  { title: 'Sell', key: 'market.sell', width: 'auto' },
-  { title: 'Diff', key: 'market.diff', width: 'auto' },
-  { title: 'Volume (Last 48hrs)', key: 'market.volume', width: 'auto' },
-  { title: 'Tags', key: 'tags' },
-  { title: 'Drops', key: 'drops' },
-] as const
+const headers = computed(() => [
+  { title: t('col_name'), key: 'item_name', width: 'auto' },
+  { title: t('col_buy'), key: 'market.buy', width: 'auto' },
+  { title: t('col_sell'), key: 'market.sell', width: 'auto' },
+  { title: t('col_diff'), key: 'market.diff', width: 'auto' },
+  { title: t('col_volume'), key: 'market.volume', width: 'auto' },
+  { title: t('col_tags'), key: 'tags' },
+  { title: t('col_drops'), key: 'drops' },
+])
 
 const save = ref(0)
 const search = ref('')

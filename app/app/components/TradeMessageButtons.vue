@@ -1,19 +1,18 @@
 <template>
   <div class="trade-message-buttons">
     <p class="text-caption text-grey mb-1">
-      Warframe has no public API for its in-game chat, so nothing can post there automatically -
-      copy a ready-to-paste trade message instead.
+      {{ $t('components.trade.disclaimer') }}
     </p>
     <div class="d-flex flex-wrap gap-10">
       <v-btn size="small" variant="outlined" color="green" :disabled="!sellPrice" @click="copy('sell')">
         <v-icon start size="small">mdi-content-copy</v-icon>
-        Copy WTS message
+        {{ $t('components.trade.copyWts') }}
       </v-btn>
       <v-btn size="small" variant="outlined" color="blue" :disabled="!buyPrice" @click="copy('buy')">
         <v-icon start size="small">mdi-content-copy</v-icon>
-        Copy WTB message
+        {{ $t('components.trade.copyWtb') }}
       </v-btn>
-      <span v-if="copied" class="text-caption text-green align-self-center">Copied!</span>
+      <span v-if="copied" class="text-caption text-green align-self-center">{{ $t('components.trade.copied') }}</span>
     </div>
   </div>
 </template>

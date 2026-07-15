@@ -2,28 +2,23 @@
   <div class="sc">
     <header class="sc-hero">
       <div class="sc-hero__text">
-        <div class="an-eyebrow">Warframe · Origin System</div>
-        <h1 class="sc-title">
-          Where the <span class="sc-accent">plat</span> actually is.
-        </h1>
-        <p class="sc-lede">
-          Every planet on the Star Chart, lit by what its best mission is worth
-          right now — drop chances from the Void, priced against today's Warframe
-          Market. The brighter a world burns, the more platinum a single reward returns.
-          Pick one to see the missions worth your time.
-        </p>
+        <div class="an-eyebrow">{{ t('starChart.eyebrow') }}</div>
+        <i18n-t keypath="starChart.hero.title" tag="h1" class="sc-title">
+          <template #plat><span class="sc-accent">{{ t('starChart.hero.titlePlat') }}</span></template>
+        </i18n-t>
+        <p class="sc-lede">{{ t('starChart.hero.lede') }}</p>
         <NuxtLink :to="localePath('/star-chart-3d')" class="sc-3d-btn">
           <v-icon size="18">mdi-rotate-orbit</v-icon>
-          Open the 3D map
+          {{ t('starChart.hero.button3d') }}
           <span class="sc-3d-btn__arrow">→</span>
         </NuxtLink>
       </div>
       <div v-if="richest" class="sc-hero__deal">
-        <div class="sc-hero__deal-label">Richest world</div>
+        <div class="sc-hero__deal-label">{{ t('starChart.hero.dealLabel') }}</div>
         <button class="sc-hero__deal-name" @click="selectPlanet(richest.planet)">
           {{ richest.planet }} →
         </button>
-        <div class="sc-hero__deal-plat">{{ fmtPlat(richest.value) }}<span>p/drop</span></div>
+        <div class="sc-hero__deal-plat">{{ fmtPlat(richest.value) }}<span>{{ t('starChart.units.perDrop') }}</span></div>
         <div class="sc-hero__deal-sub" v-if="richest.bestNode">
           {{ richest.bestNode.location }} · {{ richest.bestNode.gameMode }}
         </div>
@@ -31,31 +26,31 @@
     </header>
 
     <div class="sc-stats">
-      <div class="sc-stat"><div class="sc-stat__num">{{ stats.planets }}</div><div class="sc-stat__lbl">worlds charted</div></div>
-      <div class="sc-stat"><div class="sc-stat__num is-gold">{{ fmtPlat(stats.topValue) }}</div><div class="sc-stat__lbl">best drop (p)</div></div>
-      <div class="sc-stat"><div class="sc-stat__num is-teal">{{ stats.nodes }}</div><div class="sc-stat__lbl">missions priced</div></div>
+      <div class="sc-stat"><div class="sc-stat__num">{{ stats.planets }}</div><div class="sc-stat__lbl">{{ t('starChart.stats.worldsCharted') }}</div></div>
+      <div class="sc-stat"><div class="sc-stat__num is-gold">{{ fmtPlat(stats.topValue) }}</div><div class="sc-stat__lbl">{{ t('starChart.stats.bestDrop') }}</div></div>
+      <div class="sc-stat"><div class="sc-stat__num is-teal">{{ stats.nodes }}</div><div class="sc-stat__lbl">{{ t('starChart.stats.missionsPriced') }}</div></div>
       <div class="sc-stat">
         <div class="sc-stat__num">{{ stats.topNode ? stats.topNode.location : '—' }}</div>
-        <div class="sc-stat__lbl">top farm node</div>
+        <div class="sc-stat__lbl">{{ t('starChart.stats.topFarmNode') }}</div>
       </div>
     </div>
 
     <!-- Loading -->
     <div v-if="loading" class="sc-loading">
       <div class="sc-loading__orbit"></div>
-      <p>Charting the Origin System…</p>
+      <p>{{ t('starChart.loading') }}</p>
     </div>
 
     <!-- First-run empty -->
     <div v-else-if="!planets.length" class="sc-empty">
       <v-icon color="#c8a85c" size="40">mdi-orbit</v-icon>
-      <p>Star chart data isn't loaded yet.</p>
-      <span>Run the drop sync to populate the map, then reload.</span>
+      <p>{{ t('starChart.empty.title') }}</p>
+      <span>{{ t('starChart.empty.sub') }}</span>
     </div>
 
     <div v-else class="sc-main">
       <!-- ===== The chart ===== -->
-      <section class="sc-chart" aria-label="Interactive star chart">
+      <section class="sc-chart" :aria-label="t('starChart.a11y.chart')">
         <svg
           :viewBox="viewBox"
           class="sc-svg"
@@ -105,7 +100,7 @@
             :class="{ 'is-selected': p.planet === selected }"
             role="button"
             tabindex="0"
-            :aria-label="`${p.planet}: best run ${fmtPlat(p.value)} platinum. ${p.nodeCount} missions.`"
+            :aria-label="t('starChart.a11y.planet', { planet: p.planet, value: fmtPlat(p.value), count: p.nodeCount })"
             :aria-pressed="p.planet === selected ? 'true' : 'false'"
             @click="selectPlanet(p.planet)"
             @focus="onPlanetFocus(p.planet)"
@@ -120,10 +115,10 @@
         </svg>
 
         <div class="sc-legend">
-          <span class="sc-legend__lbl">sparse</span>
+          <span class="sc-legend__lbl">{{ t('starChart.legend.sparse') }}</span>
           <span class="sc-legend__bar"></span>
-          <span class="sc-legend__lbl">rich (plat / run)</span>
-          <span class="sc-legend__hint">glow = best mission value · lines = Solar Rail junctions</span>
+          <span class="sc-legend__lbl">{{ t('starChart.legend.rich') }}</span>
+          <span class="sc-legend__hint">{{ t('starChart.legend.hint') }}</span>
         </div>
       </section>
 
@@ -131,16 +126,16 @@
       <aside ref="panel" class="sc-panel" aria-live="polite">
         <div v-if="!selectedData" class="sc-panel__idle">
           <v-icon color="#c8a85c" size="30">mdi-cursor-default-click-outline</v-icon>
-          <p>Select a world to see what's worth farming.</p>
+          <p>{{ t('starChart.panel.idle') }}</p>
         </div>
         <div v-else class="sc-panel__body">
           <div class="sc-panel__head">
             <div>
-              <div class="an-eyebrow">{{ selectedData.nodeCount }} missions</div>
+              <div class="an-eyebrow">{{ t('starChart.panel.missions', { count: selectedData.nodeCount }, selectedData.nodeCount) }}</div>
               <h2 class="sc-panel__title">{{ selectedData.planet }}</h2>
               <div class="sc-panel__wiki">
                 <a :href="worldWikiUrl(selectedData.planet)" target="_blank" rel="noopener noreferrer">
-                  wiki <v-icon size="11">mdi-open-in-new</v-icon>
+                  {{ t('starChart.panel.wiki') }} <v-icon size="11">mdi-open-in-new</v-icon>
                 </a>
                 <a
                   v-if="selectedWikiMap"
@@ -150,12 +145,12 @@
                   class="sc-panel__wiki-map"
                 >
                   <v-icon size="11">mdi-map-search-outline</v-icon>
-                  {{ selectedWikiMap.title }} interactive map
+                  {{ t('starChart.panel.interactiveMap', { title: selectedWikiMap.title }) }}
                 </a>
               </div>
             </div>
             <div class="sc-panel__best">
-              <span>{{ fmtPlat(selectedData.value) }}</span><small>p/drop best</small>
+              <span>{{ fmtPlat(selectedData.value) }}</span><small>{{ t('starChart.units.perDropBest') }}</small>
             </div>
           </div>
 
@@ -164,7 +159,7 @@
               <button class="sc-node__head" @click="toggleNode(node.location)" :aria-expanded="openNode === node.location ? 'true' : 'false'">
                 <div class="sc-node__id">
                   <span class="sc-node__name">{{ node.location }}</span>
-                  <span class="sc-node__mode">{{ node.gameMode }}<template v-if="node.isEvent"> · event</template></span>
+                  <span class="sc-node__mode">{{ node.gameMode }}<template v-if="node.isEvent"> · {{ t('starChart.node.event') }}</template></span>
                 </div>
                 <div class="sc-node__val" :class="valueClass(node.value)">
                   {{ fmtPlat(node.value) }}<small>p</small>
@@ -176,7 +171,7 @@
                 <div v-for="rot in node.rotations" :key="rot.rotation || 'flat'" class="sc-rot">
                   <div class="sc-rot__head" v-if="rot.rotation">
                     <span class="sc-rot__badge" :data-rot="rot.rotation">{{ rot.rotation }}</span>
-                    <span class="sc-rot__val">{{ fmtPlat(rot.value) }} p/drop</span>
+                    <span class="sc-rot__val">{{ fmtPlat(rot.value) }} {{ t('starChart.units.perDrop') }}</span>
                   </div>
                   <div v-for="(rw, i) in sortedRewards(rot.rewards)" :key="i" class="sc-reward" :class="{ 'is-dud': !rw.tradeable, 'is-focus': focusItem && rw.itemName === focusItem }">
                     <img
@@ -192,7 +187,7 @@
                       <template v-if="rw.tradeable">
                         <span class="sc-reward__price">{{ fmtPlat(rw.price) }}p</span>
                         <small v-if="rewardMeta(rw).vol !== null" class="sc-reward__vol" :class="{ 'is-thin': rewardMeta(rw).thin }" :title="rewardMeta(rw).note">
-                          vol {{ rewardMeta(rw).vol }}<template v-if="rewardMeta(rw).thin"> ⚠</template>
+                          {{ t('starChart.units.vol') }} {{ rewardMeta(rw).vol }}<template v-if="rewardMeta(rw).thin"> ⚠</template>
                         </small>
                       </template>
                       <template v-else>—</template>
@@ -209,8 +204,8 @@
     <!-- Find where to farm an item -->
     <section v-if="!loading && planets.length" class="sc-find">
       <div class="sc-find__text">
-        <div class="an-eyebrow">Reverse lookup</div>
-        <h3 class="sc-find__title">Where do I farm…?</h3>
+        <div class="an-eyebrow">{{ t('starChart.find.eyebrow') }}</div>
+        <h3 class="sc-find__title">{{ t('starChart.find.title') }}</h3>
       </div>
       <v-autocomplete
         v-model="findItem"
@@ -219,13 +214,13 @@
         hide-details
         clearable
         prepend-inner-icon="mdi-magnify"
-        label="Search any prime part, relic or item"
+        :label="t('starChart.find.searchLabel')"
         class="sc-find__input"
         @update:model-value="onFind"
       ></v-autocomplete>
       <button class="sc-guide-btn" @click="guideOpen = true">
         <v-icon size="16">mdi-shield-star-outline</v-icon>
-        Warframe farming guide
+        {{ t('starChart.find.guideButton') }}
       </button>
     </section>
 
@@ -237,12 +232,7 @@
     />
 
     <v-alert v-if="!loading && planets.length" class="sc-disclaimer an-disclaimer" type="info" density="compact">
-      Expected p/drop = Σ (drop chance × realizable value) across a mission's reward
-      table. Realizable value uses each drop's 48h average sell price, weighted by
-      its 48h trade volume (liquidity) — so overpriced drops nobody actually buys
-      don't inflate a mission's worth. Drop chances come from community drop data;
-      prices and volume are from Warframe Market. Untradeable rewards (Forma,
-      resources, credits) count as zero.
+      {{ t('starChart.disclaimer') }}
     </v-alert>
   </div>
 </template>
@@ -315,6 +305,7 @@ interface ScReward {
   tradeable?: boolean
 }
 
+const { t } = useI18n()
 const items = useItemsStore()
 const { itemThumb } = useItemThumb()
 const { mobile } = useDisplay()

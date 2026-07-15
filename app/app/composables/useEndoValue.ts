@@ -388,7 +388,7 @@ export function modAsEndoSource(row: EndoFlipRow): EndoSourceRow {
     endoPerPlat: endoPerPlat(endo, plat),
     volume: ev.maxedVolume,
     liquidity: ev.liquidity,
-    sub: `${row.flip.rarity} · dissolve maxed (48h avg)`,
+    sub: `${row.flip.rarity} · ${tLabel('common.dissolveMaxed', 'dissolve maxed (48h avg)')}`,
   }
 }
 

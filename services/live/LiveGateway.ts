@@ -43,14 +43,22 @@ export class LiveGateway {
   }
 
   onSnapshot(s: FeedSnapshot): LiveUpdate | null {
-    this.d.store.setRank(s.url_name, this.d.fairValue.get(s.url_name)?.maxRank);
+    this.applyVariant(s.url_name);
     this.d.store.applySnapshot(s);
     return this.emitFor(s.url_name);
   }
   onDelta(delta: FeedDelta): LiveUpdate | null {
-    this.d.store.setRank(delta.url_name, this.d.fairValue.get(delta.url_name)?.maxRank);
+    this.applyVariant(delta.url_name);
     this.d.store.applyDelta(delta);
     return this.emitFor(delta.url_name);
+  }
+
+  /** Push the item's rank + Ayatan star capacity from the fair-value metadata into the
+   *  store so the book prices the right tier (max rank / filled sculpture). */
+  private applyVariant(url: string): void {
+    const fv = this.d.fairValue.get(url);
+    this.d.store.setRank(url, fv?.maxRank);
+    this.d.store.setStars(url, fv?.maxAmberStars, fv?.maxCyanStars);
   }
 
   buildUpdate(url: string): LiveUpdate | null {

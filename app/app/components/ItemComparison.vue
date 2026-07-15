@@ -2,7 +2,7 @@
   <v-dialog v-model="dialog" max-width="90vw" :fullscreen="mobile" @click:outside="close">
     <v-card>
       <v-card-title class="d-flex justify-space-between align-center">
-        Item Comparison
+        {{ t('components.itemCompare.title') }}
         <v-btn icon @click="close">
           <v-icon>mdi-close</v-icon>
         </v-btn>
@@ -33,7 +33,7 @@
       </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn color="primary" variant="text" @click="close">Close</v-btn>
+        <v-btn color="primary" variant="text" @click="close">{{ t('components.itemCompare.close') }}</v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>
@@ -43,6 +43,7 @@
 import { useDisplay } from 'vuetify';
 import LastTransactionCell from './LastTransactionCell.vue';
 
+const { t } = useI18n();
 const { mobile } = useDisplay();
 
 const dialog = defineModel<boolean>({ required: true });

@@ -5,26 +5,22 @@
         <!-- Hero -->
         <header class="an-hero">
           <div class="an-hero__text">
-            <div class="an-eyebrow">Warframe Market · Relic Farming</div>
-            <h1 class="an-title">
-              <span class="accent-b">Farm</span> the best
-              <span class="accent-a">plat / hour</span>
-            </h1>
+            <div class="an-eyebrow">{{ t('relicFarming.eyebrow') }}</div>
+            <i18n-t keypath="relicFarming.hero.title" tag="h1" class="an-title">
+              <template #farm><span class="accent-b">{{ t('relicFarming.hero.titleFarm') }}</span></template>
+              <template #platHour><span class="accent-a">{{ t('relicFarming.hero.titlePlatHour') }}</span></template>
+            </i18n-t>
             <p class="an-lede">
-              EV tells you the average payout of cracking a relic — but not how
-              fast you earn. This ranks relics by platinum per hour: expected
-              {{ refinement.toLowerCase() }} payout divided by how long a run
-              takes. Set your minutes-per-run and find the best relic to grind
-              right now.
+              {{ t('relicFarming.hero.lede', { refinement: refinementLabel.toLowerCase() }) }}
             </p>
           </div>
           <div v-if="topDeal" class="an-hero__deal">
-            <div class="an-hero__deal-label">Best plat / hour</div>
+            <div class="an-hero__deal-label">{{ t('relicFarming.hero.dealLabel') }}</div>
             <div class="an-hero__deal-plat">{{ fmtPlat(platPerHour(topDeal)) }}<span>p/hr</span></div>
             <nuxt-link class="an-hero__deal-name" :to="'/relic/' + topDeal.url_name">
               {{ topDeal.relicName }} →
             </nuxt-link>
-            <div class="an-hero__deal-sub">avg {{ refinement.toLowerCase() }} payout</div>
+            <div class="an-hero__deal-sub">{{ t('relicFarming.hero.dealSub', { refinement: refinementLabel.toLowerCase() }) }}</div>
           </div>
         </header>
 
@@ -32,19 +28,19 @@
         <div class="an-stats">
           <div class="an-stat">
             <div class="an-stat__num">{{ stats.total }}</div>
-            <div class="an-stat__lbl">relics</div>
+            <div class="an-stat__lbl">{{ t('relicFarming.stats.relics') }}</div>
           </div>
           <div class="an-stat">
             <div class="an-stat__num is-good">{{ fmtPlat(stats.bestPph) }}p</div>
-            <div class="an-stat__lbl">best plat / hr</div>
+            <div class="an-stat__lbl">{{ t('relicFarming.stats.bestPph') }}</div>
           </div>
           <div class="an-stat">
             <div class="an-stat__num is-alt">{{ fmtPlat(stats.avgPph) }}p</div>
-            <div class="an-stat__lbl">avg plat / hr</div>
+            <div class="an-stat__lbl">{{ t('relicFarming.stats.avgPph') }}</div>
           </div>
           <div class="an-stat">
             <div class="an-stat__num is-gold">{{ fmtPlat(stats.biggest) }}p</div>
-            <div class="an-stat__lbl">top payout</div>
+            <div class="an-stat__lbl">{{ t('relicFarming.stats.topPayout') }}</div>
           </div>
         </div>
 
@@ -57,19 +53,21 @@
               hide-details
               clearable
               prepend-inner-icon="mdi-magnify"
-              label="Search a relic"
+              :label="t('relicFarming.filters.search')"
               class="an-search"
             ></v-text-field>
             <div class="an-refine">
-              <div class="an-refine__lbl">Refinement</div>
+              <div class="an-refine__lbl">{{ t('relicFarming.filters.refinement') }}</div>
               <v-btn-toggle v-model="refinement" mandatory density="compact">
-                <v-btn value="Intact" size="small">Intact</v-btn>
-                <v-btn value="Radiant" size="small">Radiant</v-btn>
+                <v-btn value="Intact" size="small">{{ t('relicFarming.filters.intact') }}</v-btn>
+                <v-btn value="Radiant" size="small">{{ t('relicFarming.filters.radiant') }}</v-btn>
               </v-btn-toggle>
             </div>
             <div class="an-mins">
               <div class="an-mins__lbl">
-                Minutes per relic run · <b>{{ missionMinutes }}m</b>
+                <i18n-t keypath="relicFarming.filters.minutes" tag="span">
+                  <template #mins><b>{{ missionMinutes }}m</b></template>
+                </i18n-t>
               </div>
               <v-slider
                 v-model="missionMinutes"
@@ -90,7 +88,7 @@
               item-value="value"
               density="compact"
               hide-details
-              label="Sort by"
+              :label="t('relicFarming.filters.sortBy')"
               class="an-field"
               style="flex: 0 1 220px"
             ></v-select>
@@ -98,13 +96,13 @@
 
           <v-chip-group v-model="tier" mandatory column class="an-cats">
             <v-chip
-              v-for="t in tierOptions"
-              :key="t"
-              :value="t"
+              v-for="tv in tierOptions"
+              :key="tv"
+              :value="tv"
               size="small"
               active-class="an-chip--on"
             >
-              {{ t }}
+              {{ tv === 'All' ? t('relicFarming.filters.allTiers') : tv }}
             </v-chip>
           </v-chip-group>
 
@@ -115,7 +113,7 @@
               density="compact"
               inset
               color="#4fb3bf"
-              label="Currently dropping only"
+              :label="t('relicFarming.toggles.dropping')"
               class="an-toggle"
             ></v-switch>
             <v-switch
@@ -124,7 +122,7 @@
               density="compact"
               inset
               color="#4fb3bf"
-              label="Hide no-demand relics"
+              :label="t('relicFarming.toggles.hideNoDemand')"
               class="an-toggle"
             ></v-switch>
             <v-switch
@@ -133,25 +131,25 @@
               density="compact"
               inset
               color="#d4af5a"
-              label="Full data only"
+              :label="t('relicFarming.toggles.fullData')"
               class="an-toggle"
             ></v-switch>
           </div>
 
           <div class="an-count">
-            {{ filtered.length }} {{ filtered.length === 1 ? 'relic' : 'relics' }} match
-            <span v-if="hiddenVaulted" class="an-hidden">· {{ hiddenVaulted }} vaulted</span>
-            <span v-if="hiddenResurgence" class="an-hidden">· {{ hiddenResurgence }} resurgence</span>
-            <span v-if="hiddenNoDemand" class="an-hidden">· {{ hiddenNoDemand }} no demand</span>
-            <span v-if="hiddenIncomplete" class="an-hidden">· {{ hiddenIncomplete }} incomplete data</span>
+            {{ t('relicFarming.count', { n: filtered.length }, filtered.length) }}
+            <span v-if="hiddenVaulted" class="an-hidden">{{ t('relicFarming.hidden.vaulted', { n: hiddenVaulted }) }}</span>
+            <span v-if="hiddenResurgence" class="an-hidden">{{ t('relicFarming.hidden.resurgence', { n: hiddenResurgence }) }}</span>
+            <span v-if="hiddenNoDemand" class="an-hidden">{{ t('relicFarming.hidden.noDemand', { n: hiddenNoDemand }) }}</span>
+            <span v-if="hiddenIncomplete" class="an-hidden">{{ t('relicFarming.hidden.incomplete', { n: hiddenIncomplete }) }}</span>
           </div>
         </section>
 
         <v-alert v-if="loadError" type="error" density="compact" class="ma-4">
-          Couldn't load relic data. The market service may be waking up — try a refresh.
+          {{ t('relicFarming.errors.load') }}
         </v-alert>
         <div v-else-if="!filtered.length" class="an-empty">
-          No relics match these filters. Widen the search or reset the tier.
+          {{ t('relicFarming.errors.empty') }}
         </div>
 
         <!-- Desktop table -->
@@ -159,12 +157,12 @@
           <table class="an-table">
             <thead>
               <tr>
-                <th class="col-name">Relic</th>
-                <th class="grp-a">Plat / hr</th>
-                <th class="grp-b">EV ({{ refinement }})</th>
-                <th>Demand</th>
-                <th>Top drop</th>
-                <th>Vol</th>
+                <th class="col-name">{{ t('relicFarming.table.relic') }}</th>
+                <th class="grp-a">{{ t('relicFarming.table.platHr') }}</th>
+                <th class="grp-b">{{ t('relicFarming.table.ev', { refinement: refinementLabel }) }}</th>
+                <th>{{ t('relicFarming.table.demand') }}</th>
+                <th>{{ t('relicFarming.table.topDrop') }}</th>
+                <th>{{ t('relicFarming.table.vol') }}</th>
               </tr>
             </thead>
             <tbody>
@@ -179,16 +177,16 @@
                       <img class="an-thumb" :src="relicThumb(row)" :alt="row.relicName" loading="lazy" @error="onImgError" />
                       <span>
                         {{ row.relicName }}
-                        <span v-if="row.url_name === topDealUrl" class="an-badge">TOP</span>
-                        <span v-if="row.vaulted" class="an-badge an-badge--vault">VAULTED</span>
-                        <span v-else-if="row.resurgence" class="an-badge an-badge--resurgence" title="Prime Resurgence — buy from Varzia with Aya (not fissure-farmable)">RESURGENCE</span>
+                        <span v-if="row.url_name === topDealUrl" class="an-badge">{{ t('relicFarming.tags.top') }}</span>
+                        <span v-if="row.vaulted" class="an-badge an-badge--vault">{{ t('relicFarming.tags.vaultedBadge') }}</span>
+                        <span v-else-if="row.resurgence" class="an-badge an-badge--resurgence" :title="t('relicFarming.tags.resurgenceTitle')">{{ t('relicFarming.tags.resurgence') }}</span>
                         <small class="an-sub">
-                          {{ row.tier }} · {{ row.rewards.length }} drops
-                          <template v-if="dropMix(row).vaulted"> · <span class="an-vtag">{{ dropMix(row).vaulted }} vaulted</span></template>
+                          {{ row.tier }} · {{ t('relicFarming.row.drops', { n: row.rewards.length }) }}
+                          <template v-if="dropMix(row).vaulted"> · <span class="an-vtag">{{ t('relicFarming.tags.vaultedCount', { n: dropMix(row).vaulted }) }}</span></template>
                         </small>
                       </span>
                     </nuxt-link>
-                    <button class="an-drops" title="Where to farm this relic" @click="openDrops(row)">
+                    <button class="an-drops" :title="t('relicFarming.row.farmTip')" @click="openDrops(row)">
                       <v-icon size="18">mdi-map-marker-radius-outline</v-icon>
                     </button>
                   </div>
@@ -196,15 +194,15 @@
                 <td class="grp-a an-num an-strong up">{{ fmtPlat(platPerHour(row)) }}p/hr</td>
                 <td class="grp-b an-num">{{ fmtPlat(ev(row)) }}p</td>
                 <td>
-                  <span class="an-demand" :class="demand(row).cls" :title="`${Math.round(liquidity(row) * 100)}% of payout is liquid`">
+                  <span class="an-demand" :class="demand(row).cls" :title="t('relicFarming.row.liquidTip', { pct: Math.round(liquidity(row) * 100) })">
                     <span class="an-demand__bar"><i :style="{ width: Math.round(liquidity(row) * 100) + '%' }"></i></span>
                     {{ demand(row).label }}
                   </span>
                 </td>
                 <td class="an-num">
                   <span class="an-topdrop">{{ topDrop(row).item_name }}</span>
-                  <span v-if="rewardVaulted(topDrop(row))" class="an-vtag">vaulted</span>
-                  <small class="an-sub">{{ fmtPlat(topDrop(row).price) }}p · vol {{ fmtPlat(topDrop(row).volume || 0) }}</small>
+                  <span v-if="rewardVaulted(topDrop(row))" class="an-vtag">{{ t('relicFarming.tags.vaulted') }}</span>
+                  <small class="an-sub">{{ fmtPlat(topDrop(row).price) }}p · {{ t('relicFarming.row.vol') }} {{ fmtPlat(topDrop(row).volume || 0) }}</small>
                 </td>
                 <td class="an-num">{{ fmtPlat(row.relic.volume) }}</td>
               </tr>
@@ -226,16 +224,16 @@
               <div class="an-card__title">
                 <div class="an-card__name">
                   {{ row.relicName }}
-                  <span v-if="row.url_name === topDealUrl" class="an-badge">TOP</span>
-                  <span v-if="row.vaulted" class="an-badge an-badge--vault">VAULTED</span>
-                  <span v-else-if="row.resurgence" class="an-badge an-badge--resurgence" title="Prime Resurgence — buy from Varzia with Aya (not fissure-farmable)">RESURGENCE</span>
+                  <span v-if="row.url_name === topDealUrl" class="an-badge">{{ t('relicFarming.tags.top') }}</span>
+                  <span v-if="row.vaulted" class="an-badge an-badge--vault">{{ t('relicFarming.tags.vaultedBadge') }}</span>
+                  <span v-else-if="row.resurgence" class="an-badge an-badge--resurgence" :title="t('relicFarming.tags.resurgenceTitle')">{{ t('relicFarming.tags.resurgence') }}</span>
                 </div>
                 <small class="an-sub">
-                  {{ row.tier }} · {{ row.rewards.length }} drops · vol {{ fmtPlat(row.relic.volume) }}
-                  <template v-if="dropMix(row).vaulted"> · <span class="an-vtag">{{ dropMix(row).vaulted }} vaulted</span></template>
+                  {{ row.tier }} · {{ t('relicFarming.row.drops', { n: row.rewards.length }) }} · {{ t('relicFarming.row.vol') }} {{ fmtPlat(row.relic.volume) }}
+                  <template v-if="dropMix(row).vaulted"> · <span class="an-vtag">{{ t('relicFarming.tags.vaultedCount', { n: dropMix(row).vaulted }) }}</span></template>
                 </small>
               </div>
-              <button class="an-drops" title="Where to farm this relic" @click.prevent.stop="openDrops(row)">
+              <button class="an-drops" :title="t('relicFarming.row.farmTip')" @click.prevent.stop="openDrops(row)">
                 <v-icon size="20">mdi-map-marker-radius-outline</v-icon>
               </button>
               <v-icon color="#4fb3bf">mdi-chevron-right</v-icon>
@@ -243,7 +241,7 @@
             <div class="an-card__verdict">
               <span class="pill pill--good">
                 {{ fmtPlat(platPerHour(row)) }} p/hr
-                <b>realizable {{ refinement.toLowerCase() }} payout</b>
+                <b>{{ t('relicFarming.card.realizablePayout', { refinement: refinementLabel.toLowerCase() }) }}</b>
               </span>
               <span class="an-demand" :class="demand(row).cls">
                 <span class="an-demand__bar"><i :style="{ width: Math.round(liquidity(row) * 100) + '%' }"></i></span>
@@ -252,16 +250,16 @@
             </div>
             <div class="an-card__blocks">
               <div class="an-block">
-                <div class="an-block__lbl">Payout ({{ refinement }})</div>
-                <div class="an-block__row"><span>Realizable EV</span><b>{{ fmtPlat(ev(row)) }}p</b></div>
-                <div class="an-block__row"><span>Raw EV</span><b>{{ fmtPlat(evRaw(row)) }}p</b></div>
+                <div class="an-block__lbl">{{ t('relicFarming.card.payout', { refinement: refinementLabel }) }}</div>
+                <div class="an-block__row"><span>{{ t('relicFarming.card.realizableEv') }}</span><b>{{ fmtPlat(ev(row)) }}p</b></div>
+                <div class="an-block__row"><span>{{ t('relicFarming.card.rawEv') }}</span><b>{{ fmtPlat(evRaw(row)) }}p</b></div>
               </div>
               <div class="an-block">
-                <div class="an-block__lbl">Top drop</div>
+                <div class="an-block__lbl">{{ t('relicFarming.card.topDrop') }}</div>
                 <div class="an-block__row"><span>{{ topDrop(row).rarity }}</span><b>{{ fmtPlat(topDrop(row).price) }}p</b></div>
                 <div class="an-block__row an-topdrop-m">
                   <span>{{ topDrop(row).item_name }}</span>
-                  <span v-if="rewardVaulted(topDrop(row))" class="an-vtag">vaulted</span>
+                  <span v-if="rewardVaulted(topDrop(row))" class="an-vtag">{{ t('relicFarming.tags.vaulted') }}</span>
                 </div>
               </div>
             </div>
@@ -274,12 +272,10 @@
       </div>
 
       <v-alert class="an-disclaimer" color="blue-darken-4" type="info" density="compact">
-        Plat/hr = <b>realizable</b> {{ refinement }} payout ÷ your minutes-per-run × 60.
-        Realizable payout weights each drop's price by its 48h trade volume, so a
-        part nobody is buying (0 volume) barely counts — the number reflects plat
-        you can actually sell for, not sticker price. Vaulted relics no longer
-        drop and are hidden by default. Radiant costs 100 void traces; actual run
-        time varies by fissure and squad.
+        <i18n-t keypath="relicFarming.disclaimer.text" tag="span">
+          <template #realizable><b>{{ t('relicFarming.disclaimer.realizable') }}</b></template>
+          <template #refinement>{{ refinementLabel }}</template>
+        </i18n-t>
       </v-alert>
 
       <DropLocationsDialog v-model="dropsDialog" :item-name="dropsRelic" :thumb="dropsThumb" />
@@ -291,6 +287,8 @@
 import { computed, nextTick, onMounted, ref, watch } from 'vue'
 import { useDisplay } from 'vuetify'
 import { useRelicValue, type RelicRow } from '~/composables/useRelicValue'
+
+const { t } = useI18n()
 
 // Working thumbnails cross-referenced against the fresh catalog (drop data
 // carries stale warframe.market thumb hashes).
@@ -315,6 +313,13 @@ const isMobile = computed(() => mobile.value)
 const search = ref('')
 const tier = ref('All')
 const refinement = ref('Radiant')
+// Translated label for the active refinement (the ref value stays the logic key
+// 'Intact'/'Radiant' used by the chance table; only the display text localizes).
+const refinementLabel = computed(() =>
+  refinement.value === 'Radiant'
+    ? t('relicFarming.filters.radiant')
+    : t('relicFarming.filters.intact'),
+)
 const sortKey = ref('pph')
 const missionMinutes = ref(3)
 const page = ref(1)
@@ -334,13 +339,13 @@ const dropsRelic = ref('')
 const dropsThumb = ref('')
 const placeholderImg =
   "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44'%3E%3Crect width='44' height='44' rx='8' fill='%232a2a3d'/%3E%3Cpath d='M22 11 L31 22 L22 33 L13 22 Z' fill='none' stroke='%234fb3bf' stroke-width='2' opacity='0.75'/%3E%3C/svg%3E"
-const sortOptions = [
-  { text: 'Plat / hour (realizable)', value: 'pph' },
-  { text: 'Payout (realizable EV)', value: 'ev' },
-  { text: 'Demand (liquidity)', value: 'demand' },
-  { text: 'Relic volume', value: 'volume' },
-  { text: 'Name (A–Z)', value: 'name' },
-]
+const sortOptions = computed(() => [
+  { text: t('relicFarming.sort.pph'), value: 'pph' },
+  { text: t('relicFarming.sort.ev'), value: 'ev' },
+  { text: t('relicFarming.sort.demand'), value: 'demand' },
+  { text: t('relicFarming.sort.volume'), value: 'volume' },
+  { text: t('relicFarming.sort.name'), value: 'name' },
+])
 
 // Shared, liquidity-aware valuation (same basis as the Star Chart): each drop is
 // discounted by its 48h trade volume, so overpriced parts nobody buys don't

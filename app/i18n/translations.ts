@@ -128,7 +128,7 @@ const translation = {
 		col_drops: 'Drops',
 		madeWith: 'Feito com',
 		por: 'por',
-		and: 'y',
+		and: 'e',
 		codigo: 'Código',
 		nombre: 'Nome',
 		departamento: 'Departamento',

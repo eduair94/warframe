@@ -14,6 +14,8 @@ export interface IStatisticsDataPoint {
   volume: number;
   avg_price: number;
   mod_rank?: number;
+  /** Item variant, e.g. relic 'intact'/'radiant'. Present on subtype-bearing items. */
+  subtype?: string;
 }
 
 /**
@@ -34,6 +36,10 @@ export interface IStatisticsResult {
 export interface IStatisticsOptions {
   /** Filter by specific mod rank (undefined = all ranks) */
   modRank?: number;
+  /** Filter by specific variant/subtype, e.g. 'radiant' (undefined = all variants).
+   *  Ignored gracefully when no data point carries the subtype, so items whose stats
+   *  aren't split by subtype degrade to the unfiltered aggregate instead of zeroing. */
+  subtype?: string;
 }
 
 /**
@@ -57,12 +63,21 @@ export class StatisticsCalculator {
     dataPoints: IStatisticsDataPoint[],
     options: IStatisticsOptions = {}
   ): IStatisticsResult {
-    const { modRank } = options;
+    const { modRank, subtype } = options;
 
     // Filter by mod rank if specified
-    const filtered = modRank !== undefined
+    const rankFiltered = modRank !== undefined
       ? dataPoints.filter(point => point.mod_rank === modRank)
       : dataPoints;
+
+    // Filter by subtype if specified, but degrade gracefully: if no point carries the
+    // requested subtype (stats not split by variant for this item), keep the rank-filtered
+    // set rather than zeroing out the baseline.
+    let filtered = rankFiltered;
+    if (subtype !== undefined) {
+      const subFiltered = rankFiltered.filter(point => point.subtype === subtype);
+      if (subFiltered.length > 0) filtered = subFiltered;
+    }
 
     if (filtered.length === 0) {
       return {

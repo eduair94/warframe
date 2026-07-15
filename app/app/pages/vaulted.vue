@@ -4,59 +4,55 @@
       <div class="an-console">
         <header class="an-hero">
           <div class="an-hero__text">
-            <div class="an-eyebrow">Warframe Market · Vaulted</div>
-            <h1 class="an-title">
-              Locked in the <span class="accent-b">Vault</span>.
-            </h1>
-            <p class="an-lede">
-              Vaulted prime gear can't be farmed from relics anymore — supply only
-              shrinks, so prices tend to climb. Here's every vaulted item on the
-              market, ranked by what it's worth today.
-            </p>
+            <div class="an-eyebrow">{{ t('vaultedPage.eyebrow') }}</div>
+            <i18n-t keypath="vaultedPage.hero.title" tag="h1" class="an-title">
+              <template #vault><span class="accent-b">{{ t('vaultedPage.hero.titleVault') }}</span></template>
+            </i18n-t>
+            <p class="an-lede">{{ t('vaultedPage.hero.lede') }}</p>
           </div>
           <div v-if="topDeal" class="an-hero__deal">
-            <div class="an-hero__deal-label">Priciest vaulted</div>
+            <div class="an-hero__deal-label">{{ t('vaultedPage.hero.dealLabel') }}</div>
             <div class="an-hero__deal-plat">{{ fmtPlat(topDeal.market.sell) }}<span>p</span></div>
             <a class="an-hero__deal-name" :href="mkt(topDeal.url_name)" target="_blank" rel="noopener">{{ topDeal.item_name }} →</a>
-            <div class="an-hero__deal-sub">vol {{ fmtPlat(topDeal.market.volume) }}</div>
+            <div class="an-hero__deal-sub">{{ t('vaultedPage.hero.dealSub', { vol: fmtPlat(topDeal.market.volume) }) }}</div>
           </div>
         </header>
 
         <div class="an-stats">
-          <div class="an-stat"><div class="an-stat__num">{{ stats.total }}</div><div class="an-stat__lbl">vaulted items</div></div>
-          <div class="an-stat"><div class="an-stat__num is-gold">{{ fmtPlat(stats.priciest) }}p</div><div class="an-stat__lbl">priciest</div></div>
-          <div class="an-stat"><div class="an-stat__num is-alt">{{ fmtPlat(stats.avg) }}p</div><div class="an-stat__lbl">avg price</div></div>
-          <div class="an-stat"><div class="an-stat__num is-good">{{ stats.sets }}</div><div class="an-stat__lbl">full sets</div></div>
+          <div class="an-stat"><div class="an-stat__num">{{ stats.total }}</div><div class="an-stat__lbl">{{ t('vaultedPage.stats.total') }}</div></div>
+          <div class="an-stat"><div class="an-stat__num is-gold">{{ fmtPlat(stats.priciest) }}p</div><div class="an-stat__lbl">{{ t('vaultedPage.stats.priciest') }}</div></div>
+          <div class="an-stat"><div class="an-stat__num is-alt">{{ fmtPlat(stats.avg) }}p</div><div class="an-stat__lbl">{{ t('vaultedPage.stats.avg') }}</div></div>
+          <div class="an-stat"><div class="an-stat__num is-good">{{ stats.sets }}</div><div class="an-stat__lbl">{{ t('vaultedPage.stats.sets') }}</div></div>
         </div>
 
         <section class="an-filters">
           <div class="an-filters__row">
-            <v-text-field v-model="search" density="compact" hide-details clearable prepend-inner-icon="mdi-magnify" label="Search an item" class="an-search"></v-text-field>
-            <v-text-field v-model.number="minPrice" density="compact" hide-details type="number" min="0" label="Min price (plat)" class="an-field"></v-text-field>
-            <v-select v-model="sortKey" :items="sortOptions" density="compact" hide-details label="Sort by" class="an-field" style="flex: 0 1 220px"></v-select>
+            <v-text-field v-model="search" density="compact" hide-details clearable prepend-inner-icon="mdi-magnify" :label="t('vaultedPage.filters.search')" class="an-search"></v-text-field>
+            <v-text-field v-model.number="minPrice" density="compact" hide-details type="number" min="0" :label="t('vaultedPage.filters.minPrice')" class="an-field"></v-text-field>
+            <v-select v-model="sortKey" :items="sortOptions" density="compact" hide-details :label="t('vaultedPage.filters.sortBy')" class="an-field" style="flex: 0 1 220px"></v-select>
           </div>
           <v-chip-group v-model="category" mandatory column selected-class="an-chip--on" class="an-cats">
-            <v-chip v-for="c in categoryOptions" :key="c" :value="c" size="small">{{ c }}</v-chip>
+            <v-chip v-for="c in categoryOptions" :key="c" :value="c" size="small">{{ t('vaultedPage.categories.' + c) }}</v-chip>
           </v-chip-group>
           <div class="an-toggles">
-            <v-switch v-model="setsOnly" density="compact" hide-details inset color="#4caf7d" label="Full sets only"></v-switch>
+            <v-switch v-model="setsOnly" density="compact" hide-details inset color="#4caf7d" :label="t('vaultedPage.filters.setsOnly')"></v-switch>
           </div>
-          <div class="an-count">{{ filtered.length }} {{ filtered.length === 1 ? 'item' : 'items' }} match</div>
+          <div class="an-count">{{ t('vaultedPage.filters.count', { n: filtered.length }, filtered.length) }}</div>
         </section>
 
         <div v-if="!filtered.length" class="an-empty">
-          No vaulted items match these filters. Some items may not be enriched with vault status yet.
+          {{ t('vaultedPage.empty') }}
         </div>
 
         <div v-else-if="!isMobile" class="an-tablewrap">
           <table class="an-table">
             <thead>
               <tr>
-                <th class="col-name">Vaulted item</th>
-                <th class="grp-b">Price (ask)</th>
-                <th class="grp-a">Buy (bid)</th>
-                <th>Spread</th>
-                <th>Vol</th>
+                <th class="col-name">{{ t('vaultedPage.table.item') }}</th>
+                <th class="grp-b">{{ t('vaultedPage.table.ask') }}</th>
+                <th class="grp-a">{{ t('vaultedPage.table.bid') }}</th>
+                <th>{{ t('vaultedPage.table.spread') }}</th>
+                <th>{{ t('vaultedPage.table.vol') }}</th>
                 <th></th>
               </tr>
             </thead>
@@ -67,8 +63,8 @@
                     <img class="an-thumb" :src="assetUrl(row.thumb)" :alt="row.item_name" loading="lazy" @error="onImgError" />
                     <span>
                       {{ row.item_name }}
-                      <span v-if="row.set" class="an-badge">SET</span>
-                      <small class="an-sub">{{ categoryOf(row.tags) }}</small>
+                      <span v-if="row.set" class="an-badge">{{ t('vaultedPage.row.set') }}</span>
+                      <small class="an-sub">{{ t('vaultedPage.categories.' + categoryOf(row.tags)) }}</small>
                     </span>
                   </a>
                 </td>
@@ -77,7 +73,7 @@
                 <td class="an-num">{{ fmtPlat(row.market.diff) }}p</td>
                 <td class="an-num">{{ fmtPlat(row.market.volume) }}</td>
                 <td>
-                  <v-btn icon size="small" color="#4fb3bf" :href="mkt(row.url_name)" target="_blank" :aria-label="'Open ' + row.item_name">
+                  <v-btn icon size="small" color="#4fb3bf" :href="mkt(row.url_name)" target="_blank" :aria-label="t('vaultedPage.row.open', { name: row.item_name })">
                     <v-icon>mdi-open-in-new</v-icon>
                   </v-btn>
                 </td>
@@ -91,16 +87,16 @@
             <div class="an-card__head">
               <img class="an-thumb" :src="assetUrl(row.thumb)" :alt="row.item_name" loading="lazy" @error="onImgError" />
               <div class="an-card__title">
-                <div class="an-card__name">{{ row.item_name }}<span v-if="row.set" class="an-badge">SET</span></div>
-                <small class="an-sub">{{ categoryOf(row.tags) }} · vol {{ fmtPlat(row.market.volume) }}</small>
+                <div class="an-card__name">{{ row.item_name }}<span v-if="row.set" class="an-badge">{{ t('vaultedPage.row.set') }}</span></div>
+                <small class="an-sub">{{ t('vaultedPage.row.catVol', { cat: t('vaultedPage.categories.' + categoryOf(row.tags)), vol: fmtPlat(row.market.volume) }) }}</small>
               </div>
               <v-icon color="#4fb3bf">mdi-open-in-new</v-icon>
             </div>
             <div class="an-card__blocks">
               <div class="an-block an-block--full">
-                <div class="an-block__lbl">Market value</div>
-                <div class="an-block__row"><span>Price (ask)</span><b>{{ fmtPlat(row.market.sell) }}p</b></div>
-                <div class="an-block__row"><span>Buy (bid)</span><b>{{ fmtPlat(row.market.buy) }}p</b></div>
+                <div class="an-block__lbl">{{ t('vaultedPage.card.marketValue') }}</div>
+                <div class="an-block__row"><span>{{ t('vaultedPage.table.ask') }}</span><b>{{ fmtPlat(row.market.sell) }}p</b></div>
+                <div class="an-block__row"><span>{{ t('vaultedPage.table.bid') }}</span><b>{{ fmtPlat(row.market.buy) }}p</b></div>
               </div>
             </div>
           </a>
@@ -112,8 +108,7 @@
       </div>
 
       <v-alert class="an-disclaimer bg-blue-darken-4" type="info" density="compact">
-        Vault status comes from Warframe Market. Prices are today's orders — not a
-        guarantee of future value. Low-volume items can swing hard.
+        {{ t('vaultedPage.disclaimer') }}
       </v-alert>
     </client-only>
   </div>
@@ -124,6 +119,7 @@ import { computed, nextTick, onMounted, ref, watch } from 'vue'
 import { useDisplay } from 'vuetify'
 import { useItemsStore } from '~/stores/items'
 
+const { t } = useI18n()
 const itemsStore = useItemsStore()
 const allItems = computed(() => itemsStore.allItems)
 
@@ -140,11 +136,11 @@ const page = ref(1)
 const perPage = 25
 const placeholderImg =
   "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44'%3E%3Crect width='44' height='44' rx='8' fill='%232a2a3d'/%3E%3Cpath d='M22 11 L31 22 L22 33 L13 22 Z' fill='none' stroke='%234fb3bf' stroke-width='2' opacity='0.75'/%3E%3C/svg%3E"
-const sortOptions = [
-  { title: 'Price (high → low)', value: 'price' },
-  { title: 'Volume', value: 'volume' },
-  { title: 'Name (A–Z)', value: 'name' },
-]
+const sortOptions = computed(() => [
+  { title: t('vaultedPage.sort.price'), value: 'price' },
+  { title: t('vaultedPage.sort.volume'), value: 'volume' },
+  { title: t('vaultedPage.sort.name'), value: 'name' },
+])
 
 const vaultedItems = computed<any[]>(() =>
   (allItems.value as any[]).filter((i) => i && i.vaulted === true && i.market && i.market.sell > 0)

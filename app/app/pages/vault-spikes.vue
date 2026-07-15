@@ -4,73 +4,66 @@
       <div class="an-console">
         <header class="an-hero">
           <div class="an-hero__text">
-            <div class="an-eyebrow">Warframe Market · Vault Spike Feed</div>
-            <h1 class="an-title">
-              Vaulted primes that are
-              <span class="accent-b">climbing</span> again.
-            </h1>
-            <p class="an-lede">
-              Vaulted prime items can't drop anymore, so scarcity slowly pushes
-              their plat price up. This feed ranks every vaulted item by how fast
-              it's rising, built from our own daily price history — warframe.market
-              only gives you a static vaulted flag and a per-item 90-day chart.
-              Catch the sell window before the spike fades.
-            </p>
+            <div class="an-eyebrow">{{ t('vaultSpikes.eyebrow') }}</div>
+            <i18n-t keypath="vaultSpikes.hero.title" tag="h1" class="an-title">
+              <template #climbing><span class="accent-b">{{ t('vaultSpikes.hero.titleClimbing') }}</span></template>
+            </i18n-t>
+            <p class="an-lede">{{ t('vaultSpikes.hero.lede') }}</p>
           </div>
           <div v-if="topDeal" class="an-hero__deal">
-            <div class="an-hero__deal-label">Hottest vault spike · {{ timeframeLabel }}</div>
+            <div class="an-hero__deal-label">{{ t('vaultSpikes.hero.dealLabel', { window: timeframeLabel }) }}</div>
             <div class="an-hero__deal-plat" :class="topDeal[changeKey] > 0 ? 'is-up' : 'is-down'">
               {{ fmtSignedPct(topDeal[changeKey]) }}
             </div>
             <a class="an-hero__deal-name" :href="mkt(topDeal.url_name)" target="_blank" rel="noopener">
               {{ topDeal.item_name }} →
             </a>
-            <div class="an-hero__deal-sub">{{ fmtPlat(priceOf(topDeal)) }}p · vol {{ fmtPlat(topDeal.volume) }}</div>
+            <div class="an-hero__deal-sub">{{ t('vaultSpikes.hero.dealSub', { price: fmtPlat(priceOf(topDeal)), vol: fmtPlat(topDeal.volume) }) }}</div>
           </div>
         </header>
 
         <div class="an-stats">
           <div class="an-stat">
             <div class="an-stat__num is-gold">{{ stats.vaultedTracked }}</div>
-            <div class="an-stat__lbl">vaulted tracked</div>
+            <div class="an-stat__lbl">{{ t('vaultSpikes.stats.vaultedTracked') }}</div>
           </div>
           <div class="an-stat">
             <div class="an-stat__num is-good">{{ stats.climbingNow }}</div>
-            <div class="an-stat__lbl">climbing now</div>
+            <div class="an-stat__lbl">{{ t('vaultSpikes.stats.climbingNow') }}</div>
           </div>
           <div class="an-stat">
             <div class="an-stat__num is-good">{{ fmtSignedPct(stats.biggestSpike) }}</div>
-            <div class="an-stat__lbl">biggest spike</div>
+            <div class="an-stat__lbl">{{ t('vaultSpikes.stats.biggestSpike') }}</div>
           </div>
           <div class="an-stat">
             <div class="an-stat__num is-alt">{{ fmtSignedPct(stats.avgSpike) }}</div>
-            <div class="an-stat__lbl">avg spike</div>
+            <div class="an-stat__lbl">{{ t('vaultSpikes.stats.avgSpike') }}</div>
           </div>
         </div>
 
         <section class="an-filters">
           <div class="an-filters__row">
-            <v-text-field v-model="search" density="compact" hide-details clearable prepend-inner-icon="mdi-magnify" label="Search an item" class="an-search"></v-text-field>
+            <v-text-field v-model="search" density="compact" hide-details clearable prepend-inner-icon="mdi-magnify" :label="t('vaultSpikes.filters.search')" class="an-search"></v-text-field>
             <div class="an-refine">
-              <div class="an-refine__lbl">Window</div>
+              <div class="an-refine__lbl">{{ t('vaultSpikes.filters.window') }}</div>
               <v-btn-toggle v-model="timeframe" mandatory density="compact">
                 <v-btn value="change7d" size="small">7d</v-btn>
                 <v-btn value="change30d" size="small">30d</v-btn>
               </v-btn-toggle>
             </div>
             <div class="an-refine">
-              <div class="an-refine__lbl">Filter</div>
-              <v-switch v-model="onlyClimbing" density="compact" inset hide-details color="#d4af5a" label="Only climbing" class="an-switch"></v-switch>
+              <div class="an-refine__lbl">{{ t('vaultSpikes.filters.filter') }}</div>
+              <v-switch v-model="onlyClimbing" density="compact" inset hide-details color="#d4af5a" :label="t('vaultSpikes.filters.onlyClimbing')" class="an-switch"></v-switch>
             </div>
           </div>
           <v-chip-group v-model="category" mandatory column class="an-cats">
-            <v-chip v-for="c in categoryOptions" :key="c" :value="c" size="small" active-class="an-chip--on">{{ c }}</v-chip>
+            <v-chip v-for="c in categoryOptions" :key="c" :value="c" size="small" active-class="an-chip--on">{{ t('vaultSpikes.categories.' + c) }}</v-chip>
           </v-chip-group>
-          <div class="an-count">{{ filtered.length }} {{ filtered.length === 1 ? 'item' : 'items' }}</div>
+          <div class="an-count">{{ t('vaultSpikes.filters.count', { n: filtered.length }, filtered.length) }}</div>
         </section>
 
         <v-alert v-if="loadError" type="error" density="compact" class="ma-4">
-          Couldn't load analytics. The market service may be waking up — try a refresh.
+          {{ t('vaultSpikes.loadError') }}
         </v-alert>
         <div v-else-if="!filtered.length" class="an-empty">
           {{ emptyMessage }}
@@ -80,13 +73,13 @@
           <table class="an-table">
             <thead>
               <tr>
-                <th class="col-name">Item</th>
-                <th>Price</th>
+                <th class="col-name">{{ t('vaultSpikes.table.item') }}</th>
+                <th>{{ t('vaultSpikes.table.price') }}</th>
                 <th>7d</th>
                 <th>30d</th>
-                <th>vs Low</th>
-                <th>Vol</th>
-                <th>History</th>
+                <th>{{ t('vaultSpikes.table.vsLow') }}</th>
+                <th>{{ t('vaultSpikes.table.vol') }}</th>
+                <th>{{ t('vaultSpikes.table.history') }}</th>
               </tr>
             </thead>
             <tbody>
@@ -96,8 +89,8 @@
                     <img class="an-thumb" :src="assetUrl(row.thumb)" :alt="row.item_name" loading="lazy" @error="onImgError" />
                     <span>
                       {{ row.item_name }}
-                      <span class="an-badge">VAULTED</span>
-                      <small class="an-sub">{{ row.dataDays }}d tracked</small>
+                      <span class="an-badge">{{ t('vaultSpikes.row.vaulted') }}</span>
+                      <small class="an-sub">{{ t('vaultSpikes.row.tracked', { n: row.dataDays }) }}</small>
                     </span>
                   </a>
                 </td>
@@ -117,22 +110,22 @@
             <div class="an-card__head">
               <img class="an-thumb" :src="assetUrl(row.thumb)" :alt="row.item_name" loading="lazy" @error="onImgError" />
               <div class="an-card__title">
-                <div class="an-card__name">{{ row.item_name }}<span class="an-badge">VAULTED</span></div>
-                <small class="an-sub">{{ fmtPlat(priceOf(row)) }}p · vol {{ fmtPlat(row.volume) }}</small>
+                <div class="an-card__name">{{ row.item_name }}<span class="an-badge">{{ t('vaultSpikes.row.vaulted') }}</span></div>
+                <small class="an-sub">{{ t('vaultSpikes.card.sub', { price: fmtPlat(priceOf(row)), vol: fmtPlat(row.volume) }) }}</small>
               </div>
               <span class="an-num an-strong" :class="changeClass(row[changeKey])">{{ fmtSignedPct(row[changeKey]) }}</span>
             </div>
             <div class="an-card__blocks">
               <div class="an-block">
                 <div class="an-block__lbl">7d</div>
-                <div class="an-block__row"><span>change</span><b :class="changeClass(row.change7d)">{{ fmtSignedPct(row.change7d) }}</b></div>
+                <div class="an-block__row"><span>{{ t('vaultSpikes.card.change') }}</span><b :class="changeClass(row.change7d)">{{ fmtSignedPct(row.change7d) }}</b></div>
               </div>
               <div class="an-block">
                 <div class="an-block__lbl">30d</div>
-                <div class="an-block__row"><span>change</span><b :class="changeClass(row.change30d)">{{ fmtSignedPct(row.change30d) }}</b></div>
+                <div class="an-block__row"><span>{{ t('vaultSpikes.card.change') }}</span><b :class="changeClass(row.change30d)">{{ fmtSignedPct(row.change30d) }}</b></div>
               </div>
               <div class="an-block an-block--full">
-                <div class="an-block__lbl">{{ timeframeLabel }} spike · {{ row.dataDays }} days tracked</div>
+                <div class="an-block__lbl">{{ t('vaultSpikes.card.spikeTracked', { window: timeframeLabel, days: row.dataDays }) }}</div>
                 <span class="an-spark an-spark--wide" v-html="sparkSvg(row.spark, row[changeKey])"></span>
               </div>
             </div>
@@ -145,10 +138,7 @@
       </div>
 
       <v-alert class="an-disclaimer bg-blue-darken-4" type="info" density="compact">
-        Change is measured on our own daily price series (average trade price,
-        falling back to the sell order). "Vaulted" reflects the item's current
-        availability flag; a freshly vaulted item needs a few days of history
-        before its spike shows up here — coverage grows every day the sync runs.
+        {{ t('vaultSpikes.disclaimer') }}
       </v-alert>
     </client-only>
   </div>
@@ -158,6 +148,7 @@
 import { computed, nextTick, onMounted, ref, watch } from 'vue'
 import { useDisplay } from 'vuetify'
 
+const { t } = useI18n()
 const config = useRuntimeConfig()
 const base = config.public.apiURL
 
@@ -287,10 +278,7 @@ const paged = computed<any[]>(() => {
 })
 const topDeal = computed<any>(() => (filtered.value.length ? filtered.value[0] : null))
 const topDealUrl = computed(() => (topDeal.value ? topDeal.value.url_name : ''))
-const emptyMessage = computed(
-  () =>
-    "No vaulted items are climbing right now — either prices are flat or history is still accumulating. Toggle off 'Only climbing' to see every vaulted item.",
-)
+const emptyMessage = computed(() => t('vaultSpikes.empty'))
 const stats = computed<any>(() => {
   const key = changeKey.value
   const vault = items.value.filter((r) => r.vaulted)

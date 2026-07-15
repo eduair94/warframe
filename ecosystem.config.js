@@ -59,10 +59,14 @@ module.exports = {
             log_date_format: "YYYY-MM-DD HH:mm Z",
         },
         {
-            // Refreshes the WFCD drop-data backup (mission rewards + relic
-            // contents) that powers the Star Chart and the in-app drop dialog.
-            // WFCD only changes on game patches, so a daily run keeps the
-            // warframe-drops collection current without hammering the source.
+            // Refreshes the WFCD drop data daily: the drop-data backup (mission
+            // rewards + relic contents) that powers the Star Chart, the in-app
+            // drop dialog, and the relic EV board's "currently dropping" gate —
+            // AND the relic collection behind /relics_ev (buildRelics), so the
+            // relic list stays current when Varzia rotates the Prime Resurgence
+            // set instead of only refreshing on a manual /build_relics call.
+            // WFCD only changes on game patches, so a daily run keeps both
+            // collections current without hammering the source.
             name: "warframe-sync-drops",
             autorestart: false,
             cron_restart: "0 3 * * *",

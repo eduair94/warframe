@@ -4,77 +4,72 @@
       <div class="an-console">
         <header class="an-hero">
           <div class="an-hero__text">
-            <div class="an-eyebrow">Warframe Market · Screener</div>
-            <h1 class="an-title">
-              Scan the <span class="accent-a">whole</span> market
-              <span class="accent-b">at once</span>.
-            </h1>
-            <p class="an-lede">
-              Every tradeable item in one sortable table — bid/ask spread, how far
-              the sell price sits below its average (discount), 48h volume and
-              ducat value. Sort and filter to surface what's underpriced,
-              liquid or worth flipping right now.
-            </p>
+            <div class="an-eyebrow">{{ t('screener.eyebrow') }}</div>
+            <i18n-t keypath="screener.hero.title" tag="h1" class="an-title">
+              <template #whole><span class="accent-a">{{ t('screener.hero.titleWhole') }}</span></template>
+              <template #atOnce><span class="accent-b">{{ t('screener.hero.titleAtOnce') }}</span></template>
+            </i18n-t>
+            <p class="an-lede">{{ t('screener.hero.lede') }}</p>
           </div>
           <div v-if="topDeal" class="an-hero__deal">
-            <div class="an-hero__deal-label">Deepest discount</div>
-            <div class="an-hero__deal-plat">{{ fmtPct(topDeal.discount) }}<span>off</span></div>
+            <div class="an-hero__deal-label">{{ t('screener.hero.dealLabel') }}</div>
+            <div class="an-hero__deal-plat">{{ fmtPct(topDeal.discount) }}<span>{{ t('screener.hero.off') }}</span></div>
             <a class="an-hero__deal-name" :href="mkt(topDeal.url_name)" target="_blank" rel="noopener">
               {{ topDeal.item_name }} →
             </a>
-            <div class="an-hero__deal-sub">{{ fmtPlat(topDeal.market.sell) }}p vs {{ fmtPlat(topDeal.market.avg_price) }}p avg</div>
+            <div class="an-hero__deal-sub">{{ t('screener.hero.dealSub', { sell: fmtPlat(topDeal.market.sell), avg: fmtPlat(topDeal.market.avg_price) }) }}</div>
           </div>
         </header>
 
         <div class="an-stats">
           <div class="an-stat">
             <div class="an-stat__num">{{ stats.total }}</div>
-            <div class="an-stat__lbl">items tracked</div>
+            <div class="an-stat__lbl">{{ t('screener.stats.itemsTracked') }}</div>
           </div>
           <div class="an-stat">
             <div class="an-stat__num is-good">{{ stats.underpriced }}</div>
-            <div class="an-stat__lbl">below avg price</div>
+            <div class="an-stat__lbl">{{ t('screener.stats.belowAvg') }}</div>
           </div>
           <div class="an-stat">
             <div class="an-stat__num is-gold">{{ fmtPlat(stats.avgSpread) }}p</div>
-            <div class="an-stat__lbl">avg spread</div>
+            <div class="an-stat__lbl">{{ t('screener.stats.avgSpread') }}</div>
           </div>
           <div class="an-stat">
             <div class="an-stat__num is-alt">{{ stats.vaulted }}</div>
-            <div class="an-stat__lbl">vaulted</div>
+            <div class="an-stat__lbl">{{ t('screener.stats.vaulted') }}</div>
           </div>
         </div>
 
         <section class="an-filters">
           <div class="an-filters__row">
-            <v-text-field v-model="search" density="compact" hide-details clearable prepend-inner-icon="mdi-magnify" label="Search an item" class="an-search"></v-text-field>
-            <v-text-field v-model.number="minVolume" density="compact" hide-details type="number" min="0" label="Min volume (48h)" class="an-field"></v-text-field>
-            <v-select v-model="sortKey" :items="sortOptions" density="compact" hide-details label="Sort by" class="an-field" style="flex: 0 1 240px"></v-select>
+            <v-text-field v-model="search" density="compact" hide-details clearable prepend-inner-icon="mdi-magnify" :label="t('screener.filters.search')" class="an-search"></v-text-field>
+            <v-text-field v-model.number="minVolume" density="compact" hide-details type="number" min="0" :label="t('screener.filters.minVolume')" class="an-field"></v-text-field>
+            <v-select v-model="sortKey" :items="sortOptions" density="compact" hide-details :label="t('screener.filters.sortBy')" class="an-field" style="flex: 0 1 240px"></v-select>
           </div>
           <v-chip-group v-model="category" mandatory column selected-class="an-chip--on" class="an-cats">
-            <v-chip v-for="c in categoryOptions" :key="c" :value="c" size="small">{{ c }}</v-chip>
+            <v-chip v-for="c in categoryOptions" :key="c" :value="c" size="small">{{ t('screener.categories.' + c) }}</v-chip>
           </v-chip-group>
           <div class="an-toggles">
-            <v-switch v-model="onlyVaulted" density="compact" hide-details inset color="#4fb3bf" label="Only vaulted"></v-switch>
-            <v-switch v-model="onlyDucats" density="compact" hide-details inset color="#d4af5a" label="Only ducat items"></v-switch>
+            <v-switch v-model="onlyVaulted" density="compact" hide-details inset color="#4fb3bf" :label="t('screener.filters.onlyVaulted')"></v-switch>
+            <v-switch v-model="onlyDucats" density="compact" hide-details inset color="#d4af5a" :label="t('screener.filters.onlyDucats')"></v-switch>
           </div>
-          <div class="an-count">{{ filtered.length }} {{ filtered.length === 1 ? 'item' : 'items' }} match</div>
+          <div class="an-count">{{ t('screener.filters.count', { n: filtered.length }, filtered.length) }}</div>
         </section>
 
-        <div v-if="!filtered.length" class="an-empty">No items match these filters. Widen the search or reset the category.</div>
+        <div v-if="!filtered.length" class="an-empty">{{ t('screener.empty') }}</div>
 
         <div v-else-if="!mobile" class="an-tablewrap">
           <table class="an-table">
             <thead>
               <tr>
-                <th class="col-name">Item</th>
-                <th>Sell</th>
-                <th>Buy</th>
-                <th>Spread</th>
-                <th>Spread %</th>
-                <th>Discount</th>
-                <th>Vol</th>
-                <th>Ducats</th>
+                <th class="col-name">{{ t('screener.table.item') }}</th>
+                <th>{{ t('screener.table.sell') }}</th>
+                <th>{{ t('screener.table.buy') }}</th>
+                <th>{{ t('screener.table.spread') }}</th>
+                <th>{{ t('screener.table.spreadPct') }}</th>
+                <th>{{ t('screener.table.discount') }}</th>
+                <th>{{ t('screener.table.vol') }}</th>
+                <th>{{ t('screener.table.ducats') }}</th>
               </tr>
             </thead>
             <tbody>
@@ -84,8 +79,8 @@
                     <img class="an-thumb" :src="assetUrl(row.thumb)" :alt="row.item_name" loading="lazy" @error="onImgError" />
                     <span>
                       {{ row.item_name }}
-                      <span v-if="row.vaulted" class="an-badge">VAULTED</span>
-                      <small class="an-sub">avg {{ fmtPlat(row.market.avg_price) }}p</small>
+                      <span v-if="row.vaulted" class="an-badge">{{ t('screener.row.vaulted') }}</span>
+                      <small class="an-sub">{{ t('screener.row.avg', { price: fmtPlat(row.market.avg_price) }) }}</small>
                     </span>
                   </a>
                 </td>
@@ -106,21 +101,21 @@
             <div class="an-card__head">
               <img class="an-thumb" :src="assetUrl(row.thumb)" :alt="row.item_name" loading="lazy" @error="onImgError" />
               <div class="an-card__title">
-                <div class="an-card__name">{{ row.item_name }}<span v-if="row.vaulted" class="an-badge">VAULTED</span></div>
-                <small class="an-sub">avg {{ fmtPlat(row.market.avg_price) }}p · vol {{ fmtPlat(row.market.volume) }}</small>
+                <div class="an-card__name">{{ row.item_name }}<span v-if="row.vaulted" class="an-badge">{{ t('screener.row.vaulted') }}</span></div>
+                <small class="an-sub">{{ t('screener.row.avgVol', { price: fmtPlat(row.market.avg_price), vol: fmtPlat(row.market.volume) }) }}</small>
               </div>
               <v-icon color="#4fb3bf">mdi-open-in-new</v-icon>
             </div>
             <div class="an-card__blocks">
               <div class="an-block">
-                <div class="an-block__lbl">Prices</div>
-                <div class="an-block__row"><span>Sell</span><b>{{ fmtPlat(row.market.sell) }}p</b></div>
-                <div class="an-block__row"><span>Buy</span><b>{{ fmtPlat(row.market.buy) }}p</b></div>
+                <div class="an-block__lbl">{{ t('screener.card.prices') }}</div>
+                <div class="an-block__row"><span>{{ t('screener.table.sell') }}</span><b>{{ fmtPlat(row.market.sell) }}p</b></div>
+                <div class="an-block__row"><span>{{ t('screener.table.buy') }}</span><b>{{ fmtPlat(row.market.buy) }}p</b></div>
               </div>
               <div class="an-block">
-                <div class="an-block__lbl">Signals</div>
-                <div class="an-block__row"><span>Spread</span><b :class="{ up: row.market.diff > 0 }">{{ fmtPlat(row.market.diff) }}p</b></div>
-                <div class="an-block__row"><span>Discount</span><b :class="discountClass(row.discount)">{{ fmtSignedPct(row.discount) }}</b></div>
+                <div class="an-block__lbl">{{ t('screener.card.signals') }}</div>
+                <div class="an-block__row"><span>{{ t('screener.table.spread') }}</span><b :class="{ up: row.market.diff > 0 }">{{ fmtPlat(row.market.diff) }}p</b></div>
+                <div class="an-block__row"><span>{{ t('screener.table.discount') }}</span><b :class="discountClass(row.discount)">{{ fmtSignedPct(row.discount) }}</b></div>
               </div>
             </div>
           </a>
@@ -132,9 +127,7 @@
       </div>
 
       <v-alert class="an-disclaimer bg-blue-darken-4" type="info" density="compact">
-        Discount = how far the lowest sell order sits below the item's average
-        trade price (positive = cheaper than usual). Spread = sell − buy. All from
-        Warframe Market; low-volume items move slowly, so check the volume column.
+        {{ t('screener.disclaimer') }}
       </v-alert>
     </client-only>
   </div>
@@ -145,6 +138,7 @@ import { computed, nextTick, onMounted, ref, watch } from 'vue'
 import { useDisplay } from 'vuetify'
 import { useItemsStore } from '~/stores/items'
 
+const { t } = useI18n()
 const store = useItemsStore()
 const allItems = computed<any[]>(() => store.allItems)
 
@@ -162,15 +156,15 @@ const placeholderImg =
   "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44'%3E%3Crect width='44' height='44' rx='8' fill='%232a2a3d'/%3E%3Cpath d='M22 11 L31 22 L22 33 L13 22 Z' fill='none' stroke='%234fb3bf' stroke-width='2' opacity='0.75'/%3E%3C/svg%3E"
 
 // NOTE: V3 v-select default item-title key is `title` (was `text` in V2)
-const sortOptions = [
-  { title: 'Biggest discount', value: 'discount' },
-  { title: 'Widest spread', value: 'spread' },
-  { title: 'Spread %', value: 'spreadPct' },
-  { title: 'Volume', value: 'volume' },
-  { title: 'Ducats per plat', value: 'ducatEff' },
-  { title: 'Price (sell)', value: 'price' },
-  { title: 'Name (A–Z)', value: 'name' },
-]
+const sortOptions = computed(() => [
+  { title: t('screener.sort.discount'), value: 'discount' },
+  { title: t('screener.sort.spread'), value: 'spread' },
+  { title: t('screener.sort.spreadPct'), value: 'spreadPct' },
+  { title: t('screener.sort.volume'), value: 'volume' },
+  { title: t('screener.sort.ducatEff'), value: 'ducatEff' },
+  { title: t('screener.sort.price'), value: 'price' },
+  { title: t('screener.sort.name'), value: 'name' },
+])
 
 // ---- helpers (were methods) ----
 function assetUrl(thumb: string): string {

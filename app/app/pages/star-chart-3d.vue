@@ -4,7 +4,7 @@
     <section
       ref="mapEl"
       class="sc3-map"
-      aria-label="3D interactive Warframe drop map. Arrow keys cycle worlds and open their missions, Escape clears the selection."
+      :aria-label="t('starChart3d.mapAria')"
       tabindex="0"
       @keydown="onMapKey"
     >
@@ -23,13 +23,13 @@
         <div class="sc3-hud__corner sc3-hud__corner--br" aria-hidden="true"></div>
 
         <header class="sc3-head">
-          <div class="an-eyebrow">Warframe · 3D drop map</div>
-          <h1 class="sc3-title">Origin System</h1>
+          <div class="an-eyebrow">{{ t('starChart3d.eyebrow') }}</div>
+          <h1 class="sc3-title">{{ t('starChart3d.title') }}</h1>
           <div class="sc3-head__links">
-            <NuxtLink :to="localePath('/star-chart')" class="sc3-2d">◂ 2D chart view</NuxtLink>
+            <NuxtLink :to="localePath('/star-chart')" class="sc3-2d">{{ t('starChart3d.view2d') }}</NuxtLink>
             <button class="sc3-guide-btn" @click="guideOpen = true">
               <v-icon size="15">mdi-shield-star-outline</v-icon>
-              Warframe guide
+              {{ t('starChart3d.guide') }}
             </button>
           </div>
         </header>
@@ -37,15 +37,15 @@
         <div v-if="!loading && planets.length" class="sc3-stats">
           <div class="sc3-stat">
             <span class="sc3-stat__num">{{ stats.planets }}</span>
-            <span class="sc3-stat__lbl">worlds</span>
+            <span class="sc3-stat__lbl">{{ t('starChart3d.stats.worlds') }}</span>
           </div>
           <div class="sc3-stat">
             <span class="sc3-stat__num is-teal">{{ stats.nodes }}</span>
-            <span class="sc3-stat__lbl">missions</span>
+            <span class="sc3-stat__lbl">{{ t('starChart3d.stats.missions') }}</span>
           </div>
           <div class="sc3-stat">
             <span class="sc3-stat__num is-gold">{{ fmtPlat(stats.topValue) }}p</span>
-            <span class="sc3-stat__lbl">best drop</span>
+            <span class="sc3-stat__lbl">{{ t('starChart3d.stats.bestDrop') }}</span>
           </div>
         </div>
 
@@ -62,45 +62,45 @@
             variant="solo-filled"
             bg-color="rgba(10,11,20,0.82)"
             prepend-inner-icon="mdi-magnify"
-            label="Where do I farm…?"
+            :label="t('starChart3d.searchLabel')"
             @update:model-value="onFind"
           ></v-autocomplete>
         </div>
 
         <div class="sc3-legend" aria-hidden="true">
           <span class="sc3-legend__bar"></span>
-          <span>glow = plat / drop</span>
+          <span>{{ t('starChart3d.legend.glow') }}</span>
           <span class="sc3-legend__diamond">◆</span>
-          <span>void zone</span>
+          <span>{{ t('starChart3d.legend.voidZone') }}</span>
         </div>
 
         <!-- Helldivers-style control legend (wording follows the pointer type) -->
         <div class="sc3-controls" aria-hidden="true">
           <span class="sc3-controls__item">
             <v-icon size="15">{{ coarsePointer ? 'mdi-gesture-swipe' : 'mdi-gesture-swipe-horizontal' }}</v-icon>
-            <em>{{ coarsePointer ? '1 finger' : 'drag' }}</em> rotate
+            <em>{{ coarsePointer ? t('starChart3d.controls.oneFinger') : t('starChart3d.controls.drag') }}</em> {{ t('starChart3d.controls.rotate') }}
           </span>
           <span class="sc3-controls__sep"></span>
           <span class="sc3-controls__item">
             <v-icon size="15">{{ coarsePointer ? 'mdi-gesture-pinch' : 'mdi-magnify-plus-outline' }}</v-icon>
-            <em>{{ coarsePointer ? 'pinch' : 'scroll' }}</em> zoom
+            <em>{{ coarsePointer ? t('starChart3d.controls.pinch') : t('starChart3d.controls.scroll') }}</em> {{ t('starChart3d.controls.zoom') }}
           </span>
           <span class="sc3-controls__sep"></span>
           <span class="sc3-controls__item">
             <v-icon size="15">mdi-arrow-all</v-icon>
-            <em>{{ coarsePointer ? '2 fingers' : 'right-drag' }}</em> pan
+            <em>{{ coarsePointer ? t('starChart3d.controls.twoFingers') : t('starChart3d.controls.rightDrag') }}</em> {{ t('starChart3d.controls.pan') }}
           </span>
         </div>
 
         <!-- world-to-world navigator -->
-        <nav v-if="!loading && planets.length" class="sc3-dock" :class="{ 'is-panel-open': panelOpen }" aria-label="Jump between worlds">
-          <button class="sc3-dock__arrow" aria-label="Previous world" @click="goWorld(-1)">
+        <nav v-if="!loading && planets.length" class="sc3-dock" :class="{ 'is-panel-open': panelOpen }" :aria-label="t('starChart3d.dock.jump')">
+          <button class="sc3-dock__arrow" :aria-label="t('starChart3d.dock.prev')" @click="goWorld(-1)">
             <v-icon size="20">mdi-chevron-left</v-icon>
           </button>
           <v-menu location="top" offset="8">
             <template #activator="{ props: menuProps }">
               <button class="sc3-dock__name" v-bind="menuProps">
-                {{ selected || 'Select a world' }}
+                {{ selected || t('starChart3d.dock.select') }}
                 <v-icon size="14">mdi-menu-up</v-icon>
               </button>
             </template>
@@ -118,7 +118,7 @@
               </v-list-item>
             </v-list>
           </v-menu>
-          <button class="sc3-dock__arrow" aria-label="Next world" @click="goWorld(1)">
+          <button class="sc3-dock__arrow" :aria-label="t('starChart3d.dock.next')" @click="goWorld(1)">
             <v-icon size="20">mdi-chevron-right</v-icon>
           </button>
         </nav>
@@ -126,12 +126,12 @@
         <!-- loading -->
         <div v-if="loading" class="sc3-load">
           <div class="sc3-load__orbit"></div>
-          <p>Charting the Origin System…</p>
+          <p>{{ t('starChart3d.loading') }}</p>
         </div>
         <div v-else-if="!planets.length" class="sc3-load">
           <v-icon color="#c8a85c" size="38">mdi-orbit</v-icon>
-          <p>Star chart data isn't loaded yet.</p>
-          <span>Run the drop sync to populate the map, then reload.</span>
+          <p>{{ t('starChart3d.empty.title') }}</p>
+          <span>{{ t('starChart3d.empty.hint') }}</span>
         </div>
 
         <!-- ============ Detail panel: world or item ============ -->
@@ -141,15 +141,17 @@
             <template v-if="selectedData">
               <div class="sc3-panel__head">
                 <div>
-                  <div class="an-eyebrow">{{ selectedData.nodeCount }} missions</div>
+                  <div class="an-eyebrow">{{ t('starChart3d.panel.missionsCount', { n: selectedData.nodeCount }, selectedData.nodeCount) }}</div>
                   <h2 class="sc3-panel__title">{{ selectedData.planet }}</h2>
                   <div v-if="focusItem" class="sc3-panel__focus">
                     <v-icon size="12" color="#7ff0eb">mdi-diamond-stone</v-icon>
-                    showing sources of <strong>{{ focusItem }}</strong>
+                    <i18n-t keypath="starChart3d.panel.showingSources" tag="span">
+                      <template #item><strong>{{ focusItem }}</strong></template>
+                    </i18n-t>
                   </div>
                   <div class="sc3-panel__wiki">
                     <a :href="worldWikiUrl(selectedData.planet)" target="_blank" rel="noopener noreferrer">
-                      wiki <v-icon size="11">mdi-open-in-new</v-icon>
+                      {{ t('starChart3d.panel.wiki') }} <v-icon size="11">mdi-open-in-new</v-icon>
                     </a>
                     <a
                       v-if="selectedWikiMap"
@@ -159,20 +161,20 @@
                       class="sc3-panel__wiki-map"
                     >
                       <v-icon size="11">mdi-map-search-outline</v-icon>
-                      {{ selectedWikiMap.title }} interactive map
+                      {{ t('starChart3d.panel.interactiveMap', { title: selectedWikiMap.title }) }}
                     </a>
                   </div>
                 </div>
                 <div class="sc3-panel__best">
                   <span>{{ fmtPlat(selectedData.value) }}</span
-                  ><small>p/drop best</small>
+                  ><small>{{ t('starChart3d.panel.bestPerDrop') }}</small>
                 </div>
                 <v-btn
                   icon
                   variant="text"
                   size="small"
                   class="sc3-panel__close"
-                  :aria-label="findItem ? 'Back to item results' : 'Close panel'"
+                  :aria-label="findItem ? t('starChart3d.panel.backToResults') : t('starChart3d.panel.close')"
                   @click="closePanel"
                 >
                   <v-icon>{{ findItem ? 'mdi-arrow-left' : 'mdi-close' }}</v-icon>
@@ -190,7 +192,7 @@
                         {{ node.location }}
                         <v-icon v-if="focusItem && nodeHasFocusItem(node)" size="11" color="#7ff0eb" class="sc3-node__mark">mdi-diamond-stone</v-icon>
                       </span>
-                      <span class="sc3-node__mode">{{ node.gameMode }}<template v-if="node.isEvent"> · event</template></span>
+                      <span class="sc3-node__mode">{{ node.gameMode }}<template v-if="node.isEvent"> · {{ t('starChart3d.panel.event') }}</template></span>
                     </span>
                     <span class="sc3-node__val" :class="valueClass(node.value)">{{ fmtPlat(node.value) }}<small>p</small></span>
                     <v-icon class="sc3-node__chev" size="18">{{ openNode === node.location ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
@@ -227,7 +229,7 @@
                               :class="{ 'is-thin': rewardMeta(rw).thin }"
                               :title="rewardMeta(rw).note"
                             >
-                              vol {{ rewardMeta(rw).vol }}<template v-if="rewardMeta(rw).thin"> ⚠</template>
+                              {{ t('starChart3d.panel.vol') }} {{ rewardMeta(rw).vol }}<template v-if="rewardMeta(rw).thin"> ⚠</template>
                             </small>
                           </template>
                           <template v-else>—</template>
@@ -243,21 +245,21 @@
             <template v-else-if="itemHits">
               <div class="sc3-panel__head">
                 <div>
-                  <div class="an-eyebrow">{{ itemHits.hits.length }} drop sources</div>
+                  <div class="an-eyebrow">{{ t('starChart3d.panel.dropSources', { n: itemHits.hits.length }, itemHits.hits.length) }}</div>
                   <h2 class="sc3-panel__title sc3-panel__title--item">{{ findItem }}</h2>
                 </div>
-                <v-btn icon variant="text" size="small" class="sc3-panel__close" aria-label="Close panel" @click="closePanel">
+                <v-btn icon variant="text" size="small" class="sc3-panel__close" :aria-label="t('starChart3d.panel.close')" @click="closePanel">
                   <v-icon>mdi-close</v-icon>
                 </v-btn>
               </div>
               <div class="sc3-item-actions">
-                <v-btn size="small" variant="outlined" color="#7ff0eb" @click="openDrops(findItem)">Full drop data</v-btn>
+                <v-btn size="small" variant="outlined" color="#7ff0eb" @click="openDrops(findItem)">{{ t('starChart3d.panel.fullDropData') }}</v-btn>
               </div>
               <ul class="sc3-nodes">
                 <li v-for="(hit, i) in itemHits.hits" :key="i" class="sc3-hit">
                   <button
                     class="sc3-hit__world"
-                    :title="`Open ${hit.location} on ${hit.planet} with this item highlighted`"
+                    :title="t('starChart3d.panel.openHitTitle', { location: hit.location, planet: hit.planet })"
                     @click="openHit(hit)"
                   >
                     {{ hit.planet }}
@@ -274,8 +276,8 @@
       <!-- WebGL fallback -->
       <div v-if="unsupported" class="sc3-fallback">
         <v-icon color="#c8a85c" size="40">mdi-video-3d-off</v-icon>
-        <p>Your browser can't render the 3D map (WebGL unavailable).</p>
-        <NuxtLink :to="localePath('/star-chart')" class="sc3-fallback__link">Open the 2D star chart instead →</NuxtLink>
+        <p>{{ t('starChart3d.fallback.text') }}</p>
+        <NuxtLink :to="localePath('/star-chart')" class="sc3-fallback__link">{{ t('starChart3d.fallback.link') }}</NuxtLink>
         <ul v-if="planets.length" class="sc3-fallback__list">
           <li v-for="p in rankedPlanets" :key="p.planet">
             <strong>{{ p.planet }}</strong> — {{ fmtPlat(p.value) }}p/drop
@@ -287,26 +289,14 @@
 
     <!-- ===================== Crawlable copy ===================== -->
     <section class="sc3-about">
-      <div class="an-eyebrow">About this map</div>
-      <h2 class="sc3-about__title">The Warframe drop map, in three dimensions</h2>
-      <p>
-        Every world of the Origin System — planets, moons and void zones — rendered as an interactive 3D star
-        chart. Each world glows by what its best mission actually pays: drop chances from the community drop
-        tables, priced against live Warframe Market sell orders and discounted by real 48-hour trade volume, so
-        a mission full of items nobody buys doesn't pretend to be a gold mine. Select a world to break its
-        missions down by rotation, reward, drop chance and realizable platinum — or search any prime part,
-        relic or item to light up exactly where it drops.
-      </p>
-      <p>
-        Prefer a flat view? The classic <NuxtLink :to="localePath('/star-chart')">2D star chart</NuxtLink> ranks the same
-        worlds and missions on a single screen.
-      </p>
+      <div class="an-eyebrow">{{ t('starChart3d.about.eyebrow') }}</div>
+      <h2 class="sc3-about__title">{{ t('starChart3d.about.title') }}</h2>
+      <p>{{ t('starChart3d.about.body') }}</p>
+      <i18n-t keypath="starChart3d.about.flatView" tag="p">
+        <template #link><NuxtLink :to="localePath('/star-chart')">{{ t('starChart3d.about.flatViewLink') }}</NuxtLink></template>
+      </i18n-t>
       <v-alert class="sc3-disclaimer an-disclaimer" type="info" density="compact">
-        Expected p/drop = Σ (drop chance × realizable value) across a mission's reward table. Realizable value
-        uses each drop's 48h average sell price, weighted by its 48h trade volume (liquidity) — so overpriced
-        drops nobody actually buys don't inflate a mission's worth. Drop chances come from community drop data;
-        prices and volume are from Warframe Market. Untradeable rewards (Forma, resources, credits) count as
-        zero.
+        {{ t('starChart3d.about.disclaimer') }}
       </v-alert>
     </section>
 
@@ -329,6 +319,7 @@ const { mobile } = useDisplay()
 const route = useRoute()
 const router = useRouter()
 const localePath = useLocalePath()
+const { t } = useI18n()
 
 const selected = ref('')
 const openNode = ref('')
@@ -347,10 +338,10 @@ const coarsePointer = ref(false)
 const srAnnouncement = computed(() => {
   if (selectedData.value) {
     const p = selectedData.value
-    return `${p.planet}: ${p.nodeCount} missions, best ${fmtPlat(p.value)} platinum per drop.`
+    return t('starChart3d.sr.world', { planet: p.planet, count: p.nodeCount, plat: fmtPlat(p.value) })
   }
   if (itemHits.value && findItem.value) {
-    return `${findItem.value}: ${itemHits.value.hits.length} drop sources highlighted on the map.`
+    return t('starChart3d.sr.item', { item: findItem.value, count: itemHits.value.hits.length })
   }
   return ''
 })
