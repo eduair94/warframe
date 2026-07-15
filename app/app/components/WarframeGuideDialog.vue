@@ -48,6 +48,11 @@
           Skip the farm: full set trades around
           <strong>{{ fmtPlat(setPrice(detail)) }}p</strong> on Warframe Market.
         </div>
+        <NuxtLink v-if="detail.isPrime && setUrl(detail)" :to="setUrl(detail)" class="wg-setlink">
+          <v-icon size="15">mdi-scale-balance</v-icon>
+          Set vs parts — is it cheaper to buy the pieces?
+          <v-icon size="14">mdi-arrow-right</v-icon>
+        </NuxtLink>
         <template v-if="!detail.isPrime">
           <div v-if="detail.bpCost > 0" class="wg-buyline">
             <v-icon size="16" color="#e7cf95">mdi-storefront-outline</v-icon>
@@ -181,6 +186,7 @@ const emit = defineEmits<{
 const { smAndDown } = useDisplay()
 const { frames, loading, error, load } = useWarframeGuide()
 const items = useItemsStore()
+const localePath = useLocalePath()
 
 // Vuetify's clearable X writes null into the model — keep the type honest
 const query = ref<string | null>('')
@@ -226,6 +232,15 @@ function setPrice(f: GuideFrame): number {
   const item = resolveMarketItem(`${f.name} Set`, itemIndex.value)
   const m: any = item && item.market ? item.market : null
   return m ? Number(m.sell) || Number(m.avg_price) || 0 : 0
+}
+
+// Internal /set/<url_name> page (the set-vs-parts breakdown). Slugged straight
+// from the frame name — "Frost Prime" -> /set/frost_prime_set. (The catalog's
+// resolveMarketItem can't be used here: it tolerates the "… Blueprint" suffix
+// and would match the blueprint item's url_name instead of the set's.)
+function setUrl(f: GuideFrame): string {
+  const slug = `${f.name.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '')}_set`
+  return localePath(`/set/${slug}`)
 }
 
 function partPrice(f: GuideFrame, c: GuideComponent): number {
@@ -490,6 +505,27 @@ function fmtChanceRange(src: GuideDropSource): string {
 }
 .wg-buyline strong {
   color: #e7cf95;
+}
+.wg-setlink {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 12px;
+  padding: 7px 12px;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #7ff0eb;
+  border: 1px solid rgba(53, 214, 208, 0.4);
+  background: rgba(53, 214, 208, 0.06);
+  clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+}
+.wg-setlink:hover {
+  color: #aef6f2;
+  background: rgba(53, 214, 208, 0.12);
 }
 .wg-note {
   font-size: 0.82rem;

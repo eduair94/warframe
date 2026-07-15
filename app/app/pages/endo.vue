@@ -9,8 +9,14 @@
           :items="rivens"
         >
           <template #top>
-            <div style="background: #1f1f2f" class="pa-3 text-white">
-              Find the best endo riven deals
+            <div
+              style="background: #1f1f2f"
+              class="pa-3 text-white d-flex flex-wrap align-center justify-space-between gap-10"
+            >
+              <span>Find the best endo riven deals</span>
+              <NuxtLink to="/guides/endo" class="endo-guide-link">
+                New here? Read the Endo guide →
+              </NuxtLink>
             </div>
           </template>
           <template #item.item_name="{ item }">
@@ -129,16 +135,10 @@
                   class="text-white d-flex mr-4 align-center justify-content-left donation_logo"
                   href="https://ko-fi.com/cambio_uruguay"
                 >
-                  <v-img
-                    max-width="50px"
-                    height="50px"
-                    contain
-                    src="/img/paypal_icon.png"
-                  >
-                    <template #sources>
-                      <source srcset="/img/paypal_icon.webp" />
-                    </template>
-                  </v-img>
+                  <picture>
+                    <source srcset="/img/paypal_icon.webp" type="image/webp" />
+                    <img src="/img/paypal_icon.png" alt="PayPal" width="50" height="50" class="donation_icon" />
+                  </picture>
                 </a>
                 <a
                   aria-label="Donar con Mercado Pago"
@@ -146,16 +146,10 @@
                   target="_blank"
                   href="https://mpago.la/19j46vX"
                 >
-                  <v-img
-                    max-width="50px"
-                    height="50px"
-                    contain
-                    src="/img/mercadopago_icon.png"
-                  >
-                    <template #sources>
-                      <source srcset="/img/mercadopago_icon.webp" />
-                    </template>
-                  </v-img>
+                  <picture>
+                    <source srcset="/img/mercadopago_icon.webp" type="image/webp" />
+                    <img src="/img/mercadopago_icon.png" alt="Mercado Pago" width="50" height="50" class="donation_icon" />
+                  </picture>
                 </a>
               </div>
             </div>
@@ -444,3 +438,22 @@ onMounted(() => {
   setScrollBar()
 })
 </script>
+
+<style scoped>
+.endo-guide-link {
+  color: #e7cf95;
+  text-decoration: none;
+  font-weight: 600;
+  border-bottom: 1px solid rgba(200, 168, 92, 0.4);
+  white-space: nowrap;
+}
+.endo-guide-link:hover {
+  color: #f4e2b4;
+}
+.donation_icon {
+  display: block;
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+</style>
