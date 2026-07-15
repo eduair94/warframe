@@ -189,7 +189,9 @@
                     </span>
                   </td>
                   <td class="col-act">
-                    <button class="an-copy" :class="{ 'is-copied': copiedKey === 'f:' + row.url_name }" :title="'Copy WTB whisper (' + fmtPlat(row.eval.best.buyIn) + 'p)'" @click="copy(buyWhisper(row.item_name, row.eval.best.buyIn), 'f:' + row.url_name)">
+                    <a class="an-copy" :href="wikiHref(row.item_name)" target="_blank" rel="noopener" title="Warframe Wiki"><v-icon size="16">mdi-book-open-variant</v-icon></a>
+                    <button class="an-copy" title="Where it drops" @click="openDrops(row)"><v-icon size="16">mdi-map-marker-radius-outline</v-icon></button>
+                    <button class="an-copy" :class="{ 'is-copied': copiedKey === 'f:' + row.url_name }" :title="'Copy WTB whisper (' + fmtPlat(row.eval.best.ask || row.eval.best.buyIn) + 'p' + (row.eval.best.askUser ? ' to ' + row.eval.best.askUser : '') + ')'" @click="copy(buyWhisper(row.eval.best.askUser, row.item_name, row.eval.best.ask || row.eval.best.buyIn), 'f:' + row.url_name)">
                       <v-icon size="16">{{ copiedKey === 'f:' + row.url_name ? 'mdi-check' : 'mdi-content-copy' }}</v-icon>
                     </button>
                   </td>
@@ -230,10 +232,14 @@
                   <div class="an-block__row"><span>Maxed vol</span><b>{{ fmtPlat(row.eval.maxedVolume) }}</b></div>
                 </div>
               </div>
-              <button class="an-copybtn" :class="{ 'is-copied': copiedKey === 'f:' + row.url_name }" @click="copy(buyWhisper(row.item_name, row.eval.best.buyIn), 'f:' + row.url_name)">
-                <v-icon size="16">{{ copiedKey === 'f:' + row.url_name ? 'mdi-check' : 'mdi-content-copy' }}</v-icon>
-                {{ copiedKey === 'f:' + row.url_name ? 'Copied whisper' : 'Copy buy whisper' }}
-              </button>
+              <div class="an-card__acts">
+                <a class="an-copy" :href="wikiHref(row.item_name)" target="_blank" rel="noopener" aria-label="Warframe Wiki"><v-icon size="16">mdi-book-open-variant</v-icon></a>
+                <button class="an-copy" aria-label="Where it drops" @click="openDrops(row)"><v-icon size="16">mdi-map-marker-radius-outline</v-icon></button>
+                <button class="an-copybtn" :class="{ 'is-copied': copiedKey === 'f:' + row.url_name }" @click="copy(buyWhisper(row.eval.best.askUser, row.item_name, row.eval.best.ask || row.eval.best.buyIn), 'f:' + row.url_name)">
+                  <v-icon size="16">{{ copiedKey === 'f:' + row.url_name ? 'mdi-check' : 'mdi-content-copy' }}</v-icon>
+                  {{ copiedKey === 'f:' + row.url_name ? 'Copied whisper' : 'Copy buy whisper' }}
+                </button>
+              </div>
             </div>
           </div>
 
@@ -370,6 +376,8 @@
         </template>
       </v-alert>
 
+      <DropLocationsDialog v-model="dropsDialog" :item-name="dropsItem" :thumb="dropsThumb" />
+
       <!-- Donations -->
       <div class="px-0 pt-3">
         <div class="d-flex flex-wrap align-center top_container justify-space-between mb-md-4">
@@ -445,6 +453,20 @@ const page = ref(1)
 const perPage = 25
 const copiedKey = ref('')
 let copyTimer: any = null
+
+// Drop-locations popup (reuses the shared dialog + WFCD drop data; the dialog
+// also surfaces the mod's Warframe-wiki link).
+const dropsDialog = ref(false)
+const dropsItem = ref('')
+const dropsThumb = ref('')
+function openDrops(row: { item_name: string; thumb?: string }) {
+  dropsItem.value = row.item_name
+  dropsThumb.value = row.thumb || ''
+  dropsDialog.value = true
+}
+function wikiHref(name: string): string {
+  return itemWikiUrl(name)
+}
 
 type Dir = 'asc' | 'desc'
 function arrow(key: string, activeKey: string, dir: Dir): string {
@@ -698,7 +720,7 @@ const sculptureSources = computed<EndoSourceRow[]>(() => {
       url_name: el.url_name,
       thumb: el.thumb,
       link: itemUrl(el.url_name),
-      whisper: buyWhisper(el.item_name, plat),
+      whisper: buyWhisper(undefined, el.item_name, plat),
       endo,
       plat,
       endoPerPlat: endoPerPlat(endo, plat),
@@ -721,7 +743,7 @@ const rivenSources = computed<EndoSourceRow[]>(() => {
       kind: 'riven',
       name,
       link: it.id ? `https://warframe.market/auction/${it.id}` : 'https://warframe.market/auctions',
-      whisper: buyWhisper(name + ' (riven)', plat),
+      whisper: buyWhisper(undefined, name + ' (riven)', plat),
       endo,
       plat,
       endoPerPlat: Number(it.endoPerPlat) || endoPerPlat(endo, plat),
@@ -1012,6 +1034,21 @@ onMounted(() => {
   color: #4caf7d;
   border-color: rgba(76, 175, 125, 0.6);
 }
+/* Mobile card action row: wiki + drops icons beside the full-width copy button. */
+.an-card__acts {
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+  margin-top: 8px;
+}
+.an-card__acts .an-copy {
+  width: 40px;
+  flex: 0 0 auto;
+}
+.an-card__acts .an-copybtn {
+  margin-top: 0;
+  flex: 1 1 auto;
+}
 .an-copybtn {
   display: inline-flex;
   align-items: center;
@@ -1145,6 +1182,14 @@ onMounted(() => {
 .kind--riven { color: #c4b0ee; background: rgba(159, 122, 234, 0.16); border-color: rgba(159, 122, 234, 0.42); }
 .kind--mod { color: #4fb3bf; background: rgba(79, 179, 191, 0.14); border-color: rgba(79, 179, 191, 0.4); }
 /* Demand meter */
+/* Verdict row: lay the plat/1k pill and the demand meter on one spaced line so
+   the meter doesn't butt up against the pill (the global rule only sets margin). */
+.an-card__verdict {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+}
 .an-demand {
   display: inline-flex;
   align-items: center;

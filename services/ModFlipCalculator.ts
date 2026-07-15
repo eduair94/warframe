@@ -23,7 +23,7 @@ export interface IFlipOrder {
   platinum: number;
   mod_rank?: number;
   visible?: boolean;
-  user?: { status?: string };
+  user?: { status?: string; ingame_name?: string };
 }
 
 /** One rung of the price ladder: the live market at a single mod rank. */
@@ -34,6 +34,8 @@ export interface IFlipRankRung {
   ask: number;
   /** Highest buy order = what you'd RECEIVE selling instantly at this rank (0 if none). */
   bid: number;
+  /** In-game name of the seller behind the lowest ask — for the WTB whisper. */
+  askUser?: string;
   /** Number of actionable sell orders at this rank. */
   sellCount: number;
   /** Number of actionable buy orders at this rank. */
@@ -79,6 +81,7 @@ export function buildLadder(orders: IFlipOrder[], maxRank: number): IFlipRankRun
   for (let rank = 0; rank <= maxRank; rank++) {
     let ask = 0;
     let bid = 0;
+    let askUser = '';
     let sellCount = 0;
     let buyCount = 0;
     for (const o of orders) {
@@ -87,13 +90,16 @@ export function buildLadder(orders: IFlipOrder[], maxRank: number): IFlipRankRun
       const p = Number(o.platinum) || 0;
       if (o.order_type === 'sell') {
         sellCount++;
-        if (ask === 0 || p < ask) ask = p;
+        if (ask === 0 || p < ask) {
+          ask = p;
+          askUser = o.user?.ingame_name || '';
+        }
       } else if (o.order_type === 'buy') {
         buyCount++;
         if (p > bid) bid = p;
       }
     }
-    rungs.push({ rank, ask, bid, sellCount, buyCount });
+    rungs.push({ rank, ask, bid, askUser, sellCount, buyCount });
   }
   return rungs;
 }

@@ -1,5 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import { es, pt } from 'vuetify/locale'
+import { en, es, pt } from 'vuetify/locale'
 
 // SITE_URL is the PUBLIC FRONTEND origin — NOT the API. The API lives at
 // warframe.digitalshopuy.com (serves JSON); the app is served from
@@ -293,7 +293,10 @@ export default defineNuxtConfig({
         defaultSet: 'mdi' // glyphs via @mdi/font, auto-injected by the module (see css comment above)
       },
       locale: {
-        messages: { es, pt }
+        // Supplying `messages` replaces Vuetify's built-in packs, so `en` must be
+        // included explicitly — otherwise English pages render raw `$vuetify.*`
+        // keys (no-data text, data-table aria labels, pagination, etc.).
+        messages: { en, es, pt }
       },
       theme: {
         defaultTheme: 'dark',

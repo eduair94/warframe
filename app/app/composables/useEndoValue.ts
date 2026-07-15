@@ -94,6 +94,8 @@ export interface FlipRung {
   rank: number
   ask: number
   bid: number
+  /** In-game name of the seller behind the lowest ask (for the WTB whisper). */
+  askUser?: string
   sellCount: number
   buyCount: number
 }
@@ -126,6 +128,8 @@ export interface FlipOption {
   bid: number
   /** Price actually used as the buy-in (ask by default; bid in buy-order mode). */
   buyIn: number
+  /** Seller behind the lowest ask at this rank (for the whisper). */
+  askUser?: string
   endoToFinish: number
   creditsToFinish: number
   /** maxedSell − buyIn (before credits/time). */
@@ -147,6 +151,8 @@ export interface FlipEval {
   maxedSell: number
   /** Current lowest maxed sell order (list price). */
   maxedAsk: number
+  /** Seller behind the lowest maxed ask (for the dissolve-source whisper). */
+  maxedAskUser: string
   /** Highest maxed buy order — instant-sell price (0 if nobody is buying). */
   maxedBid: number
   maxedAvg: number
@@ -254,6 +260,7 @@ export function evalFlip(row: EndoFlipRow, opts: FlipOpts = {}): FlipEval {
       ask,
       bid,
       buyIn,
+      askUser: rung.askUser || '',
       endoToFinish,
       creditsToFinish: creditsFromRankToMax(rarity, rung.rank, maxRank),
       profit,
@@ -272,6 +279,7 @@ export function evalFlip(row: EndoFlipRow, opts: FlipOpts = {}): FlipEval {
     maxRank,
     maxedSell,
     maxedAsk,
+    maxedAskUser: maxRung?.askUser || '',
     maxedBid,
     maxedAvg,
     maxedVolume,
@@ -337,8 +345,10 @@ export function itemUrl(urlName: string): string {
  * copies the same shape with the seller's name prefixed; we omit the name since
  * the aggregate feed has no single seller — paste it after picking one.
  */
-export function buyWhisper(name: string, plat: number): string {
-  return `/w  Hi! I want to buy: "${name}" for ${Math.round(Number(plat) || 0)} platinum. (warframe.market)`
+export function buyWhisper(user: string | undefined | null, name: string, plat: number): string {
+  const u = String(user || '').trim()
+  const to = u ? `/w ${u} ` : ''
+  return `${to}Hi! I want to buy: "${name}" for ${Math.round(Number(plat) || 0)} platinum. (warframe.market)`
 }
 
 /**
@@ -376,7 +386,7 @@ export function modAsEndoSource(row: EndoFlipRow): EndoSourceRow {
     url_name: row.url_name,
     thumb: row.thumb,
     link: itemUrl(row.url_name),
-    whisper: buyWhisper(row.item_name, plat),
+    whisper: buyWhisper(ev.maxedAskUser, row.item_name, plat),
     endo,
     plat,
     endoPerPlat: endoPerPlat(endo, plat),

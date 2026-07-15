@@ -299,8 +299,10 @@ async function startTour() {
 }
 @media (max-width: 600px) {
   .logo_image.v-img {
-    width: 190px !important;
-    max-width: 60vw !important;
+    /* Leave room for the menu button + right-side icons (tour, github, install,
+       language) so nothing spills out of the bar. */
+    width: 150px !important;
+    max-width: 42vw !important;
   }
 }
 
