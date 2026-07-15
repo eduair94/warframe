@@ -16,7 +16,7 @@
  *
  * Endo/credit maths mirror services/EndoCost.ts (wiki-verified 2026-07-14).
  */
-import { demandTier, type DemandTier } from './marketFormat'
+import { demandTier, tLabel, type DemandTier } from './marketFormat'
 
 /** rarity string (case-insensitive) → tier; archon=Legendary, peculiar=Uncommon. */
 const RARITY_TIER: Record<string, number> = {
@@ -131,7 +131,11 @@ export interface FlipOption {
   ask: number
   /** Highest buy order at this rank — the competitive buy-order price. */
   bid: number
-  /** Price actually used as the buy-in (ask by default; bid in buy-order mode). */
+  /**
+   * Price actually used as the buy-in: the ask (instant) by default, or the top
+   * bid capped at the ask in buy-order mode. Only ranks with a live ask (ask > 0)
+   * are ever buy-in candidates.
+   */
   buyIn: number
   /** Seller behind the lowest ask at this rank (for the whisper). */
   askUser?: string
@@ -244,9 +248,14 @@ export function evalFlip(row: EndoFlipRow, opts: FlipOpts = {}): FlipEval {
     if (rung.rank >= maxRank) continue // maxed rung isn't a buy-in
     const ask = Number(rung.ask) || 0
     const bid = Number(rung.bid) || 0
-    // Buy-in: at the ask (instant), or via a buy order competing at the bid.
-    const buyIn = opts.buyViaBid ? (bid > 0 ? bid : ask) : ask
-    if (buyIn <= 0) continue
+    // A rank is only a real buy-in if someone is actually SELLING a copy there
+    // (ask > 0). Without a live ask the rung's "bid" is a lone lowball buy order
+    // — e.g. a stray 1p bid on a rank nobody lists — which would otherwise be
+    // picked as a phantom buy-in (buy a rank-1 Primed Chamber for 1p, sell it
+    // maxed for ~260). Buy-order mode then competes at the TOP bid, but never
+    // above the ask (a crossed book just buys the ask).
+    if (ask <= 0) continue
+    const buyIn = opts.buyViaBid && bid > 0 ? Math.min(bid, ask) : ask
     const endoToFinish = endoFromRankToMax(rarity, rung.rank, maxRank)
     if (endoToFinish <= 0) continue
     const profit = maxedSell - buyIn
