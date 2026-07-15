@@ -17,9 +17,9 @@
             <p v-if="direction === 'flip'" class="an-lede">
               Sitting on endo with nothing left to max? Buy a mod cheap — unranked
               <em>or partly ranked</em> — finish it with your endo, and resell it
-              maxed. Ranked by platinum per 1,000 endo, using the <b>live buy/sell
-              prices of online players</b> — not stale averages — so a single old
-              trade can't mislead you.
+              maxed. Ranked by platinum per 1,000 endo across <b>well-traded
+              mods</b>, so the numbers reflect what actually sells — and it tells
+              you the cheapest rank to buy in at.
             </p>
             <p v-else class="an-lede">
               The cheapest endo per platinum across Ayatan sculptures, rivens, and
