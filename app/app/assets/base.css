@@ -16,3 +16,15 @@ a {
 a:hover {
   text-decoration: none;
 }
+
+/* Mobile data-table (stacked rows): the tags chip-group defaults to the left,
+   drifting away from its right-aligned value column. Right-align it so it lines
+   up under its label like every other cell value. */
+.v-data-table__tr--mobile .v-chip-group {
+  justify-content: flex-end;
+  flex: 1 1 auto;
+}
+.v-data-table__tr--mobile .v-chip-group .v-slide-group__content {
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
