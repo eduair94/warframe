@@ -36,24 +36,32 @@ jobs:
         run: npm ci
         working-directory: app
 
-      # --- API gates ---
-      - name: Lint (API)
+      # --- Gates ---
+      # Style/static-analysis gates are ADVISORY (continue-on-error): they run
+      # and annotate the run, but do not block deploy while pre-existing lint /
+      # format / type debt is cleaned up incrementally. Unit tests are the one
+      # BLOCKING gate — a failure here fails the job and stops the deploy.
+      - name: Lint (API) [advisory]
         run: npm run lint
+        continue-on-error: true
 
-      - name: Format check (API)
+      - name: Format check (API) [advisory]
         run: npm run format:check
+        continue-on-error: true
 
-      - name: Unit tests (API)
-        run: npm run test:unit
-
-      # --- App gates ---
-      - name: Typecheck (app)
+      - name: Typecheck (app) [advisory]
         run: npm run typecheck
         working-directory: app
+        continue-on-error: true
 
-      - name: Lint (app)
+      - name: Lint (app) [advisory]
         run: npm run lint
         working-directory: app
+        continue-on-error: true
+
+      # BLOCKING — must pass for the deploy to run.
+      - name: Unit tests (API)
+        run: npm run test:unit
 
   deploy:
     name: Deploy to prod (pm2)

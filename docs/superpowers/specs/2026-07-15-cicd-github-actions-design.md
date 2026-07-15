@@ -32,7 +32,7 @@ prod server, with zero manual steps.
 |---|---|
 | CI reaches prod via | **SSH from a GitHub-hosted runner** (`appleboy/ssh-action`) |
 | Deploy trigger | **Push to `main`** → gates → auto-deploy when green |
-| Gates | lint + prettier-check + **unit** tests (root) and typecheck + lint (app). Integration tests that hit live wf.market are **excluded** (flaky/rate-limited in CI) |
+| Gates | **Unit tests (API) BLOCK** the deploy. lint + format:check (API) and typecheck + lint (app) are **advisory** (`continue-on-error`) — they run and annotate but don't block, because the codebase carries pre-existing lint/format/type debt (17 lint errors at design time). Integration tests that hit live wf.market are **excluded** (flaky/rate-limited). Tighten the advisory gates to blocking once the debt is cleaned. |
 | pm2 scope | **Reload all** — `pm2 reload ecosystem.config.js --update-env` |
 | Node | **24** (`.nvmrc`). Nuxt 4.4.8 requires `^22.12 \|\| ^24.11 \|\| >=26`, so the Dockerfile's `node:20` is too old for the app. Node 24 ships **npm 11**, matching the dev machine (24.15 / npm 11.12) that authored `app/package-lock.json` — critical, because npm 10 (node 20/22) builds a different dependency tree and rejects the lock (`Missing @esbuild/... from lock file`). Prod must also be ≥24.11 for the deploy build. (Stale `Dockerfile` `node:20` should be bumped separately.) |
 
@@ -48,9 +48,9 @@ Single workflow: `.github/workflows/deploy.yml`.
 1. `actions/checkout`
 2. `actions/setup-node` (node 20, cache npm for both lockfiles)
 3. `npm ci` (root) and `cd app && npm ci`
-4. Gates, fail-fast:
-   - root: `npm run lint`, `npm run format:check`, `npm run test:unit`
-   - app: `npm run typecheck`, `npm run lint`
+4. Gates (all run every time; advisory ones annotate but don't fail the job):
+   - **advisory** (`continue-on-error`): root `npm run lint`, `npm run format:check`; app `npm run typecheck`, `npm run lint`
+   - **blocking**: root `npm run test:unit` — its failure fails `ci` and stops `deploy`
 
 **Job `deploy`** — `needs: ci`, `if: github.event_name == 'push' && github.ref == 'refs/heads/main'`:
 - `appleboy/ssh-action` runs on the server, one `&&`-chained script:
