@@ -539,6 +539,10 @@ export class MarketService {
     not_found?: boolean;
     /** Per-rank flip ladder + stat blocks — present only for rank-able mods. */
     flip?: IModFlipData;
+    /** Dominant order subtype (e.g. relic 'intact'), for the stored depth ladder. */
+    subtype?: string;
+    /** Order-book depth (price × quantity levels) for the bulk buy/sell modeler. */
+    depth?: { buy: Array<{ price: number; quantity: number; orders: number }>; sell: Array<{ price: number; quantity: number; orders: number }> };
   }> {
     try {
       // Anti-detection pacing now happens once per HTTP request inside
@@ -624,9 +628,17 @@ export class MarketService {
         }
       }
 
+      // Compact order-book depth (bulk buy/sell modeler) — extracted from the
+      // orders we ALREADY fetched, so the request path can later serve it from
+      // the database instead of hitting warframe.market live. Same dominant
+      // subtype as the prices above, so it describes the same tier.
+      const depth = OrderCalculator.depthLadder(ordersResponse.payload.orders, subtype);
+
       return {
         ...prices,
         ...stats,
+        ...(subtype ? { subtype } : {}),
+        depth,
         ...(flip ? { flip } : {})
       };
     } catch (error: any) {

@@ -28,7 +28,6 @@ import { DropService } from './DropService';
 import { ItemProcessor } from './ItemProcessor';
 import { ItemService } from './ItemService';
 import { MarketService, PriceCalculationConfig } from './MarketService';
-import { OrderCalculator } from './OrderCalculator';
 import { MarketAnalyticsService } from './MarketAnalyticsService';
 import { PriceHistoryService } from './PriceHistoryService';
 import { RelicService } from './RelicService';
@@ -477,47 +476,32 @@ export abstract class BaseWarframeClient {
   }
 
   /**
-   * Live order-book depth for one item, for the "bulk buy/sell" modeler.
+   * Order-book depth for one item, for the "bulk buy/sell" modeler.
    *
-   * warframe.market relic/mod BUY orders are polluted with meme-quantity bait
-   * (e.g. 125p × 9,996 while the relic clears at ~30p). Rather than persist depth
-   * for every item, the details dialogs fetch this on demand and walk the ladder
-   * client-side (see the useOrderBook composable) to price a chosen quantity —
-   * keeping the maths, and the bait cap, in one tested place.
-   *
-   * Levels are aggregated by price and sorted best-first (buy desc, sell asc),
-   * across the dominant subtype (e.g. an intact relic) and visible orders only.
-   * Quantity is summed per price so a real bulk shop and a bait order look the
-   * same here; the client decides credibility from the going rate.
+   * Served from the DATABASE — the compact depth ladder the price-sync crawler
+   * stores on `item.market.depth` (see OrderCalculator.depthLadder). The request
+   * path deliberately makes NO live warframe.market call: on-demand order fetches
+   * hang on the datacenter IP (unlike the crawler, which paces + rotates
+   * proxies). An item with no stored depth yet (synced before this shipped)
+   * returns empty ladders; the dialog degrades gracefully and fills in after the
+   * item's next price sync.
    */
   async getOrderBook(urlName: string): Promise<{
     url_name: string;
     subtype: string | null;
+    updatedAt: any;
     buy: Array<{ price: number; quantity: number; orders: number }>;
     sell: Array<{ price: number; quantity: number; orders: number }>;
   }> {
-    const resp = await this.marketService.getItemOrders<{ payload: { orders: any[] } }>(urlName);
-    const orders = (resp?.payload?.orders || []).filter((o) => o && o.visible !== false);
-    const subtype = OrderCalculator.dominantSubtype(orders);
-    const inScope = (o: any) => subtype === undefined || o.subtype === subtype;
-    const levels = (type: 'buy' | 'sell') => {
-      const byPrice = new Map<number, { price: number; quantity: number; orders: number }>();
-      for (const o of orders) {
-        if (o.order_type !== type || !inScope(o)) continue;
-        const price = Number(o.platinum) || 0;
-        if (price <= 0) continue;
-        const qty = Math.max(1, Math.floor(Number(o.quantity) || 1));
-        const cur = byPrice.get(price) || { price, quantity: 0, orders: 0 };
-        cur.quantity += qty;
-        cur.orders += 1;
-        byPrice.set(price, cur);
-      }
-      const arr = [...byPrice.values()];
-      arr.sort((a, b) => (type === 'buy' ? b.price - a.price : a.price - b.price));
-      // Bound the payload: 40 price levels is far deeper than any realistic bulk trade.
-      return arr.slice(0, 40);
+    const item: any = await this.itemService.getItemByUrlName(urlName);
+    const depth = item?.market?.depth;
+    return {
+      url_name: urlName,
+      subtype: item?.market?.subtype ?? null,
+      updatedAt: item?.priceUpdate ?? null,
+      buy: Array.isArray(depth?.buy) ? depth.buy : [],
+      sell: Array.isArray(depth?.sell) ? depth.sell : [],
     };
-    return { url_name: urlName, subtype: subtype ?? null, buy: levels('buy'), sell: levels('sell') };
   }
 
   // =====================================

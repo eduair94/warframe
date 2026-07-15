@@ -34,6 +34,48 @@ describe('OrderCalculator', () => {
     });
   });
 
+  describe('depthLadder', () => {
+    it('aggregates quantity by price and sorts best-first per side', () => {
+      const orders: IOrderData[] = [
+        o({ order_type: 'buy', platinum: 30, quantity: 2, subtype: 'intact' }),
+        o({ order_type: 'buy', platinum: 30, quantity: 3, subtype: 'intact' }), // same price -> summed
+        o({ order_type: 'buy', platinum: 10, quantity: 5, subtype: 'intact' }),
+        o({ order_type: 'sell', platinum: 40, quantity: 1, subtype: 'intact' }),
+        o({ order_type: 'sell', platinum: 35, quantity: 4, subtype: 'intact' }),
+      ];
+      const d = OrderCalculator.depthLadder(orders, 'intact');
+      // Buy: highest first, 30 merged to qty 5 over 2 orders
+      expect(d.buy).toEqual([
+        { price: 30, quantity: 5, orders: 2 },
+        { price: 10, quantity: 5, orders: 1 },
+      ]);
+      // Sell: lowest first
+      expect(d.sell).toEqual([
+        { price: 35, quantity: 4, orders: 1 },
+        { price: 40, quantity: 1, orders: 1 },
+      ]);
+    });
+
+    it('keeps only the requested subtype and defaults missing quantity to 1', () => {
+      const orders: IOrderData[] = [
+        o({ order_type: 'buy', platinum: 20, subtype: 'intact' }), // no quantity -> 1
+        o({ order_type: 'buy', platinum: 99, quantity: 7, subtype: 'radiant' }), // wrong variant -> dropped
+      ];
+      const d = OrderCalculator.depthLadder(orders, 'intact');
+      expect(d.buy).toEqual([{ price: 20, quantity: 1, orders: 1 }]);
+      expect(d.sell).toEqual([]);
+    });
+
+    it('caps each side to maxLevels', () => {
+      const orders: IOrderData[] = Array.from({ length: 30 }, (_, i) =>
+        o({ order_type: 'sell', platinum: i + 1, quantity: 1 }),
+      );
+      const d = OrderCalculator.depthLadder(orders, undefined, 15);
+      expect(d.sell).toHaveLength(15);
+      expect(d.sell[0]!.price).toBe(1); // cheapest kept
+    });
+  });
+
   describe('subtype filtering', () => {
     it('prices both sides at the requested subtype, ignoring other variants', () => {
       const orders: IOrderData[] = [

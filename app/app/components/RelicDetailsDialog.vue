@@ -124,6 +124,7 @@
             {{ t('relicsValue.dialog.bulk.error') }}
             <button type="button" class="rld__retry" @click="loadBook">{{ t('relicsValue.dialog.bulk.retry') }}</button>
           </div>
+          <div v-else-if="bookEmpty" class="rld__bulk-state">{{ t('relicsValue.dialog.bulk.pending') }}</div>
           <div v-else-if="book" class="rld__bulk-grid">
             <!-- Sell your relics into the credible bids -->
             <div class="rld__quote rld__quote--sell">
@@ -321,6 +322,9 @@ const sellQuote = computed(() => (book.value ? bulkSell(book.value, qty.value, g
 const buyQuote = computed(() => (book.value ? bulkBuy(book.value, qty.value, goingRate.value) : null))
 const sellAvail = computed(() => (book.value ? availableUnits(book.value, 'sell', goingRate.value) : 0))
 const buyAvail = computed(() => (book.value ? availableUnits(book.value, 'buy', goingRate.value) : 0))
+// Book present but no stored levels yet — an item synced before depth capture
+// shipped. Fills in on its next price sync.
+const bookEmpty = computed(() => !!book.value && !book.value.buy.length && !book.value.sell.length)
 function stepQty(d: number) {
   qty.value = Math.max(1, Math.min(999, (Number(qty.value) || 1) + d))
 }

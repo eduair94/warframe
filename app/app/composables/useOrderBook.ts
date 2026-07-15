@@ -25,6 +25,8 @@ export interface BookLevel {
 export interface OrderBook {
   url_name: string
   subtype: string | null
+  /** When the crawler last refreshed this item's book (item.priceUpdate). */
+  updatedAt?: string | null
   /** Buy orders (bids), best-first (highest price first). */
   buy: BookLevel[]
   /** Sell orders (asks), best-first (lowest price first). */

@@ -26,6 +26,8 @@ import { PRICE_CONFIG } from '../constants';
 export interface IOrderData {
   order_type: 'buy' | 'sell';
   platinum: number;
+  /** Units this order is for — bulk buyers/sellers post large quantities. */
+  quantity?: number;
   /** Mod rank (0 to mod_max_rank for mods, undefined for non-mods) */
   mod_rank?: number;
   /** Ayatan sculptures: number of amber stars socketed (0-2) */
@@ -298,8 +300,50 @@ export class OrderCalculator {
   }
 
   /**
+   * Aggregates orders into a compact depth ladder — price levels with total
+   * quantity — for the "bulk buy/sell" modeler. Captured during the price sync
+   * (from the orders it already fetches) and stored on the item, so the request
+   * path serves it from the database instead of hitting warframe.market live
+   * (the datacenter IP hangs on on-demand order fetches).
+   *
+   * Orders are filtered to the dominant subtype (e.g. an intact relic) and summed
+   * by price, so a real bulk shop and a bait order look identical here — the
+   * client (useOrderBook) decides credibility from the going rate. Levels are
+   * sorted best-first (buy desc, sell asc) and bounded.
+   *
+   * @param orders - Raw orders (v1-shaped, carrying quantity + subtype)
+   * @param subtype - Variant to keep (undefined = no subtype filter)
+   * @param maxLevels - Cap on price levels per side (default 15 — deeper than any
+   *   realistic bulk trade)
+   */
+  static depthLadder(
+    orders: IOrderData[],
+    subtype?: string,
+    maxLevels = 15
+  ): { buy: Array<{ price: number; quantity: number; orders: number }>; sell: Array<{ price: number; quantity: number; orders: number }> } {
+    const inScope = (o: IOrderData) => subtype === undefined || o.subtype === subtype;
+    const side = (type: 'buy' | 'sell') => {
+      const byPrice = new Map<number, { price: number; quantity: number; orders: number }>();
+      for (const o of orders || []) {
+        if (o.order_type !== type || !inScope(o)) continue;
+        const price = Number(o.platinum) || 0;
+        if (price <= 0) continue;
+        const qty = Math.max(1, Math.floor(Number(o.quantity) || 1));
+        const cur = byPrice.get(price) || { price, quantity: 0, orders: 0 };
+        cur.quantity += qty;
+        cur.orders += 1;
+        byPrice.set(price, cur);
+      }
+      const arr = [...byPrice.values()];
+      arr.sort((a, b) => (type === 'buy' ? b.price - a.price : a.price - b.price));
+      return arr.slice(0, maxLevels);
+    };
+    return { buy: side('buy'), sell: side('sell') };
+  }
+
+  /**
    * Calculates the profit margin between buy and sell prices
-   * 
+   *
    * @param prices - Calculated prices
    * @returns Profit margin (sell - buy)
    */
