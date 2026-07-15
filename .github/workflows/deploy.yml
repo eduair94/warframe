@@ -94,6 +94,11 @@ jobs:
           script_stop: true
           script: |
             set -e
+            # The server's root user defaults to node 22 via nvm; the Nuxt build
+            # (and the npm-11 lockfile) need node 24 / npm 11, which live in
+            # /usr/local/bin. Prepend it so node/npm/pm2 all resolve to 24.
+            export PATH=/usr/local/bin:$PATH
+            node -v
             cd "${{ secrets.DEPLOY_PATH }}"
             git pull --ff-only
             npm ci
