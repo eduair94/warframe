@@ -1,0 +1,90 @@
+name: CI / Deploy
+
+# Push to main  -> run gates, then deploy to the pm2 prod server over SSH.
+# Pull requests -> run gates only (no deploy).
+# See docs/superpowers/specs/2026-07-15-cicd-github-actions-design.md
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+# Serialize per ref: main runs QUEUE (never two deploys at once); superseded PR
+# check runs cancel.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+
+jobs:
+  ci:
+    name: Gates (lint / typecheck / unit tests)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            app/package-lock.json
+
+      - name: Install API deps
+        run: npm ci
+
+      - name: Install app deps
+        run: npm ci
+        working-directory: app
+
+      # --- API gates ---
+      - name: Lint (API)
+        run: npm run lint
+
+      - name: Format check (API)
+        run: npm run format:check
+
+      - name: Unit tests (API)
+        run: npm run test:unit
+
+      # --- App gates ---
+      - name: Typecheck (app)
+        run: npm run typecheck
+        working-directory: app
+
+      - name: Lint (app)
+        run: npm run lint
+        working-directory: app
+
+  deploy:
+    name: Deploy to prod (pm2)
+    needs: ci
+    # Dormant until you ARM it: set repo variable DEPLOY_ENABLED=true (after the
+    # SSH secrets are in place). Lets the workflow land + run CI without firing a
+    # deploy that would fail for missing secrets.
+    if: >-
+      github.event_name == 'push'
+      && github.ref == 'refs/heads/main'
+      && vars.DEPLOY_ENABLED == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: SSH deploy (pull -> build -> pm2 reload)
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.SSH_PORT || 22 }}
+          # Abort on the first failing command, so a failed build never reaches
+          # `pm2 reload` and prod keeps serving the previous build.
+          script_stop: true
+          script: |
+            set -e
+            cd "${{ secrets.DEPLOY_PATH }}"
+            git pull --ff-only
+            npm ci
+            npm run build
+            cd app
+            npm ci
+            npm run build
+            cd ..
+            pm2 reload ecosystem.config.js --update-env

@@ -84,6 +84,15 @@ pushes, so this serialization matters.
 | `SSH_PORT` | optional, defaults to 22 |
 | `DEPLOY_PATH` | absolute path to the repo checkout on the server (keeps the path out of the committed workflow) |
 
+Plus one repo **variable** (Settings → Secrets and variables → Actions → Variables):
+
+| Variable | Purpose |
+|---|---|
+| `DEPLOY_ENABLED` | Set to `true` to arm the `deploy` job. Until then the workflow lands and runs CI, but `deploy` stays dormant — so merging the workflow can't fire a deploy that would fail for missing secrets. |
+
+**Activation order:** (1) add the 5 secrets, (2) set `DEPLOY_ENABLED=true`, (3)
+next push to `main` deploys.
+
 ## Files changed / added
 
 - **Add** `.github/workflows/deploy.yml`
