@@ -35,6 +35,7 @@ import { RivenService } from './RivenService';
 import { SetService } from './SetService';
 import { WarframeItemsResponse } from "./WarframeItems.interface";
 import { IEndoFlipResponse, IEndoFlipRow } from '../interfaces/endo.interface';
+import { isEndoRankableMod } from './EndoCost';
 
 /**
  * Configuration options for Warframe clients
@@ -389,6 +390,9 @@ export abstract class BaseWarframeClient {
       // Require a real ladder: a rank-able mod whose fusion cost we can compute
       // (buildModFlipData already gated on tags/rarity, so presence is enough).
       if (!flip || !Array.isArray(flip.ranks) || !(Number(flip.maxRank) > 0)) continue;
+      // Drop Requiem/Kuva mods (murmur-ranked, not endo) even if an older sync
+      // stored a ladder for them — no re-sync needed to clean the board.
+      if (!isEndoRankableMod(it.url_name, it.items_in_set?.[0]?.tags)) continue;
       mods.push({
         item_name: it.item_name,
         url_name: it.url_name,

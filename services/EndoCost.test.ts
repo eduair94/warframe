@@ -16,6 +16,7 @@ import {
   endoFromRankToMax,
   creditsFromRankToMax,
   dissolveEndo,
+  isEndoRankableMod,
 } from './EndoCost';
 
 describe('EndoCost.endoToMax', () => {
@@ -90,5 +91,19 @@ describe('EndoCost.dissolveEndo', () => {
   it('an unranked mod dissolves for just its base (tier·5)', () => {
     expect(dissolveEndo('Common', 0)).toBe(5);
     expect(dissolveEndo('Rare', 0)).toBe(15);
+  });
+});
+
+describe('EndoCost.isEndoRankableMod', () => {
+  it('excludes Requiem/Kuva mods and their Invocation variants', () => {
+    expect(isEndoRankableMod('xata', ['mod', 'rare', 'parazon'])).toBe(false);
+    expect(isEndoRankableMod('vome', ['mod', 'rare', 'parazon'])).toBe(false);
+    expect(isEndoRankableMod('xata_invocation', ['mod', 'rare', 'tome'])).toBe(false);
+    expect(isEndoRankableMod('anything', ['mod', 'requiem'])).toBe(false);
+  });
+  it('keeps normal endo-rankable mods', () => {
+    expect(isEndoRankableMod('serration', ['mod', 'uncommon'])).toBe(true);
+    expect(isEndoRankableMod('narrow_minded', ['mod', 'rare', 'corrupted'])).toBe(true);
+    expect(isEndoRankableMod('primed_continuity', ['mod', 'legendary'])).toBe(true);
   });
 });

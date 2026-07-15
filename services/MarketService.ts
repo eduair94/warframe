@@ -19,7 +19,7 @@ import { IHttpClient } from '../interfaces/http.interface';
 import { OrderCalculator } from './OrderCalculator';
 import { StatisticsCalculator, IStatisticsDataPoint } from './StatisticsCalculator';
 import { buildModFlipData, IModFlipData } from './ModFlipCalculator';
-import { rarityTier } from './EndoCost';
+import { rarityTier, isEndoRankableMod } from './EndoCost';
 import { WarframeItemsResponse } from "./WarframeItems.interface";
 
 // Debug mode - set DEBUG=true or DEBUG=warframe:* for verbose logging
@@ -600,7 +600,11 @@ export class MarketService {
       const modTags: string[] = (set0 && set0.tags) || [];
       const modRarity: string = (set0 && set0.rarity) || '';
       const isFlippableMod =
-        typeof maxRank === 'number' && maxRank > 0 && modTags.includes('mod') && rarityTier(modRarity) > 0;
+        typeof maxRank === 'number' &&
+        maxRank > 0 &&
+        modTags.includes('mod') &&
+        rarityTier(modRarity) > 0 &&
+        isEndoRankableMod(item.url_name, modTags);
       if (isFlippableMod) {
         try {
           flip = buildModFlipData(ordersResponse.payload.orders, rawStats48h, {

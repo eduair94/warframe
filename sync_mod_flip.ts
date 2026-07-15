@@ -16,6 +16,7 @@ import "./env";
 import { MongooseServer } from "./database";
 import { Item } from "./interface";
 import WarframeUndici from "./warframe-undici";
+import { isEndoRankableMod } from "./services/EndoCost";
 
 const CONCURRENCY_LIMIT = parseInt(process.env.CONCURRENCY || '20', 10);
 const MIN_DELAY = parseInt(process.env.MIN_DELAY || '150', 10);
@@ -41,8 +42,10 @@ function isFlippableMod(item: any): boolean {
   const maxRank = Number(set0.mod_max_rank) || 0;
   if (maxRank <= 0) return false;
   if (!tags.includes('mod')) return false;
-  // Arcanes rank by combining duplicates (not endo); Requiem by charges/Kuva.
-  if (tags.includes('arcane_enhancement') || tags.includes('requiem')) return false;
+  // Arcanes rank by combining duplicates (not endo).
+  if (tags.includes('arcane_enhancement')) return false;
+  // Requiem/Kuva mods + their Invocation variants rank via murmurs, not endo.
+  if (!isEndoRankableMod(item.url_name, tags)) return false;
   return true;
 }
 

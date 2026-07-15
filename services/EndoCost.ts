@@ -57,6 +57,31 @@ export function rarityTier(rarity: string | undefined | null): number {
   return RARITY_TIER[String(rarity || '').toLowerCase()] ?? 0;
 }
 
+/**
+ * Requiem (Kuva Lich / Sister) mods and their Parazon "Invocation" variants rank
+ * up via Requiem Relics / murmurs, NOT endo — so they don't belong on an
+ * endo-flip board. Keyed by warframe.market url_name.
+ */
+const REQUIEM_MODS = new Set([
+  'ash', 'fass', 'jahu', 'khra', 'lohk', 'netra', 'ris', 'vome', 'xata',
+]);
+
+/**
+ * True when a mod can actually be ranked with endo (so it's a valid flip
+ * candidate). Excludes Requiem/Kuva mods and their `_invocation` variants and
+ * anything tagged `requiem`. `tags` is optional.
+ */
+export function isEndoRankableMod(
+  urlName: string | undefined | null,
+  tags: string[] | undefined | null = [],
+): boolean {
+  const u = String(urlName || '').toLowerCase();
+  if (REQUIEM_MODS.has(u)) return false;
+  if (u.endsWith('_invocation')) return false;
+  if ((tags || []).some((t) => String(t).toLowerCase() === 'requiem')) return false;
+  return true;
+}
+
 /** 2^rank − 1, the geometric multiplier for a cumulative cost to `rank`. */
 function geo(rank: number | undefined | null): number {
   const n = Number(rank) || 0;
