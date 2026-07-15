@@ -111,7 +111,10 @@ module.exports = {
     '^@constants/(.*)$': '<rootDir>/constants/$1',
     // The app's relic-value composable imports `unref` from 'vue'; stub it so the
     // pure valuation logic is unit-testable under the backend's Node setup.
-    '^vue$': '<rootDir>/test-helpers/vue-stub.js'
+    '^vue$': '<rootDir>/test-helpers/vue-stub.js',
+    // The shared marketFormat module pulls `useNuxtApp` from Nuxt's virtual
+    // `#imports`; stub it so the endo/relic composables load under jest.
+    '^#imports$': '<rootDir>/test-helpers/imports-stub.js'
   },
 
   /**
