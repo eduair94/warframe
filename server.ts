@@ -1,8 +1,10 @@
 import "./env";
 import { Request } from 'express';
 import server from "./Express/ExpressSetup";
+import { serverConfig } from "./Express/config";
 import { MongooseServer } from "./database";
 import { Warframe } from "./warframe";
+import { startCacheWarmer } from "./services/CacheWarmer";
 
 async function main() {
     await MongooseServer.startConnectionPromise();
@@ -86,6 +88,11 @@ async function main() {
         const results = await m.getRivenValueData(weapon);
         return results || { url_name: weapon, items: [] };
     });
+
+    // Keep the heavy aggregate routes permanently warm so their stale copy never
+    // ages out — otherwise a cold ~20s recompute reaches Cloudflare and times out
+    // to a 502. See services/CacheWarmer.ts.
+    startCacheWarmer(serverConfig.port);
 }
 
 main();
