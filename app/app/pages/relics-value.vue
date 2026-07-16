@@ -309,8 +309,7 @@ import { useDisplay } from 'vuetify'
 import { useRelicValue, type RelicRow } from '~/composables/useRelicValue'
 
 const { t } = useI18n()
-const config = useRuntimeConfig()
-const base = config.public.apiURL
+const base = useApiBase()
 
 const { mobile } = useDisplay()
 const isMobile = computed(() => mobile.value)

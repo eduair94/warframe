@@ -426,8 +426,7 @@ import { useGoTo } from 'vuetify'
 
 dayjs.extend(relativeTime)
 
-const config = useRuntimeConfig()
-const base = config.public.apiURL
+const base = useApiBase()
 const { t } = useI18n()
 const goTo = useGoTo()
 

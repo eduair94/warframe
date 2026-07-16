@@ -432,8 +432,7 @@ import { fmtPlat } from '~/composables/marketFormat'
 
 dayjs.extend(relativeTime)
 
-const config = useRuntimeConfig()
-const apiBase = config.public.apiURL
+const apiBase = useApiBase()
 const { t, te } = useI18n()
 
 // --- i18n label helpers for dynamic values whose English form is also the

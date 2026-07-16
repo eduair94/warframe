@@ -294,8 +294,7 @@ const { t } = useI18n()
 // carries stale warframe.market thumb hashes).
 const { itemThumb } = useItemThumb()
 
-const config = useRuntimeConfig()
-const base = config.public.apiURL
+const base = useApiBase()
 
 // SSR fetch — preserve old asyncData try/catch -> loadError intent. Distinct
 // key ('relic-farming') so the cache doesn't collide with relics-value.vue's

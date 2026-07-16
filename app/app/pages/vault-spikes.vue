@@ -149,8 +149,7 @@ import { computed, nextTick, onMounted, ref, watch } from 'vue'
 import { useDisplay } from 'vuetify'
 
 const { t } = useI18n()
-const config = useRuntimeConfig()
-const base = config.public.apiURL
+const base = useApiBase()
 
 const { data, error } = await useAsyncData('vault-spikes-market-analytics', () =>
   $fetch<any>(`${base}/market_analytics`),

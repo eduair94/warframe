@@ -250,8 +250,7 @@ const emit = defineEmits<{
 
 const { t } = useI18n()
 const { itemThumb, THUMB_PLACEHOLDER } = useItemThumb()
-const config = useRuntimeConfig()
-const apiBase = config.public.apiURL
+const apiBase = useApiBase()
 
 // The dialog owns its refinement so you can flip the odds inside the popup; it
 // seeds from the page's choice each time it opens (watch below).

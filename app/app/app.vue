@@ -13,8 +13,9 @@
 <script setup lang="ts">
 import type { WarframeItem } from './stores/items'
 
-const config = useRuntimeConfig()
-const base = config.public.apiURL
+// server -> internal origin (no Cloudflare round-trip for the ~2MB SSR fetch),
+// client -> public apiURL. See composables/useApiBase.ts.
+const base = useApiBase()
 const items = useItemsStore()
 
 // ---- Structured data (JSON-LD) --------------------------------------------

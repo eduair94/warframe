@@ -49,8 +49,7 @@ export interface DropPlanet {
 
 export function useDropMap() {
   const items = useItemsStore()
-  const config = useRuntimeConfig()
-  const base = config.public.apiURL
+  const base = useApiBase()
 
   const loading = ref(true)
   const rawPlanets = ref<any[]>([])

@@ -142,8 +142,7 @@ import { computed, nextTick, onMounted, ref, watch } from 'vue'
 import { useDisplay } from 'vuetify'
 
 const { t } = useI18n()
-const config = useRuntimeConfig()
-const base = config.public.apiURL
+const base = useApiBase()
 
 // SSR fetch — preserve old try/catch -> loadError intent
 const { data, error } = await useAsyncData('market-analytics-volatility', () =>

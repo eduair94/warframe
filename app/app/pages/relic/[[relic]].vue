@@ -202,8 +202,7 @@
 import { ref, computed, watch, nextTick, onMounted, onBeforeUnmount } from 'vue'
 import { useGoTo } from 'vuetify'
 
-const config = useRuntimeConfig()
-const base = config.public.apiURL as string
+const base = useApiBase() as string
 const route = useRoute()
 const router = useRouter()
 const { t } = useI18n()

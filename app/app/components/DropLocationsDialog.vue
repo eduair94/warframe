@@ -216,8 +216,7 @@ const emit = defineEmits<{ (e: 'update:modelValue', value: boolean): void }>()
 
 const { t } = useI18n()
 
-const config = useRuntimeConfig()
-const base = config.public.apiURL
+const base = useApiBase()
 
 const { itemThumb, THUMB_PLACEHOLDER } = useItemThumb()
 

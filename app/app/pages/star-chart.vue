@@ -310,8 +310,7 @@ const items = useItemsStore()
 const { itemThumb } = useItemThumb()
 const { mobile } = useDisplay()
 const localePath = useLocalePath()
-const config = useRuntimeConfig()
-const base = config.public.apiURL
+const base = useApiBase()
 
 const starfield = makeStars(90)
 

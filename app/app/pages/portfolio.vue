@@ -146,8 +146,7 @@ import { subscribeLive } from '~/composables/useLiveFeed'
 import type { LiveUpdate } from '~/utils/liveTypes'
 
 const { t } = useI18n()
-const config = useRuntimeConfig()
-const base = config.public.apiURL
+const base = useApiBase()
 
 // Long-history analytics (atl / pctFromAtl) power the all-time-low alert -
 // a signal warframe.market can't give (its chart caps at 90 days).

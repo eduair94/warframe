@@ -194,8 +194,7 @@
 import { computed, nextTick, onMounted } from 'vue'
 
 const { t } = useI18n()
-const config = useRuntimeConfig()
-const base = config.public.apiURL
+const base = useApiBase()
 const store = useItemsStore()
 
 // Fully-socketed (Amber + Cyan) Endo values — same constants the /endo tool uses,

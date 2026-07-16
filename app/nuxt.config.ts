@@ -18,8 +18,13 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
 
   // publicRuntimeConfig.apiURL (Nuxt 2) -> runtimeConfig.public.apiURL (Nuxt 4).
-  // Consumers use: const base = useRuntimeConfig().public.apiURL
+  // Consumers use: const base = useApiBase()  (server -> internal, client -> public)
   runtimeConfig: {
+    // SERVER-ONLY internal API origin for SSR data fetches. Keeps SSR from
+    // round-tripping through the public Cloudflare URL (see composables/useApiBase.ts).
+    // Runtime override: NUXT_API_INTERNAL. Default is correct on the prod box
+    // (API is warframe-server on 127.0.0.1:3529) and in local dev.
+    apiInternal: process.env.API_INTERNAL_URL || 'http://127.0.0.1:3529',
     public: {
       apiURL: process.env.API_URL || 'http://localhost:3529',
       // Live Socket.IO server (warframe-live process) — separate port/origin from the REST API
@@ -42,9 +47,29 @@ export default defineNuxtConfig({
   // LIVE_SOCKET_PATH on the live server must match the '/live-io' path below.
   nitro: {
     routeRules: {
+      // Websocket proxy — must NEVER be cached.
       '/live-io/**': {
-        proxy: `${process.env.LIVE_INTERNAL_URL || 'http://127.0.0.1:3530'}/live-io/**`
-      }
+        proxy: `${process.env.LIVE_INTERNAL_URL || 'http://127.0.0.1:3530'}/live-io/**`,
+        cache: false
+      },
+      // Cache rendered SSR HTML for 60s (stale-while-revalidate): repeat hits skip
+      // the Vue render + the API fetch entirely. In-process memory cache (the app
+      // is a single Nitro process); rebuilt on restart. Effective data freshness
+      // is bounded by this plus the API's own 60s cache.
+      '/**': { swr: 60 },
+      // High-cardinality dynamic routes stay dynamic so the in-memory SWR cache
+      // can't grow unbounded (one entry per set/relic × locale). They're already
+      // fast via the internal API base + the API's Redis cache. (i18n prefixes the
+      // localized copies, hence the /es and /pt variants.)
+      '/set/**': { cache: false },
+      '/relic/**': { cache: false },
+      '/es/set/**': { cache: false },
+      '/pt/set/**': { cache: false },
+      '/es/relic/**': { cache: false },
+      '/pt/relic/**': { cache: false },
+      // Service worker + manifest must update promptly, not be held 60s.
+      '/sw.js': { cache: false },
+      '/manifest.webmanifest': { cache: false }
     }
   },
 
@@ -148,11 +173,13 @@ export default defineNuxtConfig({
       { code: 'es', language: 'es-ES', name: 'Español' },
       { code: 'pt', language: 'pt-BR', name: 'Português' }
     ],
-    detectBrowserLanguage: {
-      useCookie: true,
-      cookieKey: 'i18n_redirected',
-      redirectOn: 'root'
-    },
+    // Browser-language auto-redirect is DISABLED so the bare `/` renders the
+    // default (en) deterministically and can be SWR-cached at the edge/Nitro
+    // (see nitro.routeRules). Without this, `/` would 302 to /es|/pt per the
+    // visitor's Accept-Language cookie, and caching that path would pin one
+    // visitor's redirect for everyone. Users still pick a language via the
+    // locale switcher (which navigates to the /es, /pt prefixed routes).
+    detectBrowserLanguage: false,
     // baseUrl powers correct hreflang/canonical alternate links in SSR head —
     // must be the frontend origin (SITE_URL), never the API host.
     baseUrl: SITE_URL,
