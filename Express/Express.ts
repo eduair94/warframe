@@ -8,7 +8,12 @@ import * as http from "http";
 import { bError } from "../utils";
 import { INBOUND_RATE_LIMIT } from "../constants";
 import { FunctionExpress } from "./Express.interface";
-import routeCache from 'route-cache';
+import { cache } from "../services/CacheService";
+
+// Default edge/L2 TTL for cached GET routes. Was 20s (route-cache) — bumped so a
+// warm entry absorbs far more traffic; the sync jobs refresh the underlying data
+// on a much slower cadence than this anyway. Per-route overrides are allowed.
+const DEFAULT_CACHE_TTL_SECONDS = parseInt(process.env.CACHE_TTL_SECONDS || "60", 10);
 
 class Express {
   private port: number;
@@ -65,29 +70,69 @@ class Express {
     return this.recaptcha.middleware.verify;
   }
 
-  public getJsonCache(requestUrl: string, f: FunctionExpress): void {
+  /**
+   * Lets Cloudflare's shared (edge) cache serve these JSON responses and, most
+   * importantly, keep serving the last good copy when the origin errors or times
+   * out (`stale-if-error`) — that is what keeps the site up during an origin blip
+   * instead of showing "caído". `s-maxage` targets the shared cache; the browser
+   * follows `max-age`.
+   */
+  private setEdgeCacheHeaders(res: Response, ttlSeconds: number): void {
+    res.set(
+      "Cache-Control",
+      `public, max-age=${ttlSeconds}, s-maxage=${ttlSeconds}, stale-while-revalidate=60, stale-if-error=86400`
+    );
+  }
+
+  /**
+   * Cached GET route. The response is served through the two-tier CacheService
+   * (in-process L1 + shared/durable Redis L2 with single-flight), so a restart
+   * comes up warm and concurrent misses don't stampede Mongo — the exact failure
+   * that took the site down. Keyed by req.originalUrl so each distinct URL (incl.
+   * query/params) gets its own bucket.
+   */
+  public getJsonCache(
+    requestUrl: string,
+    f: FunctionExpress,
+    ttlSeconds: number = DEFAULT_CACHE_TTL_SECONDS
+  ): void {
     this.app.get(
-      // No explicit cache key -> route-cache defaults to req.originalUrl,
-      // so each distinct URL gets its own bucket. Passing '' here previously
-      // made every route sharing this middleware collide on one shared key.
-      `${this.baseUrl}${requestUrl}`, routeCache.cacheSeconds(20),
+      `${this.baseUrl}${requestUrl}`,
       async (req: Request, res: Response) => {
-        const result: any = await f(req, res).catch((e) => {
-          return bError(e.message);
-        });
-        res.json(result);
+        try {
+          const result: any = await cache.getOrSet(
+            req.originalUrl,
+            ttlSeconds * 1000,
+            async () => f(req, res).catch((e) => bError(e.message))
+          );
+          this.setEdgeCacheHeaders(res, ttlSeconds);
+          res.json(result);
+        } catch (e: any) {
+          res.json(bError(e?.message || "cache error"));
+        }
       }
     );
   }
 
-  public getJson(requestUrl: string, f: FunctionExpress): void {
+  public getJson(
+    requestUrl: string,
+    f: FunctionExpress,
+    ttlSeconds: number = DEFAULT_CACHE_TTL_SECONDS
+  ): void {
     this.app.get(
-      `${this.baseUrl}${requestUrl}`, routeCache.cacheSeconds(20),
+      `${this.baseUrl}${requestUrl}`,
       async (req: Request, res: Response) => {
-        const result: any = await f(req, res).catch((e) => {
-          return bError(e.message);
-        });
-        res.json(result);
+        try {
+          const result: any = await cache.getOrSet(
+            req.originalUrl,
+            ttlSeconds * 1000,
+            async () => f(req, res).catch((e) => bError(e.message))
+          );
+          this.setEdgeCacheHeaders(res, ttlSeconds);
+          res.json(result);
+        } catch (e: any) {
+          res.json(bError(e?.message || "cache error"));
+        }
       }
     );
   }
