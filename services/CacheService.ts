@@ -88,7 +88,10 @@ export class CacheService {
     // How long a stale copy is retained for serve-while-recompute / serve-on-outage.
     this.staleMs = num(process.env.CACHE_STALE_MS, 3600_000); // 1h
     // Single-flight lock lifetime — a safety cap; released explicitly on success.
-    this.lockMs = num(process.env.CACHE_LOCK_MS, 15_000);
+    // Must comfortably exceed the slowest producer (some aggregates take ~20s on
+    // prod) so the lock doesn't lapse mid-background-refresh and let a second
+    // worker start a duplicate recompute.
+    this.lockMs = num(process.env.CACHE_LOCK_MS, 30_000);
     // Circuit-breaker cooldown after a Redis error, so we don't pay a connect
     // timeout on every request while Redis is down.
     this.circuitMs = num(process.env.CACHE_CIRCUIT_MS, 10_000);
@@ -252,7 +255,25 @@ export class CacheService {
       return fresh as T;
     }
 
-    // Miss — try to become the single writer.
+    // Fresh expired. Serve the STALE copy INSTANTLY and refresh in the
+    // background — no HTTP request ever blocks on the (potentially very slow,
+    // ~20s on prod) recompute. Without this, whichever request wins the lock
+    // waits the full recompute and times out through Cloudflare (504/500) every
+    // time the fresh TTL lapses. This is stale-while-revalidate at the origin.
+    const stale = await this.rGet(staleKey);
+    if (stale !== undefined) {
+      this.l1Set(key, stale);
+      // Only ONE worker refreshes (single-flight via the NX lock); the rest just
+      // serve stale. Fire-and-forget — we do NOT await it.
+      if (await this.rLock(lockKey)) {
+        this.refreshInBackground(key, freshKey, staleKey, lockKey, freshMs, producer);
+      }
+      return stale as T;
+    }
+
+    // COLD START: no fresh AND no stale (first ever hit for this key, or the
+    // stale copy aged out). Someone has to block and compute — but only the lock
+    // winner does; the rest wait briefly for it to publish rather than stampede.
     const gotLock = await this.rLock(lockKey);
     if (gotLock) {
       try {
@@ -268,21 +289,19 @@ export class CacheService {
       }
     }
 
-    // Another worker is recomputing — serve stale immediately if we have it.
-    const stale = await this.rGet(staleKey);
-    if (stale !== undefined) {
-      this.l1Set(key, stale);
-      return stale as T;
-    }
-
-    // No stale yet (cold start on this key): briefly wait for the writer to
-    // publish the fresh value instead of stampeding the DB ourselves.
-    for (let i = 0; i < 6; i++) {
-      await new Promise((r) => setTimeout(r, 150));
-      const now = await this.rGet(freshKey);
-      if (now !== undefined) {
-        this.l1Set(key, now);
-        return now as T;
+    // Not the writer — wait for the winner to publish fresh (or a stale copy to
+    // appear) instead of stampeding the DB ourselves.
+    for (let i = 0; i < 8; i++) {
+      await new Promise((r) => setTimeout(r, 200));
+      const nowFresh = await this.rGet(freshKey);
+      if (nowFresh !== undefined) {
+        this.l1Set(key, nowFresh);
+        return nowFresh as T;
+      }
+      const nowStale = await this.rGet(staleKey);
+      if (nowStale !== undefined) {
+        this.l1Set(key, nowStale);
+        return nowStale as T;
       }
     }
 
@@ -294,6 +313,39 @@ export class CacheService {
       await this.rSet(staleKey, v, this.staleMs);
     }
     return v;
+  }
+
+  /**
+   * Recompute a key off the request path and publish the result. Never throws
+   * (a failed refresh just leaves the existing stale copy in place) and always
+   * releases the lock.
+   */
+  private refreshInBackground<T>(
+    key: string,
+    freshKey: string,
+    staleKey: string,
+    lockKey: string,
+    freshMs: number,
+    producer: Producer<T>
+  ): void {
+    void (async () => {
+      try {
+        const v = await producer();
+        if (isCacheable(v)) {
+          this.l1Set(key, v);
+          await this.rSet(freshKey, v, freshMs);
+          await this.rSet(staleKey, v, this.staleMs);
+        }
+      } catch (e: any) {
+        const now = Date.now();
+        if (now - this.lastErrLog > this.circuitMs) {
+          this.lastErrLog = now;
+          console.warn("[cache] background refresh failed for", key, "-", e?.message);
+        }
+      } finally {
+        await this.rDel(lockKey);
+      }
+    })();
   }
 
   /** For tests / graceful shutdown. */
