@@ -27,8 +27,12 @@ export default defineNitroPlugin(() => {
     '/guides/endo',
   ]
 
-  const intervalMs = Number(process.env.APP_WARM_INTERVAL_MS || 45000)
-  const bootDelayMs = Number(process.env.APP_WARM_BOOT_DELAY_MS || 8000)
+  // Deliberately slow: the SWR cache now lives in Redis and is durable across
+  // restarts, so pages stay warm without frequent re-renders. A long interval
+  // keeps warframe a light tenant on a shared/loaded box — each sweep only
+  // re-renders pages whose SWR entry has gone stale.
+  const intervalMs = Number(process.env.APP_WARM_INTERVAL_MS || 300000)
+  const bootDelayMs = Number(process.env.APP_WARM_BOOT_DELAY_MS || 10000)
 
   const sweep = async () => {
     for (const r of routes) {

@@ -10,10 +10,12 @@ import { INBOUND_RATE_LIMIT } from "../constants";
 import { FunctionExpress } from "./Express.interface";
 import { cache } from "../services/CacheService";
 
-// Default edge/L2 TTL for cached GET routes. Was 20s (route-cache) — bumped so a
-// warm entry absorbs far more traffic; the sync jobs refresh the underlying data
-// on a much slower cadence than this anyway. Per-route overrides are allowed.
-const DEFAULT_CACHE_TTL_SECONDS = parseInt(process.env.CACHE_TTL_SECONDS || "60", 10);
+// Default edge/L2 TTL for cached GET routes. The heavy aggregates cost ~20s of
+// CPU to recompute, so a longer fresh window means far fewer recomputes on a
+// busy/shared box (5-min staleness is fine — the sync jobs refresh the data on a
+// slower cadence anyway). Stale-serve + background refresh keep responses fast
+// across the window. Per-route overrides are allowed.
+const DEFAULT_CACHE_TTL_SECONDS = parseInt(process.env.CACHE_TTL_SECONDS || "300", 10);
 
 class Express {
   private port: number;
