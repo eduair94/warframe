@@ -62,11 +62,26 @@ useHead({
   }))
 })
 
-// Global bootstrap: was default.vue middleware ($axios.get($config.apiURL) -> dispatch setItems).
-// useAsyncData swallows fetch errors (data.value stays null) so the shell still renders if the
-// API is down; the items store just stays empty in that case.
-const { data } = await useAsyncData('app-items', () => $fetch<WarframeItem[]>(base))
-if (data.value) items.setItems(data.value)
+// Global bootstrap: fetch the full item catalogue every page reads from the
+// store. This is the single most important SSR fetch — if it returns empty,
+// EVERY page renders blank. Hardened after an outage where a slow/cold API made
+// this fetch time out, the error was swallowed (data stayed null → empty store),
+// and Nitro's SWR then cached that empty render for 60s and served it to everyone:
+//   1. retry + a bounded timeout so a transient slow origin doesn't null it out.
+//   2. on the server, if the catalogue is still empty, mark the response no-store
+//      so the blank render is never SWR-cached (the next request retries).
+//   3. on the client (onMounted), if the store is empty after hydration, refetch
+//      from the public API so a poisoned/empty SSR payload self-heals — no reload.
+const CATALOGUE_FETCH = { retry: 2, retryDelay: 400, timeout: 25000 } as const
+const { data } = await useAsyncData('app-items', () =>
+  $fetch<WarframeItem[]>(base, CATALOGUE_FETCH).catch(() => null)
+)
+if (data.value?.length) {
+  items.setItems(data.value)
+} else if (import.meta.server) {
+  const event = useRequestEvent()
+  if (event) event.node.res.setHeader('Cache-Control', 'no-store, must-revalidate')
+}
 
 // The <LoadingBar/> overlay renders visible by default (the initial-load
 // spinner). Guarantee it hides once the app has mounted so it can never stick,
@@ -75,5 +90,16 @@ if (data.value) items.setItems(data.value)
 onMounted(() => {
   const el = document.getElementById('spinner-wrapper')
   if (el) el.style.display = 'none'
+  // Self-heal (see bootstrap note #3): if SSR delivered an empty catalogue (slow/
+  // cold API, or an SWR-cached blank render), the store is empty and every page
+  // would render blank. Refetch client-side from the public API so the UI recovers
+  // without a manual reload. Cheap: the public API is Cloudflare-cached.
+  if (!items.allItems.length) {
+    $fetch<WarframeItem[]>(base, CATALOGUE_FETCH)
+      .then((list) => {
+        if (list?.length) items.setItems(list)
+      })
+      .catch(() => {})
+  }
 })
 </script>

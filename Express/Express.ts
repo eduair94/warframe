@@ -80,9 +80,19 @@ class Express {
    * follows `max-age`.
    */
   private setEdgeCacheHeaders(res: Response, ttlSeconds: number): void {
+    // `stale-while-revalidate` is the edge's grace window: after the s-maxage
+    // fresh window lapses, Cloudflare keeps serving the last-good copy for this
+    // many extra seconds while it revalidates in the BACKGROUND, so a user never
+    // blocks on a (possibly very slow, ~40-75s on a starved box) origin recompute.
+    // It was 60s — far too short: any quiet stretch longer than fresh+60s left the
+    // next visitor to eat the full cold compute (or an SSR timeout -> blank page).
+    // A wide grace (default 1h, env-tunable) means the edge can always answer
+    // instantly while the origin catches up. Freshness is still bounded by
+    // max-age/s-maxage; this only governs how long stale may cover a slow refresh.
+    const swr = parseInt(process.env.CACHE_STALE_WHILE_REVALIDATE_SECONDS || "3600", 10);
     res.set(
       "Cache-Control",
-      `public, max-age=${ttlSeconds}, s-maxage=${ttlSeconds}, stale-while-revalidate=60, stale-if-error=86400`
+      `public, max-age=${ttlSeconds}, s-maxage=${ttlSeconds}, stale-while-revalidate=${swr}, stale-if-error=86400`
     );
   }
 
