@@ -40,9 +40,43 @@ export class ItemService {
     );
     // Ensure indexes to avoid large in-memory sorts and speed up frequent queries
     // Create an index on priceUpdate for sort operations and url_name for quick lookups
+    this.ensureIndexes().catch(() => {});
+  }
+
+  /**
+   * Ensures collection indexes exist. The unique url_name index can be blocked
+   * forever by duplicate documents already in the collection (E11000 on every
+   * attempt) — in that case keep the most recently priced doc per url_name,
+   * delete the stale twins, and retry once.
+   */
+  private async ensureIndexes(): Promise<void> {
     try {
-      this.db.ensureIndex({ priceUpdate: 1 }).catch(() => {});
-      this.db.ensureIndex({ url_name: 1 }, { unique: true, sparse: true }).catch(() => {});
+      await this.db.ensureIndex({ priceUpdate: 1 }).catch(() => {});
+      try {
+        await this.db.ensureIndex({ url_name: 1 }, { unique: true, sparse: true });
+      } catch (err: any) {
+        if (err?.code !== 11000) return;
+        const model = this.db.getModel();
+        const dups: Array<{ _id: string; docs: Array<{ id: any }> }> = await model.aggregate([
+          { $group: { _id: '$url_name', docs: { $push: { id: '$_id' } }, n: { $sum: 1 } } },
+          { $match: { n: { $gt: 1 }, _id: { $ne: null } } },
+        ]);
+        for (const dup of dups) {
+          // Survivor = highest _id (newest-created doc). _id is immutable, so
+          // every process racing this dedupe picks the SAME survivor — sorting
+          // by a mutable field like priceUpdate could let two concurrent
+          // processes each keep a different twin and delete both.
+          const newestFirst = [...dup.docs].sort((a, b) => String(b.id).localeCompare(String(a.id)));
+          const staleIds = newestFirst.slice(1).map((d) => d.id);
+          await model.deleteMany({ _id: { $in: staleIds } });
+          console.log(`Deduped url_name "${dup._id}": removed ${staleIds.length} stale duplicate(s)`);
+        }
+        await this.db
+          .ensureIndex({ url_name: 1 }, { unique: true, sparse: true })
+          .catch((e: any) =>
+            console.error('url_name unique index still failing after dedupe:', e?.message)
+          );
+      }
     } catch (error) {
       // Non-fatal: index creation failures should not crash the service
       console.error('Index creation error (ignored):', error);

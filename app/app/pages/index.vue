@@ -692,6 +692,14 @@ function filter() {
   })
 }
 
+// Re-apply the active filters whenever the store catalogue refreshes (the
+// 2-min background poll / focus refetch in app.vue, or the hydration
+// self-heal). The table binds the filtered `all_items` snapshot, which would
+// otherwise stay frozen on whatever the store held at mount. Filter state
+// (search, category, tags, volume) is read live inside filter(), so the
+// user's current filtering survives each refresh untouched.
+watch(allItems, () => filter())
+
 function row_classes(item: any) {
   if (item.isInterBank) return 'bg-purple-darken-4'
   if (item.condition) return 'bg-grey-darken-3'

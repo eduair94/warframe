@@ -83,6 +83,30 @@ if (data.value?.length) {
   if (event) event.node.res.setHeader('Cache-Control', 'no-store, must-revalidate')
 }
 
+// ---- Near-realtime catalogue refresh ---------------------------------------
+// The crawler re-prices the full catalogue roughly every 2 minutes, so poll on
+// that cadence and refetch immediately when the tab regains focus — otherwise a
+// kept-open tab shows prices as old as its last visit. `cache: 'no-cache'`
+// bypasses the browser's HTTP cache and revalidates against the Cloudflare
+// edge (the browser otherwise pins the JSON for hours when CF inflates
+// max-age), while the edge cache keeps each poll cheap.
+const REFRESH_INTERVAL_MS = 120_000
+const REFRESH_MIN_GAP_MS = 30_000
+let refreshTimer: ReturnType<typeof setInterval> | undefined
+let lastRefreshAt = 0
+const refreshCatalogue = () => {
+  if (Date.now() - lastRefreshAt < REFRESH_MIN_GAP_MS) return
+  lastRefreshAt = Date.now()
+  $fetch<WarframeItem[]>(base, { ...CATALOGUE_FETCH, cache: 'no-cache' })
+    .then((list) => {
+      if (list?.length) items.setItems(list)
+    })
+    .catch(() => {})
+}
+const onVisibilityChange = () => {
+  if (!document.hidden) refreshCatalogue()
+}
+
 // The <LoadingBar/> overlay renders visible by default (the initial-load
 // spinner). Guarantee it hides once the app has mounted so it can never stick,
 // independent of any individual page's own hide logic. Client navigation is
@@ -101,5 +125,14 @@ onMounted(() => {
       })
       .catch(() => {})
   }
+  refreshTimer = setInterval(() => {
+    if (!document.hidden) refreshCatalogue()
+  }, REFRESH_INTERVAL_MS)
+  document.addEventListener('visibilitychange', onVisibilityChange)
+})
+
+onBeforeUnmount(() => {
+  if (refreshTimer) clearInterval(refreshTimer)
+  document.removeEventListener('visibilitychange', onVisibilityChange)
 })
 </script>

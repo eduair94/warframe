@@ -48,9 +48,18 @@ async function handle(request, ctx) {
   const cacheKey = new Request(url.toString(), { method: "GET" });
   const backupKey = new Request(url.toString() + "#__backup", { method: "GET" });
 
-  // 1) Fresh edge hit.
+  // 1) Fresh edge hit. Restore the origin's Cache-Control for the browser —
+  // the stored copy carries the edge TTL as max-age (that is how cache.put
+  // expiry works), but the browser must see the origin's (much shorter)
+  // max-age or clients pin an hours-old JSON snapshot.
   const hit = await cache.match(cacheKey);
-  if (hit) return withHeaders(hit, { "x-edge-cache": "HIT" });
+  if (hit) {
+    const originCC = hit.headers.get("x-origin-cache-control");
+    return withHeaders(hit, {
+      "x-edge-cache": "HIT",
+      ...(originCC ? { "Cache-Control": originCC } : {}),
+    });
+  }
 
   // 2) Miss — go to origin.
   let originResp;
@@ -81,17 +90,22 @@ async function handle(request, ctx) {
 
   // Store the fresh edge copy (respecting TTL) and the long-lived backup. Both
   // are built from independent clones so neither body stream is disturbed.
+  // The stored copy's Cache-Control is the edge TTL (cache.put expiry); the
+  // origin's own Cache-Control is preserved in x-origin-cache-control so hits
+  // can hand the browser the origin's shorter max-age instead of the edge TTL.
   const fresh = withHeaders(originResp.clone(), {
     "Cache-Control": `public, max-age=${ttl}`,
+    "x-origin-cache-control": cc,
     "x-edge-cache": "MISS",
   });
   const backup = withHeaders(originResp.clone(), {
     "Cache-Control": `public, max-age=${BACKUP_TTL}`,
   });
-  ctx.waitUntil(cache.put(cacheKey, fresh.clone()));
+  ctx.waitUntil(cache.put(cacheKey, fresh));
   ctx.waitUntil(cache.put(backupKey, backup));
 
-  return fresh;
+  // The browser gets the origin response untouched (origin Cache-Control wins).
+  return withHeaders(originResp, { "x-edge-cache": "MISS" });
 }
 
 export default {

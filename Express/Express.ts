@@ -90,9 +90,17 @@ class Express {
     // instantly while the origin catches up. Freshness is still bounded by
     // max-age/s-maxage; this only governs how long stale may cover a slow refresh.
     const swr = parseInt(process.env.CACHE_STALE_WHILE_REVALIDATE_SECONDS || "3600", 10);
+    // Browser (`max-age`) is deliberately much shorter than the edge
+    // (`s-maxage`): a browser that trusts a long max-age pins users to an
+    // hours-old JSON snapshot (the "everything updated an hour ago" bug) with
+    // no way for us to invalidate it. 60s keeps client traffic cheap while the
+    // edge absorbs the load. NOTE: Cloudflare's zone-level "Browser Cache TTL"
+    // must be "Respect Existing Headers", or CF inflates max-age (default 4h)
+    // and reintroduces the bug.
+    const browserMaxAge = parseInt(process.env.CACHE_BROWSER_MAX_AGE_SECONDS || "60", 10);
     res.set(
       "Cache-Control",
-      `public, max-age=${ttlSeconds}, s-maxage=${ttlSeconds}, stale-while-revalidate=${swr}, stale-if-error=86400`
+      `public, max-age=${browserMaxAge}, s-maxage=${ttlSeconds}, stale-while-revalidate=${swr}, stale-if-error=86400`
     );
   }
 

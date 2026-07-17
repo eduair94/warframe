@@ -4,11 +4,15 @@ The API (`warframe.digitalshopuy.com`, served through the Cloudflare Tunnel) now
 sends real cache headers on every cached GET route:
 
 ```
-Cache-Control: public, max-age=60, s-maxage=60, stale-while-revalidate=60, stale-if-error=86400
+Cache-Control: public, max-age=60, s-maxage=60, stale-while-revalidate=3600, stale-if-error=86400
 ```
 
-- `s-maxage=60` — Cloudflare's edge caches the JSON for 60s, so most traffic
-  never reaches the origin at all.
+- `max-age=60` — the BROWSER may reuse the JSON for only 60s
+  (`CACHE_BROWSER_MAX_AGE_SECONDS`), deliberately decoupled from the edge TTL: a
+  long browser max-age pins every client to an hours-old snapshot ("everything
+  updated an hour ago") that we cannot invalidate.
+- `s-maxage=60` — Cloudflare's edge caches the JSON for 60s
+  (`CACHE_TTL_SECONDS`), so most traffic never reaches the origin at all.
 - `stale-if-error=86400` — if the origin errors or times out, the edge keeps
   serving the last good copy for up to 24h. **This is what keeps the site up
   during an origin blip** instead of showing "caído".
@@ -40,6 +44,12 @@ Dashboard → **Caching → Cache Rules → Create rule**.
 - Edge TTL: **Use cache-control header if present, bypass cache if not** (honours
   the `s-maxage` above; routes without it won't be cached)
 - Browser TTL: **Respect origin**
+
+> **⚠ Zone-level "Browser Cache TTL" (Caching → Configuration) must be
+> "Respect Existing Headers".** If it holds a fixed value (the default is 4
+> hours), Cloudflare rewrites `max-age` upward on every cached response and
+> browsers pin an hours-old JSON snapshot regardless of what the origin or this
+> rule says — this was the production "everything updated an hour ago" bug.
 
 Deploy. Verify with:
 
