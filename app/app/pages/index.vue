@@ -444,9 +444,12 @@ const goTo = useGoTo()
 const items = useItemsStore()
 const allItems = computed<any[]>(() => items.allItems)
 
+const route = useRoute()
 const all_items = ref<any[]>([])
 const min_volume = ref(0)
-const search = ref('')
+// Deep-linkable search (?q=…): powers the WebSite SearchAction / sitelinks
+// searchbox declared in app.vue and lets any /?q=ash+prime link land pre-filtered.
+const search = ref(typeof route.query.q === 'string' ? route.query.q : '')
 const avgPrice = ref(false)
 const selection = ref('All')
 const hasScroll = ref(false)
@@ -841,7 +844,9 @@ onMounted(() => {
   } catch (e) {
     console.error(e)
   }
-  all_items.value = allItems.value
+  // Honour an initial ?q= deep link (SearchAction target); else show everything.
+  if (search.value) filter()
+  else all_items.value = allItems.value
   finishLoading()
   setScrollBar()
 })

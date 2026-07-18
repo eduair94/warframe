@@ -1,0 +1,424 @@
+{
+  "slug": "eidolon",
+  "eyebrow": "Centro de conocimiento · Cacería de Eidolons",
+  "title": "Guía de cacería de Eidolons",
+  "lede": "El Tridolon es el ritual de endgame original de Warframe: tres colosales jefes Sentient, una ventana de noche de 50 minutos y un farming que todavía genera Focus, arcanes y poder para el Operator. Aquí te mostramos cómo pasar de ser un meme del Mote-Amp a un capturador seguro de sí mismo.",
+  "category": "endgame",
+  "readMins": 11,
+  "stats": [
+    {
+      "num": "3",
+      "label": "Eidolons en un Tridolon",
+      "tone": "gold"
+    },
+    {
+      "num": "50",
+      "label": "minutos de noche por ciclo",
+      "tone": "alt"
+    },
+    {
+      "num": "4–6",
+      "label": "extremidades a romper por Eidolon",
+      "tone": "good"
+    },
+    {
+      "num": "2–3",
+      "label": "lures cargados para capturar"
+    }
+  ],
+  "sections": [
+    {
+      "id": "what-is-a-tridolon",
+      "title": "¿Qué es el Tridolon?",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "En las **Plains of Eidolon** fuera de Cetus, tres colosales jefes Sentient aparecen solo por la noche: el **Teralyst**, el **Gantulyst** y el **Hydrolyst**. Derrotar a los tres en una sola noche se llama **Tridolon**, la prueba de endgame original de Warframe que combina equipamiento, juego de Operator y trabajo en equipo bajo un estricto límite de tiempo."
+        },
+        {
+          "type": "p",
+          "text": "No te limites a disparar a estas cosas. Cada Eidolon está envuelto en un **escudo de energía Sentient** que las armas ordinarias no pueden tocar: lo eliminas con el **Amp del Operator** y luego destruyes la extremidad expuesta con un arma de gran impacto. Si consigues el ritmo adecuado, el Tridolon se convierte en uno de los farming de [Focus](/guides/focus) más rápidos del juego y en una fuente confiable de [arcanes](/guides/arcanes) y mejoras para el Operator."
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "Dónde",
+              "v": "Plains of Eidolon (Cetus, Earth) — una zona de mundo abierto"
+            },
+            {
+              "k": "Cuándo",
+              "v": "Solo de noche. Una noche completa dura 50 minutos; el día dura 100"
+            },
+            {
+              "k": "Los tres",
+              "v": "Teralyst (más fácil) → Gantulyst → Hydrolyst (más difícil)"
+            },
+            {
+              "k": "Por qué cazar",
+              "v": "Focus, arcanes de Warframe, Sentient Cores para equipamiento de Amp/Operator"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "before-you-go",
+      "title": "Antes de ir: requisitos previos",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "La cacería de Eidolons está detrás de algunos bloqueos de historia. No necesitas ser un veterano, pero sí necesitas un Operator y un Amp real; esta no es una pelea que puedas ganar a la fuerza bruta con tu arma favorita."
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Acceso a las Plains** — completa la aventura *Saya's Vigil* para desbloquear Cetus y las Plains (consulta la [guía de aventuras](/guides/quests)).",
+            "**Un Operator** — completa *The Second Dream* para desbloquear a tu Operator, el ser que realmente daña los escudos del Eidolon.",
+            "**Poder total del Operator** — completa *The War Within*. Desbloquea la Transference completa y el acceso a **the Quills** y, dado que ahí es donde construyes tu Amp, es prácticamente obligatorio antes de tu primera cacería real.",
+            "**The Quills** — ingresa a la cueva de este sindicato de Cetus como tu Operator; vende piezas de Amp, arcanes de Operator y lentes de Focus a cambio de la reputación que obtienes al entregar los **Sentient Cores** que caen en la propia cacería."
+          ]
+        },
+        {
+          "type": "warn",
+          "text": "**No** te presentes en un escuadrón con el **Mote Amp** gratuito. Es el error número uno de los cazadores novatos y el origen de un meme recurrente en r/Warframe: simplemente no puede quitar los escudos Sentient lo suficientemente rápido como para mantener la partida a tiempo."
+        }
+      ]
+    },
+    {
+      "id": "your-amp",
+      "title": "Tu Amp lo es todo",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Un **Amp** es el arma de tu Operator, y es la pieza de equipamiento de Eidolon más importante. Los Amps se construyen a partir de tres partes — un **Prism**, un **Scaffold** y un **Brace** — y la comunidad nombra las builds con tres números (como `1-2-3`) que se asocian a esas partes. El **Mote Amp** inicial que obtienes gratis es demasiado débil; tu primer objetivo real es reemplazarlo."
+        },
+        {
+          "type": "p",
+          "text": "Compras tus primeras piezas de Amp con reputación de **the Quills** en Cetus, que se obtiene entregando los **Sentient Cores** que caen en la propia cacería, por lo que tus primeras capturas literalmente pagan el Amp que hará que las *siguientes* cacerías sean rápidas. Las piezas de Amp de Corpus de mayor nivel provienen de **Little Duck** (Vox Solaris, en Fortuna), cuya reputación se obtiene por separado, principalmente de **Toroids** farmeados en Orb Vallis. El 'mejor' amp exacto cambia con los parches de equilibrio, así que construye un Amp sólido de nivel medio desde el principio y consulta una guía de amps actual o la [wiki](https://wiki.warframe.com/) antes de buscar la opción del meta."
+        },
+        {
+          "type": "tip",
+          "text": "Combina tu Amp con la escuela de focus **Madurai**. Sus pasivas aumentan el daño de Amp y Void, exactamente lo que necesitas para quitar los escudos rápidamente. Súbela de nivel usando el sistema de [Focus](/guides/focus) y equipa arcanes de Operator (Magus/Virtuos) a medida que obtengas reputación."
+        }
+      ]
+    },
+    {
+      "id": "meta-comp",
+      "title": "La composición de escuadrón del meta",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Un escuadrón clásico de Tridolon de 4 jugadores se construye en torno a **roles**, no a frames específicos. Quieres un carry de daño, un potenciador que multiplique ese daño y un soporte que mantenga con vida la energía y a los Operators. Los arquetipos tradicionales:"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Rol",
+              "Arquetipo de frame",
+              "Qué aporta"
+            ],
+            "rows": [
+              [
+                "Carry de daño",
+                "Chroma",
+                "Vex Armor multiplica enormemente el daño de las armas: lleva el sniper de crítico y se encarga de matar"
+              ],
+              [
+                "Potenciador de crítico / daño",
+                "Volt o Harrow",
+                "Electric Shield de Volt amplifica los disparos a través de él; Covenant de Harrow otorga probabilidad crítica a todo el equipo"
+              ],
+              [
+                "Energía y supervivencia",
+                "Trinity",
+                "Energy Vampire + Blessing mantienen la energía del escuadrón al máximo y a los Operators con vida; a menudo es el encargado de los lures"
+              ],
+              [
+                "Comodín / utilidad",
+                "Rhino o Wisp",
+                "Roar de Rhino o las motes de Wisp añaden daño adicional, velocidad y potenciadores para completar el escuadrón"
+              ]
+            ],
+            "note": "Los roles importan más que los frames exactos. Cualquier composición que acumule un carry de daño, un potenciador de daño/crítico, energía y un tanque de lures funciona; consulta la [tier list](/guides/tier-list) para ver las fortalezas de los frames."
+          }
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "Arma",
+              "v": "Un sniper de alto crítico (por ejemplo, Rubico Prime, Lanka) modificado para Radiación + daño crítico"
+            },
+            {
+              "k": "Operator",
+              "v": "Un Amp real (nunca el Mote Amp) además de la escuela de focus Madurai"
+            },
+            {
+              "k": "Arcanes",
+              "v": "Los arcanes de Operator como Magus Lockdown y Virtuos Shadow perfeccionan el ciclo de quitar escudo y disparar"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "the-kill-loop",
+      "title": "El ciclo de eliminación: escudos, extremidades, captura",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Cada Eidolon muere de la misma manera. Aprende este ciclo una vez y se adaptará desde un Teralyst en solitario hasta un Hydrolyst completo:"
+        },
+        {
+          "type": "steps",
+          "ordered": true,
+          "steps": [
+            {
+              "h": "Quita el escudo",
+              "p": "Cambia a tu Operator y golpea una extremidad del Eidolon con tu Amp hasta que se rompa su escudo azul de Sentient. Las armas normales apenas le hacen cosquillas: para esto sirve exactamente el Amp."
+            },
+            {
+              "h": "Rompe la extremidad",
+              "p": "Usa Transference para volver a tu Warframe y destruye la extremidad expuesta con tu sniper antes de que el escudo se regenere. El Teralyst tiene 4 extremidades; los más grandes Gantulyst y Hydrolyst tienen 6 cada uno: repite el proceso de quitar escudo y disparar en cada una."
+            },
+            {
+              "h": "Ponlo de rodillas",
+              "p": "Con cada extremidad destruida, el Eidolon se arrodilla y expone su núcleo. Ahora decides tú: capturar o matar."
+            },
+            {
+              "h": "Captura con lures",
+              "p": "Si tienes suficientes lures cargados vinculados — 2 para el Teralyst, 3 para el Gantulyst y el Hydrolyst —, captúralo para obtener la recompensa completa. Recoge la Eidolon Shard que suelta y llévala a un Shrine en las Plains para invocar el siguiente nivel."
+            },
+            {
+              "h": "Escala la dificultad",
+              "p": "Teralyst → Gantulyst → Hydrolyst, todo dentro de la noche de 50 minutos. Terminar los tres es un Tridolon."
+            }
+          ]
+        },
+        {
+          "type": "info",
+          "text": "Los Eidolons castigan el juego descuidado: pueden **adaptarse y resistir** un tipo de daño que uses en exceso, y cada ruptura de extremidad libera una **explosión magnética** que agota la energía y los escudos. Usa Transference hacia tu Operator y realiza un **void dash** para limpiarlo, y mantén tu daño constante pero controlado. Todos los detalles sobre los tipos de daño están en la [wiki](https://wiki.warframe.com/)."
+        }
+      ]
+    },
+    {
+      "id": "lures-and-vomvalysts",
+      "title": "Lures y Vomvalysts: cómo funciona la captura",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Los **Lures** son las jaulas de drones que aparecen en las Plains por la noche. Activa uno y te seguirá; **cárgalo** matando **Vomvalysts** —los espíritus flotantes Sentient— cerca, hasta que el lure brille en azul en lugar de rojo. Tienes que matar a los Vomvalysts en su forma de energía con tu **Amp**, ya que las armas los atraviesan. Los lures cargados que se llevan ante un Eidolon arrodillado son los que te permiten capturarlo en lugar de simplemente matarlo."
+        },
+        {
+          "type": "tip",
+          "text": "**Captura siempre, nunca te limites a matar.** Una captura — 2 lures cargados para el Teralyst, 3 para el Gantulyst y el Hydrolyst — otorga un Sentient Core adicional y mejores probabilidades de obtener cores y arcanes de alto nivel. Lleva lures cargados de repuesto para que la muerte de uno por el fuego de los Vomvalysts no te cueste toda la captura."
+        }
+      ]
+    },
+    {
+      "id": "rewards",
+      "title": "Qué estás farmeando realmente",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "El Tridolon es uno de los mejores farming de **Focus** en el juego y la fuente clásica de arcanes de Warframe y equipamiento de Operator. Aquí es a dónde va cada recompensa:"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Recompensa",
+              "Qué hace",
+              "A dónde va"
+            ],
+            "rows": [
+              [
+                "Eidolon Shards (Brilliant / Radiant)",
+                "Se convierten en grandes cantidades de Focus: decenas de miles cada una",
+                "Alimenta tu escuela de [Focus](/guides/focus); un farming de focus de primer nivel"
+              ],
+              [
+                "Warframe Arcanes",
+                "Poder que define builds y platinum comerciable",
+                "Equípalos o véndelos: consulta los precios en el [screener](/screener)"
+              ],
+              [
+                "Sentient Cores (Intact → Radiant)",
+                "Reputación de the Quills (Little Duck usa Toroids)",
+                "Compra piezas de Amp, arcanes de Operator y lentes de Focus"
+              ],
+              [
+                "Bonificación de captura",
+                "Core adicional + mejores probabilidades de drop",
+                "Solo se obtiene si capturas con lures cargados"
+              ]
+            ]
+          }
+        },
+        {
+          "type": "info",
+          "text": "Atención al mercado de arcanes: después de que DE añadiera arcanes que antes eran exclusivos de Eidolon (como Arcane Energize) a otras fuentes, sus valores de [platinum](/guides/platinum) cayeron muy por debajo de los antiguos precios de la era del auge. Consulta los números en vivo en el [screener](/screener) o en [movers](/movers) antes de vender, pero recuerda que el Focus y los Sentient Cores por sí solos hacen que valga la pena hacer la misión."
+        }
+      ]
+    },
+    {
+      "id": "beginner-path",
+      "title": "Ruta para principiantes: primero haz el Teralyst en solitario",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Saltar directamente a un Tridolon 3x3 público con un Mote Amp es la forma en que los nuevos cazadores se frustran. En su lugar, progresa en orden:"
+        },
+        {
+          "type": "steps",
+          "ordered": true,
+          "steps": [
+            {
+              "h": "Completa los requisitos previos",
+              "p": "Termina [Saya's Vigil](/guides/quests) para acceder a las Plains y The Second Dream para tu Operator; The War Within desbloquea el poder total del Operator y la reputación de the Quills."
+            },
+            {
+              "h": "Construye un Amp real",
+              "p": "Farmea reputación de the Quills (entregando Sentient Cores) y compra piezas de Amp adecuadas. Retira el Mote Amp en el momento en que puedas: no puede quitar escudos lo suficientemente rápido como para ser útil."
+            },
+            {
+              "h": "Haz un Teralyst en solitario",
+              "p": "El Teralyst es el Eidolon más débil y es seguro para aprender solo. Practica el ciclo de quitar escudo, disparar y repetir sin la presión del escuadrón ni el estrés del temporizador."
+            },
+            {
+              "h": "Trae y carga lures",
+              "p": "Captura a tu Teralyst en solitario para obtener las recompensas completas; esto también te enseña a manejar los lures y los Vomvalysts antes de intentar el Gantulyst y el Hydrolyst."
+            },
+            {
+              "h": "Gradúate en el Tridolon",
+              "p": "Una vez que los Teralysts en solitario se sientan como una rutina, usa el chat de reclutamiento o el emparejamiento público para hacer partidas completas de Tridolon con Chroma/Volt/Trinity/Harrow."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "timing-and-squads",
+      "title": "Calcular el tiempo de la noche y encontrar un escuadrón",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Los Eidolons solo aparecen durante la **noche de 50 minutos** de las Plains. Prepárate en Cetus *antes* del anochecer para no desperdiciar la ventana de tiempo viajando; un Tridolon completo les toma a los escuadrones experimentados mucho menos de una noche, pero una primera partida consumirá la mayor parte. ¿No estás seguro de cuándo cae la noche? Los rastreadores de ciclos de la comunidad (enlazados desde nuestro [directorio de herramientas](/tools)) show the exact countdown."
+        },
+        {
+          "type": "p",
+          "text": "Encontrar un grupo es realmente más difícil de lo que solía ser; como señalan los jugadores que regresan, la escena de la cacería se redujo después de la caída del mercado de arcanes. Tus mejores opciones son el **chat de reclutamiento**, los repetidores y los servidores dedicados de Discord; busca partidas de 'Tricap' o 'Tridolon', o simplemente haz el Teralyst en solitario hasta que encuentres un equipo. Ahora es un endgame de nicho, pero gratificante, y uno de los pocos farming que potencia significativamente a tu Operator."
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "¿Qué necesito antes de poder cazar Eidolons?",
+      "a": "Necesitas acceso a las Plains desde [Saya's Vigil](/guides/quests) y un Operator de The Second Dream; completar The War Within desbloquea el poder total del Operator y la reputación de the Quills. Lo más importante es que construyas un Amp real con reputación de the Quills antes de ir: el Mote Amp gratuito no puede quitar los escudos del Eidolon lo suficientemente rápido como para ser útil."
+    },
+    {
+      "q": "¿Por qué todo el mundo se ríe del Mote Amp?",
+      "a": "El Mote Amp es el Amp inicial gratuito y es demasiado débil para quitar los escudos Sentient a una velocidad útil, por lo que llevarlo a una cacería ralentiza a todo el escuadrón. Es un meme de rito de iniciación en r/Warframe: farmea reputación de the Quills y construye un Amp adecuado (las builds se nombran con tres números como 1-2-3) antes de unirte a las partidas."
+    },
+    {
+      "q": "¿Cómo capturo un Eidolon en lugar de matarlo?",
+      "a": "Trae lures cargados: **2 para el Teralyst, 3 para el Gantulyst y el Hydrolyst**. Activa los lures en las Plains y cárgalos matando Vomvalysts cerca con tu Amp hasta que brillen en azul. Cuando el Eidolon se arrodille después de que todas sus extremidades estén rotas, los lures cargados te permitirán capturarlo para obtener un Sentient Core adicional, además de mejores probabilidades de obtener arcanes y shards refinadas; sin lures cargados, solo podrás matarlo para obtener recompensas reducidas (y sin arcanes)."
+    },
+    {
+      "q": "¿Cuál es el mejor Warframe para la cacería de Eidolons?",
+      "a": "**Chroma** es el clásico carry de daño porque Vex Armor multiplica el daño de las armas, pero los roles importan más que cualquier frame individual. Un escuadrón fuerte acumula un carry de daño, un potenciador de crítico/daño (Volt o Harrow) y un soporte de energía/supervivencia (Trinity). Consulta la [tier list](/guides/tier-list) para ver las fortalezas de los frames."
+    },
+    {
+      "q": "¿Puedo cazar Eidolons en solitario siendo principiante?",
+      "a": "Sí, primero haz el **Teralyst** en solitario. Es el más débil de los tres y la forma más segura de aprender el ciclo de quitar escudo, romper extremidad y capturar sin la presión del escuadrón o del temporizador. Una vez que los Teralysts en solitario se sientan como una rutina, avanza hacia el Gantulyst, el Hydrolyst y los Tridolons completos."
+    },
+    {
+      "q": "¿Sigue valiendo la pena la cacería de Eidolons después de la caída del mercado de arcanes?",
+      "a": "Sí. Aunque arcanes como Arcane Energize bajaron su valor en [platinum](/guides/platinum) una vez que DE añadió otras fuentes, los Tridolons siguen siendo uno de los farming de [Focus](/guides/focus) más rápidos y la forma principal de obtener Sentient Cores para las mejoras de Amp y Operator. Consulta los precios de los arcanes en el [screener](/screener) antes de vender alguno."
+    },
+    {
+      "q": "¿Qué escuela de focus debería usar mi Operator para los Eidolons?",
+      "a": "**Madurai** es la escuela estándar para Eidolons: sus pasivas aumentan el daño de Amp y Void, que es exactamente lo que necesitas para quitar los escudos rápidamente. Combínala con arcanes de Operator y un Amp adecuado; la [guía de focus](/guides/focus) explica cómo desbloquear y subir de nivel las escuelas."
+    }
+  ],
+  "videos": [
+    {
+      "id": "n47NF2XieIM",
+      "title": "HOW TO HUNT EIDOLONS: TERALYST (Warframe)",
+      "channel": "StarColyte"
+    },
+    {
+      "id": "yw732IQ4kDY",
+      "title": "THE ULTIMATE BEGINNERS guide for EIDOLONS in Warframe 2023 (Part 1)",
+      "channel": "WarframeFlo"
+    },
+    {
+      "id": "sHdSVf2kYcs",
+      "title": "Warframe Eidolon Guide (2025) - How to Lure Handle",
+      "channel": "ForsakenIdol"
+    },
+    {
+      "id": "25LlzizpO3I",
+      "title": "Solo Eidolon Hunting 2025 Build",
+      "channel": "Jacsonitos"
+    }
+  ],
+  "sources": [
+    {
+      "label": "Eidolon Info for Dummies like me (r/Warframe)",
+      "href": "https://reddit.com/r/Warframe/comments/10qk7g4/eidolon_info_for_dummies_like_me/",
+      "icon": "reddit"
+    },
+    {
+      "label": "When you join your first eidolon hunt with the mote amp (r/Warframe)",
+      "href": "https://reddit.com/r/Warframe/comments/acb96b/when_you_join_your_first_eidolon_hunt_with_the/",
+      "icon": "reddit"
+    },
+    {
+      "label": "Eidolon Hunters are becoming a rare specimen now? (r/Warframe)",
+      "href": "https://reddit.com/r/Warframe/comments/1njsdr6/eidolon_hunters_are_becoming_a_rare_specimen_now/",
+      "icon": "reddit"
+    },
+    {
+      "label": "Warframe Wiki",
+      "href": "https://wiki.warframe.com/",
+      "icon": "book-open-variant"
+    }
+  ],
+  "related": [
+    {
+      "label": "Guía de farming de Focus",
+      "to": "/guides/focus",
+      "icon": "meditation",
+      "note": "Convierte Eidolon Shards en Focus"
+    },
+    {
+      "label": "Guía de arcanes",
+      "to": "/guides/arcanes",
+      "icon": "cards",
+      "note": "Qué sueltan los Eidolons y cómo usarlo"
+    },
+    {
+      "label": "Guía de reputación de sindicato",
+      "to": "/guides/standing",
+      "icon": "handshake",
+      "note": "Quills y Little Duck para piezas de Amp"
+    },
+    {
+      "label": "Screener del mercado",
+      "to": "/screener",
+      "icon": "table-search",
+      "note": "Consulta los precios de los arcanes antes de vender"
+    },
+    {
+      "label": "Guía de Steel Path",
+      "to": "/guides/steel-path",
+      "icon": "skull",
+      "note": "Desafío de endgame hermano"
+    }
+  ],
+  "updated": "2026-07-18"
+}

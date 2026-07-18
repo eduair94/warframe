@@ -1,0 +1,531 @@
+{
+  "slug": "mods",
+  "eyebrow": "지식 센터 · Mods & 생존력",
+  "title": "필수 Mods & 생존력",
+  "lede": "획득한 직후의 Warframe과 weapons는 거의 맨몸이나 다름없습니다. mods가 여러분 위력의 90%를 차지합니다. mod capacity, 피해 멀티플라이어 모델, 그리고 shield-gating을 마스터하면 어떤 frame이든 Steel Path에서 살아남을 수 있습니다.",
+  "category": "systems",
+  "readMins": 12,
+  "stats": [
+    {
+      "num": "60",
+      "label": "potato 사용 시 최대 capacity",
+      "tone": "gold"
+    },
+    {
+      "num": "4",
+      "label": "warframe ability 능력치",
+      "tone": "alt"
+    },
+    {
+      "num": "6",
+      "label": "조합된 피해 속성",
+      "tone": "good"
+    },
+    {
+      "num": "2.25s",
+      "label": "최대 shield-gate 무적 시간",
+      "tone": "gold"
+    }
+  ],
+  "sections": [
+    {
+      "id": "how-modding-works",
+      "title": "Mods가 곧 빌드입니다 — 그 외의 모든 것은 뼈대(chassis)일 뿐입니다",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "새로 얻은 Warframe이나 weapon은 빈 껍데기일 뿐입니다. **Mods**는 장착 시 피해량, 체력, 어빌리티, 치명타, 속성, 유틸리티를 더해주는 카드로, 여러분의 거의 모든 힘이 여기서 나옵니다. 모딩(modding)을 잘 배우는 것이 어떤 frame을 소유하고 있는지보다 훨씬 더 중요합니다."
+        },
+        {
+          "type": "p",
+          "text": "모든 item에는 **mod slots**와 **capacity** 제한이 있습니다. 각 mod에는 **drain** 수치가 있으며, 장착한 mods의 총 drain 합계는 capacity를 초과할 수 없습니다. Capacity는 item의 **rank**와 같습니다. 30 rank의 Warframe이나 weapon은 **30 capacity**를 가집니다. (Endo와 크레딧을 사용하여) mod의 rank를 올리면 더 강력해지지만, drain도 더 커집니다."
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "Warframe 슬롯",
+              "v": "8 mod + 1 Aura + 1 Exilus"
+            },
+            {
+              "k": "Weapon 슬롯",
+              "v": "8 mod + 1 Exilus (근접 무기는 Stance 슬롯)"
+            },
+            {
+              "k": "기본 최대 capacity",
+              "v": "30 rank 기준 30 (Reactor/Catalyst 장착 시 60)"
+            },
+            {
+              "k": "mod rank 업그레이드 재료",
+              "v": "mod 화면에서 Endo + 크레딧"
+            },
+            {
+              "k": "mods 획득처",
+              "v": "적, 보스, 신디케이트, Transmutation, 퀘스트"
+            }
+          ]
+        },
+        {
+          "type": "info",
+          "text": "중복 mods를 무작정 쌓아두지 마세요. 하지만 Serration, Vitality 또는 Primed mod 같은 핵심 mod의 **마지막 한 장은 절대 판매하지 마세요**. 애매할 때는 하나만 남겨두고 나머지는 분해하여 [Endo](/guides/endo)로 바꾸세요."
+        }
+      ]
+    },
+    {
+      "id": "capacity-potatoes-forma",
+      "title": "Capacity, potatoes, 극성(polarities) & Forma",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "기본 capacity보다 더 큰 빌드를 구성할 수 있게 해주는 세 가지 도구가 있습니다. 바로 **Orokin Reactors/Catalysts**, **극성(polarities)**, 그리고 **Forma**입니다. 이를 이해하는 것이 초보자들의 가장 큰 고민인 '빌드 용량이 부족해요'를 해결하는 핵심 열쇠입니다."
+        },
+        {
+          "type": "p",
+          "text": "**Orokin Reactor**(Warframes, 동반자, Archwing) 또는 **Orokin Catalyst**(weapons) — 일명 **'potato'** — 는 item의 capacity를 30에서 **60**으로 영구적으로 **두 배** 늘려줍니다. 제대로 된 모든 빌드는 이것이 적용되어 있음을 전제로 합니다. Nightwave, 침공, Baro Ki'Teer, 이벤트에서 무료로 얻거나 플래티넘으로 구매할 수 있습니다."
+        },
+        {
+          "type": "p",
+          "text": "**극성(Polarities)**은 슬롯에 표시된 작은 기호들(Vazarin `D`, Madurai `V`, Naramon `—` 등)입니다. mod의 극성이 슬롯과 **일치**하면 drain이 **거의 절반으로 줄어듭니다**. 이것이 엔드게임 빌드에서 60 capacity 안에 비싼 mods 10개를 욱여넣는 방법입니다. 극성이 **일치하지 않는** 슬롯은 drain이 약간 *더* 소모되며, 극성이 없는 슬롯은 원래 drain을 그대로 소모합니다."
+        },
+        {
+          "type": "p",
+          "text": "**Forma**는 성유물 보상이나 구매를 통해 얻은 설계도로 제작하는 자원으로, 한 슬롯의 **극성을 추가하거나 변경**해 줍니다. 단, Forma를 사용하면 **item의 rank가 0으로 초기화**되므로 다시 레벨을 올려야 합니다. 숙련자들은 풀 빌드를 맞추기 위해 좋은 weapon에 Forma를 3~5번씩 사용합니다. 변형 버전으로는 **Aura Forma**(모든 aura 극성 자동 일치), **Umbral Forma**(Umbral mods용), 그리고 Stance/Exilus Forma가 있습니다."
+        },
+        {
+          "type": "tip",
+          "text": "**Aura 슬롯**(Warframes)과 **Stance 슬롯**(근접 무기)은 *반대로* 작동합니다. capacity를 소모하는 대신 **추가**해 주며, **극성이 일치하면 그 보너스가 두 배**가 됩니다. 항상 aura의 극성을 일치시키세요. Corrosive Projection이나 Growing Power 같은 좋은 aura는 두 자릿수 capacity를 공짜로 제공해 줍니다."
+        },
+        {
+          "type": "warn",
+          "text": "Mastery 랭크 경험치용으로 쓰고 버릴 무기나 frame에는 potato나 Forma를 아끼세요. Reactors, Catalysts, Forma는 소장할 가치가 있는 장비 — 즉, 여러분의 주력 frames와 실제로 [Steel Path](/guides/steel-path)에 들고 갈 weapons를 위해 아껴두세요."
+        }
+      ]
+    },
+    {
+      "id": "damage-model",
+      "title": "피해 멀티플라이어 사고 모델",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Weapon 피해량은 단순히 하나의 수치만 올리는 것이 아니라, **서로 다른 영역(bucket)들의 곱**으로 계산됩니다. 같은 영역 내의 mods는 서로 **합산**되지만, 서로 다른 영역은 **곱산**됩니다. 이 단 하나의 규칙이 모든 좋은 weapon 빌드를 결정합니다."
+        },
+        {
+          "type": "p",
+          "text": "대략적인 공식: `Base × Multishot × Crit × (Elements + Physical) × Faction`. 이미 채워진 영역에 두 번째 mod를 얹는 것은 효율이 떨어집니다(점진적 효율 감소). 반면 **새로운** 영역을 열면 전체 수치가 곱해집니다. 그렇기 때문에 기본 피해 mods를 두 개씩 중첩하지 않고, 대신 **기본 피해(base damage), 멀티샷(multishot), 치명타(crit), 속성(elements)**으로 골고루 분산시키는 것입니다."
+        },
+        {
+          "type": "list",
+          "items": [
+            "**기본 피해(Base damage)** — Serration(소총), Hornet Strike(권총), Pressure Point(근접). 기초가 되지만 하나의 영역일 뿐입니다.",
+            "**멀티샷(Multishot)** — Split Chamber(소총), Barrel Diffusion(권총). 추가 탄환/투사체를 발사하여 기본 피해 위에 거의 두 번째 피해 mod를 얹는 효과를 냅니다.",
+            "**치명타(Critical)** — 치명타 확률(Point Strike)과 치명타 피해(Vital Sense)가 서로 곱해집니다. 확률이 100%를 넘어가면 더 강력한 주황색/빨간색 치명타가 발생합니다.",
+            "**속성(Elements)** — 커스터마이징이 가능한 거대한 영역입니다. 두 개의 기본 속성이 결합하여 더 강력한 조합 속성(아래 참고)이 되며, 상대하는 적에 맞춰 속성을 선택합니다."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "**속성(Elements)**을 사용하면 주로 **상태 이상 효과(status effects)**와 각 faction의 약점을 이용해 상대하는 적에 맞게 피해를 조정할 수 있습니다. 네 가지 기본 속성인 **Heat, Cold, Electricity, Toxin**은 (mod 화면에 배치된 순서대로) 조합되어 여섯 가지 **조합 속성(combined elements)**을 만듭니다."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "조합",
+              "→ 결과",
+              "효과 / 사용 시기"
+            ],
+            "rows": [
+              [
+                "Toxin + Cold",
+                "Viral",
+                "상태 이상이 모든 체력 피해를 증폭시킴 — 기본 범용 DPS 선택지"
+              ],
+              [
+                "Heat + Toxin",
+                "Gas",
+                "피해를 주는 구름을 퍼뜨림 — 밀집된 적 그룹에 강력함"
+              ],
+              [
+                "Cold + Electricity",
+                "Magnetic",
+                "상태 이상이 실드 피해를 증폭시킴 — Corpus 및 실드를 가진 적"
+              ],
+              [
+                "Toxin + Electricity",
+                "Corrosive",
+                "상태 이상이 방어력을 깎음. Grineer faction의 약점이기도 함"
+              ],
+              [
+                "Heat + Electricity",
+                "Radiation",
+                "혼란 상태 이상 — 적들이 서로를 공격하게 만듦 (군중 제어)"
+              ],
+              [
+                "Heat + Cold",
+                "Blast",
+                "폭발 + 적 명중률 감소 (방어적)"
+              ]
+            ],
+            "note": "업데이트 36 (Jade Shadows) 피해 개편 이후, 저항력과 보너스는 특정 체력 유형이 아닌 faction 기반으로 적용되어 Grineer는 Corrosive에 추가 피해를 입고, Corpus는 Magnetic에 추가 피해를 입는 방식 등으로 변경되었습니다. 하지만 위의 상태 이상 효과들은 여전히 설명된 대로 작동합니다. 현재 가장 범용적인 Steel Path 템플릿은 Viral + Heat(Heat은 방어력을 깎고 화상 피해를 추가함)입니다. Grineer를 상대할 때 순수 치명타 무기에는 Corrosive + Heat이 여전히 강력합니다. 슬롯에 배치된 두 속성 mods의 순서에 따라 어떤 속성이 조합될지 결정됩니다."
+          }
+        },
+        {
+          "type": "info",
+          "text": "상태 이상 vs 치명타: 어떤 weapons는 **상태 이상**(60/60 듀얼 능력치 mods, viral 상태 이상)을 원하고, 어떤 것들은 **치명타**를 원합니다. 선택하기 전에 weapon의 치명타 및 상태 이상 확률을 확인하세요. 치명타 확률이 높은 소총은 Point Strike + Vital Sense를 원하고, 상태 이상 확률이 높은 산탄총은 60/60 속성 mods를 원합니다."
+        }
+      ]
+    },
+    {
+      "id": "warframe-mods",
+      "title": "필수 Warframe mods",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Warframe 빌드는 **생존력**과 **네 가지 어빌리티 능력치**(Strength, Duration, Range, Efficiency)의 균형을 맞추는 작업입니다. 네 가지를 모두 최대화하는 경우는 거의 없으며, frame에 맞게 조정합니다. 각 핵심 mod가 무엇을 하는지 배우면 어떤 빌드 가이드도 읽을 수 있게 됩니다."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Mod",
+              "효과",
+              "중요한 이유"
+            ],
+            "rows": [
+              [
+                "Vitality",
+                "높은 체력 증가 (최대 약 +440%)",
+                "거의 모든 frame의 기본 생존력 보장"
+              ],
+              [
+                "Redirection",
+                "높은 실드 증가 (약 +440%)",
+                "shield-gating의 기반이 됨 — 실드가 낮은 빌드에서는 제외됨"
+              ],
+              [
+                "Adaptation",
+                "피격 시 피해 저항이 최대 90%까지 중첩됨",
+                "피격 시 몸이 약한 frames도 Steel Path에서 버틸 수 있게 해줌"
+              ],
+              [
+                "Intensify",
+                "+ 어빌리티 Strength",
+                "더 높은 어빌리티 수치 (피해량, 버프, 방어력 감소)"
+              ],
+              [
+                "Streamline",
+                "+ 어빌리티 Efficiency",
+                "더 자주 시전하고 에너지를 덜 소모함"
+              ],
+              [
+                "Stretch",
+                "+ 어빌리티 Range",
+                "더 넓은 범위의 오라, CC기, 버프 범위"
+              ],
+              [
+                "(Primed) Continuity",
+                "+ 어빌리티 Duration",
+                "더 긴 버프 및 군중 제어 지속 시간"
+              ],
+              [
+                "(Primed) Flow",
+                "+ 에너지 최대치",
+                "어빌리티를 사용할 수 있는 더 큰 에너지 풀 제공"
+              ]
+            ],
+            "note": "업그레이드 경로: Umbral 세트(Umbral Vitality / Intensify / Fiber)는 일반 버전을 대체하며, 2개 또는 3개를 장착하면 세트 보너스를 제공합니다. 주력 frames에 Umbral Forma를 투자할 가치가 충분합니다."
+          }
+        },
+        {
+          "type": "p",
+          "text": "빌드 가이드에서 장단점을 조율할 때 자주 쓰이므로 알아두어야 할 몇 가지 능력치 mods가 더 있습니다. 바로 **Blind Rage**(높은 Strength, 하지만 Efficiency 감소), **Fleeting Expertise**(높은 Efficiency, 하지만 Duration 감소), **Overextended**(엄청난 Range, 하지만 Strength 감소), 그리고 **Narrow Minded**(엄청난 Duration, 하지만 Range 감소)입니다. 이 '커럽티드(corrupted)' mods를 조합하여 특정 능력치를 극대화할 수 있습니다."
+        },
+        {
+          "type": "tip",
+          "text": "**Exilus 슬롯**에는 핵심 빌드와 경쟁하지 않는 유틸리티 mods를 장착합니다. 예를 들어 질주 속도(Rush, Armored Agility), 파쿠르 및 기동성, 또는 적/아이템 감지 레이더 등이 있습니다. **Exilus Adapter**로 슬롯을 해제할 수 있으며, 핵심 빌드가 완성된 후 공짜로 추가 가치를 얻을 수 있는 방법입니다."
+        }
+      ]
+    },
+    {
+      "id": "weapon-mods",
+      "title": "무기 유형별 필수 weapon mods",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "모든 weapon 빌드는 동일한 뼈대에서 시작합니다. 네 가지 피해 영역을 채운 다음, 남은 슬롯을 속성, 상태 이상, 또는 유틸리티로 유연하게 채웁니다. 다음은 무기 클래스별 핵심 mods입니다."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "빌드 역할",
+              "주무기 (소총)",
+              "보조무기 (권총)",
+              "근접 무기"
+            ],
+            "rows": [
+              [
+                "기본 피해",
+                "Serration",
+                "Hornet Strike",
+                "(Primed) Pressure Point"
+              ],
+              [
+                "Multishot",
+                "Split Chamber",
+                "Barrel Diffusion / Lethal Torrent",
+                "— (대신 콤보 사용)"
+              ],
+              [
+                "치명타 확률",
+                "Point Strike",
+                "Pistol Gambit",
+                "Blood Rush (콤보에 비례)"
+              ],
+              [
+                "치명타 피해",
+                "Vital Sense",
+                "Target Cracker",
+                "Organ Shatter"
+              ],
+              [
+                "상태 이상 / 속성",
+                "+90% 속성 mods, 60/60 듀얼 mods",
+                "+90% 속성 mods",
+                "Condition Overload, Weeping Wounds"
+              ]
+            ],
+            "note": "산탄총은 Point Blank(기본 피해)와 Hell's Chamber(멀티샷)를 대신 사용합니다. 활/저격총은 치명타에 크게 의존합니다. 순수 치명타보다 상태 이상 효과를 원할 때는 60/60 듀얼 능력치 mods를 추가하세요."
+          }
+        },
+        {
+          "type": "p",
+          "text": "**근접 무기는 다르게 작동합니다.** 멀티샷 대신 **콤보 카운터(combo counter)**에 비례하여 위력이 증가합니다. **Blood Rush**는 콤보를 치명타 확률로 변환하고, **Weeping Wounds**는 상태 이상 확률로 변환합니다. **Condition Overload**는 대상에게 적용된 고유한 상태 이상 효과당 피해량을 추가해 줍니다. 상태 이상 특화 무기와 조합하면 게임 내에서 가장 강력한 근접 멀티플라이어 중 하나가 됩니다. 공격 속도를 위한 **Berserker Fury** 또는 **Primed Fury**, 그리고 사거리를 위한 **Primed Reach**로 빌드를 마무리하세요."
+        },
+        {
+          "type": "info",
+          "text": "Serration은 최대 약 **+165%**의 기본 피해를 제공하고, Split Chamber는 **90%** 확률로 추가 투사체를 제공합니다. 하지만 정확한 수치는 rank와 DE의 밸런스 조정에 따라 달라질 수 있으므로, 슬롯에 Forma를 적용하기 전에 [Warframe wiki](https://wiki.warframe.com/)에서 현재 수치를 확인하세요. 엔드게임에 도달하면 Galvanized 버전(Galvanized Chamber, Galvanized Diffusion 등)이 일반 기본/멀티샷 mods의 상위 호환 업그레이드가 됩니다."
+        }
+      ]
+    },
+    {
+      "id": "shield-gating",
+      "title": "Shield-gating: 숙련자들이 절대 죽지 않는 비결",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "플레이어들이 [Steel Path](/guides/steel-path)에서 사망하는 가장 큰 이유는 '체력 부족'이 아니라 **shield-gating**을 이해하지 못했기 때문입니다. 단순한 유효 체력은 후반부 게임에서 힘을 쓰지 못하지만, **무적 시간(invulnerability windows)**은 끝까지 유효합니다."
+        },
+        {
+          "type": "p",
+          "text": "작동 방식: 치명적인 타격을 입을 때 **최소 1의 실드**만 남아있다면, 실드가 초과 피해를 흡수하고 파괴되면서 짧은 **무적 시간** — 즉 '게이트(gate)'를 부여합니다. 이 무적 시간의 길이는 **최대 실드량에 비례**합니다. 완전히 충전된 실드가 깨질 때는 실드량이 매우 적을 때 약 **0.33초**부터 실드량이 많을 때 최대 약 **2.25초**까지 지속되는 반면, **일부만 충전된** 실드가 다시 깨질 때는 약 **0.33초**의 짧은 게이트만 제공됩니다. 이 무적 시간 동안에는 절대 죽지 않습니다."
+        },
+        {
+          "type": "steps",
+          "ordered": true,
+          "steps": [
+            {
+              "h": "실드 버퍼 유지하기",
+              "p": "치명적인 타격에서 살아남기 위해 필요한 실드는 단 1포인트뿐입니다. 실드가 조금이라도 있는 frames는 모두 shield-gate를 활용할 수 있으며, 심지어 Inaros 스타일의 탱커조차도 적은 실드 풀로 이득을 볼 수 있습니다."
+            },
+            {
+              "h": "필요할 때 게이트 갱신하기",
+              "p": "게이트가 단 한 번만 발동한다면 아무런 의미가 없습니다. 실드를 다시 채워 깨질 수 있도록 만드세요. 소모한 에너지를 즉시 실드로 변환해 주는 Brief Respite(aura)나 Augur 세트 mods를 장착하고 어빌리티를 시전하면 됩니다."
+            },
+            {
+              "h": "일관된 게이트 갱신을 위해 낮은 실드 유지하기",
+              "p": "Catalyzing Shields는 최대 실드량을 낮춰 실드가 거의 즉시 깨지고 다시 충전되도록 하며, 실드가 아무리 낮아도 완전히 깨질 때마다 항상 약 1.33초의 전체 게이트를 보장합니다. 이는 기존의 '낮은 실드 = 짧은 게이트' 규칙을 무시합니다. Decaying Dragon Key(-실드)를 사용해도 이와 유사하게 '빠르게 깨지고 빠르게 충전되는' 루프를 구성할 수 있습니다."
+            },
+            {
+              "h": "비상 탈출 장치 추가하기",
+              "p": "Rolling Guard는 구르기 시 무적 상태를 부여하고 상태 이상 효과를 제거합니다(짧은 재사용 대기시간 존재). 이는 shield gate를 재정비할 시간을 벌어주며, 실드를 무시하고 들어오는 Toxin 및 Slash 같은 치명적인 상태 이상 피해로부터 생존할 수 있게 해줍니다."
+            }
+          ]
+        },
+        {
+          "type": "warn",
+          "text": "**Toxin 피해와 Slash 출혈 상태 이상은 실드를 완전히 무시합니다** (True 피해 역시 실드와 방어력을 모두 무시합니다). 따라서 shield-gating만으로는 체력을 갉아먹는 출혈 피해를 막을 수 없습니다. 이것이 shield-gating에만 의존하지 않고, 상태 이상 정화(Rolling Guard)와 피해 저항(Adaptation)을 동일한 빌드에 함께 구성해야 하는 이유입니다."
+        },
+        {
+          "type": "quote",
+          "text": "엔드게임 단계의 Warframe에서는 맞아가며 버틸 수 없습니다. 맞지 않는 상태가 되어야 합니다. Shield-gate로 폭발적인 피해를 흡수하고, Rolling Guard로 이를 재설정하며, Adaptation으로 남은 피해를 경감시키세요.",
+          "cite": "커뮤니티의 shield-gating 합의점"
+        }
+      ]
+    },
+    {
+      "id": "layered-survivability",
+      "title": "게이트를 넘어선 다층적 생존력 구성",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Shield-gating은 폭발적인 피해를 막아주는 1차 방어막입니다. 여기에 아래 요소들을 겹쳐 쌓으면 몸이 극도로 약한 frames도 긴 Steel Path 미션에서 살아남을 수 있습니다. 대부분의 빌드는 이 모든 것을 사용하지 않고, 두세 가지만 선택하여 사용합니다."
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Adaptation** — 피격 시 피해 유형별로 최대 **90% 피해 감소**가 중첩됩니다. 자체 방어 능력이 없는 frames를 위한 최고의 단일 생존 mod입니다.",
+            "**Rolling Guard** — 구르기 시 무적 및 모든 상태 이상 정화 효과를 제공하며, 짧은 재사용 대기시간이 있습니다. shield-gate 재설정 및 Toxin 대처용 카드로 유용하게 쓰입니다.",
+            "**Quick Thinking** — 체력이 0이 될 때 **에너지**를 소모하여 생존을 유지합니다. 사실상의 두 번째 체력 바 역할을 합니다 (높은 에너지 풀 및 shield-gating과 조합 시 유용).",
+            "**Primed Sure Footed** — 넘어짐/비틀거림에 면역이 됩니다 (로그인 보상 mod). 경직 상태에 빠지는 것은 보이지 않는 살인마와 같습니다. 제자리에 굳건히 서 있어야 어빌리티를 계속 시전할 수 있습니다.",
+            "**Arcanes** — Arcane Grace, Guardian, Aegis 같은 [Arcanes](/guides/arcanes)는 mods 외에도 체력 재생, 방어력, 실드 회복을 추가하여 생존력을 크게 끌어올려 줍니다.",
+            "**Aura + Helminth** — 방어형 aura(Physique)나 [Helminth](/guides/helminth)를 통해 주입한 방어형 어빌리티(예: overguard 획득 또는 피해 감소 기술)는 그 어떤 단일 mod 슬롯보다 더 큰 가치를 발휘할 수 있습니다."
+          ]
+        },
+        {
+          "type": "info",
+          "text": "체력 탱킹과 실드 탱킹 중 하나를 선택하는 것은 매우 실질적인 고민입니다. 방어력이 높은 frames(Rhino, Inaros 스타일 등)는 Vitality + Adaptation + arcanes 조합을 선호할 수 있고, 방어력이 낮은 캐스터형 캐릭터들은 shield-gating + Rolling Guard에 의존합니다. 빌드를 무작정 복사해 붙여넣지 말고, frame에 맞는 전략을 매칭하세요."
+        }
+      ]
+    },
+    {
+      "id": "ranking-rivens-next",
+      "title": "mod rank 올리기, Rivens & 다음 단계",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Mods는 **Endo + 크레딧**으로 rank를 올립니다. Endo는 Ayatan 조각, 중복 mods 분해, 그리고 전용 파밍을 통해 획득할 수 있습니다. 자세한 내용은 [Endo 파밍 가이드](/guides/endo)를 참고하시고, [Endo / Plat 가치 도구](/endo)를 사용하여 mod나 riven을 분해하는 것이 이득인지 확인해 보세요. 초반에 유용한 팁은 특이한 것을 쫓기 전에 핵심 mods(Serration, Vitality, 네 가지 어빌리티 능력치)의 rank를 먼저 끝까지 올리는 것입니다."
+        },
+        {
+          "type": "p",
+          "text": "**Rivens**는 특정 weapon에 귀속되며 무작위로 강력한(때로는 부정적인) 능력치가 부여되는 mods입니다. 초보자용 도구가 아닌 **엔드게임용 극대화(min-max) 수단**입니다. 제대로 모딩된 weapon이 우선이며, 좋은 Riven은 마지막 10~30%의 성능을 더해줄 뿐입니다. 가격 변동폭이 매우 크므로, 구매하거나 판매하기 전에 [Riven 가치 추정기](/riven-value)로 옵션의 가격을 확인하고 [Riven 가이드](/guides/riven)에서 작동 메커니즘을 읽어보세요."
+        },
+        {
+          "type": "steps",
+          "ordered": true,
+          "steps": [
+            {
+              "h": "소장할 장비에 potato 및 Forma 투자하기",
+              "p": "Reactor/Catalyst를 적용한 다음, 빌드의 극성에 맞게 슬롯에 Forma를 적용하여 60 capacity 안에 모든 것이 들어가도록 하세요."
+            },
+            {
+              "h": "피해 영역 채우기",
+              "p": "weapons에는 기본 피해 + 멀티샷 + 치명타 + 속성, frames에는 생존력 + 우선순위가 높은 두 가지 어빌리티 능력치를 채우세요."
+            },
+            {
+              "h": "생존력 레이어 추가하기",
+              "p": "Steel Path에 진입하기 전에 shield-gating 세팅이나 Adaptation + Rolling Guard를 갖추세요."
+            },
+            {
+              "h": "마지막에 극대화(Min-max)하기",
+              "p": "기본 빌드가 완료된 후에만 Umbral/Primed mods, arcanes를 갖추고, 그 다음에 Riven을 고려하세요."
+            }
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "빌드 가이드에 없는 mods가 있다면 가장 비슷한 대체품(Primed 버전 대신 일반 mod)을 장착하고 나중에 업그레이드하세요. 90% 완성된 빌드로도 전체 성계 지도를 클리어할 수 있습니다. 즐겁게 게임을 하기 위해 모든 Primed와 Riven이 필수적인 것은 아닙니다."
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Warframe 초보자에게 가장 좋은 mods는 무엇인가요?",
+      "a": "weapons의 경우: 기본 피해를 위한 Serration(소총) / Hornet Strike(권총) / Pressure Point(근접), 그 다음 멀티샷 mod(Split Chamber, Barrel Diffusion), 그 다음 속성 mods를 장착합니다. Warframes의 경우: 체력을 위한 Vitality와 네 가지 어빌리티 능력치 mods인 Intensify(Strength), Streamline(Efficiency), Stretch(Range), Continuity(Duration)를 장착합니다. 희귀한 것을 쫓기 전에 [Endo](/guides/endo)를 사용하여 이들의 rank를 먼저 끝까지 올리세요."
+    },
+    {
+      "q": "Orokin Reactor 또는 Catalyst(일명 'potato')는 무슨 역할을 하나요?",
+      "a": "item의 mod capacity를 30에서 60으로 영구적으로 두 배 늘려주어, 풀 빌드를 실제로 장착할 수 있게 해줍니다. Reactor는 Warframes, 동반자, Archwing에 사용되며, Catalyst는 weapons에 사용됩니다. Nightwave, 침공, 이벤트(및 간혹 Baro Ki'Teer)를 통해 무료로 획득하거나 플래티넘으로 구매할 수 있습니다. Mastery 랭크 경험치용 장비가 아닌 계속 소장할 장비에 아껴두세요."
+    },
+    {
+      "q": "극성(polarities)과 Forma는 어떻게 작동하나요?",
+      "a": "일치하는 극성 기호가 있는 슬롯에 mod를 장착하면 일반 drain의 약 절반만 소모되며, 이를 통해 엔드게임 빌드를 60 capacity 안에 맞출 수 있습니다. Forma는 한 슬롯의 극성을 추가하거나 변경하는 자원이지만, 사용 시 item의 rank가 0으로 초기화되어 다시 레벨을 올려야 합니다. Aura와 Stance 극성을 가장 먼저 맞추세요. 이 슬롯들은 capacity를 소모하는 대신 추가해 주므로, 극성을 맞추면 보너스가 두 배가 되어 공짜 가치를 얻을 수 있습니다."
+    },
+    {
+      "q": "shield-gating이란 무엇이며 어떻게 하나요?",
+      "a": "실드가 깨질 때 절대 죽지 않는 짧은 무적 시간을 얻게 됩니다. 이 무적 시간의 길이는 최대 실드량에 비례하여, 실드량이 매우 적을 때 약 0.33초부터 실드량이 많을 때 최대 약 2.25초까지 지속됩니다. 반면 일부만 충전된 실드가 다시 깨질 때는 약 0.33초만 제공됩니다. 보통 Brief Respite나 Augur mods(어빌리티에 소모한 에너지를 실드로 변환)를 사용해 실드를 다시 채우고 깨뜨리는 루프를 유지하며, 재설정용으로 Rolling Guard를 함께 사용합니다. 낮은 실드 빌드에서는 Catalyzing Shields를 추가하여 매번 전체 게이트 시간을 보장받을 수 있습니다. 이것이 숙련된 플레이어들이 [Steel Path](/guides/steel-path)에서 살아남는 핵심 비결입니다. 아래의 shield-gating 비디오에서 전체 가이드를 확인해 보세요."
+    },
+    {
+      "q": "체력이 엄청나게 높은데도 Steel Path에서 계속 죽는 이유는 무엇인가요?",
+      "a": "단순한 유효 체력은 후반부 게임에서 힘을 쓰지 못합니다. 적의 피해량이 이를 훨씬 능가하기 때문입니다. 대신 무적 레이어가 필요합니다. 폭발적인 피해를 막기 위한 shield-gating, 이를 재설정하고 상태 이상을 정화하기 위한 Rolling Guard, 그리고 최대 90% 피해 감소를 위한 Adaptation이 필요합니다. Toxin과 Slash는 실드를 무시하므로 상태 이상 정화는 선택이 아닌 필수입니다."
+    },
+    {
+      "q": "weapon 피해량을 더 늘리려면 어떤 mod부터 장착해야 하나요?",
+      "a": "곱산되는 영역들을 생각하세요. 기본 피해, 멀티샷, 치명타, 속성은 각각 서로 곱해지지만, 같은 영역 내의 mods는 합산만 됩니다. 따라서 기본 피해 mods를 두 개씩 중첩하지 말고, 기본 피해 mod, 멀티샷 mod, 치명타 mods, 그리고 올바른 속성(체력 피해를 증폭시키는 Viral, 방어력을 깎는 Heat 또는 Corrosive)으로 분산시키세요. 새로운 영역을 여는 것이 기존 영역을 과도하게 채우는 것보다 훨씬 효과적입니다."
+    },
+    {
+      "q": "mods의 rank를 올리려면(업그레이드하려면) 어떻게 해야 하나요?",
+      "a": "mod 화면으로 이동하여 Endo와 크레딧을 사용해 mod를 합성하세요. rank가 올라갈 때마다 효과와 drain이 증가합니다. Endo는 Ayatan 조각, 중복 mods 분해, 그리고 [Endo 가이드](/guides/endo)에서 다루는 전용 파밍을 통해 획득할 수 있습니다. [Endo / Plat 가치 도구](/endo)를 사용하여 mod나 riven을 소장하는 것보다 분해하는 것이 더 가치 있는지 결정해 보세요."
+    },
+    {
+      "q": "초보자에게도 Rivens가 투자할 가치가 있나요?",
+      "a": "아직은 아닙니다. Rivens는 이미 완성된 빌드 위에 약 마지막 10~30%의 성능을 더해주는 엔드게임용 극대화(min-max) 수단이며, 무작위 능력치 때문에 다루기 까다로울 수 있습니다. 먼저 제대로 된 mod 세팅을 완성한 다음, 플래티넘을 소비하기 전에 [Riven 가치 추정기](/riven-value)로 옵션의 가격을 확인하고 [Riven 가이드](/guides/riven)에서 작동 메커니즘을 읽어보세요."
+    }
+  ],
+  "videos": [
+    {
+      "id": "ct2pfAonGXY",
+      "title": "Complete Warframe Modding Guide 2025: Everything You Need to Know!",
+      "channel": "Zefā"
+    },
+    {
+      "id": "RQ22Jltn3i0",
+      "title": "The Ultimate Shield Gating Guide! 🛡️ STOP DYING IN STEEL PATH [Warframe]",
+      "channel": "Hunkpain Gaming "
+    },
+    {
+      "id": "H0sPUBGn2bc",
+      "title": "How to NEVER DIE In WARFRAME!",
+      "channel": "iFlynn"
+    },
+    {
+      "id": "GPJS7bj6V2E",
+      "title": "THE ONLY SURVIVABILITY GUIDE YOU WILL EVER NEED IN WARFRAME",
+      "channel": "Alextreme"
+    }
+  ],
+  "sources": [
+    {
+      "label": "Warframe Wiki — Mods, Polarity & Forma",
+      "href": "https://wiki.warframe.com/w/Mods"
+    },
+    {
+      "label": "Warframe Wiki — Damage & Elemental Combinations",
+      "href": "https://wiki.warframe.com/w/Damage"
+    },
+    {
+      "label": "Warframe Wiki — Shield & Shield Gating",
+      "href": "https://wiki.warframe.com/w/Shield"
+    }
+  ],
+  "related": [
+    {
+      "label": "Riven Mods 가이드",
+      "to": "/guides/riven",
+      "icon": "diamond-stone",
+      "note": "옵션 순환(Rolls), 기질(dispositions) & 투자할 시기"
+    },
+    {
+      "label": "Steel Path 가이드",
+      "to": "/guides/steel-path",
+      "icon": "skull",
+      "note": "생존력 모딩이 빛을 발하는 곳"
+    },
+    {
+      "label": "Helminth 시스템",
+      "to": "/guides/helminth",
+      "icon": "dna",
+      "note": "어떤 frame에든 방어형 어빌리티 주입하기"
+    },
+    {
+      "label": "Arcanes 가이드",
+      "to": "/guides/arcanes",
+      "icon": "shield-star",
+      "note": "mods를 넘어서는 또 다른 생존력 레이어"
+    },
+    {
+      "label": "Endo 파밍",
+      "to": "/guides/endo",
+      "icon": "chart-line",
+      "note": "mods의 rank를 올리기 위한 연료"
+    },
+    {
+      "label": "Riven 가치 추정기",
+      "to": "/riven-value",
+      "icon": "cash",
+      "note": "거래하기 전에 Riven 가격 확인하기"
+    }
+  ],
+  "updated": "2026-07-18"
+}

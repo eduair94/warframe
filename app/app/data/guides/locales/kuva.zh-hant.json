@@ -1,0 +1,454 @@
+{
+  "slug": "kuva",
+  "eyebrow": "知識中心 · Kuva 刷取",
+  "title": "Kuva 刷取指南",
+  "lede": "Kuva 是用來重置 Riven 屬性的紅色貨幣 — 而背後的刷取過程也有其專屬的 meta。這裡介紹了每個可靠的刷取點、如何利用加成和正確的同伴 mod 來倍增你的產量，以及如何合理消耗它而不至於感到枯燥。",
+  "category": "farming",
+  "readMins": 8,
+  "stats": [
+    {
+      "num": "~600",
+      "label": "每次 Siphon 獲得的 Kuva",
+      "tone": "good"
+    },
+    {
+      "num": "~1,200",
+      "label": "每次 Flood 獲得的 Kuva",
+      "tone": "alt"
+    },
+    {
+      "num": "3,500",
+      "label": "每次重置所需的最大 Kuva",
+      "tone": "gold"
+    },
+    {
+      "num": "2×",
+      "label": "Resource Booster",
+      "tone": "good"
+    }
+  ],
+  "sections": [
+    {
+      "id": "what-kuva-is",
+      "title": "Kuva 究竟是什麼",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Kuva** 是一種從 Grineer 的 Kuva 儲備中收集的紅色發光資源。它最主要的目的只有一個：**重置 Riven mod**。每次重置都會消耗 Kuva 來重新隨機 Riven 的屬性 — 包括增益、缺陷和傾向性加成。它也是少數鑄造廠藍圖的製作材料（少數 Warframe、Umbra Forma 和一些武器需要少量 Kuva），但絕大多數人刷取 Kuva 的原因都是為了 Riven。"
+        },
+        {
+          "type": "p",
+          "text": "「Kuva」這個詞出現在幾個不相關的系統中，這幾乎讓每個新手玩家都感到困惑。只有 **資源** 才是你為了重置 Riven 而需要刷取的東西 — 其餘的只是共享了這個名字。"
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "它是什麼",
+              "v": "不可交易的資源（紅色）"
+            },
+            {
+              "k": "主要用途",
+              "v": "重置 Riven mod 屬性"
+            },
+            {
+              "k": "也用於",
+              "v": "少數鑄造廠藍圖"
+            },
+            {
+              "k": "解鎖條件",
+              "v": "The War Within 系列任務"
+            },
+            {
+              "k": "可以購買/交易嗎？",
+              "v": "否 — 你必須自己刷，否則就無法獲得"
+            }
+          ]
+        },
+        {
+          "type": "info",
+          "text": "**「Kuva」一詞被過度使用。** *Kuva*（用來重置的資源）· *Kuva Siphon/Flood*（獎勵該資源的任務）· *Kuva Lich*（死敵敵人）· *Kuva 武器*（Lich 掉落的武器）。只有第一種能用來重置 Riven。請參閱最後關於 Lich 的章節，以免混淆兩者。"
+        }
+      ]
+    },
+    {
+      "id": "unlock",
+      "title": "解鎖 Kuva 刷取",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Kuva 刷取被鎖定在 **The War Within** 任務之後（繼 *The Second Dream* 之後的第二個 Operator 任務）。在完成它之前，星圖上不會出現 Kuva Siphon 或 Kuva Flood，Kuva Fortress 會保持鎖定狀態，且你無法生成 Kuva Lich。"
+        },
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "h": "開拓星圖",
+              "p": "推動星球進度並完成主線劇情，直到解鎖 The Second Dream 和 The War Within。解鎖順序請參閱 [任務指南](/guides/quests)。"
+            },
+            {
+              "h": "完成 The War Within",
+              "p": "這將解鎖你 Operator 的 Void 能力 — 你確實需要它們來破解 Kuva Siphon — 並開啟整個 Kuva 生態系統。"
+            },
+            {
+              "h": "留意星圖",
+              "p": "Kuva Siphon 和 Kuva Flood 的標記現在會輪流出現在 Origin System 的各個節點上，並定時刷新。"
+            },
+            {
+              "h": "開啟 Kuva Fortress",
+              "p": "該要塞及其 Kuva Survival 節點將成為你大量刷取的主要基地。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "core-farms",
+      "title": "核心 Kuva 刷取方式",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "主要有三種來源：**Siphon** 適合快速獲取，**Flood** 提供雙倍獎勵，而 **Survival** 適合持續大量刷取。它們是常青的 — 不像遺物紀元或輪替的「最佳資源節點」，這些不會隨著每次更新而改變。"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "方法",
+              "地點",
+              "大約產量",
+              "最適合"
+            ],
+            "rows": [
+              [
+                "Kuva Siphon",
+                "輪替的星圖節點（需要完成 TWW）",
+                "~600 基礎",
+                "快速、休閒、低難度的刷取"
+              ],
+              [
+                "Kuva Flood",
+                "一個等級較高的輪替節點",
+                "~1,200 基礎",
+                "雙倍獎勵，等級高得多"
+              ],
+              [
+                "Kuva Survival",
+                "Kuva Fortress 的 Survival 節點 (Taveuni)",
+                "隨時間增加",
+                "持續、大量刷取"
+              ],
+              [
+                "每日 Sortie",
+                "Sortie 獎勵表（機率獲得）",
+                "數千",
+                "在做每日任務時順便被動獲取 Kuva"
+              ]
+            ],
+            "note": "產量為使用加成前的大約基礎數量 — DE 偶爾會調整數值，因此請在 live wiki 上確認當前數值。"
+          }
+        },
+        {
+          "type": "p",
+          "text": "**Siphon** 的運作方式就像一個迷你任務目標：你到達 Kuva Siphon 裝置，它開始吸入 Kuva 雲霧，你必須透過 **在 Operator 形態下以 Void Dashing 穿過（或用你的 Amp 射擊）飄來的雲霧** 來摧毀它的四個 Kuva braids — 這正是為什麼 The War Within 是硬性要求的原因。在你操作時，Kuva Guardians 會生成並進行干擾。摧毀所有四個 braids 後，Siphon 就會破裂，並給予一筆 Kuva。**Flood** 的玩法相同，但敵人等級高得多，獎勵大約也是雙倍。在星圖上連續刷 Siphon（並在 Flood 出現時順便完成）是最有效率的*休閒*循環。"
+        }
+      ]
+    },
+    {
+      "id": "survival-fissure",
+      "title": "無盡模式 meta：Kuva Survival + 裂縫",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "就純粹的 **每小時 Kuva 產量** 而言，Kuva Fortress 上的 Kuva Survival 是無可爭議的王者。你不需要在星圖上到處追逐標記，只需待在一個 Survival 任務中，並將 **生命維持裝置轉化為 Kuva Harvesters** — 每次轉化並在防守成功時都會獲得大量 Kuva，因此你堅持得越久，累積的就越多。帶上一個具備大範圍傷害（AoE）清怪能力的 frame 和穩定的能量回復，這樣你就能不停地擊殺敵人。"
+        },
+        {
+          "type": "p",
+          "text": "高手的做法是 **一舉兩得**：在 Kuva Survival 被標記為 **Void Fissure** 時進行。你可以在同一次任務中一邊開 relics 獲取能換取白金的 Prime 部件，一邊累積 Kuva — 一次任務，兩種刷取。無盡模式的玩家會將其延長至數小時，以獲得極其豐厚的收穫。"
+        },
+        {
+          "type": "links",
+          "links": [
+            {
+              "label": "哪些 relics 每次運行的收益最高",
+              "to": "/relic-farming",
+              "icon": "diamond-stone",
+              "note": "選擇能為你的 Kuva 刷取提供資金的裂縫 relic"
+            },
+            {
+              "label": "開啟還是出售？Relic 的價值",
+              "to": "/relics-value",
+              "icon": "cash-multiple",
+              "note": "了解你的裂縫掉落物價值多少"
+            }
+          ]
+        },
+        {
+          "type": "warn",
+          "text": "**極長時間的無盡模式存在真正的風險。** 在長達數小時的公開隊伍中，主機遷移可能會讓你斷開連線，而且 Kuva 無法存檔重來 — 遊戲崩潰或斷線會讓你失去自上一個獎勵點以來的所有收益。單人遊玩或與穩定的預組隊伍一起刷可以降低這種機率，穩步結算獎勵遠比把整個任務的收穫賭在一次不中斷的馬拉松上要好。"
+        }
+      ]
+    },
+    {
+      "id": "boosters",
+      "title": "加倍你的 Kuva：加成與同伴",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Kuva 刷取中唯一最重要的一課：**重點不在於節點，而在於你的加成倍率。** 同一個 Siphon 可以提供 600 還是 2,400+ 的 Kuva，完全取決於你疊加了什麼加成。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Resource Booster (2×)** — 在持續時間內使獲得的所有 Kuva 翻倍，包括來自 Siphon 或 Flood 的整筆獎勵。這是最可靠的基礎加成倍率。",
+            "**Loyal Retriever (同伴 mod)** — 自 **Update 37** 起，以前屬於 Smeeta 的 Charm 的資源翻倍效果已被移至其專屬的 mod 中。它提供固定的 **13% 機率使每次獲得的 Credit 和 Resource（包括 Kuva）翻倍** — 該效果一直處於啟用狀態，無需等待 buff 觸發，並且可以裝備在任何野獸同伴（Kubrow、Kavat 等）上，而不僅限於 Smeeta。",
+            "**雙倍資源週末** — DE 的定期活動可與加成疊加，使 Siphon 或 Flood 的產量逼近 4 倍。",
+            "**不再需要「等待 buff」** — 以前囤積掉落物直到 Smeeta 的 Charm 觸發資源加成的舊技巧在 Update 37 中已不復存在。現在翻倍是每次拾取時的被動判定，因此只需繼續擊殺並順其自然即可。"
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "**同伴配置：** 在野獸同伴上裝備 **Loyal Retriever**，以獲得適用於 Kuva 的 13% 雙倍拾取機率。許多玩家仍然會帶上 **Smeeta Kavat** — 它的 Charm 可以隨機獲得稀有資源掉落或三倍經驗值 — 但資源翻倍本身不再特定需要 Smeeta。"
+        }
+      ]
+    },
+    {
+      "id": "per-hour",
+      "title": "每小時 Kuva 產量：現實預期",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "產量會隨著你的 frame、加成持續時間以及路線而有很大波動，因此請將這些視為大約範圍而非絕對數值。真實情況如下："
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "休閒連續刷 Siphon/Flood（無加成）",
+              "v": "~5,000–10,000 Kuva/小時"
+            },
+            {
+              "k": "Kuva Survival + Resource Booster (+ Loyal Retriever)",
+              "v": "~15,000–25,000+ Kuva/小時"
+            },
+            {
+              "k": "一次達到最大消耗的 Riven 重置",
+              "v": "3,500 Kuva"
+            },
+            {
+              "k": "因此，在有加成的情況下，刷一小時 Survival 大約可以重置",
+              "v": "4–7 次"
+            }
+          ]
+        },
+        {
+          "type": "info",
+          "text": "舊指南中警告的每小時產量劇烈波動 — 來自等待隨機的 Smeeta Charm 資源觸發 — 已經不復存在。Loyal Retriever 的翻倍是每次拾取穩定 13% 的機率，因此刷取過程比以前穩定得多；現在你的效率主要取決於你的 frame、路線，以及是否開啟了加成或雙倍資源週末。"
+        }
+      ]
+    },
+    {
+      "id": "spending",
+      "title": "消耗 Kuva：Riven 重置",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "重置 Riven 的屬性是直接在該 mod 上進行的（**僅消耗 Kuva**）。不要將其與升級 Riven 混淆，後者需要消耗 Endo + credits — Kuva 是重新隨機屬性，而 [Endo](/guides/endo) 則是提升 mod 的等級。每次重置的價格會逐次攀升，直到達到硬上限："
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "重置次數",
+              "大約 Kuva 消耗"
+            ],
+            "rows": [
+              [
+                "第 1 次",
+                "900"
+              ],
+              [
+                "第 2 次",
+                "1,000"
+              ],
+              [
+                "第 3 次",
+                "1,200"
+              ],
+              [
+                "第 4 次",
+                "1,400"
+              ],
+              [
+                "…",
+                "每次重置遞增"
+              ],
+              [
+                "~第 10 次及以後",
+                "3,500（上限）"
+              ]
+            ],
+            "note": "大約的消耗階梯 — 確切的中間數值最好在 live wiki 上確認。關鍵事實：從 900 開始，3,500 封頂。"
+          }
+        },
+        {
+          "type": "quote",
+          "text": "當你刷了一整天的 Kuva，除了更高的重置次數外一無所獲時的感受。",
+          "cite": "r/Warframe"
+        },
+        {
+          "type": "tip",
+          "text": "重置是 **純粹的隨機（RNG）** — 一個好的 Riven 可能會被洗成壞的，反之亦然。在開始之前設定一個目標，並查看 [Riven 價值估算工具](/riven-value)，這樣你就能知道當前的屬性是否已經比你追求的完美屬性更有價值。如果一個 Riven 已經無可救藥，透過 [/endo](/endo) 將其分解為 Endo 通常比投入更多 Kuva 更明智。"
+        },
+        {
+          "type": "links",
+          "links": [
+            {
+              "label": "Riven 價值估算工具",
+              "to": "/riven-value",
+              "icon": "chart-line",
+              "note": "這個屬性值得保留嗎？"
+            },
+            {
+              "label": "Endo / 白金價值",
+              "to": "/endo",
+              "icon": "recycle",
+              "note": "將無用的 Riven 分解為 Endo"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "liches",
+      "title": "Kuva Liches：相同的名字，不同的系統",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Kuva Lich** 是一個死敵敵人 — 而非資源。你在 Grineer 任務中（在完成 The War Within 後可用）使用慈悲斬殺擊殺 **Kuva Larvling** 來創建一個 Lich。Lich 會佔領領地，並在被擊敗時掉落一把帶有隨機加成（大約 25–60%）的 **Kuva 武器**。"
+        },
+        {
+          "type": "p",
+          "text": "你不需要消耗 Kuva *資源* 來擊敗 Lich。你需要使用裝備了三個正確順序 **Requiem mod** 的 **Parazon** 來消滅它 — 而找出那個順序本身就是一個謎題。Requiem mod 來自 **Requiem Relics**。這種多層隨機（relic → Requiem → 正確順序 → 武器 → 好的屬性數值）正是 Reddit 社群最喜歡抱怨的事情。"
+        },
+        {
+          "type": "warn",
+          "text": "新手陷阱：刷取 Kuva 資源 **永遠** 無法讓你獲得 Kuva 武器，而獵殺 Lich 也不會填滿你用來重置的 Kuva 儲備。它們是完全獨立的刷取系統，只是共享了同一個名字。"
+        }
+      ]
+    }
+  ],
+  "videos": [
+    {
+      "id": "ETo_jzx1m1A",
+      "title": "How To Farm Kuva in Warframe 2026 | Best Methods + Vendors",
+      "channel": "Tipsy"
+    },
+    {
+      "id": "6Ebs0Ws_GdQ",
+      "title": "Kuva Farming Guide - All the ways to get Kuva",
+      "channel": "QuadLyStop"
+    },
+    {
+      "id": "9t6f01oAEIM",
+      "title": "Best Ways To Farm Kuva In Warframe | Easy Guide (2025)",
+      "channel": "ZombiGamEr4562"
+    },
+    {
+      "id": "BQ8fMA0e43o",
+      "title": "How to easy farm Kuva Lich Complete Beginner - Veteran Guide | Warframe 2025",
+      "channel": "1WEAZEL1"
+    }
+  ],
+  "related": [
+    {
+      "label": "Riven Mod 指南",
+      "to": "/guides/riven",
+      "icon": "dice-multiple",
+      "note": "你的 Kuva 重置實際上改變了什麼"
+    },
+    {
+      "label": "Riven 價值估算工具",
+      "to": "/riven-value",
+      "icon": "chart-line",
+      "note": "了解某次重置是否值得消耗的 Kuva"
+    },
+    {
+      "label": "Void Relics 指南",
+      "to": "/guides/relics",
+      "icon": "diamond-stone",
+      "note": "一舉兩得：Kuva Survival 裂縫"
+    },
+    {
+      "label": "Endo 與白金價值",
+      "to": "/endo",
+      "icon": "recycle",
+      "note": "分解無用的 Riven 而不是繼續重置"
+    },
+    {
+      "label": "Steel Path 指南",
+      "to": "/guides/steel-path",
+      "icon": "skull",
+      "note": "難度更高的 Kuva Survival，更豐厚的收益"
+    },
+    {
+      "label": "社群常見問題",
+      "to": "/faq",
+      "icon": "help-circle",
+      "note": "更多快速解答"
+    }
+  ],
+  "faqs": [
+    {
+      "q": "在 Warframe 中 Kuva 有什麼用途？",
+      "a": "Kuva 的主要作用是重置 Riven mod 的屬性 — 每次重置都會消耗 Kuva 來重新隨機 Riven 的增益和缺陷。它也是少數鑄造廠藍圖的製作材料（少數 Warframe、Umbra Forma 和一些武器）。它與使用白金購買、製作或升級 Warframe 無關。關於重置如何運作，請參閱 [Riven 指南](/guides/riven)。"
+    },
+    {
+      "q": "快速刷取 Kuva 的最佳方法是什麼？",
+      "a": "連續刷 Kuva Siphon 並在 Flood 出現時順便完成，可以快速且輕鬆地獲取 Kuva；或者在 Kuva Fortress 上運行 Kuva Survival 以進行持續的大量刷取。將兩者與 Resource Booster 搭配使用 — 並在野獸同伴上裝備 Loyal Retriever，以獲得 13% 的機率使每次拾取的 Kuva 翻倍 — 從而使收益倍增。在 Void Fissure 中運行 Kuva Survival 還能讓你同時開啟 [relics](/relic-farming) 以換取白金。"
+    },
+    {
+      "q": "重置一個 Riven 需要消耗多少 Kuva？",
+      "a": "第一次重置大約消耗 900 Kuva，此後每次重置的價格會逐次攀升，在大約十次重置後達到約 3,500 Kuva 的永久上限。重置是純粹的隨機，因此在將 Kuva 投入到可能會讓你後悔的屬性之前，請先查看 [Riven 價值估算工具](/riven-value)。"
+    },
+    {
+      "q": "Kuva 和 Kuva Lich 有什麼區別？",
+      "a": "Kuva 是你為了重置 Riven 而刷取的資源。Kuva Lich 是一個死敵敵人，你透過慈悲斬殺 Larvling 來創建它，然後獵殺它以獲取 Kuva 武器。它們共享「Kuva」這個名字，但完全是獨立的系統 — 你需要使用 Requiem mod 和你的 Parazon 來擊敗 Lich，而不是消耗 Kuva 資源。"
+    },
+    {
+      "q": "如何解鎖 Kuva Siphon？",
+      "a": "完成 The War Within 任務。之後，Kuva Siphon 和 Kuva Flood 的標記會輪流出現在 Origin System 的各個星圖節點上，並且 Kuva Fortress 及其 Survival 節點也會開啟。你還需要該任務中解鎖的 Operator 的 Void 能力來摧毀 Siphon 的 braids。關於如何解鎖，請參閱 [任務指南](/guides/quests)。"
+    },
+    {
+      "q": "Smeeta Kavat 會使 Kuva 翻倍嗎？",
+      "a": "現在無法再透過它的 Charm 翻倍了。自 Update 37（2024 年 10 月）起，資源翻倍效果已從 Smeeta 的 Charm 中移除，並轉移到一個獨立的 mod 「Loyal Retriever」上。它提供固定的 13% 機率使每次拾取的資源（包括 Kuva）翻倍，並且可以裝備在任何野獸同伴（Kubrow、Kavat 等）上。Smeeta 對於 Charm 的其他增益仍然很有用，但你不再特定需要它來使你的 Kuva 翻倍。"
+    },
+    {
+      "q": "可以購買或交易 Kuva 嗎？",
+      "a": "否。Kuva 是一種不可交易的資源，無法使用白金購買 — 你必須自己刷取。你可以交易用它重置過的 Riven，但絕不能交易 Kuva 本身。如果你是為了獲取白金，請參閱 [白金指南](/guides/platinum)。"
+    },
+    {
+      "q": "Resource Booster 對 Kuva 有效嗎？",
+      "a": "是的 — Resource Booster 會使所有獲得的 Kuva 翻倍，且雙倍資源週末活動還可以與其疊加（在運行加成的情況下最高可達約 4 倍）。將你大規模重置 Riven 的計劃留到有加成的時期，以最大化每次刷取的收益。"
+    }
+  ],
+  "sources": [
+    {
+      "label": "So let me get this straight… RNG relics → Requiems → Kuva Liches → weapon rolls (r/Warframe)",
+      "href": "https://reddit.com/r/Warframe/comments/dr46xo/so_let_me_get_this_straight_we_need_to_farm_rng/"
+    },
+    {
+      "label": "TFW you farm Kuva all day and have nothing to show for it besides a higher roll count (r/Warframe)",
+      "href": "https://reddit.com/r/Warframe/comments/ci5f0x/tfw_you_farm_kuva_all_day_and_have_nothing_to/"
+    },
+    {
+      "label": "Kuva farming actually felt good during 2x weekend (r/Warframe)",
+      "href": "https://reddit.com/r/Warframe/comments/b5a4za/kuva_farming_actually_felt_good_during_2x_weekend/"
+    },
+    {
+      "label": "Warframe Wiki",
+      "href": "https://wiki.warframe.com/"
+    }
+  ],
+  "updated": "2026-07-18"
+}

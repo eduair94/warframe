@@ -1,0 +1,480 @@
+{
+  "slug": "arcanes",
+  "eyebrow": "지식 센터 · Arcanes",
+  "title": "Arcanes 가이드",
+  "lede": "Arcanes는 탄탄한 빌드를 Steel Path의 괴물로 탈바꿈시켜 주는 발동 조건식 패시브입니다. 여기에서 Arcanes의 역할, 랭크 올리는 방법, 드롭 위치, 그리고 중복 아이템을 판매하여 파밍 자금을 마련하는 방법을 알아보세요.",
+  "category": "systems",
+  "readMins": 10,
+  "stats": [
+    {
+      "num": "21",
+      "label": "Arcane을 맥스 랭크(Rank 5)로 만들기 위해 필요한 개수",
+      "tone": "gold"
+    },
+    {
+      "num": "2",
+      "label": "Warframe당 Arcane 슬롯 개수",
+      "tone": "good"
+    },
+    {
+      "num": "6",
+      "label": "랭크 티어, R0에서 R5까지",
+      "tone": "alt"
+    },
+    {
+      "num": "3",
+      "label": "대표적인 Eidolon Arcanes",
+      "tone": "gold"
+    }
+  ],
+  "sections": [
+    {
+      "id": "what-are-arcanes",
+      "title": "Arcanes의 실제 역할",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Arcane**은 전용 슬롯에 장착되어 특정 **발동 조건(trigger)**이 충족될 때 활성화되는 패시브 강화 효과입니다. 주로 일정 확률로 발동합니다. \"에너지 획득 시, 일정 확률로 에너지 회복\" 또는 \"피해를 입을 시, 일정 확률로 방어력 획득\"과 같은 효과를 생각하시면 됩니다. Mods와 달리, Arcanes는 **mod 수용량을 소모하지 않으므로**, 기존 빌드 위에 추가적인 힘을 무료로 얹을 수 있습니다."
+        },
+        {
+          "type": "p",
+          "text": "Arcanes는 슬롯 전용입니다. Warframe용으로 제작된 Arcane은 weapon에 장착할 수 없으며, 그 반대도 마찬가지입니다. 주요 계열은 다음과 같습니다:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Warframe arcanes** — 생존력, 에너지, 공격 관련 패시브 (Grace, Guardian, Energize, Avenger, Molt 계열).",
+            "**Weapon arcanes** — 처치 시 피해량을 증폭시키거나 헤드샷에 보상을 주는 Primary, Secondary, Melee용 Arcanes (Merciless 및 Deadhead 계열).",
+            "**Operator arcanes (Magus 계열)** — Operator/Drifter를 위한 치유, 군중 제어(CC), 유틸리티 효과.",
+            "**Amp arcanes (Virtuos 계열)** — Eidolon 사냥의 핵심인 Amp의 치명타 및 피해량 부스트.",
+            "**Modular-gear arcanes** — 제작한 Melee 및 Secondary weapon을 조율하는 Exodia (Zaws용) 및 Pax (Kitguns용)."
+          ]
+        },
+        {
+          "type": "info",
+          "text": "Arcanes는 **재사용 가능한 영구 인벤토리 아이템**입니다. Frame에 장착해도 소모되지 않으며, 언제든지 다른 frame이나 weapon으로 자유롭게 교체할 수 있습니다. 별도의 추출기가 필요하지 않으며 아무것도 파괴되지 않습니다."
+        }
+      ]
+    },
+    {
+      "id": "slots",
+      "title": "Arcane 슬롯: 장착 위치",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "각 장비에는 고정된 개수의 Arcane 슬롯이 있으며, 업그레이드 화면의 **Arcanes** 탭(mods 옆)에서 확인할 수 있습니다."
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "Warframe",
+              "v": "Arcane 슬롯 2개"
+            },
+            {
+              "k": "Primary / Secondary / Melee weapon",
+              "v": "각각 Arcane 슬롯 1개"
+            },
+            {
+              "k": "Operator / Drifter",
+              "v": "Magus 계열 Arcanes용 Arcane 슬롯"
+            },
+            {
+              "k": "Amp",
+              "v": "Virtuos 계열 Arcanes용 Arcane 슬롯"
+            }
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Warframe 슬롯은 획득 즉시 바로 사용할 수 있습니다. **Weapon** arcane 슬롯은 먼저 **Arcane Adapter**로 해제해야 합니다. Weapon 유형별로 하나씩 필요합니다 (Primary, Secondary, Melee 각각 전용 아답터 사용). 획득처는 Teshin의 **Steel Path Honors**에서 Steel Essence로 구매하는 방법이 있으며, Duviri의 **Acrithis**에게서 Pathos Clamps로 교환하거나, 게임 내 Market에서 platinum으로 즉시 구매할 수도 있습니다."
+        },
+        {
+          "type": "warn",
+          "text": "Adapter 획득처와 Honors 로테이션은 업데이트 사이에 조정될 수 있습니다. 이번 시즌에 어디서 adapter를 구매해야 할지 모르겠다면, 잘못된 활동을 파밍하기 전에 실시간 [wiki.warframe.com](https://wiki.warframe.com/)이나 최근 영상을 확인해 보세요."
+        }
+      ]
+    },
+    {
+      "id": "ranking",
+      "title": "랭크 업 및 맥스 랭크: \"21 법칙\"",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Arcanes는 **Rank 0에서 Rank 5**까지 랭크가 나뉘며, Endo나 Kuva가 아닌 **동일한 Arcane의 중복 복사본**을 합쳐서 랭크를 올립니다. 모든 Arcane은 동일한 방식을 따릅니다. 다음 랭크로 올라갈 때마다 이전보다 조금 더 많은 복사본이 소모됩니다."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Rank",
+              "이 랭크에 도달하기 위해 필요한 복사본",
+              "보유한 총 복사본 수"
+            ],
+            "rows": [
+              [
+                "Rank 0 (장착)",
+                "1",
+                "1"
+              ],
+              [
+                "Rank 1",
+                "+2",
+                "3"
+              ],
+              [
+                "Rank 2",
+                "+3",
+                "6"
+              ],
+              [
+                "Rank 3",
+                "+4",
+                "10"
+              ],
+              [
+                "Rank 4",
+                "+5",
+                "15"
+              ],
+              [
+                "Rank 5 (맥스)",
+                "+6",
+                "21"
+              ]
+            ],
+            "note": "하나의 Arcane을 Rank 5로 완전히 맥스 랭크로 만들려면 해당 Arcane의 복사본이 정확히 21개 필요합니다."
+          }
+        },
+        {
+          "type": "tip",
+          "text": "Arcane을 사용하기 위해 반드시 맥스 랭크로 만들 필요는 **없습니다**. 단 한 장의 복사본(Rank 0)으로도 이미 작동하며, 단지 발동 확률이 낮거나 수치가 작을 뿐입니다. 지금 가지고 있는 것을 장착하고 시간이 지나면서 서서히 랭크를 올리세요. Rank 3 Energize나 Grace만 되어도 편의성이 엄청나게 상승합니다."
+        },
+        {
+          "type": "p",
+          "text": "21개의 복사본을 모으는 것은 긴 여정이므로, 모든 것을 한 번에 맥스 랭크로 만들려고 하기보다는 주력 frame에 실제로 사용하는 한두 개의 Arcanes에 우선순위를 두세요. 모든 컬렉션을 맥스 랭크로 만드는 것은 진정한 업적입니다. r/Warframe 포스트인 [\"드디어 모든 Arcanes 맥스 랭크 달성 (100% 자가 파밍)\"](https://reddit.com/r/Warframe/comments/1iz2rw4/as_of_today_i_have_finally_maxed_all_arcanes_100/)은 엄청난 헌신이 필요했습니다."
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "title": "Arcanes 획득처",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "단일 Arcane 판매처는 존재하지 않으며, 각기 고유한 재화와 연결된 엔드게임 활동 전반에 퍼져 있습니다. 이것은 참조용 지도입니다. 정확한 드롭률과 \"현재 가장 좋은 파밍지\"는 패치에 따라 변동되므로, 이 정보를 대략적인 개요로 참고하고 구체적인 내용은 위키에서 확인하세요."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "획득처",
+              "획득 아이템",
+              "획득 방법"
+            ],
+            "rows": [
+              [
+                "Eidolons — Plains of Eidolon (밤)",
+                "클래식 frame Arcanes: Energize, Grace, Guardian, Aegis, Avenger 등",
+                "생포 시 드롭 (확률형)"
+              ],
+              [
+                "Acrithis — Duviri",
+                "동일한 frame Arcanes 중 다수를 확률 요소 없이 직접 구매",
+                "Pathos Clamps (Orowyrm 처치 시 획득)"
+              ],
+              [
+                "Vox Solaris / Little Duck — Fortuna",
+                "Operator (Magus) 및 Amp (Virtuos) Arcanes",
+                "Vox Solaris 평판"
+              ],
+              [
+                "The Holdfasts — Zariman",
+                "Weapon arcanes + Molt 유틸리티 Arcanes",
+                "Holdfasts 평판"
+              ],
+              [
+                "Cavia — Sanctum Anatomica",
+                "Melee arcanes & Melee Arcane Adapters",
+                "Cavia 평판"
+              ],
+              [
+                "Arcana Isolation Vaults — Deimos",
+                "Theorem & Residual Arcanes (특정 상황용 시너지 패시브)",
+                "의뢰 보상 로테이션 (확률형)"
+              ],
+              [
+                "이벤트 및 작전",
+                "로테이션 Arcanes, Exodia Arcanes (Zaws)",
+                "이벤트 토큰 / 저장고"
+              ],
+              [
+                "Höllvania / 1999 (Techrot Encore)",
+                "저장고에서 획득하는 Arcanes + The Hex 평판",
+                "저장고 및 평판"
+              ],
+              [
+                "다른 플레이어",
+                "거래 가능한 모든 Arcane",
+                "Platinum (warframe.market)"
+              ]
+            ],
+            "note": "Duviri의 Acrithis는 훌륭한 대안입니다. 그녀는 Pathos Clamps로 많은 Eidolon Arcanes를 판매하므로, 솔로 플레이어는 4인 Tridolon 메타를 완전히 건너뛸 수 있습니다."
+          }
+        },
+        {
+          "type": "p",
+          "text": "Operator 및 Amp Arcanes는 가장 험난한 소모처 중 하나입니다. Vox Solaris 평판 장벽은 실재합니다 (유저들의 계산에 따르면 전체 [Little Duck 라인업](https://reddit.com/r/Warframe/comments/1s0jdek/de_is_fixing_the_early_game_grind_but_forgot/)을 구매하려면 수백만 평판이 필요합니다). 반면 **1999/Techrot Encore**와 같은 최신 콘텐츠는 저장고를 통해 Arcanes를 아낌없이 제공하며 (Eleanor에게서 The Hex 평판으로 구매할 수도 있음), 이 때문에 커뮤니티에서는 이를 가장 혜자로운 현대식 파밍처 중 하나로 꼽습니다. 이러한 획득처 뒤에 숨겨진 파밍 루프는 [Eidolon 가이드](/guides/eidolon) 및 [평판 가이드](/guides/standing)를 참조하세요."
+        }
+      ]
+    },
+    {
+      "id": "staples",
+      "title": "알아두어야 할 필수 Arcanes",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "시간이 지나면서 수십 개를 모으게 되겠지만, 몇 가지 핵심 유형이 대부분의 빌드를 지탱합니다. 밸런스 패치에 따라 정확한 수치는 변경될 수 있으므로 현재 수치는 위키를 확인하시되, 이 역할군들은 언제나 유효합니다:"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "역할",
+              "추천 Arcanes",
+              "효과"
+            ],
+            "rows": [
+              [
+                "에너지 수급",
+                "Arcane Energize",
+                "에너지 획득 시, 자신과 주변 아군에게 대량의 에너지를 회복시킬 확률 부여 — 에너지 유지력의 제왕"
+              ],
+              [
+                "탱킹 / 자가 치유",
+                "Arcane Grace, Arcane Guardian, Arcane Aegis",
+                "피격 시: 체력 재생, 대량의 방어력 버프, 또는 빠른 쉴드 재생"
+              ],
+              [
+                "공격",
+                "Arcane Avenger, Arcane Fury, Arcane Strike",
+                "특정 조건 충족 시 치명타 확률, melee 피해량 또는 공격 속도 발동"
+              ],
+              [
+                "어빌리티 위력 (Zariman)",
+                "Molt Augmented",
+                "처치 수가 누적됨에 따라 어빌리티 위력 증가 — 한 번 장착하면 신경 쓸 필요 없는 캐스터용 버프"
+              ],
+              [
+                "상태 이상 및 유지력 (Zariman)",
+                "Molt Efficiency, Molt Reconstruct",
+                "Molt Efficiency는 받는 상태 이상 지속 시간을 단축하며, Molt Reconstruct는 어빌리티에 소모한 에너지를 자신과 아군의 치유로 전환합니다"
+              ],
+              [
+                "Weapon 피해량",
+                "Primary / Secondary Merciless",
+                "적을 처치할수록 중첩되는 피해량 증가"
+              ],
+              [
+                "헤드샷 보상",
+                "Primary / Secondary Deadhead",
+                "헤드샷 처치 시 추가 피해량 및 재장전 속도 보상 제공"
+              ],
+              [
+                "Operator / Amp",
+                "Magus Elevate, Magus Lockdown, Virtuos 계열",
+                "Operator 치유 및 CC, Eidolons 사냥용 Amp 치명타"
+              ]
+            ]
+          }
+        },
+        {
+          "type": "tip",
+          "text": "단 세 가지만 쫓는다면 클래식 Eidolon 삼총사인 **Energize** (에너지 마름 방지), 그리고 **Grace**와 **Guardian** (Steel Path 생존)을 목표로 하세요. 이 조합만으로도 거의 모든 frame의 플레이 느낌이 완전히 달라집니다. [mods 가이드](/guides/mods)의 생존 기술 및 [Helminth 가이드](/guides/helminth)와 조합하여 완벽한 파워 스파이크를 달성해 보세요."
+        }
+      ]
+    },
+    {
+      "id": "selling",
+      "title": "Arcanes를 platinum으로 전환하기",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "맥스 랭크를 달성하려면 21개의 복사본이 필요하기 때문에, 필요하지 않은 **중복 아이템**을 엄청나게 많이 얻게 될 것입니다. 그리고 대부분의 Warframe Arcanes는 거래가 가능합니다. 이미 맥스 랭크를 달성한 획득처를 파밍하는 것은 게임 내에서 가장 안정적인 platinum 수입원 중 하나이며, Energize나 Grace 같이 인기 있는 Arcanes는 실질적인 가치를 유지합니다."
+        },
+        {
+          "type": "list",
+          "items": [
+            "**파밍하기 전에 시세를 확인하세요.** [market screener](/screener)를 사용하여 어떤 Arcanes가 실제로 plat으로 판매되는지, 그리고 어떤 것들이 두캇 몇 개 가치도 안 되는 무가치한 것인지 확인해 보세요.",
+            "**시세 차이와 수요를 포착**하세요. [flip finder](/flip) 및 [top movers](/movers)를 통해 새로운 frame이나 업데이트로 인해 오래된 패시브가 다시 메타가 될 때 Arcane의 가치가 요동칩니다.",
+            "**중복은 판매하고, 단일 본은 보관하세요.** 모든 Arcane의 단일 복사본 한 장은 빌드 유연성을 무료로 제공합니다. 목표 랭크를 초과하는 모든 것은 처분할 수 있는 자산입니다."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Arcanes 거래는 계정 자금을 마련하는 전통적인 방법 중 하나입니다. plat 경제가 처음이시라면, 거래 채팅 및 warframe.market 기초를 다루는 [platinum 가이드](/guides/platinum)부터 시작한 다음, 다시 돌아와 남는 아이템을 등록해 보세요."
+        }
+      ]
+    },
+    {
+      "id": "gameplan",
+      "title": "단계별 게임 계획",
+      "blocks": [
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "h": "서두르지 마세요 — Arcanes는 게임 중반부의 힘입니다",
+              "p": "신규 플레이어는 먼저 frames, weapons, mods에 집중해야 합니다. Plains of Eidolon에 도달하고, Amp를 제작하고, Steel Path를 시작하면서 자연스럽게 Arcane 생태계가 해제됩니다. 핵심 빌드가 작동하기도 전에 Arcanes를 맥스 랭크로 만드는 것은 의미가 없습니다."
+            },
+            {
+              "h": "에너지 + 생존력 우선 확보",
+              "p": "첫 번째 목표는 Energize / Grace / Guardian 유형입니다. 마켓에서 저렴하게 한두 장을 구매하거나, Eidolons를 파밍하세요. 또는 확률 요소를 건너뛰고 Duviri의 Acrithis에게서 Pathos Clamps로 구매할 수도 있습니다. 랭크가 없는 복사본이라도 즉시 도움이 됩니다."
+            },
+            {
+              "h": "Weapon Arcane 슬롯 해제",
+              "p": "Steel Path Honors를 모아 Arcane Adapters(Primary, Secondary, Melee weapon당 하나씩 필요)를 교환한 다음, 주로 사용하는 총기에 Merciless 계열과 같이 처치 시 피해량이 중첩되는 Arcanes를 장착하세요."
+            },
+            {
+              "h": "주력 아이템 맥스 랭크 달성에 집중",
+              "p": "가장 자주 사용하는 한두 개의 Arcanes를 선택하고 21개의 복사본을 목표로 파밍하세요. 중간 랭크라도 올라가는 과정 내내 제값을 하므로 결코 헛된 진행이 아닙니다."
+            },
+            {
+              "h": "중복 아이템으로 파밍 자금 조달",
+              "p": "[screener](/screener) 및 [flip finder](/flip)를 통해 남는 모든 Arcane을 plat으로 판매 등록한 다음, 여전히 필요한 복사본에 재투자하세요. 파밍이 스스로 비용을 충당하게 됩니다."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mistakes",
+      "title": "자주 하는 실수 및 빠른 팁",
+      "blocks": [
+        {
+          "type": "list",
+          "items": [
+            "**Arcanes를 mods와 혼동하는 것.** Arcanes는 Arcanes 탭에 장착되며, 수용량을 소모하지 않고, 특정 조건에 발동합니다. Mod 로드아웃을 대체하는 것이 아니라 추가되는 것입니다.",
+            "**시작하려면 Rank 5가 필요하다고 생각하는 것.** 단 한 장의 복사본으로도 작동합니다. 일단 장착하고 중복 아이템이 들어오는 대로 랭크를 올리세요.",
+            "**Duviri를 간과하는 것.** Acrithis는 Pathos Clamps로 많은 Eidolon Arcanes를 판매합니다. 이는 Tridolon 사냥을 대체할 수 있는 솔로 플레이어용 저스트레스 대안입니다.",
+            "**단일 본 판매.** 거래 가능한 모든 Arcane은 최소 한 장씩 보관하세요. 목표 랭크를 초과하는 잉여분만 판매하세요.",
+            "**Weapon adapters를 잊는 것.** Weapon arcanes는 일치하는 Arcane Adapter로 슬롯을 해제하기 전까지는 아무런 효과도 발휘하지 못합니다."
+          ]
+        },
+        {
+          "type": "info",
+          "text": "Arcane의 가치, 드롭률, \"최적의 파밍\" 노드는 DE가 자주 조정하는 세부 사항입니다. 특정 발동 확률이나 현재 최고의 파밍지와 같은 수치적인 정보는 몇 시간씩 투자하기 전에 [wiki.warframe.com](https://wiki.warframe.com/)이나 최근 가이드 영상을 교차 검증해 보세요."
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Warframe에서 Arcane을 맥스 랭크로 만들려면 몇 개의 Arcane이 필요한가요?",
+      "a": "동일한 Arcane 21개가 있으면 Rank 5로 완전히 맥스 랭크를 달성할 수 있습니다. 비용은 티어마다 증가하여 장착에 1개, 그 다음 +2, +3, +4, +5, +6개로 누적 총 21개가 소모됩니다. 하지만 사용하기 위해 반드시 맥스 랭크로 만들 필요는 없으며, 단 한 장의 복사본으로도 Rank 0에서 작동합니다."
+    },
+    {
+      "q": "가장 먼저 파밍하기 좋은 Arcane은 무엇인가요?",
+      "a": "에너지 및 생존력 필수 아이템인 Arcane Energize, Arcane Grace, Arcane Guardian으로 시작하세요. 이들은 게임 내 거의 모든 frame의 성능을 향상시킵니다. Plains of Eidolon의 밤에 Eidolons를 사냥하여 파밍하거나, 확률 요소를 건너뛰고 Duviri의 Acrithis에게서 Pathos Clamps로 구매할 수 있습니다. [Eidolon 가이드](/guides/eidolon)를 참조하세요."
+    },
+    {
+      "q": "Arcanes를 장착 해제하면 소모되나요?",
+      "a": "아닙니다. Arcanes는 영구 인벤토리 아이템입니다. 장착해도 소모되지 않으며, 언제든지 frames와 weapons 간에 자유롭게 교체할 수 있습니다. 아무것도 파괴되지 않으며 어떤 종류의 추출기도 필요하지 않습니다."
+    },
+    {
+      "q": "Arcanes를 platinum으로 거래할 수 있나요?",
+      "a": "네, 대부분의 Warframe Arcanes는 거래가 가능하며, 사용하는 Arcanes를 맥스 랭크로 만든 후 중복 아이템을 판매하는 것은 안정적인 platinum 수입원이 됩니다. 메타에 따라 가치가 변동하므로, 먼저 [market screener](/screener)로 시세를 확인하고 [top movers](/movers)에서 수요를 주시하세요. [platinum 가이드](/guides/platinum)에서 거래의 기초를 다룹니다."
+    },
+    {
+      "q": "Weapons의 Arcane 슬롯은 어떻게 해제하나요?",
+      "a": "각 weapon의 단일 Arcane 슬롯을 활성화하려면 전용 Arcane Adapter(Primary, Secondary, 또는 Melee Arcane Adapter)가 필요합니다. Adapter는 주로 Teshin의 Steel Path Honors(Steel Essence로 교환)에서 획득할 수 있으며, Duviri의 Acrithis에게서 Pathos Clamps로 구매하거나 게임 내 상점(Market)에서 구매할 수도 있습니다. 반면 Warframe Arcane 슬롯은 기본적으로 제공되므로 adapter가 필요하지 않습니다."
+    },
+    {
+      "q": "Operator 및 Amp Arcanes는 어디서 획득하나요?",
+      "a": "Operator arcanes (Magus 계열) 및 Amp arcanes (Virtuos 계열)는 Fortuna의 Little Duck에게서 Vox Solaris 평판으로 구매할 수 있습니다. 해당 평판은 주로 Orb Vallis에서 획득한 Toroids 및 여분의 도금된 Amps를 반납하여 얻을 수 있으며, 전체 라인업을 구매하는 것은 상당한 평판 파밍이 필요하므로 이에 맞춰 계획을 세우세요."
+    },
+    {
+      "q": "신규 플레이어에게도 Arcanes가 가치 있나요?",
+      "a": "Arcanes는 게임 중후반부의 위력 증폭기이며, 초반 우선순위는 아닙니다. 먼저 frames, weapons, mods를 정비하세요. Plains of Eidolon에 도달하고 Steel Path를 시작하면서 자연스럽게 Arcane 생태계가 해제됩니다. 그 단계에 도달하면, 에너지 및 생존력 관련 Arcane 몇 개만으로도 엄청난 업그레이드가 됩니다."
+    }
+  ],
+  "videos": [
+    {
+      "id": "DOnp7Nih0YE",
+      "title": "The ONLY Arcane Guide You'll Ever Need (Warframe 2026)",
+      "channel": "WarframeFlo"
+    },
+    {
+      "id": "8-0t4RRSSZw",
+      "title": "How To Farm Arcanes & Best Warframe Arcane Farm to Do First!",
+      "channel": "Joe Hammer Gaming"
+    },
+    {
+      "id": "TfuqGjCf5ws",
+      "title": "18 Must-Have ARCANES after the TECHROT ENCORE Update",
+      "channel": "Grind Hard Squad"
+    },
+    {
+      "id": "WSEBKRYSoC8",
+      "title": "Farming Arcanes is Now EASIER Than Ever! | Warframe",
+      "channel": "Vanterrize Umbra"
+    }
+  ],
+  "sources": [
+    {
+      "label": "r/Warframe: As of today I have finally maxed all Arcanes (100% self farmed)",
+      "href": "https://reddit.com/r/Warframe/comments/1iz2rw4/as_of_today_i_have_finally_maxed_all_arcanes_100/"
+    },
+    {
+      "label": "r/Warframe: DE forgot about the standing sink for Vox Solaris arcanes",
+      "href": "https://reddit.com/r/Warframe/comments/1s0jdek/de_is_fixing_the_early_game_grind_but_forgot/"
+    },
+    {
+      "label": "r/Warframe: Getting Stronger in Warframe, 2026 (progression guide)",
+      "href": "https://reddit.com/r/Warframe/comments/1u00jua/getting_stronger_in_warframe_2026/"
+    },
+    {
+      "label": "Official Warframe Wiki",
+      "href": "https://wiki.warframe.com/"
+    }
+  ],
+  "related": [
+    {
+      "label": "Eidolon 사냥 가이드",
+      "to": "/guides/eidolon",
+      "icon": "weather-night",
+      "note": "Energize, Grace, Guardian의 클래식 획득처"
+    },
+    {
+      "label": "Steel Path 가이드",
+      "to": "/guides/steel-path",
+      "icon": "skull",
+      "note": "Weapon Arcane Adapters 획득처"
+    },
+    {
+      "label": "평판 가이드",
+      "to": "/guides/standing",
+      "icon": "handshake",
+      "note": "Vox Solaris, Holdfasts, Cavia의 Arcane 평판"
+    },
+    {
+      "label": "Platinum 가이드",
+      "to": "/guides/platinum",
+      "icon": "cash-multiple",
+      "note": "중복 Arcanes를 plat으로 판매하기"
+    },
+    {
+      "label": "Market Screener",
+      "to": "/screener",
+      "icon": "table-search",
+      "note": "파밍하기 전에 모든 Arcane 시세 확인하기"
+    },
+    {
+      "label": "Helminth 가이드",
+      "to": "/guides/helminth",
+      "icon": "dna",
+      "note": "완벽한 파워 스파이크를 위해 주입된 어빌리티와 Arcanes 조합하기"
+    }
+  ],
+  "updated": "2026-07-18"
+}

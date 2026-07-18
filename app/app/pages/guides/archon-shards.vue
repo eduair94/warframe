@@ -6,5 +6,6 @@
 </template>
 
 <script setup lang="ts">
-import guide from '~/data/guides/archon-shards'
+import enGuide from '~/data/guides/archon-shards'
+const guide = await useLocalizedGuide('archon-shards', enGuide)
 </script>

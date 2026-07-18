@@ -1,0 +1,487 @@
+{
+  "slug": "platinum",
+  "eyebrow": "知識中心 · Platinum",
+  "title": "如何賺取 Platinum (免費遊玩)",
+  "lede": "Platinum 是一種你永遠不需要付費購買的付費貨幣。你所 farming 的一切都可以賣給其他玩家 —— 這裡將詳細介紹哪些東西好賣、交易如何運作，以及如何安全地賺取你的第一筆 Plat。",
+  "category": "farming",
+  "readMins": 11,
+  "stats": [
+    {
+      "num": "MR 2",
+      "label": "解鎖交易",
+      "tone": "good"
+    },
+    {
+      "num": "= MR",
+      "label": "每 24 小時允許的交易次數",
+      "tone": "alt"
+    },
+    {
+      "num": "$0",
+      "label": "開始賺取 Plat 所需的條件",
+      "tone": "good"
+    },
+    {
+      "num": "10k+",
+      "label": "F2P Plat 是完全可行的",
+      "tone": "gold"
+    }
+  ],
+  "sections": [
+    {
+      "id": "free-plat-basics",
+      "title": "你永遠不需要付費購買 Platinum",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Platinum (Plat) 是 Warframe 的付費貨幣，但這裡有一個每個老玩家都知道的秘密：它完全是**玩家間可交易的**。Prime parts、mods、rivens、arcanes —— 幾乎你 farming 的所有東西都可以賣給其他玩家以換取 Plat。整個經濟體系都建立在你免費獲得的物品上。了解哪些東西值得賣以及在哪裡賣，你就不需要掏錢包。玩家們通常能**完全不花一分錢就賺取數千 Plat**。"
+        },
+        {
+          "type": "info",
+          "title": "唯一的限制",
+          "text": "每個新帳號開始時贈送的約 50 Platinum —— 以及透過**抽獎或促銷活動**獲得的任何 Platinum —— 都是**「個人 Platinum」**：它是不可交易的，並會顯示一個小鎖圖示。只有你**透過交易賺取**或**購買**（即使是打折購買）的 Platinum 才能繼續交易。因此，你的第一筆*真正*的 Plat 來自銷售物品，而不是那個初始儲備。"
+        },
+        {
+          "type": "p",
+          "text": "本指南涵蓋了整個流程：哪些東西好賣、交易實際上如何運作、Mastery 和稅金規則、適合新手的安全首賣，以及如何防止被騙。在交易時，你可以使用 [市場篩選器](/screener)、[價格波動排行](/movers) 和 [即時訂單動態](/live) 來對比即時市場價格。"
+        }
+      ]
+    },
+    {
+      "id": "trading-rules",
+      "title": "交易規則 (MR、限制與稅金)",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "在你開始交易之前有幾個門檻。都不難 —— 一個下午就能全部搞定。"
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "解鎖要求",
+              "v": "Mastery Rank 2 —— 完成幾個 MR 測試"
+            },
+            {
+              "k": "每日交易限制",
+              "v": "等於你的 Mastery Rank (MR2 = 2 次交易/天，MR15 = 15 次，依此類推)"
+            },
+            {
+              "k": "什麼算作一次交易",
+              "v": "一次交易 —— 每方最多五個物品 —— 算作單次交易，因此可以打包以節省次數"
+            },
+            {
+              "k": "交易稅",
+              "v": "Credits，由雙方玩家支付，根據物品稀有度按比例計算"
+            },
+            {
+              "k": "在哪裡交易",
+              "v": "你的 Clan Dojo 的 Trading Post，或 Maroo's Bazaar (一個 Mars 轉繼站)"
+            }
+          ]
+        },
+        {
+          "type": "p",
+          "text": "當你的 Mastery Rank 較低時，每日限制最為重要，因此在早期，請圍繞它規劃較大的交易 —— 隨著你的 MR 提升，這個上限就不再是問題。每次交易還會向雙方收取 **credit tax**：便宜的 prime parts 需要幾千 credits，而 [rivens](/guides/riven) 和其他稀有物品的費用最高。保持一定的 credit 緩衝 —— 如果你缺錢，請參閱 [credits 指南](/guides/credits)。"
+        },
+        {
+          "type": "tip",
+          "title": "沒有 Clan？沒問題",
+          "text": "你不需要任何人。從遊戲內的 Market 獲取免費的 **Clan Key**，建立一個單人「Ghost」clan，並在自己的 Dojo 中建造一個 **Trading Post**。或者完全跳過 clan，在 **Maroo's Bazaar** 進行交易，這是 Mars 上的公共樞紐，任何人都可以設立銷售攤位。"
+        }
+      ]
+    },
+    {
+      "id": "how-to-sell",
+      "title": "銷售實際上如何運作：warframe.market + Trade Chat",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "有兩個管道處理幾乎所有的玩家交易。**warframe.market** 是一個免費的社群網站（非 DE 製作），玩家可以在上面發布買賣訂單 —— 它是整個遊戲事實上的價格指南，列在我們的 [社群工具目錄](/tools) 中。遊戲內的 **Trade Chat** 是區域頻道，玩家可以在其中即時發布 `WTS`（想要出售）和 `WTB`（想要購買）的資訊。"
+        },
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "h": "查詢價格",
+              "p": "在 warframe.market 上搜尋你的物品並按價格排序。忽略單個惡意低價的異常值 —— 那些最便宜的*在線*賣家聚集的價格才是真實的市場價格。在 [篩選器](/screener) 和 [波動排行](/movers) 上交叉比對趨勢。"
+            },
+            {
+              "h": "發布或回應訂單",
+              "p": "將你的物品列為出售訂單，或者瀏覽現有的購買訂單並選擇買家。該網站會為你生成一條可直接複製貼上的遊戲內私訊。"
+            },
+            {
+              "h": "在遊戲內發送私訊",
+              "p": "發送私訊 —— 「online in game」（遊戲內在線）的使用者回應最快，因此請篩選他們。在 Trade Chat 中，發布簡潔的「WTS [Item] 20p」並等待回覆。"
+            },
+            {
+              "h": "邀請並見面",
+              "p": "邀請他們到你的 Dojo 或 Maroo's Bazaar（或接受他們的邀請），然後走到 Trading Post 開始交易。"
+            },
+            {
+              "h": "仔細確認",
+              "p": "雙方將物品和 Plat 放入同一個視窗，然後雙方確認。在接受之前，請再次仔細閱讀確切的物品和 Plat 數量 —— 如果有任何變動，請退出交易。操作正確的話，Plat 會立即到帳。"
+            }
+          ]
+        },
+        {
+          "type": "info",
+          "text": "在合適的時間銷售非常重要 —— 買家在你所在地區的晚上高峰期最密集。[最佳交易時間工具](/timing) 顯示了特定物品實際交易活躍的小時。"
+        }
+      ]
+    },
+    {
+      "id": "what-sells",
+      "title": "到底什麼好賣（以及能賣多少錢）",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "並非所有東西都值得佔用一個交易欄位。以下是從新手到老手、其他玩家願意支付真實 Plat 購買的物品層級，大致按銷售的*可靠程度*排序。當你有一整套部件時，可以使用 [套裝 vs 單件計算器](/comparison) 來檢查是拆開賣還是整套賣。"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "物品",
+              "來源",
+              "大致價值",
+              "備註"
+            ],
+            "rows": [
+              [
+                "Prime parts",
+                "開啟 Void Relics",
+                "每個約 5 到 100+ Plat",
+                "F2P 的基本收入來源；vaulted parts 的價格最高"
+              ],
+              [
+                "Prime sets",
+                "收集整套部件",
+                "各部件的總和，通常會加上溢價",
+                "買家為一次性購齊的便利性付費"
+              ],
+              [
+                "Rare mods",
+                "Nightmare、Corrupted (Vaults)、活動、Baro 的 Primed mods",
+                "約 10 到數百 Plat",
+                "數量少，但每個交易欄位的價值高"
+              ],
+              [
+                "Riven mods",
+                "Sorties、Duviri 的 Circuit、Riven Slivers",
+                "20 到數千 Plat",
+                "遊戲中價值上限最高，但純屬賭博"
+              ],
+              [
+                "Arcanes",
+                "Eidolons、Netracells、Profit-Taker、活動",
+                "約 5 到數百 Plat",
+                "需求穩定；meta 選擇的價格會飆升"
+              ],
+              [
+                "Ayatan sculptures & stars",
+                "Ayatan 獵取、sorties、bounties",
+                "幾個到幾十個 Plat",
+                "買家需要它們來換取 Endo"
+              ],
+              [
+                "Converted Liches & weapons",
+                "Kuva Liches / Sisters of Parvos",
+                "差異很大",
+                "進階 —— 只有 Converted（而非 Vanquished）可以交易"
+              ]
+            ],
+            "note": "價格經常波動 —— 在列出之前，請務必在篩選器或即時動態中確認最新價格。"
+          }
+        },
+        {
+          "type": "tip",
+          "text": "低需求的 prime parts（「prime junk」）通常賣給 **Baro Ki'Teer 換取 ducats** 的價值，比任何玩家願意支付的 Plat 還要高。使用 [ducat 計算器](/ducats) 篩選出最佳的單個部件 ducat 收益，並在開啟遺物前使用 [relic 價值：開啟或出售](/relics-value) 來了解該 relic 的預期收益。"
+        }
+      ]
+    },
+    {
+      "id": "first-100",
+      "title": "你的前 100 Plat（適合新手/安全）",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "新帳號、零 Plat、剛到 MR2？這是獲取你第一批可售資產的最安全路徑 —— 無需賭博，毫無風險。"
+        },
+        {
+          "type": "steps",
+          "ordered": true,
+          "steps": [
+            {
+              "h": "Farming 並開啟 Void Relics",
+              "p": "運行 Void Fissure 任務以開啟 relics —— 每個都有機會掉落價值 Plat 的 prime part。從 [relics 指南](/guides/relics) 和 [哪些 relics 每場收益最高](/relic-farming) 開始。"
+            },
+            {
+              "h": "出售你不需要的 prime parts",
+              "p": "在 warframe.market 上查詢每個部件。即使是常見部件也能賣到幾個 Plat；熱門部件可以賣到 20–50p。讓 [開啟或出售](/relics-value) 來幫你做決定。"
+            },
+            {
+              "h": "清理重複和稀有的 mods",
+              "p": "你會撿到已經擁有的 mods。稀有、Nightmare 和 Corrupted 的重複品很好賣；普通 mods 最好分解成 Endo。在確認市場價格之前，千萬不要出售 mod。"
+            },
+            {
+              "h": "保留 prime junk 給 Baro",
+              "p": "將低 Plat 的 prime parts 留著，用來兌換 [Baro Ki'Teer 的 ducats](/ducats)，而不是佔用你有限的交易欄位。"
+            },
+            {
+              "h": "重新投資於 slots，而不是外觀",
+              "p": "將你的第一筆 Plat 花在 Warframe 和武器的 **slots**，以及偶爾購買 **Orokin Reactor/Catalyst** —— 這是價值最高的 F2P 購買項目。外觀可以等以後再說。"
+            }
+          ]
+        },
+        {
+          "type": "warn",
+          "text": "在出售任何不熟悉的物品之前，請先查詢。新玩家曾以極低的價格送出了價值數百 Plat 的物品 —— 請參閱下方的詐騙章節。"
+        }
+      ]
+    },
+    {
+      "id": "relic-engine",
+      "title": "Prime & Relic 引擎 (你的 F2P 薪水)",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "如果你只想掌握一種 Plat 來源，那就選擇 **relic cracking**。Void Relics 會從整個星圖的任務中掉落，在 Void Fissures 開啟它們可以獲得 prime parts —— 這是整個經濟體系中流動性最強的物品。它可以無限重複，不涉及純運氣的賭博，並且會隨著你的裝備提升而增加效率。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Farming，然後使用 Void Traces 精煉** relics，以提高獲得貴重掉落物的機率 —— 詳細攻略請參閱 [relics 指南](/guides/relics)。",
+            "**在小隊中開啟**：在四人 fissure 中，每個人都會開啟一個 relic，你們可以從桌面上的四個獎勵中進行選擇 —— 與隊友運行*同一個* relic，以疊加獲得你想要的特定部件的機率。",
+            "**出售單件或套裝**：組裝好的 prime sets 通常比散裝部件能賣出更高的溢價 —— [套裝 vs 單件計算器](/comparison) 可以幫你計算。",
+            "**追蹤 vaulted primes**：當 DE 將某個 prime 入庫時，其部件將停止掉落，價格也會上漲。在 [vaulted 追蹤器](/vaulted) 上追蹤它們，並捕捉 [價格飆升的 vaulted primes](/vault-spikes)。"
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "在新 **Prime Access** 推出和 **Prime Resurgence** 解除入庫前後，價格波動會非常劇烈。[波動排行](/movers) 和 [波動率](/volatility) 頁面會顯示哪些物品正在升溫，以便你在價格飆升時出售，而不是在飆升後。"
+        }
+      ]
+    },
+    {
+      "id": "big-ticket",
+      "title": "Rivens、Arcanes 與高價物品",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "一旦你熟悉了流程，高端市場才是真正累積 Plat 的地方。**[Riven mods](/guides/riven)** 是隨機的武器 mods，擁有遊戲中最高的價值上限 —— 熱門武器的神級屬性可以賣到數千 Plat。它們也是最純粹的賭博：重置它們會消耗 [kuva](/guides/kuva)，而且大多數重置結果都是垃圾。在出售或重置之前，務必使用 [riven 價值估算器](/riven-value) 進行估價。"
+        },
+        {
+          "type": "p",
+          "text": "**Arcanes**（來自 Eidolon 獵取、Netracells、Profit-Taker 和活動）有穩定的需求，且 meta 選擇的價值會飆升。**Ayatan sculptures 和 Amber/Cyan stars** 可以交易給正在尋找 [Endo](/endo) 的玩家。一旦你深入遊戲，**converted Kuva Liches 和 Sisters of Parvos** —— 以及它們的招牌武器 —— 將成為一個利潤豐厚但有些繁瑣的市場。"
+        },
+        {
+          "type": "warn",
+          "text": "Rivens 就像賭場。永遠不要把你的全部身家都投入到重置同一個 riven 中以期望中大獎 —— 設定一個 kuva 預算，出售還不錯的屬性而不是追求完美，並將任何大獎視為額外獎勵。[riven 指南](/guides/riven) 涵蓋了如何正確評估屬性。"
+        }
+      ]
+    },
+    {
+      "id": "pricing-timing",
+      "title": "定價合理，快速售出",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "永遠賣不出去的 Plat 與今天就能賣出的 Plat 之間的差距就在於定價。比目前最低的**在線**賣家稍微低一點點，你的物品就能快速售出；如果匹配最高價格，它就會滯銷。快速周轉勝過從每一次交易中榨取最後一分 Plat。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**獲取即時資訊，拒絕過時數據。** 價格每天都在變動 —— 在列出之前，請務必查看 [篩選器](/screener)、[波動排行](/movers) 和 [即時訂單動態](/live)。",
+            "**順應需求銷售。** Vaulted-prime 價格飆升、新的 meta frames 以及全新的 Prime Access 都會推高價格 —— [vault-spikes](/vault-spikes) 和 [波動率](/volatility) 頁面會標記這些機會。",
+            "**把握發布時機。** 在你所在地區的晚上高峰期發布；[最佳交易時間工具](/timing) 顯示了物品的活躍交易時間。",
+            "**賺取差價。** 低價買入，按市場價賣出 —— [差價尋找器](/flip) 可以找出最大的買賣價差。"
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "使用 [投資組合與觀察清單](/portfolio) 追蹤你持有的物品並設定價格警報，這樣你就可以在接近高點時售出，而不是憑空猜測。"
+        }
+      ]
+    },
+    {
+      "id": "scams",
+      "title": "防止被騙",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Warframe 的交易機制*本質上*是安全的 —— 交易視窗會確切顯示雙方提供的物品，且雙方都必須確認 —— 但新玩家仍然會因為社交套路（而非漏洞）而失去貴重物品。經典的騙局：有人對你不知道價值的物品開出極低的價格。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**務必先查詢每個物品的價格。** 最近有一位新玩家因為不知道其價值，僅以 20p 的價格送出了一個 **Legendary Core**（輕鬆價值 100p+，通常高達數百）。如有疑問，在接受任何交易前先在 warframe.market 上進行確認。",
+            "**絕對不要進行「信任交易」。** 任何要求你先交出物品並「信任」他們隨後付款的人都在詐騙你。所有物品和 Plat 都必須同時放入**同一個**交易視窗中。",
+            "**仔細閱讀最後的確認畫面。** 騙子會在最後一秒更換報價 —— 減少 Plat，或者更換不同的物品。在進行第二次確認之前，請再次仔細閱讀確切的物品和數量。",
+            "**忽略「中間人」和平台外交易。** 真實貨幣交易、帳號交易和第三方「中間人」都是違反規則的，也是常見的詐騙手段。"
+          ]
+        },
+        {
+          "type": "warn",
+          "text": "DE 客服有時可以撤銷意外的**購買**，但他們通常**不會**撤銷糟糕的玩家間交易。交易視窗是你唯一的保護 —— 請謹慎使用。"
+        }
+      ]
+    },
+    {
+      "id": "realistic-expectations",
+      "title": "實際的 Plat/小時 收益以及該花在什麼地方",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "建立合理的預期。Plat 的收入是爆發性的 —— 你在幾次遊戲中 farming 物品，然後在短時間內集中售出。實際的大致範圍如下："
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "方法",
+              "精力 / 技巧",
+              "大致回報"
+            ],
+            "rows": [
+              [
+                "Relic cracking → 出售部件",
+                "低，對新手友好",
+                "穩定，每次專注的遊戲可獲得幾十 Plat"
+              ],
+              [
+                "Prime set 差價交易",
+                "中等 —— 了解價格，低價買入",
+                "較高，隨市場知識的累積而增長"
+              ],
+              [
+                "Riven 重置與銷售",
+                "高風險，高技巧",
+                "波動大 —— 有時大賺，多數時候落空"
+              ],
+              [
+                "Arcane / Lich 銷售",
+                "中到高，需要遊戲進度",
+                "一旦你可以 farming 來源，收益就會很穩定"
+              ]
+            ],
+            "note": "數字僅供參考且經常變動 —— 將 Plat 視為遊戲的副產品，而不是工資。"
+          }
+        },
+        {
+          "type": "p",
+          "text": "值得把錢花在什麼地方？Wiki 和老玩家都一致同意：首先是 **inventory slots** 和 **Orokin Reactors/Catalysts** —— slots 基本上只能用 Plat 購買，且兩者都是永久性的 —— 然後如果你喜歡的話，可以購買外觀。其他所有東西都可以透過 farming 獲得。在 [投資組合](/portfolio) 中管理你的資產和警報。"
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "如何在不花錢的情況下在 Warframe 中賺取 Platinum？",
+      "a": "Farming 可交易的物品 —— 主要是來自 Void Relics 的 prime parts，加上稀有 mods、rivens 和 arcanes —— 並在 warframe.market 或 Trade Chat 中將它們賣給其他玩家以換取 Plat。這完全是免費遊玩的；整個經濟都建立在 farming 的物品上，玩家通常可以在不花一分錢的情況下獲得數千 Plat。從 [relic cracking 循環](/relic-farming) 開始。"
+    },
+    {
+      "q": "在 Warframe 中交易需要什麼 Mastery Rank？",
+      "a": "交易在 **Mastery Rank 2** 解鎖，這只需要完成幾個 MR 測試。之後，你的每日交易限制等於你的 Mastery Rank —— MR2 允許每天交易 2 次，MR10 允許 10 次，依此類推。單次交易可以打包多個物品（每方最多五個），因此在你的 MR 較低時，請好好利用每個交易次數。"
+    },
+    {
+      "q": "免費的初始 Platinum 可以交易嗎？",
+      "a": "不行。約 50 的初始 Platinum，以及透過**抽獎或促銷活動**獲得的任何 Platinum，都是**「個人 Platinum」** —— 鎖定且不可交易（它會顯示一個小鎖圖示）。你**購買**（即使是打折購買）或透過與其他玩家**交易賺取**的 Platinum 才能繼續交易。因此，你的第一筆可交易 Plat 來自銷售物品。"
+    },
+    {
+      "q": "什麼東西能賣最多 Platinum？",
+      "a": "[Riven mods](/riven-value) 的價值上限最高 —— 神級屬性可以賣到數千 Plat —— 其次是稀有 arcanes、vaulted prime sets 和稀有 mods。不過，若要獲得穩定的收入，普通的 [來自 relics 的 prime parts](/relics-value) 是最穩定的來源。低價值的 prime parts 通常賣給 Baro 換取 [ducats](/ducats) 更划算。"
+    },
+    {
+      "q": "在 Warframe 中交易需要 Clan 嗎？",
+      "a": "不需要。你完全可以在沒有 clan 的情況下，在 Mars 上的公共轉繼站 **Maroo's Bazaar** 進行交易，或者創建你自己的免費單人 clan 並在你的 Dojo 中建造一個 Trading Post。兩種方式都可行 —— Maroo's Bazaar 還允許你設立銷售攤位供買家瀏覽。"
+    },
+    {
+      "q": "如何在交易時避免被騙？",
+      "a": "在出售前，務必先在 warframe.market 上查詢物品的價格，絕對不要同意先交出物品的「信任交易」，並仔細閱讀交易確認畫面以防最後一秒的更換。交易視窗需要雙方確認，因此未經你的同意，任何東西都不會離開你的倉庫 —— 且 DE 通常不會撤銷糟糕的玩家交易。"
+    },
+    {
+      "q": "在 Warframe 中每小時可以賺取多少 Platinum？",
+      "a": "這有很大差異，而且是爆發性的，而不是穩定的工資。一個開啟 relics 的新玩家在專注的遊戲中可能會賺取幾十 Plat；而倒賣 sets、rivens 或 arcanes 的經驗豐富的玩家賺得要多得多。將 Plat 視為玩你喜歡的遊戲的副產品，而不是一項工作。"
+    }
+  ],
+  "videos": [
+    {
+      "id": "-voGeqWi_BU",
+      "title": "How to Trade in Warframe | Beginner’s Guide to Trading and Earning Platinum",
+      "channel": "Tipsy"
+    },
+    {
+      "id": "iQfSqj85HYY",
+      "title": "Warframe | How To Earn Platinum For Free | Warframe Trading Guide",
+      "channel": "Pupsker"
+    },
+    {
+      "id": "Fz8heDuOUkY",
+      "title": "Infinite Platinum Farming Theorem | Warframe 2025 COMPLETE Platinum Farming & Trading Guide",
+      "channel": "turbomonk"
+    },
+    {
+      "id": "fChLZ8Rh5bQ",
+      "title": "How I TRADE to earn PLATINUM in WARFRAME",
+      "channel": "Coffee Barbarian"
+    }
+  ],
+  "sources": [
+    {
+      "label": "r/Warframe — Finally reached 10k plat as a F2P player",
+      "href": "https://reddit.com/r/Warframe/comments/1tqyo3m/finally_reached_10k_plat_as_a_f2p_player/"
+    },
+    {
+      "label": "r/Warframe — Got scammed out of a Legendary Core as a new player",
+      "href": "https://reddit.com/r/Warframe/comments/1sonq6u/got_scammed_out_of_a_legendary_core_as_a_new/"
+    },
+    {
+      "label": "r/Warframe — Platinum farms ranked by how insane the people doing them are",
+      "href": "https://reddit.com/r/Warframe/comments/1f77ohc/platinum_farms_ranked_by_how_insane_the_people/"
+    },
+    {
+      "label": "Warframe Wiki — Trading",
+      "href": "https://wiki.warframe.com/w/Trading"
+    }
+  ],
+  "related": [
+    {
+      "label": "Relics & Void Traces",
+      "to": "/guides/relics",
+      "icon": "diamond-stone",
+      "note": "開啟 relics 以獲得你要出售的 prime parts"
+    },
+    {
+      "label": "Riven Mods",
+      "to": "/guides/riven",
+      "icon": "dice-multiple",
+      "note": "遊戲中價值上限最高的 Plat 物品"
+    },
+    {
+      "label": "Credits Farming",
+      "to": "/guides/credits",
+      "icon": "cash-multiple",
+      "note": "你需要 credits 來支付交易稅"
+    },
+    {
+      "label": "Relic 價值：開啟或出售",
+      "to": "/relics-value",
+      "icon": "calculator-variant",
+      "note": "在開啟 relic 之前預期的 Plat 收益"
+    },
+    {
+      "label": "套裝 vs 單件計算器",
+      "to": "/comparison",
+      "icon": "scale-balance",
+      "note": "出售組裝好的套裝還是散裝部件？"
+    },
+    {
+      "label": "社群常見問題",
+      "to": "/faq",
+      "icon": "help-circle",
+      "note": "快速解答常見的 Tenno 問題"
+    }
+  ],
+  "updated": "2026-07-18"
+}

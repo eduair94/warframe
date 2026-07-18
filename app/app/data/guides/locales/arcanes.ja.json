@@ -1,0 +1,480 @@
+{
+  "slug": "arcanes",
+  "eyebrow": "ナレッジセンター · Arcanes",
+  "title": "Arcanes ガイド",
+  "lede": "Arcanesは、堅実なビルドをSteel Pathのモンスターへと変貌させる、トリガー式のパッシブ効果です。ここでは、その効果、ランクの上げ方、ドロップ場所、そして重複分を売却してファームの資金にする方法を解説します。",
+  "category": "systems",
+  "readMins": 10,
+  "stats": [
+    {
+      "num": "21",
+      "label": "Arcaneを最大（Rank 5）にするために必要な枚数",
+      "tone": "gold"
+    },
+    {
+      "num": "2",
+      "label": "WarframeごとのArcaneスロット数",
+      "tone": "good"
+    },
+    {
+      "num": "6",
+      "label": "ランク階層、R0からR5",
+      "tone": "alt"
+    },
+    {
+      "num": "3",
+      "label": "主要なEidolonのArcane",
+      "tone": "gold"
+    }
+  ],
+  "sections": [
+    {
+      "id": "what-are-arcanes",
+      "title": "Arcaneとは一体何なのか",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Arcane**とは、専用のスロットに装備され、特定の**トリガー**（多くは確率で発動）によって発動するパッシブな強化要素です。「エネルギー拾得時に確率でエネルギーを回復する」や「ダメージを受けた時に確率で装甲値が上昇する」といった効果をイメージしてください。Modとは異なり、Arcaneは**Mod容量を消費しない**ため、既存のビルドにそのまま上乗せして無料でパワーアップできます。"
+        },
+        {
+          "type": "p",
+          "text": "Arcaneはスロット専用です。Warframe用のArcaneを武器に装備することはできず、その逆も同様です。主な系統は以下の通りです："
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Warframe Arcanes** — 生存能力、エネルギー、攻撃面のパッシブ（Grace、Guardian、Energize、Avenger、Moltシリーズなど）。",
+            "**Weapon Arcanes** — キル時にダメージを増加させたり、ヘッドショットに恩恵を与えたりするPrimary、Secondary、Melee用のArcane（MercilessやDeadheadシリーズなど）。",
+            "**Operator Arcanes（Magusシリーズ）** — OperatorやDrifter用の回復、クラウドコントロール（CC）、ユーティリティ。",
+            "**Amp Arcanes（Virtuosシリーズ）** — Eidolonハントの要となるAmp用の、クリティカルやダメージのブースト。",
+            "**モジュラーギア用Arcane** — クラフトしたMeleeやSecondary武器を調整するExodia（Zaws用）やPax（Kitguns用）。"
+          ]
+        },
+        {
+          "type": "info",
+          "text": "Arcaneは**再利用可能で、永久にインベントリに残るアイテム**です。フレームに装備しても消費されず、いつでも別のフレームや武器に自由に入れ替えることができます。ディスティラーなどは不要で、破壊されることもありません。"
+        }
+      ]
+    },
+    {
+      "id": "slots",
+      "title": "Arcaneスロット：どこに装備するか",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "各装備には固定数のArcaneスロットがあり、アップグレード画面の**Arcanes**タブ（Modの隣）にあります。"
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "Warframe",
+              "v": "Arcaneスロット 2個"
+            },
+            {
+              "k": "Primary / Secondary / Melee 武器",
+              "v": "各1個のArcaneスロット"
+            },
+            {
+              "k": "Operator / Drifter",
+              "v": "MagusシリーズのArcane用スロット"
+            },
+            {
+              "k": "Amp",
+              "v": "VirtuosシリーズのArcane用スロット"
+            }
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Warframeのスロットは最初から使用可能です。**武器**のArcaneスロットは、まず**Arcane Adapter**（武器タイプごとに1つ。Primary、Secondary、Meleeそれぞれ専用のものが必要）でアンロックする必要があります。入手先としては、リレーにいるTeshinの**Steel Path Honors**からSteel Essenceで購入できます。また、Duviriの**Acrithis**からPathos Clampsで入手するか、ゲーム内マーケットからプラチナで直接購入することも可能です。"
+        },
+        {
+          "type": "warn",
+          "text": "アダプターの入手先やHonorsのローテーションは、アップデートごとに微調整されることがあります。今シーズン、アダプターがどこで買えるか分からない場合は、間違ったアクティビティを周回してしまう前に、最新の[wiki.warframe.com](https://wiki.warframe.com/)や最近の動画を確認してください。"
+        }
+      ]
+    },
+    {
+      "id": "ranking",
+      "title": "ランクアップと最大化：「21の法則」",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Arcaneのランクは**Rank 0からRank 5**まであり、EndoやKuvaではなく、**同じArcaneの重複コピー**を重ねることでランクアップさせます。すべてのArcaneは同じ上昇ルールに従い、ランクが高くなるほど、次のランクに必要なコピー数が少しずつ増えていきます。"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "ランク",
+              "このランクに到達するために必要なコピー数",
+              "所持コピーの累計"
+            ],
+            "rows": [
+              [
+                "Rank 0（装備可能）",
+                "1",
+                "1"
+              ],
+              [
+                "Rank 1",
+                "+2",
+                "3"
+              ],
+              [
+                "Rank 2",
+                "+3",
+                "6"
+              ],
+              [
+                "Rank 3",
+                "+4",
+                "10"
+              ],
+              [
+                "Rank 4",
+                "+5",
+                "15"
+              ],
+              [
+                "Rank 5（最大）",
+                "+6",
+                "21"
+              ]
+            ],
+            "note": "1つのArcaneをRank 5まで完全に最大化するには、そのArcaneが正確に21枚必要になります。"
+          }
+        },
+        {
+          "type": "tip",
+          "text": "Arcaneを使用するために最大ランクにする必要は**ありません**。1枚（Rank 0）だけでも効果を発揮します。発動確率が低かったり、効果値が小さかったりするだけです。まずは手持ちのものをスロットに装備し、時間をかけてランクアップさせていきましょう。Rank 3のEnergizeやGraceであっても、快適性は劇的に向上します。"
+        },
+        {
+          "type": "p",
+          "text": "21枚集めるのは長い道のりなので、すべてを一度に最大化しようとするのではなく、メインのフレームで実際に使っている1つか2つのArcaneを優先しましょう。コレクションすべてを最大化するのは本物の自慢になります。r/Warframeの投稿[「ついにすべてのArcaneを最大化した（100%自力ファーム）」](https://reddit.com/r/Warframe/comments/1iz2rw4/as_of_today_i_have_finally_maxed_all_arcanes_100/)は、並々ならぬ献身の賜物です。"
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "title": "Arcaneの入手先",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Arcaneを一手に扱う商人は存在しません。エンドゲームのアクティビティに分散しており、それぞれ独自の通貨と紐づいています。これが参照マップです。正確なドロップ率や「現在の最適なファーム場所」はパッチによって変動するため、これは長期的な概要として扱い、詳細はwikiで確認してください。"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "入手先",
+              "入手できるもの",
+              "入手方法"
+            ],
+            "rows": [
+              [
+                "Eidolons — Plains of Eidolon（夜）",
+                "定番のフレーム用Arcane：Energize、Grace、Guardian、Aegis、Avengerなど",
+                "確保時のドロップ（確率）"
+              ],
+              [
+                "Acrithis — Duviri",
+                "それらのフレーム用Arcaneの多くを、確率に頼らず直接購入",
+                "Pathos Clamps（Orowyrmから入手）"
+              ],
+              [
+                "Vox Solaris / Little Duck — Fortuna",
+                "Operator（Magus）およびAmp（Virtuos）のArcane",
+                "Vox SolarisのStanding"
+              ],
+              [
+                "The Holdfasts — Zariman",
+                "Weapon Arcane ＋ MoltユーティリティArcane",
+                "HoldfastsのStanding"
+              ],
+              [
+                "Cavia — Sanctum Anatomica",
+                "Melee Arcane ＆ Melee Arcane Adapters",
+                "CaviaのStanding"
+              ],
+              [
+                "Arcana Isolation Vaults — Deimos",
+                "Theorem ＆ ResidualのArcane（ニッチなシナジーパッシブ）",
+                "依頼ミッション報酬のローテーション（確率）"
+              ],
+              [
+                "イベント ＆ 作戦",
+                "ローテーションするArcane、Exodia Arcane（Zaws用）",
+                "イベントトークン / 貯蔵庫"
+              ],
+              [
+                "Höllvania / 1999 (Techrot Encore)",
+                "貯蔵庫からのArcane ＋ The HexのStanding",
+                "貯蔵庫 ＆ Standing"
+              ],
+              [
+                "他のプレイヤー",
+                "トレード可能なすべてのArcane",
+                "プラチナ（warframe.market）"
+              ]
+            ],
+            "note": "DuviriのAcrithisは救世主的な存在です。彼女は多くのEidolonのArcaneをPathos Clampsで販売しているため、ソロプレイヤーは4人でのTridolonメタを完全にスキップできます。"
+          }
+        },
+        {
+          "type": "p",
+          "text": "OperatorとAmpのArcaneは、最も過酷な消費先の一つです。Vox SolarisのStandingの壁は本物です（[Little Duckのラインナップ](https://reddit.com/r/Warframe/comments/1s0jdek/de_is_fixing_the_early_game_grind_but_forgot/)をすべて購入するには、累計で数百万のStandingが必要になるとプレイヤーが計算しています）。一方で、**1999/Techrot Encore**のような新しいコンテンツでは、貯蔵庫から気前よくArcaneが手に入り（さらにEleanorからThe HexのStandingで購入することもできます）、そのためコミュニティでは最も初心者に優しい現代的なファームの一つとして扱われています。これらの入手先の背後にあるファームのループについては、[Eidolon ガイド](/guides/eidolon)や[Standing ガイド](/guides/standing)を参照してください。"
+        }
+      ]
+    },
+    {
+      "id": "staples",
+      "title": "知っておくべき定番のArcane",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "時間をかければ何十種類も集まりますが、一握りの代表的なArcaneがほとんどのビルドを支えています。正確な数値はバランス調整によって変化するため、現在の数値はwikiを確認してください。しかし、これらの役割は常に有用です："
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "役割",
+              "定番のArcane",
+              "効果"
+            ],
+            "rows": [
+              [
+                "エネルギー管理",
+                "Arcane Energize",
+                "エネルギー拾得時、確率で自身と周囲の味方のエネルギーを大幅に回復する — エネルギー維持の王様"
+              ],
+              [
+                "タンク / 自己回復",
+                "Arcane Grace, Arcane Guardian, Arcane Aegis",
+                "被弾時：ヘルス再生、大幅な装甲値バフ、または高速なシールド再生"
+              ],
+              [
+                "攻撃",
+                "Arcane Avenger, Arcane Fury, Arcane Strike",
+                "特定の条件でクリティカル率、近接ダメージ、または攻撃速度を誘発する"
+              ],
+              [
+                "アビリティ威力（Zariman）",
+                "Molt Augmented",
+                "キルを重ねるごとにアビリティ威力を増加させる — 装備しておくだけで機能するキャスター用バフ"
+              ],
+              [
+                "状態異常 ＆ 維持（Zariman）",
+                "Molt Efficiency, Molt Reconstruct",
+                "Molt Efficiencyは受ける状態異常の時間を短縮し、Molt Reconstructはアビリティで消費したエネルギーを自身と味方の回復に変換する"
+              ],
+              [
+                "武器ダメージ",
+                "Primary / Secondary Merciless",
+                "敵をキルするほどダメージが累積して上昇する"
+              ],
+              [
+                "ヘッドショットの恩恵",
+                "Primary / Secondary Deadhead",
+                "ヘッドショットキル時にボーナスダメージとリロード速度向上を与える"
+              ],
+              [
+                "Operator / Amp",
+                "Magus Elevate, Magus Lockdown, Virtuosシリーズ",
+                "Operatorの回復とCC、Eidolon用のAmpクリティカル"
+              ]
+            ]
+          }
+        },
+        {
+          "type": "tip",
+          "text": "もし3つだけを追い求めるなら、定番のEidolonトリオにしましょう。**Energize**（エネルギー枯渇を防ぐ）、そして**Grace**と**Guardian**（Steel Pathを生き抜く）です。この組み合わせだけで、ほぼすべてのフレームの使用感が劇的に変わります。これらを[Mods ガイド](/guides/mods)の生存技術や[Helminth ガイド](/guides/helminth)と組み合わせることで、完璧なパワーの跳ね上がりを実現できます。"
+        }
+      ]
+    },
+    {
+      "id": "selling",
+      "title": "Arcaneをプラチナに変える",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "最大化には21枚必要なため、不要な**重複分**が大量に手に入ることになります。そして、ほとんどのWarframeのArcaneはトレード可能です。すでに最大化し終えた入手先をファームすることは、ゲーム内で最も安定したプラチナ収入源の一つであり、EnergizeやGraceのような人気のArcaneは高い価値を維持しています。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**ファームする前に価格を確認しましょう。** [Market Screener](/screener)を使用して、実際にプラチナで売れるArcaneと、デュカット数枚分にしかならない価値のないArcaneを見分けてください。",
+            "**価格差や需要を察知**しましょう。[Flip Finder](/flip)や[Top Movers](/movers)を使うことで、新しいフレームやアップデートによって古いパッシブが再びメタになった際のArcaneの価値の変動に対応できます。",
+            "**重複分は売り、1枚は残す。** すべてのArcaneを1枚持っておくだけで、ビルドの柔軟性が無料で得られます。目標ランクを超えた分はすべて、現金化できる在庫になります。"
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Arcaneのトレードは、アカウントの資金を調達するための定番の方法の一つです。プラチナ経済が初めての方は、まず[Platinum ガイド](/guides/platinum)でトレードチャットやwarframe.marketの基本を学び、それから戻って余剰分を出品しましょう。"
+        }
+      ]
+    },
+    {
+      "id": "gameplan",
+      "title": "ステップバイステップのゲームプラン",
+      "blocks": [
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "h": "焦る必要はありません — Arcaneはゲーム中盤以降のパワーです",
+              "p": "新規プレイヤーは、まずフレーム、武器、Modに集中すべきです。Plains of Eidolonに到達し、Ampを製作し、Steel Pathを開始するにつれて、Arcaneのシステムは自然とアンロックされていきます。コアとなるビルドが機能する前にArcaneを最大化する意味はありません。"
+            },
+            {
+              "h": "まずはエネルギー ＋ 生存能力を確保する",
+              "p": "最初の目標は、Energize / Grace / Guardianのタイプです。マーケットで安いものを1、2枚購入するか、Eidolonsをファームするか、あるいは確率をスキップしてDuviriのAcrithisからPathos Clampsで購入しましょう。ランクなしのコピーであっても、すぐに役立ちます。"
+            },
+            {
+              "h": "武器のArcaneスロットをアンロックする",
+              "p": "Steel Path Honorsを貯めてArcane Adapters（Primary、Secondary、Melee武器にそれぞれ1つずつ）を入手し、主力武器にMercilessシリーズのようなキル累積型のダメージArcaneを装備しましょう。"
+            },
+            {
+              "h": "メインで使うものを最大化することに専念する",
+              "p": "最もよく使う1つか2つのArcaneを選び、21枚を目指して周回しましょう。途中のランクであっても効果は確実に上がっていくため、進行状況が無駄になることはありません。"
+            },
+            {
+              "h": "重複分で周回の資金を調達する",
+              "p": "余分なArcaneはすべて[Screener](/screener)や[Flip Finder](/flip)を通じてプラチナで出品し、まだ必要なコピーの購入に再投資しましょう。ファームが自活できるようになります。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mistakes",
+      "title": "よくある間違い ＆ クイックヒント",
+      "blocks": [
+        {
+          "type": "list",
+          "items": [
+            "**ArcaneとModを混同する。** ArcaneはArcanesタブに装備され、容量を消費せず、トリガーによって発動します。Modの構成を置き換えるものではなく、それに追加するものです。",
+            "**始めるにはRank 5が必要だと思い込む。** 1枚だけでも機能します。まずは装備し、重複分が集まるにつれてランクアップさせていきましょう。",
+            "**Duviriを見落とす。** Acrithisは多くのEidolonのArcaneをPathos Clampsで販売しています。これはTridolonハントに代わる、ソロでストレスの少ない選択肢です。",
+            "**1枚しかないものを売ってしまう。** トレード可能なすべてのArcaneを少なくとも1枚は手元に残しましょう。売却するのは、目標ランクを超えた余剰分だけにしてください。",
+            "**武器のアダプターを忘れる。** 武器のArcaneは、対応するArcane Adapterでスロットをアンロックするまで何も効果を発揮しません。"
+          ]
+        },
+        {
+          "type": "info",
+          "text": "Arcaneの価値、ドロップ率、「最適なファーム」ノードといった詳細は、DEが頻繁に調整する部分です。特定の発動確率や現在のトップファームなど、数値に関する情報については、何時間も費やす前に[wiki.warframe.com](https://wiki.warframe.com/)や最近のガイド動画でクロスチェックしてください。"
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "WarframeでArcaneを最大ランクにするには、何枚のArcaneが必要ですか？",
+      "a": "同じArcaneが21枚あれば、Rank 5まで完全に最大化できます。コストは各ティアごとに上昇し、装備に1枚、その後+2、+3、+4、+5、+6となり、累計で21枚になります。ただし、使用するために最大化する必要はありません。1枚だけでもRank 0として機能します。"
+    },
+    {
+      "q": "最初にファームすべき最適なArcaneは何ですか？",
+      "a": "まずはエネルギーと生存能力の定番であるArcane Energize、Arcane Grace、Arcane Guardianから始めましょう。これらはゲーム内のほぼすべてのフレームを向上させます。夜のPlains of EidolonでEidolonsからファームするか、DuviriのAcrithisからPathos Clampsで購入して確率をスキップすることができます。詳細は[Eidolon ガイド](/guides/eidolon)を参照してください。"
+    },
+    {
+      "q": "Arcaneを装備解除すると消費されますか？",
+      "a": "いいえ。Arcaneは永久にインベントリに残るアイテムです。装備しても消費されず、いつでもフレームや武器の間で自由に交換できます。何も破壊されませんし、ディスティラー（分離器）のようなものも必要ありません。"
+    },
+    {
+      "q": "Arcaneをプラチナでトレードすることはできますか？",
+      "a": "はい、ほとんどのWarframeのArcaneはトレード可能です。使用するArcaneを最大化した後は、重複分を売却することが信頼性の高いプラチナ収入源になります。価値はメタによって変動するため、まずは[Market Screener](/screener)で価格を確認し、[Top Movers](/movers)で需要を監視してください。トレードの基本については[Platinum ガイド](/guides/platinum)で解説しています。"
+    },
+    {
+      "q": "武器のArcaneスロットはどのようにアンロックしますか？",
+      "a": "各武器の1つのArcaneスロットを有効にするには、それぞれの武器専用のArcane Adapter（Primary、Secondary、またはMelee Arcane Adapter）が必要です。アダプターは主にTeshinのSteel Path Honors（Steel Essenceと交換）から入手できるほか、DuviriのAcrithisからPathos Clampsで購入するか、ゲーム内マーケットから購入することもできます。対照的に、WarframeのArcaneスロットはデフォルトで利用可能であり、アダプターは不要です。"
+    },
+    {
+      "q": "OperatorとAmpのArcaneはどこから入手できますか？",
+      "a": "OperatorのArcane（Magusシリーズ）とAmpのArcane（Virtuosシリーズ）は、FortunaのLittle DuckからVox SolarisのStandingで購入できます。このStandingは主に、Orb Vallisで入手したToroidsや余分な金メッキ済みのAmpを提出することで獲得できます。全ラインナップを購入するには膨大なStandingの周回が必要になるため、計画的に進めてください。"
+    },
+    {
+      "q": "新規プレイヤーにとって、Arcaneは集める価値がありますか？",
+      "a": "これらはゲーム中盤から終盤にかけてのパワー倍率を高めるものであり、序盤の優先事項ではありません。まずはフレーム、武器、Modを整えましょう。Plains of Eidolonに到達し、Steel Pathを開始するにつれて、Arcaneのシステムは自然とアンロックされていきます。そこに到達すれば、エネルギーや生存能力を高めるいくつかのArcaneが、非常に大きなアップグレードになります。"
+    }
+  ],
+  "videos": [
+    {
+      "id": "DOnp7Nih0YE",
+      "title": "The ONLY Arcane Guide You'll Ever Need (Warframe 2026)",
+      "channel": "WarframeFlo"
+    },
+    {
+      "id": "8-0t4RRSSZw",
+      "title": "How To Farm Arcanes & Best Warframe Arcane Farm to Do First!",
+      "channel": "Joe Hammer Gaming"
+    },
+    {
+      "id": "TfuqGjCf5ws",
+      "title": "18 Must-Have ARCANES after the TECHROT ENCORE Update",
+      "channel": "Grind Hard Squad"
+    },
+    {
+      "id": "WSEBKRYSoC8",
+      "title": "Farming Arcanes is Now EASIER Than Ever! | Warframe",
+      "channel": "Vanterrize Umbra"
+    }
+  ],
+  "sources": [
+    {
+      "label": "r/Warframe: As of today I have finally maxed all Arcanes (100% self farmed)",
+      "href": "https://reddit.com/r/Warframe/comments/1iz2rw4/as_of_today_i_have_finally_maxed_all_arcanes_100/"
+    },
+    {
+      "label": "r/Warframe: DE forgot about the standing sink for Vox Solaris arcanes",
+      "href": "https://reddit.com/r/Warframe/comments/1s0jdek/de_is_fixing_the_early_game_grind_but_forgot/"
+    },
+    {
+      "label": "r/Warframe: Getting Stronger in Warframe, 2026 (progression guide)",
+      "href": "https://reddit.com/r/Warframe/comments/1u00jua/getting_stronger_in_warframe_2026/"
+    },
+    {
+      "label": "Official Warframe Wiki",
+      "href": "https://wiki.warframe.com/"
+    }
+  ],
+  "related": [
+    {
+      "label": "Eidolon Hunting ガイド",
+      "to": "/guides/eidolon",
+      "icon": "weather-night",
+      "note": "Energize、Grace、Guardianの定番の入手先"
+    },
+    {
+      "label": "Steel Path ガイド",
+      "to": "/guides/steel-path",
+      "icon": "skull",
+      "note": "Weapon Arcane Adapterの入手先"
+    },
+    {
+      "label": "Standing ガイド",
+      "to": "/guides/standing",
+      "icon": "handshake",
+      "note": "Vox Solaris、Holdfasts、CaviaのArcane用Standing"
+    },
+    {
+      "label": "Platinum ガイド",
+      "to": "/guides/platinum",
+      "icon": "cash-multiple",
+      "note": "重複したArcaneを売却してプラチナを獲得する"
+    },
+    {
+      "label": "Market Screener",
+      "to": "/screener",
+      "icon": "table-search",
+      "note": "ファームする前にすべてのArcaneの価格を確認する"
+    },
+    {
+      "label": "Helminth ガイド",
+      "to": "/guides/helminth",
+      "icon": "dna",
+      "note": "Arcaneと注入したアビリティを組み合わせて、完璧なパワーの跳ね上がりを実現する"
+    }
+  ],
+  "updated": "2026-07-18"
+}

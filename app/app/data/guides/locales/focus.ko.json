@@ -1,0 +1,475 @@
+{
+  "slug": "focus",
+  "eyebrow": "지식 센터 · Focus",
+  "title": "Focus 파밍 가이드",
+  "lede": "Focus는 Tenno의 5가지 유파에 힘을 실어주는 Operator 성장 시스템입니다. 여기서는 Focus를 해금하는 방법, Lens와 Convergence Orb를 통해 빠르게 획득하는 방법, 그리고 가장 필요한 곳에 투자하는 방법을 소개합니다.",
+  "category": "farming",
+  "readMins": 9,
+  "stats": [
+    {
+      "num": "5",
+      "label": "Focus 유파",
+      "tone": "gold"
+    },
+    {
+      "num": "10x",
+      "label": "Convergence 배율",
+      "tone": "good"
+    },
+    {
+      "num": "45s",
+      "label": "Convergence 활성화 시간",
+      "tone": "alt"
+    },
+    {
+      "num": "250K",
+      "label": "기본 일일 제한량",
+      "tone": "gold"
+    }
+  ],
+  "sections": [
+    {
+      "id": "what-is-focus",
+      "title": "Focus란 정확히 무엇인가",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Focus**는 Warframe의 Operator 성장 시스템입니다. **Focus Points**라는 재화를 획득하여 **5가지 Focus 유파** 중 하나에 투자하게 됩니다. 이는 Operator와 Warframe, 그리고 전반적인 게임 플레이를 강화하는 패시브 스킬 트리입니다. Focus는 계정 공유 항목입니다. 획득한 포인트는 현재 **활성화**된 유파로 들어가며, 노드를 하나씩 해금해 나갈 수 있습니다."
+        },
+        {
+          "type": "p",
+          "text": "특별한 활동을 해야만 Focus를 얻을 수 있는 것은 아닙니다. Affinity (숙련도)의 *부산물*로 획득하게 됩니다. 장비에 **Focus Lens**를 장착하면, 해당 장비가 획득하는 Affinity의 일부가 Focus로 전환됩니다. 이것이 전체 루프입니다. 적을 처치하고, Affinity를 얻고, 그 중 일정 비율을 Focus로 전환하여 패시브에 투자하는 것이죠. 이 가이드의 나머지 부분은 이 미미한 흐름을 거대한 홍수로 만드는 방법에 대한 것입니다."
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "해금 조건",
+              "v": "The Second Dream 퀘스트"
+            },
+            {
+              "k": "재화",
+              "v": "Focus Points (활성화된 유파별)"
+            },
+            {
+              "k": "유파",
+              "v": "Madurai, Vazarin, Naramon, Unairu, Zenurik"
+            },
+            {
+              "k": "획득 방법",
+              "v": "랭크가 완료된 장비에 장착된 Focus Lenses + Affinity"
+            },
+            {
+              "k": "일일 초기화",
+              "v": "Focus 제한량은 일일 초기화 시간(00:00 UTC)에 갱신됩니다"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "unlock-operator",
+      "title": "1단계: Operator 해금하기",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Focus는 스토리 진행도에 따라 제한됩니다. Operator가 깨어나기 전까지는 단 하나의 Lens도 만질 수 없습니다. 따라서 첫 번째 'Focus 파밍'은 단순히 [메인 퀘스트](/guides/quests)를 진행하는 것입니다."
+        },
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "h": "성계 지도를 The Second Dream까지 진행하기",
+              "p": "이 퀘스트는 행성 교차점을 충분히 클리어하면 해금됩니다. 선택 사항이 아닌 필수 스토리 진행 구역이므로, 계속해서 노드를 클리어하고 퀘스트 마커를 따라가세요. 순서는 [진행 로드맵](/guides/progression)을 참조하세요."
+            },
+            {
+              "h": "The Second Dream 완료하기",
+              "p": "퀘스트를 완료하면 Operator가 소개되고 Focus 화면과 첫 번째 유파가 해금됩니다. 이 순간부터 Focus를 사용할 수 있게 됩니다."
+            },
+            {
+              "h": "The War Within 완료하기",
+              "p": "다음 주요 퀘스트는 Operator의 보이드 능력과 전이(Transference) 전투를 확장합니다. Operator의 위력은 두 활동 모두에서 핵심적이므로, 본격적인 Focus/Eidolon 파밍을 시작하기 전에 이 퀘스트를 완전히 완료하는 것이 좋습니다."
+            },
+            {
+              "h": "첫 번째 유파 선택하기 (무료)",
+              "p": "첫 번째 유파는 비용 없이 해금됩니다. 이후 추가 유파를 해금하려면 각각 약 50,000의 Focus가 소모되므로 신중하게 선택하세요. 대부분의 플레이어는 Zenurik을 가장 먼저 해금합니다 (아래 참조)."
+            }
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "[Duviri Paradox](/guides/duviri)를 통해 신규 플레이어는 Drifter와 일부 Focus 관련 시스템을 미리 맛볼 수 있지만, Focus로 향하는 표준적이고 완전한 경로는 여전히 **The Second Dream → The War Within**입니다."
+        }
+      ]
+    },
+    {
+      "id": "schools",
+      "title": "5가지 Focus 유파",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "한 번에 **단 하나의 유파만 활성화**할 수 있지만, 미션 밖에서는 해금된 유파 간에 자유롭게 전환할 수 있습니다. 각 유파에는 해당 유파가 선택되었을 때만 활성화되는 유파 전용 노드와, 어떤 유파가 활성화되어 있든 상관없이 항상 적용되는 영구적인 **Way-Bound** 패시브가 모두 존재합니다. 각 유파의 특징은 다음과 같습니다:"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "유파",
+              "색상",
+              "대표적인 강점",
+              "추천 용도"
+            ],
+            "rows": [
+              [
+                "Zenurik",
+                "노란색",
+                "에너지 재생 지대 (Wellspring / Energizing Dash)",
+                "모든 플레이어 — 기본 에너지 수급용 선택지"
+              ],
+              [
+                "Madurai",
+                "빨간색",
+                "Amp 및 Void 피해 버프",
+                "Eidolon 사냥, Operator DPS"
+              ],
+              [
+                "Naramon",
+                "초록색",
+                "근접 연속 공격 횟수(Combo) 유지, 은신/Affinity",
+                "근접 무기 빌드, 강공격 플레이 스타일"
+              ],
+              [
+                "Unairu",
+                "흰색",
+                "Operator를 통한 실드 및 방어력 제거(Strip)",
+                "Eidolons, [Steel Path](/guides/steel-path) 방어력 제거"
+              ],
+              [
+                "Vazarin",
+                "파란색",
+                "치유, 부활, 방어 대상 보호",
+                "지원, 방어/호위, Eidolon Lure"
+              ]
+            ],
+            "note": "대표 노드와 정확한 수치는 시간이 지남에 따라 조정될 수 있습니다. 완전히 해금하기 전에 현재 노드 레이아웃을 공식 위키에서 확인하세요."
+          }
+        },
+        {
+          "type": "tip",
+          "text": "**Zenurik을 먼저 해금하세요.** Zenurik의 에너지 재생 지대는 초반 게임의 가장 큰 골칫거리인 어빌리티 에너지 부족 문제를 해결해 주며, 여러분이 플레이할 모든 워프레임에 도움이 됩니다. Eidolon 사냥을 목표로 한다면 보통 두 번째 선택지로 Madurai나 Unairu를 고릅니다."
+        }
+      ]
+    },
+    {
+      "id": "lenses",
+      "title": "Focus Lenses: 원동력",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Focus Lens**는 장비에 장착되어 하나의 유파에 귀속됩니다. 장착되면 해당 아이템이 획득하는 Affinity의 일정 비율을 해당 유파의 Focus로 전환합니다. **랭크가 완료된(30랭크) 장비에 Lens를 장착하세요.** 그래야 획득한 모든 Affinity가 아이템 레벨업에 '소모'되지 않고 Focus 전환에 온전히 반영됩니다."
+        },
+        {
+          "type": "p",
+          "text": "장착한 각 아이템은 저마다의 Lens를 가질 수 있습니다. Warframe, 주무기, 보조무기, 근접 무기, 동반자(Companion)에 *각각* 하나씩 장착할 수 있습니다. 모든 슬롯에 Lens를 장착한 로드아웃은 단 하나의 프레임에만 장착했을 때보다 Focus 수급량을 극적으로 배가시킵니다."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Lens 등급",
+              "전환율 (초과 Affinity 대비)",
+              "획득처"
+            ],
+            "rows": [
+              [
+                "Lens",
+                "~2%",
+                "출격(Sorties), 오픈 월드 의뢰(Bounties), 이벤트"
+              ],
+              [
+                "Greater Lens",
+                "~3%",
+                "기본 Lens로 제작 (상점 설계도), 3~5단계 의뢰 보상"
+              ],
+              [
+                "Eidolon Lens",
+                "~4.25%",
+                "Greater Lens로 제작, Cetus 5단계 / Steel Path 의뢰 또는 Cavia 평판"
+              ],
+              [
+                "Lua Lens",
+                "~5.5% — 최고 효율",
+                "Eidolon Lens로 제작, Lua Disruption (로테이션 C)"
+              ]
+            ],
+            "note": "상위 등급은 하위 등급을 업그레이드하여 제작하므로, 초반에 기본 Lens를 모아두는 것이 좋습니다. 비율과 획득처는 업데이트에 따라 변경될 수 있으므로 공식 위키에서 정확한 레시피를 확인하세요."
+          }
+        },
+        {
+          "type": "warn",
+          "text": "Lens는 **장착할 때 특정 유파에 귀속**되며, 새 Lens로 덮어쓰면 기존 Lens는 파괴됩니다. 장착하기 *전에* 유파를 결정하세요. 잘못된 트리에 Eidolon Lens나 Lua Lens를 낭비하지 마십시오. 최고의 Lens는 기본 Lens부터 단계별로 제작되므로, 자원을 투입하기 전에 미리 계획을 세우세요."
+        }
+      ]
+    },
+    {
+      "id": "convergence",
+      "title": "Convergence Orb & 10배 활성화 시간",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "이것은 미미한 흐름을 거대한 폭포로 바꾸는 메커니즘입니다. 미션 중에 빛나는 **Convergence Orb**가 주기적으로 생성됩니다 (Focus Lens를 장착한 경우에만). 이를 획득하면 **45초 동안 10배의 Focus 배율**을 얻게 됩니다. 이 시간 동안 생성되는 모든 Focus 포인트가 10배로 증가하며, 획득 즉시 활성화된 유파에 **5,000 Focus**가 즉시 지급됩니다. 본격적인 Focus 파밍은 사실상 *Convergence* 파밍입니다. 적 처치를 몰아서 하고, 그 45초 동안 최대의 Affinity를 쏟아붓는 것이죠."
+        },
+        {
+          "type": "info",
+          "text": "r/Warframe의 흔한 불만 중 하나는 '왜 아직도 Focus를 얻기 위해 Convergence Orb에 의존해야 하는가?'입니다. 이는 타당한 비판입니다. 배율이 적용되지 않는 시간 동안 Focus 획득량은 의도적으로 느리게 설계되어 있기 때문입니다. 실질적인 해결책은 적 밀도가 높고 지속적인 처치가 가능하여 Orb가 자주 생성되는 파밍지를 선택하고, Orb를 획득할 때마다 폭발적인 피해를 입힐 수 있도록 타이밍을 맞추는 것입니다."
+        },
+        {
+          "type": "p",
+          "text": "한 번에 하나의 Convergence 버프만 활성화할 수 있으며, 새 Orb를 획득하면 타이머가 초기화됩니다. 적 밀도가 높고 빠른 모드에서는 Orb가 충분히 자주 나타나므로 미션 진행 시간의 대부분 동안 배율 버프를 유지할 수 있습니다. 이것이 바로 아래 소개할 파밍지들이 무작위 미션을 도는 것보다 훨씬 효율적인 이유입니다."
+        }
+      ]
+    },
+    {
+      "id": "daily-cap",
+      "title": "일일 Focus 제한량",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Focus에는 하루 동안 모든 유파를 통틀어 저장할 수 있는 공유 상한선인 **일일 제한량**이 있습니다. **250,000에서 시작**하여 **Mastery Rank**에 따라 증가합니다 (랭크당 약 +5,000). 따라서 Mastery Rank가 높은 플레이어는 갓 시작한 Operator보다 훨씬 높은 상한선을 가집니다. 이 제한량은 일일 초기화 시간에 리셋됩니다."
+        },
+        {
+          "type": "warn",
+          "text": "제한량에 도달하면 그날 추가로 획득하는 Focus는 **소실**됩니다. 효율적인 플레이는 효율 좋은 파밍지에서 빠르게 제한량을 채운 뒤, 저장할 수 없는 Focus를 위해 무의미하게 파밍하는 대신 다른 목표로 넘어가는 것입니다. 적 밀도가 낮은 미션을 돌며 더블 Affinity 주말 버프를 낭비하지 마세요."
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "기본 제한량",
+              "v": "250,000 / 일 (모든 유파 합산)"
+            },
+            {
+              "k": "증가 방식",
+              "v": "Mastery Rank에 따라 증가 (랭크당 약 +5,000)"
+            },
+            {
+              "k": "초기화",
+              "v": "일일 초기화 (00:00 UTC)"
+            },
+            {
+              "k": "제한량 초과 Focus",
+              "v": "소실됨 — 효율적으로 제한량을 채우도록 파밍을 계획하세요"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "best-farms",
+      "title": "추천 Focus 파밍지",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "'최고의 노드'는 업데이트마다 바뀌지만, **그 원리는 시대를 불문하고 동일**합니다. 적 밀도를 극대화하고, Convergence 활성화 시간을 유지하며, 모든 슬롯에 Lens를 장착한 로드아웃을 사용하는 것입니다. Orb가 계속 생성되는 동안 Lens가 장착된 무기로 지속적인 처치를 쌓을 수 있는 모든 모드가 훌륭한 Focus 파밍지입니다. 다음은 오랫동안 사랑받아 온 대표적인 파밍지들입니다:"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "방법",
+              "추천 이유",
+              "참고 사항"
+            ],
+            "rows": [
+              [
+                "Eidolon 사냥 (Plains of Eidolon, 밤)",
+                "막대한 Affinity 외에도, Eidolon Shards를 원하는 유파의 Focus로 즉시 전환 가능 (Brilliant 약 25,000, Radiant 약 40,000)",
+                "Amp 및 Operator 세팅 필요. [Eidolon 가이드](/guides/eidolon) 참조"
+              ],
+              [
+                "Elite Sanctuary Onslaught (ESO)",
+                "빈번한 Convergence Orb 생성과 함께 끊임없이 쏟아지는 고밀도 적 처치 — 클래식한 Focus 파밍 방식",
+                "광역 딜러(Nuke) 프레임 + 모든 슬롯에 Lens를 장착한 로드아웃 지참"
+              ],
+              [
+                "고밀도 무한 미션 (Zariman Void 모드, 현재 엔드게임 타일셋)",
+                "엄청난 처치 수로 Lens가 장착된 무기에 Affinity 공급, Orb가 지속적으로 생성됨",
+                "정확한 '최고의' 노드는 패치에 따라 달라지므로 최근 영상을 확인하세요"
+              ],
+              [
+                "아무 미션 + 모든 슬롯 Lens 장착 + 부스터",
+                "일반적인 게임 플레이 중에 자연스럽게 획득하는 Focus",
+                "속도는 느리지만 추가 세팅이 필요 없음 — 가볍게 제한량을 채우기에 적합"
+              ]
+            ]
+          }
+        },
+        {
+          "type": "p",
+          "text": "Eidolon 사냥이 독보적으로 강력한 이유는 **Eidolon Shards가 순수한 Focus 자체**이기 때문입니다. Affinity 전환과는 별개로, 원하는 유파에 고정된 금액(Brilliant 약 25,000, Radiant 약 40,000)으로 소비할 수 있습니다. 그렇기 때문에 Tridolon 포획 한 번으로 일일 제한량에 빠르게 도달할 수 있습니다. [Eidolon 가이드](/guides/eidolon)에서 사냥법을 배우고, 진행 과정에서 획득한 Amp와 Arcane은 [flip finder](/flip)나 [screener](/screener)를 통해 [platinum](/guides/platinum)으로 거래할 수 있다는 점도 참고하세요."
+        },
+        {
+          "type": "tip",
+          "text": "현재 어떤 노드에서 어떤 모드가 진행 중인지 정확히 파악하려면, 고정된 목록보다는 [드롭 위치 지도](/star-chart-3d)와 [커뮤니티 도구 디렉터리](/tools) (위키, Overframe)를 확인하는 것이 훨씬 최신 정보를 얻기에 좋습니다. 파밍을 시작하기 전에 최근 Focus 파밍 영상과 공식 위키를 함께 확인해 보세요."
+        }
+      ]
+    },
+    {
+      "id": "spending",
+      "title": "Way-Bound 노드 & Focus 투자",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "각 유파 내부의 노드는 두 가지 종류로 나뉩니다. **유파 노드**는 해당 유파가 활성화되어 있을 때만 작동합니다. **Way-Bound 노드**는 *어떤 유파가 활성화되어 있든 상관없이* 적용되는 영구 패시브이며, Focus와 **Eidolon Shards**를 사용하여 해금합니다. 이것이 Eidolon과 Focus 성장이 긴밀하게 연결되어 있는 두 번째 이유입니다. Shard는 일일 Focus를 채워줄 뿐만 아니라 최고의 패시브들을 영구적으로 귀속시켜 줍니다."
+        },
+        {
+          "type": "p",
+          "text": "한 번에 하나의 유파만 사용할 수 있으므로, 5가지 유파 모두에 포인트를 분산 투자하기보다는 뚜렷한 목적을 가지고 투자하세요."
+        },
+        {
+          "type": "list",
+          "items": [
+            "**주력 유파를 먼저 마스터하세요** — 대부분의 시간 동안 선택하게 될 에너지 지대를 제공하는 Zenurik이 일반적입니다.",
+            "**Way-Bound 패시브를 조기에 확보하세요** — 영구적이며 다른 유파와 중첩되므로 절대 낭비되지 않습니다. 일반적으로 최대 에너지 및 Operator 생존력 관련 Way-Bound가 우선순위가 높습니다.",
+            "**그 다음 특정 역할군 유파로 확장하세요** — Eidolon 사냥 및 방어력 제거를 위한 Madurai/Unairu, 근접 무기를 위한 Naramon, 지원을 위한 Vazarin 등이 있습니다.",
+            "**절대 선택하지 않을 유파에 과도하게 투자하지 마세요** — 유파 전용 노드는 해당 유파가 활성화되지 않으면 아무런 쓸모가 없습니다."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "efficiency",
+      "title": "Focus 추가로 쥐어짜내기",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "기본적인 준비가 끝났다면, 다음 배율들을 중첩하여 훨씬 빠르게 제한량을 채울 수 있습니다:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**모든 슬롯에 Lens를 장착하세요.** 프레임 + 무기 3개 + 동반자까지 최대 5개의 Lens가 동시에 전환을 수행합니다. 가장 자주 사용하는 장비에 가장 좋은 Lens를 장착하세요.",
+            "**파밍하고자 하는 유파를 활성 유파로 설정하세요.** 생성된 모든 Focus는 *현재 선택된* 유파로 들어갑니다. 시작하기 전에 다시 한번 확인하세요.",
+            "**Affinity 부스터를 중첩하세요.** **Double Affinity 주말** 버프에 2배 Affinity 부스터를 더하면 동일한 노력으로 Focus 수급량을 두 배로 늘릴 수 있습니다.",
+            "**Run a Smeeta Kavat.** Its Charm buff can roll a 2x affinity bonus — pure extra Focus in high-density farms.",
+            "**Affinity의 흐름을 이해하세요.** 어빌리티 처치는 100% Warframe으로 들어가며, 무기 처치는 무기와 프레임에 분할됩니다. 분대 플레이 시 Affinity는 범위 내에서 공유되므로, 근처에서의 처치도 Lens가 장착된 장비에 Affinity를 공급합니다.",
+            "**Convergence 활성화 시간에 맞추어 피해를 집중하세요.** Orb를 획득하기 전에 화력을 낭비하지 말고, 10배 버프가 켜졌을 때 폭발적인 피해를 입히세요."
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "Focus 파밍을 처음 시작하는 분들은 [Mastery Rank & Affinity 가이드](/guides/mastery-rank)도 읽어보시기 바랍니다. 장비 랭크를 올리는 것과 동일한 레벨링 메커니즘이 Lens에도 적용되므로, 효율적인 레벨링과 효율적인 Focus 파밍은 결국 같은 기술입니다."
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Warframe에서 Focus를 어떻게 해금하나요?",
+      "a": "Focus는 **The Second Dream** 퀘스트를 완료하면 해금되며, 이 퀘스트를 통해 Operator가 깨어나고 Focus 화면과 첫 번째 유파가 열립니다. The Second Dream이 해금될 때까지 성계 지도를 계속 클리어한 다음, **The War Within**을 완료하여 Operator를 완전히 성장시키세요. 그전까지는 단 하나의 Lens도 장착할 수 없습니다."
+    },
+    {
+      "q": "가장 먼저 해금하기 좋은 최고의 Focus 유파는 무엇인가요?",
+      "a": "**Zenurik**은 에너지 재생 지대를 통해 초반 에너지 문제를 해결하고 플레이하는 모든 Warframe에 도움을 주기 때문에 거의 독보적인 첫 번째 선택지입니다. 그 후 대부분의 플레이어는 **Madurai** (Eidolon 사냥을 위한 Amp/Operator 피해) 또는 **Unairu** (실드/방어력 제거)를 해금합니다. 첫 번째 유파는 무료이며, 추가 유파는 각각 약 50,000 Focus가 소모됩니다."
+    },
+    {
+      "q": "Focus를 가장 빠르게 파밍하는 방법은 무엇인가요?",
+      "a": "랭크가 완료된 프레임과 무기에 Focus Lenses (가장 좋은 것은 Eidolon 또는 Lua Lenses)를 장착한 다음, **Elite Sanctuary Onslaught**와 같은 고밀도 모드를 돌거나 밤에 Plains에서 **Eidolons**를 사냥하세요. 10배 배율을 위해 모든 **Convergence Orb**를 획득하고, Affinity 부스터와 Smeeta Kavat을 중첩하세요. Eidolon Shards 역시 Focus로 즉시 전환할 수 있습니다 (Brilliant 약 25,000, Radiant 약 40,000)."
+    },
+    {
+      "q": "Focus Lens는 어떻게 작동하며 어디서 얻을 수 있나요?",
+      "a": "Lens는 30랭크 아이템에 장착되어 획득하는 Affinity의 일정 비율을 귀속된 유파의 Focus로 전환합니다. 기본 Lens는 약 2%, Greater Lens는 약 3%, Eidolon Lens는 약 4.25%, 최고 등급인 Lua Lens는 약 5.5%입니다. 기본 Lens는 출격(Sorties) 및 오픈 월드 의뢰(Bounties)에서 드롭되며, 상위 등급은 하위 등급을 재료로 제작합니다 (Greater는 상점 설계도, Eidolon은 Cetus/Steel Path 의뢰 또는 [Cavia 평판](/guides/standing), Lua는 Lua Disruption에서 획득). 레벨업에 Affinity가 낭비되지 않도록 랭크가 완료된 장비에 장착하세요."
+    },
+    {
+      "q": "왜 Focus를 얻기 위해 Convergence Orb에 의존해야 하나요?",
+      "a": "의도적으로 설계된 바에 따라, 45초 동안 10배 배율을 부여하는 **Convergence Orb** 버프(획득 시 5,000 Focus 추가 지급)가 활성화되어 있지 않으면 Focus 획득 속도가 매우 느립니다. 이는 커뮤니티에서 흔히 겪는 불만 사항이지만, 해결책은 Orb가 자주 생성되는 적 밀도가 높고 처치 위주의 모드를 파밍하는 것입니다. 이를 통해 단일 Orb를 쫓아다니는 대신 미션 시간의 대부분을 배율 버프 상태로 보낼 수 있습니다."
+    },
+    {
+      "q": "일일 Focus 제한량이 있나요?",
+      "a": "네, 있습니다. 모든 유파가 공유하는 일일 제한량은 **250,000에서 시작**하여 **Mastery Rank**에 따라 증가합니다 (랭크당 약 +5,000). 제한량에 도달하면 그날 추가로 획득하는 Focus는 소실되므로, 효율적인 플레이는 효율 좋은 파밍지에서 빠르게 제한량을 채운 뒤 다른 목표로 넘어가는 것입니다."
+    },
+    {
+      "q": "단 하나의 Focus 유파만 계속 사용해야 하나요?",
+      "a": "아닙니다. 미션 밖에서는 해금한 유파 간에 자유롭게 전환할 수 있으므로 절대 하나에 얽매이지 않습니다. 게다가 **Way-Bound** 노드는 어떤 유파가 활성화되어 있든 상관없이 항상 적용되는 영구 패시브입니다. Focus와 Eidolon Shards로 이를 해금하면 모든 빌드에 혜택을 줍니다."
+    },
+    {
+      "q": "Eidolon Shards는 Focus에 어떤 역할을 하나요?",
+      "a": "Eidolon Shards는 사실상 병에 담긴 Focus와 같습니다. **Brilliant Shard**를 소비하면 약 25,000 Focus를, **Radiant Shard**를 소비하면 약 40,000 Focus를 획득하며, 둘 다 원하는 유파로 보낼 수 있습니다. 또한 영구적인 **Way-Bound** 패시브를 해금하는 데에도 Shard가 필요하므로, [Eidolon 사냥](/guides/eidolon)은 가장 중요한 Focus 활동입니다."
+    }
+  ],
+  "videos": [
+    {
+      "id": "yt0L9JPkP1k",
+      "title": "The top five ways to farm focus! | Warframe",
+      "channel": "TheKengineer"
+    },
+    {
+      "id": "B0ztEAfwj_Q",
+      "title": "Farm Focus FASTER in Warframe 2025!",
+      "channel": "Qemal TV"
+    },
+    {
+      "id": "_Hq2VdgM6kw",
+      "title": "[WARFRAME] Advanced FOCUS Guide! Eidolon Hunting Guide Episode 01",
+      "channel": "KnightmareFrame"
+    },
+    {
+      "id": "Lc_Pry-SQsA",
+      "title": "Warframe Beginner Guide 2025: Easy Endo Farming, Focus Schools & Operator Unlocked | Episode 6",
+      "channel": "Tipsy"
+    }
+  ],
+  "sources": [
+    {
+      "label": "r/Warframe — Boosters run out soon, anyone wanna farm affinity?",
+      "href": "https://reddit.com/r/Warframe/comments/1ih3nbq/boosters_run_out_soon_anyone_wanna_farm_affinity/"
+    },
+    {
+      "label": "r/Warframe — Focus 2.0 Costs are too high",
+      "href": "https://reddit.com/r/Warframe/comments/77iv8n/focus_20_costs_are_too_high/"
+    },
+    {
+      "label": "Official Warframe Wiki",
+      "href": "https://wiki.warframe.com/"
+    }
+  ],
+  "related": [
+    {
+      "label": "Eidolon 사냥 가이드",
+      "to": "/guides/eidolon",
+      "icon": "atom-variant",
+      "note": "최고의 Focus + Amp + Arcane 파밍"
+    },
+    {
+      "label": "Syndicate 평판 가이드",
+      "to": "/guides/standing",
+      "icon": "handshake",
+      "note": "평판으로 Lens, Arcane 및 Mod 구매 가능"
+    },
+    {
+      "label": "Steel Path 가이드",
+      "to": "/guides/steel-path",
+      "icon": "shield-sword",
+      "note": "Unairu의 방어력 제거가 빛을 발하는 곳"
+    },
+    {
+      "label": "Mastery Rank & Affinity",
+      "to": "/guides/mastery-rank",
+      "icon": "star-four-points",
+      "note": "Lens에 Affinity를 공급하는 XP 메커니즘"
+    },
+    {
+      "label": "진행 로드맵",
+      "to": "/guides/progression",
+      "icon": "map-marker-path",
+      "note": "여정 중 Focus가 위치하는 단계"
+    },
+    {
+      "label": "콘텐츠 크리에이터",
+      "to": "/creators",
+      "icon": "youtube",
+      "note": "Focus 파밍 전문가들을 팔로우하세요"
+    }
+  ],
+  "updated": "2026-07-18"
+}

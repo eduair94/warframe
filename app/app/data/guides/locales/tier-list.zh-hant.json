@@ -1,0 +1,461 @@
+{
+  "slug": "tier-list",
+  "eyebrow": "知識中心 · 強度排行榜",
+  "title": "Warframe 強度排行榜 — 如何閱讀",
+  "lede": "沒有單一的「最強 Warframe」— 只有最適合特定活動、配置（build）和帳號的 frame。本指南將教你如何批判性地閱讀任何強度排行榜，而不是盲目跟風。",
+  "category": "reference",
+  "readMins": 9,
+  "stats": [
+    {
+      "num": "50+",
+      "label": "名單中的 warframes",
+      "tone": "gold"
+    },
+    {
+      "num": "Any",
+      "label": "frame 能清理整個星圖",
+      "tone": "good"
+    },
+    {
+      "num": "3",
+      "label": "比 frame 更重要的 build 關鍵要素",
+      "tone": "alt"
+    },
+    {
+      "num": "0",
+      "label": "完全一致的強度排行榜"
+    }
+  ],
+  "sections": [
+    {
+      "id": "why-they-disagree",
+      "title": "為什麼每個強度排行榜都意見不一",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "搜尋「Warframe tier list」你會發現十幾個從 S 到 F 級的圖表，它們彼此完全矛盾。這並不是因為創作者錯了 — 而是因為強度排行榜將一個高度依賴情境的問題（「這個 frame 有多強？」）壓縮成了一個字母。脫離了情境，這個排名就失去了任何意義。"
+        },
+        {
+          "type": "p",
+          "text": "有三種力量拉開了排名的差距：**你評估的是什麼內容**（一個能融化防禦地圖的核爆技能在單挑 boss 時毫無用處）、**build 的深度**（mods、Helminth、arcanes 和 shards 可以讓 frame 的上限翻三倍），以及**版本更迭**（DE 經常重做 frame，因此六個月前製作的排行榜可能會根據它已不再擁有的技能組來進行排名）。"
+        },
+        {
+          "type": "info",
+          "text": "最重要的一點是：**遊戲中幾乎每個 Warframe 都能輕鬆清理整個星圖。**強度排行榜只有在遊戲後期的邊緣內容才開始顯得重要 — Steel Path、深層無盡任務、快速 farming 以及 Eidolons。至於其他內容，玩得開心就好。"
+        }
+      ]
+    },
+    {
+      "id": "what-good-means",
+      "title": "「好」的實際定義（依活動而定）",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "在指定任務之前，「最強」是毫無意義的。一個在某項活動中屬於 S 級的 frame，在另一項活動中可能是 C 級 — 這正是排行榜互相衝突的原因。將 frame 與眼前的任務相匹配："
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "活動",
+              "實際獲勝的關鍵",
+              "表現出色的 Frame 特質"
+            ],
+            "rows": [
+              [
+                "星圖與故事",
+                "只需清理房間 — 任何配置都行",
+                "任何你喜歡的；傷害 + 移動能力"
+              ],
+              [
+                "Steel Path",
+                "在輸出持續傷害的同時生存下來",
+                "減傷、overguard、削甲、治療"
+              ],
+              [
+                "深層無盡任務（Survival、Circuit）",
+                "隨時間成長的傷害 + 不死",
+                "核爆、status priming、不死、能量循環"
+              ],
+              [
+                "Farming 掉落物與資源",
+                "掉落加成，而非純粹的傷害",
+                "Desecrate 風格的掉落技能、大範圍 AoE"
+              ],
+              [
+                "Eidolon 獵殺",
+                "Void 傷害、增益、速度",
+                "傷害增益、弱點覆蓋率"
+              ],
+              [
+                "Boss 與單體目標",
+                "具備生存底線的爆發 DPS",
+                "傷害增益、弱點覆蓋率"
+              ]
+            ],
+            "note": "故意不列出節點名稱 — 即使每個版本最完美的「最佳節點」會有所變動，這些活動依然是常青的。請查看最新的影片或 wiki 以獲取目前的熱門地點。"
+          }
+        },
+        {
+          "type": "p",
+          "text": "這就是為什麼嚴肅的創作者會針對「常規」、「Steel Path」和「無盡（endurance）」發布不同的圖表 — 同一個 frame 根據不同的分類會落在不同的級別。如果一個排行榜沒有告訴你它的評分標準，請對其評級保持懷疑。"
+        }
+      ]
+    },
+    {
+      "id": "overframe-problem",
+      "title": "Overframe 的問題 — 如何閱讀任何排行榜",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "社群最著名的前車之鑑是 [Overframe](/tools) 的社群強度排行榜。這是一個真正有用的工具，但它的排名是基於**隨時間累積的社群投票**建立的 — 因此，多年前強大的 frame 會保留其舊評分，而重做或增強的 frame 則會被其虛弱時投下的票數拉低。排名變得僵化；最近的重做幾乎無法改變局勢。"
+        },
+        {
+          "type": "quote",
+          "text": "一個累積投票的排行榜會毫不猶豫地將一個華而不實的舊核爆 frame 排在像 Valkyr 這樣的 frame 之上 — Valkyr 在 Hysteria 狀態下幾乎不會死，並且在近戰中能撕碎幾乎任何東西 — 僅僅是因為她在不那麼流行的時候獲得的票數較少。這種滯後性就是整個問題的縮影。",
+          "cite": "r/Warframe 對 Overframe 基於投票排名的反覆批評"
+        },
+        {
+          "type": "p",
+          "text": "你不需要同意那個特定的觀點也能明白這一點：一個建立在多年累積投票上的圖表告訴你的是大眾 *過去* 的想法，而不是一個 frame 今天的表現。將群眾外包的排行榜當作粗略的參考，絕不要當作聖經。"
+        },
+        {
+          "type": "steps",
+          "ordered": true,
+          "steps": [
+            {
+              "h": "檢查日期",
+              "p": "強度排行榜只是一個快照。如果它早於重大更新或 frame 的重做，那麼它對該 frame 的排名就已經過時了。"
+            },
+            {
+              "h": "檢查評估方法",
+              "p": "這是一位 build 創作者的判斷，還是累積的社群投票？累積投票嚴重滯後於重做 — 這就是 Overframe 的缺陷。"
+            },
+            {
+              "h": "檢查範圍",
+              "p": "「最適合什麼？」常規 vs Steel Path vs 無盡（endurance） vs farming 是不同的圖表。沒有說明的排行榜只講了一半的故事。"
+            },
+            {
+              "h": "交叉比對兩到三個來源",
+              "p": "如果多位近期、有信譽的創作者達成共識，你就可以信任它。如果他們意見分歧，那就是個人喜好的問題 — 選擇你喜歡的。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "build-levers",
+      "title": "超越 frame 本身的三個關鍵要素",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "frame 只是個底盤。你安裝在它上面的東西決定了它的大部分力量 — 這就是為什麼一個配置（build）糟糕的「A 級」frame 會輸給一個配置得當的「C 級」frame。在你追求主流（meta）選擇之前，先了解提升 *任何* frame 的三個關鍵要素："
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Mods & buildcraft** — 到目前為止最重要的關鍵要素。技能強度、範圍、持續時間、效率，加上 shield-gating 等生存技術，能將一個脆弱的 frame 變成 Steel Path 機器。請參閱 [mods 指南](/guides/mods)。",
+            "**Helminth subsume** — 偉大的平衡器。將一個強大的技能（如 Roar 的傷害增益、治療或削甲）移植到幾乎任何 frame 上，都能彌補其弱點。[Helminth 指南](/guides/helminth)介紹了最佳的 subsume 技能。",
+            "**Arcanes & Archon Shards** — 遊戲後期的加成器：疊加在 mods 之上的被動屬性和效果提升。請參閱 [arcanes](/guides/arcanes) 和 [archon shards](/guides/archon-shards)。"
+          ]
+        },
+        {
+          "type": "warn",
+          "text": "強度排行榜是在 frame 的 build 上限進行排名的 — 也就是完全配置了 mods、subsumed、arcaned 的狀態。如果你的帳號還很新，頂級 frame 還不會讓你覺得是頂級。這個差距在於你的 build，而不是 frame 本身。"
+        }
+      ]
+    },
+    {
+      "id": "archetypes",
+      "title": "原型：frame 填補的角色",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "比排名更有用的思考模型：根據 **frame 的職責**進行分類。Warframe 需要一個涵蓋傷害、生存和輔助的團隊（或自給自足的單人 build）。一旦你從角色的角度思考，「什麼最強」就會變成「我的裝備欄（loadout）中缺少什麼」。"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "角色",
+              "職責",
+              "範例 frame"
+            ],
+            "rows": [
+              [
+                "核爆 / 清圖",
+                "一次消滅整個房間的敵人",
+                "Saryn, Mesa, Volt, Ember"
+              ],
+              [
+                "不死 / 鬥士",
+                "實際上死不了；強行碾壓關卡",
+                "Revenant, Valkyr, Inaros"
+              ],
+              [
+                "輔助 / 增益",
+                "成倍提升小隊的傷害與生存能力",
+                "Wisp, Rhino, Harrow, Trinity"
+              ],
+              [
+                "控場",
+                "鎖定敵人，使你免受任何攻擊",
+                "Nova, Vauban, Gara, Frost"
+              ],
+              [
+                "Farming / 掉落",
+                "提升每次任務的掉落物與資源",
+                "Nekros, Khora, Hydroid"
+              ],
+              [
+                "速度 / 移動能力",
+                "閃擊任務目標與開放世界",
+                "Gauss, Titania, Volt"
+              ]
+            ],
+            "note": "Frame 的角色會重疊 — Volt 可以提供增益、核爆和加速。這些是持久的角色定位，而不是排名；隨著 DE 重做技能組，具體的選擇會有所變化。"
+          }
+        },
+        {
+          "type": "p",
+          "text": "請注意，有些技能非常好用，以至於它們完全脫離了原本的 frame：Rhino 的 Roar 以及各種削甲和治療技能是遊戲中透過 [Helminth](/guides/helminth) 最常被 subsumed 的技能。記住這一點來閱讀強度排行榜 — 一個「低評級」的 frame 仍然可能擁有值得為之 farming 的同類最佳技能。"
+        }
+      ]
+    },
+    {
+      "id": "safe-picks",
+      "title": "幾乎每個人都給予高度評價的幾個 frame",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "在說明了上述所有注意事項後，有些 frame 幾乎在所有最近的排行榜中都名列前茅，因為它們容錯率高、靈活且在許多活動中都很強大。將這些視為可靠的預設選擇，而不是強制要求："
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Revenant** — Mesmer Skin 讓他幾乎無法被殺死，這就是為什麼他是經典的「讓我安靜玩遊戲」帶飛角色。",
+            "**Saryn** — 用於無盡 Survival 和 Defense 的基準 AoE 核爆。",
+            "**Wisp** — 頂級輔助，其增益能幫助整個小隊以及她自己。",
+            "**Octavia** — 擁有極高的生存能力和傷害，且技能組操作簡單、適合掛網（AFK）。",
+            "**Rhino** — 深受喜愛的新手坦克；他的 Roar 增益同時也是最好的 Helminth subsumes 之一。",
+            "**Nekros / Khora** — 每次任務中獲取額外掉落物和資源的 farming 主力。"
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "這些只是例子，並非真理 — DE 經常重做並發布新的 frame。在投入 Forma 之前，請對照目前的創作者強度排行榜（參見 [creators](/creators)）進行理性評估，而不是信任任何靜態排行榜，包括這一個。"
+        },
+        {
+          "type": "quote",
+          "text": "RINO 有 IRON SKIN。子彈變成食物。當 RINO 困惑，他跺腳。大家停下直到他想通。餵 RINO 吃 MODS。",
+          "cite": "關於 Rhino 的一個經典 r/Warframe 迷因，他幾乎是大家一致公認的第一個製作對象"
+        }
+      ]
+    },
+    {
+      "id": "weapons-vs-frames",
+      "title": "你的武器（和傷害類型）通常更重要",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "這是強度排行榜很少提到的轉折：對於純粹的清圖速度，**你的武器及其傷害類型通常比你的 frame 更重要。**一把配置了優秀 mods 且搭配正確元素組合的槍，即使在「C 級」frame 上也能撕碎敵人，而一個配備白板武器的頂級 frame 則會停滯不前。這也是為什麼該子版塊（subreddit）的傷害類型強度排行榜與 frame 排行榜一樣引發如此多的爭議。"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "傷害類型",
+              "剋制",
+              "為何經久不衰"
+            ],
+            "rows": [
+              [
+                "Viral",
+                "肉體 / 生命值（大多數敵人）",
+                "放大對生命值造成的傷害 — 幾乎通用"
+              ],
+              [
+                "Heat",
+                "裝甲 Grineer",
+                "剝除部分護甲，施加燃燒 DoT，使敵人恐慌"
+              ],
+              [
+                "Corrosive",
+                "重裝甲單位",
+                "可堆疊以剝除護甲"
+              ],
+              [
+                "Magnetic",
+                "護盾（Corpus）",
+                "放大對護盾造成的傷害"
+              ],
+              [
+                "Radiation",
+                "合金裝甲重型單位與機械",
+                "對合金裝甲和機械生命值有加成；觸發效果（procs）會使敵人互相殘殺"
+              ]
+            ],
+            "note": "DE 定期重做護甲和狀態效果 — 請在 wiki 上確認目前的數值。搭配組合（例如 Viral + Heat，加上 Slash procs）是保持穩定的，而不是確切的百分比。"
+          }
+        },
+        {
+          "type": "p",
+          "text": "武器也有自己的市場和 [riven](/guides/riven) 經濟。如果你正在權衡一項武器投資，[riven 價值估算器](/riven-value)和[市場篩選器](/screener)可以顯示在投入 Forma 之前，該武器的 riven 和部件的實際價值。"
+        }
+      ]
+    },
+    {
+      "id": "how-to-pick",
+      "title": "如何實際選擇你的下一個 frame",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "跳過選擇困難。與其在別人的圖表上尋找第一名，不如運行這個循環："
+        },
+        {
+          "type": "steps",
+          "ordered": true,
+          "steps": [
+            {
+              "h": "明確目標",
+              "p": "Steel Path？Eidolons？更快的 farming？一個能讓你享受 100 小時的 frame？答案會改變整個推薦。"
+            },
+            {
+              "h": "填補你裝備欄（loadout）的空缺",
+              "p": "查看原型表 — 你目前的陣容缺少什麼？一個 buffer、一個核爆，還是一個掉落 frame？透過 Farm 來填補這個空缺。"
+            },
+            {
+              "h": "檢查你現在能獲得什麼",
+              "p": "最好的 frame 是你本週實際可以 farm 到的。不要為了騰出空間而賣掉 frame — 購買便宜的槽位並保留它們（參見下方的常見問題解答）。"
+            },
+            {
+              "h": "交叉比對兩位近期的創作者",
+              "p": "觀看幾個最新的強度排行榜（連結如下）。在有信譽的創作者達成共識的地方，放心投資；在他們分歧的地方，根據玩法風格進行選擇。"
+            },
+            {
+              "h": "然後正確地配置（build）它",
+              "p": "先是 Mods，然後是 Helminth subsume，接著是 arcanes 和 shards。強度級別來自於 build。"
+            }
+          ]
+        },
+        {
+          "type": "p",
+          "text": "完全是新加入的陣容？從 [新手 Warframe 指南](/guides/beginner-warframes) 開始，並遵循 [進度指南](/guides/progression) — 這兩者都會在任何強度排行榜變得重要之前，引導你找到容錯率高、易於 farm 的 frame。"
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "2025 / 2026 年最強的 Warframe 是什麼？",
+      "a": "沒有絕對的最強 — 「最強」完全取決於活動、你的 build 和你的玩法風格。像 Revenant、Saryn、Wisp 和 Octavia 這樣的 frame 在大多數最近的排行榜中都名列前茅，因為它們強大且容錯率高，但幾乎每個 frame 都能清理整個星圖。將 frame 與任務相匹配（參見上方的原型表），而不是追求單一的 S 級選擇。"
+    },
+    {
+      "q": "我可以信任 Overframe 的強度排行榜嗎？",
+      "a": "將其作為一個粗略的起點，而不是真理。Overframe 是由社群投票並隨著時間累積這些投票的，因此多年前強大的 frame 可能仍然排名靠前，而最近重做或增強的 frame 則落後於它們今天的實際表現 — 一個耐用、低操作要求的 frame 可能僅僅因為獲得的票數較少而被低估。在投資之前，請交叉比對幾個最近的創作者強度排行榜。"
+    },
+    {
+      "q": "我選擇哪個 Warframe 真的很重要嗎？",
+      "a": "對於星圖和故事，幾乎不重要 — 玩你喜歡的任何東西。在遊戲後期的邊緣內容（Steel Path、深層無盡任務、Eidolons、快速 farming），你的選擇才開始顯得重要，即便如此，你的 build 通常也比 frame 更重要。Mods、Helminth subsume 以及 arcanes/shards 決定了 frame 的大部分真實實力 — 請參閱 [mods 指南](/guides/mods)。"
+    },
+    {
+      "q": "為什麼 Warframe 強度排行榜的意見分歧如此之大？",
+      "a": "因為單個字母無法涵蓋一個依賴情境的問題。排行榜在評估的內容、build 的深度、製作時間（frame 經常被重做）以及評估方法（專家的意見 vs 累積的社群投票）上存在分歧。當創作者達成共識時，請信任它；當他們分歧時，這就是個人喜好的問題。"
+    },
+    {
+      "q": "Steel Path 中最強的 Warframe 是哪些？",
+      "a": "Steel Path 獎勵生存能力和持續傷害，因此具有減傷、overguard、削甲或自我治療的 frame 會大放異彩 — 不死風格的選擇（Revenant、Valkyr、Inaros）以及強大的 buffers/nukes 都表現出色。同樣重要的是在此之上的 shield-gating 或減傷 build。請參閱 [Steel Path 指南](/guides/steel-path)以獲取完整方法。"
+    },
+    {
+      "q": "我應該賣掉評級低或我不喜歡的 Warframe 嗎？",
+      "a": "不要為了騰出槽位而賣掉難以 farm 的 frame — 子版塊（subreddit）中到處都是後悔的玩家。Warframe 槽位很便宜，frame 會隨著時間推移而被重做和增強，而且重新 farm 一個 boss frame 是件痛苦的事。購買槽位並保留所有東西；一個「低評級」的 frame 可能擁有你以後會想要用於 [Helminth](/guides/helminth) 的同類最佳技能。"
+    },
+    {
+      "q": "武器和 Warframe 哪個更重要？",
+      "a": "對於純粹的清圖速度，你的武器及其傷害類型通常比 frame 更重要 — 一把配置了優秀 mods 且搭配正確元素組合的槍，在幾乎任何 frame 上都能撕碎敵人。先了解傷害類型和 modding（[mods 指南](/guides/mods)），並在投入 Forma 之前使用 [riven 價值估算器](/riven-value)檢查武器的價值。"
+    },
+    {
+      "q": "新手應該以哪個 Warframe 作為主玩對象？",
+      "a": "選擇一個你喜歡的初始角色 — Excalibur、Mag 和 Volt 都同樣可行 — 社群幾乎一致公認的第一個製作對象是 Rhino，因為他的 Iron Skin 坦度。除此之外，主玩任何好玩的東西；隨著時間的推移，你會收集到幾十個 frame。[新手 Warframe 指南](/guides/beginner-warframes)介紹了早期最容易 farm 的強大選擇。"
+    }
+  ],
+  "videos": [
+    {
+      "id": "J_4SMeNx-DQ",
+      "title": "FULL ROSTER ALL WARFRAME 2026 TIERLIST",
+      "channel": "Brozime"
+    },
+    {
+      "id": "4weC5xRI_jg",
+      "title": "Warframe Tier List | 2025 (Mid-Year)",
+      "channel": "kyaii"
+    },
+    {
+      "id": "YNafIWOUBhU",
+      "title": "BEST Warframes 2026 TIER LIST",
+      "channel": "MHBlacky"
+    },
+    {
+      "id": "FKTBWssvtJE",
+      "title": "Warframe 2025 Tier List For The Best Warframes!",
+      "channel": "Pupsker"
+    }
+  ],
+  "sources": [
+    {
+      "label": "r/Warframe — Why the Overframe tier list is not to be trusted",
+      "href": "https://reddit.com/r/Warframe/comments/1qotd7o/one_of_many_reasons_why_the_overframe_tier_list/"
+    },
+    {
+      "label": "r/Warframe — Made a tier list for the game's damage types",
+      "href": "https://reddit.com/r/Warframe/comments/oxgzjz/made_a_tier_list_for_the_games_damage_types/"
+    },
+    {
+      "label": "r/Warframe — Don't sell your hard-to-farm Warframes",
+      "href": "https://reddit.com/r/Warframe/comments/1htjkxv/dont_sell_your_hard_to_farm_warframes/"
+    },
+    {
+      "label": "Warframe Wiki",
+      "href": "https://wiki.warframe.com/"
+    }
+  ],
+  "related": [
+    {
+      "label": "新手 Warframe",
+      "to": "/guides/beginner-warframes",
+      "icon": "star-four-points",
+      "note": "首先要 farm 哪些 frame"
+    },
+    {
+      "label": "Helminth",
+      "to": "/guides/helminth",
+      "icon": "dna",
+      "note": "將最佳技能 subsume 到任何 frame 上"
+    },
+    {
+      "label": "Steel Path",
+      "to": "/guides/steel-path",
+      "icon": "shield-star",
+      "note": "強度排行榜終於派上用場的地方"
+    },
+    {
+      "label": "Mods & Buildcraft",
+      "to": "/guides/mods",
+      "icon": "puzzle",
+      "note": "超越 frame 本身的關鍵要素"
+    },
+    {
+      "label": "內容創作者",
+      "to": "/creators",
+      "icon": "youtube",
+      "note": "用於交叉比對的最新強度排行榜"
+    },
+    {
+      "label": "社群工具",
+      "to": "/tools",
+      "icon": "toolbox",
+      "note": "Overframe, wiki, buildcrafters"
+    }
+  ],
+  "updated": "2026-07-18"
+}

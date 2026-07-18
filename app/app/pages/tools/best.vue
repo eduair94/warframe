@@ -69,7 +69,11 @@
 <script setup lang="ts">
 import { computed, nextTick, onMounted } from 'vue'
 import { TOOLS, TOOL_SECTIONS } from '~/data/tools'
-import { getResearch, TIER_ORDER } from '~/data/toolResearch'
+import { RESEARCH, TIER_ORDER } from '~/data/toolResearch'
+
+// Localized per-tool research prose for the active locale (English fallback).
+const localizedResearch = await useLocalizedResearch(RESEARCH)
+const getResearch = (slug: string) => localizedResearch[slug]
 
 const { t } = useI18n()
 const localePath = useLocalePath()

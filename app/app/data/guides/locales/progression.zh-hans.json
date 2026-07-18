@@ -1,0 +1,482 @@
+{
+  "slug": "progression",
+  "eyebrow": "知识中心 · 进度",
+  "title": "Warframe 进度路线图",
+  "lede": "Warframe 将你丢进了一个几乎没有方向的星系。以下是核心骨架：跟随 quests、完成 Star Chart、做 Nightwave —— 以及一份分阶段清单，让你时刻清楚下一步该做什么。",
+  "category": "start",
+  "readMins": 11,
+  "stats": [
+    {
+      "num": "3",
+      "label": "初始 Warframes",
+      "tone": "alt"
+    },
+    {
+      "num": "30",
+      "label": "基础 Mastery Ranks",
+      "tone": "gold"
+    },
+    {
+      "num": "3",
+      "label": "开放世界区域",
+      "tone": "alt"
+    },
+    {
+      "num": "100%",
+      "label": "解锁 Steel Path 的 Star Chart",
+      "tone": "good"
+    }
+  ],
+  "sections": [
+    {
+      "id": "start-here",
+      "title": "“我现在该做什么？”的一句话解答",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Warframe 给了你整个星系，却几乎没有给你任何方向，这就是为什么 r/Warframe 上点赞数最高的进度贴之一的标题直接就是 *“玩了 40 个小时，我完全不知道自己在干什么。”* 好消息是：这个游戏是有主线的，而且很简单。**跟随 quests、完成 Star Chart，并顺便做做 Nightwave** —— 顺便给自己定一个个人目标，其余的一切都会水到渠成。"
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "核心循环",
+              "v": "Quests → Star Chart → Nightwave，外加一个个人目标"
+            },
+            {
+              "k": "最大的转折点",
+              "v": "The Second Dream quest（解锁你的 Operator）"
+            },
+            {
+              "k": "终局游戏门槛",
+              "v": "完成整个 Star Chart 以解锁 Steel Path"
+            },
+            {
+              "k": "MR 的迷思",
+              "v": "Mastery Rank 代表的是广度，而不是强度"
+            }
+          ]
+        },
+        {
+          "type": "quote",
+          "text": "该做什么？完成 Star Chart、Quests 和 Nightwave。如果你找到了一个个人目标——比如“获得这个 Warframe”——那就更好了。继续做 Quests。从 The Second Dream 开始，一切都会开始步入正轨。",
+          "cite": "r/Warframe，老玩家给新玩家的建议"
+        },
+        {
+          "type": "p",
+          "text": "这就是整个循环。以下是所有细节：Star Chart 是如何自我设限的、Mastery Rank 究竟有什么用、什么时候开放世界和 Steel Path 才值得你花时间，以及一份**分阶段清单**。完全是新手？先阅读[新玩家指南](/guides/new-player)，然后将此页面作为你的地图。"
+        }
+      ]
+    },
+    {
+      "id": "star-chart",
+      "title": "Star Chart 与 Junctions：你真正的进度条",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Star Chart 是始源星系的地图，它*就是*你的进度条。在完成 **Vor's Prize** 教程后，你将从地球（Earth）开始，通过清理相邻的 node 来开启新的 node。行星之间通过 **Junctions** 相连——这些大门在你完成一系列任务清单之前是不会开启的。"
+        },
+        {
+          "type": "steps",
+          "ordered": true,
+          "steps": [
+            {
+              "h": "开启 Junction node",
+              "p": "它列出了所需的任务——达到特定的 Mastery Rank、制作特定的 item、完成某个 quest 或击杀特定敌人。"
+            },
+            {
+              "h": "清理每个任务",
+              "p": "清单必须 100% 完成。如果你觉得卡在某个星球上了，打开通往下一个星球的 Junction，看看你到底漏掉了什么。"
+            },
+            {
+              "h": "击败 Specter",
+              "p": "进入 Junction 会生成一个 Specter——一个 Warframe 的 AI 复制体。击败它以解锁大门。"
+            },
+            {
+              "h": "领取奖励",
+              "p": "Junctions 会提供真正有用的战利品——Warframe 部件、weapons、mods 和资源——并解锁下一个星球。"
+            }
+          ]
+        },
+        {
+          "type": "info",
+          "text": "完成**每个星球上的每个 node**（以及所有 Junctions）是解锁 Steel Path 的条件——这也是一路上积累资源、mods 和蓝图的最佳方式。使用 [Star Chart 掉落图](/star-chart) 或 [3D 掉落图](/star-chart-3d) 来确切查看什么东西在哪里掉落。"
+        }
+      ]
+    },
+    {
+      "id": "quests",
+      "title": "Quests 即是故事——也是真正的进度",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "如果说 Star Chart 是地图，那么**主线 quests 就是道路。** 它们会解锁整个系统：Archwing、Operator、Railjack 等等。游戏会在你的 Navigation 界面中高亮显示**推荐的下一个 quest**——跟随它。当有 quest 等待完成时，不要盲目地去刷，因为 quests 是解锁最强力量和内容的地方。"
+        },
+        {
+          "type": "p",
+          "text": "故事主线大致为：**Vor's Prize**（入门）→ 一系列早期 quests → **The Second Dream**（游戏最大的转折点——解锁你的 Operator）→ **The War Within** → 电影般的高潮 **The New War** → 最新章节。随着 DE 添加内容，具体顺序可能会有所变化，因此请信任游戏内的推荐 quest 标记，并交叉参考[完整任务顺序指南](/guides/quests)。"
+        },
+        {
+          "type": "warn",
+          "text": "**Don't skip The Second Dream.** 它限制了 Operator、Focus 学派、Eidolon 狩猎以及后续的大量内容。那些急于进入“终局游戏”并纳闷为什么系统被锁定的玩家，几乎总是因为有未完成的故事 quest。"
+        }
+      ]
+    },
+    {
+      "id": "mastery-rank",
+      "title": "Mastery Rank：它究竟有什么用（以及没什么用）",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Mastery Rank (MR) 并不代表强度。** 它衡量的是你将多少*独特*装备升到了 30 级——每个新的 Warframe、weapon、companion 或 Archwing 在你首次升级时都会提供一次性的 Mastery 经验值。满级 weapon 价值约 3,000 经验；Warframe、companion 或 Archwing 约 6,000 经验。这是一个广度属性，而不是强度属性。"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "MR 影响什么",
+              "它是如何缩放的"
+            ],
+            "rows": [
+              [
+                "每日集团声望上限",
+                "随着你的 Mastery Rank 提升——你的 MR 越高，每天可以积累的声望就越多"
+              ],
+              [
+                "装备的初始 mod 容量",
+                "等同于你的 MR，最高为 30 —— 使用 Reactor/Catalyst 会翻倍"
+              ],
+              [
+                "每日交易次数",
+                "等同于你的 MR"
+              ],
+              [
+                "装备与 Riven 使用权限",
+                "某些 weapons 和 Rivens 需要达到最低 MR 才能装备"
+              ],
+              [
+                "威望",
+                "MR30 是基础上限；超越它的是 Legendary Ranks（LR1 及以上，随着时间推移逐步添加）"
+              ]
+            ],
+            "note": "要提升段位，你需要通过 Mastery Rank 测试——每天只有一次尝试机会。在正式测试前，可以在任何 Relay 的 Cephalon Simaris 处进行练习。"
+          }
+        },
+        {
+          "type": "tip",
+          "text": "在早期，单纯为了追求 MR 而去刷是一个陷阱。在刷资源和战斗的过程中自然地升级装备——MR 自然会随之提升。真正让你变强的是你的 **build**（mods、arcanes、Forma），这在 [Modding 指南](/guides/mods) 中有详细介绍。关于最快的升级地点，请参阅 [Mastery Rank 指南](/guides/mastery-rank)。"
+        }
+      ]
+    },
+    {
+      "id": "roadmap",
+      "title": "你的分阶段路线图",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "这是一份坦诚的“我现在应该做什么”清单。MR 范围只是粗略的参考，而不是硬性门槛——进度是由 quests 和装备推动的，而不是由你的段位数字决定的。"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "阶段",
+              "约 MR",
+              "当前重点",
+              "辅助工具"
+            ],
+            "rows": [
+              [
+                "扎根立足",
+                "0–5",
+                "完成 Vor's Prize，跟随 quests，清理通往新星球的 Junctions。刷一个容易获得的第二个 frame——Rhino 会在 Venus 的 Boss 处掉落。学习 modding 基础知识（Vitality、Serration 及其同类）。",
+                "新玩家、Mods 指南"
+              ],
+              [
+                "站稳脚跟",
+                "5–10",
+                "向外推进 Star Chart，完成 The Second Dream 以获取你的 Operator，加入氏族以获取研究装备，并开始开 relics 以获取你的第一套 Prime。通过交易开始赚取 platinum。",
+                "Relics 价值、Platinum 指南"
+              ],
+              [
+                "渐入佳境",
+                "10–16",
+                "完成 Star Chart，推进 The New War，妥善应对开放世界（制作一个 Amp，尝试 Eidolons），并开启 Helminth。刷 Kuva Liches 和 arcanes。",
+                "Relic 刷取、Kuva 指南"
+              ],
+              [
+                "资深 / 终局",
+                "16–30+",
+                "刷 Steel Path，刷 Archon Shards，用 Forma 和 arcanes 极限优化 build，运行 Railjack 和终局 missions，并收集藏品以朝着 MR30 和 Legendary Rank 迈进。",
+                "Steel Path、Portfolio"
+              ]
+            ],
+            "note": "想换个节奏？The Duviri Paradox 在早期即可游玩，其每周的 Circuit 是获取 Warframes 和 weapons 的另一种方式——请参阅 Duviri Guide。"
+          }
+        },
+        {
+          "type": "links",
+          "links": [
+            {
+              "label": "新玩家指南",
+              "to": "/guides/new-player",
+              "icon": "rocket-launch"
+            },
+            {
+              "label": "Relic 价值：开启还是出售",
+              "to": "/relics-value",
+              "icon": "diamond-stone"
+            },
+            {
+              "label": "Helminth 指南",
+              "to": "/guides/helminth",
+              "icon": "dna"
+            },
+            {
+              "label": "Duviri 指南",
+              "to": "/guides/duviri",
+              "icon": "sword"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "open-worlds",
+      "title": "何时应对开放世界",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Warframe 有三个开放世界区域，每个区域都有自己的集团、资源、钓鱼、采矿和赏金任务。你*可以*在早期访问它们以获取声望和 mods，但每个区域都有一个在中期或更晚阶段才会显现的“真正”回报。"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "开放世界区域",
+              "星球 · 枢纽",
+              "它的用途",
+              "最佳应对时机"
+            ],
+            "rows": [
+              [
+                "Plains of Eidolon",
+                "Earth · Cetus",
+                "赏金任务、采矿/钓鱼，以及夜间的 Eidolon 狩猎",
+                "早期访问以获取声望；一旦拥有 Operator + Amp 即可进行 Eidolons 狩猎"
+              ],
+              [
+                "Orb Vallis",
+                "Venus · Fortuna",
+                "制作合适的 Amps（Vox Solaris）、Profit-Taker 与 Exploiter Orbs、K-Drive 竞速",
+                "游戏中期——此时 amps 和 Operator 的力量将结合在一起"
+              ],
+              [
+                "Cambion Drift",
+                "Deimos · Necralisk",
+                "Necramechs、来自 Isolation Vaults 的 arcanes、感染体宠物",
+                "在 Heart of Deimos quest 之后；游戏至中后期"
+              ]
+            ],
+            "note": "Amps 和 Operator 是贯穿始终的主线：Plains 上的 Eidolons 需要它们，而你将在 Fortuna 制作你的第一个真正的 Amp。在进行首次狩猎前，请参阅 Eidolon Guide。"
+          }
+        },
+        {
+          "type": "p",
+          "text": "底线是：早期可以随时进入任何区域获取外观、mods 和集团声望，但要将 **Eidolons 和 Orb 首领视为游戏中期的里程碑**，而不是第一天就要做的事情。详细解析请参阅 [Eidolon 指南](/guides/eidolon)。"
+        }
+      ]
+    },
+    {
+      "id": "steel-path",
+      "title": "Steel Path：困难模式终局游戏",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**The Steel Path** 是 Warframe 的困难模式——重新挑战整个 Star Chart，敌人等级将从大约 100 级开始，并且拥有多得多的生命值、护盾和护甲。只有在你完成了所有星球上的每个普通 node 和 Junction 后，它才会解锁。"
+        },
+        {
+          "type": "p",
+          "text": "奖励为 **Steel Essence**，由游荡的 Acolytes 掉落，你可以在 Teshin 处将其用于兑换 Kuva、Riven 碎裂物、Umbra Forma、arcanes 和外观。每个 node 还会支付一次性的通关奖励。Steel Path 与每周的 Archon Hunts 以及终局 missions 一起，构成了老玩家刷图的核心。"
+        },
+        {
+          "type": "warn",
+          "text": "**Don't rush Steel Path the day it unlocks.** 你需要一个配置良好、具有真正生存能力（护盾门控或真正肉的 build）的 frame 和 weapon，外加一些 arcanes。在配置不足的情况下贸然进入，你会碰壁得很惨。把它当作一个目标，而不是一个勾选项。完整攻略请参阅 [Steel Path 指南](/guides/steel-path)。"
+        }
+      ]
+    },
+    {
+      "id": "routine",
+      "title": "你的日常必做清单",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "除了主线道路外，还有一些可重复的系统在悄悄推动你的账号向前发展。定期接触这些，你将永远不会感到卡进度："
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "**Nightwave** —— 轮换的季节性挑战。每周和每日任务会产出 Nitain Extract、Forma、aura 和 exilus mods、Kuva 以及用于兑换稀有 items 的 Wolf Creds。每周优先完成这些。",
+            "**集团声望** —— 选择几个主要集团，并兑换每日声望（受你的 MR 限制）以获取 mods、arcanes 和蓝图。请参阅 [声望指南](/guides/standing)。",
+            "**Sorties** —— 一旦你完成了 The War Within，每日包含三个 missions 的 Sortie 就会开启，可获得 Riven mods、Kuva 和 endo。",
+            "**Baro Ki'Teer** —— 虚空商人每两周会携带稀有装备造访一次 Relay。从多余的 Prime 部件中积攒 ducats；[Ducat 计算器](/ducats) 会显示哪些部件的兑换性价比最高。",
+            "**个人目标** —— 一个你正在积极刷取的 Warframe 或 weapon。Reddit 上的共识是一致的：有一个目标能让刷图保持乐趣。"
+          ]
+        },
+        {
+          "type": "links",
+          "links": [
+            {
+              "label": "Relic 价值：开启还是出售",
+              "to": "/relics-value",
+              "icon": "diamond-stone",
+              "note": "每个 relic 的预期 plat"
+            },
+            {
+              "label": "每次运行的最佳 relics",
+              "to": "/relic-farming",
+              "icon": "run-fast"
+            },
+            {
+              "label": "差价寻找器",
+              "to": "/flip",
+              "icon": "swap-horizontal",
+              "note": "买入价与卖出价的价差"
+            },
+            {
+              "label": "兑换 Baro 的 Ducats",
+              "to": "/ducats",
+              "icon": "cash"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mistakes",
+      "title": "常见的进度错误",
+      "blocks": [
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "**Chasing MR instead of building.** 你的段位数字并不能赢得战斗——mods、Forma 和 arcanes 才能。自然地升级装备，MR 自然会随之提升。",
+            "**Skipping the recommended quest.** 系统被锁定几乎总是因为有未完成的故事 quest，而不是 Bug。跟随 Navigation 中的标记。",
+            "**Hoarding your first platinum.** 将早期的 plat 花在 **Warframe/weapon slots** 以及 Reactors/Catalysts 上——千万不要花在你可以刷出来的 frame 上。[Platinum 指南](/guides/platinum) 介绍了如何免费赚取它。",
+            "**Rushing Steel Path or Eidolons under-geared.** 这两者都会惩罚单薄的 build。先完成 Star Chart 并针对生存能力进行 mod 配置。",
+            "**Ignoring the Helminth and Forma.** 游戏白热化的中期力量来自于[吸取技能](/guides/helminth)和用 Forma 极化装备——不要永远把它们留到“以后”再说。"
+          ]
+        }
+      ]
+    }
+  ],
+  "videos": [
+    {
+      "id": "pjVBhMdoTo8",
+      "title": "How To Start (Or Return To) WARFRAME the RIGHT WAY! 2025",
+      "channel": "iFlynn"
+    },
+    {
+      "id": "nF1fHE646xk",
+      "title": "ULTIMATE Beginner's Guide to Warframe (Getting Started)",
+      "channel": "DrybearGamers"
+    },
+    {
+      "id": "4s9pwZiFv0E",
+      "title": "Warframe Beginner Guide 2025: How to Start Endgame",
+      "channel": "Tipsy"
+    },
+    {
+      "id": "7eVOft8UQm8",
+      "title": "10 Tips For NEW Warframe Players In 2025",
+      "channel": "KeesieOilcorner"
+    }
+  ],
+  "faqs": [
+    {
+      "q": "我在 Warframe 里应该做什么？我迷失了方向。",
+      "a": "跟随 Navigation 中高亮显示的 quest，通过 Junctions 逐个星球地完成 Star Chart，并顺便做做 Nightwave。选择一个个人目标——比如一个你想要的 Warframe——以保持乐趣。大约在 The Second Dream 左右，几乎所有事情都会步入正轨。从 [新玩家指南](/guides/new-player) 和 [任务顺序指南](/guides/quests) 开始。"
+    },
+    {
+      "q": "我必须完成整个 Star Chart 吗？",
+      "a": "休闲游玩不需要每个 node，但解锁 Steel Path 需要，而且清理它是收集资源、mods 和蓝图的最佳方式。每个星球还通过 Junction 限制下一个星球，因此你只需推进进度就能清理大部分 node。[Star Chart 掉落图](/star-chart) 显示了每个 node 上的内容。"
+    },
+    {
+      "q": "Mastery Rank 会让你变强吗？",
+      "a": "不会。Mastery Rank 衡量的是你升级了多少独特装备，而不是你的强度。它会提高你的每日声望和交易限制、初始 mod 容量，并解锁受 MR 限制的 weapons——但你的 build（mods、arcanes、Forma）才是赢得战斗的关键。请参阅 [Mastery Rank 指南](/guides/mastery-rank) 和 [Modding 指南](/guides/mods)。"
+    },
+    {
+      "q": "我应该什么时候开始 Steel Path？",
+      "a": "在你完成基础 Star Chart 并拥有一个配置良好、具有真正生存能力（护盾门控或肉盾配置）的 frame 和 weapon 之后。这不是一个在低 MR 时急于挑战的难度。将其视为一个中后期目标；[Steel Path 指南](/guides/steel-path) 介绍了如何解锁并轻松融入其中。"
+    },
+    {
+      "q": "我该如何解锁 Operator？",
+      "a": "完成 The Second Dream quest，该 quest 在你推进 Star Chart 和早期 quests 后即可接取。它是游戏最大的转折点，限制了 Eidolons、Focus 以及后续的大量内容。[任务顺序指南](/guides/quests) 展示了如何接取该 quest。"
+    },
+    {
+      "q": "我什么时候可以去开放世界——Plains、Fortuna、Deimos？",
+      "a": "你可以在早期访问它们中的任何一个以获取集团声望和 mods，但它们在中期回报最高。Plains of Eidolon 上的 Eidolons 需要 Operator 加上 Amp，而 Fortuna 的 Orb Vallis 是你制作第一个真正的 Amp 的地方。请参阅 [Eidolon 指南](/guides/eidolon)。"
+    },
+    {
+      "q": "为什么我无法前往下一个星球？",
+      "a": "通往该星球的 Junction 仍有未完成的任务。打开 Junction node 查看清单——它可能需要达到特定的 Mastery Rank、制作某件 item、完成特定 quest 或击杀一定数量的敌人。完成所有任务，击败 Specter，星球就会解锁。[Star Chart 地图](/star-chart) 可以帮助你规划路线。"
+    },
+    {
+      "q": "我该如何赚取 platinum 来购买 slots 和装备？",
+      "a": "交易来自已开启 relics 的 Prime 部件，出售重复的 mods 和 arcanes，并利用市场差价进行倒买倒卖。将你的第一批 platinum 花在 Warframe 和 weapon slots 以及 Reactors/Catalysts 上——千万不要花在你可以刷出来的 frame 上。使用 [Platinum 指南](/guides/platinum)、[Relic 价值工具](/relics-value) 和 [差价寻找器](/flip)。"
+    }
+  ],
+  "sources": [
+    {
+      "label": "r/Warframe: \"40 hours in and I have no idea what I'm doing\"",
+      "href": "https://reddit.com/r/Warframe/comments/1dpm3qo/40_hours_in_and_i_have_no_idea_what_im_doing_why/"
+    },
+    {
+      "label": "r/Warframe: where to find Warframes as you progress the Star Chart",
+      "href": "https://reddit.com/r/Warframe/comments/1snd77m/for_new_tenno_heres_a_guide_to_help_you_where_to/"
+    },
+    {
+      "label": "r/Warframe: My Journey ends at MR25",
+      "href": "https://reddit.com/r/Warframe/comments/1uockj8/my_journey_ends_at_mr25/"
+    },
+    {
+      "label": "Official Warframe Wiki",
+      "href": "https://wiki.warframe.com/"
+    }
+  ],
+  "related": [
+    {
+      "label": "新玩家入门指南",
+      "to": "/guides/new-player",
+      "icon": "rocket-launch",
+      "note": "你的前 20 个小时"
+    },
+    {
+      "label": "Mastery Rank 详解",
+      "to": "/guides/mastery-rank",
+      "icon": "chevron-triple-up"
+    },
+    {
+      "label": "任务顺序指南",
+      "to": "/guides/quests",
+      "icon": "book-open-variant"
+    },
+    {
+      "label": "Steel Path 指南",
+      "to": "/guides/steel-path",
+      "icon": "skull"
+    },
+    {
+      "label": "赚取 Platinum 指南",
+      "to": "/guides/platinum",
+      "icon": "diamond-stone"
+    },
+    {
+      "label": "Star Chart 掉落图",
+      "to": "/star-chart",
+      "icon": "map"
+    }
+  ],
+  "updated": "2026-07-18"
+}

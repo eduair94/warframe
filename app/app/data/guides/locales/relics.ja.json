@@ -1,0 +1,502 @@
+{
+  "slug": "relics",
+  "eyebrow": "ナレッジセンター · Relic & Void Trace",
+  "title": "Relic & Void Trace ガイド",
+  "lede": "Void Relic は Warframe における Prime ギアのスロットマシンのようなものです。精錬（refinement）、Void Trace、そして報酬の共有システムを理解すれば、確率はあなたに圧倒的に有利になります。ここでは、効率的に Relic を開封し、入手した戦利品を platinum に変える方法を解説します。",
+  "category": "farming",
+  "readMins": 9,
+  "stats": [
+    {
+      "num": "4",
+      "label": "Relic の era · Lith→Axi"
+    },
+    {
+      "num": "6",
+      "label": "Relic あたりの報酬",
+      "tone": "alt"
+    },
+    {
+      "num": "10%",
+      "label": "Radiant 時のレア確率",
+      "tone": "gold"
+    },
+    {
+      "num": "6–30",
+      "label": "開封ごとの Void Trace 獲得量"
+    }
+  ],
+  "sections": [
+    {
+      "id": "relic-basics",
+      "title": "Void Relic とは何か",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Void Relic** とは、**Prime ギア**（Warframe のパーツ、武器パーツ、Forma の設計図）が封印された容器です。Foundry でただ開封することはできません。**Void Fissure** と呼ばれる特別なミッションに持ち込んで、そこで「開封」する必要があります。すべての Relic は4つの **era**（時代）のいずれかに属しており、その era はその Relic が*どの Prime パーツのプール*を含んでいるか、および*大体どこでドロップするか*を示すだけであり、戦利品の良し悪しについては何も示していません。"
+        },
+        {
+          "type": "p",
+          "text": "Relic は**取引可能（tradeable）**でもあります。これこそが Prime ファームが platinum に化ける理由です。Relic を開封してパーツを手に入れ、余ったパーツを他のプレイヤーに売り、自分が持っていない特定の Relic を他の人から購入することができます。経済全体のサイクルについては [Platinum ガイド](/guides/platinum) をご覧ください。"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Era",
+              "Tier",
+              "主なドロップ場所"
+            ],
+            "rows": [
+              [
+                "Lith",
+                "エントリー",
+                "Origin System の序盤ノードおよび低ティアの依頼（bounty）"
+              ],
+              [
+                "Meso",
+                "ミドル",
+                "star-chart 中盤のミッションおよび依頼（bounty）"
+              ],
+              [
+                "Neo",
+                "ハイ",
+                "後半の惑星、無限（endless）ミッションのローテーション、高ティアの依頼（bounty）"
+              ],
+              [
+                "Axi",
+                "エンドゲーム",
+                "star chart 終盤、長時間の無限（endless）ローテーション、Steel Path、高ティアの依頼（bounty）"
+              ]
+            ],
+            "note": "ドロップ場所はアップデートによって変動します。特定の Relic を狙うための現在最適なノードについては、ゲーム内の Void Fissure リストまたは wiki のドロップ表を確認してください。"
+          }
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "Relic の era",
+              "v": "Lith, Meso, Neo, Axi"
+            },
+            {
+              "k": "内包される報酬",
+              "v": "計6種類 — common 3つ、uncommon 2つ、rare 1つ"
+            },
+            {
+              "k": "開封に必要な Reactant",
+              "v": "プレイヤー1人あたり、Relic 1個につき10個"
+            },
+            {
+              "k": "精錬（Refinement）用通貨",
+              "v": "Void Traces（所持上限は Mastery Rank に応じて増加）"
+            },
+            {
+              "k": "開封場所",
+              "v": "Void Fissure ミッションのみ"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reward-pool",
+      "title": "6スロットの報酬プール",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "各 Relic には、3つのレア度に分かれたちょうど **6つの獲得可能な報酬** が含まれています。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**3つの Common** 報酬（ブロンズ） — 通常は安価なパーツや Forma の設計図",
+            "**2つの Uncommon** 報酬（シルバー） — 中程度の価値のパーツ",
+            "**1つの Rare** 報酬（ゴールド） — 誰もが求めるパーツであり、精錬を行う理由"
+          ]
+        },
+        {
+          "type": "info",
+          "text": "精錬（Refinement）を行っても、Relic の中身である6つのパーツ自体が変化することはありません。変化するのは、common に対して rare が出現する**確率**のみです。欲しいパーツが含まれていない Relic は、どれだけ精錬してもそのパーツをドロップすることはありません。Trace を消費する前に、必ず Relic の中身を確認してください。"
+        }
+      ]
+    },
+    {
+      "id": "cracking",
+      "title": "Relic の開封：Void Fissure ループ",
+      "blocks": [
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "h": "Relic を1個装備する",
+              "p": "star chart の Void Fissure タブを開き、所持している Relic の era と一致するミッションを選択します。ミッションを開始する前に、Relic とその精錬レベルを選択してください。1回のミッションに持ち込める Relic は1個のみです。"
+            },
+            {
+              "h": "Corrupted 敵を見つける",
+              "p": "ミッション内に入ると、fissure が周囲の敵を Corrupted 化させます（敵が Void エネルギーで光ります）。これら Corrupted 敵のみが Reactant をドロップします。"
+            },
+            {
+              "h": "Reactant を10個集める",
+              "p": "ミッション（またはローテーション）が終了する前に、分隊（squad）の各メンバーが各自で Reactant を10個拾う必要があります。HUD のカウンターに注意してください。Reactant のドロップ位置は視覚的に共有されますが、回収は各自で行う必要があります。"
+            },
+            {
+              "h": "開封して報酬を選択する",
+              "p": "ミッション終了時、または endless ミッションの各ローテーション終了時に、最大4つの報酬（自分と分隊メンバーのもの）が表示されます。その中から最も良いものを1つ選んで獲得します。"
+            }
+          ]
+        },
+        {
+          "type": "warn",
+          "text": "Reactant を10個すべて集める前に脱出地点（extraction）へ急がないでください。ミッション終了時に Relic がチャージされていない場合、封印されたままで何も報酬は得られません。Relic 自体は消費されずに手元に残りますが、そのラン自体が無駄になってしまうため、必ずチャージを完了してから脱出してください。"
+        }
+      ]
+    },
+    {
+      "id": "refinement",
+      "title": "精錬（Refinement）：Intact → Radiant",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "手に入れたばかりの Relic は **Intact** 状態であり、rare の出現確率はわずか **2%** です。**Void Trace** を消費して精錬することで、rare（および uncommon）の確率が3段階で上昇し、最大ランクの **Radiant** では rare の確率が **10%**（5倍の改善）に達します。これはプレイヤーがコントロールできる最も重要な要素です。"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "状態（State）",
+              "精錬に必要な Trace",
+              "Rare（ゴールド）",
+              "各 Uncommon",
+              "各 Common"
+            ],
+            "rows": [
+              [
+                "Intact",
+                "0",
+                "2%",
+                "11%",
+                "25.33%"
+              ],
+              [
+                "Exceptional",
+                "25",
+                "4%",
+                "13%",
+                "23.33%"
+              ],
+              [
+                "Flawless",
+                "50",
+                "6%",
+                "17%",
+                "20%"
+              ],
+              [
+                "Radiant",
+                "100",
+                "10%",
+                "20%",
+                "16.67%"
+              ]
+            ],
+            "note": "どの Relic も common 3つ / uncommon 2つ / rare 1つを含んでいることに変わりはありません。精錬はそれらの間の確率を再分配するだけです。"
+          }
+        },
+        {
+          "type": "p",
+          "text": "**すべてを Radiant にすべきでしょうか？** いいえ。Radiant には丸々 100 trace 必要になるため、*rare* パーツに実際に価値がある Relic や、自分が本当に必要としている Relic のために温存しておきましょう。単に [Ducat](/ducats) 端末に投入するために Relic を開封する場合や、common パーツを狙っている場合は、**Intact** のまま周回してください。限られた trace 予算の中で、より多くの Relic を開封できます。[開封か売却かの価値判断ツール](/relics-value) を使用して、Relic を精錬すべきか、それともそのまま売却した方が価値があるかを確認してください。"
+        }
+      ]
+    },
+    {
+      "id": "void-traces",
+      "title": "Void Trace のファーム（と所持上限）",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Void Trace は**ほぼすべて**、fissure で Relic を開封することで入手できます。一部の特殊な入手先（Granum Void、Isolation Vault の貯蔵庫など）も存在しますが、実用上は trace と Relic のファームは同じものです。Relic を開封するたびに、ランダムで少量の trace（基本 **6–30** 個）が手に入り、さらに重要な点として、**Resource Booster によってその量が2倍**になります。そのため、「trace のファーム」と「Relic のファーム」は文字通り同じアクティビティです。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "売るつもりのないジャンクな Relic を開封しましょう。開封するたびに trace が手に入り、さらに通常は Forma の設計図や ducat 用のパーツも手に入ります。",
+            "Trace の所持量には**上限があり、この上限は Mastery Rank に応じて増加**します。新規プレイヤーは 100 から始まり、ランクが上がるごとに +50 され、高 MR では数千に達します。上限に達している状態で獲得した分は失われてしまうため、溢れる前に消費してください。",
+            "進行の遅いミッションで待たされるのを避けるため、高速で周回できる fissure（次のセクションを参照）をプレイして、次々と Relic を開封していきましょう。"
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "専用の「trace ノード」は存在しません。最も早く trace を貯める方法は、どのみち開封する予定だった Relic を持ち寄り、素早く終わる Capture や報酬の美味しい Disruption の fissure を連続で周回することです。"
+        }
+      ]
+    },
+    {
+      "id": "shared-radshare",
+      "title": "報酬の共有と Radiant 共有（\"radshare\"）",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "これこそがすべてを一変させる仕組みです。フル分隊（squad）の場合、報酬画面で**4人全員が4つのロールすべてを確認**でき、各自がその中から*1つ*を選んで獲得できます。自分の Relic が common だったとしても、分隊メンバーの Relic が rare を引き当てていれば、代わりにその rare を受け取ることができます。これが、高価な rare パーツをファームするためのコミュニティ標準の方法である **Radiant share** の基礎です。"
+        },
+        {
+          "type": "info",
+          "text": "*同じ種類*の Radiant Relic を4人が持ち寄ると、それぞれ独立して 10% の確率で rare をロールします。分隊全体で少なくとも1つの rare が出現し、全員がそれを獲得できる確率は 1 − 0.9⁴ ≈ **34%** となり、ソロで周回する場合の 10% と比べて大幅にアップします。radshare を数回連続で走れば、rare が rare と感じられなくなるでしょう。"
+        },
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "h": "まず Radiant に精錬する",
+              "p": "全員が、Radiant（100 trace）に精錬された全く同じ Relic を持ち寄る必要があります。暗黙の了解として、Intact 状態の Relic や間違った Relic を持ってきた場合は、radshare グループからキックされます。"
+            },
+            {
+              "h": "リクルート（Recruiting）チャットでグループを探す",
+              "p": "リクルート（Recruiting）チャットまたはリクルートタブを開き、Relic のコード（例：「Axi A15 Rad」や「Meso G1 RadShare」）を検索します。「H」は通常、誰かがホストしている（募集している）ことを意味します。"
+            },
+            {
+              "h": "高速な Capture の fissure を周回する",
+              "p": "Radshare では、全員が素早く開封して rare を獲得し、次のラウンドに向けてリセットできるように、ほぼ常に利用可能な最も早い fissure が選ばれます。"
+            },
+            {
+              "h": "rare が出現したらそれを選択する",
+              "p": "報酬画面で4人のうち誰か1人でも rare を引き当てたら、全員がそれを選択します。これを繰り返します。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fissure-efficiency",
+      "title": "どの fissure タイプが最も効率的か",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "どの fissure も Relic を開封する仕組みは同じですが、Relic を回転させる*速度*が大きく異なります。目的に合わせてミッションタイプを選びましょう："
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Fissure タイプ",
+              "ペース",
+              "最適な用途"
+            ],
+            "rows": [
+              [
+                "Capture",
+                "最速の1回切りミッション",
+                "大量開封、trace ファーム、radshare"
+              ],
+              [
+                "Exterminate / Sabotage",
+                "高速",
+                "Capture が発生していない時の素早い単発開封"
+              ],
+              [
+                "Survival / Defense / Interception",
+                "無限（Endless）",
+                "1ローテーションにつき1個の Relic 開封、ロード挟みなし、安定した trace 獲得"
+              ],
+              [
+                "Disruption",
+                "無限（Endless）、美味しい報酬",
+                "高速ラウンド = 1回のプレイで多くの開封 + trace 獲得"
+              ]
+            ],
+            "note": "endless の fissure では、1ローテーションごとに1個の Relic を開封し、ローテーションの合間に新しい Relic に切り替えることができます。オービター（船）に戻る必要はありません。"
+          }
+        },
+        {
+          "type": "p",
+          "text": "**目安：** 大量の異なる Relic を素早く開封したい場合や radshare を行う場合は **Capture** を使用し、腰を据えて trace を稼ぎたい場合やロード画面を挟まずに多くの Relic を開封したい場合は **endless** タイプ（Survival または Disruption）を使用します。どの Relic が時間をかける価値があるか分からない場合は、[Relic ファーム](/relic-farming) で1ランあたり最も多くの platinum を稼げる Relic のランキングを確認してください。"
+        }
+      ]
+    },
+    {
+      "id": "vaulting",
+      "title": "Vault（蔵入り）、Aya、および Prime Resurgence",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Digital Extremes は定期的に古い Prime を **vault（蔵入り）**します。新しいもののためのスペースを空けるため、それらの Relic はドロップ表からドロップしなくなります。すでにインベントリにある Relic は永久に使用可能であり、vault された Relic も**取引可能（tradeable）**なままであるため、いつでも他のプレイヤーから必要なものを購入できます。[Vaulted Prime トラッカー](/vaulted) で、現在どのアイテムが vault されているかを確認できます。"
+        },
+        {
+          "type": "info",
+          "text": "**Prime Resurgence** は、vault された Relic をローテーションで復刻させます。**Maroo's Bazaar** にいる Varzia を訪ね、**Aya**（star chart 全体で無料で獲得でき、Relic の代わりにドロップすることが多い）またはプレミアムな **Regal Aya** を使用して、復刻された Relic を購入できます。これは、欲しい Prime が現在 vault されている場合の救済策です。"
+        },
+        {
+          "type": "warn",
+          "text": "Prime が vault されると、供給が途絶えるため、そのパーツの需要が急増することがよくあります。余剰分を持っている場合は、[現在高騰中の Vaulted Prime](/vault-spikes) でどのパーツの価格が上昇しているかを確認し、高騰の波に乗って売却しましょう。"
+        }
+      ]
+    },
+    {
+      "id": "cash-out",
+      "title": "パーツを platinum または ducat に変換する",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "開封した Relic からは Prime パーツ（または Forma の設計図）が手に入ります。手に入れたパーツの使い道は3つあります："
+        },
+        {
+          "type": "list",
+          "items": [
+            "**製作する** — 自分用に Prime Warframe や武器を組み立てます。",
+            "**platinum で売却する** — 重複したパーツや不要なパーツを他のプレイヤーと取引します。",
+            "**Ducat に変換する** — 誰も買わないパーツをリレーにある Ducat 端末に投入し、その Ducat を使って Baro Ki'Teer のローテーション商品を購入します。"
+          ]
+        },
+        {
+          "type": "links",
+          "links": [
+            {
+              "label": "Relic の価値：開封か売却か",
+              "to": "/relics-value",
+              "icon": "scale-balance",
+              "note": "Relic あたりの期待 platinum 価値"
+            },
+            {
+              "label": "セット vs パーツ計算ツール",
+              "to": "/comparison",
+              "icon": "calculator-variant",
+              "note": "フルセットの価格とパーツ単体での売却価格を比較"
+            },
+            {
+              "label": "転売（Flip）ファインダー",
+              "to": "/flip",
+              "icon": "swap-horizontal",
+              "note": "パーツのリアルタイムな買い/売りスプレッド"
+            },
+            {
+              "label": "Ducat 価値ファインダー",
+              "to": "/ducats",
+              "icon": "cash-multiple",
+              "note": "Baro に投入すべき最適なパーツ"
+            }
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "Forma の設計図は最も一般的な Relic 報酬の1つであるため、地道に fissure を周回することは、ビルドの極性付与（フォーマがけ）で大量に消費する Forma を無料で入手する手段も兼ねています。購入する必要はほとんどありません。"
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Void Relic はどうやって開封しますか？",
+      "a": "インベントリから直接 Relic を開封することはできません。Void Fissure ミッションをプレイする必要があります。開始前に Relic を1個装備し、光る Corrupted 敵を倒して Reactant を10個集めると、ミッション終了時（または endless の各ローテーション終了時）に Relic が開封されます。報酬画面では、最大4つの候補から1つの報酬を選択します。"
+    },
+    {
+      "q": "Relic を Radiant に精錬すると、具体的にどうなりますか？",
+      "a": "精錬を行うと、Void Trace を消費して rare および uncommon 報酬の出現確率を向上させます。Intact 状態の Relic では rare の確率は 2% ですが、Radiant にすると 10% に上昇します。中身の6つのパーツ自体が変わることはなく、確率のみが変化します。特定の Relic で精錬する価値があるかどうかは、[開封か売却か](/relics-value) を確認してください。"
+    },
+    {
+      "q": "Void Trace を素早くファームするにはどうすればよいですか？",
+      "a": "Trace はほぼすべて、fissure で Relic を開封することで入手できます。開封ごとに基本 6–30 個が手に入り、Resource Booster でその量が2倍になります。最も早い方法は、どのみち開封する予定だった Relic を持ち寄り、素早く終わる Capture の fissure や報酬の美味しい Disruption の fissure を連続で周回することです。所持上限は Mastery Rank に応じて増加（開始時は 100、ランクごとに +50）するため、上限に達して溢れる前に消費してください。"
+    },
+    {
+      "q": "Radiant 共有（radshare）とは何ですか？",
+      "a": "4人全員が Radiant に精錬された同じ Relic を持ち寄るフル分隊（squad）のことです。報酬画面で全員が4つのロールすべてから選択できるため、それぞれ独立した 10% の rare ロールが4つあることで、分隊全体で1ランあたり約 34% の確率で rare が出現します。これはソロの 10% よりも遥かに優れた確率です。リクルート（Recruiting）チャットで Relic のコードに「Rad」または「RadShare」を付けて検索し、グループを探しましょう。"
+    },
+    {
+      "q": "すべての Relic を Radiant に精錬すべきですか？",
+      "a": "いいえ。Radiant には丸々 100 trace 必要になるため、rare パーツに価値がある Relic や、実際に自分が必要としている Relic のために温存しておきましょう。common、Forma、または ducat 用のパーツをファームする場合は、Intact のまま Relic を周回することで、限られた trace 予算の中でより多くの Relic を開封できます。各 Relic の判断には [Relic 価値ツール](/relics-value) を役立ててください。"
+    },
+    {
+      "q": "Void Relic はどこでドロップしますか？",
+      "a": "Relic は star chart 全体（ミッション報酬、endless ミッションのローテーション、オープンワールドの依頼など）でドロップします。Lith の Relic は序盤のノードから、Neo/Axi は後半のより高難度なコンテンツや長時間の endless ランから手に入ります。どの特定のノードが最適かはアップデートによって変化するため、ゲーム内のドロップ表や wiki で現在のスポットを確認してください。"
+    },
+    {
+      "q": "Prime が vault（蔵入り）された後でも、その Prime パーツを入手することはできますか？",
+      "a": "はい。すでにインベントリにある Relic は永久に使用可能であり、vault された Relic も取引可能なままであるため、他のプレイヤーから特定の Relic を購入できます。また、Prime Resurgence を通じて、Maroo's Bazaar の Varzia から Aya を使用して復刻された Relic を入手することもできます。入手可能性については [Vaulted Prime トラッカー](/vaulted) で追跡してください。"
+    },
+    {
+      "q": "Relic を開封するのに最適な fissure ミッションタイプはどれですか？",
+      "a": "Capture は最速で1回切りで終わるため、大量開封、trace ファーム、および radshare に最適です。Survival や Disruption などの endless タイプは、ロード画面を挟まずにローテーションごとに Relic を開封できるため、長時間のグラインドセッションに適しています。スピードを重視するか、量を重視するかに応じてタイプを選択してください。"
+    }
+  ],
+  "videos": [
+    {
+      "id": "sX-8t0hGvgI",
+      "title": "Warframe: How to Refine Void Relics and How to Find Void Traces in Warframe",
+      "channel": "CerealOverdrive"
+    },
+    {
+      "id": "6D7mUOO2dCw",
+      "title": "[WARFRAME] Ultimate VOID Relic Farming Guide - EASY Platinum Farm!",
+      "channel": "KnightmareFrame"
+    },
+    {
+      "id": "5bh4mtiAmHg",
+      "title": "[WARFRAME] RAD RELICS FAST! Meta Void Trace Farming Guide 2024 | Whispers In The Wall",
+      "channel": "Gaz TTV"
+    },
+    {
+      "id": "RyPtNgTC7C8",
+      "title": "The ONLY Void Trace Farm You Need | Warframe",
+      "channel": "mothixe"
+    }
+  ],
+  "sources": [
+    {
+      "label": "r/Warframe — If you want to farm relics, here is where to do it",
+      "href": "https://reddit.com/r/Warframe/comments/7poeao/if_you_want_to_farm_relics_here_is_where_to_do_it/"
+    },
+    {
+      "label": "r/Warframe — RNG relics, rewards & the grind (discussion)",
+      "href": "https://reddit.com/r/Warframe/comments/dr46xo/so_let_me_get_this_straight_we_need_to_farm_rng/"
+    },
+    {
+      "label": "r/Warframe — Platinum farms ranked",
+      "href": "https://reddit.com/r/Warframe/comments/1f77ohc/platinum_farms_ranked_by_how_insane_the_people/"
+    },
+    {
+      "label": "Warframe Wiki — Void Relic",
+      "href": "https://wiki.warframe.com/w/Void_Relic"
+    },
+    {
+      "label": "Warframe Wiki — Void Traces",
+      "href": "https://wiki.warframe.com/w/Void_Traces"
+    }
+  ],
+  "related": [
+    {
+      "label": "Platinum ガイド",
+      "to": "/guides/platinum",
+      "icon": "cash-multiple",
+      "note": "Prime パーツを plat に変換する"
+    },
+    {
+      "label": "Relic ファーム",
+      "to": "/relic-farming",
+      "icon": "pickaxe",
+      "note": "1ランあたり最も稼げる Relic"
+    },
+    {
+      "label": "Relic の価値：開封か売却か",
+      "to": "/relics-value",
+      "icon": "scale-balance",
+      "note": "Relic あたりの期待 plat 価値"
+    },
+    {
+      "label": "Ducat 価値ファインダー",
+      "to": "/ducats",
+      "icon": "diamond-stone",
+      "note": "Baro に投入すべき最適なパーツ"
+    },
+    {
+      "label": "Vaulted Prime トラッカー",
+      "to": "/vaulted",
+      "icon": "lock",
+      "note": "現在 vault されているもの・復刻されているもの"
+    },
+    {
+      "label": "よくある質問（FAQ）一覧",
+      "to": "/faq",
+      "icon": "help-circle",
+      "note": "プレイヤーからのその他の質問への回答"
+    }
+  ],
+  "updated": "2026-07-18"
+}

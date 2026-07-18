@@ -1,0 +1,471 @@
+{
+  "slug": "railjack",
+  "eyebrow": "Wissenszentrum · Railjack",
+  "title": "Railjack-Guide",
+  "lede": "Railjack ist Warframes Großkampfschiff-Sandbox: Pilotiere ein Kriegsschiff durch den offenen Weltraum, entere feindliche Schiffe mitten im Kampf und befehlige eine Crew, die komplett aus KI bestehen kann. Hier erfährst du, wie du es freischaltest, deine Intrinsics aufwertest und es solo spielst, ohne der Host zu sein, vor dem sich alle fürchten.",
+  "category": "endgame",
+  "readMins": 11,
+  "stats": [
+    {
+      "num": "5",
+      "label": "Intrinsic-Schulen",
+      "tone": "gold"
+    },
+    {
+      "num": "3",
+      "label": "KI-Crew, die du befehligen kannst",
+      "tone": "good"
+    },
+    {
+      "num": "10",
+      "label": "Ränge pro Intrinsic",
+      "tone": "alt"
+    },
+    {
+      "num": "2",
+      "label": "Proxima-Fraktionen (Grineer + Corpus)"
+    }
+  ],
+  "sections": [
+    {
+      "id": "what-is-railjack",
+      "title": "Was Railjack eigentlich ist",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Railjack ist Warframes **Weltraumkampf-Spielmodus**, aufgebaut um ein großes Kriegsschiff — *deine* Railjack —, das du und bis zu drei Truppmitglieder gemeinsam bemannen. Ihr fliegt es durch die **Proxima**-Regionen (offene Weltraumzonen, die vertraute Planeten umkreisen), schreddert feindliche Jägerschwärme, vernichtet schwer gepanzerte **Crewships** und entert feindliche Großkampfschiffe und Basen, um Missionen zu Fuß abzuschließen."
+        },
+        {
+          "type": "p",
+          "text": "Die Magie liegt in den nahtlosen Übergängen: In einem Moment sitzt du auf dem Pilotensitz und weichst dem Flakfeuer aus, im nächsten wirst du aus einer **Archwing-Schleuder** in ein feindliches Crewship katapultiert, um dessen Reaktor von innen zu sprengen, und kurz darauf bist du wieder an Bord und flickst einen Hüllenbruch mit deinem `Omni`-Werkzeug. Es debütierte im **Empyrean**-Update und wurde in einer späteren Corpus-Überarbeitung stark optimiert, die das **Command**-Intrinsic und das persönliche **Plexus**-Mod-Ausrüstungsmenü hinzufügte — die beiden Systeme, die modernes Solo-Railjack wirklich komfortabel machen."
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "Spielmodus",
+              "v": "Weltraumkampf + nahtloses Entern zu Fuß"
+            },
+            {
+              "k": "Dein Schiff",
+              "v": "Die Railjack — steuere sie, bediene die Geschütze oder starte von ihr aus"
+            },
+            {
+              "k": "Truppgröße",
+              "v": "Bis zu 4 Spieler, oder du + bis zu 3 KI-Crewmitglieder solo"
+            },
+            {
+              "k": "Regionen",
+              "v": "Grineer-Proxima und Corpus-Proxima (gipfelnd im Veil)"
+            },
+            {
+              "k": "Voraussetzung",
+              "v": "Schließe „The War Within“ ab, danach die Quest „Rising Tide“"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "why-bother",
+      "title": "Warum sich mit Railjack beschäftigen?",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Railjack war jahrelang in einer schwierigen Position, aber die Überarbeitung hat es in eine echte Belohnungsmaschine verwandelt. Es ist nicht nur ein neuartiger Flugsimulator — mehrere Fortschrittssysteme führen direkt darüber."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Grund",
+              "Was du davon hast"
+            ],
+            "rows": [
+              [
+                "Affinität / Leveln",
+                "Missionen schütten geteilte Affinität über deine gesamte Ausrüstung aus, was es zu einer soliden Methode macht, Waffen und Frames zu leveln, während man etwas anderes als Hydron macht."
+              ],
+              [
+                "Ressourcen",
+                "Titanium, Asterite und Grineer/Corpus-Proxima-Drops werden für Railjack-Upgrades und eine überraschende Anzahl späterer Schmiede-Rezepte benötigt."
+              ],
+              [
+                "Sisters of Parvos",
+                "Die Corpus-Lich-Jagd ist hinter Railjack gesperrt — du stellst und enterst das Großkampfschiff der Sister, um sie zu besiegen. Siehe den Kuva & Liches-Guide."
+              ],
+              [
+                "Void Storms",
+                "Die Railjack-Variante von Void Fissures: Öffne Relikte und sammle zusätzliche Void-Spuren, während du fliegst. Kostenlose Prime-Teile obendrauf zur Mission."
+              ],
+              [
+                "Quests & Story",
+                "Rising Tide, Call of the Tempestarii und spätere Story-Abschnitte bringen dich alle auf den Pilotensitz."
+              ],
+              [
+                "Meisterschaft & Abwechslung",
+                "Intrinsics, Komponenten und eine Kampf-Sandbox, die sich wie nichts anderes im Spiel spielt."
+              ]
+            ],
+            "note": "Die Belohnungen von Void Storms stapeln sich mit der Beute der Mission selbst — überprüfe die Rechnung fürs Öffnen oder Verkaufen deiner Drops, bevor du sie auflöst."
+          }
+        },
+        {
+          "type": "p",
+          "text": "Zwei davon sind es wert, eingeplant zu werden: **Void Storms** machen Railjack zu einem Relikt-Farm — kalkuliere die Werte deiner Beute mit [Reliktwert: Öffnen oder verkaufen](/relics-value) und [welche Relikte sich pro Run am meisten lohnen](/relic-farming). Und sobald du Primes öffnest, verraten dir [das Dukaten-Wert-Tool](/ducats) und der [Set-vs-Teile-Rechner](/comparison), was du für Baro behalten und was du verkaufen solltest."
+        }
+      ]
+    },
+    {
+      "id": "unlocking",
+      "title": "Railjack freischalten: Die Rising Tide-Quest",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Es gibt zwei Wege in diesen Modus. Du kannst sofort **auf dem Schiff von jemand anderem anheuern** — tritt einfach einem öffentlichen Railjack-Trupp bei, und du verdienst Intrinsics und Belohnungen, ohne selbst etwas zu besitzen. Aber um *deine eigene* Railjack zu bauen, musst du die Quest **Rising Tide** spielen."
+        },
+        {
+          "type": "steps",
+          "ordered": true,
+          "steps": [
+            {
+              "h": "Schließe „The War Within“ ab",
+              "p": "Rising Tide ist hinter der filmischen Quest „The War Within“ gesperrt (die in der Story auf „The Second Dream“ folgt). Wenn du noch nicht so weit bist, spiele zuerst die Hauptstory-Quests durch — siehe den Quests-Guide für die Reihenfolge."
+            },
+            {
+              "h": "Erhalte Zugang zu einem Trockendock",
+              "p": "Rising Tide wird in einem Trockendock gebaut. Du kannst das Schiff nicht von deinem Orbiter aus bauen — aber ein Trockendock ist nicht nur für Clans: Baue eines in einem Clan-Dojo oder nutze das öffentliche Trockendock, das in mehreren der größeren Relais (wie Saturn und Pluto) zu finden ist."
+            },
+            {
+              "h": "Sammle und baue die sechs Wrackteil-Komponenten",
+              "p": "Die Quest schickt dich quer durch die Sternenkarte, um Ressourcen zu sammeln und dann die sechs geborgenen Sektionen des Schiffs nacheinander im Trockendock zu bauen."
+            },
+            {
+              "h": "Warte die Bauzeit-Timer ab",
+              "p": "Jede Komponente und der finale Zusammenbau haben Echtzeit-Timer im Schmiede-Stil, die sich auf mehrere Tage summieren. Starte die Bauprozesse so früh wie möglich und lass sie laufen, während du andere Inhalte spielst."
+            },
+            {
+              "h": "Starte vom Trockendock aus",
+              "p": "Sobald die Railjack zusammengebaut ist, parkt sie in deinem Trockendock. Von dort aus (oder über die Proxima-Regionen in der Navigation) kannst du Missionen starten und beginnen, deine Intrinsics aufzustufen."
+            }
+          ]
+        },
+        {
+          "type": "warn",
+          "text": "**Kein Clan? Du hast trotzdem Optionen.** Mehrere der größeren **Relais** (darunter Saturn und Pluto) haben ein öffentliches **Trockendock**, das du völlig ohne Clan nutzen kannst. Bevorzugst du dein eigenes? Die Gründung eines Ein-Personen-Clans ist an jeder Clan-Konsole eines Relais kostenlos — baue das Trockendock in deinem Dojo (das schaltet auch die clanexklusive Sigma-Komponentenforschung frei) oder leihe dir das Dojo eines Freundes oder einer Allianz. Lass dich nicht von „Ich bin in keinem Clan“ aufhalten."
+        },
+        {
+          "type": "info",
+          "text": "Neu in diesem Modus und unsicher, ob er etwas für dich ist? Mehrere **Story-Missionen und öffentliche Trupps stellen dir eine vorgefertigte Leih-Railjack zur Verfügung**, sodass du das Fliegen und Schießen ausprobieren kannst, noch bevor du Rising Tide beendest. Das ist eine hervorragende Möglichkeit, um zu entscheiden, ob sich die Bauzeit lohnt."
+        }
+      ]
+    },
+    {
+      "id": "intrinsics",
+      "title": "Intrinsics: Die fünf Schulen",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Intrinsics** sind die persönlichen Skillbäume der Railjack — fünf Schulen, jeweils von **1 bis 10** gestuft. Du verdienst Intrinsic-Punkte automatisch durch Missionsaffinität und gibst sie dann dort aus, wo du möchtest. Höhere Ränge sind transformativ, nicht nur inkrementell: Sie schalten neue Manöver, schnellere Reparaturen und — ganz entscheidend — deine KI-Crew frei."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Schule",
+              "Was es bestimmt",
+              "Warum es solo wichtig ist"
+            ],
+            "rows": [
+              [
+                "Tactical",
+                "Die taktische Karte, Teleportation zu Crew/Zielen und Omni-Rückruf zum Schiff",
+                "Teleportiere dich augenblicklich zurück auf den Pilotensitz oder zu einem Hüllenbruch, anstatt die gesamte Länge des Schiffs abzulaufen"
+              ],
+              [
+                "Piloting",
+                "Boost, Vektorschübe und Drift-Ausweichen für präzises, schnelles Neupositionieren",
+                "Ein wendiges Schiff, mit dem du Flakfeuer tatsächlich ausweichen und dich schnell neu positionieren kannst"
+              ],
+              [
+                "Gunnery",
+                "Geschützhandhabung — Hitzemanagement, Zielzoom, automatisches Aufschalten auf die Vorhalteanzeige und die Archwing-Schleuder",
+                "Eliminiere Jäger schneller, lande Treffer mit der Forward Artillery auf Crewships und katapultiere dich an Bord, um sie zu entern"
+              ],
+              [
+                "Engineering",
+                "Schiffshüllen-Gesundheit, schnellere Omni-Reparaturen, Schmiede-Ertrag und Gefahrenbeseitigung",
+                "Überstehe Brände und Hüllenbrüche, wenn niemand da ist, der auf die Hülle aufpasst"
+              ],
+              [
+                "Command",
+                "Heuere bis zu 3 KI-Crewmitglieder an und befehlige sie, plus die Beschwörung der Crew auf Abruf",
+                "Die mit Abstand wichtigste Schule für das Solospiel — deine Crew fliegt und kämpft für dich"
+              ]
+            ]
+          }
+        },
+        {
+          "type": "tip",
+          "text": "**Solo-Level-Reihenfolge:** Bringe **Command** früh für die Crew nach oben, dann ein paar Ränge in **Gunnery** und **Piloting**, damit sich das Schiff gut steuern lässt, und **Engineering** für die Überlebensfähigkeit. Der Omni-Rückruf von Tactical ist eine enorme Komfortverbesserung, sobald du regelmäßig enterst. Du musst nicht alles auf 10 haben, um effektiv zu sein — die ersten paar Ränge jeder Schule haben das größte Gewicht."
+        }
+      ]
+    },
+    {
+      "id": "command-crew",
+      "title": "Command-Crew: Die Geheimwaffe des Solo-Spielers",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Wenn du nur eine Sache von dieser Seite mitnimmst: **Werte Command auf und heuere eine KI-Crew an.** Eine gut zusammengestellte Crew macht aus einem Vier-Personen-Schiff ein Ein-Personen-Schiff. Sie steuern, schießen, reparieren Brüche und Brände und verteidigen gegen Enterkommandos — während du dich auf das konzentrierst, was dir Spaß macht."
+        },
+        {
+          "type": "steps",
+          "ordered": true,
+          "steps": [
+            {
+              "h": "Schalte Crew-Slots mit Command frei",
+              "p": "Der erste Rang von Command ermöglicht es dir, ein Crewmitglied anzuheuern und einzusetzen, wobei mit steigendem Rang mehr Slots und bessere Kompetenzen freigeschaltet werden — der zweite Slot öffnet sich nach ein paar Rängen und der dritte kurz darauf, bis zu maximal drei aktiven KI-Crewmitgliedern."
+            },
+            {
+              "h": "Rekrutiere bei Ticker in Fortuna",
+              "p": "Ticker (unten in Fortuna auf der Venus) verkauft rotierende Crewmitglieder gegen Ressourcen und Solaris-Schuldscheine. Jeder Rekrut hat Kompetenzpunkte, die auf Kampf, Geschütze, Steuern, Technik, Reparatur und Ausdauer verteilt sind."
+            },
+            {
+              "h": "Weise Rollen zu, die zu ihren Werten passen",
+              "p": "Jedes Crewmitglied übernimmt eine Rolle — Pilot, Gunner, Defender oder Engineer. Passe die Rolle an ihre hohen Werte an: Ein Gunner profitiert von Gunnery + Combat, ein Engineer von Repair + Endurance."
+            },
+            {
+              "h": "Baue das klassische Solo-Trio auf",
+              "p": "Zwei Gunners, um den Jägerschwarm zu schreddern, und ein Engineer, um das Schiff am Leben zu erhalten, ist der bewährte Standard. Tausche einen Gunner gegen einen Pilot aus, wenn du lieber den Sitz verlassen und entern möchtest."
+            }
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "Ein höherer Rang von Command schaltet das Ausrüstungsobjekt **On Call Crew** frei, mit dem du eines deiner Crewmitglieder in *normale* (Nicht-Railjack) Missionen als temporären Verbündeten beschwören kannst. Ein starker Grund, Command weiter aufzustufen, selbst wenn dein Schiff sich bereits von selbst steuert."
+        }
+      ]
+    },
+    {
+      "id": "solo-build",
+      "title": "Eine solo-bereite Railjack bauen",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Die Stärke deines Schiffs kommt aus zwei Quellen: den **Komponenten**, die an der Hülle verbaut sind (Reaktor, Schild, Triebwerke und Bewaffnung), und dem **Plexus** — deiner persönlichen Mod-Ausrüstung, die du auf *jede* Railjack mitnimmst, auch auf Leihschiffe. Komponenten stammen von drei Häusern — **Zetki** (höchste Rohwerte, aber mit Nachteilen wie Überhitzung der Geschütze), **Vidar** (ausgewogen, starke Bonus-Effekte) und **Lavan** (robust, großartiges Handling) — in aufsteigenden **MK I–III** Stufen."
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Zuerst der Reaktor.** Er bestimmt deine Plexus-Kapazität — wie viele und wie starke Mods du ausrüsten kannst — und skaliert deine Kampf-Fähigkeiten. Ein Reaktor mit hoher Kapazität ist das mit Abstand größte Upgrade, das du anstreben kannst.",
+            "**Als Nächstes die Geschütze (Bewaffnung).** Hol dir MK III-Waffen von einem Haus, das dir gefällt; Zetki teilt am härtesten aus, überhitzt aber schnell, während Vidar und Lavan etwas Schaden für besseres Handling und längere Einsatzzeit eintauschen.",
+            "**Die Forward Artillery ist dein Crewship-Vernichter.** Die Bugkanone (`Tunguska`) eliminiert Crewships mit einem einzigen Schuss, an denen man sich sonst die Zähne ausbeißen würde — rüste die Mod **Forward Artillery** aus, damit sie auch die zäheren Crewships im Veil mit einem Schuss erledigt.",
+            "**Plexus-Setup.** Maximiere den Geschützschaden (z. B. Hyperstrike), füge eine Überlebensmod für Hüllengesundheit hinzu und rüste eine **Kampf-Fähigkeit aus, die Jägerschwärme eliminiert** — das Gegner zusammenziehende Tether und die zielsuchenden Raketen von Seeker Volley sind die langjährigen Favoriten.",
+            "**Triebwerke und Schilde haben eine geringere Priorität.** Handling und Schildaufladung sind nett, aber sie kommen erst nach einem soliden Reaktor, guten Geschützen und der Forward Artillery."
+          ]
+        },
+        {
+          "type": "warn",
+          "text": "**Sei nicht der Host, vor dem sich alle fürchten.** Die häufigste Beschwerde über öffentliche Railjack-Runden sind Leute, die ihr Schiff nie gebaut oder gemoddet haben und dann auf hochstufigen Nodes hosten. Wenn du hosten willst, investiere zuerst eine Stunde in deinen Plexus und deine Forward Artillery — ein gemoddetes Schiff ist ein Unterschied wie Tag und Nacht, und dein Trupp wird es bemerken."
+        }
+      ]
+    },
+    {
+      "id": "solo-game-plan",
+      "title": "Ein Schlachtplan für Solo-Missionen",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Mit einer Crew an Bord und einsatzbereiter Forward Artillery hat eine Solo-Railjack-Mission einen klaren Rhythmus. Der Ablauf ist: den Schwarm dezimieren, die Crewships vernichten, das Missionsziel abschließen, extrahieren."
+        },
+        {
+          "type": "steps",
+          "ordered": true,
+          "steps": [
+            {
+              "h": "Lass den Schwarm zu deinen Geschützen kommen",
+              "p": "Jäger rotten sich zusammen, wenn sie dich verfolgen. Lass deine Gunners und Geschütze arbeiten und setze eine Kampf-Fähigkeit wie Tether ein, um eine Gruppe auf einmal zusammenzuziehen und zu vernichten."
+            },
+            {
+              "h": "Vernichte Crewships mit der Forward Artillery",
+              "p": "Richte die Bugkanone aus und erledige jedes Crewship mit einem Schuss. Alternativ kannst du es per Archwing oder Schleuder entern und seinen Reaktor von innen sprengen — beides beseitigt die größte Bedrohung für deine Hülle."
+            },
+            {
+              "h": "Enter das Missionsziel zu Fuß",
+              "p": "Die meisten Missionen erfordern, dass du ein feindliches Großkampfschiff oder eine Basis betrittst — zerstöre Heizkörper, hacke eine Konsole oder verteidige einen Punkt. Dies ist normaler Warframe-Kampf; bringe einen Frame und Waffen mit, denen du vertraust."
+            },
+            {
+              "h": "Flicken und zurückrufen nach Bedarf",
+              "p": "Wenn das Schiff einen Hüllenbruch oder Brand erleidet, während du weg bist, kümmert sich normalerweise dein Engineer darum — aber der Omni-Rückruf von Tactical bringt dich sofort nach Hause, wenn es brenzlig wird."
+            },
+            {
+              "h": "Abschließen und extrahieren",
+              "p": "Sobald das Missionsziel abgeschlossen ist, räume die verbleibenden Gegner auf und verschwinde. Bei Void Storm-Runs wird hier auch dein ausgerüstetes Relikt geöffnet — wähle deine Belohnung, bevor du gehst."
+            }
+          ]
+        },
+        {
+          "type": "warn",
+          "text": "**Die Forward Artillery ist solo sperrig — und das ist Absicht.** Der Pilot kann die Bugkanone nicht abfeuern; du musst den Sitz verlassen, und das Schiff hört auf zu manövrieren, während du zielst. Das ist die Sache Nummer eins, von der Veteranen wünschen, dass neue Solo-Piloten sie wüssten. **Weise einem Crewmitglied die Rolle des Piloten zu**, damit das Schiff weiter ausweicht, während du feuerst, oder säubere zuerst die unmittelbare Umgebung, damit du nicht bewegungslos im Flakfeuer liegst."
+        }
+      ]
+    },
+    {
+      "id": "where-next",
+      "title": "Wo Railjack in dein Endgame passt",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Sobald dein Schiff von alleine läuft, wird Railjack eher zu einem Werkzeug als zu einer lästigen Pflicht. Nutze **Void Storms** als Relikt-Farm und bestimme den Wert deiner Beute mit [Öffnen oder verkaufen](/relics-value) und [Relikt-Farming pro Run](/relic-farming). Jage **Sisters of Parvos** mithilfe des [Kuva & Liches-Guides](/guides/kuva). Und wenn du genau sehen willst, woher ein Proxima-Drop oder eine Ressource stammt, zeigt dir die [3D-Sternenkarten-Drop-Map](/star-chart-3d) den genauen Ort."
+        },
+        {
+          "type": "p",
+          "text": "Für den Rest des Endgame-Netzwerks — [Steel Path](/guides/steel-path), [Duviri](/guides/duviri) (das ein eigenes Intrinsics-System zum Vergleichen hat), [Arcanes](/guides/arcanes) und [Archon Shards](/guides/archon-shards) — knüpfen die Schwester-Guides dort an, wo dieser aufhört. Und wenn du lieber zusehen möchtest, wie ein Build entsteht, sind das [Creator-Verzeichnis](/creators) und die Videos unten der beste nächste Klick."
+        },
+        {
+          "type": "links",
+          "links": [
+            {
+              "label": "Reliktwert: Öffnen oder verkaufen",
+              "href": "/relics-value",
+              "icon": "diamond-stone",
+              "note": "Bestimme den Wert deiner Void Storm-Beute"
+            },
+            {
+              "label": "Kuva & Liches-Guide",
+              "href": "/guides/kuva",
+              "icon": "skull",
+              "note": "Sisters of Parvos sind hinter Railjack gesperrt"
+            },
+            {
+              "label": "3D-Drop-Standortkarte",
+              "href": "/star-chart-3d",
+              "icon": "map-marker-path",
+              "note": "Finde jeden Proxima-Drop"
+            },
+            {
+              "label": "Community-Tools-Verzeichnis",
+              "href": "/tools",
+              "icon": "toolbox",
+              "note": "Wiki, Overframe & mehr"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Wie schalte ich Railjack in Warframe frei?",
+      "a": "Baue deine eigene, indem du die Quest **Rising Tide** abschließt, wofür du **The War Within** (die filmische Quest nach „The Second Dream“) beendet haben und Zugang zu einem **Trockendock** haben musst. Trockendocks sind nicht clanexklusiv — mehrere der größeren **Relais** (wie Saturn und Pluto) haben ein öffentliches, oder du kannst einen kostenlosen Solo-Clan gründen und dein eigenes bauen. Wenn du überhaupt kein Schiff bauen möchtest, tritt sofort einem öffentlichen Railjack-Trupp bei und heuere auf dem Schiff von jemand anderem an — du verdienst trotzdem Intrinsics und Belohnungen."
+    },
+    {
+      "q": "Kann man Railjack solo spielen?",
+      "a": "Ja, und es ist wirklich komfortabel, sobald du das **Command**-Intrinsic aufwertest und eine KI-Crew anheuerst. Drei kompetente Crewmitglieder werden das Schiff für dich steuern, die Geschütze bedienen und es reparieren, während du dich aufs Fliegen oder Entern konzentrierst. Das macht den Unterschied aus, ob sich Railjack wie eine Aufgabe für vier Personen oder für eine Person anfühlt."
+    },
+    {
+      "q": "Brauche ich einen Clan, um eine Railjack zu bekommen?",
+      "a": "Nicht unbedingt. Du baust und wartest die Railjack in einem **Trockendock**, und obwohl du das nicht von deinem Orbiter aus tun kannst, sind Trockendocks nicht clanexklusiv: Mehrere der größeren **Relais** (wie Saturn und Pluto) haben ein öffentliches Trockendock, das jeder Solo-Spieler nutzen kann. Wenn du lieber dein eigenes haben möchtest, ist die Gründung eines Ein-Personen-Clans an jeder Clan-Konsole eines Relais kostenlos und ermöglicht es dir, ein Trockendock in deinem Dojo zu bauen — was auch die clanexklusive Sigma-Komponentenforschung freischaltet."
+    },
+    {
+      "q": "Welches Railjack-Intrinsic sollte ich zuerst leveln?",
+      "a": "**Command** für die KI-Crew — es trägt am meisten dazu bei, den Modus solo spielbar zu machen. Danach ein paar Ränge in **Gunnery** und **Piloting**, damit sich das Schiff reaktionsschnell anfühlt, und **Engineering** für die Überlebensfähigkeit. Du musst keine Schule auf 10 maximiert haben, um effektiv zu sein; die frühen Ränge bieten den größten Nutzen."
+    },
+    {
+      "q": "Wie bekommt man KI-Crewmitglieder in Railjack?",
+      "a": "Werte das **Command**-Intrinsic auf, um Crew-Slots freizuschalten, und rekrutiere dann eine Crew bei **Ticker** in Fortuna (auf der Venus) unter Verwendung von Ressourcen und Solaris-Schuldscheinen. Weise jedem eine Rolle zu — Pilot, Gunner, Defender oder Engineer —, die zu seinen Kompetenzwerten passt. Ein übliches Solo-Setup besteht aus zwei Gunners und einem Engineer."
+    },
+    {
+      "q": "Wie vernichtet man Crewships in Railjack?",
+      "a": "Nutze die **Forward Artillery** — die Bugkanone (Tunguska) des Schiffs, die Crewships mit einem Schuss eliminiert; rüste die Mod **Forward Artillery** aus, um auch die zäheren Crewships im Veil zu durchschlagen. Alternativ kannst du das Crewship per Archwing oder Schleuder entern und seinen Reaktor von innen zerstören. Beachte, dass der Pilot die Artillerie solo nicht abfeuern kann, weise also einem Crewmitglied die Rolle des Piloten zu oder parke das Schiff zum Zielen."
+    },
+    {
+      "q": "Lohnt es sich, Railjack zu spielen?",
+      "a": "Für die meisten Spieler ja. Es ist eine hervorragende Quelle für Affinität und Ressourcen, es ist der **einzige** Weg, Sisters of Parvos zu jagen, und seine **Void Storm**-Missionen öffnen Relikte für zusätzliche Prime-Teile und Void-Spuren. Mehrere Quests erfordern es ebenfalls. Sobald dein Schiff und deine Crew aufgebaut sind, wird es zu einer schnellen, weitgehend automatisierten Methode zum Farmen."
+    },
+    {
+      "q": "Was sind die besten Railjack-Komponenten, die man verwenden kann?",
+      "a": "Strebe **MK III**-Komponenten an und priorisiere einen **Reaktor mit hoher Kapazität**, da dieser bestimmt, wie stark deine Plexus-Mods sein können. Bei den Geschützen teilt **Zetki** am härtesten aus (überhitzt aber), während **Vidar** und **Lavan** Schaden gegen Handling und Haltbarkeit eintauschen — wähle nach Geschmack. Die genauen Meta-Rolls ändern sich mit den Patches, also sieh dir ein aktuelles Build-Video oder das [wiki](https://wiki.warframe.com/) an, bevor du für einen bestimmten God-Roll farmst."
+    }
+  ],
+  "videos": [
+    {
+      "id": "MLyf9D2GcpI",
+      "title": "Warframe Beginner's Guide 2025: Episode #5: The Second Dream Quest & Unlocking RailJack!",
+      "channel": "iFlynn"
+    },
+    {
+      "id": "G_ou9naTX50",
+      "title": "The ULTIMATE Warframe RAILJACK Guide 2026!",
+      "channel": "MHBlacky"
+    },
+    {
+      "id": "xnLTTLJn5iw",
+      "title": "Warframe: Solo Railjack Build Guide",
+      "channel": "Jacsonitos"
+    },
+    {
+      "id": "AMKACvK4ZXQ",
+      "title": "The Ultimate Railjack Build Guide (Warframe)",
+      "channel": "Hunkpain Gaming "
+    }
+  ],
+  "sources": [
+    {
+      "label": "Current state of Railjack: fast guide (r/Warframe)",
+      "href": "https://reddit.com/r/Warframe/comments/ea2af8/current_state_of_railjack_fast_guide_for_people/"
+    },
+    {
+      "label": "9 Days: Railjack — the Journey, the Meta, a FAQ (r/Warframe)",
+      "href": "https://reddit.com/r/Warframe/comments/eed3eu/9_days_railjack_the_journey_the_meta_a_faq/"
+    },
+    {
+      "label": "Watch a guide before you host your Railjack (r/Warframe)",
+      "href": "https://reddit.com/r/Warframe/comments/1u94eva/i_dont_usually_like_to_flame_people_in_warframe/"
+    },
+    {
+      "label": "Warframe Wiki",
+      "href": "https://wiki.warframe.com/"
+    }
+  ],
+  "related": [
+    {
+      "label": "Kuva & Liches",
+      "to": "/guides/kuva",
+      "icon": "skull",
+      "note": "Sisters of Parvos werden über Railjack gejagt"
+    },
+    {
+      "label": "Relikte & Void Fissures",
+      "to": "/guides/relics",
+      "icon": "diamond-stone",
+      "note": "Void Storms sind die Railjack-Methode, um Relikte zu öffnen"
+    },
+    {
+      "label": "Steel Path",
+      "to": "/guides/steel-path",
+      "icon": "chevron-triple-up",
+      "note": "Der andere Endgame-Grind"
+    },
+    {
+      "label": "Duviri",
+      "to": "/guides/duviri",
+      "icon": "sword-cross",
+      "note": "Hat sein eigenes Intrinsics-System"
+    },
+    {
+      "label": "Reliktwert-Tool",
+      "to": "/relics-value",
+      "icon": "cash-multiple",
+      "note": "Öffne oder verkaufe deine Void Storm-Drops"
+    },
+    {
+      "label": "Community-Tools",
+      "to": "/tools",
+      "icon": "toolbox",
+      "note": "Wiki, Overframe & DE-Tools"
+    }
+  ],
+  "updated": "2026-07-18"
+}

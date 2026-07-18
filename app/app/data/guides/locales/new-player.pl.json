@@ -1,0 +1,546 @@
+{
+  "slug": "new-player",
+  "eyebrow": "Centrum wiedzy · Pierwsze kroki",
+  "title": "Kompletny poradnik dla nowych graczy",
+  "lede": "Właśnie budzisz się na zimnym statku Grineer z bronią w ręku i bez pojęcia, co się dzieje. Oto dokładnie, co zrobić ze swoimi pierwszymi 100 godzinami — i czego NIE robić.",
+  "category": "start",
+  "readMins": 12,
+  "stats": [
+    {
+      "num": "3",
+      "label": "startowe Warframe do wyboru",
+      "tone": "good"
+    },
+    {
+      "num": "50",
+      "label": "darmowe Platinum na start",
+      "tone": "gold"
+    },
+    {
+      "num": "30",
+      "label": "maksymalna ranga broni i Warframe",
+      "tone": "alt"
+    },
+    {
+      "num": "Rhino",
+      "label": "polecany pierwszy craft",
+      "tone": "gold"
+    }
+  ],
+  "sections": [
+    {
+      "id": "what-is-warframe",
+      "title": "Po pierwsze, czym właściwie jest Warframe",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Warframe to **darmowy, trzecioosobowy looter-shooter** opowiadający o kosmicznych ninja. Kontrolujesz **Tenno** — wojownika, który zdalnie steruje **Warframes**, biomechanicznymi pancerzami, z których każdy posiada cztery unikalne umiejętności. Będziesz strzelać, ślizgać się, biegać po ścianach i używać umiejętności, przemierzając ogromny Układ Solarny, zbierając po drodze schematy, mody i sprzęt. Gra jest stale rozwijana od ponad dekady, więc ilość zawartości może przytłaczać — ale odblokowujesz ją stopniowo."
+        },
+        {
+          "type": "p",
+          "text": "Jedna, najważniejsza rzecz, którą musisz wiedzieć na start: **Warframe słynie z trudnych pierwszych kilku godzin, a potem nagle wszystko zaczyna mieć sens.** Samouczek rzuca Cię na głęboką wodę prawie bez żadnego kontekstu. Przejdź przez to. Śledź fabułę, wytwórz kilka frame'ów, a gdy otworzy się mapa solarna, gra stanie się jedną z najlepszych pętli rozgrywki akcji w tym gatunku."
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "Gatunek",
+              "v": "Trzecioosobowy looter-shooter / action-RPG"
+            },
+            {
+              "k": "Koszt",
+              "v": "Free-to-play — brak barier płatniczych w rozgrywce"
+            },
+            {
+              "k": "Grasz jako",
+              "v": "Tenno pilotujący Warframes"
+            },
+            {
+              "k": "Waluta premium",
+              "v": "Platinum — i można nią handlować, więc możesz ją zdobyć za darmo"
+            },
+            {
+              "k": "Twój hub",
+              "v": "Orbiter (Twój statek), zarządzany przez Cephalon Ordis"
+            }
+          ]
+        },
+        {
+          "type": "tip",
+          "title": "Dodaj wiki do zakładek",
+          "text": "W przypadku jakichkolwiek konkretnych danych — miejsca dropu, dokładnych statystyk modów — oficjalna wiki pod adresem [wiki.warframe.com](https://wiki.warframe.com/) jest ostatecznym źródłem prawdy. Ten poradnik daje Ci *plan*; wiki daje Ci *szczegóły*."
+        }
+      ]
+    },
+    {
+      "id": "the-opening",
+      "title": "Samouczek: Awakening i Vor's Prize",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Twoją pierwszą misją jest filmowy wstęp **Awakening**, po którym następuje zadanie **Vor's Prize**. To obowiązkowy samouczek, którego nie można pominąć. Uczy poruszania się i walki, przedstawia antagonistę Captain Vor i daje Ci narzędzia, z których będziesz korzystać już zawsze."
+        },
+        {
+          "type": "steps",
+          "ordered": true,
+          "steps": [
+            {
+              "h": "Ukończ Awakening",
+              "p": "Budzisz się pod ostrzałem, uczysz się poruszać i strzelać, oraz po raz pierwszy testujesz umiejętności Warframe. Naucz się ślizgać i wykonywać bullet-jump jak najwcześniej — mobilność to połowa sukcesu w walce w Warframe."
+            },
+            {
+              "h": "Wybierz swojego startowego Warframe",
+              "p": "Wybierzesz jednego z trzech frame'ów: Excalibur, Volt lub Mag. W szerszej perspektywie nie jest to ostateczny wybór — wytworzysz ich jeszcze dziesiątki. Wybierz na podstawie klimatu (szczegóły poniżej)."
+            },
+            {
+              "h": "Ukończ Vor's Prize",
+              "p": "Ratujesz swojego Cephalon (Ordis), odzyskujesz Orbiter (Twój statek i hub), otrzymujesz pierwszą broń i odblokowujesz mapę gwiezdną Ziemi."
+            },
+            {
+              "h": "Wyląduj na swoim statku",
+              "p": "Z poziomu Orbitera masz dostęp do Nawigacji (mapy gwiezdnej), Arsenału (sprzęt + mody), Foundry (crafting) i Marketu. To Twoja baza główna."
+            }
+          ]
+        },
+        {
+          "type": "info",
+          "title": "Gdzie oficjalnie kończy się bycie „nowym”",
+          "text": "DE i społeczność są bardzo wyrozumiali dla początkujących przez długi czas. Jesteś uważany za nowego gracza jeszcze długo po samouczku — nikt nie oczekuje, że opanujesz wszystkie systemy w pierwszym tygodniu. Zadawaj pytania na czacie regionalnym (Region); większość weteranów naprawdę lubi pomagać."
+        }
+      ]
+    },
+    {
+      "id": "starter-frame",
+      "title": "Wybór startowego Warframe",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Wszystkie trzy startowe pancerze są **równie dobre** i każdy z nich z łatwością poradzi sobie na początkowej mapie gwiezdnej. Pozostałe dwa zdobędziesz później, więc nie zadręczaj się wyborem. Jeśli chcesz najbezpieczniejszego, najbardziej wybaczącego błędy wyboru, weź **Excalibur**."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Startowy",
+              "Styl gry",
+              "Główny atut",
+              "Najlepszy dla"
+            ],
+            "rows": [
+              [
+                "Excalibur",
+                "Wszechstronny, broń palna + walka wręcz",
+                "Exalted Blade — skalujący się miecz energii",
+                "Każdy, kto chce silnego, wybaczącego błędy frame'a, który pozostaje użyteczny aż do endgame'u"
+              ],
+              [
+                "Volt",
+                "Szybki i elektryczny",
+                "Wzmocnienie prędkości + tarcza zwiększająca obrażenia",
+                "Gracze, którzy lubią wysoką mobilność, obrażenia seryjne i użyteczność dla drużyny"
+              ],
+              [
+                "Mag",
+                "Caster umiejętności / kontrola tłumu",
+                "Magnetize + Pull do przyciągania i eliminowania grup wrogów",
+                "Gracze, którzy lubią rozgrywkę opartą na umiejętnościach i kontroli tłumu"
+              ]
+            ],
+            "note": "Nie jesteś uwiązany do jednego wyboru — każdego z tych frame'ów można zdobyć ponownie, a wszystkie z ponad 60 Warframes w grze można wyfarmić za darmo."
+          }
+        },
+        {
+          "type": "p",
+          "text": "Chcesz dokładniejszej analizy oraz informacji, którego frame'a farmić *jako następnego*? Zobacz [poradnik o najlepszych Warframe dla początkujących](/guides/beginner-warframes)."
+        }
+      ]
+    },
+    {
+      "id": "golden-path",
+      "title": "Twoje pierwsze 20 godzin: podążaj złotą ścieżką",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Po Vor's Prize gra przestaje prowadzić Cię za rękę. Oto sprawdzona pętla na początek, która zapewni Ci stały postęp zamiast bezcelowego błąkania się."
+        },
+        {
+          "type": "steps",
+          "ordered": true,
+          "steps": [
+            {
+              "h": "Podążaj za znacznikami zadań",
+              "p": "Zadania są kręgosłupem Warframe. Odblokowują całe systemy — a kilka z nich daje Ci **darmowego, kompletnego Warframe**. Rób zadania w miarę ich pojawiania się, zamiast grindować losowe węzły."
+            },
+            {
+              "h": "Odblokowuj planety przez Junctions",
+              "p": "Planety łączą się przez Junctions. Każde z nich zawiera listę zadań oraz walkę ze Specterem; ukończ je, a otworzy się kolejna planeta. To Twój kręgosłup postępu — odblokowuj Junctions, a mapa gwiezdna będzie się otwierać po kolei."
+            },
+            {
+              "h": "Wytwórz Rhino tak szybko, jak to możliwe",
+              "p": "Części Rhino dropią z bossa Jackal na Wenus, do której docierasz bardzo wcześnie. Iron Skin Rhino czyni Cię niemal nieśmiertelnym, gdy wciąż uczysz się przetrwania — nie bez powodu to klasyczny „pierwszy wytworzony frame”."
+            },
+            {
+              "h": "Wbijaj 30. rangę na swoim sprzęcie",
+              "p": "Bronie i frame'y zdobywają biegłość (affinity / XP) do 30. rangi. Każda ranga dodaje +1 do pojemności modów, a wbicie na nowym przedmiocie 30. rangi po raz pierwszy na stałe zwiększa Twoją Mastery Rank. Zabieraj na misje jeden nowy przedmiot i jeden już ulepszony."
+            },
+            {
+              "h": "Oszczędzaj Reactors i Catalysts",
+              "p": "Orokin Reactors (dla frame'ów) i Catalysts (dla broni) podwajają pojemność modów przedmiotu — społeczność nazywa je „ziemniakami” (potatoes). Otrzymasz je z Nightwave i wydarzeń. Nie marnuj ich na słaby sprzęt; zachowaj je na te przedmioty, które zostawisz na stałe."
+            }
+          ]
+        },
+        {
+          "type": "quote",
+          "text": "RHINO MIEĆ IRON SKIN. KULA STAĆ SIĘ JEDZENIE. KIEDY RHINO BYĆ ZDEZORIENTOWANY, ON TUPNĄĆ NOGĄ. WSZYSCY STAĆ, AŻ ON TO ROZKMINIĆ. RHINO GŁODNY. DAĆ RHINO MODY.",
+          "cite": "FAQ na r/Warframe — odwieczny argument za Rhino jako Twoim pierwszym frame'em"
+        }
+      ]
+    },
+    {
+      "id": "foundry-market",
+      "title": "Foundry i Market: jak zdobyć wszystko",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Prawie każdy przedmiot w Warframe zdobywa się w tej samej pętli: **kup schemat (blueprint), wyfarm materiały, zbuduj go w Foundry.** **Market** sprzedaje większość schematów za **kredyty** (podstawową walutę w grze), a nie za prawdziwe pieniądze. Z kolei schematy części Warframe dropią z planetarnych **bossów**."
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "**Schematy (Blueprints)** — przepis. Schematy frame'ów pochodzą z Marketu (sam pancerz) oraz z trzech dropów części (Neuroptics, Chassis, Systems) od bossa.",
+            "**Zasoby (Resources)** — farmione z misji na każdej planecie. Foundry informuje Cię, czego potrzebujesz do budowy.",
+            "**Czas budowy** — Foundry wytwarza przedmioty w czasie rzeczywistym. Części składowe budują się często około 12 godzin; pełny Warframe wymaga **72 godzin (3 dni)**. Rozpoczynaj budowę przed wylogowaniem się, aby kończyła się, gdy Cię nie ma."
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "Kupienie Warframe lub broni za **Platinum** pozwala pominąć całe farmienie ORAZ daje darmowe miejsce w ekwipunku i zainstalowanego już „ziemniaka” (potato). Dlatego kupowanie frame'ów za platynę jest *kuszące* — ale jako nowy gracz, powstrzymaj się (patrz poniżej)."
+        },
+        {
+          "type": "warn",
+          "title": "Nie przyspieszaj czasu budowy za plat",
+          "text": "Foundry z chęcią zaoferuje natychmiastowe ukończenie budowy za Platinum. Prawie nigdy nie jest to tego warte. Zamiast tego planuj swoje budowy z uwzględnieniem czasu — ten 3-dniowy frame będzie gotowy szybciej, niż się spodziewasz."
+        }
+      ]
+    },
+    {
+      "id": "modding",
+      "title": "Modowanie 101 — prawdziwe źródło potęgi",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Oto sekret, którego nikt nie tłumaczy nowym graczom wystarczająco jasno: **mody mają o wiele większe znaczenie niż to, jaki sprzęt posiadasz.** W pełni zmodowany karabin startowy sieje większe spustoszenie niż „lepsza” broń z pustymi gniazdami na mody. Jeśli Twoje obrażenia wydają się mizerne, odpowiedzią są prawie zawsze *mody*, a nie nowy sprzęt. Przeczytaj pełną analizę w [poradniku o modach](/guides/mods)."
+        },
+        {
+          "type": "p",
+          "text": "Niezbędne wczesne mody do znalezienia i ulepszenia:"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "**Obrażenia:** Serration (karabiny), Hornet Strike (pistolety), Point Blank (strzelby), Pressure Point (broń biała) — zwiększają one obrażenia bazowe i są obowiązkowe.",
+            "**Wielostrzał (Multishot):** Split Chamber (karabiny), Barrel Diffusion (pistolety), Hell's Chamber (strzelby) — w przybliżeniu podwaja Twoją siłę ognia.",
+            "**Przeżywalność:** Vitality (życie) i Redirection (tarcze) na Twoim Warframe.",
+            "**Umiejętności:** Intensify (siła), Streamline (wydajność), Flow (energia), aby Twoje moce uderzały mocniej i mogły być częściej używane."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Każdy mod kosztuje **pojemność** (capacity) równą jego zużyciu. Zwiększaj rangę sprzętu, aby uzyskać więcej pojemności, zainstaluj **potato**, aby ją podwoić, i dopasuj **polaryzację** (polarity) moda do gniazda, aby zmniejszyć zużycie o połowę (**Forma** pozwala później zmieniać polaryzację gniazd). Ulepszasz mody za pomocą **Endo** + kredytów — a Endo łatwo wyfarmić; zobacz [poradnik o Endo](/guides/endo) oraz [narzędzie wartości Endo/Plat](/endo)."
+        },
+        {
+          "type": "warn",
+          "title": "NIGDY nie sprzedawaj modów w ciemno",
+          "text": "Nie sprzedawaj ani nie rozpuszczaj modów, których nie znasz, i zachowuj duplikaty — dodatkowe kopie można zamienić na Endo, aby ulepszyć te, które zostawiasz. Sprzedaż rzadkiego moda (Riven, mod Primed lub Legendary Core) u handlarza lub obcemu graczowi za grosze to błąd numer jeden, którego najbardziej żałują nowicjusze na r/Warframe."
+        }
+      ]
+    },
+    {
+      "id": "platinum",
+      "title": "Platinum i co zrobić ze swoimi pierwszymi 50",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Każde konto zaczyna z **50 Platinum**, walutą premium. Jeden haczyk: Twoje startowe 50 jest *tylko do wydania* — nie możesz go przekazać w handlu. Jednak Platinum, które **zarobisz**, jest w pełni **wymienne (tradeable)**, więc możesz zdobywać go nieskończenie wiele za darmo, sprzedając przedmioty innym graczom. To oznacza, że powinieneś wydać swoje startowe 50 na rzeczy, których *nie da się* wyfarmić — a nie na frame'y czy bronie, które możesz zdobyć w grze."
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "**Miejsca (slots) na Warframe i broń — Twój zakup nr 1.** Zaczynasz z bardzo małą liczbą miejsc i szybko je zapełnisz. Miejsca można kupić tylko za platynę i są tanie.",
+            "**Orokin Reactors / Catalysts**, jeśli nie masz jeszcze żadnych z Nightwave (ziemniaki podwajają pojemność modów).",
+            "**Przedmioty kosmetyczne** — palety kolorów, syandany — tylko jeśli kręci Cię fashion. Zero wpływu na rozgrywkę, czysta estetyka."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Aby *zarobić* platynę, handlujesz z innymi graczami: sprzedawaj **części Prime** (z otwierania Void Relics), zapasowe mody i rzeźby Ayatan. Zanim cokolwiek wystawisz lub zaakceptujesz ofertę, sprawdź aktualną cenę, aby nikt Cię nie naciągnął — użyj [Market Screener](/screener), [Flip finder](/flip) do badania spreadów kupna/sprzedaży, [narzędzia wartości Reliktów](/relics-value), aby zdecydować, czy otworzyć, czy sprzedać, oraz sekcji [Ducats](/ducats) dla wymiany u Baro. Pełna strategia znajduje się w [poradniku o Platinum](/guides/platinum)."
+        },
+        {
+          "type": "warn",
+          "title": "Oszustwa handlowe są realne — i można ich uniknąć",
+          "text": "Każda uczciwa transakcja odbywa się w **bezpiecznym oknie handlu, w którym obaj gracze potwierdzają dokładne przedmioty**. Jeśli ktoś prosi Cię o „oddanie przedmiotu najpierw”, obiecuje „podwojenie Twojej platyny” lub Cię pośpiesza, to oszustwo — odejdź. Handel odblokowuje się na **Mastery Rank 2** (będziesz także musiał włączyć dwuskładnikowe uwierzytelnianie na swoim koncie); do tego czasu ignoruj każdego na czacie, kto naciska na transakcje."
+        }
+      ]
+    },
+    {
+      "id": "mistakes",
+      "title": "Typowe błędy początkujących, których należy unikać",
+      "blocks": [
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "**Wydanie startowych 50 plat na frame'a lub broń.** Te rzeczy można wyfarmić. Zamiast tego kup miejsca (slots) i ziemniaki (potatoes).",
+            "**Przyspieszanie czasu budowy w Foundry za plat.** Planuj z wyprzedzeniem; platyna jest o wiele bardziej wartościowa w innych miejscach.",
+            "**Sprzedawanie lub rozpuszczanie modów, których nie znasz.** Duplikaty to Endo, a nie śmieci. Sprawdź mod w sieci, zanim się go pozbędziesz.",
+            "**Ignorowanie zadań.** Blokują one dostęp do Operatora, systemu Focus, całych trybów gry i darmowych Warframes. Pomijanie ich oznacza pomijanie samej gry.",
+            "**Ślepe ufanie starym tier listom.** Rankingi społeczności (takie jak na Overframe) nie nadążają za reworkami — ranga frame'a może odzwierciedlać to, jak grało się nim lata temu. Graj tym, co sprawia Ci frajdę; prawie wszystko poradzi sobie na podstawowej mapie gwiezdnej. Zobacz nasz [poradnik o Tier Listach](/guides/tier-list) po aktualny kontekst.",
+            "**Słabe modowanie.** Sprzęt bez modów drastycznie traci na sile w połowie mapy gwiezdnej. Jeśli wrogowie wydają się gąbkami na pociski, ulepsz mody, zanim zrzucisz winę na broń.",
+            "**Spojlerowanie sobie fabuły.** Fabuła Warframe ma momenty, które naprawdę wywołują opad szczęki. Unikaj spojlerów z zadań — warto podejść do nich w ciemno.",
+            "**Grindowanie jednej rzeczy do wypalenia.** Rotuj aktywności: zadanie, potem farmowanie frame'a, potem trochę expienia. Warframe nagradza regularną grę, a nie maratony."
+          ]
+        },
+        {
+          "type": "info",
+          "text": "Jeśli kiedykolwiek poczujesz się zagubiony — klasyczny moment typu „mam 40 godzin na liczniku i nie mam pojęcia, co robię” — to normalne i powszechne. Wróć do podstaw: zrób kolejne zadanie, odblokuj kolejne Junction, wytwórz jedną rzecz. Postęp się kumuluje."
+        }
+      ]
+    },
+    {
+      "id": "opens-up",
+      "title": "Kiedy gra się „otwiera”?",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Warframe rozwija się etapami powiązanymi z zadaniami i mapą gwiezdną. Oto ogólny zarys — dokładne wymagania zmieniają się wraz z aktualizacjami, więc sprawdź [poradnik o zadaniach](/guides/quests) oraz [poradnik o progresji](/guides/progression) po aktualną kolejność. **Zadbaliśmy o to, by opisy były wolne od spojlerów.**"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Kamień milowy",
+              "Mniej więcej kiedy",
+              "Co odblokowuje"
+            ],
+            "rows": [
+              [
+                "Ukończenie Vor's Prize",
+                "1. godzina",
+                "Mapa gwiezdna, Twój statek, Foundry, Market"
+              ],
+              [
+                "Wczesne zadania fabularne",
+                "Pierwsze ~20–40 godz.",
+                "Archwing, nowe Warframes, sprzęt i więcej planet"
+              ],
+              [
+                "The Second Dream (główne zadanie)",
+                "Mid-game",
+                "Zmieniająca zasady gry nowa warstwa Twojego Tenno — bez spojlerów, po prostu to zrób"
+              ],
+              [
+                "Ukończenie mapy gwiezdnej",
+                "~50–100 godz.",
+                "The Steel Path (tryb trudny) i nagrody w postaci Steel Essence"
+              ],
+              [
+                "The New War i późne zadania",
+                "Late game",
+                "Wielki punkt kulminacyjny fabuły oraz systemy endgame: Helminth, Railjack, Archon Shards"
+              ]
+            ],
+            "note": "Podane godziny są szacunkowe — tempo każdego gracza jest inne. Nie porównuj się do weterana z 2000 godzin na liczniku."
+          }
+        },
+        {
+          "type": "p",
+          "text": "Większość graczy zgadza się, że gra naprawdę „klika”, gdy ukończy się mapę gwiezdną, a systemy Operatora i Focus zaczną działać. Stamtąd przechodzisz do pętli endgame, takich jak [Steel Path](/guides/steel-path), polowania na Eidolony i strefy otwartego świata. Istnieje nawet alternatywny tryb dostępny na wczesnym etapie, [The Duviri Paradox](/guides/duviri), jeśli chcesz odmiany — ale główna ścieżka fabularna powinna pozostać Twoim priorytetem jako początkującego."
+        }
+      ]
+    },
+    {
+      "id": "help-next",
+      "title": "Tempo gry, pomoc i co robić dalej",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Warframe nigdzie się nie wybiera — traktuj grę jak hobby, a nie sprint. Zdrowa sesja nowego gracza wygląda tak: zrób zadanie, wyfarm części jednego frame'a, podbij poziom jednej lub dwóch broni, a potem wyloguj się, zostawiając coś do budowy w Foundry. Powtórz. Mastery Rank i potęga będą kumulować się same."
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "**Dołącz do klanu jak najwcześniej.** Klany dają dostęp do badań w Dojo — broni i sprzętu, których dosłownie nie zdobędziesz w żaden inny sposób — oraz ludzi, którzy odpowiedzą na Twoje pytania.",
+            "**Korzystaj z czatu regionalnego (Region) i społeczności.** r/Warframe oraz oficjalny Discord są niezwykle przyjazne dla nowicjuszy. Zapytaj, zanim zaczniesz grindować w ciemno.",
+            "**Miej otwartą wiki** pod adresem [wiki.warframe.com](https://wiki.warframe.com/) dla dokładnych miejsc dropu i statystyk.",
+            "**Dodaj do zakładek narzędzia handlowe** na tej stronie, aby nikt nigdy nie naciągnął Cię przy wymianie — zacznij od [katalogu narzędzi społecznościowych](/tools)."
+          ]
+        },
+        {
+          "type": "info",
+          "title": "Lista zadań „Właśnie zacząłem, co teraz?”",
+          "text": "1) Ukończ Vor's Prize → 2) Wytwórz Rhino z Jackala na Wenus → 3) Podążaj za znacznikami zadań i odblokowuj Junctions → 4) Załóż mody Serration/Vitality i wbij 30. rangę na sprzęcie → 5) Wydaj swoje 50 plat na miejsca (slots) → 6) Dołącz do klanu → 7) Nie spiesz się, nie daj się oszukać, unikaj spojlerów."
+        },
+        {
+          "type": "links",
+          "links": [
+            {
+              "label": "Najlepsze Warframes dla początkujących",
+              "to": "/guides/beginner-warframes",
+              "icon": "robot-happy",
+              "note": "Którego frame'a farmić jako pierwszego"
+            },
+            {
+              "label": "Mapa drogowa postępu",
+              "to": "/guides/progression",
+              "icon": "map-marker-path",
+              "note": "Kolejność odblokowywania wszystkiego"
+            },
+            {
+              "label": "Jak zdobyć Platinum",
+              "to": "/guides/platinum",
+              "icon": "diamond-stone",
+              "note": "Zarabiaj plat bez płacenia"
+            },
+            {
+              "label": "Mody wyjaśnione",
+              "to": "/guides/mods",
+              "icon": "puzzle",
+              "note": "Prawie całe źródło potęgi"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Jaki jest najlepszy startowy Warframe w Warframe?",
+      "a": "Excalibur, Volt i Mag są równie dobrzy — wybierz na podstawie stylu gry. Excalibur to najbardziej wybacząca błędy, wszechstronna postać i najbezpieczniejszy pierwszy wybór, Volt jest szybki i elastyczny, a Mag to skupiona na umiejętnościach postać do kontroli tłumu. Pozostałe dwa pancerze (oraz dziesiątki innych) będziesz mógł wyfarmić później, więc to decyzja o niskiej stawce. Zobacz [poradnik o Warframe dla początkujących](/guides/beginner-warframes) po pełną analizę."
+    },
+    {
+      "q": "Co powinienem zrobić po ukończeniu Vor's Prize?",
+      "a": "Podążaj za znacznikami zadań i odblokowuj nowe planety, kończąc Junctions. Twoim pierwszym dużym celem jest wytworzenie Rhino z bossa Jackal na Wenus — jego Iron Skin utrzyma Cię przy życiu, podczas gdy będziesz się uczyć gry. Po drodze wbijaj 30. rangę na swoim sprzęcie i zacznij używać kluczowych modów, takich jak Serration i Vitality. [Poradnik o progresji](/guides/progression) przedstawia pełną kolejność."
+    },
+    {
+      "q": "Na co powinienem wydać darmowe 50 Platinum?",
+      "a": "W pierwszej kolejności na miejsca (slots) na Warframe i broń — można je kupić tylko za platynę, są tanie, a miejsce w ekwipunku szybko się skończy. Następnie na Orokin Reactors/Catalysts (ziemniaki), jeśli nie masz żadnych z Nightwave. Nie wydawaj platyny na frame'y ani bronie (je można wyfarmić) ani na przyspieszanie czasu budowy w Foundry. Pamiętaj, że darmowe startowe 50 można wydać, ale nie można nim handlować. Więcej szczegółów w [poradniku o Platinum](/guides/platinum)."
+    },
+    {
+      "q": "How do I get more Warframes for free?",
+      "a": "Kup schemat (blueprint) frame'a w Markecie za kredyty, wyfarm jego trzy części (zazwyczaj z bossa planety), zbuduj je w Foundry, a następnie zmontuj gotowego frame'a. Kilka zadań fabularnych nagradza również kompletnym Warframe za darmo. Wszystko, co ma wpływ na rozgrywkę w Warframe, można wyfarmić — Platinum kupuje jedynie wygodę."
+    },
+    {
+      "q": "Po jakim czasie Warframe się „otwiera”?",
+      "a": "Zazwyczaj po odblokowaniu większości mapy gwiezdnej i ukończeniu wczesnych zadań fabularnych — najczęściej między 40 a 100 godzinami gry. Punktem zwrotnym jest moment, gdy systemy Operatora i Focus stają się dostępne, a [Steel Path](/guides/steel-path) zostaje odblokowana. Trudne pierwsze godziny to norma; przebrnij przez nie, a gra stanie się zupełnie inną, znacznie lepszą produkcją."
+    },
+    {
+      "q": "Czy Warframe to pay-to-win?",
+      "a": "Nie. Platinum kupuje wygodę (pomijanie farmowania) oraz przedmioty kosmetyczne, a nie czystą siłę, a wszystko, co wpływa na rozgrywkę, można zdobyć za darmo. Ponieważ samym Platinum można handlować między graczami, możesz sfinansować niemal wszystko, po prostu sprzedając części Prime i mody. Zobacz [Jak zdobyć Platinum](/guides/platinum)."
+    },
+    {
+      "q": "Jak uniknąć oszustwa podczas handlu?",
+      "a": "Uczciwe transakcje zawsze odbywają się przy użyciu bezpiecznego okna handlu, w którym obaj gracze potwierdzają dokładne przedmioty przed sfinalizowaniem — nikt nigdy nie będzie wymagał, abyś „oddał przedmiot najpierw”. Ignoruj każdego, kto obiecuje „podwojenie Twojej platyny” lub Cię pośpiesza. Przed zaakceptowaniem oferty sprawdź rzeczywistą wartość przedmiotu za pomocą narzędzi rynkowych, takich jak [Screener](/screener) lub [Flip finder](/flip)."
+    },
+    {
+      "q": "Czy muszę szybko wbijać Mastery Rank?",
+      "a": "Nie — Mastery Rank rośnie naturalnie, gdy po raz pierwszy wbijasz 30. rangę na nowych broniach i frame'ach. Odblokowuje ona dostęp do sprzętu wyższego poziomu, dziennych limitów handlu oraz niektórych treści, ale to nie wyścig i nie ma żadnych korzyści z sztucznego jej grindowania. Po prostu zabieraj nowy sprzęt na misje. Zobacz [poradnik o Mastery Rank](/guides/mastery-rank)."
+    }
+  ],
+  "videos": [
+    {
+      "id": "yeGZqhDrRvw",
+      "title": "Warframe Beginner's Guide 2025: Episode #1 Beginner Choices & Walkthrough!",
+      "channel": "iFlynn"
+    },
+    {
+      "id": "nF1fHE646xk",
+      "title": "ULTIMATE Beginner's Guide to Warframe (Getting Started in 2025+)",
+      "channel": "DrybearGamers"
+    },
+    {
+      "id": "j8HBB7aArdg",
+      "title": "Warframe New Player Tips & Tricks 2025!",
+      "channel": "Pupsker"
+    },
+    {
+      "id": "fwI6RW6mrgM",
+      "title": "Warframe Beginner Guide: New to Warframe? Start Here! | Episode 1",
+      "channel": "Tipsy"
+    }
+  ],
+  "sources": [
+    {
+      "label": "Official Warframe Wiki",
+      "href": "https://wiki.warframe.com/",
+      "icon": "book-open-page-variant",
+      "note": "Canonical source for drops, stats & quests"
+    },
+    {
+      "label": "The Warframe Wiki has moved to wiki.warframe.com (PSA)",
+      "href": "https://reddit.com/r/Warframe/comments/1iemokz/the_warframe_wiki_is_officially_moving_from/",
+      "icon": "reddit",
+      "note": "r/Warframe"
+    },
+    {
+      "label": "'40 hours in and I have no idea what I'm doing' — the universal new-player mood",
+      "href": "https://reddit.com/r/Warframe/comments/1dpm3qo/40_hours_in_and_i_have_no_idea_what_im_doing_why/",
+      "icon": "reddit",
+      "note": "r/Warframe"
+    },
+    {
+      "label": "Got scammed out of a Legendary Core as a new player",
+      "href": "https://reddit.com/r/Warframe/comments/1sonq6u/got_scammed_out_of_a_legendary_core_as_a_new/",
+      "icon": "reddit",
+      "note": "Why you check prices before trading"
+    },
+    {
+      "label": "When DE considers a player to no longer be new",
+      "href": "https://reddit.com/r/Warframe/comments/ietejk/lets_not_forget_when_de_considers_a_player_to_not/",
+      "icon": "reddit",
+      "note": "r/Warframe"
+    }
+  ],
+  "related": [
+    {
+      "label": "Najlepsze Warframes dla początkujących",
+      "to": "/guides/beginner-warframes",
+      "icon": "robot-happy",
+      "note": "Którego frame'a wytworzyć jako pierwszego"
+    },
+    {
+      "label": "Mapa drogowa postępu",
+      "to": "/guides/progression",
+      "icon": "map-marker-path",
+      "note": "Kolejność odblokowywania gry"
+    },
+    {
+      "label": "Jak zdobyć Platinum",
+      "to": "/guides/platinum",
+      "icon": "diamond-stone",
+      "note": "Zarabiaj walutę premium za darmo"
+    },
+    {
+      "label": "Mody wyjaśnione",
+      "to": "/guides/mods",
+      "icon": "puzzle",
+      "note": "Skąd pochodzi Twoja prawdziwa potęga"
+    },
+    {
+      "label": "Poradnik o Mastery Rank",
+      "to": "/guides/mastery-rank",
+      "icon": "star-circle",
+      "note": "Zwiększaj poziom swojego konta"
+    },
+    {
+      "label": "Narzędzia społecznościowe",
+      "to": "/tools",
+      "icon": "toolbox",
+      "note": "Wiki, Overframe, narzędzia rynkowe i więcej"
+    }
+  ],
+  "updated": "2026-07-18"
+}

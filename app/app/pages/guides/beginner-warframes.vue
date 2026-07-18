@@ -6,5 +6,6 @@
 </template>
 
 <script setup lang="ts">
-import guide from '~/data/guides/beginner-warframes'
+import enGuide from '~/data/guides/beginner-warframes'
+const guide = await useLocalizedGuide('beginner-warframes', enGuide)
 </script>

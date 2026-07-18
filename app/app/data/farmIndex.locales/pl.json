@@ -1,0 +1,383 @@
+{
+  "targets": [
+    {
+      "name": "Credits",
+      "aliases": [
+        "credit",
+        "money",
+        "cash",
+        "hollars"
+      ],
+      "kind": "currency",
+      "guide": "credits",
+      "route": "/guides/credits#hollvania",
+      "hint": "Sejfy Höllvania Techrot (Chroma), Index, Profit-Taker.",
+      "icon": "mdi-circle-multiple-outline"
+    },
+    {
+      "name": "Platinum",
+      "aliases": [
+        "plat",
+        "premium currency"
+      ],
+      "kind": "currency",
+      "guide": "platinum",
+      "route": "/guides/platinum#what-sells",
+      "hint": "Free-to-play: sprzedawaj części Prime, mody i riveny.",
+      "icon": "mdi-cash-multiple"
+    },
+    {
+      "name": "Endo",
+      "aliases": [
+        "ayatan",
+        "ayatan sculpture",
+        "ayatan star",
+        "mod upgrade currency"
+      ],
+      "kind": "currency",
+      "guide": "endo",
+      "route": "/guides/endo",
+      "hint": "Rzeźby Ayatan, Arbitrations i misje bogate w Endo.",
+      "icon": "mdi-hexagon-multiple-outline"
+    },
+    {
+      "name": "Ducats",
+      "aliases": [
+        "ducat",
+        "orokin ducats",
+        "baro currency",
+        "prime junk"
+      ],
+      "kind": "currency",
+      "guide": "relics",
+      "route": "/guides/relics#cash-out",
+      "hint": "Sprzedawaj niechciane części Prime do Baro za Ducats.",
+      "icon": "mdi-store"
+    },
+    {
+      "name": "Focus",
+      "aliases": [
+        "focus points",
+        "operator xp",
+        "focus school"
+      ],
+      "kind": "currency",
+      "guide": "focus",
+      "route": "/guides/focus#best-farms",
+      "hint": "Załóż Lens na poziomowaną broń; ESO i Onslaught to szybkie sposoby na farmę.",
+      "icon": "mdi-eye-outline"
+    },
+    {
+      "name": "Kuva",
+      "aliases": [
+        "riven reroll",
+        "kuva fuel",
+        "lich currency"
+      ],
+      "kind": "currency",
+      "guide": "kuva",
+      "route": "/guides/kuva#core-farms",
+      "hint": "Misje Kuva Survival i Siphon/Flood na Kuva Fortress.",
+      "icon": "mdi-water-outline"
+    },
+    {
+      "name": "Standing",
+      "aliases": [
+        "reputation",
+        "rep",
+        "syndicate standing",
+        "faction rep"
+      ],
+      "kind": "reputation",
+      "guide": "standing",
+      "route": "/guides/standing#earning-main",
+      "hint": "Osiągnij dzienny limit Standing dla każdego syndykatu za pomocą medalionów i tokenów.",
+      "icon": "mdi-handshake-outline"
+    },
+    {
+      "name": "Steel Essence",
+      "aliases": [
+        "essence",
+        "steel path currency",
+        "kuya"
+      ],
+      "kind": "currency",
+      "guide": "steel-path",
+      "route": "/guides/steel-path",
+      "hint": "Łupy z Acolyte i skrytki z zasobami na Steel Path.",
+      "icon": "mdi-fire"
+    },
+    {
+      "name": "Orokin Cells",
+      "aliases": [
+        "orokin cell",
+        "cells"
+      ],
+      "kind": "resource",
+      "guide": "resources",
+      "route": "/guides/resources#staples",
+      "hint": "Saturn (Helene), Deimos i Orb Vallis; boss Kela De Thaym.",
+      "icon": "mdi-hexagon-outline"
+    },
+    {
+      "name": "Neurodes",
+      "aliases": [
+        "neurode",
+        "sensor"
+      ],
+      "kind": "resource",
+      "guide": "resources",
+      "route": "/guides/resources#staples",
+      "hint": "Deimos, Lua i Eris; skrytki na Orb Vallis są niezawodne.",
+      "icon": "mdi-sine-wave"
+    },
+    {
+      "name": "Neural Sensors",
+      "aliases": [
+        "neural sensor"
+      ],
+      "kind": "resource",
+      "guide": "resources",
+      "route": "/guides/resources#staples",
+      "hint": "Jupiter (Io) i Kuva Fortress.",
+      "icon": "mdi-chip"
+    },
+    {
+      "name": "Plastids",
+      "aliases": [
+        "plastid"
+      ],
+      "kind": "resource",
+      "guide": "resources",
+      "route": "/guides/resources#staples",
+      "hint": "Saturn, Uranus i Orb Vallis.",
+      "icon": "mdi-cube-outline"
+    },
+    {
+      "name": "Rubedo",
+      "aliases": [],
+      "kind": "resource",
+      "guide": "resources",
+      "route": "/guides/resources#staples",
+      "hint": "Pluto, Earth i Orb Vallis.",
+      "icon": "mdi-cube-outline"
+    },
+    {
+      "name": "Argon Crystals",
+      "aliases": [
+        "argon",
+        "argon crystal",
+        "decaying resource"
+      ],
+      "kind": "resource",
+      "guide": "resources",
+      "route": "/guides/resources#argon",
+      "hint": "Tylko w Void, ulega rozpadowi w ~24h — farmuj tuż przed wytworzeniem.",
+      "icon": "mdi-diamond-outline"
+    },
+    {
+      "name": "Tellurium",
+      "aliases": [],
+      "kind": "resource",
+      "guide": "resources",
+      "route": "/guides/resources#awkward-ones",
+      "hint": "Misje Archwing, Grineer Sealab i szczątki Railjack.",
+      "icon": "mdi-atom-variant"
+    },
+    {
+      "name": "Oxium",
+      "aliases": [
+        "oxium osprey"
+      ],
+      "kind": "resource",
+      "guide": "resources",
+      "route": "/guides/resources#awkward-ones",
+      "hint": "Zabijaj Oxium Ospreys zanim ulegną samozniszczeniu (Io, Outer Terminus).",
+      "icon": "mdi-quadcopter"
+    },
+    {
+      "name": "Nitain Extract",
+      "aliases": [
+        "nitain"
+      ],
+      "kind": "resource",
+      "guide": "resources",
+      "route": "/guides/resources#awkward-ones",
+      "hint": "Oferty za Nightwave cred, skrytki z sabotażu i alerty.",
+      "icon": "mdi-flask-outline"
+    },
+    {
+      "name": "Cryotic",
+      "aliases": [
+        "cryotic"
+      ],
+      "kind": "resource",
+      "guide": "resources",
+      "route": "/guides/resources#cheat-sheet",
+      "hint": "Dowolna misja Excavation — im więcej ekstraktorów, tym więcej Cryotic.",
+      "icon": "mdi-snowflake"
+    },
+    {
+      "name": "Common resources",
+      "aliases": [
+        "ferrite",
+        "alloy plate",
+        "salvage",
+        "nano spores",
+        "polymer bundle",
+        "circuits",
+        "gallium",
+        "morphics",
+        "control module",
+        "detonite",
+        "fieldron",
+        "mutagen"
+      ],
+      "kind": "resource",
+      "guide": "resources",
+      "route": "/guides/resources#cheat-sheet",
+      "hint": "Użyj tabeli ściągawki z zasobami, aby znaleźć najlepszy węzeł dla każdego surowca.",
+      "icon": "mdi-cube-scan"
+    },
+    {
+      "name": "Prime parts",
+      "aliases": [
+        "prime",
+        "prime warframe",
+        "prime weapon",
+        "prime set",
+        "relic rewards"
+      ],
+      "kind": "gear",
+      "guide": "relics",
+      "route": "/guides/relics#relic-basics",
+      "hint": "Otwieraj odpowiednie Void Relics na szczelinach; ulepszaj do Radiant, aby zwiększyć szanse.",
+      "icon": "mdi-diamond-stone"
+    },
+    {
+      "name": "Warframe parts",
+      "aliases": [
+        "warframe",
+        "frame parts",
+        "new frame",
+        "farm a warframe"
+      ],
+      "kind": "gear",
+      "guide": "beginner-warframes",
+      "route": "/guides/beginner-warframes",
+      "hint": "Który frame farmować jako pierwszy i gdzie wypadają te łatwe do zdobycia.",
+      "icon": "mdi-robot-outline"
+    },
+    {
+      "name": "Rivens",
+      "aliases": [
+        "riven",
+        "riven mod",
+        "veiled riven"
+      ],
+      "kind": "mod",
+      "guide": "riven",
+      "route": "/guides/riven",
+      "hint": "Sorties i Steel Path; rerolluj za pomocą Kuva.",
+      "icon": "mdi-star-four-points-outline"
+    },
+    {
+      "name": "Arcanes",
+      "aliases": [
+        "arcane",
+        "arcane enhancement"
+      ],
+      "kind": "gear",
+      "guide": "arcanes",
+      "route": "/guides/arcanes",
+      "hint": "Eidolons, Profit-Taker, Deep Archimedea i otwarte światy.",
+      "icon": "mdi-shimmer"
+    },
+    {
+      "name": "Archon Shards",
+      "aliases": [
+        "archon shard",
+        "shards",
+        "tauforged"
+      ],
+      "kind": "progression",
+      "guide": "archon-shards",
+      "route": "/guides/archon-shards",
+      "hint": "Cotygodniowy Archon Hunt — jeden gwarantowany odłamek na tydzień.",
+      "icon": "mdi-cards-diamond-outline"
+    },
+    {
+      "name": "Mods",
+      "aliases": [
+        "mod",
+        "mod farming",
+        "rare mods",
+        "primed mods"
+      ],
+      "kind": "mod",
+      "guide": "mods",
+      "route": "/guides/mods",
+      "hint": "Które mody mają znaczenie, gdzie wypadają i jak zwiększać ich rangę.",
+      "icon": "mdi-view-grid-plus-outline"
+    },
+    {
+      "name": "Forma",
+      "aliases": [
+        "forma blueprint"
+      ],
+      "kind": "gear",
+      "guide": "relics",
+      "route": "/guides/relics#reward-pool",
+      "hint": "Częsta nagroda z Void Relic — zachowaj zapasowe podczas otwierania reliktów.",
+      "icon": "mdi-vector-triangle"
+    },
+    {
+      "name": "Eidolon Shards",
+      "aliases": [
+        "eidolon",
+        "brilliant shard",
+        "radiant eidolon shard",
+        "tridolon"
+      ],
+      "kind": "progression",
+      "guide": "eidolon",
+      "route": "/guides/eidolon",
+      "hint": "Poluj na Eidolons w nocy na Plains of Eidolon.",
+      "icon": "mdi-weather-night"
+    },
+    {
+      "name": "Intrinsics",
+      "aliases": [
+        "railjack",
+        "intrinsic",
+        "command intrinsic"
+      ],
+      "kind": "progression",
+      "guide": "railjack",
+      "route": "/guides/railjack",
+      "hint": "Rób misje Railjack, aby rozwijać Intrinsics i farmować szczątki.",
+      "icon": "mdi-rocket-launch-outline"
+    },
+    {
+      "name": "Incarnon Genesis",
+      "aliases": [
+        "incarnon",
+        "duviri rewards",
+        "circuit"
+      ],
+      "kind": "gear",
+      "guide": "duviri",
+      "route": "/guides/duviri",
+      "hint": "Cotygodniowy Duviri Circuit rotuje Incarnon Adapters i frames.",
+      "icon": "mdi-horse-variant"
+    }
+  ],
+  "kinds": {
+    "resource": "Zasoby",
+    "currency": "Waluta",
+    "gear": "Sprzęt i części",
+    "mod": "Mody",
+    "progression": "Postęp",
+    "reputation": "Standing"
+  }
+}

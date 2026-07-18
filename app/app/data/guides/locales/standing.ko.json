@@ -1,0 +1,479 @@
+{
+  "slug": "standing",
+  "eyebrow": "지식 센터 · Standing & Syndicates",
+  "title": "Standing & Syndicate 가이드",
+  "lede": "Standing은 Warframe의 평판 통화로, augment mods, Amp 부품, arcanes, Nitain을 획득하기 위한 관문입니다. 일일 상한선, 6대 main syndicates, 모든 오픈 월드 faction, 그리고 미션을 여러 번 도는 대신 단 몇 분 만에 일일 상한선에 도달하는 방법을 알아보세요.",
+  "category": "farming",
+  "readMins": 9,
+  "stats": [
+    {
+      "num": "6",
+      "label": "main syndicates",
+      "tone": "gold"
+    },
+    {
+      "num": "16,000",
+      "label": "기본 일일 Standing 상한선",
+      "tone": "good"
+    },
+    {
+      "num": "5",
+      "label": "각각 최대 랭크를 달성하기 위한 랭크",
+      "tone": "alt"
+    },
+    {
+      "num": "00:00 UTC",
+      "label": "일일 Standing 초기화",
+      "tone": "good"
+    }
+  ],
+  "sections": [
+    {
+      "id": "how-it-works",
+      "title": "Standing 및 일일 상한선 작동 방식",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Standing** (또는 **reputation** 혹은 **rep**)은 Warframe의 각 faction에서 획득하는 충성도 통화입니다. 이를 소모하여 **Warframe/weapon augment mods**, syndicate 무기 및 스킨, 오퍼레이터 **Amp** 부품, **arcanes**, 외형 아이템 등을 해금할 수 있습니다. 크레딧이나 플래티넘과 달리 Standing은 거래할 수 없으며, 플레이를 통해 획득하고 각 faction별로 개별 추적됩니다."
+        },
+        {
+          "type": "p",
+          "text": "주의할 점은 **일일 Standing 상한선(daily standing cap)**이 존재한다는 것입니다. 매일 각 faction당 일정량만 적립할 수 있으며, 이 상한선은 플레이어의 **Mastery Rank**에 따라 `16,000 + (500 × MR)`로 비례하여 증가합니다. 따라서 갓 시작한 MR0 플레이어도 하루에 syndicate당 16,000을 적립할 수 있고, MR10은 21,000, MR30은 31,000까지 제한됩니다. [Mastery Rank](/guides/mastery-rank)를 올리는 것은 모든 faction의 진행 속도를 한 번에 빨라지게 하는 가장 큰 원동력입니다."
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "일일 상한선 공식",
+              "v": "16,000 + (500 × Mastery Rank)"
+            },
+            {
+              "k": "상한선 예시",
+              "v": "MR0 기준 16,000 · MR10 기준 21,000 · MR30 기준 31,000"
+            },
+            {
+              "k": "초기화",
+              "v": "매일 00:00 UTC (GMT 자정)"
+            },
+            {
+              "k": "추적 방식",
+              "v": "모든 syndicate별로 개별 추적"
+            },
+            {
+              "k": "획득 시작 방법",
+              "v": "해당 faction에 서약(Pledge)한 후, 해당 Sigil을 장착"
+            }
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "상한선은 **이월되지 않고 소멸**하므로, 사용하지 않은 일일 획득량은 사라집니다. 각 faction마다 고유한 상한선이 있으므로, 한 번에 몰아서 장시간 플레이하는 것보다 매일 여러 faction을 몇 분씩 플레이하는 것이 훨씬 효율적입니다. 00:00 UTC 초기화 시간을 기준으로 습관을 들여보세요."
+        }
+      ]
+    },
+    {
+      "id": "six-syndicates",
+      "title": "6대 main syndicates",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "오비터(Orbiter)의 **Syndicate 콘솔**(또는 릴레이)에서 접근할 수 있는 6대 main syndicates는 클래식한 평판 파밍 방식입니다. 원하는 곳에 **서약(Pledge)**(무료)한 뒤, Warframe에 장착하는 외형 엠블럼인 **Sigil**을 장착하세요. 그 이후부터는 미션에서 획득하는 affinity의 일부가 해당 syndicate의 Standing으로 자동 변환됩니다."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Syndicate",
+              "설정 / 테마"
+            ],
+            "rows": [
+              [
+                "Steel Meridian",
+                "일반 시민들을 보호하는 Grineer 탈영병들"
+              ],
+              [
+                "Arbiters of Hexis",
+                "규율과 텐노(Tenno)의 자아 성찰 추구"
+              ],
+              [
+                "Cephalon Suda",
+                "지식, 데이터 및 기억의 보존"
+              ],
+              [
+                "The Perrin Sequence",
+                "경제적 균형을 추구하는 Corpus 개혁파"
+              ],
+              [
+                "Red Veil",
+                "피를 통해 타락을 정화하는 광신도들"
+              ],
+              [
+                "New Loka",
+                "'순수한' 지구와 인류의 복원"
+              ]
+            ],
+            "note": "각 syndicate는 고유한 Warframe/weapon augment mods, syndicate 무기 및 스킨, 성유물 팩, 조각상, Captura 배경을 판매합니다. 원하는 특정 augments를 제공하는 faction을 첫 번째로 선택하세요. 현재 정확한 보상 목록은 게임 내 콘솔이나 위키를 확인하시기 바랍니다."
+          }
+        },
+        {
+          "type": "warn",
+          "text": "이 6개 세력은 **동맹/대립 관계망**으로 얽혀 있습니다. 한 곳의 Standing을 올리면 라이벌 세력의 Standing은 서서히 **감소**합니다. 복귀 유저가 손도 대지 않은 faction의 평판이 조용히 떨어져 있는 것을 보게 되는 이유가 바로 이 때문입니다. 이는 정상적인 현상이며, 콘솔에서 장착한 Sigil이 미치는 정확한 +/− 영향을 보여줍니다. 대부분의 플레이어는 한두 개의 faction을 주로 올린 다음, Sigil을 교체하여 나머지를 채웁니다."
+        }
+      ]
+    },
+    {
+      "id": "earning-main",
+      "title": "Sigils, 메달리온(medallions) 및 희생물(sacrifices)",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "main syndicate 평판을 올리는 방법은 세 가지가 있으며, 베테랑들은 이 방법들을 중첩하여 빠르게 랭크를 올립니다:"
+        },
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "h": "올바른 Sigil 착용하기",
+              "p": "Standing은 affinity에 비례하여 증가하므로, 적 처치 수가 많은 미션이라면 무엇이든 평판을 채워줍니다. 여기에는 주변 분대원이 처치하여 공유되는 affinity도 포함됩니다. 매칭을 시작하기 *전에* 원하는 faction의 Sigil을 장착하세요. 그렇지 않으면 획득한 경험치(XP)가 낭비됩니다."
+            },
+            {
+              "h": "Syndicate 메달리온(Medallions) 사냥하기",
+              "p": "각 faction은 콘솔에 일일 미션을 등록합니다. 해당 타일셋에는 수집 가능한 메달리온이 숨겨져 있습니다. 이를 획득한 후 syndicate에 기부하면 대량의 Standing을 얻을 수 있습니다. 결정적으로, 메달리온 기부는 일반적인 일일 상한선을 초과하여 평판을 올릴 수 있으므로 가장 빠르게 랭크를 올리는 방법입니다."
+            },
+            {
+              "h": "랭크 업을 위한 희생물(sacrifice) 지불하기",
+              "p": "새로운 랭크로 올라가려면 충분한 누적 Standing과 해당 faction이 요구하는 아이템을 일회성 '희생물(sacrifice)'로 지불해야 합니다. 낮은 랭크에서는 일반 자원을 요구하지만, 높은 랭크에서는 희귀 mods, 자원 또는 특정 syndicate 전용 아이템을 요구합니다. 콘솔에 필요한 항목이 정확히 표시됩니다."
+            }
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "**메달리온을 모아두세요.** 기부 시 일일 상한선을 초과할 수 있으므로, 메달리온을 모아두었다가 랭크 희생물을 지불한 직후에 한꺼번에 반납하면 다음 티어로 단숨에 도약할 수 있습니다. 전리품 레이더(loot-radar)나 보물 감지(treasure-detector) mod를 장착하면 숨겨진 메달리온을 매우 쉽게 찾을 수 있습니다."
+        },
+        {
+          "type": "info",
+          "text": "Syndicate **augment mods는 거래가 가능**하므로, 랭크를 최대치로 올린 faction은 안정적인 플래티넘 수입원이 됩니다. [Platinum 가이드](/guides/platinum)에서 거래 루프를 배우고, [market screener](/screener)에서 augments 시세를 확인한 뒤, [flip finder](/flip)를 통해 매수/매도 차익을 노려보세요."
+        }
+      ]
+    },
+    {
+      "id": "open-worlds",
+      "title": "오픈 월드 및 허브 factions",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "오픈 월드 factions는 다르게 작동합니다. Sigils와 affinity 대신 물고기, 가공된 보석, 보존 태그, 토큰, 바운티(bounty) 보상 등의 **자원을 상인에게 제출**해야 합니다. 이 역시 동일하게 독립적으로 추적되는 `16,000 + 500 × MR` 일일 상한선 규칙을 따르므로, 하루에 여러 세력의 평판을 최대로 채울 수 있습니다."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "허브 · 오픈 월드",
+              "Faction",
+              "제출 대상",
+              "Standing 구매 품목 (일반)"
+            ],
+            "rows": [
+              [
+                "Cetus · Plains of Eidolon",
+                "Ostron",
+                "바운티, 물고기, 가공된 보석",
+                "Zaw 부품 (Hok), 낚시 및 채광 장비, 가면 및 배경"
+              ],
+              [
+                "Fortuna · Orb Vallis",
+                "Solaris United",
+                "바운티, 물고기, 보석, 부채 채권(debt-bonds)",
+                "Kitgun 부품 (Rude Zuud), MOA 동반자 (Legs), 장비"
+              ],
+              [
+                "Necralisk · Cambion Drift",
+                "Entrati",
+                "바운티, 물고기, 보존 태그, 보석, 토큰",
+                "Mods, arcanes, Necramech 장비, 외형 아이템"
+              ],
+              [
+                "Sanctum Anatomica",
+                "Cavia",
+                "Netracells 및 Sanctum 바운티",
+                "Whispers-in-the-Walls arcanes 및 mods"
+              ],
+              [
+                "Höllvania (1999)",
+                "The Hex",
+                "1999 활동 및 바운티",
+                "새로운 arcanes, 무기, mods, 외형 아이템"
+              ]
+            ],
+            "note": "보상 목록은 업데이트마다 변경되므로 위키에서 실시간 제공 품목을 확인하세요. 원자재 자체에 대해서는 Resources 가이드를 참조하세요."
+          }
+        },
+        {
+          "type": "tip",
+          "text": "상한선에 가까워지면 이러한 허브(특히 Deimos 및 최신 지역)에서 **토큰 / wisp 시스템**을 사용하세요. 초과된 자원을 *보관 가능한* 토큰으로 변환한 다음 나중에 교환할 수 있으므로, 대량으로 낚시하거나 채광한 자원이 낭비되지 않습니다. 이러한 편의성 패치 덕분에 커뮤니티에서는 \"평판 토큰을 만들어 줘서 고맙다\"라며 환호했습니다."
+        },
+        {
+          "type": "p",
+          "text": "오픈 월드 자원은 [Resources 가이드](/guides/resources)의 제작 경제에도 기여하며, Eidolon/Orb 사냥은 아래의 오퍼레이터 factions와 직접 연결됩니다."
+        }
+      ]
+    },
+    {
+      "id": "other-factions",
+      "title": "알아두면 좋은 기타 Standing 상인",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "대형 syndicates 외에도 여러 전문 faction이 자체 Standing 트랙을 운영하고 있으며, 이곳에서 오퍼레이터 **Amps**, **arcanes**, Necramech 장비를 획득할 수 있습니다."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Faction",
+              "위치",
+              "획득 방법",
+              "사용처"
+            ],
+            "rows": [
+              [
+                "Cephalon Simaris",
+                "릴레이 (Sanctuary)",
+                "신서시스 스캔(Synthesis-scanning) 대상",
+                "전용 mods, 무기 및 유틸리티 설계도, Sanctuary 스캐너 위젯"
+              ],
+              [
+                "The Quills",
+                "Cetus (Onkko)",
+                "Eidolon 조각 교환",
+                "Amp 부품, arcanes, 포커스 렌즈(focus lenses)"
+              ],
+              [
+                "Vox Solaris",
+                "Fortuna (Little Duck)",
+                "Orb 전투 및 Vallis 자원",
+                "Amp 부품, 오퍼레이터 arcanes"
+              ],
+              [
+                "The Holdfasts",
+                "Zariman (Chrysalith)",
+                "Zariman 미션 → Voidplumes",
+                "Arcanes, mods, 외형 아이템"
+              ],
+              [
+                "Necraloid",
+                "Necralisk",
+                "Necramech 및 Deimos 활동",
+                "Necramech mods 및 부품"
+              ],
+              [
+                "Ventkids",
+                "Fortuna",
+                "K-Drive 묘기 및 레이스",
+                "K-Drive 부품 및 외형 아이템"
+              ],
+              [
+                "Conclave",
+                "릴레이 (Teshin)",
+                "PvP 매치",
+                "PvP mods, 외형 아이템, Captura"
+              ]
+            ],
+            "note": "Teshin은 Steel Path 상점도 운영하지만, 이는 Standing이 아닌 Steel Essence(재화)를 소모합니다. 자세한 내용은 Steel Path 가이드를 참조하세요."
+          }
+        },
+        {
+          "type": "info",
+          "text": "Eidolon 사냥용 Amp를 제작하시나요? The Quills와 Vox Solaris가 공급처이며, 두 곳 모두 오퍼레이터 성장에 연결되어 있습니다. 이를 [Focus 가이드](/guides/focus) 및 [Eidolon 가이드](/guides/eidolon)와 함께 확인해 보세요."
+        }
+      ]
+    },
+    {
+      "id": "fastest-cap",
+      "title": "Standing 상한선을 채우는 가장 빠른 방법",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "꼼수를 쓸 필요 없이 효율적인 루트만 따르면 됩니다. 신뢰할 수 있는 상시 유효한 플레이북은 다음과 같습니다:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**먼저 올바른 Sigil을 장착하세요.** Standing은 affinity를 따르므로, 적 처치 수가 많은 무한 미션(또는 빠른 affinity 노드)을 한 번만 돌면 main syndicate 상한선을 채우거나 거의 다 채울 수 있습니다. 절대 Sigil 없이 파밍하지 마세요.",
+            "**syndicate의 일일 미션을 수행하여 메달리온을 획득**한 다음 기부하세요. 기부는 일일 상한선을 우회하므로 한계를 돌파할 수 있는 방법입니다.",
+            "**오픈 월드 제출용 자원을 미리 파밍해 두세요.** 여유로운 세션 동안 물고기, 보석, 태그를 모아두었다가 초기화 시점에 제출하면 즉시 상한선을 채울 수 있습니다. 초과분은 토큰으로 변환하여 낭비되지 않도록 하세요.",
+            "**매일 여러 faction을 번갈아 가며 진행하세요.** 각 faction의 상한선은 독립적으로 적용되므로, 한 곳만 집중하는 것보다 두세 곳의 faction을 15분씩 순환하는 것이 훨씬 더 많은 총 Standing을 쌓을 수 있습니다.",
+            "**Mastery Rank를 올리세요.** MR이 1 오를 때마다 모든 faction의 일일 상한선이 500씩 증가합니다. 이는 전체 상한선을 영구적으로 높이는 유일한 방법입니다."
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "무기고(Arsenal)에서 Sigil의 **투명도를 거의 0에 가깝게 설정**하면 외형을 해치지 않으면서 Standing을 획득할 수 있습니다. 파밍용 Sigil을 항상 장착해 두기에 매우 유용한 팁입니다."
+        }
+      ]
+    },
+    {
+      "id": "nightwave",
+      "title": "Nightwave: 유사하지만 syndicate standing이 아닙니다",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Nightwave** 역시 헷갈리게 'standing'을 제공하지만, 이는 별도의 시즌제 시스템입니다. 순환식 도전 과제 트랙이라고 생각하시면 됩니다. **행동(Acts)**(일일, 주간 및 엘리트 주간 도전 과제)을 완료하여 랭크를 올리면, 각 랭크마다 보상과 함께 제공품 상점에서 사용할 수 있는 **Nightwave Cred**를 지급합니다."
+        },
+        {
+          "type": "list",
+          "items": [
+            "**일일 행동(Daily Acts)**은 규모가 작고 매일 초기화됩니다. **주간 및 엘리트 주간 행동(weekly and elite weekly Acts)**은 훨씬 더 많은 평판을 제공하므로 이를 우선적으로 수행하세요.",
+            "**Cred 상점의 필수 품목**은 게임 내에서 가장 가치 있는 아이템들입니다: **Nitain Extract**, **Orokin Reactors/Catalysts**('감자'), **Forma**, **Kuva**, 오라(Aura) mods 및 해당 시즌 전용 외형 아이템 등이 있습니다.",
+            "최종 티어를 지나서도 계속해서 Cred를 지급하는 반복 **Prestige** 랭크를 통해 계속 랭크를 올릴 수 있습니다.",
+            "시즌 사이에는 **Nightwave: Intermission**을 통해 상점과 남은 Cred를 계속 사용할 수 있으므로, 갑작스러운 초기화로 인해 낭패를 보는 일이 없습니다."
+          ]
+        },
+        {
+          "type": "warn",
+          "text": "시즌이 종료되면 시즌 한정 외형 아이템(및 간혹 frame)이 오랫동안 사라질 수 있기 때문에 플레이어들이 마지막 주에 몰려듭니다. 최고 랭크에 도달하기 위해 모든 행동(Act)을 완료할 필요는 없으므로 너무 조급하게 파밍하지 마세요. 다만 시즌이 끝나기 전에 Cred를 Nitain과 감자(Reactors/Catalysts)에 꼭 소모하시기 바랍니다."
+        }
+      ]
+    },
+    {
+      "id": "pitfalls",
+      "title": "자주 묻는 질문 및 함정",
+      "blocks": [
+        {
+          "type": "info",
+          "text": "**\"Grineer를 자비롭게 처치(mercy-kill)했더니 성계 지도가 빨갛게 변했어요\"** — 그것은 syndicate가 아닙니다. 플레이어는 자신이 지배하는 노드(빨간색으로 표시됨)에 세금을 부과하는 숙적 **Kuva Lich**를 생성한 것입니다. 이는 완전히 별개의 시스템이므로, [Kuva & Lich 가이드](/guides/kuva)로 이동하여 사냥법을 확인하세요."
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Sigil 없이 파밍하지 마세요.** Sigil 없이 획득한 affinity는 Standing을 낭비하는 것입니다.",
+            "**대립 세력의 평판 하락을 두려워하지 마세요.** 라이벌 세력의 평판이 약간 떨어지는 것은 의도된 설계입니다. 결국 Sigil을 번갈아 장착하고 라이벌 세력의 평판을 다시 채우는 방식으로 모든 faction의 랭크를 올릴 수 있습니다.",
+            "**초과분을 썩혀두지 마세요.** 상한선을 초과하면 오픈 월드 자원을 토큰으로 변환하고, 메달리온은 나중에 기부할 수 있도록 아껴두세요.",
+            "**재화를 혼동하지 마세요.** Syndicate standing, Nightwave Cred, Steel Essence는 서로 다른 세 가지 재화이므로 각각의 전용 상점에서 사용해야 합니다."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "credits, relics, Mastery와 함께 standing 파밍이 전체 진행 상황에서 어떻게 조화를 이루는지 등 더 넓은 관점의 진행 방식을 보려면 [Progression 가이드](/guides/progression) 및 엄선된 [커뮤니티 도구 디렉터리](/tools)를 참조하세요."
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Warframe에서 일일 Standing 상한선은 어떻게 계산되나요?",
+      "a": "상한선은 `16,000 + (500 × your Mastery Rank)`이며, 각 faction에 개별적으로 적용되고 매일 00:00 UTC에 초기화됩니다. 따라서 갓 시작한 MR0 플레이어도 하루에 syndicate당 16,000을 적립할 수 있고, MR10은 21,000, MR30은 31,000까지 제한됩니다. [Mastery Rank](/guides/mastery-rank)를 올리는 것이 모든 faction의 상한선을 동시에 영구적으로 높이는 유일한 방법입니다."
+    },
+    {
+      "q": "syndicate standing을 파밍하는 가장 빠른 방법은 무엇인가요?",
+      "a": "해당 faction의 Sigil을 장착하고, 처치 수가 많은 affinity 미션을 수행하여 상한선을 빠르게 채운 다음, 일일 미션에서 Syndicate 메달리온을 모으세요. 메달리온 기부는 일일 상한선을 초과하여 평판을 올릴 수 있으므로, 메달리온을 모아두었다가 랭크 희생물을 지불한 직후에 한꺼번에 반납하는 것이 새로운 랭크를 달성하는 가장 빠른 방법입니다."
+    },
+    {
+      "q": "6대 main syndicates를 모두 최대 랭크로 올릴 수 있나요?",
+      "a": "네, 결국 가능합니다. 이 6개 세력은 동맹/대립 관계망으로 얽혀 있어 한 곳의 평판을 올리면 라이벌 세력의 평판이 서서히 떨어집니다. 하지만 시간이 지나면서 Sigil을 교체하고 다른 세력의 평판을 다시 채워주면 됩니다. 대립 관계를 잘 계획하면 모든 faction의 최대 랭크에 도달할 수 있습니다."
+    },
+    {
+      "q": "Nightwave standing은 syndicate standing과 같나요?",
+      "a": "아닙니다. Nightwave는 별도의 시즌제 도전 과제 트랙입니다. 일일, 주간 및 엘리트 주간 행동(Acts)을 완료하여 Nightwave 랭크와 Nightwave Cred를 획득합니다. 획득한 Cred는 Nitain, Orokin Reactors/Catalysts, Forma, Kuva 및 외형 아이템을 구매하는 데 사용되며, 6대 syndicate 평판과는 아무런 관련이 없습니다."
+    },
+    {
+      "q": "플레이하지 않은 syndicate의 standing이 떨어진 이유는 무엇인가요?",
+      "a": "syndicate 대립 관계 때문입니다. 장착한 Sigil에 따라 한 faction의 평판을 얻으면 라이벌 세력의 평판이 깎이게 됩니다. 이는 의도된 설계이며, Syndicate 콘솔에서 각 Sigil이 적용하는 정확한 +/− 수치를 보여주므로 함께 올릴 faction들을 계획할 수 있습니다."
+    },
+    {
+      "q": "오퍼레이터 Amp 부품과 arcanes는 어디서 얻나요?",
+      "a": "전문 Standing faction에서 얻을 수 있습니다. Cetus의 The Quills(Eidolon 조각 교환)와 Fortuna의 Vox Solaris(Orb 전투 및 Vallis 자원 획득)에서 Amp 부품과 arcanes를 판매합니다. 이를 [Focus 가이드](/guides/focus) 및 [Eidolon 가이드](/guides/eidolon)와 함께 활용하여 사냥용 세팅을 구성해 보세요."
+    },
+    {
+      "q": "Grineer를 처형했더니 행성 전체가 빨갛게 변했습니다. 이것도 syndicate 관련인가요?",
+      "a": "아닙니다. Kuva Larvling을 자비롭게 처치(Mercy-kill)하면 성계 지도에서 노드를 점령하고 빨갛게 표시하는 숙적인 Kuva Lich가 생성됩니다. 이는 syndicate standing과는 무관하므로, [Kuva & Lich 가이드](/guides/kuva)를 참조하여 처치하고 노드를 되찾으세요."
+    },
+    {
+      "q": "syndicate 보상이 플래티넘 가치가 있나요?",
+      "a": "매우 가치 있습니다. syndicate augment mods는 거래가 가능하며 수요가 꾸준하기 때문에, 최대 랭크를 달성한 faction은 안정적인 플래티넘 수입원이 됩니다. [Platinum 가이드](/guides/platinum)에서 거래 루프를 배우고, [market screener](/screener) 및 [flip finder](/flip)를 사용하여 mods의 가격을 책정해 보세요."
+    }
+  ],
+  "videos": [
+    {
+      "id": "d_q95Xf6Ohs",
+      "title": "You Have Been Farming Syndicate Standing In WARFRAME ALL WRONG!",
+      "channel": "iFlynn"
+    },
+    {
+      "id": "xfUY8DaZVTw",
+      "title": "MAX YOUR STANDINGS NOW! - FASTEST METHODS FOR ALL SYNDICATES [WARFRAME]",
+      "channel": "TRiX_VS"
+    },
+    {
+      "id": "whtYsyH3N9I",
+      "title": "Warframe | How To Farm Syndicate Standing Quick and Easy - Plumes and Medallions",
+      "channel": "1ManArmyYigit"
+    },
+    {
+      "id": "Vt-albA4ZhA",
+      "title": "How to Max Out EVERY Syndicate Standing FAST in Warframe (Complete Guide)",
+      "channel": "Chapu"
+    }
+  ],
+  "sources": [
+    {
+      "label": "r/Warframe — new wiki showcase (wiki.warframe.com)",
+      "href": "https://reddit.com/r/Warframe/comments/1ios9qf/just_wanted_to_share_how_sexy_the_new_wiki_is/"
+    },
+    {
+      "label": "r/Warframe — Nightwave ended too soon (rank/FOMO)",
+      "href": "https://reddit.com/r/Warframe/comments/1kpzgsq/im_sorry_everyone_i_failed_all_of_you/"
+    },
+    {
+      "label": "r/Warframe — final-hour Nightwave Cred grind (Nitain/potatoes)",
+      "href": "https://reddit.com/r/Warframe/comments/1sgqki4/i_forgor/"
+    },
+    {
+      "label": "r/Warframe — Nightwave weekly Act discussion (DE replied)",
+      "href": "https://reddit.com/r/Warframe/comments/q6fq49/pov_you_have_a_nightwave_act_to_bullet_jump_150/"
+    },
+    {
+      "label": "Official Warframe Wiki",
+      "href": "https://wiki.warframe.com/"
+    }
+  ],
+  "related": [
+    {
+      "label": "Focus & Operator 가이드",
+      "to": "/guides/focus",
+      "icon": "school",
+      "note": "Amps, 렌즈(lenses) 및 Quills/Vox Solaris standing"
+    },
+    {
+      "label": "Eidolon 사냥 가이드",
+      "to": "/guides/eidolon",
+      "icon": "weather-night",
+      "note": "Amps를 위한 Quills standing을 채워주는 조각들"
+    },
+    {
+      "label": "Kuva & Lich 가이드",
+      "to": "/guides/kuva",
+      "icon": "skull",
+      "note": "빨갛게 변한 성계 지도 설명"
+    },
+    {
+      "label": "Platinum 가이드",
+      "to": "/guides/platinum",
+      "icon": "diamond-stone",
+      "note": "syndicate augments를 플래티넘으로 거래하기"
+    },
+    {
+      "label": "Resources 가이드",
+      "to": "/guides/resources",
+      "icon": "pickaxe",
+      "note": "오픈 월드 제출용 자원"
+    },
+    {
+      "label": "커뮤니티 도구",
+      "to": "/tools",
+      "icon": "tools",
+      "note": "위키, Overframe 및 마켓 트래커"
+    }
+  ],
+  "updated": "2026-07-18"
+}

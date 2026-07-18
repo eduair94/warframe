@@ -1,0 +1,419 @@
+{
+  "slug": "archon-shards",
+  "eyebrow": "知識中心 · Archon Shards",
+  "title": "Archon Shards 指南",
+  "lede": "Archon Shards 是 Warframe 的終局遊戲屬性貨幣：每個 frame 有五個永久插槽，能將強大的配置提升至決定性的境界。以下是每種顏色、如何刷取它們，以及在哪裡使用你稀有的 Tauforged。",
+  "category": "endgame",
+  "readMins": 7,
+  "stats": [
+    {
+      "num": "5",
+      "label": "每個 Warframe 的插槽"
+    },
+    {
+      "num": "6",
+      "label": "shard 顏色",
+      "tone": "alt"
+    },
+    {
+      "num": "1.5×",
+      "label": "Tauforged 加成",
+      "tone": "gold"
+    },
+    {
+      "num": "3",
+      "label": "每週刷取來源",
+      "tone": "good"
+    }
+  ],
+  "sections": [
+    {
+      "id": "what-they-are",
+      "title": "什麼是 Archon Shards",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Archon Shards 是你在軌道飛行器中的 **Helminth** 處插在 Warframe 上的 **永久屬性升級**。每個 frame 有 **五個 shard 插槽**，每個插上的 shard 都會提供一個始終開啟的被動加成——不佔用配置欄位、無能量消耗、無需切換。它們可以與你的 mods、Arcanes 以及 [Helminth](/guides/helminth) 技能疊加，這使它們成為遊戲中最後一層垂直強度提升。"
+        },
+        {
+          "type": "p",
+          "text": "至關重要的是，shards 是 **只能透過刷取獲得** 的。你無法用 platinum 購買它們，也無法交易它們——與 Prime 部件或 Rivens 不同，shard 是透過遊玩每週內容獲得的，並且保持帳號綁定。這使它們成為一種緩慢、刻意的進度貨幣，而不是你可以用 plat 走捷徑的東西。"
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "安裝位置",
+              "v": "Helminth — 需要 Archon Shard Segment（來自 Veilbreaker 任務）"
+            },
+            {
+              "k": "每個 frame 的插槽數",
+              "v": "5"
+            },
+            {
+              "k": "效果",
+              "v": "永久被動屬性加成，始終啟用"
+            },
+            {
+              "k": "可交易 / 可購買",
+              "v": "否 — 僅限刷取，帳號綁定"
+            },
+            {
+              "k": "解鎖刷取",
+              "v": "完成 Veilbreaker（需要 The New War）"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "colors",
+      "title": "Shard 顏色",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Shard 的顏色決定了你可以從中選擇的屬性 *類別*。共有 **六種顏色，分為兩組。** 三種 **主要** 顏色——**Crimson、Amber、Azure**——直接從每週的 Archon Hunt、Netracells 和 Deep Archimedea 掉落。三種 **次要** 顏色——**Topaz、Violet、Emerald**——無法直接刷取；你需要使用 **Coalescent Fusion** 來製作每一種，結合兩個主要 shards（例如 Crimson + Azure = Violet）。你在安裝 shard 時選擇特定的屬性，並且可以在 frame 的五個插槽中任意混搭顏色。"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "顏色",
+              "專注方向",
+              "加成範例"
+            ],
+            "rows": [
+              [
+                "Crimson (紅)",
+                "進攻",
+                "技能強度、技能持續時間、近戰暴擊傷害"
+              ],
+              [
+                "Amber (黃)",
+                "輔助",
+                "施放速度、跑酷速度、生命/能量球效果"
+              ],
+              [
+                "Azure (藍)",
+                "生存能力",
+                "生命值、護盾容量、護甲、能量上限"
+              ],
+              [
+                "Topaz (橘)",
+                "元素 / 範圍傷害",
+                "爆炸、火焰與輻射傷害 — 融合：Crimson + Amber"
+              ],
+              [
+                "Violet (紫)",
+                "武器 / 能量混合",
+                "電擊傷害、近戰暴擊、能量↔生命轉換 — 融合：Crimson + Azure"
+              ],
+              [
+                "Emerald (綠)",
+                "毒素與腐蝕",
+                "毒素與腐蝕傷害、異常狀態縮放 — 融合：Amber + Azure"
+              ]
+            ],
+            "note": "三種主要顏色會直接掉落；次要顏色則是透過 Coalescent Fusion（透過 Cavia 集團解鎖）製作。確切的屬性列表和數值會在每次改版中進行調整——在裝入插槽前，請查看最新的 wiki 以獲取當前的完整表格。"
+          }
+        },
+        {
+          "type": "info",
+          "text": "經驗法則：**Crimson 讓技能傷害更高，Azure 讓你活下去，Amber 讓 frame 的操作更流暢。** 三種僅限融合的顏色——Topaz、Violet、Emerald——是專門的元素和混合選擇（爆炸/火焰/輻射、電擊、毒素/腐蝕）。當你確切知道配置需要什麼時再選擇它們，而不是將其作為預設插槽。"
+        }
+      ]
+    },
+    {
+      "id": "tauforged",
+      "title": "Tauforged Shards (好東西)",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "每個 shard 都有兩種等級。一個 **Tauforged** shard 提供普通 shard **1.5 倍的加成**——例如，一個 Crimson 的技能強度 shard 提供 **+10%**，而其 Tauforged 版本則提供 **+15%**。相同的插槽，相同的顏色，價值大約高出 50%。Tauforged shards 閃爍著更亮的光芒，在你的倉庫中呈現出獨特、更具結晶感的外觀。"
+        },
+        {
+          "type": "p",
+          "text": "你獲得的每個 shard 都有機會成為 **Tauforged**——在 Archon Hunt 中基礎機率為 **1/5**，並設有內建的保底機制，在每次未獲得後會提高機率，直到最終獲得一個。某些來源（如 Deep Archimedea）會提高這些機率或讓你進行選擇。因為它們很稀有，請將 Tauforged 視為高級貨幣：它們是真正的終局遊戲極限配置（min-maxing）所在。"
+        },
+        {
+          "type": "tip",
+          "text": "將 Tauforged 用在你的 **主力 frames 以及可縮放的屬性上**——強度、施放速度、持續時間。一個 Tauforged 強度 shard 是一個永久、不佔用 mod 欄位的 +15%，你永遠不需要將其擠進你的配置中。普通 shards 則適用於你的後備隊伍以及基礎生存能力。"
+        }
+      ]
+    },
+    {
+      "id": "farming",
+      "title": "哪裡可以刷取 Shards",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "每週有三個獲取管道，每一個都會掉落 **主要** 顏色。前期你將主要依靠 **Archon Hunt**；一旦你完成了 Whispers in the Walls，**Netracells** 和 **Deep Archimedea** 將使你每週的 shard 收益倍增。多餘的主要 shards 隨後可用於 **Coalescent Fusion**——這就是你製作 Topaz、Violet 和 Emerald 顏色的方法。"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "來源",
+              "頻率",
+              "解鎖條件",
+              "Shard 獎勵"
+            ],
+            "rows": [
+              [
+                "Archon Hunt",
+                "每週（一次性完成）",
+                "完成 Veilbreaker（需要 The New War）",
+                "1 個 shard，其顏色由當週的 Archon 決定（Amar→Crimson，Nira→Amber，Boreal→Azure），有機率獲得 Tauforged"
+              ],
+              [
+                "Netracells",
+                "每週最多 5 次",
+                "Whispers in the Walls (Sanctum Anatomica, Deimos)",
+                "Crimson / Amber / Azure shards，有機率獲得 Tauforged"
+              ],
+              [
+                "Deep Archimedea",
+                "每週（精英）",
+                "Whispers in the Walls + Cavia 最高聲望等級",
+                "最豐厚的獎勵；最佳的 Tauforged 機率與選擇"
+              ]
+            ],
+            "note": "Netracell 和 Deep Archimedea 的嘗試次數每週重置。Archon Hunt 會輪替你面對的 Archon——Amar、Nira 或 Boreal——這決定了你當週可以獲得的主要顏色。次要顏色來自 Coalescent Fusion，而不是掉落。"
+          }
+        },
+        {
+          "type": "info",
+          "text": "解鎖順序非常重要：**The New War → Veilbreaker** 開啟 Archon Hunt 並授予 Archon Shard Segment，而 **Whispers in the Walls → Cavia 集團** 開啟 Netracells、Deep Archimedea 和 Coalescent Fusion。如果感覺獲取 shards 受到限制，通常是因為其中一個任務尚未完成。請參閱 [任務順序指南](/guides/quests)。"
+        }
+      ]
+    },
+    {
+      "id": "install",
+      "title": "如何安裝和移動 Shards",
+      "blocks": [
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "h": "開啟 Helminth",
+              "p": "登上你的軌道飛行器並與 Helminth 互動（你需要 Archon Shard Segment，透過完成 Veilbreaker 任務解鎖）。選擇你想升級的 Warframe。"
+            },
+            {
+              "h": "切換至 Archon Shard 檢視",
+              "p": "打開 shard 介面以顯示該 frame 的五個插槽。"
+            },
+            {
+              "h": "插上你的 shards",
+              "p": "將倉庫中的 shards 拖放到任何插槽中並選擇屬性。顏色可以自由混搭——沒有顏色匹配要求，且除了 shard 本身之外，安裝不需要任何花費。"
+            },
+            {
+              "h": "隨時重新分配",
+              "p": "將 shard 拔出，它就會回到你的倉庫中，以便在其他地方重複使用。移除它需要消耗大量的 Helminth 分泌物（Tauforged 大約需要兩倍），但你永遠不會失去 shard 本身——因此你可以將你的 Tauforged 移動到你本週主玩的任何 frame 上。"
+            }
+          ]
+        },
+        {
+          "type": "info",
+          "text": "因為移除 shard 只需要消耗一些 Helminth 資源——絕不會失去 shard 本身——你永遠不會被真正限制住。盡情嘗試：插上一個屬性，在 [Steel Path](/guides/steel-path) 或幻影裝置中進行測試，如果效果不顯著就換掉它。"
+        }
+      ]
+    },
+    {
+      "id": "dont-lose-them",
+      "title": "不要失去你的 Shards",
+      "blocks": [
+        {
+          "type": "warn",
+          "text": "如果你將該 Warframe 餵給 Helminth（**Subsume**）或將其 **出售**，已安裝的 shards 將會 **遺失**。遊戲現在會顯示警告，但很容易不小心點過去——以這種方式失去五個 Tauforged 是 r/Warframe 上得票最高的錯誤之一。**請務必先將你的 shards 拔出**，特別是在 subsume 重複的 frame 或清理倉庫之前。"
+        },
+        {
+          "type": "quote",
+          "text": "我昨天 subsume 了我的基礎 Xaku，上面有 5 個 Tauforged（3 紅 2 黃）。所以它們當然被刪除了，這完全是我的錯——我應該更小心的。",
+          "cite": "r/Warframe — 一個非常常見、非常可以避免的損失"
+        },
+        {
+          "type": "tip",
+          "text": "養成一個習慣：**在你 subsume 或出售任何 frame 之前，打開其 Archon Shard 檢視並清空插槽。** Shards 會直接回到你的倉庫中，為下一個 frame 做好準備。（如果你真的不小心犯錯，Warframe 客服通常可以恢復因 subsume 而遺失的 shards。）"
+        }
+      ]
+    },
+    {
+      "id": "prioritize",
+      "title": "如何決定屬性的優先順序",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "在你最喜歡的 frame 上擁有五個插槽是很大的力量提升，但 shards 收集緩慢，因此請有目的地使用。請按照此列表進行，而不是在你擁有的每個 frame 上都隨便插一個 shard："
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "**太容易死？** 從 Azure 生存能力開始——基礎生命值、護甲或護盾容量——這樣 frame 才能真正參與戰鬥。",
+            "**已經能生存的技能型、控場（CC）或輸出型 frame？** Crimson 的技能強度和持續時間，或 Amber 的施放速度回報最高。",
+            "**追求臨界值。** 五個強度 shards 大約增加 +50%（或 Tauforged 的 +75%）——非常適合達到你的 mods 剛好差一點點的技能閾值。",
+            "**極度缺能量？** Azure 的能量上限加上 Amber 的能量球/能量 shards，能讓飢渴的 frame 不停地施放技能。",
+            "**集中資源，不要分散。** 在接觸你的後備隊伍之前，先為你實際在終局遊戲中運行的那一兩個 frames 插滿插槽。"
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "不確定哪些 frames 值得使用 shards？把它們用在你已經在 Steel Path 和 Netracells 中主玩的任何角色上。如果你仍在選擇，[Warframe 實力排名榜](/guides/tier-list) 標記了最值得進行五個 shard 投資的 frames。"
+        }
+      ]
+    },
+    {
+      "id": "power-ceiling",
+      "title": "終局遊戲的強度天花板",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Archon Shards 處於 frame 進度堆疊的最頂端：**mods → Forma → Arcanes → Helminth → shards。** 當你開始為它們插上插槽時，你已經打造出了一個有能力的 frame；shards 是最後的 10–20%，將其從「優秀」推向「終局遊戲的決定性境界」。它們在遊戲最困難的內容中大放異彩——[Steel Path](/guides/steel-path)、Netracells 和 Deep Archimedea，以及 [Eidolon 狩獵](/guides/eidolon)。"
+        },
+        {
+          "type": "p",
+          "text": "因為你每週只能獲得少數幾個，而 Tauforged 更為稀有，為你的整個陣容插滿 shard 是一個 **長達數月的追求**，而不是一個週末就能完成的企劃。這是刻意設計的——這是讓老玩家在每週重置時保持登入的長期目標。你終局遊戲中的其他一切（Forma、Arcanes、外觀）都可以用 [platinum](/guides/platinum) 來加速；而 shards 你只能靠自己贏得。"
+        },
+        {
+          "type": "links",
+          "links": [
+            {
+              "label": "Helminth 指南 — 承載你 shards 的系統",
+              "to": "/guides/helminth",
+              "icon": "dna"
+            },
+            {
+              "label": "Steel Path 指南 — shards 發揮價值的地方",
+              "to": "/guides/steel-path",
+              "icon": "sword-cross"
+            },
+            {
+              "label": "Eidolon 狩獵 — 高價值 shard 目標",
+              "to": "/guides/eidolon",
+              "icon": "weather-night"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "videos": [
+    {
+      "id": "WqLNrN2vNeg",
+      "title": "Archon Shards: The Complete Guide You NEED NOW!! | Warframe 2025",
+      "channel": "O Dawg"
+    },
+    {
+      "id": "nNOQ1GUElno",
+      "title": "Warframe ULTIMATE Archon Shards Guide 2025!",
+      "channel": "Weazel"
+    },
+    {
+      "id": "HZ2Zl1FUgws",
+      "title": "Archon Shards Explained — Warframe Showcase 2025",
+      "channel": "QuadLyStop"
+    },
+    {
+      "id": "Bgie_66KQD8",
+      "title": "The BEST Archon Shard Farm | Warframe",
+      "channel": "SleepySoul"
+    }
+  ],
+  "faqs": [
+    {
+      "q": "在 Warframe 中，什麼是 Archon Shards？",
+      "a": "它們是你在 Helminth 處插在 Warframe 上的永久屬性升級。每個 frame 有五個插槽，每個插上的 shard 都會提供一個始終開啟的被動加成（如技能強度、生命值或施放速度），並與你的 mods 和 Arcanes 疊加。它們無法被購買或交易——只能透過刷取獲得。"
+    },
+    {
+      "q": "我該如何刷取 Archon Shards？",
+      "a": "三個每週來源，全部都會提供主要顏色（Crimson、Amber、Azure）：Archon Hunt（在 Veilbreaker 任務後解鎖）每週提供一個 shard，其顏色由你當週戰鬥的 Archon 決定；Netracells（每週最多五次）和 Deep Archimedea（均由 Whispers in the Walls 任務解鎖）提供了更多管道。次要顏色——Topaz、Violet、Emerald——不會掉落；你需要使用 Coalescent Fusion 從主要 shards 製作它們。如果這些尚未解鎖，請參閱 [任務順序指南](/guides/quests)。"
+    },
+    {
+      "q": "什麼是 Tauforged shard，它值得嗎？",
+      "a": "一個 Tauforged shard 提供普通 shard 1.5 倍的加成——例如 +15% 技能強度而不是 +10%。每個 shard 大約有 1/5 的基礎機率成為 Tauforged（並設有保底機制，在每次未獲得後會提高機率）。它們絕對值得：將它們留給你最常用的 frames 以及可縮放的屬性，例如強度或施放速度。"
+    },
+    {
+      "q": "一個 Warframe 可以放多少個 Archon Shards？",
+      "a": "五個。每個 Warframe 正好有五個 shard 插槽，你可以在其中混搭任何顏色——沒有顏色匹配要求。你在安裝每個 shard 時選擇特定的屬性。"
+    },
+    {
+      "q": "如果我 subsume 或出售 Warframe，我會失去我的 Archon Shards 嗎？",
+      "a": "是的——將 frame 餵給 Helminth（subsume）或將其出售會摧毀安裝在上面的任何 shards。遊戲會警告你，但這是一個非常常見且令人痛苦的錯誤。請務必先移除你的 shards（它們會回到你的倉庫中），特別是 Tauforged。如果你真的遺失了，Warframe 客服通常可以恢復它們。"
+    },
+    {
+      "q": "我可以在 Warframe 之間移動 Archon Shards 嗎？",
+      "a": "可以。你可以從任何 frame 中移除 shard，它會回到你的倉庫中以便在另一個 frame 上重複使用。移除它需要消耗一些 Helminth 分泌物（Tauforged 大約需要兩倍），但你永遠不會失去 shard 本身——因此你可以自由地將你稀有的 Tauforged 轉移到你目前主玩的任何 frame 上。"
+    },
+    {
+      "q": "可以購買或交易 Archon Shards 嗎？",
+      "a": "不行。Archon Shards 是帳號綁定且只能透過刷取獲得——你無法用 platinum 購買它們，也無法與其他玩家交易。請改用 [platinum](/guides/platinum) 來支援你終局遊戲的其他部分（Forma、Arcanes、外觀），並透過每週遊玩來贏得 shards。"
+    },
+    {
+      "q": "我應該先安裝哪種 Archon Shard？",
+      "a": "如果你經常死亡，請從 Azure 生存能力（生命值、護甲或護盾）開始。如果你的 frame 已經能生存，Crimson 的技能強度或 Amber 的施放速度會帶來最大的回報。一個極佳的用途是達到你的 mods 剛好差一點點的技能臨界值——五個強度 shards 大約能增加 +50% 的強度。"
+    }
+  ],
+  "sources": [
+    {
+      "label": "Official Warframe Wiki — Archon Shard",
+      "href": "https://wiki.warframe.com/w/Archon_Shard"
+    },
+    {
+      "label": "Official Warframe Wiki — Archon Hunt",
+      "href": "https://wiki.warframe.com/w/Archon_Hunt"
+    },
+    {
+      "label": "r/Warframe — A little reminder before subsuming a frame",
+      "href": "https://reddit.com/r/Warframe/comments/1irgcfd/a_little_reminder_before_subsuming_a_frame/"
+    },
+    {
+      "label": "r/Warframe — my first Tauforged got stolen (subsume warning)",
+      "href": "https://reddit.com/r/Warframe/comments/1fi377w/my_first_tauforged_got_fucking_stolen_bruh/"
+    }
+  ],
+  "related": [
+    {
+      "label": "Helminth 指南",
+      "to": "/guides/helminth",
+      "icon": "dna",
+      "note": "安裝並承載你 shards 的系統"
+    },
+    {
+      "label": "社群工具",
+      "to": "/tools",
+      "icon": "tools",
+      "note": "配置規劃工具 (Overframe) 來規劃你的 shard 配置"
+    },
+    {
+      "label": "Steel Path 指南",
+      "to": "/guides/steel-path",
+      "icon": "sword-cross",
+      "note": "shard 強度真正發揮作用的地方"
+    },
+    {
+      "label": "Eidolon 狩獵",
+      "to": "/guides/eidolon",
+      "icon": "weather-night",
+      "note": "高價值終局遊戲 shard 目標"
+    },
+    {
+      "label": "Warframe 實力排名榜",
+      "to": "/guides/tier-list",
+      "icon": "trophy",
+      "note": "哪些 frames 值得投入五個 shards"
+    },
+    {
+      "label": "完整 Warframe 常見問題",
+      "to": "/faq",
+      "icon": "help-circle",
+      "note": "常見問題的快速解答"
+    },
+    {
+      "label": "Platinum 指南",
+      "to": "/guides/platinum",
+      "icon": "cash",
+      "note": "為你無法刷取的終局遊戲內容提供資金"
+    }
+  ],
+  "updated": "2026-07-18"
+}

@@ -1,0 +1,678 @@
+{
+  "slug": "credits",
+  "eyebrow": "知识中心 · Credits",
+  "title": "Credits 刷取指南",
+  "lede": "Credits 是 Warframe 的通用货币——你在每次制作、mod 升级和交易中都会消耗它们，而且永远都不够用。这是真实的 2026 版本：我们根据更新日志重新检查了每个 farm 点，只保留了仍然有收益的方法，并准确标记了哪些方法在何时被削弱了。Höllvania Techrot 保险箱是新的王者，The Index 仍然是可靠的主力，而过去那一半的“AFK”套路其实从未真正奏效过。",
+  "category": "farming",
+  "readMins": 13,
+  "stats": [
+    {
+      "num": "~1M",
+      "label": "最佳路线：Höllvania 保险箱，全加成",
+      "tone": "gold"
+    },
+    {
+      "num": "250k",
+      "label": "The Index 高风险收益 / 轮",
+      "tone": "good"
+    },
+    {
+      "num": "4×",
+      "label": "Credit Booster × 2× 周末双倍",
+      "tone": "alt"
+    },
+    {
+      "num": "No",
+      "label": "Credits 可以被交易",
+      "tone": "alt"
+    }
+  ],
+  "sections": [
+    {
+      "id": "why",
+      "title": "为什么 Credits 如此重要",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Credits 是维持 Warframe 中一切运转的润滑剂。你在 Foundry 中制作的每个蓝图、升级的每个 mod、从 Market 购买的每个装备道具，以及进行的每一次交易，都在悄无声息地消耗着你的 Credits 储备。Platinum 总是占据头条，但 **credits 才是你日常实际消耗的东西**——而且新手玩家几乎总是处于短缺状态。"
+        },
+        {
+          "type": "p",
+          "text": "好消息是：一旦你知道去哪里，Credits 就是游戏中最好刷的东西之一。与 [Platinum](/guides/platinum) 不同，你永远不需要通过交易来获取它们；与 [Kuva](/guides/kuva) 或 relics 不同，它们的刷取过程快速、可重复，且大部分时候毫无压力。在 2026 年中期，其中最快的方法是**使用 Chroma 进行 Höllvania Techrot 保险箱刷取**；而 Neptune 上的 **The Index** 仍然是无需配置的经典选择。"
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "类型",
+              "v": "通用游戏内货币（账号绑定）"
+            },
+            {
+              "k": "可交易？",
+              "v": "否 — Credits 无法被交易或赠送"
+            },
+            {
+              "k": "主要用途",
+              "v": "Foundry 制作、Market 蓝图、mod 升级、交易税"
+            },
+            {
+              "k": "高额加成",
+              "v": "Credit Booster (2×)，与周末双倍 Credits 活动叠加可达 4×"
+            },
+            {
+              "k": "当前王者",
+              "v": "Höllvania Techrot 保险箱 (Chroma) → Profit-Taker → The Index"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "by-stage",
+      "title": "按阶段推荐的最佳 Credits 刷取点 (2026)",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "没有唯一的“最佳” Credits 刷取点——正确的答案取决于你的装备和 Mastery Rank。通常来说，刷取路线会从前期的“单纯玩游戏”，过渡到中期的 The Index，再到你变强后的 Profit-Taker 和 Höllvania 储藏箱。以下所有内容均已针对当前补丁重新检查——没有那些多年前就已失效的“永远只刷 Dark Sector Defense”的陈旧建议。根据你所处的阶段选择适合的刷取点："
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "阶段",
+              "方法",
+              "地点",
+              "备注"
+            ],
+            "rows": [
+              [
+                "前期（新账号）",
+                "Dark Sectors + 每日首胜",
+                "Seimeni (Ceres), Gabii (Ceres), Hieracon (Pluto)",
+                "Dark Sector 节点带有固定的 Credits 奖励；在第一轮次标记时撤离并重置，而不是一直打下去。将你每天一次的首胜双倍用在收益最高的那次运行中。单人约 250–400k/小时，不需要装备——对 MR1 玩家来说也非常友好。"
+              ],
+              [
+                "中期（可靠的主力）",
+                "The Index — 高风险",
+                "Neptune（只需到达 Neptune；无 MR 限制）",
+                "下注 50k，获胜得 250k。存入大约 15 点以获得额外奖励，多打几轮（每场比赛只需支付一次赌注）。单人约 1.5–2M/小时。Steel Path 不会提高奖励——运行普通模式即可。如果你没有 Chroma，这仍然是最佳选择。"
+              ],
+              [
+                "后期（快速小队上限）",
+                "Profit-Taker 抢夺任务 — 仅限第 4 阶段",
+                "Orb Vallis, Fortuna（需要 Old Mate 声望 + Gravimag archgun）",
+                "The Orb 会掉落固定的 125k 物理战利品，因此它能与所有加成叠加。通关一次第 1–3 阶段，之后只需重复击杀 Boss。在它死亡之前，将 Chroma 的 Effigy 部署在它倒下的地方以使掉落翻倍。单人约 2–3M/小时，极限效率小队可达 4–5M+。"
+              ],
+              [
+                "最新内容（当前王者）",
+                "Höllvania Techrot 保险箱 (Warframe 1999)",
+                "Höllvania / 1999 — 除 Exterminate 外的任何任务类型",
+                "每次运行有一个保险箱，用附近的钥匙破解，基础奖励 100k。在开启之前，在它旁边部署 Chroma 的 Effigy 以获得 ×2 加成——这是导致人们误以为“这个方法失效了”的第一大错误。全加成可达约 560k，每次 2–3 分钟的运行最高可达 1M+。比 Profit-Taker 更轻松且对野队更友好，收益几乎持平。"
+              ],
+              [
+                "终极加成叠加",
+                "Booster + Blessing + 活动 2× + Chroma Effigy + Retriever",
+                "将其叠加到顶级 farm 路线中（Höllvania 储藏箱或 Profit-Taker）",
+                "加成可以叠加：在双倍 Credits 周末 (2×) 期间使用 Credit Booster (2×) 可获得 4× 加成，此外还可以叠加 Chroma 的 Effigy、中继 Credit Blessing 以及 Prosperous Retriever 的触发效果。每日首胜的 2× 不适用于 The Index、抢夺任务或 Höllvania 储藏箱——因此建议在活动周末期间购买你的 Booster。"
+              ],
+              [
+                "低投入 / 半 AFK",
+                "Railjack — Sover Strait 循环",
+                "Earth Proxima, Sover Strait（需要配置好的 Railjack + AI 船员）",
+                "每次约 3 分钟的运行可获得约 34k，由 AI 船员操控炮台实现半 AFK。约 0.5–1M/小时，使用 Booster 收益更高。虽然比 The Index 或储藏箱慢，但胜在几乎不需要操作和装备。"
+              ]
+            ],
+            "note": "节点名称和具体收益会随更新而变化——请将此视为升级路线的参考，并查看 wiki 获取最新数据。"
+          }
+        },
+        {
+          "type": "tip",
+          "text": "无论你刷什么，**请确保运行着 Credit Booster**——并合理安排时间。在双倍 Credits 周末期间使用 Booster 是直接的 4× 加成，因此在那时专注刷一个小时的收益就能超过平时随便玩一整周。"
+        }
+      ]
+    },
+    {
+      "id": "hollvania",
+      "title": "Höllvania Techrot 保险箱 — 2026 年的王者",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "自本指南首次发布以来，Credits 刷取最大的单一变化就是 **Warframe 1999 / Höllvania**。那里的每个任务（Exterminate 除外）都会生成一个 **Techrot 保险箱**——这是一个大型保险箱，你可以用附近的钥匙破解它，获得基础 **100,000 credits**，外加一个 Arcane 和一个 Hex Treasure。对于 2–3 分钟的运行来说，这本身就已经很强了；配合 Chroma，它成为了游戏中每小时 Credits 收益最高的刷取点。"
+        },
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "h": "选择除 Exterminate 之外的任何任务",
+              "p": "Capture 是最快的。更好的是，运行一个目标是破解保险箱的赏金任务（即“SHELL CRACKER”步骤），这样保险箱就会在地图上标记出来，你就不需要四处寻找了。"
+            },
+            {
+              "h": "拿到钥匙，找到保险箱",
+              "p": "钥匙会生成在保险箱附近——捡起它并带过去。战利品雷达 mod（或 Orokin Eye 空中支援）可以让这两者都变得极易发现。"
+            },
+            {
+              "h": "在开启之前部署 Chroma 的 Effigy",
+              "p": "这就是全部的诀窍。Effigy 的光环会使在其内部（约 10 米）掉落的 Credits 翻倍，但前提是保险箱结算时它必须处于激活状态。先把它部署在保险箱上，然后再破解它。先开启保险箱然后再部署是人们认为这个刷法“失效了”的第一大原因。"
+            },
+            {
+              "h": "破解它并叠加其他加成",
+              "p": "在 Effigy 提供的 ×2 加成之上，再叠加中继 Credit Blessing (+25%)、同伴的 Prosperous Retriever 触发、Credit Booster，以及（如果活动开启的话）双倍 Credits 周末。全加成下通常可达约 560k，运气好的话甚至能超过一百万。"
+            }
+          ]
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "地点",
+              "v": "Höllvania (Warframe 1999 开放区域)；除 Exterminate 外的任何任务类型"
+            },
+            {
+              "k": "要求",
+              "v": "解锁 1999 / Höllvania 内容（推进 1999 系列任务）"
+            },
+            {
+              "k": "核心战甲",
+              "v": "Chroma — 在开启之前将 Effigy 部署在保险箱旁以获得 ×2 加成"
+            },
+            {
+              "k": "基础收益",
+              "v": "每个保险箱约 100,000 credits，每次运行一个保险箱"
+            },
+            {
+              "k": "全加成",
+              "v": "通常约 560k，在 Blessing + Retriever + Booster + 2× 周末活动下最高可达 1M+"
+            }
+          ]
+        },
+        {
+          "type": "video",
+          "video": {
+            "id": "1ED3nbXINrI",
+            "title": "1999 Credit Farm - Up to 500k in 5 minutes",
+            "channel": "Prime Outcast Collective"
+          }
+        },
+        {
+          "type": "warn",
+          "text": "务必在开启保险箱**之前**部署 Effigy，否则你将失去翻倍效果——没有重新开始的机会。另外请注意一个已知的**移动平台 Bug**（大约在 2026 年 4 月出现），该 Bug 会导致保险箱只给几千 Credits；在 PC 上运行正常。"
+        },
+        {
+          "type": "info",
+          "text": "这里不需要 Fortuna 声望、archgun 或段位限制——唯一的要求是到达 1999 内容。这种低门槛，加上接近 Profit-Taker 的收益，就是为什么社区在 2026 年中期仍将其称为游戏中最佳 Credits 刷取点的原因。"
+        }
+      ]
+    },
+    {
+      "id": "index",
+      "title": "The Index — 可靠的 Credits 引擎",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Neptune 上的 **The Index** 成为社区默认的 Credits 刷取点是有原因的：它快速、可无限重复、不需要特殊装备，并且只要你将星图推进到 Neptune 即可解锁（无段位限制，不需要 Glast Gambit 系列任务）。这是一种积分存入模式——你预先下注 Credits，击杀 Index 敌人以收集点数，并在敌方 AI 团队存入之前将它们存入终端。赢得比赛，你就能带着远超下注额的收益离开。"
+        },
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "h": "选择下注档次",
+              "p": "更高风险 = 更高回报。高风险（下注 50k）获胜可获得 250k——一旦你能稳定获胜，这就是标准的刷取选择。如果你的队伍不够稳定，低风险或中风险可以在你学习期间保证你的资金安全。"
+            },
+            {
+              "h": "击杀、收集并聪明地存入",
+              "p": "Index 敌人死亡时会掉落点数。携带大量点数时你会承受额外伤害，因此建议存入大约 15 点以获得额外奖励，而不是攒到 20 点。"
+            },
+            {
+              "h": "阻止敌方终端",
+              "p": "存入你的点数来得分，并阻止敌方队伍先达到目标。控制地图是获胜的关键。"
+            },
+            {
+              "h": "获胜，然后继续",
+              "p": "每场比赛只需支付一次赌注，因此继续打更多轮次比离开并重新排队要高效得多——这就是 Credits 累积的地方。运行**普通模式**，而不是 Steel Path：SP 不会提高 Credits 奖励。"
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "档次",
+              "下注",
+              "适用场景"
+            ],
+            "rows": [
+              [
+                "低风险",
+                "30,000",
+                "学习该模式 / 资金较少"
+              ],
+              [
+                "中风险",
+                "40,000",
+                "中期稳定的收入"
+              ],
+              [
+                "高风险",
+                "50,000",
+                "每轮最佳利润 — 标准刷取选择"
+              ]
+            ],
+            "note": "高风险获胜可获得约 250k（每轮净利润约 200k）。每场比赛只需支付一次赌注，因此额外的轮次几乎是纯利润；输了则会失去赌注。查看 wiki 获取当前的准确数字。"
+          }
+        },
+        {
+          "type": "tip",
+          "text": "**Wukong 是经典的 Index 战甲**——他的 Defy 使他几乎死不了，而 Celestial Twin 提供了免费的 DPS，因此他可以永远独自守住一条线。这才是真正的“Wukong Credits 刷取”：*在 Index 中*使用 Wukong，而不是旧的 AFK Secura Lecta 套路（参见遗留部分了解为什么那个套路从未真正奏效）。2026 年的匹配玩家较少，所以做好单刷的准备——这正是 Wukong 的强项。"
+        },
+        {
+          "type": "video",
+          "video": {
+            "id": "yJO4-Q8IWEk",
+            "title": "Warframe - HIGH Risk SOLO Index Credit Farming Guide (3 Minutes)",
+            "channel": "FastTipsGaming"
+          }
+        },
+        {
+          "type": "video",
+          "video": {
+            "id": "EGLeIDUMbDI",
+            "title": "Wukong - Ultimate Index God Build | Easy & Fast credits farm",
+            "channel": "-DR-GraiD"
+          }
+        },
+        {
+          "type": "warn",
+          "text": "你必须用自己的 Credits 垫付赌注。如果你身无分文，不要直接挑战高风险——先赢几场低/中风险的比赛，这样一次失败就不会让你倾家荡产。"
+        }
+      ]
+    },
+    {
+      "id": "veteran-farms",
+      "title": "Profit-Taker 及其他老手刷取点",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "一旦你的装备能够应对，Fortuna 的 Orb Vallis 中的 **Profit-Taker Orb 抢夺任务**就是快速小队的上限。击杀 Orb（第 4 阶段）会保证掉落 **125,000 credits 的物理战利品**——因为它是*掉落物*，而不是固定奖励，所以它能与你拥有的每一个加成叠加。通关一次第 1–3 阶段，然后连续重复击杀 Boss。在它死亡之前，将 Chroma 的 Effigy 部署在 Orb 倒下的地方（其光环只有约 10 米）以使掉落翻倍，并且 Credit Booster 适用于每一次运行（不像 Index 的赌注）。"
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "地点",
+              "v": "Orb Vallis (Fortuna)；通过 Vox Solaris (Eudico) 进行抢夺任务，仅重复第 4 阶段"
+            },
+            {
+              "k": "要求",
+              "v": "Vox Solaris 5 级 (Old Mate) + Gravimag archgun"
+            },
+            {
+              "k": "装备",
+              "v": "用于翻倍的 Chroma (Effigy)，或能在 3 分钟内快速击杀的输出战甲"
+            },
+            {
+              "k": "基础 Credits",
+              "v": "每次击杀 125,000 物理掉落 — 可与 Effigy、Booster、Blessing 叠加"
+            },
+            {
+              "k": "效率",
+              "v": "实际约 2–3M/小时，协调默契的小队可达 4–5M+/小时"
+            }
+          ]
+        },
+        {
+          "type": "video",
+          "video": {
+            "id": "JkFgsX6YTWw",
+            "title": "Solo Profit-Taker Kill in under 2 minutes | Warframe Credits Farming in 2026",
+            "channel": "Endryx_ow"
+          }
+        },
+        {
+          "type": "info",
+          "text": "其他不错的选择：某些 **Railjack** 任务（Sover Strait 循环每次运行收益约 34k，配合 AI 船员可半 AFK）、Neptune 上的 **Laomedeia**（中断储藏箱，约 1.2–1.3M/小时，尽管屏幕上的数字没有变化，但 Booster 依然适用）以及 Pluto 上的 **Hieracon**（带有 Dark Sector 奖励的挖掘，同时产出 endo 和 relics）。虽然这些都比不上高效运行的 Profit-Taker 或 Höllvania 储藏箱，但它们可以打破单调感。"
+        },
+        {
+          "type": "p",
+          "text": "Profit-Taker 依赖于 Fortuna 声望，所以如果你还没达到，先提升你的 [声望](/guides/standing)——这同时也能帮你获取以后会需要的 amps 和 arcanes。"
+        }
+      ]
+    },
+    {
+      "id": "boosters",
+      "title": "Boosters 与加成 — 尽情叠加",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "影响你 Credits 收益的最大杠杆不是节点——而是你叠加的加成。它们是可以叠加的，因此在顶级 farm 路线中，一个 booster + 幸运的 Charm + Blessing 可以让你的基础收益翻三倍以上。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Credit Booster (2×)** — 在持续时间内使获得的所有 Credits 翻倍。可以使用 platinum 从 Market 购买，或者从每日签到奖励、Nightwave 和活动中免费获取。",
+            "**双倍 Credits 周末 (2×)** — 一个独立的活动加成，**可与 Credit Booster 叠加以达到 4× 加成**。在周末*期间*购买你的 booster 以达到收益上限。",
+            "**Chroma 的 Effigy (2×)** — 使在其约 10 米光环内掉落的 Credits 翻倍。这是 Höllvania 保险箱和 Profit-Taker 刷取背后的主力；请在结算*之前*部署它。",
+            "**Credit Blessing (+25%)** — 来自满段位盟友的中继祝福；在基于掉落的 farm 路线中，它会产生“双重加成”效果，实际提升约 1.4×。",
+            "**Prosperous Retriever** — 一款同伴 mod，有一定概率 (~18%) 使拾取的 Credits 翻倍。（它是 *Prosperous* Retriever — 而不是旧名字 'Resourceful'。）",
+            "**Smeeta Kavat (Charm)** — 它的 Charm 增益可以在短时间内使你拾取的资源和 Credits 翻倍。仍然有效；只是触发完全看脸（RNG）。",
+            "**每日首胜 (2×)** — 每天使你的第一次任务结束奖励翻倍，但它**不**适用于 The Index、抢夺任务或 Höllvania 储藏箱——请把它留给普通的、高收益的任务。"
+          ]
+        },
+        {
+          "type": "warn",
+          "text": "**Secura Lecta** 曾通过多重触发机制成为最高端 Credits 刷取的核心——该机制已在 **热修 42.0.10 (2026 年 5 月 6 日)** 中被修复。它仍然是一个合法的击杀加成（MR8 时约 2×，MR18 时最高约 4×，有上限），但它**不再是值得专门去刷的路线**。不要为了追求以前的数字而围绕它构建一整套装备。"
+        }
+      ]
+    },
+    {
+      "id": "legacy",
+      "title": "遗留与特定情况下的刷取点 (Wukong, Necramech 及其他)",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "市面上流传的“最佳 Credits 刷取”指南中，有一半仍在重复那些要么已被修复、要么从一开始就不是真正 Credits 刷取的配置。以下是真实的“坟墓”——这些方法在 2026 年中期实际的表现。在你看完 2024 年的视频封面并投入声望或 forma 制作神级配置之前，请先阅读以下内容。"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "刷取点",
+              "2026 年现状",
+              "实际效果"
+            ],
+            "rows": [
+              [
+                "Wukong AFK 刷取 (Twin + Secura Lecta)",
+                "从未作为“AFK”刷取法奏效过",
+                "Celestial Twin 的击杀属于技能击杀，永远不会触发 Lecta 的 Credits 加成，而且每当 Wukong 手持近战时，分身都会开枪（而不是使用 Lecta）。Wukong 的真正用途是 The Index，而不是这个。不要为了分身版本而配置装备。"
+              ],
+              [
+                "Secura Lecta “Credits 爆炸”",
+                "2026 年 5 月削弱 — 仅剩普通加成",
+                "多重触发漏洞（曾有人声称每小时 50M+）已在热修 42.0.10 中被修复。在敌人密集的节点上，它仍然是一个不错的 ~2×–4× 击杀加成——只是不再值得你围绕它进行配置了。"
+              ],
+              [
+                "Necramech (Deimos 隔离库)",
+                "特定情况适用 — 从未是真正的 Credits 刷取点",
+                "隔离库中的 Necramechs 会掉落 Damaged Necramech Parts，每个可以向商店出售约 20k，因此 Credits 只是顺带的。这是一个刷取 Necramech 部件和 Necraloid 声望的地方。运行它是为了 Voidrig/Bonewidow 的部件，而不是为了 Credits。"
+              ],
+              [
+                "Kullervo Boss (Duviri)",
+                "不是 Credits 刷取点 — 从来都不是",
+                "掉落 Kullervo's Bane（一种用于兑换他自己蓝图的 Duviri 货币），而不是 Credits。刷他纯粹是为了这个 Warframe，仅此而已。"
+              ],
+              [
+                "The Descendia / Roathe",
+                "一个刷取 Maphica/Arcane 的地方，而不是 Credits",
+                "基本上只支付约 7.4k 的基础奖励，外加几个每周受限的 10k 储藏箱。运行它是为了 Maphica, Arcanes 和 Rivens；每周重置时顺便拿一次储藏箱即可。"
+              ],
+              [
+                "Faceoff (1999 PvPvE)",
+                "奖励零 Credits",
+                "产出 Vosfor, Arcanes, Relics, Endo 和 Conclave 声望——完全没有 Credits。有趣的模式，但放错清单了。"
+              ]
+            ],
+            "note": "贯穿始终的一点是：除了 Secura Lecta 的多重触发漏洞（热修 42.0.10，2026 年 5 月 6 日）之外，这里没有任何东西是为了针对 Credits 刷取玩家而被削弱的。其余的方法要么从未产出过 Credits，要么只是被更新的内容淘汰了。请相信补丁日期，而不是旧视频。"
+          }
+        },
+        {
+          "type": "p",
+          "text": "**Wukong AFK Credits 刷取还管用吗？** 不管用——而且它从未像宣传的那样奏效过。Celestial Twin 的击杀属于技能击杀，不会触发 Secura Lecta 的击杀 Credits 加成，而且每当 Wukong 手持近战时，分身都会使用枪械而不是 Lecta，因此整个前提就崩溃了。实际*存在*的 Lecta Credits 刷取法是使用**主动操作的** Chroma（使用 Helminth Ensnare 聚集敌人 + Effigy 提供翻倍光环）在像 Titan 这样的 Dark Sector Steel Path Survival 任务中进行——即便如此，该方法也在热修 42.0.10 中失去了威力。如果你想用 Wukong 赚取 Credits，带他去 The Index（见上文）；不要为了分身进行配置。"
+        },
+        {
+          "type": "p",
+          "text": "**你能用 Necramech 刷 Credits 吗？** 并不行。Deimos 隔离库中的 Necramechs 会掉落 Damaged Necramech Parts，每个可以向商店出售约 20,000 credits，因此 Credits 只是这次运行的副产品，而运行的根本目的是为了 Necramech 部件 and Necraloid 声望。在最理想的情况下，配合 Nekros、booster 和 Kavat Charm，你可能会看到每小时几十万到 1.5M 左右的收益，但它并不稳定——而且现在使用 Chroma 进行一次仅需 2–5 分钟的 Höllvania 储藏箱运行就能达到这个收益。这里没有针对 Credits 进行任何“削弱”；只是数值膨胀让这种 Credits 刷取视角过时了。运行 Iso Vaults 是为了 Voidrig/Bonewidow 的部件，而不是为了你的钱包。"
+        },
+        {
+          "type": "video",
+          "video": {
+            "id": "1qqYfJ9LUvY",
+            "title": "How To Run Isolation Vaults For Necramech Farming In Warframe!",
+            "channel": "Pupsker"
+          }
+        },
+        {
+          "type": "video",
+          "video": {
+            "id": "gjjNe2cctlw",
+            "title": "Fastest Warframe Credit Farm IN THE GAME! THEY NERFED IT :(",
+            "channel": "Pupsker"
+          }
+        },
+        {
+          "type": "p",
+          "text": "一句话总结：别再追求那些自作聪明的遗留非正规套路了。Secura Lecta 是一个不错的顺带加成，但不再是值得专门去刷的路线，而 Wukong/Necramech/Kullervo 也从未像视频封面承诺的那样是 Credits 制造机。对于 2026 年中期的实际大量 Credits 需求，请运行**使用 Chroma 刷取 Höllvania Techrot 保险箱**、快速小队运行 **Profit-Taker 第 4 阶段**，或者如果你没有 Chroma，则运行 **The Index**——无论你选择哪种，都要在双倍 Credits 周末期间配合 Credit Booster。"
+        }
+      ]
+    },
+    {
+      "id": "early",
+      "title": "前期与无压力 Credits 刷取",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "你是新手且极度缺乏 Credits 吗？你不需要什么主流的 farm 路线——你需要的是停止流失 Credits 并抓住那些轻松获胜的机会。在你解锁 The Index 之前，这些方法可以维持你的日常开销："
+        },
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "h": "将你的垃圾出售给控制台",
+              "p": "打开你的仓库，将重复的部件蓝图和未升级的常见 mods 出售给游戏内商家（这与玩家交易不同）。Reddit 上最喜欢的段子——搜索像 'Harrow' 这样被大量刷取的战甲，然后卖掉那一整叠重复的部件蓝图——其实是非常实用的建议：它们每个都值不少 Credits。"
+            },
+            {
+              "h": "运行 Dark Sectors",
+              "p": "Dark Sector 节点在普通奖励之上增加了 Credits 奖励，其 Defense/Excavation 变体对新手非常友好。一旦奖励速度变慢，就在第一轮次标记时撤离。"
+            },
+            {
+              "h": "只需完成任务",
+              "p": "每个任务在通关时都会支付 Credits 奖励，外加敌人的掉落物。清理星图和完成赏金任务会自然而然地为你前期的制作提供资金——并将你的每日首胜双倍用在收益最高的那次任务中。"
+            },
+            {
+              "h": "领取签到赠送的 Credit Booster",
+              "p": "留意每日签到里程碑奖励和 Nightwave 以获取免费的 boosters，并在准备集中刷取时使用它们，而不是在闲逛时浪费掉。"
+            }
+          ]
+        },
+        {
+          "type": "info",
+          "text": "不要为了 slots 而恐慌性地卖掉你的 Warframes 或难以刷取的装备。Slots 很便宜，但重新刷一个战甲却很难——这是老手经常警告新手的常见遗憾。"
+        }
+      ]
+    },
+    {
+      "id": "sinks",
+      "title": "你的 Credits 实际花在了哪里",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "了解消耗点是成功的一半——它能告诉你什么时候该去刷。你觉得永远不够花的原因是，以下这几个项目中的任何一个都能轻易吞噬掉你一整局 The Index 的收益："
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Foundry 制作** — 几乎每个蓝图在开始建造倒计时之前都会收取 Credits（通常还需要资源）。",
+            "**Market 蓝图与装备** — Warframe、武器和装备蓝图都是用 Credits 购买的。",
+            "**Mod 升级** — 升级 mods 需要消耗 Credits *和* [endo](/guides/endo)。将一个 Primed 或 10 级的 mod 升满可能需要消耗接近两百万 Credits。",
+            "**交易税** — 每次交易都会收取 Credits 交易税，其数额取决于物品的稀有度，因此频繁交易的玩家消耗 Credits 非常快。",
+            "**Baro Ki'Teer 及商家** — 许多商品除了需要 [ducats](/ducats) 或声望之外，还需要消耗 Credits。",
+            "**Dojo 研发与装饰** — 氏族研发和装饰是庞大且持续的 Credits 消耗点。"
+          ]
+        },
+        {
+          "type": "quote",
+          "text": "在进行大规模制作或 mod 升级之前，先多刷几次攒点底子——没有什么比刷完了材料却发现自己付不起制作费更让人泄气的了。",
+          "cite": "常见的 r/Warframe 建议"
+        }
+      ]
+    },
+    {
+      "id": "ceiling",
+      "title": "高端上限（以及保持理智）",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "2026 年 Credits 收益的顶点是**使用 Chroma 在顶级掉落 farm 点叠加所有加成**——即 Höllvania Techrot 保险箱或 Profit-Taker 第 4 阶段击杀，配合 Effigy 的 ×2、Credit Booster 和双倍 Credits 周末的 4×，再加上中继 Credit Blessing 和幸运的 Retriever 触发。装备精良的玩家连续刷取这些，其数字让本指南中的其他所有方法都相形见绌。注意这里已经*没有*了：Secura Lecta 多重触发刷取，该方法已在 2026 年 5 月的热修中退役。"
+        },
+        {
+          "type": "warn",
+          "text": "你不需要追求极限。Höllvania 储藏箱、Profit-Taker 和 The Index 可以在不需要专门配置的情况下满足 99% 玩家的 Credits 需求——不要仅仅为了升级 mods 就去极化一个需要三个 Forma 的 Credits 专属配置。"
+        },
+        {
+          "type": "info",
+          "text": "马拉松式的长时间运行并没有额外奖励。如果你在撤离前游戏崩溃或失去主机连接，你可能会失去该局的所有收益，而且利用漏洞导致的异常高额奖励有时会引起账号封禁标记。定期撤离并保存收益，而不是一味追求无休止的计时。"
+        },
+        {
+          "type": "p",
+          "text": "Credits 资助了一切，但它们不是*可交易的*货币。如果你真正的目标是从其他玩家那里购买装备，请转向通过 [Platinum](/guides/platinum) 赚取工具来赚取它，例如 [低买高卖](/flip)、[relic 价值](/relics-value) 计算器以及 [Baro ducat 排名](/ducats)。"
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "目前 Warframe 中最快的 Credits 刷取点是什么？",
+      "a": "在 2026 年中期，就纯粹的每小时 Credits 收益而言，使用 Chroma 刷取 Höllvania Techrot 保险箱 (Warframe 1999) 是当前的王者——每个保险箱基础 100k，在开启之前部署 Effigy 以获得 ×2 加成，然后叠加 Credit Blessing、Prosperous Retriever 触发、Credit Booster 以及活动双倍 Credits 周末，每次 2–3 分钟的运行可达到约 560k，最高可达 1M+。对于快速小队来说，Profit-Taker 第 4 阶段也差不多（保证 125k 物理掉落，以同样的方式叠加加成），如果你没有 Chroma，The Index 是最佳选择。在双倍 Credits 周末期间购买你的 booster——这两个 2× 加成会叠加为 4×。"
+    },
+    {
+      "q": "Wukong Credits 刷取在 2026 年还管用吗？",
+      "a": "AFK Secura Lecta 版本从未像宣传的那样奏效：Celestial Twin 的击杀属于技能击杀，不会触发 Lecta 的 Credits 加成，而且每当 Wukong 手持近战时，分身都会使用枪械而不是 Lecta。真正管用的是在 Index 中使用 Wukong——他的 Defy 承伤和分身 DPS 使他成为经典的单刷 Index 战甲。而且自热修 42.0.10（2026 年 5 月 6 日）以来，Lecta 仅提供直接的 ~2×–4× 加成，不再是顶级 farm 路线。所以：在 Index 中使用 Wukong 是可行的，但旧的 AFK 套路不行。"
+    },
+    {
+      "q": "你能用 Necramech 刷 Credits 吗？",
+      "a": "并不行。Deimos 隔离库中的 Necramechs 会掉落 Damaged Necramech Parts，每个可以向商店出售约 20k，因此你获得 Credits 只是副作用，它从根本上说是一个刷取 Necramech 部件和 Necraloid 声望的任务。收益并不稳定，而且现在使用 Chroma 进行一次 1999 Techrot 储藏箱运行就能达到其最理想情况的收益。运行 Iso Vaults 是为了 Voidrig/Bonewidow 部件和 Entrati 声望——至于 Credits，去破解 Höllvania 保险箱或运行 The Index 吧。"
+    },
+    {
+      "q": "The Index 在 2026 年还值得去吗？",
+      "a": "是的。高风险仍然下注 50k，每轮支付 250k——直到 2026 年中期，这些档次都没有改变。单人约 1.5–2M/小时，如果你没有 Chroma 或强力装备，它仍然是最佳选择。存入大约 15 点，多打几轮（每场比赛只需支付一次赌注），并运行普通模式——Steel Path 不会提高 Credits 奖励。匹配玩家较少，所以做好单刷的准备。如果你确实拥有 Chroma 和 Vox Solaris 5 级声望，Höllvania 储藏箱和 Profit-Taker 的每分钟收益会超过它。"
+    },
+    {
+      "q": "我该如何解锁并游玩 The Index？",
+      "a": "The Index 是 Neptune 上的一个游戏模式——将星图推进到那里即可访问（无段位限制）。你下注 Credits（低、中或高），然后通过击杀 Index 敌人并在敌方队伍得分之前将点数存入终端来累积点数。获胜可获得远超下注额的收益；输了则会失去赌注。每场比赛只需支付一次赌注，因此继续打额外的轮次比重新排队更高效。"
+    },
+    {
+      "q": "Profit-Taker 适合刷 Credits 吗？",
+      "a": "是的 — 每次击杀 Profit-Taker 都会保证掉落 125k 的 Credits 物理战利品，并且该战斗可以连续完全重复进行（首次通关后仅需重复第 4 阶段），这使其成为强力账号的最佳 farm 路线之一。因为它是掉落物，Chroma 的 Effigy 可以使其翻倍，并且 Credit Booster 适用于每一次运行。你需要 Fortuna 声望（Vox Solaris 5 级）、一把 Gravimag archgun，并且最好能在 3 分钟内完成击杀。"
+    },
+    {
+      "q": "在 Warframe 中可以交易 Credits 吗？",
+      "a": "不能 — Credits 是账号绑定的，无法被交易或赠送。可交易的货币是 platinum；请参阅 [Platinum 指南](/guides/platinum) 以及像 [低买高卖搜寻器](/flip) 和 [relic 价值](/relics-value) 计算器这样的工具来赚取它。"
+    },
+    {
+      "q": "为什么我总是缺 Credits？",
+      "a": "Credits 是 Warframe 的通用消耗点——每次 Foundry 制作、Market 蓝图、mod 升级和交易税都会消耗它们，而将 Primed 或 10 级的 mods 升满可能需要消耗接近两百万。随时准备一个 Credit Booster，并在进行大规模制作或 [mod 升级](/guides/mods) 之前先刷几次攒点底子，以免进度停滞。"
+    },
+    {
+      "q": "我该如何获得 Credit Booster？",
+      "a": "可以使用 platinum 从游戏内的 Market 购买，或者从每日签到里程碑奖励、Nightwave 以及偶尔的活动中收集免费的。它会在持续时间内使获得的所有 Credits 翻倍，并可与双倍 Credits 周末（达到 4×）、Smeeta Kavat 的 Charm 增益以及 Chroma 的 Effigy 叠加。"
+    },
+    {
+      "q": "升满一个 mod 需要多少 Credits？",
+      "a": "这取决于稀有度和最高等级——普通 mod 很便宜，但升满一个 Primed 或其他 10 级的 mod 需要消耗接近两百万 Credits，外加大量的 [endo](/guides/endo)。只需将 mods 升级到你配置实际需要的等级即可；很少需要完全升满的 Primed mod 才能达到你想要的阈值。"
+    }
+  ],
+  "videos": [
+    {
+      "id": "1UogPRmwjNs",
+      "title": "The MOST PROFITABLE Credit Farms in Warframe 2026! (1 Million in 2 min.)",
+      "channel": "MHBlacky"
+    },
+    {
+      "id": "NG1tBEDxbdk",
+      "title": "The BEST Credit Farming Methods in Warframe — What Actually Works in 2026!",
+      "channel": "NuMmy__"
+    },
+    {
+      "id": "dEyJryVUafo",
+      "title": "THE 4 BEST WAYS TO FARM MILLIONS OF CREDITS EASY IN WARFRAME 2026",
+      "channel": "Grind Hard Squad"
+    },
+    {
+      "id": "mTS7BrEJUfU",
+      "title": "Why Höllvania Is ONE Of The MOST Profitable Farms in Warframe",
+      "channel": "WarframeFlo"
+    },
+    {
+      "id": "MqZMzwW23_Q",
+      "title": "The ULTIMATE Guide to Farming MILLIONS Of CREDITS In Warframe",
+      "channel": "WarframeFlo"
+    },
+    {
+      "id": "khmoo5nIF58",
+      "title": "The Ultimate Warframe Credit Farming Guide (2025)",
+      "channel": "Zefā"
+    }
+  ],
+  "sources": [
+    {
+      "label": "Warframe Wiki — Credits",
+      "href": "https://wiki.warframe.com/w/Credits"
+    },
+    {
+      "label": "Warframe Wiki — Höllvania (Warframe 1999)",
+      "href": "https://wiki.warframe.com/w/H%C3%B6llvania"
+    },
+    {
+      "label": "Warframe Wiki — Profit-Taker Orb",
+      "href": "https://wiki.warframe.com/w/Profit-Taker_Orb"
+    },
+    {
+      "label": "Warframe Wiki — The Index",
+      "href": "https://wiki.warframe.com/w/The_Index"
+    },
+    {
+      "label": "Warframe Wiki — Secura Lecta",
+      "href": "https://wiki.warframe.com/w/Secura_Lecta"
+    },
+    {
+      "label": "r/Warframe — Best current credit farm",
+      "href": "https://reddit.com/r/Warframe/comments/1uvauy1/best_current_credit_farm/"
+    },
+    {
+      "label": "r/Warframe — With the Lecta being fixed, what is the best credit farm?",
+      "href": "https://reddit.com/r/Warframe/comments/1t5x33e/with_the_lecta_being_fixed_what_is_the_best/"
+    },
+    {
+      "label": "r/Warframe — Was the Höllvania/Chroma credit farm nerfed?",
+      "href": "https://reddit.com/r/Warframe/comments/1sc0sqv/was_the_hollvaniachroma_credit_farm_nerfed_or_am/"
+    }
+  ],
+  "related": [
+    {
+      "label": "Platinum 指南",
+      "to": "/guides/platinum",
+      "icon": "cash-multiple",
+      "note": "可交易的货币 — 靠赚，不要买"
+    },
+    {
+      "label": "Modding 指南",
+      "to": "/guides/mods",
+      "icon": "puzzle",
+      "note": "你的 Credits 实际花在了哪里"
+    },
+    {
+      "label": "声望指南",
+      "to": "/guides/standing",
+      "icon": "handshake",
+      "note": "解锁 Fortuna 中的 Profit-Taker"
+    },
+    {
+      "label": "Steel Path 指南",
+      "to": "/guides/steel-path",
+      "icon": "skull",
+      "note": "最高端 Credits 刷取点的所在地"
+    },
+    {
+      "label": "Ducat 与 Baro 价值",
+      "to": "/ducats",
+      "icon": "store",
+      "note": "在 Baro 处明智地消费 Credits + ducats"
+    },
+    {
+      "label": "Endo 与 Plat 价值",
+      "to": "/guides/endo",
+      "icon": "diamond-stone",
+      "note": "mod 升级账单的另一半"
+    }
+  ],
+  "updated": "2026-07-18"
+}

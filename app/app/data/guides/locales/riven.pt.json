@@ -1,0 +1,450 @@
+{
+  "slug": "riven",
+  "eyebrow": "Central de Conhecimento · Riven Mods",
+  "title": "Riven Mods Explicados",
+  "lede": "Rivens são os mods caça-níqueis do Warframe: vinculados a uma arma específica, com atributos rolados aleatoriamente e capazes de transformar uma arma esquecida em um monstro. Aqui está como eles funcionam, o que os torna valiosos e quando eles realmente valem o seu Kuva.",
+  "category": "systems",
+  "readMins": 9,
+  "stats": [
+    {
+      "num": "2–4",
+      "label": "atributos por riven",
+      "tone": "good"
+    },
+    {
+      "num": "1–5",
+      "label": "pontos de disposição",
+      "tone": "alt"
+    },
+    {
+      "num": "8",
+      "label": "rank máximo do riven",
+      "tone": "gold"
+    },
+    {
+      "num": "~3,500",
+      "label": "limite de Kuva por re-rolagem",
+      "tone": "gold"
+    }
+  ],
+  "sections": [
+    {
+      "id": "what-is-a-riven",
+      "title": "O que realmente é um Riven mod",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Um **Riven Mod** é um mod especial com **atributos aleatórios que é bloqueado para uma única arma** (e as variantes dessa arma). Um riven de Braton serve na Braton — e em suas versões Prime, Vandal e MK1 — mas em nenhuma outra; um riven de Kronen serve apenas na Kronen. Quando um riven é revelado, ele rola **2 a 4 atributos** — uma mistura de bônus poderosos e, às vezes, um único efeito negativo (uma *maldição*). Não existem dois rivens idênticos, e é exatamente por isso que eles podem ser tanto o melhor mod da sua arma quanto uma economia de trocas caótica por si só."
+        },
+        {
+          "type": "p",
+          "text": "Existem rivens para as principais famílias de armas — **rifle, escopeta, pistola, corpo a corpo e archgun** (além dos tipos kitgun e zaw). A vantagem é enorme: um bom riven pode adicionar mais poder bruto do que qualquer mod normal sozinho. O problema é que tudo nele — os atributos, seus valores, até mesmo para *qual* arma ele serve — é pura aleatoriedade (RNG) até você revelá-lo, e ele é um dos mods que mais consomem capacidade no jogo."
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "O que é",
+              "v": "Um mod específico para uma arma com atributos aleatórios"
+            },
+            {
+              "k": "Compatibilidade",
+              "v": "Uma arma e suas variantes — um riven de \"Braton\" funciona na Braton, Braton Prime, Vandal e MK1"
+            },
+            {
+              "k": "Atributos",
+              "v": "2 a 4 aleatórios — 2 a 3 bônus mais uma maldição opcional"
+            },
+            {
+              "k": "Rank máximo",
+              "v": "Rank 8, aprimorado com Endo (muito caro)"
+            },
+            {
+              "k": "MR para equipar",
+              "v": "Um requisito aleatório de Nível de Maestria (8–16) é definido ao ser revelado"
+            },
+            {
+              "k": "Pré-requisito",
+              "v": "Concluir a jornada The War Within — ela concede seu primeiro riven e desbloqueia as principais fontes"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "disposition",
+      "title": "Disposição: por que a mesma ideia é divina em uma arma e lixo em outra",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "A **Disposição Riven** é um multiplicador por arma exibido como **1 a 5 pontos**. Ela escala o quão fortes são os atributos de um riven nessa arma. Crucialmente, a disposição é *inversamente proporcional à popularidade*: armas fracas e raramente usadas recebem disposição **alta** (bônus de riven maiores), enquanto armas populares do meta recebem disposição **baixa** (bônus menores) — e até mesmo variantes diferentes da mesma arma podem ter disposições ligeiramente diferentes. É a ferramenta de balanceamento da DE para que os rivens não tornem as melhores armas permanentemente melhores."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Pontos",
+              "Significa aproximadamente",
+              "Arma típica"
+            ],
+            "rows": [
+              [
+                "5 (mais alta)",
+                "Rolagens mais fortes (cerca de ×1,5 no topo)",
+                "Armas pouco usadas / fracas"
+              ],
+              [
+                "3 (média)",
+                "Bônus sólidos de nível médio",
+                "Escolhas decentes, mas fora do meta"
+              ],
+              [
+                "1 (mais baixa)",
+                "Rolagens mais fracas (cerca de ×0,5)",
+                "Armas muito populares / do meta"
+              ]
+            ],
+            "note": "Os multiplicadores exatos são aproximados e a DE os ajusta periodicamente com base no uso de cada arma — sempre verifique a wiki em tempo real para ver os pontos atuais de uma arma."
+          }
+        },
+        {
+          "type": "info",
+          "text": "Como as disposições mudam, um riven que você compra pode ganhar ou perder valor da noite para o dia quando a DE ajusta uma arma. Uma arma que recebe um *nerf* de disposição torna seus rivens mais fracos (e mais baratos); um *buff* os torna mais fortes (e mais caros). Esta é a principal razão pela qual os preços dos rivens oscilam tanto."
+        }
+      ]
+    },
+    {
+      "id": "reading-a-riven",
+      "title": "Lendo um riven: bônus, maldições e \"god rolls\"",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Todo riven revelado tem um layout aleatório de atributos positivos e, opcionalmente, um negativo. Uma **maldição** não é necessariamente ruim — um riven *com* uma maldição recebe um aumento em seus valores positivos. O truque é conseguir uma maldição com a qual você não se importa (como `-zoom`, `-recoil` ou `-impact` em uma build que ignora isso) para manter os bônus amplificados de graça."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Layout",
+              "O que significa",
+              "Nota de valor"
+            ],
+            "rows": [
+              [
+                "2 bônus",
+                "Dois positivos, sem maldição",
+                "Seguro, mas modesto — barato e ótimo para jogo casual"
+              ],
+              [
+                "3 bônus",
+                "Três positivos, sem maldição",
+                "Um polivalente forte e sem pontos negativos"
+              ],
+              [
+                "2 bônus + 1 maldição",
+                "Dois positivos mais uma maldição; os bônus são amplificados",
+                "Excelente quando a maldição é inofensiva"
+              ],
+              [
+                "3 bônus + 1 maldição",
+                "Três positivos mais uma maldição; valores de atributos mais altos",
+                "O clássico formato 'god roll'"
+              ]
+            ]
+          }
+        },
+        {
+          "type": "p",
+          "text": "O que conta como um *bom* bônus depende da arma. Em uma arma de crítico, você vai querer coisas como **chance crítica, dano crítico, tiro múltiplo e dano base**, idealmente com o atributo elemental ou de facção correto. Em uma arma de status, você daria mais peso para chance de status e tiro múltiplo. Não existe uma rolagem universalmente melhor — o riven ideal é aquele que preenche as lacunas que seus mods normais não conseguem, acumulando-se sobre a sua build regular como qualquer outro mod."
+        },
+        {
+          "type": "tip",
+          "text": "O nome inventado do riven (aquele nome estranho como `critacan`/`visitox`) é puramente cosmético — ele é gerado a partir dos atributos e não afeta o poder. Julgue um riven pelas suas linhas de atributos reais, disposição e requisito de MR, nunca pelo nome."
+        }
+      ]
+    },
+    {
+      "id": "veiled-and-unveiling",
+      "title": "Rivens velados e como destravá-los",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Os rivens geralmente chegam **velados** — você ainda não consegue ver a arma ou os atributos, apenas a categoria (Rifle, Escopeta, Pistola, Corpo a Corpo, etc.). Para revelá-lo, você deve concluir um **desafio aleatório** usando uma arma do tipo correspondente, como matar inimigos com tiros na cabeça no ar, concluir uma missão sem ser detectado ou matar uma sequência de inimigos enquanto desliza. Conclua o desafio e o riven rolará sua arma e atributos."
+        },
+        {
+          "type": "p",
+          "text": "As principais fontes de rivens velados são as **Sorties** — o desafio diário de três missões, que recompensa com um riven cerca de um quarto das vezes — e o **Steel Path Circuit** em Duviri, cuja trilha de recompensa semanal pode conceder um riven velado. Você também pode farmar **Riven Slivers** (inimigos Eximus os soltam, especialmente no Steel Path) e levar **dez para Palladino** em Iron Wake em Earth, que os transmuta em um riven velado com um limite semanal. Concluir a jornada **The War Within** também concede seu primeiro riven. Note que as missões de Kuva Siphon e Kuva Flood fornecem o *Kuva* que você gastará para re-rolar — elas não dropam os rivens em si."
+        },
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "h": "Obtenha um riven velado",
+              "p": "Conclua uma Sortie, resgate um na trilha de recompensas semanais do Steel Path Circuit em Duviri, ou farme dez Riven Slivers e troque-os com Palladino em Iron Wake."
+            },
+            {
+              "h": "Verifique o desafio",
+              "p": "Abra o riven no seu menu de Mods para ver o desafio de revelação e qual categoria de arma ele exige."
+            },
+            {
+              "h": "Equipe o tipo correto de arma",
+              "p": "Traga uma arma dessa categoria (rifle, pistola, corpo a corpo, etc.) — o desafio só conta com o tipo correspondente equipado."
+            },
+            {
+              "h": "Conclua o desafio",
+              "p": "Realize a tarefa em qualquer missão adequada. Assim que for concluída, o riven revelará sua arma e atributos aleatórios na hora."
+            }
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "Alguns desafios são complicados (\"sem escudos\", \"sem alarmes\", tipos de missão específicos). Verifique a redação exata na [wiki](https://wiki.warframe.com/) primeiro — uma leitura de dois minutos economiza dezenas de tentativas fracassadas, e muitos podem ser resolvidos rapidamente em uma missão solo de nível baixo."
+        }
+      ]
+    },
+    {
+      "id": "rolling-with-kuva",
+      "title": "Rolando com Kuva",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Não gostou da sua rolagem? Você pode **re-rolar** (ciclar) um riven para torná-lo completamente aleatório novamente — os atributos, a quantidade deles e seus valores mudam. Cada re-rolagem custa **Kuva**, e o preço aumenta a cada rolagem naquele riven: começa em cerca de 900 e sobe até um **limite de cerca de 3.500 Kuva por rolagem**, onde se estabiliza. O Kuva vem de missões de Kuva Siphon e Kuva Flood e da missão infinita de Kuva Survival na Kuva Fortress."
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "Custo",
+              "v": "Kuva, por re-rolagem"
+            },
+            {
+              "k": "Progressão",
+              "v": "~900 de Kuva, subindo até um limite de ~3.500"
+            },
+            {
+              "k": "Efeito",
+              "v": "Torna aleatórios novamente a quantidade de atributos, os atributos e seus valores"
+            },
+            {
+              "k": "Chances",
+              "v": "Puro RNG — sem sistema de compensação (pity), sem como focar em um atributo específico"
+            }
+          ]
+        },
+        {
+          "type": "warn",
+          "text": "Re-rolar é um ralo de Kuva sem fundo. Como é puro RNG, buscar uma rolagem perfeita pode consumir *milhões* de Kuva — um jogador conhecido foi filmado re-rolando um único riven milhares de vezes. Antes de começar a farmar, decida o que seria \"bom o suficiente\" e pare por aí. Muitas vezes é mais barato comprar uma rolagem sólida de outro jogador do que apostar em um god roll por conta própria."
+        }
+      ]
+    },
+    {
+      "id": "ranking-and-endo",
+      "title": "Subindo o rank dos rivens — e por que os ruins são apenas Endo",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Como outros mods, os rivens sobem de nível com **Endo e créditos**, do **rank 0 ao rank 8**. Cada rank aumenta os valores dos atributos *e* o consumo de capacidade, que pode chegar a cerca de 18 — tornando um riven no nível máximo um dos mods que mais consomem capacidade no jogo. Uma arma com um riven de rank 8 quase sempre precisa de uma ou duas Formas extras para caber tudo. Se precisar de Endo, o [guia de farm de Endo](/guides/endo) aborda as fontes mais rápidas."
+        },
+        {
+          "type": "tip",
+          "text": "Tem um riven que nunca vai usar? **Dissolva-o em Endo.** A quantidade escala com o número de vezes que ele foi re-rolado (além do seu rank e MR), então rivens inúteis muito ciclados podem render uma boa quantidade de Endo. Como o mercado está inundado de rolagens medíocres, a maioria dos rivens ruins vale mais para você como Endo do que como uma venda de 1 ou 2 platinas — faça as contas na [ferramenta de valor de Endo / Platina](/endo) antes de decidir dissolver, guardar ou anunciar um."
+        }
+      ]
+    },
+    {
+      "id": "trading-and-pricing",
+      "title": "Troca e precificação de rivens",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Os rivens são trocados de jogador para jogador e, como cada um é único, a precificação é mais arte do que ciência. Uma ótima rolagem em uma arma querida pode valer centenas de platinas; os mesmos atributos em uma arma do meta com baixa disposição podem não valer quase nada. Você também pode trocar rivens **velados** — apostas no escuro mais baratas onde o comprador realiza a revelação por conta própria. Note que os rivens possuem uma **taxa de troca em créditos mais alta** do que os mods normais, e você possui um **número limitado de espaços de riven** que pode expandir com platinas."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Fator",
+              "Sobe o preço quando…"
+            ],
+            "rows": [
+              [
+                "Arma",
+                "É uma arma popular / do meta para a qual muitos jogadores criam builds"
+              ],
+              [
+                "Disposição",
+                "A arma tem pontos altos (4–5), então os atributos têm mais impacto"
+              ],
+              [
+                "Combo de atributos",
+                "Os bônus combinam com a build ideal e qualquer maldição é inofensiva"
+              ],
+              [
+                "MR e rolagens",
+                "Baixo requisito de MR, além de uma rolagem limpa que o comprador não sentirá necessidade de re-rolar"
+              ]
+            ]
+          }
+        },
+        {
+          "type": "p",
+          "text": "Não chute no escuro. Estime um valor justo antes de comprar ou anunciar, e depois faça uma verificação de bom senso no mercado geral para a mesma arma:"
+        },
+        {
+          "type": "links",
+          "links": [
+            {
+              "label": "Estimador de valor de riven",
+              "to": "/riven-value",
+              "icon": "calculator-variant",
+              "note": "Estime quanto vale uma rolagem específica"
+            },
+            {
+              "label": "Valor de Endo / Platina",
+              "to": "/endo",
+              "icon": "diamond-stone",
+              "note": "Cálculo de dissolver para Endo vs vender"
+            },
+            {
+              "label": "Buscador de revenda",
+              "to": "/flip",
+              "icon": "swap-horizontal",
+              "note": "Margens de oferta de compra / pedido de venda"
+            },
+            {
+              "label": "Ferramentas da comunidade",
+              "to": "/tools",
+              "icon": "tools",
+              "note": "Mercados de riven, wikis e ferramentas da DE"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "do-you-need-one",
+      "title": "Você realmente precisa de um riven?",
+      "blocks": [
+        {
+          "type": "info",
+          "text": "Rivens são **otimização extrema (min-maxing) de fim de jogo, não um requisito.** Uma arma devidamente modificada limpa todo o Mapa Estelar — e a maior parte do Steel Path — sem nenhum riven. Eles servem para extrair poder extra de uma arma que você já ama ou para avançar em missões de resistência longas, não algo que um novo jogador precise buscar."
+        },
+        {
+          "type": "p",
+          "text": "Se você for iniciante, priorize seus **mods essenciais, tipos de dano e sobrevivência** primeiro — isso importa muito mais do que qualquer riven. Quando você quiser um, comprar uma rolagem decente para sua arma principal é quase sempre mais inteligente do que apostar seu Kuva por um god roll. E se um riven que você nunca vai usar cair no seu colo, trate-o como [Endo](/guides/endo) ou um pouco de platina de troca e siga em frente."
+        }
+      ]
+    }
+  ],
+  "videos": [
+    {
+      "id": "mDWzPgDUH1k",
+      "title": "What you MUST KNOW about RIVENS in Warframe 2026!",
+      "channel": "MHBlacky"
+    },
+    {
+      "id": "t66oSX1BkLc",
+      "title": "How to Get Riven Mods and What They Do | Beginner's Guide",
+      "channel": "Tipsy"
+    },
+    {
+      "id": "CwcTyXalWrs",
+      "title": "Rings Of Riven Hell | Warframe Riven Mod & Platinum Farming",
+      "channel": "turbomonk"
+    },
+    {
+      "id": "U9-2UbALrQw",
+      "title": "ULTIMATE Riven Mod Guide!",
+      "channel": "Jacsonitos"
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Como obtenho riven mods no Warframe?",
+      "a": "As principais fontes são as Sorties (o desafio diário de três missões, que recompensa com um riven cerca de um quarto das vezes), o Steel Path Circuit em Duviri e Riven Slivers — farme dez (inimigos Eximus os soltam, especialmente no Steel Path) e troque-os com Palladino em Iron Wake por um riven velado. Você deve concluir a jornada The War Within primeiro, e concluí-la também concede seu primeiro riven. As missões de Kuva Siphon e Kuva Flood fornecem o Kuva usado para re-rolar os rivens, não os rivens em si."
+    },
+    {
+      "q": "Como revelo um riven velado?",
+      "a": "Abra o riven velado no seu menu de Mods para ver o desafio e a categoria de arma exigida, depois conclua o desafio com uma arma correspondente equipada (um rifle para um riven de rifle, e assim por diante). Assim que terminar, o riven revelará sua arma e atributos aleatórios. Verifique a redação exata do desafio na wiki primeiro — alguns têm condições complicadas, como sem escudos ou sem alarmes."
+    },
+    {
+      "q": "Como re-rolo um riven e quanto custa?",
+      "a": "Você re-rola (cicla) um riven no menu de Mods usando Kuva, o que torna seus atributos completamente aleatórios novamente. O custo aumenta por rolagem nesse mod, começando em cerca de 900 de Kuva e limitando-se perto de 3.500. É puro RNG, sem sistema de compensação (pity), então defina uma meta de 'bom o suficiente' antes de começar a gastar seu Kuva. Farme o Kuva em missões de Kuva Siphon, Kuva Flood e na Kuva Fortress."
+    },
+    {
+      "q": "O que é a disposição do riven?",
+      "a": "A disposição é um multiplicador por arma exibido como 1 a 5 pontos que escala o quão fortes são os atributos de um riven nessa arma. Ela é inversamente proporcional à popularidade: armas fracas ou pouco usadas recebem disposição alta (rivens mais fortes), enquanto armas do meta recebem disposição baixa. A DE ajusta as disposições periodicamente, e é por isso que os preços dos rivens sobem e descem — verifique a wiki em tempo real para ver os pontos atuais de uma arma."
+    },
+    {
+      "q": "O que é um riven 'god roll'?",
+      "a": "Um god roll é um riven cujos atributos aleatórios se alinham perfeitamente com a sua build — geralmente três bônus fortes (como chance crítica, dano crítico e tiro múltiplo ou dano) mais uma maldição com a qual você não se importa, como -zoom ou -recoil. Não existe uma rolagem universalmente melhor; o riven ideal preenche as lacunas que seus mods normais não conseguem. Use nosso estimador /riven-value para avaliar quanto vale uma rolagem específica."
+    },
+    {
+      "q": "Os rivens valem a pena para novos jogadores?",
+      "a": "Não muito — rivens são otimização extrema (min-maxing) de fim de jogo, e uma arma bem modificada limpa o Mapa Estelar e a maior parte do Steel Path sem um. Concentre-se em seus mods essenciais, tipos de dano e sobrevivência primeiro. Quando você quiser um riven, comprar uma rolagem decente para sua arma principal costuma ser mais inteligente do que apostar Kuva por um god roll."
+    },
+    {
+      "q": "Posso dissolver um riven em Endo?",
+      "a": "Sim. Rivens indesejados podem ser dissolvidos em Endo, e a quantidade escala com o número de vezes que o riven foi re-rolado (além do seu rank e requisito de maestria), então rivens inúteis muito ciclados rendem uma boa quantidade de Endo. Como o mercado está inundado de rolagens medíocres, um riven ruim costuma valer mais como Endo do que como uma venda de 1 ou 2 platinas — passe-o pela ferramenta /endo antes de decidir."
+    },
+    {
+      "q": "Por que os preços dos rivens oscilam tanto?",
+      "a": "Como cada riven é único, seu valor depende da popularidade da arma, de sua disposição, do combo exato de atributos e de seu requisito de MR. Quando a DE ajusta a disposição de uma arma, todo riven para essa arma instantaneamente fica mais forte ou mais fraco, movendo os preços junto. Sempre estime um valor justo com /riven-value e verifique o mercado atual antes de comprar ou anunciar."
+    }
+  ],
+  "sources": [
+    {
+      "label": "Warframe Wiki — Riven Mods",
+      "href": "https://wiki.warframe.com/w/Riven_Mods"
+    },
+    {
+      "label": "Warframe Wiki — Riven Sliver",
+      "href": "https://wiki.warframe.com/w/Riven_Sliver"
+    },
+    {
+      "label": "r/Warframe — I love riven challenges",
+      "href": "https://reddit.com/r/Warframe/comments/1toi7ph/i_love_riven_challanges/"
+    },
+    {
+      "label": "r/Warframe — Every time Sortie gives me a Riven mod",
+      "href": "https://reddit.com/r/Warframe/comments/h0jktp/every_time_sortie_gives_me_a_riven_mod/"
+    },
+    {
+      "label": "r/Warframe — the RNG requiem/Kuva/riven casino rant",
+      "href": "https://reddit.com/r/Warframe/comments/dr46xo/so_let_me_get_this_straight_we_need_to_farm_rng/"
+    }
+  ],
+  "related": [
+    {
+      "label": "Farm de Endo",
+      "to": "/guides/endo",
+      "icon": "diamond-stone",
+      "note": "Suba o rank dos rivens — ou converta os ruins"
+    },
+    {
+      "label": "Estimador de Valor de Riven",
+      "to": "/riven-value",
+      "icon": "calculator-variant",
+      "note": "Precifique uma rolagem antes de trocar"
+    },
+    {
+      "label": "Valor de Endo / Platina",
+      "to": "/endo",
+      "icon": "scale-balance",
+      "note": "Cálculo de dissolver para Endo vs vender"
+    },
+    {
+      "label": "Buscador de Revenda",
+      "to": "/flip",
+      "icon": "swap-horizontal",
+      "note": "Margens de oferta de compra / pedido de venda"
+    },
+    {
+      "label": "Ferramentas da Comunidade",
+      "to": "/tools",
+      "icon": "tools",
+      "note": "Mercados de riven, wikis e ferramentas da DE"
+    }
+  ],
+  "updated": "2026-07-18"
+}

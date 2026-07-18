@@ -1,0 +1,383 @@
+{
+  "targets": [
+    {
+      "name": "Кредити",
+      "aliases": [
+        "credit",
+        "money",
+        "cash",
+        "hollars"
+      ],
+      "kind": "currency",
+      "guide": "credits",
+      "route": "/guides/credits#hollvania",
+      "hint": "Сейфи Höllvania Techrot (Chroma), Index, Profit-Taker.",
+      "icon": "mdi-circle-multiple-outline"
+    },
+    {
+      "name": "Платина",
+      "aliases": [
+        "plat",
+        "premium currency"
+      ],
+      "kind": "currency",
+      "guide": "platinum",
+      "route": "/guides/platinum#what-sells",
+      "hint": "Безкоштовна гра: продавайте прайм-деталі, моди та рівени.",
+      "icon": "mdi-cash-multiple"
+    },
+    {
+      "name": "Ендо",
+      "aliases": [
+        "ayatan",
+        "ayatan sculpture",
+        "ayatan star",
+        "mod upgrade currency"
+      ],
+      "kind": "currency",
+      "guide": "endo",
+      "route": "/guides/endo",
+      "hint": "Скульптури Ayatan, Arbitrations та місії з великою кількістю ендо.",
+      "icon": "mdi-hexagon-multiple-outline"
+    },
+    {
+      "name": "Дукати",
+      "aliases": [
+        "ducat",
+        "orokin ducats",
+        "baro currency",
+        "prime junk"
+      ],
+      "kind": "currency",
+      "guide": "relics",
+      "route": "/guides/relics#cash-out",
+      "hint": "Продавайте непотрібні прайм-деталі Baro за дукати.",
+      "icon": "mdi-store"
+    },
+    {
+      "name": "Фокус",
+      "aliases": [
+        "focus points",
+        "operator xp",
+        "focus school"
+      ],
+      "kind": "currency",
+      "guide": "focus",
+      "route": "/guides/focus#best-farms",
+      "hint": "Встановіть лінзу на зброю, яку прокачуєте; ESO та Onslaught — це швидкий фарм.",
+      "icon": "mdi-eye-outline"
+    },
+    {
+      "name": "Кува",
+      "aliases": [
+        "riven reroll",
+        "kuva fuel",
+        "lich currency"
+      ],
+      "kind": "currency",
+      "guide": "kuva",
+      "route": "/guides/kuva#core-farms",
+      "hint": "Місії Kuva Survival та Siphon/Flood на Kuva Fortress.",
+      "icon": "mdi-water-outline"
+    },
+    {
+      "name": "Репутація",
+      "aliases": [
+        "reputation",
+        "rep",
+        "syndicate standing",
+        "faction rep"
+      ],
+      "kind": "reputation",
+      "guide": "standing",
+      "route": "/guides/standing#earning-main",
+      "hint": "Заповнюйте щоденний ліміт репутації синдикатів за допомогою медальйонів та жетонів.",
+      "icon": "mdi-handshake-outline"
+    },
+    {
+      "name": "Есенція сталі",
+      "aliases": [
+        "essence",
+        "steel path currency",
+        "kuya"
+      ],
+      "kind": "currency",
+      "guide": "steel-path",
+      "route": "/guides/steel-path",
+      "hint": "Здобич з Acolyte та контейнери з ресурсами на Steel Path.",
+      "icon": "mdi-fire"
+    },
+    {
+      "name": "Елементи живлення Orokin",
+      "aliases": [
+        "orokin cell",
+        "cells"
+      ],
+      "kind": "resource",
+      "guide": "resources",
+      "route": "/guides/resources#staples",
+      "hint": "Saturn (Helene), Deimos та Orb Vallis; бос Kela De Thaym.",
+      "icon": "mdi-hexagon-outline"
+    },
+    {
+      "name": "Нейроди",
+      "aliases": [
+        "neurode",
+        "sensor"
+      ],
+      "kind": "resource",
+      "guide": "resources",
+      "route": "/guides/resources#staples",
+      "hint": "Deimos, Lua та Eris; тайники в Orb Vallis є надійним джерелом.",
+      "icon": "mdi-sine-wave"
+    },
+    {
+      "name": "Нейронні датчики",
+      "aliases": [
+        "neural sensor"
+      ],
+      "kind": "resource",
+      "guide": "resources",
+      "route": "/guides/resources#staples",
+      "hint": "Jupiter (Io) та Kuva Fortress.",
+      "icon": "mdi-chip"
+    },
+    {
+      "name": "Пластиди",
+      "aliases": [
+        "plastid"
+      ],
+      "kind": "resource",
+      "guide": "resources",
+      "route": "/guides/resources#staples",
+      "hint": "Saturn, Uranus та Orb Vallis.",
+      "icon": "mdi-cube-outline"
+    },
+    {
+      "name": "Рубедо",
+      "aliases": [],
+      "kind": "resource",
+      "guide": "resources",
+      "route": "/guides/resources#staples",
+      "hint": "Pluto, Earth та Orb Vallis.",
+      "icon": "mdi-cube-outline"
+    },
+    {
+      "name": "Аргонові кристали",
+      "aliases": [
+        "argon",
+        "argon crystal",
+        "decaying resource"
+      ],
+      "kind": "resource",
+      "guide": "resources",
+      "route": "/guides/resources#argon",
+      "hint": "Тільки у Void, і вони розпадаються за ~24 год — фарміть безпосередньо перед створенням.",
+      "icon": "mdi-diamond-outline"
+    },
+    {
+      "name": "Телур",
+      "aliases": [],
+      "kind": "resource",
+      "guide": "resources",
+      "route": "/guides/resources#awkward-ones",
+      "hint": "Місії Archwing, Grineer Sealab та уламки Railjack.",
+      "icon": "mdi-atom-variant"
+    },
+    {
+      "name": "Оксіум",
+      "aliases": [
+        "oxium osprey"
+      ],
+      "kind": "resource",
+      "guide": "resources",
+      "route": "/guides/resources#awkward-ones",
+      "hint": "Убивайте Oxium Ospreys до того, як вони самознищаться (Io, Outer Terminus).",
+      "icon": "mdi-quadcopter"
+    },
+    {
+      "name": "Екстракт нітаїну",
+      "aliases": [
+        "nitain"
+      ],
+      "kind": "resource",
+      "guide": "resources",
+      "route": "/guides/resources#awkward-ones",
+      "hint": "Товари за кредити Nightwave, тайники в місіях диверсії та сигнали тривоги.",
+      "icon": "mdi-flask-outline"
+    },
+    {
+      "name": "Кріотик",
+      "aliases": [
+        "cryotic"
+      ],
+      "kind": "resource",
+      "guide": "resources",
+      "route": "/guides/resources#cheat-sheet",
+      "hint": "Будь-яка місія розкопок — чим більше екскаваторів, тим більше кріотика.",
+      "icon": "mdi-snowflake"
+    },
+    {
+      "name": "Звичайні ресурси",
+      "aliases": [
+        "ferrite",
+        "alloy plate",
+        "salvage",
+        "nano spores",
+        "polymer bundle",
+        "circuits",
+        "gallium",
+        "morphics",
+        "control module",
+        "detonite",
+        "fieldron",
+        "mutagen"
+      ],
+      "kind": "resource",
+      "guide": "resources",
+      "route": "/guides/resources#cheat-sheet",
+      "hint": "Використовуйте таблицю-шпаргалку з ресурсами, щоб знайти найкращий вузол для кожного матеріалу.",
+      "icon": "mdi-cube-scan"
+    },
+    {
+      "name": "Прайм-деталі",
+      "aliases": [
+        "prime",
+        "prime warframe",
+        "prime weapon",
+        "prime set",
+        "relic rewards"
+      ],
+      "kind": "gear",
+      "guide": "relics",
+      "route": "/guides/relics#relic-basics",
+      "hint": "Відкривайте потрібні реліквії Void на розривах; покращуйте їх до стану Radiant для кращих шансів.",
+      "icon": "mdi-diamond-stone"
+    },
+    {
+      "name": "Частини Warframe",
+      "aliases": [
+        "warframe",
+        "frame parts",
+        "new frame",
+        "farm a warframe"
+      ],
+      "kind": "gear",
+      "guide": "beginner-warframes",
+      "route": "/guides/beginner-warframes",
+      "hint": "Який фрейм фармити першим і де випадають простіші.",
+      "icon": "mdi-robot-outline"
+    },
+    {
+      "name": "Rivens",
+      "aliases": [
+        "riven",
+        "riven mod",
+        "veiled riven"
+      ],
+      "kind": "mod",
+      "guide": "riven",
+      "route": "/guides/riven",
+      "hint": "Sorties та Steel Path; переролюйте за допомогою Kuva.",
+      "icon": "mdi-star-four-points-outline"
+    },
+    {
+      "name": "Arcanes",
+      "aliases": [
+        "arcane",
+        "arcane enhancement"
+      ],
+      "kind": "gear",
+      "guide": "arcanes",
+      "route": "/guides/arcanes",
+      "hint": "Eidolons, Profit-Taker, Deep Archimedea та відкриті світи.",
+      "icon": "mdi-shimmer"
+    },
+    {
+      "name": "Archon Shards",
+      "aliases": [
+        "archon shard",
+        "shards",
+        "tauforged"
+      ],
+      "kind": "progression",
+      "guide": "archon-shards",
+      "route": "/guides/archon-shards",
+      "hint": "Щотижневе Archon Hunt — один гарантований осколок на тиждень.",
+      "icon": "mdi-cards-diamond-outline"
+    },
+    {
+      "name": "Моди",
+      "aliases": [
+        "mod",
+        "mod farming",
+        "rare mods",
+        "primed mods"
+      ],
+      "kind": "mod",
+      "guide": "mods",
+      "route": "/guides/mods",
+      "hint": "Які моди важливі, де вони випадають та як підвищувати їхній ранг.",
+      "icon": "mdi-view-grid-plus-outline"
+    },
+    {
+      "name": "Forma",
+      "aliases": [
+        "forma blueprint"
+      ],
+      "kind": "gear",
+      "guide": "relics",
+      "route": "/guides/relics#reward-pool",
+      "hint": "Часта нагорода з Void Relic — накопичуйте запасні під час відкриття реліквій.",
+      "icon": "mdi-vector-triangle"
+    },
+    {
+      "name": "Eidolon Shards",
+      "aliases": [
+        "eidolon",
+        "brilliant shard",
+        "radiant eidolon shard",
+        "tridolon"
+      ],
+      "kind": "progression",
+      "guide": "eidolon",
+      "route": "/guides/eidolon",
+      "hint": "Полюйте на Eidolons вночі на Plains of Eidolon.",
+      "icon": "mdi-weather-night"
+    },
+    {
+      "name": "Intrinsics",
+      "aliases": [
+        "railjack",
+        "intrinsic",
+        "command intrinsic"
+      ],
+      "kind": "progression",
+      "guide": "railjack",
+      "route": "/guides/railjack",
+      "hint": "Проходьте місії Railjack, щоб підвищити рівень Intrinsics та фармити уламки.",
+      "icon": "mdi-rocket-launch-outline"
+    },
+    {
+      "name": "Incarnon Genesis",
+      "aliases": [
+        "incarnon",
+        "duviri rewards",
+        "circuit"
+      ],
+      "kind": "gear",
+      "guide": "duviri",
+      "route": "/guides/duviri",
+      "hint": "Щотижневий Duviri Circuit ротує Incarnon Adapters та фрейми.",
+      "icon": "mdi-horse-variant"
+    }
+  ],
+  "kinds": {
+    "resource": "Ресурси",
+    "currency": "Валюта",
+    "gear": "Спорядження та частини",
+    "mod": "Моди",
+    "progression": "Прогрес",
+    "reputation": "Репутація"
+  }
+}

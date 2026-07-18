@@ -1,0 +1,403 @@
+{
+  "slug": "helminth",
+  "eyebrow": "지식 센터 · Helminth & Subsume",
+  "title": "Helminth & Subsume 가이드",
+  "lede": "여분의 Warframe을 Helminth에게 먹이고, 그 어빌리티 중 하나를 영구적으로 보존한 뒤, 그 어빌리티를 실제로 필요한 frame에 이식하세요. 이것이 평범한 frame이 괴물로 거듭나는 방법입니다. 여기 모든 규칙과 쫓아야 할 최고의 어빌리티들, 그리고 사람들이 Warframe 한 대를 통째로 날려먹는 실수에 대해 정리했습니다.",
+  "category": "systems",
+  "readMins": 9,
+  "stats": [
+    {
+      "num": "8",
+      "label": "segment를 구매하기 위한 Mastery Rank",
+      "tone": "gold"
+    },
+    {
+      "num": "6",
+      "label": "먹여야 할 secretion 종류",
+      "tone": "good"
+    },
+    {
+      "num": "1",
+      "label": "frame당 subsume 슬롯",
+      "tone": "alt"
+    },
+    {
+      "num": "7 days",
+      "label": "Invigoration 지속 시간",
+      "tone": "good"
+    }
+  ],
+  "sections": [
+    {
+      "id": "what-is-helminth",
+      "title": "Helminth의 실제 정체",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Helminth**는 Warframe의 어빌리티 이식 시스템이며, 게임 전체에서 가장 큰 전력 급상승(스펙업) 요인 중 하나입니다. 여분의 Warframe을 여기에 영구적으로 희생시켜(\"subsuming\") 해당 frame의 어빌리티 중 **하나**를 개인 라이브러리에 해금합니다. 그 이후부터는 소량의 자원을 지불하고 해당 어빌리티를 다른 어떤 frame에든 원하는 만큼 **infuse**하여 기존의 4개 어빌리티 중 하나를 덮어쓸 수 있습니다. 게다가 매주 **Invigorations**라는 주간 능력치 버프도 제공합니다."
+        },
+        {
+          "type": "p",
+          "text": "실제로 플레이어들은 이 방법을 통해 frame의 약점을 보완하거나(자가 치유, 에너지, 방어력 깎기, 피해 버프 등 추가) 강력한 frame의 한계를 더욱 끌어올립니다. 게임 초반에는 필수적이지 않지만, 여러 frame을 안정적으로 보유하게 되면 거의 모든 빌드를 짜는 방식이 바뀝니다. 스마트한 [modding setup](/guides/mods) 및 [Archon Shards](/guides/archon-shards)와 조합하면 중간 티어의 frame조차 엔드게임에서 활약할 수 있게 됩니다."
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "위치",
+              "v": "Orbiter 후방에 위치한 segment 방인 Helminth Infirmary"
+            },
+            {
+              "k": "해금 조건",
+              "v": "진입을 위해 Heart of Deimos 완료, 이후 Segment 구매를 위해 Mastery Rank 8 및 Entrati 평판 필요"
+            },
+            {
+              "k": "두 가지 기능",
+              "v": "어빌리티 Subsume/Infuse + 주간 Invigorations"
+            },
+            {
+              "k": "주의 사항",
+              "v": "Subsuming을 진행하면 기증한 Warframe은 영구적으로 파괴됩니다"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "unlock",
+      "title": "Helminth 해금하기",
+      "blocks": [
+        {
+          "type": "steps",
+          "ordered": true,
+          "steps": [
+            {
+              "h": "Heart of Deimos 완료",
+              "p": "프롤로그(Vor's Prize)를 완료하고 Orbiter를 획득하면 진행할 수 있는 이 스토리 퀘스트는 Deimos의 Cambion Drift와 Necralisk를 열어주며, Entrati 신디케이트 평판을 쌓을 수 있게 해줍니다. 퀘스트를 완료한다고 해서 Helminth를 바로 주는 것은 아닙니다. 구매할 수 있는 장소를 해금해 줄 뿐입니다."
+            },
+            {
+              "h": "진짜 관문 도달: MR 8 + Entrati Associate 등급",
+              "p": "Helminth Segment 설계도는 Necralisk의 Son이 판매하며, Mastery Rank 8 이상 및 Entrati 평판 3등급(Associate) 이상이어야 거래할 수 있습니다. Mastery Rank를 올리고 Entrati 평판을 채워 도달하세요."
+            },
+            {
+              "h": "Segment 구매, 제작 및 설치",
+              "p": "Entrati 평판으로 설계도를 구매한 뒤, Foundry에서 제작하고(크레딧과 Deimos 자원 필요, 제작에 약 하루 소요) 설치하세요. Orbiter 후방의 Helminth Infirmary를 사용할 수 있게 됩니다. 안으로 들어가 벽에 있는 유기체와 상호작용하여 메뉴를 여세요."
+            },
+            {
+              "h": "먹이를 주어 랭크 올리기",
+              "p": "Helminth는 자원을 먹이고 frame을 subsume할 때마다 레벨이 올라갑니다. 첫 번째 랭크에서는 subsuming이 해금되며, 랭크가 높아질수록 자원 저장량이 늘어나고 이후 기능들이 열립니다. 초반에는 요구하는 여분의 재료들을 그냥 먹이세요."
+            }
+          ]
+        },
+        {
+          "type": "info",
+          "text": "게임을 즐기기 위해 Helminth가 **반드시** 필요한 것은 아닙니다. 이는 중반 단계의 업그레이드입니다. 아직 첫 몇 개의 frame을 제작하는 중이라면 그것을 우선시하고([beginner warframes guide](/guides/beginner-warframes) 및 [progression path](/guides/progression) 참고), 여분의 frame이 생겼을 때 Helminth로 돌아오세요."
+        }
+      ]
+    },
+    {
+      "id": "subsuming",
+      "title": "Subsuming 작동 방식",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Subsuming**이란 여분의 Warframe을 Helminth에 넣어 흡수시키는 것을 의미합니다. 먼저 랭크를 올릴 필요는 없습니다. 새로 제작한 랭크 0짜리 frame도 최대 랭크 frame만큼 잘 작동합니다. 그 대가로 해당 frame의 **특정 어빌리티 하나**를 라이브러리에 영구적으로 해금합니다. 어떤 *frame*을 먹일지는 플레이어가 선택하지만, **4개의 어빌리티 중 기증할 수 있는 어빌리티는 DE가 결정합니다**. 예를 들어 Rhino는 항상 Roar를 기증하며, Iron Skin은 기증할 수 없습니다. 한 가지 중요한 제한 사항은 **일반(base)** Warframes만 subsume할 수 있다는 점입니다. Prime 및 Umbra 변형 기종은 Helminth에 전혀 먹일 수 없습니다. 먹이기 전에 항상 해당 frame의 subsume 가능한 어빌리티를 ([wiki](https://wiki.warframe.com/)나 게임 내 코덱스에서) 미리 확인하여 당황하는 일이 없도록 하세요."
+        },
+        {
+          "type": "warn",
+          "title": "Subsuming은 영구적이며 frame을 파괴합니다",
+          "text": "기증한 Warframe은 subsume하는 순간 **영원히 사라집니다**. 만약 그것이 유일한 보유분이라면, 처음부터 다시 파밍하거나 제작해야 합니다. 중복된 개체, 정말로 전혀 사용하지 않는 frame, 혹은 Prime으로 대체할 예정인 일반 버전을 먹이세요. 여전히 플레이하고 있는 유일한 보유 기종은 절대 먹이지 마세요."
+        },
+        {
+          "type": "p",
+          "text": "frame은 **한 번**만 subsume하면 됩니다. 어빌리티가 라이브러리에 등록되면 영구적으로 소장되며 제한 없이 여러 frame에 infuse할 수 있습니다. 동일한 frame을 두 번 subsume해도 새로 얻는 것은 없습니다."
+        }
+      ]
+    },
+    {
+      "id": "infusing",
+      "title": "frame에 어빌리티 이식하기 (infusing)",
+      "blocks": [
+        {
+          "type": "steps",
+          "ordered": true,
+          "steps": [
+            {
+              "h": "이식받을 frame 선택",
+              "p": "Helminth의 Infuse Ability 메뉴를 열고 변경하려는 frame을 선택하세요. Prime 및 Umbra를 포함하여 제작이 완료된 모든 frame에 적용 가능하며, 이식받는 대상의 랭크 제한은 없습니다."
+            },
+            {
+              "h": "덮어쓸 어빌리티 선택",
+              "p": "대체할 frame의 4개 어빌리티 중 하나를 선택합니다. subsume된 어빌리티가 어빌리티 바의 해당 슬롯을 차지하게 됩니다. 원래 어빌리티 중 어떤 것을 가장 적게 사용하는지 생각해보세요."
+            },
+            {
+              "h": "자원 비용 지불",
+              "p": "각 infusion에는 Helminth의 자원 카테고리 조합이 소모됩니다(아래 참고). 확인을 누르면 어빌리티가 이식됩니다."
+            }
+          ]
+        },
+        {
+          "type": "info",
+          "title": "사람들이 자주 헷갈리는 규칙들",
+          "text": "**frame당 하나의 subsume된 어빌리티만 적용 가능**하며, 두 개를 중첩할 수는 없습니다. 나중에 그 위에 다른 어빌리티를 infuse하여 변경할 수 있지만, 자원이 다시 소모됩니다. subsume된 어빌리티는 **해당 frame의 모드**(Strength, Duration, Range, Efficiency)에 따라 수치가 조정되므로, Strength가 높은 frame에 Roar를 이식하면 더 강력한 효과를 냅니다. 몇몇 어빌리티는 원래 frame에서보다 subsume되었을 때 최대 수치 제한이 더 낮게 설정되어 있으며, 많은 어빌리티가 **개조 모드(augment mod)를 사용할 수 없습니다** (사용 가능한 목록이 계속 늘어나고는 있습니다). 의존하려는 어빌리티의 정확한 작동 방식은 위키 항목을 확인하세요."
+        }
+      ]
+    },
+    {
+      "id": "best-subsumes",
+      "title": "역할별 가장 인기 있는 subsume 어빌리티",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "이 모든 것이 필요하지는 않습니다. 본인 빌드의 약점을 보완해 줄 어빌리티를 선택하세요. 아래의 주요 어빌리티들은 피해량, 에너지, 생존력, 방어력 깎기, 몹 몰이 등 보편적인 문제를 해결해 주기 때문에 수년 동안 상위권을 유지해 왔습니다. 패치에 따라 정확한 수치는 변동될 수 있으므로, 이들을 역할군으로 취급하고 현재 수치는 [wiki](https://wiki.warframe.com/)나 최근 가이드에서 확인하세요."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Subsume 어빌리티",
+              "대상 frame",
+              "주요 어빌리티인 이유"
+            ],
+            "rows": [
+              [
+                "Roar",
+                "Rhino",
+                "거의 모든 피해량을 증폭시키는 범용적인 피해 곱연산 버프입니다. '모든 공격을 더 강력하게 만들기' 위한 기본 선택지입니다."
+              ],
+              [
+                "Nourish",
+                "Grendel",
+                "버튼 하나로 에너지 생성, 바이러스(Viral) 피해 추가, 생존력을 동시에 챙길 수 있어 에너지가 부족한 빌드를 즉시 해결해 줍니다."
+              ],
+              [
+                "Eclipse",
+                "Mirage",
+                "빛 속에서는 대폭 증가된 무기 피해 버프를, 그림자 속에서는 높은 피해 감소 효과를 제공합니다. 총기 위주 빌드(gun platform)에 매우 유용합니다."
+              ],
+              [
+                "Gloom",
+                "Sevagoth",
+                "주변 적들을 기어 다니게 만들 정도로 느리게 하고 처치 시 생명력을 흡수합니다. 생존력과 가벼운 군중 제어(CC)를 동시에 제공합니다."
+              ],
+              [
+                "Pillage",
+                "Hildryn",
+                "일정 범위 내 적들의 방어력과 실드를 깎아내고 자신의 실드를 채웁니다. 실드 게이팅(shield-gating)을 가능하게 하며 단단한 적들을 쉽게 무너뜨립니다."
+              ],
+              [
+                "Dispensary",
+                "Protea",
+                "일정 시간마다 에너지/체력/탄약 보급품을 드롭합니다. 어떤 frame이든 패시브하게 에너지를 수급할 수 있게 해줍니다."
+              ],
+              [
+                "Nourish / Gloom / Pillage 조합",
+                "—",
+                "많은 엔드게임 빌드에서 이 세 가지 중 하나를 '만능' 슬롯으로 선택합니다."
+              ],
+              [
+                "Xata's Whisper",
+                "Xaku",
+                "무기에 보이드(Void) 피해를 추가합니다. Sentients 상대 및 Eidolon 사냥에서 빛을 발하는 범용 추가 속성입니다."
+              ],
+              [
+                "Larva / Ensnare",
+                "Nidus / Khora",
+                "적들을 한곳에 빽빽하게 모아 광역(AoE) 무기와 어빌리티로 한 번에 쓸어버릴 수 있게 해줍니다."
+              ],
+              [
+                "Terrify",
+                "Nekros",
+                "적들에게 공포를 심어주고 방어력을 깎아냅니다. 군중 제어와 피해 증폭을 동시에 제공합니다."
+              ]
+            ],
+            "note": "고정된 수치가 아닌 역할군으로 이해하세요. DE는 정기적으로 수치를 조정합니다. 자원을 투자하기 전에 현재 subsume된 능력치를 확인하세요."
+          }
+        },
+        {
+          "type": "p",
+          "text": "오직 subsume를 목적으로 제작할 가치가 있는 frame이 무엇인지는 이미 보유하고 있는 것에 따라 다릅니다. [tier list](/guides/tier-list)를 교차 참조하여 어떤 강력한 frame이 좋은 어빌리티 기증자 역할을 겸하는지 확인하고, 이러한 버프들이 가장 중요하게 작용하는 곳을 알아보려면 [Steel Path guide](/guides/steel-path)를 참고하세요."
+        }
+      ]
+    },
+    {
+      "id": "resources",
+      "title": "Helminth에게 먹이 주기",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "subsuming과 infusing 모두 Helminth에게 먹이는 자원인 **secretions**를 소모하며, 이는 6가지 카테고리로 분류됩니다: **Oxides, Calx, Biotics, Synthetics, Pheromones, Bile**. 행동에 따라 소모되는 카테고리가 다르므로, 각 카테고리를 조금씩 비축해 두는 것이 좋습니다. 이미 차고 넘치는 흔한 재료들을 먹이는 것이 자원을 보충하는 가장 저렴한 방법입니다."
+        },
+        {
+          "type": "tip",
+          "title": "알아두면 좋은 두 가지 특징",
+          "text": "첫째, Helminth는 **식욕(appetite)**을 가지고 있습니다. 동일한 자원 카전리를 반복해서 먹이면 소모 비용이 상승하고 시간이 지나야 초기화되므로, 한 가지 재료만 계속 먹이는 것을 방지합니다. 둘째, **Bile**은 대표적인 병목 구간입니다. 이를 채울 수 있는 아이템 종류가 적으므로 주의 깊게 살펴보아야 합니다. 먹일 재료가 부족하다면, [resources farming guide](/guides/resources)에서 효율적으로 비축할 수 있는 장소를 확인해 보세요."
+        }
+      ]
+    },
+    {
+      "id": "invigorations",
+      "title": "Invigorations: 주간 슈퍼 버프",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Entrati에게서 구매하여 첫 번째 세그먼트 옆에 설치하는 별도의 **Invigoration Segment**를 해금하고 나면, Helminth가 시스템의 나머지 절반이자 거대하고 일시적인 위력 부스트인 **Invigorations**를 제공하기 시작합니다. 매주 **무작위 버프 쌍**을 제시합니다. 공격적인 버프(예: 큰 폭의 Ability Strength 증가)와 Duration, Efficiency, Armor 같은 두 번째 능력치가 짝을 이루며, 이를 하나의 Warframe에 적용할 수 있습니다."
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "지속 시간",
+              "v": "7일간 지속되며, 버프를 적용한 단 하나의 frame에만 유지됨"
+            },
+            {
+              "k": "적용되는 효과",
+              "v": "무작위 유틸리티 능력치와 짝을 이루는 공격적인 버프(예: Ability Strength)"
+            },
+            {
+              "k": "비용 및 리롤",
+              "v": "각 invigoration에는 Helminth 자원이 소모되며, 더 많은 자원을 지불하고 제공된 버프를 리롤할 수 있습니다"
+            },
+            {
+              "k": "갱신 주기",
+              "v": "제공되는 버프는 매주 교체되므로, 이번 주의 옵션에 영구적으로 묶이지 않습니다"
+            }
+          ]
+        },
+        {
+          "type": "p",
+          "text": "해당 주에 플레이할 frame에 사용하거나, 특정 약점을 보완하는 데 사용하세요. 어빌리티 사용량이 많은 frame에는 Efficiency나 Duration 버프를, 몸이 약한 frame에는 생존력 버프를 주는 식입니다. 효과가 일시적이기 때문에 전체 로드아웃을 이 버프에 맞춰 짜지는 마세요. 영구적인 능력치라기보다는 보너스로 취급하는 것이 좋습니다."
+        }
+      ]
+    },
+    {
+      "id": "mistakes",
+      "title": "피해야 할 실수들",
+      "blocks": [
+        {
+          "type": "list",
+          "items": [
+            "**보유 중인 유일한 frame을 subsume하지 마세요** — 영구적으로 파괴됩니다. 여전히 플레이하는 기종이라면 먼저 여분을 제작하거나 구매하세요.",
+            "**먹이기 전에 기증 가능한 어빌리티를 확인하세요.** 4개의 어빌리티 중 어떤 것을 얻을지는 DE가 결정합니다. 잘못된 어빌리티를 기대하고 frame을 파밍하는 것은 헛수고가 될 수 있습니다.",
+            "**Prime을 획득한 후에도 일반(base) frame을 보관하세요.** Prime이나 Umbra는 전혀 subsume할 수 없으며 오직 일반 버전만 가능하므로, 일반 버전이 해당 어빌리티를 위한 유일한 Helminth 기증자입니다. 쓸모없다고 생각하여 절대 판매하지 마세요.",
+            "**실제로 사용하는 어빌리티를 덮어쓰지 마세요.** subsume 슬롯은 단 하나뿐입니다. 핵심 어빌리티가 아닌, 가장 덜 사용하는 어빌리티를 교체하세요.",
+            "**많은 개조 모드(augment)가 연동되지 않는다는 점을 기억하세요.** subsume된 어빌리티가 개조 모드와 함께 써야만 좋은 경우, 이식했을 때도 여전히 작동하는지 먼저 확인하고 의존하세요.",
+            "**Bile 자원을 주의 깊게 살피세요.** 가장 흔한 자원 병목 구간입니다. 충동적으로 어빌리티를 계속 바꾸기보다는 신중하게 infuse를 진행하세요."
+          ]
+        },
+        {
+          "type": "warn",
+          "text": "이미 일반 frame을 판매했는데 이제 와서 subsume하고 싶다면 다시 획득해야 합니다. Prime 버전만 보유한 경우 성유물(relics)과 재제작을 거쳐야 함을 의미합니다. 계획을 세우기 전에 [vaulted tracker](/vaulted)를 확인하여 해당 Prime이 현재 파밍 가능한지 확인하고, 재제작을 위해 부품을 파밍하는 경우 [relic value tool](/relics-value)을 참고하세요."
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Warframe에서 Helminth를 해금하려면 어떻게 해야 하나요?",
+      "a": "먼저 프롤로그를 완료하고 Orbiter를 보유하면 진행할 수 있는 Heart of Deimos 퀘스트를 완료하여 Necralisk에 도달하고 Entrati 평판을 쌓기 시작하세요. 퀘스트를 완료한다고 해서 Helminth를 바로 주는 것은 아닙니다. Mastery Rank 8 이상 및 Entrati 평판 3등급(Associate)에 도달한 후, Son에게서 Helminth Segment 설계도를 구매하여 Foundry에서 제작하고 설치해야 합니다. 그러면 Orbiter 후방의 Helminth Infirmary를 사용할 수 있게 되며, 자원을 먹여 랭크를 올릴 수 있습니다."
+    },
+    {
+      "q": "Warframe을 subsume하면 파괴되나요?",
+      "a": "네, subsuming은 어빌리티 하나를 얻는 대가로 기증한 frame을 영구적으로 소모합니다. 만약 그것이 유일한 보유분이라면 다시 파밍하거나 제작해야 합니다. 항상 중복된 개체, 전혀 사용하지 않는 frame, 혹은 Prime으로 대체할 예정인 일반 버전을 먹이세요. 그리고 Prime이나 Umbra는 절대 불가능하며 오직 일반(base) frame만 subsume할 수 있다는 점에 유의하세요."
+    },
+    {
+      "q": "Prime과 일반(base) Warframe 중 어떤 것을 subsume해야 하나요?",
+      "a": "일반(base) 버전만 subsume할 수 있습니다. Prime 및 Umbra frame은 Helminth에 전혀 먹일 수 없습니다. 일반 버전도 완전히 동일한 어빌리티를 기증하므로, 플레이용으로는 Prime을 남겨두고 일반 버전을 먹이세요. 이것이 Prime을 획득한 후에도 일반 frame을 판매해서는 안 되는 이유이기도 합니다. 그것들은 훌륭한 Helminth 먹이가 됩니다."
+    },
+    {
+      "q": "한 Warframe이 두 개 이상의 subsume된 어빌리티를 가질 수 있나요?",
+      "a": "아니요, 각 frame에는 단 하나의 subsume 슬롯만 존재하며 한 번에 하나의 infused 어빌리티만 보유할 수 있습니다. 나중에 기존 어빌리티 위에 다른 어빌리티를 infuse하여 변경할 수 있지만, 매번 Helminth 자원이 소모되며 이전 선택은 덮어씌워집니다."
+    },
+    {
+      "q": "Warframe을 subsume하기 전에 랭크 30까지 올려야 하나요?",
+      "a": "아니요, 그것은 흔히 퍼진 잘못된 소문입니다. Warframe은 새로 제작한 랭크 0 상태를 포함하여 어떤 레벨에서든 subsume할 수 있으며, 어빌리티를 infuse하는 대상 frame에도 랭크 제한이 없습니다. 진짜 제한 조건은 계정에 있습니다. 애초에 Helminth를 해금하기 위해 Mastery Rank 8 및 Entrati 평판이 필요합니다."
+    },
+    {
+      "q": "Helminth Invigorations란 무엇이며, 할 만한 가치가 있나요?",
+      "a": "Invigorations는 (Entrati에게서 구매하는) 별도의 Invigoration Segment를 설치하여 해금하는 주간 능력치 버프입니다. 매주 Helminth는 Ability Strength와 같은 큰 공격 능력치와 유틸리티 능력치가 짝을 이루는 무작위 버프 쌍을 제공하며, 이를 하나의 frame에 7일 동안 적용할 수 있습니다. 이는 정말로 강력하며 해당 주에 플레이하는 frame에 사용할 가치가 충분하지만, 일시적인 효과이므로 전체 로드아웃을 이 버프에 맞춰 짜지는 마세요."
+    },
+    {
+      "q": "subsume된 어빌리티는 개조 모드(augment mod)와 원래 위력을 그대로 유지하나요?",
+      "a": "항상 그렇지는 않습니다. subsume된 어빌리티는 이식받는 frame의 모드(Strength, Duration, Range, Efficiency)에 따라 수치가 조정되지만, 몇몇 어빌리티는 원래 frame에서보다 최대 수치 제한이 낮게 설정되어 있으며 많은 어빌리티가 개조 모드(augment mod)를 사용할 수 없습니다(사용 가능한 목록이 계속 늘어나고는 있습니다). 자원을 투자하기 전에 의존하려는 어빌리티의 위키 항목을 확인해 보세요."
+    }
+  ],
+  "videos": [
+    {
+      "id": "eMJlOIpaki0",
+      "title": "Helminth Guide - The Systems of Warframe - Subsuming, Invigoration & other functions",
+      "channel": "QuadLyStop"
+    },
+    {
+      "id": "3Ij4OLxXyKk",
+      "title": "The MOST POWERFUL system in Warframe - Helminth Invigoration, Subsuming, Abilities & Archon Shards",
+      "channel": "QuadLyStop"
+    },
+    {
+      "id": "BmHOYP6Osks",
+      "title": "Top 10 Warframe Helminth Abilities YOU NEED In 2025!",
+      "channel": "iFlynn"
+    },
+    {
+      "id": "ui1GTJSLBMk",
+      "title": "Warframe: Top 5 SUBSUMED Helminth Abilities!",
+      "channel": "iFlynn"
+    }
+  ],
+  "sources": [
+    {
+      "label": "Warframe Wiki — Helminth",
+      "href": "https://wiki.warframe.com/",
+      "icon": "book-open-page-variant"
+    },
+    {
+      "label": "r/Warframe — A little reminder before subsuming a frame",
+      "href": "https://reddit.com/r/Warframe/comments/1irgcfd/a_little_reminder_before_subsuming_a_frame/",
+      "icon": "reddit"
+    },
+    {
+      "label": "r/Warframe — Reminder: Do NOT sell base frames after getting their prime",
+      "href": "https://reddit.com/r/Warframe/comments/1muncct/reminder_do_not_sell_base_frames_after_getting/",
+      "icon": "reddit"
+    }
+  ],
+  "related": [
+    {
+      "label": "Archon Shards 가이드",
+      "to": "/guides/archon-shards",
+      "icon": "hexagon-multiple",
+      "note": "subsume 위에 영구적인 능력치 부스트 중첩하기"
+    },
+    {
+      "label": "Warframe 티어 리스트",
+      "to": "/guides/tier-list",
+      "icon": "format-list-numbered",
+      "note": "제작 및 subsume할 가치가 있는 frame들"
+    },
+    {
+      "label": "Modding 가이드",
+      "to": "/guides/mods",
+      "icon": "puzzle",
+      "note": "모드에 따라 수치가 조정되는 subsume된 어빌리티"
+    },
+    {
+      "label": "Steel Path 가이드",
+      "to": "/guides/steel-path",
+      "icon": "skull",
+      "note": "Helminth 버프가 가장 중요하게 작용하는 곳"
+    },
+    {
+      "label": "자원 파밍",
+      "to": "/guides/resources",
+      "icon": "pickaxe",
+      "note": "Helminth가 먹는 재료 비축하기"
+    },
+    {
+      "label": "커뮤니티 도구 디렉터리",
+      "to": "/tools",
+      "icon": "toolbox",
+      "note": "어빌리티 검색, 빌드 플래너 및 위키"
+    }
+  ],
+  "updated": "2026-07-18"
+}

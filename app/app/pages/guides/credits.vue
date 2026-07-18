@@ -6,5 +6,6 @@
 </template>
 
 <script setup lang="ts">
-import guide from '~/data/guides/credits'
+import enGuide from '~/data/guides/credits'
+const guide = await useLocalizedGuide('credits', enGuide)
 </script>

@@ -1,0 +1,475 @@
+{
+  "slug": "focus",
+  "eyebrow": "知識中心 · Focus",
+  "title": "Focus Farming 指南",
+  "lede": "Focus 是驅動你 Tenno 五大學派的 Operator 成長系統。以下是如何解鎖它、如何利用 lens 與 convergence orb 快速產生它，以及如何將其花在刀口上。",
+  "category": "farming",
+  "readMins": 9,
+  "stats": [
+    {
+      "num": "5",
+      "label": "Focus 學派",
+      "tone": "gold"
+    },
+    {
+      "num": "10x",
+      "label": "Convergence 倍率",
+      "tone": "good"
+    },
+    {
+      "num": "45s",
+      "label": "Convergence 作用時間",
+      "tone": "alt"
+    },
+    {
+      "num": "250K",
+      "label": "初始每日上限",
+      "tone": "gold"
+    }
+  ],
+  "sections": [
+    {
+      "id": "what-is-focus",
+      "title": "Focus 究竟是什麼",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Focus** 是 Warframe 的 Operator 成長系統。你會賺取一種名為 **Focus Points** 的貨幣，並將其投入 **五大 Focus 學派** 之一 —— 這些是被動技能樹，能強化你的 Operator、你的 Warframe 以及你的整體經濟。Focus 是全帳號共享的：你賺取的點數會進入當前 **active** 的學派，並且你需要逐個解鎖技能樹中的 node。"
+        },
+        {
+          "type": "p",
+          "text": "你不需要透過特定活動來賺取 Focus —— 它是獲得 affinity (XP) 的*副產品*。在你的裝備上安裝 **Focus Lens**，該裝備獲得的一部分 affinity 就會被轉化為 Focus。這就是整個循環：擊殺敵人、獲得 affinity、將一定比例轉化為 Focus，然後將其花在被動技能上。本指南的其餘部分將教你如何將這股細流匯聚成洪流。"
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "解鎖條件",
+              "v": "The Second Dream 任務"
+            },
+            {
+              "k": "貨幣",
+              "v": "Focus Points (每個 active 學派)"
+            },
+            {
+              "k": "學派",
+              "v": "Madurai, Vazarin, Naramon, Unairu, Zenurik"
+            },
+            {
+              "k": "產生方式",
+              "v": "滿等裝備上的 Focus Lenses + affinity"
+            },
+            {
+              "k": "每日重置",
+              "v": "Focus 上限將在每日重置時刷新 (00:00 UTC)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "unlock-operator",
+      "title": "步驟 1：解鎖你的 Operator",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Focus 被鎖在主線劇情之後。在你的 Operator 覺醒之前，你連一個 lens 都碰不到 —— 因此第一個「Focus farming」就只是推進 [主線任務](/guides/quests)。"
+        },
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "h": "推進星圖至 The Second Dream",
+              "p": "一旦你清理了足夠的行星鏈，這個任務就會解鎖。這是必經的劇情，並非選填 —— 請繼續清理 node 並跟隨任務標記。請參閱 [進度路線圖](/guides/progression) 以了解順序。"
+            },
+            {
+              "h": "完成 The Second Dream",
+              "p": "完成它會引入你的 Operator，並解鎖 Focus 畫面和你的第一個學派。這就是 Focus 開放使用的時刻。"
+            },
+            {
+              "h": "完成 The War Within",
+              "p": "下一個主要任務會擴展你 Operator 的 void 能力和 Transference 戰鬥。在進行認真的 Focus/Eidolon farming 之前，你會希望完全完成此任務，因為 Operator 的力量對這兩者都至關重要。"
+            },
+            {
+              "h": "選擇你的第一個學派 (免費)",
+              "p": "你的第一個學派可以免費解鎖。之後解鎖每個額外的學派都需要花費 Focus (每個大約 50,000)，因此請謹慎選擇 —— 大多數玩家會先開啟 Zenurik (見下文)。"
+            }
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "The [Duviri Paradox](/guides/duviri) 讓新玩家能提早體驗 Drifter 和一些與 Focus 相關的系統，但解鎖 Focus 的標準且完整路徑仍然是 **The Second Dream → The War Within**。"
+        }
+      ]
+    },
+    {
+      "id": "schools",
+      "title": "五大 Focus 學派",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "一次只能 **active 一個學派**，但你可以在任務之外自由切換已解鎖的學派。每個學派都有學派專屬的 node (僅在選擇該學派時 active) 以及無論如何都會生效的永久 **Way-Bound** 被動技能。以下是各學派的特色："
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "學派",
+              "顏色",
+              "招牌優勢",
+              "最適合"
+            ],
+            "rows": [
+              [
+                "Zenurik",
+                "黃色",
+                "能量回復區域 (Wellspring / Energizing Dash)",
+                "所有人 —— 預設的能量經濟選擇"
+              ],
+              [
+                "Madurai",
+                "紅色",
+                "Amp 與 Void 傷害增益",
+                "Eidolon 狩獵、Operator DPS"
+              ],
+              [
+                "Naramon",
+                "綠色",
+                "近戰連擊維持、潛行/affinity",
+                "近戰配置、重擊玩法"
+              ],
+              [
+                "Unairu",
+                "白色",
+                "透過 Operator 剝除護盾與護甲",
+                "Eidolon、[Steel Path](/guides/steel-path) 護甲剝除"
+              ],
+              [
+                "Vazarin",
+                "藍色",
+                "治療、復活、防守目標保護",
+                "輔助、防守/護送、Eidolon lure"
+              ]
+            ],
+            "note": "招牌 node 和確切數值會隨著時間調整 —— 在投入完整解鎖之前，請查看即時 wiki 以確認目前的 node 佈局。"
+          }
+        },
+        {
+          "type": "tip",
+          "text": "**先解鎖 Zenurik。** 它的能量回復區域解決了遊戲早期最大的痛點 —— 技能能量枯竭 —— 並且能讓你玩過的每個 frame 都受益。如果你想挑戰 Eidolon，Madurai 或 Unairu 通常是第二選擇。"
+        }
+      ]
+    },
+    {
+      "id": "lenses",
+      "title": "Focus Lenses：引擎",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Focus Lens** 安裝在裝備上並綁定到一個學派。安裝後，它會將該裝備獲得的一定比例 affinity 轉化為該學派的 Focus。**請將 lens 安裝在滿等 (rank 30) 的裝備上** —— 這樣它獲得的所有 affinity 都會用於 Focus 轉化，而不會被「消耗」在提升裝備等級上。"
+        },
+        {
+          "type": "p",
+          "text": "每個裝備的物品都可以擁有自己的 lens：你的 Warframe、主要武器、次要武器、近戰武器和同伴 *各自* 都可以攜帶一個。與僅在單個 frame 上安裝 lens 相比，全裝備 lens 的配置能大幅倍增你的 Focus 收益。"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Lens 等級",
+              "轉化率 (溢出 affinity)",
+              "獲取來源"
+            ],
+            "rows": [
+              [
+                "Lens",
+                "~2%",
+                "Sortie、開放世界賞金、活動"
+              ],
+              [
+                "Greater Lens",
+                "~3%",
+                "由基礎 Lens 製作 (商店藍圖)；等級 3–5 的賞金獎勵"
+              ],
+              [
+                "Eidolon Lens",
+                "~4.25%",
+                "由 Greater Lens 製作；Cetus 等級 5 / Steel Path 賞金或 Cavia 聲望"
+              ],
+              [
+                "Lua Lens",
+                "~5.5% — 最佳轉化率",
+                "由 Eidolon Lens 製作；Lua Disruption (輪次 C)"
+              ]
+            ],
+            "note": "更高階的等級是透過升級下一階來製作的，因此儘早獲取基礎 Lens 是值得的。百分比和來源會隨更新而改變 —— 請在即時 wiki 上確認確切的配方。"
+          }
+        },
+        {
+          "type": "warn",
+          "text": "Lens **在安裝時會綁定到一個學派**，用新 lens 覆蓋會摧毀舊的。請在安裝 *之前* 決定好學派 —— 不要把 Eidolon 或 Lua Lens 浪費在錯誤的技能樹上。最好的 lens 是從基礎 Lens 逐級建造起來的，因此在投入資源之前請先做好規劃。"
+        }
+      ]
+    },
+    {
+      "id": "convergence",
+      "title": "Convergence Orbs 與 10 倍時間限制",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "這是將細流化為洪流的機制。發光的 **Convergence Orbs** 會定期在任務中生成 (僅在你有裝備 Focus Lens 的情況下)。拾取一個，你將獲得 **45 秒的 10 倍 Focus 倍率** —— 在該時間限制內產生的每點 Focus 都會乘以十倍，且在拾取時該 orb 還會立即為你 active 的學派提供 **5,000 Focus**。認真的 Focus farming 實際上就是 *convergence* farming：你在那 45 秒的時間限制內累積擊殺並傾瀉最大的 affinity。"
+        },
+        {
+          "type": "info",
+          "text": "r/Warframe 上常見的抱怨是「為什麼我們仍然要依賴 convergence orb 來賺取 Focus？」這是一個合理的批評 —— 在倍率時間限制之外，Focus 的獲取速度在設計上本來就很慢。實際的解決方案是：選擇一個敵人密集、能持續擊殺的 farming 點，以便 orb 頻繁生成，並調整你的爆發傷害以配合你拾取的每個 orb。"
+        },
+        {
+          "type": "p",
+          "text": "你一次只能 active 一個 convergence 增益，拾取新的 orb 會重置計時器。在節奏快、敵人密集的模式中，orb 出現的頻率足夠高，讓你大部分時間都處於倍率狀態 —— 這正是為什麼下面推薦的 farming 點比隨便刷隨機任務要好得多的原因。"
+        }
+      ]
+    },
+    {
+      "id": "daily-cap",
+      "title": "每日 Focus 上限",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Focus 有 **每日上限** —— 這是你在一天內所有學派共享的儲存上限。它 **從 250,000 開始**，並隨著你的 **Mastery Rank** 提升 (每級大約 +5,000)，因此高 MR 玩家的上限比剛起步的 Operator 高得多。該上限會在每日重置時刷新。"
+        },
+        {
+          "type": "warn",
+          "text": "一旦達到上限，當天額外賺取的 Focus 就會 **被浪費掉**。高效率的玩法是在強力的 farming 點快速達到上限，然後轉向其他目標，而不是去刷無法儲存的 Focus。不要在敵人密度低的任務中浪費雙倍 affinity 週末。"
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "初始上限",
+              "v": "250,000 / 天 (所有學派合併計算)"
+            },
+            {
+              "k": "成長機制",
+              "v": "隨你的 Mastery Rank 提升 (每級約 +5,000)"
+            },
+            {
+              "k": "重置",
+              "v": "每日重置 (00:00 UTC)"
+            },
+            {
+              "k": "超出上限的 Focus",
+              "v": "流失 —— 規劃好 farming 以高效率達到上限"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "best-farms",
+      "title": "最佳 Focus Farming 點",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "「最佳 node」會隨著每次更新而改變，但 **原則是歷久不衰的**：最大化敵人密度、保持在 convergence 時間限制內，並攜帶全裝備 lens 的配置。任何能在 orb 持續生成的同時，將連續擊殺轉化為裝備 lens 武器之 affinity 的模式，都是極佳的 Focus farming。以下是經得起考驗的經典選擇："
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "方法",
+              "運作原理",
+              "備註"
+            ],
+            "rows": [
+              [
+                "Eidolon 狩獵 (Plains of Eidolon，夜晚)",
+                "除了大量的 affinity 之外，Eidolon Shard 還能直接轉化為 Focus —— Brilliant 約 25,000，Radiant 約 40,000，可投入你選擇的學派",
+                "需要 Amp + Operator 配置；請參閱 [Eidolon 指南](/guides/eidolon)"
+              ],
+              [
+                "Elite Sanctuary Onslaught (ESO)",
+                "不間斷、高密度的擊殺，伴隨頻繁的 convergence orb —— 最經典的 Focus 刷取方式",
+                "攜帶地圖炮 frame + 全裝備 lens 的配置"
+              ],
+              [
+                "高密度無盡模式 (Zariman Void 模式、當前終局地圖板塊)",
+                "龐大的擊殺數能提供裝備 lens 的武器；orb 會穩定生成",
+                "確切的「最佳」node 會因改版而變動 —— 請查看最近的影片"
+              ],
+              [
+                "任何任務 + 全裝備 lens + booster",
+                "在正常遊玩遊戲時被動獲得 Focus",
+                "速度較慢，但無需額外配置 —— 非常適合休閒玩家達到上限"
+              ]
+            ]
+          }
+        },
+        {
+          "type": "p",
+          "text": "Eidolon 的獨特強大之處在於 **Eidolon Shards 是純粹的 Focus** —— 你可以消耗它們來為你選擇的學派獲得固定總額的 Focus (Brilliant 約 25,000，Radiant 約 40,000)，這與 affinity 轉化是分開的。這就是為什麼一次 Tridolon 捕獲就能在單次任務中讓你逼近每日上限。在 [Eidolon 指南](/guides/eidolon) 中學習狩獵，並注意你沿途收集的 amp 和 arcane 可以透過 [flip finder](/flip) 或 [screener](/screener) 轉手賣成 [platinum](/guides/platinum)。"
+        },
+        {
+          "type": "tip",
+          "text": "要精確定位目前哪個 node 運行哪個模式，[掉落位置地圖](/star-chart-3d) 和 [社群工具目錄](/tools) (wiki, Overframe) 比任何靜態列表都能更即時地更新。在開始刷之前，請將最近的 Focus-farming 影片與即時 wiki 檢查結合使用。"
+        }
+      ]
+    },
+    {
+      "id": "spending",
+      "title": "Way-Bound Nodes 與花費 Focus",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "在每個學派中，node 分為兩種。**學派 node** 僅在該學派為 active 時起作用。**Way-Bound node** 是永久被動技能，*無論哪個學派處於 active 狀態都會生效* —— 它們需要使用 Focus 加上 **Eidolon Shards** 來解鎖。這是 Eidolon 與 Focus 進度綁定在一起的第二個原因：shard 既能資助你的每日 Focus，又能永久綁定最好的被動技能。"
+        },
+        {
+          "type": "p",
+          "text": "因為你一次只能運行一個學派，所以請有目的地花費，而不是將點數稀釋在所有五個學派上："
+        },
+        {
+          "type": "list",
+          "items": [
+            "**先將你的主學派升滿** —— 通常是 Zenurik，因為它的能量區域，而且你大部分時間都會選擇它。",
+            "**儘早取得 Way-Bound 被動技能** —— 它們是永久的且跨學派疊加，因此絕不會浪費。常見的優先選擇是最大能量和 Operator 生存能力的 Way-Bound。",
+            "**然後擴展到特定定位的學派** —— 用於 Eidolon 和護甲剝除的 Madurai/Unairu、用於近戰的 Naramon、用於輔助的 Vazarin。",
+            "**不要在一個你永遠不會選擇的學派上過度投資** —— 除非該學派處於 active 狀態，否則僅限學派的 node 就是無用的累贅。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "efficiency",
+      "title": "榨出更多 Focus",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "一旦基礎奠定，這些倍率可以互相疊加，從而更快達到上限："
+        },
+        {
+          "type": "list",
+          "items": [
+            "**每個欄位都裝上 Lens。** Frame + 3 武器 + 同伴，最多可有五個 lens 同時進行轉化。將你最好的 lens 裝在你最常用的裝備上。",
+            "**將你 active 的學派設置為你正在 farming 的學派。** 所有產生的 Focus 都會進入*當前選擇*的學派 —— 在開始之前請仔細檢查。",
+            "**疊加 affinity booster。** 在 **雙倍 Affinity 週末** 之上疊加 2 倍 Affinity Booster，能以相同的努力使你的 Focus 收益翻倍。",
+            "**帶上 Smeeta Kavat。** 它的 Charm 增益可以觸發 2 倍 affinity 加成 —— 在高密度 farming 中這完全是額外的 Focus。",
+            "**理解 affinity 的流向。** 技能擊殺會 100% 提供給你的 Warframe；武器擊殺則在武器和 frame 之間平分。在小隊中，affinity 在範圍內是共享的 —— 因此你附近的擊殺仍然會提供給你裝備了 lens 的裝備。",
+            "**將傷害引導至 convergence 時間限制內。** 將你的爆發留給 10 倍增益，而不是在拾取 orb 之前就用掉。"
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "剛開始 farming Focus 的玩家也應該閱讀 [Mastery Rank 與 affinity 指南](/guides/mastery-rank) —— 提升裝備等級的相同升級機制正是餵養你 lens 的關鍵，因此高效升級與高效 Focus farming 是相同的技巧。"
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "我該如何在 Warframe 中解鎖 Focus？",
+      "a": "當你完成 **The Second Dream** 任務時，Focus 就會解鎖，這會喚醒你的 Operator 並開啟 Focus 畫面和你的第一個學派。繼續清理星圖直到 The Second Dream 開放，然後完成 **The War Within** 以完整發展你的 Operator。在此之前，你連一個 lens 都無法安裝。"
+    },
+    {
+      "q": "第一個解鎖的最佳 Focus 學派是哪一個？",
+      "a": "**Zenurik** 幾乎是公認的首選，因為它的能量回復區域解決了遊戲早期的能量問題，並能幫助你玩過的每個 Warframe。之後，大多數玩家會開啟 **Madurai** (用於 Eidolon 的 Amp/Operator 傷害) 或 **Unairu** (護盾/護甲剝除)。你的第一個學派是免費的；之後每個額外的學派花費大約 50,000 Focus。"
+    },
+    {
+      "q": "最快 farm Focus 的方法是什麼？",
+      "a": "將 Focus Lenses (最好是 Eidolon 或 Lua Lenses) 安裝在滿等的 frame 和武器上，然後去刷高密度模式，例如 **Elite Sanctuary Onslaught**，或在夜晚的 Plains 狩獵 **Eidolon**。拾取每個 **Convergence Orb** 以獲得 10 倍倍率，並疊加 affinity booster 和 Smeeta Kavat。Eidolon Shards 也能直接轉化為 Focus (Brilliant 約 25,000，Radiant 約 40,000)。"
+    },
+    {
+      "q": "Focus lens 是如何運作的？我要去哪裡獲得它們？",
+      "a": "Lens 安裝在 rank-30 的物品上，並將其一定比例的 affinity 轉化為一個綁定學派的 Focus —— 基礎 Lens 約為 2%，Greater Lens 約為 3%，Eidolon Lens 約為 4.25%，最高階的 Lua Lens 則為 5.5%。基礎 Lens 掉落自 Sortie 和開放世界賞金；每個更高階的等級都是從下一階建造而來 (Greater 來自商店藍圖，Eidolon 來自 Cetus/Steel Path 賞金或 [Cavia 聲望](/guides/standing)，Lua 來自 Lua Disruption)。請安裝在滿等裝備上，這樣就不會浪費任何 affinity 在升級上。"
+    },
+    {
+      "q": "為什麼我必須依賴 convergence orb 來獲得 Focus？",
+      "a": "在設計上，除非你處於 **Convergence Orb** 增益中，否則 Focus 的獲取速度很慢，該增益提供 45 秒的 10 倍倍率 (且在拾取時提供 5,000 Focus)。這是社群中常見的挫折感，但解決方法是去 farming 敵人密集、擊殺量大的模式，在那裡 orb 會頻繁生成 —— 這樣你大部分的遊玩時間都會處於倍率狀態，而不是去追逐單個 orb。"
+    },
+    {
+      "q": "有每日 Focus 上限嗎？",
+      "a": "是的。所有學派共享一個每日上限，**從 250,000 開始**，並隨著你的 **Mastery Rank** 提升 (每級約 +5,000)。一旦達到上限，當天賺取的額外 Focus 就會被浪費掉 —— 因此高效率的玩法是在強力的 farming 點快速達到上限，然後轉向其他目標。"
+    },
+    {
+      "q": "我必須只專注於一個 Focus 學派嗎？",
+      "a": "不。你可以在任務之外自由切換任何已解鎖的學派，因此你永遠不會被綁定。最重要的是，**Way-Bound** node 是永久被動技能，無論哪個學派處於 active 狀態都會生效 —— 用 Focus 和 Eidolon Shards 解鎖它們，它們將使每個配置都受益。"
+    },
+    {
+      "q": "Eidolon Shards 對 Focus 有什麼作用？",
+      "a": "Eidolon Shards 實際上就是瓶裝的 Focus。消耗一個 **Brilliant Shard** 可獲得大約 25,000 Focus，消耗一個 **Radiant Shard** 可獲得大約 40,000 Focus，兩者都會進入你選擇的學派。解鎖永久的 **Way-Bound** 被動技能也需要 Shard，這就是為什麼 [Eidolon 狩獵](/guides/eidolon) 是首選的 Focus 活動。"
+    }
+  ],
+  "videos": [
+    {
+      "id": "yt0L9JPkP1k",
+      "title": "The top five ways to farm focus! | Warframe",
+      "channel": "TheKengineer"
+    },
+    {
+      "id": "B0ztEAfwj_Q",
+      "title": "Farm Focus FASTER in Warframe 2025!",
+      "channel": "Qemal TV"
+    },
+    {
+      "id": "_Hq2VdgM6kw",
+      "title": "[WARFRAME] Advanced FOCUS Guide! Eidolon Hunting Guide Episode 01",
+      "channel": "KnightmareFrame"
+    },
+    {
+      "id": "Lc_Pry-SQsA",
+      "title": "Warframe Beginner Guide 2025: Easy Endo Farming, Focus Schools & Operator Unlocked | Episode 6",
+      "channel": "Tipsy"
+    }
+  ],
+  "sources": [
+    {
+      "label": "r/Warframe — Boosters run out soon, anyone wanna farm affinity?",
+      "href": "https://reddit.com/r/Warframe/comments/1ih3nbq/boosters_run_out_soon_anyone_wanna_farm_affinity/"
+    },
+    {
+      "label": "r/Warframe — Focus 2.0 Costs are too high",
+      "href": "https://reddit.com/r/Warframe/comments/77iv8n/focus_20_costs_are_too_high/"
+    },
+    {
+      "label": "Official Warframe Wiki",
+      "href": "https://wiki.warframe.com/"
+    }
+  ],
+  "related": [
+    {
+      "label": "Eidolon 狩獵指南",
+      "to": "/guides/eidolon",
+      "icon": "atom-variant",
+      "note": "首選的 Focus + Amp + Arcane farming 點"
+    },
+    {
+      "label": "Syndicate 聲望指南",
+      "to": "/guides/standing",
+      "icon": "handshake",
+      "note": "聲望可用於購買 lens、arcane 和 mod"
+    },
+    {
+      "label": "Steel Path 指南",
+      "to": "/guides/steel-path",
+      "icon": "shield-sword",
+      "note": "Unairu 護甲剝除大放異彩之處"
+    },
+    {
+      "label": "Mastery Rank 與 Affinity",
+      "to": "/guides/mastery-rank",
+      "icon": "star-four-points",
+      "note": "餵養你 lens 的 XP 機制"
+    },
+    {
+      "label": "進度路線圖",
+      "to": "/guides/progression",
+      "icon": "map-marker-path",
+      "note": "Focus 在你旅程中的定位"
+    },
+    {
+      "label": "內容創作者",
+      "to": "/creators",
+      "icon": "youtube",
+      "note": "追隨 Focus-farming 專家"
+    }
+  ],
+  "updated": "2026-07-18"
+}

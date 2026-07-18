@@ -1,0 +1,461 @@
+{
+  "slug": "tier-list",
+  "eyebrow": "知识中心 · 强度排行",
+  "title": "Warframe Tier List — 如何阅读它",
+  "lede": "没有单一的“最强 Warframe”——只有最适合特定活动、build 和账号的 frame。本指南将教你如何批判性地看待任何 tier list，而不是盲目跟风。",
+  "category": "reference",
+  "readMins": 9,
+  "stats": [
+    {
+      "num": "50+",
+      "label": "阵容中的 warframes",
+      "tone": "gold"
+    },
+    {
+      "num": "Any",
+      "label": "frame 通关整个星图",
+      "tone": "good"
+    },
+    {
+      "num": "3",
+      "label": "比 frame 本身更重要的 build 关键要素",
+      "tone": "alt"
+    },
+    {
+      "num": "0",
+      "label": "完全一致的 tier list"
+    }
+  ],
+  "sections": [
+    {
+      "id": "why-they-disagree",
+      "title": "为什么每个 tier list 都不尽相同",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "搜索“Warframe tier list”，你会发现十几个从 S 到 F 的图表，它们彼此完全矛盾。这并不是因为创作者错了——而是因为 tier list 将一个极度依赖具体情境的问题（“这个 frame 有多强？”）压缩成了一个字母。脱离了具体情境，这个排名就失去了任何意义。"
+        },
+        {
+          "type": "p",
+          "text": "有三种力量拉开了排名的差距：**你评估的是什么内容**（一个能秒杀防御地图的地图炮在单挑 boss 时毫无用处），**build 的深度如何**（mods、Helminth、arcanes 和 shards 可以让一个 frame 的上限翻三倍），以及**版本迭代**（DE 经常重做 frame，因此六个月前制作的榜单可能会根据其已经不再拥有的技能组来对 frame 进行排名）。"
+        },
+        {
+          "type": "info",
+          "text": "最重要的一点是：**游戏中几乎每一个 Warframe 都能轻松通关整个星图。**Tier list 只有在游戏后期的极限内容中才开始变得重要——比如 Steel Path、深层无尽任务、快速 farming 以及 Eidolons。至于其他内容，玩得开心就好。"
+        }
+      ]
+    },
+    {
+      "id": "what-good-means",
+      "title": "“好用”在不同活动中的实际定义",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "在明确具体任务之前，“最强”是毫无意义的。一个在某项活动中处于 S-tier 的 frame，在另一项活动中可能只有 C 级——这就是为什么各种榜单会产生冲突的根本原因。根据眼前的任务来选择合适的 frame："
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "活动",
+              "获胜的关键",
+              "大放异彩的 Frame 特质"
+            ],
+            "rows": [
+              [
+                "星图 & 故事剧情",
+                "清理房间即可——任何配置都行",
+                "任何你喜欢的；伤害 + 机动性"
+              ],
+              [
+                "Steel Path",
+                "在持续输出伤害的同时生存下来",
+                "减伤、overguard、削减护甲（armor strip）、治疗"
+              ],
+              [
+                "深层无尽任务（Survival、Circuit）",
+                "随等级成长的伤害 + 不死",
+                "地图炮（Nukes）、状态效果铺垫（status priming）、不死之身、能量循环"
+              ],
+              [
+                "Farming 掉落物 & 资源",
+                "掉落加成，而非纯粹的输出",
+                "类似 Desecrate 的掉落技能、大范围 AoE"
+              ],
+              [
+                "Eidolon 狩猎",
+                "Void 伤害、buff、速度",
+                "伤害放大、能量辅助、机动性"
+              ],
+              [
+                "Boss & 单体目标",
+                "拥有生存保障的爆发 DPS",
+                "伤害 buff、弱点输出覆盖率"
+              ]
+            ],
+            "note": "故意不列出具体的节点名称——因为即使每个版本最完美的“最佳节点”都在变化，这些活动类型也是长青的。请查看最近的视频或 wiki 以获取当前的热门地点。"
+          }
+        },
+        {
+          "type": "p",
+          "text": "这就是为什么严肃的创作者会针对“常规”、“Steel Path”和“无尽（endurance）”发布独立的图表——同一个 frame 根据不同的分类会落在不同的梯队。如果一个榜单没有说明它的评估标准，那么请对它的评级字母保持怀疑。"
+        }
+      ]
+    },
+    {
+      "id": "overframe-problem",
+      "title": "Overframe 的问题——如何阅读任何榜单",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "社区最著名的前车之鉴是 [Overframe](/tools) 的社区 tier list。它确实是一个非常有用的工具，但它的排名是基于**长期累积的社区投票**建立的——因此，一个几年前很强的 frame 会一直保持其旧的分数，而一个被重做或加强的 frame 则会被它处于弱势时期的投票拉低分数。排名已经固化；最近的重做几乎无法改变局面。"
+        },
+        {
+          "type": "quote",
+          "text": "一个基于投票累积的榜单会轻而易举地将一个华而不实的旧地图炮排在像 Valkyr 这样的 frame 之上——尽管 Valkyr 在 Hysteria 状态下几乎死不了，并且在近战中能撕碎几乎一切——仅仅是因为她在不那么流行的时候积累的票数较少。这种滞后性就是整个问题的缩影。",
+          "cite": "r/Warframe 社区对 Overframe 基于投票的排名的反复批评"
+        },
+        {
+          "type": "p",
+          "text": "你不需要完全同意那个特定的观点也能明白其中的道理：一个建立在多年累积投票基础上的图表告诉你的是大众*过去*的想法，而不是一个 frame 如今的表现。将群智型榜单作为粗略的参考，绝不要奉为圣经。"
+        },
+        {
+          "type": "steps",
+          "ordered": true,
+          "steps": [
+            {
+              "h": "检查日期",
+              "p": "Tier list 只是一个快照。如果它早于重大更新或某个 frame 的重做，那么它对该 frame 的排名就已经过时了。"
+            },
+            {
+              "h": "检查评估方法",
+              "p": "这是一个 build 创作者的个人判断，还是累积的社区投票？累积投票严重滞后于版本重做——这就是 Overframe 的缺陷。"
+            },
+            {
+              "h": "检查评估范围",
+              "p": "“最适合什么？”常规、Steel Path、无尽（endurance）和 farming 都是不同的图表。一个没有说明范围的榜单只告诉你了一半的事实。"
+            },
+            {
+              "h": "交叉对比两三个来源",
+              "p": "如果多位最近且声誉良好的创作者达成共识，你就可以信任它。如果他们意见不一，那就是个人喜好问题——选择你喜欢的即可。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "build-levers",
+      "title": "凌驾于 frame 之上的三个关键要素",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Frame 只是一个底盘。你安装在它上面的东西决定了它的大部分实力——这就是为什么一个配置（build）糟糕的“A-tier”frame 会输给一个配置合理的“C-tier”frame。在你追求版本答案（meta）之前，先了解能提升任何 frame 的三个关键要素："
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Mods & buildcraft** —— 迄今为止最重要的关键要素。技能强度、范围、持续时间、效率，加上护盾门（shield-gating）等生存技术，能将一个脆皮 frame 变成 Steel Path 绞肉机。参见 [mods 指南](/guides/mods)。",
+            "**Helminth 汲取** —— 伟大的平衡器。将一个强大的技能（如 Roar 等伤害 buff、治疗或削减护甲）移植到几乎任何 frame 上，都能弥补其弱点。[Helminth 指南](/guides/helminth)涵盖了最佳的汲取技能。",
+            "**Arcanes & Archon Shards** —— 游戏后期的倍增器：叠加在 mods 之上的被动属性和效果加成。参见 [arcanes](/guides/arcanes) 和 [archon shards](/guides/archon-shards)。"
+          ]
+        },
+        {
+          "type": "warn",
+          "text": "Tier list 是在 frame 的 build 上限（满配置 mods、汲取技能、arcanes）下进行排名的。如果你的账号还很新，一个顶级 frame 可能还不会让你觉得有多强。这个差距在于你的 build，而不是 frame 本身。"
+        }
+      ]
+    },
+    {
+      "id": "archetypes",
+      "title": "定位：Frame 扮演的角色",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "相比于排名，一个更有用的思考模型是：根据**它们所承担的工作**对 frame 进行分类。Warframe 需要一个能够兼顾伤害、生存和辅助的团队（或自给自足的单人 build）。一旦你从角色的角度去思考，“最强的是什么”就会变成“我的装备栏（loadout）里缺少什么”。"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "角色定位",
+              "职责",
+              "示例 Frame"
+            ],
+            "rows": [
+              [
+                "地图炮 / 清图",
+                "一次性消灭整个房间的敌人",
+                "Saryn, Mesa, Volt, Ember"
+              ],
+              [
+                "不死之身 / 肉搏者",
+                "几乎死不了；强行通关内容",
+                "Revenant, Valkyr, Inaros"
+              ],
+              [
+                "辅助 / 增益（buffer）",
+                "成倍提升小队的伤害与生存能力",
+                "Wisp, Rhino, Harrow, Trinity"
+              ],
+              [
+                "群体控制（CC）",
+                "锁死敌人，让你免受任何伤害",
+                "Nova, Vauban, Gara, Frost"
+              ],
+              [
+                "Farming / 掉落",
+                "提升单次任务的掉落物和资源",
+                "Nekros, Khora, Hydroid"
+              ],
+              [
+                "速度 / 机动性",
+                "闪击任务目标和开放世界",
+                "Gauss, Titania, Volt"
+              ]
+            ],
+            "note": "Frame 的角色定位会有重叠——例如 Volt 既能提供 buff、又能清图、还能加速。这些是持久的角色契合度，而不是排名；随着 DE 重做技能组，具体的选择也会发生变化。"
+          }
+        },
+        {
+          "type": "p",
+          "text": "请注意，有些技能非常优秀，以至于它们完全脱离了原本 frame 的限制：Rhino 的 Roar 以及各种削减护甲和治疗技能，都是游戏中通过 [Helminth](/guides/helminth) 最常被汲取的技能。在阅读 tier list 时请记住这一点——一个“低梯队”的 frame 仍可能拥有一个值得去 farming 的同类最佳技能。"
+        }
+      ]
+    },
+    {
+      "id": "safe-picks",
+      "title": "几乎所有人评价都很高的几个 Frame",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "尽管有上述种种注意事项，但一些 frame 几乎在所有最近的榜单中都名列前茅，因为它们容错率高、灵活，并且在许多活动中都很强势。将这些视为可靠的默认选择，而不是强制要求："
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Revenant** —— Mesmer Skin 让他几乎立于不败之地，这就是为什么他是经典的“让我安安静静玩游戏”的带飞（carry）选择。",
+            "**Saryn** —— 无尽 Survival 和 Defense 任务中 AoE 地图炮的标杆。",
+            "**Wisp** —— 顶级辅助，其 buff 能造福整个小队以及她自己。",
+            "**Octavia** —— 凭借低操作、适合挂机（AFK）的技能组提供极高的生存能力和伤害。",
+            "**Rhino** —— 深受喜爱的萌新坦克；他的 Roar 技能同时也是最优秀的 Helminth 汲取技能之一。",
+            "**Nekros / Khora** —— 每次任务中获取额外掉落和资源必备的 farming 标配。"
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "这些只是例子，并非圭臬——DE 会不断重做和发布 frame。在你投入 Forma 之前，请对照当前的创作者 tier list（参见 [creators](/creators)）进行合理性检查，而不是盲信任何静态榜单，包括本榜单。"
+        },
+        {
+          "type": "quote",
+          "text": "RINO 有 IRON SKIN。子弹变食物。当 RINO 困惑，他跺脚。大家停下，等他想明白。给 RINO 喂 MODS。",
+          "cite": "关于 Rhino 的一个流传甚广的 r/Warframe 梗，Rhino 几乎是大家一致公认的首个制作选择"
+        }
+      ]
+    },
+    {
+      "id": "weapons-vs-frames",
+      "title": "你的武器（和伤害类型）往往更重要",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "这是 tier list 很少提及的转折点：就纯粹的清图速度而言，**你的武器及其伤害类型往往比你的 frame 更重要。** 一把配置了正确元素组合且满配 mods 的枪，即使在“C-tier”的 frame 手里也能撕碎敌人，而一个顶级 frame 拿着白板武器也会寸步难行。这也是为什么该论坛子版块的伤害类型 tier list 激起的辩论与 frame 榜单一样激烈。"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "伤害类型",
+              "克制对象",
+              "经久不衰的原因"
+            ],
+            "rows": [
+              [
+                "Viral",
+                "肉体 / 生命值（大多数敌人）",
+                "放大生命值受到的伤害——几乎通用"
+              ],
+              [
+                "Heat",
+                "护甲型 Grineer",
+                "削减部分护甲，施加燃烧持续伤害（DoT），使敌人陷入恐慌"
+              ],
+              [
+                "Corrosive",
+                "重装甲单位",
+                "可叠加以削减护甲"
+              ],
+              [
+                "Magnetic",
+                "护盾（Corpus）",
+                "放大护盾受到的伤害"
+              ],
+              [
+                "Radiation",
+                "合金装甲重型单位 & 机械",
+                "对合金装甲和机械生命值有伤害加成；触发效果（procs）会让敌人自相残杀"
+              ]
+            ],
+            "note": "DE 会定期重做护甲和异常状态（status）——请在 wiki 上核实当前的数据。稳定不变的是搭配组合（例如 Viral + Heat，以及 Slash 触发），而不是具体的百分比。"
+          }
+        },
+        {
+          "type": "p",
+          "text": "武器也有其自身的市场和 [riven](/guides/riven) 经济。如果你正在权衡是否投资某把武器，[riven 价值估算器](/riven-value)和[市场筛选器](/screener)可以在你投入 Forma 之前，显示该武器的 riven 和部件的实际价值。"
+        }
+      ]
+    },
+    {
+      "id": "how-to-pick",
+      "title": "如何实际选择你的下一个 frame",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "告别选择困难。与其在别人的图表上寻找第一名，不如运行这个循环："
+        },
+        {
+          "type": "steps",
+          "ordered": true,
+          "steps": [
+            {
+              "h": "明确目标",
+              "p": "Steel Path？Eidolons？更快的 farming？还是一个能让你开心玩上 100 个小时的 frame？答案会彻底改变推荐内容。"
+            },
+            {
+              "h": "填补你装备栏（loadout）的空白",
+              "p": "看看定位表——你当前的阵容缺少什么？一个 buffer、一个地图炮，还是一个掉落 frame？去 farm 相应的 frame 来填补这个空缺。"
+            },
+            {
+              "h": "检查你现在能获得什么",
+              "p": "最好的 frame 是你本周实际能 farm 到的那个。不要为了腾出空间而卖掉 frame——买些便宜的槽位（slots）并保留它们（参见下方的常见问题解答）。"
+            },
+            {
+              "h": "交叉对比两位最近的创作者",
+              "p": "观看几个最新的 tier list（链接见下方）。在声誉良好的创作者达成共识的地方，放心投资；在他们意见分歧的地方，根据玩法风格进行选择。"
+            },
+            {
+              "h": "然后合理地配置它（build）",
+              "p": "先是 mods，然后是 Helminth 汲取，最后是 arcanes 和 shards。强大的 build 才是高梯队的来源。"
+            }
+          ]
+        },
+        {
+          "type": "p",
+          "text": "完全是新加入的阵容？从 [新手 Warframes 指南](/guides/beginner-warframes) 开始，并遵循 [进度指南](/guides/progression) ——在任何 tier list 变得有参考价值之前，这两者都会引导你走向容错率高、易于 farm 的 frame。"
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "2025 / 2026 年最强的 Warframe 是什么？",
+      "a": "并没有唯一的最强——“最强”完全取决于活动、你的 build 和你的玩法风格。像 Revenant、Saryn、Wisp 和 Octavia 这样的 frame 几乎在所有最近的榜单中都名列前茅，因为它们强大且容错率高，但几乎每个 frame 都能通关整个星图。根据任务来选择合适的 frame（参见上方的定位表），而不是盲目追求单一的 S-tier 选择。"
+    },
+    {
+      "q": "我可以信任 Overframe 的 tier list 吗？",
+      "a": "将其作为粗略的起点，而不是圭臬。Overframe 是由社区投票决定的，并会随着时间的推移累积这些投票，因此几年前很强的 frame 可能会保持很高的排名，而最近重做或加强的 frame 的排名则会滞后于它们如今的实际表现——一个持久、低操作的 frame 可能会仅仅因为积累的票数较少而被低估。在投资之前，请交叉对比几个最近的创作者 tier list。"
+    },
+    {
+      "q": "我选择什么 Warframe 真的很重要吗？",
+      "a": "对于星图和故事剧情来说，几乎不重要——玩你喜欢的任何角色即可。你的选择在游戏后期的极限内容中才开始变得重要（Steel Path、深层无尽、Eidolons、快速 farming），即便在那些地方，你的 build 通常也比 frame 本身更重要。Mods、Helminth 汲取以及 arcanes/shards 决定了一个 frame 的大部分真实实力——参见 [mods 指南](/guides/mods)。"
+    },
+    {
+      "q": "为什么 Warframe 的 tier list 之间会有如此大的分歧？",
+      "a": "因为一个简单的字母无法概括一个依赖具体情境的问题。榜单的分歧在于它们针对什么内容进行排名、build 的深度如何、制作时间（frame 经常被重做）以及评估方法——是专家的个人意见还是累积的社区投票。当创作者意见一致时，可以信任它；当他们意见分歧时，这就是个人喜好问题。"
+    },
+    {
+      "q": "哪些是 Steel Path 中最强的 Warframe？",
+      "a": "Steel Path 奖励生存能力和持续伤害，因此具有减伤、overguard、削减护甲或自我治疗能力的 frame 会大放异彩——不死之身风格的选择（Revenant、Valkyr、Inaros）以及强大的 buffer/地图炮都表现出色。同样重要的是在此基础上的 shield-gating 或减伤 build。参见 [Steel Path 指南](/guides/steel-path)以获取完整方案。"
+    },
+    {
+      "q": "我应该卖掉低梯队或我不喜欢的 Warframe 吗？",
+      "a": "不要为了释放槽位（slots）而卖掉难以 farm 的 frame——该论坛子版块里到处都是后悔不已的玩家。Warframe 槽位很便宜，frame 会随着时间的推移被重做和加强，而且重新 farm 一个 boss 的 frame 是件很痛苦的事。购买槽位并保留所有东西；一个“低梯队”的 frame 以后可能会拥有一个你想要用于 [Helminth](/guides/helminth) 的同类最佳技能。"
+    },
+    {
+      "q": "武器和 Warframe 哪个更重要？",
+      "a": "就纯粹的清图速度而言，你的武器及其伤害类型往往比 frame 更重要——一把配置了正确元素组合且满配 mods 的枪，在几乎任何 frame 手里都能撕碎敌人。先学习伤害类型和 modding（[mods 指南](/guides/mods)），并在投入 Forma 之前使用 [riven 价值估算器](/riven-value)检查武器的价值。"
+    },
+    {
+      "q": "萌新应该主玩什么 Warframe？",
+      "a": "选择一个你喜欢的初始角色——Excalibur、Mag 和 Volt 都同样可行——而社区几乎一致公认的首个制作选择是 Rhino，因为他的 Iron Skin 具有极强的坦度。除此之外，主玩任何有趣的即可；随着时间的推移，你会收集到几十个 frame。[新手 Warframes 指南](/guides/beginner-warframes)详细介绍了早期最容易 farm 的强势选择。"
+    }
+  ],
+  "videos": [
+    {
+      "id": "J_4SMeNx-DQ",
+      "title": "FULL ROSTER ALL WARFRAME 2026 TIERLIST",
+      "channel": "Brozime"
+    },
+    {
+      "id": "4weC5xRI_jg",
+      "title": "Warframe Tier List | 2025 (Mid-Year)",
+      "channel": "kyaii"
+    },
+    {
+      "id": "YNafIWOUBhU",
+      "title": "BEST Warframes 2026 TIER LIST",
+      "channel": "MHBlacky"
+    },
+    {
+      "id": "FKTBWssvtJE",
+      "title": "Warframe 2025 Tier List For The Best Warframes!",
+      "channel": "Pupsker"
+    }
+  ],
+  "sources": [
+    {
+      "label": "r/Warframe — Why the Overframe tier list is not to be trusted",
+      "href": "https://reddit.com/r/Warframe/comments/1qotd7o/one_of_many_reasons_why_the_overframe_tier_list/"
+    },
+    {
+      "label": "r/Warframe — Made a tier list for the game's damage types",
+      "href": "https://reddit.com/r/Warframe/comments/oxgzjz/made_a_tier_list_for_the_games_damage_types/"
+    },
+    {
+      "label": "r/Warframe — Don't sell your hard-to-farm Warframes",
+      "href": "https://reddit.com/r/Warframe/comments/1htjkxv/dont_sell_your_hard_to_farm_warframes/"
+    },
+    {
+      "label": "Warframe Wiki",
+      "href": "https://wiki.warframe.com/"
+    }
+  ],
+  "related": [
+    {
+      "label": "新手 Warframes",
+      "to": "/guides/beginner-warframes",
+      "icon": "star-four-points",
+      "note": "优先 farm 哪些 frame"
+    },
+    {
+      "label": "Helminth",
+      "to": "/guides/helminth",
+      "icon": "dna",
+      "note": "将最优秀的技能汲取到任何 frame 上"
+    },
+    {
+      "label": "Steel Path",
+      "to": "/guides/steel-path",
+      "icon": "shield-star",
+      "note": "Tier list 终于变得重要的地方"
+    },
+    {
+      "label": "Mods & Buildcraft",
+      "to": "/guides/mods",
+      "icon": "puzzle",
+      "note": "凌驾于 frame 之上的关键要素"
+    },
+    {
+      "label": "内容创作者",
+      "to": "/creators",
+      "icon": "youtube",
+      "note": "用于交叉对比的最新 tier list"
+    },
+    {
+      "label": "社区工具",
+      "to": "/tools",
+      "icon": "toolbox",
+      "note": "Overframe、wiki、build 创作者"
+    }
+  ],
+  "updated": "2026-07-18"
+}

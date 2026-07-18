@@ -1,0 +1,487 @@
+{
+  "slug": "platinum",
+  "eyebrow": "Centro de conocimiento · Platinum",
+  "title": "Cómo conseguir Platinum (Free-to-Play)",
+  "lede": "El Platinum es una moneda premium por la que nunca tienes que pagar. Todo lo que farmeas se puede vender a otros jugadores; aquí tienes exactamente qué se vende, cómo funciona el comercio y cómo ganar tu primer plat de forma segura.",
+  "category": "farming",
+  "readMins": 11,
+  "stats": [
+    {
+      "num": "MR 2",
+      "label": "Desbloquea el comercio",
+      "tone": "good"
+    },
+    {
+      "num": "= MR",
+      "label": "Intercambios permitidos por cada 24h",
+      "tone": "alt"
+    },
+    {
+      "num": "$0",
+      "label": "Necesario para empezar a ganar plat",
+      "tone": "good"
+    },
+    {
+      "num": "10k+",
+      "label": "El plat F2P es realista",
+      "tone": "gold"
+    }
+  ],
+  "sections": [
+    {
+      "id": "free-plat-basics",
+      "title": "Nunca tienes que pagar por Platinum",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "El Platinum (plat) es la moneda premium de Warframe, pero aquí está el secreto que todo veterano conoce: es completamente **intercambiable entre jugadores**. Partes de Prime, mods, rivens, arcanes... casi todo lo que farmeas se puede vender a otros jugadores por plat. Toda la economía funciona con objetos que consigues gratis. Aprende qué vale la pena vender y dónde, y nunca tendrás que abrir tu cartera. Los jugadores suelen alcanzar **miles de plat de forma completamente free-to-play**."
+        },
+        {
+          "type": "info",
+          "title": "El único inconveniente",
+          "text": "Los ~50 de platinum con los que comienza cada cuenta nueva, además de cualquier platinum ganado a través de **sorteos o promociones**, es **'Platinum personal'**: no se puede intercambiar y se muestra con un pequeño icono de candado. Solo el platinum que **ganas comerciando** o que **compras** (incluso con descuento) se puede volver a intercambiar. Así que tu primer plat *real* proviene de vender objetos, no de ese alijo inicial."
+        },
+        {
+          "type": "p",
+          "text": "Esta guía cubre todo el ciclo: qué se vende, cómo funciona realmente el comercio, las reglas de Mastery y de impuestos, las primeras ventas seguras para principiantes y cómo evitar que te estafen. Compara los precios con el mercado en vivo a medida que avanzas con el [analizador de mercado](/screener), los [cambios de precios](/movers) y el [canal de ofertas en vivo](/live)."
+        }
+      ]
+    },
+    {
+      "id": "trading-rules",
+      "title": "Las reglas de comercio (MR, límites e impuestos)",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Hay algunas barreras entre tú y el comercio. Ninguna es difícil: una tarde es suficiente para superarlas todas."
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "Requisito de desbloqueo",
+              "v": "Mastery Rank 2: completa un par de pruebas de MR"
+            },
+            {
+              "k": "Límite diario de intercambios",
+              "v": "Igual a tu Mastery Rank (MR2 = 2 intercambios/día, MR15 = 15, etc.)"
+            },
+            {
+              "k": "Qué cuenta como un intercambio",
+              "v": "Una transacción (hasta de cinco objetos por lado) cuenta como un solo intercambio, así que agrúpalos para ahorrar slots"
+            },
+            {
+              "k": "Impuesto de intercambio",
+              "v": "Credits, pagados por AMBOS jugadores, escalados según la rareza del objeto"
+            },
+            {
+              "k": "Dónde comercias",
+              "v": "El Trading Post del Dojo de tu clan, o Maroo's Bazaar (un repetidor de Mars)"
+            }
+          ]
+        },
+        {
+          "type": "p",
+          "text": "El límite diario es más importante cuando tu Mastery Rank es bajo, así que al principio planifica ventas más grandes en torno a él; a medida que tu MR sube, el límite deja de ser un problema. Cada intercambio también cobra un **impuesto de Credits** a ambas partes: las partes Prime baratas cuestan unos pocos miles de Credits, mientras que los [rivens](/guides/riven) y otros objetos raros son los que más cuestan. Mantén un colchón de Credits; si te faltan, consulta la [guía de Credits](/guides/credits)."
+        },
+        {
+          "type": "tip",
+          "title": "¿Sin clan? No hay problema",
+          "text": "No necesitas a nadie más. Consigue una **Clan Key** gratuita en el Market del juego, funda un clan 'Ghost' de una sola persona y construye un **Trading Post** en tu propio Dojo. O evita los clanes por completo y comercia en **Maroo's Bazaar**, el centro público en Mars donde cualquiera puede montar un puesto de venta."
+        }
+      ]
+    },
+    {
+      "id": "how-to-sell",
+      "title": "Cómo funciona realmente la venta: warframe.market + Trade Chat",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Dos canales manejan casi todo el comercio entre jugadores. **warframe.market** es un sitio web comunitario gratuito (no creado por DE) donde los jugadores publican órdenes de compra y venta; es el libro de precios de facto para todo el juego, listado en nuestro [directorio de herramientas de la comunidad](/tools). El **Trade Chat** del juego es el canal regional donde la gente publica anuncios de `WTS` (quiero vender) y `WTB` (quiero comprar) en tiempo real."
+        },
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "h": "Busca el precio",
+              "p": "Busca tu objeto en warframe.market y ordénalo por precio. Ignora los casos aislados con precios sospechosamente bajos: el grupo de vendedores *online* más baratos es el precio real del mercado. Contrasta la tendencia en el [analizador](/screener) y los [cambios de precios](/movers)."
+            },
+            {
+              "h": "Publica o responde a una orden",
+              "p": "Publica tu objeto como una orden de venta, o examina las órdenes de compra existentes y elige un comprador. El sitio genera un susurro para el juego listo para copiar y pegar."
+            },
+            {
+              "h": "Susurra en el juego",
+              "p": "Envía el mensaje privado: los usuarios 'online in game' responden más rápido, así que filtra por ellos. En el Trade Chat, publica un mensaje conciso como 'WTS [Item] 20p' y espera respuestas."
+            },
+            {
+              "h": "Invita y reúnete",
+              "p": "Invítalos a tu Dojo o a Maroo's Bazaar (o acepta su invitación), luego ve al Trading Post para abrir el intercambio."
+            },
+            {
+              "h": "Confirma con cuidado",
+              "p": "Ambas partes colocan los objetos y el plat en la misma ventana, luego AMBOS confirman. Vuelve a leer el objeto exacto y la cantidad de plat antes de aceptar; si algo ha cambiado, cancélalo. Si se hace bien, el plat llega al instante."
+            }
+          ]
+        },
+        {
+          "type": "info",
+          "text": "Vender a la hora adecuada importa: hay más compradores durante las horas pico de la tarde en tu región. La [herramienta de mejor momento para comerciar](/timing) muestra las horas en las que realmente se mueve un objeto específico."
+        }
+      ]
+    },
+    {
+      "id": "what-sells",
+      "title": "Qué se vende realmente (y por cuánto)",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "No todo merece una ranura de intercambio. Aquí tienes la jerarquía de principiante a veterano de lo que otros jugadores pagan con plat real, ordenado aproximadamente por la *fiabilidad* con la que se vende. Cuando tengas un conjunto completo de partes, comprueba si es mejor venderlas por separado o ensambladas con la [calculadora de sets vs partes](/comparison)."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Qué",
+              "De dónde viene",
+              "Valor aproximado",
+              "Notas"
+            ],
+            "rows": [
+              [
+                "Partes Prime",
+                "Abrir Void Relics",
+                "~5 a más de 100 plat cada uno",
+                "El sustento básico de los ingresos F2P; las partes vaulted son las que más pagan"
+              ],
+              [
+                "Sets Prime",
+                "Reunir un set completo de partes",
+                "Suma de las partes, a menudo con un extra",
+                "Los compradores pagan por la comodidad de una sola compra"
+              ],
+              [
+                "Mods raros",
+                "Nightmare, Corrupted (Vaults), eventos, mods Primed de Baro",
+                "~10 a cientos de plat",
+                "Poco volumen, alto valor por ranura de intercambio"
+              ],
+              [
+                "Mods Riven",
+                "Sorties, el Circuit de Duviri, Riven Slivers",
+                "De 20 a miles de plat",
+                "El límite más alto del juego, pero es puro azar"
+              ],
+              [
+                "Arcanes",
+                "Eidolons, Netracells, Profit-Taker, eventos",
+                "~5 a cientos de plat",
+                "Demanda constante; las opciones del meta suben de precio"
+              ],
+              [
+                "Esculturas y estrellas Ayatan",
+                "Búsquedas de Ayatan, sorties, bounties",
+                "De unos pocos a decenas de plat",
+                "Los compradores los quieren para conseguir Endo"
+              ],
+              [
+                "Liches convertidos y armas",
+                "Kuva Liches / Sisters of Parvos",
+                "Varía ampliamente",
+                "Avanzado: solo los Converted (no los Vanquished) se pueden intercambiar"
+              ]
+            ],
+            "note": "Los precios fluctúan constantemente: confirma siempre en vivo en el analizador o en el canal en vivo antes de publicar tu anuncio."
+          }
+        },
+        {
+          "type": "tip",
+          "text": "Las partes Prime de baja demanda ('prime junk') a menudo se venden a **Baro Ki'Teer por ducats** por más de lo que cualquier jugador pagaría en plat. Filtra las mejores opciones de ducats por parte con la [calculadora de ducats](/ducats), y usa [valor de reliquia: abrir o vender](/relics-value) para conocer la recompensa esperada de una reliquia antes de abrirla."
+        }
+      ]
+    },
+    {
+      "id": "first-100",
+      "title": "Tus primeros 100 plat (seguro para principiantes)",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "¿Cuenta nueva, cero plat, recién llegado a MR2? Aquí tienes el camino más seguro hacia tu primer lote vendible: sin apuestas, sin riesgos."
+        },
+        {
+          "type": "steps",
+          "ordered": true,
+          "steps": [
+            {
+              "h": "Farmear y abrir Void Relics",
+              "p": "Completa misiones de Void Fissure para abrir reliquias: cada una puede soltar una parte Prime que vale plat. Comienza con la [guía de reliquias](/guides/relics) y [qué reliquias pagan mejor por misión](/relic-farming)."
+            },
+            {
+              "h": "Vende las partes Prime que no necesites",
+              "p": "Busca cada parte en warframe.market. Incluso las partes comunes pueden darte unos pocos plat; una codiciada puede valer entre 20 y 50p. Deja que [abrir o vender](/relics-value) resuelva las decisiones difíciles."
+            },
+            {
+              "h": "Deshazte de los mods duplicados y raros",
+              "p": "Recogerás mods que ya posees. Los duplicados raros, de Nightmare y Corrupted se venden; es mejor disolver los mods comunes en Endo. Nunca vendas un mod sin comprobar antes su precio de mercado."
+            },
+            {
+              "h": "Guarda el prime junk para Baro",
+              "p": "Reserva las partes Prime de bajo valor en plat para venderlas por [ducats de Baro Ki'Teer](/ducats) en lugar de obstruir tus limitadas ranuras de intercambio."
+            },
+            {
+              "h": "Reinvierte en slots, no en cosméticos",
+              "p": "Gasta tu primer plat en **slots** de Warframe y armas, y de vez en cuando en un **Orokin Reactor/Catalyst**, las compras F2P de mayor valor. Los cosméticos pueden esperar."
+            }
+          ]
+        },
+        {
+          "type": "warn",
+          "text": "Antes de vender algo que no conozcas, búscalo. Los jugadores nuevos han llegado a entregar objetos que valían cientos de plat por una fracción de su valor; consulta la sección de estafas más abajo."
+        }
+      ]
+    },
+    {
+      "id": "relic-engine",
+      "title": "El motor de Primes y reliquias (tu salario F2P)",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Si dominas solo una fuente de plat, que sea **abrir reliquias**. Las Void Relics caen en misiones por todo el mapa estelar, y abrirlas en Void Fissures otorga partes Prime, el objeto más líquido de la economía. Es infinitamente repetible, no implica apuestas basadas en la suerte y escala con tu equipamiento."
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Farmea y luego refina** reliquias con Void Traces para aumentar las probabilidades de obtener el botín valioso; guía completa en la [guía de reliquias](/guides/relics).",
+            "**Abre en escuadrón**: en una fisura de cuatro jugadores, todos abren una reliquia y todos eligen entre las cuatro recompensas de la mesa; usa la *misma* reliquia que tus compañeros de escuadrón para acumular probabilidades de obtener la parte específica que deseas.",
+            "**Vende la parte o el set**: los sets Prime ensamblados suelen venderse a un precio superior que las partes sueltas; la [calculadora de sets vs partes](/comparison) hace las cuentas.",
+            "**Busca primes vaulted**: cuando DE envía un prime al Vault, sus partes dejan de caer y los precios suben. Sigue su rastro en el [rastreador de vaulted](/vaulted) y aprovecha los [picos de primes vaulted](/vault-spikes)."
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "Los precios fluctúan fuertemente en torno a los nuevos lanzamientos de **Prime Access** y las aperturas del Vault de **Prime Resurgence**. Las páginas de [cambios de precios](/movers) y [volatilidad](/volatility) muestran qué se está calentando para que puedas vender durante el pico en lugar de después."
+        }
+      ]
+    },
+    {
+      "id": "big-ticket",
+      "title": "Rivens, Arcanes y objetos de gran valor",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Una vez que te sientas cómodo, el contenido de alto nivel es donde realmente se acumula el plat. Los **[mods Riven](/guides/riven)** son mods de armas aleatorios con el límite más alto del juego: un god-roll para un arma popular puede venderse por miles de plat. También son la apuesta más pura: volver a girarlos consume [kuva](/guides/kuva), y la mayoría de los giros son basura. Comprueba siempre el precio de uno con el [estimador de valor de Riven](/riven-value) antes de venderlo o volver a girarlo."
+        },
+        {
+          "type": "p",
+          "text": "Los **Arcanes** (de las cacerías de Eidolon, Netracells, Profit-Taker y eventos) tienen una demanda constante, y las opciones del meta suben de valor. Las **esculturas Ayatan y las estrellas Amber/Cyan** se intercambian con jugadores que buscan [Endo](/endo). And once you're deep in the game, los **Kuva Liches y Sisters of Parvos convertidos**, además de sus armas distintivas, se convierten en un mercado lucrativo, aunque algo complejo."
+        },
+        {
+          "type": "warn",
+          "text": "Los Rivens son un casino. Nunca inviertas todo tu banco en girar un solo riven esperando un premio gordo: establece un presupuesto de kuva, vende giros decentes en lugar de buscar la perfección y considera cualquier gran ganancia como un extra. La [guía de Riven](/guides/riven) cubre cómo evaluar los giros correctamente."
+        }
+      ]
+    },
+    {
+      "id": "pricing-timing",
+      "title": "Ponle el precio correcto, véndelo rápido",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "La diferencia entre el plat que se queda estancado para siempre y el que se vende hoy es el precio. Vende un poco más barato que el vendedor **online** más bajo actual y tu objeto se moverá rápido; iguala el precio más alto y se quedará acumulando polvo. Una rotación rápida es mejor que exprimir hasta el último plat de un solo intercambio."
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Consulta en vivo, no datos desactualizados.** Los precios cambian a diario: revisa el [analizador](/screener), los [cambios de precios](/movers) y el [canal de ofertas en vivo](/live) justo antes de publicar tu anuncio.",
+            "**Vende según la demanda.** Los picos de primes vaulted, los nuevos frames del meta y los lanzamientos recientes de Prime Access aumentan los precios; las páginas de [picos del Vault](/vault-spikes) y [volatilidad](/volatility) los señalan.",
+            "**Elige el momento de tu anuncio.** Publica durante las horas pico de la tarde en tu región; la [herramienta de tiempo](/timing) muestra las horas activas de un objeto.",
+            "**Haz flip con los márgenes.** Compra barato, vende al precio de mercado: el [buscador de flips](/flip) muestra las mayores diferencias entre compra y venta."
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "Realiza un seguimiento de lo que tienes y configura alertas de precios con el [portafolio y lista de seguimiento](/portfolio) para vender cerca del punto más alto en lugar de adivinar."
+        }
+      ]
+    },
+    {
+      "id": "scams",
+      "title": "Evita que te estafen",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "El comercio en Warframe es seguro *por diseño* (la ventana de intercambio muestra exactamente lo que ofrece cada parte y ambos deben confirmar), pero los jugadores nuevos aún pierden objetos valiosos debido a trucos sociales, no a errores del juego. La estafa clásica: alguien te ofrece una miseria por un objeto del que no conoces el valor."
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Busca primero el precio de cada objeto.** Un jugador nuevo entregó recientemente un **Legendary Core** (que vale fácilmente más de 100p, a menudo varios cientos) por solo 20p porque no conocía su valor. En caso de duda, consulta warframe.market antes de aceptar cualquier cosa.",
+            "**Nunca hagas 'intercambios de confianza'.** Cualquiera que te pida que entregues objetos primero y que 'confíes' en que te pagará después te está estafando. Todos los objetos y el plat van en la **misma** ventana de intercambio, al mismo tiempo.",
+            "**Lee la pantalla de confirmación final.** Los estafadores cambian la oferta en el último segundo: menos plat o un objeto diferente. Vuelve a leer el objeto exacto y la cantidad antes de la segunda confirmación.",
+            "**Ignora a los 'intermediarios' y los tratos fuera de la plataforma.** Las ventas con dinero real, los intercambios de cuentas y los 'intermediarios' de terceros van en contra de las reglas y son una vía común de estafa."
+          ]
+        },
+        {
+          "type": "warn",
+          "text": "El soporte de DE a veces puede revertir una **compra** accidental, pero por lo general **no** revertirá un mal intercambio entre jugadores. La ventana de intercambio es tu única protección: úsala con cuidado."
+        }
+      ]
+    },
+    {
+      "id": "realistic-expectations",
+      "title": "Plat/hora realista y en qué gastarlo",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Establece expectativas realistas. Los ingresos de plat son intermitentes: farmeas objetos durante varias sesiones y luego los vendes de golpe. Rangos aproximados en el mundo real:"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Método",
+              "Esfuerzo / habilidad",
+              "Retorno aproximado"
+            ],
+            "rows": [
+              [
+                "Abrir reliquias → vender partes",
+                "Bajo, ideal para principiantes",
+                "Constante, unas pocas docenas de plat por sesión enfocada"
+              ],
+              [
+                "Flipping de sets Prime",
+                "Medio: conocer los precios, comprar barato",
+                "Mayor, escala con el conocimiento del mercado"
+              ],
+              [
+                "Girar y vender Rivens",
+                "Alto riesgo, alta habilidad",
+                "Variable: grandes ganancias, muchos fallos"
+              ],
+              [
+                "Venta de Arcanes / Liches",
+                "Medio-alto, requiere progresión",
+                "Sólido once you can farm the source"
+              ]
+            ],
+            "note": "Los números son estimaciones y cambian constantemente: trata el plat como un subproducto de jugar, no como un salario."
+          }
+        },
+        {
+          "type": "p",
+          "text": "¿En qué vale la pena gastarlo? La wiki y los veteranos están de acuerdo: primero en **slots de inventario** y **Orokin Reactors/Catalysts** (los slots son esencialmente solo para plat, y ambos son permanentes), luego en cosméticos si te gustan. Todo lo demás se puede farmear. Gestiona tu reserva y alertas en el [portafolio](/portfolio)."
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "¿Cómo se consigue platinum en Warframe sin gastar dinero?",
+      "a": "Farmea objetos intercambiables (principalmente partes Prime de Void Relics, además de mods raros, rivens y arcanes) y véndelos a otros jugadores por plat en warframe.market o en el Trade Chat. Es completamente free-to-play; toda la economía funciona con objetos farmeados, y los jugadores alcanzan regularmente miles de plat sin pagar un centavo. Comienza con el [ciclo de abrir reliquias](/relic-farming)."
+    },
+    {
+      "q": "¿Qué Mastery Rank necesitas para comerciar en Warframe?",
+      "a": "El comercio se desbloquea en el **Mastery Rank 2**, lo que solo requiere un par de pruebas de MR. Después de eso, tu límite diario de intercambios es igual a tu Mastery Rank (MR2 permite 2 intercambios por día, MR10 permite 10, y así sucesivamente). Un solo intercambio puede agrupar múltiples objetos (hasta cinco por lado), así que aprovecha bien cada ranura mientras tu MR sea bajo."
+    },
+    {
+      "q": "¿Se puede intercambiar el platinum inicial gratuito?",
+      "a": "No. Los ~50 de platinum iniciales, más cualquier platinum ganado a través de **sorteos o promociones**, es **'Platinum personal'**: bloqueado y no intercambiable (muestra un pequeño icono de candado). El platinum que **compras** (incluso con descuento) o que **ganas comerciando** con otros jugadores se puede volver a intercambiar. Así que tu primer plat intercambiable proviene de vender objetos."
+    },
+    {
+      "q": "¿Qué es lo que se vende por más platinum?",
+      "a": "Los [mods Riven](/riven-value) tienen el límite más alto (un god-roll puede valer miles de plat), seguidos por arcanes raros, sets Prime vaulted y mods raros. Sin embargo, para obtener ingresos confiables, las [partes Prime ordinarias de reliquias](/relics-value) son la fuente más constante. Las partes Prime de bajo valor a menudo valen más si se venden a Baro por [ducats](/ducats)."
+    },
+    {
+      "q": "¿Necesitas un clan para comerciar en Warframe?",
+      "a": "No. Puedes comerciar en **Maroo's Bazaar**, un repetidor público en Mars, sin necesidad de un clan, o crear tu propio clan gratuito de una sola persona y construir un Trading Post en tu Dojo. Ambas opciones funcionan bien; Maroo's Bazaar también te permite montar un puesto de venta para que los compradores lo examinen."
+    },
+    {
+      "q": "¿Cómo evito que me estafen al comerciar?",
+      "a": "Busca siempre el precio de un objeto en warframe.market antes de venderlo, nunca aceptes 'intercambios de confianza' en los que entregues los objetos primero y vuelve a leer la pantalla de confirmación del intercambio para evitar cambios de último segundo. La ventana de intercambio requiere que ambas partes confirmen, por lo que nada sale de tu inventario sin tu consentimiento, y DE generalmente no revertirá un mal intercambio entre jugadores."
+    },
+    {
+      "q": "¿Cuánto platinum puedes ganar por hora en Warframe?",
+      "a": "Varía mucho y llega de forma intermitente en lugar de como un salario constante. Un jugador nuevo que abre reliquias podría obtener unas pocas docenas de plat por sesión enfocada; los jugadores experimentados que hacen flipping de sets, rivens o arcanes ganan mucho más. Trata el plat como un subproducto de jugar al juego que disfrutas, no como un trabajo."
+    }
+  ],
+  "videos": [
+    {
+      "id": "-voGeqWi_BU",
+      "title": "How to Trade in Warframe | Beginner’s Guide to Trading and Earning Platinum",
+      "channel": "Tipsy"
+    },
+    {
+      "id": "iQfSqj85HYY",
+      "title": "Warframe | How To Earn Platinum For Free | Warframe Trading Guide",
+      "channel": "Pupsker"
+    },
+    {
+      "id": "Fz8heDuOUkY",
+      "title": "Infinite Platinum Farming Theorem | Warframe 2025 COMPLETE Platinum Farming & Trading Guide",
+      "channel": "turbomonk"
+    },
+    {
+      "id": "fChLZ8Rh5bQ",
+      "title": "How I TRADE to earn PLATINUM in WARFRAME",
+      "channel": "Coffee Barbarian"
+    }
+  ],
+  "sources": [
+    {
+      "label": "r/Warframe — Finally reached 10k plat as a F2P player",
+      "href": "https://reddit.com/r/Warframe/comments/1tqyo3m/finally_reached_10k_plat_as_a_f2p_player/"
+    },
+    {
+      "label": "r/Warframe — Got scammed out of a Legendary Core as a new player",
+      "href": "https://reddit.com/r/Warframe/comments/1sonq6u/got_scammed_out_of_a_legendary_core_as_a_new/"
+    },
+    {
+      "label": "r/Warframe — Platinum farms ranked by how insane the people doing them are",
+      "href": "https://reddit.com/r/Warframe/comments/1f77ohc/platinum_farms_ranked_by_how_insane_the_people/"
+    },
+    {
+      "label": "Warframe Wiki — Trading",
+      "href": "https://wiki.warframe.com/w/Trading"
+    }
+  ],
+  "related": [
+    {
+      "label": "Reliquias y Void Traces",
+      "to": "/guides/relics",
+      "icon": "diamond-stone",
+      "note": "Abre reliquias para obtener las partes Prime que venderás"
+    },
+    {
+      "label": "Mods Riven",
+      "to": "/guides/riven",
+      "icon": "dice-multiple",
+      "note": "Los objetos de plat con el límite más alto del juego"
+    },
+    {
+      "label": "Farmeo de Credits",
+      "to": "/guides/credits",
+      "icon": "cash-multiple",
+      "note": "Necesitas Credits para pagar el impuesto de intercambio"
+    },
+    {
+      "label": "Valor de reliquia: abrir o vender",
+      "to": "/relics-value",
+      "icon": "calculator-variant",
+      "note": "Plat esperado por reliquia antes de abrirla"
+    },
+    {
+      "label": "Calculadora de sets vs partes",
+      "to": "/comparison",
+      "icon": "scale-balance",
+      "note": "¿Vender el set ensamblado o las partes sueltas?"
+    },
+    {
+      "label": "Preguntas frecuentes de la comunidad",
+      "to": "/faq",
+      "icon": "help-circle",
+      "note": "Respuestas rápidas a preguntas comunes de los Tenno"
+    }
+  ],
+  "updated": "2026-07-18"
+}

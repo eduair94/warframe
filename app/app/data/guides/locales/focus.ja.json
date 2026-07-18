@@ -1,0 +1,475 @@
+{
+  "slug": "focus",
+  "eyebrow": "ナレッジセンター · Focus",
+  "title": "Focus Farming ガイド",
+  "lede": "Focusは、Tennoの5つのSchoolに力を与えるOperatorの成長システムです。ここでは、その解放方法、LensやConvergence Orbを使って素早く獲得する方法、そして重要なノードへの効果的な割り振り方を解説します。",
+  "category": "farming",
+  "readMins": 9,
+  "stats": [
+    {
+      "num": "5",
+      "label": "Focus School",
+      "tone": "gold"
+    },
+    {
+      "num": "10x",
+      "label": "Convergence倍率",
+      "tone": "good"
+    },
+    {
+      "num": "45s",
+      "label": "Convergence時間",
+      "tone": "alt"
+    },
+    {
+      "num": "250K",
+      "label": "初期の1日上限",
+      "tone": "gold"
+    }
+  ],
+  "sections": [
+    {
+      "id": "what-is-focus",
+      "title": "Focusとは何か",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Focus**は、WarframeのOperator成長システムです。**Focus Points**と呼ばれる専用の通貨を獲得し、**5つのFocus School**（OperatorやWarframe、ゲーム内経済全体を強化するパッシブスキルツリー）のいずれかに投入します。Focusはアカウント共通です。獲得したポイントは現在**Active**になっているSchoolに蓄積され、ツリーのNodeを1つずつ解放していきます。"
+        },
+        {
+          "type": "p",
+          "text": "Focusは特別なアクティビティを行うことで獲得するのではなく、Affinity（経験値）の*副産物*として獲得します。装備に**Focus Lens**を装着すると、その装備が獲得したAffinityの一部がFocusとして吸収されます。これが一連の流れです。敵を倒し、Affinityを獲得し、その一部をFocusに変換し、パッシブスキルに消費します。このガイドの残りの部分では、そのわずかな流れを大洪水に変える方法を解説します。"
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "解放条件",
+              "v": "クエスト「The Second Dream」"
+            },
+            {
+              "k": "通貨",
+              "v": "Focus Points（ActiveなSchoolごと）"
+            },
+            {
+              "k": "School",
+              "v": "Madurai, Vazarin, Naramon, Unairu, Zenurik"
+            },
+            {
+              "k": "獲得方法",
+              "v": "ランク最大装備に装着したFocus Lens ＋ Affinity"
+            },
+            {
+              "k": "1日のリセット",
+              "v": "Focusの上限は毎日のリセット（00:00 UTC）時に更新されます"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "unlock-operator",
+      "title": "ステップ1：Operatorを解放する",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Focusはストーリーの進行によってロックされています。Operatorが目覚めるまでは、Lensに触れることすらできません。そのため、最初の「Focus farming」は単に[メインクエスト](/guides/quests)を進めることです。"
+        },
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "h": "星系マップをThe Second Dreamまで進める",
+              "p": "このクエストは、惑星のジャンクションを十分にクリアすると解放されます。これはオプションではなく、必須のストーリー進行です。Nodeのクリアを続け、クエストマーカーに従ってください。順序については[進行ロードマップ](/guides/progression)を参照してください。"
+            },
+            {
+              "h": "The Second Dreamをクリアする",
+              "p": "これをクリアするとOperatorが登場し、Focus画面と最初のSchoolが解放されます。この瞬間からFocusが利用可能になります。"
+            },
+            {
+              "h": "The War Withinをクリアする",
+              "p": "次の主要クエストでは、OperatorのVoidアビリティとTransference戦闘が拡張されます。Operatorの力はどちらにおいても中心的な役割を果たすため、本格的なFocus/Eidolon farmingを始める前に、このクエストを完全に終わらせておきたいところです。"
+            },
+            {
+              "h": "最初のSchoolを選択する（無料）",
+              "p": "最初のSchoolは無料で解放されます。追加のSchoolを解放するには、後からそれぞれFocusが必要になります（各約50,000）。そのため、慎重に選択してください。ほとんどのプレイヤーは最初にZenurikを解放します（詳細は以下を参照）。"
+            }
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "新規プレイヤーは[Duviri Paradox](/guides/duviri)でDrifterやFocusに関連するシステムを早期に体験できますが、Focusへの標準的かつ完全なルートは、依然として**The Second Dream → The War Within**です。"
+        }
+      ]
+    },
+    {
+      "id": "schools",
+      "title": "5つのFocus School",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "同時に**ActiveにできるSchoolは1つだけ**ですが、ミッション外であれば解放済みのSchool間で自由に切り替えることができます。各Schoolには、そのSchoolが選択されている時のみ有効な専用のNodeと、どのSchoolがActiveであっても常に適用される永続的な**Way-Bound**パッシブの両方が存在します。それぞれの特徴は以下の通りです："
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "School",
+              "色",
+              "特徴的な強み",
+              "最適な用途"
+            ],
+            "rows": [
+              [
+                "Zenurik",
+                "黄色",
+                "エネルギー回復ゾーン（Wellspring / Energizing Dash）",
+                "全員 — デフォルトのエネルギー管理用選択肢"
+              ],
+              [
+                "Madurai",
+                "赤",
+                "AmpおよびVoidダメージバフ",
+                "Eidolon狩り、OperatorのDPS"
+              ],
+              [
+                "Naramon",
+                "緑",
+                "近接コンボ維持、ステルス/Affinity",
+                "近接ビルド、ヘビーアタック主体のプレイスタイル"
+              ],
+              [
+                "Unairu",
+                "白",
+                "Operatorによるシールド＆装甲値剥ぎ取り",
+                "Eidolon、[Steel Path](/guides/steel-path)での装甲値剥ぎ取り"
+              ],
+              [
+                "Vazarin",
+                "青",
+                "回復、蘇生、防衛対象の保護",
+                "サポート、防衛/護衛、Eidolon Lure"
+              ]
+            ],
+            "note": "特徴的なNodeや正確な数値は時間の経過とともに調整されることがあります。完全に解放する前に、現在のNodeレイアウトについて最新のWikiを確認してください。"
+          }
+        },
+        {
+          "type": "tip",
+          "text": "**最初にZenurikを解放しましょう。**そのエネルギー回復ゾーンは、ゲーム序盤の最大の悩みである「アビリティエネルギーの枯渇」を解決し、今後プレイするすべてのFrameに恩恵をもたらします。Eidolonを追いかける場合、通常はMaduraiまたはUnairuが2番目の選択肢になります。"
+        }
+      ]
+    },
+    {
+      "id": "lenses",
+      "title": "Focus Lens：エンジン",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Focus Lens**は装備品に装着され、特定のSchoolに紐付けられます。装着すると、そのアイテムが獲得したAffinityの一定割合をそのSchoolのFocusに変換します。**Lensはランク最大（ランク30）の装備に装着してください。**そうすることで、獲得したすべてのAffinityがアイテムのレベルアップに「消費」されることなく、Focusへの変換にカウントされます。"
+        },
+        {
+          "type": "p",
+          "text": "装備している各アイテムにそれぞれLensを装着できます。Warframe、プライマリ、セカンダリ、近接、そしてコンパニオンに*それぞれ*1つずつ装着可能です。すべてのスロットにLensを装着したロードアウトは、単一のFrameだけに装着した場合と比べて、Focusの獲得量を劇的に増加させます。"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Lensのティア",
+              "変換率（超過Affinityの）",
+              "入手場所"
+            ],
+            "rows": [
+              [
+                "Lens",
+                "~2%",
+                "Sortie、オープンワールドの依頼ミッション、イベント"
+              ],
+              [
+                "Greater Lens",
+                "~3%",
+                "通常のLensから製作（マーケットの設計図）、ティア3〜5の依頼ミッション報酬"
+              ],
+              [
+                "Eidolon Lens",
+                "~4.25%",
+                "Greater Lensから製作、Cetusのティア5 / Steel Pathの依頼ミッション、またはCaviaのStanding"
+              ],
+              [
+                "Lua Lens",
+                "~5.5% — 最高効率",
+                "Eidolon Lensから製作、Lua Disruption（ローテーションC）"
+              ]
+            ],
+            "note": "上位のティアは下位のティアをアップグレードしてクラフトするため、早い段階で通常のLensを集めておくと後で役立ちます。変換率や入手先はアップデートで変更されることがあるため、正確なレシピは最新のWikiで確認してください。"
+          }
+        },
+        {
+          "type": "warn",
+          "text": "Lensは**装着時に特定のSchoolに紐付けられ**、新しいLensで上書きすると古いLensは破壊されます。装着する*前に*Schoolを決めてください。間違ったツリーにEidolon LensやLua Lensを無駄遣いしないようにしましょう。最高性能のLensは通常のLensから段階的にアップグレードして製作するため、リソースを投入する前に計画を立ててください。"
+        }
+      ]
+    },
+    {
+      "id": "convergence",
+      "title": "Convergence Orbと10倍の時間",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "これは、わずかな流れを大激流に変える仕組みです。ミッション中、光る**Convergence Orb**が定期的に出現します（Focus Lensを装備している場合のみ）。これを拾うと、**45秒間、Focus獲得量が10倍**になります。この時間内に生成されたすべてのFocusポイントが10倍になり、さらにOrbを拾った瞬間にActiveなSchoolに**5,000 Focus**が即座に付与されます。本格的なFocus farmingとは、実質的にこの*Convergence*の活用です。45秒間の時間内に敵の撃破を重ね、最大のAffinityを叩き込みます。"
+        },
+        {
+          "type": "info",
+          "text": "r/Warframeでよくある不満に「なぜ未だにFocus獲得をConvergence Orbに依存しているのか？」というものがあります。これはもっともな批判です。倍率がかかる時間外では、意図的にFocusの獲得が遅くなるように設計されています。現実的な解決策は、敵の密度が高く、継続的に撃破できるファームを選んでOrbを頻繁に出現させ、Orbを拾うタイミングに合わせてバーストダメージを出せるように調整することです。"
+        },
+        {
+          "type": "p",
+          "text": "同時に有効にできるConvergenceバフは1つだけで、新しいOrbを拾うとタイマーがリセットされます。敵の密度が高く展開の早いモードでは、Orbが頻繁に出現するため、ミッション中のほとんどの時間を10倍の状態で過ごすことができます。これこそが、以下に紹介するファームがランダムなミッションを周回するよりも遥かに優れている理由です。"
+        }
+      ]
+    },
+    {
+      "id": "daily-cap",
+      "title": "1日のFocus上限",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Focusには**1日の上限（Daily Cap）**があり、1日にすべてのSchoolを合わせて獲得できる上限が設定されています。これは**250,000からスタート**し、**Mastery Rank**に応じて上昇します（1ランクにつき約+5,000）。そのため、高MRのプレイヤーは、目覚めたばかりのOperatorよりも遥かに高い上限を持っています。上限は毎日のリセット時にリセットされます。"
+        },
+        {
+          "type": "warn",
+          "text": "上限に達すると、その日に獲得した追加のFocusは**無駄になります**。効率的なプレイは、効率の良いファームで素早く上限まで稼ぎ、それ以上貯められないFocusのために周回を続けるのではなく、他の目標に移ることです。敵の密度が低いミッションでダブルAffinityウィークエンドを無駄に消費しないようにしましょう。"
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "初期上限",
+              "v": "250,000 / 日（すべてのSchoolの合計）"
+            },
+            {
+              "k": "スケーリング",
+              "v": "Mastery Rankに応じて上昇（1ランクにつき約+5,000）"
+            },
+            {
+              "k": "リセット",
+              "v": "毎日のリセット（00:00 UTC）"
+            },
+            {
+              "k": "上限超過分のFocus",
+              "v": "消失 — 効率的に上限に達するようファームを計画しましょう"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "best-farms",
+      "title": "おすすめのFocusファーム",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "「最適なNode」はアップデートごとに変化しますが、**原則は時代を問いません**。敵の密度を最大化し、Convergenceの時間内を維持し、すべてのスロットにLensを装着したロードアウトを持ち込むことです。Orbが出現し続ける中で、Lensを装着した武器で連続キルを重ねられるモードは、すべて優れたFocusファームとなります。以下は、定番の手段です："
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "方法",
+              "効果的な理由",
+              "備考"
+            ],
+            "rows": [
+              [
+                "Eidolon狩り（Plains of Eidolon、夜）",
+                "大量のAffinityに加え、Eidolon Shardを直接Focusに変換可能（Brilliantは約25,000、Radiantは約40,000を任意のSchoolに変換）",
+                "AmpとOperatorのセットアップが必要。[Eidolonガイド](/guides/eidolon)を参照"
+              ],
+              [
+                "Elite Sanctuary Onslaught (ESO)",
+                "頻繁に出現するConvergence Orbと、絶え間なく続く高密度の敵撃破 — 定番のFocus周回",
+                "広範囲殲滅フレーム（Nuke Frame）と、すべてのスロットにLensを装着したロードアウトを持ち込む"
+              ],
+              [
+                "高密度の無限ミッション（ZarimanのVoidモード、現在のエンドゲームタイルセット）",
+                "膨大なキル数がLens装着武器に還元され、Orbが安定して出現する",
+                "正確な「最適」Nodeはパッチによって変化するため、最近の動画を確認してください"
+              ],
+              [
+                "任意のミッション ＋ 全スロットLens ＋ ブースター",
+                "普通にゲームをプレイしながら受動的にFocusを獲得",
+                "ペースは遅いものの、追加のセットアップが不要 — カジュアルに上限を目指すのに最適"
+              ]
+            ]
+          }
+        },
+        {
+          "type": "p",
+          "text": "Eidolonが特に強力なのは、**Eidolon Shardが純粋なFocusである**ためです。Affinity変換とは別に、消費することで選択したSchoolに固定のまとまった額（Brilliantは約25,000、Radiantは約40,000）を付与できます。そのため、Tridolonの捕獲を1回行うだけで、1日の上限近くまで一気に稼ぐことができます。[Eidolonガイド](/guides/eidolon)で狩り方を学びましょう。また、道中で手に入るAmpやArcaneは、[flip finder](/flip)や[screener](/screener)を使って[platinum](/guides/platinum)に換金できることも覚えておいてください。"
+        },
+        {
+          "type": "tip",
+          "text": "現在どのNodeでどのモードが実施されているかを正確に特定するには、固定のリストよりも[ドロップ場所マップ](/star-chart-3d)や[コミュニティツールディレクトリ](/tools)（Wiki、Overframe）の方が遥かに最新の状態を維持しています。周回を始める前に、最近のFocus farming動画と最新のWikiでの確認を組み合わせることをお勧めします。"
+        }
+      ]
+    },
+    {
+      "id": "spending",
+      "title": "Way-Bound NodeとFocusの消費",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "各Schoolの内部では、Nodeが2つの種類に分かれています。**School専用Node**は、そのSchoolがActiveである間のみ機能します。**Way-Bound Node**は、*どのSchoolがActiveであっても*適用される永続的なパッシブであり、Focusと**Eidolon Shard**を使って解放します。これが、EidolonとFocusの進行が結びついている2つ目の理由です。Shardは1日のFocus獲得を助けるだけでなく、最高のパッシブを永続的に紐付ける役割も果たします。"
+        },
+        {
+          "type": "p",
+          "text": "同時に使用できるSchoolは1つだけなので、5つすべてにポイントを薄く分散させるのではなく、目的を持って消費しましょう："
+        },
+        {
+          "type": "list",
+          "items": [
+            "**まずはメインのSchoolを最大まで強化しましょう** — ほとんどの時間で選択することになるため、通常はエネルギーゾーンを持つZenurikが推奨されます。",
+            "**Way-Boundパッシブは早めに獲得しましょう** — これらは永続的でSchool間で累積するため、無駄になることはありません。一般的な優先事項は、最大エネルギーやOperatorの生存性を高めるWay-Boundです。",
+            "**その後、役割に応じたSchoolに分岐します** — Eidolonや装甲値剥ぎ取り用のMadurai/Unairu、近接用のNaramon、サポート用のVazarinなどです。",
+            "**選択する予定のないSchoolに投資しすぎないようにしましょう** — School専用のNodeは、そのSchoolがActiveでない限り全く役に立ちません。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "efficiency",
+      "title": "さらに多くのFocusを絞り出す",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "基本が整ったら、これらの倍率を重ね合わせることで、上限到達を大幅に早めることができます："
+        },
+        {
+          "type": "list",
+          "items": [
+            "**すべてのスロットにLensを装着する。**Frame ＋ 3つの武器 ＋ コンパニオンで、最大5つのLensが同時に変換を行います。最もよく使用する装備に最高のLensを装着しましょう。",
+            "**獲得したいSchoolをActiveに設定する。**生成されたすべてのFocusは*現在選択されている*Schoolに蓄積されます。開始する前に再確認してください。",
+            "**Affinityブースターを重ねる。**2倍のAffinityブースターに**ダブルAffinityウィークエンド**を重ねることで、同じ労力でFocus獲得量を2倍にできます。",
+            "**Smeeta Kavatを連れて行く。**そのCharmバフは2倍のAffinityボーナスを発生させることがあり、高密度ファームにおいて純粋な追加Focusとなります。",
+            "**Affinityの流れを理解する。**アビリティによるキルは100%がWarframeに送られ、武器によるキルは武器とFrameに分散されます。分隊内では、範囲内でAffinityが共有されるため、近くでのキルもLensを装着した装備に還元されます。",
+            "**ダメージをConvergenceの時間に合わせる。**Orbを拾う前にバーストダメージを出し切るのではなく、10倍のバフがかかるまで温存しておきましょう。"
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "Focus farmingを始めたばかりの方は、[Mastery Rank ＆ Affinityガイド](/guides/mastery-rank)も読むことをお勧めします。装備をランクアップさせるレベリングの仕組みは、Lensにエネルギーを供給する仕組みと同じであるため、効率的なレベリングと効率的なFocus farmingは同じスキルと言えます。"
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "WarframeでFocusを解放するにはどうすればよいですか？",
+      "a": "Focusは、クエスト**The Second Dream**をクリアすると解放されます。これによりOperatorが目覚め、Focus画面と最初のSchoolが利用可能になります。The Second Dreamがプレイ可能になるまで星系マップを進め、その後**The War Within**をクリアしてOperatorを完全に成長させましょう。それまでは、Lensを1つも装着することはできません。"
+    },
+    {
+      "q": "最初に解放するのに最適なFocus Schoolは何ですか？",
+      "a": "**Zenurik**は、そのエネルギー回復ゾーンがゲーム序盤のエネルギー問題を解決し、今後プレイするすべてのWarframeに役立つため、ほぼ満場一致で最初の選択肢となります。その後、多くのプレイヤーは**Madurai**（Eidolon用のAmp/Operatorダメージ）または**Unairu**（シールド/装甲値剥ぎ取り）を解放します。最初のSchoolは無料で、追加のSchoolはそれぞれ約50,000 Focusが必要です。"
+    },
+    {
+      "q": "Focusを最も早くファームする方法は何ですか？",
+      "a": "最大ランクのFrameと武器にFocus Lens（理想的にはEidolon LensまたはLua Lens）を装着し、**Elite Sanctuary Onslaught**のような敵密度の高いモードを周回するか、夜のPlainsで**Eidolon**を狩ります。10倍の倍率を得るためにすべての**Convergence Orb**を拾い、AffinityブースターとSmeeta Kavatを重ねます。Eidolon Shardも直接Focusに変換可能です（Brilliantは約25,000、Radiantは約40,000）。"
+    },
+    {
+      "q": "Focus Lensはどのように機能し、どこで入手できますか？",
+      "a": "Lensはランク30のアイテムに装着され、そのAffinityの一定割合を紐付けられたSchoolのFocusに変換します。通常のLensで約2%、Greater Lensで約3%、Eidolon Lensで約4.25%、最高ティアのLua Lensで約5.5%です。通常のLensはSortieやオープンワールドの依頼ミッションからドロップし、上位のティアは下位のものから製作します（Greaterはマーケットの設計図から、EidolonはCetus/Steel Pathの依頼ミッションまたは[CaviaのStanding](/guides/standing)から、LuaはLua Disruptionから）。レベルアップでAffinityが無駄にならないよう、最大ランクの装備に装着してください。"
+    },
+    {
+      "q": "なぜFocusの獲得をConvergence Orbに依存しなければならないのですか？",
+      "a": "意図的な設計として、45秒間10倍の倍率（および拾った瞬間に5,000 Focus）を付与する**Convergence Orb**のバフ効果時間内でなければ、Focusの獲得は遅くなります。これはコミュニティでよくある不満ですが、回避策はOrbが頻繁に出現する、敵の密度が高くキル数の多いモードを周回することです。そうすれば、単一のOrbを追いかけるのではなく、ミッション中のほとんどの時間を倍率がかかった状態で過ごすことができます。"
+    },
+    {
+      "q": "1日のFocus上限はありますか？",
+      "a": "はい。すべてのSchoolで共有される1日の上限があり、**250,000からスタート**し、**Mastery Rank**に応じて上昇します（1ランクにつき約+5,000）。上限に達すると、その日に獲得した追加のFocusは無駄になります。そのため、効率的なプレイは、効率の良いファームで素早く上限に達し、その後は他の目標に移ることです。"
+    },
+    {
+      "q": "1つのFocus Schoolだけに絞る必要がありますか？",
+      "a": "いいえ。ミッション外であれば、解放済みの任意のSchool間で自由に切り替えることができるため、1つに固定されることはありません。さらに、**Way-Bound** NodeはどのSchoolがActiveであっても適用される永続的なパッシブです。これらをFocusとEidolon Shardで解放すれば、すべてのビルドに恩恵をもたらします。"
+    },
+    {
+      "q": "Eidolon ShardはFocusにおいてどのような役割を果たしますか？",
+      "a": "Eidolon Shardは、実質的にボトルに詰められたFocusです。**Brilliant Shard**を消費すると約25,000 Focus、**Radiant Shard**を消費すると約40,000 Focusを獲得でき、どちらも選択した任意のSchoolに付与されます。また、永続的な**Way-Bound**パッシブを解放するためにもShardが必要となるため、[Eidolon狩り](/guides/eidolon)は主要なFocusアクティビティとなっています。"
+    }
+  ],
+  "videos": [
+    {
+      "id": "yt0L9JPkP1k",
+      "title": "The top five ways to farm focus! | Warframe",
+      "channel": "TheKengineer"
+    },
+    {
+      "id": "B0ztEAfwj_Q",
+      "title": "Farm Focus FASTER in Warframe 2025!",
+      "channel": "Qemal TV"
+    },
+    {
+      "id": "_Hq2VdgM6kw",
+      "title": "[WARFRAME] Advanced FOCUS Guide! Eidolon Hunting Guide Episode 01",
+      "channel": "KnightmareFrame"
+    },
+    {
+      "id": "Lc_Pry-SQsA",
+      "title": "Warframe Beginner Guide 2025: Easy Endo Farming, Focus Schools & Operator Unlocked | Episode 6",
+      "channel": "Tipsy"
+    }
+  ],
+  "sources": [
+    {
+      "label": "r/Warframe — Boosters run out soon, anyone wanna farm affinity?",
+      "href": "https://reddit.com/r/Warframe/comments/1ih3nbq/boosters_run_out_soon_anyone_wanna_farm_affinity/"
+    },
+    {
+      "label": "r/Warframe — Focus 2.0 Costs are too high",
+      "href": "https://reddit.com/r/Warframe/comments/77iv8n/focus_20_costs_are_too_high/"
+    },
+    {
+      "label": "Official Warframe Wiki",
+      "href": "https://wiki.warframe.com/"
+    }
+  ],
+  "related": [
+    {
+      "label": "Eidolon狩りガイド",
+      "to": "/guides/eidolon",
+      "icon": "atom-variant",
+      "note": "主要なFocus ＋ Amp ＋ Arcaneファーム"
+    },
+    {
+      "label": "シンジケートStandingガイド",
+      "to": "/guides/standing",
+      "icon": "handshake",
+      "note": "StandingでLens、Arcane、Modを購入可能"
+    },
+    {
+      "label": "Steel Pathガイド",
+      "to": "/guides/steel-path",
+      "icon": "shield-sword",
+      "note": "Unairuの装甲値剥ぎ取りが輝く場所"
+    },
+    {
+      "label": "Mastery Rank ＆ Affinity",
+      "to": "/guides/mastery-rank",
+      "icon": "star-four-points",
+      "note": "Lensにエネルギーを供給する経験値の仕組み"
+    },
+    {
+      "label": "進行ロードマップ",
+      "to": "/guides/progression",
+      "icon": "map-marker-path",
+      "note": "旅の途中でFocusがどのように位置づけられるか"
+    },
+    {
+      "label": "コンテンツクリエイター",
+      "to": "/creators",
+      "icon": "youtube",
+      "note": "Focus farmingのエキスパートをフォローしましょう"
+    }
+  ],
+  "updated": "2026-07-18"
+}

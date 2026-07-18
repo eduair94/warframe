@@ -1,0 +1,450 @@
+{
+  "slug": "riven",
+  "eyebrow": "Centrum Wiedzy · Mody Riven",
+  "title": "Mody Riven wyjaśnione",
+  "lede": "Riveny to mody-automaty do gier w Warframe: przypisane do konkretnej broni, z losowymi statystykami i zdolne zmienić zapomnianą broń w potwora. Oto jak działają, co czyni je wartościowymi i kiedy naprawdę są warte Twojego Kuva.",
+  "category": "systems",
+  "readMins": 9,
+  "stats": [
+    {
+      "num": "2–4",
+      "label": "statystyki na Riven",
+      "tone": "good"
+    },
+    {
+      "num": "1–5",
+      "label": "kropki dyspozycji",
+      "tone": "alt"
+    },
+    {
+      "num": "8",
+      "label": "maksymalna ranga Rivena",
+      "tone": "gold"
+    },
+    {
+      "num": "~3,500",
+      "label": "limit Kuva na re-roll",
+      "tone": "gold"
+    }
+  ],
+  "sections": [
+    {
+      "id": "what-is-a-riven",
+      "title": "Czym właściwie jest mod Riven",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Mod Riven** to specjalny mod z **losowymi statystykami, który jest przypisany do jednej broni** (oraz jej wariantów). Riven do Braton pasuje do broni Braton — oraz jej wersji Prime, Vandal i MK1 — ale do niczego innego; Riven do Kronen pasuje tylko do Kronen. Kiedy Riven zostaje ujawniony, losuje **2–4 statystyki** — mieszankę potężnych wzmocnień i czasami pojedynczą wadę (*klątwę*). Nie ma dwóch identycznych Rivenów, co jest dokładnie powodem, dla którego mogą być zarówno najlepszym modem na Twojej broni, jak i podstawą chaotycznej ekonomii handlu."
+        },
+        {
+          "type": "p",
+          "text": "Riveny istnieją dla głównych rodzin broni — **karabinów, strzelb, pistoletów, broni białej i archgunów** (plus typy kitgun i zaw). Korzyść jest ogromna: dobry Riven może dodać więcej czystej mocy niż jakikolwiek pojedynczy zwykły mod. Haczyk polega na tym, że wszystko w nim — statystyki, ich wartości, a nawet to, do *jakiej* broni jest przeznaczony — to RNG, dopóki go nie ujawnisz, i jest to jeden z najbardziej pojemnościożernych modów w grze."
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "Czym jest",
+              "v": "Mod przypisany do konkretnej broni z losowymi statystykami"
+            },
+            {
+              "k": "Pasuje do",
+              "v": "Jednej broni i jej wariantów — Riven „Braton” działa na Braton, Braton Prime, Vandal i MK1"
+            },
+            {
+              "k": "Statystyki",
+              "v": "2–4 losowe — 2–3 wzmocnienia plus opcjonalna klątwa"
+            },
+            {
+              "k": "Maksymalna ranga",
+              "v": "Ranga 8, ulepszana za pomocą Endo (bardzo kosztowna)"
+            },
+            {
+              "k": "Wymagany MR",
+              "v": "Losowe wymaganie rangi mistrzowskiej (Mastery Rank 8–16) jest ustalane przy ujawnieniu"
+            },
+            {
+              "k": "Wymagania wstępne",
+              "v": "Ukończenie zadania The War Within — przyznaje ono Twój pierwszy Riven i odblokowuje główne źródła"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "disposition",
+      "title": "Dyspozycja: dlaczego ten sam pomysł jest boski na jednej broni, a na innej to śmieć",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Dyspozycja Riven** to mnożnik przypisany do broni, przedstawiany jako **1 do 5 kropek**. Skaluje on, jak silne są statystyki Rivena na danej broni. Co kluczowe, dyspozycja jest *odwrotnie proporcjonalna do popularności*: słabe, rzadko używane bronie otrzymują **wysoką** dyspozycję (większe bonusy z Rivena), podczas gdy popularne bronie z mety otrzymują **niską** dyspozycję (mniejsze bonusy) — a nawet różne warianty tej samej broni mogą mieć nieco inne dyspozycje. To narzędzie balansu od DE, dzięki któremu Riveny nie czynią najlepszych broni permanentnie lepszymi."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Kropki",
+              "W przybliżeniu oznacza",
+              "Typowa broń"
+            ],
+            "rows": [
+              [
+                "5 (najwyższa)",
+                "Najsilniejsze losowania (około ×1.5 na szczycie)",
+                "Rzadko używane / słabsze bronie"
+              ],
+              [
+                "3 (średnia)",
+                "Solidne, średnie bonusy",
+                "Przyzwoite wybory spoza mety"
+              ],
+              [
+                "1 (najniższa)",
+                "Najsłabsze losowania (około ×0.5)",
+                "Bardzo popularne bronie / bronie z mety"
+              ]
+            ],
+            "note": "Dokładne mnożniki są przybliżone, a DE okresowo je dostosowuje w zależności od tego, jak często każda broń jest używana — zawsze sprawdzaj aktualną wiki pod kątem obecnych kropek broni."
+          }
+        },
+        {
+          "type": "info",
+          "text": "Ponieważ dyspozycje się zmieniają, zakupiony Riven może stracić lub zyskać na wartości z dnia na dzień, gdy DE dostosuje broń. Broń, która otrzyma *nerf* dyspozycji, sprawia, że jej Riveny stają się słabsze (i tańsze); *buff* czyni je silniejszymi (i droższymi). To najważniejszy powód, dla którego ceny Rivenów tak bardzo się wahają."
+        }
+      ]
+    },
+    {
+      "id": "reading-a-riven",
+      "title": "Odczytywanie Rivena: wzmocnienia, klątwy i „god rolle”",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Każdy ujawniony Riven ma losowy układ pozytywnych statystyk i, opcjonalnie, jedną negatywną. **Klątwa** nie jest automatycznie czymś złym — Riven *z* klątwą otrzymuje wzmocnienie swoich pozytywnych wartości. Sztuczka polega na wylosowaniu klątwy, która Cię nie obchodzi (jak `-zoom`, `-recoil` lub `-impact` w buildzie, który to ignoruje), dzięki czemu zachowujesz wzmocnione bonusy za darmo."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Układ",
+              "Co to oznacza",
+              "Uwaga dotycząca wartości"
+            ],
+            "rows": [
+              [
+                "2 wzmocnienia",
+                "Dwa pozytywne, bez klątwy",
+                "Bezpieczne, ale skromne — tanie i dobre do niedzielnej gry"
+              ],
+              [
+                "3 wzmocnienia",
+                "Trzy pozytywne, bez klątwy",
+                "Silny, wszechstronny mod bez wad"
+              ],
+              [
+                "2 wzmocnienia + 1 klątwa",
+                "Dwa pozytywne plus klątwa; wzmocnienia są podbite",
+                "Świetne, gdy klątwa jest nieszkodliwa"
+              ],
+              [
+                "3 wzmocnienia + 1 klątwa",
+                "Trzy pozytywne plus klątwa; najwyższe wartości statystyk",
+                "Klasyczny układ „god rolla”"
+              ]
+            ]
+          }
+        },
+        {
+          "type": "p",
+          "text": "To, co liczy się jako *dobre* wzmocnienie, zależy od broni. Na broni pod krytyki zależy Ci na takich statystykach jak **szansa na trafienie krytyczne, obrażenia krytyczne, wielostrzał i obrażenia podstawowe**, najlepiej z odpowiednim żywiołem lub statystyką frakcyjną. Na broni pod status bardziej zależałoby Ci na szansie statusu i wielostrzale. Nie ma uniwersalnie najlepszego losowania — idealny Riven to taki, który zapełnia luki, których zwykłe mody nie potrafią zapełnić, nakładając się na Twój standardowy build jak każdy inny mod."
+        },
+        {
+          "type": "tip",
+          "text": "Wymyślona nazwa Rivena (ten bełkot typu `critacan`/`visitox`) jest czysto kosmetyczna — jest generowana na podstawie statystyk i nie wpływa na moc. Oceniaj Rivena po jego rzeczywistych statystykach, dyspozycji i wymaganiach MR, nigdy po nazwie."
+        }
+      ]
+    },
+    {
+      "id": "veiled-and-unveiling",
+      "title": "Zakryte Riveny i jak je odblokować",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Riveny zazwyczaj zdobywa się jako **zakryte** — nie widzisz jeszcze broni ani statystyk, a jedynie kategorię (Karabin, Strzelba, Pistolet, Broń biała itp.). Aby go ujawnić, musisz ukończyć **losowe wyzwanie**, używając broni pasującego typu, np. zabijając wrogów strzałami w głowę w powietrzu, kończąc misję bez wykrycia lub zabijając serię wrogów podczas wślizgu. Ukończ wyzwanie, a Riven wylosuje swoją broń i statystyki."
+        },
+        {
+          "type": "p",
+          "text": "Głównymi źródłami zakrytych Rivenów są **Sorties** — codzienne wyzwanie składające się z trzech misji, które nagradza Rivenem przez około jedną czwartą czasu — oraz **Steel Path Circuit** w Duviri, którego tygodniowa ścieżka nagród może przyznać zakryty Riven. Możesz także farmić **Riven Slivers** (wrogowie Eximus upuszczają je, szczególnie na Steel Path) i zanieść **dziesięć do Palladino** w Iron Wake na Ziemi, która przetwarza je w zakryty Riven w ramach tygodniowego limitu. Ukończenie zadania **The War Within** również przyznaje Twój pierwszy Riven. Pamiętaj, że misje Kuva Siphon i Kuva Flood dają *Kuva*, które wydasz na ponowne losowanie — same nie upuszczają Rivenów."
+        },
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "h": "Zdobądź zakryty Riven",
+              "p": "Ukończ Sortie, odbierz go z tygodniowej ścieżki nagród Steel Path Circuit w Duviri lub wyfarm dziesięć Riven Slivers i wymień je u Palladino w Iron Wake."
+            },
+            {
+              "h": "Sprawdź wyzwanie",
+              "p": "Otwórz Riven w menu Modów, aby zobaczyć wyzwanie do jego ujawnienia oraz wymaganą kategorię broni."
+            },
+            {
+              "h": "Wyposaż odpowiedni typ broni",
+              "p": "Weź broń z tej kategorii (karabin, pistolet, broń biała itp.) — wyzwanie zalicza się tylko wtedy, gdy masz wyposażony pasujący typ."
+            },
+            {
+              "h": "Ukończ wyzwanie",
+              "p": "Wykonaj zadanie na dowolnej odpowiedniej misji. Po jego ukończeniu Riven natychmiast ujawni swoją broń i losowe statystyki."
+            }
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "Niektóre wyzwania są uciążliwe („bez tarcz”, „bez alarmów”, określone typy misji). Najpierw sprawdź dokładne brzmienie na [wiki](https://wiki.warframe.com/) — dwuminutowa lektura oszczędzi Ci kilkunastu nieudanych prób, a wiele z nich można szybko zaliczyć na misji solo o niskim poziomie."
+        }
+      ]
+    },
+    {
+      "id": "rolling-with-kuva",
+      "title": "Losowanie za pomocą Kuva",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Nie podoba Ci się wylosowany zestaw? Możesz wykonać **re-roll** (ponowne losowanie) Rivena, aby całkowicie go zresetować — zmienią się statystyki, ich liczba oraz wartości. Każdy re-roll kosztuje **Kuva**, a cena rośnie z każdym losowaniem tego Rivena: zaczyna się od około 900 i rośnie do **limitu około 3,500 Kuva za re-roll**, na którym się zatrzymuje. Kuva pochodzi z misji Kuva Siphon i Kuva Flood oraz z nieskończonego trybu Kuva Survival na Kuva Fortress."
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "Koszt",
+              "v": "Kuva, za re-roll"
+            },
+            {
+              "k": "Wzrost kosztu",
+              "v": "~900 Kuva, rosnący do limitu ~3,500"
+            },
+            {
+              "k": "Efekt",
+              "v": "Ponownie losuje liczbę statystyk, same statystyki oraz ich wartości"
+            },
+            {
+              "k": "Szansa",
+              "v": "Czyste RNG — brak systemu gwarantowanego sukcesu (pity system), brak możliwości celowania w konkretną statystykę"
+            }
+          ]
+        },
+        {
+          "type": "warn",
+          "text": "Re-rollowanie to studnia bez dna na Kuva. Ponieważ to czyste RNG, pogoń za idealnym losowaniem może pochłonąć *miliony* Kuva — jeden znany gracz został nagrany, jak re-rolluje pojedynczy Riven tysiące razy. Zanim zaczniesz grindować, zdecyduj, co jest dla Ciebie „wystarczająco dobre” i na tym poprzestań. Często taniej jest kupić solidne losowanie od innego gracza, niż samemu uprawiać hazard w poszukiwaniu god rolla."
+        }
+      ]
+    },
+    {
+      "id": "ranking-and-endo",
+      "title": "Ulepszanie Rivenów — i dlaczego te słabe to po prostu Endo",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Podobnie jak inne mody, Riveny ulepsza się za pomocą **Endo i kredytów**, od **rangi 0 do rangi 8**. Każda ranga zwiększa wartości statystyk *oraz* zużycie pojemności, które może osiągnąć około 18 — co czyni maksymalnie ulepszony Riven jednym z najbardziej pojemnościożernych modów w grze. Broń z Rivenem na randze 8 prawie zawsze wymaga dodatkowej Formy lub dwóch, aby wszystko pomieścić. Jeśli potrzebujesz Endo, [poradnik farmienia Endo](/guides/endo) opisuje najszybsze źródła."
+        },
+        {
+          "type": "tip",
+          "text": "Masz Riven, którego nigdy nie użyjesz? **Rozpuść go na Endo.** Ilość skaluje się z liczbą wykonanych re-rolli (plus jego ranga i MR), więc wielokrotnie losowane śmieciowe Riveny mogą dać pokaźną sumkę Endo. Ponieważ rynek jest zalany przeciętnymi losowaniami, większość słabych Rivenów jest dla Ciebie warta więcej jako Endo niż przy sprzedaży za 1–2 platyny — sprawdź liczby w [narzędziu wartości Endo / Platyny](/endo), zanim zdecydujesz się go rozpuścić, zatrzymać lub wystawić na sprzedaż."
+        }
+      ]
+    },
+    {
+      "id": "trading-and-pricing",
+      "title": "Handel i wycena Rivenów",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Rivenami handluje się bezpośrednio między graczami, a ponieważ każdy z nich jest unikalny, wycena to bardziej sztuka niż nauka. Świetne losowanie na uwielbianej broni może być warte setki platyny; te same statystyki na broni z mety o niskiej dyspozycji mogą być niemal bezwartościowe. Możesz także handlować **zakrytymi** Rivenami — tańszymi, ślepymi zakładami, w których kupujący sam dokonuje ujawnienia. Pamiętaj, że Riveny wiążą się z **wyższym podatkiem handlowym w kredytach** niż zwykłe mody, a liczba posiadanych przez Ciebie **miejsc na Riveny jest ograniczona**, ale możesz ją powiększyć za pomocą platyny."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Czynnik",
+              "Popycha cenę W GÓRĘ, gdy…"
+            ],
+            "rows": [
+              [
+                "Broń",
+                "To popularna broń / broń z mety, pod którą wielu graczy tworzy buildy"
+              ],
+              [
+                "Dyspozycja",
+                "Broń ma dużo kropek (4–5), więc statystyki dają większego kopa"
+              ],
+              [
+                "Kombinacja statystyk",
+                "Wzmocnienia pasują do idealnego buildu, a ewentualna klątwa jest nieszkodliwa"
+              ],
+              [
+                "MR i re-rolle",
+                "Niskie wymaganie MR, plus czyste losowanie, którego kupujący nie będzie musiał re-rollować"
+              ]
+            ]
+          }
+        },
+        {
+          "type": "p",
+          "text": "Nie zgaduj po omacku. Oszacuj uczciwą kwotę przed zakupem lub wystawieniem, a następnie sprawdź sytuację na szerszym rynku dla tej samej broni:"
+        },
+        {
+          "type": "links",
+          "links": [
+            {
+              "label": "Kalkulator wartości Rivenów",
+              "to": "/riven-value",
+              "icon": "calculator-variant",
+              "note": "Oszacuj, ile warte jest konkretne losowanie"
+            },
+            {
+              "label": "Wartość Endo / Platyny",
+              "to": "/endo",
+              "icon": "diamond-stone",
+              "note": "Kalkulacja: rozpuszczenie na Endo vs sprzedaż"
+            },
+            {
+              "label": "Wyszukiwarka okazji",
+              "to": "/flip",
+              "icon": "swap-horizontal",
+              "note": "Spready ofert kupna i sprzedaży"
+            },
+            {
+              "label": "Narzędzia społeczności",
+              "to": "/tools",
+              "icon": "tools",
+              "note": "Rynki Rivenów, wiki i narzędzia DE"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "do-you-need-one",
+      "title": "Czy w ogóle potrzebujesz Rivena?",
+      "blocks": [
+        {
+          "type": "info",
+          "text": "Riveny to **min-maxing w endgame, a nie wymóg.** Odpowiednio zmodyfikowana broń czyści całą mapę gwiezdną — i większość Steel Path — bez żadnego Rivena. Służą do wyciskania dodatkowej mocy z broni, którą już uwielbiasz, lub do głębokich misji endurance, a nie do pogoni dla nowego gracza."
+        },
+        {
+          "type": "p",
+          "text": "Jeśli jesteś nowym graczem, najpierw postaw na swoje **podstawowe mody, typy obrażeń i przeżywalność** — to ma znacznie większe znaczenie niż jakikolwiek Riven. Kiedy już będziesz go chciał, zakup przyzwoitego losowania do broni, której głównie używasz, jest prawie zawsze mądrzejszy niż hazard z Kuva w poszukiwaniu god rolla."
+        }
+      ]
+    }
+  ],
+  "videos": [
+    {
+      "id": "mDWzPgDUH1k",
+      "title": "What you MUST KNOW about RIVENS in Warframe 2026!",
+      "channel": "MHBlacky"
+    },
+    {
+      "id": "t66oSX1BkLc",
+      "title": "How to Get Riven Mods and What They Do | Beginner's Guide",
+      "channel": "Tipsy"
+    },
+    {
+      "id": "CwcTyXalWrs",
+      "title": "Rings Of Riven Hell | Warframe Riven Mod & Platinum Farming",
+      "channel": "turbomonk"
+    },
+    {
+      "id": "U9-2UbALrQw",
+      "title": "ULTIMATE Riven Mod Guide!",
+      "channel": "Jacsonitos"
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Jak zdobyć mody Riven w Warframe?",
+      "a": "Głównymi źródłami są Sorties (codzienne wyzwanie z trzech misji, które nagradza Rivenem przez około jedną czwartą czasu), Steel Path Circuit w Duviri oraz Riven Slivers — wyfarm dziesięć (wrogowie Eximus upuszczają je, szczególnie na Steel Path) i wymień je u Palladino w Iron Wake na zakryty Riven. Najpierw musisz ukończyć zadanie The War Within, a jego ukończenie daje również Twój pierwszy Riven. Misje Kuva Siphon i Kuva Flood dają Kuva używane do re-rollowania Rivenów, a nie same Riveny."
+    },
+    {
+      "q": "Jak ujawnić zakryty Riven?",
+      "a": "Otwórz zakryty Riven w menu Modów, aby zobaczyć jego wyzwanie i wymaganą kategorię broni, a następnie ukończ to wyzwanie z wyposażoną pasującą bronią (karabin dla Rivena do karabinu i tak dalej). Gdy je ukończysz, Riven ujawni swoją broń i losowe statystyki. Najpierw sprawdź dokładne brzmienie wyzwania na wiki — niektóre mają podchwytliwe warunki, takie jak brak tarcz lub brak alarmów."
+    },
+    {
+      "q": "Jak zrobić re-roll Rivena i ile to kosztuje?",
+      "a": "Re-roll (ponowne losowanie) Rivena wykonujesz w menu Modów przy użyciu Kuva, co całkowicie losuje na nowo jego statystyki. Koszt rośnie z każdym losowaniem tego moda, zaczynając od około 900 Kuva i kończąc na limicie w okolicach 3,500. To czyste RNG bez systemu gwarantowanego sukcesu, więc wyznacz sobie cel „wystarczająco dobrego” losowania, zanim zaczniesz spalać Kuva. Samą Kuva farm z misji Kuva Siphon i Kuva Flood oraz na Kuva Fortress."
+    },
+    {
+      "q": "Co to jest dyspozycja Riven?",
+      "a": "Dyspozycja to mnożnik przypisany do broni, przedstawiany jako 1 do 5 kropek, który skaluje siłę statystyk Rivena na tej broni. Jest odwrotnie proporcjonalna do popularności: słabe lub rzadko używane bronie otrzymują wysoką dyspozycję (silniejsze Riveny), podczas gdy bronie z mety otrzymują niską dyspozycję. DE okresowo dostosowuje dyspozycje, dlatego ceny Rivenów rosną i spadają — sprawdzaj aktualną wiki pod kątem obecnych kropek broni."
+    },
+    {
+      "q": "Co to jest Riven „god roll”?",
+      "a": "God roll to Riven, którego wylosowane statystyki idealnie pasują do Twojego buildu — zazwyczaj trzy silne wzmocnienia (takie jak szansa na kryta, obrażenia krytyczne i wielostrzał lub obrażenia) plus klątwa, która Cię nie obchodzi, np. -zoom lub -recoil. Nie ma uniwersalnie najlepszego losowania; idealny Riven zapełnia luki, których zwykłe mody nie potrafią. Użyj naszego kalkulatora /riven-value, aby ocenić, ile warte jest konkretne losowanie."
+    },
+    {
+      "q": "Czy Riveny są opłacalne dla nowych graczy?",
+      "a": "Nie bardzo — Riveny to min-maxing w endgame, a dobrze zmodyfikowana broń czyści mapę gwiezdną i większość Steel Path bez nich. Najpierw skup się na podstawowych modach, typach obrażeń i przeżywalności. Kiedy już będziesz chciał mieć Riven, zakup przyzwoitego losowania do broni, której głównie używasz, jest zazwyczaj mądrzejszy niż hazard z Kuva w poszukiwaniu god rolla."
+    },
+    {
+      "q": "Czy mogę rozpuścić Riven na Endo?",
+      "a": "Tak. Niechciane Riveny można rozpuścić na Endo, a jego ilość skaluje się z liczbą wykonanych re-rolli (plus jego ranga i wymagana ranga mistrzowska), więc wielokrotnie losowane śmieciowe Riveny dają przyzwoitą sumkę Endo. Ponieważ rynek jest zalany przeciętnymi losowaniami, słaby Riven jest często warty więcej jako Endo niż przy sprzedaży za 1–2 platyny — sprawdź go w narzędziu /endo przed podjęciem decyzji."
+    },
+    {
+      "q": "Dlaczego ceny Rivenów tak bardzo się wahają?",
+      "a": "Ponieważ każdy Riven jest unikalny, jego wartość zależy od popularności broni, jej dyspozycji, dokładnej kombinacji statystyk oraz wymagań MR. Kiedy DE dostosowuje dyspozycję broni, każdy Riven do tej broni natychmiast staje się silniejszy lub słabszy, co pociąga za sobą zmiany cen. Zawsze oszacuj uczciwą kwotę za pomocą /riven-value i sprawdź obecny rynek przed zakupem lub wystawieniem."
+    }
+  ],
+  "sources": [
+    {
+      "label": "Warframe Wiki — Riven Mods",
+      "href": "https://wiki.warframe.com/w/Riven_Mods"
+    },
+    {
+      "label": "Warframe Wiki — Riven Sliver",
+      "href": "https://wiki.warframe.com/w/Riven_Sliver"
+    },
+    {
+      "label": "r/Warframe — I love riven challenges",
+      "href": "https://reddit.com/r/Warframe/comments/1toi7ph/i_love_riven_challanges/"
+    },
+    {
+      "label": "r/Warframe — Every time Sortie gives me a Riven mod",
+      "href": "https://reddit.com/r/Warframe/comments/h0jktp/every_time_sortie_gives_me_a_riven_mod/"
+    },
+    {
+      "label": "r/Warframe — the RNG requiem/Kuva/riven casino rant",
+      "href": "https://reddit.com/r/Warframe/comments/dr46xo/so_let_me_get_this_straight_we_need_to_farm_rng/"
+    }
+  ],
+  "related": [
+    {
+      "label": "Farmienie Endo",
+      "to": "/guides/endo",
+      "icon": "diamond-stone",
+      "note": "Ulepszaj Riveny — lub wymieniaj te słabe na Endo"
+    },
+    {
+      "label": "Kalkulator wartości Rivenów",
+      "to": "/riven-value",
+      "icon": "calculator-variant",
+      "note": "Wyceń losowanie przed handlem"
+    },
+    {
+      "label": "Wartość Endo / Platyny",
+      "to": "/endo",
+      "icon": "scale-balance",
+      "note": "Kalkulacja: rozpuszczenie na Endo vs sprzedaż"
+    },
+    {
+      "label": "Wyszukiwarka okazji",
+      "to": "/flip",
+      "icon": "swap-horizontal",
+      "note": "Spready ofert kupna i sprzedaży"
+    },
+    {
+      "label": "Narzędzia społeczności",
+      "to": "/tools",
+      "icon": "tools",
+      "note": "Rynki Rivenów, wiki i narzędzia DE"
+    }
+  ],
+  "updated": "2026-07-18"
+}

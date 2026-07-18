@@ -1,0 +1,479 @@
+{
+  "slug": "standing",
+  "eyebrow": "Centro di Conoscenza · Reputazione e Sindacati",
+  "title": "Guida alla Reputazione e ai Sindacati",
+  "lede": "La Reputazione è la valuta di reputazione di Warframe — l'accesso a mod augment, parti Amp, arcane e Nitain. Scopri il limite giornaliero, i sei sindacati principali, ogni fazione open-world e come raggiungere il tuo limite in pochi minuti invece che in intere missioni.",
+  "category": "farming",
+  "readMins": 9,
+  "stats": [
+    {
+      "num": "6",
+      "label": "sindacati principali",
+      "tone": "gold"
+    },
+    {
+      "num": "16,000",
+      "label": "limite di reputazione giornaliero di base",
+      "tone": "good"
+    },
+    {
+      "num": "5",
+      "label": "gradi per massimizzare ciascuno",
+      "tone": "alt"
+    },
+    {
+      "num": "00:00 UTC",
+      "label": "ripristino giornaliero della reputazione",
+      "tone": "good"
+    }
+  ],
+  "sections": [
+    {
+      "id": "how-it-works",
+      "title": "Come funzionano la reputazione e il limite giornaliero",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "La **Reputazione** (chiamata anche **standing** o **rep**) è la valuta di lealtà che guadagni con ogni fazione in Warframe. Spendila per sbloccare **mod augment per Warframe/armi**, armi e skin dei sindacati, parti **Amp** dell'Operatore, **arcane**, oggetti cosmetici e altro ancora. A differenza di crediti o platinum, non puoi scambiare la reputazione — la guadagni giocando, e ogni fazione la traccia separatamente."
+        },
+        {
+          "type": "p",
+          "text": "L'ostacolo è il **limite giornaliero di reputazione**. Ogni giorno puoi accumulare solo una certa quantità per fazione, e il limite massimo scala con il tuo **Mastery Rank**: `16,000 + (500 × MR)`. Quindi, anche un giocatore MR0 alle prime armi può accumulare 16.000 punti per sindacato al giorno, un MR10 ha un limite di 21.000 e un MR30 di 31.000. Aumentare il tuo [Mastery Rank](/guides/mastery-rank) è la leva più importante per velocizzare i progressi con tutte le fazioni contemporaneamente."
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "Formula del limite giornaliero",
+              "v": "16,000 + (500 × Mastery Rank)"
+            },
+            {
+              "k": "Esempi di limite",
+              "v": "16,000 at MR0 · 21,000 at MR10 · 31,000 at MR30"
+            },
+            {
+              "k": "Ripristino",
+              "v": "Giornaliero alle 00:00 UTC (mezzanotte GMT)"
+            },
+            {
+              "k": "Tracciato",
+              "v": "Separatamente per ogni sindacato"
+            },
+            {
+              "k": "Per iniziare a guadagnare",
+              "v": "Fai una Promessa alla fazione, poi equipaggia il suo Sigillo"
+            }
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "Il limite è del tipo **o lo usi o lo perdi** — la reputazione giornaliera non guadagnata non si accumula per il giorno successivo. Poiché ogni fazione ha il proprio limite, dedicare pochi minuti al giorno a diverse fazioni è meglio di una singola sessione maratona. Prendi l'abitudine di giocare intorno al ripristino delle 00:00 UTC."
+        }
+      ]
+    },
+    {
+      "id": "six-syndicates",
+      "title": "I sei sindacati principali",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Accessibili dalla **console dei Sindacati** nel tuo Orbiter (or in qualsiasi Relay), i sei sindacati principali rappresentano il classico grind di reputazione. Fai una **Promessa** a uno di essi (gratuito), quindi equipaggia il suo **Sigillo** — un emblema cosmetico indossato sul tuo Warframe. Da quel momento in poi, una parte dell'affinità che guadagni nelle missioni si convertirà automaticamente in reputazione per quel sindacato."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Sindacato",
+              "Lore / tema"
+            ],
+            "rows": [
+              [
+                "Steel Meridian",
+                "Disertori Grineer che proteggono i civili comuni"
+              ],
+              [
+                "Arbiters of Hexis",
+                "La disciplina e la ricerca della maestria personale dei Tenno"
+              ],
+              [
+                "Cephalon Suda",
+                "Preservare la conoscenza, i dati e la memoria"
+              ],
+              [
+                "The Perrin Sequence",
+                "Riformisti Corpus alla ricerca dell'equilibrio economico"
+              ],
+              [
+                "Red Veil",
+                "Zeloti che purificano la corruzione attraverso il sangue"
+              ],
+              [
+                "New Loka",
+                "Ripristinare una Terra e un'umanità 'pure'"
+              ]
+            ],
+            "note": "Ogni sindacato vende il proprio set di mod augment per Warframe/armi, armi e skin dei sindacati, pacchetti di reliquie, sculture e scene Captura. Scegli la tua prima fazione in base agli augment specifici che desideri — controlla la console di gioco o la wiki per l'elenco esatto e aggiornato delle ricompense."
+          }
+        },
+        {
+          "type": "warn",
+          "text": "I sei sindacati si trovano in una **rete di alleanze e opposizioni**: guadagnare reputazione con uno di essi **riduce** lentamente la reputazione con i suoi rivali. Ecco perché un giocatore che ritorna a giocare a volte vede una fazione calare silenziosamente anche se non l'ha mai toccata. È normale — la console mostra l'esatto effetto +/− del tuo Sigillo equipaggiato. La maggior parte dei giocatori si concentra su una o due fazioni principali, per poi cambiare Sigillo per completare le altre."
+        }
+      ]
+    },
+    {
+      "id": "earning-main",
+      "title": "Sigilli, medaglioni e sacrifici",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Ci sono tre modi per nutrire un sindacato principale, e combinarli è il modo in cui i veterani scalano rapidamente i gradi:"
+        },
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "h": "Indossa il Sigillo corretto",
+              "p": "La reputazione scala con l'affinità, quindi qualsiasi missione ad alto numero di uccisioni la alimenta — inclusa l'affinità condivisa dalle uccisioni dei compagni di squadra vicino a te. Equipaggia il Sigillo per la fazione che desideri *prima* di metterti in coda, altrimenti quell'XP andrà sprecata."
+            },
+            {
+              "h": "Caccia i Medaglioni dei Sindacati",
+              "p": "Ogni fazione pubblica missioni giornaliere sulla console. I loro tileset nascondono medaglioni collezionabili; raccoglili e poi donali al sindacato per ottenere una grande quantità di reputazione. Aspetto fondamentale: le donazioni di medaglioni possono farti superare il normale limite giornaliero — il modo più veloce per salire di grado."
+            },
+            {
+              "h": "Paga il sacrificio per salire di grado",
+              "p": "Ogni nuovo grado richiede sia una quantità sufficiente di reputazione totale sia un 'sacrificio' una tantum di oggetti richiesti dalla fazione. I primi gradi richiedono risorse comuni; i gradi più alti richiedono mod rare, risorse o un oggetto specifico del sindacato. La console elenca esattamente ciò che è richiesto."
+            }
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "**Accumula i tuoi medaglioni.** Poiché le donazioni possono superare il limite giornaliero, conserva una scorta e consegnali subito dopo aver pagato il sacrificio di grado — passerai al livello successivo in un colpo solo. Una mod radar dei bottini o di rilevamento dei tesori rende i medaglioni nascosti facilissimi da trovare."
+        },
+        {
+          "type": "info",
+          "text": "Le **mod augment** dei sindacati **sono scambiabili**, il che rende le fazioni al massimo livello una fonte costante di platinum. Impara il ciclo degli scambi nella [guida al Platinum](/guides/platinum), valuta i tuoi augment sul [market screener](/screener) e sfrutta i margini di acquisto/vendita con il [flip finder](/flip)."
+        }
+      ]
+    },
+    {
+      "id": "open-worlds",
+      "title": "Fazioni open-world e hub",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Le fazioni open-world funzionano in modo diverso: invece di Sigilli e affinità, **consegni risorse** — pesci, gemme tagliate, tag di conservazione, token e ricompense delle taglie — ai loro mercanti. Rispettano comunque lo stesso limite giornaliero di `16,000 + 500 × MR`, tracciato in modo indipendente, quindi puoi massimizzarne diverse in un solo giorno."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Hub · open world",
+              "Fazione",
+              "Cosa consegni",
+              "Cosa acquisti con la reputazione (generale)"
+            ],
+            "rows": [
+              [
+                "Cetus · Plains of Eidolon",
+                "Ostron",
+                "Taglie, pesci, gemme tagliate",
+                "Parti Zaw (Hok), attrezzatura da pesca e mineraria, maschere e scene"
+              ],
+              [
+                "Fortuna · Orb Vallis",
+                "Solaris United",
+                "Taglie, pesci, gemme, debt-bond",
+                "Parti Kitgun (Rude Zuud), compagni MOA (Legs), attrezzatura"
+              ],
+              [
+                "Necralisk · Cambion Drift",
+                "Entrati",
+                "Taglie, pesci, tag di conservazione, gemme, token",
+                "Mod, arcane, attrezzatura Necramech, oggetti cosmetici"
+              ],
+              [
+                "Sanctum Anatomica",
+                "Cavia",
+                "Netracell e taglie del Sanctum",
+                "Arcane e mod di Whispers-in-the-Walls"
+              ],
+              [
+                "Höllvania (1999)",
+                "The Hex",
+                "Attività e taglie di 1999",
+                "Nuove arcane, armi, mod, oggetti cosmetici"
+              ]
+            ],
+            "note": "Gli elenchi delle ricompense cambiano con ogni aggiornamento — conferma le offerte attuelles sulla wiki. Per le materie prime stesse, consulta la guida alle Risorse."
+          }
+        },
+        {
+          "type": "tip",
+          "text": "Quando sei vicino al limite, usa il **sistema di token / wisp** in questi hub (specialmente su Deimos e nei mondi più recenti). Converti le risorse in eccesso in token che *conservi*, per poi riscattarli in un secondo momento — così un'ottima sessione di pesca o estrazione mineraria non andrà mai sprecata. Questa miglioria della qualità della vita è esattamente il motivo per cui la community ha esclamato 'grazie per i token di reputazione'."
+        },
+        {
+          "type": "p",
+          "text": "Le risorse dell'open-world alimentano anche l'economia di crafting della [guida alle Risorse](/guides/resources), e le cacce a Eidolon/Orb si collegano direttamente alle fazioni dell'Operatore descritte di seguito."
+        }
+      ]
+    },
+    {
+      "id": "other-factions",
+      "title": "Altri mercanti di reputazione da conoscere",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Oltre ai grandi sindacati, diverse fazioni specializzate hanno i propri percorsi di reputazione — è da qui che provengono gli **Amp** dell'Operatore, le **arcane** e l'attrezzatura Necramech."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Fazione",
+              "Dove",
+              "Come guadagnare",
+              "Cosa acquistare"
+            ],
+            "rows": [
+              [
+                "Cephalon Simaris",
+                "Relay (Sanctuary)",
+                "Scansione di sintesi dei bersagli",
+                "Mod esclusive, schemi di armi e utility, widget per lo scanner del Sanctuary"
+              ],
+              [
+                "The Quills",
+                "Cetus (Onkko)",
+                "Scambio di frammenti Eidolon",
+                "Parti Amp, arcane, lenti focus"
+              ],
+              [
+                "Vox Solaris",
+                "Fortuna (Little Duck)",
+                "Materiali delle battaglie Orb e di Vallis",
+                "Parti Amp, arcane dell'Operatore"
+              ],
+              [
+                "The Holdfasts",
+                "Zariman (Chrysalith)",
+                "Missioni Zariman → Voidplumes",
+                "Arcane, mod, oggetti cosmetici"
+              ],
+              [
+                "Necraloid",
+                "Necralisk",
+                "Attività del Necramech e di Deimos",
+                "Mod e parti del Necramech"
+              ],
+              [
+                "Ventkids",
+                "Fortuna",
+                "Trucchi e gare con il K-Drive",
+                "Parti e oggetti cosmetici per K-Drive"
+              ],
+              [
+                "Conclave",
+                "Relay (Teshin)",
+                "Partite PvP",
+                "Mod PvP, oggetti cosmetici, Captura"
+              ]
+            ],
+            "note": "Teshin gestisce anche il negozio del Steel Path, ma lì si spende Steel Essence (una valuta), non reputazione — consulta la guida al Steel Path."
+          }
+        },
+        {
+          "type": "info",
+          "text": "Stai assemblando un Amp per la caccia agli Eidolon? The Quills e Vox Solaris sono i tuoi fornitori, ed entrambi si collegano alla progressione del tuo Operatore. Abbina questo alla [guida al Focus](/guides/focus) e alla [guida agli Eidolon](/guides/eidolon)."
+        }
+      ]
+    },
+    {
+      "id": "fastest-cap",
+      "title": "I modi più veloci per raggiungere il limite di reputazione",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Non è necessario alcun exploit — basta un percorso efficiente. La strategia affidabile e sempre valida:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Equipaggia prima il Sigillo corretto.** La reputazione segue l'affinità, quindi una missione infinita ad alto numero di uccisioni (o un nodo di affinità rapido) può farti raggiungere — o quasi — il limite di un sindacato principale in una singola sessione. Non grindare mai senza Sigillo.",
+            "**Esegui le missioni giornaliere del sindacato per i medaglioni**, poi donali — le donazioni superano il limite giornaliero, quindi questo è il tuo asso nella manica per superare il tetto massimo.",
+            "**Pre-farma gli oggetti da consegnare nell'open-world.** Accumula pesci, gemme e tag durante una sessione rilassata, poi consegnali al ripristino per raggiungere istantaneamente il limite; converti l'eccedenza in token in modo che nulla vada sprecato.",
+            "**Alterna le fazioni ogni giorno.** Poiché ognuna ha un limite indipendente, un ciclo di 15 minuti su due o tre fazioni accumula molta più reputazione totale rispetto a concentrarsi su una sola.",
+            "**Aumenta il Mastery Rank.** Ogni MR aggiunge 500 al limite giornaliero di ogni fazione — l'unico modo permanente per innalzare l'intero tetto massimo."
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "Puoi impostare l'**opacità del Sigillo quasi a zero** nell'Arsenale, in modo da guadagnare reputazione senza rovinare il tuo stile (fashion). Ottimo per tenere sempre equipaggiato un Sigillo per il farming."
+        }
+      ]
+    },
+    {
+      "id": "nightwave",
+      "title": "Nightwave: correlata, ma non è reputazione dei sindacati",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Anche la **Nightwave**, in modo confuso, conferisce 'reputazione', ma si tratta di un sistema stagionale separato — pensalo come un percorso di sfide a rotazione. Completi gli **Atti** (sfide giornaliere, settimanali e settimanali d'élite) per scalare i gradi, e ogni grado distribuisce ricompense oltre a **Nightwave Cred** da spendere nel suo negozio delle offerte."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Gli **Atti giornalieri** sono semplici e si aggiornano ogni giorno; gli **Atti settimanali e settimanali d'élite** valgono molta più reputazione — dai la priorità a questi ultimi.",
+            "Gli **articoli essenziali del negozio dei Cred** sono tra i più convenienti del gioco: **Nitain Extract**, **Orokin Reactors/Catalysts** ('patate'), **Forma**, **Kuva**, mod Aura e gli oggetti cosmetici esclusivi della stagione.",
+            "Continuerai a salire di grado oltre l'ultimo livello nei gradi di **Prestigio** ripetibili, che continuano a ricompensarti con Cred.",
+            "Tra una stagione e l'altra, una **Nightwave: Intermission** mantiene utilizzabili il negozio e i Cred rimanenti, così un ripristino totale non ti lascerà mai a mani vuote."
+          ]
+        },
+        {
+          "type": "warn",
+          "text": "Gli oggetti cosmetici esclusivi della stagione (e occasionalmente un frame) possono sparire per molto tempo al termine di una stagione, motivo per cui i giocatori si affannano nell'ultima settimana. Non farti prendere dal panico per grindare tutto — raramente hai bisogno di ogni singolo Atto per raggiungere il grado massimo — ma spendi i tuoi Cred in Nitain e patate prima della chiusura della stagione."
+        }
+      ]
+    },
+    {
+      "id": "pitfalls",
+      "title": "Domande frequenti ed errori comuni",
+      "blocks": [
+        {
+          "type": "info",
+          "text": "**\"Ho eseguito un'uccisione della misericordia su un Grineer e la mia mappa stellare è diventata rossa\"** — non si tratta di un sindacato. Hai creato un **Kuva Lich**, un nemico nemesi che tassa i nodi sotto il suo controllo (mostrati in rosso). È un sistema completamente separato; vai alla [guida a Kuva & Lich](/guides/kuva) per dargli la caccia."
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Non grindare senza un Sigillo.** L'affinità guadagnata senza Sigillo è reputazione sprecata.",
+            "**Don't fear the opposition drop.** Perdere un po' di reputazione con un rivale fa parte del gioco; alla fine potrai portare al massimo ogni fazione alternando i Sigilli e ripristinando la reputazione dei rivali.",
+            "**Non lasciare che l'eccedenza vada sprecata.** Oltre il limite, converti le risorse dell'open-world in token e conserva i medaglioni da donare in seguito.",
+            "**Non confondere le valute.** La reputazione dei sindacati, i Nightwave Cred e la Steel Essence sono tre cose diverse — spendi ciascuna nel proprio negozio."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Per un quadro più ampio della progressione — dove il farming di reputazione si affianca a crediti, reliquie e Maestria — consulta la [guida alla Progressione](/guides/progression) e l'elenco curato degli [strumenti della community](/tools)."
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Come viene calcolato il limite giornaliero di reputazione in Warframe?",
+      "a": "Il limite è `16,000 + (500 × il tuo Mastery Rank)`, applicato separatamente a ciascuna fazione e ripristinato ogni giorno alle 00:00 UTC. Quindi, anche un giocatore MR0 alle prime armi può accumulare 16.000 punti per sindacato al giorno, un MR10 ha un limite di 21.000 e un MR30 di 31.000. Aumentare il tuo [Mastery Rank](/guides/mastery-rank) è l'unico modo per innalzare permanentemente il tetto massimo per tutte le fazioni contemporaneamente."
+    },
+    {
+      "q": "Qual è il modo più veloce per farmare la reputazione dei sindacati?",
+      "a": "Equipaggia il Sigillo di quella fazione, affronta una missione ad alto numero di uccisioni per ottenere affinità e raggiungere rapidamente il limite, e accumula i Medaglioni dei Sindacati dalle missioni giornaliere. Le donazioni di medaglioni possono farti superare il limite giornaliero, quindi conservare una scorta e consegnarla subito dopo un sacrificio di grado è il modo più rapido per raggiungere un nuovo grado."
+    },
+    {
+      "q": "Posso massimizzare tutti e sei i sindacati principali?",
+      "a": "Sì, col tempo. I sei sindacati si trovano in una rete di alleanze e opposizioni, quindi guadagnare con uno riduce lentamente i suoi rivali — ma ti basterà cambiare Sigilli e ripristinare gli altri nel tempo. Pianifica in base alle opposizioni e potrai raggiungere il grado massimo con ogni fazione."
+    },
+    {
+      "q": "La reputazione della Nightwave è la stessa della reputazione dei sindacati?",
+      "a": "No. La Nightwave è un percorso di sfide stagionali separato: completi gli Atti giornalieri, settimanali e settimanali d'élite per guadagnare gradi Nightwave e Nightwave Cred. Spendi quei Cred in Nitain, Orokin Reactors/Catalysts, Forma, Kuva e oggetti cosmetici — non ha nulla a che fare con la tua reputazione con i sei sindacati."
+    },
+    {
+      "q": "Perché la mia reputazione è calata con un sindacato con cui non ho giocato?",
+      "a": "A causa dell'opposizione dei sindacati. Guadagnare reputazione con una fazione la riduce con i suoi rivali, in base al Sigillo che indossi. È intenzionale — la console dei Sindacati mostra l'esatto effetto +/− applicato da ciascun Sigillo, così puoi pianificare quali fazioni far salire di grado insieme."
+    },
+    {
+      "q": "Dove posso trovare le parti Amp dell'Operatore e le arcane?",
+      "a": "Dalle fazioni di reputazione specializzate: The Quills a Cetus (scambiando frammenti Eidolon) e Vox Solaris a Fortuna (dalle battaglie Orb e dai materiali di Vallis) vendono parti Amp e arcane. Abbina questo alla [guida al Focus](/guides/focus) e alla [guida agli Eidolon](/guides/eidolon) per creare una configurazione da caccia."
+    },
+    {
+      "q": "Ho giustiziato un Grineer e l'intero pianeta è diventato rosso — c'entra qualcosa con i sindacati?",
+      "a": "No. Eseguire un'uccisione della misericordia su un Kuva Larvling genera un Kuva Lich, un nemico nemesi che si impossessa dei nodi e li contrassegna in rosso sulla tua mappa stellare. Non è correlato alla reputazione dei sindacati — consulta la [guida a Kuva & Lich](/guides/kuva) per sconfiggerlo e riconquistare i tuoi nodi."
+    },
+    {
+      "q": "Le ricompense dei sindacati valgono platinum?",
+      "a": "Moltissimo — le mod augment dei sindacati sono scambiabili e rimangono costantemente richieste, rendendo le fazioni al massimo livello una fonte affidabile di plat. Impara il ciclo nella [guida al Platinum](/guides/platinum) e valuta le tue mod con il [market screener](/screener) e il [flip finder](/flip)."
+    }
+  ],
+  "videos": [
+    {
+      "id": "d_q95Xf6Ohs",
+      "title": "You Have Been Farming Syndicate Standing In WARFRAME ALL WRONG!",
+      "channel": "iFlynn"
+    },
+    {
+      "id": "xfUY8DaZVTw",
+      "title": "MAX YOUR STANDINGS NOW! - FASTEST METHODS FOR ALL SYNDICATES [WARFRAME]",
+      "channel": "TRiX_VS"
+    },
+    {
+      "id": "whtYsyH3N9I",
+      "title": "Warframe | How To Farm Syndicate Standing Quick and Easy - Plumes and Medallions",
+      "channel": "1ManArmyYigit"
+    },
+    {
+      "id": "Vt-albA4ZhA",
+      "title": "How to Max Out EVERY Syndicate Standing FAST in Warframe (Complete Guide)",
+      "channel": "Chapu"
+    }
+  ],
+  "sources": [
+    {
+      "label": "r/Warframe — new wiki showcase (wiki.warframe.com)",
+      "href": "https://reddit.com/r/Warframe/comments/1ios9qf/just_wanted_to_share_how_sexy_the_new_wiki_is/"
+    },
+    {
+      "label": "r/Warframe — Nightwave ended too soon (rank/FOMO)",
+      "href": "https://reddit.com/r/Warframe/comments/1kpzgsq/im_sorry_everyone_i_failed_all_of_you/"
+    },
+    {
+      "label": "r/Warframe — final-hour Nightwave Cred grind (Nitain/potatoes)",
+      "href": "https://reddit.com/r/Warframe/comments/1sgqki4/i_forgor/"
+    },
+    {
+      "label": "r/Warframe — Nightwave weekly Act discussion (DE replied)",
+      "href": "https://reddit.com/r/Warframe/comments/q6fq49/pov_you_have_a_nightwave_act_to_bullet_jump_150/"
+    },
+    {
+      "label": "Official Warframe Wiki",
+      "href": "https://wiki.warframe.com/"
+    }
+  ],
+  "related": [
+    {
+      "label": "Guida a Focus e Operatore",
+      "to": "/guides/focus",
+      "icon": "school",
+      "note": "Amp, lenti e reputazione con Quills/Vox Solaris"
+    },
+    {
+      "label": "Guida alla Caccia agli Eidolon",
+      "to": "/guides/eidolon",
+      "icon": "weather-night",
+      "note": "I frammenti alimentano la reputazione con i Quills per gli Amp"
+    },
+    {
+      "label": "Guida a Kuva & Lich",
+      "to": "/guides/kuva",
+      "icon": "skull",
+      "note": "Spiegazione della mappa stellare rossa"
+    },
+    {
+      "label": "Guida al Platinum",
+      "to": "/guides/platinum",
+      "icon": "diamond-stone",
+      "note": "Scambia gli augment dei sindacati per plat"
+    },
+    {
+      "label": "Guida alle Risorse",
+      "to": "/guides/resources",
+      "icon": "pickaxe",
+      "note": "Materiali da consegnare nell'open-world"
+    },
+    {
+      "label": "Strumenti della Community",
+      "to": "/tools",
+      "icon": "tools",
+      "note": "Wiki, Overframe e tracker di mercato"
+    }
+  ],
+  "updated": "2026-07-18"
+}

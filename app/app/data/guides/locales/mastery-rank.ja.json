@@ -1,0 +1,489 @@
+{
+  "slug": "mastery-rank",
+  "eyebrow": "Knowledge Center · Mastery Rank",
+  "title": "Mastery Rank ＆ 高速レベル上げ",
+  "lede": "Mastery Rankはアカウントの走行距離計のようなものです。gearをアンロックし、1日のstanding上限やトレード上限を引き上げ、作成したすべてのものをレベルアップさせるたびに恩恵をもたらします。ここでは、mastery、affinity、そしてテストの仕組みと、最も早くランクアップする方法を詳しく解説します。",
+  "category": "start",
+  "readMins": 9,
+  "stats": [
+    {
+      "num": "30",
+      "label": "最大MR、そしてLegendary Ranks",
+      "tone": "gold"
+    },
+    {
+      "num": "3,000",
+      "label": "最大ランクのweaponあたりのmastery",
+      "tone": "good"
+    },
+    {
+      "num": "6,000",
+      "label": "最大ランクのframeあたりのmastery",
+      "tone": "good"
+    },
+    {
+      "num": "50m",
+      "label": "affinity共有範囲",
+      "tone": "alt"
+    }
+  ],
+  "sections": [
+    {
+      "id": "what-is-mr",
+      "title": "Mastery Rankとは何か",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Mastery Rank (MR)**はアカウント全体の進行度レベルであり、個々のWarframeやweaponのレベルとは異なります。**Mastery**を獲得することで上昇します。Masteryとは、**新しくユニークな**gearをレベルアップさせたり、新しいコンテンツを初めてクリアしたりするたびにアカウントに蓄積される、永続的なaffinityの一種です。gearのXPとは異なり、masteryがリセットされることはありません。一度アイテムからmasteryを獲得すれば、その進行状況は永久に保存されます。"
+        },
+        {
+          "type": "p",
+          "text": "黄金律：**各ユニークアイテムのmasteryは1回しかカウントされません。**Bratonをランク30にすると、そのmasteryが1回だけ付与されます。売却して作り直したり、Formaを追加して再レベル上げしたりしても、追加のmasteryは得られません。この1つのルールが、このページにあるすべての効率的なレベル上げ戦略の基礎となっています。"
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "ランク",
+              "v": "MR 0 → 30、そしてDEが時間の経過とともに追加し続けているLegendary Ranks (LR1, LR2, …)"
+            },
+            {
+              "k": "Masteryとは",
+              "v": "永続的、アカウント共通、ユニークアイテムごとに1回のみ獲得可能"
+            },
+            {
+              "k": "MRテスト",
+              "v": "新しいランクを確定するためにクリアする、1回限りのチャレンジ"
+            },
+            {
+              "k": "すべてのアイテムが必要ですか？",
+              "v": "いいえ — MR30に必要な数よりも、はるかに多くのアイテムが存在します"
+            }
+          ]
+        },
+        {
+          "type": "info",
+          "text": "MR30は数字で表される最高ランクです。それを超えても、DEが順次追加している**Legendary Ranks**に向けてmasteryを獲得し続けることができます。MR30に到達するためにゲーム内のすべてのアイテムを所有する必要は**ありません**。Star Chartをクリアし、十分な量のgearをレベルアップさせるだけで到達できます。"
+        }
+      ]
+    },
+    {
+      "id": "what-mr-unlocks",
+      "title": "MRがアンロックするもの（そしてアンロックしないもの）",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "MRは強さのレベルではありません。同じビルドを使用している場合、始めたばかりのMR2のプレイヤーも、最大ランクのMR30のベテランも、与えるダメージはまったく同じです。MRがもたらすのは**アクセス権とアカウントの利便性**です。特定のgearをランク制限で制限し、farmingやトレードを本格的に行うようになると非常に重要になるいくつかの1日制限を密かに引き上げます。"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "特典",
+              "MRに応じたスケール方法"
+            ],
+            "rows": [
+              [
+                "Weapon ＆ gearのアンロック",
+                "多くのweaponsは、購入または装備するために最低限のMRが必要です（アイテムカードに表示されるランク制限）"
+              ],
+              [
+                "1日のstanding上限",
+                "Mastery Rankが上がるごとに上昇し、syndicateごとに追跡されます。MRが高ければ高いほど、毎日より多くのstandingを貯めることができます（DEは時間の経過とともに上限を引き上げてきたため、正確な数値は変動するものとして扱ってください）"
+              ],
+              [
+                "1日のトレード回数",
+                "自身のMRと同じ（MR10 ＝ 1日10回。トレードを行うには最低でもMR2が必要です）"
+              ],
+              [
+                "初期mod容量",
+                "ランク未設定のgearは、自身のMRと同じ値のmod capacity（最大30、Reactor/Catalystによって2倍になります）を持った状態で開始します"
+              ]
+            ],
+            "note": "standing上限が高くなると、Focus、arcane、syndicateのfarmingが直接スピードアップします。StandingおよびFocusガイドを参照してください。"
+          }
+        },
+        {
+          "type": "p",
+          "text": "そのstanding上限こそが、隠れた最大のメリットです。[syndicateのstanding](/guides/standing)や[Focus](/guides/focus)を稼ぐ場合、MRが上がるごとに1日に貯められる量が増えます。[1日のトレード回数](/guides/platinum)が増えることは、より多くのプラチナ取引を行えることも意味します。活発にトレードを行うようになったら、[Flip finder](/flip)と組み合わせて活用しましょう。"
+        },
+        {
+          "type": "warn",
+          "text": "よくある誤解：「高難易度コンテンツを生き抜くにはMRを上げる必要がある。」そんなことはありません。生存力はMRではなく、**mods、arcanes、そしてshield-gating**から得られます。純粋な強さのためではなく、gearのアンロックや1日の上限引き上げのためにMRを追い求めましょう。"
+        }
+      ]
+    },
+    {
+      "id": "how-mastery-earned",
+      "title": "masteryの獲得方法",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "初めてgearをランク0から30に上げることで、masteryを蓄積できます。アイテムの種類によって**ランクあたり**の価値が異なるため、最大ランクのWarframeは最大ランクのweaponの2倍の価値があります。"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "アイテムの種類",
+              "ランクあたりのMastery",
+              "最大ランク時の合計"
+            ],
+            "rows": [
+              [
+                "Weapons（プライマリ、セカンダリ、近接など）",
+                "100",
+                "ランク30で3,000"
+              ],
+              [
+                "Warframes",
+                "200",
+                "ランク30で6,000"
+              ],
+              [
+                "Companions（センチネル ＆ ペット）",
+                "200",
+                "ランク30で6,000"
+              ],
+              [
+                "Archwing",
+                "200",
+                "ランク30で6,000"
+              ],
+              [
+                "Kuva / Tenet / Coda / Paracesis weapons（ランク40）",
+                "100",
+                "ランク40で4,000"
+              ]
+            ],
+            "note": "Necramechs、Amps、K-Drives、Railjack Intrinsicsもmasteryを付与します。また、すべてのStar Chartのノード、ジャンクション、およびそのSteel Path版も、初回クリア時に1回限りのまとまったmasteryを付与します。"
+          }
+        },
+        {
+          "type": "tip",
+          "text": "**Star Chart自体が膨大な無料のmastery源です。**すべてのノード（通常および[Steel Path](/guides/steel-path)）を1回クリアし、すべてのジャンクションをクリアするだけで、多くのプレイヤーが見落としがちな大量 of masteryを獲得できます。[ドロップ場所マップ](/star-chart-3d)を使用して、まだ完了していない場所を確認しましょう。"
+        },
+        {
+          "type": "p",
+          "text": "masteryはアイテムごとに1回限りであるため、ベテランは安価な「mastery fodder」用のweaponsを作成し、純粋にランク30まで上げてから処分します。ゲーム内には何百ものweaponsと数十のframesが存在するため、すべてを所有するはるか前にMR30を突破することになります。"
+        }
+      ]
+    },
+    {
+      "id": "affinity-101",
+      "title": "Affinityの基本：レベル上げの仕組み",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**AffinityとはXP（経験値）のことです。** gearをランク0から30に上げるためのものであり、**キル**（およびアシスト）と**ミッション目標の達成/完了**の2つの方法で獲得できます。高速レベル上げにおいて最も重要なのは、そのaffinityがWarframeと3つのweaponsの間でどのように分配されるかを理解することです。"
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "自身のweaponによるキル",
+              "v": "キルを達成したweaponに50%、Warframeに50%"
+            },
+            {
+              "k": "自身のアビリティによるキル",
+              "v": "実質的にそのすべてがWarframeに流れます"
+            },
+            {
+              "k": "分隊員のキル（範囲内）",
+              "v": "分配を獲得：Warframeに25%、装備しているweaponsに75%が均等に分配されます。そのため、一度も撃たなくても銃のレベルが上がります"
+            },
+            {
+              "k": "Affinity共有範囲",
+              "v": "通常のミッションでは50メートル — 戦闘の近くにとどまらないと何も得られません（オープンワールド/風景マップでは大幅に広い範囲が適用されます）"
+            },
+            {
+              "k": "Affinity Booster",
+              "v": "獲得するすべてのaffinityを2倍にします（ダブルaffinity週末イベントと重複します）"
+            }
+          ]
+        },
+        {
+          "type": "p",
+          "text": "この表から2つの実用的な結論が導き出せます。**weaponのレベルを上げるには**、そのweaponで撃つか、50m以内にとどまりながら部屋全体を殲滅（nuke）してくれる分隊員からの共有affinityに乗るかのどちらかです。**Warframeを素早くレベルアップさせるには**、**アビリティによるキル**を狙いましょう。分隊員の共有キルからは25%しか得られないのに対し、アビリティキルならそのaffinityの100%が直接frameに注ぎ込まれます。また、レベル上げの周回時には**すでに最大ランクになったweaponsを持ち歩かない**ようにしましょう。最大ランクのgearに流れるaffinityは無駄になってしまうため、それらのスロットには同様にランクを上げたい未ランクのweaponsを装備してください。"
+        },
+        {
+          "type": "warn",
+          "text": "DefenseやSurvivalでは、敵が死亡した場所から50m以上離れると、共有affinityは**ゼロ**になります。"
+        }
+      ]
+    },
+    {
+      "id": "fast-leveling",
+      "title": "最も早いレベル上げ方法（affinity farming）",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "最適なレベル上げミッションは、狭いエリアに高密度の敵がスポーンするため、共有affinityが持ち込んだすべてのgearに降り注ぎます。レベルを上げたいgearを持ち、公開分隊（または強いフレンド）に参加して、キルを稼ぎましょう。"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "方法",
+              "最適",
+              "備考"
+            ],
+            "rows": [
+              [
+                "Sanctuary Onslaught / Elite SO",
+                "高速かつ高密度のXP",
+                "Cephalon Simaris経由。すでにある程度ビルドが完成しているgearにはESOがおすすめ"
+              ],
+              [
+                "高密度のDefense（例：Sedna of Hydron、Saturn of Helene）",
+                "気楽で、放置（AFK）しやすいレベル上げ",
+                "長年にわたりコミュニティで愛されている場所 — 殲滅（nuke）役のframeを持ち込むか、その分隊に参加しましょう"
+              ],
+              [
+                "Void Fissures",
+                "レベル上げと戦利品獲得を同時に",
+                "レリックを解放しながらXPも美味しく獲得 — Relic Farmingツールを参照してください"
+              ],
+              [
+                "Duviri Circuit",
+                "レベル上げ ＋ 報酬",
+                "現代的な選択肢。ベテラン向けにスケールするSteel Path Circuitもあります"
+              ],
+              [
+                "手軽なExterminate / Capture",
+                "MR fodder",
+                "作成したばかりの使い捨てweaponsを急いで30まで上げてリサイクルする"
+              ]
+            ],
+            "note": "単一の「最適なノード」は、バランス調整パッチやイベントによって変化します。現在のメタな選択肢については、最新のWikiや最近の動画を確認してください。"
+          }
+        },
+        {
+          "type": "p",
+          "text": "2つの倍率要素がすべてを高速化します。**Affinity Booster**（Market、Nightwave、またはログイン報酬から入手）を使用し、**ダブルaffinity週末**イベントに合わせて周回しましょう。これらは重複して4倍のaffinityになります。[Void Fissures](/relic-farming)内でのレベル上げは、同じ周回でgearのランク上げとprimeパーツのfarmingを同時に行えるため、効率の王様です。[レリック価値ツール](/relics-value)を使用して、何を解放すべきか判断してください。"
+        },
+        {
+          "type": "tip",
+          "text": "レベル上げ用のgear一式（frame ＋ 3つのweapons）をグループキャリーに持ち込めば、1回のセッションで**4つのアイテム**を0から30まで上げることができます。ただし、敵を追いかけるのではなく、キルが発生している場所の近くでじっとしているようにしてください。"
+        }
+      ]
+    },
+    {
+      "id": "rank-to-30-loop",
+      "title": "ランク30へのループ",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "効率的なmastery稼ぎは、シンプルで繰り返しのループです。目標は、すべてのユニークアイテムに正確に1回触れ、それを30まで上げて、二度と振り返らないことです。"
+        },
+        {
+          "type": "steps",
+          "ordered": true,
+          "steps": [
+            {
+              "h": "設計図を購入する / アイテムを製作する",
+              "p": "Marketからクレジットでweaponの設計図を入手します。ほとんどは安価です。ログアウトする前にFoundryでの製作を開始しておけば（weaponsは通常12時間程度、Warframesはコンポーネントを合わせるとさらに時間がかかります）、次のセッションで準備が整います。"
+            },
+            {
+              "h": "回収してスロットに装備する",
+              "p": "作りたてのアイテムはランク0です。すでに自身のMRと同じ値のmod capacityを持った状態で開始されるため、未ランクのgearであってもレベル上げの周回で使用可能です。"
+            },
+            {
+              "h": "一気にランク30まで上げる",
+              "p": "それをaffinity farm（Onslaught、Defenseノード、またはFissure）に持ち込みます。30になると、フルでmastery（weaponなら3,000、frameなら6,000）が蓄積されます。"
+            },
+            {
+              "h": "保存するか、スロットをリサイクルする",
+              "p": "一度最大ランクに達すれば、そのmasteryは永久にあなたのものです。mastery-fodder用のweaponsを売却してスロットを空け、次のアイテムを製作しましょう。本当に気に入ったものは手元に残してください。"
+            },
+            {
+              "h": "masteryのために再レベル上げをしない",
+              "p": "Formaを追加すると、極性スロットのためにアイテムがランク0にリセットされます。これはビルドには最適ですが、追加のmasteryは一切得られません。MRのためではなく、カスタマイズしているgearのみを再レベル上げしてください。"
+            }
+          ]
+        },
+        {
+          "type": "info",
+          "text": "自分が何を見落としているか正確に確認したいですか？コミュニティのmasteryトラッカーやチェックリスト（[コミュニティツールディレクトリ](/tools)からリンクされています）を使用すれば、すべてのweaponやframeにチェックを入れることができるため、すでにマスターした重複アイテムを誤って製作するのを防げます。"
+        }
+      ]
+    },
+    {
+      "id": "mr-tests",
+      "title": "MRテストと準備方法",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "十分なmasteryを獲得すると次のランクが*利用可能*になりますが、実際に昇格するには**Mastery Rankテストに合格**する必要があります。各ランクには、時間制限付きのパルクール、ステルスキル、プレッシャー下でのコンソールハッキング、ダメージを受けずに敵のウェーブを倒すなど、独自のテストが用意されています。ランクが上がるにつれて難易度も上昇します。"
+        },
+        {
+          "type": "steps",
+          "ordered": true,
+          "steps": [
+            {
+              "h": "Cephalon Simarisで無料の練習をする",
+              "p": "すべてのRelayにCephalon Simarisがおり、クールダウンやペナルティなしで、**本番とまったく同じテストを予行練習**することができます。必ず最初に練習しましょう。"
+            },
+            {
+              "h": "本番のテストに挑む",
+              "p": "十分なmasteryが蓄積されると、ランクアップのプロンプトが表示されます（Orbiterまたはプロフィール内）。練習で自信がついたら挑戦してください。"
+            },
+            {
+              "h": "不合格の場合は、約1日待つ",
+              "p": "不合格によるペナルティは、本番のテストに再挑戦できるようになるまで約**24時間のクールダウン**があることだけです。待機中も練習は無制限に行えます。"
+            }
+          ]
+        },
+        {
+          "type": "warn",
+          "text": "この24時間のロックアウトだけが唯一の痛手です。そのため、**決してぶっつけ本番でテストに挑まないでください。**安定してクリアできるようになるまでSimarisで予行練習を重ね、それから本番に挑みましょう。また、多くのテストは機動力の高いframe（Volt、Titania、Wisp、Zephyr）や、優れた移動ビルドを使用することで非常に簡単になります。"
+        },
+        {
+          "type": "tip",
+          "text": "移動や「ノーダメージ」テストで行き詰まっていませんか？速度、透明化、またはダメージ無効化を持つframeを持ち込めば、イライラするテストも単なる形式的な手続きに変わることがよくあります。特定のランクで苦戦している場合は、最近のテスト専用の解説動画を確認してください。"
+        }
+      ]
+    },
+    {
+      "id": "should-you-chase",
+      "title": "MRを追い求めるべきか？賢い目標地点",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "MRを*血眼になって周回*する必要はありません。[進行ロードマップ](/guides/progression)に沿ってgearを製作し、Star Chartをクリアしていく過程で自然と蓄積されていきます。しかし、クラフトしたものを（すぐに捨てるのではなく）すべてレベル上げすることには、ほぼ常に価値があります。なぜなら、MRはgearのアンロック、standing、トレード、初期容量といった形で静かに恩恵をもたらすからです。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**作成したものはレベルを上げましょう。**すべてのframe、weapon、companionは無料のmastery源です。売却したりFormaを使用したりする前に、一度は30まで上げてください。",
+            "**Star Chart全体を2回クリアしましょう。**通常のノード、ジャンクション、そして[Steel Path](/guides/steel-path)のノードは、多くのプレイヤーが放置しがちな、1回限りの膨大なmastery源です。",
+            "**gearの目標地点に注目しましょう。**最も強力なweaponsの一部にはMR制限があるため、数ランク上げるだけで、本当に欲しかったメタな装備をアンロックできます。",
+            "**standingを稼ぐならMRを優先しましょう。**Focus、arcanes、またはsyndicatesに深く関わっている場合、1日の上限が高くなることで、ランクを上げる恩恵をすぐに回収できます。"
+          ]
+        },
+        {
+          "type": "quote",
+          "text": "MRはゲーム全体を探索したことに対する報酬であり、乗り越えるべき壁ではありません。幅広くプレイし、すべてのレベルを一度上げるだけで、わざわざ「mastery稼ぎ」をしなくても、気づけばMR20に達しているでしょう。",
+          "cite": "よくある r/Warframe ベテランのアドバイス"
+        },
+        {
+          "type": "p",
+          "text": "注意点：単に数字を達成するためだけに、パワー不足のweaponsを高難易度コンテンツに無理やり持ち込んでMRを上げるのはやめましょう。アカウントを自然に成長させ、お気に入りの装備にしっかりmodを装着し、MRはスコアボード、つまりWarframeをどれだけ体験したかの記録として捉えてください。"
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "WarframeでMastery Rankを上げるにはどうすればよいですか？",
+      "a": "新しいgearを初めて0から30までレベルアップさせ（weaponsは3,000、framesやcompanionsは6,000）、Star Chartのノードやジャンクションをクリアすることでmasteryを獲得します。十分な量が蓄積されたら、そのランクのMastery Rankテストに合格して確定させます。各ユニークアイテムは1回しかカウントされません。Formaで再レベル上げしても追加のmasteryは得られません。"
+    },
+    {
+      "q": "Mastery Rankは実際にどのような効果がありますか？",
+      "a": "MRは特定のweaponsやgearをランク制限で制限するほか、いくつかの1日制限を引き上げます。これには、ランクごとに上昇するsyndicateのstanding上限、1日のトレード回数（MRと同じ）、未ランクのgearの初期mod capacityが含まれます。MRによって攻撃力が上がるわけではありません。生存力やダメージはMRではなく、modsやarcanesから得られます。"
+    },
+    {
+      "q": "affinityを稼ぎ、レベルアップする最も早い方法は何ですか？",
+      "a": "レベルを上げたいgearを、敵密度の高いaffinity farm（Sanctuary Onslaught、HydronやHeleneのような高密度のDefenseノード、またはVoid Fissure）に持ち込み、キルが発生している場所から50m以内にとどまって共有affinityを吸収します。Affinity Boosterを使用し、理想的にはダブルaffinity週末イベントを合わせて最大4倍の獲得量を狙いましょう。[Void Fissures](/relic-farming)内でのレベル上げなら、gearのランク上げとprimeパーツのfarmingを同時に行えます。"
+    },
+    {
+      "q": "Formaを追加したり、weaponを再レベル上げしたりすると、追加のmasteryは得られますか？",
+      "a": "いいえ。各アイテムがmasteryを付与するのは、初めてランク30に達した時の1回のみです。Formaは、より良いビルドのために極性スロットを追加できるようアイテムをランク0にリセットしますが、再レベル上げから得られる追加のmasteryはゼロです。MRのためではなく、カスタマイズしている時のみgearを再レベル上げしてください。"
+    },
+    {
+      "q": "分隊内でのaffinity共有はどのように機能しますか？",
+      "a": "分隊員があなたから約50メートル以内で敵を倒すと、そのaffinityの分配を受け取ります。25%がWarframeに、75%が装備しているweaponsに均等に分配されます。そのため、殲滅（nuke）役に同行していれば、一度も撃っていない銃でもレベルが上がります。50mの範囲外に出ると何も得られません。（自身のweaponによるキルは異なり、weaponに50%、Warframeに50%分配されます。）"
+    },
+    {
+      "q": "Mastery Rankテストに不合格になるとどうなりますか？",
+      "a": "本番のテストに再挑戦できるようになるまで約24時間待つ必要があること以外、何も起こりません。XPの損失やその他のペナルティはありません。まずは任意のRelayにいるCephalon Simarisで、本番とまったく同じテストを無料で無制限に練習し、安定して合格できるようになってから本番に挑みましょう。"
+    },
+    {
+      "q": "最大Mastery Rankはありますか？",
+      "a": "MR30は数字で表される最高ランクです。その後も、DEが順次追加しているLegendary Ranks（LR1、LR2など）に向けてmasteryを獲得し続けることができます。MR30に到達するためにすべてのアイテムを所有する必要はありません。ランクに必要な数よりもはるかに多くのweaponsやframesが存在します。"
+    },
+    {
+      "q": "初心者プレイヤーはMastery Rankを急いで上げるべきですか？",
+      "a": "執着する必要はありません。gearを製作し、Star Chartをクリアしていく過程でMRは自然と上がっていきます。しかし、クラフトしたすべてのものを一度30までレベル上げすることには価値があります。MRが高くなると、より強力なweaponsがアンロックされ、1日のstandingやトレードの上限が引き上げられるためです。まずは確かな装備のラインナップとmodsに集中しましょう。ランクは後からついてきます。"
+    }
+  ],
+  "videos": [
+    {
+      "id": "5B01ZDPCM_o",
+      "title": "Warframe How to get Mastery Rank FAST | Warframe Affinity and Mastery Rank Explained",
+      "channel": "CerealOverdrive"
+    },
+    {
+      "id": "J_6wVLRvTpE",
+      "title": "HOW TO FARM MASTERY RANK FAST IN 2025! WARFRAME BEST LEVELING AFFINITY SPOTS",
+      "channel": "Pupsker"
+    },
+    {
+      "id": "eTI-zSoH6FE",
+      "title": "How to Level up fast in Warframe -  Affinity farming Guide for all Players",
+      "channel": "QuadLyStop"
+    },
+    {
+      "id": "ecySSBRcCIo",
+      "title": "Warframe: FAST MASTERY RANK 2025!...",
+      "channel": "MHBlacky"
+    }
+  ],
+  "sources": [
+    {
+      "label": "r/Warframe — My Journey ends at MR25",
+      "href": "https://reddit.com/r/Warframe/comments/1uockj8/my_journey_ends_at_mr25/"
+    },
+    {
+      "label": "r/Warframe — Mastery Rank & Helminth motivation thread",
+      "href": "https://reddit.com/r/Warframe/comments/idu92w/i_like_the_idea_that_way_people_could_become/"
+    },
+    {
+      "label": "r/Warframe — Affinity farming discussion (Gian Point)",
+      "href": "https://reddit.com/r/Warframe/comments/m4fvff/gian_point_should_become_a_graveyard/"
+    },
+    {
+      "label": "Official Warframe Wiki",
+      "href": "https://wiki.warframe.com/"
+    }
+  ],
+  "related": [
+    {
+      "label": "進行ロードマップ",
+      "to": "/guides/progression",
+      "icon": "map-marker-path",
+      "note": "より大きなステップアップにおけるMRの位置づけ"
+    },
+    {
+      "label": "初心者ガイド",
+      "to": "/guides/new-player",
+      "icon": "rocket-launch",
+      "note": "最初の20時間を正しく過ごす方法"
+    },
+    {
+      "label": "Syndicate Standing",
+      "to": "/guides/standing",
+      "icon": "handshake",
+      "note": "高いMR ＝ より大きな1日の上限"
+    },
+    {
+      "label": "Focus ＆ Operator",
+      "to": "/guides/focus",
+      "icon": "eye-outline",
+      "note": "gearのレベル上げがFocusの獲得につながる"
+    },
+    {
+      "label": "Steel Path",
+      "to": "/guides/steel-path",
+      "icon": "skull-outline",
+      "note": "無料のmasteryが手に入る、もう一つのStar Chart"
+    },
+    {
+      "label": "コミュニティツール",
+      "to": "/tools",
+      "icon": "tools",
+      "note": "Masteryトラッカー ＆ チェックリスト"
+    }
+  ],
+  "updated": "2026-07-18"
+}

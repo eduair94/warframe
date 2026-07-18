@@ -6,5 +6,6 @@
 </template>
 
 <script setup lang="ts">
-import guide from '~/data/guides/steel-path'
+import enGuide from '~/data/guides/steel-path'
+const guide = await useLocalizedGuide('steel-path', enGuide)
 </script>

@@ -6,5 +6,6 @@
 </template>
 
 <script setup lang="ts">
-import guide from '~/data/guides/riven'
+import enGuide from '~/data/guides/riven'
+const guide = await useLocalizedGuide('riven', enGuide)
 </script>

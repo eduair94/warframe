@@ -1,0 +1,403 @@
+{
+  "slug": "helminth",
+  "eyebrow": "Centro di Conoscenza · Helminth e Sussunzione",
+  "title": "Guida a Helminth e Sussunzione",
+  "lede": "Nutri l'Helminth con un Warframe di riserva, conserva una delle sue abilità per sempre, poi innesta quell'abilità su un frame che ne ha davvero bisogno. È così che un frame discreto diventa un mostro — ecco tutte le regole, le migliori abilità da cercare e l'errore che costa alle persone un intero Warframe.",
+  "category": "systems",
+  "readMins": 9,
+  "stats": [
+    {
+      "num": "8",
+      "label": "Mastery Rank per acquistare il segmento",
+      "tone": "gold"
+    },
+    {
+      "num": "6",
+      "label": "tipi di secrezioni con cui nutrirlo",
+      "tone": "good"
+    },
+    {
+      "num": "1",
+      "label": "slot sussunti per frame",
+      "tone": "alt"
+    },
+    {
+      "num": "7 days",
+      "label": "un Rinvigorimento dura",
+      "tone": "good"
+    }
+  ],
+  "sections": [
+    {
+      "id": "what-is-helminth",
+      "title": "Cos'è in realtà l'Helminth",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "L'**Helminth** è il sistema di trapianto delle abilità di Warframe, ed è uno dei picchi di potenza più grandi dell'intero gioco. Sacrifichi permanentemente un Warframe di riserva ad esso (\"sussunzione\") per sbloccare **una** delle abilità di quel frame in una libreria personale. Da quel momento in poi puoi **infondere** quell'abilità su qualsiasi altro frame — sovrascrivendo una delle sue quattro abilità — tutte le volte che vuoi, pagando una piccola quantità di risorse ogni volta. Oltre a questo, distribuisce potenziamenti settimanali delle statistiche chiamati **Rinvigorimenti**."
+        },
+        {
+          "type": "p",
+          "text": "In pratica, questo è il modo in cui i giocatori risolvono i punti deboli di un frame (aggiungendo cura, energia, rimozione armatura o un potenziamento dei danni) o spingono un frame forte al massimo. Non è essenziale all'inizio del gioco, ma una volta che hai una scuderia di frame, cambia il modo in cui crei quasi ogni configurazione — abbinalo a una [configurazione di modding](/guides/mods) intelligente e alle [Archon Shards](/guides/archon-shards) e anche un frame di livello medio diventa pronto per l'endgame."
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "Dove si trova",
+              "v": "L'Infermeria Helminth, la stanza del segmento a poppa del tuo Orbiter"
+            },
+            {
+              "k": "Sbloccato da",
+              "v": "Heart of Deimos per l'accesso, poi Mastery Rank 8 + reputazione Entrati per acquistare il Segmento"
+            },
+            {
+              "k": "Due funzionalità",
+              "v": "Sussumere/Infondere abilità + Rinvigorimenti settimanali"
+            },
+            {
+              "k": "Il compromesso",
+              "v": "La sussunzione distrugge permanentemente il Warframe donatore"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "unlock",
+      "title": "Sbloccare l'Helminth",
+      "blocks": [
+        {
+          "type": "steps",
+          "ordered": true,
+          "steps": [
+            {
+              "h": "Completa Heart of Deimos",
+              "p": "Questa quest della storia — disponibile una volta completata l'introduzione (Vor's Prize) e ottenuto il tuo Orbiter — apre il Cambion Drift e il Necralisk su Deimos e ti consente di iniziare a guadagnare reputazione con il sindacato Entrati. Completare la quest NON ti fornisce l'Helminth; sblocca il luogo in cui acquistarlo."
+            },
+            {
+              "h": "Raggiungi il vero ostacolo: MR 8 + Associato Entrati",
+              "p": "Lo schema del Segmento Helminth è venduto da Son nel Necralisk, e non farà affari con te finché non sarai Mastery Rank 8 e almeno al Grado 3 (Associato) con gli Entrati. Sali di Mastery Rank e accumula reputazione Entrati per arrivarci."
+            },
+            {
+              "h": "Acquista, costruisci e installa il Segmento",
+              "p": "Acquista lo schema con la reputazione Entrati, fabbricalo nella tua Foundry (Crediti più risorse di Deimos, circa un giorno per la costruzione), quindi installalo. L'Infermeria Helminth a poppa del tuo Orbiter diventa utilizzabile — entra e interagisci con l'organismo sulla parete per aprire il suo menu."
+            },
+            {
+              "h": "Nutrilo per aumentare il suo rango",
+              "p": "L'Helminth sale di livello man mano che lo nutri con risorse e sussumi frame. Il suo primo rango sblocca la sussunzione; i ranghi più alti aumentano la capacità di stoccaggio delle risorse e sbloccano funzionalità successive. All'inizio, nutrilo semplicemente con qualsiasi materiale di scarto ti chieda."
+            }
+          ]
+        },
+        {
+          "type": "info",
+          "text": "Non hai **bisogno** dell'Helminth per goderti il gioco — è un potenziamento per la fase intermedia del gioco (mid-game). Se stai ancora costruendo i tuoi primi frame, dai la priorità a quello (vedi la [guida ai warframe per principianti](/guides/beginner-warframes) e il [percorso di progressione](/guides/progression)) e torna dall'Helminth una volta che avrai frame da parte."
+        }
+      ]
+    },
+    {
+      "id": "subsuming",
+      "title": "Come funziona la sussunzione",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Sussumere** significa posizionare un Warframe di riserva nell'Helminth affinché lo consumi — e non è necessario livellarlo prima: un frame appena costruito, di Grado 0, funziona altrettanto bene di uno al massimo. In cambio, sblocchi permanentemente **un'abilità specifica** di quel frame nella tua libreria. Scegli tu *quale frame* nutrire, ma **DE decide quale delle sue quattro abilità è quella donabile** — ad esempio, Rhino dona sempre Roar, mai Iron Skin. Un limite importante: puoi sussumere solo Warframe di **base** — le varianti Prime e Umbra non possono essere date in pasto all'Helminth. Cerca sempre l'abilità sussumibile di un frame (sulla [wiki](https://wiki.warframe.com/) o nel codex di gioco) prima di nutrirlo, in modo da non avere sorprese."
+        },
+        {
+          "type": "warn",
+          "title": "La sussunzione è permanente e distrugge il frame",
+          "text": "Il Warframe donatore **scompare per sempre** nel momento in cui lo sussumi. Se è la tua unica copia, dovrai farmarlo o ricostruirlo da zero. Nutri l'Helminth con un duplicato, un frame che non usi mai veramente o una versione base che stai sostituendo con la sua versione Prime — mai la tua unica copia di qualcosa con cui giochi ancora."
+        },
+        {
+          "type": "p",
+          "text": "Devi sussumere un frame solo **una volta**. After l'abilità è nella tua libreria, è tua per sempre e può essere infusa su un numero illimitato di frame — sussumere una seconda copia dello stesso frame non ti darà nulla di nuovo."
+        }
+      ]
+    },
+    {
+      "id": "infusing",
+      "title": "Innestare un'abilità su un frame (infusione)",
+      "blocks": [
+        {
+          "type": "steps",
+          "ordered": true,
+          "steps": [
+            {
+              "h": "Scegli il frame destinatario",
+              "p": "Apri il menu Infondi Abilità dell'Helminth e scegli il frame che desideri modificare. Qualsiasi frame costruito funziona — inclusi i Prime e Umbra — e non ci sono requisiti di grado per il destinatario."
+            },
+            {
+              "h": "Scegli quale abilità sovrascrivere",
+              "p": "Seleziona una delle quattro abilità del frame da sostituire. L'abilità sussunta prende quel posto sulla barra delle abilità. Pensa a quale abilità nativa usi di meno."
+            },
+            {
+              "h": "Paga il costo in risorse",
+              "p": "Ogni infusione consuma un mix di categorie di risorse dell'Helminth (vedi sotto). Conferma e l'abilità verrà innestata."
+            }
+          ]
+        },
+        {
+          "type": "info",
+          "title": "Le regole che traggono più in inganno",
+          "text": "**Un'abilità sussunta per frame** — non puoi accumularne due. Puoi cambiarla in seguito infondendo un'abilità diversa su di essa, ma questo costerà nuovamente risorse. L'abilità sussunta scala con le **mod di quel frame** (Forza, Durata, Portata, Efficienza), quindi un Roar su un frame ad alta Forza colpirà più duramente. Una manciata di abilità ha un limite inferiore quando sussunta rispetto al frame nativo, e molte **non possono usare la loro mod potenziamento** (anche se un elenco in crescita può farlo) — controlla la pagina della wiki per il comportamento esatto di qualsiasi abilità su cui fai affidamento."
+        }
+      ]
+    },
+    {
+      "id": "best-subsumes",
+      "title": "Le sussunzioni più popolari, per ruolo",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Non hai bisogno di tutte queste — scegli quella che corregge i punti deboli della tua build. I capisaldi qui sotto sono rimasti in cima per anni perché risolvono problemi universali: danni, energia, sopravvivenza, rimozione dell'armatura e raggruppamento dei nemici. I numeri esatti cambiano con le patch, quindi considerali come ruoli e conferma i valori attuali sulla [wiki](https://wiki.warframe.com/) o su una guida recente."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Sussunzione",
+              "Dal frame",
+              "Perché è un caposaldo"
+            ],
+            "rows": [
+              [
+                "Roar",
+                "Rhino",
+                "Un moltiplicatore di danno quasi universale che potenzia quasi tutti i tuoi danni. La scelta predefinita per 'far colpire tutto più forte'."
+              ],
+              [
+                "Nourish",
+                "Grendel",
+                "Generazione di energia, danno Virale aggiuntivo e robustezza in un solo pulsante — risolve istantaneamente le build affamate di energia."
+              ],
+              [
+                "Eclipse",
+                "Mirage",
+                "Grande potenziamento dei danni delle armi alla luce (o forte riduzione dei danni nell'ombra). Ottimo per le piattaforme d'armi."
+              ],
+              [
+                "Gloom",
+                "Sevagoth",
+                "Rallenta i nemici vicini fino a quasi fermarli e fornisce rubavita sulle uccisioni — sopravvivenza più un leggero controllo della folla."
+              ],
+              [
+                "Pillage",
+                "Hildryn",
+                "Rimuove armatura e scudi in un raggio e ricarica i tuoi scudi. Abilita lo shield-gating e fa a pezzi i nemici più resistenti."
+              ],
+              [
+                "Dispensary",
+                "Protea",
+                "Rilascia sfere di energia/salute e munizioni a tempo — un'economia di energia passiva per qualsiasi frame."
+              ],
+              [
+                "Combo Nourish / Gloom / Pillage",
+                "—",
+                "Molte build endgame scelgono una di queste tre come slot 'fai-tutto'."
+              ],
+              [
+                "Xata's Whisper",
+                "Xaku",
+                "Aggiunge danno da Void alle tue armi — un elemento aggiuntivo universale che brilla contro i Sentient e per la caccia agli Eidolon."
+              ],
+              [
+                "Larva / Ensnare",
+                "Nidus / Khora",
+                "Raggruppa i nemici in un ammasso stretto in modo che le armi e le abilità AoE li eliminino all'istante."
+              ],
+              [
+                "Terrify",
+                "Nekros",
+                "Spaventa i nemici e rimuove la loro armatura — controllo più amplificazione del danno."
+              ]
+            ],
+            "note": "Ruoli, non numeri fissi — DE modifica regolarmente i valori. Conferma le statistiche di sussunzione attuali prima di impegnare risorse."
+          }
+        },
+        {
+          "type": "p",
+          "text": "Quali frame valga la pena costruire specificamente da sussumere dipende da ciò che già possiedi — fai un confronto con la [tier list](/guides/tier-list) per vedere quali frame forti fungono anche da ottimi donatori di abilità, e la [guida alla Steel Path](/guides/steel-path) per scoprire dove questi potenziamenti contano di più."
+        }
+      ]
+    },
+    {
+      "id": "resources",
+      "title": "Nutrire l'Helminth",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Sia la sussunzione che l'infusione costano **secrezioni** — risorse con cui nutri l'Helminth, suddivise in sei categorie: **Ossidi, Calce, Biotici, Sintetici, Feromoni e Bile**. Azioni diverse attingono da categorie diverse, quindi è bene tenere una piccola scorta di ciascuna. Nutrirlo con materiali comuni di cui sei già pieno è il modo più economico per fare rifornimento."
+        },
+        {
+          "type": "tip",
+          "title": "Due particolarità che vale la pena conoscere",
+          "text": "In primo luogo, l'Helminth ha un **appetito** — se lo nutri ripetutamente con la stessa categoria di risorse, il suo costo sale, per poi azzerarsi nel tempo, scoraggiando così l'uso continuo di un solo materiale. In secondo luogo, la **Bile** è il classico collo di bottiglia: è alimentata da una gamma più ristretta di oggetti, quindi tienila d'occhio. Se sei a corto di materiali per nutrirlo, la [guida al farming di risorse](/guides/resources) spiega dove fare scorta in modo efficiente."
+        }
+      ]
+    },
+    {
+      "id": "invigorations",
+      "title": "Rinvigorimenti: super-potenziamenti settimanali",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Una volta sbloccato il **Segmento Rinvigorimento** separato — un secondo segmento acquistato dagli Entrati e installato insieme al primo — l'Helminth inizia a offrire i **Rinvigorimenti**, la seconda metà del sistema e un enorme potenziamento temporaneo di potenza. Ogni settimana presenta **coppie di potenziamenti casuali**: un potenziamento offensivo (ad esempio un grande aumento della Forza Abilità) abbinato a una seconda statistica come Durata, Efficienza o Armatura, che applichi a un Warframe."
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "Quanto dura",
+              "v": "7 giorni, e solo sul singolo frame a cui lo hai applicato"
+            },
+            {
+              "k": "Cosa applichi",
+              "v": "Un potenziamento offensivo (come Forza Abilità) abbinato a una statistica di utilità casuale"
+            },
+            {
+              "k": "Costo e reroll",
+              "v": "Ogni rinvigorimento costa risorse Helminth; puoi effettuare il reroll dei potenziamenti offerti spendendo altre risorse"
+            },
+            {
+              "k": "Rotazione",
+              "v": "L'offerta ruota settimanalmente, quindi non sarai vincolato per sempre alle opzioni di questa settimana"
+            }
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Usalo su un frame con cui stai giocando quella settimana, o per correggere un punto debole specifico — un potenziamento di Efficienza o Durata su un frame affamato di abilità, o un potenziamento di sopravvivenza su uno fragile. Poiché l'effetto è temporaneo, non costruire l'intero equipaggiamento attorno ad esso; consideralo come un bonus piuttosto che come una statistica permanente."
+        }
+      ]
+    },
+    {
+      "id": "mistakes",
+      "title": "Errori da evitare",
+      "blocks": [
+        {
+          "type": "list",
+          "items": [
+            "**Don't sussumere la tua unica copia di un frame** — viene distrutta permanentemente. Costruisci o acquista prima un pezzo di ricambio se ci giochi ancora.",
+            "**Controlla l'abilità donabile prima di nutrire l'Helminth.** DE sceglie quale delle quattro abilità ottieni; farmare un frame per l'abilità sbagliata è una fatica sprecata.",
+            "**Conserva i frame base dopo aver ottenuto la versione Prime.** Non puoi sussumere affatto un Prime o Umbra — solo la versione base — quindi la base è il tuo unico donatore Helminth per quell'abilità. Non venderlo mai pensando che sia inutile.",
+            "**Don't sovrascrivere un'abilità che usi effettivamente.** Ottieni solo uno slot di sussunzione; sostituisci l'abilità che usi di meno, non la tua preferita.",
+            "**Ricorda che molti potenziamenti (augment) non si trasferiscono.** Se un'abilità sussunta è valida solo con la sua mod potenziamento, verifica che funzioni ancora quando viene infusa prima di fare affidamento su di essa.",
+            "**Tieni d'occhio la tua Bile.** È il solito collo di bottiglia delle risorse — infondi con criterio piuttosto che scambiare continuamente abilità per un capriccio."
+          ]
+        },
+        {
+          "type": "warn",
+          "text": "Se hai già venduto un frame base e ora vuoi sussumerlo, dovrai riacquistarlo — per i frame che hanno solo la versione Prime, ciò significa reliquie e ricostruzione. Controlla il [tracker dei contenuti vaulted](/vaulted) per vedere se un Prime è attualmente farmabile prima di pianificare, e lo [strumento del valore delle reliquie](/relics-value) se stai farmando parti per ricostruirlo."
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Come sblocco l'Helminth in Warframe?",
+      "a": "Per prima cosa completa la quest Heart of Deimos (disponibile una volta terminata l'introduzione e ottenuto il tuo Orbiter) per raggiungere il Necralisk e iniziare a guadagnare reputazione Entrati. Completare la quest non ti fornisce l'Helminth — una volta raggiunto il Mastery Rank 8 e il Grado 3 (Associato) con gli Entrati, acquista lo schema del Segmento Helminth da Son, costruiscilo nella tua Foundry e installalo. L'Infermeria Helminth sul retro del tuo Orbiter diventerà quindi utilizzabile, e potrai nutrirlo con risorse per farlo salire di rango."
+    },
+    {
+      "q": "Sussumere un Warframe lo distrugge?",
+      "a": "Sì — la sussunzione consuma permanentemente il frame donatore in cambio di una delle sue abilità. Se è la tua unica copia, dovrai farmarlo o ricostruirlo. Nutri sempre l'Helminth con un duplicato, un frame che non usi mai o una versione base che stai sostituendo con la sua versione Prime — e ricorda che puoi sussumere solo i frame base, mai i Prime o Umbra."
+    },
+    {
+      "q": "Dovrei sussumere il mio Prime o il Warframe base?",
+      "a": "Puoi sussumere solo la versione base — i frame Prime e Umbra non possono affatto essere dati in pasto all'Helminth. Poiché la base dona esattamente la stessa abilità, tieni il Prime per giocare e dai in pasto la base. Questo è anche il motivo per cui non dovresti vendere i frame base dopo aver ottenuto il loro Prime — sono ottimo cibo gratuito per il tuo Helminth."
+    },
+    {
+      "q": "Un Warframe può avere più di un'abilità sussunta?",
+      "a": "No — ogni frame ha un singolo slot di sussunzione e può ospitare solo un'abilità infusa alla volta. Puoi cambiarla in seguito infondendo un'abilità diversa sopra quella vecchia, ma questo costerà risorse Helminth ogni volta e sovrascriverà la scelta precedente."
+    },
+    {
+      "q": "Devo livellare il mio Warframe al Grado 30 prima di sussumerlo?",
+      "a": "No — questo è un mito comune. Un Warframe può essere sussunto a qualsiasi livello, anche appena costruito al Grado 0, e non ci sono requisiti di grado nemmeno sul frame su cui infondi l'abilità. I veri ostacoli riguardano il tuo account: Mastery Rank 8 e reputazione Entrati per sbloccare l'Helminth in primo luogo."
+    },
+    {
+      "q": "Cosa sono i Rinvigorimenti Helminth e valgono la pena?",
+      "a": "I Rinvigorimenti sono potenziamenti settimanali delle statistiche sbloccati installando il Segmento Rinvigorimento separato (acquistato dagli Entrati). Ogni settimana l'Helminth offre una coppia casuale di potenziamenti — una grande statistica offensiva come Forza Abilità più una statistica di utilità — che applichi a un frame per sette giorni. Sono davvero potenti e vale la pena usarli su un frame con cui giochi quella settimana, ma poiché sono temporanei, non costruire il tuo intero equipaggiamento attorno ad essi."
+    },
+    {
+      "q": "Le abilità sussunte mantengono le loro mod potenziamento e la piena potenza?",
+      "a": "Non sempre. Le abilità sussunte scalano con le mod del frame destinatario (Forza, Durata, Portata, Efficienza), ma una manciata ha un limite inferiore rispetto al frame nativo e molte non possono utilizzare la loro mod potenziamento (anche se un elenco in crescita può farlo). Controlla la pagina della wiki per qualsiasi abilità su cui pianifichi di fare affidamento prima di impegnare risorse."
+    }
+  ],
+  "videos": [
+    {
+      "id": "eMJlOIpaki0",
+      "title": "Helminth Guide - The Systems of Warframe - Subsuming, Invigoration & other functions",
+      "channel": "QuadLyStop"
+    },
+    {
+      "id": "3Ij4OLxXyKk",
+      "title": "The MOST POWERFUL system in Warframe - Helminth Invigoration, Subsuming, Abilities & Archon Shards",
+      "channel": "QuadLyStop"
+    },
+    {
+      "id": "BmHOYP6Osks",
+      "title": "Top 10 Warframe Helminth Abilities YOU NEED In 2025!",
+      "channel": "iFlynn"
+    },
+    {
+      "id": "ui1GTJSLBMk",
+      "title": "Warframe: Top 5 SUBSUMED Helminth Abilities!",
+      "channel": "iFlynn"
+    }
+  ],
+  "sources": [
+    {
+      "label": "Warframe Wiki — Helminth",
+      "href": "https://wiki.warframe.com/",
+      "icon": "book-open-page-variant"
+    },
+    {
+      "label": "r/Warframe — A little reminder before subsuming a frame",
+      "href": "https://reddit.com/r/Warframe/comments/1irgcfd/a_little_reminder_before_subsuming_a_frame/",
+      "icon": "reddit"
+    },
+    {
+      "label": "r/Warframe — Reminder: Do NOT sell base frames after getting their prime",
+      "href": "https://reddit.com/r/Warframe/comments/1muncct/reminder_do_not_sell_base_frames_after_getting/",
+      "icon": "reddit"
+    }
+  ],
+  "related": [
+    {
+      "label": "Guida alle Archon Shards",
+      "to": "/guides/archon-shards",
+      "icon": "hexagon-multiple",
+      "note": "Accumula potenziamenti permanenti delle statistiche oltre alle sussunzioni"
+    },
+    {
+      "label": "Tier List dei Warframe",
+      "to": "/guides/tier-list",
+      "icon": "format-list-numbered",
+      "note": "Quali frame vale la pena costruire — e sussumere"
+    },
+    {
+      "label": "Guida al Modding",
+      "to": "/guides/mods",
+      "icon": "puzzle",
+      "note": "Le abilità sussunte scalano con le tue mod"
+    },
+    {
+      "label": "Guida alla Steel Path",
+      "to": "/guides/steel-path",
+      "icon": "skull",
+      "note": "Dove i potenziamenti dell'Helminth contano di più"
+    },
+    {
+      "label": "Farming di risorse",
+      "to": "/guides/resources",
+      "icon": "pickaxe",
+      "note": "Fai scorta dei materiali di cui si nutre l'Helminth"
+    },
+    {
+      "label": "Directory degli strumenti della community",
+      "to": "/tools",
+      "icon": "toolbox",
+      "note": "Ricerca abilità, pianificatori di build e wiki"
+    }
+  ],
+  "updated": "2026-07-18"
+}

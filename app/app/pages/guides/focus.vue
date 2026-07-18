@@ -6,5 +6,6 @@
 </template>
 
 <script setup lang="ts">
-import guide from '~/data/guides/focus'
+import enGuide from '~/data/guides/focus'
+const guide = await useLocalizedGuide('focus', enGuide)
 </script>

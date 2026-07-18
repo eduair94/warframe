@@ -1,0 +1,479 @@
+{
+  "slug": "standing",
+  "eyebrow": "Wissenszentrum · Ansehen & Syndikate",
+  "title": "Ansehen & Syndikate Guide",
+  "lede": "Ansehen ist Warframes Ruf-Währung — der Schlüssel zu Augment-Mods, Amp-Teilen, Arcanas und Nitain. Erfahre mehr über das tägliche Cap, die sechs Hauptsyndikate, jede Open-World-Fraktion und wie du dein Limit in Minuten statt in Missionen erreichst.",
+  "category": "farming",
+  "readMins": 9,
+  "stats": [
+    {
+      "num": "6",
+      "label": "Hauptsyndikate",
+      "tone": "gold"
+    },
+    {
+      "num": "16,000",
+      "label": "Basis-Tages-Cap für Ansehen",
+      "tone": "good"
+    },
+    {
+      "num": "5",
+      "label": "Ränge bis zum Maximum für jedes",
+      "tone": "alt"
+    },
+    {
+      "num": "00:00 UTC",
+      "label": "Täglicher Reset des Ansehens",
+      "tone": "good"
+    }
+  ],
+  "sections": [
+    {
+      "id": "how-it-works",
+      "title": "Wie Ansehen und das tägliche Cap funktionieren",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Ansehen** (auch **Ruf** genannt) ist die Loyalitätswährung, die du bei jeder Fraktion in Warframe verdienst. Gib es aus, um **Warframe/Waffen-Augment-Mods**, Syndikats-Waffen und -Skins, Operator-**Amp**-Teile, **Arcanas**, Kosmetika und mehr freizuschalten. Im Gegensatz zu Credits oder Platinum kannst du Ansehen nicht handeln — du verdienst es durch Spielen, und jede Fraktion erfasst es separat."
+        },
+        {
+          "type": "p",
+          "text": "Der Haken ist das **tägliche Ansehens-Cap**. Jeden Tag kannst du nur eine bestimmte Menge pro Fraktion ansammeln, und das Limit skaliert mit deinem **Meisterschaftsrang**: `16,000 + (500 × MR)`. Selbst ein brandneuer MR0-Spieler kann also 16,000 pro Syndikat und Tag ansammeln, ein MR10 erreicht sein Limit bei 21,000 und ein MR30 bei 31,000. Das Erhöhen deines [Meisterschaftsrangs](/guides/mastery-rank) ist der größte Hebel, um den Fortschritt bei allen Fraktionen gleichzeitig zu beschleunigen."
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "Formel für das tägliche Cap",
+              "v": "16,000 + (500 × Meisterschaftsrang)"
+            },
+            {
+              "k": "Cap-Beispiele",
+              "v": "16,000 bei MR0 · 21,000 bei MR10 · 31,000 bei MR30"
+            },
+            {
+              "k": "Resets",
+              "v": "Täglich um 00:00 UTC (Mitternacht GMT)"
+            },
+            {
+              "k": "Erfasst",
+              "v": "Separat für jedes Syndikat"
+            },
+            {
+              "k": "Um mit dem Verdienen zu beginnen",
+              "v": "Schwöre der Fraktion die Treue, rüste dann ihr Sigil aus"
+            }
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "Das Cap gilt nach dem Prinzip **Nutzen oder Verlieren** — ungenutztes tägliches Ansehen wird nicht übertragen. Da jede Fraktion ihr eigenes Cap hat, sind ein paar Minuten jeden Tag bei mehreren Fraktionen besser als eine einzige Marathon-Session. Mach dir den Reset um 00:00 UTC zur Gewohnheit."
+        }
+      ]
+    },
+    {
+      "id": "six-syndicates",
+      "title": "Die sechs Hauptsyndikate",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Zugänglich über die **Syndikatskonsole** in deinem Orbiter (oder auf jedem Relais), sind die sechs Hauptsyndikate der klassische Ruf-Grind. **Schwöre** einem die Treue (kostenlos) und rüste dann sein **Sigil** aus — ein kosmetisches Emblem, das auf deinem Warframe getragen wird. Von da an wird ein Teil der Affinität, die du in Missionen verdienst, automatisch in das Ansehen dieses Syndikats umgewandelt."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Syndikat",
+              "Lore / Thema"
+            ],
+            "rows": [
+              [
+                "Steel Meridian",
+                "Grineer-Überläufer, die gewöhnliche Zivilisten beschützen"
+              ],
+              [
+                "Arbiters of Hexis",
+                "Disziplin und das Streben der Tenno nach Selbstbeherrschung"
+              ],
+              [
+                "Cephalon Suda",
+                "Bewahrung von Wissen, Daten und Erinnerungen"
+              ],
+              [
+                "The Perrin Sequence",
+                "Corpus-Reformer, die nach wirtschaftlichem Gleichgewicht streben"
+              ],
+              [
+                "Red Veil",
+                "Fanatiker, die Korruption durch Blut säubern"
+              ],
+              [
+                "New Loka",
+                "Wiederherstellung einer 'reinen' Erde und Menschheit"
+              ]
+            ],
+            "note": "Jedes Syndikat verkauft seine eigenen Warframe/Waffen-Augment-Mods, Syndikats-Waffen und -Skins, Relikt-Packs, Skulpturen und Captura-Szenen. Wähle deine erste Fraktion nach den spezifischen Augments aus, die du möchtest — überprüfe die Konsole im Spiel oder das Wiki für die aktuelle, genaue Belohnungsliste."
+          }
+        },
+        {
+          "type": "warn",
+          "text": "Die sechs befinden sich in einem **Netzwerk aus Verbündeten und Gegnern**: Wenn du Ansehen bei einem verdienst, **sinkt** langsam das Ansehen bei seinen Rivalen. Aus diesem Grund sieht ein wiederkehrender Spieler manchmal, dass eine Fraktion stillschweigend sinkt, obwohl er sie nie angerührt hat. Das ist normal — die Konsole zeigt den genauen +/−-Effekt deines ausgerüsteten Sigils. Die meisten Spieler konzentrieren sich auf ein oder zwei Fraktionen und wechseln dann die Sigile, um den Rest aufzufüllen."
+        }
+      ]
+    },
+    {
+      "id": "earning-main",
+      "title": "Sigile, Medaillons und Opfergaben",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Es gibt drei Möglichkeiten, ein Hauptsyndikat zu füttern, und Veteranen kombinieren diese, um Ränge im Eiltempo zu durchlaufen:"
+        },
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "h": "Trage das richtige Sigil",
+              "p": "Ansehen skaliert mit Affinität, sodass jede Mission mit vielen Kills dazu beiträgt — einschließlich der geteilten Affinität durch Kills von Truppmitgliedern in deiner Nähe. Rüste das Sigil für die gewünschte Fraktion aus, *bevor* du dich in die Warteschlange einreihst, sonst ist diese EP verschwendet."
+            },
+            {
+              "h": "Suche nach Syndikats-Medaillons",
+              "p": "Jede Fraktion bietet tägliche Missionen an der Konsole an. In ihren Tilesets sind sammelbare Medaillons versteckt; schnappe sie dir und gib sie dann beim Syndikat ab, um eine große Menge Ansehen zu erhalten. Entscheidend ist, dass Medaillen-Abgaben dich über dein normales tägliches Cap bringen können — der schnellste Weg, um im Rang aufzusteigen."
+            },
+            {
+              "h": "Zahle die Opfergabe, um im Rang aufzusteigen",
+              "p": "Jeder neue Rang erfordert sowohl genügend Gesamt-Ansehen als auch eine einmalige 'Opfergabe' von Gegenständen, die die Fraktion verlangt. Niedrigere Ränge erfordern gewöhnliche Ressourcen; höhere Ränge verlangen nach seltenen Mods, Ressourcen oder einem syndikatspezifischen Gegenstand. Die Konsole listet genau auf, was benötigt wird."
+            }
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "**Horte deine Medaillons.** Da Abgaben das tägliche Cap überschreiten können, hebe dir einen Stapel auf und gib ihn direkt nach dem Bezahlen einer Rang-Opfergabe ab — so springst du sofort auf die nächste Stufe. Eine Beuteradar- oder Schatzsucher-Mod macht das Finden versteckter Medaillons zum Kinderspiel."
+        },
+        {
+          "type": "info",
+          "text": "Syndikats-**Augment-Mods sind handelbar**, was maximierte Fraktionen zu einer stetigen Platinum-Quelle macht. Lerne den Handelskreislauf im [Platinum-Guide](/guides/platinum), bestimme die Preise deiner Augments auf dem [Markt-Screener](/screener) und nutze Kauf-/Verkaufsspannen mit dem [Flip-Finder](/flip)."
+        }
+      ]
+    },
+    {
+      "id": "open-worlds",
+      "title": "Open-World- und Hub-Fraktionen",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Die Open-World-Fraktionen funktionieren anders: Anstelle von Sigilen und Affinität **gibst du Ressourcen ab** — Fische, geschliffene Edelsteine, Erhaltungs-Marken, Token und Auftrags-Belohnungen — bei ihren Händlern. Sie unterliegen immer noch demselben täglichen Cap von `16,000 + 500 × MR`, das unabhängig erfasst wird, sodass du mehrere an einem Tag maximieren kannst."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Hub · Open World",
+              "Fraktion",
+              "Du gibst ab",
+              "Ansehen kauft (Allgemeines)"
+            ],
+            "rows": [
+              [
+                "Cetus · Plains of Eidolon",
+                "Ostron",
+                "Aufträge, Fische, geschliffene Edelsteine",
+                "Zaw-Teile (Hok), Angel- & Bergbau-Ausrüstung, Masken und Szenen"
+              ],
+              [
+                "Fortuna · Orb Vallis",
+                "Solaris United",
+                "Aufträge, Fische, Edelsteine, Schuldscheine",
+                "Kitgun-Teile (Rude Zuud), MOA-Begleiter (Legs), Ausrüstung"
+              ],
+              [
+                "Necralisk · Cambion Drift",
+                "Entrati",
+                "Aufträge, Fische, Erhaltungs-Marken, Edelsteine, Token",
+                "Mods, Arcanas, Necramech-Ausrüstung, Kosmetika"
+              ],
+              [
+                "Sanctum Anatomica",
+                "Cavia",
+                "Netrazellen und Sanctum-Aufträge",
+                "Whispers-in-the-Walls-Arcanas und -Mods"
+              ],
+              [
+                "Höllvania (1999)",
+                "The Hex",
+                "1999-Aktivitäten und -Aufträge",
+                "Neue Arcanas, Waffen, Mods, Kosmetika"
+              ]
+            ],
+            "note": "Die Belohnungslisten ändern sich mit jedem Update — überprüfe die aktuellen Angebote im Wiki. Für die Rohstoffe selbst siehe den Ressourcen-Guide."
+          }
+        },
+        {
+          "type": "tip",
+          "text": "Wenn du kurz vor dem Cap bist, nutze das **Token- / Wisp-System** an diesen Hubs (besonders auf Deimos und den neueren Welten). Du wandelst überschüssige Ressourcen in Token um, die du *behältst*, und löst sie an einem späteren Tag ein — so ist ein großartiger Angel- oder Bergbaufang nie verschwendet. Diese Quality-of-Life-Verbesserung ist genau der Grund, warum die Community 'Danke für die Ansehens-Token' gejubelt hat."
+        },
+        {
+          "type": "p",
+          "text": "Open-World-Ressourcen fließen auch in die Crafting-Wirtschaft des [Ressourcen-Guides](/guides/resources) ein, und Eidolon-/Orb-Jagden hängen direkt mit den unten aufgeführten Operator-Fraktionen zusammen."
+        }
+      ]
+    },
+    {
+      "id": "other-factions",
+      "title": "Andere Ansehens-Händler, die man kennen sollte",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Abseits der großen Syndikate haben mehrere spezialisierte Fraktionen ihre eigenen Ansehens-Pfade — hierher stammen Operator-**Amps**, **Arcanas** und Necramech-Ausrüstung."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Fraktion",
+              "Wo",
+              "Verdienen durch",
+              "Ausgeben für"
+            ],
+            "rows": [
+              [
+                "Cephalon Simaris",
+                "Relais (Sanctuary)",
+                "Synthese-Scannen von Zielen",
+                "Exklusive Mods, Waffen- & Hilfsmittel-Blaupausen, Sanctuary-Scanner-Widgets"
+              ],
+              [
+                "The Quills",
+                "Cetus (Onkko)",
+                "Eintauschen von Eidolon-Scherben",
+                "Amp-Teile, Arcanas, Fokus-Linsen"
+              ],
+              [
+                "Vox Solaris",
+                "Fortuna (Little Duck)",
+                "Orb-Kämpfe und Vallis-Materialien",
+                "Amp-Teile, Operator-Arcanas"
+              ],
+              [
+                "The Holdfasts",
+                "Zariman (Chrysalith)",
+                "Zariman-Missionen → Voidplumes",
+                "Arcanas, Mods, Kosmetika"
+              ],
+              [
+                "Necraloid",
+                "Necralisk",
+                "Necramech- und Deimos-Aktivitäten",
+                "Necramech-Mods und -Teile"
+              ],
+              [
+                "Ventkids",
+                "Fortuna",
+                "K-Drive-Tricks und -Rennen",
+                "K-Drive-Teile und -Kosmetika"
+              ],
+              [
+                "Conclave",
+                "Relais (Teshin)",
+                "PvP-Matches",
+                "PvP-Mods, Kosmetika, Captura"
+              ]
+            ],
+            "note": "Teshin betreibt auch den Steel Path Shop, aber dort wird Steel Essence (eine Währung) ausgegeben, kein Ansehen — siehe den Steel Path Guide."
+          }
+        },
+        {
+          "type": "info",
+          "text": "Du baust einen Amp für die Eidolon-Jagd? The Quills und Vox Solaris sind deine Lieferanten, und beide hängen mit deinem Operator-Fortschritt zusammen. Kombiniere dies mit dem [Fokus-Guide](/guides/focus) und dem [Eidolon-Guide](/guides/eidolon)."
+        }
+      ]
+    },
+    {
+      "id": "fastest-cap",
+      "title": "Die schnellsten Wege, dein Ansehen zu maximieren",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Es ist kein Exploit nötig — nur effiziente Routen. Das zuverlässige, zeitlose Playbook:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Rüste zuerst das richtige Sigil aus.** Ansehen folgt der Affinität, sodass eine starke Endlos-Mission mit vielen Kills (oder ein schneller Affinitäts-Knoten) ein Hauptsyndikat in einem einzigen Durchlauf maximieren — oder fast maximieren — kann. Grinde niemals ohne Sigil.",
+            "**Absolviere die täglichen Missionen des Syndikats für Medaillons** und gib sie dann ab — Abgaben umgehen das tägliche Cap, das ist also dein Limit-Brecher.",
+            "**Farme Open-World-Abgaben im Voraus.** Sammle Fische, Edelsteine und Marken während einer entspannten Session und gib sie beim Reset für ein sofortiges Cap ab; wandle Überschüsse in Token um, damit nichts verfällt.",
+            "**Wechsle täglich die Fraktionen.** Da jede ihr eigenes Cap hat, bringt eine 15-minütige Runde über zwei oder drei Fraktionen weitaus mehr Gesamt-Ansehen, als sich nur auf eine zu konzentrieren.",
+            "**Erhöhe deinen Meisterschaftsrang.** Jedes MR fügt dem täglichen Cap jeder Fraktion 500 hinzu — der einzige dauerhafte Weg, dein gesamtes Limit anzuheben."
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "Du kannst die **Deckkraft eines Sigils im Arsenal auf fast Null** setzen, sodass es Ansehen einbringt, ohne dein Fashion-Frame zu stören. Großartig, um ein Farming-Sigil jederzeit ausgerüstet zu lassen."
+        }
+      ]
+    },
+    {
+      "id": "nightwave",
+      "title": "Nightwave: Ähnlich, aber kein Syndikats-Ansehen",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Nightwave** verwirrenderweise gewährt ebenfalls 'Ansehen', aber es ist ein separates, saisonales System — stell es dir wie eine rotierende Herausforderungs-Leiste vor. Du schließt **Taten** (tägliche, wöchentliche und wöchentliche Elite-Herausforderungen) ab, um eine Rangleiter zu füllen, und jeder Rang vergibt Belohnungen sowie **Nightwave-Creds**, die du im Angebotsshop ausgeben kannst."
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Tägliche Taten** sind klein und werden jeden Tag aktualisiert; **wöchentliche und wöchentliche Elite-Taten** sind weitaus mehr Ansehen wert — priorisiere diese.",
+            "**Standardartikel im Cred-Shop** gehören zu den wertvollsten im Spiel: **Nitain Extract**, **Orokin-Reaktoren/Katalysatoren** ('Kartoffeln'), **Forma**, **Kuva**, Aura-Mods und die exklusiven Kosmetika der Saison.",
+            "Du steigst auch nach der letzten Stufe weiter in wiederholbare **Prestige**-Ränge auf, die weiterhin Creds einbringen.",
+            "Zwischen den Saisons sorgt eine **Nightwave: Intermission** dafür, dass der Shop und deine verbleibenden Creds nutzbar bleiben, sodass ein harter Reset dich nie im Stich lässt."
+          ]
+        },
+        {
+          "type": "warn",
+          "text": "Saisonexklusive Kosmetika (und gelegentlich ein Frame) können für lange Zeit verschwinden, wenn eine Saison endet, weshalb Spieler in der letzten Woche hektisch werden. Verfalle nicht in Panik-Grinding für alles — du brauchst selten jede Tat, um den höchsten Rang zu erreichen —, aber gib deine Creds vor dem Ende einer Saison für Nitain und Kartoffeln aus."
+        }
+      ]
+    },
+    {
+      "id": "pitfalls",
+      "title": "Häufige Fragen und Fallstricke",
+      "blocks": [
+        {
+          "type": "info",
+          "text": "**\"Ich habe einen Grineer per Todesstoß getötet und meine Sternenkarte wurde rot\"** — das ist kein Syndikat. Du hast einen **Kuva Lich** erschaffen, einen gegnerischen Erzfeind, der die von ihm kontrollierten Knoten (rot markiert) besteuert. Es ist ein völlig separates System; besuche den [Kuva & Lich Guide](/guides/kuva), um ihn zur Strecke zu bringen."
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Grinde nicht ohne Sigil.** Ohne Sigil verdiente Affinität ist verschenktes Ansehen.",
+            "**Hab keine Angst vor dem Sinken bei gegnerischen Fraktionen.** Dass du bei einem Rivalen etwas verlierst, ist so gewollt; du kannst letztendlich jede Fraktion maximieren, indem du die Sigile rotierst und die Rivalen wieder aufbaust.",
+            "**Lass Überschüsse nicht verfallen.** Wandle nach Erreichen des Caps Open-World-Ressourcen in Token um und hebe Medaillons auf, um sie später abzugeben.",
+            "**Verwechsle die Währungen nicht.** Syndikats-Ansehen, Nightwave-Creds und Steel Essence sind drei verschiedene Dinge — gib jede in ihrem eigenen Shop aus."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Für das größere Bild des Fortschritts — wo das Ansehens-Farming neben Credits, Relikten und Meisterschaft hineinpasst — siehe den [Fortschritts-Guide](/guides/progression) und das kuratierte [Community-Tools-Verzeichnis](/tools)."
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Wie wird das tägliche Ansehens-Cap in Warframe berechnet?",
+      "a": "Das Cap beträgt `16,000 + (500 × your Mastery Rank)`, wird für jede Fraktion separat angewendet und täglich um 00:00 UTC zurückgesetzt. Selbst ein brandneuer MR0-Spieler kann also 16,000 pro Syndikat und Tag ansammeln, ein MR10 erreicht sein Limit bei 21,000 und ein MR30 bei 31,000. Das Erhöhen deines [Meisterschaftsrangs](/guides/mastery-rank) ist der einzige Weg, das Limit für alle Fraktionen gleichzeitig dauerhaft anzuheben."
+    },
+    {
+      "q": "Was ist der schnellste Weg, um Syndikats-Ansehen zu farmen?",
+      "a": "Rüste das Sigil dieser Fraktion aus, absolviere eine Mission mit vielen Kills für schnelle Affinität, um das Cap rasch zu erreichen, und horte Syndikats-Medaillons aus den täglichen Missionen. Medaillen-Abgaben können dich über das tägliche Cap bringen, daher ist das Aufheben eines Stapels und das Abgeben direkt nach einer Rang-Opfergabe der schnellste Weg zu einem neuen Rang."
+    },
+    {
+      "q": "Kann ich alle sechs Hauptsyndikate maximieren?",
+      "a": "Ja, irgendwann. Die sechs befinden sich in einem Netzwerk aus Verbündeten und Gegnern, sodass das Verdienen bei einem langsam seine Rivalen senkt — aber du wechselst einfach die Sigile und baust die anderen im Laufe der Zeit wieder auf. Plane um die gegnerischen Fraktionen herum und du kannst bei jeder Fraktion den maximalen Rang erreichen."
+    },
+    {
+      "q": "Ist Nightwave-Ansehen dasselbe wie Syndikats-Ansehen?",
+      "a": "Nein. Nightwave ist eine separate, saisonale Herausforderungs-Leiste: Du schließt tägliche, wöchentliche und wöchentliche Elite-Taten ab, um Nightwave-Ränge und Nightwave-Creds zu verdienen. Gib diese Creds für Nitain, Orokin-Reaktoren/-Katalysatoren, Forma, Kuva und Kosmetika aus — es hat nichts mit deinem Ansehen bei den sechs Syndikaten zu tun."
+    },
+    {
+      "q": "Warum ist mein Ansehen bei einem Syndikat gesunken, das ich nicht gespielt habe?",
+      "a": "Wegen der gegnerischen Syndikate. Der Gewinn von Ruf bei einer Fraktion verringert ihn bei ihren Rivalen, basierend auf dem getragenen Sigil. Das ist so gewollt — die Syndikatskonsole zeigt die genauen +/−-Auswirkungen jedes Sigils, sodass du planen kannst, welche Fraktionen du zusammen aufstufen möchtest."
+    },
+    {
+      "q": "Woher bekomme ich Operator-Amp-Teile und Arcanas?",
+      "a": "Von den spezialisierten Ansehens-Fraktionen: The Quills in Cetus (tausche Eidolon-Scherben ein) und Vox Solaris in Fortuna (aus Orb-Kämpfen und Vallis-Materialien) verkaufen Amp-Teile und Arcanas. Kombiniere dies mit dem [Fokus-Guide](/guides/focus) und dem [Eidolon-Guide](/guides/eidolon), um ein Jagd-Setup aufzubauen."
+    },
+    {
+      "q": "Ich habe einen Grineer per Todesstoß getötet und mein ganzer Planet wurde rot — ist das eine Syndikats-Sache?",
+      "a": "Nein. Das Töten eines Kuva Larvlings per Todesstoß spawnt einen Kuva Lich, einen gegnerischen Erzfeind, der Knoten einnimmt und sie auf deiner Sternenkarte rot markiert. Es hat nichts mit Syndikats-Ansehen zu tun — siehe den [Kuva & Lich Guide](/guides/kuva), um ihn zu besiegen und deine Knoten zurückzufordern."
+    },
+    {
+      "q": "Sind Syndikats-Belohnungen Platinum wert?",
+      "a": "Sehr wohl — Syndikats-Augment-Mods sind handelbar und bleiben stetig gefragt, was maximierte Fraktionen zu einer zuverlässigen Plat-Einnahmequelle macht. Lerne den Kreislauf im [Platinum-Guide](/guides/platinum) und bestimme die Preise deiner Mods mit dem [Markt-Screener](/screener) und [Flip-Finder](/flip)."
+    }
+  ],
+  "videos": [
+    {
+      "id": "d_q95Xf6Ohs",
+      "title": "You Have Been Farming Syndicate Standing In WARFRAME ALL WRONG!",
+      "channel": "iFlynn"
+    },
+    {
+      "id": "xfUY8DaZVTw",
+      "title": "MAX YOUR STANDINGS NOW! - FASTEST METHODS FOR ALL SYNDICATES [WARFRAME]",
+      "channel": "TRiX_VS"
+    },
+    {
+      "id": "whtYsyH3N9I",
+      "title": "Warframe | How To Farm Syndicate Standing Quick and Easy - Plumes and Medallions",
+      "channel": "1ManArmyYigit"
+    },
+    {
+      "id": "Vt-albA4ZhA",
+      "title": "How to Max Out EVERY Syndicate Standing FAST in Warframe (Complete Guide)",
+      "channel": "Chapu"
+    }
+  ],
+  "sources": [
+    {
+      "label": "r/Warframe — new wiki showcase (wiki.warframe.com)",
+      "href": "https://reddit.com/r/Warframe/comments/1ios9qf/just_wanted_to_share_how_sexy_the_new_wiki_is/"
+    },
+    {
+      "label": "r/Warframe — Nightwave ended too soon (rank/FOMO)",
+      "href": "https://reddit.com/r/Warframe/comments/1kpzgsq/im_sorry_everyone_i_failed_all_of_you/"
+    },
+    {
+      "label": "r/Warframe — final-hour Nightwave Cred grind (Nitain/potatoes)",
+      "href": "https://reddit.com/r/Warframe/comments/1sgqki4/i_forgor/"
+    },
+    {
+      "label": "r/Warframe — Nightwave weekly Act discussion (DE replied)",
+      "href": "https://reddit.com/r/Warframe/comments/q6fq49/pov_you_have_a_nightwave_act_to_bullet_jump_150/"
+    },
+    {
+      "label": "Official Warframe Wiki",
+      "href": "https://wiki.warframe.com/"
+    }
+  ],
+  "related": [
+    {
+      "label": "Fokus & Operator Guide",
+      "to": "/guides/focus",
+      "icon": "school",
+      "note": "Amps, Linsen und Ansehen bei The Quills/Vox Solaris"
+    },
+    {
+      "label": "Eidolon-Jagd Guide",
+      "to": "/guides/eidolon",
+      "icon": "weather-night",
+      "note": "Scherben erhöhen das Ansehen bei The Quills für Amps"
+    },
+    {
+      "label": "Kuva & Lich Guide",
+      "to": "/guides/kuva",
+      "icon": "skull",
+      "note": "Die rote Sternenkarte erklärt"
+    },
+    {
+      "label": "Platinum Guide",
+      "to": "/guides/platinum",
+      "icon": "diamond-stone",
+      "note": "Handle Syndikats-Augments gegen Plat"
+    },
+    {
+      "label": "Ressourcen Guide",
+      "to": "/guides/resources",
+      "icon": "pickaxe",
+      "note": "Abgabe-Materialien aus der Open World"
+    },
+    {
+      "label": "Community-Tools",
+      "to": "/tools",
+      "icon": "tools",
+      "note": "Wiki, Overframe und Markt-Tracker"
+    }
+  ],
+  "updated": "2026-07-18"
+}

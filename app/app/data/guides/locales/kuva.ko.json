@@ -1,0 +1,454 @@
+{
+  "slug": "kuva",
+  "eyebrow": "지식 센터 · Kuva 파밍",
+  "title": "Kuva 파밍 가이드",
+  "lede": "Kuva는 Riven의 옵션을 재조정하는 붉은색 재화로, 이를 얻기 위한 파밍에는 그들만의 메타가 존재합니다. 여기서는 신뢰할 수 있는 모든 파밍 방법, 부스터와 올바른 동반자 mod로 획득량을 늘리는 방법, 그리고 번아웃 없이 효율적으로 소비하는 방법을 소개합니다.",
+  "category": "farming",
+  "readMins": 8,
+  "stats": [
+    {
+      "num": "~600",
+      "label": "Siphon당 Kuva",
+      "tone": "good"
+    },
+    {
+      "num": "~1,200",
+      "label": "Flood당 Kuva",
+      "tone": "alt"
+    },
+    {
+      "num": "3,500",
+      "label": "리롤당 최대 Kuva",
+      "tone": "gold"
+    },
+    {
+      "num": "2×",
+      "label": "Resource Booster",
+      "tone": "good"
+    }
+  ],
+  "sections": [
+    {
+      "id": "what-kuva-is",
+      "title": "Kuva의 실제 정체",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Kuva**는 Grineer의 Kuva 저장고에서 채취하는 붉게 빛나는 자원입니다. 이 자원의 주된 목적은 단 하나, 바로 **Riven mod 리롤**입니다. 리롤할 때마다 Kuva를 소모하여 Riven의 능력치(버프, 디버프, 기질 적용 비율)를 무작위로 재조정합니다. 일부 설계도(몇몇 Warframe, Umbra Forma 및 일부 무기 제작에 소량 필요)의 제작 재료로도 쓰이지만, 사람들이 Kuva를 파밍하는 절대적인 이유는 Riven 때문입니다."
+        },
+        {
+          "type": "p",
+          "text": "\"Kuva\"라는 단어는 서로 무관한 여러 시스템에 붙어 있어 거의 모든 초보 플레이어들을 혼란스럽게 만듭니다. Riven을 리롤하기 위해 파밍해야 하는 것은 오직 **자원**으로서의 Kuva뿐이며, 나머지는 이름만 공유할 뿐입니다."
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "개요",
+              "v": "거래 불가능한 자원 (붉은색)"
+            },
+            {
+              "k": "주요 용도",
+              "v": "Riven mod 능력치 리롤"
+            },
+            {
+              "k": "기타 사용처",
+              "v": "일부 Foundry 설계도"
+            },
+            {
+              "k": "해금 조건",
+              "v": "The War Within 퀘스트"
+            },
+            {
+              "k": "구매 또는 거래가 가능한가요?",
+              "v": "아니요 — 직접 파밍해야만 얻을 수 있습니다"
+            }
+          ]
+        },
+        {
+          "type": "info",
+          "text": "**\"Kuva\"라는 명칭은 여러 곳에 쓰입니다.** *Kuva* (리롤에 사용하는 자원) · *Kuva Siphon/Flood* (보상으로 Kuva를 주는 미션) · *Kuva Lich* (숙적 적 캐릭터) · *Kuva 무기* (Lich가 드롭하는 무기). 오직 첫 번째 자원만이 Riven을 리롤할 수 있습니다. 혼동하지 않도록 Lich에 관한 마지막 섹션을 참고하세요."
+        }
+      ]
+    },
+    {
+      "id": "unlock",
+      "title": "Kuva 파밍 해금하기",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Kuva 파밍은 **The War Within** 퀘스트(*The Second Dream* 이후의 두 번째 Operator 퀘스트)를 완료해야 해금됩니다. 이 퀘스트를 완료하기 전에는 성계 지도에 Kuva Siphon이나 Kuva Flood가 나타나지 않으며, Kuva Fortress가 잠겨 있고, Kuva Lich를 생성할 수도 없습니다."
+        },
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "h": "성계 지도 진행",
+              "p": "행성들을 개척하고 메인 스토리를 진행하여 The Second Dream과 The War Within을 해금하세요. 진행 순서는 [퀘스트 가이드](/guides/quests)를 참고하세요."
+            },
+            {
+              "h": "The War Within 완료",
+              "p": "이를 통해 Operator의 Void 능력이 해금되며(Kuva Siphon을 파괴하려면 이 능력이 반드시 필요합니다), 전체 Kuva 생태계가 활성화됩니다."
+            },
+            {
+              "h": "성계 지도 확인",
+              "p": "이제 Kuva Siphon 및 Kuva Flood 마커가 Origin System 전역의 노드에 주기적으로 나타나며, 타이머에 따라 갱신됩니다."
+            },
+            {
+              "h": "Kuva Fortress 개방",
+              "p": "Fortress와 그곳의 Kuva Survival 노드가 대량 파밍을 위한 주 기지가 됩니다."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "core-farms",
+      "title": "핵심 Kuva 파밍처",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "세 가지 주요 파밍처가 중심을 이룹니다. 빠른 파밍을 위한 **Siphon**, 두 배의 보상을 주는 **Flood**, 지속적인 대량 파밍을 위한 **Survival**입니다. relic 시대나 로테이션되는 \"최고의 자원 노드\"와 달리, 이 파밍처들은 업데이트마다 바뀌지 않고 언제나 유효합니다."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "방법",
+              "위치",
+              "대략적인 획득량",
+              "추천 대상"
+            ],
+            "rows": [
+              [
+                "Kuva Siphon",
+                "로테이션되는 성계 지도 노드 (TWW 완료 필요)",
+                "기본 약 600",
+                "빠르고 캐주얼하며 부담 없는 플레이"
+              ],
+              [
+                "Kuva Flood",
+                "하나의 고레벨 로테이션 노드",
+                "기본 약 1,200",
+                "두 배의 보상, 훨씬 높은 레벨"
+              ],
+              [
+                "Kuva Survival",
+                "Kuva Fortress Survival 노드 (Taveuni)",
+                "시간에 비례하여 증가",
+                "지속적이고 대량의 파밍"
+              ],
+              [
+                "일일 Sortie",
+                "Sortie 보상 테이블 (확률)",
+                "수천 개",
+                "일일 퀘스트를 수행하며 얻는 부가적인 Kuva"
+              ]
+            ],
+            "note": "획득량은 부스터 적용 전의 대략적인 기본 수치입니다. DE가 가끔 수치를 조정하므로 최신 값은 라이브 위키에서 확인하세요."
+          }
+        },
+        {
+          "type": "p",
+          "text": "**Siphon**은 미니 미션처럼 작동합니다. Kuva Siphon 장치에 도달하면 Kuva 구름을 빨아들이기 시작하며, **Operator 형태로 날아오는 구름을 향해 Void Dash를 하거나 Amp로 사격**하여 4개의 Kuva 촉수를 파괴해야 합니다. 이것이 바로 The War Within 완료가 필수적인 이유입니다. 작업하는 동안 방해하기 위해 Kuva Guardian들이 스폰됩니다. 4개의 촉수를 모두 파괴하면 Siphon이 폭발하며 대량의 Kuva를 획득합니다. **Flood**도 동일한 방식이지만 적의 레벨이 훨씬 높고 보상도 대략 두 배입니다. 맵 전체에서 Siphon을 연달아 클리어하고(Flood가 활성화되면 함께 클리어) 도는 것이 가장 효율적인 *캐주얼* 루프입니다."
+        }
+      ]
+    },
+    {
+      "id": "survival-fissure",
+      "title": "장기전 메타: Kuva Survival + fissure",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "순수 **시간당 Kuva** 효율로는 Kuva Fortress의 Kuva Survival이 최고입니다. 맵 곳곳의 마커를 쫓아다니는 대신, 하나의 Survival 미션에 머무르며 **Life Support Capsule을 Kuva Harvester로 전환**합니다. 장치를 방어하는 동안 전환이 완료될 때마다 일정량의 Kuva를 획득하므로, 오래 버틸수록 더 많은 Kuva가 쌓입니다. 끊임없이 적을 처치할 수 있도록 광역 섬멸형 frame과 안정적인 에너지 수급 수단을 준비하세요."
+        },
+        {
+          "type": "p",
+          "text": "프로들의 노하우는 **일석이조(double-dip)** 효과를 노리는 것입니다. 바로 **Void Fissure**가 활성화된 Kuva Survival을 플레이하는 것입니다. platinum 가치가 있는 Prime 부품을 얻기 위해 relic을 개봉하는 동시에 Kuva도 쌓을 수 있어, 한 번의 미션으로 두 가지 파밍을 동시에 해결할 수 있습니다. 장기전 파밍 유저들은 이를 몇 시간 동안 진행하여 엄청난 양의 전리품을 챙깁니다."
+        },
+        {
+          "type": "links",
+          "links": [
+            {
+              "label": "판당 어떤 relic이 가장 효율이 좋을까",
+              "to": "/relic-farming",
+              "icon": "diamond-stone",
+              "note": "Kuva 파밍 자금을 마련해 줄 fissure relic을 선택하세요"
+            },
+            {
+              "label": "개봉할 것인가, 판매할 것인가? Relic의 가치",
+              "to": "/relics-value",
+              "icon": "cash-multiple",
+              "note": "fissure 드롭템의 가치를 파악하세요"
+            }
+          ]
+        },
+        {
+          "type": "warn",
+          "text": "**매우 긴 장기전 플레이는 실질적인 위험을 동반합니다.** 몇 시간 동안 진행 중인 공방 미션에서 host migration이 발생하면 세션에서 튕겨 나갈 수 있으며, Kuva는 세이브 로드가 불가능합니다. 크래시나 연결 끊김이 발생하면 마지막 보상 이후의 모든 획득량을 잃게 됩니다. 솔로 플레이를 하거나 안정적인 사전 구성 분대와 함께하면 이 위험을 줄일 수 있으며, 한 번의 마라톤에 전체 세션을 거는 것보다 안정적으로 보상을 챙기는 것이 더 낫습니다."
+        }
+      ]
+    },
+    {
+      "id": "boosters",
+      "title": "Kuva 배가시키기: 부스터 & 동반자",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Kuva 파밍에서 가장 중요한 교훈은 **어떤 노드냐가 아니라, 어떤 배율을 적용받느냐**입니다. 동일한 Siphon이라도 어떤 버프가 중첩되느냐에 따라 600개를 얻을 수도, 2,400개 이상을 얻을 수도 있습니다."
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Resource Booster (2배)** — 지속 시간 동안 Siphon이나 Flood의 일시불 보상을 포함하여 획득하는 모든 Kuva를 두 배로 늘려줍니다. 가장 신뢰할 수 있는 기본 배율입니다.",
+            "**Loyal Retriever (동반자 mod)** — **Update 37** 이후 기존 Smeeta의 Charm에 있던 자원 배가 효과가 별도의 모드로 분리되었습니다. 이 모드는 **Kuva를 포함한 모든 크레딧 및 자원 획득 시 13%의 고정 확률로 획득량을 두 배로 늘려줍니다.** 버프를 기다릴 필요 없이 항상 활성화되며, Smeeta뿐만 아니라 모든 Beast 동반자(Kubrow, Kavat 등)에 장착할 수 있습니다.",
+            "**자원 2배 주말 이벤트** — DE가 주기적으로 진행하는 이 이벤트는 부스터와 중첩되어 Siphon이나 Flood 보상을 최대 4배까지 늘려줍니다.",
+            "**더 이상 \"버프 대기\"를 할 필요가 없습니다** — Smeeta의 Charm 자원 버프가 발동할 때까지 아이템을 먹지 않고 모아두던 옛날 방식은 Update 37부로 사라졌습니다. 이제 획득 시마다 패시브 확률로 두 배 적용 여부가 결정되므로, 멈추지 말고 계속 적을 처치하며 진행하세요."
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "**동반자 세팅:** Beast 동반자에 **Loyal Retriever**를 장착하여 Kuva에 적용되는 13%의 자원 획득량 두 배 확률을 확보하세요. 여전히 많은 유저들이 희귀 자원 드롭이나 3배 어피니티 버프를 노리고 **Smeeta Kavat**을 함께 데려가지만, 자원 두 배 효과 자체는 더 이상 Smeeta를 필수로 요구하지 않습니다."
+        }
+      ]
+    },
+    {
+      "id": "per-hour",
+      "title": "시간당 Kuva: 현실적인 기대치",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "획득량은 사용하는 frame, 부스터 유지 여부, 경로에 따라 크게 달라지므로 절대적인 수치라기보다는 대략적인 기준으로 참고하세요. 현실적인 수치는 다음과 같습니다:"
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "캐주얼한 Siphon/Flood 연달아 돌기 (부스터 없음)",
+              "v": "시간당 약 5,000–10,000 Kuva"
+            },
+            {
+              "k": "Kuva Survival + Resource Booster (+ Loyal Retriever)",
+              "v": "시간당 약 15,000–25,000+ Kuva"
+            },
+            {
+              "k": "최대 비용 기준 Riven 리롤 1회",
+              "v": "3,500 Kuva"
+            },
+            {
+              "k": "따라서 부스터가 적용된 Survival 1시간으로 가능한 리롤 횟수는 대략",
+              "v": "4–7회 리롤"
+            }
+          ]
+        },
+        {
+          "type": "info",
+          "text": "과거 가이드에서 경고하던 무작위 Smeeta Charm 자원 버프 대기로 인한 시간당 획득량의 극심한 편차는 이제 사라졌습니다. Loyal Retriever의 두 배 획득 효과는 매 획득 시마다 13%의 고른 확률로 적용되므로 파밍이 이전보다 훨씬 일관되게 유지됩니다. 이제 획득량은 사용 중인 frame, 경로, 그리고 부스터나 2배 주말 이벤트의 적용 여부에 따라 결정됩니다."
+        }
+      ]
+    },
+    {
+      "id": "spending",
+      "title": "Kuva 소비하기: Riven 리롤",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Riven의 능력치 리롤은 모드 화면에서 직접 수행할 수 있습니다(오직 **Kuva만 소모**됩니다). Endo와 크레딧이 소모되는 Riven 랭크업과 혼동하지 마세요. Kuva는 능력치를 재조정하고, [Endo](/guides/endo)는 모드의 레벨을 올립니다. 리롤 비용은 횟수가 늘어날 때마다 증가하여 최대 상한선에 도달합니다:"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "리롤 횟수",
+              "대략적인 Kuva 소모량"
+            ],
+            "rows": [
+              [
+                "1회차",
+                "900"
+              ],
+              [
+                "2회차",
+                "1,000"
+              ],
+              [
+                "3회차",
+                "1,200"
+              ],
+              [
+                "4회차",
+                "1,400"
+              ],
+              [
+                "…",
+                "매 횟수마다 증가"
+              ],
+              [
+                "약 10회차 이후",
+                "3,500 (최대치)"
+              ]
+            ],
+            "note": "대략적인 비용 단계입니다. 정확한 중간 수치는 라이브 위키에서 확인하는 것이 가장 좋습니다. 핵심 정보: 900에서 시작하여 3,500에서 최대치에 도달합니다."
+          }
+        },
+        {
+          "type": "quote",
+          "text": "하루 종일 Kuva를 파밍했는데 남은 건 늘어난 리롤 횟수뿐일 때의 그 기분.",
+          "cite": "r/Warframe"
+        },
+        {
+          "type": "tip",
+          "text": "리롤은 **순수한 무작위(RNG)**입니다. 좋은 옵션의 Riven이 나쁜 옵션으로 변할 수도 있고, 그 반대일 수도 있습니다. 시작하기 전에 목표를 설정하고 [Riven 가치 평가기](/riven-value)를 확인하여, 현재 옵션이 자신이 쫓는 완벽한 옵션보다 이미 더 가치 있는 상태인지 판단하세요. 만약 Riven에 가망이 없다면, 더 많은 Kuva를 쏟아붓는 것보다 [/endo](/endo)를 통해 Endo로 분해하는 것이 종종 더 현명한 선택입니다."
+        },
+        {
+          "type": "links",
+          "links": [
+            {
+              "label": "Riven 가치 평가기",
+              "to": "/riven-value",
+              "icon": "chart-line",
+              "note": "이 옵션을 유지할 가치가 있을까요?"
+            },
+            {
+              "label": "Endo / Plat 가치",
+              "to": "/endo",
+              "icon": "recycle",
+              "note": "쓸모없는 Riven을 Endo로 분해하기"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "liches",
+      "title": "Kuva Lich: 이름만 같고 다른 시스템",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Kuva Lich**는 자원이 아닌 숙적 적 캐릭터입니다. The War Within 완료 후 Grineer 미션에서 **Kuva Larvling**을 자비의 일격으로 처치하여 생성할 수 있습니다. Lich는 영토를 점령하며, 처치 시 무작위 보너스 수치(약 25–60%)를 가진 **Kuva 무기**를 드롭합니다."
+        },
+        {
+          "type": "p",
+          "text": "Lich를 물리치기 위해 Kuva *자원*을 소모하지는 않습니다. 올바른 순서의 세 가지 **Requiem mod**를 장착한 **Parazon**을 사용하여 처치해야 하며, 그 순서를 알아내는 것 자체가 하나의 퍼즐입니다. Requiem mod는 **Requiem Relic**에서 얻을 수 있습니다. 이러한 겹겹이 쌓인 무작위성(relic → Requiem → 올바른 순서 → 무기 → 좋은 옵션)은 레딧 커뮤니티에서 자주 불만을 토로하는 주된 원인입니다."
+        },
+        {
+          "type": "warn",
+          "text": "초보자가 빠지기 쉬운 함정: 자원으로서의 Kuva를 파밍한다고 해서 **절대로** Kuva 무기를 얻을 수 없으며, Lich를 사냥한다고 해서 리롤을 위한 Kuva 저장량이 채워지지도 않습니다. 이 둘은 이름만 공유할 뿐 완전히 별개의 파밍 영역입니다."
+        }
+      ]
+    }
+  ],
+  "videos": [
+    {
+      "id": "ETo_jzx1m1A",
+      "title": "How To Farm Kuva in Warframe 2026 | Best Methods + Vendors",
+      "channel": "Tipsy"
+    },
+    {
+      "id": "6Ebs0Ws_GdQ",
+      "title": "Kuva Farming Guide - All the ways to get Kuva",
+      "channel": "QuadLyStop"
+    },
+    {
+      "id": "9t6f01oAEIM",
+      "title": "Best Ways To Farm Kuva In Warframe | Easy Guide (2025)",
+      "channel": "ZombiGamEr4562"
+    },
+    {
+      "id": "BQ8fMA0e43o",
+      "title": "How to easy farm Kuva Lich Complete Beginner - Veteran Guide | Warframe 2025",
+      "channel": "1WEAZEL1"
+    }
+  ],
+  "related": [
+    {
+      "label": "Riven mod 가이드",
+      "to": "/guides/riven",
+      "icon": "dice-multiple",
+      "note": "Kuva 리롤로 실제로 바뀌는 것"
+    },
+    {
+      "label": "Riven 가치 평가기",
+      "to": "/riven-value",
+      "icon": "chart-line",
+      "note": "리롤 결과가 소모한 Kuva만큼의 가치가 있는지 확인하기"
+    },
+    {
+      "label": "Void Relic 가이드",
+      "to": "/guides/relics",
+      "icon": "diamond-stone",
+      "note": "Kuva Survival fissure로 일석이조 효과 노리기"
+    },
+    {
+      "label": "Endo & Plat 가치",
+      "to": "/endo",
+      "icon": "recycle",
+      "note": "리롤 대신 쓸모없는 Riven 분해하기"
+    },
+    {
+      "label": "Steel Path 가이드",
+      "to": "/guides/steel-path",
+      "icon": "skull",
+      "note": "더 험난한 Kuva Survival, 더 풍족한 파밍"
+    },
+    {
+      "label": "커뮤니티 FAQ",
+      "to": "/faq",
+      "icon": "help-circle",
+      "note": "기타 빠른 답변"
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Warframe에서 Kuva는 어디에 사용되나요?",
+      "a": "Kuva의 주요 용도는 Riven mod의 능력치를 리롤하는 것입니다. 리롤할 때마다 Kuva를 소모하여 Riven의 버프와 디버프를 재조정합니다. 또한 소수의 설계도(몇몇 Warframe, Umbra Forma 및 일부 무기)의 제작 재료로도 사용됩니다. plat으로 Warframe을 구매, 제작 또는 랭크업하는 것과는 아무런 관련이 없습니다. 리롤 작동 방식에 대해서는 [Riven 가이드](/guides/riven)를 참고하세요."
+    },
+    {
+      "q": "Kuva를 빠르게 파밍하는 가장 좋은 방법은 무엇인가요?",
+      "a": "빠르고 부담 없이 Kuva를 얻으려면 Kuva Siphon을 연달아 클리어하고 Kuva Flood가 활성화되었을 때 도는 것이 좋으며, 지속적으로 대량 파밍하려면 Kuva Fortress에서 Kuva Survival을 플레이하세요. 두 방법 모두 Resource Booster와 함께 사용하고, Beast 동반자에 Loyal Retriever를 장착하여 Kuva 획득 시 13%의 확률로 두 배 획득 효과를 적용받으면 수확량을 배가시킬 수 있습니다. Kuva Survival을 Void Fissure 상태로 플레이하면 동시에 plat을 벌기 위한 [relic](/relic-farming) 개봉도 가능합니다."
+    },
+    {
+      "q": "Riven을 리롤하는 데 Kuva가 얼마나 드나요?",
+      "a": "첫 리롤에는 약 900 Kuva가 소모되며, 횟수가 늘어날 때마다 비용이 증가하여 약 10회 이후에는 대략 3,500 Kuva로 영구 고정됩니다. 리롤은 순수한 무작위(RNG)이므로, 나중에 후회할 수 있는 리롤에 Kuva를 쏟아붓기 전에 [Riven 가치 평가기](/riven-value)를 확인해 보세요."
+    },
+    {
+      "q": "Kuva와 Kuva Lich의 차이점은 무엇인가요?",
+      "a": "Kuva는 Riven을 리롤하기 위해 파밍하는 자원입니다. 반면 Kuva Lich는 Larvling을 자비의 일격으로 처치하여 생성한 뒤 Kuva 무기를 얻기 위해 사냥하는 숙적 적 캐릭터입니다. 이 둘은 'Kuva'라는 명칭을 공유할 뿐 완전히 별개의 시스템입니다. Lich는 Kuva 자원을 소모하는 것이 아니라, Requiem mod와 Parazon을 사용하여 처치해야 합니다."
+    },
+    {
+      "q": "Kuva Siphon은 어떻게 해금하나요?",
+      "a": "The War Within 퀘스트를 완료하세요. 완료 후에는 Kuva Siphon 및 Kuva Flood 마커가 Origin System 전역의 성계 지도 노드에 로테이션으로 나타나며, Kuva Survival 노드가 있는 Kuva Fortress가 개방됩니다. 또한 Siphon의 촉수를 실제로 파괴하려면 해당 퀘스트에서 얻는 Operator의 Void 능력이 필요합니다. 도달 방법에 대해서는 [퀘스트 가이드](/guides/quests)를 확인해 보세요."
+    },
+    {
+      "q": "Smeeta Kavat이 Kuva를 두 배로 늘려주나요?",
+      "a": "더 이상 Charm을 통해서는 불가능합니다. Update 37(2024년 10월)부로 자원 두 배 획득 효과가 Smeeta의 Charm에서 별도의 모드인 Loyal Retriever로 이전되었습니다. 이 모드는 Kuva 포함 각 자원 획득 시 13%의 고정 확률로 두 배 획득 효과를 제공하며, 모든 Beast 동반자(Kubrow, Kavat 등)에 장착할 수 있습니다. Smeeta는 여전히 Charm의 다른 버프들 덕분에 유용하지만, 단지 Kuva를 두 배로 늘리기 위해 Smeeta를 필수로 사용할 필요는 없어졌습니다."
+    },
+    {
+      "q": "Kuva를 구매하거나 거래할 수 있나요?",
+      "a": "아니요. Kuva는 거래가 불가능한 자원이며 platinum으로 구매할 수도 없습니다. 직접 파밍해야만 합니다. Kuva로 리롤한 Riven은 거래할 수 있지만, Kuva 자체는 절대 거래할 수 없습니다. 만약 plat을 벌고 싶다면 대신 [플래티넘 가이드](/guides/platinum)를 참고하세요."
+    },
+    {
+      "q": "Resource Booster가 Kuva에도 적용되나요?",
+      "a": "네 — Resource Booster는 모든 Kuva 획득량을 두 배로 늘려주며, 자원 2배 주말 이벤트와도 중첩되어(부스터가 활성화된 상태에서 최대 약 4배) 적용됩니다. 매 판의 효율을 극대화하려면 본격적인 리롤 작업을 부스터 적용 기간으로 미뤄두는 것이 좋습니다."
+    }
+  ],
+  "sources": [
+    {
+      "label": "So let me get this straight… RNG relics → Requiems → Kuva Liches → weapon rolls (r/Warframe)",
+      "href": "https://reddit.com/r/Warframe/comments/dr46xo/so_let_me_get_this_straight_we_need_to_farm_rng/"
+    },
+    {
+      "label": "TFW you farm Kuva all day and have nothing to show for it besides a higher roll count (r/Warframe)",
+      "href": "https://reddit.com/r/Warframe/comments/ci5f0x/tfw_you_farm_kuva_all_day_and_have_nothing_to/"
+    },
+    {
+      "label": "Kuva farming actually felt good during 2x weekend (r/Warframe)",
+      "href": "https://reddit.com/r/Warframe/comments/b5a4za/kuva_farming_actually_felt_good_during_2x_weekend/"
+    },
+    {
+      "label": "Warframe Wiki",
+      "href": "https://wiki.warframe.com/"
+    }
+  ],
+  "updated": "2026-07-18"
+}

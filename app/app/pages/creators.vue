@@ -100,10 +100,39 @@
 
 <script setup lang="ts">
 import { computed, ref, nextTick, onMounted } from 'vue'
-import { CREATORS } from '~/data/creators'
+import { CREATORS as EN_CREATORS } from '~/data/creators'
+
+// Localized creator blurbs for the active locale (English fallback).
+const CREATORS = await useLocalizedCreators(EN_CREATORS)
 
 const { t } = useI18n()
 const localePath = useLocalePath()
+
+// ItemList of Person items — structured data for the creator directory.
+const origin = useRequestURL().origin
+useHead({
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'ItemList',
+        name: 'Best Warframe Content Creators',
+        numberOfItems: CREATORS.length,
+        itemListElement: CREATORS.map((c, i) => ({
+          '@type': 'ListItem',
+          position: i + 1,
+          item: {
+            '@type': 'Person',
+            name: c.name,
+            url: c.url,
+            ...(c.handle ? { alternateName: c.handle } : {}),
+          },
+        })),
+      }).replace(/</g, '\\u003c'),
+    },
+  ],
+})
 
 const activeTag = ref<string | null>(null)
 const tags = computed(() => [...new Set(CREATORS.flatMap((c) => c.tags))].sort())

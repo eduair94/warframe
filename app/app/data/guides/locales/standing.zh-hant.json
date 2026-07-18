@@ -1,0 +1,479 @@
+{
+  "slug": "standing",
+  "eyebrow": "知識中心 · 聲望與集團",
+  "title": "聲望與集團指南",
+  "lede": "聲望是 Warframe 的名望貨幣 — 也是獲取 augment mods、Amp 配件、arcanes 和 Nitain 的門檻。了解每日上限、六大主要集團、每個開放世界陣營，以及如何在幾分鐘內達到上限，而不是刷無數個任務。",
+  "category": "farming",
+  "readMins": 9,
+  "stats": [
+    {
+      "num": "6",
+      "label": "主要集團",
+      "tone": "gold"
+    },
+    {
+      "num": "16,000",
+      "label": "基礎每日聲望上限",
+      "tone": "good"
+    },
+    {
+      "num": "5",
+      "label": "升滿各集團所需的等級",
+      "tone": "alt"
+    },
+    {
+      "num": "00:00 UTC",
+      "label": "每日聲望重置",
+      "tone": "good"
+    }
+  ],
+  "sections": [
+    {
+      "id": "how-it-works",
+      "title": "聲望與每日上限的運作機制",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**聲望**（也稱為 **reputation** 或 **rep**）是你在 Warframe 中與各個陣營賺取的忠誠度貨幣。消費它可以解鎖 **Warframe/武器 augment mods**、集團武器與外觀、Operator **Amp** 配件、**arcanes**、外觀裝飾等。與 credits 或 platinum 不同，你無法交易聲望 — 你必須透過遊玩來賺取，且每個陣營都是獨立計算的。"
+        },
+        {
+          "type": "p",
+          "text": "限制在於 **每日聲望上限**。每天你只能在每個陣營累積一定的聲望，而這個上限會隨著你的 **Mastery Rank** 按比例提升：`16,000 + (500 × MR)`。因此，即使是全新的 MR0 玩家，每天每個集團也只能累積 16,000，MR10 的上限為 21,000，而 MR30 的上限為 31,000。提升你的 [Mastery Rank](/guides/mastery-rank) 是加快所有陣營同時進度的單一最大關鍵。"
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "每日上限公式",
+              "v": "16,000 + (500 × Mastery Rank)"
+            },
+            {
+              "k": "上限範例",
+              "v": "MR0 時為 16,000 · MR10 時為 21,000 · MR30 時為 31,000"
+            },
+            {
+              "k": "重置時間",
+              "v": "每日 00:00 UTC（格林威治標準時間午夜）"
+            },
+            {
+              "k": "計算方式",
+              "v": "每個集團獨立計算"
+            },
+            {
+              "k": "如何開始賺取",
+              "v": "向該陣營進行 Pledge，然後裝備其 Sigil"
+            }
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "上限是 **逾期作廢** 的 — 未使用的每日額度不會累積到隔天。由於每個陣營都有獨立的上限，每天花幾分鐘分散在多個陣營，效果遠比一次性馬拉松式的爆肝要好。養成圍繞 00:00 UTC 重置時間來刷聲望的習慣。"
+        }
+      ]
+    },
+    {
+      "id": "six-syndicates",
+      "title": "六大主要集團",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "你可以從 Orbiter（或任何 Relay）中的 **Syndicate 控制台** 進入，六大主要集團是經典的聲望刷取來源。免費 **Pledge** 其中一個，然後裝備其 **Sigil** — 這是一個戴在你的 Warframe 上的外觀徽章。從那時起，你在任務中獲得的一部分 affinity 將會自動轉換為該集團's 聲望。"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "集團",
+              "背景故事 / 主題"
+            ],
+            "rows": [
+              [
+                "Steel Meridian",
+                "保護平民的 Grineer 叛逃者"
+              ],
+              [
+                "Arbiters of Hexis",
+                "紀律與 Tenno 對自我掌控的追求"
+              ],
+              [
+                "Cephalon Suda",
+                "保存知識、數據與記憶"
+              ],
+              [
+                "The Perrin Sequence",
+                "追求經濟平衡的 Corpus 改革派"
+              ],
+              [
+                "Red Veil",
+                "透過鮮血淨化腐敗的狂熱分子"
+              ],
+              [
+                "New Loka",
+                "恢復「純潔」的地球與人類"
+              ]
+            ],
+            "note": "每個集團都販售自己專屬的一套 Warframe/武器 augment mods、集團武器與外觀、relic packs、sculptures 和 Captura 場景。根據你想要的特定 augments 來選擇你的第一個陣營 — 請查看遊戲內控制台或 wiki 以獲取目前確切的獎勵清單。"
+          }
+        },
+        {
+          "type": "warn",
+          "text": "這六個集團處於一個 **同盟/敵對關係網** 中：賺取其中一個集團的聲望會慢慢 **降低** 其敵對集團的聲望。這就是為什麼回歸玩家有時會發現某個陣營的聲望在沒碰過的情況下悄悄下降。這很正常 — 控制台會顯示你裝備的 Sigil 所帶來的確切 +/− 影響。大多數玩家會專攻一到兩個陣營，然後更換 Sigils 來補滿其餘的陣營。"
+        }
+      ]
+    },
+    {
+      "id": "earning-main",
+      "title": "Sigils、medallions 與 sacrifices",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "有三種方法可以提升主要集團的聲望，而將它們疊加使用正是老玩家快速提升等級的秘訣："
+        },
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "h": "配戴正確的 Sigil",
+              "p": "聲望會隨著 affinity 按比例提升，因此任何高擊殺數的任務都能提供聲望 — 包括隊友在附近擊殺時分享給你的 affinity。在開始匹配 *之前*，請先裝備你想提升的陣營的 Sigil，否則那些 affinity 就浪費了。"
+            },
+            {
+              "h": "尋找 Syndicate Medallions",
+              "p": "每個陣營每天都會在控制台上發布每日任務。這些地圖中隱藏著可收集的 medallions；撿起它們，然後在集團處捐贈以換取大量聲望。至關重要的一點是，捐贈 medallions 可以讓你突破一般的每日上限 — 這是升級最快的方法。"
+            },
+            {
+              "h": "支付 sacrifice 以升級",
+              "p": "每個新等級都需要足夠的總聲望，以及該陣營所要求的一次性物品「sacrifice」。前幾級需要常見資源；較高等級則需要稀有 mods、資源或集團專屬物品。控制台會詳細列出所需的內容。"
+            }
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "**囤積你的 medallions。** 因為捐贈可以超過每日上限，所以存一堆並在支付升級 sacrifice 後立即全部捐出 — 你就能直接躍升到下一個等級。裝備 loot-radar 或 treasure-detector mod 可以讓尋找隱藏的 medallions 變得易如反掌。"
+        },
+        {
+          "type": "info",
+          "text": "集團的 **augment mods 是可以交易的**，這使得升滿的集團成為穩定的 platinum 來源。在 [Platinum 指南](/guides/platinum)中學習交易流程，在 [市場篩選器](/screener)上為你的 augments 定價，並利用 [價差尋找器](/flip)來賺取買賣價差。"
+        }
+      ]
+    },
+    {
+      "id": "open-worlds",
+      "title": "開放世界與城鎮陣營",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "開放世界陣營的運作方式不同：你不需要裝備 Sigils 和賺取 affinity，而是向他們的商人 **提交資源** — 魚類、切磨寶石、保育標籤、tokens 和賞金獎勵。它們仍然遵循相同的 `16,000 + 500 × MR` 每日上限，且為獨立計算，因此你可以在一天內升滿多個陣營。"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "城鎮 · 開放世界",
+              "陣營",
+              "提交內容",
+              "可購買的聲望商品（通用）"
+            ],
+            "rows": [
+              [
+                "Cetus · Plains of Eidolon",
+                "Ostron",
+                "賞金、魚類、切磨寶石",
+                "Zaw 配件 (Hok)、釣魚與採礦裝備、面具和場景"
+              ],
+              [
+                "Fortuna · Orb Vallis",
+                "Solaris United",
+                "賞金、魚類、寶石、debt-bonds",
+                "Kitgun 配件 (Rude Zuud)、MOA 夥伴 (Legs)、裝備"
+              ],
+              [
+                "Necralisk · Cambion Drift",
+                "Entrati",
+                "賞金、魚類、保育標籤、寶石、tokens",
+                "Mods、arcanes、Necramech 裝備、外觀裝飾"
+              ],
+              [
+                "Sanctum Anatomica",
+                "Cavia",
+                "Netracells 與 Sanctum 賞金",
+                "Whispers-in-the-Walls arcanes 與 mods"
+              ],
+              [
+                "Höllvania (1999)",
+                "The Hex",
+                "1999 活動與賞金",
+                "全新 arcanes、武器、mods、外觀裝飾"
+              ]
+            ],
+            "note": "獎勵清單會隨著每次更新而改變 — 請在 wiki 上確認最新的商品。至於原材料本身，請參閱 Resources 指南。"
+          }
+        },
+        {
+          "type": "tip",
+          "text": "當你接近上限時，可以使用這些城鎮的 **token / wisp 系統**（特別是 Deimos 和較新的世界）。你可以將溢出的資源轉換為你*持有*的 tokens，然後在以後的日子裡兌換 — 這樣一來，豐收的漁獲或礦石就永遠不會被浪費。這項便利性優化正是社群歡呼「感謝聲望 tokens」的原因。"
+        },
+        {
+          "type": "p",
+          "text": "開放世界資源也會供應 [Resources 指南](/guides/resources)的製作經濟，而 Eidolon/Orb 狩獵則與下方的 Operator 陣營直接相關。"
+        }
+      ]
+    },
+    {
+      "id": "other-factions",
+      "title": "其他值得了解的聲望商人",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "除了大型集團之外，還有幾個專業陣營擁有自己的聲望軌跡 — 這就是 Operator **Amps**、**arcanes** 和 Necramech 裝備的來源。"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "陣營",
+              "地點",
+              "賺取方式",
+              "消費於"
+            ],
+            "rows": [
+              [
+                "Cephalon Simaris",
+                "Relays (Sanctuary)",
+                "Synthesis 掃描目標",
+                "專屬 mods、武器與實用工具藍圖、Sanctuary 掃描器升級套件"
+              ],
+              [
+                "The Quills",
+                "Cetus (Onkko)",
+                "交易 Eidolon 碎片",
+                "Amp 配件、arcanes、focus lenses"
+              ],
+              [
+                "Vox Solaris",
+                "Fortuna (Little Duck)",
+                "Orb 戰鬥與 Vallis 材料",
+                "Amp 配件、Operator arcanes"
+              ],
+              [
+                "The Holdfasts",
+                "Zariman (Chrysalith)",
+                "Zariman 任務 → Voidplumes",
+                "Arcanes、mods、外觀裝飾"
+              ],
+              [
+                "Necraloid",
+                "Necralisk",
+                "Necramech 與 Deimos 活動",
+                "Necramech mods 與配件"
+              ],
+              [
+                "Ventkids",
+                "Fortuna",
+                "K-Drive 特技與競速",
+                "K-Drive 配件與外觀裝飾"
+              ],
+              [
+                "Conclave",
+                "Relays (Teshin)",
+                "PvP 對戰",
+                "PvP mods、外觀裝飾、Captura"
+              ]
+            ],
+            "note": "Teshin 也經營 Steel Path 商店，但那需要消耗 Steel Essence（一種貨幣），而不是聲望 — 請參閱 Steel Path 指南。"
+          }
+        },
+        {
+          "type": "info",
+          "text": "想要製作一個用於 Eidolon 狩獵的 Amp 嗎？The Quills 和 Vox Solaris 是你的供應商，且兩者都與你的 Operator 進度相關。請將此與 [Focus 指南](/guides/focus)和 [Eidolon 指南](/guides/eidolon)搭配閱讀。"
+        }
+      ]
+    },
+    {
+      "id": "fastest-cap",
+      "title": "達到聲望上限的最快方法",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "不需要任何漏洞 — 只需要高效率的路線。以下是可靠且歷久彌新的攻略："
+        },
+        {
+          "type": "list",
+          "items": [
+            "**首先裝備正確的 Sigil。** 聲望會隨著 affinity 增加，因此一場高擊殺數的無盡任務（或快速的 affinity 節點）就能在單次運行中達到 — 或幾乎達到 — 主要集團的上限。千萬不要在沒有裝備 Sigil 的情況下刷聲望。",
+            "**執行集團的每日任務以獲取 medallions**，然後捐贈它們 — 捐贈可以繞過每日上限，因此這是你突破上限的手段。",
+            "**提前刷好開放世界的提交物。** 在輕鬆遊玩時囤積魚類、寶石和標籤，然後在重置時一次提交以立即達到上限；將溢出的資源轉換為 tokens，這樣就不會浪費。",
+            "**每天輪換陣營。** 因為每個陣營的上限都是獨立計算的，花 15 分鐘在兩到三個陣營之間循環，所累積的總聲望遠比只死磕一個陣營要多得多。",
+            "**提升 Mastery Rank。** 每個 MR 都會為每個陣營的每日上限增加 500 — 這是永久提升你整體上限的唯一方法。"
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "你可以在 Arsenal（軍械庫）中將 Sigil 的 **不透明度設置為接近零**，這樣它既能賺取聲望，又不會破壞你的外觀造型。非常適合一直裝備著用於 farming 的 Sigil。"
+        }
+      ]
+    },
+    {
+      "id": "nightwave",
+      "title": "Nightwave：相關但非集團聲望",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Nightwave** 令人困惑地也提供「聲望」，但它是一個獨立的季節性系統 — 可以把它看作是輪換的挑戰軌跡。你完成 **Acts**（每日、每週和精英每週挑戰）來填滿等級階梯，每個等級都會發放獎勵以及可在其商店中消費的 **Nightwave Cred**。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**每日 Acts** 規模較小且每天重置；**每週和精英每週 Acts** 提供的聲望要多得多 — 請優先完成這些。",
+            "**Cred 商店的常駐商品**是遊戲中性價比最高的一些東西：**Nitain Extract**、**Orokin Reactors/Catalysts**（俗稱「馬鈴薯」）、**Forma**、**Kuva**、Aura mods 以及該季節的專屬外觀裝飾。",
+            "在超過最終階梯後，你可以繼續提升至重複的 **Prestige** 等級，這些等級會持續提供 Cred。",
+            "在賽季之間，**Nightwave: Intermission** 會保持商店開放並讓你剩餘的 Cred 仍可使用，因此強制重置絕不會讓你血本無歸。"
+          ]
+        },
+        {
+          "type": "warn",
+          "text": "當賽季結束時，賽季專屬的外觀裝飾（偶爾還有戰甲）可能會消失很長一段時間，這就是為什麼玩家會在最後一週爭先恐後地刷任務。不要恐慌性地去刷所有東西 — 你很少需要完成每一個 Act 才能達到最高等級 — 但務必在賽季結束前將你的 Cred 花在 Nitain 和馬鈴薯上。"
+        }
+      ]
+    },
+    {
+      "id": "pitfalls",
+      "title": "常見問題與陷阱",
+      "blocks": [
+        {
+          "type": "info",
+          "text": "**「我處決了一個 Grineer，結果我的 star chart 變紅了」** — 那不是集團。你創造了一個 **Kuva Lich**，這是一個宿敵，會對它控制的節點（顯示為紅色）徵收稅金。這是一個完全獨立的系統；請前往 [Kuva & Lich 指南](/guides/kuva)來獵殺它。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**不要在沒有裝備 Sigil 的情況下刷聲望。** 在沒有裝備 Sigil 時獲得的 affinity 等同於白白浪費了聲望。",
+            "**不要害怕敵對陣營聲望下降。** 與對手失去一點聲望是設計使然；你最終可以透過輪換 Sigils 並重新補滿敵對陣營來提升所有陣營的等級。",
+            "**不要讓溢出的資源爛掉。** 超過上限後，將開放世界資源轉換為 tokens，並保留 medallions 以便日後捐贈。",
+            "**不要混淆貨幣。** 集團聲望、Nightwave Cred 和 Steel Essence 是三種不同的東西 — 請各自在專屬的商店中消費。"
+          ]
+        },
+        {
+          "type": "p",
+          "text": "若要了解更廣泛的進度藍圖 — 即聲望 farming 如何與 credits、relics 和 Mastery 協同配合 — 請參閱 [Progression 指南](/guides/progression)和精選的[社群工具目錄](/tools)。"
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "在 Warframe 中，每日聲望上限是如何計算的？",
+      "a": "上限為 `16,000 + (500 × your Mastery Rank)`，每個陣營獨立計算，並於每日 00:00 UTC 重置。因此，即使是全新的 MR0 玩家，每天每個集團也只能累積 16,000，MR10 的上限為 21,000，而 MR30 的上限為 31,000。提升你的 [Mastery Rank](/guides/mastery-rank) 是永久提升所有陣營整體上限的唯一方法。"
+    },
+    {
+      "q": "刷取集團聲望最快的方法是什麼？",
+      "a": "裝備該陣營的 Sigil，執行高擊殺數的 affinity 任務以快速達到上限，並囤積每日任務中的 Syndicate Medallions。捐贈 medallions 可以讓你突破每日上限，因此存一堆並在升級 sacrifice 後立即全部捐出是升到新等級最快的方法。"
+    },
+    {
+      "q": "我可以升滿所有六大主要集團嗎？",
+      "a": "可以，最終是可以的。這六個集團處於一個同盟/敵對關係網中，因此賺取其中一個集團的聲望會慢慢降低其敵對集團的聲望 — 但你只需隨著時間更換 Sigils 並重新補滿其他集團即可。圍繞敵對關係進行規劃，你就可以達到所有陣營的最高等級。"
+    },
+    {
+      "q": "Nightwave 聲望與集團聲望相同嗎？",
+      "a": "不同。Nightwave 是一個獨立的季節性挑戰軌跡：你完成每日、每週和精英每週 Acts 來賺取 Nightwave 等級和 Nightwave Cred。將這些 Cred 花在 Nitain、Orokin Reactors/Catalysts、Forma、Kuva 和外觀裝飾上 — 這與你的六大集團聲望毫無關係。"
+    },
+    {
+      "q": "為什麼我沒玩的集團聲望會下降？",
+      "a": "因為集團的敵對關係。根據你所裝備的 Sigil，獲得某個陣營的名望會降低其敵對陣營的名望。這是設計使然 — Syndicate 控制台會顯示每個 Sigil 所帶來的確切 +/− 影響，以便你規劃要一起升級哪些陣營。"
+    },
+    {
+      "q": "我該去哪裡獲得 Operator Amp 配件與 arcanes？",
+      "a": "來自專業的聲望陣營：Cetus 的 The Quills（交易 Eidolon 碎片）和 Fortuna 的 Vox Solaris（來自 Orb 戰鬥和 Vallis 材料）販售 Amp 配件和 arcanes。請將此與 [Focus 指南](/guides/focus)和 [Eidolon 指南](/guides/eidolon)搭配，以建立你的狩獵配置。"
+    },
+    {
+      "q": "我處決了一個 Grineer，結果我的整個星球都變紅了 — 這是集團相關的事嗎？",
+      "a": "不是。處決一個 Kuva Larvling 會產生一個 Kuva Lich，這是一個會佔領節點並在 star chart 上將其標記為紅色的宿敵。這與集團聲望無關 — 請參閱 [Kuva & Lich 指南](/guides/kuva)來擊敗它並收復你的節點。"
+    },
+    {
+      "q": "集團獎勵值 platinum 嗎？",
+      "a": "非常值錢 — 集團的 augment mods 是可以交易的，且一直保持穩定的需求，這使得升滿的集團成為可靠的 platinum 收入來源。在 [Platinum 指南](/guides/platinum)中學習交易流程，並使用 [市場篩選器](/screener)和 [價差尋找器](/flip)為你的 mods 定價。"
+    }
+  ],
+  "videos": [
+    {
+      "id": "d_q95Xf6Ohs",
+      "title": "You Have Been Farming Syndicate Standing In WARFRAME ALL WRONG!",
+      "channel": "iFlynn"
+    },
+    {
+      "id": "xfUY8DaZVTw",
+      "title": "MAX YOUR STANDINGS NOW! - FASTEST METHODS FOR ALL SYNDICATES [WARFRAME]",
+      "channel": "TRiX_VS"
+    },
+    {
+      "id": "whtYsyH3N9I",
+      "title": "Warframe | How To Farm Syndicate Standing Quick and Easy - Plumes and Medallions",
+      "channel": "1ManArmyYigit"
+    },
+    {
+      "id": "Vt-albA4ZhA",
+      "title": "How to Max Out EVERY Syndicate Standing FAST in Warframe (Complete Guide)",
+      "channel": "Chapu"
+    }
+  ],
+  "sources": [
+    {
+      "label": "r/Warframe — new wiki showcase (wiki.warframe.com)",
+      "href": "https://reddit.com/r/Warframe/comments/1ios9qf/just_wanted_to_share_how_sexy_the_new_wiki_is/"
+    },
+    {
+      "label": "r/Warframe — Nightwave ended too soon (rank/FOMO)",
+      "href": "https://reddit.com/r/Warframe/comments/1kpzgsq/im_sorry_everyone_i_failed_all_of_you/"
+    },
+    {
+      "label": "r/Warframe — final-hour Nightwave Cred grind (Nitain/potatoes)",
+      "href": "https://reddit.com/r/Warframe/comments/1sgqki4/i_forgor/"
+    },
+    {
+      "label": "r/Warframe — Nightwave weekly Act discussion (DE replied)",
+      "href": "https://reddit.com/r/Warframe/comments/q6fq49/pov_you_have_a_nightwave_act_to_bullet_jump_150/"
+    },
+    {
+      "label": "Official Warframe Wiki",
+      "href": "https://wiki.warframe.com/"
+    }
+  ],
+  "related": [
+    {
+      "label": "Focus & Operator 指南",
+      "to": "/guides/focus",
+      "icon": "school",
+      "note": "Amps、lenses 與 Quills/Vox Solaris 聲望"
+    },
+    {
+      "label": "Eidolon 狩獵指南",
+      "to": "/guides/eidolon",
+      "icon": "weather-night",
+      "note": "碎片可用於提升 Quills 聲望以換取 Amps"
+    },
+    {
+      "label": "Kuva & Lich 指南",
+      "to": "/guides/kuva",
+      "icon": "skull",
+      "note": "紅色 star chart 原理解析"
+    },
+    {
+      "label": "Platinum 指南",
+      "to": "/guides/platinum",
+      "icon": "diamond-stone",
+      "note": "交易集團 augments 以賺取 plat"
+    },
+    {
+      "label": "Resources 指南",
+      "to": "/guides/resources",
+      "icon": "pickaxe",
+      "note": "開放世界提交材料"
+    },
+    {
+      "label": "社群工具",
+      "to": "/tools",
+      "icon": "tools",
+      "note": "Wiki、Overframe 與市場追蹤器"
+    }
+  ],
+  "updated": "2026-07-18"
+}

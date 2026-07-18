@@ -1,0 +1,480 @@
+{
+  "slug": "arcanes",
+  "eyebrow": "知识中心 · Arcanes",
+  "title": "Arcanes 指南",
+  "lede": "Arcanes 是基于触发的被动效果，能将一套不错的 build 变成 Steel Path 猛兽。以下是它们的作用、如何升级、在哪里掉落，以及如何通过出售重复的副本来为你的刷取提供资金支持。",
+  "category": "systems",
+  "readMins": 10,
+  "stats": [
+    {
+      "num": "21",
+      "label": "将一个 Arcane 升至满级（Rank 5）所需的副本数量",
+      "tone": "gold"
+    },
+    {
+      "num": "2",
+      "label": "每个 Warframe 的 Arcane 槽位",
+      "tone": "good"
+    },
+    {
+      "num": "6",
+      "label": "等级阶段，R0 至 R5",
+      "tone": "alt"
+    },
+    {
+      "num": "3",
+      "label": "标志性的 Eidolon Arcanes",
+      "tone": "gold"
+    }
+  ],
+  "sections": [
+    {
+      "id": "what-are-arcanes",
+      "title": "Arcanes 究竟是什么",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "一个 **Arcane** 是一种被动强化效果，装备在专属的槽位中，并在满足特定**触发条件**时生效——通常有一定概率激活。例如“拾取能量时，有概率恢复能量”或“受到伤害时，有概率获得护甲”。与 mod 不同，Arcanes **不消耗 mod 容量**，因此它们可以叠加在您现有的 build 之上，提供免费的战力提升。"
+        },
+        {
+          "type": "p",
+          "text": "Arcanes 是特定槽位专用的——为 Warframe 设计的 Arcane 不能装备在武器上，反之亦然。其主要系列包括："
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Warframe Arcanes** —— 生存能力、能量和进攻性被动效果（Grace、Guardian、Energize、Avenger 以及 Molt 系列）。",
+            "**武器 Arcanes** —— 主要武器、次要武器和近战 Arcanes，通过击杀提升伤害或对爆头进行奖励（Merciless 和 Deadhead 系列）。",
+            "**Operator Arcanes（Magus 系列）** —— 为您的 Operator/Drifter 提供治疗、控场和辅助功能。",
+            "**Amp Arcanes（Virtuos 系列）** —— 提升 Amp 的暴击和伤害，这是 Eidolon 狩猎的核心。",
+            "**模块化装备 Arcanes** —— Exodia（用于 Zaws）和 Pax（用于 Kitguns）可以调整您制作的近战和次要武器。"
+          ]
+        },
+        {
+          "type": "info",
+          "text": "Arcanes 是**可重复使用、永久保留的仓库道具**。在 frame 上装备一个并不会消耗它——您可以随时自由地将其更换到另一个 frame 或武器上。不需要任何蒸馏器，也不会有任何东西被销毁。"
+        }
+      ]
+    },
+    {
+      "id": "slots",
+      "title": "Arcane 槽位：它们装备在哪里",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "每件装备都有固定数量的 Arcane 槽位，位于升级界面（在您的 mods 旁边）的 **Arcanes** 标签页中。"
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "Warframe",
+              "v": "2 个 Arcane 槽位"
+            },
+            {
+              "k": "主要武器 / 次要武器 / 近战武器",
+              "v": "各 1 个 Arcane 槽位"
+            },
+            {
+              "k": "Operator / Drifter",
+              "v": "用于 Magus 系列 Arcanes 的 Arcane 槽位"
+            },
+            {
+              "k": "Amp",
+              "v": "用于 Virtuos 系列 Arcanes 的 Arcane 槽位"
+            }
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Warframe 槽位默认即可直接使用。**武器** Arcane 槽位必须先使用 **Arcane Adapter** 解锁——每种武器类型一个（主要武器、次要武器和近战武器各有专属的适配器）。获取途径包括 Teshin 的 **Steel Path Honors**，可在任何中继站使用 Steel Essence 购买；您也可以在 Duviri 的 **Acrithis** 处使用 Pathos Clamps 兑换适配器，或者直接在游戏内商城使用 platinum 购买。"
+        },
+        {
+          "type": "warn",
+          "text": "适配器的获取来源和 Honors 轮换会在版本更新之间进行调整。如果您在本赛季找不到在哪里购买适配器，请在开始刷错误的活动之前，先查看实时的 [wiki.warframe.com](https://wiki.warframe.com/) 或最近的视频。"
+        }
+      ]
+    },
+    {
+      "id": "ranking",
+      "title": "升级与满级：“21 规则”",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Arcanes 的等级从 **Rank 0 到 Rank 5**，您可以通过叠加**相同 Arcane 的重复副本**来升级它们——而不是使用 Endo 或 Kuva。每个 Arcane 都遵循相同的升级曲线：每提升一级所需的副本数量都比上一级多一些。"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "等级",
+              "达到该等级所需的副本数",
+              "拥有的总副本数"
+            ],
+            "rows": [
+              [
+                "Rank 0（装备）",
+                "1",
+                "1"
+              ],
+              [
+                "Rank 1",
+                "+2",
+                "3"
+              ],
+              [
+                "Rank 2",
+                "+3",
+                "6"
+              ],
+              [
+                "Rank 3",
+                "+4",
+                "10"
+              ],
+              [
+                "Rank 4",
+                "+5",
+                "15"
+              ],
+              [
+                "Rank 5（满级）",
+                "+6",
+                "21"
+              ]
+            ],
+            "note": "将一个 Arcane 完全升至 Rank 5 需要 21 个完全相同的 Arcane 副本。"
+          }
+        },
+        {
+          "type": "tip",
+          "text": "您**不需要**将 Arcane 升满才能使用。单个副本（Rank 0）就已经可以生效——只是触发概率较低或数值较小。先装备您目前拥有的，然后随着时间推移慢慢升级它；即使是 Rank 3 的 Energize 或 Grace 也能带来巨大的体验提升。"
+        },
+        {
+          "type": "p",
+          "text": "因为 21 个副本是一条漫长的路，所以请优先考虑您在主力 frame 上实际使用的一两个 Arcanes，而不是试图一次性把所有东西都升满。将您的整个收藏全部升满是真正的炫耀资本——r/Warframe 上的帖子 [“终于把所有 Arcanes 升满了（100% 自己刷的）”](https://reddit.com/r/Warframe/comments/1iz2rw4/as_of_today_i_have_finally_maxed_all_arcanes_100/) 展现了极大的毅力。"
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "title": "Arcanes 的来源",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "没有单一的 Arcane 商家——它们分布在各种终局活动中，每种都与自己的货币挂钩。这是参考图。具体的掉落率和“目前最佳刷取点”会随着补丁而变化，因此请将此作为长期的概览，并在 wiki 上确认具体细节。"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "来源",
+              "你可以获得什么",
+              "如何获取"
+            ],
+            "rows": [
+              [
+                "Eidolons —— Plains of Eidolon（夜晚）",
+                "经典的 frame Arcanes：Energize、Grace、Guardian、Aegis、Avenger 等",
+                "捕获掉落（随机）"
+              ],
+              [
+                "Acrithis —— Duviri",
+                "直接购买许多相同的 frame Arcanes，无需碰运气",
+                "Pathos Clamps（来自 Orowyrm）"
+              ],
+              [
+                "Vox Solaris / Little Duck —— Fortuna",
+                "Operator（Magus）和 Amp（Virtuos）Arcanes",
+                "Vox Solaris 声望"
+              ],
+              [
+                "The Holdfasts —— Zariman",
+                "武器 Arcanes + Molt 辅助 Arcanes",
+                "Holdfasts 声望"
+              ],
+              [
+                "Cavia —— Sanctum Anatomica",
+                "近战 Arcanes 和近战 Arcane Adapters",
+                "Cavia 声望"
+              ],
+              [
+                "Arcana Isolation Vaults —— Deimos",
+                "Theorem 和 Residual Arcanes（小众协同被动）",
+                "赏金任务奖励轮换（随机）"
+              ],
+              [
+                "活动与行动",
+                "轮换 Arcanes；Exodia Arcanes（Zaws）",
+                "活动代币 / 储藏箱"
+              ],
+              [
+                "Höllvania / 1999 (Techrot Encore)",
+                "来自储藏箱的 Arcanes + The Hex 声望",
+                "储藏箱与声望"
+              ],
+              [
+                "其他玩家",
+                "任何可交易的 Arcane",
+                "Platinum (warframe.market)"
+              ]
+            ],
+            "note": "Duviri 的 Acrithis 是伟大的平衡者：她出售许多需要 Pathos Clamps 的 Eidolon Arcanes，因此单人玩家可以完全跳过 4 人联机打 Tridolon 的主流玩法。"
+          }
+        },
+        {
+          "type": "p",
+          "text": "Operator 和 Amp Arcanes 是消耗极大的无底洞之一——Vox Solaris 的声望之墙是真实存在的（玩家们已经计算过，购买完整的 [Little Duck 阵容](https://reddit.com/r/Warframe/comments/1s0jdek/de_is_fixing_the_early_game_grind_but_forgot/) 需要数百万声望）。与此同时，像 **1999/Techrot Encore** 这样较新的内容通过储藏箱慷慨地赠送 Arcanes（并允许您使用 The Hex 声望从 Eleanor 处购买），这就是为什么社区将其视为最友好的现代刷取点之一。请参阅 [Eidolon 指南](/guides/eidolon) 和 [声望指南](/guides/standing) 以了解这些来源背后的刷取循环。"
+        }
+      ]
+    },
+    {
+      "id": "staples",
+      "title": "值得了解的常用 Arcanes",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "随着时间的推移，您会积累几十个，但少数几种类型支撑了大多数 build。具体数值会随着平衡性调整而变化——请查看 wiki 获取当前数据——但这些定位是常青的："
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "定位",
+              "首选 Arcanes",
+              "作用"
+            ],
+            "rows": [
+              [
+                "能量循环",
+                "Arcane Energize",
+                "拾取能量时，有概率为您和附近的盟友恢复大量能量——能量续航之王"
+              ],
+              [
+                "坦克 / 自我治疗",
+                "Arcane Grace、Arcane Guardian、Arcane Aegis",
+                "受到攻击时：生命值回复、大量护甲加成或快速护盾回复"
+              ],
+              [
+                "进攻",
+                "Arcane Avenger、Arcane Fury、Arcane Strike",
+                "在合适条件下触发暴击率、近战伤害或攻击速度"
+              ],
+              [
+                "技能强度（Zariman）",
+                "Molt Augmented",
+                "随着击杀数的增加提升技能强度——一劳永逸的施法者 buff"
+              ],
+              [
+                "异常状态与续航（Zariman）",
+                "Molt Efficiency、Molt Reconstruct",
+                "Molt Efficiency 可缩短受到的异常状态持续时间；Molt Reconstruct 可将施放技能消耗的能量转化为对您和盟友的治疗"
+              ],
+              [
+                "武器伤害",
+                "Primary / Secondary Merciless",
+                "击杀敌人越多，叠加的伤害越高"
+              ],
+              [
+                "爆头收益",
+                "Primary / Secondary Deadhead",
+                "爆头击杀可获得额外伤害和装填速度奖励"
+              ],
+              [
+                "Operator / Amp",
+                "Magus Elevate、Magus Lockdown、Virtuos 系列",
+                "Operator 治疗与控场；用于 Eidolons 的 Amp 暴击"
+              ]
+            ]
+          }
+        },
+        {
+          "type": "tip",
+          "text": "如果您只追求三个，那就选择经典的 Eidolon 三件套——**Energize**（能量永不枯竭），以及 **Grace** 和 **Guardian**（在 Steel Path 中生存）。光是这个组合就能彻底改变几乎每个 frame 的手感。将它们与 [mods 指南](/guides/mods) 中的生存技术以及 [Helminth 指南](/guides/helminth) 结合使用，以获得完整的战力飞跃。"
+        }
+      ]
+    },
+    {
+      "id": "selling",
+      "title": "将 Arcanes 转化为 platinum",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "因为升满需要 21 个副本，所以您会获得大量不需要的**重复副本**——而且大多数 Warframe Arcanes 都是可以交易的。刷一个您已经升满的来源是游戏中较稳定的 platinum 收入来源之一，像 Energize 和 Grace 这样热门的 Arcanes 具有极高的价值。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**在刷取之前先核对价格。** 使用 [市场筛选器](/screener) 查看哪些 Arcanes 真正能卖出 plat，而哪些只值几个 ducats 且毫无用处。",
+            "使用 [差价寻找器](/flip) 和 [热门波动榜](/movers) 来**发现差价和需求**——当新的 frame 或更新让旧的被动效果重新成为主流时，Arcane 的价值就会产生波动。",
+            "**出售重复副本，保留单张。** 每种 Arcane 保留一个副本可以提供免费的配装灵活性；超出您目标等级的所有多余副本都是可以变现的库存。"
+          ]
+        },
+        {
+          "type": "p",
+          "text": "交易 Arcanes 是为您的账户赚取资金的经典方法之一。如果您对整个 plat 经济还很陌生，请先阅读 [platinum 指南](/guides/platinum) 了解交易频道浸和 warframe.market 的基础知识，然后再回来上架您多余的物品。"
+        }
+      ]
+    },
+    {
+      "id": "gameplan",
+      "title": "分步游戏计划",
+      "blocks": [
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "h": "不要操之过急 —— Arcanes 是中期战力提升",
+              "p": "新玩家应该先专注于 frames、武器和 mods。当您到达 Plains of Eidolon、制作了 Amp 并开启 Steel Path 时，您会自然而然地解锁 Arcane 生态系统。在您的核心 build 尚未成型之前，将 Arcanes 升满是毫无意义的。"
+            },
+            {
+              "h": "先获取能量 + 生存能力",
+              "p": "您的首要目标是 Energize / Grace / Guardian 这类核心。在市场上买一两个便宜的副本，或者去刷 Eidolons——或者跳过随机概率，直接在 Duviri 的 Acrithis 处用 Pathos Clamps 购买。即使是未升级的副本也能立即带来帮助。"
+            },
+            {
+              "h": "解锁您的武器 Arcane 槽位",
+              "p": "积累 Steel Path Honors 以兑换 Arcane Adapters（主要武器、次要武器和近战武器各需一个），然后在您的主力枪械上装备像 Merciless 系列这样通过击杀叠加伤害的 Arcanes。"
+            },
+            {
+              "h": "致力于将您的主力升满",
+              "p": "选择您最常用的一两个 Arcanes，并朝着 21 个副本的目标努力。即使未升满，中间的每一级也都能带来提升，因此这绝不是无用功。"
+            },
+            {
+              "h": "用重复副本为您的刷取提供资金",
+              "p": "通过 [筛选器](/screener) 和 [差价寻找器](/flip) 将所有多余的 Arcane 上架以换取 plat，然后重新投入到您仍需要的副本中。这样刷取就能自给自足。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mistakes",
+      "title": "常见错误与实用小贴士",
+      "blocks": [
+        {
+          "type": "list",
+          "items": [
+            "**将 Arcanes 与 mods 混淆。** Arcanes 放置在 Arcanes 标签页中，不消耗容量，并且在满足触发条件时生效——它们不会取代您的 mod 配置，而是对其进行补充。",
+            "**以为必须达到 Rank 5 才能开始使用。** 单个副本就已经可以生效。先装备它，随着获得重复副本再逐步升级。",
+            "**忽略了 Duviri。** Acrithis 出售许多需要 Pathos Clamps 的 Eidolon Arcanes——这是单人、低压力替代 Tridolon 狩猎的选择。",
+            "**卖光单张。** 每种可交易的 Arcane 至少保留一个；只出售超出您目标等级的多余部分。",
+            "**忘记武器适配器。** 在您使用匹配的 Arcane Adapter 解锁槽位之前，武器 Arcanes 不会起任何作用。"
+          ]
+        },
+        {
+          "type": "info",
+          "text": "Arcane 的价值、掉落率和“最佳刷取”节点是 DE 经常调整的细节。对于任何数值性的内容——特定的触发概率或当前的最佳刷取点——在投入数小时时间之前，请先交叉核对 [wiki.warframe.com](https://wiki.warframe.com/) 或最近的指南视频。"
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "在 Warframe 中，将一个 Arcane 升满需要多少个 Arcane？",
+      "a": "21 个相同的 Arcane 副本可以将其完全升至 Rank 5。每个阶段的消耗会递增——1 个用于装备，然后是 +2、+3、+4、+5、+6，累计总数为 21 个。不过，您不必将其升满才能使用；单个副本在 Rank 0 时即可生效。"
+    },
+    {
+      "q": "最适合优先刷取的第一个 Arcane 是什么？",
+      "a": "从能量和生存能力的核心开始——Arcane Energize、Arcane Grace 和 Arcane Guardian。它们几乎能提升游戏中的每一个 frame。您可以在夜晚的 Plains of Eidolon 刷取 Eidolons 获得它们，或者在 Duviri 的 Acrithis 处使用 Pathos Clamps 购买以跳过随机概率。请参阅 [Eidolon 指南](/guides/eidolon)。"
+    },
+    {
+      "q": "卸下 Arcanes 时它们会被消耗掉吗？",
+      "a": "不会。Arcanes 是永久保留的仓库道具——装备一个并不会消耗它，您可以随时在 frames 和武器之间自由更换。不会有任何东西被销毁，您也不需要任何类型的蒸馏器。"
+    },
+    {
+      "q": "可以用 Arcanes 交易 platinum 吗？",
+      "a": "是的——大多数 Warframe Arcanes 都是可以交易的，一旦您将自己使用的 Arcanes 升满，出售重复副本就是一种可靠的 platinum 收入来源。在刷取之前，先使用 [市场筛选器](/screener) 核对价格，并在 [热门波动榜](/movers) 上观察需求，因为它们的价值会随着主流玩法而波动。[platinum 指南](/guides/platinum) 介绍了交易的基础知识。"
+    },
+    {
+      "q": "如何解锁武器上的 Arcane 槽位？",
+      "a": "每把武器都需要专属的 Arcane Adapter——即主要武器、次要武器或近战武器 Arcane Adapter——来启用其唯一的 Arcane 槽位。您主要可以通过 Teshin 的 Steel Path Honors（使用 Steel Essence）获取适配器，也可以在 Duviri 的 Acrithis 处使用 Pathos Clamps 购买，或者从游戏内商城购买。相比之下，Warframe 的 Arcane 槽位默认可用——不需要适配器。"
+    },
+    {
+      "q": "Operator 和 Amp Arcanes 来自哪里？",
+      "a": "Operator Arcanes（Magus 系列）和 Amp Arcanes（Virtuos 系列）可以使用 Vox Solaris 声望在 Fortuna 的 Little Duck 处购买。您主要通过提交来自 Orb Vallis 的 Toroids 和多余的镀金 Amps 来获取该声望，而购买整个系列是一项繁重的声望刷取工作——因此请做好相应计划。"
+    },
+    {
+      "q": "Arcanes 对新玩家来说值得吗？",
+      "a": "它们是中后期的战力倍增器，而不是前期的首要任务。先整理好您的 frames、武器和 mods——当您到达 Plains of Eidolon 并开始 Steel Path 时，您会自然而然地解锁 Arcane 生态系统。一旦您到了那里，几个能量和生存能力的 Arcanes 将会是巨大的提升。"
+    }
+  ],
+  "videos": [
+    {
+      "id": "DOnp7Nih0YE",
+      "title": "The ONLY Arcane Guide You'll Ever Need (Warframe 2026)",
+      "channel": "WarframeFlo"
+    },
+    {
+      "id": "8-0t4RRSSZw",
+      "title": "How To Farm Arcanes & Best Warframe Arcane Farm to Do First!",
+      "channel": "Joe Hammer Gaming"
+    },
+    {
+      "id": "TfuqGjCf5ws",
+      "title": "18 Must-Have ARCANES after the TECHROT ENCORE Update",
+      "channel": "Grind Hard Squad"
+    },
+    {
+      "id": "WSEBKRYSoC8",
+      "title": "Farming Arcanes is Now EASIER Than Ever! | Warframe",
+      "channel": "Vanterrize Umbra"
+    }
+  ],
+  "sources": [
+    {
+      "label": "r/Warframe: As of today I have finally maxed all Arcanes (100% self farmed)",
+      "href": "https://reddit.com/r/Warframe/comments/1iz2rw4/as_of_today_i_have_finally_maxed_all_arcanes_100/"
+    },
+    {
+      "label": "r/Warframe: DE forgot about the standing sink for Vox Solaris arcanes",
+      "href": "https://reddit.com/r/Warframe/comments/1s0jdek/de_is_fixing_the_early_game_grind_but_forgot/"
+    },
+    {
+      "label": "r/Warframe: Getting Stronger in Warframe, 2026 (progression guide)",
+      "href": "https://reddit.com/r/Warframe/comments/1u00jua/getting_stronger_in_warframe_2026/"
+    },
+    {
+      "label": "Official Warframe Wiki",
+      "href": "https://wiki.warframe.com/"
+    }
+  ],
+  "related": [
+    {
+      "label": "Eidolon 狩猎指南",
+      "to": "/guides/eidolon",
+      "icon": "weather-night",
+      "note": "Energize、Grace 和 Guardian 的经典来源"
+    },
+    {
+      "label": "Steel Path 指南",
+      "to": "/guides/steel-path",
+      "icon": "skull",
+      "note": "武器 Arcane Adapters 的来源"
+    },
+    {
+      "label": "声望指南",
+      "to": "/guides/standing",
+      "icon": "handshake",
+      "note": "Vox Solaris、Holdfasts 和 Cavia 的 Arcane 声望"
+    },
+    {
+      "label": "Platinum 指南",
+      "to": "/guides/platinum",
+      "icon": "cash-multiple",
+      "note": "出售您重复的 Arcanes 以换取 plat"
+    },
+    {
+      "label": "市场筛选器",
+      "to": "/screener",
+      "icon": "table-search",
+      "note": "在刷取之前核对每个 Arcane 的价格"
+    },
+    {
+      "label": "Helminth 指南",
+      "to": "/guides/helminth",
+      "icon": "dna",
+      "note": "将 Arcanes 与注入的技能结合使用，以获得完整的战力飞跃"
+    }
+  ],
+  "updated": "2026-07-18"
+}

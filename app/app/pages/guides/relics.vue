@@ -6,5 +6,6 @@
 </template>
 
 <script setup lang="ts">
-import guide from '~/data/guides/relics'
+import enGuide from '~/data/guides/relics'
+const guide = await useLocalizedGuide('relics', enGuide)
 </script>

@@ -1,0 +1,403 @@
+{
+  "slug": "helminth",
+  "eyebrow": "Centre de connaissances · Helminth & Subsume",
+  "title": "Guide Helminth & Subsume",
+  "lede": "Nourrissez le Helminth avec un Warframe de rechange, gardez l'une de ses capacités pour toujours, puis greffez cette capacité sur un frame qui en a vraiment besoin. C'est ainsi qu'un frame correct devient un monstre — voici toutes les règles, les meilleures capacités à aller chercher, et l'erreur qui coûte aux joueurs un Warframe entier.",
+  "category": "systems",
+  "readMins": 9,
+  "stats": [
+    {
+      "num": "8",
+      "label": "Mastery Rank requis pour acheter le segment",
+      "tone": "gold"
+    },
+    {
+      "num": "6",
+      "label": "types de sécrétions que vous lui donnez",
+      "tone": "good"
+    },
+    {
+      "num": "1",
+      "label": "emplacement subsumed par frame",
+      "tone": "alt"
+    },
+    {
+      "num": "7 days",
+      "label": "durée d'une Invigoration",
+      "tone": "good"
+    }
+  ],
+  "sections": [
+    {
+      "id": "what-is-helminth",
+      "title": "Ce qu'est réellement le Helminth",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Le **Helminth** est le système de transplantation de capacités de Warframe, et c'est l'un des plus grands pics de puissance de tout le jeu. Vous lui sacrifiez définitivement un Warframe de rechange (« subsuming ») pour débloquer **une** des capacités de ce frame dans une bibliothèque personnelle. Dès lors, vous pouvez **infuse** cette capacité sur n'importe quel autre frame — en remplaçant l'une de ses quatre capacités — autant de fois que vous le souhaitez, en payant un peu de ressources à chaque fois. De plus, il distribue des buffs de statistiques hebdomadaires appelés **Invigorations**."
+        },
+        {
+          "type": "p",
+          "text": "En pratique, c'est ainsi que les joueurs corrigent la faiblesse d'un frame (en y ajoutant du soin, de l'énergie, du retrait d'armure ou un buff de dégâts) ou poussent un frame puissant dans ses retranchements. Ce n'est pas indispensable en début de jeu, mais une fois que vous avez une collection de frames, cela change votre façon de build presque tout — associez-le à un [setup de modding](/guides/mods) intelligent et à des [Archon Shards](/guides/archon-shards) et même un frame de milieu de gamme devient prêt pour l'endgame."
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "Où il se trouve",
+              "v": "L'infirmerie Helminth, la salle du segment à l'arrière de votre Orbiter"
+            },
+            {
+              "k": "Débloqué par",
+              "v": "Heart of Deimos pour l'accès, puis Mastery Rank 8 + réputation Entrati pour acheter le Segment"
+            },
+            {
+              "k": "Deux fonctionnalités",
+              "v": "Capacités Subsume/Infuse + Invigorations hebdomadaires"
+            },
+            {
+              "k": "Le piège",
+              "v": "Le Subsuming détruit définitivement le Warframe donneur"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "unlock",
+      "title": "Débloquer le Helminth",
+      "blocks": [
+        {
+          "type": "steps",
+          "ordered": true,
+          "steps": [
+            {
+              "h": "Terminer Heart of Deimos",
+              "p": "Cette quête d'histoire — disponible une fois que vous avez terminé l'introduction (Vor's Prize) et possédez votre Orbiter — ouvre le Cambion Drift et le Necralisk sur Deimos et vous permet de commencer à gagner de la réputation auprès du syndicat Entrati. Terminer la quête ne vous donne PAS le Helminth ; cela débloque l'endroit où vous l'achetez."
+            },
+            {
+              "h": "Atteindre le véritable prérequis : MR 8 + rang Associate des Entrati",
+              "p": "Le schéma du Helminth Segment est vendu par Son dans le Necralisk, et il ne fera affaire avec vous que si vous êtes Mastery Rank 8 et au moins Rang 3 (Associate) auprès des Entrati. Augmentez votre Mastery Rank et atteignez le plafond de réputation Entrati pour y parvenir."
+            },
+            {
+              "h": "Acheter, fabriquer et installer le Segment",
+              "p": "Achetez le schéma contre de la réputation Entrati, fabriquez-le dans votre Foundry (des Crédits plus des ressources de Deimos, environ un jour de fabrication), puis installez-le. L'infirmerie Helminth à l'arrière de votre Orbiter devient utilisable — entrez et interagissez avec l'organisme mural pour ouvrir son menu."
+            },
+            {
+              "h": "Nourrissez-le pour augmenter son rang",
+              "p": "Le Helminth gagne des niveaux à mesure que vous le nourrissez de ressources et que vous subsumez des frames. Son premier rang débloque le subsuming ; les rangs supérieurs augmentent le stockage de ressources et ouvrent des fonctionnalités ultérieures. Au début, nourrissez-le simplement avec les matériaux de rechange qu'il demande."
+            }
+          ]
+        },
+        {
+          "type": "info",
+          "text": "Vous n'avez **pas** besoin du Helminth pour apprécier le jeu — c'est une amélioration de milieu de jeu. Si vous êtes encore en train de fabriquer vos premiers frames, donnez la priorité à cela (voir le [guide des warframes pour débutants](/guides/beginner-warframes) et le [parcours de progression](/guides/progression)) et revenez au Helminth once vous aurez des frames de rechange."
+        }
+      ]
+    },
+    {
+      "id": "subsuming",
+      "title": "Comment fonctionne le subsuming",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Subsuming** consiste à placer un Warframe de rechange dans le Helminth pour qu'il le consomme — et vous n'avez pas besoin de l'améliorer d'abord : un frame fraîchement fabriqué de Rang 0 fonctionne tout aussi bien qu'un frame au niveau max. En échange, vous débloquez définitivement **une capacité spécifique** de ce frame dans votre bibliothèque. Vous choisissez *quel frame* nourrir, mais **DE décide laquelle de ses quatre capacités est celle qui peut être donnée** — par exemple, Rhino donne toujours Roar, jamais Iron Skin. Une limite importante : vous ne pouvez subsume que des Warframes de **base** — les variantes Prime et Umbra ne peuvent pas du tout être données au Helminth. Recherchez toujours la capacité subsumable d'un frame (sur le [wiki](https://wiki.warframe.com/) ou son codex en jeu) avant de le nourrir, pour ne pas avoir de surprise."
+        },
+        {
+          "type": "warn",
+          "title": "Le Subsuming est permanent et détruit le frame",
+          "text": "Le Warframe donneur est **perdu à jamais** au moment où vous le subsumez. S'il s'agit de votre unique exemplaire, vous devrez le re-farmer ou le re-fabriquer à partir de zéro. Nourrissez-le avec un doublon, un frame que vous n'utilisez vraiment jamais, ou une version de base que vous remplacez par sa version Prime — jamais votre unique exemplaire de quelque chose avec lequel vous jouez encore."
+        },
+        {
+          "type": "p",
+          "text": "Vous n'avez besoin de subsume un frame qu'**une seule fois**. Une fois la capacité dans votre bibliothèque, elle est à vous pour toujours et peut être infusée sur un nombre illimité de frames — subsume un deuxième exemplaire du même frame ne vous apporte rien de nouveau."
+        }
+      ]
+    },
+    {
+      "id": "infusing",
+      "title": "Greffer une capacité sur un frame (infusing)",
+      "blocks": [
+        {
+          "type": "steps",
+          "ordered": true,
+          "steps": [
+            {
+              "h": "Choisir le frame receveur",
+              "p": "Ouvrez le menu Infuse Ability du Helminth et choisissez le frame que vous souhaitez modifier. N'importe quel frame fabriqué convient — y compris les Primes et Umbra — et il n'y a pas de condition de rang pour le receveur."
+            },
+            {
+              "h": "Choisir quelle capacité remplacer",
+              "p": "Vous sélectionnez l'une des quatre capacités du frame à remplacer. La capacité subsumed prend cet emplacement sur la barre de capacités. Réfléchissez à la capacité native que vous utilisez le moins."
+            },
+            {
+              "h": "Payer le coût en ressources",
+              "p": "Chaque infusion consomme un mélange de catégories de ressources du Helminth (voir ci-dessous). Confirmez et la capacité est greffée."
+            }
+          ]
+        },
+        {
+          "type": "info",
+          "title": "Les règles qui piègent les joueurs",
+          "text": "**Une seule capacité subsumed par frame** — vous ne pouvez pas en cumuler deux. Vous pouvez la changer plus tard en infusant une capacité différente par-dessus, mais cela coûte à nouveau des ressources. La capacité subsumed s'adapte aux **mods de ce frame** (Strength, Duration, Range, Efficiency), donc un Roar sur un frame à haute Strength frappera plus fort. Quelques capacités ont un plafond plus bas lorsqu'elles sont subsumed que sur leur frame d'origine, et beaucoup **ne peuvent pas utiliser leur mod d'augmentation** (bien qu'une liste croissante le permette) — vérifiez la page du wiki pour connaître le comportement exact de toute capacité sur laquelle vous comptez."
+        }
+      ]
+    },
+    {
+      "id": "best-subsumes",
+      "title": "Les capacités subsumes les plus populaires, par rôle",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Vous n'avez pas besoin de toutes ces capacités — choisissez celle qui corrige la faiblesse de votre build. Les incontournables ci-dessous sont restés au sommet pendant des années car ils résolvent des problèmes universels : dégâts, énergie, survivabilité, retrait d'armure et regroupement. Les chiffres exacts changent avec les mises à jour, considérez-les donc comme des rôles et confirmez les valeurs actuelles sur le [wiki](https://wiki.warframe.com/) ou dans un guide récent."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Subsume",
+              "Depuis le frame",
+              "Pourquoi c'est un incontournable"
+            ],
+            "rows": [
+              [
+                "Roar",
+                "Rhino",
+                "Un multiplicateur de dégâts presque universel qui augmente la quasi-totalité de vos dégâts. Le choix par défaut pour « faire frapper tout plus fort »."
+              ],
+              [
+                "Nourish",
+                "Grendel",
+                "Génération d'énergie, ajout de dégâts Viral et robustesse en un seul bouton — corrige instantanément les builds gourmands en énergie."
+              ],
+              [
+                "Eclipse",
+                "Mirage",
+                "Important buff de dégâts d'arme à la lumière (ou forte réduction des dégâts dans l'ombre). Excellent sur les plateformes d'armes à feu."
+              ],
+              [
+                "Gloom",
+                "Sevagoth",
+                "Ralentit les ennemis proches à l'extrême et octroie du vol de vie lors des éliminations — de la survivabilité plus un contrôle des foules léger."
+              ],
+              [
+                "Pillage",
+                "Hildryn",
+                "Retire l'armure et les boucliers dans un rayon et recharge vos propres boucliers. Permet le shield-gating et détruit les ennemis résistants."
+              ],
+              [
+                "Dispensary",
+                "Protea",
+                "Fait apparaître des orbes d'énergie/santé/munitions sur un minuteur — une économie d'énergie passive pour n'importe quel frame."
+              ],
+              [
+                "Combo Nourish / Gloom / Pillage",
+                "—",
+                "De nombreux builds endgame choisissent l'un de ces trois pour l'emplacement « à tout faire »."
+              ],
+              [
+                "Xata's Whisper",
+                "Xaku",
+                "Ajoute des dégâts de Void à vos armes — un élément supplémentaire universel qui brille contre les Sentients et pour la chasse aux Eidolon."
+              ],
+              [
+                "Larva / Ensnare",
+                "Nidus / Khora",
+                "Regroupe les ennemis en un pack serré pour que les armes et capacités de zone (AoE) les éliminent d'un coup."
+              ],
+              [
+                "Terrify",
+                "Nekros",
+                "Effraie les ennemis et retire leur armure — du contrôle plus une amplification des dégâts."
+              ]
+            ],
+            "note": "Des rôles, pas des chiffres figés — DE ajuste régulièrement les valeurs. Confirmez les statistiques subsumed actuelles avant d'investir des ressources."
+          }
+        },
+        {
+          "type": "p",
+          "text": "Quels frames valent la peine d'être fabriqués spécifiquement pour être subsumed dépend de ce que vous possédez déjà — croisez les données avec la [tier list](/guides/tier-list) pour voir quels frames puissants servent également de bons donneurs de capacités, et le [guide du Steel Path](/guides/steel-path) pour savoir où ces buffs comptent le plus."
+        }
+      ]
+    },
+    {
+      "id": "resources",
+      "title": "Nourrir le Helminth",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Le subsuming et l'infusing coûtent tous deux des **sécrétions** — des ressources que vous donnez au Helminth, classées en six catégories : **Oxides, Calx, Biotics, Synthetics, Pheromones et Bile**. Différentes actions puisent dans différentes catégories, vous devez donc garder un petit stock de chacune. Nourrir le Helminth avec des matériaux courants que vous possédez en abondance est le moyen le plus économique de faire le plein."
+        },
+        {
+          "type": "tip",
+          "title": "Deux particularités à connaître",
+          "text": "Tout d'abord, le Helminth a un **appétit** — si vous le nourrissez de manière répétée avec la même catégorie de ressources, son coût augmente, puis se réinitialise avec le temps, ce qui décourage le spam d'un seul matériau. Deuxièmement, la **Bile** est le goulot d'étranglement classique : elle est alimentée par un ensemble d'objets plus restreint, alors gardez un œil dessus. Si vous manquez de matériaux pour le nourrir, le [guide de farming des ressources](/guides/resources) explique où faire le plein efficacement."
+        }
+      ]
+    },
+    {
+      "id": "invigorations",
+      "title": "Invigorations : super-buffs hebdomadaires",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Une fois que vous avez débloqué l'**Invigoration Segment** distinct — un deuxième segment acheté auprès des Entrati et installé aux côtés du premier — le Helminth commence à proposer des **Invigorations**, la seconde moitié du système et un énorme boost de puissance temporaire. Chaque semaine, il présente des **paires de buffs aléatoires** : un buff offensif (par exemple un gros boost d'Ability Strength) associé à une seconde statistique comme la Duration, l'Efficiency ou l'Armor, que vous appliquez à un Warframe."
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "Combien de temps cela dure",
+              "v": "7 jours, et uniquement sur le seul frame auquel vous l'avez appliqué"
+            },
+            {
+              "k": "Ce que vous appliquez",
+              "v": "Un buff offensif (comme l'Ability Strength) associé à une statistique utilitaire aléatoire"
+            },
+            {
+              "k": "Coût & relances",
+              "v": "Chaque invigoration coûte des ressources Helminth ; vous pouvez relancer les buffs proposés contre plus de ressources"
+            },
+            {
+              "k": "Réinitialisations",
+              "v": "L'offre change chaque semaine, vous n'êtes donc pas bloqué indéfiniment avec les options de cette semaine"
+            }
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Utilisez-le sur un frame avec lequel vous jouez cette semaine-là, ou pour corriger une faiblesse spécifique — un buff d'Efficiency ou de Duration sur un frame gourmand en capacités, ou un buff de survivabilité sur un frame fragile. L'effet étant temporaire, ne construisez pas tout votre équipement autour ; considérez-le comme un bonus plutôt que comme une statistique permanente."
+        }
+      ]
+    },
+    {
+      "id": "mistakes",
+      "title": "Erreurs à éviter",
+      "blocks": [
+        {
+          "type": "list",
+          "items": [
+            "**Ne subsumez pas votre unique exemplaire d'un frame** — il est détruit définitivement. Fabriquez ou achetez-en un de rechange d'abord si vous jouez encore avec.",
+            "**Vérifiez la capacité donatrice avant de nourrir le Helminth.** DE choisit laquelle des quatre capacités vous obtenez ; farmer un frame pour la mauvaise capacité est une perte de temps.",
+            "**Gardez les frames de base après avoir obtenu leur version Prime.** Vous ne pouvez pas du tout subsume un Prime ou un Umbra — uniquement la version de base — donc la base est votre seul et unique donneur Helminth pour cette capacité. Ne le vendez jamais en pensant qu'il est inutile.",
+            "**Ne remplacez pas une capacité que vous utilisez réellement.** Vous ne disposez que d'un seul emplacement de subsume ; remplacez la capacité sur laquelle vous appuyez le moins, pas votre capacité principale.",
+            "**N'oubliez pas que de nombreux mods d'augmentation ne sont pas transférés.** Si une capacité subsumed n'est bonne qu'avec son augmentation, vérifiez qu'elle fonctionne toujours lorsqu'elle est infusée avant de compter dessus.",
+            "**Surveillez votre Bile.** C'est le goulot d'étranglement habituel des ressources — infusez de manière réfléchie plutôt que de changer de capacité sur un coup de tête."
+          ]
+        },
+        {
+          "type": "warn",
+          "text": "Si vous avez déjà vendu un frame de base et que vous souhaitez maintenant le subsume, vous devrez le réacquérir — pour les frames uniquement disponibles en Prime, cela signifie des reliques et une reconstruction. Consultez le [suivi des objets vaulted](/vaulted) pour voir si un Prime est actuellement farmable avant de planifier, et l'[outil de valeur des reliques](/relics-value) si vous farmez des composants pour le reconstruire."
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Comment débloquer le Helminth dans Warframe ?",
+      "a": "Terminez d'abord la quête Heart of Deimos (disponible une fois que vous avez fini l'introduction et possédez votre Orbiter) pour atteindre le Necralisk et commencer à gagner de la réputation Entrati. Terminer la quête ne vous donne pas le Helminth — une fois que vous êtes Mastery Rank 8 et Rang 3 (Associate) auprès des Entrati, achetez le schéma du Helminth Segment auprès de Son, fabriquez-le dans votre Foundry et installez-le. L'infirmerie Helminth à l'arrière de votre Orbiter devient alors utilisable, et vous le nourrissez de ressources pour augmenter son rang."
+    },
+    {
+      "q": "Est-ce que subsume un Warframe le détruit ?",
+      "a": "Oui — le subsuming consomme définitivement le frame donneur en échange de l'une de ses capacités. S'il s'agit de votre unique exemplaire, vous devrez le re-farmer ou le re-fabriquer. Nourrissez-le toujours avec un doublon, un frame que vous n'utilisez jamais, ou une version de base que vous remplacez par sa version Prime — et notez que vous ne pouvez subsume que des frames de base, jamais des Primes ou Umbra."
+    },
+    {
+      "q": "Dois-je subsume mon Prime ou le Warframe de base ?",
+      "a": "Vous ne pouvez subsume que la version de base — les frames Prime et Umbra ne peuvent pas du tout être donnés au Helminth. Étant donné que la base donne exactement la même capacité, gardez le Prime pour jouer et nourrissez le Helminth avec la base. C'est aussi pourquoi vous ne devriez pas vendre vos frames de base après avoir obtenu leur version Prime — ils sont de la nourriture gratuite pour votre Helminth."
+    },
+    {
+      "q": "Un Warframe peut-il avoir plus d'une capacité subsumed ?",
+      "a": "Non — chaque frame dispose d'un seul emplacement de subsume et ne peut contenir qu'une seule capacité infusée à la fois. Vous pouvez la changer plus tard en infusant une capacité différente par-dessus l'ancienne, mais cela coûte des ressources Helminth à chaque fois et remplace le choix précédent."
+    },
+    {
+      "q": "Dois-je monter mon Warframe au Rang 30 avant de le subsume ?",
+      "a": "Non — c'est un mythe courant. Un Warframe peut être subsumed à n'importe quel niveau, même fraîchement fabriqué au Rang 0, et il n'y a pas non plus de condition de rang pour le frame sur lequel vous infusez la capacité. Les véritables barrières se situent au niveau de votre compte : le Mastery Rank 8 et la réputation Entrati pour débloquer le Helminth en premier lieu."
+    },
+    {
+      "q": "Que sont les Helminth Invigorations et en valent-elles la peine ?",
+      "a": "Les Invigorations sont des buffs de statistiques hebdomadaires débloqués en installant l'Invigoration Segment distinct (acheté auprès des Entrati). Chaque semaine, le Helminth propose une paire de buffs aléatoires — une statistique offensive importante comme l'Ability Strength plus une statistique utilitaire — que vous appliquez à un frame pendant sept jours. Ils sont véritablement puissants et valent la peine d'être utilisés sur un frame avec lequel vous jouez cette semaine-là, mais comme ils sont temporaires, ne construisez pas tout votre équipement autour d'eux."
+    },
+    {
+      "q": "Les capacités subsumed conservent-elles leurs mods d'augmentation et leur pleine puissance ?",
+      "a": "Pas toujours. Les capacités subsumed s'adaptent aux mods du frame receveur (Strength, Duration, Range, Efficiency), mais quelques-unes ont un plafond inférieur à celui de leur frame d'origine, et beaucoup ne peuvent pas utiliser leur mod d'augmentation (bien qu'une liste croissante le permette). Vérifiez la page du wiki pour toute capacité sur laquelle vous prévoyez de compter avant d'investir des ressources."
+    }
+  ],
+  "videos": [
+    {
+      "id": "eMJlOIpaki0",
+      "title": "Helminth Guide - The Systems of Warframe - Subsuming, Invigoration & other functions",
+      "channel": "QuadLyStop"
+    },
+    {
+      "id": "3Ij4OLxXyKk",
+      "title": "The MOST POWERFUL system in Warframe - Helminth Invigoration, Subsuming, Abilities & Archon Shards",
+      "channel": "QuadLyStop"
+    },
+    {
+      "id": "BmHOYP6Osks",
+      "title": "Top 10 Warframe Helminth Abilities YOU NEED In 2025!",
+      "channel": "iFlynn"
+    },
+    {
+      "id": "ui1GTJSLBMk",
+      "title": "Warframe: Top 5 SUBSUMED Helminth Abilities!",
+      "channel": "iFlynn"
+    }
+  ],
+  "sources": [
+    {
+      "label": "Warframe Wiki — Helminth",
+      "href": "https://wiki.warframe.com/",
+      "icon": "book-open-page-variant"
+    },
+    {
+      "label": "r/Warframe — A little reminder before subsuming a frame",
+      "href": "https://reddit.com/r/Warframe/comments/1irgcfd/a_little_reminder_before_subsuming_a_frame/",
+      "icon": "reddit"
+    },
+    {
+      "label": "r/Warframe — Reminder: Do NOT sell base frames after getting their prime",
+      "href": "https://reddit.com/r/Warframe/comments/1muncct/reminder_do_not_sell_base_frames_after_getting/",
+      "icon": "reddit"
+    }
+  ],
+  "related": [
+    {
+      "label": "Guide des Archon Shards",
+      "to": "/guides/archon-shards",
+      "icon": "hexagon-multiple",
+      "note": "Cumulez des boosts de statistiques permanents en plus des capacités subsumes"
+    },
+    {
+      "label": "Tier List Warframe",
+      "to": "/guides/tier-list",
+      "icon": "format-list-numbered",
+      "note": "Quels frames valent la peine d'être fabriqués — et subsumed"
+    },
+    {
+      "label": "Guide de Modding",
+      "to": "/guides/mods",
+      "icon": "puzzle",
+      "note": "Les capacités subsumed s'adaptent à vos mods"
+    },
+    {
+      "label": "Guide du Steel Path",
+      "to": "/guides/steel-path",
+      "icon": "skull",
+      "note": "Là où les buffs du Helminth comptent le plus"
+    },
+    {
+      "label": "Farming de ressources",
+      "to": "/guides/resources",
+      "icon": "pickaxe",
+      "note": "Stockez les matériaux que le Helminth consomme"
+    },
+    {
+      "label": "Annuaire des outils de la communauté",
+      "to": "/tools",
+      "icon": "toolbox",
+      "note": "Recherche de capacités, planificateurs de builds et wikis"
+    }
+  ],
+  "updated": "2026-07-18"
+}

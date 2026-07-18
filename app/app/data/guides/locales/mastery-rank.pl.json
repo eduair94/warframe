@@ -1,0 +1,489 @@
+{
+  "slug": "mastery-rank",
+  "eyebrow": "Centrum Wiedzy · Mastery Rank",
+  "title": "Mastery Rank & Szybkie Levelowanie",
+  "lede": "Mastery Rank to licznik przebiegu Twojego konta — odblokowuje gear, zwiększa dzienne limity standing i handlu oraz po cichu nagradza Cię za levelowanie wszystkiego, co zbudujesz. Oto dokładnie, jak działają mastery, affinity i testy, a także najszybsze sposoby na zwiększenie rangi.",
+  "category": "start",
+  "readMins": 9,
+  "stats": [
+    {
+      "num": "30",
+      "label": "maksymalny MR, a potem Legendary Ranks",
+      "tone": "gold"
+    },
+    {
+      "num": "3,000",
+      "label": "mastery za maksymalnie wylevelowaną broń",
+      "tone": "good"
+    },
+    {
+      "num": "6,000",
+      "label": "mastery za maksymalnie wylevelowany frame",
+      "tone": "good"
+    },
+    {
+      "num": "50m",
+      "label": "zasięg dzielenia affinity",
+      "tone": "alt"
+    }
+  ],
+  "sections": [
+    {
+      "id": "what-is-mr",
+      "title": "Czym właściwie jest Mastery Rank",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Mastery Rank (MR)** to poziom progresu całego konta, niezależny od poziomu jakiegokolwiek pojedynczego Warframe czy broni. Zwiększasz go, zdobywając **Mastery** — stałą formę affinity, która kumuluje się na Twoim koncie za każdym razem, gdy levelujesz **nowy, unikalny** element gearu lub po raz pierwszy kończysz nową zawartość. W przeciwieństwie do XP gearu, mastery nigdy się nie resetuje: gdy przedmiot raz zdobędzie swoje mastery, ten postęp jest zapisywany na zawsze."
+        },
+        {
+          "type": "p",
+          "text": "Złota zasada: **mastery każdego unikalnego przedmiotu liczy się tylko raz.** Wylevelowanie Bratona do 30. poziomu daje jego mastery tylko raz. Sprzedanie go, ponowne zbudowanie lub dodanie Formy i ponowne levelowanie nie daje nic dodatkowego. Ta jedna zasada kształtuje każdą efektywną strategię levelowania na tej stronie."
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "Rangi",
+              "v": "MR 0 → 30, a następnie Legendary Ranks (LR1, LR2, ...), które DE stale dodaje z czasem"
+            },
+            {
+              "k": "Mastery to",
+              "v": "Stałe, dla całego konta, zdobywane raz na unikalny przedmiot"
+            },
+            {
+              "k": "Test MR",
+              "v": "Jednorazowe wyzwanie, które musisz ukończyć, aby zatwierdzić każdą nową rangę"
+            },
+            {
+              "k": "Czy potrzebujesz wszystkiego?",
+              "v": "Nie — w grze jest znacznie więcej przedmiotów, niż wymaga tego MR30"
+            }
+          ]
+        },
+        {
+          "type": "info",
+          "text": "MR30 to najwyższa *numerowana* ranga. Poza nią nadal zdobywasz mastery na poczet **Legendary Ranks**, które DE dodaje z czasem. **Nie** musisz posiadać każdego przedmiotu w grze, aby osiągnąć MR30 — ukończenie Star Chart oraz wylevelowanie sporej części gearu w zupełności wystarczy."
+        }
+      ]
+    },
+    {
+      "id": "what-mr-unlocks",
+      "title": "Co odblokowuje MR (a czego nie)",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "MR to nie poziom mocy — początkujący gracz z MR2 i wymaksowany weteran z MR30, używający tego samego buildu, biją dokładnie tak samo mocno. To, co daje MR, to **dostęp i wygoda konta**: blokuje niektóre elementy gearu wymaganiem rangi i po cichu zwiększa kilka dziennych limitów, które mają ogromne znaczenie, gdy zagłębiasz się w farming i handel."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Perk",
+              "Jak skaluje się z MR"
+            ],
+            "rows": [
+              [
+                "Odblokowanie broni i gearu",
+                "Wiele broni wymaga minimalnej rangi MR, aby je kupić lub wyposażyć (blokada rangi na karcie przedmiotu)"
+              ],
+              [
+                "Dzienny limit standing",
+                "Rośnie z każdym Mastery Rank, śledzony na poziomie syndykatu — im wyższy Twój MR, tym więcej standing możesz zdobyć każdego dnia (DE zwiększało ten limit na przestrzeni czasu, więc traktuj każdą dokładną liczbę jako zmienną)"
+              ],
+              [
+                "Dzienne wymiany",
+                "Równe Twojemu MR (MR10 = 10 wymian dziennie; potrzebujesz MR2, aby w ogóle móc handlować)"
+              ],
+              [
+                "Początkowa pojemność modów",
+                "Gear bez rangi zaczyna z pojemnością modów równą Twojemu MR, z limitem do 30 (podwajanym przez Reactor/Catalyst)"
+              ]
+            ],
+            "note": "Wyższe limity standing bezpośrednio przyspieszają farming Focus, arcane'ów i syndykatów — zobacz poradniki dotyczące Standing i Focus."
+          }
+        },
+        {
+          "type": "p",
+          "text": "Ten limit standing to niedoceniany perk. Jeśli grindujesz [standing syndykatów](/guides/standing) lub [Focus](/guides/focus), każdy zdobyty MR pozwala Ci zgromadzić więcej na dzień. Więcej [dziennych wymian](/guides/platinum) oznacza również więcej flipów platyny — połącz to z narzędziem [Flip finder](/flip), gdy zaczniesz aktywnie handlować."
+        },
+        {
+          "type": "warn",
+          "text": "Częsty mit: „Muszę grindować MR, aby przetrwać trudniejszą zawartość”. Nie musisz. Przeżywalność zależy od **modów, arcane'ów i shield-gatingu**, a nie od MR. Zbieraj MR dla odblokowania gearu i dziennych limitów, a nie dla czystej mocy."
+        }
+      ]
+    },
+    {
+      "id": "how-mastery-earned",
+      "title": "Jak zdobywa się mastery",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Gromadzisz mastery, levelując gear od 0 do 30 po raz pierwszy. Różne typy przedmiotów są warte różne ilości **na rangę**, więc wymaksowany Warframe jest wart dwa razy tyle, co wymaksowana broń:"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Typ przedmiotu",
+              "Mastery na rangę",
+              "Łącznie na maksymalnym poziomie"
+            ],
+            "rows": [
+              [
+                "Bronie (primary, secondary, melee itp.)",
+                "100",
+                "3,000 na 30. randze"
+              ],
+              [
+                "Warframe'y",
+                "200",
+                "6,000 na 30. randze"
+              ],
+              [
+                "Companions (Sentinels i zwierzęta)",
+                "200",
+                "6,000 na 30. randze"
+              ],
+              [
+                "Archwing",
+                "200",
+                "6,000 na 30. randze"
+              ],
+              [
+                "Bronie Kuva / Tenet / Coda / Paracesis (ranga 40)",
+                "100",
+                "4,000 na 40. randze"
+              ]
+            ],
+            "note": "Necramechy, Ampy, K-Drive'y oraz Railjack Intrinsics również przyznają mastery. Każdy węzeł Star Chart, junction oraz ich wersje na Steel Path dają jednorazowy zastrzyk mastery przy pierwszym ukończeniu."
+          }
+        },
+        {
+          "type": "tip",
+          "text": "Sam **Star Chart to ogromne darmowe mastery.** Ukończenie każdego węzła raz (zwykłego oraz [Steel Path](/guides/steel-path)) plus wszystkich junctions daje wielką pulę mastery, którą wielu graczy przeacza. Użyj [mapy lokacji dropu](/star-chart-3d), aby zobaczyć, co jeszcze zostało Ci do zaliczenia."
+        },
+        {
+          "type": "p",
+          "text": "Ponieważ mastery zdobywa się tylko raz na przedmiot, weterani budują tanie bronie jako „mastery fodder” wyłącznie po to, by wylevelować je do 30. poziomu i pójść dalej. W grze są setki broni i dziesiątki frame'ów — przekroczysz MR30 na długo przed tym, jak zdobędziesz je wszystkie."
+        }
+      ]
+    },
+    {
+      "id": "affinity-101",
+      "title": "Affinity 101: jak działa levelowanie",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Affinity to XP.** To ono leveluje Twój gear od 0 do 30 i zdobywa się je na dwa sposoby: przez **zabójstwa** (i asysty) oraz **cele/ukończenie misji**. To, jak to affinity jest dzielone między Twojego Warframe'a a Twoje trzy bronie, to najważniejsza rzecz do zrozumienia w celu szybkiego levelowania."
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "Zabójstwo Twoją bronią",
+              "v": "50% dla broni, która dokonała zabójstwa, 50% dla Twojego Warframe'a"
+            },
+            {
+              "k": "Zabójstwo Twoją umiejętnością",
+              "v": "Praktycznie całość trafia do Twojego Warframe'a"
+            },
+            {
+              "k": "Zabójstwo sojusznika z drużyny (w zasięgu)",
+              "v": "Otrzymujesz część: 25% dla Twojego Warframe'a, 75% podzielone równo na wyposażone bronie — dzięki czemu broń leveluje, nawet jeśli ani razu z niej nie wystrzelisz"
+            },
+            {
+              "k": "Zasięg dzielenia affinity",
+              "v": "50 metrów na zwykłych misjach — trzymaj się blisko akcji, inaczej nic nie dostaniesz (mapy otwartego świata/Landscape używają znacznie większego zasięgu)"
+            },
+            {
+              "k": "Affinity Booster",
+              "v": "Podwaja całe zdobywane affinity (kumuluje się z weekendami podwójnego affinity)"
+            }
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Z tej tabeli wynikają dwa praktyczne wnioski. **Aby wylevelować broń**, albo z niej strzelaj, albo korzystaj z dzielonego affinity od sojusznika, który czyści cały pokój, podczas gdy Ty trzymasz się w odległości do 50m. **Aby szybko wylevelować Warframe'a**, zdobywaj **zabójstwa umiejętnościami** — przekazują one 100% tego affinity prosto do Twojego frame'a, w porównaniu do zaledwie 25% z dzielonego zabójstwa sojusznika. I **nie noś ze sobą maksymalnie wylevelowanych broni** podczas expienia: affinity, które trafia na wymaksowany gear, marnuje się, więc zapełnij te sloty broniami bez rangi, które również chcesz wylevelować."
+        },
+        {
+          "type": "warn",
+          "text": "Na misjach Defense i Survival oddalenie się o więcej niż 50m od miejsca, w którym giną wrogowie, oznacza, że otrzymasz **zero** dzielonego affinity. Podczas levelowania trzymaj się blisko celu lub osoby, która ciągnie rozgrywkę (carry)."
+        }
+      ]
+    },
+    {
+      "id": "fast-leveling",
+      "title": "Najszybsze sposoby na levelowanie (farming affinity)",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Najlepsze misje do levelowania gromadzą gęste grupy wrogów na małym obszarze, dzięki czemu dzielone affinity zalewa każdy element przyniesionego gearu. Zabierz gear, który chcesz wylevelować, dołącz do publicznej drużyny (lub silnego znajomego) i pozwól płynąć zabójstwom."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Metoda",
+              "Najlepsze do",
+              "Uwagi"
+            ],
+            "rows": [
+              [
+                "Sanctuary Onslaught / Elite SO",
+                "Szybki, gęsty XP",
+                "U Cephalona Simarisa; ESO dla gearu, który jest już częściowo ulepszony"
+              ],
+              [
+                "Defense o wysokiej gęstości (np. Hydron na Sednie, Helene na Saturnie)",
+                "Spokojne levelowanie, przyjazne dla AFK",
+                "Wieloletni faworyci społeczności — przynieś lub dołącz do frame'a typu nuker"
+              ],
+              [
+                "Void Fissures",
+                "Levelowanie + loot jednocześnie",
+                "Podwójna korzyść z XP podczas otwierania reliktów — zobacz narzędzie Relic Farming"
+              ],
+              [
+                "Duviri Circuit",
+                "Levelowanie + nagrody",
+                "Nowoczesna opcja; Steel Path Circuit skaluje się dla weteranów"
+              ],
+              [
+                "Tanie Exterminate / Capture",
+                "MR fodder",
+                "Szybko wbij 30. poziom na świeżo zbudowanych, jednorazowych broniach i je zutylizuj"
+              ]
+            ],
+            "note": "Pojedynczy „najlepszy node” zmienia się wraz z patchami balansującymi i wydarzeniami. Sprawdź aktualną wiki lub najnowsze wideo, aby poznać obecny wybór meta."
+          }
+        },
+        {
+          "type": "p",
+          "text": "Dwa mnożniki przyspieszają wszystko: uruchom **Affinity Booster** (z Marketu lub nagród Nightwave/logowania) i zaplanuj swój grind na **weekend z podwójnym affinity** — kumulują się one, dając 4-krotne affinity. Levelowanie wewnątrz [Void Fissures](/relic-farming) to król wydajności, ponieważ w tych samych podejściach ulepszasz gear *oraz* farmisz części prime; użyj [narzędzia wartości reliktów](/relics-value), aby decidir, co warto otwierać."
+        },
+        {
+          "type": "tip",
+          "text": "Zabierz pełny zestaw gearu do levelowania (frame + 3 bronie) na wspólne carry, a będziesz mógł awansować **cztery przedmioty** od 0 do 30 w jednej sesji. Upewnij się tylko, że to Ty stoisz spokojnie blisko zabójstw, a nie uganiasz się za nimi."
+        }
+      ]
+    },
+    {
+      "id": "rank-to-30-loop",
+      "title": "Pętla wbijania 30. rangi",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Wydajny grind mastery to prosta, powtarzalna pętla. Celem jest użycie każdego unikalnego przedmiotu dokładnie raz, wbicie na nim 30. poziomu i nigdy do niego nie wracanie."
+        },
+        {
+          "type": "steps",
+          "ordered": true,
+          "steps": [
+            {
+              "h": "Kup schemat / zbuduj przedmiot",
+              "p": "Zdobądź schematy broni z Marketu za kredyty; większość kosztuje niewiele. Rozpocznij budowę w Foundry przed wylogowaniem się (bronie budują się często około 12 godzin; Warframe'y wymagają więcej czasu, gdy zsumujesz ich komponenty), aby były gotowe na kolejną sesję."
+            },
+            {
+              "h": "Odbierz go i umieść w slocie",
+              "p": "Świeży przedmiot ma rangę 0. Zaczyna już z pojemnością modów równą Twojemu MR, więc nawet gear bez rangi nadaje się do levelowania."
+            },
+            {
+              "h": "Wyleveluj go do 30. poziomu za jednym posiedzeniem",
+              "p": "Zabierz go na farmę affinity (Onslaught, node Defense lub Fissure). Na 30. poziomie zapisuje on swoje pełne mastery — 3,000 dla broni, 6,000 dla frame'a."
+            },
+            {
+              "h": "Zapisz postęp, zwolnij slot",
+              "p": "Po wymaksowaniu mastery jest Twoje na stałe. Sprzedaj bronie typu mastery-fodder, aby zwolnić slot i zbudować kolejną. Zachowaj wszystko, co naprawdę Ci się podoba."
+            },
+            {
+              "h": "Nie leveluj ponownie dla mastery",
+              "p": "Dodanie Formy resetuje przedmiot do rangi 0 w celu dodania slotów polaryzacji — świetne do buildów, ale daje zero dodatkowego mastery. Leveluj ponownie tylko ten gear, który personalizujesz, a nie dla MR."
+            }
+          ]
+        },
+        {
+          "type": "info",
+          "text": "Chcesz zobaczyć, czego dokładnie Ci brakuje? Społecznościowe trackery mastery i listy kontrolne (do których linki znajdziesz w [katalogu narzędzi społeczności](/tools)) pozwalają odznaczyć każdą broń i frame'a, dzięki czemu nigdy nie zbudujesz duplikatu, który został już przez Ciebie wymaksowany."
+        }
+      ]
+    },
+    {
+      "id": "mr-tests",
+      "title": "Testy MR i jak się przygotować",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Zdobycie wystarczającej ilości mastery sprawia, że kolejna ranga staje się *dostępna*, ale musisz **zdać test Mastery Rank**, aby ją faktycznie otrzymać. Każda ranga ma swój unikalny test — parkour na czas, ciche zabójstwa, hakowanie konsol pod presją czasu, zabijanie fal wrogów bez otrzymywania obrażeń i tak dalej. Trudność rośnie wraz z Twoją rangą."
+        },
+        {
+          "type": "steps",
+          "ordered": true,
+          "steps": [
+            {
+              "h": "Ćwicz za darmo u Cephalona Simarisa",
+              "p": "W każdym Relay znajduje się Cephalon Simaris, który pozwala Ci **przetrenować dokładnie ten sam test** dowolną liczbę razy, bez czasu odnowienia i bez żadnych kar. Zawsze najpierw poćwicz."
+            },
+            {
+              "h": "Przystąp do właściwego testu, gdy będziesz gotowy",
+              "p": "Gdy zgromadzisz wystarczająco dużo mastery, pojawi się komunikat o awansie rangi (w Twoim Orbiterze / profilu). Podejdź do niego, gdy poczujesz się pewnie po treningu."
+            },
+            {
+              "h": "Jeśli oblejesz, odczekaj około doby",
+              "p": "Nie ma żadnej kary za porażkę poza około **24-godzinnym czasem odnowienia**, zanim będziesz mógł ponownie spróbować podejść do właściwego testu. Próby treningowe pozostają nieograniczone podczas oczekiwania."
+            }
+          ]
+        },
+        {
+          "type": "warn",
+          "text": "Ta 24-godzinna blokada to jedyna niedogodność — dlatego **nigdy nie podchodź do testu w ciemno.** Trenuj go u Simarisa, dopóki nie będziesz go zdawać za każdym razem, a dopiero potem przystąp do właściwego. Wiele testów staje się również banalnie prostych przy użyciu mobilnego frame'a (Volt, Titania, Wisp, Zephyr) lub dobrego buildu pod poruszanie się."
+        },
+        {
+          "type": "tip",
+          "text": "Utknąłeś na teście sprawnościowym lub „bez obrażeń”? Zabierz frame'a z dużą prędkością, niewidzialnością lub niewrażliwością na obrażenia, co często zamienia frustrujący test w formalność. Obejrzyj najnowsze wideo dedykowane danemu testowi, jeśli konkretna ranga sprawia Ci trudności."
+        }
+      ]
+    },
+    {
+      "id": "should-you-chase",
+      "title": "Czy powinieneś gonić za MR? Sprytne progi",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Nie musisz *grindować* MR — rośnie ono naturalnie, gdy tworzysz gear i oczyszczasz Star Chart na swojej drodze przez [ścieżkę progresu](/guides/progression). Jednak levelowanie wszystkiego, co wytworzysz (zamiast wyrzucania tego), jest prawie zawsze opłacalne, ponieważ MR po cichu procentuje w postaci odblokowywania gearu, standing, wymian i początkowej pojemności."
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Leveluj to, co budujesz.** Każdy frame, broń i companion to darmowe mastery — wbij na każdym 30. poziom raz, zanim go sprzedasz lub użyjesz Formy.",
+            "**Ukończ cały Star Chart, dwukrotnie.** Zwykłe nodes, junctions oraz nodes na [Steel Path](/guides/steel-path) to ogromne, jednorazowe źródło mastery, które większość graczy ignoruje.",
+            "**Zwracaj uwagę na progi gearu.** Niektóre z najsilniejszych broni wymagają określonej rangi MR, więc kilka dodatkowych rang może odblokować wybór meta, który naprawdę chcesz zdobyć.",
+            "**Priorytetyzuj MR, jeśli farmisz standing.** Jeśli mocno angażujesz się w Focus, arcane'y lub syndykaty, wyższy dzienny limit sprawia, że każda ranga szybko się zwraca."
+          ]
+        },
+        {
+          "type": "quote",
+          "text": "MR to nagroda za odkrywanie całej gry, a nie ściana do wspinaczki. Graj szeroko, wyleveluj wszystko raz, a obudzisz się z MR20 bez jakiegokolwiek „grindowania mastery”.",
+          "cite": "Częsta rada weteranów z r/Warframe"
+        },
+        {
+          "type": "p",
+          "text": "Jedno zastrzeżenie: nie wbijaj MR *tylko* po to, by zobaczyć wyższą liczbę, jeśli oznacza to zabieranie słabych broni na trudną zawartość. Rozwijaj swoje konto naturalnie, dbaj o dobre modowanie swoich ulubionych rzeczy i traktuj MR jak tablicę wyników, którą w istocie jest — zapis tego, jak dużą część Warframe udało Ci się poznać."
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Jak zwiększyć Mastery Rank w Warframe?",
+      "a": "Zdobywaj mastery, levelując nowy gear od 0 do 30 po raz pierwszy (bronie dają 3,000, frame'y i companions dają 6,000) oraz oczyszczając nodes i junctions na Star Chart. Gdy zgromadzisz odpowiednią ilość, zdaj test Mastery Rank dla danej rangi, aby ją zatwierdzić. Każdy unikalny przedmiot liczy się tylko raz — ponowne levelowanie z użyciem Formy nie daje dodatkowego mastery."
+    },
+    {
+      "q": "Co właściwie daje Mastery Rank?",
+      "a": "MR blokuje niektóre bronie i gear wymaganiem rangi oraz zwiększa kilka dziennych limitów: Twój limit standing syndykatów (który rośnie z każdą rangą), liczbę dziennych wymian (równą Twojemu MR) oraz początkową pojemność modów na gearze bez rangi. Nie sprawia, że bijesz mocniej — przeżywalność i obrażenia pochodzą z modów i arcane'ów, a nie z MR."
+    },
+    {
+      "q": "Jaki jest najszybszy sposób na farmowanie affinity i levelowanie?",
+      "a": "Zabierz gear, który chcesz wylevelować, na gęstą farmę affinity — Sanctuary Onslaught, node Defense o wysokiej gęstości, taki jak Hydron lub Helene, albo na Void Fissure — i trzymaj się w odległości do 50m od zabójstw, aby pochłaniać dzielone affinity. Użyj Affinity Boostera i, najlepiej, poczekaj na weekend z podwójnym affinity, aby uzyskać do 4-krotnych korzyści. Levelowanie wewnątrz [Void Fissures](/relic-farming) pozwala ulepszać gear i jednocześnie farmować części prime."
+    },
+    {
+      "q": "Czy dodanie Formy lub ponowne levelowanie broni daje więcej mastery?",
+      "a": "Nie. Każdy przedmiot przyznaje swoje mastery tylko raz, gdy po raz pierwszy osiągnie 30. poziom. Forma resetuje przedmiot do rangi 0, abyś mógł dodać sloty polaryzacji dla lepszego buildu, ale za ponowne levelowanie otrzymujesz zero dodatkowego mastery. Leveluj ponownie gear tylko wtedy, gdy go personalizujesz, nigdy dla MR."
+    },
+    {
+      "q": "Jak działa dzielenie affinity w drużynie?",
+      "a": "Gdy sojusznik z drużyny zabije wroga w odległości około 50 metrów od Ciebie, otrzymujesz część tego affinity — 25% dla Twojego Warframe'a i 75% podzielone równo na Twoje wyposażone bronie. Dlatego broń, z której nigdy nie strzelasz, nadal leveluje, jeśli towarzyszysz nukerowi. Oddal się poza zasięg 50m, a nie dostaniesz nic. (Zabójstwa Twoją własną bronią są dzielone inaczej: 50% dla broni, 50% dla Twojego Warframe'a.)"
+    },
+    {
+      "q": "Co się stanie, jeśli obleję test Mastery Rank?",
+      "a": "Nic, poza koniecznością odczekania około 24 godzin przed kolejną próbą podejścia do właściwego testu — nie tracisz XP ani nie otrzymujesz żadnej innej kary. Najpierw poćwicz dokładnie ten sam test za darmo i nieograniczoną liczbę razy u Cephalona Simarisa w dowolnym Relay, aby przystąpić do prawdziwego dopiero wtedy, gdy będziesz go zaliczać bez problemu."
+    },
+    {
+      "q": "Czy istnieje maksymalny Mastery Rank?",
+      "a": "MR30 to najwyższa numerowana ranga. Po niej nadal zdobywasz mastery na poczet Legendary Ranks (LR1, LR2 i wyższe), które DE dodaje z czasem. Nie musisz posiadać każdego przedmiotu, aby osiągnąć MR30 — w grze jest znacznie więcej broni i frame'ów, niż wymaga tego ranga."
+    },
+    {
+      "q": "Czy jako nowy gracz powinienem spieszyć się z wbijaniem Mastery Rank?",
+      "a": "Nie ma potrzeby mieć na tym punkcie obsesji — MR rośnie naturalnie, gdy tworzysz gear i oczyszczasz Star Chart. Jednak wylevelowanie wszystkiego, co wytworzysz, do 30. poziomu chociaż raz jest opłacalne, ponieważ wyższy MR odblokowuje silniejsze bronie i zwiększa dzienne limity standing oraz wymian. Skup się najpierw na solidnym zestawie wyposażenia i modach; rangi przyjdą same."
+    }
+  ],
+  "videos": [
+    {
+      "id": "5B01ZDPCM_o",
+      "title": "Warframe How to get Mastery Rank FAST | Warframe Affinity and Mastery Rank Explained",
+      "channel": "CerealOverdrive"
+    },
+    {
+      "id": "J_6wVLRvTpE",
+      "title": "HOW TO FARM MASTERY RANK FAST IN 2025! WARFRAME BEST LEVELING AFFINITY SPOTS",
+      "channel": "Pupsker"
+    },
+    {
+      "id": "eTI-zSoH6FE",
+      "title": "How to Level up fast in Warframe -  Affinity farming Guide for all Players",
+      "channel": "QuadLyStop"
+    },
+    {
+      "id": "ecySSBRcCIo",
+      "title": "Warframe: FAST MASTERY RANK 2025!...",
+      "channel": "MHBlacky"
+    }
+  ],
+  "sources": [
+    {
+      "label": "r/Warframe — My Journey ends at MR25",
+      "href": "https://reddit.com/r/Warframe/comments/1uockj8/my_journey_ends_at_mr25/"
+    },
+    {
+      "label": "r/Warframe — Mastery Rank & Helminth motivation thread",
+      "href": "https://reddit.com/r/Warframe/comments/idu92w/i_like_the_idea_that_way_people_could_become/"
+    },
+    {
+      "label": "r/Warframe — Affinity farming discussion (Gian Point)",
+      "href": "https://reddit.com/r/Warframe/comments/m4fvff/gian_point_should_become_a_graveyard/"
+    },
+    {
+      "label": "Official Warframe Wiki",
+      "href": "https://wiki.warframe.com/"
+    }
+  ],
+  "related": [
+    {
+      "label": "Ścieżka progresu",
+      "to": "/guides/progression",
+      "icon": "map-marker-path",
+      "note": "Gdzie MR wpasowuje się w ogólny postęp"
+    },
+    {
+      "label": "Poradnik dla nowych graczy",
+      "to": "/guides/new-player",
+      "icon": "rocket-launch",
+      "note": "Twoje pierwsze 20 godzin, zrobione dobrze"
+    },
+    {
+      "label": "Standing syndykatów",
+      "to": "/guides/standing",
+      "icon": "handshake",
+      "note": "Wyższy MR = większy dzienny limit"
+    },
+    {
+      "label": "Focus & Operator",
+      "to": "/guides/focus",
+      "icon": "eye-outline",
+      "note": "Levelowanie gearu zasila Twój Focus"
+    },
+    {
+      "label": "Steel Path",
+      "to": "/guides/steel-path",
+      "icon": "skull-outline",
+      "note": "Drugi Star Chart pełen darmowego mastery"
+    },
+    {
+      "label": "Narzędzia społeczności",
+      "to": "/tools",
+      "icon": "tools",
+      "note": "Trackery mastery i listy kontrolne"
+    }
+  ],
+  "updated": "2026-07-18"
+}

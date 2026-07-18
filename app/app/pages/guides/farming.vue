@@ -132,7 +132,10 @@
 <script setup lang="ts">
 import { computed, ref, nextTick, onMounted } from 'vue'
 import { GUIDES_INDEX } from '~/data/guides/registry'
-import { FARM_TARGETS, FARM_KIND_LABEL, searchFarmTargets, type FarmKind } from '~/data/guides/farmIndex'
+import { FARM_TARGETS as EN_TARGETS, FARM_KIND_LABEL as EN_KINDS, type FarmKind } from '~/data/guides/farmIndex'
+
+// Localized farm targets (translated hints) + kind labels for the active locale.
+const { targets: FARM_TARGETS, kinds: FARM_KIND_LABEL } = await useLocalizedFarmIndex({ targets: EN_TARGETS, kinds: EN_KINDS })
 
 const { t } = useI18n()
 const localePath = useLocalePath()
@@ -142,7 +145,11 @@ const kindFilter = ref<FarmKind | null>(null)
 
 const farmingGuides = computed(() => GUIDES_INDEX.filter((g) => g.category === 'farming'))
 
-const baseResults = computed(() => searchFarmTargets(query.value))
+const baseResults = computed(() => {
+  const q = query.value.trim().toLowerCase()
+  if (!q) return FARM_TARGETS
+  return FARM_TARGETS.filter((t) => (t.name + ' ' + (t.aliases ?? []).join(' ') + ' ' + t.hint).toLowerCase().includes(q))
+})
 const results = computed(() =>
   kindFilter.value ? baseResults.value.filter((t) => t.kind === kindFilter.value) : baseResults.value
 )

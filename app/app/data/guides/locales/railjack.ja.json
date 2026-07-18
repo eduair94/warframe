@@ -1,0 +1,471 @@
+{
+  "slug": "railjack",
+  "eyebrow": "Knowledge Center · Railjack",
+  "title": "Railjack ガイド",
+  "lede": "RailjackはWarframeの大型戦艦サンドボックスです。宇宙空間で戦艦を操縦し、戦闘中に敵艦に乗り込み、全員AIにすることも可能なクルーを指揮します。ここでは、解放方法、Intrinsicsのランク上げ、そして誰もが敬遠するホストになることなくソロで周回する方法を解説します。",
+  "category": "endgame",
+  "readMins": 11,
+  "stats": [
+    {
+      "num": "5",
+      "label": "Intrinsicの系統",
+      "tone": "gold"
+    },
+    {
+      "num": "3",
+      "label": "指揮可能なAIクルー",
+      "tone": "good"
+    },
+    {
+      "num": "10",
+      "label": "Intrinsicごとのランク",
+      "tone": "alt"
+    },
+    {
+      "num": "2",
+      "label": "Proximaの勢力 (Grineer + Corpus)"
+    }
+  ],
+  "sections": [
+    {
+      "id": "what-is-railjack",
+      "title": "Railjackとは何か",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Railjackは、あなたと最大3人の分隊メンバーが共に乗り込む大型戦艦——*あなた自身の* Railjack——を中心とした、Warframeの**宇宙戦闘ゲームモード**です。おなじみの惑星の軌道上にある宇宙空間である**Proxima**エリアを飛び回り、敵の戦闘機群を蹴散らし、重装甲の**crewship**を破壊し、敵の大型艦や基地に乗り込んで生身で目標を達成します。"
+        },
+        {
+          "type": "p",
+          "text": "その魅力はシームレスな遷移にあります。操縦席で対空砲火をかいくぐっていたかと思えば、次の瞬間には**Archwing slingshot**から敵のcrewshipへと射出されて内部からリアクターを爆破し、さらにその直後には船に戻って`Omni`ツールで船体の亀裂を修復しているのです。このモードは**Empyrean**アップデートで登場し、その後のCorpusリワークで大幅に効率化されました。このリワークにより、**Command** Intrinsicと個人用の**Plexus** modボードが追加され、現代のソロRailjackが非常に快適なものとなりました。"
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "ゲームモード",
+              "v": "宇宙戦闘 ＋ シームレスな生身での乗り込み"
+            },
+            {
+              "k": "あなたの船",
+              "v": "Railjack — 操縦、砲撃、またはそこからの射出"
+            },
+            {
+              "k": "分隊サイズ",
+              "v": "最大4人のプレイヤー、またはソロ時はあなた ＋ 最大3人のAIクルー"
+            },
+            {
+              "k": "エリア",
+              "v": "Grineer Proxima および Corpus Proxima (最終地点は Veil)"
+            },
+            {
+              "k": "前提条件",
+              "v": "The War Withinを完了後、Rising Tideクエストを完了"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "why-bother",
+      "title": "なぜRailjackをやるべきなのか",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Railjackは長年厳しい状況にありましたが、リワークによって真の報酬の宝庫へと生まれ変わりました。単なる一風変わったフライトシミュレーターではなく、いくつかの進行システムがこれに直結しています。"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "理由",
+              "得られるもの"
+            ],
+            "rows": [
+              [
+                "アフィニティ / レベル上げ",
+                "ミッションでは装備全体に共有アフィニティが大量に注ぎ込まれるため、Hydron以外の方法で武器やframeのランクを上げる確実な手段となります。"
+              ],
+              [
+                "素材",
+                "Titanium、Asterite、およびGrineer/Corpus Proximaのドロップ品は、Railjackのアップグレードや、驚くほど多くの後半のFoundry製作レシピで使用されます。"
+              ],
+              [
+                "Sisters of Parvos",
+                "CorpusのlichハントはRailjackが前提条件となっています。Sisterの大型艦に対峙して乗り込み、引導を渡します。詳細はKuva & Lichesガイドを参照してください。"
+              ],
+              [
+                "Void Storms",
+                "Railjack版のVoid Fissuresです。飛び回りながらrelicを開封し、追加のVoid Tracesを貯めることができます。ミッション報酬に加えて、無料のprimeパーツも手に入ります。"
+              ],
+              [
+                "クエスト ＆ ストーリー",
+                "Rising Tide、Call of the Tempestarii、およびその後のストーリー展開では、いずれもあなたが操縦席に立つことになります。"
+              ],
+              [
+                "マスタリー ＆ 多様性",
+                "Intrinsics、コンポーネント、およびゲーム内の他のどれとも異なるプレイ感の戦闘サンドボックスが楽しめます。"
+              ]
+            ],
+            "note": "Void Stormの報酬はミッション自体のドロップ品と累積します。ドロップ品を解体する前に、開封するか売却するかの計算を確認しておきましょう。"
+          }
+        },
+        {
+          "type": "p",
+          "text": "そのうちの2つは計画的に進める価値があります。**Void Storms**はRailjackをrelicファームに変貌させます。[Relicの価値：開封か売却か](/relics-value)や[1周あたり最も効率の良いrelic](/relic-farming)を使って、獲得した戦利品の価値を計算してみましょう。そして、primeを開封し始めたら、[ducat価値ツール](/ducats)や[セット vs パーツ計算ツール](/comparison)を使って、どれをBaro用に残し、どれを売却するかを判断できます。"
+        }
+      ]
+    },
+    {
+      "id": "unlocking",
+      "title": "Railjackの解放：Rising Tideクエスト",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "このモードに入るには2つの方法があります。すぐに**他の人の船にクルーとして乗る**ことができます。公開のRailjack分隊に参加するだけで、何も所有していなくてもIntrinsicsや報酬を獲得できます。しかし、*自分自身の* Railjackを建造するには、**Rising Tide**クエストを進める必要があります。"
+        },
+        {
+          "type": "steps",
+          "ordered": true,
+          "steps": [
+            {
+              "h": "The War Withinの完了",
+              "p": "Rising Tideは、シネマティッククエストであるThe War Within（ストーリー上はThe Second Dreamの次）を完了している必要があります。まだそこに到達していない場合は、まずメインストーリークエストを進めてください。順序についてはクエストガイドを参照してください。"
+            },
+            {
+              "h": "Dry Dockへのアクセス確保",
+              "p": "Rising TideはDry Dockで建造されます。orbiterから船を建造することはできません。しかし、Dry Dockはクラン専用ではありません。Clan Dojoに建造するか、いくつかの大型のRelays（SaturnやPlutoなど）にある公開のDry Dockを使用できます。"
+            },
+            {
+              "h": "6つの残骸コンポーネントの収集と製作",
+              "p": "クエストでは、星系マップを巡って素材を集め、回収した船の6つのセクションをDry Dockで1つずつ製作していきます。"
+            },
+            {
+              "h": "製作タイマーの経過を待つ",
+              "p": "各コンポーネントと最終組み立てには、現実時間で進行するFoundry形式のタイマーがあり、合計で数日かかります。できるだけ早く製作を開始し、他のコンテンツをプレイしている間に進めておきましょう。"
+            },
+            {
+              "h": "Dry Dockからの出航",
+              "p": "Railjackの組み立てが完了すると、Dry Dockに停泊します。そこから（またはNavigationのProximaエリアから）ミッションを開始し、Intrinsicsのランク上げを始めることができます。"
+            }
+          ]
+        },
+        {
+          "type": "warn",
+          "text": "**クランに入っていませんか？ それでも選択肢はあります。** いくつかの大型の**Relays**（SaturnやPlutoなど）には、クランに所属していなくても使用できる公開の**Dry Dock**があります。自分専用のものがいいですか？ 任意のRelay of clanコンソールから、無料で一人クランを設立できます。dojoにDry Dockを建設すれば（クラン限定のSigmaコンポーネントの研究も解放されます）、あるいはフレンドやアライアンスのdojoを借りることもできます。「クランに入っていない」という理由で諦めないでください。"
+        },
+        {
+          "type": "info",
+          "text": "このモードが初めてで、自分に向いているか分からないですか？ いくつかの**ストーリーミッションや公開分隊では、あらかじめ用意されたレンタル用のRailjackが提供される**ため、Rising Tideを完了する前に操縦や砲撃を試すことができます。建造時間を投資するかどうかを決めるのに最適な方法です。"
+        }
+      ]
+    },
+    {
+      "id": "intrinsics",
+      "title": "Intrinsics：5つの系統",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Intrinsics**はRailjack'sの個人用スキルツリーであり、それぞれ**1から10**までランク付けされた5つの系統があります。ミッションのアフィニティから自動的にIntrinsicポイントを獲得し、それを好きな系統に消費します。高ランクになると、単なる数値の上昇ではなく、劇的な変化をもたらします。新しい機動、より迅速な修理、そして極めて重要なAIクルーが解放されます。"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "系統",
+              "司るもの",
+              "ソロプレイにおいて重要な理由"
+            ],
+            "rows": [
+              [
+                "Tactical",
+                "タクティカルマップ、クルーや目標へのテレポート、および船へのOmniリコール",
+                "船の端から端まで走る代わりに、操縦席や船体の亀裂へと瞬時に戻ることができます"
+              ],
+              [
+                "Piloting",
+                "小回りの利く素早い位置調整のための、ブースト、ベクターバースト、ドリフト回避",
+                "対空砲火を実際に回避し、素早く位置調整を行える軽快な船になります"
+              ],
+              [
+                "Gunnery",
+                "タレットの操作——熱管理、エイムズーム、偏差インジケーターへのエイムスナップ、およびArchwing slingshot",
+                "戦闘機をより早く撃破し、crewshipにForward Artilleryを命中させ、slingshotでそれらに乗り込むことができます"
+              ],
+              [
+                "Engineering",
+                "船体のヘルス、より迅速なOmni修理、フォージの生産量、および災害抑制",
+                "誰も船体の面倒を見ていない状況でも、火災や亀裂を生き延びることができます"
+              ],
+              [
+                "Command",
+                "最大3人のAIクルーの雇用と指示、およびOn Call Crewの召喚",
+                "ソロプレイにおいて最も重要な系統——クルーがあなたの代わりに操縦し、戦ってくれます"
+              ]
+            ]
+          }
+        },
+        {
+          "type": "tip",
+          "text": "**ソロのレベル上げ順序：** まずはクルーを確保するために早期に**Command**を上げ、次に船の操作感を良くするために**Gunnery**と**Piloting**を数ランク上げ、生存性のために**Engineering**を上げます。頻繁に乗り込みを行うようになると、TacticalのOmniリコールはQoL（快適性）を劇的に向上させます。効果を発揮するためにすべてを10にする必要はありません。それぞれの最初の数ランクが最も重要です。"
+        }
+      ]
+    },
+    {
+      "id": "command-crew",
+      "title": "Commandクルー：ソロプレイヤーの秘密兵器",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "このページから1つだけ持ち帰るなら、**Commandのランクを上げてAIクルーを雇用すること**です。適切に構成されたクルーは、4人用の船を1人用へと変貌させます。彼らは操縦し、砲撃し、亀裂や火災を修理し、侵入者から防衛します。その間、あなたは自分の好きなことに集中できます。"
+        },
+        {
+          "type": "steps",
+          "ordered": true,
+          "steps": [
+            {
+              "h": "Commandでクルースロットを解放する",
+              "p": "Commandの最初のランクで1人目のクルーを雇用・配置できるようになり、ランクが上がるにつれてスロットが増え、より高い能力値を持つようになります。数ランク上で2つ目のスロットが解放され、さらにその数ランク後に3つ目が解放され、最大3人のアクティブなAIクルーを配置できます。"
+            },
+            {
+              "h": "FortunaのTickerから雇用する",
+              "p": "Ticker（VenusのFortunaにいます）は、素材やSolaris debt-bondsと引き換えに、日替わりでクルーを販売しています。各候補者は、戦闘、砲撃、操縦、エンジニアリング、修理、耐久に能力ポイントが振り分けられています。"
+            },
+            {
+              "h": "ステータスに合った役割を割り当てる",
+              "p": "すべてのクルーメンバーは、Pilot、Gunner、Defender、またはEngineerのいずれかの役割を担います。高いステータスに役割を合わせましょう。GunnerにはGunnery ＋ Combat、EngineerにはRepair ＋ Enduranceが求められます。"
+            },
+            {
+              "h": "定番のソロ用3人組を編成する",
+              "p": "戦闘機群を蹴散らす2人のGunnersと、船を維持する1人のEngineerが信頼性の高いデフォルトの構成です。操縦席を離れて乗り込みを行いたい場合は、Gunnerの1人をPilotに入れ替えてください。"
+            }
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "Commandの高ランクでは、ギアアイテムの**On Call Crew**が解放されます。これにより、*通常の*（Railjack以外の）ミッションにクルーの1人を一時的な味方として召喚できます。船が自動で機能するようになった後も、Commandのランクを上げ続ける強力な理由になります。"
+        }
+      ]
+    },
+    {
+      "id": "solo-build",
+      "title": "ソロ対応のRailjackをビルドする",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "船の強さは2つの要素から成り立っています。船体に取り付けられた**コンポーネント**（Reactor、Shield、Engines、および兵装）と、レンタル船を含む*あらゆる* Railjackに持ち込める個人用modボードである**Plexus**です。コンポーネントには3つのメーカー——**Zetki**（最高の素のステータスを持つが、タレットのオーバーヒートなどの欠点がある）、**Vidar**（バランスが良く、強力なボーナス特典がある）、**Lavan**（耐久性が高く、優れた操作性を持つ）——があり、**MK I〜III**のティアに分かれています。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**まずはReactorから。** ReactorはPlexus容量（装備できるmodの数と強さ）を決定し、Battleアビリティを強化します。大容量のreactorを追い求めることが、単体で最大のアップグレードとなります。",
+            "**次にタレット（兵装）。** 好みのメーカーのMK III武器を手に入れましょう。Zetkiは最も高火力ですがオーバーヒートしやすく、VidarとLavanは火力を少し犠牲にして操作性と稼働時間を高めています。",
+            "**Forward Artilleryはcrewshipキラーです。** 機首砲（`Tunguska`）は、普通に戦うと削るのに途方もない時間がかかるcrewshipをワンパンできます。**Forward Artillery** modを装着して、Veilのより硬いcrewshipもワンパンし続けられるようにしましょう。",
+            "**Plexusの構成。** タレットダメージを最大化し（例：Hyperstrike）、船体のヘルス用に生存性modを追加し、**戦闘機群を一掃するBattleアビリティ**を1つ装着します。敵を集めるTetherや、追尾ミサイルのSeeker Volleyが長年の定番です。",
+            "**EnginesとShieldsの優先度は低めです。** 操作性やシールドのリチャージは便利ですが、信頼できるreactor、武器、およびForward Artilleryを揃えた後の話です。"
+          ]
+        },
+        {
+          "type": "warn",
+          "text": "**誰もが敬遠するホストにならないようにしましょう。** 野良のRailjackで最も多い不満は、船の建造やmod構成を全く行わずに高レベルノードでホストを務めるプレイヤーです。ホストをするつもりなら、まずは1時間ほどPlexusとForward Artilleryの調整に時間を割いてください。modを装着した船は雲泥の差であり、分隊メンバーもすぐに気づくはずです。"
+        }
+      ]
+    },
+    {
+      "id": "solo-game-plan",
+      "title": "ソロミッションの作戦計画",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "クルーを乗せ、Forward Artilleryの準備が整えば、ソロのRailjackミッションはスムーズなリズムで進みます。基本ループは、敵の群れを減らし、crewshipを破壊し、目標を達成し、脱出することです。"
+        },
+        {
+          "type": "steps",
+          "ordered": true,
+          "steps": [
+            {
+              "h": "敵の群れをタレットに引きつける",
+              "p": "戦闘機はあなたを追跡する際に密集します。Gunnersとタレットに任せつつ、TetherのようなBattleアビリティを使って一箇所に集めて一網打尽にしましょう。"
+            },
+            {
+              "h": "Forward Artilleryでcrewshipを破壊する",
+              "p": "機首砲の狙いを定め、各crewshipをワンパンします。あるいは、Archwingやslingshotを使って乗り込み、内部からリアクターを爆破することもできます。どちらの方法でも、船体に対する最大の脅威を取り除くことができます。"
+            },
+            {
+              "h": "生身で目標に乗り込む",
+              "p": "ほとんどのミッションでは、敵の大型艦や基地に侵入し、ラジエーターの破壊、コンソールのハッキング、または拠点の防衛を行う必要があります。これは通常のWarframeの戦闘です。信頼できるframeと武器を持ち込みましょう。"
+            },
+            {
+              "h": "必要に応じて修復とリコールを行う",
+              "p": "留守中に船が亀裂や火災に見舞われた場合、通常はEngineerが対処してくれますが、状況が悪化した場合はTacticalのOmniリコールで瞬時に船に戻ることができます。"
+            },
+            {
+              "h": "完了して脱出する",
+              "p": "目標が完了したら、残党を掃討して離脱します。Void Stormの周回では、ここで装備しているrelicも開封されるため、報酬を選択してから出発しましょう。"
+            }
+          ]
+        },
+        {
+          "type": "warn",
+          "text": "**Forward Artilleryは仕様上、ソロでは扱いづらいです。** パイロットは機首砲を発射できません。操縦席を離れる必要があり、狙いを定めている間は船の機動が停止します。これは、ベテランが新規のソロパイロットに最も知っておいてほしいことです。あなたが発射している間も船が回避を続けられるように**クルーメンバーをPilotに割り当てる**か、対空砲火を浴びながら静止することのないよう、事前に周囲の安全を確保しておきましょう。"
+        }
+      ]
+    },
+    {
+      "id": "where-next",
+      "title": "エンドゲームにおけるRailjackの位置づけ",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "船が自動で機能するようになれば、Railjackは面倒な作業ではなく便利なツールになります。**Void Storms**をrelicファームとして利用し、[開封か売却か](/relics-value)や[1周あたりのrelicファーム](/relic-farming)で獲得した戦利品の価格を調べましょう。**Sisters of Parvos**は[Kuva ＆ Lichesガイド](/guides/kuva)に沿ってハントします。また、Proximaのドロップ品や素材が具体的にどこからドロップするかを確認したい場合は、[3D星系マップドロップ位置](/star-chart-3d)がマップ上にプロットしてくれます。"
+        },
+        {
+          "type": "p",
+          "text": "その他のエンドゲーム要素——[Steel Path](/guides/steel-path)、[Duviri](/guides/duviri)（比較対象となる独自のIntrinsicsシステムがあります）、[Arcanes](/guides/arcanes)、および[Archon Shards](/guides/archon-shards)——については、姉妹ガイドがこのガイドの先をカバーしています。また、ビルドが完成していく様子を動画で見たい場合は、[クリエイターディレクトリ](/creators)や以下の動画を次にクリックするのが最適です。"
+        },
+        {
+          "type": "links",
+          "links": [
+            {
+              "label": "Relicの価値：開封か売却か",
+              "href": "/relics-value",
+              "icon": "diamond-stone",
+              "note": "Void Stormの戦利品の価格を調べる"
+            },
+            {
+              "label": "Kuva ＆ Lichesガイド",
+              "href": "/guides/kuva",
+              "icon": "skull",
+              "note": "Sisters of ParvosはRailjackが前提"
+            },
+            {
+              "label": "3Dドロップ位置マップ",
+              "href": "/star-chart-3d",
+              "icon": "map-marker-path",
+              "note": "Proximaのドロップ品を検索"
+            },
+            {
+              "label": "コミュニティツールディレクトリ",
+              "href": "/tools",
+              "icon": "toolbox",
+              "note": "Wiki、Overframeなど"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "WarframeでRailjackを解放するにはどうすればよいですか？",
+      "a": "自分専用の船を建造するには、**Rising Tide**クエストを完了する必要があります。このクエストを開始するには、**The War Within**（The Second Dreamの次にあたるシネマティッククエスト）を完了し、**Dry Dock**にアクセスできる必要があります。Dry Dockはクラン専用ではありません。いくつかの大型の**Relays**（SaturnやPlutoなど）には公開のDry Dockがあり、あるいは無料でソロクランを設立して自分専用のものを建設することもできます。船を一切建造したくない場合は、公開のRailjack分隊に参加して、すぐに他の人の船に乗り込むことができます。その場合でも、Intrinsicsや報酬は獲得できます。"
+    },
+    {
+      "q": "Railjackはソロでプレイできますか？",
+      "a": "はい。**Command** Intrinsicのランクを上げ、AIクルーを雇用すれば、非常に快適にプレイできます。優秀な3人のクルーメンバーが、あなたの代わりに操縦、砲撃、船の修理を行ってくれるため、あなたは飛行や乗り込みに集中できます。これにより、Railjackが4人分の仕事から1人分の仕事へと劇的に変化します。"
+    },
+    {
+      "q": "Railjackを入手するにはクランが必要ですか？",
+      "a": "必ずしも必要ではありません。Railjackの建造と整備は**Dry Dock**で行いますが、orbiterからは行えないものの、Dry Dockはクラン専用ではありません。いくつかの大型の**Relays**（SaturnやPlutoなど）には、ソロプレイヤーなら誰でも利用できる公開のDry Dockがあります。自分専用のものが欲しい場合は、任意のRelayのクランコンソールから無料で一人クランを設立し、dojoにDry Dockを建設することができます。これにより、クラン限定のSigmaコンポーネントの研究も解放されます。"
+    },
+    {
+      "q": "最初にレベルを上げるべきRailjackのIntrinsicは何ですか？",
+      "a": "**Command**です。AIクルーを確保できるため、このモードをソロでプレイ可能にする上で最も貢献します。その後、船の操作性を高めるために**Gunnery**と**Piloting**を数ランク上げ、生存性のために**Engineering**を上げます。効果を発揮するためにいずれかの系統を10まで最大化する必要はありません。初期のランクが最も高い価値を持っています。"
+    },
+    {
+      "q": "RailjackでAIクルーメンバーを入手するにはどうすればよいですか？",
+      "a": "**Command** Intrinsicのランクを上げてクルースロットを解放し、素材やSolaris debt-bondsを使ってFortuna（Venus）の**Ticker**からクルーを雇用します。それぞれの能力ステータスに合わせて、Pilot、Gunner、Defender、またはEngineerの役割を割り当てます。一般的なソロの構成は、2人のGunnersと1人のEngineerです。"
+    },
+    {
+      "q": "Railjackでcrewshipを破壊するにはどうすればよいですか？",
+      "a": "**Forward Artillery**を使用します。これは船の機首砲（Tunguska）であり、crewshipをワンパンできます。**Forward Artillery** modを装着して、Veilのより硬いcrewshipも貫通し続けられるようにしましょう。あるいは、Archwingやslingshotを使ってcrewshipに乗り込み、内部からリアクターを破壊することもできます。なお、ソロプレイではパイロットは砲撃を行えないため、クルーメンバーをPilotに割り当てるか、船を停止させてから狙いを定めてください。"
+    },
+    {
+      "q": "Railjackはやる価値がありますか？",
+      "a": "ほとんどのプレイヤーにとって、価値があります。強力なアフィニティと素材の供給源であり、Sisters of Parvosをハントする**唯一の**方法でもあります。また、**Void Storm**ミッションでは、追加のprimeパーツやVoid Tracesを獲得しながらrelicを開封できます。いくつかのクエストでも必須となります。船とクルーが整えば、迅速かつほぼ自動化されたファーム手段となります。"
+    },
+    {
+      "q": "使用するのに最適なRailjackコンポーネントは何ですか？",
+      "a": "**MK III**コンポーネントを目指し、**大容量のReactor**を最優先してください。これはPlexus modの強さを決定するためです。タレットについては、**Zetki**が最も高火力（ただしオーバーヒートしやすい）ですが、**Vidar**と**Lavan**は火力を犠牲にして操作性と耐久性を高めています。好みに合わせて選んでください。正確なメタ構成はパッチによって変化するため、特定のゴッドロールを求めて周回する前に、最近のビルド動画や[wiki](https://wiki.warframe.com/)を確認してください。"
+    }
+  ],
+  "videos": [
+    {
+      "id": "MLyf9D2GcpI",
+      "title": "Warframe Beginner's Guide 2025: Episode #5: The Second Dream Quest & Unlocking RailJack!",
+      "channel": "iFlynn"
+    },
+    {
+      "id": "G_ou9naTX50",
+      "title": "The ULTIMATE Warframe RAILJACK Guide 2026!",
+      "channel": "MHBlacky"
+    },
+    {
+      "id": "xnLTTLJn5iw",
+      "title": "Warframe: Solo Railjack Build Guide",
+      "channel": "Jacsonitos"
+    },
+    {
+      "id": "AMKACvK4ZXQ",
+      "title": "The Ultimate Railjack Build Guide (Warframe)",
+      "channel": "Hunkpain Gaming "
+    }
+  ],
+  "sources": [
+    {
+      "label": "Current state of Railjack: fast guide (r/Warframe)",
+      "href": "https://reddit.com/r/Warframe/comments/ea2af8/current_state_of_railjack_fast_guide_for_people/"
+    },
+    {
+      "label": "9 Days: Railjack — the Journey, the Meta, a FAQ (r/Warframe)",
+      "href": "https://reddit.com/r/Warframe/comments/eed3eu/9_days_railjack_the_journey_the_meta_a_faq/"
+    },
+    {
+      "label": "Watch a guide before you host your Railjack (r/Warframe)",
+      "href": "https://reddit.com/r/Warframe/comments/1u94eva/i_dont_usually_like_to_flame_people_in_warframe/"
+    },
+    {
+      "label": "Warframe Wiki",
+      "href": "https://wiki.warframe.com/"
+    }
+  ],
+  "related": [
+    {
+      "label": "Kuva ＆ Liches",
+      "to": "/guides/kuva",
+      "icon": "skull",
+      "note": "Sisters of ParvosはRailjackを通じてハントする"
+    },
+    {
+      "label": "Relics ＆ Void Fissures",
+      "to": "/guides/relics",
+      "icon": "diamond-stone",
+      "note": "Void StormsはRailjackにおけるrelic開封手段"
+    },
+    {
+      "label": "Steel Path",
+      "to": "/guides/steel-path",
+      "icon": "chevron-triple-up",
+      "note": "もう一つのエンドゲーム周回"
+    },
+    {
+      "label": "Duviri",
+      "to": "/guides/duviri",
+      "icon": "sword-cross",
+      "note": "独自のIntrinsicsシステムを搭載"
+    },
+    {
+      "label": "Relic価値ツール",
+      "to": "/relics-value",
+      "icon": "cash-multiple",
+      "note": "Void Stormのドロップ品を開封するか売却するか"
+    },
+    {
+      "label": "コミュニティツール",
+      "to": "/tools",
+      "icon": "toolbox",
+      "note": "Wiki、Overframe、DEツール"
+    }
+  ],
+  "updated": "2026-07-18"
+}

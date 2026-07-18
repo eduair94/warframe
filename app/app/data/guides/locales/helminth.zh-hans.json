@@ -1,0 +1,403 @@
+{
+  "slug": "helminth",
+  "eyebrow": "知识中心 · Helminth & 汲取",
+  "title": "Helminth & 汲取指南",
+  "lede": "将多余的 Warframe 喂给 Helminth，永久保留其技能之一，然后将该技能嫁接到真正需要它的 frame 上。这就是让一个不错的 frame 变成怪兽的方法——这里有所有的规则、最值得追求的技能，以及会导致玩家损失一整只 Warframe 的错误。",
+  "category": "systems",
+  "readMins": 9,
+  "stats": [
+    {
+      "num": "8",
+      "label": "购买模块所需的段位",
+      "tone": "gold"
+    },
+    {
+      "num": "6",
+      "label": "喂养它的分泌物类型",
+      "tone": "good"
+    },
+    {
+      "num": "1",
+      "label": "每个 frame 的汲取技能槽位",
+      "tone": "alt"
+    },
+    {
+      "num": "7 days",
+      "label": "一次活力滋养持续时间",
+      "tone": "good"
+    }
+  ],
+  "sections": [
+    {
+      "id": "what-is-helminth",
+      "title": "Helminth 到底是什么",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Helminth** 是 Warframe 的技能移植系统，也是整个游戏中提升战力最显著的系统之一。你需要向它永久牺牲一个多余的 Warframe（即“汲取”）来将该 frame 的**一个**技能解锁到你的个人库中。从那时起，你可以将该技能**注入**到任何其他 frame 上——覆盖其四个技能之一——次数不限，每次只需支付少量资源。除此之外，它还会提供每周一次的属性增益，称为**活力滋养**。"
+        },
+        {
+          "type": "p",
+          "text": "在实际游玩中，玩家们通过这种方式来弥补 frame 的弱点（加上治疗、能量、削减护甲或伤害增益），或者让强力 frame 变得更加逆天。这在游戏前期并非必不可少，但一旦你拥有了一批 frame，它就会改变你几乎所有的配装思路——将其与聪明的 [Mod 搭配](/guides/mods)和 [Archon Shards](/guides/archon-shards)相结合，即使是中等强度的 frame 也能轻松应对终局内容。"
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "所处位置",
+              "v": "Helminth 医务室，位于你 Orbiter 尾部的模块房间"
+            },
+            {
+              "k": "解锁方式",
+              "v": "完成 Heart of Deimos 以开启通道，然后达到段位 8 + 获得 Entrati 声望来购买模块"
+            },
+            {
+              "k": "两大功能",
+              "v": "汲取/注入技能 + 每周活力滋养"
+            },
+            {
+              "k": "代价",
+              "v": "汲取会永久摧毁提供技能的 Warframe"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "unlock",
+      "title": "解锁 Helminth",
+      "blocks": [
+        {
+          "type": "steps",
+          "ordered": true,
+          "steps": [
+            {
+              "h": "完成 Heart of Deimos",
+              "p": "这个故事任务（在你完成新手教程 Vor's Prize 并获得 Orbiter 后即可开启）会解锁 Deimos 上的 Cambion Drift 和 Necralisk，并让你开始赚取 Entrati 集团的声望。完成该任务并不会直接赠送你 Helminth，而是解锁了购买它的地方。"
+            },
+            {
+              "h": "达到真正的门槛：段位 8 + Entrati 关系达到 Associate",
+              "p": "Helminth 模块蓝图由 Necralisk 中的 Son 出售，在你达到段位 8 且 Entrati 声望至少达到等级 3（Associate）之前，他不会与你交易。提升你的段位并刷满 Entrati 声望以达到这一要求。"
+            },
+            {
+              "h": "购买、制作并安装模块",
+              "p": "使用 Entrati 声望购买蓝图，在你的 Foundry 中制作它（需要 Credits 和 Deimos 资源，制作大约需要一天时间），然后进行安装。你 Orbiter 尾部的 Helminth 医务室即可投入使用——走进去并与墙上的有机体互动即可打开其菜单。"
+            },
+            {
+              "h": "喂养它以提升其等级",
+              "p": "当你向 Helminth 喂食资源和汲取 frame 时，它会升级。它的第一级会解锁汲取功能；更高的等级会增加资源存储量并开启后续功能。在早期，只需喂给它它所要求的任何多余材料即可。"
+            }
+          ]
+        },
+        {
+          "type": "info",
+          "text": "你**不需要**依靠 Helminth 才能享受游戏——它是游戏早中期的升级内容。如果你仍在制作你的前几个 frame，请优先进行该项（参见[新手 Warframe 指南](/guides/beginner-warframes)和[游戏进度路线](/guides/progression)），等你有富余的 frame 时再回来研究 Helminth。"
+        }
+      ]
+    },
+    {
+      "id": "subsuming",
+      "title": "汲取是如何运作的",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**汲取**意味着将一个多余的 Warframe 放入 Helminth 中让其吞噬——而且你不需要先提升它的等级：一个刚制作好、0 级的 frame 与满级的效果完全相同。作为交换，你将永久解锁该 frame 的**一个特定技能**并存入你的技能库中。你可以选择喂食*哪一个 frame*，但**由 DE 决定其四个技能中哪一个是可赠送的**——例如，Rhino 总是赠送 Roar，而绝不会是 Iron Skin。一个重要的限制：你只能汲取**基础版** Warframes——Prime 和 Umbra 变体完全无法喂给 Helminth。在喂食之前，务必先查询该 frame 的可汲取技能（在 [wiki](https://wiki.warframe.com/) 或其游戏内的 codex 中），以免产生意外。"
+        },
+        {
+          "type": "warn",
+          "title": "汲取是永久性的，且会摧毁该 frame",
+          "text": "在你汲取它的那一刻起，提供技能的 Warframe 将**永远消失**。如果这是你的唯一版本，你将不得不从头开始重新刷取或重新制作。请喂食重复的、你确实从不使用的 frame，或者你正准备用其 Prime 版本替代的基础版——千万不要喂食你仍在使用的唯一版本。"
+        },
+        {
+          "type": "p",
+          "text": "你只需要汲取一个 frame **一次**。技能进入你的技能库后，它就永远属于你了，并且可以无限次注入到其他 frame 上——汲取同一个 frame 的第二个副本不会给你带来任何新东西。"
+        }
+      ]
+    },
+    {
+      "id": "infusing",
+      "title": "将技能嫁接到 frame 上（注入）",
+      "blocks": [
+        {
+          "type": "steps",
+          "ordered": true,
+          "steps": [
+            {
+              "h": "选择接收技能的 frame",
+              "p": "打开 Helminth 的“注入技能”菜单，选择你想要修改的 frame。任何已制作好的 frame 都可以——包括 Primes 和 Umbra——并且对接收技能的 frame 没有等级要求。"
+            },
+            {
+              "h": "选择要覆盖的技能",
+              "p": "你选择该 frame 的四个技能之一进行替换。被汲取的技能将占用技能栏中的该槽位。想一想你最少使用哪个原生技能。"
+            },
+            {
+              "h": "支付资源消耗",
+              "p": "每次注入都会消耗 Helminth 资源类别的混合物（见下文）。确认后，技能就会被嫁接上去。"
+            }
+          ]
+        },
+        {
+          "type": "info",
+          "title": "容易让人踩坑的规则",
+          "text": "**每个 frame 只能拥有一个汲取的技能**——你不能叠加两个。你可以在以后通过注入另一个技能来覆盖它，但这会再次消耗资源。汲取的技能效果会随着**该 frame 的 Mod**（强度、持续时间、范围、效率）而变化，因此在高强度 frame 上的 Roar 效果更强。少数技能在被汲取时的上限低于其原生 frame，并且许多技能**无法使用其强化 Mod**（尽管支持的列表正在增加）——请查看 wiki 条目以了解你所依赖的任何技能的具体表现。"
+        }
+      ]
+    },
+    {
+      "id": "best-subsumes",
+      "title": "按定位划分的最受欢迎汲取技能",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "你不需要所有的这些技能——选择能弥补你配装弱点的那一个。以下的主流技能多年来一直名列前茅，因为它们解决了通用问题：伤害、能量、生存能力、削减护甲和聚怪。具体数值会随补丁而变化，因此请将这些视为定位，并在 [wiki](https://wiki.warframe.com/) 或最近的指南中确认当前数值。"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "汲取技能",
+              "来源 Frame",
+              "为什么它是主流选择"
+            ],
+            "rows": [
+              [
+                "Roar",
+                "Rhino",
+                "一个近乎通用的伤害倍增器，能提升你几乎所有的伤害。默认的“让一切伤害更高”的选择。"
+              ],
+              [
+                "Nourish",
+                "Grendel",
+                "集能量生成、附加 Viral 伤害和韧性于一身——瞬间解决极度缺能的配装问题。"
+              ],
+              [
+                "Eclipse",
+                "Mirage",
+                "在光照下提供大量的武器伤害加成（或在阴影中提供高额减伤）。非常适合枪械输出平台。"
+              ],
+              [
+                "Gloom",
+                "Sevagoth",
+                "将附近敌人的速度减缓至龟速，并在击杀时提供生命偷取——生存能力加软性控场。"
+              ],
+              [
+                "Pillage",
+                "Hildryn",
+                "在一定范围内削减敌人的护甲和护盾，并补满你自己的护盾。能够触发护盾门（shield-gating）并轻松撕碎高肉度敌人。"
+              ],
+              [
+                "Dispensary",
+                "Protea",
+                "定时掉落能量/生命/弹药补给——为任何 frame 提供被动能量循环。"
+              ],
+              [
+                "Nourish / Gloom / Pillage 组合",
+                "—",
+                "许多终局配装会选择这三个技能之一作为“全能”槽位。"
+              ],
+              [
+                "Xata's Whisper",
+                "Xaku",
+                "为你的武器添加 Void 伤害——一种通用的附加元素，在对抗 Sentients 和捕猎 Eidolon 时大放异彩。"
+              ],
+              [
+                "Larva / Ensnare",
+                "Nidus / Khora",
+                "将敌人聚集到紧密的一堆，以便 AoE 武器和技能可以瞬间消灭它们。"
+              ],
+              [
+                "Terrify",
+                "Nekros",
+                "使敌人恐惧并削减其护甲——控制加伤害放大。"
+              ]
+            ],
+            "note": "看重定位，而非固定数值——DE 会定期调整数值。在投入资源之前，请先确认当前的汲取属性。"
+          }
+        },
+        {
+          "type": "p",
+          "text": "哪些 frame 值得专门制作来用于汲取取决于你已经拥有什么——交叉参考[梯队排行](/guides/tier-list)以查看哪些强力 frame 同时也是优秀的技能提供者，以及[Steel Path 指南](/guides/steel-path)以了解这些增益在何处最能发挥作用。"
+        }
+      ]
+    },
+    {
+      "id": "resources",
+      "title": "喂养 Helminth",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "汲取和注入都需要消耗**分泌物**——即你喂给 Helminth 的资源，分为六个类别：**Oxides, Calx, Biotics, Synthetics, Pheromones and Bile**。不同的操作会消耗不同的类别，因此你需要为每种类别保留少量库存。喂食你已经囤积了大量的常见材料是补充库存最便宜的方法。"
+        },
+        {
+          "type": "tip",
+          "title": "两个值得了解的独特机制",
+          "text": "首先，Helminth 有**胃口**限制——重复喂食相同的资源类别会导致其消耗上升，然后随着时间推移而重置，因此它不鼓励玩家一直狂喂同一种材料。其次，**Bile** 是经典的瓶颈：能喂养它的道具范围较窄，所以要多加留意。如果你缺少喂养材料，[资源刷取指南](/guides/resources)介绍了在何处可以高效囤积。"
+        }
+      ]
+    },
+    {
+      "id": "invigorations",
+      "title": "活力滋养：每周超级增益",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "一旦你解锁了独立的**活力滋养模块**（从 Entrati 购买并与第一个模块一起安装的第二个模块），Helminth 就会开始提供**活力滋养**，这是该系统的后半部分，能提供巨大的临时战力提升。每周它都会提供**随机的增益配对**：一个进攻性增益（例如大幅提升技能强度）配以第二个属性（如持续时间、效率或护甲），你可以将其应用到一个 Warframe 上。"
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "持续时间",
+              "v": "7 天，且仅对你应用该增益的单个 frame 生效"
+            },
+            {
+              "k": "应用的内容",
+              "v": "一个进攻性增益（如技能强度）配以一个随机的实用属性"
+            },
+            {
+              "k": "消耗与重置",
+              "v": "每次活力滋养都会消耗 Helminth 资源；你可以消耗更多资源来重置所提供的增益"
+            },
+            {
+              "k": "刷新时间",
+              "v": "提供的内容每周轮换，因此你不会永远被本周的选择所限制"
+            }
+          ]
+        },
+        {
+          "type": "p",
+          "text": "在你想在那周游玩的 frame 上使用它，或者用它来弥补特定的弱点——在极度依赖技能的 frame 上使用效率或持续时间增益，或者在脆皮 frame 上使用生存能力增益。由于该效果是暂时的，不要围绕它来构建你的整个配装；将其视为一种额外奖励，而不是永久属性。"
+        }
+      ]
+    },
+    {
+      "id": "mistakes",
+      "title": "需要避免的错误",
+      "blocks": [
+        {
+          "type": "list",
+          "items": [
+            "**不要汲取你唯一的 frame 副本**——它会被永久摧毁。如果你仍在使用它，请先制作或购买一个备用副本。",
+            "**在喂食前检查可赠送的技能。** DE 决定了你会获得四个技能中的哪一个；为了错误的技能去刷取 frame 是在浪费时间。",
+            "**在获得 Prime 后保留基础版 frame。** 你完全无法汲取 Prime 或 Umbra——只能汲取基础版本——因此基础版是你获得该技能的唯一 Helminth 供体。千万不要以为它没用就卖掉。",
+            "**不要覆盖你实际在使用的技能。** 你只有一个汲取槽位；替换你按得最少的技能，而不是你的核心技能。",
+            "**记住许多强化 Mod 无法继承。** 如果一个汲取的技能只有在搭配其强化 Mod 时才好用，在依赖它之前，请先验证它在注入后是否仍然有效。",
+            "**注意你的 Bile。** 它是常见的资源瓶颈——注入时要深思熟虑，而不是一时兴起就反复更换技能。"
+          ]
+        },
+        {
+          "type": "warn",
+          "text": "如果你已经卖掉了基础版 frame，现在又想汲取它，你将不得不重新获取它——对于仅有 Prime 版的 frame，这意味着需要刷遗物并重新制作。在制定计划之前，请查看[入库追踪器](/vaulted)以了解某个 Prime 目前是否可以刷取，如果你正在刷取零件以重新制作，请查看[遗物价值工具](/relics-value)。"
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "我该如何在 Warframe 中解锁 Helminth？",
+      "a": "首先完成 Heart of Deimos 任务（在你完成新手教程并获得 Orbiter 后即可开启）以到达 Necralisk 并开始赚取 Entrati 声望。完成该任务并不会直接赠送你 Helminth——一旦你的段位达到 8 且在 Entrati 的声望达到等级 3（Associate），请从 Son 处购买 Helminth 模块蓝图，在你的 Foundry 中制作并安装它。你 Orbiter 后部的 Helminth 医务室随后即可使用，你可以向其喂食资源来提升其等级。"
+    },
+    {
+      "q": "汲取 Warframe 会摧毁它吗？",
+      "a": "是的——汲取会永久消耗提供技能的 frame，以换取其技能之一。如果这是你的唯一副本，你将不得不重新刷取或重新制作。请务必喂食重复的、你从不使用的 frame，或者你正准备用其 Prime 版本替代的基础版——并注意你只能汲取基础版 frame，绝不能汲取 Primes 或 Umbra。"
+    },
+    {
+      "q": "我应该汲取我的 Prime 还是基础版 Warframe？",
+      "a": "你只能汲取基础版本——Prime 和 Umbra frame 完全无法喂给 Helminth。由于基础版赠送的技能完全相同，请保留 Prime 版用于游玩，并将基础版喂掉。这也是为什么你在获得 Prime 后不应该卖掉基础版 frame 的原因——它们是免费的 Helminth 养料。"
+    },
+    {
+      "q": "一个 Warframe 可以拥有多个汲取的技能吗？",
+      "a": "不能——每个 frame 只有一个汲取槽位，一次只能容纳一个注入的技能。你可以在以后通过注入另一个技能来覆盖旧技能，但每次都需要消耗 Helminth 资源，并且会覆盖之前的选择。"
+    },
+    {
+      "q": "在汲取 Warframe 之前，我需要将其等级提升到 30 级吗？",
+      "a": "不需要——这是一个常见的谣言。Warframe 可以在任何等级下被汲取，甚至是刚制作好的 0 级，并且对于你注入技能的 frame 也没有等级要求。真正的门槛在于你的账号：首先需要达到段位 8 和 Entrati 声望来解锁 Helminth。"
+    },
+    {
+      "q": "什么是 Helminth 活力滋养，它们值得吗？",
+      "a": "活力滋养是通过安装独立的活力滋养模块（从 Entrati 购买）解锁的每周属性增益。每周 Helminth 都会提供一对随机的增益——一个像技能强度这样的强力进攻属性，加上一个实用属性——你可以将其应用到一个 frame 上，持续七天。它们确实非常强大，值得在你那周游玩的 frame 上使用，但由于它们是暂时的，不要围绕它们来构建你的整个配装。"
+    },
+    {
+      "q": "汲取的技能会保留其强化 Mod 和全部强度吗？",
+      "a": "不一定。汲取的技能效果会随着接收技能的 frame 的 Mod（强度、持续时间、范围、效率）而变化，但少数技能的上限低于其原生 frame，并且许多技能无法使用其强化 Mod（尽管支持的列表正在增加）。在投入资源之前，请先为你计划依赖的任何技能查看 wiki 条目。"
+    }
+  ],
+  "videos": [
+    {
+      "id": "eMJlOIpaki0",
+      "title": "Helminth Guide - The Systems of Warframe - Subsuming, Invigoration & other functions",
+      "channel": "QuadLyStop"
+    },
+    {
+      "id": "3Ij4OLxXyKk",
+      "title": "The MOST POWERFUL system in Warframe - Helminth Invigoration, Subsuming, Abilities & Archon Shards",
+      "channel": "QuadLyStop"
+    },
+    {
+      "id": "BmHOYP6Osks",
+      "title": "Top 10 Warframe Helminth Abilities YOU NEED In 2025!",
+      "channel": "iFlynn"
+    },
+    {
+      "id": "ui1GTJSLBMk",
+      "title": "Warframe: Top 5 SUBSUMED Helminth Abilities!",
+      "channel": "iFlynn"
+    }
+  ],
+  "sources": [
+    {
+      "label": "Warframe Wiki — Helminth",
+      "href": "https://wiki.warframe.com/",
+      "icon": "book-open-page-variant"
+    },
+    {
+      "label": "r/Warframe — A little reminder before subsuming a frame",
+      "href": "https://reddit.com/r/Warframe/comments/1irgcfd/a_little_reminder_before_subsuming_a_frame/",
+      "icon": "reddit"
+    },
+    {
+      "label": "r/Warframe — Reminder: Do NOT sell base frames after getting their prime",
+      "href": "https://reddit.com/r/Warframe/comments/1muncct/reminder_do_not_sell_base_frames_after_getting/",
+      "icon": "reddit"
+    }
+  ],
+  "related": [
+    {
+      "label": "Archon Shards 指南",
+      "to": "/guides/archon-shards",
+      "icon": "hexagon-multiple",
+      "note": "在汲取技能之上叠加永久属性提升"
+    },
+    {
+      "label": "Warframe 强度排行榜",
+      "to": "/guides/tier-list",
+      "icon": "format-list-numbered",
+      "note": "哪些 frame 值得制作——以及汲取"
+    },
+    {
+      "label": "配装指南",
+      "to": "/guides/mods",
+      "icon": "puzzle",
+      "note": "汲取的技能效果会随着你的 Mod 而变化"
+    },
+    {
+      "label": "Steel Path 指南",
+      "to": "/guides/steel-path",
+      "icon": "skull",
+      "note": "Helminth 增益最能发挥作用的地方"
+    },
+    {
+      "label": "资源刷取",
+      "to": "/guides/resources",
+      "icon": "pickaxe",
+      "note": "囤积 Helminth 消耗的材料"
+    },
+    {
+      "label": "社区工具目录",
+      "to": "/tools",
+      "icon": "toolbox",
+      "note": "技能查询、配装规划器和 wiki"
+    }
+  ],
+  "updated": "2026-07-18"
+}

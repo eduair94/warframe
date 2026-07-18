@@ -1,0 +1,479 @@
+{
+  "slug": "standing",
+  "eyebrow": "Centrum Wiedzy · Reputacja i Syndykaty",
+  "title": "Przewodnik po Reputacji i Syndykatach",
+  "lede": "Reputacja to waluta lojalnościowa w Warframe — przepustka do modów augmentów, części Ampów, arkaniów i Nitain. Poznaj dzienny limit, sześć głównych syndykatów, każdą frakcję z otwartego świata i dowiedz się, jak osiągnąć swój limit w kilka minut zamiast całych misji.",
+  "category": "farming",
+  "readMins": 9,
+  "stats": [
+    {
+      "num": "6",
+      "label": "główne syndykaty",
+      "tone": "gold"
+    },
+    {
+      "num": "16,000",
+      "label": "bazowy dzienny limit reputacji",
+      "tone": "good"
+    },
+    {
+      "num": "5",
+      "label": "rangi do maksymalnego poziomu każdego",
+      "tone": "alt"
+    },
+    {
+      "num": "00:00 UTC",
+      "label": "dzienny reset reputacji",
+      "tone": "good"
+    }
+  ],
+  "sections": [
+    {
+      "id": "how-it-works",
+      "title": "Jak działa reputacja i dzienny limit",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Reputacja** (zwana również **reputacją** lub **repą**) to waluta lojalnościowa, którą zdobywasz u każdej frakcji w Warframe. Wydając ją, odblokowujesz **mody augmentów do Warframe/broni**, bronie i skórki syndykatowe, części **Ampów** Operatora, **arkania**, przedmioty kosmetyczne i wiele więcej. W przeciwieństwie do kredytów czy platyny, reputacją nie można handlować — zdobywasz ją poprzez grę, a każda frakcja śledzi ją osobno."
+        },
+        {
+          "type": "p",
+          "text": "Haczyk polega na **dziennym limicie reputacji**. Każdego dnia możesz zgromadzić tylko określoną ilość u danej frakcji, a limit ten skaluje się z Twoją **Rangą Mistrzostwa**: `16,000 + (500 × MR)`. Tak więc nawet początkujący gracz z MR0 może zdobyć 16 000 reputacji na syndykat dziennie, gracz z MR10 ma limit 21 000, a gracz z MR30 ma limit 31 000. Zwiększanie swojej [Rangi Mistrzostwa](/guides/mastery-rank) to najważniejszy czynnik wpływający na to, jak szybko robisz postępy we wszystkich frakcjach jednocześnie."
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "Wzór na dzienny limit",
+              "v": "16,000 + (500 × Ranga Mistrzostwa)"
+            },
+            {
+              "k": "Przykłady limitów",
+              "v": "16,000 przy MR0 · 21,000 przy MR10 · 31,000 przy MR30"
+            },
+            {
+              "k": "Resety",
+              "v": "Codziennie o 00:00 UTC (północ GMT)"
+            },
+            {
+              "k": "Śledzone",
+              "v": "Osobno dla każdego syndykatu"
+            },
+            {
+              "k": "Aby zacząć zdobywać",
+              "v": "Złóż ślubowanie frakcji, a następnie wyposaż jej Sigil"
+            }
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "Limit działa na zasadzie **wykorzystaj lub stracisz** — niewykorzystany dzienny limit nie przechodzi na kolejny dzień. Ponieważ każda frakcja ma swój własny limit, poświęcenie kilku minut dziennie na kilka frakcji jest lepsze niż jedna maratońska sesja. Wypracuj sobie nawyk wokół resetu o 00:00 UTC."
+        }
+      ]
+    },
+    {
+      "id": "six-syndicates",
+      "title": "Sześć głównych syndykatów",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Dostępne z poziomu **konsoli Syndykatów** w Twoim Orbiterze (oraz w dowolnym Relay), sześć głównych syndykatów to klasyczny grind reputacji. **Złóż ślubowanie** jednemu z nich (bezpłatnie), a następnie wyposaż jego **Sigil** — kosmetyczny emblemat noszony na Twoim Warframe. Od tego momentu część Affinity zdobywanej w misjach automatycznie zamienia się na reputację tego syndykatu."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Syndykat",
+              "Lore / motyw"
+            ],
+            "rows": [
+              [
+                "Steel Meridian",
+                "Dezerterzy Grineer, którzy chronią zwykłych cywilów"
+              ],
+              [
+                "Arbiters of Hexis",
+                "Dyscyplina i dążenie Tenno do samodoskonalenia"
+              ],
+              [
+                "Cephalon Suda",
+                "Zachowanie wiedzy, danych i pamięci"
+              ],
+              [
+                "The Perrin Sequence",
+                "Reformatorzy Corpus dążący do równowagi gospodarczej"
+              ],
+              [
+                "Red Veil",
+                "Fanatycy, którzy oczyszczają zepsucie krwią"
+              ],
+              [
+                "New Loka",
+                "Przywrócenie „czystej” Ziemi i ludzkości"
+              ]
+            ],
+            "note": "Każdy syndykat sprzedaje własny zestaw modów augmentów do Warframe/broni, bronie i skórki syndykatowe, pakiety reliktów, rzeźby i sceny Captura. Wybierz swoją pierwszą frakcję pod kątem konkretnych augmentów, które chcesz zdobyć — sprawdź konsolę w grze lub wiki, aby zobaczyć aktualną, dokładną listę nagród."
+          }
+        },
+        {
+          "type": "warn",
+          "text": "Ta szóstka znajduje się w **sieci sojuszy i konfliktów**: zdobywanie reputacji u jednego z nich powoli **obniża** reputację u jego rywali. Dlatego powracający gracz czasami widzi, że ranga jakiejś frakcji po cichu spada, mimo że nigdy jej nie dotykał. To normalne — konsola pokazuje dokładny wpływ +/− wyposażonego Sigilu. Większość graczy skupia się na jednej lub dwóch frakcjach, a następnie zmienia Sigile, aby uzupełnić resztę."
+        }
+      ]
+    },
+    {
+      "id": "earning-main",
+      "title": "Sigile, medaliony i ofiary",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Istnieją trzy sposoby na rozwijanie głównego syndykatu, a łączenie ich to sposób, w jaki weterani błyskawicznie zdobywają rangi:"
+        },
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "h": "Noś odpowiedni Sigil",
+              "p": "Reputacja skaluje się z Affinity, więc każda misja z dużą liczbą zabójstw ją zasila — w tym Affinity dzielona z zabójstw członków drużyny w Twojej pobliżu. Wyposaż Sigil wybranej frakcji *zanim* dołączysz do kolejki, inaczej to XP się zmarnuje."
+            },
+            {
+              "h": "Poluj na Medaliony Syndykatów",
+              "p": "Każda frakcja udostępnia codzienne misje na konsoli. Na ich mapach ukryte są medaliony do zebrania; podnieś je, a następnie oddaj w syndykacie, aby otrzymać dużą ilość reputacji. Co kluczowe, oddawanie medalionów pozwala przekroczyć normalny dzienny limit — to najszybszy sposób na awansowanie."
+            },
+            {
+              "h": "Złóż ofiarę, aby awansować",
+              "p": "Każda nowa ranga wymaga zarówno odpowiedniej ilości całkowitej reputacji, jak i jednorazowej „ofiary” z przedmiotów, których żąda frakcja. Niższe rangi wymagają pospolitych surowców; wyższe rangi wymagają rzadkich modów, surowców lub przedmiotów specyficznych dla danego syndykatu. Konsola dokładnie pokazuje, co jest wymagane."
+            }
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "**Gromadź medaliony.** Ponieważ oddawanie ich może przekroczyć dzienny limit, zachowaj zapas i oddaj je tuż po złożeniu ofiary rangi — dzięki temu od razu przeskoczysz do kolejnego poziomu. Mod z radarem łupów lub wykrywaczem skarbów sprawia, że znalezienie ukrytych medalionów staje się banalnie proste."
+        },
+        {
+          "type": "info",
+          "text": "Mody **augmentów syndykatowych można wymieniać**, co sprawia, że maksymalnie rozwinięte frakcje są stałym źródłem platyny. Poznaj pętlę handlową w [przewodniku po Platynie](/guides/platinum), wyceń swoje augmenty na [skanerze rynku](/screener) i łap okazje cenowe dzięki [flip finderze](/flip)."
+        }
+      ]
+    },
+    {
+      "id": "open-worlds",
+      "title": "Frakcje otwartego świata i hubów",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Frakcje otwartego świata działają inaczej: zamiast Sigili i Affinity, **oddajesz surowce** — ryby, oszlifowane klejnoty, odznaki ochrony zwierząt, tokeny i nagrody ze zleceń — ich sprzedawcom. Nadal podlegają one temu samemu dziennemu limitowi `16,000 + 500 × MR`, śledzonemu niezależnie, więc możesz zmaksymalizować kilka frakcji w jeden dzień."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Hub · otwarty świat",
+              "Frakcja",
+              "Oddajesz",
+              "Co kupisz za reputację (ogólne)"
+            ],
+            "rows": [
+              [
+                "Cetus · Plains of Eidolon",
+                "Ostron",
+                "Zlecenia, ryby, oszlifowane klejnoty",
+                "Części Zaw (Hok), sprzęt wędkarski i górniczy, maski i sceny"
+              ],
+              [
+                "Fortuna · Orb Vallis",
+                "Solaris United",
+                "Zlecenia, ryby, klejnoty, obligacje dłużne",
+                "Części Kitgun (Rude Zuud), towarzysze MOA (Legs), sprzęt"
+              ],
+              [
+                "Necralisk · Cambion Drift",
+                "Entrati",
+                "Zlecenia, ryby, odznaki ochrony zwierząt, klejnoty, tokeny",
+                "Mody, arkania, sprzęt do Necramechów, przedmioty kosmetyczne"
+              ],
+              [
+                "Sanctum Anatomica",
+                "Cavia",
+                "Netracelle i zlecenia z Sanctum",
+                "Arkania i mody z Whispers-in-the-Walls"
+              ],
+              [
+                "Höllvania (1999)",
+                "The Hex",
+                "Aktywności i zlecenia z 1999",
+                "Nowe arkania, bronie, mody, przedmioty kosmetyczne"
+              ]
+            ],
+            "note": "Listy nagród zmieniają się z każdą aktualizacją — potwierdź aktualną ofertę na wiki. Informacje o samych surowcach znajdziesz w przewodniku po Zasobach."
+          }
+        },
+        {
+          "type": "tip",
+          "text": "Gdy jesteś blisko limitu, skorzystaj z **systemu tokenów / ogników** w tych hubach (szczególnie na Deimos i w nowszych światach). Zamieniasz nadmiarowe zasoby na tokeny, które *zatrzymujesz*, a następnie wymieniasz je innego dnia — dzięki czemu świetny połów ryb lub owocne górnictwo nigdy się nie zmarnują. Ta poprawka komfortu rozgrywki to dokładnie powód, dla którego społeczność wiwatowała „dziękujemy za tokeny reputacji”."
+        },
+        {
+          "type": "p",
+          "text": "Zasoby z otwartego świata zasilają również ekonomię rzemieślniczą opisaną w [przewodniku po Zasobach](/guides/resources), a polowania na Eidolony/Orby łączą się bezpośrednio z frakcjami Operatora poniżej."
+        }
+      ]
+    },
+    {
+      "id": "other-factions",
+      "title": "Inni sprzedawcy reputacji, których warto znać",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Poza dużymi syndykatami, kilka specjalistycznych frakcji prowadzi własne ścieżki reputacji — to stąd pochodzą **Ampy** Operatora, **arkania** oraz sprzęt do Necramechów."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Frakcja",
+              "Gdzie",
+              "Jak zdobywać",
+              "Na co wydawać"
+            ],
+            "rows": [
+              [
+                "Cephalon Simaris",
+                "Relays (Sanctuary)",
+                "Skanowanie celów Syntezy",
+                "Ekskluzywne mody, schematy broni i narzędzi, widżety skanera Sanctuary"
+              ],
+              [
+                "The Quills",
+                "Cetus (Onkko)",
+                "Wymiana odłamków Eidolona",
+                "Części Ampów, arkania, soczewki Focus"
+              ],
+              [
+                "Vox Solaris",
+                "Fortuna (Little Duck)",
+                "Materiały z walk z Orbami i z Vallis",
+                "The Holdfasts"
+              ],
+              [
+                "Zariman (Chrysalith)",
+                "Misje na Zarimanie → Voidplumes",
+                "Arkania, mody, przedmioty kosmetyczne",
+                "Necraloid"
+              ],
+              [
+                "Necralisk",
+                "Aktywności związane z Necramechami i Deimos",
+                "Mody i części do Necramechów",
+                "Ventkids"
+              ],
+              [
+                "Fortuna",
+                "Triki i wyścigi na K-Drive",
+                "Części i przedmioty kosmetyczne do K-Drive",
+                "Conclave"
+              ],
+              [
+                "Relays (Teshin)",
+                "Mecze PvP",
+                "Mody PvP, przedmioty kosmetyczne, Captura",
+                "Teshin prowadzi również sklep Steel Path, ale tam wydaje się Steel Essence (walutę), a nie reputację — zobacz przewodnik po Steel Path."
+              ]
+            ],
+            "note": "Budujesz Ampa do polowań na Eidolony? The Quills i Vox Solaris to Twoi dostawcy, a obaj łączą się z postępem Twojego Operatora. Połącz to z [przewodnikiem po Focus](/guides/focus) oraz [przewodnikiem po Eidolonach](/guides/eidolon)."
+          }
+        },
+        {
+          "type": "info",
+          "text": "Najszybsze sposoby na osiągnięcie limitu reputacji"
+        }
+      ]
+    },
+    {
+      "id": "fastest-cap",
+      "title": "Nie potrzebujesz żadnych exploitów — wystarczy wydajna trasa. Niezawodny, zawsze aktualny plan działania:",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Najpierw wyposaż odpowiedni Sigil.** Reputacja zależy od Affinity, więc długa misja typu endless z dużą liczbą zabójstw (lub szybki węzeł Affinity) może zapełnić — lub prawie zapełnić — limit głównego syndykatu w jednym podejściu. Nigdy nie graj bez Sigilu."
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Wykonuj codzienne misje syndykatu, aby zdobyć medaliony**, a następnie je oddawaj — oddawanie medalionów omija dzienny limit, więc to Twój sposób na przekroczenie barier.",
+            "**Nafarmuj wcześniej przedmioty do oddania w otwartym świecie.** Zgromadź ryby, klejnoty i odznaki ochrony podczas spokojnej sesji, a następnie oddaj je po resecie, aby natychmiast osiągnąć limit; zamień nadmiar na tokeny, aby nic się nie zmarnowało.",
+            "**Zmieniaj frakcje codziennie.** Ponieważ każda ma niezależny limit, 15-minutowa pętla obejmująca dwie lub trzy frakcje przyniesie znacznie więcej całkowitej reputacji niż skupianie się tylko na jednej.",
+            "**Zwiększaj Rangę Mistrzostwa.** Każdy MR dodaje 500 do dziennego limitu każdej frakcji — to jedyny stały sposób na podniesienie całego limitu.",
+            "Możesz ustawić **przezroczystość Sigilu na prawie zero** w Arsenale, dzięki czemu będzie zdobywał reputację, nie psując Twojego wyglądu. To świetny sposób, aby mieć Sigil do farmienia zawsze na sobie."
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "Nightwave: powiązane, ale to nie reputacja syndykatowa"
+        }
+      ]
+    },
+    {
+      "id": "nightwave",
+      "title": "**Nightwave** myląco również przyznaje „reputację”, ale to osobny, sezonowy system — pomyśl o nim jak o rotacyjnej ścieżce wyzwań. Wykonujesz **Czyny** (codzienne, tygodniowe i elitarne wyzwania tygodniowe), aby piąć się po szczeblach rang, a każda ranga zapewnia nagrody oraz **Kredyty Nightwave** do wydania w dedykowanym sklepie.",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Codzienne Czyny** są drobne i odświeżają się każdego dnia; **tygodniowe i elitarne tygodniowe Czyny** są warte znacznie więcej reputacji — traktuj je priorytetowo."
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Podstawowe produkty w sklepie za Kredyty** to jedne z najcenniejszych rzeczy w grze: **Ekstrakt Nitain**, **Reaktory/Katalizatory Orokin** (tzw. „ziemniaki”), **Forma**, **Kuva**, mody Aury oraz ekskluzywne przedmioty kosmetyczne danego sezonu.",
+            "Po osiągnięciu ostatniego poziomu nadal awansujesz na powtarzalne rangi **Prestiżu**, które wciąż przynoszą Kredyty.",
+            "Między sezonami **Nightwave: Przerwa** pozwala na korzystanie ze sklepu i zachowanie pozostałych Kredytów, dzięki czemu nagły reset nigdy nie zostawi Cię z niczym.",
+            "Ekskluzywne kosmetyki sezonowe (a czasami nawet Warframe) mogą zniknąć na długi czas po zakończeniu sezonu, dlatego gracze tak bardzo mobilizują się w ostatnim tygodniu. Nie wpadaj w panikę i nie grinduj wszystkiego — rzadko potrzebujesz każdego Czynu, aby osiągnąć najwyższą rangę — ale koniecznie wydaj swoje Kredyty na Nitain i „ziemniaki” przed zamknięciem sezonu."
+          ]
+        },
+        {
+          "type": "warn",
+          "text": "Często zadawane pytania i typowe błędy"
+        }
+      ]
+    },
+    {
+      "id": "pitfalls",
+      "title": "**„Wykonałem Zabójstwo Miłosierdzia na Grineerze i moja mapa gwiezdna zrobiła się czerwona”** — to nie syndykat. Stworzyłeś **Kuva Lich**, osobistego wroga, który nakłada podatek na kontrolowane przez siebie węzły (oznaczone na czerwono). To całkowicie oddzielny system; przejdź do [przewodnika po Kuva i Liczach](/guides/kuva), aby na niego zapolować.",
+      "blocks": [
+        {
+          "type": "info",
+          "text": "Nie grinduj bez Sigilu."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Nie bój się spadku reputacji u przeciwników.",
+            "Nie pozwól, aby nadmiar się zmarnował.",
+            "Nie myl walut.",
+            "Reputacja syndykatowa, Kredyty Nightwave i Steel Essence to trzy różne rzeczy — wydawaj każdą w jej własnym sklepie."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Aby uzyskać szerszy obraz postępu — gdzie farmienie reputacji łączy się z kredytami, reliktami i Mistrzostwem — zajrzyj do [przewodnika po Postępie](/guides/progression) oraz do naszego [katalogu narzędzi społecznościowych](/tools)."
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Jak obliczany jest dzienny limit reputacji w Warframe?",
+      "a": "Limit wynosi `16,000 + (500 × your Mastery Rank)`, jest naliczany osobno dla każdej frakcji i resetuje się codziennie o 00:00 UTC. Tak więc nawet początkujący gracz z MR0 może zdobyć 16 000 reputacji na syndykat dziennie, gracz z MR10 ma limit 21 000, a gracz z MR30 ma limit 31 000. Zwiększanie swojej [Rangi Mistrzostwa](/guides/mastery-rank) to jedyny sposób na stałe podniesienie limitu dla wszystkich frakcji jednocześnie."
+    },
+    {
+      "q": "Jaki jest najszybszy sposób na farmienie reputacji syndykatu?",
+      "a": "Wyposaż Sigil danej frakcji, rozegraj misję z dużą liczbą zabójstw, aby szybko zdobyć Affinity i osiągnąć limit, oraz zbieraj Medaliony Syndykatów z codziennych misji. Oddawanie medalionów pozwala przekroczyć dzienny limit, więc zachowanie zapasu i oddanie go tuż po złożeniu ofiary rangi to najszybszy sposób na awans."
+    },
+    {
+      "q": "Czy mogę zmaksymalizować wszystkie sześć głównych syndykatów?",
+      "a": "Tak, z czasem. Ta szóstka znajduje się w sieci sojuszy i konfliktów, więc zdobywanie reputacji u jednego powoli obniża ją u rywali — ale z czasem możesz po prostu zmieniać Sigile i uzupełniać braki u pozostałych. Zaplanuj swoje działania z uwzględnieniem konfliktów, a zdołasz osiągnąć maksymalną rangę w każdej frakcji."
+    },
+    {
+      "q": "Czy reputacja Nightwave to to samo co reputacja syndykatowa?",
+      "a": "Nie. Nightwave to osobna sezonowa ścieżka wyzwań: wykonujesz codzienne, tygodniowe i elitarne tygodniowe Czyny, aby zdobywać rangi Nightwave i Kredyty Nightwave. Wydawaj te Kredyty na Nitain, Reaktory/Katalizatory Orokin, Formę, Kuvę i przedmioty kosmetyczne — nie ma to nic wspólnego z reputacją w sześciu głównych syndykatach."
+    },
+    {
+      "q": "Dlaczego moja reputacja spadła w syndykacie, w którym nie grałem?",
+      "a": "Z powodu konfliktów między syndykatami. Zdobywanie reputacji u jednej frakcji obniża ją u jej rywali, w zależności od noszonego Sigilu. Jest to zamierzone — konsola Syndykatów pokazuje dokładny wpływ +/− każdego Sigilu, dzięki czemu możesz zaplanować, które frakcje rozwijać razem."
+    },
+    {
+      "q": "Gdzie mogę zdobyć części do Ampów Operatora i arkania?",
+      "a": "Od specjalistycznych frakcji reputacji: The Quills w Cetus (wymiana odłamków Eidolona) oraz Vox Solaris w Fortuna (z walk z Orbami i materiałów z Vallis) sprzedają części do Ampów i arkania. Połącz to z [przewodnikiem po Focus](/guides/focus) i [przewodnikiem po Eidolonach](/guides/eidolon), aby stworzyć zestaw do polowań."
+    },
+    {
+      "q": "Dobiłem Grineera i cała moja planeta zrobiła się czerwona — czy to sprawa syndykatu?",
+      "a": "Nie. Wykonanie Zabójstwa Miłosierdzia na Kuva Larvling spawnuje Kuva Lich, osobistego wroga, który przejmuje węzły i oznacza je na czerwono na Twojej mapie gwiezdnej. Nie ma to związku z reputacją syndykatów — zobacz [przewodnik po Kuva i Liczach](/guides/kuva), aby go pokonać i odzyskać swoje węzły."
+    },
+    {
+      "q": "Czy nagrody syndykatowe są warte platyny?",
+      "a": "Jak najbardziej — mody augmentów syndykatowych można wymieniać i cieszą się one stałym popytem, co czyni maksymalnie rozwinięte frakcje niezawodnym źródłem platyny. Poznaj pętlę handlową w [przewodniku po Platynie](/guides/platinum) i wyceniaj swoje mody za pomocą [skanera rynku](/screener) oraz [flip finderze](/flip)."
+    }
+  ],
+  "videos": [
+    {
+      "id": "d_q95Xf6Ohs",
+      "title": "You Have Been Farming Syndicate Standing In WARFRAME ALL WRONG!",
+      "channel": "iFlynn"
+    },
+    {
+      "id": "xfUY8DaZVTw",
+      "title": "MAX YOUR STANDINGS NOW! - FASTEST METHODS FOR ALL SYNDICATES [WARFRAME]",
+      "channel": "TRiX_VS"
+    },
+    {
+      "id": "whtYsyH3N9I",
+      "title": "Warframe | How To Farm Syndicate Standing Quick and Easy - Plumes and Medallions",
+      "channel": "1ManArmyYigit"
+    },
+    {
+      "id": "Vt-albA4ZhA",
+      "title": "How to Max Out EVERY Syndicate Standing FAST in Warframe (Complete Guide)",
+      "channel": "Chapu"
+    }
+  ],
+  "sources": [
+    {
+      "label": "r/Warframe — new wiki showcase (wiki.warframe.com)",
+      "href": "https://reddit.com/r/Warframe/comments/1ios9qf/just_wanted_to_share_how_sexy_the_new_wiki_is/"
+    },
+    {
+      "label": "r/Warframe — Nightwave ended too soon (rank/FOMO)",
+      "href": "https://reddit.com/r/Warframe/comments/1kpzgsq/im_sorry_everyone_i_failed_all_of_you/"
+    },
+    {
+      "label": "r/Warframe — final-hour Nightwave Cred grind (Nitain/potatoes)",
+      "href": "https://reddit.com/r/Warframe/comments/1sgqki4/i_forgor/"
+    },
+    {
+      "label": "r/Warframe — Nightwave weekly Act discussion (DE replied)",
+      "href": "https://reddit.com/r/Warframe/comments/q6fq49/pov_you_have_a_nightwave_act_to_bullet_jump_150/"
+    },
+    {
+      "label": "Official Warframe Wiki",
+      "href": "https://wiki.warframe.com/"
+    }
+  ],
+  "related": [
+    {
+      "label": "Przewodnik po Focus i Operatorze",
+      "to": "/guides/focus",
+      "icon": "school",
+      "note": "Ampy, soczewki i reputacja u The Quills/Vox Solaris"
+    },
+    {
+      "label": "Przewodnik po Polowaniach na Eidolony",
+      "to": "/guides/eidolon",
+      "icon": "weather-night",
+      "note": "Odłamki zasilają reputację u The Quills na Ampy"
+    },
+    {
+      "label": "Przewodnik po Kuva i Liczach",
+      "to": "/guides/kuva",
+      "icon": "skull",
+      "note": "Wyjaśnienie czerwonej mapy gwiezdnej"
+    },
+    {
+      "label": "Przewodnik po Platynie",
+      "to": "/guides/platinum",
+      "icon": "diamond-stone",
+      "note": "Wymieniaj augmenty syndykatowe na platynę"
+    },
+    {
+      "label": "Przewodnik po Zasobach",
+      "to": "/guides/resources",
+      "icon": "pickaxe",
+      "note": "Materiały do oddania z otwartego świata"
+    },
+    {
+      "label": "Narzędzia Społecznościowe",
+      "to": "/tools",
+      "icon": "tools",
+      "note": "Wiki, Overframe i monitory rynku"
+    }
+  ],
+  "updated": "2026-07-18"
+}

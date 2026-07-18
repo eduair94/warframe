@@ -1,0 +1,424 @@
+{
+  "slug": "eidolon",
+  "eyebrow": "지식 센터 · Eidolon 사냥",
+  "title": "Eidolon 사냥 가이드",
+  "lede": "Tridolon은 Warframe의 오리지널 엔드게임 의식입니다. 세 마리의 거대한 Sentient 보스, 50분의 짧은 밤 시간, 그리고 여전히 Focus, arcanes, Operator 능력을 쏟아내는 파밍을 제공합니다. 여기 Mote Amp 밈에서 벗어나 자신감 넘치는 포획자가 되는 방법을 소개합니다.",
+  "category": "endgame",
+  "readMins": 11,
+  "stats": [
+    {
+      "num": "3",
+      "label": "Tridolon에 등장하는 Eidolon들",
+      "tone": "gold"
+    },
+    {
+      "num": "50",
+      "label": "사이클당 밤 시간(분)",
+      "tone": "alt"
+    },
+    {
+      "num": "4–6",
+      "label": "Eidolon당 파괴해야 할 관절 수",
+      "tone": "good"
+    },
+    {
+      "num": "2–3",
+      "label": "포획에 필요한 충전된 Lure 수"
+    }
+  ],
+  "sections": [
+    {
+      "id": "what-is-a-tridolon",
+      "title": "Tridolon이란 무엇인가요?",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Cetus 외곽의 **Plains of Eidolon**에서는 밤에만 세 마리의 거대한 Sentient 보스인 **Teralyst**, **Gantulyst**, **Hydrolyst**가 스폰됩니다. 단 하룻밤 만에 이 세 마리를 모두 쓰러뜨리는 것을 **Tridolon**이라고 하며, 이는 장비, Operator 플레이, 그리고 엄격한 시간 제한 속에서의 팀워크가 어우러진 Warframe의 오리지널 엔드게임 시험대입니다."
+        },
+        {
+          "type": "p",
+          "text": "이 보스들은 단순히 총으로 쏘기만 해서는 잡을 수 없습니다. 각 Eidolon은 일반 무기로는 타격을 줄 수 없는 **Sentient 에너지 실드**로 둘러싸여 있습니다. **Operator의 Amp**로 실드를 깎아낸 다음, 노출된 관절을 강력한 무기로 파괴해야 합니다. 리듬을 제대로 익히면 Tridolon은 게임에서 가장 빠른 [Focus](/guides/focus) 파밍처이자 [arcanes](/guides/arcanes) 및 Operator 업그레이드를 안정적으로 얻을 수 있는 공급원이 됩니다."
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "위치",
+              "v": "Plains of Eidolon (Cetus, 지구) — 오픈 월드 지역"
+            },
+            {
+              "k": "시간",
+              "v": "밤에만 가능. 밤은 50분 동안 지속되며, 낮은 100분 동안 지속됩니다."
+            },
+            {
+              "k": "세 마리의 보스",
+              "v": "Teralyst (가장 쉬움) → Gantulyst → Hydrolyst (가장 어려움)"
+            },
+            {
+              "k": "사냥하는 이유",
+              "v": "Focus, Warframe arcanes, Amp/Operator 장비용 Sentient Cores"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "before-you-go",
+      "title": "출발 전: 선행 조건",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Eidolon 사냥은 몇 가지 스토리 장벽 뒤에 있습니다. 베테랑일 필요는 없지만, Operator와 제대로 된 Amp가 필요합니다. 이 전투는 여러분이 가장 좋아하는 총으로 무작정 밀어붙일 수 있는 싸움이 아닙니다."
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Plains 입장 권한** — *Saya's Vigil* 퀘스트를 완료하여 Cetus와 Plains를 해금하세요 ([퀘스트 가이드](/guides/quests) 참조).",
+            "**Operator** — *The Second Dream*을 완료하여 Eidolon 실드에 실제로 피해를 줄 수 있는 존재인 Operator를 해금하세요.",
+            "**완전한 Operator 능력** — *The War Within*을 완료하세요. 전체 Transference 기능과 **the Quills**에 대한 접근 권한이 해금됩니다. 이곳에서 Amp를 제작해야 하므로, 첫 실제 사냥 전에 사실상 필수적인 조건입니다.",
+            "**The Quills** — Operator 상태로 이 Cetus 신디케이트의 동굴에 입장하세요. 사냥에서 드롭되는 **Sentient Cores**를 반납하여 얻은 평판으로 Amp 부품, Operator arcanes, Focus 렌즈를 구매할 수 있습니다."
+          ]
+        },
+        {
+          "type": "warn",
+          "text": "무료로 제공되는 **Mote Amp**를 들고 스쿼드에 참여하지 **마십시오**. 이는 초보 사냥꾼들이 가장 많이 하는 실수이자 r/Warframe의 오래된 밈의 원천입니다. 이 Amp로는 정해진 일정대로 진행할 수 있을 만큼 빠르게 Sentient 실드를 깎아낼 수 없습니다."
+        }
+      ]
+    },
+    {
+      "id": "your-amp",
+      "title": "Amp가 전부입니다",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Amp**는 Operator의 총이며, Eidolon 장비 중 가장 중요한 단 하나의 요소입니다. Amp는 **Prism**, **Scaffold**, **Brace**의 세 가지 부품으로 제작되며, 커뮤니티에서는 각 부품에 대응하는 세 개의 숫자(예: `1-2-3`)로 빌드 이름을 부릅니다. 무료로 받는 기본 **Mote Amp**는 너무 약하므로, 첫 번째 실제 목표는 이를 교체하는 것입니다."
+        },
+        {
+          "type": "p",
+          "text": "첫 Amp 부품은 사냥에서 드롭되는 **Sentient Cores**를 반납하여 얻은 Cetus의 **Quills** 평판으로 구매할 수 있습니다. 즉, 첫 포획을 통해 얻은 보상으로 *다음* 사냥을 빠르게 만들어 줄 Amp를 장만하게 되는 셈입니다. 더 높은 티어의 Corpus Amp 부품은 **Little Duck** (Fortuna의 Vox Solaris)에게서 얻을 수 있으며, 이 평판은 주로 Orb Vallis에서 파밍하는 **Toroids**를 통해 별도로 획득합니다. 정확한 '최고의' Amp는 밸런스 패치에 따라 달라지므로, 초반에는 괜찮은 중간 티어 Amp를 제작하고 메타 픽을 쫓기 전에 최신 Amp 가이드나 [wiki](https://wiki.warframe.com/)를 확인하세요."
+        },
+        {
+          "type": "tip",
+          "text": "Amp를 **Madurai** focus school과 함께 사용하세요. Madurai의 패시브는 Amp 및 Void 피해를 증폭시켜 실드를 빠르게 깎는 데 꼭 필요한 능력을 제공합니다. [Focus](/guides/focus) 시스템을 사용해 레벨을 올리고, 평판을 얻으면서 Operator arcanes (Magus/Virtuos)를 장착하세요."
+        }
+      ]
+    },
+    {
+      "id": "meta-comp",
+      "title": "메타 스쿼드 조합",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "클래식한 4인 Tridolon 스쿼드는 특정 워프레임이 아닌 **역할**을 중심으로 구성됩니다. 데미지 딜러(캐리), 그 데미지를 증폭시키는 버퍼, 그리고 에너지와 Operator를 살려두는 서포터가 필요합니다. 전통적인 아키타입은 다음과 같습니다:"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "역할",
+              "워프레임 아키타입",
+              "역할 및 기여"
+            ],
+            "rows": [
+              [
+                "데미지 캐리",
+                "Chroma",
+                "Vex Armor로 무기 피해를 대폭 증폭시킵니다. 치명타 저격총을 들고 처치를 담당합니다."
+              ],
+              [
+                "치명타 / 데미지 버프",
+                "Volt 또는 Harrow",
+                "Volt의 Electric Shield는 통과하는 탄환의 피해를 증폭시키며, Harrow의 Covenant는 팀 전체에 치명타 확률을 부여합니다."
+              ],
+              [
+                "에너지 및 생존",
+                "Trinity",
+                "Energy Vampire와 Blessing으로 스쿼드의 에너지를 가득 채우고 Operator를 살려둡니다. 주로 Lure 관리를 전담합니다."
+              ],
+              [
+                "자유 / 유틸리티",
+                "Rhino 또는 Wisp",
+                "Rhino의 Roar나 Wisp의 mote로 추가 피해, 속도 및 버프를 더해 스쿼드를 보완합니다."
+              ]
+            ],
+            "note": "정확한 워프레임 종류보다 역할이 더 중요합니다. 데미지 캐리, 데미지/치명타 버프, 에너지 공급, Lure 탱킹 역할을 채울 수 있는 조합이라면 무엇이든 작동합니다. 워프레임별 강점은 [티어 리스트](/guides/tier-list)를 참조하세요."
+          }
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "무기",
+              "v": "방사능(Radiation) + 치명타 피해로 모딩된 고치명타 저격총 (예: Rubico Prime, Lanka)"
+            },
+            {
+              "k": "Operator",
+              "v": "제대로 된 Amp (Mote Amp 절대 금지) 및 Madurai focus school"
+            },
+            {
+              "k": "Arcanes",
+              "v": "Magus Lockdown 및 Virtuos Shadow 같은 Operator arcanes는 실드 제거 후 사격하는 루프를 더욱 매끄럽게 만들어 줍니다."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "the-kill-loop",
+      "title": "처치 루프: 실드, 관절, 포획",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "모든 Eidolon은 동일한 방식으로 처치됩니다. 이 루프를 한 번만 익히면 솔로 Teralyst부터 풀 Hydrolyst까지 모두 적용할 수 있습니다."
+        },
+        {
+          "type": "steps",
+          "ordered": true,
+          "steps": [
+            {
+              "h": "실드 제거",
+              "p": "Operator로 전환한 뒤, 파란색 Sentient 실드가 깨질 때까지 Amp로 Eidolon의 관절을 공격하세요. 일반 무기로는 흠집조차 내기 어렵습니다. 이것이 바로 Amp가 필요한 이유입니다."
+            },
+            {
+              "h": "관절 파괴",
+              "p": "다시 Warframe으로 Transference한 뒤, 실드가 재생되기 전에 저격총으로 노출된 관절을 파괴하세요. Teralyst는 4개의 관절이 있고, 더 거대한 Gantulyst와 Hydrolyst는 각각 6개의 관절이 있습니다. 모든 관절에 대해 실드 제거 후 사격 루프를 반복하세요."
+            },
+            {
+              "h": "무릎 꿇리기",
+              "p": "모든 관절이 파괴되면 Eidolon이 무릎을 꿇고 코어를 노출합니다. 이제 포획할지 처치할지 결정해야 합니다."
+            },
+            {
+              "h": "Lure로 포획",
+              "p": "충전된 Lure가 연결되어 있다면 (Teralyst는 2개, Gantulyst와 Hydrolyst는 3개), 포획하여 전체 보상을 획득하세요. 드롭되는 Eidolon Shard를 주워 Plains의 제단(Shrine)으로 가져가 다음 티어를 소환하세요."
+            },
+            {
+              "h": "단계별 진행",
+              "p": "50분의 밤 시간 동안 Teralyst → Gantulyst → Hydrolyst를 모두 완료하세요. 이 세 마리를 모두 끝내는 것이 Tridolon입니다."
+            }
+          ]
+        },
+        {
+          "type": "info",
+          "text": "Eidolon은 부주의한 플레이를 응징합니다. 여러분이 남용하는 피해 유형에 **적응하고 저항**할 수 있으며, 관절이 파괴될 때마다 에너지와 실드를 깎아내는 **자성 폭발(magnetic burst)**을 방출합니다. Operator로 Transference한 뒤 **void dash**를 사용해 이를 피하고, 데미지를 일정하게 유지하면서 관리하세요. 자세한 피해 유형 정보는 [wiki](https://wiki.warframe.com/)에서 확인할 수 있습니다."
+        }
+      ]
+    },
+    {
+      "id": "lures-and-vomvalysts",
+      "title": "Lure와 Vomvalyst: 포획 작동 방식",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Lures**는 밤에 Plains에 스폰되는 드론 케이지입니다. 하나를 활성화하면 플레이어를 따라다닙니다. 주변에서 떠다니는 Sentient 영혼인 **Vomvalysts**를 처치하여 Lure가 빨간색 대신 파란색으로 빛날 때까지 **충전**하세요. Vomvalyst의 에너지 형태는 무기가 그대로 통과하므로, 반드시 **Amp**로 처치해야 합니다. 무릎을 꿇은 Eidolon에게 충전된 Lure를 가져가면 단순 처치가 아닌 포획을 할 수 있게 됩니다."
+        },
+        {
+          "type": "tip",
+          "text": "**항상 포획하고, 절대 그냥 처치하지 마십시오.** 포획(Teralyst는 충전된 Lure 2개, Gantulyst와 Hydrolyst는 3개 필요)을 하면 추가 Sentient Core와 더 높은 티어의 코어 및 arcanes를 얻을 확률이 높아집니다. Vomvalyst의 공격에 Lure 하나가 파괴되어 포획에 실패하는 일이 없도록 여분의 충전된 Lure를 준비하세요."
+        }
+      ]
+    },
+    {
+      "id": "rewards",
+      "title": "실제로 파밍하는 것",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Tridolon은 게임 내 최고의 **Focus** 파밍처 중 하나이자, Warframe arcanes 및 Operator 장비의 클래식한 획득처입니다. 각 보상의 사용처는 다음과 같습니다:"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "보상",
+              "효과",
+              "사용처"
+            ],
+            "rows": [
+              [
+                "Eidolon Shards (Brilliant / Radiant)",
+                "각각 수만 단위의 대량의 Focus로 전환 가능",
+                "[Focus](/guides/focus) school에 주입; 최상위 티어의 Focus 파밍"
+              ],
+              [
+                "Warframe Arcanes",
+                "빌드를 결정짓는 강력한 힘 및 거래 가능한 platinum",
+                "장착하거나 판매 — [screener](/screener)에서 시세 확인"
+              ],
+              [
+                "Sentient Cores (Intact → Radiant)",
+                "Quills 평판 (Little Duck은 Toroids 사용)",
+                "Amp 부품, Operator arcanes 및 Focus 렌즈 구매"
+              ],
+              [
+                "포획 보너스",
+                "추가 코어 + 더 나은 드롭 확률",
+                "충전된 Lure로 포획했을 때만 획득 가능"
+              ]
+            ]
+          }
+        },
+        {
+          "type": "info",
+          "text": "Arcane 시장에 대한 주의 사항: DE가 기존의 Eidolon 전용 arcanes(예: Arcane Energize)를 다른 획득처에 추가한 이후, 해당 아이템들의 [platinum](/guides/platinum) 가치는 과거 전성기 시절 가격보다 훨씬 아래로 떨어졌습니다. 판매하기 전에 [screener](/screener)나 [movers](/movers)에서 실시간 시세를 확인하세요. 하지만 Focus와 Sentient Cores만으로도 이 미션을 수행할 가치는 충분하다는 점을 기억하세요."
+        }
+      ]
+    },
+    {
+      "id": "beginner-path",
+      "title": "초보자 경로: 먼저 Teralyst 솔로 플레이하기",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Mote Amp를 들고 곧바로 공방 3x3 Tridolon에 뛰어드는 것은 초보 사냥꾼들이 좌절감을 느끼는 지름길입니다. 대신 순서대로 단계를 밟아가세요:"
+        },
+        {
+          "type": "steps",
+          "ordered": true,
+          "steps": [
+            {
+              "h": "선행 조건 완료",
+              "p": "Plains 입장을 위해 [Saya's Vigil](/guides/quests)을 완료하고, Operator 해금을 위해 The Second Dream을 완료하세요. The War Within을 완료하면 완전한 Operator 능력과 Quills 평판이 해금됩니다."
+            },
+            {
+              "h": "제대로 된 Amp 제작",
+              "p": "Quills 평판을 파밍하고(Sentient Cores 반납) 제대로 된 Amp 부품을 구매하세요. 가능한 한 빨리 Mote Amp를 은퇴시키세요. 실드를 유의미하게 깎아낼 만큼 빠르지 않습니다."
+            },
+            {
+              "h": "Teralyst 솔로 플레이",
+              "p": "Teralyst는 가장 약한 Eidolon이며 혼자서 안전하게 배우기 좋습니다. 스쿼드의 압박이나 타이머 스트레스 없이 실드 제거-사격-반복 루프를 연습해 보세요."
+            },
+            {
+              "h": "Lure 지참 및 충전",
+              "p": "솔로 Teralyst를 포획하여 전체 보상을 획득하세요. 이는 Gantulyst와 Hydrolyst에 도전하기 전에 Lure 및 Vomvalyst 관리법을 익히는 데도 도움이 됩니다."
+            },
+            {
+              "h": "Tridolon으로 넘어가기",
+              "p": "솔로 Teralyst가 익숙해지면, 모집(Recruiting) 채팅이나 공방 매치메이킹을 이용해 Chroma/Volt/Trinity/Harrow 조합의 풀 Tridolon 런에 참여해 보세요."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "timing-and-squads",
+      "title": "밤 시간 맞추기 및 스쿼드 찾기",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Eidolon은 Plains의 **50분 동안의 밤**에만 나타납니다. 밖으로 이동하는 데 시간을 낭비하지 않도록 황혼이 되기 *전에* Cetus에서 대기하세요. 숙련된 스쿼드는 하룻밤 안에 풀 Tridolon을 여유롭게 완료하지만, 첫 도전에서는 밤 시간의 대부분을 소모하게 됩니다. 밤이 언제 시작되는지 모르시겠나요? 커뮤니티 사이클 트래커([도구 디렉토리](/tools)에 링크됨)에서 정확한 카운트다운을 확인할 수 있습니다."
+        },
+        {
+          "type": "p",
+          "text": "그룹을 찾는 것은 예전보다 확실히 더 어려워졌습니다. 복귀 유저들이 언급하듯이, arcane 시장 붕괴 이후 사냥판이 많이 좁아졌습니다. 가장 좋은 방법은 **모집(Recruiting) 채팅**, 릴레이 허브, 그리고 전용 Discord 서버를 이용하는 것입니다. 'Tricap' 또는 'Tridolon' 파티를 검색하거나, 함께할 크루를 찾을 때까지 Teralyst를 솔로로 플레이해 보세요. 이제는 매니아층의 엔드게임이 되었지만, 보상이 확실하며 Operator를 유의미하게 강화할 수 있는 몇 안 되는 파밍처 중 하나입니다."
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Eidolon 사냥을 하려면 먼저 무엇이 필요한가요?",
+      "a": "[Saya's Vigil](/guides/quests)을 완료하여 Plains 입장 권한을 얻고, The Second Dream을 완료하여 Operator를 획득해야 합니다. The War Within을 완료하면 완전한 Operator 능력과 Quills 평판이 해금됩니다. 가장 중요한 것은 출발하기 전에 Quills 평판으로 제대로 된 Amp를 제작하는 것입니다. 무료로 제공되는 Mote Amp는 유용하게 쓰일 만큼 빠르게 Eidolon 실드를 깎아낼 수 없습니다."
+    },
+    {
+      "q": "왜 다들 Mote Amp를 비웃나요?",
+      "a": "Mote Amp는 무료로 제공되는 기본 Amp로, 유의미한 속도로 Sentient 실드를 깎아내기에는 너무 약합니다. 따라서 이를 사냥에 가져오면 스쿼드 전체의 진행 속도가 느려집니다. 이는 r/Warframe의 통과의례 같은 밈입니다. 파티에 참여하기 전에 Quills 평판을 파밍하고 제대로 된 Amp(빌드는 1-2-3과 같이 세 개의 숫자로 명명됨)를 제작하세요."
+    },
+    {
+      "q": "Eidolon을 죽이지 않고 포획하려면 어떻게 해야 하나요?",
+      "a": "충전된 Lure를 준비하세요. **Teralyst는 2개, Gantulyst와 Hydrolyst는 3개**가 필요합니다. Plains에서 Lure를 활성화한 뒤, 주변에서 Vomvalyst를 Amp로 처치하여 파란색으로 빛날 때까지 충전하세요. 모든 관절이 파괴되어 Eidolon이 무릎을 꿇었을 때, 충전된 Lure가 있으면 포획하여 추가 Sentient Core와 더 나은 arcane 및 정제된 shard 드롭 확률을 얻을 수 있습니다. 충전된 Lure가 없으면 처치만 가능하며, 보상이 줄어들고 arcane도 얻을 수 없습니다."
+    },
+    {
+      "q": "Eidolon 사냥에 가장 좋은 Warframe은 무엇인가요?",
+      "a": "**Chroma**는 Vex Armor가 무기 피해를 증폭시켜 주기 때문에 클래식한 데미지 캐리로 꼽히지만, 특정 워프레임 하나보다 역할 분담이 더 중요합니다. 강력한 스쿼드는 데미지 캐리, 치명타/데미지 버퍼(Volt 또는 Harrow), 그리고 에너지/생존 서포터(Trinity)로 구성됩니다. 워프레임별 강점은 [티어 리스트](/guides/tier-list)를 참조하세요."
+    },
+    {
+      "q": "초보자도 Eidolon을 솔로로 잡을 수 있나요?",
+      "a": "네, 먼저 **Teralyst**를 솔로로 플레이해 보세요. 세 마리 중 가장 약하며, 스쿼드나 타이머의 압박 없이 실드 제거, 관절 파괴, 포획 루프를 안전하게 배울 수 있는 방법입니다. 솔로 Teralyst가 익숙해지면 Gantulyst, Hydrolyst 및 풀 Tridolon으로 단계를 높여가세요."
+    },
+    {
+      "q": "arcane 시장이 붕괴된 후에도 Eidolon 사냥을 할 가치가 있나요?",
+      "a": "네, 그렇습니다. DE가 다른 획득처를 추가하면서 Arcane Energize 같은 arcanes의 [platinum](/guides/platinum) 가치가 떨어졌음에도 불구하고, Tridolon은 여전히 가장 빠른 [Focus](/guides/focus) 파밍처 중 하나이며 Amp 및 Operator 업그레이드를 위한 Sentient Cores를 얻는 주요 경로입니다. 판매하기 전에 [screener](/screener)에서 arcanes의 시세를 확인해 보세요."
+    },
+    {
+      "q": "Eidolon 사냥 시 Operator는 어떤 focus school을 사용해야 하나요?",
+      "a": "**Madurai**가 표준 Eidolon school입니다. 패시브가 Amp 및 Void 피해를 증폭시켜 실드를 빠르게 깎는 데 꼭 필요한 능력을 제공합니다. 이를 Operator arcanes 및 제대로 된 Amp와 함께 사용하세요. school 해금 및 레벨 업 방법은 [focus 가이드](/guides/focus)에서 다룹니다."
+    }
+  ],
+  "videos": [
+    {
+      "id": "n47NF2XieIM",
+      "title": "HOW TO HUNT EIDOLONS: TERALYST (Warframe)",
+      "channel": "StarColyte"
+    },
+    {
+      "id": "yw732IQ4kDY",
+      "title": "THE ULTIMATE BEGINNERS guide for EIDOLONS in Warframe 2023 (Part 1)",
+      "channel": "WarframeFlo"
+    },
+    {
+      "id": "sHdSVf2kYcs",
+      "title": "Warframe Eidolon Guide (2025) - How to Lure Handle",
+      "channel": "ForsakenIdol"
+    },
+    {
+      "id": "25LlzizpO3I",
+      "title": "Solo Eidolon Hunting 2025 Build",
+      "channel": "Jacsonitos"
+    }
+  ],
+  "sources": [
+    {
+      "label": "Eidolon Info for Dummies like me (r/Warframe)",
+      "href": "https://reddit.com/r/Warframe/comments/10qk7g4/eidolon_info_for_dummies_like_me/",
+      "icon": "reddit"
+    },
+    {
+      "label": "When you join your first eidolon hunt with the mote amp (r/Warframe)",
+      "href": "https://reddit.com/r/Warframe/comments/acb96b/when_you_join_your_first_eidolon_hunt_with_the/",
+      "icon": "reddit"
+    },
+    {
+      "label": "Eidolon Hunters are becoming a rare specimen now? (r/Warframe)",
+      "href": "https://reddit.com/r/Warframe/comments/1njsdr6/eidolon_hunters_are_becoming_a_rare_specimen_now/",
+      "icon": "reddit"
+    },
+    {
+      "label": "Warframe Wiki",
+      "href": "https://wiki.warframe.com/",
+      "icon": "book-open-variant"
+    }
+  ],
+  "related": [
+    {
+      "label": "Focus 파밍 가이드",
+      "to": "/guides/focus",
+      "icon": "meditation",
+      "note": "Eidolon Shards를 Focus로 전환하기"
+    },
+    {
+      "label": "Arcanes 가이드",
+      "to": "/guides/arcanes",
+      "icon": "cards",
+      "note": "Eidolon이 드롭하는 아이템과 사용 방법"
+    },
+    {
+      "label": "신디케이트 평판 가이드",
+      "to": "/guides/standing",
+      "icon": "handshake",
+      "note": "Amp 부품을 위한 Quills 및 Little Duck"
+    },
+    {
+      "label": "마켓 Screener",
+      "to": "/screener",
+      "icon": "table-search",
+      "note": "판매 전 arcanes 시세 확인"
+    },
+    {
+      "label": "Steel Path 가이드",
+      "to": "/guides/steel-path",
+      "icon": "skull",
+      "note": "또 다른 엔드게임 도전 과제"
+    }
+  ],
+  "updated": "2026-07-18"
+}

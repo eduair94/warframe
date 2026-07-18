@@ -1,0 +1,479 @@
+{
+  "slug": "standing",
+  "eyebrow": "ナレッジセンター · 地位 & syndicate",
+  "title": "地位 & syndicate ガイド",
+  "lede": "地位（Standing）はWarframeにおける評判通貨であり、augment mod、Ampパーツ、arcane、Nitainを入手するためのゲートとなっています。1日の上限、6つの主要syndicate、すべてのオープンワールドfaction、そしてミッションを何回もこなす代わりにわずか数分で上限に達する方法を学びましょう。",
+  "category": "farming",
+  "readMins": 9,
+  "stats": [
+    {
+      "num": "6",
+      "label": "主要syndicate",
+      "tone": "gold"
+    },
+    {
+      "num": "16,000",
+      "label": "基本の1日地位上限",
+      "tone": "good"
+    },
+    {
+      "num": "5",
+      "label": "各syndicateを最大ランクにするためのランク数",
+      "tone": "alt"
+    },
+    {
+      "num": "00:00 UTC",
+      "label": "1日の地位リセット",
+      "tone": "good"
+    }
+  ],
+  "sections": [
+    {
+      "id": "how-it-works",
+      "title": "地位と1日の上限の仕組み",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**地位（Standing）**（**評判（reputation）**や**rep**とも呼ばれます）は、Warframeの各factionで獲得できる忠誠度通貨です。これを消費することで、**Warframe/weapon augment mod**、syndicate武器やスキン、Operatorの**Amp**パーツ、**arcane**、外装品などをアンロックできます。creditやplatinumとは異なり、地位は取引できません。プレイすることで獲得し、factionごとに個別に管理されます。"
+        },
+        {
+          "type": "p",
+          "text": "注意すべき点は**1日の地位上限（daily standing cap）**です。毎日、factionごとに獲得できる上限が決まっており、その上限は**Mastery Rank**に応じて `16,000 + (500 × MR)` のようにスケールします。そのため、ゲームを始めたばかり of MR0のプレイヤーでも1日にsyndicateごとに16,000まで獲得でき、MR10なら21,000、MR30なら31,000が上限となります。[Mastery Rank](/guides/mastery-rank)を上げることが、すべてのfactionの進行速度を一度に引き上げる最大の手段です。"
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "1日の上限計算式",
+              "v": "16,000 + (500 × Mastery Rank)"
+            },
+            {
+              "k": "上限の例",
+              "v": "16,000 at MR0 · 21,000 at MR10 · 31,000 at MR30"
+            },
+            {
+              "k": "リセット",
+              "v": "毎日 00:00 UTC (GMT 深夜0時)"
+            },
+            {
+              "k": "管理方法",
+              "v": "各syndicateごとに個別"
+            },
+            {
+              "k": "獲得を開始するには",
+              "v": "factionに誓約（Pledge）し、そのSigilを装備する"
+            }
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "上限は**その日のうちに使い切る必要があり**、消費しなかった1日の獲得可能枠は翌日に繰り越されません。各factionごとに独自の上限があるため、週末にまとめて一気にプレイするよりも、毎日数分ずつ複数のfactionを進める方が効果的です。00:00 UTCのリセットに合わせて習慣づけましょう。"
+        }
+      ]
+    },
+    {
+      "id": "six-syndicates",
+      "title": "6つの主要syndicate",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "オービター（Orbiter）内（または任意のリレー / Relay）の**Syndicateコンソール**からアクセスできる6つの主要syndicateは、クラシックな評判上げ（グラインド）要素です。いずれか1つに**誓約（Pledge）**し（無料）、Warframeに装着する外装エンブレムである**Sigil**を装備します。それ以降は、ミッションで獲得した affinity の一部が自動的にその syndicate の地位に変換されます。"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Syndicate",
+              "設定 / テーマ"
+            ],
+            "rows": [
+              [
+                "Steel Meridian",
+                "一般市民を守るGrineerの脱走兵たち"
+              ],
+              [
+                "Arbiters of Hexis",
+                "規律とTennoの自己修養の探求"
+              ],
+              [
+                "Cephalon Suda",
+                "知識、データ、記憶の保存"
+              ],
+              [
+                "The Perrin Sequence",
+                "経済的均衡を追い求めるCorpusの改革派"
+              ],
+              [
+                "Red Veil",
+                "血をもって腐敗を浄化する狂信者たち"
+              ],
+              [
+                "New Loka",
+                "「純粋な」地球と人類の復興"
+              ]
+            ],
+            "note": "各syndicateは、独自のWarframe/weapon augment mod、syndicate武器やスキン、relicパック、sculpture、Capturaシーンを販売しています。まずは欲しい特定のaugment modを目当てに最初のfactionを選びましょう。現在の正確な報酬リストは、ゲーム内のコンソールまたはwikiで確認してください。"
+          }
+        },
+        {
+          "type": "warn",
+          "text": "これら6つのグループは**同盟・対立関係のネットワーク**に位置しています。そのため、1つのfactionで地位を獲得すると、そのライバルfactionの地位が徐々に**低下**します。復帰プレイヤーが、一度も触れていないはずのfactionの地位がいつの間にか下がっているのを目にするのはこれが原因です。これは仕様通りの挙動です。コンソールには、装備しているSigilによる正確なプラス・マイナスの影響が表示されます。多くのプレイヤーは1つか2つのfactionをメインにし、その後Sigilを切り替えて残りの地位を補填しています。"
+        }
+      ]
+    },
+    {
+      "id": "earning-main",
+      "title": "Sigil、medallion、そしてsacrifice",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "主要syndicateの地位を稼ぐ方法は3つあり、これらを重ねることでベテランプレイヤーは一気にランクを上げています："
+        },
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "h": "適切なSigilを装備する",
+              "p": "地位は affinity に比例して獲得できるため、敵の撃破数が多いエンドレスミッション（または近くの分隊員の撃破から共有される affinity）であれば何でも効率よく稼げます。マッチメイクに入る*前*に、目的のfactionのSigilを装備しておかないと、そのXP（経験値）は無駄になってしまいます。"
+            },
+            {
+              "h": "Syndicate Medallionを探す",
+              "p": "各factionはコンソールに日替わりのミッションを提示します。そのタイルセット内には収集可能な medallion が隠されており、これらを回収して syndicate で交換することで、大量の地位を獲得できます。極めて重要な点として、medallion の交換による地位獲得は通常の1日上限を突破できるため、最も早くランクアップする手段となります。"
+            },
+            {
+              "h": "ランクアップのために sacrifice（供物）を捧げる",
+              "p": "新しいランクに上がるには、十分な累計地位と、そのfactionが要求するアイテムの1回限りの「sacrifice（供物）」の両方が必要です。初期のランクでは一般的な素材を要求されますが、高ランクになるとレアな mod、素材、または syndicate 固有のアイテムが必要になります。必要なものはコンソールに正確にリストアップされます。"
+            }
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "**medallion は貯め込んでおきましょう。** 交換は1日の上限を超えることができるため、ストックを貯めておき、ランクアップの sacrifice を支払った直後に一気に投入することで、次のティアまで一瞬で進めることができます。loot-radar や treasure-detector 系の mod を装備すれば、隠された medallion を見つけるのは非常に簡単になります。"
+        },
+        {
+          "type": "info",
+          "text": "syndicate の**augment mod は取引可能**なため、最大ランクまで上げた faction は安定した platinum の収入源になります。[Platinum ガイド](/guides/platinum)で取引の基本を学び、[マーケットスクリーナー](/screener)で自分の augment の価格を設定し、[フリップファインダー](/flip)で売買の価格差を狙いましょう。"
+        }
+      ]
+    },
+    {
+      "id": "open-worlds",
+      "title": "オープンワールドとハブのfaction",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "オープンワールドのfactionは仕組みが異なります。Sigilや affinity の代わりに、魚、カットした宝石、野生動物保護のタグ、トークン、bounty 報酬などの**素材をベンダーに提出**します。これらも同じ `16,000 + 500 × MR` の1日上限に従いますが、個別に管理されているため、1日に複数のfactionを上限まで進めることができます。"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "ハブ · オープンワールド",
+              "Faction",
+              "提出するもの",
+              "地位で購入できるもの（一般）"
+            ],
+            "rows": [
+              [
+                "Cetus · Plains of Eidolon",
+                "Ostron",
+                "bounty、魚、カットした宝石",
+                "Zawパーツ（Hok）、釣り＆採掘ギア、マスク、シーン"
+              ],
+              [
+                "Fortuna · Orb Vallis",
+                "Solaris United",
+                "bounty、魚、宝石、debt-bond",
+                "Kitgunパーツ（Rude Zuud）、MOAコンパニオン（Legs）、ギア"
+              ],
+              [
+                "Necralisk · Cambion Drift",
+                "Entrati",
+                "bounty、魚、野生動物保護タグ、宝石、トークン",
+                "mod、arcane、Necramechギア、外装品"
+              ],
+              [
+                "Sanctum Anatomica",
+                "Cavia",
+                "NetracellおよびSanctumのbounty",
+                "Whispers-in-the-Wallsのarcaneおよびmod"
+              ],
+              [
+                "Höllvania (1999)",
+                "The Hex",
+                "1999のアクティビティおよびbounty",
+                "新しいarcane、武器、mod、外装品"
+              ]
+            ],
+            "note": "報酬リストはアップデートごとに変更されるため、現在の提供内容はwikiで確認してください。原材料そのものについては、Resourcesガイドを参照してください。"
+          }
+        },
+        {
+          "type": "tip",
+          "text": "上限に近づいたら、これらのハブ（特に Deimos やそれ以降の新しいワールド）で**トークン / wispシステム**を利用しましょう。溢れた素材を*保持可能な*トークンに変換し、後日それを引き換えることができます。これにより、大量に釣った魚や採掘した鉱石が無駄になることはありません。このQoL（利便性）の改善こそが、コミュニティが「地位トークンをありがとう」と歓喜した理由です。"
+        },
+        {
+          "type": "p",
+          "text": "オープンワールドの素材は[Resources ガイド](/guides/resources)のクラフト経済にも供給され、EidolonやOrbの狩猟は以下で紹介するOperatorのfactionに直接つながっています。"
+        }
+      ]
+    },
+    {
+      "id": "other-factions",
+      "title": "知っておくべきその他の地位ベンダー",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "大手の syndicate 以外にも、いくつかの専門的な faction が独自の地位トラックを運営しています。Operator の**Amp**、**arcane**、Necramech ギアはここから入手します。"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Faction",
+              "場所",
+              "獲得方法",
+              "使い道"
+            ],
+            "rows": [
+              [
+                "Cephalon Simaris",
+                "リレー (Sanctuary)",
+                "シンセシス・スキャン（Synthesis-scan）のターゲット",
+                "専用mod、武器＆ユーティリティの設計図、Sanctuaryスキャナーのウィジェット"
+              ],
+              [
+                "The Quills",
+                "Cetus (Onkko)",
+                "Eidolonシャードの交換",
+                "Ampパーツ、arcane、フォーカスレンズ"
+              ],
+              [
+                "Vox Solaris",
+                "Fortuna (Little Duck)",
+                "Orb戦およびVallisの素材",
+                "Ampパーツ、Operatorのarcane"
+              ],
+              [
+                "The Holdfasts",
+                "Zariman (Chrysalith)",
+                "Zarimanミッション → Voidplume",
+                "arcane、mod、外装品"
+              ],
+              [
+                "Necraloid",
+                "Necralisk",
+                "NecramechおよびDeimosのアクティビティ",
+                "Necramechのmodおよびパーツ"
+              ],
+              [
+                "Ventkids",
+                "Fortuna",
+                "K-Driveのトリックおよびレース",
+                "K-Driveパーツおよび外装品"
+              ],
+              [
+                "Conclave",
+                "リレー (Teshin)",
+                "PvPマッチ",
+                "PvP用mod、外装品、Captura"
+              ]
+            ],
+            "note": "TeshinはSteel Pathショップも運営していますが、そこでは地位ではなくSteel Essence（通貨）を消費します。詳細はSteel Pathガイドを参照してください。"
+          }
+        },
+        {
+          "type": "info",
+          "text": "Eidolon狩り用のAmpをビルドしますか？The QuillsとVox Solarisがその供給源であり、どちらもOperatorの進行状況に繋がっています。[Focus ガイド](/guides/focus)および[Eidolon ガイド](/guides/eidolon)と併せて活用してください。"
+        }
+      ]
+    },
+    {
+      "id": "fastest-cap",
+      "title": "地位を最速で上限まで稼ぐ方法",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "グリッチ（バグ利用）は必要ありません。効率的なルートをたどるだけです。信頼性が高く、いつでも使える攻略法は以下の通りです："
+        },
+        {
+          "type": "list",
+          "items": [
+            "**最初に適切なSigilを装備すること。** 地位は affinity に比例するため、敵の撃破数が多い強力なエンドレスミッション（または高速な affinity ノード）を1回周回するだけで、主要syndicateの地位を上限（またはほぼ上限）まで稼ぐことができます。Sigilを装備せずに周回（グラインド）するのは絶対にやめましょう。",
+            "**medallion を求めて syndicate の日替わりミッションをクリアし**、それを交換すること。交換は1日の上限をバイパスするため、上限を突破する手段となります。",
+            "**オープンワールドの提出物を事前にファーム（収集）しておくこと。** 気楽にプレイしている間に魚、宝石、タグを貯めておき、リセット時に一気に提出して即座に上限に達させます。溢れた分はトークンに変換して無駄にしないようにしましょう。",
+            "**毎日factionをローテーションすること。** それぞれの上限は独立しているため、1つのfactionだけに執着するよりも、2〜3のfactionを15分ずつループする方が、はるかに多くの合計地位を獲得できます。",
+            "**Mastery Rankを上げること。** MRが1上がるごとに、すべてのfactionの1日上限が500増加します。これが上限全体を恒久的に引き上げる唯一の方法です。"
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "アーセナル（Arsenal）でSigilの**不透明度をほぼゼロ**に設定すれば、ファッション（見た目）を損なうことなく地位を獲得できます。ファーム用のSigilを常に装備しておくのに最適です。"
+        }
+      ]
+    },
+    {
+      "id": "nightwave",
+      "title": "Nightwave：関連しているが、syndicateの地位とは別物",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Nightwave**も紛らわしいことに「地位」を付与しますが、これは独立したシーズン制のシステムです。ローテーションするチャレンジトラックと考えてください。**アクト（Act）**（デイリー、ウィークリー、エリートウィークリーのチャレンジ）を完了してランクのハシゴを登り、各ランクで報酬と、提供品ショップで消費できる**Nightwave Cred**を獲得します。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**デイリーアクト（Daily Act）**は規模が小さく毎日更新されます。**ウィークリーおよびエリートウィークリーアクト（weekly / elite weekly Act）**は獲得できる地位がはるかに多いため、これらを優先しましょう。",
+            "**Credショップの定番アイテム**は、ゲーム内で最も価値のあるものばかりです：**Nitain Extract**、**Orokin Reactor/Catalyst**（通称「ポテト」）、**Forma**、**Kuva**、Aura mod、そしてシーズン限定の外装品など。",
+            "最終ティアに到達した後も、Credを支払い続けるループ式の**Prestige**ランクへと昇格し続けることができます。",
+            "シーズンの合間には**Nightwave: Intermission**が開催され、ショップや手持ちのCredを引き続き使用できるため、強制リセットで途方に暮れることはありません。"
+          ]
+        },
+        {
+          "type": "warn",
+          "text": "シーズン限定の外装品（および稀に frame）は、シーズン終了後に長期間入手不可能になることがあるため、プレイヤーは最終週に慌ててプレイします。すべてのアクトをクリアしなくても最高ランクに到達できることが多いため、パニックになってすべてをグラインドする必要はありませんが、シーズンが終了する前にCredをNitainやポテト（Reactor/Catalyst）に消費しておきましょう。"
+        }
+      ]
+    },
+    {
+      "id": "pitfalls",
+      "title": "よくある質問と落とし穴",
+      "blocks": [
+        {
+          "type": "info",
+          "text": "**「Grineerをマーシーキル（mercy-kill）したら、星系マップが赤くなった」** — それは syndicate ではありません。あなたは**Kuva Lich**（支配しているノードに税を課す宿敵、赤く表示されます）を生み出してしまいました。これは完全に別のシステムです。[Kuva & Lich ガイド](/guides/kuva)を参照して、彼らをハントしに行きましょう。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Sigilなしで周回（グラインド）しないこと。** Sigilなしで獲得した affinity は、地位をドブに捨てているようなものです。",
+            "**対立factionの低下を恐れないこと。** ライバルの地位が少し下がるのは仕様です。Sigilをローテーションしてライバルの地位を補填していけば、最終的にはすべてのfactionのランクを上げることができます。",
+            "**溢れた分を無駄にしないこと。** 上限を超えた場合は、オープンワールドの素材をトークンに変換し、medallion は後で交換するために取っておきましょう。",
+            "**通貨を混同しないこと。** syndicate の地位、Nightwave Cred、Steel Essence はそれぞれ異なるものです。それぞれのショップで消費しましょう。"
+          ]
+        },
+        {
+          "type": "p",
+          "text": "地位のファームが credit、relic、Mastery とどのように並行して進行していくかなど、より広い進行状況の全体像については、[Progression ガイド](/guides/progression)および厳選された[コミュニティツールディレクトリ](/tools)を参照してください。"
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Warframeにおける1日の地位上限はどのように計算されますか？",
+      "a": "上限は `16,000 + (500 × your Mastery Rank)` で、各factionに個別に適用され、毎日 00:00 UTC にリセットされます。そのため、ゲームを始めたばかりのMR0のプレイヤーでも1日にsyndicateごとに16,000まで獲得でき、MR10なら21,000、MR30なら31,000が上限となります。[Mastery Rank](/guides/mastery-rank)を上げることが、すべてのfactionの上限を一度に恒久的に引き上げる唯一の方法です。"
+    },
+    {
+      "q": "syndicateの地位を最も効率よくファーム（収集）する方法は何ですか？",
+      "a": "そのfactionのSigilを装備し、敵の撃破数が多い affinity ミッションを周回して素早く上限に達させ、日替わりミッションから Syndicate Medallion を集めましょう。medallion の交換は1日の上限を突破できるため、ストックを貯めておき、ランクアップの sacrifice（供物）を支払った直後に一気に投入するのが、新しいランクへ進む最も早い方法です。"
+    },
+    {
+      "q": "主要な6つのsyndicateすべてを最大ランクにすることはできますか？",
+      "a": "はい、最終的には可能です。6つのsyndicateは同盟・対立関係にあるため、1つの地位を上げるとライバルの地位が徐々に下がりますが、時間をかけてSigilを切り替えて他を補填していけば問題ありません。対立関係を考慮して計画を立てれば、すべてのfactionで最大ランクに到達できます。"
+    },
+    {
+      "q": "Nightwaveの地位はsyndicateの地位と同じですか？",
+      "a": "いいえ、異なります。Nightwaveは独立したシーズン制のチャレンジトラックです。デイリー、ウィークリー、エリートウィークリーのアクト（Act）をクリアしてNightwaveのランクとNightwave Credを獲得します。そのCredをNitain、Orokin Reactor/Catalyst、Forma、Kuva、外装品に消費します。これは6つのsyndicateの評判とは一切関係ありません。"
+    },
+    {
+      "q": "プレイしていないsyndicateの地位が下がったのはなぜですか？",
+      "a": "syndicateの対立関係が原因です。装備しているSigilに基づいて、あるfactionの評判を上げるとライバルfactionの評判が低下します。これは仕様通りの挙動です。Syndicateコンソールには各Sigilが適用する正確なプラス・マイナスが表示されるため、どのfactionを一緒にランクアップさせるか計画を立てることができます。"
+    },
+    {
+      "q": "OperatorのAmpパーツやarcaneはどこで入手できますか？",
+      "a": "専門の地位factionから入手できます。CetusのThe Quills（Eidolonシャードと交換）およびFortunaのVox Solaris（Orb戦やVallisの素材から獲得）が、Ampパーツやarcaneを販売しています。[Focus ガイド](/guides/focus)および[Eidolon ガイド](/guides/eidolon)と併せて、狩猟用のビルドを構築しましょう。"
+    },
+    {
+      "q": "Grineerを処刑（マーシーキル）したら惑星全体が赤くなりました。これはsyndicate関連のものですか？",
+      "a": "いいえ、違います。Kuva LarvlingをマーシーキルするとKuva Lich（ノードを占拠し、星系マップ上で赤くマークする宿敵）が出現します。これはsyndicateの地位とは無関係です。[Kuva & Lich ガイド](/guides/kuva)を参照して彼らを倒し、ノードを取り戻しましょう。"
+    },
+    {
+      "q": "syndicateの報酬はplatinumの価値がありますか？",
+      "a": "大いに価値があります。syndicateのaugment modは取引可能で常に安定した需要があるため、最大ランクのfactionは信頼できるplatinum（plat）の収入源になります。[Platinum ガイド](/guides/platinum)で取引の流れを学び、[マーケットスクリーナー](/screener)や[フリップファインダー](/flip)を使ってmodの価格を設定しましょう。"
+    }
+  ],
+  "videos": [
+    {
+      "id": "d_q95Xf6Ohs",
+      "title": "You Have Been Farming Syndicate Standing In WARFRAME ALL WRONG!",
+      "channel": "iFlynn"
+    },
+    {
+      "id": "xfUY8DaZVTw",
+      "title": "MAX YOUR STANDINGS NOW! - FASTEST METHODS FOR ALL SYNDICATES [WARFRAME]",
+      "channel": "TRiX_VS"
+    },
+    {
+      "id": "whtYsyH3N9I",
+      "title": "Warframe | How To Farm Syndicate Standing Quick and Easy - Plumes and Medallions",
+      "channel": "1ManArmyYigit"
+    },
+    {
+      "id": "Vt-albA4ZhA",
+      "title": "How to Max Out EVERY Syndicate Standing FAST in Warframe (Complete Guide)",
+      "channel": "Chapu"
+    }
+  ],
+  "sources": [
+    {
+      "label": "r/Warframe — new wiki showcase (wiki.warframe.com)",
+      "href": "https://reddit.com/r/Warframe/comments/1ios9qf/just_wanted_to_share_how_sexy_the_new_wiki_is/"
+    },
+    {
+      "label": "r/Warframe — Nightwave ended too soon (rank/FOMO)",
+      "href": "https://reddit.com/r/Warframe/comments/1kpzgsq/im_sorry_everyone_i_failed_all_of_you/"
+    },
+    {
+      "label": "r/Warframe — final-hour Nightwave Cred grind (Nitain/potatoes)",
+      "href": "https://reddit.com/r/Warframe/comments/1sgqki4/i_forgor/"
+    },
+    {
+      "label": "r/Warframe — Nightwave weekly Act discussion (DE replied)",
+      "href": "https://reddit.com/r/Warframe/comments/q6fq49/pov_you_have_a_nightwave_act_to_bullet_jump_150/"
+    },
+    {
+      "label": "Official Warframe Wiki",
+      "href": "https://wiki.warframe.com/"
+    }
+  ],
+  "related": [
+    {
+      "label": "Focus & Operator ガイド",
+      "to": "/guides/focus",
+      "icon": "school",
+      "note": "Amp、レンズ、そしてQuills/Vox Solarisの地位"
+    },
+    {
+      "label": "Eidolon狩りガイド",
+      "to": "/guides/eidolon",
+      "icon": "weather-night",
+      "note": "シャードを交換してAmp用のQuills地位を獲得"
+    },
+    {
+      "label": "Kuva & Lich ガイド",
+      "to": "/guides/kuva",
+      "icon": "skull",
+      "note": "赤い星系マップの解説"
+    },
+    {
+      "label": "Platinum ガイド",
+      "to": "/guides/platinum",
+      "icon": "diamond-stone",
+      "note": "syndicateのaugmentをplatと取引"
+    },
+    {
+      "label": "Resources ガイド",
+      "to": "/guides/resources",
+      "icon": "pickaxe",
+      "note": "オープンワールドの提出用素材"
+    },
+    {
+      "label": "コミュニティツール",
+      "to": "/tools",
+      "icon": "tools",
+      "note": "Wiki、Overframe、マーケットトラッカー"
+    }
+  ],
+  "updated": "2026-07-18"
+}

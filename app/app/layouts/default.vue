@@ -158,6 +158,9 @@ defineOgImage('Void', {
   description: seo.value.description
 })
 
+// BreadcrumbList JSON-LD for every non-home route (localized names + URLs).
+useBreadcrumbsLd()
+
 interface NavLink {
   to: string
   // i18n token resolved via t('nav.items.' + key)

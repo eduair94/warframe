@@ -1,0 +1,531 @@
+{
+  "slug": "mods",
+  "eyebrow": "知识中心 · Mods 与生存能力",
+  "title": "基础 Mods 与生存能力",
+  "lede": "你的 Warframe 和武器在刚拿到手时几乎是“裸奔”状态——Mods 占了你 90% 的战力。掌握 Mod 容量、伤害乘数模型和 shield-gating，任何 frame 都能在 Steel Path 中生存。",
+  "category": "systems",
+  "readMins": 12,
+  "stats": [
+    {
+      "num": "60",
+      "label": "使用 potato 后的最大容量",
+      "tone": "gold"
+    },
+    {
+      "num": "4",
+      "label": "Warframe 技能属性",
+      "tone": "alt"
+    },
+    {
+      "num": "6",
+      "label": "复合伤害元素",
+      "tone": "good"
+    },
+    {
+      "num": "2.25s",
+      "label": "最大 shield-gate 无敌时间",
+      "tone": "gold"
+    }
+  ],
+  "sections": [
+    {
+      "id": "how-modding-works",
+      "title": "Mods 就是你的配装（build）——其他一切都只是载体",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "刚到手的 Warframe 或武器只是一个空壳。**Mods** 是你插在上面的卡牌，用于增加伤害、生命值、技能、暴击、元素和实用功能——它们是你几乎所有力量的来源。学会如何配 Mod 比你拥有哪个 frame 重要得多。"
+        },
+        {
+          "type": "p",
+          "text": "每个装备都有 **Mod 插槽**和**容量**预算。每个 Mod 都有一个**消耗（drain）**数值，你装备的 Mods 总消耗不能超过你的容量。容量等于装备的**等级（rank）**：一个 30 级的 Warframe 或武器拥有 **30 容量**。升级 Mod（使用 Endo 和 credits）会让它变得更强——但也会消耗更多容量。"
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "Warframe 插槽",
+              "v": "8 个 Mod + 1 个 Aura + 1 个 Exilus"
+            },
+            {
+              "k": "武器插槽",
+              "v": "8 个 Mod + 1 个 Exilus（近战为 Stance 插槽）"
+            },
+            {
+              "k": "基础最大容量",
+              "v": "30 级时为 30（使用 Reactor/Catalyst 后为 60）"
+            },
+            {
+              "k": "升级 Mods 所需",
+              "v": "在 Mod 界面使用 Endo + credits"
+            },
+            {
+              "k": "Mods 掉落途径",
+              "v": "敌人、Boss、Syndicates（集团）、Transmutation（转换）、任务"
+            }
+          ]
+        },
+        {
+          "type": "info",
+          "text": "不要盲目囤积重复的 Mods——但**绝不要卖掉你唯一一张**核心 Mod，比如 Serration、Vitality 或 Primed Mod。如果不确定，就保留一张，其余的分解为 [Endo](/guides/endo)。"
+        }
+      ]
+    },
+    {
+      "id": "capacity-potatoes-forma",
+      "title": "容量、potatoes、极性（polarities）与 Forma",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "有三种工具可以让你塞下超出原始容量限制的配装：**Orokin Reactors/Catalysts**、**极性（polarities）**和 **Forma**。理解它们是新手解决“我的配装塞不下”这一问题的最重要方法。"
+        },
+        {
+          "type": "p",
+          "text": "**Orokin Reactor**（适用于 Warframes、同伴、Archwing）或 **Orokin Catalyst**（适用于武器）——俗称 **'potato'（土豆）**——能永久将装备的容量从 30 **翻倍**至 **60**。任何认真的配装都默认你已经安装了一个。你可以通过 Nightwave、入侵、Baro Ki'Teer 和活动免费获得它们，或者使用 platinum 购买。"
+        },
+        {
+          "type": "p",
+          "text": "**极性（Polarities）**是插槽上的小符号（Vazarin `D`、Madurai `V`、Naramon `—` 等）。当 Mod 的极性与插槽**匹配**时，其消耗会**大约减半**——这就是后期配装如何将 10 张昂贵的 Mods 塞进 60 容量的方法。**错误**极性的插槽会消耗略*多*的容量；无极性的插槽则消耗正常数值。"
+        },
+        {
+          "type": "p",
+          "text": "**Forma** 是一种你可以通过蓝图（Relic 奖励或购买）制作的资源，用于在插槽上**添加或更改极性**。代价是：使用 Forma 会**将装备重置为 0 级**，因此你需要重新升级它。老玩家会给一把好武器使用 3-5 次 Forma 以容纳完整的配装。它还有其他变体：**Aura Forma**（自动匹配任何 Aura）、**Umbral Forma**（用于 Umbral Mods）以及 Stance/Exilus Forma。"
+        },
+        {
+          "type": "tip",
+          "text": "**Aura 插槽**（Warframes）和 **Stance 插槽**（近战）的作用正好*相反*——它们会**增加**容量而不是消耗容量，并且**匹配的极性会使该加成翻倍**。务必匹配你的 Aura 极性：一个优秀的 Aura 比如 Corrosive Projection 或 Growing Power 可以免费送你两位数的容量。"
+        },
+        {
+          "type": "warn",
+          "text": "不要给那些为了刷 Mastery 而练完就卖的过渡装备使用 potato 或大量 Forma。把 Reactors、Catalysts 和 Forma 留给值得保留的装备——你的主力 frames 以及你真正会带入 [Steel Path](/guides/steel-path) 的武器。"
+        }
+      ]
+    },
+    {
+      "id": "damage-model",
+      "title": "伤害乘数思维模型",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "武器伤害不是一个你盲目堆高的数字——它是**不同乘区（buckets）的乘积**。同一乘区内的 Mods 效果相**加**；不同乘区之间相**乘**。这一条规则决定了每一个优秀的武器配装。"
+        },
+        {
+          "type": "p",
+          "text": "大致公式为：`Base × Multishot × Crit × (Elements + Physical) × Faction`。在已经填满的乘区中继续堆叠第二张 Mod 会带来收益递减；而开辟一个**新**乘区则会成倍提升所有伤害。这就是为什么你不要堆叠两张基础伤害 Mods——而是应该分散投资到**基础伤害（base damage）、多重射击（multishot）、暴击（crit）和元素（elements）**中。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**基础伤害（Base damage）**—— Serration（步枪）、Hornet Strike（手枪）、Pressure Point（近战）。这是基础，但只是其中一个乘区。",
+            "**多重射击（Multishot）**—— Split Chamber（步枪）、Barrel Diffusion（手枪）。发射额外的弹丸/弹头：几乎相当于在基础伤害之上又多了一张伤害 Mod。",
+            "**暴击（Critical）**—— 暴击率（Point Strike）与暴击伤害（Vital Sense）相乘；超过 100% 暴击率后，你会获得更强的橙色/红色暴击。",
+            "**元素（Elements）**—— 可高度自定义的大乘区。两种基础元素可以融合成更强大的复合元素（见下文），你可以根据射击的目标来选择元素。"
+          ]
+        },
+        {
+          "type": "p",
+          "text": "**元素（Elements）**让你能够根据面对的敌人调整伤害——主要是通过它们的**异常状态效果（status effects）**和每个 faction 的弱点。四种基础元素——**Heat、Cold、Electricity、Toxin**——会两两配对（按照 Mod 界面顺序）融合成六种**复合元素**："
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "组合",
+              "→ 结果",
+              "作用 / 适用场景"
+            ],
+            "rows": [
+              [
+                "Toxin + Cold",
+                "Viral",
+                "异常状态会放大所有生命值（Health）伤害——默认的万用 DPS 选择"
+              ],
+              [
+                "Heat + Toxin",
+                "Gas",
+                "扩散一片伤害云雾——对付聚集的敌人很强"
+              ],
+              [
+                "Cold + Electricity",
+                "Magnetic",
+                "异常状态会放大护盾（Shield）伤害——针对 Corpus 和有护盾的敌人"
+              ],
+              [
+                "Toxin + Electricity",
+                "Corrosive",
+                "异常状态会剥离护甲（Armor）；同时也是 Grineer faction 的弱点"
+              ],
+              [
+                "Heat + Electricity",
+                "Radiation",
+                "混乱异常状态——使敌人互相攻击（控场）"
+              ],
+              [
+                "Heat + Cold",
+                "Blast",
+                "爆炸 + 降低敌人精准度（防御性）"
+              ]
+            ],
+            "note": "自 Update 36 (Jade Shadows) 伤害重做以来，抗性和加成已改为基于 faction——例如 Grineer 承受额外 Corrosive 伤害，Corpus 承受额外 Magnetic 伤害等——而不是与特定的生命类型挂钩，但上述异常状态效果仍然按描述生效。目前通用的 Steel Path 模板是 Viral + Heat（Heat 还能剥离护甲并施加灼烧）；对于纯暴击武器对付 Grineer，Corrosive + Heat 依然强劲。插槽中两个元素 Mods 的顺序决定了如何配对。"
+          }
+        },
+        {
+          "type": "info",
+          "text": "触发（Status）还是暴击（Crit）：某些武器需要 **status**（双属性 60/60 Mods，Viral 触发），而另一些则需要 **crit**。在选择前检查武器的暴击率和触发几率——高暴击步枪需要 Point Strike + Vital Sense；高触发散弹枪需要双属性 60/60 元素 Mods。"
+        }
+      ]
+    },
+    {
+      "id": "warframe-mods",
+      "title": "必备 Warframe Mods",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Warframe 配装需要兼顾**生存能力**和**四种技能属性**：Strength（强度）、Duration（持续时间）、Range（范围）、Efficiency（效率）。你很少会把这四项都堆满——你需要根据具体的 frame 进行调整。了解每个核心 Mod 的作用，你就能看懂任何配装指南。"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Mod",
+              "作用",
+              "为什么重要"
+            ],
+            "rows": [
+              [
+                "Vitality",
+                "大量生命值加成（最大约 +440%）",
+                "几乎每个 frame 的基础生存保障"
+              ],
+              [
+                "Redirection",
+                "大量护盾加成（约 +440%）",
+                "为 shield-gating 提供支持——或者在低护盾配装中被忽略"
+              ],
+              [
+                "Adaptation",
+                "堆叠伤害抗性，最高可达 90%",
+                "通过承受伤害，让脆皮 frames 也能在 Steel Path 中生存"
+              ],
+              [
+                "Intensify",
+                "+ 技能强度",
+                "提升技能数值（伤害、Buff、剥离护甲）"
+              ],
+              [
+                "Streamline",
+                "+ 技能效率",
+                "施法更频繁，消耗更少能量"
+              ],
+              [
+                "Stretch",
+                "+ 技能范围",
+                "更宽广的光环、控场（CC）和 Buff 范围"
+              ],
+              [
+                "(Primed) Continuity",
+                "+ 技能持续时间",
+                "更长的 Buff 和控场时间"
+              ],
+              [
+                "(Primed) Flow",
+                "+ 能量上限",
+                "更大的能量池以释放技能"
+              ]
+            ],
+            "note": "升级路线：Umbral 套装（Umbral Vitality / Intensify / Fiber）可以替代普通版本，并在装备两件或三件时提供套装加成——值得在你的主力 frames 上使用 Umbral Forma。"
+          }
+        },
+        {
+          "type": "p",
+          "text": "还有几张属性 Mods 值得了解，因为配装指南经常利用它们的权衡取舍：**Blind Rage**（大幅提升强度，但牺牲效率）、**Fleeting Expertise**（大幅提升效率，但牺牲持续时间）、**Overextended**（极大提升范围，但牺牲强度）和 **Narrow Minded**（极大提升持续时间，但牺牲范围）。混合使用这些“堕落（corrupted）”Mods 是你将某项属性推向极致的方法。"
+        },
+        {
+          "type": "tip",
+          "text": "**Exilus 插槽**用于放置不与核心配装冲突的实用性 Mods——例如冲刺速度（Rush、Armored Agility）、跑酷与机动性，或者敌人/战利品雷达。使用 **Exilus Adapter** 解锁它。一旦你的核心配装确定下来，这就是免费的额外价值。"
+        }
+      ]
+    },
+    {
+      "id": "weapon-mods",
+      "title": "必备武器 Mods（按类型分类）",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "每个武器配装都始于相同的骨架：填满四个伤害乘区，然后灵活调整最后的插槽以放置元素、触发或实用性 Mods。以下是各武器类别的主力 Mods。"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "配装角色",
+              "主武器（步枪）",
+              "副武器（手枪）",
+              "近战"
+            ],
+            "rows": [
+              [
+                "基础伤害",
+                "Serration",
+                "Hornet Strike",
+                "(Primed) Pressure Point"
+              ],
+              [
+                "多重射击",
+                "Split Chamber",
+                "Barrel Diffusion / Lethal Torrent",
+                "—（改用连击）"
+              ],
+              [
+                "暴击率",
+                "Point Strike",
+                "Pistol Gambit",
+                "Blood Rush（随连击数提升）"
+              ],
+              [
+                "暴击伤害",
+                "Vital Sense",
+                "Target Cracker",
+                "Organ Shatter"
+              ],
+              [
+                "触发 / 元素",
+                "+90% 元素 Mods，60/60 双属性",
+                "+90% 元素 Mods",
+                "Condition Overload, Weeping Wounds"
+              ]
+            ],
+            "note": "散弹枪需要换上 Point Blank（基础伤害）和 Hell's Chamber（多重射击）。弓箭/狙击枪极度依赖暴击。当你需要异常状态触发而不是纯暴击时，添加双属性 60/60 Mods。"
+          }
+        },
+        {
+          "type": "p",
+          "text": "**近战的玩法不同。** 它不依赖多重射击，而是根据**连击计数器（combo counter）**进行缩放：**Blood Rush** 将连击转化为暴击率，**Weeping Wounds** 将其转化为触发几率。**Condition Overload** 会根据目标身上每种独特的异常状态增加伤害——将其与一把触发流武器搭配，它就会成为游戏中最强大的近战乘数之一。最后用 **Berserker Fury** 或 **Primed Fury** 提升攻击速度，用 **Primed Reach** 增加范围。"
+        },
+        {
+          "type": "info",
+          "text": "Serration 最大能提供约 **+165%** 的基础伤害，Split Chamber 提供 **90%** 的额外弹头几率——但具体数值会随着等级和 DE 的调整而变化，因此在围绕它们使用 Forma 极化插槽之前，请先在 [Warframe wiki](https://wiki.warframe.com/) 上确认当前数据。一旦你进入后期阶段，Galvanized 版本（Galvanized Chamber、Galvanized Diffusion 等）将成为普通基础/多重射击 Mods 的升级选择。"
+        }
+      ]
+    },
+    {
+      "id": "shield-gating",
+      "title": "Shield-gating：老玩家如何做到不死",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "玩家在 [Steel Path](/guides/steel-path) 中死亡的最主要原因不是“生命值不够”——而是不理解 **shield-gating**。在游戏后期，单纯的有效生命值并不能保证生存，而**无敌时间窗口**可以。"
+        },
+        {
+          "type": "p",
+          "text": "机制：只要你在承受致命一击时拥有**至少 1 点护盾**，你的护盾就会吸收溢出的伤害并破碎，而护盾破碎会提供一个短暂的**无敌时间窗口**——即“门控（gate）”。无敌时间的长度**与你的最大护盾值挂钩**：在极小的护盾池下，完全碎盾大约提供 **0.33 秒**无敌，而在大护盾池下可达约 **2.25 秒**；而从**部分回复**的护盾再次碎盾，则只能提供约 **0.33 秒**的短暂门控。在此窗口期间，你不会死亡。"
+        },
+        {
+          "type": "steps",
+          "ordered": true,
+          "steps": [
+            {
+              "h": "保持护盾缓冲",
+              "p": "你只需要 1 点护盾就能在致命一击中存活。任何拥有护盾的 frames 都可以进行 shield-gating——即使是 Inaros 风格的坦克也能从微小的护盾池中受益。"
+            },
+            {
+              "h": "按需刷新门控",
+              "p": "如果门控只触发一次，那它就毫无用处。重新填满你的护盾以再次碎盾：使用 Brief Respite（Aura）或 Augur 套装 Mods 释放技能，它们能将消耗的能量转化为即时护盾。"
+            },
+            {
+              "h": "采用低护盾配置以实现稳定的重复门控",
+              "p": "Catalyzing Shields 会降低你的最大护盾值，使其几乎能瞬间破碎并重新充能，并且它能保证每次完全碎盾时都获得完整的约 1.33 秒门控，无论你的护盾有多低——这打破了通常“低护盾 = 短门控”的规则。Decaying Dragon Key（减少护盾）也能建立类似的“碎得快、充得快”循环。"
+            },
+            {
+              "h": "添加一个应急按钮",
+              "p": "Rolling Guard 在翻滚时提供无敌并清除异常状态（冷却时间短）。它能重置你的护盾门控，并把你从 Toxin 和 Slash 等绕过护盾的异常状态中解救出来。"
+            }
+          ]
+        },
+        {
+          "type": "warn",
+          "text": "**Toxin 伤害和 Slash 流血触发会完全绕过护盾**（真实伤害同样无视护盾和护甲）—— shield-gating 无法阻止流血触发扣减你的生命值。这就是为什么状态清除（Rolling Guard）和伤害抗性（Adaptation）应该与 shield-gating 搭配在同一个配装中，而不能仅靠 shield-gating。"
+        },
+        {
+          "type": "quote",
+          "text": "在后期的 Warframe 中，你无法靠硬抗取胜——你必须让自己变得无法被击中。利用 shield-gate 承受爆发伤害，用 Rolling Guard 重置它，用 Adaptation 削减其余伤害。",
+          "cite": "社区关于 shield-gating 的共识"
+        }
+      ]
+    },
+    {
+      "id": "layered-survivability",
+      "title": "在门控之外叠加生存能力",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Shield-gating 是你的防爆发伤害层。在此之上叠加这些手段，即使是脆如白纸的 frames 也能在长时间的 Steel Path 任务中存活。大多数配装会运行其中的两到三种，而不是全部。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Adaptation** —— 在承受伤害时，每种伤害类型最高可堆叠 **90% 的伤害减免**。对于没有内置防御能力的 frames 来说，这是最强的单张生存 Mod。",
+            "**Rolling Guard** —— 翻滚时获得无敌 + 完全清除异常状态，冷却时间短。既能作为 shield-gate 重置手段，也是应对 Toxin 的保命牌。",
+            "**Quick Thinking** —— 当生命值即将归零时，消耗**能量**来维持生命。相当于第二条软生命值槽（建议搭配高能量和 shield-gating 使用）。",
+            "**Primed Sure Footed** —— 免疫击倒/硬直（每日签到奖励 Mod）。被无限硬直是隐藏的杀手；站稳脚跟能让你持续施法。",
+            "**Arcanes** —— 像 Arcane Grace、Guardian 或 Aegis 这样的 [Arcanes](/guides/arcanes) 可以在 Mods 之外提供生命回复、护甲和护盾恢复，从而大幅提升生存能力。",
+            "**Aura + Helminth** —— 防御性 Aura（Physique）或通过 [Helminth](/guides/helminth) 注入的防御性技能（例如超载护盾 overguard 或减伤技能）的价值可能超过任何单个 Mod 插槽。"
+          ]
+        },
+        {
+          "type": "info",
+          "text": "血坦（Health-tank）还是盾坦（Shield-tank）是一个真正的抉择。高护甲 frames（如 Rhino、Inaros 风格）可以偏向 Vitality + Adaptation + arcanes；低护甲的施法型 frames 则依赖 shield-gating + Rolling Guard。根据 frame 选择合适的策略，不要把一套配装生搬硬套到所有装备上。"
+        }
+      ]
+    },
+    {
+      "id": "ranking-rivens-next",
+      "title": "升级 Mods、Rivens 以及下一步该做什么",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Mods 通过 **Endo + credits** 进行升级。Endo 来自阿雅坛雕像（Ayatan sculptures）、分解重复的 Mods 以及专门的刷取点——参见 [Endo 刷取指南](/guides/endo)，并使用 [Endo / Plat 价值评估工具](/endo)来检查分解某张 Mod 或 Riven 是否划算。早期的高性价比做法：在追求任何稀有 Mod 之前，先将你的核心 Mods（Serration、Vitality、四种技能属性）升满级。"
+        },
+        {
+          "type": "p",
+          "text": "**Rivens**（紫卡）是绑定到特定武器的随机属性 Mods，具有强大的（有时也包含负面的）属性。它们是**后期极限配装（min-max）的手段**，而不是新手工具——首先要有一把配装完整的武器，一张优秀的 Riven 只能带来最后 10-30% 的提升。价格波动极大，因此在买卖之前，请先使用 [Riven 价值评估器](/riven-value)进行估价，并阅读 [Riven 指南](/guides/riven)中的机制。"
+        },
+        {
+          "type": "steps",
+          "ordered": true,
+          "steps": [
+            {
+              "h": "给值得保留的装备使用 Potato 和 Forma",
+              "p": "安装 Reactor/Catalyst，然后极化（Forma）插槽以匹配你配装的极性，使所有内容都能塞进 60 容量中。"
+            },
+            {
+              "h": "填满伤害乘区",
+              "p": "武器上配置基础伤害 + 多重射击 + 暴击 + 元素；frames 上配置生存能力 + 你的两个优先技能属性。"
+            },
+            {
+              "h": "添加一层生存保障",
+              "p": "在踏入 Steel Path 之前，配置好 shield-gating 或 Adaptation + Rolling Guard。"
+            },
+            {
+              "h": "最后进行极限优化（Min-max）",
+              "p": "只有在基础配装完成后，才考虑 Umbral/Primed Mods、arcanes，最后才是 Riven。"
+            }
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "当配装指南列出了你未拥有的 Mods 时，先装上最接近的替代品（例如用普通 Mod 代替其 Primed 版本），以后再升级。一个完成度 90% 的配装就能通关整个星图——你不需要集齐每个 Primed 和 Riven 也能获得乐趣。"
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Warframe 新手最推荐哪些 Mods？",
+      "a": "武器方面：Serration（步枪）/ Hornet Strike（手枪）/ Pressure Point（近战）用于基础伤害，然后是多重射击 Mod（Split Chamber、Barrel Diffusion），接着是元素。Warframes 方面：Vitality 用于生命值，加上四种技能属性 Mods——Intensify（强度）、Streamline（效率）、Stretch（范围）和 Continuity（持续时间）。在追求任何稀有物品之前，先用 [Endo](/guides/endo) 将它们升满级。"
+    },
+    {
+      "q": "Orokin Reactor 或 Catalyst（俗称 'potato'）有什么用？",
+      "a": "它能永久将装备的 Mod 容量从 30 翻倍至 60，从而让完整的配装能够真正塞下。Reactor 用于 Warframes、同伴和 Archwing；Catalyst 用于武器。你可以通过 Nightwave、入侵和活动（偶尔也来自 Baro Ki'Teer）免费获得它们，或者使用 platinum 购买——把它们留给你会保留的装备，而不是为了刷 Mastery 的过渡装备。"
+    },
+    {
+      "q": "极性（polarities）和 Forma 是如何工作的？",
+      "a": "将 Mod 放入带有匹配极性符号的插槽中，其消耗大约只有平时的一半，这就是后期配装如何塞进 60 容量的方法。Forma 是一种可以在一个插槽上添加或更改极性的资源，但它会将装备重置为 0 级，因此你需要重新升级它。首先匹配你的 Aura 和 Stance 极性——这些插槽会增加容量而不是消耗容量，因此匹配极性可以免费获得双倍的价值。"
+    },
+    {
+      "q": "什么是 shield-gating，我该如何操作？",
+      "a": "当你的护盾破碎时，你会获得一个短暂的无敌时间窗口，在此期间你不会死亡。其长度与你的最大护盾值挂钩——从极小护盾池的约 0.33 秒到大护盾池的约 2.25 秒不等——而从部分回复的护盾再次碎盾仅提供约 0.33 秒无敌。你通过补充护盾并再次碎盾来维持这个循环，通常是通过 Brief Respite 或 Augur Mods（释放技能消耗的能量转化为护盾），加上 Rolling Guard 作为重置手段；低护盾配装会添加 Catalyzing Shields 以确保每次都能获得完整的门控。这是资深玩家在 [Steel Path](/guides/steel-path) 中生存的主要原因。请在下方的 shield-gating 视频中查看完整演示。"
+    },
+    {
+      "q": "为什么即使有大量的生命值，我依然在 Steel Path 中频繁死亡？",
+      "a": "单纯的有效生命值在游戏后期无法保证生存——敌人的伤害增长远超其上限。你需要无敌机制：利用 shield-gating 应对爆发伤害，用 Rolling Guard 重置门控并清除异常状态，以及用 Adaptation 提供高达 90% 的伤害减免。Toxin 和 Slash 会绕过护盾，因此清除异常状态是必不可少的，而不是可选的。"
+    },
+    {
+      "q": "如何提升武器伤害——应该先装哪张 Mod？",
+      "a": "从相乘的乘区（buckets）来思考：基础伤害、多重射击、暴击和元素各自相互乘算，而同一乘区内的 Mods 只能相加。因此，不要堆叠两张基础伤害 Mods——而是分散配置一张基础伤害 Mod、一张多重射击 Mod、暴击 Mods 以及正确的元素（Viral 用于提升对生命值的伤害，Heat 或 Corrosive 用于对付护甲）。开辟一个新乘区远胜于过度填满旧乘区。"
+    },
+    {
+      "q": "我该如何升级（强化）我的 Mods？",
+      "a": "前往 Mod 界面，使用 Endo 和 credits 融合 Mod——每个等级都会提升其效果和消耗。Endo 来自阿雅坛雕像（Ayatan sculptures）、分解重复的 Mods 以及 [Endo 指南](/guides/endo)中介绍的专门刷取点。使用 [Endo / Plat 价值评估工具](/endo)来决定分解某张 Mod 或 Riven 是否比保留它更划算。"
+    },
+    {
+      "q": "对新手来说，Rivens（紫卡）值得去弄吗？",
+      "a": "目前还不值得。Rivens 是后期极限优化（min-max）的手段，只能在已经完整的配装之上提供大约最后 10-30% 的提升，而且它们的随机属性可能很棘手。先完成一套合理的 Mod 配装，然后在花费 platinum 之前，使用 [Riven 价值评估器](/riven-value)进行估价，并阅读 [Riven 指南](/guides/riven)中的机制。"
+    }
+  ],
+  "videos": [
+    {
+      "id": "ct2pfAonGXY",
+      "title": "Complete Warframe Modding Guide 2025: Everything You Need to Know!",
+      "channel": "Zefā"
+    },
+    {
+      "id": "RQ22Jltn3i0",
+      "title": "The Ultimate Shield Gating Guide! 🛡️ STOP DYING IN STEEL PATH [Warframe]",
+      "channel": "Hunkpain Gaming "
+    },
+    {
+      "id": "H0sPUBGn2bc",
+      "title": "How to NEVER DIE In WARFRAME!",
+      "channel": "iFlynn"
+    },
+    {
+      "id": "GPJS7bj6V2E",
+      "title": "THE ONLY SURVIVABILITY GUIDE YOU WILL EVER NEED IN WARFRAME",
+      "channel": "Alextreme"
+    }
+  ],
+  "sources": [
+    {
+      "label": "Warframe Wiki — Mods, Polarity & Forma",
+      "href": "https://wiki.warframe.com/w/Mods"
+    },
+    {
+      "label": "Warframe Wiki — Damage & Elemental Combinations",
+      "href": "https://wiki.warframe.com/w/Damage"
+    },
+    {
+      "label": "Warframe Wiki — Shield & Shield Gating",
+      "href": "https://wiki.warframe.com/w/Shield"
+    }
+  ],
+  "related": [
+    {
+      "label": "Riven Mods 指南",
+      "to": "/guides/riven",
+      "icon": "diamond-stone",
+      "note": "洗卡、倾向性（dispositions）以及何时该去折腾"
+    },
+    {
+      "label": "Steel Path 指南",
+      "to": "/guides/steel-path",
+      "icon": "skull",
+      "note": "生存配装大显身手的地方"
+    },
+    {
+      "label": "Helminth 系统",
+      "to": "/guides/helminth",
+      "icon": "dna",
+      "note": "将防御性技能注入任何 frame"
+    },
+    {
+      "label": "Arcanes 指南",
+      "to": "/guides/arcanes",
+      "icon": "shield-star",
+      "note": "超越 Mods 的生存保障层"
+    },
+    {
+      "label": "Endo 刷取",
+      "to": "/guides/endo",
+      "icon": "chart-line",
+      "note": "升级 Mods 的燃料"
+    },
+    {
+      "label": "Riven 价值评估器",
+      "to": "/riven-value",
+      "icon": "cash",
+      "note": "在交易前评估 Riven 的价格"
+    }
+  ],
+  "updated": "2026-07-18"
+}

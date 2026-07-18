@@ -1,0 +1,406 @@
+{
+  "slug": "duviri",
+  "eyebrow": "知識中心 · Duviri",
+  "title": "The Duviri Paradox 指南",
+  "lede": "Duviri 是 Warframe 的 roguelike 樂園 — 一個你在段位 Mastery Rank 0 即可進入、變化莫測的 Orokin 夢境，也是一個每週為新手玩家提供免費 frame、為老玩家提供 Incarnon 轉接器的機制。",
+  "category": "endgame",
+  "readMins": 10,
+  "stats": [
+    {
+      "num": "0",
+      "label": "進入前置條件",
+      "tone": "good"
+    },
+    {
+      "num": "5",
+      "label": "Spiral 中的情緒",
+      "tone": "alt"
+    },
+    {
+      "num": "2",
+      "label": "模式：Experience 與 Circuit"
+    },
+    {
+      "num": "Weekly",
+      "label": "frame 與 Incarnon 獎勵",
+      "tone": "gold"
+    }
+  ],
+  "sections": [
+    {
+      "id": "what-is-duviri",
+      "title": "什麼是 The Duviri Paradox？",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Duviri 是一個破碎的 Orokin 夢境，由一位暴怒的孩童國王 **Dominus Thrax** 統治，並被鎖在名為 **Spiral** 的無盡情緒時間循環中。你不是以 Warframe 的身份探索這裡，而是以 **Drifter** — 你的 Operator 飽經風霜的人類版本。於 2023 年推出的 Duviri 在一個關鍵方面與遊戲中的其他幾乎所有內容都不同：它**完全沒有前置條件**。全新的帳號在接觸星圖之前就可以遊玩它，並且一到達就會贈送你 weapons 和 Warframes。"
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "你扮演的角色為",
+              "v": "The Drifter（開放世界）· Warframes（Undercroft 與 Circuit）"
+            },
+            {
+              "k": "前置條件",
+              "v": "無 — 在 Mastery Rank 0 即可開始"
+            },
+            {
+              "k": "引導 NPC",
+              "v": "Teshin，位於 Teshin's Cave"
+            },
+            {
+              "k": "兩種模式",
+              "v": "The Duviri Experience + The Circuit"
+            },
+            {
+              "k": "核心循環",
+              "v": "Roguelike — 挑選裝備、堆疊 Decrees、每次挑戰後重置"
+            }
+          ]
+        },
+        {
+          "type": "info",
+          "title": "情緒的 Spiral",
+          "text": "Duviri 依固定順序在五種情緒中循環 — **Joy、Anger、Envy、Sorrow 和 Fear**。每種情緒都會重塑你將面臨的敵人、環境和挑戰，而 Spiral 會根據計時器輪替（每種情緒大約持續幾小時）。如果你需要特定的情緒，可以透過 [社群工具目錄](/tools) 查看 Duviri 循環追蹤器。"
+        }
+      ]
+    },
+    {
+      "id": "how-to-start",
+      "title": "進入方式：Teshin's Cave",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "完成一次性的 **Duviri Paradox** 系列任務以解鎖可重複遊玩的內容。從那時起，你可以打開 **Navigation** 並選擇 Duviri，或者進入 **Teshin's Cave** 來選擇你想遊玩的模式 — 廣闊的 Experience，或是專注戰鬥的 Circuit。"
+        },
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "h": "開始系列任務",
+              "p": "The Duviri Paradox 立即開放 — 1 級的帳號無需任何星圖進度即可開始。"
+            },
+            {
+              "h": "完成系列任務",
+              "p": "完成它將永久解鎖可重複遊玩的 Duviri Experience 和 Circuit。"
+            },
+            {
+              "h": "在 Teshin's Cave 選擇你的模式",
+              "p": "選擇開放世界的 Experience 以進行探索、了解背景故事和獲取 Kullervo，或選擇 Circuit 以快速刷取 frame 和 Incarnon。"
+            },
+            {
+              "h": "無需攜帶任何裝備",
+              "p": "Duviri 在你到達時會提供輪替的配裝，因此你自己的軍械庫是可選的 — 這對全新玩家非常友好。"
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "方面",
+              "The Duviri Experience",
+              "The Circuit"
+            ],
+            "rows": [
+              [
+                "你扮演的角色",
+                "開放世界中的 Drifter + Undercroft 中的 Warframe",
+                "僅限 Warframes，在 Undercroft 中"
+              ],
+              [
+                "結構",
+                "開放景觀、騎乘 Kaithe、支線活動、Boss 戰",
+                "Undercroft 任務關卡的無盡天梯"
+              ],
+              [
+                "主要獎勵",
+                "Pathos Clamps 與 Kullervo's Bane（Orowyrm）、Intrinsics、故事與背景故事",
+                "每週 Warframe 部件 · Steel Path：Incarnon 轉接器"
+              ],
+              [
+                "最適合",
+                "Kullervo、Intrinsics、輕鬆探索",
+                "高效刷取 frames 與 Incarnon Genesis"
+              ]
+            ],
+            "note": "兩種模式共享相同的 roguelike Decree 系統 — 區別在於其外在的包裝形式。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "duviri-experience",
+      "title": "The Duviri Experience",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Experience 是開放景觀的 roguelike。你以 Drifter 的身份進行探索，召喚你的 **Kaithe** — 一匹你可以騎乘並在隨後飛行的幽靈馬 — 並在完成**支線目標**以獲取 **Decrees** 和獎勵的同時，體驗當前情緒的**故事階段**。世界會定期將你拉入 **Undercroft**，這是一個受虛空污染的競技場，戰鬥會切換為 Warframe。它會逐步引導你與 Duviri 的巨龍 **Orowyrm** 進行戰鬥。想要更快、僅限故事的流程嗎？選擇 **The Lone Story** — 它會跳過支線內容並直接前往 Orowyrm。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "騎乘或駕駛 **Kaithe** 快速穿越變化莫測的地形",
+            "清除**故事階段**和**支線目標**以賺取 **Decrees** 和戰利品",
+            "進入 **Undercroft** 任務，並以輪替的 Warframe 進行戰鬥",
+            "擊敗 **Orowyrm** 以賺取 **Pathos Clamps** 和 **Kullervo's Bane**",
+            "在 **Kullervo's Hold** 與 Kullervo Boss 戰鬥以獲得更多 **Kullervo's Bane**，然後向 Duviri 商人 **Acrithis**（位於 Dormizone）購買 Kullervo 和裝備"
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "擊敗 Orowyrm 會掉落 **Pathos Clamps** — 可在 **Acrithis** 處將其花費在 Orokin Reactors、Catalysts、Adapters、Forma 和 Duviri 外觀上。**Kullervo** 本人（被廣泛評為遊戲中最強大的近戰型 frames 之一）是使用 **Kullervo's Bane**（掉落自 Orowyrm 以及位於 **Kullervo's Hold** 的 Kullervo Boss）從 Acrithis 處購買藍圖，然後使用 Pathos Clamps 製作。這裡沒有隨機掉落機率的刷取，因此許多玩家遊玩 Duviri 純粹是為了解鎖他。"
+        }
+      ]
+    },
+    {
+      "id": "decrees",
+      "title": "Decrees：你的 Roguelike 戰力飆升",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Decrees 是你在單次遊玩期間收集的臨時 Buff。它們可以**堆疊** — 收集足夠的數量，借來的初始 weapon 就會變成能夠撕碎終局遊戲敵人的猛獸。但要注意：**它們會在該次遊玩結束的瞬間重置**。沒有任何東西可以繼承，因此完全沒有囤積的理由 — 每次遊戲提供時就拿一個。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "在開放世界中完成**故事階段**和**支線目標**",
+            "清除 **Undercroft** 階段並達到獎勵門檻",
+            "完成 Circuit 中的關卡（你在關卡之間選擇一個 Decree）",
+            "擊敗特定的敵人和中 Boss"
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "追求協同效應，而不僅僅是純粹的數值。堆疊 **擊殺回復** + **基礎/百分比傷害** + **保證觸發異常狀態或暴擊** 幾乎可以讓任何 weapon 融化 Steel Path。因為 Decrees 會在遊玩結束時消失，所以請務必拿取一個 — 沒有任何壞處。"
+        }
+      ]
+    },
+    {
+      "id": "the-circuit",
+      "title": "The Circuit：每週免費 Warframes",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "The Circuit 是 Duviri 濃縮後的純粹戰鬥 — 一個 **Undercroft** 任務的 roguelike 天梯。在開始時，你從該週的輪替池中**挑選三個 Warframes 中的一個**以及一組 weapon。你不需要擁有其中的任何一個；它們在到達時就已預先配置好。清除一個關卡，選擇一個 **Decree**，然後進入下一個，變得越來越強。"
+        },
+        {
+          "type": "p",
+          "text": "回報：每週 Circuit 都會輪替一組 **Warframe 部件藍圖**。清除足夠的關卡，你就可以選擇你想要的 frame 部件；收集整套即可免費製作該 frame。更深層的獎勵階級還會提供 **Riven Slivers**（十個可以組合成一個完整的 Riven）、**Endo** 和其他資源。這是新手玩家在不花費 platinum 的情況下擴展角色陣容的最佳方式之一 — 使用 [強度排行榜](/guides/tier-list) 來決定哪一週值得刷取。"
+        },
+        {
+          "type": "info",
+          "text": "因為你駕駛的可能是你未擁有的 frames，所以 Circuit 兼作免費的試駕。不確定如何遊玩你挑選的 frame 嗎？我們的 [強度排行榜](/guides/tier-list) 和 [mod 指南](/guides/mods) 詳細分析了是什麼讓每一個 frame 發揮作用。"
+        }
+      ]
+    },
+    {
+      "id": "steel-path-circuit",
+      "title": "Steel Path Circuit 與 Incarnon Genesis",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "將 Circuit 切換至 **Steel Path** — 你必須先 [解鎖 Steel Path](/guides/steel-path) — 獎勵輪替就會變為終局遊戲的獎品：**Incarnon Genesis adapters**。這些可以將 Braton、Lato、Skana 和 Bo 等舊的初始 weapons 轉換為極其強大的 **Incarnon** 形態，從而能應對遊戲中最艱難的內容。"
+        },
+        {
+          "type": "p",
+          "text": "每週都會列出不同的一組轉接器，你可以透過清除 SP Circuit 關卡來贏得你的選擇 — 這也會降下大量的 **Steel Essence**。這種每週的節奏是老玩家保持長期遊玩 Duviri 習慣的 *關鍵* 原因：這對你的 weapon 軍械庫來說是一個可靠且永久的戰力提升，一次獲得一到兩個轉接器。"
+        },
+        {
+          "type": "warn",
+          "text": "Steel Path Circuit 的敵人等級提升非常快。帶上真正的配置並依賴你的 Decrees。如果生存能力是你遇到的瓶頸，我們的 [mod 指南](/guides/mods) 涵蓋了護盾閘門（shield-gating）和坦克玩法，這樣你就不會在關卡中途死亡並拋下隊友。"
+        }
+      ]
+    },
+    {
+      "id": "intrinsics",
+      "title": "Duviri Intrinsics",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Duviri 有其專屬的 **Drifter Intrinsics** 等級 — 純粹透過遊玩 Duviri 來升級的四個技能樹（與你的 **Railjack Intrinsics** 是分開的）。提升它們的等級可以解鎖便利功能和戰力，使未來的每一次遊玩都更加順暢 — 更快的 Kaithe、更廣泛的挑選池（包含更多 Warframe、weapon 和 Decree 選擇）、更好的 Undercroft 選項，以及在開始遊玩前預覽你挑選的配裝的能力。"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Intrinsic",
+              "大致提升的方面"
+            ],
+            "rows": [
+              [
+                "戰鬥",
+                "Drifter 的近戰和遠程傷害，以及在 Undercroft 中的 weapon 操控性"
+              ],
+              [
+                "騎乘",
+                "Kaithe 的速度、飛行和騎馬戰鬥"
+              ],
+              [
+                "機遇",
+                "更多的 Warframe、weapon 和 Decree 選擇、配裝預覽以及世界獎勵"
+              ],
+              [
+                "耐力",
+                "Drifter 的生存能力和在 Undercroft 中的持久力"
+              ]
+            ],
+            "note": "每個等級的確切加成會隨時間變化 — 請查看即時維基以獲取當前的技能樹。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "why-it-matters",
+      "title": "為什麼 Duviri 至關重要 — 無論是新手還是老玩家",
+      "blocks": [
+        {
+          "type": "list",
+          "items": [
+            "**全新玩家：** 來自 Circuit 的免費 Warframes、無星圖限制、在刷取 frames 之前嘗試它們的溫和方式，以及大量的劇情故事。",
+            "**老玩家：** 來自 Steel Path Circuit 的每週 Incarnon Genesis 轉接器、Kullervo、Riven Slivers，以及穩定的 Steel Essence 來源。",
+            "**所有人：** 一個獨立的 roguelike，你可以投入 20-40 分鐘，並獲得明確且有意義的每週獎勵。"
+          ]
+        },
+        {
+          "type": "p",
+          "text": "如果 Duviri 是你的入門途徑，請將其與 [新手玩家指南](/guides/new-player) 和 [進度指南](/guides/progression) 結合使用。如果你是為了終局遊戲的戰利品而來，請將其與 [Steel Path](/guides/steel-path)、[Rivens](/guides/riven) 和 [Archon Shards](/guides/archon-shards) 聯繫起來 — 並使用 [Riven 價值估算器](/riven-value) 來為你洗出的任何 Riven 估價。"
+        }
+      ]
+    },
+    {
+      "id": "etiquette",
+      "title": "公開小隊禮儀與常見錯誤",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Duviri 的公開配對節奏很快，而預期不一致經常在 r/Warframe 上引發關於「Duviri 特權」的爭論。多一點自覺能讓每個人都開心。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "學會駕駛和飛行 **Kaithe** 前往目標 — 不要拖延整個小隊的進度",
+            "在每次提示時拿取一個 **Decree**；一個弱小、沒有 Buff 的隊友會拖慢所有人的速度",
+            "在 Circuit 中，避免在關卡中途退出 — 離開可能會拋下你的隊友",
+            "每個人都選擇他們**自己**的獎勵 — 不要要求別人趕往你剛好想要的階級"
+          ]
+        },
+        {
+          "type": "warn",
+          "text": "剛接觸 Duviri？在熟悉循環之前，請**單人或與朋友**一起遊玩。公開小隊期望每個人都能盡自己的一份力量並跟上節奏 — 盲目加入公開房正是那些禮儀討論串所抱怨的。"
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "新手玩家可以在 Warframe 中遊玩 Duviri 嗎？",
+      "a": "是的 — Duviri 是少數沒有前置條件的內容。你可以在 Mastery Rank 0 且未接觸星圖之前開始 The Duviri Paradox 系列任務，並且它在到達時會贈送你 weapons 和 Warframes，因此你不需要自己的裝備。請參閱我們的 [新手玩家指南](/guides/new-player) 以了解它在你早期進度中的位置。"
+    },
+    {
+      "q": "你在 Duviri 中會使用自己的 Warframe 嗎？",
+      "a": "在開放世界的 Experience 中，你扮演的是 **Drifter**（人類），而不是 Warframe。Undercroft 中的戰鬥部分以及整個 Circuit 會讓你使用 Warframes — 無論你是否擁有它們，都會提供預先配置好的輪替選擇。你不能攜帶任意擁有的配裝；挑選總是來自該輪替池。但是，你已經擁有的任何 Warframes 和 weapons 在你挑選它們時都會保留其自身的 mods、Rivens、Helminth 技能和 Archon Shards，並且提升 **Opportunity** Intrinsic 的等級可以擴大池子，並讓你能夠在開始遊玩前預覽你的選項。"
+    },
+    {
+      "q": "我該如何從 Circuit 獲得每週的 Warframe？",
+      "a": "遊玩普通 Circuit 並清除關卡；在設定的里程碑處，你將從該週輪替的 Warframe 部件藍圖池中進行選擇。收集所有部件（本週或在未來的輪替中）即可免費製作該 frame。使用我們的 [強度排行榜](/guides/tier-list) 來優先決定哪一週值得刷取。"
+    },
+    {
+      "q": "我該如何解鎖 Steel Path Circuit 以獲取 Incarnon 轉接器？",
+      "a": "你必須先透過完成普通星圖上的每個節點來解鎖 [Steel Path](/guides/steel-path)。然後將 Circuit 切換至 Steel Path — 其每週輪替會獎勵 **Incarnon Genesis adapters** 以及 Steel Essence，每週提供不同的轉接器組合。"
+    },
+    {
+      "q": "Decrees 會在不同的 Duviri 遊玩次數之間繼承嗎？",
+      "a": "不會。Decrees 是 roguelike Buff，僅在當前遊玩期間持續，並在結束的瞬間重置。抓住每一次機會拿取一個，追求堆疊協同效應（例如擊殺回復加上傷害提升），並在它持續時享受戰力幻想。"
+    },
+    {
+      "q": "我該如何在 Warframe 中獲得 Kullervo？",
+      "a": "Kullervo 是在 Duviri 中刷取的。他的藍圖是使用 **Kullervo's Bane** 從 Duviri 商人 **Acrithis**（位於 Dormizone）處購買的，Kullervo's Bane 掉落自擊敗 Spiral 結束時的 **Orowyrm** 以及位於 **Kullervo's Hold** 的 Kullervo Boss 戰。然後你使用 **Pathos Clamps**（同樣由 Orowyrm 掉落）製作他。這裡沒有隨機掉落機率的刷取 — 這是一種貨幣購買。"
+    },
+    {
+      "q": "一次 Duviri 遊玩需要多長時間？",
+      "a": "一次完整的 Duviri Experience 大約需要 20-40 分鐘。一次 Circuit 遊玩是開放式的 — 你會一直清除關卡，直到你選擇撤離或全軍覆沒。對於純粹的獎勵刷取，Circuit 允許你在領取了你實際想要的階級後停止。"
+    }
+  ],
+  "videos": [
+    {
+      "id": "C2T0EMd_XTQ",
+      "title": "Warframe - Ultimate Beginner's Guide to The Duviri Paradox",
+      "channel": "Warframe Madness"
+    },
+    {
+      "id": "guY28zlbKgw",
+      "title": "The Duviri Experience - All You Need to Know | Warframe The Duviri Paradox Guide",
+      "channel": "Faceless Beanie"
+    },
+    {
+      "id": "Ww9IndAE9uY",
+      "title": "The ULTIMATE Warframe DUVIRI Guide!... (Orowyrm, Decrees, Missions Intrinsics and more)",
+      "channel": "MHBlacky"
+    },
+    {
+      "id": "tneMEOi-Lzg",
+      "title": "A Complete Guide For The Duviri Paradox - Warframe Guide",
+      "channel": "GJ Jerry G"
+    }
+  ],
+  "sources": [
+    {
+      "label": "r/Warframe — Calling out Duviri entitlement",
+      "href": "https://reddit.com/r/Warframe/comments/1r4dfbj/calling_out_duviri_entitlement/"
+    },
+    {
+      "label": "r/Warframe — Understanding the gameplay loop of different frames (Duviri/Circuit)",
+      "href": "https://reddit.com/r/Warframe/comments/1hz547w/understanding_the_gameplay_loop_of_different/"
+    },
+    {
+      "label": "r/Warframe — An Updated Beginner's Guide to Steel Path",
+      "href": "https://reddit.com/r/Warframe/comments/1ib1amq/an_updated_beginners_guide_to_steel_path_early/"
+    },
+    {
+      "label": "Warframe Wiki",
+      "href": "https://wiki.warframe.com/"
+    }
+  ],
+  "related": [
+    {
+      "label": "Steel Path 指南",
+      "to": "/guides/steel-path",
+      "icon": "skull",
+      "note": "解鎖 SP Circuit 以獲取 Incarnon 轉接器"
+    },
+    {
+      "label": "Warframe 強度排行榜",
+      "to": "/guides/tier-list",
+      "icon": "format-list-numbered",
+      "note": "哪一個 Circuit frame 值得刷取"
+    },
+    {
+      "label": "Riven Mods 指南",
+      "to": "/guides/riven",
+      "icon": "cards-playing-outline",
+      "note": "兌換你的 Circuit Riven Slivers"
+    },
+    {
+      "label": "新手玩家指南",
+      "to": "/guides/new-player",
+      "icon": "account-star",
+      "note": "Duviri 在剛開始時適合的位置"
+    },
+    {
+      "label": "社群工具",
+      "to": "/tools",
+      "icon": "tools",
+      "note": "Duviri 循環追蹤器及更多"
+    },
+    {
+      "label": "Riven 價值估算器",
+      "to": "/riven-value",
+      "icon": "chart-line",
+      "note": "為你洗出的 Riven 估價"
+    }
+  ],
+  "updated": "2026-07-18"
+}

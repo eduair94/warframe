@@ -1,0 +1,489 @@
+{
+  "slug": "mastery-rank",
+  "eyebrow": "Centro de conocimiento · Mastery Rank",
+  "title": "Mastery Rank y subir de nivel rápido",
+  "lede": "Mastery Rank es el odómetro de tu cuenta: desbloquea equipamiento, aumenta tus límites diarios de reputación y de intercambios, y te recompensa silenciosamente por subir de nivel todo lo que construyes. Aquí te explicamos exactamente cómo funcionan la maestría, la afinidad y las pruebas, además de las formas más rápidas de subir de rango.",
+  "category": "start",
+  "readMins": 9,
+  "stats": [
+    {
+      "num": "30",
+      "label": "MR máximo, luego Legendary Ranks",
+      "tone": "gold"
+    },
+    {
+      "num": "3,000",
+      "label": "maestría por arma al máximo",
+      "tone": "good"
+    },
+    {
+      "num": "6,000",
+      "label": "maestría por frame al máximo",
+      "tone": "good"
+    },
+    {
+      "num": "50m",
+      "label": "rango de afinidad compartida",
+      "tone": "alt"
+    }
+  ],
+  "sections": [
+    {
+      "id": "what-is-mr",
+      "title": "Qué es realmente el Mastery Rank",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Mastery Rank (MR)** es un nivel de progresión para toda la cuenta, independiente del nivel de cualquier Warframe o arma individual. Lo aumentas ganando **Maestría**, una forma permanente de afinidad que se acumula en tu cuenta cada vez que subes de nivel una pieza de equipamiento **nueva y única** o completas contenido nuevo por primera vez. A diferencia de la experiencia de equipamiento, la maestría nunca se reinicia: una vez que un objeto ha otorgado su maestría, ese progreso se guarda para siempre."
+        },
+        {
+          "type": "p",
+          "text": "La regla de oro: **la maestría de cada objeto único solo cuenta una vez.** Subir tu Braton al 30 otorga su maestría una sola vez. Venderlo, volver a construirlo o añadirle una Forma y volver a subirlo de nivel no te dará nada extra. Esa única regla define cada estrategia eficiente de leveo en esta página."
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "Rangos",
+              "v": "MR 0 → 30, luego Legendary Ranks (LR1, LR2, …) que DE sigue expandiendo con el tiempo"
+            },
+            {
+              "k": "La maestría es",
+              "v": "Permanente, para toda la cuenta, se obtiene una vez por objeto único"
+            },
+            {
+              "k": "Prueba de MR",
+              "v": "Un desafío de una sola vez que superas para consolidar cada nuevo rango"
+            },
+            {
+              "k": "¿Necesitas todo?",
+              "v": "No; hay muchos más objetos de los que requiere el MR30"
+            }
+          ]
+        },
+        {
+          "type": "info",
+          "text": "MR30 es el rango *numerado* más alto. Más allá de este, sigues ganando maestría para los **Legendary Ranks**, que DE va añadiendo con el tiempo. **No** necesitas poseer todos los objetos del juego para llegar a MR30: completar el Star Chart y subir de nivel una buena parte del equipamiento te bastará para lograrlo."
+        }
+      ]
+    },
+    {
+      "id": "what-mr-unlocks",
+      "title": "Lo que desbloquea el MR (y lo que no)",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "El MR no es un nivel de poder: un jugador nuevo de MR2 y un veterano de MR30 al máximo que usen la misma build pegan exactamente igual de fuerte. Lo que te da el MR es **acceso y comodidad para tu cuenta**: bloquea cierto equipamiento detrás de un requisito de rango y aumenta silenciosamente varios límites diarios que importan mucho a medida que te adentras en el farming y el comercio."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Beneficio",
+              "Cómo escala con el MR"
+            ],
+            "rows": [
+              [
+                "Desbloqueos de armas y equipamiento",
+                "Muchas armas requieren un MR mínimo para comprarse o equiparse (el bloqueo de rango en la tarjeta del objeto)"
+              ],
+              [
+                "Límite diario de reputación",
+                "Aumenta con cada Mastery Rank, se calcula por sindicato: cuanto mayor sea tu MR, más reputación podrás acumular cada día (DE ha aumentado el límite con el tiempo, así que considera cualquier cifra exacta como un objetivo en constante cambio)"
+              ],
+              [
+                "Intercambios diarios",
+                "Igual a tu MR (MR10 = 10 intercambios al día; necesitas MR2 para poder comerciar)"
+              ],
+              [
+                "Capacidad inicial de mods",
+                "El equipamiento sin rango comienza con una capacidad de mods igual a tu MR, con un límite de 30 (se duplica con un Reactor/Catalyst)"
+              ]
+            ],
+            "note": "Los límites de reputación más altos aceleran directamente el farming de Focus, arcanos y sindicatos; consulta las guías de reputación y Focus."
+          }
+        },
+        {
+          "type": "p",
+          "text": "Ese límite de reputación es la ventaja oculta. Si farmeas [reputación de sindicato](/guides/standing) o [Focus](/guides/focus), cada MR que ganes te permitirá acumular más por día. Más [intercambios diarios](/guides/platinum) también significan más transacciones de platinum; combínalo con el [Buscador de flips](/flip) una vez que estés comerciando activamente."
+        },
+        {
+          "type": "warn",
+          "text": "Mito común: 'Necesito farmear MR para sobrevivir en el contenido más difícil'. No es así. La supervivencia proviene de los **mods, arcanos y shield-gating**, no del MR. Busca subir tu MR por los desbloqueos de equipamiento y los límites diarios, no por el poder bruto."
+        }
+      ]
+    },
+    {
+      "id": "how-mastery-earned",
+      "title": "Cómo se obtiene la maestría",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Acumulas maestría al subir el equipamiento del rango 0 al 30 por primera vez. Los diferentes tipos de objetos valen distintas cantidades **por rango**, por lo que un Warframe al máximo vale el doble que un arma al máximo:"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Tipo de objeto",
+              "Maestría por rango",
+              "Total al máximo"
+            ],
+            "rows": [
+              [
+                "Armas (primaria, secundaria, cuerpo a cuerpo, etc.)",
+                "100",
+                "3,000 en el rango 30"
+              ],
+              [
+                "Warframes",
+                "200",
+                "6,000 en el rango 30"
+              ],
+              [
+                "Compañeros (Sentinels y mascotas bestia)",
+                "200",
+                "6,000 en el rango 30"
+              ],
+              [
+                "Archwing",
+                "200",
+                "6,000 en el rango 30"
+              ],
+              [
+                "Armas Kuva / Tenet / Coda / Paracesis (rango 40)",
+                "100",
+                "4,000 en el rango 40"
+              ]
+            ],
+            "note": "Los Necramechs, Amps, K-Drives y los Intrínsecos de Railjack también otorgan maestría. Cada nodo del Star Chart, convergencia y su versión de Steel Path también otorgan una cantidad de maestría de una sola vez al completarlos por primera vez."
+          }
+        },
+        {
+          "type": "tip",
+          "text": "El **Star Chart en sí es una fuente enorme de maestría gratuita.** Completar cada nodo una vez (normal y [Steel Path](/guides/steel-path)) además de todas las convergencias vale una gran cantidad de maestría que muchos jugadores pasan por alto. Usa el [mapa de ubicaciones de drop](/star-chart-3d) para ver qué te queda por completar."
+        },
+        {
+          "type": "p",
+          "text": "Debido a que la maestría se obtiene una sola vez por objeto, los veteranos construyen armas baratas de 'mastery fodder' puramente para subirlas al rango 30 y continuar. Hay cientos de armas y docenas de frames en el juego; superarás el MR30 mucho antes de tenerlos todos."
+        }
+      ]
+    },
+    {
+      "id": "affinity-101",
+      "title": "Afinidad 101: cómo funciona el leveo",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**La afinidad es la experiencia (XP).** Es lo que sube tu equipamiento del rango 0 al 30, y se obtiene de dos formas: **bajas** (y asistencias) y **objetivos/finalización de misiones**. Cómo se divide esa afinidad entre tu Warframe y tus tres armas es lo más importante que debes entender para subir de nivel rápidamente."
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "Tu baja con arma",
+              "v": "50% al arma que consiguió la baja, 50% a tu Warframe"
+            },
+            {
+              "k": "Tu baja con habilidad",
+              "v": "Efectivamente, toda se destina a tu Warframe"
+            },
+            {
+              "k": "Baja de un compañero de escuadrón (dentro del rango)",
+              "v": "Recibes una parte: 25% a tu Warframe, 75% dividido equitativamente entre tus armas equipadas (así que un arma sube de nivel incluso si nunca la disparas)"
+            },
+            {
+              "k": "Rango de afinidad compartida",
+              "v": "50 metros en misiones normales: quédate cerca de la acción o no recibirás nada (los mapas de mundo abierto/paisajes usan un rango mucho mayor)"
+            },
+            {
+              "k": "Affinity Booster",
+              "v": "Duplica toda la afinidad que obtienes (se acumula con los fines de semana de doble afinidad)"
+            }
+          ]
+        },
+        {
+          "type": "p",
+          "text": "De esa tabla se desprenden dos conclusiones prácticas. **Para subir de nivel un arma**, dispara con ella o aprovecha la afinidad compartida de un compañero de escuadrón que limpie la sala mientras te mantienes a menos de 50 m. **Para subir de nivel un Warframe rápidamente**, consigue **bajas con habilidades**: estas dirigen el 100% de esa afinidad directamente a tu frame, en comparación con solo el 25% de la baja compartida de un compañero. Y **no lleves armas que ya estén al máximo** en una misión de leveo: la afinidad que va a parar al equipamiento al máximo se desperdicia, así que llena esos espacios con armas sin rango que también quieras subir de nivel."
+        },
+        {
+          "type": "warn",
+          "text": "En Defensa y Supervivencia, alejarte más de 50 m de donde mueren los enemigos significa que ganarás **cero** afinidad compartida. En una misión de leveo, quédate pegado al objetivo o al jugador que esté carreando."
+        }
+      ]
+    },
+    {
+      "id": "fast-leveling",
+      "title": "Las formas más rápidas de subir de nivel (farms de afinidad)",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Las mejores misiones de leveo concentran apariciones densas de enemigos en un área pequeña para que la afinidad compartida inunde cada pieza de equipamiento que hayas traído. Trae el equipamiento que quieras subir de nivel, únete a un escuadrón público (o a un amigo fuerte) y deja que fluyan las bajas."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Método",
+              "Ideal para",
+              "Notas"
+            ],
+            "rows": [
+              [
+                "Sanctuary Onslaught / Elite SO",
+                "XP rápida y densa",
+                "A través de Cephalon Simaris; ESO para equipamiento que ya esté parcialmente preparado"
+              ],
+              [
+                "Defensa de alta densidad (por ejemplo, Hydron en Sedna, Helene en Saturn)",
+                "Leveo relajado y apto para estar AFK",
+                "Favoritos de la comunidad desde hace mucho tiempo: trae o únete a un frame nuker"
+              ],
+              [
+                "Void Fissures",
+                "Leveo + botín a la vez",
+                "Doble beneficio de XP mientras abres reliquias; consulta la herramienta de Relic Farming"
+              ],
+              [
+                "Duviri Circuit",
+                "Leveo + recompensas",
+                "Opción moderna; el Steel Path Circuit escala para veteranos"
+              ],
+              [
+                "Exterminate / Capture baratos",
+                "Fodder de MR",
+                "Sube rápidamente armas desechables recién construidas al 30 y recíclalas"
+              ]
+            ],
+            "note": "El 'mejor nodo' individual cambia con los parches de equilibrio y los eventos. Consulta la wiki en vivo o un video reciente para conocer la elección meta actual."
+          }
+        },
+        {
+          "type": "p",
+          "text": "Dos multiplicadores hacen que todo sea más rápido: usa un **Affinity Booster** (del Market o de las recompensas de Nightwave/inicio de sesión) y programa tu farmeo para un **fin de semana de doble afinidad** (estos se acumulan para obtener afinidad x4). Subir de nivel dentro de las [Void Fissures](/relic-farming) es el rey de la eficiencia porque subes de rango el equipamiento *y* farmeas partes prime en las mismas misiones; usa la [herramienta de valor de reliquias](/relics-value) para decidir qué vale la pena abrir."
+        },
+        {
+          "type": "tip",
+          "text": "Trae un conjunto completo de equipamiento para subir de nivel (frame + 3 armas) a un carry grupal y podrás llevar **cuatro objetos** del 0 al 30 en una sola sesión. Solo asegúrate de ser tú quien se quede quieto cerca de las bajas, no persiguiéndolas."
+        }
+      ]
+    },
+    {
+      "id": "rank-to-30-loop",
+      "title": "El ciclo de subir al rango 30",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "El farmeo eficiente de maestría es un ciclo simple y repetible. El objetivo es usar cada objeto único exactamente una vez, llevarlo al 30 y nunca mirar atrás."
+        },
+        {
+          "type": "steps",
+          "ordered": true,
+          "steps": [
+            {
+              "h": "Compra el plano / construye el objeto",
+              "p": "Consigue planos de armas en el Market a cambio de créditos; la mayoría cuesta poco. Comienza la construcción en la Foundry antes de desconectarte (las armas suelen tardar unas 12 horas; los Warframes tardan más una vez que sumas sus componentes) para que esté lista en la siguiente sesión."
+            },
+            {
+              "h": "Reclámalo y colócalo en una ranura",
+              "p": "Un objeto nuevo es de rango 0. Ya comienza con una capacidad de mods igual a tu MR, por lo que incluso el equipamiento sin rango es utilizable para una misión de leveo."
+            },
+            {
+              "h": "Súbelo al 30 de una sola vez",
+              "p": "Llévalo a un farm de afinidad (Onslaught, un nodo de Defensa o una Fissure). Al llegar al 30, acumula toda su maestría: 3,000 para un arma, 6,000 para un frame."
+            },
+            {
+              "h": "Guárdalo, recicla la ranura",
+              "p": "Una vez al máximo, la maestría es tuya permanentemente. Vende las armas de mastery-fodder para liberar la ranura y construir la siguiente. Quédate con lo que realmente te guste."
+            },
+            {
+              "h": "No vuelvas a subir de nivel para obtener maestría",
+              "p": "Añadir una Forma restablece un objeto al rango 0 para las ranuras de polaridad (ideal para las builds, pero otorga cero maestría adicional). Solo vuelve a subir de nivel el equipamiento que estés personalizando, no por el MR."
+            }
+          ]
+        },
+        {
+          "type": "info",
+          "text": "¿Quieres ver exactamente qué te falta? Los rastreadores de maestría y las listas de verificación de la comunidad (enlazados desde el [directorio de herramientas de la comunidad](/tools)) te permiten marcar cada arma y frame para que nunca construyas un duplicado que ya hayas dominado."
+        }
+      ]
+    },
+    {
+      "id": "mr-tests",
+      "title": "Pruebas de MR y cómo prepararse",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Ganar suficiente maestría hace que el siguiente rango esté *disponible*, pero tienes que **superar una prueba de Mastery Rank** para reclamarlo realmente. Cada rango tiene su propia prueba única: parkour contrarreloj, bajas sigilosas, pirateo de consolas bajo presión, eliminar oleadas sin recibir daño, etc. La dificultad aumenta a medida que sube tu rango."
+        },
+        {
+          "type": "steps",
+          "ordered": true,
+          "steps": [
+            {
+              "h": "Practica gratis con Cephalon Simaris",
+              "p": "Cada Relay cuenta con Cephalon Simaris, quien te permite **ensayar la prueba exacta** tantas veces como quieras, sin tiempo de espera ni penalizaciones. Practica siempre primero."
+            },
+            {
+              "h": "Realiza la prueba real cuando estés listo",
+              "p": "Cuando hayas acumulado suficiente maestría, aparecerá el aviso de subida de rango (en tu Orbiter / perfil). Inténtalo una vez que te sientas cómodo tras haber practicado."
+            },
+            {
+              "h": "Si fallas, espera aproximadamente un día",
+              "p": "No hay penalización por fallar más allá de un **tiempo de espera de aproximadamente 24 horas** antes de que puedas intentar la prueba real de nuevo. Las prácticas siguen siendo ilimitadas durante la espera."
+            }
+          ]
+        },
+        {
+          "type": "warn",
+          "text": "Ese bloqueo de 24 horas es el único inconveniente, así que **nunca intentes una prueba a ciegas.** Ensáyala con Simaris hasta que puedas superarla de forma constante, luego realiza la real. Muchas pruebas también se vuelven triviales con un frame de movilidad (Volt, Titania, Wisp, Zephyr) o una buena build de movimiento."
+        },
+        {
+          "type": "tip",
+          "text": "¿Atascado en una prueba de movimiento o de 'no recibir daño'? Trae un frame con velocidad, invisibilidad o inmunidad al daño y, a menudo, convertirá una prueba frustrante en un mero trámite. Consulta un video reciente específico de la prueba si un rango en particular te está dando problemas."
+        }
+      ]
+    },
+    {
+      "id": "should-you-chase",
+      "title": "¿Deberías buscar subir tu MR? Puntos de inflexión inteligentes",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "No necesitas *farmear* MR: se acumula de forma natural a medida que construyes equipamiento y completas el Star Chart en tu camino a través de la [hoja de ruta de progresión](/guides/progression). Pero subir de nivel todo lo que fabricas (en lugar de desecharlo) casi siempre vale la pena, porque el MR rinde silenciosamente en desbloqueos de equipamiento, reputación, intercambios y capacidad inicial."
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Sube de nivel lo que construyas.** Cada frame, arma y compañero es maestría gratuita: lleva cada uno al 30 una vez antes de venderlo o usar una Forma en él.",
+            "**Completa todo el Star Chart, dos veces.** Los nodos normales, las convergencias y los nodos de [Steel Path](/guides/steel-path) son una fuente masiva de maestría de una sola vez que la mayoría de los jugadores dejan pasar.",
+            "**Presta atención a los puntos de inflexión del equipamiento.** Algunas de las armas más fuertes conllevan un requisito de MR, por lo que unos pocos rangos adicionales pueden desbloquear una opción meta que realmente desees.",
+            "**Prioriza el MR si farmeas reputación.** Si estás muy metido en el Focus, los arcanos o los sindicatos, el límite diario más alto hace que cada rango valga la pena rápidamente."
+          ]
+        },
+        {
+          "type": "quote",
+          "text": "El MR es la recompensa por explorar todo el juego, no un muro que escalar. Juega de forma variada, sube de nivel todo una vez y te despertarás en el MR20 sin haber tenido que 'farmear maestría'.",
+          "cite": "Consejo común de los veteranos de r/Warframe"
+        },
+        {
+          "type": "p",
+          "text": "Una advertencia: no subas de MR *solo* para alcanzar un número si eso significa meter armas poco potentes en contenido difícil. Desarrolla tu cuenta de forma natural, mantén tus favoritas con buenos mods y trata al MR como el marcador que es: un registro de cuánto de Warframe has experimentado."
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "¿Cómo se aumenta el Mastery Rank en Warframe?",
+      "a": "Gana maestría subiendo de nivel equipamiento nuevo del rango 0 al 30 por primera vez (las armas otorgan 3,000; los frames y compañeros otorgan 6,000), y completando nodos y convergencias del Star Chart. Una vez que hayas acumulado suficiente, supera la prueba de Mastery Rank de ese rango para consolidarlo. Cada objeto único solo cuenta una vez; volver a subir de nivel con una Forma no otorga maestría adicional."
+    },
+    {
+      "q": "¿Qué hace realmente el Mastery Rank?",
+      "a": "El MR bloquea ciertas armas y equipamiento detrás de un requisito de rango, y aumenta varios límites diarios: tu límite de reputación de sindicato (que sube con cada rango), tu número de intercambios diarios (igual a tu MR) y la capacidad inicial de mods en el equipamiento sin rango. No hace que pegues más fuerte: la supervivencia y el daño provienen de los mods y los arcanos, no del MR."
+    },
+    {
+      "q": "¿Cuál es la forma más rápida de farmear afinidad y subir de nivel?",
+      "a": "Trae el equipamiento que quieras subir de nivel a un farm de afinidad denso (Sanctuary Onslaught, un nodo de Defensa de alta densidad como Hydron o Helene, o una Void Fissure) y mantente a menos de 50 m de las bajas para absorber afinidad compartida. Usa un Affinity Booster e, idealmente, un fin de semana de doble afinidad para obtener ganancias de hasta x4. Subir de nivel dentro de las [Void Fissures](/relic-farming) te permite subir de rango el equipamiento y farmear partes prime al mismo tiempo."
+    },
+    {
+      "q": "¿Añadir una Forma o volver a subir de nivel un arma otorga más maestría?",
+      "a": "No. Cada objeto otorga su maestría una sola vez, la primera vez que alcanza el rango 30. Una Forma restablece el objeto al rango 0 para que puedas añadir ranuras de polaridad para una mejor build, pero obtienes cero maestría adicional al volver a subirlo de nivel. Solo vuelve a subir de nivel el equipamiento cuando lo estés personalizando, nunca por el MR."
+    },
+    {
+      "q": "¿Cómo funciona la afinidad compartida en un escuadrón?",
+      "a": "Cuando un compañero de escuadrón elimina a un enemigo a menos de 50 metros de ti, recibes una parte de esa afinidad: 25% a tu Warframe y 75% dividido equitativamente entre tus armas equipadas. Es por eso que un arma que nunca disparas sigue subiendo de nivel si acompañas a un nuker. Si te alejas del rango de 50 m, no obtendrás nada. (Tus propias bajas con armas se dividen de manera diferente: 50% al arma, 50% a tu Warframe)."
+    },
+    {
+      "q": "¿Qué pasa si fallo una prueba de Mastery Rank?",
+      "a": "Nada, excepto una espera de aproximadamente 24 horas antes de poder intentar la prueba real de nuevo; no hay pérdida de XP ni ninguna otra penalización. Practica la prueba exacta de forma gratuita e ilimitada primero con Cephalon Simaris en cualquier Relay, para que solo realices la real cuando puedas superarla de manera constante."
+    },
+    {
+      "q": "¿Existe un Mastery Rank máximo?",
+      "a": "MR30 es el rango numerado más alto. Después de eso, sigues ganando maestría para los Legendary Ranks (LR1, LR2 y superiores), que DE va ampliando con el tiempo. No necesitas poseer todos los objetos para llegar a MR30: hay muchas más armas y frames de los que requiere el rango."
+    },
+    {
+      "q": "¿Debería apresurarme a subir el Mastery Rank como jugador nuevo?",
+      "a": "No hay necesidad de obsesionarse con ello: el MR sube de forma natural a medida que construyes equipamiento y completas el Star Chart. Pero vale la pena subir todo lo que fabriques al 30 una vez, ya que un MR más alto desbloquea armas más fuertes y aumenta tus límites diarios de reputación y de intercambios. Concéntrate primero en un arsenal sólido y en los mods; los rangos vendrán solos."
+    }
+  ],
+  "videos": [
+    {
+      "id": "5B01ZDPCM_o",
+      "title": "Warframe How to get Mastery Rank FAST | Warframe Affinity and Mastery Rank Explained",
+      "channel": "CerealOverdrive"
+    },
+    {
+      "id": "J_6wVLRvTpE",
+      "title": "HOW TO FARM MASTERY RANK FAST IN 2025! WARFRAME BEST LEVELING AFFINITY SPOTS",
+      "channel": "Pupsker"
+    },
+    {
+      "id": "eTI-zSoH6FE",
+      "title": "How to Level up fast in Warframe -  Affinity farming Guide for all Players",
+      "channel": "QuadLyStop"
+    },
+    {
+      "id": "ecySSBRcCIo",
+      "title": "Warframe: FAST MASTERY RANK 2025!...",
+      "channel": "MHBlacky"
+    }
+  ],
+  "sources": [
+    {
+      "label": "r/Warframe — My Journey ends at MR25",
+      "href": "https://reddit.com/r/Warframe/comments/1uockj8/my_journey_ends_at_mr25/"
+    },
+    {
+      "label": "r/Warframe — Mastery Rank & Helminth motivation thread",
+      "href": "https://reddit.com/r/Warframe/comments/idu92w/i_like_the_idea_that_way_people_could_become/"
+    },
+    {
+      "label": "r/Warframe — Affinity farming discussion (Gian Point)",
+      "href": "https://reddit.com/r/Warframe/comments/m4fvff/gian_point_should_become_a_graveyard/"
+    },
+    {
+      "label": "Official Warframe Wiki",
+      "href": "https://wiki.warframe.com/"
+    }
+  ],
+  "related": [
+    {
+      "label": "Hoja de ruta de progresión",
+      "to": "/guides/progression",
+      "icon": "map-marker-path",
+      "note": "Dónde encaja el MR en el camino principal"
+    },
+    {
+      "label": "Guía para nuevos jugadores",
+      "to": "/guides/new-player",
+      "icon": "rocket-launch",
+      "note": "Tus primeras 20 horas, bien hechas"
+    },
+    {
+      "label": "Reputación de sindicato",
+      "to": "/guides/standing",
+      "icon": "handshake",
+      "note": "Mayor MR = mayor límite diario"
+    },
+    {
+      "label": "Focus y Operador",
+      "to": "/guides/focus",
+      "icon": "eye-outline",
+      "note": "Subir de nivel el equipamiento alimenta tu Focus"
+    },
+    {
+      "label": "Steel Path",
+      "to": "/guides/steel-path",
+      "icon": "skull-outline",
+      "note": "Un segundo Star Chart de maestría gratuita"
+    },
+    {
+      "label": "Herramientas de la comunidad",
+      "to": "/tools",
+      "icon": "tools",
+      "note": "Rastreadores de maestría y listas de verificación"
+    }
+  ],
+  "updated": "2026-07-18"
+}

@@ -1,0 +1,438 @@
+{
+  "slug": "resources",
+  "eyebrow": "知识中心 · 资源刷取",
+  "title": "资源刷取参考",
+  "lede": "每种制作材料都是星球锁定的，每次刷取都遵循相同的三个原则：正确的星球、敌人最密集的 node、叠加增幅器。以下是玩家真正关心的资源掉落位置——以及如何避免浪费数小时去刷错东西。",
+  "category": "farming",
+  "readMins": 8,
+  "stats": [
+    {
+      "num": "10",
+      "label": "玩家最常问起的资源",
+      "tone": "gold"
+    },
+    {
+      "num": "50%",
+      "label": "的 Argon 每天都会衰变",
+      "tone": "alt"
+    },
+    {
+      "num": "4×",
+      "label": "同时叠加两种增幅器时的产量",
+      "tone": "good"
+    },
+    {
+      "num": "0",
+      "label": "掉落 Nitain Extract 的 nodes"
+    }
+  ],
+  "sections": [
+    {
+      "id": "how-drops-work",
+      "title": "资源掉落的实际运作机制",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "在 Warframe 中，几乎每种资源都是**星球锁定**的。每个星球的敌人、容器和可破坏植物都会从固定的掉落表中进行判定，因此最快的刷取方法总是同一个公式：**前往正确的星球，然后选择每分钟击杀敌人最多的 node。**这就是为什么 survival、defense 和 interception 在资源刷取中占据主导地位——密集且无休止的敌人生成每次都完胜短暂的 capture。"
+        },
+        {
+          "type": "p",
+          "text": "资源分为不同的稀有度级别。**常见**掉落物（Nano Spores、Ferrite、Salvage）只需正常游玩就能积累成千上万个。**非常见**（Oxium、Plastids）需要稍微花点心思。而**稀有**材料——Orokin Cells、Neurodes、Neural Sensors、Argon Crystals、Tellurium——才是限制你 Foundry 制作的真正瓶颈，因此这些资源才值得专门去优化刷取流程。"
+        },
+        {
+          "type": "info",
+          "title": "Boss = 快速获取",
+          "text": "Assassination 任务的 Boss 会稳定掉落该星球标志性的稀有资源——有些甚至是 100% 必掉（例如击杀 Sargas Ruk 必掉 Orokin Cells）。当你*现在*急需 5 到 10 个某种资源，而不是想进行长时间的枯燥刷取时，快速击杀一次 Boss 通常比进行无尽任务更快。"
+        }
+      ]
+    },
+    {
+      "id": "cheat-sheet",
+      "title": "资源速查表",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "下方的参考表涵盖了 Reddit 社区每日“去哪里刷……”帖子里最常出现的十种资源。Node 名称的变化频率低于掉落率，但 DE 确实会调整它们的位置——请将**推荐刷取点**一栏作为可靠的起点，并通过掉落图或实时 wiki 来确认当前最佳的 node。"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "资源",
+              "稀有度",
+              "来源",
+              "推荐刷取点"
+            ],
+            "rows": [
+              [
+                "Orokin Cell",
+                "稀有",
+                "Saturn、Ceres、Deimos 的敌人与容器",
+                "Ceres 的 Dark Sector survival（例如 Gabii）；击杀 Saturn 上的 Boss Sargas Ruk 以快速获取"
+              ],
+              [
+                "Neurode",
+                "稀有",
+                "Infested / 有机体——Earth、Deimos、Lua、Eris",
+                "Deimos survival；Boss Lephantis 会掉落大量"
+              ],
+              [
+                "Neural Sensor",
+                "稀有",
+                "Jupiter（Gas City）、Kuva Fortress",
+                "Jupiter survival/defense；击杀 Alad V 以快速获取"
+              ],
+              [
+                "Argon Crystal",
+                "稀有——会衰变",
+                "仅限 The Void——敌人与容器",
+                "在制作当天的短暂 Void capture 或 5 分钟 survival"
+              ],
+              [
+                "Tellurium",
+                "稀有",
+                "Archwing 敌人（任意）；Uranus 海底实验室地形",
+                "Uranus 水下 survival，或任何 Archwing 任务"
+              ],
+              [
+                "Oxium",
+                "非常见",
+                "仅限 Oxium Ospreys（Corpus 无人机）",
+                "Io, Jupiter (Defense)——在 Ospreys 自爆前将其击杀"
+              ],
+              [
+                "Nitain Extract",
+                "稀有",
+                "无法通过 node 刷取",
+                "Nightwave 币兑换店；反应堆 Sabotage 资源舱；Ghoul Purge 赏金"
+              ],
+              [
+                "Plastids",
+                "非常见",
+                "Saturn、Uranus、Phobos、Pluto、Eris",
+                "在刷取其他稀有资源时顺带收集；任何 Dark Sector survival"
+              ],
+              [
+                "Nano Spores",
+                "常见",
+                "Infested——Saturn、Neptune、Eris、Deimos",
+                "一次 Dark Sector survival（例如 Piscinas）即可获得数千个"
+              ],
+              [
+                "Kuva",
+                "特殊",
+                "Kuva Siphon / Flood；Kuva Survival",
+                "Kuva Fortress 上的 Kuva Survival；Siphons/Floods 用于快速获取"
+              ]
+            ],
+            "note": "不确定是哪个 node？使用网站上的掉落图 /star-chart 和 /star-chart-3d 来确切查看任何材料的掉落位置，或者交叉比对实时 wiki 以获取当前产量最高的 node。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "multipliers",
+      "title": "叠加你的增幅器（这比寻找 node 更有效）",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "资源刷取中最大的杠杆并不是*哪一个* node——而是你叠加了多少个增幅器。两种 booster、同伴掉落 mod 以及掉落型 frame 技能的效果都会**相乘**。仅同时运行两种 booster 就已经是 **4 倍产量**；再加上配备了 **Loyal Retriever** 的同伴和 Nekros，你获得的资源将是相同 node 上单人裸刷的好几倍。"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "增幅器",
+              "效果",
+              "是否叠加？"
+            ],
+            "rows": [
+              [
+                "Resource Booster",
+                "每次掉落的资源数量翻倍 (2×)",
+                "是"
+              ],
+              [
+                "Resource Drop Chance Booster",
+                "资源掉落概率翻倍 (2×)",
+                "是"
+              ],
+              [
+                "Loyal Retriever（同伴 mod）",
+                "被动概率使每次拾取的资源/现金翻倍——可装备在任何 Beast 宠物上",
+                "是"
+              ],
+              [
+                "Nekros — Desecrate",
+                "强制死亡的敌人再次进行掉落表判定",
+                "是——但不能与其他击杀掉落型 frame 叠加"
+              ],
+              [
+                "Khora / Hydroid — Pilfering 强化 mod",
+                "被该技能击杀的敌人会产生额外的掉落判定",
+                "是——但不能与 Desecrate 叠加"
+              ],
+              [
+                "Dark Sector node",
+                "node 本身自带的资源掉落加成",
+                "是"
+              ]
+            ],
+            "note": "Booster 可以用 platinum 购买，或者通过 Nightwave、Sortie 和每日登录奖励赠送——在花费 plat 之前，先留意是否有免费的。请注意：击杀掉落型技能（Nekros Desecrate 和 Khora/Hydroid 的 Pilfering 强化 mod）彼此不叠加，因此只需带一个掉落型 frame 即可。"
+          }
+        },
+        {
+          "type": "tip",
+          "title": "梦幻组合",
+          "text": "Resource Booster + Resource Drop Chance Booster + 装备了 **Loyal Retriever** 的 Beast 同伴 + Nekros 或 Khora，在目标星球的 **Dark Sector survival** 中运行。这套单一的配置比你到处寻找 node 都要高效得多。如果你只拥有一种 booster，请优先为稀有资源选择 **Drop Chance** booster——让稀有资源出现概率翻倍，比将你根本没得到的资源翻倍要重要得多。"
+        }
+      ]
+    },
+    {
+      "id": "argon",
+      "title": "Argon Crystals：注意衰变倒计时",
+      "blocks": [
+        {
+          "type": "warn",
+          "title": "Argon 是唯一会腐烂的资源",
+          "text": "游戏会在**每天重置时删除大约一半的 Argon Crystal 库存**，任何单个水晶在捡起后的一两天内就会消失。你今晚刷的一大堆资源到明天基本就一文不值了。这是系统故意设计的——千万不要囤积 Argon。"
+        },
+        {
+          "type": "p",
+          "text": "Argon Crystals**仅在 Void 中掉落**，来自敌人和容器。正确的做法是即刷即用：在**准备开始制作**所需物品的同一局游戏中去刷 Argon。一次 Void capture 或 5 分钟的 Void survival 就能满足大多数制作需求。福利——在 Void 任务中你还可以顺便开启 Relic，这样你就能一次性刷到 Argon 和 platinum。参见 [Relic 价值：开启还是出售](/relics-value) 以及 [哪些 Relic 每次运行收益最高](/relic-farming)。"
+        },
+        {
+          "type": "info",
+          "title": "手里攒了一堆多余的 Argon？",
+          "text": "这是 r/Warframe 社区经久不衰的笑话之一（“如何在 1 小时内用掉 588 个 Argon”）。答案是：在它衰变之前喂给你的 [Helminth](/guides/helminth)。这是处理你刷多了的任何多余资源的经典去处。"
+        }
+      ]
+    },
+    {
+      "id": "awkward-ones",
+      "title": "尴尬三人组：Nitain、Oxium、Tellurium",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Nitain Extract**——你无法在任何 node 上刷到它，这让每个尝试过的玩家都感到头疼。它来自 **Nightwave** 的 Cred 兑换（一个常驻的“常青”商品，15 币换 5 个）、反应堆 **Sabotage** 资源舱以及 **Ghoul Purge** 赏金。手里保留少量的 Nitain *和* Forma 储备——它们是制作 Aura Forma（两者都需要）和几个较旧 frame 的门槛，而且它们似乎总是在最糟糕的时刻用尽。"
+        },
+        {
+          "type": "p",
+          "text": "**Oxium**——仅由 **Oxium Ospreys**（Corpus 飞行无人机）掉落，且*只有在它们自爆前将其摧毁*才行。你需要一个能大量生成 Ospreys 的 Corpus node；长期以来的首选是 **Jupiter 上的 Io** (Defense)，它可以同时刷取 Oxium 和段位经验。优先击杀 Ospreys——自爆的无人机什么都不会掉落。"
+        },
+        {
+          "type": "p",
+          "text": "**Tellurium**——来自 **Archwing** 敌人（任何星球的任何 Archwing 任务）以及 **Uranus** 水下/海底实验室地形的稀有掉落物。对于地面刷取，使用掉落型 frame 在 Uranus 水下 survival（如 Ophelia）是可靠的选择；如果你更喜欢飞行，任何 Archwing node 都可行。它在任何地方都很稀有，所以请带上 booster 和 Nekros。"
+        }
+      ]
+    },
+    {
+      "id": "staples",
+      "title": "制作必备：Cells、Neurodes、Sensors 和大宗材料",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "这些是你在制作 frame、武器和同伴时会大量消耗的稀有资源（外加两种常见资源）。每种资源都有一个用于快速获取的 Boss，以及一个用于刷取积累的无尽 node："
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "Orokin Cells",
+              "v": "Saturn 和 Ceres。击杀 Boss Sargas Ruk (Saturn) 必掉以快速获取；在 Ceres 的 Dark Sector survival（如 Gabii）中刷取积累。"
+            },
+            {
+              "k": "Neurodes",
+              "v": "Earth、Deimos、Lua 上的 Infested/有机体。击杀 Lephantis (Deimos) 会掉落数个；在 Deimos survival 中刷取。"
+            },
+            {
+              "k": "Neural Sensors",
+              "v": "Jupiter Gas City（以及 Kuva Fortress）。击杀 Alad V 快速获取；在 Jupiter survival（如 Cameria）中刷取。"
+            },
+            {
+              "k": "Plastids",
+              "v": "Saturn、Uranus、Phobos、Pluto、Eris——在这些星球上刷取其他稀有资源时，你会顺便被动收集到这些。"
+            },
+            {
+              "k": "Nano Spores",
+              "v": "任何有大量 Infested 的星球（Saturn、Neptune、Eris、Deimos）。一次 Dark Sector survival 就能给你成千上万个；你很少需要特意去刷它们。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kuva",
+      "title": "Kuva：终局游戏资源",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Kuva 独立于常规掉落表。它是重洗 [Riven](/riven-value) 以及转化/消灭 Kuva Liches 的货币，你可以通过专属任务获得它：**Kuva Siphon** 和 **Kuva Flood**（星图上标记的游走 node）用于快速获取，而 **Kuva Fortress 上的 Kuva Survival** 则用于大量刷取，期间周期性出现的 Kuva Harvesters 会掉落大块 Kuva。Resource booster 和同伴的资源翻倍 mod 对它同样有提升效果。参见完整的 [Kuva 刷取指南](/guides/kuva)。"
+        },
+        {
+          "type": "p",
+          "text": "因为 Kuva 直接用于 Riven 洗属性——这是游戏中最深的 platinum 消耗坑——所以它有专门的深度解析。完整的刷取方法解析请参见 [Kuva 刷取指南](/guides/kuva)，在消耗 20,000 Kuva 去追求极品属性之前，先用 [Riven 价值评估器](/riven-value) 看看洗好的 Riven 实际值多少钱。"
+        }
+      ]
+    },
+    {
+      "id": "smart-farming",
+      "title": "被动收入与可重复的常规流程",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "大多数玩家遗忘的两个效率倍增器，以及一个你可以针对任何稀有资源重复使用的运行模板："
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Extractors**——在已完全清理所有 node 的任何星球上部署 **Titan**（倾向于常见资源）或 **Distilling**（倾向于稀有资源）采集器。它们会在你离线时悄悄收集资源。在不同星球上轮流部署 Distilling 采集器，无需任何游戏时间即可免费获得 Neurodes、Orokin Cells 和 Tellurium。",
+            "**在刷取前先检查**——许多“我需要 25 个 Orokin Cells”的恐慌其实是可以避免的。你也许可以直接用几个 plat 购买现成的 Prime 部件，而不是去刷取制作它所需的资源。在决定刷取之前，先对比 [成套与单件成本对比](/comparison) 并检查 [Ducat 价值](/ducats)。"
+          ]
+        },
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "h": "加载你的增幅器",
+              "p": "装备 Resource + Resource Drop Chance booster（或者至少带上一只配备了 Loyal Retriever mod 的 Beast 同伴）。免费的 booster 会经常出现在登录奖励、Sorties 和 Nightwave 中。"
+            },
+            {
+              "h": "带上掉落型 frame",
+              "p": "Nekros (Desecrate) 或 Khora (Pilfering Strangledome)——或者与拥有这些 frame 的玩家组队。他们的额外掉落会与你的 booster 叠加（尽管这两个击杀掉落型 frame 彼此不叠加）。"
+            },
+            {
+              "h": "选择一个敌人密集的无尽 node",
+              "p": "目标星球上的 Dark Sector survival 是最理想的选择——无尽的敌人生成加上自带的资源加成。在 [掉落图](/star-chart-3d) 上确认该 node。"
+            },
+            {
+              "h": "进行短周期运行",
+              "p": "5-10 分钟后便撤离，只有在确实还缺少资源时才重新开始。稀有资源的掉落是概率性的，因此一旦你的 booster 窗口失效，更长的运行时间并不会带来线性的收益提升。"
+            },
+            {
+              "h": "Argon 是个例外",
+              "p": "只在准备制作的当天刷取 Argon Crystals——它会衰变，因此提前囤积只是白费力气。"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "哪里是刷取 Orokin Cells 的最佳地点？",
+      "a": "Saturn 和 Ceres。如果想快速获取，可以去刺杀 Saturn 的 Boss Sargas Ruk——他被击杀时必掉 Orokin Cells。如果想刷取积累，可以使用 Nekros 并带上资源 booster 运行 Ceres 的 Dark Sector survival（如 Gabii）。在 [掉落图](/star-chart-3d) 上确认确切的 node。"
+    },
+    {
+      "q": "为什么我的 Argon Crystals 一直在消失？",
+      "a": "Argon Crystals 的衰变是系统故意设计的——游戏会在每天重置时删除大约一半的库存，任何水晶在捡起后的一两天内就会消失。只在制作所需物品之前去（Void 中）刷取 Argon，并将多余的资源喂给你的 [Helminth](/guides/helminth) 以免浪费。"
+    },
+    {
+      "q": "如何刷取 Nitain Extract？",
+      "a": "你无法在任何 node 上刷到 Nitain——这就是难点所在。从 Nightwave 币兑换店购买（这是一个常驻的“常青”商品，15 币换 5 个），或者从反应堆 Sabotage 资源舱和 Ghoul Purge 赏金中获取。手里保留少量储备，因为它是制作 Aura Forma 和一些较旧 frame 的门槛。"
+    },
+    {
+      "q": "资源 booster 是否能与掉落型 frame 以及我宠物的掉落 mod 叠加？",
+      "a": "是的——它们的效果都是相乘的。仅 Resource Booster（2 倍数量）和 Resource Drop Chance Booster（2 倍概率）本身叠加就能带来约 4 倍的收益，此外还能叠加 Nekros Desecrate 等掉落型 frame 的技能。请注意：自 2024 年同伴重做以来，旧的 Smeeta Charm “双倍资源”触发效果已不复存在——资源翻倍现在存在于 Loyal Retriever mod 上，你可以将其插在任何 Beast 同伴上（不限于 Smeeta），以获得被动使每次拾取翻倍的概率。叠加这些增幅器远比寻找单一的“完美” node 重要得多。"
+    },
+    {
+      "q": "刷取 Oxium 最快的方法是什么？",
+      "a": "Oxium 仅由 Oxium Ospreys 掉落，且只有在它们自爆前将其摧毁才行。长期以来的首选是 Jupiter 上的 Io (Defense)，它会大量生成 Ospreys，并同时提供段位经验。快速集中火力消灭 Ospreys——自爆的无人机什么都不会掉落。"
+    },
+    {
+      "q": "最好的 Kuva 刷取点是哪里？",
+      "a": "Kuva Fortress 上的 Kuva Survival 适合大量刷取，外加 Kuva Siphons 和 Floods（星图上的游走 node）用于快速获取。Resource booster 和同伴的资源翻倍 mod 对它同样有提升效果。参见完整的 [Kuva 刷取指南](/guides/kuva)。"
+    },
+    {
+      "q": "Nekros Desecrate 真的能让我获得的资源翻倍吗？",
+      "a": "不完全是——Desecrate 会强制死亡的敌人再次进行掉落表判定，从而产生包括资源在内的额外掉落物。它与资源 booster 和同伴掉落 mod 叠加，因此队伍中拥有 Nekros 或 Khora 可以显著提高每个人的产量，而不仅仅是他们自己的。请注意，Desecrate 和 Khora/Hydroid 的 Pilfering 强化 mod 都是击杀掉落效果，因此它们彼此不叠加——每个队伍带一个掉落型 frame 就足够了。"
+    },
+    {
+      "q": "我该如何处理不需要的资源？",
+      "a": "大多数原始资源是无法交易的，因此主要的去处是你的 [Helminth](/guides/helminth)，它会消耗多余的材料来进行注入和技能吸取。更好的是，从一开始就不要过度刷取稀有资源——在开始刷取其资源成本之前，先看看是否能用一点 platinum 直接购买现成的 [Prime 部件](/comparison) 呢。"
+    }
+  ],
+  "videos": [
+    {
+      "id": "ekBT4xub-oQ",
+      "title": "Where To Find: Orokin Cells, Neurodes, Tellurium, and Argon Crystals Fast | Warframe",
+      "channel": "LVMIAS"
+    },
+    {
+      "id": "DzdkPJZyW8I",
+      "title": "Warframe - Best Way To Farm Resources - Star Chart Edition",
+      "channel": "MCGamerCZ"
+    },
+    {
+      "id": "wKLYZWcsnlI",
+      "title": "Where to farm materials?! (Orokin,Argon,Tellerum,Plastids,Neurodes & more) [Warframe]",
+      "channel": "TheYamiks"
+    },
+    {
+      "id": "OlXa8dap4fI",
+      "title": "Best Ways To FARM Every Resources in Warframe 2025",
+      "channel": "Tenno Tactics"
+    }
+  ],
+  "sources": [
+    {
+      "label": "r/Warframe — \"How do I use 588 argon crystals within 1 hour\" (the decay panic)",
+      "href": "https://reddit.com/r/Warframe/comments/1sbsb9t/how_do_i_use_588_argon_crystals_within_1_hour/"
+    },
+    {
+      "label": "r/Warframe — \"DE, please don't nerf charm\" (the Smeeta Charm debate; its resource buff has since moved to the Loyal Retriever mod)",
+      "href": "https://reddit.com/r/Warframe/comments/1ek4cyi/de_please_dont_nerf_charm/"
+    },
+    {
+      "label": "r/Warframe — \"Petition to farm 1000 oxium\" (the Oxium grind)",
+      "href": "https://reddit.com/r/Warframe/comments/98iay8/petition_to_get_rebbecca_and_meg_to_farm_1000/"
+    },
+    {
+      "label": "r/Warframe — farming 15 argon crystals on defense",
+      "href": "https://reddit.com/r/Warframe/comments/ef3qbe/this_is_the_story_of_our_main_protagonist_blue/"
+    },
+    {
+      "label": "Warframe Wiki",
+      "href": "https://wiki.warframe.com/"
+    }
+  ],
+  "related": [
+    {
+      "label": "Kuva 刷取",
+      "to": "/guides/kuva",
+      "icon": "diamond-stone",
+      "note": "用于重洗 Riven 的终局资源"
+    },
+    {
+      "label": "Credit 刷取",
+      "to": "/guides/credits",
+      "icon": "cash-multiple",
+      "note": "为每一次 Foundry 制作提供资金"
+    },
+    {
+      "label": "Helminth 系统",
+      "to": "/guides/helminth",
+      "icon": "dna",
+      "note": "你多余资源的去处"
+    },
+    {
+      "label": "掉落位置图",
+      "to": "/star-chart-3d",
+      "icon": "map-marker-radius",
+      "note": "寻找任何材料的确切 node"
+    },
+    {
+      "label": "Relic 刷取",
+      "to": "/guides/relics",
+      "icon": "cube-outline",
+      "note": "运行 Void 任务的同时也能顺便刷取 Argon"
+    },
+    {
+      "label": "成套与单件计算器",
+      "to": "/comparison",
+      "icon": "scale-balance",
+      "note": "购买部件，还是刷取材料？"
+    }
+  ],
+  "updated": "2026-07-18"
+}

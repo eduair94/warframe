@@ -84,11 +84,38 @@ import { computed, nextTick, onMounted } from 'vue'
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
 import { TOOLS, TOOL_SECTIONS, toolsByCategory } from '~/data/tools'
-import { getResearch } from '~/data/toolResearch'
+import { RESEARCH } from '~/data/toolResearch'
+
+// Localized per-tool research prose for the active locale (English fallback).
+const localizedResearch = await useLocalizedResearch(RESEARCH)
+const getResearch = (slug: string) => localizedResearch[slug]
 
 dayjs.extend(relativeTime)
 const { t, te } = useI18n()
 const localePath = useLocalePath()
+
+// ItemList JSON-LD enumerating the tool directory (rich results + AI citation).
+const origin = useRequestURL().origin
+useHead({
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'ItemList',
+        name: 'Warframe Community Tools',
+        itemListOrder: 'https://schema.org/ItemListOrderAscending',
+        numberOfItems: TOOLS.length,
+        itemListElement: TOOLS.map((tool, i) => ({
+          '@type': 'ListItem',
+          position: i + 1,
+          url: origin + localePath('/tools/' + tool.slug),
+          name: tool.name,
+        })),
+      }).replace(/</g, '\\u003c'),
+    },
+  ],
+})
 
 // Card blurb: localized per-tool desc when present, else the tool's research
 // one-liner (English) — covers tools without a communityTools.desc key (e.g. our

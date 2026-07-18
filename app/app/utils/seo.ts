@@ -6,6 +6,19 @@
 
 // Localized copy overlay (English fallback lives in PAGE_SEO below).
 import { PAGE_SEO_I18N } from './seo-i18n'
+// Generated overlay for the guide / faq / creators / tools pages (all 12 locales).
+import { PAGE_SEO_I18N_GUIDES } from './seo-i18n-guides'
+
+// Merge the hand-curated market/tool overlay with the generated guide/faq/tools
+// overlay into one localized map. No key overlap by construction; if one ever
+// appeared in both, the hand-curated PAGE_SEO_I18N wins.
+const LOCALIZED_SEO: Record<string, Record<string, PageSeo>> = (() => {
+  const merged: Record<string, Record<string, PageSeo>> = {}
+  for (const loc of new Set([...Object.keys(PAGE_SEO_I18N), ...Object.keys(PAGE_SEO_I18N_GUIDES)])) {
+    merged[loc] = { ...(PAGE_SEO_I18N_GUIDES[loc] || {}), ...(PAGE_SEO_I18N[loc] || {}) }
+  }
+  return merged
+})()
 
 export interface PageSeo {
   title: string
@@ -96,6 +109,11 @@ export const PAGE_SEO: Record<string, PageSeo> = {
     description:
       'The verified directory of the best third-party Warframe tools: trading, build planners, drop tables, riven calculators, world-state trackers, apps and Discord bots.'
   },
+  '/tools/best': {
+    title: 'Best Warframe Tools 2026 — Ranked & Verified',
+    description:
+      'The best third-party Warframe tools, ranked and verified: trading and price checkers, build planners, drop tables, riven and world-state trackers. What to use and why.'
+  },
   '/vault-spikes': {
     title: 'Vault Spikes — Warframe Prime Price Jumps',
     description:
@@ -127,7 +145,7 @@ export const PAGE_SEO: Record<string, PageSeo> = {
       'A complete guide to farming Endo efficiently in Warframe, plus how to value Ayatan sculptures and mods against platinum.'
   },
   '/guides': {
-    title: 'Warframe Knowledge Center — Guides, Farming & FAQ',
+    title: 'Warframe Guides — Farming, Builds, Platinum & Beginner Help',
     description:
       'Every Warframe guide in one place: new-player help, platinum and resource farming, builds, endgame and a searchable FAQ. Grounded in r/Warframe, free for Tenno.'
   },
@@ -147,17 +165,17 @@ export const PAGE_SEO: Record<string, PageSeo> = {
       'A verified directory of the best Warframe content creators — build masters, tier-list makers, farming specialists and beginner guides worth following on YouTube.'
   },
   '/guides/new-player': {
-    title: 'Warframe New Player Guide — Your First 100 Hours',
+    title: 'Warframe New Player Guide 2026: What to Do First',
     description:
       'A complete Warframe beginner guide: what to do first, how the star chart works, which frame to farm, and the mistakes to avoid. Start Warframe the right way.'
   },
   '/guides/beginner-warframes': {
-    title: 'Best Beginner Warframes — Which to Pick & Farm First',
+    title: 'Best Beginner Warframes 2026 — Which to Pick First',
     description:
       'Which starter Warframe to choose (Excalibur, Mag, Volt), which frame to farm first (Rhino), and where the easy early frames drop. A beginner’s roadmap.'
   },
   '/guides/progression': {
-    title: 'Warframe Progression Guide — What to Do Next',
+    title: 'Warframe Progression Guide 2026 — What to Do Next',
     description:
       'The Warframe progression roadmap: star chart, Junctions, Mastery Rank and a stage-by-stage checklist of what to do next. Stop feeling lost, Tenno.'
   },
@@ -252,7 +270,7 @@ export const PAGE_SEO: Record<string, PageSeo> = {
       'What Archon Shards do in Warframe, how to farm them from the weekly Archon Hunt, and which stats to prioritize. The endgame power boost, explained.'
   },
   '/guides/tier-list': {
-    title: 'Warframe Tier List — How to Actually Read It',
+    title: 'Warframe Tier List 2026 — How to Actually Read It',
     description:
       'Why Warframe tier lists disagree, what “good” really means per activity, and a few broadly strong frames. Build what you enjoy, not just the meta.'
   }
@@ -294,7 +312,7 @@ export function resolveSeo(path: string, locale = 'en'): PageSeo {
   if (p.length > 1) p = p.replace(/\/+$/, '')
 
   const pick = (key: string): PageSeo | undefined =>
-    PAGE_SEO_I18N[locale]?.[key] ?? PAGE_SEO[key]
+    LOCALIZED_SEO[locale]?.[key] ?? PAGE_SEO[key]
 
   const exact = pick(p)
   if (exact) return exact
@@ -305,5 +323,5 @@ export function resolveSeo(path: string, locale = 'en'): PageSeo {
       if (fromPrefix) return fromPrefix
     }
   }
-  return PAGE_SEO_I18N[locale]?.['/'] ?? SITE_SEO
+  return LOCALIZED_SEO[locale]?.['/'] ?? SITE_SEO
 }

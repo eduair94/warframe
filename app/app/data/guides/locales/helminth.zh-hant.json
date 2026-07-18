@@ -1,0 +1,403 @@
+{
+  "slug": "helminth",
+  "eyebrow": "知識中心 · Helminth & Subsume",
+  "title": "Helminth & Subsume 指南",
+  "lede": "將多餘的 Warframe 餵給 Helminth，永久保留其其中一個技能，然後將該技能嫁接到真正需要它的 frame 上。這就是一個不錯的 frame 變成怪物的過程 — 以下是所有規則、最值得追求的技能，以及會讓人損失整隻 Warframe 的致命錯誤。",
+  "category": "systems",
+  "readMins": 9,
+  "stats": [
+    {
+      "num": "8",
+      "label": "購買該 Segment 所需的段位",
+      "tone": "gold"
+    },
+    {
+      "num": "6",
+      "label": "餵食它的分泌物類型",
+      "tone": "good"
+    },
+    {
+      "num": "1",
+      "label": "每個 frame 的 subsumed 欄位",
+      "tone": "alt"
+    },
+    {
+      "num": "7 days",
+      "label": "一次 Invigoration 持續時間",
+      "tone": "good"
+    }
+  ],
+  "sections": [
+    {
+      "id": "what-is-helminth",
+      "title": "Helminth 究竟是什麼",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Helminth** 是 Warframe 的技能移植系統，也是整個遊戲中最大的戰力飆升點之一。你需要永久犧牲一隻多餘的 Warframe 給它（即 \"subsuming\"），以將該 frame 的**其中一個**技能解鎖到個人資料庫中。從那時起，你可以將該技能 **infuse** 到任何其他 frame 上 — 覆蓋其四個技能之一 — 次數不限，每次只需支付少量資源。除此之外，它還會提供每週一次的屬性加成，稱為 **Invigorations**。"
+        },
+        {
+          "type": "p",
+          "text": "在實戰中，玩家就是透過這種方式來彌補 frame 的弱點（補上治療、能量、削甲或傷害加成），或是讓強力的 frame 突破極限。這在遊戲前期並非必需，但一旦你擁有一批穩定的 frame，它就會改變你幾乎所有配置的構建方式 — 將其與聰明的 [modding 配置](/guides/mods) 和 [Archon Shards](/guides/archon-shards) 搭配，即使是中階 frame 也能具備應對終局內容的實力。"
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "它的位置",
+              "v": "Helminth 治療室，位於你 Orbiter 後方的 Segment 房間"
+            },
+            {
+              "k": "解鎖條件",
+              "v": "完成 Heart of Deimos 以開啟權限，然後達到段位 8 + Entrati 聲望以購買 Segment"
+            },
+            {
+              "k": "兩大功能",
+              "v": "Subsume/Infuse 技能 + 每週 Invigorations"
+            },
+            {
+              "k": "代價",
+              "v": "Subsuming 會永久摧毀提供技能的 Warframe"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "unlock",
+      "title": "解鎖 Helminth",
+      "blocks": [
+        {
+          "type": "steps",
+          "ordered": true,
+          "steps": [
+            {
+              "h": "完成 Heart of Deimos",
+              "p": "這個主線任務（在完成新手教學 (Vor's Prize) 並擁有 Orbiter 後即可接取）會開啟 Deimos 上的 Cambion Drift 和 Necralisk，並讓你開始賺取 Entrati 集團的聲望。完成任務並不會直接給你 Helminth，而是解鎖購買它的地方。"
+            },
+            {
+              "h": "達到真正的門檻：段位 8 + Entrati 的 Associate 等級",
+              "p": "Helminth Segment 藍圖由 Necralisk 中的 Son 販售，在你的段位達到 8 且 Entrati 聲望至少達到等級 3 (Associate) 之前，他不會與你交易。提升你的段位並賺滿 Entrati 聲望以達到此要求。"
+            },
+            {
+              "h": "購買、製作並安裝 Segment",
+              "p": "使用 Entrati 聲望購買藍圖，在你的 Foundry 中製作（需要 Credits 和 Deimos 資源，大約需要一天的時間製作），然後安裝它。你 Orbiter 後方的 Helminth 治療室便可使用 — 走進去並與牆上的有機體互動以打開其選單。"
+            },
+            {
+              "h": "餵食它以提升其等級",
+              "p": "當你餵食它資源並 subsume frame 時，Helminth 就會升級。它的第一級會解鎖 subsuming；更高的等級會增加資源儲存量並開啟後續功能。在前期，只需餵食它所要求的任何多餘材料即可。"
+            }
+          ]
+        },
+        {
+          "type": "info",
+          "text": "你**不需要** Helminth 也能享受遊戲 — 這是一個中期升級。如果你仍在製作最初的幾隻 frame，請以此為先（參見 [新手 Warframe 指南](/guides/beginner-warframes) 和 [開荒路線](/guides/progression)），等擁有多餘的 frame 後再回來接觸 Helminth。"
+        }
+      ]
+    },
+    {
+      "id": "subsuming",
+      "title": "Subsuming 的運作方式",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Subsuming** 指的是將一隻多餘的 Warframe 放入 Helminth 中供其吞噬 — 而且你不需要先提升它的等級：一隻剛製作好、等級 0 的 frame 與滿等的 frame 效果完全相同。作為交換，你將永久解鎖該 frame 的**一個特定技能**到你的資料庫中。你可以選擇餵食*哪隻 frame*，但**由 DE 決定其四個技能中哪一個是可以捐贈的** — 例如，Rhino 總是捐贈 Roar，絕不會是 Iron Skin。一個重要的限制：你只能 subsume **基礎** Warframes — Prime 和 Umbra 版本完全無法餵給 Helminth。在餵食之前，務必先查詢該 frame 的可 subsume 技能（在 [wiki](https://wiki.warframe.com/) 或其遊戲內法典中），以免感到意外。"
+        },
+        {
+          "type": "warn",
+          "title": "Subsuming 是永久性的，且會摧毀該 frame",
+          "text": "在你進行 subsume 的那一刻起，提供技能的 Warframe 就會**永遠消失**。如果這是你唯一的版本，你將不得不重新刷取或重新製作它。請餵食重複的、你真的從不使用的 frame，或是你正準備用 Prime 版本替換的基礎版本 — 絕不要餵食你仍在遊玩的唯一版本。"
+        },
+        {
+          "type": "p",
+          "text": "你只需要 subsume 一隻 frame **一次**。一旦該技能進入你的資料庫，它就永遠屬於你，並且可以被 infuse 到無限數量的 frame 上 — subsume 同一隻 frame 的第二個複製品不會帶給你任何新東西。"
+        }
+      ]
+    },
+    {
+      "id": "infusing",
+      "title": "將技能嫁接到 frame 上 (infusing)",
+      "blocks": [
+        {
+          "type": "steps",
+          "ordered": true,
+          "steps": [
+            {
+              "h": "選擇接收技能的 frame",
+              "p": "打開 Helminth 的 Infuse Ability 選單，並選擇你想修改的 frame。任何已製作完成的 frame 都可以 — 包括 Primes 和 Umbra — 且對接收的 frame 沒有等級要求。"
+            },
+            {
+              "h": "選擇要覆蓋的技能",
+              "p": "你選擇該 frame 的四個技能之一進行替換。被 subsume 的技能會佔用技能欄上的該位置。考慮一下你最少使用哪一個原生技能。"
+            },
+            {
+              "h": "支付資源消耗",
+              "p": "每次 infusion 都會消耗 Helminth 資源類別的混合物（見下文）。確認後，技能就會被嫁接上去。"
+            }
+          ]
+        },
+        {
+          "type": "info",
+          "title": "容易讓人出錯的規則",
+          "text": "**每個 frame 只能擁有一個 subsumed 技能** — 你不能疊加兩個。你稍後可以透過在其上 infuse 另一個不同的技能來更改它，但這會再次消耗資源。被 subsume 的技能會隨著**該 frame 的 mods**（強度、持續時間、範圍、效率）進行縮放，因此在高強度 frame 上的 Roar 傷害會更高。少數技能在被 subsume 時的上限會低於其原生 frame，且許多技能**無法使用其 augment mod**（儘管越來越多的技能可以）— 請查看 wiki 條目以了解你所依賴的任何技能的確切行為。"
+        }
+      ]
+    },
+    {
+      "id": "best-subsumes",
+      "title": "按定位劃分的最熱門 subsumes",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "你不需要所有的技能 — 選擇能彌補你配置弱點的那一個。以下的熱門選擇多年來一直名列前茅，因為它們解決了普遍存在的問題：傷害、能量、生存能力、削甲和聚怪。確切的數值會隨著補丁更新而變化，因此請將這些視為定位，並在 [wiki](https://wiki.warframe.com/) 或最近的指南中確認當前數值。"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Subsume",
+              "來自 frame",
+              "為何它是熱門選擇"
+            ],
+            "rows": [
+              [
+                "Roar",
+                "Rhino",
+                "近乎通用的傷害乘數，可提升你幾乎所有的傷害。預設的「讓一切打得更痛」的選擇。"
+              ],
+              [
+                "Nourish",
+                "Grendel",
+                "集能量生成、額外病毒傷害和韌性於一身 — 立即解決極度缺能的配置問題。"
+              ],
+              [
+                "Eclipse",
+                "Mirage",
+                "在光照下提供巨大的武器傷害加成（或在陰影中提供極高的減傷）。非常適合槍械輸出平台。"
+              ],
+              [
+                "Gloom",
+                "Sevagoth",
+                "將附近的敵人減速至龜速，並在擊殺時提供生命偷取 — 生存能力加上軟性群控。"
+              ],
+              [
+                "Pillage",
+                "Hildryn",
+                "在一定半徑內剝除護甲和護盾，並補滿你自己的護盾。可實現護盾門檻 (shield-gating) 並撕碎高坦度的敵人。"
+              ],
+              [
+                "Dispensary",
+                "Protea",
+                "定時掉落能量/生命值/彈藥拾取物 — 為任何 frame 提供被動的能量循環。"
+              ],
+              [
+                "Nourish / Gloom / Pillage 組合",
+                "—",
+                "許多終局配置會選擇這三個技能之一作為「全能」插槽。"
+              ],
+              [
+                "Xata's Whisper",
+                "Xaku",
+                "為你的武器添加虛空傷害 — 一種通用的額外元素，在對抗 Sentients 和進行 Eidolon 狩獵時大放異彩。"
+              ],
+              [
+                "Larva / Ensnare",
+                "Nidus / Khora",
+                "將敵人聚集到一個緊密的堆中，以便 AoE 武器 and 技能一次性消滅他們。"
+              ],
+              [
+                "Terrify",
+                "Nekros",
+                "使敵人恐懼並剝除他們的護甲 — 控制加上傷害放大。"
+              ]
+            ],
+            "note": "看重定位，而非固定數值 — DE 會定期調整數值。在投入資源之前，請確認當前的 subsumed 屬性。"
+          }
+        },
+        {
+          "type": "p",
+          "text": "哪些 frame 值得專門製作來進行 subsume 取決於你已經擁有什麼 — 交叉參考 [強度排行](/guides/tier-list) 以查看哪些強力的 frame 同時也是優秀的技能提供者，並參考 [Steel Path 指南](/guides/steel-path) 以了解這些加成在何處最為重要。"
+        }
+      ]
+    },
+    {
+      "id": "resources",
+      "title": "餵食 Helminth",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Subsuming 和 infusing 都需要消耗**分泌物** — 也就是你餵食給 Helminth 的資源，分為六個類別：**Oxides、Calx、Biotics、Synthetics、Pheromones 和 Bile**。不同的操作會消耗不同類別的資源，因此你需要為每種類別保留少量庫存。餵食你已經多到滿出來的常見材料是補充資源最便宜的方法。"
+        },
+        {
+          "type": "tip",
+          "title": "兩個值得了解的特點",
+          "text": "首先，Helminth 有**食慾** — 重複餵食相同的資源類別會使其消耗成本攀升，然後隨著時間推移而重置，因此它不鼓勵一直狂餵單一材料。其次，**Bile** 是經典的瓶頸：能餵食它的道具範圍較窄，因此請多加留意。如果你缺少餵食材料，[資源刷取指南](/guides/resources) 涵蓋了如何高效囤積物資的方法。"
+        }
+      ]
+    },
+    {
+      "id": "invigorations",
+      "title": "Invigorations：每週超級加成",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "一旦你解鎖了獨立的 **Invigoration Segment**（從 Entrati 購買並與第一個 Segment 一起安裝的第二個 Segment），Helminth 就會開始提供 **Invigorations**，這是該系統的後半部分，也是一個巨大的臨時戰力提升。每週它都會提供**隨機的加成組合**：一個進攻性加成（例如大幅提升技能強度），搭配第二個屬性（如持續時間、效率或護甲），你可以將其應用於一隻 Warframe。"
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "持續時間",
+              "v": "7 天，且僅對你應用該加成的單一 frame 生效"
+            },
+            {
+              "k": "你所應用的內容",
+              "v": "一個進攻性加成（如技能強度）搭配一個隨機的實用屬性"
+            },
+            {
+              "k": "消耗與重置",
+              "v": "每次 invigoration 都會消耗 Helminth 資源；你可以花費更多資源來重置所提供的加成"
+            },
+            {
+              "k": "刷新時間",
+              "v": "提供的內容每週輪換，因此你不會永遠被限制在本週的選項中"
+            }
+          ]
+        },
+        {
+          "type": "p",
+          "text": "將其用於你該週正在遊玩的 frame，或用來彌補特定弱點 — 例如在極度依賴技能的 frame 上使用效率或持續時間加成，或在脆皮 frame 上使用生存能力加成。由於該效果是臨時的，請不要圍繞它來構建你的整個裝備配置；將其視為額外獎勵，而非永久屬性。"
+        }
+      ]
+    },
+    {
+      "id": "mistakes",
+      "title": "應避免的錯誤",
+      "blocks": [
+        {
+          "type": "list",
+          "items": [
+            "**不要 subsume 你唯一的 frame 複製品** — 它會被永久摧毀。如果你仍在使用它，請先製作或購買一個備用。",
+            "**在餵食前檢查可捐贈的技能。** DE 決定了你獲得四個技能中的哪一個；為了錯誤的技能去刷取 frame 是白費功夫。",
+            "**在獲得 Prime 後保留基礎 frame。** 你完全無法 subsume Prime 或 Umbra — 只能 subsume 基礎版本 — 因此基礎版本是你獲得該技能的唯一 Helminth 捐贈者。絕不要以為它沒用就賣掉。",
+            "**不要覆蓋你實際在使用的技能。** 你只有一個 subsume 欄位；替換你最少按的技能，而不是你的核心技能。",
+            "**記住許多 augment 技能強化 mod 無法繼承。** 如果某個 subsumed 技能只有在搭配其 augment 時才好用，請在依賴它之前先確認它在被 infuse 後是否仍能正常運作。",
+            "**注意你的 Bile。** 這是常見的資源瓶頸 — 請深思熟慮地進行 infuse，而不是一時興起就反覆更換技能。"
+          ]
+        },
+        {
+          "type": "warn",
+          "text": "如果你已經賣掉了基礎 frame，現在又想 subsume 它，你將不得不重新獲取它 — 對於僅有 Prime 版本的 frame 來說，這意味著需要遺物和重新製作。在你圍繞它進行規劃之前，請查看 [入庫追蹤器](/vaulted) 以了解某個 Prime 當前是否可以刷取，如果你正在刷取零件以重新製作，請查看 [遺物價值工具](/relics-value)。"
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "如何在 Warframe 中解鎖 Helminth？",
+      "a": "首先完成 Heart of Deimos 任務（在完成新手教學並擁有 Orbiter 後即可接取）以抵達 Necralisk 並開始賺取 Entrati 聲望。完成任務並不會直接給你 Helminth — 一旦你的段位達到 8 且 Entrati 聲望達到等級 3 (Associate)，請從 Son 處購買 Helminth Segment 藍圖，在你的 Foundry 中製作並安裝它。隨後你 Orbiter 後方的 Helminth 治療室便可使用，你可以餵食它資源以提升其等級。"
+    },
+    {
+      "q": "Subsuming 一隻 Warframe 會摧毀它嗎？",
+      "a": "是的 — subsuming 會永久消耗提供技能的 frame，以換取其其中一個技能。如果這是你唯一的版本，你將不得不重新刷取或重新製作它。請務必餵食重複的、你從不使用的 frame，或是你正準備用 Prime 版本替換的基礎版本 — 並注意你只能 subsume 基礎 frame，絕不能是 Primes 或 Umbra。"
+    },
+    {
+      "q": "我應該 subsume 我的 Prime 還是基礎 Warframe？",
+      "a": "你只能 subsume 基礎版本 — Prime 和 Umbra frame 完全無法餵給 Helminth。由於基礎版本捐贈的技能完全相同，請保留 Prime 用於遊玩，並將基礎版本餵掉。這也是為什麼你在獲得 Prime 後不應該賣掉基礎 frame 的原因 — 它們是你的免費 Helminth 飼料。"
+    },
+    {
+      "q": "一隻 Warframe 可以擁有多個 subsumed 技能嗎？",
+      "a": "不行 — 每個 frame 只有一個 subsume 欄位，且一次只能容納一個 infused 技能。你稍後可以透過在舊技能上 infuse 另一個不同的技能來更改它，但這每次都會消耗 Helminth 資源，並會覆蓋之前的選擇。"
+    },
+    {
+      "q": "我需要先將我的 Warframe 提升到 30 級才能進行 subsuming 嗎？",
+      "a": "不需要 — 這是一個常見的謠言。Warframe 可以在任何等級進行 subsumed，甚至是剛製作好、等級 0 的狀態，而且對於你將技能 infuse 上去的 frame 也沒有等級要求。真正的門檻在於你的帳號：首先需要達到段位 8 和 Entrati 聲望以解鎖 Helminth。"
+    },
+    {
+      "q": "什麼是 Helminth Invigorations？它們值得嗎？",
+      "a": "Invigorations 是透過安裝獨立的 Invigoration Segment（向 Entrati 購買）解鎖的每週屬性加成。每週 Helminth 都會提供一對隨機的加成 — 一個大型進攻性屬性（如技能強度）加上一個實用屬性 — 你可以將其應用於一隻 frame，持續七天。它們確實非常強大，值得在你該週正在遊玩的 frame 上使用，但由於它們是臨時的，請不要圍繞它們來構建你的整個裝備配置。"
+    },
+    {
+      "q": "Subsumed 技能會保留其 augment 技能強化 mod 和全部強度嗎？",
+      "a": "不一定。Subsumed 技能會隨著接收 frame 的 mods（強度、持續時間、範圍、效率）進行縮放，但有少數技能的上限會低於其原生 frame，且許多技能無法使用其 augment mod（儘管越來越多的技能可以）。在投入資源之前，請先查看 wiki 條目以了解你計劃依賴的任何技能。"
+    }
+  ],
+  "videos": [
+    {
+      "id": "eMJlOIpaki0",
+      "title": "Helminth Guide - The Systems of Warframe - Subsuming, Invigoration & other functions",
+      "channel": "QuadLyStop"
+    },
+    {
+      "id": "3Ij4OLxXyKk",
+      "title": "The MOST POWERFUL system in Warframe - Helminth Invigoration, Subsuming, Abilities & Archon Shards",
+      "channel": "QuadLyStop"
+    },
+    {
+      "id": "BmHOYP6Osks",
+      "title": "Top 10 Warframe Helminth Abilities YOU NEED In 2025!",
+      "channel": "iFlynn"
+    },
+    {
+      "id": "ui1GTJSLBMk",
+      "title": "Warframe: Top 5 SUBSUMED Helminth Abilities!",
+      "channel": "iFlynn"
+    }
+  ],
+  "sources": [
+    {
+      "label": "Warframe Wiki — Helminth",
+      "href": "https://wiki.warframe.com/",
+      "icon": "book-open-page-variant"
+    },
+    {
+      "label": "r/Warframe — A little reminder before subsuming a frame",
+      "href": "https://reddit.com/r/Warframe/comments/1irgcfd/a_little_reminder_before_subsuming_a_frame/",
+      "icon": "reddit"
+    },
+    {
+      "label": "r/Warframe — Reminder: Do NOT sell base frames after getting their prime",
+      "href": "https://reddit.com/r/Warframe/comments/1muncct/reminder_do_not_sell_base_frames_after_getting/",
+      "icon": "reddit"
+    }
+  ],
+  "related": [
+    {
+      "label": "Archon Shards 指南",
+      "to": "/guides/archon-shards",
+      "icon": "hexagon-multiple",
+      "note": "在 subsumes 之上疊加永久屬性加成"
+    },
+    {
+      "label": "Warframe 強度排行",
+      "to": "/guides/tier-list",
+      "icon": "format-list-numbered",
+      "note": "哪些 frame 值得製作 — 以及進行 subsuming"
+    },
+    {
+      "label": "Modding 指南",
+      "to": "/guides/mods",
+      "icon": "puzzle",
+      "note": "Subsumed 技能會隨著你的 mods 進行縮放"
+    },
+    {
+      "label": "Steel Path 指南",
+      "to": "/guides/steel-path",
+      "icon": "skull",
+      "note": "Helminth 加成最為關鍵的地方"
+    },
+    {
+      "label": "資源刷取",
+      "to": "/guides/resources",
+      "icon": "pickaxe",
+      "note": "囤積 Helminth 消耗的材料"
+    },
+    {
+      "label": "社群工具目錄",
+      "to": "/tools",
+      "icon": "toolbox",
+      "note": "技能查詢、配置規劃器與 wikis"
+    }
+  ],
+  "updated": "2026-07-18"
+}

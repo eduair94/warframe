@@ -259,9 +259,13 @@ export default defineNuxtConfig({
   },
 
   // Feed the data-driven /tools detail routes to the sitemap (auto-discovery
-  // only finds static page files). See TOOL_ROUTES above.
+  // only finds static page files). See TOOL_ROUTES above. The dynamic entity
+  // pages (/set/<item>, /relic/<item>) can't be auto-discovered either — they're
+  // optional-catch-all routes rendered from the live catalogue — so a server
+  // source (server/api/__sitemap__/urls.ts) enumerates them with i18n alternates.
   sitemap: {
-    urls: TOOL_ROUTES
+    urls: TOOL_ROUTES,
+    sources: ['/api/__sitemap__/urls']
   },
 
   // nuxt-og-image — one branded Orokin card (components/OgImage/Void.vue) is

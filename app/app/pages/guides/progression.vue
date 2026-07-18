@@ -6,5 +6,6 @@
 </template>
 
 <script setup lang="ts">
-import guide from '~/data/guides/progression'
+import enGuide from '~/data/guides/progression'
+const guide = await useLocalizedGuide('progression', enGuide)
 </script>

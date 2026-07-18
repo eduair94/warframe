@@ -1,0 +1,450 @@
+{
+  "slug": "riven",
+  "eyebrow": "知识中心 · Riven Mods",
+  "title": "Riven Mods 详解",
+  "lede": "Riven 是 Warframe 中的老虎机 MOD：绑定特定武器、随机属性数值，并且能让一把被遗忘的武器变成神兵利器。以下是它们的工作原理、决定其价值的因素，以及它们何时才真正值得你投入 Kuva。",
+  "category": "systems",
+  "readMins": 9,
+  "stats": [
+    {
+      "num": "2–4",
+      "label": "每个 Riven 的属性",
+      "tone": "good"
+    },
+    {
+      "num": "1–5",
+      "label": "倾向度圆点",
+      "tone": "alt"
+    },
+    {
+      "num": "8",
+      "label": "Riven 最高等级",
+      "tone": "gold"
+    },
+    {
+      "num": "~3,500",
+      "label": "每次重洗 Kuva 消耗上限",
+      "tone": "gold"
+    }
+  ],
+  "sections": [
+    {
+      "id": "what-is-a-riven",
+      "title": "什么是 Riven Mod",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Riven Mod** 是一种特殊的 MOD，具有**随机属性且绑定于单一武器**（以及该武器的变体）。Braton 的 Riven 适用于 Braton —— 以及它的 Prime、Vandal 和 MK1 版本 —— 但不适用于其他任何武器；Kronen 的 Riven 仅适用于 Kronen。当 Riven 被解密时，它会随机生成 **2–4 个属性** —— 包含强力增益（Buff），有时还会带有一个负面属性（*诅咒*）。没有两个 Riven 是完全相同的，这正是为什么它们既能成为你武器上最强的 MOD，又能构成一个混乱的独立交易市场。"
+        },
+        {
+          "type": "p",
+          "text": "Riven 存在于主要的武器类别中 —— **步枪（rifle）、散弹枪（shotgun）、手枪（pistol）、近战（melee）和空战枪械（archgun）**（以及 kitgun 和 zaw 类型）。它的好处是巨大的：一个好的 Riven 能够提供比任何单一普通 MOD 更多的基础伤害提升。但代价是，在解密之前，关于它的一切 —— 属性、数值，甚至对应*哪把*武器 —— 全凭随机（RNG），而且它是游戏中占用容量最多的 MOD 之一。"
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "定义",
+              "v": "绑定特定武器且具有随机属性的 MOD"
+            },
+            {
+              "k": "适用武器",
+              "v": "单一武器及其变体 —— 例如 \"Braton\" Riven 适用于 Braton、Braton Prime、Vandal 和 MK1"
+            },
+            {
+              "k": "属性",
+              "v": "2–4 个随机属性 —— 2–3 个增益属性，外加一个可选的负面属性（诅咒）"
+            },
+            {
+              "k": "最高等级",
+              "v": "8 级，使用 Endo 升级（非常昂贵）"
+            },
+            {
+              "k": "装备段位限制",
+              "v": "解密时会随机设定段位（Mastery Rank）限制（8–16 级）"
+            },
+            {
+              "k": "前置条件",
+              "v": "完成 The War Within 任务 —— 它会赠送你的第一个 Riven 并解锁其主要获取来源"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "disposition",
+      "title": "倾向度：为什么同样的属性在某把枪上是神级，在另一把枪上却是垃圾",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Riven 倾向度（Disposition）**是针对每把武器的倍率，显示为 **1 到 5 个圆点**。它决定了 Riven 属性在该武器上的强弱。至关重要的一点是，倾向度与*受欢迎程度成反比*：冷门、极少使用的武器会获得**高**倾向度（更大的 Riven 属性加成），而热门的主流（meta）武器则会获得**低**倾向度（较小的加成）—— 甚至同一把武器的不同变体也可能拥有略微不同的倾向度。这是 DE 的平衡杠杆，以防止 Riven 让最强的武器变得更强。"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "圆点数量",
+              "大致意味着",
+              "代表性武器"
+            ],
+            "rows": [
+              [
+                "5（最高）",
+                "最强属性数值（最高约 ×1.5 倍）",
+                "极少使用 / 强度较低的武器"
+              ],
+              [
+                "3（中等）",
+                "稳健、中等水平的加成",
+                "不错但非主流的选择"
+              ],
+              [
+                "1（最低）",
+                "最弱属性数值（约 ×0.5 倍）",
+                "非常热门 / 主流的武器"
+              ]
+            ],
+            "note": "确切的倍率是近似值，DE 会根据每把武器的使用率定期重新调整 —— 请务必查看实时 wiki 以获取武器当前的圆点数量。"
+          }
+        },
+        {
+          "type": "info",
+          "text": "由于倾向度会发生变化，当 DE 调整武器时，你购买的 Riven 可能会在一夜之间升值或贬值。武器的倾向度遭到*削弱（nerf）*会使对应的 Riven 变弱（且更便宜）；而*加强（buff）*则会使其变强（且更贵）。这是 Riven 价格波动的最大原因。"
+        }
+      ]
+    },
+    {
+      "id": "reading-a-riven",
+      "title": "解读 Riven：增益、负面与“神卡（god rolls）”",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "每个解密的 Riven 都有随机的正面属性，以及可选的一个负面属性。**负面属性（诅咒）**并不一定是坏事 —— 带有负面属性的 Riven 会获得更高的正面属性数值。诀窍在于获得一个你不在乎的负面属性（例如在忽略这些属性的配装中出现 `-zoom`、`-recoil` 或 `-impact`），这样你就能免费享受获得提升的正面属性。"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "属性组合",
+              "含义",
+              "价值说明"
+            ],
+            "rows": [
+              [
+                "2 正面属性",
+                "两个正面属性，无负面属性",
+                "安全但中规中矩 —— 价格便宜，适合日常娱乐"
+              ],
+              [
+                "3 正面属性",
+                "三个正面属性，无负面属性",
+                "强力且无副作用的万金油"
+              ],
+              [
+                "2 正面属性 + 1 负面属性",
+                "两个正面属性加一个负面属性；正面属性数值获得提升",
+                "当负面属性无害时非常优秀"
+              ],
+              [
+                "3 正面属性 + 1 负面属性",
+                "三个正面属性加一个负面属性；拥有最高的属性数值",
+                "经典的“神卡”模板"
+              ]
+            ]
+          }
+        },
+        {
+          "type": "p",
+          "text": "什么算作*好的*增益属性取决于武器。对于暴击流武器，你会想要**暴击几率、暴击伤害、多重射击和基础伤害**等属性，最好带有合适的元素或派系伤害属性。而对于异常状态流武器，你则会更看重触发几率和多重射击。没有绝对完美的属性组合 —— 最理想的 Riven 是能够弥补你常规 MOD 留下的空缺，并像其他 MOD 一样完美融入你日常配装的那一个。"
+        },
+        {
+          "type": "tip",
+          "text": "Riven 随机生成的名称（比如 `critacan`/`visitox` 这类火星文）纯粹是装饰性的 —— 它是根据属性生成的，不影响威力。请根据其实际的属性行、倾向度和 MR 需求来评估 Riven，千万不要看名字。"
+        }
+      ]
+    },
+    {
+      "id": "veiled-and-unveiling",
+      "title": "未解密（Veiled）Riven 及其解锁方法",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Riven 在获取时通常是**未解密（veiled）**状态 —— 你还无法看到对应的武器或属性，只能看到类别（步枪、散弹枪、手枪、近战等）。要解密它，你需要在装备匹配类型的武器时完成一个**随机挑战**，例如在空中爆头击杀敌人、在不被发现的情况下完成任务，或者在滑行时连续击杀敌人。完成挑战后，Riven 就会随机生成其对应的武器和属性。"
+        },
+        {
+          "type": "p",
+          "text": "未解密 Riven 的主要来源是 **Sorties**（每日三阶段挑战任务，大约有四分之一的几率奖励一个 Riven）以及 Duviri 的 **Steel Path Circuit**（其每周奖励路线会提供一个未解密 Riven）。你也可以刷 **Riven Slivers**（Eximus 敌人会掉落，尤其是在 Steel Path 中），然后带 **10 个前往地球 Iron Wake 的 Palladino** 处，她每周可以限量将其兑换为一个未解密 Riven。完成 **The War Within** 任务也会赠送你的第一个 Riven。请注意，Kuva Siphon 和 Kuva Flood 任务提供的是你重洗属性所需的 *Kuva* —— 它们本身不掉落 Riven。"
+        },
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "h": "获取未解密 Riven",
+              "p": "完成 Sortie，从 Duviri 的 Steel Path Circuit 每周奖励路线中领取，或者刷 10 个 Riven Slivers 并前往 Iron Wake 找 Palladino 兑换。"
+            },
+            {
+              "h": "查看挑战",
+              "p": "在你的 Mods 菜单中打开 Riven，查看其解密挑战以及所需的武器类别。"
+            },
+            {
+              "h": "装备正确的武器类型",
+              "p": "带上该类别（步枪、手枪、近战等）的武器 —— 只有装备了匹配类型的武器，挑战进度才会被计算。"
+            },
+            {
+              "h": "完成挑战",
+              "p": "在任何合适的任务中完成该任务。完成后，Riven 会当场解密并显现其对应的武器和随机属性。"
+            }
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "有些挑战非常繁琐（“无护盾”、“不触发警报”、特定的任务类型）。先在 [wiki](https://wiki.warframe.com/) 上查询确切的描述 —— 花两分钟阅读可以让你少失败十几次，而且许多挑战可以在低等级的单人任务中快速搞定。"
+        }
+      ]
+    },
+    {
+      "id": "rolling-with-kuva",
+      "title": "使用 Kuva 重洗",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "不喜欢你洗出的属性？你可以**重洗（re-roll/循环）** Riven 来完全重新随机化它 —— 属性类型、属性数量以及数值都会改变。每次重洗都需要消耗 **Kuva**，并且随着该 Riven 重洗次数的增加，价格会不断上涨：起步约为 900，随后会攀升至**每次重洗约 3,500 Kuva 的上限**并保持不变。Kuva 可以通过 Kuva Siphon、Kuva Flood 任务以及 Kuva Fortress 的无尽 Kuva Survival 任务获得。"
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "消耗",
+              "v": "每次重洗消耗 Kuva"
+            },
+            {
+              "k": "递增",
+              "v": "约 900 Kuva，逐渐攀升至约 3,500 的上限"
+            },
+            {
+              "k": "效果",
+              "v": "重新随机生成属性数量、属性类型及数值"
+            },
+            {
+              "k": "概率",
+              "v": "纯粹的随机（RNG） —— 没有保底机制，无法指定特定属性"
+            }
+          ]
+        },
+        {
+          "type": "warn",
+          "text": "重洗是一个无底洞般的 Kuva 消耗口。因为它是纯粹的随机，追求完美属性可能会吞噬*数百万*的 Kuva —— 曾有一位知名玩家被录下重洗单个 Riven 数千次的视频。在你开始刷之前，先决定好什么样的属性“足够好”，然后适可而止。通常情况下，从其他玩家那里购买一个属性不错的 Riven，比你自己去赌神卡要划算得多。"
+        }
+      ]
+    },
+    {
+      "id": "ranking-and-endo",
+      "title": "升级 Riven —— 以及为什么属性差的 Riven 只是等同于 Endo",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "与其他 MOD 一样，Riven 需要使用 **Endo 和现金（credits）** 进行升级，从 **0 级升到 8 级**。每个等级都会提高属性数值*以及*容量消耗（最高可达 18 左右）—— 这使得满级 Riven 成为游戏中占用容量最大的 MOD 之一。装备 8 级 Riven 的武器几乎总是需要额外使用一两个 Forma 才能塞下所有 MOD。如果你需要 Endo，[Endo 刷取指南](/guides/endo)介绍了最快的获取来源。"
+        },
+        {
+          "type": "tip",
+          "text": "拿到了一个你永远不会用的 Riven？**把它分解成 Endo。** 分解获得的数量会根据其重洗次数（加上其等级和 MR）进行缩放，因此重洗次数很多的垃圾 Riven 可以提供相当可观的 Endo。由于市场上充斥着平庸的属性，大多数属性差的 Riven 对你来说作为 Endo 的价值，要高于以 1–2 白金（plat）出售的价值 —— 在决定分解、保留还是挂牌出售之前，先在 [Endo / 白金价值计算工具](/endo)上计算一下数值。"
+        }
+      ]
+    },
+    {
+      "id": "trading-and-pricing",
+      "title": "Riven 的交易与定价",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Riven 是玩家之间进行交易的，由于每一个 Riven 都是独一无二的，因此定价更像是一门艺术而非科学。在备受喜爱的武器上洗出极佳的属性可能价值数百白金；而在低倾向度的主流武器上，同样的属性可能几乎一文不值。你也可以交易**未解密（veiled）**的 Riven —— 这是一种更便宜的盲盒式赌博，买家需要自己完成解密。请注意，与普通 MOD 相比，Riven 交易需要缴纳**更高的现金交易税**，并且你拥有的 **Riven 槽位数量是有上限的**，你可以使用白金来扩展槽位。"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "因素",
+              "在以下情况下会推高价格……"
+            ],
+            "rows": [
+              [
+                "武器",
+                "它是许多玩家都会配装的热门 / 主流武器"
+              ],
+              [
+                "倾向度",
+                "武器拥有高圆点（4–5），因此属性加成更强劲"
+              ],
+              [
+                "属性组合",
+                "增益属性契合理想配装，且任何负面属性都是无害的"
+              ],
+              [
+                "段位与重洗次数",
+                "较低的段位（MR）要求，外加买家认为无需重洗的完美属性"
+              ]
+            ]
+          }
+        },
+        {
+          "type": "p",
+          "text": "不要盲目猜测。在购买或挂牌出售之前，先估算一个合理的数字，然后对同一把武器的更广泛市场进行合理性检查："
+        },
+        {
+          "type": "links",
+          "links": [
+            {
+              "label": "Riven 价值估算器",
+              "to": "/riven-value",
+              "icon": "calculator-variant",
+              "note": "估算特定属性组合的价值"
+            },
+            {
+              "label": "Endo / 白金价值",
+              "to": "/endo",
+              "icon": "diamond-stone",
+              "note": "分解为 Endo 与出售的性价比计算"
+            },
+            {
+              "label": "差价寻找器",
+              "to": "/flip",
+              "icon": "swap-horizontal",
+              "note": "买入价 / 卖出价价差"
+            },
+            {
+              "label": "社区工具",
+              "to": "/tools",
+              "icon": "tools",
+              "note": "Riven 交易市场、wiki 和 DE 工具"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "do-you-need-one",
+      "title": "你真的需要 Riven 吗？",
+      "blocks": [
+        {
+          "type": "info",
+          "text": "Riven 是**后期追求极限（min-maxing）的产物，而不是必需品。** 只要配装得当，即使完全没有 Riven，武器也能轻松清理整个星图 —— 以及大部分的 Steel Path。它们是为了从你已经喜爱的武器中榨取额外的威力，或者为了挑战极高难度的无尽生存任务，而不是新手玩家需要追求的东西。"
+        },
+        {
+          "type": "p",
+          "text": "如果你是新手，请先优先考虑你的**核心 MOD、伤害类型和生存能力** —— 这些比任何 Riven 都重要得多。当你确实想要一个 Riven 时，为你主玩的武器购买一个属性不错的 Riven，几乎总是比用你的 Kuva 去赌神卡更明智。如果一个你永远用不上的 Riven 砸到了你头上，把它当作 [Endo](/guides/endo) 或换取一点交易白金，然后继续前进。"
+        }
+      ]
+    }
+  ],
+  "videos": [
+    {
+      "id": "mDWzPgDUH1k",
+      "title": "What you MUST KNOW about RIVENS in Warframe 2026!",
+      "channel": "MHBlacky"
+    },
+    {
+      "id": "t66oSX1BkLc",
+      "title": "How to Get Riven Mods and What They Do | Beginner's Guide",
+      "channel": "Tipsy"
+    },
+    {
+      "id": "CwcTyXalWrs",
+      "title": "Rings Of Riven Hell | Warframe Riven Mod & Platinum Farming",
+      "channel": "turbomonk"
+    },
+    {
+      "id": "U9-2UbALrQw",
+      "title": "ULTIMATE Riven Mod Guide!",
+      "channel": "Jacsonitos"
+    }
+  ],
+  "faqs": [
+    {
+      "q": "在 Warframe 中如何获得 Riven Mods？",
+      "a": "主要来源是 Sorties（每日三阶段挑战任务，大约有四分之一的几率奖励一个 Riven）、Duviri 的 Steel Path Circuit，以及 Riven Slivers —— 刷 10 个（Eximus 敌人会掉落，尤其是在 Steel Path 中）并前往 Iron Wake 找 Palladino 兑换一个未解密 Riven。你必须先完成 The War Within 任务，完成该任务也会赠送你的第一个 Riven。Kuva Siphon 和 Kuva Flood 任务提供的是用于重洗 Riven 的 Kuva，而不是 Riven 本身。"
+    },
+    {
+      "q": "如何解密未解密的 Riven？",
+      "a": "在你的 Mods 菜单中打开未解密的 Riven，查看其挑战和所需的武器类别，然后在装备匹配武器的情况下完成该挑战（例如步枪 Riven 装备步枪，以此类推）。一旦你完成挑战，Riven 就会显现其对应的武器和随机属性。先在 wiki 上查询确切的挑战描述 —— 有些挑战有棘手的条件，比如无护盾或不触发警报。"
+    },
+    {
+      "q": "如何重洗 Riven，需要消耗什么？",
+      "a": "你可以在 Mods 菜单中使用 Kuva 重洗（循环）Riven，这会完全重新随机化其属性。该 MOD 的重洗成本会随着次数增加而攀升，起步约为 900 Kuva，上限在 3,500 附近。这是纯粹的随机（RNG），没有保底机制，因此在开始消耗 Kuva 之前，先设定一个“足够好”的目标。你可以通过 Kuva Siphon、Kuva Flood 任务以及 Kuva Fortress 刷取 Kuva。"
+    },
+    {
+      "q": "什么是 Riven 倾向度？",
+      "a": "倾向度（Disposition）是针对每把武器的倍率，显示为 1 到 5 个圆点，它决定了 Riven 属性在该武器上的强弱。它与受欢迎程度成反比：冷门或极少使用的武器会获得高倾向度（更强的 Riven），而主流（meta）武器则会获得低倾向度。DE 会定期重新调整倾向度，这就是 Riven 价格波动的原因 —— 请查看实时 wiki 以获取武器当前的圆点数量。"
+    },
+    {
+      "q": "什么是“神卡（god roll）”Riven？",
+      "a": "神卡是指其随机属性与你的配装完美契合的 Riven —— 通常是三个强力增益（如暴击几率、暴击伤害、多重射击或伤害），外加一个你不在乎的负面属性（诅咒），例如 -zoom 或 -recoil。没有绝对完美的属性组合；最理想的 Riven 能弥补你常规 MOD 留下的空缺。使用我们的 /riven-value 估算器来评估特定属性组合的价值。"
+    },
+    {
+      "q": "Riven 对新手玩家来说值得吗？",
+      "a": "并不太值得 —— Riven 是后期追求极限的产物，只要配装得当，即使没有 Riven，武器也能轻松清理星图和大部分的 Steel Path。请先专注于你的核心 MOD、伤害类型和生存能力。当你确实想要 Riven 时，为你主玩的武器购买一个属性不错的 Riven，通常比用 Kuva 赌神卡更明智。"
+    },
+    {
+      "q": "我可以把 Riven 分解为 Endo 吗？",
+      "a": "是的。不需要的 Riven 可以分解为 Endo，分解获得的数量会根据 Riven 的重洗次数（加上其等级和段位要求）进行缩放，因此重洗次数很多的垃圾 Riven 可以提供相当可观的 Endo。由于市场上充斥着平庸的属性，属性差的 Riven 对你来说作为 Endo 的价值，往往高于以 1–2 白金出售的价值 —— 在决定之前，先用 /endo 工具计算一下。"
+    },
+    {
+      "q": "为什么 Riven 的价格波动如此之大？",
+      "a": "因为每一个 Riven 都是独一无二的，其价值取决于武器的受欢迎程度、其倾向度、确切的属性组合以及其 MR 需求。当 DE 调整武器的倾向度时，该武器的所有 Riven 都会瞬间变强或变弱，从而带动价格波动。在购买或挂牌出售之前，务必使用 /riven-value 估算一个合理的价格，并查看当前的市场行情。"
+    }
+  ],
+  "sources": [
+    {
+      "label": "Warframe Wiki — Riven Mods",
+      "href": "https://wiki.warframe.com/w/Riven_Mods"
+    },
+    {
+      "label": "Warframe Wiki — Riven Sliver",
+      "href": "https://wiki.warframe.com/w/Riven_Sliver"
+    },
+    {
+      "label": "r/Warframe — I love riven challenges",
+      "href": "https://reddit.com/r/Warframe/comments/1toi7ph/i_love_riven_challanges/"
+    },
+    {
+      "label": "r/Warframe — Every time Sortie gives me a Riven mod",
+      "href": "https://reddit.com/r/Warframe/comments/h0jktp/every_time_sortie_gives_me_a_riven_mod/"
+    },
+    {
+      "label": "r/Warframe — the RNG requiem/Kuva/riven casino rant",
+      "href": "https://reddit.com/r/Warframe/comments/dr46xo/so_let_me_get_this_straight_we_need_to_farm_rng/"
+    }
+  ],
+  "related": [
+    {
+      "label": "Endo 刷取",
+      "to": "/guides/endo",
+      "icon": "diamond-stone",
+      "note": "升级 Riven —— 或将属性差 of Riven 变现"
+    },
+    {
+      "label": "Riven 价值估算器",
+      "to": "/riven-value",
+      "icon": "calculator-variant",
+      "note": "在交易前为属性组合定价"
+    },
+    {
+      "label": "Endo / 白金价值",
+      "to": "/endo",
+      "icon": "scale-balance",
+      "note": "分解为 Endo 与出售的性价比计算"
+    },
+    {
+      "label": "差价寻找器",
+      "to": "/flip",
+      "icon": "swap-horizontal",
+      "note": "买入价 / 卖出价价差"
+    },
+    {
+      "label": "社区工具",
+      "to": "/tools",
+      "icon": "tools",
+      "note": "Riven 交易市场、wiki 和 DE 工具"
+    }
+  ],
+  "updated": "2026-07-18"
+}

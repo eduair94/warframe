@@ -1,0 +1,419 @@
+{
+  "slug": "archon-shards",
+  "eyebrow": "Wissenszentrum · Archon Shards",
+  "title": "Archon Shards Guide",
+  "lede": "Archon Shards sind Warframes Endgame-Stat-Währung: fünf permanente Sockel pro Frame, die einen starken Build in einen bahnbrechenden verwandeln. Hier ist jede Farbe, wie man sie farmt und wo du deine seltenen Tauforged ausgibst.",
+  "category": "endgame",
+  "readMins": 7,
+  "stats": [
+    {
+      "num": "5",
+      "label": "Sockel pro Warframe"
+    },
+    {
+      "num": "6",
+      "label": "Shard-Farben",
+      "tone": "alt"
+    },
+    {
+      "num": "1.5×",
+      "label": "Tauforged-Bonus",
+      "tone": "gold"
+    },
+    {
+      "num": "3",
+      "label": "Wöchentliche Farm-Quellen",
+      "tone": "good"
+    }
+  ],
+  "sections": [
+    {
+      "id": "what-they-are",
+      "title": "Was Archon Shards sind",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Archon Shards sind **permanente Stat-Upgrades**, die du beim **Helminth** in deinem Orbiter in einen Warframe einsetzt. Jeder Frame hat **fünf Shard-Sockel**, und jeder gesockelte Shard gewährt einen passiven Bonus, der immer aktiv ist – kein Build-Slot, keine Energiekosten, kein Umschalten. Sie stapeln sich auf deine Mods, Arcanes und [Helminth](/guides/helminth)-Fähigkeiten, was sie zur letzten Ebene vertikaler Macht im Spiel macht."
+        },
+        {
+          "type": "p",
+          "text": "Ganz wichtig: Shards sind **nur farmbar**. Du kannst sie nicht mit Platinum kaufen und nicht handeln – im Gegensatz zu Prime-Teilen oder Rivens verdient man sich einen Shard durch das Spielen von wöchentlichen Inhalten, und er bleibt accountgebunden. Das macht sie zu einer langsamen, bewussten Progressionswährung und nicht zu etwas, das man mit Plat abkürzen kann."
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "Wo du sie installierst",
+              "v": "Helminth — benötigt das Archon Shard Segment (aus der Veilbreaker-Quest)"
+            },
+            {
+              "k": "Sockel pro Frame",
+              "v": "5"
+            },
+            {
+              "k": "Effekt",
+              "v": "Permanenter passiver Stat-Bonus, immer aktiv"
+            },
+            {
+              "k": "Handelbar / Kaufbar",
+              "v": "Nein — nur gefarmt, accountgebunden"
+            },
+            {
+              "k": "Freischalten zum Farmen",
+              "v": "Schließe Veilbreaker ab (erfordert The New War)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "colors",
+      "title": "Die Shard-Farben",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Die Shard-Farbe bestimmt die *Kategorie* des Stats, den du daraus wählen kannst. Es gibt **sechs Farben in zwei Gruppen.** Drei **primäre** Farben — **Crimson, Amber, Azure** — droppen direkt aus der wöchentlichen Archon Hunt, Netracells und Deep Archimedea. Drei **sekundäre** Farben — **Topaz, Violet, Emerald** — können nicht direkt gefarmt werden; du stellst sie mittels **Coalescent Fusion** her, indem du zwei primäre Shards kombinierst (zum Beispiel Crimson + Azure = Violet). Du wählst den spezifischen Stat bei der Installation eines Shards und kannst beliebige Farben über die fünf Sockel eines Frames hinweg mischen."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Farbe",
+              "Fokus",
+              "Beispielboni"
+            ],
+            "rows": [
+              [
+                "Crimson (rot)",
+                "Offensive",
+                "Fähigkeitsstärke, Fähigkeitsdauer, Nahkampf-Krit-Schaden"
+              ],
+              [
+                "Amber (gelb)",
+                "Utility",
+                "Aktivierungsgeschwindigkeit, Parkour-Geschwindigkeit, Effektivität von Lebens-/Energie-Kugeln"
+              ],
+              [
+                "Azure (blau)",
+                "Überlebensfähigkeit",
+                "Leben, Schildkapazität, Rüstung, Maximale Energie"
+              ],
+              [
+                "Topaz (orange)",
+                "Elementar / AoE",
+                "Explosions-, Hitze- & Strahlungsschaden — Fusion: Crimson + Amber"
+              ],
+              [
+                "Violet (lila)",
+                "Waffen- / Energie-Hybrid",
+                "Elektrizitätsschaden, Nahkampf-Krit, Energie↔Leben-Konvertierung — Fusion: Crimson + Azure"
+              ],
+              [
+                "Emerald (grün)",
+                "Toxin & Korrosion",
+                "Toxin- & Korrosionsschaden, Status-Skalierung — Fusion: Amber + Azure"
+              ]
+            ],
+            "note": "Die drei primären Farben droppen direkt; die sekundären Farben werden mit Coalescent Fusion hergestellt (freigeschaltet über das Cavia-Syndikat). Genaue Stat-Listen und Werte werden von Patch zu Patch angepasst — schaue im Live-Wiki nach der aktuellen, vollständigen Tabelle, bevor du einen Sockel belegst."
+          }
+        },
+        {
+          "type": "info",
+          "text": "Faustregel: **Crimson lässt Fähigkeiten härter treffen, Azure hält dich am Leben, Amber sorgt für ein flüssigeres Gameplay des Frames.** Die drei reinen Fusionsfarben — Topaz, Violet, Emerald — sind spezialisierte Elementar- und Hybrid-Optionen (Explosion/Hitze/Strahlung, Elektrizität, Toxin/Korrosion). Greife erst zu ihnen, wenn du genau weißt, was ein Build benötigt, nicht als Standard-Sockel."
+        }
+      ]
+    },
+    {
+      "id": "tauforged",
+      "title": "Tauforged Shards (das gute Zeug)",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Jeder Shard ist in zwei Qualitätsstufen erhältlich. Ein **Tauforged**-Shard gibt den **1,5-fachen Bonus** eines normalen — zum Beispiel gewährt ein Crimson-Shard für Fähigkeitsstärke **+10 %**, während seine Tauforged-Version **+15 %** gewährt. Gleicher Sockel, gleiche Farbe, rund 50 % mehr Wert. Tauforged-Shards leuchten heller und werden in deinem Inventar als ein eigenständiges, kristallineres Modell dargestellt."
+        },
+        {
+          "type": "p",
+          "text": "Jeder Shard, den du erhältst, hat die Chance, **Tauforged** zu sein — eine Basis-Chance von **1 zu 5** bei der Archon Hunt, mit einem eingebauten Pech-Schutz, der die Chancen nach jedem Fehlschlag erhöht, bis schließlich einer droppt. Einige Quellen (wie Deep Archimedea) verbessern diese Chancen oder lassen dich wählen. Da sie selten sind, solltest du Tauforged wie eine Premium-Währung behandeln: Hier findet das echte Endgame-Min-Maxing statt."
+        },
+        {
+          "type": "tip",
+          "text": "Verwende Tauforged für deine **Haupt-Frames und für Werte, die skalieren** — Stärke, Aktivierungsgeschwindigkeit, Dauer. Ein Tauforged-Stärke-Shard ist ein permanenter, mod-freier Bonus von +15 %, den du nie in deinen Build einpassen musst. Normale Shards sind völlig ausreichend für dein B-Team und für reine Überlebensfähigkeit."
+        }
+      ]
+    },
+    {
+      "id": "farming",
+      "title": "Wo man Shards farmt",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Es gibt drei wöchentliche Quellen, und jede von ihnen lässt die **primären** Farben fallen. Am Anfang wirst du von der **Archon Hunt** leben; sobald du Whispers in the Walls abgeschlossen hast, vervielfachen **Netracells** und **Deep Archimedea** dein wöchentliches Shard-Einkommen. Überschüssige primäre Shards fließen dann in die **Coalescent Fusion** — so stellst du die Farben Topaz, Violet und Emerald her."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Quelle",
+              "Rhythmus",
+              "Freischaltung",
+              "Shard-Belohnung"
+            ],
+            "rows": [
+              [
+                "Archon Hunt",
+                "Wöchentlich (1 Durchlauf)",
+                "Schließe Veilbreaker ab (benötigt The New War)",
+                "1 Shard, dessen Farbe durch den Archon dieser Woche bestimmt wird (Amar→Crimson, Nira→Amber, Boreal→Azure), mit einer Chance auf Tauforged"
+              ],
+              [
+                "Netracells",
+                "Bis zu 5 / Woche",
+                "Whispers in the Walls (Sanctum Anatomica, Deimos)",
+                "Crimson / Amber / Azure Shards, mit einer Chance auf Tauforged"
+              ],
+              [
+                "Deep Archimedea",
+                "Wöchentlich (Elite)",
+                "Whispers in the Walls + maximaler Cavia-Rang",
+                "Beste Belohnungen; beste Tauforged-Chancen und -Auswahl"
+              ]
+            ],
+            "note": "Die Versuche für Netracells und Deep Archimedea werden wöchentlich zurückgesetzt. Die Archon Hunt rotiert, welchem Archon — Amar, Nira oder Boreal — du gegenüberstehst, und das bestimmt, welche primäre Farbe du in dieser Woche verdienen kannst. Sekundäre Farben stammen aus der Coalescent Fusion, nicht aus Drops."
+          }
+        },
+        {
+          "type": "info",
+          "text": "Die Freischaltungskette ist wichtig: **The New War → Veilbreaker** öffnet die Archon Hunt und gewährt das Archon Shard Segment, und **Whispers in the Walls → das Cavia-Syndikat** öffnet Netracells, Deep Archimedea und Coalescent Fusion. Wenn sich Shards blockiert anfühlen, liegt das meist daran, dass eine dieser Quests noch nicht abgeschlossen ist. Siehe den [Quest-Reihenfolge-Guide](/guides/quests)."
+        }
+      ]
+    },
+    {
+      "id": "install",
+      "title": "Wie man Shards installiert und verschiebt",
+      "blocks": [
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "h": "Öffne den Helminth",
+              "p": "Gehe an Bord deines Orbiters und interagiere mit dem Helminth (du benötigst das Archon Shard Segment, das durch den Abschluss der Veilbreaker-Quest freigeschaltet wird). Wähle den Warframe aus, den du upgraden möchtest."
+            },
+            {
+              "h": "Wechsle zur Archon Shard-Ansicht",
+              "p": "Öffne das Shard-Interface, um die fünf Sockel dieses Frames freizulegen."
+            },
+            {
+              "h": "Setze deine Shards ein",
+              "p": "Ziehe Shards aus deinem Inventar in einen beliebigen Sockel und wähle den Stat. Farben können frei gemischt werden — es gibt keine Farbanpassungspflicht, und die Installation kostet außer dem Shard selbst nichts."
+            },
+            {
+              "h": "Jederzeit neu verteilen",
+              "p": "Zieh einen Shard wieder heraus und er kehrt in dein Inventar zurück, um ihn andernorts wiederzuverwenden. Das Entfernen kostet ein Stück Helminth-Sekrete (etwa das Doppelte für einen Tauforged), aber du verlierst den Shard selbst nie — so kannst du deine Tauforged auf den Frame verschieben, den du diese Woche am liebsten spielst."
+            }
+          ]
+        },
+        {
+          "type": "info",
+          "text": "Da das Entfernen eines Shards nur Helminth-Ressourcen kostet — niemals den Shard selbst —, bist du nie wirklich festgelegt. Experimentiere: Sockele einen Stat, teste ihn im [Steel Path](/guides/steel-path) oder im Simulacrum, und tausche ihn aus, wenn er keinen spürbaren Unterschied macht."
+        }
+      ]
+    },
+    {
+      "id": "dont-lose-them",
+      "title": "Verliere deine Shards nicht",
+      "blocks": [
+        {
+          "type": "warn",
+          "text": "Installierte Shards gehen **verloren**, wenn du diesen Warframe an den Helminth verfütterst (**Subsume**) oder ihn **verkaufst**. Das Spiel zeigt zwar inzwischen eine Warnung an, aber man kann leicht darüber hinwegklicken — und der Verlust von fünf Tauforged auf diese Weise ist einer der am häufigsten hochgevoteten Fehler auf r/Warframe. **Ziehe deine Shards immer zuerst heraus**, besonders bevor du einen doppelten Frame subsumierst oder dein Inventar aufräumst."
+        },
+        {
+          "type": "quote",
+          "text": "Ich habe gestern meinen normalen Xaku subsumiert, der 5 Tauforged hatte (3 rote und 2 gelbe). Natürlich wurden sie gelöscht und es war völlig meine Schuld — ich hätte vorsichtiger sein müssen.",
+          "cite": "r/Warframe — ein sehr häufiger, sehr vermeidbarer Verlust"
+        },
+        {
+          "type": "tip",
+          "text": "Mach es dir zur Gewohnheit: **Bevor du einen Frame subsumierst oder verkaufst, öffne seine Archon Shard-Ansicht und leere die Sockel.** Die Shards gehen direkt zurück in dein Inventar, bereit für den nächsten Frame. (Falls dir doch mal ein Fehler unterläuft, kann der Warframe-Support durch ein Subsume verlorene Shards oft wiederherstellen.)"
+        }
+      ]
+    },
+    {
+      "id": "prioritize",
+      "title": "Wie man Prioritäten bei den Stats setzt",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Fünf Sockel auf deinem Lieblings-Frame bedeuten eine Menge Power, aber Shards sind schwer zu bekommen, also setze sie gezielt ein. Arbeite diese Liste ab, anstatt einen einzelnen Shard auf jeden Frame zu verteilen, den du besitzt:"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "**Du stirbst zu oft?** Beginne mit Azure-Überlebensfähigkeit — flaches Leben, Rüstung oder Schildkapazität —, damit der Frame den Kampf überhaupt erreicht.",
+            "**Fähigkeiten-Spammer, CC- oder Schadens-Frame, der bereits überlebt?** Crimson für Fähigkeitsstärke und -dauer oder Amber für Aktivierungsgeschwindigkeit lohnen sich am meisten.",
+            "**Strebe nach Breakpoints.** Fünf Stärke-Shards addieren etwa +50 % (oder +75 % als Tauforged) — perfekt, um einen Schwellenwert für Fähigkeiten zu erreichen, den deine Mods knapp verfehlen.",
+            "**Energiemangel?** Azure für maximale Energie plus Amber für Kugel-/Energie-Shards sorgen dafür, dass ein hungriger Frame ununterbrochen Fähigkeiten wirken kann.",
+            "**Konzentrieren, nicht verteilen.** Sockele die ein oder zwei Frames, die du tatsächlich im Endgame spielst, vollständig aus, bevor du dein B-Team anrührst."
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "Du bist dir nicht sicher, welche Frames Shards verdienen? Richte sie auf das aus, was du bereits im Steel Path und in Netracells spielst. Wenn du dich noch entscheidest, markiert die [Warframe Tier-List](/guides/tier-list) die Frames, die eine Investition von fünf Shards am meisten wert sind."
+        }
+      ]
+    },
+    {
+      "id": "power-ceiling",
+      "title": "Das obere Limit der Endgame-Power",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Archon Shards stehen ganz oben auf der Progressionsleiter eines Frames: **Mods → Forma → Arcanes → Helminth → Shards.** Sobald du sie sockelst, hast du bereits einen fähigen Frame gebaut; Shards sind die letzten 10–20 %, die ihn von 'gut' zu 'endgame-definierend' machen. Sie glänzen genau dort, wo die härtesten Inhalte des Spiels stattfinden — im [Steel Path](/guides/steel-path), in Netracells und Deep Archimedea sowie bei der [Eidolon-Jagd](/guides/eidolon)."
+        },
+        {
+          "type": "p",
+          "text": "Da du nur eine Handvoll pro Woche verdienst und Tauforged noch seltener sind, ist das vollständige Ausrüsten deines Arsenals mit Shards eine **monatelange Jagd**, kein Wochenendprojekt. Das ist so gewollt — es ist das langfristige Ziel, das Veteranen für den wöchentlichen Reset einloggen lässt. Alles andere in deinem Endgame (Forma, Arcanes, Kosmetika) kannst du mit [Platinum](/guides/platinum) beschleunigen; Shards musst du dir einfach verdienen."
+        },
+        {
+          "type": "links",
+          "links": [
+            {
+              "label": "Helminth Guide — das System, das deine Shards beherbergt",
+              "to": "/guides/helminth",
+              "icon": "dna"
+            },
+            {
+              "label": "Steel Path Guide — wo Shards ihren Wert beweisen",
+              "to": "/guides/steel-path",
+              "icon": "sword-cross"
+            },
+            {
+              "label": "Eidolon-Jagd — lohnende Shard-Ziele",
+              "to": "/guides/eidolon",
+              "icon": "weather-night"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "videos": [
+    {
+      "id": "WqLNrN2vNeg",
+      "title": "Archon Shards: The Complete Guide You NEED NOW!! | Warframe 2025",
+      "channel": "O Dawg"
+    },
+    {
+      "id": "nNOQ1GUElno",
+      "title": "Warframe ULTIMATE Archon Shards Guide 2025!",
+      "channel": "Weazel"
+    },
+    {
+      "id": "HZ2Zl1FUgws",
+      "title": "Archon Shards Explained — Warframe Showcase 2025",
+      "channel": "QuadLyStop"
+    },
+    {
+      "id": "Bgie_66KQD8",
+      "title": "The BEST Archon Shard Farm | Warframe",
+      "channel": "SleepySoul"
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Was sind Archon Shards in Warframe?",
+      "a": "Sie sind permanente Stat-Upgrades, die du beim Helminth in einen Warframe einsetzt. Jeder Frame hat fünf Sockel, und jeder gesockelte Shard gibt einen immer aktiven passiven Bonus (wie Fähigkeitsstärke, Leben oder Aktivierungsgeschwindigkeit), der sich mit deinen Mods und Arcanes stapelt. Sie können nicht gekauft oder gehandelt werden — nur gefarmt."
+    },
+    {
+      "q": "Wie farme ich Archon Shards?",
+      "a": "Drei wöchentliche Quellen, die alle die primären Farben (Crimson, Amber, Azure) liefern: Die Archon Hunt (freigeschaltet nach der Veilbreaker-Quest) gibt jede Woche einen Shard, dessen Farbe durch den Archon bestimmt wird, gegen den du in dieser Woche kämpfst; Netracells (bis zu fünf pro Woche) und Deep Archimedea (beide freigeschaltet durch die Quest Whispers in the Walls) fügen weitere hinzu. Die sekundären Farben — Topaz, Violet, Emerald — droppen nicht; du stellst sie mittels Coalescent Fusion aus primären Shards her. Siehe den [Quest-Reihenfolge-Guide](/guides/quests), falls diese noch nicht freigeschaltet sind."
+    },
+    {
+      "q": "Was ist ein Tauforged-Shard und lohnt er sich?",
+      "a": "Ein Tauforged-Shard gibt den 1,5-fachen Bonus eines normalen Shards — zum Beispiel +15 % Fähigkeitsstärke anstelle von +10 %. Jeder Shard hat eine Basis-Chance von etwa 1 zu 5, als Tauforged ausgewürfelt zu werden (mit einem Pech-Schutz, der die Chancen nach jedem Fehlschlag erhöht). Sie lohnen sich absolut: Hebe sie für deine meistgenutzten Frames und für skalierende Werte wie Stärke oder Aktivierungsgeschwindigkeit auf."
+    },
+    {
+      "q": "Wie viele Archon Shards kann ich in einen Warframe einsetzen?",
+      "a": "Fünf. Jeder Warframe hat genau fünf Shard-Sockel, und du kannst beliebige Farben mischen — es gibt keine Farbanpassungspflicht. Du wählst den spezifischen Stat, wenn du den jeweiligen Shard installierst."
+    },
+    {
+      "q": "Verliere ich meine Archon Shards, wenn ich den Warframe subsumiere oder verkaufe?",
+      "a": "Ja — das Subsumieren eines Frames beim Helminth oder sein Verkauf zerstört alle darauf installierten Shards. Das Spiel warnt dich zwar, aber es ist ein sehr häufiger und schmerzhafter Fehler. Entferne deine Shards immer zuerst (sie kehren in dein Inventar zurück), besonders die Tauforged-Versionen. Wenn du doch welche verlierst, kann der Warframe-Support sie oft wiederherstellen."
+    },
+    {
+      "q": "Kann ich Archon Shards zwischen Warframes verschieben?",
+      "a": "Ja. Du kannst einen Shard von jedem Frame entfernen, und er geht zurück in dein Inventar, um ihn auf einem anderen wiederzuverwenden. Das Entfernen kostet einige Helminth-Sekrete (etwa das Doppelte für einen Tauforged), aber du verlierst den Shard selbst nie — so kannst du deine seltenen Tauforged frei auf den Frame verschieben, den du gerade am liebsten spielst."
+    },
+    {
+      "q": "Kann man Archon Shards kaufen oder handeln?",
+      "a": "Nein. Archon Shards sind accountgebunden und nur farmbar — du kannst sie nicht mit Platinum kaufen oder mit anderen Spielern handeln. Finanziere den Rest deines Endgames (Forma, Arcanes, Kosmetika) stattdessen mit [Platinum](/guides/platinum) und verdiene dir Shards durch wöchentliches Spielen."
+    },
+    {
+      "q": "Welchen Archon Shard sollte ich zuerst installieren?",
+      "a": "Wenn du oft stirbst, beginne mit Azure-Überlebensfähigkeit (Leben, Rüstung oder Schild). Wenn dein Frame bereits überlebt, bieten Crimson für Fähigkeitsstärke oder Amber für Aktivierungsgeschwindigkeit den größten Nutzen. Eine hervorragende Verwendung ist das Erreichen eines Breakpoints für Fähigkeiten, den deine Mods knapp verfehlen — fünf Stärke-Shards addieren etwa +50 % Stärke."
+    }
+  ],
+  "sources": [
+    {
+      "label": "Official Warframe Wiki — Archon Shard",
+      "href": "https://wiki.warframe.com/w/Archon_Shard"
+    },
+    {
+      "label": "Official Warframe Wiki — Archon Hunt",
+      "href": "https://wiki.warframe.com/w/Archon_Hunt"
+    },
+    {
+      "label": "r/Warframe — A little reminder before subsuming a frame",
+      "href": "https://reddit.com/r/Warframe/comments/1irgcfd/a_little_reminder_before_subsuming_a_frame/"
+    },
+    {
+      "label": "r/Warframe — my first Tauforged got stolen (subsume warning)",
+      "href": "https://reddit.com/r/Warframe/comments/1fi377w/my_first_tauforged_got_fucking_stolen_bruh/"
+    }
+  ],
+  "related": [
+    {
+      "label": "Helminth Guide",
+      "to": "/guides/helminth",
+      "icon": "dna",
+      "note": "Das System, das deine Shards installiert und beherbergt"
+    },
+    {
+      "label": "Community-Tools",
+      "to": "/tools",
+      "icon": "tools",
+      "note": "Build-Planer (Overframe), um dein Shard-Loadout zu planen"
+    },
+    {
+      "label": "Steel Path Guide",
+      "to": "/guides/steel-path",
+      "icon": "sword-cross",
+      "note": "Wo Shard-Power tatsächlich eine Rolle spielt"
+    },
+    {
+      "label": "Eidolon-Jagd",
+      "to": "/guides/eidolon",
+      "icon": "weather-night",
+      "note": "Lohnende Endgame-Shard-Ziele"
+    },
+    {
+      "label": "Warframe Tier-List",
+      "to": "/guides/tier-list",
+      "icon": "trophy",
+      "note": "Welche Frames fünf Shards verdienen"
+    },
+    {
+      "label": "Vollständiges Warframe-FAQ",
+      "to": "/faq",
+      "icon": "help-circle",
+      "note": "Schnelle Antworten auf häufige Fragen"
+    },
+    {
+      "label": "Platinum Guide",
+      "to": "/guides/platinum",
+      "icon": "cash",
+      "note": "Finanziere das Endgame, das du nicht farmen kannst"
+    }
+  ],
+  "updated": "2026-07-18"
+}

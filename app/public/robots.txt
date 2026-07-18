@@ -1,5 +1,8 @@
 User-agent: *
 Allow: /
+# Non-content: the websocket proxy path and the PWA start_url duplicate.
+Disallow: /live-io/
+Disallow: /*?source=
 
 # AI answer engines / LLM crawlers — we WANT to be indexed and cited
 User-agent: GPTBot

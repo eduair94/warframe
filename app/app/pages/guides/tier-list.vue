@@ -6,5 +6,6 @@
 </template>
 
 <script setup lang="ts">
-import guide from '~/data/guides/tier-list'
+import enGuide from '~/data/guides/tier-list'
+const guide = await useLocalizedGuide('tier-list', enGuide)
 </script>

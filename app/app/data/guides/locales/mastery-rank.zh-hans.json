@@ -1,0 +1,489 @@
+{
+  "slug": "mastery-rank",
+  "eyebrow": "知识中心 · Mastery Rank",
+  "title": "Mastery Rank 与快速升级",
+  "lede": "Mastery Rank 是你账号的里程表——它能解锁装备、提升每日 syndicate 声望和交易上限，并在你升级制作的每样东西时默默给予奖励。这里将详细介绍 mastery、affinity 和测试的具体运作机制，以及最快的升级方法。",
+  "category": "start",
+  "readMins": 9,
+  "stats": [
+    {
+      "num": "30",
+      "label": "满级 MR，然后是 Legendary Ranks",
+      "tone": "gold"
+    },
+    {
+      "num": "3,000",
+      "label": "每个满级 weapon 的 mastery",
+      "tone": "good"
+    },
+    {
+      "num": "6,000",
+      "label": "每个满级 frame 的 mastery",
+      "tone": "good"
+    },
+    {
+      "num": "50m",
+      "label": "affinity 分享范围",
+      "tone": "alt"
+    }
+  ],
+  "sections": [
+    {
+      "id": "what-is-mr",
+      "title": "Mastery Rank 究竟是什么",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Mastery Rank (MR)** 是全账号通用的进度等级，与单个 Warframe 或 weapon 的等级相互独立。你通过获取 **Mastery** 来提升它——这是一种永久的 affinity 形式，每当你升级一件**全新的、独特的**装备，或首次通关新内容时，它就会累积到你的账号中。与装备 XP 不同，mastery 永远不会重置：一旦某个 item 获得了它的 mastery，该进度就会永久保留。"
+        },
+        {
+          "type": "p",
+          "text": "黄金法则：**每件独特 item 的 mastery 仅计算一次。** 将你的 Braton 升到 30 级只会提供一次 mastery。将其卖掉、重新制作，或者使用 Forma 并重新升级，都不会给你带来任何额外收益。这一条规则决定了本页上每一个高效升级策略。"
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "等级",
+              "v": "MR 0 → 30，然后是 DE 随时间不断延伸的 Legendary Ranks (LR1, LR2, …)"
+            },
+            {
+              "k": "Mastery 是",
+              "v": "永久的、全账号通用的，每件独特 item 仅限获取一次"
+            },
+            {
+              "k": "MR 测试",
+              "v": "通过一次性挑战来锁定每个新等级"
+            },
+            {
+              "k": "你需要拥有所有东西吗？",
+              "v": "不需要——游戏中的 items 数量远超达到 MR30 所需的数量"
+            }
+          ]
+        },
+        {
+          "type": "info",
+          "text": "MR30 是最高的*数字*等级。超越它之后，你将继续赚取 mastery 以提升 DE 随时间添加的 **Legendary Ranks**。你**不需要**拥有游戏中的每一个 item 就能达到 MR30——清理完 Star Chart 并升级大部分装备就足够了。"
+        }
+      ]
+    },
+    {
+      "id": "what-mr-unlocks",
+      "title": "MR 解锁什么（以及不解锁什么）",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "MR 并不是强度等级——一个刚到 MR2 的新手和一个满级 MR30 的老玩家使用相同的配置，造成的伤害是完全一样的。MR 给你带来的是**使用权限和账号便利性**：它将某些装备限制在特定的等级要求之后，并默默地提高了几项每日上限，这些上限在你深入 farming 和交易时非常重要。"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "特权",
+              "它如何随 MR 提升"
+            ],
+            "rows": [
+              [
+                "Weapon 与装备解锁",
+                "许多 weapons 需要达到最低 MR 才能购买或装备（即 item 卡片上的等级锁）"
+              ],
+              [
+                "每日声望上限",
+                "随着每个 Mastery Rank 的提升而增加，按 syndicate 独立计算——你的 MR 越高，每天可以获取的声望就越多（DE 随时间提高了上限，因此请将任何具体数值视为动态变化的数值）"
+              ],
+              [
+                "每日交易次数",
+                "等于你的 MR（MR10 = 每日 10 次交易；你至少需要 MR2 才能进行交易）"
+              ],
+              [
+                "初始 mod 容量",
+                "未升级的装备初始拥有的 mod 容量等于你的 MR，上限为 30（若安装了 Reactor/Catalyst 则翻倍）"
+              ]
+            ],
+            "note": "更高的声望上限能直接加快 Focus、arcane 和 syndicate 的 farming 速度——请参阅 Standing 和 Focus 指南。"
+          }
+        },
+        {
+          "type": "p",
+          "text": "声望上限是一项隐藏的福利。如果你在肝 [syndicate 声望](/guides/standing) 或 [Focus](/guides/focus)，你获得的每一个 MR 都能让你每天获取更多声望。更多的 [每日交易](/guides/platinum) 也意味着更多的 platinum 倒买倒卖机会——一旦你开始活跃交易，可以配合 [Flip finder](/flip) 使用。"
+        },
+        {
+          "type": "warn",
+          "text": "常见误区：“我需要肝 MR 才能在高等级内容中生存。”你不需要。生存能力来自 **mods、arcanes 和 shield-gating**，而不是 MR。追求 MR 是为了解锁装备和每日上限，而不是为了纯粹的强度。"
+        }
+      ]
+    },
+    {
+      "id": "how-mastery-earned",
+      "title": "如何获取 mastery",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "你通过首次将装备从 0 级升到 30 级来积累 mastery。不同类型的 item **每级**提供的数值不同，因此一个满级的 Warframe 提供的数值是一个满级 weapon 的两倍："
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Item 类型",
+              "每级获得的 mastery",
+              "满级时的总额"
+            ],
+            "rows": [
+              [
+                "Weapons（主武器、副武器、近战武器等）",
+                "100",
+                "30 级时为 3,000"
+              ],
+              [
+                "Warframes",
+                "200",
+                "30 级时为 6,000"
+              ],
+              [
+                "Companions（守护与野兽宠物）",
+                "200",
+                "30 级时为 6,000"
+              ],
+              [
+                "Archwing",
+                "200",
+                "30 级时为 6,000"
+              ],
+              [
+                "Kuva / Tenet / Coda / Paracesis weapons（40 级）",
+                "100",
+                "40 级时为 4,000"
+              ]
+            ],
+            "note": "Necramechs、Amps、K-Drives 和 Railjack Intrinsics 也会提供 mastery。每个 Star Chart 节点、枢纽以及它们的 Steel Path 版本在首次通关时也会提供一次性的 mastery。"
+          }
+        },
+        {
+          "type": "tip",
+          "text": "**Star Chart 本身就是巨大的免费 mastery 来源。** 首次通关每个节点（普通和 [Steel Path](/guides/steel-path)）以及所有枢纽，可以获得大量被许多玩家忽略的 mastery。使用 [掉落位置地图](/star-chart-3d) 来查看你还有哪些地方没有探索。"
+        },
+        {
+          "type": "p",
+          "text": "由于每件 item 的 mastery 只能获取一次，老玩家会制作便宜的“mastery 狗粮” weapons，纯粹是为了将它们升到 30 级然后处理掉。游戏中有数百种 weapons 和几十个 frames——在你拥有它们全部之前，你早就超过 MR30 了。"
+        }
+      ]
+    },
+    {
+      "id": "affinity-101",
+      "title": "Affinity 基础知识：升级机制",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Affinity 就是经验值。** 它是将你的装备从 0 级提升到 30 级的基础，可以通过两种方式获取：**击杀**（及助攻）和**任务目标/完成度**。理解 affinity 如何在你的 Warframe 和三件 weapons 之间分配，是快速升级最重要的一点。"
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "你的 weapon 击杀",
+              "v": "50% 分配给获得击杀的 weapon，50% 分配给你的 Warframe"
+            },
+            {
+              "k": "你的技能击杀",
+              "v": "实际上全部流入你的 Warframe"
+            },
+            {
+              "k": "队友的击杀（在范围内）",
+              "v": "你获得分成：25% 分配给你的 Warframe，75% 平均分配给你装备的 weapons——所以即使你从未开火，枪械也会升级"
+            },
+            {
+              "k": "Affinity 分享范围",
+              "v": "普通任务中为 50 米——保持在战斗区域附近，否则你什么也得不到（开放世界/Landscape 地图使用大得多的范围）"
+            },
+            {
+              "k": "Affinity Booster",
+              "v": "使你获得的所有 affinity 翻倍（可与双倍 affinity 周末叠加）"
+            }
+          ]
+        },
+        {
+          "type": "p",
+          "text": "从该表中可以得出两个实用的结论。**要升级 weapon**，要么用它射击，要么在保持在 50 米内时，蹭队友使用 nuke 技能清场时分享的 affinity。**要快速升级 Warframe**，请使用**技能击杀**——这会将 100% 的 affinity 直接灌入你的 frame 中，而队友分享的击杀只有 25%。并且**在升级时不要携带已经满级的 weapons**：分配到满级装备上的 affinity 会被浪费，因此请用你也想升级的未升级 weapons 填满这些槽位。"
+        },
+        {
+          "type": "warn",
+          "text": "在 Defense 和 Survival 任务中，如果距离敌人死亡地点超过 50 米，意味着你将获得**零**分享 affinity。在升级时，请紧跟任务目标或带飞的队友。"
+        }
+      ]
+    },
+    {
+      "id": "fast-leveling",
+      "title": "最快升级方法（affinity farming）",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "最好的升级任务会将密集的敌人刷新点压缩在一个狭小的区域内，这样分享的 affinity 就能灌满你携带的每一件装备。带上你想升级的装备，加入公开队伍（或找一个强力的朋友），然后等待击杀数滚滚而来。"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "方法",
+              "最适合",
+              "备注"
+            ],
+            "rows": [
+              [
+                "Sanctuary Onslaught / Elite SO",
+                "快速、密集的 XP",
+                "通过 Cephalon Simaris；ESO 适合已经有一定配置的装备"
+              ],
+              [
+                "高密度 Defense（例如 Sedna 上的 Hydron，Saturn 上的 Helene）",
+                "轻松、适合挂机的升级方式",
+                "长期以来深受社区喜爱的选择——携带或加入一个能 nuke 的 frame 队伍"
+              ],
+              [
+                "Void Fissures",
+                "升级与刷战利品两不误",
+                "在开 relics 的同时获得双重经验收益——参见 Relic Farming 工具"
+              ],
+              [
+                "Duviri Circuit",
+                "升级 + 奖励",
+                "现代化的选择；Steel Path Circuit 适合老玩家"
+              ],
+              [
+                "廉价的 Exterminate / Capture",
+                "MR 狗粮",
+                "将刚制作好的过渡 weapons 快速升到 30 级然后回收"
+              ]
+            ],
+            "note": "唯一的“最佳节点”会随着平衡性补丁和活动而变化。请查看实时维基或最近的视频以获取当前的 meta 选择。"
+          }
+        },
+        {
+          "type": "p",
+          "text": "两个倍率加成能让一切变得更快：使用 **Affinity Booster**（来自商店或 Nightwave/每日签到奖励），并将你的肝度安排在**双倍 affinity 周末**——它们可以叠加为 4 倍 affinity。在 [Void Fissures](/relic-farming) 中升级是效率之王，因为你可以在同一次运行中升级装备*并* farm prime 部件；使用 [relic 价值工具](/relics-value) 来决定哪些 relics 值得开。"
+        },
+        {
+          "type": "tip",
+          "text": "带上一整套需要升级的装备（frame + 3 件 weapons）加入一个带飞的队伍，你就可以在单次游戏中将 **four items** 从 0 级升到 30 级。只需确保你是在击杀点附近保持不动，而不是到处乱跑。"
+        }
+      ]
+    },
+    {
+      "id": "rank-to-30-loop",
+      "title": "升到 30 级的循环",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "高效的 mastery 刷取是一个简单、可重复的循环。目标是接触每件独特的 item 刚好一次，将其升到 30 级，然后永远不再回头。"
+        },
+        {
+          "type": "steps",
+          "ordered": true,
+          "steps": [
+            {
+              "h": "购买蓝图 / 制作 item",
+              "p": "从商店用 credits 购买 weapon 蓝图；大多数都很便宜。在下线前开始 Foundry 制作（weapons 通常需要大约 12 小时；加上部件后 Warframes 需要更长时间），这样下一次上线时就准备好了。"
+            },
+            {
+              "h": "领取并装备它",
+              "p": "一件全新的 item 是 0 级。它的初始 mod 容量已经等于你的 MR，因此即使是未升级的装备也可以直接用于升级。"
+            },
+            {
+              "h": "一次性将其升到 30 级",
+              "p": "带它去 affinity 刷取点（Onslaught、Defense 节点或 Fissure）。升到 30 级时，它会提供全部的 mastery——weapon 为 3,000，frame 为 6,000。"
+            },
+            {
+              "h": "保留它，或回收槽位",
+              "p": "一旦升满，mastery 就永久属于你了。卖掉作为 mastery 狗粮的 weapons 以释放槽位并制作下一个。保留任何你真正喜欢的东西。"
+            },
+            {
+              "h": "不要为了 mastery 重新升级",
+              "p": "使用 Forma 会将 item 重置为 0 级以添加极性槽（polarity slots）——这对于配置（builds）非常有用，但它不会提供任何额外的 mastery。只重新升级你正在自定义的装备，而不是为了 MR。"
+            }
+          ]
+        },
+        {
+          "type": "info",
+          "text": "想确切地知道你漏掉了什么吗？社区 mastery 追踪器和清单（链接自 [社区工具目录](/tools)）可以让你勾选每一件 weapon 和 frame，这样你就不会制作已经满级过的重复装备。"
+        }
+      ]
+    },
+    {
+      "id": "mr-tests",
+      "title": "MR 测试与如何准备",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "赚取足够的 mastery 可以让下一个等级*可用*，但你必须**通过 Mastery Rank 测试**才能真正获得它。每个等级都有自己独特的测试——限时跑酷、潜行击杀、在压力下破解控制台、无伤击杀敌人波次等等。随着等级的提升，难度也会增加。"
+        },
+        {
+          "type": "steps",
+          "ordered": true,
+          "steps": [
+            {
+              "h": "在 Cephalon Simaris 免费练习",
+              "p": "每个 Relay 都有 Cephalon Simaris，他可以让你**模拟完全相同的测试**，次数不限，没有冷却时间，也没有惩罚。请务必先进行练习。"
+            },
+            {
+              "h": "准备好后进行正式测试",
+              "p": "当你积累了足够的 mastery 时，就会出现升级提示（在你的 Orbiter / 个人资料中）。在练习熟练后尝试进行测试。"
+            },
+            {
+              "h": "如果失败，请等待大约一天",
+              "p": "失败除了需要等待大约 **24 小时的冷却时间**才能再次尝试正式测试外，没有任何惩罚。在等待期间，练习模式依然可以无限次进行。"
+            }
+          ]
+        },
+        {
+          "type": "warn",
+          "text": "那 24 小时的锁定是唯一的惩罚——所以**绝不要盲目尝试测试。** 在 Simaris 处反复练习，直到你能稳定通过，然后再进行正式测试。许多测试在使用机动性强的 frame（Volt、Titania、Wisp、Zephyr）或优秀的移动配置（build）时也会变得非常简单。"
+        },
+        {
+          "type": "tip",
+          "text": "卡在移动或“无伤”测试上了？带上一个拥有速度、隐形或伤害免疫的 frame，这通常能让令人沮丧的测试变成走过场。如果某个特定等级让你感到困扰，请查看最近针对该测试的视频。"
+        }
+      ]
+    },
+    {
+      "id": "should-you-chase",
+      "title": "你应该追求 MR 吗？聪明的关键节点",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "你不需要刻意去*肝* MR——当你在 [progression roadmap](/guides/progression) 的指引下制作装备和清理 Star Chart 时，它会自然积累。但是升级你制作的每一件东西（而不是直接丢弃）几乎总是值得的，因为 MR 会默默地在装备解锁、声望、交易和初始容量方面给予回报。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**升级你制作的每样东西。** 每个 frame、weapon 和 companion 都是免费的 mastery——在出售或使用 Forma 之前，将它们升到 30 级一次。",
+            "**清理整个 Star Chart，通关两次。** 普通节点、枢纽和 [Steel Path](/guides/steel-path) 节点是巨大的、一次性的 mastery 来源，大多数玩家都忽略了它们。",
+            "**注意装备的关键节点。** 一些最强的 weapons 带有 MR 要求，因此多升几级可以解锁你真正想要的 meta 选择。",
+            "**如果你在 farm 声望，请优先考虑 MR。** 如果你深入研究 Focus、arcanes 或 syndicates，更高的每日上限会让每一个等级都迅速值回票价。"
+          ]
+        },
+        {
+          "type": "quote",
+          "text": "MR 是探索整个游戏的奖励，而不是一堵需要攀爬的墙。广泛地游玩，将所有东西升级一次，你就会在不知不觉中达到 MR20，而无需刻意去“肝 mastery”。",
+          "cite": "来自 r/Warframe 老玩家的常见建议"
+        },
+        {
+          "type": "p",
+          "text": "需要注意的一点：不要*仅仅*为了达到某个数字而提升 MR，如果这意味着要把威力不足的 weapons 强行带入高难度内容中。自然地建设你的账号，为你最喜欢的装备配好 mod，并将 MR 视为它本来的样子——一个记录你体验了多少 Warframe 内容的记分牌。"
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "在 Warframe 中如何提升 Mastery Rank？",
+      "a": "通过首次将新装备从 0 级升到 30 级（weapons 提供 3,000，frames 和 companions 提供 6,000），以及清理 Star Chart 节点和枢纽来获取 mastery。一旦你积累了足够的数值，通过该等级的 Mastery Rank 测试即可锁定它。每件独特的 item 仅计算一次——使用 Forma 重新升级不会提供额外的 mastery。"
+    },
+    {
+      "q": "What does Mastery Rank actually do?",
+      "a": "MR 将某些 weapons 和装备限制在特定的等级要求之后，并提高了多项每日上限：你的 syndicate 声望上限（随每个等级提升）、你的每日交易次数（等于你的 MR），以及未升级装备的初始 mod 容量。它不会让你造成的伤害更高——生存能力和伤害来自 mods 和 arcanes，而不是 MR。"
+    },
+    {
+      "q": "最快 farm affinity 和升级的方法是什么？",
+      "a": "带上你想升级的装备去密集的 affinity 刷取点——Sanctuary Onslaught、像 Hydron 或 Helene 这样高密度的 Defense 节点，或者 Void Fissure——并保持在击杀点 50 米以内，以便吸收分享 of affinity。使用 Affinity Booster，理想情况下配合双倍 affinity 周末，可获得高达 4 倍的收益。在 [Void Fissures](/relic-farming) 中升级可以让你在升级装备的同时 farm prime 部件。"
+    },
+    {
+      "q": "使用 Forma 或重新升级 weapon 会提供更多 mastery 吗？",
+      "a": "不会。每件 item 仅在其首次达到 30 级时提供一次 mastery。Forma 会将 item 重置为 0 级，以便你添加极性槽（polarity slots）以获得更好的配置（build），但重新升级它不会获得任何额外的 mastery。只在自定义装备时重新升级，绝不要为了 MR 而升级。"
+    },
+    {
+      "q": "队伍中的 affinity 分享是如何运作的？",
+      "a": "当队友在你周围约 50 米内击杀敌人时，你会收到该 affinity 的分成——25% 分配给你的 Warframe，75% 平均分配给你装备的 weapons。这就是为什么即使你从未开火，只要跟着能 nuke 的队友，枪械也会升级。如果走出 50 米范围，你将一无所得。（你自己的 weapon 击杀分配方式不同：50% 分配给 weapon，50% 分配给你的 Warframe。）"
+    },
+    {
+      "q": "如果我 Mastery Rank 测试失败了会怎么样？",
+      "a": "除了需要等待大约 24 小时才能再次尝试正式测试外，什么也不会发生——没有经验值损失或其他惩罚。先在任何 Relay 的 Cephalon Simaris 处免费且无限次地练习完全相同的测试，这样你只有在能稳定通过时才进行正式测试。"
+    },
+    {
+      "q": "有最高 Mastery Rank 吗？",
+      "a": "MR30 是最高的数字等级。在此之后，你将继续赚取 mastery 以提升 Legendary Ranks（LR1、LR2 等），DE 会随时间延伸这些等级。你不需要拥有每一个 item 才能达到 MR30——游戏中的 weapons 和 frames 数量远超该等级所需的数量。"
+    },
+    {
+      "q": "作为新玩家，我应该急于提升 Mastery Rank 吗？",
+      "a": "无需执着于此——当你制作装备和清理 Star Chart 时，MR 会自然提升。但是将你制作的每样东西升级到 30 级一次是值得的，因为更高的 MR 会解锁更强的 weapons 并提高你的每日声望和交易上限。先专注于建立稳固的装备阵容和 mods；等级自然会随之而来。"
+    }
+  ],
+  "videos": [
+    {
+      "id": "5B01ZDPCM_o",
+      "title": "Warframe How to get Mastery Rank FAST | Warframe Affinity and Mastery Rank Explained",
+      "channel": "CerealOverdrive"
+    },
+    {
+      "id": "J_6wVLRvTpE",
+      "title": "HOW TO FARM MASTERY RANK FAST IN 2025! WARFRAME BEST LEVELING AFFINITY SPOTS",
+      "channel": "Pupsker"
+    },
+    {
+      "id": "eTI-zSoH6FE",
+      "title": "How to Level up fast in Warframe -  Affinity farming Guide for all Players",
+      "channel": "QuadLyStop"
+    },
+    {
+      "id": "ecySSBRcCIo",
+      "title": "Warframe: FAST MASTERY RANK 2025!...",
+      "channel": "MHBlacky"
+    }
+  ],
+  "sources": [
+    {
+      "label": "r/Warframe — My Journey ends at MR25",
+      "href": "https://reddit.com/r/Warframe/comments/1uockj8/my_journey_ends_at_mr25/"
+    },
+    {
+      "label": "r/Warframe — Mastery Rank & Helminth motivation thread",
+      "href": "https://reddit.com/r/Warframe/comments/idu92w/i_like_the_idea_that_way_people_could_become/"
+    },
+    {
+      "label": "r/Warframe — Affinity farming discussion (Gian Point)",
+      "href": "https://reddit.com/r/Warframe/comments/m4fvff/gian_point_should_become_a_graveyard/"
+    },
+    {
+      "label": "Official Warframe Wiki",
+      "href": "https://wiki.warframe.com/"
+    }
+  ],
+  "related": [
+    {
+      "label": "Progression Roadmap",
+      "to": "/guides/progression",
+      "icon": "map-marker-path",
+      "note": "MR 在更宏大的晋升之路中处于什么位置"
+    },
+    {
+      "label": "New Player Guide",
+      "to": "/guides/new-player",
+      "icon": "rocket-launch",
+      "note": "你的前 20 个小时，正确起步"
+    },
+    {
+      "label": "Syndicate Standing",
+      "to": "/guides/standing",
+      "icon": "handshake",
+      "note": "更高的 MR = 更大的每日上限"
+    },
+    {
+      "label": "Focus & Operator",
+      "to": "/guides/focus",
+      "icon": "eye-outline",
+      "note": "升级装备可以提供你的 Focus"
+    },
+    {
+      "label": "Steel Path",
+      "to": "/guides/steel-path",
+      "icon": "skull-outline",
+      "note": "第二个提供免费 mastery 的 Star Chart"
+    },
+    {
+      "label": "社区工具",
+      "to": "/tools",
+      "icon": "tools",
+      "note": "Mastery 追踪器与清单"
+    }
+  ],
+  "updated": "2026-07-18"
+}

@@ -1,0 +1,531 @@
+{
+  "slug": "mods",
+  "eyebrow": "ナレッジセンター · Mod & 生存性",
+  "title": "必須Mod & 生存性",
+  "lede": "入手したばかりのWarframeやweaponは、ほぼ裸同然です。modこそがあなたの強さの残りの90%を占めています。mod容量、ダメージ乗算モデル、そしてshield-gatingをマスターすれば、どんなframeでもSteel Pathを生き抜くことができます。",
+  "category": "systems",
+  "readMins": 12,
+  "stats": [
+    {
+      "num": "60",
+      "label": "potato使用時の最大容量",
+      "tone": "gold"
+    },
+    {
+      "num": "4",
+      "label": "Warframeのアビリティステータス",
+      "tone": "alt"
+    },
+    {
+      "num": "6",
+      "label": "複合属性ダメージ",
+      "tone": "good"
+    },
+    {
+      "num": "2.25s",
+      "label": "最大shield-gate無敵時間",
+      "tone": "gold"
+    }
+  ],
+  "sections": [
+    {
+      "id": "how-modding-works",
+      "title": "modこそがビルドのすべてであり、それ以外はただのシャーシに過ぎません",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "入手したばかりのWarframeやweaponは、ただの殻に過ぎません。**mod**は、そこに装着してダメージ、ヘルス、アビリティ、クリティカル、属性、ユーティリティを追加するカードであり、あなたの強さのほぼすべてはここから生まれます。上手にmodを構成する方法を学ぶことの方が、どのframeを所有しているかよりも遥かに重要です。"
+        },
+        {
+          "type": "p",
+          "text": "すべてのitemには**modスロット**と**容量**の制限があります。各modには**コスト**があり、装備しているmodの合計コストは容量を超えることはできません。容量はitemの**ランク**に等しく、ランク30のWarframeやweaponは**30の容量**を持ちます。modのランクを上げる（Endoとクレジットを使用）と強力になりますが、消費コストも増加します。"
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "Warframeのスロット",
+              "v": "8 mod + 1 Aura + 1 Exilus"
+            },
+            {
+              "k": "weaponのスロット",
+              "v": "8 mod + 1 Exilus（近接武器はStanceスロット）"
+            },
+            {
+              "k": "基本最大容量",
+              "v": "ランク30で30（Reactor/Catalyst使用で60）"
+            },
+            {
+              "k": "modのランクアップに使用するもの",
+              "v": "mod画面でのEndo + クレジット"
+            },
+            {
+              "k": "modのドロップ場所",
+              "v": "敵、ボス、シンジケート、Transmutation、クエスト"
+            }
+          ]
+        },
+        {
+          "type": "info",
+          "text": "重複したmodを盲目的に溜め込まないでください。ただし、Serration、Vitality、またはPrimed modのようなコアmodの**唯一のコピーは絶対に売却しないでください**。迷ったときは1枚だけ残し、残りは[Endo](/guides/endo)に分解しましょう。"
+        }
+      ]
+    },
+    {
+      "id": "capacity-potatoes-forma",
+      "title": "容量、potato、polarity & Forma",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "素の容量が許す以上の大きなビルドを組み込むための3つのツールがあります。それは、**Orokin Reactor/Catalyst**、**polarity**、...そして**Forma**です。これらを理解することは、初心者プレイヤーにとって「ビルドが収まらない」という問題を解決する最大の鍵となります。"
+        },
+        {
+          "type": "p",
+          "text": "**Orokin Reactor**（Warframe、コンパニオン、Archwing用）または**Orokin Catalyst**（weapon用）は、通称**「potato」**と呼ばれ、itemの容量を30から**60**へ永久に**倍増**させます。本格的なビルドでは、これらが適用されていることが前提となります。これらはNightwave、侵略（invasion）、Baro Ki'Teer、イベントから無料で入手するか、プラチナで購入できます。"
+        },
+        {
+          "type": "p",
+          "text": "**polarity**とは、スロットにある小さな記号（Vazarin `D`、Madurai `V`、Naramon `—`など）のことです。modのpolarityがスロットと**一致**すると、その消費コストは**ほぼ半減**します。これが、エンドゲームビルドで60の容量に10個の高コストmodを詰め込む方法です。**異なる**polarityのスロットに装着するとコストがわずかに*増加*し、記号のないスロットでは通常のコストを消費します。"
+        },
+        {
+          "type": "p",
+          "text": "**Forma**は、設計図（Relicの報酬、または購入）から製作するリソースで、1つのスロットに**polarityを追加または変更**します。注意点として、Formaを適用すると**itemがランク0にリセット**されるため、再度レベルを上げる必要があります。ベテランは、フルビルドを収めるために優秀なweaponに3〜5回Formaを使用します。派生版として、**Aura Forma**（任意のAuraに自動一致）、**Umbral Forma**（Umbral mod用）、そしてStance/Exilus Formaが存在します。"
+        },
+        {
+          "type": "tip",
+          "text": "**Auraスロット**（Warframe）と**Stanceスロット**（近接）は*逆*の働きをします。これらは容量を消費するのではなく**追加**し、**一致するpolarityは、そのボーナスを倍増**させます。常にAuraのpolarityを一致させましょう。Corrosive ProjectionやGrowing Powerのような優秀なAuraは、無料で2桁の容量を還元してくれます。"
+        },
+        {
+          "type": "warn",
+          "text": "マスタリーランクのために売却する予定のレベル上げ用装備に、potatoを使用したり大量のFormaを投入したりしないでください。Reactor、Catalyst、Formaは、お気に入りの装備、つまりメインのframeや、実際に[Steel Path](/guides/steel-path)に持ち込むweaponのために取っておきましょう。"
+        }
+      ]
+    },
+    {
+      "id": "damage-model",
+      "title": "ダメージ乗算の思考モデル",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "weaponのダメージは、単一の数値を引き上げるものではありません。それは**独立した複数のバケツの積**です。同じバケツ内のmodは**加算**され、異なるバケツ同士は**乗算**されます。この1つのルールが、あらゆる優れたweaponビルドを決定づけます。"
+        },
+        {
+          "type": "p",
+          "text": "おおよそ：`Base × Multishot × Crit × (Elements + Physical) × Faction`。すでに満たされているバケツに2つ目のmodを詰め込んでも効果は減衰しますが、**新しい**バケツを開ければすべてが乗算されます。そのため、基礎ダメージmodを2つ重ねるのではなく、代わりに**基礎ダメージ、multishot、crit、属性（elements）**に分散させるのです。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**基礎ダメージ** — Serration（ライフル）、Hornet Strike（ピストル）、Pressure Point（近接）。基礎となる部分ですが、あくまで1つのバケツに過ぎません。",
+            "**Multishot** — Split Chamber（ライフル）、Barrel Diffusion（ピストル）。追加の弾丸/発射体を放ちます。基礎ダメージの上に、ほぼ2つ目のダメージmodを重ねるようなものです。",
+            "**クリティカル** — クリティカル率（Point Strike）とクリティカル倍率（Vital Sense）が乗算されます。確率が100%を超えると、より強力なオレンジ/赤クリティカルが発生します。",
+            "**属性（elements）** — カスタマイズ性の高い大きなバケツです。2つの単一属性が組み合わさってより強力な複合属性（下記参照）になり、撃ち込む対象に合わせて属性を選択します。"
+          ]
+        },
+        {
+          "type": "p",
+          "text": "**属性（elements）**を使用すると、主に**状態異常効果**と各factionの弱点を通じて、戦う相手に合わせてダメージを調整できます。4つの基本属性である**Heat、Cold、Electricity、Toxin**は、（mod画面での配置順に）ペアになって6つの**複合属性**を形成します。"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "組み合わせ",
+              "→ 結果",
+              "効果 / 使用する場面"
+            ],
+            "rows": [
+              [
+                "Toxin + Cold",
+                "Viral",
+                "状態異常によりすべてのヘルスへのダメージが増幅されます。デフォルトの汎用DPSの選択肢です。"
+              ],
+              [
+                "Heat + Toxin",
+                "Gas",
+                "ダメージを与える雲を拡散させます。密集した敵のグループに対して強力です。"
+              ],
+              [
+                "Cold + Electricity",
+                "Magnetic",
+                "状態異常によりシールドへのダメージが増幅されます。Corpusやシールドを持つ敵に有効です。"
+              ],
+              [
+                "Toxin + Electricity",
+                "Corrosive",
+                "状態異常により装甲を削ります。また、Grineer factionの弱点でもあります。"
+              ],
+              [
+                "Heat + Electricity",
+                "Radiation",
+                "混乱の状態異常を引き起こし、敵同士を攻撃させます（クラウドコントロール）。"
+              ],
+              [
+                "Heat + Cold",
+                "Blast",
+                "爆発 ＋ 敵の命中率低下（防御的）"
+              ]
+            ],
+            "note": "アップデート36（Jade Shadows）のダメージ改修以降、耐性とボーナスは特定のヘルスタイプではなく、factionベース（GrineerはCorrosiveに弱く、CorpusはMagneticに弱いなど）になりましたが、上記のステータス効果は依然として説明通りに機能します。現在の汎用的なSteel PathのテンプレートはViral + Heat（Heatは装甲を削り、炎上ダメージも与えます）です。Grineerに対する純クリティカルweaponには、Corrosive + Heatが依然として強力です。スロット内の2つの属性modの順序によって、どのペアが形成されるかが決まります。"
+          }
+        },
+        {
+          "type": "info",
+          "text": "ステータス（状態異常）かクリティカルか：一部のweaponは**ステータス**（2ステータス上昇の60/60 mod、Viralのプロックなど）を求め、他のweaponは**クリティカル**を求めます。選択する前にweaponのクリティカル率とステータス率を確認してください。高クリティカルのライフルにはPoint Strike + Vital Senseが適しており、高ステータスのショットガンには2ステータス属性modが適しています。"
+        }
+      ]
+    },
+    {
+      "id": "warframe-mods",
+      "title": "必須のWarframe mod",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Warframeのビルドは、**生存性**と**4つのアビリティステータス**（Strength、Duration、Range、Efficiency）のバランスを取るものです。4つすべてを最大化することは稀で、frameに合わせて調整します。各コアmodの役割を学べば、どんなビルドガイドも理解できるようになります。"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Mod",
+              "効果",
+              "重要性"
+            ],
+            "rows": [
+              [
+                "Vitality",
+                "大幅なヘルス（Health）上昇（最大約+440%）",
+                "ほぼすべてのframeにおける生存性の基準"
+              ],
+              [
+                "Redirection",
+                "大幅なシールド（Shield）上昇（約+440%）",
+                "shield-gatingの維持に役立ちます。または、低シールドビルドではスキップされます。"
+              ],
+              [
+                "Adaptation",
+                "被弾時に最大90%まで累積するダメージ耐性",
+                "被弾することで、耐久力の低いframeでもSteel Pathで通用するようになります。"
+              ],
+              [
+                "Intensify",
+                "+ アビリティ威力（Strength）",
+                "アビリティの数値（ダメージ、バフ、装甲剥ぎなど）が向上します。"
+              ],
+              [
+                "Streamline",
+                "+ アビリティ効率（Efficiency）",
+                "発動頻度を高め、エネルギー消費を抑えます"
+              ],
+              [
+                "Stretch",
+                "+ アビリティ範囲（Range）",
+                "オーラ、CC、バフ範囲が広がります。"
+              ],
+              [
+                "(Primed) Continuity",
+                "+ アビリティ時間（Duration）",
+                "バフやクラウドコントロールの効果時間が延長されます"
+              ],
+              [
+                "(Primed) Flow",
+                "+ エネルギー最大量",
+                "アビリティを使用するためのプールを増やします"
+              ]
+            ],
+            "note": "アップグレードパス：Umbralセット（Umbral Vitality / Intensify / Fiber）は通常版に取って代わり、2つまたは3つ装備したときにセットボーナスを追加します。メインのframeにUmbral Formaを使用する価値は十分にあります。"
+          }
+        },
+        {
+          "type": "p",
+          "text": "ビルドガイドがそのトレードオフに依存しているため、知っておく価値のあるステータスmodが他にもいくつかあります。**Blind Rage**（大幅な威力上昇、ただし効率低下）、**Fleeting Expertise**（大幅な効率上昇、ただし時間低下）、**Overextended**（絶大な範囲上昇、ただし威力低下）、...そして**Narrow Minded**（絶大な時間上昇、ただし範囲低下）です。これらの「corrupted」modを組み合わせることで、特定のステータスを極限まで高めることができます。"
+        },
+        {
+          "type": "tip",
+          "text": "**Exilusスロット**には、コアビルドと競合しないユーティリティmod（ダッシュ速度（Rush、Armored Agility）、パルクールや機動性、敵/アイテムレーダーなど）を装着できます。**Exilus Adapter**でアンロックできます。コアビルドが固まった後は、無料で追加の価値を得られます。"
+        }
+      ]
+    },
+    {
+      "id": "weapon-mods",
+      "title": "必須のweapon mod（タイプ別）",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "すべてのweaponビルドは同じ骨組みから始まります。4つのダメージバケツを埋め、残りのスロットを属性、ステータス、またはユーティリティに柔軟に割り当てます。以下は、weaponクラスごとの主力modです。"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "ビルドでの役割",
+              "プライマリ（ライフル）",
+              "セカンダリ（ピストル）",
+              "近接"
+            ],
+            "rows": [
+              [
+                "基礎ダメージ",
+                "Serration",
+                "Hornet Strike",
+                "(Primed) Pressure Point"
+              ],
+              [
+                "Multishot",
+                "Split Chamber",
+                "Barrel Diffusion / Lethal Torrent",
+                "—（代わりにコンボを使用）"
+              ],
+              [
+                "クリティカル率",
+                "Point Strike",
+                "Pistol Gambit",
+                "Blood Rush（コンボに応じてスケール）"
+              ],
+              [
+                "クリティカル倍率",
+                "Vital Sense",
+                "Target Cracker",
+                "Organ Shatter"
+              ],
+              [
+                "ステータス / 属性",
+                "+90%属性mod、60/60複合mod",
+                "+90%属性mod",
+                "Condition Overload, Weeping Wounds"
+              ]
+            ],
+            "note": "ショットガンはPoint Blank（基礎）とHell's Chamber（multishot）に入れ替えます。弓/スナイパーはクリティカルに大きく依存します。純粋なクリティカルよりもステータス（状態異常）の発生を優先したい場合は、2ステータス上昇の60/60 modを追加します。"
+          }
+        },
+        {
+          "type": "p",
+          "text": "**近接（Melee）は仕様が異なります。** multishotの代わりに**コンボカウンター**に応じてスケールします。**Blood Rush**はコンボをクリティカル率に変換し、**Weeping Wounds**はステータス（状態異常）率に変換します。**Condition Overload**は、ターゲットに付与されている固有の状態異常効果ごとにダメージを追加します。ステータス付与用のweaponと組み合わせることで、ゲーム内で最大の近接乗算器の1つになります。攻撃速度のために**Berserker Fury**または**Primed Fury**、範囲のために**Primed Reach**で仕上げましょう。"
+        },
+        {
+          "type": "info",
+          "text": "Serrationは最大で約**+165%**の基礎ダメージを与え、Split Chamberは**90%**の確率で追加の発射体を放ちます。ただし、正確な数値はランクやDEによる調整で変動するため、それらに合わせてスロットにFormaを使用する前に、[Warframe wiki](https://wiki.warframe.com/)で現在の数値を確認してください。エンドゲームに到達すると、Galvanized版（Galvanized Chamber、Galvanized Diffusionなど）が通常の基礎/multishot modの上位互換となります。"
+        }
+      ]
+    },
+    {
+      "id": "shield-gating",
+      "title": "shield-gating：ベテランが絶対に死なない理由",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "プレイヤーが[Steel Path](/guides/steel-path)で死亡する最大の理由は、「ヘルスが足りない」ことではなく、**shield-gating**を理解していないことです。素の実効ヘルスはゲーム後半では通用しなくなりますが、**無敵時間**は通用します。"
+        },
+        {
+          "type": "p",
+          "text": "その仕組み：致命的な一撃を受けたときに**少なくとも1のシールド**が残っていれば、シールドが超過ダメージを吸収して破壊され、破壊時に短い**無敵時間**（「ゲート」）が付与されます。その長さは**最大シールド量に応じてスケール**します。シールドが完全に破壊された場合、極小のプールでの約**0.33秒**から、巨大なプールでの約**2.25秒**まで変動します。一方で、**部分的に回復した**シールドから再度破壊された場合は、約**0.33秒**の短いゲートしか得られません。その無敵時間の間は死亡しません。"
+        },
+        {
+          "type": "steps",
+          "ordered": true,
+          "steps": [
+            {
+              "h": "シールドのバッファを維持する",
+              "p": "致命的な一撃を生き延びるために必要なシールドはわずか1ポイントです。少しでもシールドを持つframeであればshield-gateが可能であり、Inarosスタイルのタンクであっても、小さなプールから恩恵を受けることができます。"
+            },
+            {
+              "h": "必要に応じてゲートをリフレッシュする",
+              "p": "ゲートは1回しか発動しないのであれば役に立ちません。シールドを再充填して再び破壊させましょう。消費したエネルギーを即座にシールドに変換するBrief Respite（Aura）やAugurセットmodを装備してアビリティを発動します。"
+            },
+            {
+              "h": "安定した再ゲートのために低シールド化する",
+              "p": "Catalyzing Shieldsは最大シールド量を低下させるため、シールドがほぼ瞬時に破壊され、再充電されます。また、シールドがどれほど低くても、完全破壊時には常に約1.33秒のフルゲートを保証し、通常の「低シールド＝短いゲート」というルールを上書きします。Decaying Dragon Key（シールド減少）も、同様の「素早く破壊され、素早く再充電される」ループを構築します。"
+            },
+            {
+              "h": "緊急回避手段（パニックボタン）を追加する",
+              "p": "Rolling Guardは、ローリング時に無敵時間を付与し、状態異常効果を解除します（短いクールダウンあり）。これによりshield-gateがリセットされ、シールドをバイパスするToxinやSlashなどの状態異常による即死から救われます。"
+            }
+          ]
+        },
+        {
+          "type": "warn",
+          "text": "**ToxinダメージとSlashの出血プロックはシールドを完全にバイパスします**（また、Trueダメージはシールドと装甲の両方を無視します）。shield-gatingでは、ヘルスを削り続ける出血プロックを防ぐことはできません。そのため、shield-gatingだけに頼るのではなく、状態異常解除（Rolling Guard）とダメージ耐性（Adaptation）を同じビルドに組み込む必要があります。"
+        },
+        {
+          "type": "quote",
+          "text": "エンドゲームのWarframeでは、敵の攻撃を耐え抜くのではなく、攻撃に当たらない存在になります。shield-gateでバーストダメージを耐え、Rolling Guardでそれをリセットし、Adaptationで残りのダメージを削り落とします。",
+          "cite": "コミュニティにおけるshield-gatingのコンセンサス"
+        }
+      ]
+    },
+    {
+      "id": "layered-survivability",
+      "title": "ゲートを超えた生存性のレイヤー化",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Shield-gatingは、バーストダメージから身を守るレイヤーです。これらをさらに重ねることで、紙耐久のframeであっても長時間のSteel Path周回を生き抜くことができます。ほとんどのビルドでは、これらすべてではなく、2つか3つを組み合わせて採用します。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Adaptation** — 被弾時にダメージタイプごとに最大**90%のダメージカット**を累積します。自前の防御手段を持たないframeにとって、単体で最高の生存性modです。",
+            "**Rolling Guard** — ローリング時に無敵化 ＋ 状態異常を完全解除（短いクールダウンあり）。shield-gateのリセット手段、およびToxinから脱出するための切り札を兼ねています。",
+            "**Quick Thinking** — ヘルスが0になるときに、**エネルギー**を消費して生存を維持します。緩やかな第2のヘルスバーとなります（高エネルギーおよびshield-gatingと組み合わせます）。",
+            "**Primed Sure Footed** — ノックダウン/よろけ無効（ログイン報酬mod）。ハメ殺しは隠れた死因です。踏みとどまることで、アビリティの発動を継続できます。",
+            "**Arcane** — Arcane Grace、Guardian、Aegisなどの[Arcane](/guides/arcanes)は、modに加えてヘルスの自動回復、装甲、シールド回復を追加し、生存性を大幅に向上させます。",
+            "**Aura + Helminth** — 防御的なAura（Physique）や、[Helminth](/guides/helminth)を介して移植した防御アビリティ（オーバーガードやダメージカットスキルなど）は、単一のmodスロット以上の価値を持つことがあります。"
+          ]
+        },
+        {
+          "type": "info",
+          "text": "ヘルスタンクかシールドタンクかは、現実的な選択肢です。高装甲のframe（RhinoやInarosスタイル）はVitality + Adaptation + Arcaneを好む傾向があり、低装甲のキャスターはshield-gating + Rolling Guardに依存します。1つのビルドをすべてにコピーするのではなく、frameに合わせて戦略を選択してください。"
+        }
+      ]
+    },
+    {
+      "id": "ranking-rivens-next",
+      "title": "modのランクアップ、Riven、そして次のステップ",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "modは**Endo + クレジット**でランクアップします。EndoはAyatan彫刻、重複したmodの分解、および専用のファームから入手できます。詳細は[Endo周回ガイド](/guides/endo)を参照し、modやRivenを分解する価値があるかどうかは[Endo / プラチナ価値ツール](/endo)を使用して確認してください。序盤の安価なアプローチとして、珍しいものを追い求める前に、コアmod（Serration、Vitality、4つのアビリティステータス）を完全にランクアップさせましょう。"
+        },
+        {
+          "type": "p",
+          "text": "**Riven**は、特定のweaponに紐づいた、強力な（そして時にはマイナスの）ステータスを持つランダム化されたmodです。これらは**エンドゲームの極限強化レイヤー**であり、初心者向けのツールではありません。まずはmodを完全に揃えたweaponが前提であり、優秀なRivenは最後の10〜30%を上乗せするに過ぎません。価格は激しく変動するため、売買する前に[Riven価値見積もりツール](/riven-value)で価格を確認し、[Rivenガイド](/guides/riven)で仕組みを理解しておきましょう。"
+        },
+        {
+          "type": "steps",
+          "ordered": true,
+          "steps": [
+            {
+              "h": "お気に入りの装備にpotatoとFormaを使用する",
+              "p": "Reactor/Catalystを適用し、ビルドのpolarityに一致するようにスロットにFormaを使用して、すべてが60의容量に収まるようにします。"
+            },
+            {
+              "h": "ダメージのバケツを埋める",
+              "p": "weaponには基礎 ＋ multishot ＋ crit ＋ 属性。frameには生存性 ＋ 優先する2つのアビリティステータス。"
+            },
+            {
+              "h": "生存性のレイヤーを追加する",
+              "p": "Steel Pathに足を踏み入れる前に、shield-gatingのセットアップ、またはAdaptation + Rolling Guardを用意します。"
+            },
+            {
+              "h": "最後に極限強化（min-max）する",
+              "p": "ベースビルドが完成した後に初めて、Umbral/Primed mod、Arcane、そしてRivenを導入します。"
+            }
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "ビルドガイドに所有していないmodが記載されている場合は、最も近い代替品（Primed版の代わりに通常版のmodなど）を装着し、後でアップグレードしましょう。90%完成したビルドでも星系マップ全体をクリアできます。楽しむためにすべてのPrimedやRivenを揃える必要はありません。"
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Warframeの初心者にとって最適なmodは何ですか？",
+      "a": "weaponの場合：基礎ダメージ用にSerration（ライフル）/ Hornet Strike（ピストル）/ Pressure Point（近接）、次にmultishot mod（Split Chamber、Barrel Diffusion）、そして属性。Warframeの場合：ヘルス用のVitalityに加えて、4つのアビリティステータスmodであるIntensify（威力）、Streamline（効率）、Stretch（範囲）、Continuity（時間）。珍しいものを追い求める前に、[Endo](/guides/endo)でこれらを完全にランクアップさせましょう。"
+    },
+    {
+      "q": "Orokin ReactorまたはCatalyst（通称「potato」）は何をするものですか？",
+      "a": "item의 mod容量を30から60へ永久に倍増させます。これにより、フルビルドを実際に収めることができるようになります。ReactorはWarframe、コンパニオン、Archwingに使用し、Catalystはweaponに使用します。これらはNightwave、侵略（invasion）、イベントから無料で入手できるほか（Baro Ki'Teerから入手できることもあります）、プラチナで購入することもできます。マスタリーランク用の使い捨て装備ではなく、使い続けるギアのために取っておきましょう。"
+    },
+    {
+      "q": "polarityとFormaはどのように機能しますか？",
+      "a": "一致するpolarity記号を持つスロットにmodを配置すると、通常の約半分のコストで済みます。これがエンドゲームビルドを60の容量に収める方法です。Formaは1つのスロットにpolarityを追加または変更するリソースですが、itemをランク0にリセットするため、再度レベルを上げる必要があります。まずはAuraとStanceのpolarityを一致させましょう。これらのスロットは容量を消費するのではなく追加するため、一致させることで無料で2倍の価値を得られます。"
+    },
+    {
+      "q": "shield-gatingとは何ですか？また、どのように行いますか？",
+      "a": "シールドが破壊されたとき、死亡しない短い無敵時間が得られます。その長さは最大シールド量に応じてスケールし、極小のプールでの約0.33秒から、巨大なプールでの約2.25秒まで変動します。一方で、部分的に回復したシールドから再度破壊された場合は約0.33秒しか得られません。通常はBrief RespiteやAugur mod（アビリティで消費したエネルギーをシールドに変換）を使用し、さらにリセット手段としてRolling Guardを組み合わせることで、シールドを再充填して再び破壊させるループを維持します。低シールドビルドでは、常にフルゲートを保証するためにCatalyzing Shieldsを追加します。これが、熟練プレイヤーが[Steel Path](/guides/steel-path)を生き抜く主な理由です。詳細な手順は、以下のshield-gating動画をご覧ください。"
+    },
+    {
+      "q": "ヘルスが大量にあるにもかかわらず、Steel Pathで死に続けるのはなぜですか？",
+      "a": "素の実効ヘルスはゲーム後半では通用しません。敵のダメージがそれを上回るからです。代わりに無敵レイヤーが必要です。バーストダメージ対策のshield-gating、それをリセットして状態異常を解除するRolling Guard、そして最大90%のダメージカットを得るAdaptationです。ToxinとSlashはシールドをバイパスするため、状態異常解除はオプションではなく必須です。"
+    },
+    {
+      "q": "weaponのダメージを増やすには、どのmodを最優先すべきですか？",
+      "a": "乗算されるバケツで考えてください。基礎ダメージ、multishot、crit、属性はそれぞれ互いに乗算されますが、同じバケツ内のmodは加算されるだけです。そのため、基礎ダメージmodを2つ重ねるのではなく、基礎mod、multishot mod、crit mod、そして適切な属性（ヘルスへのダメージを高めるViral、装甲用のHeatやCorrosive）に分散させましょう。古いバケツを過剰に満たすよりも、新しいバケツを開ける方が効果的です。"
+    },
+    {
+      "q": "modをランクアップ（アップグレード）するにはどうすればよいですか？",
+      "a": "mod画面に行き、Endoとクレジットを使用してmodを合成します。ランクが上がるごとに効果と消費コストが増加します。EndoはAyatan彫刻、重複したmodの分解、および[Endoガイド](/guides/endo)で解説している専用のファームから入手できます。[Endo / プラチナ価値ツール](/endo)を使用して、modやRivenを保持するよりも分解した方が価値があるかどうかを判断してください。"
+    },
+    {
+      "q": "初心者にとってRivenは価値がありますか？",
+      "a": "まだ早いです。Rivenはエンドゲームの極限強化レイヤーであり、すでに完成しているビルドに対して最後の約10〜30%を上乗せするに過ぎず、そのランダムなステータスは扱いが難しい場合があります。まずは適切なmod構成を完成させ、プラチナを消費する前に[Riven価値見積もりツール](/riven-value)で価格を確認し、[Rivenガイド](/guides/riven)で仕組みを理解しておきましょう。"
+    }
+  ],
+  "videos": [
+    {
+      "id": "ct2pfAonGXY",
+      "title": "Complete Warframe Modding Guide 2025: Everything You Need to Know!",
+      "channel": "Zefā"
+    },
+    {
+      "id": "RQ22Jltn3i0",
+      "title": "The Ultimate Shield Gating Guide! 🛡️ STOP DYING IN STEEL PATH [Warframe]",
+      "channel": "Hunkpain Gaming "
+    },
+    {
+      "id": "H0sPUBGn2bc",
+      "title": "How to NEVER DIE In WARFRAME!",
+      "channel": "iFlynn"
+    },
+    {
+      "id": "GPJS7bj6V2E",
+      "title": "THE ONLY SURVIVABILITY GUIDE YOU WILL EVER NEED IN WARFRAME",
+      "channel": "Alextreme"
+    }
+  ],
+  "sources": [
+    {
+      "label": "Warframe Wiki — Mods, Polarity & Forma",
+      "href": "https://wiki.warframe.com/w/Mods"
+    },
+    {
+      "label": "Warframe Wiki — Damage & Elemental Combinations",
+      "href": "https://wiki.warframe.com/w/Damage"
+    },
+    {
+      "label": "Warframe Wiki — Shield & Shield Gating",
+      "href": "https://wiki.warframe.com/w/Shield"
+    }
+  ],
+  "related": [
+    {
+      "label": "Riven Modガイド",
+      "to": "/guides/riven",
+      "icon": "diamond-stone",
+      "note": "ロール、disposition、そしていつ手をつけるべきか"
+    },
+    {
+      "label": "Steel Pathガイド",
+      "to": "/guides/steel-path",
+      "icon": "skull",
+      "note": "生存性mod構成の成果が発揮される場所"
+    },
+    {
+      "label": "Helminthシステム",
+      "to": "/guides/helminth",
+      "icon": "dna",
+      "note": "任意のframeに防御アビリティを移植する"
+    },
+    {
+      "label": "Arcaneガイド",
+      "to": "/guides/arcanes",
+      "icon": "shield-star",
+      "note": "modを超える生存性のレイヤー"
+    },
+    {
+      "label": "Endo周回",
+      "to": "/guides/endo",
+      "icon": "chart-line",
+      "note": "modをランクアップさせるための燃料"
+    },
+    {
+      "label": "Riven価値見積もりツール",
+      "to": "/riven-value",
+      "icon": "cash",
+      "note": "取引する前にRivenの価格を確認する"
+    }
+  ],
+  "updated": "2026-07-18"
+}

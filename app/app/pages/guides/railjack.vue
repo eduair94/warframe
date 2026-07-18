@@ -6,5 +6,6 @@
 </template>
 
 <script setup lang="ts">
-import guide from '~/data/guides/railjack'
+import enGuide from '~/data/guides/railjack'
+const guide = await useLocalizedGuide('railjack', enGuide)
 </script>

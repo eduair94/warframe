@@ -1,0 +1,502 @@
+{
+  "slug": "relics",
+  "eyebrow": "知識中心 · Relics & Void Traces",
+  "title": "Relics & Void Traces 指南",
+  "lede": "Void Relics 是 Warframe 獲取 Prime 裝備的老虎機——一旦你了解了精煉、Void Traces 和共享獎勵，勝率就會大幅向你傾斜。以下是如何高效開啟 Relic 並將戰利品轉化為 Platinum 的方法。",
+  "category": "farming",
+  "readMins": 9,
+  "stats": [
+    {
+      "num": "4",
+      "label": "Relic 紀元 · Lith→Axi"
+    },
+    {
+      "num": "6",
+      "label": "每個 Relic 的獎勵",
+      "tone": "alt"
+    },
+    {
+      "num": "10%",
+      "label": "Radiant 的稀有獎勵機率",
+      "tone": "gold"
+    },
+    {
+      "num": "6–30",
+      "label": "每次開啟獲得的 Void Traces"
+    }
+  ],
+  "sections": [
+    {
+      "id": "relic-basics",
+      "title": "Void Relics 究竟是什麼",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "一個 **Void Relic** 是一個裝有 **Prime 裝備**（Warframe 部件、武器部件和 Forma 藍圖）的密封容器。你不能直接在 Foundry 中將其打開；你必須帶它進入名為 **Void Fissure** 的特殊任務並在該處「開啟」它。每個 Relic 都屬於四個**紀元**之一，而紀元僅代表該 Relic 可能包含*哪些 Prime 部件池*以及*大致在何處掉落*——它與戰利品的好壞無關。"
+        },
+        {
+          "type": "p",
+          "text": "Relic 也是**可交易的**，這正是 Prime farming 能轉化為 Platinum 的原因：你開啟 Relic 獲取部件，將多餘的部件賣給其他玩家，然後從其他人那裡購買你缺少的特定 Relic。請參閱 [Platinum 指南](/guides/platinum)以了解完整的經濟循環。"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "紀元",
+              "階級",
+              "通常掉落位置"
+            ],
+            "rows": [
+              [
+                "Lith",
+                "入門",
+                "早期 Origin System 節點和低階賞金任務"
+              ],
+              [
+                "Meso",
+                "中階",
+                "中星圖任務和賞金任務"
+              ],
+              [
+                "Neo",
+                "高階",
+                "後期星球、無盡任務輪次、高階賞金任務"
+              ],
+              [
+                "Axi",
+                "終局",
+                "後期星圖、長時間無盡任務輪次、Steel Path、高階賞金任務"
+              ]
+            ],
+            "note": "掉落來源會隨更新而變動。若要尋找特定 Relic 目前的最佳節點，請查看遊戲內的 Void Fissure 列表或 Wiki 上的掉落表。"
+          }
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "Relic 紀元",
+              "v": "Lith, Meso, Neo, Axi"
+            },
+            {
+              "k": "內部獎勵",
+              "v": "共 6 個 — 3 個常見、2 個非常見、1 個稀有"
+            },
+            {
+              "k": "開啟所需的 Reactant",
+              "v": "每位玩家每個 Relic 需 10 個"
+            },
+            {
+              "k": "精煉貨幣",
+              "v": "Void Traces（儲存上限隨 Mastery Rank 提升）"
+            },
+            {
+              "k": "開啟地點",
+              "v": "僅限 Void Fissure 任務"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reward-pool",
+      "title": "六格獎勵池",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "每個 Relic 都恰好包含 **六個可能的獎勵**，分為三種稀有度："
+        },
+        {
+          "type": "list",
+          "items": [
+            "**3 個常見**獎勵（青銅）— 通常是廉價部件和 Forma 藍圖",
+            "**2 個非常見**獎勵（白銀）— 中等價值的部件",
+            "**1 個稀有**獎勵（黃金）— 熱門部件，也是你進行精煉的原因"
+          ]
+        },
+        {
+          "type": "info",
+          "text": "精煉絕不會改變 Relic 內部的六個部件*是哪些*——它只會改變獲得稀有與常見獎勵的**機率**。如果一個 Relic 不包含你想要的部件，無論你如何精煉它，都絕對不會掉落該部件。在投入 Void Traces 之前，請務必先檢查 Relic 的內容物。"
+        }
+      ]
+    },
+    {
+      "id": "cracking",
+      "title": "開啟 Relic：Void Fissure 循環",
+      "blocks": [
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "h": "裝備一個 Relic",
+              "p": "打開星圖上的 Void Fissures 標籤，選擇一個紀元與你擁有的 Relic 相匹配的任務。在開始之前，選擇該 Relic 及其精煉等級。每個任務只能攜帶一個 Relic。"
+            },
+            {
+              "h": "尋找 Corrupted 敵人",
+              "p": "進入任務後，裂縫會腐化附近的敵人——他們會散發出 Void 能量。這些 Corrupted 敵人是唯一會掉落 Reactant 的來源。"
+            },
+            {
+              "h": "收集 10 個 Reactant",
+              "p": "每位小隊成員必須在任務（或輪次）結束前親自收集 10 個 Reactant。請注意 HUD 上的計數器；Reactant 的掉落位置在視覺上是共享的，但你們必須各自收集自己的 10 個。"
+            },
+            {
+              "h": "開啟並選擇你的獎勵",
+              "p": "當任務結束時——或在無盡任務的每個輪次結束時——你將看到最多四個獎勵：你自己的加上隊友的。選擇其中最好的一個保留。"
+            }
+          ]
+        },
+        {
+          "type": "warn",
+          "text": "在收集完所有 10 個 Reactant 之前，請勿奔向撤離點。如果任務結束時你的 Relic 未充能，它將保持密封狀態且不發放任何獎勵——你*確實*會保留該 Relic（未充能的 Relic 不會被消耗），但整場任務就白費了，因此在撤離前請務必完成充能。"
+        }
+      ]
+    },
+    {
+      "id": "refinement",
+      "title": "精煉：Intact → Radiant",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "剛獲得的 Relic 是 **Intact** 狀態，獲得稀有獎勵的機率僅為 **2%**。消耗 **Void Traces** 進行精煉可以分三個階段提升稀有（和非常見）的機率，最高可達到 **Radiant**，此時稀有機率達到 **10%**——提升了 5 倍。這是你所能控制的最重要關鍵。"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "狀態",
+              "精煉所需的 Void Traces",
+              "稀有（黃金）",
+              "每個非常見",
+              "每個常見"
+            ],
+            "rows": [
+              [
+                "Intact",
+                "0",
+                "2%",
+                "11%",
+                "25.33%"
+              ],
+              [
+                "Exceptional",
+                "25",
+                "4%",
+                "13%",
+                "23.33%"
+              ],
+              [
+                "Flawless",
+                "50",
+                "6%",
+                "17%",
+                "20%"
+              ],
+              [
+                "Radiant",
+                "100",
+                "10%",
+                "20%",
+                "16.67%"
+              ]
+            ],
+            "note": "每個 Relic 依然包含 3 個常見 / 2 個非常見 / 1 個稀有獎勵——精煉僅僅是重新分配它們之間的機率。"
+          }
+        },
+        {
+          "type": "p",
+          "text": "**你應該把所有東西都精煉到 Radiant 嗎？** 不。精煉到 Radiant 需要消耗整整 100 個 Void Traces，因此請將其留給那些*稀有*部件確實有價值或你需要的 Relic。如果你只是為了將 Relic 餵給 [Ducat](/ducats) 機台，或者正在尋找常見部件，請以 **Intact** 狀態運行它們——這樣在相同的 Void Traces 預算下，你可以開啟更多的 Relic。使用 [開啟或出售價值工具](/relics-value) 來查看某個 Relic 值得精煉，還是直接整顆出售更有價值。"
+        }
+      ]
+    },
+    {
+      "id": "void-traces",
+      "title": "Farming Void Traces（與儲存上限）",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Void Traces **幾乎完全**來自在裂縫中開啟 Relic——雖然存在少數非主流來源（Granum Void、某些 Isolation Vault 儲藏箱），但出於實用目的，刷 Void Traces 和刷 Relic 是同一個 farming 過程。你開啟的每個 Relic 都會提供少量隨機數量的 Void Traces（基礎為 **6–30** 個），而且值得注意的是，**Resource Booster 會使該數量翻倍**。因此，「farming Void Traces」和「farming Relic」實際上是完全相同的活動。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "開啟你絕不會出售的垃圾 Relic——每次開啟依然會提供 Void Traces，而且通常還能額外獲得一個 Forma 藍圖或用於換取 Ducat 的部件。",
+            "你的 Void Traces 儲存量是**有上限的，且上限隨 Mastery Rank 提升**——全新玩家為 100，每升一級增加 +50，在高 MR 時可達數千。當你達到個人上限時獲得的任何 Void Traces 都會流失，因此請在溢出前將其花掉。",
+            "運行快速的裂縫任務（見下一節），這樣你就可以一個接一個地開啟 Relic，而不是在慢速任務中等待。"
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "沒有專門的「Void Traces 節點」。最快累積 Void Traces 的方法是，使用你本來就打算開啟的 Relic，連續進行快速的 Capture 裂縫或獎勵豐厚的 Disruption 裂縫任務。"
+        }
+      ]
+    },
+    {
+      "id": "shared-radshare",
+      "title": "共享獎勵與 Radiant 共享（「radshares」）",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "這是一個改變一切的機制：在滿員小隊中，**所有四名玩家在獎勵畫面上都能看到全部四個隨機結果**，且每個人都可以保留其中*一個*。你自己的 Relic 開出了常見獎勵？如果隊友的 Relic 開出了稀有獎勵，你可以選擇拿取該稀有獎勵。這就是 **Radiant 共享（radshare）** 的基礎——這是社群中 farming 昂貴稀有部件的標準方式。"
+        },
+        {
+          "type": "info",
+          "text": "四個*相同類型*的 Radiant Relic 各自獨立以 10% 的機率判定稀有獎勵。整個小隊中至少出現一次稀有獎勵供大家選擇的機率為 1 − 0.9⁴ ≈ **34%**——而單人運行僅為 10%。連續進行幾輪 radshare，稀有部件就不再顯得那麼稀有了。"
+        },
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "h": "先精煉至 Radiant",
+              "p": "每個人都必須攜帶完全相同且已精煉至 Radiant（100 個 Void Traces）的 Relic。按照慣例，攜帶 Intact Relic 或錯誤的 Relic 會讓你被踢出 radshare 隊伍。"
+            },
+            {
+              "h": "在招募頻道中尋找隊伍",
+              "p": "打開招募聊天頻道 / 招募分頁，並搜尋該 Relic 的代碼，例如「Axi A15 Rad」或「Meso G1 RadShare」。「H」通常代表有人正在主辦/尋找隊友。"
+            },
+            {
+              "h": "運行快速的 Capture 裂縫",
+              "p": "Radshares 幾乎總是使用最快可用的裂縫任務，以便每個人都能快速開啟、拿取稀有獎勵，並重置進行下一輪。"
+            },
+            {
+              "h": "當稀有獎勵出現時選擇它",
+              "p": "在獎勵畫面中，如果四個人中有任何一個開出了稀有獎勵，每個人都選擇它。如此反覆。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fissure-efficiency",
+      "title": "哪種裂縫類型最有效率",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "所有裂縫開啟 Relic 的方式都相同，但它們在循環 Relic 的*速度*上差異極大。將任務類型與你的目標相匹配："
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "裂縫類型",
+              "節奏",
+              "最適合"
+            ],
+            "rows": [
+              [
+                "Capture",
+                "最快的一次性任務",
+                "批量開啟、farming Void Traces、radshares"
+              ],
+              [
+                "Exterminate / Sabotage",
+                "快速",
+                "當沒有 Capture 任務時，快速進行單次開啟"
+              ],
+              [
+                "Survival / Defense / Interception",
+                "無盡",
+                "每個輪次一個 Relic，無需重新載入任務，穩定的 Void Traces 收益"
+              ],
+              [
+                "Disruption",
+                "無盡、獎勵豐厚",
+                "快速的輪次 = 單次遊戲中可進行多次開啟 + 獲得大量 Void Traces"
+              ]
+            ],
+            "note": "在無盡裂縫中，你每個輪次開啟一個 Relic，並可以在輪次之間更換新的 Relic——無需返回你的飛船。"
+          }
+        },
+        {
+          "type": "p",
+          "text": "**經驗法則：** 當你想快速開啟大量不同的 Relic 或運行 radshare 時，請使用 **Capture**；而當你想坐下來刷 Void Traces 或在沒有載入畫面的情況下開啟許多 Relic 時，請使用**無盡**類型（Survival 或 Disruption）。不確定哪些 Relic 值得你花時間？[Relic farming](/relic-farming) 排名了每場運行能賺取最多 Platinum 的 Relic。"
+        }
+      ]
+    },
+    {
+      "id": "vaulting",
+      "title": "Vaulting、Aya 與 Prime Resurgence",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Digital Extremes 會定期將較舊的 **Primes 入庫 (vaults)**——它們的 Relic 將停止從現有的掉落表中掉落，以騰出空間給新的。已經存在於你倉庫中的 Relic 仍會永久有效，且已入庫的 Relic 依然**可交易**，因此你隨時可以從其他玩家那裡購買你需要的特定 Relic。使用 [Vaulted Prime 追蹤器](/vaulted) 來追蹤哪些已入庫或未入庫。"
+        },
+        {
+          "type": "info",
+          "text": "**Prime Resurgence** 會輪替帶回已入庫的 Relic：拜訪位於 **Maroo's Bazaar** 的 **Varzia**，並使用 **Aya**（在整個星圖中免費獲得，通常代替 Relic 掉落）或高級的 **Regal Aya** 購買未入庫的 Relic。如果你想要的 Prime 目前已入庫，這是一個安全網。"
+        },
+        {
+          "type": "warn",
+          "text": "當一個 Prime 被入庫時，由於供應枯竭，其部件的需求通常會激增。如果你手頭有備用部件，[已入庫 Primes 價格飆升中](/vault-spikes) 會顯示哪些部件的價格正在上漲，以便你可以在價格飆升時售出。"
+        }
+      ]
+    },
+    {
+      "id": "cash-out",
+      "title": "將部件轉化為 Platinum 或 Ducats",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "開啟一個 Relic 會給你一個 Prime 部件（或一個 Forma 藍圖）。對於你獲得的任何部件，你有三種選擇："
+        },
+        {
+          "type": "list",
+          "items": [
+            "**製作它** — 為自己組裝 Prime Warframe 或武器。",
+            "**將其出售以換取 Platinum** — 將重複和不需要的部件交易給其他玩家。",
+            "**將其轉化為 Ducats** — 將沒人購買的部件投入任何中繼站的 Ducat 終端機中，然後將 Ducats 花在 Baro Ki'Teer 的輪替商品上。"
+          ]
+        },
+        {
+          "type": "links",
+          "links": [
+            {
+              "label": "Relic 價值：開啟或出售",
+              "to": "/relics-value",
+              "icon": "scale-balance",
+              "note": "每個 Relic 的預期 Platinum"
+            },
+            {
+              "label": "套裝與單件計算器",
+              "to": "/comparison",
+              "icon": "calculator-variant",
+              "note": "比較完整套裝與出售單件的價格"
+            },
+            {
+              "label": "套利尋找器",
+              "to": "/flip",
+              "icon": "swap-horizontal",
+              "note": "部件的即時買賣價差"
+            },
+            {
+              "label": "Ducat 價值尋找器",
+              "to": "/ducats",
+              "icon": "cash-multiple",
+              "note": "最適合餵給 Baro 的部件"
+            }
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "Forma 藍圖是最常見的 Relic 獎勵之一，因此穩定運行裂縫任務兼作免費獲取 Forma 的來源，供你在極化配置時消耗——你很少需要購買它們。"
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "我該如何開啟 Void Relic？",
+      "a": "你無法從倉庫中開啟 Relic——你必須運行 Void Fissure 任務。在開始前裝備一個 Relic，擊殺發光的 Corrupted 敵人以收集 10 個 Reactant，你的 Relic 就會在任務結束時（或無盡任務的每個輪次結束時）開啟。在獎勵畫面中，你可以從最多四個獎勵中選擇一個。"
+    },
+    {
+      "q": "將 Relic 精煉至 Radiant 究竟有什麼作用？",
+      "a": "精煉會消耗 Void Traces 以提高稀有和非常見獎勵的機率。Intact Relic 的稀有獎勵機率為 2%；Radiant Relic 則將其提高至 10%。它絕不會改變內部的六個部件是哪些——只會改變它們之間的機率。查看 [開啟或出售](/relics-value) 以了解精煉特定 Relic 是否划算。"
+    },
+    {
+      "q": "我該如何快速 farm Void Traces？",
+      "a": "Void Traces 幾乎完全來自在裂縫中開啟 Relic——每次開啟會提供基礎 6–30 個，而 Resource Booster 會使該數量翻倍。最快的方法是，使用你本來就打算開啟的 Relic，連續進行快速的 Capture 裂縫或獎勵豐厚的 Disruption 裂縫任務。你的儲存上限隨 Mastery Rank 提升（最開始為 100，每級增加 +50），因此請在達到上限並溢出前將其花掉。"
+    },
+    {
+      "q": "什麼是 Radiant 共享（radshare）？",
+      "a": "這是一個滿員小隊，其中所有四名玩家都攜帶同一個精煉至 Radiant 的 Relic。因為每個人都可以在獎勵畫面中從所有四個隨機結果中進行選擇，四個獨立的 10% 稀有判定使小隊每次運行有大約 34% 的機率出現稀有獎勵——遠優於單人運行的 10%。在招募聊天頻道中搜尋 Relic 代碼加上「Rad」或「RadShare」來尋找隊伍。"
+    },
+    {
+      "q": "我應該將每個 Relic 都精煉至 Radiant 嗎？",
+      "a": "不。精煉至 Radiant 需要消耗整整 100 個 Void Traces，因此請將其留給稀有部件有價值或你確實需要的 Relic。對於 farming 常見部件、Forma 或用於換取 Ducat 的垃圾部件，請以 Intact 狀態運行 Relic，這樣在相同的 Void Traces 預算下你可以開啟更多 Relic。[Relic 價值工具](/relics-value) 可以幫助你針對每個 Relic 做出決定。"
+    },
+    {
+      "q": "Void Relics 在哪裡掉落？",
+      "a": "Relic 在整個星圖中都有掉落——來自任務獎勵、無盡任務輪次以及開放世界賞金任務。Lith Relic 來自早期節點，而 Neo/Axi 則來自後期、難度更高的內容以及更長的無盡任務。具體哪個節點最佳會隨更新而變化，因此請查看遊戲內的掉落表或 Wiki 以獲取當前位置。"
+    },
+    {
+      "q": "在 Prime 入庫後，我還能獲得其部件嗎？",
+      "a": "可以。你倉庫中已有的任何 Relic 仍會永久有效，且已入庫的 Relic 依然可以交易，因此你可以從其他玩家那裡購買特定的 Relic。你也可以在 Prime Resurgence 中，使用 Aya 向位於 Maroo's Bazaar 的 Varzia 購買未入庫的 Relic。使用 [Vaulted Prime 追蹤器](/vaulted) 來追蹤其可用性。"
+    },
+    {
+      "q": "哪種裂縫任務類型最適合開啟 Relic？",
+      "a": "Capture 是最快的一次性任務，非常適合批量開啟、farming Void Traces 以及 radshares。像 Survival 和 Disruption 這樣的無盡類型可以讓你每個輪次開啟一個 Relic 而無需載入畫面，這更適合長時間的刷取。根據你想要速度還是數量來選擇合適的類型。"
+    }
+  ],
+  "videos": [
+    {
+      "id": "sX-8t0hGvgI",
+      "title": "Warframe: How to Refine Void Relics and How to Find Void Traces in Warframe",
+      "channel": "CerealOverdrive"
+    },
+    {
+      "id": "6D7mUOO2dCw",
+      "title": "[WARFRAME] Ultimate VOID Relic Farming Guide - EASY Platinum Farm!",
+      "channel": "KnightmareFrame"
+    },
+    {
+      "id": "5bh4mtiAmHg",
+      "title": "[WARFRAME] RAD RELICS FAST! Meta Void Trace Farming Guide 2024 | Whispers In The Wall",
+      "channel": "Gaz TTV"
+    },
+    {
+      "id": "RyPtNgTC7C8",
+      "title": "The ONLY Void Trace Farm You Need | Warframe",
+      "channel": "mothixe"
+    }
+  ],
+  "sources": [
+    {
+      "label": "r/Warframe — If you want to farm relics, here is where to do it",
+      "href": "https://reddit.com/r/Warframe/comments/7poeao/if_you_want_to_farm_relics_here_is_where_to_do_it/"
+    },
+    {
+      "label": "r/Warframe — RNG relics, rewards & the grind (discussion)",
+      "href": "https://reddit.com/r/Warframe/comments/dr46xo/so_let_me_get_this_straight_we_need_to_farm_rng/"
+    },
+    {
+      "label": "r/Warframe — Platinum farms ranked",
+      "href": "https://reddit.com/r/Warframe/comments/1f77ohc/platinum_farms_ranked_by_how_insane_the_people/"
+    },
+    {
+      "label": "Warframe Wiki — Void Relic",
+      "href": "https://wiki.warframe.com/w/Void_Relic"
+    },
+    {
+      "label": "Warframe Wiki — Void Traces",
+      "href": "https://wiki.warframe.com/w/Void_Traces"
+    }
+  ],
+  "related": [
+    {
+      "label": "Platinum 指南",
+      "to": "/guides/platinum",
+      "icon": "cash-multiple",
+      "note": "將 Prime 部件轉化為 Platinum"
+    },
+    {
+      "label": "Relic Farming",
+      "to": "/relic-farming",
+      "icon": "pickaxe",
+      "note": "每場運行收益最高的 Relic"
+    },
+    {
+      "label": "Relic 價值：開啟或出售",
+      "to": "/relics-value",
+      "icon": "scale-balance",
+      "note": "每個 Relic 的預期 Platinum"
+    },
+    {
+      "label": "Ducat 價值尋找器",
+      "to": "/ducats",
+      "icon": "diamond-stone",
+      "note": "最適合給 Baro 的部件"
+    },
+    {
+      "label": "Vaulted Prime 追蹤器",
+      "to": "/vaulted",
+      "icon": "lock",
+      "note": "哪些已入庫或未入庫"
+    },
+    {
+      "label": "完整常見問題",
+      "to": "/faq",
+      "icon": "help-circle",
+      "note": "解答更多玩家問題"
+    }
+  ],
+  "updated": "2026-07-18"
+}

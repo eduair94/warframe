@@ -1,0 +1,480 @@
+{
+  "slug": "arcanes",
+  "eyebrow": "Wissenszentrum · Arcanes",
+  "title": "Arcanes-Guide",
+  "lede": "Arcanes sind triggerbasierte Passivfähigkeiten, die einen soliden Build in ein Steel Path-Monster verwandeln. Hier erfährst du, was sie tun, wie man sie aufwertet, wo sie droppen und wie du den Grind finanzierst, indem du deine Duplikate verkaufst.",
+  "category": "systems",
+  "readMins": 10,
+  "stats": [
+    {
+      "num": "21",
+      "label": "Kopien, um ein Arcane zu maxen (Rang 5)",
+      "tone": "gold"
+    },
+    {
+      "num": "2",
+      "label": "Arcane-Slots pro Warframe",
+      "tone": "good"
+    },
+    {
+      "num": "6",
+      "label": "Rangstufen, R0 bis R5",
+      "tone": "alt"
+    },
+    {
+      "num": "3",
+      "label": "Flaggschiff-Eidolon-Arcanes",
+      "tone": "gold"
+    }
+  ],
+  "sections": [
+    {
+      "id": "what-are-arcanes",
+      "title": "Was Arcanes eigentlich sind",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Ein **Arcane** ist eine passive Verbesserung, die in ihrem eigenen dedizierten Slot sitzt und bei einem **Trigger** auslöst – oft mit einer Chance auf Aktivierung. Denk an „bei Energie-Aufnahme, Chance auf Energiewiederherstellung“ oder „bei erlittenem Schaden, Chance auf Rüstung“. Im Gegensatz zu Mods **verbrauchen Arcanes keine Mod-Kapazität**, sodass sie für zusätzliche Power kostenlos auf deinen bestehenden Build aufbauen."
+        },
+        {
+          "type": "p",
+          "text": "Arcanes sind slot-spezifisch – ein Arcane für einen Warframe passt nicht auf eine Waffe und umgekehrt. Die Hauptfamilien sind:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Warframe-Arcanes** – Überlebensfähigkeit, Energie und offensive Passivfähigkeiten (Grace, Guardian, Energize, Avenger, die Molt-Reihe).",
+            "**Waffen-Arcanes** – Primär-, Sekundär- und Nahkampf-Arcanes, die den Schaden bei Kills erhöhen oder Headshots belohnen (Merciless- und Deadhead-Reihen).",
+            "**Operator-Arcanes (Magus-Reihe)** – Heilung, Crowd Control und Utility für deinen Operator/Drifter.",
+            "**Amp-Arcanes (Virtuos-Reihe)** – Krit- und Schadensboosts für dein Amp, das Rückgrat der Eidolon-Jagd.",
+            "**Modulare Ausrüstungs-Arcanes** – Exodia (für Zaws) und Pax (für Kitguns) tunen deine hergestellten Nahkampf- und Sekundärwaffen."
+          ]
+        },
+        {
+          "type": "info",
+          "text": "Arcanes sind **wiederverwendbare, permanente Inventargegenstände**. Das Ausrüsten auf einem Frame verbraucht es nicht – du kannst es jederzeit frei auf einen anderen Frame oder eine andere Waffe übertragen. Es wird kein Destillator benötigt und nichts wird zerstört."
+        }
+      ]
+    },
+    {
+      "id": "slots",
+      "title": "Arcane-Slots: Wo sie hingehören",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Jedes Ausrüstungsteil hat eine feste Anzahl von Arcane-Slots, die du im Reiter **Arcanes** des Aufbesserungs-Bildschirms findest (neben deinen Mods)."
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "Warframe",
+              "v": "2 Arcane-Slots"
+            },
+            {
+              "k": "Primär- / Sekundär- / Nahkampfwaffe",
+              "v": "Je 1 Arcane-Slot"
+            },
+            {
+              "k": "Operator / Drifter",
+              "v": "Arcane-Slots für Arcanes der Magus-Reihe"
+            },
+            {
+              "k": "Amp",
+              "v": "Arcane-Slots für Arcanes der Virtuos-Reihe"
+            }
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Warframe-Slots sind sofort einsatzbereit. **Waffen**-Arcane-Slots müssen zuerst mit einem **Arcane Adapter** freigeschaltet werden – einer pro Waffentyp (Primär, Sekundär und Nahkampf benötigen jeweils ihren eigenen). Die erspielbare Quelle sind Teshins **Steel Path Honors**, die in jedem Relais mit Steel Essence gekauft werden können; du kannst Adapter auch bei **Acrithis** in Duviri gegen Pathos Clamps eintauschen oder sie direkt im In-Game-Markt für Platinum kaufen."
+        },
+        {
+          "type": "warn",
+          "text": "Adapter-Quellen und Honors-Rotationen werden zwischen Updates manchmal angepasst. Wenn du in dieser Season nicht findest, wo du einen Adapter kaufen kannst, schau im Live-[wiki.warframe.com](https://wiki.warframe.com/) oder in einem aktuellen Video nach, bevor du die falsche Aktivität grindest."
+        }
+      ]
+    },
+    {
+      "id": "ranking",
+      "title": "Ränge & Maxen: Die „21er-Regel“",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Arcanes haben Ränge von **Rang 0 bis Rang 5**, und du wertest sie auf, indem du **doppelte Kopien desselben Arcanes** stapelst – nicht mit Endo oder Kuva. Jedes Arcane folgt derselben Kurve: Jeder höhere Rang kostet ein paar Kopien mehr als der vorherige."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Rang",
+              "Kopien, um diesen Rang zu erreichen",
+              "Kopien insgesamt"
+            ],
+            "rows": [
+              [
+                "Rang 0 (Ausrüsten)",
+                "1",
+                "1"
+              ],
+              [
+                "Rang 1",
+                "+2",
+                "3"
+              ],
+              [
+                "Rang 2",
+                "+3",
+                "6"
+              ],
+              [
+                "Rang 3",
+                "+4",
+                "10"
+              ],
+              [
+                "Rang 4",
+                "+5",
+                "15"
+              ],
+              [
+                "Rang 5 (Max)",
+                "+6",
+                "21"
+              ]
+            ],
+            "note": "Ein Arcane vollständig auf Rang 5 zu maxen, kostet 21 Kopien genau dieses Arcanes."
+          }
+        },
+        {
+          "type": "tip",
+          "text": "Du musst ein Arcane **nicht** maxen, um es zu verwenden. Eine einzige Kopie (Rang 0) funktioniert bereits – sie hat nur eine geringere Proc-Chance oder einen kleineren Wert. Rüste aus, was du jetzt hast, und werte es im Laufe der Zeit auf; selbst ein Energize oder Grace auf Rang 3 ist ein riesiger Quality-of-Life-Sprung."
+        },
+        {
+          "type": "p",
+          "text": "Da 21 Kopien ein langer Weg sind, solltest du die ein oder zwei Arcanes priorisieren, die du tatsächlich auf deinen Haupt-Frames spielst, anstatt zu versuchen, alles auf einmal zu maxen. Deine gesamte Sammlung zu maxen, ist ein echter Flex – der r/Warframe-Post [„endlich alle Arcanes gemaxed (100 % selbst gefarmt)“](https://reddit.com/r/Warframe/comments/1iz2rw4/as_of_today_i_have_finally_maxed_all_arcanes_100/) erforderte ernsthafte Hingabe."
+        }
+      ]
+    },
+    {
+      "id": "sources",
+      "title": "Woher Arcanes kommen",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Es gibt keinen einzelnen Arcane-Händler – sie sind über verschiedene Endgame-Aktivitäten verteilt, die jeweils an eine eigene Währung gebunden sind. Dies ist die Übersichtskarte. Die genauen Dropraten und der „aktuell beste Farm“ ändern sich mit den Patches, also betrachte dies als langfristige Übersicht und überprüfe Details im Wiki."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Quelle",
+              "Was du bekommst",
+              "Wie du es bekommst"
+            ],
+            "rows": [
+              [
+                "Eidolons – Plains of Eidolon (Nacht)",
+                "Klassische Frame-Arcanes: Energize, Grace, Guardian, Aegis, Avenger und mehr",
+                "Drops durch Gefangennahme (RNG)"
+              ],
+              [
+                "Acrithis – Duviri",
+                "Viele dieser gleichen Frame-Arcanes direkt kaufen, kein RNG",
+                "Pathos Clamps (vom Orowyrm)"
+              ],
+              [
+                "Vox Solaris / Little Duck – Fortuna",
+                "Operator- (Magus) und Amp- (Virtuos) Arcanes",
+                "Vox Solaris-Ansehen"
+              ],
+              [
+                "The Holdfasts – Zariman",
+                "Waffen-Arcanes + Molt-Utility-Arcanes",
+                "Holdfasts-Ansehen"
+              ],
+              [
+                "Cavia – Sanctum Anatomica",
+                "Nahkampf-Arcanes & Nahkampf-Arcane-Adapter",
+                "Cavia-Ansehen"
+              ],
+              [
+                "Arcana Isolation Vaults – Deimos",
+                "Theorem- & Residual-Arcanes (Nischen-Synergie-Passivfähigkeiten)",
+                "Auftragsbelohnungs-Rotationen (RNG)"
+              ],
+              [
+                "Events & Operationen",
+                "Rotierende Arcanes; Exodia-Arcanes (Zaws)",
+                "Event-Token / Caches"
+              ],
+              [
+                "Höllvania / 1999 (Techrot Encore)",
+                "Arcanes aus Caches + The Hex-Ansehen",
+                "Caches & Ansehen"
+              ],
+              [
+                "Andere Spieler",
+                "Jedes handelbare Arcane",
+                "Platinum (warframe.market)"
+              ]
+            ],
+            "note": "Acrithis in Duviri ist der große Ausgleich: Sie verkauft viele Eidolon-Arcanes gegen Pathos Clamps, sodass Solo-Spieler die Tridolon-Meta für 4 Spieler komplett überspringen können."
+          }
+        },
+        {
+          "type": "p",
+          "text": "Operator- und Amp-Arcanes gehören zu den steileren Sinks – die Vox Solaris-Ansehensmauer ist real (Spieler haben ausgerechnet, dass man Millionen von Ansehen braucht, um das gesamte [Little Duck-Sortiment](https://reddit.com/r/Warframe/comments/1s0jdek/de_is_fixing_the_early_game_grind_but_forgot/) zu kaufen). Währenddessen verteilen neuere Inhalte wie **1999/Techrot Encore** Arcanes großzügig über Caches (und lassen dich diese bei Eleanor mit The Hex-Ansehen kaufen), weshalb die Community dies als einen der freundlicheren modernen Farms betrachtet. Siehe den [Eidolon-Guide](/guides/eidolon) und den [Ansehens-Guide](/guides/standing) für die Farming-Loops hinter diesen Quellen."
+        }
+      ]
+    },
+    {
+      "id": "staples",
+      "title": "Die wichtigsten Arcanes, die man kennen sollte",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Mit der Zeit wirst du Dutzende anhäufen, aber eine Handvoll Archetypen tragen die meisten Builds. Die genauen Werte ändern sich mit Balance-Updates – schau im Wiki nach den aktuellen Zahlen –, aber diese Rollen sind zeitlos:"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Rolle",
+              "Standard-Arcanes",
+              "Was es tut"
+            ],
+            "rows": [
+              [
+                "Energiehaushalt",
+                "Arcane Energize",
+                "Bei Energie-Aufnahme eine Chance, dir und nahen Verbündeten ein großes Stück Energie wiederherzustellen – der König des Energie-Sustains"
+              ],
+              [
+                "Tank / Selbstheilung",
+                "Arcane Grace, Arcane Guardian, Arcane Aegis",
+                "Bei Treffer: Lebensregeneration, ein großer Rüstungs-Buff oder schnelle Schildregeneration"
+              ],
+              [
+                "Offensive",
+                "Arcane Avenger, Arcane Fury, Arcane Strike",
+                "Löse unter der richtigen Bedingung Krit-Chance, Nahkampfschaden oder Angriffsgeschwindigkeit aus"
+              ],
+              [
+                "Fähigkeitenstärke (Zariman)",
+                "Molt Augmented",
+                "Erhöht die Fähigkeitenstärke, während du Kills anhäufst – ein unkomplizierter Caster-Buff"
+              ],
+              [
+                "Status & Sustain (Zariman)",
+                "Molt Efficiency, Molt Reconstruct",
+                "Molt Efficiency verkürzt die Dauer eingehender Statuseffekte; Molt Reconstruct wandelt für Fähigkeiten verbrauchte Energie in Heilung für dich und Verbündete um"
+              ],
+              [
+                "Waffenschaden",
+                "Primary / Secondary Merciless",
+                "Stapelt steigenden Schaden, je mehr Gegner du tötest"
+              ],
+              [
+                "Belohnung für Headshots",
+                "Primary / Secondary Deadhead",
+                "Belohnt Headshot-Kills mit Bonusschaden und schnellerem Nachladen"
+              ],
+              [
+                "Operator / Amp",
+                "Magus Elevate, Magus Lockdown, Virtuos-Reihe",
+                "Operator-Heilung & CC; Amp-Krit für Eidolons"
+              ]
+            ]
+          }
+        },
+        {
+          "type": "tip",
+          "text": "Wenn du nur drei anstrebst, nimm das klassische Eidolon-Trio – **Energize** (nie wieder leerlaufen) sowie **Grace** und **Guardian** (überlebe den Steel Path). Diese Kombination allein verändert das Spielgefühl fast jedes Frames grundlegend. Kombiniere sie mit der Überlebens-Technik aus dem [Mods-Guide](/guides/mods) und dem [Helminth-Guide](/guides/helminth) für einen ultimativen Power-Spike."
+        }
+      ]
+    },
+    {
+      "id": "selling",
+      "title": "Arcanes in Platinum verwandeln",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Da das Maxen 21 Kopien erfordert, wirst du jede Menge **Duplikate** erhalten, die du nicht brauchst – und die meisten Warframe-Arcanes sind handelbar. Das Farmen einer Quelle, die du bereits gemaxed hast, ist eine der stabilsten Platinum-Einnahmequellen im Spiel, wobei beliebte Arcanes wie Energize und Grace einen echten Wert behalten."
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Mach einen Preis-Check, bevor du farmst.** Nutze den [Markt-Screener](/screener) , um zu sehen, welche Arcanes sich tatsächlich für Plat verkaufen lassen und welche nur ein paar wertlose Dukaten wert sind.",
+            "**Erkenne Spreads und Nachfrage** mit dem [Flip-Finder](/flip) und den [Top-Movers](/movers) – die Arcane-Preise schwanken, wenn ein neuer Frame oder ein Update eine alte passive Fähigkeit wieder in die Meta bringt.",
+            "**Verkaufe Duplikate, behalte Einzelstücke.** Eine Kopie jedes Arcanes bedeutet kostenlose Build-Flexibilität; alles über deinem Zielrang ist Inventar, das du zu Geld machen kannst."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Der Handel mit Arcanes ist einer der klassischen Wege, um dein Konto zu finanzieren. Wenn du neu in der gesamten Plat-Wirtschaft bist, beginne mit dem [Platinum-Guide](/guides/platinum) für die Grundlagen des Handels-Chats und von warframe.market, und komm dann zurück, um deine Extras anzubieten."
+        }
+      ]
+    },
+    {
+      "id": "gameplan",
+      "title": "Ein Schritt-für-Schritt-Plan",
+      "blocks": [
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "h": "Nichts überstürzen – Arcanes sind Mid-Game-Power",
+              "p": "Neue Spieler sollten sich zuerst auf Frames, Waffen und Mods konzentrieren. Du schaltest das Arcane-Ökosystem ganz natürlich frei, wenn du die Plains of Eidolon erreichst, ein Amp baust und den Steel Path beginnst. Es hat keinen Sinn, Arcanes zu maxen, bevor dein Kern-Build funktioniert."
+            },
+            {
+              "h": "Hol dir zuerst Energie + Überlebensfähigkeit",
+              "p": "Deine ersten Ziele sind die Archetypen Energize / Grace / Guardian. Kaufe ein oder zwei günstige Kopien auf dem Markt oder farme Eidolons – oder überspringe das RNG und kaufe sie bei Acrithis in Duviri mit Pathos Clamps. Selbst unaufgewertete Kopien helfen sofort."
+            },
+            {
+              "h": "Schalte deine Waffen-Arcane-Slots frei",
+              "p": "Spare Steel Path Honors für Arcane-Adapter (einen pro Primär-, Sekundär- und Nahkampfwaffe) und rüste dann schadenssteigernde Arcanes wie die Merciless-Reihe auf deinen Hauptwaffen aus."
+            },
+            {
+              "h": "Konzentriere dich darauf, deine Haupt-Arcanes zu maxen",
+              "p": "Wähle die ein oder zwei Arcanes, die du am meisten nutzt, und grinde auf 21 Kopien hin. Teilweise Ränge lohnen sich auf dem gesamten Weg nach oben, es ist also nie verschwendeter Fortschritt."
+            },
+            {
+              "h": "Finanziere den Grind mit Duplikaten",
+              "p": "Biete jedes zusätzliche Arcane über den [Screener](/screener) und den [Flip-Finder](/flip) für Plat an und reinvestiere es in die Kopien, die du noch brauchst. Der Farm finanziert sich von selbst."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mistakes",
+      "title": "Häufige Fehler & schnelle Tipps",
+      "blocks": [
+        {
+          "type": "list",
+          "items": [
+            "**Arcanes mit Mods verwechseln.** Arcanes gehören in den Reiter „Arcanes“, kosten keine Kapazität und lösen bei Triggern aus – sie ersetzen nicht dein Mod-Loadout, sondern ergänzen es.",
+            "**Denken, dass man Rang 5 zum Starten braucht.** Eine einzige Kopie funktioniert bereits. Rüste sie aus und werte sie auf, sobald Duplikate eintrudeln.",
+            "**Duviri übersehen.** Acrithis verkauft viele Eidolon-Arcanes gegen Pathos Clamps – eine stressfreie Solo-Alternative zur Tridolon-Jagd.",
+            "**Einzelstücke verkaufen.** Behalte mindestens eines von jedem handelbaren Arcane; verkaufe nur den Überschuss über deinen Zielrang hinaus.",
+            "**Waffen-Adapter vergessen.** Waffen-Arcanes bewirken nichts, bis du den Slot mit dem passenden Arcane-Adapter freischaltest."
+          ]
+        },
+        {
+          "type": "info",
+          "text": "Arcane-Preise, Dropraten und die „besten Farm“-Knoten sind Details, die DE oft anpasst. Für alles Numerische – eine bestimmte Proc-Chance oder den aktuell besten Farm – solltest du [wiki.warframe.com](https://wiki.warframe.com/) oder ein aktuelles Guide-Video konsultieren, bevor du Stunden darin investierst."
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Wie viele Arcanes braucht man, um ein Arcane in Warframe zu maxen?",
+      "a": "21 Kopien desselben Arcanes maxen es vollständig auf Rang 5. Die Kosten steigen mit jeder Stufe – 1 zum Ausrüsten, dann +2, +3, +4, +5, +6 für insgesamt 21 Kopien. Du musst es jedoch nicht maxen, um es zu verwenden; eine einzelne Kopie funktioniert bereits auf Rang 0."
+    },
+    {
+      "q": "Was ist das beste erste Arcane zum Farmen?",
+      "a": "Beginne mit den Standards für Energie und Überlebensfähigkeit – Arcane Energize, Arcane Grace und Arcane Guardian. Sie verbessern fast jeden Frame im Spiel. Du kannst sie nachts bei Eidolons in den Plains of Eidolon farmen oder sie bei Acrithis in Duviri gegen Pathos Clamps kaufen, um das RNG zu umgehen. Siehe den [Eidolon-Guide](/guides/eidolon)."
+    },
+    {
+      "q": "Werder Arcanes verbraucht, wenn man sie ablegt?",
+      "a": "Nein. Arcanes are permanente Inventargegenstände – das Ausrüsten verbraucht sie nicht, und du kannst sie jederzeit frei zwischen Frames und Waffen wechseln. Nichts wird zerstört und du benötigst keinen Destillator."
+    },
+    {
+      "q": "Kann man Arcanes gegen Platinum tauschen?",
+      "a": "Ja – die meisten Warframe-Arcanes sind handelbar, und der Verkauf deiner Duplikate ist eine verlässliche Platinum-Einnahmequelle, sobald du die von dir genutzten Arcanes gemaxed hast. Mach zuerst einen Preis-Check mit dem [Markt-Screener](/screener) und beobachte die Nachfrage bei den [Top-Movers](/movers), da die Preise mit der Meta schwanken. Der [Platinum-Guide](/guides/platinum) deckt die Grundlagen des Handels ab."
+    },
+    {
+      "q": "Wie schaltet man Arcane-Slots auf Waffen frei?",
+      "a": "Jede Waffe benötigt ihren eigenen Arcane-Adapter – einen Primär-, Sekundär- oder Nahkampf-Arcane-Adapter –, um ihren einzelnen Arcane-Slot freizuschalten. Du erhältst Adapter hauptsächlich über Teshins Steel Path Honors (gegen Steel Essence), kannst sie aber auch bei Acrithis in Duviri gegen Pathos Clamps oder auf dem In-Game-Markt kaufen. Warframe-Arcane-Slots hingegen sind standardmäßig verfügbar – kein Adapter erforderlich."
+    },
+    {
+      "q": "Woher kommen Operator- und Amp-Arcanes?",
+      "a": "Operator-Arcanes (die Magus-Reihe) und Amp-Arcanes (die Virtuos-Reihe) werden mit Vox Solaris-Ansehen bei Little Duck in Fortuna gekauft. Dieses Ansehen verdienst du hauptsächlich durch das Abgeben von Toroiden und übrig gebliebenen vergoldeten Amps aus dem Orb Vallis, und der Kauf des gesamten Sortiments ist ein heftiger Ansehens-Grind – plane also entsprechend."
+    },
+    {
+      "q": "Lohnen sich Arcanes für neue Spieler?",
+      "a": "Sie sind ein Machtmultiplikator für das Mid- bis Late-Game, keine frühe Priorität. Bringe zuerst deine Frames, Waffen und Mods in Ordnung – du schaltest das Arcane-Ökosystem ganz natürlich frei, wenn du die Plains of Eidolon erreichst und den Steel Path beginnst. Sobald du dort bist, sind ein paar Energie- und Überlebens-Arcanes ein massives Upgrade."
+    }
+  ],
+  "videos": [
+    {
+      "id": "DOnp7Nih0YE",
+      "title": "The ONLY Arcane Guide You'll Ever Need (Warframe 2026)",
+      "channel": "WarframeFlo"
+    },
+    {
+      "id": "8-0t4RRSSZw",
+      "title": "How To Farm Arcanes & Best Warframe Arcane Farm to Do First!",
+      "channel": "Joe Hammer Gaming"
+    },
+    {
+      "id": "TfuqGjCf5ws",
+      "title": "18 Must-Have ARCANES after the TECHROT ENCORE Update",
+      "channel": "Grind Hard Squad"
+    },
+    {
+      "id": "WSEBKRYSoC8",
+      "title": "Farming Arcanes is Now EASIER Than Ever! | Warframe",
+      "channel": "Vanterrize Umbra"
+    }
+  ],
+  "sources": [
+    {
+      "label": "r/Warframe: As of today I have finally maxed all Arcanes (100% self farmed)",
+      "href": "https://reddit.com/r/Warframe/comments/1iz2rw4/as_of_today_i_have_finally_maxed_all_arcanes_100/"
+    },
+    {
+      "label": "r/Warframe: DE forgot about the standing sink for Vox Solaris arcanes",
+      "href": "https://reddit.com/r/Warframe/comments/1s0jdek/de_is_fixing_the_early_game_grind_but_forgot/"
+    },
+    {
+      "label": "r/Warframe: Getting Stronger in Warframe, 2026 (progression guide)",
+      "href": "https://reddit.com/r/Warframe/comments/1u00jua/getting_stronger_in_warframe_2026/"
+    },
+    {
+      "label": "Official Warframe Wiki",
+      "href": "https://wiki.warframe.com/"
+    }
+  ],
+  "related": [
+    {
+      "label": "Eidolon-Jagd-Guide",
+      "to": "/guides/eidolon",
+      "icon": "weather-night",
+      "note": "Die klassische Quelle für Energize, Grace & Guardian"
+    },
+    {
+      "label": "Steel Path-Guide",
+      "to": "/guides/steel-path",
+      "icon": "skull",
+      "note": "Woher Waffen-Arcane-Adapter kommen"
+    },
+    {
+      "label": "Ansehens-Guide",
+      "to": "/guides/standing",
+      "icon": "handshake",
+      "note": "Vox Solaris-, Holdfasts- & Cavia-Arcane-Ansehen"
+    },
+    {
+      "label": "Platinum-Guide",
+      "to": "/guides/platinum",
+      "icon": "cash-multiple",
+      "note": "Verkaufe deine doppelten Arcanes für Plat"
+    },
+    {
+      "label": "Markt-Screener",
+      "to": "/screener",
+      "icon": "table-search",
+      "note": "Überprüfe den Preis jedes Arcanes, bevor du farmst"
+    },
+    {
+      "label": "Helminth-Guide",
+      "to": "/guides/helminth",
+      "icon": "dna",
+      "note": "Kombiniere Arcanes mit subsumierten Fähigkeiten für den ultimativen Power-Spike"
+    }
+  ],
+  "updated": "2026-07-18"
+}

@@ -1,0 +1,678 @@
+{
+  "slug": "credits",
+  "eyebrow": "ナレッジセンター · Credits",
+  "title": "Credits ファームガイド",
+  "lede": "CreditsはWarframeの共通通貨です。クラフト、mod、tradeのたびに消費され、いくらあっても足りなくなるものです。これは信頼できる2026年版です。パッチノートと照らし合わせてすべてのファームを再検証し、現在も有効なものだけを残し、何がいつ弱体化（nerf）されたかを正確にマークしました。Höllvania Techrot safesが新たな主流となり、The Indexは依然として信頼できる定番であり、古い「AFK」トリックの半分は実際には機能していませんでした。",
+  "category": "farming",
+  "readMins": 13,
+  "stats": [
+    {
+      "num": "~1M",
+      "label": "最高効率：Höllvania safe、フルスタック",
+      "tone": "gold"
+    },
+    {
+      "num": "250k",
+      "label": "Index High-Riskの報酬 / ラウンド",
+      "tone": "good"
+    },
+    {
+      "num": "4×",
+      "label": "Credit Booster × 2倍週末",
+      "tone": "alt"
+    },
+    {
+      "num": "No",
+      "label": "Creditsはtrade可能です",
+      "tone": "alt"
+    }
+  ],
+  "sections": [
+    {
+      "id": "why",
+      "title": "なぜCreditsが重要なのか",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "CreditsはWarframeのすべてを円滑に動かす潤滑油です。Foundryで製作するすべての設計図、ランクアップするすべてのmod、Marketで購入するすべてのギアアイテム、そして行うすべてのtradeは、静かにあなたのCreditsを消費していきます。Platinumが注目されがちですが、**実際に日々消費するのはCreditsです**。そして、新規プレイヤーはほぼ常にCredits不足に陥ります。"
+        },
+        {
+          "type": "p",
+          "text": "良いニュースとして、Creditsはどこに行くべきかさえ知っていれば、ゲーム内で最もファームしやすいものの一つです。[platinum](/guides/platinum)とは異なり、tradeで入手する必要はありません。また、[Kuva](/guides/kuva)やrelicsとは異なり、ファームは迅速で、繰り返し可能で、ほとんどストレスがありません。2026年中期において、最も速い方法は**Chromaを使用したHöllvania Techrot safe周回**です。Neptuneの**The Index**は、事前準備が不要な定番として健在です。"
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "タイプ",
+              "v": "ゲーム内共通通貨（アカウント紐付け）"
+            },
+            {
+              "k": "Trade可能？",
+              "v": "いいえ — Creditsはtradeやギフト送信ができません"
+            },
+            {
+              "k": "主な用途",
+              "v": "Foundryでのクラフト、Marketの設計図、modのアップグレード、trade税"
+            },
+            {
+              "k": "大きな倍率バフ",
+              "v": "Credit Booster (2×)、Double Credit週末イベントと重複して4×"
+            },
+            {
+              "k": "現在の最高効率",
+              "v": "Höllvania Techrot safes (Chroma) → Profit-Taker → The Index"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "by-stage",
+      "title": "進行度別の最適なCreditsファーム (2026)",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "唯一無二の「最適な」Creditsファームというものは存在しません。適切な答えは、あなたの装備やMastery Rankによって異なります。原則として、ファームは序盤の*ただゲームをプレイする*段階から、中盤のThe Index、そして強くなってからのProfit-TakerやHöllvaniaのキャッシュへとスケールアップしていきます。以下に挙げるものはすべて最新のパッチで再検証済みです。何年も前に通用しなくなった「ただひたすらDark Sector Defenseを周回する」といった古いアドバイスはありません。自分の進行状況に合ったファームを選びましょう："
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "進行度",
+              "方法",
+              "場所",
+              "備考"
+            ],
+            "rows": [
+              [
+                "序盤（新規アカウント）",
+                "Dark Sectors + デイリー初回勝利ボーナス",
+                "Seimeni (Ceres), Gabii (Ceres), Hieracon (Pluto)",
+                "Dark Sectorノードには一律のCreditsボーナスがあります。長時間プレイするのではなく、最初のローテーションマーカーで脱出してリセットしましょう。1日1回の初回勝利2倍ボーナスは、最も報酬の高い周回に使いましょう。ソロで約250k〜400k/時間、装備不要 — MR1のプレイヤーでも全く問題ありません。"
+              ],
+              [
+                "中盤（信頼できる定番）",
+                "The Index — High Risk",
+                "Neptune（Neptuneに到達するだけ。MR制限なし）",
+                "50kを賭けて、勝利すると250kを獲得。ボーナスのために約15ポイントを貯めて納品し、数ラウンド滞在します（賭け金はマッチごとに1回のみ支払われます）。ソロで約1.5〜2M/時間。Steel Pathは報酬を増加させません。通常モードで実行してください。Chromaを持っていない場合は、依然としてこれが最善の選択肢です。"
+              ],
+              [
+                "終盤（高速分隊の限界値）",
+                "Profit-Taker heist — Phase 4のみ",
+                "Orb Vallis, Fortuna (Old Mate + Gravimag搭載のarchgunが必要)",
+                "Orbは物理ドロップとして確定で125kを落とすため、すべての倍率バフと重複します。フェーズ1〜3を一度クリアした後は、ボスのみを繰り返し倒します。ボスが倒れる前に、その崩壊地点にChromaのEffigyを設置してドロップを2倍にします。ソロで約2〜3M/時間、効率を極めた分隊なら4〜5M以上/時間。"
+              ],
+              [
+                "最新コンテンツ（現在の最高効率）",
+                "Höllvania Techrot safe (Warframe 1999)",
+                "Höllvania / 1999 — Exterminateを除くすべてのミッションタイプ",
+                "1回の周回につき1つのsafeが出現し、近くにあるキーで解錠すると基本100kを獲得。開ける前にその横にChromaのEffigyを設置して2倍にします。これは「機能していない」と勘違いされる最大の原因です。フルスタックで約560k、2〜3分の周回で最大1M以上に達します。Profit-Takerと同等の報酬でありながら、より快適で野良（パブリック）向けです。"
+              ],
+              [
+                "エンドゲームのマルチプライヤー重ね掛け",
+                "Booster + Blessing + イベント2倍 + Chroma Effigy + Retriever",
+                "トップクラスのファーム（HöllvaniaのキャッシュまたはProfit-Taker）に重ねる",
+                "倍率は重複します。Double Credit週末イベント（2×）中にCredit Booster（2×）を使用すると4×になり、さらにChromaのEffigy、リレーのCredit Blessing、そしてProsperous Retrieverの発動が上乗せされます。デイリー初回勝利2倍はThe Index、heist、Höllvaniaのキャッシュには適用されません。代わりにイベントの週末にブースターを購入しましょう。"
+              ],
+              [
+                "低負荷 / 準AFK",
+                "Railjack — Sover Strait周回",
+                "Earth Proxima, Sover Strait (ビルド済みのRailjack + AIクルーが必要)",
+                "約3分の周回で約34k、銃座にAIクルーを配置して準AFKでプレイ可能。約0.5〜1M/時間、Boosterがあればさらに増加。The Indexやキャッシュよりは遅いですが、手間と装備がほぼ不要な点で優れています。"
+              ]
+            ],
+            "note": "ノード名や正確な獲得量はアップデートによって変動します。これは進行の目安として捉え、現在の数値についてはwikiを確認してください。"
+          }
+        },
+        {
+          "type": "tip",
+          "text": "何をファームするにしても、**Credit Boosterを有効にしておき**、タイミングを合わせましょう。Double Credit週末イベント中のブースターは一律4倍になるため、その1時間に集中してプレイするだけで、カジュアルにプレイする1週間分以上の稼ぎを得ることができます。"
+        }
+      ]
+    },
+    {
+      "id": "hollvania",
+      "title": "Höllvania Techrot safes — 2026年の覇者",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "このガイドが最初に公開されて以来、Creditsファームにおける唯一最大の変更点は**Warframe 1999 / Höllvania**です。そこでのすべてのミッション（Exterminateを除く）には、1つの**Techrot safe**（近くのキーで解錠する大きな保管箱）がスポーンし、基本**100,000 Credits**に加えて、ArcaneとHex Treasureが手に入ります。これだけでも2〜3分の周回としては十分に強力ですが、Chromaを使用することで、ゲーム内で時間あたり最高のCreditsファームになります。"
+        },
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "h": "Exterminate以外のミッションを選択する",
+              "p": "Captureが最速です。さらに良いのは、safeの解錠（「SHELL CRACKER」ステップ）が目的となっているバウンティを実行することです。これにより、safeがマップ上にマークされ、探す手間が省けます。"
+            },
+            {
+              "h": "キーを拾い、safeを見つける",
+              "p": "キーはsafeの近くにスポーンします。それを拾って運んでいきましょう。アイテムレーダーmod（またはOrokin Eyeのエアサポート）を使用すると、両方を簡単に見つけることができます。"
+            },
+            {
+              "h": "開ける前にChroma's Effigyを設置する",
+              "p": "これがトリックのすべてです。Effigyのオーラはその内部（約10m）でドロップしたCreditsを2倍にしますが、これはsafeから報酬が支払われる瞬間に展開されている必要があります。safeの上に設置してから、解錠してください。先に開けてから設置してしまうことが、このファームが「機能していない」と誤解される最大の理由です。"
+            },
+            {
+              "h": "解錠して、残りのバフを重ねる",
+              "p": "Effigyによる2倍に加えて、リレーのCredit Blessing（+25%）、コンパニオンのProsperous Retrieverの発動、Credit Booster、そして開催中であればDouble Credit週末イベントを重ねます。フルスタックでは通常約560k、運が良ければ100万を超えます。"
+            }
+          ]
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "場所",
+              "v": "Höllvania (Warframe 1999オープンゾーン)、Exterminateを除くすべてのミッションタイプ"
+            },
+            {
+              "k": "必要条件",
+              "v": "1999 / Höllvaniaコンテンツへのアクセス（1999クエストラインの進行）"
+            },
+            {
+              "k": "重要なframe",
+              "v": "Chroma — 開ける前にsafeの場所でEffigyを展開して2倍にする"
+            },
+            {
+              "k": "基本報酬",
+              "v": "safeごとに約100,000 Credits、1回の周回につき1つのsafe"
+            },
+            {
+              "k": "フルスタック",
+              "v": "通常約560k、Blessing + Retriever + Booster + 2倍週末イベントで最大1M以上"
+            }
+          ]
+        },
+        {
+          "type": "video",
+          "video": {
+            "id": "1ED3nbXINrI",
+            "title": "1999 Credit Farm - Up to 500k in 5 minutes",
+            "channel": "Prime Outcast Collective"
+          }
+        },
+        {
+          "type": "warn",
+          "text": "safeを開ける**前に**Effigyを展開してください。そうしないと2倍ボーナスを失います。やり直しはできません。また、モバイルプラットフォームにおける既知のバグ（2026年4月頃に発生）により、safeから数千Creditsしか支払われない問題が報告されています。PCでは正常に動作します。"
+        },
+        {
+          "type": "info",
+          "text": "FortunaのStanding、archgun、Mastery制限は一切ありません。唯一の要件は1999コンテンツに到達することです。このアクセスの容易さと、Profit-Takerに迫る報酬額こそが、2026年中期においてコミュニティがこれをゲーム内最高のCreditsファームと呼び続ける理由です。"
+        }
+      ]
+    },
+    {
+      "id": "index",
+      "title": "The Index — 信頼できるCreditsエンジン",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Neptune**のThe IndexがコミュニティのデフォルトのCreditsファームであるのには理由があります。迅速で、無限に繰り返すことができ、特別な装備を必要とせず、スターチャートをNeptuneまで進めた瞬間に利用可能になるからです（Mastery制限なし、Glast Gambitのクリア不要）。これはポイントを貯めるモードです。事前にCreditsを賭け、Indexの敵を倒してポイントを回収し、敵のAIチームが納品する前にターミナルにデポジットします。マッチに勝利すれば、賭け金を大幅に上回る報酬を得て帰ることができます。"
+        },
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "h": "賭け金のティアを選択する",
+              "p": "リスクが高いほど報酬も大きくなります。High Risk（50kの賭け金）は勝利時に250kを返します。安定して勝てるようになったら、これが標準のファームになります。チームが不安定な場合は、ルールを覚えるまでLowまたはMediumで資金を維持しましょう。"
+            },
+            {
+              "h": "キルし、回収し、賢く納品する",
+              "p": "Indexの敵は死亡時にポイントをドロップします。大量のポイントを保持している間は被ダメージが増加するため、20ポイントまで溜め込むのではなく、ボーナスが得られる15ポイント前後で納品しましょう。"
+            },
+            {
+              "h": "敵のターミナルを阻止する",
+              "p": "ポイントをデポジットしてスコアを獲得し、敵チームが先に目標値に達するのを防ぎます。マップをコントロールすることが勝利への鍵です。"
+            },
+            {
+              "h": "勝利し、さらに続ける",
+              "p": "賭け金はマッチごとに1回しか請求されないため、離脱して再度キューに入れるよりも、さらに多くのラウンドに留まる方がはるかに効率的です。ここでCreditsが積み上がっていきます。Steel Pathではなく**通常モード**で実行してください。SPはCredits報酬を増加させません。"
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "ティア",
+              "賭け金",
+              "適している用途"
+            ],
+            "rows": [
+              [
+                "Low Risk",
+                "30,000",
+                "モードの学習 / 少ない手元資金"
+              ],
+              [
+                "Medium Risk",
+                "40,000",
+                "中盤の安定した収入"
+              ],
+              [
+                "High Risk",
+                "50,000",
+                "ラウンドあたりの最高利益 — 標準のファーム"
+              ]
+            ],
+            "note": "High Riskは勝利時に約250kを支払います（ラウンドあたり約200kの純利益）。賭け金はマッチごとに1回しか請求されないため、追加のラウンドはほぼ純粋な利益になります。負けると賭け金は没収されます。正確な現在の数値についてはwikiを確認してください。"
+          }
+        },
+        {
+          "type": "tip",
+          "text": "**Wukongは定番のIndex用frameです** — 彼のDefyは彼をほぼ不死身にし、Celestial Twinは追加のDPSを提供するため、ソロでレーンを永久に維持できます。これこそが本物の「Wukong Creditsファーム」です。古いAFK Secura Lectaのトリック（なぜそれが機能しなかったのかはレガシーセクションを参照）ではなく、*The Indexにおける*Wukongです。2026年はマッチングが薄いため、ソロプレイを想定してください。それこそがWukongの得意分野です。"
+        },
+        {
+          "type": "video",
+          "video": {
+            "id": "yJO4-Q8IWEk",
+            "title": "Warframe - HIGH Risk SOLO Index Credit Farming Guide (3 Minutes)",
+            "channel": "FastTipsGaming"
+          }
+        },
+        {
+          "type": "video",
+          "video": {
+            "id": "EGLeIDUMbDI",
+            "title": "Wukong - Ultimate Index God Build | Easy & Fast credits farm",
+            "channel": "-DR-GraiD"
+          }
+        },
+        {
+          "type": "warn",
+          "text": "賭け金は自分のCreditsから前払いする必要があります。手持ちがない場合は、いきなりHigh Riskに飛び込まないでください。まずはLow/Mediumで数回勝利し、1回の敗北で破産しないようにしましょう。"
+        }
+      ]
+    },
+    {
+      "id": "veteran-farms",
+      "title": "Profit-Takerおよびその他のベテラン向けファーム",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "装備が整ったら、FortunaのOrb Vallisにおける**Profit-Taker Orb heist**が高速分隊の限界値となります。Orbの撃破（Phase 4）は、物理ドロップとして確定で**125,000 Credits**を落とします。これは固定報酬ではなく*ドロップ*であるため、所持しているすべての倍率バフと重複します。フェーズ1〜3を一度クリアした後は、ボスのみを連続して倒します。Orbが倒れる前に、崩壊する場所（オーラは約10mのみ）にChromaのEffigyを設置してドロップを2倍にします。また、Credit Boosterは（The Indexの賭け金とは異なり）すべての周回に適用されます。"
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "場所",
+              "v": "Orb Vallis (Fortuna)、heist（Vox Solaris / Eudico経由）、Phase 4のみを繰り返す"
+            },
+            {
+              "k": "必要条件",
+              "v": "Vox Solarisランク5 (Old Mate) + Gravimag搭載のarchgun"
+            },
+            {
+              "k": "装備",
+              "v": "2倍にするためのChroma (Effigy)、または約3分未満で撃破するための高速DPS frame"
+            },
+            {
+              "k": "基本Credits",
+              "v": "キルごとに125,000の物理ドロップ — Effigy, Booster, Blessingと重複"
+            },
+            {
+              "k": "効率",
+              "v": "現実的に約2〜3M/時間、連携の取れた分隊なら4〜5M以上/時間"
+            }
+          ]
+        },
+        {
+          "type": "video",
+          "video": {
+            "id": "JkFgsX6YTWw",
+            "title": "Solo Profit-Taker Kill in under 2 minutes | Warframe Credits Farming in 2026",
+            "channel": "Endryx_ow"
+          }
+        },
+        {
+          "type": "info",
+          "text": "その他の確実な選択肢：特定の**Railjack**ミッション（Sover Strait周回はAIクルーによる準AFKで1回約34k）、Neptuneの**Laomedeia**（Disruptionのキャッシュ、約1.2〜1.3M/時間。画面上の数値は変わりませんがブースターは適用されます）、Plutoの**Hieracon**（Dark Sectorボーナス付きのExcavation、endoやrelicsも集まります）。効率面でProfit-TakerやHöllvaniaのキャッシュには及びませんが、単調な作業の気分転換になります。"
+        },
+        {
+          "type": "p",
+          "text": "Profit-TakerはFortunaの地位（reputation）に依存しているため、まだ到達していない場合は、まず[Standing](/guides/standing)を上げましょう。これは、どのみち必要になるアンプやarcaneへの進行状況も兼ねています。"
+        }
+      ]
+    },
+    {
+      "id": "boosters",
+      "title": "ブースターとマルチプライヤー — 重ね掛けする",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Credits収入における最大のレバーはノードではなく、重ね合わせるマルチプライヤーです。これらは重複するため、トップクラスのファームでブースター + 運の良いCharm + Blessingを重ねることで、基本報酬を3倍以上に増やすことができます。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Credit Booster (2×)** — 有効期間中に獲得するすべてのCreditsを2倍にします。Marketでplatinumを使って購入するか、ログインマイルストーン報酬、Nightwave、イベントなどから無料で入手できます。",
+            "**Double Credit weekend (2×)** — 独立したイベントマルチプライヤーで、**Credit Boosterと重複して一律4倍になります**。上限に達するために、週末の*期間中に*ブースターを購入しましょう。",
+            "**Chroma's Effigy (2×)** — 約10mのオーラ内でドロップしたCreditsを2倍にします。これはHöllvania-safeとProfit-Takerの両方のファームの原動力です。報酬が支払われる*前に*展開してください。",
+            "**Credit Blessing (+25%)** — 最大ランクの同盟者からのリレー祝福。ドロップベースのファームにおいて、実質約1.4倍のブースト効果をもたらします。",
+            "**Prosperous Retriever** — クレジットの拾得を2倍にする確率（約18%）を持つコンパニオンmod。（古い「Resourceful」ではなく、*Prosperous* Retrieverです。）",
+            "**Smeeta Kavat (Charm)** — そのCharmバフは、短い時間枠で拾う素材やCreditsを2倍にすることができます。現在も機能しますが、発動は完全にRNG（確率）です。",
+            "**Daily First Win (2×)** — 毎日最初のミッション完了報酬を2倍にしますが、The Index、heist、Höllvaniaのキャッシュには適用され**ません**。通常の高報酬ミッションのために取っておきましょう。"
+          ]
+        },
+        {
+          "type": "warn",
+          "text": "**Secura Lecta**はかつてマルチトリガーのトリックを介して最高峰のCreditsファームの要となっていましたが、それは**Hotfix 42.0.10 (6 May 2026)**で修正されました。現在でもキル時の有効なマルチプライヤー（MR8で約2倍、MR18で最大約4倍、上限あり）ですが、**もはや専用ファームの目的となる武器ではありません**。古い数値を期待して、これを中心にビルド全体を構成しないようにしてください。"
+        }
+      ]
+    },
+    {
+      "id": "legacy",
+      "title": "レガシーおよび状況限定のファーム（Wukong、Necramechなど）",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "世に出回っている「最高のCreditsファーム」ガイドの半分は、修正されたセットアップや、そもそもCreditsファームですらなかったものを未だに紹介しています。ここでは、2026年中期におけるこれらの方法の実際の状況を率直に明かします。2024年のサムネイルが「神ティア」と謳っていたビルドに、Standingやformaを注ぎ込む前にこれを読んでください。"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "ファーム",
+              "2026年のステータス",
+              "実際の効果"
+            ],
+            "rows": [
+              [
+                "Wukong AFKファーム (Twin + Secura Lecta)",
+                "「AFK」ファームとしては一度も機能していません",
+                "Celestial Twinによるキルはアビリティキル扱いとなり、LectaのCreditsボーナスはトリガーされません。また、Wukongが近接武器を構えている間、twinは銃（Lectaではない）を発射します。Wukongの本当の用途はThe Indexであり、これではありません。twin版のビルドは作成しないでください。"
+              ],
+              [
+                "Secura Lectaの「Credits爆発」",
+                "2026年5月に弱体化 — 単純なマルチプライヤーのみ",
+                "マルチトリガーのグリッチ（50M以上/時間を謳う人もいました）はHotfix 42.0.10で修正されました。敵が密集したノードでの約2〜4倍のキル時マルチプライヤーとしては依然として優秀ですが、もはやこれを中心にビルドを組むようなファームではありません。"
+              ],
+              [
+                "Necramech (Deimos Isolation Vaults)",
+                "状況限定 — そもそも本物のCreditsファームではありません",
+                "VaultのNecramechは、売却するとそれぞれ約20kになるDamaged Necramech Partsをドロップするため、Creditsは副産物に過ぎません。これはNecramechのパーツやNecraloidのStandingファームです。Credits目的ではなく、VoidrigやBonewidowのパーツ目的で周回してください。"
+              ],
+              [
+                "Kullervoボス (Duviri)",
+                "Creditsファームではありません — これまで一度もそうではありませんでした",
+                "Creditsではなく、彼自身の設計図用のDuviri通貨であるKullervo's Baneをドロップします。純粋にそのWarframe目的でファームしてください。"
+              ],
+              [
+                "The Descendia / Roathe",
+                "Maphica/Arcaneファームであり、Credits用ではありません",
+                "基本報酬の約7.4kに加えて、週制限のある10kのキャッシュがいくつか手に入るだけです。Maphica、Arcane、Riven目的で周回し、キャッシュは週のリセット時に一度回収するだけにしましょう。"
+              ],
+              [
+                "Faceoff (1999 PvPvE)",
+                "Credits報酬はゼロです",
+                "Vosfor、Arcane、Relic、Endo、Conclave Standingが手に入りますが、Creditsは一切ありません。楽しいモードですが、リスト違いです。"
+              ]
+            ],
+            "note": "共通して言えるのは、Secura Lectaのマルチトリガーグリッチ（Hotfix 42.0.10、2026年5月6日）を除いて、Creditsファームを妨害するために弱体化されたものはここにはないということです。他はそもそもCreditsを支払わなかったか、単に新しいコンテンツに追い抜かれただけです。古い動画ではなく、パッチの日付を信じてください。"
+          }
+        },
+        {
+          "type": "p",
+          "text": "**Does the Wukong AFK credit farm still work?** いいえ。そして、宣伝されていたようには一度も機能していませんでした。Celestial Twinによるキルはアビリティキルであり、Secura Lectaのキル時Creditsボーナスは発動しません。また、Wukongが近接武器を構えている間、twinはLectaではなく銃を使用するため、前提自体が崩壊しています。実際に存在するLectaのCreditsファームは、TitanのようなDark SectorのSteel Path Survivalにおける**アクティブな**Chroma（敵を集めるためのHelminth Ensnare + 2倍オーラのためのEffigy）ですが、それすらもHotfix 42.0.10で牙を抜かれました。WukongでCreditsを稼ぎたい場合は、彼をThe Indexに連れて行ってください（上記参照）。twin用のビルドは組まないでください。"
+        },
+        {
+          "type": "p",
+          "text": "**Can you farm credits with a Necramech?** いいえ、実質的にはできません。DeimosのIsolation VaultのNecramechは、売却するとそれぞれ約20,000 CreditsになるDamaged Necramech Partsをドロップするため、Creditsは基本的にNecramechコンポーネントやNecraloidのStandingを目的とした周回の副産物としてしか得られません。NekrosにブースターとKavatのCharmを組み合わせた最善のケースでも、1時間あたり数十万から最大約1.5M程度ですが、不安定です。そして、Chromaを使用したわずか2〜5分のHöllvaniaキャッシュ周回1回で、現在ではその最高効率に匹敵します。ここでCreditsのために「弱体化」されたものはありません。単にパワーインフレによってCredits獲得手段として時代遅れになっただけです。財布のためではなく、VoidrigやBonewidowのパーツのためにIso Vaultを周回してください。"
+        },
+        {
+          "type": "video",
+          "video": {
+            "id": "1qqYfJ9LUvY",
+            "title": "How To Run Isolation Vaults For Necramech Farming In Warframe!",
+            "channel": "Pupsker"
+          }
+        },
+        {
+          "type": "video",
+          "video": {
+            "id": "gjjNe2cctlw",
+            "title": "Fastest Warframe Credit Farm IN THE GAME! THEY NERFED IT :(",
+            "channel": "Pupsker"
+          }
+        },
+        {
+          "type": "p",
+          "text": "一言で言えば、小細工の効いた古い裏技を追いかけるのはやめましょう。Secura Lectaは副次的なマルチプライヤーとしては優秀ですが、もはや目的となるものではありません。また、Wukong、Necramech、Kullervoはサムネイルが約束したようなCredits製造機ではありませんでした。2026年中期に実際に大量のCreditsを稼ぐには、**Chromaを使用したHöllvania Techrot safes**、高速分隊での**Profit-Taker Phase 4**、またはChromaがない場合は**The Index**を実行し、どれを選ぶにしてもDouble Credit週末イベント中にCredit Boosterを重ね掛けしてください。"
+        }
+      ]
+    },
+    {
+      "id": "early",
+      "title": "序盤＆ストレスフリーなCredits稼ぎ",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "初心者でCreditsが不足していますか？メタなファームは必要ありません。Creditsの無駄遣いを防ぎ、簡単な稼ぎ口を押さえることが重要です。The Indexをアンロックする前は、以下の方法で食い繋ぎましょう："
+        },
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "h": "コンソールでジャンク品を売却する",
+              "p": "インベントリを開き、重複したパーツの設計図やランクなしのコモンmodをゲーム内のベンダーに売却します（これはtradeとは異なります）。Redditで定番のジョークである「よくファームされるHarrowのようなframeを検索し、重複したパーツ設計図の山を売却する」というのは、実は非常に有効なアドバイスです。それぞれまとまった額のCreditsになります。"
+            },
+            {
+              "h": "Dark Sectorsを周回する",
+              "p": "Dark Sectorノードは通常の報酬に加えてCreditsボーナスを付与し、そのDefenseやExcavationのバリアントは初心者向けです。報酬の効率が落ちてきたら、最初のローテーションマーカーで脱出しましょう。"
+            },
+            {
+              "h": "ただミッションを完了する",
+              "p": "すべてのミッションは完了時にCredits報酬を支払い、さらに敵からのドロップもあります。スターチャートをクリアし、バウンティをこなすことで、序盤のクラフト資金は自然と貯まります。そして、Daily First Winの2倍ボーナスは最も報酬の大きいミッションに使いましょう。"
+            },
+            {
+              "h": "ログイン報酬からCredit Boosterを回収する",
+              "p": "ログインマイルストーン報酬やNightwaveで無料のブースターがないかチェックし、ただなんとなくプレイするのではなく、集中してファームするタイミングで使用しましょう。"
+            }
+          ]
+        },
+        {
+          "type": "info",
+          "text": "スロットを確保するために、Warframeやファームが困難な装備を焦って売却しないでください。スロットは安価ですが、frameを再ファームするのは非常に大変です。これはベテランが初心者に警告する、よくある後悔の一つです。"
+        }
+      ]
+    },
+    {
+      "id": "sinks",
+      "title": "Creditsの実際の消費先",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "消費先を理解することは戦いの半分を制したようなものです。これにより、いつファームすべきかが分かります。常に金欠だと感じる理由は、以下に挙げるもののうち数個を実行するだけで、The Indexのセッション丸ごと1回分が簡単に吹き飛んでしまうからです："
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Foundry crafting** — ほぼすべての設計図は、製作タイマーを開始するだけでCredits（多くの場合、素材も）を請求します。",
+            "**Market blueprints & gear** — Warframe、武器、ギアの設計図はCreditsで購入します。",
+            "**Mod upgrades** — modのランクアップにはCredits*と*[Endo](/guides/endo)が必要です。Primedや10ランクのmodを最大にするには、それぞれ200万近くのCreditsがかかることがあります。",
+            "**Trade tax** — すべてのtradeにはアイテムのレア度に応じたCreditsの税金がかかるため、頻繁にtradeを行うプレイヤーはCreditsを急速に消費します。",
+            "**Baro Ki'Teer & vendors** — 多くの提供品は、[ducats](/ducats)やStandingに加えてCreditsを必要とします。",
+            "**Dojo research & decorating** — クランの研究や装飾は、継続的に発生する大きなCreditsの消費先です。"
+          ]
+        },
+        {
+          "type": "quote",
+          "text": "大規模なクラフトやmod構成のセッションに入る前に、数回の周回で資金を蓄えておきましょう。ファームを終えた後に、製作費用が足りないことに気づくほどモチベーションを削がれることはありません。",
+          "cite": "r/Warframeのよくあるアドバイス"
+        }
+      ]
+    },
+    {
+      "id": "ceiling",
+      "title": "最高峰の限界値（そして正気を保つこと）",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "2026年のCreditsメタの頂点は、**Chroma on a top drop-farm with every multiplier stacked**です。Höllvania Techrot safeまたはProfit-Taker Phase 4の撃破において、Effigyによる2倍、Credit BoosterとDouble Credit週末イベントによる4倍、さらにリレーのCredit Blessingと運の良いRetrieverの発動を重ねます。装備の整ったプレイヤーはこれらを連鎖させ、このガイドの他のすべてを圧倒する数値を叩き出します。ここに*もう存在しない*ものに注意してください。それは、2026年5月のホットフィックスで廃止されたSecura Lectaのマルチトリガーファームです。"
+        },
+        {
+          "type": "warn",
+          "text": "限界値を目指す必要はありません。Höllvaniaのキャッシュ、Profit-Taker、そしてThe Indexは、専用のロードアウトがなくてもプレイヤーのCredits需要の99%をカバーします。modの費用を賄うためだけに、フォーマを3つも使ったCredits専用ビルドをグラインドする必要はありません。"
+        },
+        {
+          "type": "info",
+          "text": "マラソン周回に賞品はありません。脱出する前にクラッシュしたりホストとの接続が切れたりすると、そのセッションの獲得物を失う可能性があり、またグリッチによる異常な報酬の急増は、アカウントにフラグが立てられる原因になることがあります。終わりのないタイマーを追いかけるのではなく、定期的に脱出して資金を確保しましょう。"
+        },
+        {
+          "type": "p",
+          "text": "Creditsはすべての資金源になりますが、*trade可能*な通貨ではありません。本当の目的が他のプレイヤーから装備を購入することである場合は、[flip](/flip)や[Relicの価値](/relics-value)カリキュレーター、[Baro Ducatランキング](/ducats)などのツールを使用して、[platinum](/guides/platinum)を稼ぐことにシフトしてください。"
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "現在、Warframeで最速のCreditsファームは何ですか？",
+      "a": "2026年中期において、純粋な時間あたりのCredits効率では、Chromaを使用したHöllvania Techrot safes (Warframe 1999)が現在の最高効率です。safeごとに基本100k、開ける前にEffigyを展開して2倍にし、さらにCredit Blessing、Prosperous Retrieverの発動、Credit Booster、そしてイベントのDouble Credit週末を重ねることで、2〜3分の周回で約560k、最大1M以上に達します。高速分隊であれば、同様にスケールする確定125k物理ドロップのProfit-Taker Phase 4も肉薄しています。Chromaがない場合はThe Indexが最善の選択肢です。Double Credit週末イベント中にブースターを購入してください。これら2つの2倍マルチプライヤーが重複して4倍になります。"
+    },
+    {
+      "q": "WukongのCreditsファームは2026年でもまだ機能しますか？",
+      "a": "AFK Secura Lecta版は、宣伝されていたようには一度も機能していませんでした。Celestial Twinによるキルはアビリティキルであり、LectaのCreditsボーナスはトリガーされません。また、Wukongが近接武器を構えている間、twinはLectaではなく銃を使用します。実際に機能するのはThe IndexにおけるWukongです。Defyによる耐久力とTwinのDPSにより、彼は定番のソロIndex用frameとなっています。また、Hotfix 42.0.10（2026年5月6日）以降、Lectaは単なる約2〜4倍のマルチプライヤーに過ぎず、トップクラスのファームではありません。したがって、The IndexにおけるWukongは有効ですが、古いAFKトリックは機能しません。"
+    },
+    {
+      "q": "NecramechでCreditsをファームできますか？",
+      "a": "実質的には不可能です。DeimosのIsolation VaultのNecramechは、売却するとそれぞれ約20kになるDamaged Necramech Partsをドロップするため、Creditsは副産物として得られますが、基本的にはNecramechコンポーネントやNecraloidのStandingを目的としたファームです。収益は不安定であり、Chromaを使用した1999のTechrotキャッシュ周回1回で、その最高効率に匹敵します。VoidrigやBonewidowのパーツ、そしてEntratiのStanding目的でIso Vaultを周回してください。Credits目的であれば、Höllvaniaのsafeを解錠するか、The Indexを実行してください。"
+    },
+    {
+      "q": "The Indexは2026年でもまだやる価値がありますか？",
+      "a": "はい。High Riskは依然として50kを賭けてラウンドごとに250kを支払います。このティアは2026年中期まで変更されていません。ソロで約1.5〜2M/時間稼げるため、Chromaや強力なロードアウトを持っていない場合には依然として最善の選択肢です。約15ポイントを貯めて納品し、数ラウンド滞在し（賭け金はマッチごとに1回のみ支払われます）、通常モードで実行してください。Steel PathはCredits報酬を増加させません。マッチングが薄いため、ソロプレイの準備をしておきましょう。ChromaとVox Solarisのランク5を持っている場合は、HöllvaniaのキャッシュやProfit-Takerの方が分あたりの効率で上回ります。"
+    },
+    {
+      "q": "The Indexをアンロックしてプレイするにはどうすればよいですか？",
+      "a": "The IndexはNeptuneにあるゲームモードです。スターチャートをそこまで進めることでアクセス可能になります（Mastery制限なし）。Credits（Low、Medium、またはHigh）を賭け、Indexの敵を倒してポイントを回収し、敵チームがスコアを獲得する前にターミナルにデポジットします。勝利すれば賭け金を大幅に上回る報酬を獲得でき、敗北すると賭け金は没収されます。賭け金はマッチごとに1回請求されるため、再度キューに入れるよりも、追加のラウンドに留まる方が効率的です。"
+    },
+    {
+      "q": "Profit-TakerはCreditsファームに適していますか？",
+      "a": "はい。Profit-Takerを倒すごとに、確定で125kのCreditsが物理ドロップとして落ちます。戦闘は連続して完全に繰り返し可能（初回クリア後はPhase 4のみ）であるため、強力なアカウントにとって最高のファームの一つとなります。ドロップであるため、ChromaのEffigyで2倍になり、すべての周回にCredit Boosterが適用されます。"
+    },
+    {
+      "q": "WarframeでCreditsをtradeすることはできますか？",
+      "a": "いいえ — Creditsはアカウント紐付けであり、tradeやギフト送信はできません。trade可能な通貨はplatinumです。稼ぎ方については[platinum guide](/guides/platinum)や、[flip finder](/flip)、[Relicの価値](/relics-value)カリキュレーターなどのツールを参照してください。"
+    },
+    {
+      "q": "なぜ私はいつもCredits不足なのですか？",
+      "a": "CreditsはWarframeの共通の消費先です。Foundryでの製作、Marketの設計図、modのアップグレード、そしてtrade税はすべてCreditsから支払われ、Primedや10ランクのmodを最大にするにはそれぞれ200万近くかかることがあります。Credit Boosterを手元に用意し、大規模なクラフトや[Modding](/guides/mods)セッションの前に数回周回して資金を蓄え、行き詰まらないようにしましょう。"
+    },
+    {
+      "q": "Credit Boosterはどのように入手しますか？",
+      "a": "ゲーム内のMarketでplatinumを使って購入するか、ログインマイルストーン報酬、Nightwave、不定期のイベントから無料で回収できます。有効期間中に獲得するすべてのCreditsを2倍にし、Double Credit週末イベント（4倍になります）、Smeeta KavatのCharmバフ、そしてChromaのEffigyと重複します。"
+    },
+    {
+      "q": "modを最大ランクにするには何Credits必要ですか？",
+      "a": "レア度と最大ランクによって異なります。コモンmodは安価ですが、Primedやその他の10ランクmodを最大にするには、200万近くのCreditsと大量の[Endo](/guides/endo)が必要です。ビルドで実際に必要なレベルまでのみmodのランクを上げてください。求めているブレイクポイントに達するために、完全に最大化されたPrimed modが必要になることは稀です。"
+    }
+  ],
+  "videos": [
+    {
+      "id": "1UogPRmwjNs",
+      "title": "The MOST PROFITABLE Credit Farms in Warframe 2026! (1 Million in 2 min.)",
+      "channel": "MHBlacky"
+    },
+    {
+      "id": "NG1tBEDxbdk",
+      "title": "The BEST Credit Farming Methods in Warframe — What Actually Works in 2026!",
+      "channel": "NuMmy__"
+    },
+    {
+      "id": "dEyJryVUafo",
+      "title": "THE 4 BEST WAYS TO FARM MILLIONS OF CREDITS EASY IN WARFRAME 2026",
+      "channel": "Grind Hard Squad"
+    },
+    {
+      "id": "mTS7BrEJUfU",
+      "title": "Why Höllvania Is ONE Of The MOST Profitable Farms in Warframe",
+      "channel": "WarframeFlo"
+    },
+    {
+      "id": "MqZMzwW23_Q",
+      "title": "The ULTIMATE Guide to Farming MILLIONS Of CREDITS In Warframe",
+      "channel": "WarframeFlo"
+    },
+    {
+      "id": "khmoo5nIF58",
+      "title": "The Ultimate Warframe Credit Farming Guide (2025)",
+      "channel": "Zefā"
+    }
+  ],
+  "sources": [
+    {
+      "label": "Warframe Wiki — Credits",
+      "href": "https://wiki.warframe.com/w/Credits"
+    },
+    {
+      "label": "Warframe Wiki — Höllvania (Warframe 1999)",
+      "href": "https://wiki.warframe.com/w/H%C3%B6llvania"
+    },
+    {
+      "label": "Warframe Wiki — Profit-Taker Orb",
+      "href": "https://wiki.warframe.com/w/Profit-Taker_Orb"
+    },
+    {
+      "label": "Warframe Wiki — The Index",
+      "href": "https://wiki.warframe.com/w/The_Index"
+    },
+    {
+      "label": "Warframe Wiki — Secura Lecta",
+      "href": "https://wiki.warframe.com/w/Secura_Lecta"
+    },
+    {
+      "label": "r/Warframe — Best current credit farm",
+      "href": "https://reddit.com/r/Warframe/comments/1uvauy1/best_current_credit_farm/"
+    },
+    {
+      "label": "r/Warframe — With the Lecta being fixed, what is the best credit farm?",
+      "href": "https://reddit.com/r/Warframe/comments/1t5x33e/with_the_lecta_being_fixed_what_is_the_best/"
+    },
+    {
+      "label": "r/Warframe — Was the Höllvania/Chroma credit farm nerfed?",
+      "href": "https://reddit.com/r/Warframe/comments/1sc0sqv/was_the_hollvaniachroma_credit_farm_nerfed_or_am/"
+    }
+  ],
+  "related": [
+    {
+      "label": "Platinumガイド",
+      "to": "/guides/platinum",
+      "icon": "cash-multiple",
+      "note": "Trade可能な通貨 — 購入するのではなく、稼ぎましょう"
+    },
+    {
+      "label": "Moddingガイド",
+      "to": "/guides/mods",
+      "icon": "puzzle",
+      "note": "Creditsの実際の主な消費先"
+    },
+    {
+      "label": "Standingガイド",
+      "to": "/guides/standing",
+      "icon": "handshake",
+      "note": "FortunaのProfit-Takerをアンロック"
+    },
+    {
+      "label": "Steel Pathガイド",
+      "to": "/guides/steel-path",
+      "icon": "skull",
+      "note": "最高峰のCreditsファームの舞台"
+    },
+    {
+      "label": "Ducat & Baroの価値",
+      "to": "/ducats",
+      "icon": "store",
+      "note": "BaroでCredits + ducatsを賢く消費する"
+    },
+    {
+      "label": "Endo & Platの価値",
+      "to": "/guides/endo",
+      "icon": "diamond-stone",
+      "note": "Modding費用のもう半分の内訳"
+    }
+  ],
+  "updated": "2026-07-18"
+}

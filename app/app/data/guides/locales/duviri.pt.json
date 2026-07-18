@@ -1,0 +1,406 @@
+{
+  "slug": "duviri",
+  "eyebrow": "Central de Conhecimento · Duviri",
+  "title": "Guia de The Duviri Paradox",
+  "lede": "Duviri é o parquinho roguelike do Warframe — um cenário de sonho Orokin mutável que você pode acessar no Mastery Rank 0, e um motor semanal que entrega frames gratuitos para novos jogadores e adaptadores Incarnon para veteranos.",
+  "category": "endgame",
+  "readMins": 10,
+  "stats": [
+    {
+      "num": "0",
+      "label": "pré-requisitos para entrar",
+      "tone": "good"
+    },
+    {
+      "num": "5",
+      "label": "emoções na Spiral",
+      "tone": "alt"
+    },
+    {
+      "num": "2",
+      "label": "modos: Experience & Circuit"
+    },
+    {
+      "num": "Weekly",
+      "label": "recompensas de frames & Incarnon",
+      "tone": "gold"
+    }
+  ],
+  "sections": [
+    {
+      "id": "what-is-duviri",
+      "title": "O que é The Duviri Paradox?",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Duviri é um cenário de sonho Orokin fraturado, governado por um rei-criança furioso, **Dominus Thrax**, e preso em um loop temporal emocional sem fim chamado **Spiral**. Você o explora não como um Warframe, mas como o **Drifter** — uma versão humana e calejada do seu Operator. Lançado em 2023, Duviri é diferente de quase tudo no jogo em um aspecto crucial: tem **zero pré-requisitos**. Uma conta novinha em folha pode jogá-lo antes mesmo de tocar no mapa estelar, e ele te entrega armas e Warframes logo na chegada."
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "Você joga como",
+              "v": "O Drifter (mundo aberto) · Warframes (Undercroft & Circuit)"
+            },
+            {
+              "k": "Pré-requisito",
+              "v": "Nenhum — comece no Mastery Rank 0"
+            },
+            {
+              "k": "NPC Guia",
+              "v": "Teshin, na Teshin's Cave"
+            },
+            {
+              "k": "Dois modos",
+              "v": "The Duviri Experience + The Circuit"
+            },
+            {
+              "k": "Loop principal",
+              "v": "Roguelike — escolha equipamentos, acumule Decrees, resete a cada run"
+            }
+          ]
+        },
+        {
+          "type": "info",
+          "title": "A Spiral de Emoções",
+          "text": "Duviri passa por cinco humores em uma ordem fixa — **Joy, Anger, Envy, Sorrow e Fear**. Cada humor reformula os inimigos, o ambiente e os desafios que você enfrentará, e a Spiral gira com base em um cronômetro (aproximadamente algumas horas por humor). Se você quiser um humor específico, verifique um rastreador de ciclo de Duviri através do [diretório de ferramentas da comunidade](/tools)."
+        }
+      ]
+    },
+    {
+      "id": "how-to-start",
+      "title": "Entrando: Teshin's Cave",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Complete a jornada única **Duviri Paradox** para desbloquear o conteúdo repetível. A partir daí, você abre a **Navigation** e escolhe Duviri, ou entra na **Teshin's Cave** para escolher qual modo deseja jogar — a vasta Experience ou o focado Circuit."
+        },
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "h": "Inicie a jornada",
+              "p": "The Duviri Paradox está disponível imediatamente — uma conta de nível 1 pode iniciá-la sem qualquer progresso no mapa estelar."
+            },
+            {
+              "h": "Termine a jornada",
+              "p": "Concluí-la desbloqueia permanentemente os modos repetíveis Duviri Experience e o Circuit."
+            },
+            {
+              "h": "Escolha seu modo na Teshin's Cave",
+              "p": "Escolha a Experience de mundo aberto para exploração, história e Kullervo, ou o Circuit para um farm rápido de frames/Incarnon."
+            },
+            {
+              "h": "Não traga nada",
+              "p": "Duviri oferece um loadout rotativo na chegada, então seu próprio arsenal é opcional — excelente para novos jogadores."
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Aspecto",
+              "The Duviri Experience",
+              "The Circuit"
+            ],
+            "rows": [
+              [
+                "Você joga como",
+                "Drifter no mundo aberto + Warframe no Undercroft",
+                "Apenas Warframes, no Undercroft"
+              ],
+              [
+                "Estrutura",
+                "Paisagem aberta, monte o Kaithe, atividades secundárias, chefe",
+                "Escalada infinita de rodadas de missões no Undercroft"
+              ],
+              [
+                "Recompensa principal",
+                "Pathos Clamps & Kullervo's Bane (Orowyrm), Intrinsics, história & lore",
+                "Partes semanais de Warframe · Steel Path: adaptadores Incarnon"
+              ],
+              [
+                "Melhor para",
+                "Kullervo, Intrinsics, exploração tranquila",
+                "Farmar frames & Incarnon Genesis de forma eficiente"
+              ]
+            ],
+            "note": "Ambos os modos compartilham o mesmo sistema roguelike de Decrees — a diferença é a estrutura ao redor dele."
+          }
+        }
+      ]
+    },
+    {
+      "id": "duviri-experience",
+      "title": "The Duviri Experience",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "A Experience é o roguelike de paisagem aberta. Você explora como o Drifter, evoca seu **Kaithe** — um cavalo espectral que você pode montar e, mais tarde, voar — e avança pelas **etapas da história** do humor atual enquanto conclui **objetivos secundários** para obter **Decrees** e recompensas. Periodicamente, o mundo atrai você para o **Undercroft**, uma arena corrompida pelo Void onde o combate muda para um Warframe. O progresso culmina em uma batalha contra o **Orowyrm**, o dragão de Duviri. Quer uma partida mais rápida, focada apenas na história? Escolha **The Lone Story** — ela pula o conteúdo secundário e vai direto para o Orowyrm."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Monte ou voe com o **Kaithe** para atravessar a paisagem mutável rapidamente",
+            "Conclua **etapas da história** e **objetivos secundários** para obter **Decrees** e saques",
+            "Entre em missões do **Undercroft** e lute com um Warframe rotativo",
+            "Derrote o **Orowyrm** para obter **Pathos Clamps** e **Kullervo's Bane**",
+            "Lute contra o chefe Kullervo em **Kullervo's Hold** para obter mais **Kullervo's Bane**, depois compre Kullervo e equipamentos com a mercadora de Duviri **Acrithis** (no Dormizone)"
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "Derrotar o Orowyrm concede **Pathos Clamps** — gaste-os com **Acrithis** em Orokin Reactors, Catalysts, Adapters, Forma e cosméticos de Duviri. O próprio **Kullervo** (amplamente considerado um dos frames focados em corpo a corpo mais fortes do jogo) é comprado como diagramas da Acrithis usando **Kullervo's Bane** — que cai do Orowyrm e do chefe Kullervo em **Kullervo's Hold** — e depois fabricado com Pathos Clamps. Não há grind de chance de drop aleatório, então muitos jogadores jogam Duviri puramente para desbloqueá-lo."
+        }
+      ]
+    },
+    {
+      "id": "decrees",
+      "title": "Decrees: Seu Pico de Poder Roguelike",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Decrees são bônus temporários que você coleta durante uma run. Eles **acumulam** — pegue o suficiente e uma arma inicial emprestada se transforma em um monstro capaz de triturar inimigos de fim de jogo. O detalhe: **eles resetam no momento em que a run termina**. Nada é mantido, então não há motivo para economizar — escolha um sempre que o jogo oferecer."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Concluir **etapas da história** e **objetivos secundários** no mundo aberto",
+            "Concluir etapas do **Undercroft** e atingir limites de recompensa",
+            "Terminar rodadas no Circuit (você escolhe um Decree entre as rodadas)",
+            "Derrotar certos inimigos e minichefes"
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "Busque sinergias, não apenas números brutos. Acumular **cura ao matar** + **dano fixo/percentual** + **status ou crítico garantido** faz quase qualquer arma derreter o Steel Path. Como os Decrees desaparecem no fim da run, sempre pegue um — não há desvantagem."
+        }
+      ]
+    },
+    {
+      "id": "the-circuit",
+      "title": "The Circuit: Warframes Gratuitos Toda Semana",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "O Circuit é Duviri destilado em combate puro — uma escalada roguelike de missões no **Undercroft**. No início, você **seleciona um de três Warframes** mais um conjunto de armas do pool rotativo daquela semana. Você não precisa possuir nenhum deles; eles vêm pré-configurados. Conclua uma rodada, escolha um **Decree** e siga para a próxima, ficando cada vez mais forte."
+        },
+        {
+          "type": "p",
+          "text": "A recompensa: a cada semana, o Circuit rotaciona um conjunto de **diagramas de componentes de Warframe**. Conclua rodadas suficientes e escolha as partes do frame que deseja; colete o conjunto para construir o frame de graça. Níveis de recompensa mais profundos também concedem **Riven Slivers** (ten se combinam em um Riven completo), **Endo** e outros recursos. É uma das melhores maneiras sem platina para novos jogadores expandirem seu arsenal — use a [tier list](/guides/tier-list) para decidir qual semana vale a pena farmar."
+        },
+        {
+          "type": "info",
+          "text": "Como você pilota frames que talvez não possua, o Circuit funciona também como um teste gratuito. Não tem certeza de como jogar com um frame que selecionou? Nossa [tier list](/guides/tier-list) e [guia de mods](/guides/mods) explicam o que faz cada um funcionar."
+        }
+      ]
+    },
+    {
+      "id": "steel-path-circuit",
+      "title": "Steel Path Circuit & Incarnon Genesis",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Alterne o Circuit para o **Steel Path** — você deve ter [desbloqueado o Steel Path](/guides/steel-path) primeiro — e a rotação de recompensas mudará para o prêmio de fim de jogo: **adaptadores Incarnon Genesis**. Eles convertem armas iniciais antigas como Braton, Lato, Skana e Bo em formas **Incarnon** muito mais fortes, que dão conta do conteúdo mais difícil do jogo."
+        },
+        {
+          "type": "p",
+          "text": "Cada semana lista um conjunto diferente de adaptadores, e você ganha sua escolha ao concluir rodadas do SP Circuit — que também concedem muito **Steel Essence**. Essa cadência semanal é *o* motivo pelo qual os veteranos mantêm o hábito constante de jogar Duviri: é uma progressão de poder confiável e permanente para seu arsenal de armas, um ou dois adaptadores de cada vez."
+        },
+        {
+          "type": "warn",
+          "text": "Os inimigos do Steel Path Circuit escalam muito. Traga uma build de verdade e apoie-se nos seus Decrees. Se a sobrevivência for o obstáculo que você está enfrentando, nosso [guia de mods](/guides/mods) aborda shield-gating e tanking para que você pare de morrer no meio da rodada e deixar o esquadrão na mão."
+        }
+      ]
+    },
+    {
+      "id": "intrinsics",
+      "title": "Duviri Intrinsics",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Duviri evolui suas próprias **Drifter Intrinsics** — quatro árvores aprimoradas puramente ao jogar Duviri (un pool separado das suas **Railjack Intrinsics**). Subir o ranque delas desbloqueia qualidade de vida e poder que tornam cada run futura mais fluida — um Kaithe mais rápido, um pool de seleção mais amplo com mais opções de Warframes, armas e Decrees, melhores opções no Undercroft e a capacidade de visualizar seu loadout selecionado antes de uma run."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Intrinsic",
+              "O que melhora de forma geral"
+            ],
+            "rows": [
+              [
+                "Combat",
+                "Dano corpo a corpo e à distância do Drifter, e manuseio de armas no Undercroft"
+              ],
+              [
+                "Riding",
+                "Velocidade, voo e combate montado do Kaithe"
+              ],
+              [
+                "Opportunity",
+                "Mais escolhas de Warframes, armas e Decrees, visualização de loadout e recompensas do mundo"
+              ],
+              [
+                "Endurance",
+                "Sobrevivência do Drifter e persistência no Undercroft"
+              ]
+            ],
+            "note": "As vantagens exatas por ranque mudam com o tempo — verifique a wiki ativa para ver as árvores atuais."
+          }
+        }
+      ]
+    },
+    {
+      "id": "why-it-matters",
+      "title": "Por que Duviri é Importante — Novo Jogador ou Veterano",
+      "blocks": [
+        {
+          "type": "list",
+          "items": [
+            "**Novos jogadores:** Warframes gratuitos do Circuit, sem bloqueio de mapa estelar, uma maneira amigável de testar frames antes de farmá-los e uma grande parte da história.",
+            "**Veteranos:** adaptadores Incarnon Genesis semanais do Steel Path Circuit, Kullervo, Riven Slivers e uma fonte constante de Steel Essence.",
+            "**Todos:** um roguelike independente no qual você pode entrar por 20 a 40 minutos com uma recompensa semanal clara e significativa."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Se Duviri é a sua porta de entrada, combine-o com o [guia para novos jogadores](/guides/new-player) e o [guia de progressão](/guides/progression). Se você está aqui pelo saque de fim de jogo, conecte-o ao [Steel Path](/guides/steel-path), [Rivens](/guides/riven) e [Archon Shards](/guides/archon-shards) — e avalie qualquer Riven que você rolar com o [estimador de valor de Riven](/riven-value)."
+        }
+      ]
+    },
+    {
+      "id": "etiquette",
+      "title": "Etiqueta em Esquadrões Públicos & Erros Comuns",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "O matchmaking público de Duviri é rápido, e expectativas desalinhadas geram os debates recorrentes sobre \"Duviri entitlement\" no r/Warframe. Um pouco de consciência mantém todos felizes."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Aprenda a guiar e voar com o **Kaithe** até os objetivos — não atrase a run para todo o esquadrão",
+            "Pegue um **Decree** sempre que solicitado; um companheiro de esquadrão fraco e sem bônus atrasa todo mundo",
+            "No Circuit, evite sair no meio da rodada — sair pode deixar seus companheiros de equipe na mão",
+            "Cada um escolhe suas **próprias** recompensas — não exija que os outros corram para o nível que você por acaso deseja"
+          ]
+        },
+        {
+          "type": "warn",
+          "text": "Novo no Duviri? Jogue **solo ou com amigos** até conhecer o loop. Esquadrões públicos esperam que todos façam sua parte e acompanhem o ritmo — entrar em partidas públicas às cegas é exatamente do que esses tópicos de etiqueta reclamam."
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Novos jogadores podem jogar Duviri no Warframe?",
+      "a": "Sim — Duviri é um dos raros conteúdos sem pré-requisitos. Você pode iniciar a jornada The Duviri Paradox no Mastery Rank 0, antes de tocar no mapa estelar, e ela te entrega armas e Warframes na chegada para que você não precise do seu próprio equipamento. Veja nosso [guia para novos jogadores](/guides/new-player) para saber onde ele se encaixa na sua progressão inicial."
+    },
+    {
+      "q": "Você usa seu próprio Warframe em Duviri?",
+      "a": "Na Experience de mundo aberto, você joga como o **Drifter** (um humano), não como um Warframe. As seções de combate no Undercroft, e todo o Circuit, colocam você em Warframes — uma seleção rotativa que vem pré-configurada, quer você os possua ou não. Você não pode trazer um loadout próprio arbitrário; a seleção é sempre daquele pool rotativo. Mas quaisquer Warframes e armas que você já possua mantêm seus próprios mods, Rivens, habilidades de Helminth e Archon Shards quando você os seleciona, e subir o ranque da Intrinsic **Opportunity** amplia o pool e permite que você visualize suas opções antes de uma run."
+    },
+    {
+      "q": "Como obtenho o Warframe semanal do Circuit?",
+      "a": "Jogue o Circuit normal e conclua rodadas; em marcos definidos, você escolhe a partir do pool rotativo de diagramas de partes de Warframe daquela semana. Colete todas as partes (esta semana ou em uma rotação futura) para construir o frame gratuitamente. Use nossa [tier list](/guides/tier-list) para priorizar qual semana vale a pena farmar."
+    },
+    {
+      "q": "Como desbloqueio o Steel Path Circuit para os adaptadores Incarnon?",
+      "a": "Primeiro, você deve desbloquear o [Steel Path](/guides/steel-path) concluindo todos os nodes no mapa estelar normal. Depois, alterne o Circuit para o Steel Path — sua rotação semanal recompensa com **adaptadores Incarnon Genesis** e Steel Essence, com um conjunto diferente de adaptadores disponível a cada semana."
+    },
+    {
+      "q": "Os Decrees são mantidos entre as runs de Duviri?",
+      "a": "Não. Decrees são bônus roguelike que duram apenas na run atual e resetam no instante em que ela termina. Pegue um em cada oportunidade, busque sinergias cumulativas como cura ao matar mais aumento de dano, e aproveite a fantasia de poder enquanto ela durar."
+    },
+    {
+      "q": "Como obtenho o Kullervo no Warframe?",
+      "a": "O Kullervo é farmado em Duviri. Seus diagramas são comprados da mercadora de Duviri **Acrithis** (no Dormizone) usando **Kullervo's Bane**, que cai ao derrotar o **Orowyrm** no final de uma Spiral e na luta contra o chefe Kullervo em **Kullervo's Hold**. Depois, você o fabrica com **Pathos Clamps** (também concedidos pelo Orowyrm). Não há grind de chance de drop aleatório — é uma compra por moedas."
+    },
+    {
+      "q": "Quanto tempo leva uma run de Duviri?",
+      "a": "Uma Duviri Experience completa leva cerca de 20 a 40 minutos. Uma run do Circuit é ilimitada — você continua concluindo rodadas até decidir extrair ou falhar. Para um farm puro de recompensas, o Circuit permite que você pare assim que resgatar os níveis que realmente deseja."
+    }
+  ],
+  "videos": [
+    {
+      "id": "C2T0EMd_XTQ",
+      "title": "Warframe - Ultimate Beginner's Guide to The Duviri Paradox",
+      "channel": "Warframe Madness"
+    },
+    {
+      "id": "guY28zlbKgw",
+      "title": "The Duviri Experience - All You Need to Know | Warframe The Duviri Paradox Guide",
+      "channel": "Faceless Beanie"
+    },
+    {
+      "id": "Ww9IndAE9uY",
+      "title": "The ULTIMATE Warframe DUVIRI Guide!... (Orowyrm, Decrees, Missions Intrinsics and more)",
+      "channel": "MHBlacky"
+    },
+    {
+      "id": "tneMEOi-Lzg",
+      "title": "A Complete Guide For The Duviri Paradox - Warframe Guide",
+      "channel": "GJ Jerry G"
+    }
+  ],
+  "sources": [
+    {
+      "label": "r/Warframe — Calling out Duviri entitlement",
+      "href": "https://reddit.com/r/Warframe/comments/1r4dfbj/calling_out_duviri_entitlement/"
+    },
+    {
+      "label": "r/Warframe — Understanding the gameplay loop of different frames (Duviri/Circuit)",
+      "href": "https://reddit.com/r/Warframe/comments/1hz547w/understanding_the_gameplay_loop_of_different/"
+    },
+    {
+      "label": "r/Warframe — An Updated Beginner's Guide to Steel Path",
+      "href": "https://reddit.com/r/Warframe/comments/1ib1amq/an_updated_beginners_guide_to_steel_path_early/"
+    },
+    {
+      "label": "Warframe Wiki",
+      "href": "https://wiki.warframe.com/"
+    }
+  ],
+  "related": [
+    {
+      "label": "Guia do Steel Path",
+      "to": "/guides/steel-path",
+      "icon": "skull",
+      "note": "Desbloqueie o SP Circuit para adaptadores Incarnon"
+    },
+    {
+      "label": "Tier List de Warframes",
+      "to": "/guides/tier-list",
+      "icon": "format-list-numbered",
+      "note": "Qual frame do Circuit vale a pena farmar"
+    },
+    {
+      "label": "Guia de Mods Riven",
+      "to": "/guides/riven",
+      "icon": "cards-playing-outline",
+      "note": "Troque seus Riven Slivers do Circuit"
+    },
+    {
+      "label": "Guia para Novos Jogadores",
+      "to": "/guides/new-player",
+      "icon": "account-star",
+      "note": "Onde Duviri se encaixa ao começar"
+    },
+    {
+      "label": "Ferramentas da Comunidade",
+      "to": "/tools",
+      "icon": "tools",
+      "note": "Rastreadores de ciclo de Duviri & mais"
+    },
+    {
+      "label": "Estimador de Valor de Riven",
+      "to": "/riven-value",
+      "icon": "chart-line",
+      "note": "Avalie um Riven que você rolou"
+    }
+  ],
+  "updated": "2026-07-18"
+}

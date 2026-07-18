@@ -26,20 +26,54 @@ const { locale } = useI18n()
 // dev and prod without hardcoding. `<` is escaped to keep the inline script
 // safe even though all values here are static.
 const origin = useRequestURL().origin
+const ORG_ID = origin + '/#org'
+const AUTHOR = {
+  '@type': 'Person',
+  name: 'Eduardo Airaudo',
+  url: 'https://www.linkedin.com/in/eduardo-airaudo/'
+}
 const ldjson = [
+  // Organization — brand/logo eligibility (knowledge panel) + the @id every
+  // other node (WebSite, WebApplication, per-page Article) references as publisher.
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    '@id': ORG_ID,
+    name: 'Warframe Market Analytics',
+    alternateName: 'Warframe Analytics',
+    url: origin,
+    logo: {
+      '@type': 'ImageObject',
+      url: origin + '/android-chrome-384x384.png',
+      width: 384,
+      height: 384
+    },
+    founder: AUTHOR,
+    sameAs: ['https://github.com/eduair94/warframe', 'https://www.linkedin.com/in/eduardo-airaudo/']
+  },
   {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
+    '@id': origin + '/#website',
     name: 'Warframe Market Analytics',
     alternateName: 'Warframe Analytics',
     url: origin,
     inLanguage: locale.value,
+    publisher: { '@id': ORG_ID },
     description:
-      'Free real-time Warframe Market analytics: live prime prices, set-vs-parts, ducat efficiency, relic and riven valuation, vaulted-price tracking and trading signals.'
+      'Free real-time Warframe Market analytics: live prime prices, set-vs-parts, ducat efficiency, relic and riven valuation, vaulted-price tracking and trading signals.',
+    // Sitelinks searchbox — target is the homepage item search (index.vue reads
+    // ?q=), so the action resolves to real results (required or Google drops it).
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: { '@type': 'EntryPoint', urlTemplate: origin + '/?q={search_term_string}' },
+      'query-input': 'required name=search_term_string'
+    }
   },
   {
     '@context': 'https://schema.org',
     '@type': 'WebApplication',
+    '@id': origin + '/#webapp',
     name: 'Warframe Market Analytics',
     url: origin,
     applicationCategory: 'GameApplication',
@@ -49,11 +83,8 @@ const ldjson = [
       'Live Warframe Market trading tools — prime set vs parts, ducat and relic value, riven pricing, flip finder, vaulted-price and volatility tracking.',
     isAccessibleForFree: true,
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
-    author: {
-      '@type': 'Person',
-      name: 'Eduardo Airaudo',
-      url: 'https://www.linkedin.com/in/eduardo-airaudo/'
-    },
+    publisher: { '@id': ORG_ID },
+    author: AUTHOR,
     sameAs: ['https://github.com/eduair94/warframe']
   }
 ]

@@ -1,0 +1,419 @@
+{
+  "slug": "archon-shards",
+  "eyebrow": "지식 센터 · Archon Shards",
+  "title": "Archon Shards 가이드",
+  "lede": "Archon Shards는 Warframe의 엔드게임 능력치 재화입니다. 프레임당 5개의 영구 소켓을 제공하여 강력한 빌드를 완성형 빌드로 만들어 줍니다. 여기에서 모든 색상 종류, 파밍 방법, 그리고 희귀한 Tauforged를 어디에 투자해야 하는지 확인해 보세요.",
+  "category": "endgame",
+  "readMins": 7,
+  "stats": [
+    {
+      "num": "5",
+      "label": "Warframe당 소켓"
+    },
+    {
+      "num": "6",
+      "label": "shard 색상",
+      "tone": "alt"
+    },
+    {
+      "num": "1.5×",
+      "label": "Tauforged 보너스",
+      "tone": "gold"
+    },
+    {
+      "num": "3",
+      "label": "주간 파밍처",
+      "tone": "good"
+    }
+  ],
+  "sections": [
+    {
+      "id": "what-they-are",
+      "title": "Archon Shards란 무엇인가",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Archon Shards는 오비터의 **Helminth**에서 Warframe에 장착하는 **영구적인 능력치 업그레이드**입니다. 각 frame에는 **5개의 shard 소켓**이 있으며, 장착된 모든 shard는 항상 활성화되는 패시브 보너스를 제공합니다. 빌드 슬롯을 차지하지 않고, 에너지 소모가 없으며, 토글할 필요도 없습니다. 이는 mods, Arcanes, 그리고 [Helminth](/guides/helminth) 어빌리티 위에 중첩되므로, 게임 내 수직적 성장의 최종 단계라 할 수 있습니다."
+        },
+        {
+          "type": "p",
+          "text": "가장 중요한 점은, shards는 **파밍으로만 획득 가능**하다는 것입니다. Prime 부품이나 Rivens와 달리, platinum으로 구매할 수 없고 거래도 불가능합니다. shard는 주간 콘텐츠를 플레이하여 획득하며 계정에 귀속됩니다. 따라서 plat으로 빠르게 해결할 수 있는 수단이 아니라, 시간을 들여 계획적으로 모아야 하는 성장 재화입니다."
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "설치 위치",
+              "v": "Helminth — Archon Shard Segment 필요 (Veilbreaker 퀘스트에서 획득)"
+            },
+            {
+              "k": "frame당 소켓 수",
+              "v": "5"
+            },
+            {
+              "k": "효과",
+              "v": "영구적인 패시브 능력치 보너스, 항상 활성화"
+            },
+            {
+              "k": "거래 / 구매 가능 여부",
+              "v": "불가능 — 파밍으로만 획득 가능, 계정 귀속"
+            },
+            {
+              "k": "파밍 해금 조건",
+              "v": "Veilbreaker 완료 (The New War 완료 필요)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "colors",
+      "title": "Shard 색상 종류",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Shard 색상에 따라 선택할 수 있는 능력치의 *범주*가 결정됩니다. **두 그룹으로 나뉜 6가지 색상**이 존재합니다. 3가지 **기본** 색상인 **Crimson, Amber, Azure**는 주간 Archon Hunt, Netracells, Deep Archimedea에서 직접 드롭됩니다. 3가지 **보조** 색상인 **Topaz, Violet, Emerald**는 직접 파밍할 수 없으며, 두 개의 기본 shard를 조합하는 **Coalescent Fusion**을 통해 제작해야 합니다 (예: Crimson + Azure = Violet). shard를 장착할 때 구체적인 능력치를 선택하며, frame의 5개 소켓에 어떤 색상이든 자유롭게 조합하여 장착할 수 있습니다."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "색상",
+              "특화 분야",
+              "보너스 예시"
+            ],
+            "rows": [
+              [
+                "Crimson (적색)",
+                "공격",
+                "어빌리티 위력, 어빌리티 지속 시간, 근접 치명타 피해"
+              ],
+              [
+                "Amber (황색)",
+                "유틸리티",
+                "시전 속도, 파쿠르 속도, 체력/에너지 오브 효과"
+              ],
+              [
+                "Azure (청색)",
+                "생존력",
+                "체력, 실드 용량, 방어력, 최대 에너지"
+              ],
+              [
+                "Topaz (주황색)",
+                "속성 / 광역",
+                "폭발, 화염 및 방사능 피해 — 융합: Crimson + Amber"
+              ],
+              [
+                "Violet (보라색)",
+                "무기 / 에너지 하이브리드",
+                "전기 피해, 근접 치명타, 에너지↔체력 전환 — 융합: Crimson + Azure"
+              ],
+              [
+                "Emerald (녹색)",
+                "독성 & 부식",
+                "독성 & 부식 피해, 상태 이상 스케일링 — 융합: Amber + Azure"
+              ]
+            ],
+            "note": "3가지 기본 색상은 직접 드롭되며, 보조 색상은 Coalescent Fusion(Cavia 신디케이트를 통해 해금)으로 제작합니다. 정확한 능력치 목록과 수치는 패치마다 조정될 수 있으므로, 소켓에 장착하기 전에 최신 위키에서 현재 전체 표를 확인하시기 바랍니다."
+          }
+        },
+        {
+          "type": "info",
+          "text": "기본 원칙: **Crimson은 어빌리티를 더 강력하게 만들고, Azure는 생존력을 높여주며, Amber는 frame의 플레이를 부드럽게 만들어 줍니다.** 융합으로만 얻을 수 있는 3가지 색상(Topaz, Violet, Emerald)은 특정 속성 및 하이브리드 특화 선택지(폭발/화염/방사능, 전기, 독성/부식)입니다. 기본 소켓으로 사용하기보다는 빌드에 정확히 무엇이 필요한지 파악한 후에 선택하세요."
+        }
+      ]
+    },
+    {
+      "id": "tauforged",
+      "title": "Tauforged Shards (핵심 아이템)",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "모든 shard는 두 가지 등급으로 나뉩니다. **Tauforged** shard는 일반 shard의 **1.5배 보너스**를 제공합니다. 예를 들어, Crimson 어빌리티 위력 shard는 **+10%**를 제공하는 반면, Tauforged 버전은 **+15%**를 제공합니다. 동일한 소켓, 동일한 색상이지만 약 50% 더 높은 가치를 가집니다. Tauforged shard는 인벤토리에서 더 밝게 빛나며 더 결정화된 독특한 외형으로 표시됩니다."
+        },
+        {
+          "type": "p",
+          "text": "획득하는 모든 shard는 **Tauforged**로 판정될 확률이 있습니다. Archon Hunt에서는 기본 **5분의 1** 확률이며, 획득에 실패할 때마다 확률이 상승하여 결국에는 획득할 수 있도록 돕는 불운 방지 시스템이 내장되어 있습니다. 일부 콘텐츠(Deep Archimedea 등)는 이 확률을 높여주거나 직접 선택할 수 있게 해줍니다. 희귀한 만큼 Tauforged는 프리미엄 재화로 취급해야 합니다. 진정한 엔드게임 최적화(Min-Maxing)가 이루어지는 곳이기 때문입니다."
+        },
+        {
+          "type": "tip",
+          "text": "Tauforged는 **주력 frame 및 스케일링되는 능력치**(위력, 시전 속도, 지속 시간)에 투자하세요. Tauforged 위력 shard는 빌드에 mod를 장착할 필요 없이 영구적으로 +15%를 제공합니다. 일반 shard는 자주 쓰지 않는 2군 frame이나 고정치 생존력을 올리는 데 사용해도 충분합니다."
+        }
+      ]
+    },
+    {
+      "id": "farming",
+      "title": "Shard 파밍처",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "매주 획득할 수 있는 세 가지 경로가 있으며, 모두 **기본** 색상을 드롭합니다. 초반에는 **Archon Hunt**에 의존하게 되지만, Whispers in the Walls를 완료하면 **Netracells**와 **Deep Archimedea**를 통해 주간 shard 수급량을 크게 늘릴 수 있습니다. 남는 기본 shard는 **Coalescent Fusion**의 재료로 사용되어 Topaz, Violet, Emerald 색상을 제작하는 데 쓰입니다."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "획득처",
+              "주기",
+              "해금 조건",
+              "Shard 보상"
+            ],
+            "rows": [
+              [
+                "Archon Hunt",
+                "주간 (1회 완료)",
+                "Veilbreaker 완료 (The New War 필요)",
+                "shard 1개, 해당 주차의 Archon에 따라 색상 결정 (Amar→Crimson, Nira→Amber, Boreal→Azure), Tauforged 획득 기회 있음"
+              ],
+              [
+                "Netracells",
+                "주당 최대 5회",
+                "Whispers in the Walls (Sanctum Anatomica, Deimos)",
+                "Crimson / Amber / Azure shards, Tauforged 획득 기회 있음"
+              ],
+              [
+                "Deep Archimedea",
+                "주간 (엘리트)",
+                "Whispers in the Walls + Cavia 최고 평판 등급",
+                "가장 풍성한 보상, 최고의 Tauforged 확률 및 선택지"
+              ]
+            ],
+            "note": "Netracells 및 Deep Archimedea 입장 횟수는 매주 초기화됩니다. Archon Hunt는 조우하는 Archon(Amar, Nira, Boreal)이 로테이션되며, 이에 따라 해당 주차에 획득할 수 있는 기본 색상이 결정됩니다. 보조 색상은 드롭되지 않으며 Coalescent Fusion을 통해 획득해야 합니다."
+          }
+        },
+        {
+          "type": "info",
+          "text": "해금 순서가 중요합니다: **The New War → Veilbreaker**를 통해 Archon Hunt가 열리고 Archon Shard Segment를 획득할 수 있으며, **Whispers in the Walls → Cavia 신디케이트**를 통해 Netracells, Deep Archimedea, Coalescent Fusion이 열립니다. shard 획득이 막힌 것처럼 느껴진다면 보통 이 퀘스트 중 하나를 완료하지 않았기 때문입니다. [퀘스트 순서 가이드](/guides/quests)를 참조하세요."
+        }
+      ]
+    },
+    {
+      "id": "install",
+      "title": "Shard 장착 및 이동 방법",
+      "blocks": [
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "h": "Helminth 열기",
+              "p": "오비터에 탑승하여 Helminth와 상호작용합니다 (Veilbreaker 퀘스트 완료로 해금되는 Archon Shard Segment 필요). 업그레이드하려는 Warframe을 선택합니다."
+            },
+            {
+              "h": "Archon Shard 보기 화면으로 전환",
+              "p": "shard 인터페이스를 열어 해당 frame의 5개 소켓을 확인합니다."
+            },
+            {
+              "h": "Shard 장착",
+              "p": "인벤토리의 shard를 원하는 소켓에 넣고 능력치를 선택합니다. 색상은 자유롭게 조합할 수 있으며(색상 일치 조건 없음), 장착 시 shard 자체 외에는 아무런 비용도 들지 않습니다."
+            },
+            {
+              "h": "언제든지 재배치 가능",
+              "p": "shard를 다시 빼내면 인벤토리로 돌아가 다른 곳에 재사용할 수 있습니다. 제거할 때 상당량의 Helminth 분비물이 소모되지만(Tauforged의 경우 대략 두 배), shard 자체를 잃지는 않습니다. 따라서 이번 주에 주력으로 사용하는 frame으로 Tauforged를 자유롭게 옮길 수 있습니다."
+            }
+          ]
+        },
+        {
+          "type": "info",
+          "text": "shard를 제거할 때 Helminth 자원만 소모되고 shard 자체는 소모되지 않으므로, 영구적으로 고정되는 것은 아닙니다. 능력치를 장착하고 [Steel Path](/guides/steel-path)나 Simulacrum에서 테스트해 본 뒤, 유의미한 변화가 없다면 다른 것으로 교체해 보세요."
+        }
+      ]
+    },
+    {
+      "id": "dont-lose-them",
+      "title": "Shard 분실 주의",
+      "blocks": [
+        {
+          "type": "warn",
+          "text": "장착된 shard가 있는 Warframe을 Helminth에 먹이거나(**Subsume**), **판매**할 경우 장착된 shard를 **잃게 됩니다**. 현재 게임 내에서 경고창을 띄워주지만 무심코 클릭해 넘어가기 쉽습니다. 실제로 이런 방식으로 5개의 Tauforged를 날려버리는 실수는 r/Warframe에서 가장 많은 추천을 받은 실수담 중 하나입니다. 중복 frame을 subsume하거나 인벤토리를 정리하기 전에 **항상 shard를 먼저 빼내세요**."
+        },
+        {
+          "type": "quote",
+          "text": "어제 5개의 Tauforged(적색 3개, 황색 2개)가 장착된 일반 Xaku를 subsume했습니다. 당연히 전부 삭제되었고 완전히 제 잘못입니다. 더 조심했어야 했습니다.",
+          "cite": "r/Warframe — 매우 흔하지만, 충분히 방지할 수 있는 손실"
+        },
+        {
+          "type": "tip",
+          "text": "습관을 들이세요: **frame을 subsume하거나 판매하기 전에, 반드시 Archon Shard 보기 화면을 열고 소켓을 비우세요.** shard는 즉시 인벤토리로 돌아가 다음 frame에 사용할 준비가 됩니다. (실수를 하더라도 Warframe 고객지원에 문의하면 subsume으로 소실된 shard를 복구해 주는 경우가 많습니다.)"
+        }
+      ]
+    },
+    {
+      "id": "prioritize",
+      "title": "능력치 우선순위 정하는 방법",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "애정하는 frame에 5개의 소켓을 채우는 것은 강력한 힘이 되지만, shard는 천천히 수급되므로 계획적으로 사용해야 합니다. 소유한 모든 frame에 shard를 하나씩 흩뿌리기보다는 아래 목록을 따라 우선순위를 정해 보세요:"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "**너무 자주 죽나요?** Azure 생존력(고정 체력, 방어력, 실드 용량)부터 시작하여 frame이 전투를 버틸 수 있게 만드세요.",
+            "**이미 생존력은 충분한 캐스터, 군중 제어(CC) 또는 딜러 frame인가요?** Crimson 어빌리티 위력 및 지속 시간, 혹은 Amber 시전 속도가 가장 효율이 좋습니다.",
+            "**한계점(Breakpoint)을 노리세요.** 5개의 위력 shard는 대략 +50%(Tauforged의 경우 +75%)를 더해줍니다. mods만으로는 아쉽게 도달하지 못하는 어빌리티 수치 한계점을 채우기에 완벽합니다.",
+            "**에너지가 부족한가요?** Azure 최대 에너지와 Amber 오브/에너지 shard를 조합하면 에너지가 고갈되기 쉬운 frame도 끊임없이 어빌리티를 시전할 수 있습니다.",
+            "**분산시키지 말고 집중하세요.** 2군 frame에 손을 대기 전에, 엔드게임에서 실제로 사용하는 1~2개의 frame에 소켓을 완전히 채우세요."
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "어떤 frame에 shard를 투자해야 할지 모르겠다면, 이미 Steel Path나 Netracells에서 주력으로 쓰고 있는 frame에 장착하세요. 여전히 고민 중이라면, [Warframe 티어 리스트](/guides/tier-list)에서 5개의 shard를 투자할 가치가 가장 높은 frame들을 확인해 보세요."
+        }
+      ]
+    },
+    {
+      "id": "power-ceiling",
+      "title": "엔드게임 위력의 정점",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Archon Shards는 frame 성장 단계의 최정점에 위치합니다: **mods → Forma → Arcanes → Helminth → shards.** 이를 장착할 때쯤이면 이미 충분히 강력한 frame을 완성했을 것입니다. shard는 '좋은' 수준을 넘어 '엔드게임 완성형'으로 이끄는 마지막 10~20%의 조각입니다. 이들은 게임에서 가장 어려운 콘텐츠인 [Steel Path](/guides/steel-path), Netracells, Deep Archimedea, 그리고 [Eidolon 사냥](/guides/eidolon)에서 진가를 발휘합니다."
+        },
+        {
+          "type": "p",
+          "text": "매주 소량만 획득할 수 있고 Tauforged는 더욱 희귀하기 때문에, 보유한 모든 캐릭터에 shard를 완전히 채우는 것은 주말 동안 끝낼 수 있는 프로젝트가 아니라 **수개월이 걸리는 장기 목표**입니다. 이는 의도된 설계로, 고인물 유저들이 주간 초기화 때마다 계속 접속하게 만드는 장기적인 목표가 되어 줍니다. 엔드게임의 다른 모든 요소(Forma, Arcanes, 외형 아이템)는 [platinum](/guides/platinum)으로 단축할 수 있지만, shard는 오직 직접 플레이해서 얻어야만 합니다."
+        },
+        {
+          "type": "links",
+          "links": [
+            {
+              "label": "Helminth 가이드 — shard를 장착하는 시스템",
+              "to": "/guides/helminth",
+              "icon": "dna"
+            },
+            {
+              "label": "Steel Path 가이드 — shard가 제값을 톡톡히 하는 곳",
+              "to": "/guides/steel-path",
+              "icon": "sword-cross"
+            },
+            {
+              "label": "Eidolon 사냥 — 고가치 shard 목표물",
+              "to": "/guides/eidolon",
+              "icon": "weather-night"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "videos": [
+    {
+      "id": "WqLNrN2vNeg",
+      "title": "Archon Shards: The Complete Guide You NEED NOW!! | Warframe 2025",
+      "channel": "O Dawg"
+    },
+    {
+      "id": "nNOQ1GUElno",
+      "title": "Warframe ULTIMATE Archon Shards Guide 2025!",
+      "channel": "Weazel"
+    },
+    {
+      "id": "HZ2Zl1FUgws",
+      "title": "Archon Shards Explained — Warframe Showcase 2025",
+      "channel": "QuadLyStop"
+    },
+    {
+      "id": "Bgie_66KQD8",
+      "title": "The BEST Archon Shard Farm | Warframe",
+      "channel": "SleepySoul"
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Warframe에서 Archon Shards란 무엇인가요?",
+      "a": "Helminth를 통해 Warframe에 장착하는 영구적인 능력치 업그레이드 아이템입니다. 각 frame에는 5개의 소켓이 있으며, 장착된 각 shard는 mods 및 Arcanes 위에 중첩되는 상시 패시브 보너스(어빌리티 위력, 체력, 시전 속도 등)를 제공합니다. 구매하거나 거래할 수 없으며, 오직 파밍으로만 획득할 수 있습니다."
+    },
+    {
+      "q": "Archon Shards는 어떻게 파밍하나요?",
+      "a": "기본 색상(Crimson, Amber, Azure)을 제공하는 세 가지 주간 획득처가 있습니다. Veilbreaker 퀘스트 이후 해금되는 Archon Hunt에서 매주 1개의 shard를 획득할 수 있으며, 색상은 해당 주차에 상대하는 Archon에 따라 결정됩니다. 또한 Whispers in the Walls 퀘스트로 해금되는 Netracells(주당 최대 5회) 및 Deep Archimedea를 통해 추가로 획득할 수 있습니다. 보조 색상(Topaz, Violet, Emerald)은 드롭되지 않으며, Coalescent Fusion을 통해 기본 shard로 제작해야 합니다. 아직 해금되지 않았다면 [퀘스트 순서 가이드](/guides/quests)를 참조하세요."
+    },
+    {
+      "q": "Tauforged shard란 무엇이며, 그만한 가치가 있나요?",
+      "a": "Tauforged shard는 일반 shard의 1.5배 보너스를 제공합니다. 예를 들어 어빌리티 위력이 +10% 대신 +15% 증가합니다. 모든 shard는 기본적으로 약 5분의 1 확률로 Tauforged로 판정되며, 획득 실패 시 확률이 올라가는 불운 방지 시스템이 적용됩니다. 충분히 그만한 가치가 있으므로, 가장 자주 사용하는 frame과 위력이나 시전 속도처럼 스케일링되는 능력치를 위해 아껴두세요."
+    },
+    {
+      "q": "한 Warframe에 Archon Shards를 몇 개까지 장착할 수 있나요?",
+      "a": "5개입니다. 모든 Warframe에는 정확히 5개의 shard 소켓이 있으며, 색상 일치 조건이 없으므로 어떤 색상이든 자유롭게 섞어서 장착할 수 있습니다. 각 shard를 장착할 때 구체적인 능력치를 선택합니다."
+    },
+    {
+      "q": "Warframe을 subsume하거나 판매하면 Archon Shards를 잃게 되나요?",
+      "a": "네, frame을 Helminth에 subsume하거나 판매하면 장착된 모든 shard가 파괴됩니다. 게임 내에서 경고를 띄워주지만, 매우 흔하고 뼈아픈 실수 중 하나입니다. 특히 Tauforged shard의 경우, 반드시 먼저 제거하여 인벤토리에 돌려놓으세요. 실수로 잃어버린 경우, Warframe 고객지원에 문의하면 복구해 주는 경우가 많습니다."
+    },
+    {
+      "q": "Warframe 간에 Archon Shards를 이동할 수 있나요?",
+      "a": "네, 어떤 frame에서든 shard를 제거하면 인벤토리로 돌아가 다른 frame에 재사용할 수 있습니다. 제거할 때 약간의 Helminth 분비물이 소모되며(Tauforged의 경우 대략 두 배), shard 자체를 잃지는 않습니다. 따라서 희귀한 Tauforged를 현재 주력으로 사용하는 frame으로 자유롭게 옮겨 장착할 수 있습니다."
+    },
+    {
+      "q": "Archon Shards를 구매하거나 거래할 수 있나요?",
+      "a": "불가능합니다. Archon Shards는 계정 귀속 아이템이며 파밍으로만 획득할 수 있습니다. platinum으로 구매하거나 다른 플레이어와 거래할 수 없습니다. 대신 엔드게임의 다른 요소(Forma, Arcanes, 외형 아이템)는 [platinum](/guides/platinum)으로 해결하고, shard는 매주 플레이를 통해 직접 획득하세요."
+    },
+    {
+      "q": "어떤 Archon Shard를 가장 먼저 장착해야 하나요?",
+      "a": "자주 죽는다면 Azure 생존력(체력, 방어력, 실드)부터 시작하세요. 이미 생존력이 충분하다면 Crimson 어빌리티 위력이나 Amber 시전 속도가 가장 큰 효과를 줍니다. mods만으로는 아쉽게 도달하지 못하는 어빌리티 한계점을 채우는 용도로 매우 유용하며, 5개의 위력 shard는 대략 +50%의 위력을 더해줍니다."
+    }
+  ],
+  "sources": [
+    {
+      "label": "Official Warframe Wiki — Archon Shard",
+      "href": "https://wiki.warframe.com/w/Archon_Shard"
+    },
+    {
+      "label": "Official Warframe Wiki — Archon Hunt",
+      "href": "https://wiki.warframe.com/w/Archon_Hunt"
+    },
+    {
+      "label": "r/Warframe — A little reminder before subsuming a frame",
+      "href": "https://reddit.com/r/Warframe/comments/1irgcfd/a_little_reminder_before_subsuming_a_frame/"
+    },
+    {
+      "label": "r/Warframe — my first Tauforged got stolen (subsume warning)",
+      "href": "https://reddit.com/r/Warframe/comments/1fi377w/my_first_tauforged_got_fucking_stolen_bruh/"
+    }
+  ],
+  "related": [
+    {
+      "label": "Helminth 가이드",
+      "to": "/guides/helminth",
+      "icon": "dna",
+      "note": "shard를 장착하고 관리하는 시스템"
+    },
+    {
+      "label": "커뮤니티 도구",
+      "to": "/tools",
+      "icon": "tools",
+      "note": "shard 빌드를 계획할 수 있는 빌드 플래너 (Overframe)"
+    },
+    {
+      "label": "Steel Path 가이드",
+      "to": "/guides/steel-path",
+      "icon": "sword-cross",
+      "note": "shard의 위력이 실제로 빛을 발하는 곳"
+    },
+    {
+      "label": "Eidolon 사냥",
+      "to": "/guides/eidolon",
+      "icon": "weather-night",
+      "note": "고가치 엔드게임 shard 목표물"
+    },
+    {
+      "label": "Warframe 티어 리스트",
+      "to": "/guides/tier-list",
+      "icon": "trophy",
+      "note": "5개의 shard를 투자할 가치가 있는 frame들"
+    },
+    {
+      "label": "Warframe 전체 FAQ",
+      "to": "/faq",
+      "icon": "help-circle",
+      "note": "자주 묻는 질문에 대한 빠른 답변"
+    },
+    {
+      "label": "Platinum 가이드",
+      "to": "/guides/platinum",
+      "icon": "cash",
+      "note": "파밍할 수 없는 엔드게임 요소에 투자하기"
+    }
+  ],
+  "updated": "2026-07-18"
+}

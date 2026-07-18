@@ -1,0 +1,438 @@
+{
+  "slug": "resources",
+  "eyebrow": "ナレッジセンター · 素材集め",
+  "title": "素材集めリファレンス",
+  "lede": "すべてのクラフト素材は惑星ごとに固定されており、あらゆる素材集めは「正しい惑星、最も敵密度の高い node、重複するマルチプライヤー」という3つの同じルールに従います。ここでは、プレイヤーが実際に質問する素材がどこでドロップするのか、そして間違った場所を何時間もグラインドして無駄にするのを防ぐ方法を解説します。",
+  "category": "farming",
+  "readMins": 8,
+  "stats": [
+    {
+      "num": "10",
+      "label": "プレイヤーが最もよく質問する素材",
+      "tone": "gold"
+    },
+    {
+      "num": "50%",
+      "label": "の Argon が毎日崩壊します",
+      "tone": "alt"
+    },
+    {
+      "num": "4×",
+      "label": "両方のブースターを重ねた場合の獲得量",
+      "tone": "good"
+    },
+    {
+      "num": "0",
+      "label": "Nitain Extract がドロップする node"
+    }
+  ],
+  "sections": [
+    {
+      "id": "how-drops-work",
+      "title": "素材ドロップの実際の仕組み",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Warframe のほぼすべての素材は**惑星固定**です。各惑星の敵、コンテナ、破壊可能な植物は固定のルートテーブルから抽選されるため、最速の素材集めは常に同じレシピになります。**「正しい惑星に行き、1分あたりのキル数が最も多くなる node を選ぶ」**。これが、survival、defense、interception が素材集めの主流である理由です。敵の密度が高く無限にスポーンするミッションは、短い capture ミッションよりも常に効率的です。"
+        },
+        {
+          "type": "p",
+          "text": "素材にはレアリティのティアがあります。**Common**（Nano Spores、Ferrite、Salvage）は、普通にプレイしているだけで何千個も貯まります。**Uncommon**（Oxium、Plastids）は、少し意識して集める必要があります。そして、**Rare** 素材である Orokin Cells、Neurodes、Neural Sensors、Argon Crystals、Tellurium は、Foundry での製作における真のボトルネックとなるため、これらは周回を最適化する価値があります。"
+        },
+        {
+          "type": "info",
+          "title": "ボス = 短時間集中ファーム",
+          "text": "Assassination のボスは、その惑星を代表する Rare 素材を確実にドロップします。中にはドロップ率 100% 確定のボスもいます（Orokin Cells を落とす Sargas Ruk など）。長時間のグラインドではなく、特定の素材が*今すぐ* 5-10 個必要な場合は、エンドレスミッションよりも素早いボス討伐の方が早いことがよくあります。"
+        }
+      ]
+    },
+    {
+      "id": "cheat-sheet",
+      "title": "素材集めチートシート",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "以下のリファレンス表は、Reddit のサブレディットで毎日「どこでファームすればいい？」というスレッドが立つ10個の素材をカバーしています。node 名はドロップ率ほど頻繁には変更されませんが、DE が配置を変更することがあります。**おすすめのファーム**の列を信頼できる出発点とし、正確な最適な node はドロップマップや最新の Wiki で確認してください。"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "素材",
+              "レアリティ",
+              "入手先",
+              "おすすめのファーム"
+            ],
+            "rows": [
+              [
+                "Orokin Cell",
+                "Rare",
+                "Saturn、Ceres、Deimos の敵およびコンテナ",
+                "Ceres の Dark Sector survival（例: Gabii）、短時間で集めるなら Saturn のボス Sargas Ruk"
+              ],
+              [
+                "Neurode",
+                "Rare",
+                "Infested / 有機物 — Earth、Deimos、Lua、Eris",
+                "Deimos の survival、ボス Lephantis がまとまった数をドロップ"
+              ],
+              [
+                "Neural Sensor",
+                "Rare",
+                "Jupiter（Gas City）、Kuva Fortress",
+                "Jupiter の survival/defense、短時間で集めるなら Alad V"
+              ],
+              [
+                "Argon Crystal",
+                "Rare — 時間経過で崩壊",
+                "Void のみ — 敵およびコンテナ",
+                "クラフトする当日に、短い Void の capture または 5 分間の survival"
+              ],
+              [
+                "Tellurium",
+                "Rare",
+                "Archwing の敵（すべて）、Uranus の海底研究所タイルセット",
+                "Uranus の潜水 survival、または任意の Archwing ミッション"
+              ],
+              [
+                "Oxium",
+                "Uncommon",
+                "Oxium Ospreys（Corpus のドローン）のみ",
+                "Jupiter の Io（Defense） — Ospreys が自爆する前に倒す"
+              ],
+              [
+                "Nitain Extract",
+                "Rare",
+                "node でのファーム不可",
+                "Nightwave の Cred 提供品、リアクター Sabotage の貯蔵庫、Ghoul Purge"
+              ],
+              [
+                "Plastids",
+                "Uncommon",
+                "Saturn、Uranus、Phobos、Pluto、Eris",
+                "他の Rare 素材と並行して集める。任意の Dark Sector survival"
+              ],
+              [
+                "Nano Spores",
+                "Common",
+                "Infested — Saturn、Neptune、Eris、Deimos",
+                "Dark Sector survival（例: Piscinas）を1回行うだけで数千個獲得可能"
+              ],
+              [
+                "Kuva",
+                "Special",
+                "Kuva Siphon / Flood、Kuva Survival",
+                "Kuva Fortress での Kuva Survival、短時間で集めるなら Siphons/Floods"
+              ]
+            ],
+            "note": "どの node か迷っていますか？ サイト内のドロップマップ（ /star-chart および /star-chart-3d ）を使用して、素材がどこでドロップするかを正確に確認するか、最新の Wiki で現在最も獲得量の多い node をクロスチェックしてください。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "multipliers",
+      "title": "マルチプライヤーを重ねる（これは node 探しよりも効果的です）",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "素材集めにおける最大のレバーは、*どの* node を選ぶかではなく、どれだけ多くのマルチプライヤー（倍率）を重ねるかです。2種類のブースター、コンパニオンのドロップ Mod、そしてドロップフレームのアビリティはすべて**乗算で重複**します。両方のブースターを有効にするだけで、すでに**獲得量は4倍**になります。さらに **Loyal Retriever** を装備したコンパニオンと Nekros を加えれば、同じ node をソロで素の状態で周回する場合の数倍の素材を獲得できます。"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "マルチプライヤー",
+              "効果",
+              "重複する？"
+            ],
+            "rows": [
+              [
+                "Resource Booster",
+                "ドロップごとの素材獲得量が2倍",
+                "はい"
+              ],
+              [
+                "Resource Drop Chance Booster",
+                "素材がドロップする確率自体が2倍",
+                "はい"
+              ],
+              [
+                "Loyal Retriever（コンパニオン Mod）",
+                "素材/クレジットを拾った際に確率で獲得量が2倍になるパッシブ効果 — 任意の Beast ペットに装備可能",
+                "はい"
+              ],
+              [
+                "Nekros — Desecrate",
+                "倒した敵のルートテーブルを強制的に再抽選する",
+                "はい — ただし、他の「死亡時ドロップ」フレームとは重複しません"
+              ],
+              [
+                "Khora / Hydroid — Pilfering 増強 Mod",
+                "アビリティの影響下で倒された敵から追加のドロップ抽選を行う",
+                "はい — ただし、Desecrate とは重複しません"
+              ],
+              [
+                "Dark Sector node",
+                "node 自体に組み込まれている素材ドロップボーナス",
+                "はい"
+              ]
+            ],
+            "note": "ブースターはプラチナで購入できるほか、Nightwave、Sortie、ログイン報酬でも配布されます。プラチナを使う前に、無料のものを入手できる機会がないか確認しましょう。注意：死亡時ドロップアビリティ（Nekros の Desecrate や Khora/Hydroid の Pilfering 増強 Mod）同士は重複しないため、ドロップフレームは分隊に1体だけにしてください。"
+          }
+        },
+        {
+          "type": "tip",
+          "title": "理想のコンボ",
+          "text": "Resource Booster ＋ Resource Drop Chance Booster ＋ **Loyal Retriever** を装備した Beast コンパニオン ＋ Nekros または Khora を用意し、目的の惑星の **Dark Sector survival** を周回する。このセットアップ1つで、どんなに node 選びにこだわるよりも多くの素材をファームできます。ブースターを1つしか持っていない場合は、Rare 素材のために **Drop Chance** ブースターを優先してください。手に入らなかった素材のスタックを2倍にするよりも、Rare 素材が出現する確率を2倍にする方が重要だからです。"
+        }
+      ]
+    },
+    {
+      "id": "argon",
+      "title": "Argon Crystals：崩壊タイマーに注意",
+      "blocks": [
+        {
+          "type": "warn",
+          "title": "Argon は腐敗する唯一の素材",
+          "text": "ゲームは**毎日リセット時に所持している Argon Crystal の約半分を削除**し、個々のクリスタルは拾ってから1〜2日以内に消滅します。今夜大量にファームしても、明日にはほとんど無駄になってしまいます。これは仕様です。絶対に Argon を貯め込まないでください。"
+        },
+        {
+          "type": "p",
+          "text": "Argon Crystals は **Void のみ**で、敵やコンテナからドロップします。正しいアプローチは「ジャストインタイム」です。それを必要とする**ビルドを製作開始するのと同じセッション**で Argon をファームしましょう。1回の Void capture、または5分間の Void survival で、ほとんどのレシピをカバーできます。おまけとして、Void ミッションではついでに Relic を開封できるため、Argon とプラチナを一度にファームできます。[Relic の価値：開封か売却か](/relics-value) および [周回あたり最も稼げる Relic](/relic-farming) を参照してください。"
+        },
+        {
+          "type": "info",
+          "title": "大量の余剰 Argon を抱えて困っていますか？",
+          "text": "これは r/Warframe の定番ジョークの1つです（「1時間で588個の Argon をどうやって消費すればいい？」）。答えは、崩壊する前に [Helminth](/guides/helminth) に食べさせることです。これは、ファームしすぎた余剰素材のクラシックな消費先です。"
+        }
+      ]
+    },
+    {
+      "id": "awkward-ones",
+      "title": "厄介な3大素材：Nitain、Oxium、Tellurium",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Nitain Extract** — これは node でグラインドして集めることができず、挑戦しようとするすべての初心者プレイヤーが躓くポイントです。これは **Nightwave** の Cred 提供品（常に購入可能な定番商品、15 Cred で5個）、リアクター **Sabotage** の貯蔵庫、および **Ghoul Purge** のバウンティから入手できます。Nitain *と* Forma は手元に少しストックしておきましょう。これらは Aura Forma（両方必要）やいくつかの古いフレームの製作を制限し、常に最悪のタイミングで枯渇しがちです。"
+        },
+        {
+          "type": "p",
+          "text": "**Oxium** — **Oxium Ospreys**（Corpus の飛行ドローン）からのみドロップし、*自爆する前に破壊した場合のみ*ドロップします。Ospreys が大量にスポーンする Corpus の node が望ましく、定番の選択肢は **Jupiter の Io**（Defense）です。ここでは Oxium とマスタリー経験値（アフィニティ）を同時に稼ぐことができます。Ospreys を最優先で倒してください。自爆した個体からは何もドロップしません。"
+        },
+        {
+          "type": "p",
+          "text": "**Tellurium** — **Archwing** の敵（任意の惑星の任意の Archwing ミッション）および **Uranus** の潜水/海底研究所タイルセットからの Rare ドロップです。地上でのファームなら、ドロップフレームを同伴して Uranus の潜水 survival である Ophelia を周回するのが確実な選択肢です。飛びたい場合は、任意の Archwing node が機能します。どこでも Rare なので、ブースターと Nekros を連れていきましょう。"
+        }
+      ]
+    },
+    {
+      "id": "staples",
+      "title": "クラフトの必需品：Cells、Neurodes、Sensors および大量消費素材",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "これらは、フレーム、武器、コンパニオンを製作する際に大量に消費する Rare 素材（および2つの Common 素材）です。それぞれ、短時間で集めるためのボスと、スタックをグラインドするためのエンドレス node が存在します："
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "Orokin Cells",
+              "v": "Saturn および Ceres。確定で短時間入手するならボス Sargas Ruk（Saturn）、スタックを貯めるなら Ceres の Dark Sector survival（例: Gabii）。"
+            },
+            {
+              "k": "Neurodes",
+              "v": "Earth、Deimos、Lua の Infested/有機物。Lephantis（Deimos）は撃破時に複数ドロップします。グラインドするなら Deimos の survival。"
+            },
+            {
+              "k": "Neural Sensors",
+              "v": "Jupiter の Gas City（および Kuva Fortress）。短時間なら Alad V、グラインドするなら Jupiter の survival（例: Cameria）。"
+            },
+            {
+              "k": "Plastids",
+              "v": "Saturn、Uranus、Phobos、Pluto、Eris — これらの惑星で他の Rare 素材をファームしている間に、パッシブに集まります。"
+            },
+            {
+              "k": "Nano Spores",
+              "v": "Infested が多い任意の惑星（Saturn、Neptune、Eris、Deimos）。1回の Dark Sector survival で数千個手に入るため、意図的にファームすることは滅多にありません。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kuva",
+      "title": "Kuva：エンドゲーム素材",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Kuva は通常のルートテーブルの外に位置しています。これは [Riven](/riven-value) の性質をサイクル（ロール）したり、Kuva Liches を転向/抹殺したりするための通貨であり、専用のミッションから獲得します。短時間で集めるなら **Kuva Siphon** や **Kuva Flood**（星系マップ上にマークされる移動 node）、量を集めるなら **Kuva Fortress での Kuva Survival**（定期的に出現する Kuva Harvesters が大量の Kuva をドロップします）が適しています。Resource booster やコンパニオンの素材倍増 Mod は、他の素材と同様に Kuva にも効果があります。"
+        },
+        {
+          "type": "p",
+          "text": "Kuva はゲーム内で最も深いプラチナの消費先である Riven のギャンブルに直結しているため、独自の詳細な解説を用意しています。詳細な方法は [Kuva ファームガイド](/guides/kuva) で解説しています。また、ゴッドロールを追い求めて 20,000 Kuva を消費する前に、[Riven 価値見積もりツール](/riven-value) でサイクル済みの Riven の実際の価値確認しておきましょう。"
+        }
+      ]
+    },
+    {
+      "id": "smart-farming",
+      "title": "不労所得と反復可能なルーティン",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "多くのプレイヤーが忘れがちな2つの強力なマルチプライヤーと、あらゆる Rare 素材に繰り返し使える周回テンプレートを紹介します："
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Extractors** — すべての node をクリアした惑星に **Titan**（Common 寄り）または **Distilling**（Rare 寄り）の extractor を配置します。これらはオフラインの間も静かに素材を収集してくれます。複数の惑星で Distilling extractor をローテーションさせることで、プレイ時間ゼロで Neurodes、Orokin Cells、Tellurium を無料で手に入れることができます。",
+            "**グラインドする前に確認する** — 「Orokin Cells が25個必要だ」というパニックの多くは回避可能です。素材コストをファームする代わりに、完成した Prime パーツを数プラチナで直接購入できる場合があります。ファームに専念する前に、[セットとパーツのコスト比較](/comparison) で比較し、[デュカット値](/ducats) を確認してください。"
+          ]
+        },
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "h": "マルチプライヤーを準備する",
+              "p": "Resource ＋ Resource Drop Chance ブースターを装備します（または、少なくとも Loyal Retriever Mod を装備した Beast コンパニオンを連れていきます）。無料のブースターは、ログイン報酬、Sorties、Nightwave で頻繁に登場します。"
+            },
+            {
+              "h": "ドロップフレームを連れていく",
+              "p": "Nekros（Desecrate）または Khora（Pilfering Strangledome）を使用するか、それらを持つプレイヤーと分隊を組みます。彼らの追加ドロップはブースターと重複します（ただし、2つの死亡時ドロップフレーム同士は重複しません）。"
+            },
+            {
+              "h": "敵密度の高いエンドレス node を選ぶ",
+              "p": "目的の惑星の Dark Sector survival が理想的です。無限のスポーンに加え、組み込みの素材ボーナスがあります。[ドロップマップ](/star-chart-3d) で node を確認してください。"
+            },
+            {
+              "h": "短いサイクルで周回する",
+              "p": "5-10 分で脱出し、実際に不足している場合のみ再周回します。Rare 素材は確率でドロップするため、ブースターの有効期間が切れた後は、長く留まることが必ずしも効率的とは限りません。"
+            },
+            {
+              "h": "Argon は例外",
+              "p": "Argon Crystals はクラフトする当日にのみファームしてください。崩壊するため、事前に貯め込むのは無駄な努力になります。"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Orokin Cells をファームするのに最適な場所はどこですか？",
+      "a": "Saturn と Ceres です。短時間で集めるなら、Saturn のボス Sargas Ruk を暗殺してください。撃破時に Orokin Cells をドロップします（確定ドロップ）。スタックをグラインドして貯めるなら、Nekros と素材ブースターを連れて Ceres の Dark Sector survival（例: Gabii）を周回します。正確な node は [ドロップマップ](/star-chart-3d) で確認してください。"
+    },
+    {
+      "q": "なぜ Argon Crystals が消えてしまうのですか？",
+      "a": "Argon Crystals は仕様として崩壊します。ゲームは毎日リセット時に所持しているストックの約半分を削除し、クリスタルは拾ってから1〜2日以内に消滅します。Argon（Void で入手可能）は、それを必要とするアイテムをクラフトする直前にのみファームし、余った分は無駄にならないように [Helminth](/guides/helminth) に投入してください。"
+    },
+    {
+      "q": "How do I farm Nitain Extract?",
+      "a": "Nitain はどの node でもグラインドして集めることができません。これが落とし穴です。Nightwave の Cred 提供品（常に購入可能な定番商品、15 Cred で5個）から購入するか、リアクター Sabotage の貯蔵庫や Ghoul Purge のバウンティから入手してください。Aura Forma や一部の古いフレームの製作に必要となるため、少しストックを残しておきましょう。"
+    },
+    {
+      "q": "素材ブースターは、ドロップフレームやペットのドロップ Mod と重複しますか？",
+      "a": "はい、すべて乗算で重複します。Resource Booster（獲得量2倍）と Resource Drop Chance Booster（ドロップ率2倍）だけで約4倍になり、さらに Nekros の Desecrate などのドロップフレームのアビリティが上乗せされます。注意点として、2024年のコンパニオン改修以降、古い Smeeta Charm の「素材2倍」バフは廃止されました。素材倍増効果は現在 Loyal Retriever Mod に移行しており、Smeeta に限らず任意の Beast コンパニオンに装備して、拾った素材をパッシブに確率で2倍にすることができます。これらのマルチプライヤーを重ねることは、単一の「完璧な」 node を探すことよりもはるかに重要です。"
+    },
+    {
+      "q": "Oxium をファームする最速の方法は何ですか？",
+      "a": "Oxium は Oxium Ospreys からのみドロップし、自爆する前に破壊した場合のみドロップします。定番の選択肢は Jupiter の Io（Defense）で、ここでは Ospreys が大量にスポーンし、同時にマスタリー経験値（アフィニティ）も獲得できます。Ospreys を素早く集中攻撃してください。自爆した個体からは何もドロップしません。"
+    },
+    {
+      "q": "最高の Kuva ファームはどこですか？",
+      "a": "純粋な量を集めるなら Kuva Fortress の Kuva Survival、短時間で集めるなら Kuva Siphons や Floods（星系マップ上の移動 node）が最適です。素材ブースターやコンパニオンの素材倍増 Mod も、他の素材と同様に効果があります。詳細は [Kuva ファームガイド](/guides/kuva) を参照してください。"
+    },
+    {
+      "q": "Nekros の Desecrate は実際に素材を2倍にしますか？",
+      "a": "正確には異なります。Desecrate は倒した敵のルートテーブルを強制的に再抽選し、素材を含む追加ドロップを発生させます。これは素材ブースターやコンパニオンのドロップ Mod と重複するため、分隊に Nekros や Khora がいるだけで、自分だけでなく全員の獲得量が大幅に増加します。なお、Desecrate と Khora/Hydroid の Pilfering 増強 Mod はすべて死亡時ドロップ効果であるため、お互いに重複しません。分隊にドロップフレームは1体いれば十分です。"
+    },
+    {
+      "q": "不要な素材はどうすればいいですか？",
+      "a": "ほとんどの未加工素材は取引できないため、主な消費先は [Helminth](/guides/helminth) になります。余った素材を消費して Invigorations（活性化）やアビリティの組み込み（移植）を行えます。さらに言えば、最初から Rare 素材をファームしすぎないようにしましょう。素材コストをグラインドする前に、完成した [Prime パーツ](/comparison) を少量のプラチナで直接購入できないか確認してください。"
+    }
+  ],
+  "videos": [
+    {
+      "id": "ekBT4xub-oQ",
+      "title": "Where To Find: Orokin Cells, Neurodes, Tellurium, and Argon Crystals Fast | Warframe",
+      "channel": "LVMIAS"
+    },
+    {
+      "id": "DzdkPJZyW8I",
+      "title": "Warframe - Best Way To Farm Resources - Star Chart Edition",
+      "channel": "MCGamerCZ"
+    },
+    {
+      "id": "wKLYZWcsnlI",
+      "title": "Where to farm materials?! (Orokin,Argon,Tellerum,Plastids,Neurodes & more) [Warframe]",
+      "channel": "TheYamiks"
+    },
+    {
+      "id": "OlXa8dap4fI",
+      "title": "Best Ways To FARM Every Resources in Warframe 2025",
+      "channel": "Tenno Tactics"
+    }
+  ],
+  "sources": [
+    {
+      "label": "r/Warframe — \"How do I use 588 argon crystals within 1 hour\" (the decay panic)",
+      "href": "https://reddit.com/r/Warframe/comments/1sbsb9t/how_do_i_use_588_argon_crystals_within_1_hour/"
+    },
+    {
+      "label": "r/Warframe — \"DE, please don't nerf charm\" (the Smeeta Charm debate; its resource buff has since moved to the Loyal Retriever mod)",
+      "href": "https://reddit.com/r/Warframe/comments/1ek4cyi/de_please_dont_nerf_charm/"
+    },
+    {
+      "label": "r/Warframe — \"Petition to farm 1000 oxium\" (the Oxium grind)",
+      "href": "https://reddit.com/r/Warframe/comments/98iay8/petition_to_get_rebbecca_and_meg_to_farm_1000/"
+    },
+    {
+      "label": "r/Warframe — farming 15 argon crystals on defense",
+      "href": "https://reddit.com/r/Warframe/comments/ef3qbe/this_is_the_story_of_our_main_protagonist_blue/"
+    },
+    {
+      "label": "Warframe Wiki",
+      "href": "https://wiki.warframe.com/"
+    }
+  ],
+  "related": [
+    {
+      "label": "Kuva ファーム",
+      "to": "/guides/kuva",
+      "icon": "diamond-stone",
+      "note": "Riven をサイクルするためのエンドゲーム素材"
+    },
+    {
+      "label": "クレジットファーム",
+      "to": "/guides/credits",
+      "icon": "cash-multiple",
+      "note": "すべての Foundry 製作の資金調達"
+    },
+    {
+      "label": "Helminth システム",
+      "to": "/guides/helminth",
+      "icon": "dna",
+      "note": "余剰素材の消費先"
+    },
+    {
+      "label": "ドロップ場所マップ",
+      "to": "/star-chart-3d",
+      "icon": "map-marker-radius",
+      "note": "あらゆる素材の正確な node を見つける"
+    },
+    {
+      "label": "Relic ファーム",
+      "to": "/guides/relics",
+      "icon": "cube-outline",
+      "note": "Void 周回は Argon ファームを兼ねる"
+    },
+    {
+      "label": "セット vs パーツ計算ツール",
+      "to": "/comparison",
+      "icon": "scale-balance",
+      "note": "パーツを購入するか、素材をファームするか？"
+    }
+  ],
+  "updated": "2026-07-18"
+}

@@ -6,5 +6,6 @@
 </template>
 
 <script setup lang="ts">
-import guide from '~/data/guides/mastery-rank'
+import enGuide from '~/data/guides/mastery-rank'
+const guide = await useLocalizedGuide('mastery-rank', enGuide)
 </script>

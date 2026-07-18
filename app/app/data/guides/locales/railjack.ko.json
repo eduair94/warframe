@@ -1,0 +1,471 @@
+{
+  "slug": "railjack",
+  "eyebrow": "지식 센터 · Railjack",
+  "title": "Railjack 가이드",
+  "lede": "Railjack은 대형 군함인 플레이어의 Railjack을 조종해 오픈 스페이스를 비행하고, 전투 중에 적 함선에 침투하며, 완전히 AI로 구성할 수 있는 승무원을 지휘하는 Warframe의 대형 함선 샌드박스 모드입니다. 여기서는 해금 방법, Intrinsics 랭크 올리는 법, 그리고 모두가 기피하는 호스트가 되지 않고 솔로로 플레이하는 방법을 소개합니다.",
+  "category": "endgame",
+  "readMins": 11,
+  "stats": [
+    {
+      "num": "5",
+      "label": "Intrinsic 학파",
+      "tone": "gold"
+    },
+    {
+      "num": "3",
+      "label": "지휘할 수 있는 AI 승무원",
+      "tone": "good"
+    },
+    {
+      "num": "10",
+      "label": "Intrinsic당 랭크",
+      "tone": "alt"
+    },
+    {
+      "num": "2",
+      "label": "Proxima 팩션 (Grineer + Corpus)"
+    }
+  ],
+  "sections": [
+    {
+      "id": "what-is-railjack",
+      "title": "Railjack이란 실제 어떤 모드인가",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Railjack은 대형 군함인 *플레이어의* Railjack을 중심으로, 최대 3명의 분대원과 함께 승무원으로 탑승하여 플레이하는 Warframe의 **우주 전투 게임 모드**입니다. 익숙한 행성들의 궤도를 도는 우주 개방 구역인 **Proxima** 지역을 비행하며, 적 전투기 편대를 격파하고, 중장갑 **crewships**을 파괴하며, 적의 대형 함선과 기지에 침투하여 도보로 목표를 완료합니다."
+        },
+        {
+          "type": "p",
+          "text": "이 모드의 묘미는 매끄러운 전환에 있습니다. 조종석에서 대공포화를 피해 비행하다가, 다음 순간 **Archwing slingshot**을 통해 적 crewship으로 날아가 내부에서 원자로를 폭파하고, 다시 아군 함선으로 돌아와 `Omni` 도구로 선체 균열을 수리할 수 있습니다. 이 모드는 **Empyrean** 업데이트로 첫선을 보였으며, 이후 Corpus 리워크를 통해 대폭 간소화되었습니다. 이때 **Command** Intrinsic과 개인용 **Plexus** 모드 보드가 추가되었는데, 이 두 시스템 덕분에 현재의 솔로 Railjack 플레이가 진정으로 쾌적해졌습니다."
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "게임 모드",
+              "v": "우주 전투 + 매끄러운 도보 침투"
+            },
+            {
+              "k": "플레이어의 함선",
+              "v": "Railjack — 조종, 포격, 또는 함선에서 사출"
+            },
+            {
+              "k": "분대 크기",
+              "v": "최대 4명의 플레이어, 또는 솔로 플레이 시 자신 + 최대 3명의 AI 승무원"
+            },
+            {
+              "k": "지역",
+              "v": "Grineer Proxima 및 Corpus Proxima (Veil에서 정점)"
+            },
+            {
+              "k": "선행 조건",
+              "v": "The War Within 완료 후 Rising Tide 퀘스트 완료"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "why-bother",
+      "title": "왜 Railjack을 해야 하는가",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Railjack은 수년간 애매한 위치에 있었지만, 리워크를 통해 진정한 보상 엔진으로 거듭났습니다. 단순한 이색 비행 시뮬레이터가 아니며, 여러 성장 시스템이 이 모드와 직접 연결되어 있습니다."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "이유",
+              "얻을 수 있는 보상"
+            ],
+            "rows": [
+              [
+                "Affinity / 레벨업",
+                "미션 진행 시 장비 전체에 공유 Affinity가 쏟아지므로, Hydron 외의 다른 콘텐츠를 즐기면서 무기와 frame의 랭크를 올리기에 아주 좋은 방법입니다."
+              ],
+              [
+                "자원",
+                "Titanium, Asterite 및 Grineer/Corpus Proxima 드롭 아이템은 Railjack 업그레이드와 놀라울 정도로 많은 후반 Foundry 제작법에 사용됩니다."
+              ],
+              [
+                "Sisters of Parvos",
+                "Corpus 리치 사냥은 Railjack을 거쳐야 합니다. Sister의 대형 함선에 대면하고 침투하여 처치해야 합니다. Kuva & Liches 가이드를 참조하세요."
+              ],
+              [
+                "Void Storms",
+                "Railjack 버전의 Void Fissures입니다. 비행하면서 성유물을 개방하고 추가 Void Traces를 모으세요. 미션 보상 외에 무료 Prime 부품도 덤으로 얻을 수 있습니다."
+              ],
+              [
+                "퀘스트 & 스토리",
+                "Rising Tide, Call of the Tempestarii, 그리고 이후의 스토리 전개 모두 플레이어를 조종석에 앉힙니다."
+              ],
+              [
+                "랭크 & 다양성",
+                "Intrinsics, 컴포넌트, 그리고 게임 내 다른 어떤 것과도 비교할 수 없는 독특한 전투 샌드박스를 제공합니다."
+              ]
+            ],
+            "note": "Void Storm 보상은 미션 자체의 전리품과 중첩됩니다. 드롭 아이템을 디솔브하기 전에 가치를 계산해 보세요."
+          }
+        },
+        {
+          "type": "p",
+          "text": "이 중 두 가지는 계획적으로 접근할 가치가 있습니다. **Void Storms**는 Railjack을 성유물 파밍지로 만들어 줍니다. [Relic value: crack or sell](/relics-value) 및 [which relics pay best per run](/relic-farming)을 통해 획득한 아이템의 가치를 계산해 보세요. 그리고 Prime 장비를 개방하기 시작하면, [the ducat value tool](/ducats)과 [set-vs-parts calculator](/comparison)를 통해 Baro를 위해 보관할 것과 판매할 것을 구분할 수 있습니다."
+        }
+      ]
+    },
+    {
+      "id": "unlocking",
+      "title": "Railjack 해금: Rising Tide 퀘스트",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "이 모드에 진입하는 방법은 두 가지가 있습니다. 즉시 **다른 사람의 함선에 승무원으로 탑승**할 수 있습니다. 공방 Railjack 분대에 합류하기만 하면 함선이 없어도 Intrinsics와 보상을 획득할 수 있습니다. 하지만 *자신만의* Railjack을 제작하려면 **Rising Tide** 퀘스트를 진행해야 합니다."
+        },
+        {
+          "type": "steps",
+          "ordered": true,
+          "steps": [
+            {
+              "h": "The War Within 완료",
+              "p": "Rising Tide는 시네마틱 퀘스트인 The War Within(스토리상 The Second Dream 이후)을 완료해야 진행할 수 있습니다. 아직 도달하지 못했다면 메인 스토리 퀘스트부터 진행하세요. 순서는 Quests 가이드를 참조하세요."
+            },
+            {
+              "h": "Dry Dock 이용 권한 확보",
+              "p": "Rising Tide는 Dry Dock에서 제작됩니다. 오비터에서는 함선을 제작할 수 없습니다. 하지만 Dry Dock이 클랜 전용인 것은 아닙니다. 클랜 Dojo에 건설하거나, 여러 대형 Relays(Saturn 및 Pluto 등)에 있는 공용 Dry Dock을 사용할 수 있습니다."
+            },
+            {
+              "h": "6개의 잔해 컴포넌트 수집 및 제작",
+              "p": "퀘스트를 진행하면서 성계 지도를 돌며 자원을 수집한 다음, Dry Dock에서 인양한 함선의 6개 구역을 하나씩 제작하게 됩니다."
+            },
+            {
+              "h": "제작 대기 시간 기다리기",
+              "p": "각 컴포넌트와 최종 조립에는 Foundry 방식의 실시간 타이머가 적용되어 총 수일이 소요됩니다. 가능한 한 빨리 제작을 시작하고, 다른 콘텐츠를 플레이하는 동안 제작이 완료되도록 두세요."
+            },
+            {
+              "h": "Dry Dock에서 출항",
+              "p": "Railjack 조립이 완료되면 Dry Dock에 정박합니다. 그곳에서(또는 성계 지도의 Proxima 지역에서) 미션을 시작하고 Intrinsics 랭크를 올릴 수 있습니다."
+            }
+          ]
+        },
+        {
+          "type": "warn",
+          "text": "**클랜이 없으신가요? 그래도 방법이 있습니다.** 여러 대형 **Relays**(Saturn 및 Pluto 등)에는 클랜 없이도 사용할 수 있는 공용 **Dry Dock**이 있습니다. 자신만의 공간을 원하시나요? 아무 Relay의 클랜 콘솔에서 무료로 1인 클랜을 창설할 수 있습니다. Dojo에 Dry Dock을 건설하거나(클랜 전용 Sigma 컴포넌트 연구도 해금됨), 친구나 동맹의 Dojo를 빌려 쓰세요. \"클랜이 없다\"는 이유로 포기하지 마세요."
+        },
+        {
+          "type": "info",
+          "text": "이 모드가 처음이라 자신에게 맞을지 고민되시나요? 일부 **스토리 미션과 공방 분대에서는 미리 제작된 대여용 Railjack을 제공**하므로, Rising Tide를 완료하기 전에 비행과 포격을 미리 체험해 볼 수 있습니다. 제작 시간을 투자할지 결정하기에 아주 좋은 방법입니다."
+        }
+      ]
+    },
+    {
+      "id": "intrinsics",
+      "title": "Intrinsics: 5가지 학파",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Intrinsics**는 Railjack의 개인 스킬 트리로, **1부터 10**까지 랭크가 있는 5가지 학파로 구성되어 있습니다. 미션 Affinity를 통해 자동으로 Intrinsic 포인트를 획득한 다음, 원하는 곳에 투자할 수 있습니다. 높은 랭크는 단순한 수치 증가가 아닌 혁신적인 변화를 가져옵니다. 새로운 기동, 더 빠른 수리, 그리고 결정적으로 AI 승무원을 해금해 줍니다."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "학파",
+              "관장하는 분야",
+              "솔로 플레이에서 중요한 이유"
+            ],
+            "rows": [
+              [
+                "Tactical",
+                "전술 지도, 승무원/목표물로의 텔레포트, 함선으로 복귀하는 Omni 리콜",
+                "함선 끝에서 끝까지 뛰어다닐 필요 없이 조종석이나 선체 균열 위치로 즉시 이동"
+              ],
+              [
+                "Piloting",
+                "좁은 공간에서 빠른 위치 선정을 위한 부스트, 벡터 버스트, 드리프트 회피",
+                "대공포화를 피하고 빠르게 위치를 재선정할 수 있는 민첩한 함선"
+              ],
+              [
+                "Gunnery",
+                "포탑 조작 — 열 관리, 조준 줌, 리드 인디케이터 조준 보정, Archwing slingshot",
+                "전투기를 더 빨리 처치하고, crewships에 Forward Artillery 포격을 명중시키며, slingshot으로 적 함선에 침투"
+              ],
+              [
+                "Engineering",
+                "함선 선체 체력, 더 빠른 Omni 수리, 제련소 생산량, 위험 요소 억제",
+                "선체를 돌볼 사람이 없을 때 화재와 균열로부터 생존"
+              ],
+              [
+                "Command",
+                "최대 3명의 AI 승무원 고용 및 지휘, 온콜 승무원(On Call Crew) 소환",
+                "솔로 플레이에서 단연 가장 중요한 학파 — 승무원이 대신 비행하고 전투를 수행"
+              ]
+            ]
+          }
+        },
+        {
+          "type": "tip",
+          "text": "**솔로 레벨링 순서:** 승무원 확보를 위해 초반에 **Command**를 먼저 올린 다음, 함선 조작감을 개선하기 위해 **Gunnery**와 **Piloting**을 몇 랭크 올리고, 생존성을 위해 **Engineering**을 올리세요. 침투를 자주 하게 되면 Tactical의 Omni 리콜이 편의성을 크게 높여줍니다. 효율을 내기 위해 모든 학파를 10까지 올릴 필요는 없으며, 각 학파의 초반 몇 랭크가 가장 큰 효율을 냅니다."
+        }
+      ]
+    },
+    {
+      "id": "command-crew",
+      "title": "Command 승무원: 솔로 플레이어의 비밀 병기",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "이 페이지에서 딱 한 가지만 기억해야 한다면, 바로 **Command 랭크를 올리고 AI 승무원을 고용하는 것**입니다. 잘 구성된 승무원은 4인용 함선을 1인용 함선으로 바꾸어 줍니다. 플레이어가 원하는 작업에 집중하는 동안, 승무원들이 조종, 포격, 균열 및 화재 수리, 침투하는 적 방어를 모두 수행합니다."
+        },
+        {
+          "type": "steps",
+          "ordered": true,
+          "steps": [
+            {
+              "h": "Command로 승무원 슬롯 해금",
+              "p": "Command 첫 번째 랭크에서는 승무원 한 명을 고용하여 배치할 수 있으며, 랭크가 올라갈수록 슬롯이 늘어나고 능력치가 향상됩니다. 몇 랭크 뒤에 두 번째 슬롯이 열리고, 그 후 몇 랭크 뒤에 세 번째 슬롯이 열려 최대 3명의 AI 승무원을 활성화할 수 있습니다."
+            },
+            {
+              "h": "Fortuna의 Ticker에게서 영입",
+              "p": "Ticker(금성의 Fortuna 지하에 위치)는 자원과 Solaris 부채 증서를 대가로 로테이션되는 승무원을 판매합니다. 각 영입 대상은 전투, 포격, 조종, 엔지니어링, 수리, 내구도에 능력치 포인트가 분배되어 있습니다."
+            },
+            {
+              "h": "능력치에 맞는 역할 부여",
+              "p": "모든 승무원은 조종사(Pilot), 포수(Gunner), 수호자(Defender), 엔지니어(Engineer) 중 하나의 역할을 맡습니다. 높은 능력치에 맞는 역할을 부여하세요. 포수는 Gunnery + Combat이 높아야 하고, 엔지니어는 Repair + Endurance가 높아야 합니다."
+            },
+            {
+              "h": "클래식 솔로 3인조 구성",
+              "p": "전투기 편대를 격파할 포수 2명과 함선을 유지할 엔지니어 1명 조합이 가장 안정적인 기본 구성입니다. 조종석을 비우고 직접 침투하고 싶다면 포수 1명을 조종사로 교체하세요."
+            }
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "Command의 높은 랭크를 달성하면 소모품 아이템인 **On Call Crew**가 해금되어, *일반*(Railjack이 아닌) 미션에서 승무원 중 한 명을 임시 동료로 소환할 수 있습니다. 함선이 스스로 잘 돌아가더라도 Command 랭크를 계속 올려야 할 강력한 이유입니다."
+        }
+      ]
+    },
+    {
+      "id": "solo-build",
+      "title": "솔로 플레이용 Railjack 빌드 구성",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "함선의 위력은 두 가지 요소에서 나옵니다. 선체에 장착하는 **컴포넌트**(Reactor, Shield, Engines, 무장)와 대여용을 포함한 *모든* Railjack에 적용되는 개인용 모드 보드인 **Plexus**입니다. 컴포넌트는 **Zetki**(기본 능력치가 가장 높지만 포탑 과열 등의 단점 있음), **Vidar**(균형 잡히고 강력한 보너스 효과), **Lavan**(내구성이 뛰어나고 조작감이 좋음)의 세 가문 제품이 있으며, **MK I~III** 티어로 올라갈수록 강력해집니다."
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Reactor가 최우선입니다.** Reactor는 Plexus 수용량을 결정하여 장착할 수 있는 모드의 개수와 강도를 좌우하며, 전투 어빌리티의 위력을 높여줍니다. 고용량 Reactor는 단일 업그레이드 중 가장 체감이 큰 요소입니다.",
+            "**다음은 포탑(무장)입니다.** 마음에 드는 가문의 MK III 포탑을 구하세요. Zetki는 가장 강력하지만 과열되기 쉽고, Vidar와 Lavan은 피해량을 조금 희생하는 대신 조작감과 지속 화력을 얻습니다.",
+            "**Forward Artillery는 crewship을 순삭하는 무기입니다.** 함선 전면포(`Tunguska`)는 그냥 상대하려면 한참 걸리는 crewship을 한 방에 파괴합니다. **Forward Artillery** 모드를 장착하여 Veil의 더 튼튼한 crewships들도 계속 한 방에 보낼 수 있도록 하세요.",
+            "**Plexus 모딩.** 포탑 피해량을 극대화하고(예: Hyperstrike), 선체 체력을 위한 생존 모드를 추가한 뒤, **전투기 편대를 정리할 전투 어빌리티**를 하나 장착하세요. 적을 한데 모아주는 Tether와 유도 미사일인 Seeker Volley가 오랫동안 사랑받고 있습니다.",
+            "**Engines와 Shields는 우선순위가 낮습니다.** 조작감과 실드 재생도 좋지만, 튼튼한 Reactor, 포탑, Forward Artillery를 갖춘 후에 신경 쓰셔도 됩니다."
+          ]
+        },
+        {
+          "type": "warn",
+          "text": "**모두가 기피하는 호스트가 되지 마세요.** 공방 Railjack에서 가장 자주 나오는 불만은 함선을 제작하거나 모딩하지도 않은 채 고레벨 노드에서 호스트를 잡는 플레이어들입니다. 호스트를 맡을 예정이라면 먼저 한 시간 정도 투자해 Plexus와 Forward Artillery를 세팅하세요. 모딩된 함선은 차원이 다르며, 분대원들도 바로 알아챌 것입니다."
+        }
+      ]
+    },
+    {
+      "id": "solo-game-plan",
+      "title": "솔로 미션 공략 계획",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "승무원이 탑승하고 Forward Artillery가 준비되면, 솔로 Railjack 미션은 깔끔한 리듬으로 진행됩니다. 기본 루프는 전투기 정리, crewships 파괴, 목표 완료, 탈출입니다."
+        },
+        {
+          "type": "steps",
+          "ordered": true,
+          "steps": [
+            {
+              "h": "전투기 편대가 포탑 쪽으로 다가오게 유도",
+              "p": "전투기들은 플레이어를 추격할 때 뭉치는 경향이 있습니다. 포수와 포탑이 작동하게 두고, Tether 같은 전투 어빌리티를 사용해 적들을 한데 모아 한 번에 정리하세요."
+            },
+            {
+              "h": "Forward Artillery로 crewships 파괴",
+              "p": "전면포 조준을 맞추고 각 crewship을 한 방에 파괴하세요. 또는 Archwing이나 slingshot을 통해 침투하여 내부에서 원자로를 폭파할 수도 있습니다. 어느 쪽이든 선체에 가장 큰 위협이 되는 요소를 제거할 수 있습니다."
+            },
+            {
+              "h": "도보로 목표물에 침투",
+              "p": "대부분의 미션에서는 적의 대형 함선이나 기지에 진입하여 라디에이터 파괴, 콘솔 해킹, 지점 방어 등의 목표를 수행해야 합니다. 이는 일반적인 Warframe 전투이므로, 신뢰할 수 있는 frame과 무기를 가져가세요."
+            },
+            {
+              "h": "필요에 따라 수리 및 리콜",
+              "p": "자리를 비운 사이 함선에 균열이나 화재가 발생하면 대개 엔지니어가 처리하지만, 상황이 긴박해지면 Tactical의 Omni 리콜을 사용해 즉시 함선으로 복귀할 수 있습니다."
+            },
+            {
+              "h": "완료 및 탈출",
+              "p": "목표가 완료되면 남은 적들을 정리하고 탈출하세요. Void Storm 미션의 경우 여기서 장착한 성유물이 개방되므로, 떠나기 전에 보상을 선택하세요."
+            }
+          ]
+        },
+        {
+          "type": "warn",
+          "text": "**Forward Artillery는 솔로 플레이 시 다소 번거롭게 설계되어 있습니다.** 조종사는 전면포를 발사할 수 없으므로 조종석에서 일어나야 하며, 조준하는 동안 함선은 기동을 멈춥니다. 이는 베테랑들이 초보 솔로 조종사들에게 가장 알려주고 싶어 하는 부분입니다. **승무원 한 명을 조종사로 지정**하여 포격하는 동안 함선이 계속 회피 기동을 하도록 하거나, 포화 속에 멈춰 서 있지 않도록 주변 구역을 먼저 정리하세요."
+        }
+      ]
+    },
+    {
+      "id": "where-next",
+      "title": "엔드게임에서 Railjack의 위치",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "함선이 스스로 잘 돌아가게 되면, Railjack은 귀찮은 숙제가 아닌 유용한 도구가 됩니다. **Void Storms**를 성유물 파밍지로 활용하고, [성유물 가치: 개방 또는 판매](/relics-value) 및 [런당 효율이 가장 좋은 성유물](/relic-farming)을 통해 획득한 아이템의 가치를 매겨보세요. [Kuva & Liches 가이드](/guides/kuva)를 참고하여 **Sisters of Parvos**를 사냥하세요. 그리고 Proxima 드롭 아이템이나 자원이 정확히 어디서 나오는지 확인하고 싶다면, [3D 성계 지도 드롭 맵](/star-chart-3d)이 위치를 표시해 줍니다."
+        },
+        {
+          "type": "p",
+          "text": "나머지 엔드게임 콘텐츠인 [Steel Path](/guides/steel-path), [Duviri](/guides/duviri)(비교해 볼 만한 자체 Intrinsics 시스템이 있음), [Arcanes](/guides/arcanes), [Archon Shards](/guides/archon-shards)에 대해서는 관련 가이드에서 이어서 다룹니다. 빌드가 완성되는 과정을 직접 보고 싶다면, [크리에이터 디렉터리](/creators)와 아래 동영상을 확인해 보시는 것을 추천합니다."
+        },
+        {
+          "type": "links",
+          "links": [
+            {
+              "label": "성유물 가치: 개방 또는 판매",
+              "href": "/relics-value",
+              "icon": "diamond-stone",
+              "note": "Void Storm 획득물 가치 계산"
+            },
+            {
+              "label": "Kuva & Liches 가이드",
+              "href": "/guides/kuva",
+              "icon": "skull",
+              "note": "Sisters of Parvos는 Railjack을 거쳐야 합니다"
+            },
+            {
+              "label": "3D 드롭 위치 지도",
+              "href": "/star-chart-3d",
+              "icon": "map-marker-path",
+              "note": "모든 Proxima 드롭 아이템 찾기"
+            },
+            {
+              "label": "커뮤니티 도구 디렉터리",
+              "href": "/tools",
+              "icon": "toolbox",
+              "note": "위키, Overframe 등"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Warframe에서 Railjack을 해금하려면 어떻게 해야 하나요?",
+      "a": "자신만의 함선을 제작하려면 **Rising Tide** 퀘스트를 완료해야 합니다. 이 퀘스트를 진행하려면 **The War Within**(The Second Dream 이후의 시네마틱 퀘스트)을 완료하고 **Dry Dock** 이용 권한이 있어야 합니다. Dry Dock은 클랜 전용이 아닙니다. 여러 대형 **Relays**(Saturn 및 Pluto 등)에 공용 Dry Dock이 마련되어 있으며, 무료로 1인 클랜을 창설하여 직접 건설할 수도 있습니다. 함선을 전혀 제작하고 싶지 않다면, 즉시 공방 Railjack 분대에 합류하여 다른 사람의 함선에 승무원으로 탑승하세요. 이 경우에도 Intrinsics와 보상을 획득할 수 있습니다."
+    },
+    {
+      "q": "Railjack을 솔로로 플레이할 수 있나요?",
+      "a": "네, **Command** Intrinsic 랭크를 올리고 AI 승무원을 고용하면 진정으로 쾌적하게 플레이할 수 있습니다. 유능한 승무원 3명이 플레이어를 대신해 조종, 포격, 수리를 전담하므로, 플레이어는 비행이나 침투에만 집중할 수 있습니다. 덕분에 Railjack이 4인용 작업이 아닌 1인용 작업처럼 느껴지게 됩니다."
+    },
+    {
+      "q": "Railjack을 얻으려면 클랜이 필요한가요?",
+      "a": "꼭 그렇지는 않습니다. Railjack은 **Dry Dock**에서 제작 및 정비하며, 오비터에서는 불가능하지만 Dry Dock이 클랜 전용인 것은 아닙니다. 여러 대형 **Relays**(Saturn 및 Pluto 등)에 솔로 플레이어 누구나 사용할 수 있는 공용 Dry Dock이 있습니다. 자신만의 공간을 원하신다면, 아무 Relay의 클랜 콘솔에서 무료로 1인 클랜을 창설하여 Dojo에 Dry Dock을 건설할 수 있습니다. 이 경우 클랜 전용 Sigma 컴포넌트 연구도 해금됩니다."
+    },
+    {
+      "q": "어떤 Railjack Intrinsic을 가장 먼저 올려야 하나요?",
+      "a": "AI 승무원을 확보할 수 있는 **Command**를 가장 먼저 추천합니다. 이 학파가 솔로 플레이를 가능하게 만드는 데 가장 큰 기여를 합니다. 그 후 함선의 반응성을 높이기 위해 **Gunnery**와 **Piloting**을 몇 랭크 올리고, 생존성을 위해 **Engineering**을 올리세요. 효율을 내기 위해 어떤 학파든 10까지 마스터할 필요는 없으며, 초반 랭크들이 가장 가성비가 좋습니다."
+    },
+    {
+      "q": "Railjack에서 AI 승무원은 어떻게 영입하나요?",
+      "a": "**Command** Intrinsic 랭크를 올려 승무원 슬롯을 해금한 다음, 금성 Fortuna의 **Ticker**에게서 자원과 Solaris 부채 증서를 사용해 영입할 수 있습니다. 각 승무원의 능력치에 맞춰 조종사(Pilot), 포수(Gunner), 수호자(Defender), 엔지니어(Engineer) 역할을 부여하세요. 흔히 쓰이는 솔로 세팅은 포수 2명과 엔지니어 1명 조합입니다."
+    },
+    {
+      "q": "Railjack에서 crewships은 어떻게 처치하나요?",
+      "a": "함선 전면포(Tunguska)인 **Forward Artillery**를 사용하면 crewship을 한 방에 보낼 수 있습니다. Veil의 더 단단한 crewships들도 관통할 수 있도록 **Forward Artillery** 모드를 장착하세요. 또는 Archwing이나 slingshot을 통해 crewship에 침투하여 내부에서 원자로를 파괴할 수도 있습니다. 솔로 플레이 시 조종사는 전면포를 발사할 수 없으므로, 승무원 한 명을 조종사로 지정하거나 함선을 정박해 두고 조준해야 합니다."
+    },
+    {
+      "q": "Railjack은 할 만한 가치가 있나요?",
+      "a": "대부분의 플레이어에게 그렇습니다. 강력한 Affinity 및 자원 수급처이며, **Sisters of Parvos**를 사냥할 수 있는 **유일한** 방법입니다. 또한 **Void Storm** 미션을 통해 성유물을 개방하여 추가 Prime 부품과 Void Traces를 얻을 수 있습니다. 여러 퀘스트의 선행 조건이기도 합니다. 함선과 승무원이 갖춰지면 빠르고 대부분 자동화된 파밍 수단이 됩니다."
+    },
+    {
+      "q": "사용하기 가장 좋은 Railjack 컴포넌트는 무엇인가요?",
+      "a": "**MK III** 컴포넌트를 목표로 하고, Plexus 모드의 성능을 좌우하는 **고용량 Reactor**를 최우선으로 챙기세요. 포탑의 경우, **Zetki**가 가장 강력하지만 과열되기 쉽고, **Vidar**와 **Lavan**은 피해량을 조금 희생하는 대신 조작감과 내구성을 얻으므로 취향에 맞게 선택하세요. 정확한 메타 옵션은 패치에 따라 변하므로, 특정 종결 옵션을 파밍하기 전에 최근 빌드 영상이나 [wiki](https://wiki.warframe.com/)를 확인해 보세요."
+    }
+  ],
+  "videos": [
+    {
+      "id": "MLyf9D2GcpI",
+      "title": "Warframe Beginner's Guide 2025: Episode #5: The Second Dream Quest & Unlocking RailJack!",
+      "channel": "iFlynn"
+    },
+    {
+      "id": "G_ou9naTX50",
+      "title": "The ULTIMATE Warframe RAILJACK Guide 2026!",
+      "channel": "MHBlacky"
+    },
+    {
+      "id": "xnLTTLJn5iw",
+      "title": "Warframe: Solo Railjack Build Guide",
+      "channel": "Jacsonitos"
+    },
+    {
+      "id": "AMKACvK4ZXQ",
+      "title": "The Ultimate Railjack Build Guide (Warframe)",
+      "channel": "Hunkpain Gaming "
+    }
+  ],
+  "sources": [
+    {
+      "label": "Current state of Railjack: fast guide (r/Warframe)",
+      "href": "https://reddit.com/r/Warframe/comments/ea2af8/current_state_of_railjack_fast_guide_for_people/"
+    },
+    {
+      "label": "9 Days: Railjack — the Journey, the Meta, a FAQ (r/Warframe)",
+      "href": "https://reddit.com/r/Warframe/comments/eed3eu/9_days_railjack_the_journey_the_meta_a_faq/"
+    },
+    {
+      "label": "Watch a guide before you host your Railjack (r/Warframe)",
+      "href": "https://reddit.com/r/Warframe/comments/1u94eva/i_dont_usually_like_to_flame_people_in_warframe/"
+    },
+    {
+      "label": "Warframe Wiki",
+      "href": "https://wiki.warframe.com/"
+    }
+  ],
+  "related": [
+    {
+      "label": "Kuva & Liches",
+      "to": "/guides/kuva",
+      "icon": "skull",
+      "note": "Sisters of Parvos는 Railjack을 통해 사냥합니다"
+    },
+    {
+      "label": "성유물 & Void Fissures",
+      "to": "/guides/relics",
+      "icon": "diamond-stone",
+      "note": "Void Storms는 Railjack에서 성유물을 개방하는 방법입니다"
+    },
+    {
+      "label": "Steel Path",
+      "to": "/guides/steel-path",
+      "icon": "chevron-triple-up",
+      "note": "또 다른 엔드게임 파밍"
+    },
+    {
+      "label": "Duviri",
+      "to": "/guides/duviri",
+      "icon": "sword-cross",
+      "note": "자체 Intrinsics 시스템 보유"
+    },
+    {
+      "label": "성유물 가치 계산 도구",
+      "to": "/relics-value",
+      "icon": "cash-multiple",
+      "note": "Void Storm 드롭 아이템 개방 또는 판매 결정"
+    },
+    {
+      "label": "커뮤니티 도구",
+      "to": "/tools",
+      "icon": "toolbox",
+      "note": "위키, Overframe 및 DE 도구"
+    }
+  ],
+  "updated": "2026-07-18"
+}

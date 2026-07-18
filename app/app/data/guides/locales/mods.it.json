@@ -1,0 +1,531 @@
+{
+  "slug": "mods",
+  "eyebrow": "Centro di Conoscenza · Mod & Sopravvivenza",
+  "title": "Mod Essenziali & Sopravvivenza",
+  "lede": "Il tuo Warframe e le tue armi sono quasi nudi appena scartati — le mod sono l'altro 90% del tuo potere. Padroneggia la capacità delle mod, il modello dei moltiplicatori di danno e il shield-gating, e qualsiasi frame potrà sopravvivere nel Steel Path.",
+  "category": "systems",
+  "readMins": 12,
+  "stats": [
+    {
+      "num": "60",
+      "label": "capacità max con una potato",
+      "tone": "gold"
+    },
+    {
+      "num": "4",
+      "label": "statistiche delle abilità del warframe",
+      "tone": "alt"
+    },
+    {
+      "num": "6",
+      "label": "elementi di danno combinati",
+      "tone": "good"
+    },
+    {
+      "num": "2.25s",
+      "label": "i-frame max del shield-gate",
+      "tone": "gold"
+    }
+  ],
+  "sections": [
+    {
+      "id": "how-modding-works",
+      "title": "Le mod sono la tua build — tutto il resto è solo uno chassis",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Un Warframe o un'arma appena ottenuti sono solo un guscio. Le **mod** sono le carte che inserisci negli slot per aggiungere danno, salute, abilità, critico, elementi e utilità — è da lì che proviene quasi tutto il tuo potere. Imparare a moddare bene conta molto più di quale frame possiedi."
+        },
+        {
+          "type": "p",
+          "text": "Ogni oggetto ha **slot mod** e un budget di **capacità**. Ogni mod ha un costo di **consumo**, e il consumo totale delle mod equipaggiate non può superare la tua capacità. La capacità è pari al **grado** dell'oggetto: un Warframe o un'arma di grado 30 ha **30 di capacità**. Sali di grado una mod (con Endo e crediti) e diventerà più forte — ma consumerà anche di più."
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "Slot Warframe",
+              "v": "8 mod + 1 Aura + 1 Exilus"
+            },
+            {
+              "k": "Slot armi",
+              "v": "8 mod + 1 Exilus (slot Stance sulle armi da mischia)"
+            },
+            {
+              "k": "Capacità massima di base",
+              "v": "30 al grado 30 (60 con un Reactor/Catalyst)"
+            },
+            {
+              "k": "Migliora il grado delle mod con",
+              "v": "Endo + crediti nella schermata delle mod"
+            },
+            {
+              "k": "Dove trovare le mod",
+              "v": "Nemici, boss, sindacati, Trasmutazione, quest"
+            }
+          ]
+        },
+        {
+          "type": "info",
+          "text": "Non accumulare mod duplicate alla cieca — ma **non vendere mai la tua unica copia** di una mod fondamentale come Serration, Vitality o una mod Primed. In caso di dubbio, tienine una e dissolvi il resto in [Endo](/guides/endo)."
+        }
+      ]
+    },
+    {
+      "id": "capacity-potatoes-forma",
+      "title": "Capacità, potatoes, polarità & Forma",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Tre strumenti ti consentono di inserire una build più grande di quanto la capacità grezza permetta: **Orokin Reactors/Catalysts**, **polarità** e **Forma**. Capire come funzionano è la soluzione principale al problema 'la mia build non ci sta' per i nuovi giocatori."
+        },
+        {
+          "type": "p",
+          "text": "Un **Orokin Reactor** (Warframe, compagni, Archwing) o un **Orokin Catalyst** (armi) — soprannominati **'potato'** — **raddoppia** permanentemente la capacità di un oggetto da 30 a **60**. Ogni build seria presuppone che tu ne abbia applicato uno. Puoi ottenerli gratuitamente da Nightwave, invasioni, Baro Ki'Teer ed eventi, oppure con il platinum."
+        },
+        {
+          "type": "p",
+          "text": "Le **polarità** sono i piccoli simboli sugli slot (Vazarin `D`, Madurai `V`, Naramon `—` e altri). Quando la polarità di una mod **corrisponde** allo slot, il suo consumo viene **quasi dimezzato** — è così che le build di fine gioco riescono a stipare 10 mod costose in 60 di capacità. Uno slot con polarità **errata** costa leggermente di *più*; uno slot vuoto comporta il consumo intero."
+        },
+        {
+          "type": "p",
+          "text": "La **Forma** è una risorsa che fabbrichi da uno schema (ricompensa delle Reliquie o acquistata) che **aggiunge o cambia una polarità** su uno slot. L'inghippo: applicare una Forma **ripristina l'oggetto al grado 0**, quindi dovrai livellarlo di nuovo. I veterani usano Forma su una buona arma dalle 3 alle 5 volte per far entrare una build completa. Esistono varianti: **Aura Forma** (si adatta automaticamente a qualsiasi aura), **Umbral Forma** (per le mod Umbral) e Forma Stance/Exilus."
+        },
+        {
+          "type": "tip",
+          "text": "Lo **slot Aura** (Warframe) e lo **slot Stance** (mischia) funzionano al *contrario* — **aggiungono** capacità invece di consumarla, e una **polarità corrispondente raddoppia** quel bonus. Abbina sempre la polarità della tua aura: un'ottima aura come Corrosive Projection o Growing Power può restituirti una capacità a doppia cifra gratuitamente."
+        },
+        {
+          "type": "warn",
+          "text": "Non usare potato o troppe Forma su oggetti da livellare che poi venderai solo per la Maestria. Conserva Reactor, Catalyst e Forma per gli oggetti che terrai — i tuoi frame principali e le armi che porterai effettivamente nel [Steel Path](/guides/steel-path)."
+        }
+      ]
+    },
+    {
+      "id": "damage-model",
+      "title": "Il modello mentale dei moltiplicatori di danno",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Il danno delle armi non è un singolo numero da pompare — è il **prodotto di categorie separate**. Le mod all'interno della stessa categoria si **sommano** tra loro; categorie diverse si **moltiplicano**. Questa singola regola determina ogni buona build di un'arma."
+        },
+        {
+          "type": "p",
+          "text": "In breve: `Base × Multishot × Crit × (Elements + Physical) × Faction`. Accumulare una seconda mod in una categoria che hai già riempito dà rendimenti decrescenti; aprire una **nuova** categoria moltiplica tutto. Ecco perché non si accumulano due mod di danno base — ci si distribuisce invece tra **danno base, multishot, critico ed elementi**."
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Danno base** — Serration (fucile), Hornet Strike (pistola), Pressure Point (mischia). Le fondamenta, ma è solo una categoria.",
+            "**Multishot** — Split Chamber (fucile), Barrel Diffusion (pistola). Spara proiettili/dardi extra: quasi una seconda mod di danno sopra quella base.",
+            "**Critico** — la *probabilità* di critico (Point Strike) più il *danno* critico (Vital Sense) si moltiplicano tra loro; oltre il 100% di probabilità si ottengono critici arancioni/rossi più forti.",
+            "**Elementi** — la grande categoria personalizzabile. Due elementi di base si combinano in uno più forte (sotto), e scegli gli elementi in base a ciò a cui stai sparando."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Gli **elementi** ti consentono di adattare il tuo danno a ciò che stai combattendo — principalmente attraverso i loro **effetti di stato** e le debolezze di ciascuna fazione. I quattro elementi di base — **Heat, Cold, Electricity, Toxin** — si accoppiano (nell'ordine della schermata delle mod) in sei **elementi combinati**:"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Combina",
+              "→ Risultato",
+              "Cosa fa / quando usarlo"
+            ],
+            "rows": [
+              [
+                "Tossina + Freddo",
+                "Virale",
+                "Lo stato amplifica tutti i danni alla salute — la scelta DPS predefinita per tutti gli usi"
+              ],
+              [
+                "Calore + Tossina",
+                "Gas",
+                "Diffonde una nube dannosa — forte contro i gruppi compatti"
+              ],
+              [
+                "Freddo + Elettricità",
+                "Magnetico",
+                "Lo stato amplifica i danni agli scudi — nemici Corpus e con scudi"
+              ],
+              [
+                "Tossina + Elettricità",
+                "Corrosivo",
+                "Lo stato rimuove l'armatura; è anche la debolezza della fazione Grineer"
+              ],
+              [
+                "Calore + Elettricità",
+                "Radiazioni",
+                "Stato di confusione — fa sì che i nemici si attacchino a vicenda (controllo delle folle)"
+              ],
+              [
+                "Calore + Freddo",
+                "Esplosione",
+                "Esplosione + precisione nemica ridotta (difensivo)"
+              ]
+            ],
+            "note": "Dalla ristrutturazione dei danni dell'Aggiornamento 36 (Jade Shadows), le resistenze e i bonus si basano sulle fazioni — i Grineer subiscono danni Corrosivi extra, i Corpus subiscono danni Magnetici extra e così via — anziché essere legati a tipi specifici di salute, ma gli effetti di stato sopra descritti funzionano ancora come indicato. L'attuale modello generico per il Steel Path è Virale + Calore (il Calore riduce anche l'armatura e aggiunge una bruciatura); Corrosivo + Calore rimane forte per le armi puramente critiche contro i Grineer. L'ordine delle due mod elementali negli slot determina l'accoppiamento."
+          }
+        },
+        {
+          "type": "info",
+          "text": "Stato vs critico: alcune armi richiedono **stato** (mod a doppia statistica 60/60, proc virali) e altre richiedono **critico**. Controlla la probabilità di critico e di stato di un'arma prima di scegliere — un fucile ad alto critico richiede Point Strike + Vital Sense; un fucile a pompa ad alto stato richiede mod elementali a doppia statistica."
+        }
+      ]
+    },
+    {
+      "id": "warframe-mods",
+      "title": "Mod Warframe indispensabili",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Le build dei Warframe si destreggiano tra la **sopravvivenza** e le **quattro statistiche delle abilità**: Forza, Durata, Portata, Efficienza. Raramente le massimizzi tutte e quattro — le adatti al frame. Impara cosa fa ogni mod fondamentale e sarai in grado di leggere qualsiasi guida alle build."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Mod",
+              "Cosa fa",
+              "Perché è importante"
+            ],
+            "rows": [
+              [
+                "Vitality",
+                "Grande aumento della salute (~+440% max)",
+                "Sopravvivenza di base su quasi tutti i frame"
+              ],
+              [
+                "Redirection",
+                "Grande aumento degli scudi (~+440%)",
+                "Alimenta il shield-gating — o viene saltata per build a scudi bassi"
+              ],
+              [
+                "Adaptation",
+                "Resistenza al danno cumulativa fino al 90%",
+                "Rende i frame fragili utilizzabili nel Steel Path man mano che subisci colpi"
+              ],
+              [
+                "Intensify",
+                "+ Forza Abilità",
+                "Valori delle abilità più alti (danno, potenziamenti, rimozione armatura)"
+              ],
+              [
+                "Streamline",
+                "+ Efficienza Abilità",
+                "Lancia abilità più spesso, consuma meno energia"
+              ],
+              [
+                "Stretch",
+                "+ Portata Abilità",
+                "Aure più ampie, CC e bolle di potenziamento"
+              ],
+              [
+                "(Primed) Continuity",
+                "+ Durata Abilità",
+                "Potenziamenti e controllo delle folle più duraturi"
+              ],
+              [
+                "(Primed) Flow",
+                "+ Capacità di energia",
+                "Una riserva più grande da cui attingere per usare le abilità"
+              ]
+            ],
+            "note": "Percorso di potenziamento: il set Umbral (Umbral Vitality / Intensify / Fiber) sostituisce le versioni base e aggiunge un bonus set quando ne equipaggi due o tre — vale l'uso di una Umbral Forma sui tuoi frame principali."
+          }
+        },
+        {
+          "type": "p",
+          "text": "Altre mod di statistiche che vale la pena conoscere perché le guide alle build si basano sui loro compromessi: **Blind Rage** (grande Forza, ma a scapito dell'Efficienza), **Fleeting Expertise** (grande Efficienza, ma a scapito della Durata), **Overextended** (enorme Portata, ma a scapito della Forza) e **Narrow Minded** (enorme Durata, ma a scapito della Portata). Mescolare queste mod 'corrotte' è il modo in cui spingi una statistica all'estremo."
+        },
+        {
+          "type": "tip",
+          "text": "Lo **slot Exilus** ospita mod di utilità che non competono con la tua build principale — velocità di scatto (Rush, Armored Agility), parkour e mobilità, o radar nemici/risorse. Sbloccalo con un **Exilus Adapter**. È un valore aggiunto gratuito una volta definita la tua build principale."
+        }
+      ]
+    },
+    {
+      "id": "weapon-mods",
+      "title": "Mod per armi indispensabili, per tipo",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Ogni build di un'arma parte dallo stesso scheletro: riempi le quattro categorie di danno, poi adatta gli ultimi slot per elementi, stato o utilità. Ecco le mod fondamentali per classe di arma."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Ruolo della build",
+              "Primaria (fucile)",
+              "Secondaria (pistola)",
+              "Mischia"
+            ],
+            "rows": [
+              [
+                "Danno base",
+                "Serration",
+                "Hornet Strike",
+                "(Primed) Pressure Point"
+              ],
+              [
+                "Multishot",
+                "Split Chamber",
+                "Barrel Diffusion / Lethal Torrent",
+                "— (usa invece la combo)"
+              ],
+              [
+                "Probabilità di critico",
+                "Point Strike",
+                "Pistol Gambit",
+                "Blood Rush (scala con la combo)"
+              ],
+              [
+                "Danno critico",
+                "Vital Sense",
+                "Target Cracker",
+                "Organ Shatter"
+              ],
+              [
+                "Stato / elemento",
+                "mod elementali +90%, doppie 60/60",
+                "mod elementali +90%",
+                "Condition Overload, Weeping Wounds"
+              ]
+            ],
+            "note": "I fucili a pompa scambiano Point Blank (base) e Hell's Chamber (multishot). Archi/cecchini puntano molto sul critico. Aggiungi mod a doppia statistica 60/60 quando vuoi proc di stato invece del critico puro."
+          }
+        },
+        {
+          "type": "p",
+          "text": "**Le armi da mischia funzionano diversamente.** Invece del multishot, scalano in base al **contatore combo**: **Blood Rush** trasforma la combo in probabilità di critico e **Weeping Wounds** la trasforma in stato. **Condition Overload** aggiunge danno per ogni effetto di stato unico sul bersaglio — abbinalo a un'arma di stato e diventerà uno dei più grandi moltiplicatori da mischia del gioco. Completa con **Berserker Fury** o **Primed Fury** per la velocità d'attacco e **Primed Reach** per la portata."
+        },
+        {
+          "type": "info",
+          "text": "Serration arriva al massimo a circa **+165%** di danno base e Split Chamber offre una probabilità del **90%** di un proiettile extra — ma i valori esatti cambiano con il grado e le modifiche di DE, quindi conferma i numeri attuali sulla [wiki di Warframe](https://wiki.warframe.com/) prima di usare Forma su uno slot per ospitarli. Una volta raggiunto il fine gioco, le versioni Galvanized (Galvanized Chamber, Galvanized Diffusion e simili) diventano il potenziamento rispetto alle normali mod base/multishot."
+        }
+      ]
+    },
+    {
+      "id": "shield-gating",
+      "title": "Shield-gating: come i veterani non muoiono mai",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Il motivo principale per cui i giocatori muoiono nel [Steel Path](/guides/steel-path) non è 'poca salute' — è il non capire il **shield-gating**. La salute effettiva grezza non scala nelle fasi avanzate del gioco; le **finestre di invulnerabilità** sì."
+        },
+        {
+          "type": "p",
+          "text": "La meccanica: finché hai **almeno 1 scudo** quando subisci un colpo letale, i tuoi scudi assorbono il danno in eccesso e si rompono; la loro rottura garantisce una breve finestra di invulnerabilità — il 'gate'. La durata **scala con i tuoi scudi massimi**: una rottura completa dello scudo va da circa **0.33s** su una riserva minima fino a circa **2.25s** su una grande, mentre una nuova rottura da uno scudo **parzialmente ricaricato** fornisce solo un breve gate di circa **0.33s**. Durante quella finestra non puoi morire."
+        },
+        {
+          "type": "steps",
+          "ordered": true,
+          "steps": [
+            {
+              "h": "Mantieni una riserva di scudi",
+              "p": "Ti serve solo 1 punto scudo per sopravvivere a un colpo letale. I frame che possiedono degli scudi possono sfruttare il shield-gating — persino i tank in stile Inaros beneficiano di una piccola riserva."
+            },
+            {
+              "h": "Ripristina il gate su richiesta",
+              "p": "Il gate è inutile se si attiva una sola volta. Ricarica i tuoi scudi per romperli di nuovo: lancia un'abilità con Brief Respite (aura) o con le mod del set Augur, che convertono l'energia spesa in scudi istantanei."
+            },
+            {
+              "h": "Scegli scudi bassi per un re-gating costante",
+              "p": "Catalyzing Shields riduce i tuoi scudi massimi in modo che si rompano e si ricarichino quasi istantaneamente, e garantisce un gate completo di ~1.33s a ogni rottura completa, indipendentemente da quanto siano bassi i tuoi scudi — superando la solita regola 'scudi bassi = gate breve'. Una Decaying Dragon Key (−scudi) imposta un ciclo simile di 'rottura rapida, ricarica rapida'."
+            },
+            {
+              "h": "Aggiungi un pulsante antipanico",
+              "p": "Rolling Guard fornisce invulnerabilità e rimuove gli effetti di stato con una capriola (breve tempo di ricarica). Ripristina il tuo shield gate e ti salva dal blocco degli stati come Toxin e Slash che aggirano gli scudi."
+            }
+          ]
+        },
+        {
+          "type": "warn",
+          "text": "**I danni da Toxin e i proc di sanguinamento Slash aggirano completamente gli scudi** (e il danno Vero ignora sia gli scudi che l'armatura) — il shield-gating non impedirà a un proc di sanguinamento di consumare la tua salute. Ecco perché la rimozione degli stati (Rolling Guard) e la resistenza ai danni (Adaptation) appartengono alla stessa build, non solo il shield-gating."
+        },
+        {
+          "type": "quote",
+          "text": "Non puoi superare in resistenza il fine gioco di Warframe — devi diventare impossibile da colpire. Usa il shield-gating per incassare la raffica, Rolling Guard per ripristinarlo, Adaptation per smussare il resto.",
+          "cite": "Il consenso della community sul shield-gating"
+        }
+      ]
+    },
+    {
+      "id": "layered-survivability",
+      "title": "Stratificare la sopravvivenza oltre il gate",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Il shield-gating è il tuo strato di protezione dalle raffiche di danno. Accumula questi elementi in aggiunta e anche i frame più fragili sopravviveranno a lunghe sessioni nel Steel Path. La maggior parte delle build ne utilizza due o tre, non tutti."
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Adaptation** — accumula fino al **90% di riduzione del danno** per tipo di danno man mano che vieni colpito. La migliore mod singola di sopravvivenza per i frame senza difese integrate.",
+            "**Rolling Guard** — invulnerabilità + rimozione completa degli stati con una capriola, con un breve tempo di ricarica. Funziona sia come ripristino del shield-gate che come carta per sfuggire a Toxin.",
+            "**Quick Thinking** — quando la salute sta per raggiungere lo 0, consuma **energia** per tenerti in vita. Una seconda barra della salute virtuale (da abbinare a energia elevata e shield-gating).",
+            "**Primed Sure Footed** — immunità all'atterramento/tentennamento (mod ricompensa di accesso). Rimanere bloccati è un killer silenzioso; rimanere in piedi ti consente di continuare a lanciare abilità.",
+            "**Arcanes** — gli [Arcanes](/guides/arcanes) come Arcane Grace, Guardian o Aegis aggiungono rigenerazione della salute, armatura e recupero degli scudi in aggiunta alle mod per un grande picco di sopravvivenza.",
+            "**Aura + Helminth** — un'aura difensiva (Physique) o un'abilità difensiva infusa tramite l'[Helminth](/guides/helminth) (ad esempio, un'abilità di overguard o di riduzione del danno) può valere più di qualsiasi singolo slot mod."
+          ]
+        },
+        {
+          "type": "info",
+          "text": "Scegliere tra tank di salute o tank di scudi è una scelta reale. I frame con molta armatura (stile Rhino, Inaros) possono preferire Vitality + Adaptation + arcanes; i caster con poca armatura si affidano a shield-gating + Rolling Guard. Adatta la strategia al frame, non copiare una singola build su tutto."
+        }
+      ]
+    },
+    {
+      "id": "ranking-rivens-next",
+      "title": "Migliorare il grado delle mod, Riven & passi successivi",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Le mod salgono di grado con **Endo + crediti**. L'Endo proviene dalle sculture Ayatan, dal dissolvimento di mod duplicate e da farming dedicato — consulta la [guida al farming di Endo](/guides/endo) e usa lo [strumento di valutazione Endo / Plat](/endo) per verificare se conviene dissolvere una mod o una Riven. Una mossa iniziale economica: porta al massimo grado le deine mod fondamentali (Serration, Vitality, le quattro statistiche delle abilità) prima di cercare qualcosa di esotico."
+        },
+        {
+          "type": "p",
+          "text": "Le **Riven** sono mod casuali con statistiche potenti (e talvolta negative), legate a un'arma specifica. Sono uno **strato di min-maxing per il fine gioco**, non uno strumento per principianti — prima viene un'arma completamente moddata, e una buona Riven aggiunge solo l'ultimo 10–30%. I prezzi oscillano enormemente, quindi valuta una mod prima di comprare o vendere con lo [strumento di stima del valore delle Riven](/riven-value) e leggi le meccaniche nella [guida alle Riven](/guides/riven)."
+        },
+        {
+          "type": "steps",
+          "ordered": true,
+          "steps": [
+            {
+              "h": "Usa potato e Forma sugli oggetti da tenere",
+              "p": "Applica un Reactor/Catalyst, poi usa Forma sugli slot per farli corrispondere alle polarità della tua build, in modo che tutto rientri nei 60 di capacità."
+            },
+            {
+              "h": "Riempi le categorie di danno",
+              "p": "Base + multishot + critico + elementi sulle armi; sopravvivenza + le tue due statistiche di abilità prioritarie sui frame."
+            },
+            {
+              "h": "Aggiungi uno strato di sopravvivenza",
+              "p": "Configurazione shield-gating o Adaptation + Rolling Guard prima di entrare nel Steel Path."
+            },
+            {
+              "h": "Min-maxing alla fine",
+              "p": "Mod Umbral/Primed, arcanes, e poi una Riven solo una volta completata la build di base."
+            }
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "Quando una guida alle build elenca mod che non possiedi, inserisci l'equivalente più vicino (una mod normale invece della sua versione Primed) e potenziale in seguito. Una build completa al 90% pulisce l'intera mappa stellare — non hai bisogno di ogni Primed e Riven per divertirti."
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Quali sono le migliori mod per principianti in Warframe?",
+      "a": "Sulle armi: Serration (fucile) / Hornet Strike (pistola) / Pressure Point (mischia) per il danno base, poi una mod multishot (Split Chamber, Barrel Diffusion), infine gli elementi. Sui Warframe: Vitality per la salute più le quattro mod delle statistiche delle abilità — Intensify (Forza), Streamline (Efficienza), Stretch (Portata) e Continuity (Durata). Portale al massimo grado con [Endo](/guides/endo) prima di cercare qualcosa di raro."
+    },
+    {
+      "q": "Cosa fa un Orokin Reactor o un Catalyst (una 'potato')?",
+      "a": "Raddoppia permanentemente la capacità delle mod di un oggetto da 30 a 60, consentendo a una build completa di entrarci effettivamente. Un Reactor va su Warframe, compagni e Archwing; un Catalyst va sulle armi. Puoi ottenerli gratuitamente da Nightwave, invasioni ed eventi (e occasionalmente da Baro Ki'Teer), oppure acquistarli con il platinum — conservali per l'equipaggiamento che terrai, non per gli oggetti da livellare solo per la Maestria."
+    },
+    {
+      "q": "Come funzionano le polarità e le Forma?",
+      "a": "Una mod inserita in uno slot con un simbolo di polarità corrispondente costa circa la metà del suo consumo normale, ed è così che le build di fine gioco rientrano nei 60 di capacità. La Forma è una risorsa che aggiunge o cambia una polarità su uno slot, mas ripristina l'oggetto al grado 0, quindi dovrai livellarlo di nuovo. Abbina prima le polarità di Aura e Stance — quegli slot aggiungono capacità invece di consumarla, quindi una corrispondenza raddoppia il valore gratuitamente."
+    },
+    {
+      "q": "Cos'è il shield-gating e come si fa?",
+      "a": "Quando i tuoi scudi si rompono, ottieni una breve finestra di invulnerabilità durante la quale non puoi morire. La sua durata scala con i tuoi scudi massimi — da circa 0.33 secondi su una riserva minima fino a circa 2.25 secondi su una grande — mentre una nuova rottura da scudi parzialmente ricaricati fornisce solo ~0.33s. Mantieni attivo il ciclo ricaricando e rompendo nuovamente gli scudi, di solito tramite Brief Respite o le mod Augur (l'energia spesa per le abilità diventa scudi), oltre a Rolling Guard come ripristino; le build a scudi bassi aggiungono Catalyzing Shields per garantire un gate completo ogni volta. È il motivo principale per cui i giocatori esperti sopravvivono nel [Steel Path](/guides/steel-path). Guarda una guida completa nei video sul shield-gating qui sotto."
+    },
+    {
+      "q": "Perché continuo a morire nel Steel Path anche con tonnellate di salute?",
+      "a": "La salute effettiva grezza non scala nelle fasi avanzate del gioco — il danno dei nemici la supera. Hai invece bisogno di strati di invulnerabilità: shield-gating per le raffiche, Rolling Guard per ripristinarlo e rimuovere gli stati, e Adaptation per una riduzione del danno fino al 90%. Toxin e Slash aggirano gli scudi, quindi la rimozione degli stati è essenziale, non opzionale."
+    },
+    {
+      "q": "Come faccio a fare più danno con le armi — quale mod metto per prima?",
+      "a": "Pensa in categorie moltiplicative: danno base, multishot, critico ed elementi si moltiplicano a vicenda, mentre le mod nella stessa categoria si sommano soltanto. Quindi non accumulare due mod di danno base — distribuisci invece in una mod base, una mod multishot, mod critiche e gli elementi giusti (Virale per aumentare il danno alla salute, Calore o Corrosivo per l'armatura). Aprire una nuova categoria è meglio che riempirne troppo una vecchia."
+    },
+    {
+      "q": "Come faccio a salire di grado (potenziare) le mie mod?",
+      "a": "Vai nella schermata delle mod e fondi la mod usando Endo più crediti — ogni grado aumenta il suo effetto e il suo consumo. L'Endo proviene dalle sculture Ayatan, dal dissolvimento di mod duplicate e da farming dedicato trattato nella [guida all'Endo](/guides/endo). Usa lo [strumento di valutazione Endo / Plat](/endo) per decidere se conviene di più dissolvere una mod o una Riven piuttosto che tenerla."
+    },
+    {
+      "q": "Le Riven valgono la pena per un nuovo giocatore?",
+      "a": "Non ancora. Le Riven sono uno strato di min-maxing per il fine gioco che aggiunge solo circa l'ultimo 10–30% a una build già completa, e le loro statistiche casuali possono essere insidiose. Completa prima una configurazione di mod adeguata, poi valuta le mod con lo [strumento di stima del valore delle Riven](/riven-value) e leggi le meccaniche nella [guida alle Riven](/guides/riven) prima di spendere platinum."
+    }
+  ],
+  "videos": [
+    {
+      "id": "ct2pfAonGXY",
+      "title": "Complete Warframe Modding Guide 2025: Everything You Need to Know!",
+      "channel": "Zefā"
+    },
+    {
+      "id": "RQ22Jltn3i0",
+      "title": "The Ultimate Shield Gating Guide! 🛡️ STOP DYING IN STEEL PATH [Warframe]",
+      "channel": "Hunkpain Gaming "
+    },
+    {
+      "id": "H0sPUBGn2bc",
+      "title": "How to NEVER DIE In WARFRAME!",
+      "channel": "iFlynn"
+    },
+    {
+      "id": "GPJS7bj6V2E",
+      "title": "THE ONLY SURVIVABILITY GUIDE YOU WILL EVER NEED IN WARFRAME",
+      "channel": "Alextreme"
+    }
+  ],
+  "sources": [
+    {
+      "label": "Warframe Wiki — Mods, Polarity & Forma",
+      "href": "https://wiki.warframe.com/w/Mods"
+    },
+    {
+      "label": "Warframe Wiki — Damage & Elemental Combinations",
+      "href": "https://wiki.warframe.com/w/Damage"
+    },
+    {
+      "label": "Warframe Wiki — Shield & Shield Gating",
+      "href": "https://wiki.warframe.com/w/Shield"
+    }
+  ],
+  "related": [
+    {
+      "label": "Guida alle mod Riven",
+      "to": "/guides/riven",
+      "icon": "diamond-stone",
+      "note": "Roll, disposizioni & quando vale la pena"
+    },
+    {
+      "label": "Guida al Steel Path",
+      "to": "/guides/steel-path",
+      "icon": "skull",
+      "note": "Dove il modding di sopravvivenza ripaga"
+    },
+    {
+      "label": "Sistema Helminth",
+      "to": "/guides/helminth",
+      "icon": "dna",
+      "note": "Infondi abilità difensive su qualsiasi frame"
+    },
+    {
+      "label": "Guida agli Arcanes",
+      "to": "/guides/arcanes",
+      "icon": "shield-star",
+      "note": "Lo strato di sopravvivenza sopra le mod"
+    },
+    {
+      "label": "Farming di Endo",
+      "to": "/guides/endo",
+      "icon": "chart-line",
+      "note": "Carburante per potenziare le tue mod"
+    },
+    {
+      "label": "Strumento di stima del valore delle Riven",
+      "to": "/riven-value",
+      "icon": "cash",
+      "note": "Valuta una Riven prima di scambiare"
+    }
+  ],
+  "updated": "2026-07-18"
+}

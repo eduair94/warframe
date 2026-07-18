@@ -1,0 +1,546 @@
+{
+  "slug": "new-player",
+  "eyebrow": "지식 센터 · 시작하기",
+  "title": "초보자 완벽 가이드",
+  "lede": "방금 차가운 Grineer 함선에서 총 한 자루를 쥔 채 무슨 일이 일어나고 있는지 전혀 모르는 상태로 깨어나셨나요? 여기 여러분의 첫 100시간 동안 정확히 무엇을 해야 하는지, 그리고 무엇을 하지 말아야 하는지 알려드립니다.",
+  "category": "start",
+  "readMins": 12,
+  "stats": [
+    {
+      "num": "3",
+      "label": "선택할 starter Warframe",
+      "tone": "good"
+    },
+    {
+      "num": "50",
+      "label": "시작 시 지급되는 무료 Platinum",
+      "tone": "gold"
+    },
+    {
+      "num": "30",
+      "label": "weapon 및 frame별 최대 랭크",
+      "tone": "alt"
+    },
+    {
+      "num": "Rhino",
+      "label": "첫 제작 추천",
+      "tone": "gold"
+    }
+  ],
+  "sections": [
+    {
+      "id": "what-is-warframe",
+      "title": "먼저, Warframe이란 정확히 무엇인가",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Warframe은 우주 닌자를 테마로 한 **무료 3인칭 루트 슈터(looter-shooter)** 게임입니다. 플레이어는 각각 4개의 고유한 어빌리티를 가진 생체공학 슈트인 **Warframes**를 원격 조종하는 전사, **Tenno**가 되어 플레이하게 됩니다. 광활한 성계계를 누비며 사격, 슬라이딩, 벽 타기, 어빌리티 시전을 통해 blueprint, mod, gear를 수집하게 됩니다. 10년 이상 지속적으로 개발되어 왔기 때문에 콘텐츠의 양이 방대하여 압도될 수 있지만, 점진적으로 해금해 나갈 수 있습니다."
+        },
+        {
+          "type": "p",
+          "text": "가장 먼저 알아두어야 할 단 하나의 중요한 사실은 **Warframe은 초반 몇 시간이 악명 높을 정도로 불친절하지만, 그 고비를 넘기면 재미가 붙는다는 점**입니다. 튜토리얼은 아무런 맥락도 없이 플레이어를 던져놓습니다. 그 단계를 넘어서세요. 스토리를 따라가고, frame을 몇 개 제작하다 보면 성계 지도가 열릴 때쯤 이 게임이 왜 이 장르 최고의 액션 루프를 가졌는지 깨닫게 될 것입니다."
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "장르",
+              "v": "3인칭 루트 슈터 / 액션 RPG"
+            },
+            {
+              "k": "가격",
+              "v": "무료 플레이 — 게임플레이에 페이월(과금 장벽) 없음"
+            },
+            {
+              "k": "플레이어 역할",
+              "v": "Warframes를 조종하는 Tenno"
+            },
+            {
+              "k": "유료 재화",
+              "v": "Platinum — 거래가 가능하므로 무료로 획득할 수 있습니다"
+            },
+            {
+              "k": "허브",
+              "v": "Cephalon Ordis가 관리하는 Orbiter (함선)"
+            }
+          ]
+        },
+        {
+          "type": "tip",
+          "title": "위키 북마크하기",
+          "text": "드롭 위치, 정확한 mod 능력치 등 구체적인 수치가 필요할 때는 [wiki.warframe.com](https://wiki.warframe.com/) 공식 위키가 가장 확실한 정보원입니다. 이 가이드는 *방향(계획)*을 제시하고, 위키는 *상세 정보*를 제공합니다."
+        }
+      ]
+    },
+    {
+      "id": "the-opening",
+      "title": "튜토리얼: Awakening & Vor's Prize",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "첫 임무는 **Awakening** 인트로 시네마틱이며, 그 후 **Vor's Prize** 퀘스트로 이어집니다. 이는 필수 튜토리얼로 건너뛸 수 없습니다. 이동과 전투를 가르쳐주고, 악당인 Captain Vor를 소개하며, 앞으로 평생 사용할 도구들을 제공합니다."
+        },
+        {
+          "type": "steps",
+          "ordered": true,
+          "steps": [
+            {
+              "h": "Awakening 플레이하기",
+              "p": "공격을 받으며 깨어나 이동과 사격을 배우고, Warframe 어빌리티를 처음으로 맛보게 됩니다. 슬라이딩과 bullet-jump를 일찍 익히세요. 기동성은 Warframe 전투의 절반을 차지합니다."
+            },
+            {
+              "h": "starter Warframe 선택하기",
+              "p": "Excalibur, Volt, Mag의 세 가지 frame 중 하나를 선택하게 됩니다. 이는 영구적인 선택이 아닙니다. 앞으로 수십 개를 더 제작하게 될 것입니다. 느낌이 오는 것을 선택하세요 (자세한 내용은 아래 참조)."
+            },
+            {
+              "h": "Vor's Prize 완료하기",
+              "p": "Cephalon (Ordis)을 구출하고, Orbiter (함선이자 허브)를 되찾고, 첫 weapons를 받고, Earth 성계 지도를 해금합니다."
+            },
+            {
+              "h": "함선에 착륙하기",
+              "p": "Orbiter에서 Navigation (성계 지도), Arsenal (gear + mods), Foundry (제작), Market에 접속할 수 있습니다. 이곳이 홈 베이스입니다."
+            }
+          ]
+        },
+        {
+          "type": "info",
+          "title": "공식적으로 '초보'를 벗어나는 시점",
+          "text": "DE와 커뮤니티는 오랫동안 초보자들에게 매우 우호적입니다. 튜토리얼을 마친 후에도 한참 동안은 초보자로 여겨지며, 첫 주에 게임 시스템을 모두 이해할 것이라 기대하는 사람은 아무도 없습니다. Region 채팅에 질문을 남겨보세요. 대부분의 베테랑 유저들은 진심으로 돕는 것을 즐깁니다."
+        }
+      ]
+    },
+    {
+      "id": "starter-frame",
+      "title": "starter Warframe 선택하기",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "세 가지 starter 모두 **동등하게 유용하며** 초반 성계 지도를 쉽게 클리어할 수 있습니다. 나머지 두 개는 나중에 획득할 수 있으니 너무 고민하지 마세요. 가장 안전하고 무난한 선택을 원하신다면 **Excalibur**를 선택하세요."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Starter",
+              "플레이 스타일",
+              "대표적인 강점",
+              "추천 대상"
+            ],
+            "rows": [
+              [
+                "Excalibur",
+                "올라운더, 총기 + 근접",
+                "Exalted Blade — 성장형 에너지 검",
+                "엔드게임까지 유용하게 쓸 수 있는 강력하고 무난한 frame을 원하는 플레이어"
+              ],
+              [
+                "Volt",
+                "신속함 & 전기",
+                "속도 버프 + 피해량을 증폭하는 Shield",
+                "높은 기동성, 폭발적인 피해량, 팀 유틸리티를 좋아하는 플레이어"
+              ],
+              [
+                "Mag",
+                "어빌리티 캐스터 / 군중 제어",
+                "Magnetize + Pull로 적들을 한데 모아 일망타진",
+                "어빌리티 중심의 군중 제어 플레이를 즐기는 플레이어"
+              ]
+            ],
+            "note": "선택에 얽매일 필요는 없습니다. 여기에 있는 모든 frame은 다시 획득할 수 있으며, 게임 내 60개 이상의 모든 Warframes는 무료로 파밍할 수 있습니다."
+          }
+        },
+        {
+          "type": "p",
+          "text": "더 자세한 분석과 *다음으로* 파밍할 frame이 궁금하신가요? [최고의 초보자용 Warframes 가이드](/guides/beginner-warframes)를 확인해 보세요."
+        }
+      ]
+    },
+    {
+      "id": "golden-path",
+      "title": "첫 20시간: 황금 경로를 따르세요",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Vor's Prize가 끝나면 게임은 더 이상 친절하게 길을 안내해 주지 않습니다. 방황하지 않고 계속 진행할 수 있는 검증된 초반 루프를 소개합니다."
+        },
+        {
+          "type": "steps",
+          "ordered": true,
+          "steps": [
+            {
+              "h": "퀘스트 마커 따라가기",
+              "p": "퀘스트는 Warframe의 중추입니다. 게임의 핵심 시스템들을 해금해 주며, 일부 퀘스트는 **무료 완제품 Warframe**을 지급하기도 합니다. 무작위 node를 반복 플레이하는 것보다 퀘스트가 나타나는 대로 진행하세요."
+            },
+            {
+              "h": "Junctions를 통해 행성 해금하기",
+              "p": "행성들은 Junctions로 연결되어 있습니다. 각 Junction에는 일련의 과제와 Specter 전투가 있으며, 이를 클리어하면 다음 행성이 열립니다. 이것이 진행의 핵심 뼈대입니다. Junctions를 목표로 삼으면 성계 지도가 순서대로 열립니다."
+            },
+            {
+              "h": "가능한 한 빨리 Rhino 제작하기",
+              "p": "Rhino의 부품은 매우 초반에 도달할 수 있는 Venus의 Jackal 보스에게서 드롭됩니다. 게임에 적응하는 동안 Rhino의 Iron Skin은 여러분을 거의 불사신으로 만들어 줍니다. 많은 유저들이 '첫 제작 frame'으로 추천하는 데는 다 이유가 있습니다."
+            },
+            {
+              "h": "gear를 30랭크까지 레벨업하기",
+              "p": "Weapons와 frames는 최대 30랭크까지 affinity (경험치)를 획득합니다. 랭크가 오를 때마다 mod 수용량이 +1씩 증가하며, 새로운 아이템을 처음으로 30랭크까지 올리면 Mastery Rank가 영구적으로 상승합니다. 임무를 수행할 때는 새로운 아이템 하나와 레벨을 다 올린 아이템 하나를 함께 가져가세요."
+            },
+            {
+              "h": "Reactors 및 Catalysts 아끼기",
+              "p": "Orokin Reactors (frames)와 Catalysts (weapons)는 아이템의 mod 수용량을 두 배로 늘려주며, 커뮤니티에서는 이를 '감자(potatoes)'라고 부릅니다. Nightwave나 이벤트를 통해 획득할 수 있습니다. 쓸모없는 gear에 낭비하지 말고, 계속 사용할 장비를 위해 아껴두세요."
+            }
+          ]
+        },
+        {
+          "type": "quote",
+          "text": "RINO는 IRON SKIN 있다. 총알은 밥이 된다. RINO 혼란스러울 때, 발 구른다. RINO 생각 끝날 때까지 모두 멈춘다. RINO 배고프다. RINO에게 MODS 줘라.",
+          "cite": "r/Warframe FAQ — 첫 frame으로 Rhino를 추천하는 영원한 이유"
+        }
+      ]
+    },
+    {
+      "id": "foundry-market",
+      "title": "Foundry 및 Market: 모든 것을 얻는 방법",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Warframe의 거의 모든 아이템은 동일한 루프를 따릅니다. **blueprint를 구매하고, 재료를 파밍하여, Foundry에서 제작합니다.** **Market**에서는 대부분의 blueprints를 실제 돈이 아닌 **credits**(게임 내 기본 재화)로 판매합니다. 반면 Warframe 부품 blueprints는 행성의 **bosses**에게서 드롭됩니다."
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "**Blueprints** — 제작법입니다. Frame blueprints는 Market에서 구매하는 본체 설계도와 보스로부터 드롭되는 세 가지 부품(Neuroptics, Chassis, Systems) 설계도로 구성됩니다.",
+            "**Resources** — 각 행성의 임무에서 파밍합니다. Foundry에서 제작에 필요한 재료를 확인할 수 있습니다.",
+            "**제작 시간** — Foundry는 실시간으로 제작을 진행합니다. 부품은 보통 12시간 정도 소요되며, 완제품 Warframe은 **72시간(3일)**이 걸립니다. 로그아웃하기 전에 제작을 시작하면 자리를 비운 동안 완료됩니다."
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "Warframe이나 weapon을 **platinum**으로 구매하면 모든 파밍 과정을 건너뛸 수 있을 뿐만 아니라, 무료 인벤토리 슬롯과 감자(potato)가 미리 설치된 상태로 제공됩니다. 이 때문에 frames는 *유혹적인* plat 구매 대상이 되지만, 초보자라면 유혹을 참으셔야 합니다 (아래 참조)."
+        },
+        {
+          "type": "warn",
+          "title": "plat으로 제작 시간을 단축하지 마세요",
+          "text": "Foundry에서는 platinum을 지불하고 제작을 즉시 완료할 수 있는 옵션을 제공합니다. 하지만 이는 거의 돈 낭비에 가깝습니다. 대신 제작 시간에 맞춰 계획을 세우세요. 3일이 걸리는 frame도 어느새 완성되어 있을 것입니다."
+        }
+      ]
+    },
+    {
+      "id": "modding",
+      "title": "Modding 기초 — 진정한 힘의 원천",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "아무도 초보자에게 명확하게 말해주지 않는 비밀이 있습니다. **mods가 어떤 gear를 소유하고 있는지보다 훨씬 더 중요합니다.** mods를 가득 채운 스타터 소총이 빈 mod 슬롯을 가진 '더 좋은' weapon보다 훨씬 강력합니다. 가하는 피해량이 너무 낮게 느껴진다면, 원인은 거의 항상 새로운 gear가 아니라 *mods*에 있습니다. 자세한 분석은 [Mods 가이드](/guides/mods)에서 확인하세요."
+        },
+        {
+          "type": "p",
+          "text": "반드시 획득하고 랭크를 올려야 할 초반 필수 mods:"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "**Damage:** Serration (소총), Hornet Strike (권총), Point Blank (산탄총), Pressure Point (근접 무기) — 이들은 기본 피해량을 올려주는 필수 mods입니다.",
+            "**Multishot:** Split Chamber (소총), Barrel Diffusion (권총), Hell's Chamber (산탄총) — 화력을 대략 두 배로 늘려줍니다.",
+            "**Survival:** Warframe에 장착하는 Vitality (체력) 및 Redirection (쉴드).",
+            "**Abilities:** 어빌리티를 더 강력하고 더 자주 시전할 수 있게 해주는 Intensify (위력), Streamline (효율), Flow (에너지)."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "각 mod는 소모량만큼의 **수용량(capacity)**을 요구합니다. gear의 랭크를 올려 수용량을 늘리고, **감자(potato)**를 장착해 수용량을 두 배로 늘리거나, mod의 **극성(polarity)**을 슬롯과 일치시켜 소모량을 절반으로 줄이세요 (나중에 **Forma**를 사용해 슬롯의 극성을 변경할 수 있습니다). mods는 **Endo**와 credits로 업그레이드하며, Endo는 쉽게 파밍할 수 있습니다. [Endo 가이드](/guides/endo) 및 [Endo/Plat 가치 도구](/endo)를 참고하세요."
+        },
+        {
+          "type": "warn",
+          "title": "잘 모르는 mods는 절대 함부로 판매하지 마세요",
+          "text": "잘 모르는 mods는 판매하거나 용해하지 말고 중복 카드를 보관하세요. 남는 카드는 Endo로 변환하여 보유한 카드를 강화하는 데 사용할 수 있습니다. 희귀한 mod(Riven, Primed mod, 또는 Legendary Core)를 상인이나 낯선 사람에게 헐값에 파는 것은 r/Warframe에서 초보자들이 가장 많이 후회하는 행동 1위입니다."
+        }
+      ]
+    },
+    {
+      "id": "platinum",
+      "title": "Platinum & 첫 50 Platinum 활용법",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "모든 계정은 유료 재화인 **50 platinum**을 가지고 시작합니다. 단, 시작 시 지급되는 50 platinum은 *소비 전용*이므로 다른 유저와 거래할 수 없습니다. 하지만 직접 **획득한** platinum은 완전히 **거래 가능**하므로, 다른 플레이어에게 아이템을 판매하여 무료로 끊임없이 벌 수 있습니다. 즉, 시작할 때 받는 50 platinum은 파밍할 수 *없는* 곳에 사용해야 하며, 파밍이 가능한 frames나 weapons에 사용해서는 안 됩니다."
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "**Warframe 및 weapon 슬롯 — 구매 1순위.** 처음에는 슬롯이 매우 적어 금방 가득 차게 됩니다. 슬롯은 plat으로만 구매할 수 있으며 가격도 저렴합니다.",
+            "아직 Nightwave에서 얻은 것이 없다면 **Orokin Reactors / Catalysts**를 구매하세요 (감자(potatoes)는 mod 수용량을 두 배로 늘려줍니다).",
+            "**Cosmetics** — 색상 팔레트, syandanas — 외형 꾸미기를 좋아하는 경우에만 추천합니다. 게임플레이에는 전혀 영향이 없으며 순전히 개인 취향입니다."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "plat을 *벌기* 위해서는 다른 플레이어와 거래해야 합니다. **Prime parts** (Void Relics를 개방하여 획득), 남는 mods, Ayatan 조각 등을 판매하세요. 거래를 등록하거나 수락하기 전에 손해를 보지 않도록 실시간 시세를 확인하세요. [Market Screener](/screener), 매수/매도 스프레드를 확인하는 [Flip finder](/flip)로 시세 차이를 확인하고, 개방할지 판매할지 결정하는 데 도움을 주는 [Relic value tool](/relics-value), Baro 거래용 [Ducats](/ducats)를 활용하세요. 전체 가이드는 [Platinum 가이드](/guides/platinum)에 나와 있습니다."
+        },
+        {
+          "type": "warn",
+          "title": "거래 사기는 실제로 존재하며, 예방할 수 있습니다",
+          "text": "모든 정상적인 거래는 **두 플레이어가 정확한 아이템을 확인하는 안전한 거래 창**에서 이루어집니다. 누군가 '먼저 달라고' 요구하거나, 'plat을 두 배로 불려주겠다'고 약속하거나, 거래를 서두른다면 사기이므로 즉시 중단하세요. 거래는 **Mastery Rank 2**에 해금되며(계정에 2단계 인증을 활성화해야 합니다), 그 전까지는 채팅에서 거래를 강요하는 사람들을 무시하세요."
+        }
+      ]
+    },
+    {
+      "id": "mistakes",
+      "title": "초보자가 피해야 할 흔한 실수들",
+      "blocks": [
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "**프레임이나 무기에 50 plat을 날리는 것.** 이들은 파밍이 가능합니다. 대신 슬롯(slots)과 감자(potatoes)를 구매하세요.",
+            "**plat으로 Foundry 제작 시간을 단축하는 것.** 제작 시간에 맞춰 계획을 세우세요. plat은 다른 곳에 쓰는 것이 훨씬 가치 있습니다.",
+            "**잘 모르는 mods를 판매하거나 용해하는 것.** 중복 카드는 쓰레기가 아니라 Endo입니다. 카드를 처분하기 전에 먼저 검색해 보세요.",
+            "**퀘스트를 무시하는 것.** 퀘스트는 Operator, Focus 시스템, 전체 게임 모드, 그리고 무료 Warframes를 해금하는 관문입니다. 퀘스트를 건너뛰는 것은 게임 자체를 건너뛰는 것과 같습니다.",
+            "**오래된 티어 리스트를 맹신하는 것.** 커뮤니티 랭킹(예: Overframe 등)은 개편 사항을 제때 반영하지 못하는 경우가 많습니다. 특정 frame의 순위는 몇 년 전의 성능을 반영하고 있을 수 있습니다. 자신이 재미있는 것을 플레이하세요. 거의 모든 장비로 기본 성계 지도를 클리어할 수 있습니다. 현재 상황은 [티어 리스트 가이드](/guides/tier-list)를 참고하세요.",
+            "**mod 장착 소홀.** mods를 장착하지 않은 gear는 성계 지도 중간쯤에서 성능이 급격히 떨어집니다. 적들이 잘 죽지 않는다고 느껴진다면, weapon을 탓하기 전에 mods를 먼저 강화해 장착하세요.",
+            "**스포일러를 당하는 것.** Warframe의 스토리에는 정말 감탄을 자아내는 반전들이 있습니다. 퀘스트 스포일러를 피하세요. 아무 정보 없이 직접 겪어볼 가치가 충분합니다.",
+            "**번아웃이 올 때까지 한 가지만 반복해서 파밍하는 것.** 퀘스트를 하다가, frame 파밍을 하고, 레벨업을 하는 식으로 번갈아 가며 진행하세요. Warframe은 마라톤이 아니라 꾸준한 플레이에 보상을 제공합니다."
+          ]
+        },
+        {
+          "type": "info",
+          "text": "만약 길을 잃은 것처럼 느껴진다면 — '40시간이나 했는데 내가 뭘 하고 있는지 모르겠다'는 전형적인 순간 — 이는 지극히 정상적이고 누구나 겪는 일입니다. 기본으로 돌아가세요. 다음 퀘스트를 진행하고, 다음 Junction을 해금하고, 아이템을 하나 제작해 보세요. 진행 상황은 차곡차곡 쌓입니다."
+        }
+      ]
+    },
+    {
+      "id": "opens-up",
+      "title": "게임이 본격적으로 '열리는' 시점은 언제인가요?",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Warframe은 퀘스트 및 성계 지도와 연계되어 단계별로 전개됩니다. 대략적인 흐름은 다음과 같습니다. 업데이트에 따라 정확한 선행 조건이 변경될 수 있으므로, 현재 순서는 [퀘스트 가이드](/guides/quests) 및 [진행 가이드](/guides/progression)를 확인하세요. **스포일러가 없도록 작성되었습니다.**"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "이정표",
+              "대략적인 시기",
+              "해금되는 콘텐츠"
+            ],
+            "rows": [
+              [
+                "Vor's Prize 완료",
+                "1시간 차",
+                "성계 지도, 함선, Foundry, Market"
+              ],
+              [
+                "초반 스토리 퀘스트",
+                "초반 약 20~40시간",
+                "Archwing, 새로운 Warframes, gear 및 더 많은 행성"
+              ],
+              [
+                "The Second Dream (주요 퀘스트)",
+                "미드게임 (중반부)",
+                "Tenno에 게임의 판도를 바꾸는 새로운 레이어가 추가됩니다 — 스포일러는 없으니 직접 경험해 보세요"
+              ],
+              [
+                "성계 지도 완료",
+                "~50–100시간",
+                "The Steel Path (어려움 모드) 및 Steel Essence 보상"
+              ],
+              [
+                "The New War & 후반 퀘스트",
+                "레이트 게임 (후반부)",
+                "주요 스토리의 클라이맥스 및 엔드게임 시스템: Helminth, Railjack, Archon Shards"
+              ]
+            ],
+            "note": "플레이 시간은 대략적인 수치이며, 진행 속도는 사람마다 다릅니다. 2,000시간을 플레이한 베테랑 유저와 자신을 비교하지 마세요."
+          }
+        },
+        {
+          "type": "p",
+          "text": "많은 플레이어들이 성계 지도를 완료하고 Operator / Focus 시스템이 활성화되면 게임에 본격적으로 재미가 붙는다는 데 동의합니다. 그 시점부터 [Steel Path](/guides/steel-path), Eidolon 사냥, 오픈 월드 지역과 같은 엔드게임 루프로 진입하게 됩니다. 분위기 전환을 원하신다면 초반에 접근 가능한 대체 모드인 [The Duviri Paradox](/guides/duviri)도 준비되어 있지만, 초보자라면 핵심 스토리 경로를 최우선으로 두는 것이 좋습니다."
+        }
+      ]
+    },
+    {
+      "id": "help-next",
+      "title": "페이스 조절, 도움말 및 다음 단계",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Warframe은 어디로 사라지지 않습니다. 단거리 달리기가 아닌 취미처럼 즐기세요. 초보자에게 권장하는 바람직한 플레이 세션은 다음과 같습니다. 퀘스트를 하나 완료하고, frame 부품 하나를 파밍하고, weapon 한두 개를 레벨업한 다음, Foundry에 제작을 걸어두고 로그아웃하는 것입니다. 이를 반복하세요. Mastery Rank와 전투력은 자연스럽게 쌓이게 됩니다."
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "**클랜에 일찍 가입하세요.** 클랜에 가입하면 다른 방법으로는 절대 얻을 수 없는 Dojo 연구 장비(weapons 및 gear)를 이용할 수 있으며, 질문에 답변해 줄 사람들을 만날 수 있습니다.",
+            "**Region 채팅과 커뮤니티를 활용하세요.** r/Warframe과 공식 Discord는 초보자들에게 유난히 친절합니다. 무작정 노가다를 하기 전에 먼저 물어보세요.",
+            "정확한 드롭 위치와 능력치를 확인하려면 [wiki.warframe.com](https://wiki.warframe.com/) 위키를 항상 열어두세요.",
+            "거래에서 손해를 보지 않도록 이 사이트의 마켓 도구들을 **북마크해 두세요.** [커뮤니티 도구 디렉터리](/tools)부터 시작해 보세요."
+          ]
+        },
+        {
+          "type": "info",
+          "title": "'방금 시작했는데, 이제 뭐 하죠?' 체크리스트",
+          "text": "1) Vor's Prize 완료 → 2) Venus의 Jackal에게서 Rhino 제작 → 3) 퀘스트 마커를 따라가며 Junctions 해금 → 4) Serration/Vitality를 장착(Mod)하고 gear를 30랭크까지 레벨업 → 5) 시작 시 지급된 50 plat은 슬롯(slots)에 사용 → 6) 클랜 가입 → 7) 서두르지 말고, 사기당하지 말고, 스포일러를 피하세요."
+        },
+        {
+          "type": "links",
+          "links": [
+            {
+              "label": "최고의 초보자용 Warframes",
+              "to": "/guides/beginner-warframes",
+              "icon": "robot-happy",
+              "note": "가장 먼저 파밍해야 할 frame"
+            },
+            {
+              "label": "진행 로드맵",
+              "to": "/guides/progression",
+              "icon": "map-marker-path",
+              "note": "모든 것을 해금하는 순서"
+            },
+            {
+              "label": "Platinum 획득 방법",
+              "to": "/guides/platinum",
+              "icon": "diamond-stone",
+              "note": "과금 없이 plat 벌기"
+            },
+            {
+              "label": "Mods 설명",
+              "to": "/guides/mods",
+              "icon": "puzzle",
+              "note": "진정한 힘의 원천"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Warframe에서 가장 좋은 starter Warframe은 무엇인가요?",
+      "a": "Excalibur, Volt, Mag 모두 동등하게 유용하므로 플레이 스타일에 따라 선택하세요. Excalibur는 가장 무난한 올라운더이자 가장 안전한 첫 번째 선택이며, Volt는 빠르고 유연하며, Mag는 어빌리티 중심의 군중 제어형 캐릭터입니다. 나머지 두 개(그리고 수십 개의 다른 캐릭터들)는 나중에 파밍할 수 있으므로 부담 없이 결정하셔도 됩니다. 자세한 분석은 [초보자용 Warframes 가이드](/guides/beginner-warframes)를 참고하세요."
+    },
+    {
+      "q": "Vor's Prize를 완료한 후에는 무엇을 해야 하나요?",
+      "a": "퀘스트 마커를 따라가고, Junctions를 완료하여 새로운 행성을 해금하세요. 첫 번째 큰 목표는 Venus의 Jackal 보스에게서 Rhino를 제작하는 것입니다. 그의 Iron Skin은 게임을 배우는 동안 생존을 보장해 줍니다. 진행하면서 gear를 30랭크까지 레벨업하고, Serration 및 Vitality와 같은 핵심 mods를 장착(modding)하기 시작하세요. 전체 순서는 [진행 가이드](/guides/progression)에 나와 있습니다."
+    },
+    {
+      "q": "무료로 받은 50 platinum은 어디에 써야 하나요?",
+      "a": "먼저 Warframe 및 weapon 슬롯(slots)을 구매하세요. 슬롯은 plat으로만 구매할 수 있고 저렴하며, 인벤토리 공간이 금방 부족해지기 때문입니다. 그 다음으로 Nightwave에서 얻은 것이 없다면 Orokin Reactors/Catalysts (감자)를 구매하세요. 파밍이 가능한 frames나 weapons에 plat을 쓰거나, Foundry 제작 시간을 단축하는 데 plat을 낭비하지 마세요. 무료로 제공되는 스타터 50 platinum은 소비할 수는 있지만 다른 유저와 거래할 수는 없다는 점에 유의하세요. 자세한 내용은 [Platinum 가이드](/guides/platinum)에서 확인할 수 있습니다."
+    },
+    {
+      "q": "무료로 더 많은 Warframes를 얻으려면 어떻게 해야 하나요?",
+      "a": "Market에서 credits로 frame의 blueprint를 구매하고, 행성 보스로부터 세 가지 부품을 파밍한 다음, Foundry에서 제작하여 완제품 frame을 조립하세요. 일부 스토리 퀘스트에서도 완제품 Warframe을 무료로 지급합니다. Warframe에서 게임플레이와 관련된 모든 것은 파밍할 수 있으며, platinum은 편의성만 제공할 뿐입니다."
+    },
+    {
+      "q": "Warframe이 본격적으로 '열리기'까지 얼마나 걸리나요?",
+      "a": "보통 성계 지도의 대부분을 클리어하고 초반 스토리 퀘스트를 완료한 후로, 대략 40시간에서 100시간 사이가 소요됩니다. 전환점은 Operator 및 Focus 시스템이 활성화되고 [Steel Path](/guides/steel-path)가 해금되는 시점입니다. 초반 몇 시간이 불친절하게 느껴지는 것은 정상입니다. 그 고비를 넘기면 완전히 다르고 훨씬 더 멋진 게임이 될 것입니다."
+    },
+    {
+      "q": "Warframe은 페이투윈(P2W, 현질 유도) 게임인가요?",
+      "a": "아닙니다. Platinum은 편의성(파밍 건너뛰기)과 치장 아이템을 구매하는 데 사용될 뿐, 순수한 전투력을 제공하지 않으며 게임플레이에 영향을 미치는 모든 것은 무료로 획득할 수 있습니다. Platinum 자체를 플레이어 간에 거래할 수 있기 때문에, Prime parts와 mods를 판매하는 것만으로도 거의 모든 것을 장만할 수 있습니다. [Platinum 획득 방법](/guides/platinum)을 참고하세요."
+    },
+    {
+      "q": "거래할 때 사기를 당하지 않으려면 어떻게 해야 하나요?",
+      "a": "정상적인 거래는 항상 완료 전에 두 플레이어가 정확한 아이템을 확인하는 안전한 거래 창을 사용합니다. 절대로 '먼저 달라고' 요구하는 일은 없습니다. 'plat을 두 배로 불려주겠다'고 약속하거나 거래를 서두르는 사람은 무시하세요. 거래를 수락하기 전에 [Screener](/screener)나 [Flip finder](/flip) 같은 마켓 도구에서 아이템의 실제 가치를 확인하세요."
+    },
+    {
+      "q": "Mastery Rank를 빠르게 올려야 하나요?",
+      "a": "아닙니다. Mastery Rank는 새로운 weapons와 frames를 처음으로 30랭크까지 올리면 자연스럽게 상승합니다. 더 높은 티어의 gear, 일일 거래 슬롯, 일부 콘텐츠에 대한 접근 권한을 해금해 주지만, 경쟁이 아니므로 억지로 노가다를 해서 올릴 필요는 없습니다. 임무를 수행할 때 새로운 gear를 계속 가져가기만 하면 됩니다. [Mastery Rank 가이드](/guides/mastery-rank)를 참고하세요."
+    }
+  ],
+  "videos": [
+    {
+      "id": "yeGZqhDrRvw",
+      "title": "Warframe Beginner's Guide 2025: Episode #1 Beginner Choices & Walkthrough!",
+      "channel": "iFlynn"
+    },
+    {
+      "id": "nF1fHE646xk",
+      "title": "ULTIMATE Beginner's Guide to Warframe (Getting Started in 2025+)",
+      "channel": "DrybearGamers"
+    },
+    {
+      "id": "j8HBB7aArdg",
+      "title": "Warframe New Player Tips & Tricks 2025!",
+      "channel": "Pupsker"
+    },
+    {
+      "id": "fwI6RW6mrgM",
+      "title": "Warframe Beginner Guide: New to Warframe? Start Here! | Episode 1",
+      "channel": "Tipsy"
+    }
+  ],
+  "sources": [
+    {
+      "label": "Official Warframe Wiki",
+      "href": "https://wiki.warframe.com/",
+      "icon": "book-open-page-variant",
+      "note": "Canonical source for drops, stats & quests"
+    },
+    {
+      "label": "The Warframe Wiki has moved to wiki.warframe.com (PSA)",
+      "href": "https://reddit.com/r/Warframe/comments/1iemokz/the_warframe_wiki_is_officially_moving_from/",
+      "icon": "reddit",
+      "note": "r/Warframe"
+    },
+    {
+      "label": "'40 hours in and I have no idea what I'm doing' — the universal new-player mood",
+      "href": "https://reddit.com/r/Warframe/comments/1dpm3qo/40_hours_in_and_i_have_no_idea_what_im_doing_why/",
+      "icon": "reddit",
+      "note": "r/Warframe"
+    },
+    {
+      "label": "Got scammed out of a Legendary Core as a new player",
+      "href": "https://reddit.com/r/Warframe/comments/1sonq6u/got_scammed_out_of_a_legendary_core_as_a_new/",
+      "icon": "reddit",
+      "note": "Why you check prices before trading"
+    },
+    {
+      "label": "When DE considers a player to no longer be new",
+      "href": "https://reddit.com/r/Warframe/comments/ietejk/lets_not_forget_when_de_considers_a_player_to_not/",
+      "icon": "reddit",
+      "note": "r/Warframe"
+    }
+  ],
+  "related": [
+    {
+      "label": "최고의 초보자용 Warframes",
+      "to": "/guides/beginner-warframes",
+      "icon": "robot-happy",
+      "note": "가장 먼저 제작해야 할 frame"
+    },
+    {
+      "label": "진행 로드맵",
+      "to": "/guides/progression",
+      "icon": "map-marker-path",
+      "note": "게임을 해금하는 순서"
+    },
+    {
+      "label": "Platinum 획득 방법",
+      "to": "/guides/platinum",
+      "icon": "diamond-stone",
+      "note": "무료로 유료 재화 벌기"
+    },
+    {
+      "label": "Mods 설명",
+      "to": "/guides/mods",
+      "icon": "puzzle",
+      "note": "진정한 힘의 원천"
+    },
+    {
+      "label": "Mastery Rank 가이드",
+      "to": "/guides/mastery-rank",
+      "icon": "star-circle",
+      "note": "계정 레벨 올리기"
+    },
+    {
+      "label": "커뮤니티 도구",
+      "to": "/tools",
+      "icon": "toolbox",
+      "note": "Wiki, Overframe, 마켓 도구 등"
+    }
+  ],
+  "updated": "2026-07-18"
+}

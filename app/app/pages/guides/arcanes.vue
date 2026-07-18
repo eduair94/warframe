@@ -6,5 +6,6 @@
 </template>
 
 <script setup lang="ts">
-import guide from '~/data/guides/arcanes'
+import enGuide from '~/data/guides/arcanes'
+const guide = await useLocalizedGuide('arcanes', enGuide)
 </script>

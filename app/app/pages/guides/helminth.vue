@@ -6,5 +6,6 @@
 </template>
 
 <script setup lang="ts">
-import guide from '~/data/guides/helminth'
+import enGuide from '~/data/guides/helminth'
+const guide = await useLocalizedGuide('helminth', enGuide)
 </script>

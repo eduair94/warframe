@@ -1,0 +1,502 @@
+{
+  "slug": "relics",
+  "eyebrow": "Centro di Conoscenza · Reliquie e Tracce Void",
+  "title": "Guida alle Reliquie e Tracce Void",
+  "lede": "Le Reliquie Void sono le slot machine di Warframe per l'equipaggiamento Prime — e una volta compresi il perfezionamento, le Tracce Void e le ricompense condivise, le probabilità penderanno decisamente a tuo favore. Ecco come aprire le reliquie in modo efficiente e trasformare il bottino in platinum.",
+  "category": "farming",
+  "readMins": 9,
+  "stats": [
+    {
+      "num": "4",
+      "label": "ere delle reliquie · Lith→Axi"
+    },
+    {
+      "num": "6",
+      "label": "ricompense per reliquia",
+      "tone": "alt"
+    },
+    {
+      "num": "10%",
+      "label": "probabilità di raro a Splendente",
+      "tone": "gold"
+    },
+    {
+      "num": "6–30",
+      "label": "Tracce Void per apertura"
+    }
+  ],
+  "sections": [
+    {
+      "id": "relic-basics",
+      "title": "Cosa sono in realtà le Reliquie Void",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Una **Reliquia Void** è un contenitore sigillato di **equipaggiamento Prime** — parti di Warframe, parti di armi e schemi Forma. Non puoi semplicemente aprirne una nella tua Fonderia; devi portarla in una missione speciale chiamata **Frattura Void** e \"aprirla\" lì. Ogni reliquia appartiene a una di quattro **ere**, e l'era ti dice solo *quale gruppo di parti Prime* la reliquia può contenere e *all'incirca dove viene rilasciata* — non dice nulla su quanto sia buono il bottino."
+        },
+        {
+          "type": "p",
+          "text": "Le reliquie sono anche **scambiabili**, che è l'unico motivo per cui il farming di Prime si trasforma in platinum: apri le reliquie per ottenere parti, vendi i doppioni ad altri giocatori e compri da qualcun altro l'esatta reliquia che ti manca. Vedi la [guida al Platinum](/guides/platinum) per l'intero ciclo economico."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Era",
+              "Livello",
+              "Dove tende a essere rilasciata"
+            ],
+            "rows": [
+              [
+                "Lith",
+                "Iniziale",
+                "Nodi iniziali del Sistema Origine e taglie di basso livello"
+              ],
+              [
+                "Meso",
+                "Intermedio",
+                "Missioni della mappa stellare intermedia e taglie"
+              ],
+              [
+                "Neo",
+                "Alto",
+                "Pianeti successivi, rotazioni infinite, taglie di livello più alto"
+              ],
+              [
+                "Axi",
+                "Endgame",
+                "Mappa stellare avanzata, lunghe rotazioni infinite, Steel Path, taglie di alto livello"
+              ]
+            ],
+            "note": "Le fonti di rilascio cambiano con gli aggiornamenti. Per trovare il miglior nodo attuale per una reliquia specifica, controlla l'elenco delle Fratture Void in-game o le tabelle di rilascio sulla wiki."
+          }
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "Ere delle reliquie",
+              "v": "Lith, Meso, Neo, Axi"
+            },
+            {
+              "k": "Ricompense all'interno",
+              "v": "6 in totale — 3 comuni, 2 non comuni, 1 rara"
+            },
+            {
+              "k": "Reagente per aprire",
+              "v": "10 per giocatore, per reliquia"
+            },
+            {
+              "k": "Valuta di perfezionamento",
+              "v": "Tracce Void (il limite di capacità aumenta con il Grado Maestria)"
+            },
+            {
+              "k": "Dove aprirle",
+              "v": "Solo missioni Frattura Void"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reward-pool",
+      "title": "Il gruppo di ricompense a sei slot",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Ogni reliquia contiene esattamente **sei possibili ricompense**, suddivise in tre rarità:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**3 ricompense Comuni** (bronzo) — di solito parti economiche e schemi Forma",
+            "**2 ricompense Non Comuni** (argento) — parti di medio valore",
+            "**1 ricompensa Rara** (oro) — la parte più ambita, e il motivo per cui si perfeziona"
+          ]
+        },
+        {
+          "type": "info",
+          "text": "Il perfezionamento non cambia mai *quali* sei parti si trovano all'interno di una reliquia — cambia solo le **probabilità** di ottenere la rara rispetto a una comune. Una reliquia che non contiene la parte che desideri non la rilascerà mai, indipendentemente da quanto la perfezioni. Controlla sempre il contenuto di una reliquia prima di investire tracce."
+        }
+      ]
+    },
+    {
+      "id": "cracking",
+      "title": "Aprire una reliquia: il ciclo delle Fratture Void",
+      "blocks": [
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "h": "Equipaggia una reliquia",
+              "p": "Apri la scheda delle Fratture Void sulla mappa stellare e scegli una missione la cui era corrisponda a una reliquia in tuo possesso. Prima di avviare, seleziona la reliquia e il suo livello di perfezionamento. Puoi portare solo una reliquia per missione."
+            },
+            {
+              "h": "Trova i nemici Corrotti",
+              "p": "Una volta dentro, la frattura corrompe i nemici vicini — brillano di energia del Void. Questi nemici Corrotti sono l'unica cosa che rilascia Reagente."
+            },
+            {
+              "h": "Raccogli 10 Reagenti",
+              "p": "Ogni membro della squadra deve raccogliere personalmente 10 Reagenti prima che la missione (o la rotazione) finisca. Tieni d'occhio il contatore sull'HUD; i Reagenti raccolti sono visibili a tutti ma ognuno deve raccogliere i propri 10."
+            },
+            {
+              "h": "Apri e scegli la tua ricompensa",
+              "p": "Al termine della missione — o alla fine di ogni rotazione in una missione infinita — vedrai fino a quattro ricompense: la tua più quelle dei tuoi compagni di squadra. Scegli la migliore da tenere."
+            }
+          ]
+        },
+        {
+          "type": "warn",
+          "text": "Don't correre all'estrazione prima di aver raccolto tutti e 10 i Reagenti. Se la tua reliquia non è carica al termine della missione, rimarrà sigillata e non riceverai nulla — *manterrai* comunque la reliquia (una reliquia non carica non viene consumata), ma l'intera sessione andrà sprecata, quindi completa sempre la carica prima di estrarre."
+        }
+      ]
+    },
+    {
+      "id": "refinement",
+      "title": "Perfezionamento: Intatta → Splendente",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Una reliquia nuova è **Intatta** e offre solo il **2%** di probabilità per il pezzo raro. Spendere **Tracce Void** per perfezionarla aumenta le probabilità del raro (e del non comune) in tre passaggi, raggiungendo il massimo a **Splendente**, dove il raro arriva al **10%** — un miglioramento di 5 volte. Questa è la leva più importante sotto il tuo controllo."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Stato",
+              "Tracce per perfezionare",
+              "Raro (oro)",
+              "Ogni Non Comune",
+              "Ogni Comune"
+            ],
+            "rows": [
+              [
+                "Intatta",
+                "0",
+                "2%",
+                "11%",
+                "25.33%"
+              ],
+              [
+                "Eccezionale",
+                "25",
+                "4%",
+                "13%",
+                "23.33%"
+              ],
+              [
+                "Impeccabile",
+                "50",
+                "6%",
+                "17%",
+                "20%"
+              ],
+              [
+                "Splendente",
+                "100",
+                "10%",
+                "20%",
+                "16.67%"
+              ]
+            ],
+            "note": "Ogni reliquia contiene comunque 3 comuni / 2 non comuni / 1 rara — il perfezionamento ridistribuisce solo le probabilità tra di esse."
+          }
+        },
+        {
+          "type": "p",
+          "text": "**Dovresti rendere tutto Splendente?** No. Splendente costa ben 100 tracce, quindi conservalo per le reliquie la cui parte *rara* è effettivamente preziosa o per una che ti serve. Se stai solo aprendo reliquie per alimentare la macchina dei [Ducati](/ducats) o se cerchi una parte comune, usale **Intatte** — aprirai molte più reliquie a parità di budget di tracce. Usa lo [strumento di valutazione apri-o-vendi](/relics-value) per vedere se vale la pena perfezionare una reliquia o se vale di più venduta intera."
+        }
+      ]
+    },
+    {
+      "id": "void-traces",
+      "title": "Farming di Tracce Void (e il limite di capacità)",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Le Tracce Void provengono **quasi interamente** dall'apertura di reliquie nelle fratture — esistono alcune fonti di nicchia (il Granum Void, alcune casse dei Isolation Vault), ma all'atto pratico tracce e reliquie sono lo stesso farming. Ogni reliquia che apri ti ricompensa con una piccola quantità casuale di tracce (una base di **6–30**), e — cosa utile da sapere — un **Booster Risorse raddoppia** tale quantità. Quindi \"farmare tracce\" e \"farmare reliquie\" sono letteralmente la stessa attività."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Apri le reliquie spazzatura che non venderesti mai — ogni apertura fornisce comunque tracce, e di solito anche uno schema Forma o una parte da scambiare per ducati.",
+            "La tua riserva di tracce ha un **limite massimo, e questo limite aumenta con il Grado Maestria** — 100 per un giocatore novizio, salendo di +50 per grado fino a migliaia ad alti livelli di MR. Qualsiasi traccia guadagnata mentre sei al tuo limite massimo andrà persa, quindi spendile prima di superarlo.",
+            "Affronta fratture rapide (vedi la sezione successiva) in modo da aprire le reliquie una dopo l'altra invece di aspettare in missioni lente."
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "Non esiste un \"nodo per le tracce\" dedicato. L'accumulo più rapido di tracce si ottiene concatenando rapide fratture di Cattura o fratture di Disturbo ricche di ricompense con reliquie che avresti comunque aperto."
+        }
+      ]
+    },
+    {
+      "id": "shared-radshare",
+      "title": "Ricompense condivise e condivisioni Splendenti (\"radshare\")",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Ecco la meccanica che cambia tutto: in una squadra completa, **tutti e quattro i giocatori vedono tutti e quattro i risultati** nella schermata delle ricompense, e ognuno di voi ne tiene *uno*. La tua reliquia ha dato una comune? Se la reliquia di un compagno ha dato la rara, puoi prendere quella rara al suo posto. Questa è la base del **Radiant share** (condivisione Splendente) — il metodo standard della community per farmare parti rare costose."
+        },
+        {
+          "type": "info",
+          "text": "Quattro reliquie Splendenti dello *stesso tipo* hanno ciascuna una probabilità indipendente del 10% di dare la rara. La probabilità che la rara appaia almeno una volta per l'intera squadra è 1 − 0.9⁴ ≈ **34%** — contro il 10% giocando da soli. Fai qualche partita radshare di fila e i pezzi rari smetteranno di sembrare così rari."
+        },
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "h": "Prima perfeziona a Splendente",
+              "p": "Tutti devono presentarsi con l'esatta stessa reliquia perfezionata a Splendente (100 tracce). Per convenzione, una reliquia Intatta o la reliquia sbagliata comporterà l'espulsione dal gruppo radshare."
+            },
+            {
+              "h": "Trova un gruppo in Reclutamento",
+              "p": "Apri la chat Reclutamento / la scheda Recluta e cerca il codice della reliquia, ad es. \"Axi A15 Rad\" o \"Meso G1 RadShare\". \"H\" di solito significa che qualcuno sta ospitando/cercando."
+            },
+            {
+              "h": "Affronta una rapida frattura di Cattura",
+              "p": "I radshare utilizzano quasi sempre la frattura più rapida disponibile, in modo che tutti possano aprire, prendere la rara e ricominciare per un altro round."
+            },
+            {
+              "h": "Prendi la rara quando appare",
+              "p": "Nella schermata delle ricompense, se uno dei quattro ha ottenuto la rara, tutti la scelgono. Ripeti da capo."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fissure-efficiency",
+      "title": "Quale tipo di frattura è più efficiente",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Tutte le fratture aprono le reliquie allo stesso modo, mas differiscono enormemente nella *velocità* con cui si consumano le reliquie. Abbina il tipo di missione al tuo obiettivo:"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Tipo di frattura",
+              "Ritmo",
+              "Ideale per"
+            ],
+            "rows": [
+              [
+                "Cattura",
+                "La più rapida 'una e via'",
+                "Apertura in massa, farming di tracce, radshare"
+              ],
+              [
+                "Sterminio / Sabotaggio",
+                "Rapido",
+                "Aperture singole rapide quando non ci sono Cattura disponibili"
+              ],
+              [
+                "Sopravvivenza / Difesa / Intercettazione",
+                "Infinita",
+                "Una reliquia per rotazione, nessun caricamento, flusso costante di tracce"
+              ],
+              [
+                "Disturbo",
+                "Infinita, ricca di ricompense",
+                "Round veloci = molte aperture + tracce per sessione"
+              ]
+            ],
+            "note": "Nelle fratture infinite apri una reliquia per rotazione e puoi passare a una nuova reliquia tra una rotazione e l'altra — senza dover tornare alla tua nave."
+          }
+        },
+        {
+          "type": "p",
+          "text": "**Regola generale:** usa **Cattura** quando vuoi aprire rapidamente un gran numero di reliquie diverse o fare un radshare, e usa un tipo **infinito** (Sopravvivenza o Disturbo) quando vuoi metterti a farmare tracce o aprire molte reliquie senza schermate di caricamento. Non sai quali reliquie valgano il tuo tempo? [Farming di reliquie](/relic-farming) classifica quali reliquie fruttano più platinum per sessione."
+        }
+      ]
+    },
+    {
+      "id": "vaulting",
+      "title": "Vaulting, Aya e Risorgenza Prime",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Digital Extremes inserisce periodicamente nel **vault** i Prime più vecchi — le loro reliquie smettono di essere rilasciate nelle tabelle di rilascio attive per fare spazio a quelle nuove. Le reliquie già presenti nel tuo inventario continueranno a funzionare per sempre, e le reliquie nel vault rimangono **scambiabili**, quindi potrai sempre acquistare l'esatta reliquia di cui hai bisogno da un altro giocatore. Tieni traccia di cosa entra ed esce con il [tracker dei Prime nel Vault](/vaulted)."
+        },
+        {
+          "type": "info",
+          "text": "La **Risorgenza Prime** riporta in rotazione le reliquie nel vault: visita Varzia nel **Bazar di Maroo** e acquista le reliquie rimosse dal vault con **Aya** (ottenibile gratuitamente in tutta la mappa stellare, spesso rilasciata al posto delle reliquie) o con la valuta premium **Regal Aya**. È la rete di sicurezza se un Prime che desideri è attualmente nel vault."
+        },
+        {
+          "type": "warn",
+          "text": "Quando un Prime finisce nel vault, la richiesta per le sue parti spesso si impenna perché l'offerta si esaurisce. Se hai dei doppioni da parte, [Prime nel Vault in aumento ora](/vault-spikes) mostra quali stanno salendo di prezzo, così puoi venderli durante il picco."
+        }
+      ]
+    },
+    {
+      "id": "cash-out",
+      "title": "Trasforma le parti in platinum o ducati",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Una reliquia aperta ti consegna una parte Prime (o uno schema Forma). Hai tre opzioni per qualsiasi parte ottenuta:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Costruiscila** — assembla il Warframe o l'arma Prime per te.",
+            "**Vendila per platinum** — scambia i doppioni e le parti indesiderate con altri giocatori.",
+            "**Trasformala in Ducati** — deposita le parti che nessuno compra nei chioschi dei Ducati in qualsiasi staffetta, poi spendi i Ducati sulla merce in rotazione di Baro Ki'Teer."
+          ]
+        },
+        {
+          "type": "links",
+          "links": [
+            {
+              "label": "Valore delle reliquie: apri o vendi",
+              "to": "/relics-value",
+              "icon": "scale-balance",
+              "note": "Platinum previsti per reliquia"
+            },
+            {
+              "label": "Calcolatore set vs parti",
+              "to": "/comparison",
+              "icon": "calculator-variant",
+              "note": "Prezzo di un set completo rispetto alla vendita delle singole parti"
+            },
+            {
+              "label": "Trova margini di profitto",
+              "to": "/flip",
+              "icon": "swap-horizontal",
+              "note": "Spread di acquisto/vendita in tempo reale sulle parti"
+            },
+            {
+              "label": "Trova valore in Ducati",
+              "to": "/ducats",
+              "icon": "cash-multiple",
+              "note": "Le migliori parti da dare a Baro"
+            }
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "Gli schemi Forma sono una delle ricompense più comuni delle reliquie, quindi affrontare costantemente le fratture funge anche da fonte gratuita dei Forma che consumerai per polarizzare le build — raramente avrai bisogno di acquistarli."
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Come si apre una Reliquia Void?",
+      "a": "Non puoi aprire le reliquie dal tuo inventario — devi affrontare una missione Frattura Void. Equipaggia una reliquia prima di avviare, uccidi i nemici Corrotti luccicanti per raccogliere 10 Reagenti e la tua reliquia si aprirà alla fine della missione (o a ogni rotazione nelle missioni infinite). Nella schermata delle ricompense, sceglierai una ricompensa tra un massimo di quattro."
+    },
+    {
+      "q": "Cosa fa effettivamente il perfezionamento di una reliquia a Splendente?",
+      "a": "Il perfezionamento consuma Tracce Void per migliorare le probabilità delle ricompense rare e non comuni. Una reliquia Intatta offre al pezzo raro una probabilità del 2%; una reliquia Splendente la porta al 10%. Non cambia mai quali sei parti si trovano all'interno — solo le probabilità tra di esse. Controlla [apri o vendi](/relics-value) per vedere se vale la pena perfezionare una determinata reliquia."
+    },
+    {
+      "q": "Come posso farmare Tracce Void rapidamente?",
+      "a": "Le tracce provengono quasi interamente dall'apertura di reliquie nelle fratture — ogni apertura fornisce una base di 6–30 tracce, e un Booster Risorse raddoppia tale quantità. Il metodo più rapido consiste nel concatenare rapide fratture di Cattura o fratture di Disturbo ricche di ricompense con reliquie che avresti comunque aperto. Il tuo limite di capacità aumenta con il Grado Maestria (100 all'inizio, salendo di +50 per grado), quindi spendile prima di raggiungere il limite massimo ed evitare l'eccedenza."
+    },
+    {
+      "q": "Cos'è una condivisione Splendente (radshare)?",
+      "a": "È una squadra completa in cui tutti e quattro i giocatori portano la stessa reliquia perfezionata a Splendente. Poiché ognuno può scegliere tra tutti e quattro i risultati nella schermata delle ricompense, quattro tentativi indipendenti con il 10% di probabilità per il pezzo raro offrono alla squadra circa il 34% di probabilità che il pezzo raro appaia a ogni partita — molto meglio del 10% in solitaria. Trova gruppi nella chat Reclutamento cercando il codice della reliquia seguito da \"Rad\" o \"RadShare\"."
+    },
+    {
+      "q": "Dovrei perfezionare ogni reliquia a Splendente?",
+      "a": "No. Splendente costa ben 100 tracce, quindi riservalo alle reliquie la cui parte rara è preziosa o a una che ti serve davvero. Per farmare parti comuni, Forma o oggetti da scambiare per ducati, usa le reliquie Intatte, così ne aprirai molte di più a parità di budget di tracce. Lo [strumento di valutazione delle reliquie](/relics-value) ti aiuta a decidere per ciascuna reliquia."
+    },
+    {
+      "q": "Dove vengono rilasciate le Reliquie Void?",
+      "a": "Le reliquie vengono rilasciate in tutta la mappa stellare — come ricompense di missione, rotazioni di missioni infinite e taglie nei mondi aperti. Le reliquie Lith provengono dai nodi iniziali, mentre le Neo/Axi da contenuti successivi e più difficili e da sessioni infinite più lunghe. Quale nodo specifico sia il migliore cambia con gli aggiornamenti, quindi controlla le tabelle di rilascio in-game o la wiki per trovare la posizione attuale."
+    },
+    {
+      "q": "Posso ancora ottenere parti Prime dopo che un Prime è finito nel vault?",
+      "a": "Sì. Tutte le reliquie già presenti nel tuo inventario continueranno a funzionare per sempre, e le reliquie nel vault rimangono scambiabili, quindi puoi acquistare l'esatta reliquia da un altro giocatore. Puoi anche ottenere le reliquie rimosse dal vault tramite la Risorgenza Prime da Varzia nel Bazar di Maroo usando Aya. Tieni traccia della disponibilità con il [tracker dei Prime nel Vault](/vaulted)."
+    },
+    {
+      "q": "Quale tipo di missione frattura è il migliore per aprire le reliquie?",
+      "a": "Cattura è la più rapida 'una e via', ideale per l'apertura in massa, il farming di tracce e i radshare. I tipi infiniti come Sopravvivenza e Disturbo ti consentono di aprire una reliquia per rotazione senza schermate di caricamento, il che è preferibile per lunghe sessioni di grinding. Scegli il tipo in base a se desideri velocità o volume."
+    }
+  ],
+  "videos": [
+    {
+      "id": "sX-8t0hGvgI",
+      "title": "Warframe: How to Refine Void Relics and How to Find Void Traces in Warframe",
+      "channel": "CerealOverdrive"
+    },
+    {
+      "id": "6D7mUOO2dCw",
+      "title": "[WARFRAME] Ultimate VOID Relic Farming Guide - EASY Platinum Farm!",
+      "channel": "KnightmareFrame"
+    },
+    {
+      "id": "5bh4mtiAmHg",
+      "title": "[WARFRAME] RAD RELICS FAST! Meta Void Trace Farming Guide 2024 | Whispers In The Wall",
+      "channel": "Gaz TTV"
+    },
+    {
+      "id": "RyPtNgTC7C8",
+      "title": "The ONLY Void Trace Farm You Need | Warframe",
+      "channel": "mothixe"
+    }
+  ],
+  "sources": [
+    {
+      "label": "r/Warframe — If you want to farm relics, here is where to do it",
+      "href": "https://reddit.com/r/Warframe/comments/7poeao/if_you_want_to_farm_relics_here_is_where_to_do_it/"
+    },
+    {
+      "label": "r/Warframe — RNG relics, rewards & the grind (discussion)",
+      "href": "https://reddit.com/r/Warframe/comments/dr46xo/so_let_me_get_this_straight_we_need_to_farm_rng/"
+    },
+    {
+      "label": "r/Warframe — Platinum farms ranked",
+      "href": "https://reddit.com/r/Warframe/comments/1f77ohc/platinum_farms_ranked_by_how_insane_the_people/"
+    },
+    {
+      "label": "Warframe Wiki — Void Relic",
+      "href": "https://wiki.warframe.com/w/Void_Relic"
+    },
+    {
+      "label": "Warframe Wiki — Void Traces",
+      "href": "https://wiki.warframe.com/w/Void_Traces"
+    }
+  ],
+  "related": [
+    {
+      "label": "Guida al Platinum",
+      "to": "/guides/platinum",
+      "icon": "cash-multiple",
+      "note": "Trasforma le parti Prime in plat"
+    },
+    {
+      "label": "Farming di reliquie",
+      "to": "/relic-farming",
+      "icon": "pickaxe",
+      "note": "Quali reliquie fruttano di più per sessione"
+    },
+    {
+      "label": "Valore delle reliquie: apri o vendi",
+      "to": "/relics-value",
+      "icon": "scale-balance",
+      "note": "Plat previsti per reliquia"
+    },
+    {
+      "label": "Trova valore in Ducati",
+      "to": "/ducats",
+      "icon": "diamond-stone",
+      "note": "Le migliori parti per Baro"
+    },
+    {
+      "label": "Tracker dei Prime nel Vault",
+      "to": "/vaulted",
+      "icon": "lock",
+      "note": "Cosa c'è dentro e fuori dal vault"
+    },
+    {
+      "label": "FAQ complete",
+      "to": "/faq",
+      "icon": "help-circle",
+      "note": "Risposte ad altre domande dei giocatori"
+    }
+  ],
+  "updated": "2026-07-18"
+}

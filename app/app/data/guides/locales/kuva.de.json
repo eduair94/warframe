@@ -1,0 +1,454 @@
+{
+  "slug": "kuva",
+  "eyebrow": "Wissenszentrum · Kuva-Farming",
+  "title": "Kuva-Farming-Guide",
+  "lede": "Kuva ist die rote Währung, die deine Rivens neu auswürfelt – und der Grind dahinter hat seine eigene Meta. Hier ist jeder zuverlässige Farm, wie du deine Ausbeute mit Boostern und der richtigen Begleiter-Mod vervielfachst und wie du es ausgibst, ohne auszubrennen.",
+  "category": "farming",
+  "readMins": 8,
+  "stats": [
+    {
+      "num": "~600",
+      "label": "Kuva pro Siphon",
+      "tone": "good"
+    },
+    {
+      "num": "~1,200",
+      "label": "Kuva pro Flood",
+      "tone": "alt"
+    },
+    {
+      "num": "3,500",
+      "label": "Max. Kuva pro Reroll",
+      "tone": "gold"
+    },
+    {
+      "num": "2×",
+      "label": "Resource Booster",
+      "tone": "good"
+    }
+  ],
+  "sections": [
+    {
+      "id": "what-kuva-is",
+      "title": "Was Kuva eigentlich ist",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Kuva** ist eine rote, leuchtende Ressource, die aus den Kuva-Reserven der Grineer gewonnen wird. Ihr Hauptzweck ist eine einzige Sache: **das Rerollen von Riven-Mods**. Jeder Reroll verbraucht Kuva, um die Werte einer Riven neu auszuwürfeln – die Buffs, die Nachteile und die Dispositions-Skalierung. Es ist auch eine Herstellungszutat in einigen wenigen Schmiede-Blaupausen (ein paar Warframes, Umbra Forma und einige Waffen benötigen ein wenig davon), aber der weitaus größte Teil des Grundes, warum man Kuva farmt, sind Rivens."
+        },
+        {
+          "type": "p",
+          "text": "Das Wort „Kuva“ ist auf mehreren nicht zusammenhängenden Systemen aufgeprägt, was fast jeden neuen Spieler verwirrt. Nur die **Ressource** ist das, was du grindest, um Rivens neu auszuwürfeln – der Rest teilt sich nur den Namen."
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "Was es ist",
+              "v": "Eine nicht handelbare Ressource (rot)"
+            },
+            {
+              "k": "Hauptverwendungszweck",
+              "v": "Werte von Riven-Mods neu auswürfeln"
+            },
+            {
+              "k": "Auch verwendet in",
+              "v": "Eine Handvoll Schmiede-Blaupausen"
+            },
+            {
+              "k": "Freigeschaltet durch",
+              "v": "Die Quest „The War Within“"
+            },
+            {
+              "k": "Kann es gekauft/gehandelt werden?",
+              "v": "Nein – du farmst es oder du hast es nicht"
+            }
+          ]
+        },
+        {
+          "type": "info",
+          "text": "**\"Kuva\" ist mehrdeutig.** *Kuva* (die Ressource, mit der du rerollst) · *Kuva Siphon/Flood* (die Missionen, die es belohnen) · *Kuva Lich* (ein gegnerischer Nemesis) · *Kuva-Waffen* (was ein Lich fallen lässt). Nur das erste würfelt Rivens neu aus. Siehe den letzten Abschnitt über Liches, damit du die beiden nicht verwechselst."
+        }
+      ]
+    },
+    {
+      "id": "unlock",
+      "title": "Kuva-Farming freischalten",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Kuva-Farming ist hinter der Quest **The War Within** gesperrt (die zweite Operator-Quest, die auf *The Second Dream* folgt). Bevor du sie abschließt, erscheinen keine Kuva Siphons oder Floods auf deiner Sternenkarte, die Kuva Fortress bleibt gesperrt und du kannst keinen Kuva Lich spawnen."
+        },
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "h": "Fortschritt auf der Sternenkarte erzielen",
+              "p": "Arbeite dich durch die Planeten und die Hauptstory, bis The Second Dream und dann The War Within freigeschaltet werden. Siehe den [Quest-Guide](/guides/quests) für die Reihenfolge."
+            },
+            {
+              "h": "Schließe The War Within ab",
+              "p": "Dies schaltet die Void-Kräfte deines Operators frei – du brauchst sie buchstäblich, um Kuva Siphons zu knacken – und schaltet das gesamte Kuva-Ökosystem frei."
+            },
+            {
+              "h": "Behalte die Sternenkarte im Auge",
+              "p": "Kuva Siphon- und Kuva Flood-Markierungen rotieren nun auf Nodes im gesamten Origin System und aktualisieren sich nach einem Timer."
+            },
+            {
+              "h": "Öffne die Kuva Fortress",
+              "p": "Die Fortress und ihre Kuva Survival-Node werden deine Heimatbasis für das Farming in großen Mengen."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "core-farms",
+      "title": "Die Kern-Kuva-Farms",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Drei Quellen tragen die Hauptlast: **Siphons** für schnelle Runs, **Floods** für doppelte Belohnungen und **Survival** für kontinuierliche Mengen. Sie sind zeitlos – im Gegensatz zu Relikt-Ären oder einer rotierenden „besten Ressourcen-Node“ ändern sich diese nicht mit jedem Update."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Methode",
+              "Wo",
+              "Ungefähre Ausbeute",
+              "Bestens geeignet für"
+            ],
+            "rows": [
+              [
+                "Kuva Siphon",
+                "Rotierende Sternenkarten-Node (benötigt TWW)",
+                "~600 Basis",
+                "Schnelle, entspannte Runs mit geringem Aufwand"
+              ],
+              [
+                "Kuva Flood",
+                "Eine rotierende Node mit höherem Level",
+                "~1,200 Basis",
+                "Doppelte Belohnung, viel höheres Level"
+              ],
+              [
+                "Kuva Survival",
+                "Kuva Fortress Survival-Node (Taveuni)",
+                "Skaliert mit der Zeit",
+                "Kontinuierliches Farming in großen Mengen"
+              ],
+              [
+                "Tägliche Sortie",
+                "Sortie-Belohnungstabelle (Chance)",
+                "Ein paar Tausend",
+                "Passives Kuva beim Erledigen von Dailies"
+              ]
+            ],
+            "note": "Die Erträge sind ungefähre Basiswerte vor Boostern – DE passt die Zahlen gelegentlich an, also überprüfe die aktuellen Werte im Live-Wiki."
+          }
+        },
+        {
+          "type": "p",
+          "text": "Ein **Siphon** funktioniert wie ein Mini-Missionsziel: Du erreichst das Kuva Siphon-Gerät, es beginnt, Kuva-Wolken anzuziehen, und du zerstörst seine vier Kuva-Zöpfe, indem du **in Operator-Form per Void Dash durch die ankommenden Wolken sprintest (oder mit deinem Amp auf sie schießt)** – was genau der Grund ist, warum The War Within eine zwingende Voraussetzung ist. Kuva Guardians spawnen, um dich bei der Arbeit zu stören. Zerstöre alle vier Zöpfe und der Siphon platzt, wodurch du eine Menge Kuva erhältst. Ein **Flood** ist derselbe Ablauf bei einem viel höheren Gegnerlevel für etwa die doppelte Auszahlung. Das Aneinanderreihen von Siphons (und das Mitnehmen des Flood, wenn er aktiv ist) auf der Karte ist der effizienteste *Casual*-Loop."
+        }
+      ]
+    },
+    {
+      "id": "survival-fissure",
+      "title": "Die Endurance-Meta: Kuva Survival + Fissures",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Für reines **Kuva-pro-Stunde** ist Kuva Survival auf der Kuva Fortress der König. Anstatt Markierungen auf der Karte hinterherzujagen, bleibst du in einer einzigen Survival-Mission und wandelst **Lebenserhaltungskapseln in Kuva Harvester** um – jede Umwandlung bringt dir ein Stück Kuva ein, während du es verteidigst. Je länger du also durchhältst, desto mehr häufst du an. Bring einen Frame mit gutem AoE-Clear und zuverlässiger Energieversorgung mit, damit du nie aufhörst zu töten."
+        },
+        {
+          "type": "p",
+          "text": "Der Pro-Move ist das **Double-Dipping**: Spiele Kuva Survival, während es als **Void Fissure** markiert ist. Du knackst Relikte für wertvolle Prime-Teile *und* häufst im selben Run Kuva an – zwei Grinds, eine Mission."
+        },
+        {
+          "type": "links",
+          "links": [
+            {
+              "label": "Welche Relikte sich pro Run am meisten lohnen",
+              "to": "/relic-farming",
+              "icon": "diamond-stone",
+              "note": "Wähle das Fissure-Relikt, das deinen Kuva-Grind finanziert"
+            },
+            {
+              "label": "Knacken oder verkaufen? Reliktwert",
+              "to": "/relics-value",
+              "icon": "cash-multiple",
+              "note": "Wisse, was deine Fissure-Drops wert sind"
+            }
+          ]
+        },
+        {
+          "type": "warn",
+          "text": "**Sehr lange Endurance-Runs bergen ein echtes Risiko.** Eine Host-Migration in einem mehrstündigen öffentlichen Run kann dich aus der Sitzung werfen, und es gibt kein Save-Scumming für Kuva – bei einem Absturz oder Verbindungsabbruch verlierst du alle Gewinne seit der letzten Belohnung. Solo-Runs oder ein stabiles, vorgefertigtes Team verringern das Risiko, und das stetige Sichern von Belohnungen ist besser, als eine ganze Sitzung auf einen einzigen ununterbrochenen Marathon zu wetten."
+        }
+      ]
+    },
+    {
+      "id": "boosters",
+      "title": "Vervielfache dein Kuva: Booster & Begleiter",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Die wichtigste Lektion beim Kuva-Farming: **Es kommt nicht auf die Node an, sondern auf deine Multiplikatoren.** Derselbe Siphon kann 600 oder über 2,400+ auszahlen, je nachdem, was darauf gestapelt ist."
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Resource Booster (2×)** – verdoppelt jeden Kuva-Pickup für seine Dauer, einschließlich der Pauschalbelohnung von einem Siphon oder Flood. Der zuverlässige Basis-Multiplikator.",
+            "**Loyal Retriever (Begleiter-Mod)** – seit **Update 37** ist die Ressourcenverdopplung, die früher auf dem Charm der Smeeta lag, eine eigene Mod. Sie bietet eine flache **Chance von 13 % , jeden Credit- und Ressourcen-Pickup zu verdoppeln – Kuva inklusive** –, ist immer aktiv, ohne dass man auf einen Buff warten muss, und passt auf jeden Beast-Begleiter (Kubrow, Kavat usw.), nicht nur auf eine Smeeta.",
+            "**Doppel-Ressourcen-Wochenenden** – die regelmäßigen Events von DE lassen sich mit einem Booster kombinieren und treiben einen Siphon oder Flood in Richtung 4×.",
+            "**Kein „Warten auf den Buff“ mehr** – der alte Trick, Pickups zu horten, bis ein Smeeta-Charm-Ressourcen-Proc ausgelöst wurde, ist seit Update 37 Geschichte. Die Verdopplung ist jetzt ein passiver Wurf pro Pickup, also töte einfach weiter und lass es laufen."
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "**Das Begleiter-Setup:** Rüste **Loyal Retriever** auf einem Beast-Begleiter aus, um die 13 % Chance auf doppelte Pickups zu erhalten, die auch für Kuva gilt. Viele Farmer bringen immer noch zusätzlich eine **Smeeta Kavat** mit – ihr Charm kann einen seltenen Ressourcen-Drop oder verdreifachte Affinität auslösen –, aber die Ressourcenverdopplung selbst erfordert keine Smeeta mehr im Speziellen."
+        }
+      ]
+    },
+    {
+      "id": "per-hour",
+      "title": "Kuva pro Stunde: Realistische Erwartungen",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Die Raten schwanken stark je nach Frame, Booster-Laufzeit und Route, also betrachte dies eher als Richtwert denn als unumstößliches Gesetz. Das ehrliche Bild:"
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "Entspanntes Aneinanderreihen von Siphon/Flood (ohne Booster)",
+              "v": "~5,000–10,000 Kuva/hr"
+            },
+            {
+              "k": "Kuva Survival + Resource Booster (+ Loyal Retriever)",
+              "v": "~15,000–25,000+ Kuva/hr"
+            },
+            {
+              "k": "Ein Riven-Reroll mit maximalen Kosten",
+              "v": "3,500 Kuva"
+            },
+            {
+              "k": "Eine geboostete Survival-Stunde bringt also ungefähr",
+              "v": "4–7 Rerolls"
+            }
+          ]
+        },
+        {
+          "type": "info",
+          "text": "Die wilden Schwankungen von Stunde zu Stunde, vor denen ältere Guides warnen – durch das Warten auf einen zufälligen Smeeta-Charm-Ressourcen-Proc –, sind vorbei. Die Verdopplung von Loyal Retriever ist ein konstanter Wert von 13 % pro Pickup, sodass ein Farm viel beständiger ist als früher; deine Rate hängt jetzt von deinem Frame, deiner Route und davon ab, ob ein Booster oder ein 2×-Wochenende aktiv ist."
+        }
+      ]
+    },
+    {
+      "id": "spending",
+      "title": "Kuva ausgeben: Riven-Rerolls",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Das Rerollen der Werte einer Riven erfolgt direkt über die Mod (es kostet **nur Kuva**). Verwechsle es nicht mit dem Aufwerten der Riven, was Endo + Credits kostet – Kuva würfelt die Werte neu aus, [Endo](/guides/endo) erhöht das Level der Mod. Der Reroll-Preis steigt mit jedem Zyklus bis zu einer festen Obergrenze:"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Reroll #",
+              "Ungefähre Kuva-Kosten"
+            ],
+            "rows": [
+              [
+                "1.",
+                "900"
+              ],
+              [
+                "2.",
+                "1,000"
+              ],
+              [
+                "3.",
+                "1,200"
+              ],
+              [
+                "4.",
+                "1,400"
+              ],
+              [
+                "…",
+                "steigt mit jedem Zyklus"
+              ],
+              [
+                "~10. und darüber hinaus",
+                "3,500 (Cap)"
+              ]
+            ],
+            "note": "Ungefähre Kostenleiter – die genauen Zwischenwerte werden am besten im Live-Wiki überprüft. Wichtigste Fakten: beginnt bei 900, gedeckelt bei 3,500."
+          }
+        },
+        {
+          "type": "quote",
+          "text": "Das Gefühl, wenn du den ganzen Tag Kuva farmst und nichts vorzuweisen hast außer einer höheren Anzahl an Rerolls.",
+          "cite": "r/Warframe"
+        },
+        {
+          "type": "tip",
+          "text": "Rerolls sind **reines RNG** – eine gute Riven kann zu einer schlechten werden und umgekehrt. Setze dir ein Ziel, bevor du anfängst, und überprüfe den [Riven-Wertrechner](/riven-value), damit du weißt, wann ein Roll bereits mehr wert ist als der perfekte Roll, dem du hinterherjagst. Wenn eine Riven hoffnungslos ist, ist das Auflösen in Endo über [/endo](/endo) oft klüger, als noch mehr Kuva hineinzustecken."
+        },
+        {
+          "type": "links",
+          "links": [
+            {
+              "label": "Riven-Wertrechner",
+              "to": "/riven-value",
+              "icon": "chart-line",
+              "note": "Ist dieser Roll es wert, behalten zu werden?"
+            },
+            {
+              "label": "Endo- / Plat-Wert",
+              "to": "/endo",
+              "icon": "recycle",
+              "note": "Nutzlose Rivens für Endo auflösen"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "liches",
+      "title": "Kuva Liches: Gleicher Name, anderes System",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Ein **Kuva Lich** ist ein gegnerischer Nemesis – nicht die Ressource. Du erschaffst einen, indem du einen **Kuva Larvling** mit einem Gnadenstoß in einer Grineer-Mission tötest (verfügbar nach The War Within). Der Lich beansprucht Territorium und lässt bei seiner Niederlage eine **Kuva-Waffe** mit einem zufälligen Bonus (ca. 25–60 %) fallen."
+        },
+        {
+          "type": "p",
+          "text": "Du verbrauchst nicht die *Ressource* Kuva, um einen Lich zu besiegen. Du bezwingst ihn mit deinem **Parazon**, das mit drei **Requiem-Mods** in der richtigen Reihenfolge bestückt ist – und diese Reihenfolge herauszufinden, ist ein eigenes Rätsel. Requiem-Mods stammen aus **Requiem-Relikten**. Dieses vielschichtige RNG (Relikt → Requiem → richtige Reihenfolge → Waffe → guter Roll) ist genau das, worüber sich das Subreddit liebend gerne beschwert."
+        },
+        {
+          "type": "warn",
+          "text": "Anfängerfalle: Das Farmen der Ressource Kuva bringt dir **niemals** eine Kuva-Waffe ein, und die Jagd auf Liches füllt deine Kuva-Reserven für Rerolls nicht auf. Es sind separate Grinds, die sich lediglich einen Namen teilen."
+        }
+      ]
+    }
+  ],
+  "videos": [
+    {
+      "id": "ETo_jzx1m1A",
+      "title": "How To Farm Kuva in Warframe 2026 | Best Methods + Vendors",
+      "channel": "Tipsy"
+    },
+    {
+      "id": "6Ebs0Ws_GdQ",
+      "title": "Kuva Farming Guide - All the ways to get Kuva",
+      "channel": "QuadLyStop"
+    },
+    {
+      "id": "9t6f01oAEIM",
+      "title": "Best Ways To Farm Kuva In Warframe | Easy Guide (2025)",
+      "channel": "ZombiGamEr4562"
+    },
+    {
+      "id": "BQ8fMA0e43o",
+      "title": "How to easy farm Kuva Lich Complete Beginner - Veteran Guide | Warframe 2025",
+      "channel": "1WEAZEL1"
+    }
+  ],
+  "related": [
+    {
+      "label": "Riven-Mods-Guide",
+      "to": "/guides/riven",
+      "icon": "dice-multiple",
+      "note": "Was deine Kuva-Rerolls tatsächlich verändern"
+    },
+    {
+      "label": "Riven-Wertrechner",
+      "to": "/riven-value",
+      "icon": "chart-line",
+      "note": "Wisse, ob ein Roll das Kuva wert ist"
+    },
+    {
+      "label": "Void-Relikte-Guide",
+      "to": "/guides/relics",
+      "icon": "diamond-stone",
+      "note": "Nutze Double-Dipping bei Kuva Survival-Fissures"
+    },
+    {
+      "label": "Endo- & Plat-Wert",
+      "to": "/endo",
+      "icon": "recycle",
+      "note": "Nutzlose Rivens auflösen statt neu auszuwürfeln"
+    },
+    {
+      "label": "Steel Path-Guide",
+      "to": "/guides/steel-path",
+      "icon": "skull",
+      "note": "Härteres Kuva Survival, lohnendere Runs"
+    },
+    {
+      "label": "Community-FAQ",
+      "to": "/faq",
+      "icon": "help-circle",
+      "note": "Weitere schnelle Antworten"
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Wofür wird Kuva in Warframe verwendet?",
+      "a": "Kuvas Hauptaufgabe ist das Rerollen von Riven-Mod-Stats – jeder Reroll verbraucht Kuva, um die Buffs und Nachteile einer Riven neu auszuwürfeln. Es ist auch eine Herstellungszutat in einer Handvoll Blaupausen (einige Warframes, Umbra Forma und manche Waffen). Es hat nichts mit dem Kauf, der Herstellung oder dem Aufwerten von Warframes mit Plat zu tun. Siehe den [Riven-Guide](/guides/riven) für Informationen dazu, wie das Rerollen funktioniert."
+    },
+    {
+      "q": "Was ist der beste Weg, um schnell Kuva zu farmen?",
+      "a": "Reihe Kuva Siphons aneinander und nimm den Flood mit, wenn er aktiv ist, um schnelles Kuva mit geringem Aufwand zu erhalten, oder spiele Kuva Survival auf der Kuva Fortress für kontinuierliche Mengen. Kombiniere beides mit einem Resource Booster – und rüste Loyal Retriever auf einem Beast-Begleiter aus, um eine Chance von 13 % auf die Verdopplung jedes Kuva-Pickups zu erhalten –, um die Ausbeute zu vervielfachen. Wenn du Kuva Survival als Void Fissure spielst, kannst du gleichzeitig [Relikte](/relic-farming) für Plat knacken."
+    },
+    {
+      "q": "Wie viel Kuva kostet es, eine Riven neu auszuwürfeln?",
+      "a": "Der erste Reroll kostet etwa 900 Kuva, und the Preis steigt mit jedem Zyklus bis zu einer dauerhaften Obergrenze von etwa 3,500 Kuva nach etwa zehn Rerolls. Rerolls sind reines RNG, also überprüfe den [Riven-Wertrechner](/riven-value), bevor du Kuva in einen Roll steckst, den du vielleicht bereust."
+    },
+    {
+      "q": "Was ist der Unterschied zwischen Kuva und einem Kuva Lich?",
+      "a": "Kuva ist eine Ressource, die du farmst, um Rivens neu auszuwürfeln. Ein Kuva Lich ist ein gegnerischer Nemesis, den du durch den Gnadenstoß an einem Larvling erschaffst und dann jagst, um eine Kuva-Waffe zu erhalten. Sie teilen sich den Namen „Kuva“, sind aber völlig separate Systeme – du besiegst einen Lich mit Requiem-Mods und deinem Parazon, nicht durch das Ausgeben der Ressource Kuva."
+    },
+    {
+      "q": "Wie schalte ich Kuva Siphons frei?",
+      "a": "Schließe die Quest The War Within ab. Danach rotieren Kuva Siphon- und Kuva Flood-Markierungen auf Sternenkarten-Nodes im gesamten Origin System, und die Kuva Fortress mit ihrer Survival-Node öffnet sich. Du benötigst außerdem die Void-Fähigkeiten deines Operators aus dieser Quest, um die Zöpfe des Siphons tatsächlich zu zerstören. Siehe den [Quest-Guide](/guides/quests) für Informationen dazu, wie du sie erreichst."
+    },
+    {
+      "q": "Verdoppelt die Smeeta Kavat Kuva?",
+      "a": "Nicht mehr durch ihren Charm. Seit Update 37 (Oktober 2024) wurde die Ressourcenverdopplung vom Charm der Smeeta auf eine separate Mod namens Loyal Retriever übertragen. Diese bietet eine flache Chance von 13 % auf die Verdopplung jedes Ressourcen-Pickups – Kuva inklusive – und passt auf jeden Beast-Begleiter (Kubrow, Kavat usw.). Eine Smeeta ist immer noch nützlich für die anderen Buffs von Charm, aber du benötigst keine spezielle Smeeta mehr, um dein Kuva zu verdoppeln."
+    },
+    {
+      "q": "Kann man Kuva kaufen oder handeln?",
+      "a": "Nein. Kuva ist eine nicht handelbare Ressource und kann nicht mit Platinum gekauft werden – du musst es farmen. Du kannst die Rivens handeln, die du damit neu auswürfelst, aber niemals das Kuva selbst. Wenn du auf der Suche nach Plat bist, sieh dir stattdessen den [Platinum-Guide](/guides/platinum) an."
+    },
+    {
+      "q": "Funktionieren Resource Booster bei Kuva?",
+      "a": "Ja – ein Resource Booster verdoppelt alle Kuva-Gewinne, und Doppel-Ressourcen-Wochenend-Events lassen sich damit kombinieren (bis zu ca. 4× mit einem aktiven Booster). Hebe dir deine großen Reroll-Sitzungen für Zeiten mit Boostern auf, um das Beste aus jedem Run herauszuholen."
+    }
+  ],
+  "sources": [
+    {
+      "label": "So let me get this straight… RNG relics → Requiems → Kuva Liches → weapon rolls (r/Warframe)",
+      "href": "https://reddit.com/r/Warframe/comments/dr46xo/so_let_me_get_this_straight_we_need_to_farm_rng/"
+    },
+    {
+      "label": "TFW you farm Kuva all day and have nothing to show for it besides a higher roll count (r/Warframe)",
+      "href": "https://reddit.com/r/Warframe/comments/ci5f0x/tfw_you_farm_kuva_all_day_and_have_nothing_to/"
+    },
+    {
+      "label": "Kuva farming actually felt good during 2x weekend (r/Warframe)",
+      "href": "https://reddit.com/r/Warframe/comments/b5a4za/kuva_farming_actually_felt_good_during_2x_weekend/"
+    },
+    {
+      "label": "Warframe Wiki",
+      "href": "https://wiki.warframe.com/"
+    }
+  ],
+  "updated": "2026-07-18"
+}

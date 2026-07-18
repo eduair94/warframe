@@ -218,7 +218,11 @@ import { computed, nextTick, onMounted } from 'vue'
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
 import { TOOLS } from '~/data/tools'
-import { getResearch, SELF_SLUG, selfRelation } from '~/data/toolResearch'
+import { RESEARCH, SELF_SLUG, selfRelation } from '~/data/toolResearch'
+
+// Localized per-tool research prose for the active locale (English fallback).
+const localizedResearch = await useLocalizedResearch(RESEARCH)
+const getResearch = (slug: string) => localizedResearch[slug]
 
 dayjs.extend(relativeTime)
 const { t, te } = useI18n()
@@ -300,6 +304,28 @@ useSeoPage({
   description: () =>
     `${research.value?.oneLiner || desc.value} What it does, key features, Reddit and YouTube feedback, safety and whether it's worth using for Warframe.`,
   ogType: 'article',
+})
+
+// SoftwareApplication JSON-LD for this tool (structured data + AI-citation
+// eligibility). No price/rating claimed — we don't own third-party pricing.
+const origin = useRequestURL().origin
+useHead(() => {
+  const tl = tool.value
+  if (!tl) return {}
+  const node = {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: tl.name,
+    url: origin + route.path,
+    applicationCategory: 'GameApplication',
+    operatingSystem: (tl.platforms || []).join(', ') || 'Web',
+    description: research.value?.oneLiner || desc.value,
+    sameAs: [tl.url, tl.github ? 'https://github.com/' + tl.github : null].filter(Boolean),
+    publisher: { '@id': origin + '/#org' },
+  }
+  return {
+    script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(node).replace(/</g, '\\u003c') }],
+  }
 })
 
 function finishLoading(attempt = 0) {

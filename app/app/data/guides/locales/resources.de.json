@@ -1,0 +1,438 @@
+{
+  "slug": "resources",
+  "eyebrow": "Wissenszentrum · Ressourcen-Farming",
+  "title": "Ressourcen-Farming-Referenz",
+  "lede": "Jedes Herstellungsmaterial ist planetengebunden und jeder Farm folgt denselben drei Regeln: richtiger Planet, dichteste Node, gestapelte Multiplikatoren. Hier erfährst du, wo die Ressourcen droppen, nach denen Spieler tatsächlich fragen – und wie du aufhörst, Stunden mit dem Grinden der falschen Dinge zu verschwenden.",
+  "category": "farming",
+  "readMins": 8,
+  "stats": [
+    {
+      "num": "10",
+      "label": "Ressourcen, nach denen Spieler am meisten fragen",
+      "tone": "gold"
+    },
+    {
+      "num": "50%",
+      "label": "deines Argons zerfällt jeden Tag",
+      "tone": "alt"
+    },
+    {
+      "num": "4×",
+      "label": "Ertrag mit beiden gestapelten Boostern",
+      "tone": "good"
+    },
+    {
+      "num": "0",
+      "label": "Nodes, die Nitain Extract droppen"
+    }
+  ],
+  "sections": [
+    {
+      "id": "how-drops-work",
+      "title": "Wie Ressourcen-Drops tatsächlich funktionieren",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Fast jede Ressource in Warframe ist **planetengebunden**. Die Gegner, Container und zerstörbaren Pflanzen jedes Planeten greifen auf eine feste Loot-Tabelle zu, sodass der schnellste Farm immer demselben Rezept folgt: **Gehe zum richtigen Planeten und wähle dann die Node, auf der die meisten Gegner pro Minute getötet werden.** Deshalb dominieren Survivals, Defenses und Interceptions das Ressourcen-Farming – dichte, endlose Spawns schlagen eine kurze Capture-Mission jedes Mal."
+        },
+        {
+          "type": "p",
+          "text": "Ressourcen gibt es in verschiedenen Seltenheitsstufen. **Häufige** Drops (Nano Spores, Ferrite, Salvage) häufen sich allein durchs Spielen zu Tausenden an. **Ungewöhnliche** (Oxium, Plastids) erfordern ein wenig gezieltes Vorgehen. Die **seltenen** Materialien – Orokin Cells, Neurodes, Neural Sensors, Argon Crystals, Tellurium – sind die eigentliche Bremse in deiner Foundry, daher lohnt es sich, die Runs für diese zu optimieren."
+        },
+        {
+          "type": "info",
+          "title": "Bosse = Burst-Farming",
+          "text": "Attentat-Bosse droppen zuverlässig eine Portion der typischen seltenen Ressource ihres Planeten – einige mit garantierten 100 % (wie Sargas Ruk für Orokin Cells). Wenn du *jetzt sofort* 5–10 Stück von etwas brauchst, anstatt einen langen Grind zu starten, ist ein schneller Boss-Kill oft schneller als eine endlose Mission."
+        }
+      ]
+    },
+    {
+      "id": "cheat-sheet",
+      "title": "Der Ressourcen-Spickzettel",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Die folgende Referenztabelle deckt die zehn Ressourcen ab, die täglich die „Wo farme ich...“-Threads im Subreddit füllen. Node-Namen ändern sich seltener als Drop-Raten, aber DE verschiebt manchmal Dinge – betrachte die Spalte **Go-to-Farm** als verlässlichen Ausgangspunkt und überprüfe die genaue beste Node auf der Drop-Map oder im Live-Wiki."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Ressource",
+              "Seltenheit",
+              "Herkunft",
+              "Go-to-Farm"
+            ],
+            "rows": [
+              [
+                "Orokin Cell",
+                "Selten",
+                "Saturn, Ceres, Deimos Gegner & Container",
+                "Ceres Dark Sector-Survival (z. B. Gabii); Boss Sargas Ruk auf Saturn für einen schnellen Drop"
+              ],
+              [
+                "Neurode",
+                "Selten",
+                "Infested / organisch — Earth, Deimos, Lua, Eris",
+                "Deimos-Survival; Boss Lephantis droppt eine ordentliche Menge"
+              ],
+              [
+                "Neural Sensor",
+                "Selten",
+                "Jupiter (Gas City), Kuva Fortress",
+                "Jupiter-Survival/-Defense; Alad V für einen schnellen Drop"
+              ],
+              [
+                "Argon Crystal",
+                "Selten — ZERFÄLLT",
+                "Nur in The Void — Gegner & Container",
+                "Kurze Void-Capture oder 5-Minuten-Survival, am selben Tag, an dem du herstellst"
+              ],
+              [
+                "Tellurium",
+                "Selten",
+                "Archwing-Gegner (beliebig); Uranus-Submersible-/Sealab-Tilesets",
+                "Uranus Submersible-Survival oder jede Archwing-Mission"
+              ],
+              [
+                "Oxium",
+                "Ungewöhnlich",
+                "Nur Oxium Ospreys (Corpus-Drohnen)",
+                "Io, Jupiter (Defense) — töte Ospreys, bevor sie sich selbst zerstören"
+              ],
+              [
+                "Nitain Extract",
+                "Selten",
+                "NICHT auf Nodes farmbar",
+                "Nightwave-Cred-Shop; Reaktor-Sabotage-Verstecke; Ghoul Purge"
+              ],
+              [
+                "Plastids",
+                "Ungewöhnlich",
+                "Saturn, Uranus, Phobos, Pluto, Eris",
+                "Zusammen mit anderen seltenen Ressourcen einsammeln; jedes Dark Sector-Survival"
+              ],
+              [
+                "Nano Spores",
+                "Häufig",
+                "Infested — Saturn, Neptune, Eris, Deimos",
+                "Ein einziges Dark Sector-Survival (z. B. Piscinas) bringt Tausende ein"
+              ],
+              [
+                "Kuva",
+                "Spezial",
+                "Kuva Siphon / Flood; Kuva-Survival",
+                "Kuva-Survival auf der Kuva Fortress; Siphons/Floods für schnelle Drops"
+              ]
+            ],
+            "note": "Unsicher, welche Node? Nutze die Drop-Maps auf der Website unter /star-chart und /star-chart-3d, um genau zu sehen, wo welches Material droppt, oder gleiche es mit dem Live-Wiki ab, um die aktuell ertragreichste Node zu finden."
+          }
+        }
+      ]
+    },
+    {
+      "id": "multipliers",
+      "title": "Stapele deine Multiplikatoren (das schlägt jede Node-Suche)",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Der größte Hebel beim Ressourcen-Farming ist nicht, *welche* Node du wählst – sondern wie viele Multiplikatoren du stapelst. Die beiden Booster, eine Begleiter-Loot-Mod und eine Loot-Frame-Fähigkeit multiplizieren sich alle **miteinander**. Allein das Laufen mit beiden Boostern bringt bereits den **4× Ertrag**; fügst du einen Begleiter mit **Loyal Retriever** und einen Nekros hinzu, holst du ein Vielfaches von dem heraus, was ein einfacher Solo-Run auf derselben Node einbringt."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Multiplikator",
+              "Effekt",
+              "Stapelbar?"
+            ],
+            "rows": [
+              [
+                "Resource Booster",
+                "2× Ressourcenmenge pro Drop",
+                "Ja"
+              ],
+              [
+                "Resource Drop Chance Booster",
+                "2× Chance, dass überhaupt eine Ressource droppt",
+                "Ja"
+              ],
+              [
+                "Loyal Retriever (Begleiter-Mod)",
+                "Passive Chance, jeden Ressourcen-/Credit-Pickup zu verdoppeln – auf jedem Bestien-Begleiter ausrüstbar",
+                "Ja"
+              ],
+              [
+                "Nekros — Desecrate",
+                "Zwingt besiegte Gegner, ihre Loot-Tabelle erneut zu würfeln",
+                "Ja — aber nicht mit anderen Loot-bei-Tod-Frames"
+              ],
+              [
+                "Khora / Hydroid — Pilfering-Augmente",
+                "Zusätzliche Loot-Würfe von Gegnern, die durch die Fähigkeit getötet wurden",
+                "Ja — aber nicht mit Desecrate"
+              ],
+              [
+                "Dark Sector-Node",
+                "Integrierter Ressourcen-Drop-Bonus auf der Node selbst",
+                "Ja"
+              ]
+            ],
+            "note": "Booster können mit Platin gekauft oder in Nightwave, Sorties und Login-Belohnungen erhalten werden – halte nach kostenlosen Ausschau, bevor du Platin ausgibst. Achtung: Die Loot-bei-Tod-Fähigkeiten (Nekros Desecrate und die Khora/Hydroid Pilfering-Augmente) stapeln sich nicht untereinander, bringe also nur einen Loot-Frame mit."
+          }
+        },
+        {
+          "type": "tip",
+          "title": "Die Traum-Kombo",
+          "text": "Resource Booster + Resource Drop Chance Booster + ein Bestien-Begleiter mit **Loyal Retriever** + ein Nekros oder eine Khora, gespielt in einem **Dark Sector-Survival** auf dem Zielplaneten. Dieses eine Setup farmt jede noch so lange Node-Suche in Grund und Boden. Wenn du nur einen Booster besitzt, priorisiere den **Drop Chance**-Booster für seltene Ressourcen – die Wahrscheinlichkeit zu verdoppeln, dass eine seltene Ressource überhaupt erscheint, ist wichtiger, als einen Stapel zu verdoppeln, den du gar nicht erst bekommen hast."
+        }
+      ]
+    },
+    {
+      "id": "argon",
+      "title": "Argon Crystals: Beachte die Zerfallszeit",
+      "blocks": [
+        {
+          "type": "warn",
+          "title": "Argon ist die einzige Ressource, die verdirbt",
+          "text": "Das Spiel löscht täglich beim Reset ungefähr **die Hälfte deines Bestands an Argon Crystals**, und jeder einzelne Kristall verschwindet innerhalb von ein bis zwei Tagen nach dem Aufheben. Ein Haufen, den du heute Abend farmst, ist morgen größtenteils wertlos. Das ist Absicht – lege niemals, wirklich niemals, Vorräte an Argon an."
+        },
+        {
+          "type": "p",
+          "text": "Argon Crystals droppen **nur in the Void**, von Gegnern und Containern. Der richtige Schritt ist Just-in-time: Farme Argon in der **gleichen Session, in der du den Bau startest**, der es benötigt. Eine einzige Void-Capture oder ein 5-minütiges Void-Survival deckt die meisten Rezepte ab. Bonus – Void-Missionen öffnen Relics, während du dort bist, sodass du Argon und Platin in einem Rutsch farmst. Siehe [Relic-Wert: Öffnen oder verkaufen](/relics-value) und [welche Relics sich pro Run am meisten lohnen](/relic-farming)."
+        },
+        {
+          "type": "info",
+          "title": "Auf einem Haufen überschüssigem Argon sitzen geblieben?",
+          "text": "Es ist einer der Running Gags auf r/Warframe („Wie verbrauche ich 588 Argon in 1 Stunde“). Die Antwort: Verfüttere es an deinen [Helminth](/guides/helminth), bevor es zerfällt. Das ist das klassische Ventil für jede überschüssige Ressource, die du zu viel gefarmt hast."
+        }
+      ]
+    },
+    {
+      "id": "awkward-ones",
+      "title": "Das unangenehme Trio: Nitain, Oxium, Tellurium",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Nitain Extract** — das kannst du nicht auf einer Node grinden, was jeden neuen Spieler stolpern lässt, der es versucht. Es stammt aus den **Nightwave**-Cred-Angeboten (ein immer verfügbarer „Dauerbrenner“-Kauf, 5 für 15 Cred), Reaktor-**Sabotage**-Ressourcenverstecken und **Ghoul Purge**-Aufträgen. Halte eine kleine Reserve an Nitain *und* Forma bereit – zusammen blockieren sie Aura Forma (das beides kostet) und mehrere ältere Frames, und sie scheinen immer im ungünstigsten Moment auszugehen."
+        },
+        {
+          "type": "p",
+          "text": "**Oxium** — wird nur von **Oxium Ospreys** (den fliegenden Corpus-Drohnen) gedroppt, und zwar *nur, wenn du sie zerstörst, bevor sie sich selbst zerstören*. Du brauchst eine Corpus-Node, die Ospreys in Massen spawnt; die altbewährte Wahl ist **Io auf Jupiter** (Defense), was Oxium und Meisterschafts-Affinität gleichzeitig stapelt. Priorisiere die Ospreys – ein explodierter Osprey droppt nichts."
+        },
+        {
+          "type": "p",
+          "text": "**Tellurium** — ein seltener Drop von **Archwing**-Gegnern (jede Archwing-Mission, jeder Planet) und aus den **Uranus**-Submersible-/Sealab-Tilesets. Für das Farming am Boden ist ein Uranus Submersible-Survival wie Ophelia mit einem Loot-Frame die verlässliche Wahl; wenn du lieber fliegst, funktioniert jede Archwing-Node. Es ist überall selten, also bringe Booster und einen Nekros mit."
+        }
+      ]
+    },
+    {
+      "id": "staples",
+      "title": "Herstellungs-Grundlagen: Cells, Neurodes, Sensors & Massenmaterialien",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Dies sind die seltenen Ressourcen (plus zwei häufige), die du beim Bau von Frames, Waffen und Begleitern im Überfluss verbrauchen wirst. Jede hat einen Boss für schnelles Farming und eine endlose Node zum Grinden von Stapeln:"
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "Orokin Cells",
+              "v": "Saturn & Ceres. Boss Sargas Ruk (Saturn) für einen garantierten schnellen Drop; ein Ceres Dark Sector-Survival wie Gabii für größere Mengen."
+            },
+            {
+              "k": "Neurodes",
+              "v": "Infested/organisch auf Earth, Deimos, Lua. Lephantis (Deimos) droppt mehrere beim Kill; Deimos-Survival zum Grinden."
+            },
+            {
+              "k": "Neural Sensors",
+              "v": "Jupiter Gas City (und Kuva Fortress). Alad V für einen schnellen Drop; ein Jupiter-Survival wie Cameria zum Grinden."
+            },
+            {
+              "k": "Plastids",
+              "v": "Saturn, Uranus, Phobos, Pluto, Eris — diese sammelst du passiv, während du andere seltene Ressourcen auf diesen Planeten farmst."
+            },
+            {
+              "k": "Nano Spores",
+              "v": "Jeder Planet mit vielen Infested (Saturn, Neptune, Eris, Deimos). Ein einziges Dark Sector-Survival bringt dir Tausende ein; du wirst diese selten gezielt farmen."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kuva",
+      "title": "Kuva: Die Endgame-Ressource",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Kuva steht außerhalb der normalen Loot-Tabellen. Es ist die Währung zum Rollen von [Rivens](/riven-value) und zum Konvertieren/Besiegen von Kuva Liches, und du verdienst es in speziellen Missionen: **Kuva Siphon** und **Kuva Flood** (wandernde Nodes auf der Sternenkarte) für schnelle Erfolge sowie **Kuva-Survival auf der Kuva Fortress** für große Mengen, wo regelmäßige Kuva Harvester große Kuva-Blöcke droppen. Resource Booster und die Loot-Verdopplungs-Mod eines Begleiters funktionieren hier genauso wie bei jeder anderen Ressource."
+        },
+        {
+          "type": "p",
+          "text": "Da Kuva direkt in das Riven-Glücksspiel einfließt – das tiefste Platin-Grab im Spiel –, widmen wir ihm eine eigene ausführliche Analyse. Die vollständige Aufschlüsselung der Methoden findest du im [Kuva-Farming-Guide](/guides/kuva). Überprüfe außerdem mit dem [Riven-Wert-Schätzer](/riven-value), was ein gerolltes Riven tatsächlich wert ist, bevor du 20.000 Kuva auf der Jagd nach einem God-Roll verbrennst."
+        }
+      ]
+    },
+    {
+      "id": "smart-farming",
+      "title": "Passives Einkommen & eine wiederholbare Routine",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Zwei Kraftmultiplikatoren, die die meisten Spieler vergessen, und ein Run-Muster, das du für jede seltene Ressource wiederholen kannst:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Extraktoren** — platziere einen **Titan**- (bevorzugt häufige) oder **Distilling**-Extractor (bevorzugt seltene Ressourcen) auf einem beliebigen Planeten, dessen Nodes du vollständig freigeschaltet hast. Sie sammeln im Stillen Ressourcen, während du offline bist. Das Rotieren von Distilling-Extractors über verschiedene Planeten bringt dir kostenlose Neurodes, Orokin Cells und Tellurium für null Spielzeit.",
+            "**Prüfe vor dem Grinden** — viel Panik der Marke „Ich brauche 25 Orokin Cells“ ist vermeidbar. Vielleicht kannst du das fertige Prime-Teil einfach für ein wenig Platin kaufen, anstatt die Ressourcenkosten zu farmen. Vergleiche mit [Set- vs. Einzelteil-Kosten](/comparison) und prüfe die [Ducat-Werte](/ducats), bevor du dich auf einen Farm festlegst."
+          ]
+        },
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "h": "Lade deine Multiplikatoren",
+              "p": "Rüste einen Resource- + Resource Drop Chance Booster aus (oder bringe zumindest einen Bestien-Begleiter mit der Loyal Retriever-Mod mit). Kostenlose Booster tauchen ständig in Login-Belohnungen, Sorties und Nightwave auf."
+            },
+            {
+              "h": "Bringe einen Loot-Frame mit",
+              "p": "Nekros (Desecrate) oder Khora (Pilfering Strangledome) – oder schließe dich mit jemandem zusammen, der einen hat. Ihre zusätzlichen Drops stapeln sich mit deinen Boostern (obwohl die beiden Loot-bei-Tod-Frames sich nicht untereinander stapeln)."
+            },
+            {
+              "h": "Wähle eine dichte, endlose Node",
+              "p": "Ein Dark Sector-Survival auf dem Zielplaneten ist ideal – endlose Spawns plus ein integrierter Ressourcenbonus. Bestätige die Node auf [der Drop-Map](/star-chart-3d)."
+            },
+            {
+              "h": "Spiele in kurzen Zyklen",
+              "p": "5–10 Minuten, extrahieren und nur dann erneut starten, wenn dir wirklich noch etwas fehlt. Seltene Ressourcen basieren auf einer Wahrscheinlichkeit, daher ist länger nicht linear besser, sobald dein Booster-Fenster abgelaufen ist."
+            },
+            {
+              "h": "Argon ist die Ausnahme",
+              "p": "Farme Argon Crystals nur am selben Tag, an dem du baust – es zerfällt, daher ist ein vorbeugender Vorrat verschwendete Mühe."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Wo ist der beste Ort, um Orokin Cells zu farmen?",
+      "a": "Saturn und Ceres. Für einen schnellen Drop töte den Saturn-Boss Sargas Ruk – er droppt Orokin Cells beim Tod (ein garantierter Drop). Um größere Mengen zu grinden, spiele ein Ceres Dark Sector-Survival wie Gabii mit einem Nekros und einem Resource Booster. Bestätige die genaue Node auf [der Drop-Map](/star-chart-3d)."
+    },
+    {
+      "q": "Warum verschwinden meine Argon Crystals ständig?",
+      "a": "Argon Crystals zerfallen absichtlich – das Spiel entfernt täglich beim Reset etwa die Hälfte deines Bestands, und jeder Kristall verschwindet innerhalb von ein bis zwei Tagen nach dem Aufheben. Farme Argon (in the Void) nur direkt vor dem Herstellen des Gegenstands, der es benötigt, und verfüttere Überschüsse an deinen [Helminth](/guides/helminth), damit sie nicht verschwendet werden."
+    },
+    {
+      "q": "Wie farme ich Nitain Extract?",
+      "a": "Du kannst Nitain auf keiner Node grinden – das ist der Haken. Kaufe es im Nightwave-Cred-Shop (es ist ein immer verfügbares „Dauerbrenner“-Angebot, 5 für 15 Cred) und hole es dir aus Reaktor-Sabotage-Ressourcenverstecken und Ghoul Purge-Aufträgen. Halte eine kleine Reserve bereit, da es Aura Forma und einige ältere Frames blockiert."
+    },
+    {
+      "q": "Stapeln sich Resource Booster mit Loot-Frames und der Loot-Mod meines Begleiters?",
+      "a": "Ja — sie alle multiplizieren sich miteinander. Ein Resource Booster (2× Menge) und ein Resource Drop Chance Booster (2× Chance) stapeln sich allein schon auf das ca. 4-fache, zusätzlich zu Loot-Frame-Fähigkeiten wie Nekros Desecrate. Ein wichtiger Hinweis: Seit der Begleiter-Überarbeitung 2024 ist der alte Smeeta Charm-Effekt „doppelte Ressourcen“ Geschichte – die Ressourcenverdopplung liegt nun auf der Mod Loyal Retriever, die du auf jedem Bestien-Begleiter (nicht nur einer Smeeta) für eine passive Chance auf Verdopplung jedes Pickups ausrüsten kannst. Das Stapeln dieser Multiplikatoren ist weitaus wichtiger als die Suche nach der einen „perfekten“ Node."
+    },
+    {
+      "q": "Was ist der schnellste Weg, um Oxium zu farmen?",
+      "a": "Oxium droppt nur von Oxium Ospreys, und zwar nur, wenn du sie zerstörst, bevor sie sich selbst zerstören. Die altbewährte Wahl ist Io auf Jupiter (Defense), wo Ospreys in Massen spawnen und gleichzeitig Meisterschafts-Affinität verteilt wird. Fokussiere die Ospreys schnell – ein explodierter Osprey droppt nichts."
+    },
+    {
+      "q": "Was ist der beste Kuva-Farm?",
+      "a": "Kuva-Survival auf der Kuva Fortress für die reine Menge, plus Kuva Siphons und Floods (wandernde Nodes auf der Sternenkarte) für schnelle Erfolge. Resource Booster und die Loot-Verdopplungs-Mod eines Begleiters verstärken es wie alles andere auch. Siehe den vollständigen [Kuva-Farming-Guide](/guides/kuva)."
+    },
+    {
+      "q": "Verdoppelt Nekros Desecrate tatsächlich meine Ressourcen?",
+      "a": "Nicht ganz — Desecrate zwingt besiegte Gegner, ihre Loot-Tabelle ein zweites Mal zu würfeln, was zusätzliche Drops erzeugt, die auch Ressourcen enthalten. Es stapelt sich mit Resource Boostern und Begleiter-Loot-Mods, sodass ein Nekros oder eine Khora im Team die Ausbeute für alle Beteiligten spürbar erhöht, nicht nur für sich selbst. Beachte, dass Desecrate und die Khora/Hydroid Pilfering-Augmente allesamt Loot-bei-Tod-Effekte sind, weshalb sie sich nicht untereinander stapeln – ein Loot-Frame pro Team reicht aus."
+    },
+    {
+      "q": "Was mache ich mit Ressourcen, die ich nicht brauche?",
+      "a": "Die meisten rohen Ressourcen sind nicht handelbar, daher ist das Hauptventil dein [Helminth](/guides/helminth), der überschüssige Materialien für Invigorations und Fähigkeiten-Subsumierungen verbraucht. Noch besser: Farme seltene Ressourcen erst gar nicht im Übermaß – prüfe, ob du das fertige [Prime-Teil](/comparison) einfach für ein wenig Platin kaufen kannst, bevor du die Ressourcenkosten grindest."
+    }
+  ],
+  "videos": [
+    {
+      "id": "ekBT4xub-oQ",
+      "title": "Where To Find: Orokin Cells, Neurodes, Tellurium, and Argon Crystals Fast | Warframe",
+      "channel": "LVMIAS"
+    },
+    {
+      "id": "DzdkPJZyW8I",
+      "title": "Warframe - Best Way To Farm Resources - Star Chart Edition",
+      "channel": "MCGamerCZ"
+    },
+    {
+      "id": "wKLYZWcsnlI",
+      "title": "Where to farm materials?! (Orokin,Argon,Tellerum,Plastids,Neurodes & more) [Warframe]",
+      "channel": "TheYamiks"
+    },
+    {
+      "id": "OlXa8dap4fI",
+      "title": "Best Ways To FARM Every Resources in Warframe 2025",
+      "channel": "Tenno Tactics"
+    }
+  ],
+  "sources": [
+    {
+      "label": "r/Warframe — \"How do I use 588 argon crystals within 1 hour\" (the decay panic)",
+      "href": "https://reddit.com/r/Warframe/comments/1sbsb9t/how_do_i_use_588_argon_crystals_within_1_hour/"
+    },
+    {
+      "label": "r/Warframe — \"DE, please don't nerf charm\" (the Smeeta Charm debate; its resource buff has since moved to the Loyal Retriever mod)",
+      "href": "https://reddit.com/r/Warframe/comments/1ek4cyi/de_please_dont_nerf_charm/"
+    },
+    {
+      "label": "r/Warframe — \"Petition to farm 1000 oxium\" (the Oxium grind)",
+      "href": "https://reddit.com/r/Warframe/comments/98iay8/petition_to_get_rebbecca_and_meg_to_farm_1000/"
+    },
+    {
+      "label": "r/Warframe — farming 15 argon crystals on defense",
+      "href": "https://reddit.com/r/Warframe/comments/ef3qbe/this_is_the_story_of_our_main_protagonist_blue/"
+    },
+    {
+      "label": "Warframe Wiki",
+      "href": "https://wiki.warframe.com/"
+    }
+  ],
+  "related": [
+    {
+      "label": "Kuva-Farming",
+      "to": "/guides/kuva",
+      "icon": "diamond-stone",
+      "note": "Die Endgame-Ressource zum Rollen von Rivens"
+    },
+    {
+      "label": "Credit-Farming",
+      "to": "/guides/credits",
+      "icon": "cash-multiple",
+      "note": "Finanziere jeden Foundry-Bau"
+    },
+    {
+      "label": "Helminth-System",
+      "to": "/guides/helminth",
+      "icon": "dna",
+      "note": "Wohin deine überschüssigen Ressourcen fließen"
+    },
+    {
+      "label": "Drop-Location-Map",
+      "to": "/star-chart-3d",
+      "icon": "map-marker-radius",
+      "note": "Finde die genaue Node für jedes Material"
+    },
+    {
+      "label": "Relic-Farming",
+      "to": "/guides/relics",
+      "icon": "cube-outline",
+      "note": "Void-Runs dienen gleichzeitig als Argon-Farms"
+    },
+    {
+      "label": "Set- vs. Einzelteil-Rechner",
+      "to": "/comparison",
+      "icon": "scale-balance",
+      "note": "Das Teil kaufen oder die Materialien farmen?"
+    }
+  ],
+  "updated": "2026-07-18"
+}

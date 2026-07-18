@@ -1,0 +1,450 @@
+{
+  "slug": "riven",
+  "eyebrow": "Wissenszentrum · Riven Mods",
+  "title": "Riven Mods erklärt",
+  "lede": "Rivens sind die Spielautomaten-Mods von Warframe: waffengebunden, zufällig gerollt und in der Lage, eine vergessene Waffe in ein Monster zu verwandeln. Hier ist, wie sie funktionieren, was sie wertvoll macht und wann sie dein Kuva tatsächlich wert sind.",
+  "category": "systems",
+  "readMins": 9,
+  "stats": [
+    {
+      "num": "2–4",
+      "label": "Stats pro Riven",
+      "tone": "good"
+    },
+    {
+      "num": "1–5",
+      "label": "Disposition-Punkte",
+      "tone": "alt"
+    },
+    {
+      "num": "8",
+      "label": "Max. Riven-Rang",
+      "tone": "gold"
+    },
+    {
+      "num": "~3,500",
+      "label": "Kuva-Limit pro Re-Roll",
+      "tone": "gold"
+    }
+  ],
+  "sections": [
+    {
+      "id": "what-is-a-riven",
+      "title": "Was eine Riven Mod eigentlich ist",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Eine **Riven Mod** ist eine spezielle Mod mit **zufälligen Stats, die an eine einzige Waffe gebunden ist** (und deren Varianten). Eine Braton-Riven passt auf die Braton — und ihre Prime-, Vandal- und MK1-Versionen — aber sonst nichts; eine Kronen-Riven passt nur auf die Kronen. Wenn sich eine Riven enthüllt, rollt sie **2–4 Stats** — eine Mischung aus mächtigen Buffs und manchmal einem einzelnen Nachteil (einem *Fluch*). Keine zwei Rivens sind identisch, weshalb sie sowohl die beste Mod auf deiner Waffe als auch eine eigene, chaotische Handelswirtschaft sein können."
+        },
+        {
+          "type": "p",
+          "text": "Rivens gibt es für die Hauptwaffenfamilien — **Gewehr, Schrotflinte, Pistole, Nahkampf und Archgun** (plus Kitgun- und Zaw-Typen). Der Vorteil ist riesig: Eine gute Riven kann mehr rohe Kraft verleihen als jede einzelne normale Mod. Der Haken ist, dass alles an ihr — die Stats, ihre Werte, sogar für *welche* Waffe sie ist — reiner Zufall (RNG) ist, bis du sie enthüllst, und sie ist eine der kapazitätsintensivsten Mods im Spiel."
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "Was es ist",
+              "v": "Eine waffenspezifische Mod mit zufälligen Stats"
+            },
+            {
+              "k": "Passt auf",
+              "v": "Eine Waffe und ihre Varianten — eine \"Braton\"-Riven funktioniert auf der Braton, Braton Prime, Vandal und MK1"
+            },
+            {
+              "k": "Stats",
+              "v": "2–4 zufällige — 2–3 Buffs plus ein optionaler Fluch"
+            },
+            {
+              "k": "Max. Rang",
+              "v": "Rang 8, aufgewertet mit Endo (sehr teuer)"
+            },
+            {
+              "k": "MR zum Ausrüsten",
+              "v": "Eine zufällige Mastery Rank-Anforderung (8–16) wird beim Enthüllen festgelegt"
+            },
+            {
+              "k": "Voraussetzung",
+              "v": "Schließe die Quest „The War Within“ ab — sie gewährt dir deine erste Riven und schaltet die Hauptquellen frei"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "disposition",
+      "title": "Disposition: Warum dieselbe Idee auf einer Waffe göttlich und auf einer anderen Schrott ist",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Riven-Disposition** ist ein Multiplikator pro Waffe, der als **1 bis 5 Punkte** angezeigt wird. Er skaliert, wie stark die Stats einer Riven auf dieser Waffe sind. Entscheidend ist, dass die Disposition *umgekehrt proportional zur Beliebtheit* ist: Schwache, selten genutzte Waffen erhalten eine **hohe** Disposition (größere Riven-Boni), während beliebte Meta-Waffen eine **niedrige** Disposition (kleinere Boni) erhalten — und selbst verschiedene Varianten derselben Waffe können leicht unterschiedliche Dispositionen aufweisen. Es ist das Balancing-Werkzeug von DE, damit Rivens die besten Waffen nicht einfach permanent noch besser machen."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Punkte",
+              "Bedeutet in etwa",
+              "Typische Waffe"
+            ],
+            "rows": [
+              [
+                "5 (höchste)",
+                "Stärkste Rolls (ca. ×1,5 an der Spitze)",
+                "Selten genutzte / unterdurchschnittliche Waffen"
+              ],
+              [
+                "3 (mittlere)",
+                "Solide, mittlere Boni",
+                "Gute, aber Nicht-Meta-Optionen"
+              ],
+              [
+                "1 (niedrigste)",
+                "Schwächste Rolls (ca. ×0,5)",
+                "Sehr beliebte / Meta-Waffen"
+              ]
+            ],
+            "note": "Die genauen Multiplikatoren sind Richtwerte und DE passt sie regelmäßig an, je nachdem, wie oft eine Waffe verwendet wird — schaue im Live-Wiki nach den aktuellen Punkten einer Waffe."
+          }
+        },
+        {
+          "type": "info",
+          "text": "Da sich die Dispositionen verschieben, kann eine gekaufte Riven über Nacht an Wert gewinnen oder verlieren, wenn DE eine Waffe anpasst. Ein *Nerf* der Disposition einer Waffe macht ihre Rivens schwächer (und günstiger); ein *Buff* macht sie stärker (und teurer). Dies ist der Hauptgrund für die starken Preisschwankungen bei Rivens."
+        }
+      ]
+    },
+    {
+      "id": "reading-a-riven",
+      "title": "Eine Riven lesen: Buffs, Flüche und „God Rolls“",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Jede enthüllte Riven hat ein zufälliges Layout aus positiven Stats und optional einem negativen. Ein **Fluch** ist nicht automatisch schlecht — eine Riven *mit* einem Fluch erhält einen Boost auf ihre positiven Werte. Der Trick besteht darin, einen Fluch zu erhalten, der dir egal ist (wie `-zoom`, `-recoil` oder `-impact` bei einem Build, der diese ignoriert), sodass du die verstärkten Buffs kostenlos behältst."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Layout",
+              "Bedeutung",
+              "Wert-Hinweis"
+            ],
+            "rows": [
+              [
+                "2 Buffs",
+                "Zwei positive Stats, kein Fluch",
+                "Sicher, aber bescheiden — günstig und völlig ausreichend für Gelegenheitsspieler"
+              ],
+              [
+                "3 Buffs",
+                "Drei positive Stats, kein Fluch",
+                "Ein starker Allrounder ohne Nachteile"
+              ],
+              [
+                "2 Buffs + 1 Fluch",
+                "Zwei positive Stats plus ein Fluch; Buffs sind verstärkt",
+                "Großartig, wenn der Fluch harmlos ist"
+              ],
+              [
+                "3 Buffs + 1 Fluch",
+                "Drei positive Stats plus ein Fluch; höchste Stat-Werte",
+                "Die klassische Form eines „God Rolls“"
+              ]
+            ]
+          }
+        },
+        {
+          "type": "p",
+          "text": "Was als *guter* Buff gilt, hängt von der Waffe ab. Bei einer Crit-Waffe wünscht man sich Dinge wie **Kritische Chance, Kritischer Schaden, Mehrfachschuss und Basisschaden**, idealerweise mit dem richtigen Elementar- oder Fraktions-Stat. Bei einer Status-Waffe würde man stattdessen Statuschance und Mehrfachschuss bevorzugen. Es gibt keinen universell besten Roll — die ideale Riven ist diejenige, die die Lücken füllt, die deine normalen Mods nicht abdecken können, und sich wie jede andere Mod in deinen normalen Build einfügt."
+        },
+        {
+          "type": "tip",
+          "text": "Der erfundene Name der Riven (dieses Kauderwelsch wie `critacan`/`visitox`) ist rein kosmetisch — er wird aus den Stats generiert und beeinflusst die Stärke nicht. Beurteile eine Riven nach ihren tatsächlichen Stat-Zeilen, ihrer Disposition und der MR-Anforderung, niemals nach ihrem Namen."
+        }
+      ]
+    },
+    {
+      "id": "veiled-and-unveiling",
+      "title": "Verhüllte Rivens und wie man sie freischaltet",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Rivens erhält man normalerweise **verhüllt** (veiled) — du kannst die Waffe oder die Stats noch nicht sehen, sondern nur die Kategorie (Gewehr, Schrotflinte, Pistole, Nahkampf usw.). Um sie zu enthüllen, musst du eine **zufällige Herausforderung** abschließen, während du eine Waffe des passenden Typs verwendest, wie z. B. das Töten von Gegnern mit Kopfschüssen in der Luft, das Abschließen einer Mission, ohne entdeckt zu werden, oder das Töten einer Reihe von Gegnern im Rutschen. Schließe die Herausforderung ab und die Riven rollt ihre Waffe und ihre Stats aus."
+        },
+        {
+          "type": "p",
+          "text": "Die Hauptquellen für verhüllte Rivens sind **Sorties** — die tägliche Herausforderung aus drei Missionen, die in etwa einem Viertel der Fälle eine Riven einbringt — und der **Steel Path Circuit** in Duviri, dessen wöchentlicher Belohnungspfad eine verhüllte Riven vergeben kann. Du kannst auch **Riven Slivers** farmen (Eximus-Gegner lassen sie fallen, besonders auf dem Steel Path) und **zehn davon zu Palladino** in Iron Wake auf der Erde bringen, die sie im Rahmen eines wöchentlichen Limits in eine verhüllte Riven umwandelt. Das Abschließen der Quest **The War Within** gewährt dir ebenfalls deine allererste Riven. Beachte, dass Kuva Siphon- und Kuva Flood-Missionen dir das *Kuva* geben, das du für Re-Rolls ausgibst — sie lassen die Rivens nicht selbst fallen."
+        },
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "h": "Erhalte eine verhüllte Riven",
+              "p": "Schließe eine Sortie ab, fordere eine aus dem wöchentlichen Belohnungspfad des Steel Path Circuits in Duviri ein oder farme zehn Riven Slivers und tausche sie bei Palladino in Iron Wake ein."
+            },
+            {
+              "h": "Überprüfe die Herausforderung",
+              "p": "Öffne die Riven in deinem Mods-Menü, um ihre Enthüllungs-Herausforderung und die erforderliche Waffenkategorie zu sehen."
+            },
+            {
+              "h": "Rüste den richtigen Waffentyp aus",
+              "p": "Rüste eine Waffe dieser Kategorie aus (Gewehr, Pistole, Nahkampf usw.) — die Herausforderung zählt nur, wenn der passende Typ ausgerüstet ist."
+            },
+            {
+              "h": "Schließe die Herausforderung ab",
+              "p": "Erledige die Aufgabe in einer beliebigen geeigneten Mission. Sobald dies erledigt ist, enthüllt die Riven sofort ihre Waffe und ihre zufälligen Stats."
+            }
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "Einige Herausforderungen sind knifflig („keine Schilde“, „keine Alarme“, bestimmte Missionstypen). Schlage den genauen Wortlaut zuerst im [Wiki](https://wiki.warframe.com/) nach — zwei Minuten Lesen ersparen dir ein Dutzend Fehlversuche, und viele lassen sich schnell in einer niedrigstufigen Solo-Mission erledigen."
+        }
+      ]
+    },
+    {
+      "id": "rolling-with-kuva",
+      "title": "Rollen mit Kuva",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Gefällt dir dein Roll nicht? Du kannst eine Riven **re-rollen** (zyklieren), um sie komplett neu zu würfeln — die Stats, wie viele es sind und ihre Werte ändern sich alle. Jeder Re-Roll kostet **Kuva**, und der Preis steigt mit jedem Roll auf dieser Riven: Er beginnt bei etwa 900 und klettert auf eine **Obergrenze von etwa 3.500 Kuva pro Roll**, wo er bleibt. Kuva stammt aus Kuva Siphon- und Kuva Flood-Missionen sowie dem endlosen Kuva Survival auf der Kuva Fortress."
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "Kosten",
+              "v": "Kuva, pro Re-Roll"
+            },
+            {
+              "k": "Anstieg",
+              "v": "~900 Kuva, ansteigend bis zu einer Obergrenze von ~3.500"
+            },
+            {
+              "k": "Effekt",
+              "v": "Würfelt Stat-Anzahl, Stats und Werte neu"
+            },
+            {
+              "k": "Chancen",
+              "v": "Reines RNG — kein Pity-System, keine Möglichkeit, gezielt auf einen bestimmten Stat zu gehen"
+            }
+          ]
+        },
+        {
+          "type": "warn",
+          "text": "Re-rolling ist ein bodenloses Kuva-Grab. Da es reines RNG ist, kann die Jagd nach einem perfekten Roll *Millionen* an Kuva verschlingen — ein bekannter Spieler wurde dabei gefilmt, wie er eine einzige Riven tausende Male neu gerollt hat. Bevor du grindest, entscheide, was „gut genug“ ist, und höre dort auf. Oft ist es günstiger, einen soliden Roll von einem anderen Spieler zu kaufen, als selbst um einen God Roll zu spielen."
+        }
+      ]
+    },
+    {
+      "id": "ranking-and-endo",
+      "title": "Rivens aufwerten — und warum schlechte einfach nur Endo sind",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Wie andere Mods werden Rivens mit **Endo und Credits** aufgewertet, von **Rang 0 bis Rang 8**. Jeder Rang erhöht die Stat-Werte *und* die Kapazitätskosten, die etwa 18 erreichen können — was eine maximierte Riven zu einer der kapazitätsintensivsten Mods im Spiel macht. Eine Waffe mit einer Rang-8-Riven benötigt fast immer ein oder zwei zusätzliche Forma, damit alles hineinpasst. Wenn du Endo brauchst, deckt der [Endo-Farming-Guide](/guides/endo) die schnellsten Quellen ab."
+        },
+        {
+          "type": "tip",
+          "text": "Hast du eine Riven, die du nie benutzen wirst? **Löse sie für Endo auf.** Die Menge skaliert damit, wie oft sie neu gerollt wurde (plus Rang und MR), sodass stark zyklierte Schrott-Rivens einen ordentlichen Batzen Endo einbringen können. Da der Markt mit mittelmäßigen Rolls überschwemmt ist, sind die meisten schlechten Rivens für dich als Endo mehr wert als ein Verkauf für 1–2 Plat — prüfe die Zahlen im [Endo- / Plat-Wert-Rechner](/endo), bevor du dich entscheidest, eine aufzulösen, zu behalten oder anzubieten."
+        }
+      ]
+    },
+    {
+      "id": "trading-and-pricing",
+      "title": "Handel und Preisgestaltung von Rivens",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Rivens werden von Spieler zu Spieler gehandelt, und da jede einzigartig ist, ist die Preisgestaltung eher Kunst als Wissenschaft. Ein großartiger Roll auf einer beliebten Waffe kann Hunderte von Platinum wert sein; dieselben Stats auf einer Meta-Waffe mit niedriger Disposition sind unter Umständen fast wertlos. Du kannst auch **verhüllte** Rivens handeln — günstigere, blinde Wetten, bei denen der Käufer die Enthüllung selbst durchführt. Beachte, dass für Rivens eine **höhere Credit-Handelssteuer** anfällt als für normale Mods, und dass du eine **begrenzte Anzahl an Riven-Slots** besitzt, die du mit Platinum erweitern kannst."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Faktor",
+              "Treibt den Preis in die Höhe, wenn…"
+            ],
+            "rows": [
+              [
+                "Waffe",
+                "Es eine beliebte / Meta-Waffe ist, für die viele Spieler Builds erstellen"
+              ],
+              [
+                "Disposition",
+                "Die Waffe viele Punkte hat (4–5), sodass die Stats stärker ins Gewicht fallen"
+              ],
+              [
+                "Stat-Kombination",
+                "Die Buffs zum idealen Build passen und jeder Fluch harmlos ist"
+              ],
+              [
+                "MR & Rolls",
+                "Niedrige MR-Anforderung, plus ein sauberer Roll, bei dem der Käufer kein Bedürfnis hat, ihn neu zu rollen"
+              ]
+            ]
+          }
+        },
+        {
+          "type": "p",
+          "text": "Rate nicht im Dunkeln. Schätze einen fairen Wert, bevor du kaufst oder anbietest, und mache dann einen Realitätscheck auf dem breiteren Markt für dieselbe Waffe:"
+        },
+        {
+          "type": "links",
+          "links": [
+            {
+              "label": "Riven-Wert-Schätzer",
+              "to": "/riven-value",
+              "icon": "calculator-variant",
+              "note": "Schätze, was ein bestimmter Roll wert ist"
+            },
+            {
+              "label": "Endo- / Plat-Wert",
+              "to": "/endo",
+              "icon": "diamond-stone",
+              "note": "Rechnung: Auflösen für Endo vs. Verkaufen"
+            },
+            {
+              "label": "Flip-Finder",
+              "to": "/flip",
+              "icon": "swap-horizontal",
+              "note": "Kauf-Gebot / Verkauf-Forderung Spreads"
+            },
+            {
+              "label": "Community-Tools",
+              "to": "/tools",
+              "icon": "tools",
+              "note": "Riven-Märkte, Wikis und DE-Tools"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "do-you-need-one",
+      "title": "Brauchst du überhaupt eine Riven?",
+      "blocks": [
+        {
+          "type": "info",
+          "text": "Rivens sind **Endgame-Min-Maxing, keine Voraussetzung.** Eine richtig gemoddete Waffe räumt die gesamte Sternenkarte — und den Großteil des Steel Paths — komplett ohne Riven auf. Sie dienen dazu, zusätzliche Stärke aus einer Waffe herauszukitzeln, die du bereits liebst, oder für tiefe Endurance-Runs, und sind nichts, dem ein neuer Spieler hinterherjagen muss."
+        },
+        {
+          "type": "p",
+          "text": "Wenn du neuer bist, priorisiere zuerst deine **Basis-Mods, Schadensarten und Überlebensfähigkeit** — diese sind weitaus wichtiger als jede Riven. Wenn du dann eine möchtest, ist der Kauf eines anständigen Rolls für deine Hauptwaffe fast immer klüger, als dein Kuva für einen God Roll aufs Spiel zu setzen. Und wenn dir eine Riven in den Schoß fällt, die du nie benutzen wirst, betrachte sie als [Endo](/guides/endo) oder ein wenig Handels-Platinum und ziehe weiter."
+        }
+      ]
+    }
+  ],
+  "videos": [
+    {
+      "id": "mDWzPgDUH1k",
+      "title": "What you MUST KNOW about RIVENS in Warframe 2026!",
+      "channel": "MHBlacky"
+    },
+    {
+      "id": "t66oSX1BkLc",
+      "title": "How to Get Riven Mods and What They Do | Beginner's Guide",
+      "channel": "Tipsy"
+    },
+    {
+      "id": "CwcTyXalWrs",
+      "title": "Rings Of Riven Hell | Warframe Riven Mod & Platinum Farming",
+      "channel": "turbomonk"
+    },
+    {
+      "id": "U9-2UbALrQw",
+      "title": "ULTIMATE Riven Mod Guide!",
+      "channel": "Jacsonitos"
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Wie bekomme ich Riven-Mods in Warframe?",
+      "a": "Die Hauptquellen sind Sorties (die tägliche Herausforderung aus drei Missionen, die in etwa einem Viertel der Fälle eine Riven einbringt), der Steel Path Circuit in Duviri und Riven Slivers — farme zehn davon (Eximus-Gegner lassen sie fallen, besonders auf dem Steel Path) und tausche sie bei Palladino in Iron Wake gegen eine verhüllte Riven ein. Du musst zuerst die Quest „The War Within“ abschließen, was dir auch deine allererste Riven einbringt. Kuva Siphon- und Kuva Flood-Missionen geben dir das Kuva, das zum Re-Rollen von Rivens verwendet wird, nicht die Rivens selbst."
+    },
+    {
+      "q": "Wie enthülle ich eine verhüllte Riven?",
+      "a": "Öffne die verhüllte Riven in deinem Mods-Menü, um ihre Herausforderung und die erforderliche Waffenkategorie zu sehen, und schließe diese Herausforderung dann mit einer ausgerüsteten passenden Waffe ab (ein Gewehr für eine Gewehr-Riven usw.). Sobald du sie abgeschlossen hast, enthüllt die Riven ihre Waffe und ihre zufälligen Stats. Schlage den genauen Wortlaut der Herausforderung zuerst im Wiki nach — einige haben knifflige Bedingungen wie keine Schilde oder keine Alarme."
+    },
+    {
+      "q": "Wie rolle ich eine Riven neu und was kostet das?",
+      "a": "Du rollst eine Riven im Mods-Menü mit Kuva neu (zyklieren), was ihre Stats komplett neu würfelt. Die Kosten steigen pro Roll auf dieser Mod an, beginnend bei etwa 900 Kuva und gedeckelt bei fast 3.500. Es ist reines RNG ohne Pity-System, also setze dir ein „gut genug“-Ziel, bevor du anfängst, Kuva zu verbrennen. Farme das Kuva selbst in Kuva Siphon- und Kuva Flood-Missionen sowie auf der Kuva Fortress."
+    },
+    {
+      "q": "Was ist die Riven-Disposition?",
+      "a": "Die Disposition ist ein Multiplikator pro Waffe, der als 1 bis 5 Punkte angezeigt wird und skaliert, wie stark die Stats einer Riven auf dieser Waffe sind. Sie ist umgekehrt proportional zur Beliebtheit: Schwache oder selten genutzte Waffen erhalten eine hohe Disposition (stärkere Rivens), während Meta-Waffen eine niedrige Disposition erhalten. DE passt die Dispositionen regelmäßig an, weshalb die Riven-Preise steigen und fallen — schaue im Live-Wiki nach den aktuellen Punkten einer Waffe."
+    },
+    {
+      "q": "Was ist eine „God Roll“-Riven?",
+      "a": "Ein God Roll ist eine Riven, deren zufällige Stats perfekt zu deinem Build passen — normalerweise drei starke Buffs (wie Kritische Chance, Kritischer Schaden und Mehrfachschuss oder Schaden) plus ein Fluch, der dir egal ist, wie -zoom oder -recoil. Es gibt keinen universell besten Roll; die ideale Riven füllt die Lücken, die deine normalen Mods nicht abdecken können. Nutze unseren /riven-value-Schätzer, um zu ermitteln, was ein bestimmter Roll wert ist."
+    },
+    {
+      "q": "Lohnen sich Rivens für neue Spieler?",
+      "a": "Nicht wirklich — Rivens sind Endgame-Min-Maxing, und eine gut gemoddete Waffe räumt die Sternenkarte und den Großteil des Steel Paths auch ohne eine Riven auf. Konzentriere dich zuerst auf deine Basis-Mods, Schadensarten und Überlebensfähigkeit. Wenn du dann eine Riven möchtest, ist der Kauf eines anständigen Rolls für deine Hauptwaffe meist klüger, als Kuva für einen God Roll aufs Spiel zu setzen."
+    },
+    {
+      "q": "Kann ich eine Riven für Endo auflösen?",
+      "a": "Ja. Ungewollte Rivens können für Endo aufgelöst werden, und die Menge skaliert damit, wie oft die Riven neu gerollt wurde (plus Rang und Mastery-Anforderung), sodass stark zyklierte Schrott-Rivens einen ordentlichen Batzen Endo einbringen. Da der Markt mit mittelmäßigen Rolls überschwemmt ist, ist eine schlechte Riven oft mehr wert als Endo denn als ein Verkauf für 1–2 Platinum — jage sie durch das /endo-Tool, bevor du dich entscheidest."
+    },
+    {
+      "q": "Warum schwanken die Riven-Preise so stark?",
+      "a": "Da jede Riven einzigartig ist, hängt ihr Wert von der Beliebtheit der Waffe, ihrer Disposition, der genauen Stat-Kombination und ihrer MR-Anforderung ab. Wenn DE die Disposition einer Waffe anpasst, wird jede Riven für diese Waffe sofort stärker oder schwächer, was die Preise mit sich zieht. Schätze mit /riven-value immer einen fairen Wert und überprüfe den aktuellen Markt, bevor du kaufst oder anbietest."
+    }
+  ],
+  "sources": [
+    {
+      "label": "Warframe Wiki — Riven Mods",
+      "href": "https://wiki.warframe.com/w/Riven_Mods"
+    },
+    {
+      "label": "Warframe Wiki — Riven Sliver",
+      "href": "https://wiki.warframe.com/w/Riven_Sliver"
+    },
+    {
+      "label": "r/Warframe — I love riven challenges",
+      "href": "https://reddit.com/r/Warframe/comments/1toi7ph/i_love_riven_challanges/"
+    },
+    {
+      "label": "r/Warframe — Every time Sortie gives me a Riven mod",
+      "href": "https://reddit.com/r/Warframe/comments/h0jktp/every_time_sortie_gives_me_a_riven_mod/"
+    },
+    {
+      "label": "r/Warframe — the RNG requiem/Kuva/riven casino rant",
+      "href": "https://reddit.com/r/Warframe/comments/dr46xo/so_let_me_get_this_straight_we_need_to_farm_rng/"
+    }
+  ],
+  "related": [
+    {
+      "label": "Endo-Farming",
+      "to": "/guides/endo",
+      "icon": "diamond-stone",
+      "note": "Rivens aufwerten — oder schlechte zu Endo machen"
+    },
+    {
+      "label": "Riven-Wert-Schätzer",
+      "to": "/riven-value",
+      "icon": "calculator-variant",
+      "note": "Bewerte einen Roll, bevor du handelst"
+    },
+    {
+      "label": "Endo- / Plat-Wert",
+      "to": "/endo",
+      "icon": "scale-balance",
+      "note": "Rechnung: Auflösen für Endo vs. Verkaufen"
+    },
+    {
+      "label": "Flip-Finder",
+      "to": "/flip",
+      "icon": "swap-horizontal",
+      "note": "Kauf-Gebot / Verkauf-Forderung Spreads"
+    },
+    {
+      "label": "Community-Tools",
+      "to": "/tools",
+      "icon": "tools",
+      "note": "Riven-Märkte, Wikis und DE-Tools"
+    }
+  ],
+  "updated": "2026-07-18"
+}

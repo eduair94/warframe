@@ -78,7 +78,11 @@
 
 <script setup lang="ts">
 import { computed, ref, nextTick, onMounted } from 'vue'
-import { FAQS, FAQ_CATEGORIES } from '~/data/faq'
+import { FAQS as EN_FAQS, FAQ_CATEGORIES as EN_CATS } from '~/data/faq'
+
+// Localized content for the active locale (English fallback), aliased to the
+// original names so the rest of the page is unchanged.
+const { faqs: FAQS, categories: FAQ_CATEGORIES } = await useLocalizedFaq(EN_FAQS, EN_CATS)
 
 const { t, locale } = useI18n()
 const localePath = useLocalePath()

@@ -1,0 +1,383 @@
+{
+  "targets": [
+    {
+      "name": "Credits",
+      "aliases": [
+        "credit",
+        "money",
+        "cash",
+        "hollars"
+      ],
+      "kind": "currency",
+      "guide": "credits",
+      "route": "/guides/credits#hollvania",
+      "hint": "Höllvania Techrot safes (Chroma)、the Index、Profit-Taker。",
+      "icon": "mdi-circle-multiple-outline"
+    },
+    {
+      "name": "Platinum",
+      "aliases": [
+        "plat",
+        "premium currency"
+      ],
+      "kind": "currency",
+      "guide": "platinum",
+      "route": "/guides/platinum#what-sells",
+      "hint": "免費遊玩：出售 Prime parts、mods 與 rivens。",
+      "icon": "mdi-cash-multiple"
+    },
+    {
+      "name": "Endo",
+      "aliases": [
+        "ayatan",
+        "ayatan sculpture",
+        "ayatan star",
+        "mod upgrade currency"
+      ],
+      "kind": "currency",
+      "guide": "endo",
+      "route": "/guides/endo",
+      "hint": "Ayatan 塑像、Arbitrations 以及 Endo 密集的任務。",
+      "icon": "mdi-hexagon-multiple-outline"
+    },
+    {
+      "name": "Ducats",
+      "aliases": [
+        "ducat",
+        "orokin ducats",
+        "baro currency",
+        "prime junk"
+      ],
+      "kind": "currency",
+      "guide": "relics",
+      "route": "/guides/relics#cash-out",
+      "hint": "將不需要的 Prime parts 出售給 Baro 以換取 Ducats。",
+      "icon": "mdi-store"
+    },
+    {
+      "name": "Focus",
+      "aliases": [
+        "focus points",
+        "operator xp",
+        "focus school"
+      ],
+      "kind": "currency",
+      "guide": "focus",
+      "route": "/guides/focus#best-farms",
+      "hint": "為升級中的武器裝上 Lens；ESO 與 Onslaught 是快速刷取的地點。",
+      "icon": "mdi-eye-outline"
+    },
+    {
+      "name": "Kuva",
+      "aliases": [
+        "riven reroll",
+        "kuva fuel",
+        "lich currency"
+      ],
+      "kind": "currency",
+      "guide": "kuva",
+      "route": "/guides/kuva#core-farms",
+      "hint": "位於 Kuva Fortress 的 Kuva Survival 與 Siphon/Flood 任務。",
+      "icon": "mdi-water-outline"
+    },
+    {
+      "name": "Standing",
+      "aliases": [
+        "reputation",
+        "rep",
+        "syndicate standing",
+        "faction rep"
+      ],
+      "kind": "reputation",
+      "guide": "standing",
+      "route": "/guides/standing#earning-main",
+      "hint": "使用 medallions 和 tokens 來達到每日每個 syndicate 的 Standing 上限。",
+      "icon": "mdi-handshake-outline"
+    },
+    {
+      "name": "Steel Essence",
+      "aliases": [
+        "essence",
+        "steel path currency",
+        "kuya"
+      ],
+      "kind": "currency",
+      "guide": "steel-path",
+      "route": "/guides/steel-path",
+      "hint": "Steel Path 上的 Acolyte 掉落物與資源儲藏箱。",
+      "icon": "mdi-fire"
+    },
+    {
+      "name": "Orokin Cells",
+      "aliases": [
+        "orokin cell",
+        "cells"
+      ],
+      "kind": "resource",
+      "guide": "resources",
+      "route": "/guides/resources#staples",
+      "hint": "Saturn (Helene)、Deimos 與 Orb Vallis；首領 Kela De Thaym。",
+      "icon": "mdi-hexagon-outline"
+    },
+    {
+      "name": "Neurodes",
+      "aliases": [
+        "neurode",
+        "sensor"
+      ],
+      "kind": "resource",
+      "guide": "resources",
+      "route": "/guides/resources#staples",
+      "hint": "Deimos、Lua 與 Eris；Orb Vallis 的儲藏箱來源很可靠。",
+      "icon": "mdi-sine-wave"
+    },
+    {
+      "name": "Neural Sensors",
+      "aliases": [
+        "neural sensor"
+      ],
+      "kind": "resource",
+      "guide": "resources",
+      "route": "/guides/resources#staples",
+      "hint": "Jupiter (Io) 與 Kuva Fortress。",
+      "icon": "mdi-chip"
+    },
+    {
+      "name": "Plastids",
+      "aliases": [
+        "plastid"
+      ],
+      "kind": "resource",
+      "guide": "resources",
+      "route": "/guides/resources#staples",
+      "hint": "Saturn、Uranus 與 Orb Vallis。",
+      "icon": "mdi-cube-outline"
+    },
+    {
+      "name": "Rubedo",
+      "aliases": [],
+      "kind": "resource",
+      "guide": "resources",
+      "route": "/guides/resources#staples",
+      "hint": "Pluto、Earth 與 Orb Vallis。",
+      "icon": "mdi-cube-outline"
+    },
+    {
+      "name": "Argon Crystals",
+      "aliases": [
+        "argon",
+        "argon crystal",
+        "decaying resource"
+      ],
+      "kind": "resource",
+      "guide": "resources",
+      "route": "/guides/resources#argon",
+      "hint": "僅限 Void，且會在約 24 小時內衰變 — 請在開始製作前再刷取。",
+      "icon": "mdi-diamond-outline"
+    },
+    {
+      "name": "Tellurium",
+      "aliases": [],
+      "kind": "resource",
+      "guide": "resources",
+      "route": "/guides/resources#awkward-ones",
+      "hint": "Archwing 任務、Grineer Sealab 以及 Railjack 殘骸。",
+      "icon": "mdi-atom-variant"
+    },
+    {
+      "name": "Oxium",
+      "aliases": [
+        "oxium osprey"
+      ],
+      "kind": "resource",
+      "guide": "resources",
+      "route": "/guides/resources#awkward-ones",
+      "hint": "在 Oxium Ospreys 自爆前擊殺牠們 (Io、Outer Terminus)。",
+      "icon": "mdi-quadcopter"
+    },
+    {
+      "name": "Nitain Extract",
+      "aliases": [
+        "nitain"
+      ],
+      "kind": "resource",
+      "guide": "resources",
+      "route": "/guides/resources#awkward-ones",
+      "hint": "Nightwave cred 兌換品、破壞任務儲藏箱與警報任務。",
+      "icon": "mdi-flask-outline"
+    },
+    {
+      "name": "Cryotic",
+      "aliases": [
+        "cryotic"
+      ],
+      "kind": "resource",
+      "guide": "resources",
+      "route": "/guides/resources#cheat-sheet",
+      "hint": "任何 Excavation 任務 — 運作的挖掘機越多，獲得的 Cryotic 就越多。",
+      "icon": "mdi-snowflake"
+    },
+    {
+      "name": "Common resources",
+      "aliases": [
+        "ferrite",
+        "alloy plate",
+        "salvage",
+        "nano spores",
+        "polymer bundle",
+        "circuits",
+        "gallium",
+        "morphics",
+        "control module",
+        "detonite",
+        "fieldron",
+        "mutagen"
+      ],
+      "kind": "resource",
+      "guide": "resources",
+      "route": "/guides/resources#cheat-sheet",
+      "hint": "使用資源速查表來尋找每種材料的最佳節點。",
+      "icon": "mdi-cube-scan"
+    },
+    {
+      "name": "Prime parts",
+      "aliases": [
+        "prime",
+        "prime warframe",
+        "prime weapon",
+        "prime set",
+        "relic rewards"
+      ],
+      "kind": "gear",
+      "guide": "relics",
+      "route": "/guides/relics#relic-basics",
+      "hint": "在裂縫中開啟正確的 Void Relics；精煉至 Radiant 以提升獲取機率。",
+      "icon": "mdi-diamond-stone"
+    },
+    {
+      "name": "Warframe 部件",
+      "aliases": [
+        "warframe",
+        "frame parts",
+        "new frame",
+        "farm a warframe"
+      ],
+      "kind": "gear",
+      "guide": "beginner-warframes",
+      "route": "/guides/beginner-warframes",
+      "hint": "優先刷哪隻戰甲，以及容易取得的戰甲在哪裡掉落。",
+      "icon": "mdi-robot-outline"
+    },
+    {
+      "name": "Riven",
+      "aliases": [
+        "riven",
+        "riven mod",
+        "veiled riven"
+      ],
+      "kind": "mod",
+      "guide": "riven",
+      "route": "/guides/riven",
+      "hint": "Sorties 與 Steel Path；使用 Kuva 重置屬性。",
+      "icon": "mdi-star-four-points-outline"
+    },
+    {
+      "name": "Arcanes",
+      "aliases": [
+        "arcane",
+        "arcane enhancement"
+      ],
+      "kind": "gear",
+      "guide": "arcanes",
+      "route": "/guides/arcanes",
+      "hint": "Eidolons、Profit-Taker、Deep Archimedea 以及開放世界。",
+      "icon": "mdi-shimmer"
+    },
+    {
+      "name": "Archon Shards",
+      "aliases": [
+        "archon shard",
+        "shards",
+        "tauforged"
+      ],
+      "kind": "progression",
+      "guide": "archon-shards",
+      "route": "/guides/archon-shards",
+      "hint": "每週的 Archon Hunt — 每週保證獲得一個碎片。",
+      "icon": "mdi-cards-diamond-outline"
+    },
+    {
+      "name": "Mods",
+      "aliases": [
+        "mod",
+        "mod farming",
+        "rare mods",
+        "primed mods"
+      ],
+      "kind": "mod",
+      "guide": "mods",
+      "route": "/guides/mods",
+      "hint": "哪些 Mods 至關重要、它們在哪裡掉落，以及如何升級它們。",
+      "icon": "mdi-view-grid-plus-outline"
+    },
+    {
+      "name": "Forma",
+      "aliases": [
+        "forma blueprint"
+      ],
+      "kind": "gear",
+      "guide": "relics",
+      "route": "/guides/relics#reward-pool",
+      "hint": "常見的 Void Relic 獎勵 — 在開啟遺物時儲存備用。",
+      "icon": "mdi-vector-triangle"
+    },
+    {
+      "name": "Eidolon Shards",
+      "aliases": [
+        "eidolon",
+        "brilliant shard",
+        "radiant eidolon shard",
+        "tridolon"
+      ],
+      "kind": "progression",
+      "guide": "eidolon",
+      "route": "/guides/eidolon",
+      "hint": "夜晚在 Plains of Eidolon 獵殺 Eidolons。",
+      "icon": "mdi-weather-night"
+    },
+    {
+      "name": "Intrinsics",
+      "aliases": [
+        "railjack",
+        "intrinsic",
+        "command intrinsic"
+      ],
+      "kind": "progression",
+      "guide": "railjack",
+      "route": "/guides/railjack",
+      "hint": "執行 Railjack 任務以升級 Intrinsics 並刷取殘骸。",
+      "icon": "mdi-rocket-launch-outline"
+    },
+    {
+      "name": "Incarnon Genesis",
+      "aliases": [
+        "incarnon",
+        "duviri rewards",
+        "circuit"
+      ],
+      "kind": "gear",
+      "guide": "duviri",
+      "route": "/guides/duviri",
+      "hint": "每週的 Duviri Circuit 會輪替 Incarnon Adapters 和戰甲。",
+      "icon": "mdi-horse-variant"
+    }
+  ],
+  "kinds": {
+    "resource": "資源",
+    "currency": "貨幣",
+    "gear": "裝備與部件",
+    "mod": "Mods",
+    "progression": "進度",
+    "reputation": "聲望"
+  }
+}

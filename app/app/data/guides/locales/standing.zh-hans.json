@@ -1,0 +1,479 @@
+{
+  "slug": "standing",
+  "eyebrow": "知识中心 · 声望与集团",
+  "title": "声望与集团指南",
+  "lede": "声望是 Warframe 的声望货币——是获取 augment mods、Amp 配件、arcanes 和 Nitain 的门槛。了解每日上限、六大主要集团、每个开放世界派系，以及如何在几分钟内达到上限，而不是刷上好几轮任务。",
+  "category": "farming",
+  "readMins": 9,
+  "stats": [
+    {
+      "num": "6",
+      "label": "主要集团",
+      "tone": "gold"
+    },
+    {
+      "num": "16,000",
+      "label": "基础每日声望上限",
+      "tone": "good"
+    },
+    {
+      "num": "5",
+      "label": "升至满级所需的等级",
+      "tone": "alt"
+    },
+    {
+      "num": "00:00 UTC",
+      "label": "每日声望重置",
+      "tone": "good"
+    }
+  ],
+  "sections": [
+    {
+      "id": "how-it-works",
+      "title": "声望与每日上限的运作机制",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**声望**（也称为 **reputation** 或 **rep**）是你在 Warframe 中与每个派系建立的忠诚度货币。消费它可以解锁 **Warframe/weapon augment mods**、集团武器和外观、指挥官 **Amp** 配件、**arcanes**、外观装饰等。与 credits 或 platinum 不同，你无法交易声望——你需要通过游玩来赚取，且每个派系都会独立记录。"
+        },
+        {
+          "type": "p",
+          "text": "限制在于**每日声望上限**。每天你只能在每个派系中赚取一定数量的声望，该上限随你的 **Mastery Rank** 提升：`16,000 + (500 × MR)`。因此，即使是全新的 MR0 玩家每天每个集团也能赚取 16,000 声望，MR10 的上限为 21,000，而 MR30 的上限为 31,000。提升你的 [Mastery Rank](/guides/mastery-rank) 是加快同时提升所有派系进度的最大杠杆。"
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "每日上限公式",
+              "v": "16,000 + (500 × Mastery Rank)"
+            },
+            {
+              "k": "上限示例",
+              "v": "MR0 时为 16,000 · MR10 时为 21,000 · MR30 时为 31,000"
+            },
+            {
+              "k": "重置时间",
+              "v": "每日 00:00 UTC（格林威治标准时间午夜）"
+            },
+            {
+              "k": "记录方式",
+              "v": "每个集团独立记录"
+            },
+            {
+              "k": "如何开始赚取",
+              "v": "向该派系进行 Pledge，然后装备其 Sigil"
+            }
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "该上限是**不用就作废**的——未使用的每日额度不会累计到第二天。由于每个派系都有自己的上限，每天花几分钟刷几个不同的派系，效果远好于单次长时间的爆肝。围绕 00:00 UTC 的重置时间养成习惯。"
+        }
+      ]
+    },
+    {
+      "id": "six-syndicates",
+      "title": "六大主要集团",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "通过你 Orbiter（或任何 Relay）中的**集团控制台**即可访问，六大主要集团是经典的声望刷取内容。免费向其中一个进行 **Pledge**，然后装备其 **Sigil**——这是一种穿戴在你的 Warframe 上的外观徽章。从那时起，你在任务中获得的 affinity 的一部分将自动转化为该集团的声望。"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "集团",
+              "背景故事 / 主题"
+            ],
+            "rows": [
+              [
+                "Steel Meridian",
+                "保护平民的 Grineer 叛逃者"
+              ],
+              [
+                "Arbiters of Hexis",
+                "纪律以及 Tenno 对自我掌控的追求"
+              ],
+              [
+                "Cephalon Suda",
+                "保存知识、数据和记忆"
+              ],
+              [
+                "The Perrin Sequence",
+                "追求经济平衡的 Corpus 改革派"
+              ],
+              [
+                "Red Veil",
+                "通过鲜血清除腐败的狂热者"
+              ],
+              [
+                "New Loka",
+                "恢复“纯洁”的地球和人类"
+              ]
+            ],
+            "note": "每个集团都出售自己的一套 Warframe/weapon augment mods、集团武器和外观、relic packs、sculptures 和 Captura 场景。根据你想要的特定 augments 来选择你的第一个派系——查看游戏内控制台或 wiki 以获取当前确切的奖励列表。"
+          }
+        },
+        {
+          "type": "warn",
+          "text": "这六个集团处于一个**盟友/对手关系网**中：提升其中一个集团的声望会慢慢**降低**其对手集团的声望。这就是为什么回归玩家有时会看到某个派系的声望悄悄下降，即使他们从未碰过它。这很正常——控制台会显示你装备的 Sigil 所带来的确切 +/− 波动。大多数玩家会主刷一两个派系，然后更换 Sigils 来补满其余派系。"
+        }
+      ]
+    },
+    {
+      "id": "earning-main",
+      "title": "Sigils、medallions 与 sacrifices",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "有三种方法可以提升主要集团的声望，而将它们叠加使用正是老玩家快速提升等级的秘诀："
+        },
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "h": "佩戴正确的 Sigil",
+              "p": "声望与 affinity 挂钩，因此任何高击杀任务都能提供声望——包括在你附近由队友击杀分享的 affinity。在开始匹配*之前*，为你想要的派系装备 Sigil，否则这些经验就会被浪费。"
+            },
+            {
+              "h": "寻找 Syndicate Medallions",
+              "p": "每个派系每天都会在控制台上发布每日任务。他们的地图板块中隐藏着可收集的 medallions；捡起它们，然后将它们捐赠给集团以换取大量声望。至关重要的是，捐赠 medallion 可以让你突破正常的每日上限——这是升级最快的方法。"
+            },
+            {
+              "h": "支付 sacrifice 以升级",
+              "p": "每个新等级都需要足够的总声望以及该派系所要求的一次性物品“sacrifice”。较低等级需要常见资源；较高等级则需要稀有 mods、资源或集团专属物品。控制台会列出具体需要什么。"
+            }
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "**囤积你的 medallions。** 因为捐赠可以超过每日上限，所以存上一堆，并在你支付完升级 sacrifice 后立即一次性交上去——这样你就能直接跃升到下一个等级。装备 loot-radar 或 treasure-detector mod 可以让寻找隐藏的 medallions 变得轻而易举。"
+        },
+        {
+          "type": "info",
+          "text": "集团的 **augment mods 是可以交易的**，这使得满级集团成为稳定的 platinum 来源。在 [Platinum 指南](/guides/platinum)中学习交易流程，在 [market screener](/screener) 上为你的 augments 定价，并使用 [flip finder](/flip) 赚取买卖差价。"
+        }
+      ]
+    },
+    {
+      "id": "open-worlds",
+      "title": "开放世界与枢纽派系",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "开放世界派系的运作方式不同：你不需要使用 Sigils 和 affinity，而是向他们的商贩**提交资源**——鱼类、切磨宝石、conservation tags、tokens 和赏金奖励。它们仍然遵循相同的 `16,000 + 500 × MR` 每日上限，且独立记录，因此你可以在一天内刷满好几个派系。"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "枢纽 · 开放世界",
+              "派系",
+              "你提交的物品",
+              "声望可购买（通用）"
+            ],
+            "rows": [
+              [
+                "Cetus · Plains of Eidolon",
+                "Ostron",
+                "赏金、鱼类、切磨宝石",
+                "Zaw 配件 (Hok)、钓鱼与采矿装备、面具和场景"
+              ],
+              [
+                "Fortuna · Orb Vallis",
+                "Solaris United",
+                "赏金、鱼类、宝石、debt-bonds",
+                "Kitgun 配件 (Rude Zuud)、MOA 同伴 (Legs)、装备"
+              ],
+              [
+                "Necralisk · Cambion Drift",
+                "Entrati",
+                "赏金、鱼类、conservation tags、宝石、tokens",
+                "Mods、arcanes、Necramech 装备、外观装饰"
+              ],
+              [
+                "Sanctum Anatomica",
+                "Cavia",
+                "Netracells 与 Sanctum 赏金",
+                "Whispers-in-the-Walls arcanes 与 mods"
+              ],
+              [
+                "Höllvania (1999)",
+                "The Hex",
+                "1999 活动与赏金",
+                "新 arcanes、武器、mods、外观装饰"
+              ]
+            ],
+            "note": "奖励列表会随着每次更新而变化——请在 wiki 上确认当前的商品。至于原材料本身，请参阅 Resources 指南。"
+          }
+        },
+        {
+          "type": "tip",
+          "text": "当你接近上限时，可以使用这些枢纽（尤其是 Deimos 和更新的世界）的 **token / wisp 系统**。你可以将溢出的资源转换为你*持有*的 tokens，然后在以后的日子里兑换它们——这样，一次丰收的钓鱼或采矿成果就永远不会被浪费。这项人性化的改动正是社区欢呼“感谢 standing tokens”的原因。"
+        },
+        {
+          "type": "p",
+          "text": "开放世界资源也支持 [Resources 指南](/guides/resources) 的制作经济，而 Eidolon/Orb 狩猎则直接与下方的 Operator 派系挂钩。"
+        }
+      ]
+    },
+    {
+      "id": "other-factions",
+      "title": "其他值得了解的声望商家",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "除了大型集团之外，还有几个专业派系运行着自己的声望轨道——这就是 Operator **Amps**、**arcanes** 和 Necramech 装备的来源。"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "派系",
+              "地点",
+              "获取方式",
+              "消费于"
+            ],
+            "rows": [
+              [
+                "Cephalon Simaris",
+                "Relays (Sanctuary)",
+                "进行 Synthesis-scanning 目标",
+                "专属 mods、武器和实用工具蓝图、Sanctuary 扫描仪配件"
+              ],
+              [
+                "The Quills",
+                "Cetus (Onkko)",
+                "交易 Eidolon shards",
+                "Amp 配件、arcanes、focus lenses"
+              ],
+              [
+                "Vox Solaris",
+                "Fortuna (Little Duck)",
+                "Orb 战斗和 Vallis 材料",
+                "Amp 配件、Operator arcanes"
+              ],
+              [
+                "The Holdfasts",
+                "Zariman (Chrysalith)",
+                "Zariman 任务 → Voidplumes",
+                "Arcanes、mods、外观装饰"
+              ],
+              [
+                "Necraloid",
+                "Necralisk",
+                "Necramech 与 Deimos 活动",
+                "Necramech mods 和配件"
+              ],
+              [
+                "Ventkids",
+                "Fortuna",
+                "K-Drive 特技与比赛",
+                "K-Drive 配件与外观装饰"
+              ],
+              [
+                "Conclave",
+                "Relays (Teshin)",
+                "PvP 比赛",
+                "PvP mods、外观装饰、Captura"
+              ]
+            ],
+            "note": "Teshin 还经营着 Steel Path 商店，但那消费的是 Steel Essence（一种货币），而不是声望——请参阅 Steel Path 指南。"
+          }
+        },
+        {
+          "type": "info",
+          "text": "想要制作一个用于 Eidolon 狩猎的 Amp？The Quills 和 Vox Solaris 是你的供应商，且两者都与你的 Operator 进度相关联。请将此与 [Focus 指南](/guides/focus) 和 [Eidolon 指南](/guides/eidolon) 结合使用。"
+        }
+      ]
+    },
+    {
+      "id": "fastest-cap",
+      "title": "快速达到声望上限的方法",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "无需任何漏洞——只需高效的路线规划。以下是可靠且长青的攻略："
+        },
+        {
+          "type": "list",
+          "items": [
+            "**首先装备正确的 Sigil。** 声望与 affinity 挂钩，因此一次高击杀的无尽任务（或快速的 affinity 节点）就可以在单次运行中刷满——或几乎刷满——一个主要集团的声望。千万不要在没有装备 Sigil 的情况下刷声望。",
+            "**运行集团的每日任务以获取 medallions**，然后捐赠它们——捐赠可以绕过每日上限，因此这是你突破上限的方法。",
+            "**提前刷取开放世界的提交物。** 在轻松的游戏过程中囤积鱼类、宝石和 tags，然后在重置时一次性提交以瞬间达到上限；将溢出的资源转换为 tokens，这样就不会浪费。",
+            "**每日轮换派系。** 因为每个派系的上限是独立计算的，在两三个派系之间进行 15 分钟的循环，比死磕一个派系能积累多得多的总声望。",
+            "**提升 Mastery Rank。** 每个 MR 都会为每个派系的每日上限增加 500——这是永久提升你整体上限的唯一方法。"
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "你可以在 Arsenal 中将 Sigil 的**不透明度设置为接近零**，这样它既能赚取声望，又不会破坏你的穿搭。非常适合一直佩戴着 farming Sigil。"
+        }
+      ]
+    },
+    {
+      "id": "nightwave",
+      "title": "Nightwave：相关，但非集团声望",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Nightwave** 也会令人困惑地提供“声望”，但它是一个独立的季节性系统——可以把它看作是一个轮换的挑战轨道。你通过完成 **Acts**（每日、每周和精英每周挑战）来填满等级阶梯，每个等级都会发放奖励以及可在其商品商店中消费的 **Nightwave Cred**。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**每日 Acts** 规模较小且每天刷新；**每周和精英每周 Acts** 提供的声望要多得多——请优先完成这些。",
+            "**Cred 商店的主打商品**是游戏中最具价值的一些物品：**Nitain Extract**、**Orokin Reactors/Catalysts**（俗称“土豆”）、**Forma**、**Kuva**、Aura mods 以及本季专属的外观装饰。",
+            "在超过最终等级后，你将继续提升至重复的 **Prestige** 等级，这些等级会持续提供 Cred。",
+            "在赛季之间，**Nightwave: Intermission** 会保持商店开放并允许使用你剩余 of Cred，因此硬重置绝不会让你陷入困境。"
+          ]
+        },
+        {
+          "type": "warn",
+          "text": "当赛季结束时，赛季专属的外观装饰（偶尔还有 frame）可能会消失很长一段时间，这就是为什么玩家会在最后一周拼命刷。不要恐慌性地去刷所有东西——你很少需要完成每一个 Act 才能达到最高等级——但务必在赛季结束前将你的 Cred 花在 Nitain 和土豆上。"
+        }
+      ]
+    },
+    {
+      "id": "pitfalls",
+      "title": "常见问题与误区",
+      "blocks": [
+        {
+          "type": "info",
+          "text": "**“我慈悲斩杀了一个 Grineer，然后我的星图变红了”**——那不是集团。你创建了一个 **Kuva Lich**，这是一个会对其控制的 nodes（显示为红色）征税的宿敌。这是一个完全独立的系统；请前往 [Kuva & Lich 指南](/guides/kuva)来猎杀它。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**不要在没有装备 Sigil 的情况下刷声望。** 在没有装备 Sigil 的情况下获得的 Affinity 相当于白白浪费了声望。",
+            "**不要害怕对手声望下降。** 失去一点对手派系的声望是设计使然；你最终可以通过轮换 Sigils 并重新补满对手声望来提升每个派系的等级。",
+            "**不要让溢出的声望烂掉。** 超过上限后，将开放世界资源转换为 tokens，并保存 medallions 以便稍后捐赠。",
+            "**不要混淆货币。** 集团声望、Nightwave Cred 和 Steel Essence 是三种不同的东西——请在各自的商店中消费它们。"
+          ]
+        },
+        {
+          "type": "p",
+          "text": "要了解更广泛的进度图景——声望 farming 如何与 credits、relics 和 Mastery 结合——请参阅 [Progression 指南](/guides/progression)和精选的[社区工具目录](/tools)。"
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "在 Warframe 中，每日声望上限是如何计算的？",
+      "a": "上限为 `16,000 + (500 × your Mastery Rank)`，独立应用于每个派系，并在每日 00:00 UTC 重置。因此，即使是全新的 MR0 玩家每天每个集团也能赚取 16,000 声望，MR10 的上限为 21,000，而 MR30 的上限为 31,000。提升你的 [Mastery Rank](/guides/mastery-rank) 是永久同时提升所有派系上限的唯一方法。"
+    },
+    {
+      "q": "刷取集团声望最快的方法是什么？",
+      "a": "装备该派系的 Sigil，运行高击杀的 affinity 任务以快速达到上限，并囤积每日任务中的 Syndicate Medallions。捐赠 Medallion 可以让你突破每日上限，因此存上一堆并在升级 sacrifice 后立即一次性交上去是升到新等级最快的方法。"
+    },
+    {
+      "q": "我可以把所有六个主要集团都刷到满级吗？",
+      "a": "可以，最终可以。这六个集团处于一个盟友/对手关系网中，因此提升其中一个集团的声望会慢慢降低其对手集团的声望——但随着时间的推移，你只需更换 Sigils 并重新补满其他集团即可。围绕对手关系进行规划，你就可以让每个派系都达到最高等级。"
+    },
+    {
+      "q": "Nightwave 声望与集团声望相同吗？",
+      "a": "不同。Nightwave 是一个独立的季节性挑战轨道：你通过完成每日、每周和精英每周 Acts 来赚取 Nightwave 等级和 Nightwave Cred。将这些 Cred 花在 Nitain、Orokin Reactors/Catalysts、Forma、Kuva 和外观装饰上——它与你的六大集团声望毫无关系。"
+    },
+    {
+      "q": "为什么我没有游玩的集团声望会下降？",
+      "a": "因为集团的对手关系。根据你所佩戴的 Sigil，提升一个派系的声望会降低其对手派系的声望。这是设计使然——Syndicate 控制台会显示每个 Sigil 带来的确切 +/− 影响，因此你可以规划哪些派系可以一起升级。"
+    },
+    {
+      "q": "我在哪里可以获得 Operator Amp 配件和 arcanes？",
+      "a": "来自专业声望派系：Cetus 的 The Quills（交易 Eidolon shards）和 Fortuna 的 Vox Solaris（通过 Orb 战斗和 Vallis 材料）出售 Amp 配件和 arcanes。将此与 [Focus 指南](/guides/focus) 和 [Eidolon 指南](/guides/eidolon) 结合使用，以搭建一套狩猎配置。"
+    },
+    {
+      "q": "我处决了一个 Grineer，然后我的整个星球都变红了——这是集团相关的吗？",
+      "a": "不是。慈悲斩杀一个 Kuva Larvling 会生成一个 Kuva Lich，这是一个会占领 nodes 并在你的星图上将其标记为红色的宿敌。这与集团声望无关——请参阅 [Kuva & Lich 指南](/guides/kuva)来击败它并收回你的 nodes。"
+    },
+    {
+      "q": "集团奖励值 platinum 吗？",
+      "a": "非常值——集团的 augment mods 是可以交易的，并且需求量一直很稳定，这使得满级集团成为可靠的 plat 收入来源。在 [Platinum 指南](/guides/platinum)中学习交易流程，并使用 [market screener](/screener) 和 [flip finder](/flip) 为你的 mods 定价。"
+    }
+  ],
+  "videos": [
+    {
+      "id": "d_q95Xf6Ohs",
+      "title": "You Have Been Farming Syndicate Standing In WARFRAME ALL WRONG!",
+      "channel": "iFlynn"
+    },
+    {
+      "id": "xfUY8DaZVTw",
+      "title": "MAX YOUR STANDINGS NOW! - FASTEST METHODS FOR ALL SYNDICATES [WARFRAME]",
+      "channel": "TRiX_VS"
+    },
+    {
+      "id": "whtYsyH3N9I",
+      "title": "Warframe | How To Farm Syndicate Standing Quick and Easy - Plumes and Medallions",
+      "channel": "1ManArmyYigit"
+    },
+    {
+      "id": "Vt-albA4ZhA",
+      "title": "How to Max Out EVERY Syndicate Standing FAST in Warframe (Complete Guide)",
+      "channel": "Chapu"
+    }
+  ],
+  "sources": [
+    {
+      "label": "r/Warframe — new wiki showcase (wiki.warframe.com)",
+      "href": "https://reddit.com/r/Warframe/comments/1ios9qf/just_wanted_to_share_how_sexy_the_new_wiki_is/"
+    },
+    {
+      "label": "r/Warframe — Nightwave ended too soon (rank/FOMO)",
+      "href": "https://reddit.com/r/Warframe/comments/1kpzgsq/im_sorry_everyone_i_failed_all_of_you/"
+    },
+    {
+      "label": "r/Warframe — final-hour Nightwave Cred grind (Nitain/potatoes)",
+      "href": "https://reddit.com/r/Warframe/comments/1sgqki4/i_forgor/"
+    },
+    {
+      "label": "r/Warframe — Nightwave weekly Act discussion (DE replied)",
+      "href": "https://reddit.com/r/Warframe/comments/q6fq49/pov_you_have_a_nightwave_act_to_bullet_jump_150/"
+    },
+    {
+      "label": "Official Warframe Wiki",
+      "href": "https://wiki.warframe.com/"
+    }
+  ],
+  "related": [
+    {
+      "label": "Focus & Operator 指南",
+      "to": "/guides/focus",
+      "icon": "school",
+      "note": "Amps、lenses 与 Quills/Vox Solaris 声望"
+    },
+    {
+      "label": "Eidolon 狩猎指南",
+      "to": "/guides/eidolon",
+      "icon": "weather-night",
+      "note": "Shards 可提供用于换取 Amps 的 Quills 声望"
+    },
+    {
+      "label": "Kuva & Lich 指南",
+      "to": "/guides/kuva",
+      "icon": "skull",
+      "note": "红色星图详解"
+    },
+    {
+      "label": "Platinum 指南",
+      "to": "/guides/platinum",
+      "icon": "diamond-stone",
+      "note": "交易集团 augments 以换取 plat"
+    },
+    {
+      "label": "Resources 指南",
+      "to": "/guides/resources",
+      "icon": "pickaxe",
+      "note": "开放世界提交材料"
+    },
+    {
+      "label": "社区工具",
+      "to": "/tools",
+      "icon": "tools",
+      "note": "Wiki、Overframe 和市场追踪工具"
+    }
+  ],
+  "updated": "2026-07-18"
+}

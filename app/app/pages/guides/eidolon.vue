@@ -6,5 +6,6 @@
 </template>
 
 <script setup lang="ts">
-import guide from '~/data/guides/eidolon'
+import enGuide from '~/data/guides/eidolon'
+const guide = await useLocalizedGuide('eidolon', enGuide)
 </script>

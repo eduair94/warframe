@@ -1,0 +1,489 @@
+{
+  "slug": "mastery-rank",
+  "eyebrow": "Centro di Conoscenza · Mastery Rank",
+  "title": "Mastery Rank e Livellamento Rapido",
+  "lede": "Il Mastery Rank è il contachilometri del tuo account — sblocca equipaggiamento, aumenta i tuoi limiti giornalieri di reputazione e scambi, e ti ricompensa silenziosamente per aver livellato tutto ciò che costruisci. Ecco esattamente come funzionano mastery, affinity e i test, oltre ai modi più rapidi per salire di grado.",
+  "category": "start",
+  "readMins": 9,
+  "stats": [
+    {
+      "num": "30",
+      "label": "MR massimo, poi Legendary Ranks",
+      "tone": "gold"
+    },
+    {
+      "num": "3,000",
+      "label": "mastery per arma al massimo",
+      "tone": "good"
+    },
+    {
+      "num": "6,000",
+      "label": "mastery per frame al massimo",
+      "tone": "good"
+    },
+    {
+      "num": "50m",
+      "label": "raggio di condivisione dell'affinity",
+      "tone": "alt"
+    }
+  ],
+  "sections": [
+    {
+      "id": "what-is-mr",
+      "title": "Cos'è effettivamente il Mastery Rank",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Il **Mastery Rank (MR)** è un livello di progressione globale dell'account, separato dal livello di qualsiasi singolo Warframe o arma. Lo aumenti guadagnando **Mastery** — una forma permanente di affinity che si accumula sul tuo account ogni volta che livelli un **nuovo e unico** pezzo di equipaggiamento o completi nuovi contenuti per la prima volta. A differenza dell'XP dell'equipaggiamento, la mastery non si azzera mai: una volta che un oggetto ha ottenuto la sua mastery, quel progresso è salvato per sempre."
+        },
+        {
+          "type": "p",
+          "text": "La regola d'oro: **la mastery di ogni oggetto unico conta una sola volta.** Portare il tuo Braton al 30 fornisce la sua mastery una sola volta. Venderlo, ricostruirlo o aggiungere una Forma e livellarlo di nuovo non ti darà nulla in più. Questa singola regola modella ogni strategia di livellamento efficiente su questa pagina."
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "Gradi",
+              "v": "MR 0 → 30, poi Legendary Ranks (LR1, LR2, ...) che DE continua a estendere nel tempo"
+            },
+            {
+              "k": "La Mastery è",
+              "v": "Permanente, legata all'account, guadagnata una sola volta per oggetto unico"
+            },
+            {
+              "k": "Test del MR",
+              "v": "Una sfida una tantum da superare per confermare ogni nuovo grado"
+            },
+            {
+              "k": "Hai bisogno di tutto?",
+              "v": "No — ci sono molti più oggetti di quanti ne richieda il MR30"
+            }
+          ]
+        },
+        {
+          "type": "info",
+          "text": "Il MR30 è il grado *numerato* massimo. Oltre a questo, continui a guadagnare mastery per i **Legendary Ranks**, che DE aggiunge nel tempo. **Non** hai bisogno di possedere ogni singolo oggetto nel gioco per raggiungere il MR30 — completare la Star Chart e livellare una buona fetta di equipaggiamento ti basterà per arrivarci."
+        }
+      ]
+    },
+    {
+      "id": "what-mr-unlocks",
+      "title": "Cosa sblocca il MR (e cosa no)",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Il MR non è un livello di potenza — un giocatore novizio a MR2 e un veterano a MR30 massimo che usano la stessa build colpiscono con la stessa identica forza. Ciò che il MR ti offre è **accesso e comodità per l'account**: vincola determinati equipaggiamenti a un requisito di grado e aumenta silenziosamente diversi limiti giornalieri che contano molto man mano che ti addentri nel farming e negli scambi."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Vantaggio",
+              "Come scala con il MR"
+            ],
+            "rows": [
+              [
+                "Sblocchi di armi e equipaggiamento",
+                "Molte armi richiedono un MR minimo per essere acquistate o equipaggiate (il blocco del grado sulla scheda dell'oggetto)"
+              ],
+              [
+                "Limite giornaliero di reputazione",
+                "Aumenta con ogni Mastery Rank, tracciato per associazione — più alto è il tuo MR, più reputazione puoi accumulare ogni giorno (DE ha aumentato il limite nel tempo, quindi considera qualsiasi cifra esatta come un valore indicativo)"
+              ],
+              [
+                "Scambi giornalieri",
+                "Pari al tuo MR (MR10 = 10 scambi al giorno; hai bisogno del MR2 anche solo per scambiare)"
+              ],
+              [
+                "Capacità mod iniziale",
+                "L'equipaggiamento senza grado inizia con una capacità mod pari al tuo MR, con un limite massimo di 30 (raddoppiato da un Reattore/Catalizzatore)"
+              ]
+            ],
+            "note": "Limiti di reputazione più elevati velocizzano direttamente il farming di Focus, arcani e associazioni — vedi le guide su Reputazione e Focus."
+          }
+        },
+        {
+          "type": "p",
+          "text": "Quel limite di reputazione è il vantaggio nascosto. Se farmi [reputazione delle associazioni](/guides/standing) o [Focus](/guides/focus), ogni MR che guadagni ti consente di accumularne di più al giorno. Più [scambi giornalieri](/guides/platinum) significano anche più compravendite di platinum — abbinalo al [Flip finder](/flip) una volta che inizi a fare scambi attivamente."
+        },
+        {
+          "type": "warn",
+          "text": "Mito comune: 'Devo farmare MR per sopravvivere ai contenuti di livello più alto.' Non è così. La sopravvivenza deriva da **mod, arcani e shield-gating**, non dal MR. Insegui il MR per gli sblocchi dell'equipaggiamento e i limiti giornalieri, non per la pura potenza."
+        }
+      ]
+    },
+    {
+      "id": "how-mastery-earned",
+      "title": "Come si guadagna la mastery",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Accumuli mastery portando l'equipaggiamento dal livello 0 al 30 per la prima volta. Diversi tipi di oggetti valgono quantità differenti **per grado**, quindi un Warframe al massimo vale il doppio di un'arma al massimo:"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Tipo di oggetto",
+              "Mastery per grado",
+              "Totale al massimo"
+            ],
+            "rows": [
+              [
+                "Armi (primarie, secondarie, corpo a corpo, ecc.)",
+                "100",
+                "3,000 al grado 30"
+              ],
+              [
+                "Warframes",
+                "200",
+                "6,000 al grado 30"
+              ],
+              [
+                "Compagni (Sentinelle e compagni bestia)",
+                "200",
+                "6,000 al grado 30"
+              ],
+              [
+                "Archwing",
+                "200",
+                "6,000 al grado 30"
+              ],
+              [
+                "Armi Kuva / Tenet / Coda / Paracesis (grado 40)",
+                "100",
+                "4,000 al grado 40"
+              ]
+            ],
+            "note": "Anche Necramech, Amp, K-Drive e Intrinsechi del Railjack conferiscono mastery. Ogni nodo della Star Chart, giunzione e la sua versione Steel Path fornisce anche una quota di mastery una tantum al primo completamento."
+          }
+        },
+        {
+          "type": "tip",
+          "text": "La **Star Chart stessa è un'enorme fonte di mastery gratuita.** Completare ogni nodo una volta (normale e [Steel Path](/guides/steel-path)) più tutte le giunzioni vale una grande quantità di mastery che molti giocatori trascurano. Usa la [mappa dei luoghi di rilascio](/star-chart-3d) per vedere cosa ti rimane ancora da completare."
+        },
+        {
+          "type": "p",
+          "text": "Poiché la mastery si ottiene una sola volta per oggetto, i veterani costruiscono armi economiche da 'mastery fodder' puramente per portarle al grado 30 e passare oltre. Ci sono centinaia di armi e dozzine di frame nel gioco — supererai il MR30 molto prima di possederli tutti."
+        }
+      ]
+    },
+    {
+      "id": "affinity-101",
+      "title": "Affinity 101: come funziona il livellamento",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**L'affinity corrisponde ai punti esperienza (XP).** È ciò che fa salire di livello il tuo equipaggiamento da 0 a 30, e si guadagna in due modi: **uccisioni** (e assist) e **obiettivi/completamento della missione**. Il modo in cui l'affinity viene suddivisa tra il tuo Warframe e le tue tre armi è l'aspetto più importante da capire per livellare rapidamente."
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "Uccisione con la tua arma",
+              "v": "50% all'arma che ha ottenuto l'uccisione, 50% al tuo Warframe"
+            },
+            {
+              "k": "Uccisione con la tua abilità",
+              "v": "Praticamente tutta va al tuo Warframe"
+            },
+            {
+              "k": "Uccisione di un compagno di squadra (entro il raggio)",
+              "v": "Ricevi una quota: 25% al tuo Warframe, 75% suddiviso equamente tra le tue armi equipaggiate — così un'arma sale di livello anche se non spari mai"
+            },
+            {
+              "k": "Raggio di condivisione dell'affinity",
+              "v": "50 metri nelle missioni normali — rimani vicino all'azione o non otterrai nulla (le mappe open-world/paesaggio utilizzano un raggio molto più ampio)"
+            },
+            {
+              "k": "Affinity Booster",
+              "v": "Raddoppia tutta l'affinity che guadagni (si accumula con i fine settimana a doppia affinity)"
+            }
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Da questa tabella derivano due conclusioni pratiche. **Per livellare un'arma**, sparaci oppure sfrutta l'affinity condivisa da un compagno di squadra che pulisce la stanza mentre rimani entro 50m. **Per livellare rapidamente un Warframe**, ottieni **uccisioni con le abilità** — queste riversano il 100% di quell'affinity direttamente nel tuo frame, rispetto a solo il 25% dell'uccisione condivisa di un compagno di squadra. E **non portarti dietro armi già al massimo** durante una sessione di livellamento: l'affinity che finisce sull'equipaggiamento al massimo viene sprecata, quindi riempi quegli slot con armi senza grado che desideri livellare."
+        },
+        {
+          "type": "warn",
+          "text": "In Defense e Survival, allontanarsi più di 50m dal punto in cui muoiono i nemici significa guadagnare **zero** affinity condivisa. Durante una sessione di livellamento, rimani incollato all'obiettivo o al carry."
+        }
+      ]
+    },
+    {
+      "id": "fast-leveling",
+      "title": "I modi più rapidi per livellare (farming di affinity)",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Le migliori missioni di livellamento concentrano ondate dense di nemici in un'area ristretta, in modo che l'affinity condivisa inondi ogni pezzo di equipaggiamento che hai portato. Porta l'equipaggiamento che vuoi livellare, unisciti a una squadra pubblica (o a un amico forte) e lascia che le uccisioni si accumulino."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Metodo",
+              "Ideale per",
+              "Note"
+            ],
+            "rows": [
+              [
+                "Sanctuary Onslaught / Elite SO",
+                "XP rapida e densa",
+                "Tramite Cephalon Simaris; ESO per equipaggiamento che è già parzialmente potenziato"
+              ],
+              [
+                "Defense ad alta densità (es. Hydron su Sedna, Helene su Saturn)",
+                "Livellamento rilassato e adatto all'AFK",
+                "I preferiti storici della community — porta o unisciti a un frame nuke"
+              ],
+              [
+                "Void Fissures",
+                "Livellamento + bottino contemporaneamente",
+                "Sfrutta la doppia XP mentre apri le reliquie — vedi lo strumento Relic Farming"
+              ],
+              [
+                "Duviri Circuit",
+                "Livellamento + ricompense",
+                "Opzione moderna; il circuito Steel Path scala per i veterani"
+              ],
+              [
+                "Exterminate / Capture economici",
+                "Fodder per MR",
+                "Porta rapidamente le armi usa e getta appena costruite al 30 e riciclale"
+              ]
+            ],
+            "note": "Il singolo 'miglior nodo' cambia con le patch di bilanciamento e gli eventi. Controlla la wiki live o un video recente per la scelta meta attuale."
+          }
+        },
+        {
+          "type": "p",
+          "text": "Due moltiplicatori rendono tutto più veloce: usa un **Affinity Booster** (dal Market o dalle ricompense di Nightwave/accesso giornaliero) e pianifica il tuo farming durante un **fine settimana a doppia affinity** — questi si accumulano per un'affinity 4×. Livellare all'interno delle [Void Fissures](/relic-farming) è il massimo dell'efficienza perché fai salire di livello l'equipaggiamento *e* farmi parti prime nelle stesse sessioni; usa lo [strumento del valore delle reliquie](/relics-value) per decidere cosa vale la pena aprire."
+        },
+        {
+          "type": "tip",
+          "text": "Porta un set completo di equipaggiamento da livellare (frame + 3 armi) in una sessione di gruppo guidata e potrai portare **quattro oggetti** dal livello 0 al 30 in una singola sessione. Assicurati solo di essere tu a rimanere fermo vicino alle uccisioni, senza inseguirle."
+        }
+      ]
+    },
+    {
+      "id": "rank-to-30-loop",
+      "title": "Il ciclo dal grado 0 al 30",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Il farming efficiente della mastery è un ciclo semplice e ripetibile. L'obiettivo è utilizzare ogni oggetto unico esattamente una volta, portarlo al 30 e non voltarsi più indietro."
+        },
+        {
+          "type": "steps",
+          "ordered": true,
+          "steps": [
+            {
+              "h": "Acquista lo schema / costruisci l'oggetto",
+              "p": "Prendi gli schemi delle armi dal Market in cambio di crediti; la maggior parte costa poco. Avvia la costruzione nella Foundry prima di disconnetterti (le armi richiedono spesso circa 12 ore; i Warframe richiedono più tempo una volta sommati i loro componenti) in modo che sia pronta per la sessione successiva."
+            },
+            {
+              "h": "Riscattalo e inseriscilo in uno slot",
+              "p": "Un oggetto nuovo è di grado 0. Inizia già con una capacità mod pari al tuo MR, quindi anche l'equipaggiamento senza grado è utilizzabile per una sessione di livellamento."
+            },
+            {
+              "h": "Livellalo al 30 in una sola sessione",
+              "p": "Portalo in una zona di farming di affinity (Onslaught, un nodo Defense o una Fissure). Al 30 accumula la sua mastery completa — 3,000 per un'arma, 6,000 per un frame."
+            },
+            {
+              "h": "Salva la mastery, ricicla lo slot",
+              "p": "Una volta portato al massimo, la mastery è tua in modo permanente. Vendi le armi da mastery-fodder per liberare lo slot e costruire la successiva. Tieni tutto ciò che ti piace davvero."
+            },
+            {
+              "h": "Non livellare di nuovo per la mastery",
+              "p": "L'aggiunta di una Forma ripristina un oggetto al grado 0 per gli slot polarità — ottimo per le build, ma fornisce zero mastery extra. Livella di nuovo solo l'equipaggiamento che stai personalizzando, non per il MR."
+            }
+          ]
+        },
+        {
+          "type": "info",
+          "text": "Vuoi vedere esattamente cosa ti manca? I tracker della mastery e le checklist della community (collegati dalla [directory degli strumenti della community](/tools)) ti consentono di spuntare ogni arma e frame in modo da non costruire mai un duplicato che hai già masterizzato."
+        }
+      ]
+    },
+    {
+      "id": "mr-tests",
+      "title": "Test del MR e come prepararsi",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Guadagnare abbastanza mastery rende *disponibile* il grado successivo, ma devi **superare un test del Mastery Rank** per riscattarlo effettivamente. Ogni grado ha il suo test unico — parkour a tempo, uccisioni stealth, hacking di console sotto pressione, eliminazione di ondate senza subire danni e così via. La difficoltà aumenta man mano che il tuo grado sale."
+        },
+        {
+          "type": "steps",
+          "ordered": true,
+          "steps": [
+            {
+              "h": "Esegui prove gratuite da Cephalon Simaris",
+              "p": "Ogni Relay ospita Cephalon Simaris, che ti consente di **provare il test esatto** tutte le volte che vuoi, senza tempi di ricarica e senza penalità. Fai sempre pratica prima."
+            },
+            {
+              "h": "Affronta il vero test quando sei pronto",
+              "p": "Quando hai accumulato abbastanza mastery, appare l'avviso di passaggio di grado (nel tuo Orbiter / profilo). Tentatelo una volta che ti senti sicuro grazie alla pratica."
+            },
+            {
+              "h": "Se fallisci, aspetta circa un giorno",
+              "p": "Non c'è alcuna penalità per il fallimento, oltre a un **tempo di ricarica di circa 24 ore** prima di poter tentare nuovamente il vero test. Le prove di pratica rimangono illimitate durante l'attesa."
+            }
+          ]
+        },
+        {
+          "type": "warn",
+          "text": "Quel blocco di 24 ore è l'unica nota dolente — quindi **non tentare mai un test alla cieca.** Provalo da Simaris finché non riesci a superarlo costantemente, poi affronta quello vero. Molti test diventano banali con un frame da mobilità (Volt, Titania, Wisp, Zephyr) o una buona build di movimento."
+        },
+        {
+          "type": "tip",
+          "text": "Bloccato in un test di movimento o 'senza danni'? Porta un frame con velocità, invisibilità o immunità ai danni e spesso trasformerai un test frustrante in una formalità. Guarda un video recente specifico per il test se un particolare grado ti sta dando problemi."
+        }
+      ]
+    },
+    {
+      "id": "should-you-chase",
+      "title": "Dovresti inseguire il MR? Breakpoint intelligenti",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Non hai bisogno di *farmare* ossessivamente il MR — si accumula naturalmente mentre costruisci equipaggiamento e completi la Star Chart lungo il tuo percorso attraverso la [tabella di marcia della progressione](/guides/progression). Ma livellare tutto ciò che crei (invece di scartarlo) vale quasi sempre la pena, perché il MR ripaga silenziosamente in sblocchi di equipaggiamento, reputazione, scambi e capacità iniziale."
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Livella ciò che costruisci.** Ogni frame, arma e compagno è mastery gratuita — porta ognuno al 30 una volta prima di venderlo o usare una Forma.",
+            "**Completa l'intera Star Chart, due volte.** I nodi normali, le giunzioni e i nodi [Steel Path](/guides/steel-path) sono un'enorme fonte di mastery una tantum che la maggior parte dei giocatori trascura.",
+            "**Fai attenzione ai breakpoint dell'equipaggiamento.** Alcune delle armi più forti richiedono un determinato MR, quindi qualche grado in più può sbloccare una scelta meta che desideri davvero.",
+            "**Dai priorità al MR se farmi reputazione.** Se sei molto attivo con Focus, arcani o associazioni, il limite giornaliero più alto fa sì che ogni grado si ripaghi rapidamente."
+          ]
+        },
+        {
+          "type": "quote",
+          "text": "Il MR è la ricompensa per l'esplorazione dell'intero gioco, non un muro da scalare. Gioca a tutto tondo, livella ogni cosa una volta e ti ritroverai a MR20 senza aver mai dovuto 'farmare la mastery'.",
+          "cite": "Consiglio comune dei veterani di r/Warframe"
+        },
+        {
+          "type": "p",
+          "text": "Un avvertimento: non aumentare il MR *solo* per raggiungere un numero se questo significa infilare armi deboli in contenuti difficili. Sviluppa il tuo account in modo naturale, mantieni i tuoi elementi preferiti ben moddati e considera il MR per quello che è, ovvero un tabellone segnapunti — un registro di quanto hai sperimentato in Warframe."
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Come si aumenta il Mastery Rank in Warframe?",
+      "a": "Guadagna mastery portando il nuovo equipaggiamento dal livello 0 al 30 per la prima volta (le armi danno 3,000, i frame e i compagni danno 6,000) e completando i nodi e le giunzioni della Star Chart. Una volta accumulata abbastanza, supera il test del Mastery Rank di quel grado per confermarlo. Ogni oggetto unico conta una sola volta — livellare di nuovo con una Forma non fornisce mastery extra."
+    },
+    {
+      "q": "Cosa fa effettivamente il Mastery Rank?",
+      "a": "Il MR vincola determinate armi ed equipaggiamenti a un requisito di grado e aumenta diversi limiti giornalieri: il limite di reputazione delle associazioni (che sale con ogni grado), il numero di scambi giornalieri (pari al tuo MR) e la capacità mod iniziale sull'equipaggiamento senza grado. Non ti fa colpire più forte — la sopravvivenza e il danno derivano da mod e arcani, non dal MR."
+    },
+    {
+      "q": "Qual è il modo più rapido per farmare affinity e livellare?",
+      "a": "Porta l'equipaggiamento che vuoi livellare in una zona di farming di affinity densa — Sanctuary Onslaught, un nodo Defense ad alta densità come Hydron o Helene, o una Void Fissure — e rimani entro 50m dalle uccisioni per assorbire l'affinity condivisa. Usa un Affinity Booster e, idealmente, un fine settimana a doppia affinity per ottenere guadagni fino a 4×. Livellare all'interno delle [Void Fissures](/relic-farming) ti consente di far salire di livello l'equipaggiamento e farmare parti prime contemporaneamente."
+    },
+    {
+      "q": "L'aggiunta di una Forma o il livellamento ripetuto di un'arma fornisce ulteriore mastery?",
+      "a": "No. Ogni oggetto fornisce la sua mastery una sola volta, la prima volta che raggiunge il grado 30. La Forma ripristina l'oggetto al grado 0 in modo da poter aggiungere slot polarità per una build migliore, mas non guadagni alcuna mastery aggiuntiva livellandolo di nuovo. Livella di nuovo l'equipaggiamento solo quando lo stai personalizzando, mai per il MR."
+    },
+    {
+      "q": "Come funziona la condivisione dell'affinity in una squadra?",
+      "a": "Quando un compagno di squadra uccide un nemico entro circa 50 metri da te, ricevi una quota di quell'affinity — il 25% al tuo Warframe e il 75% suddiviso equamente tra le tue armi equipaggiate. Ecco perché un'arma con cui non spari mai sale comunque di livello se accompagni un frame nuke. Se ti allontani oltre il raggio di 50m non otterrai nulla. (Le uccisioni con le tue stesse armi si dividono diversamente: 50% all'arma, 50% al tuo Warframe.)"
+    },
+    {
+      "q": "Cosa succede se fallisco un test del Mastery Rank?",
+      "a": "Nulla, tranne un'attesa di circa 24 ore prima di poter tentare nuovamente il vero test — non c'è perdita di XP o altre penalità. Prova prima il test esatto gratuitamente e per un numero illimitato di volte da Cephalon Simaris in qualsiasi Relay, in modo da affrontare quello vero solo quando riesci a superarlo costantemente."
+    },
+    {
+      "q": "Esiste un Mastery Rank massimo?",
+      "a": "Il MR30 è il grado numerato massimo. Dopodiché continui a guadagnare mastery per i Legendary Ranks (LR1, LR2 e successivi), che DE estende nel tempo. Non hai bisogno di possedere ogni oggetto per raggiungere il MR30 — ci sono molte più armi e frame di quanti ne richieda il grado."
+    },
+    {
+      "q": "Dovrei affrettarmi a salire di Mastery Rank come nuovo giocatore?",
+      "a": "Non c'è bisogno di ossessionarsi — il MR sale naturalmente mentre costruisci equipaggiamento e completi la Star Chart. Ma livellare tutto ciò che crei al 30 una volta vale la pena, poiché un MR più alto sblocca armi più forti e aumenta i tuoi limiti giornalieri di reputazione e scambi. Concentrati prima su un arsenale solido e sulle mod; i gradi seguiranno."
+    }
+  ],
+  "videos": [
+    {
+      "id": "5B01ZDPCM_o",
+      "title": "Warframe How to get Mastery Rank FAST | Warframe Affinity and Mastery Rank Explained",
+      "channel": "CerealOverdrive"
+    },
+    {
+      "id": "J_6wVLRvTpE",
+      "title": "HOW TO FARM MASTERY RANK FAST IN 2025! WARFRAME BEST LEVELING AFFINITY SPOTS",
+      "channel": "Pupsker"
+    },
+    {
+      "id": "eTI-zSoH6FE",
+      "title": "How to Level up fast in Warframe -  Affinity farming Guide for all Players",
+      "channel": "QuadLyStop"
+    },
+    {
+      "id": "ecySSBRcCIo",
+      "title": "Warframe: FAST MASTERY RANK 2025!...",
+      "channel": "MHBlacky"
+    }
+  ],
+  "sources": [
+    {
+      "label": "r/Warframe — My Journey ends at MR25",
+      "href": "https://reddit.com/r/Warframe/comments/1uockj8/my_journey_ends_at_mr25/"
+    },
+    {
+      "label": "r/Warframe — Mastery Rank & Helminth motivation thread",
+      "href": "https://reddit.com/r/Warframe/comments/idu92w/i_like_the_idea_that_way_people_could_become/"
+    },
+    {
+      "label": "r/Warframe — Affinity farming discussion (Gian Point)",
+      "href": "https://reddit.com/r/Warframe/comments/m4fvff/gian_point_should_become_a_graveyard/"
+    },
+    {
+      "label": "Official Warframe Wiki",
+      "href": "https://wiki.warframe.com/"
+    }
+  ],
+  "related": [
+    {
+      "label": "Tabella di Marcia della Progressione",
+      "to": "/guides/progression",
+      "icon": "map-marker-path",
+      "note": "Dove si colloca il MR nella scalata più grande"
+    },
+    {
+      "label": "Guida per Nuovi Giocatori",
+      "to": "/guides/new-player",
+      "icon": "rocket-launch",
+      "note": "Le tue prime 20 ore, fatte bene"
+    },
+    {
+      "label": "Reputazione delle Associazioni",
+      "to": "/guides/standing",
+      "icon": "handshake",
+      "note": "MR più alto = limite giornaliero maggiore"
+    },
+    {
+      "label": "Focus e Operatore",
+      "to": "/guides/focus",
+      "icon": "eye-outline",
+      "note": "Livellare l'equipaggiamento alimenta il tuo Focus"
+    },
+    {
+      "label": "Steel Path",
+      "to": "/guides/steel-path",
+      "icon": "skull-outline",
+      "note": "Una seconda Star Chart di mastery gratuita"
+    },
+    {
+      "label": "Strumenti della Community",
+      "to": "/tools",
+      "icon": "tools",
+      "note": "Tracker della mastery e checklist"
+    }
+  ],
+  "updated": "2026-07-18"
+}

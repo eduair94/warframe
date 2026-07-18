@@ -1,0 +1,424 @@
+{
+  "slug": "eidolon",
+  "eyebrow": "ナレッジセンター · Eidolon Hunting",
+  "title": "Eidolon Hunting ガイド",
+  "lede": "TridolonはWarframeの元祖エンドゲーム・コンテンツです。3体の巨大なSentientボス、50分間の夜という限られた時間、そして今なおFocus、arcanes、Operatorの力を大量に生み出すファーム要素。ここでは、Mote Ampのネタ扱いから、自信を持ってキャプチャーできるようになるまでの方法を紹介します。",
+  "category": "endgame",
+  "readMins": 11,
+  "stats": [
+    {
+      "num": "3",
+      "label": "TridolonにおけるEidolon",
+      "tone": "gold"
+    },
+    {
+      "num": "50",
+      "label": "1サイクルあたりの夜の時間（分）",
+      "tone": "alt"
+    },
+    {
+      "num": "4–6",
+      "label": "Eidolon1体あたりに破壊する関節の数",
+      "tone": "good"
+    },
+    {
+      "num": "2–3",
+      "label": "キャプチャーに必要なチャージ済みのlureの数"
+    }
+  ],
+  "sections": [
+    {
+      "id": "what-is-a-tridolon",
+      "title": "Tridolonとは？",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Cetusの外に広がる**Plains of Eidolon**では、夜間のみ3体の巨大なSentientボス（**Teralyst**、**Gantulyst**、**Hydrolyst**）が出現します。1晩のうちにこれら3体すべてを倒すことは**Tridolon**と呼ばれ、装備、Operatorの操作、そして厳しい時間制限内でのチームワークが試される、Warframeの元祖エンドゲーム・コンテンツです。"
+        },
+        {
+          "type": "p",
+          "text": "これらのボスは、ただ撃つだけでは倒せません。各Eidolonは通常の武器では傷つけられない**Sentientエネルギーシールド**に包まれており、**OperatorのAmp**でシールドを剥がしてから、露出した関節を強力な武器で破壊する必要があります。リズムを掴めば、Tridolonはゲーム内で最も効率的な[Focus](/guides/focus)ファームの1つとなり、[arcanes](/guides/arcanes)やOperatorのアップグレード素材の確実な入手源になります。"
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "場所",
+              "v": "Plains of Eidolon（地球、Cetus） — オープンワールドエリア"
+            },
+            {
+              "k": "時間",
+              "v": "夜間のみ。夜は50分間、昼は100分間持続します"
+            },
+            {
+              "k": "3体のボス",
+              "v": "Teralyst（最弱） → Gantulyst → Hydrolyst（最強）"
+            },
+            {
+              "k": "ハントする理由",
+              "v": "Focus、Warframe arcanes、AmpやOperator装備用のSentient Cores"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "before-you-go",
+      "title": "出発前に：前提条件",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Eidolon huntingを行うには、いくつかのストーリークエストをクリアする必要があります。ベテランである必要はありませんが、OperatorとまともなAmpが必要です。お気に入りの銃だけで力押しできる戦いではありません。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Plainsへのアクセス** — クエスト『*Saya's Vigil*』をクリアしてCetusとPlainsをアンロックします（[クエストガイド](/guides/quests)を参照）。",
+            "**Operator** — クエスト『*The Second Dream*』をクリアして、Eidolonのシールドにダメージを与えられる唯一の存在であるOperatorをアンロックします。",
+            "**Operatorの真の力** — クエスト『*The War Within*』をクリアします。これにより完全なTransferenceと**the Quills**へのアクセスがアンロックされます。ここでAmpを製作することになるため、実質的に最初の本格的なハントの前にクリアが必須となります。",
+            "**the Quills** — Operatorの姿でCetusにあるこのシンジケートの洞窟に入ります。ハントでドロップする**Sentient Cores**を渡して地位ポイントを稼ぎ、Ampパーツ、Operator用のarcanes、Focusレンズと交換できます。"
+          ]
+        },
+        {
+          "type": "warn",
+          "text": "無料でもらえる**Mote Amp**を装備して分隊に参加するのは**絶対に避けてください**。これは初心者ハンターが犯しがちな最大のミスであり、r/Warframeで長年ネタにされているミームの原因でもあります。Mote Ampでは、時間内に周回を終えられるほどのスピードでSentientのシールドを剥がすことができません。"
+        }
+      ]
+    },
+    {
+      "id": "your-amp",
+      "title": "Ampがすべて",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Amp**はOperatorの武器であり、Eidolonハントにおいて最も重要な装備です。Ampは**Prism**、**Scaffold**、**Brace**の3つのパーツから構成されており、コミュニティではそれらのパーツに対応する3つの数字（例：`1-2-3`）でビルドを呼びます。最初にもらえる無料の**Mote Amp**は弱すぎるため、最初の目標はこれを別のAmpに交換することです。"
+        },
+        {
+          "type": "p",
+          "text": "最初のAmpパーツは、ハントでドロップする**Sentient Cores**を渡して得られるCetusの**Quills**の地位ポイントで購入します。つまり、最初の数回のキャプチャーが、*次回以降の*ハントを高速化するためのAmpの資金になります。より高ティアのCorpus製Ampパーツは、**Little Duck**（FortunaのVox Solaris）から入手できます。彼女の地位ポイントは、主にOrb Vallisでファームする**Toroids**から得られます。正確な「最適」Ampはバランス調整パッチによって変化するため、まずは手堅い中ティアのAmpを早めに作成し、メタ構成を追い求める前に最新のAmpガイドや[wiki](https://wiki.warframe.com/)を確認してください。"
+        },
+        {
+          "type": "tip",
+          "text": "Ampと組み合わせるフォーカス道場は**Madurai**を選びましょう。そのパッシブスキルはAmpとVoidダメージを強化し、シールドを素早く剥がすためにまさに必要な効果を提供します。[Focus](/guides/focus)システムを使ってレベルを上げ、地位ポイントを稼ぎながらOperator用のarcanes（MagusやVirtuos）を装着していきましょう。"
+        }
+      ]
+    },
+    {
+      "id": "meta-comp",
+      "title": "メタ分隊編成",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "伝統的な4人編成のTridolon分隊は、特定のframeではなく**役割（ロール）**を中心に構築されます。ダメージディーラー（キャリー）、そのダメージを倍増させるバフ役、およびエネルギーとOperatorの生存を支えるサポート役が必要です。伝統的なアーキタイプは以下の通りです："
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "役割",
+              "Frameのアーキタイプ",
+              "もたらす効果"
+            ],
+            "rows": [
+              [
+                "ダメージキャリー",
+                "Chroma",
+                "Vex Armorで武器ダメージを大幅に倍増させ、クリティカル特化スナイパーを持ってトドメを刺す"
+              ],
+              [
+                "クリティカル / ダメージバフ",
+                "VoltまたはHarrow",
+                "VoltのElectric Shieldは通した射撃を強化し、HarrowのCovenantはチーム全体にクリティカル率を付与する"
+              ],
+              [
+                "エネルギー＆生存",
+                "Trinity",
+                "Energy Vampire + Blessingで分隊のエネルギーを最大に保ち、Operatorの生存を維持する。lureの回収・維持役（キャディー）を兼ねることが多い"
+              ],
+              [
+                "自由枠 / ユーティリティ",
+                "RhinoまたはWisp",
+                "RhinoのRoarやWispのmotesで追加のダメージ、速度、バフを提供し、分隊を補強する"
+              ]
+            ],
+            "note": "特定のframeよりも役割の方が重要です。ダメージキャリー、ダメージ/クリティカルバフ、エネルギー供給、そしてlureを維持するタンク役が揃っていれば、どのような編成でも機能します。各frameの強みについては[ティアリスト](/guides/tier-list)を参照してください。"
+          }
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "武器",
+              "v": "放射線（Radiation）＋クリティカルダメージ用にビルドされた、高クリティカル率のスナイパー（例：Rubico Prime、Lanka）"
+            },
+            {
+              "k": "Operator",
+              "v": "まともなAmp（Mote Ampは不可）とMaduraiフォーカス道場"
+            },
+            {
+              "k": "Arcanes",
+              "v": "Magus LockdownやVirtuos ShadowなどのOperator用arcanesにより、シールド剥がしから射撃への移行ループをよりスムーズにする"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "the-kill-loop",
+      "title": "討伐ループ：シールド、関節、キャプチャー",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "すべてのEidolonは同じ方法で倒せます。このループを一度覚えれば、ソロでのTeralystからフル編成でのHydrolystまで応用可能です："
+        },
+        {
+          "type": "steps",
+          "ordered": true,
+          "steps": [
+            {
+              "h": "シールドを剥がす",
+              "p": "Operatorに切り替え、青いSentientシールドが壊れるまでEidolonの関節をAmpで攻撃します。通常の武器ではほとんど傷つきません。これこそがAmpの役割です。"
+            },
+            {
+              "h": "関節を破壊する",
+              "p": "WarframeにTransferenceで戻り、シールドが再生する前に露出した関節をスナイパーで一気に破壊します。Teralystには4つの関節があり、より巨大なGantulystとHydrolystにはそれぞれ6つの関節があります。すべての関節に対して「シールド剥がし→射撃」を繰り返します。"
+            },
+            {
+              "h": "膝をつかせる",
+              "p": "すべての関節が破壊されると、Eidolonは膝をつき、コアを露出させます。ここで「キャプチャー（捕獲）」するか「キル（討伐）」するかを選択します。"
+            },
+            {
+              "h": "lureを使ってキャプチャーする",
+              "p": "十分な数のチャージ済みlures（Teralystは2個、GantulystとHydrolystは3個）が接続されている場合、キャプチャーして最大報酬を獲得できます。ドロップするEidolon Shardを拾い、Plainsにある祭壇（Shrine）に捧げて次のティアのボスを召喚します。"
+            },
+            {
+              "h": "段階を踏んで進む",
+              "p": "50分間の夜の間に、Teralyst → Gantulyst → Hydrolystの順に進めます。これら3体すべてを完了することがTridolonです。"
+            }
+          ]
+        },
+        {
+          "type": "info",
+          "text": "Eidolon戦では不注意なプレイは禁物です。多用したダメージタイプに対して**適応・耐性**を得るほか、関節を破壊するたびにエネルギーとシールドを奪う**磁気異常（magnetic burst）**を放出します。OperatorにTransferenceし、**void dash**で防ぎつつ、ダメージを安定して管理しましょう。ダメージタイプの詳細については[wiki](https://wiki.warframe.com/)に掲載されています。"
+        }
+      ]
+    },
+    {
+      "id": "lures-and-vomvalysts",
+      "title": "lureとVomvalysts：キャプチャーの仕組み",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Lures**は、夜間のPlainsに出現するドローン型のケージです。ハッキングして起動するとプレイヤーに追従します。周囲にいる浮遊するSentientの精神体**Vomvalysts**を倒すことで**チャージ**され、十分にチャージされるとlureが赤から青に光ります。Vomvalystsのエネルギー体は武器がすり抜けるため、**Amp**で倒す必要があります。チャージ済みのluresを膝をついたEidolonの元に連れていくことで、単に倒すのではなくキャプチャー（捕獲）することができます。"
+        },
+        {
+          "type": "tip",
+          "text": "**常にキャプチャーを狙い、単なるキルは避けましょう。** キャプチャー（Teralystはチャージ済みlures 2個、GantulystとHydrolystは3個が必要）を行うと、追加のSentient Coreが手に入り、高ティアのコアやarcanesのドロップ率が上がります。Vomvalystの攻撃でlureが破壊されてキャプチャーに失敗するのを防ぐため、予備のチャージ済みluresを用意しておきましょう。"
+        }
+      ]
+    },
+    {
+      "id": "rewards",
+      "title": "実際にファームできるもの",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Tridolonはゲーム内で最高の**Focus**ファームの1つであり、WarframeのarcanesやOperator装備の代表的な入手源です。それぞれの報酬の用途は以下の通りです："
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "報酬",
+              "効果",
+              "使い道"
+            ],
+            "rows": [
+              [
+                "Eidolon Shards（Brilliant / Radiant）",
+                "大量のFocus（1個あたり数万）に変換可能",
+                "[Focus](/guides/focus)道場の育成。最高峰のFocusファーム手段"
+              ],
+              [
+                "Warframe Arcanes",
+                "ビルドの方向性を決定づける強力な効果、および取引可能なplatinum",
+                "装備するか売却する — [スクリーナー](/screener)で価格を確認"
+              ],
+              [
+                "Sentient Cores（Intact → Radiant）",
+                "Quillsの地位ポイント（Little DuckはToroidsを使用）",
+                "Ampパーツ、Operator用arcanes、Focusレンズの購入"
+              ],
+              [
+                "キャプチャーボーナス",
+                "追加のコア ＋ ドロップ率の向上",
+                "チャージ済みのluresを使ってキャプチャーした場合のみ獲得可能"
+              ]
+            ]
+          }
+        },
+        {
+          "type": "info",
+          "text": "arcane市場に関する注意：DEがかつてEidolon限定だったarcanes（Arcane Energizeなど）を他の入手源に追加したため、それらの[platinum](/guides/platinum)価値はかつての全盛期の価格を大きく下回っています。売却する前に[スクリーナー](/screener)や[値動き](/movers)で最新の数値を確認してください。ただし、FocusとSentient Coresだけでも周回する価値は十分にあります。"
+        }
+      ]
+    },
+    {
+      "id": "beginner-path",
+      "title": "初心者向けの道：まずはソロでTeralystに挑戦",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Mote Ampを持ったまま野良の3x3 Tridolonにいきなり飛び込むのは、初心者ハンターが挫折する最大の原因です。代わりに、以下の順序でステップアップしましょう："
+        },
+        {
+          "type": "steps",
+          "ordered": true,
+          "steps": [
+            {
+              "h": "前提条件をクリアする",
+              "p": "Plainsへのアクセスのために[Saya's Vigil](/guides/quests)をクリアし、Operator解放のためにThe Second Dreamをクリアします。The War Withinをクリアすると、Operatorの真の力とQuillsの地位ポイントがアンロックされます。"
+            },
+            {
+              "h": "まともなAmpを製作する",
+              "p": "Quillsの地位ポイントを稼ぎ（Sentient Coresを提出）、適切なAmpパーツを購入します。作成でき次第、すぐにMote Ampは引退させてください。Mote Ampではシールドを実用的な速度で剥がすことができません。"
+            },
+            {
+              "h": "ソロでTeralystに挑む",
+              "p": "Teralystは最も弱いEidolonであり、1人で練習するのに最適です。分隊からのプレッシャーや時間制限のストレスを感じることなく、「シールド剥がし→射撃」のループを練習しましょう。"
+            },
+            {
+              "h": "lureを連れていき、チャージする",
+              "p": "ソロのTeralystをキャプチャーして最大報酬を獲得しましょう。これは、GantulystやHydrolystに挑戦する前に、lureやVomvalystの管理方法を学ぶ練習にもなります。"
+            },
+            {
+              "h": "Tridolonへステップアップ",
+              "p": "ソロでのTeralystが余裕になったら、リクルートチャットや野良マッチングを利用して、Chroma/Volt/Trinity/Harrowが揃った本格的なTridolon周回に参加しましょう。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "timing-and-squads",
+      "title": "夜のタイミング調整と分隊の探し方",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "EidolonはPlainsの**50分間の夜**の間しか出現しません。移動で時間を無駄にしないよう、日没*前*にCetusで待機しておきましょう。慣れた分隊であれば1晩でTridolonを余裕で完了できますが、初挑戦の時はほとんどの時間を使い果たすことになります。夜がいつ始まるか分からない場合は、コミュニティのサイクルチェッカー（[ツールディレクトリ](/tools)からリンクされています）で正確なカウントダウンを確認できます。"
+        },
+        {
+          "type": "p",
+          "text": "グループを見つけるのは、以前よりも確実に難しくなっています。復帰プレイヤーが指摘するように、arcane市場の暴落以降、ハントのコミュニティは縮小しました。最も良い方法は、**リクルートチャット**、リレー、そして専用のDiscordサーバーです。「Tricap」や「Tridolon」の募集を探すか、仲間が見つかるまでソロでTeralystを周回するのも手です。現在はニッチなエンドゲームとなっていますが、見返りは非常に大きく、Operatorを大幅に強化できる数少ないファーム手段の1つです。"
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Eidolon huntingを始める前に何が必要ですか？",
+      "a": "[Saya's Vigil](/guides/quests)によるPlainsへのアクセスと、The Second DreamによるOperatorの解放が必要です。The War Withinをクリアすると、Operatorの真の力とQuillsの地位ポイントがアンロックされます。最も重要なのは、出発前にQuillsの地位ポイントでまともなAmpを製作することです。無料のMote Ampでは、実用的な速度でEidolonのシールドを剥がすことができません。"
+    },
+    {
+      "q": "なぜ誰もがMote Ampを笑う（ネタにする）のですか？",
+      "a": "Mote Ampは無料の初期Ampであり、実用的な速度でSentientのシールドを剥がすにはあまりにも弱すぎるため、ハントに持って行くと分隊全体のペースが落ちてしまいます。これはr/Warframeにおける一種の「登竜門」的なミームとなっています。周回に参加する前に、Quillsの地位ポイントを稼いで適切なAmp（ビルドは1-2-3のような3つの数字で呼ばれます）を製作しましょう。"
+    },
+    {
+      "q": "Eidolonをキルするのではなく、キャプチャー（捕獲）するにはどうすればよいですか？",
+      "a": "チャージ済みのlures（**Teralystは2個、GantulystとHydrolystは3個**）を連れていきます。Plainsでluresを起動し、近くでVomvalystsをAmpで倒して、青く光るまでチャージします。すべての関節が破壊されてEidolonが膝をついた際、チャージ済みのluresがあればキャプチャーでき、追加のSentient Coreや、より良いarcane、精製されたshardのドロップ率が上がります。チャージ済みのluresがない場合はキルするしかなく、報酬が減少し、arcanesもドロップしません。"
+    },
+    {
+      "q": "Eidolon huntingに最適なWarframeは何ですか？",
+      "a": "Vex Armorで武器ダメージを倍増させられる**Chroma**が伝統的なダメージキャリーですが、特定のframeよりも役割（ロール）の方が重要です。強力な分隊は、ダメージキャリー、クリティカル/ダメージバフ役（VoltまたはHarrow）、およびエネルギー/生存サポート役（Trinity）で構成されます。各frameの強みについては[ティアリスト](/guides/tier-list)を参照してください。"
+    },
+    {
+      "q": "初心者でもソロでEidolonを倒せますか？",
+      "a": "はい、まずはソロで**Teralyst**に挑戦しましょう。3体の中で最も弱く、分隊や時間のプレッシャーを感じることなく、「シールド剥がし、関節破壊、キャプチャー」のループを安全に学ぶことができます。ソロでのTeralystが余裕になったら、Gantulyst、Hydrolyst、そしてフルTridolonへとステップアップしていきましょう。"
+    },
+    {
+      "q": "arcane市場が暴落した後でも、Eidolon huntingをやる価値はありますか？",
+      "a": "はい。DEが他の入手源を追加したことでArcane Energizeなどのarcanesの[platinum](/guides/platinum)価値は下がりましたが、Tridolonは依然として最も効率的な[Focus](/guides/focus)ファームの1つであり、AmpやOperatorのアップグレードに必要なSentient Coresを獲得する主な手段です。売却する前に、[スクリーナー](/screener)でarcanesの価格を確認してください。"
+    },
+    {
+      "q": "Eidolon戦でOperatorが使用すべきフォーカス道場は何ですか？",
+      "a": "**Madurai**が標準的なEidolon用の道場です。そのパッシブはAmpとVoidダメージを強化し、シールドを素早く剥がすためにまさに必要な効果を提供します。Operator用のarcanesや適切なAmpと組み合わせましょう。道場のアンロックやレベル上げ方法については、[フォーカスガイド](/guides/focus)で解説しています。"
+    }
+  ],
+  "videos": [
+    {
+      "id": "n47NF2XieIM",
+      "title": "HOW TO HUNT EIDOLONS: TERALYST (Warframe)",
+      "channel": "StarColyte"
+    },
+    {
+      "id": "yw732IQ4kDY",
+      "title": "THE ULTIMATE BEGINNERS guide for EIDOLONS in Warframe 2023 (Part 1)",
+      "channel": "WarframeFlo"
+    },
+    {
+      "id": "sHdSVf2kYcs",
+      "title": "Warframe Eidolon Guide (2025) - How to Lure Handle",
+      "channel": "ForsakenIdol"
+    },
+    {
+      "id": "25LlzizpO3I",
+      "title": "Solo Eidolon Hunting 2025 Build",
+      "channel": "Jacsonitos"
+    }
+  ],
+  "sources": [
+    {
+      "label": "Eidolon Info for Dummies like me (r/Warframe)",
+      "href": "https://reddit.com/r/Warframe/comments/10qk7g4/eidolon_info_for_dummies_like_me/",
+      "icon": "reddit"
+    },
+    {
+      "label": "When you join your first eidolon hunt with the mote amp (r/Warframe)",
+      "href": "https://reddit.com/r/Warframe/comments/acb96b/when_you_join_your_first_eidolon_hunt_with_the/",
+      "icon": "reddit"
+    },
+    {
+      "label": "Eidolon Hunters are becoming a rare specimen now? (r/Warframe)",
+      "href": "https://reddit.com/r/Warframe/comments/1njsdr6/eidolon_hunters_are_becoming_a_rare_specimen_now/",
+      "icon": "reddit"
+    },
+    {
+      "label": "Warframe Wiki",
+      "href": "https://wiki.warframe.com/",
+      "icon": "book-open-variant"
+    }
+  ],
+  "related": [
+    {
+      "label": "Focusファームガイド",
+      "to": "/guides/focus",
+      "icon": "meditation",
+      "note": "Eidolon ShardsをFocusに変換"
+    },
+    {
+      "label": "Arcanesガイド",
+      "to": "/guides/arcanes",
+      "icon": "cards",
+      "note": "Eidolonのドロップアイテムとその使い道"
+    },
+    {
+      "label": "シンジケート地位ガイド",
+      "to": "/guides/standing",
+      "icon": "handshake",
+      "note": "Ampパーツ用のQuills＆Little Duck"
+    },
+    {
+      "label": "マーケットスクリーナー",
+      "to": "/screener",
+      "icon": "table-search",
+      "note": "売却前にarcanesの価格を確認"
+    },
+    {
+      "label": "Steel Pathガイド",
+      "to": "/guides/steel-path",
+      "icon": "skull",
+      "note": "もう1つのエンドゲーム・チャレンジ"
+    }
+  ],
+  "updated": "2026-07-18"
+}

@@ -1,0 +1,546 @@
+{
+  "slug": "new-player",
+  "eyebrow": "ナレッジセンター · はじめに",
+  "title": "初心者向け完全ガイド",
+  "lede": "冷たい Grineer の船で目覚めたあなた。手元には銃が一丁、何が起きているのかはさっぱりわからない。そんなあなたの最初の100時間の過ごし方、そして「やってはいけないこと」を正確に解説します。",
+  "category": "start",
+  "readMins": 12,
+  "stats": [
+    {
+      "num": "3",
+      "label": "選ぶべき初期 Warframe",
+      "tone": "good"
+    },
+    {
+      "num": "50",
+      "label": "開始時にもらえる無料 Platinum",
+      "tone": "gold"
+    },
+    {
+      "num": "30",
+      "label": "武器と frame の最大ランク",
+      "tone": "alt"
+    },
+    {
+      "num": "Rhino",
+      "label": "最初にクラフトすべきおすすめ",
+      "tone": "gold"
+    }
+  ],
+  "sections": [
+    {
+      "id": "what-is-warframe",
+      "title": "まず、Warframe とは何か",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Warframe は、宇宙忍者をテーマにした**基本プレイ無料の三人称視点ルーターシューター（looter-shooter）**です。プレイヤーは **Tenno** となり、それぞれ4つの固有アビリティを持つ生体機械装甲 **Warframes** を遠隔操作します。プレイヤーは射撃、スライディング、壁走り、アビリティを駆使して広大な太陽系を駆け巡り、設計図（blueprint）や mod、装備を集めていきます。10年以上にわたって開発が続けられているため、圧倒されるほどのコンテンツ量がありますが、少しずつアンロックしていくことができます。"
+        },
+        {
+          "type": "p",
+          "text": "最初に知っておくべき最も重要なこと：**Warframe は最初の数時間が非常に不親切なことで有名ですが、それを乗り越えると一気に面白くなります。** チュートリアルはほとんど説明なしに放り出されますが、そこは乗り越えてください。ストーリーを進め、いくつかの frame をクラフトし、星系マップが広がる頃には、このジャンルで最高峰のアクションループを楽しめるようになります。"
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "ジャンル",
+              "v": "三人称視点ルーターシューター / アクションRPG"
+            },
+            {
+              "k": "料金",
+              "v": "基本プレイ無料 — ゲームプレイに課金壁なし"
+            },
+            {
+              "k": "プレイヤーの役割",
+              "v": "Warframes を操作する Tenno"
+            },
+            {
+              "k": "課金通貨",
+              "v": "Platinum — トレード可能なため、無課金でも稼ぐことができます"
+            },
+            {
+              "k": "拠点",
+              "v": "Orbiter（自船）、Cephalon Ordis が管理"
+            }
+          ]
+        },
+        {
+          "type": "tip",
+          "title": "Wikiをブックマークする",
+          "text": "ドロップ場所や正確な mod のステータスなど、具体的な数値については公式Wiki [wiki.warframe.com](https://wiki.warframe.com/) が確実な情報源です。このガイドは「方針」を示し、Wikiは「詳細」を提供します。"
+        }
+      ]
+    },
+    {
+      "id": "the-opening",
+      "title": "チュートリアル：Awakening ＆ Vor's Prize",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "最初のミッションは、導入シネマティックの **Awakening** と、それに続くクエスト **Vor's Prize** です。これは必須のチュートリアルで、スキップすることはできません。移動や戦闘の基本を学び、宿敵 Captain Vor と出会い、今後ずっと使い続けるツールを手に入れることになります。"
+        },
+        {
+          "type": "steps",
+          "ordered": true,
+          "steps": [
+            {
+              "h": "Awakening をプレイする",
+              "p": "攻撃を受けている最中に目覚め、移動と射撃を学び、Warframe のアビリティを初めて体験します。早い段階でスライディングとバレットジャンプを習得しましょう。機動力は Warframe の戦闘の半分を占めています。"
+            },
+            {
+              "h": "初期 Warframe を選ぶ",
+              "p": "Excalibur、Volt、Mag の3つの frame から1つを選びます。これは最終的な決定ではありません。後から何十もの frame をクラフトすることになります。直感や雰囲気で選んで構いません（詳細は後述）。"
+            },
+            {
+              "h": "Vor's Prize をクリアする",
+              "p": "Cephalon（Ordis）を救出し、Orbiter（自船であり拠点）を取り戻し、最初の武器を受け取り、地球（Earth）の星系マップをアンロックします。"
+            },
+            {
+              "h": "船に着陸する",
+              "p": "Orbiter からは、Navigation（星系マップ）、Arsenal（装備と mods）、Foundry（クラフト）、Market にアクセスできます。ここがホームベースです。"
+            }
+          ]
+        },
+        {
+          "type": "info",
+          "title": "公式に「初心者」を卒業するタイミング",
+          "text": "開発元の DE やコミュニティは、初心者に対して非常に寛容です。チュートリアルを終えてもしばらくは初心者とみなされます。最初の1週間でシステムをすべて理解しているとは誰も思っていません。Region チャットで質問してみましょう。ほとんどのベテランプレイヤーは喜んで手助けしてくれます。"
+        }
+      ]
+    },
+    {
+      "id": "starter-frame",
+      "title": "初期 Warframe の選択",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "3つの初期 frame はどれも**同じように優秀**で、序盤の星系マップを簡単にクリアできます。残りの2つも後から入手できるので、悩みすぎる必要はありません。最も安全で扱いやすい選択肢を望むなら、**Excalibur** を選びましょう。"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "初期フレーム",
+              "プレイスタイル",
+              "特徴的な強み",
+              "こんな人におすすめ"
+            ],
+            "rows": [
+              [
+                "Excalibur",
+                "万能型、銃 ＋ 近接",
+                "Exalted Blade — 威力がスケールするエネルギーソード",
+                "エンドゲームまで通用する、強力で扱いやすい frame を求めるすべての人"
+              ],
+              [
+                "Volt",
+                "高速 ＆ 電撃",
+                "速度バフ ＋ ダメージを増幅する Shield",
+                "高い機動力、瞬間火力、そしてチームへの貢献度を好むプレイヤー"
+              ],
+              [
+                "Mag",
+                "アビリティキャスター / コントロール",
+                "Magnetize ＋ Pull で敵を集めて一網打尽にする",
+                "アビリティ重視のクラウドコントロール（敵の制御）プレイを楽しみたいプレイヤー"
+              ]
+            ],
+            "note": "選択が固定されるわけではありません。ここに挙げた frame はすべて後から再入手可能で、ゲーム内に存在する60種類以上の Warframes はすべて無課金で farming（入手）可能です。"
+          }
+        },
+        {
+          "type": "p",
+          "text": "さらに詳しい解説や、*次に* farming すべき frame を知りたいですか？[初心者向けおすすめ Warframe ガイド](/guides/beginner-warframes)をご覧ください。"
+        }
+      ]
+    },
+    {
+      "id": "golden-path",
+      "title": "最初の20時間：王道ルートを進む",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Vor's Prize をクリアすると、手取り足取りのガイドはなくなります。迷子にならずに着実に進行できる、実績のある序盤のループを紹介します。"
+        },
+        {
+          "type": "steps",
+          "ordered": true,
+          "steps": [
+            {
+              "h": "クエストマーカーに従う",
+              "p": "クエストは Warframe の骨子です。システム全体をアンロックするだけでなく、いくつかのクエストでは**無料の完成済み Warframe** が手に入ります。ランダムな node を周回するよりも、出現したクエストを優先して進めましょう。"
+            },
+            {
+              "h": "Junction を通じて惑星をアンロックする",
+              "p": "惑星は Junction で繋がっています。各 Junction には一連のタスクと Specter との戦闘が用意されており、これをクリアすると次の惑星が解放されます。これが進行の主軸となります。Junction のクリアを目指すことで、星系マップが順番に開かれていきます。"
+            },
+            {
+              "h": "できるだけ早く Rhino をクラフトする",
+              "p": "Rhino のパーツは、序盤で到達できる金星（Venus）のボス Jackal からドロップします。生存方法を学んでいる段階において、Rhino の Iron Skin はほぼ無敵状態にしてくれます。「最初にクラフトすべき frame」の定番とされるのには、確かな理由があります。"
+            },
+            {
+              "h": "装備をランク30まで上げる",
+              "p": "武器や frames は、ランク30に達するまでアフィニティ（経験値）を獲得します。1ランク上がるごとに mod 容量が +1 され、新しいアイテムを初めて30ランクまで上げると、Mastery Rank が永久に上昇します。ミッションには、新しいアイテム1つと、すでにレベルを上げたアイテム1つを持っていくと良いでしょう。"
+            },
+            {
+              "h": "Reactor や Catalyst は温存しておく",
+              "p": "Orokin Reactor（frames 用）と Orokin Catalyst（武器用）は、アイテムの mod 容量を2倍にします。コミュニティではこれらを「ポテト」と呼んでいます。これらは Nightwave やイベントから入手できます。使わない装備に無駄遣いせず、長く使うお気に入りのために温存しておきましょう。"
+            }
+          ]
+        },
+        {
+          "type": "quote",
+          "text": "リノ、IRON SKIN 持ってる。弾、エサになる。リノ、混乱すると、足踏み鳴らす。リノが理解するまで、みんな止まる。リノ、ハラペコ。リノに MODS 食わせる。",
+          "cite": "r/Warframe FAQ — 最初の frame として Rhino を選ぶべき永遠の理由"
+        }
+      ]
+    },
+    {
+      "id": "foundry-market",
+      "title": "Foundry と Market：すべての入手方法",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Warframe のほぼすべてのアイテムは、同じループをたどります：**設計図（blueprint）を購入し、素材を farming（収集）し、Foundry で製作する。** **Market** では、ほとんどの設計図がリアルマネーではなく**クレジット（credits）**（ゲーム内の基本通貨）で販売されています。一方、Warframe の各パーツの設計図は、惑星の**ボス**からドロップします。"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "**設計図（Blueprints）** — レシピです。frame 本体の設計図は Market から入手し、3つのパーツ（Neuroptics、Chassis、Systems）はボスからのドロップで入手します。",
+            "**素材（Resources）** — 各惑星のミッションで farming します。製作に必要な素材は Foundry で確認できます。",
+            "**製作タイマー** — Foundry での製作はリアルタイムで進行します。構成パーツの製作には約12時間、Warframe 本体の製作には **72時間（3日間）** かかります。ログアウトする前に製作を開始しておけば、ゲームをプレイしていない間に完成させることができます。"
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "Warframe や武器を **platinum** で購入すると、farming をすべてスキップできるだけでなく、無料のインベントリスロットとポテト（Catalyst/Reactor）が最初からインストールされた状態で手に入ります。そのため、frame を plat で購入したくなる*誘惑*に駆られますが、初心者プレイヤーの間は我慢してください（詳細は後述）。"
+        },
+        {
+          "type": "warn",
+          "title": "plat で製作タイマーを短縮しないこと",
+          "text": "Foundry では、platinum を支払うことで即座に製作を完了させることができます。しかし、これにはほとんど価値がありません。タイマーに合わせて製作を計画しましょう。3日かかる frame も、気づけば完成しています。"
+        }
+      ]
+    },
+    {
+      "id": "modding",
+      "title": "Modding の基礎 — 真の力の源",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "初心者に誰もはっきりと教えてくれない秘密があります。それは、**どの装備を持っているかよりも、mods の方が遥かに重要である**ということです。しっかりと modding された初期ライフルは、mod スロットが空の「より優れた」武器よりも強力です。与えるダメージが物足りないと感じる場合、その原因はほぼ間違いなく新しい装備ではなく *mods* にあります。詳細な解説は [Mods ガイド](/guides/mods) をご覧ください。"
+        },
+        {
+          "type": "p",
+          "text": "入手してランクを上げるべき、序盤の必須 mods："
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "**ダメージ：** Serration（ライフル）、Hornet Strike（ピストル）、Point Blank（ショットガン）、Pressure Point（近接） — これらは基礎ダメージを上昇させる必須のものです。",
+            "**マルチショット：** Split Chamber（ライフル）、Barrel Diffusion（ピストル）、Hell's Chamber（ショットガン） — 火力をほぼ2倍にします。",
+            "**生存力：** Warframe の Vitality（ヘルス）と Redirection（シールド）。",
+            "**アビリティ：** アビリティの威力を高め、発動回数を増やすための Intensify（威力）、Streamline（効率）、Flow（エネルギー）。"
+          ]
+        },
+        {
+          "type": "p",
+          "text": "各 mod は、そのコストに応じた**容量（capacity）**を消費します。装備のランクを上げて容量を増やし、**ポテト**を装着して容量を2倍にし、mod の**極性（polarity）**をスロットに合わせることで消費コストを半分に抑えます（後に **Forma** を使ってスロットの極性を変更できます）。mods のアップグレードには **Endo** とクレジット（credits）を使用します。Endo は簡単に farming できます。[Endo ガイド](/guides/endo) と [Endo/Plat 価値計算ツール](/endo) を参照してください。"
+        },
+        {
+          "type": "warn",
+          "title": "mods をよく確認せずに売却しないこと",
+          "text": "見覚えのない mods を売却したり分解したりせず、重複したものは保管しておきましょう。余分なコピーは Endo に変換して、手元に残す mods の強化に使えます。レアな mod（Riven、Primed mod、Legendary Core など）を、二束三文で商人に売ったり他人にトレードしたりすることは、r/Warframe で最もよくある初心者の後悔です。"
+        }
+      ]
+    },
+    {
+      "id": "platinum",
+      "title": "Platinum と最初の50の使い道",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "すべてのアカウントは、課金通貨である **50 platinum** を持った状態でスタートします。ただし、初期の50は*消費専用*であり、他プレイヤーとトレードすることはできません。しかし、ゲーム内で**獲得した** platinum は完全に**トレード可能**なため、他のプレイヤーにアイテムを売ることで、無課金でも無限に稼ぐことができます。つまり、最初の50は farming で入手*できない*ものに使うべきであり、farming で入手できる frame や武器に使うべきではありません。"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "**Warframe ＆ 武器スロット — 最優先で購入すべきもの。** 初期状態のスロット数は非常に少なく、すぐに埋まってしまいます。スロットは plat でしか購入できませんが、安価です。",
+            "Nightwave などからまだ入手していない場合の **Orokin Reactor / Catalyst**（ポテトは mod 容量を2倍にします）。",
+            "**外装品（Cosmetics）** — カラーパレットや syandana など。ファッションを楽しみたい場合のみ。ゲームプレイへの影響はなく、純粋な好みです。"
+          ]
+        },
+        {
+          "type": "p",
+          "text": "plat を*稼ぐ*には、他のプレイヤーとトレードを行います。Void Relics を開封して得た **Prime パーツ**、余った mods、Ayatan 彫刻などを販売します。出品や取引を行う前に、安く買い叩かれないようリアルタイムの価格を確認しましょう。[Market Screener](/screener) や、売買スプレッドを確認できる [Flip finder](/flip)、開封するか売却するかを判断するための [Relic 価値計算ツール](/relics-value)、Baro との取引に使う [Ducats](/ducats) ツールを活用してください。完全な攻略法は [Platinum ガイド](/guides/platinum) に記載されています。"
+        },
+        {
+          "type": "warn",
+          "title": "トレード詐欺は実在します — そして回避可能です",
+          "text": "正当なトレードはすべて、**両方のプレイヤーが正確なアイテムを確認し合う安全なトレードウィンドウ**で行われます。「先にアイテムを渡して」と要求されたり、「plat を2倍にする」と約束されたり、取引を急かされたりした場合は詐欺です。取引をやめましょう。トレードは **Mastery Rank 2** でアンロックされます（アカウントの2段階認証を有効にする必要もあります）。それまでは、チャットで取引を迫ってくる相手は無視してください。"
+        }
+      ]
+    },
+    {
+      "id": "mistakes",
+      "title": "避けるべき初心者のよくある間違い",
+      "blocks": [
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "**最初の 50 plat を frame や武器に使い果たすこと。** これらは farming で入手可能です。代わりにスロットやポテトを購入しましょう。",
+            "**Foundry のタイマーを plat で短縮すること。** タイマーに合わせて計画を立てましょう。plat は他の場所で使った方が遥かに価値があります。",
+            "**見覚えのない mods を売却または分解すること。** 重複したものはゴミではなく Endo になります。処分する前に mod について調べましょう。",
+            "**クエストを無視すること。** クエストは Operator、Focus システム、ゲームモード全体、そして無料の Warframes へのアクセス制限となっています。これらをスキップすることは、ゲームそのものをスキップすることを意味します。",
+            "**古いティアリストを盲信すること。** コミュニティのランキング（Overframe など）は、リワーク（仕様変更）の反映が遅れることがあります。frame の評価が数年前の性能に基づいている場合もあります。自分が使って楽しいものをプレイしましょう。ほぼすべての装備で通常の星系マップをクリアできます。現在の状況については、こちらの [ティアリストガイド](/guides/tier-list) をご覧ください。",
+            "**Modding 不足。** mod を装着していない装備は、星系マップの中盤あたりで急激に通用しなくなります。敵が硬いと感じたら、武器のせいにする前に modding を見直しましょう。",
+            "**ネタバレを踏んでしまうこと。** Warframe のストーリーには、本当に驚かされる展開が用意されています。クエストのネタバレは避けましょう。何も知らない状態でプレイする価値があります。",
+            "**1つのことだけを周回しすぎて燃え尽きること。** クエストを進め、次に frame を farming し、それからレベル上げをする、といったようにローテーションさせましょう。Warframe はマラソンのような一気見プレイよりも、コツコツと続けるプレイに報いてくれます。"
+          ]
+        },
+        {
+          "type": "info",
+          "text": "もし途中で迷子になったと感じても（「40時間プレイしたけれど、自分が何をしているのかさっぱりわからない」というのはよくあることです）、それは普通であり、誰もが通る道です。そんな時は基本に立ち返りましょう：次のクエストを進める、次の Junction をアンロックする、何かを1つクラフトする。進捗は積み重なっていきます。"
+        }
+      ]
+    },
+    {
+      "id": "opens-up",
+      "title": "ゲームが「本格的に面白くなる」のはいつから？",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Warframe は、クエストや星系マップと連動して段階的に展開していきます。大まかな流れは以下の通りです。アップデートによって正確な前提条件が変わることがあるため、最新の順序については [クエストガイド](/guides/quests) と [進行ロードマップ](/guides/progression) を確認してください。**なお、これらにはネタバレは含まれていません。**"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "マイルストーン",
+              "目安の時期",
+              "解放される要素"
+            ],
+            "rows": [
+              [
+                "Vor's Prize をクリアする",
+                "1時間目",
+                "星系マップ、自船、Foundry、Market"
+              ],
+              [
+                "序盤のストーリークエスト",
+                "最初の約20〜40時間",
+                "Archwing、新しい Warframes、装備、さらなる惑星"
+              ],
+              [
+                "二番目の夢（The Second Dream）（主要クエスト）",
+                "ミッドゲーム（中盤）",
+                "Tenno にゲーム性を一変させる新たな要素が加わります — ネタバレは避けますので、とにかくプレイしてください"
+              ],
+              [
+                "星系マップを完了する",
+                "約50〜100時間",
+                "Steel Path（ハードモード）と、その報酬である Steel Essence"
+              ],
+              [
+                "新たなる大戦（The New War）＆ 終盤のクエスト",
+                "レイトゲーム（終盤）",
+                "ストーリーの大きなクライマックスと、エンドゲームシステム：Helminth、Railjack、Archon Shards"
+              ]
+            ],
+            "note": "プレイ時間はあくまで目安であり、ペースは人それぞれです。2,000時間プレイしているベテランプレイヤーと自分を比較する必要はありません。"
+          }
+        },
+        {
+          "type": "p",
+          "text": "多くのプレイヤーは、星系マップを完了し、Operator と Focus システムが解放された時点で、ゲームが本当に「面白くなった」と実感します。そこからは、[Steel Path](/guides/steel-path) や Eidolon ハント、オープンワールドエリアなどのエンドゲームループへと進んでいきます。気分転換をしたい場合は、序盤からアクセス可能な別モード [The Duviri Paradox](/guides/duviri) も用意されていますが、初心者プレイヤーはメインストーリーの進行を最優先にすることをおすすめします。"
+        }
+      ]
+    },
+    {
+      "id": "help-next",
+      "title": "ペース配分、サポート、そして次に進むべき道",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Warframe は逃げません。全力疾走するのではなく、趣味のように自分のペースでプレイしましょう。初心者におすすめの健全なセッションの流れは、クエストを1つクリアし、frame のパーツを1つ farming し、武器を1〜2個レベル上げし、Foundry で製作を開始してからログアウトすることです。Mastery Rank と強さは自然と蓄積されていきます。"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "**早い段階でクラン（clan）に加入しましょう。** クランに加入すると、他では絶対に手に入らない武器や装備を開発できる Dojo 研究にアクセスできるようになるほか、質問に答えてくれる仲間も見つかります。",
+            "**Region チャットやコミュニティを活用しましょう。** r/Warframe や公式 Discord は、初心者に対して非常に親切です。やみくもに周回する前に、まずは質問してみましょう。",
+            "正確なドロップ場所やステータスを確認するために、[wiki.warframe.com](https://wiki.warframe.com/) の Wiki を常に開いておきましょう。",
+            "トレードで買い叩かれないよう、このサイトのマーケットツールをブックマークしておきましょう。まずは [コミュニティツールディレクトリ](/tools) から始めてみてください。"
+          ]
+        },
+        {
+          "type": "info",
+          "title": "「始めたばかりだけど、次は何をすればいい？」チェックリスト",
+          "text": "1) Vor's Prize をクリアする → 2) 金星（Venus）の Jackal から Rhino をクラフトする → 3) クエストマーカーに従い Junction をアンロックする → 4) Serration や Vitality などの mod を装着し、装備をランク30まで上げる → 5) 最初の 50 plat をスロットに使う → 6) クランに加入する → 7) 焦らず、詐欺に遭わず、ネタバレを避ける。"
+        },
+        {
+          "type": "links",
+          "links": [
+            {
+              "label": "初心者向けおすすめ Warframes",
+              "to": "/guides/beginner-warframes",
+              "icon": "robot-happy",
+              "note": "最初に farming すべき frame"
+            },
+            {
+              "label": "進行ロードマップ",
+              "to": "/guides/progression",
+              "icon": "map-marker-path",
+              "note": "すべてをアンロックする順序"
+            },
+            {
+              "label": "Platinum の入手方法",
+              "to": "/guides/platinum",
+              "icon": "diamond-stone",
+              "note": "無課金で plat を稼ぐ方法"
+            },
+            {
+              "label": "Mods の解説",
+              "to": "/guides/mods",
+              "icon": "puzzle",
+              "note": "真の力の源"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Warframe で最高の初期 Warframe は何ですか？",
+      "a": "Excalibur、Volt、Mag はどれも同じように優秀です。プレイスタイルに合わせて選びましょう。Excalibur は最も扱いやすい万能型で、最初の選択肢として最も安全です。Volt は高速で柔軟性が高く、Mag はアビリティ重視のクラウドコントローラーです。残りの2つ（そして他の何十もの frame）も後から farming できるため、気楽に決めて構いません。詳細な解説は [初心者向け Warframe ガイド](/guides/beginner-warframes) をご覧ください。"
+    },
+    {
+      "q": "Vor's Prize のクリア後は何をすればいいですか？",
+      "a": "クエストマーカーに従い、Junction をクリアして新しい惑星をアンロックしていきましょう。最初の大きな目標は、金星（Venus）のボス Jackal から Rhino をクラフトすることです。彼の Iron Skin は、ゲームを学んでいる間の生存を助けてくれます。並行して、装備をランク30まで上げ、Serration や Vitality などの主要な mod を使って modding を始めましょう。[進行ロードマップ](/guides/progression) に詳細な順序が記載されています。"
+    },
+    {
+      "q": "無料のもらえる最初の 50 platinum は何に使うべきですか？",
+      "a": "まずは Warframe と武器のスロットです。これらは plat でしか購入できず、安価で、インベントリの空きスペースはすぐに不足します。その次は、Nightwave などからまだ入手していない場合の Orokin Reactor / Catalyst（ポテト）です。frame や武器（これらは farming 可能です）の購入や、Foundry の製作タイマーの短縮に plat を使ってはいけません。初期の無料50は消費できますが、他プレイヤーとトレードすることはできない点に注意してください。詳細は [Platinum ガイド](/guides/platinum) に記載されています。"
+    },
+    {
+      "q": "無課金で新しい Warframes を入手するにはどうすればいいですか？",
+      "a": "Market からクレジット（credits）で frame の設計図（blueprint）を購入し、3つのパーツ（通常は惑星のボスからドロップ）を farming し、Foundry で製作してから、完成した frame を組み立てます。いくつかのストーリークエストでは、完成した Warframe が無料で手に入ることもあります。Warframe においてゲームプレイに影響する要素はすべて farming 可能です。platinum は時間短縮（利便性）のためにあるに過ぎません。"
+    },
+    {
+      "q": "Warframe が「本格的に面白くなる」までどのくらいかかりますか？",
+      "a": "通常は、星系マップの大部分をクリアし、序盤のストーリークエストを終えた後になります。時間にして約40〜100時間ほどです。転換期は、Operator と Focus システムが解放され、[Steel Path](/guides/steel-path) がアンロックされるタイミングです。最初の数時間が不親切に感じられるのは普通のことです。そこを乗り越えれば、まったく異なる、遥かに素晴らしいゲームへと進化します。"
+    },
+    {
+      "q": "Warframe は Pay-to-Win（課金が強さに直結するゲーム）ですか？",
+      "a": "いいえ。platinum で購入できるのは利便性（farming のスキップ）や外装品であり、純粋な強さではありません。ゲームプレイに影響を与えるすべての要素は無課金で入手可能です。また、platinum 自体がプレイヤー間でトレード可能であるため、Prime パーツや mods を売却するだけで、ほぼすべての要素をまかなうことができます。[Platinum の入手方法](/guides/platinum) をご覧ください。"
+    },
+    {
+      "q": "トレードで詐欺に遭わないようにするにはどうすればいいですか？",
+      "a": "正当なトレードでは、完了前に両方のプレイヤーが正確なアイテムを確認し合う安全なトレードウィンドウが必ず使用されます。「先にアイテムを渡して」と要求されることは絶対にありません。「plat を2倍にする」と約束する相手や、取引を急かす相手は無視してください。取引を承諾する前に、[Screener](/screener) や [Flip finder](/flip) などのマーケットツールでアイテムの適正価格を確認しましょう。"
+    },
+    {
+      "q": "Mastery Rank は急いで上げる必要がありますか？",
+      "a": "いいえ。Mastery Rank は、新しい武器や frames を初めて30ランクまで上げることで自然に上昇します。ランクが上がると、より高ティアの装備、1日のトレード回数、一部のコンテンツがアンロックされますが、競争ではないため、無理に周回して上げるメリットはありません。ミッションに新しい装備を持っていき続けるだけで十分です。[Mastery Rank ガイド](/guides/mastery-rank) をご覧ください。"
+    }
+  ],
+  "videos": [
+    {
+      "id": "yeGZqhDrRvw",
+      "title": "Warframe Beginner's Guide 2025: Episode #1 Beginner Choices & Walkthrough!",
+      "channel": "iFlynn"
+    },
+    {
+      "id": "nF1fHE646xk",
+      "title": "ULTIMATE Beginner's Guide to Warframe (Getting Started in 2025+)",
+      "channel": "DrybearGamers"
+    },
+    {
+      "id": "j8HBB7aArdg",
+      "title": "Warframe New Player Tips & Tricks 2025!",
+      "channel": "Pupsker"
+    },
+    {
+      "id": "fwI6RW6mrgM",
+      "title": "Warframe Beginner Guide: New to Warframe? Start Here! | Episode 1",
+      "channel": "Tipsy"
+    }
+  ],
+  "sources": [
+    {
+      "label": "Official Warframe Wiki",
+      "href": "https://wiki.warframe.com/",
+      "icon": "book-open-page-variant",
+      "note": "Canonical source for drops, stats & quests"
+    },
+    {
+      "label": "The Warframe Wiki has moved to wiki.warframe.com (PSA)",
+      "href": "https://reddit.com/r/Warframe/comments/1iemokz/the_warframe_wiki_is_officially_moving_from/",
+      "icon": "reddit",
+      "note": "r/Warframe"
+    },
+    {
+      "label": "'40 hours in and I have no idea what I'm doing' — the universal new-player mood",
+      "href": "https://reddit.com/r/Warframe/comments/1dpm3qo/40_hours_in_and_i_have_no_idea_what_im_doing_why/",
+      "icon": "reddit",
+      "note": "r/Warframe"
+    },
+    {
+      "label": "Got scammed out of a Legendary Core as a new player",
+      "href": "https://reddit.com/r/Warframe/comments/1sonq6u/got_scammed_out_of_a_legendary_core_as_a_new/",
+      "icon": "reddit",
+      "note": "Why you check prices before trading"
+    },
+    {
+      "label": "When DE considers a player to no longer be new",
+      "href": "https://reddit.com/r/Warframe/comments/ietejk/lets_not_forget_when_de_considers_a_player_to_not/",
+      "icon": "reddit",
+      "note": "r/Warframe"
+    }
+  ],
+  "related": [
+    {
+      "label": "初心者向けおすすめ Warframes",
+      "to": "/guides/beginner-warframes",
+      "icon": "robot-happy",
+      "note": "最初にクラフトすべき frame"
+    },
+    {
+      "label": "進行ロードマップ",
+      "to": "/guides/progression",
+      "icon": "map-marker-path",
+      "note": "ゲームをアンロックしていく順序"
+    },
+    {
+      "label": "How to Get Platinum",
+      "to": "/guides/platinum",
+      "icon": "diamond-stone",
+      "note": "無課金で課金通貨を稼ぐ方法"
+    },
+    {
+      "label": "Mods の解説",
+      "to": "/guides/mods",
+      "icon": "puzzle",
+      "note": "真の力の源"
+    },
+    {
+      "label": "Mastery Rank ガイド",
+      "to": "/guides/mastery-rank",
+      "icon": "star-circle",
+      "note": "アカウントをレベルアップする"
+    },
+    {
+      "label": "コミュニティツール",
+      "to": "/tools",
+      "icon": "toolbox",
+      "note": "Wiki、Overframe、マーケットツールなど"
+    }
+  ],
+  "updated": "2026-07-18"
+}

@@ -1,0 +1,471 @@
+{
+  "slug": "railjack",
+  "eyebrow": "知識中心 · Railjack",
+  "title": "Railjack 指南",
+  "lede": "Railjack 是 Warframe 的主力艦沙盒：在開放太空中駕駛戰艦、在戰鬥中登入敵艦，並指揮完全由 AI 組成的船員。以下是如何解鎖它、提升你的 Intrinsics 等級，以及如何單人遊玩而不會成為人人害怕的房主。",
+  "category": "endgame",
+  "readMins": 11,
+  "stats": [
+    {
+      "num": "5",
+      "label": "Intrinsic 學派",
+      "tone": "gold"
+    },
+    {
+      "num": "3",
+      "label": "你可以指揮的 AI 船員",
+      "tone": "good"
+    },
+    {
+      "num": "10",
+      "label": "每個 Intrinsic 的等級",
+      "tone": "alt"
+    },
+    {
+      "num": "2",
+      "label": "Proxima 派系 (Grineer + Corpus)"
+    }
+  ],
+  "sections": [
+    {
+      "id": "what-is-railjack",
+      "title": "Railjack 究竟是什麼",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Railjack 是 Warframe 的**太空戰鬥遊戲模式**，圍繞著一艘大型戰艦——*你的* Railjack——展開，你和最多三名隊友可以共同駕駛它。你將駕駛它穿梭於 **Proxima** 區域（圍繞熟悉行星軌道的開放太空區域），撕碎敵方戰機群、消滅重裝甲的 **crewships**，並登入敵方主力艦和基地以徒步完成任務目標。"
+        },
+        {
+          "type": "p",
+          "text": "其魅力在於無縫的切換：前一秒你還在駕駛座上穿梭於防空砲火中，下一秒你就從 **Archwing slingshot** 中彈射到敵方 crewship 內，從內部炸毀其反應爐，接著你又回到船上用你的 `Omni` 工具修補船體破裂。它在 **Empyrean** 更新中首次亮相，並在後來的 Corpus 改版中進行了大幅簡化，新增了 **Command** Intrinsic 和個人 **Plexus** MOD 面板——這兩個系統讓現代的單人 Railjack 體驗變得真正舒適。"
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "遊戲模式",
+              "v": "太空戰鬥 + 無縫徒步登入"
+            },
+            {
+              "k": "你的飛船",
+              "v": "Railjack — 駕駛它、開火射擊，或從中彈射"
+            },
+            {
+              "k": "小隊人數",
+              "v": "最多 4 名玩家，或單人遊玩時你 + 最多 3 名 AI 船員"
+            },
+            {
+              "k": "區域",
+              "v": "Grineer Proxima 與 Corpus Proxima（最終抵達 Veil）"
+            },
+            {
+              "k": "前置條件",
+              "v": "完成 The War Within，然後完成 Rising Tide 系列任務"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "why-bother",
+      "title": "為什麼要玩 Railjack",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Railjack 多年來一直處於尷尬的境地，但改版將其變成了一個真正的獎勵獲取利器。它不僅僅是一個新奇的飛行模擬遊戲——好幾個成長系統都直接與它掛鉤。"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "原因",
+              "你能從中獲得什麼"
+            ],
+            "rows": [
+              [
+                "經驗值（Affinity）/ 練級",
+                "任務會將共享經驗值灌注到你的整個裝備配置中，因此這是在 Hydron 之外，提升武器和 frame 等級的可靠方法。"
+              ],
+              [
+                "資源",
+                "Titanium、Asterite 以及 Grineer/Corpus Proxima 的掉落物可用於 Railjack 升級，以及驚人數量的後期 Foundry 配方。"
+              ],
+              [
+                "Sisters of Parvos",
+                "Corpus lich 的獵殺受到 Railjack 的限制——你需要面對並登入 Sister 的主力艦來解決她。請參閱 Kuva & Liches 指南。"
+              ],
+              [
+                "Void Storms",
+                "Railjack 版本的 Void Fissures：在駕駛的同時破解遺物並累積額外的 Void Traces。除了任務獎勵外，還能免費獲得 prime 零件。"
+              ],
+              [
+                "系列任務與故事",
+                "Rising Tide、Call of the Tempestarii 以及後續的故事劇情都會讓你坐上駕駛座。"
+              ],
+              [
+                "段位經驗（Mastery）與多樣性",
+                "Intrinsics、組件，以及遊戲中獨一無二的戰鬥沙盒體驗。"
+              ]
+            ],
+            "note": "Void Storm 的獎勵會與任務本身的掉落物疊加——在分解掉落物之前，先檢查一下破解或出售的性價比計算。"
+          }
+        },
+        {
+          "type": "p",
+          "text": "其中有兩項值得提前規劃：**Void Storms** 將 Railjack 變成了遺物 farm 聖地——使用 [遺物價值：破解或出售](/relics-value) 和 [哪種遺物每場收益最高](/relic-farming) 來計算你的收穫。一旦你開始破解 prime，[ducat 價值工具](/ducats) 和 [成套對比單件計算器](/comparison) 會告訴你哪些該留給 Baro，哪些該轉手賣掉。"
+        }
+      ]
+    },
+    {
+      "id": "unlocking",
+      "title": "解鎖 Railjack：Rising Tide 系列任務",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "進入該模式有兩種方法。你可以立即**加入其他人的飛船擔任船員**——只需加入公開的 Railjack 小隊，即使你什麼都沒有，也能賺取 Intrinsics 和獎勵。但要建造*你自己的* Railjack，你需要執行 **Rising Tide** 系列任務。"
+        },
+        {
+          "type": "steps",
+          "ordered": true,
+          "steps": [
+            {
+              "h": "完成 The War Within",
+              "p": "Rising Tide 鎖定在電影式系列任務 The War Within 之後（該任務在故事中接續 The Second Dream）。如果你還沒到那裡，請先推進主線系列任務——順序請參閱系列任務指南。"
+            },
+            {
+              "h": "獲得進入 Dry Dock 的權限",
+              "p": "Rising Tide 是在 Dry Dock 建造的。你無法從你的 orbiter 建造這艘船——但 Dry Dock 並非氏族專屬：你可以在 Clan Dojo 中建造一個，或者使用在幾個較大 Relays（例如 Saturn 和 Pluto）中找到的公共 Dry Dock。"
+            },
+            {
+              "h": "收集並建造六個殘骸組件",
+              "p": "該任務會引導你環繞星圖收集資源，然後在 Dry Dock 中逐一建造飛船的六個回收部件。"
+            },
+            {
+              "h": "等待建造計時器結束",
+              "p": "每個組件和最終組裝都有類似 Foundry 風格的實時計時器，累計需要數天時間。盡早開始建造，並在遊玩其他內容時讓它們自動製作。"
+            },
+            {
+              "h": "從 Dry Dock 發射",
+              "p": "一旦 Railjack 組裝完畢，它就會停泊在你的 Dry Dock 中。從那裡（或從 Navigation 中的 Proxima 區域），你可以開始任務並開始提升 Intrinsics 等級。"
+            }
+          ]
+        },
+        {
+          "type": "warn",
+          "text": "**沒有氏族？你仍然有其他選擇。** 幾個較大的 **Relays**（其中包括 Saturn 和 Pluto）設有公共的 **Dry Dock**，即使完全沒有氏族也可以使用。想要擁有自己的氏族？在任何 Relay 的氏族控制台都可以免費建立單人氏族——在你的 dojo 中建造 Dry Dock（這也會解鎖氏族專屬的 Sigma 組件研究），或者借用朋友或聯盟的 dojo。不要讓「我沒有氏族」阻礙你。"
+        },
+        {
+          "type": "info",
+          "text": "剛接觸這個模式，不確定它是否適合你？一些**故事任務和公開小隊會為你提供一艘預建的租借 Railjack**，這樣你就可以在完成 Rising Tide 之前嘗試駕駛和射擊。這是決定是否投入時間建造的好方法。"
+        }
+      ]
+    },
+    {
+      "id": "intrinsics",
+      "title": "Intrinsics：五大學派",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Intrinsics** 是 Railjack 的個人技能樹——共有五大學派，每個學派的等級為 **1 到 10**。你將從任務經驗值中自動獲得 Intrinsic 點數，然後將其分配到你想要的地方。更高的等級是顛覆性的，而非微幅遞增的：它們能解鎖新的機動動作、更快的修復，以及——至關重要的——你的 AI 船員。"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "學派",
+              "主導內容",
+              "為什麼對單人遊玩至關重要"
+            ],
+            "rows": [
+              [
+                "Tactical",
+                "戰術地圖、傳送到船員/目標，以及使用 Omni 傳送回船上",
+                "立即瞬間傳送回駕駛座或船體破損處，而不用跑遍整艘船"
+              ],
+              [
+                "Piloting",
+                "引擎加速、向量噴射和漂移閃避，用於緊湊、快速的重新定位",
+                "一艘靈活的飛船，你實際上可以用它來躲避防空砲火並快速重新定位"
+              ],
+              [
+                "Gunnery",
+                "砲塔操控——熱量管理、瞄準縮放、自動鎖定前置引導指示器，以及 Archwing slingshot",
+                "更快地擊殺戰機、用 Forward Artillery 精準打擊 crewships，並彈射登入它們"
+              ],
+              [
+                "Engineering",
+                "船體生命值、更快的 Omni 修復、鍛造廠產出以及危險抑制",
+                "在無人照看船體時，從火災和船體破損中倖存下來"
+              ],
+              [
+                "Command",
+                "雇用並指揮最多 3 名 AI 船員，以及召喚 On Call Crew",
+                "單人遊玩中最重要的一個學派——你的船員會為你駕駛和戰鬥"
+              ]
+            ]
+          }
+        },
+        {
+          "type": "tip",
+          "text": "**單人升級順序：** 早期優先提升 **Command** 以獲取船員，然後提升幾級 **Gunnery** 和 **Piloting** 以改善飛船的手感，最後提升 **Engineering** 以保證生存能力。一旦你開始頻繁登入敵艦，Tactical 的 Omni 傳送將是一個極大提升便利性的技能。你不需要將所有學派都升到 10 級才能發揮作用——每個學派的前幾級性價比最高。"
+        }
+      ]
+    },
+    {
+      "id": "command-crew",
+      "title": "Command 船員：單人玩家的秘密武器",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "如果你從這個頁面中只記住一件事，那就是：**提升 Command 等級並雇用 AI 船員。** 一個配置合理的船員隊伍能將一艘需要四人操作的飛船變成單人飛船。他們會駕駛、射擊、修復破損和火災，並防禦登入的敵人——而你只需專注於你喜歡的任何事情。"
+        },
+        {
+          "type": "steps",
+          "ordered": true,
+          "steps": [
+            {
+              "h": "透過 Command 解鎖船員欄位",
+              "p": "第一個等級的 Command 允許你雇用並部署一名船員，隨著等級提升，將解鎖更多欄位和更好的能力——第二個欄位在提升幾級後解鎖，第三個欄位在其後幾級解鎖，最多可有三名活躍的 AI 船員。"
+            },
+            {
+              "h": "從 Fortuna 的 Ticker 招募",
+              "p": "Ticker（位於 Venus 的 Fortuna）會出售輪替的船員，可以用資源和 Solaris 債務債券購買。每位新成員的能力點數分布在戰鬥、槍砲、駕駛、工程、修復和耐力上。"
+            },
+            {
+              "h": "根據他們的屬性分配角色",
+              "p": "每位船員都擔任一個角色——駕駛員、槍砲手、防禦者或工程師。將角色與他們的高屬性相匹配：槍砲手需要 Gunnery + 戰鬥，工程師需要修復 + 耐力。"
+            },
+            {
+              "h": "打造經典的單人三人組",
+              "p": "兩名槍砲手負責撕碎戰機群，一名工程師負責維持飛船生存，這是最可靠的默認配置。如果你更想離開駕駛座去登入敵艦，可以將一名槍砲手換成駕駛員。"
+            }
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "Command 的高階等級會解鎖 **On Call Crew** 攜帶道具，這能讓你召喚其中一名船員進入*常規*（非 Railjack）任務中作為臨時盟友。這是在你的飛船能自動運轉後，繼續提升 Command 等級的強大動力。"
+        }
+      ]
+    },
+    {
+      "id": "solo-build",
+      "title": "建造一艘適合單人遊玩的 Railjack",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "你飛船的實力來自兩個地方：安裝在船體上的**組件**（反應爐、護盾、引擎和武器）以及 **Plexus**——你攜帶到*任何* Railjack（包括租借船）上的個人 MOD 面板。組件來自三個家族——**Zetki**（基礎屬性最高，但有砲塔過熱等缺點）、**Vidar**（屬性均衡，有強大的加成屬性）和 **Lavan**（耐用，操控性極佳）——等級從低到高為 **MK I–III**。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**反應爐優先。** 它決定了你的 Plexus 容量——你可以裝備多少以及多強大的 MOD——並按比例提升你的戰鬥技能。高容量的反應爐是你可以追求的最重要的單一升級。",
+            "**接下來是砲塔（武器）。** 從你喜歡的家族中獲取 MK III 武器；Zetki 傷害最高但容易過熱，而 Vidar 和 Lavan 則犧牲了一些傷害來換取更好的操控性和持續輸出時間。",
+            "**Forward Artillery 是你的 crewship 殺手。** 船頭大砲（`Tunguska`）可以一擊必殺那些否則需要花費大量時間才能磨掉的 crewships——裝備 **Forward Artillery** MOD，使其能繼續一擊必殺 Veil 中更肉的 crewships。",
+            "**Plexus 配置。** 最大化砲塔傷害（例如 Hyperstrike），添加一個用於提升船體生命值的生存 MOD，並裝備一個**能清除戰機群的戰鬥技能**——能聚集敵人的 Tether 和尋標飛彈 Seeker Volley 是長期以來最受歡迎的選擇。",
+            "**引擎和護盾的優先級較低。** 操控性和護盾充能固然不錯，但它們排在可靠的反應爐、武器和 Forward Artillery 之後。"
+          ]
+        },
+        {
+          "type": "warn",
+          "text": "**不要成為人人畏懼的房主。** 關於公開 Railjack 任務最常見的抱怨是，有些人從未建造或配置過他們的飛船，卻在高等級節點上當房主。如果你打算當房主，先花一個小時配置你的 Plexus 和 Forward Artillery——有配置過 MOD 的飛船體驗天差地別，你的隊友會注意到的。"
+        }
+      ]
+    },
+    {
+      "id": "solo-game-plan",
+      "title": "單人任務遊戲策略",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "有了船員在船上且 Forward Artillery 準備就緒，單人 Railjack 任務就有了一個清晰的節奏。循環是：削減戰機群、消滅 crewships、完成目標、撤離。"
+        },
+        {
+          "type": "steps",
+          "ordered": true,
+          "steps": [
+            {
+              "h": "讓戰機群主動靠近你的砲塔",
+              "p": "戰機在追逐你時會聚集在一起。讓你的槍砲手和砲塔發揮作用，並釋放像 Tether 這樣的戰鬥技能來聚集並一次性消滅一群敵機。"
+            },
+            {
+              "h": "使用 Forward Artillery 消滅 crewships",
+              "p": "對準船頭大砲，一擊必殺每艘 crewship。或者，透過 Archwing 或彈射器登入它，並從內部炸毀其反應爐——這兩種方法都能消除對你船體最大的威脅。"
+            },
+            {
+              "h": "徒步登入目標",
+              "p": "大多數任務需要你進入敵方主力艦或基地——摧毀散熱器、駭入控制台或防守一個點。這是正常的 Warframe 戰鬥；帶上你信任的 frame 和武器。"
+            },
+            {
+              "h": "根據需要修補和傳送回船",
+              "p": "如果你不在時飛船發生破損或火災，你的工程師通常會處理——但如果情況變得棘手，Tactical 的 Omni 傳送可以讓你立即回到船上。"
+            },
+            {
+              "h": "完成並撤離",
+              "p": "一旦目標完成，清理任何殘兵並離開。Void Storm 任務也會在此處破解你裝備的遺物——在離開前選擇你的獎勵。"
+            }
+          ]
+        },
+        {
+          "type": "warn",
+          "text": "**Forward Artillery 單人操作很笨重——這是設計使然。** 駕駛員無法發射船頭大砲；你必須離開座位，而且當你瞄準時飛船會停止機動。這是老玩家最希望新單人駕駛員知道的第一件事。**指派一名船員作為 Pilot**，這樣在你開火時飛船仍能繼續躲避，或者先清理周圍區域，這樣你就不會停在原地承受防空砲火。"
+        }
+      ]
+    },
+    {
+      "id": "where-next",
+      "title": "Railjack 在你後期遊戲中的定位",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "一旦你的飛船能自動運轉，Railjack 就會變成一個工具，而不是一項苦差事。將 **Void Storms** 用作遺物 farm，並使用 [破解或出售](/relics-value) 和 [每場刷遺物](/relic-farming) 來評估你的收穫。透過 [Kuva & Liches 指南](/guides/kuva) 獵殺 **Sisters of Parvos**。當你想確切知道 Proxima 掉落物或資源來自哪裡時，[3D 星圖掉落圖](/star-chart-3d) 會為你繪製出來。"
+        },
+        {
+          "type": "p",
+          "text": "對於後期遊戲網絡的其他部分——[Steel Path](/guides/steel-path)、[Duviri](/guides/duviri)（它有自己的 Intrinsics 系統可供對比）、[Arcanes](/guides/arcanes) 和 [Archon Shards](/guides/archon-shards)——相關的指南將接續本篇內容。如果你更想看著配置一步步完成，[創作者目錄](/creators) 和下方的影片是最佳的下一步點擊選擇。"
+        },
+        {
+          "type": "links",
+          "links": [
+            {
+              "label": "遺物價值：破解或出售",
+              "href": "/relics-value",
+              "icon": "diamond-stone",
+              "note": "估算你的 Void Storm 收穫價值"
+            },
+            {
+              "label": "Kuva & Liches 指南",
+              "href": "/guides/kuva",
+              "icon": "skull",
+              "note": "Sisters of Parvos 受到 Railjack 的限制"
+            },
+            {
+              "label": "3D 掉落位置地圖",
+              "href": "/star-chart-3d",
+              "icon": "map-marker-path",
+              "note": "尋找任何 Proxima 掉落物"
+            },
+            {
+              "label": "社群工具目錄",
+              "href": "/tools",
+              "icon": "toolbox",
+              "note": "Wiki、Overframe 及更多"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "如何在 Warframe 中解鎖 Railjack？",
+      "a": "透過完成 **Rising Tide** 系列任務來建造你自己的飛船，這需要你先完成 **The War Within**（The Second Dream 之後的電影式系列任務）並擁有進入 **Dry Dock** 的權限。Dry Dock 並非氏族專屬——幾個較大的 **Relays**（例如 Saturn 和 Pluto）設有公共的 Dry Dock，或者你可以建立一個免費的單人氏族並建造你自己的 Dry Dock。如果你根本不想建造飛船，可以立即加入公開的 Railjack 小隊並在其他人的飛船上擔任船員——你仍然可以賺取 Intrinsics 和獎勵。"
+    },
+    {
+      "q": "可以單人遊玩 Railjack 嗎？",
+      "a": "可以，而且一旦你提升了 **Command** Intrinsic 等級並雇用了 AI 船員，體驗會非常舒適。三名能力出眾的船員將為你駕駛、射擊和修復飛船，而你只需專注於飛行或登入。這就是讓 Railjack 感覺像是四人工作還是單人工作之間的區別。"
+    },
+    {
+      "q": "我需要氏族才能獲得 Railjack 嗎？",
+      "a": "不一定。你需要在 **Dry Dock** 建造和維護 Railjack，雖然你無法從你的 orbiter 進行此操作，但 Dry Dock 並非氏族專屬：幾個較大的 **Relays**（例如 Saturn 和 Pluto）設有公共的 Dry Dock，任何單人玩家都可以使用。如果你想擁有自己的氏族，在任何 Relay 的氏族控制台都可以免費建立單人氏族，並允許你在 dojo 中建造 Dry Dock——這也會解鎖氏族專屬的 Sigma 組件研究。"
+    },
+    {
+      "q": "我應該先升級哪個 Railjack Intrinsic？",
+      "a": "優先升級 **Command** 以獲取 AI 船員——這對使該模式適合單人遊玩的作用最大。之後，提升幾級 **Gunnery** 和 **Piloting** 以使飛船操控更具響應性，以及 **Engineering** 以保證生存能力。你不需要將任何學派升滿到 10 級才能發揮作用；前幾級的價值最高。"
+    },
+    {
+      "q": "如何在 Railjack 中獲得 AI 船員？",
+      "a": "提升 **Command** Intrinsic 等級以解鎖船員欄位，然後使用資源和 Solaris 債務債券從 Fortuna（位於 Venus）的 **Ticker** 招募船員。為每個人分配一個與其能力屬性相匹配的角色——Pilot、Gunner、Defender 或 Engineer。常見的單人配置是兩名 Gunners 和一名 Engineer。"
+    },
+    {
+      "q": "在 Railjack 中如何消滅 crewships？",
+      "a": "使用 **Forward Artillery**——飛船的船頭大砲（Tunguska），它可以一擊必殺 crewships；裝備 **Forward Artillery** MOD 以繼續穿透 Veil 中更肉的 crewships。或者，透過 Archwing 或彈射器登入 crewship，並從內部摧毀其反應爐。請注意，駕駛員無法單人發射大砲，因此請指派一名船員作為 Pilot，或停下飛船進行瞄準。"
+    },
+    {
+      "q": "Railjack 值得玩嗎？",
+      "a": "對大多數玩家來說，是的。它是一個強大的經驗值和資源來源，是獵殺 Sisters of Parvos 的**唯一**途徑，而且其 **Void Storm** 任務可以破解遺物以獲得額外的 prime 零件和 Void Traces。一些系列任務也需要它。一旦你的飛船和船員配置完畢，它就會變成一種快速、基本自動化的 farming 方式。"
+    },
+    {
+      "q": "最適合使用的 Railjack 組件是什麼？",
+      "a": "以 **MK III** 組件為目標，並優先考慮**高容量的 Reactor**，因為它決定了你的 Plexus MOD 可以有多強大。對於砲塔，**Zetki** 傷害最高（但容易過熱），而 **Vidar** 和 **Lavan** 則犧牲了傷害來換取操控性和耐用性——根據個人喜好選擇。確切的主流（meta）屬性會隨著補丁更新而變化，因此在為特定的神級屬性進行 grind 之前，請先查看最近的配置影片或 [wiki](https://wiki.warframe.com/)。"
+    }
+  ],
+  "videos": [
+    {
+      "id": "MLyf9D2GcpI",
+      "title": "Warframe Beginner's Guide 2025: Episode #5: The Second Dream Quest & Unlocking RailJack!",
+      "channel": "iFlynn"
+    },
+    {
+      "id": "G_ou9naTX50",
+      "title": "The ULTIMATE Warframe RAILJACK Guide 2026!",
+      "channel": "MHBlacky"
+    },
+    {
+      "id": "xnLTTLJn5iw",
+      "title": "Warframe: Solo Railjack Build Guide",
+      "channel": "Jacsonitos"
+    },
+    {
+      "id": "AMKACvK4ZXQ",
+      "title": "The Ultimate Railjack Build Guide (Warframe)",
+      "channel": "Hunkpain Gaming "
+    }
+  ],
+  "sources": [
+    {
+      "label": "Current state of Railjack: fast guide (r/Warframe)",
+      "href": "https://reddit.com/r/Warframe/comments/ea2af8/current_state_of_railjack_fast_guide_for_people/"
+    },
+    {
+      "label": "9 Days: Railjack — the Journey, the Meta, a FAQ (r/Warframe)",
+      "href": "https://reddit.com/r/Warframe/comments/eed3eu/9_days_railjack_the_journey_the_meta_a_faq/"
+    },
+    {
+      "label": "Watch a guide before you host your Railjack (r/Warframe)",
+      "href": "https://reddit.com/r/Warframe/comments/1u94eva/i_dont_usually_like_to_flame_people_in_warframe/"
+    },
+    {
+      "label": "Warframe Wiki",
+      "href": "https://wiki.warframe.com/"
+    }
+  ],
+  "related": [
+    {
+      "label": "Kuva & Liches",
+      "to": "/guides/kuva",
+      "icon": "skull",
+      "note": "Sisters of Parvos 的獵殺需要透過 Railjack 進行"
+    },
+    {
+      "label": "Relics & Void Fissures",
+      "to": "/guides/relics",
+      "icon": "diamond-stone",
+      "note": "Void Storms 是 Railjack 中破解遺物的方式"
+    },
+    {
+      "label": "Steel Path",
+      "to": "/guides/steel-path",
+      "icon": "chevron-triple-up",
+      "note": "另一個後期遊戲的 grind"
+    },
+    {
+      "label": "Duviri",
+      "to": "/guides/duviri",
+      "icon": "sword-cross",
+      "note": "擁有其專屬的 Intrinsics 系統"
+    },
+    {
+      "label": "遺物價值工具",
+      "to": "/relics-value",
+      "icon": "cash-multiple",
+      "note": "破解或出售你的 Void Storm 掉落物"
+    },
+    {
+      "label": "社群工具",
+      "to": "/tools",
+      "icon": "toolbox",
+      "note": "Wiki、Overframe 和 DE 工具"
+    }
+  ],
+  "updated": "2026-07-18"
+}

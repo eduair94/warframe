@@ -1,0 +1,475 @@
+{
+  "slug": "focus",
+  "eyebrow": "知识中心 · Focus",
+  "title": "Focus 刷取指南",
+  "lede": "Focus 是驱动你的 Tenno 五大学派的 Operator 晋升系统。以下是如何解锁它、如何通过 Lens 和 Convergence Orb 快速获取它，以及如何将它花在刀刃上。",
+  "category": "farming",
+  "readMins": 9,
+  "stats": [
+    {
+      "num": "5",
+      "label": "Focus 学派",
+      "tone": "gold"
+    },
+    {
+      "num": "10x",
+      "label": "Convergence 倍率",
+      "tone": "good"
+    },
+    {
+      "num": "45s",
+      "label": "Convergence 时间窗口",
+      "tone": "alt"
+    },
+    {
+      "num": "250K",
+      "label": "初始每日上限",
+      "tone": "gold"
+    }
+  ],
+  "sections": [
+    {
+      "id": "what-is-focus",
+      "title": "什么是 Focus",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Focus** 是 Warframe 的 Operator 晋升系统。你赚取一种被称为 **Focus Points** 的货币，并将其投入到 **五个 Focus 学派** 之一中——这些是被动技能树，可以增强你的 Operator、你的 Warframe 以及你的整体经济。Focus 是全账户共享的：你赚取的点数会进入当前 **处于激活状态** 的学派，并且你需要逐个解锁技能树上的节点。"
+        },
+        {
+          "type": "p",
+          "text": "你不需要通过进行特殊活动来赚取 Focus——它是获得 Affinity（经验值）的*副产品*。在你的装备上安装一个 **Focus Lens**，该装备获得的 Affinity 的一部分就会被转化为 Focus。这就是整个循环：击杀敌人、获得 Affinity、将一定比例转化为 Focus、将其花在被动技能上。本指南的其余部分将介绍如何将这股细流汇聚成洪流。"
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "解锁条件",
+              "v": "The Second Dream 任务"
+            },
+            {
+              "k": "货币",
+              "v": "Focus Points（每个激活的学派）"
+            },
+            {
+              "k": "学派",
+              "v": "Madurai, Vazarin, Naramon, Unairu, Zenurik"
+            },
+            {
+              "k": "生成方式",
+              "v": "满级装备上的 Focus Lens + Affinity"
+            },
+            {
+              "k": "每日重置",
+              "v": "Focus 上限在每日重置时刷新（00:00 UTC）"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "unlock-operator",
+      "title": "步骤 1：解锁你的 Operator",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Focus 锁在故事剧情之后。在你的 Operator 唤醒之前，你无法使用任何一个 Lens——因此，第一个“Focus 刷取”任务仅仅是推进 [主线任务](/guides/quests)。"
+        },
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "h": "推进星图至 The Second Dream",
+              "p": "一旦你清理了足够多的行星节点，该任务就会解锁。这是必经的故事剧情，而非可选内容——继续清理节点并跟随任务标记。请参阅 [路线图](/guides/progression) 了解顺序。"
+            },
+            {
+              "h": "完成 The Second Dream",
+              "p": "完成它会引入你的 Operator，并解锁 Focus 界面和你的第一个学派。这就是 Focus 变得可用的时候。"
+            },
+            {
+              "h": "完成 The War Within",
+              "p": "下一个主要任务会扩展你的 Operator 的虚空能力和 Transference 战斗。在进行认真的 Focus/Eidolon farming 之前，你会希望完全完成此任务，因为 Operator 的力量对这两者都至关重要。"
+            },
+            {
+              "h": "选择你的第一个学派（免费）",
+              "p": "你的第一个学派可以免费解锁。之后解锁每个额外的学派都需要消耗 Focus（每个大约需要 50,000），因此请慎重选择——大多数玩家会先开启 Zenurik（见下文）。"
+            }
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "The [Duviri Paradox](/guides/duviri) 让新玩家能够尽早体验 Drifter 和一些与 Focus 相关的系统，但解锁 Focus 的标准、完整路径仍然是 **The Second Dream → The War Within**。"
+        }
+      ]
+    },
+    {
+      "id": "schools",
+      "title": "五个 Focus 学派",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "每次只能 **激活一个学派**，但你可以在任务之外自由切换已解锁的学派。每个学派都包含学派特有的节点（仅在选择该学派时激活）以及无论如何都会生效的永久 **Way-Bound** 被动技能。以下是每个学派的特点："
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "学派",
+              "颜色",
+              "招牌优势",
+              "最适合"
+            ],
+            "rows": [
+              [
+                "Zenurik",
+                "黄色",
+                "能量回复区域（Wellspring / Energizing Dash）",
+                "所有人——默认的能量循环选择"
+              ],
+              [
+                "Madurai",
+                "红色",
+                "Amp 和虚空伤害 Buff",
+                "Eidolon 狩猎，Operator DPS"
+              ],
+              [
+                "Naramon",
+                "绿色",
+                "近战连击维持，潜行/Affinity",
+                "近战配装，重击流玩法"
+              ],
+              [
+                "Unairu",
+                "白色",
+                "通过 Operator 剥除护盾和护甲",
+                "Eidolon，[Steel Path](/guides/steel-path) 护甲剥除"
+              ],
+              [
+                "Vazarin",
+                "蓝色",
+                "治疗、复活、防御目标保护",
+                "辅助、防御/护送、Eidolon Lure"
+              ]
+            ],
+            "note": "招牌节点和具体数值会随着时间进行调整——在投入全部解锁之前，请查看实时 wiki 以获取当前的节点布局。"
+          }
+        },
+        {
+          "type": "tip",
+          "text": "**优先解锁 Zenurik。** 它的能量回复区域解决了前期游戏中最令人头疼的问题——技能能量枯竭——并且它能让你玩过的每一个 frame 受益。如果你想狩猎 Eidolon，Madurai 或 Unairu 通常是第二个选择。"
+        }
+      ]
+    },
+    {
+      "id": "lenses",
+      "title": "Focus Lens：核心引擎",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Focus Lens** 安装在装备上并绑定到一个学派。一旦安装，它就会将该装备获得的一定比例的 Affinity 转化为该学派的 Focus。**请在满级（30 级）装备上安装 Lens**——这样它获得的所有 Affinity 都会用于 Focus 转化，而不是被“消耗”在提升装备等级上。"
+        },
+        {
+          "type": "p",
+          "text": "每个装备的物品都可以携带自己的 Lens：你的 Warframe、主武器、副武器、近战武器和同伴*各自*都可以携带一个。与仅在单个 frame 上安装 Lens 相比，全装备 Lens 的配置会成倍增加你的 Focus 收益。"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Lens 等级",
+              "转化率（溢出 Affinity）",
+              "获取途径"
+            ],
+            "rows": [
+              [
+                "Lens",
+                "~2%",
+                "Sortie、开放世界赏金、活动"
+              ],
+              [
+                "Greater Lens",
+                "~3%",
+                "由基础 Lens 制作（商店蓝图）；3-5 级赏金奖励"
+              ],
+              [
+                "Eidolon Lens",
+                "~4.25%",
+                "由 Greater Lens 制作；Cetus 5 级 / Steel Path 赏金或 Cavia 声望"
+              ],
+              [
+                "Lua Lens",
+                "~5.5% — 最高转化率",
+                "由 Eidolon Lens 制作；Lua Disruption（轮次 C）"
+              ]
+            ],
+            "note": "更高级别的 Lens 是通过升级下一级的 Lens 制作的，因此尽早获取基础 Lens 是值得的。百分比和来源会随着更新而变化——请在实时 wiki 上确认具体的制作配方。"
+          }
+        },
+        {
+          "type": "warn",
+          "text": "Lens **在安装时会绑定到一个学派**，用新 Lens 覆盖会摧毁旧的 Lens。在安装*之前*决定好学派——不要把 Eidolon 或 Lua Lens 浪费在错误的技能树上。最好的 Lens 是由基础 Lens 逐级升级而来的，因此在投入资源之前请提前做好规划。"
+        }
+      ]
+    },
+    {
+      "id": "convergence",
+      "title": "Convergence Orb 与 10 倍时间窗口",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "这就是将细流汇聚成洪流的机制。发光的 **Convergence Orb** 会定期在任务中生成（仅在你装备了 Focus Lens 的情况下）。拾取一个，你将在 **45 秒内获得 10 倍 Focus 倍率**——在该窗口期内生成的每点 Focus 都会翻十倍，并且在拾取时，该 Orb 还会立即向你当前激活的学派注入 **5,000 Focus**。真正的 Focus farming 实际上就是 *convergence* farming：你在那 45 秒的窗口期内积累击杀并倾泻最大的 Affinity。"
+        },
+        {
+          "type": "info",
+          "text": "r/Warframe 上一个常见的抱怨是“为什么我们仍然要依靠 convergence orb 来赚取 Focus？”这是一个合理的批评——在倍率窗口之外，Focus 的获取速度在设计上就是很慢的。实际的解决方案是：选择一个敌人密集、能持续击杀的刷取点，以便 Orb 频繁生成，并调整你的爆发伤害输出，使其与你拾取的每个 Orb 保持一致。"
+        },
+        {
+          "type": "p",
+          "text": "你一次只能激活一个 convergence buff，拾取新的 Orb 会刷新计时器。在快速、敌人密集的模式中，Orb 出现的频率足够高，以至于你在大部分流程中都处于倍率状态——这正是为什么下面推荐的刷取点比随机刷任务要好得多的原因。"
+        }
+      ]
+    },
+    {
+      "id": "daily-cap",
+      "title": "每日 Focus 上限",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Focus 设有 **每日上限**——这是你在一天内所有学派中可以积累的总上限。它 **起步为 250,000**，并随着你的 **Mastery Rank** 提升（每级大约 +5,000），因此高段位玩家的上限比新 Operator 要高得多。该上限在每日重置时刷新。"
+        },
+        {
+          "type": "warn",
+          "text": "一旦你达到上限，当天额外赚取的 Focus 就会被 **浪费**。高效的玩法是在强力的刷取点快速达到上限，然后转向其他目标，而不是去刷无法存入的 Focus。"
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "不要在低密度的任务中浪费双倍 Affinity 周末。",
+              "v": "初始上限"
+            },
+            {
+              "k": "250,000 / 天（所有学派合并计算）",
+              "v": "成长性"
+            },
+            {
+              "k": "随着你的 Mastery Rank 提升（每级约 +5,000）",
+              "v": "重置"
+            },
+            {
+              "k": "每日重置（00:00 UTC）",
+              "v": "超出上限的 Focus"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "best-farms",
+      "title": "流失——合理规划刷取以高效达到上限",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "最佳 Focus 刷取点"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "“最佳节点”会随着每次更新而变化，但 **原则是经久不变的**：最大化敌人密度、保持在 convergence 窗口期内，并携带全 Lens 的装备配置。任何能在 Orb 持续生成的同时，将连续击杀转化为安装了 Lens 的武器的 Affinity 的模式，都是极佳的 Focus 刷取点。以下是经得起时间考验的经典选择：",
+              "方法",
+              "为什么有效"
+            ],
+            "rows": [
+              [
+                "备注",
+                "Eidolon 狩猎（Plains of Eidolon，夜晚）",
+                "Eidolon Shard 可以直接转化为 Focus——Brilliant 约 25,000，Radiant 约 40,000，可用于你选择的学派——此外还有大量的 Affinity"
+              ],
+              [
+                "需要 Amp + Operator 配置；请参阅 [Eidolon 指南](/guides/eidolon)",
+                "Elite Sanctuary Onslaught (ESO)",
+                "不停歇的高密度击杀，伴随着频繁的 convergence orb——经典的 Focus 刷取方式"
+              ],
+              [
+                "携带地图炮 frame + 全 Lens 装备配置",
+                "高密度无尽模式（Zariman 虚空模式，当前的终局地图板块）",
+                "庞大的击杀数能为安装了 Lens 的武器提供大量经验；Orb 稳定生成"
+              ],
+              [
+                "任何任务 + 全 Lens + 加成器",
+                "在正常进行游戏时被动获取 Focus",
+                "速度较慢，但无需额外配置——非常适合休闲玩家达到上限"
+              ]
+            ]
+          }
+        },
+        {
+          "type": "p",
+          "text": "Eidolon 具有独特的优势，因为 **Eidolon Shard 是纯粹的 Focus**——你可以消耗它们来获得固定数量的、用于你选择的学派的 Focus（Brilliant 约 25,000，Radiant 约 40,000），这与 Affinity 转化是分开的。这就是为什么一次 Tridolon 捕获就能让你在一次运行中逼近每日上限。在 [Eidolon 指南](/guides/eidolon) 中学习狩猎，并注意你沿途收集的 Amp 和 Arcane 可以通过 [倒卖寻找器](/flip) 或 [筛选器](/screener) 换取 [白金](/guides/platinum)。"
+        },
+        {
+          "type": "tip",
+          "text": "为了准确找出当前哪个节点运行哪个模式，[掉落位置地图](/star-chart-3d) 和 [社区工具目录](/tools)（wiki、Overframe）的更新速度远比任何静态列表都要快。在开始刷取之前，建议将最近的 Focus-farming 视频与实时 wiki 查询结合起来。"
+        }
+      ]
+    },
+    {
+      "id": "spending",
+      "title": "Way-Bound 节点与 Focus 消耗",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "在每个学派内部，节点分为两种。**学派节点**仅在当前学派处于激活状态时才起作用。**Way-Bound 节点**是永久被动技能，*无论哪个学派处于激活状态*都会生效——它们需要使用 Focus 以及 **Eidolon Shard** 来解锁。这是 Eidolon 和 Focus 进度绑定在一起的第二个原因：Shard 既能提供每日 Focus，又能永久绑定最好的被动技能。"
+        },
+        {
+          "type": "p",
+          "text": "因为你一次只能运行一个学派，所以请有针对性地进行消耗，而不是把点数稀释在所有五个学派上："
+        },
+        {
+          "type": "list",
+          "items": [
+            "**优先升满你的主学派**——通常是 Zenurik，因为它的能量区域，你大部分时间都会选择它。",
+            "**尽早获取 Way-Bound 被动技能**——它们是永久性的，并且可以跨学派叠加，因此永远不会被浪费。常见的优先级是最大能量和 Operator 生存能力的 Way-Bound。",
+            "**然后扩展到特定角色的学派**——用于 Eidolon 和护甲剥除的 Madurai/Unairu，用于近战的 Naramon，用于辅助的 Vazarin。",
+            "**Don't over-invest in a school you'll never select** — school-only nodes are dead weight unless that school is active."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "efficiency",
+      "title": "榨取更多 Focus",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "一旦基础准备就绪，这些倍率可以相互叠加，从而更快地达到上限："
+        },
+        {
+          "type": "list",
+          "items": [
+            "**为每个槽位安装 Lens。** Frame + 3 件武器 + 同伴，最多可有五个 Lens 同时进行转化。将你最好的 Lens 安装在你最常用的装备上。",
+            "**将你激活的学派设置为你正在刷取的学派。** 所有生成的 Focus 都会进入*当前选择*的学派——在开始之前请仔细检查。",
+            "**叠加 Affinity 加成器。** 在 **双倍 Affinity 周末** 的基础上再使用一个 2 倍 Affinity 加成器，可以让你在付出相同努力的情况下获得双倍的 Focus 收益。",
+            "**带上 Smeeta Kavat。** 它的 Charm buff 可以随机获得 2 倍 Affinity 加成——在高密度刷取点中这是纯粹的额外 Focus。",
+            "**理解 Affinity 的流向。** 技能击杀会 100% 分配给你的 Warframe；武器击杀会在武器和 frame 之间分配。在小队中，Affinity 会在范围内共享——因此你附近的击杀仍然会为你安装了 Lens 的装备提供经验。",
+            "**将伤害输出调整到 convergence 窗口期。** 将你的爆发伤害留给 10 倍 buff，而不是在拾取 Orb 之前就将其消耗掉。"
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "刚开始刷 Focus 的玩家还应该阅读 [Mastery Rank 与 Affinity 指南](/guides/mastery-rank)——升级装备的相同升级机制正是为你的 Lens 提供经验的机制，因此高效升级和高效刷 Focus 是同一种技巧。"
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "我该如何在 Warframe 中解锁 Focus？",
+      "a": "当你完成 **The Second Dream** 任务时，Focus 就会解锁，这会唤醒你的 Operator 并开启 Focus 界面和你的第一个学派。继续清理星图，直到 The Second Dream 可用，然后完成 **The War Within** 以充分发展你的 Operator。在此之前，你无法安装任何一个 Lens。"
+    },
+    {
+      "q": "第一个解锁哪个 Focus 学派最好？",
+      "a": "**Zenurik** 几乎是通用的首选，因为它的能量回复区域解决了前期的能量问题，并能让你玩过的每一个 Warframe 受益。之后，大多数玩家会开启 **Madurai**（用于 Eidolon 的 Amp/Operator 伤害）或 **Unairu**（护盾/护甲剥除）。你的第一个学派是免费的；此后每个额外的学派需要消耗大约 50,000 Focus。"
+    },
+    {
+      "q": "刷 Focus 最快的方法是什么？",
+      "a": "在满级的 frame 和武器上安装 Focus Lens（最好是 Eidolon 或 Lua Lens），然后去刷高密度模式，例如 **Elite Sanctuary Onslaught**，或者在夜晚的 Plains 狩猎 **Eidolon**。拾取每一个 **Convergence Orb** 以获得 10 倍倍率，并叠加 Affinity 加成器和 Smeeta Kavat。Eidolon Shard 也可以直接转化为 Focus（Brilliant 约 25,000，Radiant 约 40,000）。"
+    },
+    {
+      "q": "Focus Lens 是如何工作的？我该如何获得它们？",
+      "a": "Lens 安装在 30 级物品上，并将其一定比例 of Affinity 转化为一个绑定学派的 Focus——基础 Lens 约为 2%，Greater Lens 约为 3%，Eidolon Lens 约为 4.25%，最高级别的 Lua Lens 约为 5.5%。基础 Lens 从 Sortie 和开放世界赏金中掉落；每个更高级别都是由下一级别升级而来的（Greater 升级自商店蓝图，Eidolon 升级自 Cetus/Steel Path 赏金或 [Cavia 声望](/guides/standing)，Lua 升级自 Lua Disruption）。请安装在满级装备上，这样就不会在升级过程中浪费任何 Affinity。"
+    },
+    {
+      "q": "为什么我必须依靠 convergence orb 来获取 Focus？",
+      "a": "在设计上，除非你处于 **Convergence Orb** 的 buff 状态下，否则 Focus 的获取速度会很慢，该 buff 会在 45 秒内提供 10 倍倍率（并在拾取时提供 5,000 Focus）。这是社区中一个常见的痛点，但解决方法是在敌人密集、击杀量大的模式中刷取，这些模式中 Orb 会频繁生成——这样你就可以在大部分流程中都处于倍率状态，而不是去追逐单个 Orb。"
+    },
+    {
+      "q": "Focus 有每日上限吗？",
+      "a": "是的。所有学派共享一个每日上限，该上限 **起步为 250,000**，并随着你的 **Mastery Rank** 提升（每级约 +5,000）。一旦你达到上限，当天额外赚取的 Focus 就会被浪费——因此，高效的玩法是在强力的刷取点快速达到上限，然后转向其他目标。"
+    },
+    {
+      "q": "我必须只专注于一个 Focus 学派吗？",
+      "a": "不。你可以在任务之外自由切换任何已解锁的学派，因此你永远不会被绑定。最重要的是，**Way-Bound** 节点是永久被动技能，*无论哪个学派处于激活状态*都会生效——用 Focus 和 Eidolon Shard 解锁它们，它们将使你的每一个配装受益。"
+    },
+    {
+      "q": "Eidolon Shard 对 Focus 有什么作用？",
+      "a": "Eidolon Shard 实际上就是瓶装的 Focus。消耗一个 **Brilliant Shard** 可获得大约 25,000 Focus，消耗一个 **Radiant Shard** 可获得大约 40,000 Focus，两者都会进入你选择的学派。解锁永久的 **Way-Bound** 被动技能也需要 Shard，这就是为什么 [Eidolon 狩猎](/guides/eidolon) 是首选的 Focus 活动。"
+    }
+  ],
+  "videos": [
+    {
+      "id": "yt0L9JPkP1k",
+      "title": "The top five ways to farm focus! | Warframe",
+      "channel": "TheKengineer"
+    },
+    {
+      "id": "B0ztEAfwj_Q",
+      "title": "Farm Focus FASTER in Warframe 2025!",
+      "channel": "Qemal TV"
+    },
+    {
+      "id": "_Hq2VdgM6kw",
+      "title": "[WARFRAME] Advanced FOCUS Guide! Eidolon Hunting Guide Episode 01",
+      "channel": "KnightmareFrame"
+    },
+    {
+      "id": "Lc_Pry-SQsA",
+      "title": "Warframe Beginner Guide 2025: Easy Endo Farming, Focus Schools & Operator Unlocked | Episode 6",
+      "channel": "Tipsy"
+    }
+  ],
+  "sources": [
+    {
+      "label": "r/Warframe — Boosters run out soon, anyone wanna farm affinity?",
+      "href": "https://reddit.com/r/Warframe/comments/1ih3nbq/boosters_run_out_soon_anyone_wanna_farm_affinity/"
+    },
+    {
+      "label": "r/Warframe — Focus 2.0 Costs are too high",
+      "href": "https://reddit.com/r/Warframe/comments/77iv8n/focus_20_costs_are_too_high/"
+    },
+    {
+      "label": "Official Warframe Wiki",
+      "href": "https://wiki.warframe.com/"
+    }
+  ],
+  "related": [
+    {
+      "label": "Eidolon 狩猎指南",
+      "to": "/guides/eidolon",
+      "icon": "atom-variant",
+      "note": "首选的 Focus + Amp + Arcane 刷取点"
+    },
+    {
+      "label": "集团声望指南",
+      "to": "/guides/standing",
+      "icon": "handshake",
+      "note": "声望可用于购买 Lens、Arcane 和 Mod"
+    },
+    {
+      "label": "Steel Path 指南",
+      "to": "/guides/steel-path",
+      "icon": "shield-sword",
+      "note": "Unairu 护甲剥除大放异彩的地方"
+    },
+    {
+      "label": "Mastery Rank 与 Affinity",
+      "to": "/guides/mastery-rank",
+      "icon": "star-four-points",
+      "note": "为你的 Lens 提供经验的经验值机制"
+    },
+    {
+      "label": "进度路线图",
+      "to": "/guides/progression",
+      "icon": "map-marker-path",
+      "note": "Focus 在你的旅程中所处的位置"
+    },
+    {
+      "label": "内容创作者",
+      "to": "/creators",
+      "icon": "youtube",
+      "note": "关注 Focus 刷取专家"
+    }
+  ],
+  "updated": "2026-07-18"
+}

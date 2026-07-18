@@ -194,6 +194,8 @@ import type { Guide } from '~/data/guides/types'
 const props = defineProps<{ guide: Guide }>()
 const { t, locale } = useI18n()
 const localePath = useLocalePath()
+const route = useRoute()
+const origin = useRequestURL().origin
 
 // i18n chrome (falls back to English via the app's fallbackLocale)
 const hubLabel = computed(() => t('guidesChrome.backToHub'))
@@ -246,11 +248,25 @@ const jsonLd = computed(() => {
   }
   graph.push({
     '@type': 'Article',
-    headline: props.guide.title,
+    '@id': origin + route.path + '#article',
+    headline: props.guide.title.slice(0, 110),
     description: props.guide.lede,
-    ...(props.guide.updated ? { dateModified: props.guide.updated } : {}),
-    articleSection: props.guide.category,
+    // No explicit image: the per-route localized og:image (nuxt-og-image Void
+    // card, one per locale) is the canonical image signal. Hardcoding the v6
+    // dynamic OG URL (/_og/d/<encoded>.png) here would drift from the real,
+    // title-encoded URL — so let Google resolve the article image from og:image.
     inLanguage: locale.value,
+    articleSection: props.guide.category,
+    ...(props.guide.updated
+      ? { datePublished: props.guide.updated, dateModified: props.guide.updated }
+      : {}),
+    mainEntityOfPage: { '@type': 'WebPage', '@id': origin + route.path },
+    author: {
+      '@type': 'Person',
+      name: 'Eduardo Airaudo',
+      url: 'https://www.linkedin.com/in/eduardo-airaudo/',
+    },
+    publisher: { '@id': origin + '/#org' },
   })
   return { '@context': 'https://schema.org', '@graph': graph }
 })

@@ -1,0 +1,475 @@
+{
+  "slug": "focus",
+  "eyebrow": "Central de Conhecimento · Focus",
+  "title": "Guia de Farming de Focus",
+  "lede": "Focus é o sistema de progressão do Operator que alimenta as cinco escolas do seu Tenno. Aqui está como desbloqueá-lo, gerá-lo rapidamente com lenses e convergence orbs, e gastá-lo onde realmente importa.",
+  "category": "farming",
+  "readMins": 9,
+  "stats": [
+    {
+      "num": "5",
+      "label": "Escolas de Focus",
+      "tone": "gold"
+    },
+    {
+      "num": "10x",
+      "label": "Multiplicador de Convergence",
+      "tone": "good"
+    },
+    {
+      "num": "45s",
+      "label": "Janela de Convergence",
+      "tone": "alt"
+    },
+    {
+      "num": "250K",
+      "label": "Limite diário inicial",
+      "tone": "gold"
+    }
+  ],
+  "sections": [
+    {
+      "id": "what-is-focus",
+      "title": "O que o Focus realmente é",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Focus** é o sistema de progressão de Operator do Warframe. Você ganha uma moeda chamada **Focus Points** e a investe em uma das **cinco escolas de Focus** — árvores de habilidades passivas que melhoram seu Operator, seus Warframes e sua economia geral. O Focus é compartilhado por toda a conta: os pontos que você ganha vão para qualquer escola que esteja atualmente **ativa**, e você desbloqueia os nodes árvore por árvore."
+        },
+        {
+          "type": "p",
+          "text": "Você não ganha Focus realizando uma atividade especial — você o ganha como um *subproduto* de affinity (XP). Instale uma **Focus Lens** em seu equipamento, e uma parte da affinity que esse equipamento ganha é convertida em Focus. Esse é o ciclo completo: mate inimigos, ganhe affinity, converta uma porcentagem em Focus, gaste em passivas. O resto deste guia é sobre como transformar esse gotejamento em uma inundação."
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "Desbloqueado por",
+              "v": "Jornada The Second Dream"
+            },
+            {
+              "k": "Moeda",
+              "v": "Focus Points (por escola ativa)"
+            },
+            {
+              "k": "Escolas",
+              "v": "Madurai, Vazarin, Naramon, Unairu, Zenurik"
+            },
+            {
+              "k": "Gerado por",
+              "v": "Focus Lenses em equipamentos com nível + affinity"
+            },
+            {
+              "k": "Reset diário",
+              "v": "O limite de Focus é redefinido no reset diário (00:00 UTC)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "unlock-operator",
+      "title": "Passo 1: Desbloqueie seu Operator",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "O Focus está bloqueado atrás da história. Você não pode tocar em uma única lens até que seu Operator acorde — então o primeiro 'farm de Focus' é simplesmente progredir nas [jornadas principais](/guides/quests)."
+        },
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "h": "Progredir no star chart até The Second Dream",
+              "p": "Esta jornada é desbloqueada assim que você concluir o suficiente da cadeia planetária. É uma parte obrigatória da história, não opcional — continue limpando nodes e siga os marcadores de jornada. Veja o [roteiro de progressão](/guides/progression) para a ordem."
+            },
+            {
+              "h": "Complete The Second Dream",
+              "p": "Concluí-la apresenta seu Operator e desbloqueia a tela de Focus e sua primeira escola. Este é o momento em que o Focus fica disponível."
+            },
+            {
+              "h": "Complete The War Within",
+              "p": "A próxima grande jornada expande as habilidades de void do seu Operator e o combate de Transference. Você vai querer concluir isso totalmente antes de fazer um farming sério de Focus/Eidolon, já que o poder do Operator é central para ambos."
+            },
+            {
+              "h": "Escolha sua primeira escola (grátis)",
+              "p": "Sua primeira escola é desbloqueada sem custo. Cada escola adicional custa Focus para desbloquear mais tarde (cerca de 50.000 cada), então escolha deliberadamente — a maioria dos jogadores abre Zenurik primeiro (veja abaixo)."
+            }
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "O [Duviri Paradox](/guides/duviri) dá aos novos jogadores uma amostra inicial do Drifter e de alguns sistemas relacionados ao Focus, mas o caminho padrão e completo para o Focus ainda é **The Second Dream → The War Within**."
+        }
+      ]
+    },
+    {
+      "id": "schools",
+      "title": "As Cinco Escolas de Focus",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Apenas **uma escola fica ativa por vez**, mas você pode alternar livremente entre as escolas desbloqueadas fora das missões. Cada escola possui tanto nodes específicos da escola (ativos apenas quando essa escola está selecionada) quanto passivas permanentes **Way-Bound** que se aplicam independentemente de tudo. Aqui está o destaque de cada uma:"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Escola",
+              "Cor",
+              "Força característica",
+              "Melhor para"
+            ],
+            "rows": [
+              [
+                "Zenurik",
+                "Amarelo",
+                "Zona de regeneração de energia (Wellspring / Energizing Dash)",
+                "Todos — a escolha padrão para economia de energia"
+              ],
+              [
+                "Madurai",
+                "Vermelho",
+                "Buffs de dano de Amp & Void",
+                "Caça a Eidolon, DPS de Operator"
+              ],
+              [
+                "Naramon",
+                "Verde",
+                "Retenção de combo corpo a corpo, stealth/affinity",
+                "Builds corpo a corpo, estilos de jogo de ataque pesado"
+              ],
+              [
+                "Unairu",
+                "Branco",
+                "Remoção de escudo & armadura via Operator",
+                "Eidolons, remoção de armadura no [Steel Path](/guides/steel-path)"
+              ],
+              [
+                "Vazarin",
+                "Azul",
+                "Cura, revives, proteção de alvos de defesa",
+                "Suporte, defesa/escolta, Eidolon lures"
+              ]
+            ],
+            "note": "Os nodes característicos e os números exatos são ajustados com o tempo — verifique a wiki ativa para ver o layout atual dos nodes antes de se comprometer com um desbloqueio completo."
+          }
+        },
+        {
+          "type": "tip",
+          "text": "**Desbloqueie Zenurik primeiro.** Sua zona de regeneração de energia resolve a maior dor de cabeça do início do jogo — ficar sem energia para habilidades — e beneficia todos os frames que você jogar. Madurai ou Unairu costumam ser a segunda escolha se você estiver caçando Eidolons."
+        }
+      ]
+    },
+    {
+      "id": "lenses",
+      "title": "Focus Lenses: O Motor",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Uma **Focus Lens** é instalada em uma peça de equipamento e vinculada a uma escola. Uma vez instalada, ela converte uma porcentagem da affinity daquele item em Focus para aquela escola. **Instale lenses em equipamentos de nível máximo (rank 30)** — dessa forma, toda a affinity que ele ganhar contará para a conversão de Focus, em vez de ser 'gasta' para subir o nível do item."
+        },
+        {
+          "type": "p",
+          "text": "Cada item equipado possui sua própria lens: seu Warframe, arma primária, secundária, corpo a corpo e companion podem, *cada um*, carregar uma. Um loadout totalmente equipado com lenses multiplica drasticamente seus ganhos de Focus em comparação com equipar apenas um único frame."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Nível da Lens",
+              "Conversão (of excess affinity)",
+              "Onde obter"
+            ],
+            "rows": [
+              [
+                "Lens",
+                "~2%",
+                "Sorties, bounties de mundo aberto, eventos"
+              ],
+              [
+                "Greater Lens",
+                "~3%",
+                "Construída a partir de uma Lens básica (blueprint do Market); recompensas de bounty de nível 3–5"
+              ],
+              [
+                "Eidolon Lens",
+                "~4.25%",
+                "Construída a partir de uma Greater Lens; bounties de nível 5 de Cetus / Steel Path ou standing da Cavia"
+              ],
+              [
+                "Lua Lens",
+                "~5.5% — melhor taxa",
+                "Construída a partir de uma Eidolon Lens; Disruption de Lua (rotação C)"
+              ]
+            ],
+            "note": "Níveis mais altos são fabricados melhorando o nível inferior, então obter Lenses básicas cedo vale a pena. As porcentagens e fontes mudam com as atualizações — confirme as receitas exatas na wiki ativa."
+          }
+        },
+        {
+          "type": "warn",
+          "text": "Uma lens **se vincula a uma escola quando você a instala**, e substituí-la por uma nova lens destrói a antiga. Decida a escola *antes* de instalar — não desperdice uma Eidolon ou Lua Lens na árvore errada. As melhores lenses são construídas nível por nível a partir de uma Lens básica, então planeje com antecedência antes de investir recursos."
+        }
+      ]
+    },
+    {
+      "id": "convergence",
+      "title": "Convergence Orbs & a Janela de 10x",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Esta é a mecânica que transforma um gotejamento em uma torrente. **Convergence Orbs** brilhantes surgem periodicamente nas missões (apenas se você tiver uma Focus Lens equipada). Pegue um e você receberá um **multiplicador de Focus de 10x por 45 segundos** — cada ponto de Focus gerado nessa janela é multiplicado por dez, e o orb também concede instantaneamente **5.000 de Focus** para sua escola ativa ao ser coletado. O farming sério de Focus é, na verdade, um farming de *convergence*: você acumula eliminações e descarrega o máximo de affinity durante essa janela de 45 segundos."
+        },
+        {
+          "type": "info",
+          "text": "Uma reclamação comum no r/Warframe é 'por que ainda dependemos de convergence orbs para ganhar Focus?' É uma crítica justa — fora da janela do multiplicador, o ganho de Focus é intencionalmente lento. A resposta prática: escolha um farm com eliminações densas e contínuas para que os orbs surjam com frequência, e direcione seu dano explosivo para alinhar com cada orb que você coletar."
+        },
+        {
+          "type": "p",
+          "text": "Você só pode ter um buff de convergence ativo por vez, e pegar um novo orb redefine o cronômetro. Em modos rápidos e densos de inimigos, os orbs aparecem com frequência suficiente para que você fique no multiplicador na maior parte da partida — que é exatamente o motivo pelo qual os farms abaixo são muito melhores do que grindar missões aleatórias."
+        }
+      ]
+    },
+    {
+      "id": "daily-cap",
+      "title": "O Limite Diário de Focus",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "O Focus tem um **limite diário** — um teto compartilhado de quanto você pode acumular em todas as escolas em um único dia. Ele **começa em 250.000** e aumenta com o seu **Mastery Rank** (cerca de +5.000 por rank), de modo que jogadores com MR mais alto têm um teto muito maior do que novos Operators. O limite é redefinido no reset diário."
+        },
+        {
+          "type": "warn",
+          "text": "Depois de atingir o limite, qualquer Focus adicional ganho naquele dia é **desperdiçado**. A jogada eficiente é atingir seu limite rapidamente em um farm forte e depois passar para outros objetivos, em vez de grindar Focus que você não pode acumular. Não desperdice um fim de semana de double-affinity jogando missões de baixa densidade."
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "Limite inicial",
+              "v": "250.000 / dia (todas as escolas combinadas)"
+            },
+            {
+              "k": "Escalonamento",
+              "v": "Aumenta com o seu Mastery Rank (~+5.000 por rank)"
+            },
+            {
+              "k": "Reset",
+              "v": "Reset diário (00:00 UTC)"
+            },
+            {
+              "k": "Focus além do limite",
+              "v": "Perdido — planeje os farms para atingir o limite com eficiência"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "best-farms",
+      "title": "Melhores Farms de Focus",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "O 'melhor node' muda a cada atualização, mas o **princípio independe da época**: maximize a densidade de inimigos, permaneça dentro da janela de convergence e use um loadout totalmente equipado com lenses. Qualquer modo que acumule eliminações contínuas com uma arma com lens enquanto os orbs continuam surgindo é um ótimo farm de Focus. Estes são os clássicos duradouros:"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Método",
+              "Por que funciona",
+              "Notas"
+            ],
+            "rows": [
+              [
+                "Caçadas a Eidolon (Plains of Eidolon, noite)",
+                "Eidolon Shards são convertidos diretamente em Focus — Brilliant ~25.000, Radiant ~40.000 para uma escola de sua escolha — além de uma enorme quantidade de affinity",
+                "Precisa de uma configuração de Amp + Operator; veja o [guia de Eidolon](/guides/eidolon)"
+              ],
+              [
+                "Elite Sanctuary Onslaught (ESO)",
+                "Eliminações ininterruptas e de alta densidade com convergence orbs frequentes — o clássico grind de Focus",
+                "Traga um nuke frame + um loadout totalmente equipado com lenses"
+              ],
+              [
+                "Modos infinitos de alta densidade (modos de Void da Zariman, tilesets de endgame atuais)",
+                "Grandes quantidades de eliminações alimentam as armas com lenses; os orbs surgem constantemente",
+                "O 'melhor' node exato muda a cada patch — confira um vídeo recente"
+              ],
+              [
+                "Qualquer missão + lenses completas + boosters",
+                "Focus passivo enquanto você joga normalmente",
+                "Mais lento, mas sem configuração extra — ótimo para atingir o limite de forma casual"
+              ]
+            ]
+          }
+        },
+        {
+          "type": "p",
+          "text": "Os Eidolons são excepcionalmente fortes porque as **Eidolon Shards são Focus puro** — você as consome por uma quantia fixa para uma escola de sua escolha (Brilliant ~25.000, Radiant ~40.000), separada da conversão de affinity. É por isso que uma captura de Tridolon pode aproximar você do seu limite diário em uma única partida. Aprenda a caçada no [guia de Eidolon](/guides/eidolon), e observe que os amps e arcanes que você coleta pelo caminho podem ser negociados por [platinum](/guides/platinum) através do [flip finder](/flip) ou [screener](/screener)."
+        },
+        {
+          "type": "tip",
+          "text": "Para identificar qual node está rodando qual modo no momento, os [mapas de locais de drop](/star-chart-3d) e o [diretório de ferramentas da comunidade](/tools) (wiki, Overframe) se mantêm atualizados muito melhor do que qualquer lista estática. Combine um vídeo recente de farming de Focus com uma verificação na wiki ativa antes de começar o grind."
+        }
+      ]
+    },
+    {
+      "id": "spending",
+      "title": "Nodes Way-Bound & Gastando Focus",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Dentro de cada escola, os nodes se dividem em dois tipos. **Nodes de escola** só funcionam enquanto essa escola for a sua ativa. **Nodes Way-Bound** são passivas permanentes que se aplicam *independentemente de qual escola esteja ativa* — e são desbloqueados com Focus mais **Eidolon Shards**. Essa é uma segunda razão pela qual a progressão de Eidolons e Focus estão interligadas: as shards financiam seu Focus diário e vinculam permanentemente as melhores passivas."
+        },
+        {
+          "type": "p",
+          "text": "Como você só pode usar uma escola por vez, gaste com intenção em vez de distribuir os pontos de forma rasa entre as cinco:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Maximize sua escola principal primeiro** — geralmente Zenurik por sua zona de energia, já que você a terá selecionada na maior parte do tempo.",
+            "**Pegue as passivas Way-Bound cedo** — elas são permanentes e se acumulam entre as escolas, então nunca são desperdiçadas. As prioridades comuns são as Way-Bounds de energia máxima e de sobrevivência do Operator.",
+            "**Depois, ramifique para uma escola de função** — Madurai/Unairu para Eidolons e remoção de armadura, Naramon para corpo a corpo, Vazarin para suporte.",
+            "**Não invista demais em uma escola que você nunca selecionará** — nodes exclusivos de escola são peso morto, a menos que essa escola esteja ativa."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "efficiency",
+      "title": "Extraia Mais Focus",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Assim que os fundamentos estiverem definidos, esses multiplicadores se acumulam para atingir o limite muito mais rápido:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Equipe uma Lens em cada slot.** Frame + 3 armas + companion totalizan até cinco lenses convertendo ao mesmo tempo. Coloque suas melhores lenses nos equipamentos que você mais usa.",
+            "**Defina sua escola ativa para aquela que você está farmando.** Todo o Focus gerado vai para a escola *atualmente selecionada* — verifique novamente antes de começar.",
+            "**Acumule boosters de affinity.** Um Affinity Booster de 2x combinado com um **Fim de Semana de Double Affinity** dobra seus ganhos de Focus pelo mesmo esforço.",
+            "**Use um Smeeta Kavat.** Seu buff Charm pode conceder um bônus de 2x de affinity — puro Focus extra em farms de alta densidade.",
+            "**Entenda o fluxo de affinity.** Eliminações por habilidades direcionam 100% para seu Warframe; eliminações por armas são divididas entre a arma e o frame. Em um esquadrão, a affinity é compartilhada dentro do alcance — então as eliminações perto de você ainda alimentam seus equipamentos com lenses.",
+            "**Direcione o dano para a janela de convergence.** Guarde seu dano explosivo para o buff de 10x em vez de gastá-lo antes de pegar o orb."
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "Novos farmers de Focus também devem ler o [guia de Mastery Rank & affinity](/guides/mastery-rank) — as mesmas mecânicas de evolução que sobem o nível dos seus equipamentos são as que alimentam suas lenses, então evoluir de forma eficiente e farmar Focus de forma eficiente são a mesma habilidade."
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Como eu desbloqueio o Focus no Warframe?",
+      "a": "O Focus é desbloqueado quando você conclui a jornada **The Second Dream**, que acorda seu Operator e abre a tela de Focus e sua primeira escola. Continue limpando o star chart até que The Second Dream fique disponível e, em seguida, termine **The War Within** para desenvolver totalmente seu Operator. Até lá, você não poderá instalar uma única lens."
+    },
+    {
+      "q": "Qual é a melhor escola de Focus para desbloquear primeiro?",
+      "a": "**Zenurik** é a escolha inicial quase universal porque sua zona de regeneração de energia resolve os problemas de energia do início do jogo e ajuda todos os Warframes que você jogar. Depois disso, a maioria dos jogadores abre **Madurai** (dano de Amp/Operator para Eidolons) ou **Unairu** (remoção de escudo/armadura). Sua primeira escola é gratuita; cada uma adicional custa cerca de 50.000 de Focus."
+    },
+    {
+      "q": "Qual é a maneira mais rápida de farmar Focus?",
+      "a": "Coloque Focus Lenses (idealmente Eidolon ou Lua Lenses) em seu frame e armas de nível máximo, depois grinde um modo de alta densidade como o **Elite Sanctuary Onslaught** ou caçe **Eidolons** nas Plains à noite. Pegue cada **Convergence Orb** para obter o multiplicador de 10x e acumule um booster de affinity mais um Smeeta Kavat. Eidolon Shards também se convertem diretamente em Focus (Brilliant ~25.000, Radiant ~40.000)."
+    },
+    {
+      "q": "Como as Focus lenses funcionam e onde posso obtê-las?",
+      "a": "Uma lens é instalada em um item de rank 30 e converte uma porcentagem de sua affinity em Focus para uma escola vinculada — cerca de 2% para uma Lens básica, 3% para uma Greater Lens, 4,25% para uma Eidolon Lens e 5,5% para a Lua Lens de nível máximo. Lenses básicas caem de Sorties e bounties de mundo aberto; cada nível superior é construído a partir do anterior (Greater a partir de um blueprint do Market, Eidolon a partir de bounties de Cetus/Steel Path ou [standing da Cavia](/guides/standing), Lua a partir de Disruption de Lua). Instale em equipamentos de nível máximo para que nenhuma affinity seja desperdiçada ao subir de nível."
+    },
+    {
+      "q": "Por que tenho que depender de convergence orbs para obter Focus?",
+      "a": "Por padrão, o ganho de Focus é lento, a menos que você esteja sob o efeito do buff de um **Convergence Orb**, que concede um multiplicador de 10x por 45 segundos (além de 5.000 de Focus ao coletar). É uma frustração comum na comunidade, mas a solução alternativa é farmar em modos densos e cheios de eliminações onde os orbs surgem com frequência — para que você passe a maior parte da partida dentro do multiplicador, em vez de perseguir orbs individuais."
+    },
+    {
+      "q": "Existe um limite diário de Focus?",
+      "a": "Sim. Existe um limite diário compartilhado entre todas as escolas que **começa em 250.000** e aumenta com o seu **Mastery Rank** (cerca de +5.000 por rank). Depois de atingi-lo, o Focus extra ganho naquele dia é desperdiçado — então a jogada eficiente é atingir o limite rapidamente em um farm forte e depois passar para outros objetivos."
+    },
+    {
+      "q": "Eu preciso me comprometer com apenas uma escola de Focus?",
+      "a": "Não. Você pode alternar livremente entre as escolas que desbloqueou fora das missões, então nunca fica preso a uma. Além disso, os nodes **Way-Bound** são passivas permanentes que se aplicam independentemente de qual escola esteja ativa — desbloqueie-os com Focus e Eidolon Shards e eles beneficiarão todas as builds."
+    },
+    {
+      "q": "O que as Eidolon Shards fazem pelo Focus?",
+      "a": "As Eidolon Shards são efetivamente Focus engarrafado. Consumir uma **Brilliant Shard** concede cerca de 25.000 de Focus e uma **Radiant Shard** cerca de 40.000, ambos indo para a escola que você escolher. As shards também são necessárias para desbloquear passivas permanentes **Way-Bound**, e é por isso que a [caça a Eidolon](/guides/eidolon) é a principal atividade de Focus."
+    }
+  ],
+  "videos": [
+    {
+      "id": "yt0L9JPkP1k",
+      "title": "The top five ways to farm focus! | Warframe",
+      "channel": "TheKengineer"
+    },
+    {
+      "id": "B0ztEAfwj_Q",
+      "title": "Farm Focus FASTER in Warframe 2025!",
+      "channel": "Qemal TV"
+    },
+    {
+      "id": "_Hq2VdgM6kw",
+      "title": "[WARFRAME] Advanced FOCUS Guide! Eidolon Hunting Guide Episode 01",
+      "channel": "KnightmareFrame"
+    },
+    {
+      "id": "Lc_Pry-SQsA",
+      "title": "Warframe Beginner Guide 2025: Easy Endo Farming, Focus Schools & Operator Unlocked | Episode 6",
+      "channel": "Tipsy"
+    }
+  ],
+  "sources": [
+    {
+      "label": "r/Warframe — Boosters run out soon, anyone wanna farm affinity?",
+      "href": "https://reddit.com/r/Warframe/comments/1ih3nbq/boosters_run_out_soon_anyone_wanna_farm_affinity/"
+    },
+    {
+      "label": "r/Warframe — Focus 2.0 Costs are too high",
+      "href": "https://reddit.com/r/Warframe/comments/77iv8n/focus_20_costs_are_too_high/"
+    },
+    {
+      "label": "Official Warframe Wiki",
+      "href": "https://wiki.warframe.com/"
+    }
+  ],
+  "related": [
+    {
+      "label": "Guia de Caça a Eidolon",
+      "to": "/guides/eidolon",
+      "icon": "atom-variant",
+      "note": "O principal farm de Focus + Amp + Arcane"
+    },
+    {
+      "label": "Guia de Standing de Sindicato",
+      "to": "/guides/standing",
+      "icon": "handshake",
+      "note": "O standing compra lenses, arcanes e mods"
+    },
+    {
+      "label": "Guia do Steel Path",
+      "to": "/guides/steel-path",
+      "icon": "shield-sword",
+      "note": "Onde a remoção de armadura da Unairu brilha"
+    },
+    {
+      "label": "Mastery Rank & Affinity",
+      "to": "/guides/mastery-rank",
+      "icon": "star-four-points",
+      "note": "As mecânicas de XP que alimentam suas lenses"
+    },
+    {
+      "label": "Roteiro de Progressão",
+      "to": "/guides/progression",
+      "icon": "map-marker-path",
+      "note": "Onde o Focus se encaixa na sua jornada"
+    },
+    {
+      "label": "Criadores de Conteúdo",
+      "to": "/creators",
+      "icon": "youtube",
+      "note": "Siga os especialistas em farming de Focus"
+    }
+  ],
+  "updated": "2026-07-18"
+}

@@ -1,0 +1,471 @@
+{
+  "slug": "railjack",
+  "eyebrow": "Centre de connaissances · Railjack",
+  "title": "Guide du Railjack",
+  "lede": "Le Railjack est le bac à sable des vaisseaux capitaux de Warframe : pilotez un navire de guerre à travers l'espace ouvert, abordez des vaisseaux ennemis en plein combat et commandez un équipage qui peut être entièrement géré par l'IA. Voici comment le déverrouiller, améliorer vos Intrinsics et le jouer en solo sans être l'hôte que tout le monde redoute.",
+  "category": "endgame",
+  "readMins": 11,
+  "stats": [
+    {
+      "num": "5",
+      "label": "Écoles d'Intrinsics",
+      "tone": "gold"
+    },
+    {
+      "num": "3",
+      "label": "Équipage IA que vous pouvez commander",
+      "tone": "good"
+    },
+    {
+      "num": "10",
+      "label": "rangs par Intrinsic",
+      "tone": "alt"
+    },
+    {
+      "num": "2",
+      "label": "Factions de la Proxima (Grineer + Corpus)"
+    }
+  ],
+  "sections": [
+    {
+      "id": "what-is-railjack",
+      "title": "Ce qu'est réellement le Railjack",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Le Railjack est le **mode de jeu de combat spatial** de Warframe, articulé autour d'un grand navire de guerre — *votre* Railjack — que vous et jusqu'à trois équipiers pilotez ensemble. Vous volez à travers les régions de la **Proxima** (des zones d'espace ouvert en orbite autour de planètes familières), détruisant des essaims de fighters ennemis, éliminant des **crewships** lourdement blindés et abordant des vaisseaux capitaux et bases ennemis pour accomplir des objectifs à pied."
+        },
+        {
+          "type": "p",
+          "text": "La magie réside dans les transitions fluides : un instant vous êtes dans le siège du pilote à esquiver les tirs de DCA, l'instant d'après vous êtes propulsé d'un **Archwing slingshot** dans un crewship ennemi pour faire exploser son réacteur de l'intérieur, puis vous êtes de retour à bord pour colmater une brèche de coque avec votre outil `Omni`. Il a fait ses débuts dans la mise à jour **Empyrean** et a été grandement simplifié lors d'une refonte Corpus ultérieure, qui a ajouté l'Intrinsic **Command** et le panneau de mods personnel **Plexus** — les deux systèmes qui rendent le Railjack solo moderne véritablement confortable."
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "Mode de jeu",
+              "v": "Combat spatial + abordage fluide à pied"
+            },
+            {
+              "k": "Votre vaisseau",
+              "v": "Le Railjack — pilotez-le, tirez avec ou élancez-vous depuis celui-ci"
+            },
+            {
+              "k": "Taille de l'escouade",
+              "v": "Jusqu'à 4 joueurs, ou vous + jusqu'à 3 membres d'équipage IA en solo"
+            },
+            {
+              "k": "Régions",
+              "v": "Proxima Grineer et Proxima Corpus (aboutissant dans le Veil)"
+            },
+            {
+              "k": "Prérequis",
+              "v": "Terminer The War Within, puis la quête Rising Tide"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "why-bother",
+      "title": "Pourquoi s'embêter avec le Railjack",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Le Railjack a été dans une position difficile pendant des années, mais la refonte en a fait une véritable machine à récompenses. Ce n'est pas juste un simulateur de vol gadget — plusieurs systèmes de progression passent directement par lui."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Raison",
+              "Ce que vous y gagnez"
+            ],
+            "rows": [
+              [
+                "Affinité / gain de niveau",
+                "Les missions déversent de l'affinité partagée sur l'ensemble de votre équipement, c'est donc un excellent moyen d'améliorer vos armes et vos frames tout en faisant autre chose que Hydron."
+              ],
+              [
+                "Ressources",
+                "Le Titanium, l'Asterite et les loots de la Proxima Grineer/Corpus alimentent les améliorations du Railjack et un nombre surprenant de recettes de la Foundry plus tardives."
+              ],
+              [
+                "Sisters of Parvos",
+                "La chasse aux liches Corpus est bloquée derrière le Railjack — vous devez affronter et aborder le vaisseau capital de la Sister pour l'achever. Voir le guide Kuva & Liches."
+              ],
+              [
+                "Void Storms",
+                "La version Railjack des Void Fissures : ouvrez des reliques et accumulez des Void Traces supplémentaires pendant que vous volez. Des pièces Prime gratuites en plus des récompenses de mission."
+              ],
+              [
+                "Quêtes & histoire",
+                "Rising Tide, Call of the Tempestarii et les étapes ultérieures de l'histoire vous placent tous dans le siège du pilote."
+              ],
+              [
+                "Maîtrise & variété",
+                "Intrinsics, composants et un bac à sable de combat qui ne ressemble à rien d'autre dans le jeu."
+              ]
+            ],
+            "note": "Les récompenses des Void Storms se cumulent avec le butin propre à la mission — vérifiez les calculs d'ouverture ou de vente de vos loots avant de les dissoudre."
+          }
+        },
+        {
+          "type": "p",
+          "text": "Deux d'entre eux méritent d'être planifiés : les **Void Storms** transforment le Railjack en un farm de reliques — faites le calcul sur votre butin avec [Valeur des reliques : ouvrir ou vendre](/relics-value) et [quelles reliques rapportent le plus par run](/relic-farming). Et une fois que vous ouvrez des Primes, [l'outil de valeur en ducats](/ducats) et [le calculateur set-vs-pièces](/comparison) vous indiquent quoi garder pour Baro et quoi revendre."
+        }
+      ]
+    },
+    {
+      "id": "unlocking",
+      "title": "Déverrouiller le Railjack : La quête Rising Tide",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Il y a deux façons d'accéder à ce mode. Vous pouvez immédiatement **faire partie de l'équipage du vaisseau de quelqu'un d'autre** — rejoignez simplement une escouade Railjack publique, et vous gagnerez des Intrinsics et des récompenses sans rien posséder."
+        },
+        {
+          "type": "steps",
+          "ordered": true,
+          "steps": [
+            {
+              "h": "Terminer The War Within",
+              "p": "Rising Tide est bloquée derrière la quête cinématique The War Within (qui suit The Second Dream dans l'histoire). Si vous n'y êtes pas encore, progressez d'abord dans les quêtes de l'histoire principale — voir le guide des Quêtes pour l'ordre."
+            },
+            {
+              "h": "Accéder à un Dry Dock",
+              "p": "Rising Tide se construit dans un Dry Dock. Vous ne pouvez pas construire le vaisseau depuis votre Orbiter — mais un Dry Dock n'est pas réservé aux clans : construisez-en un dans un Clan Dojo, ou utilisez le Dry Dock public situé dans plusieurs des grands Relais (comme Saturne et Pluton)."
+            },
+            {
+              "h": "Rassembler et construire les six composants d'épave",
+              "p": "La quête vous envoie à travers la carte céleste pour rassembler des ressources, puis construire les six sections récupérées du vaisseau une par une au Dry Dock."
+            },
+            {
+              "h": "Attendre la fin des temps de construction",
+              "p": "Chaque composant et l'assemblage final ont des minuteurs en temps réel de type Foundry qui s'additionnent pour représenter plusieurs jours. Lancez les constructions le plus tôt possible et laissez-les mijoter pendant que vous jouez à d'autres contenus."
+            },
+            {
+              "h": "Lancer depuis le Dry Dock",
+              "p": "Une fois le Railjack assemblé, il est garé dans votre Dry Dock. De là (ou depuis les régions de la Proxima dans la Navigation), vous pouvez lancer des missions et commencer à améliorer vos Intrinsics."
+            }
+          ]
+        },
+        {
+          "type": "warn",
+          "text": "**Pas de clan ? Vous avez toujours des options.** Plusieurs des grands **Relais** (dont Saturne et Pluton) disposent d'un **Dry Dock** public que vous pouvez utiliser sans aucun clan. Vous préférez le vôtre ? Fonder un clan d'une seule personne est gratuit depuis la console de clan de n'importe quel Relais — construisez le Dry Dock dans votre dojo (cela déverrouille également la recherche de composants Sigma exclusive au clan), ou empruntez le dojo d'un ami ou d'une alliance. Ne laissez pas le fait de \"ne pas être dans un clan\" vous arrêter."
+        },
+        {
+          "type": "info",
+          "text": "Nouveau dans ce mode et vous ne savez pas s'il est fait pour vous ? Plusieurs **missions d'histoire et escouades publiques vous confient un Railjack de prêt pré-construit**, afin que vous puissiez essayer de piloter et de tirer avant même de terminer Rising Tide. C'est un excellent moyen de décider s'il vaut la peine d'investir du temps de construction."
+        }
+      ]
+    },
+    {
+      "id": "intrinsics",
+      "title": "Intrinsics : Les cinq écoles",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Les **Intrinsics** sont les arbres de compétences personnels du Railjack — cinq écoles, chacune classée de **1 à 10**. Vous gagnez des points d'Intrinsic automatiquement grâce à l'affinité des missions, puis vous les dépensez où vous le souhaitez. Les rangs supérieurs sont transformateurs, pas seulement incrémentiels : ils débloquent de nouvelles manœuvres, des réparations plus rapides et — élément crucial — votre équipage IA."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "École",
+              "Ce qu'elle régit",
+              "Pourquoi c'est important en solo"
+            ],
+            "rows": [
+              [
+                "Tactical",
+                "La carte tactique, la téléportation vers l'équipage/objectifs, et le rappel Omni vers le vaisseau",
+                "Revenez instantanément au siège du pilote ou à une brèche de coque au lieu de courir sur toute la longueur du vaisseau"
+              ],
+              [
+                "Piloting",
+                "Boost, propulsions vectorielles et esquives en dérapage pour un repositionnement serré et rapide",
+                "Un vaisseau agile avec lequel vous pouvez réellement esquiver la DCA et vous repositionner rapidement"
+              ],
+              [
+                "Gunnery",
+                "Maniement des tourelles — gestion de la chaleur, zoom de visée, verrouillage de visée sur l'indicateur de devancement et Archwing slingshot",
+                "Tuez les fighters plus rapidement, placez des tirs de Forward Artillery sur les crewships, et projetez-vous à leur bord pour les aborder"
+              ],
+              [
+                "Engineering",
+                "Santé de la coque du vaisseau, réparations Omni plus rapides, rendement de la forge et suppression des risques",
+                "Survivez aux incendies et aux brèches quand personne ne surveille la coque"
+              ],
+              [
+                "Command",
+                "Recrutez et dirigez jusqu'à 3 membres d'équipage IA, plus l'invocation On Call Crew",
+                "L'école de loin la plus importante pour le jeu en solo — votre équipage vole et se bat pour vous"
+              ]
+            ]
+          }
+        },
+        {
+          "type": "tip",
+          "text": "**Ordre de progression en solo :** visez **Command** rapidement pour l'équipage, puis quelques rangs de **Gunnery** et de **Piloting** pour rendre le vaisseau agréable à manier, et **Engineering** pour la survie. Le rappel Omni de Tactical est un énorme gain de confort une fois que vous abordez régulièrement. Vous n'avez pas besoin de tout monter à 10 pour être efficace — les premiers rangs de chacun ont le plus d'impact."
+        }
+      ]
+    },
+    {
+      "id": "command-crew",
+      "title": "Équipage de Command : L'arme secrète du joueur solo",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "S'il y a une seule chose à retenir de cette page : **montez le rang de Command et recrutez un équipage IA.** Un équipage bien constitué transforme un vaisseau pour quatre personnes en un vaisseau pour une seule personne. Ils pilotent, tirent, réparent les brèches et les incendies, et défendent contre les abordeurs — tout cela pendant que vous vous concentrez sur ce qui vous plaît."
+        },
+        {
+          "type": "steps",
+          "ordered": true,
+          "steps": [
+            {
+              "h": "Débloquer des emplacements d'équipage avec Command",
+              "p": "Le premier rang de Command vous permet de recruter et de déployer un membre d'équipage, avec plus d'emplacements et une meilleure compétence à mesure que vous montez — le deuxième emplacement s'ouvre après quelques rangs et le troisième peu après, jusqu'à trois membres d'équipage IA actifs."
+            },
+            {
+              "h": "Recruter auprès de Ticker à Fortuna",
+              "p": "Ticker (en bas à Fortuna, sur Vénus) vend des membres d'équipage en rotation contre des ressources et des Solaris debt-bonds. Chaque recrue a des points de compétence répartis entre le combat, le tir, le pilotage, l'ingénierie, la réparation et l'endurance."
+            },
+            {
+              "h": "Attribuer des rôles qui correspondent à leurs statistiques",
+              "p": "Chaque membre d'équipage assume un rôle — Pilote, Artilleur, Défenseur ou Ingénieur. Associez le rôle à leurs statistiques élevées : un Artilleur a besoin de Gunnery + Combat, un Ingénieur a besoin de Réparation + Endurance."
+            },
+            {
+              "h": "Constituer le trio solo classique",
+              "p": "Deux Artilleurs pour déchiqueter l'essaim de fighters et un Ingénieur pour maintenir le vaisseau en vie est la configuration par défaut fiable. Remplacez un Artilleur par un Pilote si vous préférez quitter le siège et aborder."
+            }
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "Un rang supérieur de Command déverrouille l'objet d'équipement **On Call Crew**, qui vous permet d'invoquer l'un de vos membres d'équipage dans des missions *normales* (hors Railjack) en tant qu'allié temporaire. Une excellente raison de continuer à améliorer Command même après que votre vaisseau fonctionne tout seul."
+        }
+      ]
+    },
+    {
+      "id": "solo-build",
+      "title": "Construire un Railjack prêt pour le solo",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "La puissance de votre vaisseau provient de deux sources : les **composants** boulonnés sur la coque (Réacteur, Bouclier, Moteurs et armements) et le **Plexus** — votre panneau de mods personnel que vous emportez sur *n'importe quel* Railjack, y compris ceux de prêt. Les composants proviennent de trois maisons — **Zetki** (statistiques brutes les plus élevées, mais avec des inconvénients comme la surchauffe des tourelles), **Vidar** (équilibré, bonus puissants) et **Lavan** (durable, excellente maniabilité) — dans des paliers croissants de **MK I à III**."
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Le Réacteur d'abord.** Il détermine la capacité de votre Plexus — le nombre et la puissance de vos mods — et augmente vos capacités de combat. Un réacteur à haute capacité est la plus importante amélioration que vous puissiez viser.",
+            "**Les tourelles (armements) ensuite.** Récupérez des armes MK III d'une maison que vous aimez ; Zetki frappe le plus fort mais surchauffe, tandis que Vidar et Lavan échangent un peu de dégâts contre de la maniabilité et du temps de fonctionnement.",
+            "**La Forward Artillery est votre destructeur de crewships.** Le canon de proue (`Tunguska`) élimine en un coup les crewships qui prendraient autrement une éternité à détruire — équipez le mod **Forward Artillery** pour qu'il continue de tuer en un coup les crewships les plus robustes du Veil.",
+            "**Configuration du Plexus.** Maximisez les dégâts des tourelles (ex. Hyperstrike), ajoutez un mod de survie pour la santé de la coque, et équipez une **capacité de combat qui élimine les essaims de fighters** — Tether pour regrouper les ennemis et les missiles à tête chercheuse Seeker Volley sont les favoris de longue date.",
+            "**Les moteurs et les boucliers sont moins prioritaires.** La maniabilité et la recharge des boucliers sont appréciables, mais elles passent après un réacteur solide, des armes et la Forward Artillery."
+          ]
+        },
+        {
+          "type": "warn",
+          "text": "**Ne soyez pas l'hôte que tout le monde redoute.** La plainte la plus courante concernant le Railjack public concerne les personnes qui n'ont jamais construit ni moddé leur vaisseau, puis hébergent sur des nodes de haut niveau. Si vous comptez héberger, passez d'abord une heure sur votre Plexus et votre Forward Artillery — un vaisseau moddé change complètement la donne, et votre escouade le remarquera."
+        }
+      ]
+    },
+    {
+      "id": "solo-game-plan",
+      "title": "Un plan de match pour les missions solo",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Avec un équipage à bord et la Forward Artillery prête, une mission Railjack en solo a un rythme bien défini. La boucle est : réduire l'essaim, éliminer les crewships, faire l'objectif, s'extraire."
+        },
+        {
+          "type": "steps",
+          "ordered": true,
+          "steps": [
+            {
+              "h": "Laissez l'essaim venir vers vos tourelles",
+              "p": "Les fighters se regroupent lorsqu'ils vous poursuivent. Laissez vos Artilleurs et vos tourelles travailler, et lancez une capacité de combat comme Tether pour regrouper et éliminer un pack d'un coup."
+            },
+            {
+              "h": "Éliminer les crewships avec la Forward Artillery",
+              "p": "Alignez le canon de proue et tuez chaque crewship en un coup. Sinon, abordez-le via l'Archwing ou le slingshot et faites exploser son réacteur de l'intérieur — l'une ou l'autre méthode élimine la plus grande menace pour votre coque."
+            },
+            {
+              "h": "Aborder l'objectif à pied",
+              "p": "La plupart des missions vous demandent de pénétrer dans un vaisseau capital ou une base ennemie — détruire des radiateurs, pirater une console ou défendre un point. C'est du combat Warframe classique ; apportez une frame et des armes en qui vous avez confiance."
+            },
+            {
+              "h": "Colmater et rappeler au besoin",
+              "p": "Si le vaisseau subit une brèche ou un incendie pendant votre absence, votre Ingénieur s'en occupe généralement — mais le rappel Omni de Tactical vous ramène instantanément à la maison si les choses se gâtent."
+            },
+            {
+              "h": "Terminer et s'extraire",
+              "p": "Une fois l'objectif terminé, éliminez les traînards et partez. Les missions Void Storm ouvrent également votre relique équipée ici — choisissez votre récompense avant de partir."
+            }
+          ]
+        },
+        {
+          "type": "warn",
+          "text": "**La Forward Artillery est peu maniable en solo — c'est voulu.** Le pilote ne peut pas tirer avec le canon de proue ; vous devez quitter le siège, et le vaisseau cesse de manœuvrer pendant que vous visez. C'est la chose numéro un que les vétérans aimeraient que les nouveaux pilotes solo sachent. **Attribuez un membre d'équipage comme Pilote** pour que le vaisseau continue d'esquiver pendant que vous tirez, ou nettoyez d'abord la zone immédiate pour ne pas rester immobile sous les tirs de DCA."
+        }
+      ]
+    },
+    {
+      "id": "where-next",
+      "title": "Où se situe le Railjack dans votre Endgame",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Une fois que votre vaisseau fonctionne tout seul, le Railjack devient un outil plutôt qu'une corvée. Utilisez les **Void Storms** comme un farm de reliques et estimez votre butin avec [Valeur des reliques : ouvrir ou vendre](/relics-value) et [quelles reliques rapportent le plus par run](/relic-farming). Chassez les **Sisters of Parvos** grâce au [guide Kuva & Liches](/guides/kuva). Et lorsque vous voulez voir exactement d'où provient un loot ou une ressource de la Proxima, la [carte 3D des loots de la carte céleste](/star-chart-3d) le cartographie pour vous."
+        },
+        {
+          "type": "p",
+          "text": "Pour le reste du réseau endgame — [Steel Path](/guides/steel-path), [Duviri](/guides/duviri) (qui a son propre système d'Intrinsics à comparer), [Arcanes](/guides/arcanes) et [Archon Shards](/guides/archon-shards) — les guides associés prennent le relais là où celui-ci s'arrête. Et si vous préférez voir un build se construire, l'annuaire des créateurs [creators directory](/creators) et les vidéos ci-dessous sont le meilleur choix suivant."
+        },
+        {
+          "type": "links",
+          "links": [
+            {
+              "label": "Valeur des reliques : ouvrir ou vendre",
+              "href": "/relics-value",
+              "icon": "diamond-stone",
+              "note": "Estimer votre butin de Void Storm"
+            },
+            {
+              "label": "Guide Kuva & Liches",
+              "href": "/guides/kuva",
+              "icon": "skull",
+              "note": "Les Sisters of Parvos sont bloquées derrière le Railjack"
+            },
+            {
+              "label": "Carte 3D des emplacements de loot",
+              "href": "/star-chart-3d",
+              "icon": "map-marker-path",
+              "note": "Trouver n'importe quel loot de la Proxima"
+            },
+            {
+              "label": "Annuaire des outils de la communauté",
+              "href": "/tools",
+              "icon": "toolbox",
+              "note": "Wiki, Overframe & plus"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Comment déverrouiller le Railjack dans Warframe ?",
+      "a": "Construisez le vôtre en terminant la quête **Rising Tide**, ce qui nécessite d'avoir fini **The War Within** (la quête cinématique après The Second Dream) et d'avoir accès à un **Dry Dock**. Les Dry Docks ne sont pas réservés aux clans — plusieurs des plus grands **Relais** (comme Saturne et Pluton) en ont un public, ou vous pouvez fonder un clan solo gratuit et construire le vôtre. Si vous préférez ne pas construire de vaisseau du tout, rejoignez immédiatement une escouade Railjack publique et intégrez l'équipage du vaisseau de quelqu'un d'autre — vous gagnerez tout de même des Intrinsics et des récompenses."
+    },
+    {
+      "q": "Peut-on jouer au Railjack en solo ?",
+      "a": "Oui, et c'est véritablement confortable une fois que vous améliorez l'Intrinsic **Command** et recrutez un équipage IA. Trois membres d'équipage compétents piloteront, tireront et répareront le vaisseau pour vous pendant que vous vous concentrez sur le pilotage ou l'abordage. C'est ce qui fait la différence entre un Railjack qui ressemble à un travail pour quatre personnes et un travail pour une seule personne."
+    },
+    {
+      "q": "Ai-je besoin d'un clan pour obtenir un Railjack ?",
+      "a": "Pas nécessairement. Vous construisez et entretenez le Railjack dans un **Dry Dock**, et bien que vous ne puissiez pas le faire depuis votre Orbiter, les Dry Docks ne sont pas réservés aux clans : plusieurs des plus grands **Relais** (comme Saturne et Pluton) disposent d'un Dry Dock public que tout joueur solo peut utiliser. Si vous préférez avoir le vôtre, fonder un clan d'une seule personne est gratuit depuis la console de clan de n'importe quel Relais et vous permet de construire un Dry Dock dans votre dojo — ce qui déverrouille également la recherche de composants Sigma exclusive au clan."
+    },
+    {
+      "q": "Quel Intrinsic de Railjack devrais-je améliorer en premier ?",
+      "a": "**Command**, pour l'équipage IA — c'est ce qui contribue le plus à rendre le mode jouable en solo. Après cela, quelques rangs de **Gunnery** et de **Piloting** pour rendre le vaisseau réactif, et **Engineering** pour la survie. Vous n'avez pas besoin de maximiser une école à 10 pour être efficace ; les premiers rangs apportent le plus de valeur."
+    },
+    {
+      "q": "Comment obtenir des membres d'équipage IA dans le Railjack ?",
+      "a": "Montez le rang de l'Intrinsic **Command** pour débloquer des emplacements d'équipage, puis recrutez des membres d'équipage auprès de **Ticker** à Fortuna (sur Vénus) en utilisant des ressources et des Solaris debt-bonds. Attribuez à chacun un rôle — Pilote, Artilleur, Défenseur ou Ingénieur — qui correspond à ses statistiques de compétence. Une configuration solo courante est de deux Artilleurs et un Ingénieur."
+    },
+    {
+      "q": "Comment tuer les crewships dans le Railjack ?",
+      "a": "Utilisez la **Forward Artillery** — le canon de proue du vaisseau (Tunguska), qui élimine les crewships en un coup ; équipez le mod **Forward Artillery** pour continuer à transpercer les crewships les plus robustes du Veil. Sinon, abordez le crewship via l'Archwing ou le slingshot et détruisez son réacteur de l'intérieur. Notez que le pilote ne peut pas tirer à l'artillerie en solo, attribuez donc un membre d'équipage comme Pilote ou garez le vaisseau pour viser."
+    },
+    {
+      "q": "Le Railjack vaut-il la peine d'être fait ?",
+      "a": "Pour la plupart des joueurs, oui. C'est une excellente source d'affinité et de ressources, c'est le **seul** moyen de chasser les Sisters of Parvos, et ses missions **Void Storm** ouvrent des reliques pour obtenir des pièces Prime et des Void Traces supplémentaires. Plusieurs quêtes le requièrent également. Une fois votre vaisseau et votre équipage construits, cela devient un moyen rapide et principalement automatisé de farmer."
+    },
+    {
+      "q": "Quels sont les meilleurs composants de Railjack à utiliser ?",
+      "a": "Visez des composants **MK III** et donnez la priorité à un **Réacteur à haute capacité**, car il détermine la puissance de vos mods de Plexus. Pour les tourelles, **Zetki** frappe le plus fort (mais surchauffe), tandis que **Vidar** et **Lavan** échangent des dégâts contre de la maniabilité et de la durabilité — choisissez selon vos goûts. Les configurations méta exactes évoluent avec les mises à jour, alors regardez une vidéo de build récente ou le [wiki](https://wiki.warframe.com/) avant de farmer pour une configuration parfaite spécifique."
+    }
+  ],
+  "videos": [
+    {
+      "id": "MLyf9D2GcpI",
+      "title": "Warframe Beginner's Guide 2025: Episode #5: The Second Dream Quest & Unlocking RailJack!",
+      "channel": "iFlynn"
+    },
+    {
+      "id": "G_ou9naTX50",
+      "title": "The ULTIMATE Warframe RAILJACK Guide 2026!",
+      "channel": "MHBlacky"
+    },
+    {
+      "id": "xnLTTLJn5iw",
+      "title": "Warframe: Solo Railjack Build Guide",
+      "channel": "Jacsonitos"
+    },
+    {
+      "id": "AMKACvK4ZXQ",
+      "title": "The Ultimate Railjack Build Guide (Warframe)",
+      "channel": "Hunkpain Gaming "
+    }
+  ],
+  "sources": [
+    {
+      "label": "Current state of Railjack: fast guide (r/Warframe)",
+      "href": "https://reddit.com/r/Warframe/comments/ea2af8/current_state_of_railjack_fast_guide_for_people/"
+    },
+    {
+      "label": "9 Days: Railjack — the Journey, the Meta, a FAQ (r/Warframe)",
+      "href": "https://reddit.com/r/Warframe/comments/eed3eu/9_days_railjack_the_journey_the_meta_a_faq/"
+    },
+    {
+      "label": "Watch a guide before you host your Railjack (r/Warframe)",
+      "href": "https://reddit.com/r/Warframe/comments/1u94eva/i_dont_usually_like_to_flame_people_in_warframe/"
+    },
+    {
+      "label": "Warframe Wiki",
+      "href": "https://wiki.warframe.com/"
+    }
+  ],
+  "related": [
+    {
+      "label": "Kuva & Liches",
+      "to": "/guides/kuva",
+      "icon": "skull",
+      "note": "Les Sisters of Parvos sont chassées via le Railjack"
+    },
+    {
+      "label": "Reliques & Void Fissures",
+      "to": "/guides/relics",
+      "icon": "diamond-stone",
+      "note": "Les Void Storms sont la méthode Railjack pour ouvrir des reliques"
+    },
+    {
+      "label": "Steel Path",
+      "to": "/guides/steel-path",
+      "icon": "chevron-triple-up",
+      "note": "L'autre grind de l'endgame"
+    },
+    {
+      "label": "Duviri",
+      "to": "/guides/duviri",
+      "icon": "sword-cross",
+      "note": "A son propre système d'Intrinsics"
+    },
+    {
+      "label": "Outil de valeur des reliques",
+      "to": "/relics-value",
+      "icon": "cash-multiple",
+      "note": "Ouvrez ou vendez vos loots de Void Storm"
+    },
+    {
+      "label": "Outils de la communauté",
+      "to": "/tools",
+      "icon": "toolbox",
+      "note": "Outils Wiki, Overframe & DE"
+    }
+  ],
+  "updated": "2026-07-18"
+}

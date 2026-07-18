@@ -1,0 +1,489 @@
+{
+  "slug": "mastery-rank",
+  "eyebrow": "지식 센터 · Mastery Rank",
+  "title": "Mastery Rank & 빠른 레벨업",
+  "lede": "Mastery Rank는 계정의 주행거리계와 같습니다. 장비를 해금하고, 일일 standing 및 거래 한도를 늘려주며, 제작하는 모든 것을 레벨업할 때마다 보상을 제공합니다. 여기에서 mastery, affinity, 그리고 테스트가 정확히 어떻게 작동하는지, 그리고 가장 빠르게 랭크업하는 방법을 확인해 보세요.",
+  "category": "start",
+  "readMins": 9,
+  "stats": [
+    {
+      "num": "30",
+      "label": "최대 MR, 이후 Legendary Ranks",
+      "tone": "gold"
+    },
+    {
+      "num": "3,000",
+      "label": "최대 랭크 weapon당 mastery",
+      "tone": "good"
+    },
+    {
+      "num": "6,000",
+      "label": "최대 랭크 frame당 mastery",
+      "tone": "good"
+    },
+    {
+      "num": "50m",
+      "label": "affinity 공유 범위",
+      "tone": "alt"
+    }
+  ],
+  "sections": [
+    {
+      "id": "what-is-mr",
+      "title": "Mastery Rank의 실제 의미",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Mastery Rank (MR)**는 개별 Warframe이나 weapon의 레벨과는 별개인 계정 전체의 진행도 레벨입니다. **새롭고 고유한** 장비를 레벨업하거나 새로운 콘텐츠를 처음 클리어할 때마다 계정에 누적되는 영구적인 형태의 affinity인 **Mastery**를 획득하여 올릴 수 있습니다. 장비 XP와 달리 mastery는 절대 초기화되지 않습니다. item이 한 번 mastery를 획득하면 그 진행도는 영원히 저장됩니다."
+        },
+        {
+          "type": "p",
+          "text": "황금률: **각 고유 item의 mastery는 단 한 번만 반영됩니다.** Braton을 30랭크까지 올리면 해당 mastery를 딱 한 번만 얻을 수 있습니다. 판매하거나, 다시 제작하거나, Forma를 적용하여 재레벨업하더라도 추가로 얻는 것은 없습니다. 이 단 하나의 규칙이 이 페이지에 있는 모든 효율적인 레벨업 전략의 기초가 됩니다."
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "랭크",
+              "v": "MR 0 → 30, 이후 DE가 지속적으로 추가하고 있는 Legendary Ranks (LR1, LR2, …)"
+            },
+            {
+              "k": "Mastery란",
+              "v": "영구적이며 계정 전체에 적용되고, 고유 item당 단 한 번만 획득 가능"
+            },
+            {
+              "k": "MR 테스트",
+              "v": "새로운 랭크를 확정하기 위해 통과해야 하는 일회성 도전 과제"
+            },
+            {
+              "k": "모든 것이 다 필요한가요?",
+              "v": "아닙니다 — MR30을 달성하는 데 필요한 것보다 훨씬 더 많은 items가 존재합니다"
+            }
+          ]
+        },
+        {
+          "type": "info",
+          "text": "MR30은 숫자로 표시되는 최고 랭크입니다. 그 이후에도 DE가 지속적으로 추가하는 **Legendary Ranks**를 향해 계속해서 mastery를 쌓을 수 있습니다. MR30을 달성하기 위해 게임 내의 모든 item을 소유할 필요는 **없습니다**. Star Chart를 클리어하고 상당량의 장비를 레벨업하는 것만으로도 충분히 도달할 수 있습니다."
+        }
+      ]
+    },
+    {
+      "id": "what-mr-unlocks",
+      "title": "MR이 해금하는 것 (그리고 해금하지 않는 것)",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "MR은 전투력 레벨이 아닙니다 — 갓 시작한 MR2 플레이어와 최대 랭크인 MR30 베테랑이 동일한 빌드를 사용한다면 공격력은 완전히 똑같습니다. MR이 제공하는 것은 **접근 권한과 계정 편의성**입니다. 특정 장비를 랭크 제한 뒤에 묶어두고, 파밍과 거래를 본격적으로 시작할 때 매우 중요해지는 여러 일일 한도를 보이지 않게 늘려줍니다."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "혜택",
+              "MR에 따른 스케일링 방식"
+            ],
+            "rows": [
+              [
+                "Weapon 및 장비 해금",
+                "많은 weapons들이 구매하거나 장착하기 위해 최소 MR을 요구합니다 (item 카드에 표시되는 랭크 제한)"
+              ],
+              [
+                "일일 standing 한도",
+                "Mastery Rank가 올라갈 때마다 상승하며, syndicate별로 추적됩니다. MR이 높을수록 매일 더 많은 standing을 쌓을 수 있습니다 (DE가 시간이 지남에 따라 한도를 상향 조정했으므로 정확한 수치는 변동될 수 있습니다)"
+              ],
+              [
+                "일일 거래 횟수",
+                "자신의 MR과 동일 (MR10 = 하루 10회 거래 가능, 거래를 하려면 최소 MR2가 필요함)"
+              ],
+              [
+                "시작 mod 용량",
+                "랭크가 없는 장비는 자신의 MR과 동일한 mod 용량으로 시작하며, 최대 30까지 제한됩니다 (Reactor/Catalyst 적용 시 두 배)"
+              ]
+            ],
+            "note": "더 높은 standing 한도는 Focus, arcane 및 syndicate 파밍 속도를 직접적으로 높여줍니다 — Standing 및 Focus 가이드를 참조하세요."
+          }
+        },
+        {
+          "type": "p",
+          "text": "이 standing 한도야말로 숨겨진 꿀 혜택입니다. 만약 [syndicate standing](/guides/standing)이나 [Focus](/guides/focus)를 파밍하고 있다면, MR이 올라갈 때마다 하루에 더 많은 양을 쌓을 수 있습니다. 더 많은 [일일 거래](/guides/platinum) 횟수는 더 많은 플래티넘 차익 거래를 의미하기도 합니다. 활발하게 거래를 시작하게 되면 [Flip finder](/flip)와 함께 활용해 보세요."
+        },
+        {
+          "type": "warn",
+          "text": "흔한 오해: '고난도 콘텐츠에서 살아남으려면 MR을 올려야 해.' 그렇지 않습니다. 생존력은 MR이 아니라 **mods, arcanes, 그리고 shield-gating**에서 나옵니다. 순수한 위력을 위해서가 아니라, 장비 해금과 일일 한도를 위해 MR을 올리세요."
+        }
+      ]
+    },
+    {
+      "id": "how-mastery-earned",
+      "title": "Mastery 획득 방법",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "장비를 처음으로 0에서 30랭크까지 올리면 mastery가 누적됩니다. item 유형에 따라 **랭크당** 획득하는 수치가 다르므로, 최대 랭크의 Warframe은 최대 랭크의 weapon보다 두 배의 가치를 가집니다."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Item 유형",
+              "랭크당 mastery",
+              "최대 랭크 시 총합"
+            ],
+            "rows": [
+              [
+                "Weapons (주무기, 보조무기, 근접무기 등)",
+                "100",
+                "30랭크 달성 시 3,000"
+              ],
+              [
+                "Warframes",
+                "200",
+                "30랭크 달성 시 6,000"
+              ],
+              [
+                "Companions (Sentinels 및 동물 동반자)",
+                "200",
+                "30랭크 달성 시 6,000"
+              ],
+              [
+                "Archwing",
+                "200",
+                "30랭크 달성 시 6,000"
+              ],
+              [
+                "Kuva / Tenet / Coda / Paracesis weapons (40랭크)",
+                "100",
+                "40랭크 달성 시 4,000"
+              ]
+            ],
+            "note": "Necramechs, Amps, K-Drives 및 Railjack Intrinsics도 mastery를 부여합니다. 모든 Star Chart node, junction, 그리고 해당 지역의 Steel Path 버전 역시 처음 클리어할 때 일회성 mastery를 대량으로 제공합니다."
+          }
+        },
+        {
+          "type": "tip",
+          "text": "**Star Chart 자체만으로도 엄청난 양의 무료 mastery를 얻을 수 있습니다.** 모든 node를 한 번씩 클리어하고(일반 및 [Steel Path](/guides/steel-path)) 모든 junction까지 완료하면, 많은 플레이어들이 간과하는 거대한 양의 mastery를 확보할 수 있습니다. [드롭 위치 지도](/star-chart-3d)를 사용하여 아직 완료하지 않은 곳이 어디인지 확인해 보세요."
+        },
+        {
+          "type": "p",
+          "text": "mastery는 item당 단 한 번만 획득할 수 있기 때문에, 베테랑들은 순전히 30랭크를 찍고 버릴 목적으로 저렴한 'mastery fodder' weapon들을 제작합니다. 게임에는 수백 개의 weapon과 수십 개의 frame이 있으므로, 이를 모두 소유하기 훨씬 전에 MR30을 넘어서게 될 것입니다."
+        }
+      ]
+    },
+    {
+      "id": "affinity-101",
+      "title": "Affinity 기초: 레벨업 작동 방식",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Affinity는 XP(경험치)입니다.** 장비를 0에서 30랭크까지 올리는 데 사용되며, **처치**(및 어시스트)와 **미션 목표/완료**라는 두 가지 방식으로 획득합니다. 이 affinity가 Warframe과 세 개의 weapon 사이에 어떻게 분배되는지 이해하는 것이 빠른 레벨업을 위한 가장 중요한 핵심입니다."
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "자신의 weapon으로 처치 시",
+              "v": "처치한 weapon에 50%, 자신의 Warframe에 50%"
+            },
+            {
+              "k": "자신의 어빌리티로 처치 시",
+              "v": "사실상 모든 affinity가 Warframe으로 흡수됨"
+            },
+            {
+              "k": "분대원의 처치 (범위 내)",
+              "v": "공유 획득: 자신의 Warframe에 25%, 장착한 weapons에 75%가 균등하게 분배됨 — 따라서 총을 한 번도 쏘지 않아도 레벨이 올라갑니다"
+            },
+            {
+              "k": "affinity 공유 범위",
+              "v": "일반 미션에서는 50 meters — 전투 지역 근처에 머무르지 않으면 아무것도 얻지 못합니다 (오픈 월드/Landscape 맵에서는 훨씬 더 넓은 범위가 적용됩니다)"
+            },
+            {
+              "k": "Affinity Booster",
+              "v": "획득하는 모든 affinity가 두 배로 증가 (더블 affinity 주말 이벤트와 중첩 가능)"
+            }
+          ]
+        },
+        {
+          "type": "p",
+          "text": "위 표에서 두 가지 실용적인 결론을 얻을 수 있습니다. **weapon을 레벨업하려면**, 직접 사격하여 처치하거나, 50m 이내에 머물면서 방 전체를 쓸어버리는 분대원의 공유 affinity를 받으세요. **Warframe을 빠르게 레벨업하려면**, **어빌리티 처치**를 달성하세요 — 분대원의 공유 처치로 얻는 affinity는 25%에 불과하지만, 어빌리티 처치는 affinity의 100%를 frame에 직접 쏟아붓습니다. 그리고 레벨업을 진행할 때 **이미 최대 랭크를 달성한 weapon들을 들고 다니지 마세요**: 최대 랭크 장비에 들어가는 affinity는 낭비되므로, 해당 슬롯을 함께 랭크업하고 싶은 미랭크 weapon들로 채우는 것이 좋습니다."
+        },
+        {
+          "type": "warn",
+          "text": "Defense 및 Survival 미션에서 적이 죽는 위치로부터 50m 이상 벗어나면 공유 affinity를 **전혀** 얻지 못합니다. 레벨업을 할 때는 목표물이나 버스를 태워주는 플레이어에게 꼭 붙어 있으세요."
+        }
+      ]
+    },
+    {
+      "id": "fast-leveling",
+      "title": "가장 빠른 레벨업 방법 (affinity 파밍)",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "가장 좋은 레벨업 미션은 좁은 구역에 적이 밀집되어 스폰되므로, 가져온 모든 장비에 공유 affinity가 쏟아집니다. 레벨업하고 싶은 장비를 챙겨 공방 분대에 합류하거나(또는 강력한 친구와 함께) 적들을 처치하게 두세요."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "방법",
+              "추천 대상",
+              "참고 사항"
+            ],
+            "rows": [
+              [
+                "Sanctuary Onslaught / Elite SO",
+                "빠르고 밀집된 XP 획득",
+                "Cephalon Simaris를 통해 진행, 이미 어느 정도 모딩이 완료된 장비는 ESO 권장"
+              ],
+              [
+                "고밀도 Defense (예: Sedna의 Hydron, Saturn의 Helene)",
+                "편안하고 반잠수(AFK)가 가능한 레벨업",
+                "오랫동안 커뮤니티에서 사랑받아 온 곳 — 광역 딜러 frame을 가져오거나 해당 분대에 합류하세요"
+              ],
+              [
+                "Void Fissures",
+                "레벨업 + 전리품 획득을 동시에",
+                "성유물을 개방하면서 XP까지 챙기는 일석이조 — Relic Farming 도구를 참조하세요"
+              ],
+              [
+                "Duviri Circuit",
+                "레벨업 + 보상",
+                "최신 옵션이며, 베테랑을 위해 난이도가 조절되는 Steel Path Circuit도 있습니다"
+              ],
+              [
+                "쉬운 Exterminate / Capture",
+                "MR fodder 장비",
+                "새로 제작한 일회용 weapon들을 빠르게 30랭크까지 올린 후 처분"
+              ]
+            ],
+            "note": "가장 좋은 '최적의 node'는 밸런스 패치와 이벤트에 따라 달라집니다. 현재 메타 픽은 라이브 위키나 최근 영상을 확인해 보세요."
+          }
+        },
+        {
+          "type": "p",
+          "text": "두 가지 배율 적용으로 모든 과정을 더 빠르게 만들 수 있습니다. 상점이나 Nightwave/로그인 보상으로 얻은 **Affinity Booster**를 활성화하고, **더블 affinity 주말**에 맞춰 파밍을 진행하세요 — 이 두 효과는 중첩되어 4× affinity를 제공합니다. [Void Fissures](/relic-farming) 내부에서 레벨업을 진행하는 것은 장비 랭크업과 프라임 부품 파밍을 동시에 할 수 있어 효율의 끝판왕입니다. 어떤 성유물을 개방할지 결정하려면 [성유물 가치 도구](/relics-value)를 사용해 보세요."
+        },
+        {
+          "type": "tip",
+          "text": "그룹 버스에 레벨업할 장비 풀 세트(frame + 3 weapons)를 장착하고 들어가면, 단 한 번의 세션 만에 **4개의 item**을 0에서 30랭크까지 올릴 수 있습니다. 이때 적을 쫓아다니기보다는 처치 범위 근처에서 가만히 대기하는 편이 좋습니다."
+        }
+      ]
+    },
+    {
+      "id": "rank-to-30-loop",
+      "title": "30랭크 달성 루프",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "효율적인 mastery 파밍은 간단하고 반복 가능한 루프입니다. 목표는 모든 고유 item을 정확히 한 번씩만 거쳐 가며 30랭크를 달성하고 미련 없이 넘어가는 것입니다."
+        },
+        {
+          "type": "steps",
+          "ordered": true,
+          "steps": [
+            {
+              "h": "설계도 구매 / item 제작",
+              "p": "상점에서 크레딧으로 weapon 설계도를 구매하세요. 대부분 가격이 저렴합니다. 로그아웃하기 전에 Foundry에서 제작을 시작해 두면(weapon은 보통 12 hours 정도 소요되며, Warframes는 부품 제작 시간까지 합치면 더 오래 걸립니다) 다음 세션에 바로 준비됩니다."
+            },
+            {
+              "h": "수령 및 슬롯 장착",
+              "p": "새로 제작된 item은 0랭크입니다. 이미 자신의 MR과 동일한 mod 용량으로 시작하므로, 랭크가 없는 장비라도 레벨업 런에 바로 사용할 수 있습니다."
+            },
+            {
+              "h": "한 번에 30랭크까지 레벨업",
+              "p": "affinity 파밍 장소(Onslaught, Defense node, 또는 Fissure)로 가져가세요. 30랭크가 되면 weapon은 3,000, frame은 6,000의 전체 mastery를 획득하게 됩니다."
+            },
+            {
+              "h": "저장 및 슬롯 재활용",
+              "p": "최대 랭크를 달성하면 해당 mastery는 영구적으로 귀하의 것이 됩니다. 슬롯을 확보하기 위해 mastery-fodder weapon들을 판매하고 다음 장비를 제작하세요. 마음에 드는 장비는 소장하셔도 좋습니다."
+            },
+            {
+              "h": "Mastery를 위해 재레벨업하지 마세요",
+              "p": "Forma를 추가하면 극성 슬롯을 위해 item이 0랭크로 초기화됩니다. 빌드를 짜는 데는 훌륭하지만, 추가 mastery는 전혀 제공하지 않습니다. MR을 올리기 위해서가 아니라, 커스터마이징 중인 장비만 재레벨업하세요."
+            }
+          ]
+        },
+        {
+          "type": "info",
+          "text": "정확히 어떤 것이 누락되었는지 확인하고 싶으신가요? [커뮤니티 도구 디렉터리](/tools)에 링크된 커뮤니티 mastery 트래커 및 체크리스트를 사용하면 모든 weapon과 frame을 체크할 수 있어, 이미 마스터한 장비를 중복으로 제작하는 일을 방지할 수 있습니다."
+        }
+      ]
+    },
+    {
+      "id": "mr-tests",
+      "title": "MR 테스트 및 준비 방법",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "충분한 mastery를 획득하면 다음 랭크를 *활성화*할 수 있지만, 실제로 랭크를 획득하려면 **Mastery Rank 테스트를 통과**해야 합니다. 각 랭크마다 시간 제한 파쿠르, 스텔스 처치, 압박 속에서 콘솔 해킹하기, 피해를 입지 않고 적 웨이브 처치하기 등 고유한 테스트가 존재합니다. 랭크가 올라갈수록 난이도도 상승합니다."
+        },
+        {
+          "type": "steps",
+          "ordered": true,
+          "steps": [
+            {
+              "h": "Cephalon Simaris에서 무료로 연습하기",
+              "p": "모든 Relay에는 Cephalon Simaris가 있으며, 대기 시간이나 페널티 없이 원하는 만큼 **실제 테스트와 동일한 연습**을 해볼 수 있습니다. 항상 먼저 연습해 보세요."
+            },
+            {
+              "h": "준비가 되면 실제 테스트 치르기",
+              "p": "충분한 mastery가 쌓이면 랭크업 알림이 나타납니다 (Orbiter 또는 프로필에서 확인 가능). 연습을 통해 자신감이 생기면 도전해 보세요."
+            },
+            {
+              "h": "실패할 경우 하루 정도 대기",
+              "p": "실패하더라도 실제 테스트에 다시 도전하기까지 대략 **24-hour cooldown**이 발생하는 것 외에는 아무런 페널티가 없습니다. 대기 시간 동안에도 연습은 제한 없이 계속할 수 있습니다."
+            }
+          ]
+        },
+        {
+          "type": "warn",
+          "text": "24시간 대기 제한이 유일한 걸림돌이므로, **절대 사전 준비 없이 테스트에 도전하지 마세요.** Simaris에서 안정적으로 통과할 수 있을 때까지 연습한 뒤 실제 테스트를 치르세요. 많은 테스트가 기동성이 뛰어난 frame(Volt, Titania, Wisp, Zephyr)이나 좋은 이동 속도 빌드를 사용하면 매우 쉬워집니다."
+        },
+        {
+          "type": "tip",
+          "text": "이동이나 '무피해' 테스트에서 막히셨나요? 속도, 은신 또는 피해 면역 능력을 가진 frame을 가져가면 답답했던 테스트가 아주 간단해질 수 있습니다. 특정 랭크에서 어려움을 겪고 있다면 최근 해당 테스트 공략 영상을 확인해 보세요."
+        }
+      ]
+    },
+    {
+      "id": "should-you-chase",
+      "title": "MR을 쫓아야 할까요? 현명한 기준점",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "MR을 억지로 *파밍*할 필요는 없습니다 — [진행 로드맵](/guides/progression)을 따라 장비를 제작하고 Star Chart를 클리어하다 보면 자연스럽게 누적됩니다. 하지만 제작한 모든 것을 (그냥 버리지 않고) 레벨업하는 것은 거의 항상 가치가 있습니다. MR이 장비 해금, standing, 거래 횟수, 시작 용량 등에서 보이지 않는 혜택을 주기 때문입니다."
+        },
+        {
+          "type": "list",
+          "items": [
+            "**제작한 것은 반드시 레벨업하세요.** 모든 frame, weapon, companion은 무료 mastery의 원천입니다. 판매하거나 Forma를 적용하기 전에 각각 한 번씩 30랭크까지 올리세요.",
+            "**전체 Star Chart를 두 번 클리어하세요.** 일반 node, junction, 그리고 [Steel Path](/guides/steel-path) node는 대부분의 플레이어가 놓치고 지나가는 거대한 일회성 mastery 획득처입니다.",
+            "**장비 기준점을 주시하세요.** 가장 강력한 weapon 중 일부는 MR 요구 사항이 있으므로, 몇 단계만 더 올리면 실제로 원하는 메타 장비를 해금할 수 있습니다.",
+            "**standing을 파밍 중이라면 MR을 최우선으로 두세요.** Focus, arcanes 또는 syndicates를 본격적으로 파밍하고 있다면, 일일 한도가 높아질수록 각 랭크의 가치가 빠르게 체감됩니다."
+          ]
+        },
+        {
+          "type": "quote",
+          "text": "MR은 극복해야 할 장벽이 아니라 게임 전체를 탐험한 것에 대한 보상입니다. 폭넓게 플레이하고, 모든 장비를 한 번씩 레벨업하다 보면 'mastery 파밍'을 억지로 하지 않고도 어느새 MR20에 도달해 있을 것입니다.",
+          "cite": "흔한 r/Warframe 베테랑들의 조언"
+        },
+        {
+          "type": "p",
+          "text": "한 가지 주의할 점: 고난도 콘텐츠에 약한 weapon들을 억지로 들이밀면서까지 *단순히* 숫자를 채우기 위해 MR을 올리지는 마세요. 계정을 자연스럽게 성장시키고, 마음에 드는 장비의 모딩을 탄탄히 유지하며, MR은 자신이 Warframe을 얼마나 많이 경험했는지를 보여주는 점수판으로 여기세요."
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Warframe에서 Mastery Rank를 올리는 방법은 무엇인가요?",
+      "a": "새로운 장비를 처음으로 0에서 30랭크까지 올리고(weapons는 3,000, frames 및 companions는 6,000 제공), Star Chart node와 junction을 클리어하여 mastery를 획득하세요. 충분히 누적되면 해당 랭크의 Mastery Rank 테스트를 통과하여 확정할 수 있습니다. 각 고유 item은 단 한 번만 반영되며, Forma를 사용한 재레벨업은 추가 mastery를 제공하지 않습니다."
+    },
+    {
+      "q": "Mastery Rank의 실제 역할은 무엇인가요?",
+      "a": "MR은 특정 weapons 및 장비에 랭크 제한을 걸어두는 역할을 하며, 여러 일일 한도를 늘려줍니다: syndicate standing 한도(랭크마다 상승), 일일 거래 횟수(자신의 MR과 동일), 그리고 랭크가 없는 장비의 시작 mod 용량입니다. MR이 높다고 해서 공격력이 강해지지는 않습니다 — 생존력과 피해량은 MR이 아니라 mods와 arcanes에서 나옵니다."
+    },
+    {
+      "q": "Affinity를 파밍하고 레벨업하는 가장 빠른 방법은 무엇인가요?",
+      "a": "레벨업하려는 장비를 Sanctuary Onslaught, Hydron이나 Helene 같은 고밀도 Defense node, 또는 Void Fissure와 같은 밀집된 affinity 파밍 장소로 가져가고, 처치 범위 50m 이내에 머물러 공유 affinity를 흡수하세요. Affinity Booster를 사용하고, 이상적으로는 더블 affinity 주말 이벤트를 활용하여 최대 4×의 획득량을 노려보세요. [Void Fissures](/relic-farming) 내에서 레벨업을 진행하면 장비 랭크업과 프라임 부품 파밍을 동시에 할 수 있습니다."
+    },
+    {
+      "q": "Forma를 추가하거나 weapon을 재레벨업하면 mastery를 더 주나요?",
+      "a": "아닙니다. 각 item은 처음 30랭크에 도달했을 때 단 한 번만 mastery를 부여합니다. Forma는 더 나은 빌드를 위해 극성 슬롯을 추가할 수 있도록 item을 0랭크로 초기화하지만, 재레벨업을 하더라도 추가 mastery는 전혀 얻을 수 없습니다. MR을 올리기 위해서가 아니라, 장비를 커스터마이징할 때만 재레벨업을 진행하세요."
+    },
+    {
+      "q": "분대 내에서 affinity 공유는 어떻게 작동하나요?",
+      "a": "분대원이 약 50 meters 이내에서 적을 처치하면 해당 affinity의 일부를 공유받게 됩니다 — 25%는 자신의 Warframe으로, 75%는 장착한 weapons에 균등하게 분배됩니다. 광역 딜러를 따라다니면 총을 한 번도 쏘지 않아도 레벨이 오르는 이유가 바로 이 때문입니다. 50m 범위를 벗어나면 아무것도 얻지 못합니다. (자신의 weapon으로 처치 시 분배 방식은 다릅니다: weapon에 50%, Warframe에 50%.)"
+    },
+    {
+      "q": "Mastery Rank 테스트에서 실패하면 어떻게 되나요?",
+      "a": "실제 테스트에 다시 도전하기까지 대략 24시간을 대기해야 하는 것 외에는 아무 일도 일어나지 않으며, XP 손실이나 다른 페널티도 없습니다. 먼저 아무 Relay에 있는 Cephalon Simaris에서 실제 테스트와 동일한 연습을 횟수 제한 없이 무료로 진행해 보고, 안정적으로 통과할 수 있을 때 실제 테스트에 도전하세요."
+    },
+    {
+      "q": "최대 Mastery Rank가 존재하나요?",
+      "a": "MR30은 숫자로 표시되는 최고 랭크입니다. 그 이후에도 DE가 지속적으로 추가하는 Legendary Ranks (LR1, LR2 이상)를 향해 계속해서 mastery를 쌓을 수 있습니다. MR30에 도달하기 위해 모든 item을 소유할 필요는 없습니다 — 해당 랭크를 달성하는 데 필요한 것보다 훨씬 많은 weapons와 frames가 존재합니다."
+    },
+    {
+      "q": "신규 플레이어로서 Mastery Rank를 빠르게 올려야 하나요?",
+      "a": "과도하게 집착할 필요는 없습니다 — MR은 장비를 제작하고 Star Chart를 클리어하다 보면 자연스럽게 올라갑니다. 하지만 더 높은 MR은 더 강력한 weapons를 해금하고 일일 standing 및 거래 한도를 늘려주므로, 제작한 모든 장비를 한 번씩 30랭크까지 올리는 것은 충분히 가치 있는 일입니다. 먼저 탄탄한 장비 구성과 mods에 집중하세요. 랭크는 자연스럽게 따라올 것입니다."
+    }
+  ],
+  "videos": [
+    {
+      "id": "5B01ZDPCM_o",
+      "title": "Warframe How to get Mastery Rank FAST | Warframe Affinity and Mastery Rank Explained",
+      "channel": "CerealOverdrive"
+    },
+    {
+      "id": "J_6wVLRvTpE",
+      "title": "HOW TO FARM MASTERY RANK FAST IN 2025! WARFRAME BEST LEVELING AFFINITY SPOTS",
+      "channel": "Pupsker"
+    },
+    {
+      "id": "eTI-zSoH6FE",
+      "title": "How to Level up fast in Warframe -  Affinity farming Guide for all Players",
+      "channel": "QuadLyStop"
+    },
+    {
+      "id": "ecySSBRcCIo",
+      "title": "Warframe: FAST MASTERY RANK 2025!...",
+      "channel": "MHBlacky"
+    }
+  ],
+  "sources": [
+    {
+      "label": "r/Warframe — My Journey ends at MR25",
+      "href": "https://reddit.com/r/Warframe/comments/1uockj8/my_journey_ends_at_mr25/"
+    },
+    {
+      "label": "r/Warframe — Mastery Rank & Helminth motivation thread",
+      "href": "https://reddit.com/r/Warframe/comments/idu92w/i_like_the_idea_that_way_people_could_become/"
+    },
+    {
+      "label": "r/Warframe — Affinity farming discussion (Gian Point)",
+      "href": "https://reddit.com/r/Warframe/comments/m4fvff/gian_point_should_become_a_graveyard/"
+    },
+    {
+      "label": "Official Warframe Wiki",
+      "href": "https://wiki.warframe.com/"
+    }
+  ],
+  "related": [
+    {
+      "label": "진행 로드맵",
+      "to": "/guides/progression",
+      "icon": "map-marker-path",
+      "note": "전체적인 성장 과정에서 MR의 위치"
+    },
+    {
+      "label": "신규 플레이어 가이드",
+      "to": "/guides/new-player",
+      "icon": "rocket-launch",
+      "note": "초반 20시간을 올바르게 보내는 방법"
+    },
+    {
+      "label": "Syndicate Standing",
+      "to": "/guides/standing",
+      "icon": "handshake",
+      "note": "높은 MR = 더 큰 일일 한도"
+    },
+    {
+      "label": "Focus & Operator",
+      "to": "/guides/focus",
+      "icon": "eye-outline",
+      "note": "장비 레벨업이 Focus 획득으로 이어집니다"
+    },
+    {
+      "label": "Steel Path",
+      "to": "/guides/steel-path",
+      "icon": "skull-outline",
+      "note": "무료 mastery를 제공하는 두 번째 Star Chart"
+    },
+    {
+      "label": "커뮤니티 도구",
+      "to": "/tools",
+      "icon": "tools",
+      "note": "Mastery 트래커 및 체크리스트"
+    }
+  ],
+  "updated": "2026-07-18"
+}

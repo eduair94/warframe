@@ -1,0 +1,482 @@
+{
+  "slug": "progression",
+  "eyebrow": "ナレッジセンター · 進行状況",
+  "title": "Warframe 進行ロードマップ",
+  "lede": "Warframeは、ほとんど道標のない銀河にプレイヤーを放り込みます。これが骨子です。クエストを進め、Star Chartを完了し、Nightwaveをこなしましょう。そして、次の行動が常にわかる段階別のチェックリストも用意しました。",
+  "category": "start",
+  "readMins": 11,
+  "stats": [
+    {
+      "num": "3",
+      "label": "初期 Warframe",
+      "tone": "alt"
+    },
+    {
+      "num": "30",
+      "label": "基本 Mastery Rank",
+      "tone": "gold"
+    },
+    {
+      "num": "3",
+      "label": "オープンワールドゾーン",
+      "tone": "alt"
+    },
+    {
+      "num": "100%",
+      "label": "Steel Pathを解放するための Star Chart",
+      "tone": "good"
+    }
+  ],
+  "sections": [
+    {
+      "id": "start-here",
+      "title": "「今、何をすればいい？」に対する一言の答え",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Warframeは広大な銀河を差し出す一方で、道標をほとんど示しません。そのため、r/Warframeで最も多くの「いいね」を集めた進行に関する投稿の一つは、文字通り *「40時間プレイしたけど、自分が何をしているのかさっぱりわからない」* というタイトルになっています。しかし、良い知らせがあります。このゲームには骨子があり、それはシンプルです。**クエストを進め、Star Chartを完了し、Nightwaveをコツコツこなすこと**。それと並行して個人的な目標を1つ決めれば、あとは自然と道が開けます。"
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "コアループ",
+              "v": "クエスト → Star Chart → Nightwave ＋ 個人的な目標1つ"
+            },
+            {
+              "k": "最大の転換点",
+              "v": "クエスト「The Second Dream」（Operatorが解放されます）"
+            },
+            {
+              "k": "エンドゲームへの門",
+              "v": "Steel Pathを解放するために Star Chartをすべて完了する"
+            },
+            {
+              "k": "MR（Mastery Rank）の神話",
+              "v": "Mastery Rankは幅広さであり、強さではない"
+            }
+          ]
+        },
+        {
+          "type": "quote",
+          "text": "何をすべきか？ Star Chartの完了、クエスト、そしてNightwaveです。「この Warframeを手に入れる」といった個人的な目標が見つかれば、なお良いでしょう。クエストを進め続けてください。The Second Dream以降、すべてがうまく噛み合い始めます。",
+          "cite": "r/Warframe、ベテランから新規プレイヤーへのアドバイス"
+        },
+        {
+          "type": "p",
+          "text": "これがループのすべてです。以下は詳細になります。Star Chartの進行制限の仕組み、Mastery Rankの本当の役割、オープンワールドやSteel Pathに挑むべきタイミング、および**段階別のチェックリスト**です。始めたばかりですか？まずは [新規プレイヤーガイド](/guides/new-player) を読み、それからこのページをマップとして活用してください。"
+        }
+      ]
+    },
+    {
+      "id": "star-chart",
+      "title": "Star ChartとJunction：本当の進行状況バー",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Star ChartはOrigin Systemのマップであり、これこそがあなたの進行状況バー*そのもの*です。チュートリアルクエスト「**Vor's Prize**」の後に地球からスタートし、隣接するノードをクリアすることで新しいノードを開放していきます。惑星同士は**Junction**で繋がれており、タスクのチェックリストを完了するまでそのゲートは開きません。"
+        },
+        {
+          "type": "steps",
+          "ordered": true,
+          "steps": [
+            {
+              "h": "Junctionノードを開く",
+              "p": "Mastery Rankへの到達、特定のアイテムの製作、クエストの完了、特定の敵の撃破など、必要なタスクがリストアップされています。"
+            },
+            {
+              "h": "すべてのタスクをクリアする",
+              "p": "リストを100%完了させる必要があります。惑星で行き詰まったと感じたら、その先にあるJunctionを開いて、何が不足しているのかを正確に確認しましょう。"
+            },
+            {
+              "h": "Specterを倒す",
+              "p": "Junctionに入ると、WarframeのAIコピーであるSpecterが出現します。これを倒してゲートを解放しましょう。"
+            },
+            {
+              "h": "報酬を受け取る",
+              "p": "Junctionでは、Warframeのパーツ、武器、mod、素材など、本当に役立つ戦利品が手に入り、次の惑星が解放されます。"
+            }
+          ]
+        },
+        {
+          "type": "info",
+          "text": "**すべての惑星のすべてのノード**（およびすべてのJunction）を完了することが、Steel Pathを解放する条件です。また、道中で素材、mod、設計図を蓄えるための最善の方法でもあります。[Star Chartドロップマップ](/star-chart) または [3Dドロップマップ](/star-chart-3d) を使用して、どこで何がドロップするかを正確に確認してください。"
+        }
+      ]
+    },
+    {
+      "id": "quests",
+      "title": "クエストはストーリーであり、本当の進行状況",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Star Chartがマップなら、**メインクエストは道路**です。これらは、Archwing、Operator、Railjackなどのシステム全体を解放します。ゲームのナビゲーション画面には**おすすめの次のクエスト**がハイライトされるので、それに従ってください。クエストが残っている状態で目的もなくファームするのは避けましょう。なぜなら、クエストこそが最大のパワーとコンテンツの解放要素だからです。"
+        },
+        {
+          "type": "p",
+          "text": "大まかな流れは次の通りです：**Vor's Prize**（導入）→ 初期クエスト群 → **The Second Dream**（ゲーム最大の転換点。Operatorが解放されます）→ **The War Within** → シネマティックなクライマックスである **The New War** → 最新チャプター。DEがコンテンツを追加するにつれて正確な順序は変動するため、ゲーム内のおすすめクエストマーカーを信頼し、[クエスト順序完全ガイド](/guides/quests) でダブルチェックしてください。"
+        },
+        {
+          "type": "warn",
+          "text": "**The Second Dreamをスキップしないでください。** これはOperator、Focusスクール、Eidolon狩り、そして後半のコンテンツの大部分を制限しています。「エンドゲーム」を急ぐあまり、なぜシステムがロックされているのか疑問に思っているプレイヤーは、ほぼ間違いなく未完了のストーリークエストを放置しています。"
+        }
+      ]
+    },
+    {
+      "id": "mastery-rank",
+      "title": "Mastery Rank：その本当の役割（とそうでないもの）",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Mastery Rank（MR）は強さではありません。** これは、どれだけ多くの*異なる*装備をレベル30まで上げたかを測定するものです。新しいWarframe、武器、コンパニオン、Archwingを初めてランクアップさせる際、一度限りのマスタリーXPが付与されます。最大ランクの武器は約3,000マスタリー、Warframe、コンパニオン、Archwingは約6,000マスタリーに相当します。これは強さのステータスではなく、幅広さのステータスです。"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "MRが影響するもの",
+              "スケールの仕組み"
+            ],
+            "rows": [
+              [
+                "1日のシンジケート地位上限",
+                "Mastery Rankに応じて上昇します。MRが高いほど、1日に獲得できる地位上限が増えます。"
+              ],
+              [
+                "装備の初期 mod容量",
+                "MRと同じ（最大30）。ReactorやCatalystを使用すると2倍になります。"
+              ],
+              [
+                "1日の取引回数",
+                "MRと同じ"
+              ],
+              [
+                "装備と Rivenへのアクセス",
+                "一部の武器や Rivenは、装備するために最低限のMRが必要です。"
+              ],
+              [
+                "プレステージ",
+                "MR30が基本上限です。それを超えると、レジェンダリーランク（LR1以上、順次追加）になります。"
+              ]
+            ],
+            "note": "ランクアップするには、Mastery Rankテストに合格する必要があります（1日1回挑戦可能）。本番に挑む前に、リレーにいるCephalon Simarisのところで練習しておきましょう。"
+          }
+        },
+        {
+          "type": "tip",
+          "text": "序盤にMRを上げること自体を目的にするのは罠です。ファームや戦闘をしながら自然に装備のレベルを上げれば、MRは後からついてきます。あなたを本当に強くするのは、[Mod構築ガイド](/guides/mods) で解説している**ビルド**（mod、arcane、Forma）です。最速のレベル上げスポットについては、[Mastery Rankガイド](/guides/mastery-rank) を参照してください。"
+        }
+      ]
+    },
+    {
+      "id": "roadmap",
+      "title": "段階別ロードマップ",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "「今、何をすべきか」の率直なチェックリストです。MRの範囲は大まかな目安であり、厳密な制限ではありません。進行状況は数値ではなく、クエストと装備によって決まります。"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "ステージ",
+              "〜MR",
+              "今集中すべきこと",
+              "役立つツール"
+            ],
+            "rows": [
+              [
+                "基礎固め",
+                "0–5",
+                "Vor's Prizeを完了し、クエストを進め、新しい惑星へのJunctionをクリアします。入手しやすい2体目のフレームをファームしましょう（Rhinoは金星のボスからドロップします）。mod構築の基本（Vitality、Serrationなど）を学びましょう。",
+                "新規プレイヤー、Modsガイド"
+              ],
+              [
+                "軌道に乗る",
+                "5–10",
+                "Star Chartを外側へと広げ、The Second Dreamを完了してOperatorを解放し、クランに加入して研究装備を入手し、最初の Primeセットのためにレリックを開け始めましょう。取引でプラチナを稼ぎ始めます。",
+                "レリックの価値、プラチナガイド"
+              ],
+              [
+                "可能性を広げる",
+                "10–16",
+                "Star Chartを完了し、The New Warを進め、オープンワールドに本格的に取り組み（Ampを製作し、Eidolonに挑戦）、Helminthを開始します。Kuva Lichやarcaneをファームしましょう。",
+                "レリックファーム、Kuvaガイド"
+              ],
+              [
+                "ベテラン / エンドゲーム",
+                "16–30+",
+                "Steel Pathをグラインドし、Archon Shardをファームし、Formaとarcaneでビルドを極限まで高め、Railjackやエンドゲームミッションをこなし、MR30やレジェンダリーランクを目指してコレクションを集めましょう。",
+                "Steel Path、ポートフォリオ"
+              ]
+            ],
+            "note": "気分転換をしたいですか？ The Duviri Paradoxは早い段階からプレイ可能で、その週替わりのサーキットは Warframeや武器を獲得するもう一つの方法です。Duviriガイドを参照してください。"
+          }
+        },
+        {
+          "type": "links",
+          "links": [
+            {
+              "label": "新規プレイヤーガイド",
+              "to": "/guides/new-player",
+              "icon": "rocket-launch"
+            },
+            {
+              "label": "レリックの価値：開けるか売るか",
+              "to": "/relics-value",
+              "icon": "diamond-stone"
+            },
+            {
+              "label": "Helminthガイド",
+              "to": "/guides/helminth",
+              "icon": "dna"
+            },
+            {
+              "label": "Duviriガイド",
+              "to": "/guides/duviri",
+              "icon": "sword"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "open-worlds",
+      "title": "オープンワールドに挑むタイミング",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Warframeには3つのオープンワールドエリアがあり、それぞれに独自のシンジケート、素材、釣り、採掘、依頼（バウンティ）が存在します。地位やmodのために早い段階で訪れることも*可能*ですが、それぞれが「真の」見返りをもたらすのはゲーム中盤以降になります。"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "エリア",
+              "惑星 · ハブ",
+              "主な目的",
+              "推奨される挑戦時期"
+            ],
+            "rows": [
+              [
+                "Plains of Eidolon",
+                "地球 · Cetus",
+                "依頼、採掘/釣り、および夜間の Eidolon狩り",
+                "地位のために早めに訪れる。Eidolon狩りは Operatorと Ampを手に入れてから"
+              ],
+              [
+                "Orb Vallis",
+                "金星 · Fortuna",
+                "本格的な Ampの製作（Vox Solaris）、Profit-Taker & Exploiter Orb、K-Driveレース",
+                "ゲーム中盤 — Ampと Operatorの力が揃う頃"
+              ],
+              [
+                "Cambion Drift",
+                "Deimos · Necralisk",
+                "Necramech、隔離庫からの arcane、感染体ペット",
+                "クエスト「Heart of Deimos」完了後。ゲーム中盤から終盤"
+              ]
+            ],
+            "note": "Ampと Operatorは共通する要素です。Plainsでの Eidolon狩りにはこれらが必要であり、最初の本格的な Ampは Fortunaで製作します。最初の狩りに挑む前に、Eidolonガイドを確認してください。"
+          }
+        },
+        {
+          "type": "p",
+          "text": "要するに、外装、mod、シンジケート地位のために早い段階で各エリアに立ち寄るのは構いませんが、**Eidolonや Orbボスはゲーム開始初日のアクティビティではなく、中盤のマイルストーン**として捉えてください。詳細は [Eidolonガイド](/guides/eidolon) で解説しています。"
+        }
+      ]
+    },
+    {
+      "id": "steel-path",
+      "title": "Steel Path：ハードモードのエンドゲーム",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Steel Path**はWarframeのハードモードです。敵のレベルが約100高い状態からスタートし、ヘルス、シールド、装甲が大幅に強化された状態で、Star Chart全体を再走します。すべての惑星のすべての通常ノードとJunctionを完了した後にのみ解放されます。"
+        },
+        {
+          "type": "p",
+          "text": "報酬は、出現するAcolyteからドロップする**Steel Essence**として手に入り、これをTeshinのところでKuva、Rivenの破片、Umbra Forma、arcane、外装品と交換できます。また、各ノードの初回クリア時にもボーナスが支払われます。Steel Pathは、週替わりのArchon討伐戦やエンドゲームミッションと並び、ベテランのグラインドの骨格となっています。"
+        },
+        {
+          "type": "warn",
+          "text": "**解放されたその日にSteel Pathへ急いで突入しないでください。** しっかりとmodを装着した、十分な生存能力（シールドゲートや本物のタンクビルド）を持つフレームと武器、そしていくつかのarcaneが必要です。ビルドが不十分な状態で挑むと、手痛い洗礼を受けることになります。チェックボックスを埋める作業ではなく、一つの目標として捉えてください。完全な攻略法は [Steel Pathガイド](/guides/steel-path) に掲載されています。"
+        }
+      ]
+    },
+    {
+      "id": "routine",
+      "title": "常にやっておくべきことのチェックリスト",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "メインルートと並行して、いくつかのリピータブルなシステムが、あなたのアカウントを静かに前進させてくれます。これらに定期的に触れておけば、行き詰まることはありません。"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "**Nightwave** — 定期的に切り替わるシーズンチャレンジ。週替わりおよび日替わりのアクトをクリアすると、Nitain Extract、Forma、auraおよびexilus mod、Kuva、そして入手困難なアイテムと交換できるWolf Credが手に入ります。毎週、まずはこれらをこなしましょう。",
+            "**シンジケート地位** — 主要なシンジケートをいくつか選び、日々の地位（MRによって上限あり）をmod、arcane、設計図と交換しましょう。[地位ガイド](/guides/standing) を参照してください。",
+            "**Sortie** — The War Withinを完了すると、Riven mod、Kuva、endoが手に入る日替わりの3ミッションからなるSortieが解放されます。",
+            "**Baro Ki'Teer** — 2週間ごとにリレーを訪れるVoid商人。珍しい装備を持ってきます。余った Primeパーツからデュカットを蓄えておきましょう。[デュカット計算機](/ducats) で、どのパーツが最も効率よく換金できるかを確認できます。",
+            "**個人的な目標** — 現在アクティブにファームしているWarframeや武器を1つ決めること。Redditでの意見は一致しています。目標を持つことが、グラインドを楽しく保つ秘訣です。"
+          ]
+        },
+        {
+          "type": "links",
+          "links": [
+            {
+              "label": "レリックの価値：開けるか売るか",
+              "to": "/relics-value",
+              "icon": "diamond-stone",
+              "note": "レリックあたりの期待プラチナ額"
+            },
+            {
+              "label": "1ランあたりの最適なレリック",
+              "to": "/relic-farming",
+              "icon": "run-fast"
+            },
+            {
+              "label": "フリップファインダー",
+              "to": "/flip",
+              "icon": "swap-horizontal",
+              "note": "買い注文（Buy-bid）と売り注文（Sell-ask）のスプレッド"
+            },
+            {
+              "label": "Baro用のデュカット",
+              "to": "/ducats",
+              "icon": "cash"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mistakes",
+      "title": "進行におけるよくある間違い",
+      "blocks": [
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "**ビルドを組む代わりにMRを追い求めること。** ランクの数値が戦闘に勝たせてくれるわけではありません。mod、Forma、arcaneこそが勝利をもたらします。装備のレベルを自然に上げれば、MRは後からついてきます。",
+            "**おすすめクエストをスキップすること。** システムがロックされている原因は、バグではなく、ほぼ間違いなく未完了のストーリークエストです。ナビゲーションのマーカーに従ってください。",
+            "**最初のプラチナを貯め込むこと。** 序盤のプラチナは **Warframe/武器スロット** やReactor/Catalystに使いましょう。ファームして入手できるフレームに使うのは絶対に避けてください。[プラチナガイド](/guides/platinum) では、無料でプラチナを稼ぐ方法を解説しています。",
+            "**装備が不十分な状態でSteel PathやEidolonに急いで挑むこと。** どちらも中途半端なビルドには容赦ありません。まずは Star Chartを完了し、生存能力を高めるmodを装着しましょう。",
+            "**HelminthやFormaを無視すること。** 中盤のパワーは、[アビリティの注入](/guides/helminth) やFormaによる装備の極性付与から得られます。これらをいつまでも「後回し」にしないでください。"
+          ]
+        }
+      ]
+    }
+  ],
+  "videos": [
+    {
+      "id": "pjVBhMdoTo8",
+      "title": "How To Start (Or Return To) WARFRAME the RIGHT WAY! 2025",
+      "channel": "iFlynn"
+    },
+    {
+      "id": "nF1fHE646xk",
+      "title": "ULTIMATE Beginner's Guide to Warframe (Getting Started)",
+      "channel": "DrybearGamers"
+    },
+    {
+      "id": "4s9pwZiFv0E",
+      "title": "Warframe Beginner Guide 2025: How to Start Endgame",
+      "channel": "Tipsy"
+    },
+    {
+      "id": "7eVOft8UQm8",
+      "title": "10 Tips For NEW Warframe Players In 2025",
+      "channel": "KeesieOilcorner"
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Warframeで何をすればいいですか？迷子になりました。",
+      "a": "ナビゲーションでハイライトされているクエストを進め、Junctionを通じて惑星ごとに Star Chartを完了し、Nightwaveをコツコツこなしましょう。楽しさを保つために、欲しい Warframeなど、個人的な目標を1つ決めてください。The Second Dreamのあたりで、ほぼすべての要素がうまく噛み合い始めます。まずは [新規プレイヤーガイド](/guides/new-player) と [クエスト順序ガイド](/guides/quests) から始めましょう。"
+    },
+    {
+      "q": "Star Chartをすべて完了する必要がありますか？",
+      "a": "カジュアルにプレイするだけであればすべてのノードをクリアする必要はありませんが、Steel Pathを解放するためには必要です。また、全クリアは素材、mod、設計図を集めるための最善の方法でもあります。各惑星はJunctionを通じて次の惑星を制限しているため、進行するだけで大部分をクリアすることになります。[Star Chartドロップマップ](/star-chart) で、各ノードに何があるかを確認できます。"
+    },
+    {
+      "q": "Mastery Rankは強さに繋がりますか？",
+      "a": "いいえ。Mastery Rankは、どれだけ多くの異なる装備のレベルを上げたかを測定するものであり、強さを示すものではありません。1日の地位上限や取引制限、初期 mod容量を引き上げ、MR制限のある武器を解放しますが、戦闘に勝つために重要なのはビルド（mod、arcane、Forma）です。[Mastery Rankガイド](/guides/mastery-rank) と [Mod構築ガイド](/guides/mods) を参照してください。"
+    },
+    {
+      "q": "Steel Pathはいつ始めるべきですか？",
+      "a": "通常の Star Chartを完了し、しっかりmodを装着した、十分な生存能力（シールドゲートやタンクビルド）を持つフレームと武器を用意してからです。低いMRで急いで挑むような難易度ではありません。中盤から終盤にかけての目標として捉えてください。[Steel Pathガイド](/guides/steel-path) で、解放方法とスムーズな導入について解説しています。"
+    },
+    {
+      "q": "Operatorはどのように解放しますか？",
+      "a": "クエスト「The Second Dream」を完了してください。これは Star Chartと初期のクエストを進めることでプレイ可能になります。ゲーム最大の転換点であり、Eidolon、Focus、そして後半の膨大なコンテンツを制限しています。[クエスト順序ガイド](/guides/quests) で、到達方法を確認できます。"
+    },
+    {
+      "q": "オープンワールド（Plains、Fortuna、Deimos）はいつプレイできますか？",
+      "a": "シンジケート地位やmodのために早い段階で訪れることは可能ですが、最も見返りが大きくなるのはゲーム中盤です。Plains of Eidolonでの Eidolon狩りには Operatorと Ampが必要であり、Fortunaの Orb Vallisは最初の本格的な Ampを製作する場所です。[Eidolonガイド](/guides/eidolon) を参照してください。"
+    },
+    {
+      "q": "次の惑星に行けないのはなぜですか？",
+      "a": "その惑星へのJunctionに、未完了のタスクが残っています。Junctionノードを開いてチェックリストを確認してください。Mastery Rank、製作アイテム、特定のクエスト、または一定数の撃破が求められている場合があります。それらをすべて完了し、Specterを倒せば惑星が解放されます。[Star Chartマップ](/star-chart) を使ってルートを計画しましょう。"
+    },
+    {
+      "q": "スロットや装備を購入するためのプラチナはどのように稼ぎますか？",
+      "a": "開けたレリックから得た Primeパーツを取引する、重複したmodやarcaneを売る、市場のスプレッドを利用して転売するなどの方法があります。最初のプラチナは、Warframeや武器のスロット、およびReactor/Catalystに使いましょう。ファームして入手できるフレームに使うのは絶対に避けてください。[プラチナガイド](/guides/platinum)、[レリック価値ツール](/relics-value)、[フリップファインダー](/flip) を活用してください。"
+    }
+  ],
+  "sources": [
+    {
+      "label": "r/Warframe: \"40 hours in and I have no idea what I'm doing\"",
+      "href": "https://reddit.com/r/Warframe/comments/1dpm3qo/40_hours_in_and_i_have_no_idea_what_im_doing_why/"
+    },
+    {
+      "label": "r/Warframe: where to find Warframes as you progress the Star Chart",
+      "href": "https://reddit.com/r/Warframe/comments/1snd77m/for_new_tenno_heres_a_guide_to_help_you_where_to/"
+    },
+    {
+      "label": "r/Warframe: My Journey ends at MR25",
+      "href": "https://reddit.com/r/Warframe/comments/1uockj8/my_journey_ends_at_mr25/"
+    },
+    {
+      "label": "Official Warframe Wiki",
+      "href": "https://wiki.warframe.com/"
+    }
+  ],
+  "related": [
+    {
+      "label": "新規プレイヤー向けスターターガイド",
+      "to": "/guides/new-player",
+      "icon": "rocket-launch",
+      "note": "最初の20時間"
+    },
+    {
+      "label": "Mastery Rankの解説",
+      "to": "/guides/mastery-rank",
+      "icon": "chevron-triple-up"
+    },
+    {
+      "label": "クエスト順序ガイド",
+      "to": "/guides/quests",
+      "icon": "book-open-variant"
+    },
+    {
+      "label": "Steel Pathガイド",
+      "to": "/guides/steel-path",
+      "icon": "skull"
+    },
+    {
+      "label": "プラチナ獲得ガイド",
+      "to": "/guides/platinum",
+      "icon": "diamond-stone"
+    },
+    {
+      "label": "Star Chartドロップマップ",
+      "to": "/star-chart",
+      "icon": "map"
+    }
+  ],
+  "updated": "2026-07-18"
+}

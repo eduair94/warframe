@@ -1,0 +1,424 @@
+{
+  "slug": "eidolon",
+  "eyebrow": "知识中心 · Eidolon 狩猎",
+  "title": "Eidolon 狩猎指南",
+  "lede": "Tridolon 是 Warframe 最初的终局仪式：三个高耸的 Sentient Boss，一个 50-minute 的夜晚窗口，以及一个依然能产出大量 Focus、arcanes 和 Operator 强度的刷取点。以下是如何从 Mote-Amp 梗玩家蜕变为自信的捕获者。",
+  "category": "endgame",
+  "readMins": 11,
+  "stats": [
+    {
+      "num": "3",
+      "label": "一次 Tridolon 中的 Eidolons",
+      "tone": "gold"
+    },
+    {
+      "num": "50",
+      "label": "每个周期中的夜晚分钟数",
+      "tone": "alt"
+    },
+    {
+      "num": "4–6",
+      "label": "每个 Eidolon 需要击碎的关节数",
+      "tone": "good"
+    },
+    {
+      "num": "2–3",
+      "label": "捕获所需的已充能 lures"
+    }
+  ],
+  "sections": [
+    {
+      "id": "what-is-a-tridolon",
+      "title": "什么是 Tridolon？",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "在 Cetus 外的 **Plains of Eidolon**，三个巨大的 Sentient Boss 仅在夜间生成：**Teralyst**、**Gantulyst** 和 **Hydrolyst**。在单次夜晚中击败所有这三个被称为 **Tridolon** —— 这是 Warframe 最初的终局考验，在严格的时间限制下融合了装备、Operator 操作和团队协作。"
+        },
+        {
+          "type": "p",
+          "text": "你不能只是射击这些家伙。每个 Eidolon 都包裹在普通武器无法触及的 **Sentient 能量护盾**中 —— 你需要用你的 **Operator 的 Amp** 来破盾，然后用高伤害武器击碎暴露的关节。掌握好节奏，Tridolon 就会成为游戏中极快的 [Focus](/guides/focus) 刷取方式之一，也是获取 [arcanes](/guides/arcanes) 和 Operator 升级的可靠来源。"
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "地点",
+              "v": "Plains of Eidolon (Cetus, 地球) — 开放世界区域"
+            },
+            {
+              "k": "时间",
+              "v": "仅限夜间。完整夜晚持续 50 minutes；白天持续 100"
+            },
+            {
+              "k": "这三个 Boss",
+              "v": "Teralyst (最简单) → Gantulyst → Hydrolyst (最难)"
+            },
+            {
+              "k": "为什么狩猎",
+              "v": "Focus、Warframe arcanes，以及用于 Amp/Operator 装备的 Sentient Cores"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "before-you-go",
+      "title": "出发之前：前置条件",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Eidolon 狩猎有一些剧情门槛。你不需要是老玩家，但你确实需要一个 Operator 和一把真正的 Amp —— 这不是一场你可以用你最喜欢的枪强行通关的战斗。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**进入 Plains 的权限** — 完成 *Saya's Vigil* 任务以解锁 Cetus 和 Plains（参见 [任务指南](/guides/quests)）。",
+            "**一个 Operator** — 完成 *The Second Dream* 以解锁你的 Operator，这是真正能对 Eidolon 护盾造成伤害的实体。",
+            "**完整的 Operator 能力** — 完成 *The War Within*。它会解锁完整的 Transference 以及访问 **Quills** 的权限 —— 既然那是你制作 Amp 的地方，这实际上是你进行第一次真正狩猎的必备条件。",
+            "**Quills** — 以你的 Operator 身份进入这个 Cetus 集团的洞穴；它出售 Amp 配件、Operator arcanes 和 Focus 透镜，用以兑换你通过上交狩猎本身掉落的 **Sentient Cores** 所获得的声望。"
+          ]
+        },
+        {
+          "type": "warn",
+          "text": "**不要**带着免费的 **Mote Amp** 加入队伍。这是新手猎人最常犯的错误，也是 r/Warframe 长期以来的梗来源 —— 它根本无法足够快地破除 Sentient 护盾以保证狩猎按计划进行。"
+        }
+      ]
+    },
+    {
+      "id": "your-amp",
+      "title": "你的 Amp 就是一切",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Amp** 是你 Operator 的武器，也是 Eidolon 装备中唯一最重要的一件。Amp 由三个部件组成 —— **Prism**、**Scaffold** 和 **Brace** —— 社区用对应这些部件的三个数字（如 `1-2-3`）来命名配置。你免费获得的初始 **Mote Amp** 实在太弱了；你的第一个真实目标就是替换它。"
+        },
+        {
+          "type": "p",
+          "text": "你在 Cetus 用 **Quills** 声望购买你的第一个 Amp 部件，声望是通过上交狩猎本身掉落的 **Sentient Cores** 获得的 —— 因此你的第一次捕获实际上是在为你下一次快速狩猎所需的 Amp 买单。更高等级的 Corpus Amp 部件来自 **Little Duck**（Fortuna 的 Vox Solaris），她的声望需要单独获取，主要通过在 Orb Vallis 上刷取的 **Toroids**。确切的“最佳”Amp 会随着平衡性补丁而变化，因此尽早制作一个坚实的中阶 Amp，并在追求主流选择之前查看当前的 Amp 指南或 [wiki](https://wiki.warframe.com/)。"
+        },
+        {
+          "type": "tip",
+          "text": "将你的 Amp 与 **Madurai** focus 学派搭配。它的被动技能可以提升 Amp 和 Void 伤害 —— 这正是你快速破盾所需要的。使用 [Focus](/guides/focus) 系统提升其等级，并在赚取声望时装备 Operator arcanes (Magus/Virtuos)。"
+        }
+      ]
+    },
+    {
+      "id": "meta-comp",
+      "title": "主流队伍阵容",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "经典的 4 人 Tridolon 队伍是围绕**角色**而非特定战甲构建的。你需要一个输出核心、一个能成倍增加该伤害的增益角色，以及能够维持能量和 Operator 存活的辅助。传统类型如下："
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "角色",
+              "战甲类型",
+              "带来的作用"
+            ],
+            "rows": [
+              [
+                "输出核心",
+                "Chroma",
+                "Vex Armor 极大地乘算武器伤害 —— 手持暴击狙击枪并负责击杀"
+              ],
+              [
+                "暴击 / 伤害增益",
+                "Volt 或 Harrow",
+                "Volt 的 Electric Shield 可以增强穿过它的射击；Harrow 的 Covenant 为全队提供暴击率"
+              ],
+              [
+                "能量与生存",
+                "Trinity",
+                "Energy Vampire + Blessing 保持队伍能量充沛并让 Operator 存活；通常也是 lure 的携带者"
+              ],
+              [
+                "弹性 / 实用工具",
+                "Rhino 或 Wisp",
+                "Rhino 的 Roar 或 Wisp 的 motes 提供额外的伤害、速度和增益，使队伍更加完善"
+              ]
+            ],
+            "note": "角色比具体的战甲更重要。任何堆叠了输出核心、伤害/暴击增益、能量和 lure 承伤者的阵容都可行 —— 参见 [强度排行](/guides/tier-list) 了解战甲强度。"
+          }
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "武器",
+              "v": "针对 Radiation + 暴击伤害配置的高暴击狙击枪（例如 Rubico Prime、Lanka）"
+            },
+            {
+              "k": "Operator",
+              "v": "一把真正的 Amp（绝不要 Mote Amp）加上 Madurai focus 学派"
+            },
+            {
+              "k": "Arcanes",
+              "v": "像 Magus Lockdown 和 Virtuos Shadow 这样的 Operator arcanes 可以优化破盾和射击的循环"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "the-kill-loop",
+      "title": "击杀循环：护盾、关节、捕获",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "每个 Eidolon 的消亡方式都是相同的。学会这个循环一次，它就可以从单刷 Teralyst 扩展到完整的 Hydrolyst："
+        },
+        {
+          "type": "steps",
+          "ordered": true,
+          "steps": [
+            {
+              "h": "破除护盾",
+              "p": "切换到你的 Operator，用你的 Amp 攻击 Eidolon 关节，直到其蓝色的 Sentient 护盾破裂。普通武器几乎无法对其造成伤害 —— 这正是 Amp 的用途。"
+            },
+            {
+              "h": "击碎关节",
+              "p": "Transference 回到你的 Warframe，并在护盾再生之前用你的狙击枪瞬间击碎暴露的关节。Teralyst 有 4 个关节；体型更大的 Gantulyst 和 Hydrolyst 各有 6 个 —— 对每一个关节重复破盾后射击的过程。"
+            },
+            {
+              "h": "使其跪地",
+              "p": "随着所有关节被摧毁，Eidolon 会跪下并暴露其核心。现在由你决定：捕获还是击杀。"
+            },
+            {
+              "h": "使用 lures 捕获",
+              "p": "如果你连接了足够数量的已充能 lures —— Teralyst 需要 2 个，Gantulyst 和 Hydrolyst 需要 3 个 —— 即可捕获它以获得全部奖励。捡起它掉落的 Eidolon Shard，并将其带到 Plains 上的祭坛（Shrine）以召唤下一档 Boss。"
+            },
+            {
+              "h": "逐级挑战",
+              "p": "Teralyst → Gantulyst → Hydrolyst，全部在 50-minute 的夜晚内完成。完成这三个就是一次 Tridolon。"
+            }
+          ]
+        },
+        {
+          "type": "info",
+          "text": "Eidolon 会惩罚粗心的操作：它们可以**适应并抵抗**你过度使用的伤害类型，并且每次关节击碎都会释放出消耗能量和护盾的**磁力脉冲**。Transference 到你的 Operator 并使用 **void dash** 来避开它，并保持你的伤害稳定且受控。完整的伤害类型详情请见 [wiki](https://wiki.warframe.com/)。"
+        }
+      ]
+    },
+    {
+      "id": "lures-and-vomvalysts",
+      "title": "Lures 与 Vomvalysts：捕获如何运作",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Lures** 是夜间在 Plains 上生成的无人机笼子。激活一个它就会跟随你；通过在附近击杀 **Vomvalysts**（漂浮的 Sentient 幽灵）来为其**充能**，直到 lure 发出蓝光而不是红光。你必须用你的 **Amp** 击杀能量形态下的 Vomvalysts，因为武器会直接穿过它们。将已充能的 lures 带到跪地的 Eidolon 身边，才能让你进行捕获，而不仅仅是击杀。"
+        },
+        {
+          "type": "tip",
+          "text": "**务必捕获，绝不只击杀。** 捕获 —— Teralyst 需要 2 个已充能 lures，Gantulyst 和 Hydrolyst 需要 3 个 —— 会提供额外的 Sentient Core，并有更高概率获得高阶核心和 arcanes。携带备用的已充能 lures，这样即使有一个死于 Vomvalyst 的火力，也不会让你失去整个捕获机会。"
+        }
+      ]
+    },
+    {
+      "id": "rewards",
+      "title": "你实际上在刷什么",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Tridolon 是游戏中最好的 **Focus** 刷取方式之一，也是 Warframe arcanes 和 Operator 装备的经典来源。以下是每种奖励的去处："
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "奖励",
+              "作用",
+              "去处"
+            ],
+            "rows": [
+              [
+                "Eidolon Shards (Brilliant / Radiant)",
+                "转化为大量的 Focus —— 每个数万点",
+                "培养你的 [Focus](/guides/focus) 学派；顶级的 focus 刷取方式"
+              ],
+              [
+                "Warframe Arcanes",
+                "决定配置强度的力量以及可交易的 platinum",
+                "装备它们或出售 —— 在 [筛选器](/screener) 上查询价格"
+              ],
+              [
+                "Sentient Cores (Intact → Radiant)",
+                "Quills 声望（Little Duck 使用 Toroids）",
+                "购买 Amp 部件、Operator arcanes 和 Focus 透镜"
+              ],
+              [
+                "捕获奖励",
+                "额外的核心 + 更好的掉落概率",
+                "仅在您使用已充能的 lures 进行捕获时获得"
+              ]
+            ]
+          }
+        },
+        {
+          "type": "info",
+          "text": "关于 arcane 市场的注意事项：在 DE 将以前的 Eidolon 专属 arcanes（如 Arcane Energize）加入其他获取来源后，它们的 [platinum](/guides/platinum) 价值已跌至远低于旧繁荣时期的价格。在出售前，请在 [筛选器](/screener) 或 [价格波动](/movers) 上查看实时数据 —— 但请记住，单是 Focus 和 Sentient Cores 就足以让这次狩猎不虚此行。"
+        }
+      ]
+    },
+    {
+      "id": "beginner-path",
+      "title": "新手路线：先单刷 Teralyst",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "直接带着 Mote Amp 加入公开的 3x3 Tridolon 是新猎人感到挫败的原因。相反，请按顺序提升："
+        },
+        {
+          "type": "steps",
+          "ordered": true,
+          "steps": [
+            {
+              "h": "完成前置条件",
+              "p": "完成 [Saya's Vigil](/guides/quests) 以获取 Plains 的进入权限，完成 The Second Dream 以解锁你的 Operator；The War Within 将解锁完整的 Operator 能力和 Quills 声望。"
+            },
+            {
+              "h": "制作一把真正的 Amp",
+              "p": "刷取 Quills 声望（上交 Sentient Cores）并购买合适的 Amp 部件。一旦可以，立刻淘汰 Mote Amp —— 它破盾的速度太慢，起不到作用。"
+            },
+            {
+              "h": "单刷 Teralyst",
+              "p": "Teralyst 是最弱的 Eidolon，适合独自安全地学习。在没有队伍压力和时间限制压力的情况下，练习破盾-射击-重复的循环。"
+            },
+            {
+              "h": "携带并为 lures 充能",
+              "p": "捕获你单刷的 Teralyst 以获得全部奖励 —— 这也会在您尝试 Gantulyst 和 Hydrolyst 之前，教会您如何管理 lure 和 Vomvalyst。"
+            },
+            {
+              "h": "晋升到 Tridolon",
+              "p": "一旦单刷 Teralyst 驾轻就熟，就可以使用招募频道或公开匹配来进行完整的 Chroma/Volt/Trinity/Harrow Tridolon 狩猎。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "timing-and-squads",
+      "title": "把握夜晚时间与寻找队伍",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Eidolon 仅在 Plains 的 **50-minute 夜晚**期间出现。在黄昏*之前*于 Cetus 做好准备，这样你就不会在赶路时浪费时间窗口 —— 熟练的队伍在远少于一个夜晚的时间内就能完成一次完整的 Tridolon，但第一次尝试会消耗掉大部分时间。不确定什么时候入夜？社区周期追踪器（链接自我们的 [工具目录](/tools)）会显示确切的倒计时。"
+        },
+        {
+          "type": "p",
+          "text": "寻找队伍确实比以前更难了 —— 正如回归玩家所注意到的，在 arcane 市场崩溃后，狩猎圈子变小了。你最好的选择是**招募频道**、中继站枢纽和专门的 Discord 服务器；寻找“Tricap”或“Tridolon”队伍，或者干脆单刷 Teralyst 直直到你找到队友。这现在是一个小众的终局玩法，但奖励丰厚 —— 并且是少数能显著提升你 Operator 实力的刷取方式之一。"
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "在狩猎 Eidolons 之前我需要准备什么？",
+      "a": "你需要通过 [Saya's Vigil](/guides/quests) 获得 Plains 的进入权限，以及通过 The Second Dream 获得 Operator；完成 The War Within 将解锁完整的 Operator 能力和 Quills 声望。最重要的是，在出发前用 Quills 声望制作一把真正的 Amp —— 免费的 Mote Amp 破除 Eidolon 护盾的速度太慢，无法发挥作用。"
+    },
+    {
+      "q": "为什么大家都在嘲笑 Mote Amp？",
+      "a": "Mote Amp 是免费的初始 Amp，它太弱了，无法以实用的速度破除 Sentient 护盾，因此带着它去狩猎会拖累整个队伍。这是 r/Warframe 上一个代表“新手过渡期”的梗 —— 在加入队伍之前，先刷取 Quills 声望并制作一把合适的 Amp（配置通常用三个数字命名，如 1-2-3）。"
+    },
+    {
+      "q": "如何捕获 Eidolon 而不是击杀它？",
+      "a": "携带已充能的 lures —— **Teralyst 需要 2 个，Gantulyst 和 Hydrolyst 需要 3 个**。在 Plains 上激活 lures，并通过用你的 Amp 击杀附近的 Vomvalysts 来为它们充能，直到它们发出蓝光。当 Eidolon 在所有关节被击碎并跪地时，已充能的 lures 可以让你捕获它，从而获得额外的 Sentient Core 以及更好的 arcane 和精炼碎片掉落概率 —— 如果没有已充能的 lures，你只能击杀它，从而获得较少的奖励（且没有 arcanes）。"
+    },
+    {
+      "q": "进行 Eidolon 狩猎最好的 Warframe 是什么？",
+      "a": "**Chroma** 是经典的输出核心，因为 Vex Armor 可以乘算武器伤害，但角色分工比任何单一战甲都重要。一个强大的队伍会堆叠一个输出核心、一个暴击/伤害增益角色（Volt 或 Harrow）以及能量/生存辅助（Trinity）。参见 [强度排行](/guides/tier-list) 了解战甲强度。"
+    },
+    {
+      "q": "作为新手，我可以单刷 Eidolons 吗？",
+      "a": "可以 —— 先单刷 **Teralyst**。它是这三个中最弱的一个，也是在没有队伍或时间压力下学习破盾、击碎关节、捕获循环的最安全方式。一旦单刷 Teralyst 变得轻而易举，再逐步挑战 Gantulyst、Hydrolyst 和完整的 Tridolons。"
+    },
+    {
+      "q": "在 arcane 市场崩溃后，Eidolon 狩猎还值得吗？",
+      "a": "值得。尽管在 DE 引入其他获取来源后，像 Arcane Energize 这样的 arcanes 的 [platinum](/guides/platinum) 价值有所下降，但 Tridolons 仍然是极快的 [Focus](/guides/focus) 刷取方式之一，也是获取用于 Amp 和 Operator 升级的 Sentient Cores 的主要途径。在出售任何物品之前，先在 [筛选器](/screener) 上查询 arcanes 的价格。"
+    },
+    {
+      "q": "我的 Operator 在打 Eidolons 时应该使用哪个 focus 学派？",
+      "a": "**Madurai** 是标准的 Eidolon 学派 —— 它的被动技能可以提升 Amp 和 Void 伤害，这正是你快速破盾所需要的。将其与 Operator arcanes 和合适的 Amp 搭配使用；[focus 指南](/guides/focus) 介绍了如何解锁和提升学派等级。"
+    }
+  ],
+  "videos": [
+    {
+      "id": "n47NF2XieIM",
+      "title": "HOW TO HUNT EIDOLONS: TERALYST (Warframe)",
+      "channel": "StarColyte"
+    },
+    {
+      "id": "yw732IQ4kDY",
+      "title": "THE ULTIMATE BEGINNERS guide for EIDOLONS in Warframe 2023 (Part 1)",
+      "channel": "WarframeFlo"
+    },
+    {
+      "id": "sHdSVf2kYcs",
+      "title": "Warframe Eidolon Guide (2025) - How to Lure Handle",
+      "channel": "ForsakenIdol"
+    },
+    {
+      "id": "25LlzizpO3I",
+      "title": "Solo Eidolon Hunting 2025 Build",
+      "channel": "Jacsonitos"
+    }
+  ],
+  "sources": [
+    {
+      "label": "Eidolon Info for Dummies like me (r/Warframe)",
+      "href": "https://reddit.com/r/Warframe/comments/10qk7g4/eidolon_info_for_dummies_like_me/",
+      "icon": "reddit"
+    },
+    {
+      "label": "When you join your first eidolon hunt with the mote amp (r/Warframe)",
+      "href": "https://reddit.com/r/Warframe/comments/acb96b/when_you_join_your_first_eidolon_hunt_with_the/",
+      "icon": "reddit"
+    },
+    {
+      "label": "Eidolon Hunters are becoming a rare specimen now? (r/Warframe)",
+      "href": "https://reddit.com/r/Warframe/comments/1njsdr6/eidolon_hunters_are_becoming_a_rare_specimen_now/",
+      "icon": "reddit"
+    },
+    {
+      "label": "Warframe Wiki",
+      "href": "https://wiki.warframe.com/",
+      "icon": "book-open-variant"
+    }
+  ],
+  "related": [
+    {
+      "label": "Focus 刷取指南",
+      "to": "/guides/focus",
+      "icon": "meditation",
+      "note": "将 Eidolon Shards 转化为 Focus"
+    },
+    {
+      "label": "Arcanes 指南",
+      "to": "/guides/arcanes",
+      "icon": "cards",
+      "note": "Eidolon 掉落什么以及如何使用它们"
+    },
+    {
+      "label": "集团声望指南",
+      "to": "/guides/standing",
+      "icon": "handshake",
+      "note": "用于 Amp 部件的 Quills 与 Little Duck"
+    },
+    {
+      "label": "市场筛选器",
+      "to": "/screener",
+      "icon": "table-search",
+      "note": "出售前查询 arcanes 价格"
+    },
+    {
+      "label": "Steel Path 指南",
+      "to": "/guides/steel-path",
+      "icon": "skull",
+      "note": "同级的终局挑战"
+    }
+  ],
+  "updated": "2026-07-18"
+}
