@@ -203,6 +203,9 @@ export default defineNuxtConfig({
   i18n: {
     strategy: 'prefix_except_default',
     defaultLocale: 'en',
+    // The v9 translation-directive optimizer causes render issues and is being
+    // deprecated in v10; disable it explicitly (also silences the build warning).
+    bundle: { optimizeTranslationDirective: false },
     locales: LOCALES,
     // Browser-language auto-redirect is DISABLED so the bare `/` renders the
     // default (en) deterministically and can be SWR-cached at the edge/Nitro

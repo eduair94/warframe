@@ -57,7 +57,7 @@
                     :label="t('relic_search')"
                     style="max-width: 200px"
                     :items="allSets"
-                    item-title="item_name"
+                    :item-title="(el) => localItemName(el)"
                     item-value="url_name"
                   ></v-autocomplete>
                   <v-btn type="submit" color="primary"> {{ t('relic_search') }} </v-btn>
@@ -92,7 +92,7 @@
                       target="_blank"
                       :href="'https://warframe.market/items/' + item.url_name"
                     >
-                      {{ item.item_name }}</a
+                      {{ localItemName(item) }}</a
                     >
                   </div>
                 </template>
@@ -129,7 +129,7 @@
                 target="_blank"
                 :href="'https://warframe.market/items/' + item.url_name"
               >
-                {{ item.item_name }}</a
+                {{ localItemName(item) }}</a
               >
             </div>
           </template>
@@ -206,6 +206,7 @@ const base = useApiBase() as string
 const route = useRoute()
 const router = useRouter()
 const { t } = useI18n()
+const { localItemName } = useLocalizedName()
 const goTo = useGoTo()
 
 const items = useItemsStore()

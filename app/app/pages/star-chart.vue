@@ -177,11 +177,11 @@
                     <img
                       class="sc-reward__thumb"
                       :src="itemThumb({ itemName: rw.itemName, thumb: rw.thumb })"
-                      :alt="rw.itemName"
+                      :alt="rewardName(rw)"
                       loading="lazy"
                       @error="onImgError"
                     />
-                    <button class="sc-reward__name" @click="openDrops(rw.itemName)">{{ rw.itemName }}</button>
+                    <button class="sc-reward__name" @click="openDrops(rw.itemName)">{{ rewardName(rw) }}</button>
                     <span class="sc-reward__chance"><i class="sc-dot" :style="{ background: rarityColor(rw.rarity) }"></i>{{ fmtChance(rw.chance) }}%</span>
                     <span class="sc-reward__plat">
                       <template v-if="rw.tradeable">
@@ -209,7 +209,9 @@
       </div>
       <v-autocomplete
         v-model="findItem"
-        :items="itemNames"
+        :items="itemChoices"
+        item-title="title"
+        item-value="value"
         density="compact"
         hide-details
         clearable
@@ -306,6 +308,7 @@ interface ScReward {
 }
 
 const { t } = useI18n()
+const { localItemName, localName } = useLocalizedName()
 const items = useItemsStore()
 const { itemThumb } = useItemThumb()
 const { mobile } = useDisplay()
@@ -389,8 +392,12 @@ const selectedData = computed(() =>
 const selectedWikiMap = computed(() =>
   selectedData.value ? worldWikiMap(selectedData.value.planet) : null,
 )
-const itemNames = computed<string[]>(() =>
-  (allItems.value as any[]).map((i) => i && i.item_name).filter(Boolean),
+// Localized title for display/search, English item_name kept as the value so the
+// selection still resolves as a lookup key for the drop-locations dialog.
+const itemChoices = computed<{ title: string; value: string }[]>(() =>
+  (allItems.value as any[])
+    .filter((i) => i && i.item_name)
+    .map((i) => ({ title: localItemName(i), value: i.item_name })),
 )
 const chartPlanetNames = computed(() => new Set(weightedPlanets.value.map((p) => p.planet)))
 
@@ -587,6 +594,13 @@ function rewardMeta(rw: ScReward): { vol: number | null; thin: boolean; note: st
   const market: any = item && item.market ? item.market : null
   const sig = marketSignal(market)
   return { vol: market ? Number(market.volume) || 0 : null, thin: sig.thin, note: sig.note }
+}
+// Localized reward display name (items scope). The English itemName stays the
+// lookup key everywhere (thumb, drops dialog, market resolve); only text/alt
+// use this. Falls back to the English name when unresolved or on the en locale.
+function rewardName(rw: ScReward): string {
+  const item = resolveMarketItem(rw && rw.itemName, itemIndex.value)
+  return localName('items', item?.url_name, (rw && rw.itemName) || '')
 }
 function openDrops(name: string) {
   dropsItem.value = name

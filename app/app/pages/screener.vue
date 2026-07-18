@@ -15,7 +15,7 @@
             <div class="an-hero__deal-label">{{ t('screener.hero.dealLabel') }}</div>
             <div class="an-hero__deal-plat">{{ fmtPct(topDeal.discount) }}<span>{{ t('screener.hero.off') }}</span></div>
             <a class="an-hero__deal-name" :href="mkt(topDeal.url_name)" target="_blank" rel="noopener">
-              {{ topDeal.item_name }} →
+              {{ localItemName(topDeal) }} →
             </a>
             <div class="an-hero__deal-sub">{{ t('screener.hero.dealSub', { sell: fmtPlat(topDeal.market.sell), avg: fmtPlat(topDeal.market.avg_price) }) }}</div>
           </div>
@@ -76,9 +76,9 @@
               <tr v-for="row in paged" :key="row.url_name" :class="{ 'is-top': row.url_name === topDealUrl }">
                 <td class="col-name">
                   <a class="an-name" :href="mkt(row.url_name)" target="_blank" rel="noopener">
-                    <img class="an-thumb" :src="assetUrl(row.thumb)" :alt="row.item_name" loading="lazy" @error="onImgError" />
+                    <img class="an-thumb" :src="assetUrl(row.thumb)" :alt="localItemName(row)" loading="lazy" @error="onImgError" />
                     <span>
-                      {{ row.item_name }}
+                      {{ localItemName(row) }}
                       <span v-if="row.vaulted" class="an-badge">{{ t('screener.row.vaulted') }}</span>
                       <small class="an-sub">{{ t('screener.row.avg', { price: fmtPlat(row.market.avg_price) }) }}</small>
                     </span>
@@ -99,9 +99,9 @@
         <div v-else class="an-cards">
           <a v-for="row in paged" :key="row.url_name" class="an-card" :class="{ 'is-top': row.url_name === topDealUrl }" :href="mkt(row.url_name)" target="_blank" rel="noopener">
             <div class="an-card__head">
-              <img class="an-thumb" :src="assetUrl(row.thumb)" :alt="row.item_name" loading="lazy" @error="onImgError" />
+              <img class="an-thumb" :src="assetUrl(row.thumb)" :alt="localItemName(row)" loading="lazy" @error="onImgError" />
               <div class="an-card__title">
-                <div class="an-card__name">{{ row.item_name }}<span v-if="row.vaulted" class="an-badge">{{ t('screener.row.vaulted') }}</span></div>
+                <div class="an-card__name">{{ localItemName(row) }}<span v-if="row.vaulted" class="an-badge">{{ t('screener.row.vaulted') }}</span></div>
                 <small class="an-sub">{{ t('screener.row.avgVol', { price: fmtPlat(row.market.avg_price), vol: fmtPlat(row.market.volume) }) }}</small>
               </div>
               <v-icon color="#4fb3bf">mdi-open-in-new</v-icon>
@@ -139,6 +139,7 @@ import { useDisplay } from 'vuetify'
 import { useItemsStore } from '~/stores/items'
 
 const { t } = useI18n()
+const { localItemName } = useLocalizedName()
 const store = useItemsStore()
 const allItems = computed<any[]>(() => store.allItems)
 
@@ -240,7 +241,7 @@ const filtered = computed<any[]>(() => {
   const q = (search.value || '').toString().trim().toLowerCase()
   const minV = Number(minVolume.value) || 0
   const list = priced.value.filter((r) => {
-    if (q && !r.item_name.toLowerCase().includes(q)) return false
+    if (q && !(r.item_name.toLowerCase().includes(q) || localItemName(r).toLowerCase().includes(q))) return false
     if (category.value !== 'All' && categoryOf(r.tags) !== category.value) return false
     if ((r.market.volume || 0) < minV) return false
     if (onlyVaulted.value && !r.vaulted) return false

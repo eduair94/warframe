@@ -17,7 +17,7 @@
               {{ fmtSignedPct(topDeal[changeKey]) }}
             </div>
             <a class="an-hero__deal-name" :href="mkt(topDeal.url_name)" target="_blank" rel="noopener">
-              {{ topDeal.item_name }} →
+              {{ localItemName(topDeal) }} →
             </a>
             <div class="an-hero__deal-sub">{{ t('movers.hero.dealSub', { price: fmtPlat(priceOf(topDeal)), vol: fmtPlat(topDeal.volume) }) }}</div>
           </div>
@@ -91,9 +91,9 @@
               <tr v-for="row in paged" :key="row.url_name" :class="{ 'is-top': row.url_name === topDealUrl }">
                 <td class="col-name">
                   <a class="an-name" :href="mkt(row.url_name)" target="_blank" rel="noopener">
-                    <img class="an-thumb" :src="assetUrl(row.thumb)" :alt="row.item_name" loading="lazy" @error="onImgError" />
+                    <img class="an-thumb" :src="assetUrl(row.thumb)" :alt="localItemName(row)" loading="lazy" @error="onImgError" />
                     <span>
-                      {{ row.item_name }}
+                      {{ localItemName(row) }}
                       <span v-if="row.vaulted" class="an-badge">{{ t('movers.row.vaulted') }}</span>
                       <small class="an-sub">{{ t('movers.row.tracked', { n: row.dataDays }) }}</small>
                     </span>
@@ -112,9 +112,9 @@
         <div v-else class="an-cards">
           <a v-for="row in paged" :key="row.url_name" class="an-card" :class="{ 'is-top': row.url_name === topDealUrl }" :href="mkt(row.url_name)" target="_blank" rel="noopener">
             <div class="an-card__head">
-              <img class="an-thumb" :src="assetUrl(row.thumb)" :alt="row.item_name" loading="lazy" @error="onImgError" />
+              <img class="an-thumb" :src="assetUrl(row.thumb)" :alt="localItemName(row)" loading="lazy" @error="onImgError" />
               <div class="an-card__title">
-                <div class="an-card__name">{{ row.item_name }}<span v-if="row.vaulted" class="an-badge">{{ t('movers.row.vaulted') }}</span></div>
+                <div class="an-card__name">{{ localItemName(row) }}<span v-if="row.vaulted" class="an-badge">{{ t('movers.row.vaulted') }}</span></div>
                 <small class="an-sub">{{ t('movers.hero.dealSub', { price: fmtPlat(priceOf(row)), vol: fmtPlat(row.volume) }) }}</small>
               </div>
               <span class="an-num an-strong" :class="changeClass(row[changeKey])">{{ fmtSignedPct(row[changeKey]) }}</span>
@@ -145,6 +145,7 @@ import { computed, nextTick, onMounted, ref, watch } from 'vue'
 import { useDisplay } from 'vuetify'
 
 const { t } = useI18n()
+const { localItemName } = useLocalizedName()
 const base = useApiBase()
 
 const { data, error } = await useAsyncData('movers-analytics', () => $fetch<any>(`${base}/market_analytics`))
@@ -254,7 +255,7 @@ const filtered = computed<any[]>(() => {
   const q = (search.value || '').toString().trim().toLowerCase()
   const key = changeKey.value
   let list = items.value.filter((r) => {
-    if (q && !r.item_name.toLowerCase().includes(q)) return false
+    if (q && !(r.item_name.toLowerCase().includes(q) || localItemName(r).toLowerCase().includes(q))) return false
     if (category.value !== 'All' && categoryOf(r.tags) !== category.value) return false
     if (mode.value !== 'volume' && (r[key] === null || r[key] === undefined)) return false
     return true

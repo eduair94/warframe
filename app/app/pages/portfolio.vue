@@ -11,7 +11,7 @@
           v-model="itemToAdd"
           :label="t('portfolio.addLabel')"
           class="add-input"
-          :items="allItems.map((el) => el.item_name)"
+          :items="allItems.map((el) => localItemName(el))"
           hide-details
           density="compact"
           variant="outlined"
@@ -60,7 +60,7 @@
         <tbody>
           <tr v-for="entry in enrichedWatchlist" :key="entry.url_name">
             <td>
-              <nuxt-link :to="'/set/' + entry.url_name" class="no_link">{{ entry.item_name }}</nuxt-link>
+              <nuxt-link :to="'/set/' + entry.url_name" class="no_link">{{ localItemName(entry) }}</nuxt-link>
             </td>
             <td>
               <v-text-field
@@ -146,6 +146,7 @@ import { subscribeLive } from '~/composables/useLiveFeed'
 import type { LiveUpdate } from '~/utils/liveTypes'
 
 const { t } = useI18n()
+const { localItemName } = useLocalizedName()
 const base = useApiBase()
 
 // Long-history analytics (atl / pctFromAtl) power the all-time-low alert -
@@ -171,6 +172,9 @@ const itemsByName = computed<Record<string, any>>(() => {
   const map: Record<string, any> = {}
   allItems.value.forEach((i) => {
     map[i.item_name] = i
+    // Also resolve by localized name so the combobox (which now suggests localized
+    // names) still finds the item in addItem(). On 'en' this is the same key.
+    map[localItemName(i)] = i
   })
   return map
 })

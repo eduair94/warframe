@@ -24,7 +24,7 @@
             <div class="an-hero__deal-label">{{ t('endo.hero.flipDealLabel') }}</div>
             <div class="an-hero__deal-plat">{{ fmtNum(topFlip.eval.best.platPer1kEndo) }}<span>p/1k</span></div>
             <a class="an-hero__deal-name" :href="mkt(topFlip.url_name)" target="_blank" rel="noopener">
-              {{ topFlip.item_name }} →
+              {{ localItemName(topFlip) }} →
             </a>
             <div class="an-hero__deal-sub">{{ t('endo.hero.flipDealSub', { rank: rankLabel(topFlip.eval.best.rank), profit: fmtPlat(topFlip.eval.best.profit) }) }}</div>
           </div>
@@ -154,9 +154,9 @@
                 <tr v-for="row in flipPaged" :key="row.url_name" :class="{ 'is-top': row.url_name === topFlipUrl }">
                   <td class="col-name">
                     <a class="an-name" :href="mkt(row.url_name)" target="_blank" rel="noopener">
-                      <img class="an-thumb" :src="assetUrl(row.thumb)" :alt="row.item_name" loading="lazy" @error="onImgError" />
+                      <img class="an-thumb" :src="assetUrl(row.thumb)" :alt="localItemName(row)" loading="lazy" @error="onImgError" />
                       <span>
-                        {{ row.item_name }}
+                        {{ localItemName(row) }}
                         <span v-if="row.url_name === topFlipUrl" class="an-badge">{{ t('endo.row.top') }}</span>
                         <small class="an-sub">{{ t('endo.row.modSub', { rarity: rarityLabel(row.eval.rarity), max: row.eval.maxRank, endo: fmtEndo(row.eval.endoToMax) }) }}</small>
                       </span>
@@ -209,9 +209,9 @@
           <div v-else class="an-cards">
             <div v-for="row in flipPaged" :key="row.url_name" class="an-card" :class="{ 'is-top': row.url_name === topFlipUrl }">
               <a class="an-card__head" :href="mkt(row.url_name)" target="_blank" rel="noopener">
-                <img class="an-thumb" :src="assetUrl(row.thumb)" :alt="row.item_name" loading="lazy" @error="onImgError" />
+                <img class="an-thumb" :src="assetUrl(row.thumb)" :alt="localItemName(row)" loading="lazy" @error="onImgError" />
                 <div class="an-card__title">
-                  <div class="an-card__name">{{ row.item_name }}<span v-if="row.url_name === topFlipUrl" class="an-badge">{{ t('endo.row.top') }}</span></div>
+                  <div class="an-card__name">{{ localItemName(row) }}<span v-if="row.url_name === topFlipUrl" class="an-badge">{{ t('endo.row.top') }}</span></div>
                   <small class="an-sub">{{ t('endo.row.modSub', { rarity: rarityLabel(row.eval.rarity), max: row.eval.maxRank, endo: fmtEndo(row.eval.endoToMax) }) }}</small>
                 </div>
                 <v-icon color="#4fb3bf">mdi-open-in-new</v-icon>
@@ -434,6 +434,7 @@ dayjs.extend(relativeTime)
 
 const apiBase = useApiBase()
 const { t, te } = useI18n()
+const { localItemName } = useLocalizedName()
 
 // --- i18n label helpers for dynamic values whose English form is also the
 // filter/compare key. Keep the value; translate only the display. ---
@@ -677,7 +678,7 @@ const flipFiltered = computed<FlipRowEval[]>(() => {
   const raritySet = new Set(rarityFilter.value.map((x) => x.toLowerCase()))
   const list = flipRows.value.filter((r) => {
     const b = r.eval.best
-    if (q && !r.item_name.toLowerCase().includes(q)) return false
+    if (q && !(r.item_name.toLowerCase().includes(q) || localItemName(r).toLowerCase().includes(q))) return false
     if (flipCat.value !== 'All' && flipCategory(r) !== flipCat.value) return false
     if (r.eval.maxedVolume < minV) return false
     if (hideThin.value && r.eval.maxedVolume < 1) return false

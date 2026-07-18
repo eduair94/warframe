@@ -56,7 +56,7 @@
                     v-model="search"
                     :label="t('relic_search')"
                     width="200px"
-                    :items="allSets"
+                    :items="allSetsLocalized"
                     item-title="item_name"
                     item-value="url_name"
                   ></v-autocomplete>
@@ -94,7 +94,7 @@
                       target="_blank"
                       :href="'https://warframe.market/items/' + item.url_name"
                     >
-                      {{ item.item_name }}</a
+                      {{ localItemName(item) }}</a
                     >
                   </div>
                 </template>
@@ -124,7 +124,7 @@
                 target="_blank"
                 :href="'https://warframe.market/items/' + item.url_name"
               >
-                {{ item.item_name }}</a
+                {{ localItemName(item) }}</a
               >
             </div>
           </template>
@@ -210,9 +210,14 @@ const route = useRoute()
 const router = useRouter()
 const { t } = useI18n()
 const goTo = useGoTo()
+const { localItemName } = useLocalizedName()
 
 const items = useItemsStore()
 const allSets = computed(() => items.allSets)
+// Localized suggestion titles for the search autocomplete (value stays url_name).
+const allSetsLocalized = computed(() =>
+  allSets.value.map((s: any) => ({ ...s, item_name: localItemName(s) })),
+)
 
 // Entity-specific SEO — the set name comes from the route param, so it can't
 // live in the static seo.ts map. useSeoPage() overrides the layout's generic

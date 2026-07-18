@@ -33,7 +33,7 @@
               :class="o.type"
             >
               <span class="ticker-tag">{{ o.type === 'buy' ? 'WTB' : 'WTS' }}</span>
-              {{ o.item_name }}<template v-if="o.rank != null && o.rank > 0"> r{{ o.rank }}</template>
+              {{ localItemName(o) }}<template v-if="o.rank != null && o.rank > 0"> r{{ o.rank }}</template>
               <strong>{{ o.platinum }}p</strong>
             </span>
           </div>
@@ -120,10 +120,10 @@
                     <img
                       class="an-thumb"
                       :src="thumbOf(row)"
-                      :alt="row.item_name"
+                      :alt="localItemName(row)"
                       loading="lazy"
                     />
-                    <span>{{ row.item_name }}</span>
+                    <span>{{ localItemName(row) }}</span>
                   </a>
                 </td>
                 <td class="an-num">{{ plat(row, 'bestBuy') }}</td>
@@ -150,10 +150,10 @@
             @click="openDetail(row)"
           >
             <div class="an-card__head">
-              <img class="an-thumb" :src="thumbOf(row)" :alt="row.item_name" loading="lazy" />
+              <img class="an-thumb" :src="thumbOf(row)" :alt="localItemName(row)" loading="lazy" />
               <div class="an-card__title">
                 <a class="an-card__name" :href="mkt(row.url_name)" target="_blank" rel="noopener" @click.stop>
-                  {{ row.item_name }}
+                  {{ localItemName(row) }}
                 </a>
                 <span class="an-ago">{{ agoOf(row.url_name) }}</span>
               </div>
@@ -195,9 +195,9 @@
       <v-dialog v-model="showDetail" max-width="760">
         <div v-if="detail && detailRow" class="order-book">
           <div class="ob-head">
-            <img class="an-thumb" :src="thumbOf(detailRow)" :alt="detailRow.item_name" />
+            <img class="an-thumb" :src="thumbOf(detailRow)" :alt="localItemName(detailRow)" />
             <div class="ob-head__title">
-              <div class="ob-head__name">{{ detailRow.item_name }}</div>
+              <div class="ob-head__name">{{ localItemName(detailRow) }}</div>
               <a class="ob-head__link" :href="mkt(detailRow.url_name)" target="_blank" rel="noopener">warframe.market ↗</a>
             </div>
             <MarketVerdictBadge :verdict="detail.verdict" />
@@ -287,6 +287,7 @@ const { mobile } = useDisplay()
 const isMobile = computed(() => mobile.value)
 const { connected, pulse } = useLiveFeed()
 const { itemThumb } = useItemThumb()
+const { localItemName } = useLocalizedName()
 
 const search = ref('')
 const page = ref(1)
@@ -335,7 +336,7 @@ const filtered = computed<any[]>(() => {
   const q = (search.value || '').trim().toLowerCase()
   const mv = num(minVol.value)
   const base = tradeable.value.filter((r) => {
-    if (q && !(r.item_name || '').toLowerCase().includes(q)) return false
+    if (q && !((r.item_name || '').toLowerCase().includes(q) || localItemName(r).toLowerCase().includes(q))) return false
     if (volP(r) < mv) return false
     if (mode.value === 'buy' && discountP(r) < 0.08) return false // ≥8% below fair
     if (mode.value === 'sell' && overP(r) < 0.08) return false // ≥8% above fair

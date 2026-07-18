@@ -18,7 +18,7 @@
             <div class="an-hero__deal-label">{{ t('relicFarming.hero.dealLabel') }}</div>
             <div class="an-hero__deal-plat">{{ fmtPlat(platPerHour(topDeal)) }}<span>p/hr</span></div>
             <nuxt-link class="an-hero__deal-name" :to="'/relic/' + topDeal.url_name">
-              {{ topDeal.relicName }} →
+              {{ localName('items', topDeal.url_name, topDeal.relicName) }} →
             </nuxt-link>
             <div class="an-hero__deal-sub">{{ t('relicFarming.hero.dealSub', { refinement: refinementLabel.toLowerCase() }) }}</div>
           </div>
@@ -174,9 +174,9 @@
                 <td class="col-name">
                   <div class="an-namewrap">
                     <nuxt-link class="an-name" :to="'/relic/' + row.url_name">
-                      <img class="an-thumb" :src="relicThumb(row)" :alt="row.relicName" loading="lazy" @error="onImgError" />
+                      <img class="an-thumb" :src="relicThumb(row)" :alt="localName('items', row.url_name, row.relicName)" loading="lazy" @error="onImgError" />
                       <span>
-                        {{ row.relicName }}
+                        {{ localName('items', row.url_name, row.relicName) }}
                         <span v-if="row.url_name === topDealUrl" class="an-badge">{{ t('relicFarming.tags.top') }}</span>
                         <span v-if="row.vaulted" class="an-badge an-badge--vault">{{ t('relicFarming.tags.vaultedBadge') }}</span>
                         <span v-else-if="row.resurgence" class="an-badge an-badge--resurgence" :title="t('relicFarming.tags.resurgenceTitle')">{{ t('relicFarming.tags.resurgence') }}</span>
@@ -200,7 +200,7 @@
                   </span>
                 </td>
                 <td class="an-num">
-                  <span class="an-topdrop">{{ topDrop(row).item_name }}</span>
+                  <span class="an-topdrop">{{ localItemName(topDrop(row)) }}</span>
                   <span v-if="rewardVaulted(topDrop(row))" class="an-vtag">{{ t('relicFarming.tags.vaulted') }}</span>
                   <small class="an-sub">{{ fmtPlat(topDrop(row).price) }}p · {{ t('relicFarming.row.vol') }} {{ fmtPlat(topDrop(row).volume || 0) }}</small>
                 </td>
@@ -220,10 +220,10 @@
             :to="'/relic/' + row.url_name"
           >
             <div class="an-card__head">
-              <img class="an-thumb" :src="relicThumb(row)" :alt="row.relicName" loading="lazy" @error="onImgError" />
+              <img class="an-thumb" :src="relicThumb(row)" :alt="localName('items', row.url_name, row.relicName)" loading="lazy" @error="onImgError" />
               <div class="an-card__title">
                 <div class="an-card__name">
-                  {{ row.relicName }}
+                  {{ localName('items', row.url_name, row.relicName) }}
                   <span v-if="row.url_name === topDealUrl" class="an-badge">{{ t('relicFarming.tags.top') }}</span>
                   <span v-if="row.vaulted" class="an-badge an-badge--vault">{{ t('relicFarming.tags.vaultedBadge') }}</span>
                   <span v-else-if="row.resurgence" class="an-badge an-badge--resurgence" :title="t('relicFarming.tags.resurgenceTitle')">{{ t('relicFarming.tags.resurgence') }}</span>
@@ -258,7 +258,7 @@
                 <div class="an-block__lbl">{{ t('relicFarming.card.topDrop') }}</div>
                 <div class="an-block__row"><span>{{ topDrop(row).rarity }}</span><b>{{ fmtPlat(topDrop(row).price) }}p</b></div>
                 <div class="an-block__row an-topdrop-m">
-                  <span>{{ topDrop(row).item_name }}</span>
+                  <span>{{ localItemName(topDrop(row)) }}</span>
                   <span v-if="rewardVaulted(topDrop(row))" class="an-vtag">{{ t('relicFarming.tags.vaulted') }}</span>
                 </div>
               </div>
@@ -289,6 +289,7 @@ import { useDisplay } from 'vuetify'
 import { useRelicValue, type RelicRow } from '~/composables/useRelicValue'
 
 const { t } = useI18n()
+const { localItemName, localName } = useLocalizedName()
 
 // Working thumbnails cross-referenced against the fresh catalog (drop data
 // carries stale warframe.market thumb hashes).
@@ -390,7 +391,7 @@ const tierOptions = computed<string[]>(() => {
 const matched = computed<RelicRow[]>(() => {
   const q = (search.value || '').toString().trim().toLowerCase()
   return relics.value.filter((r) => {
-    if (q && !r.relicName.toLowerCase().includes(q)) return false
+    if (q && !(r.relicName.toLowerCase().includes(q) || localName('items', r.url_name, r.relicName).toLowerCase().includes(q))) return false
     if (tier.value !== 'All' && r.tier !== tier.value) return false
     return true
   })
