@@ -412,6 +412,73 @@
 .an-table td.grp-b {
   background: rgba(200, 168, 92, 0.05);
 }
+
+/* Responsive content tables — opt in with `.is-cards` (e.g. the guide tables).
+   Below 760px the table drops its min-width scroll and each row becomes a
+   labelled card (column name above the value), killing the horizontal scroll.
+   Dense data tables that DON'T set `.is-cards` are unaffected. */
+@media (max-width: 760px) {
+  .an-table.is-cards {
+    min-width: 0;
+    font-size: 0.92rem;
+  }
+  .an-table.is-cards thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+  .an-table.is-cards tbody,
+  .an-table.is-cards tr,
+  .an-table.is-cards td {
+    display: block;
+    width: 100%;
+  }
+  .an-table.is-cards tr {
+    margin: 0 0 14px;
+    border: 1px solid var(--orokin-line);
+    background: rgba(0, 0, 0, 0.22);
+    clip-path: polygon(9px 0, 100% 0, 100% calc(100% - 9px), calc(100% - 9px) 100%, 0 100%, 0 9px);
+  }
+  .an-table.is-cards tbody tr:hover {
+    background: rgba(0, 0, 0, 0.22);
+  }
+  .an-table.is-cards td {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    text-align: left;
+    white-space: normal;
+    padding: 9px 14px;
+    border-top: 1px solid var(--line);
+  }
+  .an-table.is-cards td::before {
+    content: attr(data-label);
+    font-family: var(--font-hud);
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--orokin);
+  }
+  /* First cell = the card's title: gold, larger, no label. */
+  .an-table.is-cards td.col-name {
+    border-top: 0;
+    background: rgba(200, 168, 92, 0.08);
+    font-family: var(--font-display);
+    color: var(--gold-ink);
+    font-size: 1.02rem;
+  }
+  .an-table.is-cards td.col-name::before {
+    display: none;
+  }
+  .an-table.is-cards tr.is-top td.col-name {
+    box-shadow: inset 3px 0 0 var(--orokin);
+  }
+}
+
 .an-num {
   font-family: var(--font-hud);
   font-weight: 600;

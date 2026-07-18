@@ -43,8 +43,8 @@
         <NuxtLink class="gh-quick__card" :to="localePath('/guides/farming')">
           <v-icon class="gh-quick__icon">mdi-magnify-scan</v-icon>
           <span class="gh-quick__body">
-            <span class="gh-quick__label">Farming Hub</span>
-            <span class="gh-quick__note">Search any item, resource or currency</span>
+            <span class="gh-quick__label">{{ t('guidesHub.farmingCard') }}</span>
+            <span class="gh-quick__note">{{ t('guidesHub.farmingNote') }}</span>
           </span>
         </NuxtLink>
         <NuxtLink class="gh-quick__card" :to="localePath('/faq')">

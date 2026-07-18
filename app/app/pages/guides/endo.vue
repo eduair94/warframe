@@ -93,7 +93,7 @@
         <div class="eg-section__title">{{ t('guideEndo.ayatan.title') }}</div>
         <p class="eg-p">{{ t('guideEndo.ayatan.p') }}</p>
         <div class="an-tablewrap">
-          <table class="an-table eg-table">
+          <table class="an-table eg-table is-cards">
             <thead>
               <tr>
                 <th class="col-name">{{ t('guideEndo.ayatan.thName') }}</th>
@@ -103,7 +103,7 @@
             <tbody>
               <tr v-for="s in sculptureRef" :key="s.name">
                 <td class="col-name">{{ s.name }}</td>
-                <td class="an-num an-strong">{{ fmt(s.endo) }}</td>
+                <td class="an-num an-strong" :data-label="t('guideEndo.ayatan.thEndo')">{{ fmt(s.endo) }}</td>
               </tr>
             </tbody>
           </table>

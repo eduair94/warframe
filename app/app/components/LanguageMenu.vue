@@ -3,7 +3,7 @@
     <v-menu>
       <template #activator="{ props }">
         <v-btn color="primary" v-bind="props">
-          {{ locale }} <v-icon>mdi-chevron-down</v-icon>
+          {{ locale.toUpperCase() }} <v-icon>mdi-chevron-down</v-icon>
         </v-btn>
       </template>
       <v-list>

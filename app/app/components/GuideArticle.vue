@@ -81,13 +81,13 @@
           </div>
 
           <div v-else-if="b.type === 'table'" class="an-tablewrap ga-tablewrap">
-            <table class="an-table ga-table">
+            <table class="an-table ga-table is-cards">
               <thead>
                 <tr><th v-for="(c, i) in b.table.columns" :key="i">{{ c }}</th></tr>
               </thead>
               <tbody>
                 <tr v-for="(row, ri) in b.table.rows" :key="ri">
-                  <td v-for="(cell, ci) in row" :key="ci" :class="{ 'col-name': ci === 0, 'an-num': ci !== 0 }" v-html="rich(String(cell))" />
+                  <td v-for="(cell, ci) in row" :key="ci" :class="{ 'col-name': ci === 0 }" :data-label="b.table.columns[ci]" v-html="rich(String(cell))" />
                 </tr>
               </tbody>
             </table>

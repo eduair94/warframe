@@ -7,36 +7,33 @@
     <article class="an-console">
       <header class="an-hero">
         <div class="an-hero__text">
-          <div class="an-eyebrow">Knowledge Center · Farming</div>
-          <h1 class="an-title">Warframe Farming Hub</h1>
-          <p class="an-lede">
-            Tell us what you want to farm — a resource, a currency, prime parts, an arcane — and jump straight to the
-            guide that explains the best way to get it. Every farm is re-checked for accuracy on a rolling basis.
-          </p>
+          <div class="an-eyebrow">{{ t('guidesFarming.eyebrow') }}</div>
+          <h1 class="an-title">{{ t('guidesFarming.title') }}</h1>
+          <p class="an-lede">{{ t('guidesFarming.lede') }}</p>
         </div>
         <div class="an-hero__deal gh-hero-cta">
-          <div class="an-hero__deal-label">Most asked</div>
-          <NuxtLink class="an-hero__deal-name gh-hero-cta__link" :to="localePath('/guides/credits')">Credit Farming →</NuxtLink>
-          <div class="an-hero__deal-sub">Höllvania safes, the Index & Profit-Taker (2026)</div>
+          <div class="an-hero__deal-label">{{ t('guidesFarming.mostAsked') }}</div>
+          <NuxtLink class="an-hero__deal-name gh-hero-cta__link" :to="localePath('/guides/credits')">{{ t('guidesFarming.creditCta') }} →</NuxtLink>
+          <div class="an-hero__deal-sub">{{ t('guidesFarming.creditSub') }}</div>
         </div>
       </header>
 
       <div class="an-stats">
         <div class="an-stat">
           <div class="an-stat__num is-gold">{{ farmingGuides.length }}</div>
-          <div class="an-stat__lbl">Farming guides</div>
+          <div class="an-stat__lbl">{{ t('guidesFarming.statGuides') }}</div>
         </div>
         <div class="an-stat">
           <div class="an-stat__num is-good">{{ FARM_TARGETS.length }}</div>
-          <div class="an-stat__lbl">Farm targets mapped</div>
+          <div class="an-stat__lbl">{{ t('guidesFarming.statTargets') }}</div>
         </div>
         <div class="an-stat">
           <div class="an-stat__num is-alt">90d</div>
-          <div class="an-stat__lbl">Freshness re-check</div>
+          <div class="an-stat__lbl">{{ t('guidesFarming.statFreshness') }}</div>
         </div>
         <div class="an-stat">
           <div class="an-stat__num">100%</div>
-          <div class="an-stat__lbl">Free, no login</div>
+          <div class="an-stat__lbl">{{ t('guidesFarming.statFree') }}</div>
         </div>
       </div>
 
@@ -45,8 +42,8 @@
         <div class="gh-section__head">
           <v-icon class="gh-section__icon">mdi-magnify-scan</v-icon>
           <div>
-            <h2 class="gh-section__title">What do you want to farm?</h2>
-            <p class="gh-section__blurb">Search by item, resource or currency — e.g. “Orokin Cell”, “Kuva”, “prime parts”, “argon”.</p>
+            <h2 class="gh-section__title">{{ t('guidesFarming.searchTitle') }}</h2>
+            <p class="gh-section__blurb">{{ t('guidesFarming.searchBlurb') }}</p>
           </div>
         </div>
 
@@ -57,8 +54,8 @@
               v-model="query"
               type="search"
               class="fq-search__input"
-              placeholder="Type an item, resource or currency…"
-              aria-label="Search farm targets by item type"
+              :placeholder="t('guidesFarming.searchPlaceholder')"
+              :aria-label="t('guidesFarming.searchPlaceholder')"
             />
           </div>
           <div v-if="query" class="fh-chips">
@@ -89,10 +86,7 @@
             </div>
           </NuxtLink>
         </div>
-        <p v-else class="ga-note gh-empty">
-          No exact match for “{{ query }}”. Try a broader term, or browse the farming guides below — the resource
-          cheat-sheet covers most materials.
-        </p>
+        <p v-else class="ga-note gh-empty">{{ t('guidesFarming.noResults') }}</p>
       </section>
 
       <!-- ── Farming guides ───────────────────────────────────────────── -->
@@ -100,8 +94,8 @@
         <div class="gh-section__head">
           <v-icon class="gh-section__icon">mdi-timer-sand</v-icon>
           <div>
-            <h2 class="gh-section__title">Farming &amp; resource guides</h2>
-            <p class="gh-section__blurb">The full farming shelf — platinum, credits, Endo, Kuva, relics, resources and standing.</p>
+            <h2 class="gh-section__title">{{ t('guidesFarming.guidesTitle') }}</h2>
+            <p class="gh-section__blurb">{{ t('guidesFarming.guidesBlurb') }}</p>
           </div>
         </div>
         <div class="gh-grid">
@@ -119,7 +113,7 @@
             <h3 class="gh-card__title">{{ g.title }}</h3>
             <p class="gh-card__blurb">{{ g.blurb }}</p>
             <div class="gh-card__foot">
-              <span class="gh-card__read">{{ g.readMins }} min read</span>
+              <span class="gh-card__read">{{ g.readMins }} {{ t('guidesFarming.minRead') }}</span>
               <span class="gh-card__arrow">→</span>
             </div>
           </NuxtLink>
@@ -127,13 +121,10 @@
       </section>
 
       <div class="fh-back">
-        <NuxtLink class="fh-back__link" :to="localePath('/guides')">← All Warframe guides</NuxtLink>
+        <NuxtLink class="fh-back__link" :to="localePath('/guides')">← {{ t('guidesFarming.backAll') }}</NuxtLink>
       </div>
 
-      <v-alert class="an-disclaimer" type="info" density="compact">
-        Farms and drop locations shift with updates — this hub is re-checked regularly. Always cross-check the live
-        wiki for exact current numbers.
-      </v-alert>
+      <v-alert class="an-disclaimer" type="info" density="compact">{{ t('guidesFarming.disclaimer') }}</v-alert>
     </article>
   </div>
 </template>
@@ -143,6 +134,7 @@ import { computed, ref, nextTick, onMounted } from 'vue'
 import { GUIDES_INDEX } from '~/data/guides/registry'
 import { FARM_TARGETS, FARM_KIND_LABEL, searchFarmTargets, type FarmKind } from '~/data/guides/farmIndex'
 
+const { t } = useI18n()
 const localePath = useLocalePath()
 
 const query = ref('')
