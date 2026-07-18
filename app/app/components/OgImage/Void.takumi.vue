@@ -27,7 +27,7 @@ withDefaults(
       justify-content: space-between;
       padding: 72px 80px;
       background: linear-gradient(135deg, #0b0c16 0%, #14162e 55%, #0d1120 100%);
-      font-family: 'Rajdhani';
+      font-family: 'Rajdhani', 'Noto Sans', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans SC', 'Noto Sans TC';
       position: relative;
     "
   >
@@ -54,7 +54,7 @@ withDefaults(
       <div
         style="
           display: flex;
-          font-family: 'Cinzel';
+          font-family: 'Cinzel', 'Noto Sans', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans SC', 'Noto Sans TC';
           font-weight: 700;
           font-size: 30px;
           letter-spacing: 6px;
@@ -82,7 +82,7 @@ withDefaults(
       <div
         style="
           display: flex;
-          font-family: 'Cinzel';
+          font-family: 'Cinzel', 'Noto Sans', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans SC', 'Noto Sans TC';
           font-weight: 700;
           font-size: 62px;
           line-height: 1.12;

@@ -111,6 +111,10 @@
         </span>
       </div>
     </v-footer>
+
+    <!-- Browser-language suggestion (client-only, cache-safe): offers a one-tap
+         switch when the visitor's browser language differs from the current one. -->
+    <LocaleSuggestion />
   </v-app>
 </template>
 
