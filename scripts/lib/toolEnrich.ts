@@ -3,6 +3,18 @@ export type ToolCategory =
   | 'riven' | 'builds' | 'apps' | 'bots' | 'api'
 export type Platform = 'web' | 'android' | 'ios' | 'windows' | 'overlay' | 'discord' | 'extension'
 
+export interface ToolSocial {
+  discord?: string
+  x?: string
+  youtube?: string
+  reddit?: string
+  patreon?: string
+  kofi?: string
+  steam?: string
+  telegram?: string
+  githubOrg?: string
+  website?: string
+}
 export interface ToolSource {
   slug: string
   name: string
@@ -11,6 +23,7 @@ export interface ToolSource {
   platforms: Platform[]
   openSource?: boolean
   github?: string
+  social?: ToolSocial
   featured?: boolean
   caveat?: 'partial' | 'rmt' | null
 }

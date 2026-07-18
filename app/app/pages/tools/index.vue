@@ -46,7 +46,7 @@
                   <span v-for="p in tool.platforms" :key="p" class="an-chip ct-plat">{{ t('communityTools.platform.' + p) }}</span>
                 </span>
               </div>
-              <p class="ct-card__desc">{{ t('communityTools.desc.' + tool.slug) }}</p>
+              <p class="ct-card__desc">{{ cardDesc(tool) }}</p>
 
               <div v-if="tool.caveat === 'rmt'" class="ct-warn ct-warn--rmt">⚠ {{ t('communityTools.caveat.rmt') }}</div>
               <div v-else-if="tool.caveat === 'partial'" class="ct-warn ct-warn--partial">{{ t('communityTools.caveat.partial') }}</div>
@@ -62,6 +62,8 @@
                 </span>
                 <span v-if="tool.openSource" class="ct-meta__i is-alt">{{ t('communityTools.card.openSource') }}</span>
               </div>
+
+              <ToolSocials v-if="tool.social" :social="tool.social" variant="compact" />
 
               <div class="ct-actions">
                 <NuxtLink class="ct-visit" :to="localePath('/tools/' + tool.slug)">{{ t('toolDetail.card.details') }}</NuxtLink>
@@ -82,10 +84,19 @@ import { computed, nextTick, onMounted } from 'vue'
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
 import { TOOLS, TOOL_SECTIONS, toolsByCategory } from '~/data/tools'
+import { getResearch } from '~/data/toolResearch'
 
 dayjs.extend(relativeTime)
-const { t } = useI18n()
+const { t, te } = useI18n()
 const localePath = useLocalePath()
+
+// Card blurb: localized per-tool desc when present, else the tool's research
+// one-liner (English) — covers tools without a communityTools.desc key (e.g. our
+// own self-listing).
+function cardDesc(tool: { slug: string }): string {
+  const key = 'communityTools.desc.' + tool.slug
+  return te(key) ? t(key) : getResearch(tool.slug)?.oneLiner || ''
+}
 
 const openSourceCount = computed(() => TOOLS.filter((x) => x.openSource).length)
 const verifiedCount = computed(() => TOOLS.filter((x) => x.verified).length)

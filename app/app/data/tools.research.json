@@ -3541,5 +3541,45 @@
       "Viewed negatively by much of the Warframe community as harmful to the trade economy",
       "Real-cash payment and account-interaction risks beyond in-game consequences"
     ]
+  },
+  "warframe-market-analytics": {
+    "slug": "warframe-market-analytics",
+    "oneLiner": "A free analytics layer on top of Warframe.market — live prime prices, set-vs-parts, ducat & relic value, riven pricing, flip signals and vaulted tracking, in 13 languages.",
+    "overview": "Warframe Market Analytics (this site) is a free, open-source web app that turns live Warframe.market order data into decisions. Instead of eyeballing individual listings it ranks and calculates: whether a prime set is cheaper assembled or by parts, the expected platinum payout of every relic, the best ducats-per-platinum parts, riven fair value, the widest liquid flip spreads, vaulted-price trends, and a live order feed with worth-it verdicts. Item names and the whole interface are localized into 13 languages.",
+    "keyFeatures": [
+      "Live prime/part prices with set-vs-parts comparison",
+      "Relic value (crack vs sell) + relic-farming EV rankings",
+      "Ducat efficiency rankings for Baro Ki'Teer",
+      "Riven fair-value estimator",
+      "Flip finder — widest liquid spreads with fill-confidence",
+      "Vaulted-price tracking, top movers, volatility, buy/sell timing",
+      "Interactive star-chart drop map + per-item drop locations",
+      "Live market signal feed with worth-it verdicts",
+      "Portfolio tracker with watchlist and price alerts",
+      "13-language localized item names + UI"
+    ],
+    "bestFor": "Traders who want analytics and decisions — not just raw listings — on top of Warframe.market data.",
+    "pros": [
+      "Free and open-source; no login for most tools",
+      "Turns raw market data into rankings and calculators",
+      "Broad coverage: sets, relics, ducats, rivens, flips, vaulted, drops",
+      "Localized into 13 languages",
+      "Fast SSR pages, PWA installable"
+    ],
+    "cons": [
+      "Newer than long-established tools, so a smaller community track record so far",
+      "Prices are only as fresh as its sync cadence (near-real-time, not instant)",
+      "Depends on Warframe.market data availability"
+    ],
+    "sentimentSummary": "This is our own tool, listed transparently. It is an analytics/decision layer over Warframe.market rather than a replacement — it reuses the same public data most trading tools rely on and adds calculators, rankings and signals. Being newer, it has a smaller track record than staples like Warframe.market or Overframe, so we let it stand next to the alternatives it links to.",
+    "safety": {
+      "rating": "safe",
+      "notes": "Web-based and read-only: no game-memory access, no account credentials, no real-money transactions. Open source (github.com/eduair94/warframe). Prices are a guide, not a guarantee."
+    },
+    "tier": "recommended",
+    "tierReason": "A broad, free analytics suite built on Warframe.market data. Listed transparently as our own site — judge it against the alternatives it links to.",
+    "dataConfidence": "high",
+    "youtube": [],
+    "otherReviews": []
   }
 }

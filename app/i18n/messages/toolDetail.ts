@@ -11,6 +11,12 @@ export default {
       noData: 'Limited external coverage found for this tool — the summary above is based on its own site and our checks.',
       card: { details: 'Details' },
       index: { bestGuideCta: 'Best must-have tools guide' },
+      self: {
+        thisSite: 'This site',
+        enhancerLabel: 'Enhance this tool',
+        altLabel: 'Free alternative',
+        cta: 'Open Warframe Market Analytics',
+      },
       sections: {
         overview: 'Overview',
         features: 'Key features',

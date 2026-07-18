@@ -17,6 +17,7 @@
         </div>
         <div class="td-hero__text">
           <div class="td-hero__badges">
+            <span v-if="tool.self" class="an-chip td-self">★ {{ t('toolDetail.self.thisSite') }}</span>
             <span class="an-chip td-tier" :class="'is-' + (research?.tier || 'niche')">{{ tierLabel }}</span>
             <span v-if="tool.verified" class="an-chip td-verified">✓ {{ t('communityTools.verified') }}</span>
             <span class="an-chip td-safety" :class="'is-' + (research?.safety.rating || 'safe')">{{ safetyLabel }}</span>
@@ -35,6 +36,17 @@
           <div v-else-if="tool.caveat === 'partial'" class="ct-warn ct-warn--partial td-warn">{{ t('communityTools.caveat.partial') }}</div>
         </div>
       </header>
+
+      <!-- Cross-reference to this site (enhancer / alternative) -->
+      <aside v-if="selfRel" class="td-selfref" :class="'is-' + selfRel.type">
+        <div class="td-selfref__label">
+          {{ selfRel.type === 'enhancer' ? t('toolDetail.self.enhancerLabel') : t('toolDetail.self.altLabel') }}
+        </div>
+        <div class="td-selfref__body">
+          <strong>Warframe Market Analytics</strong> — {{ selfRel.reason }}
+        </div>
+        <NuxtLink class="td-selfref__cta" :to="localePath(selfRel.href)">{{ t('toolDetail.self.cta') }} →</NuxtLink>
+      </aside>
 
       <div class="td-body">
         <div class="td-main">
@@ -152,6 +164,12 @@
             <p class="td-safety__notes">{{ research.safety.notes }}</p>
           </div>
 
+          <!-- Community & social links -->
+          <div v-if="tool.social" class="an-card td-socials">
+            <div class="td-side__h">{{ t('communityTools.social.title') }}</div>
+            <ToolSocials :social="tool.social" variant="full" />
+          </div>
+
           <!-- Facts -->
           <div class="an-card td-facts">
             <div class="td-side__h">{{ t('toolDetail.sections.facts') }}</div>
@@ -173,7 +191,7 @@
         <div class="td-related__grid">
           <NuxtLink v-for="rt in related" :key="rt.slug" class="an-card td-rel" :to="localePath('/tools/' + rt.slug)">
             <span class="td-rel__name">{{ rt.name }}</span>
-            <span class="td-rel__desc">{{ t('communityTools.desc.' + rt.slug) }}</span>
+            <span class="td-rel__desc">{{ toolDesc(rt.slug) }}</span>
           </NuxtLink>
         </div>
       </section>
@@ -188,7 +206,7 @@ import { computed, nextTick, onMounted } from 'vue'
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
 import { TOOLS } from '~/data/tools'
-import { getResearch } from '~/data/toolResearch'
+import { getResearch, SELF_SLUG, selfRelation } from '~/data/toolResearch'
 
 dayjs.extend(relativeTime)
 const { t, te } = useI18n()
@@ -221,6 +239,19 @@ const hasSources = computed(
 const redditSearchUrl = computed(
   () => `https://www.reddit.com/r/Warframe/search/?q=${encodeURIComponent(tool.value?.name || '')}&restrict_sr=1&sort=relevance`,
 )
+
+// Cross-reference to THIS site when the current tool is one we enhance or offer
+// an alternative to (never on our own page).
+const selfRel = computed(() =>
+  tool.value && tool.value.slug !== SELF_SLUG ? selfRelation(tool.value.slug) : undefined,
+)
+
+// Localized per-tool blurb with an English research fallback (covers tools with
+// no communityTools.desc key, e.g. our own self-listing).
+function toolDesc(s: string): string {
+  const key = 'communityTools.desc.' + s
+  return te(key) ? t(key) : getResearch(s)?.oneLiner || ''
+}
 
 const related = computed(() =>
   TOOLS.filter((x) => x.category === tool.value?.category && x.slug !== slug.value)
@@ -277,6 +308,17 @@ onMounted(() => finishLoading())
 .td-safety.is-safe { color: var(--energy) !important; }
 .td-safety.is-caution { color: var(--orokin) !important; }
 .td-safety.is-risky { color: var(--rose) !important; }
+.td-self { background: linear-gradient(90deg, var(--orokin), var(--gold-ink)) !important; color: #17130a !important; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; }
+
+.td-selfref { margin: 0 30px 8px; padding: 16px 18px; display: flex; flex-direction: column; gap: 8px; background: rgba(79, 179, 191, 0.06); border: 1px solid rgba(79, 179, 191, 0.32); border-left: 3px solid var(--energy); clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px); }
+.td-selfref.is-enhancer { background: rgba(200, 168, 92, 0.07); border-color: var(--orokin-line); border-left-color: var(--orokin); }
+.td-selfref__label { font-family: var(--font-hud); text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.72rem; color: var(--energy); }
+.td-selfref.is-enhancer .td-selfref__label { color: var(--gold-ink); }
+.td-selfref__body { color: #dfe3f0; font-size: 0.94rem; line-height: 1.55; }
+.td-selfref__body strong { color: var(--ink); }
+.td-selfref__cta { align-self: flex-start; font-family: var(--font-hud); font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; font-size: 0.8rem; color: #17130a; background: var(--orokin); text-decoration: none; padding: 8px 16px; clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px); }
+.td-selfref__cta:hover { background: var(--gold-ink); }
+@media (max-width: 860px) { .td-selfref { margin-left: 16px; margin-right: 16px; } }
 
 .td-body { display: grid; grid-template-columns: 1fr minmax(0, 300px); gap: 26px; padding: 8px 30px 24px; align-items: start; }
 .td-sec { padding: 16px 0; border-top: 1px solid rgba(255, 255, 255, 0.06); }
@@ -324,6 +366,7 @@ onMounted(() => finishLoading())
 .td-safetybox.is-risky .td-safety__rating { color: var(--rose); }
 .td-safety__notes { color: #cdd2e4; font-size: 0.88rem; line-height: 1.55; margin: 0; }
 .td-facts { padding: 16px; }
+.td-socials { padding: 16px; }
 .td-dl { margin: 0; }
 .td-dl > div { display: flex; justify-content: space-between; gap: 12px; padding: 5px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.86rem; }
 .td-dl > div:last-child { border-bottom: none; }
