@@ -91,6 +91,11 @@ export const PAGE_SEO: Record<string, PageSeo> = {
     description:
       'Find the best hours to buy and sell each Warframe Market item, based on historical price and trade-volume patterns. Time your trades in plat.'
   },
+  '/tools': {
+    title: 'Warframe Tools Directory — Best Community Apps & Sites',
+    description:
+      'The verified directory of the best third-party Warframe tools: trading, build planners, drop tables, riven calculators, world-state trackers, apps and Discord bots.'
+  },
   '/vault-spikes': {
     title: 'Vault Spikes — Warframe Prime Price Jumps',
     description:
