@@ -1,5 +1,6 @@
 import sources from './tools.source.json'
 import enriched from './tools.enriched.json'
+import socials from './tools.socials.json'
 
 export type ToolCategory =
   | 'trading' | 'database' | 'worldstate' | 'farming'
@@ -54,6 +55,10 @@ export interface ToolMeta {
 }
 
 const enrichedMap = enriched as Record<string, Partial<ToolMeta>>
+// Curated official social/community links, keyed by slug (see the tool-socials
+// research flow). Merged in like enrichment; an explicit `social` in the source
+// still wins.
+const socialsMap = socials as Record<string, ToolSocial>
 
 export const TOOLS: ToolMeta[] = (sources as any[]).map((s) => ({
   ...s,
@@ -62,6 +67,7 @@ export const TOOLS: ToolMeta[] = (sources as any[]).map((s) => ({
   // (used by the self-listing, which isn't part of the enrichment run).
   verified: enrichedMap[s.slug]?.verified ?? s.verified ?? false,
   screenshot: enrichedMap[s.slug]?.screenshot ?? s.screenshot,
+  social: (s.social as ToolSocial | undefined) ?? socialsMap[s.slug],
 }))
 
 // Directory sections, in display order (see spec §4).

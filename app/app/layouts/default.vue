@@ -115,6 +115,9 @@
     <!-- Browser-language suggestion (client-only, cache-safe): offers a one-tap
          switch when the visitor's browser language differs from the current one. -->
     <LocaleSuggestion />
+
+    <!-- Persistent "support the project" heart button (every page). -->
+    <DonationFab />
   </v-app>
 </template>
 

@@ -30,6 +30,7 @@ export default {
         rmt: 'Real-money trading — against the Warframe EULA; ban risk.',
         partial: 'Partly maintained — live fissure data is frozen; use for wishlist/relic lookup.',
       },
+      social: { title: 'Community & links' },
       desc: {
         'warframe-market': 'The dominant player-to-player marketplace for prime parts, sets, mods, rivens, arcanes and relics, with live buy/sell orders, price stats, and a Riven/Lich auction house.',
         'warframe-wiki': "Digital Extremes' officially designated player-maintained encyclopedia — the definitive reference for item/weapon/mod stats, drop locations, mechanics, build math, and lore.",

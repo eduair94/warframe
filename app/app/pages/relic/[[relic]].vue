@@ -247,14 +247,33 @@
       </template>
     </div>
 
-    <!-- Support the project (kept from the original page) -->
+    <!-- Support the project — same donation links as the home page (the heart
+         FAB in the layout opens the full donation dialog on every page). -->
     <div class="rl-donate">
       <span class="rl-donate__lbl">{{ t('relic_help_donate') }}</span>
-      <a target="_blank" rel="noopener" :aria-label="t('relicDetail.donatePaypal')" href="https://ko-fi.com/cambio_uruguay">
-        <v-img max-width="40" height="40" src="/img/paypal_icon.png" />
+      <a
+        class="rl-donate__logo"
+        target="_blank"
+        rel="noopener"
+        :aria-label="t('home.donate.paypalAria')"
+        href="https://ko-fi.com/cambio_uruguay"
+      >
+        <picture>
+          <source srcset="/img/paypal_icon.webp" type="image/webp" />
+          <img src="/img/paypal_icon.png" alt="PayPal" width="44" height="44" />
+        </picture>
       </a>
-      <a target="_blank" rel="noopener" :aria-label="t('relicDetail.donateMercadoPago')" href="https://mpago.la/19j46vX">
-        <v-img max-width="40" height="40" src="/img/mercadopago_icon.png" />
+      <a
+        class="rl-donate__logo"
+        target="_blank"
+        rel="noopener"
+        :aria-label="t('home.donate.mercadopagoAria')"
+        href="https://mpago.la/19j46vX"
+      >
+        <picture>
+          <source srcset="/img/mercadopago_icon.webp" type="image/webp" />
+          <img src="/img/mercadopago_icon.png" alt="Mercado Pago" width="44" height="44" />
+        </picture>
       </a>
     </div>
 
@@ -1325,6 +1344,25 @@ onMounted(() => {
   letter-spacing: 0.1em;
   font-size: 0.72rem;
   color: var(--ink-dim);
+}
+.rl-donate__logo {
+  display: inline-flex;
+  line-height: 0;
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+.rl-donate__logo img {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  border-radius: 6px;
+}
+.rl-donate__logo:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.12);
+}
+.rl-donate__logo:focus-visible {
+  outline: 2px solid var(--energy);
+  outline-offset: 2px;
 }
 
 @media (max-width: 760px) {
