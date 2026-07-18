@@ -17,6 +17,7 @@ export default {
         analytics: 'Analytics',
         tools: 'Tools',
         guides: 'Guides',
+        resources: 'Resources',
       },
       items: {
         home: 'Home',
@@ -40,6 +41,7 @@ export default {
         rivenValue: 'Riven Value',
         portfolio: 'Portfolio',
         endoGuide: 'Endo Guide',
+        communityTools: 'Community Tools',
       },
       tourSteps: {
         next: 'Next',
@@ -85,6 +87,7 @@ export default {
         analytics: 'Análisis',
         tools: 'Herramientas',
         guides: 'Guías',
+        resources: 'Recursos',
       },
       items: {
         home: 'Inicio',
@@ -108,6 +111,7 @@ export default {
         rivenValue: 'Valor de Riven',
         portfolio: 'Portafolio',
         endoGuide: 'Guía de Endo',
+        communityTools: 'Herramientas de la Comunidad',
       },
       tourSteps: {
         next: 'Siguiente',
@@ -154,6 +158,7 @@ export default {
         analytics: 'Análises',
         tools: 'Ferramentas',
         guides: 'Guias',
+        resources: 'Recursos',
       },
       items: {
         home: 'Início',
@@ -177,6 +182,7 @@ export default {
         rivenValue: 'Valor de Riven',
         portfolio: 'Portfólio',
         endoGuide: 'Guia de Endo',
+        communityTools: 'Ferramentas da Comunidade',
       },
       tourSteps: {
         next: 'Próximo',
@@ -223,6 +229,7 @@ export default {
         analytics: 'Analysen',
         tools: 'Werkzeuge',
         guides: 'Guides',
+        resources: 'Ressourcen',
       },
       items: {
         home: 'Startseite',
@@ -246,6 +253,7 @@ export default {
         rivenValue: 'Riven-Wert',
         portfolio: 'Portfolio',
         endoGuide: 'Endo-Guide',
+        communityTools: 'Community-Tools',
       },
       tourSteps: {
         next: 'Weiter',
@@ -292,6 +300,7 @@ export default {
         analytics: 'Analyses',
         tools: 'Outils',
         guides: 'Guides',
+        resources: 'Ressources',
       },
       items: {
         home: 'Accueil',
@@ -315,6 +324,7 @@ export default {
         rivenValue: 'Valeur des Riven',
         portfolio: 'Portefeuille',
         endoGuide: 'Guide Endo',
+        communityTools: 'Outils communautaires',
       },
       tourSteps: {
         next: 'Suivant',
@@ -361,6 +371,7 @@ export default {
         analytics: 'Аналитика',
         tools: 'Инструменты',
         guides: 'Гайды',
+        resources: 'Ресурсы',
       },
       items: {
         home: 'Главная',
@@ -384,6 +395,7 @@ export default {
         rivenValue: 'Ценность Riven',
         portfolio: 'Портфель',
         endoGuide: 'Гайд по Endo',
+        communityTools: 'Инструменты сообщества',
       },
       tourSteps: {
         next: 'Далее',
@@ -430,6 +442,7 @@ export default {
         analytics: '분석',
         tools: '도구',
         guides: '가이드',
+        resources: '리소스',
       },
       items: {
         home: '홈',
@@ -453,6 +466,7 @@ export default {
         rivenValue: 'Riven 가치',
         portfolio: '포트폴리오',
         endoGuide: 'Endo 가이드',
+        communityTools: '커뮤니티 도구',
       },
       tourSteps: {
         next: '다음',
@@ -499,6 +513,7 @@ export default {
         analytics: '分析',
         tools: 'ツール',
         guides: 'ガイド',
+        resources: 'リソース',
       },
       items: {
         home: 'ホーム',
@@ -522,6 +537,7 @@ export default {
         rivenValue: 'Riven価値',
         portfolio: 'ポートフォリオ',
         endoGuide: 'Endoガイド',
+        communityTools: 'コミュニティツール',
       },
       tourSteps: {
         next: '次へ',
@@ -568,6 +584,7 @@ export default {
         analytics: '分析',
         tools: '工具',
         guides: '指南',
+        resources: '资源',
       },
       items: {
         home: '首页',
@@ -591,6 +608,7 @@ export default {
         rivenValue: 'Riven 价值',
         portfolio: '投资组合',
         endoGuide: 'Endo 指南',
+        communityTools: '社区工具',
       },
       tourSteps: {
         next: '下一步',
@@ -637,6 +655,7 @@ export default {
         analytics: '分析',
         tools: '工具',
         guides: '指南',
+        resources: '資源',
       },
       items: {
         home: '首頁',
@@ -660,6 +679,7 @@ export default {
         rivenValue: 'Riven 價值',
         portfolio: '投資組合',
         endoGuide: 'Endo 指南',
+        communityTools: '社群工具',
       },
       tourSteps: {
         next: '下一步',
@@ -706,6 +726,7 @@ export default {
         analytics: 'Analizy',
         tools: 'Narzędzia',
         guides: 'Poradniki',
+        resources: 'Zasoby',
       },
       items: {
         home: 'Start',
@@ -729,6 +750,7 @@ export default {
         rivenValue: 'Wartość Riven',
         portfolio: 'Portfel',
         endoGuide: 'Poradnik Endo',
+        communityTools: 'Narzędzia społeczności',
       },
       tourSteps: {
         next: 'Dalej',
@@ -775,6 +797,7 @@ export default {
         analytics: 'Analisi',
         tools: 'Strumenti',
         guides: 'Guide',
+        resources: 'Risorse',
       },
       items: {
         home: 'Home',
@@ -798,6 +821,7 @@ export default {
         rivenValue: 'Valore dei Riven',
         portfolio: 'Portafoglio',
         endoGuide: "Guida all'Endo",
+        communityTools: 'Strumenti della community',
       },
       tourSteps: {
         next: 'Avanti',
@@ -844,6 +868,7 @@ export default {
         analytics: 'Аналітика',
         tools: 'Інструменти',
         guides: 'Гайди',
+        resources: 'Ресурси',
       },
       items: {
         home: 'Головна',
@@ -867,6 +892,7 @@ export default {
         rivenValue: 'Цінність Riven',
         portfolio: 'Портфель',
         endoGuide: 'Гайд по Endo',
+        communityTools: 'Інструменти спільноти',
       },
       tourSteps: {
         next: 'Далі',

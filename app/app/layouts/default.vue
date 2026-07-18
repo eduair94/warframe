@@ -195,6 +195,7 @@ const navLinks: NavLink[] = [
   { to: '/riven-value', key: 'rivenValue', icon: 'mdi-star-four-points-outline', group: 'Tools' },
   { to: '/portfolio', key: 'portfolio', icon: 'mdi-briefcase-variant-outline', group: 'Tools' },
   { to: '/guides/endo', key: 'endoGuide', icon: 'mdi-book-open-variant', group: 'Guides' },
+  { to: '/tools', key: 'communityTools', icon: 'mdi-tools', group: 'Resources' },
 ]
 
 // Groups the nav links for the drawer, in a fixed section order
@@ -203,9 +204,10 @@ const SECTION_KEYS: Record<string, string> = {
   Analytics: 'analytics',
   Tools: 'tools',
   Guides: 'guides',
+  Resources: 'resources',
 }
 const drawerSections = computed(() => {
-  const order: (string | null)[] = [null, 'Prices', 'Analytics', 'Tools', 'Guides']
+  const order: (string | null)[] = [null, 'Prices', 'Analytics', 'Tools', 'Guides', 'Resources']
   return order
     .map((g) => ({
       key: g ? SECTION_KEYS[g] : null,
