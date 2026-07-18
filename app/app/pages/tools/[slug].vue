@@ -106,18 +106,30 @@
             </a>
           </section>
 
-          <!-- YouTube -->
-          <section v-if="research?.youtube?.length" class="td-sec">
+          <!-- YouTube — embedded facade players; link fallback for non-video URLs -->
+          <section v-if="youtubeVideos.length" class="td-sec">
             <h3 class="td-sub__title">{{ t('toolDetail.sections.youtube') }}</h3>
-            <ul class="td-links">
-              <li v-for="(v, i) in research.youtube" :key="i" class="td-link">
-                <span class="td-yt">▶</span>
-                <div class="td-link__body">
-                  <a :href="v.url" target="_blank" rel="noopener nofollow">{{ v.title }}</a>
-                  <span v-if="v.channel" class="td-link__meta">{{ v.channel }}</span>
-                </div>
-              </li>
-            </ul>
+            <div class="td-videos">
+              <template v-for="(v, i) in youtubeVideos" :key="i">
+                <YouTubeEmbed
+                  v-if="v.id"
+                  :id="v.id"
+                  :title="v.title || tool.name"
+                  :channel="ytChannel(v.channel)"
+                  max="100%"
+                />
+                <a
+                  v-else
+                  class="td-link td-vid-fallback"
+                  :href="v.url"
+                  target="_blank"
+                  rel="noopener nofollow"
+                >
+                  <span class="td-yt">▶</span>
+                  <span class="td-link__body">{{ v.title || v.url }}</span>
+                </a>
+              </template>
+            </div>
           </section>
 
           <!-- Other reviews / feedback -->
@@ -231,6 +243,25 @@ const tierLabel = computed(() => t('toolDetail.tier.' + (research.value?.tier ||
 const safetyLabel = computed(() => t('toolDetail.safety.' + (research.value?.safety.rating || 'safe')))
 const hasSources = computed(
   () => !!(research.value?.reddit?.length || research.value?.youtube?.length || research.value?.otherReviews?.length || research.value?.trustpilot),
+)
+
+// Extract an 11-char YouTube video id from watch / youtu.be / embed / shorts
+// URLs. Returns '' for anything that isn't a single video (channels, playlists,
+// search) so those degrade to a plain link.
+function ytId(url: string): string {
+  const m = String(url || '').match(
+    /(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([A-Za-z0-9_-]{11})/,
+  )
+  return m ? m[1] : ''
+}
+// Drop the generic "YouTube" placeholder channel so the embed shows no label
+// rather than a meaningless one.
+function ytChannel(c?: string): string {
+  return c && c.toLowerCase() !== 'youtube' ? c : ''
+}
+// Pre-resolve each review video's embeddable id (empty → link fallback).
+const youtubeVideos = computed(() =>
+  (research.value?.youtube || []).map((v) => ({ ...v, id: ytId(v.url) })),
 )
 
 // Live r/Warframe search for this tool — a deterministic, always-valid link so
@@ -347,6 +378,9 @@ onMounted(() => finishLoading())
 .td-dot.is-mixed { background: var(--orokin); }
 .td-dot.is-negative { background: var(--rose); }
 .td-yt { color: var(--rose); font-size: 0.9rem; margin-top: 2px; }
+/* Review videos → responsive grid of 16:9 facade players (1-up mobile, 2-up wide) */
+.td-videos { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+.td-vid-fallback { display: flex; align-items: center; gap: 8px; }
 .td-reddit-cta { display: inline-block; margin-top: 10px; font-family: var(--font-hud); font-size: 0.84rem; color: var(--energy); text-decoration: none; }
 .td-reddit-cta:hover { color: var(--gold-ink); text-decoration: underline; }
 .td-nodata { color: var(--ink-dim); font-style: italic; font-size: 0.9rem; }
