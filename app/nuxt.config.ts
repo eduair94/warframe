@@ -2,6 +2,15 @@
 import {
   en, es, pt, de, fr, ru, ko, ja, zhHans, zhHant, pl, it, uk
 } from 'vuetify/locale'
+import toolSources from './app/data/tools.source.json'
+
+// Dynamic /tools/<slug> detail routes + the best-tools guide aren't discoverable
+// by the sitemap module (they're rendered from a data file, not static pages),
+// so feed them in explicitly. English content, so no per-locale variants needed.
+const TOOL_ROUTES: string[] = [
+  '/tools/best',
+  ...(toolSources as Array<{ slug: string }>).map((t) => `/tools/${t.slug}`),
+]
 
 // The full set of crawlable locales the site ships. `code` is the i18n locale
 // (and, crucially, the exact `Language` code warframe.market uses — esp.
@@ -245,6 +254,12 @@ export default defineNuxtConfig({
   // auto-discovers routes from the pages dir like the old default did.
   site: {
     url: SITE_URL
+  },
+
+  // Feed the data-driven /tools detail routes to the sitemap (auto-discovery
+  // only finds static page files). See TOOL_ROUTES above.
+  sitemap: {
+    urls: TOOL_ROUTES
   },
 
   // nuxt-og-image — one branded Orokin card (components/OgImage/Void.vue) is

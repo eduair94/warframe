@@ -1,4 +1,4 @@
-<!-- app/app/pages/tools.vue -->
+<!-- app/app/pages/tools/index.vue -->
 <template>
   <div class="an ct">
     <article class="an-console">
@@ -7,6 +7,9 @@
           <div class="an-eyebrow">{{ t('communityTools.hero.eyebrow') }}</div>
           <h1 class="an-title">{{ t('communityTools.hero.title') }}</h1>
           <p class="an-lede">{{ t('communityTools.hero.lede') }}</p>
+          <NuxtLink class="ct-guide-cta" :to="localePath('/tools/best')">
+            ★ {{ t('toolDetail.index.bestGuideCta') }}
+          </NuxtLink>
         </div>
       </header>
 
@@ -36,7 +39,9 @@
             </div>
             <div class="ct-card__body">
               <div class="ct-card__head">
-                <h3 class="ct-card__name">{{ tool.name }}</h3>
+                <h3 class="ct-card__name">
+                  <NuxtLink class="ct-card__namelink" :to="localePath('/tools/' + tool.slug)">{{ tool.name }}</NuxtLink>
+                </h3>
                 <span class="ct-plats">
                   <span v-for="p in tool.platforms" :key="p" class="an-chip ct-plat">{{ t('communityTools.platform.' + p) }}</span>
                 </span>
@@ -59,8 +64,8 @@
               </div>
 
               <div class="ct-actions">
-                <a class="ct-visit" :href="tool.url" target="_blank" rel="noopener nofollow">{{ t('communityTools.visit') }}</a>
-                <a v-if="tool.github" class="ct-sub" :href="'https://github.com/' + tool.github" target="_blank" rel="noopener nofollow">{{ t('communityTools.viewGithub') }}</a>
+                <NuxtLink class="ct-visit" :to="localePath('/tools/' + tool.slug)">{{ t('toolDetail.card.details') }}</NuxtLink>
+                <a class="ct-sub" :href="tool.url" target="_blank" rel="noopener nofollow">{{ t('communityTools.visit') }}</a>
               </div>
             </div>
           </article>
@@ -80,6 +85,7 @@ import { TOOLS, TOOL_SECTIONS, toolsByCategory } from '~/data/tools'
 
 dayjs.extend(relativeTime)
 const { t } = useI18n()
+const localePath = useLocalePath()
 
 const openSourceCount = computed(() => TOOLS.filter((x) => x.openSource).length)
 const verifiedCount = computed(() => TOOLS.filter((x) => x.verified).length)
@@ -113,6 +119,10 @@ onMounted(() => finishLoading())
 .ct-card__body { padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
 .ct-card__head { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
 .ct-card__name { font-family: var(--font-display); color: var(--ink); font-size: 1.06rem; margin: 0; }
+.ct-card__namelink { color: inherit; text-decoration: none; }
+.ct-card__namelink:hover { color: var(--gold-ink); }
+.ct-guide-cta { display: inline-block; margin-top: 16px; font-family: var(--font-hud); font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; font-size: 0.84rem; color: var(--gold-ink); text-decoration: none; padding: 9px 18px; border: 1px solid var(--orokin-line); clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px); }
+.ct-guide-cta:hover { background: rgba(200, 168, 92, 0.12); }
 .ct-plats { display: flex; flex-wrap: wrap; gap: 4px; justify-content: flex-end; }
 .ct-plat.an-chip { font-size: 0.62rem !important; padding: 1px 7px !important; }
 .ct-card__desc { color: #cdd2e4; font-size: 0.88rem; line-height: 1.5; margin: 0; flex: 1; }
