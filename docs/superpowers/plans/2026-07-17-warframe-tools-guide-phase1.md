@@ -312,7 +312,7 @@ GITHUB_TOKEN=
 Temporarily create `app/app/data/tools.source.json` with two entries and run:
 
 ```bash
-SNUSBASE_TOKEN=sbxmyry2bxm4k9sbsz5ranfd6mxu6y npm run enrich_tools
+SNUSBASE_TOKEN="$SNUSBASE_TOKEN" npm run enrich_tools   # token from .env / shell env, never inline
 ```
 
 Expected: console prints `warframe-market http=200 age=11 ...`, writes `tools.enriched.json`. (Real full run happens in Task 4 after the full source list + screenshots exist.)
@@ -509,7 +509,7 @@ git commit -m "feat(tools): curated source list (52 tools) + merged typed export
 - [ ] **Step 1: Run enrichment against the full list**
 
 ```bash
-SNUSBASE_TOKEN=sbxmyry2bxm4k9sbsz5ranfd6mxu6y npm run enrich_tools
+SNUSBASE_TOKEN="$SNUSBASE_TOKEN" npm run enrich_tools   # token from .env / shell env, never inline
 ```
 
 Expected: one console line per tool with `http=`, `age=`, `stars=`. Most `http=200/301/302`. Note any `http=0` or `4xx/5xx` — investigate the URL (fix in `tools.source.json` and re-run). Screenshots don't exist yet, so `verified` is false for all this pass — that's expected; Task 5 adds shots and re-runs.
@@ -574,7 +574,7 @@ Expected: `webp <slug>` per capture; `_raw/` removed; `app/public/img/tools/*.we
 - [ ] **Step 4: Re-run enrichment so screenshots register + verified flips true**
 
 ```bash
-cd .. && SNUSBASE_TOKEN=sbxmyry2bxm4k9sbsz5ranfd6mxu6y npm run enrich_tools
+cd .. && SNUSBASE_TOKEN="$SNUSBASE_TOKEN" npm run enrich_tools   # token from .env / shell env, never inline
 ```
 
 Expected: tools with a WebP now show `shot=true` and `verified:true`.
@@ -768,7 +768,7 @@ git commit -m "feat(seo): /tools directory title + description"
                   <span v-for="p in tool.platforms" :key="p" class="an-chip ct-plat">{{ t('communityTools.platform.' + p) }}</span>
                 </span>
               </div>
-              <p class="ct-card__desc">{{ t('desc.' + tool.slug) }}</p>
+              <p class="ct-card__desc">{{ t('communityTools.desc.' + tool.slug) }}</p>
 
               <div v-if="tool.caveat === 'rmt'" class="ct-warn ct-warn--rmt">⚠ {{ t('communityTools.caveat.rmt') }}</div>
               <div v-else-if="tool.caveat === 'partial'" class="ct-warn ct-warn--partial">{{ t('communityTools.caveat.partial') }}</div>
@@ -858,11 +858,11 @@ onMounted(() => finishLoading())
 </style>
 ```
 
-Note on descriptions: the card renders `t('desc.' + tool.slug)`. Add a `desc` namespace with the English tool descriptions (source them from `scratchpad/wf_curated.json`) to `communityTools.ts` under `en.desc.<slug>`. Keep each ~1 sentence. (These are content, not chrome — English-only is fine; fallback covers other locales.)
+Note on descriptions: the card renders `t('communityTools.desc.' + tool.slug)`. Add a `desc` object **inside** `communityTools` (i.e. `en.communityTools.desc.<slug>`) with the English tool descriptions (source them from `scratchpad/wf_curated.json`). Keep each ~1 sentence. (These are content, not chrome — English-only is fine; fallback covers other locales.)
 
-- [ ] **Step 2: Add the `desc.<slug>` block**
+- [ ] **Step 2: Add the `communityTools.desc.<slug>` block**
 
-In `app/i18n/messages/communityTools.ts`, add a sibling `desc` object under `en` mapping every slug in `tools.source.json` to its one-line description (from `wf_curated.json`). Example entries:
+In `app/i18n/messages/communityTools.ts`, inside the `en.communityTools` object add a `desc` object mapping every slug in `tools.source.json` to its one-line description (from `wf_curated.json`). Example entries:
 
 ```ts
       desc: {
