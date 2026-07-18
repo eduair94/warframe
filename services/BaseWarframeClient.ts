@@ -33,6 +33,7 @@ import { PriceHistoryService } from './PriceHistoryService';
 import { RelicService } from './RelicService';
 import { RivenService } from './RivenService';
 import { SetService } from './SetService';
+import { TranslationService, TranslationMap } from './TranslationService';
 import { WarframeItemsResponse } from "./WarframeItems.interface";
 import { IEndoFlipResponse, IEndoFlipRow } from '../interfaces/endo.interface';
 import { isEndoRankableMod } from './EndoCost';
@@ -114,6 +115,9 @@ export abstract class BaseWarframeClient {
   /** Drop-data service: mission/relic drops joined with market prices (Star Chart) */
   protected readonly dropService: DropService;
 
+  /** Localized game-noun name dictionaries (i18n), see TranslationService */
+  protected readonly translationService: TranslationService;
+
   /** Configuration */
   protected readonly config: WarframeClientConfig;
 
@@ -169,6 +173,9 @@ export abstract class BaseWarframeClient {
 
     // Initialize item service (shared, no HTTP dependency)
     this.itemService = new ItemService();
+
+    // Localized name dictionaries (i18n) — shared, no HTTP dependency for reads.
+    this.translationService = new TranslationService();
   }
 
   /**
@@ -298,6 +305,33 @@ export abstract class BaseWarframeClient {
    */
   async getItemsDatabase(): Promise<any[]> {
     return this.itemService.getAllItems();
+  }
+
+  // =====================================
+  // Translations (i18n) — Shared Implementation
+  // =====================================
+
+  /**
+   * Fetches a warframe.market v2 collection localized into `lang`.
+   * Used by the translation collector; delegates to MarketService.
+   */
+  async getLocalizedCollection<T = any>(path: string, lang: string): Promise<T> {
+    return this.marketService.getLocalizedCollection<T>(path, lang);
+  }
+
+  /**
+   * Reads the stored `{ slug -> localized name }` dictionary for one
+   * (scope, lang). Returns `{}` for English or an uncollected pair.
+   */
+  async getTranslations(scope: string, lang: string): Promise<TranslationMap> {
+    return this.translationService.getMap(scope, lang);
+  }
+
+  /**
+   * Upserts a localized name dictionary for one (scope, lang).
+   */
+  async saveTranslations(scope: string, lang: string, map: TranslationMap): Promise<void> {
+    return this.translationService.saveMap(scope, lang, map);
   }
 
   /**

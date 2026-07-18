@@ -157,8 +157,60 @@ export const COLLECTIONS = {
   PRICE_HISTORY: 'warframe-price-history',
 
   /** WFCD drop-data backup: two documents (map + index), see DropService */
-  DROPS: 'warframe-drops'
+  DROPS: 'warframe-drops',
+
+  /** Localized game-noun name dictionaries: one document per (scope, lang), see TranslationService */
+  TRANSLATIONS: 'warframe-translations'
 } as const;
+
+/**
+ * i18n: locale codes warframe.market's v2 API serves with real (non-sparse)
+ * translations. English is the canonical/base language (already stored as
+ * `item_name`), so these are the NON-EN languages the translation collector
+ * fetches and the frontend can localize into. Probed `sv`, `cs`, `th` return
+ * sparse/empty content and are intentionally excluded.
+ *
+ * NOTE: these codes are sent verbatim as the `Language:` request header to
+ * warframe.market AND used as the frontend i18n locale codes, so the two must
+ * stay identical (esp. `zh-hans` / `zh-hant`).
+ */
+export const TRANSLATION_LANGS = [
+  'de', 'fr', 'ru', 'ko', 'ja', 'zh-hans', 'zh-hant', 'pt', 'es', 'pl', 'it', 'uk'
+] as const;
+
+export type TranslationLang = typeof TRANSLATION_LANGS[number];
+
+/**
+ * i18n: every warframe.market v2 collection whose entity names we localize.
+ * `path` is appended to API_URLS.WARFRAME_MARKET_V2; `nameField` is the i18n
+ * sub-field holding the display name (locations use `nodeName`, everything else
+ * `name`). `keyField` is the stable, language-independent lookup key stored in
+ * the dictionary (always the entity `slug`).
+ */
+export const TRANSLATION_SCOPES = [
+  { scope: 'items',            path: '/items',             nameField: 'name' },
+  { scope: 'riven-weapons',    path: '/riven/weapons',     nameField: 'name' },
+  { scope: 'riven-attributes', path: '/riven/attributes',  nameField: 'name' },
+  { scope: 'lich-weapons',     path: '/lich/weapons',      nameField: 'name' },
+  { scope: 'lich-quirks',      path: '/lich/quirks',       nameField: 'name' },
+  { scope: 'lich-ephemeras',   path: '/lich/ephemeras',    nameField: 'name' },
+  { scope: 'sister-weapons',   path: '/sister/weapons',    nameField: 'name' },
+  { scope: 'sister-quirks',    path: '/sister/quirks',     nameField: 'name' },
+  { scope: 'sister-ephemeras', path: '/sister/ephemeras',  nameField: 'name' },
+  { scope: 'npcs',             path: '/npcs',              nameField: 'name' },
+  { scope: 'missions',         path: '/missions',          nameField: 'name' },
+  // locations additionally yield a `systemName` (planet) captured as the
+  // synthetic `location-systems` scope in the collector — same single fetch.
+  { scope: 'locations',        path: '/locations',         nameField: 'nodeName' }
+] as const;
+
+/** All valid dictionary scope strings (the fetched scopes + the synthetic system-name scope). */
+export const TRANSLATION_SCOPE_NAMES = [
+  ...TRANSLATION_SCOPES.map((s) => s.scope),
+  'location-systems'
+] as const;
+
+export type TranslationScope = typeof TRANSLATION_SCOPE_NAMES[number];
 
 /**
  * Price history retention (README Roadmap: "Historical price charts")

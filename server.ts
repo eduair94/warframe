@@ -5,6 +5,7 @@ import { serverConfig } from "./Express/config";
 import { MongooseServer } from "./database";
 import { Warframe } from "./warframe";
 import { startCacheWarmer } from "./services/CacheWarmer";
+import { TranslationService } from "./services/TranslationService";
 
 async function main() {
     await MongooseServer.startConnectionPromise();
@@ -32,6 +33,18 @@ async function main() {
     });   
     server.getJson('relics', async (req: Request): Promise<any> => {
         return m.relics();
+    });
+    // i18n: localized `{ slug -> name }` dictionary for one game-noun scope +
+    // language. English needs no dictionary (names are already the canonical
+    // `item_name`). Scope/lang are whitelisted so the cache (keyed by URL) can't
+    // be flooded with arbitrary keys. Cached like the other read aggregates.
+    server.getJsonCache('i18n/:scope/:lang', async (req: Request): Promise<any> => {
+        const { scope, lang } = req.params;
+        if (!TranslationService.isValidScope(scope) || !TranslationService.isValidLang(lang)) {
+            return { scope, lang, map: {} };
+        }
+        const map = await m.getTranslations(scope, lang);
+        return { scope, lang, map };
     });
     server.getJsonProtected('build_relics', async (req: Request): Promise<any> => {
          return m.buildRelics();
