@@ -31,7 +31,7 @@ Rejected: fully‑dynamic per‑request whois/GitHub (slow, token at runtime, ra
 Include only verified, maintained, player‑useful tools. From the 54 researched:
 
 - **Exclude — dead:** `Riven.market` (riven DB returns 0 for every filter, auctions never shipped, backend frozen since 2018/2023) and `Semlar Riven Price Guide` (backing feed `10o.io/pricehistory.json` returns `[]`; genuine sunset). Listing either sends users to an empty/broken page — the opposite of a trustworthy guide.
-- **Exclude — policy risk:** `Odealo` (real‑money trading of items/plat). RMT violates DE's EULA; featuring it on a fan site is a liability under DE's Content/Fan policy. *(Flagging for reviewer — override if you want it listed with a warning.)*
+- **Include with a warning badge:** `Odealo` (real‑money trading of items/plat). Card carries a prominent `⚠ RMT — against the Warframe EULA, ban risk` badge so users see the risk plainly. (Reviewer chose to list it warned rather than exclude.)
 - **Include with caveat:** `Warframe Reliquary` — static relic/wishlist lookup works, but its live‑fissure highlighting has been frozen since 2026‑02‑02. Card notes "wishlist/relic lookup" and omits the fissure claim.
 - **Everything else** that passes the liveness gate is included, grouped by the section taxonomy below. A tool that fails the automated HTTP/liveness check at build time is dropped (or held back) rather than shipped as a dead link.
 
@@ -73,7 +73,7 @@ export interface ToolMeta {
   openSource?: boolean
   github?: string         // owner/repo when applicable
   featured?: boolean      // canonical tools pinned to top
-  caveat?: 'partial' | null   // e.g. Reliquary frozen fissures
+  caveat?: 'partial' | 'rmt' | null   // 'partial' = Reliquary frozen fissures; 'rmt' = Odealo real-money warning
 
   // --- baked by scripts/enrich-tools.ts (do not hand-edit) ---
   verified: boolean       // HTTP liveness passed at last enrichment
@@ -130,9 +130,11 @@ Real screenshots, captured once, committed and served from `app/public/img/tools
 - SSR‑rendered from baked data (no client fetch for the directory); the World State strip hydrates from the live endpoint.
 - Hide `#spinner-wrapper` on mount (project rule).
 
-## 9. Live integrations (the "multiple sources" build)
+## 9. Live integrations — **Phase 2 (fast follow)**
 
-Two runtime‑live data layers this round, both crawl/proxy where ToS allows:
+Build order (reviewer's call): **Phase 1** ships the verified directory page (§5–§8, §10 nav/i18n/SEO for `/tools`, §11 verification). **Phase 2** — this section — adds the two live layers as a fast follow, each detailed enough here to become its own implementation plan.
+
+Two runtime‑live data layers, both crawl/proxy where ToS allows:
 
 ### 9a. Live World State layer  `api · high value`
 - **Backend:** `server.getJsonCache('worldstate/:platform', …)` on the Warframe class. Source‑of‑truth: DE `https://api.warframe.com/cdn/worldState.php` parsed via `warframe-worldstate-parser` (npm); **fallback** `https://api.warframestat.us/{platform}/{locale}`. Cache 120s (matches upstream `max-age`). Note: the old `content.warframe.com/dynamic/worldState.php` URL is dead (404) — use the `api.warframe.com/cdn/` host; content‑type is mislabeled `text/html`, parse as JSON.
