@@ -15,7 +15,7 @@
             <div class="an-hero__deal-label">{{ t('comparison.hero.dealLabel') }}</div>
             <div class="an-hero__deal-plat">{{ fmtPlat(topDeal.acquire.save) }}<span>p</span></div>
             <NuxtLink class="an-hero__deal-name" :to="'/set/' + topDeal.url_name">
-              {{ topDeal.item_name.replace(' Set', '') }} →
+              {{ localItemName(topDeal).replace(' Set', '') }} →
             </NuxtLink>
             <div class="an-hero__deal-sub">
               {{ t('comparison.hero.dealSub', { pct: fmtPct(topDeal.acquire.savePct) }) }}
@@ -144,9 +144,9 @@
               >
                 <td class="col-name">
                   <NuxtLink class="an-name" :to="'/set/' + row.url_name">
-                    <img class="an-thumb" :src="assetUrl(row.thumb)" :alt="row.item_name" loading="lazy" @error="onImgError" />
+                    <img class="an-thumb" :src="assetUrl(row.thumb)" :alt="localItemName(row)" loading="lazy" @error="onImgError" />
                     <span>
-                      {{ row.item_name.replace(' Set', '') }}
+                      {{ localItemName(row).replace(' Set', '') }}
                       <span v-if="row.url_name === topDealUrl" class="an-badge">{{ t('comparison.row.best') }}</span>
                       <small class="an-sub">
                         {{ t('comparison.row.parts', { n: row.partsCount }) }}
@@ -168,7 +168,7 @@
                 <td class="grp-b an-num" :class="deltaCls(row.resale.extra)">{{ signed(row.resale.extra) }}p</td>
                 <td class="an-num">{{ fmtPlat(row.set.volume) }}</td>
                 <td>
-                  <v-btn icon size="small" color="#35d6d0" :to="'/set/' + row.url_name" :aria-label="t('comparison.row.viewAria', { name: row.item_name })">
+                  <v-btn icon size="small" color="#35d6d0" :to="'/set/' + row.url_name" :aria-label="t('comparison.row.viewAria', { name: localItemName(row) })">
                     <v-icon>mdi-arrow-right-circle</v-icon>
                   </v-btn>
                 </td>
@@ -186,10 +186,10 @@
             :to="'/set/' + row.url_name"
           >
             <div class="an-card__head">
-              <img class="an-thumb" :src="assetUrl(row.thumb)" :alt="row.item_name" loading="lazy" @error="onImgError" />
+              <img class="an-thumb" :src="assetUrl(row.thumb)" :alt="localItemName(row)" loading="lazy" @error="onImgError" />
               <div class="an-card__title">
                 <div class="an-card__name">
-                  {{ row.item_name.replace(' Set', '') }}
+                  {{ localItemName(row).replace(' Set', '') }}
                   <span v-if="row.url_name === topDealUrl" class="an-badge">{{ t('comparison.row.best') }}</span>
                 </div>
                 <small class="an-sub">
@@ -241,6 +241,7 @@ import { computed, nextTick, onMounted, ref, watch } from 'vue'
 import { useDisplay } from 'vuetify'
 
 const { t } = useI18n()
+const { localItemName } = useLocalizedName()
 const base = useApiBase()
 
 const { data, error } = await useAsyncData('sets-comparison', () =>
@@ -338,7 +339,7 @@ const filtered = computed<any[]>(() => {
   const q = (search.value || '').toString().trim().toLowerCase()
   const minV = Number(minVolume.value) || 0
   const list = sets.value.filter((r) => {
-    if (q && !r.item_name.toLowerCase().includes(q)) return false
+    if (q && !(r.item_name.toLowerCase().includes(q) || localItemName(r).toLowerCase().includes(q))) return false
     if (category.value !== 'All' && categoryOf(r.tags) !== category.value) return false
     if ((r.set.volume || 0) < minV) return false
     if (onlyPartsCheaper.value && r.acquire.save <= 0) return false

@@ -72,7 +72,7 @@
                   :class="{ 'rv-chip--on': selectedPositives.includes(opt) }"
                   @click="togglePositive(opt)"
                 >
-                  {{ attrLabel(opt) }}
+                  {{ attrDisplay(opt) }}
                 </button>
               </div>
             </div>
@@ -95,7 +95,7 @@
                   :class="{ 'rv-chip--on': selectedNegative === opt }"
                   @click="selectedNegative = selectedNegative === opt ? '' : opt"
                 >
-                  − {{ attrLabel(opt) }}
+                  − {{ attrDisplay(opt) }}
                 </button>
               </div>
             </div>
@@ -147,8 +147,8 @@
                 <tr v-for="a in pagedAuctions" :key="a.id" :class="{ 'is-top': a._deal }">
                   <td class="col-name">
                     <div class="rv-attrs">
-                      <span v-for="at in positives(a)" :key="at.url_name" class="rv-attr rv-attr--pos">{{ attrLabel(at.url_name) }}</span>
-                      <span v-for="at in negatives(a)" :key="at.url_name" class="rv-attr rv-attr--neg">− {{ attrLabel(at.url_name) }}</span>
+                      <span v-for="at in positives(a)" :key="at.url_name" class="rv-attr rv-attr--pos">{{ attrDisplay(at.url_name) }}</span>
+                      <span v-for="at in negatives(a)" :key="at.url_name" class="rv-attr rv-attr--neg">− {{ attrDisplay(at.url_name) }}</span>
                     </div>
                   </td>
                   <td><span class="rv-grade" :class="grade(a).cls">{{ grade(a).letter }}</span></td>
@@ -178,8 +178,8 @@
                 </div>
               </div>
               <div class="rv-attrs">
-                <span v-for="at in positives(a)" :key="at.url_name" class="rv-attr rv-attr--pos">{{ attrLabel(at.url_name) }}</span>
-                <span v-for="at in negatives(a)" :key="at.url_name" class="rv-attr rv-attr--neg">− {{ attrLabel(at.url_name) }}</span>
+                <span v-for="at in positives(a)" :key="at.url_name" class="rv-attr rv-attr--pos">{{ attrDisplay(at.url_name) }}</span>
+                <span v-for="at in negatives(a)" :key="at.url_name" class="rv-attr rv-attr--neg">− {{ attrDisplay(at.url_name) }}</span>
               </div>
             </div>
           </div>
@@ -205,6 +205,11 @@ import { computed, nextTick, onMounted, ref, watch } from 'vue'
 import { useDisplay } from 'vuetify'
 
 const { t } = useI18n()
+const { localName, ensureScope } = useLocalizedName()
+// Load riven weapon + attribute name dictionaries for the active locale.
+// Called in setup (SSR) and again on mount (client locale switch / hydration).
+ensureScope('riven-weapons')
+ensureScope('riven-attributes')
 const base = useApiBase()
 const { mobile } = useDisplay()
 const isMobile = computed(() => mobile.value)
@@ -231,6 +236,11 @@ function attrLabel(urlName: string): string {
     .join(' ')
     .replace(/\bDamage\b/, 'Dmg')
 }
+// Localized DISPLAY label for a riven attribute. English `attrLabel` is kept for
+// sorting/logic; only the visible text uses this.
+function attrDisplay(urlName: string): string {
+  return localName('riven-attributes', urlName, attrLabel(urlName))
+}
 function percentile(sortedAsc: number[], p: number): number {
   if (!sortedAsc.length) return 0
   const idx = (p / 100) * (sortedAsc.length - 1)
@@ -247,7 +257,7 @@ const weaponOptions = computed<any[]>(() =>
     .filter((w) => (w.auctionCount || 0) > 0)
     .map((w) => ({
       url_name: w.url_name,
-      label: `${w.item_name} — ${w.auctionCount} live${w.disposition ? ' · disp ' + w.disposition.toFixed(2) : ''}`,
+      label: `${localName('riven-weapons', w.url_name, w.item_name)} — ${w.auctionCount} live${w.disposition ? ' · disp ' + w.disposition.toFixed(2) : ''}`,
     })),
 )
 const weaponItems = computed<any[]>(() => {
@@ -400,6 +410,8 @@ function finishLoading(attempt = 0) {
 }
 
 onMounted(() => {
+  ensureScope('riven-weapons')
+  ensureScope('riven-attributes')
   finishLoading()
 })
 </script>

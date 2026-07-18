@@ -78,7 +78,7 @@
                     v-model="search"
                     :label="t('home.filters.search')"
                     class="filter-input mr-2"
-                    :items="allItems.map((el) => el.item_name)"
+                    :items="allItems.map((el) => localItemName(el))"
                     hide-details
                     density="compact"
                   ></v-combobox>
@@ -178,7 +178,7 @@
                 height="50"
                 loading="lazy"
                 style="object-fit: contain"
-                :alt="item.item_name"
+                :alt="localItemName(item)"
                 :src="'https://warframe.market/static/assets/' + item.thumb"
               />
               <div>
@@ -187,7 +187,7 @@
                   target="_blank"
                   :href="'https://warframe.market/items/' + item.url_name"
                 >
-                  {{ item.item_name }}</a
+                  {{ localItemName(item) }}</a
                 >
                 <br />
                 <v-btn
@@ -279,7 +279,7 @@
             {{ t('home.txDialog.title') }}
           </v-card-title>
           <v-card-text class="pt-4">
-            <h3 class="mb-2">{{ selectedTransactionItem.item_name }}</h3>
+            <h3 class="mb-2">{{ localItemName(selectedTransactionItem) }}</h3>
             <PriceHistoryChart
               class="mb-4"
               :points="priceHistoryPoints"
@@ -428,6 +428,7 @@ dayjs.extend(relativeTime)
 
 const base = useApiBase()
 const { t } = useI18n()
+const { localItemName } = useLocalizedName()
 const goTo = useGoTo()
 
 const items = useItemsStore()
@@ -665,7 +666,8 @@ function filter() {
       el.market.volume >= min_volume.value &&
       filterSelect(el) &&
       (!search.value ||
-        el.item_name.toLowerCase().includes(search.value.toLowerCase()))
+        el.item_name.toLowerCase().includes(search.value.toLowerCase()) ||
+        localItemName(el).toLowerCase().includes(search.value.toLowerCase()))
 
     if (!basicMatch) return false
 

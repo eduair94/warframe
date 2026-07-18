@@ -111,6 +111,22 @@ export class MarketService {
   }
 
   /**
+   * Fetches any v2 collection localized into `lang` via the `Language:` request
+   * header. warframe.market returns `i18n.{en, <lang>}` per entity for that one
+   * call, so a single request builds a full dictionary for a scope+language.
+   * Used by the translation collector (sync_translations.ts).
+   *
+   * @param path - v2 collection path, e.g. '/items', '/riven/weapons', '/locations'
+   * @param lang - warframe.market language code sent as the `Language` header
+   */
+  async getLocalizedCollection<T = any>(path: string, lang: string): Promise<T> {
+    if (DEBUG) console.log(`🌐 Fetching ${path} (lang=${lang})...`);
+    return this.httpClient.get<T>(`${API_URLS.WARFRAME_MARKET_V2}${path}`, {
+      headers: { Language: lang }
+    });
+  }
+
+  /**
    * Fetches detailed information for a single item
    * Uses v2 API and transforms response to v1-compatible format for database compatibility
    * 

@@ -108,3 +108,12 @@ jobs:
             npm run build
             cd ..
             pm2 reload ecosystem.config.js --update-env
+            # `pm2 reload` only touches already-running apps, so a NEWLY added
+            # ecosystem entry (e.g. warframe-sync-translations) is never picked
+            # up. Explicitly start/re-run just that one-shot sync so the i18n
+            # dictionaries are registered and populated on deploy (it's light and
+            # autorestart:false, so it runs once and exits; the daily cron takes
+            # over after). --only keeps this from re-triggering the heavy syncs
+            # (items/rivens/drops) that `reload` intentionally leaves stopped.
+            pm2 start ecosystem.config.js --only warframe-sync-translations --update-env || true
+            pm2 save || true

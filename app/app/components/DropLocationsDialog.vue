@@ -12,13 +12,13 @@
           v-if="hasHeadThumb"
           class="dld__thumb"
           :src="headThumb"
-          :alt="itemName"
+          :alt="displayName"
           @error="onImgError"
         />
         <span v-else class="dld__node" aria-hidden="true"></span>
         <div class="dld__headtext">
           <div class="dld__eyebrow">{{ t('dropDialog.eyebrow') }}</div>
-          <h2 class="dld__title">{{ itemName || t('dropDialog.itemFallback') }}</h2>
+          <h2 class="dld__title">{{ displayName || t('dropDialog.itemFallback') }}</h2>
         </div>
         <button class="dld__close" :aria-label="t('dropDialog.closeAria')" @click="close">
           <v-icon>mdi-close</v-icon>
@@ -220,6 +220,8 @@ const base = useApiBase()
 
 const { itemThumb, THUMB_PLACEHOLDER } = useItemThumb()
 
+const { localName } = useLocalizedName()
+
 // Live market snapshot, cross-referenced from the freshly-synced catalog store
 // by item name (blueprint-tolerant), so the dialog shows buy/sell/volume/etc.
 // without the user having to leave for the home table. See utils/marketLookup.
@@ -227,6 +229,11 @@ const itemsStore = useItemsStore()
 const itemIndex = computed(() => buildItemIndex(itemsStore.allItems as any[]))
 const marketItem = computed<any>(() =>
   props.itemName ? resolveMarketItem(props.itemName, itemIndex.value) : null,
+)
+// Header title/alt localized to the active locale via the resolved item's
+// url_name; falls back to the exact English `itemName` (unchanged on `en`).
+const displayName = computed(() =>
+  localName('items', marketItem.value && marketItem.value.url_name, props.itemName),
 )
 const mkt = computed<any>(() => (marketItem.value && marketItem.value.market) || {})
 const lastTrade = computed<any>(() => (mkt.value && mkt.value.last_completed) || null)

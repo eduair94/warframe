@@ -16,7 +16,7 @@
             <div class="an-hero__deal-label">{{ t('relicsValue.hero.dealLabel') }}</div>
             <div class="an-hero__deal-plat">{{ fmtPlat(ev(topDeal)) }}<span>p</span></div>
             <nuxt-link class="an-hero__deal-name" :to="'/relic/' + topDeal.url_name">
-              {{ topDeal.relicName }} →
+              {{ localName('items', topDeal.url_name, topDeal.relicName) }} →
             </nuxt-link>
             <div class="an-hero__deal-sub">{{ t('relicsValue.hero.dealSub', { refinement: refinementLabel.toLowerCase() }) }}</div>
           </div>
@@ -150,9 +150,9 @@
               >
                 <td class="col-name">
                   <nuxt-link class="an-name" :to="'/relic/' + row.url_name">
-                    <img class="an-thumb" :src="assetUrl(row.thumb)" :alt="row.relicName" loading="lazy" @error="onImgError" />
+                    <img class="an-thumb" :src="assetUrl(row.thumb)" :alt="localName('items', row.url_name, row.relicName)" loading="lazy" @error="onImgError" />
                     <span>
-                      {{ row.relicName }}
+                      {{ localName('items', row.url_name, row.relicName) }}
                       <span v-if="row.url_name === topDealUrl" class="an-badge">{{ t('relicsValue.tags.top') }}</span>
                       <span v-if="row.vaulted" class="an-badge an-badge--vault">{{ t('relicsValue.tags.vaultedBadge') }}</span>
                       <span v-else-if="row.resurgence" class="an-badge an-badge--resurgence" :title="t('relicsValue.tags.resurgenceTitle')">{{ t('relicsValue.tags.resurgence') }}</span>
@@ -187,7 +187,7 @@
                   </span>
                 </td>
                 <td class="an-num">
-                  <span class="an-topdrop">{{ topDrop(row).item_name }}</span>
+                  <span class="an-topdrop">{{ localItemName(topDrop(row)) }}</span>
                   <span v-if="rewardVaulted(topDrop(row))" class="an-vtag">{{ t('relicsValue.tags.vaulted') }}</span>
                   <small class="an-sub">{{ fmtPlat(topDrop(row).price) }}p · vol {{ fmtPlat(topDrop(row).volume || 0) }}</small>
                 </td>
@@ -196,8 +196,8 @@
                   <button
                     type="button"
                     class="an-iconbtn"
-                    :title="t('relicsValue.table.details', { name: row.relicName })"
-                    :aria-label="t('relicsValue.table.details', { name: row.relicName })"
+                    :title="t('relicsValue.table.details', { name: localName('items', row.url_name, row.relicName) })"
+                    :aria-label="t('relicsValue.table.details', { name: localName('items', row.url_name, row.relicName) })"
                     @click="openDetails(row)"
                   >
                     <v-icon size="20">mdi-diamond-stone</v-icon>
@@ -205,8 +205,8 @@
                   <nuxt-link
                     class="an-iconbtn an-iconbtn--go"
                     :to="'/relic/' + row.url_name"
-                    :title="t('relicsValue.table.view', { name: row.relicName })"
-                    :aria-label="t('relicsValue.table.view', { name: row.relicName })"
+                    :title="t('relicsValue.table.view', { name: localName('items', row.url_name, row.relicName) })"
+                    :aria-label="t('relicsValue.table.view', { name: localName('items', row.url_name, row.relicName) })"
                   >
                     <v-icon size="20">mdi-arrow-right-circle</v-icon>
                   </nuxt-link>
@@ -226,10 +226,10 @@
             :to="'/relic/' + row.url_name"
           >
             <div class="an-card__head">
-              <img class="an-thumb" :src="assetUrl(row.thumb)" :alt="row.relicName" loading="lazy" @error="onImgError" />
+              <img class="an-thumb" :src="assetUrl(row.thumb)" :alt="localName('items', row.url_name, row.relicName)" loading="lazy" @error="onImgError" />
               <div class="an-card__title">
                 <div class="an-card__name">
-                  {{ row.relicName }}
+                  {{ localName('items', row.url_name, row.relicName) }}
                   <span v-if="row.url_name === topDealUrl" class="an-badge">{{ t('relicsValue.tags.top') }}</span>
                   <span v-if="row.vaulted" class="an-badge an-badge--vault">{{ t('relicsValue.tags.vaultedBadge') }}</span>
                   <span v-else-if="row.resurgence" class="an-badge an-badge--resurgence" :title="t('relicsValue.tags.resurgenceTitle')">{{ t('relicsValue.tags.resurgence') }}</span>
@@ -242,8 +242,8 @@
               <button
                 type="button"
                 class="an-iconbtn"
-                :title="t('relicsValue.table.details', { name: row.relicName })"
-                :aria-label="t('relicsValue.table.details', { name: row.relicName })"
+                :title="t('relicsValue.table.details', { name: localName('items', row.url_name, row.relicName) })"
+                :aria-label="t('relicsValue.table.details', { name: localName('items', row.url_name, row.relicName) })"
                 @click.prevent.stop="openDetails(row)"
               >
                 <v-icon size="20">mdi-diamond-stone</v-icon>
@@ -271,7 +271,7 @@
                 <div class="an-block__lbl">{{ t('relicsValue.card.topDrop') }}</div>
                 <div class="an-block__row"><span>{{ topDrop(row).rarity }}</span><b>{{ fmtPlat(topDrop(row).price) }}p</b></div>
                 <div class="an-block__row an-topdrop-m">
-                  <span>{{ topDrop(row).item_name }}</span>
+                  <span>{{ localItemName(topDrop(row)) }}</span>
                   <span v-if="rewardVaulted(topDrop(row))" class="an-vtag">{{ t('relicsValue.tags.vaulted') }}</span>
                 </div>
               </div>
@@ -309,6 +309,7 @@ import { useDisplay } from 'vuetify'
 import { useRelicValue, type RelicRow } from '~/composables/useRelicValue'
 
 const { t } = useI18n()
+const { localName, localItemName } = useLocalizedName()
 const base = useApiBase()
 
 const { mobile } = useDisplay()
@@ -413,7 +414,7 @@ const tierOptions = computed<string[]>(() => {
 const matched = computed<any[]>(() => {
   const q = (search.value || '').toString().trim().toLowerCase()
   return relics.value.filter((r) => {
-    if (q && !r.relicName.toLowerCase().includes(q)) return false
+    if (q && !(r.relicName.toLowerCase().includes(q) || localName('items', r.url_name, r.relicName).toLowerCase().includes(q))) return false
     if (tier.value !== 'All' && r.tier !== tier.value) return false
     return true
   })

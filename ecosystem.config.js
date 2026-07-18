@@ -74,6 +74,20 @@ module.exports = {
             log_date_format: "YYYY-MM-DD HH:mm Z",
         },
         {
+            // i18n: rebuilds the localized game-noun name dictionaries
+            // (warframe-translations collection) that power the multi-language
+            // item names + the /i18n/:scope/:lang endpoint. Reuses warframe.market's
+            // own localized names (one Language-header list fetch per scope×lang),
+            // so it only changes on game/content updates — a daily run (staggered
+            // after sync-drops) keeps all 12 non-en locales current without
+            // hammering the source.
+            name: "warframe-sync-translations",
+            autorestart: false,
+            cron_restart: "0 4 * * *",
+            script: "dist/sync_translations.js",
+            log_date_format: "YYYY-MM-DD HH:mm Z",
+        },
+        {
             name: "warframe-live",
             autorestart: true,
             script: "dist/live.js",

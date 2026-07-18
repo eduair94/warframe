@@ -4,6 +4,9 @@
 // resolveSeo() strips the i18n locale prefix (/es, /pt) and falls back to
 // prefix matches for the dynamic /set, /relic and /guides routes.
 
+// Localized copy overlay (English fallback lives in PAGE_SEO below).
+import { PAGE_SEO_I18N } from './seo-i18n'
+
 export interface PageSeo {
   title: string
   description: string
@@ -120,14 +123,20 @@ export const PAGE_SEO: Record<string, PageSeo> = {
   }
 }
 
-// Prefix fallbacks for dynamic child routes (/set/:set, /relic/:relic, ...)
-const PREFIX_SEO: Array<[string, PageSeo]> = [
-  ['/guides', PAGE_SEO['/guides/endo']],
-  ['/set', PAGE_SEO['/set']],
-  ['/relic-farming', PAGE_SEO['/relic-farming']],
-  ['/relics-value', PAGE_SEO['/relics-value']],
-  ['/relic', PAGE_SEO['/relic']]
+// Prefix fallbacks for dynamic child routes (/set/:set, /relic/:relic, ...).
+// Stored as [prefix, pageKey] so the localized overlay can be consulted by key.
+const PREFIX_SEO: Array<[string, string]> = [
+  ['/guides', '/guides/endo'],
+  ['/set', '/set'],
+  ['/relic-farming', '/relic-farming'],
+  ['/relics-value', '/relics-value'],
+  ['/relic', '/relic']
 ]
+
+// All non-default i18n locale codes (kept in sync with nuxt.config LOCALES).
+// Used to strip the locale prefix from a path before resolving its SEO entry.
+const LOCALE_PREFIX_RE =
+  /^\/(es|pt|de|fr|ru|ko|ja|zh-hans|zh-hant|pl|it|uk)(?=\/|$)/
 
 /** Turn a route slug like "ash_prime_set" into a readable "Ash Prime Set". */
 export function prettifySlug(slug?: string | null): string {
@@ -139,13 +148,27 @@ export function prettifySlug(slug?: string | null): string {
     .replace(/\b\w/g, (c) => c.toUpperCase())
 }
 
-export function resolveSeo(path: string): PageSeo {
+/**
+ * Resolves a route to its SEO copy, localized into `locale` when a translation
+ * exists (PAGE_SEO_I18N), otherwise the English copy (PAGE_SEO). Strips the
+ * locale URL prefix first so /de/comparison and /comparison resolve identically.
+ */
+export function resolveSeo(path: string, locale = 'en'): PageSeo {
   // Strip locale prefix and any trailing slash
-  let p = path.replace(/^\/(es|pt)(?=\/|$)/, '') || '/'
+  let p = path.replace(LOCALE_PREFIX_RE, '') || '/'
   if (p.length > 1) p = p.replace(/\/+$/, '')
-  if (PAGE_SEO[p]) return PAGE_SEO[p]
-  for (const [prefix, seo] of PREFIX_SEO) {
-    if (p === prefix || p.startsWith(prefix + '/')) return seo
+
+  const pick = (key: string): PageSeo | undefined =>
+    PAGE_SEO_I18N[locale]?.[key] ?? PAGE_SEO[key]
+
+  const exact = pick(p)
+  if (exact) return exact
+
+  for (const [prefix, key] of PREFIX_SEO) {
+    if (p === prefix || p.startsWith(prefix + '/')) {
+      const fromPrefix = pick(key)
+      if (fromPrefix) return fromPrefix
+    }
   }
-  return SITE_SEO
+  return PAGE_SEO_I18N[locale]?.['/'] ?? SITE_SEO
 }

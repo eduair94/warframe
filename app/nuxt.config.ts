@@ -1,5 +1,37 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import { en, es, pt } from 'vuetify/locale'
+import {
+  en, es, pt, de, fr, ru, ko, ja, zhHans, zhHant, pl, it, uk
+} from 'vuetify/locale'
+
+// The full set of crawlable locales the site ships. `code` is the i18n locale
+// (and, crucially, the exact `Language` code warframe.market uses — esp.
+// zh-hans/zh-hant), `language` is the BCP-47 tag emitted in <html lang> and
+// hreflang alternates. English is the default (unprefixed) locale.
+const LOCALES = [
+  { code: 'en', language: 'en-US', name: 'English' },
+  { code: 'es', language: 'es-ES', name: 'Español' },
+  { code: 'pt', language: 'pt-BR', name: 'Português' },
+  { code: 'de', language: 'de-DE', name: 'Deutsch' },
+  { code: 'fr', language: 'fr-FR', name: 'Français' },
+  { code: 'ru', language: 'ru-RU', name: 'Русский' },
+  { code: 'ko', language: 'ko-KR', name: '한국어' },
+  { code: 'ja', language: 'ja-JP', name: '日本語' },
+  { code: 'zh-hans', language: 'zh-Hans', name: '简体中文' },
+  { code: 'zh-hant', language: 'zh-Hant', name: '繁體中文' },
+  { code: 'pl', language: 'pl-PL', name: 'Polski' },
+  { code: 'it', language: 'it-IT', name: 'Italiano' },
+  { code: 'uk', language: 'uk-UA', name: 'Українська' }
+]
+
+// Vuetify's own UI string packs, keyed by the i18n locale code (so Vuetify's
+// $vuetify.* strings resolve for every locale). vuetify-nuxt-module wires
+// Vuetify to vue-i18n, so these must be keyed identically to the i18n codes.
+const VUETIFY_MESSAGES = {
+  en, es, pt, de, fr, ru, ko, ja, 'zh-hans': zhHans, 'zh-hant': zhHant, pl, it, uk
+} as Record<string, any>
+
+// Non-default locale codes, used to build per-locale Nitro route rules below.
+const NON_DEFAULT_LOCALES = LOCALES.filter((l) => l.code !== 'en').map((l) => l.code)
 
 // SITE_URL is the PUBLIC FRONTEND origin — NOT the API. The API lives at
 // warframe.digitalshopuy.com (serves JSON); the app is served from
@@ -59,14 +91,17 @@ export default defineNuxtConfig({
       '/**': { swr: 60 },
       // High-cardinality dynamic routes stay dynamic so the in-memory SWR cache
       // can't grow unbounded (one entry per set/relic × locale). They're already
-      // fast via the internal API base + the API's Redis cache. (i18n prefixes the
-      // localized copies, hence the /es and /pt variants.)
+      // fast via the internal API base + the API's Redis cache. i18n prefixes the
+      // localized copies, so every non-default locale gets its own /{code}/set
+      // and /{code}/relic rule (generated from NON_DEFAULT_LOCALES).
       '/set/**': { cache: false },
       '/relic/**': { cache: false },
-      '/es/set/**': { cache: false },
-      '/pt/set/**': { cache: false },
-      '/es/relic/**': { cache: false },
-      '/pt/relic/**': { cache: false },
+      ...Object.fromEntries(
+        NON_DEFAULT_LOCALES.flatMap((c) => [
+          [`/${c}/set/**`, { cache: false }],
+          [`/${c}/relic/**`, { cache: false }]
+        ])
+      ),
       // Service worker + manifest must update promptly, not be held 60s.
       '/sw.js': { cache: false },
       '/manifest.webmanifest': { cache: false }
@@ -168,11 +203,10 @@ export default defineNuxtConfig({
   i18n: {
     strategy: 'prefix_except_default',
     defaultLocale: 'en',
-    locales: [
-      { code: 'en', language: 'en-US', name: 'English' },
-      { code: 'es', language: 'es-ES', name: 'Español' },
-      { code: 'pt', language: 'pt-BR', name: 'Português' }
-    ],
+    // The v9 translation-directive optimizer causes render issues and is being
+    // deprecated in v10; disable it explicitly (also silences the build warning).
+    bundle: { optimizeTranslationDirective: false },
+    locales: LOCALES,
     // Browser-language auto-redirect is DISABLED so the bare `/` renders the
     // default (en) deterministically and can be SWR-cached at the edge/Nitro
     // (see nitro.routeRules). Without this, `/` would 302 to /es|/pt per the
@@ -326,8 +360,9 @@ export default defineNuxtConfig({
       locale: {
         // Supplying `messages` replaces Vuetify's built-in packs, so `en` must be
         // included explicitly — otherwise English pages render raw `$vuetify.*`
-        // keys (no-data text, data-table aria labels, pagination, etc.).
-        messages: { en, es, pt }
+        // keys (no-data text, data-table aria labels, pagination, etc.). One pack
+        // per shipped locale (see VUETIFY_MESSAGES).
+        messages: VUETIFY_MESSAGES
       },
       theme: {
         defaultTheme: 'dark',

@@ -13,14 +13,14 @@
           v-if="hasHeadThumb"
           class="rld__thumb"
           :src="headThumb"
-          :alt="relic.relicName"
+          :alt="localName('items', relic.url_name, relic.relicName)"
           @error="onImgError"
         />
         <span v-else class="rld__node" aria-hidden="true"></span>
         <div class="rld__headtext">
           <div class="rld__eyebrow">{{ t('relicsValue.dialog.eyebrow') }}</div>
           <h2 class="rld__title">
-            {{ relic.relicName }}
+            {{ localName('items', relic.url_name, relic.relicName) }}
             <span v-if="relic.vaulted" class="rld__badge rld__badge--vault">{{ t('relicsValue.tags.vaultedBadge') }}</span>
             <span v-else-if="relic.resurgence" class="rld__badge rld__badge--res" :title="t('relicsValue.tags.resurgenceTitle')">{{ t('relicsValue.tags.resurgence') }}</span>
           </h2>
@@ -169,7 +169,7 @@
           </div>
           <ul class="rld__drops">
             <li v-for="(d, i) in sortedRewards" :key="i" class="rld__drop">
-              <img class="rld__drop-thumb" :src="rewardThumb(d)" :alt="d.item_name" @error="onImgError" />
+              <img class="rld__drop-thumb" :src="rewardThumb(d)" :alt="localItemName(d)" @error="onImgError" />
               <div class="rld__drop-main">
                 <a
                   v-if="d.url_name"
@@ -178,8 +178,8 @@
                   target="_blank"
                   rel="noopener"
                   :title="t('relicsValue.dialog.openMarket')"
-                >{{ d.item_name }}</a>
-                <span v-else class="rld__drop-name is-plain">{{ d.item_name }}</span>
+                >{{ localItemName(d) }}</a>
+                <span v-else class="rld__drop-name is-plain">{{ localItemName(d) }}</span>
                 <span v-if="rewardVaulted(d)" class="rld__vtag">{{ t('relicsValue.tags.vaulted') }}</span>
                 <span class="rld__drop-meta">
                   <i class="rld__dot" :style="{ background: rarityColor(d.rarity) }"></i>{{ d.rarity }} · {{ chanceOf(d) }}%
@@ -196,7 +196,7 @@
               <button
                 class="rld__drop-drops"
                 type="button"
-                :title="t('relicsValue.dialog.whereDrops', { name: d.item_name })"
+                :title="t('relicsValue.dialog.whereDrops', { name: localItemName(d) })"
                 @click="$emit('open-item', d.item_name, d.thumb || '')"
               >
                 <v-icon size="17">mdi-map-marker-radius-outline</v-icon>
@@ -249,6 +249,7 @@ const emit = defineEmits<{
 }>()
 
 const { t } = useI18n()
+const { localName, localItemName } = useLocalizedName()
 const { itemThumb, THUMB_PLACEHOLDER } = useItemThumb()
 const apiBase = useApiBase()
 

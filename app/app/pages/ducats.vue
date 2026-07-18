@@ -14,7 +14,7 @@
           <div v-if="topDeal" class="an-hero__deal">
             <div class="an-hero__deal-label">{{ t('ducatsPage.hero.dealLabel') }}</div>
             <div class="an-hero__deal-plat">{{ eff(topDeal).toFixed(1) }}<span>d/p</span></div>
-            <a class="an-hero__deal-name" :href="mkt(topDeal.url_name)" target="_blank" rel="noopener">{{ topDeal.item_name }} →</a>
+            <a class="an-hero__deal-name" :href="mkt(topDeal.url_name)" target="_blank" rel="noopener">{{ localItemName(topDeal) }} →</a>
             <div class="an-hero__deal-sub">{{ t('ducatsPage.hero.dealSub', { ducats: topDeal.ducats, sell: fmtPlat(topDeal.market.sell) }) }}</div>
           </div>
         </header>
@@ -58,9 +58,9 @@
               <tr v-for="row in paged" :key="row.url_name" :class="{ 'is-top': row.url_name === topDealUrl }">
                 <td class="col-name">
                   <a class="an-name" :href="mkt(row.url_name)" target="_blank" rel="noopener">
-                    <img class="an-thumb" :src="assetUrl(row.thumb)" :alt="row.item_name" loading="lazy" @error="onImgError" />
+                    <img class="an-thumb" :src="assetUrl(row.thumb)" :alt="localItemName(row)" loading="lazy" @error="onImgError" />
                     <span>
-                      {{ row.item_name }}
+                      {{ localItemName(row) }}
                       <span v-if="row.url_name === topDealUrl" class="an-badge">{{ t('ducatsPage.row.best') }}</span>
                       <small class="an-sub">{{ t('ducatsPage.row.vol', { vol: fmtPlat(row.market.volume) }) }}</small>
                     </span>
@@ -71,7 +71,7 @@
                 <td class="an-num an-strong up">{{ eff(row).toFixed(1) }}</td>
                 <td class="an-num">{{ fmtPlat(row.market.volume) }}</td>
                 <td>
-                  <v-btn icon="mdi-open-in-new" size="small" variant="text" color="#4fb3bf" :href="mkt(row.url_name)" target="_blank" :aria-label="t('ducatsPage.row.open', { name: row.item_name })"></v-btn>
+                  <v-btn icon="mdi-open-in-new" size="small" variant="text" color="#4fb3bf" :href="mkt(row.url_name)" target="_blank" :aria-label="t('ducatsPage.row.open', { name: localItemName(row) })"></v-btn>
                 </td>
               </tr>
             </tbody>
@@ -81,9 +81,9 @@
         <div v-else class="an-cards">
           <a v-for="row in paged" :key="row.url_name" class="an-card" :class="{ 'is-top': row.url_name === topDealUrl }" :href="mkt(row.url_name)" target="_blank" rel="noopener">
             <div class="an-card__head">
-              <img class="an-thumb" :src="assetUrl(row.thumb)" :alt="row.item_name" loading="lazy" @error="onImgError" />
+              <img class="an-thumb" :src="assetUrl(row.thumb)" :alt="localItemName(row)" loading="lazy" @error="onImgError" />
               <div class="an-card__title">
-                <div class="an-card__name">{{ row.item_name }}<span v-if="row.url_name === topDealUrl" class="an-badge">{{ t('ducatsPage.row.best') }}</span></div>
+                <div class="an-card__name">{{ localItemName(row) }}<span v-if="row.url_name === topDealUrl" class="an-badge">{{ t('ducatsPage.row.best') }}</span></div>
                 <small class="an-sub">{{ t('ducatsPage.row.vol', { vol: fmtPlat(row.market.volume) }) }}</small>
               </div>
               <v-icon color="#4fb3bf">mdi-open-in-new</v-icon>
@@ -121,6 +121,7 @@ import { useDisplay } from 'vuetify'
 import { useItemsStore } from '~/stores/items'
 
 const { t } = useI18n()
+const { localItemName } = useLocalizedName()
 const itemsStore = useItemsStore()
 const allItems = computed(() => itemsStore.allItems)
 
@@ -190,7 +191,7 @@ const filtered = computed<any[]>(() => {
   const q = (search.value || '').toString().trim().toLowerCase()
   const maxP = Number(maxPrice.value) || 0
   const list = ducatItems.value.filter((r) => {
-    if (q && !r.item_name.toLowerCase().includes(q)) return false
+    if (q && !(r.item_name.toLowerCase().includes(q) || localItemName(r).toLowerCase().includes(q))) return false
     if (category.value !== 'All' && categoryOf(r.tags) !== category.value) return false
     if (maxP > 0 && (r.market.sell || 0) > maxP) return false
     return true
