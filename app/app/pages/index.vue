@@ -104,7 +104,7 @@
                       {{ t('home.advanced.title') }}
                     </v-expansion-panel-title>
                     <v-expansion-panel-text>
-                      <v-row dense>
+                      <v-row density="compact">
                         <v-col cols="12" md="4">
                           <v-autocomplete
                             v-model="includedTags"

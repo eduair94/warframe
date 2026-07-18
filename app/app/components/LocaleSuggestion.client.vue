@@ -16,7 +16,7 @@
     location="bottom"
     :timeout="-1"
     color="#12142a"
-    multi-line
+    min-height="68"
     class="locale-suggest"
     :aria-label="ariaText"
   >
