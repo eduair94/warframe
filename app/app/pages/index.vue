@@ -2,6 +2,15 @@
   <div class="mt-md-4">
     <div class="my-4">
       <h1 class="visually-hidden">{{ t('home.h1') }}</h1>
+      <NuxtLink :to="localePath('/guides')" class="kc-promo an">
+        <span class="kc-promo__node"></span>
+        <div class="kc-promo__text">
+          <div class="kc-promo__eyebrow">{{ t('guidesChrome.homePromo.eyebrow') }}</div>
+          <div class="kc-promo__title">{{ t('guidesChrome.homePromo.title') }}</div>
+          <div class="kc-promo__sub">{{ t('guidesChrome.homePromo.sub') }}</div>
+        </div>
+        <span class="kc-promo__cta">{{ t('guidesChrome.homePromo.cta') }} <span class="kc-promo__arrow">→</span></span>
+      </NuxtLink>
       <client-only>
         <v-data-table
           mobile-breakpoint="sm"
@@ -428,6 +437,7 @@ dayjs.extend(relativeTime)
 
 const base = useApiBase()
 const { t } = useI18n()
+const localePath = useLocalePath()
 const { localItemName } = useLocalizedName()
 const goTo = useGoTo()
 
@@ -851,6 +861,39 @@ onBeforeUnmount(() => {
 </script>
 
 <style scoped>
+/* Knowledge Center promo banner (Orokin voidglass) */
+.kc-promo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 4px 0 20px;
+  padding: 16px 20px;
+  text-decoration: none;
+  background:
+    radial-gradient(120% 140% at 0% 0%, rgba(53, 214, 208, 0.08), transparent 55%),
+    linear-gradient(180deg, #14162a 0%, #0e0f1c 100%);
+  border: 1px solid rgba(200, 168, 92, 0.28);
+  clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px);
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+.kc-promo:hover { border-color: rgba(200, 168, 92, 0.6); transform: translateY(-2px); }
+.kc-promo__node { width: 11px; height: 11px; background: #c8a85c; transform: rotate(45deg); box-shadow: 0 0 10px rgba(200, 168, 92, 0.6); flex: 0 0 auto; }
+.kc-promo__text { flex: 1; min-width: 0; }
+.kc-promo__eyebrow { font-family: 'Rajdhani', sans-serif; text-transform: uppercase; letter-spacing: 0.18em; font-size: 0.66rem; color: #35d6d0; margin-bottom: 3px; }
+.kc-promo__title { font-family: 'Cinzel', serif; color: #e7cf95; font-size: 1.12rem; line-height: 1.2; }
+.kc-promo__sub { color: #b6bcd0; font-size: 0.86rem; margin-top: 3px; }
+.kc-promo__cta {
+  flex: 0 0 auto; font-family: 'Rajdhani', sans-serif; font-weight: 700; letter-spacing: 0.06em;
+  text-transform: uppercase; font-size: 0.82rem; color: #17130a; background: #c8a85c; padding: 10px 18px;
+  clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+  white-space: nowrap;
+}
+.kc-promo:hover .kc-promo__cta { background: #e7cf95; }
+.kc-promo__arrow { margin-left: 2px; }
+@media (max-width: 700px) {
+  .kc-promo { flex-wrap: wrap; }
+  .kc-promo__cta { width: 100%; text-align: center; }
+}
 .donation_icon {
   display: block;
   width: 50px;

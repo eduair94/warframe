@@ -125,13 +125,138 @@ export const PAGE_SEO: Record<string, PageSeo> = {
     title: 'Endo Farming Guide — Warframe',
     description:
       'A complete guide to farming Endo efficiently in Warframe, plus how to value Ayatan sculptures and mods against platinum.'
+  },
+  '/guides': {
+    title: 'Warframe Knowledge Center — Guides, Farming & FAQ',
+    description:
+      'Every Warframe guide in one place: new-player help, platinum and resource farming, builds, endgame and a searchable FAQ. Grounded in r/Warframe, free for Tenno.'
+  },
+  '/faq': {
+    title: 'Warframe FAQ — Answers to the Questions Everyone Asks',
+    description:
+      'The r/Warframe FAQ, answered: starter frames, making platinum, trading, farming, Steel Path, mods and more. Searchable, cross-linked and always free.'
+  },
+  '/creators': {
+    title: 'Best Warframe YouTubers & Content Creators to Follow',
+    description:
+      'A verified directory of the best Warframe content creators — build masters, tier-list makers, farming specialists and beginner guides worth following on YouTube.'
+  },
+  '/guides/new-player': {
+    title: 'Warframe New Player Guide — Your First 100 Hours',
+    description:
+      'A complete Warframe beginner guide: what to do first, how the star chart works, which frame to farm, and the mistakes to avoid. Start Warframe the right way.'
+  },
+  '/guides/beginner-warframes': {
+    title: 'Best Beginner Warframes — Which to Pick & Farm First',
+    description:
+      'Which starter Warframe to choose (Excalibur, Mag, Volt), which frame to farm first (Rhino), and where the easy early frames drop. A beginner’s roadmap.'
+  },
+  '/guides/progression': {
+    title: 'Warframe Progression Guide — What to Do Next',
+    description:
+      'The Warframe progression roadmap: star chart, Junctions, Mastery Rank and a stage-by-stage checklist of what to do next. Stop feeling lost, Tenno.'
+  },
+  '/guides/mastery-rank': {
+    title: 'Warframe Mastery Rank Guide — Fast Leveling & Affinity',
+    description:
+      'What Mastery Rank unlocks, how affinity works and shares, and the fastest ways to level weapons and frames in Warframe. Rank up your MR efficiently.'
+  },
+  '/guides/quests': {
+    title: 'Warframe Quest Order — Story Guide (Spoiler-Light)',
+    description:
+      'The recommended order to play Warframe’s story quests, from Vor’s Prize to The New War and 1999 — which quests unlock what, with minimal spoilers.'
+  },
+  '/guides/platinum': {
+    title: 'How to Make Platinum in Warframe (Free-to-Play)',
+    description:
+      'Earn Warframe platinum for free: what sells, how trading works, and how to price prime parts, mods and rivens. Free-to-play platinum farming, explained.'
+  },
+  '/guides/credits': {
+    title: 'Warframe Credit Farming — Best Methods & Nodes',
+    description:
+      'The best Warframe credit farms by stage — the Index, Profit-Taker and boosters — plus where the millions come from. Farm credits fast and reliably.'
+  },
+  '/guides/focus': {
+    title: 'Warframe Focus Farming Guide — Best Methods',
+    description:
+      'How to farm Focus in Warframe: unlock the Operator, pick a school and use the best focus farms, lenses and convergence orbs. Level your schools efficiently.'
+  },
+  '/guides/kuva': {
+    title: 'Warframe Kuva Farming Guide — Fast Methods',
+    description:
+      'The best ways to farm Kuva in Warframe for riven re-rolls and Kuva weapons — Survival, Siphon and Flood missions, boosters and realistic rates.'
+  },
+  '/guides/relics': {
+    title: 'Warframe Relic & Void Trace Farming Guide',
+    description:
+      'How Void Relics and Void Traces work in Warframe: cracking fissures, refining to Radiant, shared rewards and efficient farming for prime parts.'
+  },
+  '/guides/resources': {
+    title: 'Warframe Resource Farming — Where to Farm Everything',
+    description:
+      'Where to farm every key Warframe resource: Orokin Cells, Neurodes, Argon Crystals, Tellurium, Oxium, Nitain and more. A complete farming reference table.'
+  },
+  '/guides/standing': {
+    title: 'Warframe Standing & Syndicate Farming Guide',
+    description:
+      'Cap your daily standing across every Warframe syndicate and open-world faction. How the reputation cap works and the fastest ways to max it out.'
+  },
+  '/guides/mods': {
+    title: 'Warframe Mods Guide — Essential Mods & Survivability',
+    description:
+      'How modding works in Warframe, the must-have mods, and shield-gating to stop dying. Understand mod capacity, polarities and the damage multipliers.'
+  },
+  '/guides/helminth': {
+    title: 'Warframe Helminth Guide — Subsume & Best Abilities',
+    description:
+      'How the Warframe Helminth system works: unlocking it, subsuming abilities, and the best powers to graft onto your frames. Buildcrafting, explained.'
+  },
+  '/guides/arcanes': {
+    title: 'Warframe Arcanes Guide — Best Arcanes & How to Farm',
+    description:
+      'What arcanes do in Warframe, how to rank them, where they drop, and the staple arcanes worth farming. Boost your frames, weapons and operator.'
+  },
+  '/guides/riven': {
+    title: 'Warframe Riven Mods Explained — Disposition & Rolling',
+    description:
+      'Everything about Warframe riven mods: disposition, rolling with Kuva, grading, veiled rivens and why bad rivens are cheap Endo. Riven trading basics.'
+  },
+  '/guides/steel-path': {
+    title: 'Warframe Steel Path Guide — Unlock & Steel Essence',
+    description:
+      'How to unlock the Steel Path in Warframe, survive it, and farm Steel Essence for incarnon adapters, arcanes, kuva and more. The hard-mode rewards guide.'
+  },
+  '/guides/eidolon': {
+    title: 'Warframe Eidolon Hunting Guide — Tridolon Basics',
+    description:
+      'How to hunt Eidolons in Warframe: amps, the meta squad, and going from a solo Teralyst to the full Tridolon. Farm arcanes and focus fast.'
+  },
+  '/guides/railjack': {
+    title: 'Warframe Railjack Guide — Unlock, Intrinsics & Farming',
+    description:
+      'How to unlock and use Railjack in Warframe: build your ship, level Intrinsics, and turn space combat into an affinity and resource farm.'
+  },
+  '/guides/duviri': {
+    title: 'Warframe Duviri Paradox Guide — Circuit & Decrees',
+    description:
+      'How the Duviri Paradox works in Warframe: the roguelike Circuit, Decrees, and the weekly Warframe and Incarnon rewards. Playable from the very start.'
+  },
+  '/guides/archon-shards': {
+    title: 'Warframe Archon Shards Guide — Farming & Best Stats',
+    description:
+      'What Archon Shards do in Warframe, how to farm them from the weekly Archon Hunt, and which stats to prioritize. The endgame power boost, explained.'
+  },
+  '/guides/tier-list': {
+    title: 'Warframe Tier List — How to Actually Read It',
+    description:
+      'Why Warframe tier lists disagree, what “good” really means per activity, and a few broadly strong frames. Build what you enjoy, not just the meta.'
   }
 }
 
 // Prefix fallbacks for dynamic child routes (/set/:set, /relic/:relic, ...).
 // Stored as [prefix, pageKey] so the localized overlay can be consulted by key.
 const PREFIX_SEO: Array<[string, string]> = [
-  ['/guides', '/guides/endo'],
+  ['/guides', '/guides'],
   ['/set', '/set'],
   ['/relic-farming', '/relic-farming'],
   ['/relics-value', '/relics-value'],
