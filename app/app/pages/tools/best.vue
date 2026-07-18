@@ -125,9 +125,9 @@ onMounted(() => finishLoading())
 .td-crumb a { color: var(--gold-ink); text-decoration: none; }
 .td-crumb a:hover { text-decoration: underline; }
 
-.tb-tier { padding: 8px 30px 22px; border-top: 1px solid rgba(255, 255, 255, 0.06); }
-.tb-tier__head { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin: 18px 0 16px; }
-.td-tier { text-transform: uppercase; font-weight: 800; letter-spacing: 0.06em; }
+.tb-tier { padding: 18px 30px 28px; border-top: 1px solid rgba(255, 255, 255, 0.06); }
+.tb-tier__head { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin: 26px 0 20px; }
+.td-tier { text-transform: uppercase; font-weight: 800; letter-spacing: 0.08em; padding: 6px 16px !important; font-size: 0.82rem !important; clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px); }
 .td-tier.is-essential { background: var(--energy) !important; color: #06201f !important; }
 .td-tier.is-recommended { background: var(--orokin) !important; color: #17130a !important; }
 .tb-tier__blurb { color: var(--ink-dim); font-size: 0.9rem; margin: 0; }

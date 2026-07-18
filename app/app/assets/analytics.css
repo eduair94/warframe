@@ -282,6 +282,21 @@
   border-color: var(--orokin) !important;
   font-weight: 700;
 }
+/* Base inline pill for any background-highlighted label (tier / verified /
+   safety / platform badges). Framework-level so no chip ever renders cramped:
+   guarantees breathing-room padding around the text wherever .an-chip is used.
+   Specific variants add their own colours (and may bump padding via their own
+   rule); this only ensures a sane baseline. */
+.an-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  line-height: 1.35;
+  font-family: var(--font-hud);
+  font-size: 0.72rem;
+  border-radius: 3px;
+  white-space: nowrap;
+}
 .an-toggles {
   display: flex;
   gap: 6px 30px;
