@@ -63,7 +63,12 @@ async function main() {
     const domain = isOwnDomain(s.url) ? parseWhois(whois[registrableDomain(s.url)] || {}, now) : undefined
     const repo = s.github ? await githubRepo(s.github) : undefined
     out[s.slug] = {
-      verified: httpStatus >= 200 && httpStatus < 400 && !!screenshot,
+      // A real-browser screenshot is the ground truth for "working": many live sites
+      // (Cloudflare-fronted — wiki.warframe.com, overframe, rivenradar, fandom) refuse
+      // datacenter server-fetches with 403/503 yet load fine in a real browser, so a
+      // captured screenshot proves liveness where httpStatus can't. httpStatus is kept
+      // as an informational reachability signal, not the gate.
+      verified: !!screenshot,
       httpStatus, screenshot, domain, repo,
       enrichedAt: new Date(now).toISOString(),
     }
