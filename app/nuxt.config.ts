@@ -223,7 +223,9 @@ export default defineNuxtConfig({
   // is 'mdi' (see vuetify-nuxt-module/dist/module.mjs `resolvedIcons.local`);
   // adding it here too would double-load it. `driver.js/dist/driver.css`
   // (old app/nuxt.config.js line 64) is deferred to the driver.js/tour task.
-  css: ['~/assets/base.css', '~/assets/analytics.css'],
+  // vuetify-orokin.css MUST load last: it re-skins Vuetify 4 components to the
+  // Orokin theme and is unlayered, so it beats Vuetify's @layer component CSS.
+  css: ['~/assets/base.css', '~/assets/analytics.css', '~/assets/vuetify-orokin.css'],
 
   // Ported from app/nuxt.config.js `i18n` block. v9 breaking change vs the
   // old v7 config: locale objects use `language` (not `iso`). Messages stay
@@ -427,10 +429,14 @@ export default defineNuxtConfig({
           dark: {
             dark: true,
             colors: {
-              primary: '#1976D2', // colors.blue.darken2
-              accent: '#424242', // colors.grey.darken3
-              secondary: '#FF8F00', // colors.amber.darken3
-              info: '#26A69A', // colors.teal.lighten1
+              // Orokin "Void Ledger" palette: primary = ancient gold, info =
+              // void-cyan energy. On-colors are auto-derived by Vuetify (gold →
+              // dark ink), so `color="primary"` buttons/controls read as the
+              // gold CTA the app already styles by hand, with no per-button CSS.
+              primary: '#c8a85c', // Orokin gold (was blue #1976D2)
+              accent: '#e7cf95', // bright gold-ink
+              secondary: '#35d6d0', // void-cyan energy (was amber)
+              info: '#35d6d0', // void-cyan energy (was teal)
               warning: '#FFC107', // colors.amber.base
               error: '#DD2C00', // colors.deepOrange.accent4
               success: '#00E676' // colors.green.accent3

@@ -1,0 +1,452 @@
+/* =========================================================================
+   Orokin "Void Ledger" theme for Vuetify 4 components
+   -------------------------------------------------------------------------
+   Vuetify 4 renamed most component DOM (VMenu content -> .v-overlay__content,
+   VDataTable wrapper -> .v-table__wrapper, inputs -> .v-field, list titles ->
+   .v-list-item-title, selection controls -> .v-selection-control, ...), which
+   detached the v3-era overrides scattered in layouts/default.vue. This sheet
+   re-skins every Vuetify component the app actually uses with the existing
+   Orokin tokens (defined in analytics.css :root), targeting v4 selectors.
+
+   Loaded LAST in nuxt.config `css`, and UNLAYERED — so it beats Vuetify's
+   @layer component styles regardless of specificity. `!important` is used to
+   match the codebase convention and win over the runtime-injected component
+   <style> blocks. Overlays (menu / dialog / tooltip) teleport out of
+   .v-application into .v-overlay-container, so they are scoped by the overlay's
+   own modifier class (.v-menu / .v-dialog / .v-tooltip), never under .v-main.
+
+   Tokens: --void #0d0e17 · --voidglass #191c30 · --orokin #c8a85c (gold)
+           --gold-ink #e7cf95 · --energy #35d6d0 (cyan) · --ink #eef1f8
+           --orokin-line rgba(200,168,92,.32) · --font-hud Rajdhani
+   ========================================================================= */
+
+/* -------------------------------------------------------------------------
+   0. Publish the Orokin tokens GLOBALLY.
+   analytics.css scopes them to `.an` (contained by design), so var(--orokin)
+   is empty on Vuetify components outside an `.an` wrapper — the home data
+   table, and every teleported overlay (menu / dialog / tooltip / snackbar)
+   that mounts in `.v-overlay-container` on <body>. Re-declaring the identical
+   values on :root makes every var() below resolve everywhere. `.an` still
+   overrides locally with the same values, so nothing else changes.
+   ------------------------------------------------------------------------- */
+:root {
+  --void: #0d0e17;
+  --voidglass: #191c30;
+  --panel-2: #12142099;
+  --orokin: #c8a85c;
+  --orokin-dim: rgba(200, 168, 92, 0.16);
+  --orokin-line: rgba(200, 168, 92, 0.32);
+  --gold-ink: #e7cf95;
+  --energy: #35d6d0;
+  --energy-hi: #7af0ea;
+  --rose: #d98a8a;
+  --ink: #eef1f8;
+  --ink-dim: #868ca6;
+  --line: rgba(255, 255, 255, 0.06);
+  --font-display: 'Cinzel', 'Trajan Pro', 'Georgia', serif;
+  --font-hud: 'Rajdhani', 'Oxanium', 'Segoe UI', sans-serif;
+}
+
+/* -------------------------------------------------------------------------
+   1. Form fields — v-text-field / v-select / v-autocomplete / v-combobox
+   ------------------------------------------------------------------------- */
+.v-field {
+  font-family: var(--font-hud) !important;
+  border-radius: 0 !important;
+}
+.v-field__input,
+.v-field input,
+.v-field textarea,
+.v-field .v-select__selection-text,
+.v-autocomplete__selection-text {
+  color: var(--ink) !important;
+  font-family: var(--font-hud) !important;
+}
+.v-field__input::placeholder,
+.v-field input::placeholder {
+  color: var(--ink-dim) !important;
+  opacity: 1;
+}
+/* Filled / solo variants → voidglass fill */
+.v-field--variant-filled .v-field__overlay,
+.v-field--variant-solo .v-field__overlay,
+.v-field--variant-solo-filled .v-field__overlay,
+.v-field--variant-solo-inverted .v-field__overlay {
+  background: var(--voidglass) !important;
+  opacity: 1 !important;
+}
+/* Underline (filled / underlined) → gold hairline, cyan on focus */
+.v-field--variant-filled .v-field__outline::before,
+.v-field--variant-underlined .v-field__outline::before {
+  border-color: var(--orokin-line) !important;
+  opacity: 1 !important;
+}
+.v-field--variant-filled .v-field__outline::after,
+.v-field--variant-underlined .v-field__outline::after {
+  border-color: var(--energy) !important;
+}
+/* Outlined variant → gold hairline box, cyan on focus */
+.v-field--variant-outlined .v-field__outline {
+  color: var(--orokin-line) !important;
+  --v-field-border-opacity: 1;
+}
+.v-field--variant-outlined.v-field--focused .v-field__outline {
+  color: var(--energy) !important;
+  --v-field-border-width: 2px;
+}
+/* Labels */
+.v-label,
+.v-field-label {
+  color: var(--ink-dim) !important;
+  font-family: var(--font-hud) !important;
+  opacity: 1 !important;
+}
+.v-field--focused .v-field-label,
+.v-field--active .v-label {
+  color: var(--orokin) !important;
+}
+.v-field--focused .v-field-label {
+  color: var(--energy) !important;
+}
+/* Prepend / append icons (dropdown chevron, clear, etc.) */
+.v-field__append-inner .v-icon,
+.v-field__prepend-inner .v-icon,
+.v-field__clearable .v-icon {
+  color: var(--orokin) !important;
+  opacity: 0.9;
+}
+/* Inline messages / counters */
+.v-messages__message,
+.v-counter {
+  font-family: var(--font-hud) !important;
+  color: var(--ink-dim) !important;
+}
+.v-input--error .v-messages__message,
+.v-field--error .v-field-label {
+  color: var(--rose) !important;
+}
+
+/* -------------------------------------------------------------------------
+   2. Dropdown menus — v-select / v-autocomplete / v-menu overlays
+   (teleported; scope by the .v-menu modifier on the overlay root)
+   ------------------------------------------------------------------------- */
+.v-overlay.v-menu > .v-overlay__content {
+  background: #12142a !important;
+  border: 1px solid var(--orokin-line) !important;
+  border-radius: 0 !important;
+  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+  box-shadow: 0 14px 38px rgba(0, 0, 0, 0.6) !important;
+}
+.v-overlay.v-menu .v-list {
+  background: transparent !important;
+  padding: 4px !important;
+}
+.v-overlay.v-menu .v-list-item {
+  border-radius: 0 !important;
+  min-height: 40px !important;
+  color: var(--ink) !important;
+}
+.v-overlay.v-menu .v-list-item-title,
+.v-overlay.v-menu .v-list-item__content {
+  color: var(--ink) !important;
+  font-family: var(--font-hud) !important;
+}
+.v-overlay.v-menu .v-list-item:hover,
+.v-overlay.v-menu .v-list-item--active,
+.v-overlay.v-menu .v-list-item[aria-selected='true'] {
+  background: var(--orokin-dim) !important;
+}
+.v-overlay.v-menu .v-list-item:hover .v-list-item-title,
+.v-overlay.v-menu .v-list-item--active .v-list-item-title {
+  color: var(--gold-ink) !important;
+}
+/* The tinted hover/active overlay Vuetify paints inside each item */
+.v-overlay.v-menu .v-list-item__overlay {
+  background: transparent !important;
+}
+
+/* -------------------------------------------------------------------------
+   3. Lists — v-list (in-flow, e.g. nav) get Rajdhani + ink
+   ------------------------------------------------------------------------- */
+.v-list-item-title,
+.v-list-item-subtitle {
+  font-family: var(--font-hud) !important;
+}
+.v-list-item-subtitle {
+  color: var(--ink-dim) !important;
+}
+
+/* -------------------------------------------------------------------------
+   4. Data tables — v-data-table / v-table (v4: .v-table > .v-table__wrapper)
+   ------------------------------------------------------------------------- */
+.v-table {
+  background: transparent !important;
+  color: var(--ink) !important;
+}
+.v-table__wrapper > table > thead > tr > th,
+.v-data-table__th {
+  background: transparent !important;
+  color: var(--orokin) !important;
+  font-family: var(--font-hud) !important;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.8rem !important;
+  border-bottom: 1px solid var(--orokin-line) !important;
+}
+.v-table__wrapper > table > thead > tr > th .v-icon,
+.v-data-table-header__sort-icon,
+.v-data-table__th .v-icon {
+  color: var(--orokin) !important;
+}
+.v-table__wrapper > table > tbody > tr > td,
+.v-data-table__td {
+  color: var(--ink) !important;
+  border-bottom: 1px solid var(--line) !important;
+}
+.v-table__wrapper > table > tbody > tr:hover {
+  background: rgba(200, 168, 92, 0.05) !important;
+}
+.v-table__wrapper > table > tbody > tr:nth-of-type(odd) {
+  background-color: rgba(255, 255, 255, 0.015);
+}
+.v-table a:not(.v-btn) {
+  color: var(--gold-ink) !important;
+  font-weight: 600;
+}
+.v-table a:not(.v-btn):hover {
+  color: #f4e2b4 !important;
+}
+/* Multi-sort priority badge */
+.v-data-table-header__sort-badge {
+  background: var(--orokin) !important;
+  color: #17130a !important;
+  border: none !important;
+}
+/* Footer / rows-per-page */
+.v-data-table-footer {
+  color: var(--ink-dim) !important;
+  font-family: var(--font-hud) !important;
+  border-top: 1px solid var(--orokin-line) !important;
+}
+
+/* -------------------------------------------------------------------------
+   5. Pagination — v-pagination
+   ------------------------------------------------------------------------- */
+.v-pagination .v-pagination__item .v-btn,
+.v-pagination .v-pagination__next .v-btn,
+.v-pagination .v-pagination__prev .v-btn,
+.v-pagination .v-pagination__first .v-btn,
+.v-pagination .v-pagination__last .v-btn {
+  border-radius: 0 !important;
+  color: var(--ink) !important;
+  font-family: var(--font-hud) !important;
+  border: 1px solid transparent;
+}
+.v-pagination .v-pagination__item .v-btn:hover {
+  color: var(--gold-ink) !important;
+  background: var(--orokin-dim) !important;
+}
+.v-pagination .v-pagination__item--is-active .v-btn {
+  background: var(--orokin) !important;
+  color: #17130a !important;
+  font-weight: 700;
+}
+.v-pagination .v-pagination__item--is-active .v-btn__overlay {
+  opacity: 0 !important;
+}
+
+/* -------------------------------------------------------------------------
+   6. Selection controls — v-checkbox / v-switch / v-radio / v-checkbox-btn
+   (glyphs kept from default.vue mdi rules; here we cover the switch track,
+   thumb, ripple and labels via the v4 .v-selection-control DOM)
+   ------------------------------------------------------------------------- */
+.v-selection-control .v-label,
+.v-checkbox .v-label,
+.v-radio .v-label,
+.v-switch .v-label {
+  color: var(--ink) !important;
+  font-family: var(--font-hud) !important;
+  opacity: 1 !important;
+}
+/* Checked accent (checkbox tick, radio dot, switch) → gold */
+.v-selection-control--dirty .v-selection-control__input > .v-icon,
+.v-checkbox .v-selection-control--dirty .v-icon,
+.v-radio .v-selection-control--dirty .v-icon {
+  color: var(--orokin) !important;
+}
+.v-selection-control:not(.v-selection-control--dirty) .v-selection-control__input > .v-icon {
+  color: var(--ink-dim) !important;
+}
+/* Switch track/thumb */
+.v-switch .v-switch__track {
+  background: rgba(200, 168, 92, 0.22) !important;
+  opacity: 1 !important;
+}
+.v-switch.v-selection-control--dirty .v-switch__track {
+  background: var(--orokin) !important;
+}
+.v-switch .v-switch__thumb {
+  background: #e9edf7 !important;
+}
+.v-switch.v-selection-control--dirty .v-switch__thumb {
+  background: var(--gold-ink) !important;
+}
+/* Focus/hover ripple tint */
+.v-selection-control__input:hover::before,
+.v-selection-control__input::before {
+  background: var(--orokin) !important;
+}
+
+/* -------------------------------------------------------------------------
+   7. Chips — v-chip / v-chip-group
+   ------------------------------------------------------------------------- */
+.v-chip {
+  border-radius: 0 !important;
+  font-family: var(--font-hud) !important;
+  letter-spacing: 0.03em;
+  clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px);
+}
+.v-chip.v-chip--variant-tonal,
+.v-chip.v-chip--variant-outlined,
+.v-chip.v-chip--variant-text {
+  color: var(--ink) !important;
+}
+.v-chip.v-chip--variant-outlined {
+  border: 1px solid var(--orokin-line) !important;
+}
+/* Selected chip in a group → gold */
+.v-chip-group .v-chip--selected,
+.v-chip.v-chip--selected {
+  background: var(--orokin-dim) !important;
+  color: var(--gold-ink) !important;
+  border-color: var(--orokin) !important;
+}
+.v-chip-group .v-chip--selected .v-chip__overlay {
+  opacity: 0 !important;
+}
+
+/* -------------------------------------------------------------------------
+   8. Button toggle / button group — v-btn-toggle / v-btn-group
+   ------------------------------------------------------------------------- */
+.v-btn-toggle,
+.v-btn-group {
+  border-radius: 0 !important;
+  border: 1px solid var(--orokin-line) !important;
+  background: transparent !important;
+  overflow: hidden;
+}
+.v-btn-toggle .v-btn,
+.v-btn-group .v-btn {
+  border-radius: 0 !important;
+  color: var(--ink-dim) !important;
+  font-family: var(--font-hud) !important;
+  letter-spacing: 0.04em;
+}
+.v-btn-toggle .v-btn--active,
+.v-btn-group .v-btn--active {
+  background: var(--orokin-dim) !important;
+  color: var(--gold-ink) !important;
+}
+.v-btn-toggle .v-btn--active .v-btn__overlay,
+.v-btn-group .v-btn--active .v-btn__overlay {
+  opacity: 0 !important;
+}
+
+/* -------------------------------------------------------------------------
+   9. Dialogs & sheets — v-dialog / v-bottom-sheet + inner v-card
+   ------------------------------------------------------------------------- */
+.v-overlay.v-dialog > .v-overlay__content,
+.v-overlay.v-bottom-sheet > .v-overlay__content {
+  border-radius: 0 !important;
+}
+.v-overlay.v-dialog > .v-overlay__content > .v-card,
+.v-overlay.v-bottom-sheet > .v-overlay__content > .v-card,
+.v-overlay.v-dialog > .v-overlay__content > .v-sheet {
+  background: linear-gradient(180deg, #14162a 0%, #0e0f1c 100%) !important;
+  border: 1px solid var(--orokin-line) !important;
+  border-radius: 0 !important;
+  color: var(--ink) !important;
+  clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65) !important;
+}
+.v-overlay.v-dialog .v-card-title,
+.v-overlay.v-bottom-sheet .v-card-title {
+  font-family: var(--font-display) !important;
+  color: var(--gold-ink) !important;
+  letter-spacing: 0.02em;
+}
+.v-overlay__scrim {
+  background: #05060c !important;
+  opacity: 0.72 !important;
+}
+
+/* -------------------------------------------------------------------------
+   10. Tooltips — v-tooltip
+   ------------------------------------------------------------------------- */
+.v-overlay.v-tooltip > .v-overlay__content {
+  background: #12142a !important;
+  color: var(--ink) !important;
+  border: 1px solid var(--orokin-line) !important;
+  border-radius: 0 !important;
+  font-family: var(--font-hud) !important;
+  letter-spacing: 0.02em;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.55) !important;
+}
+
+/* -------------------------------------------------------------------------
+   11. Slider — v-slider
+   ------------------------------------------------------------------------- */
+.v-slider .v-slider-track__background {
+  background: rgba(200, 168, 92, 0.22) !important;
+}
+.v-slider .v-slider-track__fill {
+  background: var(--orokin) !important;
+}
+.v-slider .v-slider-thumb__surface {
+  background: var(--gold-ink) !important;
+  box-shadow: 0 0 0 1px var(--orokin) !important;
+}
+.v-slider .v-slider-thumb__surface::before {
+  background: var(--orokin) !important;
+}
+.v-slider .v-slider-thumb__label {
+  background: #12142a !important;
+  color: var(--gold-ink) !important;
+  border: 1px solid var(--orokin-line) !important;
+  font-family: var(--font-hud) !important;
+}
+
+/* -------------------------------------------------------------------------
+   12. Expansion panels — v-expansion-panels
+   ------------------------------------------------------------------------- */
+.v-expansion-panel {
+  background: transparent !important;
+  color: var(--ink) !important;
+}
+.v-expansion-panel-title {
+  color: var(--orokin) !important;
+  font-family: var(--font-hud) !important;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.9rem !important;
+}
+.v-expansion-panel-title__icon .v-icon {
+  color: var(--orokin) !important;
+}
+.v-expansion-panel-text__wrapper {
+  color: var(--ink) !important;
+}
+
+/* -------------------------------------------------------------------------
+   13. Snackbar — v-snackbar
+   ------------------------------------------------------------------------- */
+.v-snackbar__wrapper {
+  border: 1px solid var(--orokin-line) !important;
+  border-radius: 0 !important;
+  color: var(--ink) !important;
+  font-family: var(--font-hud) !important;
+  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+}
+.v-snackbar__content {
+  color: var(--ink) !important;
+}
