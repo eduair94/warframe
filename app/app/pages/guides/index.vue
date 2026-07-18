@@ -38,8 +38,15 @@
         </div>
       </div>
 
-      <!-- Quick-jump: FAQ + creators -->
+      <!-- Quick-jump: farming hub + FAQ + creators -->
       <div class="gh-quick">
+        <NuxtLink class="gh-quick__card" :to="localePath('/guides/farming')">
+          <v-icon class="gh-quick__icon">mdi-magnify-scan</v-icon>
+          <span class="gh-quick__body">
+            <span class="gh-quick__label">Farming Hub</span>
+            <span class="gh-quick__note">Search any item, resource or currency</span>
+          </span>
+        </NuxtLink>
         <NuxtLink class="gh-quick__card" :to="localePath('/faq')">
           <v-icon class="gh-quick__icon">mdi-help-circle-outline</v-icon>
           <span class="gh-quick__body">

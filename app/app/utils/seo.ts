@@ -131,6 +131,11 @@ export const PAGE_SEO: Record<string, PageSeo> = {
     description:
       'Every Warframe guide in one place: new-player help, platinum and resource farming, builds, endgame and a searchable FAQ. Grounded in r/Warframe, free for Tenno.'
   },
+  '/guides/farming': {
+    title: 'Warframe Farming Hub — Search Any Item, Resource or Currency',
+    description:
+      'What do you want to farm? Search by item type — Orokin Cells, Kuva, prime parts, Argon, credits, Endo — and jump to the best farm. Every Warframe farming guide in one hub.'
+  },
   '/faq': {
     title: 'Warframe FAQ — Answers to the Questions Everyone Asks',
     description:
