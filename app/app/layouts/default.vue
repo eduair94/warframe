@@ -116,7 +116,7 @@
 
 <script setup lang="ts">
 // LanguageMenu / GitHubButton auto-import from app/components — no manual import
-const { t } = useI18n()
+const { t, locale } = useI18n()
 // Keep drawer navigation on the visitor's locale (prefix_except_default)
 const localePath = useLocalePath()
 
@@ -125,7 +125,7 @@ const localePath = useLocalePath()
 // canonical/hreflang via useLocaleHead, so these layout values win for title
 // and description. resolveSeo() + PAGE_SEO live in app/utils/seo.ts.
 const route = useRoute()
-const seo = computed(() => resolveSeo(route.path))
+const seo = computed(() => resolveSeo(route.path, locale.value))
 
 // Canonical + hreflang alternates for EVERY route (i18n). Previously only a
 // handful of pages called useLocaleHead, so most pages shipped no canonical or

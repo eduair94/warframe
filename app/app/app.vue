@@ -17,6 +17,8 @@ import type { WarframeItem } from './stores/items'
 // client -> public apiURL. See composables/useApiBase.ts.
 const base = useApiBase()
 const items = useItemsStore()
+const translations = useTranslationsStore()
+const { locale } = useI18n()
 
 // ---- Structured data (JSON-LD) --------------------------------------------
 // WebSite + WebApplication describing the tool, so Google / AI answer engines
@@ -31,7 +33,7 @@ const ldjson = [
     name: 'Warframe Market Analytics',
     alternateName: 'Warframe Analytics',
     url: origin,
-    inLanguage: 'en',
+    inLanguage: locale.value,
     description:
       'Free real-time Warframe Market analytics: live prime prices, set-vs-parts, ducat efficiency, relic and riven valuation, vaulted-price tracking and trading signals.'
   },
@@ -83,6 +85,13 @@ if (data.value?.length) {
   if (event) event.node.res.setHeader('Cache-Control', 'no-store, must-revalidate')
 }
 
+// i18n: load the localized item-name dictionary for the active locale during
+// SSR so localized names are in the server-rendered HTML (required for search
+// indexing). No-op on English; the store rehydrates on the client (Pinia), so
+// there's no duplicate client fetch. Page-specific scopes (riven weapons,
+// locations, …) are loaded lazily by the pages that render them.
+await translations.ensureScope('items', locale.value)
+
 // ---- Near-realtime catalogue refresh ---------------------------------------
 // The crawler re-prices the full catalogue roughly every 2 minutes, so poll on
 // that cadence and refetch immediately when the tab regains focus — otherwise a
@@ -106,6 +115,13 @@ const refreshCatalogue = () => {
 const onVisibilityChange = () => {
   if (!document.hidden) refreshCatalogue()
 }
+
+// Client-side locale switch: the app root's setup runs once, so a later switch
+// to /de, /fr, … won't re-trigger the SSR dictionary load above. Fetch the new
+// locale's item dictionary on change; names update reactively once it lands.
+watch(locale, (l) => {
+  translations.ensureScope('items', l)
+})
 
 // The <LoadingBar/> overlay renders visible by default (the initial-load
 // spinner). Guarantee it hides once the app has mounted so it can never stick,
