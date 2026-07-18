@@ -8,14 +8,24 @@
 import { PAGE_SEO_I18N } from './seo-i18n'
 // Generated overlay for the guide / faq / creators / tools pages (all 12 locales).
 import { PAGE_SEO_I18N_GUIDES } from './seo-i18n-guides'
+// Generated overlay for the /vaulted-worth + /circuit pages (all 12 locales).
+import { PAGE_SEO_I18N_PAGES } from './seo-i18n-pages'
 
 // Merge the hand-curated market/tool overlay with the generated guide/faq/tools
 // overlay into one localized map. No key overlap by construction; if one ever
 // appeared in both, the hand-curated PAGE_SEO_I18N wins.
 const LOCALIZED_SEO: Record<string, Record<string, PageSeo>> = (() => {
   const merged: Record<string, Record<string, PageSeo>> = {}
-  for (const loc of new Set([...Object.keys(PAGE_SEO_I18N), ...Object.keys(PAGE_SEO_I18N_GUIDES)])) {
-    merged[loc] = { ...(PAGE_SEO_I18N_GUIDES[loc] || {}), ...(PAGE_SEO_I18N[loc] || {}) }
+  for (const loc of new Set([
+    ...Object.keys(PAGE_SEO_I18N),
+    ...Object.keys(PAGE_SEO_I18N_GUIDES),
+    ...Object.keys(PAGE_SEO_I18N_PAGES),
+  ])) {
+    merged[loc] = {
+      ...(PAGE_SEO_I18N_GUIDES[loc] || {}),
+      ...(PAGE_SEO_I18N_PAGES[loc] || {}),
+      ...(PAGE_SEO_I18N[loc] || {}),
+    }
   }
   return merged
 })()
@@ -99,6 +109,11 @@ export const PAGE_SEO: Record<string, PageSeo> = {
     description:
       'Explore Warframe prime and relic drop locations on an interactive 3D star chart. Find the best node for the part or relic you need.'
   },
+  '/circuit': {
+    title: 'Warframe Circuit & Incarnon Rotation This Week — Duviri',
+    description:
+      'This week’s Duviri Circuit rewards: the 3 Warframes and 5 Steel Path Incarnon Genesis adapters available now, plus the full rotation schedule. Auto-updated every Monday.'
+  },
   '/timing': {
     title: 'Buy & Sell Timing — Best Time to Trade in Warframe',
     description:
@@ -123,6 +138,11 @@ export const PAGE_SEO: Record<string, PageSeo> = {
     title: 'Vaulted Primes — Track Rising Warframe Prices',
     description:
       "Every vaulted Warframe prime you can no longer farm, ranked by price trend. Watch what's appreciating in platinum and sell smart."
+  },
+  '/vaulted-worth': {
+    title: 'Vaulted Warframe Primes Worth Buying — Plat Verdicts',
+    description:
+      'Should you buy that vaulted prime now? Live platinum price, 30-day trend and Prime Resurgence status fused into a buy, wait or skip verdict for every vaulted Warframe prime.'
   },
   '/volatility': {
     title: 'Price Volatility — Most Volatile Warframe Items',

@@ -33,6 +33,8 @@ export default {
         timing: 'Buy / Sell Timing',
         vaultSpikes: 'Vault Spikes',
         vaulted: 'Vaulted',
+        vaultedWorth: 'Worth Buying?',
+        circuit: 'Circuit Rotation',
         starChart: 'Star Chart',
         dropMap3d: '3D Drop Map',
         ducats: 'Ducats',

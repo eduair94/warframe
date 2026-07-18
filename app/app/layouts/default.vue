@@ -193,6 +193,7 @@ const navLinks: NavLink[] = [
   { to: '/timing', key: 'timing', icon: 'mdi-clock-alert-outline', group: 'Analytics' },
   { to: '/vault-spikes', key: 'vaultSpikes', icon: 'mdi-rocket-launch-outline', group: 'Analytics' },
   { to: '/vaulted', key: 'vaulted', icon: 'mdi-lock-outline', group: 'Analytics' },
+  { to: '/vaulted-worth', key: 'vaultedWorth', icon: 'mdi-cart-check', group: 'Analytics' },
   { to: '/star-chart', key: 'starChart', icon: 'mdi-orbit', group: 'Analytics' },
   { to: '/star-chart-3d', key: 'dropMap3d', icon: 'mdi-rotate-orbit', group: 'Analytics' },
   { to: '/ducats', key: 'ducats', icon: 'mdi-cash-multiple', group: 'Analytics' },
@@ -204,6 +205,7 @@ const navLinks: NavLink[] = [
   { to: '/guides/new-player', key: 'newPlayerGuide', icon: 'mdi-flag-checkered', group: 'Guides' },
   { to: '/faq', key: 'faq', icon: 'mdi-help-circle-outline', group: 'Guides' },
   { to: '/guides/endo', key: 'endoGuide', icon: 'mdi-book-open-variant', group: 'Guides' },
+  { to: '/circuit', key: 'circuit', icon: 'mdi-calendar-sync', group: 'Resources' },
   { to: '/creators', key: 'creators', icon: 'mdi-youtube', group: 'Resources' },
   { to: '/tools', key: 'communityTools', icon: 'mdi-tools', group: 'Resources' },
 ]
