@@ -20,6 +20,7 @@ import {
   isVaulted,
   payoutLiquidity,
   relicSellNow,
+  trueRarity,
   useRelicValue,
   type RelicRow,
 } from '../app/app/composables/useRelicValue';
@@ -163,6 +164,38 @@ describe('relicSellNow', () => {
   it('returns the bid when there is a bid but no ask/avg to anchor against', () => {
     const r = relic({ relic: { buy: 9, sell: 0, volume: 0, avgPrice: 0 } });
     expect(relicSellNow(r)).toBe(9);
+  });
+});
+
+describe('trueRarity', () => {
+  // The core correction: WFCD tags many 25.33%-chance Commons as "Uncommon"
+  // (every Lith T11 common, among others). rarity is derived from `chance`, so
+  // the mislabeled string never distorts a relic's expected value.
+  it('derives Common from a 25.33% chance even when the label says "Uncommon"', () => {
+    expect(trueRarity(reward({ rarity: 'Uncommon', chance: 25.33 }))).toBe('Common');
+  });
+  it('derives Uncommon from an 11% chance', () => {
+    expect(trueRarity(reward({ rarity: 'Uncommon', chance: 11 }))).toBe('Uncommon');
+  });
+  it('derives Rare from a 2% chance even when the label says "Common"', () => {
+    expect(trueRarity(reward({ rarity: 'Common', chance: 2 }))).toBe('Rare');
+  });
+  it('falls back to the (capitalised) label when no chance shipped', () => {
+    expect(trueRarity(reward({ rarity: 'rare', chance: undefined }))).toBe('Rare');
+  });
+});
+
+describe('useRelicValue chance correction', () => {
+  it('values a 25.33% common as a common, not the mislabeled 11% uncommon', () => {
+    const { ev } = useRelicValue('Intact');
+    // A single fully-liquid drop mislabeled Uncommon but 25.33% by chance.
+    const r = relic({
+      rewards: [reward({ rarity: 'Uncommon', chance: 25.33, price: 10, avgPrice: 10, volume: 1000 })],
+    });
+    const eff = 10 * (1000 / (1000 + VOL_K)); // basis 10 * liquidity
+    // Common weight (25.33%), NOT the label's Uncommon weight (11%).
+    expect(ev(r)).toBeCloseTo((25.33 / 100) * eff, 5);
+    expect(ev(r)).toBeGreaterThan((11 / 100) * eff); // sanity: strictly above the buggy value
   });
 });
 

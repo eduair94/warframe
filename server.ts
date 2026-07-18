@@ -54,6 +54,14 @@ async function main() {
         const results = await m.getRelic(url_name);
         return results;
     });
+    // Single relic's "open vs sell vs keep" EV row — the payload the relic detail
+    // page renders (rewards with authoritative WFCD chances, per-part vault flags,
+    // the relic's market book). Cached like the other read aggregates; keyed by
+    // url_name so a relic page and its value-board row stay in lockstep.
+    server.getJsonCache('relic_ev/:url_name', async (req: Request): Promise<any> => {
+        const url_name = req.params.url_name;
+        return m.getRelicEv(url_name);
+    });
     // Live order-book depth (price levels + quantities) for the "bulk buy/sell"
     // modeler — fetched on demand when a details dialog opens, walked client-side.
     server.getJson('orders/:url_name', async (req: Request): Promise<any> => {

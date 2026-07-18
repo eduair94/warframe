@@ -93,6 +93,12 @@ export interface IWarframeClient {
    */
   getRelic(urlName: string): Promise<ISetResult>;
 
+  /**
+   * Gets the single "open vs sell vs keep" EV row for one relic (rewards with
+   * authoritative WFCD chances + the relic's market book), or null if unknown.
+   */
+  getRelicEv(urlName: string): Promise<any | null>;
+
   // =====================================
   // Relic Operations
   // =====================================

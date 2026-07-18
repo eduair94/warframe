@@ -182,7 +182,7 @@
                 <span v-else class="rld__drop-name is-plain">{{ localItemName(d) }}</span>
                 <span v-if="rewardVaulted(d)" class="rld__vtag">{{ t('relicsValue.tags.vaulted') }}</span>
                 <span class="rld__drop-meta">
-                  <i class="rld__dot" :style="{ background: rarityColor(d.rarity) }"></i>{{ d.rarity }} · {{ chanceOf(d) }}%
+                  <i class="rld__dot" :style="{ background: rarityColor(trueRarity(d)) }"></i>{{ trueRarity(d) }} · {{ chanceOf(d) }}%
                 </span>
               </div>
               <div class="rld__drop-num">
@@ -229,6 +229,7 @@
 import { computed, ref, watch } from 'vue'
 import {
   RELIC_CHANCES,
+  trueRarity,
   useRelicValue,
   type RelicReward,
   type RelicRow,
@@ -351,18 +352,17 @@ const verdict = computed(() => {
   return { side: 'even', cls: 'is-even', label: t('relicsValue.verdict.even'), margin: '' }
 })
 
-// Fixed refinement chance for a reward's rarity (Common/Uncommon/Rare).
+// Fixed refinement chance for a reward's TRUE rarity (derived from the WFCD
+// chance, not the mislabeled rarity string) — Common/Uncommon/Rare.
 function chanceOf(r: RelicReward): string {
   const table = RELIC_CHANCES[refinement.value] ?? RELIC_CHANCES.Intact ?? {}
-  const key = (r.rarity || '').charAt(0).toUpperCase() + (r.rarity || '').slice(1).toLowerCase()
-  const c = Number(table[key]) || 0
+  const c = Number(table[trueRarity(r)]) || 0
   return c >= 10 ? c.toFixed(0) : c.toFixed(2).replace(/\.?0+$/, '')
 }
 // Realizable plat this drop adds to the relic's EV (chance × liquidity-weighted value).
 function contribOf(r: RelicReward): number {
   const table = RELIC_CHANCES[refinement.value] ?? RELIC_CHANCES.Intact ?? {}
-  const key = (r.rarity || '').charAt(0).toUpperCase() + (r.rarity || '').slice(1).toLowerCase()
-  return ((Number(table[key]) || 0) / 100) * effectivePrice(r)
+  return ((Number(table[trueRarity(r)]) || 0) / 100) * effectivePrice(r)
 }
 // Drops sorted by what they realistically contribute — the earners on top.
 const sortedRewards = computed<RelicReward[]>(() =>

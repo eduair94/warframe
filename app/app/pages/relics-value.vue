@@ -269,7 +269,7 @@
               </div>
               <div class="an-block">
                 <div class="an-block__lbl">{{ t('relicsValue.card.topDrop') }}</div>
-                <div class="an-block__row"><span>{{ topDrop(row).rarity }}</span><b>{{ fmtPlat(topDrop(row).price) }}p</b></div>
+                <div class="an-block__row"><span>{{ trueRarity(topDrop(row)) }}</span><b>{{ fmtPlat(topDrop(row).price) }}p</b></div>
                 <div class="an-block__row an-topdrop-m">
                   <span>{{ localItemName(topDrop(row)) }}</span>
                   <span v-if="rewardVaulted(topDrop(row))" class="an-vtag">{{ t('relicsValue.tags.vaulted') }}</span>
@@ -306,7 +306,7 @@
 <script setup lang="ts">
 import { computed, nextTick, onMounted, ref, watch } from 'vue'
 import { useDisplay } from 'vuetify'
-import { useRelicValue, type RelicRow } from '~/composables/useRelicValue'
+import { trueRarity, useRelicValue, type RelicRow } from '~/composables/useRelicValue'
 
 const { t } = useI18n()
 const { localName, localItemName } = useLocalizedName()

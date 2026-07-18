@@ -110,8 +110,22 @@ export interface IRelicEvReward {
   url_name: string;
   /** Thumbnail path */
   thumb: string;
-  /** Drop rarity (drives the refinement chance table on the client) */
+  /**
+   * WFCD rarity LABEL for the drop. Unreliable on its own: the drop tables tag
+   * many 25.33%-chance Commons as "Uncommon" (e.g. every Lith T11 common), so
+   * the client keys the refinement chance table off `chance`, not this string.
+   * Kept for display fallback only.
+   */
   rarity: RewardRarity | string;
+  /**
+   * Authoritative Intact drop chance from the WFCD drop tables (25.33 / 11 / 2
+   * for a standard relic's Common / Uncommon / Rare). The client derives the
+   * true rarity bucket from this and looks up the matching Radiant chance — so
+   * the mislabeled `rarity` string can't distort a relic's expected value.
+   * 0 when the source omitted a chance (older sync); the client then falls back
+   * to `rarity`.
+   */
+  chance: number;
   /** Going market price of the reward part (lowest sell order) */
   price: number;
   /**

@@ -30,7 +30,18 @@ export const VOL_K = 10
 
 export interface RelicReward {
   item_name: string
+  /**
+   * WFCD rarity LABEL — display fallback only. The drop tables mislabel many
+   * 25.33%-chance Commons as "Uncommon", so never key the chance table off this;
+   * use `trueRarity()` (derived from `chance`) instead.
+   */
   rarity: string
+  /**
+   * Authoritative Intact drop chance from the WFCD drop tables. The single source
+   * of truth for a drop's rarity bucket — see `trueRarity()`. Optional so older
+   * payloads (pre-`chance`) still type-check; those fall back to `rarity`.
+   */
+  chance?: number
   price: number
   avgPrice?: number
   volume?: number
@@ -38,6 +49,38 @@ export interface RelicReward {
   thumb?: string
   /** Whether the part itself is vaulted (scarce) vs still dropping (abundant). */
   vaulted?: boolean
+}
+
+/** Canonical Intact chance for each rarity bucket — the anchors `trueRarity` snaps to. */
+const RARITY_ANCHORS: Array<[string, number]> = [
+  ['Common', 25.33],
+  ['Uncommon', 11],
+  ['Rare', 2],
+]
+
+/**
+ * The reliable rarity of a drop: the bucket whose canonical Intact chance is
+ * nearest the WFCD `chance`, NOT the WFCD `rarity` string (which mislabels
+ * every Lith T11 common — and many others — as "Uncommon"). Falls back to the
+ * label only when no chance shipped. This is what makes the expected value
+ * honest: a 25.33% common is valued as a common, not as an 11% uncommon.
+ */
+export function trueRarity(r: RelicReward | undefined | null): string {
+  const c = Number(r?.chance)
+  if (Number.isFinite(c) && c > 0) {
+    let best = RARITY_ANCHORS[0]![0]
+    let bestDelta = Infinity
+    for (const [name, anchor] of RARITY_ANCHORS) {
+      const delta = Math.abs(c - anchor)
+      if (delta < bestDelta) {
+        bestDelta = delta
+        best = name
+      }
+    }
+    return best
+  }
+  const s = r?.rarity || ''
+  return s.charAt(0).toUpperCase() + s.slice(1).toLowerCase()
 }
 
 export interface RelicRow {
@@ -176,7 +219,7 @@ export function payoutLiquidity(relic: RelicRow | undefined | null, refinement: 
   let weight = 0
   let weighted = 0
   for (const r of relic?.rewards || []) {
-    const w = ((table[r.rarity] || 0) / 100) * (Number(r.price) || 0)
+    const w = ((table[trueRarity(r)] || 0) / 100) * (Number(r.price) || 0)
     weight += w
     weighted += w * rewardLiquidity(r)
   }
@@ -204,7 +247,7 @@ export function useRelicValue(refinement: MaybeRef<string>) {
     const liquid = opts.liquid !== false
     const t = table()
     return (relic?.rewards || []).reduce((sum, r) => {
-      const chance = t[r.rarity] || 0
+      const chance = t[trueRarity(r)] || 0
       const value = liquid ? effectivePrice(r) : Number(r.price) || 0
       return sum + (chance / 100) * value
     }, 0)
@@ -223,7 +266,7 @@ export function useRelicValue(refinement: MaybeRef<string>) {
     let bestScore = -1
     const t = table()
     for (const r of relic?.rewards || []) {
-      const score = ((t[r.rarity] || 0) / 100) * effectivePrice(r)
+      const score = ((t[trueRarity(r)] || 0) / 100) * effectivePrice(r)
       if (score > bestScore) {
         bestScore = score
         best = r

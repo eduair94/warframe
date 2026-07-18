@@ -334,6 +334,10 @@ export class RelicService {
           url_name: item?.url_name ?? '',
           thumb: item?.thumb ?? '',
           rarity: reward.rarity,
+          // Ship the authoritative WFCD Intact chance alongside the (unreliable)
+          // rarity label — the client derives the true rarity bucket from it so a
+          // mislabeled common can't be valued as an uncommon. See useRelicValue.
+          chance: Number(reward.chance) || 0,
           price: m?.sell ?? 0,
           // Liquidity inputs: the client discounts a drop's value by its trade
           // volume and prefers the 48h average over the raw lowest ask.

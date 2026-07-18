@@ -510,6 +510,31 @@ export abstract class BaseWarframeClient {
   }
 
   /**
+   * The single "open vs sell" EV row for one relic — the rich payload the relic
+   * detail page renders (rewards with authoritative chances, per-part vault
+   * status, the relic's own market book).
+   *
+   * Built from the SAME join as the whole-table view (getRelicsEv), so a relic's
+   * page and its row in the value board always agree. The "is this part vaulted"
+   * flag genuinely needs every relic (a part is farmable iff SOME dropping relic
+   * yields it), so this reuses the full builder and picks the one row rather than
+   * re-deriving a partial, inconsistent answer. Returns null for an unknown relic.
+   */
+  async getRelicEv(urlName: string): Promise<any | null> {
+    // Cheap existence gate FIRST: a bad/typo/enumerated slug misses here via a
+    // targeted indexed lookup and returns null without touching the heavy join
+    // below. Without it, every unknown slug would run the full getRelicsEv scan
+    // (all relics + all items + the drop index); its null result is uncacheable,
+    // so a burst of distinct invalid slugs each re-scans Mongo — the exact
+    // full-collection stampede the cache layer exists to prevent. The old
+    // relic/:url_name route missed cheaply the same way.
+    const relic = await this.relicService.findRelicByUrlName(urlName);
+    if (!relic) return null;
+    const rows = await this.getRelicsEv();
+    return rows.find((r) => r.url_name === urlName) ?? null;
+  }
+
+  /**
    * Order-book depth for one item, for the "bulk buy/sell" modeler.
    *
    * Served from the DATABASE — the compact depth ladder the price-sync crawler
