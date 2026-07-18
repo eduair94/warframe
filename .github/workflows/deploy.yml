@@ -98,6 +98,12 @@ jobs:
             # (and the npm-11 lockfile) need node 24 / npm 11, which live in
             # /usr/local/bin. Prepend it so node/npm/pm2 all resolve to 24.
             export PATH=/usr/local/bin:$PATH
+            # The app (Nuxt) build now bundles the localized SEO overlay plus a
+            # few hundred per-locale guide/faq/creators content JSON chunks. That
+            # pushed the build past node's default heap (auto-sized to the box,
+            # ~2 GB) → "JavaScript heap out of memory" mid-build. Give the build
+            # headroom so `npm run build` (app) completes before pm2 reload.
+            export NODE_OPTIONS="--max-old-space-size=4096"
             node -v
             cd "${{ secrets.DEPLOY_PATH }}"
             git pull --ff-only
