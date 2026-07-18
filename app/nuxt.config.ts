@@ -175,6 +175,7 @@ export default defineNuxtConfig({
 
   modules: [
     '@pinia/nuxt',
+    '@nuxt/fonts',
     '@nuxtjs/i18n',
     '@nuxtjs/sitemap',
     'nuxt-og-image',
@@ -183,6 +184,25 @@ export default defineNuxtConfig({
     '@vite-pwa/nuxt',
     'vuetify-nuxt-module'
   ],
+
+  // @nuxt/fonts is added ONLY to feed locally-bundled CJK/Cyrillic fonts to
+  // nuxt-og-image (its documented mechanism for custom fonts): the provider
+  // font resolution only returns Latin subsets, so localized OG titles in
+  // ja/ko/zh/ru/uk rendered as tofu. Default provider is 'local' so @nuxt/fonts
+  // does NOT self-host any remote font — Open Sans stays owned by
+  // @nuxtjs/google-fonts, leaving the live site's fonts untouched. These global
+  // @font-face declarations are picked up by nuxt-og-image (reads
+  // nuxt-fonts-global.css) and used per-glyph by the OG card's font-family stack.
+  fonts: {
+    provider: 'local',
+    families: [
+      { name: 'Noto Sans', src: '/fonts/noto-cyrillic-700.ttf', weight: 700, style: 'normal', global: true },
+      { name: 'Noto Sans JP', src: '/fonts/noto-jp-700.ttf', weight: 700, style: 'normal', global: true },
+      { name: 'Noto Sans KR', src: '/fonts/noto-kr-700.ttf', weight: 700, style: 'normal', global: true },
+      { name: 'Noto Sans SC', src: '/fonts/noto-sc-700.ttf', weight: 700, style: 'normal', global: true },
+      { name: 'Noto Sans TC', src: '/fonts/noto-tc-700.ttf', weight: 700, style: 'normal', global: true }
+    ]
+  },
 
   // Global stylesheets (Nuxt 2 `css: [...]` -> Nuxt 4 top-level `css`).
   // `base.css` sets the Open Sans body font (Vuetify 2's `defaultAssets.font`
@@ -233,7 +253,29 @@ export default defineNuxtConfig({
   // useSeoPage() passes each page's clean title/description into it. Fonts are
   // fetched at build/first-render and cached.
   ogImage: {
-    fonts: ['Cinzel:700', 'Rajdhani:500', 'Rajdhani:700'],
+    // Cinzel/Rajdhani are Latin-only, so localized OG titles/descriptions in
+    // Cyrillic (ru, uk) and CJK (ja, ko, zh-hans, zh-hant) would render as tofu.
+    // The renderer (takumi/satori) does per-GLYPH fallback across every loaded
+    // font, so adding Noto families that cover those scripts makes localized OG
+    // cards render correctly while Latin locales keep the branded Cinzel look.
+    // Latin display fonts (Cinzel/Rajdhani) + Noto fallbacks that cover the
+    // non-Latin scripts used in localized OG titles. fontSubsets forces the
+    // renderer to fetch the CJK/Cyrillic static subsets (the default is latin
+    // only, which left those glyphs as tofu). The card's font-family stack lists
+    // these families so takumi falls back to them per-glyph.
+    // Cinzel/Rajdhani come from Google (Latin display). The Noto families are
+    // supplied as LOCAL @font-face by @nuxt/fonts (see `fonts` above) and picked
+    // up here so the renderer can fall back to them for CJK/Cyrillic glyphs.
+    fonts: [
+      'Cinzel:700',
+      'Rajdhani:500',
+      'Rajdhani:700',
+      'Noto Sans:700', // Latin + Cyrillic (ru, uk)
+      'Noto Sans JP:700', // ja
+      'Noto Sans KR:700', // ko
+      'Noto Sans SC:700', // zh-hans
+      'Noto Sans TC:700' // zh-hant
+    ],
     defaults: {
       component: 'Void',
       width: 1200,
