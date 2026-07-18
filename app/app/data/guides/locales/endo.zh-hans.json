@@ -1,0 +1,579 @@
+{
+  "slug": "endo",
+  "eyebrow": "知识中心 · Endo",
+  "title": "Endo 刷取指南",
+  "lede": "Endo 是你用来升级 mods 的不可交易货币（同时还需要消耗 credits），升满一个 Primed mod 需要消耗约 140k——所以你永远都会缺它。这是 2026 年中期的真实版本：目前所有未被削弱的实际获取 Endo 的方法——老玩家的 Arbitrations 引擎、Ayatan sculpture 路线、无上限的 1999/Höllvania 和 Sedna 竞技场刷取，以及躺在你的 mod 收藏中被你遗忘的“免费 Endo”。",
+  "category": "farming",
+  "readMins": 11,
+  "stats": [
+    {
+      "num": "1,500",
+      "label": "每次 Arbitrations 轮次 C 的 Endo",
+      "tone": "gold"
+    },
+    {
+      "num": "3,450",
+      "label": "插满的 Anasa 提供的 Endo",
+      "tone": "good"
+    },
+    {
+      "num": "~140k",
+      "label": "升满一个 Primed mod 所需的 Endo",
+      "tone": "alt"
+    },
+    {
+      "num": "0",
+      "label": "能增加 Endo 的 boosters"
+    }
+  ],
+  "sections": [
+    {
+      "id": "why",
+      "title": "什么是 Endo 以及它从哪里来",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Endo 是“用于融合和升级 Mods 的浓缩能量”。你需要消耗 Endo 以及 [credits](/guides/credits) 来提升 mod 的等级；每一级都会增加效果和容量消耗。它是**不可交易的**——你无法用它换取 credits，也无法从其他玩家那里购买——所以每一点都需要去刷。关于升级具体如何消耗它，请参见 [mod 搭配指南](/guides/mods)。"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "**Endo 能量球**——敌人和容器掉落的蓝金色拾取物，有三种尺寸：15（小）、50（中）、80（大）。",
+            "**固定任务/轮次奖励**——星图轮次在高阶时奖励约 50 到 4,200 Endo；Granum Void 奖励 200 / 400 / 600（标准 / 延伸 / 噩梦）。",
+            "**Arbitrations**——每个合格轮次奖励 900 / 1,200 / 1,500 Endo，是老玩家刷取的核心途径。",
+            "**Ayatan Sculptures**——插上 Ayatan Stars 并在 Maroo 处分解，每个可获得 1,425–3,450 Endo。",
+            "**转换**——分解重复的 mods、拆解 Railjack 残骸，或者将重度洗过的 [Riven](/guides/riven) 一次性换成大量 Endo。"
+          ]
+        },
+        {
+          "type": "warn",
+          "title": "没有任何 booster 能直接影响 Endo",
+          "text": "没有 Endo Booster。Resource Boosters、Drop Chance Boosters、Steel Path Drop Chance Booster 和 Drop Chance Blessing 都对 Endo **毫无作用**——它不是一种可受加成的资源，而且 boosters 绝不适用于任务结束奖励。唯一有帮助的**例外**是：任务中掉落的 Endo 拾取物算作 MOD 掉落，因此 Mod Drop Chance Booster 会使你从地上捡到的 Endo 翻倍（参见 Sedna 竞技场刷取）。"
+        }
+      ]
+    },
+    {
+      "id": "best-farms",
+      "title": "按阶段和精力划分的最佳 Endo 刷取点",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "没有唯一的“最佳”——这取决于你的账号阶段以及你想有多肝。上限最高的依然是带加成器的 Sedna 竞技场固定队，但在 2026 年，社区真正推荐给单人及休闲玩家的是 Arbitrations 和 1999 赏金任务。"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "刷取方式",
+              "地点 / 节点",
+              "Endo 产量",
+              "最适合"
+            ],
+            "rows": [
+              [
+                "Arbitrations（生存/防御）",
+                "每小时轮换的节点（解锁条件：开满全星图）",
+                "每个 A/B/C 轮次 900 / 1,200 / 1,500 → 约 5,000–10,000/hr + sculptures",
+                "老玩家，适合单人"
+              ],
+              [
+                "Vodyanoi — Rathuum 竞技场（Steel Path）",
+                "Sedna › Vodyanoi",
+                "单人每场约 3-min 可得 ~400–1,000；满编掉落队 + Mod Drop Booster 可达约 1,000 Endo/min",
+                "硬核固定队，上限最高"
+              ],
+              [
+                "1999 / Höllvania 赏金任务",
+                "Höllvania 中央商场（完成 The Hex 后）",
+                "3,300 或 4,200 Endo 奖励（各约 14–16% 几率）；实际平均每 3–4 min 赏金任务可得约 1,000–1,500。无上限",
+                "中后期，最快的无上限刷法"
+              ],
+              [
+                "Deimos / Cambion Drift T5 赏金任务",
+                "Cambion Drift (L40–60)",
+                "第 1 阶段约 1,000 Endo（约 45% 几率）；重置早期阶段可达约 8,000–15,000/hr",
+                "Arbitration 前 / Steel Path 前"
+              ],
+              [
+                "Zariman 赏金任务（T4/5 歼灭）",
+                "The Chrysalith",
+                "每次赏金任务平均约 730 Endo（Endo 栏位的期望值）+ 少量地面掉落",
+                "刷 Zariman 装备时的副产品"
+              ],
+              [
+                "Ayatan sculptures（已插满）",
+                "在 Mars 的 Maroo's Bazaar 分解",
+                "每个插满的 sculpture 可得 1,425–3,450",
+                "被动获取，适合所有等级"
+              ],
+              [
+                "Railjack 残骸拆解",
+                "Dry Dock › 配置",
+                "每个 MK III 部件约 225 Endo；大量积攒 = 一次性获得数万",
+                "需要一艘造好的 Railjack"
+              ],
+              [
+                "Archon Hunt（每周）",
+                "Teshin 的 Steel Path 控制台",
+                "8,000 Endo 几率约 12.1%，每周一次机会（不保证获得）",
+                "每周福利，为了 Shard 去打"
+              ],
+              [
+                "分解重复的 mods",
+                "Orbiter › Mods 模块",
+                "每个未升级的 Common/Uncommon/Rare 奖励 5 / 10 / 15 Endo",
+                "任何 MR 适用，属于清理而非专门刷取"
+              ]
+            ],
+            "note": "产量数据为 2026 年中期水平，反映的是真实的掉落表概率，而非最理想的上限。Sedna 的宣传数据需要配合默契的队伍；单人产出则处于较低区间。"
+          }
+        },
+        {
+          "type": "info",
+          "title": "Sedna 竞技场并没有被削弱——它只是现在变得小众了",
+          "text": "从数学上讲，Vodyanoi 依然是游戏中每分钟产出 Endo 最多的地方。但自从 Arbitrations 推出以及 DE 在最近的奖励表（从 Narmer 到 1999）中塞满了 Endo 之后，大多数玩家认为该竞技场在日常休闲中已基本过时——它只有在专门的、带加成器的固定队中才划算。主流的掉落队配置是：一个 Nekros (Desecrate) + 一个 Khora (Pilfering Strangledome，同时负责聚怪) + 一个聚怪/DPS frame (Nidus Larva 或 Vauban Vortex)，在 Steel Path 难度下，并带有 Mod Drop Chance Booster。多个 Nekros **不会**在同一个尸体上叠加 Desecrate——每个尸体只能生效一个摸尸效果。"
+        },
+        {
+          "type": "tip",
+          "title": "在普通难度而非 Steel Path 下打赏金任务",
+          "text": "1999、Zariman 和 Sanctum 赏金任务在普通和 Steel Path 难度下给的 Endo 是**相同**的，所以为了速度请打普通难度——SP 只会额外增加 Steel Essence。Steel Path 仅对基于击杀的 Sedna 竞技场有帮助，因为其 +100% 的 mod 掉落几率加成会使地面掉落的 Endo 翻倍，并与 Mod Drop Chance Booster 呈乘法叠加。"
+        },
+        {
+          "type": "video",
+          "video": {
+            "id": "K6neW7Fp7vM",
+            "title": "You're Farming Endo Wrong – Do THIS Instead! (Top 5 Warframe Guide)",
+            "channel": "iFlynn"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ayatan",
+      "title": "Ayatan Sculpture 路线",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Ayatan Sculptures 是适合所有等级、可靠的 Endo 来源渠道。你收集 sculptures，用对应颜色的 Ayatan Stars 填满它们的插槽，然后去 Mars 的 Maroo's Bazaar 分解它们以换取大量 Endo。这是一种补充手段，而不是一种快速的每小时刷取方法，但几乎每个人都应该去做每周的免费任务，并把找到的插满。"
+        },
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "h": "收集 sculptures",
+              "p": "每个符合条件的任务都有固定的约 1/7（~14%）几率在地图板块中隐藏一个 sculpture。它们也会从 Arbitrations、Sorties/Archon Hunts、Simaris 和容器中掉落。Anasa（最顶级的 sculpture）来自 Sorties（最后一项任务有 28% 几率）和 Archon Hunts——**不**来自每周任务。"
+            },
+            {
+              "h": "做 Maroo 的每周 Ayatan 宝藏猎人任务",
+              "p": "Maroo's Bazaar › Ayatan 宝藏猎人，每周一次（世界标准时间周一 00:00 重置）。这是一个限时跑酷房间——Titania 或 Xaku 可以轻松搞定——按固定的 6 周循环奖励一个轮换的 sculpture：Sah → Ayr → Orta → Vaya → Piv → Valana。它**绝不**会给 Anasa。"
+            },
+            {
+              "h": "在分解前先插满",
+              "p": "将 Cyan Stars 放入蓝色插槽，将 Amber Stars 放入橙色插槽。一旦插上，星星就无法拆下。插满的 sculpture 的价值远高于空 sculpture 加上散装星星单独分解的总和——所以一定要先插满。"
+            },
+            {
+              "h": "在 Maroo 处分解",
+              "p": "把插满的 sculpture 带给 Maroo 并选择“交易宝藏”——提取是免费的（旧版的 credits 消耗已在 2017 年移除）。Endo 会直接进入你的库存。"
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Sculpture",
+              "插槽 (C+A)",
+              "未插星的 Endo",
+              "插满后的 Endo",
+              "来源说明"
+            ],
+            "rows": [
+              [
+                "Anasa",
+                "2C + 2A",
+                "2,000",
+                "3,450",
+                "仅限 Sortie (28%) / Archon——绝不来自每周任务"
+              ],
+              [
+                "Kitha",
+                "4C + 1A",
+                "450",
+                "3,000",
+                "商家 (Necraloid)；单颗 Amber 价值最高"
+              ],
+              [
+                "Orta",
+                "3C + 1A",
+                "650",
+                "2,700",
+                "每周循环（第 3 周）"
+              ],
+              [
+                "Zambuka",
+                "2C + 1A",
+                "450",
+                "2,600",
+                "Vitus Essence 商店；每颗 Amber 的 Endo 转化率最高（~1,075）"
+              ],
+              [
+                "Hemakara",
+                "2C + 1A",
+                "450",
+                "2,600",
+                "—"
+              ],
+              [
+                "Chattraka",
+                "2C + 1A",
+                "450",
+                "2,600",
+                "Nightwave/商家"
+              ],
+              [
+                "Vaya",
+                "2C + 1A",
+                "400",
+                "1,800",
+                "每周循环（第 4 周）"
+              ],
+              [
+                "Piv",
+                "2C + 1A",
+                "375",
+                "1,725",
+                "每周循环（第 5 周）"
+              ],
+              [
+                "Valana",
+                "2C + 1A",
+                "325",
+                "1,575",
+                "每周循环（第 6 周）"
+              ],
+              [
+                "Sah",
+                "2C + 1A",
+                "300",
+                "1,500",
+                "每周循环（第 1 周）"
+              ],
+              [
+                "Ayr",
+                "3C + 0A",
+                "325",
+                "1,425",
+                "每周循环（第 2 周）；不需要 Amber"
+              ]
+            ],
+            "note": "散装星星分解价值：Cyan Star = 50 Endo，Amber Star = 100 Endo。插满后分解远好于散装分解——例如，插满的 Anasa 价值 3,450，而空 Anasa 加上其 4 颗星星单独分解总共只有约 2,300。"
+          }
+        },
+        {
+          "type": "warn",
+          "title": "Amber Stars 是瓶颈——而且星星无法被吸取",
+          "text": "Cyan Stars 实际上是无限的（通过容器/储物柜以及 Plains 上的 Kuaka，每场任务约能获得 2 个）。Amber 则是瓶颈。可以从 Deimos / Cambion Drift 赏金任务中刷取（早期阶段约 45–56% 几率），或者直接**制作**它：来自 Arbitration（Arbiters of Hexis）商店的可重复使用 Ayatan Amber Star 蓝图需要 10 Vitus Essence，之后每次制作可以将 2 Cyan + 1 Vitus + 100,000 credits 转化为 1 Amber。当极度缺乏 Amber 时，优先将其用于 Zambuka/Orta，并插满只需 cyan 的 Ayr。注意：sculptures 和 stars 必须手动拾取——Vacuum/Fetch 无法吸取它们；使用 Loot Radar mod 或 Golden Instinct 来发现它们。"
+        },
+        {
+          "type": "video",
+          "video": {
+            "id": "-hWq1QPXTQ8",
+            "title": "How To Turn Ayatan Sculptures & Stars Into Endo!!! Warframe!",
+            "channel": "Sethbest"
+          }
+        }
+      ]
+    },
+    {
+      "id": "arbitrations",
+      "title": "Arbitrations — 老玩家的 Endo 引擎",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Arbitrations（“精英警报”）是 2026 年首屈一指的持续 Endo 刷取点。每次只有一个 node 处于激活状态，每小时轮换一次，只要你完成了 Pluto 上的 Eris Junction（解锁 Focus-Lens 访问权限）即可解锁——旧版的“开满所有 node”要求已不复存在。每个合格轮次都会掉落固定数量 of Endo 以及一个必定掉落的 Vitus Essence，而其他掉落则会提供 Ayatan Sculptures，你可以将其分解以获得更多 Endo。"
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "轮次 A",
+              "v": "900 Endo 几率约 44%"
+            },
+            {
+              "k": "轮次 B",
+              "v": "1,200 Endo 几率约 44.5%"
+            },
+            {
+              "k": "轮次 C",
+              "v": "1,500 Endo 几率约 35%（在 2026 年的一次更新中从 33% 进行了加强）"
+            },
+            {
+              "k": "轮次规律",
+              "v": "AABBCC… 之后 C 无限循环——一直打 C 轮以获取 1,500 档位"
+            },
+            {
+              "k": "实际产出",
+              "v": "约 5,000–10,000 Endo/hr，插满并卖掉 sculptures 后收益更高"
+            }
+          ]
+        },
+        {
+          "type": "p",
+          "text": "这是重新平衡，而不是削弱。“Arbitrations 重访”调整降低了 Endo 在奖励池中的占比，但切换到了 AABBCC 模式并将奖励频率翻倍（防御任务每 5 波结算一次，而非 10 波），因此每小时的 Endo 产出保持不变甚至有所提升。2026 年的一次微调甚至提高了轮次 C 的概率以及 Vitus x3 的几率。"
+        },
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "h": "选择激活的 node 和模式",
+              "p": "生存是社区最爱的“边杀边歇”模式（有最持续的刷怪和地面 Endo 掉落）；防御紧随其后，更具可预测性（每 5 波必定结算一次）；对于积极操作的玩家来说，中断能最快地刷出高轮次奖励——每防守一个导管结算一次，每轮最多 4 次。"
+            },
+            {
+              "h": "携带坦度高、能自给自足的装备",
+              "p": "Arbitration Shield Drones 会使附近的敌人免疫伤害，直到无人机死亡，并且没有免费的自我复活——你需要收集 5 个 Resurgence Tokens 来复活，每个都会叠加生命值/护盾/能量的减益效果。"
+            },
+            {
+              "h": "坚持打多个轮次",
+              "p": "打过第 20 波 / AABB 阶段，以循环无尽的轮次 C = 重复结算 1,500-Endo 的奖励表。在波次之间让你的宠物吸取地面的 Endo 和 stars。"
+            },
+            {
+              "h": "兑现收益",
+              "p": "撤离，插满掉落的任何 sculptures，并在 Maroo 处分解它们以获得额外收益。"
+            }
+          ]
+        },
+        {
+          "type": "info",
+          "title": "Drones 不掉落 Endo",
+          "text": "Shield Drones 只有 6% 的几率掉落 1 个 Vitus Essence（5 分钟后消失）——不掉落 Endo。散装 Endo 来自普通敌人的掉落以及固定的轮次奖励表。Boosters 对该奖励表中的 Endo 毫无作用。"
+        },
+        {
+          "type": "video",
+          "video": {
+            "id": "Oaa3EdSFpiE",
+            "title": "Arbitrations: Vitus Essence, Rolling Guard, Aura FORMA - Warframe Guide",
+            "channel": "KardinalxSin"
+          }
+        }
+      ]
+    },
+    {
+      "id": "passive",
+      "title": "被动与顺带获取的 Endo",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "即使不专门去刷，也会积累大量的 Endo——而且现在你的 mod 收藏中可能就躺着一大堆。"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "**分解重复的 mods**——Orbiter › Mods 模块。未升级的 mods 价值由稀有度固定：Common 5、Uncommon 10、Rare 15、Legendary 约 20。批量工具“快速选择”（右下角，于 Update 38.5 中加入）可以按稀有度批量选择未升级的 mods，并带有 keep-N 字段，自动跳过已升级/Legendary/Riven mods，并通过输入“Fusion”进行确认。",
+            "**每日 Sortie**——约 4,000 Endo，但在奖励表中的概率只有约 12%（大约每 8 天拿到一次，而不是每天）。",
+            "**每周 Archon Hunt**——8,000 Endo 几率约 12.1%；你主要是为了必定掉落的 Archon Shard 去打。",
+            "**Teshin 的 Steel Path 荣誉**——用 150 Steel Essence 兑换 30,000-Endo 组合包，但这是一个轮换商品，大约每 8 周才出现 1 周。",
+            "**Palladino**——10 个 Riven Slivers → 6,000 Endo，每周一次。",
+            "**Granum Void**——按等阶奖励 200 / 400 / 600 Endo。"
+          ]
+        },
+        {
+          "type": "warn",
+          "title": "绝不要为了 credits 卖掉 mods，也绝不要分解错东西",
+          "text": "将 mods 卖成 credits 收益极低——请务必分解为 Endo，并单独去刷 [credits](/guides/credits)（打一次 Index 约等于 250k）。分解**已升级**的 mod 仅会退还你投入的 75% Endo——这是净亏损——所以千万不要为了分解而升级 mod。也千万不要分解可交易/有价值的 mod 或 [Riven](/guides/riven)：Riven 作为 platinum 出售价值要高得多，而且即使作为 Endo，也只有在你已经投入了多次 Kuva 重洗时才会给得多（每次重洗 +200 Endo）。"
+        },
+        {
+          "type": "tip",
+          "title": "到处都在夸大分解 mod 的收益",
+          "text": "你会看到“一次清理能拿 100k–200k”的说法——这夸大了 5–15x。一个拥有数千张重复卡片的囤积狂报告称，一次彻底清理也只得到了约 10–14k Endo。把分解当作价值几千 Endo 的免费清理，而不是主要的刷取途径。"
+        }
+      ]
+    },
+    {
+      "id": "spend",
+      "title": "你的 Endo 花在了哪里",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Endo 离开你的库存只有一种途径：升级 mods。每一级都需要消耗 Endo + credits，并同时提升 mod 的效果和它的容量消耗。在最高等级时，消耗会呈断崖式暴增，这就是为什么 Endo 总是显得不够用。"
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "10 级 Primed mod",
+              "v": "总计约 140,000 Endo（最后几级每级消耗 40k+）"
+            },
+            {
+              "k": "全套 Primed / Archon / Galvanized 收藏",
+              "v": "数十万到超过一百万 Endo"
+            },
+            {
+              "k": "满级 10 级 Rare mod",
+              "v": "制作需要约 30,690 Endo（分解可退还约 23k）"
+            }
+          ]
+        },
+        {
+          "type": "tip",
+          "title": "有时买个 Legendary Core 比自己刷更划算",
+          "text": "一个可交易的 Legendary Core 可以瞬间升满**任何** mod，价格约为 60–80 platinum。对于单个 Primed mod 来说，这通常比去刷 40k+ Endo 以及最高等级所需的约 2M+ credits 还要便宜。买个 Core，省下精力去刷你收藏中的其他东西。"
+        },
+        {
+          "type": "info",
+          "title": "Ayatan 到 mod 是最干净的转换方式",
+          "text": "由于 Endo 无法交易，插满的 Ayatan Sculptures 实际上是一种储存未来 mod 等级的方式——你可以随意囤积 sculptures 和 stars（它们不占用库存容量），然后在需要升满某些东西时一次性分解一堆。Endo 没有实际的存储上限。"
+        },
+        {
+          "type": "info",
+          "title": "更愿意通过购买来跳过枯燥的刷取？",
+          "text": "你无法直接购买 Endo，但你可以用便宜的 platinum 来换取它：一个重度洗过的垃圾 [Riven](/guides/riven) 分解后可以提供数千 Endo，而价格只需零花钱级别的 platinum，并且插满的 Ayatan sculptures 也可以在市场上出售。[Endo Exchange](/endo) 会根据每 platinum 能换取的 Endo 数量对这些购买路线进行实时排名，这样你就能看到当前最便宜的选择——这是本刷取指南的另一面。"
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "2026 年最快的 Endo 刷取方法是什么？",
+      "a": "若要追求极致速度且有默契的固定队，在 Steel Path 难度的 Sedna Rathuum 竞技场 (Vodyanoi) 中使用 Nekros + Pilfering-Khora + 聚怪 frame 并带上 Mod Drop Chance Booster，可以达到每分钟约 1,000 Endo——这是最高的持续产出率。对于无上限的单人速度，高阶 1999/Höllvania 赏金任务（3,300–4,200 Endo 奖励，无每日上限）是社区的最爱。它没有被削弱，只是比较小众：大多数休闲玩家会选择 Arbitrations 或 1999，因为竞技场太肝且需要固定队。"
+    },
+    {
+      "q": "对老玩家来说，最好且可重复的 Endo 刷取点是什么？",
+      "a": "Arbitrations。每个合格轮次会掉落 900/1,200/1,500 Endo（轮次 A/B/C），无尽模式可以让你无限循环轮次 C 以获取 1,500 档位——每小时约 5,000–10,000 Endo，加上掉落的 Ayatan sculpture 分解可得数千，还有必定掉落的 Vitus Essence。在 Pluto 的 Eris Junction 后解锁。"
+    },
+    {
+      "q": "如果我是单人或者不想组固定队，最好的选择是什么？",
+      "a": "Arbitrations（每轮都有 Endo + sculptures）、高阶 1999/Zariman/Sanctum 赏金任务（快速歼灭，每次奖励结算高达 3,300–4,200 Endo），或者 Railjack（箱子里的 Endo 加上拆解残骸每个约 225）。这些都可以单人完成，或者对野队很友好。"
+    },
+    {
+      "q": "在进入 Steel Path 之前 / 早期最好的 Endo 刷取点是什么？",
+      "a": "Deimos/Cambion Drift Tier-5 (L40–60) 赏金任务——打前约 3 个阶段以获取约 1,000-Endo 的组合包，然后重置。如果解锁了 1999 赏金任务和 Railjack 拆解也可以加上，并辅以分解重复的 mods 和 Maroo 的每周免费 Ayatan 猎人任务。Arbitrations 需要开满全星图，所以会稍晚一些。"
+    },
+    {
+      "q": "Ayatan Sculptures 是如何运作的？",
+      "a": "Sculptures 拥有对应颜色的插槽。你用 Cyan Stars 填满 Cyan 插槽，用 Amber Stars 填满 Amber 插槽（一旦插上便无法拆下），然后在 Mars 的 Maroo's Bazaar 分解 sculpture 以获取其插满后的 Endo 价值——从 1,425（Ayr）到 3,450（Anasa）。一定要先插满：插满的 sculpture 价值远高于空 sculpture 加上散装星星的总和。"
+    },
+    {
+      "q": "我应该直接分解 Ayatan Stars 还是把它们插上？",
+      "a": "把它们插上。一颗散装的 Cyan Star 只能分解 50 Endo，Amber 只能分解 100，但插上后会应用 sculpture 的倍率——在 sculpture 内部，每颗 Cyan star 相当于增加了约 350–450 Endo 的分解价值。在带去给 Maroo 之前，一定要先填满插槽。"
+    },
+    {
+      "q": "Maroo 的每周 Ayatan 宝藏猎人任务会给 Anasa 吗？",
+      "a": "不会。每周任务在固定的 6 周循环中只奖励六种较小 sculptures 中的一种（Sah、Ayr、Orta、Vaya、Piv、Valana），最高为 Orta（插满 2,700）。Anasa——价值 3,450-Endo 的旗舰款——来自 Sorties（最后一项任务有 28% 几率）和 Archon Hunts。每周任务依然建议每周都做；只需几分钟的跑酷就能免费获得一个 sculpture。"
+    },
+    {
+      "q": "Resource 或 Drop Chance Booster 会增加 Endo 吗？",
+      "a": "不会。没有 Endo Booster，并且 Resource Booster、Drop Chance Booster、Steel Path Drop Chance Booster 以及 Drop Chance Blessing 都对 Endo 毫无作用——它不是一种可受加成的资源，而且 boosters 绝不影响任务结束奖励。唯一的例外是：任务中掉落的 Endo 拾取物算作 MOD 掉落，因此 Mod Drop Chance Booster 会使你从地上捡到的 Endo 翻倍，这就是为什么 Sedna 竞技场的主流配置会将其与 Steel Path 叠加使用。"
+    },
+    {
+      "q": "我需要为了更多 Endo 而在 Steel Path 难度下打赏金任务吗？",
+      "a": "不需要。1999、Zariman 和 Sanctum 赏金任务在普通和 Steel Path 难度下给的 Endo 是**相同**的，所以为了速度请打普通难度——SP 只会额外增加 Steel Essence。Sedna Rathuum 竞技场是唯一专门需要 Steel Path 的刷取点，因为其加成会使敌人的 Endo 掉落翻倍。"
+    },
+    {
+      "q": "分解 mods 能获得多少 Endo？",
+      "a": "未升级的垃圾 mods 只会提供微小的固定数量——Common 5、Uncommon 10、Rare 15 Endo。它会随着等级而增加，因为分解会退还约 75% 投入的 Endo，所以满级的 Rare 或 Primed 重复卡会退还数百到数千。确认屏幕会显示确切的数量。把它当作价值几千 Endo 的免费清理，而不是专门的刷取途径——并且千万不要分解可交易的重复卡（把它们卖成 platinum）或 Riven。"
+    },
+    {
+      "q": "为什么我有大量的 Cyan Stars，但 Amber 却永远不够用？",
+      "a": "这是设计使然。Cyan Stars 很常见（容器、储物柜、Plains 上的 Kuaka）；Amber 则是限制你能插满多少个 sculptures 的瓶颈。可以从 Deimos/Cambion Drift 赏金任务中刷取 Amber，或者使用 Arbitration 商店中的可重复使用 Amber Star 蓝图进行制作（需要 10 Vitus Essence，之后每次制作消耗 2 Cyan + 1 Vitus + 100k credits）。当极度缺乏 Amber 时，优先将其用于 Zambuka/Orta，并插满只需 cyan 的 Ayr。"
+    },
+    {
+      "q": "我可以交易或购买 Endo 吗？",
+      "a": "不行——Endo 本身是不可交易的，无法卖成 credits，也无法从其他玩家那里购买。它必须通过获取或转换来得到。但你可以花 platinum 来便宜地获取它：购买重度洗过的垃圾 Riven 或插满的 Ayatan sculpture 并将其分解。[Endo Exchange](/endo) 会根据每 platinum 能换取的 Endo 数量对这些购买路线进行实时排名。"
+    }
+  ],
+  "videos": [
+    {
+      "id": "wfcARDwh01E",
+      "title": "Best ENDO Farms in Warframe 2026 (FAST AND EASY)",
+      "channel": "Kryptafy"
+    },
+    {
+      "id": "NyUIIKBlgko",
+      "title": "How to Get Endo FAST in Warframe (2026) | Best Farming Spots",
+      "channel": "Aethernaut1887"
+    },
+    {
+      "id": "CSSMA_Xhypw",
+      "title": "Warframe The BEST Endo Farming Guide for 2026!",
+      "channel": "Weazel"
+    },
+    {
+      "id": "O1p72j8qMz4",
+      "title": "ALL THE BEST ENDO FARM IN 2026 | UPDATED ENDO FARMING GUIDE",
+      "channel": "Grind Hard Squad"
+    },
+    {
+      "id": "ZlkwYJiQjaw",
+      "title": "Best Endo Farms 2026 | Max Mods FAST in Warframe",
+      "channel": "TrueDripFrame"
+    },
+    {
+      "id": "mPy9vllrNCM",
+      "title": "The ULTIMATE Guide to Farming ENDO In Warframe!",
+      "channel": "WarframeFlo"
+    }
+  ],
+  "sources": [
+    {
+      "label": "WARFRAME Wiki — Endo",
+      "href": "https://wiki.warframe.com/w/Endo"
+    },
+    {
+      "label": "WARFRAME Wiki — Arbitrations / Rewards",
+      "href": "https://wiki.warframe.com/w/Arbitrations/Rewards"
+    },
+    {
+      "label": "WARFRAME Wiki — Ayatan Treasures",
+      "href": "https://wiki.warframe.com/w/Ayatan_Treasures"
+    },
+    {
+      "label": "WARFRAME Wiki — Ayatan Treasure Hunt",
+      "href": "https://wiki.warframe.com/w/Ayatan_Treasure_Hunt"
+    },
+    {
+      "label": "WARFRAME Wiki — Rathuum (Sedna arena)",
+      "href": "https://wiki.warframe.com/w/Rathuum"
+    }
+  ],
+  "related": [
+    {
+      "label": "Endo Exchange（用 Platinum 购买）",
+      "to": "/endo",
+      "icon": "swap-horizontal",
+      "note": "跳过枯燥的刷取——实时排名，提供通过重洗的 Rivens 和 Ayatans 兑换的最便宜的每 platinum Endo 方案"
+    },
+    {
+      "label": "Modding 指南",
+      "to": "/guides/mods",
+      "icon": "puzzle",
+      "note": "你所有的 Endo 实际上都花在了哪里"
+    },
+    {
+      "label": "Riven Mods 详解",
+      "to": "/guides/riven",
+      "icon": "star-four-points-outline",
+      "note": "垃圾 Riven 可以分解为大量 Endo"
+    },
+    {
+      "label": "Credit 刷取",
+      "to": "/guides/credits",
+      "icon": "circle-multiple-outline",
+      "note": "Modding 开销的另一半"
+    },
+    {
+      "label": "Steel Path 指南",
+      "to": "/guides/steel-path",
+      "icon": "fire",
+      "note": "使 Sedna Rathuum 竞技场中地面掉落的 Endo 翻倍"
+    },
+    {
+      "label": "Archon Shards",
+      "to": "/guides/archon-shards",
+      "icon": "cards-diamond-outline",
+      "note": "每周任务，同时奖励 8,000 Endo"
+    }
+  ],
+  "updated": "2026-07-18"
+}

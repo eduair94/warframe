@@ -424,6 +424,59 @@ const guide: Guide = {
           "text": "When a build guide lists mods you don't own, slot the closest equivalent (a normal mod instead of its Primed version) and upgrade later. A 90%-complete build clears the entire star chart — you do not need every Primed and Riven to have fun."
         }
       ]
+    },
+    {
+      "id": "build-planners",
+      "title": "Copy & theorycraft faster with build planners",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "You rarely have to mod from a blank arsenal. Two free web tools cover the whole job — **[Overframe](/tools/overframe)** to browse and copy community builds, and **[Underframe](/tools/underframe)** to simulate DPS and auto-optimise a loadout. Most players start on Overframe and refine on Underframe."
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "Overframe (overframe.gg)",
+              "v": "The largest community build database + in-browser arsenal builder — votes, tier lists, and a Player Sync that imports the mods you own"
+            },
+            {
+              "k": "Underframe (underframe.site)",
+              "v": "A deep DPS simulator vs scaled enemies, an auto-build optimiser, and Riven auto-rolling — for min-maxing the last 10%"
+            }
+          ]
+        },
+        {
+          "type": "steps",
+          "ordered": true,
+          "steps": [
+            {
+              "h": "Search and read — don't just copy the top vote",
+              "p": "Open a few builds for your item and read the author's notes on what it's for (Steel Path, Eidolon, farming). Prefer recent builds — see the warning below."
+            },
+            {
+              "h": "Check the true cost",
+              "p": "Count the Forma and flag every Riven, arcane, Umbral/Primed mod and Helminth subsume the build assumes. Build the version with what you own and slot equivalents for the rest."
+            },
+            {
+              "h": "Import your arsenal (optional)",
+              "p": "Overframe's Overwolf desktop app can Player-Sync your public profile so it greys out mods you don't have — it reads profile data, not game memory."
+            },
+            {
+              "h": "Simulate before you Forma",
+              "p": "Drop the adapted build into Underframe, sim it against the enemy you'll actually fight, and compare two options before committing Forma to one."
+            }
+          ]
+        },
+        {
+          "type": "warn",
+          "text": "Overframe's **tier lists and some rankings are vote-aggregated over years**, so reworked gear can sit below what it actually does today. Read builds critically and check the date — the [Tier List guide](/guides/tier-list) explains the vote-lag trap."
+        },
+        {
+          "type": "info",
+          "text": "Want the full loop — goal → template → adapt → simulate → Forma — plus a red-flag checklist for shared builds? See the dedicated [Best Builds & Build Planners guide](/guides/builds)."
+        }
+      ]
     }
   ],
   "faqs": [
@@ -458,6 +511,10 @@ const guide: Guide = {
     {
       "q": "Are Rivens worth it for a new player?",
       "a": "Not yet. Rivens are an endgame min-max layer that only adds roughly the last 10–30% on top of an already-complete build, and their randomized stats can be tricky. Finish a proper mod loadout first, then price rolls with the [Riven value estimator](/riven-value) and read the mechanics in the [Riven guide](/guides/riven) before spending platinum."
+    },
+    {
+      "q": "Where do I find good Warframe builds instead of modding from scratch?",
+      "a": "Use a build planner. [Overframe](/tools/overframe) is the biggest community build database — search any frame or weapon, copy a highly-rated build, and even import the mods you own. [Underframe](/tools/underframe) is a DPS simulator with an auto-build optimiser for min-maxing. Read builds critically (community rankings lag reworks) and adapt them to what you own — the full workflow is in the [Best Builds & Build Planners guide](/guides/builds)."
     }
   ],
   "videos": [
@@ -494,9 +551,23 @@ const guide: Guide = {
     {
       "label": "Warframe Wiki — Shield & Shield Gating",
       "href": "https://wiki.warframe.com/w/Shield"
+    },
+    {
+      "label": "Overframe — community builds & arsenal builder",
+      "href": "https://overframe.gg/"
+    },
+    {
+      "label": "Underframe — DPS simulator & auto-build",
+      "href": "https://www.underframe.site/"
     }
   ],
   "related": [
+    {
+      "label": "Best Builds & Build Planners",
+      "to": "/guides/builds",
+      "icon": "hammer-screwdriver",
+      "note": "Copy & theorycraft with Overframe & Underframe"
+    },
     {
       "label": "Riven Mods Guide",
       "to": "/guides/riven",

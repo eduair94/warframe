@@ -1,0 +1,579 @@
+{
+  "slug": "endo",
+  "eyebrow": "지식 센터 · Endo",
+  "title": "Endo 파밍 가이드",
+  "lede": "Endo는 mod 랭크를 올리기 위해 (credits와 함께) 사용하는 거래 불가능한 재화이며, 맥스 랭크 Primed mod 하나를 만드는 데 약 140k가 소모되므로 항상 부족할 것입니다. 이 가이드는 솔직한 2026년 중반 버전으로, 현재 너프되지 않고 실제로 Endo를 획득할 수 있는 모든 방법을 담고 있습니다. 베테랑을 위한 Arbitration 엔진, Ayatan sculpture 루트, 제한이 없는 1999/Höllvania 및 Sedna 아레나 파밍, 그리고 mod 컬렉션에 잠자고 있는 \"깜빡 잊고 있었던 공짜 Endo\"까지 모두 소개합니다.",
+  "category": "farming",
+  "readMins": 11,
+  "stats": [
+    {
+      "num": "1,500",
+      "label": "Arbitration 로테이션 C당 Endo",
+      "tone": "gold"
+    },
+    {
+      "num": "3,450",
+      "label": "소켓을 채운 Anasa에서 얻는 Endo",
+      "tone": "good"
+    },
+    {
+      "num": "~140k",
+      "label": "Primed mod 하나를 맥스 랭크로 만드는 데 필요한 Endo",
+      "tone": "alt"
+    },
+    {
+      "num": "0",
+      "label": "Endo를 증가시키는 부스터"
+    }
+  ],
+  "sections": [
+    {
+      "id": "why",
+      "title": "Endo란 무엇이며 어디서 얻는가",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Endo는 \"Mod를 합성하고 업그레이드하는 데 사용되는 응축된 에너지\"입니다. Endo와 [credits](/guides/credits)를 소모하여 mod의 랭크를 올릴 수 있으며, 각 랭크는 효과와 수용량을 증가시킵니다. Endo는 **거래 불가능**하므로, credits로 판매하거나 다른 플레이어에게서 구매할 수 없어 모든 Endo를 직접 파밍해야 합니다. 랭크 업 시 실제로 어떻게 소모되는지는 [modding 가이드](/guides/mods)를 참조하세요."
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "**Endo 오브** — 적과 보관함에서 드롭되는 청색과 금색의 아이템으로, 세 가지 크기가 있습니다: 15 (소형), 50 (중형), 80 (대형).",
+            "**고정 미션/로테이션 보상** — 성계지도 로테이션은 높은 티어에서 약 50에서 최대 4,200 Endo를 지급하며, Granum Void는 200 / 400 / 600 (Standard / Extended / Nightmare)을 지급합니다.",
+            "**Arbitrations** — 조건에 맞는 로테이션당 900 / 1,200 / 1,500 Endo를 지급하며, 베테랑 파밍의 핵심입니다.",
+            "**Ayatan Sculptures** — Ayatan Stars를 소켓에 장착한 후 Maroo에게서 용해하여 개당 1,425–3,450 Endo를 얻을 수 있습니다.",
+            "**변환** — 중복 mod 용해, Railjack 잔해 고철 처리, 또는 리롤을 많이 돌린 [Riven](/guides/riven)을 처분하여 일시불로 대량 획득할 수 있습니다."
+          ]
+        },
+        {
+          "type": "warn",
+          "title": "어떤 부스터도 Endo에 영향을 주지 않습니다",
+          "text": "Endo 부스터는 존재하지 않습니다. 자원 부스터, 드롭 확률 부스터, Steel Path 드롭 확률 부스터 및 드롭 확률 축복 모두 Endo에는 아무런 효과가 없습니다. Endo는 부스터 영향을 받는 자원이 아니며, 부스터는 미션 완료 보상에 절대 적용되지 않습니다. 유일한 예외는 미션 내에서 획득하는 Endo 오브가 MOD 드롭으로 취급된다는 점입니다. 따라서 Mod 드롭 확률 부스터를 사용하면 바닥에서 줍는 Endo가 두 배로 늘어납니다 (Sedna 아레나 파밍 참조)."
+        }
+      ]
+    },
+    {
+      "id": "best-farms",
+      "title": "단계 및 노력 대비 최고의 Endo 파밍처",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "단 하나의 \"최고\"는 없습니다. 계정의 진행 단계와 얼마나 하드코어하게 플레이하고 싶은지에 따라 다릅니다. 가장 효율이 높은 한계치는 여전히 부스터를 갖춘 사전 구성 파티(premade)로 진행하는 Sedna 아레나이지만, 2026년 현재 커뮤니티에서 솔로 및 캐주얼 플레이어에게 실제로 추천하는 곳은 Arbitrations와 1999 의뢰(bounties)입니다."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "파밍처",
+              "위치 / 노드",
+              "Endo 획득량",
+              "추천 대상"
+            ],
+            "rows": [
+              [
+                "Arbitrations (Survival/Defense)",
+                "매시간 교체되는 노드 (해금 조건: 성계지도 전체 완료)",
+                "A/B/C 로테이션당 900 / 1,200 / 1,500 → 시간당 약 5,000–10,000 + sculptures",
+                "베테랑, 솔로 친화적"
+              ],
+              [
+                "Vodyanoi — Rathuum 아레나 (Steel Path)",
+                "Sedna › Vodyanoi",
+                "솔로 플레이 시 3분당 약 400–1,000; 풀 파밍 스쿼드 + Mod 드롭 부스터 사용 시 분당 약 1,000 Endo",
+                "하드코어 사전 구성 파티, 가장 높은 한계치"
+              ],
+              [
+                "1999 / Höllvania 의뢰",
+                "Höllvania Central Mall (The Hex 이후)",
+                "3,300 또는 4,200 Endo 보상 테이블 (각각 약 14–16% 확률); 현실적인 평균은 3–4분 의뢰당 약 1,000–1,500. 일일 제한 없음",
+                "중/후반 단계, 제한 없는 가장 빠른 파밍"
+              ],
+              [
+                "Deimos / Cambion Drift T5 의뢰",
+                "Cambion Drift (L40–60)",
+                "1단계에서 약 1,000 Endo (약 45% 확률); 초반 단계를 리셋하며 진행 시 시간당 약 8,000–15,000",
+                "Arbitration 이전 / Steel Path 이전"
+              ],
+              [
+                "Zariman 의뢰 (T4/5 Exterminate)",
+                "The Chrysalith",
+                "의뢰당 평균 약 730 Endo (Endo 슬롯의 기댓값) + 소량의 바닥 드롭",
+                "Zariman 장비 파밍의 부산물"
+              ],
+              [
+                "Ayatan sculptures (소켓 장착 완료)",
+                "Maroo's Bazaar (화성)에서 용해",
+                "소켓을 완전히 채운 sculpture당 1,425–3,450",
+                "패시브, 모든 레벨 대상"
+              ],
+              [
+                "Railjack 잔해 고철 처리",
+                "Dry Dock › 구성",
+                "MK III 부품당 약 225 Endo; 많이 쌓아두면 한 번에 수만 Endo 획득 가능",
+                "제작 완료된 Railjack 필요"
+              ],
+              [
+                "Archon Hunt (주간)",
+                "Teshin의 Steel Path 콘솔",
+                "약 12.1% 확률로 8,000 Endo, 주 1회 기회 (확정 아님)",
+                "주간 보너스, Shard를 목적으로 진행"
+              ],
+              [
+                "중복 mod 용해",
+                "Orbiter › Mods 장치",
+                "랭크 없는 common/uncommon/rare당 5 / 10 / 15 Endo",
+                "모든 랭크 대상, 파밍이라기보다는 정리용"
+              ]
+            ],
+            "note": "획득량은 2026년 중반 기준이며, 최상의 시나리오가 아닌 실제 드롭 테이블 확률을 반영합니다. Sedna의 대표적인 수치는 조율된 스쿼드가 필요하며, 솔로 플레이 시에는 낮은 범위에 머무릅니다."
+          }
+        },
+        {
+          "type": "info",
+          "title": "Sedna 아레나는 너프된 것이 아니라, 이제 특정 상황에서만 쓰이는 것뿐입니다",
+          "text": "Vodyanoi는 수학적으로 여전히 게임 내에서 분당 최고의 Endo 효율을 자랑합니다. 하지만 Arbitrations가 도입되고 DE가 최근 보상 테이블(Narmer부터 1999까지)에 Endo를 대량으로 추가하면서, 대부분의 플레이어는 캐주얼한 용도로는 이 아레나를 사실상 구시대의 유물로 취급합니다. 오직 전용 부스터를 갖춘 사전 구성 파티에서만 효율이 나옵니다. 메타 파밍 스쿼드는 Steel Path에서 Mod 드롭 확률 부스터를 사용하고, Nekros 1명 (Desecrate) + Khora 1명 (Pilfering Strangledome, 몹 몰이 겸용) + 몹 몰이/DPS frame 1명 (Nidus Larva 또는 Vauban Vortex)으로 구성됩니다. 여러 명의 Nekros가 동일한 시체에 Desecrate를 중첩해서 적용할 수는 없습니다. 시체당 하나의 파밍 효과만 적용됩니다."
+        },
+        {
+          "type": "tip",
+          "title": "의뢰는 Steel Path가 아닌 일반 난이도로 진행하세요",
+          "text": "1999, Zariman 및 Sanctum 의뢰는 일반(Normal)과 Steel Path에서 동일한 Endo를 지급하므로, 빠른 진행을 위해 일반 난이도로 진행하세요. SP는 Steel Essence만 추가할 뿐입니다. Steel Path는 처치 기반의 Sedna 아레나에서만 유용하며, 이곳의 +100% mod 드롭 확률 보너스는 바닥에 떨어지는 Endo를 두 배로 늘려주고 Mod 드롭 확률 부스터와 곱연산으로 중첩됩니다."
+        },
+        {
+          "type": "video",
+          "video": {
+            "id": "K6neW7Fp7vM",
+            "title": "You're Farming Endo Wrong – Do THIS Instead! (Top 5 Warframe Guide)",
+            "channel": "iFlynn"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ayatan",
+      "title": "Ayatan Sculpture 루트",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Ayatan Sculptures는 모든 레벨에서 신뢰할 수 있는 Endo 획득 수단입니다. sculptures를 수집하고, 색상에 맞는 소켓에 Ayatan Stars를 장착한 후, Maroo's Bazaar (화성)에서 용해하여 대량의 Endo를 한 번에 얻을 수 있습니다. 시간당 빠른 파밍이라기보다는 보조적인 수단에 가깝지만, 거의 모든 플레이어가 매주 무료 주간 퀘스트를 수행하고 발견한 것들의 소켓을 채워야 합니다."
+        },
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "h": "sculptures 수집",
+              "p": "조건에 맞는 각 미션은 타일셋에 하나의 sculpture가 숨겨져 있을 확률이 고정적으로 약 1/7 (~14%) 존재합니다. 또한 Arbitrations, Sorties/Archon Hunts, Simaris 및 보관함에서도 드롭됩니다. 최상위 sculpture인 Anasa는 Sorties (최종 미션에서 28% 확률) 및 Archon Hunts에서 획득할 수 있으며, 주간 퀘스트에서는 나오지 않습니다."
+            },
+            {
+              "h": "Maroo의 주간 Ayatan Treasure Hunt 진행하기",
+              "p": "Maroo's Bazaar › Ayatan Treasure Hunt는 주 1회 진행할 수 있습니다 (월요일 00:00 UTC 리셋). 제한 시간이 있는 파쿠르 방으로, Titania나 Xaku를 사용하면 매우 쉽게 클리어할 수 있습니다. 고정된 6주 주기로 교체되는 sculpture 중 하나를 보상으로 지급합니다: Sah → Ayr → Orta → Vaya → Piv → Valana. Anasa는 절대 주지 않습니다."
+            },
+            {
+              "h": "용해하기 전에 소켓 채우기",
+              "p": "파란색 소켓에는 Cyan Stars를, 주황색 소켓에는 Amber Stars를 장착하세요. 한 번 장착한 star는 영구적으로 고정됩니다. 소켓을 채운 sculpture는 빈 sculpture와 낱개 star들을 따로 용해하는 것보다 훨씬 가치가 높으므로, 항상 먼저 소켓을 채우세요."
+            },
+            {
+              "h": "Maroo에게서 용해하기",
+              "p": "소켓을 채운 sculpture를 Maroo에게 가져가 \"보물 거래\"를 이용하세요. 추출 비용은 무료입니다 (과거의 credit 소모는 2017년에 삭제되었습니다). Endo가 즉시 보관함으로 들어옵니다."
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Sculpture",
+              "소켓 (C+A)",
+              "빈 상태 Endo",
+              "소켓 완전히 채움",
+              "획득처 참고"
+            ],
+            "rows": [
+              [
+                "Anasa",
+                "2C + 2A",
+                "2,000",
+                "3,450",
+                "Sortie (28%) / Archon 전용 — 주간 퀘스트에서는 획득 불가"
+              ],
+              [
+                "Kitha",
+                "4C + 1A",
+                "450",
+                "3,000",
+                "상인 (Necraloid); 단일 Amber 대비 최고의 가치"
+              ],
+              [
+                "Orta",
+                "3C + 1A",
+                "650",
+                "2,700",
+                "주간 로테이션 (3주 차)"
+              ],
+              [
+                "Zambuka",
+                "2C + 1A",
+                "450",
+                "2,600",
+                "Vitus Essence 상점; Amber당 최고의 Endo 효율 (~1,075)"
+              ],
+              [
+                "Hemakara",
+                "2C + 1A",
+                "450",
+                "2,600",
+                "—"
+              ],
+              [
+                "Chattraka",
+                "2C + 1A",
+                "450",
+                "2,600",
+                "Nightwave/상인"
+              ],
+              [
+                "Vaya",
+                "2C + 1A",
+                "400",
+                "1,800",
+                "주간 로테이션 (4주 차)"
+              ],
+              [
+                "Piv",
+                "2C + 1A",
+                "375",
+                "1,725",
+                "주간 로테이션 (5주 차)"
+              ],
+              [
+                "Valana",
+                "2C + 1A",
+                "325",
+                "1,575",
+                "주간 로테이션 (6주 차)"
+              ],
+              [
+                "Sah",
+                "2C + 1A",
+                "300",
+                "1,500",
+                "주간 로테이션 (1주 차)"
+              ],
+              [
+                "Ayr",
+                "3C + 0A",
+                "325",
+                "1,425",
+                "주간 로테이션 (2주 차); Amber 불필요"
+              ]
+            ],
+            "note": "낱개 star 용해 가치: Cyan Star = 50 Endo, Amber Star = 100 Endo. 소켓을 채우는 것이 낱개로 용해하는 것보다 훨씬 낫습니다. 예를 들어, 소켓을 채운 Anasa는 3,450 Endo인 반면, 빈 Anasa와 4개의 star를 따로 용해하면 약 2,300 Endo에 불과합니다."
+          }
+        },
+        {
+          "type": "warn",
+          "title": "Amber Stars가 병목 구간이며, stars는 끌어당겨지지 않습니다",
+          "text": "Cyan Stars는 사실상 무제한으로 얻을 수 있습니다 (보관함/사물함 및 Plains의 Kuaka로부터 미션당 약 2개). Amber가 병목 구간입니다. Deimos / Cambion Drift 의뢰의 초반 단계(약 45–56% 확률)에서 파밍하거나, 직접 제작하세요: Arbitration (Arbiters of Hexis) 상점에서 판매하는 재사용 가능한 Ayatan Amber Star 설계도는 10 Vitus Essence이며, 제작 시 2 Cyan + 1 Vitus + 100,000 credits를 소모하여 1 Amber를 만듭니다. Amber가 부족할 때는 Zambuka/Orta에 우선적으로 사용하고, Cyan만 들어가는 Ayr의 소켓을 완전히 채우세요. 참고: sculptures와 stars는 직접 손으로 주워야 합니다. Vacuum/Fetch 모드로 끌어당길 수 없으므로, Loot Radar mod나 Golden Instinct를 사용하여 위치를 파악하세요."
+        },
+        {
+          "type": "video",
+          "video": {
+            "id": "-hWq1QPXTQ8",
+            "title": "How To Turn Ayatan Sculptures & Stars Into Endo!!! Warframe!",
+            "channel": "Sethbest"
+          }
+        }
+      ]
+    },
+    {
+      "id": "arbitrations",
+      "title": "Arbitrations — 베테랑의 Endo 엔진",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Arbitrations (\"정예 얼럿\")는 2026년 현재 지속 가능한 최고의 Endo 파밍처 1위입니다. 한 번에 하나의 노드가 활성화되어 매시간 교체되며, 명왕성의 Eris Junction을 완료하면 해금됩니다 (Focus-Lens 접근 권한 필요). 과거의 \"모든 노드 클리어\" 요구 사항은 사라졌습니다. 조건에 맞는 각 로테이션마다 고정된 Endo 덩어리와 확정 Vitus Essence 1개를 드롭하며, 보너스 보상으로 더 많은 Endo로 용해할 수 있는 Ayatan Sculptures를 지급합니다."
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "로테이션 A",
+              "v": "900 Endo @ 약 44%"
+            },
+            {
+              "k": "로테이션 B",
+              "v": "1,200 Endo @ 약 44.5%"
+            },
+            {
+              "k": "로테이션 C",
+              "v": "1,500 Endo @ 약 35% (2026년 업데이트로 33%에서 상향)"
+            },
+            {
+              "k": "로테이션 패턴",
+              "v": "AABBCC… 이후 C가 영구 반복 — 1,500 티어를 위해 C를 계속 유지하세요"
+            },
+            {
+              "k": "현실적인 획득량",
+              "v": "시간당 약 5,000–10,000 Endo, sculptures의 소켓을 채워 판매하면 더 높아짐"
+            }
+          ]
+        },
+        {
+          "type": "p",
+          "text": "이것은 재조정된 것이지 너프된 것이 아닙니다. \"Arbitrations Revisited\" 패치로 보상 풀에서 Endo의 비중은 낮아졌지만, AABBCC로 전환되고 보상 빈도가 두 배로 늘어났습니다 (Defense 10웨이브 대신 5웨이브마다 보상 지급). 덕분에 시간당 Endo 획득량은 유지되거나 오히려 향상되었습니다. 2026년 조정에서는 로테이션 C의 확률과 Vitus 3배 획득 확률이 더욱 상향되었습니다."
+        },
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "h": "활성화된 노드와 모드 선택하기",
+              "p": "Survival은 커뮤니티에서 가장 선호하는 \"편하게 처치하는\" 모드입니다 (가장 지속적인 스폰과 바닥 Endo 드롭). Defense는 예측하기 쉬운 2위입니다 (5웨이브마다 확정 보상). Disruption은 활동적인 플레이어에게 높은 로테이션을 가장 빠르게 제공합니다 (방어한 도관당 1회 보상, 라운드당 최대 4회)."
+            },
+            {
+              "h": "단단하고 자생력이 있는 로드아웃 가져가기",
+              "p": "Arbitration Shield Drones는 드론이 파괴될 때까지 주변 적에게 피해 면역 상태를 부여하며, 무료 자가 부활이 불가능합니다. 부활하려면 5개의 Resurgence Tokens를 모아야 하며, 토큰을 가질 때마다 체력/쉴드/에너지 디버프가 중첩됩니다."
+            },
+            {
+              "h": "여러 로테이션 동안 머무르기",
+              "p": "20웨이브 / AABB 구간을 넘어 무한 로테이션 C를 반복하여 1,500 Endo 보상 테이블을 계속 획득하세요. 라운드 사이에 동반자(pet)가 바닥의 Endo와 stars를 끌어당기도록 하세요."
+            },
+            {
+              "h": "정산하기",
+              "p": "탈출한 뒤, 드롭된 sculptures의 소켓을 채우고 Maroo에게서 용해하여 보너스를 받으세요."
+            }
+          ]
+        },
+        {
+          "type": "info",
+          "title": "드론은 Endo를 드롭하지 않습니다",
+          "text": "Shield Drones는 6%의 확률로 1 Vitus Essence만 드롭하며 (5분 후 사라짐), Endo는 드롭하지 않습니다. 낱개 Endo는 일반 적 드롭 및 고정 로테이션 테이블에서 나옵니다. 부스터는 로테이션 테이블 Endo에 아무런 영향을 주지 않습니다."
+        },
+        {
+          "type": "video",
+          "video": {
+            "id": "Oaa3EdSFpiE",
+            "title": "Arbitrations: Vitus Essence, Rolling Guard, Aura FORMA - Warframe Guide",
+            "channel": "KardinalxSin"
+          }
+        }
+      ]
+    },
+    {
+      "id": "passive",
+      "title": "패시브 및 부수적인 Endo",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "전용 파밍을 하지 않아도 많은 양의 Endo가 축적되며, 지금 이 순간에도 여러분의 mod 컬렉션에 상당한 양이 잠자고 있을 것입니다."
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "**중복 mod 용해** — Orbiter › Mods 장치. 랭크가 없는 경우 희귀도에 따라 고정된 값을 가집니다: Common 5, Uncommon 10, Rare 15, Legendary 약 20. 우측 하단에 있는 \"빠른 선택\" 대량 선택 도구(업데이트 38.5에서 추가됨)는 N개 남기기 필드를 통해 랭크 없는 mod를 희귀도별로 대량 선택하고, 랭크가 있거나 Legendary/Riven인 mod는 자동으로 건너뛰며, \"Fusion\"을 입력하여 확정합니다.",
+            "**일일 Sortie** — 약 4,000 Endo를 지급하지만, 보상 테이블에서 확률은 약 12%에 불과합니다 (매일이 아닌 대략 8일에 한 번 꼴).",
+            "**주간 Archon Hunt** — 약 12.1% 확률로 8,000 Endo를 지급하며, 보통 확정 보상인 Archon Shard를 얻기 위해 진행합니다.",
+            "**Teshin의 Steel Path Honors** — 150 Steel Essence로 30,000 Endo 묶음을 구매할 수 있지만, 약 8주에 1번꼴로 나타나는 로테이션 상품입니다.",
+            "**Palladino** — 10 Riven Slivers → 6,000 Endo, 주 1회 제한.",
+            "**Granum Void** — 티어별로 200 / 400 / 600 Endo."
+          ]
+        },
+        {
+          "type": "warn",
+          "title": "mod를 credits로 판매하지 말고, 엉뚱한 것을 용해하지 마세요",
+          "text": "mod를 CREDITS로 판매하는 것은 효율이 매우 나쁩니다. 항상 Endo로 용해하고, [credits](/guides/credits)는 따로 파밍하세요 (The Index 1판당 약 250k). 랭크가 있는 mod를 용해하면 투자한 Endo의 75%만 돌려받으므로 순손실이 발생합니다. 따라서 용해할 목적으로 mod 랭크를 올리지 마세요. 또한 거래 가능하거나 가치 있는 mod 또는 [Riven](/guides/riven)은 절대 용해하지 마세요. Riven은 platinum으로서의 가치가 훨씬 높으며, Endo로 용해하더라도 이미 많은 Kuva 리롤을 돌린 경우에만 대량의 Endo를 지급합니다 (리롤당 +200 Endo)."
+        },
+        {
+          "type": "tip",
+          "title": "mod 용해 획득량은 어디서나 과장되어 있습니다",
+          "text": "\"한 번 정리해서 100k–200k를 얻었다\"는 말은 5–15배 부풀려진 것입니다. 수천 개의 중복 아이템을 쌓아둔 유저가 완전히 정리했을 때 약 10–14k Endo를 얻었다고 보고했습니다. 용해는 주요 파밍처가 아니라 수천 Endo 정도를 얻는 무료 정리 작업으로 취급하세요."
+        }
+      ]
+    },
+    {
+      "id": "spend",
+      "title": "Endo가 소모되는 곳",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Endo가 소모되는 방법은 단 하나, mod의 랭크를 올리는 것뿐입니다. 각 랭크 업에는 Endo와 credits가 소모되며, mod의 효과와 수용량이 모두 증가합니다. 최고 랭크로 갈수록 비용이 기하급수적으로 증가하기 때문에 Endo는 항상 부족하게 느껴집니다."
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "10랭크 Primed mod",
+              "v": "총 약 140,000 Endo (최고 랭크는 개당 40k+ 소모)"
+            },
+            {
+              "k": "전체 Primed / Archon / Galvanized 컬렉션",
+              "v": "수십만에서 100만 이상의 Endo"
+            },
+            {
+              "k": "맥스 10랭크 rare",
+              "v": "제작에 약 30,690 Endo 소모 (용해 시 약 23k 환급)"
+            }
+          ]
+        },
+        {
+          "type": "tip",
+          "title": "때로는 Legendary Core가 파밍보다 낫습니다",
+          "text": "거래 가능한 Legendary Core는 어떤 mod든 즉시 맥스 랭크로 만들어 주며, 가격은 약 60–80 platinum입니다. 단 하나의 Primed mod를 올릴 때는 40k+ Endo와 최고 랭크가 요구하는 약 2M+ credits를 파밍하는 것보다 코어를 사는 것이 종종 더 저렴합니다. 코어를 구매하고, 나머지 컬렉션을 위해 파밍 시간을 아끼세요."
+        },
+        {
+          "type": "info",
+          "title": "Ayatan에서 mod로의 변환이 가장 깔끔합니다",
+          "text": "Endo는 거래할 수 없기 때문에, 소켓을 채운 Ayatan Sculptures는 사실상 미래의 mod 랭크 업을 위해 저축하는 방법입니다. sculptures와 stars를 자유롭게 모아두고 (인벤토리 슬롯을 차지하지 않음), 무언가를 맥스 랭크로 올려야 할 때 한꺼번에 용해하세요. 실질적인 Endo 저장 한도는 없습니다."
+        },
+        {
+          "type": "info",
+          "title": "파밍을 건너뛰고 구매하는 것을 선호하시나요?",
+          "text": "Endo를 직접 구매할 수는 없지만, platinum을 저렴하게 Endo로 전환할 수 있습니다. 리롤을 많이 돌린 잡 [Riven](/guides/riven)은 푼돈 수준의 plat으로 수천 Endo로 용해할 수 있으며, 소켓을 채운 Ayatan sculptures는 마켓에서 거래됩니다. [Endo Exchange 도구](/endo)는 두 가지 루트를 platinum 대비 Endo 비율로 실시간 순위를 매겨 현재 가장 저렴한 옵션을 보여줍니다. 이 파밍 가이드의 반대편 활용법입니다."
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "2026년 현재 가장 빠른 Endo 파밍처는 어디인가요?",
+      "a": "조율된 사전 구성 파티와 함께하는 순수 속도 면에서는, Steel Path Sedna Rathuum 아레나 (Vodyanoi)에서 Nekros + Pilfer-Khora + 몹 몰이 frame 조합에 Mod 드롭 확률 부스터를 사용하는 것이 분당 대략 1,000 Endo로 가장 높은 지속 효율을 냅니다. 일일 제한이 없는 솔로 속도 면에서는 고티어 1999/Höllvania 의뢰 (3,300–4,200 Endo 보상, 일일 제한 없음)가 커뮤니티에서 가장 선호됩니다. 아레나가 너프된 것은 아니며 단지 특정 상황에서만 쓰이는 것뿐입니다. 대부분의 캐주얼 플레이어는 아레나가 하드코어하고 사전 구성 파티가 필요하기 때문에 대신 Arbitrations나 1999를 이용합니다."
+    },
+    {
+      "q": "베테랑을 위한 가장 좋은 반복 가능 Endo 파밍처는 어디인가요?",
+      "a": "Arbitrations입니다. 조건에 맞는 각 로테이션마다 900/1,200/1,500 Endo (로테이션 A/B/C)를 드롭하며, 무한 모드에서는 1,500 티어인 로테이션 C를 무한히 반복할 수 있습니다. 시간당 대략 5,000–10,000 Endo를 얻을 수 있으며, 수천 Endo로 용해할 수 있는 Ayatan sculpture 보너스 보상과 확정 Vitus Essence도 획득할 수 있습니다. 명왕성의 Eris Junction 완료 후 해금됩니다."
+    },
+    {
+      "q": "솔로 플레이어이거나 사전 구성 파티를 원하지 않을 때 가장 좋은 옵션은 무엇인가요?",
+      "a": "Arbitrations (매 로테이션마다 Endo + sculptures 획득), 고티어 1999/Zariman/Sanctum 의뢰 (빠른 Exterminate 미션, 보상 롤당 최대 3,300–4,200 Endo), 또는 Railjack (상자에서 나오는 Endo 및 잔해 고철 처리로 개당 약 225 Endo 획득)이 있습니다. 모두 솔로 플레이가 가능하거나 공방(pug) 친화적입니다."
+    },
+    {
+      "q": "Steel Path 이전 / 초반 단계 최고의 Endo 파밍처는 어디인가요?",
+      "a": "Deimos/Cambion Drift 티어 5 (L40–60) 의뢰입니다. 초반 약 3단계까지 진행하여 약 1,000 Endo 묶음을 얻은 뒤 리셋하세요. 해금되었다면 1999 의뢰와 Railjack 고철 처리를 병행하고, 중복 mod 용해 및 Maroo의 무료 주간 Ayatan 사냥으로 부족한 부분을 채우세요. Arbitrations는 성계지도를 모두 완료해야 하므로 조금 더 나중에 진행하게 됩니다."
+    },
+    {
+      "q": "Ayatan Sculptures는 어떻게 작동하나요?",
+      "a": "Sculptures에는 색상별 소켓이 있습니다. 파란색 소켓에는 Cyan Stars를, 주황색 소켓에는 Amber Stars를 장착한 후 (장착 시 영구 고정), 화성의 Maroo's Bazaar에서 용해하여 소켓이 채워진 Endo 가치인 1,425 (Ayr)에서 최대 3,450 (Anasa)을 획득할 수 있습니다. 항상 먼저 소켓을 채우세요. 소켓을 채운 sculpture는 빈 sculpture와 낱개 star들을 따로 용해하는 것보다 훨씬 가치가 높습니다."
+    },
+    {
+      "q": "Ayatan Stars를 그냥 용해해야 하나요, 아니면 소켓에 장착해야 하나요?",
+      "a": "소켓에 장착하세요. 낱개 Cyan Star는 50 Endo, Amber는 100 Endo로만 용해되지만, 소켓에 장착하면 sculpture의 배율이 적용되어 각 Cyan star는 sculpture 내부에서 약 350–450 Endo의 추가 용해 가치를 가집니다. Maroo에게 가져가기 전에 항상 소켓을 먼저 채우세요."
+    },
+    {
+      "q": "Maroo의 주간 Ayatan Treasure Hunt에서 Anasa를 주나요?",
+      "a": "아닙니다. 주간 사냥은 고정된 6주 주기(Sah, Ayr, Orta, Vaya, Piv, Valana)로 교체되는 6개의 하위 sculptures 중 하나만 지급하며, 가장 높은 것은 Orta (소켓 장착 시 2,700)입니다. 3,450 Endo를 주는 대표적인 Anasa는 Sorties (최종 미션에서 28% 확률) 및 Archon Hunts에서 획득할 수 있습니다. 그래도 매주 주간 퀘스트를 진행하세요. 몇 분의 파쿠르만으로 무료 sculpture를 얻을 수 있습니다."
+    },
+    {
+      "q": "자원 또는 드롭 확률 부스터가 Endo를 증가시키나요?",
+      "a": "아닙니다. Endo 부스터는 존재하지 않으며, 자원, 드롭 확률, Steel Path 드롭 확률 및 드롭 확률 축복 모두 Endo에는 아무런 효과가 없습니다. Endo는 부스터 영향을 받는 자원이 아니며, 부스터는 미션 완료 보상에 절대 적용되지 않습니다. 유일한 예외는 미션 내에서 획득하는 Endo 오브가 MOD 드롭으로 취급된다는 점입니다. 따라서 Mod 드롭 확률 부스터를 사용하면 바닥에서 줍는 Endo가 두 배로 늘어납니다. 이것이 Sedna 아레나 메타에서 Steel Path와 부스터를 함께 중첩해서 사용하는 이유입니다."
+    },
+    {
+      "q": "더 많은 Endo를 얻기 위해 의뢰를 Steel Path로 진행해야 하나요?",
+      "a": "아닙니다. 1999, Zariman 및 Sanctum 의뢰는 일반(Normal)과 Steel Path에서 동일한 Endo를 지급하므로, 빠른 진행을 위해 일반 난이도로 진행하세요. SP는 Steel Essence만 추가할 뿐입니다. Sedna Rathuum 아레나는 적의 Endo 드롭을 두 배로 늘려주는 보너스가 있기 때문에 특별히 Steel Path로 진행해야 하는 유일한 파밍처입니다."
+    },
+    {
+      "q": "mod를 용해하면 Endo를 얼마나 얻나요?",
+      "a": "랭크가 없는 잡 mod는 Common 5, Uncommon 10, Rare 15 Endo로 매우 적은 고정된 양을 줍니다. 용해 시 투자한 Endo의 약 75%를 돌려받기 때문에 랭크에 따라 비례하여 증가하며, 맥스 랭크의 rare 또는 Primed 중복 아이템은 수백에서 수천 Endo를 돌려줍니다. 확정 화면에서 정확한 수치를 확인할 수 있습니다. 파밍이 아니라 수천 Endo 정도를 얻는 무료 정리 작업으로 취급하세요. 거래 가능한 중복 아이템(platinum으로 판매)이나 Riven은 절대 용해하지 마세요."
+    },
+    {
+      "q": "왜 Cyan Stars는 넘쳐나는데 Amber는 항상 부족한가요?",
+      "a": "그렇게 설계되었기 때문입니다. Cyan Stars는 흔하게 얻을 수 있지만 (보관함, 사물함, Plains의 Kuaka), Amber는 소켓을 완전히 채울 수 있는 sculpture의 수를 제한하는 병목 구간입니다. Deimos/Cambion Drift 의뢰에서 Amber를 파밍하거나, Arbitration 상점에서 판매하는 재사용 가능한 Amber Star 설계도로 직접 제작하세요 (10 Vitus Essence 소모 후, 제작 시 개당 2 Cyan + 1 Vitus + 100k credits 소모). Amber가 부족할 때는 Zambuka/Orta에 먼저 사용하고, Cyan만 들어가는 Ayr의 소켓을 완전히 채우세요."
+    },
+    {
+      "q": "Endo를 거래하거나 구매할 수 있나요?",
+      "a": "아닙니다. Endo 자체는 거래가 불가능하며, credits로 판매하거나 다른 플레이어에게서 구매할 수 없습니다. 직접 획득하거나 변환해야 합니다. 하지만 platinum을 소모하여 저렴하게 얻을 수는 있습니다. 리롤을 많이 돌린 잡 Riven이나 소켓을 채운 Ayatan sculpture를 구매하여 용해하세요. [Endo Exchange](/endo)는 이러한 구매 루트를 platinum 대비 Endo 비율로 실시간 순위를 매겨 보여줍니다."
+    }
+  ],
+  "videos": [
+    {
+      "id": "wfcARDwh01E",
+      "title": "Best ENDO Farms in Warframe 2026 (FAST AND EASY)",
+      "channel": "Kryptafy"
+    },
+    {
+      "id": "NyUIIKBlgko",
+      "title": "How to Get Endo FAST in Warframe (2026) | Best Farming Spots",
+      "channel": "Aethernaut1887"
+    },
+    {
+      "id": "CSSMA_Xhypw",
+      "title": "Warframe The BEST Endo Farming Guide for 2026!",
+      "channel": "Weazel"
+    },
+    {
+      "id": "O1p72j8qMz4",
+      "title": "ALL THE BEST ENDO FARM IN 2026 | UPDATED ENDO FARMING GUIDE",
+      "channel": "Grind Hard Squad"
+    },
+    {
+      "id": "ZlkwYJiQjaw",
+      "title": "Best Endo Farms 2026 | Max Mods FAST in Warframe",
+      "channel": "TrueDripFrame"
+    },
+    {
+      "id": "mPy9vllrNCM",
+      "title": "The ULTIMATE Guide to Farming ENDO In Warframe!",
+      "channel": "WarframeFlo"
+    }
+  ],
+  "sources": [
+    {
+      "label": "WARFRAME Wiki — Endo",
+      "href": "https://wiki.warframe.com/w/Endo"
+    },
+    {
+      "label": "WARFRAME Wiki — Arbitrations / Rewards",
+      "href": "https://wiki.warframe.com/w/Arbitrations/Rewards"
+    },
+    {
+      "label": "WARFRAME Wiki — Ayatan Treasures",
+      "href": "https://wiki.warframe.com/w/Ayatan_Treasures"
+    },
+    {
+      "label": "WARFRAME Wiki — Ayatan Treasure Hunt",
+      "href": "https://wiki.warframe.com/w/Ayatan_Treasure_Hunt"
+    },
+    {
+      "label": "WARFRAME Wiki — Rathuum (Sedna arena)",
+      "href": "https://wiki.warframe.com/w/Rathuum"
+    }
+  ],
+  "related": [
+    {
+      "label": "Endo Exchange (Platinum으로 구매)",
+      "to": "/endo",
+      "icon": "swap-horizontal",
+      "note": "파밍 건너뛰기 — 리롤된 Rivens 및 Ayatans에서 얻는 가장 저렴한 platinum 대비 Endo 비율 실시간 순위"
+    },
+    {
+      "label": "Modding 가이드",
+      "to": "/guides/mods",
+      "icon": "puzzle",
+      "note": "여러분의 모든 Endo가 실제로 소모되는 곳"
+    },
+    {
+      "label": "Riven Mods 설명",
+      "to": "/guides/riven",
+      "icon": "star-four-points-outline",
+      "note": "잡 Riven을 용해하여 대량의 Endo 획득하기"
+    },
+    {
+      "label": "Credit 파밍",
+      "to": "/guides/credits",
+      "icon": "circle-multiple-outline",
+      "note": "modding 비용의 나머지 절반"
+    },
+    {
+      "label": "Steel Path 가이드",
+      "to": "/guides/steel-path",
+      "icon": "fire",
+      "note": "Sedna Rathuum 아레나에서 바닥 Endo 드롭량 두 배 증가"
+    },
+    {
+      "label": "Archon Shards",
+      "to": "/guides/archon-shards",
+      "icon": "cards-diamond-outline",
+      "note": "8,000 Endo도 함께 지급하는 주간 사냥"
+    }
+  ],
+  "updated": "2026-07-18"
+}

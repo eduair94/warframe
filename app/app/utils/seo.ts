@@ -229,6 +229,11 @@ export const PAGE_SEO: Record<string, PageSeo> = {
     description:
       'How modding works in Warframe, the must-have mods, and shield-gating to stop dying. Understand mod capacity, polarities and the damage multipliers.'
   },
+  '/guides/builds': {
+    title: 'Best Warframe Builds & Build Planners — Overframe & Underframe',
+    description:
+      'How to find, copy and pressure-test the best Warframe builds with the community planners Overframe and Underframe — plus how to read shared builds critically and adapt them to what you own.'
+  },
   '/guides/helminth': {
     title: 'Warframe Helminth Guide — Subsume & Best Abilities',
     description:

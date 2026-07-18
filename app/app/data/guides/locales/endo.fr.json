@@ -1,0 +1,579 @@
+{
+  "slug": "endo",
+  "eyebrow": "Centre de connaissances · Endo",
+  "title": "Guide de farming d'Endo",
+  "lede": "L'Endo est la monnaie non échangeable que vous dépensez (aux côtés des credits) pour améliorer le rang des mods, et un mod Primed au rang max en consomme environ ~140k — vous en manquerez donc toujours. Voici la version honnête de mi-2026 : tous les moyens actuels et non nerfés de gagner de l'Endo — le moteur d'Arbitration pour vétérans, la route des Ayatan Sculptures, les farms d'arène non plafonnés de 1999/Höllvania et Sedna, et l'« Endo gratuit que vous avez oublié » qui dort dans votre collection de mods.",
+  "category": "farming",
+  "readMins": 11,
+  "stats": [
+    {
+      "num": "1,500",
+      "label": "Endo par Rotation C d'Arbitration",
+      "tone": "gold"
+    },
+    {
+      "num": "3,450",
+      "label": "Endo d'une Anasa sertie",
+      "tone": "good"
+    },
+    {
+      "num": "~140k",
+      "label": "Endo pour maxer un mod Primed",
+      "tone": "alt"
+    },
+    {
+      "num": "0",
+      "label": "boosters qui augmentent l'Endo"
+    }
+  ],
+  "sections": [
+    {
+      "id": "why",
+      "title": "Ce qu'est l'Endo et d'où il provient",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "L'Endo est une « énergie concentrée utilisée pour fusionner et améliorer les mods. » Vous dépensez de l'Endo ainsi que des [crédits](/guides/credits) pour augmenter le rang d'un mod ; chaque rang augmente l'effet et la capacité requise. Il est **non échangeable** — vous ne pouvez pas le vendre contre des credits ni l'acheter à un autre joueur — chaque point doit donc être farmé. Consultez le [guide de modding](/guides/mods) pour voir comment l'augmentation de rang le consomme réellement."
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "**Orbes d'Endo** — des objets à ramasser bleus et dorés que les ennemis et les conteneurs lâchent en trois tailles : 15 (petite), 50 (moyenne), 80 (grande).",
+            "**Récompenses fixes de mission/rotation** — les rotations de la Star Chart rapportent de ~50 jusqu'à ~4,200 Endo dans les paliers élevés ; le Granum Void rapporte 200 / 400 / 600 (Standard / Extended / Nightmare).",
+            "**Arbitrations** — 900 / 1,200 / 1,500 Endo par rotation éligible, la base du farm pour les vétérans.",
+            "**Ayatan Sculptures** — sertissez-les d'Ayatan Stars and dissolvez-les chez Maroo pour obtenir 1,425–3,450 Endo chacune.",
+            "**Conversion** — dissolvez vos mods en double, recyclez vos débris de Railjack, ou débarrassez-vous d'un [Riven](/guides/riven) ayant subi de nombreux cycles pour un gros montant d'un coup."
+          ]
+        },
+        {
+          "type": "warn",
+          "title": "Aucun booster n'affecte l'Endo",
+          "text": "Il n'y a AUCUN Endo Booster. Les Resource Boosters, les Drop Chance Boosters, le Steel Path Drop Chance Booster et la Drop Chance Blessing ne font tous RIEN pour l'Endo — ce n'est pas une ressource boostable, et les boosters ne s'appliquent jamais aux récompenses de fin de mission. La SEULE exception utile : les orbes d'Endo ramassés en mission comptent comme des loots de MOD, donc un Mod Drop Chance Booster double l'Endo que vous ramassez au sol (voir le farm d'arène de Sedna)."
+        }
+      ]
+    },
+    {
+      "id": "best-farms",
+      "title": "Meilleurs farms d'Endo par étape et par effort",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Il n'y a pas de « meilleur » farm unique — cela dépend de l'avancement de votre compte et de votre niveau de tryhard. Le plafond le plus élevé reste l'arène de Sedna avec une escouade prédéfinie boostée, mais les Arbitrations et les mises à prix de 1999 sont ce que la communauté recommande réellement pour le jeu en solo et occasionnel en 2026."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Farm",
+              "Lieu / nœud",
+              "Rendement d'Endo",
+              "Idéal pour"
+            ],
+            "rows": [
+              [
+                "Arbitrations (Survival/Defense)",
+                "Nœud rotatif horaire (déblocage : Star Chart complète)",
+                "900 / 1,200 / 1,500 par rotation A/B/C → ~5,000–10,000/hr + sculptures",
+                "Vétérans, adapté au solo"
+              ],
+              [
+                "Vodyanoi — arène Rathuum (Steel Path)",
+                "Sedna › Vodyanoi",
+                "~400–1,000 solo par run de ~3-min ; ~1,000 Endo/min avec une escouade de loot complète + Mod Drop Booster",
+                "Escouade tryhard, plafond le plus élevé"
+              ],
+              [
+                "Mises à prix de 1999 / Höllvania",
+                "Höllvania Central Mall (après The Hex)",
+                "Butins de 3,300 ou 4,200 Endo (~14–16% chacun) ; moyenne réaliste de ~1,000–1,500 par mise à prix de ~3–4 min. Non plafonné",
+                "Milieu/fin de jeu, le plus rapide sans plafond"
+              ],
+              [
+                "Mises à prix T5 de Deimos / Cambion Drift",
+                "Cambion Drift (L40–60)",
+                "~1,000 Endo à l'étape 1 (~45%) ; ~8,000–15,000/hr en réinitialisant les premières étapes",
+                "Avant les Arbitrations / avant le Steel Path"
+              ],
+              [
+                "Mises à prix de la Zariman (Exterminate T4/5)",
+                "The Chrysalith",
+                "~730 Endo en moyenne par mise à prix (valeur attendue de l'emplacement d'Endo) + petits loots au sol",
+                "Sous-produit des runs d'équipement de la Zariman"
+              ],
+              [
+                "Ayatan sculptures (serties)",
+                "Dissoudre au Maroo's Bazaar, Mars",
+                "1,425–3,450 par sculpture entièrement sertie",
+                "Passif, tous niveaux"
+              ],
+              [
+                "Recyclage de débris de Railjack",
+                "Dry Dock › Configurer",
+                "~225 Endo par pièce MK III ; gros stocks = des dizaines de milliers d'un coup",
+                "Nécessite un Railjack construit"
+              ],
+              [
+                "Archon Hunt (hebdomadaire)",
+                "Console Steel Path de Teshin",
+                "8,000 Endo à ~12.1%, un tirage/semaine (non garanti)",
+                "Bonus hebdomadaire, à faire pour l'Archon Shard"
+              ],
+              [
+                "Dissolution de mods en double",
+                "Orbiter › Segment Mods",
+                "5 / 10 / 15 Endo par mod common/uncommon/rare sans rang",
+                "Tout palier de maîtrise, nettoyage et non un farm"
+              ]
+            ],
+            "note": "Les rendements datent de mi-2026 et reflètent les chances réelles des tables de butin, et non les plafonds optimaux. Les chiffres phares de Sedna nécessitent une escouade coordonnée ; le rendement en solo se situe dans la tranche basse."
+          }
+        },
+        {
+          "type": "info",
+          "title": "L'arène de Sedna n'est pas nerfée — elle est juste devenue de niche",
+          "text": "Vodyanoi reste mathématiquement le meilleur ratio d'Endo/minute du jeu. Mais depuis l'arrivée des Arbitrations et le fait que DE a inondé les tables de récompenses récentes (de Narmer à 1999) d'Endo, la plupart des joueurs considèrent l'arène comme obsolète pour un usage occasionnel — elle n'est rentable que pour une escouade prédéfinie dédiée et boostée. L'escouade de loot méta est composée d'UN Nekros (Desecrate) + UNE Khora (Pilfering Strangledome, qui regroupe également) + une frame de regroupement/DPS (Nidus Larva ou Vauban Vortex), sur le Steel Path, avec un Mod Drop Chance Booster. Plusieurs Nekros ne cumulent PAS Desecrate sur le même cadavre — un seul effet de pillage s'applique par corps."
+        },
+        {
+          "type": "tip",
+          "title": "Faites les mises à prix en Normal, pas en Steel Path",
+          "text": "Les mises à prix de 1999, de la Zariman et du Sanctum donnent le MÊME montant d'Endo en Normal et en Steel Path, alors lancez-les en Normal pour aller plus vite — le SP n'ajoute que de la Steel Essence. Le Steel Path n'aide que pour l'arène de Sedna basée sur les éliminations, où son bonus de +100% de chances de butin de mod double l'Endo au sol et se multiplie avec un Mod Drop Chance Booster."
+        },
+        {
+          "type": "video",
+          "video": {
+            "id": "K6neW7Fp7vM",
+            "title": "You're Farming Endo Wrong – Do THIS Instead! (Top 5 Warframe Guide)",
+            "channel": "iFlynn"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ayatan",
+      "title": "La route des Ayatan Sculptures",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Les Ayatan Sculptures sont une source fiable d'Endo pour tous les niveaux. Vous collectez des sculptures, remplissez leurs emplacements de couleur avec des Ayatan Stars, puis les dissolvez au Maroo's Bazaar (Mars) pour un gros montant. C'est un complément plutôt qu'un farm rapide à l'heure, mais presque tout le monde devrait faire la mission hebdomadaire gratuite et sertir ce qu'il trouve."
+        },
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "h": "Collecter des sculptures",
+              "p": "Chaque mission éligible a une chance fixe de ~1/7 (~14%) de cacher une sculpture dans le tileset. Elles tombent également dans les Arbitrations, les Sorties/Archon Hunts, chez Simaris et dans les conteneurs. L'Anasa (la meilleure sculpture) provient des Sorties (28% sur la dernière mission) et des Archon Hunts — PAS de la chasse hebdomadaire."
+            },
+            {
+              "h": "Faites l'Ayatan Treasure Hunt hebdomadaire de Maroo",
+              "p": "Maroo's Bazaar › Ayatan Treasure Hunt, une fois par semaine (réinitialisation le lundi à 00:00 UTC). C'est une salle de parkour chronométrée — Titania ou Xaku la rendent triviale — qui récompense par une sculpture rotative sur un cycle fixe de 6-week : Sah → Ayr → Orta → Vaya → Piv → Valana. Elle ne donne JAMAIS d'Anasa."
+            },
+            {
+              "h": "Sertissez avant de dissoudre",
+              "p": "Insérez des Cyan Stars dans les emplacements bleus et des Amber Stars dans les orange. Une fois insérée, une étoile l'est de façon permanente. Une sculpture sertie vaut bien plus que la sculpture vide plus les étoiles séparées — remplissez-la toujours d'abord."
+            },
+            {
+              "h": "Dissoudre chez Maroo",
+              "p": "Apportez la sculpture sertie à Maroo et utilisez « Trade Treasures » — l'extraction est gratuite (l'ancien coût en credits a été supprimé en 2017). L'Endo s'ajoute directement à votre total."
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Sculpture",
+              "Emplacements (C+A)",
+              "Endo vide",
+              "Entièrement sertie",
+              "Note sur la source"
+            ],
+            "rows": [
+              [
+                "Anasa",
+                "2C + 2A",
+                "2,000",
+                "3,450",
+                "Sortie (28%) / Archon uniquement — jamais l'hebdomadaire"
+              ],
+              [
+                "Kitha",
+                "4C + 1A",
+                "450",
+                "3,000",
+                "Vendeur (Necraloid) ; meilleure valeur pour une seule Amber Star"
+              ],
+              [
+                "Orta",
+                "3C + 1A",
+                "650",
+                "2,700",
+                "Cycle hebdomadaire (week 3)"
+              ],
+              [
+                "Zambuka",
+                "2C + 1A",
+                "450",
+                "2,600",
+                "Boutique de Vitus Essence ; meilleur ratio d'Endo par Amber Star (~1,075)"
+              ],
+              [
+                "Hemakara",
+                "2C + 1A",
+                "450",
+                "2,600",
+                "—"
+              ],
+              [
+                "Chattraka",
+                "2C + 1A",
+                "450",
+                "2,600",
+                "Nightwave/vendeur"
+              ],
+              [
+                "Vaya",
+                "2C + 1A",
+                "400",
+                "1,800",
+                "Cycle hebdomadaire (week 4)"
+              ],
+              [
+                "Piv",
+                "2C + 1A",
+                "375",
+                "1,725",
+                "Cycle hebdomadaire (week 5)"
+              ],
+              [
+                "Valana",
+                "2C + 1A",
+                "325",
+                "1,575",
+                "Cycle hebdomadaire (week 6)"
+              ],
+              [
+                "Sah",
+                "2C + 1A",
+                "300",
+                "1,500",
+                "Cycle hebdomadaire (week 1)"
+              ],
+              [
+                "Ayr",
+                "3C + 0A",
+                "325",
+                "1,425",
+                "Cycle hebdomadaire (week 2) ; aucune Amber Star requise"
+              ]
+            ],
+            "note": "Valeurs de dissolution des étoiles seules : Cyan Star = 50 Endo, Amber Star = 100 Endo. Le sertissage est bien plus rentable que la dissolution séparée — par exemple, une Anasa sertie rapporte 3,450 contre ~2,300 pour l'Anasa vide plus ses 4 étoiles dissoutes séparément."
+          }
+        },
+        {
+          "type": "warn",
+          "title": "Les Amber Stars sont le goulot d'étranglement — et les étoiles ne sont pas aspirées",
+          "text": "Les Cyan Stars sont pratiquement illimitées (~2 par mission dans les conteneurs/armatures et sur les Kuaka dans les Plaines). L'Amber Star est le facteur limitant. Farmez-le dans les mises à prix de Deimos / Cambion Drift (~45–56% dans les premières étapes), ou FABRIQUEZ-LE : le schéma réutilisable d'Ayatan Amber Star de la boutique d'Arbitration (Arbiters of Hexis) coûte 10 Vitus Essence, puis chaque fabrication transforme 2 Cyan + 1 Vitus + 100,000 credits en 1 Amber. En cas de pénurie d'Amber, utilisez-les d'abord sur Zambuka/Orta et sertissez entièrement les Ayr (qui ne demandent que du cyan). Note : les sculptures ET les étoiles doivent être ramassées à la main — Vacuum/Fetch ne les aspire pas ; utilisez un mod Loot Radar ou Golden Instinct pour les repérer."
+        },
+        {
+          "type": "video",
+          "video": {
+            "id": "-hWq1QPXTQ8",
+            "title": "How To Turn Ayatan Sculptures & Stars Into Endo!!! Warframe!",
+            "channel": "Sethbest"
+          }
+        }
+      ]
+    },
+    {
+      "id": "arbitrations",
+      "title": "Arbitrations — le moteur d'Endo pour vétérans",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Les Arbitrations (« Elite Alerts ») sont le farm d'Endo continu n°1 en 2026. Un seul nœud est actif à la fois, changeant toutes les heures, et se débloque une fois que vous avez terminé l'Eris Junction sur Pluto (accès aux Focus-Lenses) — l'ancienne condition de « terminer tous les nœuds » a disparu. Chaque rotation éligible donne un montant fixe d'Endo plus une Vitus Essence garantie, et les récompenses secondaires distribuent des Ayatan Sculptures que vous pouvez dissoudre pour en obtenir encore plus."
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "Rotation A",
+              "v": "900 Endo @ ~44%"
+            },
+            {
+              "k": "Rotation B",
+              "v": "1,200 Endo @ ~44.5%"
+            },
+            {
+              "k": "Rotation C",
+              "v": "1,500 Endo @ ~35% (augmenté depuis 33% dans une mise à jour de 2026)"
+            },
+            {
+              "k": "Schéma des rotations",
+              "v": "AABBCC… puis C se répète indéfiniment — restez sur la rotation C pour le palier de 1,500"
+            },
+            {
+              "k": "Rendement réaliste",
+              "v": "~5,000–10,000 Endo/hr, plus élevé une fois les sculptures serties et vendues"
+            }
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Cela a été rééquilibré, pas nerfé. La mise à jour « Arbitrations Revisited » a réduit la part d'Endo dans la table de récompenses mais est passée au format AABBCC et a doublé la fréquence des récompenses (un tirage toutes les 5 vagues de Defense au lieu de 10), de sorte que l'Endo horaire s'est maintenu ou amélioré. Un ajustement en 2026 a même augmenté les chances de la Rotation C et la probabilité d'obtenir du Vitus x3."
+        },
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "h": "Choisissez le nœud et le mode actifs",
+              "p": "Survival est le favori de la communauté pour « éliminer et se détendre » (le plus d'apparitions continues et d'Endo au sol) ; Defense est un second choix proche et plus prévisible (un tirage garanti toutes les 5 vagues) ; Disruption permet aux joueurs actifs d'atteindre les rotations élevées le plus rapidement — un tirage par conducteur défendu, jusqu'à 4 par manche."
+            },
+            {
+              "h": "Apportez un équipement robuste et autonome",
+              "p": "Les Arbitration Shield Drones rendent les ennemis proches insensibles aux dégâts jusqu'à la mort du drone, et il n'y a pas de réanimation automatique gratuite — vous devez collecter 5 Resurgence Tokens pour réanimer, chacun appliquant un debuff cumulatif de santé/bouclier/énergie."
+            },
+            {
+              "h": "Restez sur plusieurs rotations",
+              "p": "Allez au-delà de la vague 20 / du bloc AABB pour boucler indéfiniment sur la Rotation C = répétition des tirages de la table à 1,500 Endo. Laissez votre compagnon aspirer l'Endo au sol et les étoiles entre les manches."
+            },
+            {
+              "h": "Encaissez",
+              "p": "Extrayez, sertissez toutes les sculptures obtenues et dissolvez-les chez Maroo pour obtenir le bonus."
+            }
+          ]
+        },
+        {
+          "type": "info",
+          "title": "Les drones ne lâchent pas d'Endo",
+          "text": "Les Shield Drones n'ont que 6% de chances de lâcher 1 Vitus Essence (qui disparaît après 5 min) — pas d'Endo. L'Endo au sol provient des loots d'ennemis normaux en plus de la table de rotation fixe. Les boosters ne font rien pour cet Endo de table."
+        },
+        {
+          "type": "video",
+          "video": {
+            "id": "Oaa3EdSFpiE",
+            "title": "Arbitrations: Vitus Essence, Rolling Guard, Aura FORMA - Warframe Guide",
+            "channel": "KardinalxSin"
+          }
+        }
+      ]
+    },
+    {
+      "id": "passive",
+      "title": "Endo passif et accidentel",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Beaucoup d'Endo s'accumule sans farm dédié — et il y en a probablement un gros tas qui dort dans votre collection de mods en ce moment même."
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "**Dissolution de mods en double** — Orbiter › Segment Mods. Les valeurs sans rang sont fixes selon la rareté : Common 5, Uncommon 10, Rare 15, Legendary ~20. L'outil de sélection en masse « Quick Select » (en bas à droite, ajouté dans la Update 38.5) sélectionne automatiquement les mods sans rang par rareté avec un champ de conservation de N exemplaires, ignore automatiquement les mods avec rang/Legendary/Riven, et confirme en tapant « Fusion ».",
+            "**Daily Sortie** — ~4,000 Endo, mais seulement ~12% de chances sur la table de récompenses (environ un gain tous les ~8 jours, pas quotidiennement).",
+            "**Weekly Archon Hunt** — 8,000 Endo à ~12.1% ; vous la faites pour l'Archon Shard garanti.",
+            "**Steel Path Honors de Teshin** — un pack de 30,000 Endo pour 150 Steel Essence, mais c'est un emplacement rotatif qui n'apparaît qu'environ 1 semaine sur 8.",
+            "**Palladino** — 10 Riven Slivers → 6,000 Endo, une fois par semaine.",
+            "**Granum Void** — 200 / 400 / 600 Endo par palier."
+          ]
+        },
+        {
+          "type": "warn",
+          "title": "Ne vendez jamais de mods pour des credits, et ne dissolvez jamais les mauvaises choses",
+          "text": "Vendre des mods pour des CREDITS ne rapporte rien — dissolvez-les toujours pour de l'Endo, et farmez les [crédits](/guides/credits) séparément (un run de The Index ≈ 250k). Dissoudre un mod AMÉLIORÉ ne rembourse que 75% of l'Endo investi — une perte nette — donc n'améliorez jamais un mod juste pour le dissoudre. Et ne dissolvez jamais un mod échangeable/de valeur ou un [Riven](/guides/riven) : un Riven vaut bien plus en platinum, et même en Endo, il ne rapporte gros que si vous y avez déjà investi de nombreux rerolls de Kuva (+200 Endo par reroll)."
+        },
+        {
+          "type": "tip",
+          "title": "Le rendement de la dissolution de mods est surestimé partout",
+          "text": "Vous verrez des affirmations du genre « 100k–200k en un seul nettoyage » — c'est gonflé de 5–15x. Un accumulateur avec des milliers de doublons n'a rapporté qu'environ ~10–14k Endo après une purge complète. Considérez la dissolution comme un nettoyage gratuit valant quelques milliers d'Endo, pas comme un farm principal."
+        }
+      ]
+    },
+    {
+      "id": "spend",
+      "title": "Où va votre Endo",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "L'Endo ne quitte votre réserve que d'une seule façon : en augmentant le rang des mods. Chaque rang coûte de l'Endo + des credits et augmente à la fois l'effet du mod et sa capacité requise. Les coûts grimpent brutalement aux derniers rangs, c'est pourquoi l'Endo semble toujours rare."
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "Mod Primed de rang 10",
+              "v": "~140,000 Endo au total (les derniers rangs coûtent plus de 40k+ chacun)"
+            },
+            {
+              "k": "Collection complète de mods Primed / Archon / Galvanized",
+              "v": "des centaines de milliers à plus d'un million d'Endo"
+            },
+            {
+              "k": "Mod rare de rang 10 maxé",
+              "v": "~30,690 Endo pour le fabriquer (se dissout pour ~23k)"
+            }
+          ]
+        },
+        {
+          "type": "tip",
+          "title": "Parfois, un Legendary Core vaut mieux que le farming",
+          "text": "Un Legendary Core échangeable maxe instantanément N'IMPORTE QUEL mod et coûte environ ~60–80 platinum. Pour un seul mod Primed, c'est souvent moins cher que de farmer plus de 40k+ d'Endo ET les ~2M+ de credits requis pour les derniers rangs. Achetez le Core, économisez le grind pour le reste de votre collection."
+        },
+        {
+          "type": "info",
+          "title": "La conversion Ayatan-vers-mod est la plus propre",
+          "text": "Comme l'Endo n'est pas échangeable, les Ayatan Sculptures serties sont un excellent moyen de stocker de futurs rangs de mod — accumulez librement les sculptures et les étoiles (elles ne consomment pas d'espace d'inventaire), puis dissolvez un lot lorsque vous devez maxer quelque chose. Il n'y a pas de limite pratique de stockage d'Endo."
+        },
+        {
+          "type": "info",
+          "title": "Vous préférez payer pour éviter le grind ?",
+          "text": "Vous ne pouvez pas acheter d'Endo directement, mais vous pouvez y convertir du platinum à bas coût : un [Riven](/guides/riven) inutile ayant subi de nombreux cycles se dissout en milliers d'Endo pour une poignée de plat, et les Ayatan Sculptures remplies se vendent sur le marché. L'outil [Endo Exchange](/endo) classe ces deux méthodes en temps réel selon le ratio d'Endo par platinum afin que vous puissiez voir l'option la moins chère actuellement — le revers de ce guide de farming."
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Quel est le farm d'Endo le plus rapide en 2026 ?",
+      "a": "Pour une vitesse brute avec une escouade prédéfinie coordonnée, l'arène Rathuum de Sedna en Steel Path (Vodyanoi) avec un Nekros + Pilfer-Khora + une frame de regroupement et un Mod Drop Chance Booster atteint environ 1,000 Endo/minute — le taux continu le plus élevé. Pour une vitesse en solo non plafonnée, les mises à prix de haut niveau de 1999/Höllvania (tirages de 3,300–4,200 Endo, sans limite quotidienne) sont les favorites de la communauté. Ce n'est pas nerfé, juste de niche : la plupart des joueurs occasionnels utilisent plutôt les Arbitrations ou 1999 car l'arène est très tryhard et nécessite une escouade prédéfinie."
+    },
+    {
+      "q": "Quel est le meilleur farm d'Endo répétable pour les vétérans ?",
+      "a": "Les Arbitrations. Chaque rotation éligible donne 900/1,200/1,500 Endo (Rot A/B/C), et les modes infinis vous permettent de boucler sur la Rotation C pour le palier de 1,500 indéfiniment — environ 5,000–10,000 Endo/hour, plus les Ayatan Sculptures des récompenses secondaires que vous dissolvez pour des milliers d'Endo supplémentaires, plus de la Vitus Essence garantie. Se débloque après l'Eris Junction sur Pluto."
+    },
+    {
+      "q": "Quelle est la meilleure option si je suis solo ou si je ne veux pas d'escouade prédéfinie ?",
+      "a": "Les Arbitrations (Endo + sculptures à chaque rotation), les mises à prix de haut niveau de 1999/Zariman/Sanctum (exterminations rapides, jusqu'à 3,300–4,200 Endo par tirage de récompense), ou le Railjack (Endo des caisses plus recyclage des débris pour ~225 chacun). Tous sont faisables en solo ou adaptés au matchmaking public."
+    },
+    {
+      "q": "Quel est le meilleur farm d'Endo de début de jeu / avant le Steel Path ?",
+      "a": "Les mises à prix de palier 5 (L40–60) de Deimos/Cambion Drift — faites les ~3 premières étapes pour les packs de ~1,000 Endo, puis réinitialisez. Ajoutez les mises à prix de 1999 si elles sont débloquées et le recyclage de débris de Railjack, et complétez avec la dissolution de mods en double et l'Ayatan Treasure Hunt hebdomadaire gratuite de Maroo. Les Arbitrations nécessitent d'avoir complété toute la Star Chart, elles arrivent donc un peu plus tard."
+    },
+    {
+      "q": "Comment fonctionnent les Ayatan Sculptures ?",
+      "a": "Les sculptures ont des emplacements de couleur. Vous remplissez les emplacements Cyan avec des Cyan Stars et les emplacements Amber avec des Amber Stars (permanent une fois insérées), puis vous dissolvez la sculpture au Maroo's Bazaar sur Mars pour sa valeur en Endo sertie — 1,425 (Ayr) jusqu'à 3,450 (Anasa). Sertissez toujours d'abord : une sculpture remplie vaut bien plus que la sculpture vide plus ses étoiles séparées."
+    },
+    {
+      "q": "Dois-je dissoudre les Ayatan Stars ou les sertir ?",
+      "a": "Sertissez-les. Une Cyan Star seule ne se dissout que pour 50 Endo et une Amber Star pour 100, mais le sertissage applique le multiplicateur de la sculpture — chaque Cyan Star vaut environ 350–450 Endo de valeur de dissolution ajoutée à l'intérieur d'une sculpture. Remplissez toujours les emplacements avant de l'apporter à Maroo."
+    },
+    {
+      "q": "L'Ayatan Treasure Hunt hebdomadaire de Maroo donne-t-elle une Anasa ?",
+      "a": "Non. La chasse hebdomadaire ne donne que l'une des six sculptures mineures rotatives sur un cycle fixe de 6-week (Sah, Ayr, Orta, Vaya, Piv, Valana), culminant avec l'Orta (2,700 sertie). L'Anasa — le fleuron à 3,450-Endo — provient des Sorties (28% sur la dernière mission) et des Archon Hunts. Still do the weekly every week; it's a few minutes of parkour for a free sculpture."
+    },
+    {
+      "q": "Est-ce qu'un Resource Booster ou un Drop Chance Booster augmente l'Endo ?",
+      "a": "Non. Il n'y a pas d'Endo Booster, et les Resource Boosters, Drop Chance Boosters, Steel Path Drop Chance Boosters et Drop Chance Blessings n'ont aucun effet sur l'Endo — ce n'est pas une ressource boostable, et les boosters ne touchent jamais aux récompenses de fin de mission. La seule exception : les orbes d'Endo ramassés en mission comptent comme des loots de MOD, donc un Mod Drop Chance Booster double l'Endo que vous ramassez au sol, c'est pourquoi la méta de l'arène de Sedna le cumule avec le Steel Path."
+    },
+    {
+      "q": "Dois-je faire les mises à prix en Steel Path pour avoir plus d'Endo ?",
+      "a": "Non. Les mises à prix de 1999, de la Zariman et du Sanctum donnent le MÊME montant d'Endo en Normal et en Steel Path, alors lancez-les en Normal pour aller plus vite — le SP n'ajoute que de la Steel Essence. L'arène Rathuum de Sedna est le seul farm qui nécessite spécifiquement le Steel Path, car son bonus double les loots d'Endo des ennemis."
+    },
+    {
+      "q": "Combien d'Endo puis-je obtenir en dissolvant des mods ?",
+      "a": "Les mods inutiles sans rang donnent de minuscules montants fixes — Common 5, Uncommon 10, Rare 15 Endo. Cela augmente avec le rang car la dissolution rembourse ~75% de l'Endo investi, donc un doublon rare ou Primed au rang max rapporte des centaines ou des milliers d'Endo. L'écran de confirmation affiche le nombre exact. Considérez cela comme un nettoyage gratuit valant quelques milliers d'Endo, pas comme un farm — et ne dissolvez jamais de doublons échangeables (vendez-les plutôt contre du platinum) ou un Riven."
+    },
+    {
+      "q": "Pourquoi ai-je des tonnes de Cyan Stars mais jamais assez d'Amber Stars ?",
+      "a": "C'est voulu. Les Cyan Stars sont courantes (conteneurs, armatures, Kuaka dans les Plaines) ; l'Amber Star est le goulot d'étranglement qui limite le nombre de sculptures que vous pouvez entièrement sertir. Farmez l'Amber Star dans les mises à prix de Deimos/Cambion Drift, ou fabriquez-le avec le schéma réutilisable d'Amber Star de la boutique d'Arbitration (10 Vitus Essence, puis 2 Cyan + 1 Vitus + 100k credits chacun). En cas de pénurie d'Amber, utilisez-le sur Zambuka/Orta et sertissez entièrement les Ayr (qui ne demandent que du cyan)."
+    },
+    {
+      "q": "Puis-je échanger ou acheter de l'Endo ?",
+      "a": "Non — l'Endo lui-même n'est pas échangeable et ne peut pas être vendu contre des credits ni acheté à d'autres joueurs. Il doit être gagné ou converti. Mais vous pouvez dépenser du platinum pour l'obtenir à bas coût : achetez un Riven inutile ayant subi de nombreux cycles ou une Ayatan Sculpture remplie et dissolvez-la. L'[Endo Exchange](/endo) classe ces méthodes d'achat en temps réel selon le ratio d'Endo par plat."
+    }
+  ],
+  "videos": [
+    {
+      "id": "wfcARDwh01E",
+      "title": "Best ENDO Farms in Warframe 2026 (FAST AND EASY)",
+      "channel": "Kryptafy"
+    },
+    {
+      "id": "NyUIIKBlgko",
+      "title": "How to Get Endo FAST in Warframe (2026) | Best Farming Spots",
+      "channel": "Aethernaut1887"
+    },
+    {
+      "id": "CSSMA_Xhypw",
+      "title": "Warframe The BEST Endo Farming Guide for 2026!",
+      "channel": "Weazel"
+    },
+    {
+      "id": "O1p72j8qMz4",
+      "title": "ALL THE BEST ENDO FARM IN 2026 | UPDATED ENDO FARMING GUIDE",
+      "channel": "Grind Hard Squad"
+    },
+    {
+      "id": "ZlkwYJiQjaw",
+      "title": "Best Endo Farms 2026 | Max Mods FAST in Warframe",
+      "channel": "TrueDripFrame"
+    },
+    {
+      "id": "mPy9vllrNCM",
+      "title": "The ULTIMATE Guide to Farming ENDO In Warframe!",
+      "channel": "WarframeFlo"
+    }
+  ],
+  "sources": [
+    {
+      "label": "WARFRAME Wiki — Endo",
+      "href": "https://wiki.warframe.com/w/Endo"
+    },
+    {
+      "label": "WARFRAME Wiki — Arbitrations / Rewards",
+      "href": "https://wiki.warframe.com/w/Arbitrations/Rewards"
+    },
+    {
+      "label": "WARFRAME Wiki — Ayatan Treasures",
+      "href": "https://wiki.warframe.com/w/Ayatan_Treasures"
+    },
+    {
+      "label": "WARFRAME Wiki — Ayatan Treasure Hunt",
+      "href": "https://wiki.warframe.com/w/Ayatan_Treasure_Hunt"
+    },
+    {
+      "label": "WARFRAME Wiki — Rathuum (Sedna arena)",
+      "href": "https://wiki.warframe.com/w/Rathuum"
+    }
+  ],
+  "related": [
+    {
+      "label": "Endo Exchange (acheter avec du Platinum)",
+      "to": "/endo",
+      "icon": "swap-horizontal",
+      "note": "Évitez le grind — l'Endo le moins cher par plat via les Rivens et Ayatans recyclés, classés en temps réel"
+    },
+    {
+      "label": "Guide de modding",
+      "to": "/guides/mods",
+      "icon": "puzzle",
+      "note": "Là où va réellement tout votre Endo"
+    },
+    {
+      "label": "Les mods Riven expliqués",
+      "to": "/guides/riven",
+      "icon": "star-four-points-outline",
+      "note": "Un Riven inutile se dissout en un gros montant d'Endo"
+    },
+    {
+      "label": "Farming de crédits",
+      "to": "/guides/credits",
+      "icon": "circle-multiple-outline",
+      "note": "L'autre moitié de la facture de modding"
+    },
+    {
+      "label": "Guide du Steel Path",
+      "to": "/guides/steel-path",
+      "icon": "fire",
+      "note": "Double l'Endo au sol dans l'arène Rathuum de Sedna"
+    },
+    {
+      "label": "Archon Shards",
+      "to": "/guides/archon-shards",
+      "icon": "cards-diamond-outline",
+      "note": "La chasse hebdomadaire qui rapporte également 8,000 Endo"
+    }
+  ],
+  "updated": "2026-07-18"
+}

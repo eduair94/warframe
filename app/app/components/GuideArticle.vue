@@ -102,7 +102,7 @@
             <div v-if="b.title" class="ga-links__title">{{ b.title }}</div>
             <div class="ga-linkgrid">
               <component
-                :is="l.to ? 'NuxtLink' : 'a'"
+                :is="l.to ? NuxtLink : 'a'"
                 v-for="(l, i) in b.links"
                 :key="i"
                 :to="l.to ? localePath(l.to) : undefined"
@@ -155,7 +155,7 @@
         <h2 class="ga-section__title">{{ relatedLabel }}</h2>
         <div class="ga-linkgrid">
           <component
-            :is="l.to ? 'NuxtLink' : 'a'"
+            :is="l.to ? NuxtLink : 'a'"
             v-for="(l, i) in guide.related"
             :key="i"
             :to="l.to ? localePath(l.to) : undefined"
@@ -189,6 +189,10 @@
 
 <script setup lang="ts">
 import { computed, nextTick, onMounted } from 'vue'
+// Real NuxtLink component for the ga-linkcards' `<component :is>`. A bare
+// `:is="'NuxtLink'"` string doesn't resolve at runtime (renders an inert
+// <nuxtlink> with no href/navigation) — the imported component does.
+import { NuxtLink } from '#components'
 import type { Guide } from '~/data/guides/types'
 
 const props = defineProps<{ guide: Guide }>()

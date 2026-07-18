@@ -29,7 +29,7 @@ export const GUIDES_INDEX: GuideMeta[] = [
   // ── Farming & Resources ─────────────────────────────────────────────
   { slug: 'platinum', route: '/guides/platinum', title: 'How to Make Platinum (F2P)', blurb: 'Earn platinum without paying — what sells, how to trade, and how to price it.', category: 'farming', icon: 'mdi-cash-multiple', readMins: 11, featured: true },
   { slug: 'credits', route: '/guides/credits', title: 'Credit Farming', blurb: 'The best 2026 credit farms — Höllvania safes, the Index, Profit-Taker — plus what got nerfed.', category: 'farming', icon: 'mdi-circle-multiple-outline', readMins: 13 },
-  { slug: 'endo', route: '/guides/endo', title: 'Endo Farming', blurb: 'The cheapest Endo per platinum — and how to value Ayatans vs rivens.', category: 'farming', icon: 'mdi-hexagon-multiple-outline', readMins: 7 },
+  { slug: 'endo', route: '/guides/endo', title: 'Endo Farming', blurb: 'Every un-nerfed way to farm Endo in 2026 — Arbitrations, Ayatan sculptures, 1999 & Sedna, plus the free Endo hiding in your mods.', category: 'farming', icon: 'mdi-hexagon-multiple-outline', readMins: 11 },
   { slug: 'focus', route: '/guides/focus', title: 'Focus Farming', blurb: 'Unlock the Operator, pick a school and farm Focus efficiently.', category: 'farming', icon: 'mdi-eye-outline', readMins: 8 },
   { slug: 'kuva', route: '/guides/kuva', title: 'Kuva Farming', blurb: 'Fuel for riven re-rolls and Kuva weapons — the best farms and rates.', category: 'farming', icon: 'mdi-water-outline', readMins: 7 },
   { slug: 'relics', route: '/guides/relics', title: 'Relics & Void Traces', blurb: 'Crack relics, refine with traces, and run efficient fissure squads.', category: 'farming', icon: 'mdi-diamond-stone', readMins: 9 },
@@ -38,6 +38,7 @@ export const GUIDES_INDEX: GuideMeta[] = [
 
   // ── Systems & Builds ────────────────────────────────────────────────
   { slug: 'mods', route: '/guides/mods', title: 'Essential Mods & Survivability', blurb: 'How modding works, the must-have mods, and shield-gating to stop dying.', category: 'systems', icon: 'mdi-cog-outline', readMins: 11, featured: true },
+  { slug: 'builds', route: '/guides/builds', title: 'Best Builds & Build Planners', blurb: 'Find, copy and pressure-test builds with Overframe & Underframe — and read them critically.', category: 'systems', icon: 'mdi-hammer-screwdriver', readMins: 12, featured: true },
   { slug: 'helminth', route: '/guides/helminth', title: 'Helminth & Subsumes', blurb: 'Unlock Helminth, subsume abilities and the best powers to graft on.', category: 'systems', icon: 'mdi-dna', readMins: 9 },
   { slug: 'arcanes', route: '/guides/arcanes', title: 'Arcanes Guide', blurb: 'What arcanes do, where they drop, and the staples worth farming.', category: 'systems', icon: 'mdi-shimmer', readMins: 8 },
   { slug: 'riven', route: '/guides/riven', title: 'Riven Mods Explained', blurb: 'Disposition, rolling, grading and why bad rivens are cheap Endo.', category: 'systems', icon: 'mdi-star-four-points-outline', readMins: 9 },

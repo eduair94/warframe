@@ -1,0 +1,579 @@
+{
+  "slug": "endo",
+  "eyebrow": "ナレッジセンター · Endo",
+  "title": "Endo ファーミングガイド",
+  "lede": "Endoはmodのランクアップに（creditsと共に）消費するトレード不可の通貨で、ランク最大にした Primed modはそれを約140kも消費するため、常に不足することになります。これは2026年中期版の、現在ナーフされていない実際にEndoを稼ぐためのあらゆる方法をまとめたものです。ベテラン向けの Arbitration エンジン、Ayatan sculpture ルート、上限なしの 1999/Höllvania や Sedna アリーナでのファーム、およびmodコレクションに眠っている「忘れていた無料のEndo」など。",
+  "category": "farming",
+  "readMins": 11,
+  "stats": [
+    {
+      "num": "1,500",
+      "label": "Arbitration ローテーションCあたりのEndo",
+      "tone": "gold"
+    },
+    {
+      "num": "3,450",
+      "label": "ソケットを埋めた Anasa からのEndo",
+      "tone": "good"
+    },
+    {
+      "num": "~140k",
+      "label": "Primed modを1枚最大ランクにするのに必要なEndo",
+      "tone": "alt"
+    },
+    {
+      "num": "0",
+      "label": "Endoを増加させるブースター"
+    }
+  ],
+  "sections": [
+    {
+      "id": "why",
+      "title": "Endoとは何か、そしてどこで手に入るのか",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Endoは「Modの融合とアップグレードに使用される濃縮エネルギー」です。Endoと [credits](/guides/credits) を消費してmodのランクを上げます。ランクが上がるごとに効果とコストが増加します。これは**トレード不可**であり、creditsで売却したり他のプレイヤーから購入したりすることはできないため、すべてのEndoをファームする必要があります。ランクアップで実際にどのように消費されるかについては、[modding guide](/guides/mods) を参照してください。"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "**Endo orb** — 敵やコンテナがドロップする青と金のピックアップアイテムで、3つのサイズがあります：15（小）、50（中）、80（大）。",
+            "**ミッション/ローテーションの固定報酬** — Star Chartのローテーションでは高ティアで約50から最大約4,200 Endoが支払われます。Granum Voidでは200 / 400 / 600（Standard / Extended / Nightmare）が支払われます。",
+            "**Arbitrations** — 対象のローテーションごとに 900 / 1,200 / 1,500 Endoが手に入る、ベテランファームの主軸。",
+            "**Ayatan Sculptures** — Ayatan Starsをソケットに埋め込み、Marooで溶解することで、それぞれ 1,425–3,450 Endoになります。",
+            "**変換** — 重複したmodの溶解、Railjack wreckage（残骸）のスクラップ化、または何度もサイクルした [Riven](/guides/riven) を処分して一括で獲得する。"
+          ]
+        },
+        {
+          "type": "warn",
+          "title": "Endoに効果のあるブースターはありません",
+          "text": "Endoブースターは存在しません。リソースブースター、ドロップチャンスブースター、Steel Pathドロップチャンスブースター、ドロップチャンスの祝福はすべてEndoには**効果がありません**。Endoはブースト可能なリソースではなく、ブースターがミッション完了報酬に適用されることはありません。唯一の例外として、ミッション内のEndoドロップはMODドロップとしてカウントされるため、Modドロップチャンスブースターを使用すると床から拾うEndoが2倍になります（Sednaアリーナファームを参照）。"
+        }
+      ]
+    },
+    {
+      "id": "best-farms",
+      "title": "進行度と労力別の最適なEndoファーム",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "単一の「最適解」はありません。アカウントの進行度や、どれだけ効率を追求したいかによって異なります。理論上の最高効率は依然としてブースターを適用した固定分隊での Sedna アリーナですが、2026年にコミュニティがソロやカジュアルプレイに実際に推奨しているのは Arbitrations と 1999 のバウンティです。"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "ファーム方法",
+              "場所 / ノード",
+              "Endo獲得量",
+              "おすすめの対象"
+            ],
+            "rows": [
+              [
+                "Arbitrations (Survival/Defense)",
+                "1時間ごとにローテーションするノード（解放条件：Star Chartの全クリア）",
+                "A/B/Cローテーションごとに 900 / 1,200 / 1,500 → 約5,000–10,000/時間 + sculptures",
+                "ベテラン向け、ソロでも快適"
+              ],
+              [
+                "Vodyanoi — Rathuum アリーナ (Steel Path)",
+                "Sedna › Vodyanoi",
+                "ソロで約3分のランあたり約400–1,000。ドロップ特化のフル分隊 + Modドロップブースターで約1,000 Endo/分",
+                "ガチ固定分隊向け、最高効率"
+              ],
+              [
+                "1999 / Höllvania バウンティ",
+                "Höllvania Central Mall（The Hexクリア後）",
+                "3,300または4,200 Endoの抽選（それぞれ約14–16%）。現実的な平均は約3–4分のバウンティあたり約1,000–1,500。上限なし",
+                "中盤〜終盤向け、上限なしで最速"
+              ],
+              [
+                "Deimos / Cambion Drift T5 バウンティ",
+                "Cambion Drift (L40–60)",
+                "ステージ1で約1,000 Endo（約45%）。初期ステージをリセットすることで約8,000–15,000/時間",
+                "Arbitration 解放前 / Steel Path 解放前向け"
+              ],
+              [
+                "Zariman バウンティ (T4/5 Exterminate)",
+                "The Chrysalith",
+                "バウンティあたり平均約730 Endo（Endo枠の期待値）+ わずかな床ドロップ",
+                "Zariman 装備集めの副産物"
+              ],
+              [
+                "Ayatan sculptures（ソケット埋め済み）",
+                "Maroo's Bazaar（火星）で溶解",
+                "完全にソケットを埋めた sculpture あたり 1,425–3,450",
+                "パッシブ、全レベル向け"
+              ],
+              [
+                "Railjack wreckage（残骸）のスクラップ化",
+                "Dry Dock › Configure",
+                "MK IIIパーツあたり約225 Endo。大量に溜まっていれば一度に数万Endoになる",
+                "構築済みの Railjack が必要"
+              ],
+              [
+                "Archon Hunt（週制限）",
+                "Teshinの Steel Path コンソール",
+                "約12.1%の確率で 8,000 Endo、週に1回抽選（確定ではない）",
+                "週次ボーナス、Shard目的で周回"
+              ],
+              [
+                "重複したmodの溶解",
+                "オービター › Mods セグメント",
+                "ランクなしの common/uncommon/rare あたり 5 / 10 / 15 Endo",
+                "マスタリーランク問わず、ファームではなく整理用"
+              ]
+            ],
+            "note": "獲得量は2026年中期のものであり、理論上の最高値ではなく実際のドロップテーブルの確率を反映しています。Sednaの代表的な数値には連携の取れた分隊が必要で、ソロでの獲得量は下限付近になります。"
+          }
+        },
+        {
+          "type": "info",
+          "title": "Sedna アリーナはナーフされたわけではなく、単にニッチになっただけです",
+          "text": "Vodyanoiは数学的には依然としてゲーム内で最高のEndo/分を誇ります。しかし、Arbitrations が登場し、DEが最近の報酬テーブル（Narmer から 1999 まで）にEndoを大量に追加したため、ほとんどのプレイヤーはカジュアル用途としてはこのアリーナを事実上時代遅れとみなしています。これは専用のブーストされた固定分隊でのみ効果を発揮します。メタとなるドロップ分隊は、Steel Pathにおいて、Modドロップチャンスブースターを有効にし、Nekros（Desecrate）1体 ＋ Khora（敵を集める効果もある Pilfering Strangledome）1体 ＋ 集敵/DPSフレーム（Nidus の Larva または Vauban の Vortex）1体です。複数の Nekros が同じ死体に Desecrate を重複させることはできません。1つの死体に対して適用されるドロップ増加効果は1つだけです。"
+        },
+        {
+          "type": "tip",
+          "title": "バウンティは Steel Path ではなく Normal で周回しましょう",
+          "text": "1999、Zariman、Sanctum のバウンティは Normal でも Steel Path でも同じ量のEndoをドロップするため、速度重視で Normal を周回してください。SPは Steel Essence を追加するだけです。Steel Pathが役立つのはキルベースの Sedna アリーナだけで、そこでは+100%のModドロップチャンスボーナスによって床に落ちるEndoが2倍になり、Modドロップチャンスブースターと乗算でスタックします。"
+        },
+        {
+          "type": "video",
+          "video": {
+            "id": "K6neW7Fp7vM",
+            "title": "You're Farming Endo Wrong – Do THIS Instead! (Top 5 Warframe Guide)",
+            "channel": "iFlynn"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ayatan",
+      "title": "Ayatan Sculpture ルート",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Ayatan Sculptures は、すべてのレベル帯で信頼できるEndoの供給源です。sculpturesを集め、色分けされたソケットに Ayatan Stars を埋め込み、Maroo's Bazaar（火星）で溶解して大量のEndoを獲得します。これは時間あたりの高速ファームというよりは補助的なものですが、ほぼすべてのプレイヤーが無料の週次ミッションをこなし、見つけたものにソケットを埋めるべきです。"
+        },
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "h": "sculpturesの収集",
+              "p": "対象の各ミッションでは、タイルセット内に1つの sculpture が隠されている確率がフラットで約1/7（約14%）あります。また、Arbitrations、Sorties/Archon Hunts、Simaris、コンテナからもドロップします。Anasa（最高峰の sculpture）は Sorties（最終ミッションで28%）および Archon Hunts から入手できます。週次のハントからは入手できません。"
+            },
+            {
+              "h": "Marooの週次 Ayatan Treasure Hunt をこなす",
+              "p": "Maroo's Bazaar › Ayatan Treasure Hunt、週に1回（月曜日 00:00 UTCにリセット）。制限時間付きのパルクール部屋で（Titania や Xaku を使えば簡単になります）、固定の6週間サイクル（Sah → Ayr → Orta → Vaya → Piv → Valana）でローテーションする sculpture が1つ手に入ります。Anasa が手に入ることはありません。"
+            },
+            {
+              "h": "溶解する前にソケットを埋める",
+              "p": "青いソケットに Cyan Star を、オレンジのソケットに Amber を差し込みます。一度差し込んだスターは取り外せません。ソケットを埋めた sculpture は、空の sculpture とバラのスターを個別に溶解するよりもはるかに価値が高くなります。必ず最初に埋めてください。"
+            },
+            {
+              "h": "Marooで溶解する",
+              "p": "ソケットを埋めた sculpture をMarooのところに持っていき、「お宝を取引する」を使用します。抽出は無料です（古いクレジットコストは2017年に削除されました）。Endoは直接プールに追加されます。"
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Sculpture",
+              "ソケット (C+A)",
+              "空の時のEndo",
+              "ソケット全埋め時",
+              "入手方法の注記"
+            ],
+            "rows": [
+              [
+                "Anasa",
+                "2C + 2A",
+                "2,000",
+                "3,450",
+                "Sortie (28%) / Archon のみ — 週次ハントからは出ない"
+              ],
+              [
+                "Kitha",
+                "4C + 1A",
+                "450",
+                "3,000",
+                "販売（Necraloid）。Amber1個あたりの価値が最高"
+              ],
+              [
+                "Orta",
+                "3C + 1A",
+                "650",
+                "2,700",
+                "週次サイクル（3週目）"
+              ],
+              [
+                "Zambuka",
+                "2C + 1A",
+                "450",
+                "2,600",
+                "Vitus Essence ショップ。AmberあたりのEndo効率が最高（~1,075）"
+              ],
+              [
+                "Hemakara",
+                "2C + 1A",
+                "450",
+                "2,600",
+                "—"
+              ],
+              [
+                "Chattraka",
+                "2C + 1A",
+                "450",
+                "2,600",
+                "Nightwave / 販売"
+              ],
+              [
+                "Vaya",
+                "2C + 1A",
+                "400",
+                "1,800",
+                "週次サイクル（4週目）"
+              ],
+              [
+                "Piv",
+                "2C + 1A",
+                "375",
+                "1,725",
+                "週次サイクル（5週目）"
+              ],
+              [
+                "Valana",
+                "2C + 1A",
+                "325",
+                "1,575",
+                "週次サイクル（6週目）"
+              ],
+              [
+                "Sah",
+                "2C + 1A",
+                "300",
+                "1,500",
+                "週次サイクル（1週目）"
+              ],
+              [
+                "Ayr",
+                "3C + 0A",
+                "325",
+                "1,425",
+                "週次サイクル（2週目）。Amber不要"
+              ]
+            ],
+            "note": "単体スターの溶解価値：Cyan Star = 50 Endo、Amber Star = 100 Endo。ソケットを埋める方が単体で溶解するよりもはるかに優れています。例えば、ソケットを埋めた Anasa は 3,450 Endo ですが、空の Anasa とその4つのスターを個別に溶解した場合は約2,300 Endoにしかなりません。"
+          }
+        },
+        {
+          "type": "warn",
+          "title": "Amber Star がボトルネックであり、スターは吸引（Vacuum）されません",
+          "text": "Cyan Stars は事実上無限に入手可能です（コンテナ/ロッカーや Plains の Kuaka からミッションあたり約2個）。ボトルネックとなるのは Amber です。Deimos / Cambion Drift のバウンティ（初期ステージで約45–56%）からファームするか、あるいは製作してください。Arbitration（Arbiters of Hexis）ショップにある再利用可能な Ayatan Amber Star の設計図は 10 Vitus Essence で購入でき、1回の製作で 2 Cyan + 1 Vitus + 100,000 credits を 1 Amber に変換できます。Amberが不足している場合は、まず Zambuka/Orta に使い、Cyanのみを必要とする Ayr のソケットを完全に埋めましょう。注意：sculpturesとスターは手動で拾う必要があります。Vacuum/Fetch では引き寄せられません。Loot Radar modや Golden Instinct を使用して見つけてください。"
+        },
+        {
+          "type": "video",
+          "video": {
+            "id": "-hWq1QPXTQ8",
+            "title": "How To Turn Ayatan Sculptures & Stars Into Endo!!! Warframe!",
+            "channel": "Sethbest"
+          }
+        }
+      ]
+    },
+    {
+      "id": "arbitrations",
+      "title": "Arbitrations — ベテラン向けのEndoエンジン",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Arbitrations（「エリートアラート」）は、2026年において継続して稼げるナンバーワンのEndoファームです。1時間ごとにローテーションする1つのノードがアクティブになり、冥王星の Eris Junction（フォーカスレンズの解放）を完了するとアンロックされます。かつての「すべてのノードをクリアする」という要件はなくなりました。対象のローテーションごとに固定のEndoと、確定で1つの Vitus Essence がドロップし、ハズレ枠からはさらに溶解用の Ayatan Sculptures が手に入ります。"
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "ローテーションA",
+              "v": "900 Endo @ 約44%"
+            },
+            {
+              "k": "ローテーションB",
+              "v": "1,200 Endo @ 約44.5%"
+            },
+            {
+              "k": "ローテーションC",
+              "v": "1,500 Endo @ 約35%（2026年のアップデートで33%からバフ）"
+            },
+            {
+              "k": "ローテーションパターン",
+              "v": "AABBCC… その後はCが無限に繰り返されます。1,500のティアを狙うためにCに留まりましょう"
+            },
+            {
+              "k": "現実的な獲得量",
+              "v": "約5,000–10,000 Endo/時間。sculpturesにソケットを埋めて売却すればさらに増加"
+            }
+          ]
+        },
+        {
+          "type": "p",
+          "text": "これは再調整されたものであり、ナーフではありません。「Arbitrations Revisited」の調整により、プール内におけるEndoの割合は低下しましたが、AABBCCに変更され、報酬の頻度が2倍になったため（Defenseでは10ウェーブごとではなく5ウェーブごとに抽選）、時間あたりのEndo獲得量は維持または向上しました。2026年の微調整では、ローテーションCの確率と Vitus 3倍の確率がさらに引き上げられました。"
+        },
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "h": "アクティブなノードとモードを選択する",
+              "p": "Survival はコミュニティで「気楽にキルできる」お気に入りとして人気です（継続的なスポーンが最も多く、床ドロップのEndoも多い）。Defense は僅差で予測しやすい2位です（5ウェーブごとに確定で抽選）。Disruption はアクティブなプレイヤーにとって高ローテーションを最も早く回せます（防衛したコンダクターごとに1回抽選、1ラウンドあたり最大4回）。"
+            },
+            {
+              "h": "耐久力があり、自己完結したビルドを持ち込む",
+              "p": "Arbitration Shield Drones は、ドローンが破壊されるまで周囲の敵をダメージ無効にします。また、無料の自己復活はありません。復活するには5つの Resurgence Tokens を集める必要があり、それぞれがヘルス/シールド/エネルギーのデバフを累積させます。"
+            },
+            {
+              "h": "複数のローテーションをまたいで滞在する",
+              "p": "ウェーブ20 / AABBブロックを突破して、無限に続くローテーションCをループさせ、1,500 Endoのテーブル抽選を繰り返します。ラウンドの合間にペットに床のEndoやスターを吸引させましょう。"
+            },
+            {
+              "h": "精算する",
+              "p": "脱出して、ドロップした sculptures にソケットを埋め、Marooで溶解してボーナスを獲得します。"
+            }
+          ]
+        },
+        {
+          "type": "info",
+          "title": "ドローンはEndoをドロップしません",
+          "text": "Shield Drones は 1 Vitus Essence をドロップする確率が6%あるだけで（5分後に消滅）、Endoはドロップしません。バラのEndoは通常の敵のドロップと固定のローテーションテーブルから入手できます。ブースターはテーブルから得られるEndoには効果がありません。"
+        },
+        {
+          "type": "video",
+          "video": {
+            "id": "Oaa3EdSFpiE",
+            "title": "Arbitrations: Vitus Essence, Rolling Guard, Aura FORMA - Warframe Guide",
+            "channel": "KardinalxSin"
+          }
+        }
+      ]
+    },
+    {
+      "id": "passive",
+      "title": "パッシブおよび副産物としてのEndo",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "専用のファームを行わなくても、大量のEndoが蓄積されます。そして、おそらく今あなたのmodコレクションには、山のようなEndoが眠っているはずです。"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "**重複したmodの溶解** — オービター › Mods セグメント。ランクなしの価値はレア度によって固定されています：Common 5、Uncommon 10、Rare 15、Legendary 約20。画面右下にある一括ツール「Quick Select」（アップデート38.5で追加）を使用すると、指定数を残す設定でランクなしのmodをレア度別に一括選択できます。ランク付き、Legendary、Riven modは自動的にスキップされ、確認のために「Fusion」と入力します。",
+            "**日次 Sortie** — 約4,000 Endoですが、報酬テーブルでの確率は約12%です（毎日ではなく、およそ8日に1回程度の獲得ペース）。",
+            "**週次 Archon Hunt** — 約12.1%の確率で 8,000 Endo。確定で手に入る Archon Shard を目的として周回します。",
+            "**Teshinの Steel Path 報酬（Honors）** — 150 Steel Essence で 30,000 Endoのバンドルを購入できますが、これはローテーション枠であり、約8週間に1週間しか出現しません。",
+            "**Palladino** — 10 Riven Slivers → 6,000 Endo、週に1回。",
+            "**Granum Void** — ティアごとに 200 / 400 / 600 Endo。"
+          ]
+        },
+        {
+          "type": "warn",
+          "title": "Modをクレジット目的で売却してはいけません。また、間違ったものを溶解しないようにしましょう",
+          "text": "Modをcredits目的で売却するのはゴミ同然の効率です。常にEndoに溶解し、[credits](/guides/credits) は別途ファームしてください（The Indexを1回周回すれば約250kになります）。ランク付きのmodを溶解しても、投資したEndoの75%しか返還されず、純損失となるため、溶解するためだけにmodのランクを上げるのは絶対にやめましょう。また、トレード可能な価値のあるmodや [Riven](/guides/riven) を溶解してはいけません。Rivenはプラチナとしての価値の方がはるかに高く、Endoとして溶解する場合でも、すでに多くの Kuva サイクル（1サイクルごとに+200 Endo）を重ねている場合にしか大量のEndoは得られません。"
+        },
+        {
+          "type": "tip",
+          "title": "Mod溶解の獲得量はいたるところで誇張されています",
+          "text": "「1回の整理で100k–200k」といった情報を見かけるかもしれませんが、それは5〜15倍に誇張されています。何千枚もの重複modを溜め込んでいたプレイヤーが、すべて処分しても約10–14k Endoにしかならなかったと報告しています。溶解は、数千Endo程度の価値がある無料の整理作業として扱い、主要なファーム方法とは考えないでください。"
+        }
+      ]
+    },
+    {
+      "id": "spend",
+      "title": "Endoの使い道",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Endoがプールから消費される方法はただ1つ、modのランクアップです。各ランクアップにはEndoとcreditsが必要で、modの効果とコストの両方が上昇します。最高ランク付近ではコストが容赦なく跳ね上がるため、Endoは常に不足しているように感じられます。"
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "ランク10の Primed mod",
+              "v": "合計約140,000 Endo（最高ランク帯はそれぞれ40k以上必要）"
+            },
+            {
+              "k": "すべての Primed / Archon / Galvanized コレクション",
+              "v": "数十万から100万以上のEndo"
+            },
+            {
+              "k": "最大ランク10の rare mod",
+              "v": "作成に約30,690 Endo（溶解すると約23k戻る）"
+            }
+          ]
+        },
+        {
+          "type": "tip",
+          "title": "時には Legendary Core がファームを上回ることもあります",
+          "text": "トレード可能な Legendary Core は、あらゆるmodを瞬時に最大ランクにすることができ、価格は約60–80プラチナです。1枚の Primed modを最大にする場合、40k以上のEndoと最高ランク帯で要求される約2M以上のcreditsをファームするよりも、Coreを購入する方が安上がりなことがよくあります。Coreを購入して、残りのコレクションのための周回を節約しましょう。"
+        },
+        {
+          "type": "info",
+          "title": "Ayatanからmodへの変換が最もスマートな方法です",
+          "text": "Endoはトレード不可であるため、ソケットを埋めた Ayatan Sculptures は、実質的に将来のmodランクアップ用として貯金しておく方法になります。sculpturesとスターは自由に溜め込んでおき（インベントリ容量を消費しません）、何かを最大ランクにする必要があるときにまとめて溶解しましょう。実質的なEndoの所持上限はありません。"
+        },
+        {
+          "type": "info",
+          "title": "周回をスキップして購入したいですか？",
+          "text": "Endoを直接購入することはできませんが、プラチナを安価にEndoに変換することは可能です。何度もサイクルされたゴミ [Riven](/guides/riven) は、わずかなプラチナで数千Endoに溶解できますし、ソケットを埋めた Ayatan sculptures もマーケットで販売されています。[Endo Exchangeツール](/endo) は、プラチナあたりのEndo効率で両方のルートをリアルタイムでランク付けしているため、今最も安い選択肢を確認できます。これは、このファームガイドの裏技的なアプローチです。"
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "2026年において最速のEndoファームは何ですか？",
+      "a": "連携の取れた固定分隊による純粋な速度を求めるなら、Steel Path の Sedna Rathuum アリーナ（Vodyanoi）で、Nekros ＋ ドロップ増加Khora ＋ 集敵フレームにModドロップチャンスブースターを組み合わせることで、持続可能な最高効率である約1,000 Endo/分に達します。上限なしのソロ速度を求めるなら、高ティアの 1999/Höllvania バウンティ（3,300–4,200 Endoの抽選、日次上限なし）がコミュニティで人気です。ナーフされたわけではなくニッチになっただけで、アリーナはガチ構成が必要で固定分隊を組む必要があるため、ほとんどのカジュアルプレイヤーは代わりに Arbitrations や 1999 を利用しています。"
+    },
+    {
+      "q": "ベテランにとって、繰り返し周回できる最適なEndoファームは何ですか？",
+      "a": "Arbitrations です。対象のローテーションごとに 900 / 1,200 / 1,500 Endo（ローテーションA/B/C）がドロップし、エンドレスモードでは1,500のティアであるローテーションCを無限にループさせることができます。これにより、時間あたり約5,000–10,000 Endoを獲得でき、さらに溶解して数千Endoになる Ayatan sculpture のハズレ枠や、確定の Vitus Essence も手に入ります。冥王星の Eris Junction をクリアした後にアンロックされます。"
+    },
+    {
+      "q": "ソロプレイ、または固定分隊を組みたくない場合の最善の選択肢は？",
+      "a": "Arbitrations（毎ローテーションのEndo ＋ sculptures）、高ティアの 1999/Zariman/Sanctum バウンティ（高速な Exterminate、報酬抽選あたり最大3,300–4,200 Endo）、または Railjack（コンテナからのEndo ＋ 残骸をそれぞれ約225 Endoでスクラップ化）です。これらはすべてソロ可能、または野良でも快適にプレイできます。"
+    },
+    {
+      "q": "Steel Path 解放前、または序盤における最適なEndoファームは何ですか？",
+      "a": "Deimos/Cambion Drift のティア5（L40–60）バウンティです。最初の約3ステージをクリアして約1,000 Endoのバンドルを狙い、その後リセットします。解放されている場合は 1999 のバウンティや Railjack のスクラップ化を追加し、重複したmodの溶解やMarooの無料の週次 Ayatan ハントで補いましょう。Arbitrations は Star Chart の全クリアが必要なため、もう少し後になります。"
+    },
+    {
+      "q": "Ayatan Sculptures はどのように機能しますか？",
+      "a": "Sculptures には色分けされたソケットがあります。Cyan ソケットに Cyan Stars を、Amber ソケットに Amber Stars を埋め込み（一度差し込むと固定されます）、火星の Maroo's Bazaar でそのソケットを埋めた sculpture を溶解して、1,425（Ayr）から最大3,450（Anasa）のEndo価値に変換します。必ず最初にソケットを埋めてください。ソケットを埋めた sculpture は、空の sculpture とバラのスターを個別に溶解するよりもはるかに価値が高くなります。"
+    },
+    {
+      "q": "Ayatan Stars はそのまま溶解すべきですか、それともソケットに埋めるべきですか？",
+      "a": "ソケットに埋めてください。バラの Cyan Star は50 Endo、Amber は100 Endoでしか溶解できませんが、ソケットに埋めることで sculpture の倍率が適用されます。sculptures の内部では、各 Cyan star は追加の溶解価値として約350–450 Endo相当の価値になります。Marooのところに持っていく前に、必ずソケットを埋めてください。"
+    },
+    {
+      "q": "Marooの週次 Ayatan Treasure Hunt で Anasa は手に入りますか？",
+      "a": "いいえ。週次ハントでは、固定の6週間サイクル（Sah、Ayr、Orta、Vaya、Piv、Valana）でローテーションする6つの下位の sculptures のうち1つしか手に入らず、最高でも Orta（ソケット全埋めで2,700）です。3,450 Endoの最高峰である Anasa は、Sorties（最終ミッションで28%）および Archon Hunts から入手できます。それでも、無料の sculpture を得るために、数分間のパルクールで済む週次ハントは毎週こなしておきましょう。"
+    },
+    {
+      "q": "リソースブースターやドロップチャンスブースターはEndoを増加させますか？",
+      "a": "いいえ。Endoブースターは存在せず、リソース、ドロップチャンス、Steel Pathドロップチャンス、ドロップチャンスの祝福はすべてEndoに対して一切効果がありません。Endoはブースト可能なリソースではなく、ブースターがミッション完了報酬に適用されることはありません。唯一の例外として、ミッション内のEndoドロップはMODドロップとしてカウントされるため、Modドロップチャンスブースターを使用すると床から拾うEndoが2倍になります。これが、Sedna アリーナのメタにおいて Steel Path とブースターをスタックさせる理由です。"
+    },
+    {
+      "q": "Endoを増やすために、バウンティを Steel Path で周回すべきですか？",
+      "a": "いいえ。1999、Zariman、Sanctum のバウンティは Normal でも Steel Path でも同じ量のEndoをドロップするため、速度重視で Normal を周回してください。SPは Steel Essence を追加するだけです。Sedna Rathuum アリーナは、そのボーナスによって敵のEndoドロップが2倍になるため、明確に Steel Path が推奨される唯一のファームです。"
+    },
+    {
+      "q": "Modを溶解するとどれくらいのEndoが得られますか？",
+      "a": "ランクなしのゴミmodは、Common 5、Uncommon 10、Rare 15 Endoというごくわずかな固定量しか得られません。溶解すると投資したEndoの約75%が返還されるため、ランクに応じてスケールし、最大ランクの rare や Primed の重複分は数百から数千Endoを返します。確認画面に正確な数値が表示されます。これはファームではなく、数千Endo程度の価値がある無料の整理作業として扱い、トレード可能な重複分（プラチナ目的で売却）や Riven は絶対に溶解しないでください。"
+    },
+    {
+      "q": "なぜ Cyan Star は大量にあるのに、Amber は常に不足するのですか？",
+      "a": "それは意図された設計です。Cyan Stars は一般的ですが（コンテナ、ロッカー、Plains の Kuaka）、Amber は完全にソケットを埋められる sculptures の数を制限するボトルネックとなっています。Deimos/Cambion Drift のバウンティから Amber をファームするか、Arbitration ショップにある再利用可能な Amber Star の設計図（10 Vitus Essence、その後は1回あたり 2 Cyan + 1 Vitus + 100k credits）で製作してください。Amberが不足している場合は、Zambuka/Orta に優先して使い、Cyanのみを必要とする Ayr のソケットを完全に埋めましょう。"
+    },
+    {
+      "q": "Endoをトレードしたり購入したりすることはできますか？",
+      "a": "いいえ。Endo自体はトレード不可であり、credits目的で売却したり、他のプレイヤーから購入したりすることはできません。自力で獲得するか、変換する必要があります。しかし、プラチナを消費して安価に入手することは可能です。何度もサイクルされたゴミ Riven や、ソケットを埋めた Ayatan sculpture を購入して溶解してください。[Endo Exchange](/endo) は、それらの購入ルートをプラチナあたりのEndo効率でリアルタイムにランク付けしています。"
+    }
+  ],
+  "videos": [
+    {
+      "id": "wfcARDwh01E",
+      "title": "Best ENDO Farms in Warframe 2026 (FAST AND EASY)",
+      "channel": "Kryptafy"
+    },
+    {
+      "id": "NyUIIKBlgko",
+      "title": "How to Get Endo FAST in Warframe (2026) | Best Farming Spots",
+      "channel": "Aethernaut1887"
+    },
+    {
+      "id": "CSSMA_Xhypw",
+      "title": "Warframe The BEST Endo Farming Guide for 2026!",
+      "channel": "Weazel"
+    },
+    {
+      "id": "O1p72j8qMz4",
+      "title": "ALL THE BEST ENDO FARM IN 2026 | UPDATED ENDO FARMING GUIDE",
+      "channel": "Grind Hard Squad"
+    },
+    {
+      "id": "ZlkwYJiQjaw",
+      "title": "Best Endo Farms 2026 | Max Mods FAST in Warframe",
+      "channel": "TrueDripFrame"
+    },
+    {
+      "id": "mPy9vllrNCM",
+      "title": "The ULTIMATE Guide to Farming ENDO In Warframe!",
+      "channel": "WarframeFlo"
+    }
+  ],
+  "sources": [
+    {
+      "label": "WARFRAME Wiki — Endo",
+      "href": "https://wiki.warframe.com/w/Endo"
+    },
+    {
+      "label": "WARFRAME Wiki — Arbitrations / Rewards",
+      "href": "https://wiki.warframe.com/w/Arbitrations/Rewards"
+    },
+    {
+      "label": "WARFRAME Wiki — Ayatan Treasures",
+      "href": "https://wiki.warframe.com/w/Ayatan_Treasures"
+    },
+    {
+      "label": "WARFRAME Wiki — Ayatan Treasure Hunt",
+      "href": "https://wiki.warframe.com/w/Ayatan_Treasure_Hunt"
+    },
+    {
+      "label": "WARFRAME Wiki — Rathuum (Sedna arena)",
+      "href": "https://wiki.warframe.com/w/Rathuum"
+    }
+  ],
+  "related": [
+    {
+      "label": "Endo Exchange (プラチナで購入)",
+      "to": "/endo",
+      "icon": "swap-horizontal",
+      "note": "周回をスキップ — サイクルされた Riven や Ayatan から得られるプラチナあたりの最安Endoをリアルタイムでランク付け"
+    },
+    {
+      "label": "Modding ガイド",
+      "to": "/guides/mods",
+      "icon": "puzzle",
+      "note": "あなたのすべてのEndoが実際に消費される場所"
+    },
+    {
+      "label": "Riven Modの解説",
+      "to": "/guides/riven",
+      "icon": "star-four-points-outline",
+      "note": "ゴミ Riven を溶解すると、大量のEndoの塊になります"
+    },
+    {
+      "label": "クレジットファーム",
+      "to": "/guides/credits",
+      "icon": "circle-multiple-outline",
+      "note": "Mod強化に必要なもう一つのコスト"
+    },
+    {
+      "label": "Steel Path ガイド",
+      "to": "/guides/steel-path",
+      "icon": "fire",
+      "note": "Sedna Rathuum アリーナにおける床ドロップのEndoを2倍にします"
+    },
+    {
+      "label": "Archon Shards",
+      "to": "/guides/archon-shards",
+      "icon": "cards-diamond-outline",
+      "note": "8,000 Endoも手に入る週次ハント"
+    }
+  ],
+  "updated": "2026-07-18"
+}

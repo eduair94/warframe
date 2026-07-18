@@ -413,6 +413,22 @@
   background: rgba(200, 168, 92, 0.05);
 }
 
+/* Content tables (`.is-cards`) hold prose, not dense numbers. Let their cells
+   wrap and the table shrink to the container so long text never forces a
+   horizontal scroll on desktop. (The base `.an-table` keeps min-width + nowrap
+   for numeric data tables, which are meant to scroll.) */
+.an-table.is-cards {
+  min-width: 0;
+  /* Equal columns so a long prose column can't starve the short label columns
+     (auto layout shrinks single-word cells to ~1 word wide). */
+  table-layout: fixed;
+}
+.an-table.is-cards thead th,
+.an-table.is-cards tbody td {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
 /* Responsive content tables — opt in with `.is-cards` (e.g. the guide tables).
    Below 760px the table drops its min-width scroll and each row becomes a
    labelled card (column name above the value), killing the horizontal scroll.

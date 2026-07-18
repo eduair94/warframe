@@ -1,0 +1,3585 @@
+{
+  "warframe-market": {
+    "slug": "warframe-market",
+    "oneLiner": "事实上的社区交易市场，Warframe 玩家在此发布几乎所有可交易物品的买单/卖单，并在交易前进行价格查询。",
+    "overview": "Warframe Market 是一个粉丝创建的（并非由 Digital Extremes 官方运营）网页平台，作为 Warframe 中玩家间交易的集中订单板。玩家可以列出 Prime 部件/套装、MOD、遗物、蓝图、赋能、Riven（通过拍卖系统）、Kuva Liches/Sisters 以及 Captura 场景的买单和卖单，并为 PC、PlayStation、Xbox 和 Switch 设有独立的市场。交易本身仍在游戏内进行；该网站会将格式化好的私聊文本复制到您的剪贴板，以便粘贴到交易聊天频道中。它还提供了一个公开的 API（受速率限制和 Cloudflare 保护），为庞大的第三方工具和扩展生态系统提供支持。",
+    "keyFeatures": [
+      "覆盖几乎所有可交易物品（套装、部件、MOD、遗物、赋能、蓝图）的买单/卖单板",
+      "带有竞价功能的专用 Riven MOD 拍卖系统",
+      "实时在线状态筛选，以便您查看当前在游戏中的玩家的订单",
+      "自动生成游戏内私聊文本并复制到剪贴板，用于实际交易",
+      "用于价格查询的价格统计 / 最近订单历史记录",
+      "独立的平台市场（PC、PlayStation、Xbox、Switch）",
+      "公开的受速率限制 API（3 次请求/秒），支持第三方工具、机器人和扩展",
+      "Kuva Lich / Sisters of Parvos 以及 Captura 场景交易"
+    ],
+    "bestFor": "任何想要高效买卖物品以换取白金、在交易前查询价格，或通过拍卖买卖 Riven MOD 的 Warframe 玩家。",
+    "sentimentSummary": "Warframe Market 被社区和内容创作者压倒性地视为默认且必不可少的交易工具——通常被推荐为游戏内聊天频道之外，最准确、最实用的白金交易方式。常见的批评主要是结构性的，而非针对网站的可靠性：列出的“平均”价格可能会过时或失真，买家经常根据这些数字恶意压价，而且该网站仅列出订单而不执行交易，因此您仍需应对无回应或挂机（AFK）的交易者。其强大的 API 也催生了许多在其之上进行数据分析的配套工具。",
+    "safety": {
+      "rating": "safe",
+      "notes": "基于网页的只读订单板。它不会读取或注入游戏内存，也不需要您的 Warframe/DE 账户凭据（它使用自己的网站账户），因此不属于 DE 所关注的侵入性覆盖层范畴。实际交易在游戏内通过手动私聊进行，且不涉及真实货币交易（这与 Odealo 等 RMT 网站有本质区别）。在整个社区中被广泛默许并事实上得到认可。仅需注意一般的交易防范：验证价格，并在游戏内交易过程中警惕常见的诈骗套路。"
+    },
+    "tier": "essential",
+    "tierReason": "它是使用最广泛、最受推荐的 Warframe 交易资源，通过其 API 构成了第三方工具生态系统的支柱，并被新手和老玩家视为必备工具。",
+    "dataConfidence": "medium",
+    "pros": [
+      "事实上的标准交易市场，拥有迄今为止最庞大的活跃订单池",
+      "覆盖几乎所有可交易的物品类型，包括专用的 Riven 拍卖系统",
+      "免费使用，无真实货币交易",
+      "在线状态筛选可让您立即找到可以联系到的交易者",
+      "自动生成的私聊文本让联系交易者变得快速便捷",
+      "开放且有文档记录的 API 为丰富的配套工具和扩展生态系统提供支持"
+    ],
+    "cons": [
+      "仅列出订单——它不执行交易，因此您仍需在游戏内手动协调",
+      "显示的平均价格可能会过时或失真，买家经常以此为基础进行压价",
+      "无回应、挂机（AFK）或已售出的商品列表是常见的摩擦点",
+      "粉丝制作，与 Digital Extremes 无关联（无官方支持）",
+      "API 受 Cloudflare 保护且受速率限制（3 次请求/秒），这可能会阻碍更重型的工具运行",
+      "一些玩家反映网站私聊与游戏内聊天的链接并不总是有效"
+    ],
+    "youtube": [
+      {
+        "title": "How to SELL on Warframe MARKET (Step by Step)",
+        "url": "https://www.youtube.com/watch?v=k3SB4p5oklQ",
+        "channel": "YouTube"
+      },
+      {
+        "title": "How to use the Warframe market website",
+        "url": "https://www.youtube.com/watch?v=8yPpEV01KMk",
+        "channel": "YouTube"
+      },
+      {
+        "title": "Warframe - Simplified - Warframe.Market Basics",
+        "url": "https://www.youtube.com/watch?v=nZ_AubA0tEQ",
+        "channel": "YouTube"
+      },
+      {
+        "title": "How to Sell Items on Warframe Market | Fast & Easy Trading Guide",
+        "url": "https://www.youtube.com/watch?v=ri3EFWjxcgE",
+        "channel": "YouTube"
+      }
+    ],
+    "trustpilot": null,
+    "otherReviews": [
+      {
+        "source": "Chrome Web Store — 'WFM Price History' extension (augments warframe.market item pages)",
+        "url": "https://chromewebstore.google.com/detail/wfm-price-history/aejobloolfcoipjfbhflgnamhlnmhnlb",
+        "rating": "3.4/5",
+        "snippet": "Third-party extension that embeds a full price-analysis widget into every warframe.market item page; evidence of an active tooling ecosystem built around the site."
+      },
+      {
+        "source": "Chrome Web Store — 'Warframe (Build to Market)' extension",
+        "url": "https://chromewebstore.google.com/detail/warframe-build-to-market/plbngeoedhogdbghamflgcackmfabcjh",
+        "rating": null,
+        "snippet": "Extension embedding price history, forecasts, liquidity scores and trade alerts into warframe.market item pages (reported ~5/5)."
+      },
+      {
+        "source": "Warframe Official Forums — 3rd Party Trade Sites discussion",
+        "url": "https://forums.warframe.com/topic/908034-3rd-party-trade-sites/",
+        "snippet": "Community forum thread discussing third-party trade sites including warframe.market (page returned 403 to automated fetch; listed as a real discussion source)."
+      },
+      {
+        "source": "GitHub — pywmapi (Python API wrapper for warframe.market)",
+        "url": "https://github.com/leonardodalinky/pywmapi",
+        "snippet": "One of many open-source projects built on the warframe.market API, indicating broad developer adoption of the platform's data."
+      }
+    ],
+    "reddit": [
+      {
+        "title": "The true warframe.market experience",
+        "url": "https://www.reddit.com/r/Warframe/comments/mb1rzm/the_true_warframemarket_experience/",
+        "subreddit": "Warframe",
+        "snippet": "4501 upvotes · 154 comments",
+        "sentiment": "mixed"
+      },
+      {
+        "title": "Message from warframe.market to the entire community.",
+        "url": "https://www.reddit.com/r/Warframe/comments/vg0azc/message_from_warframemarket_to_the_entire/",
+        "subreddit": "Warframe",
+        "snippet": "3089 upvotes · 226 comments — Hi, This is a message from the [warframe.market](https://warframe.market) moderation team, please stop missusing our website for things DE does, we ar…",
+        "sentiment": "negative"
+      },
+      {
+        "title": "New Warframe Market easter egg (it has around 20% chance of showing when looking at Glaive Prime set statistics, art creator u/ibumuc )",
+        "url": "https://www.reddit.com/r/Warframe/comments/1ebsfnm/new_warframe_market_easter_egg_it_has_around_20/",
+        "subreddit": "Warframe",
+        "snippet": "2451 upvotes · 94 comments",
+        "sentiment": "mixed"
+      },
+      {
+        "title": "This is the actual warframe market experience.",
+        "url": "https://www.reddit.com/r/Warframe/comments/1m5tm4f/this_is_the_actual_warframe_market_experience/",
+        "subreddit": "Warframe",
+        "snippet": "2148 upvotes · 212 comments",
+        "sentiment": "mixed"
+      },
+      {
+        "title": "Average warframe market experience",
+        "url": "https://www.reddit.com/r/Warframe/comments/1e7c88t/average_warframe_market_experience/",
+        "subreddit": "Warframe",
+        "snippet": "2035 upvotes · 143 comments",
+        "sentiment": "mixed"
+      }
+    ]
+  },
+  "warframe-wiki": {
+    "slug": "warframe-wiki",
+    "oneLiner": "官方、社区运营的 WARFRAME 百科全书，在 Digital Extremes 的支持下离开 Fandom 后，现自主托管于 wiki.warframe.com。",
+    "overview": "WARFRAME Wiki 是针对 Digital Extremes 的免费游戏 Warframe 的全面、由社区维护的知识库，内容涵盖 warframes、武器、同伴、敌人、MOD、掉落表、系列任务、背景故事和游戏机制。在 2025 年，该 Wiki 从 Fandom 迁移到了自己的域名（wiki.warframe.com）；Digital Extremes 官方认可这一新网站，承担其托管费用，并提供 SEO 帮助和素材，而 Weird Gloop（RuneScape、OSRS 和 Minecraft Wiki 背后的组织）则协助提供后端支持。此举源于社区长期以来对 Fandom 繁重的广告、自动播放视频、弹窗和糟糕性能的不满。新网站继承了过去的内容和评论历史，并且是未来所有更新的记录地。",
+    "keyFeatures": [
+      "包含属性数据的 warframes、武器、同伴和敌人的详细页面",
+      "掉落表、任务奖励和资源位置数据",
+      "Modding、伤害和进度机制指南",
+      "系列任务攻略、秘典条目和背景故事文档",
+      "实时开放世界周期时钟（Cetus/Plains、Orb Vallis 等）",
+      "更新日志、活动报道和 Prime Resurgence 信息",
+      "无广告、高性能的自主托管 MediaWiki（电脑端和移动端）",
+      "评论区和社区编辑"
+    ],
+    "bestFor": "任何需要权威游戏数据的 Warframe 玩家（无论是新手还是老玩家）：配装属性、掉落来源、系列任务步骤或机制细节。",
+    "sentimentSummary": "社区对此次迁移的反应非常积极：玩家多年来一直抱怨 Fandom 侵入性的广告以及缓慢、有时甚至无法阅读的页面，而迁移到一个快速、无广告且获得 DE 认可的网站受到了广泛欢迎。Wiki 本身被认为是该游戏最必不可少的参考资料。主要遗留的问题是过渡期的混乱（过时的 Fandom 页面在搜索中仍然排名靠前），以及社区编辑的数据偶尔可能会滞后于补丁更新的常见问题。",
+    "safety": {
+      "rating": "safe",
+      "notes": "只读网页资源，无需访问游戏内存，无需登录您的 Warframe 账户，也无需客户端软件。获得 Digital Extremes 官方认可并资助其托管费用。无需担心 ToS、覆盖层或 RMT 问题。请注意，旧版的 Fandom Wiki（warframe.fandom.com）已不再是官方/维护的版本，可能会显示过时的信息。"
+    },
+    "tier": "essential",
+    "tierReason": "它是 Warframe 权威且获得官方认可的参考资料，在整个玩家群体中被广泛使用；无广告的自主托管和 DE 的支持使其成为获取游戏信息的默认首选站。",
+    "dataConfidence": "high",
+    "youtube": [
+      {
+        "title": "The Warframe Wiki",
+        "url": "https://www.youtube.com/watch?v=_RVw83ANn8Y",
+        "channel": "YouTube"
+      },
+      {
+        "title": "Warframe Basics With An Idiot: Warframe Wiki",
+        "url": "https://www.youtube.com/watch?v=5f6SE23s2N8"
+      },
+      {
+        "title": "The Warframe Wiki isn't the only way to find stuff",
+        "url": "https://www.youtube.com/watch?v=wuKMMcnPuEg"
+      }
+    ],
+    "trustpilot": null,
+    "otherReviews": [
+      {
+        "source": "WARFRAME Wiki official migration announcement (Twilight053 blog)",
+        "url": "https://warframe.fandom.com/wiki/User_blog:Twilight053/WARFRAME_Wiki_has_moved_home_from_Fandom_to_wiki.warframe.com!",
+        "snippet": "Details the October 2024 decision to self-host: no excessive ads, no scrolling videos, no intrusive pop-ups, and much better desktop/mobile performance; DE covers hosting and Weird Gloop assists backend."
+      },
+      {
+        "source": "Warframe Forums - There's a new Warframe Wiki? (Weird Gloop)",
+        "url": "https://forums.warframe.com/topic/1439871-theres-a-new-warframe-wiki-weird-gloop/",
+        "snippet": "Community thread confirming and discussing the new official wiki backed by Weird Gloop, the group behind the RuneScape/OSRS/Minecraft wikis."
+      },
+      {
+        "source": "Warframe Forums - Dedicated Wiki: Move out of Fandom",
+        "url": "https://forums.warframe.com/topic/1356478-dedicated-wiki-move-out-of-fandom/",
+        "snippet": "Long-running community request to leave Fandom over excessive ads and poor performance, preceding the official migration."
+      },
+      {
+        "source": "Warframe Forums - How would the community feel about the wiki migrating away from Fandom?",
+        "url": "https://forums.warframe.com/topic/1370989-how-would-the-warframe-community-feel-about-the-wiki-migrating-away-from-fandom/",
+        "snippet": "Discussion showing broad community support for moving off Fandom due to ad load and interface issues."
+      }
+    ],
+    "pros": [
+      "由 Digital Extremes 官方认可并资助",
+      "无广告，与 Fandom 相比，桌面端和移动端的性能大幅提升",
+      "全面、权威地覆盖了几乎所有的游戏内容",
+      "由 Weird Gloop 提供后端支持（拥有 RuneScape/OSRS/Minecraft 百科的开发经验）",
+      "保留了旧 wiki 的历史内容和评论历史",
+      "免费且只读，无需账号或软件"
+    ],
+    "cons": [
+      "过渡期：过时的 Fandom 镜像在搜索结果中仍名列前茅，容易误导用户",
+      "社区编辑的数据偶尔会滞后于新的版本补丁",
+      "信息量极大的页面可能会让新手玩家感到无所适从",
+      "作为 wiki，准确性取决于志愿编辑者"
+    ],
+    "reddit": [
+      {
+        "title": "The Warframe Wiki is officially moving from Fandom to wiki.warframe.com!",
+        "url": "https://www.reddit.com/r/Warframe/comments/1iemokz/the_warframe_wiki_is_officially_moving_from/",
+        "subreddit": "Warframe",
+        "snippet": "9981 upvotes · 523 comments — Hello fellow Tenno, I am making this post, in conjunction with DE (https://bsky.app/profile/warframe.com/post/3lh2qvcbj2c2g), to announce to you all t…",
+        "sentiment": "positive"
+      },
+      {
+        "title": "[META] New or Returning Player? Welcome (Back) to WARFRAME!",
+        "url": "https://www.reddit.com/r/Warframe/comments/asfcn4/meta_new_or_returning_player_welcome_back_to/",
+        "subreddit": "Warframe",
+        "snippet": "1804 upvotes · 4151 comments — [*\"For generations you've slept, no purpose, no call to wake you. But now, something has risen from the ruins of the Old war...\"*](https://www.warfram…",
+        "sentiment": "negative"
+      },
+      {
+        "title": "[META] New or Returning Player? Welcome (Back) to WARFRAME!",
+        "url": "https://www.reddit.com/r/Warframe/comments/cjmdoz/meta_new_or_returning_player_welcome_back_to/",
+        "subreddit": "Warframe",
+        "snippet": "1449 upvotes · 2500 comments — ###[*\"New strength creates new weakness. Pupil, can you balance these opposing forces?\"*](https://www.warframe.com/promocode?code=r/warframe) Warframe…",
+        "sentiment": "negative"
+      },
+      {
+        "title": "[META] New or Returning Player? Welcome (Back) to Warframe!",
+        "url": "https://www.reddit.com/r/Warframe/comments/qwyjau/meta_new_or_returning_player_welcome_back_to/",
+        "subreddit": "Warframe",
+        "snippet": "1170 upvotes · 735 comments — #**[“A span of ages passed. But to the eternal, it was swift as a sword stroke….”](https://www.warframe.com/promocode?code=r/warframe)** Warframe is a…",
+        "sentiment": "negative"
+      },
+      {
+        "title": "We now have an official item tier list on the WARFRAME Wiki!",
+        "url": "https://www.reddit.com/r/Warframe/comments/1s9cps7/we_now_have_an_official_item_tier_list_on_the/",
+        "subreddit": "Warframe",
+        "snippet": "1137 upvotes · 105 comments — It's been a year since WARFRAME Wiki migrated to DE's official domain. During which we've started multiple projects that continuously refined on the e…",
+        "sentiment": "positive"
+      }
+    ]
+  },
+  "overframe": {
+    "slug": "overframe",
+    "oneLiner": "一个大型社区驱动的 Warframe 配装数据库和配装模拟器，玩家可以在这里分享、投票和浏览每个战甲、武器和同伴的配装。",
+    "overview": "Overframe (overframe.gg) 是一个基于网页的 Warframe 配装平台，由 M.O.B.A. Network AB（MagicFind/MOBA 游戏网络的一部分）运营。它允许玩家使用先进的 mod/配装编辑器来创建、分享和浏览社区配装，并将赞同/反对票汇总为战甲、武器和同伴的强度排行（tier lists）和“热门配装”排名。该网站宣传其拥有庞大的内容库（达到数百万已提交配装和数千万投票的量级）。此外，还通过 Overwolf 分发了一个配套的桌面应用程序（一个基于 Electron 的覆盖层，具有配装编辑和游戏内军械库 Player Sync 功能）。",
+    "keyFeatures": [
+      "基于浏览器的先进战甲、武器和同伴配装/mod 编辑器",
+      "社区提交的配装，带有赞同/反对票排名",
+      "自动生成的强度排行和“最佳配装”排名",
+      "配装指南和装备/mod 参考数据",
+      "在庞大的配装库中进行搜索和浏览",
+      "可选的 Overwolf 桌面应用，具有游戏内覆盖层和 Player Sync 功能（自动导入您的军械库）",
+      "免费使用（含广告支持）"
+    ],
+    "bestFor": "适合想要快速获取任何战甲或武器的入门配装，并喜欢浏览各种社区变体配装的玩家，而非寻求保证最优主流（meta）配装的专家。",
+    "sentimentSummary": "Overframe 作为配装参考广为人知且被大量使用，但社区对它的评价褒贬不一。支持者看重其庞大的配装库、简便的配装模拟器和强度排行，认为这是快速获取可用配装的捷径。批评者则反复警告称，基于投票的排名会导致低质量、过时或娱乐性的配装名列前茅，热门创作者可能会抬高自己配装的排名，且配装应被视为灵感来源而非金科玉律。一句常见的评语是“作为起点很不错，但不要盲目照抄”。",
+    "safety": {
+      "rating": "safe",
+      "notes": "核心产品是一个可读写的网站，无需访问游戏内存，浏览也无需账号凭证。可选的配套程序运行在 Overwolf 上，这是一个经 DE 批准的覆盖层框架，不会读取 Warframe 的游戏内存（与基于注入的作弊软件不同）；其 Player Sync 功能通过 Warframe 的公开个人资料数据导入您的军械库，而不是读取内存。无 RMT。实际的主要风险是配装质量，而非账号安全。桌面应用包含广告支持。"
+    },
+    "tier": "recommended",
+    "tierReason": "作为最庞大且最受认可的 Warframe 配装资源之一，它拥有广泛的用户群和功能强大的免费配装模拟器，但因配装质量参差不齐且社区对其排名的信任度一般，故将其归为“推荐”而非“必不可少”。",
+    "dataConfidence": "medium",
+    "pros": [
+      "拥有几乎所有物品的海量社区配装库",
+      "免费、功能强大的网页配装编辑器，无需登录即可浏览",
+      "强度排行和排名为新手/回归玩家提供了快速指引",
+      "可选的 Overwolf 应用可同步您实际的游戏内军械库",
+      "历史悠久、知名度高，并有专业游戏网络支持的网站"
+    ],
+    "cons": [
+      "基于投票的排名往往会导致非最优、过时或娱乐性的配装名列前茅",
+      "热门创作者的配装无论质量如何，排名都可能被高估",
+      "配装更新频繁滞后于平衡性调整/版本更新",
+      "需要个人判断；社区不鼓励盲目照抄热门配装",
+      "含有广告支持（尤其是桌面应用）"
+    ],
+    "youtube": [
+      {
+        "title": "Warframe - Testing Top Rated Builds From Overframe",
+        "url": "https://www.youtube.com/watch?v=_5uClFD-lzg"
+      },
+      {
+        "title": "[WARFRAME] ARE THESE BUILDS FOR YOU?! | OVERFRAME Build Review | Build Tier List",
+        "url": "https://www.youtube.com/watch?v=xkTjSZoQtOQ"
+      },
+      {
+        "title": "Warframe: Overframe Is AWFUL (How NOT To Build)",
+        "url": "https://www.youtube.com/watch?v=vFvNLNxZ0_4"
+      }
+    ],
+    "otherReviews": [
+      {
+        "source": "Warframe Forums (General Discussion thread: \"why is overframe bad\")",
+        "url": "https://forums.warframe.com/topic/1420231-why-is-overframe-bad/",
+        "snippet": "Community discussion thread specifically debating criticisms of Overframe's build quality and ranking reliability.",
+        "rating": null
+      },
+      {
+        "source": "Overwolf App Store (Overframe desktop app)",
+        "url": "https://www.overwolf.com/app/overframe",
+        "snippet": "Official Overframe companion app listing shows ~47.8K downloads; Electron-based, free/ad-supported, with build editor and Player Sync. No star rating displayed.",
+        "rating": null
+      },
+      {
+        "source": "LevelUpTalk",
+        "url": "https://leveluptalk.com/news/overframe-builds-opinions-analysis/",
+        "snippet": "Analysis piece noting a polarized view: builds can be bad but also fun, upvote/downvote curation helps surface strong builds, but outdated builds and the need for personal tweaks are recurring drawbacks.",
+        "rating": null
+      }
+    ],
+    "trustpilot": null,
+    "reddit": [
+      {
+        "title": "I see why people hate overframe now, why the hell do I need 2M forma for one build?!",
+        "url": "https://www.reddit.com/r/Warframe/comments/1sh7pml/i_see_why_people_hate_overframe_now_why_the_hell/",
+        "subreddit": "Warframe",
+        "snippet": "4642 upvotes · 230 comments",
+        "sentiment": "mixed"
+      },
+      {
+        "title": "One of many reasons why the Overframe tier list is not to be trusted.",
+        "url": "https://www.reddit.com/r/Warframe/comments/1qotd7o/one_of_many_reasons_why_the_overframe_tier_list/",
+        "subreddit": "Warframe",
+        "snippet": "4481 upvotes · 652 comments — According to Overframe, Ember is one tier higher than Valkyr. Anyone who has ever played Valkyr knows that this is false in every conceivable way. Val…",
+        "sentiment": "mixed"
+      },
+      {
+        "title": "Thankyou, Ninjase, whoever you are.",
+        "url": "https://www.reddit.com/r/Warframe/comments/1rdfzsg/thankyou_ninjase_whoever_you_are/",
+        "subreddit": "Warframe",
+        "snippet": "2833 upvotes · 338 comments — Honestly reaped like a hundred of this guys builds on overframe, at this point he feels like this communities LetMeSoloHer, I'm mulching the content t…",
+        "sentiment": "mixed"
+      },
+      {
+        "title": "No one told me Caliban was THIS good",
+        "url": "https://www.reddit.com/r/Warframe/comments/1qmhyab/no_one_told_me_caliban_was_this_good/",
+        "subreddit": "Warframe",
+        "snippet": "846 upvotes · 425 comments — Hey everyone! I've recently jumped back into Warframe, been almost exclusively playing Gauss (speed and ramming into walls seem to tickle my brain) an…",
+        "sentiment": "negative"
+      },
+      {
+        "title": "Just a small reminder: overframe.gg Tier Lists are permanently outdated",
+        "url": "https://www.reddit.com/r/Warframe/comments/15f523s/just_a_small_reminder_overframegg_tier_lists_are/",
+        "subreddit": "Warframe",
+        "snippet": "755 upvotes · 195 comments — Just a small annoyance that I want to point out: Due to never resetting their votes, their tier lists, especially the Frame tier list, are completely …",
+        "sentiment": "mixed"
+      }
+    ]
+  },
+  "warframestat-api": {
+    "slug": "warframestat-api",
+    "oneLiner": "社区运营的 REST/WebSocket API，可将 Warframe 的官方 worldState 解析为整洁的 JSON，为大多数第三方追踪器和 Discord 机器人提供支持。",
+    "overview": "Warframe Status API (warframestat.us) 由 Warframe Community Developers (WFCD) 维护，是一项开源服务，可将 Warframe 的官方 worldState.php 数据源和静态游戏数据解析为易于访问、文档完善的 JSON API。它展示了跨 PC、PlayStation、Xbox 和 Switch 的实时世界状态（虚空裂缝、警报、入侵、突击、Nightwave、Cetus/Vallis 周期、Baro、虚空商人、活动）以及静态参考数据（物品、武器、mod、战甲、掉落表、紫卡数据），并同时提供 REST 端点和 WebSocket 数据流。它是很大一部分 Warframe 工具生态系统的实际数据支柱，其中包括 Warframe Hub、Cephalon Genesis Discord 机器人以及无数社区项目。",
+    "keyFeatures": [
+      "实时世界状态：虚空裂缝、警报、入侵、突击、Nightwave、Baro/虚空商人、昼夜周期、活动",
+      "静态游戏数据：物品、武器、战甲、mod、掉落表、紫卡数据",
+      "REST 端点 (api.warframestat.us/{platform}/{lang}) 以及用于实时更新的 WebSocket 数据流",
+      "多平台：PC、PlayStation、Xbox、Nintendo Switch",
+      "多语言本地化支持",
+      "OpenAPI 3 规范以及托管在 docs.warframestat.us 的文档",
+      "完全开源 (Apache-2.0)，NestJS/TypeScript，约 ~357 个单元测试，80%+ 覆盖率",
+      "无需 API key 或账号；免费公开访问"
+    ],
+    "bestFor": "需要可靠、结构化的 Warframe worldstate 和物品数据，而不想自己解析 DE 的原始 worldState.php 的开发者和工具/机器人构建者。",
+    "sentimentSummary": "在 Warframe 开发者中，该 API 被视为值得信赖的标准数据源，在官方论坛上被引用，并被许多社区项目、机器人以及类似 Warframe Hub 的网站复用。它是开源的，处于积极维护状态（400+ 个发布版本，最新为 3.2.x 系列），并通过社区 Patreon 资助托管。由于它是基础设施而非面向消费者的应用，因此直接的最终用户评价较少；开发者指出的主要实际问题是，当 DE 更改底层的 worldState 格式时，偶尔会出现数据延迟或缺失。",
+    "safety": {
+      "rating": "safe",
+      "notes": "只读的公共 Web API，无需登录、无需账号，且不访问游戏内存，因此不涉及 ToS 或账号风险。在 Apache-2.0 协议下完全开源，由享有盛誉的 Warframe Community Developers (WFCD) 维护。信誉检查网站将该域名标记为安全（无恶意软件/钓鱼）。它不读取游戏内存，也不在客户端上进行 overlay，因此不涉及 DE 的 overlay/反作弊顾虑。"
+    },
+    "tier": "recommended",
+    "tierReason": "对于开发者而言，它实际上是事实上的标准 worldstate API，并支撑着大部分社区工具生态系统，但它的受众是构建者而非普通玩家，因此在通用工具库中它被归类为“推荐”而非“必不可少”。",
+    "dataConfidence": "medium",
+    "pros": [
+      "免费、开源 (Apache-2.0)，无需 API key",
+      "全面的 worldstate 以及静态物品/mod/武器/掉落数据",
+      "支持 REST 和 WebSocket 访问，提供 OpenAPI 规范和托管文档",
+      "多平台和多语言",
+      "由 WFCD 积极维护，发布频繁且测试覆盖率高",
+      "为 Warframe Hub、Cephalon Genesis 以及许多社区工具提供支持，证明了其可靠性"
+    ],
+    "cons": [
+      "面向开发者，普通玩家无法直接使用",
+      "依赖于 DE 的 worldState 馈送，因此当 DE 更改格式时，数据可能会滞后或失效",
+      "托管由社区通过 Patreon 资助，因此在线率依赖于志愿者资源",
+      "无官方 SLA 或保证的速率/可用性",
+      "极少有面向消费者的评价，难以衡量用户舆情"
+    ],
+    "youtube": [],
+    "trustpilot": null,
+    "otherReviews": [
+      {
+        "source": "GitHub (WFCD/warframe-status repository)",
+        "url": "https://github.com/WFCD/warframe-status",
+        "rating": "61 stars / 13 forks",
+        "snippet": "Open-source NestJS app that parses worldState.php; Apache-2.0 licensed, 400+ releases, ~357 unit tests with 80%+ coverage, actively maintained by the Warframe Community Developers."
+      },
+      {
+        "source": "Warframe Forums (General Discussion)",
+        "url": "https://forums.warframe.com/topic/913537-trackers-data-and-all-the-worldstate-things/",
+        "rating": null,
+        "snippet": "Community thread referencing warframestat.us and WFCD tooling as the go-to worldstate data resource for building trackers and bots."
+      },
+      {
+        "source": "Warframe Community Developers (WFCD) GitHub org",
+        "url": "https://github.com/WFCD",
+        "rating": null,
+        "snippet": "The API is open source and feeds data for Cephalon Genesis, Warframe Hub, and numerous other community-maintained tools; supported by a public Discord and a Patreon covering hosting costs."
+      }
+    ],
+    "reddit": [
+      {
+        "title": "What Would You All Think about A Warframe Computer Information Program (like tenno.tools / hub.warframestat.us but not a website)?",
+        "url": "https://www.reddit.com/r/Warframe/comments/aadft1/what_would_you_all_think_about_a_warframe/",
+        "subreddit": "Warframe",
+        "snippet": "8 upvotes · 8 comments — I was looking around the [Warframe status and info API](https://docs.warframestat.us/) just to see what kind of information regarding Warframe would b…",
+        "sentiment": "positive"
+      },
+      {
+        "title": "If for some ungodly reason you like Microsoft PowerShell (like me), then I'm building a Warframe Status module for it.",
+        "url": "https://www.reddit.com/r/Warframe/comments/b17t15/if_for_some_ungodly_reason_you_like_microsoft/",
+        "subreddit": "Warframe",
+        "snippet": "5 upvotes · 9 comments — If you don't know what PowerShell is, it's a text shell and a suite of tools mainly used for admin work on Windows and Windows Server machines. And no…",
+        "sentiment": "positive"
+      }
+    ]
+  },
+  "wfinfo": {
+    "slug": "wfinfo",
+    "oneLiner": "一个免费、开源的 OCR overlay，可即时显示 Warframe 遗物奖励屏幕上每个物品的 Platinum 和 Ducat 价值，以便你选择最佳掉落物。",
+    "overview": "WFInfo 是一款 Windows 辅助应用程序（由 Warframe Community Developers / WFCD 开发），它会对裂缝奖励屏幕进行截图，通过 Google 的 Tesseract OCR 运行裁剪后的物品文本，并 overlay 显示每个奖励的 warframe.market Platinum 价格、Ducat 价值、销量、vaulted 状态以及你拥有的数量。它可以通过快捷键运行，也可以在 \"Auto\" 模式下运行（该模式会监视游戏的 EE.log 以获取奖励事件）。它基于截图，不读取游戏内存。此外还存在一个 Linux 社区移植版 wfinfo-ng。",
+    "keyFeatures": [
+      "通过 overlay 或侧边窗口对遗物奖励屏幕进行 OCR 读取（Tesseract）",
+      "从 warframe.market 获取的实时 Platinum 和 Ducat 价格、销量以及 vaulted 状态",
+      "通过 EE.log 检测奖励屏幕的 Auto 模式，以及可配置的快捷键激活",
+      "显示已拥有/已精通数量，以便你避免重复选择奖励",
+      "Snap-it 仓库扫描和 Master-it 批量精通标记",
+      "遗物和装备信息面板；将价格导出到剪贴板以发送至聊天频道",
+      "与 warframe.market 连接以管理单子"
+    ],
+    "bestFor": "想要即时知道四个奖励选项中哪一个最值 Platinum 或 Ducat，而无需切屏（Alt-Tab）到价格网站的刷遗物/裂缝玩家和交易者。",
+    "sentimentSummary": "WFInfo 是历史最悠久、最受推荐的 Warframe 刷图辅助工具之一，被广泛引用为首选的遗物奖励价格查询器，并在社区指南中经常与 AlecaFrame 等工具搭配使用。它最受争议的一点是安全性，但社区共识（得到了过去 DE 员工论坛声明的支持）是其仅限截图的方式是允许的。常见的抱怨是实际使用中的问题：OCR 偶尔会误读物品，并且它需要特定的显示/UI 设置（无边框窗口、开启物品标签）才能可靠工作。",
+    "safety": {
+      "rating": "caution",
+      "notes": "开源 (Apache-2.0) 且仅基于截图/OCR —— 它不读取或修改游戏内存，这是 DE 划分 overlay 合法性的关键区别。一位 DE 开发者（Aidan，现已退休）在官方论坛上表示，使用 WFInfo 不会导致封号，社区也广泛认为它是安全的。之所以被评为“警告”而非“安全”，仅仅是因为它是一个挂钩游戏窗口并读取调试日志的外部 overlay；它未获得官方认可/非官方工具，原则上状态可能会发生变化，因此请使用官方 WFCD 来源（GitHub/Nexus），并避免非官方的重新上传。"
+    },
+    "tier": "recommended",
+    "tierReason": "历史悠久、积极维护（49+ 个发布版本，最新为 v9.x），由受人尊敬的 WFCD 团队维护，并一直被推荐为标准的遗物奖励价格查询器。未被归入“必不可少”级别，仅仅是因为它服务于特定的开遗物/交易受众，而非所有玩家。",
+    "dataConfidence": "medium",
+    "pros": [
+      "免费且开源 (Apache-2.0)，由 Warframe Community Developers 维护",
+      "极大地节省时间 —— 奖励屏幕上即时显示 Plat/Ducat 价值，无需切屏",
+      "仅限截图/OCR，不接触游戏内存（安全的 overlay 类型）",
+      "Auto 模式以及完全可自定义的快捷键",
+      "显示 vaulted 状态和已拥有数量，以指导奖励和 Ducat 的选择",
+      "活跃的发布节奏以及 Linux 移植版 (wfinfo-ng)"
+    ],
+    "cons": [
+      "OCR 偶尔会误读物品名称，尤其是在设置错误的情况下",
+      "需要特定设置：无边框全屏并启用游戏内物品标签",
+      "专注于 Windows（Linux 用户需要单独的社区 wfinfo-ng 构建版本）",
+      "价格的准确度完全取决于 warframe.market 的数据与连接状态。",
+      "作为非官方的外部覆盖层，其安全性取决于社区/前员工的保证，而非 DE 的正式背书。"
+    ],
+    "youtube": [
+      {
+        "title": "Get the most from relic fissures with WFInfo | Warframe",
+        "url": "https://www.youtube.com/watch?v=WOsORVciUNw"
+      },
+      {
+        "title": "How to Farm Ducats in Warframe (AlecaFrame & WFinfo)",
+        "url": "https://www.youtube.com/watch?v=RjnUU6KQiRM"
+      }
+    ],
+    "trustpilot": null,
+    "otherReviews": [
+      {
+        "source": "GitHub (WFCD/WFinfo)",
+        "url": "https://github.com/WFCD/WFinfo",
+        "rating": "~300 stars, 49 releases, ~21 open issues",
+        "snippet": "Official repo: 'A fissure Companion App for Warframe.' Works by screenshotting the game window and passing cropped text to Tesseract OCR; Apache-2.0 licensed."
+      },
+      {
+        "source": "Warframe Forums",
+        "url": "https://forums.warframe.com/topic/1370493-is-wfinfo-safe-to-use-if-not-any-alternative-appwebsites/",
+        "rating": null,
+        "snippet": "Community thread 'Is WFinfo safe to use?' discussing legality of the overlay; consensus that its screenshot-only approach is permitted."
+      },
+      {
+        "source": "Nexus Mods",
+        "url": "https://www.nexusmods.com/warframe/mods/8",
+        "rating": null,
+        "snippet": "'WFInfo - Warframe Relic Reward OCR Companion' listed on Nexus Mods as an established community download."
+      }
+    ],
+    "reddit": [
+      {
+        "title": "\"Can you get banned for AlecaFrame?\" - The answer.",
+        "url": "https://www.reddit.com/r/Warframe/comments/1dyy2ql/can_you_get_banned_for_alecaframe_the_answer/",
+        "subreddit": "Warframe",
+        "snippet": "486 upvotes · 193 comments — Since I see this getting asked here over and over (and would honestly just like to have a easily linkable answer) i took some time and compiled the ac…",
+        "sentiment": "negative"
+      },
+      {
+        "title": "WFInfo 4.0.0 - Now Customizable",
+        "url": "https://www.reddit.com/r/Warframe/comments/7i1wat/wfinfo_400_now_customizable/",
+        "subreddit": "Warframe",
+        "snippet": "205 upvotes · 48 comments — #WFInfo 4.0.0 ___ WFInfo is a companion app for Warframe designed to give quick access to both **Platinum** and **Ducat** prices while running fissure…",
+        "sentiment": "positive"
+      },
+      {
+        "title": "WFInfo 6.0.0 (Beta) - Any resolution, any monitor, any UI scale!",
+        "url": "https://www.reddit.com/r/Warframe/comments/9g22ow/wfinfo_600_beta_any_resolution_any_monitor_any_ui/",
+        "subreddit": "Warframe",
+        "snippet": "145 upvotes · 75 comments — Hello again everyone! I'm working on a version of WFInfo which should allow most monitor setups, resolutions, and UI scales to work! It may even be co…",
+        "sentiment": "positive"
+      },
+      {
+        "title": "WFInfo 3.2.0 - In-Game Ducat &amp; Platinum Prices",
+        "url": "https://www.reddit.com/r/Warframe/comments/7avyh9/wfinfo_320_ingame_ducat_platinum_prices/",
+        "subreddit": "Warframe",
+        "snippet": "129 upvotes · 55 comments — #WFInfo 3.2.0 ___ WFInfo is a companion app for Warframe designed to give quick access to both **Platinum** and **Ducat** prices while running fissure…",
+        "sentiment": "positive"
+      },
+      {
+        "title": "WFInfo v8.0 - Support new UI",
+        "url": "https://www.reddit.com/r/Warframe/comments/bxv5jo/wfinfo_v80_support_new_ui/",
+        "subreddit": "Warframe",
+        "snippet": "98 upvotes · 31 comments — # [WFInfo v8.2.0](https://random-facades.github.io/WFInfo/) - August 3, 2019 &amp;#x200B; WFInfo is a companion app for Warframe, based on the origina…",
+        "sentiment": "negative"
+      }
+    ]
+  },
+  "warframe-hub": {
+    "slug": "warframe-hub",
+    "oneLiner": "一个由 Warframe Community Developers (WFCD) 开发的免费、开源 Web 仪表盘，用于显示实时 Warframe 世界状态数据——周期计时器、警报、入侵、裂缝等。",
+    "overview": "Warframe Hub (hub.warframestat.us) 是一个基于浏览器的辅助网站，它通过 WFCD Warframe Status API 解析 Warframe 的游戏内 WorldState（世界状态），并将其呈现在一个易读的仪表盘中。它最著名的是其一目了然的周期计时器（Cetus 昼夜、Orb Vallis 温暖/寒冷、Cambion Drift、Zariman、Duviri），以及警报、入侵、虚空裂缝、突击/执政官信息、Baro Ki'Teer、Nightwave、物品图鉴、Riven 数据和结合仪式目标。它是一个由志愿者作为兴趣项目维护的只读网页工具，在 Apache-2.0 协议下开源并部署在 Vercel 上。",
+    "keyFeatures": [
+      "开放世界（Cetus、Orb Vallis、Cambion Drift、Zariman、Duviri）的实时周期计时器",
+      "世界状态追踪：警报、入侵、虚空裂缝、突击/执政官猎杀",
+      "Baro Ki'Teer、Nightwave 及其他周期性活动追踪",
+      "物品图鉴 / 可搜索的物品数据库",
+      "Riven Mod 数据和结合仪式目标名录",
+      "由 WFCD Warframe Status API (warframestat.us) 提供支持",
+      "通过 Crowdin 提供多语言支持；深色主题和移动端应用视图",
+      "使用 Next.js/React/TypeScript 构建，开源 (Apache-2.0)"
+    ],
+    "bestFor": "适合那些想要一个快速、免安装的网页来查看开放世界周期计时器和当前世界状态活动，而无需打开游戏或应用程序的玩家。",
+    "sentimentSummary": "作为备受好评的 WFCD 生态系统的一部分，底层的 warframestat.us API 广受信任，并被许多下游 Warframe 工具使用。专门针对 Hub 前端的直接、可引用的社区讨论较少，且多年来断断续续有关于该网站宕机或用户寻找替代方案的报告。总体声誉是积极且值得信赖的，但与为其提供支持的 API 相比，该前端的直接受众相对较少且偏向小众。",
+    "safety": {
+      "rating": "safe",
+      "notes": "只读网页仪表盘，仅通过 WFCD API 消耗公开的世界状态数据。不读取游戏内存、无覆盖层、无需账号登录或凭据，且无真钱交易。在 Apache-2.0 协议下开源，因此不违反 DE 的规则，且无账号风险。"
+    },
+    "tier": "recommended",
+    "tierReason": "一个来自备受尊敬的 WFCD 团队的精美、安全、开源的世界状态/计时器仪表盘，对广大玩家非常有用；但并非“必不可少”，因为其大部分数据也可以在游戏内或通过基于同一 API 构建的许多其他工具获取，这使得它拥有稳固但非普及的直接用户群。",
+    "dataConfidence": "medium",
+    "youtube": [],
+    "otherReviews": [
+      {
+        "source": "GitHub (WFCD/warframe-hub)",
+        "url": "https://github.com/WFCD/warframe-hub",
+        "rating": "98 stars, 30 forks, ~1 open issue; Apache-2.0; active (latest release v2.6.2, 2026)",
+        "snippet": "Warframe hub strives to be the community center of the Warframe game. Maintained by the Warframe Community Developers as a volunteer passion project: 'This is not our fulltime job, and probably will never be.'"
+      },
+      {
+        "source": "Warframe Forums",
+        "url": "https://forums.warframe.com/topic/1332606-hubwarframestatus-alternative/",
+        "rating": null,
+        "snippet": "A forum thread titled 'hub.warframestat.us alternative?' indicates some users have at times looked for alternatives (e.g. during downtime), reflecting occasional reliability concerns with the front-end."
+      }
+    ],
+    "trustpilot": null,
+    "pros": [
+      "完全免费，无需安装，无需登录——可在任何浏览器中运行",
+      "开源 (Apache-2.0) 并由值得信赖的 WFCD 团队维护",
+      "所有开放世界的一目了然、整洁的周期计时器",
+      "广泛的世界状态覆盖（警报、裂缝、入侵、突击、Baro、Nightwave）",
+      "由许多其他 Warframe 工具所依赖的同一个可靠 API 提供支持",
+      "多语言支持和移动端友好视图"
+    ],
+    "cons": [
+      "历史上曾有关于该网站宕机或用户寻找替代方案的报告",
+      "只读信息仪表盘——无交易、配装或账号集成功能",
+      "大部分数据与游戏内界面以及其他由 WFCD 提供支持的工具重合",
+      "与其底层 API 相比，直接曝光度/讨论度相对较低",
+      "志愿者兴趣项目，保障支持有限"
+    ],
+    "reddit": [
+      {
+        "title": "Question about the Warframe Hub website",
+        "url": "https://www.reddit.com/r/Warframe/comments/1omiibl/question_about_the_warframe_hub_website/",
+        "subreddit": "Warframe",
+        "snippet": "2 upvotes · 3 comments — Last week i wanted to check the bounties on cetus and necralisk on the Warframe Hub but when i went to the website everything is stuck at loading. is …",
+        "sentiment": "mixed"
+      },
+      {
+        "title": "Warframe hub with ETA/EDA?",
+        "url": "https://www.reddit.com/r/Warframe/comments/1mu5uft/warframe_hub_with_etaeda/",
+        "subreddit": "Warframe",
+        "snippet": "0 upvotes · 6 comments — Correct me if I'm wrong, but ETA and EDA are weekly and the same for everyone, correct? Are there any warframe hub or location where I can see the cur…",
+        "sentiment": "mixed"
+      }
+    ]
+  },
+  "de-drop-tables": {
+    "slug": "de-drop-tables",
+    "oneLiner": "Digital Extremes 官方自动生成的 Warframe PC 版掉落率参考——所有第三方掉落工具赖以构建的权威事实来源。",
+    "overview": "Official Warframe Drop Tables 是 Digital Extremes 在 warframe.com/droptables（该链接会 302 重定向到 CMS 托管的静态 HTML 文件）上发布的单页 HTML 参考。它根据游戏内部数据自动生成，并列出了从任务、赏金、储藏箱、遗物和敌人中可获得的大多数物品的掉落概率，按轮次 (A/B/C) 和稀有度等级分类。DE 明确声明不保证完整性：该列表由自动化流程结合与更新（并非所有热修）挂钩的手动发布来维护，因此新添加的游戏系统可能会有延迟或缺失，并且数据提供时\"不作任何保证\"。它是 Warframe Wiki 和 drops.warframestat.us 等社区资源解析并以更易搜索的形式重新呈现的规范数据集。",
+    "keyFeatures": [
+      "直接来自 DE 内部游戏数据的官方第一手掉落数据",
+      "涵盖按星球分类的任务奖励、动态活动（Arbitrations、Void Storms、Duviri）、赏金奖励，以及物品/Mod/蓝图/资源掉落",
+      "显示每个轮次 (A/B/C) 的奖励以及稀有度等级（从常见到传说）",
+      "随游戏重大更新同步更新（截至研究时，最后更新于 2026 年 6 月 25 日）",
+      "免费、基于浏览器、只读——无需账号或安装",
+      "作为 Wiki、warframestat.us 以及大多数第三方掉落工具的上游数据源"
+    ],
+    "bestFor": "适合那些想要获取特定物品或任务的权威官方掉落率，并且愿意在庞大的原始 HTML 页面中通过 Ctrl+F 进行搜索，而不是使用更友好的社区前端的玩家和工具开发者。",
+    "sentimentSummary": "社区将其视为掉落率方面值得信赖的终极事实来源——所有主要的第三方工具都源自于它——但几乎没有人直接使用该页面，因为它是一个庞大、无法直接检索且需要使用 Ctrl+F 的 HTML 文档。大多数玩家更喜欢 Wiki 或 drops.warframestat.us，它们将相同的官方数据解析为可搜索的界面。主要的客观批评是，DE 自己的免责声明承认数据可能会滞后于热修，并且可能不涵盖全新的系统，因此它虽然权威，但并不总是能完美保持最新。",
+    "safety": {
+      "rating": "safe",
+      "notes": "由 Digital Extremes 托管的只读官方网页。无需登录、无需下载、无游戏内存访问、无覆盖层——零账号或服务条款 (ToS) 风险。这是 DE 自己的官方资源。"
+    },
+    "tier": "essential",
+    "tierReason": "它是所有 Warframe 掉落数据的唯一权威官方来源；整个掉落率工具生态系统（Wiki、warframestat.us）都是其下游。尽管大多数玩家是通过更友好的前端间接使用它，但它依然具有奠基性的地位。",
+    "dataConfidence": "medium",
+    "youtube": [
+      {
+        "title": "Find Every Warframe Drop Rate Easily In Seconds!",
+        "url": "https://www.youtube.com/watch?v=ndswqanI53Q",
+        "channel": ""
+      },
+      {
+        "title": "Warframe | How Drop Rotations Work | AABC Drop Rotations",
+        "url": "https://www.youtube.com/watch?v=Hq6ZCOIbzmY",
+        "channel": ""
+      }
+    ],
+    "trustpilot": null,
+    "otherReviews": [
+      {
+        "source": "Warframe Forums — Developer Workshop: Warframe Drop Rates Data",
+        "url": "https://forums.warframe.com/topic/809777-warframe-drop-rates-data/",
+        "snippet": "DE's official announcement thread introducing the public drop rates data, stating the list is maintained by an automated process combined with manual publishing with Updates (not all Hotfixes) and comes with no guarantees of comprehensiveness.",
+        "rating": null
+      },
+      {
+        "source": "Warframe Forums — 'How accurate is the Warframe Drop Table sheet?'",
+        "url": "https://forums.warframe.com/topic/1259613-how-accurate-is-the-warframe-drop-table-sheet/",
+        "snippet": "Community thread raising questions about how accurate and current the official/datamined drop table data is.",
+        "rating": null
+      },
+      {
+        "source": "WARFRAME Wiki — Drop Tables",
+        "url": "https://wiki.warframe.com/w/Drop_Tables",
+        "snippet": "Notes the official repo is not one-to-one with in-game drop tables and that the wiki re-parses and audits DE's data for readability; DE does not publicly name its drop tables.",
+        "rating": null
+      },
+      {
+        "source": "drops.warframestat.us",
+        "url": "https://drops.warframestat.us/",
+        "snippet": "Popular community tool that parses DE's official drop data into a searchable interface — widely recommended as the practical way to consume the official tables.",
+        "rating": null
+      }
+    ],
+    "pros": [
+      "直接来自 DE 内部游戏文件的权威官方数据",
+      "完全免费，无需安装，无需账号，无 ToS 风险",
+      "全面覆盖任务、赏金、遗物、储藏箱和敌人",
+      "为 Wiki 和 warframestat.us 提供支持的、值得信赖的上游数据源"
+    ],
+    "cons": [
+      "单个庞大的原始 HTML 页面，没有内置搜索或过滤功能——需要使用 Ctrl+F",
+      "仅在重大更新（而非每次热修复）时更新，因此数据可能会滞后于当前游戏状态",
+      "DE 明确声明不保证完整性；新系统可能会缺失",
+      "糟糕的用户体验（UX）意味着大多数玩家会使用社区前端，而不是直接使用官方页面"
+    ],
+    "reddit": [
+      {
+        "title": "AoE Is the Player Solution to the Problems That DE Makes",
+        "url": "https://www.reddit.com/r/Warframe/comments/wctn1j/aoe_is_the_player_solution_to_the_problems_that/",
+        "subreddit": "Warframe",
+        "snippet": "3290 upvotes · 675 comments — ​**Contents** * Background * Complaints * Cooperative Play Problems * Lack of Diversity * Lack of Interaction * Core Problems * Large Enemy Numbers * …",
+        "sentiment": "negative"
+      },
+      {
+        "title": "Dante Unbound - Dev Workshop: General Quality of Life",
+        "url": "https://www.reddit.com/r/Warframe/comments/1bdxzjj/dante_unbound_dev_workshop_general_quality_of_life/",
+        "subreddit": "Warframe",
+        "snippet": "1088 upvotes · 372 comments — Hello, Tenno! Devstream #177 noted a handful of quality-of-life changes for the upcoming update: Dante Unbound! This Dev Workshop aims to provide you …",
+        "sentiment": "negative"
+      },
+      {
+        "title": "Dev Workshop: Corpus Proxima &amp; The New Railjack",
+        "url": "https://www.reddit.com/r/Warframe/comments/m0oloi/dev_workshop_corpus_proxima_the_new_railjack/",
+        "subreddit": "Warframe",
+        "snippet": "1084 upvotes · 591 comments — [https://www.youtube.com/watch?v=cgK9nt2UHTY](https://www.youtube.com/watch?v=cgK9nt2UHTY) **Web Source:** [**https://www.warframe.com/news/dev-worksh…",
+        "sentiment": "negative"
+      },
+      {
+        "title": "Estimated Release: The Jovian Concord",
+        "url": "https://www.reddit.com/r/Warframe/comments/bm9dbq/estimated_release_the_jovian_concord/",
+        "subreddit": "Warframe",
+        "snippet": "1055 upvotes · 386 comments — Warframe: The Jovian Concord should arrive next week on PC. We are working hard to hit this date and will let you know progress as the days go on. The…",
+        "sentiment": "positive"
+      },
+      {
+        "title": "To Destiny Refugees: Some Shared Systems and their Differences",
+        "url": "https://www.reddit.com/r/Warframe/comments/1tkbbst/to_destiny_refugees_some_shared_systems_and_their/",
+        "subreddit": "Warframe",
+        "snippet": "1032 upvotes · 153 comments — To those of you coming in fresh off of the Destiny 2 \"maintenance mode\" announcement - Welcome! We're happy to have you and we're sorry your favorite …",
+        "sentiment": "negative"
+      }
+    ]
+  },
+  "alecaframe": {
+    "slug": "alecaframe",
+    "oneLiner": "一款功能丰富的 Overwolf 辅助悬浮窗，可追踪库存、评估遗物奖励价值，并一键在 Warframe.market 上列出商品。",
+    "overview": "AlecaFrame 是一款仅限 PC 端的 Warframe 第三方辅助应用，通过 Overwolf 平台分发。它读取您的本地游戏数据（通过 Overwolf 的库存/日志访问权限）来显示已解锁的 Warframe 和武器、包含缺失材料及其来源的铸造厂制作树、游戏内计时器、遗物奖励价值以及 Riven 工具。其最突出的功能是与 Warframe.market 的深度集成，让您只需一键即可将可交易的部件发布为商品列表，并查看遗物/套装的价值。它是免费的，但一些高级市场分析功能需要 Patreon 支持才能解锁。",
+    "keyFeatures": [
+      "库存管理器，显示已解锁的 Warframe、武器和 MOD",
+      "铸造厂/制作树视图，突出显示缺失的材料以及在哪里可以刷取它们",
+      "一键创建 Warframe.market 商品列表并自动关闭交易",
+      "游戏内遗物悬浮窗，在开启遗物时显示奖励的白金价值",
+      "Riven 浏览器/查找器/“捡漏工具”，具有属性和价格对比功能",
+      "遗物规划器，以最大化每个遗物的白金收益",
+      "套装管理器和交易统计/分析",
+      "游戏内计时器和掉落地点查询"
+    ],
+    "bestFor": "活跃进行交易、需要库存追踪、快速在 Warframe.market 上架商品以及进行遗物/Riven 估值的 PC 端 Warframe 玩家。",
+    "sentimentSummary": "社区舆论普遍积极：它在 Overwolf 商店的 75 个评分中获得了 4.4/5 的评分，多位 YouTuber 称其为 PC 玩家的“必备工具”，尤其赞扬了自动交易和遗物定价带来的便利体验。反复出现的反对声音则是 Warframe 论坛和 YouTube 上源源不断的“它安全吗 / 我会被封号吗？”的疑问，因为它是一个访问账号/库存数据的悬浮窗。开发者和社区普遍认为它是被允许的，因为 Overwolf 是在 DE 的第三方政策下处理数据访问的，不过一些玩家出于原则仍保持谨慎。",
+    "safety": {
+      "rating": "caution",
+      "notes": "作为 Overwolf 悬浮窗运行，读取您的本地 Warframe 库存/日志数据，并连接到您的 Warframe.market 账号（而非您的 DE 登录凭据）以发布商品。它不会修改游戏文件、注入游戏内存或自动执行游戏内操作。开发者表示数据存储在本地（只有匿名分析/可选统计数据会离开机器），并且通过 Overwolf 访问账号/库存是 DE 第三方应用程序政策中明确允许的；Overwolf 应用在发布前都会经过审核。它不是开源的，但分发时未经过混淆，因此可以检查代码。被评为“谨慎”而非“安全”，纯粹是因为它是一个涉及账号数据的内存/悬浮窗类工具——社区反复询问封号风险，且没有任何此类工具是 100% 无风险的——但目前没有封号证据，且 DE 对 Overwolf 应用的态度是允许的。"
+    },
+    "tier": "recommended",
+    "tierReason": "在 PC 交易者中被广泛采用，拥有 4.4/5 的 Overwolf 优秀评分，并多次被创作者称为必备工具；但由于仅限 PC/Overwolf、未开源以及带有悬浮窗工具常见的安全顾虑，使其未能被评为“必不可少”。",
+    "dataConfidence": "medium",
+    "youtube": [
+      {
+        "title": "AlecaFrame is a must have on PC Warframe!",
+        "url": "https://www.youtube.com/watch?v=OMRYBmf6G3w",
+        "channel": ""
+      },
+      {
+        "title": "THIS TOOL MAKES WARFRAME EASY! IS IT WORTH THE RISK? (ALECAFRAME)",
+        "url": "https://www.youtube.com/watch?v=qujIoFVIUSw",
+        "channel": ""
+      },
+      {
+        "title": "ALECA Frame Makes Relic Plat Farming EASY in Warframe 2025",
+        "url": "https://www.youtube.com/watch?v=vuoWbzlwVG8",
+        "channel": ""
+      },
+      {
+        "title": "This app UPGRADES Warframe's inventory and more! | AlecaFrame",
+        "url": "https://www.youtube.com/watch?v=2GgpBGwh6c4",
+        "channel": ""
+      },
+      {
+        "title": "DEVS CONTACTED ME REGARDING ALECAFRAME | IS IT SAFE TO USE NOW IN WARFRAME?",
+        "url": "https://www.youtube.com/watch?v=ZOIR6hZq6Lg",
+        "channel": ""
+      }
+    ],
+    "trustpilot": null,
+    "otherReviews": [
+      {
+        "source": "Overwolf App Store (official listing)",
+        "url": "https://www.overwolf.com/app/alejandro_cabrerizo-alecaframe",
+        "rating": "4.4/5 (75 ratings)",
+        "snippet": "Consistently praised as a must-have; users highlight automatic trade-closing and relic market pricing as game-changing QoL, with reviewers saying they 'couldn't imagine playing without it anymore.'"
+      },
+      {
+        "source": "Warframe Forums - General Discussion (official AlecaFrame thread)",
+        "url": "https://forums.warframe.com/topic/1367872-alecaframe/",
+        "rating": null,
+        "snippet": "Official developer discussion thread for the app on DE's forums."
+      },
+      {
+        "source": "Warframe Forums - 'Is alecaframe safe?'",
+        "url": "https://forums.warframe.com/topic/1384482-is-alecaframe-safe/",
+        "rating": null,
+        "snippet": "Representative of recurring community safety/ban-risk questions; consensus leans that it is allowed because Overwolf handles account data under DE's Third Party Policy."
+      },
+      {
+        "source": "AlecaFrame Docs / FAQ",
+        "url": "https://docs.alecaframe.com/faq",
+        "rating": null,
+        "snippet": "Developer FAQ: does not modify game files or perform in-game actions, data stored locally, code is inspectable (unobfuscated), account access handled via Overwolf per DE policy."
+      }
+    ],
+    "pros": [
+      "免费使用，仅有高级市场分析功能需要 Patreon 支持",
+      "与 Warframe.market 深度集成，支持一键上架和自动关闭交易",
+      "极佳的交易者 QoL：遗物价值悬浮窗、遗物规划器、Riven 工具",
+      "铸造厂制作树精确显示您缺失的材料以及在哪里可以刷取它们",
+      "强劲且持续的积极反响（Overwolf 评分 4.4/5，创作者推荐）",
+      "数据存储在本地；尽管未开源，但代码是可检查的"
+    ],
+    "cons": [
+      "仅限 PC，且需要安装 Overwolf 平台",
+      "悬浮窗/账号数据工具的性质导致社区中反复出现对封号的焦虑",
+      "未开源",
+      "部分功能锁定在 Patreon 支持者层级之后",
+      "依赖于 Warframe.market 账号连接"
+    ],
+    "reddit": [
+      {
+        "title": "The number of people ignoring basic trading etiquette recently is getting out of control.",
+        "url": "https://www.reddit.com/r/Warframe/comments/1l3dei2/the_number_of_people_ignoring_basic_trading/",
+        "subreddit": "Warframe",
+        "snippet": "2549 upvotes · 628 comments — Title. For the longest time, the generally agreed method of approaching other players for trades, has been to use Wf.market's Copy &amp; Paste greetin…",
+        "sentiment": "mixed"
+      },
+      {
+        "title": "Alecaframe in shambles (this is actually huge)",
+        "url": "https://www.reddit.com/r/Warframe/comments/1fk0i48/alecaframe_in_shambles_this_is_actually_huge/",
+        "subreddit": "Warframe",
+        "snippet": "2355 upvotes · 112 comments — (this is an easy joke I know it does way more)",
+        "sentiment": "mixed"
+      },
+      {
+        "title": "What if AlecaFrame was native to Warframe",
+        "url": "https://www.reddit.com/r/Warframe/comments/1qrizp1/what_if_alecaframe_was_native_to_warframe/",
+        "subreddit": "Warframe",
+        "snippet": "2353 upvotes · 259 comments — I like to do visuals on ideias that i would like to see in games, in the middle of my concept idea for a new Codex mechanic for Warframe i thought \"Wh…",
+        "sentiment": "mixed"
+      },
+      {
+        "title": "Quick warning to all of you using AlecaFrame (Or thinking about dowloading it)",
+        "url": "https://www.reddit.com/r/Warframe/comments/1rp21jq/quick_warning_to_all_of_you_using_alecaframe_or/",
+        "subreddit": "Warframe",
+        "snippet": "1335 upvotes · 450 comments — The short answer is that yes, most likely if you use AlecaFrame you will be fine. But I see there are some people saying stuff like \"I've never seen a…",
+        "sentiment": "negative"
+      },
+      {
+        "title": "Looks like AlecaFrame might have spoiled new weapons again...",
+        "url": "https://www.reddit.com/r/Warframe/comments/1k1t0o7/looks_like_alecaframe_might_have_spoiled_new/",
+        "subreddit": "Warframe",
+        "snippet": "627 upvotes · 138 comments",
+        "sentiment": "mixed"
+      }
+    ]
+  },
+  "semlar-rivencalc": {
+    "slug": "semlar-rivencalc",
+    "oneLiner": "一个免费的网页计算器，可根据武器类型、倾向性和等级，显示任何 Warframe Riven MOD 的可能属性范围（正面属性和负面属性）。",
+    "overview": "Semlar's Riven Calculator (semlar.com/rivencalc) 是一款基于浏览器的 Warframe 玩家工具，用于计算 Riven MOD 可能随出的最大/最小属性范围。每个 Riven 属性都有一个大约 0.9x 到 1.1x（+/-10%）的隐藏随机乘数，该计算器将这种偏差连同武器的倾向性、正面/负面属性数量以及 MOD 等级转化为具体数值。它是 Semlar 更广泛的 Riven 工具套件的一部分，该套件还包括 Riven Price Guide、Riven Finder 和 Riven Comparator，这些工具实际上已成为 Riven 交易和估值的社区标准。",
+    "keyFeatures": [
+      "根据 +/-10% 的数值偏差，计算给定 Riven 的可能属性范围（最大/最小）",
+      "考虑了武器倾向性，该倾向性决定了每个武器的 Riven 强度缩放",
+      "支持选择正面属性的数量（2 个或 3 个）以及是否存在负面属性",
+      "按 MOD 等级（等级 0 到等级 8）进行过滤，以显示属性在升级时的缩放情况",
+      "涵盖不同的武器/Riven 类型（步枪、手枪、近战等）及其基础属性值",
+      "免费、基于浏览器、无需账号或登录",
+      "Semlar riven 整合工具集（价格指南、查找器、对比器）的一部分"
+    ],
+    "bestFor": "适合正在评估、洗属性或为 riven mods 定价，并希望在交易或投入 kuva 进行 re-rolls 之前了解 riven 属性可能达到的最好和最坏情况数值的 Warframe 玩家。",
+    "sentimentSummary": "Semlar 的工具在 Warframe riven 交易社区中历史悠久且被广泛引用，经常在 Warframe 论坛和 wiki 上被引用为查询 riven 属性范围的首选资源。在此次研究期间，未能检索到可直接引用的社区帖子（搜索代理无法访问 Reddit），因此社区态度是从该工具在论坛/wiki 讨论中的持续存在中推断出来的，而非逐字记录。该计算器的准确性没有出现明显的批评；社区讨论的主要细节是其使用的精确 +/-10% roll 模型。",
+    "safety": {
+      "rating": "safe",
+      "notes": "完全基于网页的只读计算器。不读取游戏内存、无悬浮窗（overlay）、无需账号登录，且不涉及真钱交易。它仅对用户输入的数据进行数学计算，因此不带来任何 Warframe ToS 或账号安全风险。"
+    },
+    "tier": "recommended",
+    "tierReason": "Semlar 的 riven 工具是 Warframe riven 交易领域的行业标准，并被广泛使用和引用，但 rivencalc 页面具体来说是一个针对性很强的实用工具（属性范围），而不是每个人都必不可少的工具，因此将其归为“推荐”而非“必备”。",
+    "dataConfidence": "medium",
+    "pros": [
+      "免费且即时，无需注册",
+      "直接回答了 riven 的核心问题：这个属性洗出的最好/最坏数值是多少？",
+      "在一处处理 disposition、rank 以及 buff/curse 数量",
+      "由知名且长期运行的 Warframe 工具套件提供支持",
+      "无安全或 ToS 风险"
+    ],
+    "cons": [
+      "用途较为小众，仅对进行 riven 交易或追求极致属性的玩家有用",
+      "界面偏向实用主义，对新手来说可能不够直观",
+      "依赖于社区建模的 +/-10% roll 公式，部分玩家对此存在争议",
+      "准确性取决于 Semlar 能否随着游戏更新及时同步 disposition/基础属性数据"
+    ],
+    "youtube": [],
+    "otherReviews": [
+      {
+        "source": "Warframe Forums - General Discussion thread referencing Semlar's riven calculator",
+        "url": "https://forums.warframe.com/topic/1363335-riven-stat-range-alternatives-and-about-semlar/",
+        "snippet": "Community thread discussing riven stat ranges and Semlar's calculator, including the +/-10% roll model the tool uses.",
+        "rating": null
+      }
+    ],
+    "trustpilot": null,
+    "reddit": [
+      {
+        "title": "The Crippling Issues with the Riven System, Melee 3.0, and Status Changes",
+        "url": "https://www.reddit.com/r/Warframe/comments/gvbz6h/the_crippling_issues_with_the_riven_system_melee/",
+        "subreddit": "Warframe",
+        "snippet": "2097 upvotes · 517 comments — ***Introduction*** For those of you who’ve heard of me - you know who I am. For those of you who don't know, our bot has been used by several hundred …",
+        "sentiment": "negative"
+      },
+      {
+        "title": "Best Melee Weapon in each Category",
+        "url": "https://www.reddit.com/r/Warframe/comments/efuqey/best_melee_weapon_in_each_category/",
+        "subreddit": "Warframe",
+        "snippet": "88 upvotes · 104 comments — I made a list of the top best melee weapon in each category ***without*** and ***with*** respect to their rivens at max potential. (I have also includ…",
+        "sentiment": "positive"
+      },
+      {
+        "title": "Warframe Weekly Riven Thread | Share Your Riven Mods!",
+        "url": "https://www.reddit.com/r/Warframe/comments/96ip4m/warframe_weekly_riven_thread_share_your_riven_mods/",
+        "subreddit": "Warframe",
+        "snippet": "36 upvotes · 181 comments — ***This thread for everything about rivens; builds, rolls, questions, etc.*** Resources: * [Riven challenge guide](https://www.reddit.com/r/Warframe/w…",
+        "sentiment": "mixed"
+      },
+      {
+        "title": "Warframe Weekly Riven Thread | Share Your Rivens!",
+        "url": "https://www.reddit.com/r/Warframe/comments/9c3yjd/warframe_weekly_riven_thread_share_your_rivens/",
+        "subreddit": "Warframe",
+        "snippet": "33 upvotes · 107 comments — ***This thread for everything about rivens; builds, rolls, questions, etc.*** Resources: * [Riven challenge guide](https://www.reddit.com/r/Warframe/w…",
+        "sentiment": "mixed"
+      },
+      {
+        "title": "Warframe Weekly Riven Thread | Share Your Rivens!",
+        "url": "https://www.reddit.com/r/Warframe/comments/9rv4l5/warframe_weekly_riven_thread_share_your_rivens/",
+        "subreddit": "Warframe",
+        "snippet": "28 upvotes · 114 comments — ***This thread for everything about rivens; builds, rolls, questions, etc.*** Resources: * [Riven challenge guide](https://www.reddit.com/r/Warframe/w…",
+        "sentiment": "mixed"
+      }
+    ]
+  },
+  "fandom-wiki": {
+    "slug": "fandom-wiki",
+    "oneLiner": "曾是 Fandom 上的社区 Warframe 百科全书，在 wiki 迁移到 DE 托管的 wiki.warframe.com 后，现已废弃。",
+    "overview": "Fandom 上的 WARFRAME Wiki (warframe.fandom.com) 多年来一直是 Warframe 最完整的社区维护数据库，涵盖了 Warframes、weapons、mods、战斗机制、掉落数据、任务和背景故事（lore）。2025年1月31日，在 Digital Extremes 的全力支持以及 Weird Gloop（RuneScape/OSRS wikis 背后的团队）的后台协助下，志愿编辑社区将 wiki 迁移到了官方 DE 托管的 wiki.warframe.com。Digital Extremes 不再认可 Fandom 网站为官方 wiki。Fandom 版本仍然存在，但实际上已是一个被遗弃、不再维护的快照，随着每次游戏更新而变得越来越过时。",
+    "keyFeatures": [
+      "涵盖 Warframes、weapons、mods、Archwings 和 Companions 的全面文章",
+      "物品属性表、伤害/异常状态机制以及配装（build）分析",
+      "掉落表、relic/奖励位置以及刷取（farming）指南",
+      "任务攻略以及详尽的 lore/故事文档",
+      "社区撰写的单体 frame 和单体 weapon 指南",
+      "MediaWiki 搜索、分类和交叉链接的参考页面",
+      "免费、基于浏览器、无需账号即可阅读"
+    ],
+    "bestFor": "历史上是任何 Warframe 玩家的首选参考资料；如今仅在 wiki.warframe.com 无法访问时作为备用选择，因为官方网站才是目前活跃维护的继承者。",
+    "sentimentSummary": "wiki 内容本身被公认为必不可少的，也是现存最好的游戏 wiki 之一。然而，社区对 Fandom 平台本身的态度非常消极——多年来，人们对占用半个屏幕的侵入性广告、自动播放的视频、弹窗、糟糕的电脑/手机端性能感到沮丧，此外 Fandom 还强推编辑们甚至 DE 都讨厌的改动。这些积怨促使整个编辑团队在 2025 年初集体从 Fandom 迁移到了 wiki.warframe.com。现在的共识是：知识很棒，但请使用官方 wiki，而不是 Fandom 镜像。",
+    "safety": {
+      "rating": "safe",
+      "notes": "只读的网页版百科全书；不涉及账号、登录、游戏内存访问或悬浮窗（overlay），因此没有账号或 ToS 风险。主要缺点是 Fandom 沉重的广告负担和追踪，这降低了性能并影响了隐私，但不属于游戏安全问题。不涉及 RMT 或凭据处理。"
+    },
+    "tier": "avoid",
+    "tierReason": "其底层内容属于“必备”级别，但这个特定的 Fandom 实例已被废弃且不再维护——整个编辑社区和 Digital Extremes 的认可已于 2025 年 1 月 31 日转移到了 wiki.warframe.com。Fandom 页面现在只是一个充斥着大量广告的陈旧快照，因此应避免使用它，转而使用官方 wiki。",
+    "dataConfidence": "medium",
+    "youtube": [],
+    "trustpilot": null,
+    "otherReviews": [
+      {
+        "source": "Warframe Forums (General Discussion) — community thread on migrating away from Fandom",
+        "url": "https://forums.warframe.com/topic/1370989-how-would-the-warframe-community-feel-about-the-wiki-migrating-away-from-fandom/",
+        "rating": null,
+        "snippet": "Community discussion overwhelmingly supporting a move off Fandom, citing excessive ads, poor performance, and Fandom implementing unwanted changes."
+      },
+      {
+        "source": "User blog: 'WARFRAME Wiki has moved home from Fandom to wiki.warframe.com!' (Twilight053, on the Fandom wiki itself)",
+        "url": "https://warframe.fandom.com/wiki/User_blog:Twilight053/WARFRAME_Wiki_has_moved_home_from_Fandom_to_wiki.warframe.com!",
+        "rating": null,
+        "snippet": "Announcement that the wiki relocated to DE-hosted wiki.warframe.com with Weird Gloop backend support, ending years of frustration with Fandom's ads and performance."
+      },
+      {
+        "source": "WARFRAME Wiki:Official Wiki (wiki.warframe.com)",
+        "url": "https://wiki.warframe.com/w/WARFRAME_Wiki:Official_Wiki",
+        "rating": null,
+        "snippet": "Since January 31, 2025, wiki.warframe.com is the official English wiki; Digital Extremes no longer endorses Fandom as the official wiki."
+      }
+    ],
+    "pros": [
+      "深度、高质量、社区维护的内容，几乎涵盖了每一个游戏系统",
+      "免费，可在任何浏览器中阅读，无需账号",
+      "强大的搜索、分类和交叉链接功能（MediaWiki）",
+      "累积了十多年的指南、lore 和掉落数据"
+    ],
+    "cons": [
+      "已废弃——自 2025 年 1 月 31 日迁移以来，不再是官方 wiki，也不再活跃维护",
+      "与 wiki.warframe.com 相比，内容变得越来越过时",
+      "沉重、侵入性的广告、自动播放的视频和弹窗",
+      "电脑端和移动端的性能比继承者网站更差",
+      "Digital Extremes 和编辑社区都已弃用它"
+    ],
+    "reddit": [
+      {
+        "title": "The Warframe Wiki is officially moving from Fandom to wiki.warframe.com!",
+        "url": "https://www.reddit.com/r/Warframe/comments/1iemokz/the_warframe_wiki_is_officially_moving_from/",
+        "subreddit": "Warframe",
+        "snippet": "9979 upvotes · 523 comments — Hello fellow Tenno, I am making this post, in conjunction with DE (https://bsky.app/profile/warframe.com/post/3lh2qvcbj2c2g), to announce to you all t…",
+        "sentiment": "positive"
+      },
+      {
+        "title": "Warframe Wiki",
+        "url": "https://www.reddit.com/r/Warframe/comments/8y28j4/warframe_wiki/",
+        "subreddit": "Warframe",
+        "snippet": "4255 upvotes · 504 comments — **Edit:** My most honest thanks to everyone participating in this first and upfront discussion bringing up a myriad of topics and of course showing su…",
+        "sentiment": "positive"
+      },
+      {
+        "title": "\"Enhanced\" Graphics Engine reduces Eclipse damage by 83%",
+        "url": "https://www.reddit.com/r/Warframe/comments/j7gim4/enhanced_graphics_engine_reduces_eclipse_damage/",
+        "subreddit": "Warframe",
+        "snippet": "3119 upvotes · 229 comments — I spent an hour testing the effective damage buff that mirage gets from her Eclipse buff in the orb vallis during an entire cycle while standing still…",
+        "sentiment": "negative"
+      },
+      {
+        "title": "Every time I see Fandom link appearing higher that the normal wiki I wanna smash my screen with a domestic drone",
+        "url": "https://www.reddit.com/r/Warframe/comments/1qcq1a8/every_time_i_see_fandom_link_appearing_higher/",
+        "subreddit": "Warframe",
+        "snippet": "3049 upvotes · 251 comments — I had started playing when the official wiki has already been launched, around half a year ago, and still, it pisses me off so much when I see this so…",
+        "sentiment": "mixed"
+      },
+      {
+        "title": "Stance Forma is Warframe in 2020",
+        "url": "https://www.reddit.com/r/Warframe/comments/fwjfxy/stance_forma_is_warframe_in_2020/",
+        "subreddit": "Warframe",
+        "snippet": "2791 upvotes · 523 comments — I want to preface my post by noting that I really want to give all my love to the Warframe team in this unprecedented time of personal and collective …",
+        "sentiment": "negative"
+      }
+    ]
+  },
+  "wfcd-drop-data": {
+    "slug": "wfcd-drop-data",
+    "oneLiner": "一个由社区维护、机器可读的 Warframe 官方掉落表 JSON 镜像，为该生态系统中的许多第三方工具提供支持。",
+    "overview": "WFCD/warframe-drop-data 是由 Warframe Community Developers (WFCD) 发起的一个开源项目，它将 Digital Extremes 官方公布的掉落率数据重新格式化为易于解析的 JSON。它通过抓取 DE 的官方掉落数据网站（无数据挖掘或内存读取）来获取数据，并在 DE 发布更新时自动重新生成。这些数据以静态 JSON 文件的形式公开，可通过普通 HTTP 访问（可像 API 一样使用），并可通过 drops.warframestat.us 上的实验性可搜索网页 UI 进行访问。它为更广泛的 WarframeStatus API 以及许多下游社区工具、Discord 机器人和网站提供了底层支持。",
+    "keyFeatures": [
+      "JSON 格式的完整掉落表：任务奖励（按星球/轮次）、relic 内容、mod/blueprint 敌人掉落、赏金奖励（Cetus/Solaris/Zariman）、sortie 奖励、syndicate 库存以及临时奖励",
+      "单个整合的 all.json 以及特定类别的文件（blueprintLocations、relics、missionRewards、keyRewards、modLocations 等）",
+      "当 Digital Extremes 更新其官方掉落数据网站时自动重新生成",
+      "可通过普通 HTTP 请求访问，实际上是一个无需身份验证或密钥的免费静态 API",
+      "在 drops.warframestat.us 上的实验性可搜索网页 UI，以及版本差异/对比视图",
+      "数据源自 DE 的官方发布数据（无数据挖掘，无游戏内存读取）",
+      "采用 MIT 许可且开源；为 WarframeStatus API 以及 Genesis 和 Warframe Hub 等社区工具提供数据支持"
+    ],
+    "bestFor": "需要以程序化、机器可读方式获取 Warframe 掉落率和物品位置的开发者和工具构建者；玩家也可以通过可搜索的 drops.warframestat.us UI 来使用它。",
+    "sentimentSummary": "基本上没有直接的消费者评价讨论（没有 Reddit 帖子、YouTube 评测或 Trustpilot 页面），因为这是后端基础设施，而不是面向最终用户的应用程序。在开发者社区中，WFCD 数据资源被视为事实上的信任标准，为 WarframeStatus API 以及众多下游机器人和网站提供支持。它的声誉建立在对 DE 自身官方数据进行准确、自动更新的重新格式化上，而不是建立在炒作或用户推荐上。",
+    "safety": {
+      "rating": "safe",
+      "notes": "只读、仅限网页/数据的资源。它抓取并重新格式化 Digital Extremes 官方发布的掉落表（无数据挖掘、无游戏内存读取、无悬浮窗、无需账号凭据或登录）。采用 MIT 许可且开源。数据带有标准的免责声明：它是自动生成的，不提供任何保证，并且在游戏更新后可能会有延迟，直到 DE 重新发布数据。无需担心账号安全或服务条款（ToS）问题。"
+    },
+    "tier": "recommended",
+    "tierReason": "在整个第三方生态系统中，它被广泛依赖为 Warframe 掉落数据的权威机器可读来源，但它是一个开发者/数据资源，而不是面向主流玩家的应用程序，因此它被归类为“推荐”而非“必备”。",
+    "dataConfidence": "medium",
+    "pros": [
+      "直接源自 DE 的官方掉落数据，因此具有权威性，且不涉及数据挖掘",
+      "当 DE 发布更改时自动更新",
+      "免费、开源（MIT），无需 API 密钥或身份验证",
+      "全面覆盖任务、遗物、赏金、突击、MOD 和集团",
+      "被其他社区工具广泛采用作为基础，表明了其可信度和稳定性",
+      "同时提供原始 JSON 和人类可搜索的网页 UI"
+    ],
+    "cons": [
+      "并非带有查询参数的真正 REST API —— 它是通过 HTTP 提供的静态 JSON 文件，因此使用者必须下载并进行解析",
+      "数据的时效性/准确性完全取决于 DE 自身发布的表格，并且在游戏更新后可能会出现滞后",
+      "专注于 PC 端的数据",
+      "网页 UI 明确标注为实验性",
+      "受众较小：主要对开发者有用，不适合休闲玩家",
+      "较小的 GitHub 关注度（约 150 个 Star），反映了其作为基础设施/幕后角色的定位"
+    ],
+    "youtube": [],
+    "trustpilot": null,
+    "otherReviews": [
+      {
+        "source": "GitHub (WFCD/warframe-drop-data repository)",
+        "url": "https://github.com/WFCD/warframe-drop-data",
+        "snippet": "Official repo, MIT-licensed, roughly 150+ stars and 25+ forks; described as 'Warframe Drop Data in an easier to parse format,' parsed from DE's official drop data with no data mining.",
+        "rating": null
+      },
+      {
+        "source": "Warframe Developers Forum (DE official drop rates data thread)",
+        "url": "https://forums.warframe.com/topic/809777-warframe-drop-rates-data/",
+        "snippet": "Digital Extremes' official Developer Workshop thread announcing the published drop-rate data that WFCD/warframe-drop-data reformats.",
+        "rating": null
+      },
+      {
+        "source": "drops.warframestat.us (searchable web UI)",
+        "url": "https://drops.warframestat.us/",
+        "snippet": "Experimental searchable front-end for the dataset, with a version compare/diff view at drops.warframestat.us/diff.html.",
+        "rating": null
+      }
+    ]
+  },
+  "drops-warframestat": {
+    "slug": "drops-warframestat",
+    "oneLiner": "一个对开发者友好、可搜索的 Digital Extremes 官方 Warframe 掉落表镜像，由 Warframe Community Developers 维护。",
+    "overview": "drops.warframestat.us 是一个 WFCD (Warframe Community Developers) 项目，它获取 Digital Extremes 的官方掉落数据网站，并以更易于搜索、更易于解析的格式重新发布。它提供了一个实验性的可搜索网页 UI，以及静态 JSON/HTTP 端点（可像非官方 API 一样使用），内容涵盖任务奖励、遗物内容、MOD 和蓝图表、赏金奖励（Cetus/Solaris/Zariman）、突击和集团奖励等。数据镜像了 DE 的官方 PC 掉落表，并在 DE 的源数据更新时同步更新；版本差异/对比页面可追踪不同版本之间的变化。它在 GitHub 上以 WFCD/warframe-drop-data 开源（MIT）。",
+    "keyFeatures": [
+      "基于完整官方 DE 掉落表数据集的可搜索网页 UI",
+      "可作为非官方 API 使用的机器可读 JSON 端点（无需身份验证）",
+      "直接源自 DE 的官方掉落数据，而非数据挖掘",
+      "覆盖任务、遗物、MOD、蓝图、赏金、突击、集团",
+      "用于对比不同版本之间掉落表变化的“版本差异”页面",
+      "当 DE 的官方数据发生变化时自动更新",
+      "开源（MIT），属于更广泛的 warframestat.us / WFCD 生态系统的一部分"
+    ],
+    "bestFor": "构建 Warframe 工具/机器人的开发者，以及想要查询或通过程序化方式检索官方掉落率和刷取位置的数据型玩家。",
+    "sentimentSummary": "直接的最终用户讨论很少，因为这主要是一个数据/API 资源，而不是面向消费者的应用程序；它在开发者社区中最广为人知，WFCD 的数据项目被广泛依赖，用于为下游工具（Warframe Hub、Genesis 机器人和许多社区应用）提供支持。尽管其原始 UI 偏向实用主义，且大多数玩家是通过精美的第三方工具间接接触到其数据，而不是亲自访问该网站，但它作为 DE 掉落表的准确、官方来源镜像而备受推崇。",
+    "pros": [
+      "数据直接来自 Digital Extremes 的官方掉落表，因此具有权威性和准确性",
+      "免费、开源（MIT），无需登录或账号",
+      "比 DE 的原始 HTML 掉落页面更容易解析/查询",
+      "支撑了大部分 Warframe 社区工具生态系统",
+      "随新的游戏版本自动更新，并包含版本差异视图"
+    ],
+    "cons": [
+      "实用主义、面向开发者的界面；并非精美的消费者刷取应用",
+      "仅反映 PC 端的掉落数据",
+      "作为镜像，它会继承 DE 官方表格中的任何缺失/奇特之处",
+      "休闲玩家的直接知名度较低，他们大多转而使用下游工具或 wiki。"
+    ],
+    "safety": {
+      "rating": "safe",
+      "notes": "只读网页/数据资源：无游戏内存访问、无游戏内覆盖、无账号凭据，且无真实货币交易。它仅重新发布 DE 自己的公开掉落数据，因此不会违反 Digital Extremes 的第三方工具政策，也不会带来封号风险。"
+    },
+    "tier": "situational",
+    "tierReason": "一个基础且值得信赖的数据源，对开发者和关注数据的玩家来说弥足珍贵。但作为直接面向终端用户的工具，它非常简陋，大多数玩家是通过其他应用来获取其数据，而不是直接访问它，因此它适合有特定需求的人群，而不是一个被广泛采用的必备 UI。",
+    "dataConfidence": "medium",
+    "youtube": [],
+    "trustpilot": null,
+    "otherReviews": [
+      {
+        "source": "GitHub (WFCD/warframe-drop-data)",
+        "url": "https://github.com/WFCD/warframe-drop-data",
+        "rating": "154 stars / 26 forks",
+        "snippet": "Official repo: 'Warframe Drop Data in an easier to parse format.' MIT-licensed, maintained by Warframe Community Developers; sourced from DE's official drop data (not data-mined) and auto-updated on new builds."
+      },
+      {
+        "source": "Warframe Forums (Developer Workshops)",
+        "url": "https://forums.warframe.com/topic/809777-warframe-drop-rates-data/",
+        "rating": null,
+        "snippet": "DE's official developer thread announcing that Warframe drop tables are published and auto-generated from the game's internal data; drops.warframestat.us is the community's more accessible mirror of this same official data."
+      }
+    ],
+    "reddit": [
+      {
+        "title": "[TOOL] Voidstonks - I got tired of manually typing relic runs in chat, so I built a web app to do it for me and it snowballed into this",
+        "url": "https://www.reddit.com/r/Warframe/comments/1py705x/tool_voidstonks_i_got_tired_of_manually_typing/",
+        "subreddit": "Warframe",
+        "snippet": "101 upvotes · 33 comments — Hiya , so here is a free tool , no registry needed no ads , just a side project i have been cooking for a bit more than two weeks , it all started as …",
+        "sentiment": "mixed"
+      },
+      {
+        "title": "Is there a warframe droptable application for Wallpaper Engine?",
+        "url": "https://www.reddit.com/r/Warframe/comments/gn8gmo/is_there_a_warframe_droptable_application_for/",
+        "subreddit": "Warframe",
+        "snippet": "5 upvotes · 1 comments — As I use Wallpaper Engine actually all the time I've recently stumbled across [Warframe Hub](https://hub.warframestat.us/#/) as a slick looking Wallpa…",
+        "sentiment": "mixed"
+      }
+    ]
+  },
+  "wfcd-items": {
+    "slug": "wfcd-items",
+    "oneLiner": "一个开源库，直接从游戏的 API 打包每个 Warframe 物品及其数据，以 @wfcd/items npm 包的形式发布。",
+    "overview": "WFCD warframe-items 是一个由 Warframe Community Developers (WFCD) 维护的数据库，它直接从 Warframe 自己的 API 中提取完整的物品目录，而不是抓取 wiki。它提供预编译的 JSON（以及通过 warframestat.us CDN 提供的图像），涵盖 Warframes、weapons、mods、relics、arcanes、resources 等，并包含掉落率、独特的游戏内路径、更新日志、Riven 数据、可交易性标记和 13 种语言的本地化。它在 npm 上作为 @wfcd/items 分发，是许多社区工具和机器人背后的基础数据源。这是一个面向开发者的库，而不是面向终端用户的应用。",
+    "keyFeatures": [
+      "物品数据直接源自 Warframe 的官方 API（无 wiki 抓取）",
+      "23+ 个类别：Warframes、Primary/Secondary/Melee、Mods、Relics、Arcanes、Resources、Pets 等。",
+      "预编译的 JSON 数据，外加每个物品的掉落率和更新日志",
+      "独特的游戏内物品路径（例如 /Lotus/Weapons/...）和可交易状态",
+      "包含 Riven 武器数据",
+      "图像通过 cdn.warframestat.us CDN 提供（对于 npm 来说体积过大）",
+      "支持 CommonJS 和 ESM，并支持可配置的类别加载",
+      "支持 13 种语言的国际化",
+      "TypeScript 类型定义和 findItem() 查找工具",
+      "采用 MIT 许可，随每次游戏发布自动更新（已发布 5,000+ 个版本）"
+    ],
+    "bestFor": "正在构建 Warframe 社区工具、机器人或网站，且需要完整、定期更新、结构化的物品数据集而无需抓取 wiki 的开发者。",
+    "sentimentSummary": "由于这是一个开发者库，而不是面向玩家的应用，因此几乎没有公开的消费者式讨论。它的声誉建立在实际采用之上：它是 WFCD 的官方项目，支撑着更广泛的 warframestat.us API 和众多社区工具（例如 Genesis、Warframe Hub）。GitHub 指标（397 个 star、72 个 fork、仅 6 个未解决的 issue） and 稳定的 npm 使用量（每周约 2.4k 次 / 每月约 13.8k 次下载）表明，它是 Warframe 开发者社区中一个值得信赖、活跃维护的数据源。",
+    "safety": {
+      "rating": "safe",
+      "notes": "只读开源（MIT）数据库，仅从 Warframe 的 API 获取/打包公开可用的物品数据。它不读取游戏内存，不提供游戏内覆盖，且不需要账号凭据或登录，因此对玩家不存在违反 ToS 或账号安全的风险。与 RMT 无关。"
+    },
+    "tier": "recommended",
+    "tierReason": "在其受众（开发者）中，它是事实上的标准、被广泛依赖的数据源，也是一个活跃维护且每日更新的官方 WFCD 项目。它没有被归为 'essential' 级别，仅仅是因为它服务于开发者而非普通玩家，而 'niche' 又低估了它作为许多社区工具骨干数据的广泛采用。",
+    "dataConfidence": "medium",
+    "pros": [
+      "数据直接来自 Warframe 的官方 API，因此准确且全面（甚至包含 wiki 上都没有的物品）",
+      "活跃且自动维护；随每次游戏发布而更新（最新版本 v1.1275.18，2026 年 7 月）",
+      "在宽松的 MIT 许可证下开源",
+      "丰富的元数据：掉落率、更新日志、Riven 数据、可交易性、独特的游戏内路径",
+      "提供 TypeScript 类型、ESM/CJS 支持以及 13 种语言的本地化",
+      "通过 warframestat.us CDN 提供免费图像托管",
+      "相比于一个大型项目，未解决的 issue 数量非常少（6 个）"
+    ],
+    "cons": [
+      "仅限开发者；对不开发软件的玩家没有价值",
+      "需要 Node.js（>10）并熟悉 npm/编程",
+      "如果导入所有类别而不是限定范围，庞大的数据集可能会显得臃肿",
+      "依赖于 Warframe 未公开的 API 和外部 CDN，因此上游更改可能会影响数据",
+      "除了 GitHub README 之外，面向终端用户的文档/社区教程极少"
+    ],
+    "youtube": [],
+    "otherReviews": [
+      {
+        "source": "GitHub (WFCD/warframe-items)",
+        "url": "https://github.com/WFCD/warframe-items",
+        "rating": "397 stars / 72 forks / 6 open issues",
+        "snippet": "Get all Warframe items directly from Warframe's API. No more messy wikia scraping. Official WFCD project, MIT licensed, updated with each game release."
+      },
+      {
+        "source": "npm (@wfcd/items)",
+        "url": "https://www.npmjs.com/package/@wfcd/items",
+        "rating": "~2,427 downloads/week; ~13,776 downloads/month",
+        "snippet": "Distributed on npm; supports CommonJS and ESM, includes findItem() lookup utility and TypeScript definitions."
+      }
+    ],
+    "trustpilot": null
+  },
+  "warframe-companion": {
+    "slug": "warframe-companion",
+    "oneLiner": "Digital Extremes 的官方免费移动应用，让您在远离游戏时，可以通过手机管理您的 Foundry、extractors 和账号信息。",
+    "overview": "Warframe Companion 是 Warframe 的官方第一方移动应用，由 Digital Extremes 针对 Android 和 iOS 开发并发布（最初于 2013 年作为 \"Warframe Nexus\" 推出）。无需登录，它即可显示所有平台上的实时世界状态数据，例如新闻、Nightwave 挑战、Invasions、Sorties 和 Void Fissures，以及 Codex。使用您的 PC、PlayStation、Xbox 或 Nintendo 账号登录可解锁账号关联的操作：部署和收集 extractor drones、开始和领取 Foundry 制造项目、管理 Void Relics、查看 Arsenal/Inventory、与 companions 互动以及氏族/好友聊天。它是一款真正的第一方账号应用，而不是第三方覆盖或抓取工具。",
+    "keyFeatures": [
+      "离线时远程开始和领取 Foundry 制造项目（Warframes、weapons、gear）",
+      "部署和收集 extractor drones 以被动刷资源",
+      "查看实时世界状态：所有平台上的新闻、Nightwave、Invasions、Sorties、Void Fissures",
+      "管理和升级 Void Relics",
+      "查看 Arsenal 和 Inventory",
+      "氏族和好友聊天，以及 Syndicate 声望",
+      "无需登录即可访问 Codex",
+      "通过 PC/PSN/Xbox/Nintendo 进行官方账号登录"
+    ],
+    "bestFor": "希望在远离 PC 或主机时保持其 Foundry 和 extractor drones 持续生产，并随时随地查看实时游戏世界状态（world state）的现役 Warframe 玩家。",
+    "sentimentSummary": "各平台的评价两极分化：iOS 版本评分极高（约 15,000 个评分，得分为 4.8/5），用户称其为 \"borderline essential\"；而 Android/Google Play 版本尽管有超过 100 万次下载，评分却较低，约为 3.8/5。常见的赞誉集中在远程 Foundry 领取和 extractor 管理；常见的抱怨则是每次启动都需要登录、Foundry 页面加载缓慢、偶尔崩溃、缺失游戏内功能（无法更改配装、氏族工具受限）以及服务中断。该应用曾一度从 iOS App Store 下架，后于 2024 年 4 月 15 日重新上架。",
+    "pros": [
+      "来自 Digital Extremes 的官方第一方应用，无第三方风险",
+      "在 Android 和 iOS 上均免费",
+      "在远离游戏时，Foundry 和 extractor 管理功能确实非常实用",
+      "跨所有平台的实时 worldstate（Fissures、Sorties、Nightwave、Invasions）",
+      "无需登录即可查看 Codex 和新闻"
+    ],
+    "cons": [
+      "几乎每次打开都需要登录，许多人觉得这很繁琐",
+      "Android 版本评分明显较低（约 3.8），伴随有稳定性和 UI 方面的抱怨",
+      "据报告 Foundry 页面加载缓慢且偶尔崩溃",
+      "与游戏相比功能集有限（无法更改配装，氏族管理功能受限）",
+      "曾经历过服务中断以及短暂从 iOS App Store 下架（于 2024 年 4 月重新上架）"
+    ],
+    "youtube": [],
+    "trustpilot": null,
+    "otherReviews": [
+      {
+        "source": "Apple App Store",
+        "url": "https://apps.apple.com/us/app/warframe-companion/id698910075",
+        "rating": "4.8/5 (~15,000 ratings)",
+        "snippet": "This app is awesome and borderline essential for anyone who really likes Warframe. Praise for Foundry, extractor drones, news and offline item management; requests for loadout changes and clan tools."
+      },
+      {
+        "source": "Google Play Store",
+        "url": "https://play.google.com/store/apps/details?id=com.digitalextremes.warframenexus",
+        "rating": "~3.8/5 (1,000,000+ downloads)",
+        "snippet": "Mixed reviews: useful for Foundry and extractors, but complaints about needing to log in every time, slow Foundry pages, and occasional crashes."
+      },
+      {
+        "source": "Warframe Forums (official app subforum / status threads)",
+        "url": "https://forums.warframe.com/forum/1432-warframe-companion-app/",
+        "rating": null,
+        "snippet": "Dedicated official subforum with ongoing bug reports (e.g., Foundry bugs, app-down reports) and a PSA about the app's temporary iOS delisting, relisted 04/15/24."
+      }
+    ],
+    "safety": {
+      "rating": "safe",
+      "notes": "由游戏开发商 Digital Extremes 发布的官方第一方应用。它通过合法的平台账号（PC/PSN/Xbox/Nintendo）进行登录，不读取游戏内存，不覆盖客户端，也不涉及真钱交易。虽然仍需保持标准的账号登录警惕（仅从官方 Play/App Store 列表下载），但不存在第三方账号或违反 ToS 的风险。"
+    },
+    "tier": "recommended",
+    "tierReason": "官方、免费且使用非常广泛（Android 下载量超 100 万；约 1.5 万个 iOS 评分，得分为 4.8），具有真正实用的使用场景：在远离游戏时保持 Foundry 制造和 extractor drones 持续运行。它还称不上 'essential'，因为它重复了游戏内的功能，Android 评分一般，且存在登录繁琐和偶尔的稳定性问题。",
+    "dataConfidence": "medium",
+    "reddit": [
+      {
+        "title": "Friendly Reminder: Don’t Forget Your Alert!",
+        "url": "https://www.reddit.com/r/Warframe/comments/1u8wroo/friendly_reminder_dont_forget_your_alert/",
+        "subreddit": "Warframe",
+        "snippet": "1030 upvotes · 36 comments — For anyone who hasn’t done it yet Reward: Make Your Own Fate Honoria This Honoria is a tribute to Destiny’s famous quote, *“Guardians make their own f…",
+        "sentiment": "mixed"
+      },
+      {
+        "title": "So me and my girlies stared this game... (first impressions)",
+        "url": "https://www.reddit.com/r/Warframe/comments/1ti0byp/so_me_and_my_girlies_stared_this_game_first/",
+        "subreddit": "Warframe",
+        "snippet": "221 upvotes · 72 comments — So my group of 4 were looking for a new game to play together after getting burnt out by LoL and DBD. It was huge hassle, one friend likes old fantasy…",
+        "sentiment": "negative"
+      }
+    ]
+  },
+  "de-public-export": {
+    "slug": "de-public-export",
+    "oneLiner": "Digital Extremes 的官方公共数据接口，将 Warframe 的游戏数据（武器、战甲、MOD、遗物、掉落物）导出为本地化的 JSON，供第三方工具使用。",
+    "overview": "Warframe Public Export（前身为 \"Mobile Export\"）是一个由 Digital Extremes 运营的只读、无需身份验证的数据接口，用于将游戏内部数据分发到官方的 Warframe Companion 移动应用、Arsenal Twitch Extension 以及游戏客户端本身。客户端首先从 origin.warframe.com 获取一个经 LZMA 压缩且特定于语言的索引，该索引列出了带有内容哈希的清单文件名；实际的 JSON 清单（武器、战甲、同伴、MOD/裂罅、蓝图、资源、遗物、赋能、星图节点、外观）和图像资产随后由 content.warframe.com 的 CDN 提供。由于每个文件名都以一个在每次更新时都会发生变化的 26 字符内容哈希结尾，客户端可以永久缓存资产，但必须重新轮询索引以检测更改。它支持 Warframe 所有官方支持的语言，对名称、描述和等级属性进行本地化。它是大多数 Warframe 第三方数据工具和 API 最终派生出的权威上游来源。",
+    "keyFeatures": [
+      "由 Digital Extremes 维护的官方第一方数据源（具有最高的权威性/准确性）",
+      "只读且无需身份验证 - 不需要 API 密钥、账号或登录",
+      "内容寻址哈希：文件名带有 26 字符的哈希，因此资产可以通过 DE 的 CDN 进行永久缓存",
+      "两步访问：首先访问 origin.warframe.com 上的 LZMA 压缩索引，然后访问 content.warframe.com/PublicExport/Manifest/ 上的 JSON 清单",
+      "覆盖范围广泛：武器、战甲、同伴、MOD/裂罅、蓝图、资源、遗物、赋能、星图节点、外观",
+      "支持所有官方支持的 Warframe 语言的完整本地化",
+      "ExportManifest.json 将每个物品的 uniqueName 映射到 textureLocation，以便检索图像资产"
+    ],
+    "bestFor": "构建 Warframe 第三方工具、应用或 Wiki 且需要直接从源头获取真实游戏数据的开发者和数据维护者；这不是一个供玩家直接交互的工具。",
+    "sentimentSummary": "在 Warframe 开发者中，Public Export 被尊为权威的真实源头，并且是社区 API（warframestat.us、WFCD、warframe-public-export 清理版）构建的基础。然而，其原始格式因难以使用而经常受到批评：LZMA 索引、频繁变化的内容哈希、需要修正的格式错误/非标准 JSON、稀少的文档以及覆盖范围的缺失。这些缺失正是社区镜像和增强项目（如 calamity-inc 的 warframe-public-export（清理后的 JSON）和 warframe-public-export-plus（\"everything missing in Public Export and more\"））存在并被持续使用的原因。",
+    "safety": {
+      "rating": "safe",
+      "notes": "由 Digital Extremes 托管的只读、无需身份验证的第一方 HTTP 数据接口。不涉及游戏内存读取、无覆盖层、无账号凭据，也不涉及真钱交易——它是 DE 自身用于 Companion 应用和 Twitch 扩展的官方数据流，因此不带任何 ToS 或账号风险。唯一实际需要注意的是技术层面：使用者应该轮询索引并处理频繁变化的内容哈希和非标准 JSON，而不是硬编码 URL。"
+    },
+    "tier": "recommended",
+    "tierReason": "它是几乎每个 Warframe 数据工具都依赖的官方、权威上游数据源，这使其成为开发者的基石。作为一个列出的工具，它还称不上 'essential'，因为它是仅限开发者使用的（不面向玩家），而且其原始形式非常难用，以至于大多数构建者都是通过清理后的社区封装/镜像来使用它，而不是直接使用。",
+    "dataConfidence": "medium",
+    "youtube": [],
+    "trustpilot": null,
+    "otherReviews": [
+      {
+        "source": "Warframe Forums (General) - \"Please make the Public Export JSON files less painful to deal with\"",
+        "url": "https://forums.warframe.com/topic/1385291-please-make-the-public-export-json-files-less-painful-to-deal-with/",
+        "rating": null,
+        "snippet": "Developer-facing thread requesting DE improve the Public Export format, reflecting the common complaint that the raw JSON manifests are non-standard and awkward to parse and clean."
+      },
+      {
+        "source": "Warframe Forums (Players helping Players) - \"I Just want my data\"",
+        "url": "https://forums.warframe.com/topic/1394594-i-just-want-my-data/",
+        "rating": null,
+        "snippet": "Forum thread on accessing Warframe data, part of ongoing community discussion around obtaining game data via the Public Export."
+      },
+      {
+        "source": "GitHub - calamity-inc/warframe-public-export (cleaned mirror of the official export)",
+        "url": "https://github.com/calamity-inc/warframe-public-export",
+        "rating": "14 stars, 0 forks",
+        "snippet": "\"All JSON files from Warframe's Public Export in a clean format. Updated automatically.\" Notes that corrections are needed to make the official JSON usable, evidencing the raw export's rough edges."
+      },
+      {
+        "source": "GitHub - calamity-inc/warframe-public-export-plus (enhanced superset)",
+        "url": "https://github.com/calamity-inc/warframe-public-export-plus",
+        "rating": "58 stars, 12 forks",
+        "snippet": "\"The most complete data source for all your Warframe needs and interests. Contains everything missing in Public Export and more\" - highlights coverage gaps in the official export."
+      },
+      {
+        "source": "WARFRAME Wiki - Public Export (official documentation)",
+        "url": "https://wiki.warframe.com/w/Public_Export",
+        "rating": null,
+        "snippet": "Community/wiki documentation of the endpoints, index/manifest structure, content-hash caching behavior, and localization support, used as the de-facto reference for developers."
+      }
+    ],
+    "pros": [
+      "直接来自 Digital Extremes 的权威第一方数据 - 尽可能最准确的数据源",
+      "完全免费，无需 API 密钥或身份验证",
+      "得益于通过 DE 的 CDN 提供的、采用内容寻址（哈希）的文件名，具有出色的缓存模型",
+      "针对名称、描述和属性的完整多语言本地化",
+      "覆盖了绝大多数游戏物品/内容类别以及图像资产位置"
+    ],
+    "cons": [
+      "原始 JSON 是非标准/格式错误的，在使用前需要进行修正（这推动了社区清理镜像的发展）",
+      "官方文档稀少；开发者依赖社区 Wiki 和逆向工程",
+      "LZMA 压缩的索引和频繁变化的内容哈希增加了集成阻力",
+      "存在覆盖缺失 - 部分数据完全缺失，这就是为什么存在 'export-plus' 超集的原因",
+      "普通玩家无法使用；严格来说是开发者/数据管道资源",
+      "无 SLA、版本控制或更改通知 - 结构可能会随着游戏更新而发生变化"
+    ]
+  },
+  "worldstate-parser": {
+    "slug": "worldstate-parser",
+    "oneLiner": "一个来自 Warframe Community Developers 的开源 JavaScript/TypeScript 库，用于将 Warframe 的原始 worldstate 数据流解析为干净、可用的对象。",
+    "overview": "warframe-worldstate-parser 是一个由 WFCD (Warframe Community Developers) 维护的 Node.js/TypeScript 库，它将 Warframe 的原始 worldState.php JSON 转换为结构化、对开发人员友好的 JavaScript 对象，用于处理警报、入侵、虚空裂缝、突击、Baro Ki'Teer、Cetus/Fortuna 周期等事件。它是更广泛的 WFCD 生态系统背后的解析引擎，该生态系统包括 warframe-status API (docs.warframestat.us)、Genesis Discord 机器人和 Warframe Hub。它不是面向最终用户的应用程序，而是一个构建块，为很大一部分社区制作的 Warframe 工具、机器人和网站提供支持。",
+    "keyFeatures": [
+      "将原始 worldState.php 数据解析为类型化的 JavaScript 对象",
+      "完整的 TypeScript 类型定义（仓库约 99.8% 为 TypeScript）",
+      "涵盖警报、入侵、虚空裂缝、突击、Baro、赏金、昼夜周期等",
+      "多平台支持（PC/主机数据源）",
+      "通过 Crowdin (genesis-parser 项目) 提供本地化/翻译支持",
+      "采用 MIT 许可且完全开源",
+      "已发布至 npm，拥有 171+ 个版本并采用语义化版本控制（最新版本为 v5.4.3，2026 年 7 月）",
+      "为 warframe-status API、Genesis 机器人和 Warframe Hub 提供支持"
+    ],
+    "bestFor": "正在构建 Warframe Discord 机器人、追踪网站或应用程序，且需要可靠、结构化地访问实时世界状态数据，而不是自己解析 DE 原始数据源的开发人员。",
+    "sentimentSummary": "作为一个开发人员库而非消费级应用，它本身在 Reddit、YouTube 或评价网站上没有足迹。在 Warframe 开发人员社区中，它被视为基础设施——WFCD 技术栈（warframe-status API、Genesis、Warframe Hub）以及许多第三方工具的解析支柱。采用率信号（GitHub 存在感、悠久的版本发布历史、下游依赖项）表明其获得了稳定的信任；大多数最终用户在不知道其存在的情况下间接受益于它。",
+    "safety": {
+      "rating": "safe",
+      "notes": "开源 (MIT) 的只读数据解析库。它处理公开可用的世界状态 JSON，不读取游戏内存、不覆盖客户端，也不处理账户凭据，因此不会引发 DE 服务条款 (ToS) 或账户安全问题。标准的供应链防范适用于任何 npm 依赖项，但该包是在成熟的 WFCD 组织下由社区维护的。"
+    },
+    "tier": "recommended",
+    "tierReason": "它不是一款面向普通玩家的应用，但对于它的实际受众（Warframe 工具/机器人开发人员）来说，它是一个广泛使用、维护良好、事实上的标准，支撑着大部分社区工具生态系统。受众虽小众，但在其中拥有极高的采用率和信任度。",
+    "dataConfidence": "medium",
+    "pros": [
+      "经过实战检验的标准，为 warframe-status API、Genesis 机器人和许多社区工具提供支持",
+      "完整的 TypeScript 类型和文档化的 API (wfcd.github.io/warframe-worldstate-parser)",
+      "积极维护，频繁发布版本并采用语义化版本控制",
+      "采用 MIT 许可，完全开源，由成熟的 WFCD 组织支持",
+      "免去了开发人员自己解析 DE 混乱的原始世界状态的麻烦"
+    ],
+    "cons": [
+      "仅限开发人员；对非程序员无用",
+      "仅限 Node.js/JavaScript 生态系统",
+      "依赖于 DE 未公开的世界状态格式，因此游戏更新可能需要更新解析器",
+      "大多数人会更倾向于使用托管的 warframe-status API，而不是直接运行解析器",
+      "适中的 GitHub Star 数量反映了其小众、幕后的角色"
+    ],
+    "youtube": [],
+    "otherReviews": [
+      {
+        "source": "GitHub (WFCD/warframe-worldstate-parser)",
+        "url": "https://github.com/WFCD/warframe-worldstate-parser",
+        "rating": null,
+        "snippet": "Official repo: 'An Open parser for Warframe's Worldstate in Javascript.' ~64 stars, 22 forks, MIT license, 171 releases (latest v5.4.3, July 2026), actively maintained by the Warframe Community Developers."
+      },
+      {
+        "source": "npm (warframe-worldstate-parser)",
+        "url": "https://www.npmjs.com/package/warframe-worldstate-parser",
+        "rating": null,
+        "snippet": "Published npm package: 'Parses the Warframe worldstate into useable javascript objects.' Install via npm i -S warframe-worldstate-parser."
+      },
+      {
+        "source": "Warframe Forums",
+        "url": "https://forums.warframe.com/topic/913537-trackers-data-and-all-the-worldstate-things/",
+        "rating": null,
+        "snippet": "Community 'Trackers, Data, And All the Worldstate Things' thread referencing WFCD worldstate tooling used by third-party developers."
+      }
+    ],
+    "trustpilot": null
+  },
+  "public-export-plus": {
+    "slug": "public-export-plus",
+    "oneLiner": "一个开源、增强的 Warframe 游戏数据 JSON 数据转储，填补了 Digital Extremes 官方 Public Export 的空白。",
+    "overview": "warframe-public-export-plus 是一个由社区维护的数据源（由 calamity-inc 维护），它基于 Warframe 的官方 \"Public Export\"——DE 用来向其 Companion 应用程序和 Arsenal Twitch 扩展程序提供内部游戏数据的端点。它将这些数据重新组织并扩展为 50 多个干净的 JSON 文件 (Export*.json)，并将本地化内容单独拆分（跨约 13 种语言的 dict.*.json），涵盖战甲、武器、Mod、虚空遗物、赋能、配方、任务、商家等。它通过 GitHub 和 npm 包进行分发，并为开源的 browse.wf 数据浏览器提供支持。它是一个开发人员/数据资源，而不是游戏内工具或应用程序。",
+    "keyFeatures": [
+      "50 多个 JSON 导出文件，几乎涵盖所有 Warframe 游戏数据（物品、Mod、虚空遗物、配方、任务、商家）",
+      "数据和本地化完全分离（Export*.json 与 dict.*.json），以避免重复",
+      "支持约 13 种语言的本地化（EN、DE、FR、JA、KO、RU、ZH 等）",
+      "包含 DE 官方 Public Export 中缺失的所有内容，以及修正/补充",
+      "在 GitHub 上分发，并作为 npm 包 (warframe-public-export-plus) 提供",
+      "附带 TypeScript 定义和 WASM 属性计算工具",
+      "为开源的 browse.wf 数据浏览器提供支持",
+      "图标/图像路径引用可通过 browse.wf 或游戏 CDN 解析"
+    ],
+    "bestFor": "正在构建第三方 Warframe 工具、网站、Wiki 或机器人，且需要完整、干净、机器可读的游戏数据的开发人员和数据爱好者。",
+    "sentimentSummary": "几乎没有面向消费者的社区讨论（Reddit/YouTube/Trustpilot），因为这是一个开发人员数据源，而不是最终玩家直接使用的应用程序。在 Warframe 工具开发人员这一小众群体中，它备受好评，并被视为事实上首选的数据集——它支撑着 browse.wf，并被认为比 DE 的原始 Public Export 更完整。除了它是一个需要编程知识才能使用的技术资源之外，没有出现其他显著的批评。",
+    "safety": {
+      "rating": "safe",
+      "notes": "托管在 GitHub/npm 上的只读静态 JSON 数据。它不与游戏客户端交互、不读取内存、不覆盖游戏，也不需要 Warframe 账户凭据，因此不涉及任何服务条款 (ToS) 或账户风险问题。数据最终来源于 DE 自己的公共数据端点。"
+    },
+    "tier": "niche",
+    "tierReason": "极具价值，但受众较小：它本质上是人们构建 Warframe 工具/网站的首选数据集，但对普通玩家没有直接用途。在开发人员小众群体中声誉极高，但在普通社区中的足迹极少。",
+    "dataConfidence": "medium",
+    "pros": [
+      "最完整的公开可用 Warframe 数据集——填补了 DE 官方导出的空白",
+      "结构清晰，本地化与数据分离，易于使用",
+      "可通过 GitHub 原始文件和带有 TypeScript 类型的 npm 包获取",
+      "开箱即用的多语言支持",
+      "开源且积极维护（800+ 次提交）",
+      "为开源的 browse.wf 浏览器提供支持，因此数据易于检查"
+    ],
+    "cons": [
+      "仅限开发者：需要编程知识，对非技术玩家没有直接用处",
+      "与 Digital Extremes 无官方关联——这是一个依赖维护者的社区努力",
+      "项目规模相对较小（数十个 star/fork），因此较为小众",
+      "数据准确性紧跟游戏，可能会有延迟或包含社区修正的奇特偏差",
+      "几乎没有独立的评论或社区讨论来进行对比验证"
+    ],
+    "youtube": [],
+    "trustpilot": null,
+    "otherReviews": [
+      {
+        "source": "GitHub repository (calamity-inc/warframe-public-export-plus)",
+        "url": "https://github.com/calamity-inc/warframe-public-export-plus",
+        "rating": null,
+        "snippet": "\"The most complete data source for all your Warframe needs and interests. Contains everything missing in Public Export and more.\" ~58 stars, 12 forks, 800+ commits at time of research."
+      },
+      {
+        "source": "npm (warframe-public-export-plus)",
+        "url": "https://www.npmjs.com/package/warframe-public-export-plus",
+        "rating": null,
+        "snippet": "Published as an npm package for programmatic consumption of the data with TypeScript definitions."
+      },
+      {
+        "source": "browse.wf data browser",
+        "url": "https://browse.wf/warframe-public-export-plus/",
+        "rating": null,
+        "snippet": "Open-source web browser for the exported data; lets developers search/inspect the JSON exports directly."
+      }
+    ]
+  },
+  "browse-wf": {
+    "slug": "browse-wf",
+    "oneLiner": "一个开源的网页工具，用于探索 Warframe 原始游戏数据、追踪实时世界状态以及查看个人资料/库存。",
+    "overview": "browse.wf 是由 calamity-inc（AlecaFrame 背后的团队）开发的一个开源网站，它解析 Warframe 的内部数据路径，并返回任何查询对象的底层游戏数据，自称为“就像一个搜索引擎，但服务于太空忍者”。除了原始数据探索之外，它还捆绑了实时世界状态追踪器（赏金、入侵、仲裁时间表、Deep Archimedea 修饰符）、Riven 计算器、Prime Vault 追踪器、KIM/Kimulacrum 对话工具、个人资料查看器以及可选的 PC 库存同步。该网站已本地化为 15 种语言，深受需要权威游戏数据的理论分析家、数据挖掘者和内容创作者的喜爱。",
+    "keyFeatures": [
+      "原始游戏数据浏览器，可解析 Warframe 内部路径并返回任何物品、战甲、武器或图像的 JSON/数据",
+      "实时世界状态追踪器：当前的赏金、入侵、仲裁时间表、Deep Archimedea 修饰符",
+      "用于分析武器 Riven mod 属性数值的 Riven 计算器",
+      "Prime Vault 追踪器和活力滋养参考",
+      "个人资料查看器（自 38.0.8 版本更新起，现在需要账号 ID，而非用户名）",
+      "通过 lastData.dat（来自 AlecaFrame 或 warframe-api-helper）进行的可选 PC 库存同步，数据保存在浏览器客户端",
+      "KIM 对话定位器 / Kimulacrum、调色板、文本图标、浮印和平台后缀工具",
+      "已本地化为 15 种语言"
+    ],
+    "bestFor": "需要检查权威 Warframe 原始数据、追踪实时世界状态或评估 Riven 的理论分析家、数据挖掘者、维基编辑和资深玩家。",
+    "sentimentSummary": "browse.wf 在 Warframe 数据/理论分析社区中默默地享有盛誉，并由声誉良好的团队（calamity-inc / AlecaFrame）维护，但它的受众群体较小且专业，并未被大众广泛采用。外部评论证据较少：在研究中未发现专门的 Reddit 帖子、YouTube 评测或 Trustpilot 页面，这对于小众数据探索工具来说很正常，而不是负面评价的迹象。",
+    "safety": {
+      "rating": "safe",
+      "notes": "主要是一个只读网页工具；探索的数据保留在客户端。可选的库存同步绝不会索要账号密码或凭据——它读取由 AlecaFrame 或 warframe-api-helper（仅限 PC）生成的本地 lastData.dat 文件，且页面声明数据保留在您的浏览器中。个人资料查看使用 DE 自己的公共 API/账号 ID。唯一需要轻微考虑的是，库存功能与 AlecaFrame（一个读取游戏网络数据的第三方辅助工具）绑定；browse.wf 本身是一个网站，不会读取游戏内存或注入客户端。"
+    },
+    "tier": "situational",
+    "tierReason": "对于特定受众（数据探索、实时世界状态、Riven 计算）极其有用，并得到了值得信赖的开发团队的支持，但它是一个受众较小的数据极客工具，规模较小（约 40 个 GitHub star，无主流媒体评测覆盖），而不是广泛必备的日常工具。",
+    "dataConfidence": "medium",
+    "youtube": [],
+    "otherReviews": [],
+    "trustpilot": null,
+    "pros": [
+      "直接来自 Warframe 内部路径的权威、最新的原始游戏数据",
+      "开源（MIT 许可证），由声誉良好的 calamity-inc / AlecaFrame 团队积极维护",
+      "丰富的功能集：集实时世界状态、Riven 计算器、Prime Vault、个人资料/库存查看于一体",
+      "隐私友好——库存数据保留在浏览器中，不需要任何凭据",
+      "已本地化为 15 种语言"
+    ],
+    "cons": [
+      "小众且相当技术化——原始数据输出针对的是高级用户，而非休闲玩家",
+      "自 38.0.8 版本更新起，查看个人资料现在需要手动查找账号 ID（用户名不再可用）",
+      "库存同步仅限 PC，且需要手动获取 lastData.dat 文件",
+      "几乎没有社区文档、教程或评测覆盖来帮助新手"
+    ],
+    "reddit": [
+      {
+        "title": "I made a KIM Pathfinder to find the best answers for chemistry",
+        "url": "https://www.reddit.com/r/Warframe/comments/1ryg1ui/i_made_a_kim_pathfinder_to_find_the_best_answers/",
+        "subreddit": "Warframe",
+        "snippet": "331 upvotes · 25 comments — Big fan of the work made by browse.wf on Kimulacrum, but things can get really messy on some conversations that have several nodes and conditions. Sin…",
+        "sentiment": "positive"
+      },
+      {
+        "title": "Personal guide for a friend returning player.",
+        "url": "https://www.reddit.com/r/Warframe/comments/1mzsj9j/personal_guide_for_a_friend_returning_player/",
+        "subreddit": "Warframe",
+        "snippet": "152 upvotes · 33 comments — # *** ALWAYS be crafting: *** *(use the smartphone Warframe Companion App and its notifications to track those)* * **FORMA** (BP from relics) *(the ne…",
+        "sentiment": "positive"
+      },
+      {
+        "title": "I was curious, so I read all the new KIM chats. Here are my observations (with no spoilers) for those interested",
+        "url": "https://www.reddit.com/r/Warframe/comments/1pl1n2l/i_was_curious_so_i_read_all_the_new_kim_chats/",
+        "subreddit": "Warframe",
+        "snippet": "39 upvotes · 31 comments — The fact that Rebb said that it would take some time to figure out how to make things work with the Devil's Triad made me curious, so I had to go (to …",
+        "sentiment": "positive"
+      },
+      {
+        "title": "Foreshadowing?",
+        "url": "https://www.reddit.com/r/Warframe/comments/1rgda6i/foreshadowing/",
+        "subreddit": "Warframe",
+        "snippet": "2 upvotes · 30 comments — This can be found in [Rank3Convo2](https://browse.wf/kimulacrum#chatroom=RoatheDialogue_rom.dialogue&amp;dialogue=RoatheRank3Convo2) (definitely one o…",
+        "sentiment": "positive"
+      },
+      {
+        "title": "Help finding Ballistica Truth mod",
+        "url": "https://www.reddit.com/r/Warframe/comments/1uii0ds/help_finding_ballistica_truth_mod/",
+        "subreddit": "Warframe",
+        "snippet": "0 upvotes · 3 comments — So I was looking for stuff about the Ballistica in [browse.wf](http://browse.wf) and ended up coming across a truth mod for it. I decided to look for …",
+        "sentiment": "mixed"
+      }
+    ]
+  },
+  "quantframe": {
+    "slug": "quantframe",
+    "oneLiner": "一款免费、开源的桌面应用程序，可通过算法自动在 Warframe.market 上发布买卖单，并追踪您的交易利润。",
+    "overview": "Quantframe 是一款针对 Warframe.market 的量化/算法交易应用程序。它通过该网站的 API 连接到您的 Warframe.market 账号，并根据实时市场数据自动创建和更新买单和卖单，同时在本地 SQLite 数据库中追踪您的库存、交易历史、利润和交易量。它是一款基于 Tauri 的桌面应用程序（Rust 后端，React/TypeScript 前端），适用于 Windows 和 Linux，灵感来自 akmayer 的 Warframe-Algo-Trader。核心应用程序是开源的（GPL-3.0），并为支持者/额外访问权限提供了可选的付费 Patreon 档位。",
+    "keyFeatures": [
+      "根据市场数据自动在 Warframe.market 上创建和更新买卖单",
+      "库存管理：设置最低售价，将物品标记为已售",
+      "包含利润和交易量统计数据的交易历史仪表板",
+      "用于挂单出售 Riven 的 Riven mod 管理",
+      "用于存储所有数据的本地 SQLite 数据库（可使用标准数据库工具进行检查）",
+      "适用于 Windows 和 Linux 的轻量级跨平台桌面应用程序（Tauri；约 35MB 安装包，约 60MB 空闲内存占用）",
+      "实时交易设置/策略配置"
+    ],
+    "bestFor": "致力于在 Warframe.market 进行交易和白金倒买倒卖，并希望将大批量的低买高卖挂单管理自动化，而不是手动操作的玩家。",
+    "sentimentSummary": "具体的社区讨论较少：搜索中未发现真实的 Reddit 帖子，相关报道主要来自少数 YouTube 的“市场倒买倒卖/自动交易”视频以及一个专属的 Patreon，将其宣传为一种赚取被动白金的方法。对于一个分众（小众）工具来说，该项目本身展现出了健康的采用率（主仓库有 146 个 star，44 个 release 版本，活跃维护至 2026 年中）。在已有的评价中，人们对便利性持谨慎乐观态度，不过一些创作者的视频公开展示了褒贬不一或负面的短期结果（如“惨赔还是未来暴利？”、“我亏了186白金？！”），这反映出自动化倒买倒卖并不能保证盈利。",
+    "safety": {
+      "rating": "caution",
+      "notes": "Quantframe 不会读取游戏内存，也不会注入到 Warframe 客户端，因此 DE 对覆盖层/内存读取器的态度并不是相关的风险维度。相反，它会登录您的 Warframe.market 账号（一个由社区运营的第三方网站，非 DE 运营），并通过该网站的 API 自动发布订单。如果自动化/机器人式的活动以及凭据/会话的使用与 Warframe.market 的规则或频率限制相冲突，可能会使您的 Warframe.market 账号（而非您的游戏账号）面临潜在风险。该应用是开源的（GPL-3.0），因此代码是可审计的，这减轻了对恶意软件的担忧；第三方网址扫描器对 quantframe.app 给出了约 67/100 的中等信任评分。请在了解 Warframe.market 自动化政策的前提下使用。"
+    },
+    "tier": "situational",
+    "tierReason": "处于积极开发中、开源，且对重度市场倒买倒卖玩家确实有用，但自动交易是一个大多数玩家不需要的专业使用场景，并且带有 Warframe.market 账号风险。采用率稳定但偏向小众（GitHub star 数量在几百左右），并非广泛必需的工具。",
+    "dataConfidence": "medium",
+    "pros": [
+      "免费且开源（GPL-3.0），代码可审计",
+      "积极维护并频繁发布版本（截至 2026 年 7 月为 v1.6.25，已有 44+ 个 release 版本）",
+      "自动执行 Warframe.market 上繁琐的手动重新挂单和重新定价操作",
+      "在一个仪表盘中追踪利润、交易量和交易历史",
+      "轻量化且跨平台（Windows + Linux），低 RAM/CPU 占用",
+      "本地 SQLite 存储，您可以自行检查"
+    ],
+    "cons": [
+      "需要登录您的 Warframe.market 账号；自动化操作可能与该网站的规则冲突并带来账号风险",
+      "自动倒买倒卖并不能保证盈利——一些用户视频展示了真实的亏损",
+      "具有学习曲线的小众/高级工具；对休闲玩家没有用处",
+      "社区足迹较小（Reddit 上的讨论很少），因此同伴支持有限",
+      "某些访问权限/支持被限制在付费的 Patreon 档位之后",
+      "原始仓库（Shaaddz/quantframe）似乎已停止更新；目前维护的分支是 Kenya-DK/quantframe-react"
+    ],
+    "youtube": [
+      {
+        "title": "QuantFrame + Market Flipping = Easy Plat? Warframe Auto-Trader Guide",
+        "url": "https://www.youtube.com/watch?v=3I3Cu_7ZDw8",
+        "channel": ""
+      },
+      {
+        "title": "Warframe Market Flipping Session | Quantframe Focus | Synthwave Ambience",
+        "url": "https://www.youtube.com/watch?v=vCu1kdmVG1I",
+        "channel": ""
+      },
+      {
+        "title": "Quantframe Grind Day 2 | Big Loss or Future Profit? (Short)",
+        "url": "https://www.youtube.com/shorts/gCgL1GK41FM",
+        "channel": ""
+      }
+    ],
+    "otherReviews": [
+      {
+        "source": "GitHub - Kenya-DK/quantframe-react (main maintained repo)",
+        "url": "https://github.com/Kenya-DK/quantframe-react",
+        "rating": "146 stars, 54 forks, 8 open issues, latest release v1.6.25 (2026-07-15)",
+        "snippet": "Actively maintained Tauri/Rust + React re-implementation; GPL-3.0. Warframe.market API integration, SQLite storage."
+      },
+      {
+        "source": "GitHub - Shaaddz/quantframe (earlier/related repo)",
+        "url": "https://github.com/Shaaddz/quantframe",
+        "rating": null,
+        "snippet": "Solid.js/Tauri implementation described as a re-implementation inspired by Akmayer's Warframe-Algo-Trader; LGPL-3.0, low activity."
+      },
+      {
+        "source": "Patreon - Quantframe",
+        "url": "https://www.patreon.com/quantframe",
+        "rating": "Paid membership from ~$5/month",
+        "snippet": "Official Patreon: 'Automate Warframe Market trades, track profits.' Optional paid support tiers for the project."
+      },
+      {
+        "source": "Gridinsoft URL trust scanner",
+        "url": "https://gridinsoft.com/online-virus-scanner/url/quantframe-app",
+        "rating": "67/100 trust score",
+        "snippet": "Automated URL reputation check of quantframe.app returned a middling trust score (not a human review)."
+      },
+      {
+        "source": "GitHub - akmayer/Warframe-Algo-Trader (the project Quantframe is based on)",
+        "url": "https://github.com/akmayer/Warframe-Algo-Trader",
+        "rating": null,
+        "snippet": "Original algorithmic trader that posts buy/sell orders on warframe.market; Quantframe is a Tauri re-implementation of this concept."
+      }
+    ],
+    "trustpilot": null,
+    "reddit": [
+      {
+        "title": "Linux compatible (or just a website) for relic planning with inventory integration?",
+        "url": "https://www.reddit.com/r/Warframe/comments/1jq0sgb/linux_compatible_or_just_a_website_for_relic/",
+        "subreddit": "Warframe",
+        "snippet": "1 upvotes · 6 comments — After trying the AlecaFrame and Quantframe combo at my friend's place on their Windows PC, I was wondering if there's anything similar for Linux, pref…",
+        "sentiment": "mixed"
+      }
+    ]
+  },
+  "underframe": {
+    "slug": "underframe",
+    "oneLiner": "一个免费的网页端 Warframe 配装（build）生成器和深度 DPS/伤害模拟计算器，配有自动配装优化器和 Riven 工具。",
+    "overview": "Underframe（underframe.site）是一个基于浏览器的 Warframe 配装和理论研究工具。它允许玩家为 Warframe（战甲）、武器和同伴组合配装，然后针对可自定义的靶机（阵营、等级缩放、爆头/弱点倍率、异常状态效果）运行战斗/DPS 模拟，而不是仅仅依赖简单的属性总和。除了手动配装外，它还提供了一个具有可调评分的自动配装优化器、Riven 创建和自动洗卡、AoE 范围编辑器、从图片导入 Mod 以及可分享的快照链接。它是免费的，无需账号，并将数据本地存储在浏览器中；反馈和配装提交通过 Discord 社区进行处理。",
+    "keyFeatures": [
+      "针对可自定义靶机（阵营、缩放、爆头、异常状态）的 DPS/伤害战斗模拟",
+      "具有可调评分开关和设置配置文件的自动配装优化器",
+      "Riven Mod 创建和自动洗卡",
+      "用于范围伤害（AoE）武器测试的 AoE 布局编辑器",
+      "从图片导入 Mod 以及手动的 Mod/极性/赋能管理",
+      "队友/增益（buff）链接，以便将链接的 Warframe 的增益应用到武器配装中",
+      "通过快照链接（带链接缩短功能）进行配装分享以及导入/导出",
+      "精选的特色/专家审核配装（例如 Mag、Mirage、Wisp）"
+    ],
+    "bestFor": "相比基础的配装分享工具，更想要深度、基于模拟的 DPS 计算器和自动优化器的理论研究者和极限配装玩家。",
+    "sentimentSummary": "关于 Underframe 的公开第三方讨论非常少。该工具本身是真实存在、功能完备且功能深度显著的（其战斗模拟和自动配装超越了像 Overframe 这样简单的属性表配装器），但与知名网站相比，它的影响力较小。未发现 Reddit 帖子、商店评分或评价页面；找到的唯一外部内容是单个创作者的 YouTube 展示，社区活动主要集中在其 Discord 上。",
+    "safety": {
+      "rating": "safe",
+      "notes": "基于网页的只读理论研究工具。无需游戏登录，无需账号，无内存读取或覆盖层，无 RMT（真实货币交易）。配装数据保存在浏览器本地，并提供了隐私政策。无需担心 DE ToS（服务条款）问题。"
+    },
+    "tier": "niche",
+    "tierReason": "一个确实强大、由模拟驱动的配装/DPS 计算器，但与 Overframe 和 Reframed 等主流网站相比，可见的社区采用率或第三方报道极少。对专注的理论研究者来说很强大；总体受众较小。",
+    "dataConfidence": "low",
+    "youtube": [
+      {
+        "title": "I made a warframe build website",
+        "url": "https://www.youtube.com/watch?v=QRxA5kwX9WI",
+        "channel": "(creator channel — name not independently verified)"
+      }
+    ],
+    "otherReviews": [],
+    "trustpilot": null,
+    "pros": [
+      "免费、无需账号/登录，且无需安装——完全在浏览器中运行",
+      "基于模拟的 DPS 计算（靶机、缩放、爆头、异常状态）比简单的属性总和配装器更深入",
+      "自动配装优化器和 Riven 自动洗卡加速了极限配装的过程",
+      "丰富的附加功能：AoE 布局编辑器、图片导入 Mod、队友增益链接、快照分享",
+      "包含精选/专家审核的特色配装作为起点"
+    ],
+    "cons": [
+      "公开足迹非常小——几乎没有独立的讨论、评价或采用证据",
+      "功能深度可能意味着比轻量级配装分享工具更陡峭的学习曲线",
+      "社区/支持渠道汇集在 Discord 而非开放论坛，因此同伴反馈较难被发现",
+      "个人/小团队项目，维护和更新节奏的透明度有限",
+      "在配装发现/分享方面，被更知名的配装网站（Overframe、Reframed）遮盖了光芒"
+    ],
+    "reddit": [
+      {
+        "title": "I made a Warframe build website",
+        "url": "https://www.reddit.com/r/Warframe/comments/1q1cbx0/i_made_a_warframe_build_website/",
+        "subreddit": "Warframe",
+        "snippet": "256 upvotes · 77 comments — [ https://www.underframe.site ](https://www.underframe.site) The target audience is mainly builders, it has a damage simulation among some other thing…",
+        "sentiment": "positive"
+      },
+      {
+        "title": "So uh, the Ballistica Incarnon *checks notes* out damages every gun in the game",
+        "url": "https://www.reddit.com/r/Warframe/comments/1ucmsx4/so_uh_the_ballistica_incarnon_checks_notes_out/",
+        "subreddit": "Warframe",
+        "snippet": "23 upvotes · 28 comments — So I did some damage calculations. First picture is Ballistica, second is Furis incarnon. The Furis, you know, the pocket death star that is considere…",
+        "sentiment": "mixed"
+      },
+      {
+        "title": "Gauss + Kuva Khom + 105% ammo efficiency",
+        "url": "https://www.reddit.com/r/Warframe/comments/1twm4zv/gauss_kuva_khom_105_ammo_efficiency/",
+        "subreddit": "Warframe",
+        "snippet": "10 upvotes · 11 comments — Edit: idk why the video quality died, sorry about that. So this build is FAR from finished... I'm missing so many things as shown. The build still nee…",
+        "sentiment": "negative"
+      },
+      {
+        "title": "Getting The Best Out Of Rhino, A Build Guide",
+        "url": "https://www.reddit.com/r/Warframe/comments/1til3lg/getting_the_best_out_of_rhino_a_build_guide/",
+        "subreddit": "Warframe",
+        "snippet": "4 upvotes · 5 comments — https://preview.redd.it/g0b1q49k392h1.jpg?width=3440&amp;format=pjpg&amp;auto=webp&amp;s=b8314a61c895a5d583fd6a96aaff4939421e87ab Hello all. With Rhin…",
+        "sentiment": "negative"
+      },
+      {
+        "title": "Underframe UI",
+        "url": "https://www.reddit.com/r/Warframe/comments/1rwwnhh/underframe_ui/",
+        "subreddit": "Warframe",
+        "snippet": "1 upvotes · 2 comments — I saw a post earlier about someone wanting to know how to mod well and someone mentioned underframe(didnt know this was a thing) to calculate dps for …",
+        "sentiment": "mixed"
+      }
+    ]
+  },
+  "tenno-tools": {
+    "slug": "tenno-tools",
+    "oneLiner": "一个干净、无需登录的网页仪表盘，用于追踪 Warframe 的实时世界状态（警报、入侵、突击），并配有 Syndicate 声望计算器。",
+    "overview": "Tenno Tools (tenno.tools) 是一款非官方的、粉丝制作的网页应用程序，充当 Warframe 的“世界追踪器”，无需登录游戏即可快速了解 Origin System 的概况。其状态页面追踪 PC、PlayStation、Xbox 和 Switch 上的进行中活动，如警报、入侵和突击，它还包含一个 Syndicate 模拟器/计算器，让玩家在消耗游戏内声望之前，规划提升某一 Syndicate 的声望会如何影响敌对 Syndicate。它由 Reddit 上名为 “inorganicorganist” 的开发者构建，其源代码（至少是 Syndicate 规划器）在 GitHub 上以 MIT 许可证开源发布。Digital Extremes 在其官方文章“每个玩家都应该知道的 Warframe 工具和资源”中列出了它。",
+    "keyFeatures": [
+      "实时世界状态页面（警报、入侵、突击、进行中的活动）",
+      "多平台覆盖：PC、PlayStation、Xbox、Nintendo Switch",
+      "用于规划跨 Syndicate 声望影响的 Syndicate 模拟器/计算器",
+      "无需登录或账号 — 只读网页仪表盘",
+      "无需启动游戏即可快速了解 Origin System 概况",
+      "开源（Syndicate 规划器在 GitHub 上以 MIT 许可证发布）"
+    ],
+    "bestFor": "想要快速、基于浏览器地浏览游戏当前动态，并以轻量化方式规划 Syndicate 声望而不浪费声望的玩家。",
+    "sentimentSummary": "直接的社区讨论很少——没有专门针对它的热门 Reddit 帖子、YouTube 评测或 Trustpilot 页面。其真实性最强有力的证明是 Digital Extremes 在其官方 Warframe 工具列表“每个玩家都应该知道的工具”中推荐了它，并将其描述为“一个快速了解 Origin System 概况的极佳工具”。它似乎口碑良好但较为小众，在知名度上被更大型的世界状态资源所掩盖。",
+    "safety": {
+      "rating": "safe",
+      "notes": "只读网页仪表盘。无需登录 Warframe 账号，不读取游戏内存，不使用任何游戏内覆盖（overlay）——它消耗的是公开的世界状态数据。无需担心 RMT 或凭据收集问题。第三方安全扫描器将该域名标记为干净/安全。"
+    },
+    "tier": "situational",
+    "tierReason": "获得 Digital Extremes 官方认可且安全，但其功能集较窄（世界状态+ Syndicate 计算器），且与更大型的世界状态追踪器相比，社区采用率和讨论度较低。适用于特定需求，而非通用的必备工具。",
+    "dataConfidence": "medium",
+    "pros": [
+      "推荐于 Digital Extremes 的官方 Warframe 工具列表",
+      "无需登录、无需下载、无游戏内覆盖——真正安全且无摩擦",
+      "覆盖所有四个平台",
+      "Syndicate 计算器是一个极具实用性的规划利器，极少有工具能覆盖这一领域",
+      "Syndicate 规划器已开源（MIT）"
+    ],
+    "cons": [
+      "范围有限——本质上只有两个工具（世界追踪器 + Syndicate 计算器）",
+      "极少有社区讨论、评测或可见的活跃开发",
+      "Syndicate 规划器的 GitHub 仓库只有约 0 个 star，且提交历史较少",
+      "被更全面的世界状态资源所掩盖",
+      "没有可与更大型追踪器相比的移动端应用或推送通知生态系统"
+    ],
+    "youtube": [],
+    "trustpilot": null,
+    "otherReviews": [
+      {
+        "source": "Warframe.com (official Digital Extremes article)",
+        "url": "https://www.warframe.com/en/news/warframe-tools-and-resources-every-player-should-know-about",
+        "rating": null,
+        "snippet": "This website is a one-stop hub for tracking Alerts, events, and everything else that is happening in Warframe at any given moment. It's a fantastic tool for getting a quick snapshot of the Origin System without having to necessarily log in."
+      },
+      {
+        "source": "GitHub (makelon/tennotools-syndicate — syndicate planner source)",
+        "url": "https://github.com/makelon/tennotools-syndicate",
+        "rating": null,
+        "snippet": "Open-source Warframe syndicate planner (MIT license) powering tenno.tools/syndicate; ~0 stars, small JS/SCSS/HTML project built with webpack."
+      },
+      {
+        "source": "Warframe Forums (Players helping Players thread)",
+        "url": "https://forums.warframe.com/topic/1226873-tenno-tools-question/",
+        "rating": null,
+        "snippet": "A user Q&A thread referencing Tenno Tools in the official forums (content not fully retrievable)."
+      }
+    ],
+    "reddit": [
+      {
+        "title": "Im trying to use tenno.tools to calculate Syndicate rep and Im either too dumb or this is broken",
+        "url": "https://www.reddit.com/r/Warframe/comments/1tsjomu/im_trying_to_use_tennotools_to_calculate/",
+        "subreddit": "Warframe",
+        "snippet": "1 upvotes · 2 comments — Tenno.tools Syndicate Calculator : [https://tenno.tools/syndicate/](https://tenno.tools/syndicate/) When I input 15,000 rep on Arbiter of Hexis I get …",
+        "sentiment": "negative"
+      }
+    ]
+  },
+  "tenno-tracker": {
+    "slug": "tenno-tracker",
+    "oneLiner": "一个基于网页的跨平台 Warframe mastery 追踪器，具有个人资料同步、未精通物品路线图以及可选的刷取/市场工具。",
+    "overview": "Tenno Tracker (tennotracker.com) 是一款基于浏览器的辅助工具，它通过分析玩家的 Warframe 个人资料，按类别展示哪些物品尚未精通，并允许用户构建包含制作需求 and 掉落位置详情的路线图。它通过手动和自动个人资料同步，支持 PC、PlayStation、Xbox、Switch 和移动端，从官方 Digital Extremes API 以及社区资源中提取数据，而不是读取游戏内存或挂钩客户端。它采用免费增值模式，设有付费的 Supporter 和 Ally 档位，可提供更快的同步速度、更多路线图、优化的多物品刷取路线以及实时白金市场价格。该项目是独立的（明确声明“不隶属于 Digital Extremes”），并通过 Patreon 获得资金支持。",
+    "keyFeatures": [
+      "个人资料分析，按类别分组显示未精通物品及其获取方式",
+      "跨平台支持：PC、PS4/PS5、Xbox、Switch 和移动端",
+      "自动 + 手动个人资料同步（通过 GID-cookie 浏览器扩展进行自动同步）",
+      "针对未精通物品的自定义路线图，支持制作需求追踪",
+      "物品数据库中内置了部件掉落位置数据",
+      "优化的刷取路线 / 多物品任务推荐（付费档位）",
+      "针对可交易物品的实时白金市场价格集成（付费档位）",
+      "无需安装、无客户端挂钩、不读取游戏内存——使用官方 DE API"
+    ],
+    "bestFor": "想要无需安装的网页工具来准确查看自己还需要精通哪些内容，并规划迈向 Mastery Rank 的刷取/制作路线图的跨平台或主机端 Warframe 玩家。",
+    "sentimentSummary": "独立的社区反馈目前很少：有一个 Warframe 论坛 Fan Zone 帖子宣传了该工具，并且有一个规模不大但真实的赞助群体（约 230 名 Patreon 会员；配套的 Firefox GID-fetcher 扩展大约有 174 名用户，目前尚无评分）。未找到讨论该工具的 Reddit 帖子、YouTube 评测或 Trustpilot 页面，因此几乎没有独立的舆论可供总结。该工具将自己定位在安全性和跨平台覆盖上，其记录的方法（官方 DE API，不读取内存）与这一声明一致，但广泛采用率似乎较低，且它面临着与更成熟的 mastery 追踪器的竞争。",
+    "safety": {
+      "rating": "safe",
+      "notes": "基于网页且只读：它通过官方 Digital Extremes API 和社区资源提取个人资料数据，不读取游戏内存，也不挂钩客户端，这属于 DE 允许的工具类别。自动同步依赖于一个可选的 Firefox “GID Fetcher”扩展（采用 MIT 许可证，约 174 名用户，可选访问权限仅限于 warframe.com），该扩展可获取您的 Warframe GID 会话 cookie 以关联您的账号；这是一种会话 cookie/账号关联机制，因此用户应仅安装官方扩展，不过它并非游戏凭据收集器或游戏内覆盖。无 RMT。它明确声明不隶属于 Digital Extremes。存在付费档位，但属于可选的赞助者订阅。"
+    },
+    "tier": "niche",
+    "tierReason": "一个真正有用、安全的跨平台 mastery/路线图追踪器，但在已有成熟替代方案的领域中，其采用率信号较小（约 230 名 Patreon 会员，约 174 名扩展用户），且几乎没有独立的社区讨论。",
+    "dataConfidence": "medium",
+    "pros": [
+      "真正的跨平台（主机 + 移动端 + PC），这是许多 mastery 追踪器所没有覆盖的",
+      "无需安装、无客户端挂钩、不读取内存——使用官方 DE API 的低账号风险方法",
+      "具体的规划价值：未精通物品详情、制作需求和掉落位置一应俱全",
+      "免费档位功能实用（个人资料分析、追踪、3 个路线图、6 小时同步）",
+      "积极开发与支持（v1.2.0 更新，活跃的 Discord 和 Patreon）"
+    ],
+    "cons": [
+      "最佳功能（优化的刷取路线、市场价格、更快的同步、更多路线图）被锁定在付费的 Supporter/Ally 档位后",
+      "自动同步需要安装一个独立的浏览器扩展，用于读取您的 Warframe GID 会话 Cookie",
+      "用户群体较小，且几乎没有独立的评论（未发现 Reddit/YouTube/Trustpilot 的存在）",
+      "与现有的精通度追踪选择重叠，因此必须从老牌工具中争夺用户"
+    ],
+    "youtube": [],
+    "trustpilot": null,
+    "otherReviews": [
+      {
+        "source": "Warframe Forums (Fan Zone) — official announcement/discussion thread",
+        "url": "https://forums.warframe.com/topic/1468845-tool-tenno-tracker-cross-platform-mastery-tracker-with-profile-sync/",
+        "rating": null,
+        "snippet": "[Tool] Tenno Tracker - Cross-platform mastery tracker with profile sync. Developer-posted thread in the official Warframe Forums Fan Zone (thread confirmed to exist; content could not be retrieved due to a forum access block)."
+      },
+      {
+        "source": "Firefox Add-ons — Tenno Tracker GID Fetcher (companion extension)",
+        "url": "https://addons.mozilla.org/en-US/firefox/addon/tenno-tracker-gid-fetcher/",
+        "rating": "Not yet rated (0 reviews, ~174 users)",
+        "snippet": "Official companion extension that 'safely retrieves your Warframe GID cookie' to enable auto-sync; MIT-licensed, optional access scoped to warframe.com, states no sensitive data is stored or transmitted."
+      },
+      {
+        "source": "Patreon — Tenno Tracker",
+        "url": "https://www.patreon.com/tennotracker",
+        "rating": null,
+        "snippet": "Independent support page for the tool with about 230 members; used for funding and posting update notes (e.g., a v1.2.0 minor-update post)."
+      }
+    ],
+    "reddit": [
+      {
+        "title": "Tenno Tracker is Finally Live - A Warframe Web App for Optimal Farming Roadmaps &amp; Mastery Tracking",
+        "url": "https://www.reddit.com/r/Warframe/comments/1n0sliq/tenno_tracker_is_finally_live_a_warframe_web_app/",
+        "subreddit": "Warframe",
+        "snippet": "877 upvotes · 97 comments — https://preview.redd.it/n2t8wfqvfelf1.png?width=1450&amp;format=png&amp;auto=webp&amp;s=cd735b67dbe3f7bd8326d0d68fe5b65c84489f45 Hi Tenno! Back in [or…",
+        "sentiment": "positive"
+      },
+      {
+        "title": "A Warframe Web App for Optimal Farming Roadmaps &amp; Mastery Tracking - Need Community Input",
+        "url": "https://www.reddit.com/r/Warframe/comments/1id22qr/a_warframe_web_app_for_optimal_farming_roadmaps/",
+        "subreddit": "Warframe",
+        "snippet": "166 upvotes · 51 comments — **EDITED**: I've officially named the app **Tenno Tracker**, and you can follow its progress over at [tennotracker.com](https://tennotracker.com/). I’…",
+        "sentiment": "positive"
+      }
+    ]
+  },
+  "cephalon-navis": {
+    "slug": "cephalon-navis",
+    "oneLiner": "一款适用于 Android 和 iOS 的免费开源 Warframe 伴侣应用，可展现来自 WarframeStat.us API 的实时世界状态数据（虚空裂缝、周期、Baro、突击、Nightwave）。",
+    "overview": "Cephalon Navis 是一款移动端 Warframe “枢纽”应用，由 WFCD (Warframe Community Developers) 维护，该社区组织也是 WarframeStat.us API 和其他知名粉丝工具的幕后团队。它拉取公开的世界状态数据，并展示游戏内新闻、世界事件、开放世界昼夜周期计时器、赏金、虚空裂缝、Nightwave 挑战、Darvo 的每日特惠、Baro Ki'Teer 计时器和库存、突击、Archon 猎杀和入侵，并支持特定平台的世界状态（PC/PS/Xbox/Switch）。它为只读属性，不连接玩家的 Warframe 账号。它不隶属于 Digital Extremes。",
+    "keyFeatures": [
+      "实时虚空裂缝、突击、Archon 猎杀和入侵追踪",
+      "开放世界周期计时器（Cetus/Vallis/Cambion 昼夜）",
+      "Baro Ki'Teer 倒计时和库存显示",
+      "Darvo 每日特惠和游戏内新闻推送",
+      "带有过滤推送通知的 Nightwave 挑战",
+      "集团赏金",
+      "针对每个平台的世界状态选择（PC/PS/Xbox/Switch）",
+      "免费、开源（MIT 许可），无需登录账号"
+    ],
+    "bestFor": "想要在手机上查看计时器、裂缝和 Baro，而无需切屏（Alt-Tab）退出游戏的 Warframe 玩家。",
+    "sentimentSummary": "外部舆情信号较少，我无法直接证实 Reddit 或 YouTube 上的讨论（我的工具无法访问 Reddit）。我所发现的信息总体上是积极的：聚合网站/应用商店的简介将其描述为精致且易于导航，并且作为官方社区维护的工具，它承载着 WFCD 的社区信誉。报道的商店评分因来源而异，且下载聚合页面并不可靠，因此请谨慎对待具体数字。一个经常被提及的缺点是，用户支持仅通过开发者的 Discord 提供。",
+    "safety": {
+      "rating": "safe",
+      "notes": "只读伴侣应用，使用公开的 WarframeStat.us 世界状态 API；它不读取游戏内存，不提供游戏内覆盖，也不需要 Warframe 账号凭据或登录。在 MIT 许可证下开源（WFCD/navis），因此代码是可审计的。无需担心 RMT 或账号风险。不隶属于 Digital Extremes，也未获得其背书，但完全在 DE 对游戏外信息工具的容忍范围内。"
+    },
+    "tier": "recommended",
+    "tierReason": "一款由信誉良好的社区组织（WFCD）长期维护的开源移动端伴侣应用，涵盖了玩家每天查看的核心数据。对于移动端用户来说，这是一个极佳的选择，尽管它并非普遍必需，因为大部分相同的数据都可以通过桌面端覆盖层和网站获取。",
+    "dataConfidence": "medium",
+    "pros": [
+      "免费且开源（MIT），由值得信赖的 WFCD 社区组织维护",
+      "跨平台：Android 和 iOS，支持各主机平台的世界状态",
+      "全面覆盖计时器、裂缝、Baro、Nightwave、突击和入侵",
+      "积极开发中（数百个版本发布，2026 年有最新提交）",
+      "可配置的推送通知（例如 Nightwave）让您可以在移动端追踪事件",
+      "只读且保护隐私：无需账号登录或游戏内存访问"
+    ],
+    "cons": [
+      "支持仅限于开发者的 Discord 频道",
+      "完全依赖于 WarframeStat.us API，因此那里的中断会导致应用无法使用",
+      "项目规模较小（仅有数十个 GitHub 星标）；与热门的桌面端覆盖层相比，移动端受众较为小众",
+      "经证实的公开评论/社区讨论稀少且难以确认",
+      "数据聚合/下载镜像网站列出的评分和统计数据存在冲突"
+    ],
+    "youtube": [],
+    "otherReviews": [
+      {
+        "source": "GitHub (WFCD/navis, official repo)",
+        "url": "https://github.com/WFCD/navis",
+        "rating": "41 stars / 8 forks",
+        "snippet": "Official open-source repo: 'Cephalon Navis is an app inspired by Warframe Hub.' MIT-licensed, ~3,257 commits, latest release v2.37.16 (June 2026); actively maintained."
+      },
+      {
+        "source": "Softonic (download mirror)",
+        "url": "https://cephalon-navis-warframe-hub.en.softonic.com/android",
+        "rating": "4.9/5 (mirror-reported, unverified)",
+        "snippet": "Listed as a 'Trusted Program'; described as polished with an intuitive, easy-to-navigate interface. Aggregator rating; treat as unverified."
+      },
+      {
+        "source": "Apple App Store",
+        "url": "https://apps.apple.com/us/app/cephalon-navis/id1516388397",
+        "rating": null,
+        "snippet": "iOS listing exists for Cephalon Navis - Warframe Hub; rating/review count could not be verified (page did not return data at fetch time)."
+      }
+    ],
+    "trustpilot": null,
+    "reddit": [
+      {
+        "title": "Hey guys remember me?",
+        "url": "https://www.reddit.com/r/Warframe/comments/az0e0m/hey_guys_remember_me/",
+        "subreddit": "Warframe",
+        "snippet": "70 upvotes · 17 comments — So awhile ago I showed you guys Navis and since then I've adding things here and there. I also said that I would eventually release to the google play…",
+        "sentiment": "mixed"
+      },
+      {
+        "title": "The story of a lone crewman",
+        "url": "https://www.reddit.com/r/Warframe/comments/9wna0d/the_story_of_a_lone_crewman/",
+        "subreddit": "Warframe",
+        "snippet": "69 upvotes · 16 comments — [I saw this yesterday](https://www.reddit.com/r/Warframe/comments/9w6bfu/how_we_must_seem_from_the_corpus_in_the_vallis/) and thought I'd write a litt…",
+        "sentiment": "negative"
+      },
+      {
+        "title": "FashionFrame is Back: Superhero Edition!",
+        "url": "https://www.reddit.com/r/Warframe/comments/4r5898/fashionframe_is_back_superhero_edition/",
+        "subreddit": "Warframe",
+        "snippet": "20 upvotes · 23 comments — FashionFrame is back in Larunda NA East, this time with a Superhero theme! Tuesday, July 5th @ 11:30 pm ET on PC only! Dress up as your favourite supe…",
+        "sentiment": "mixed"
+      },
+      {
+        "title": "So last time I was here a few asked if I would make my tool for iOS any time in the future",
+        "url": "https://www.reddit.com/r/Warframe/comments/k6owaq/so_last_time_i_was_here_a_few_asked_if_i_would/",
+        "subreddit": "Warframe",
+        "snippet": "8 upvotes · 3 comments — Hey again, last time I came here and showed you guys Navis, a few of you were a bit sad when I said I wasn't sure about releasing it on Apple's app st…",
+        "sentiment": "mixed"
+      },
+      {
+        "title": "Warframe Winter Collection!",
+        "url": "https://www.reddit.com/r/Warframe/comments/jx5ks1/warframe_winter_collection/",
+        "subreddit": "Warframe",
+        "snippet": "1 upvotes · 0 comments — [Source](https://forums.warframe.com/topic/1236210-warframe-winter-collection/) [Winter-Collection-FB-Ad-Static-COLLECTION-16-9.jpg](//content.invisio…",
+        "sentiment": "positive"
+      }
+    ]
+  },
+  "genesis": {
+    "slug": "genesis",
+    "oneLiner": "Cephalon Genesis 是 WFCD 的开源 Warframe Discord 机器人，用于在您的服务器中追踪世界状态事件、查询物品以及市场价格。",
+    "overview": "Genesis (Cephalon Genesis) 是一款免费、开源的 Discord 机器人，由 Warframe Community Developers (WFCD) 维护，该组织也是 warframestat.us 和 Warframe Hub 的幕后团队。它允许 Discord 服务器追踪并获取有关 Warframe 世界状态事件（警报、入侵、裂缝、突击、Baro Ki'Teer、周期等）的通知，查询物品和掉落数据，查看 Warframe.market 价格，并管理组队（LFG）、抽奖、自定义命令和动态语音频道。配置通过 Discord 中的斜杠命令以及位于 genesis.warframestat.us 的 Web 控制面板完成。它运行在约 26,000 个服务器上。",
+    "keyFeatures": [
+      "世界状态事件追踪和通知（警报、入侵、裂缝、突击、Baro、昼夜周期）",
+      "从 Warframe 游戏数据中查询物品、MOD 和掉落数据",
+      "通过斜杠命令查询 Warframe.market 价格",
+      "组队（LFG）系统",
+      "抽奖管理和用户创建的自定义命令",
+      "动态/临时语音频道创建",
+      "位于 genesis.warframestat.us 的 Web 控制面板，用于各服务器设置",
+      "多语言支持（Crowdin）以及针对 Warframe 频道的 Twitch 直播监控"
+    ],
+    "bestFor": "想要在服务器内实现自动事件追踪、通知以及物品/市场查询的 Warframe Discord 服务器拥有者和氏族/社区管理员。",
+    "sentimentSummary": "直接的社区讨论较少，但在已有讨论中表现积极。Genesis 是一个历史悠久、值得信赖的 WFCD 项目（与广泛使用的 warframestat.us API 背后是同一个团队），已部署在约 26,000 个服务器上，这表明其得到了广泛的实际采用。其 top.gg 页面显示，在少量的评价中平均评分为 4.25/5，用户称其“非常棒”，同时也希望有更细粒度的权限和自动更新选项。未出现重大的批评或安全投诉。",
+    "safety": {
+      "rating": "safe",
+      "notes": "基于网页/Discord 的机器人，读取公开的 Warframe 世界状态（worldstate）和市场数据；它不读取游戏内存、不使用覆盖层（overlays），也不需要 Warframe/DE 账号凭据，因此与 DE 对第三方工具的立场不冲突。由声誉良好的 WFCD 团队在 Apache 2.0 许可下开源。适用标准的 Discord 机器人权限注意事项（仅授予所需的服务器权限），但不存在 RMT（真实货币交易）或账号风险问题。"
+    },
+    "tier": "recommended",
+    "tierReason": "采用广泛（约 2.6 万个服务器），由值得信赖的 WFCD 团队维护，积极开发中（v3.1.1 于 2026 年 7 月发布），且免费/开源。它是事实上的 Warframe Discord 机器人，尽管它服务于 Discord 社区的特定需求，而不是每个单体玩家，因此被归为“推荐”而非“必不可少”。",
+    "dataConfidence": "medium",
+    "pros": [
+      "免费且开源（Apache 2.0），由声誉良好的 WFCD 社区维护",
+      "非常广泛的采用（约 26,000 个 Discord 服务器）",
+      "全面的世界状态（worldstate）追踪，以及物品、掉落和 Warframe.market 查询",
+      "积极维护并频繁发布新版本（v3.1.1，2026 年 7 月）",
+      "网页控制面板加斜杠命令（slash-command）配置；支持多语言"
+    ],
+    "cons": [
+      "仅在 Discord 服务器内有用；没有针对个人玩家的独立应用程序",
+      "对于新服务器管理员来说，设置/配置存在一定的学习曲线（存在多个教程是有原因的）",
+      "用户要求更精细的权限控制和更多自动更新选项",
+      "尽管部署广泛，但 GitHub 星数相对较低（约 103 个）；公开评价样本较少"
+    ],
+    "youtube": [
+      {
+        "title": "How to Set Up Genesis 2.0 Auto Tracking for Warframe",
+        "url": "https://www.youtube.com/watch?v=uxH-_S9ykuE",
+        "channel": ""
+      },
+      {
+        "title": "Warframe (Bot Genesis) Guia Rapida",
+        "url": "https://www.youtube.com/watch?v=ZKxCOxqV0DY",
+        "channel": ""
+      }
+    ],
+    "otherReviews": [
+      {
+        "source": "top.gg (Discord bot list)",
+        "url": "https://top.gg/bot/123591822579597315",
+        "rating": "4.25/5 (4 reviews)",
+        "snippet": "Listed on ~25,960 servers. Reviewer onyxtube gave 5 stars, calling it 'really good' but wished for options letting all members view commands and automated channel updates for Baro inventory."
+      },
+      {
+        "source": "GitHub (WFCD/genesis)",
+        "url": "https://github.com/WFCD/genesis",
+        "rating": "103 stars / 41 forks",
+        "snippet": "Open-source TypeScript monorepo (bot/worker/web), Node.js 24, Discord.js, MariaDB, Apache 2.0 license; 137 releases, latest v3.1.1 (July 2026) — actively maintained."
+      },
+      {
+        "source": "Warframe Forums (Fan Zone)",
+        "url": "https://forums.warframe.com/topic/746231-the-genesis-project-is-creating-an-amazing-bot-for-warframe-on-discord/",
+        "rating": null,
+        "snippet": "Community thread introducing 'The Genesis Project' bot for Warframe on Discord."
+      },
+      {
+        "source": "discord.bots.gg",
+        "url": "https://discord.bots.gg/bots/123591822579597315",
+        "rating": null,
+        "snippet": "Alternate bot-list entry for Genesis with the same bot ID (123591822579597315)."
+      }
+    ],
+    "trustpilot": null,
+    "reddit": [
+      {
+        "title": "The fact that anytime someone criticizes the placement of the Duviri Paradox, 90% of the defense for it's position is just the Circuit, tells me that no one really defends Duviri FOR Duviri.",
+        "url": "https://www.reddit.com/r/Warframe/comments/1i155nc/the_fact_that_anytime_someone_criticizes_the/",
+        "subreddit": "Warframe",
+        "snippet": "1215 upvotes · 265 comments — This is inspired by that post where Aztecross was told by his chat to avoid the Duviri Paradox before the Second Dream. In that post there was clear a…",
+        "sentiment": "negative"
+      },
+      {
+        "title": "The Duviri Paradox: Hotfix 33.0.4",
+        "url": "https://www.reddit.com/r/Warframe/comments/135pga8/the_duviri_paradox_hotfix_3304/",
+        "subreddit": "Warframe",
+        "snippet": "362 upvotes · 198 comments — [Source](https://forums.warframe.com/topic/1349876-the-duviri-paradox-hotfix-3304/) **The Duviri Paradox: Hotfix 33.0.4** **The Undercroft (Landscape …",
+        "sentiment": "mixed"
+      },
+      {
+        "title": "The Duviri Paradox: Hotfix 33.0.11",
+        "url": "https://www.reddit.com/r/Warframe/comments/13qo9gb/the_duviri_paradox_hotfix_33011/",
+        "subreddit": "Warframe",
+        "snippet": "360 upvotes · 203 comments — [Source](https://forums.warframe.com/topic/1354230-the-duviri-paradox-hotfix-33011/) **The Duviri Paradox: Hotfix 33.0.11** Hello Tenno! Today’s Hotfi…",
+        "sentiment": "negative"
+      },
+      {
+        "title": "The Duviri Paradox: Hotfix 33.0.5",
+        "url": "https://www.reddit.com/r/Warframe/comments/136xfvq/the_duviri_paradox_hotfix_3305/",
+        "subreddit": "Warframe",
+        "snippet": "319 upvotes · 199 comments — [Source](https://forums.warframe.com/topic/1350382-the-duviri-paradox-hotfix-3305/) **The Duviri Paradox: Hotfix 33.0.5** **Changes** : * Magus Lockdo…",
+        "sentiment": "mixed"
+      },
+      {
+        "title": "Update 37: Koumei &amp; the Five Fates",
+        "url": "https://www.reddit.com/r/Warframe/comments/1fuiepp/update_37_koumei_the_five_fates/",
+        "subreddit": "Warframe",
+        "snippet": "316 upvotes · 184 comments — [Source](https://forums.warframe.com/topic/1414770-update-37-koumei-the-five-fates/) [d91f8afb7efef113fa4f95162d64699f.jpg](https://www-static.warfram…",
+        "sentiment": "negative"
+      }
+    ]
+  },
+  "rivenradar": {
+    "slug": "rivenradar",
+    "oneLiner": "一个基于网页的 Warframe Riven 价格分析器和捡漏工具，根据低价程度对 warframe.market 上的实时拍卖进行排名。",
+    "overview": "RivenRadar 是一个独立的粉丝制作网页工具，用于评估 Warframe Riven 模组（Riven mods）的价值，并在 warframe.market 上呈现定价偏低的商品。你可以粘贴拍卖 URL 或手动描述属性组合（roll）以获取典型的要价范围和置信度评级，并且实时的“交易动态（deal feed）”会根据利润空间对当前的商品进行排名。它使用可比区间（comparable-bucket）定价模型（匹配武器、正属性组合和负属性类别，锚定在第 15 百分位数价格，并带有第 25 至 75 百分位数的要价范围）。它不隶属于 warframe.market 或 Digital Extremes。",
+    "keyFeatures": [
+      "Riven 分析器：粘贴 warframe.market 拍卖链接或描述属性组合（roll）以获取典型要价、价差和置信度",
+      "交易动态（Deal Feed）：实时低价商品，按利润空间和置信度排序，并显示区间计算公式",
+      "市场脉搏（Market Pulse）：针对每种武器的每日 Riven 价格追踪，跨越 24h/7d/14d/30d，显示价格上涨、下跌和商品激增情况",
+      "监控列表（Watchlist）规则：保存的过滤器（武器、最高价格、最低折扣、所需属性、仅限在线卖家），用于过滤交易动态（deal feed）",
+      "使用第 15 百分位数锚点和第 25-75 百分位数范围的可比区间（Comparable-bucket）估值模型",
+      "Premium 专属特权：可比商品、建议还价、分布图表、按部件定价、套利排行榜",
+      "使用核心功能无需游戏账号或登录"
+    ],
+    "bestFor": "想要查询属性组合（roll）价值并在 warframe.market 上寻找低价拍卖，而无需手动交叉比对商品的 Riven 交易者。",
+    "sentimentSummary": "未发现关于 RivenRadar 的外部社区讨论——在搜索中未出现 Reddit 帖子、YouTube 评测、Trustpilot 页面、Product Hunt 列表或公开的 GitHub 仓库，所有结果都指向该工具自己的网站。这表明它是一个全新或非常低调的工具，因此目前还没有独立的舆论倾向（正面或负面）可供报告。其陈述的估值方法透明且合理，但采用率和准确性仍未得到第三方的验证。",
+    "safety": {
+      "rating": "safe",
+      "notes": "只读网页应用，在浏览器中运行，无需游戏账号、登录或凭据，也没有读取游戏内存的客户端/覆盖层（overlay），因此不存在账号或 ToS（服务条款）风险。它依赖于公开的 warframe.market 数据。只需注意它是一个独立的粉丝项目（不隶属于 warframe.market 或 DE），并且其可选的 Premium 档位收取一次性 14.99 美元的费用。"
+    },
+    "tier": "niche",
+    "tierReason": "功能上切实可靠且安全，但未发现社区采用或第三方评测的证据，且它与已有的免费 Riven 定价工具在同一领域竞争。在出现实际使用信号之前，将其归为“小众（niche）”而非“推荐”。",
+    "dataConfidence": "low",
+    "pros": [
+      "透明且有文档记录的估值方法（基于可比区间 comparable-bucket 和百分位数）",
+      "核心分析器、交易动态（deal feed）和市场趋势是免费的，且无需账号或登录",
+      "一次性 14.99 美元的 Premium 费用，无订阅或循环收费",
+      "交易动态（Deal feed）和市场脉搏（market-pulse）趋势追踪超越了简单的价格查询"
+    ],
+    "cons": [
+      "未发现独立的评测、Reddit 讨论或社区足迹来验证其准确性或可靠性",
+      "完全依赖于 warframe.market 的商品数据，继承了其数据缺失以及陈旧/恶搞（troll）商品的问题",
+      "一些最实用的功能（可比商品、分布图表、按部件定价）被限制在 Premium 付费墙后",
+      "Riven 估值本质上存在不确定性，因此自动评估应被视为参考指南，而非金科玉律"
+    ],
+    "youtube": [],
+    "otherReviews": [],
+    "trustpilot": null,
+    "reddit": [
+      {
+        "title": "I built a tool that helps you figure out what your rivens are actually worth",
+        "url": "https://www.reddit.com/r/Warframe/comments/1tmc2cu/i_built_a_tool_that_helps_you_figure_out_what/",
+        "subreddit": "Warframe",
+        "snippet": "0 upvotes · 6 comments — Been working on this for a while now. The idea is simple: instead of opening WFM, sorting by price, squinting at stats, and guessing whether 200p is a…",
+        "sentiment": "mixed"
+      }
+    ]
+  },
+  "warframe-reliquary": {
+    "slug": "warframe-reliquary",
+    "oneLiner": "一个免费的基于网页的 Prime 愿望单、遗物规划和裂缝追踪工具，可将你想要的 Prime 部件映射到产出它们的遗物和任务地点。",
+    "overview": "Warframe Reliquary (wf.xuerian.net) 是由 Xuerian 制作的粉丝向、基于浏览器的刷取（farming）规划工具。你将想要的 Prime 物品加入愿望单，该工具就会显示哪些遗物包含这些部件、哪些掉落表/星图位置会奖励这些遗物，以及这些位置中哪些当前有活跃的裂缝（以金色高亮显示）。数据来源于 Digital Extremes 官方公布的掉落表，入库（vaulted）物品会用红色标记。愿望单可以根据需要进行保存，生成一个私有书签密钥和一个可分享的公开密钥，以便朋友之间可以互相查看对方的清单。",
+    "keyFeatures": [
+      "Prime 部件愿望单，可过滤至仅显示你需要的遗物",
+      "遗物箱（Reliquary）视图：遗物到物品的映射，以及每个遗物包含在哪些掉落表中",
+      "实时裂缝追踪——带有活跃裂缝的星图位置组会以金色高亮显示",
+      "已入库（Vaulted）物品用红色标记，以便你避开无法获取的目标",
+      "可保存的心愿单，带有私有书签密钥以及可分享的公开密钥，用于与好友共同规划",
+      "通过 URL 参数直接深层链接到特定的 Prime/部件（例如 ?parts=rhino,nyx:chassis）",
+      "使用官方 Digital Extremes 掉落表数据",
+      "多语言本地化支持（enUS、ptBR、frFR 等）"
+    ],
+    "bestFor": "积极刷取 Prime 部件，并希望规划高效的虚空遗物刷取路线、了解当前应该刷哪些虚空裂缝的玩家，特别是针对需要协调的小队/好友刷取。",
+    "sentimentSummary": "直接的社区讨论较少 —— 仅有一个官方 Warframe Forums 公告/支持贴，并且在 Steam 社区指南和论坛的 \"good relic planners\" 讨论中被引用，作为少数几个与 DE 掉落数据保持同步的遗物规划工具之一。未发现 Reddit 帖子、YouTube 评测或商店/Trustpilot 评分。现有的参考评价为中性至正面，将其定位为一个可靠、及时的规划工具，主要的注意事项是许多较旧的竞争对手遗物规划工具已经失效。",
+    "safety": {
+      "rating": "safe",
+      "notes": "基于网页的只读规划工具。它不读取游戏内存、不覆盖客户端，也不需要 Warframe/DE 账号凭据 —— 它仅使用公开发布的掉落表数据，因此不涉及 DE 对覆盖/内存读取的担忧，且不带来账号或 RMT 风险。可选的保存心愿单功能使用生成的密钥而不是登录。"
+    },
+    "tier": "situational",
+    "tierReason": "一个功能强大、紧跟更新的遗物规划工具，在指南中被推荐为少数仍在维护的工具之一，但它服务于特定需求（Prime 刷取规划），并且社区影响力较小、较为低调，而不是被广泛采用的必备工具。",
+    "dataConfidence": "low",
+    "youtube": [],
+    "trustpilot": null,
+    "otherReviews": [
+      {
+        "source": "Warframe Official Forums (Fan Zone thread)",
+        "url": "https://forums.warframe.com/topic/838003-warframe-reliquary-wishlist-and-relic-planner/",
+        "rating": null,
+        "snippet": "Official fan-zone thread titled 'Warframe Reliquary wishlist and relic planner' where the tool is presented/supported by its creator (thread returned HTTP 403 to automated fetch but is indexed and publicly listed)."
+      },
+      {
+        "source": "Steam Community Guide 'Useful Website'",
+        "url": "https://steamcommunity.com/sharedfiles/filedetails/?id=3014048283",
+        "rating": null,
+        "snippet": "Lists Reliquary under 'Relic Drop Farm and Planner' as one of two currently up-to-date Warframe relic planners: 'Start by wishlisting some relic to start planning... Data are based on DE official drop data.'"
+      },
+      {
+        "source": "Warframe Forums 'Good relic planners / resources?' thread",
+        "url": "https://forums.warframe.com/topic/1315992-good-relic-planners-resources/",
+        "rating": null,
+        "snippet": "Community discussion of relic-planning resources in which xuerian.net is referenced as a still-current option while some older planners (e.g. Tenno Zone) are noted as outdated."
+      }
+    ],
+    "pros": [
+      "完全免费且基于浏览器 —— 无需安装，无需登录，无账号风险",
+      "使用官方 DE 掉落表并标记入库物品，因此推荐保持准确",
+      "实时虚空裂缝高亮显示可将心愿单直接转化为可执行的“现在就刷”计划",
+      "可分享的公开密钥使协调小队/好友刷取变得简单",
+      "支持深层链接的 URL，用于分享特定的 Prime 目标",
+      "少数几个仍在保持更新的遗物规划工具之一"
+    ],
+    "cons": [
+      "社区影响力非常小 —— 几乎没有 Reddit/YouTube 的报道或评测来验证它",
+      "小众、单一用途的工具（仅限遗物/Prime 规划）",
+      "界面偏向功能性/实用性，不够精致",
+      "长期可用性取决于单个业余维护者保持数据更新",
+      "在相同信息上与更受欢迎的资源（如 Warframe Wiki 和 Warframe Market）重叠"
+    ],
+    "reddit": [
+      {
+        "title": "Warframe Reliquary is back online",
+        "url": "https://www.reddit.com/r/Warframe/comments/6x3qwl/warframe_reliquary_is_back_online/",
+        "subreddit": "Warframe",
+        "snippet": "147 upvotes · 23 comments — Data is pulled directly from official sources now, so it will be as up-to-date as they are. If you haven't used it before, the Reliquary simplifies a …",
+        "sentiment": "mixed"
+      },
+      {
+        "title": "[Quick Question] is Warframe Reliquary usually down for that long ?",
+        "url": "https://www.reddit.com/r/Warframe/comments/ed9sdv/quick_question_is_warframe_reliquary_usually_down/",
+        "subreddit": "Warframe",
+        "snippet": "14 upvotes · 14 comments — Hi, I have a very very quick question. I recently started using a Warframe ressource website named Warframe Reliquary ( [https://wf.xuerian.net/](http…",
+        "sentiment": "negative"
+      },
+      {
+        "title": "Warframe reliquary not working for anyone else?",
+        "url": "https://www.reddit.com/r/Warframe/comments/1t7hk56/warframe_reliquary_not_working_for_anyone_else/",
+        "subreddit": "Warframe",
+        "snippet": "3 upvotes · 5 comments — The warframe relic reliquary site hasn't worked for me for the past week or two and i'm wondering if that's the case for anyone else?",
+        "sentiment": "mixed"
+      },
+      {
+        "title": "Sites similar to Warframe Reliquary?",
+        "url": "https://www.reddit.com/r/Warframe/comments/82wtww/sites_similar_to_warframe_reliquary/",
+        "subreddit": "Warframe",
+        "snippet": "2 upvotes · 4 comments — If someone is not familiar, here's the site I'm talking about: https://wf.xuerian.net/#reliquary It basically helps you chose the bet place to farm ce…",
+        "sentiment": "mixed"
+      },
+      {
+        "title": "Warframe Reliquary alternative ?",
+        "url": "https://www.reddit.com/r/Warframe/comments/1m4p8zf/warframe_reliquary_alternative/",
+        "subreddit": "Warframe",
+        "snippet": "0 upvotes · 6 comments — [Warframe Reliquary](https://wf.xuerian.net/) doesn't seem to work anymore, is there an alternative?",
+        "sentiment": "mixed"
+      }
+    ]
+  },
+  "warframe-appraiser": {
+    "slug": "warframe-appraiser",
+    "oneLiner": "一个免费、基于浏览器的工具，可通过 OCR 和实时 warframe.market 白金价格，从截图评估您的 Warframe 仓库。",
+    "overview": "Warframe Appraiser 是一款免费、适配移动端的网页应用，让玩家可以拍摄或上传其游戏内仓库的截图，并立即获取从 warframe.market 实时拉取的白金估值。基础扫描无需账号即可使用，而登录则可解锁已保存的仓库（\"My Stash\"），包括数量、变体和市场快照、物品状态管理（Keep/Listed/Sold/Ignored）、套装收集分析、遗物估值以及手动段位掌控追踪器。它还包含一个独立的 Riven Appraiser，用于评估已开封的 Riven 属性。该工具由社区制作，不隶属于 Digital Extremes，并通过捐赠（\"Buy me a coffee\"）获得资金支持。",
+    "keyFeatures": [
+      "仓库截图/照片的 OCR 扫描（基础使用无需登录）",
+      "源自 warframe.market 的实时白金价格",
+      "My Stash：保存的仓库，包含数量、变体和市场快照（需要登录）",
+      "物品状态管理：Keep（保留）、Listed（已上架）、Sold（已售出）、Ignored（已忽略）",
+      "套装收集分析和 warframe.market 出售订单参考",
+      "虚空遗物估值",
+      "手动段位/装备等级及已精通状态追踪器",
+      "配套的 Riven Appraiser，用于评估已开封的 Riven 属性",
+      "适配移动端、基于浏览器（无需安装）"
+    ],
+    "bestFor": "想要通过截图快速、无需安装地估算其整个仓库或特定物品的白金价值的玩家，特别是在移动端，并能随着时间推移追踪库存。",
+    "sentimentSummary": "外部社区证据非常匮乏：该工具看起来较新且小众，主要通过创作者自己在 Warframe Forums 的公告贴进行宣传。未发现 Reddit 讨论、专门的 YouTube 评测或 Trustpilot 页面。创作者公开指出，轻量级 OCR 并不总是准确，结果应进行仔细核对，且该工具的界面和扫描均仅支持英文。",
+    "safety": {
+      "rating": "safe",
+      "notes": "只读网页工具：它处理上传的截图并读取公开的 warframe.market 价格。它不读取游戏内存、不注入覆盖层，也不需要 Warframe/DE 账号凭据，因此不会违反 DE 对读取游戏内存工具的立场。可选的登录仅用于保存库存。不隶属于 Digital Extremes。不涉及 RMT。主要的注意事项是准确性而非安全性：创作者警告说 OCR 可能会误识别物品，因此在采取行动前请先核实。"
+    },
+    "tier": "niche",
+    "tierReason": "真正有用的概念（截图转白金估值以及库存追踪），但它是一个新工具，几乎没有可见的采用率或独立的社区反馈，仅支持英文，且依赖于不完美的 OCR。这使它成为一个小众选择，而不是被广泛采用的主流工具。",
+    "dataConfidence": "low",
+    "pros": [
+      "免费且基础估值无需安装或登录",
+      "在移动端通过照片或截图即可良好运行",
+      "使用实时 warframe.market 价格",
+      "超越了一次性估值，提供保存库存、套装收集、遗物价值和段位追踪功能",
+      "不读取游戏内存或需要账号凭据"
+    ],
+    "cons": [
+      "轻量级 OCR 并不总是准确；在采取行动前必须核实检测到的物品",
+      "仅限英文界面和扫描（游戏必须设置为英文以确保准确读取）",
+      "复杂的截图可能需要长达 ~2 分钟来处理",
+      "极少有独立的/社区的评价证据；该工具似乎较新且小众",
+      "保存/仓库功能需要创建账号",
+      "估价的实时性和准确性完全取决于 warframe.market 的数据和图片质量"
+    ],
+    "youtube": [],
+    "trustpilot": null,
+    "otherReviews": [
+      {
+        "source": "Warframe Forums (creator announcement, General Discussion)",
+        "url": "https://forums.warframe.com/topic/1496016-i-made-a-new-warframe-tool/",
+        "rating": null,
+        "snippet": "Creator's announcement thread for the Warframe Appraiser inventory tool in the official Warframe Forums."
+      },
+      {
+        "source": "Warframe Forums (creator announcement, Fan Zone)",
+        "url": "https://forums.warframe.com/topic/1495918-i-made-a-warframe-trading-tool/",
+        "rating": null,
+        "snippet": "Earlier creator announcement thread introducing the Warframe trading/appraisal tool."
+      },
+      {
+        "source": "Streamable (demo clip)",
+        "url": "https://streamable.com/uqwfj8",
+        "rating": null,
+        "snippet": "Short demo clip showing the Warframe Appraiser in use."
+      }
+    ],
+    "reddit": [
+      {
+        "title": "A huge thank you to the 1.1k players who used my Warframe inventory tool!",
+        "url": "https://www.reddit.com/r/Warframe/comments/1rxbd6b/a_huge_thank_you_to_the_11k_players_who_used_my/",
+        "subreddit": "Warframe",
+        "snippet": "94 upvotes · 14 comments — Hey everyone, Just wanted to say a huge thank you to everyone who’s tried the Warframe tool I shared here! In the past 2 weeks it’s grown way more tha…",
+        "sentiment": "positive"
+      },
+      {
+        "title": "I made a new warframe tool",
+        "url": "https://www.reddit.com/r/Warframe/comments/1rlr71w/i_made_a_new_warframe_tool/",
+        "subreddit": "Warframe",
+        "snippet": "77 upvotes · 60 comments — Hey everyone! I'm pretty new to warframe but the community has been so welcoming and I wanted to give something back I built a free browser-based inve…",
+        "sentiment": "negative"
+      },
+      {
+        "title": "Update: I improved the Warframe inventory scanner I posted here after Reddit feedback",
+        "url": "https://www.reddit.com/r/Warframe/comments/1rnhnp7/update_i_improved_the_warframe_inventory_scanner/",
+        "subreddit": "Warframe",
+        "snippet": "44 upvotes · 11 comments — Hi everyone, just a follow-up from my previous post: https://www.reddit.com/r/Warframe/comments/1rlr71w/i_made_a_new_warframe_tool/ After the feedback…",
+        "sentiment": "positive"
+      },
+      {
+        "title": "Warframe Appraiser now runs on OCR (no AI)",
+        "url": "https://www.reddit.com/r/Warframe/comments/1sxa2tq/warframe_appraiser_now_runs_on_ocr_no_ai/",
+        "subreddit": "Warframe",
+        "snippet": "31 upvotes · 23 comments — Hi everyone, Quick update on Warframe Appraiser - based on recent feedback, the site now uses **OCR-based parsing** for images and videos. The OCR app…",
+        "sentiment": "positive"
+      },
+      {
+        "title": "I made a tool that estimates the platinum value of your Warframe inventory from a screenshot",
+        "url": "https://www.reddit.com/r/Warframe/comments/1rs0x7b/i_made_a_tool_that_estimates_the_platinum_value/",
+        "subreddit": "Warframe",
+        "snippet": "21 upvotes · 33 comments — Hey everyone! I built a small tool that can estimate the platinum value of your Warframe inventory from a screenshot. You just upload a screenshot of …",
+        "sentiment": "positive"
+      }
+    ]
+  },
+  "morrowshore-riven": {
+    "slug": "morrowshore-riven",
+    "oneLiner": "一款免费的、基于浏览器的工具，通过本地 OCR 读取 Riven mod 截图，根据当前的 meta 对每个属性进行评分，并估算其白金价值。",
+    "overview": "由 Morrow Shore 开发的 Warframe Riven Appraiser 是一款用于评估已解锁 Riven mod 的免费网页工具。您只需提供一张 Riven 图片（支持文件上传、剪贴板粘贴、拖放或相机捕获），它就会自动纠正旋转/倾斜，使用 OCR 提取武器名称和属性，根据其 meta 价值对每个属性进行颜色编码，并根据市场数据生成质量评分和估算的白金价格。OCR 在浏览器本地运行，因此 mod 数据不会发送到服务器，并且它同时支持单张 Riven 和并排对比图片。它与 Morrow Shore 更广泛的 Warframe 指南系列（包括一份全面的 Riven 指南）并存。",
+    "keyFeatures": [
+      "从 Riven 截图中通过 OCR 提取武器名称和属性",
+      "多种输入方式：文件选择、剪贴板粘贴 (Ctrl+V)、拖放以及相机捕获",
+      "自动纠正输入图片的旋转/倾斜",
+      "根据当前社区 meta 对每个属性进行颜色编码和质量评分",
+      "基于市场数据估算的白金价值",
+      "单张 Riven 和并排对比模式",
+      "手动编辑：点击以纠正武器/属性、添加或删除属性，以及速记手动输入选项",
+      "OCR 在浏览器本地运行（数据不在服务器端处理）以保护隐私"
+    ],
+    "bestFor": "希望通过截图快速检查已解锁 Riven 的属性质量和大致白金价值，而无需手动将数值输入到计算器中的 Riven 交易者和玩家。",
+    "sentimentSummary": "在我能接触到的来源中，关于该特定工具的直接社区讨论很少，因此很难从外部舆论中评估玩家态度。Morrow Shore 是 Warframe 指南领域公认的名字，且该工具所描述的功能集（本地 OCR 隐私保护、meta 颜色编码、白金估价）非常符合 Riven 交易者的需求。主要的警告来自开发者自身：轻量级浏览器 OCR 并不总是准确的，因此在根据输出采取行动之前，应核实检测到的属性和武器名称。",
+    "safety": {
+      "rating": "safe",
+      "notes": "基于网页的只读工具。它不读取游戏内存，不作为覆盖层运行，且不需要 Warframe 或第三方登录。OCR 被描述为在浏览器本地运行，因此上传的 Riven 图片不会在服务器端处理。无 RMT 或账号凭据泄露风险。无需担心违反 DE 的 ToS。"
+    },
+    "tier": "situational",
+    "tierReason": "对于通过截图对已解锁 Riven 进行定价/评分这一特定任务确实有用，但它服务的受众较窄（Riven 交易者），且与已有的成熟计算器（Semlar rivencalc、browse.wf）存在竞争。外部证据表明其采用范围有限，且开发者承认的 OCR 不准确性意味着它只是一个便利辅助工具，而非权威的定价器。",
+    "dataConfidence": "medium",
+    "pros": [
+      "免费且即时，无需安装或账号",
+      "截图/OCR 工作流比手动将每个属性输入到计算器中更快",
+      "浏览器本地 OCR 可保护您的数据隐私",
+      "在一处提供颜色编码的 meta 评分以及白金估价",
+      "用于并排对比两张 Riven 的比较模式",
+      "得到 Morrow Shore 更广泛的 Warframe 指南内容的支持"
+    ],
+    "cons": [
+      "轻量级 OCR 并不总是准确（开发者已承认）；必须核对属性/武器",
+      "白金估价是近似值，且取决于波动的市场数据",
+      "使用场景狭窄，仅限于 Riven",
+      "很少有可见的社区讨论/评价来证实其实际可靠性",
+      "与许多交易者已经信任的成熟 Riven 计算器竞争"
+    ],
+    "youtube": [],
+    "otherReviews": [],
+    "trustpilot": null
+  },
+  "altair": {
+    "slug": "altair",
+    "oneLiner": "Altair 是一款功能丰富的 Warframe Discord 机器人，用于 Riven 评分、价格查询和世界状态警报，运行在约 16,000 个服务器上。",
+    "overview": "Altair（托管于 empx.cc，由开发者 \"empdarkness\" 制作）是一款功能广泛的、专注于 Warframe 的 Discord 机器人。它提供世界状态警报、Riven 属性数值查询和评分、Warframe Market 价格/拍卖查询、详细的武器数据（量化、IPS 属性、incarnon 属性）、Baro Ki'teer 库存追踪、突击/执政官/仲裁信息以及游戏内玩家档案查询。它通过 Discord 斜杠命令运行，是采用较广泛的 Warframe 实用机器人之一，已在 top.gg 和 Discord Bot List 上架，运行在约 16,200 个服务器上。",
+    "keyFeatures": [
+      "世界状态警报和通知（警报、入侵、活动等）",
+      "Riven 属性数值查询和带有优/劣指示器的手动 Riven 评分",
+      "物品和 Riven 的 Warframe Market 价格查询，以及 WFM 拍卖浏览/通知",
+      "详细武器信息：Riven 量化值、IPS 属性、incarnon 属性、攻击细分",
+      "Baro Ki'teer 库存及到达/离开时间追踪",
+      "突击、执政官和仲裁状态",
+      "游戏内玩家档案查询",
+      "配装评分"
+    ],
+    "bestFor": "希望无需离开 Discord 即可在聊天中进行 riven 评分、价格查询和 world-state 警报的 Warframe Discord 社区和交易者。",
+    "sentimentSummary": "直接的社区讨论证据较少——在搜索中未发现 Reddit 帖子或 YouTube 评测——但采用率指标强劲，根据 Discord Bot List，大约有 16,200 个 Discord 服务器正在使用该机器人。它在 top.gg 上的页面显示评分为 5/5，但仅来自 3 条评价，因此该星级评分在统计学上没有意义。总的来说，它看起来是一个真正有用、活跃维护的 Warframe 实用工具机器人，而不是一个被炒作的机器人。",
+    "safety": {
+      "rating": "safe",
+      "notes": "只读 Discord 机器人，通过 Discord 斜杠命令从公开的 Warframe/Warframe Market 数据中获取信息。它不读取游戏内存、不覆盖客户端，也不需要 Warframe 账号凭据，因此不存在违反 DE ToS 或封号的风险。添加它只需在服务器中授予标准的 Discord 机器人权限。"
+    },
+    "tier": "recommended",
+    "tierReason": "广泛的实际采用（约 16,200 个 Discord 服务器）以及全面且维护良好的 riven/价格/world-state 功能集，使其成为 Warframe Discord 服务器的强力选择；并非“必不可少”，因为它绑定于 Discord 且与独立网页工具功能重叠，而且直接的舆情证据（Reddit/YouTube）较少。",
+    "dataConfidence": "medium",
+    "youtube": [],
+    "trustpilot": null,
+    "otherReviews": [
+      {
+        "source": "top.gg listing",
+        "url": "https://top.gg/bot/522879744786563075",
+        "rating": "5/5 (3 reviews)",
+        "snippet": "Rated 5 out of 5 stars from 3 reviews. One reviewer: \"best bot, not bias\". Described as \"an expansive Warframe bot. From world state alerts, riven grading, to price checking drops, Altair can do it all.\""
+      },
+      {
+        "source": "Discord Bot List (discordbotlist.com)",
+        "url": "https://discordbotlist.com/bots/altair",
+        "rating": null,
+        "snippet": "Listed at approximately 16,200 servers. Tags: Games, Fun, Multipurpose, Multiple Languages. Described as a Warframe bot for world-state alerts, riven grading, and price checking."
+      },
+      {
+        "source": "GitHub (empdarkness/altair)",
+        "url": "https://github.com/empdarkness/altair",
+        "rating": null,
+        "snippet": "Command-list/reference repo (not the bot source): 7 stars, 3 forks. README notes it is now defunct and points to docs.empx.cc for current documentation."
+      }
+    ],
+    "pros": [
+      "深入的 Warframe 专属功能集，涵盖 rivens、价格、武器数据和 world state",
+      "强劲的采用率（约 16,200 个服务器）标志着其可靠性和活跃使用",
+      "只读且安全——无需访问游戏内存或账号凭据",
+      "便捷的 Discord 内 riven 评分和 Warframe Market 价格/拍卖查询",
+      "在 empx.cc 上有文档记录，并配有持续维护的命令集"
+    ],
+    "cons": [
+      "仅可在 Discord 内使用——无独立的网页/应用界面",
+      "公开评价/评分极少（top.gg 评分仅来自 3 条评价），因此舆情信号较弱",
+      "未发现 Reddit 或 YouTube 的相关报道，使得独立验证受限",
+      "官方网站对自动获取返回 403；旧的 GitHub 命令列表已失效"
+    ],
+    "reddit": [
+      {
+        "title": "Altair - Riven Sniping and more",
+        "url": "https://www.reddit.com/r/Warframe/comments/qd90vz/altair_riven_sniping_and_more/",
+        "subreddit": "Warframe",
+        "snippet": "41 upvotes · 41 comments — Apologies if this is not allowed. I would like to bring attention to a project I've been working on for quite some time, it's called Altair. This Disc…",
+        "sentiment": "mixed"
+      },
+      {
+        "title": "Assassin's Creed OVA - Altair joins Church, hunts for heretics and want to take Jerusalem",
+        "url": "https://www.reddit.com/r/Warframe/comments/i86fui/assassins_creed_ova_altair_joins_church_hunts_for/",
+        "subreddit": "Warframe",
+        "snippet": "1 upvotes · 0 comments",
+        "sentiment": "mixed"
+      },
+      {
+        "title": "Altair not working",
+        "url": "https://www.reddit.com/r/Warframe/comments/1ahwqds/altair_not_working/",
+        "subreddit": "Warframe",
+        "snippet": "0 upvotes · 0 comments — Altair seems not to be grading my rivens, I’ve tried in multiple servers and I’ve tried joining the Altair discord server to let them know of the prob…",
+        "sentiment": "mixed"
+      },
+      {
+        "title": "Excalibur Umbra using subsumed abilities",
+        "url": "https://www.reddit.com/r/Warframe/comments/1gigaux/excalibur_umbra_using_subsumed_abilities/",
+        "subreddit": "Warframe",
+        "snippet": "0 upvotes · 3 comments — Hi guys, I currently want to play Umbra and Operator dual style. So my question is what subsumed abilities can he use in auto pilot mode? I tried Pull…",
+        "sentiment": "mixed"
+      }
+    ]
+  },
+  "samodeus": {
+    "slug": "samodeus",
+    "oneLiner": "一个通过 OCR 从截图评估 riven mods 评分并计算武器 DPS 的 Warframe Discord 机器人。",
+    "overview": "Samodeus（也被列为 TheroxBot），由开发者 Theroxenes 开发，是一个使用 discord.py 构建的 Warframe 助手 Discord 机器人。其主打功能是基于 OCR 的 riven mod 分析：用户上传游戏内截图，机器人读取属性并根据与属性平均值的偏差对每个属性进行评分。它还可以针对自定义 build 进行武器 DPS 计算，显示 riven dispositions，并为 Warframe 更新和论坛帖子提供可配置的新闻推送。该机器人使用可自定义的“$”前缀，并在 top.gg 上列出，拥有大约 7,500 个服务器。",
+    "keyFeatures": [
+      "通过截图进行 OCR riven mod 分析，根据与平均值的偏差对每个属性进行评分",
+      "针对自定义 build 的武器 DPS 计算 ($dps)",
+      "Riven disposition 查询 ($dispo, $numericdispo)",
+      "可配置的 Warframe 新闻推送/更新 ($set_feed, $last)",
+      "拍卖和 endo/market 辅助命令 ($auction, $endo)",
+      "游戏内文本翻译和多语言支持 ($translate, $lang, $localize)",
+      "随机 riven 生成器和实用命令",
+      "每个服务器的自定义设置（自定义前缀、开关命令）"
+    ],
+    "bestFor": "希望无需离开 Discord 即可快速进行 riven mod 评分和 DPS 计算的 Warframe 玩家以及交易/氏族 Discord 服务器。",
+    "sentimentSummary": "外部社区对 Samodeus 的讨论非常少。它在 top.gg 上的页面显示了完美的 5 星评分，但仅来自一条“Great bot!”评价且零记录投票，因此该评分几乎没有分量。其约 7,500 个服务器的足迹表明在 Warframe Discord 社区中存在真实但低调的采用，但未发现实质性的 Reddit 帖子、YouTube 评测或书面评测来评估更广泛的舆情。",
+    "safety": {
+      "rating": "safe",
+      "notes": "只读 Discord 机器人：它处理用户自愿上传的截图并返回文本分析。它不读取游戏内存、不覆盖游戏客户端，且不需要 Warframe 账号凭据或登录，因此不会引发 DE 对内存读取覆盖或账号风险工具的任何担忧。适用标准的 Discord 机器人权限。"
+    },
+    "tier": "situational",
+    "tierReason": "解决了特定需求（Discord 内的 riven 评分和 DPS 计算），并拥有不容小觑的约 7,500 个服务器安装量，但活跃使用或社区认可的外部证据极少，使其低于“推荐”级别。",
+    "dataConfidence": "low",
+    "youtube": [],
+    "trustpilot": null,
+    "otherReviews": [
+      {
+        "source": "top.gg listing (rating and review)",
+        "url": "https://top.gg/bot/333058936859000832",
+        "rating": "5/5 (1 review, 0 votes)",
+        "snippet": "Single user review reads 'Great bot!' with a 5-star rating; listing reports roughly 7,549 servers. Low review/vote volume means the rating is not statistically meaningful."
+      },
+      {
+        "source": "discord.bots.gg listing",
+        "url": "https://discord.bots.gg/bots/333058936859000832",
+        "rating": null,
+        "snippet": "Describes it as 'a Warframe companion app mainly for analyzing riven mods from provided screenshots,' owned by Theroxenes, built with discord.py, customizable '$' prefix."
+      },
+      {
+        "source": "alternative.me bot commands page",
+        "url": "https://alternative.me/discord/bots/samodeus-theroxbot/commands",
+        "rating": null,
+        "snippet": "Lists command set (auction, dispo, dps, endo, g, randomriven, scale, translate, feeds, utility) and references a support server at discord.gg/9xyAMRq."
+      }
+    ],
+    "pros": [
+      "通过 OCR 自动进行 riven 评分，玩家无需用肉眼估算属性质量",
+      "在一个机器人中捆绑了多个 Warframe 实用工具（DPS、disposition、endo、拍卖、翻译）",
+      "每个服务器均可自定义（前缀、可开关命令、多语言）",
+      "有意义的安装基数（约 7,500 个服务器），表明存在真实使用",
+      "只读且无需凭据，因此账号风险低"
+    ],
+    "cons": [
+      "几乎没有外部评测、Reddit 帖子或视频报道来验证其可靠性",
+      "单条 top.gg 评价和零投票使得 5 星评分不可靠",
+      "OCR 准确度取决于截图质量，可能会误读属性",
+      "使用传统的前缀命令模式（$）而非现代的 Discord 斜杠命令",
+      "公开来源的维护/更新节奏不明确"
+    ],
+    "reddit": [
+      {
+        "title": "Favorite cephalon",
+        "url": "https://www.reddit.com/r/Warframe/comments/rwcdt1/favorite_cephalon/",
+        "subreddit": "Warframe",
+        "snippet": "728 upvotes · 442 comments — pick the one you like the most, feel free to give reasons in the comments as to whyplease do not make this about who is the best overall just who you …",
+        "sentiment": "positive"
+      },
+      {
+        "title": "The Riven power, and its creator, Samodeus.",
+        "url": "https://www.reddit.com/r/Warframe/comments/6q378z/the_riven_power_and_its_creator_samodeus/",
+        "subreddit": "Warframe",
+        "snippet": "229 upvotes · 80 comments — To be honest, it's a little sad to see people only looking at Rivens as really expensive powercreep mods, when they have this really interesting story…",
+        "sentiment": "positive"
+      },
+      {
+        "title": "Samodeus with the shade",
+        "url": "https://www.reddit.com/r/Warframe/comments/b8qhru/samodeus_with_the_shade/",
+        "subreddit": "Warframe",
+        "snippet": "208 upvotes · 24 comments",
+        "sentiment": "mixed"
+      },
+      {
+        "title": "Simaris &amp; Samodeus' Sanctuary Simulations",
+        "url": "https://www.reddit.com/r/Warframe/comments/i57fs6/simaris_samodeus_sanctuary_simulations/",
+        "subreddit": "Warframe",
+        "snippet": "199 upvotes · 57 comments",
+        "sentiment": "mixed"
+      },
+      {
+        "title": "What if Cephalon Samodeus had a Voice? by Omni Voice",
+        "url": "https://www.reddit.com/r/Warframe/comments/ctklqu/what_if_cephalon_samodeus_had_a_voice_by_omni/",
+        "subreddit": "Warframe",
+        "snippet": "164 upvotes · 24 comments",
+        "sentiment": "mixed"
+      }
+    ]
+  },
+  "frame-hub": {
+    "slug": "frame-hub",
+    "oneLiner": "一个功能齐全、社区驱动的 Warframe build 规划器，具有针对 frames、weapons、companions 等内容的实时属性和伤害计算。",
+    "overview": "Frame Hub (frame-hub.com) 是一个基于网页的 Warframe build 规划器，允许玩家使用游戏内的卡牌插画，通过实时属性计算、Archon Shard 插槽、arcanes 以及完整的 mod/arcane codex，来配置和优化 warframes、weapons、companions、Archguns、Archwings、Necramechs 和 Railjacks。它包括一个模拟等级缩放、护甲和元素组合的伤害模拟器，一个具有 disposition 调整范围的 riven 生成器/评分器，并排的 build 和 loadout 对比，以及一个用于浏览、点赞、过滤和加载共享 build 的社区板块。它提供玩家同步功能，可从 Warframe 中获取活跃的 Arsenal 数据，并提供用于保存和分享 loadout 的账户（登录）功能。根据该网站，它由一位独立开发者在业余时间维护，并配有 Discord 社区和可选的捐赠支持。",
+    "keyFeatures": [
+      "具有实时属性的 Warframe/weapon/companion/Archgun/Archwing/Necramech/Railjack 配置器",
+      "具有敌人等级缩放、护甲和元素组合的伤害模拟器",
+      "具有根据 disposition 调整属性范围的 Riven mod 生成器和评分器",
+      "Archon Shard 插槽以及技能/生存能力属性读数",
+      "使用游戏内卡牌艺术图的完整 mod、arcane 和 shard 秘典",
+      "社区 builds：浏览、筛选、点赞并加载分享的 loadouts",
+      "从 Warframe 导入当前 Arsenal 数据的玩家同步功能",
+      "武器和完整 loadouts 的横向对比"
+    ],
+    "bestFor": "想要一个免费、多合一的 build/理论配装规划器（包括 Railjack、Necramech 和 riven 评分），并且愿意尝试比 Overframe 更崭新、由个人开发的替代方案的 Warframe 玩家。",
+    "sentimentSummary": "在研究期间，无法证实有任何关于 frame-hub.com 的实质性外部社区讨论（Reddit 帖子、YouTube 评测、Trustpilot、Product Hunt），因此无法可靠地描述其舆论倾向。该工具展现为一个功能完善、积极维护的个人开发项目，并拥有 Discord 社区。请注意，许多关于“Frame Hub”/“FrameHub”的搜索结果指向无关的工具（framehub.paroxity.net 的段位精通清单、WFCD 的 warframe-hub 以及 warframehub.com 的招募），这使得筛选真实的反馈变得困难。",
+    "safety": {
+      "rating": "safe",
+      "notes": "基于网页的只读 build 规划器——它不会覆盖游戏、读取游戏内存，也不需要 Warframe/DE 账户凭据。其可选的“玩家同步”功能拉取公开的 Arsenal/个人资料数据（与其他粉丝工具使用的公开 Warframe 个人资料数据相同），而不是登录您的账户。这是此类工具的常见做法，也符合 DE 的粉丝内容规范。"
+    },
+    "tier": "situational",
+    "tierReason": "它是一个功能真正齐全的 build 规划器（可以说比许多竞争对手的范围更广，涵盖了 Railjack、Necramech 和 rivens），但其外部采用率和社区足迹无法得到证实，且相对于 Overframe 等成熟工具而言显得较小。适合作为替代方案或用于其小众的配装功能，因此属于视情况而定，而非推荐/必备工具。",
+    "dataConfidence": "low",
+    "youtube": [],
+    "otherReviews": [],
+    "trustpilot": null,
+    "pros": [
+      "广泛的覆盖范围：将 frames、weapons、companions、Archgun、Archwing、Necramech 和 Railjack 整合在同一个规划器中",
+      "具有敌人护甲和等级缩放的实时伤害/属性计算",
+      "内置的 riven 生成器和评分器，具有根据 disposition 调整的范围",
+      "支持筛选和点赞的社区 build 分享",
+      "来自 Warframe 的玩家/Arsenal 同步以及横向对比",
+      "免费使用，积极维护，并拥有 Discord 社区"
+    ],
+    "cons": [
+      "几乎没有可证实的外部社区反馈（Reddit/YouTube/评测）来衡量其准确性或可靠性",
+      "个人开发者业余项目——长期维护和数据新鲜度取决于个人",
+      "受众群体比 Overframe 等主流规划器更小/知名度较低",
+      "需要登录账户才能保存和分享 builds",
+      "名称与几个无关的“Frame Hub/FrameHub”工具冲突，导致可发现性混淆"
+    ],
+    "reddit": [
+      {
+        "title": "I want to create a fashion frame hub open-source website",
+        "url": "https://www.reddit.com/r/Warframe/comments/1joc7ey/i_want_to_create_a_fashion_frame_hub_opensource/",
+        "subreddit": "Warframe",
+        "snippet": "1 upvotes · 1 comments — Does anyone know an api or anything that can help me gather all fashion items in the game? Including, attachments, skins, helmets, syandanas, color pa…",
+        "sentiment": "mixed"
+      }
+    ]
+  },
+  "semlar-comp": {
+    "slug": "semlar-comp",
+    "oneLiner": "来自 Semlar.com 的免费网页工具，可让 Warframe 玩家横向对比两个 riven 属性（rolls），以决定哪一个更好。",
+    "overview": "Semlar's Riven Comparator (semlar.com/comp) 是 Semlar.com 上的几个 riven 工具之一，Semlar.com 是一个长期运行的社区制作 Warframe 工具套件。该对比器旨在“Compare Rolls（对比属性）”，让玩家评估两个版本的 riven mod——在决定新的重洗（re-roll）是否比当前属性有所提升时非常有用。它与 Semlar 较知名的 riven 工具并列：Riven Calculator（属性范围）、Riven Price Guide 和 Riven Hunter/交易搜索。它是一个基于浏览器的只读参考工具，不会接触游戏客户端。",
+    "keyFeatures": [
+      "两个 riven 属性的横向对比（“Compare Rolls”）",
+      "Semlar.com 整合 riven 套件（计算器、价格指南、交易搜索）的一部分",
+      "获取属性范围数据，以判断每个属性在其可能范围内的优劣",
+      "价格历史数据，为价值对比提供参考",
+      "免费、基于浏览器，无需登录或安装",
+      "覆盖游戏中所有可使用 riven 的武器"
+    ],
+    "bestFor": "想要在保留、出售或重洗（re-roll）之前，快速判断一个 riven 属性是否客观上优于另一个的 Riven 交易者和洗卡玩家。",
+    "sentimentSummary": "针对该 Comparator 本身的直接外部讨论较少，但 Semlar.com 整体在 Warframe riven 社区中是一个历史悠久且值得信赖的名字，经常与其广泛使用的 Riven Calculator 和 Price Guide 一起被提及。该对比器是该受人尊敬的套件中一个较小、小众的子工具，而不是一个拥有自己庞大追随者的独立工具。未发现对该工具本身的重大批评。",
+    "pros": [
+      "免费且可在浏览器中即时使用，无需账户或下载",
+      "依托 Semlar 受人尊敬的 riven 数据（属性范围 + 定价）支持",
+      "专为“这个属性更好吗？”的决策而设计",
+      "安全：只读网页工具，无需访问游戏内存或登录"
+    ],
+    "cons": [
+      "一个较小的子工具，光芒被 Semlar 更受欢迎的 Riven Calculator 和 Price Guide 所掩盖",
+      "针对该对比器本身的独立评测报道（Reddit/YouTube/Trustpilot）极少",
+      "界面偏向实用主义，对新手不够友好",
+      "游戏中的 Riven 定价/价值波动较大，因此对比仅供参考，而非绝对标准"
+    ],
+    "youtube": [],
+    "otherReviews": [],
+    "trustpilot": null,
+    "safety": {
+      "rating": "safe",
+      "notes": "托管在 semlar.com 上的只读网页工具。它不读取游戏内存，不覆盖客户端，且不需要 Warframe 登录或凭据，因此不存在账号或 ToS 风险。与 RMT 无关。"
+    },
+    "tier": "niche",
+    "tierReason": "Semlar.com 广受信任，但 Comparator 具体来说是一个单一用途的小型子工具，独立的讨论有限，服务于活跃的 riven 洗卡者/交易者这一窄众群体，而非普通玩家群体。",
+    "dataConfidence": "low",
+    "reddit": [
+      {
+        "title": "The Crippling Issues with the Riven System, Melee 3.0, and Status Changes",
+        "url": "https://www.reddit.com/r/Warframe/comments/gvbz6h/the_crippling_issues_with_the_riven_system_melee/",
+        "subreddit": "Warframe",
+        "snippet": "2095 upvotes · 517 comments — ***Introduction*** For those of you who’ve heard of me - you know who I am. For those of you who don't know, our bot has been used by several hundred …",
+        "sentiment": "negative"
+      },
+      {
+        "title": "Someone went out of their way to get Semlar's Riven Tracker accounts banned",
+        "url": "https://www.reddit.com/r/Warframe/comments/ax2b13/someone_went_out_of_their_way_to_get_semlars/",
+        "subreddit": "Warframe",
+        "snippet": "1894 upvotes · 796 comments",
+        "sentiment": "negative"
+      },
+      {
+        "title": "Semlar's Patented Riven Comparator",
+        "url": "https://www.reddit.com/r/Warframe/comments/bx8qij/semlars_patented_riven_comparator/",
+        "subreddit": "Warframe",
+        "snippet": "659 upvotes · 81 comments — # I'm Back, Tenno ##### I never meant to leave you! All previous website functionality has been restored, and with a little help from [my friends](htt…",
+        "sentiment": "positive"
+      },
+      {
+        "title": "An update regarding the status of Semlar's Riven Tracker",
+        "url": "https://www.reddit.com/r/Warframe/comments/axehga/an_update_regarding_the_status_of_semlars_riven/",
+        "subreddit": "Warframe",
+        "snippet": "380 upvotes · 150 comments",
+        "sentiment": "mixed"
+      },
+      {
+        "title": "Semlar.com just set up a new Patreon to help offset the cost of increased traffic from this sub!",
+        "url": "https://www.reddit.com/r/Warframe/comments/7fy0fh/semlarcom_just_set_up_a_new_patreon_to_help/",
+        "subreddit": "Warframe",
+        "snippet": "254 upvotes · 34 comments — ##Literally Who? Semlar is the guy behind... well, [semlar.com](https://semlar.com/). If you've been browsing this sub lately, you might have seen lin…",
+        "sentiment": "positive"
+      }
+    ]
+  },
+  "wfm-price-history": {
+    "slug": "wfm-price-history",
+    "oneLiner": "一款将价格历史图表、预测和交易信号直接嵌入到 warframe.market 物品页面中的浏览器扩展。",
+    "overview": "WFM Price History 是由开发者 FireZenk/OptimusRex 开发的一款 Chrome/Firefox 扩展（Manifest V3），它通过行内分析功能增强了 warframe.market 物品页面，而无需打开单独的标签页或工具。它渲染了一个可切换的 90 天和 48 小时 SVG 价格图表（带最大/最小值区间和每日交易量柱状图），外加 7 天线性回归预测、基于 90 天平均值的买入/卖出信号、波动率评分、1-10 级的流动性评级以及最佳交易时间提示。它还提供了一个独立的仪表板，包含搜索、历史记录、CSV 导出、笔记、带桌面通知的价格警报监视列表，以及 Prime 成套与单件套利/ducat 对比。所有数据均来自 warframe.market 的公开 API，计算在客户端运行；它在本地存储监视列表，不收集任何个人数据。",
+    "keyFeatures": [
+      "可切换的 90 天 / 48 小时 SVG 价格图表，带有最大/最小值区间和每日交易量柱状图",
+      "通过带置信区间的线性回归进行 7 天价格预测",
+      "基于 90 天平均值的买入/卖出交易信号",
+      "波动率评分和 1-10 级流动性评级",
+      "最佳交易时间推荐",
+      "带有价格阈值桌面警报通知的监视列表",
+      "包含搜索、历史记录、CSV 导出和个人笔记的独立仪表板",
+      "Prime 成套与单件套利及 ducat 对比分析"
+    ],
+    "bestFor": "希望将价格历史图表、预测和流动性/波动率指标直接嵌入到物品页面中，而不是切换到单独分析网站的 warframe.market 交易者。",
+    "sentimentSummary": "公开社区对该扩展的讨论非常少。唯一量化的反馈是其 Chrome Web Store 评分为 3.9/5（11 个评分）；Firefox 列表没有评论，且无法证实有关于它的 Reddit 帖子、YouTube 视频或论坛帖子。采用率很低（大约 882 名 Chrome 用户加上 29 名 Firefox 用户，以及 7 个 GitHub star），而褒贬不一的 3.9 商店评分表明它可以使用，但尚未获得强烈的共识。",
+    "safety": {
+      "rating": "safe",
+      "notes": "只读网页工具：它仅读取 warframe.market 的公开 API，并在浏览器中将 UI 注入到该网站的页面中。它不读取游戏内存，不是游戏内覆盖层，且不需要 Warframe 或 warframe.market 的登录凭据。权限极小（存储、通知、警报），监视列表存储在本地，且根据列表说明不收集个人数据。无 RMT 参与。这是 DE 通常会容忍的只读外部工具。"
+    },
+    "tier": "niche",
+    "tierReason": "功能丰富且实用，具有干净的只读设计，但采用率很低（约 882 名 Chrome 用户 + 约 29 名 Firefox 用户，7 个 GitHub star），社区反馈稀少，商店评分中等（3.9/5），因此它服务于窄众群体，而非被广泛依赖。",
+    "dataConfidence": "medium",
+    "pros": [
+      "将完整的价格历史图表、预测和交易量数据直接呈现在 warframe.market 物品页面上，无需切换标签页",
+      "真正有用的交易者指标：波动率、流动性评分、最佳交易时间、成套与单件套利",
+      "隐私友好且安全：仅限公开 API、本地存储、无需登录、极小权限、MIT 许可的开源",
+      "跨浏览器（Chrome 和 Firefox），带有独立仪表板、CSV 导出和价格警报",
+      "积极维护中（v1.7.0，2026 年 7 月更新），并规划了功能路线图"
+    ],
+    "cons": [
+      "用户群体小且独立的评论有限，使得质量难以衡量",
+      "Chrome Web Store 评分仅为 3.9/5（11 个评分），表明评价褒贬不一",
+      "预测/信号是简单的线性回归启发式算法，不应被视为可靠的预测",
+      "无法证实有 Reddit、YouTube 或论坛的报道，因此几乎没有社区验证",
+      "Firefox 版本的采用率几乎为零（约 29 名用户）且无评论"
+    ],
+    "youtube": [],
+    "trustpilot": null,
+    "otherReviews": [
+      {
+        "source": "Chrome Web Store",
+        "url": "https://chromewebstore.google.com/detail/wfm-price-history/aejobloolfcoipjfbhflgnamhlnmhnlb",
+        "rating": "3.9/5 (11 ratings, 882 users)",
+        "snippet": "Official Chrome listing by FireZenk/OptimusRex; v1.7.0, updated July 6 2026. Embeds price charts, forecasts, liquidity scores and trade alerts into warframe.market."
+      },
+      {
+        "source": "Firefox Add-ons (Mozilla)",
+        "url": "https://addons.mozilla.org/en-US/firefox/addon/wfm-price-history/",
+        "rating": "No rating (0 reviews, ~29 users)",
+        "snippet": "Firefox port of the same extension by OptimusRex, v1.7.0, MIT-licensed. No user reviews yet."
+      },
+      {
+        "source": "GitHub (FireZenk/WFMTacker)",
+        "url": "https://github.com/FireZenk/WFMTacker",
+        "rating": "7 stars",
+        "snippet": "MIT-licensed open-source repo, Manifest V3, latest release v1.7.0 (June 30 2026). 6 open issues, all feature enhancements (portfolio tracker, trade log, item comparison, extended time ranges) targeting v2.0.0 - no visible bug reports."
+      }
+    ]
+  },
+  "de-worldstate": {
+    "slug": "de-worldstate",
+    "oneLiner": "Digital Extremes 的官方原始世界状态 JSON 端点，为几乎所有第三方 Warframe 工具提供实时游戏数据（alerts、invasions、sorties、Void Trader、events）。",
+    "overview": "“DE World State Protocol” 指的是 Warframe 的官方 worldState.php 端点（https://api.warframe.com/cdn/worldState.php），这是由 Digital Extremes 直接发布的公开只读 JSON 提要。它返回游戏世界的实时状态：活跃的 alerts、invasions、sorties/Archon hunts、fissures、syndicate 任务、Void Trader (Baro Ki'Teer) 货品清单、社区/nightwave 活动、限时特惠、游戏内商城数据，以及诸如构建标签、世界种子和生成时间戳等元数据。它是一个原始的、未经身份验证的数据源，而非面向最终用户的应用程序，并且是社区 API（最著名的是 WFCD 的 warframe-worldstate-parser 和 warframestat.us）解析并重新提供服务以上传计时器、警报追踪器和伴侣应用程序的上游基础。",
+    "keyFeatures": [
+      "由 Digital Extremes 直接发布的官方第一方数据源",
+      "以 JSON 格式返回全面的实时世界状态",
+      "包含 Void Trader / Baro Ki'Teer 货品清单及价格",
+      "涵盖 events、社区目标、限时特惠以及游戏内商城落地页",
+      "多语言本地化字符串（en、fr、ja、zh、ko 等）",
+      "元数据：构建标签/版本、世界种子和生成时间戳",
+      "未经身份验证的只读公开 HTTPS 端点",
+      "需要客户端解析的原始内部格式（MongoDB ObjectIDs、epoch 时间戳）"
+    ],
+    "bestFor": "正在构建 Warframe 伴侣工具、机器人和追踪器，并希望获取权威上游数据而非第三方镜像的开发者；不适用于非技术最终用户。",
+    "sentimentSummary": "由于在本会话中发现之前网络搜索额度已耗尽，无法收集直接的外部舆情来源（Reddit/YouTube/Trustpilot），因此此处未报告社区引用。可以证实的是，该端点是 Warframe 开发者生态系统事实上的标准上游：WFCD 的 warframe-worldstate-parser 公开记录了从中获取数据的过程，而 warframestat.us 则是基于解析它而构建的。它在开发者中的实际声誉是可靠且权威的，主要的摩擦在于原始格式繁杂且没有官方文档，而这正是社区解析器存在的原因。",
+    "safety": {
+      "rating": "safe",
+      "notes": "由 Digital Extremes 通过 HTTPS 提供的只读、未经身份验证的公开 JSON 端点。它不读取游戏内存，不需要登录或凭据，也不是覆盖层，因此不会引发 DE 的覆盖层/内存读取或账号安全担忧。它是 DE 自己的第一方数据。唯一实际需要注意的事项是礼貌的速率限制/缓存（提要更新频繁），以及原始架构是非官方的，可能会在不经通知的情况下发生变化。"
+    },
+    "tier": "recommended",
+    "tierReason": "作为几乎驱动了整个第三方 Warframe 工具生态系统（warframestat.us、worldstate 解析器、警报/计时器应用程序）的权威第一方上游，它深受开发者的依赖。作为一个独立产品，它不属于“essential”级别，因为它是原始的开发者端点，而不是面向玩家的成品工具，大多数人是通过解析器间接消费它的。",
+    "dataConfidence": "medium",
+    "pros": [
+      "来自 Digital Extremes 的权威第一方数据，无中间商",
+      "免费、公开且无需身份验证",
+      "极度全面地覆盖了实时游戏状态",
+      "几乎所有社区工具都依赖的权威上游",
+      "可靠的运行时间，因为它是为实时游戏服务的生产基础设施"
+    ],
+    "cons": [
+      "原始、密集且没有官方公开文档的格式",
+      "使用需要解析才能使用的内部编码（MongoDB ObjectIDs、epoch-ms）",
+      "Schema 可能会在没有通知或版本控制保证的情况下发生变化",
+      "如果没有解析器/前端，非开发者将无法使用",
+      "没有针对第三方消费者的官方支持渠道或 SLA"
+    ],
+    "youtube": [],
+    "otherReviews": [
+      {
+        "source": "GitHub - WFCD/warframe-worldstate-parser",
+        "url": "https://github.com/WFCD/warframe-worldstate-parser",
+        "rating": "64 stars / 22 forks",
+        "snippet": "Community (Warframe Community Developers) open-source parser that fetches https://api.warframe.com/cdn/worldState.php and converts the raw response into usable JavaScript objects; used in production by warframestat.us APIs across PC/PS/Xbox/Switch."
+      }
+    ],
+    "trustpilot": null
+  },
+  "wfm-overlay": {
+    "slug": "wfm-overlay",
+    "oneLiner": "一个 Python OCR 悬浮窗，可读取 Warframe 屏幕上的物品名称，并在游戏内显示实时的 warframe.market 价格。",
+    "overview": "Warframe-Market-Overlay 是一款开源 (GPL-3.0) 的 Python 桌面悬浮窗，它使用 Tesseract OCR 读取 Warframe 屏幕上显示的物品名称，然后查询 warframe.market API，在可移动的游戏内窗口中显示最高卖家价格、平均价格和杜卡德金币 (ducat) 价值。它通过快捷键触发（Ctrl+Shift+F 进行扫描，Ctrl+Shift+H 切换显示），并支持可调整大小/可保存的布局以及针对 4K 的 UI 缩放。这是开发者 JonathanSourdough 的一个小型业余爱好项目，功能可用，但被描述为未完全优化。自 2022 年 12 月以来，该仓库没有提交过任何代码。",
+    "keyFeatures": [
+      "通过 Tesseract OCR 进行实时屏幕物品扫描",
+      "实时 warframe.market 定价：最高卖家价格、平均价格、杜卡德金币 (ducat) 价值",
+      "快捷键驱动（Ctrl+Shift+F 扫描，Ctrl+Shift+H 切换显示）",
+      "可移动/可调整大小的信息和搜索窗口",
+      "保存/加载多个布局",
+      "针对 4K 显示器支持最高 2 倍的 UI 缩放",
+      "WTS/WTB（出售 vs 购买）列表类型选择"
+    ],
+    "bestFor": "适合习惯在 Windows 上安装 Python 和 Tesseract，且希望在游戏内查看价格悬浮窗而无需切屏 (Alt-Tab) 到 warframe.market 的 Warframe 交易玩家。",
+    "sentimentSummary": "在本次调研中未找到外部社区讨论（Reddit、YouTube、Trustpilot、Product Hunt），因此无法从用户反馈中客观地描述舆情态度。唯一可衡量的指标是 GitHub 的采用率，该指标较低：37 个 Star、2 个 Fork 和 4 个未解决的 Issue，且自 2022 年 12 月以来没有任何提交，这表明其受众群体极小，且项目实际上已处于休眠状态。",
+    "safety": {
+      "rating": "caution",
+      "notes": "这是一个第三方游戏内悬浮窗。它通过 OCR (Tesseract) 读取屏幕，而不是读取或注入游戏内存，这属于风险较低的类别，且更接近 DE 对社区交易工具的一般容忍度（在方法上类似于广泛使用的工具如 WFInfo）。它不需要 warframe.market 登录或账户凭据，仅查询公开的市场 API。对于任何在游戏上运行的悬浮窗，均适用常规防范注意事项，用户应确认其符合当前的 Warframe 服务条款 (ToS)。非 RMT（真实货币交易）。需要从源码手动安装 Python 3.8.2+ 和 Tesseract OCR (GPL-3.0)，因此用户应自行审查代码。"
+    },
+    "tier": "niche",
+    "tierReason": "一个小型、可运行的业余爱好项目（37 个 GitHub Star，2 个 Fork），自 2022 年 12 月以来没有更新，也未发现任何社区评论或报道。其 OCR 悬浮窗生态位已被更受欢迎的工具所主导，因此它仅吸引了一小部分喜欢自行托管的交易玩家。",
+    "dataConfidence": "low",
+    "youtube": [],
+    "trustpilot": null,
+    "otherReviews": [
+      {
+        "source": "GitHub repository (stars/forks/issues)",
+        "url": "https://github.com/JonathanSourdough/Warframe-Market-Overlay",
+        "rating": "37 stars, 2 forks, 4 open issues; last push Dec 8, 2022",
+        "snippet": "Repository description: 'This is an overlay written in Python for the purpose of reading the screen in Warframe, and reporting the values from warframe.market associated with that item.' Created April 8, 2020; GPL-3.0; not archived but no commits since Dec 2022."
+      }
+    ],
+    "pros": [
+      "免费且开源 (GPL-3.0) — 代码可审查",
+      "使用屏幕 OCR 而非读取游戏内存，是风险较低的悬浮窗实现方式",
+      "无需账户登录或凭据；仅读取公开的 warframe.market API",
+      "便捷的游戏内价格查询，无需切屏 (Alt-Tab)",
+      "可配置的布局和 4K/UI 缩放"
+    ],
+    "cons": [
+      "实际上已无人维护 — 自 2022 年 12 月以来无任何提交",
+      "采用率极低（37 个 Star），且未发现任何评论或教程",
+      "需要手动设置：安装 Python 和 Tesseract OCR 并添加到 PATH",
+      "开发者指出其功能可用，但未完全优化",
+      "专注于 Windows；OCR 准确度取决于分辨率/设置",
+      "针对 Warframe 服务条款 (ToS)，适用标准的第三方悬浮窗注意事项"
+    ]
+  },
+  "relic-finder": {
+    "slug": "relic-finder",
+    "oneLiner": "一个免费的网页端 Warframe 参考网站，可将遗物与 Prime 部件进行映射，并提供掉落率、刷取指南和个人遗物追踪器。",
+    "overview": "Relic Finder (warframerelics.com) 是一个由粉丝制作的、基于浏览器的资源网站，它收录了 Warframe 遗物（Lith、Meso、Neo、Axi、Requiem）、它们掉落的 Prime 部件以及每个部件的掉落率百分比。除了数据库之外，它还提供刷取/位置指南、用于监控个人收藏的遗物追踪器、Prime Access 历史/获取信息，以及 Baro Ki'Teer 和警报追踪。它完全基于网页且为只读：无需账户登录，也不读取游戏内存。它不隶属于 Digital Extremes，其定位是官方 Warframe Wiki 的一个更简单、更专注的替代方案。",
+    "keyFeatures": [
+      "按纪元（Lith、Meso、Neo、Axi、Requiem）分类的遗物数据库",
+      "每个 Prime 部件的掉落率百分比",
+      "遗物与 Prime 部件的对应关系映射",
+      "用于监控个人收藏的个人遗物追踪器",
+      "刷取指南与掉落地点推荐",
+      "Prime Access 历史与当前获取状态数据",
+      "Baro Ki'Teer 追踪器与实时警报",
+      "结合游戏数据与玩家经验的编辑指南"
+    ],
+    "bestFor": "想要以更简单、更专注的方式查看哪些遗物掉落哪些 Prime 部件以及在哪里刷取它们，而不想去查阅内容更繁杂的官方 Wiki 的新手或中阶玩家。",
+    "sentimentSummary": "无法证实有关于该特定工具的外部社区讨论。在本次会话中无法检索到 Reddit、YouTube、Trustpilot 以及其他反馈来源（网络搜索额度已耗尽且 Reddit/Trustpilot 访问受阻），且未确认有任何相关贴子、视频或评价。唯一实质性的信息均来自该网站自身的页面，因此社区反响实际上是未知的。",
+    "safety": {
+      "rating": "safe",
+      "notes": "基于网页的只读参考网站。无需账号登录，不收集凭据，且根据其自身页面介绍，它使用的是编辑/手动数据，而非读取游戏内存，因此在 DE 的政策下不存在覆盖图（overlay）或账号风险问题。这是一个与 Digital Extremes 无关联的粉丝制作网站。未发现涉及 RMT。"
+    },
+    "tier": "niche",
+    "tierReason": "无可证实的采用或社区讨论证据（未确认存在 Reddit、YouTube 或相关评价）。它复制了官方 Wiki、WFCD 掉落表以及游戏内遗物 UI 已经很好提供的数据，因此它似乎只服务于少数受众，而非一个被广泛依赖的工具。",
+    "dataConfidence": "low",
+    "pros": [
+      "完全免费且无需登录",
+      "相比官方 Wiki，其布局更专注且对新手友好",
+      "一站式涵盖遗物、掉落率、刷取地点、Prime Access 历史以及 Baro 追踪",
+      "只读网页工具，无账号或游戏内存访问风险"
+    ],
+    "cons": [
+      "未发现无可证实的社区采用、评价或讨论",
+      "创建者匿名（自称为“数据科学家和工程师”，无具体署名个人）",
+      "依赖手动/编辑数据而非官方 API，因此准确性和时效性未经证实",
+      "与已建立且更值得信赖的来源（官方 Wiki、WFCD、游戏内遗物系统）高度重合"
+    ],
+    "youtube": [],
+    "otherReviews": [],
+    "trustpilot": null,
+    "reddit": [
+      {
+        "title": "🔧MASSIVE UPDATE! TennoLFG (Warframe's fan-made Looking For Group Tool) improvements/new features Recap",
+        "url": "https://www.reddit.com/r/Warframe/comments/1tebntk/massive_update_tennolfg_warframes_fanmade_looking/",
+        "subreddit": "Warframe",
+        "snippet": "45 upvotes · 23 comments — Hey Tenno, First of all, thank you again for the feedback, testing, suggestions, and bug reports. The last [TennoLFG](http://tennolfg.com) updates wer…",
+        "sentiment": "negative"
+      },
+      {
+        "title": "[Tool] I built a Warframe tools site (Relic Finder, MOA Builder, Amp Builder) – would love your feedback",
+        "url": "https://www.reddit.com/r/Warframe/comments/1lk8xiy/tool_i_built_a_warframe_tools_site_relic_finder/",
+        "subreddit": "Warframe",
+        "snippet": "16 upvotes · 44 comments — Hey everyone, Over the past 3 weeks I’ve been working on a Warframe website with a few tools I personally needed. It all started because Xuerian's Rel…",
+        "sentiment": "positive"
+      }
+    ]
+  },
+  "wf-relic-tracker": {
+    "slug": "wf-relic-tracker",
+    "oneLiner": "一个基于浏览器的参考工具，用于追踪 Warframe Prime 遗物、它们的入库状态以及不同精炼等级的掉落率。",
+    "overview": "Warframe Relic Tracker (wfrelictracker.com) 是一款免费的网页应用，可让玩家监控 Lith、Meso、Neo、Axi 和 Requiem 纪元的所有 Prime 遗物。它显示每个遗物的入库状态（可获取 vs 已入库）、实时掉落数据以及精炼等级信息，以帮助玩家决定刷取和使用哪些遗物来获得特定的 Prime 部件奖励。它是一个只读的浏览器参考工具，而非下载程序、覆盖图或内存读取客户端，因此不带来任何游戏内或账号风险。",
+    "keyFeatures": [
+      "追踪 Lith、Meso、Neo、Axi 和 Requiem 纪元的所有 Prime 遗物",
+      "显示每个遗物的入库状态（可获取 vs 已入库）",
+      "实时掉落数据展示",
+      "精炼等级（Intact/Exceptional/Flawless/Radiant）优化信息",
+      "Aya 轮换追踪器",
+      "手动数据刷新",
+      "完全在浏览器中运行，无需下载或登录"
+    ],
+    "bestFor": "想要快速通过浏览器参考哪些 Prime 遗物当前可获取或已入库，以及在刷取 Prime 部件时如何优化精炼等级的 Warframe 玩家。",
+    "sentimentSummary": "未发现关于该特定工具的社区讨论。在 Reddit、YouTube 和通用搜索引擎上的搜索未发现任何提及 wfrelictracker.com 的贴子、视频、评价或论坛帖子，且它未出现在 Trustpilot 或应用商店中。在研究时，它似乎是一个小型、相对不为人知的网页工具，几乎没有可衡量的采用痕迹。",
+    "safety": {
+      "rating": "safe",
+      "notes": "纯网页端、只读参考工具。它不读取游戏内存，不作为覆盖图运行，也不需要 Warframe 账号凭据或第三方登录，因此在 DE 的准则下不存在 ToS/EULA 或账号安全风险。无 RMT 参与。注意：该网站未列出作者、GitHub 或数据源归属，因此其入库/掉落数据的时效性和来源无法进行独立验证。"
+    },
+    "tier": "niche",
+    "tierReason": "从功能上讲是一个安全、免费的遗物/入库参考工具，但未发现社区采用、评价或讨论的证据，且已有的替代方案（基于 WFCD 的工具、Warframe Wiki、wf.market）在该领域占据主导地位。由于缺乏使用痕迹且数据来源无法验证，因此将其归为小众推荐而非首选推荐。",
+    "dataConfidence": "low",
+    "youtube": [],
+    "otherReviews": [],
+    "trustpilot": null,
+    "pros": [
+      "免费且可在任何浏览器中即时使用，无需下载或账号",
+      "涵盖包括 Requiem 在内的所有遗物纪元",
+      "一站式包含入库状态和 Aya 轮换追踪器",
+      "只读且安全，无 ToS/账号风险"
+    ],
+    "cons": [
+      "无作者、GitHub 或数据源归属，因此数据准确性/时效性无法验证",
+      "无可见的社区痕迹（未发现 Reddit/YouTube/评价）",
+      "与更成熟的工具（如 Warframe Wiki、WFCD 工具和 wf.market）重合",
+      "如果入库状态数据来源于 wf.market 的标记而非官方掉落表，则可能不可靠"
+    ]
+  },
+  "reframed": {
+    "slug": "reframed",
+    "oneLiner": "一个基于网页的 Warframe 配装生成器和社区配置浏览器，适用于 Warframe、武器和同伴。",
+    "overview": "RE:FRAMED (reframed.site) 是一款非官方的粉丝制作网页工具，用于创建、分享和发现 Warframe 配装。用户可以为 Warframes、主武器/副武器/近战武器以及同伴（Sentinels、Kubrows、Kavats、MOAs）创建配置，浏览社区共享的配装库，并关注游戏内新闻（如热修和 Prime Access）。它将自己定位为浏览多个资源的更轻量、更快速的替代方案，与 Overframe 处于同一领域。它明确声明不隶属于 Digital Extremes。",
+    "keyFeatures": [
+      "自定义配装/配置生成器（配装/创建页面）",
+      "社区配装库，包含探索、筛选和排序功能 (builds?tab=explore)",
+      "Warframe 战甲名册数据库，支持访问单个战甲的配装",
+      "武器数据库，涵盖主武器、副武器和近战武器",
+      "同伴板块 (Sentinels、Kubrows、Kavats、MOAs)",
+      "用于保存/追踪配装的用户个人主页",
+      "应用内新闻推送，包含热修和 Prime Access 信息",
+      "快速搜索 (Ctrl+K) 及 Discord 社区"
+    ],
+    "bestFor": "想要一个干净、现代的网页界面来创建、保存和浏览战甲、武器及同伴的社区配装，而无需使用游戏内军械库或更旧工具的 Warframe 玩家。",
+    "sentimentSummary": "未找到外部社区讨论。搜索未发现任何提及 RE:FRAMED 的 Reddit 帖子、YouTube 视频、Trustpilot 页面、Product Hunt 列表或 GitHub 仓库。所有可用信息均来自官方网站本身，因此目前实际上无法得知社区舆论。",
+    "safety": {
+      "rating": "safe",
+      "notes": "纯网页端配装工具——无需游戏内覆盖层、无需读取内存，且不需要 Warframe 账号凭据（账号似乎仅为网站原生）。它发布了服务条款和隐私政策，并明确声明其为非官方且不隶属于 Digital Extremes。未发现任何 RMT 或账号风险元素。DE 允许此类第三方辅助/参考网站。"
+    },
+    "tier": "niche",
+    "tierReason": "功能实用、安全且定位明确，但未发现可衡量的采用率或社区反馈（无 Reddit/YouTube/Trustpilot/GitHub 足迹），且它与知名度高得多的 Overframe 存在竞争。在有证据表明其被更广泛使用之前，暂评级为“小众”。",
+    "dataConfidence": "low",
+    "pros": [
+      "干净、现代的网页 UI，专注于 Warframe 配装",
+      "在一处涵盖战甲、武器和同伴",
+      "支持筛选/排序的社区配装浏览",
+      "免费浏览；无需游戏内凭据",
+      "坦承其非官方身份并提供服务条款/隐私政策",
+      "保持应用内新闻（热修、Prime Access）的即时更新"
+    ],
+    "cons": [
+      "无明显的外部采用或社区舆论来验证其质量",
+      "与规模大得多、更成熟的 Overframe 竞争",
+      "似乎无法从游戏内导入你的实际库存/MOD",
+      "未在配装中发现等级排行、评论或评分",
+      "可能需要注册账号才能创建/保存配装",
+      "仅通过 Discord 提供支持"
+    ],
+    "youtube": [],
+    "otherReviews": [],
+    "trustpilot": null,
+    "reddit": [
+      {
+        "title": "[Tool] - RE:FRAMED : Your Builds, Your Way",
+        "url": "https://www.reddit.com/r/Warframe/comments/1m0ep0l/tool_reframed_your_builds_your_way/",
+        "subreddit": "Warframe",
+        "snippet": "2312 upvotes · 156 comments — Hey r/Warframe, After 3 months of solo work I’m pushing RE:FRAMED out into the world. It’s 100 % free with no ads, and I need your harshest feedback t…",
+        "sentiment": "negative"
+      }
+    ]
+  },
+  "arsenyx": {
+    "slug": "arsenyx",
+    "oneLiner": "一个功能全面、积极维护的网页端 Warframe 配装规划器，涵盖战甲、武器、同伴和机甲的完整军械库。",
+    "overview": "Arsenyx (arsenyx.com) 是一个网页端 Warframe 配装规划器，可让玩家规划和整理游戏完整军械库的装备配置。其站点地图显示了大约 1,260 个物品页面，涵盖 152 个 Warframes（包括 Prime 变体）、342 个主武器、426 个近战武器、222 个副武器、40 个同伴武器、35 个显赫武器、38 个 Archwings、3 个 Necramechs、40 个同伴以及 Railjack Plexus。该网站还包含配装、组织（\"orgs\"）、文档、更新日志和公共 API 板块，其页面带有非常近的 lastmod 日期（2026-07-16），表明其处于积极维护状态。由于前端是 JavaScript 单页应用，因此无法从原始 HTML 中验证更深层的功能文本（登录要求、伤害计算、分享细节）。",
+    "keyFeatures": [
+      "跨越完整 Warframe 军械库的配装规划（战甲、主武器、副武器、近战武器、同伴）",
+      "涵盖 Prime、Kuva/Tenet 及其他变体",
+      "支持 Archwings、Necramechs、显赫/同伴武器以及 Railjack Plexus",
+      "组织/团队（'orgs'）功能，用于团队配装管理",
+      "公共 API 及开发者文档",
+      "更新日志表明其处于积极且持续的开发中（物品页面更新于 2026-07-16）",
+      "网页端工具，无需安装客户端"
+    ],
+    "bestFor": "想要一个物品覆盖面广、提供公共 API 且基于浏览器的现代配装规划器的 Warframe 玩家，以及需要共享/组织配装的团队。",
+    "sentimentSummary": "无法验证 Arsenyx 的社区舆论。无法搜索 Reddit、YouTube、Trustpilot 及其他反馈来源（本次会话的网页搜索额度已用尽），且均未得到证实。该工具本身呈现为一个正规、全面且积极维护的配装规划器，但从收集到的证据来看，其在现实世界中的采用率和反响尚不清楚。",
+    "safety": {
+      "rating": "safe",
+      "notes": "在浏览器中运行的网页端配装规划器；无证据表明它会读取游戏内存、运行游戏内覆盖层或需要 Warframe 账号凭据，因此不会引发 DE 覆盖层/服务条款（ToS）方面的担忧。它是一个配装规划/参考网站，而非 RMT 或交易市场。任何账号/登录大概都是其网站自身的账号，用于保存配装，而非 Warframe 凭据。"
+    },
+    "tier": "niche",
+    "tierReason": "该工具看起来制作精良、内容全面且处于积极维护状态，但未发现外部采用或社区舆论的证据，且它在一个由成熟规划器（Overframe、Warframe Builder）主导的领域中竞争。在没有证明其影响力之前，它被评级为“小众”而非“推荐”。",
+    "dataConfidence": "low",
+    "pros": [
+      "极广的物品覆盖面（约 1,260 个军械库页面，包括 Prime/变体、Archwing、Necramech、Railjack）",
+      "积极维护（物品页面在调研的几天内更新过）",
+      "提供公共 API 及面向开发者的文档",
+      "包含“组织”功能，用于群组/团队配装",
+      "基于浏览器，无需安装"
+    ],
+    "cons": [
+      "无可验证的社区足迹（未发现 Reddit/YouTube/商店评价）",
+      "深度功能集（伤害计算、配装分享、登录）无法验证，因为该网站是一个 JS SPA",
+      "与拥有更大社区且已臻成熟的配装规划工具竞争",
+      "在没有第三方验证的情况下，采用率、寿命和数据准确性未知"
+    ],
+    "youtube": [],
+    "otherReviews": [],
+    "trustpilot": null
+  },
+  "knightframe": {
+    "slug": "knightframe",
+    "oneLiner": "KnightFrame 是一个由 Knights of Aeterna 氏族社区运营的 Warframe 配装规划和配装分享数据库。",
+    "overview": "KnightFrame 是 knightsaeterna.com 的配装规划和配装分享板块，该网站是 \"Knights of Aeterna\" Warframe 氏族/联盟（成立于 2025 年 9 月）的社区中心。它允许玩家浏览和创建 Warframe 配装，该网站自称提供“来自 Knights of Aeterna 特工的顶级、最新和专家配装”。它与同一网站上的更广泛工具集（伤害计算器、现金计算器、Riven 评分器、市场追踪器、世界状态信息、LFG）并存。查看配装是免费且开放的；创建配装需要登录（集成了 Discord 登录）。",
+    "keyFeatures": [
+      "Warframe 配装创建与分享",
+      "顶级和最新配装的社区排行榜",
+      "武器伤害计算器（同网站）",
+      "Riven 评分工具",
+      "游戏内市场追踪器和世界状态信息",
+      "组队 (LFG) 系统",
+      "免费浏览；使用 Discord 登录以创建配装",
+      "氏族中心的一部分，在联盟网络中拥有约 2600+ 名玩家"
+    ],
+    "bestFor": "想要一个共享场所来浏览和发布 Warframe 配装的 Knights of Aeterna 氏族/联盟成员和潜在成员，以及寻找包含配装和实用工具的一站式氏族社区网站的休闲玩家。",
+    "sentimentSummary": "未能找到关于 KnightFrame 的外部社区讨论。这是一个非常新的（网站成立于 2025 年 9 月）、特定于氏族的工具，在研究时未发现 Reddit 帖子、YouTube 报道、商店列表或评价网站的存在。所有可用信息均来自该工具自身的网站，因此社区舆情实际上是未知的。",
+    "safety": {
+      "rating": "safe",
+      "notes": "基于网页、只读的配装规划工具，在浏览器中运行，不读取游戏内存或覆盖客户端，因此与 DE 对第三方工具的立场不冲突。创建配装使用 Discord OAuth 登录，而不是 Warframe/DE 账户凭据。未观察到 RMT（真实货币交易）成分。"
+    },
+    "tier": "niche",
+    "tierReason": "这是一个于 2025 年 9 月推出的单一氏族社区工具，未发现第三方采用、评价或报道。它服务于 Knights of Aeterna 社区，而不是更广泛的 Warframe 玩家群体，且主流配装规划工具（Overframe、WarframeBuilder）主导了该领域，因此其受众较小。",
+    "dataConfidence": "low",
+    "youtube": [],
+    "otherReviews": [],
+    "trustpilot": null,
+    "pros": [
+      "无需账户即可免费浏览社区配装",
+      "在一个中心将配装与其他实用程序（伤害/现金计算器、Riven 评分器、市场追踪器、LFG）捆绑在一起",
+      "来自活跃氏族的精选“专家”和“最新”配装",
+      "使用 Discord 登录，而不是暴露 Warframe 账户凭据"
+    ],
+    "cons": [
+      "非常新（网站成立于 2025 年 9 月），几乎没有经过验证的记录",
+      "实际上仅限于氏族范围；配装库比 Overframe 等主流规划工具要小",
+      "未发现外部评价、社区讨论或独立报道来验证其质量",
+      "需要账户/Discord 登录才能贡献配装"
+    ]
+  },
+  "webutilitykit-riven": {
+    "slug": "webutilitykit-riven",
+    "oneLiner": "一个免费的网页端追踪器，使用 Warframe Market 数据绘制未洗 Warframe Riven 模组的实时和历史市场价格图表。",
+    "overview": "Riven Price Tracker（WebUtilityKit Lab 的一部分）是一个面向客户端的网页，用于监控每种武器未洗 Riven 模组的当前和历史价格，数据提取自 Warframe Market (WFM) 公共 API。它显示最低价格、多个时间段的历史价格图表、最有价值 Riven 的排名以及单武器页面，通过游戏内前 5 个最低出售订单的加权平均值来计算价值。它完全基于 Cloudflare 的边缘技术栈（Workers、Durable Objects、D1、KV）构建，并提供英文和中文版本。该工具由开发者 \"jiachaoDing\" 为其玩 Warframe 的室友创建，目前处于功能冻结状态，并作为免费的长期资源进行维护。",
+    "keyFeatures": [
+      "来自 Warframe Market 数据的每种武器实时最低价格",
+      "历史价格图表（项目页面引用了 7/30/90 天的分析）",
+      "按最低售价排序的前 50 个左右最有价值的 Riven 模组排名",
+      "单武器搜索和专用武器页面",
+      "价值根据游戏内 5 个最低出售订单的加权平均值计算",
+      "自动定期数据收集（前 50 种武器的刷新频率高于长尾武器）",
+      "英文/中文双语界面",
+      "边缘托管，实现快速、即时加载的页面 (Cloudflare Workers/D1/KV)"
+    ],
+    "bestFor": "想要快速、无需登录即可查看每种武器未洗 Riven 模组最低价格和价格趋势的交易者，特别是相比功能齐全的交易网站，更喜欢轻量级单一用途工具的玩家。",
+    "sentimentSummary": "基本上没有关于该特定工具的公开英文社区讨论。在创作者的室友在中国游戏平台 Xiaoheihe 上发布了宣传视频后，它获得了适度的自然流量（截至 2026 年 1 月下旬，独立访客约为 1,550 人），但未能找到关于它的 Reddit 帖子、YouTube 评价、Trustpilot 页面或 Product Hunt 列表。无法从外部证据中对舆情进行有意义的评估；它似乎是一个小型、实用的利基工具，而不是一个被广泛采用的工具。",
+    "safety": {
+      "rating": "safe",
+      "notes": "基于网页、只读的工具，仅读取公开的 Warframe Market API。不涉及游戏内存访问、无覆盖层、无需登录/凭据，且不涉及真实货币交易，因此在 DE 的规则下不存在账户风险。"
+    },
+    "tier": "niche",
+    "tierReason": "功能实用且安全，但受众极小（约 1,550 名访客），功能已冻结，无英文社区足迹，且与更成熟的紫卡工具（Warframe Market、Riven Mirror、RivenRadar）功能重叠。适用于特定的快速查询需求，但未被广泛采用。",
+    "dataConfidence": "low",
+    "pros": [
+      "免费、无需登录，且边缘托管页面加载快速",
+      "只读且安全（仅使用公开的 WFM API）",
+      "专注于填补一个真正的空白：长期追踪 unrolled riven 底价的变化",
+      "双语（英文 + 中文），配有单件武器专属页面",
+      "透明的定价方法（5 个最低出售订单的加权平均值）"
+    ],
+    "cons": [
+      "用户群体非常小，且没有独立的评测或社区讨论",
+      "明确表示功能已冻结 / 处于 Beta 测试阶段，因此未来的后续开发有限",
+      "数据刷新是交错进行的（冷门武器大约每小时或更慢更新一次）",
+      "仅覆盖 unrolled riven，不包括 rolled/god-roll 的估值",
+      "与更成熟、使用更广泛的替代方案功能重叠"
+    ],
+    "youtube": [],
+    "otherReviews": [],
+    "trustpilot": null
+  },
+  "relicarium": {
+    "slug": "relicarium",
+    "oneLiner": "一款轻量级的网页参考工具，用于查询在哪里刷取 Warframe 的 prime 物品、遗物和装备。",
+    "overview": "Relicarium 是一款免费的、基于浏览器的参考网站（使用 SvelteKit 构建），旨在帮助 Warframe 玩家快速查找在哪里获取 prime 物品，以及与 Warframes、主武器、副武器和近战武器相关的遗物/部件。它被组织成可浏览的类别（Warframes、主武器、副武器、近战武器，以及一个总览视图），其宗旨是减少玩家花在研究遗物来源上的时间，从而有更多时间玩游戏。这是一个由署名为 \"LL\"（Steam/Reddit 账号为 llxd）的开发者独立开发的业余爱好项目，支持英文和巴西葡萄牙语，与 Digital Extremes 无任何官方关联。",
+    "keyFeatures": [
+      "Prime 物品 / 遗物来源查询 - 显示在哪里刷取物品",
+      "可按装备类别浏览：Warframes、主武器、副武器、近战武器",
+      "汇总关键数据的总览/概述视图",
+      "支持英文和巴西葡萄牙语",
+      "免费、无需登录、只读的网页工具（SvelteKit）",
+      "致谢页面链接了创作者的 Steam 和 Buy Me a Coffee"
+    ],
+    "bestFor": "想要快速、简单地查询哪个遗物掉落特定的 prime 部件以及在哪里刷取它们的 Warframe 新手或回归玩家，尤其是说葡萄牙语的玩家。",
+    "sentimentSummary": "外部足迹非常小。该工具由其创作者在 r/Warframe 和官方 Warframe 论坛（2023年）上发布，起因是抱怨花在研究遗物上的时间比玩游戏的时间还要多。我无法读取这两个帖子中的评论主体（Reddit 和论坛阻止了自动访问），因此经证实的社区反馈有限；目前没有我能确认的 YouTube 评测、Product Hunt 页面、GitHub 仓库或 Trustpilot 页面。它看起来更像是一个小众的个人兴趣项目，而不是一个被广泛采用的社区主流工具。",
+    "safety": {
+      "rating": "safe",
+      "notes": "只读网页参考网站，无需登录，无游戏 overlay，无内存读取，因此在 Digital Extremes 的政策下不带有任何账号或服务条款风险。仅有的外部链接是创作者的 Steam 个人资料和 Buy Me a Coffee 赞助页面。网站明确声明与 DE 无任何关联。"
+    },
+    "tier": "niche",
+    "tierReason": "一个由个人开发的小型参考工具，公开足迹非常有限，与许多更成熟的选择（Warframe Market、官方 Wiki、Overframe、基于 WFCD 的网站）严重重叠。实用且安全，但受众较小，并非广泛采用的必备工具。",
+    "dataConfidence": "low",
+    "youtube": [],
+    "trustpilot": null,
+    "otherReviews": [
+      {
+        "source": "Warframe Official Forums (creator announcement thread)",
+        "url": "https://forums.warframe.com/topic/1350903-introducing-relicarium-your-ultimate-tool-for-quick-and-easy-prime-item-lookup-in-warframe/",
+        "rating": null,
+        "snippet": "Official-forums launch/announcement thread for Relicarium describing it as a tool for quick and easy prime item lookup. Full discussion could not be retrieved (access blocked)."
+      }
+    ],
+    "pros": [
+      "免费、快速，无需账号或安装",
+      "专注单一用途 - 遗物/prime 刷取查询",
+      "支持巴西葡萄牙语，对非英语玩家很有用",
+      "安全：仅限网页端，无 overlay 或账号访问权限"
+    ],
+    "cons": [
+      "用户群体非常小，社区足迹极少",
+      "没有 GitHub/开源项目或明显的活跃开发迹象",
+      "网站上未记录数据来源",
+      "与更全面、维护更好的工具（Warframe Market、Wiki、Overframe）功能重叠",
+      "尚不清楚它与当前游戏内容的同步更新程度"
+    ],
+    "reddit": [
+      {
+        "title": "Introducing Relicarium - Your Ultimate Solution for Quick and Easy Prime Item Lookup in Warframe!",
+        "url": "https://www.reddit.com/r/Warframe/comments/13351fv/introducing_relicarium_your_ultimate_solution_for/",
+        "subreddit": "Warframe",
+        "snippet": "43 upvotes · 2 comments — Hey fellow Tenno! I'm excited to make my first post here on Reddit to share with you my solution for one of the biggest pains I always had in Warframe…",
+        "sentiment": "positive"
+      }
+    ]
+  },
+  "droptable-wf": {
+    "slug": "droptable-wf",
+    "oneLiner": "一个基于网页、可搜索的 Warframe 掉落表查询工具，用于查找物品、Prime 部件、遗物和 Rivens 的掉落地点。",
+    "overview": "droptable.wf 是一个第三方网页资源，可让 Warframe 玩家搜索游戏的掉落表，以快速查找哪些任务、敌人和活动会产出特定物品。它涵盖了各种任务类型（防御、生存、间谍、中断、挖掘等）的标准掉落数据、针对 prime 装备的 Prime/遗物查询，以及 Riven mod 搜索。它的功能类似于 Digital Extremes 官方掉落表参考的快速、更易搜索的替代方案，并将其作为权威来源进行链接。",
+    "keyFeatures": [
+      "涵盖多种任务类型的可搜索掉落表数据库",
+      "针对 prime 装备部件的 Prime 和遗物查询",
+      "按武器搜索 Riven mod",
+      "反向查询：查找特定物品的掉落地点",
+      "链接到官方 DE 掉落表参考",
+      "基于浏览器，无需安装或登录"
+    ],
+    "bestFor": "想要快速查询物品、Prime 部件、遗物或 Riven 的掉落位置，而不想手动浏览 DE 原始官方掉落表的玩家。",
+    "sentimentSummary": "在本次调研中未能证实任何外部社区讨论（Reddit、YouTube、Trustpilot、Product Hunt 或论坛），因为在运行这些查询之前网络搜索额度已耗尽。该工具本身表现为一个直观的、只读的掉落表查询工具。在已有官方 DE 掉落表、Warframe Wiki 和基于 WFCD 的工具等知名资源服务的领域中，它似乎是一个较小/较新的竞争者，因此目前尚未证实其采用证据。",
+    "safety": {
+      "rating": "safe",
+      "notes": "只读信息网站。无需账号登录，不读取游戏内存，无游戏内覆盖（overlay），无真钱交易。不与游戏客户端交互，因此不存在违反 ToS（服务条款）或账号安全的风险。对任何第三方网站均适用标准注意事项（对照 DE 官方掉落表验证掉落数据，该网站本身也链接了该官方掉落表作为可信数据源）。"
+    },
+    "tier": "niche",
+    "tierReason": "一个实用、安全的掉落查询网站，但它与地位稳固的官方 DE 掉落表、Warframe Wiki 以及基于 WFCD 的工具直接竞争。未发现可证实的采用情况或社区舆情，因此它更像是一个小众的替代选择，而非必不可少或广泛使用的工具。",
+    "dataConfidence": "low",
+    "youtube": [],
+    "otherReviews": [],
+    "trustpilot": null,
+    "pros": [
+      "免费、基于浏览器、无需安装或账号",
+      "可搜索/反向查询，比浏览 DE 的原始掉落表更快",
+      "除任务掉落外，还支持 Prime/遗物和 Riven 查询",
+      "安全：只读，不访问游戏内存或凭据",
+      "链接到官方 DE 掉落表参考作为权威来源"
+    ],
+    "cons": [
+      "未发现可证实的社区采用或评价",
+      "与已有的成熟工具高度重合（官方 DE 掉落表、Warframe Wiki、WFCD 工具）",
+      "网站上未明确公开创建者/维护者以及数据更新频率",
+      "掉落数据仅与其底层数据源保持同步；游戏更新后的准确性未经证实"
+    ],
+    "reddit": [
+      {
+        "title": "Update 30.5: Sisters of Parvos",
+        "url": "https://www.reddit.com/r/Warframe/comments/oewpms/update_305_sisters_of_parvos/",
+        "subreddit": "Warframe",
+        "snippet": "496 upvotes · 327 comments — [Source](https://forums.warframe.com/topic/1269749-update-305-sisters-of-parvos/) **Update 30.5: Sisters of Parvos** [42e9bfb4e8cd602a244780dd7cbbfaac…",
+        "sentiment": "negative"
+      },
+      {
+        "title": "How the relics system killed my clan",
+        "url": "https://www.reddit.com/r/Warframe/comments/52jnqk/how_the_relics_system_killed_my_clan/",
+        "subreddit": "Warframe",
+        "snippet": "261 upvotes · 277 comments — ... and by consequence my interest in the game. (TL;DR at the end) I’m part of a pretty active clan. Around ~80 members, but -most importantly- a grou…",
+        "sentiment": "negative"
+      },
+      {
+        "title": "Returning after a long pause",
+        "url": "https://www.reddit.com/r/Warframe/comments/1lwnrpj/returning_after_a_long_pause/",
+        "subreddit": "Warframe",
+        "snippet": "0 upvotes · 5 comments — Hi! I kinda feel overwhelmed with all the new stuff added to the game and all the new upgrades. So I have a few questions: 1. What would be the curren…",
+        "sentiment": "positive"
+      },
+      {
+        "title": "Evergreener rewards for puzzles and other modes.",
+        "url": "https://www.reddit.com/r/Warframe/comments/u7ysu5/evergreener_rewards_for_puzzles_and_other_modes/",
+        "subreddit": "Warframe",
+        "snippet": "0 upvotes · 3 comments — As a general context, there are very few true evergreen rewards. But DE has a lot of features or interesting mechanics that stop being rewarding after…",
+        "sentiment": "mixed"
+      }
+    ]
+  },
+  "warframe-drops-pwa": {
+    "slug": "warframe-drops-pwa",
+    "oneLiner": "一款轻量级、可安装的网页应用，利用 Digital Extremes 的官方掉落表来寻找刷取任何 Warframe 物品的最佳地点。",
+    "overview": "Warframe Drops PWA（由开发者 farhadrezvani 开发）是一款免费、开源的渐进式网页应用（PWA），允许玩家根据 Digital Extremes 发布的官方掉落表搜索任何游戏内物品并查看最佳刷取地点（按掉落概率降序排列）。其构建过程会自动下载当前的官方掉落数据并解析为 JSON，且该应用可在受支持的浏览器上安装以供离线使用。它使用 Preact、Vite 和 TypeScript 构建，采用 MIT 许可，源代码托管在 GitHub 上。它是一个只读的参考工具，无需登录、账号，也无游戏集成。",
+    "keyFeatures": [
+      "搜索任何物品并查看最佳刷取/掉落地点",
+      "结果按掉落概率（降序）排序，并显示稀有度",
+      "数据直接源自 Digital Extremes 的官方掉落表",
+      "可安装的 PWA，支持离线使用",
+      "通过构建步骤自动生成数据（下载并解析最新的掉落数据）",
+      "包含哈希值和时间戳的构建元数据，用于确保数据新鲜度/完整性",
+      "快速、轻量级的 Preact/Vite 前端",
+      "开源（MIT）且免费"
+    ],
+    "bestFor": "想要一款快速、无杂质、可安装的工具，以便从官方掉落表中快速查询在哪里刷取特定物品（包括离线状态）的玩家。",
+    "sentimentSummary": "未发现该工具的社区讨论（Reddit、YouTube、论坛）、商店评分或 Trustpilot 存在，且其 GitHub 仓库仅有约 4 个 Star，表明受众非常小。因此，没有有价值的用户舆情可供报告。从技术角度来看，它似乎是一个干净、合法、引用官方数据的只读参考应用，但其采用率极低。",
+    "safety": {
+      "rating": "safe",
+      "notes": "只读网页/PWA，仅查询官方 Digital Extremes 掉落表数据。无需账号、凭据、登录，不访问游戏内存；无游戏内覆盖，无真钱交易。开源（MIT），因此代码可审计。此处没有任何内容与 DE 对第三方工具的立场相冲突。"
+    },
+    "tier": "niche",
+    "tierReason": "一个合法且安全的工具，但受众极小（约 4 个 GitHub Star，未发现社区讨论或评价），且功能与已有的成熟掉落表资源高度重合，例如官方掉落表页面、WFCD 的 drops.warframestat.us 以及 Warframe Wiki。",
+    "dataConfidence": "low",
+    "pros": [
+      "免费且开源（MIT），代码可在 GitHub 上审计",
+      "使用官方 Digital Extremes 掉落数据，而非爬取/猜测的数值",
+      "可安装且支持离线工作",
+      "轻量且快速（Preact/Vite）",
+      "无需登录、账号，无账号安全风险"
+    ],
+    "cons": [
+      "受众非常小/冷门（约 4 个 GitHub Star，未发现社区评价）",
+      "与更成熟的工具重合（官方掉落表、WFCD API、Wiki）",
+      "单人维护的兴趣项目——无法保证长期维护",
+      "数据新鲜度仅取决于该应用的最后一次构建/部署",
+      "功能集单一（仅限物品掉落查询）"
+    ],
+    "youtube": [],
+    "trustpilot": null,
+    "otherReviews": [
+      {
+        "source": "GitHub (farhadrezvani/warframe-drops-pwa)",
+        "url": "https://github.com/farhadrezvani/warframe-drops-pwa",
+        "rating": "~4 stars",
+        "snippet": "Official repository: 'a warframe app that finds the best place to farm any in-game item by looking through the official drop tables published by Digital Extremes in a simple UI, installable on supported browsers for offline usage.' MIT license, ~4 stars, 0 forks, 0 open issues, TypeScript/Preact."
+      }
+    ]
+  },
+  "warframe-drop-optimizer": {
+    "slug": "warframe-drop-optimizer",
+    "oneLiner": "一个基于网页的 Warframe 刷取掉落率及最佳任务查找器，宣传语为“Farm Smarter, Not Harder”。",
+    "overview": "Warframe Drop Optimizer（warframedrop.com）是一款基于浏览器的刷取辅助工具，可帮助玩家寻找 Warframe 物品的最佳任务和掉落率。根据其网站自身的描述，它涵盖了遗物、MOD、蓝图和资源，并提供概率/掉落率分析，将其自身定位为“farm smarter, not harder”的规划工具。它是一个只读的网页工具，不需要游戏客户端或账号凭据。除了该网站自身的文案外，关于谁在运营它或它的使用广泛程度，几乎没有可证实的公开信息。",
+    "keyFeatures": [
+      "搜索指定物品的最佳任务/地点",
+      "遗物的掉落率和概率数据",
+      "MOD、蓝图和资源的覆盖范围",
+      "用于规划刷取路线的物品对应任务查询",
+      "基于浏览器，无需下载或登录",
+      "定位为刷取效率/优化工具"
+    ],
+    "bestFor": "希望快速通过网页查询特定物品的刷取地点及其掉落概率，而不想打开游戏内或官方掉落表网站的玩家。",
+    "sentimentSummary": "对于这款特定的工具，基本上没有可验证的社区评价。广泛的搜索没有发现任何明确讨论 warframedrop.com 的 Reddit 帖子、YouTube 评测、Trustpilot 页面、Product Hunt 列表或 GitHub 仓库。Warframe 掉落数据领域已经有成熟的选择（官方 warframe.com/droptables、社区维基和 drops.warframestat.us）提供了很好的服务，因此该工具的受众似乎较小或尚未得到证实。",
+    "safety": {
+      "rating": "safe",
+      "notes": "似乎是一个只读的信息网站：不读取游戏内存、无悬浮窗、无需账号登录或凭据，也没有 RMT/真实货币交易。使用掉落率查询网站并不违反 Digital Extremes 的规则。与任何小型第三方网站一样，适用标准的网络防范意识，但目前没有明显的账号风险或违反 ToS 的顾虑。"
+    },
+    "tier": "niche",
+    "tierReason": "该工具确实存在，并提供了合法、安全的功能集，但未发现其被广泛采用或获得社区认可的外部证据，且它与成熟、广受信任的掉落数据源竞争。这使其被归类为受众较小/尚未证实的类别，而不是推荐类别。",
+    "dataConfidence": "low",
+    "pros": [
+      "免费、基于浏览器，且无需下载或账号",
+      "专注于刷取效率（每个物品的最佳任务）",
+      "覆盖多种物品类型：遗物、MOD、蓝图、资源",
+      "从账号/ToS的角度来看，属于只读且安全的"
+    ],
+    "cons": [
+      "几乎没有可验证的公开评测、社区讨论或采用迹象",
+      "尚不清楚由谁维护，以及其数据的时效性/准确性如何",
+      "该网站是一个仅限 JS 的单页应用，没有可见的关于/创建者/署名信息",
+      "与更成熟、更受信任的工具重叠（官方 droptables、维基、warframestat.us）"
+    ],
+    "youtube": [],
+    "otherReviews": [],
+    "trustpilot": null
+  },
+  "warframe-helper": {
+    "slug": "warframe-helper",
+    "oneLiner": "一款由 AzerPUG 开发的免费 Overwolf 悬浮窗/伴侣工具，用于手动追踪战甲、武器和同伴的 Warframe 段位经验收集进度。",
+    "overview": "Warframe Helper 是一款由 AzerPUG（一家多游戏社区/软件制作方）开发的免费、有广告支持的 Overwolf 桌面悬浮窗应用，可用作 Warframe 的全收集清单。它能追踪你已掌握哪些 Warframe 战甲、武器和同伴，允许你按获取渠道、入库状态、段位等级和类别进行排序，并能拉取 Warframe Market 的白金买卖价格。值得注意的是，它是一个手动追踪器——它不会自动读取你的游戏内库存，因此你需要自己勾选已完成的物品。此外，还有一个网页端伴侣网站 warframe.azerpug.com，涵盖了段位、遗物和资源。",
+    "keyFeatures": [
+      "针对 Warframe 战甲、Archwings、虚空机甲和载具的段位全收集清单",
+      "武器追踪：主武器、副武器、近战武器",
+      "可镀金装备和同伴追踪：KitGuns、Zaws、Amps、Moas、Hounds、Sentinels、Kubrows、Kavats、Vulpaphylas、Predasites",
+      "按获取渠道、入库状态、段位等级和类别进行排序/筛选",
+      "集成 Warframe Market 以获取当前的白金买卖价格",
+      "伴侣网站 (warframe.azerpug.com) 包含遗物和资源数据库",
+      "作为 Overwolf 游戏内悬浮窗运行"
+    ],
+    "bestFor": "想要一个简单的直观清单来规划段位等级进度，并查看自己还需要哪些战甲/武器/同伴，且不介意手动更新的 Warframe 玩家。",
+    "sentimentSummary": "社区反馈有限且褒贬不一。在约 2.19 万次下载中，Overwolf 商店的评分仅为 4.3/5（共 7 条评测），表明用户群体较小。好评称其非常有用且“非常好用”，而批评者指出它本质上“只是一个清单”，“不会自动读取你的游戏内数据”，并且界面是“刺眼的白色”。未发现讨论该特定工具的专用 Reddit 帖子、YouTube 评测或 Trustpilot 页面。",
+    "safety": {
+      "rating": "safe",
+      "notes": "通过 Overwolf 分发，该平台会对应用进行审核。它是一个手动追踪器/悬浮窗，不读取 Warframe 的游戏内存——手动数据输入已由用户抱怨其无法自动读取游戏内数据的反馈所证实。DE 默许不读取游戏内存或不自动进行游戏的悬浮窗和伴侣工具；这属于可接受的类别。无需账号凭据，无 RMT。唯一的注意事项是它有广告支持（应用内广告）。"
+    },
+    "tier": "niche",
+    "tierReason": "采用率较低（约 2.19 万次下载，仅 7 条评测），且采用纯手动清单的方式，与更受欢迎的自动追踪工具（例如 AlecaFrame）和官方 Warframe 伴侣应用竞争。对特定受众有用，但未被广泛讨论或普遍喜爱。",
+    "dataConfidence": "medium",
+    "pros": [
+      "免费使用",
+      "广泛的段位覆盖，包括较新的同伴，如 Vulpaphylas 和 Predasites",
+      "集成 Warframe Market 价格以辅助买卖决策",
+      "可按入库状态、获取渠道和段位进行灵活的排序/筛选",
+      "由成熟的多游戏工具制作方 (AzerPUG) 提供支持，并配有伴侣网站"
+    ],
+    "cons": [
+      "仅限手动追踪——不会自动读取你的游戏内库存",
+      "根据一位评测者的说法，实际上“只是一个清单”",
+      "UI 被批评为“刺眼的白色”",
+      "包含应用内广告",
+      "用户群非常小，且几乎没有社区文档/评测",
+      "需要安装 Overwolf 平台"
+    ],
+    "otherReviews": [
+      {
+        "source": "Overwolf app store (rating and downloads)",
+        "url": "https://www.overwolf.com/app/azerpug-warframe_helper",
+        "rating": "4.3/5 (7 reviews, ~21.9K downloads)",
+        "snippet": "Sample reviews: one user says it 'works really good' and likes the timer lookup; another notes it 'doesn't auto read your ingame stuff,' the interface is 'blinding white,' and it functions essentially as 'a checklist.'"
+      }
+    ],
+    "youtube": [],
+    "trustpilot": null,
+    "reddit": [
+      {
+        "title": "Another Warframe helper tool",
+        "url": "https://www.reddit.com/r/Warframe/comments/9ja5kt/another_warframe_helper_tool/",
+        "subreddit": "Warframe",
+        "snippet": "0 upvotes · 4 comments — Another Warframe helper is already on Google Play.and the app name is \"WF Void\", Welcome to the experience.Download link: [link](https://play.google.c…",
+        "sentiment": "mixed"
+      }
+    ]
+  },
+  "framebuilder": {
+    "slug": "framebuilder",
+    "oneLiner": "一个基于网页的 Warframe 配装计算器，用于规划和优化 Warframe 装备方案和 MOD 配置。",
+    "overview": "FrameBuilder 是一款非官方的、基于浏览器的 Warframe 配装计算器，托管在 Cloudflare Pages (framebuilder.pages.dev) 上。其页面将其标识为“Warframe Build Calculator”，表明它是一个用于配置 MOD 和评估配装属性的理论计算工具。该网站是一个客户端单页应用程序，因此无法抓取其他页面内容，且在研究预算内无法定位到外部社区报道（Reddit、YouTube、商店列表、Trustpilot）。",
+    "keyFeatures": [
+      "基于网页的 Warframe 配装计算器（无需安装）",
+      "Warframe 的装备方案 / MOD 配置",
+      "用于理论配装的属性计算",
+      "托管在 Cloudflare Pages 上，免费访问"
+    ],
+    "bestFor": "想要一个轻量级、基于浏览器的配装规划器来尝试 Warframe MOD 装备方案的 Warframe 玩家。",
+    "sentimentSummary": "无法验证社区舆情。在能够查询 Reddit、YouTube 或其他反馈来源之前，网络搜索预算已耗尽，且该网站本身是一个仅展示其标题的 JavaScript 应用程序。没有证据表明其被有意义地采用或讨论，但也没有投诉或问题的证据。",
+    "youtube": [],
+    "otherReviews": [],
+    "trustpilot": null,
+    "pros": [
+      "免费且基于浏览器，无需安装",
+      "专注于 Warframe 配装/MOD 规划",
+      "在 Cloudflare Pages 上运行于客户端，因此显然不需要账号或登录"
+    ],
+    "cons": [
+      "未发现可证实的社区采用或评论",
+      "网站是一个 JS SPA，没有可抓取/索引的内容，限制了可发现性",
+      "除了“配装计算器”之外，功能集无法得到独立确认",
+      "维护状态和数据源新鲜度未知"
+    ],
+    "safety": {
+      "rating": "safe",
+      "notes": "似乎是一个在浏览器中运行的只读、基于网页的配装计算器，没有游戏内存访问、没有悬浮窗，也没有明显的登录或凭据收集。这属于 DE 允许的低风险类别（不读取游戏内存，不是注入客户端的悬浮窗）。未观察到 RMT 元素。评分基于该工具是一个标准的网页规划器；具体的数据处理声明无法得到独立验证。"
+    },
+    "tier": "niche",
+    "tierReason": "未能找到有意义的采用、社区讨论或评论的证据，且该工具与成熟的配装规划器（Overframe、Warframe Builder）重叠。在缺乏更广泛受众证明的情况下，它看起来像是一个小型/冷门的项目，而不是一个被广泛使用或必不可少的项目。",
+    "dataConfidence": "low"
+  },
+  "wondyframe": {
+    "slug": "wondyframe",
+    "oneLiner": "一个轻量级的 Discord 机器人，让 Warframe 玩家可以通过简单的 wf. 命令快速获取遗物刷取位置、世界状态信息和 Baro 数据。",
+    "overview": "WondyFrame 是一款由开发者“wondyr”为 Warframe 玩家制作的、基于 discord.js 构建的 Discord 机器人。它专注于一项工作：直接在 Discord 中呈现 Warframe 游戏信息（特别是 Prime/遗物刷取位置），这样用户就无需手动搜索 wiki 或多个网站。根据其 Discord Bot List 页面，它在约 495 个服务器中运行，使用 wf. 命令前缀，目前仅支持 PC 世界状态。开发者明确将其定位为一个无繁琐功能的实用工具：“这个机器人没有任何花哨的功能或命令。它只做一件事，那就是快速为您提供所需的信息。”",
+    "keyFeatures": [
+      "Prime 物品 / 遗物刷取查询 —— 输入 Prime 部件即可获取遗物以及最佳掉落位置",
+      "Baro Ki'Teer 商人库存和计时器",
+      "活跃的突击、入侵和虚空裂缝任务",
+      "Nightwave 挑战",
+      "地球和 Cetus 日夜循环计时器",
+      "Orb Vallis 和 Cambion Drift 天气（温暖/寒冷，Vome/Fass）状态",
+      "简单的 wf. 命令前缀，基于 discord.js",
+      "正在开发中的物品命令"
+    ],
+    "bestFor": "想要一个轻量级服务器内机器人，以便在不离开 Discord 的情况下快速查询遗物/刷取和世界状态计时器的 PC 端 Warframe Discord 社区。",
+    "sentimentSummary": "在现有研究中未发现社区讨论（Reddit、YouTube、论坛），因此没有可衡量的公众舆情。唯一的信号是它在 Discord Bot List 上列出的约 495 个服务器中的采用情况，以及其自称的极简功能集。它似乎是一个小型、单一开发者的项目，而不是一个被广泛讨论的社区主流工具。",
+    "safety": {
+      "rating": "safe",
+      "notes": "只读的 Discord 机器人，将公开的 Warframe 世界状态/掉落数据作为聊天回复呈现。它不读取游戏内存、不使用悬浮窗覆盖客户端、不需要 Warframe 账号凭据，也不促进真实货币交易，因此不存在账号风险或违反 DE-ToS 的担忧。适用标准的 Discord 机器人注意事项（仅授予其所需的权限）。"
+    },
+    "tier": "niche",
+    "tierReason": "采用规模较小（约 495 个服务器）、单一开发者项目、仅限 PC，且没有可发现的社区评论或讨论。它是一个功能性但受众较小的实用工具，而不是一个广受喜爱或广泛使用的机器人，且更大的竞争对手（例如成熟的 Warframe Discord 机器人）主导着该领域。",
+    "dataConfidence": "low",
+    "youtube": [],
+    "otherReviews": [],
+    "trustpilot": null,
+    "pros": [
+      "简单、专注的单一用途设计 —— 快速查询遗物/刷取，无需搜寻 wiki",
+      "涵盖常见世界状态需求：Baro、突击、入侵、虚空裂缝、Nightwave、循环、天气",
+      "在约 495 个服务器中运行，因此它是一个具有一定采用率的真实可用机器人",
+      "免费且易于通过 Discord Bot List 添加"
+    ],
+    "cons": [
+      "仅限 PC 世界状态 —— 不支持主机世界状态",
+      "物品命令正在开发中 / 不完整",
+      "单一开发者项目，没有可见的评论、评分或活跃的社区讨论",
+      "Discord Bot List 上最近 0 个赞同票表明目前热度较低",
+      "与更大、更知名的 Warframe Discord 机器人功能重合度极高。"
+    ]
+  },
+  "warbot": {
+    "slug": "warbot",
+    "oneLiner": "一个已废弃的 2018 年个人兴趣制作的 Discord 机器人，可通过文本命令显示 Warframe 物品属性、warframe.market 价格以及世界状态计时器。",
+    "overview": "WarBot（由 GitHub 用户 PYROP3 开发）是一个基于 discord.io 库并使用 JavaScript 编写的 Discord 机器人，允许玩家在 Discord 服务器内查询 Warframe 游戏数据。它支持通过括号标记进行物品查找（例如 [soma]）、自定义属性追踪、查询 warframe.market 过去一天的平均价格，以及游戏内事件计时器，如 Cetus 昼夜交替、Baro Ki'Teer 抵达、void fissures 和 sorties。该项目实际上已被废弃：仓库有 0 个 stars、0 个 forks、共 13 次 commits，且自 2018 年 8 月以来没有任何活动，部分功能（警报、sorties）被标注为实验性/未完成。该机器人没有公开的邀请链接，必须从源码自行托管。",
+    "keyFeatures": [
+      "通过括号标记查找物品（例如 [soma]）",
+      "warframe.market 平均价格查询（最近约 24 小时）",
+      "自定义属性追踪（生命值、护盾、部件等）",
+      "世界状态计时器：Cetus 昼夜循环、Baro Ki'Teer 抵达时间",
+      "警报、void fissures 和 sorties（标记为实验性/未完成）",
+      "特定属性查询（例如某个 warframe 的护盾）",
+      "缩写/首字母命令简写",
+      "基于 discord.io (JavaScript) 构建的自托管 Discord 机器人"
+    ],
+    "bestFor": "如今基本上没有人使用；仅对那些对 2018 年小型 Warframe Discord 机器人代码示例感兴趣、想要 fork 或学习的开发者有参考价值。普通玩家应使用其他有人维护的机器人。",
+    "sentimentSummary": "无法找到关于该特定工具的任何社区评价。它没有 Reddit 讨论贴、YouTube 视频、Trustpilot 页面、机器人列表投票或博客报道，其 GitHub 仓库也是零 stars 和零 forks。搜索中出现的 r/Warbot 子版块和 Warframe \"Pyrol\" 帖子与该项目无关。简而言之，它似乎是一个从未获得过受众的个人/学习项目。",
+    "safety": {
+      "rating": "safe",
+      "notes": "这是一个只读的 Discord 机器人，仅拉取公开的游戏数据和 warframe.market 价格；它不读取游戏内存，不使用覆盖层（overlay），也不需要 Warframe 账号凭据，因此不存在违反 DE ToS/EULA 的风险。实际令人担忧的不是安全问题，而是它已被废弃：自 2018 年 8 月以来没有更新，这意味着 discord.io 库和 API 集成可能已经损坏或被弃用，自行托管未维护的代码需要您自己承担风险。"
+    },
+    "tier": "avoid",
+    "tierReason": "自 2018 年起被废弃，零 stars/forks，没有公开邀请链接，且部分功能被标记为未完成。这并不是因为它危险，而是因为它已经失效，且已被其他有人维护的替代方案所取代。",
+    "dataConfidence": "low",
+    "youtube": [],
+    "trustpilot": null,
+    "otherReviews": [],
+    "pros": [
+      "只读且账号安全：不读取游戏内存、无覆盖层、无需登录凭据，因此没有违反 DE ToS 的风险",
+      "一个机器人即可涵盖实用的基础功能：物品属性、市场价格和世界状态计时器",
+      "开源（JavaScript），因此代码可用于 fork 或学习"
+    ],
+    "cons": [
+      "自 2018 年 8 月起被废弃；无维护或漏洞修复",
+      "零采用率（0 个 GitHub stars/forks，没有公开的机器人列表展示或邀请链接）",
+      "必须从源码自行托管；不是一键邀请的机器人",
+      "部分功能（警报、sorties）为实验性/未完成",
+      "基于 discord.io 构建，这是一个过时/被弃用的库，可能在当前的 Discord/游戏 API 下已无法正常工作",
+      "没有文档、评价或社区支持可供求助"
+    ]
+  },
+  "odealo": {
+    "slug": "odealo",
+    "oneLiner": "一个玩家之间进行真钱交易的平台，用户在此用现金买卖 Warframe platinum、物品和装备——这是一种违反 Warframe 规则的 RMT 形式。",
+    "overview": "Odealo 是一个第三方的、基于托管机制的交易平台，允许人们用真钱交易 Warframe 游戏内资产。卖家上架 platinum、Prime 部件、mods、武器/Warframes、Kuva、Archon Shards、Forma 以及外观物品，买家则通过 PayPal、Skrill 或 Webmoney 支付与美元 1:1 挂钩的现金“Credits”，Odealo 会将资金托管，直到确认发货。它不是官方或 DE 关联的服务；它是一个涵盖多种游戏的通用 MMO 货币/物品交易平台，并设有专门的 Warframe 板块。从第三方用真钱购买 platinum 或物品属于真钱交易（RMT），这违反了 Warframe 的 EULA/Terms of Service，并可能导致 Digital Extremes 对账号采取处罚措施。",
+    "keyFeatures": [
+      "玩家间交易 Warframe platinum、Prime 部件、mods、武器/Warframes、Kuva、Archon Shards、Forma 以及外观物品的平台",
+      "使用与 USD 1:1 挂钩的现金 Credits 进行真钱交易",
+      "托管系统，在买家确认游戏内收货前暂管付款",
+      "通过 PayPal、Skrill 和 Webmoney 支付",
+      "卖家评分、反馈和验证等级",
+      "免费上架，价格由竞争卖家自行设定",
+      "多游戏交易平台（Warframe 是其涵盖的众多游戏之一）"
+    ],
+    "bestFor": "在 Warframe 的规则内，没有任何安全且推荐的使用场景——它的目标用户是那些想要用真钱购买 platinum/物品的玩家，而这是被禁止的 RMT。守规玩家应当使用游戏内交易或 warframe.market。",
+    "sentimentSummary": "作为一家正常运营的店铺，Odealo 本身获得了大致正面的第三方商家评价（在 Trustpilot 上的约 449 条评价中获得约 4 星，在 Sitejabber 上获得 4.3/5 分），但这反映的是交易可靠性，而非社区的认可。在 Warframe 社区中，用真钱购买 platinum 或物品被广泛视为破坏交易经济且有封号风险的 RMT，因此该工具通常会受到怀疑或敌视，而非认可。由于 platinum 价格便宜，且通过游戏内交易和 warframe.market 很容易刷取，大多数玩家认为没有合理的理由去使用它。",
+    "safety": {
+      "rating": "risky",
+      "notes": "这是真钱交易（RMT）。从第三方用真钱购买 Warframe platinum、物品或账号违反了 Warframe 的 EULA/Terms of Service；Digital Extremes 可以对参与 RMT 的账号进行封禁或暂停处理，且游戏内无法追回损失的物品或 plat。买家还面临支付和账号共享的风险。该平台不隶属于 Digital Extremes，也未获得其认可。"
+    },
+    "tier": "avoid",
+    "tierReason": "被归类为“避免使用”，因为它助长了可能导致账号被封禁的违规真钱交易，未获得 DE 认可，且其功能与免费、安全且体验更好的游戏内交易及 warframe.market 重合。",
+    "dataConfidence": "medium",
+    "youtube": [],
+    "trustpilot": {
+      "rating": 4,
+      "reviewCount": 449,
+      "url": "https://www.trustpilot.com/review/odealo.com"
+    },
+    "otherReviews": [
+      {
+        "source": "Sitejabber",
+        "url": "https://www.sitejabber.com/reviews/odealo.com",
+        "rating": "4.3/5 (13 reviews)",
+        "snippet": "Third-party review aggregator rating for odealo.com as a marketplace/storefront."
+      },
+      {
+        "source": "Reviews.io",
+        "url": "https://www.reviews.io/company-reviews/store/odealo-com",
+        "rating": "2.60/5 (5 reviews)",
+        "snippet": "Lower-rated but very small sample of reviews for odealo.com."
+      },
+      {
+        "source": "Scam-Detector",
+        "url": "https://www.scam-detector.com/validator/odealo-com-review/",
+        "rating": null,
+        "snippet": "Legitimacy/validator review page assessing whether odealo.com is a scam or legitimate site."
+      }
+    ],
+    "pros": [
+      "运行良好的托管机制在交易期间保护买卖双方",
+      "历史悠久的多游戏交易平台，商家评价总体正面（Trustpilot 约 4 星，Sitejabber 4.3 分）",
+      "多种支付选项（PayPal、Skrill、Webmoney）及卖家评分/验证系统",
+      "具有竞争力的、由卖家自定的定价，且提供免费发布"
+    ],
+    "cons": [
+      "促进真实货币交易 (RMT)，这违反了 Warframe 的 EULA/ToS，并可能导致账号封禁",
+      "不隶属于 Digital Extremes，也不受其支持；如果物品或 plat 丢失或被追回，无法在游戏内进行申诉",
+      "对大多数玩家来说并非必要 —— platinum 和物品都很便宜，且可以通过游戏内交易和 warframe.market 免费获取",
+      "被大部分 Warframe 社区视为对交易经济有害，因而受到负面看待",
+      "除了游戏内的后果之外，还存在现金支付和账号交互的风险"
+    ]
+  },
+  "warframe-market-analytics": {
+    "slug": "warframe-market-analytics",
+    "oneLiner": "基于 Warframe.market 的免费分析层 —— 提供实时 prime 价格、成套与单件对比、ducat 和 relic 价值、riven 定价、差价套利信号以及入库追踪，支持 13 种语言。",
+    "overview": "Warframe Market Analytics（本站）是一款免费、开源的网页应用，可将实时的 Warframe.market 订单数据转化为决策。无需逐个观察单个列表，它就能进行排序和计算：prime 套装是整套买更便宜还是拆开买更便宜、每个 relic 的预期 platinum 收益、性价比最高的 ducat/platinum 物品、riven 的公允价值、最宽的高流动性差价套利空间、入库价格趋势，以及带有“是否划算”判定的实时订单流。物品名称和整个界面均已本地化为 13 种语言。",
+    "keyFeatures": [
+      "实时 prime/单件价格及成套与单件对比",
+      "relic 价值（开启 vs 出售）+ relic 刷取期望值（EV）排行",
+      "针对 Baro Ki'Teer 的 Ducat 效率排行",
+      "Riven 公允价值估算器",
+      "差价套利寻找器 —— 具有成交置信度的最宽流动性差价",
+      "入库价格追踪、热门波动、波动率、买入/卖出时机",
+      "交互式星图掉落图 + 单个物品掉落位置",
+      "带有“是否划算”判定的实时市场信号流",
+      "带有自选清单和价格预警的投资组合追踪器",
+      "支持 13 种语言的本地化物品名称 + 界面"
+    ],
+    "bestFor": "希望在 Warframe.market 数据之上获得分析和决策（而不仅仅是原始列表）的交易者。",
+    "pros": [
+      "免费且开源；大多数工具无需登录",
+      "将原始市场数据转化为排行榜和计算器",
+      "广泛的覆盖范围：套装、relic、ducat、riven、差价套利、入库、掉落",
+      "已本地化为 13 种语言",
+      "快速的 SSR 页面，支持 PWA 安装"
+    ],
+    "cons": [
+      "比起那些早已确立地位的工具较新，因此目前社区积累的使用记录较少",
+      "价格新鲜度取决于其同步频率（近乎实时，而非瞬时）",
+      "依赖于 Warframe.market 的数据可用性"
+    ],
+    "sentimentSummary": "这是我们自己的工具，在此透明地列出。它是基于 Warframe.market 的分析/决策层，而不是替代品 —— 它复用了大多数交易工具所依赖的相同公开数据，并增加了计算器、排行榜和信号。由于它较新，与 Warframe.market 或 Overframe 等主流工具相比，其积累的使用记录较少，因此我们将其与它所链接的其他替代工具并列展示。",
+    "safety": {
+      "rating": "safe",
+      "notes": "基于网页且只读：无游戏内存访问，无账号凭证，无真实货币交易。开源 (github.com/eduair94/warframe)。价格仅供参考，不作保证。"
+    },
+    "tier": "recommended",
+    "tierReason": "一个基于 Warframe.market 数据构建的广泛、免费的分析套件。作为我们自己的网站透明地列出 —— 您可以将其与它所链接的其他替代网站进行对比评估。",
+    "dataConfidence": "high",
+    "youtube": [],
+    "otherReviews": []
+  }
+}
