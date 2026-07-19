@@ -9,7 +9,7 @@
  * multiple classes (WarframeUndici, WarframeFacade, etc.)
  */
 
-import { IMarketItem, IProcessedItem } from '../interfaces/market.interface';
+import { IMarketItem, IProcessedItem, ISetFullNode } from '../interfaces/market.interface';
 
 /**
  * Utility class for processing market items
@@ -66,8 +66,77 @@ export class ItemProcessor {
   }
 
   /**
+   * Processes an item for the SET DETAIL page.
+   *
+   * Deliberately a separate method rather than a widening of
+   * {@link processForDisplay}: the catalogue endpoint, `/set`, `/relic` and the
+   * analytics aggregates all depend on that method's exact (deliberately light)
+   * shape, and `last_completed` + `depth` would bloat every one of them.
+   *
+   * What this adds over processForDisplay:
+   *  - `quantity_for_set` — how many of this part a set needs. Stripped by
+   *    processForDisplay, but without it parts totals are wrong for any set that
+   *    needs 2× of a component.
+   *  - the whole `last_completed` datapoint (median / moving_avg / min / max),
+   *    which backs the "median" pricing basis.
+   *  - `market.depth` + `market.subtype`, which back the order-book "bulk" basis.
+   *
+   * Validity guards match processForDisplay, so an unpriced part is DROPPED
+   * rather than silently summed in as 0.
+   *
+   * @param item - Raw market item from the database
+   * @param quantity - How many of this item one set requires (defaults to 1)
+   * @returns A set-detail node, or "" when the item is unusable
+   */
+  static processForSetDetail(item: IMarketItem, quantity = 1): ISetFullNode | string {
+    if (!item) return "";
+    const { item_name, thumb, market, url_name, items_in_set, priceUpdate, ducats, vaulted } =
+      item as IMarketItem & { market?: any };
+
+    // Same guards as processForDisplay — no market block or no set membership
+    // means we cannot price it, and a zero would corrupt the parts total.
+    if (!market) return "";
+    if (!items_in_set || items_in_set.length === 0) return "";
+
+    const { tags } = items_in_set[0] as { tags?: string[] };
+
+    const qty = Number.isFinite(quantity) && (quantity as number) > 0 ? Math.floor(quantity) : 1;
+
+    const node: ISetFullNode = {
+      item_name,
+      url_name,
+      thumb,
+      tags: tags ?? [],
+      ducats,
+      vaulted,
+      priceUpdate,
+      quantity_for_set: qty,
+      market: {
+        buy: market.buy,
+        sell: market.sell,
+        diff: (market.sell ?? 0) - (market.buy ?? 0),
+        buyAvg: market.buyAvg,
+        sellAvg: market.sellAvg,
+        volume: market.volume,
+        avg_price: market.avg_price,
+        last_completed: market.last_completed ?? null,
+        subtype: market.subtype,
+      },
+      // Empty ladders are omitted so the client can test `depth` for truthiness.
+      depth:
+        market.depth && (market.depth.buy?.length || market.depth.sell?.length)
+          ? { buy: market.depth.buy ?? [], sell: market.depth.sell ?? [] }
+          : undefined,
+      // Filled in by SetService from the batched history read.
+      history: { points: [], trend: { direction: 'flat', changePercent: 0 } },
+    };
+
+    return node;
+  }
+
+  /**
    * Processes an array of items, filtering out invalid ones
-   * 
+   *
    * @param items - Array of raw market items
    * @returns Array of processed items (invalid items filtered out)
    */

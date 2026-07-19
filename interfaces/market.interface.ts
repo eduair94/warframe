@@ -269,6 +269,94 @@ export interface ISetResult {
 }
 
 /**
+ * One price level of the stored order-book ladder (see OrderCalculator.depthLadder).
+ */
+export interface IDepthLevel {
+  price: number;
+  quantity: number;
+  orders: number;
+}
+
+/**
+ * Market block for the set detail page.
+ *
+ * Wider than {@link IProcessedItem}'s: it keeps the whole `last_completed`
+ * datapoint (median / moving_avg / min / max) and the depth ladder, so the page
+ * can price a set under several bases — instant, top-5 average, 48h traded
+ * average, median, and an order-book walk — instead of best-bid/best-ask only.
+ */
+export interface ISetFullMarket {
+  /** Highest buy order (what you RECEIVE when selling) */
+  buy: number;
+  /** Lowest sell order (what you PAY to acquire) */
+  sell: number;
+  /** sell - buy */
+  diff: number;
+  /** Average of the top 5 buy orders */
+  buyAvg?: number;
+  /** Average of the top 5 sell orders */
+  sellAvg?: number;
+  /** Trade volume over the last 48h */
+  volume?: number;
+  /** 48h volume-weighted average of completed trades */
+  avg_price?: number;
+  /** Latest closed 48h datapoint: median, moving_avg, min_price, max_price */
+  last_completed?: IStatisticsDataPoint | null;
+  /** Dominant order variant (e.g. a relic's 'intact'), matching the depth ladder */
+  subtype?: string;
+}
+
+/**
+ * A single item (the set itself, or one of its parts) on the set detail page.
+ */
+export interface ISetFullNode {
+  item_name: string;
+  url_name: string;
+  thumb: string;
+  tags: string[];
+  /** Ducat value at Baro Ki'Teer (v2 enrichment; may be undefined) */
+  ducats?: number;
+  /** Vault status (v2 enrichment; may be undefined) */
+  vaulted?: boolean;
+  /** When this item's prices were last synced */
+  priceUpdate?: Date;
+  /** How many of this part one set requires (1 for the set node itself) */
+  quantity_for_set: number;
+  market: ISetFullMarket;
+  /** Stored order-book ladder, when the sync captured one */
+  depth?: { buy: IDepthLevel[]; sell: IDepthLevel[] };
+  /** Trimmed daily price series plus its trend */
+  history: {
+    points: Array<{ date: string; buy: number; sell: number; avg_price: number; volume: number }>;
+    trend: { direction: 'up' | 'down' | 'flat'; changePercent: number };
+  };
+}
+
+/**
+ * Bundled payload for the set detail page: the set, every part, and everything
+ * the page needs to compare them (quantities, full market blocks, depth ladders
+ * and price history) in ONE cached request.
+ *
+ * Deliberately carries no synthetic "by Parts" row — the client derives parts
+ * totals per pricing basis, which is why `quantity_for_set` must ship.
+ */
+export interface ISetFullResult {
+  set: ISetFullNode;
+  parts: ISetFullNode[];
+  meta: {
+    generatedAt: string;
+    /** Stalest priceUpdate across set + parts (drives the freshness label) */
+    oldestPriceUpdate: string | null;
+    /** Freshest priceUpdate across set + parts */
+    newestPriceUpdate: string | null;
+    /** Longest stored series across set + parts, in days */
+    historyDays: number;
+    partsCount: number;
+    pricedParts: number;
+  };
+}
+
+/**
  * A single row in the "set vs parts" comparison table.
  *
  * Price semantics (warframe.market): `sell` = lowest sell order = what you PAY to

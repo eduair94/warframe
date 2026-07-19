@@ -186,7 +186,10 @@ export abstract class BaseWarframeClient {
     return new SetService(
       this.itemService,
       this.relicService,
-      (item: any) => this.processItem(item)
+      (item: any) => this.processItem(item),
+      // Needed by getSetFullData, which bundles each item's daily price series
+      // into the set detail payload with a single batched read.
+      this.priceHistoryService
     );
   }
 
@@ -470,6 +473,15 @@ export abstract class BaseWarframeClient {
    */
   async getSet(urlName: string): Promise<any> {
     return this.setService.getSetData(urlName);
+  }
+
+  /**
+   * Bundled payload for the set detail page: set + parts with quantities, full
+   * market blocks (median / depth ladder) and each item's price history, in one
+   * cached request. See SetService.getSetFullData.
+   */
+  async getSetFull(urlName: string): Promise<any> {
+    return this.setService.getSetFullData(urlName);
   }
 
   /**

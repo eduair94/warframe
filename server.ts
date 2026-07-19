@@ -22,6 +22,14 @@ async function main() {
         const results = await m.getSet(url_name);
         return results;
     });
+    // Set DETAIL page bundle: the set, every part with its quantity_for_set,
+    // full market blocks (median / moving_avg / min-max / depth ladder) and each
+    // item's daily price series — one cached request instead of the 5-12 the
+    // page would otherwise fan out. `/set/:url_name` above is left untouched.
+    server.getJson('set_full/:url_name', async (req: Request): Promise<any> => {
+        const url_name = req.params.url_name;
+        return m.getSetFull(url_name);
+    });
     server.getJsonCache('sets_comparison', async (req: Request): Promise<any> => {
         const sets = await m.getSetsComparison();
         return { sets };

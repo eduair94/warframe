@@ -7,9 +7,21 @@
  * based on individual part prices.
  */
 
-import { IMarketItem, IProcessedItem, ISetComparisonRow, ISetResult } from '../interfaces/market.interface';
+import {
+  IMarketItem,
+  IProcessedItem,
+  ISetComparisonRow,
+  ISetFullNode,
+  ISetFullResult,
+  ISetResult,
+} from '../interfaces/market.interface';
+import { ItemProcessor } from './ItemProcessor';
 import { ItemService } from './ItemService';
+import { PriceHistoryService } from './PriceHistoryService';
 import { RelicService } from './RelicService';
+
+/** How many daily points the set detail page charts per item. */
+const SET_HISTORY_POINTS = 30;
 
 /**
  * Service for handling set calculations and comparisons
@@ -27,11 +39,15 @@ export class SetService {
    * @param itemService - Item database service
    * @param relicService - Relic data service
    * @param processItem - Function to process items for display
+   * @param priceHistoryService - Optional; only getSetFullData needs it, and it
+   *        degrades to empty series when absent (keeps the pure comparison
+   *        builder constructible with stub dependencies).
    */
   constructor(
     private readonly itemService: ItemService,
     private readonly relicService: RelicService,
-    private readonly processItem: (item: IMarketItem) => IProcessedItem | string
+    private readonly processItem: (item: IMarketItem) => IProcessedItem | string,
+    private readonly priceHistoryService?: PriceHistoryService
   ) {}
 
   /**
@@ -79,8 +95,105 @@ export class SetService {
   }
 
   /**
+   * Bundled payload for the set DETAIL page.
+   *
+   * Everything the page needs in one cached request: the set, every part with
+   * its `quantity_for_set`, the full market block (median / moving_avg / min /
+   * max plus the order-book ladder) and a trimmed daily price series per item.
+   *
+   * Three database reads regardless of set size — set doc, parts docs, and ONE
+   * `$in` history read — replacing the 5-12 client round-trips the page would
+   * otherwise need.
+   *
+   * Unlike {@link getSetData} this returns NO synthetic "by Parts" row: parts
+   * totals depend on which pricing basis the user picked, so the client derives
+   * them. That is why `quantity_for_set` has to be in the payload.
+   *
+   * @param urlName - URL-friendly set name
+   * @throws When the slug is unknown or the item is not a set
+   */
+  async getSetFullData(urlName: string): Promise<ISetFullResult> {
+    const setItem = await this.itemService.getItemByUrlName(urlName);
+
+    if (!setItem) {
+      throw new Error(`Set not found: ${urlName}`);
+    }
+
+    if (!setItem.items_in_set || setItem.items_in_set.length === 0) {
+      throw new Error(`Set has no items: ${urlName}`);
+    }
+
+    // Reject a PART slug. Every member of a set carries the same `items_in_set`
+    // roster, so /set_full/<part> would otherwise happily return a bundle whose
+    // "parts" list contains the parent set and the part's own siblings — a
+    // nonsense comparison rendered as if it were real. Same predicate
+    // buildComparisonFromItems uses to decide what counts as a set.
+    if (setItem.items_in_set.length <= 1 || !setItem.item_name?.includes(' Set')) {
+      throw new Error(`Not a set: ${urlName}`);
+    }
+
+    // Every membership entry except the set itself is a part to acquire.
+    const partRefs = setItem.items_in_set.filter((entry) => entry.url_name !== urlName);
+    const partUrlNames = partRefs.map((entry) => entry.url_name);
+    const quantityByUrl = new Map<string, number>();
+    for (const ref of partRefs) {
+      quantityByUrl.set(ref.url_name, (ref as any).quantity_for_set ?? 1);
+    }
+
+    const rawParts = await this.itemService.getItemsByUrlNames(partUrlNames);
+
+    const setNode = ItemProcessor.processForSetDetail(setItem, 1);
+    if (typeof setNode === 'string') {
+      throw new Error(`Set has no market data: ${urlName}`);
+    }
+
+    const partNodes: ISetFullNode[] = [];
+    for (const part of rawParts) {
+      const node = ItemProcessor.processForSetDetail(part, quantityByUrl.get(part.url_name) ?? 1);
+      if (typeof node !== 'string') partNodes.push(node);
+    }
+
+    // Keep the payload in the game's own part order (the order warframe.market
+    // lists items_in_set) rather than whatever order Mongo returned.
+    const order = new Map(partUrlNames.map((name, index) => [name, index] as const));
+    partNodes.sort((a, b) => (order.get(a.url_name) ?? 0) - (order.get(b.url_name) ?? 0));
+
+    // One batched history read for the set plus every part.
+    if (this.priceHistoryService) {
+      const histories = await this.priceHistoryService.getManyHistories(
+        [setNode.url_name, ...partNodes.map((p) => p.url_name)],
+        SET_HISTORY_POINTS
+      );
+      for (const node of [setNode, ...partNodes]) {
+        const entry = histories.get(node.url_name);
+        if (entry) node.history = entry;
+      }
+    }
+
+    const all = [setNode, ...partNodes];
+    const stamps = all
+      .map((node) => (node.priceUpdate ? new Date(node.priceUpdate).getTime() : NaN))
+      .filter((time) => !Number.isNaN(time));
+
+    return {
+      set: setNode,
+      parts: partNodes,
+      meta: {
+        generatedAt: new Date().toISOString(),
+        oldestPriceUpdate: stamps.length ? new Date(Math.min(...stamps)).toISOString() : null,
+        newestPriceUpdate: stamps.length ? new Date(Math.max(...stamps)).toISOString() : null,
+        historyDays: all.reduce((max, node) => Math.max(max, node.history.points.length), 0),
+        // partsCount is the set's declared part count; pricedParts is how many
+        // survived processing. A gap tells the client its totals are incomplete.
+        partsCount: partRefs.length,
+        pricedParts: partNodes.length,
+      },
+    };
+  }
+
+  /**
    * Calculates the "by parts" price for a set
-   * 
+   *
    * @param setItem - The complete set item
    * @param parts - Array of individual parts with item_in_set info
    * @returns Set item with "by parts" pricing

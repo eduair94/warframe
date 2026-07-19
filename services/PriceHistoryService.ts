@@ -84,13 +84,55 @@ export class PriceHistoryService {
    */
   async getHistoryWithTrend(urlName: string): Promise<{ points: IPricePoint[]; trend: ITrendResult }> {
     const points = await this.getHistory(urlName);
+    return { points, trend: PriceHistoryService.trendOf(points) };
+  }
+
+  /**
+   * Batch variant of getHistoryWithTrend: one query for many items.
+   *
+   * The set detail page needs a series for the set AND every part (5-8 items).
+   * Looping getHistoryWithTrend would be an N+1; this is a single `$in` read.
+   *
+   * @param urlNames - Items to load (duplicates and blanks are ignored)
+   * @param limit - Keep at most this many of the MOST RECENT points per item
+   * @returns Map keyed by url_name. Items with no stored document are simply
+   *          absent - callers substitute an empty series.
+   */
+  async getManyHistories(
+    urlNames: string[],
+    limit = 30
+  ): Promise<Map<string, { points: IPricePoint[]; trend: ITrendResult }>> {
+    const out = new Map<string, { points: IPricePoint[]; trend: ITrendResult }>();
+    const wanted = Array.from(new Set((urlNames || []).filter(Boolean)));
+    if (wanted.length === 0) return out;
+
+    const docs: any[] = (await this.repository.allEntries({ url_name: { $in: wanted } })) as any[];
+
+    for (const doc of docs || []) {
+      if (!doc || !doc.url_name) continue;
+      const all: IPricePoint[] = Array.isArray(doc.points) ? doc.points : [];
+      // Points are appended oldest-first, so the tail is the recent window.
+      const points = limit > 0 && all.length > limit ? all.slice(-limit) : all;
+      // Trend is computed over the TRIMMED window so it describes the series the
+      // client actually renders, not the full retained history.
+      out.set(doc.url_name, { points, trend: PriceHistoryService.trendOf(points) });
+    }
+
+    return out;
+  }
+
+  /**
+   * Derives a trend summary from an already-loaded series.
+   * Shared by the single and batch readers so both classify identically.
+   */
+  static trendOf(points: IPricePoint[]): ITrendResult {
     const changePercent = StatisticsCalculator.calculateTrend(
-      points.map((p) => ({ datetime: p.date, avg_price: p.avg_price, volume: p.volume }))
+      (points || []).map((p) => ({ datetime: p.date, avg_price: p.avg_price, volume: p.volume })) as any
     );
 
     const direction: TrendDirection =
       Math.abs(changePercent) < FLAT_TREND_THRESHOLD_PERCENT ? 'flat' : changePercent > 0 ? 'up' : 'down';
 
-    return { points, trend: { direction, changePercent } };
+    return { direction, changePercent };
   }
 }
