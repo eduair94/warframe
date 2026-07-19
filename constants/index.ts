@@ -160,7 +160,10 @@ export const COLLECTIONS = {
   DROPS: 'warframe-drops',
 
   /** Localized game-noun name dictionaries: one document per (scope, lang), see TranslationService */
-  TRANSLATIONS: 'warframe-translations'
+  TRANSLATIONS: 'warframe-translations',
+
+  /** Web Push subscriptions + their price-alert thresholds, one doc per anonymous deviceId (see PushSubscriptionService) */
+  PUSH_SUBSCRIPTIONS: 'warframe-push-subscriptions'
 } as const;
 
 /**

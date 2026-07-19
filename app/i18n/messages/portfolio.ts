@@ -33,6 +33,8 @@ export default {
       pickCategory: 'Browse by category',
       noMatches: 'No items match',
       tabOnlyNote: 'Runs while this tab is open',
+      pushOn: "Push alerts on — you'll be notified even when this tab is closed",
+      pushBlocked: 'Notifications are blocked — allow them in your browser settings to get alerts',
       watching: 'Watching {n}',
       categories: {
         All: 'All',
@@ -112,6 +114,8 @@ export default {
       pickCategory: 'Explorar por categoría',
       noMatches: 'Ningún objeto coincide',
       tabOnlyNote: 'Funciona mientras esta pestaña esté abierta',
+      pushOn: 'Alertas push activadas — te avisaremos incluso con esta pestaña cerrada',
+      pushBlocked: 'Las notificaciones están bloqueadas — permítelas en tu navegador para recibir alertas',
       watching: 'Vigilando {n}',
       categories: {
         All: 'Todos',
@@ -191,6 +195,8 @@ export default {
       pickCategory: 'Navegar por categoria',
       noMatches: 'Nenhum item corresponde',
       tabOnlyNote: 'Funciona enquanto esta aba estiver aberta',
+      pushOn: 'Alertas push ativados — você será avisado mesmo com esta aba fechada',
+      pushBlocked: 'As notificações estão bloqueadas — permita-as no navegador para receber alertas',
       watching: 'Acompanhando {n}',
       categories: {
         All: 'Todos',
@@ -270,6 +276,8 @@ export default {
       pickCategory: 'Nach Kategorie durchsuchen',
       noMatches: 'Keine passenden Gegenstände',
       tabOnlyNote: 'Läuft, solange dieser Tab geöffnet ist',
+      pushOn: 'Push-Benachrichtigungen an — du wirst benachrichtigt, auch wenn dieser Tab geschlossen ist',
+      pushBlocked: 'Benachrichtigungen sind blockiert — erlaube sie in deinen Browsereinstellungen, um Alarme zu erhalten',
       watching: 'Beobachtet: {n}',
       categories: {
         All: 'Alle',
@@ -349,6 +357,8 @@ export default {
       pickCategory: 'Parcourir par catégorie',
       noMatches: 'Aucun objet ne correspond',
       tabOnlyNote: 'Fonctionne tant que cet onglet est ouvert',
+      pushOn: 'Alertes push activées — vous serez notifié même lorsque cet onglet est fermé',
+      pushBlocked: 'Les notifications sont bloquées — autorisez-les dans les paramètres de votre navigateur pour recevoir des alertes',
       watching: 'Surveille {n}',
       categories: {
         All: 'Tous',
@@ -428,6 +438,8 @@ export default {
       pickCategory: 'Просмотр по категориям',
       noMatches: 'Нет подходящих предметов',
       tabOnlyNote: 'Работает, пока эта вкладка открыта',
+      pushOn: 'Push-оповещения включены — вы будете получать уведомления, даже когда эта вкладка закрыта',
+      pushBlocked: 'Уведомления заблокированы — разрешите их в настройках браузера, чтобы получать оповещения',
       watching: 'Отслеживается: {n}',
       categories: {
         All: 'Все',
@@ -507,6 +519,8 @@ export default {
       pickCategory: '카테고리별 탐색',
       noMatches: '일치하는 아이템 없음',
       tabOnlyNote: '이 탭이 열려 있는 동안 작동',
+      pushOn: '푸시 알림 켜짐 — 이 탭이 닫혀 있어도 알림을 받습니다',
+      pushBlocked: '알림이 차단되었습니다 — 알림을 받으려면 브라우저 설정에서 허용하세요',
       watching: '{n}개 감시 중',
       categories: {
         All: '전체',
@@ -586,6 +600,8 @@ export default {
       pickCategory: 'カテゴリーで探す',
       noMatches: '一致するアイテムがありません',
       tabOnlyNote: 'このタブを開いている間だけ動作します',
+      pushOn: 'プッシュ通知オン — このタブを閉じていても通知されます',
+      pushBlocked: '通知がブロックされています — アラートを受け取るにはブラウザの設定で許可してください',
       watching: '{n}件を監視中',
       categories: {
         All: 'すべて',
@@ -665,6 +681,8 @@ export default {
       pickCategory: '按类别浏览',
       noMatches: '没有匹配的物品',
       tabOnlyNote: '在此标签页打开时运行',
+      pushOn: '推送提醒已开启 — 即使关闭此标签页也会通知你',
+      pushBlocked: '通知已被屏蔽 — 请在浏览器设置中允许通知以接收提醒',
       watching: '正在关注 {n} 个',
       categories: {
         All: '全部',
@@ -744,6 +762,8 @@ export default {
       pickCategory: '依類別瀏覽',
       noMatches: '沒有符合的物品',
       tabOnlyNote: '在此分頁開啟時運行',
+      pushOn: '推播提醒已開啟 — 即使關閉此分頁也會通知你',
+      pushBlocked: '通知已被封鎖 — 請在瀏覽器設定中允許通知以接收提醒',
       watching: '正在關注 {n} 個',
       categories: {
         All: '全部',
@@ -823,6 +843,8 @@ export default {
       pickCategory: 'Przeglądaj według kategorii',
       noMatches: 'Brak pasujących przedmiotów',
       tabOnlyNote: 'Działa, gdy ta karta jest otwarta',
+      pushOn: 'Alerty push włączone — otrzymasz powiadomienie, nawet gdy ta karta jest zamknięta',
+      pushBlocked: 'Powiadomienia są zablokowane — zezwól na nie w ustawieniach przeglądarki, aby otrzymywać alerty',
       watching: 'Obserwujesz: {n}',
       categories: {
         All: 'Wszystkie',
@@ -902,6 +924,8 @@ export default {
       pickCategory: 'Sfoglia per categoria',
       noMatches: 'Nessun oggetto corrisponde',
       tabOnlyNote: 'Funziona mentre questa scheda è aperta',
+      pushOn: 'Avvisi push attivi — riceverai una notifica anche quando questa scheda è chiusa',
+      pushBlocked: 'Le notifiche sono bloccate — consentile nelle impostazioni del browser per ricevere avvisi',
       watching: 'Osservati: {n}',
       categories: {
         All: 'Tutti',
@@ -981,6 +1005,8 @@ export default {
       pickCategory: 'Огляд за категоріями',
       noMatches: 'Немає відповідних предметів',
       tabOnlyNote: 'Працює, поки ця вкладка відкрита',
+      pushOn: 'Push-сповіщення увімкнено — ви отримуватимете сповіщення, навіть коли ця вкладка закрита',
+      pushBlocked: 'Сповіщення заблоковано — дозвольте їх у налаштуваннях браузера, щоб отримувати сповіщення',
       watching: 'Відстежується: {n}',
       categories: {
         All: 'Усі',

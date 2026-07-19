@@ -57,7 +57,7 @@
 
       <div data-tour="alerts-notify" class="mt-3 d-flex flex-wrap align-center gap-10">
         <v-btn
-          v-if="notificationPermission !== 'granted'"
+          v-if="notificationPermission !== 'granted' && notificationPermission !== 'denied'"
           color="secondary"
           variant="outlined"
           size="small"
@@ -66,11 +66,18 @@
           <v-icon size="small" class="mr-1">mdi-bell-outline</v-icon>
           {{ t('portfolio.enableAlerts') }}
         </v-btn>
-        <span v-else class="text-caption d-flex align-center">
+        <span v-else-if="pushActive" class="text-caption d-flex align-center">
+          <v-icon size="small" color="green" class="mr-1">mdi-cloud-check-outline</v-icon>
+          {{ t('portfolio.pushOn') }}
+        </span>
+        <span v-else-if="notificationPermission === 'granted'" class="text-caption d-flex align-center">
           <v-icon size="small" color="green" class="mr-1">mdi-bell-check</v-icon>
           {{ t('portfolio.alertsEnabled') }}
         </span>
-        <span class="text-caption text-medium-emphasis">
+        <span v-if="notificationPermission === 'denied'" class="text-caption text-error d-flex align-center">
+          <v-icon size="x-small" class="mr-1">mdi-bell-off-outline</v-icon>{{ t('portfolio.pushBlocked') }}
+        </span>
+        <span v-else-if="!pushActive" class="text-caption text-medium-emphasis">
           <v-icon size="x-small" class="mr-1">mdi-information-outline</v-icon>{{ t('portfolio.tabOnlyNote') }}
         </span>
       </div>
@@ -120,6 +127,7 @@ const { localItemName } = useLocalizedName()
 const { itemThumb } = useItemThumb()
 const { categoryOf, categoryOptionsFor } = useItemCategory()
 const { startTour, maybeAutoStart } = useAlertTour()
+const push = usePushAlerts()
 const route = useRoute()
 const base = useApiBase()
 
@@ -139,6 +147,9 @@ const category = ref('All')
 const sheetOpen = ref(false)
 const activeEntry = ref<any>(null)
 const notificationPermission = ref<string>('default')
+// When true, the server delivers alerts (even tab-closed) — so the client-side
+// foreground checks below are suppressed to avoid double-notifying.
+const pushActive = ref(false)
 let alertInterval: ReturnType<typeof setInterval> | null = null
 // Real-time alert path: latest live sell price per watched item, overlaid onto the
 // catalog before running the SAME client-side checkAlerts. The 60s interval stays a backstop.
@@ -221,6 +232,24 @@ function onPick(picked: any) {
   pickerModel.value = null
 }
 
+// Build the server payload from the local watchlist (only rows that arm something).
+function alertsPayload() {
+  return watchlist.value
+    .filter((w) => w.alertBelow != null || w.alertAbove != null || w.alertAtl)
+    .map((w) => ({
+      url_name: w.url_name,
+      item_name: w.item_name,
+      below: w.alertBelow ?? null,
+      above: w.alertAbove ?? null,
+      atl: !!w.alertAtl,
+    }))
+}
+// Mirror the local watchlist to the push backend whenever it changes (no-op
+// unless this browser has a live push subscription).
+function syncPush() {
+  if (pushActive.value) push.syncAlerts(alertsPayload())
+}
+
 function openEdit(entry: any) {
   activeEntry.value = entry
   sheetOpen.value = true
@@ -241,20 +270,24 @@ function saveAlert(patch: {
   })
   refresh()
   runAlertCheck()
+  syncPush()
 }
 
 function removeItem(urlName: string) {
   removeFromWatchlist(urlName)
   if (activeEntry.value?.url_name === urlName) sheetOpen.value = false
   refresh()
+  syncPush()
 }
 
 function runAlertCheck() {
+  if (pushActive.value) return // server owns delivery
   checkAlerts(allItems.value, analyticsByUrl.value)
 }
 // Overlay live sell prices onto a shallow copy of the catalog, then run the same
 // client-side check (never mutate the Pinia getter objects).
 function runLiveAlertCheck() {
+  if (pushActive.value) return // server owns delivery
   if (notificationPermission.value !== 'granted') return
   const overlaid = watchlist.value.map((w) => {
     const it = itemsByUrlName.value[w.url_name] || { url_name: w.url_name, item_name: w.item_name }
@@ -284,6 +317,23 @@ function subscribeWatchlistLive() {
   }
 }
 async function enableAlerts() {
+  // Prefer real background push (fires with the tab closed).
+  const res = await push.subscribe(alertsPayload())
+  if (res === 'subscribed') {
+    pushActive.value = true
+    notificationPermission.value = 'granted'
+    if (alertInterval) {
+      clearInterval(alertInterval)
+      alertInterval = null
+    }
+    return
+  }
+  if (res === 'denied') {
+    notificationPermission.value = 'denied'
+    return
+  }
+  // 'disabled' (server has no VAPID) / 'unsupported' / 'error' → fall back to the
+  // original client-side notifications (only while this tab is open).
   const result = await requestNotificationPermission()
   notificationPermission.value = result
   if (result === 'granted') {
@@ -294,7 +344,7 @@ async function enableAlerts() {
   }
 }
 
-onMounted(() => {
+onMounted(async () => {
   // repo convention: kill the global loading spinner or it spins forever
   document.getElementById('spinner-wrapper')?.style.setProperty('display', 'none')
   refresh()
@@ -303,12 +353,20 @@ onMounted(() => {
   } else {
     notificationPermission.value = 'unsupported'
   }
-  if (notificationPermission.value === 'granted') {
+
+  // If this browser already has a live push subscription, the server delivers
+  // alerts (even tab-closed): mark push active and re-sync the current list.
+  await push.refreshState()
+  if (push.subscribed.value && push.serverEnabled.value) {
+    pushActive.value = true
+    notificationPermission.value = 'granted'
+    push.syncAlerts(alertsPayload())
+  } else if (notificationPermission.value === 'granted') {
+    // Foreground fallback (no push): re-check while the tab stays open.
     runAlertCheck()
-    // Re-check periodically while the tab stays open - no push infra, so
-    // this only fires while the page is open.
     alertInterval = setInterval(() => runAlertCheck(), 60000)
   }
+
   // Deep-link seam: /portfolio?alert=<url_name> adds & opens that item's editor,
   // so other pages can later drop a contextual "bell" that lands here.
   const deep = route.query.alert
