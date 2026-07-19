@@ -107,6 +107,11 @@ client per basis — which is precisely why `quantity_for_set` must ship.
   history read. Throws `Set not found: <slug>` / `Set has no items: <slug>` with
   the same messages as `getSetData`, so `Express.getJson` surfaces
   `{ error: ... }` identically.
+  - Also rejects a **part** slug with `Not a set: <slug>`. Every member of a set
+    carries the same `items_in_set` roster, so without the guard
+    `/set_full/<part>` returns a bundle whose "parts" are the parent set and the
+    part's own siblings — a nonsense comparison rendered as if it were real.
+    Uses the same predicate as `buildComparisonFromItems`.
 - **`BaseWarframeClient.getSetFull(urlName)`** — thin delegate, mirroring
   `getSet`.
 
@@ -158,13 +163,32 @@ interface BasisResult {
 
 ### Missing-data rule
 
-A part with no value for the active basis falls back **per part**, in order:
-`bulk → instant → top5 → avg48h → median` (first non-zero wins), the row is
-flagged `estimated: true`, and `coverage.estimated` increments. Totals are never
-silently short a part. When `coverage.priced < coverage.total` the verdict pill
-carries an "incomplete" note.
+A part with no value for the active basis falls back **per part and per side**,
+the row is flagged `estimated: true`, and `coverage.estimated` increments. Totals
+are never silently short a part. When `coverage.priced < coverage.total` the
+basis section carries an "incomplete" note.
+
+Fallback order is by KIND, not by display order: the book bases
+(`instant`/`top5`/`bulk`) fall back within themselves before reaching for a
+traded figure, and `avg48h`/`median` prefer each other. Filling a median gap
+with a live ask would quietly mix the two and overstate the total.
+
+**Per-side fallback is load-bearing.** `OrderCalculator` stops its
+ingame/online status walk as soon as *either* side has orders, so an item with
+bidders but no sellers is genuinely stored as `sell: 0, buy: 20` (~8% of the
+live catalogue). Treating that as "has data" priced the part's acquire cost at
+0 platinum, dropped it out of the parts total unflagged, and could invert the
+verdict outright.
 
 `verdict` is `even` when `|savePct| < 3` — below that, spread noise dominates.
+
+### Percentages
+
+`savePct` and `resaleExtraPct` normalise against the **expensive side**
+(`Math.max(setCost, partsCost)`), which is direction-correct for both verdicts:
+"parts are X% cheaper" is measured against the set, "the set is X% cheaper" is
+measured against the parts total. Anchoring both on `setCost` produced
+impossible copy ("costs 150% less") and made the even-threshold asymmetric.
 
 Tested in `test-helpers/useSetPricing.logic.test.ts` (same harness as
 `useOrderBook.logic.test.ts`): quantity multiplication, per-basis selection,
@@ -221,11 +245,20 @@ Details:
 the Redis key and the edge cache and reads current Mongo.
 
 - Throttled to one call per 10 s; the button shows a spinner and is disabled
-  while in flight.
+  while in flight. The error-state **Retry** button bypasses the throttle — a
+  button that silently does nothing for 10 s reads as broken.
 - Tooltip states plainly that prices are synced in batches — the button gets you
   the newest stored snapshot, not a live warframe.market quote. No fake-live
   claim.
 - On success the freshness label recomputes from `meta.newestPriceUpdate`.
+- **A failed refresh must not blank the page.** `useAsyncData` resets `data` to
+  null on a failed refetch, which dropped a fully-rendered ledger into the
+  not-found state. The page keeps the last good bundle in a `lastGood` ref and
+  renders from it, showing a "refresh failed" flag beside the button. The error
+  *state* is reserved for "there is nothing to show at all", so `loadFailed`
+  keys off the absence of a payload, never off `error`.
+- The cache-buster is cleared after each attempt and on slug change, so ordinary
+  navigation and SSR go back through the shared cache.
 
 ---
 
@@ -240,6 +273,13 @@ Constraints enforced by `npm run i18n:check` (blocking CI gate):
 - single-brace `{name}` interpolation only;
 - escape a literal `@` as `{'@'}` and `{` as `{'{'}`;
 - no duplicate sibling keys.
+
+Translations are produced by **`node scripts/tr-file.mjs app/i18n/messages/setDetail.ts`**,
+added by this change: write the English block, run the script, and it fills every
+missing key in the other 12 locales via Gemini — validating placeholders,
+rejecting a literal `@`, falling back to English per string, and retrying on
+429/503. `--dry` reports gaps, `--force` retranslates. This replaces fanning out
+one agent per locale.
 
 `PAGE_SEO['/set']` is unchanged, so no new SEO-parity entries are required.
 
@@ -265,3 +305,24 @@ Constraints enforced by `npm run i18n:check` (blocking CI gate):
   seam is the basis toggle + freshness chip; a future spec can add a `LIVE`
   state that subscribes the set's `url_name`s and streams best bid/ask.
 - Reskinning `PriceHistoryChart.vue` to Orokin (used only by `/`).
+
+---
+
+## Post-implementation review
+
+A 5-dimension adversarial review (pricing, API, Vue runtime, i18n/a11y, design)
+raised 32 findings; 27 were refuted against the code and 5 survived, all fixed
+before release:
+
+| Severity | Finding | Resolution |
+|---|---|---|
+| high | `priceWithFallback` accepted a one-sided quote, so a part with no asks cost 0p unflagged and could invert the verdict | fallback made per-side; regression test |
+| high | `savePct` divided by `setCost` in both directions ("costs 150% less") | normalise against the expensive side; regression test |
+| high | Expanded panel inherited `text-align: right` / `nowrap` from `.an-table td` | opt out on `.st-detailrow > td` and `.sid` |
+| medium | `/set_full` accepted any item slug, so a part returned a bundle containing its own parent set | `Not a set:` guard; regression test |
+| medium | A failed refresh wiped the ledger, and Retry was a 10 s no-op | `lastGood` fallback + stale flag; Retry bypasses the throttle |
+
+Verified live against a seeded 4-part set: quantities (`×2`), per-side fallback,
+the `est.` marker and incomplete warning, all five bases disagreeing as
+expected, the expanded panel, the sparklines, the drop dialog, the failed-refresh
+fallback, the `/set` empty state, and the Spanish locale.
