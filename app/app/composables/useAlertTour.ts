@@ -1,0 +1,109 @@
+/**
+ * First-run guided tour for the /portfolio alert flow.
+ *
+ * Mirrors the on-demand driver.js loading already used in `layouts/default.vue`
+ * (client-only dynamic import of the lib + its base CSS, `popoverClass:
+ * 'driverjs-theme'` to inherit the Orokin popover styling). Steps anchor to
+ * page-level `[data-tour="alerts-*"]` elements that are always present, never
+ * the edit sheet (which may be closed).
+ *
+ * Triggering: `maybeAutoStart()` runs once on first visit, gated by a versioned
+ * localStorage flag so it never re-shows. `startTour()` replays it on demand.
+ * Bump SEEN_KEY's version suffix whenever the step flow materially changes.
+ */
+import { useDisplay } from 'vuetify'
+
+const SEEN_KEY = 'seen_alert_tour_v1'
+
+export function useAlertTour() {
+  const { t } = useI18n()
+  const { mobile } = useDisplay()
+
+  function markSeen() {
+    try {
+      window.localStorage.setItem(SEEN_KEY, '1')
+    } catch {
+      // private mode / storage full — worst case the tour shows again; harmless.
+    }
+  }
+  function hasSeen(): boolean {
+    try {
+      return window.localStorage.getItem(SEEN_KEY) === '1'
+    } catch {
+      return false
+    }
+  }
+
+  async function startTour() {
+    if (!import.meta.client) return
+    // Wait a tick so the anchored inputs are mounted before driver.js measures them.
+    await nextTick()
+    const [mod] = await Promise.all([
+      import('driver.js'),
+      import('driver.js/dist/driver.css'),
+    ])
+    const driver = (mod as any).driver || (mod as any).default
+
+    // Anchor to an element only if it exists, so an empty/edge-case page never
+    // leaves driver.js pointing at nothing (a missing selector => centered popover).
+    const at = (sel: string, title: string, description: string, side: string) => {
+      const el = typeof document !== 'undefined' && document.querySelector(sel)
+      return el
+        ? { element: sel, popover: { title, description, side, align: 'start' } }
+        : { popover: { title, description } }
+    }
+
+    const steps = [
+      at(
+        '[data-tour="alerts-category"]',
+        t('portfolio.tour.categoryTitle'),
+        t('portfolio.tour.categoryDesc'),
+        'bottom',
+      ),
+      at(
+        '[data-tour="alerts-search"]',
+        t('portfolio.tour.searchTitle'),
+        t('portfolio.tour.searchDesc'),
+        'bottom',
+      ),
+      // Desktop gets an extra "how targets work" beat; mobile keeps it to 3.
+      ...(mobile.value
+        ? []
+        : [
+            {
+              popover: {
+                title: t('portfolio.tour.targetTitle'),
+                description: t('portfolio.tour.targetDesc'),
+              },
+            },
+          ]),
+      at(
+        '[data-tour="alerts-notify"]',
+        t('portfolio.tour.notifyTitle'),
+        t('portfolio.tour.notifyDesc'),
+        'bottom',
+      ),
+    ]
+
+    const tour = driver({
+      showProgress: true,
+      allowClose: true,
+      popoverClass: 'driverjs-theme',
+      nextBtnText: t('nav.tourSteps.next'),
+      prevBtnText: t('nav.tourSteps.back'),
+      doneBtnText: t('nav.tourSteps.done'),
+      // Persist on ANY exit (finish, skip, Esc, outside click) so it never nags.
+      onDestroyed: () => markSeen(),
+      steps,
+    })
+    tour.drive()
+  }
+
+  /** Run the tour the first time a user lands on /portfolio; no-op afterwards. */
+  function maybeAutoStart() {
+    if (!import.meta.client || hasSeen()) return
+    startTour()
+  }
+
+  return { startTour, maybeAutoStart, hasSeen }
+}

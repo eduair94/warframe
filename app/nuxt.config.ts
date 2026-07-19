@@ -366,6 +366,9 @@ export default defineNuxtConfig({
     workbox: {
       navigateFallback: null,
       globPatterns: ['**/*.{js,css,html,png,svg,ico,woff2}'],
+      // Web Push (Spec B): pull the push/notificationclick handlers into the
+      // generated SW so a single service worker does caching AND push.
+      importScripts: ['/push-sw.js'],
       runtimeCaching: [
         {
           // Cache the API origin (build-time env, same as the old config).

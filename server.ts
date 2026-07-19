@@ -6,6 +6,8 @@ import { MongooseServer } from "./database";
 import { Warframe } from "./warframe";
 import { startCacheWarmer } from "./services/CacheWarmer";
 import { TranslationService } from "./services/TranslationService";
+import { PushAlertService } from "./services/PushAlertService";
+import { parseSubscribeBody } from "./services/pushValidate";
 
 async function main() {
     await MongooseServer.startConnectionPromise();
@@ -110,10 +112,39 @@ async function main() {
         return results || { url_name: weapon, items: [] };
     });
 
+    // --- Web Push price alerts (Spec B) ---
+    // Anonymous per-device subscriptions + a background evaluator that pushes when
+    // a watched item crosses a threshold (tab closed). No accounts. Disabled unless
+    // VAPID keys are set. See services/PushAlertService.
+    const pushAlerts = new PushAlertService(serverConfig.port);
+    const pushSubs = pushAlerts.subscriptions();
+    // Public VAPID key the browser needs to create a PushSubscription (+ whether
+    // the feature is on at all, so the UI can degrade to foreground-only).
+    server.getJson('push/public-key', async (_req: Request): Promise<any> => {
+        return { key: pushAlerts.getPublicKey(), enabled: pushAlerts.isEnabled() };
+    });
+    // Create/update this device's subscription + alert thresholds. Validated in the
+    // handler (Express.postJson's validation branch never sends a response).
+    server.postJson('push/subscribe', async (req: Request): Promise<any> => {
+        const parsed = parseSubscribeBody(req.body);
+        if ('error' in parsed) return { error: parsed.error };
+        const doc = await pushSubs.upsert(parsed.value);
+        return { ok: true, count: doc.alerts.length };
+    });
+    server.postJson('push/unsubscribe', async (req: Request): Promise<any> => {
+        const deviceId = typeof req.body?.deviceId === 'string' ? req.body.deviceId.trim() : '';
+        if (!deviceId) return { error: 'deviceId required' };
+        await pushSubs.remove(deviceId);
+        return { ok: true };
+    });
+
     // Keep the heavy aggregate routes permanently warm so their stale copy never
     // ages out — otherwise a cold ~20s recompute reaches Cloudflare and times out
     // to a 502. See services/CacheWarmer.ts.
     startCacheWarmer(serverConfig.port);
+
+    // Evaluate alerts periodically (after the cache warmer has primed analytics).
+    pushAlerts.startInterval(Number(process.env.PUSH_EVAL_INTERVAL_MS) || 90000);
 }
 
 main();
