@@ -375,7 +375,11 @@ function relicThumb(relic: RelicRow): string {
 }
 // Open the "where to farm" drops popup for a relic.
 function openDrops(relic: RelicRow) {
-  dropsRelic.value = relic.relicName
+  // Drop nodes are indexed under the full item name ("Axi S8 Relic"), but
+  // relicName is the bare label ("Axi S8") and the dialog's matchKeys doesn't
+  // strip a "Relic" suffix — pass the suffixed name so the nodes resolve.
+  const rn = (relic.relicName || '').trim()
+  dropsRelic.value = /relic$/i.test(rn) ? rn : `${rn} Relic`
   dropsThumb.value = relic.thumb || ''
   dropsDialog.value = true
 }

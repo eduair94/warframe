@@ -322,7 +322,12 @@ function onImgError(e: Event) {
   img.src = placeholderImg
 }
 function openDrops(relic: RelicRow) {
-  dropsRelic.value = relic.relicName
+  // The drop index stores a relic's mission drops under its full item name
+  // ("Axi S8 Relic"), but /relics_ev supplies the bare display label
+  // ("Axi S8") and DropLocationsDialog's matchKeys strips "Blueprint"/"Set"
+  // but not "Relic". Pass the suffixed item name so the nodes actually resolve.
+  const rn = (relic.relicName || '').trim()
+  dropsRelic.value = /relic$/i.test(rn) ? rn : `${rn} Relic`
   dropsThumb.value = relic.thumb || ''
   dropsDialog.value = true
 }
