@@ -33,6 +33,7 @@ export const GUIDES_INDEX: GuideMeta[] = [
   { slug: 'focus', route: '/guides/focus', title: 'Focus Farming', blurb: 'Unlock the Operator, pick a school and farm Focus efficiently.', category: 'farming', icon: 'mdi-eye-outline', readMins: 8 },
   { slug: 'kuva', route: '/guides/kuva', title: 'Kuva Farming', blurb: 'Fuel for riven re-rolls and Kuva weapons — the best farms and rates.', category: 'farming', icon: 'mdi-water-outline', readMins: 7 },
   { slug: 'relics', route: '/guides/relics', title: 'Relics & Void Traces', blurb: 'Crack relics, refine with traces, and run efficient fissure squads.', category: 'farming', icon: 'mdi-diamond-stone', readMins: 9 },
+  { slug: 'forma', route: '/guides/forma', title: 'Forma Farming', blurb: 'Cracked relics and got zero Forma? Run them right, plus every non-relic source — Nightwave, Sorties, the Market and Plague Star.', category: 'farming', icon: 'mdi-vector-triangle', readMins: 10 },
   { slug: 'resources', route: '/guides/resources', title: 'Resource Farming Reference', blurb: 'Where to farm Orokin Cells, Neurodes, Argon, Tellurium, Nitain and more.', category: 'farming', icon: 'mdi-cube-scan', readMins: 9 },
   { slug: 'standing', route: '/guides/standing', title: 'Standing & Syndicates', blurb: 'Cap your daily standing across every syndicate and open-world faction.', category: 'farming', icon: 'mdi-handshake-outline', readMins: 8 },
 

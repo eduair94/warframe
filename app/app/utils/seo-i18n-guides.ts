@@ -6,6 +6,10 @@ import type { PageSeo } from './seo'
 
 export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
   "es": {
+    "/guides/forma": {
+      "title": "Farmeo de Forma en Warframe — Cómo conseguir blueprints de Forma rápido",
+      "description": "¿Abriste relics y no cayó ninguna Forma? Fármealo bien: relics Intact en escuadra pública completa, más todas las fuentes sin relics — Nightwave, Sorties, el Mercado y Plague Star. Receta de crafteo y variantes explicadas."
+    },
     "/guides": {
       "title": "Guías de Warframe — Farmeo, builds, platino y ayuda para novatos",
       "description": "Todas las guías de Warframe en un sitio: ayuda para nuevos jugadores, farmeo de platino y recursos, builds, endgame y unas FAQ con buscador. Basado en r/Warframe y gratis para Tenno."
@@ -120,6 +124,10 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
     }
   },
   "pt": {
+    "/guides/forma": {
+      "title": "Farm de Forma no Warframe — Como conseguir blueprints de Forma rápido",
+      "description": "Abriu relics e não veio nenhuma Forma? Farme do jeito certo: relics Intact em esquadrão público cheio, além de todas as fontes sem relics — Nightwave, Sorties, o Mercado e a Plague Star. Receita de criação e variantes explicadas."
+    },
     "/guides": {
       "title": "Guias de Warframe — Farm, Builds, Platino e Iniciantes",
       "description": "Todo guia de Warframe em um só lugar: ajuda para novatos, farm de platino e recursos, builds, endgame e um FAQ pesquisável. Baseado no r/Warframe, grátis para Tenno."
@@ -234,6 +242,10 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
     }
   },
   "de": {
+    "/guides/forma": {
+      "title": "Warframe Forma farmen — Forma-Baupläne schnell bekommen",
+      "description": "Relikte geöffnet und keine Forma bekommen? Farme richtig: Relikte Intakt in voller öffentlicher Gruppe, plus alle reliktfreien Quellen — Nightwave, Sorties, der Markt und Plague Star. Bauplan-Rezept und Varianten erklärt."
+    },
     "/guides": {
       "title": "Warframe Guides — Farming, Builds, Platin & Einsteiger",
       "description": "Alle Warframe-Guides an einem Ort: Hilfe für neue Spieler, Platin- und Ressourcen-Farming, Builds, Endgame und eine durchsuchbare FAQ. Basierend auf r/Warframe, gratis für Tenno."
@@ -348,6 +360,10 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
     }
   },
   "fr": {
+    "/guides/forma": {
+      "title": "Farm de Forma sur Warframe — Obtenir des plans de Forma vite",
+      "description": "Vous avez ouvert vos reliques sans obtenir de Forma ? Farmez bien : reliques Intactes en escouade publique complète, plus toutes les sources sans relique — Nightwave, Sorties, le Marché et Plague Star. Recette de fabrication et variantes expliquées."
+    },
     "/guides": {
       "title": "Guides Warframe — Farm, Builds, Platine & Débutants",
       "description": "Tous les guides Warframe au même endroit : aide aux nouveaux joueurs, farm de platine et de ressources, builds, endgame et une FAQ consultable. Basé sur r/Warframe, gratuit pour les Tenno."
@@ -462,6 +478,10 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
     }
   },
   "ru": {
+    "/guides/forma": {
+      "title": "Фарм Форм в Warframe — как быстро получить чертежи Формы",
+      "description": "Вскрыли реликвии и не выпало Формы? Фармите правильно: реликвии в состоянии Intact в полном публичном отряде, плюс все источники без реликвий — Nightwave, Sorties, Рынок и Plague Star. Рецепт сборки и варианты разобраны."
+    },
     "/guides": {
       "title": "Гайды по Warframe — фарм, билды, платина и старт",
       "description": "Все гайды по Warframe в одном месте: помощь новичкам, фарм платины и ресурсов, билды, эндгейм и FAQ с поиском. На основе r/Warframe, бесплатно для Tenno."
@@ -576,6 +596,10 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
     }
   },
   "ko": {
+    "/guides/forma": {
+      "title": "워프레임 포르마 파밍 — 포르마 청사진 빠르게 얻는 법",
+      "description": "렐릭을 다 열었는데 포르마가 안 나왔나요? 제대로 파밍하세요: 정제하지 않은(Intact) 렐릭을 4인 공개 스쿼드에서 돌리고, 렐릭 없이 얻는 모든 방법 — Nightwave, Sortie, 마켓, Plague Star까지. 제작 레시피와 변형도 설명합니다."
+    },
     "/guides": {
       "title": "Warframe 가이드 — 파밍, 빌드, 플래티넘 & 초보자 도움말",
       "description": "모든 Warframe 가이드를 한곳에: 초보자 도움말, 플래티넘 및 자원 파밍, 빌드, 엔드게임, 검색 가능한 FAQ까지. r/Warframe 기반, Tenno에게 무료."
@@ -690,6 +714,10 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
     }
   },
   "ja": {
+    "/guides/forma": {
+      "title": "Warframe フォーマ稼ぎ — フォーマ設計図の効率的な集め方",
+      "description": "レリックを割ってもフォーマが出ない? 正しく集めよう: 未精製(Intact)のレリックをフルパブリック分隊で回し、レリック以外の全入手先 — Nightwave、Sortie、マーケット、Plague Star まで。製作レシピと各種フォーマも解説。"
+    },
     "/guides": {
       "title": "Warframeガイド — 周回・ビルド・プラチナ・初心者向け",
       "description": "Warframeの全ガイドを一箇所に。初心者向け解説、プラチナ稼ぎとリソース周回、ビルド、エンドゲーム、検索可能なFAQ。r/Warframeに基づき、Tennoに無料で提供。"
@@ -804,6 +832,10 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
     }
   },
   "zh-hans": {
+    "/guides/forma": {
+      "title": "Warframe 福马农法 — 快速获取福马蓝图的方法",
+      "description": "开遗物却一个福马都没出？用对方法：遗物保持未精炼(Intact)、组满员公开小队，再加上所有非遗物来源——Nightwave、每日突击、市场和 Plague Star。附制造配方与各类福马说明。"
+    },
     "/guides": {
       "title": "Warframe 攻略大全 — 刷素材、配装、白金与新手指南",
       "description": "所有 Warframe 攻略一站搞定：新手指引、白金与资源farm、配装、终局玩法及可搜索FAQ。取材自 r/Warframe，Tenno 免费畅用。"
@@ -918,6 +950,10 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
     }
   },
   "zh-hant": {
+    "/guides/forma": {
+      "title": "Warframe 福馬農法 — 快速取得福馬藍圖的方法",
+      "description": "開了遺物卻一個福馬都沒出？用對方法：遺物保持未精煉(Intact)、組滿員公開小隊，再加上所有非遺物來源——Nightwave、每日突擊、市場和 Plague Star。附製造配方與各類福馬說明。"
+    },
     "/guides": {
       "title": "Warframe 攻略大全 — 刷素材、配裝、白金與新手教學",
       "description": "所有 Warframe 攻略一站掌握：新手入門、白金與素材農場、配裝、終局內容與可搜尋 FAQ。取材自 r/Warframe，Tenno 免費使用。"
@@ -1032,6 +1068,10 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
     }
   },
   "pl": {
+    "/guides/forma": {
+      "title": "Warframe farmienie Formy — jak szybko zdobyć plany Formy",
+      "description": "Otworzyłeś relikwie i nie wypadła żadna Forma? Farm rób dobrze: relikwie Intact w pełnym publicznym składzie, plus wszystkie źródła bez relikwii — Nightwave, Sortie, Rynek i Plague Star. Przepis na budowę i warianty wyjaśnione."
+    },
     "/guides": {
       "title": "Poradniki Warframe — Farmienie, Buildy, Platyna i Start",
       "description": "Wszystkie poradniki Warframe w jednym miejscu: pomoc dla nowych graczy, farmienie platyny i zasobów, buildy, endgame i przeszukiwalne FAQ. Oparte na r/Warframe, za darmo dla Tenno."
@@ -1146,6 +1186,10 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
     }
   },
   "it": {
+    "/guides/forma": {
+      "title": "Warframe farming di Forma — Come ottenere i progetti Forma in fretta",
+      "description": "Hai aperto le reliquie e non è uscita nessuna Forma? Farmala bene: reliquie Intatte in squadra pubblica completa, più tutte le fonti senza reliquie — Nightwave, Sortie, il Mercato e Plague Star. Ricetta di costruzione e varianti spiegate."
+    },
     "/guides": {
       "title": "Guide Warframe — Farming, Build, Platino e Aiuto Novizi",
       "description": "Tutte le guide Warframe in un unico posto: aiuto per nuovi giocatori, farming di platino e risorse, build, endgame e una FAQ ricercabile. Basata su r/Warframe, gratis per i Tenno."
@@ -1260,6 +1304,10 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
     }
   },
   "uk": {
+    "/guides/forma": {
+      "title": "Фарм Форми у Warframe — як швидко отримати креслення Форми",
+      "description": "Відкрили реліквії, а Форми немає? Фармте правильно: реліквії Intact у повному публічному загоні, плюс усі джерела без реліквій — Nightwave, Sortie, Ринок і Plague Star. Рецепт створення й варіанти пояснено."
+    },
     "/guides": {
       "title": "Гайди Warframe — фарм, білди, платина та поради новачкам",
       "description": "Усі гайди Warframe в одному місці: допомога новачкам, фарм платини та ресурсів, білди, ендгейм і FAQ з пошуком. На основі r/Warframe, безкоштовно для Tenno."
