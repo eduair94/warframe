@@ -5,11 +5,11 @@
       <NuxtLink :to="localePath('/guides')" class="kc-promo an">
         <span class="kc-promo__node"></span>
         <div class="kc-promo__text">
-          <div class="kc-promo__eyebrow">{{ t('guidesChrome.homePromo.eyebrow') }}</div>
-          <div class="kc-promo__title">{{ t('guidesChrome.homePromo.title') }}</div>
-          <div class="kc-promo__sub">{{ t('guidesChrome.homePromo.sub') }}</div>
+          <div class="kc-promo__eyebrow">{{ t('homePromo.eyebrow') }}</div>
+          <div class="kc-promo__title">{{ t('homePromo.title') }}</div>
+          <div class="kc-promo__sub">{{ t('homePromo.sub') }}</div>
         </div>
-        <span class="kc-promo__cta">{{ t('guidesChrome.homePromo.cta') }} <span class="kc-promo__arrow">→</span></span>
+        <span class="kc-promo__cta">{{ t('homePromo.cta') }} <span class="kc-promo__arrow">→</span></span>
       </NuxtLink>
       <client-only>
         <v-data-table
