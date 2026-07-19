@@ -31,6 +31,17 @@
               <v-icon size="15">mdi-shield-star-outline</v-icon>
               {{ t('starChart3d.guide') }}
             </button>
+            <button class="sc3-forma-btn" :class="{ 'is-on': formaMode }" :aria-pressed="formaMode ? 'true' : 'false'" @click="toggleForma">
+              <v-icon size="15">mdi-vector-triangle</v-icon>
+              {{ t('starChart3d.forma.toggle') }}
+            </button>
+          </div>
+          <div v-if="formaMode" class="sc3-forma-note">
+            <v-icon size="13" color="#e7cf95">mdi-star-four-points</v-icon>
+            <i18n-t keypath="starChart3d.forma.note" tag="span">
+              <template #n><b>{{ formaPlanets.size }}</b></template>
+            </i18n-t>
+            <NuxtLink :to="localePath('/forma-relics')" class="sc3-forma-note__link">{{ t('starChart3d.forma.listLink') }}</NuxtLink>
           </div>
         </header>
 
@@ -191,6 +202,7 @@
                       <span class="sc3-node__name">
                         {{ node.location }}
                         <v-icon v-if="focusItem && nodeHasFocusItem(node)" size="11" color="#7ff0eb" class="sc3-node__mark">mdi-diamond-stone</v-icon>
+                        <v-icon v-if="formaMode && nodeHasForma(node)" size="12" color="#e7cf95" class="sc3-node__mark" :title="t('starChart3d.forma.nodeTip')">mdi-vector-triangle</v-icon>
                       </span>
                       <span class="sc3-node__mode">{{ node.gameMode }}<template v-if="node.isEvent"> · {{ t('starChart3d.panel.event') }}</template></span>
                     </span>
@@ -207,7 +219,7 @@
                         v-for="(rw, i) in sortedRewards(rot.rewards)"
                         :key="i"
                         class="sc3-reward"
-                        :class="{ 'is-dud': !rw.tradeable, 'is-focus': focusItem && rw.itemName === focusItem }"
+                        :class="{ 'is-dud': !rw.tradeable, 'is-focus': focusItem && rw.itemName === focusItem, 'is-forma': formaMode && rewardIsForma(rw.itemName) }"
                       >
                         <img
                           class="sc3-reward__thumb"
@@ -314,6 +326,7 @@ import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 
 
 const { loading, planets, planetsByName, maxValue, stats, load, rewardMeta, sortedRewards } = useDropMap()
+const { rewardIsForma } = useFormaRelics()
 const { itemThumb } = useItemThumb()
 const { mobile } = useDisplay()
 const route = useRoute()
@@ -329,6 +342,8 @@ const focusItem = ref('')
 const dropsDialog = ref(false)
 const dropsItem = ref('')
 const guideOpen = ref(false)
+/** Forma preset: highlight worlds that drop a currently-dropping Forma relic. */
+const formaMode = ref(false)
 const unsupported = ref(false)
 const mapEl = ref<HTMLElement | null>(null)
 /** touch-first device — drives the control legend wording */
@@ -461,9 +476,33 @@ const searchNames = computed(() => [...itemIndexMap.value.keys()].sort((a, b) =>
 
 const itemHits = computed(() => (findItem.value ? itemIndexMap.value.get(findItem.value) || null : null))
 
-const highlightedWorlds = computed<string[] | null>(() =>
-  itemHits.value ? [...itemHits.value.planets] : null,
-)
+// Worlds that drop a currently-dropping Forma relic (any node whose reward pool
+// contains a Forma-bearing relic). Powers the Forma preset highlight.
+const formaPlanets = computed<Set<string>>(() => {
+  const s = new Set<string>()
+  for (const p of planets.value) {
+    if (nodeListHasForma(p.nodes)) s.add(p.planet)
+  }
+  return s
+})
+
+function nodeListHasForma(nodes: any[]): boolean {
+  return (nodes || []).some((n) => nodeHasForma(n))
+}
+function nodeHasForma(node: any): boolean {
+  return (node.rotations || []).some((rot: any) =>
+    (rot.rewards || []).some((rw: any) => rw.itemName && rewardIsForma(rw.itemName)),
+  )
+}
+
+// An active item search wins the highlight; otherwise the Forma preset lights
+// up every world that drops a Forma relic and dims the rest (reusing the same
+// `highlighted` channel the galaxy already animates for search hits).
+const highlightedWorlds = computed<string[] | null>(() => {
+  if (itemHits.value) return [...itemHits.value.planets]
+  if (formaMode.value) return [...formaPlanets.value]
+  return null
+})
 
 /* ---------------- selection / panel ---------------- */
 
@@ -533,6 +572,17 @@ function onFind(name: string | null) {
   if (name) selected.value = ''
 }
 
+// Toggle the Forma preset. Turning it on clears any active search/selection so
+// the galaxy-wide Forma highlight is visible immediately.
+function toggleForma() {
+  formaMode.value = !formaMode.value
+  if (formaMode.value) {
+    findItem.value = null
+    focusItem.value = ''
+    selected.value = ''
+  }
+}
+
 // On phones the map can be taller than the viewport — bring the bottom-sheet
 // panel on-screen after a selection (same pattern as the 2D chart).
 function scrollPanelIntoView() {
@@ -573,6 +623,8 @@ function onMapKey(e: KeyboardEvent) {
 let queryReady = false
 
 function applyQuery() {
+  const qf = route.query.forma
+  if (qf === '1' || qf === 'true') formaMode.value = true
   const qp = typeof route.query.planet === 'string' ? route.query.planet : ''
   const qi = typeof route.query.item === 'string' ? route.query.item : ''
   if (qi && itemIndexMap.value.has(qi)) {
@@ -584,17 +636,21 @@ function applyQuery() {
   queryReady = true
 }
 
-watch([selected, findItem], () => {
+watch([selected, findItem, formaMode], () => {
   if (!queryReady) return
   // merge into the existing query so unrelated params (utm, locale…) survive
   const query: Record<string, any> = { ...route.query }
   delete query.planet
   delete query.item
+  delete query.forma
   if (selected.value) query.planet = selected.value
   if (findItem.value) query.item = findItem.value
+  if (formaMode.value) query.forma = '1'
   const cur = route.query
   const same =
-    (cur.planet || '') === (query.planet || '') && (cur.item || '') === (query.item || '')
+    (cur.planet || '') === (query.planet || '') &&
+    (cur.item || '') === (query.item || '') &&
+    (cur.forma || '') === (query.forma || '')
   if (!same) router.replace({ query })
 })
 
@@ -792,6 +848,66 @@ onBeforeUnmount(() => {
 }
 .sc3-guide-btn:focus-visible {
   outline: 2px solid #35d6d0;
+}
+.sc3-forma-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(79, 179, 191, 0.08);
+  border: 1px solid rgba(79, 179, 191, 0.45);
+  cursor: pointer;
+  padding: 4px 12px;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #7ff0eb;
+  clip-path: polygon(7px 0, 100% 0, 100% calc(100% - 7px), calc(100% - 7px) 100%, 0 100%, 0 7px);
+}
+.sc3-forma-btn:hover {
+  background: rgba(79, 179, 191, 0.16);
+}
+.sc3-forma-btn.is-on {
+  background: #e7cf95;
+  color: #17130a;
+  border-color: #e7cf95;
+}
+.sc3-forma-btn:focus-visible {
+  outline: 2px solid #35d6d0;
+}
+.sc3-forma-note {
+  pointer-events: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 8px;
+  max-width: 340px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.76rem;
+  color: #cbd0e0;
+  background: rgba(10, 11, 20, 0.7);
+  border: 1px solid rgba(212, 175, 90, 0.3);
+  padding: 5px 10px;
+  clip-path: polygon(7px 0, 100% 0, 100% calc(100% - 7px), calc(100% - 7px) 100%, 0 100%, 0 7px);
+}
+.sc3-forma-note b {
+  color: #e7cf95;
+}
+.sc3-forma-note__link {
+  color: #7ff0eb;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.sc3-forma-note__link:hover {
+  text-decoration: underline;
+}
+.sc3-reward.is-forma {
+  background: rgba(231, 207, 149, 0.08);
+  box-shadow: inset 2px 0 0 #e7cf95;
+}
+.sc3-reward.is-forma .sc3-reward__name {
+  color: #e7cf95;
 }
 
 .sc3-stats {

@@ -199,6 +199,7 @@ const navLinks: NavLink[] = [
   { to: '/ducats', key: 'ducats', icon: 'mdi-cash-multiple', group: 'Analytics' },
   { to: '/endo', key: 'endoPlat', icon: 'mdi-swap-horizontal', group: 'Tools' },
   { to: '/relic-farming', key: 'relicFarming', icon: 'mdi-timer-sand', group: 'Tools' },
+  { to: '/forma-relics', key: 'formaRelics', icon: 'mdi-vector-triangle', group: 'Tools' },
   { to: '/riven-value', key: 'rivenValue', icon: 'mdi-star-four-points-outline', group: 'Tools' },
   { to: '/portfolio', key: 'portfolio', icon: 'mdi-briefcase-variant-outline', group: 'Tools' },
   { to: '/guides', key: 'knowledgeCenter', icon: 'mdi-book-open-page-variant', group: 'Guides' },

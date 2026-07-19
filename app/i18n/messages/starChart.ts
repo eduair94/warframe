@@ -8,6 +8,12 @@ export default {
   en: {
     starChart: {
       eyebrow: 'Warframe · Origin System',
+      forma: {
+        toggle: 'Forma relics',
+        note: 'Highlighting {n} worlds that drop a Forma relic. Dimmed worlds have none.',
+        listLink: 'List every Forma relic',
+        nodeTip: 'Drops a relic that contains a Forma Blueprint',
+      },
       hero: {
         title: 'Where the {plat} actually is.',
         titlePlat: 'plat',

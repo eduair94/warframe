@@ -8,6 +8,12 @@ export default {
     starChart3d: {
       mapAria:
         '3D interactive Warframe drop map. Arrow keys cycle worlds and open their missions, Escape clears the selection.',
+      forma: {
+        toggle: 'Forma relics',
+        note: 'Highlighting {n} worlds that drop a Forma relic. Dimmed worlds have none.',
+        listLink: 'List every Forma relic',
+        nodeTip: 'Drops a relic that contains a Forma Blueprint',
+      },
       eyebrow: 'Warframe · 3D drop map',
       title: 'Origin System',
       view2d: '◂ 2D chart view',

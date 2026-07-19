@@ -18,6 +18,10 @@ export const PAGE_SEO_I18N_PAGES: Record<string, Record<string, PageSeo>> = {
     }
   },
   "es": {
+    "/forma-relics": {
+      "title": "Qué reliquias de Warframe sueltan Forma — Lista y mapa",
+      "description": "Todas las reliquias de Warframe que sueltan un blueprint de Forma, por defecto las que caen ahora: las de 1× y 2×, dónde farmear cada una y una vista de Forma en el mapa estelar."
+    },
     "/vaulted-worth": {
       "title": "Primes vedados que merecen comprar — Veredictos en plat",
       "description": "¿Deberías comprar ese prime vedado ahora? Precio en platino en vivo, tendencia a 30 días y estado de Prime Resurgence fusionados en un veredicto de comprar, esperar o descartar para cada prime de Warframe vedado."
@@ -32,6 +36,10 @@ export const PAGE_SEO_I18N_PAGES: Record<string, Record<string, PageSeo>> = {
     }
   },
   "pt": {
+    "/forma-relics": {
+      "title": "Quais relíquias de Warframe dropam Forma — Lista e mapa",
+      "description": "Todas as relíquias de Warframe que dropam um blueprint de Forma, por padrão as que caem agora: as de 1× e 2×, onde farmar cada uma e uma visão de Forma no mapa estelar."
+    },
     "/vaulted-worth": {
       "title": "Primes Vedados no Warframe: Vale a Pena Comprar em Plat?",
       "description": "Vale a pena comprar aquele prime vedado agora? Preço de platina ao vivo, tendência de 30 dias e status no Prime Resurgence combinados em um veredito de comprar, esperar ou pular para cada prime Warframe vedado."
@@ -46,6 +54,10 @@ export const PAGE_SEO_I18N_PAGES: Record<string, Record<string, PageSeo>> = {
     }
   },
   "de": {
+    "/forma-relics": {
+      "title": "Welche Warframe-Relikte Forma droppen — Liste & Karte",
+      "description": "Alle Warframe-Relikte, die einen Forma-Bauplan droppen, standardmäßig die aktuell droppenden: die 1×- und 2×-Relikte, wo jedes farmt, und eine Forma-Ansicht auf der Sternenkarte."
+    },
     "/vaulted-worth": {
       "title": "Gevaultete Warframe Primes — Plat-Urteile",
       "description": "Solltest du diesen gevaulteten Prime jetzt kaufen? Live-Platinpreis, 30-Tage-Trend und Prime-Resurgence-Status verschmolzen zu einem Kaufen-, Warten- oder Überspringen-Urteil für jeden gevaulteten Warframe Prime."
@@ -60,6 +72,10 @@ export const PAGE_SEO_I18N_PAGES: Record<string, Record<string, PageSeo>> = {
     }
   },
   "fr": {
+    "/forma-relics": {
+      "title": "Quelles reliques Warframe donnent du Forma — Liste & carte",
+      "description": "Toutes les reliques Warframe qui donnent un plan de Forma, par défaut celles qui tombent actuellement : les reliques 1× et 2×, où farmer chacune, et une vue Forma sur la carte stellaire."
+    },
     "/vaulted-worth": {
       "title": "Primes Warframe Vaulted à acheter — Verdicts plat",
       "description": "Faut-il acheter ce prime vaulted maintenant ? Prix en platine en direct, tendance sur 30 jours et statut Prime Resurgence fusionnés en un verdict acheter, attendre ou passer pour chaque prime Warframe vaulted."
@@ -74,6 +90,10 @@ export const PAGE_SEO_I18N_PAGES: Record<string, Record<string, PageSeo>> = {
     }
   },
   "ru": {
+    "/forma-relics": {
+      "title": "Какие реликвии Warframe дают Форму — список и карта",
+      "description": "Все реликвии Warframe, из которых падает чертёж Формы; по умолчанию — выпадающие сейчас: реликвии на 1× и 2×, где фармить каждую, и режим Формы на звёздной карте."
+    },
     "/vaulted-worth": {
       "title": "Vaulted Prime, которые стоит купить — вердикты по плате",
       "description": "Стоит ли покупать этот Vaulted prime сейчас? Живая цена в платине, тренд за 30 дней и статус Prime Resurgence объединены в вердикт купить, ждать или пропустить для каждого Vaulted prime Warframe."
@@ -88,6 +108,10 @@ export const PAGE_SEO_I18N_PAGES: Record<string, Record<string, PageSeo>> = {
     }
   },
   "ko": {
+    "/forma-relics": {
+      "title": "포르마가 나오는 워프레임 렐릭 — 목록과 지도",
+      "description": "포르마 청사진이 나오는 모든 워프레임 렐릭을 정리 — 기본은 현재 드롭 중인 것: 1×·2× 렐릭, 각 렐릭의 파밍 위치, 그리고 성도 지도의 포르마 보기까지."
+    },
     "/vaulted-worth": {
       "title": "살 만한 봉인 Warframe Prime — 플래티넘 판정",
       "description": "그 봉인된 Prime, 지금 사야 할까요? 실시간 플래티넘 가격, 30일 추세, Prime Resurgence 상태를 종합해 모든 봉인된 Warframe Prime에 대한 구매·대기·스킵 판정을 제공합니다."
@@ -102,6 +126,10 @@ export const PAGE_SEO_I18N_PAGES: Record<string, Record<string, PageSeo>> = {
     }
   },
   "ja": {
+    "/forma-relics": {
+      "title": "フォーマが出る Warframe レリック一覧とマップ",
+      "description": "フォーマ設計図が出る Warframe レリックを全網羅。既定は現在ドロップ中: 1×・2× のレリック、各レリックの入手先、星系マップのフォーマ表示付き。"
+    },
     "/vaulted-worth": {
       "title": "買う価値ある Vaulted Prime｜プラチナ判定",
       "description": "その Vaulted Prime、今買うべき？ リアルタイムのプラチナ価格、30日トレンド、Prime Resurgence の状況を統合し、すべての Vaulted Warframe Prime に「買い・待ち・見送り」の判定を提示します。"
@@ -116,6 +144,10 @@ export const PAGE_SEO_I18N_PAGES: Record<string, Record<string, PageSeo>> = {
     }
   },
   "zh-hans": {
+    "/forma-relics": {
+      "title": "哪些 Warframe 遗物掉落福马 — 清单与星图",
+      "description": "所有掉落福马蓝图的 Warframe 遗物，默认显示当前掉落中：1× 与 2× 遗物、每个遗物的农刷地点，以及星图上的福马视图。"
+    },
     "/vaulted-worth": {
       "title": "值得买的 Vaulted Warframe Prime——白金判断",
       "description": "现在该买那个 Vaulted Prime 吗？把实时白金价格、30 天走势和 Prime Resurgence 状态融合成买入、等待或跳过的判断，覆盖每一件 Vaulted Warframe Prime。"
@@ -130,6 +162,10 @@ export const PAGE_SEO_I18N_PAGES: Record<string, Record<string, PageSeo>> = {
     }
   },
   "zh-hant": {
+    "/forma-relics": {
+      "title": "哪些 Warframe 遺物掉落福馬 — 清單與星圖",
+      "description": "所有掉落福馬藍圖的 Warframe 遺物，預設顯示目前掉落中：1× 與 2× 遺物、每個遺物的農刷地點，以及星圖上的福馬檢視。"
+    },
     "/vaulted-worth": {
       "title": "值得入手的 Vaulted Warframe Prime——白金判定",
       "description": "現在該買那個 Vaulted Prime 嗎？即時白金價格、30 天走勢與 Prime Resurgence 狀態，融合成每個 Vaulted Warframe Prime 的買入、等待或略過判定。"
@@ -144,6 +180,10 @@ export const PAGE_SEO_I18N_PAGES: Record<string, Record<string, PageSeo>> = {
     }
   },
   "pl": {
+    "/forma-relics": {
+      "title": "Które relikwie Warframe dają Formę — lista i mapa",
+      "description": "Wszystkie relikwie Warframe, które dają plan Formy; domyślnie te aktualnie wypadające: relikwie 1× i 2×, gdzie farmić każdą, oraz widok Formy na mapie gwiezdnej."
+    },
     "/vaulted-worth": {
       "title": "Vaulted Primy Warto Kupić — Werdykty w Plat",
       "description": "Czy warto teraz kupić tego vaulted prime? Aktualna cena w platinum, trend z 30 dni i status Prime Resurgence połączone w werdykt kup, czekaj lub pomiń dla każdego vaulted Warframe prime."
@@ -158,6 +198,10 @@ export const PAGE_SEO_I18N_PAGES: Record<string, Record<string, PageSeo>> = {
     }
   },
   "it": {
+    "/forma-relics": {
+      "title": "Quali reliquie Warframe danno Forma — Lista e mappa",
+      "description": "Tutte le reliquie Warframe che danno un progetto Forma, di default quelle che droppano ora: le reliquie 1× e 2×, dove farmare ciascuna e una vista Forma sulla mappa stellare."
+    },
     "/vaulted-worth": {
       "title": "Prime Vaulted da comprare — Verdetti in Plat",
       "description": "Dovresti comprare quel Prime Vaulted adesso? Prezzo in platino in tempo reale, trend a 30 giorni e stato Prime Resurgence combinati in un verdetto compra, aspetta o salta per ogni Prime Warframe Vaulted."
@@ -172,6 +216,10 @@ export const PAGE_SEO_I18N_PAGES: Record<string, Record<string, PageSeo>> = {
     }
   },
   "uk": {
+    "/forma-relics": {
+      "title": "Які реліквії Warframe дають Форму — список і мапа",
+      "description": "Усі реліквії Warframe, з яких випадає креслення Форми; за замовчуванням — ті, що падають зараз: реліквії на 1× і 2×, де фармити кожну, та режим Форми на зоряній мапі."
+    },
     "/vaulted-worth": {
       "title": "Vaulted Prime у Warframe — чи варто купувати?",
       "description": "Чи варто купувати цей Vaulted Prime зараз? Жива ціна в платині, тренд за 30 днів і статус Prime Resurgence поєднані у вердикт купити, зачекати чи пропустити для кожного Vaulted Prime у Warframe."

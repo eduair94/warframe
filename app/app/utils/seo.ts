@@ -84,6 +84,11 @@ export const PAGE_SEO: Record<string, PageSeo> = {
     description:
       'Rank Warframe relics by realizable platinum value per run, weighted by market liquidity. Farm the relics that actually pay out in plat.'
   },
+  '/forma-relics': {
+    title: 'Which Warframe Relics Drop Forma — Farming List & Map',
+    description:
+      'Every Warframe relic that drops a Forma Blueprint, currently-dropping by default: the 1× and 2× relics, where each one farms, and a star-map Forma view. Stop cracking relics blind.'
+  },
   '/relics-value': {
     title: 'Relic Value Calculator — Crack or Sell?',
     description:

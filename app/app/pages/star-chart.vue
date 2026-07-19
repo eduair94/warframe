@@ -7,11 +7,17 @@
           <template #plat><span class="sc-accent">{{ t('starChart.hero.titlePlat') }}</span></template>
         </i18n-t>
         <p class="sc-lede">{{ t('starChart.hero.lede') }}</p>
-        <NuxtLink :to="localePath('/star-chart-3d')" class="sc-3d-btn">
-          <v-icon size="18">mdi-rotate-orbit</v-icon>
-          {{ t('starChart.hero.button3d') }}
-          <span class="sc-3d-btn__arrow">→</span>
-        </NuxtLink>
+        <div class="sc-hero__btns">
+          <NuxtLink :to="localePath('/star-chart-3d')" class="sc-3d-btn">
+            <v-icon size="18">mdi-rotate-orbit</v-icon>
+            {{ t('starChart.hero.button3d') }}
+            <span class="sc-3d-btn__arrow">→</span>
+          </NuxtLink>
+          <button class="sc-forma-btn" :class="{ 'is-on': formaMode }" :aria-pressed="formaMode ? 'true' : 'false'" @click="toggleForma">
+            <v-icon size="17">mdi-vector-triangle</v-icon>
+            {{ t('starChart.forma.toggle') }}
+          </button>
+        </div>
       </div>
       <div v-if="richest" class="sc-hero__deal">
         <div class="sc-hero__deal-label">{{ t('starChart.hero.dealLabel') }}</div>
@@ -33,6 +39,14 @@
         <div class="sc-stat__num">{{ stats.topNode ? stats.topNode.location : '—' }}</div>
         <div class="sc-stat__lbl">{{ t('starChart.stats.topFarmNode') }}</div>
       </div>
+    </div>
+
+    <div v-if="formaMode && !loading && planets.length" class="sc-forma-note">
+      <v-icon size="15" color="#e7cf95">mdi-star-four-points</v-icon>
+      <i18n-t keypath="starChart.forma.note" tag="span">
+        <template #n><b>{{ formaPlanetSet.size }}</b></template>
+      </i18n-t>
+      <NuxtLink :to="localePath('/forma-relics')" class="sc-forma-note__link">{{ t('starChart.forma.listLink') }}</NuxtLink>
     </div>
 
     <!-- Loading -->
@@ -97,7 +111,7 @@
             v-for="p in scene.nodes"
             :key="p.planet"
             class="sc-planet"
-            :class="{ 'is-selected': p.planet === selected }"
+            :class="{ 'is-selected': p.planet === selected, 'is-forma-hot': formaMode && isFormaPlanet(p.planet), 'is-forma-cold': formaMode && !isFormaPlanet(p.planet) }"
             role="button"
             tabindex="0"
             :aria-label="t('starChart.a11y.planet', { planet: p.planet, value: fmtPlat(p.value), count: p.nodeCount })"
@@ -158,7 +172,7 @@
             <li v-for="node in selectedData.nodes" :key="node.location" class="sc-node" :class="{ 'is-open': openNode === node.location }">
               <button class="sc-node__head" @click="toggleNode(node.location)" :aria-expanded="openNode === node.location ? 'true' : 'false'">
                 <div class="sc-node__id">
-                  <span class="sc-node__name">{{ node.location }}</span>
+                  <span class="sc-node__name">{{ node.location }}<v-icon v-if="formaMode && nodeHasForma(node)" size="13" color="#e7cf95" class="sc-node__forma" :title="t('starChart.forma.nodeTip')">mdi-vector-triangle</v-icon></span>
                   <span class="sc-node__mode">{{ node.gameMode }}<template v-if="node.isEvent"> · {{ t('starChart.node.event') }}</template></span>
                 </div>
                 <div class="sc-node__val" :class="valueClass(node.value)">
@@ -173,7 +187,7 @@
                     <span class="sc-rot__badge" :data-rot="rot.rotation">{{ rot.rotation }}</span>
                     <span class="sc-rot__val">{{ fmtPlat(rot.value) }} {{ t('starChart.units.perDrop') }}</span>
                   </div>
-                  <div v-for="(rw, i) in sortedRewards(rot.rewards)" :key="i" class="sc-reward" :class="{ 'is-dud': !rw.tradeable, 'is-focus': focusItem && rw.itemName === focusItem }">
+                  <div v-for="(rw, i) in sortedRewards(rot.rewards)" :key="i" class="sc-reward" :class="{ 'is-dud': !rw.tradeable, 'is-focus': focusItem && rw.itemName === focusItem, 'is-forma': formaMode && rewardIsForma(rw.itemName) }">
                     <img
                       class="sc-reward__thumb"
                       :src="itemThumb({ itemName: rw.itemName, thumb: rw.thumb })"
@@ -314,6 +328,9 @@ const { itemThumb } = useItemThumb()
 const { mobile } = useDisplay()
 const localePath = useLocalePath()
 const base = useApiBase()
+const route = useRoute()
+const router = useRouter()
+const { rewardIsForma } = useFormaRelics()
 
 const starfield = makeStars(90)
 
@@ -326,6 +343,8 @@ const dropsItem = ref('')
 const findItem = ref('')
 const guideOpen = ref(false)
 const focusItem = ref('')
+/** Forma preset: dim worlds that don't drop a currently-dropping Forma relic. */
+const formaMode = ref(false)
 const panel = ref<HTMLElement | null>(null)
 
 const allItems = computed(() => items.allItems)
@@ -386,6 +405,32 @@ const stats = computed(() => {
     topNode,
   }
 })
+// --- Forma preset -------------------------------------------------------
+// Worlds whose nodes drop a currently-dropping Forma relic. Drives the dim /
+// highlight of the star map when Forma mode is on.
+const formaPlanetSet = computed<Set<string>>(() => {
+  const s = new Set<string>()
+  for (const p of weightedPlanets.value) {
+    if ((p.nodes || []).some((n: any) => nodeHasForma(n))) s.add(p.planet)
+  }
+  return s
+})
+function nodeHasForma(node: any): boolean {
+  return (node.rotations || []).some((rot: any) =>
+    (rot.rewards || []).some((rw: any) => rw.itemName && rewardIsForma(rw.itemName)),
+  )
+}
+function isFormaPlanet(name: string): boolean {
+  return formaPlanetSet.value.has(name)
+}
+function toggleForma() {
+  formaMode.value = !formaMode.value
+  const query: Record<string, any> = { ...route.query }
+  if (formaMode.value) query.forma = '1'
+  else delete query.forma
+  router.replace({ query })
+}
+
 const selectedData = computed(() =>
   selected.value ? planetsByName.value[selected.value] : null,
 )
@@ -489,6 +534,8 @@ const viewBox = computed<string>(() => {
 })
 
 onMounted(() => {
+  const qf = route.query.forma
+  if (qf === '1' || qf === 'true') formaMode.value = true
   load()
   finishLoading()
 })
@@ -750,6 +797,44 @@ function finishLoading(attempt = 0) {
   border-color: rgba(127, 240, 235, 0.8);
 }
 .sc-3d-btn__arrow { color: #e7cf95; }
+.sc-hero__btns { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.sc-forma-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(79, 179, 191, 0.08);
+  border: 1px solid rgba(79, 179, 191, 0.45);
+  cursor: pointer;
+  padding: 8px 14px;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #7ff0eb;
+  clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.sc-forma-btn:hover { background: rgba(79, 179, 191, 0.16); }
+.sc-forma-btn.is-on { background: #e7cf95; color: #17130a; border-color: #e7cf95; }
+.sc-forma-btn:focus-visible { outline: 2px solid #35d6d0; }
+.sc-forma-note {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: -8px 0 18px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.86rem;
+  color: #cbd0e0;
+  border: 1px solid rgba(212, 175, 90, 0.3);
+  background: rgba(212, 175, 90, 0.06);
+  padding: 8px 14px;
+  clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+}
+.sc-forma-note b { color: #e7cf95; }
+.sc-forma-note__link { color: #7ff0eb; text-decoration: none; margin-left: auto; white-space: nowrap; }
+.sc-forma-note__link:hover { text-decoration: underline; }
 
 /* ---- stats ---- */
 .sc-stats {
@@ -832,7 +917,10 @@ function finishLoading(attempt = 0) {
 .sc-rail { stroke: rgba(200, 168, 92, 0.22); stroke-width: 1; }
 .sc-rail--special { stroke: rgba(53, 214, 208, 0.22); stroke-dasharray: 3 4; }
 
-.sc-planet { cursor: pointer; outline: none; }
+.sc-planet { cursor: pointer; outline: none; transition: opacity 0.25s ease; }
+.sc-planet.is-forma-cold { opacity: 0.16; }
+.sc-planet.is-forma-hot .sc-planet__disc { stroke: #e7cf95; stroke-width: 2.4; }
+.sc-planet.is-forma-hot .sc-planet__glow { opacity: 0.6 !important; }
 .sc-planet__disc { stroke-width: 1.2; transition: r 0.15s ease; }
 .sc-planet__glow { transition: opacity 0.2s ease; pointer-events: none; }
 .sc-planet__ring {
@@ -960,6 +1048,9 @@ function finishLoading(attempt = 0) {
   border-radius: 2px;
 }
 .sc-reward.is-focus .sc-reward__name { color: #7ff0eb; }
+.sc-reward.is-forma { background: rgba(231, 207, 149, 0.08); box-shadow: inset 2px 0 0 #e7cf95; }
+.sc-reward.is-forma .sc-reward__name { color: #e7cf95; }
+.sc-node__forma { vertical-align: -2px; margin-left: 5px; }
 .sc-reward__thumb { width: 30px; height: 30px; object-fit: contain; }
 .sc-reward__name {
   background: none; border: none; text-align: left; cursor: pointer;

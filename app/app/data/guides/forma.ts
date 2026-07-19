@@ -88,7 +88,7 @@ const guide: Guide = {
         },
         {
           type: 'p',
-          text: "Not sure which relics carry Forma right now? Contents rotate as relics get vaulted and unvaulted, so check the live source: **[warframe.com/droptables](https://www.warframe.com/droptables)** (Ctrl+F “Forma Blueprint”), or use the on-site tools — [which relics pay best per run](/relic-farming) and [crack, sell or keep?](/relics-value) — to plan a run. Full relic mechanics live in the [Relics & Void Traces guide](/guides/relics).",
+          text: "Not sure which relics carry Forma right now? **[Browse every relic that drops Forma](/forma-relics)** — it defaults to what's *currently dropping*, flags the ones that pay 2× Forma, and shows exactly where each relic farms (with a one-click star-map view). Contents rotate as relics are vaulted and unvaulted, so it reads live from the drop tables. For the raw data, [warframe.com/droptables](https://www.warframe.com/droptables) (Ctrl+F “Forma Blueprint”); full relic mechanics live in the [Relics & Void Traces guide](/guides/relics).",
         },
       ],
     },
@@ -255,6 +255,7 @@ const guide: Guide = {
     },
   ],
   related: [
+    { label: 'Which relics drop Forma', to: '/forma-relics', icon: 'vector-triangle', note: 'Live list + star-map of every Forma relic' },
     { label: 'Relics & Void Traces', to: '/guides/relics', icon: 'diamond-stone', note: 'Where Forma Blueprints come from' },
     { label: 'How to Make Platinum', to: '/guides/platinum', icon: 'cash-multiple', note: 'Fund the 35-plat Forma bundle for free' },
     { label: 'Steel Path & Steel Essence', to: '/guides/steel-path', icon: 'fire', note: 'Umbra & Stance Forma live in Teshin’s shop' },
