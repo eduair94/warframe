@@ -135,33 +135,32 @@ One-shot data importers run via `npm run <name>` / cron. They populate Mongo.
 | Module | Size |
 | --- | --- |
 | `app/i18n/messages/communityTools.ts` | 135 KB |
-| `app/i18n/messages/endo.ts` | 115 KB |
 | `app/i18n/messages/account.ts` | 115 KB |
+| `app/i18n/messages/endo.ts` | 113 KB |
 | `app/i18n/messages/foundry.ts` | 91 KB |
 | `app/i18n/messages/guidesChrome.ts` | 90 KB |
-| `app/i18n/messages/relicsValue.ts` | 87 KB |
+| `app/i18n/messages/relicsValue.ts` | 85 KB |
 | `app/i18n/messages/setDetail.ts` | 62 KB |
-| `app/i18n/messages/live.ts` | 61 KB |
+| `app/i18n/messages/live.ts` | 60 KB |
 | `app/i18n/messages/starChart3d.ts` | 54 KB |
-| `app/i18n/messages/flip.ts` | 52 KB |
 | `app/i18n/messages/vault.ts` | 51 KB |
+| `app/i18n/messages/flip.ts` | 51 KB |
 | `app/i18n/messages/goals.ts` | 49 KB |
 | `app/i18n/messages/ledger.ts` | 48 KB |
-| `app/i18n/messages/portfolio.ts` | 48 KB |
-| `app/i18n/messages/relicFarming.ts` | 48 KB |
 | `app/i18n/messages/relicLedger.ts` | 47 KB |
-| `app/i18n/messages/rivenValue.ts` | 43 KB |
+| `app/i18n/messages/portfolio.ts` | 47 KB |
+| `app/i18n/messages/relicFarming.ts` | 47 KB |
 | `app/i18n/messages/nav.ts` | 43 KB |
+| `app/i18n/messages/rivenValue.ts` | 42 KB |
 | `app/i18n/messages/vaultedWorth.ts` | 41 KB |
-| `app/i18n/messages/volatility.ts` | 38 KB |
-| `app/i18n/messages/timing.ts` | 38 KB |
+| `app/i18n/messages/volatility.ts` | 37 KB |
 | `app/i18n/messages/starChart.ts` | 37 KB |
-| `app/i18n/messages/comparison.ts` | 37 KB |
-| `app/i18n/messages/vaultSpikes.ts` | 35 KB |
+| `app/i18n/messages/timing.ts` | 37 KB |
+| `app/i18n/messages/comparison.ts` | 36 KB |
+| `app/i18n/messages/vaultSpikes.ts` | 34 KB |
 | `app/i18n/messages/screener.ts` | 34 KB |
-| `app/i18n/messages/movers.ts` | 34 KB |
-| `app/i18n/messages/home.ts` | 32 KB |
+| `app/i18n/messages/movers.ts` | 33 KB |
+| `app/i18n/messages/home.ts` | 31 KB |
 | `app/i18n/messages/toolDetail.ts` | 31 KB |
-| `app/i18n/messages/ducatsPage.ts` | 30 KB |
 
-_11 smaller modules omitted. See `app/i18n/CLAUDE.md`._
+_12 smaller modules omitted. See `app/i18n/CLAUDE.md`._

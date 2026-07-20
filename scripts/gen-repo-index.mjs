@@ -98,12 +98,16 @@ function listTs(dir, { excludeTest = true } = {}) {
     .filter((n) => n.endsWith('.ts') && !(excludeTest && (n.endsWith('.test.ts') || n.endsWith('.spec.ts'))))
     .sort();
 }
+// Size is measured from CRLF-normalized content, NOT statSync — a Windows
+// checkout stores these .ts files with CRLF (bigger on disk) while a Linux CI
+// checkout uses LF. Raw byte size would then differ per-platform and make this
+// map fail `--check` on CI. Normalized length is stable everywhere.
 function i18nModules() {
   const dir = join(ROOT, 'app', 'i18n', 'messages');
   if (!existsSync(dir)) return [];
   return readdirSync(dir)
     .filter((n) => n.endsWith('.ts'))
-    .map((n) => ({ name: n, size: statSync(join(dir, n)).size }))
+    .map((n) => ({ name: n, size: Buffer.byteLength(readFileSync(join(dir, n), 'utf8').replace(/\r\n/g, '\n'), 'utf8') }))
     .sort((a, b) => b.size - a.size);
 }
 
@@ -185,7 +189,10 @@ const check = process.argv.includes('--check');
 const current = existsSync(OUT) ? readFileSync(OUT, 'utf8') : '';
 
 if (check) {
-  if (current !== content) {
+  // Compare line-ending-agnostic: a Windows checkout may store this file with
+  // CRLF while the generator always emits LF. Only real content drift should fail.
+  const norm = (s) => s.replace(/\r\n/g, '\n');
+  if (norm(current) !== norm(content)) {
     console.error('✗ docs/repo-map.md is stale. Run `npm run repo:index` and commit the result.');
     process.exit(1);
   }
