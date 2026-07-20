@@ -800,7 +800,6 @@ function finishLoading(attempt = 0) {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  margin-top: 14px;
   padding: 8px 16px;
   font-family: 'Rajdhani', sans-serif;
   font-weight: 700;
@@ -819,7 +818,7 @@ function finishLoading(attempt = 0) {
   border-color: rgba(127, 240, 235, 0.8);
 }
 .sc-3d-btn__arrow { color: #e7cf95; }
-.sc-hero__btns { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.sc-hero__btns { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 14px; }
 .sc-forma-btn {
   display: inline-flex;
   align-items: center;

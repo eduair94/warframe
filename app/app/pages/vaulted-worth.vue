@@ -324,6 +324,10 @@ const decorated = computed<any[]>(() =>
     .map((r) => ({ ...r, _verdict: verdictOf(r) })),
 )
 
+// "buy" is the default tab, but if nothing currently qualifies, defaulting
+// to it shows an empty ledger — fall back to "all" instead.
+if (!decorated.value.some((r) => r._verdict === 'buy')) verdictFilter.value = 'all'
+
 const filtered = computed<any[]>(() => {
   const q = (search.value || '').toString().trim().toLowerCase()
   let list = decorated.value.filter((r) => {
@@ -459,15 +463,10 @@ onMounted(() => finishLoading())
 .vw-reason { display: block; color: #9aa0b4; font-size: 0.74rem; line-height: 1.35; margin-top: 2px; }
 .vw-reason--card { margin: 2px 0 8px; font-size: 0.82rem; }
 
-/* Verdict pills (reuse the shared .pill vocabulary; add a "watch" gold tone) */
-.pill {
-  display: inline-block; font-family: 'Rajdhani', sans-serif; font-weight: 700;
-  text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.68rem;
-  padding: 3px 9px; white-space: nowrap;
-  clip-path: polygon(5px 0, 100% 0, 100% calc(100% - 5px), calc(100% - 5px) 100%, 0 100%, 0 5px);
-}
-.pill--good { background: rgba(76, 175, 125, 0.18); color: #6fe0a2; border: 1px solid rgba(76, 175, 125, 0.5); }
-.pill--alt { background: rgba(53, 214, 208, 0.16); color: #35d6d0; border: 1px solid rgba(53, 214, 208, 0.45); }
-.pill--watch { background: rgba(200, 168, 92, 0.16); color: #e7cf95; border: 1px solid rgba(200, 168, 92, 0.45); }
-.pill--even { background: rgba(255, 255, 255, 0.07); color: #b6bcd0; border: 1px solid rgba(255, 255, 255, 0.16); }
+/* Verdict pills reuse the shared .pill base from analytics.css (min-width,
+   diamond node, layout) — only add the "watch" gold tone missing there. A
+   local base .pill override used to leak (wrong display mode left min-width
+   + the ::before diamond active), making WATCH render as a plain boxed
+   button instead of the shared compact pill. */
+.pill--watch { background: rgba(200, 168, 92, 0.16); color: #e7cf95; border-color: rgba(200, 168, 92, 0.45); }
 </style>

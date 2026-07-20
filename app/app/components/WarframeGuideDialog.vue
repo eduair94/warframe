@@ -250,8 +250,12 @@ onBeforeUnmount(() => {
   if (searchTimer) clearTimeout(searchTimer)
 })
 
+// Exact lookup, NOT resolveMarketItem/matchKeys: matchKeys strips a trailing
+// " Set" for WFCD reward-name tolerance, so it would resolve to the frame's
+// own Blueprint (one component, not the bundle) and mislabel that price as
+// the set price. The market's set item is literally named "<Frame> Set".
 function setPrice(f: GuideFrame): number {
-  const item = resolveMarketItem(`${f.name} Set`, itemIndex.value)
+  const item = itemIndex.value.get(normalizeName(`${f.name} Set`))
   const m: any = item && item.market ? item.market : null
   return m ? Number(m.sell) || Number(m.avg_price) || 0 : 0
 }
