@@ -92,6 +92,21 @@ async function main() {
     server.getJsonProtected('build_drops', async (req: Request): Promise<any> => {
         return m.syncDrops();
     });
+    // Mission hub: every drop source with node facts + best plat/run.
+    server.getJsonCache('missions', async (req: Request): Promise<any> => {
+        return m.getMissionList();
+    });
+    // Mission detail: one node/activity — reward table, facts, freshness.
+    server.getJsonCache('mission/:slug', async (req: Request): Promise<any> => {
+        const slug = String(req.params.slug || '');
+        // Whitelist the slug: the cache key is req.originalUrl, so reject junk.
+        if (!/^[a-z0-9-]+$/.test(slug)) return null;
+        return m.getMissionDetail(slug);
+    });
+    // Refreshes the node-metadata backup in Mongo (protected: triggers a real fetch).
+    server.getJsonProtected('build_nodes', async (req: Request): Promise<any> => {
+        return m.syncNodes();
+    });
     server.getJson('price_history/:url_name', async (req: Request): Promise<any> => {
         const url_name = req.params.url_name;
         const results = await m.getPriceHistory(url_name);

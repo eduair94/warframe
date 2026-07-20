@@ -24,7 +24,14 @@ export const API_URLS = {
 
   /** Raw-GitHub mirrors, used as a fallback when drops.warframestat.us is unreachable */
   WARFRAME_DROPS_RELICS_MIRROR: 'https://raw.githubusercontent.com/WFCD/warframe-drop-data/master/data/relics.json',
-  WARFRAME_DROPS_MISSIONS_MIRROR: 'https://raw.githubusercontent.com/WFCD/warframe-drop-data/master/data/missionRewards.json'
+  WARFRAME_DROPS_MISSIONS_MIRROR: 'https://raw.githubusercontent.com/WFCD/warframe-drop-data/master/data/missionRewards.json',
+
+  /** Star-chart node metadata (name/planet/enemy levels), WFCD warframe-items */
+  WARFRAME_NODES: 'https://raw.githubusercontent.com/WFCD/warframe-items/master/data/json/Node.json',
+
+  /** Node name/enemy/type by SolNodeNNN, WFCD warframe-worldstate-data (+ warframestat fallback) */
+  WARFRAME_SOLNODES: 'https://raw.githubusercontent.com/WFCD/warframe-worldstate-data/master/data/solNodes.json',
+  WARFRAME_SOLNODES_FALLBACK: 'https://api.warframestat.us/solNodes'
 } as const;
 
 /**

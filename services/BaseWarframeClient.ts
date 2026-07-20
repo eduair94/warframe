@@ -29,6 +29,7 @@ import { ItemProcessor } from './ItemProcessor';
 import { ItemService } from './ItemService';
 import { MarketService, PriceCalculationConfig } from './MarketService';
 import { MarketAnalyticsService } from './MarketAnalyticsService';
+import { MissionService } from './MissionService';
 import { PriceHistoryService } from './PriceHistoryService';
 import { RelicService } from './RelicService';
 import { RivenService } from './RivenService';
@@ -115,6 +116,9 @@ export abstract class BaseWarframeClient {
   /** Drop-data service: mission/relic drops joined with market prices (Star Chart) */
   protected readonly dropService: DropService;
 
+  /** Star-chart node metadata + /mission pages (joins DropService's map). */
+  protected readonly missionService: MissionService;
+
   /** Localized game-noun name dictionaries (i18n), see TranslationService */
   protected readonly translationService: TranslationService;
 
@@ -170,6 +174,7 @@ export abstract class BaseWarframeClient {
     );
     this.dbDrops.ensureIndex({ key: 1 }, { unique: true, sparse: true }).catch(() => {});
     this.dropService = new DropService(this.dbDrops as any, this.db as any);
+    this.missionService = new MissionService(this.dbDrops as any);
 
     // Initialize item service (shared, no HTTP dependency)
     this.itemService = new ItemService();
@@ -619,6 +624,33 @@ export abstract class BaseWarframeClient {
    */
   async syncDrops() {
     return this.dropService.syncDrops();
+  }
+
+  // =====================================
+  // Mission Operations (Delegates to MissionService)
+  // =====================================
+
+  /** /missions hub: every drop source with node facts + best plat/run. */
+  async getMissionList() {
+    const [map, nodes] = await Promise.all([
+      this.dropService.getDropsMap(),
+      this.missionService.getNodesIndex(),
+    ]);
+    return { rows: MissionService.buildMissionList(map.planets, nodes), meta: map.meta };
+  }
+
+  /** /mission/<slug> detail, or null for an unknown slug. */
+  async getMissionDetail(slug: string) {
+    const [map, nodes] = await Promise.all([
+      this.dropService.getDropsMap(),
+      this.missionService.getNodesIndex(),
+    ]);
+    return MissionService.buildMissionDetail(slug, map.planets, nodes);
+  }
+
+  /** Refreshes the node-metadata backup (Node.json + solNodes). */
+  async syncNodes() {
+    return this.missionService.syncNodes();
   }
 
   // =====================================

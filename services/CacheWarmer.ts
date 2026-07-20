@@ -32,6 +32,7 @@ const DEFAULT_WARM_PATHS = [
   "/sets_comparison",
   "/relics_ev",
   "/drops/map",
+  "/missions",
   "/market_analytics",
   "/endo_flip",
   "/riven_weapons",

@@ -20,6 +20,7 @@ export { UndiciHttpService } from './UndiciHttpService';
 export { DropService } from './DropService';
 export { ItemService } from './ItemService';
 export { MarketService, PriceCalculationConfig } from './MarketService';
+export { MissionService } from './MissionService';
 export { RelicService } from './RelicService';
 export { RivenService } from './RivenService';
 export { SetService } from './SetService';
