@@ -1,6 +1,14 @@
 <template>
   <div class="an">
     <client-only>
+      <template #fallback>
+        <SeoFallbackTable
+          :caption="t('live.eyebrow')"
+          :name-label="t('live.table.item')"
+          :columns="[t('live.table.bestBuy'), t('live.table.bestSell'), t('live.table.fair'), t('live.table.vol')]"
+          :rows="fallbackRows"
+        />
+      </template>
       <div class="an-console">
         <header class="an-hero">
           <div class="an-hero__text">
@@ -409,6 +417,19 @@ const paged = computed<any[]>(() => {
 watch(filtered, () => {
   page.value = 1
 })
+
+// SSR-only crawlable snapshot for <SeoFallbackTable>: top 150 of the same
+// default-filtered, default-sorted `filtered` list the live table renders,
+// via the same live-or-static formatters — on SSR the live socket hasn't
+// connected yet, so these fall through to the static daily-sync numbers.
+const fallbackRows = computed(() =>
+  filtered.value.slice(0, 150).map((row) => ({
+    key: row.url_name,
+    href: mkt(row.url_name),
+    name: row.item_name,
+    cells: [plat(row, 'bestBuy'), plat(row, 'bestSell'), plat(row, 'fair'), volNum(row)],
+  })),
+)
 
 // The list re-filters on every keystroke, so the search event is debounced well
 // past typing speed: we want the term the user settled on, not the prefixes.

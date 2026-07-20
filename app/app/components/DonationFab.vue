@@ -60,14 +60,25 @@
           </v-btn>
         </div>
 
-        <a
-          class="don__reviews"
-          href="https://www.reddit.com/r/Warframe/comments/1uuu7gj/built_a_free_opensource_market_analytics_tool_to/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <v-icon size="15">mdi-star</v-icon> {{ t('donation.reviews') }}
-        </a>
+        <div class="don__links">
+          <a
+            class="don__reviews"
+            href="https://www.reddit.com/r/Warframe/comments/1uuu7gj/built_a_free_opensource_market_analytics_tool_to/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <v-icon size="15">mdi-star</v-icon> {{ t('donation.reviews') }}
+          </a>
+          <a
+            class="don__reviews"
+            href="https://github.com/eduair94/warframe"
+            target="_blank"
+            rel="noopener noreferrer"
+            @click="trackAction('donate_star_click')"
+          >
+            <v-icon size="15">mdi-github</v-icon> {{ t('star_on_github') }}
+          </a>
+        </div>
       </div>
     </v-dialog>
   </div>
@@ -219,12 +230,18 @@ function onOpen() {
   object-fit: contain;
   border-radius: 4px;
 }
+.don__links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px 18px;
+  margin-top: 16px;
+}
 .don__reviews {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 6px;
-  margin-top: 16px;
   color: #8f95ab;
   text-decoration: none;
   font-weight: 600;

@@ -542,6 +542,24 @@ const active = computed<BasisResult>(() =>
   priceSet(payload.value?.set, parts.value, basis.value, payload.value?.meta.partsCount),
 )
 
+useMarketItemLd({
+  name: displayName,
+  description: () =>
+    payload.value
+      ? `Live Warframe Market platinum price for the assembled ${displayName.value}, versus buying its parts individually.`
+      : '',
+  image: () =>
+    payload.value
+      ? itemThumb({
+          urlName: payload.value.set.url_name,
+          itemName: payload.value.set.item_name,
+          thumb: payload.value.set.thumb,
+        })
+      : undefined,
+  plat: () => (active.value.available ? active.value.setCost : undefined),
+  platLabel: 'Assembled set platinum price (Warframe Market)',
+})
+
 // A set with no order-book ladder cannot answer the "bulk" basis, and a set that
 // has never traded has no median. Falling back to instant keeps the toggle from
 // resting on a disabled option after navigating between sets.

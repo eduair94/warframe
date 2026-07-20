@@ -1,6 +1,19 @@
 <template>
   <div class="an">
     <client-only>
+      <template #fallback>
+        <SeoFallbackTable
+          :caption="t('comparison.eyebrow')"
+          :name-label="t('comparison.table.set')"
+          :columns="[
+            t('comparison.table.costToAcquire') + ' – ' + t('comparison.table.set'),
+            t('comparison.table.costToAcquire') + ' – ' + t('comparison.table.parts'),
+            t('comparison.table.resaleValue') + ' – ' + t('comparison.table.parts'),
+            t('comparison.table.vol'),
+          ]"
+          :rows="fallbackRows"
+        />
+      </template>
       <div class="an-console">
         <header class="an-hero">
           <div class="an-hero__text">
@@ -361,6 +374,24 @@ const filtered = computed<any[]>(() => {
   }
   return list.slice().sort(sorters[sortKey.value] || sorters.dealPct)
 })
+
+// SSR-only crawlable snapshot for <SeoFallbackTable> (see that component for
+// why): top 150 of the same filtered+sorted list the live table renders, so
+// the fallback matches whatever default state (all sets, sorted by best
+// parts-deal %) the page opens on server-side.
+const fallbackRows = computed(() =>
+  filtered.value.slice(0, 150).map((row) => ({
+    key: row.url_name,
+    href: '/set/' + row.url_name,
+    name: localItemName(row).replace(' Set', ''),
+    cells: [
+      fmtPlat(row.acquire.setCost) + 'p',
+      fmtPlat(row.acquire.partsCost) + 'p',
+      fmtPlat(row.resale.partsValue) + 'p',
+      fmtPlat(row.set.volume),
+    ],
+  })),
+)
 
 const pageCount = computed(() => Math.max(1, Math.ceil(filtered.value.length / perPage)))
 const paged = computed<any[]>(() => {

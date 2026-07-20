@@ -193,7 +193,9 @@ onMounted(() => finishLoading())
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Rajdhani:wght@500;600;700&display=swap');
+/* Cinzel/Rajdhani are already loaded globally (superset weights) by
+   assets/analytics.css — a second @import here duplicated a render-blocking
+   Google Fonts request on every page, not just this error page. */
 
 .nf {
   --void: #0d0e17;

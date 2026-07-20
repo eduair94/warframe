@@ -1,6 +1,14 @@
 <template>
   <div class="an">
     <client-only>
+      <template #fallback>
+        <SeoFallbackTable
+          :caption="t('vaultSpikes.hero.title', { climbing: t('vaultSpikes.hero.titleClimbing') })"
+          :name-label="t('vaultSpikes.table.item')"
+          :columns="[t('vaultSpikes.table.price'), '7d', '30d', t('vaultSpikes.table.vol')]"
+          :rows="fallbackRows"
+        />
+      </template>
       <div class="an-console">
         <header class="an-hero">
           <div class="an-hero__text">
@@ -270,6 +278,27 @@ const filtered = computed<any[]>(() => {
   const nz = (v: any) => (v === null || v === undefined ? -Infinity : Number(v))
   return list.slice().sort((a, b) => nz(b[key]) - nz(a[key]))
 })
+
+// SSR-only crawlable snapshot for <SeoFallbackTable> (see that component for
+// why): sourced from every vaulted item, NOT `filtered` — the live table
+// defaults `onlyClimbing` to true, which requires change7d > 0, and the
+// backend can (and currently does) report change7d as null for every vaulted
+// item at once. A thin/empty crawlable snapshot when that happens defeats the
+// point, so this ranks by price instead of gating on a possibly-all-null
+// change field. `items` comes from useAsyncData, populated during SSR.
+const fallbackRows = computed(() =>
+  items.value
+    .filter((r) => r.vaulted)
+    .slice()
+    .sort((a, b) => priceOf(b) - priceOf(a))
+    .slice(0, 150)
+    .map((row) => ({
+    key: row.url_name,
+    href: row.item_name && row.item_name.includes(' Set') ? '/set/' + row.url_name : mkt(row.url_name),
+    name: row.item_name,
+    cells: [`${fmtPlat(priceOf(row))}p`, fmtSignedPct(row.change7d), fmtSignedPct(row.change30d), fmtPlat(row.volume)],
+  })),
+)
 
 const pageCount = computed(() => Math.max(1, Math.ceil(filtered.value.length / perPage)))
 const paged = computed<any[]>(() => {

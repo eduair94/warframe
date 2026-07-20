@@ -1,6 +1,14 @@
 <template>
   <div class="an">
     <client-only>
+      <template #fallback>
+        <SeoFallbackTable
+          :caption="t('relicsValue.hero.eyebrow')"
+          :name-label="t('relicsValue.table.relic')"
+          :columns="[t('relicsValue.table.evToOpen'), t('relicsValue.table.sellRelic'), t('relicsValue.table.vol')]"
+          :rows="fallbackRows"
+        />
+      </template>
       <div class="an-console">
         <!-- Hero -->
         <header class="an-hero">
@@ -465,6 +473,16 @@ const filtered = computed<any[]>(() => {
   }
   return list.slice().sort(sorters[sortKey.value] || sorters.ev)
 })
+// SSR-only crawlable snapshot for <SeoFallbackTable> (see that component for
+// why): top 150 of the already-filtered/sorted board (EV desc by default).
+const fallbackRows = computed(() =>
+  filtered.value.slice(0, 150).map((row) => ({
+    key: row.url_name,
+    href: '/relic/' + row.url_name,
+    name: localName('items', row.url_name, row.relicName),
+    cells: [fmtPlat(ev(row)) + 'p', fmtPlat(relicSellNow(row)) + 'p', fmtPlat(row.relic.volume)],
+  })),
+)
 const pageCount = computed(() => Math.max(1, Math.ceil(filtered.value.length / perPage)))
 const paged = computed<any[]>(() => {
   const start = (page.value - 1) * perPage

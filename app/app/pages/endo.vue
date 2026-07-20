@@ -1,6 +1,14 @@
 <template>
   <div class="an">
     <client-only>
+      <template #fallback>
+        <SeoFallbackTable
+          :caption="t('endo.eyebrow')"
+          :name-label="fallbackNameLabel"
+          :columns="fallbackColumns"
+          :rows="fallbackRows"
+        />
+      </template>
       <div class="an-console">
         <!-- Hero -->
         <header class="an-hero">
@@ -876,6 +884,39 @@ const sourceStats = computed(() => {
 
 watch([flipFiltered, sourceFiltered, direction], () => {
   page.value = 1
+})
+
+// SSR-only crawlable snapshot for <SeoFallbackTable> (see that component for
+// why). The page has two independent ledgers gated by `direction` (default
+// 'flip', but a shared/bookmarked URL can hydrate it to 'sources' before this
+// even runs) — mirror whichever one is actually active during SSR instead of
+// hardcoding 'flip', so the fallback always matches the visible tab.
+const fallbackNameLabel = computed(() => (direction.value === 'flip' ? t('endo.table.mod') : t('endo.table.source')))
+const fallbackColumns = computed(() =>
+  direction.value === 'flip'
+    ? [t('endo.table.buyAt'), t('endo.table.sellMaxed'), t('endo.table.profit'), t('endo.table.platPer1k')]
+    : [t('endo.table.endo'), t('endo.table.cost'), t('endo.table.endoPerPlat')],
+)
+const fallbackRows = computed(() => {
+  if (direction.value === 'flip') {
+    return flipFiltered.value.slice(0, 150).map((row) => ({
+      key: row.url_name,
+      href: mkt(row.url_name),
+      name: localItemName(row),
+      cells: [
+        fmtPlat(row.eval.best.buyIn) + 'p',
+        fmtPlat(row.eval.maxedSell) + 'p',
+        fmtPlat(row.eval.best.profit) + 'p',
+        fmtNum(row.eval.best.platPer1kEndo),
+      ],
+    }))
+  }
+  return sourceFiltered.value.slice(0, 150).map((row) => ({
+    key: row.kind + row.name,
+    href: row.link,
+    name: row.name,
+    cells: [fmtEndo(row.endo), fmtPlat(row.plat) + 'p', fmtNum(row.endoPerPlat)],
+  }))
 })
 
 // ---- persist view / filters / sort in the URL query (survives reload) ----

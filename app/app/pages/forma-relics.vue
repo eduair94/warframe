@@ -7,6 +7,14 @@
 <template>
   <div class="an">
     <client-only>
+      <template #fallback>
+        <SeoFallbackTable
+          caption="Which Relics Drop Forma Blueprints"
+          name-label="Relic"
+          :columns="['Forma reward', 'Intact odds', 'Status']"
+          :rows="fallbackRows"
+        />
+      </template>
       <div class="an-console">
         <!-- Hero -->
         <header class="an-hero">
@@ -294,6 +302,18 @@ const filtered = computed<FormaRelic[]>(() => {
   }
   return list.slice().sort(sorters[sortKey.value] || sorters.forma)
 })
+
+// SSR-only crawlable snapshot for <SeoFallbackTable> (see that component for
+// why): top 150 of the same default-filtered, default-sorted `filtered` list
+// the live board renders, fed by useFormaRelics' SSR-safe useAsyncData fetch.
+const fallbackRows = computed(() =>
+  filtered.value.slice(0, 150).map((f) => ({
+    key: f.row.url_name,
+    href: '/relic/' + f.row.url_name,
+    name: f.row.relicName,
+    cells: [`${f.count}× Forma`, `${fmtPct(f.intactChance)}%`, statusLabel(f.status)],
+  })),
+)
 
 const stats = computed(() => {
   const all = formaRelics.value

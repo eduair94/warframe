@@ -1,6 +1,14 @@
 <template>
   <div class="an">
     <client-only>
+      <template #fallback>
+        <SeoFallbackTable
+          :caption="t('movers.eyebrow')"
+          :name-label="t('movers.table.item')"
+          :columns="[t('movers.table.price'), t('movers.table.change', { tf: timeframeLabel }), t('movers.table.vol')]"
+          :rows="fallbackRows"
+        />
+      </template>
       <div class="an-console">
         <header class="an-hero">
           <div class="an-hero__text">
@@ -265,6 +273,25 @@ const filtered = computed<any[]>(() => {
   else list = list.slice().sort((a, b) => (b.volume || 0) - (a.volume || 0))
   return list
 })
+
+// SSR-only crawlable snapshot for <SeoFallbackTable>: top 150 items by 48h
+// volume — not `filtered`, since the default gainers/{7d,24h} board can be
+// legitimately empty (the active timeframe field is null for every item
+// until enough daily history accumulates); volume is the one metric this
+// page's board options guarantee is always populated (same robust choice
+// index.vue's fallback makes for the home table).
+const fallbackRows = computed(() =>
+  items.value
+    .slice()
+    .sort((a, b) => (b.volume || 0) - (a.volume || 0))
+    .slice(0, 150)
+    .map((row) => ({
+      key: row.url_name,
+      href: mkt(row.url_name),
+      name: row.item_name,
+      cells: [fmtPlat(priceOf(row)) + 'p', fmtSignedPct(row[changeKey.value]), fmtPlat(row.volume)],
+    })),
+)
 
 const pageCount = computed(() => Math.max(1, Math.ceil(filtered.value.length / perPage)))
 const paged = computed<any[]>(() => {

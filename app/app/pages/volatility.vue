@@ -1,6 +1,14 @@
 <template>
   <div class="an">
     <client-only>
+      <template #fallback>
+        <SeoFallbackTable
+          :caption="t('volatility.hero.title', { stable: t('volatility.hero.titleStable'), wild: t('volatility.hero.titleWild') })"
+          :name-label="t('volatility.table.item')"
+          :columns="[t('volatility.table.price'), t('volatility.table.volatility'), t('volatility.table.trend'), t('volatility.table.vol')]"
+          :rows="fallbackRows"
+        />
+      </template>
       <div class="an-console">
         <header class="an-hero">
           <div class="an-hero__text">
@@ -256,6 +264,18 @@ const filtered = computed<any[]>(() => {
   else list = list.slice().sort((a, b) => b.volatility - a.volatility)
   return list
 })
+
+// SSR-only crawlable snapshot for <SeoFallbackTable> (see that component for
+// why): top 150 of the same most-volatile-first list the live table opens on.
+// `items` (and so `filtered`) comes from useAsyncData, populated during SSR.
+const fallbackRows = computed(() =>
+  filtered.value.slice(0, 150).map((row) => ({
+    key: row.url_name,
+    href: row.item_name && row.item_name.includes(' Set') ? '/set/' + row.url_name : mkt(row.url_name),
+    name: row.item_name,
+    cells: [`${fmtPlat(priceOf(row))}p`, fmtVol(row.volatility), trendArrow(row.trend), fmtPlat(row.volume)],
+  })),
+)
 
 const pageCount = computed(() => Math.max(1, Math.ceil(filtered.value.length / perPage)))
 const paged = computed<any[]>(() => {

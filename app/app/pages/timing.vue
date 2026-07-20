@@ -1,6 +1,14 @@
 <template>
   <div class="an">
     <client-only>
+      <template #fallback>
+        <SeoFallbackTable
+          :caption="t('timing.eyebrow')"
+          :name-label="t('timing.table.item')"
+          :columns="[t('timing.table.price'), t('timing.table.vsLow'), t('timing.table.signal')]"
+          :rows="fallbackRows"
+        />
+      </template>
       <div class="an-console">
         <header class="an-hero">
           <div class="an-hero__text">
@@ -267,6 +275,17 @@ const filtered = computed<any[]>(() => {
   else list = list.slice().sort((a, b) => a.pctFromAtl - b.pctFromAtl)
   return list
 })
+// SSR-only crawlable snapshot for <SeoFallbackTable> (see that component for
+// why): top 150 of the already-filtered/sorted board (closest-to-low first by
+// default, matching the live table's opening sort).
+const fallbackRows = computed(() =>
+  filtered.value.slice(0, 150).map((row) => ({
+    key: row.url_name,
+    href: mkt(row.url_name),
+    name: localItemName(row),
+    cells: [fmtPlat(priceOf(row)) + 'p', '+' + row.pctFromAtl.toFixed(0) + '%', t('timing.signal.' + signal(row).key + '.label')],
+  })),
+)
 const pageCount = computed(() => Math.max(1, Math.ceil(filtered.value.length / perPage)))
 const paged = computed<any[]>(() => {
   const start = (page.value - 1) * perPage

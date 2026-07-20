@@ -1,6 +1,14 @@
 <template>
   <div class="an">
     <client-only>
+      <template #fallback>
+        <SeoFallbackTable
+          :caption="t('vaultedPage.hero.title', { vault: t('vaultedPage.hero.titleVault') })"
+          :name-label="t('vaultedPage.table.item')"
+          :columns="[t('vaultedPage.table.ask'), t('vaultedPage.table.bid'), t('vaultedPage.table.spread'), t('vaultedPage.table.vol')]"
+          :rows="fallbackRows"
+        />
+      </template>
       <div class="an-console">
         <header class="an-hero">
           <div class="an-hero__text">
@@ -172,6 +180,24 @@ const filtered = computed<any[]>(() => {
   }
   return list.slice().sort(sorters[sortKey.value] || sorters.price)
 })
+
+// SSR-only crawlable snapshot for <SeoFallbackTable> (see that component for
+// why): top 150 vaulted items by price — the same default sort the live table
+// opens on. `filtered` comes from the items store (`itemsStore.allItems`),
+// which is populated during SSR.
+const fallbackRows = computed(() =>
+  filtered.value.slice(0, 150).map((row) => ({
+    key: row.url_name,
+    href: row.set ? '/set/' + row.url_name : mkt(row.url_name),
+    name: row.item_name,
+    cells: [
+      `${fmtPlat(row.market.sell)}p`,
+      `${fmtPlat(row.market.buy)}p`,
+      `${fmtPlat(row.market.diff)}p`,
+      fmtPlat(row.market.volume),
+    ],
+  })),
+)
 
 const pageCount = computed(() => Math.max(1, Math.ceil(filtered.value.length / perPage)))
 

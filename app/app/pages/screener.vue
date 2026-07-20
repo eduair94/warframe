@@ -1,6 +1,14 @@
 <template>
   <div class="an">
     <client-only>
+      <template #fallback>
+        <SeoFallbackTable
+          :caption="t('screener.eyebrow')"
+          :name-label="t('screener.table.item')"
+          :columns="[t('screener.table.sell'), t('screener.table.discount'), t('screener.table.vol')]"
+          :rows="fallbackRows"
+        />
+      </template>
       <div class="an-console">
         <header class="an-hero">
           <div class="an-hero__text">
@@ -261,6 +269,16 @@ const filtered = computed<any[]>(() => {
   return list.slice().sort(sorters[sortKey.value] || sorters.discount)
 })
 
+// SSR-only crawlable snapshot for <SeoFallbackTable> (see that component for
+// why): top 150 of the already-filtered/sorted screener (discount desc by default).
+const fallbackRows = computed(() =>
+  filtered.value.slice(0, 150).map((row) => ({
+    key: row.url_name,
+    href: mkt(row.url_name),
+    name: localItemName(row),
+    cells: [fmtPlat(row.market.sell) + 'p', fmtSignedPct(row.discount), fmtPlat(row.market.volume)],
+  })),
+)
 const pageCount = computed(() => Math.max(1, Math.ceil(filtered.value.length / perPage)))
 
 const paged = computed<any[]>(() => {

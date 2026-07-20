@@ -7,6 +7,14 @@
 <template>
   <div class="an">
     <client-only>
+      <template #fallback>
+        <SeoFallbackTable
+          :caption="t('vaultedWorth.hero.title', { worth: t('vaultedWorth.hero.titleWorth') })"
+          :name-label="t('vaultedWorth.table.item')"
+          :columns="[t('vaultedWorth.table.verdict'), t('vaultedWorth.table.price'), '7d', '30d']"
+          :rows="fallbackRows"
+        />
+      </template>
       <div class="an-console">
         <header class="an-hero">
           <div class="an-hero__text">
@@ -330,6 +338,34 @@ const filtered = computed<any[]>(() => {
     return num(b.change30d, -Infinity) - num(a.change30d, -Infinity)
   })
 })
+
+// SSR-only crawlable snapshot for <SeoFallbackTable> (see that component for
+// why): sourced from `decorated` (every priced vaulted prime, verdict-ranked),
+// NOT `filtered` — the live table defaults `verdictFilter` to 'buy', which can
+// legitimately be a near-empty bucket depending on current market conditions,
+// and a thin/empty crawlable snapshot defeats the point. `items` (and so
+// `decorated`) comes from useAsyncData, populated during SSR.
+const fallbackRows = computed(() =>
+  decorated.value
+    .slice()
+    .sort((a, b) => {
+      const vr = (VERDICT_RANK[b._verdict] || 0) - (VERDICT_RANK[a._verdict] || 0)
+      if (vr) return vr
+      return num(b.change30d, -Infinity) - num(a.change30d, -Infinity)
+    })
+    .slice(0, 150)
+    .map((row) => ({
+    key: row.url_name,
+    href: row.item_name && row.item_name.includes(' Set') ? '/set/' + row.url_name : mkt(row.url_name),
+    name: row.item_name,
+    cells: [
+      t('vaultedWorth.verdict.' + row._verdict),
+      `${fmtPlat(priceOf(row))}p`,
+      fmtSignedPct(row.change7d),
+      fmtSignedPct(row.change30d),
+    ],
+  })),
+)
 
 const pageCount = computed(() => Math.max(1, Math.ceil(filtered.value.length / perPage)))
 const paged = computed<any[]>(() => filtered.value.slice((page.value - 1) * perPage, page.value * perPage))

@@ -1,6 +1,14 @@
 <template>
   <div class="an">
     <client-only>
+      <template #fallback>
+        <SeoFallbackTable
+          :caption="t('relicFarming.eyebrow')"
+          :name-label="t('relicFarming.table.relic')"
+          :columns="[t('relicFarming.table.platHr'), t('relicFarming.table.ev', { refinement: refinementLabel }), t('relicFarming.table.demand'), t('relicFarming.table.vol')]"
+          :rows="fallbackRows"
+        />
+      </template>
       <div class="an-console">
         <!-- Hero -->
         <header class="an-hero">
@@ -477,6 +485,24 @@ const filtered = computed<any[]>(() => {
   }
   return list.slice().sort(sorters[sortKey.value] || sorters.pph)
 })
+
+// SSR-only crawlable snapshot for <SeoFallbackTable>: top 150 of the same
+// default-filtered, default-sorted `filtered` list (currently-dropping,
+// full-data, demand-gated relics ranked by plat/hour) the live board renders,
+// fed by the SSR-safe /relics_ev useAsyncData fetch above.
+const fallbackRows = computed(() =>
+  filtered.value.slice(0, 150).map((row) => ({
+    key: row.url_name,
+    href: '/relic/' + row.url_name,
+    name: row.relicName,
+    cells: [
+      fmtPlat(platPerHour(row)) + 'p/hr',
+      fmtPlat(ev(row)) + 'p',
+      demand(row).label,
+      fmtPlat(row.relic.volume),
+    ],
+  })),
+)
 
 const pageCount = computed(() => Math.max(1, Math.ceil(filtered.value.length / perPage)))
 

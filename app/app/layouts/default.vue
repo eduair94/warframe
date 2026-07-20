@@ -30,7 +30,7 @@
         <v-icon>mdi-compass-outline</v-icon>
         <span class="app-tour-btn__label d-none d-md-inline">{{ t('nav.tour') }}</span>
       </v-btn>
-      <GitHubButton icon color="white" class="mr-2" />
+      <GitHubButton icon color="white" class="mr-2" :text="t('star_on_github')" :title="t('star_on_github')" />
       <PwaInstall />
       <LanguageMenu />
     </v-app-bar>
@@ -97,6 +97,15 @@
         <span
           >Warframe Market Analytics &copy; {{ new Date().getFullYear() }}</span
         >
+        <a
+          class="footer_star"
+          href="https://github.com/eduair94/warframe"
+          target="_blank"
+          rel="noopener noreferrer"
+          @click="trackAction('footer_star_click')"
+        >
+          <v-icon size="14">mdi-star</v-icon> {{ t('star_on_github') }}
+        </a>
         <v-spacer />
         <span
           >{{ t('madeWith') }} <v-icon color="red">mdi-heart</v-icon>
@@ -877,6 +886,15 @@ body .v-footer a {
 }
 body .v-footer a:hover {
   color: #e7cf95 !important;
+}
+.footer_star {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  margin-left: 14px;
+}
+.footer_star .v-icon {
+  color: #c8a85c;
 }
 
 body {

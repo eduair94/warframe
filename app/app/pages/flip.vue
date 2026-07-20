@@ -1,6 +1,14 @@
 <template>
   <div class="an">
     <client-only>
+      <template #fallback>
+        <SeoFallbackTable
+          :caption="t('flip.hero.eyebrow')"
+          :name-label="t('flip.table.item')"
+          :columns="[t('flip.table.buyBid'), t('flip.table.sellAsk'), t('flip.table.realMargin'), t('flip.table.confidence')]"
+          :rows="fallbackRows"
+        />
+      </template>
       <div class="an-console">
         <header class="an-hero">
           <div class="an-hero__text">
@@ -280,6 +288,23 @@ const filtered = computed<any[]>(() => {
   }
   return list.slice().sort(sorters[sortKey.value] || sorters.opportunity)
 })
+
+// SSR-only crawlable snapshot for <SeoFallbackTable> (see that component for
+// why): top 150 of the same filtered+sorted list the live table renders
+// (default sort: opportunity score, descending).
+const fallbackRows = computed(() =>
+  filtered.value.slice(0, 150).map((row) => ({
+    key: row.url_name,
+    href: mkt(row.url_name),
+    name: localItemName(row),
+    cells: [
+      fmtPlat(row.s.bid) + 'p',
+      fmtPlat(row.s.ask) + 'p',
+      fmtSignedPlat(row.s.realMargin) + 'p',
+      row.s.confidence + '/100',
+    ],
+  })),
+)
 
 const pageCount = computed(() => Math.max(1, Math.ceil(filtered.value.length / perPage)))
 

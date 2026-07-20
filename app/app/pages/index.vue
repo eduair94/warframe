@@ -431,6 +431,17 @@
         <p class="mb-3">{{ t('github_description') }}</p>
         <div class="d-flex flex-wrap justify-center gap-2">
           <GitHubButton :text="t('view_source_code')" />
+          <v-btn
+            color="amber-darken-1"
+            variant="flat"
+            href="https://github.com/eduair94/warframe"
+            target="_blank"
+            rel="noopener noreferrer"
+            @click="trackAction('star_github_click', { source: 'home_oss_card' })"
+          >
+            <v-icon start>mdi-star</v-icon>
+            {{ t('star_on_github') }}
+          </v-btn>
         </div>
       </v-card-text>
     </v-card>

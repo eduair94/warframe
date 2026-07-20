@@ -374,6 +374,20 @@ const sellNow = computed(() => relicSellNow(relic.value))
 const mix = computed(() => dropMix(relic.value))
 const farmable = computed(() => isFarmable(relic.value))
 
+useMarketItemLd({
+  name: () => (displayName.value ? `${displayName.value} Relic` : ''),
+  description: () =>
+    displayName.value
+      ? `Expected platinum payout from cracking the ${displayName.value} relic, versus selling it unopened.`
+      : '',
+  image: () =>
+    relic.value
+      ? itemThumb({ urlName: relic.value.url_name, itemName: relic.value.relicName, thumb: relic.value.thumb })
+      : undefined,
+  plat: sellNow,
+  platLabel: 'Sell-now platinum price (unopened relic, Warframe Market)',
+})
+
 // Fixed refinement chance for a drop's TRUE rarity (from WFCD chance, not label).
 function chanceTable(refKey: string) {
   return RELIC_CHANCES[refKey] ?? RELIC_CHANCES.Intact ?? {}

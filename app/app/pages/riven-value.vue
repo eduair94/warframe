@@ -1,6 +1,14 @@
 <template>
   <div class="an">
     <client-only>
+      <template #fallback>
+        <SeoFallbackTable
+          :caption="t('rivenValue.eyebrow')"
+          name-label="Weapon"
+          :columns="[t('rivenValue.meta.disposition'), t('rivenValue.meta.auctions'), t('rivenValue.table.buyout')]"
+          :rows="fallbackRows"
+        />
+      </template>
       <div class="an-console">
         <header class="an-hero">
           <div class="an-hero__text">
@@ -259,6 +267,28 @@ const weaponOptions = computed<any[]>(() =>
     .map((w) => ({
       url_name: w.url_name,
       label: `${localName('riven-weapons', w.url_name, w.item_name)} — ${w.auctionCount} live${w.disposition ? ' · disp ' + w.disposition.toFixed(2) : ''}`,
+    })),
+)
+// SSR-only crawlable snapshot for <SeoFallbackTable> (see that component for
+// why): the per-weapon riven listings (`pagedAuctions`) only exist after a
+// user picks a weapon (client-only $fetch in onWeaponChange), so they are NOT
+// SSR-safe. The SSR-fetched `weapons` list (disposition + live auction count
+// per weapon, from /riven_weapons) is the closest genuinely-populated source —
+// top 150 by live auction count, the same "most active market" signal players
+// care about.
+const fallbackRows = computed(() =>
+  [...weapons.value]
+    .sort((a, b) => (b?.auctionCount || 0) - (a?.auctionCount || 0))
+    .slice(0, 150)
+    .map((w) => ({
+      key: w.url_name,
+      href: 'https://warframe.market/items/' + w.url_name,
+      name: localName('riven-weapons', w.url_name, w.item_name),
+      cells: [
+        w.disposition ? w.disposition.toFixed(2) + '×' : '—',
+        w.auctionCount || 0,
+        w.minBuyout ? fmtPlat(w.minBuyout) + 'p' : '—',
+      ],
     })),
 )
 const weaponItems = computed<any[]>(() => {

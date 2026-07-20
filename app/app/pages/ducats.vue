@@ -1,6 +1,14 @@
 <template>
   <div class="an">
     <client-only>
+      <template #fallback>
+        <SeoFallbackTable
+          :caption="t('ducatsPage.eyebrow')"
+          :name-label="t('ducatsPage.table.primePart')"
+          :columns="[t('ducatsPage.table.platAsk'), t('ducatsPage.table.ducats'), t('ducatsPage.table.ducatsPerPlat'), t('ducatsPage.table.vol')]"
+          :rows="fallbackRows"
+        />
+      </template>
       <div class="an-console">
         <header class="an-hero">
           <div class="an-hero__text">
@@ -205,6 +213,18 @@ const filtered = computed<any[]>(() => {
   }
   return list.slice().sort(sorters[sortKey.value] || sorters.efficiency)
 })
+
+// SSR-only crawlable snapshot for <SeoFallbackTable> (see that component for
+// why): top 150 of the same filtered+sorted list the live table renders
+// (default sort: ducat efficiency, descending).
+const fallbackRows = computed(() =>
+  filtered.value.slice(0, 150).map((row) => ({
+    key: row.url_name,
+    href: mkt(row.url_name),
+    name: localItemName(row),
+    cells: [fmtPlat(row.market.sell) + 'p', row.ducats, eff(row).toFixed(1), fmtPlat(row.market.volume)],
+  })),
+)
 
 const pageCount = computed<number>(() => Math.max(1, Math.ceil(filtered.value.length / perPage)))
 
