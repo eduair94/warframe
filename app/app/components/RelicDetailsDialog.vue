@@ -62,7 +62,7 @@
               class="rld__refine-btn"
               :class="{ 'is-on': refinement === opt.value }"
               :aria-pressed="refinement === opt.value"
-              @click="refinement = opt.value"
+              @click="setRefine(opt.value)"
             >
               {{ opt.label }}
             </button>
@@ -178,6 +178,7 @@
                   target="_blank"
                   rel="noopener"
                   :title="t('relicsValue.dialog.openMarket')"
+                  @click="onRewardMarket(d)"
                 >{{ localItemName(d) }}</a>
                 <span v-else class="rld__drop-name is-plain">{{ localItemName(d) }}</span>
                 <span v-if="rewardVaulted(d)" class="rld__vtag">{{ t('relicsValue.tags.vaulted') }}</span>
@@ -197,7 +198,7 @@
                 class="rld__drop-drops"
                 type="button"
                 :title="t('relicsValue.dialog.whereDrops', { name: localItemName(d) })"
-                @click="$emit('open-item', d.item_name, d.thumb || '')"
+                @click="openItem(d)"
               >
                 <v-icon size="17">mdi-map-marker-radius-outline</v-icon>
               </button>
@@ -208,7 +209,7 @@
 
       <!-- Everywhere else this relic lives -->
       <footer class="rld__foot">
-        <nuxt-link class="rld__link rld__link--go" :to="'/relic/' + relic.url_name" @click="close">
+        <nuxt-link class="rld__link rld__link--go" :to="'/relic/' + relic.url_name" @click="onDetailNav">
           <v-icon size="15">mdi-file-document-outline</v-icon> {{ t('relicsValue.dialog.footer.detail') }}
         </nuxt-link>
         <a class="rld__link" :href="'https://warframe.market/items/' + relic.url_name" target="_blank" rel="noopener">
@@ -226,7 +227,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, watch } from 'vue'
+import { computed, onBeforeUnmount, ref, watch } from 'vue'
 import {
   RELIC_CHANCES,
   trueRarity,
@@ -252,6 +253,7 @@ const emit = defineEmits<{
 const { t } = useI18n()
 const { localName, localItemName } = useLocalizedName()
 const { itemThumb, THUMB_PLACEHOLDER } = useItemThumb()
+const { trackAction, trackDialog, trackFilter, trackMarketOpen } = useAnalytics()
 const apiBase = useApiBase()
 
 // The dialog owns its refinement so you can flip the odds inside the popup; it
@@ -263,6 +265,7 @@ watch(
     if (open) {
       refinement.value = props.refinement || 'Radiant'
       qty.value = 1
+      lastQty = 1
       loadBook()
     }
   },
@@ -294,6 +297,8 @@ const bidInflated = computed(() => {
 // way you'd actually fill it (cheap asks run out; bait bids are skipped). Maths
 // lives in useOrderBook; here we only fetch and bind.
 const qty = ref(1)
+// Last quantity reported to analytics (see reportQty) — reset with `qty` itself.
+let lastQty = 1
 const book = ref<OrderBook | null>(null)
 const bookLoading = ref(false)
 const bookError = ref(false)
@@ -328,11 +333,29 @@ const buyAvail = computed(() => (book.value ? availableUnits(book.value, 'buy', 
 const bookEmpty = computed(() => !!book.value && !book.value.buy.length && !book.value.sell.length)
 function stepQty(d: number) {
   qty.value = Math.max(1, Math.min(999, (Number(qty.value) || 1) + d))
+  reportQty()
 }
 function normalizeQty() {
   const v = Math.floor(Number(qty.value) || 1)
   qty.value = Math.max(1, Math.min(999, v))
+  reportQty()
 }
+// The stepper is held down / typed into, so report the quantity the user settled
+// on rather than every intermediate one. `normalizeQty` also runs on plain blur,
+// so compare against the last reported value — focusing and leaving the field
+// without touching it is not a quantity change.
+let qtyTimer: ReturnType<typeof setTimeout> | null = null
+function reportQty() {
+  if (qtyTimer) clearTimeout(qtyTimer)
+  qtyTimer = setTimeout(() => {
+    if (qty.value === lastQty) return
+    lastQty = qty.value
+    trackAction('bulk_qty_change', { qty: qty.value })
+  }, 800)
+}
+onBeforeUnmount(() => {
+  if (qtyTimer) clearTimeout(qtyTimer)
+})
 
 const refineOptions = computed(() => [
   { value: 'Intact', label: t('relicsValue.filters.intact') },
@@ -341,6 +364,12 @@ const refineOptions = computed(() => [
 const refinementLabel = computed(() =>
   refinement.value === 'Radiant' ? t('relicsValue.filters.radiant') : t('relicsValue.filters.intact'),
 )
+// Only a real flip counts — re-clicking the active side would otherwise report a
+// filter change that never happened.
+function setRefine(v: string) {
+  if (refinement.value !== v) trackFilter('refinement', v, { source: 'relic_dialog' })
+  refinement.value = v
+}
 
 const verdict = computed(() => {
   const o = open.value
@@ -385,6 +414,22 @@ const dropTableUrl = computed(() => {
 
 function close() {
   emit('update:modelValue', false)
+}
+function openItem(d: RelicReward) {
+  emit('open-item', d.item_name, d.thumb || '')
+  trackDialog('drop_locations', { item_name: d.item_name, source: 'relic_dialog' })
+}
+// The delegated outbound listener sees the href but not which drop it belongs
+// to — this is the market_open funnel step, keyed to the reward.
+function onRewardMarket(d: RelicReward) {
+  trackMarketOpen(d.item_name, { source: 'relic_dialog' })
+}
+function onDetailNav() {
+  close()
+  trackAction('relic_page_nav', {
+    item_name: relicRef.value?.relicName || '',
+    source: 'relic_dialog',
+  })
 }
 function onImgError(e: Event) {
   const img = e.target as HTMLImageElement | null

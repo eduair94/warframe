@@ -68,7 +68,7 @@
             size="small"
             variant="tonal"
             :disabled="p.value == null"
-            @click="target = p.value ?? target"
+            @click="applyPreset(p)"
           >
             {{ p.label }}
           </v-chip>
@@ -139,6 +139,7 @@ const emit = defineEmits<{
 const { t } = useI18n()
 const { mobile } = useDisplay()
 const { itemThumb } = useItemThumb()
+const { trackFilter } = useAnalytics()
 
 const open = computed({
   get: () => props.modelValue,
@@ -186,22 +187,28 @@ watch(
   { immediate: true },
 )
 
+// `key` is the locale-independent identity of a preset — the label is translated,
+// so it can't be reported on.
 const presets = computed(() => {
   const cur = props.entry?.currentSell
-  if (cur == null) return [{ label: t('portfolio.sheet.presetCurrent'), value: null as number | null }]
+  if (cur == null) return [{ key: 'current', label: t('portfolio.sheet.presetCurrent'), value: null as number | null }]
   const round = (n: number) => Math.max(0, Math.round(n))
   return direction.value === 'below'
     ? [
-        { label: '-10%', value: round(cur * 0.9) },
-        { label: '-20%', value: round(cur * 0.8) },
-        { label: t('portfolio.sheet.presetCurrent'), value: round(cur) },
+        { key: 'minus10', label: '-10%', value: round(cur * 0.9) },
+        { key: 'minus20', label: '-20%', value: round(cur * 0.8) },
+        { key: 'current', label: t('portfolio.sheet.presetCurrent'), value: round(cur) },
       ]
     : [
-        { label: '+10%', value: round(cur * 1.1) },
-        { label: '+20%', value: round(cur * 1.2) },
-        { label: t('portfolio.sheet.presetCurrent'), value: round(cur) },
+        { key: 'plus10', label: '+10%', value: round(cur * 1.1) },
+        { key: 'plus20', label: '+20%', value: round(cur * 1.2) },
+        { key: 'current', label: t('portfolio.sheet.presetCurrent'), value: round(cur) },
       ]
 })
+function applyPreset(p: { key: string; value: number | null }) {
+  target.value = p.value ?? target.value
+  trackFilter('alert_preset', p.key, { direction: direction.value })
+}
 
 const SPARK_W = 240
 const SPARK_H = 40

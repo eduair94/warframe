@@ -40,7 +40,7 @@
             <div class="ct-card__body">
               <div class="ct-card__head">
                 <h3 class="ct-card__name">
-                  <NuxtLink class="ct-card__namelink" :to="localePath('/tools/' + tool.slug)">{{ tool.name }}</NuxtLink>
+                  <NuxtLink class="ct-card__namelink" :to="localePath('/tools/' + tool.slug)" @click="onDetailNav(tool.slug)">{{ tool.name }}</NuxtLink>
                 </h3>
                 <span class="ct-plats">
                   <span v-for="p in tool.platforms" :key="p" class="an-chip ct-plat">{{ t('communityTools.platform.' + p) }}</span>
@@ -66,8 +66,8 @@
               <ToolSocials v-if="tool.social" :social="tool.social" variant="compact" />
 
               <div class="ct-actions">
-                <NuxtLink class="ct-visit" :to="localePath('/tools/' + tool.slug)">{{ t('toolDetail.card.details') }}</NuxtLink>
-                <a class="ct-sub" :href="tool.url" target="_blank" rel="noopener nofollow">{{ t('communityTools.visit') }}</a>
+                <NuxtLink class="ct-visit" :to="localePath('/tools/' + tool.slug)" @click="onDetailNav(tool.slug)">{{ t('toolDetail.card.details') }}</NuxtLink>
+                <a class="ct-sub" :href="tool.url" target="_blank" rel="noopener nofollow" @click="onVisit(tool)">{{ t('communityTools.visit') }}</a>
               </div>
             </div>
           </article>
@@ -93,6 +93,18 @@ const getResearch = (slug: string) => localizedResearch[slug]
 dayjs.extend(relativeTime)
 const { t, te } = useI18n()
 const localePath = useLocalePath()
+const { trackAction, trackContent } = useAnalytics()
+
+// The directory has two competing exits per card: leaving for the tool itself
+// (the conversion this page exists for) and drilling into our own review page.
+// The delegated outbound listener can't tell WHICH tool was clicked, so the
+// visit carries the slug/category explicitly.
+function onVisit(tool: { slug: string; category: string }) {
+  trackAction('tool_visit', { tool_slug: tool.slug, category: tool.category, source: 'directory' })
+}
+function onDetailNav(slug: string) {
+  trackContent('tool_detail_nav', slug, { source: 'directory' })
+}
 
 // ItemList JSON-LD enumerating the tool directory (rich results + AI citation).
 const origin = useRequestURL().origin

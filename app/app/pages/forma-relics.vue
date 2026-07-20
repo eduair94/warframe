@@ -71,10 +71,11 @@
               label="Sort by"
               class="an-field"
               style="flex: 0 1 220px"
+              @update:model-value="onSort"
             ></v-select>
           </div>
 
-          <v-chip-group v-model="tier" mandatory column class="an-cats">
+          <v-chip-group v-model="tier" mandatory column class="an-cats" @update:model-value="onTier">
             <v-chip v-for="tv in tierOptions" :key="tv" :value="tv" size="small" active-class="an-chip--on">
               {{ tv === 'All' ? 'All tiers' : tv }}
             </v-chip>
@@ -89,6 +90,7 @@
               color="#4fb3bf"
               label="Currently dropping only"
               class="an-toggle"
+              @update:model-value="onToggle('dropping_only', $event)"
             ></v-switch>
             <v-switch
               v-model="doubleOnly"
@@ -98,6 +100,7 @@
               color="#d4af5a"
               label="Only 2× Forma (Uncommon)"
               class="an-toggle"
+              @update:model-value="onToggle('double_forma_only', $event)"
             ></v-switch>
           </div>
 
@@ -183,7 +186,7 @@
         </div>
 
         <div v-if="filtered.length > perPage" class="an-pager">
-          <v-pagination v-model="page" :length="pageCount" :total-visible="isMobile ? 5 : 9" color="#d4af5a"></v-pagination>
+          <v-pagination v-model="page" :length="pageCount" :total-visible="isMobile ? 5 : 9" color="#d4af5a" @update:model-value="onPage"></v-pagination>
         </div>
 
         <!-- How to run them -->
@@ -211,11 +214,12 @@
 </template>
 
 <script setup lang="ts">
-import { computed, nextTick, onMounted, ref, watch } from 'vue'
+import { computed, nextTick, onMounted, onUnmounted, ref, watch } from 'vue'
 import { useDisplay } from 'vuetify'
 import { useFormaRelics, type FormaRelic, type FormaStatus } from '~/composables/useFormaRelics'
 import type { RelicRow } from '~/composables/useRelicValue'
 
+const { trackAction, trackDialog, trackFilter, trackSearch, trackSort } = useAnalytics()
 const { localName } = useLocalizedName()
 const { itemThumb } = useItemThumb()
 const localePath = useLocalePath()
@@ -312,6 +316,35 @@ watch(filtered, () => {
   page.value = 1
 })
 
+// Searching re-filters on every keystroke, so report only what the user settled
+// on — and with the resulting row count, which is what makes "searched, found
+// nothing" answerable.
+let searchTimer: ReturnType<typeof setTimeout> | null = null
+watch(search, (q) => {
+  if (searchTimer) clearTimeout(searchTimer)
+  const term = (q || '').toString().trim()
+  if (!term) return
+  searchTimer = setTimeout(() => trackSearch(term, filtered.value.length), 800)
+})
+onUnmounted(() => {
+  // A pending timer would otherwise be attributed to whatever page came next.
+  if (searchTimer) clearTimeout(searchTimer)
+})
+
+// --- analytics hooks (tracking only; none of these touch page state) ---
+function onTier(v: any) {
+  trackFilter('tier', v)
+}
+function onToggle(name: string, v: any) {
+  trackFilter(name, !!v)
+}
+function onSort(v: any) {
+  trackSort(v)
+}
+function onPage(n: number) {
+  trackAction('paginate', { page: n })
+}
+
 function relicThumb(relic: RelicRow): string {
   return itemThumb({ urlName: relic.url_name, itemName: relic.relicName, thumb: relic.thumb })
 }
@@ -330,6 +363,7 @@ function openDrops(relic: RelicRow) {
   dropsRelic.value = /relic$/i.test(rn) ? rn : `${rn} Relic`
   dropsThumb.value = relic.thumb || ''
   dropsDialog.value = true
+  trackDialog('drop_locations', { item_name: dropsRelic.value })
 }
 function fmtPct(n: number): string {
   const v = Number(n) || 0

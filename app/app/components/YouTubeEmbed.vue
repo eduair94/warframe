@@ -10,7 +10,7 @@
       type="button"
       class="yt__poster"
       :aria-label="`Play: ${title}`"
-      @click="playing = true"
+      @click="play"
     >
       <img
         class="yt__thumb"
@@ -54,6 +54,16 @@ const playing = ref(false)
 const thumb = ref(`https://i.ytimg.com/vi/${props.id}/hqdefault.jpg`)
 function onThumbError() {
   thumb.value = `https://i.ytimg.com/vi/${props.id}/mqdefault.jpg`
+}
+
+const { trackContent } = useAnalytics()
+
+// The facade means the iframe only ever mounts here, so this one click is a
+// reliable "the user actually started the video" signal for every embed on the
+// site — the player's own events are unreachable from a nocookie iframe.
+function play() {
+  playing.value = true
+  trackContent('video_play', props.id, { video_title: props.title, channel: props.channel })
 }
 </script>
 

@@ -33,7 +33,7 @@
             type="button"
             class="cr-chip"
             :class="{ 'is-on': activeCat === null }"
-            @click="activeCat = null"
+            @click="pickCat(null)"
           >{{ t('faq.all') }} <span class="cr-chip__n">{{ FAQS.length }}</span></button>
           <button
             v-for="c in FAQ_CATEGORIES"
@@ -41,7 +41,7 @@
             type="button"
             class="cr-chip"
             :class="{ 'is-on': activeCat === c.key }"
-            @click="activeCat = activeCat === c.key ? null : c.key"
+            @click="pickCat(activeCat === c.key ? null : c.key)"
           >
             {{ c.title }} <span class="cr-chip__n">{{ countByCat(c.key) }}</span>
           </button>
@@ -58,7 +58,7 @@
             </div>
             <div class="ga-faq">
               <details v-for="(f, i) in grouped[c.key]" :key="i" class="ga-faq__item" :open="!!query">
-                <summary class="ga-faq__q">{{ f.q }}</summary>
+                <summary class="ga-faq__q" @click="onFaqOpen($event, f)">{{ f.q }}</summary>
                 <div class="ga-faq__a" v-html="renderRich(f.a)" />
               </details>
             </div>
@@ -77,7 +77,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, nextTick, onMounted } from 'vue'
+import { computed, ref, watch, nextTick, onBeforeUnmount, onMounted } from 'vue'
 import { FAQS as EN_FAQS, FAQ_CATEGORIES as EN_CATS } from '~/data/faq'
 
 // Localized content for the active locale (English fallback), aliased to the
@@ -108,6 +108,36 @@ const grouped = computed(() => {
   for (const f of filtered.value) (g[f.cat] ||= []).push(f)
   return g
 })
+
+const { trackContent, trackFilter, trackSearch } = useAnalytics()
+
+/** Same assignment as before, plus the event. `null` is the "All" chip. */
+function pickCat(key: string | null) {
+  activeCat.value = key
+  trackFilter('faq_category', key ?? 'all')
+}
+
+// Hooked to the summary click, NOT `toggle`: a search opens every match via
+// `:open`, which would fire a toggle per rendered question on each keystroke.
+// A click is always the user, and `open` is still the pre-click state here, so
+// `!open` means they are opening it. The index (not the question) is the id —
+// question text is localized, the position is not.
+function onFaqOpen(e: MouseEvent, f: (typeof FAQS)[number]) {
+  const details = (e.currentTarget as HTMLElement).parentElement as HTMLDetailsElement | null
+  if (details?.open) return
+  trackContent('faq_expand', `faq#${FAQS.indexOf(f)}`, { category: f.cat })
+}
+
+// Debounced: the list filters per keystroke, the event fires once the user
+// settles. Empty-result searches are the FAQ's content backlog.
+let searchTimer: ReturnType<typeof setTimeout> | undefined
+watch(query, (q) => {
+  clearTimeout(searchTimer)
+  const term = q.trim()
+  if (term.length < 2) return
+  searchTimer = setTimeout(() => trackSearch(term, filtered.value.length), 700)
+})
+onBeforeUnmount(() => clearTimeout(searchTimer))
 
 // FAQPage JSON-LD over the full set (not the filtered view) so crawlers always
 // see every Q&A regardless of the visitor's client-side filter.

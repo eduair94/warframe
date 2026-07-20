@@ -9,10 +9,14 @@
       </v-card-title>
       <v-card-text>
         <v-data-table mobile-breakpoint="sm" :headers="compareHeaders" :items="props.items ?? []" hide-default-footer class="elevation-1">
-          <template #item.item_name="{ item }">
+          <template #item.item_name="{ item, index }">
             <div class="d-flex justify-start align-center py-2">
               <img class="mr-3" width="40px" :src="'https://warframe.market/static/assets/' + item.thumb" />
-              <a class="no_link text-white" target="_blank" :href="'https://warframe.market/items/' + item.url_name"
+              <a
+                class="no_link text-white"
+                target="_blank"
+                :href="'https://warframe.market/items/' + item.url_name"
+                @click="onMarketLink(item, index)"
                 >{{ localItemName(item) }}</a
               >
             </div>
@@ -46,6 +50,7 @@ import LastTransactionCell from './LastTransactionCell.vue';
 const { t } = useI18n();
 const { mobile } = useDisplay();
 const { localItemName } = useLocalizedName();
+const { trackMarketOpen } = useAnalytics();
 
 const dialog = defineModel<boolean>({ required: true });
 
@@ -73,6 +78,15 @@ const compareHeaders = computed(() => {
 
 function close() {
   dialog.value = false;
+}
+
+// Explicit on top of the delegated outbound_click: only this handler knows WHICH
+// item was opened and that it came from the comparison dialog rather than a row.
+function onMarketLink(item: any, index?: number) {
+  trackMarketOpen(item.item_name, {
+    position: typeof index === 'number' ? index + 1 : undefined,
+    source: 'compare_dialog',
+  });
 }
 
 function fixPrice(price: number) {

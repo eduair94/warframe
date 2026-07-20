@@ -111,7 +111,13 @@
         <!-- Pricing basis toggle -->
         <section class="st-basis">
           <div class="st-basis__lbl">{{ t('setDetail.basisLabel') }}</div>
-          <v-btn-toggle v-model="basis" mandatory density="comfortable" class="st-seg">
+          <v-btn-toggle
+            v-model="basis"
+            mandatory
+            density="comfortable"
+            class="st-seg"
+            @update:model-value="onBasisChange"
+          >
             <v-btn
               v-for="key in BASIS_KEYS"
               :key="key"
@@ -172,7 +178,15 @@
               <template v-for="row in ledger" :key="row.node.url_name">
                 <tr :class="{ 'is-top': row.isSet }">
                   <td class="col-name">
-                    <a class="an-name" :href="mkt(row.node.url_name)" target="_blank" rel="noopener">
+                    <!-- The delegated outbound tracker cannot know WHICH part of the
+                         ledger was clicked; that is the whole question here. -->
+                    <a
+                      class="an-name"
+                      :href="mkt(row.node.url_name)"
+                      target="_blank"
+                      rel="noopener"
+                      @click="trackMarketOpen(row.node.url_name, { source: 'part_row', is_set: row.isSet })"
+                    >
                       <img
                         class="an-thumb"
                         :src="thumbOf(row.node)"
@@ -292,7 +306,13 @@
                 <v-icon size="16">{{ expanded.has(row.node.url_name) ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
                 {{ expanded.has(row.node.url_name) ? t('setDetail.actions.collapse') : t('setDetail.actions.expand') }}
               </button>
-              <a class="st-cardbtn" :href="mkt(row.node.url_name)" target="_blank" rel="noopener">
+              <a
+                class="st-cardbtn"
+                :href="mkt(row.node.url_name)"
+                target="_blank"
+                rel="noopener"
+                @click="trackMarketOpen(row.node.url_name, { source: 'part_card', is_set: row.isSet })"
+              >
                 <v-icon size="16">mdi-open-in-new</v-icon> {{ t('setDetail.actions.market') }}
               </a>
             </div>
@@ -318,7 +338,7 @@
                   v-for="key in BASIS_KEYS"
                   :key="key"
                   :class="{ 'is-top': key === basis }"
-                  @click="basis = key"
+                  @click="onBasisRow(key)"
                 >
                   <td class="col-name">
                     {{ t('setDetail.basis.' + key) }}
@@ -404,6 +424,8 @@ const { localItemName, localName } = useLocalizedName()
 const { itemThumb, THUMB_PLACEHOLDER } = useItemThumb()
 const { mobile } = useDisplay()
 const isMobile = computed(() => mobile.value)
+const { trackAction, trackDialog, trackFilter, trackMarketOpen, trackSelectItem, trackViewItem } =
+  useAnalytics()
 
 const items = useItemsStore()
 const allSets = computed(() => items.allSets)
@@ -540,6 +562,38 @@ watch(basis, (key) => {
   if (import.meta.client) localStorage.setItem(BASIS_STORAGE_KEY, key)
 })
 
+/**
+ * Analytics: which basis the user ends up reading the deal on. Reported from the
+ * two surfaces that change it by hand — the toggle and the cross-basis table —
+ * rather than from a `watch(basis)`, which would also fire for the localStorage
+ * restore and the unsupported-basis fallback.
+ */
+function onBasisChange(key: unknown) {
+  if (typeof key === 'string') trackFilter('basis', key, { source: 'toggle' })
+}
+
+/**
+ * Same contract from the cross-basis table, whose whole rows are clickable.
+ * Vuetify drops the toggle's emit when the active button is clicked again, but a
+ * table row has no such guard — without the comparison, re-reading the row that
+ * is already active would report a basis change that never happened.
+ */
+function onBasisRow(key: BasisKey) {
+  if (key !== basis.value) trackFilter('basis', key, { source: 'matrix' })
+  basis.value = key
+}
+
+// One view_item per set actually opened. Keyed on the set's url_name so neither
+// a price refresh nor a basis switch (both rebuild every derived number) reports
+// the same set as viewed twice.
+watch(
+  () => payload.value?.set.url_name,
+  (urlName) => {
+    if (urlName) trackViewItem(urlName, { verdict: active.value.verdict })
+  },
+  { immediate: true },
+)
+
 // ---------------------------------------------------------------------------
 // Ledger rows — the set first, then the parts
 // ---------------------------------------------------------------------------
@@ -557,7 +611,10 @@ const expanded = ref<Set<string>>(new Set())
 function toggle(urlName: string) {
   const next = new Set(expanded.value)
   if (next.has(urlName)) next.delete(urlName)
-  else next.add(urlName)
+  else {
+    next.add(urlName)
+    trackAction('part_detail_expand', { item_name: urlName })
+  }
   expanded.value = next
 }
 
@@ -605,6 +662,10 @@ async function syncPrices(force = false) {
   refreshing.value = true
   refreshError.value = false
   bust.value = Date.now()
+  // Only reached once the throttle has let the click through, so this counts
+  // refreshes that really refetch. `forced` separates the error-state Retry from
+  // the header button.
+  trackAction('prices_refresh', { forced: force })
   try {
     await refresh()
     // useAsyncData captures a failure into `error` rather than throwing, so the
@@ -632,6 +693,7 @@ function openDrops(node: SetNode) {
   dropItemName.value = node.item_name
   dropThumb.value = node.thumb || ''
   dropDialog.value = true
+  trackDialog('drop_locations', { item_name: node.url_name })
 }
 
 // ---------------------------------------------------------------------------
@@ -643,7 +705,10 @@ watch(setSlug, (slug) => {
   pick.value = slug
 })
 function onPick(slug: string | null) {
-  if (slug) router.push(localePath('/set/' + slug))
+  if (slug) {
+    trackSelectItem(slug, { source: 'picker' })
+    router.push(localePath('/set/' + slug))
+  }
 }
 
 const headThumb = computed(() =>

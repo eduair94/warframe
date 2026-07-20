@@ -56,7 +56,7 @@
             ></v-text-field>
             <div class="an-refine">
               <div class="an-refine__lbl">{{ t('relicsValue.filters.refinement') }}</div>
-              <v-btn-toggle v-model="refinement" mandatory density="comfortable">
+              <v-btn-toggle v-model="refinement" mandatory density="comfortable" @update:model-value="onRefinementChange">
                 <v-btn value="Intact" size="small">{{ t('relicsValue.filters.intact') }}</v-btn>
                 <v-btn value="Radiant" size="small">{{ t('relicsValue.filters.radiant') }}</v-btn>
               </v-btn-toggle>
@@ -71,10 +71,11 @@
               :label="t('relicsValue.filters.sortBy')"
               class="an-field"
               style="flex: 0 1 220px"
+              @update:model-value="onSortChange"
             ></v-select>
           </div>
 
-          <v-chip-group v-model="tier" mandatory column class="an-cats">
+          <v-chip-group v-model="tier" mandatory column class="an-cats" @update:model-value="onTierChange">
             <v-chip
               v-for="tierName in tierOptions"
               :key="tierName"
@@ -94,6 +95,7 @@
               inset
               color="#4caf7d"
               :label="t('relicsValue.filters.completeData')"
+              @update:model-value="onToggle('complete_data', $event)"
             ></v-switch>
             <v-switch
               v-model="onlyOpenWins"
@@ -102,6 +104,7 @@
               inset
               color="#4caf7d"
               :label="t('relicsValue.filters.onlyWins')"
+              @update:model-value="onToggle('only_wins', $event)"
             ></v-switch>
             <v-switch
               v-model="droppingOnly"
@@ -110,6 +113,7 @@
               inset
               color="#4fb3bf"
               :label="t('relicsValue.filters.droppingOnly')"
+              @update:model-value="onToggle('dropping_only', $event)"
             ></v-switch>
           </div>
           <div class="an-count">
@@ -280,7 +284,7 @@
         </div>
 
         <div v-if="filtered.length > perPage" class="an-pager">
-          <v-pagination v-model="page" :length="pageCount" :total-visible="isMobile ? 5 : 9" color="#d4af5a"></v-pagination>
+          <v-pagination v-model="page" :length="pageCount" :total-visible="isMobile ? 5 : 9" color="#d4af5a" @update:model-value="onPageChange"></v-pagination>
         </div>
       </div>
 
@@ -304,12 +308,13 @@
 </template>
 
 <script setup lang="ts">
-import { computed, nextTick, onMounted, ref, watch } from 'vue'
+import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useDisplay } from 'vuetify'
 import { trueRarity, useRelicValue, type RelicRow } from '~/composables/useRelicValue'
 
 const { t } = useI18n()
 const { localName, localItemName } = useLocalizedName()
+const { trackAction, trackDialog, trackFilter, trackSearch, trackSort } = useAnalytics()
 const base = useApiBase()
 
 const { mobile } = useDisplay()
@@ -365,6 +370,10 @@ const selected = ref<RelicRow | null>(null)
 function openDetails(row: RelicRow) {
   selected.value = row
   detailsOpen.value = true
+  // `item_name` (not a bespoke `relic` param) — it is the registered custom
+  // dimension every other dialog_open/market_open/view_item uses, so the relic
+  // funnel joins up in GA4 instead of landing in an unreportable field.
+  trackDialog('relic_details', { item_name: row.relicName, refinement: refinement.value })
 }
 // Per-drop "where does this part come from" — delegated to the shared
 // DropLocationsDialog the farming page already uses.
@@ -491,6 +500,40 @@ const stats = computed<any>(() => {
 watch(filtered, () => {
   page.value = 1
 })
+
+// --- Analytics hooks -------------------------------------------------------
+// The board's controls are what tell us which lens people actually trade by, so
+// each one reports as a single parameterised filter_apply. The search box is the
+// exception: it is debounced well past typing speed so a query is one `search`
+// hit (with the result count it produced) instead of one per keystroke.
+let searchTimer: ReturnType<typeof setTimeout> | null = null
+watch(search, (q) => {
+  if (searchTimer) clearTimeout(searchTimer)
+  const term = (q || '').toString().trim()
+  if (!term) return
+  searchTimer = setTimeout(() => trackSearch(term, filtered.value.length), 700)
+})
+// Drop a pending debounce when the page goes away: `tool` is resolved from the
+// live route, so a timer that survives the navigation would file the search
+// under whatever page the user landed on.
+onBeforeUnmount(() => {
+  if (searchTimer) clearTimeout(searchTimer)
+})
+function onRefinementChange(v: string | null) {
+  if (v) trackFilter('refinement', v)
+}
+function onTierChange(v: any) {
+  trackFilter('tier', String(v ?? 'All'))
+}
+function onSortChange(v: any) {
+  trackSort(String(v ?? ''))
+}
+function onToggle(name: string, v: any) {
+  trackFilter(name, !!v)
+}
+function onPageChange(p: number) {
+  trackAction('page_change', { page: p })
+}
 
 // Hide the global loading spinner once mounted (project rule). Bounded retry:
 // the old Options-API version recursed unbounded, so cap the wait here.

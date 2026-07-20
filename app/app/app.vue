@@ -19,6 +19,9 @@ const base = useApiBase()
 const items = useItemsStore()
 const translations = useTranslationsStore()
 const { locale } = useI18n()
+// Resolved before the top-level await below so it still runs inside setup's
+// synchronous Nuxt context.
+const { trackAction, trackLocaleChange } = useAnalytics()
 
 // ---- Structured data (JSON-LD) --------------------------------------------
 // WebSite + WebApplication describing the tool, so Google / AI answer engines
@@ -150,8 +153,11 @@ const onVisibilityChange = () => {
 // Client-side locale switch: the app root's setup runs once, so a later switch
 // to /de, /fr, … won't re-trigger the SSR dictionary load above. Fetch the new
 // locale's item dictionary on change; names update reactively once it lands.
-watch(locale, (l) => {
+watch(locale, (l, prev) => {
   translations.ensureScope('items', l)
+  // The single hook that sees BOTH switch paths (LanguageMenu and the
+  // browser-language suggestion banner), so locale adoption is measured once.
+  if (prev && prev !== l) trackLocaleChange(prev, l)
 })
 
 // The <LoadingBar/> overlay renders visible by default (the initial-load
@@ -166,6 +172,9 @@ onMounted(() => {
   // would render blank. Refetch client-side from the public API so the UI recovers
   // without a manual reload. Cheap: the public API is Cloudflare-cached.
   if (!items.allItems.length) {
+    // Today this outage is silent — the page just looks empty. Report it so the
+    // blank-render rate is visible instead of only showing up as bounces.
+    trackAction('catalogue_empty')
     $fetch<WarframeItem[]>(base, CATALOGUE_FETCH)
       .then((list) => {
         if (list?.length) items.setItems(list)

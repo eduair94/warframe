@@ -307,8 +307,21 @@ export default defineNuxtConfig({
   // Ported from app/nuxt.config.js `buildModules` google-gtag entry,
   // consolidating both the GA4 property (G-) and the Google Ads account (AW-)
   // that were previously split across `id` + `additionalAccounts`.
+  // The GA4 property was migrated to G-HD4PTPEGPP (replaces the old
+  // G-F97PNVRMRF); the Google Ads account (AW-) is unchanged.
+  //
+  // `send_page_view: false` on the GA4 tag is deliberate: nuxt-gtag v3 has NO
+  // router integration, so the tag's own automatic page_view only ever fired on
+  // the hard page load and every client-side navigation in this SPA was
+  // invisible to GA4. plugins/analytics.client.ts now emits `page_view` for
+  // BOTH the first render and every subsequent route change (with page_path /
+  // page_location / page_title / locale), so the tag must not also fire its own
+  // or the landing page would be double-counted.
   gtag: {
-    tags: [{ id: 'G-F97PNVRMRF' }, { id: 'AW-972399920', config: { send_page_view: true } }]
+    tags: [
+      { id: 'G-HD4PTPEGPP', config: { send_page_view: false } },
+      { id: 'AW-972399920', config: { send_page_view: true } }
+    ]
   },
 
   // Ported verbatim from app/nuxt.config.js `googleFonts` block; v3 keeps the

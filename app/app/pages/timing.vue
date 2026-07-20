@@ -14,7 +14,7 @@
           <div v-if="topDeal" class="an-hero__deal">
             <div class="an-hero__deal-label">{{ t('timing.hero.dealLabel') }}</div>
             <div class="an-hero__deal-plat">{{ fmtPlat(priceOf(topDeal)) }}<span>p</span></div>
-            <a class="an-hero__deal-name" :href="mkt(topDeal.url_name)" target="_blank" rel="noopener">
+            <a class="an-hero__deal-name" :href="mkt(topDeal.url_name)" target="_blank" rel="noopener" @click="onMarketOpen(topDeal, 'hero')">
               {{ localItemName(topDeal) }} →
             </a>
             <div class="an-hero__deal-sub">+{{ topDeal.pctFromAtl.toFixed(0) }}% {{ t('timing.hero.dealSub', { days: topDeal.dataDays }) }}</div>
@@ -79,9 +79,9 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="row in paged" :key="row.url_name" :class="{ 'is-top': row.url_name === topDealUrl }">
+              <tr v-for="(row, i) in paged" :key="row.url_name" :class="{ 'is-top': row.url_name === topDealUrl }">
                 <td class="col-name">
-                  <a class="an-name" :href="mkt(row.url_name)" target="_blank" rel="noopener">
+                  <a class="an-name" :href="mkt(row.url_name)" target="_blank" rel="noopener" @click="onMarketOpen(row, 'row', rank(i))">
                     <img class="an-thumb" :src="assetUrl(row.thumb)" :alt="localItemName(row)" loading="lazy" @error="onImgError" />
                     <span>
                       {{ localItemName(row) }}
@@ -107,7 +107,7 @@
         </div>
 
         <div v-else class="an-cards">
-          <a v-for="row in paged" :key="row.url_name" class="an-card" :class="{ 'is-top': row.url_name === topDealUrl }" :href="mkt(row.url_name)" target="_blank" rel="noopener">
+          <a v-for="(row, i) in paged" :key="row.url_name" class="an-card" :class="{ 'is-top': row.url_name === topDealUrl }" :href="mkt(row.url_name)" target="_blank" rel="noopener" @click="onMarketOpen(row, 'mobile_card', rank(i))">
             <div class="an-card__head">
               <img class="an-thumb" :src="assetUrl(row.thumb)" :alt="localItemName(row)" loading="lazy" @error="onImgError" />
               <div class="an-card__title">
@@ -136,7 +136,7 @@
         </div>
 
         <div v-if="filtered.length > perPage" class="an-pager">
-          <v-pagination v-model="page" :length="pageCount" :total-visible="isMobile ? 5 : 9" color="#d4af5a"></v-pagination>
+          <v-pagination v-model="page" :length="pageCount" :total-visible="isMobile ? 5 : 9" color="#d4af5a" @update:model-value="onPageChange"></v-pagination>
         </div>
       </div>
 
@@ -148,7 +148,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, nextTick, onMounted, ref, watch } from 'vue'
+import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useDisplay } from 'vuetify'
 
 const { t } = useI18n()
@@ -298,6 +298,44 @@ const stats = computed<any>(() => {
 watch(filtered, () => {
   page.value = 1
 })
+
+// --- Analytics -------------------------------------------------------------
+// This board is read-only, so the only questions worth answering are how people
+// narrow it down and which item they ultimately leave for on warframe.market.
+const { trackSearch, trackFilter, trackAction, trackMarketOpen } = useAnalytics()
+
+// The search box is a raw text field: debounce so one typed query is one event
+// instead of one per keystroke, and report the count the user landed on.
+let searchTimer: ReturnType<typeof setTimeout> | null = null
+watch(search, (q) => {
+  if (searchTimer) clearTimeout(searchTimer)
+  const term = (q || '').toString().trim()
+  if (!term) return
+  searchTimer = setTimeout(() => trackSearch(term, filtered.value.length), 700)
+})
+onBeforeUnmount(() => {
+  if (searchTimer) clearTimeout(searchTimer)
+})
+
+// These refs are only ever written by their own control, so a watcher is
+// equivalent to a click handler and keeps the template untouched.
+watch(mode, (v) => trackFilter('mode', v))
+watch(category, (v) => trackFilter('category', v || 'All'))
+
+/** 1-based position across the whole filtered list, not just the current page. */
+function rank(index: number): number {
+  return (page.value - 1) * perPage + index + 1
+}
+// Fired from the pager itself rather than a `page` watcher: the filter reset
+// above also writes `page`, and that is not a user paging through results.
+function onPageChange(p: number) {
+  trackAction('page_change', { page: p, results_count: filtered.value.length })
+}
+// English item_name (the canonical key) keeps this dimension low-cardinality
+// across locales. `signal` tells us which verdict actually pulls people through.
+function onMarketOpen(row: any, source: string, position?: number) {
+  trackMarketOpen(row.item_name, { source, position, signal: signal(row).key })
+}
 
 // Hide the global loading spinner once mounted (project rule). Bounded retry:
 // the #spinner-wrapper element is injected by the (not-yet-wired) LoadingBar

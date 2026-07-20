@@ -33,7 +33,7 @@
         <div class="ga-toc__title">{{ onThisPage }}</div>
         <ol class="ga-toc__list">
           <li v-for="s in toc" :key="s.id">
-            <a :href="`#${s.id}`" @click.prevent="scrollTo(s.id)">{{ s.title }}</a>
+            <a :href="`#${s.id}`" @click.prevent="onTocClick(s.id)">{{ s.title }}</a>
           </li>
         </ol>
       </nav>
@@ -110,6 +110,7 @@
                 :target="l.href ? '_blank' : undefined"
                 :rel="l.href ? 'noopener' : undefined"
                 class="ga-linkcard"
+                @click="onLinkClick(l, 'inline')"
               >
                 <v-icon v-if="l.icon" class="ga-linkcard__icon">{{ 'mdi-' + l.icon }}</v-icon>
                 <span class="ga-linkcard__body">
@@ -143,7 +144,7 @@
       <section v-if="guide.faqs?.length" id="faq" class="ga-section">
         <h2 class="ga-section__title">{{ faqLabel }}</h2>
         <div class="ga-faq">
-          <details v-for="(f, i) in guide.faqs" :key="i" class="ga-faq__item">
+          <details v-for="(f, i) in guide.faqs" :key="i" class="ga-faq__item" @toggle="onFaqToggle($event, i)">
             <summary class="ga-faq__q">{{ f.q }}</summary>
             <div class="ga-faq__a" v-html="rich(f.a)" />
           </details>
@@ -163,6 +164,7 @@
             :target="l.href ? '_blank' : undefined"
             :rel="l.href ? 'noopener' : undefined"
             class="ga-linkcard"
+            @click="onLinkClick(l, 'related')"
           >
             <v-icon v-if="l.icon" class="ga-linkcard__icon">{{ 'mdi-' + l.icon }}</v-icon>
             <span class="ga-linkcard__body">
@@ -193,7 +195,7 @@ import { computed, nextTick, onMounted } from 'vue'
 // `:is="'NuxtLink'"` string doesn't resolve at runtime (renders an inert
 // <nuxtlink> with no href/navigation) — the imported component does.
 import { NuxtLink } from '#components'
-import type { Guide } from '~/data/guides/types'
+import type { Guide, GuideLink } from '~/data/guides/types'
 
 const props = defineProps<{ guide: Guide }>()
 const { t, locale } = useI18n()
@@ -234,6 +236,33 @@ function scrollTo(id: string) {
     history.replaceState(null, '', `#${id}`)
     el.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
+}
+
+// ── Engagement hooks. One component renders every guide, so these four cover
+// the whole Knowledge Center. ──
+const { trackContent } = useAnalytics()
+
+/** Which section a reader jumps to — our best proxy for what they came for. */
+function onTocClick(id: string) {
+  trackContent('toc_click', props.guide.slug, { section_id: id })
+  scrollTo(id)
+}
+
+/** `toggle` also fires on close; only the open is engagement. Index, not the
+ *  question text, because the text is localized and the index is not. */
+function onFaqToggle(e: Event, index: number) {
+  if (!(e.target as HTMLDetailsElement).open) return
+  trackContent('faq_expand', `${props.guide.slug}#${index}`)
+}
+
+/** Where a guide sends readers next. The delegated outbound listener sees the
+ *  external ones but knows neither the guide nor the internal destinations. */
+function onLinkClick(l: GuideLink, placement: 'inline' | 'related') {
+  trackContent('guide_link_click', l.label, {
+    internal: !!l.to,
+    guide_slug: props.guide.slug,
+    placement,
+  })
 }
 
 // ── Structured data: FAQPage + Article. Huge for the "answer questions"

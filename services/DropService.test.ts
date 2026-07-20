@@ -180,3 +180,73 @@ describe('DropService.relicKey / droppingRelicKeys', () => {
     expect(keys.size).toBe(2);
   });
 });
+
+describe('DropService.splitFirstDropTable', () => {
+  it('keeps a clean single-block flat array whole', () => {
+    const clean = [
+      { itemName: 'A', rarity: 'Common', chance: 50 },
+      { itemName: 'B', rarity: 'Common', chance: 50 },
+    ];
+    expect(DropService.splitFirstDropTable(clean)).toEqual(clean);
+  });
+
+  it('keeps only block 1 when several ~100% tables are concatenated (the WFCD bug)', () => {
+    // Two 100% tables glued together (mirrors Duviri Repeated Rewards (Hard)).
+    const glued = [
+      { itemName: 'Real1', rarity: 'Rare', chance: 60 },
+      { itemName: 'Real2', rarity: 'Rare', chance: 40 }, // block 1 closes at 100
+      { itemName: 'Event1', rarity: 'Uncommon', chance: 70 },
+      { itemName: 'Event2', rarity: 'Uncommon', chance: 30 }, // block 2 (dropped)
+    ];
+    expect(DropService.splitFirstDropTable(glued)).toEqual([
+      { itemName: 'Real1', rarity: 'Rare', chance: 60 },
+      { itemName: 'Real2', rarity: 'Rare', chance: 40 },
+    ]);
+  });
+
+  it('tolerates WFCD rounding (block closes at >= 99.5)', () => {
+    const glued = [
+      { itemName: 'R1', rarity: 'Rare', chance: 9.09 },
+      { itemName: 'R2', rarity: 'Rare', chance: 90.9 }, // 99.99 -> close
+      { itemName: 'E1', rarity: 'Common', chance: 100 },
+    ];
+    expect(DropService.splitFirstDropTable(glued)).toEqual([
+      { itemName: 'R1', rarity: 'Rare', chance: 9.09 },
+      { itemName: 'R2', rarity: 'Rare', chance: 90.9 },
+    ]);
+  });
+
+  it('dedupes exact (itemName|rarity|chance) rows within the kept block', () => {
+    const dupes = [
+      { itemName: 'X', rarity: 'Rare', chance: 25 },
+      { itemName: 'X', rarity: 'Rare', chance: 25 },
+      { itemName: 'Y', rarity: 'Rare', chance: 50 },
+    ];
+    expect(DropService.splitFirstDropTable(dupes)).toEqual([
+      { itemName: 'X', rarity: 'Rare', chance: 25 },
+      { itemName: 'Y', rarity: 'Rare', chance: 50 },
+    ]);
+  });
+});
+
+describe('DropService.normalizeMissionRewards block-split integration', () => {
+  it('drops the phantom event rows from a mis-concatenated flat node', () => {
+    const raw = {
+      missionRewards: {
+        Duviri: {
+          'Endless: Repeated Rewards (Hard)': {
+            gameMode: 'Hard',
+            rewards: [
+              { _id: 'a', itemName: 'SP Arcane', rarity: 'Rare', chance: 100 }, // block 1
+              { _id: 'b', itemName: 'Ayatan Cyan Star', rarity: 'Uncommon', chance: 14.29 }, // event
+              { _id: 'c', itemName: 'Filler', rarity: 'Common', chance: 85.71 },
+            ],
+          },
+        },
+      },
+    } as any;
+    const planets = DropService.normalizeMissionRewards(raw);
+    const node = planets[0].nodes[0];
+    expect(node.rotations[0].rewards).toEqual([{ itemName: 'SP Arcane', rarity: 'Rare', chance: 100 }]);
+  });
+});

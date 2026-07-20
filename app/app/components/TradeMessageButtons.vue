@@ -27,6 +27,12 @@ export default defineComponent({
     sellPrice: { type: Number, default: 0 },
     buyPrice: { type: Number, default: 0 },
   },
+  // Options API component, so the analytics helper is resolved here and exposed
+  // on the instance - useAnalytics() reads the route and cannot run from a method.
+  setup() {
+    const { trackTradeCopy } = useAnalytics();
+    return { trackTradeCopy };
+  },
   data() {
     return { copied: false };
   },
@@ -54,6 +60,10 @@ export default defineComponent({
           document.execCommand('copy');
           document.body.removeChild(el);
         }
+        this.trackTradeCopy(this.itemName, {
+          side: direction === 'sell' ? 'wts' : 'wtb',
+          price: direction === 'sell' ? this.sellPrice : this.buyPrice,
+        });
         this.copied = true;
         setTimeout(() => {
           this.copied = false;

@@ -27,6 +27,7 @@
           :items-per-page-options="[10, 20, 30, 40, 50]"
           class="elevation-1 money_table"
           @update:page="onPageUpdate"
+          @update:sort-by="onSortBy"
         >
           <!-- Accessible row-select checkboxes (Vuetify's built-ins ship no
                aria-label, which fails the Lighthouse/axe "label" audit). -->
@@ -65,7 +66,7 @@
                 <form
                   id="form_warframe"
                   class="d-flex align-center flex-wrap"
-                  @submit.prevent="filter"
+                  @submit.prevent="onFilterSubmit"
                 >
                   <v-text-field
                     v-model="min_volume"
@@ -82,6 +83,7 @@
                     :items="selectionOptions"
                     hide-details
                     density="compact"
+                    @update:model-value="trackFilter('category', $event)"
                   ></v-select>
                   <v-combobox
                     v-model="search"
@@ -98,7 +100,7 @@
                 </form>
 
                 <!-- Advanced Filters Section -->
-                <v-expansion-panels class="mt-2 mb-2" flat>
+                <v-expansion-panels class="mt-2 mb-2" flat @update:model-value="onAdvancedToggle">
                   <v-expansion-panel>
                     <v-expansion-panel-title>
                       {{ t('home.advanced.title') }}
@@ -117,6 +119,7 @@
                             closable-chips
                             density="compact"
                             hide-details
+                            @update:model-value="trackFilter('include_tags', $event?.length ?? 0)"
                           ></v-autocomplete>
                         </v-col>
                         <v-col cols="12" md="2">
@@ -137,6 +140,7 @@
                             closable-chips
                             density="compact"
                             hide-details
+                            @update:model-value="trackFilter('exclude_tags', $event?.length ?? 0)"
                           ></v-autocomplete>
                         </v-col>
                         <v-col cols="12" md="2" class="d-flex align-center justify-end">
@@ -157,10 +161,10 @@
                 <!-- Comparison Action -->
                 <div v-if="selectedItems.length > 0" class="d-flex align-center my-2 pa-2 bg-blue-darken-4 rounded">
                   <span class="text-white mr-4">{{ t('home.compare.selected', { n: selectedItems.length }, selectedItems.length) }}</span>
-                  <v-btn size="small" color="white" @click="compareDialog = true">
+                  <v-btn size="small" color="white" @click="openCompare">
                     {{ t('home.compare.compareBtn') }}
                   </v-btn>
-                  <v-btn icon size="small" variant="text" color="white" class="ml-2" :aria-label="t('home.a11y.clearSelection')" @click="selectedItems = []">
+                  <v-btn icon size="small" variant="text" color="white" class="ml-2" :aria-label="t('home.a11y.clearSelection')" @click="clearSelection">
                     <v-icon>mdi-close</v-icon>
                   </v-btn>
                 </div>
@@ -179,7 +183,7 @@
               </div>
             </v-theme-provider>
           </template>
-          <template #item.item_name="{ item }">
+          <template #item.item_name="{ item, index }">
             <div class="d-flex justify-start align-center py-3">
               <img
                 class="mr-3"
@@ -195,6 +199,7 @@
                   class="no_link"
                   target="_blank"
                   :href="'https://warframe.market/items/' + item.url_name"
+                  @click="onMarketLink(item, index)"
                 >
                   {{ localItemName(item) }}</a
                 >
@@ -205,6 +210,7 @@
                   color="primary"
                   class="mt-1"
                   :to="'/set/' + item.url_name"
+                  @click="trackAction('set_page_nav', { item_name: item.item_name })"
                   >{{ t('nav.items.setVsParts') }}</v-btn
                 >
                 <v-btn
@@ -213,6 +219,7 @@
                   color="primary"
                   class="mt-1"
                   :to="'/relic/' + item.url_name"
+                  @click="trackAction('relic_page_nav', { item_name: item.item_name })"
                   >{{ t('home.row.relicCalculator') }}</v-btn
                 >
               </div>
@@ -440,6 +447,7 @@ const { t } = useI18n()
 const localePath = useLocalePath()
 const { localItemName } = useLocalizedName()
 const goTo = useGoTo()
+const { trackAction, trackDialog, trackFilter, trackMarketOpen, trackSearch, trackSort } = useAnalytics()
 
 const items = useItemsStore()
 const allItems = computed<any[]>(() => items.allItems)
@@ -564,6 +572,7 @@ watch(multiSort, (val) => {
 })
 
 async function openTransactionDetails(item: any) {
+  trackDialog('price_history', { item_name: item.item_name })
   selectedTransactionItem.value = item
   transactionDialog.value = true
   priceHistoryPoints.value = []
@@ -583,6 +592,7 @@ async function openTransactionDetails(item: any) {
 }
 
 function openDrops(item: any) {
+  trackDialog('drop_locations', { item_name: item.item_name })
   dropItemName.value = item.item_name
   dropThumb.value = item.thumb || ''
   dropDialog.value = true
@@ -606,21 +616,27 @@ function fixDate(date: any) {
 }
 
 function addTagToFilter(tag: string) {
-  if (includedTags.value.includes(tag)) {
+  const wasIncluded = includedTags.value.includes(tag)
+  if (wasIncluded) {
     includedTags.value = includedTags.value.filter((tt) => tt !== tag)
   } else {
     includedTags.value.push(tag)
   }
+  trackFilter('tag_chip', tag, { action: wasIncluded ? 'remove' : 'add' })
   filter()
 }
 
 function clearTags() {
+  trackAction('tags_clear', {
+    tag_count: includedTags.value.length + excludedTags.value.length,
+  })
   includedTags.value = []
   excludedTags.value = []
   tagLogic.value = 'AND'
 }
 
 function reset() {
+  trackAction('filters_reset')
   selection.value = 'All'
   search.value = ''
   min_volume.value = 0
@@ -707,6 +723,66 @@ function filter() {
   })
 }
 
+// Analytics only. filter() itself is also driven by the tag watchers, the chip
+// shortcut and the 2-min store refresh, so instrumenting it directly would
+// report "filter applied" events the user never triggered — the submit wrapper
+// is the only place that maps 1:1 to a deliberate apply.
+function onFilterSubmit() {
+  filter()
+  trackFilter('home_filters', selection.value, {
+    min_volume: Number(min_volume.value) || 0,
+    tag_count: includedTags.value.length + excludedTags.value.length,
+    has_search: !!search.value,
+    results_count: all_items.value.length,
+  })
+  // Only the submit carries the search term: the combobox updates its model on
+  // every blur/selection, and it does not apply the filter on its own.
+  if (search.value) {
+    trackSearch(String(search.value), all_items.value.length, { method: 'submit' })
+  }
+}
+
+// v-expansion-panels emits the open panel's value, or undefined when it
+// collapses again — we only care that the advanced filters were revealed.
+function onAdvancedToggle(val: unknown) {
+  if (val === undefined || val === null) return
+  if (Array.isArray(val) && val.length === 0) return
+  trackAction('advanced_filters_open')
+}
+
+function openCompare() {
+  compareDialog.value = true
+  trackDialog('item_compare', { item_count: selectedItems.value.length })
+}
+
+function clearSelection() {
+  trackAction('compare_clear', { item_count: selectedItems.value.length })
+  selectedItems.value = []
+}
+
+// Merged with the v-model:sort-by writer by the template compiler, so this
+// listener only reports — it never owns the sort state.
+function onSortBy(val: any[]) {
+  const first = val?.[0]
+  trackSort(first?.key ?? 'none', first?.order ? String(first.order) : undefined)
+}
+
+// The table swaps to stacked cards below its mobile-breakpoint and the two
+// layouts need to stay separable in GA4. Vuetify 4 puts the `--mobile` modifier
+// on the ROWS (`v-data-table__tr--mobile`, VDataTableRow -> useDisplay(props,
+// 'v-data-table__tr')), never on the table root — probing the root would report
+// every mobile visitor as `table`.
+function tableSource() {
+  return document.querySelector('.money_table .v-data-table__tr--mobile') ? 'mobile_card' : 'table'
+}
+
+function onMarketLink(item: any, index?: number) {
+  trackMarketOpen(item.item_name, {
+    position: typeof index === 'number' ? index + 1 : undefined,
+    source: tableSource(),
+  })
+}
+
 // Re-apply the active filters whenever the store catalogue refreshes (the
 // 2-min background poll / focus refetch in app.vue, or the hydration
 // self-heal). The table binds the filtered `all_items` snapshot, which would
@@ -726,8 +802,16 @@ function rowProps({ item }: { item: any }) {
   return { class: row_classes(item) }
 }
 
-function onPageUpdate() {
+// Debounced: paging through a 4k-row table fires update:page on every click,
+// and only the page the user settles on is worth an event.
+let pageTrackTimer: ReturnType<typeof setTimeout> | null = null
+
+function onPageUpdate(page?: number) {
   goTo('.money_table')
+  if (pageTrackTimer) clearTimeout(pageTrackTimer)
+  pageTrackTimer = setTimeout(() => {
+    trackAction('table_page', { page: typeof page === 'number' ? page : undefined })
+  }, 800)
 }
 
 // Hide the global loading spinner once mounted (project rule). Bounded retry:
@@ -861,6 +945,7 @@ onBeforeUnmount(() => {
   destroyed = true
   window.removeEventListener('resize', onResize)
   window.removeEventListener('beforeinstallprompt', onBeforeInstallPrompt)
+  if (pageTrackTimer) clearTimeout(pageTrackTimer)
   teardownScroll()
 })
 </script>

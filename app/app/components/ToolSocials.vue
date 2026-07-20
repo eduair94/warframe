@@ -17,6 +17,7 @@
       rel="noopener nofollow"
       :title="s.label"
       :aria-label="s.label"
+      @click="trackShare(s.kind, { tool_slug: toolSlug })"
     >
       <svg class="ts__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
         <path :d="s.path" />
@@ -34,6 +35,13 @@ const props = withDefaults(
   defineProps<{ social?: ToolSocial | null; variant?: 'compact' | 'full' }>(),
   { social: null, variant: 'compact' },
 )
+
+const route = useRoute()
+const { trackShare } = useAnalytics()
+// Which tool a social click belongs to: only the /tools/[slug] detail route
+// carries it, and the index cards render the same component — read the route
+// rather than threading a prop through both call sites (empty on the index).
+const toolSlug = computed(() => String(route.params.slug || ''))
 
 // Brand marks (simple-icons single-path glyphs) + a human label. Labels are
 // brand names — intentionally NOT translated.

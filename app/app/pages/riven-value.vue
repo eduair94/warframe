@@ -83,7 +83,7 @@
                   type="button"
                   class="rv-chip"
                   :class="{ 'rv-chip--on': selectedNegative === '' }"
-                  @click="selectedNegative = ''"
+                  @click="clearNegative()"
                 >
                   {{ t('rivenValue.estimator.anyNone') }}
                 </button>
@@ -93,7 +93,7 @@
                   type="button"
                   class="rv-chip rv-chip--neg"
                   :class="{ 'rv-chip--on': selectedNegative === opt }"
-                  @click="selectedNegative = selectedNegative === opt ? '' : opt"
+                  @click="toggleNegative(opt)"
                 >
                   − {{ attrDisplay(opt) }}
                 </button>
@@ -205,6 +205,7 @@ import { computed, nextTick, onMounted, ref, watch } from 'vue'
 import { useDisplay } from 'vuetify'
 
 const { t } = useI18n()
+const { trackCalc, trackFilter, trackSelectItem } = useAnalytics()
 const { localName, ensureScope } = useLocalizedName()
 // Load riven weapon + attribute name dictionaries for the active locale.
 // Called in setup (SSR) and again on mount (client locale switch / hydration).
@@ -350,6 +351,9 @@ async function onWeaponChange(urlName: string) {
   selectedNegative.value = ''
   weaponData.value = null
   if (!urlName) return
+  // One event per real selection: this is also the point the auction fetch is
+  // fired, so it can never run per keystroke of the autocomplete's filter.
+  trackSelectItem(urlName, { source: 'riven_picker' })
   loadingWeapon.value = true
   try {
     const res = await $fetch<any>(`${base}/riven_value/${urlName}`)
@@ -364,6 +368,54 @@ function togglePositive(opt: string) {
   const i = selectedPositives.value.indexOf(opt)
   if (i >= 0) selectedPositives.value.splice(i, 1)
   else selectedPositives.value.push(opt)
+  trackFilter('positive_stat', opt)
+  trackSelectionGrade()
+}
+// Extracted from the template only so the toggle can report itself; the state
+// change is the same one the inline handler used to do.
+function toggleNegative(opt: string) {
+  selectedNegative.value = selectedNegative.value === opt ? '' : opt
+  trackFilter('negative_stat', opt)
+  trackSelectionGrade()
+}
+function clearNegative() {
+  selectedNegative.value = ''
+  trackFilter('negative_stat', 'none')
+  trackSelectionGrade()
+}
+/**
+ * Letter grade for the roll the user is pricing: where its estimated value
+ * lands among the weapon's live buyouts. `grade()` below can't be reused for
+ * this — it needs real stat values, and the estimator only knows which stats
+ * were picked, not how well they rolled.
+ */
+function estimateGrade(median: number): string {
+  const listings = gradedAuctions.value
+  if (!listings.length) return ''
+  let below = 0
+  for (const a of listings) if (a.buyout_price <= median) below++
+  const score = below / listings.length
+  if (score >= 0.85) return 'S'
+  if (score >= 0.7) return 'A'
+  if (score >= 0.5) return 'B'
+  if (score >= 0.3) return 'C'
+  if (score >= 0.15) return 'D'
+  return 'F'
+}
+/**
+ * Report the verdict a stat change produced. Driven from the toggles, never
+ * from `estimate`/`gradedAuctions` themselves — those recompute on every
+ * catalogue refresh and would flood GA with unattributable calc_runs.
+ */
+function trackSelectionGrade() {
+  const est = estimate.value
+  if (!est.count) return
+  trackCalc('riven_grade', {
+    weapon: selected.value,
+    grade: estimateGrade(est.median),
+    positives_count: selectedPositives.value.length,
+    has_negative: !!selectedNegative.value,
+  })
 }
 function positives(a: any): any[] {
   return a.item.attributes.filter((x: any) => x.positive)

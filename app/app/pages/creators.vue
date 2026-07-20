@@ -36,7 +36,7 @@
           type="button"
           class="cr-chip"
           :class="{ 'is-on': activeTag === null }"
-          @click="activeTag = null"
+          @click="pickTag(null)"
         >{{ t('creators.all') }}</button>
         <button
           v-for="tag in tags"
@@ -44,7 +44,7 @@
           type="button"
           class="cr-chip"
           :class="{ 'is-on': activeTag === tag }"
-          @click="activeTag = activeTag === tag ? null : tag"
+          @click="pickTag(activeTag === tag ? null : tag)"
         >{{ tag }}</button>
       </div>
 
@@ -63,7 +63,7 @@
               <div class="cr-tags">
                 <span v-for="tg in c.tags" :key="tg" class="cr-tag">{{ tg }}</span>
               </div>
-              <a class="cr-visit" :href="c.url" target="_blank" rel="noopener nofollow">{{ t('creators.visit') }}</a>
+              <a class="cr-visit" :href="c.url" target="_blank" rel="noopener nofollow" @click="onCreatorClick(c, 'featured')">{{ t('creators.visit') }}</a>
             </div>
           </article>
         </div>
@@ -80,6 +80,7 @@
             :href="c.url"
             target="_blank"
             rel="noopener nofollow"
+            @click="onCreatorClick(c, 'directory')"
           >
             <div class="cr-card__head">
               <h3 class="cr-name">{{ c.name }}</h3>
@@ -143,6 +144,20 @@ function match(c: (typeof CREATORS)[number]) {
 }
 const featuredFiltered = computed(() => featured.value.filter(match))
 const restFiltered = computed(() => CREATORS.filter((c) => !c.featured && match(c)))
+
+const { trackContent, trackFilter } = useAnalytics()
+
+/** Same assignment as before, plus the event. `null` is the "All" chip. */
+function pickTag(tag: string | null) {
+  activeTag.value = tag
+  trackFilter('creator_tag', tag ?? 'all')
+}
+
+// These are outbound links, so the delegated listener already logs the domain —
+// but only this handler knows WHICH creator and from which of the two lists.
+function onCreatorClick(c: (typeof CREATORS)[number], placement: 'featured' | 'directory') {
+  trackContent('creator_click', c.name, { placement })
+}
 
 function finishLoading(attempt = 0) {
   nextTick(() => {

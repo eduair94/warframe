@@ -65,7 +65,7 @@
               class="fh-chip"
               :class="{ 'is-on': kindFilter === k }"
               type="button"
-              @click="kindFilter = kindFilter === k ? null : k"
+              @click="toggleKind(k)"
             >
               {{ FARM_KIND_LABEL[k] }}
             </button>
@@ -73,7 +73,13 @@
         </div>
 
         <div v-if="results.length" class="fh-grid">
-          <NuxtLink v-for="tgt in results" :key="tgt.name" class="an-card fh-card" :to="toRoute(tgt.route)">
+          <NuxtLink
+            v-for="tgt in results"
+            :key="tgt.name"
+            class="an-card fh-card"
+            :to="toRoute(tgt.route)"
+            @click="onTargetClick(tgt)"
+          >
             <div class="fh-card__top">
               <v-icon class="fh-card__icon">{{ tgt.icon }}</v-icon>
               <span class="fh-card__kind">{{ FARM_KIND_LABEL[tgt.kind] }}</span>
@@ -130,9 +136,9 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, nextTick, onMounted } from 'vue'
+import { computed, ref, watch, nextTick, onBeforeUnmount, onMounted } from 'vue'
 import { GUIDES_INDEX } from '~/data/guides/registry'
-import { FARM_TARGETS as EN_TARGETS, FARM_KIND_LABEL as EN_KINDS, type FarmKind } from '~/data/guides/farmIndex'
+import { FARM_TARGETS as EN_TARGETS, FARM_KIND_LABEL as EN_KINDS, type FarmKind, type FarmTarget } from '~/data/guides/farmIndex'
 
 // Localized farm targets (translated hints) + kind labels for the active locale.
 const { targets: FARM_TARGETS, kinds: FARM_KIND_LABEL } = await useLocalizedFarmIndex({ targets: EN_TARGETS, kinds: EN_KINDS })
@@ -168,6 +174,33 @@ const guideTitleMap = computed(() => {
 function guideTitle(slug: string): string {
   return guideTitleMap.value[slug] ?? 'Guide'
 }
+
+const { trackContent, trackFilter, trackSearch } = useAnalytics()
+
+/** Same toggle as before — the event just rides along with it. */
+function toggleKind(k: FarmKind) {
+  const next = kindFilter.value === k ? null : k
+  kindFilter.value = next
+  trackFilter('farm_kind', next ?? 'all')
+}
+
+// The target name is localized, so the guide slug + route are the stable ids
+// across the 13 locales; `route` keeps the section anchor, which is the whole
+// point of this index (it answers "where do I farm X?").
+function onTargetClick(tgt: FarmTarget) {
+  trackContent('farm_target_click', tgt.guide, { target_route: tgt.route, target_kind: tgt.kind })
+}
+
+// "What do you want to farm?" is the highest-signal free text on the site — but
+// only once the user stops typing, never per keystroke.
+let searchTimer: ReturnType<typeof setTimeout> | undefined
+watch(query, (q) => {
+  clearTimeout(searchTimer)
+  const term = q.trim()
+  if (term.length < 2) return
+  searchTimer = setTimeout(() => trackSearch(term, results.value.length), 700)
+})
+onBeforeUnmount(() => clearTimeout(searchTimer))
 
 /** Split a "/path#anchor" route into a router location so the hash survives localePath. */
 function toRoute(route: string) {

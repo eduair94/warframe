@@ -21,7 +21,7 @@
           <p class="tb-tier__blurb">{{ t('toolDetail.best.tierBlurb.' + grp.tier) }}</p>
         </div>
         <div class="tb-grid">
-          <NuxtLink v-for="tool in grp.tools" :key="tool.slug" class="an-card tb-card" :to="localePath('/tools/' + tool.slug)">
+          <NuxtLink v-for="tool in grp.tools" :key="tool.slug" class="an-card tb-card" :to="localePath('/tools/' + tool.slug)" @click="onDetailNav(tool.slug)">
             <div class="tb-card__shot">
               <img v-if="tool.screenshot" :src="tool.screenshot" :alt="tool.name" loading="lazy" width="1000" height="625" />
               <div v-else class="tb-card__shot--none">{{ tool.name }}</div>
@@ -44,7 +44,7 @@
         <div class="tb-cat-list">
           <div v-for="row in byCategory" :key="row.cat" class="tb-cat-row">
             <div class="tb-cat-row__cat">{{ t('communityTools.sections.' + row.cat) }}</div>
-            <NuxtLink class="tb-cat-row__pick" :to="localePath('/tools/' + row.pick.slug)">{{ row.pick.name }}</NuxtLink>
+            <NuxtLink class="tb-cat-row__pick" :to="localePath('/tools/' + row.pick.slug)" @click="onDetailNav(row.pick.slug)">{{ row.pick.name }}</NuxtLink>
             <div class="tb-cat-row__why">{{ research(row.pick.slug)?.oneLiner }}</div>
           </div>
         </div>
@@ -55,7 +55,7 @@
         <h2 class="td-sec__title">{{ t('toolDetail.best.caution') }}</h2>
         <ul class="tb-avoid__list">
           <li v-for="tool in avoidList" :key="tool.slug">
-            <NuxtLink :to="localePath('/tools/' + tool.slug)">{{ tool.name }}</NuxtLink>
+            <NuxtLink :to="localePath('/tools/' + tool.slug)" @click="onDetailNav(tool.slug)">{{ tool.name }}</NuxtLink>
             <span class="tb-avoid__why">— {{ research(tool.slug)?.safety.notes || research(tool.slug)?.tierReason }}</span>
           </li>
         </ul>
@@ -77,6 +77,13 @@ const getResearch = (slug: string) => localizedResearch[slug]
 
 const { t } = useI18n()
 const localePath = useLocalePath()
+const { trackContent } = useAnalytics()
+
+// Every exit from the guide is an internal jump to a tool's review page; the
+// `source` tells apart a pick made from the curated guide vs the directory.
+function onDetailNav(slug: string) {
+  trackContent('tool_detail_nav', slug, { source: 'best' })
+}
 
 const research = (slug: string) => getResearch(slug)
 

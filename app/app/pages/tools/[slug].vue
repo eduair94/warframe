@@ -28,7 +28,7 @@
             <span v-for="p in tool.platforms" :key="p" class="an-chip ct-plat">{{ t('communityTools.platform.' + p) }}</span>
           </div>
           <div class="td-hero__actions">
-            <a class="ct-visit" :href="tool.url" target="_blank" rel="noopener nofollow">{{ t('communityTools.visit') }}</a>
+            <a class="ct-visit" :href="tool.url" target="_blank" rel="noopener nofollow" @click="onVisit">{{ t('communityTools.visit') }}</a>
             <a v-if="tool.github" class="ct-sub" :href="'https://github.com/' + tool.github" target="_blank" rel="noopener nofollow">{{ t('communityTools.viewGithub') }}</a>
             <NuxtLink class="ct-sub" :to="localePath('/tools/best')">{{ t('toolDetail.index.bestGuideCta') }}</NuxtLink>
           </div>
@@ -201,7 +201,7 @@
       <section v-if="related.length" class="td-related">
         <h2 class="td-sec__title">{{ t('toolDetail.sections.related') }}</h2>
         <div class="td-related__grid">
-          <NuxtLink v-for="rt in related" :key="rt.slug" class="an-card td-rel" :to="localePath('/tools/' + rt.slug)">
+          <NuxtLink v-for="rt in related" :key="rt.slug" class="an-card td-rel" :to="localePath('/tools/' + rt.slug)" @click="onDetailNav(rt.slug)">
             <span class="td-rel__name">{{ rt.name }}</span>
             <span class="td-rel__desc">{{ toolDesc(rt.slug) }}</span>
           </NuxtLink>
@@ -228,6 +228,7 @@ dayjs.extend(relativeTime)
 const { t, te } = useI18n()
 const localePath = useLocalePath()
 const route = useRoute()
+const { trackAction, trackContent } = useAnalytics()
 
 const slug = computed(() => String(route.params.slug || ''))
 const tool = computed(() => TOOLS.find((x) => x.slug === slug.value))
@@ -293,6 +294,19 @@ const related = computed(() =>
     .sort((a, b) => Number(b.featured || false) - Number(a.featured || false))
     .slice(0, 4),
 )
+
+// The review page's payoff: the reader leaves for the tool itself. The generic
+// outbound listener sees only the destination host, so name the tool here.
+function onVisit() {
+  trackAction('tool_visit', {
+    tool_slug: slug.value,
+    category: tool.value?.category,
+    source: 'detail',
+  })
+}
+function onDetailNav(s: string) {
+  trackContent('tool_detail_nav', s, { source: 'related' })
+}
 
 function yearOf(iso: string) { return new Date(iso).getUTCFullYear() }
 function rel(iso: string) { return dayjs(iso).fromNow() }

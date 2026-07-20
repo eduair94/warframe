@@ -85,7 +85,7 @@
                 v-if="src.relic"
                 class="wg-chip wg-chip--relic"
                 :title="t('guideDialog.detail.relicTitle', { relic: src.relic })"
-                @click="locate({ item: src.relic })"
+                @click="trackAction('guide_locate_relic', { item_name: src.relic }); locate({ item: src.relic })"
               >
                 <v-icon size="13">mdi-diamond-stone</v-icon>
                 {{ src.relic.replace(' Relic', '') }}
@@ -97,7 +97,7 @@
                 v-else-if="src.planet && planetNames.has(src.planet)"
                 class="wg-chip wg-chip--planet"
                 :title="t('guideDialog.detail.planetTitle', { part: comp.name, planet: src.planet })"
-                @click="locate({ item: partMapName(comp), planet: src.planet, node: nodeName(src) })"
+                @click="trackAction('guide_locate_part', { item_name: partMapName(comp) }); locate({ item: partMapName(comp), planet: src.planet, node: nodeName(src) })"
               >
                 <v-icon size="13">mdi-orbit</v-icon>
                 {{ src.location }}
@@ -137,7 +137,7 @@
               class="wg-tab"
               :class="{ 'is-active': tab === tb.key }"
               :aria-pressed="tab === tb.key ? 'true' : 'false'"
-              @click="tab = tb.key"
+              @click="tab = tb.key; trackFilter('guide_tab', tb.key)"
             >
               {{ tb.label }}
             </button>
@@ -145,7 +145,7 @@
         </div>
         <ul class="wg-list">
           <li v-for="f in filtered" :key="f.name">
-            <button class="wg-row" @click="detail = f">
+            <button class="wg-row" @click="trackContent('frame_open', f.name); detail = f">
               <span class="wg-row__name">{{ f.name }}</span>
               <span v-if="f.vaulted" class="wg-badge wg-badge--vaulted">{{ t('guideDialog.badge.vaulted') }}</span>
               <span v-if="f.isPrime" class="wg-badge wg-badge--prime">Prime</span>
@@ -164,7 +164,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, nextTick, ref, watch } from 'vue'
+import { computed, nextTick, onBeforeUnmount, ref, watch } from 'vue'
 import { useDisplay } from 'vuetify'
 import type { GuideComponent, GuideDropSource, GuideFrame } from '~/composables/useWarframeGuide'
 
@@ -195,6 +195,7 @@ const { t } = useI18n()
 const { frames, loading, error, load } = useWarframeGuide()
 const items = useItemsStore()
 const localePath = useLocalePath()
+const { trackAction, trackContent, trackFilter, trackSearch } = useAnalytics()
 
 // Vuetify's clearable X writes null into the model — keep the type honest
 const query = ref<string | null>('')
@@ -234,6 +235,19 @@ const filtered = computed(() => {
     if (tab.value === 'standard' && f.isPrime) return false
     return !q || f.name.toLowerCase().includes(q)
   })
+})
+
+// The frame filter is a live text field: sample it once typing stops so one
+// search reports one event (with the hit count) instead of one per keystroke.
+let searchTimer: ReturnType<typeof setTimeout> | null = null
+watch(query, (q) => {
+  if (searchTimer) clearTimeout(searchTimer)
+  const term = (q || '').trim()
+  if (!term) return
+  searchTimer = setTimeout(() => trackSearch(term, filtered.value.length), 700)
+})
+onBeforeUnmount(() => {
+  if (searchTimer) clearTimeout(searchTimer)
 })
 
 function setPrice(f: GuideFrame): number {

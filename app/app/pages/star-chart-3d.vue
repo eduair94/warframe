@@ -14,7 +14,8 @@
         :selected="selected"
         :highlighted="highlightedWorlds"
         @select="onSceneSelect"
-        @unsupported="unsupported = true"
+        @unsupported="unsupported = true; trackAction('webgl_unsupported')"
+        @ready="onSceneReady"
       />
 
       <!-- HUD -->
@@ -27,7 +28,7 @@
           <h1 class="sc3-title">{{ t('starChart3d.title') }}</h1>
           <div class="sc3-head__links">
             <NuxtLink :to="localePath('/star-chart')" class="sc3-2d">{{ t('starChart3d.view2d') }}</NuxtLink>
-            <button class="sc3-guide-btn" @click="guideOpen = true">
+            <button class="sc3-guide-btn" @click="trackDialog('warframe_guide'); guideOpen = true">
               <v-icon size="15">mdi-shield-star-outline</v-icon>
               {{ t('starChart3d.guide') }}
             </button>
@@ -120,7 +121,7 @@
                 v-for="w in navWorlds"
                 :key="w.planet"
                 :active="w.planet === selected"
-                @click="selectPlanet(w.planet)"
+                @click="trackAction('planet_select', { planet: w.planet, method: 'dock' }); selectPlanet(w.planet)"
               >
                 <v-list-item-title class="sc3-dock__row">
                   <span>{{ w.planet }}</span>
@@ -333,6 +334,7 @@ const route = useRoute()
 const router = useRouter()
 const localePath = useLocalePath()
 const { t } = useI18n()
+const { trackAction, trackDialog, trackFilter, trackSelectItem } = useAnalytics()
 
 const selected = ref('')
 const openNode = ref('')
@@ -382,6 +384,7 @@ const mapPlanetNames = computed(() => new Set(planets.value.map((p) => p.planet)
 //  - relics (no planet) show the full source list instead
 // If the map has never seen the item, fall back to the drop-locations dialog.
 function onGuideLocate(payload: { item: string; planet?: string; node?: string }) {
+  trackAction('guide_locate', { item_name: payload.item, planet: payload.planet, node: payload.node })
   const known = payload.item && itemIndexMap.value.has(payload.item)
   if (!known) {
     openDrops(payload.item)
@@ -429,7 +432,18 @@ function goWorld(dir: number) {
   if (!order.length) return
   const cur = order.indexOf(selected.value)
   const next = cur === -1 ? (dir > 0 ? order[0]! : order[order.length - 1]!) : order[(cur + dir + order.length) % order.length]!
+  trackWorldStep(next)
   selectPlanet(next)
+}
+
+// Held arrow keys (and impatient dock clicks) step through worlds as fast as the
+// key repeats, so the hop is sampled rather than reported once per world.
+let lastStepAt = 0
+function trackWorldStep(planet: string) {
+  const now = Date.now()
+  if (now - lastStepAt < 1000) return
+  lastStepAt = now
+  trackAction('planet_select', { planet, method: 'dock' })
 }
 
 /* ---------------- item reverse lookup ---------------- */
@@ -512,8 +526,19 @@ const selectedWikiMap = computed(() =>
   selectedData.value ? worldWikiMap(selectedData.value.planet) : null,
 )
 
+// WebGL support and how many visitors actually reach a drawn galaxy is the
+// only way to tell a dead 3D page apart from an unpopular one. The scene can
+// re-emit `ready` (font load races the visibility loop) — report it once.
+let readyTracked = false
+function onSceneReady() {
+  if (readyTracked) return
+  readyTracked = true
+  trackAction('scene_ready')
+}
+
 function onSceneSelect(name: string | null) {
   if (name) {
+    trackAction('planet_select', { planet: name, method: 'scene' })
     selectPlanet(name)
   } else if (selected.value) {
     selected.value = ''
@@ -546,6 +571,7 @@ function nodeHasFocusItem(node: any): boolean {
 // Item source row → that planet's panel, opened at the exact node, with the
 // item's reward rows highlighted and scrolled into view.
 function openHit(hit: ItemHit) {
+  trackAction('search_hit_open', { planet: hit.planet, item_name: findItem.value })
   selectPlanet(hit.planet)
   openNode.value = hit.location
   nextTick(() => {
@@ -569,13 +595,18 @@ function closePanel() {
 
 function onFind(name: string | null) {
   focusItem.value = ''
-  if (name) selected.value = ''
+  if (name) {
+    // fires on selection/clear, not per keystroke, so it is safe to report as-is
+    trackSelectItem(name, { source: 'map_find' })
+    selected.value = ''
+  }
 }
 
 // Toggle the Forma preset. Turning it on clears any active search/selection so
 // the galaxy-wide Forma highlight is visible immediately.
 function toggleForma() {
   formaMode.value = !formaMode.value
+  trackFilter('forma_mode', formaMode.value)
   if (formaMode.value) {
     findItem.value = null
     focusItem.value = ''
@@ -595,12 +626,15 @@ function scrollPanelIntoView() {
 
 function toggleNode(location: string) {
   openNode.value = openNode.value === location ? '' : location
+  // only the expand is a read of the reward table; the collapse is noise
+  if (openNode.value) trackAction('node_expand', { node: location })
 }
 
 function openDrops(name: string | null) {
   if (!name) return
   dropsItem.value = name
   dropsDialog.value = true
+  trackDialog('drop_locations', { item_name: name })
 }
 
 /* keyboard: arrows cycle worlds spatially, Escape clears */

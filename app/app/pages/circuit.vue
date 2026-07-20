@@ -101,8 +101,8 @@
       </section>
 
       <section class="cir-sec cir-sec--links">
-        <NuxtLink class="cir-link" :to="localePath('/guides/duviri')">{{ t('circuit.duviriGuide') }} →</NuxtLink>
-        <NuxtLink class="cir-link" :to="localePath('/guides/steel-path')">{{ t('circuit.steelPathGuide') }} →</NuxtLink>
+        <NuxtLink class="cir-link" :to="localePath('/guides/duviri')" @click="trackContent('cta_click', 'duviri')">{{ t('circuit.duviriGuide') }} →</NuxtLink>
+        <NuxtLink class="cir-link" :to="localePath('/guides/steel-path')" @click="trackContent('cta_click', 'steel-path')">{{ t('circuit.steelPathGuide') }} →</NuxtLink>
       </section>
 
       <v-alert class="an-disclaimer bg-blue-darken-4" type="info" density="compact">
@@ -124,6 +124,7 @@ import {
 
 const { t, locale } = useI18n()
 const localePath = useLocalePath()
+const { trackContent } = useAnalytics()
 
 // SSR-stable "now" (server value transfers to client → no hydration mismatch on
 // the highlighted week). The live countdown uses a separate client-only tick.

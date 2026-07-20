@@ -27,7 +27,7 @@
           ></v-autocomplete>
           <div class="rl-refine">
             <span class="rl-refine__lbl">{{ t('relicsValue.filters.refinement') }}</span>
-            <v-btn-toggle v-model="refinement" mandatory density="comfortable" class="rl-seg">
+            <v-btn-toggle v-model="refinement" mandatory density="comfortable" class="rl-seg" @update:model-value="onRefinementChange">
               <v-btn value="Intact" size="small">{{ t('relicsValue.filters.intact') }}</v-btn>
               <v-btn value="Radiant" size="small">{{ t('relicsValue.filters.radiant') }}</v-btn>
             </v-btn-toggle>
@@ -144,6 +144,7 @@
                   :href="'https://warframe.market/items/' + d.url_name"
                   target="_blank"
                   rel="noopener"
+                  @click="onRewardMarket(d)"
                 >{{ localItemName(d) }}</a>
                 <span v-else class="rl-plain">{{ localItemName(d) }}</span>
                 <span class="rl-drop__sub">
@@ -229,13 +230,13 @@
             <div class="rl-sec__hint">{{ t('relicLedger.refs.hint') }}</div>
           </div>
           <div class="rl-refs">
-            <a v-if="wikiUrl" class="rl-ref" :href="wikiUrl" target="_blank" rel="noopener noreferrer">
+            <a v-if="wikiUrl" class="rl-ref" :href="wikiUrl" target="_blank" rel="noopener noreferrer" @click="onWikiOpen">
               <span class="rl-ref__ico"></span> {{ t('relicsValue.dialog.footer.wiki') }} — {{ displayName }} <span class="rl-ref__arw">↗</span>
             </a>
-            <a class="rl-ref" :href="'https://warframe.market/items/' + relic.url_name" target="_blank" rel="noopener noreferrer">
+            <a class="rl-ref" :href="'https://warframe.market/items/' + relic.url_name" target="_blank" rel="noopener noreferrer" @click="onRelicMarket">
               <span class="rl-ref__ico"></span> {{ t('relicsValue.dialog.footer.market') }} <span class="rl-ref__arw">↗</span>
             </a>
-            <a class="rl-ref" :href="dropTableUrl" target="_blank" rel="noopener noreferrer">
+            <a class="rl-ref" :href="dropTableUrl" target="_blank" rel="noopener noreferrer" @click="onDropTableOpen">
               <span class="rl-ref__ico"></span> {{ t('relicLedger.refs.dropTable') }} <span class="rl-ref__arw">↗</span>
             </a>
           </div>
@@ -282,7 +283,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, ref } from 'vue'
+import { computed, onMounted, ref, watch } from 'vue'
 import {
   RELIC_CHANCES,
   trueRarity,
@@ -298,6 +299,7 @@ const { t } = useI18n()
 const localePath = useLocalePath()
 const { localItemName } = useLocalizedName()
 const { itemThumb, THUMB_PLACEHOLDER } = useItemThumb()
+const { trackAction, trackDialog, trackFilter, trackMarketOpen, trackSelectItem, trackViewItem } = useAnalytics()
 
 const items = useItemsStore()
 const allSets = computed(() => items.allRelics)
@@ -345,6 +347,11 @@ const refinementLabel = computed(() =>
 const otherRefShort = computed(() =>
   (refinement.value === 'Radiant' ? t('relicsValue.filters.intact') : t('relicsValue.filters.radiant')).slice(0, 3),
 )
+// Refinement is the only control on this page — report the switch itself, never
+// the numbers it re-derives (those recompute on every toggle).
+function onRefinementChange(v: string | null) {
+  if (v) trackFilter('refinement', v)
+}
 
 const {
   ev,
@@ -510,6 +517,20 @@ const dropTableUrl = computed(() => {
   const name = relic.value ? relic.value.relicName + ' Relic' : ''
   return `https://drops.warframestat.us/#/search/${encodeURIComponent(name)}/relics/regex`
 })
+// The delegated outbound-click listener already logs these hrefs; these hooks
+// add the one thing it cannot know — which relic/drop the link belongs to.
+function onWikiOpen() {
+  trackAction('wiki_open', { item_name: displayName.value })
+}
+function onRelicMarket() {
+  trackMarketOpen(displayName.value)
+}
+function onDropTableOpen() {
+  trackAction('drop_table_open', { item_name: displayName.value })
+}
+function onRewardMarket(r: RelicReward) {
+  trackMarketOpen(r.item_name || '', { source: 'relic_drops' })
+}
 
 // Drop-locations dialog
 const dropsDialog = ref(false)
@@ -519,12 +540,17 @@ function openDrops(r: RelicReward) {
   dropsItem.value = r.item_name || ''
   dropsThumb.value = r.thumb || ''
   dropsDialog.value = true
+  trackDialog('drop_locations', { item_name: r.item_name || '' })
 }
 
 // Relic picker → navigate
 const pick = ref<string | null>(null)
 function onPick(v: string | null) {
-  if (v && v !== relicSlug.value) router.push(localePath('/relic/' + v))
+  if (v && v !== relicSlug.value) {
+    const picked = allSets.value.find((r: any) => r.url_name === v)
+    trackSelectItem(picked?.item_name || v, { source: 'picker' })
+    router.push(localePath('/relic/' + v))
+  }
 }
 
 function fmtInt(n: any): string {
@@ -549,9 +575,27 @@ function onNodeImgError(e: Event) {
   if (img) img.style.visibility = 'hidden'
 }
 
+// view_item closes the item funnel that starts at the picker or the ledger, so
+// it must fire once per relic actually shown. Keyed on the slug because the
+// refinement toggle re-derives `open` — without the guard every flip would
+// re-report the same relic.
+let viewedSlug = ''
+function reportView() {
+  const slug = relicSlug.value
+  const row = relic.value
+  if (!slug || slug === viewedSlug || !row) return
+  // On a client-side pick the route changes before the refetch lands — wait for
+  // the row that actually belongs to this slug so the event isn't mislabelled.
+  if (row.url_name && row.url_name !== slug) return
+  viewedSlug = slug
+  trackViewItem(row.relicName || slug, { refinement: refinement.value, ev: open.value })
+}
+watch([relicSlug, relic], reportView)
+
 onMounted(() => {
   const el = document.getElementById('spinner-wrapper')
   if (el) el.style.display = 'none'
+  reportView()
 })
 </script>
 

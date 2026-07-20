@@ -12,7 +12,11 @@
         </div>
         <div class="an-hero__deal gh-hero-cta">
           <div class="an-hero__deal-label">{{ t('guidesHub.startHere') }}</div>
-          <NuxtLink class="an-hero__deal-name gh-hero-cta__link" :to="localePath('/guides/new-player')">
+          <NuxtLink
+            class="an-hero__deal-name gh-hero-cta__link"
+            :to="localePath('/guides/new-player')"
+            @click="onCardClick('new-player', 'hub_cta')"
+          >
             {{ t('guidesHub.newPlayerCta') }}
           </NuxtLink>
           <div class="an-hero__deal-sub">{{ t('guidesHub.newPlayerSub') }}</div>
@@ -40,28 +44,28 @@
 
       <!-- Quick-jump: farming hub + FAQ + creators -->
       <div class="gh-quick">
-        <NuxtLink class="gh-quick__card" :to="localePath('/guides/farming')">
+        <NuxtLink class="gh-quick__card" :to="localePath('/guides/farming')" @click="onCardClick('farming-hub', 'hub_cta')">
           <v-icon class="gh-quick__icon">mdi-magnify-scan</v-icon>
           <span class="gh-quick__body">
             <span class="gh-quick__label">{{ t('guidesHub.farmingCard') }}</span>
             <span class="gh-quick__note">{{ t('guidesHub.farmingNote') }}</span>
           </span>
         </NuxtLink>
-        <NuxtLink class="gh-quick__card" :to="localePath('/faq')">
+        <NuxtLink class="gh-quick__card" :to="localePath('/faq')" @click="onCardClick('faq', 'hub_cta')">
           <v-icon class="gh-quick__icon">mdi-help-circle-outline</v-icon>
           <span class="gh-quick__body">
             <span class="gh-quick__label">{{ t('guidesHub.faqCard') }}</span>
             <span class="gh-quick__note">{{ t('guidesHub.faqNote') }}</span>
           </span>
         </NuxtLink>
-        <NuxtLink class="gh-quick__card" :to="localePath('/creators')">
+        <NuxtLink class="gh-quick__card" :to="localePath('/creators')" @click="onCardClick('creators', 'hub_cta')">
           <v-icon class="gh-quick__icon">mdi-youtube</v-icon>
           <span class="gh-quick__body">
             <span class="gh-quick__label">{{ t('guidesHub.creatorsCard') }}</span>
             <span class="gh-quick__note">{{ t('guidesHub.creatorsNote') }}</span>
           </span>
         </NuxtLink>
-        <NuxtLink class="gh-quick__card" :to="localePath('/tools')">
+        <NuxtLink class="gh-quick__card" :to="localePath('/tools')" @click="onCardClick('tools', 'hub_cta')">
           <v-icon class="gh-quick__icon">mdi-tools</v-icon>
           <span class="gh-quick__body">
             <span class="gh-quick__label">{{ t('guidesHub.toolsCard') }}</span>
@@ -100,6 +104,7 @@
             class="an-card gh-card"
             :class="{ 'is-top': g.featured }"
             :to="localePath(g.route)"
+            @click="onCardClick(g.slug, 'guide', g.category)"
           >
             <div class="gh-card__top">
               <v-icon class="gh-card__icon">{{ g.icon }}</v-icon>
@@ -123,7 +128,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, nextTick, onMounted } from 'vue'
+import { computed, ref, watch, nextTick, onBeforeUnmount, onMounted } from 'vue'
 import { GUIDES_INDEX, KNOWLEDGE_CATEGORIES } from '~/data/guides/registry'
 import { FAQS } from '~/data/faq'
 import { CREATORS } from '~/data/creators'
@@ -143,6 +148,27 @@ const grouped = computed(() => {
   return g
 })
 const anyResults = computed(() => filtered.value.length > 0)
+
+const { trackContent, trackSearch } = useAnalytics()
+
+// The hub's quick-jump CTAs and the guide cards are the same decision ("where
+// do I go from here?"), so they share one event and `card_kind` tells them
+// apart — one dimension to slice instead of two event names.
+function onCardClick(id: string, kind: 'guide' | 'hub_cta', category?: string) {
+  trackContent('guide_card_click', id, { card_kind: kind, category })
+}
+
+// The filter runs on every keystroke; the event must not. Fire once the user
+// stops typing, with the result count so "searches that found nothing" is a
+// direct answer to "what guide is missing?".
+let searchTimer: ReturnType<typeof setTimeout> | undefined
+watch(query, (q) => {
+  clearTimeout(searchTimer)
+  const term = q.trim()
+  if (term.length < 2) return
+  searchTimer = setTimeout(() => trackSearch(term, filtered.value.length), 700)
+})
+onBeforeUnmount(() => clearTimeout(searchTimer))
 
 function finishLoading(attempt = 0) {
   nextTick(() => {

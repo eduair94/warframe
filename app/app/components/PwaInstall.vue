@@ -5,6 +5,7 @@
 // No auto-showing banner — the button is the only entry point.
 const { t } = useI18n()
 const { canInstall, installed, isIos, isStandalone, promptInstall } = usePwaInstall()
+const { trackPwa } = useAnalytics()
 
 const iosDialog = ref(false)
 
@@ -12,9 +13,21 @@ const showButton = computed(
   () => !installed.value && (canInstall.value || (isIos.value && !isStandalone.value)),
 )
 
-function onInstallClick() {
-  if (canInstall.value) promptInstall()
-  else if (isIos.value) iosDialog.value = true
+async function onInstallClick() {
+  if (canInstall.value) {
+    trackPwa('prompt', { platform: 'chromium' })
+    // The native dialog's outcome is the only install signal Chromium gives us
+    // (appinstalled can fire much later, or never if the user dismisses).
+    const outcome = await promptInstall()
+    if (outcome === 'accepted' || outcome === 'dismissed') trackPwa(outcome)
+  } else if (isIos.value) {
+    // One event for one click: `pwa_prompt` is deliberately NOT fired here.
+    // iOS has no native prompt, so it could never be followed by
+    // pwa_accepted/pwa_dismissed and would silently deflate the
+    // prompt -> install rate. `pwa_ios_hint` IS the iOS install-intent signal.
+    trackPwa('ios_hint', { platform: 'ios' })
+    iosDialog.value = true
+  }
 }
 </script>
 

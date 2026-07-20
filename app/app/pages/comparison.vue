@@ -14,7 +14,7 @@
           <div v-if="topDeal" class="an-hero__deal">
             <div class="an-hero__deal-label">{{ t('comparison.hero.dealLabel') }}</div>
             <div class="an-hero__deal-plat">{{ fmtPlat(topDeal.acquire.save) }}<span>p</span></div>
-            <NuxtLink class="an-hero__deal-name" :to="'/set/' + topDeal.url_name">
+            <NuxtLink class="an-hero__deal-name" :to="'/set/' + topDeal.url_name" @click="onSetNav(topDeal, 'hero')">
               {{ localItemName(topDeal).replace(' Set', '') }} →
             </NuxtLink>
             <div class="an-hero__deal-sub">
@@ -70,10 +70,11 @@
               :label="t('comparison.filters.sortBy')"
               class="an-field"
               style="flex: 0 1 220px"
+              @update:model-value="onSortChange"
             ></v-select>
           </div>
 
-          <v-chip-group v-model="category" mandatory column selected-class="an-chip--on" class="an-cats">
+          <v-chip-group v-model="category" mandatory column selected-class="an-chip--on" class="an-cats" @update:model-value="onCategoryChange">
             <v-chip
               v-for="cat in categoryOptions"
               :key="cat"
@@ -92,6 +93,7 @@
               inset
               color="#35d6d0"
               :label="t('comparison.filters.onlyPartsCheaper')"
+              @update:model-value="onFilterToggle('only_parts_cheaper', $event)"
             ></v-switch>
             <v-switch
               v-model="onlyResellHigher"
@@ -100,6 +102,7 @@
               inset
               color="#c8a85c"
               :label="t('comparison.filters.onlyResellHigher')"
+              @update:model-value="onFilterToggle('only_resell_higher', $event)"
             ></v-switch>
           </div>
           <div class="an-count">
@@ -143,7 +146,7 @@
                 :class="{ 'is-top': row.url_name === topDealUrl }"
               >
                 <td class="col-name">
-                  <NuxtLink class="an-name" :to="'/set/' + row.url_name">
+                  <NuxtLink class="an-name" :to="'/set/' + row.url_name" @click="onSetNav(row, 'row')">
                     <img class="an-thumb" :src="assetUrl(row.thumb)" :alt="localItemName(row)" loading="lazy" @error="onImgError" />
                     <span>
                       {{ localItemName(row).replace(' Set', '') }}
@@ -168,7 +171,7 @@
                 <td class="grp-b an-num" :class="deltaCls(row.resale.extra)">{{ signed(row.resale.extra) }}p</td>
                 <td class="an-num">{{ fmtPlat(row.set.volume) }}</td>
                 <td>
-                  <v-btn icon size="small" color="#35d6d0" :to="'/set/' + row.url_name" :aria-label="t('comparison.row.viewAria', { name: localItemName(row) })">
+                  <v-btn icon size="small" color="#35d6d0" :to="'/set/' + row.url_name" :aria-label="t('comparison.row.viewAria', { name: localItemName(row) })" @click="onSetNav(row, 'row')">
                     <v-icon>mdi-arrow-right-circle</v-icon>
                   </v-btn>
                 </td>
@@ -184,6 +187,7 @@
             class="an-card"
             :class="{ 'is-top': row.url_name === topDealUrl }"
             :to="'/set/' + row.url_name"
+            @click="onSetNav(row, 'mobile_card')"
           >
             <div class="an-card__head">
               <img class="an-thumb" :src="assetUrl(row.thumb)" :alt="localItemName(row)" loading="lazy" @error="onImgError" />
@@ -225,7 +229,7 @@
         </div>
 
         <div v-if="filtered.length > perPage" class="an-pager">
-          <v-pagination v-model="page" :length="pageCount" :total-visible="mobile ? 5 : 9" color="#c8a85c"></v-pagination>
+          <v-pagination v-model="page" :length="pageCount" :total-visible="mobile ? 5 : 9" color="#c8a85c" @update:model-value="onPageChange"></v-pagination>
         </div>
       </div>
 
@@ -237,10 +241,11 @@
 </template>
 
 <script setup lang="ts">
-import { computed, nextTick, onMounted, ref, watch } from 'vue'
+import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useDisplay } from 'vuetify'
 
 const { t } = useI18n()
+const { trackSearch, trackFilter, trackSort, trackAction } = useAnalytics()
 const { localItemName } = useLocalizedName()
 const base = useApiBase()
 
@@ -390,6 +395,60 @@ const stats = computed<any>(() => {
 watch(filtered, () => {
   page.value = 1
 })
+
+// --- Analytics -------------------------------------------------------------
+// Both free-text fields re-filter on every keystroke, so they are reported only
+// once typing settles instead of once per character.
+const TRACK_DEBOUNCE_MS = 700
+let searchTimer: ReturnType<typeof setTimeout> | undefined
+let volumeTimer: ReturnType<typeof setTimeout> | undefined
+
+watch(search, (term) => {
+  if (searchTimer) clearTimeout(searchTimer)
+  const q = (term || '').toString().trim()
+  if (!q) return
+  searchTimer = setTimeout(() => trackSearch(q, filtered.value.length), TRACK_DEBOUNCE_MS)
+})
+
+watch(minVolume, (v) => {
+  if (volumeTimer) clearTimeout(volumeTimer)
+  volumeTimer = setTimeout(() => trackFilter('min_volume', Number(v) || 0), TRACK_DEBOUNCE_MS)
+})
+
+onBeforeUnmount(() => {
+  // A pending hit would otherwise land after navigation and be attributed to
+  // whatever page the user moved to.
+  if (searchTimer) clearTimeout(searchTimer)
+  if (volumeTimer) clearTimeout(volumeTimer)
+})
+
+// Direction is not user-controllable here (each key has one fixed order).
+function onSortChange(value: any) {
+  trackSort(String(value ?? ''))
+}
+function onCategoryChange(value: any) {
+  trackFilter('category', String(value ?? 'All'))
+}
+function onFilterToggle(name: string, value: any) {
+  trackFilter(name, !!value)
+}
+function onPageChange(value: any) {
+  trackAction('paginate', { page: Number(value) || 1 })
+}
+
+// The rendered verdict label is localized, so the analytics dimension uses a
+// stable key derived from the same threshold `verdict()` uses.
+function verdictKey(row: any): string {
+  const save = Number(row?.acquire?.save) || 0
+  if (save > 0.5) return 'buy_parts'
+  if (save < -0.5) return 'buy_set'
+  return 'even'
+}
+// /set is an internal route, so the global outbound-click listener never sees
+// these — this is the only signal that the ledger sent someone to a set page.
+function onSetNav(row: any, source: string) {
+  trackAction('set_page_nav', { item_name: row?.item_name, verdict: verdictKey(row), source })
+}
 
 // Hide the global loading spinner once mounted (project rule). Bounded retry:
 // the #spinner-wrapper element is injected by the (not-yet-wired) LoadingBar

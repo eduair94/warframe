@@ -5,7 +5,7 @@
         variant="text"
         class="app-menu-btn mr-2"
         :aria-label="t('nav.openMenu')"
-        @click.stop="drawer = !drawer"
+        @click.stop="toggleDrawer"
       >
         <v-icon>mdi-menu</v-icon>
         <span class="app-menu-btn__label d-none d-sm-inline">{{ t('nav.menu') }}</span>
@@ -68,7 +68,7 @@
             :exact="link.exact"
             :data-tour="link.to"
             color="#e7cf95"
-            @click="drawer = false"
+            @click="onNavItemClick(link, section.key)"
           >
             <template #prepend>
               <v-icon>{{ link.icon }}</v-icon>
@@ -126,6 +126,7 @@
 const { t, locale } = useI18n()
 // Keep drawer navigation on the visitor's locale (prefix_except_default)
 const localePath = useLocalePath()
+const { trackAction, trackTour } = useAnalytics()
 
 // Per-route SEO — one place that gives every page a unique, keyword-rich title
 // and meta description (og/twitter mirrors included). Pages only set i18n
@@ -233,7 +234,20 @@ function scrollTop() {
   window.scrollTo(0, 0)
 }
 
+function toggleDrawer() {
+  drawer.value = !drawer.value
+  trackAction('nav_drawer_toggle', { open: drawer.value })
+}
+
+// The drawer entry is a router link (`:to`), so this only records WHICH entry
+// was used — navigation is left entirely to the link.
+function onNavItemClick(link: NavLink, group: string | null | undefined) {
+  drawer.value = false
+  trackAction('nav_item_click', { to: link.to, key: link.key, group })
+}
+
 async function startTour() {
+  trackTour('start', { tour: 'nav' })
   // Open the menu (and pin it open for the tour) so the steps can point at the
   // real navigation items without the temporary drawer sliding shut.
   tourActive.value = true
@@ -250,6 +264,10 @@ async function startTour() {
     element: `[data-tour="${to}"]`,
     popover: { title, description, side: 'right', align: 'start' },
   })
+  // driver.js only reports "destroyed" — it never says whether the user reached
+  // the end or bailed out. Remember the furthest step highlighted so the tour
+  // funnel can tell a completed run from an abandoned one.
+  let maxStepReached = -1
   const tour = driver({
     showProgress: true,
     allowClose: true,
@@ -259,15 +277,24 @@ async function startTour() {
     doneBtnText: t('nav.tourSteps.done'),
     // Belt & suspenders: whenever a step that targets a drawer nav item is
     // highlighted, make sure the drawer is open.
-    onHighlightStarted: (_el: Element | undefined, step: any) => {
+    onHighlightStarted: (_el: Element | undefined, step: any, opts: any) => {
       const target = step && step.element
       if (typeof target === 'string' && target.indexOf('[data-tour') === 0) {
         drawer.value = true
       }
+      if (typeof opts?.index === 'number' && opts.index > maxStepReached) {
+        maxStepReached = opts.index
+      }
     },
-    onDestroyed: () => {
+    onDestroyed: (_el: Element | undefined, _step: any, opts: any) => {
       tourActive.value = false
       drawer.value = false
+      const total = opts?.config?.steps?.length || 0
+      const completed = total > 0 && maxStepReached >= total - 1
+      trackTour(completed ? 'complete' : 'skip', {
+        tour: 'nav',
+        steps_seen: maxStepReached + 1
+      })
     },
     steps: [
       {

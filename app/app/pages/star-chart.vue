@@ -21,7 +21,7 @@
       </div>
       <div v-if="richest" class="sc-hero__deal">
         <div class="sc-hero__deal-label">{{ t('starChart.hero.dealLabel') }}</div>
-        <button class="sc-hero__deal-name" @click="selectPlanet(richest.planet)">
+        <button class="sc-hero__deal-name" @click="trackPlanetSelect(richest.planet, 'hero'); selectPlanet(richest.planet)">
           {{ richest.planet }} →
         </button>
         <div class="sc-hero__deal-plat">{{ fmtPlat(richest.value) }}<span>{{ t('starChart.units.perDrop') }}</span></div>
@@ -116,7 +116,7 @@
             tabindex="0"
             :aria-label="t('starChart.a11y.planet', { planet: p.planet, value: fmtPlat(p.value), count: p.nodeCount })"
             :aria-pressed="p.planet === selected ? 'true' : 'false'"
-            @click="selectPlanet(p.planet)"
+            @click="trackPlanetSelect(p.planet, 'tile'); selectPlanet(p.planet)"
             @focus="onPlanetFocus(p.planet)"
             @keydown.enter.prevent="selectPlanet(p.planet)"
             @keydown.space.prevent="selectPlanet(p.planet)"
@@ -234,7 +234,7 @@
         class="sc-find__input"
         @update:model-value="onFind"
       ></v-autocomplete>
-      <button class="sc-guide-btn" @click="guideOpen = true">
+      <button class="sc-guide-btn" @click="trackDialog('warframe_guide'); guideOpen = true">
         <v-icon size="16">mdi-shield-star-outline</v-icon>
         {{ t('starChart.find.guideButton') }}
       </button>
@@ -331,8 +331,15 @@ const base = useApiBase()
 const route = useRoute()
 const router = useRouter()
 const { rewardIsForma } = useFormaRelics()
+const { trackAction, trackDialog, trackFilter, trackSelectItem } = useAnalytics()
 
 const starfield = makeStars(90)
+
+// Which affordance moved the user between worlds (map tile vs the hero's
+// best-deal shortcut) is the question this chart exists to answer.
+function trackPlanetSelect(planet: string, method: string) {
+  trackAction('planet_select', { planet, method })
+}
 
 const loading = ref(true)
 const planets = ref<any[]>([])
@@ -425,6 +432,7 @@ function isFormaPlanet(name: string): boolean {
 }
 function toggleForma() {
   formaMode.value = !formaMode.value
+  trackFilter('forma_mode', formaMode.value)
   const query: Record<string, any> = { ...route.query }
   if (formaMode.value) query.forma = '1'
   else delete query.forma
@@ -606,6 +614,8 @@ function onSvgKey(e: KeyboardEvent) {
 }
 function toggleNode(location: string) {
   openNode.value = openNode.value === location ? '' : location
+  // only the expand is a read of the reward table; the collapse is noise
+  if (openNode.value) trackAction('node_expand', { node: location })
 }
 function sortedRewards(rewards: ScReward[]): ScReward[] {
   // Items with real 48h volume (actually selling) always rank above zero-volume
@@ -652,9 +662,14 @@ function rewardName(rw: ScReward): string {
 function openDrops(name: string) {
   dropsItem.value = name
   dropsDialog.value = true
+  trackDialog('drop_locations', { item_name: name })
 }
 function onFind(name: string) {
-  if (name) openDrops(name)
+  // fires on selection/clear, not per keystroke, so it is safe to report as-is
+  if (name) {
+    trackSelectItem(name, { source: 'map_find' })
+    openDrops(name)
+  }
 }
 function discColor(t: number, type: string): string {
   if (type === 'special') return t >= 0.4 ? '#35d6d0' : '#2b8f8b'

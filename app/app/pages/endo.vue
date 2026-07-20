@@ -23,7 +23,7 @@
           <div v-if="direction === 'flip' && topFlip" class="an-hero__deal">
             <div class="an-hero__deal-label">{{ t('endo.hero.flipDealLabel') }}</div>
             <div class="an-hero__deal-plat">{{ fmtNum(topFlip.eval.best.platPer1kEndo) }}<span>p/1k</span></div>
-            <a class="an-hero__deal-name" :href="mkt(topFlip.url_name)" target="_blank" rel="noopener">
+            <a class="an-hero__deal-name" :href="mkt(topFlip.url_name)" target="_blank" rel="noopener" @click="trackMarket(topFlip.item_name, 'hero')">
               {{ localItemName(topFlip) }} →
             </a>
             <div class="an-hero__deal-sub">{{ t('endo.hero.flipDealSub', { rank: rankLabel(topFlip.eval.best.rank), profit: fmtPlat(topFlip.eval.best.profit) }) }}</div>
@@ -31,14 +31,14 @@
           <div v-else-if="direction === 'sources' && topSource" class="an-hero__deal">
             <div class="an-hero__deal-label">{{ t('endo.hero.srcDealLabel') }}</div>
             <div class="an-hero__deal-plat">{{ fmtNum(topSource.endoPerPlat) }}<span>e/p</span></div>
-            <a class="an-hero__deal-name" :href="topSource.link" target="_blank" rel="noopener">{{ topSource.name }} →</a>
+            <a class="an-hero__deal-name" :href="topSource.link" target="_blank" rel="noopener" @click="trackSourceOpen(topSource, 'hero')">{{ topSource.name }} →</a>
             <div class="an-hero__deal-sub">{{ t('endo.hero.srcDealSub', { endo: fmtEndo(topSource.endo), plat: fmtPlat(topSource.plat) }) }}</div>
           </div>
         </header>
 
         <!-- Direction toggle + freshness -->
         <div class="an-dir">
-          <v-btn-toggle v-model="direction" mandatory density="compact" class="an-dir__toggle">
+          <v-btn-toggle v-model="direction" mandatory density="compact" class="an-dir__toggle" @update:model-value="onDirectionChange">
             <v-btn value="flip" size="small">{{ t('endo.dir.spend') }}</v-btn>
             <v-btn value="sources" size="small">{{ t('endo.dir.getCheap') }}</v-btn>
           </v-btn-toggle>
@@ -75,10 +75,10 @@
             <div class="an-filters__row">
               <v-text-field v-model="search" density="compact" hide-details clearable prepend-inner-icon="mdi-magnify" :label="t('endo.filters.searchMod')" class="an-search"></v-text-field>
               <div class="an-sortctl">
-                <v-select v-model="flipSortBy" :items="flipSortOptions" item-title="text" item-value="value" density="compact" hide-details :label="t('endo.filters.sortBy')" class="an-field" style="flex:1 1 190px"></v-select>
-                <v-btn :icon="flipSortDir === 'desc' ? 'mdi-sort-descending' : 'mdi-sort-ascending'" size="small" variant="tonal" color="#d4af5a" :title="flipSortDir === 'desc' ? t('endo.filters.descending') : t('endo.filters.ascending')" @click="flipSortDir = flipSortDir === 'desc' ? 'asc' : 'desc'"></v-btn>
+                <v-select v-model="flipSortBy" :items="flipSortOptions" item-title="text" item-value="value" density="compact" hide-details :label="t('endo.filters.sortBy')" class="an-field" style="flex:1 1 190px" @update:model-value="onFlipSortSelect"></v-select>
+                <v-btn :icon="flipSortDir === 'desc' ? 'mdi-sort-descending' : 'mdi-sort-ascending'" size="small" variant="tonal" color="#d4af5a" :title="flipSortDir === 'desc' ? t('endo.filters.descending') : t('endo.filters.ascending')" @click="toggleFlipSortDir"></v-btn>
               </div>
-              <v-btn variant="text" size="small" class="an-advbtn" :append-icon="showAdv ? 'mdi-chevron-up' : 'mdi-tune-variant'" @click="showAdv = !showAdv">{{ t('endo.filters.filtersSettings') }}</v-btn>
+              <v-btn variant="text" size="small" class="an-advbtn" :append-icon="showAdv ? 'mdi-chevron-up' : 'mdi-tune-variant'" @click="toggleAdv">{{ t('endo.filters.filtersSettings') }}</v-btn>
             </div>
 
             <v-expand-transition>
@@ -88,7 +88,7 @@
                 <div class="an-adv__settings">
                   <div class="an-set">
                     <div class="an-set__lbl">{{ t('endo.filters.sellMaxedAt') }}</div>
-                    <v-btn-toggle v-model="sellBasis" mandatory density="compact" class="an-minitoggle">
+                    <v-btn-toggle v-model="sellBasis" mandatory density="compact" class="an-minitoggle" @update:model-value="onSellBasisChange">
                       <v-btn value="ask" size="x-small">{{ t('endo.filters.currentAsk') }}</v-btn>
                       <v-btn value="instant" size="x-small">{{ t('endo.filters.instant') }}</v-btn>
                       <v-btn value="avg" size="x-small">{{ t('endo.filters.avg48h') }}</v-btn>
@@ -96,7 +96,7 @@
                   </div>
                   <div class="an-set">
                     <div class="an-set__lbl">{{ t('endo.filters.buyIn') }}</div>
-                    <v-switch v-model="buyViaBid" hide-details density="compact" inset color="#4fb3bf" :label="t('endo.filters.viaBuyOrder')" class="an-toggle an-set__switch"></v-switch>
+                    <v-switch v-model="buyViaBid" hide-details density="compact" inset color="#4fb3bf" :label="t('endo.filters.viaBuyOrder')" class="an-toggle an-set__switch" @update:model-value="onBuyViaBidChange"></v-switch>
                     <div class="an-set__help">{{ t('endo.filters.buyInHelp') }}</div>
                   </div>
                 </div>
@@ -111,19 +111,19 @@
                 </div>
                 <div class="an-adv__chips">
                   <span class="an-adv__lbl">{{ t('endo.filters.rarity') }}</span>
-                  <v-chip-group v-model="rarityFilter" multiple column class="an-cats">
+                  <v-chip-group v-model="rarityFilter" multiple column class="an-cats" @update:model-value="onRarityChange">
                     <v-chip v-for="r in rarityOptions" :key="r" :value="r" size="small" filter active-class="an-chip--on">{{ rarityLabel(r) }}</v-chip>
                   </v-chip-group>
                 </div>
                 <div class="an-toggles">
-                  <v-switch v-model="partialOnly" hide-details density="compact" inset color="#4fb3bf" :label="t('endo.filters.partialOnly')" class="an-toggle"></v-switch>
-                  <v-switch v-model="hideThin" hide-details density="compact" inset color="#4fb3bf" :label="t('endo.filters.hideThin')" class="an-toggle"></v-switch>
+                  <v-switch v-model="partialOnly" hide-details density="compact" inset color="#4fb3bf" :label="t('endo.filters.partialOnly')" class="an-toggle" @update:model-value="onPartialOnlyChange"></v-switch>
+                  <v-switch v-model="hideThin" hide-details density="compact" inset color="#4fb3bf" :label="t('endo.filters.hideThin')" class="an-toggle" @update:model-value="onHideThinChange"></v-switch>
                   <v-btn variant="text" size="x-small" color="#9aa0b4" @click="resetFlipFilters">{{ t('endo.filters.reset') }}</v-btn>
                 </div>
               </div>
             </v-expand-transition>
 
-            <v-chip-group v-model="flipCat" mandatory column class="an-cats">
+            <v-chip-group v-model="flipCat" mandatory column class="an-cats" @update:model-value="onFlipCatChange">
               <v-chip v-for="c in flipCatOptions" :key="c" :value="c" size="small" active-class="an-chip--on">{{ flipCatLabel(c) }}</v-chip>
             </v-chip-group>
             <div class="an-count">{{ t('endo.flip.count', { n: flipFiltered.length }, flipFiltered.length) }}<span v-if="hiddenThin && hideThin" class="an-hidden">{{ t('endo.flip.thinHidden', { n: hiddenThin }) }}</span></div>
@@ -153,7 +153,7 @@
               <tbody>
                 <tr v-for="row in flipPaged" :key="row.url_name" :class="{ 'is-top': row.url_name === topFlipUrl }">
                   <td class="col-name">
-                    <a class="an-name" :href="mkt(row.url_name)" target="_blank" rel="noopener">
+                    <a class="an-name" :href="mkt(row.url_name)" target="_blank" rel="noopener" @click="trackMarket(row.item_name, 'table')">
                       <img class="an-thumb" :src="assetUrl(row.thumb)" :alt="localItemName(row)" loading="lazy" @error="onImgError" />
                       <span>
                         {{ localItemName(row) }}
@@ -194,9 +194,9 @@
                     </span>
                   </td>
                   <td class="col-act">
-                    <a class="an-copy" :href="wikiHref(row.item_name)" target="_blank" rel="noopener" title="Warframe Wiki"><v-icon size="16">mdi-book-open-variant</v-icon></a>
+                    <a class="an-copy" :href="wikiHref(row.item_name)" target="_blank" rel="noopener" title="Warframe Wiki" @click="trackWiki(row.item_name)"><v-icon size="16">mdi-book-open-variant</v-icon></a>
                     <button class="an-copy" :title="t('endo.actions.whereDrops')" @click="openDrops(row)"><v-icon size="16">mdi-map-marker-radius-outline</v-icon></button>
-                    <button class="an-copy" :class="{ 'is-copied': copiedKey === 'f:' + row.url_name, 'is-warn': showInstant(row) && instantIsLoss(row) }" :title="whisperTitle(row)" @click="copy(buyWhisper(row.eval.best.askUser, row.item_name, row.eval.best.ask || row.eval.best.buyIn), 'f:' + row.url_name)">
+                    <button class="an-copy" :class="{ 'is-copied': copiedKey === 'f:' + row.url_name, 'is-warn': showInstant(row) && instantIsLoss(row) }" :title="whisperTitle(row)" @click="copyFlipWhisper(row)">
                       <v-icon size="16">{{ copiedKey === 'f:' + row.url_name ? 'mdi-check' : 'mdi-content-copy' }}</v-icon>
                     </button>
                   </td>
@@ -208,7 +208,7 @@
           <!-- Mobile cards -->
           <div v-else class="an-cards">
             <div v-for="row in flipPaged" :key="row.url_name" class="an-card" :class="{ 'is-top': row.url_name === topFlipUrl }">
-              <a class="an-card__head" :href="mkt(row.url_name)" target="_blank" rel="noopener">
+              <a class="an-card__head" :href="mkt(row.url_name)" target="_blank" rel="noopener" @click="trackMarket(row.item_name, 'card')">
                 <img class="an-thumb" :src="assetUrl(row.thumb)" :alt="localItemName(row)" loading="lazy" @error="onImgError" />
                 <div class="an-card__title">
                   <div class="an-card__name">{{ localItemName(row) }}<span v-if="row.url_name === topFlipUrl" class="an-badge">{{ t('endo.row.top') }}</span></div>
@@ -239,9 +239,9 @@
                 </div>
               </div>
               <div class="an-card__acts">
-                <a class="an-copy" :href="wikiHref(row.item_name)" target="_blank" rel="noopener" aria-label="Warframe Wiki"><v-icon size="16">mdi-book-open-variant</v-icon></a>
+                <a class="an-copy" :href="wikiHref(row.item_name)" target="_blank" rel="noopener" aria-label="Warframe Wiki" @click="trackWiki(row.item_name)"><v-icon size="16">mdi-book-open-variant</v-icon></a>
                 <button class="an-copy" :aria-label="t('endo.actions.whereDrops')" @click="openDrops(row)"><v-icon size="16">mdi-map-marker-radius-outline</v-icon></button>
-                <button class="an-copybtn" :class="{ 'is-copied': copiedKey === 'f:' + row.url_name, 'is-warn': showInstant(row) && instantIsLoss(row) }" :title="whisperTitle(row)" @click="copy(buyWhisper(row.eval.best.askUser, row.item_name, row.eval.best.ask || row.eval.best.buyIn), 'f:' + row.url_name)">
+                <button class="an-copybtn" :class="{ 'is-copied': copiedKey === 'f:' + row.url_name, 'is-warn': showInstant(row) && instantIsLoss(row) }" :title="whisperTitle(row)" @click="copyFlipWhisper(row)">
                   <v-icon size="16">{{ copiedKey === 'f:' + row.url_name ? 'mdi-check' : 'mdi-content-copy' }}</v-icon>
                   {{ copiedKey === 'f:' + row.url_name ? t('endo.actions.copiedWhisper') : t('endo.actions.copyWhisper') }}
                 </button>
@@ -250,7 +250,7 @@
           </div>
 
           <div v-if="flipFiltered.length > perPage" class="an-pager">
-            <v-pagination v-model="page" :length="flipPageCount" :total-visible="isMobile ? 5 : 9" color="#d4af5a"></v-pagination>
+            <v-pagination v-model="page" :length="flipPageCount" :total-visible="isMobile ? 5 : 9" color="#d4af5a" @update:model-value="onPageChange"></v-pagination>
           </div>
         </template>
 
@@ -279,13 +279,13 @@
             <div class="an-filters__row">
               <v-text-field v-model="sourceSearch" density="compact" hide-details clearable prepend-inner-icon="mdi-magnify" :label="t('endo.sources.searchSource')" class="an-search"></v-text-field>
               <div class="an-sortctl">
-                <v-select v-model="srcSortBy" :items="sourceSortOptions" item-title="text" item-value="value" density="compact" hide-details :label="t('endo.filters.sortBy')" class="an-field" style="flex:1 1 190px"></v-select>
-                <v-btn :icon="srcSortDir === 'desc' ? 'mdi-sort-descending' : 'mdi-sort-ascending'" size="small" variant="tonal" color="#d4af5a" @click="srcSortDir = srcSortDir === 'desc' ? 'asc' : 'desc'"></v-btn>
+                <v-select v-model="srcSortBy" :items="sourceSortOptions" item-title="text" item-value="value" density="compact" hide-details :label="t('endo.filters.sortBy')" class="an-field" style="flex:1 1 190px" @update:model-value="onSrcSortSelect"></v-select>
+                <v-btn :icon="srcSortDir === 'desc' ? 'mdi-sort-descending' : 'mdi-sort-ascending'" size="small" variant="tonal" color="#d4af5a" @click="toggleSrcSortDir"></v-btn>
               </div>
               <v-text-field v-model.number="minEpp" type="number" min="0" density="compact" hide-details clearable :label="t('endo.sources.minEpp')" class="an-field" style="flex:0 1 150px"></v-text-field>
               <v-text-field v-model.number="maxCost" type="number" min="0" density="compact" hide-details clearable :label="t('endo.sources.maxCost')" class="an-field" style="flex:0 1 140px"></v-text-field>
             </div>
-            <v-chip-group v-model="sourceKind" mandatory column class="an-cats">
+            <v-chip-group v-model="sourceKind" mandatory column class="an-cats" @update:model-value="onSourceKindChange">
               <v-chip v-for="c in sourceKindOptions" :key="c" :value="c" size="small" active-class="an-chip--on">{{ srcKindLabel(c) }}</v-chip>
             </v-chip-group>
             <div class="an-count">{{ t('endo.sources.count', { n: sourceFiltered.length }, sourceFiltered.length) }}</div>
@@ -309,7 +309,7 @@
               <tbody>
                 <tr v-for="row in sourcePaged" :key="row.kind + row.name" :class="{ 'is-top': row === topSource }">
                   <td class="col-name">
-                    <a class="an-name" :href="row.link" target="_blank" rel="noopener">
+                    <a class="an-name" :href="row.link" target="_blank" rel="noopener" @click="trackSourceOpen(row, 'table')">
                       <span class="an-kind" :class="'kind--' + row.kind">{{ kindBadge(row.kind) }}</span>
                       <span>
                         {{ row.name }}
@@ -323,8 +323,8 @@
                   <td class="an-num an-strong">{{ fmtNum(row.endoPerPlat) }}</td>
                   <td class="an-num">{{ row.volume != null ? fmtPlat(row.volume) : '—' }}</td>
                   <td class="col-act">
-                    <a class="an-copy" :href="row.link" target="_blank" rel="noopener" :title="t('endo.actions.openMarket')"><v-icon size="16">mdi-open-in-new</v-icon></a>
-                    <button class="an-copy" :class="{ 'is-copied': copiedKey === 's:' + row.kind + row.name }" :title="t('endo.actions.copyWtbShort')" @click="copy(row.whisper, 's:' + row.kind + row.name)">
+                    <a class="an-copy" :href="row.link" target="_blank" rel="noopener" :title="t('endo.actions.openMarket')" @click="trackSourceOpen(row, 'action')"><v-icon size="16">mdi-open-in-new</v-icon></a>
+                    <button class="an-copy" :class="{ 'is-copied': copiedKey === 's:' + row.kind + row.name }" :title="t('endo.actions.copyWtbShort')" @click="copySourceWhisper(row)">
                       <v-icon size="16">{{ copiedKey === 's:' + row.kind + row.name ? 'mdi-check' : 'mdi-content-copy' }}</v-icon>
                     </button>
                   </td>
@@ -335,7 +335,7 @@
 
           <div v-else class="an-cards">
             <div v-for="row in sourcePaged" :key="row.kind + row.name" class="an-card" :class="{ 'is-top': row === topSource }">
-              <a class="an-card__head" :href="row.link" target="_blank" rel="noopener">
+              <a class="an-card__head" :href="row.link" target="_blank" rel="noopener" @click="trackSourceOpen(row, 'card')">
                 <span class="an-kind" :class="'kind--' + row.kind">{{ kindBadge(row.kind) }}</span>
                 <div class="an-card__title">
                   <div class="an-card__name">{{ row.name }}<span v-if="row === topSource" class="an-badge">{{ t('endo.row.top') }}</span></div>
@@ -351,7 +351,7 @@
                   <div class="an-block__row"><span>{{ t('endo.card.cost') }}</span><b>{{ fmtPlat(row.plat) }}p</b></div>
                 </div>
               </div>
-              <button class="an-copybtn" :class="{ 'is-copied': copiedKey === 's:' + row.kind + row.name }" @click="copy(row.whisper, 's:' + row.kind + row.name)">
+              <button class="an-copybtn" :class="{ 'is-copied': copiedKey === 's:' + row.kind + row.name }" @click="copySourceWhisper(row)">
                 <v-icon size="16">{{ copiedKey === 's:' + row.kind + row.name ? 'mdi-check' : 'mdi-content-copy' }}</v-icon>
                 {{ copiedKey === 's:' + row.kind + row.name ? t('endo.actions.copiedWhisper') : t('endo.actions.copyWhisper') }}
               </button>
@@ -359,7 +359,7 @@
           </div>
 
           <div v-if="sourceFiltered.length > perPage" class="an-pager">
-            <v-pagination v-model="page" :length="sourcePageCount" :total-visible="isMobile ? 5 : 9" color="#d4af5a"></v-pagination>
+            <v-pagination v-model="page" :length="sourcePageCount" :total-visible="isMobile ? 5 : 9" color="#d4af5a" @update:model-value="onPageChange"></v-pagination>
           </div>
         </template>
       </div>
@@ -490,6 +490,7 @@ function openDrops(row: { item_name: string; thumb?: string }) {
   dropsItem.value = row.item_name
   dropsThumb.value = row.thumb || ''
   dropsDialog.value = true
+  trackDialog('drop_locations', { item_name: row.item_name })
 }
 function wikiHref(name: string): string {
   return itemWikiUrl(name)
@@ -640,6 +641,7 @@ function sortFlip(key: string) {
     flipSortBy.value = key
     flipSortDir.value = key === 'name' ? 'asc' : 'desc'
   }
+  trackSortChange('flip', key, flipSortDir.value)
 }
 
 function flipCategory(row: FlipRowEval): string {
@@ -661,6 +663,9 @@ const flipCatOptions = computed<string[]>(() => {
   return ['All', ...order.filter((c) => present.has(c))]
 })
 function resetFlipFilters() {
+  // The reset rewrites eight filter refs at once; report it as the single action
+  // it is instead of letting every field watcher emit its own filter_apply.
+  suppressFilterEvents = true
   search.value = ''
   minVolume.value = 50
   maxBuyIn.value = null
@@ -670,6 +675,11 @@ function resetFlipFilters() {
   rarityFilter.value = []
   partialOnly.value = false
   flipCat.value = 'All'
+  trackAction('filters_reset')
+  armCalc()
+  nextTick(() => {
+    suppressFilterEvents = false
+  })
 }
 
 const flipFiltered = computed<FlipRowEval[]>(() => {
@@ -762,6 +772,7 @@ function sortSrc(key: string) {
     srcSortBy.value = key
     srcSortDir.value = key === 'name' || key === 'cost' ? 'asc' : 'desc'
   }
+  trackSortChange('sources', key, srcSortDir.value)
 }
 
 const sculptureSources = computed<EndoSourceRow[]>(() => {
@@ -928,6 +939,150 @@ function writeQuery() {
 }
 hydrateFromQuery()
 watch(buildQuery, writeQuery, { deep: true })
+
+// ---- analytics -------------------------------------------------------------
+// Reporting only: nothing below changes what the page computes or shows.
+const { track, trackSearch, trackFilter, trackCalc, trackAction, trackDialog, trackMarketOpen, trackTradeCopy } =
+  useAnalytics()
+
+// `calc_run` must mean "the user re-priced the ledger", so it is armed by input
+// handlers only — the catalogue poll feeds the same computeds every 2 minutes
+// and would otherwise report a calculation nobody asked for. The delay both
+// collapses a burst of typing/toggling into one event and lets the computeds
+// settle, so `results_count` is the list the user actually ends up looking at.
+let calcTimer: any = null
+function armCalc() {
+  if (calcTimer) clearTimeout(calcTimer)
+  calcTimer = setTimeout(() => {
+    trackCalc('endo_flip', {
+      direction: direction.value,
+      sell_basis: sellBasis.value,
+      buy_via_bid: buyViaBid.value,
+      results_count: direction.value === 'flip' ? flipFiltered.value.length : sourceFiltered.value.length,
+    })
+  }, 900)
+}
+
+// Text/number fields change on every keystroke; report the value the user
+// settled on rather than the digits typed on the way there.
+const fieldTimers: Record<string, any> = {}
+let suppressFilterEvents = false
+function trackNumberFilter(name: string, v: number | string | null | undefined) {
+  // Drop any pending emit first: a reset must not let the value typed 200 ms
+  // earlier land as its own filter_apply after the suppression window closes.
+  if (fieldTimers[name]) clearTimeout(fieldTimers[name])
+  if (suppressFilterEvents) return
+  armCalc()
+  // `type="number"` fields hand back the raw input string (and '' when emptied),
+  // so coerce: filter_value is always a GA4 number or the literal 'cleared'.
+  const n = v == null || v === '' ? NaN : Number(v)
+  fieldTimers[name] = setTimeout(() => {
+    trackFilter(name, Number.isFinite(n) ? n : 'cleared')
+  }, 700)
+}
+function trackSearchDebounced(table: 'flip' | 'sources', term: string | null) {
+  armCalc()
+  if (fieldTimers[table]) clearTimeout(fieldTimers[table])
+  const q = (term || '').trim()
+  if (q.length < 2) return
+  fieldTimers[table] = setTimeout(() => {
+    trackSearch(q, table === 'flip' ? flipFiltered.value.length : sourceFiltered.value.length, { table })
+  }, 700)
+}
+
+function onDirectionChange(v: any) {
+  trackFilter('direction', String(v))
+  armCalc()
+}
+function onSellBasisChange(v: any) {
+  trackFilter('sell_basis', String(v))
+  armCalc()
+}
+function onBuyViaBidChange(v: any) {
+  trackFilter('buy_via_bid', !!v)
+  armCalc()
+}
+function onPartialOnlyChange(v: any) {
+  trackFilter('partial_only', !!v)
+  armCalc()
+}
+function onHideThinChange(v: any) {
+  trackFilter('hide_thin', !!v)
+  armCalc()
+}
+function onRarityChange(v: any) {
+  // Sorted so "Rare,Legendary" and "Legendary,Rare" are one value, not two:
+  // click order would otherwise turn 15 combinations into 64 permutations.
+  const picked: string[] = Array.isArray(v) ? [...v].sort() : []
+  trackFilter('rarity', picked.length ? picked.join(',') : 'any')
+  armCalc()
+}
+function onFlipCatChange(v: any) {
+  trackFilter('category', String(v))
+  armCalc()
+}
+function onSourceKindChange(v: any) {
+  trackFilter('source_kind', String(v))
+  armCalc()
+}
+function toggleAdv() {
+  showAdv.value = !showAdv.value
+  if (showAdv.value) trackAction('advanced_open')
+}
+// The page has two independent ledgers, so sort_change carries `table`; the
+// trackSort() helper has no slot for it, hence the generic track().
+function trackSortChange(table: 'flip' | 'sources', by: string, dir: Dir) {
+  track('sort_change', { sort_by: by, sort_dir: dir, table })
+}
+function onFlipSortSelect(v: any) {
+  trackSortChange('flip', String(v), flipSortDir.value)
+}
+function toggleFlipSortDir() {
+  flipSortDir.value = flipSortDir.value === 'desc' ? 'asc' : 'desc'
+  trackSortChange('flip', flipSortBy.value, flipSortDir.value)
+}
+function onSrcSortSelect(v: any) {
+  trackSortChange('sources', String(v), srcSortDir.value)
+}
+function toggleSrcSortDir() {
+  srcSortDir.value = srcSortDir.value === 'desc' ? 'asc' : 'desc'
+  trackSortChange('sources', srcSortBy.value, srcSortDir.value)
+}
+function onPageChange(v: number) {
+  trackAction('paginate', { page: v, table: direction.value === 'flip' ? 'flip' : 'sources' })
+}
+// Explicit market_open events: the delegated outbound-click listener sees the
+// URL but not which mod/source row (or which surface) sent the user there.
+function trackMarket(itemName: string, source: string) {
+  trackMarketOpen(itemName, { source })
+}
+function trackSourceOpen(row: EndoSourceRow, source: string) {
+  trackMarketOpen(row.name, { source, kind: row.kind })
+}
+function trackWiki(itemName: string) {
+  trackAction('wiki_open', { item_name: itemName })
+}
+function copyFlipWhisper(row: FlipRowEval) {
+  const b = row.eval.best
+  copy(buyWhisper(b.askUser, row.item_name, b.ask || b.buyIn), 'f:' + row.url_name)
+  trackTradeCopy(row.item_name, { side: 'wtb', price: b.ask || b.buyIn, rank: b.rank })
+}
+function copySourceWhisper(row: EndoSourceRow) {
+  copy(row.whisper, 's:' + row.kind + row.name)
+  trackTradeCopy(row.name, { side: 'wtb', price: row.plat, kind: row.kind })
+}
+
+// Registered after hydrateFromQuery() so a shared or bookmarked URL does not
+// replay its filters as if the visitor had just typed them.
+watch(search, (v) => trackSearchDebounced('flip', v))
+watch(sourceSearch, (v) => trackSearchDebounced('sources', v))
+watch(maxBuyIn, (v) => trackNumberFilter('max_buy_in', v))
+watch(minProfit, (v) => trackNumberFilter('min_profit', v))
+watch(minEff, (v) => trackNumberFilter('min_eff', v))
+watch(maxEndoFinish, (v) => trackNumberFilter('endo_budget', v))
+watch(minVolume, (v) => trackNumberFilter('min_volume', v))
+watch(minEpp, (v) => trackNumberFilter('min_endo_per_plat', v))
+watch(maxCost, (v) => trackNumberFilter('max_cost', v))
 
 // ---- helpers ----
 function rankLabel(rank: number): string {

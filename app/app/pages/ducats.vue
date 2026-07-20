@@ -14,7 +14,7 @@
           <div v-if="topDeal" class="an-hero__deal">
             <div class="an-hero__deal-label">{{ t('ducatsPage.hero.dealLabel') }}</div>
             <div class="an-hero__deal-plat">{{ eff(topDeal).toFixed(1) }}<span>d/p</span></div>
-            <a class="an-hero__deal-name" :href="mkt(topDeal.url_name)" target="_blank" rel="noopener">{{ localItemName(topDeal) }} →</a>
+            <a class="an-hero__deal-name" :href="mkt(topDeal.url_name)" target="_blank" rel="noopener" @click="onMarketOpen(topDeal, 'hero')">{{ localItemName(topDeal) }} →</a>
             <div class="an-hero__deal-sub">{{ t('ducatsPage.hero.dealSub', { ducats: topDeal.ducats, sell: fmtPlat(topDeal.market.sell) }) }}</div>
           </div>
         </header>
@@ -30,9 +30,9 @@
           <div class="an-filters__row">
             <v-text-field v-model="search" density="compact" hide-details clearable prepend-inner-icon="mdi-magnify" :label="t('ducatsPage.filters.search')" class="an-search"></v-text-field>
             <v-text-field v-model.number="maxPrice" density="compact" hide-details type="number" min="0" :label="t('ducatsPage.filters.maxPrice')" class="an-field"></v-text-field>
-            <v-select v-model="sortKey" :items="sortOptions" density="compact" hide-details :label="t('ducatsPage.filters.sortBy')" class="an-field" style="flex: 0 1 220px"></v-select>
+            <v-select v-model="sortKey" :items="sortOptions" density="compact" hide-details :label="t('ducatsPage.filters.sortBy')" class="an-field" style="flex: 0 1 220px" @update:model-value="onSortChange"></v-select>
           </div>
-          <v-chip-group v-model="category" mandatory column selected-class="an-chip--on" class="an-cats">
+          <v-chip-group v-model="category" mandatory column selected-class="an-chip--on" class="an-cats" @update:model-value="onCategoryChange">
             <v-chip v-for="c in categoryOptions" :key="c" :value="c" size="small">{{ t('ducatsPage.categories.' + c) }}</v-chip>
           </v-chip-group>
           <div class="an-count">{{ t('ducatsPage.filters.count', { n: filtered.length }, filtered.length) }}</div>
@@ -55,9 +55,9 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="row in paged" :key="row.url_name" :class="{ 'is-top': row.url_name === topDealUrl }">
+              <tr v-for="(row, i) in paged" :key="row.url_name" :class="{ 'is-top': row.url_name === topDealUrl }">
                 <td class="col-name">
-                  <a class="an-name" :href="mkt(row.url_name)" target="_blank" rel="noopener">
+                  <a class="an-name" :href="mkt(row.url_name)" target="_blank" rel="noopener" @click="onMarketOpen(row, 'row', i)">
                     <img class="an-thumb" :src="assetUrl(row.thumb)" :alt="localItemName(row)" loading="lazy" @error="onImgError" />
                     <span>
                       {{ localItemName(row) }}
@@ -71,7 +71,7 @@
                 <td class="an-num an-strong up">{{ eff(row).toFixed(1) }}</td>
                 <td class="an-num">{{ fmtPlat(row.market.volume) }}</td>
                 <td>
-                  <v-btn icon="mdi-open-in-new" size="small" variant="text" color="#4fb3bf" :href="mkt(row.url_name)" target="_blank" :aria-label="t('ducatsPage.row.open', { name: localItemName(row) })"></v-btn>
+                  <v-btn icon="mdi-open-in-new" size="small" variant="text" color="#4fb3bf" :href="mkt(row.url_name)" target="_blank" :aria-label="t('ducatsPage.row.open', { name: localItemName(row) })" @click="onMarketOpen(row, 'row', i)"></v-btn>
                 </td>
               </tr>
             </tbody>
@@ -79,7 +79,7 @@
         </div>
 
         <div v-else class="an-cards">
-          <a v-for="row in paged" :key="row.url_name" class="an-card" :class="{ 'is-top': row.url_name === topDealUrl }" :href="mkt(row.url_name)" target="_blank" rel="noopener">
+          <a v-for="(row, i) in paged" :key="row.url_name" class="an-card" :class="{ 'is-top': row.url_name === topDealUrl }" :href="mkt(row.url_name)" target="_blank" rel="noopener" @click="onMarketOpen(row, 'mobile_card', i)">
             <div class="an-card__head">
               <img class="an-thumb" :src="assetUrl(row.thumb)" :alt="localItemName(row)" loading="lazy" @error="onImgError" />
               <div class="an-card__title">
@@ -104,7 +104,7 @@
         </div>
 
         <div v-if="filtered.length > perPage" class="an-pager">
-          <v-pagination v-model="page" :length="pageCount" :total-visible="isMobile ? 5 : 9" color="#d4af5a"></v-pagination>
+          <v-pagination v-model="page" :length="pageCount" :total-visible="isMobile ? 5 : 9" color="#d4af5a" @update:model-value="onPageChange"></v-pagination>
         </div>
       </div>
 
@@ -116,7 +116,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, nextTick, onMounted, ref, watch } from 'vue'
+import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useDisplay } from 'vuetify'
 import { useItemsStore } from '~/stores/items'
 
@@ -238,6 +238,61 @@ const stats = computed<any>(() => {
 
 watch(filtered, () => {
   page.value = 1
+})
+
+// ── Analytics ───────────────────────────────────────────────────────────────
+// Same schema as the other ledger pages (screener / vaulted / vaulted-worth) so
+// the four are comparable in GA4. Nothing is emitted from a computed: the list
+// recomputes on every price poll, so every hook below hangs off an explicit
+// user interaction or a debounced watch of a raw input ref.
+const { trackSearch, trackFilter, trackSort, trackAction, trackMarketOpen } = useAnalytics()
+
+const TRACK_DEBOUNCE = 700
+let searchTimer: ReturnType<typeof setTimeout> | null = null
+let priceTimer: ReturnType<typeof setTimeout> | null = null
+let pageTimer: ReturnType<typeof setTimeout> | null = null
+
+// One event per typed query, never one per keystroke.
+watch(search, (term) => {
+  if (searchTimer) clearTimeout(searchTimer)
+  const q = (term || '').toString().trim()
+  if (!q) return
+  searchTimer = setTimeout(() => trackSearch(q, filtered.value.length), TRACK_DEBOUNCE)
+})
+
+watch(maxPrice, (v) => {
+  if (priceTimer) clearTimeout(priceTimer)
+  priceTimer = setTimeout(() => trackFilter('max_price', Number(v) || 0), TRACK_DEBOUNCE)
+})
+
+function onCategoryChange(v: any) {
+  trackFilter('category', String(v))
+}
+function onSortChange(v: any) {
+  trackSort(String(v))
+}
+// Clicking through a long ledger fires one event per page; only the page the
+// user settles on is worth reporting.
+function onPageChange(p: any) {
+  if (pageTimer) clearTimeout(pageTimer)
+  pageTimer = setTimeout(() => trackAction('page_change', { page: Number(p) || 1 }), 500)
+}
+// `position` is the row's absolute rank in the current result set, so GA4 can
+// tell a top-of-list click from a page-4 click. item_name (English) is the
+// canonical key — the localized label would explode cardinality.
+function onMarketOpen(row: any, source: string, index?: number) {
+  trackMarketOpen(row.item_name, {
+    source,
+    position: index === undefined ? undefined : (page.value - 1) * perPage + index + 1,
+  })
+}
+
+onBeforeUnmount(() => {
+  // A pending timer would otherwise fire after the route changed and be
+  // attributed to the next page's `tool`.
+  if (searchTimer) clearTimeout(searchTimer)
+  if (priceTimer) clearTimeout(priceTimer)
+  if (pageTimer) clearTimeout(pageTimer)
 })
 
 // Hide the global loading spinner once mounted (project rule). Bounded retry:

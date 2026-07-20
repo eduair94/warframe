@@ -31,6 +31,7 @@
 <script setup lang="ts">
 const { locale, locales, t } = useI18n()
 const switchLocalePath = useSwitchLocalePath()
+const { trackAction } = useAnalytics()
 
 // Remembers the visitor's language decision (a locale code) for a year, so the
 // banner asks at most once. Written on both accept and dismiss.
@@ -88,9 +89,13 @@ onMounted(() => {
   target.value = detected
   targetName.value = (lo as any)?.name || detected
   show.value = true
+  // Impression is tracked too: accept/dismiss are only readable against how
+  // often the banner actually appeared.
+  trackAction('locale_suggestion_shown', { detected })
 })
 
 function accept() {
+  trackAction('locale_suggestion_accept', { detected: target.value })
   pref.value = target.value
   const path = switchLocalePath(target.value as any)
   show.value = false
@@ -98,6 +103,7 @@ function accept() {
 }
 
 function decline() {
+  trackAction('locale_suggestion_dismiss', { detected: target.value })
   // Remember they want the current locale so the banner stays quiet.
   pref.value = locale.value
   show.value = false

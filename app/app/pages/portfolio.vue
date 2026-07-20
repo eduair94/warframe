@@ -104,7 +104,7 @@
       </v-row>
     </template>
 
-    <AlertEditSheet v-model="sheetOpen" :entry="activeEntry" @save="saveAlert" @delete="removeItem" />
+    <AlertEditSheet v-model="sheetOpen" :entry="activeEntry" @save="saveAlert" @delete="removeFromSheet" />
   </div>
 </template>
 
@@ -128,6 +128,7 @@ const { itemThumb } = useItemThumb()
 const { categoryOf, categoryOptionsFor } = useItemCategory()
 const { startTour, maybeAutoStart } = useAlertTour()
 const push = usePushAlerts()
+const { trackWatchlist, trackAlert, trackPush, trackAction } = useAnalytics()
 const route = useRoute()
 const base = useApiBase()
 
@@ -224,7 +225,12 @@ function refresh() {
 function onPick(picked: any) {
   if (!picked || !picked.url_name) return
   const exists = watchlist.value.some((w) => w.url_name === picked.url_name)
-  if (!exists) toggleWatch({ url_name: picked.url_name, item_name: picked.item_name })
+  if (!exists) {
+    toggleWatch({ url_name: picked.url_name, item_name: picked.item_name })
+    // Only a brand-new row counts as an add — re-picking a watched item just
+    // reopens its editor.
+    trackWatchlist('add', picked.item_name, { category: category.value })
+  }
   refresh()
   const entry = enrichedWatchlist.value.find((e) => e.url_name === picked.url_name)
   if (entry) openEdit(entry)
@@ -262,6 +268,8 @@ function saveAlert(patch: {
   alertAtl: boolean
   ownedQty: number
 }) {
+  const prev = watchlist.value.find((w) => w.url_name === patch.url_name)
+  const wasArmed = !!prev && (prev.alertBelow != null || prev.alertAbove != null || !!prev.alertAtl)
   updateEntry(patch.url_name, {
     alertBelow: patch.alertBelow,
     alertAbove: patch.alertAbove,
@@ -271,18 +279,61 @@ function saveAlert(patch: {
   refresh()
   runAlertCheck()
   syncPush()
+  trackAlert(wasArmed ? 'update' : 'create', {
+    has_below: patch.alertBelow != null,
+    has_above: patch.alertAbove != null,
+    has_atl: patch.alertAtl,
+    target: patch.alertBelow ?? patch.alertAbove ?? undefined,
+  })
 }
 
-function removeItem(urlName: string) {
+function removeItem(urlName: string, source: 'card' | 'sheet' = 'card') {
+  const entry = watchlist.value.find((w) => w.url_name === urlName)
+  const wasArmed = !!entry && (entry.alertBelow != null || entry.alertAbove != null || !!entry.alertAtl)
   removeFromWatchlist(urlName)
   if (activeEntry.value?.url_name === urlName) sheetOpen.value = false
   refresh()
   syncPush()
+  trackWatchlist('remove', entry?.item_name || urlName, { source })
+  // Dropping a row that had a threshold armed is also the only way to delete an alert.
+  if (wasArmed) trackAlert('delete', { source })
+}
+// The card's ✕ and the sheet's Remove land on the same handler; the sheet passes
+// its own source so the funnel can tell the two surfaces apart.
+function removeFromSheet(urlName: string) {
+  removeItem(urlName, 'sheet')
+}
+
+// checkAlerts() fires the browser Notification and flips the entry's notified*
+// flag itself, returning nothing — diffing those flags across the call is the
+// only way to observe a REAL fire, and it de-dupes for free: the flag stays set,
+// so the 60s poll (or a burst of live ticks) cannot re-emit the same alert.
+const NOTIFIED_FLAGS = [
+  ['below', 'notifiedBelow'],
+  ['above', 'notifiedAbove'],
+  ['atl', 'notifiedAtl'],
+] as const
+function notifiedKeys(): Set<string> {
+  const keys = new Set<string>()
+  for (const w of getWatchlist()) {
+    for (const [dir, flag] of NOTIFIED_FLAGS) if (w[flag]) keys.add(`${w.url_name}|${dir}`)
+  }
+  return keys
+}
+function trackFiredAlerts(before: Set<string>) {
+  for (const w of getWatchlist()) {
+    for (const [dir, flag] of NOTIFIED_FLAGS) {
+      if (!w[flag] || before.has(`${w.url_name}|${dir}`)) continue
+      trackAlert('fire', { direction: dir, item_name: w.item_name })
+    }
+  }
 }
 
 function runAlertCheck() {
   if (pushActive.value) return // server owns delivery
+  const before = notifiedKeys()
   checkAlerts(allItems.value, analyticsByUrl.value)
+  trackFiredAlerts(before)
 }
 // Overlay live sell prices onto a shallow copy of the catalog, then run the same
 // client-side check (never mutate the Pinia getter objects).
@@ -294,7 +345,9 @@ function runLiveAlertCheck() {
     const sell = livePrices.value[w.url_name]
     return sell != null ? { ...it, market: { ...(it.market || {}), sell } } : it
   })
+  const before = notifiedKeys()
   checkAlerts(overlaid, analyticsByUrl.value)
+  trackFiredAlerts(before)
 }
 // Subscribe every watched item to the live feed; fire checkAlerts immediately on each
 // push instead of waiting up to 60s. Re-runs whenever the watchlist changes.
@@ -319,6 +372,9 @@ function subscribeWatchlistLive() {
 async function enableAlerts() {
   // Prefer real background push (fires with the tab closed).
   const res = await push.subscribe(alertsPayload())
+  // One push_* event per outcome, with the raw SubscribeResult kept as a param so
+  // 'disabled' (no server VAPID) stays distinguishable from a real 'error'.
+  trackPush(res === 'subscribed' ? 'subscribe' : res === 'denied' ? 'denied' : 'error', { result: res })
   if (res === 'subscribed') {
     pushActive.value = true
     notificationPermission.value = 'granted'
@@ -373,6 +429,7 @@ onMounted(async () => {
   const deepUrl = Array.isArray(deep) ? deep[0] : deep
   if (deepUrl) {
     const it = itemsByUrlName.value[deepUrl as string]
+    trackAction('alert_deeplink', { found: !!it })
     if (it) onPick({ url_name: it.url_name, item_name: it.item_name })
   }
   maybeAutoStart()

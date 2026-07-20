@@ -19,7 +19,7 @@
           <div v-if="topBuy" class="an-hero__deal">
             <div class="an-hero__deal-label">{{ t('vaultedWorth.hero.pickLabel') }}</div>
             <div class="an-hero__deal-plat is-up">{{ fmtPlat(priceOf(topBuy)) }}p</div>
-            <a class="an-hero__deal-name" :href="mkt(topBuy.url_name)" target="_blank" rel="noopener">
+            <a class="an-hero__deal-name" :href="mkt(topBuy.url_name)" target="_blank" rel="noopener" @click="onMarketOpen(topBuy, 'hero')">
               {{ localItemName(topBuy) }} →
             </a>
             <div class="an-hero__deal-sub">{{ t('vaultedWorth.hero.pickSub', { d7: fmtSignedPct(topBuy.change7d), d30: fmtSignedPct(topBuy.change30d) }) }}</div>
@@ -50,12 +50,12 @@
             <v-text-field v-model="search" density="compact" hide-details clearable prepend-inner-icon="mdi-magnify" :label="t('vaultedWorth.filters.search')" class="an-search"></v-text-field>
             <div class="an-refine">
               <div class="an-refine__lbl">{{ t('vaultedWorth.filters.verdict') }}</div>
-              <v-chip-group v-model="verdictFilter" mandatory class="an-cats">
+              <v-chip-group v-model="verdictFilter" mandatory class="an-cats" @update:model-value="onVerdictChange">
                 <v-chip v-for="vk in verdictFilters" :key="vk" :value="vk" size="small" active-class="an-chip--on">{{ t('vaultedWorth.verdictFilters.' + vk) }}</v-chip>
               </v-chip-group>
             </div>
           </div>
-          <v-chip-group v-model="category" mandatory column class="an-cats">
+          <v-chip-group v-model="category" mandatory column class="an-cats" @update:model-value="onCategoryChange">
             <v-chip v-for="c in categoryOptions" :key="c" :value="c" size="small" active-class="an-chip--on">{{ t('vaultedWorth.categories.' + c) }}</v-chip>
           </v-chip-group>
           <div class="an-count">{{ t('vaultedWorth.filters.count', { n: filtered.length }, filtered.length) }}</div>
@@ -83,9 +83,9 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="row in paged" :key="row.url_name" :class="{ 'is-top': row.url_name === topBuyUrl }">
+              <tr v-for="(row, i) in paged" :key="row.url_name" :class="{ 'is-top': row.url_name === topBuyUrl }">
                 <td class="col-name">
-                  <a class="an-name" :href="mkt(row.url_name)" target="_blank" rel="noopener">
+                  <a class="an-name" :href="mkt(row.url_name)" target="_blank" rel="noopener" @click="onMarketOpen(row, 'row', i)">
                     <img class="an-thumb" :src="assetUrl(row.thumb)" :alt="localItemName(row)" loading="lazy" @error="onImgError" />
                     <span>
                       {{ localItemName(row) }}
@@ -106,7 +106,7 @@
         </div>
 
         <div v-else class="an-cards">
-          <a v-for="row in paged" :key="row.url_name" class="an-card" :class="{ 'is-top': row.url_name === topBuyUrl }" :href="mkt(row.url_name)" target="_blank" rel="noopener">
+          <a v-for="(row, i) in paged" :key="row.url_name" class="an-card" :class="{ 'is-top': row.url_name === topBuyUrl }" :href="mkt(row.url_name)" target="_blank" rel="noopener" @click="onMarketOpen(row, 'mobile_card', i)">
             <div class="an-card__head">
               <img class="an-thumb" :src="assetUrl(row.thumb)" :alt="localItemName(row)" loading="lazy" @error="onImgError" />
               <div class="an-card__title">
@@ -133,7 +133,7 @@
         </div>
 
         <div v-if="filtered.length > perPage" class="an-pager">
-          <v-pagination v-model="page" :length="pageCount" :total-visible="isMobile ? 5 : 9" color="#d4af5a"></v-pagination>
+          <v-pagination v-model="page" :length="pageCount" :total-visible="isMobile ? 5 : 9" color="#d4af5a" @update:model-value="onPageChange"></v-pagination>
         </div>
       </div>
 
@@ -145,7 +145,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, nextTick, onMounted, ref, watch } from 'vue'
+import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useDisplay } from 'vuetify'
 
 const { t } = useI18n()
@@ -349,6 +349,58 @@ const stats = computed(() => {
 
 watch([filtered], () => {
   page.value = 1
+})
+
+// ── Analytics ───────────────────────────────────────────────────────────────
+// Same schema as the other ledger pages (ducats / screener / vaulted) so the
+// four are comparable in GA4. Nothing is emitted from a computed: the verdict
+// list recomputes whenever the analytics payload refreshes, so every hook below
+// hangs off an explicit user interaction or a debounced watch of a raw ref.
+const { trackSearch, trackFilter, trackAction, trackMarketOpen } = useAnalytics()
+
+const TRACK_DEBOUNCE = 700
+let searchTimer: ReturnType<typeof setTimeout> | null = null
+let pageTimer: ReturnType<typeof setTimeout> | null = null
+
+// One event per typed query, never one per keystroke.
+watch(search, (term) => {
+  if (searchTimer) clearTimeout(searchTimer)
+  const q = (term || '').toString().trim()
+  if (!q) return
+  searchTimer = setTimeout(() => trackSearch(q, filtered.value.length), TRACK_DEBOUNCE)
+})
+
+function onCategoryChange(v: any) {
+  trackFilter('category', String(v))
+}
+// The verdict chips are this page's primary lens (buy / resurgence / …), so
+// they go through the same `filter_apply` event as every other list filter.
+function onVerdictChange(v: any) {
+  trackFilter('verdict', String(v))
+}
+// Clicking through a long ledger fires one event per page; only the page the
+// user settles on is worth reporting.
+function onPageChange(p: any) {
+  if (pageTimer) clearTimeout(pageTimer)
+  pageTimer = setTimeout(() => trackAction('page_change', { page: Number(p) || 1 }), 500)
+}
+// `position` is the row's absolute rank in the current result set, so GA4 can
+// tell a top-of-list click from a page-4 click. `verdict` rides along because
+// it is the reason the row was surfaced at all. item_name (English) is the
+// canonical key — the localized label would explode cardinality.
+function onMarketOpen(row: any, source: string, index?: number) {
+  trackMarketOpen(row.item_name, {
+    source,
+    verdict: row._verdict,
+    position: index === undefined ? undefined : (page.value - 1) * perPage + index + 1,
+  })
+}
+
+onBeforeUnmount(() => {
+  // A pending timer would otherwise fire after the route changed and be
+  // attributed to the next page's `tool`.
+  if (searchTimer) clearTimeout(searchTimer)
+  if (pageTimer) clearTimeout(pageTimer)
 })
 
 function finishLoading(attempt = 0) {

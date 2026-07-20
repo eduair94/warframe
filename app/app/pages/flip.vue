@@ -17,7 +17,7 @@
           <div v-if="topDeal" class="an-hero__deal">
             <div class="an-hero__deal-label">{{ t('flip.hero.bestFlip') }}</div>
             <div class="an-hero__deal-plat">+{{ fmtPlat(topDeal.s.realMargin) }}<span>p</span></div>
-            <a class="an-hero__deal-name" :href="mkt(topDeal.url_name)" target="_blank" rel="noopener">
+            <a class="an-hero__deal-name" :href="mkt(topDeal.url_name)" target="_blank" rel="noopener" @click="onMarketOpen(topDeal, 'hero')">
               {{ localItemName(topDeal) }} →
             </a>
             <div class="an-hero__deal-sub">
@@ -49,13 +49,13 @@
           <div class="an-filters__row">
             <v-text-field v-model="search" density="compact" hide-details clearable prepend-inner-icon="mdi-magnify" :label="t('flip.filters.searchItem')" class="an-search"></v-text-field>
             <v-text-field v-model.number="minVolume" density="compact" hide-details type="number" min="0" :label="t('flip.filters.minVolume')" class="an-field"></v-text-field>
-            <v-select v-model="sortKey" :items="sortOptions" density="compact" hide-details :label="t('flip.filters.sortBy')" class="an-field" style="flex: 0 1 240px"></v-select>
+            <v-select v-model="sortKey" :items="sortOptions" density="compact" hide-details :label="t('flip.filters.sortBy')" class="an-field" style="flex: 0 1 240px" @update:model-value="onSortChange"></v-select>
           </div>
-          <v-chip-group v-model="category" mandatory column selected-class="an-chip--on" class="an-cats">
+          <v-chip-group v-model="category" mandatory column selected-class="an-chip--on" class="an-cats" @update:model-value="onCategoryChange">
             <v-chip v-for="c in categoryOptions" :key="c" :value="c" size="small">{{ catLabel(c) }}</v-chip>
           </v-chip-group>
           <div class="an-toggles">
-            <v-switch v-model="includeSpeculative" density="compact" hide-details inset color="#d4af5a" :label="t('flip.filters.includeSpeculative')"></v-switch>
+            <v-switch v-model="includeSpeculative" density="compact" hide-details inset color="#d4af5a" :label="t('flip.filters.includeSpeculative')" @update:model-value="onSpeculativeChange"></v-switch>
           </div>
           <div class="an-count">{{ filtered.length === 1 ? t('flip.filters.matchOne', { n: filtered.length }) : t('flip.filters.matchMany', { n: filtered.length }) }}</div>
         </section>
@@ -80,9 +80,9 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="row in paged" :key="row.url_name" :class="{ 'is-top': row.url_name === topDealUrl }">
+              <tr v-for="(row, idx) in paged" :key="row.url_name" :class="{ 'is-top': row.url_name === topDealUrl }">
                 <td class="col-name">
-                  <a class="an-name" :href="mkt(row.url_name)" target="_blank" rel="noopener">
+                  <a class="an-name" :href="mkt(row.url_name)" target="_blank" rel="noopener" @click="onMarketOpen(row, 'row', idx)">
                     <img class="an-thumb" :src="assetUrl(row.thumb)" :alt="localItemName(row)" loading="lazy" @error="onImgError" />
                     <span>
                       {{ localItemName(row) }}
@@ -107,7 +107,7 @@
                   <v-btn icon size="small" color="#4fb3bf" variant="text" :aria-label="t('flip.actions.dropsAria', { name: localItemName(row) })" @click="openDrops(row)">
                     <v-icon>mdi-map-marker-radius-outline</v-icon>
                   </v-btn>
-                  <v-btn icon size="small" color="#d4af5a" variant="text" :href="mkt(row.url_name)" target="_blank" :aria-label="t('flip.actions.openAria', { name: localItemName(row) })">
+                  <v-btn icon size="small" color="#d4af5a" variant="text" :href="mkt(row.url_name)" target="_blank" :aria-label="t('flip.actions.openAria', { name: localItemName(row) })" @click="onMarketOpen(row, 'row_button', idx)">
                     <v-icon>mdi-open-in-new</v-icon>
                   </v-btn>
                 </td>
@@ -117,7 +117,7 @@
         </div>
 
         <div v-else class="an-cards">
-          <div v-for="row in paged" :key="row.url_name" class="an-card" :class="{ 'is-top': row.url_name === topDealUrl }">
+          <div v-for="(row, idx) in paged" :key="row.url_name" class="an-card" :class="{ 'is-top': row.url_name === topDealUrl }">
             <div class="an-card__head">
               <img class="an-thumb" :src="assetUrl(row.thumb)" :alt="localItemName(row)" loading="lazy" @error="onImgError" />
               <div class="an-card__title">
@@ -151,7 +151,7 @@
               <button type="button" class="an-cardbtn" @click="openDrops(row)">
                 <v-icon size="16">mdi-map-marker-radius-outline</v-icon> {{ t('flip.actions.dropsWiki') }}
               </button>
-              <a class="an-cardbtn" :href="mkt(row.url_name)" target="_blank" rel="noopener">
+              <a class="an-cardbtn" :href="mkt(row.url_name)" target="_blank" rel="noopener" @click="onMarketOpen(row, 'mobile_card', idx)">
                 <v-icon size="16">mdi-open-in-new</v-icon> {{ t('flip.actions.market') }}
               </a>
             </div>
@@ -159,7 +159,7 @@
         </div>
 
         <div v-if="filtered.length > perPage" class="an-pager">
-          <v-pagination v-model="page" :length="pageCount" :total-visible="isMobile ? 5 : 9" color="#d4af5a"></v-pagination>
+          <v-pagination v-model="page" :length="pageCount" :total-visible="isMobile ? 5 : 9" color="#d4af5a" @update:model-value="onPageChange"></v-pagination>
         </div>
       </div>
 
@@ -177,12 +177,13 @@
 </template>
 
 <script setup lang="ts">
-import { computed, nextTick, onMounted, ref, watch } from 'vue'
+import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useDisplay } from 'vuetify'
 import { useItemsStore } from '~/stores/items'
 import { scoreFlip } from '~/composables/useFlipScore'
 
 const { t } = useI18n()
+const { trackSearch, trackFilter, trackSort, trackAction, trackDialog, trackMarketOpen } = useAnalytics()
 const { localItemName } = useLocalizedName()
 const itemsStore = useItemsStore()
 const allItems = computed(() => itemsStore.allItems)
@@ -224,6 +225,7 @@ function openDrops(row: any) {
   dropItemName.value = row.item_name
   dropThumb.value = row.thumb || ''
   dropDialog.value = true
+  trackDialog('drop_locations', { item_name: row.item_name })
 }
 
 function categoryOf(tags: string[] = []): string {
@@ -314,6 +316,58 @@ const stats = computed<any>(() => {
 watch([filtered], () => {
   page.value = 1
 })
+
+// --- Analytics -------------------------------------------------------------
+// The two free-text fields re-run the ledger on every keystroke, so they are
+// reported only once the user stops typing — otherwise a 12-letter item name
+// would be 12 GA4 hits with 11 useless prefixes.
+const TRACK_DEBOUNCE_MS = 700
+let searchTimer: ReturnType<typeof setTimeout> | undefined
+let volumeTimer: ReturnType<typeof setTimeout> | undefined
+
+watch(search, (term) => {
+  if (searchTimer) clearTimeout(searchTimer)
+  const q = (term || '').toString().trim()
+  if (!q) return
+  searchTimer = setTimeout(() => trackSearch(q, filtered.value.length), TRACK_DEBOUNCE_MS)
+})
+
+watch(minVolume, (v) => {
+  if (volumeTimer) clearTimeout(volumeTimer)
+  volumeTimer = setTimeout(() => trackFilter('min_volume', Number(v) || 0), TRACK_DEBOUNCE_MS)
+})
+
+onBeforeUnmount(() => {
+  // A pending hit would otherwise land after navigation and be attributed to
+  // whatever page the user moved to.
+  if (searchTimer) clearTimeout(searchTimer)
+  if (volumeTimer) clearTimeout(volumeTimer)
+})
+
+// Direction is not user-controllable here (each key has one fixed order), so
+// only the key is reported.
+function onSortChange(value: any) {
+  trackSort(String(value ?? ''))
+}
+function onCategoryChange(value: any) {
+  trackFilter('category', String(value ?? 'All'))
+}
+function onSpeculativeChange(value: any) {
+  trackFilter('include_speculative', !!value)
+}
+function onPageChange(value: any) {
+  trackAction('paginate', { page: Number(value) || 1 })
+}
+
+// Rank within the whole ledger, not within the visible page — that is what
+// tells "took the top flip" apart from "dug to page 4 for it".
+function onMarketOpen(row: any, source: string, idx?: number) {
+  trackMarketOpen(row.item_name, {
+    source,
+    position: idx === undefined ? undefined : (page.value - 1) * perPage + idx + 1,
+    flip_tier: row?.s?.tier?.key,
+  })
+}
 
 function assetUrl(thumb: string): string {
   return 'https://warframe.market/static/assets/' + (thumb || '')

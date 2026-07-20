@@ -18,6 +18,7 @@ const SEEN_KEY = 'seen_alert_tour_v1'
 export function useAlertTour() {
   const { t } = useI18n()
   const { mobile } = useDisplay()
+  const { trackTour } = useAnalytics()
 
   function markSeen() {
     try {
@@ -34,7 +35,9 @@ export function useAlertTour() {
     }
   }
 
-  async function startTour() {
+  // `trigger` is only ever passed by maybeAutoStart(); the replay button binds
+  // startTour straight to a @click, so anything else that arrives is a MouseEvent.
+  async function startTour(trigger?: unknown) {
     if (!import.meta.client) return
     // Wait a tick so the anchored inputs are mounted before driver.js measures them.
     await nextTick()
@@ -85,6 +88,10 @@ export function useAlertTour() {
       ),
     ]
 
+    // driver.js clears its own state on destroy, so remember the furthest step the
+    // user actually reached — that is what separates "finished" from "bailed out".
+    let furthestStep = 0
+
     const tour = driver({
       showProgress: true,
       allowClose: true,
@@ -92,17 +99,29 @@ export function useAlertTour() {
       nextBtnText: t('nav.tourSteps.next'),
       prevBtnText: t('nav.tourSteps.back'),
       doneBtnText: t('nav.tourSteps.done'),
+      onHighlightStarted: (_el: Element | undefined, _step: any, opts: any) => {
+        const i = opts?.state?.activeIndex
+        if (typeof i === 'number' && i > furthestStep) furthestStep = i
+      },
       // Persist on ANY exit (finish, skip, Esc, outside click) so it never nags.
-      onDestroyed: () => markSeen(),
+      onDestroyed: () => {
+        markSeen()
+        trackTour(furthestStep >= steps.length - 1 ? 'complete' : 'skip', {
+          tour: 'alerts',
+          steps_seen: furthestStep + 1,
+          steps_total: steps.length,
+        })
+      },
       steps,
     })
+    trackTour('start', { tour: 'alerts', trigger: trigger === 'auto' ? 'auto' : 'manual' })
     tour.drive()
   }
 
   /** Run the tour the first time a user lands on /portfolio; no-op afterwards. */
   function maybeAutoStart() {
     if (!import.meta.client || hasSeen()) return
-    startTour()
+    startTour('auto')
   }
 
   return { startTour, maybeAutoStart, hasSeen }

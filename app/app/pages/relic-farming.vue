@@ -58,7 +58,7 @@
             ></v-text-field>
             <div class="an-refine">
               <div class="an-refine__lbl">{{ t('relicFarming.filters.refinement') }}</div>
-              <v-btn-toggle v-model="refinement" mandatory density="compact">
+              <v-btn-toggle v-model="refinement" mandatory density="compact" @update:model-value="onRefinement">
                 <v-btn value="Intact" size="small">{{ t('relicFarming.filters.intact') }}</v-btn>
                 <v-btn value="Radiant" size="small">{{ t('relicFarming.filters.radiant') }}</v-btn>
               </v-btn-toggle>
@@ -79,6 +79,7 @@
                 color="#d4af5a"
                 track-color="rgba(255,255,255,0.14)"
                 class="an-mins__slider"
+                @end="onMinutes"
               ></v-slider>
             </div>
             <v-select
@@ -91,10 +92,11 @@
               :label="t('relicFarming.filters.sortBy')"
               class="an-field"
               style="flex: 0 1 220px"
+              @update:model-value="onSort"
             ></v-select>
           </div>
 
-          <v-chip-group v-model="tier" mandatory column class="an-cats">
+          <v-chip-group v-model="tier" mandatory column class="an-cats" @update:model-value="onTier">
             <v-chip
               v-for="tv in tierOptions"
               :key="tv"
@@ -115,6 +117,7 @@
               color="#4fb3bf"
               :label="t('relicFarming.toggles.dropping')"
               class="an-toggle"
+              @update:model-value="onToggle('dropping_only', $event)"
             ></v-switch>
             <v-switch
               v-model="hideNoDemand"
@@ -124,6 +127,7 @@
               color="#4fb3bf"
               :label="t('relicFarming.toggles.hideNoDemand')"
               class="an-toggle"
+              @update:model-value="onToggle('hide_no_demand', $event)"
             ></v-switch>
             <v-switch
               v-model="completeOnly"
@@ -133,6 +137,7 @@
               color="#d4af5a"
               :label="t('relicFarming.toggles.fullData')"
               class="an-toggle"
+              @update:model-value="onToggle('complete_only', $event)"
             ></v-switch>
           </div>
 
@@ -267,7 +272,7 @@
         </div>
 
         <div v-if="filtered.length > perPage" class="an-pager">
-          <v-pagination v-model="page" :length="pageCount" :total-visible="isMobile ? 5 : 9" color="#d4af5a"></v-pagination>
+          <v-pagination v-model="page" :length="pageCount" :total-visible="isMobile ? 5 : 9" color="#d4af5a" @update:model-value="onPage"></v-pagination>
         </div>
       </div>
 
@@ -284,11 +289,12 @@
 </template>
 
 <script setup lang="ts">
-import { computed, nextTick, onMounted, ref, watch } from 'vue'
+import { computed, nextTick, onMounted, onUnmounted, ref, watch } from 'vue'
 import { useDisplay } from 'vuetify'
 import { useRelicValue, type RelicRow } from '~/composables/useRelicValue'
 
 const { t } = useI18n()
+const { trackAction, trackDialog, trackFilter, trackSearch, trackSort } = useAnalytics()
 const { localItemName, localName } = useLocalizedName()
 
 // Working thumbnails cross-referenced against the fresh catalog (drop data
@@ -382,6 +388,31 @@ function openDrops(relic: RelicRow) {
   dropsRelic.value = /relic$/i.test(rn) ? rn : `${rn} Relic`
   dropsThumb.value = relic.thumb || ''
   dropsDialog.value = true
+  // plat/hour is the number the row is judged on, so carrying it tells us
+  // whether people go farm the relics the board actually recommends.
+  trackDialog('drop_locations', { item_name: dropsRelic.value, plat_per_hour: platPerHour(relic) })
+}
+
+// --- analytics hooks (tracking only; none of these touch page state) ---
+function onRefinement(v: any) {
+  trackFilter('refinement', v)
+}
+function onTier(v: any) {
+  trackFilter('tier', v)
+}
+function onToggle(name: string, v: any) {
+  trackFilter(name, !!v)
+}
+// The slider's `end` fires once per drag, not per step, so the run-length
+// filter can't spam GA while the user is dragging it.
+function onMinutes(v: number) {
+  trackFilter('mission_minutes', v)
+}
+function onSort(v: any) {
+  trackSort(v)
+}
+function onPage(n: number) {
+  trackAction('paginate', { page: n })
 }
 
 const tierOptions = computed<string[]>(() => {
@@ -484,6 +515,21 @@ const stats = computed<any>(() => {
 
 watch(filtered, () => {
   page.value = 1
+})
+
+// Searching re-filters on every keystroke, so report only what the user settled
+// on — and with the resulting row count, which is what makes "searched, found
+// nothing" answerable.
+let searchTimer: ReturnType<typeof setTimeout> | null = null
+watch(search, (q) => {
+  if (searchTimer) clearTimeout(searchTimer)
+  const term = (q || '').toString().trim()
+  if (!term) return
+  searchTimer = setTimeout(() => trackSearch(term, filtered.value.length), 800)
+})
+onUnmounted(() => {
+  // A pending timer would otherwise be attributed to whatever page came next.
+  if (searchTimer) clearTimeout(searchTimer)
 })
 
 // Hide the global loading spinner once mounted (project rule). Bounded retry

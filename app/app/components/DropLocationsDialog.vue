@@ -41,7 +41,14 @@
           <div v-if="marketItem.tags && marketItem.tags.length" class="dld__tags">
             <span v-for="(t, ti) in marketItem.tags.slice(0, 4)" :key="ti" class="dld__tag">{{ fmtTag(t) }}</span>
           </div>
-          <a v-if="wmUrl" class="dld__wm" :href="wmUrl" target="_blank" rel="noopener">{{ t('dropDialog.market.viewOnMarket') }}</a>
+          <a
+            v-if="wmUrl"
+            class="dld__wm"
+            :href="wmUrl"
+            target="_blank"
+            rel="noopener"
+            @click="trackMarketOpen(itemName, { source: 'drops_dialog' })"
+          >{{ t('dropDialog.market.viewOnMarket') }}</a>
         </div>
       </section>
       <section v-else-if="itemName" class="dld__market dld__market--none">
@@ -58,7 +65,7 @@
         <div v-else-if="error" class="dld__state dld__state--msg">
           <v-icon color="#e0a3a3" size="34">mdi-alert-circle-outline</v-icon>
           <p>{{ t('dropDialog.state.error') }}</p>
-          <button class="dld__retry" @click="load">{{ t('dropDialog.state.retry') }}</button>
+          <button class="dld__retry" @click="onRetry">{{ t('dropDialog.state.retry') }}</button>
         </div>
 
         <!-- Empty -->
@@ -159,10 +166,17 @@
           :href="wikiUrl"
           target="_blank"
           rel="noopener noreferrer"
+          @click="trackAction('wiki_open', { item_name: itemName })"
         >
           <v-icon size="14">mdi-book-open-variant</v-icon> {{ t('dropDialog.footer.wiki') }}
         </a>
-        <a class="dld__source" :href="externalLink" target="_blank" rel="noopener noreferrer">
+        <a
+          class="dld__source"
+          :href="externalLink"
+          target="_blank"
+          rel="noopener noreferrer"
+          @click="trackAction('drop_table_open', { item_name: itemName })"
+        >
           {{ t('dropDialog.footer.crossCheck') }} <v-icon size="14">mdi-open-in-new</v-icon>
         </a>
       </footer>
@@ -215,6 +229,10 @@ const props = withDefaults(
 const emit = defineEmits<{ (e: 'update:modelValue', value: boolean): void }>()
 
 const { t } = useI18n()
+// The dialog is opened from 10 different pages; every event it sends is stamped
+// with the host page's `tool` by the event layer, so no source prop is needed.
+// The open itself is already reported by whichever parent toggles the v-model.
+const { trackAction, trackMarketOpen } = useAnalytics()
 
 const base = useApiBase()
 
@@ -303,7 +321,12 @@ const expanded = ref<Set<number>>(new Set())
 function toggle(i: number) {
   const s = new Set(expanded.value)
   if (s.has(i)) s.delete(i)
-  else s.add(i)
+  else {
+    s.add(i)
+    // Only the expand direction is a signal — it means the visible 6 farm nodes
+    // weren't enough for the player.
+    trackAction('drops_row_expand')
+  }
   expanded.value = s
 }
 
@@ -321,6 +344,13 @@ async function load() {
   } finally {
     loading.value = false
   }
+}
+
+// Retry after a failed drops fetch — reported so the error rate can be read as
+// "how often did it cost the user a second attempt", not just raw exceptions.
+function onRetry() {
+  trackAction('drops_retry')
+  load()
 }
 
 function fmt(n: number): string {

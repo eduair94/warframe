@@ -78,7 +78,14 @@
               :label="t('live.filters.minVol')"
               class="vol-field"
             />
-            <v-btn-toggle v-model="mode" mandatory density="compact" class="mode-toggle" color="#4fb3bf">
+            <v-btn-toggle
+              v-model="mode"
+              mandatory
+              density="compact"
+              class="mode-toggle"
+              color="#4fb3bf"
+              @update:model-value="onModeChange"
+            >
               <v-btn value="all" size="small">{{ t('live.modes.all') }}</v-btn>
               <v-btn value="buy" size="small">{{ t('live.modes.buy') }}</v-btn>
               <v-btn value="sell" size="small">{{ t('live.modes.sell') }}</v-btn>
@@ -116,7 +123,13 @@
                 @click="openDetail(row)"
               >
                 <td class="col-name">
-                  <a class="an-name" :href="mkt(row.url_name)" target="_blank" rel="noopener" @click.stop>
+                  <a
+                    class="an-name"
+                    :href="mkt(row.url_name)"
+                    target="_blank"
+                    rel="noopener"
+                    @click.stop="trackMarketOpen(row.item_name, { source: 'row' })"
+                  >
                     <img
                       class="an-thumb"
                       :src="thumbOf(row)"
@@ -152,7 +165,13 @@
             <div class="an-card__head">
               <img class="an-thumb" :src="thumbOf(row)" :alt="localItemName(row)" loading="lazy" />
               <div class="an-card__title">
-                <a class="an-card__name" :href="mkt(row.url_name)" target="_blank" rel="noopener" @click.stop>
+                <a
+                  class="an-card__name"
+                  :href="mkt(row.url_name)"
+                  target="_blank"
+                  rel="noopener"
+                  @click.stop="trackMarketOpen(row.item_name, { source: 'card' })"
+                >
                   {{ localItemName(row) }}
                 </a>
                 <span class="an-ago">{{ agoOf(row.url_name) }}</span>
@@ -184,6 +203,7 @@
             :length="pageCount"
             :total-visible="isMobile ? 5 : 9"
             color="#d4af5a"
+            @update:model-value="onPageChange"
           />
         </div>
       </div>
@@ -198,7 +218,14 @@
             <img class="an-thumb" :src="thumbOf(detailRow)" :alt="localItemName(detailRow)" />
             <div class="ob-head__title">
               <div class="ob-head__name">{{ localItemName(detailRow) }}</div>
-              <a class="ob-head__link" :href="mkt(detailRow.url_name)" target="_blank" rel="noopener">warframe.market ↗</a>
+              <a
+                class="ob-head__link"
+                :href="mkt(detailRow.url_name)"
+                target="_blank"
+                rel="noopener"
+                @click="trackMarketOpen(detailRow.item_name, { source: 'order_book' })"
+                >warframe.market ↗</a
+              >
             </div>
             <MarketVerdictBadge :verdict="detail.verdict" />
             <v-btn icon="mdi-close" size="small" variant="text" @click="showDetail = false" />
@@ -235,7 +262,10 @@
                 <button
                   class="ob-copy"
                   :title="t('live.ob.copyBuy')"
-                  @click.stop="copyMsg('s' + i, whisper(o.ingame_name, detailRow.item_name, o.platinum, o.rank, 'buy'))"
+                  @click.stop="
+                    copyMsg('s' + i, whisper(o.ingame_name, detailRow.item_name, o.platinum, o.rank, 'buy'));
+                    trackWhisperCopy('buy', o.platinum)
+                  "
                 >
                   {{ copiedKey === 's' + i ? '✓' : '⧉' }}
                 </button>
@@ -258,7 +288,10 @@
                 <button
                   class="ob-copy"
                   :title="t('live.ob.copySell')"
-                  @click.stop="copyMsg('b' + i, whisper(o.ingame_name, detailRow.item_name, o.platinum, o.rank, 'sell'))"
+                  @click.stop="
+                    copyMsg('b' + i, whisper(o.ingame_name, detailRow.item_name, o.platinum, o.rank, 'sell'));
+                    trackWhisperCopy('sell', o.platinum)
+                  "
                 >
                   {{ copiedKey === 'b' + i ? '✓' : '⧉' }}
                 </button>
@@ -288,6 +321,22 @@ const isMobile = computed(() => mobile.value)
 const { connected, pulse } = useLiveFeed()
 const { itemThumb } = useItemThumb()
 const { localItemName } = useLocalizedName()
+const { trackSearch, trackFilter, trackSort, trackAction, trackDialog, trackMarketOpen, trackTradeCopy } =
+  useAnalytics()
+
+// The socket is a module-level singleton, so `connected` can already be true when
+// this page mounts and it flips back on every reconnect — report the first live
+// handshake of the visit only, not the reconnect pulses.
+let feedReported = false
+watch(
+  connected,
+  (on) => {
+    if (!on || feedReported) return
+    feedReported = true
+    trackAction('live_feed_connected')
+  },
+  { immediate: true },
+)
 
 const search = ref('')
 const page = ref(1)
@@ -361,6 +410,16 @@ watch(filtered, () => {
   page.value = 1
 })
 
+// The list re-filters on every keystroke, so the search event is debounced well
+// past typing speed: we want the term the user settled on, not the prefixes.
+let searchTimer: ReturnType<typeof setTimeout> | null = null
+watch(search, (q) => {
+  if (searchTimer) clearTimeout(searchTimer)
+  const term = (q || '').trim()
+  if (!term) return
+  searchTimer = setTimeout(() => trackSearch(term, filtered.value.length), 700)
+})
+
 // Label for the "sorted by best …" hint next to the count.
 const modeHintWhat = computed(() =>
   mode.value === 'buy'
@@ -376,6 +435,15 @@ function sortBy(key: string) {
     sortKey.value = key
     sortDir.value = key === 'name' ? 'asc' : 'desc'
   }
+  trackSort(key, sortDir.value)
+}
+// Mode is the page's primary filter; the sort it implies is set by the watch below
+// and is deliberately NOT reported as a sort_change (the user did not choose it).
+function onModeChange(v: unknown) {
+  if (v) trackFilter('mode', String(v))
+}
+function onPageChange(p: number) {
+  trackAction('paginate', { page: p })
 }
 function sortArrow(key: string): string {
   if (sortKey.value !== key) return ''
@@ -495,6 +563,7 @@ const detail = computed<LiveUpdate | null>(() =>
 function openDetail(row: any) {
   detailRow.value = row
   showDetail.value = true
+  trackDialog('order_book', { item_name: row.item_name })
 }
 
 // Copy-paste-ready wf.market in-game whisper for a specific order.
@@ -513,6 +582,15 @@ async function copyMsg(key: string, text: string) {
   } catch {
     /* clipboard unavailable */
   }
+}
+// Reported next to the copy rather than inside copyMsg(): which side of the book
+// was whispered, and at what price, only exists at the call site.
+function trackWhisperCopy(side: 'buy' | 'sell', price: number) {
+  if (!detailRow.value) return
+  // `side` is the user's intent here (buy from a seller / sell to a buyer), but the
+  // GA4 `side` dimension is WTB/WTS on every other trade_message_copy call site —
+  // report the same vocabulary so the dimension is not split in two.
+  trackTradeCopy(detailRow.value.item_name, { side: side === 'buy' ? 'wtb' : 'wts', price })
 }
 function buyAdvice(u: LiveUpdate): string {
   const b = u.book
@@ -550,6 +628,7 @@ onBeforeUnmount(() => {
   for (const [, off] of unsubs) off()
   unsubs.clear()
   if (clock) clearInterval(clock)
+  if (searchTimer) clearTimeout(searchTimer)
 })
 
 // Repo rule: hide the global spinner on mount or the page spins forever.

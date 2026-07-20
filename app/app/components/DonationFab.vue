@@ -8,7 +8,7 @@
       elevation="0"
       :aria-label="t('donation.fabAria')"
       data-tour="donate"
-      @click="open = true"
+      @click="onOpen"
     >
       <v-icon class="don-fab__heart">mdi-heart</v-icon>
     </v-btn>
@@ -34,6 +34,7 @@
             target="_blank"
             rel="noopener"
             :aria-label="t('home.donate.paypalAria')"
+            @click="trackAction('donate_click', { provider: 'kofi' })"
           >
             <picture class="don__ico">
               <source srcset="/img/paypal_icon.webp" type="image/webp" />
@@ -49,6 +50,7 @@
             target="_blank"
             rel="noopener"
             :aria-label="t('home.donate.mercadopagoAria')"
+            @click="trackAction('donate_click', { provider: 'mercadopago' })"
           >
             <picture class="don__ico">
               <source srcset="/img/mercadopago_icon.webp" type="image/webp" />
@@ -75,7 +77,15 @@
 import { ref } from 'vue'
 
 const { t } = useI18n()
+const { trackAction } = useAnalytics()
 const open = ref(false)
+
+// The FAB rides every page, so the open is the funnel step that tells us where
+// support intent actually comes from (`tool` is stamped on by the event layer).
+function onOpen() {
+  open.value = true
+  trackAction('donate_dialog_open')
+}
 </script>
 
 <style scoped>
