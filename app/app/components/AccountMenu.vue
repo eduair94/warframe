@@ -1,6 +1,10 @@
 <template>
   <client-only>
-    <div class="acct">
+    <!-- When Firebase is not configured on this deployment there is nothing to
+         sign in to, so the whole account affordance is hidden. The tools it
+         links to (/vault, /goals, /ledger, /foundry) still work as local-only
+         and stay reachable from the nav drawer. -->
+    <div v-if="configured" class="acct">
       <v-menu location="bottom end" :close-on-content-click="true">
         <template #activator="{ props: menuProps }">
           <v-btn
@@ -85,8 +89,14 @@ const auth = useAuthStore()
 const userData = useUserData()
 const { trackAction } = useAnalytics()
 
+// Read the runtime config NOW (safe on server and client — it only inspects
+// runtimeConfig, it never touches Firebase or a browser API), so `configured`
+// is correct in the very first render instead of flashing the menu in and out.
+auth.detect()
+
 const dialog = ref(false)
 const signedIn = computed(() => auth.signedIn)
+const configured = computed(() => auth.configured)
 const syncState = computed(() => userData.syncState.value)
 
 const syncIcon = computed(() => {

@@ -83,9 +83,24 @@ export const HTTP_CONFIG = {
 export const PRICE_CONFIG = {
   /** Number of top orders to include in average */
   TOP_ORDERS_COUNT: 5,
-  
+
   /** Required user status for order consideration */
-  REQUIRED_STATUS: 'ingame' as const
+  REQUIRED_STATUS: 'ingame' as const,
+
+  /**
+   * Credibility band for the headline best buy/sell price, anchored to the
+   * item's going rate (48h average, or the median ask when stats are missing).
+   * These mirror the client-side bulk modeler (app useOrderBook BAIT_CEIL /
+   * TROLL_FLOOR) so the headline number and the order-book dialog agree.
+   *
+   * BAIT_CEIL: bids priced above goingRate × this are bulk/bait buyers that
+   *   never actually fill at that rate (e.g. an Ayatan sculphre drawing 42p bids
+   *   for thousands of units while it really trades ~10p) — excluded from `buy`.
+   * TROLL_FLOOR: asks below goingRate × this are troll-low listings — excluded
+   *   from `sell`.
+   */
+  BAIT_CEIL: 1.5,
+  TROLL_FLOOR: 0.15
 } as const;
 
 /**

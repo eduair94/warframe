@@ -38,7 +38,24 @@ export interface IOrderData {
   subtype?: string;
   user: {
     status: string;
+    /** In-game name — used to build the "/w …" trade whisper in the order-book dialog. */
+    ingame_name?: string;
   };
+}
+
+/**
+ * A single named order kept for the order-book dialog's "best sellers / best
+ * buyers" list — enough to render a row and build a warframe.market whisper.
+ */
+export interface ITopOrder {
+  /** Unit price in platinum. */
+  platinum: number;
+  /** Units this order is for. */
+  quantity: number;
+  /** Seller/buyer in-game name (empty when the API omitted it). */
+  ingame_name: string;
+  /** Online status at sync time: 'ingame' | 'online' (offline users are excluded). */
+  status: string;
 }
 
 /**
@@ -69,6 +86,13 @@ export interface IPriceCalculationOptions {
   requiredStatus?: string;
   /** Number of top orders to average (default: 5) */
   topOrdersCount?: number;
+  /**
+   * The item's going rate (48h volume-weighted average) used to fence out
+   * bulk/bait orders from the headline best buy/sell. When omitted (or 0), it is
+   * derived from the resolved orders themselves (median ask, then median bid).
+   * See PRICE_CONFIG.BAIT_CEIL / TROLL_FLOOR.
+   */
+  goingRate?: number;
   /** Fallback statuses to try if primary status has no orders (default: ['online']) */
   fallbackStatuses?: string[];
   /** Ayatan: Required amber stars for filled sculpture (undefined = no filter) */
@@ -108,7 +132,8 @@ export class OrderCalculator {
       fallbackStatuses = ['online'],
       maxAmberStars,
       maxCyanStars,
-      fallbackToAnyRank = true
+      fallbackToAnyRank = true,
+      goingRate
     } = options;
 
     // Whether any item-variant filter is active. When one is, an empty result on
@@ -209,10 +234,64 @@ export class OrderCalculator {
       }
     }
 
+    // Fence out bulk/bait orders before picking the headline best buy/sell.
+    // Bulk BUYERS bid far above the going rate for thousands of units that never
+    // clear (an Ayatan sculpture drawing 42p bids while it trades ~10p) and would
+    // otherwise set `buy`; troll-low ASKS would set `sell`. Anchor to the going
+    // rate (48h avg if provided, else the median of the resolved orders).
+    const reference = this.referenceRate(goingRate, sellOrders, buyOrders);
+    const credibleBuy = this.filterCredibleBuys(buyOrders, reference);
+    const credibleSell = this.filterCredibleSells(sellOrders, reference);
+
     return {
-      ...this.calculateBuyPrices(buyOrders, topOrdersCount),
-      ...this.calculateSellPrices(sellOrders, topOrdersCount)
+      ...this.calculateBuyPrices(credibleBuy, topOrdersCount),
+      ...this.calculateSellPrices(credibleSell, topOrdersCount)
     };
+  }
+
+  /**
+   * Reference "going rate" for the credibility band. Prefers the passed 48h
+   * average; otherwise the median ask (asks cluster near real value — baiters
+   * inflate BIDS), then the median bid, then 0 (which disables filtering).
+   */
+  private static referenceRate(
+    goingRate: number | undefined,
+    sellOrders: IOrderData[],
+    buyOrders: IOrderData[]
+  ): number {
+    if (goingRate && goingRate > 0) return goingRate;
+    return this.median(sellOrders) || this.median(buyOrders) || 0;
+  }
+
+  /** Median platinum of an order array (0 when empty). */
+  private static median(orders: IOrderData[]): number {
+    const prices = orders
+      .map((o) => Number(o.platinum) || 0)
+      .filter((p) => p > 0)
+      .sort((a, b) => a - b);
+    if (prices.length === 0) return 0;
+    const mid = Math.floor(prices.length / 2);
+    return prices.length % 2 ? prices[mid]! : (prices[mid - 1]! + prices[mid]!) / 2;
+  }
+
+  /**
+   * Drop bulk/bait BIDS priced above `reference × BAIT_CEIL`. Never returns an
+   * empty side when the input was non-empty (a fully-baited book still needs a
+   * best-bid), and is a no-op when there is no credible reference.
+   */
+  private static filterCredibleBuys(buyOrders: IOrderData[], reference: number): IOrderData[] {
+    if (reference <= 0 || buyOrders.length === 0) return buyOrders;
+    const ceil = reference * PRICE_CONFIG.BAIT_CEIL;
+    const kept = buyOrders.filter((o) => (Number(o.platinum) || 0) <= ceil);
+    return kept.length > 0 ? kept : buyOrders;
+  }
+
+  /** Drop troll-low ASKS priced below `reference × TROLL_FLOOR`. */
+  private static filterCredibleSells(sellOrders: IOrderData[], reference: number): IOrderData[] {
+    if (reference <= 0 || sellOrders.length === 0) return sellOrders;
+    const floor = reference * PRICE_CONFIG.TROLL_FLOOR;
+    const kept = sellOrders.filter((o) => (Number(o.platinum) || 0) >= floor);
+    return kept.length > 0 ? kept : sellOrders;
   }
 
   /**
@@ -339,6 +418,74 @@ export class OrderCalculator {
       return arr.slice(0, maxLevels);
     };
     return { buy: side('buy'), sell: side('sell') };
+  }
+
+  /**
+   * The best few NAMED orders per side, for the order-book dialog's "best
+   * sellers / best buyers" list + its trade-whisper buttons.
+   *
+   * Unlike {@link depthLadder} (aggregated by price, no identities) this keeps
+   * individual orders WITH the in-game name, so the client can build a
+   * warframe.market "/w …" whisper. Captured during the price sync from the same
+   * orders and stored on `item.market.topOrders`, so the request path serves it
+   * from the database (no live warframe.market call — those hang on the
+   * datacenter IP).
+   *
+   * Rules:
+   *  - Only CONTACTABLE users (ingame/online) — you cannot whisper an offline
+   *    trader, so listing them would be dead rows.
+   *  - Same dominant `subtype` as the prices/ladder, so it describes one tier.
+   *  - Same credibility band as the headline price (BAIT_CEIL / TROLL_FLOOR),
+   *    so a bulk-bait bid never shows up as a "best buyer".
+   *  - Buy side sorted highest-first, sell side lowest-first, capped at `count`.
+   *
+   * @param orders - Raw orders (v1-shaped, carrying quantity + subtype + user)
+   * @param options.subtype - Variant to keep (undefined = no subtype filter)
+   * @param options.goingRate - 48h average, for the credibility band
+   * @param options.count - Max rows per side (default TOP_ORDERS_COUNT = 5)
+   * @param options.statuses - Contactable statuses (default ['ingame','online'])
+   */
+  static topOrders(
+    orders: IOrderData[],
+    options: { subtype?: string; goingRate?: number; count?: number; statuses?: string[] } = {}
+  ): { buy: ITopOrder[]; sell: ITopOrder[] } {
+    const {
+      subtype,
+      goingRate,
+      count = PRICE_CONFIG.TOP_ORDERS_COUNT,
+      statuses = ['ingame', 'online']
+    } = options;
+
+    const statusSet = new Set(statuses);
+    const inScope = (o: IOrderData) =>
+      statusSet.has(o.user?.status) &&
+      (subtype === undefined || o.subtype === subtype) &&
+      (Number(o.platinum) || 0) > 0;
+
+    const rawBuy = (orders || []).filter((o) => o.order_type === 'buy' && inScope(o));
+    const rawSell = (orders || []).filter((o) => o.order_type === 'sell' && inScope(o));
+
+    const reference = this.referenceRate(goingRate, rawSell, rawBuy);
+    const credibleBuy = this.filterCredibleBuys(rawBuy, reference);
+    const credibleSell = this.filterCredibleSells(rawSell, reference);
+
+    const toRow = (o: IOrderData): ITopOrder => ({
+      platinum: Number(o.platinum) || 0,
+      quantity: Math.max(1, Math.floor(Number(o.quantity) || 1)),
+      ingame_name: o.user?.ingame_name || '',
+      status: o.user?.status || ''
+    });
+
+    const buy = [...credibleBuy]
+      .sort((a, b) => b.platinum - a.platinum)
+      .slice(0, count)
+      .map(toRow);
+    const sell = [...credibleSell]
+      .sort((a, b) => a.platinum - b.platinum)
+      .slice(0, count)
+      .map(toRow);
+
+    return { buy, sell };
   }
 
   /**

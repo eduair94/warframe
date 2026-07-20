@@ -16,7 +16,7 @@
 import { API_URLS, PRICE_CONFIG } from '../constants';
 import { sleep } from '../Express/config';
 import { IHttpClient } from '../interfaces/http.interface';
-import { OrderCalculator } from './OrderCalculator';
+import { OrderCalculator, ITopOrder } from './OrderCalculator';
 import { StatisticsCalculator, IStatisticsDataPoint } from './StatisticsCalculator';
 import { buildModFlipData, IModFlipData } from './ModFlipCalculator';
 import { rarityTier, isEndoRankableMod } from './EndoCost';
@@ -559,6 +559,8 @@ export class MarketService {
     subtype?: string;
     /** Order-book depth (price × quantity levels) for the bulk buy/sell modeler. */
     depth?: { buy: Array<{ price: number; quantity: number; orders: number }>; sell: Array<{ price: number; quantity: number; orders: number }> };
+    /** Best few NAMED orders per side, for the order-book dialog's whisper buttons. */
+    topOrders?: { buy: ITopOrder[]; sell: ITopOrder[] };
   }> {
     try {
       // Anti-detection pacing now happens once per HTTP request inside
@@ -577,18 +579,6 @@ export class MarketService {
       // the order prices and the statistics below so the stored baseline is
       // like-for-like (buy/sell/avg_price all describe the same tier).
       const subtype = OrderCalculator.dominantSubtype(ordersResponse.payload.orders);
-
-      // Calculate prices using OrderCalculator with appropriate filters
-      const prices = OrderCalculator.calculatePrices(
-        ordersResponse.payload.orders,
-        {
-          maxRank,
-          subtype,
-          // Ayatan sculpture filtering for filled sculptures
-          maxAmberStars: item.max_amber_stars,
-          maxCyanStars: item.max_cyan_stars
-        }
-      );
 
       // Fetch statistics ONCE (v1 endpoint, no v2 equivalent). The maxed-rank
       // aggregate below is secondary display data (volume/avg_price/
@@ -644,17 +634,47 @@ export class MarketService {
         }
       }
 
+      // The item's going rate — the 48h volume-weighted average of completed
+      // trades — anchors the credibility band that fences bulk/bait orders out of
+      // the headline best buy/sell (a bulk buyer bidding 42p on an Ayatan
+      // sculpture that really trades ~10p must not set `buy`). Falls back to the
+      // order-book median inside OrderCalculator when volume is too low to have an
+      // average. Computed here (not before the stats fetch) so it is available.
+      const goingRate = stats.avg_price;
+
+      // Calculate the headline buy/sell prices, now credibility-fenced.
+      const prices = OrderCalculator.calculatePrices(
+        ordersResponse.payload.orders,
+        {
+          maxRank,
+          subtype,
+          goingRate,
+          // Ayatan sculpture filtering for filled sculptures
+          maxAmberStars: item.max_amber_stars,
+          maxCyanStars: item.max_cyan_stars
+        }
+      );
+
       // Compact order-book depth (bulk buy/sell modeler) — extracted from the
       // orders we ALREADY fetched, so the request path can later serve it from
       // the database instead of hitting warframe.market live. Same dominant
       // subtype as the prices above, so it describes the same tier.
       const depth = OrderCalculator.depthLadder(ordersResponse.payload.orders, subtype);
 
+      // Best few NAMED, contactable orders per side — powers the order-book
+      // dialog's "best sellers / best buyers" list and its trade-whisper buttons.
+      // Same subtype + credibility band as the headline price above.
+      const topOrders = OrderCalculator.topOrders(ordersResponse.payload.orders, {
+        subtype,
+        goingRate
+      });
+
       return {
         ...prices,
         ...stats,
         ...(subtype ? { subtype } : {}),
         depth,
+        topOrders,
         ...(flip ? { flip } : {})
       };
     } catch (error: any) {
