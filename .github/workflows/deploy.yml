@@ -70,6 +70,12 @@ jobs:
         run: npm run i18n:check
         working-directory: app
 
+      # BLOCKING — docs/repo-map.md is generated from source (routes, endpoints,
+      # services, i18n sizes). If a route/endpoint was added without regenerating,
+      # the AI-facing map is a lie. Run `npm run repo:index` and commit the result.
+      - name: Repo map up to date (API)
+        run: npm run repo:index:check
+
   deploy:
     name: Deploy to prod (pm2)
     needs: ci
@@ -122,4 +128,8 @@ jobs:
             # over after). --only keeps this from re-triggering the heavy syncs
             # (items/rivens/drops) that `reload` intentionally leaves stopped.
             pm2 start ecosystem.config.js --only warframe-sync-translations --update-env || true
+            # Same reasoning for the Foundry catalogue (mastery/build checklist):
+            # a newly added entry needs one explicit start, and /foundry is empty
+            # until that first run populates the warframe-foundry collection.
+            pm2 start ecosystem.config.js --only warframe-sync-foundry --update-env || true
             pm2 save || true

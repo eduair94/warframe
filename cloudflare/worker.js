@@ -41,7 +41,21 @@ async function handle(request, ctx) {
   const url = new URL(request.url);
 
   // Only GETs to cacheable paths are handled; everything else passes through.
-  const cacheable = request.method === "GET" && !url.pathname.startsWith("/build_");
+  //
+  // PER-USER RESPONSES MUST NEVER ENTER THIS CACHE. The cache key below is the
+  // URL and nothing else, and Cloudflare's cache honours `Vary` only for
+  // Accept-Encoding — so a cached `/me` would be one signed-in user's whole
+  // account document (email, vault, trade ledger) served to everybody, and the
+  // 24h stale-on-error backup would serve it to anonymous callers too, with no
+  // auth check at all. Two independent guards, because either alone is enough
+  // to be wrong: the path list covers the account API, and the Authorization
+  // check covers any authenticated route added later.
+  const isPrivatePath = url.pathname === "/me" || url.pathname.startsWith("/me/");
+  const cacheable =
+    request.method === "GET" &&
+    !url.pathname.startsWith("/build_") &&
+    !isPrivatePath &&
+    !request.headers.has("Authorization");
   if (!cacheable) return fetch(request);
 
   const cache = caches.default;
@@ -84,6 +98,14 @@ async function handle(request, ctx) {
 
   // Derive edge TTL from the origin's Cache-Control (s-maxage > max-age).
   const cc = originResp.headers.get("Cache-Control") || "";
+
+  // Belt and braces on top of the path/Authorization guards above: if the origin
+  // itself says this response is per-user, do not store it at EITHER TTL. The
+  // backup copy is the dangerous one — it is written with a hardcoded 24h
+  // max-age that would otherwise ignore the origin's `no-store` entirely.
+  if (/(^|[\s,])(private|no-store)([\s,;]|$)/i.test(cc)) {
+    return withHeaders(originResp, { "x-edge-cache": "BYPASS" });
+  }
   const sMax = /s-maxage=(\d+)/.exec(cc);
   const max = /max-age=(\d+)/.exec(cc);
   const ttl = sMax ? +sMax[1] : max ? +max[1] : DEFAULT_TTL;

@@ -8,7 +8,14 @@
    Global stylesheet — every selector is prefixed `.an` so it stays contained.
    ========================================================================= */
 
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Rajdhani:wght@500;600;700&display=swap');
+/* Cinzel + Rajdhani are NOT imported here. A remote `@import` inside a bundled
+   stylesheet is the worst possible way to load a webfont: the browser cannot
+   even discover it until the app CSS has downloaded and parsed, so it becomes a
+   render-blocking request chained behind another render-blocking request
+   (Lighthouse measured ~1 s of blocking on it alone). Both families — and Open
+   Sans — are declared in nuxt.config.ts `fonts.families` and self-hosted as
+   woff2 by @nuxt/fonts, which also emits size-adjusted fallback metrics so the
+   swap costs no layout shift. */
 
 .an {
   --void: #0d0e17;
@@ -609,7 +616,10 @@
 }
 .pill--even {
   background: rgba(255, 255, 255, 0.05);
-  color: var(--ink-dim);
+  /* --ink-dim (#868ca6) on the near-black pill fell below the 4.5:1 WCAG AA
+     ratio for this small pill text. #aeb4c8 clears it (~7:1) while staying a
+     muted "neutral verdict" grey. */
+  color: #aeb4c8;
   border-color: var(--line);
 }
 

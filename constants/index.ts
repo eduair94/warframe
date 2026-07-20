@@ -170,7 +170,21 @@ export const COLLECTIONS = {
   TRANSLATIONS: 'warframe-translations',
 
   /** Web Push subscriptions + their price-alert thresholds, one doc per anonymous deviceId (see PushSubscriptionService) */
-  PUSH_SUBSCRIPTIONS: 'warframe-push-subscriptions'
+  PUSH_SUBSCRIPTIONS: 'warframe-push-subscriptions',
+
+  /**
+   * Signed-in player accounts: ONE document per Firebase uid holding the whole
+   * synced payload (watchlist, vault, goals, trades, settings). One read serves
+   * every account page — see UserDataService.
+   */
+  USERS: 'warframe-users',
+
+  /**
+   * Mastery / build catalogue for the Foundry tracker: one document
+   * ({ key: 'catalogue' }) holding every masterable item, its components and the
+   * aggregated resource requirements. See FoundryService.
+   */
+  FOUNDRY: 'warframe-foundry'
 } as const;
 
 /**
@@ -289,7 +303,17 @@ export const INBOUND_RATE_LIMIT = {
   BUILD_RELICS_WINDOW_MS: 60 * 60_000,
 
   /** Max build_relics requests per IP per window (it triggers a real DB sync) */
-  BUILD_RELICS_MAX_REQUESTS: 2
+  BUILD_RELICS_MAX_REQUESTS: 2,
+
+  /** Window size for the authenticated /me* limiter (ms) */
+  AUTH_WINDOW_MS: 5 * 60_000,
+
+  /**
+   * Max authenticated requests per IP per window. Generous because a normal
+   * session does one GET /me plus a debounced sync per edit burst, but low
+   * enough that a runaway client can't hammer Mongo with unbounded writes.
+   */
+  AUTH_MAX_REQUESTS: 240
 } as const;
 
 /**

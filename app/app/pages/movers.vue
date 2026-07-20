@@ -284,7 +284,7 @@ const fallbackRows = computed(() =>
   items.value
     .slice()
     .sort((a, b) => (b.volume || 0) - (a.volume || 0))
-    .slice(0, 150)
+    .slice(0, 40)
     .map((row) => ({
       key: row.url_name,
       href: mkt(row.url_name),

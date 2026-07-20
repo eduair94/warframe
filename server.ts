@@ -8,6 +8,10 @@ import { startCacheWarmer } from "./services/CacheWarmer";
 import { TranslationService } from "./services/TranslationService";
 import { PushAlertService } from "./services/PushAlertService";
 import { parseSubscribeBody } from "./services/pushValidate";
+import { firebaseAuth } from "./services/firebaseToken";
+import { UserDataService } from "./services/UserDataService";
+import { isSection } from "./services/userValidate";
+import type { AuthedRequest } from "./Express/Express.interface";
 
 async function main() {
     await MongooseServer.startConnectionPromise();
@@ -151,6 +155,15 @@ async function main() {
     server.postJson('push/subscribe', async (req: Request): Promise<any> => {
         const parsed = parseSubscribeBody(req.body);
         if ('error' in parsed) return { error: parsed.error };
+        // Optional: a signed-in device tags its subscription with its uid so the
+        // user can see which of their devices are subscribed. Never required —
+        // anonymous subscriptions keep working exactly as before, and a bad
+        // token is ignored rather than failing the subscribe.
+        const idToken = typeof req.body?.idToken === 'string' ? req.body.idToken : '';
+        if (idToken && firebaseAuth.isEnabled()) {
+            const verified = await firebaseAuth.verify(idToken).catch(() => null);
+            if (verified) parsed.value.uid = verified.uid;
+        }
         const doc = await pushSubs.upsert(parsed.value);
         return { ok: true, count: doc.alerts.length };
     });
@@ -158,6 +171,62 @@ async function main() {
         const deviceId = typeof req.body?.deviceId === 'string' ? req.body.deviceId.trim() : '';
         if (!deviceId) return { error: 'deviceId required' };
         await pushSubs.remove(deviceId);
+        return { ok: true };
+    });
+
+    // Foundry tracker: the mastery/build catalogue (every masterable item, its
+    // components and the aggregated resource requirements). One big, static-ish
+    // payload — cached like the other aggregates; the per-user progress on top
+    // of it lives in the account document, never here.
+    server.getJsonCache('foundry/catalogue', async (_req: Request): Promise<any> => {
+        return m.getFoundryCatalogue();
+    });
+    // Rebuilds the Foundry catalogue from WFCD (protected: triggers a real fetch).
+    server.getJsonProtected('build_foundry', async (_req: Request): Promise<any> => {
+        return m.syncFoundry();
+    });
+
+    // --- Tenno accounts (Firebase Auth: magic link + Google) ---
+    // Optional sign-in that turns the local-first tools (watchlist, vault,
+    // farming goals, trade ledger) into cloud-synced ones. Every route below is
+    // UNCACHED and per-user (see Express.getJsonAuth / postJsonAuth); the whole
+    // feature stays off unless FIREBASE_PROJECT_ID is set, exactly like Web Push
+    // stays off without VAPID keys. See services/firebaseToken.
+    const users = new UserDataService();
+    // Public: lets the client decide whether to load the Firebase SDK at all.
+    server.getJson('auth/config', async (_req: Request): Promise<any> => {
+        return { enabled: firebaseAuth.isEnabled(), projectId: firebaseAuth.getProjectId() };
+    });
+    // The whole account payload in one read — every account page renders from it.
+    server.getJsonAuth('me', async (req: AuthedRequest): Promise<any> => {
+        const locale = typeof req.query.locale === 'string' ? req.query.locale : undefined;
+        const doc = await users.getOrCreate(req.user, locale);
+        return { ok: true, user: doc };
+    });
+    // Replace ONE section (watchlist | vault | goals | trades | settings).
+    server.postJsonAuth('me/sync', async (req: AuthedRequest): Promise<any> => {
+        const section = req.body?.section;
+        if (!isSection(section)) return { error: 'unknown section' };
+        const data = await users.saveSection(req.user, section, req.body?.value);
+        return { ok: true, section, updatedAt: data.updatedAt };
+    });
+    // First sign-in on a device: union the local snapshot with the stored copy
+    // (newest wins per entry, never destructive). See services/userMerge.
+    server.postJsonAuth('me/merge', async (req: AuthedRequest): Promise<any> => {
+        const locale = typeof req.body?.locale === 'string' ? req.body.locale : undefined;
+        const doc = await users.merge(req.user, req.body?.data, locale);
+        return { ok: true, user: doc };
+    });
+    server.postJsonAuth('me/profile', async (req: AuthedRequest): Promise<any> => {
+        const doc = await users.saveProfile(req.user, {
+            displayName: req.body?.displayName,
+            locale: req.body?.locale,
+        });
+        return { ok: true, user: doc };
+    });
+    // Data-deletion request: drops the entire account document.
+    server.postJsonAuth('me/delete', async (req: AuthedRequest): Promise<any> => {
+        await users.remove(req.user.uid);
         return { ok: true };
     });
 

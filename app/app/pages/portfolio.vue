@@ -119,6 +119,7 @@ import {
   updateEntry,
   type WatchlistEntry,
 } from '../services/portfolio'
+import { onSectionWrite } from '~/utils/userStorage'
 import { subscribeLive } from '~/composables/useLiveFeed'
 import type { LiveUpdate } from '~/utils/liveTypes'
 
@@ -210,6 +211,12 @@ const enrichedWatchlist = computed(() =>
 const totalValue = computed<number>(() =>
   enrichedWatchlist.value.reduce((sum, e) => sum + (e.value || 0), 0),
 )
+
+// The watchlist is now shared storage: /vault, /account (import, sign-in merge,
+// reset) and the cloud sync all write it through `utils/userStorage`. Without
+// this subscription the page would keep rendering the snapshot it read on mount
+// and silently re-save it over whatever arrived.
+let offSectionWrite: (() => void) | null = null
 
 function refresh() {
   watchlist.value = getWatchlist()
@@ -404,6 +411,11 @@ onMounted(async () => {
   // repo convention: kill the global loading spinner or it spins forever
   document.getElementById('spinner-wrapper')?.style.setProperty('display', 'none')
   refresh()
+  // Re-read whenever the shared watchlist storage is written from anywhere else
+  // (the sign-in merge, an /account import or reset, a cloud sync landing).
+  offSectionWrite = onSectionWrite((section) => {
+    if (section === 'watchlist') refresh()
+  })
   if (typeof window !== 'undefined' && 'Notification' in window) {
     notificationPermission.value = Notification.permission
   } else {
@@ -435,6 +447,7 @@ onMounted(async () => {
   maybeAutoStart()
 })
 onBeforeUnmount(() => {
+  if (offSectionWrite) offSectionWrite()
   if (alertInterval) clearInterval(alertInterval)
   for (const [, off] of liveUnsubs) off()
   liveUnsubs.clear()

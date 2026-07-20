@@ -380,7 +380,7 @@ const filtered = computed<any[]>(() => {
 // the fallback matches whatever default state (all sets, sorted by best
 // parts-deal %) the page opens on server-side.
 const fallbackRows = computed(() =>
-  filtered.value.slice(0, 150).map((row) => ({
+  filtered.value.slice(0, 40).map((row) => ({
     key: row.url_name,
     href: '/set/' + row.url_name,
     name: localItemName(row).replace(' Set', ''),

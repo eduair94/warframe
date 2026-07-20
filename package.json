@@ -15,10 +15,11 @@
     "sync_drops": "ts-node sync_drops.ts",
     "sync_nodes": "ts-node sync_nodes.ts",
     "sync_translations": "ts-node sync_translations.ts",
+    "sync_foundry": "ts-node sync_foundry.ts",
     "enrich_tools": "ts-node scripts/enrich-tools.ts",
-    "debug:ayatan": "ts-node debug-ayatan.ts",
-    "test_unidici": "ts-node test-warframe-undici.ts",
-    "test_403": "ts-node test-403.ts",
+    "debug:ayatan": "ts-node scripts/dev/debug-ayatan.ts",
+    "test_unidici": "ts-node scripts/dev/test-warframe-undici.ts",
+    "test_403": "ts-node scripts/dev/test-403.ts",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
@@ -35,7 +36,9 @@
     "lint": "eslint \"**/*.ts\" --ignore-pattern app --ignore-pattern node_modules --ignore-pattern dist",
     "lint:fix": "npm run lint -- --fix",
     "format": "prettier --write \"**/*.ts\"",
-    "format:check": "prettier --check \"**/*.ts\""
+    "format:check": "prettier --check \"**/*.ts\"",
+    "repo:index": "node scripts/gen-repo-index.mjs",
+    "repo:index:check": "node scripts/gen-repo-index.mjs --check"
   },
   "keywords": [
     "warframe",
@@ -60,6 +63,7 @@
     "express-recaptcha": "^5.1.0",
     "express-validator": "^7.0.1",
     "http2-wrapper": "^2.2.1",
+    "jsonwebtoken": "^9.0.3",
     "mongoose": "^6.10.0",
     "proxy-agent": "^6.5.0",
     "route-cache": "^0.6.1",
@@ -76,6 +80,7 @@
   "devDependencies": {
     "@google/genai": "^2.12.0",
     "@types/jest": "^29.5.14",
+    "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^20.4.5",
     "@types/route-cache": "^0.5.3",
     "@types/web-push": "^3.6.4",

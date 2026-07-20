@@ -369,7 +369,7 @@
             :aria-label="t('setDetail.donatePaypal')"
             href="https://ko-fi.com/cambio_uruguay"
           >
-            <v-img max-width="40" height="40" src="/img/paypal_icon.png">
+            <v-img max-width="40" height="40" src="/img/paypal_icon.webp">
               <template #sources><source srcset="/img/paypal_icon.webp" /></template>
             </v-img>
           </a>
@@ -379,7 +379,7 @@
             :aria-label="t('setDetail.donateMercadoPago')"
             href="https://mpago.la/19j46vX"
           >
-            <v-img max-width="40" height="40" src="/img/mercadopago_icon.png">
+            <v-img max-width="40" height="40" src="/img/mercadopago_icon.webp">
               <template #sources><source srcset="/img/mercadopago_icon.webp" /></template>
             </v-img>
           </a>

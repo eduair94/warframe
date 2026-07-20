@@ -223,7 +223,10 @@
     <section v-if="!loading && planets.length" class="sc-find">
       <div class="sc-find__text">
         <div class="an-eyebrow">{{ t('starChart.find.eyebrow') }}</div>
-        <h3 class="sc-find__title">{{ t('starChart.find.title') }}</h3>
+        <!-- h2, not h3: this is a top-level section under the page h1. The only
+             other h2 (the planet panel) is conditionally rendered, so an h3 here
+             skipped a level whenever no planet was selected (heading-order). -->
+        <h2 class="sc-find__title">{{ t('starChart.find.title') }}</h2>
       </div>
       <v-autocomplete
         v-model="findItem"

@@ -31,6 +31,9 @@ export default {
         radiant: 'Radiant',
         // {mins} is a styled <b> span injected via <i18n-t>.
         minutes: 'Minutes per relic run · {mins}',
+        // Accessible name for the slider itself (the visible label is a separate
+        // <i18n-t> node the slider thumb can't reference).
+        minutesAria: 'Minutes per relic run',
         sortBy: 'Sort by',
         allTiers: 'All',
       },

@@ -29,7 +29,9 @@
       </div>
 
       <section v-for="sec in sections" :key="sec.key" class="ct-section">
-        <div class="ct-section__title">{{ t('communityTools.sections.' + sec.key) }}</div>
+        <!-- h2 (was a styled <div>): the section heading between the page h1 and
+             the h3 card titles. Without it the cards' h3 skipped a level. -->
+        <h2 class="ct-section__title">{{ t('communityTools.sections.' + sec.key) }}</h2>
         <div class="ct-grid">
           <article v-for="tool in sec.tools" :key="tool.slug" class="an-card ct-card" :class="{ 'is-top': tool.featured }">
             <div class="ct-card__shot">

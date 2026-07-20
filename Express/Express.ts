@@ -7,8 +7,13 @@ import rateLimit from "express-rate-limit";
 import * as http from "http";
 import { bError } from "../utils";
 import { INBOUND_RATE_LIMIT } from "../constants";
-import { FunctionExpress } from "./Express.interface";
+import {
+  AuthedRequest,
+  FunctionExpress,
+  FunctionExpressAuth,
+} from "./Express.interface";
 import { cache } from "../services/CacheService";
+import { firebaseAuth } from "../services/firebaseToken";
 
 // Default edge/L2 TTL for cached GET routes. The heavy aggregates cost ~20s of
 // CPU to recompute, so a longer fresh window means far fewer recomputes on a
@@ -188,6 +193,101 @@ class Express {
       async (req: Request, res: Response) => {
         const result: any = await f(req, res).catch((e) => {
           return bError(e.message);
+        });
+        res.json(result);
+      }
+    );
+  }
+
+  /**
+   * Shared limiter for every authenticated route. A signed-in session does one
+   * GET /me plus a debounced sync per edit burst, so this is generous — it only
+   * exists so a runaway client can't hammer Mongo with unbounded writes.
+   */
+  private authLimiter = rateLimit({
+    windowMs: INBOUND_RATE_LIMIT.AUTH_WINDOW_MS,
+    limit: INBOUND_RATE_LIMIT.AUTH_MAX_REQUESTS,
+    standardHeaders: true,
+    legacyHeaders: false,
+    message: { error: "Too many requests, please try again later." },
+    // Bucket on the VERIFIED Firebase uid, not on req.ip. `trust proxy` is true
+    // (the app sits behind a cloudflared tunnel), so req.ip is the left-most
+    // X-Forwarded-For entry — fully client-supplied, and therefore a limit an
+    // attacker can sidestep by rotating one header. The uid comes from a
+    // signature-checked token, so it cannot be forged; this middleware runs
+    // AFTER requireAuth so it is always populated.
+    keyGenerator: (req: Request) => (req as AuthedRequest).user?.uid || "anonymous",
+  });
+
+  /**
+   * Verifies the `Authorization: Bearer <firebase id token>` header and hangs
+   * the resulting identity off `req.user`. 401s on anything unverifiable.
+   */
+  private requireAuth = async (req: Request, res: Response, next: NextFunction) => {
+    // Stamp the private headers FIRST so they apply to the rejection responses
+    // too. A cached 401/503 would be almost as bad as a cached payload: the
+    // edge would pin "unauthorized" for every user until the entry expired.
+    this.setPrivateHeaders(res);
+    if (!firebaseAuth.isEnabled()) {
+      res.status(503).json({ error: "auth disabled" });
+      return;
+    }
+    const header = req.headers.authorization || "";
+    const token = header.startsWith("Bearer ") ? header.slice(7).trim() : "";
+    if (!token) {
+      res.status(401).json({ error: "unauthorized" });
+      return;
+    }
+    try {
+      (req as AuthedRequest).user = await firebaseAuth.verify(token);
+      next();
+    } catch (e: any) {
+      res.status(401).json({ error: e?.message || "unauthorized" });
+    }
+  };
+
+  /**
+   * Per-user responses must NEVER touch the shared cache: getJson/getJsonCache
+   * key `cache.getOrSet` on `req.originalUrl`, so two accounts hitting `/me`
+   * would be served each other's vault. These wrappers bypass the cache
+   * entirely and tell every intermediary (browser, Cloudflare) the same.
+   */
+  private setPrivateHeaders(res: Response): void {
+    res.set("Cache-Control", "private, no-store, max-age=0");
+    res.set("Vary", "Authorization");
+  }
+
+  /** Authenticated, UNCACHED GET. Handler receives `req.user`. */
+  public getJsonAuth(requestUrl: string, f: FunctionExpressAuth): void {
+    this.app.get(
+      `${this.baseUrl}${requestUrl}`,
+      this.requireAuth,
+      this.authLimiter,
+      async (req: Request, res: Response) => {
+        this.setPrivateHeaders(res);
+        const result: any = await f(req as AuthedRequest, res).catch((e) =>
+          bError(e?.message || "error")
+        );
+        res.json(result);
+      }
+    );
+  }
+
+  /**
+   * Authenticated, UNCACHED POST. Unlike `postJson` this always sends a
+   * response (postJson's express-validator branch `return`s an object instead
+   * of responding, hanging the request) — handlers validate their own body.
+   */
+  public postJsonAuth(requestUrl: string, f: FunctionExpressAuth): void {
+    this.app.post(
+      `${this.baseUrl}${requestUrl}`,
+      this.requireAuth,
+      this.authLimiter,
+      async (req: Request, res: Response) => {
+        this.setPrivateHeaders(res);
+        const result: any = await f(req as AuthedRequest, res).catch((e) => {
+          console.error("[auth route]", requestUrl, e?.message);
+          return bError(e?.message || "error");
         });
         res.json(result);
       }

@@ -20,7 +20,7 @@
  * All of it is client-only, listener-passive and wrapped so that no analytics
  * failure can ever break navigation or a click.
  */
-import { toolFromPath, trackEvent, setUserProperties } from '~/composables/useAnalytics'
+import { toolFromPath, trackEvent, setUserProperties, flushPendingEvents } from '~/composables/useAnalytics'
 
 /** Outbound hosts we care enough about to label instead of lumping as "other". */
 const DOMAIN_LABELS: Array<[RegExp, string]> = [
@@ -48,6 +48,43 @@ export default defineNuxtPlugin((nuxtApp) => {
   if (!import.meta.client) return
 
   const router = useRouter()
+
+  // ---- 0. lazy gtag.js boot -------------------------------------------------
+  // The tag is configured `initMode: 'manual'` so nothing third-party runs while
+  // the app hydrates: gtag.js is ~160 KB to fetch, parse and execute, and it was
+  // the single largest item in Total Blocking Time — a cost paid on the main
+  // thread, during the exact window in which the page is supposed to become
+  // usable, for a script the visitor gains nothing from.
+  //
+  // It boots on the FIRST real interaction — a tap, a key, a scroll — which is
+  // both the moment the visitor has actually engaged and the moment the main
+  // thread is provably free. A long timer is the backstop for genuinely passive
+  // sessions (a page left open, read without scrolling).
+  //
+  // Nothing is lost by waiting: useAnalytics buffers every event (including the
+  // initial page_view) and flushPendingEvents replays the queue into dataLayer
+  // as soon as the tag is up.
+  const PASSIVE_BOOT_DELAY = 10_000
+  const INTERACTION_EVENTS = ['pointerdown', 'keydown', 'touchstart', 'scroll'] as const
+  let gtagBooted = false
+  const bootGtag = () => {
+    if (gtagBooted) return
+    gtagBooted = true
+    for (const type of INTERACTION_EVENTS) window.removeEventListener(type, bootGtag, true)
+    try {
+      useGtag().initialize()
+      flushPendingEvents()
+    } catch {
+      // A blocked or failed tag must never surface to the user.
+    }
+  }
+  for (const type of INTERACTION_EVENTS) {
+    window.addEventListener(type, bootGtag, { passive: true, capture: true })
+  }
+  nuxtApp.hook('app:mounted', () => {
+    setTimeout(bootGtag, PASSIVE_BOOT_DELAY)
+  })
+
   const config = useRuntimeConfig().public.gtag as { tags?: Array<{ id?: string } | string> }
   // page_view is routed to the GA4 property only: the Google Ads tag fires its
   // own on load and does not need one hit per SPA navigation.

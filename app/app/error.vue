@@ -12,7 +12,7 @@
       :aria-label="t('error404.homeCta')"
       @click.prevent="go('/')"
     >
-      <img src="/img/logo.png" alt="Warframe Market Analytics" />
+      <img src="/img/logo.webp" alt="Warframe Market Analytics" />
     </a>
 
     <main class="nf__console">

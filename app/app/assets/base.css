@@ -1,12 +1,26 @@
 /* Base body font. Vuetify 2's `defaultAssets.font` auto-applied Open Sans via
-   an injected stylesheet; Vuetify 3 has no equivalent, so it's set explicitly
-   here. Open Sans itself is loaded by @nuxtjs/google-fonts (see `googleFonts`
-   in nuxt.config.ts) — this file only sets the font-family, it does not
-   re-load the font. */
+   an injected stylesheet; Vuetify 3/4 has no equivalent, so it's set explicitly
+   here. Open Sans itself is self-hosted by @nuxt/fonts (see `fonts.families` in
+   nuxt.config.ts) — this file only sets the font-family, it does not load it. */
 html,
 body,
 .v-application {
   font-family: 'Open Sans', sans-serif;
+}
+
+/* Screen-reader-only text: visually removed but present in the accessibility
+   tree. Global so any component can name an icon-only control without shipping
+   its own copy. */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 /* Links are distinguished by colour, not underline, across the app. */

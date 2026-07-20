@@ -31,12 +31,18 @@ Dashboard → **Caching → Cache Rules → Create rule**.
 **When incoming requests match** (edit expression):
 
 ```
-(http.host eq "warframe.digitalshopuy.com" and http.request.method eq "GET" and not starts_with(http.request.uri.path, "/build_"))
+(http.host eq "warframe.digitalshopuy.com" and http.request.method eq "GET" and not starts_with(http.request.uri.path, "/build_") and not starts_with(http.request.uri.path, "/me"))
 ```
 
 - `method eq "GET"` — never cache POSTs.
 - `not starts_with(... "/build_")` — never cache the protected sync endpoints
   (`/build_relics`, `/build_drops`), which must always run live.
+- `not starts_with(... "/me")` — the signed-in account API (`/me`, `/me/sync`,
+  `/me/merge`, …). These are PER-USER. The edge cache key is the URL alone and
+  Cloudflare honours `Vary` only for Accept-Encoding, so a cached `/me` would
+  hand one user's whole account document to everybody. The origin already sends
+  `private, no-store` and the "use cache-control header if present" Edge TTL
+  setting respects that — this exclusion is the second lock.
 
 **Then**:
 
@@ -85,4 +91,9 @@ it working.
 - `warframe-app.digitalshopuy.com` (the Nuxt frontend / SSR HTML) — leave on its
   own default. This doc is only about the API host.
 - `/build_relics`, `/build_drops` — mutating sync triggers (excluded above).
+- `/me`, `/me/*` — the signed-in account API. Per-user, `private, no-store`.
+  Both the dashboard rule above and `cloudflare/worker.js` exclude these
+  explicitly, and the Worker additionally refuses to store ANY response whose
+  origin `Cache-Control` contains `private` or `no-store`, or any request that
+  carries an `Authorization` header.
 - `/live-io/**` — the realtime Socket.IO path (on the frontend host, not the API).

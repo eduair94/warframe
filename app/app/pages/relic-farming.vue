@@ -87,6 +87,7 @@
                 color="#d4af5a"
                 track-color="rgba(255,255,255,0.14)"
                 class="an-mins__slider"
+                :aria-label="t('relicFarming.filters.minutesAria')"
                 @end="onMinutes"
               ></v-slider>
             </div>

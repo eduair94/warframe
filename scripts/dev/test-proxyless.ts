@@ -1,5 +1,5 @@
-import "./env";
-import WarframeUndici from "./warframe-undici";
+import "../../env";
+import WarframeUndici from "../../warframe-undici";
 
 async function testProxylessSupport() {
   console.log("🚀 Testing Warframe Undici with proxyless support...\n");

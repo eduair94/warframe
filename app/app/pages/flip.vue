@@ -249,12 +249,22 @@ function categoryOf(tags: string[] = []): string {
   return 'Other'
 }
 
+// A single timestamp shared between the SSR render and the client's hydration
+// render. scoreFlip's fill-confidence decays with the age of the last trade
+// (`nowMs - last_completed`), so calling it with the default `Date.now()` gave
+// the server and the client DIFFERENT scores — the client hydrates a few seconds
+// later — and the SSR fallback table (fallbackRows) then hydrated with mismatched
+// values. useState serialises the server's value into the payload so both sides
+// score against the same instant. (It stays frozen after hydration, which is
+// fine: freshness comes from the 2-min catalogue refetch, not from this clock.)
+const nowMs = useState('flip-now', () => Date.now())
+
 // Every item that quotes both a bid and an ask, scored once. Base pool for the
 // plausible/speculative split below.
 const scored = computed<any[]>(() =>
   (allItems.value as any[])
     .filter((i) => i && i.market && Number(i.market.buy) > 0 && Number(i.market.sell) > 0)
-    .map((i) => ({ ...i, s: scoreFlip(i.market) }))
+    .map((i) => ({ ...i, s: scoreFlip(i.market, nowMs.value) }))
 )
 
 const plausibleAll = computed<any[]>(() => scored.value.filter((r) => r.s.plausible))
@@ -293,7 +303,7 @@ const filtered = computed<any[]>(() => {
 // why): top 150 of the same filtered+sorted list the live table renders
 // (default sort: opportunity score, descending).
 const fallbackRows = computed(() =>
-  filtered.value.slice(0, 150).map((row) => ({
+  filtered.value.slice(0, 40).map((row) => ({
     key: row.url_name,
     href: mkt(row.url_name),
     name: localItemName(row),

@@ -1,6 +1,6 @@
-import "./env";
-import { MongooseServer } from "./database";
-import WarframeUndici from "./warframe-undici";
+import "../../env";
+import { MongooseServer } from "../../database";
+import WarframeUndici from "../../warframe-undici";
 
 async function debugAyatan() {
   console.log("Debugging Ayatan Orta Sculpture Sync...\n");

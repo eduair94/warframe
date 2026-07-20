@@ -48,6 +48,25 @@
 }
 
 /* -------------------------------------------------------------------------
+   0. Layout offset — reserve the fixed app bar's height before hydration
+   -------------------------------------------------------------------------
+   Vuetify's layout composable MEASURES the app bar in the browser and only then
+   writes `--v-layout-top` onto <main>. Server-side it has nothing to measure, so
+   the SSR markup ships `--v-layout-top: 0px` and the entire page sits under the
+   fixed 64px bar until hydration, at which point everything jumps down 64px.
+   Lighthouse scored that single jump as 0.078 CLS on every page.
+
+   The bar is `position: fixed` and always present at a constant 64px, so the
+   offset is a known constant and can simply be asserted. `!important` is
+   required (and sufficient): Vuetify writes the variable as an inline style,
+   which an ordinary rule cannot beat, and post-hydration it writes the same
+   64px anyway — so this only ever changes the pre-hydration frame.
+   ------------------------------------------------------------------------- */
+.v-application .v-main {
+  --v-layout-top: 64px !important;
+}
+
+/* -------------------------------------------------------------------------
    1. Form fields — v-text-field / v-select / v-autocomplete / v-combobox
    ------------------------------------------------------------------------- */
 .v-field {

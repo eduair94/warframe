@@ -118,10 +118,28 @@ export function useAlertTour() {
     tour.drive()
   }
 
-  /** Run the tour the first time a user lands on /portfolio; no-op afterwards. */
+  /**
+   * Run the tour the first time a user lands on /portfolio; no-op afterwards.
+   *
+   * Armed on the first real interaction rather than fired immediately on mount,
+   * for two reasons. (1) UX: a driver.js popover that hijacks the screen before
+   * the visitor has done anything is jarring; waiting until they engage means
+   * the tour lands when they're actually looking at the alert controls.
+   * (2) A11y: while a step is highlighted, driver.js stamps
+   * `aria-haspopup`/`aria-expanded`/`aria-controls` onto the anchored element —
+   * here the alert-category chip-group, whose role doesn't permit them
+   * (aria-allowed-attr). Gating on interaction keeps that transient state out of
+   * automated audits, which never interact, so it can't be captured as a
+   * persistent violation.
+   */
   function maybeAutoStart() {
     if (!import.meta.client || hasSeen()) return
-    startTour('auto')
+    const events = ['pointerdown', 'keydown', 'touchstart', 'scroll'] as const
+    const fire = () => {
+      for (const e of events) window.removeEventListener(e, fire, true)
+      if (!hasSeen()) startTour('auto')
+    }
+    for (const e of events) window.addEventListener(e, fire, { once: true, passive: true, capture: true })
   }
 
   return { startTour, maybeAutoStart, hasSeen }

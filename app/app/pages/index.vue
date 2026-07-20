@@ -480,7 +480,7 @@ const redditThreadUrl =
 const fallbackRows = computed(() =>
   [...allItems.value]
     .sort((a, b) => (b?.market?.volume || 0) - (a?.market?.volume || 0))
-    .slice(0, 150)
+    .slice(0, 40)
     .map((item) => ({
       key: item.url_name,
       href: 'https://warframe.market/items/' + item.url_name,

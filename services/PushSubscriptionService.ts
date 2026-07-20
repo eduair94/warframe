@@ -27,6 +27,12 @@ export interface PushSubDoc {
   keys: { p256dh: string; auth: string };
   alerts: StoredAlert[];
   locale?: string;
+  /**
+   * Firebase uid, when the subscribing device was signed in. Anonymous devices
+   * (the original Spec B behaviour) simply omit it; it exists so a signed-in
+   * user can see/manage which of their devices are subscribed.
+   */
+  uid?: string | null;
   createdAt?: string;
   lastSeen?: string;
 }
@@ -36,6 +42,7 @@ export interface UpsertInput {
   subscription: WebPushSubscription;
   alerts: IncomingAlert[];
   locale?: string;
+  uid?: string | null;
 }
 
 export class PushSubscriptionService {
@@ -73,6 +80,7 @@ export class PushSubscriptionService {
       },
       alerts,
       locale: input.locale || prev?.locale || "en",
+      uid: input.uid ?? prev?.uid ?? null,
       createdAt: prev?.createdAt || new Date().toISOString(),
       lastSeen: new Date().toISOString(),
     };

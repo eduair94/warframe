@@ -10,14 +10,19 @@
         <v-icon>mdi-menu</v-icon>
         <span class="app-menu-btn__label d-none d-sm-inline">{{ t('nav.menu') }}</span>
       </v-btn>
+      <!-- 441x57 source. `aspect-ratio` makes the browser reserve the right box
+           before the file arrives; without it the app bar reflowed on load and
+           pushed the whole page down (measured as 0.078 CLS). -->
       <v-img
         max-height="90%"
         max-width="65vw"
         contain
+        :aspect-ratio="441 / 57"
         alt="logo warframe analytics"
         class="logo_image"
         position="left center"
-        src="/img/logo.png"
+        src="/img/logo.webp"
+        fetchpriority="high"
         @click="scrollTop"
       />
       <v-spacer />
@@ -32,6 +37,7 @@
       </v-btn>
       <GitHubButton icon color="white" class="mr-2" :text="t('star_on_github')" :title="t('star_on_github')" />
       <PwaInstall />
+      <AccountMenu />
       <LanguageMenu />
     </v-app-bar>
 
@@ -213,6 +219,11 @@ const navLinks: NavLink[] = [
   { to: '/forma-relics', key: 'formaRelics', icon: 'mdi-vector-triangle', group: 'Tools' },
   { to: '/riven-value', key: 'rivenValue', icon: 'mdi-star-four-points-outline', group: 'Tools' },
   { to: '/portfolio', key: 'portfolio', icon: 'mdi-briefcase-variant-outline', group: 'Tools' },
+  { to: '/foundry', key: 'foundry', icon: 'mdi-anvil', group: 'Account' },
+  { to: '/vault', key: 'vault', icon: 'mdi-treasure-chest', group: 'Account' },
+  { to: '/goals', key: 'goals', icon: 'mdi-target', group: 'Account' },
+  { to: '/ledger', key: 'ledger', icon: 'mdi-notebook-outline', group: 'Account' },
+  { to: '/account', key: 'account', icon: 'mdi-account-cog-outline', group: 'Account' },
   { to: '/guides', key: 'knowledgeCenter', icon: 'mdi-book-open-page-variant', group: 'Guides' },
   { to: '/guides/new-player', key: 'newPlayerGuide', icon: 'mdi-flag-checkered', group: 'Guides' },
   { to: '/faq', key: 'faq', icon: 'mdi-help-circle-outline', group: 'Guides' },
@@ -227,11 +238,14 @@ const SECTION_KEYS: Record<string, string> = {
   Prices: 'prices',
   Analytics: 'analytics',
   Tools: 'tools',
+  Account: 'account',
   Guides: 'guides',
   Resources: 'resources',
 }
 const drawerSections = computed(() => {
-  const order: (string | null)[] = [null, 'Prices', 'Analytics', 'Tools', 'Guides', 'Resources']
+  const order: (string | null)[] = [
+    null, 'Prices', 'Analytics', 'Tools', 'Account', 'Guides', 'Resources'
+  ]
   return order
     .map((g) => ({
       key: g ? SECTION_KEYS[g] : null,

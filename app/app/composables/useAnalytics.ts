@@ -30,13 +30,43 @@ const MAX_PARAMS = 25
 export type AnalyticsParams = Record<string, string | number | boolean | null | undefined>
 
 /**
+ * Events recorded before gtag.js has booted.
+ *
+ * gtag.js is loaded lazily (nuxt.config `gtag.initMode: 'manual'` + the idle /
+ * first-interaction boot in plugins/analytics.client.ts) because it was the
+ * single largest contributor to Total Blocking Time. Until it boots there is no
+ * `window.dataLayer` to push to, and the first `page_view` — the most important
+ * hit on the page — happens well before that. So it is buffered here and
+ * replayed by `flushPendingEvents()` the moment the tag comes up.
+ *
+ * Capped: if the tag never loads at all (ad blocker, consent tooling, offline)
+ * this must not grow for the lifetime of the tab.
+ */
+const MAX_PENDING = 50
+const pending: IArguments[] = []
+
+/**
  * gtag's transport. Must be a `function` (not an arrow) — gtag.js reads the
  * live `arguments` object off the pushed value, so a spread array would be
  * ignored. Same trick nuxt-gtag uses internally.
  */
 function gtag(..._args: any[]) {
   // eslint-disable-next-line prefer-rest-params
-  ;(window as any).dataLayer?.push(arguments)
+  const args = arguments
+  const dataLayer = (window as any).dataLayer
+  if (dataLayer) dataLayer.push(args)
+  else if (pending.length < MAX_PENDING) pending.push(args)
+}
+
+/**
+ * Replays everything recorded before gtag.js booted. Called once by
+ * plugins/analytics.client.ts, immediately after the tag is initialized (so the
+ * `js` + `config` commands nuxt-gtag queues are already in front of them).
+ */
+export function flushPendingEvents() {
+  const dataLayer = (window as any).dataLayer
+  if (!dataLayer) return
+  while (pending.length) dataLayer.push(pending.shift()!)
 }
 
 /** Drop empty values, flatten to primitives, clamp to GA4's limits. */

@@ -2,33 +2,33 @@
  * Client-side portfolio/watchlist + price-alert storage.
  *
  * README Roadmap listed "User portfolio tracking" and "Real-time price
- * alerts" as unbuilt. Neither the backend nor frontend has any user account
- * system, so this implements both as a localStorage-backed watchlist rather
- * than building full auth/accounts - each browser keeps its own list, and
- * alert thresholds are checked against live prices already in the Pinia
- * store (no server push/polling infrastructure needed).
+ * alerts" as unbuilt. This started as a localStorage-only watchlist because
+ * the app had no accounts; it still is one — the app stayed deliberately
+ * local-first — but the reads/writes now go through `utils/userStorage`, the
+ * shared storage layer the account tools (/vault, /goals, /ledger) use. That
+ * layer notifies `useUserData()` on every write, so a change made here is
+ * mirrored to the signed-in user's cloud copy without this module knowing
+ * anything about auth. The localStorage key is unchanged
+ * (`warframe_portfolio_v1`), so existing visitors keep their watchlist.
+ *
+ * The exported function signatures are untouched — /portfolio, AlertCard and
+ * AlertEditSheet consume them as before.
  */
 
-const STORAGE_KEY = 'warframe_portfolio_v1'
+import {
+  readSection,
+  writeSection,
+  type WatchlistEntry as StoredWatchlistEntry,
+} from '../utils/userStorage'
 
-export interface WatchlistEntry {
-  url_name: string
-  item_name: string
-  addedAt: string
-  ownedQty: number
-  alertBelow: number | null
-  alertAbove: number | null
-  notifiedBelow: boolean
-  notifiedAbove: boolean
-  /**
-   * Alert when the item hits (or comes within a hair of) its all-time low in
-   * OUR long price history - warframe.market can't offer this because its
-   * per-item chart only reaches back 90 days. Evaluated against the
-   * /market_analytics feed's pctFromAtl.
-   */
-  alertAtl?: boolean
-  notifiedAtl?: boolean
-}
+/**
+ * Alert semantics recap (fields defined in utils/userStorage):
+ * `alertAtl` fires when the item hits (or comes within a hair of) its all-time
+ * low in OUR long price history — warframe.market can't offer this because its
+ * per-item chart only reaches back 90 days. Evaluated against the
+ * /market_analytics feed's pctFromAtl.
+ */
+export type WatchlistEntry = StoredWatchlistEntry
 
 /** Minimal analytics needed to evaluate the all-time-low alert. */
 export interface AnalyticsLite {
@@ -44,23 +44,11 @@ function isBrowser(): boolean {
 }
 
 function readAll(): Record<string, WatchlistEntry> {
-  if (!isBrowser()) return {}
-  try {
-    const raw = window.localStorage.getItem(STORAGE_KEY)
-    return raw ? JSON.parse(raw) : {}
-  } catch (e) {
-    return {}
-  }
+  return readSection<Record<string, WatchlistEntry>>('watchlist', {})
 }
 
 function writeAll(entries: Record<string, WatchlistEntry>): void {
-  if (!isBrowser()) return
-  try {
-    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(entries))
-  } catch (e) {
-    // Storage full/unavailable (private browsing, etc.) - fail silently,
-    // the watchlist just won't persist across reloads.
-  }
+  writeSection('watchlist', entries)
 }
 
 export function getWatchlist(): WatchlistEntry[] {
@@ -78,10 +66,12 @@ export function toggleWatch(item: { url_name: string; item_name: string }): bool
     writeAll(all)
     return false
   }
+  const nowIso = new Date().toISOString()
   all[item.url_name] = {
     url_name: item.url_name,
     item_name: item.item_name,
-    addedAt: new Date().toISOString(),
+    addedAt: nowIso,
+    updatedAt: nowIso,
     ownedQty: 0,
     alertBelow: null,
     alertAbove: null,
@@ -107,7 +97,9 @@ export function updateEntry(urlName: string, patch: Partial<WatchlistEntry>): vo
   if ('alertBelow' in patch) patch.notifiedBelow = false
   if ('alertAbove' in patch) patch.notifiedAbove = false
   if ('alertAtl' in patch) patch.notifiedAtl = false
-  all[urlName] = { ...all[urlName], ...patch }
+  // Stamp the edit so the cloud merge can tell this copy from a stale one on
+  // another device (`addedAt` never changes, so it cannot decide that).
+  all[urlName] = { ...all[urlName], ...patch, updatedAt: new Date().toISOString() }
   writeAll(all)
 }
 
@@ -118,6 +110,7 @@ export function markNotified(
   const all = readAll()
   if (!all[urlName]) return
   all[urlName][which] = true
+  all[urlName].updatedAt = new Date().toISOString()
   writeAll(all)
 }
 

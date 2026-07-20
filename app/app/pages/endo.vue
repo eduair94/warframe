@@ -899,7 +899,7 @@ const fallbackColumns = computed(() =>
 )
 const fallbackRows = computed(() => {
   if (direction.value === 'flip') {
-    return flipFiltered.value.slice(0, 150).map((row) => ({
+    return flipFiltered.value.slice(0, 40).map((row) => ({
       key: row.url_name,
       href: mkt(row.url_name),
       name: localItemName(row),
@@ -911,7 +911,7 @@ const fallbackRows = computed(() => {
       ],
     }))
   }
-  return sourceFiltered.value.slice(0, 150).map((row) => ({
+  return sourceFiltered.value.slice(0, 40).map((row) => ({
     key: row.kind + row.name,
     href: row.link,
     name: row.name,

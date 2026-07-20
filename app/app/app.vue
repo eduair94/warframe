@@ -108,13 +108,27 @@ useHead({
 //      so the blank render is never SWR-cached (the next request retries).
 //   3. on the client (onMounted), if the store is empty after hydration, refetch
 //      from the public API so a poisoned/empty SSR payload self-heals — no reload.
+// The fetched array is PACKED before it leaves the async-data handler, because
+// whatever this returns is what Nuxt serialises into the HTML document. Raw, the
+// catalogue is ~1.9 MB of JSON (two thirds of it the same key names repeated
+// 3 800 times) and it made every page a 2.3 MB document. Packed it is ~0.65 MB,
+// losslessly — see utils/catalogue.ts. Both SSR and the client unpack the same
+// bytes, so the hydrated store matches the rendered one exactly.
+// It is also SKIPPED entirely on routes that render no market data (the written
+// guides, FAQ, creators, tools directory — see routeNeedsCatalogue). Those pages
+// were paying the full download-and-revive cost for a store they never read.
 const CATALOGUE_FETCH = { retry: 2, retryDelay: 400, timeout: 25000 } as const
-const { data } = await useAsyncData('app-items', () =>
-  $fetch<WarframeItem[]>(base, CATALOGUE_FETCH).catch(() => null)
-)
-if (data.value?.length) {
-  items.setItems(data.value)
-} else if (import.meta.server) {
+const route = useRoute()
+const needsCatalogue = routeNeedsCatalogue(route.name)
+const { data } = await useAsyncData('app-items', async () => {
+  if (!needsCatalogue) return null
+  const list = await $fetch<WarframeItem[]>(base, CATALOGUE_FETCH).catch(() => null)
+  return list?.length ? packCatalogue(list) : null
+})
+const catalogue = unpackCatalogue(data.value)
+if (catalogue.length) {
+  items.setItems(catalogue)
+} else if (import.meta.server && needsCatalogue) {
   const event = useRequestEvent()
   if (event) event.node.res.setHeader('Cache-Control', 'no-store, must-revalidate')
 }
@@ -124,7 +138,10 @@ if (data.value?.length) {
 // indexing). No-op on English; the store rehydrates on the client (Pinia), so
 // there's no duplicate client fetch. Page-specific scopes (riven weapons,
 // locations, …) are loaded lazily by the pages that render them.
-await translations.ensureScope('items', locale.value)
+// Skipped on catalogue-free routes for the same reason the catalogue is: those
+// pages render no item names, so the dictionary would be fetched, serialised
+// into the payload and revived for nothing.
+if (needsCatalogue) await translations.ensureScope('items', locale.value)
 
 // ---- Near-realtime catalogue refresh ---------------------------------------
 // The crawler re-prices the full catalogue roughly every 2 minutes, so poll on
@@ -137,8 +154,8 @@ const REFRESH_INTERVAL_MS = 120_000
 const REFRESH_MIN_GAP_MS = 30_000
 let refreshTimer: ReturnType<typeof setInterval> | undefined
 let lastRefreshAt = 0
-const refreshCatalogue = () => {
-  if (Date.now() - lastRefreshAt < REFRESH_MIN_GAP_MS) return
+const refreshCatalogue = (force = false) => {
+  if (!force && Date.now() - lastRefreshAt < REFRESH_MIN_GAP_MS) return
   lastRefreshAt = Date.now()
   $fetch<WarframeItem[]>(base, { ...CATALOGUE_FETCH, cache: 'no-cache' })
     .then((list) => {
@@ -150,11 +167,27 @@ const onVisibilityChange = () => {
   if (!document.hidden) refreshCatalogue()
 }
 
+// Catalogue-free routes (guides, FAQ, …) never fetched it, so the store is
+// empty. app.vue's setup runs once per hard load, so a CLIENT navigation from
+// one of those pages to a market page would otherwise land on an empty store.
+// Two safeguards: warm it in the background once the current page is idle (so
+// the click that leaves a guide already has the data), and catch the navigation
+// itself in case the warm-up hasn't landed.
+watch(
+  () => route.name,
+  (name) => {
+    if (!routeNeedsCatalogue(name)) return
+    if (!items.allItems.length) refreshCatalogue(true)
+    // Localized item names come from the same skipped-on-content-pages fetch.
+    translations.ensureScope('items', locale.value)
+  }
+)
+
 // Client-side locale switch: the app root's setup runs once, so a later switch
 // to /de, /fr, … won't re-trigger the SSR dictionary load above. Fetch the new
 // locale's item dictionary on change; names update reactively once it lands.
 watch(locale, (l, prev) => {
-  translations.ensureScope('items', l)
+  if (routeNeedsCatalogue(route.name)) translations.ensureScope('items', l)
   // The single hook that sees BOTH switch paths (LanguageMenu and the
   // browser-language suggestion banner), so locale adoption is measured once.
   if (prev && prev !== l) trackLocaleChange(prev, l)
@@ -167,11 +200,12 @@ watch(locale, (l, prev) => {
 onMounted(() => {
   const el = document.getElementById('spinner-wrapper')
   if (el) el.style.display = 'none'
-  // Self-heal (see bootstrap note #3): if SSR delivered an empty catalogue (slow/
-  // cold API, or an SWR-cached blank render), the store is empty and every page
-  // would render blank. Refetch client-side from the public API so the UI recovers
-  // without a manual reload. Cheap: the public API is Cloudflare-cached.
-  if (!items.allItems.length) {
+  if (needsCatalogue && !items.allItems.length) {
+    // Self-heal (see bootstrap note #3): if SSR delivered an empty catalogue (slow/
+    // cold API, or an SWR-cached blank render), the store is empty and every page
+    // would render blank. Refetch client-side from the public API so the UI recovers
+    // without a manual reload. Cheap: the public API is Cloudflare-cached.
+    //
     // Today this outage is silent — the page just looks empty. Report it so the
     // blank-render rate is visible instead of only showing up as bounces.
     trackAction('catalogue_empty')

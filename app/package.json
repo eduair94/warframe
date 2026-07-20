@@ -4,7 +4,9 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "predev": "npm run i18n:build",
     "dev": "nuxt dev",
+    "prebuild": "npm run i18n:build",
     "build": "nuxt build",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
@@ -13,7 +15,9 @@
     "typecheck": "nuxi typecheck",
     "lint": "eslint .",
     "lint:prettier": "prettier --check .",
-    "i18n:check": "tsx scripts/i18n-check.mts"
+    "i18n:check": "tsx scripts/i18n-check.mts",
+    "i18n:build": "tsx scripts/build-locales.mts",
+    "icons:subset": "node scripts/mdi-subset.mjs"
   },
   "dependencies": {
     "@mdi/font": "^7.4.47",
@@ -25,6 +29,7 @@
     "autolinker": "^4.0.0",
     "dayjs": "^1.11.13",
     "driver.js": "^1.7.0",
+    "firebase": "^12.16.0",
     "nuxt": "^4.0.0",
     "nuxt-gtag": "^3.0.2",
     "nuxt-og-image": "^6.7.2",
@@ -44,6 +49,7 @@
     "png-to-ico": "^3.0.2",
     "prettier": "^3.3.0",
     "sharp": "^0.34.5",
+    "subset-font": "^2.5.0",
     "tsx": "^4.23.1",
     "typescript": "^5.6.0",
     "vue-tsc": "^2.1.0"

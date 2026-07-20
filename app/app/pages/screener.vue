@@ -272,7 +272,7 @@ const filtered = computed<any[]>(() => {
 // SSR-only crawlable snapshot for <SeoFallbackTable> (see that component for
 // why): top 150 of the already-filtered/sorted screener (discount desc by default).
 const fallbackRows = computed(() =>
-  filtered.value.slice(0, 150).map((row) => ({
+  filtered.value.slice(0, 40).map((row) => ({
     key: row.url_name,
     href: mkt(row.url_name),
     name: localItemName(row),

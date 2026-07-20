@@ -35,6 +35,7 @@ import { RelicService } from './RelicService';
 import { RivenService } from './RivenService';
 import { SetService } from './SetService';
 import { TranslationService, TranslationMap } from './TranslationService';
+import { FoundryService } from './FoundryService';
 import { WarframeItemsResponse } from "./WarframeItems.interface";
 import { IEndoFlipResponse, IEndoFlipRow } from '../interfaces/endo.interface';
 import { isEndoRankableMod } from './EndoCost';
@@ -122,6 +123,9 @@ export abstract class BaseWarframeClient {
   /** Localized game-noun name dictionaries (i18n), see TranslationService */
   protected readonly translationService: TranslationService;
 
+  /** Mastery/build catalogue behind the /foundry tracker, see FoundryService */
+  protected readonly foundryService: FoundryService;
+
   /** Configuration */
   protected readonly config: WarframeClientConfig;
 
@@ -181,6 +185,9 @@ export abstract class BaseWarframeClient {
 
     // Localized name dictionaries (i18n) — shared, no HTTP dependency for reads.
     this.translationService = new TranslationService();
+
+    // Mastery/build catalogue (WFCD warframe-items -> one Mongo document).
+    this.foundryService = new FoundryService();
   }
 
   /**
@@ -624,6 +631,46 @@ export abstract class BaseWarframeClient {
    */
   async syncDrops() {
     return this.dropService.syncDrops();
+  }
+
+  // =====================================
+  // Foundry Operations (Delegates to FoundryService)
+  // =====================================
+
+  /**
+   * The mastery/build catalogue behind /foundry. Served straight from the Mongo
+   * copy; when it has never been synced (fresh DB) it is built live once so the
+   * page is never empty on a new deployment.
+   */
+  async getFoundryCatalogue() {
+    const stored = await this.foundryService.get();
+    if (stored) return stored;
+    await this.syncFoundry();
+    return this.foundryService.get();
+  }
+
+  /**
+   * Rebuilds the Foundry catalogue from WFCD and stores it. Also attaches
+   * warframe.market url_names by matching display names against this app's own
+   * item catalogue — that link is what lets /foundry price the gear a player is
+   * still missing, which a pure checklist cannot do.
+   */
+  async syncFoundry() {
+    const items = (await this.itemService.getAllItems()) as any[];
+    const marketByName: Record<string, string> = {};
+    for (const it of items || []) {
+      if (!it?.item_name || !it?.url_name) continue;
+      const key = String(it.item_name)
+        .toLowerCase()
+        .replace(/\s*\(.*?\)\s*/g, ' ')
+        .replace(/\s+blueprint$/i, '')
+        .replace(/[^a-z0-9]+/g, ' ')
+        .trim();
+      // First writer wins: the catalogue is sorted so the canonical listing for
+      // a name lands before any later near-duplicate.
+      if (key && !marketByName[key]) marketByName[key] = it.url_name;
+    }
+    return this.foundryService.sync(marketByName);
   }
 
   // =====================================

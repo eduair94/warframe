@@ -88,6 +88,19 @@ module.exports = {
             log_date_format: "YYYY-MM-DD HH:mm Z",
         },
         {
+            // Rebuilds the Foundry mastery/build catalogue (warframe-foundry
+            // collection) from WFCD warframe-items and re-links every item and
+            // part to its warframe.market url_name using our own item catalogue.
+            // That link is what lets /foundry price the gear a player is still
+            // missing. Staggered after sync-translations so the market names it
+            // matches against are already fresh. Only changes on a game patch.
+            name: "warframe-sync-foundry",
+            autorestart: false,
+            cron_restart: "0 5 * * *",
+            script: "dist/sync_foundry.js",
+            log_date_format: "YYYY-MM-DD HH:mm Z",
+        },
+        {
             name: "warframe-live",
             autorestart: true,
             script: "dist/live.js",

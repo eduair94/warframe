@@ -49,8 +49,17 @@ export const useItemsStore = defineStore('items', {
   },
   actions: {
     // sole live fill path: default-layout SSR fetch calls this (was store.dispatch('setItems', data))
+    //
+    // `markRaw` is deliberate. The catalogue is ~3 800 items, each with a nested
+    // `market` (and its own nested `last_completed`); handing that to Vue's deep
+    // reactivity means a proxy per object the first time anything touches it,
+    // which showed up as a large chunk of hydration time. Nothing ever mutates
+    // an item in place — every consumer reads `allItems` and derives from it,
+    // and the only writer is this action replacing the array wholesale. That
+    // replacement is still tracked (the state PROPERTY is reactive), so every
+    // computed downstream still updates on refresh.
     setItems(payload: WarframeItem[]) {
-      this.items = payload
+      this.items = markRaw(payload)
     },
     // dead parity actions — no caller exists; keep so a future feature can fill them
     setLocations(payload: any[]) {

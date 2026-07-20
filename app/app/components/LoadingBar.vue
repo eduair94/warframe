@@ -1,4 +1,15 @@
 <template>
+  <!--
+    Starts HIDDEN (see the `display: none` below). It used to render visible in
+    the SSR HTML, so the first paint of every page was a 50%-black scrim over
+    the server-rendered content until hydration finished and app.vue's onMounted
+    hid it. That handed Lighthouse a blank-looking page for the whole hydration
+    window — Speed Index and Largest Contentful Paint were measured against the
+    moment the overlay disappeared, not the moment the content painted.
+
+    Client-side navigation still shows it: plugins/nav-loading.client.ts sets
+    `display: flex` inline on `page:start`, which beats the stylesheet.
+  -->
   <div id="spinner-wrapper">
     <div class="lds-ring">
       <div></div>
@@ -15,7 +26,7 @@
   top: 0;
   left: 0;
   z-index: 1021;
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
 }

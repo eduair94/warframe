@@ -307,7 +307,7 @@ const filtered = computed<FormaRelic[]>(() => {
 // why): top 150 of the same default-filtered, default-sorted `filtered` list
 // the live board renders, fed by useFormaRelics' SSR-safe useAsyncData fetch.
 const fallbackRows = computed(() =>
-  filtered.value.slice(0, 150).map((f) => ({
+  filtered.value.slice(0, 40).map((f) => ({
     key: f.row.url_name,
     href: '/relic/' + f.row.url_name,
     name: f.row.relicName,

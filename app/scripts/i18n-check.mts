@@ -28,6 +28,7 @@ import { PAGE_SEO } from '../app/utils/seo'
 import { PAGE_SEO_I18N } from '../app/utils/seo-i18n'
 import { PAGE_SEO_I18N_GUIDES } from '../app/utils/seo-i18n-guides'
 import { PAGE_SEO_I18N_PAGES } from '../app/utils/seo-i18n-pages'
+import { PAGE_SEO_I18N_ACCOUNT } from '../app/utils/seo-i18n-account'
 
 const here = dirname(fileURLToPath(import.meta.url))
 const messagesDir = join(here, '../i18n/messages')
@@ -104,13 +105,14 @@ for (const loc of locales) walk(translations[loc], '', `translations.ts:${loc}`)
 
 // 3. SEO PARITY — every PAGE_SEO key localized (title + description) in every
 //    non-English locale. English is the source (PAGE_SEO); the localized copy is
-//    the merge of the three overlays (same order resolveSeo uses).
+//    the merge of the overlays (same order resolveSeo uses).
 const SEO_LOCALES = ['es', 'pt', 'de', 'fr', 'ru', 'ko', 'ja', 'zh-hans', 'zh-hant', 'pl', 'it', 'uk']
 const seoGaps: string[] = []
 for (const loc of SEO_LOCALES) {
   const overlay: Record<string, { title?: string; description?: string }> = {
     ...(PAGE_SEO_I18N_GUIDES[loc] || {}),
     ...(PAGE_SEO_I18N_PAGES[loc] || {}),
+    ...(PAGE_SEO_I18N_ACCOUNT[loc] || {}),
     ...(PAGE_SEO_I18N[loc] || {}),
   }
   for (const key of Object.keys(PAGE_SEO)) {
@@ -123,7 +125,7 @@ for (const loc of SEO_LOCALES) {
 
 let failed = false
 if (seoGaps.length) {
-  console.error(`\n✗ ${seoGaps.length} localized PAGE_SEO gap(s) — every PAGE_SEO key needs a title+description in every locale (add to seo-i18n / seo-i18n-guides / seo-i18n-pages):\n${seoGaps.slice(0, 60).join('\n')}${seoGaps.length > 60 ? '\n  … (' + (seoGaps.length - 60) + ' more)' : ''}\n`)
+  console.error(`\n✗ ${seoGaps.length} localized PAGE_SEO gap(s) — every PAGE_SEO key needs a title+description in every locale (add to seo-i18n / seo-i18n-guides / seo-i18n-pages / seo-i18n-account):\n${seoGaps.slice(0, 60).join('\n')}${seoGaps.length > 60 ? '\n  … (' + (seoGaps.length - 60) + ' more)' : ''}\n`)
   failed = true
 }
 if (dupes.length) {

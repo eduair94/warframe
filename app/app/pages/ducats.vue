@@ -218,7 +218,7 @@ const filtered = computed<any[]>(() => {
 // why): top 150 of the same filtered+sorted list the live table renders
 // (default sort: ducat efficiency, descending).
 const fallbackRows = computed(() =>
-  filtered.value.slice(0, 150).map((row) => ({
+  filtered.value.slice(0, 40).map((row) => ({
     key: row.url_name,
     href: mkt(row.url_name),
     name: localItemName(row),

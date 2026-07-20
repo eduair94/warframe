@@ -10,6 +10,8 @@ import { PAGE_SEO_I18N } from './seo-i18n'
 import { PAGE_SEO_I18N_GUIDES } from './seo-i18n-guides'
 // Generated overlay for the /vaulted-worth + /circuit pages (all 12 locales).
 import { PAGE_SEO_I18N_PAGES } from './seo-i18n-pages'
+// Generated overlay for the account pages (/vault, /goals, /ledger, /account).
+import { PAGE_SEO_I18N_ACCOUNT } from './seo-i18n-account'
 
 // Merge the hand-curated market/tool overlay with the generated guide/faq/tools
 // overlay into one localized map. No key overlap by construction; if one ever
@@ -20,10 +22,12 @@ const LOCALIZED_SEO: Record<string, Record<string, PageSeo>> = (() => {
     ...Object.keys(PAGE_SEO_I18N),
     ...Object.keys(PAGE_SEO_I18N_GUIDES),
     ...Object.keys(PAGE_SEO_I18N_PAGES),
+    ...Object.keys(PAGE_SEO_I18N_ACCOUNT),
   ])) {
     merged[loc] = {
       ...(PAGE_SEO_I18N_GUIDES[loc] || {}),
       ...(PAGE_SEO_I18N_PAGES[loc] || {}),
+      ...(PAGE_SEO_I18N_ACCOUNT[loc] || {}),
       ...(PAGE_SEO_I18N[loc] || {}),
     }
   }
@@ -73,6 +77,31 @@ export const PAGE_SEO: Record<string, PageSeo> = {
     title: 'Top Movers — Warframe Prices Rising & Falling',
     description:
       'See which Warframe Market items are spiking or crashing over 24h and 7d. Catch platinum price trends before the rest of the market does.'
+  },
+  '/foundry': {
+    title: 'Warframe Mastery Tracker — Foundry Checklist & MR Calculator',
+    description:
+      'Track every Warframe, weapon and companion you have built and mastered, see the resources you still need, and get your Mastery Rank. Imports warframe-foundry.json.'
+  },
+  '/vault': {
+    title: 'Prime Vault Tracker — What Your Warframe Collection Is Worth',
+    description:
+      'Track every prime part you own and see what it is actually worth in platinum, discounted by real trade volume. Free Warframe inventory and net-worth tracker.'
+  },
+  '/goals': {
+    title: 'Warframe Farming Goals — Prime Set Progress & Relic Plan',
+    description:
+      'Pick the prime sets you want and get a farm plan: which parts you still need, which relics drop them, where those relics fall, and what buying instead would cost.'
+  },
+  '/ledger': {
+    title: 'Warframe Trade Ledger — Track Your Platinum Profit',
+    description:
+      'Log your Warframe trades and see real profit: weighted average cost basis, realized platinum, best and worst flips and a running profit curve.'
+  },
+  '/account': {
+    title: 'Tenno Account — Sync Your Warframe Tools Across Devices',
+    description:
+      'Sign in with Google or a one-tap email link to sync your watchlist, vault, farming goals and trade ledger across every device. Export or delete your data anytime.'
   },
   '/portfolio': {
     title: 'Portfolio Tracker — Your Warframe Platinum Holdings',
@@ -319,6 +348,7 @@ export const PAGE_SEO: Record<string, PageSeo> = {
 // Prefix fallbacks for dynamic child routes (/set/:set, /relic/:relic, ...).
 // Stored as [prefix, pageKey] so the localized overlay can be consulted by key.
 const PREFIX_SEO: Array<[string, string]> = [
+  ['/foundry', '/foundry'],
   ['/guides', '/guides'],
   ['/set', '/set'],
   ['/relic-farming', '/relic-farming'],

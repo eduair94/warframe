@@ -1,5 +1,5 @@
-import "./env";
-import WarframeUndici from "./warframe-undici";
+import "../../env";
+import WarframeUndici from "../../warframe-undici";
 
 async function testSyncSingleRiven() {
   console.log("🚀 Testing syncSingleRiven function specifically...\n");

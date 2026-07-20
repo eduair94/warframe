@@ -9,14 +9,28 @@
       v-if="!playing"
       type="button"
       class="yt__poster"
-      :aria-label="`Play: ${title}`"
       @click="play"
     >
+      <!-- The button's accessible name is built from its own visible content
+           (title + channel below) plus this SR-only verb, so it MUST contain
+           the visible text — the aria-label="Play: {title}" it used to carry did
+           not include the visible channel line and tripped
+           label-content-name-mismatch. The thumbnail is decorative here (the
+           title is rendered as real text), so alt="". -->
+      <span class="visually-hidden">Play video: </span>
+      <!-- Facade thumbnail (the heavy iframe only mounts on click). `lazy` so a
+           guide or /creators page with several videos doesn't fetch every
+           below-the-fold poster up front; an above-the-fold one still loads
+           immediately. The real (field) LCP on these pages is the intro text,
+           not the poster, so eager-loading it bought nothing. `eager` forces a
+           high-priority load for the rare case a poster is genuinely the hero. -->
       <img
         class="yt__thumb"
         :src="thumb"
-        :alt="title"
-        loading="lazy"
+        alt=""
+        decoding="async"
+        :loading="eager ? 'eager' : 'lazy'"
+        :fetchpriority="eager ? 'high' : 'auto'"
         width="480"
         height="270"
         @error="onThumbError"
@@ -45,15 +59,21 @@
 import { ref } from 'vue'
 
 const props = withDefaults(
-  defineProps<{ id: string; title?: string; channel?: string; max?: string }>(),
-  { title: 'Warframe video guide', channel: '', max: '720px' },
+  defineProps<{ id: string; title?: string; channel?: string; max?: string; eager?: boolean }>(),
+  { title: 'Warframe video guide', channel: '', max: '720px', eager: false },
 )
 
 const playing = ref(false)
-// hqdefault is guaranteed to exist for every public video (maxres isn't).
-const thumb = ref(`https://i.ytimg.com/vi/${props.id}/hqdefault.jpg`)
+// mqdefault (320x180, ~12-18 KB) not hqdefault (480x360, ~30-40 KB): the poster
+// fills a full-width 16:9 box, so it is the largest element on the guide and
+// /creators pages — i.e. the LCP. The smaller source roughly halves its bytes
+// and its intrinsic size, which on a throttled connection is the difference
+// between a fast LCP and a slow one. The CSS already scales the thumb up to fill
+// the box, so the lower resolution is not visible. Both sizes exist for every
+// public video; sddefault is the fallback if mq ever 404s.
+const thumb = ref(`https://i.ytimg.com/vi/${props.id}/mqdefault.jpg`)
 function onThumbError() {
-  thumb.value = `https://i.ytimg.com/vi/${props.id}/mqdefault.jpg`
+  thumb.value = `https://i.ytimg.com/vi/${props.id}/sddefault.jpg`
 }
 
 const { trackContent } = useAnalytics()

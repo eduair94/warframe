@@ -83,7 +83,7 @@
           <div v-else-if="b.type === 'table'" class="an-tablewrap ga-tablewrap">
             <table class="an-table ga-table is-cards">
               <thead>
-                <tr><th v-for="(c, i) in b.table.columns" :key="i">{{ c }}</th></tr>
+                <tr><th v-for="(c, i) in b.table.columns" :key="i" scope="col">{{ c }}</th></tr>
               </thead>
               <tbody>
                 <tr v-for="(row, ri) in b.table.rows" :key="ri">

@@ -353,7 +353,7 @@ const fallbackRows = computed(() =>
       if (vr) return vr
       return num(b.change30d, -Infinity) - num(a.change30d, -Infinity)
     })
-    .slice(0, 150)
+    .slice(0, 40)
     .map((row) => ({
     key: row.url_name,
     href: row.item_name && row.item_name.includes(' Set') ? '/set/' + row.url_name : mkt(row.url_name),

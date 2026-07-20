@@ -279,7 +279,7 @@ const filtered = computed<any[]>(() => {
 // why): top 150 of the already-filtered/sorted board (closest-to-low first by
 // default, matching the live table's opening sort).
 const fallbackRows = computed(() =>
-  filtered.value.slice(0, 150).map((row) => ({
+  filtered.value.slice(0, 40).map((row) => ({
     key: row.url_name,
     href: mkt(row.url_name),
     name: localItemName(row),

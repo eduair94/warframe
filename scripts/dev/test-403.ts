@@ -1,5 +1,5 @@
-import "./env";
-import { Warframe } from "./warframe";
+import "../../env";
+import { Warframe } from "../../warframe";
 
 async function test403Issue() {
   console.log("Starting 403 error test...");
