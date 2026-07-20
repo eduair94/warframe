@@ -13,4 +13,12 @@ describe('missionSlug', () => {
     expect(missionSlug('Dark Refractory, Deimos', 'Nex')).toBe('dark-refractory-deimos-nex');
     expect(missionSlug('Void', 'Ani (Extra)')).toBe('void-ani-extra');
   });
+
+  it('handles empty strings', () => {
+    expect(missionSlug('', '')).toBe('');
+  });
+
+  it('handles punctuation-only strings', () => {
+    expect(missionSlug('!!!', '###')).toBe('');
+  });
 });
