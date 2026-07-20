@@ -85,7 +85,16 @@
             </div>
             <ul class="dld__list">
               <li v-for="(m, i) in data.missions" :key="'m' + i" class="dld__row">
-                <div class="dld__where">
+                <NuxtLink
+                  v-if="m.slug"
+                  class="dld__where dld__where--link"
+                  :to="localePath('/mission/' + m.slug)"
+                  @click="close()"
+                >
+                  <span class="dld__place">{{ m.location }}</span>
+                  <span class="dld__planet">{{ m.planet }}</span>
+                </NuxtLink>
+                <div v-else class="dld__where">
                   <span class="dld__place">{{ m.location }}</span>
                   <span class="dld__planet">{{ m.planet }}</span>
                 </div>
@@ -196,6 +205,7 @@ interface DropMission {
   rotation?: string
   rarity: string
   chance: number
+  slug?: string
 }
 
 interface DropFarmNode {
@@ -229,6 +239,7 @@ const props = withDefaults(
 const emit = defineEmits<{ (e: 'update:modelValue', value: boolean): void }>()
 
 const { t } = useI18n()
+const localePath = useLocalePath()
 // The dialog is opened from 10 different pages; every event it sends is stamped
 // with the host page's `tool` by the event layer, so no source prop is needed.
 // The open itself is already reported by whichever parent toggles the v-model.
@@ -555,6 +566,9 @@ watch(
 }
 .dld__row:hover { background: rgba(200, 168, 92, 0.05); }
 .dld__where { display: flex; flex-direction: column; min-width: 0; flex: 1; }
+.dld__where--link { text-decoration: none; cursor: pointer; border-radius: 6px; transition: background 120ms ease; }
+.dld__where--link:hover .dld__place { color: var(--energy-hi, #7af0ea); }
+.dld__where--link:hover { background: rgba(255, 255, 255, 0.03); }
 .dld__place { color: #eef1f8; font-weight: 600; font-size: 0.96rem; }
 .dld__planet { color: #8f95ab; font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.06em; }
 .dld__mode { color: #b6bcd0; font-size: 0.82rem; white-space: nowrap; }
