@@ -211,6 +211,10 @@
                     <v-icon class="sc3-node__chev" size="18">{{ openNode === node.location ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
                   </button>
                   <div v-if="openNode === node.location" class="sc3-node__body">
+                    <NuxtLink
+                      :to="localePath('/mission/' + missionSlug(selectedData.planet, node.location))"
+                      class="sc3-node__details"
+                    >details →</NuxtLink>
                     <div v-for="rot in node.rotations" :key="rot.rotation || 'flat'" class="sc3-rot">
                       <div v-if="rot.rotation" class="sc3-rot__head">
                         <span class="sc3-rot__badge" :data-rot="rot.rotation">{{ rot.rotation }}</span>
@@ -1337,6 +1341,21 @@ onBeforeUnmount(() => {
 }
 .sc3-node__body {
   padding: 2px 8px 10px;
+}
+.sc3-node__details {
+  display: inline-block;
+  margin-bottom: 8px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.76rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #7ff0eb;
+  text-decoration: none;
+}
+.sc3-node__details:hover {
+  color: #aef6f2;
+  text-decoration: underline;
 }
 .sc3-rot {
   margin-bottom: 8px;

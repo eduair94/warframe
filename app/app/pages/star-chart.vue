@@ -182,6 +182,10 @@
               </button>
 
               <div v-if="openNode === node.location" class="sc-node__body">
+                <NuxtLink
+                  :to="localePath('/mission/' + missionSlug(selectedData.planet, node.location))"
+                  class="sc-node__details"
+                >details →</NuxtLink>
                 <div v-for="rot in node.rotations" :key="rot.rotation || 'flat'" class="sc-rot">
                   <div class="sc-rot__head" v-if="rot.rotation">
                     <span class="sc-rot__badge" :data-rot="rot.rotation">{{ rot.rotation }}</span>
@@ -1037,6 +1041,13 @@ function finishLoading(attempt = 0) {
 .sc-node__chev { color: #8f95ab !important; }
 
 .sc-node__body { padding: 4px 8px 12px; }
+.sc-node__details {
+  display: inline-block; margin-bottom: 8px;
+  font-family: 'Rajdhani', sans-serif; font-size: 0.76rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.06em;
+  color: #7ff0eb; text-decoration: none;
+}
+.sc-node__details:hover { color: #aef6f2; text-decoration: underline; }
 .sc-rot { margin-bottom: 8px; }
 .sc-rot__head { display: flex; align-items: center; gap: 8px; margin: 6px 0 4px; }
 .sc-rot__badge {
