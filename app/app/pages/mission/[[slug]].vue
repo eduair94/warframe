@@ -154,6 +154,7 @@ const slug = computed(() => route.params.slug as string | undefined)
 
 // Hub list
 const { data: listData } = await useAsyncData('missions', async () => {
+  if (slug.value) return { rows: [] }
   const r = await $fetch<any>(`${base}/missions`)
   return r && Array.isArray(r.rows) ? r : { rows: [] }
 })
