@@ -575,15 +575,25 @@ export abstract class BaseWarframeClient {
     updatedAt: any;
     buy: Array<{ price: number; quantity: number; orders: number }>;
     sell: Array<{ price: number; quantity: number; orders: number }>;
+    /** Best few NAMED, contactable orders per side (for the whisper buttons). */
+    topOrders: {
+      buy: Array<{ platinum: number; quantity: number; ingame_name: string; status: string }>;
+      sell: Array<{ platinum: number; quantity: number; ingame_name: string; status: string }>;
+    };
   }> {
     const item: any = await this.itemService.getItemByUrlName(urlName);
     const depth = item?.market?.depth;
+    const top = item?.market?.topOrders;
     return {
       url_name: urlName,
       subtype: item?.market?.subtype ?? null,
       updatedAt: item?.priceUpdate ?? null,
       buy: Array.isArray(depth?.buy) ? depth.buy : [],
       sell: Array.isArray(depth?.sell) ? depth.sell : [],
+      topOrders: {
+        buy: Array.isArray(top?.buy) ? top.buy : [],
+        sell: Array.isArray(top?.sell) ? top.sell : [],
+      },
     };
   }
 

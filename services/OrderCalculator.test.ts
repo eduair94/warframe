@@ -100,4 +100,106 @@ describe('OrderCalculator', () => {
       expect(prices.buy).toBe(6);
     });
   });
+
+  describe('credibility band (bulk/bait fencing)', () => {
+    // Reproduces the Ayatan-sculpture bug: bulk BUYERS bid far above the going
+    // rate for huge quantities that never fill, and used to set `buy`.
+    it('drops bulk/bait bids above goingRate × BAIT_CEIL from the best buy', () => {
+      const orders: IOrderData[] = [
+        o({ order_type: 'buy', platinum: 42, quantity: 8286 }), // bulk bait
+        o({ order_type: 'buy', platinum: 40, quantity: 500 }),  // bait
+        o({ order_type: 'buy', platinum: 20, quantity: 3 }),    // still above 1.5×
+        o({ order_type: 'buy', platinum: 18, quantity: 1 }),    // credible top bid
+        o({ order_type: 'buy', platinum: 15, quantity: 1 }),
+        o({ order_type: 'sell', platinum: 10, quantity: 1 }),
+      ];
+      const prices = OrderCalculator.calculatePrices(orders, { goingRate: 12 }); // ceil = 18
+      expect(prices.buy).toBe(18); // NOT 42
+    });
+
+    it('drops troll-low asks below goingRate × TROLL_FLOOR from the best sell', () => {
+      const orders: IOrderData[] = [
+        o({ order_type: 'sell', platinum: 1, quantity: 1 }),  // troll (< 1.5)
+        o({ order_type: 'sell', platinum: 8, quantity: 1 }),  // credible cheapest
+        o({ order_type: 'sell', platinum: 10, quantity: 1 }),
+        o({ order_type: 'buy', platinum: 6, quantity: 1 }),
+      ];
+      const prices = OrderCalculator.calculatePrices(orders, { goingRate: 10 }); // floor = 1.5
+      expect(prices.sell).toBe(8); // NOT 1
+    });
+
+    it('derives the reference from the median ask when no goingRate is given', () => {
+      const orders: IOrderData[] = [
+        o({ order_type: 'buy', platinum: 42, quantity: 9000 }), // bait
+        o({ order_type: 'buy', platinum: 12, quantity: 1 }),    // credible
+        o({ order_type: 'sell', platinum: 8, quantity: 1 }),
+        o({ order_type: 'sell', platinum: 10, quantity: 1 }),   // median ask = 10 -> ceil 15
+        o({ order_type: 'sell', platinum: 12, quantity: 1 }),
+      ];
+      const prices = OrderCalculator.calculatePrices(orders); // no goingRate
+      expect(prices.buy).toBe(12); // 42 fenced out by the median-ask reference
+      expect(prices.sell).toBe(8);
+    });
+
+    it('never zeroes out a side: a fully-baited book still returns a best bid', () => {
+      const orders: IOrderData[] = [
+        o({ order_type: 'buy', platinum: 90, quantity: 100 }),
+        o({ order_type: 'buy', platinum: 80, quantity: 100 }),
+        o({ order_type: 'sell', platinum: 10, quantity: 1 }),
+      ];
+      const prices = OrderCalculator.calculatePrices(orders, { goingRate: 10 }); // ceil 15, all bids above
+      expect(prices.buy).toBe(90); // safety: don't hide the only bids we have
+    });
+  });
+
+  describe('topOrders', () => {
+    const named = (
+      p: Partial<IOrderData> & Pick<IOrderData, 'order_type' | 'platinum'>,
+      status = 'ingame',
+      ingame_name = 'Trader',
+    ): IOrderData => ({ user: { status, ingame_name }, ...p });
+
+    it('returns the best named orders per side, buy desc / sell asc, capped', () => {
+      const orders: IOrderData[] = [
+        named({ order_type: 'sell', platinum: 10, quantity: 2 }, 'ingame', 'AskA'),
+        named({ order_type: 'sell', platinum: 8, quantity: 1 }, 'online', 'AskB'),
+        named({ order_type: 'sell', platinum: 12, quantity: 3 }, 'ingame', 'AskC'),
+        named({ order_type: 'buy', platinum: 6, quantity: 1 }, 'ingame', 'BidA'),
+        named({ order_type: 'buy', platinum: 9, quantity: 5 }, 'online', 'BidB'),
+      ];
+      const top = OrderCalculator.topOrders(orders, { goingRate: 10, count: 2 });
+      expect(top.sell.map((r) => r.platinum)).toEqual([8, 10]); // lowest first
+      expect(top.sell[0]).toMatchObject({ platinum: 8, quantity: 1, ingame_name: 'AskB', status: 'online' });
+      expect(top.buy.map((r) => r.platinum)).toEqual([9, 6]); // highest first
+    });
+
+    it('excludes offline users (cannot be whispered)', () => {
+      const orders: IOrderData[] = [
+        named({ order_type: 'sell', platinum: 5 }, 'offline', 'Sleeper'),
+        named({ order_type: 'sell', platinum: 9 }, 'ingame', 'Awake'),
+      ];
+      const top = OrderCalculator.topOrders(orders, { goingRate: 9 });
+      expect(top.sell).toHaveLength(1);
+      expect(top.sell[0]!.ingame_name).toBe('Awake');
+    });
+
+    it('applies the same credibility band, so a bulk-bait bid is not a "best buyer"', () => {
+      const orders: IOrderData[] = [
+        named({ order_type: 'buy', platinum: 42, quantity: 8286 }, 'ingame', 'BulkBuyer'),
+        named({ order_type: 'buy', platinum: 18, quantity: 1 }, 'ingame', 'RealBuyer'),
+        named({ order_type: 'sell', platinum: 10 }, 'ingame', 'Seller'),
+      ];
+      const top = OrderCalculator.topOrders(orders, { goingRate: 12 }); // ceil 18
+      expect(top.buy.map((r) => r.ingame_name)).toEqual(['RealBuyer']);
+    });
+
+    it('keeps only the requested subtype and defaults missing quantity to 1', () => {
+      const orders: IOrderData[] = [
+        named({ order_type: 'sell', platinum: 20, subtype: 'radiant' }, 'ingame', 'R'),
+        named({ order_type: 'sell', platinum: 5, subtype: 'intact' }, 'ingame', 'I'),
+      ];
+      const top = OrderCalculator.topOrders(orders, { subtype: 'radiant', goingRate: 20 });
+      expect(top.sell).toEqual([{ platinum: 20, quantity: 1, ingame_name: 'R', status: 'ingame' }]);
+    });
+  });
 });
