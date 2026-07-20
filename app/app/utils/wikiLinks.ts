@@ -1,29 +1,31 @@
 /**
- * Warframe wiki (fandom) links for star-chart worlds — the article page for
- * every world plus the wiki's interactive maps (Special:AllMaps) for the
- * open-world zones. Pure module: auto-imported by Nuxt from `utils/`.
+ * Warframe wiki links for star-chart worlds, nodes, and items. The wiki migrated
+ * off Fandom to wiki.warframe.com (path prefix /w/) on 2025-01-31 — Fandom is a
+ * stale fork that 403s, so all links target the official host.
  *
- * Every article title below was verified against the MediaWiki API
- * (action=query) on 2026-07-14 — no guessed links.
+ * Node deep-links use a disambiguated title (some node names collide with an
+ * item/frame article) — the backend supplies that title as `wikiLink`.
  */
 
-const WIKI_BASE = 'https://warframe.fandom.com/wiki/'
+const WIKI_BASE = 'https://wiki.warframe.com/w/'
 
 /** Worlds whose wiki article title differs from the drop-map name. */
 const ARTICLE_OVERRIDES: Record<string, string> = {
   Void: 'The Void',
   Zariman: 'Zariman Ten Zero',
   Sanctuary: 'Sanctuary Onslaught',
-  // Entrati lab zone grouped under its host world's article
   'Dark Refractory, Deimos': 'Deimos',
 }
 
-/** The wiki's interactive maps (fandom Special:AllMaps), keyed by world. */
+/**
+ * Open-world articles on the new wiki (the old Fandom Special:AllMaps interactive
+ * maps do not exist there, so these point at the landscape's article page).
+ */
 const INTERACTIVE_MAPS: Record<string, { title: string; path: string }> = {
-  Earth: { title: 'Plains of Eidolon', path: 'Map:Plains_of_Eidolon' },
-  Venus: { title: 'Orb Vallis', path: 'Map:Orb_Vallis' },
-  Deimos: { title: 'Cambion Drift', path: 'Map:Cambion_Drift' },
-  Duviri: { title: 'Duviri', path: 'Map:Duviri' },
+  Earth: { title: 'Plains of Eidolon', path: 'Plains_of_Eidolon' },
+  Venus: { title: 'Orb Vallis', path: 'Orb_Vallis' },
+  Deimos: { title: 'Cambion Drift', path: 'Cambion_Drift' },
+  Duviri: { title: 'Duviri', path: 'Duviri' },
 }
 
 function wikiUrl(title: string): string {
@@ -35,10 +37,16 @@ export function worldWikiUrl(world: string): string {
   return wikiUrl(ARTICLE_OVERRIDES[world] ?? world)
 }
 
-/** Interactive wiki map for a world, or null when it has none. */
+/** Wiki article for a world's open-world landscape, or null when it has none. */
 export function worldWikiMap(world: string): { title: string; url: string } | null {
   const m = INTERACTIVE_MAPS[world]
-  return m ? { title: m.title, url: WIKI_BASE + m.path } : null
+  return m ? { title: m.title, url: wikiUrl(m.path) } : null
+}
+
+/** Wiki article for a mission node, using the backend's disambiguated title. */
+export function nodeWikiUrl(wikiLink: string): string {
+  const s = (wikiLink || '').trim()
+  return s ? wikiUrl(s) : ''
 }
 
 /**
