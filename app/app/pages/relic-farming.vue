@@ -330,7 +330,7 @@ const isMobile = computed(() => mobile.value)
 // UI state (former data())
 const search = ref('')
 const tier = ref('All')
-const refinement = ref('Radiant')
+const refinement = ref('Intact')
 // Translated label for the active refinement (the ref value stays the logic key
 // 'Intact'/'Radiant' used by the chance table; only the display text localizes).
 const refinementLabel = computed(() =>

@@ -340,7 +340,7 @@ const { data: relic, error } = await useAsyncData<RelicRow | null>(
 )
 const loadError = computed(() => !!error.value)
 
-const refinement = ref('Radiant')
+const refinement = ref('Intact')
 const refinementLabel = computed(() =>
   refinement.value === 'Radiant' ? t('relicsValue.filters.radiant') : t('relicsValue.filters.intact'),
 )

@@ -287,7 +287,7 @@ const props = withDefaults(
     relic?: RelicRow | null
     refinement?: string
   }>(),
-  { modelValue: false, relic: null, refinement: 'Radiant' },
+  { modelValue: false, relic: null, refinement: 'Intact' },
 )
 const emit = defineEmits<{
   (e: 'update:modelValue', value: boolean): void
@@ -308,7 +308,7 @@ watch(
   () => props.modelValue,
   (open) => {
     if (open) {
-      refinement.value = props.refinement || 'Radiant'
+      refinement.value = props.refinement || 'Intact'
       qty.value = 1
       lastQty = 1
       loadBook()
@@ -586,7 +586,7 @@ function rarityColor(rarity: string): string {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 18px 20px 14px;
+  padding: 16px 20px;
   border-bottom: 1px solid rgba(200, 168, 92, 0.22);
 }
 .rld__node {
@@ -670,6 +670,9 @@ function rarityColor(rarity: string): string {
   padding: 4px;
 }
 .rld__pan {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   padding: 14px 12px;
   text-align: center;
   border: 1px solid transparent;

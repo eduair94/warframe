@@ -372,7 +372,7 @@ function naturalDir(k: SortKey): 'asc' | 'desc' {
 
 const search = ref(qStr('q') ?? '')
 const tier = ref(qStr('tier') ?? 'All')
-const refinement = ref(qStr('ref') === 'Intact' ? 'Intact' : 'Radiant')
+const refinement = ref(qStr('ref') === 'Radiant' ? 'Radiant' : 'Intact')
 // Translated label for the active refinement (value stays 'Intact'/'Radiant').
 const refinementLabel = computed(() =>
   refinement.value === 'Radiant'
@@ -617,7 +617,7 @@ function buildQuery(): Record<string, string> {
   const s = (search.value || '').toString().trim()
   if (s) q.q = s
   if (tier.value !== 'All') q.tier = tier.value
-  if (refinement.value !== 'Radiant') q.ref = refinement.value
+  if (refinement.value !== 'Intact') q.ref = refinement.value
   if (sortKey.value !== 'out') q.sort = sortKey.value
   if (sortDir.value !== naturalDir(sortKey.value)) q.dir = sortDir.value
   if (!completeOnly.value) q.complete = '0'
