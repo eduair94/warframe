@@ -616,11 +616,6 @@ onMounted(() => {
   white-space: nowrap;
   border: 0;
 }
-.rl-console {
-  max-width: 1080px;
-  margin: 0 auto;
-}
-
 /* Top bar */
 .rl-topbar {
   display: flex;
@@ -1374,8 +1369,7 @@ onMounted(() => {
 
 /* Donation */
 .rl-donate {
-  max-width: 1080px;
-  margin: 18px auto 0;
+  margin: 18px 0 0;
   display: flex;
   align-items: center;
   gap: 14px;

@@ -62,7 +62,7 @@
 
         <a
           class="don__reviews"
-          href="https://www.reddit.com/r/Warframe/comments/1nnvsep/my_warframe_market_analytics_app_looking_for/"
+          href="https://www.reddit.com/r/Warframe/comments/1uuu7gj/built_a_free_opensource_market_analytics_tool_to/"
           target="_blank"
           rel="noopener noreferrer"
         >

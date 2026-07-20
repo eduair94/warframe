@@ -805,11 +805,6 @@ onMounted(() => {
   white-space: nowrap;
   border: 0;
 }
-.st-console {
-  max-width: 1180px;
-  margin: 0 auto;
-}
-
 /* Top bar */
 .st-topbar {
   display: flex;

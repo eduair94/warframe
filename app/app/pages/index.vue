@@ -12,6 +12,14 @@
         <span class="kc-promo__cta">{{ t('homePromo.cta') }} <span class="kc-promo__arrow">→</span></span>
       </NuxtLink>
       <client-only>
+        <template #fallback>
+          <SeoFallbackTable
+            :caption="t('home.h1')"
+            :name-label="t('col_name')"
+            :columns="[t('home.headers.buyLive'), t('home.headers.sellLive'), t('col_volume')]"
+            :rows="fallbackRows"
+          />
+        </template>
         <v-data-table
           mobile-breakpoint="sm"
           show-select
@@ -205,7 +213,7 @@
                 >
                 <br />
                 <v-btn
-                  v-if="item.set && item.item_name.includes(' Set')"
+                  v-if="item.item_name.includes(' Set')"
                   size="small"
                   color="primary"
                   class="mt-1"
@@ -390,29 +398,28 @@
       </div>
     </div>
 
-    <!-- Feedback Request -->
-    <v-alert
-      color="#ff4500"
-      icon="mdi-reddit"
-      prominent
-      class="mt-4 mb-3"
-    >
-      <div class="d-flex align-center justify-space-between flex-wrap">
-        <div>
-          <h2 class="text-h6 font-weight-bold">{{ t('home.feedback.title') }}</h2>
-          <div>{{ t('home.feedback.body') }}</div>
-        </div>
-        <v-btn
-          href="https://www.reddit.com/r/Warframe/comments/1nnvsep/my_warframe_market_analytics_app_looking_for/"
-          target="_blank"
-          color="white"
-          class="mt-2 mt-sm-0 ml-sm-4"
-        >
-          <v-icon start color="#ff4500">mdi-reddit</v-icon>
-          {{ t('home.feedback.join') }}
-        </v-btn>
+    <!-- Community signal: Reddit feedback banner (Orokin voidglass, reddit-accented) -->
+    <div class="rd-banner an">
+      <span class="rd-banner__node" aria-hidden="true">
+        <v-icon size="16" class="rd-banner__node-icon">mdi-reddit</v-icon>
+      </span>
+      <div class="rd-banner__text">
+        <div class="rd-banner__eyebrow">r/Warframe</div>
+        <h2 class="rd-banner__title">{{ t('home.feedback.title') }}</h2>
+        <div class="rd-banner__sub">{{ t('home.feedback.body') }}</div>
       </div>
-    </v-alert>
+      <v-btn
+        class="rd-banner__cta"
+        variant="flat"
+        :href="redditThreadUrl"
+        target="_blank"
+        rel="noopener noreferrer"
+        append-icon="mdi-arrow-right"
+        @click="trackAction('reddit_banner_click', { source: 'home' })"
+      >
+        {{ t('home.feedback.join') }}
+      </v-btn>
+    </div>
 
     <!-- Open Source Project Information -->
     <v-card class="mt-4 mb-3" color="#2c2c54">
@@ -451,6 +458,25 @@ const { trackAction, trackDialog, trackFilter, trackMarketOpen, trackSearch, tra
 
 const items = useItemsStore()
 const allItems = computed<any[]>(() => items.allItems)
+
+// Live community-feedback thread linked from the reddit banner below.
+const redditThreadUrl =
+  'https://www.reddit.com/r/Warframe/comments/1uuu7gj/built_a_free_opensource_market_analytics_tool_to/'
+
+// SSR-only crawlable snapshot for <SeoFallbackTable> (see that component for
+// why): top 150 by 48h volume — same default ordering the live table opens
+// on — capped so the fallback stays a small fraction of page weight.
+const fallbackRows = computed(() =>
+  [...allItems.value]
+    .sort((a, b) => (b?.market?.volume || 0) - (a?.market?.volume || 0))
+    .slice(0, 150)
+    .map((item) => ({
+      key: item.url_name,
+      href: 'https://warframe.market/items/' + item.url_name,
+      name: item.item_name,
+      cells: [fixPrice(item.market?.buy), fixPrice(item.market?.sell), item.market?.volume || 0],
+    })),
+)
 
 const route = useRoute()
 const all_items = ref<any[]>([])
@@ -983,6 +1009,54 @@ onBeforeUnmount(() => {
 @media (max-width: 700px) {
   .kc-promo { flex-wrap: wrap; }
   .kc-promo__cta { width: 100%; text-align: center; }
+}
+
+/* Reddit community-feedback banner — same voidglass card as the promo above,
+   with a reddit-orange signal node so it reads as an outside voice rather
+   than a second internal promo. */
+.rd-banner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 0 0 20px;
+  padding: 16px 20px;
+  background:
+    radial-gradient(120% 140% at 100% 0%, rgba(255, 69, 0, 0.09), transparent 55%),
+    linear-gradient(180deg, #14162a 0%, #0e0f1c 100%);
+  border: 1px solid rgba(200, 168, 92, 0.28);
+  clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px);
+  transition: border-color 0.15s ease;
+}
+.rd-banner:hover { border-color: rgba(255, 69, 0, 0.5); }
+.rd-banner__node {
+  display: flex; align-items: center; justify-content: center;
+  flex: 0 0 auto; width: 30px; height: 30px;
+  background: rgba(255, 69, 0, 0.14);
+  border: 1px solid rgba(255, 69, 0, 0.5);
+  transform: rotate(45deg);
+}
+.rd-banner__node-icon { transform: rotate(-45deg); color: #ff4500; }
+.rd-banner__text { flex: 1; min-width: 0; }
+.rd-banner__eyebrow { font-family: 'Rajdhani', sans-serif; text-transform: uppercase; letter-spacing: 0.18em; font-size: 0.66rem; color: #ff4500; margin-bottom: 3px; }
+.rd-banner__title { font-family: 'Cinzel', serif; color: #e7cf95; font-size: 1.05rem; line-height: 1.25; font-weight: 400; margin: 0; }
+.rd-banner__sub { color: #b6bcd0; font-size: 0.86rem; margin-top: 4px; line-height: 1.5; }
+.rd-banner__cta.v-btn {
+  flex: 0 0 auto;
+  font-family: 'Rajdhani', sans-serif !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 0.82rem !important;
+  color: #17130a !important;
+  background: #c8a85c !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
+}
+.rd-banner__cta.v-btn:hover { background: #e7cf95 !important; }
+@media (max-width: 700px) {
+  .rd-banner { flex-wrap: wrap; }
+  .rd-banner__cta.v-btn { width: 100%; }
 }
 .donation_icon {
   display: block;
