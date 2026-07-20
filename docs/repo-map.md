@@ -145,6 +145,7 @@ One-shot data importers run via `npm run <name>` / cron. They populate Mongo.
 | `app/i18n/messages/starChart3d.ts` | 54 KB |
 | `app/i18n/messages/vault.ts` | 51 KB |
 | `app/i18n/messages/flip.ts` | 51 KB |
+| `app/i18n/messages/componentsMisc.ts` | 49 KB |
 | `app/i18n/messages/goals.ts` | 49 KB |
 | `app/i18n/messages/ledger.ts` | 48 KB |
 | `app/i18n/messages/relicLedger.ts` | 47 KB |
@@ -163,4 +164,4 @@ One-shot data importers run via `npm run <name>` / cron. They populate Mongo.
 | `app/i18n/messages/home.ts` | 31 KB |
 | `app/i18n/messages/toolDetail.ts` | 31 KB |
 
-_12 smaller modules omitted. See `app/i18n/CLAUDE.md`._
+_11 smaller modules omitted. See `app/i18n/CLAUDE.md`._
