@@ -34,6 +34,10 @@ const planets = [
           ] },
         ],
       },
+      {
+        location: 'Unknown Vault', gameMode: 'Exterminate', isEvent: false, value: 0,
+        rotations: [{ rotation: 'A', value: 0, rewards: [] }],
+      },
     ],
   },
   {
@@ -85,6 +89,17 @@ describe('MissionService.buildMissionList', () => {
     expect(duviri.bestValue).toBe(30);
     expect(duviri.indexable).toBe(true);
   });
+
+  it('marks activities with no node metadata and no valuable rewards as non-indexable', () => {
+    const nodes = MissionService.normalizeNodes(rawNodes, rawSolNodes);
+    const rows = MissionService.buildMissionList(planets, nodes);
+
+    const unknown = rows.find((r) => r.slug === 'sedna-unknown-vault')!;
+    expect(unknown).toMatchObject({
+      planet: 'Sedna', location: 'Unknown Vault', faction: null,
+      missionType: null, minLevel: null, maxLevel: null, bestValue: 0, indexable: false,
+    });
+  });
 });
 
 describe('MissionService.buildMissionDetail', () => {
@@ -106,6 +121,14 @@ describe('MissionService.buildMissionDetail', () => {
     const detail = MissionService.buildMissionDetail('duviri-endless-repeated-rewards-hard', planets, nodes)!;
     expect(detail.node).toBeNull();
     expect(detail.gameMode).toBe('Hard');
+  });
+
+  it('marks activities with no node metadata and no valuable rewards as non-indexable', () => {
+    const nodes = MissionService.normalizeNodes(rawNodes, rawSolNodes);
+    const detail = MissionService.buildMissionDetail('sedna-unknown-vault', planets, nodes)!;
+    expect(detail.node).toBeNull();
+    expect(detail.bestValue).toBe(0);
+    expect(detail.indexable).toBe(false);
   });
 
   it('returns null for an unknown slug', () => {

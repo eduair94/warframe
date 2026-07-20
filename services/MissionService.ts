@@ -13,8 +13,6 @@
  * wiki's Lua module (robots-blocked), so those gaps are filled by the frontend's
  * baked curated notes, not here.
  */
-import axios from 'axios';
-import { API_URLS } from '../constants';
 import { IDatabaseOperations } from '../interfaces/database.interface';
 import { IEnrichedPlanet, IEnrichedRotation } from './DropService';
 import { missionSlug } from './missionSlug';
@@ -79,14 +77,6 @@ const WIKI_NODE_COLLISIONS = new Set<string>([
 ]);
 
 export class MissionService {
-  /** Browser-like headers so the raw GitHub / warframestat hosts serve JSON. */
-  private static readonly FETCH_HEADERS = {
-    'User-Agent':
-      'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36',
-    Accept: 'application/json,text/plain,*/*',
-    'Accept-Language': 'en-US,en;q=0.9',
-  };
-
   constructor(private readonly nodesRepository: IDatabaseOperations<any>) {}
 
   // ===== Pure builders (no DB — unit tested) =====
