@@ -145,7 +145,10 @@ describe('DropService.lookupItem', () => {
   it('resolves a relic to the nodes that drop it directly', () => {
     const res = DropService.lookupItem('Lith A1 Relic', index);
     expect(res.missions).toEqual([
-      { planet: 'Earth', location: 'Cervantes', gameMode: 'Survival', rotation: 'A', rarity: 'Common', chance: 10 },
+      {
+        planet: 'Earth', location: 'Cervantes', gameMode: 'Survival',
+        rotation: 'A', rarity: 'Common', chance: 10, slug: 'earth-cervantes',
+      },
     ]);
     expect(res.relics).toHaveLength(0);
   });

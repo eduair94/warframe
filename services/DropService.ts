@@ -21,6 +21,7 @@
 import axios from 'axios';
 import { API_URLS } from '../constants';
 import { IDatabaseOperations } from '../interfaces/database.interface';
+import { missionSlug } from './missionSlug';
 
 // =====================================
 // Raw WFCD shapes (as fetched)
@@ -168,6 +169,7 @@ export interface IItemDropsResult {
     rotation: string | null;
     rarity: string;
     chance: number;
+    slug: string;
   }>;
   /** Relics that contain the item (for prime parts), with their own drop nodes. */
   relics: IItemRelicSource[];
@@ -642,6 +644,7 @@ export class DropService {
           rotation: e.rotation ?? null,
           rarity: e.rarity,
           chance: e.chance,
+          slug: missionSlug(e.planet ?? '', e.location ?? ''),
         });
       } else if (e.relicName) {
         relicMap.set(e.relicName, {
