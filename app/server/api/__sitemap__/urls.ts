@@ -32,5 +32,18 @@ export default defineSitemapEventHandler(async () => {
       urls.push({ loc: `/relic/${it.url_name}`, _i18nTransform: true, changefreq: 'weekly', priority: 0.5 })
     }
   }
+
+  const config2 = useRuntimeConfig()
+  const missionBase = (config2.apiInternal as string) || (config2.public.apiURL as string)
+  const missions = await $fetch<{ rows?: Array<{ slug?: string; indexable?: boolean }> }>(
+    `${missionBase}/missions`,
+    { timeout: 20000, retry: 1 },
+  ).catch(() => ({ rows: [] as Array<{ slug?: string; indexable?: boolean }> }))
+  for (const row of missions?.rows ?? []) {
+    if (row?.slug && row.indexable) {
+      urls.push({ loc: `/mission/${row.slug}`, _i18nTransform: true, changefreq: 'weekly', priority: 0.5 })
+    }
+  }
+
   return urls
 })

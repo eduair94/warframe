@@ -15,6 +15,10 @@ export const PAGE_SEO_I18N_PAGES: Record<string, Record<string, PageSeo>> = {
     "/guides/builds": {
       "title": "Best Warframe Builds & Build Planners — Overframe & Underframe",
       "description": "How to find, copy and pressure-test the best Warframe builds with the community planners Overframe and Underframe — plus how to read shared builds critically and adapt them to what you own."
+    },
+    "/mission": {
+      "title": "Warframe Mission Drop Guide — Farm Value, Levels & Access",
+      "description": "Every Warframe mission and activity ranked by platinum per run: full reward tables, drop chances, enemy levels, faction, Steel Path scaling and how to unlock each one."
     }
   },
   "es": {
@@ -33,6 +37,10 @@ export const PAGE_SEO_I18N_PAGES: Record<string, Record<string, PageSeo>> = {
     "/guides/builds": {
       "title": "Mejores builds de Warframe — Overframe y Underframe",
       "description": "Cómo encontrar, copiar y poner a prueba las mejores builds de Warframe con los planificadores comunitarios Overframe y Underframe, y cómo interpretar con criterio las builds compartidas y adaptarlas a lo que ya tienes."
+    },
+    "/mission": {
+      "title": "Guía de misiones de Warframe — Valor de farmeo, niveles y acceso",
+      "description": "Cada misión y actividad de Warframe ordenada por platino por partida: tablas de recompensas completas, probabilidades de drop, niveles de enemigos, facción, escalado de Steel Path y cómo desbloquear cada una."
     }
   },
   "pt": {
@@ -51,6 +59,10 @@ export const PAGE_SEO_I18N_PAGES: Record<string, Record<string, PageSeo>> = {
     "/guides/builds": {
       "title": "Melhores Builds de Warframe: Overframe e Underframe",
       "description": "Como encontrar, copiar e testar na prática as melhores builds de Warframe com os planejadores da comunidade Overframe e Underframe — além de analisar builds compartilhadas com senso crítico e adaptá-las ao que você já tem."
+    },
+    "/mission": {
+      "title": "Guia de missões do Warframe — Valor de farm, níveis e acesso",
+      "description": "Cada missão e atividade do Warframe classificada por platina por run: tabelas de recompensa completas, chances de drop, níveis de inimigos, facção, escalonamento do Steel Path e como desbloquear cada uma."
     }
   },
   "de": {
@@ -69,6 +81,10 @@ export const PAGE_SEO_I18N_PAGES: Record<string, Record<string, PageSeo>> = {
     "/guides/builds": {
       "title": "Beste Warframe-Builds & Build-Planer – Overframe, Underframe",
       "description": "So findest, kopierst und testest du die besten Warframe-Builds mit den Community-Planern Overframe und Underframe – und wie du geteilte Builds kritisch bewertest und an deinen Bestand anpasst."
+    },
+    "/mission": {
+      "title": "Warframe Mission Drop Guide — Farm Value, Levels & Access",
+      "description": "Every Warframe mission and activity ranked by platinum per run: full reward tables, drop chances, enemy levels, faction, Steel Path scaling and how to unlock each one."
     }
   },
   "fr": {
@@ -87,6 +103,10 @@ export const PAGE_SEO_I18N_PAGES: Record<string, Record<string, PageSeo>> = {
     "/guides/builds": {
       "title": "Meilleurs builds Warframe — Overframe & Underframe",
       "description": "Comment trouver, copier et mettre à l'épreuve les meilleurs builds Warframe avec les planificateurs communautaires Overframe et Underframe, et lire les builds partagés d'un œil critique pour les adapter à ce que vous possédez."
+    },
+    "/mission": {
+      "title": "Warframe Mission Drop Guide — Farm Value, Levels & Access",
+      "description": "Every Warframe mission and activity ranked by platinum per run: full reward tables, drop chances, enemy levels, faction, Steel Path scaling and how to unlock each one."
     }
   },
   "ru": {
@@ -105,6 +125,10 @@ export const PAGE_SEO_I18N_PAGES: Record<string, Record<string, PageSeo>> = {
     "/guides/builds": {
       "title": "Лучшие билды Warframe и планировщики Overframe/Underframe",
       "description": "Как найти, скопировать и проверить на прочность лучшие билды Warframe с помощью планировщиков Overframe и Underframe — а также как критически читать чужие билды и адаптировать их под то, что есть у вас."
+    },
+    "/mission": {
+      "title": "Warframe Mission Drop Guide — Farm Value, Levels & Access",
+      "description": "Every Warframe mission and activity ranked by platinum per run: full reward tables, drop chances, enemy levels, faction, Steel Path scaling and how to unlock each one."
     }
   },
   "ko": {
@@ -123,6 +147,10 @@ export const PAGE_SEO_I18N_PAGES: Record<string, Record<string, PageSeo>> = {
     "/guides/builds": {
       "title": "최고의 Warframe 빌드와 빌드 플래너 — Overframe & Underframe",
       "description": "커뮤니티 플래너 Overframe와 Underframe로 최고의 Warframe 빌드를 찾고, 복사하고, 실전 검증하는 방법 — 공유된 빌드를 비판적으로 읽고 보유한 장비에 맞게 응용하는 법까지 알아보세요."
+    },
+    "/mission": {
+      "title": "Warframe Mission Drop Guide — Farm Value, Levels & Access",
+      "description": "Every Warframe mission and activity ranked by platinum per run: full reward tables, drop chances, enemy levels, faction, Steel Path scaling and how to unlock each one."
     }
   },
   "ja": {
@@ -141,6 +169,10 @@ export const PAGE_SEO_I18N_PAGES: Record<string, Record<string, PageSeo>> = {
     "/guides/builds": {
       "title": "最強Warframeビルド＆ビルドプランナー — Overframe & Underframe",
       "description": "コミュニティ製プランナー Overframe と Underframe で最強の Warframe ビルドを探し、コピーし、実戦で検証する方法を解説。共有ビルドを批判的に読み解き、自分の所持装備に合わせて調整するコツも紹介します。"
+    },
+    "/mission": {
+      "title": "Warframe Mission Drop Guide — Farm Value, Levels & Access",
+      "description": "Every Warframe mission and activity ranked by platinum per run: full reward tables, drop chances, enemy levels, faction, Steel Path scaling and how to unlock each one."
     }
   },
   "zh-hans": {
@@ -159,6 +191,10 @@ export const PAGE_SEO_I18N_PAGES: Record<string, Record<string, PageSeo>> = {
     "/guides/builds": {
       "title": "最佳 Warframe 配装与配装规划器 — Overframe 与 Underframe",
       "description": "如何借助社区规划器 Overframe 与 Underframe 查找、复制并压力测试最佳 Warframe 配装，并学会批判性地解读他人分享的 build、按你已拥有的装备灵活调整。"
+    },
+    "/mission": {
+      "title": "Warframe Mission Drop Guide — Farm Value, Levels & Access",
+      "description": "Every Warframe mission and activity ranked by platinum per run: full reward tables, drop chances, enemy levels, faction, Steel Path scaling and how to unlock each one."
     }
   },
   "zh-hant": {
@@ -177,6 +213,10 @@ export const PAGE_SEO_I18N_PAGES: Record<string, Record<string, PageSeo>> = {
     "/guides/builds": {
       "title": "最佳 Warframe 配裝與配裝規劃器 — Overframe 與 Underframe",
       "description": "如何透過社群規劃工具 Overframe 與 Underframe 尋找、複製並實測最佳 Warframe 配裝，並學會批判性地解讀他人分享的配裝、依你所擁有的裝備加以調整。"
+    },
+    "/mission": {
+      "title": "Warframe Mission Drop Guide — Farm Value, Levels & Access",
+      "description": "Every Warframe mission and activity ranked by platinum per run: full reward tables, drop chances, enemy levels, faction, Steel Path scaling and how to unlock each one."
     }
   },
   "pl": {
@@ -195,6 +235,10 @@ export const PAGE_SEO_I18N_PAGES: Record<string, Record<string, PageSeo>> = {
     "/guides/builds": {
       "title": "Najlepsze buildy do Warframe i planery buildów — Overframe i Underframe",
       "description": "Jak znaleźć, skopiować i przetestować najlepsze buildy do Warframe za pomocą społecznościowych planerów Overframe i Underframe — a także jak krytycznie czytać udostępniane buildy i dostosowywać je do tego, co posiadasz."
+    },
+    "/mission": {
+      "title": "Warframe Mission Drop Guide — Farm Value, Levels & Access",
+      "description": "Every Warframe mission and activity ranked by platinum per run: full reward tables, drop chances, enemy levels, faction, Steel Path scaling and how to unlock each one."
     }
   },
   "it": {
@@ -213,6 +257,10 @@ export const PAGE_SEO_I18N_PAGES: Record<string, Record<string, PageSeo>> = {
     "/guides/builds": {
       "title": "Migliori build Warframe e planner — Overframe & Underframe",
       "description": "Come trovare, copiare e mettere alla prova le migliori build Warframe con i planner della community Overframe e Underframe — e come leggere in modo critico le build condivise e adattarle a ciò che possiedi."
+    },
+    "/mission": {
+      "title": "Warframe Mission Drop Guide — Farm Value, Levels & Access",
+      "description": "Every Warframe mission and activity ranked by platinum per run: full reward tables, drop chances, enemy levels, faction, Steel Path scaling and how to unlock each one."
     }
   },
   "uk": {
@@ -231,6 +279,10 @@ export const PAGE_SEO_I18N_PAGES: Record<string, Record<string, PageSeo>> = {
     "/guides/builds": {
       "title": "Найкращі білди Warframe — Overframe і Underframe",
       "description": "Як знаходити, копіювати та перевіряти на міцність найкращі білди Warframe за допомогою планувальників від спільноти Overframe і Underframe — а також як критично читати чужі білди й адаптувати їх під наявне спорядження."
+    },
+    "/mission": {
+      "title": "Warframe Mission Drop Guide — Farm Value, Levels & Access",
+      "description": "Every Warframe mission and activity ranked by platinum per run: full reward tables, drop chances, enemy levels, faction, Steel Path scaling and how to unlock each one."
     }
   }
 }

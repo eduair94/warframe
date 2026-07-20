@@ -105,10 +105,12 @@ export default defineNuxtConfig({
       // and /{code}/relic rule (generated from NON_DEFAULT_LOCALES).
       '/set/**': { cache: false },
       '/relic/**': { cache: false },
+      '/mission/**': { cache: false },
       ...Object.fromEntries(
         NON_DEFAULT_LOCALES.flatMap((c) => [
           [`/${c}/set/**`, { cache: false }],
-          [`/${c}/relic/**`, { cache: false }]
+          [`/${c}/relic/**`, { cache: false }],
+          [`/${c}/mission/**`, { cache: false }]
         ])
       ),
       // Service worker + manifest must update promptly, not be held 60s.

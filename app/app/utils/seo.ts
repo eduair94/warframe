@@ -114,6 +114,11 @@ export const PAGE_SEO: Record<string, PageSeo> = {
     description:
       'Explore Warframe prime and relic drop locations on an interactive 3D star chart. Find the best node for the part or relic you need.'
   },
+  '/mission': {
+    title: 'Warframe Mission Drop Guide — Farm Value, Levels & Access',
+    description:
+      'Every Warframe mission and activity ranked by platinum per run: full reward tables, drop chances, enemy levels, faction, Steel Path scaling and how to unlock each one.'
+  },
   '/circuit': {
     title: 'Warframe Circuit & Incarnon Rotation This Week — Duviri',
     description:
@@ -318,7 +323,8 @@ const PREFIX_SEO: Array<[string, string]> = [
   ['/set', '/set'],
   ['/relic-farming', '/relic-farming'],
   ['/relics-value', '/relics-value'],
-  ['/relic', '/relic']
+  ['/relic', '/relic'],
+  ['/mission', '/mission']
 ]
 
 // All non-default i18n locale codes (kept in sync with nuxt.config LOCALES).

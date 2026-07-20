@@ -197,6 +197,7 @@ const navLinks: NavLink[] = [
   { to: '/vaulted-worth', key: 'vaultedWorth', icon: 'mdi-cart-check', group: 'Analytics' },
   { to: '/star-chart', key: 'starChart', icon: 'mdi-orbit', group: 'Analytics' },
   { to: '/star-chart-3d', key: 'dropMap3d', icon: 'mdi-rotate-orbit', group: 'Analytics' },
+  { to: '/mission', key: 'missions', icon: 'mdi-map-search-outline', group: 'Analytics' },
   { to: '/ducats', key: 'ducats', icon: 'mdi-cash-multiple', group: 'Analytics' },
   { to: '/endo', key: 'endoPlat', icon: 'mdi-swap-horizontal', group: 'Tools' },
   { to: '/relic-farming', key: 'relicFarming', icon: 'mdi-timer-sand', group: 'Tools' },
