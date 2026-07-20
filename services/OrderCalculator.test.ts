@@ -211,5 +211,24 @@ describe('OrderCalculator', () => {
       const top = OrderCalculator.topOrders(orders, { subtype: 'radiant', goingRate: 20 });
       expect(top.sell).toEqual([{ platinum: 20, quantity: 1, ingame_name: 'R', status: 'ingame' }]);
     });
+
+    // Consistency with the headline price: a filled Ayatan sculpture must not mix
+    // in the cheap empty-sculpture orders (which the star-filtered header excludes).
+    it('prices sculptures at the filled star tier, excluding empty sculptures', () => {
+      const orders: IOrderData[] = [
+        named({ order_type: 'sell', platinum: 12, amber_stars: 0, cyan_stars: 0 }, 'ingame', 'Empty'),
+        named({ order_type: 'sell', platinum: 45, amber_stars: 1, cyan_stars: 4 }, 'ingame', 'Filled'),
+      ];
+      const top = OrderCalculator.topOrders(orders, { goingRate: 45, maxAmberStars: 1, maxCyanStars: 4 });
+      expect(top.sell.map((r) => r.ingame_name)).toEqual(['Filled']);
+    });
+
+    it('falls back to any star tier when no filled sculpture is listed', () => {
+      const orders: IOrderData[] = [
+        named({ order_type: 'sell', platinum: 12, amber_stars: 0, cyan_stars: 0 }, 'ingame', 'Empty'),
+      ];
+      const top = OrderCalculator.topOrders(orders, { goingRate: 12, maxAmberStars: 1, maxCyanStars: 4 });
+      expect(top.sell.map((r) => r.ingame_name)).toEqual(['Empty']);
+    });
   });
 });

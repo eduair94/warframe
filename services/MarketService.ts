@@ -667,7 +667,11 @@ export class MarketService {
       // Same subtype + credibility band as the headline price above.
       const topOrders = OrderCalculator.topOrders(ordersResponse.payload.orders, {
         subtype,
-        goingRate
+        goingRate,
+        // Same filled-sculpture resolution as the headline price above, so the
+        // dialog's best sellers/buyers describe the same star tier it shows.
+        maxAmberStars: item.max_amber_stars,
+        maxCyanStars: item.max_cyan_stars
       });
 
       return {

@@ -59,6 +59,16 @@ const DRY = argv.includes('--dry')
 const ONLY = (arg('--locales') || '').split(',').map((s) => s.trim()).filter(Boolean)
 const LOCALES = ONLY.length ? ONLY : Object.keys(LANGS)
 const MODEL = process.env.GEMINI_MODEL || 'gemini-flash-latest'
+// Translation backend: 'gemini' (default, best copy) or 'free' (free-translate,
+// Google-backed, no API key — faster/cheaper for bulk fills, plainer wording).
+const ENGINE = (arg('--engine') || 'gemini').toLowerCase()
+
+// Our locale codes -> the codes free-translate/Google expect. Most match; only
+// the Chinese scripts differ (zh-hans -> zh-CN, zh-hant -> zh-TW).
+const GOOGLE_CODE = {
+  es: 'es', pt: 'pt', de: 'de', fr: 'fr', ru: 'ru', ko: 'ko', ja: 'ja',
+  'zh-hans': 'zh-CN', 'zh-hant': 'zh-TW', pl: 'pl', it: 'it', uk: 'uk',
+}
 
 if (!FILE) {
   console.error('usage: tr-file.mjs <app/i18n/messages/NAME.ts> [--locales es,fr] [--force] [--dry]')
@@ -189,23 +199,118 @@ async function translate(ai, strings, langName, label) {
   return out
 }
 
-async function main() {
-  const work = []
-  for (const loc of LOCALES) {
-    const block = tree[loc] || {}
-    const missing = FORCE ? enPaths : enPaths.filter((p) => typeof get(block, p) !== 'string')
-    if (missing.length) work.push({ loc, missing })
+// --- free-translate backend -------------------------------------------------
+// Brand/domain literals Google would otherwise translate (e.g. "warframe.market"
+// -> "warframe.mercado", "Warframe" -> localized). Masked like placeholders.
+const PROTECT_LITERALS = ['warframe.market', 'Warframe', 'WTS', 'WTB']
+
+// Google mangles named placeholders like {price} (it translates/reorders the
+// word or spaces the braces) and brand literals. Swap each for a numeric
+// sentinel {0}, {1}, … that Google preserves, then restore. Anything that still
+// comes back malformed is caught by the phOf validation in main() and falls back
+// to English.
+function protectPlaceholders(s) {
+  const names = [] // each entry: { kind: 'lit' | 'ph', val }
+  let masked = String(s)
+  // Literals first (longest/most-specific first so 'warframe.market' wins over 'Warframe').
+  for (const lit of PROTECT_LITERALS) {
+    if (masked.includes(lit)) {
+      const token = `{${names.push({ kind: 'lit', val: lit }) - 1}}`
+      masked = masked.split(lit).join(token)
+    }
   }
+  // Then named placeholders {price}, {item}, … (regex requires an alpha start,
+  // so it never re-matches the numeric sentinels above).
+  masked = masked.replace(PLACEHOLDER, (_m, name) => `{${names.push({ kind: 'ph', val: name }) - 1}}`)
+  return { masked, names }
+}
+function restorePlaceholders(s, names) {
+  return String(s).replace(/\{\s*(\d+)\s*\}/g, (_m, i) => {
+    const n = names[Number(i)]
+    if (!n) return _m
+    return n.kind === 'ph' ? `{${n.val}}` : n.val
+  })
+}
 
-  if (!work.length) {
-    console.log(`tr-file[${FILE}]: nothing missing across ${LOCALES.length} locales`)
-    return
+/**
+ * Keyless Google translate — the same backend the `free-translate` package
+ * wraps, called directly. (The npm package itself pulls in `nightmare`/Electron
+ * and cannot run headless, so we hit the public endpoint over plain fetch: no
+ * dependency, no browser, same result.) Returns the joined translation.
+ */
+async function googleTranslate(text, to, attempts = 3) {
+  const url =
+    `https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=${encodeURIComponent(to)}&dt=t&q=${encodeURIComponent(text)}`
+  for (let i = 1; i <= attempts; i++) {
+    try {
+      const res = await fetch(url, { headers: { 'User-Agent': 'Mozilla/5.0' } })
+      if (res.status === 429 || res.status >= 500) throw new Error(`google ${res.status}`)
+      if (!res.ok) throw new Error(`google ${res.status}`)
+      const data = await res.json()
+      // Response: [[[translatedChunk, originalChunk, …], …], …] — join the chunks.
+      return (data?.[0] || []).map((seg) => (seg && seg[0]) || '').join('')
+    } catch (e) {
+      if (i === attempts) throw e
+      await sleep(400 * i)
+    }
   }
+  return ''
+}
 
-  console.log(`tr-file[${FILE}]:`)
-  for (const w of work) console.log(`  ${w.loc}: ${w.missing.length} missing`)
-  if (DRY) return
+/**
+ * Translate one namespace's missing strings for one locale via the keyless
+ * Google endpoint. Per-string; a failed string is left null so the caller falls
+ * it back to English.
+ */
+async function translateFreeLocale(strings, googleCode) {
+  const out = []
+  for (const s of strings) {
+    try {
+      const { masked, names } = protectPlaceholders(s)
+      const raw = await googleTranslate(masked, googleCode)
+      out.push(restorePlaceholders(raw, names))
+    } catch {
+      out.push(null)
+    }
+  }
+  return out
+}
 
+async function runFree(work) {
+  let ok = 0
+  let fail = 0
+  // free-translate hits Google's public endpoint; a little concurrency across
+  // locales is fine, too much risks a throttle. 3 keeps it quick and polite.
+  const CONC = Number(process.env.TRANSLATE_CONCURRENCY || 3)
+  let idx = 0
+  const worker = async () => {
+    while (idx < work.length) {
+      const { loc, missing } = work[idx++]
+      const google = GOOGLE_CODE[loc] || loc
+      const strings = missing.map((p) => get(tree.en, p))
+      try {
+        const out = await translateFreeLocale(strings, google)
+        let kept = 0
+        missing.forEach((p, i) => {
+          const v = out[i]
+          const usable = typeof v === 'string' && v.trim() && !v.includes('@') && phOf(v) === phOf(strings[i])
+          if (!tree[loc]) tree[loc] = {}
+          set(tree[loc], p, usable ? v : strings[i])
+          if (usable) kept++
+        })
+        ok++
+        console.log(`  ✓ ${loc}: ${kept}/${missing.length} translated${kept < missing.length ? ' (rest fell back to English)' : ''}`)
+      } catch (e) {
+        fail++
+        console.error(`  ✗ ${loc}: ${e?.message || e}`)
+      }
+    }
+  }
+  await Promise.all(Array.from({ length: Math.min(CONC, work.length) }, worker))
+  return { ok, fail }
+}
+
+async function runGemini(work) {
   if (!process.env.GEMINI_API_KEY) {
     console.error('FATAL: GEMINI_API_KEY not set')
     process.exit(1)
@@ -245,6 +350,33 @@ async function main() {
     }
   }
   await Promise.all(Array.from({ length: Math.min(CONC, work.length) }, worker))
+  return { ok, fail }
+}
+
+async function main() {
+  const work = []
+  for (const loc of LOCALES) {
+    const block = tree[loc] || {}
+    const missing = FORCE ? enPaths : enPaths.filter((p) => typeof get(block, p) !== 'string')
+    if (missing.length) work.push({ loc, missing })
+  }
+
+  if (!work.length) {
+    console.log(`tr-file[${FILE}]: nothing missing across ${LOCALES.length} locales`)
+    return
+  }
+
+  console.log(`tr-file[${FILE}]: engine=${ENGINE}`)
+  for (const w of work) console.log(`  ${w.loc}: ${w.missing.length} missing`)
+  if (DRY) return
+
+  let ok = 0
+  let fail = 0
+  if (ENGINE === 'free') {
+    ;({ ok, fail } = await runFree(work))
+  } else {
+    ;({ ok, fail } = await runGemini(work))
+  }
 
   // --- emit ----------------------------------------------------------------
   const render = (obj, indent) => {

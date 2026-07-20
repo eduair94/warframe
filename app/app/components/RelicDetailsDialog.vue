@@ -69,6 +69,50 @@
           </div>
         </div>
 
+        <!-- Where this relic drops — the fissure/mission nodes to farm it from -->
+        <section class="rld__farm">
+          <div class="rld__sec-head">
+            <span class="rld__sec-title">{{ t('relicsValue.dialog.farm.title') }}</span>
+            <span class="rld__sec-hint">{{ t('relicsValue.dialog.farm.hint') }}</span>
+          </div>
+          <div v-if="nodesLoading" class="rld__farm-state">{{ t('relicsValue.dialog.farm.loading') }}</div>
+          <div v-else-if="nodesError" class="rld__farm-state">
+            {{ t('relicsValue.dialog.farm.error') }}
+            <button type="button" class="rld__retry" @click="loadNodes">{{ t('relicsValue.dialog.bulk.retry') }}</button>
+          </div>
+          <div v-else-if="!nodes.length" class="rld__farm-state">{{ t('relicsValue.dialog.farm.none') }}</div>
+          <template v-else>
+            <ul class="rld__nodes">
+              <li v-for="(n, i) in nodesShown" :key="i" class="rld__node-row">
+                <NuxtLink
+                  v-if="n.slug"
+                  class="rld__node-where rld__node-where--link"
+                  :to="localePath('/mission/' + n.slug)"
+                  @click="onNodeNav(n)"
+                >
+                  <span class="rld__node-place">{{ n.location }}</span>
+                  <span class="rld__node-planet">{{ n.planet }}</span>
+                </NuxtLink>
+                <div v-else class="rld__node-where">
+                  <span class="rld__node-place">{{ n.location }}</span>
+                  <span class="rld__node-planet">{{ n.planet }}</span>
+                </div>
+                <span class="rld__node-mode">{{ n.gameMode }}</span>
+                <span v-if="n.rotation" class="rld__node-rot" :data-rot="n.rotation">{{ n.rotation }}</span>
+                <span class="rld__node-chance">{{ fmtPct(n.chance) }}%</span>
+              </li>
+            </ul>
+            <button
+              v-if="nodes.length > 6"
+              type="button"
+              class="rld__morebtn"
+              @click="nodesExpanded = !nodesExpanded"
+            >
+              {{ nodesExpanded ? t('relicsValue.dialog.farm.less') : t('relicsValue.dialog.farm.more', { n: nodes.length - 6 }) }}
+            </button>
+          </template>
+        </section>
+
         <!-- Why "sell now" is what it is — the raw book, so the number is never a mystery -->
         <section class="rld__market">
           <div class="rld__mstat is-strong">
@@ -255,6 +299,7 @@ const { localName, localItemName } = useLocalizedName()
 const { itemThumb, THUMB_PLACEHOLDER } = useItemThumb()
 const { trackAction, trackDialog, trackFilter, trackMarketOpen } = useAnalytics()
 const apiBase = useApiBase()
+const localePath = useLocalePath()
 
 // The dialog owns its refinement so you can flip the odds inside the popup; it
 // seeds from the page's choice each time it opens (watch below).
@@ -267,6 +312,7 @@ watch(
       qty.value = 1
       lastQty = 1
       loadBook()
+      loadNodes()
     }
   },
 )
@@ -357,6 +403,59 @@ onBeforeUnmount(() => {
   if (qtyTimer) clearTimeout(qtyTimer)
 })
 
+// --- Where this relic drops -----------------------------------------------
+// A relic is itself a mission-drop item, so /drops/item/{name} returns the
+// fissure/mission nodes it farms from in `missions[]`. Fetched on open and shown
+// up top, so "where do I get this relic" is answered without leaving the board.
+interface RelicNode {
+  planet: string
+  location: string
+  gameMode: string
+  rotation?: string | null
+  chance: number
+  slug?: string
+}
+const nodes = ref<RelicNode[]>([])
+const nodesLoading = ref(false)
+const nodesError = ref(false)
+const nodesExpanded = ref(false)
+let nodesFor = ''
+async function loadNodes() {
+  const rel = relicRef.value
+  const bare = (rel?.relicName || '').trim()
+  if (!bare) return
+  // Drop nodes are indexed under the full item name ("Axi S8 Relic"); relicName
+  // is the bare label ("Axi S8"), so append the suffix when it's missing.
+  const name = /relic$/i.test(bare) ? bare : `${bare} Relic`
+  if (nodesFor === name && nodes.value.length) return // already have this relic's nodes
+  nodesLoading.value = true
+  nodesError.value = false
+  nodesExpanded.value = false
+  try {
+    const res = await $fetch<{ missions?: RelicNode[] }>(
+      `${apiBase}/drops/item/${encodeURIComponent(name)}`,
+    )
+    nodes.value = (res?.missions || [])
+      .slice()
+      .sort((a, b) => (Number(b.chance) || 0) - (Number(a.chance) || 0))
+    nodesFor = name
+  } catch {
+    nodesError.value = true
+    nodes.value = []
+  } finally {
+    nodesLoading.value = false
+  }
+}
+const nodesShown = computed(() => (nodesExpanded.value ? nodes.value : nodes.value.slice(0, 6)))
+// Leaving for a mission page — close the dialog and record the jump.
+function onNodeNav(n: RelicNode) {
+  close()
+  trackAction('relic_node_nav', {
+    item_name: relicRef.value?.relicName || '',
+    location: `${n.planet} · ${n.location}`,
+  })
+}
+
 const refineOptions = computed(() => [
   { value: 'Intact', label: t('relicsValue.filters.intact') },
   { value: 'Radiant', label: t('relicsValue.filters.radiant') },
@@ -437,6 +536,11 @@ function onImgError(e: Event) {
 }
 function fmtInt(n: any): string {
   return String(Math.round(Number(n) || 0))
+}
+// Drop chance: integer for ≥10%, else up to 2 decimals (relics can be <1%).
+function fmtPct(n: any): string {
+  const v = Number(n) || 0
+  return v >= 10 ? v.toFixed(0) : v.toFixed(2).replace(/\.?0+$/, '')
 }
 // One decimal for the tiny per-drop contributions (many are < 1p).
 function fmtPlatFine(n: any): string {
@@ -645,6 +749,53 @@ function rarityColor(rarity: string): string {
 .rld__refine-btn:hover { color: #e7cf95; }
 .rld__refine-btn.is-on { background: rgba(212, 175, 90, 0.9); color: #17131f; }
 .rld__refine-btn:focus-visible { outline: 2px solid #35d6d0; outline-offset: -2px; }
+
+/* Where this relic drops — mission-node farm list */
+.rld__farm {
+  margin-top: 16px;
+  padding: 12px 14px;
+  border: 1px solid rgba(53, 214, 208, 0.18);
+  background: rgba(53, 214, 208, 0.03);
+}
+.rld__farm .rld__sec-head { margin-bottom: 8px; }
+.rld__farm-state {
+  font-family: 'Rajdhani', sans-serif; font-size: 0.86rem; color: #8f95ab;
+  display: flex; align-items: center; gap: 12px; padding: 4px 0;
+}
+.rld__nodes { list-style: none; padding: 0; margin: 0; }
+.rld__node-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 4px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+.rld__node-row:hover { background: rgba(53, 214, 208, 0.045); }
+.rld__node-where { display: flex; flex-direction: column; min-width: 0; flex: 1; text-decoration: none; }
+.rld__node-where--link { cursor: pointer; border-radius: 6px; transition: background 120ms ease; }
+.rld__node-where--link:hover .rld__node-place { color: #7af0ea; }
+.rld__node-place { color: #eef1f8; font-weight: 600; font-size: 0.92rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.rld__node-planet { color: #8f95ab; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; }
+.rld__node-mode { color: #b6bcd0; font-size: 0.78rem; white-space: nowrap; flex: none; }
+.rld__node-rot {
+  font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 0.7rem;
+  width: 19px; height: 19px; flex: none;
+  display: grid; place-items: center; border-radius: 2px; color: #0c0d18; background: #6f7796;
+}
+.rld__node-rot[data-rot='A'] { background: #6fae9b; }
+.rld__node-rot[data-rot='B'] { background: #c8a85c; }
+.rld__node-rot[data-rot='C'] { background: #cf7b57; }
+.rld__node-chance {
+  font-variant-numeric: tabular-nums; color: #dfe3f0; font-size: 0.86rem; white-space: nowrap; flex: none; min-width: 40px; text-align: right;
+}
+.rld__morebtn {
+  margin-top: 8px;
+  font-family: 'Rajdhani', sans-serif; text-transform: uppercase; letter-spacing: 0.06em;
+  font-size: 0.72rem; color: #8f95ab; background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 4px; padding: 4px 12px; cursor: pointer;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+.rld__morebtn:hover { color: #7ff0eb; border-color: rgba(53, 214, 208, 0.4); }
 
 /* Market book */
 .rld__market {

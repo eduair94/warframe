@@ -5,7 +5,7 @@
         <SeoFallbackTable
           :caption="t('relicsValue.hero.eyebrow')"
           :name-label="t('relicsValue.table.relic')"
-          :columns="[t('relicsValue.table.evToOpen'), t('relicsValue.table.sellRelic'), t('relicsValue.table.vol')]"
+          :columns="[t('relicsValue.table.avgOut'), t('relicsValue.table.evToOpen'), t('relicsValue.table.sellRelic'), t('relicsValue.table.vol')]"
           :rows="fallbackRows"
         />
       </template>
@@ -144,13 +144,30 @@
           <table class="an-table">
             <thead>
               <tr>
-                <th class="col-name">{{ t('relicsValue.table.relic') }}</th>
-                <th class="grp-a">{{ t('relicsValue.table.evToOpen') }}</th>
-                <th class="grp-b" :title="t('relicsValue.table.sellRelicTip')">{{ t('relicsValue.table.sellRelic') }}</th>
-                <th class="grp-a">{{ t('relicsValue.table.verdict') }}</th>
-                <th>{{ t('relicsValue.table.demand') }}</th>
-                <th>{{ t('relicsValue.table.topDrop') }}</th>
-                <th>{{ t('relicsValue.table.vol') }}</th>
+                <th class="col-name an-sortable" :class="{ 'is-sorted': sortKey === 'name' }" :aria-sort="ariaSort('name')" @click="setSort('name')">
+                  {{ t('relicsValue.table.relic') }}<span class="an-caret">{{ sortArrow('name') }}</span>
+                </th>
+                <th class="grp-a an-sortable" :class="{ 'is-sorted': sortKey === 'out' }" :aria-sort="ariaSort('out')" :title="t('relicsValue.table.avgOutTip')" @click="setSort('out')">
+                  {{ t('relicsValue.table.avgOut') }}<span class="an-caret">{{ sortArrow('out') }}</span>
+                </th>
+                <th class="grp-a an-sortable" :class="{ 'is-sorted': sortKey === 'ev' }" :aria-sort="ariaSort('ev')" :title="t('relicsValue.table.evToOpenTip')" @click="setSort('ev')">
+                  {{ t('relicsValue.table.evToOpen') }}<span class="an-caret">{{ sortArrow('ev') }}</span>
+                </th>
+                <th class="grp-b an-sortable" :class="{ 'is-sorted': sortKey === 'sell' }" :aria-sort="ariaSort('sell')" :title="t('relicsValue.table.sellRelicTip')" @click="setSort('sell')">
+                  {{ t('relicsValue.table.sellRelic') }}<span class="an-caret">{{ sortArrow('sell') }}</span>
+                </th>
+                <th class="grp-a an-sortable" :class="{ 'is-sorted': sortKey === 'margin' }" :aria-sort="ariaSort('margin')" @click="setSort('margin')">
+                  {{ t('relicsValue.table.verdict') }}<span class="an-caret">{{ sortArrow('margin') }}</span>
+                </th>
+                <th class="an-sortable" :class="{ 'is-sorted': sortKey === 'demand' }" :aria-sort="ariaSort('demand')" @click="setSort('demand')">
+                  {{ t('relicsValue.table.demand') }}<span class="an-caret">{{ sortArrow('demand') }}</span>
+                </th>
+                <th class="an-sortable" :class="{ 'is-sorted': sortKey === 'topdrop' }" :aria-sort="ariaSort('topdrop')" @click="setSort('topdrop')">
+                  {{ t('relicsValue.table.topDrop') }}<span class="an-caret">{{ sortArrow('topdrop') }}</span>
+                </th>
+                <th class="an-sortable" :class="{ 'is-sorted': sortKey === 'volume' }" :aria-sort="ariaSort('volume')" @click="setSort('volume')">
+                  {{ t('relicsValue.table.vol') }}<span class="an-caret">{{ sortArrow('volume') }}</span>
+                </th>
                 <th></th>
               </tr>
             </thead>
@@ -161,7 +178,12 @@
                 :class="{ 'is-top': row.url_name === topDealUrl }"
               >
                 <td class="col-name">
-                  <nuxt-link class="an-name" :to="'/relic/' + row.url_name">
+                  <button
+                    type="button"
+                    class="an-name an-name--btn"
+                    :title="t('relicsValue.table.details', { name: localName('items', row.url_name, row.relicName) })"
+                    @click="openDetails(row)"
+                  >
                     <img class="an-thumb" :src="assetUrl(row.thumb)" :alt="localName('items', row.url_name, row.relicName)" loading="lazy" @error="onImgError" />
                     <span>
                       {{ localName('items', row.url_name, row.relicName) }}
@@ -173,9 +195,12 @@
                         <template v-if="dropMix(row).vaulted"> · <span class="an-vtag">{{ t('relicsValue.tags.vaultedCount', { n: dropMix(row).vaulted }) }}</span></template>
                       </small>
                     </span>
-                  </nuxt-link>
+                  </button>
                 </td>
-                <td class="grp-a an-num an-strong" :class="{ up: ev(row) > relicSellNow(row) }">
+                <td class="grp-a an-num an-strong">
+                  {{ fmtPlat(evRaw(row)) }}p
+                </td>
+                <td class="grp-a an-num" :class="{ up: ev(row) > relicSellNow(row) }">
                   {{ fmtPlat(ev(row)) }}p
                 </td>
                 <td class="grp-b an-num">
@@ -205,15 +230,6 @@
                 </td>
                 <td class="an-num">{{ fmtPlat(row.relic.volume) }}</td>
                 <td class="an-actions">
-                  <button
-                    type="button"
-                    class="an-iconbtn"
-                    :title="t('relicsValue.table.details', { name: localName('items', row.url_name, row.relicName) })"
-                    :aria-label="t('relicsValue.table.details', { name: localName('items', row.url_name, row.relicName) })"
-                    @click="openDetails(row)"
-                  >
-                    <v-icon size="20">mdi-diamond-stone</v-icon>
-                  </button>
                   <nuxt-link
                     class="an-iconbtn an-iconbtn--go"
                     :to="'/relic/' + row.url_name"
@@ -230,12 +246,17 @@
 
         <!-- Mobile cards -->
         <div v-else class="an-cards">
-          <nuxt-link
+          <div
             v-for="row in paged"
             :key="row.url_name"
             class="an-card"
             :class="{ 'is-top': row.url_name === topDealUrl }"
-            :to="'/relic/' + row.url_name"
+            role="button"
+            tabindex="0"
+            :aria-label="t('relicsValue.table.details', { name: localName('items', row.url_name, row.relicName) })"
+            @click="openDetails(row)"
+            @keydown.enter="openDetails(row)"
+            @keydown.space.prevent="openDetails(row)"
           >
             <div class="an-card__head">
               <img class="an-thumb" :src="assetUrl(row.thumb)" :alt="localName('items', row.url_name, row.relicName)" loading="lazy" @error="onImgError" />
@@ -251,16 +272,7 @@
                   <template v-if="dropMix(row).vaulted"> · <span class="an-vtag">{{ t('relicsValue.tags.vaultedCount', { n: dropMix(row).vaulted }) }}</span></template>
                 </small>
               </div>
-              <button
-                type="button"
-                class="an-iconbtn"
-                :title="t('relicsValue.table.details', { name: localName('items', row.url_name, row.relicName) })"
-                :aria-label="t('relicsValue.table.details', { name: localName('items', row.url_name, row.relicName) })"
-                @click.prevent.stop="openDetails(row)"
-              >
-                <v-icon size="20">mdi-diamond-stone</v-icon>
-              </button>
-              <v-icon color="#4fb3bf">mdi-chevron-right</v-icon>
+              <v-icon color="#4fb3bf">mdi-diamond-stone</v-icon>
             </div>
             <div class="an-card__verdict">
               <span class="pill" :class="verdict(row).cls">
@@ -288,7 +300,10 @@
                 </div>
               </div>
             </div>
-          </nuxt-link>
+            <nuxt-link class="an-card__full" :to="'/relic/' + row.url_name" @click.stop>
+              {{ t('relicsValue.card.fullPage') }} →
+            </nuxt-link>
+          </div>
         </div>
 
         <div v-if="filtered.length > perPage" class="an-pager">
@@ -335,31 +350,58 @@ const { data, error } = await useAsyncData('relics-ev', () =>
 const relics = computed<any[]>(() => (data.value && data.value.relics) || [])
 const loadError = computed(() => !!error.value)
 
-// UI state (former data())
-const search = ref('')
-const tier = ref('All')
-const refinement = ref('Radiant')
+// UI state — hydrated from the URL query so any filtered/sorted board is a
+// shareable, reload-safe link (see buildQuery + the query-sync watcher below).
+// Reading in setup (not onMounted) keeps SSR and the client on the same view.
+const route = useRoute()
+const router = useRouter()
+function qStr(k: string): string | undefined {
+  const v = route.query[k]
+  const s = Array.isArray(v) ? v[0] : v
+  return s ? String(s) : undefined
+}
+// Every sortable metric + its natural direction (numbers high→low, name A→Z).
+const SORT_KEYS = ['out', 'ev', 'margin', 'sell', 'topdrop', 'demand', 'volume', 'name'] as const
+type SortKey = (typeof SORT_KEYS)[number]
+function naturalDir(k: SortKey): 'asc' | 'desc' {
+  return k === 'name' ? 'asc' : 'desc'
+}
+
+const search = ref(qStr('q') ?? '')
+const tier = ref(qStr('tier') ?? 'All')
+const refinement = ref(qStr('ref') === 'Intact' ? 'Intact' : 'Radiant')
 // Translated label for the active refinement (value stays 'Intact'/'Radiant').
 const refinementLabel = computed(() =>
   refinement.value === 'Radiant'
     ? t('relicsValue.filters.radiant')
     : t('relicsValue.filters.intact'),
 )
-const sortKey = ref('ev')
-const onlyOpenWins = ref(false)
+// Default sort = average expected output per open (raw EV): the plat a crack
+// yields on average, Σ (drop chance × market price), highest first.
+const initSort = (SORT_KEYS as readonly string[]).includes(qStr('sort') || '')
+  ? (qStr('sort') as SortKey)
+  : 'out'
+const sortKey = ref<SortKey>(initSort)
+const sortDir = ref<'asc' | 'desc'>(
+  qStr('dir') === 'asc' ? 'asc' : qStr('dir') === 'desc' ? 'desc' : naturalDir(initSort),
+)
+const onlyOpenWins = ref(qStr('wins') === '1')
 // Only value/show relics with full drop + market data by default, so stats and
 // verdicts never advertise an EV we can't back with prices.
-const completeOnly = ref(true)
-// Off by default: you value relics you already *own*, which may be vaulted. Turn
-// on to focus the board on relics you can still farm.
-const droppingOnly = ref(false)
-const page = ref(1)
+const completeOnly = ref(qStr('complete') !== '0')
+// On by default: this board answers "what's worth cracking right now", and a
+// vaulted relic can't be farmed — so lead with what you can actually get.
+// Toggle off to value relics you already own (incl. vaulted).
+const droppingOnly = ref(qStr('drop') !== '0')
+const page = ref(Math.max(1, parseInt(qStr('page') || '1', 10) || 1))
 const perPage = 20
 const placeholderImg =
   "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44'%3E%3Crect width='44' height='44' rx='8' fill='%232a2a3d'/%3E%3Cpath d='M22 11 L31 22 L22 33 L13 22 Z' fill='none' stroke='%234fb3bf' stroke-width='2' opacity='0.75'/%3E%3C/svg%3E"
 const sortOptions = computed(() => [
+  { text: t('relicsValue.filters.sort.out'), value: 'out' },
   { text: t('relicsValue.filters.sort.ev'), value: 'ev' },
   { text: t('relicsValue.filters.sort.margin'), value: 'margin' },
+  { text: t('relicsValue.filters.sort.topDrop'), value: 'topdrop' },
   { text: t('relicsValue.filters.sort.demand'), value: 'demand' },
   { text: t('relicsValue.filters.sort.volume'), value: 'volume' },
   { text: t('relicsValue.filters.sort.name'), value: 'name' },
@@ -460,19 +502,60 @@ const hiddenVaulted = computed<number>(() =>
 const hiddenResurgence = computed<number>(() =>
   droppingOnly.value ? matched.value.filter((r) => !isVaulted(r) && isResurgence(r)).length : 0,
 )
+// One value per row for the active numeric sort metric. `name` is compared as a
+// string separately (below).
+function metricVal(r: any, key: SortKey): number {
+  switch (key) {
+    case 'out': return evRaw(r) // average expected output per open (raw EV)
+    case 'ev': return ev(r) // realizable EV (liquidity-weighted)
+    case 'margin': return ev(r) - relicSellNow(r) // crack vs sell edge
+    case 'sell': return relicSellNow(r)
+    case 'topdrop': return Number(topDrop(r).price) || 0
+    case 'demand': return liquidity(r)
+    case 'volume': return Number(r.relic.volume) || 0
+    default: return 0
+  }
+}
 const filtered = computed<any[]>(() => {
   let list = matched.value.filter(passesQuality)
   if (onlyOpenWins.value) list = list.filter((r) => ev(r) > relicSellNow(r))
-  const dir = (a: number, b: number) => b - a
-  const sorters: Record<string, (a: any, b: any) => number> = {
-    ev: (a, b) => dir(ev(a), ev(b)),
-    margin: (a, b) => dir(ev(a) - relicSellNow(a), ev(b) - relicSellNow(b)),
-    demand: (a, b) => dir(liquidity(a), liquidity(b)) || dir(ev(a), ev(b)),
-    volume: (a, b) => dir(a.relic.volume || 0, b.relic.volume || 0),
-    name: (a, b) => a.relicName.localeCompare(b.relicName),
-  }
-  return list.slice().sort(sorters[sortKey.value] || sorters.ev)
+  const k = sortKey.value
+  // `base` is always a descending comparator (higher value / Z first); `flip`
+  // reverses it for an ascending sort. Natural default per key: numbers desc,
+  // name asc (set by setSort/naturalDir).
+  const flip = sortDir.value === 'asc' ? -1 : 1
+  return list.slice().sort((a, b) => {
+    let base: number
+    if (k === 'name') {
+      base = b.relicName.localeCompare(a.relicName)
+    } else {
+      base = metricVal(b, k) - metricVal(a, k)
+      if (base === 0) base = evRaw(b) - evRaw(a) // deterministic tiebreak
+    }
+    return flip * base
+  })
 })
+// Cycle a column's sort: click a new column → its natural direction; click the
+// active column → flip direction.
+function setSort(key: SortKey) {
+  if (sortKey.value === key) {
+    sortDir.value = sortDir.value === 'asc' ? 'desc' : 'asc'
+  } else {
+    sortKey.value = key
+    sortDir.value = naturalDir(key)
+  }
+  trackSort(key + ':' + sortDir.value)
+}
+// ▲/▼ indicator on the active header column, blank otherwise.
+function sortArrow(key: SortKey): string {
+  if (sortKey.value !== key) return ''
+  return sortDir.value === 'asc' ? '▲' : '▼'
+}
+// Screen-reader sort state for a column header.
+function ariaSort(key: SortKey): 'ascending' | 'descending' | 'none' {
+  if (sortKey.value !== key) return 'none'
+  return sortDir.value === 'asc' ? 'ascending' : 'descending'
+}
 // SSR-only crawlable snapshot for <SeoFallbackTable> (see that component for
 // why): top 150 of the already-filtered/sorted board (EV desc by default).
 const fallbackRows = computed(() =>
@@ -480,7 +563,7 @@ const fallbackRows = computed(() =>
     key: row.url_name,
     href: '/relic/' + row.url_name,
     name: localName('items', row.url_name, row.relicName),
-    cells: [fmtPlat(ev(row)) + 'p', fmtPlat(relicSellNow(row)) + 'p', fmtPlat(row.relic.volume)],
+    cells: [fmtPlat(evRaw(row)) + 'p', fmtPlat(ev(row)) + 'p', fmtPlat(relicSellNow(row)) + 'p', fmtPlat(row.relic.volume)],
   })),
 )
 const pageCount = computed(() => Math.max(1, Math.ceil(filtered.value.length / perPage)))
@@ -519,6 +602,39 @@ watch(filtered, () => {
   page.value = 1
 })
 
+// --- URL query-sync --------------------------------------------------------
+// Mirror the board's state into the query string so a filtered/sorted view is a
+// shareable, reload-safe link. Only non-default params are written, for clean
+// URLs; the initial read happened in setup (above), so nothing runs until the
+// client has mounted (syncReady) to avoid clobbering the hydrated query.
+let syncReady = false
+let syncTimer: ReturnType<typeof setTimeout> | null = null
+function buildQuery(): Record<string, string> {
+  const q: Record<string, string> = {}
+  const s = (search.value || '').toString().trim()
+  if (s) q.q = s
+  if (tier.value !== 'All') q.tier = tier.value
+  if (refinement.value !== 'Radiant') q.ref = refinement.value
+  if (sortKey.value !== 'out') q.sort = sortKey.value
+  if (sortDir.value !== naturalDir(sortKey.value)) q.dir = sortDir.value
+  if (!completeOnly.value) q.complete = '0'
+  if (onlyOpenWins.value) q.wins = '1'
+  if (!droppingOnly.value) q.drop = '0'
+  if (page.value > 1) q.page = String(page.value)
+  return q
+}
+watch(
+  [search, tier, refinement, sortKey, sortDir, completeOnly, onlyOpenWins, droppingOnly, page],
+  () => {
+    if (!syncReady) return
+    if (syncTimer) clearTimeout(syncTimer)
+    // Debounce so a burst of changes (typing, toggling) rewrites the URL once.
+    syncTimer = setTimeout(() => {
+      router.replace({ query: buildQuery() }).catch(() => {})
+    }, 250)
+  },
+)
+
 // --- Analytics hooks -------------------------------------------------------
 // The board's controls are what tell us which lens people actually trade by, so
 // each one reports as a single parameterised filter_apply. The search box is the
@@ -536,6 +652,7 @@ watch(search, (q) => {
 // under whatever page the user landed on.
 onBeforeUnmount(() => {
   if (searchTimer) clearTimeout(searchTimer)
+  if (syncTimer) clearTimeout(syncTimer)
 })
 function onRefinementChange(v: string | null) {
   if (v) trackFilter('refinement', v)
@@ -543,8 +660,12 @@ function onRefinementChange(v: string | null) {
 function onTierChange(v: any) {
   trackFilter('tier', String(v ?? 'All'))
 }
+// Dropdown picks a metric; snap to its natural direction (the header caret then
+// toggles it). `sortKey` is already updated by the v-model before this fires.
 function onSortChange(v: any) {
-  trackSort(String(v ?? ''))
+  const key = (String(v ?? 'out') as SortKey)
+  sortDir.value = naturalDir(key)
+  trackSort(key + ':' + sortDir.value)
 }
 function onToggle(name: string, v: any) {
   trackFilter(name, !!v)
@@ -564,6 +685,9 @@ function finishLoading(attempt = 0) {
 }
 
 onMounted(() => {
+  // Only start writing the URL after mount, so hydrating a shared link doesn't
+  // immediately rewrite it on first paint.
+  syncReady = true
   finishLoading()
 })
 </script>
@@ -737,5 +861,62 @@ onMounted(() => {
   background: rgba(159, 122, 234, 0.16);
   color: #c4b0ee;
   border: 1px solid rgba(159, 122, 234, 0.42);
+}
+/* Sortable column headers — click to sort, click again to flip direction. */
+.an-sortable {
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+  transition: color 0.15s ease;
+}
+.an-sortable:hover,
+.an-sortable.is-sorted {
+  color: #e7cf95;
+}
+.an-caret {
+  display: inline-block;
+  width: 0.9em;
+  margin-left: 3px;
+  font-size: 0.72em;
+  color: #d4af5a;
+}
+/* Relic name is now a button (opens the details popup) but must read as the old
+   link: strip native chrome, keep the flex thumb+text layout from .an-name. */
+.an-name--btn {
+  background: none;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+}
+.an-name--btn:focus-visible {
+  outline: 2px solid #35d6d0;
+  outline-offset: 2px;
+}
+/* Mobile card is now a button (opens the popup); keep pointer + focus ring. The
+   inner full-page link escapes the card click via @click.stop. */
+.an-cards .an-card[role='button'] {
+  cursor: pointer;
+}
+.an-cards .an-card[role='button']:focus-visible {
+  outline: 2px solid #35d6d0;
+  outline-offset: 2px;
+}
+.an-card__full {
+  display: inline-block;
+  margin-top: 10px;
+  font-family: 'Rajdhani', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  font-size: 0.78rem;
+  color: #e7cf95;
+  text-decoration: none;
+}
+.an-card__full:hover {
+  color: #f6e6b8;
 }
 </style>

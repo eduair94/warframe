@@ -237,25 +237,25 @@
           <!-- Live buy/sell open the order-book dialog (5 best buyers/sellers +
                whisper). Clicking the number shows the depth behind it. -->
           <template #item.market.buy="{ item }">
-            <button type="button" class="price-open" :aria-label="t('components.orderBook.openAria')" @click.stop="openOrderBook(item)">
+            <button type="button" class="price-open" :aria-label="t('components.orderBook.openBuyAria', { price: fixPrice(item.market.buy) })" @click.stop="openOrderBook(item)">
               {{ fixPrice(item.market.buy) }}
               <v-icon size="x-small" color="primary">mdi-book-open-variant</v-icon>
             </button>
           </template>
           <template #item.market.sell="{ item }">
-            <button type="button" class="price-open" :aria-label="t('components.orderBook.openAria')" @click.stop="openOrderBook(item)">
+            <button type="button" class="price-open" :aria-label="t('components.orderBook.openSellAria', { price: fixPrice(item.market.sell) })" @click.stop="openOrderBook(item)">
               {{ fixPrice(item.market.sell) }}
               <v-icon size="x-small" color="primary">mdi-book-open-variant</v-icon>
             </button>
           </template>
           <template #item.market.buyAvg="{ item }">
-            <button type="button" class="price-open" :aria-label="t('components.orderBook.openAria')" @click.stop="openOrderBook(item)">
+            <button type="button" class="price-open" :aria-label="t('components.orderBook.openBuyAria', { price: fixPrice(item.market.buyAvg) })" @click.stop="openOrderBook(item)">
               {{ fixPrice(item.market.buyAvg) }}
               <v-icon size="x-small" color="primary">mdi-book-open-variant</v-icon>
             </button>
           </template>
           <template #item.market.sellAvg="{ item }">
-            <button type="button" class="price-open" :aria-label="t('components.orderBook.openAria')" @click.stop="openOrderBook(item)">
+            <button type="button" class="price-open" :aria-label="t('components.orderBook.openSellAria', { price: fixPrice(item.market.sellAvg) })" @click.stop="openOrderBook(item)">
               {{ fixPrice(item.market.sellAvg) }}
               <v-icon size="x-small" color="primary">mdi-book-open-variant</v-icon>
             </button>

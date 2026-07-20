@@ -242,16 +242,23 @@ async function load() {
   const it = props.item
   if (!it?.url_name) return
   if (bookFor === it.url_name && book.value) return
+  // Latest-request guard: closing the dialog mid-fetch and opening a different
+  // row must not let the first (stale) response resolve last and overwrite the
+  // second item's book. Only the response for the row still showing is applied.
+  const reqUrl = it.url_name
   loading.value = true
   error.value = false
   try {
-    book.value = await $fetch<OrderBook>(`${apiBase}/orders/${encodeURIComponent(it.url_name)}`)
-    bookFor = it.url_name
+    const data = await $fetch<OrderBook>(`${apiBase}/orders/${encodeURIComponent(reqUrl)}`)
+    if (props.item?.url_name !== reqUrl) return // superseded — discard
+    book.value = data
+    bookFor = reqUrl
   } catch {
+    if (props.item?.url_name !== reqUrl) return
     error.value = true
     book.value = null
   } finally {
-    loading.value = false
+    if (props.item?.url_name === reqUrl) loading.value = false
   }
 }
 

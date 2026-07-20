@@ -277,6 +277,30 @@ export class OrderCalculator {
     return this.median(sellOrders) || this.median(buyOrders) || 0;
   }
 
+  /**
+   * Keep orders matching the requested variant (subtype + Ayatan star tier),
+   * falling back to any star tier when the strict filter finds nothing — mirrors
+   * calculatePrices' rank/variant resolution so the order-book dialog's list
+   * describes the same tier as the headline price. Subtype stays strict (relic
+   * subtypes are chosen as the dominant, which always has orders).
+   */
+  private static filterVariant(
+    orders: IOrderData[],
+    opts: { subtype?: string; maxAmberStars?: number; maxCyanStars?: number }
+  ): IOrderData[] {
+    const { subtype, maxAmberStars, maxCyanStars } = opts;
+    const hasStar = maxAmberStars !== undefined || maxCyanStars !== undefined;
+    const match = (o: IOrderData, skipStars: boolean) =>
+      (subtype === undefined || o.subtype === subtype) &&
+      (skipStars ||
+        !hasStar ||
+        ((o.amber_stars ?? 0) === (maxAmberStars ?? 0) &&
+          (o.cyan_stars ?? 0) === (maxCyanStars ?? 0)));
+    const strict = orders.filter((o) => match(o, false));
+    if (strict.length > 0 || !hasStar) return strict;
+    return orders.filter((o) => match(o, true));
+  }
+
   /** Median platinum of an order array (0 when empty). */
   private static median(orders: IOrderData[]): number {
     const prices = orders
@@ -458,26 +482,42 @@ export class OrderCalculator {
    * @param options.goingRate - 48h average, for the credibility band
    * @param options.count - Max rows per side (default TOP_ORDERS_COUNT = 5)
    * @param options.statuses - Contactable statuses (default ['ingame','online'])
+   * @param options.maxAmberStars - Ayatan: keep the filled star tier (fallback to any)
+   * @param options.maxCyanStars - Ayatan: keep the filled star tier (fallback to any)
    */
   static topOrders(
     orders: IOrderData[],
-    options: { subtype?: string; goingRate?: number; count?: number; statuses?: string[] } = {}
+    options: {
+      subtype?: string;
+      goingRate?: number;
+      count?: number;
+      statuses?: string[];
+      maxAmberStars?: number;
+      maxCyanStars?: number;
+    } = {}
   ): { buy: ITopOrder[]; sell: ITopOrder[] } {
     const {
       subtype,
       goingRate,
       count = PRICE_CONFIG.TOP_ORDERS_COUNT,
-      statuses = ['ingame', 'online']
+      statuses = ['ingame', 'online'],
+      maxAmberStars,
+      maxCyanStars
     } = options;
 
     const statusSet = new Set(statuses);
-    const inScope = (o: IOrderData) =>
-      statusSet.has(o.user?.status) &&
-      (subtype === undefined || o.subtype === subtype) &&
-      (Number(o.platinum) || 0) > 0;
+    const contactable = (o: IOrderData) =>
+      statusSet.has(o.user?.status) && (Number(o.platinum) || 0) > 0;
 
-    const rawBuy = (orders || []).filter((o) => o.order_type === 'buy' && inScope(o));
-    const rawSell = (orders || []).filter((o) => o.order_type === 'sell' && inScope(o));
+    // Same variant resolution as the headline price (calculatePrices): keep the
+    // requested star tier (a FILLED sculpture) / subtype, falling back to any
+    // tier when none match — so the list can't disagree with the header beside it.
+    const pool = (orders || []).filter(
+      (o) => (o.order_type === 'buy' || o.order_type === 'sell') && contactable(o)
+    );
+    const scoped = this.filterVariant(pool, { subtype, maxAmberStars, maxCyanStars });
+    const rawBuy = scoped.filter((o) => o.order_type === 'buy');
+    const rawSell = scoped.filter((o) => o.order_type === 'sell');
 
     const reference = this.referenceRate(goingRate, rawSell, rawBuy);
     const credibleBuy = this.filterCredibleBuys(rawBuy, reference);

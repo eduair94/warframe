@@ -31,8 +31,10 @@ export default {
         sortBy: 'Sort by',
         allTiers: 'All',
         sort: {
+          out: 'Avg output / open',
           ev: 'Best payout (realizable EV)',
           margin: 'Crack margin',
+          topDrop: 'Top drop price',
           demand: 'Demand (liquidity)',
           volume: 'Volume',
           name: 'Name (A–Z)',
@@ -51,7 +53,10 @@ export default {
       },
       table: {
         relic: 'Relic',
+        avgOut: 'Avg output',
+        avgOutTip: 'Average plat a crack yields: Σ (drop chance × market price). The raw expected value — no liquidity discount.',
         evToOpen: 'EV to open',
+        evToOpenTip: 'Realizable EV: the same expected value, but each drop discounted by its 48h trade volume — the plat you can actually cash out.',
         sellRelic: 'Sell relic',
         verdict: 'Verdict',
         demand: 'Demand',
@@ -87,6 +92,15 @@ export default {
         contribTip: 'Realizable plat this drop adds to the relic\'s expected value (chance × liquidity-weighted price).',
         contribLbl: 'to EV',
         whereDrops: 'Where {name} drops',
+        farm: {
+          title: 'Where this relic drops',
+          hint: 'best fissure / mission nodes to farm it',
+          loading: 'Finding drop nodes…',
+          error: "Couldn't load drop nodes.",
+          none: 'No current mission nodes drop this relic — it may be vaulted or Resurgence-only.',
+          more: 'Show {n} more nodes',
+          less: 'Show fewer',
+        },
         market: {
           sellNow: 'Sell now',
           topBid: 'Top bid',
@@ -135,6 +149,7 @@ export default {
         rawEv: 'Raw EV',
         sellRelic: 'Sell relic',
         topDrop: 'Top drop',
+        fullPage: 'Full relic page',
       },
       disclaimer: {
         // {realizable} bold, {and} italic, {refinement} the live refinement label.
