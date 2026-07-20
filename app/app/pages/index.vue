@@ -234,11 +234,31 @@
             </div>
           </template>
           <template #item.thumb="{ item }"> </template>
+          <!-- Live buy/sell open the order-book dialog (5 best buyers/sellers +
+               whisper). Clicking the number shows the depth behind it. -->
+          <template #item.market.buy="{ item }">
+            <button type="button" class="price-open" :aria-label="t('components.orderBook.openAria')" @click.stop="openOrderBook(item)">
+              {{ fixPrice(item.market.buy) }}
+              <v-icon size="x-small" color="primary">mdi-book-open-variant</v-icon>
+            </button>
+          </template>
+          <template #item.market.sell="{ item }">
+            <button type="button" class="price-open" :aria-label="t('components.orderBook.openAria')" @click.stop="openOrderBook(item)">
+              {{ fixPrice(item.market.sell) }}
+              <v-icon size="x-small" color="primary">mdi-book-open-variant</v-icon>
+            </button>
+          </template>
           <template #item.market.buyAvg="{ item }">
-            {{ fixPrice(item.market.buyAvg) }}
+            <button type="button" class="price-open" :aria-label="t('components.orderBook.openAria')" @click.stop="openOrderBook(item)">
+              {{ fixPrice(item.market.buyAvg) }}
+              <v-icon size="x-small" color="primary">mdi-book-open-variant</v-icon>
+            </button>
           </template>
           <template #item.market.sellAvg="{ item }">
-            {{ fixPrice(item.market.sellAvg) }}
+            <button type="button" class="price-open" :aria-label="t('components.orderBook.openAria')" @click.stop="openOrderBook(item)">
+              {{ fixPrice(item.market.sellAvg) }}
+              <v-icon size="x-small" color="primary">mdi-book-open-variant</v-icon>
+            </button>
           </template>
           <!-- New Column Template -->
           <template #item.market.avg_price="{ item }">
@@ -295,6 +315,9 @@
         :item-name="dropItemName"
         :thumb="dropThumb"
       />
+
+      <!-- Order-book dialog: 5 best buyers/sellers + trade-whisper buttons -->
+      <OrderBookDialog v-model="orderBookDialog" :item="orderBookItem" />
 
       <!-- Transaction Details Dialog -->
       <v-dialog v-model="transactionDialog" max-width="500">
@@ -520,6 +543,10 @@ const dropDialog = ref(false)
 const dropItemName = ref('')
 const dropThumb = ref('')
 
+// Order-book dialog (best buyers/sellers + whisper), opened from a price cell.
+const orderBookDialog = ref(false)
+const orderBookItem = ref<any>(null)
+
 // template ref (was this.$refs.wrapper2)
 const wrapper2 = ref<HTMLElement | null>(null)
 
@@ -633,6 +660,13 @@ function openDrops(item: any) {
   dropItemName.value = item.item_name
   dropThumb.value = item.thumb || ''
   dropDialog.value = true
+}
+
+// Open the order-book dialog for a row (the dialog fetches /orders itself and
+// reports its own open event).
+function openOrderBook(item: any) {
+  orderBookItem.value = item
+  orderBookDialog.value = true
 }
 
 function fixPrice(price: number) {
@@ -1084,6 +1118,27 @@ onBeforeUnmount(() => {
 }
 .clickable-tag {
   cursor: pointer;
+}
+/* Clickable buy/sell price → opens the order-book dialog (best buyers/sellers). */
+.price-open {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  font-variant-numeric: tabular-nums;
+}
+.price-open:hover {
+  color: #c8a85c;
+  text-decoration: underline;
+}
+.price-open:focus-visible {
+  outline: 2px solid #35d6d0;
+  outline-offset: 2px;
 }
 .tag-cell {
   gap: 4px;

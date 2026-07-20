@@ -22,6 +22,20 @@ export interface BookLevel {
   orders?: number
 }
 
+/**
+ * A single NAMED order (not aggregated) — enough to render a "best sellers /
+ * best buyers" row and build a warframe.market "/w …" trade whisper. Populated
+ * from `item.market.topOrders`; may be empty for items synced before capture
+ * shipped (the dialog then degrades to the aggregated {@link BookLevel} ladder).
+ */
+export interface TopOrder {
+  platinum: number
+  quantity: number
+  ingame_name: string
+  /** 'ingame' | 'online' — contactable users only (offline are excluded at sync). */
+  status: string
+}
+
 export interface OrderBook {
   url_name: string
   subtype: string | null
@@ -31,6 +45,8 @@ export interface OrderBook {
   buy: BookLevel[]
   /** Sell orders (asks), best-first (lowest price first). */
   sell: BookLevel[]
+  /** Best few named orders per side (for the whisper buttons); optional/empty on old data. */
+  topOrders?: { buy: TopOrder[]; sell: TopOrder[] }
 }
 
 export interface BulkQuote {

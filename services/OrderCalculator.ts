@@ -87,10 +87,18 @@ export interface IPriceCalculationOptions {
   /** Number of top orders to average (default: 5) */
   topOrdersCount?: number;
   /**
-   * The item's going rate (48h volume-weighted average) used to fence out
-   * bulk/bait orders from the headline best buy/sell. When omitted (or 0), it is
-   * derived from the resolved orders themselves (median ask, then median bid).
-   * See PRICE_CONFIG.BAIT_CEIL / TROLL_FLOOR.
+   * When true, fence bulk/bait orders out of the headline best buy/sell (bulk
+   * BUYERS bidding far above the going rate never actually fill and used to set
+   * `buy`; troll-low ASKS used to set `sell`). Off by default so shared callers
+   * (the live verdict engine, ad-hoc price checks) keep their exact behavior —
+   * only the catalogue/home price sync opts in. See PRICE_CONFIG.BAIT_CEIL /
+   * TROLL_FLOOR.
+   */
+  fenceOutliers?: boolean;
+  /**
+   * The item's going rate (48h volume-weighted average) anchoring the fence.
+   * When omitted (or 0) it is derived from the resolved orders themselves
+   * (median ask, then median bid). Only consulted when `fenceOutliers` is true.
    */
   goingRate?: number;
   /** Fallback statuses to try if primary status has no orders (default: ['online']) */
@@ -133,6 +141,7 @@ export class OrderCalculator {
       maxAmberStars,
       maxCyanStars,
       fallbackToAnyRank = true,
+      fenceOutliers = false,
       goingRate
     } = options;
 
@@ -234,18 +243,23 @@ export class OrderCalculator {
       }
     }
 
-    // Fence out bulk/bait orders before picking the headline best buy/sell.
-    // Bulk BUYERS bid far above the going rate for thousands of units that never
-    // clear (an Ayatan sculpture drawing 42p bids while it trades ~10p) and would
-    // otherwise set `buy`; troll-low ASKS would set `sell`. Anchor to the going
-    // rate (48h avg if provided, else the median of the resolved orders).
-    const reference = this.referenceRate(goingRate, sellOrders, buyOrders);
-    const credibleBuy = this.filterCredibleBuys(buyOrders, reference);
-    const credibleSell = this.filterCredibleSells(sellOrders, reference);
+    // Optionally fence out bulk/bait orders before picking the headline best
+    // buy/sell. Bulk BUYERS bid far above the going rate for thousands of units
+    // that never clear (an Ayatan sculpture drawing 42p bids while it trades
+    // ~10p) and would otherwise set `buy`; troll-low ASKS would set `sell`.
+    // Anchored to the going rate (48h avg if provided, else the median of the
+    // resolved orders). Opt-in so shared callers keep their exact behavior.
+    let finalBuy = buyOrders;
+    let finalSell = sellOrders;
+    if (fenceOutliers) {
+      const reference = this.referenceRate(goingRate, sellOrders, buyOrders);
+      finalBuy = this.filterCredibleBuys(buyOrders, reference);
+      finalSell = this.filterCredibleSells(sellOrders, reference);
+    }
 
     return {
-      ...this.calculateBuyPrices(credibleBuy, topOrdersCount),
-      ...this.calculateSellPrices(credibleSell, topOrdersCount)
+      ...this.calculateBuyPrices(finalBuy, topOrdersCount),
+      ...this.calculateSellPrices(finalSell, topOrdersCount)
     };
   }
 

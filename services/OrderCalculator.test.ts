@@ -113,7 +113,7 @@ describe('OrderCalculator', () => {
         o({ order_type: 'buy', platinum: 15, quantity: 1 }),
         o({ order_type: 'sell', platinum: 10, quantity: 1 }),
       ];
-      const prices = OrderCalculator.calculatePrices(orders, { goingRate: 12 }); // ceil = 18
+      const prices = OrderCalculator.calculatePrices(orders, { fenceOutliers: true, goingRate: 12 }); // ceil = 18
       expect(prices.buy).toBe(18); // NOT 42
     });
 
@@ -124,7 +124,7 @@ describe('OrderCalculator', () => {
         o({ order_type: 'sell', platinum: 10, quantity: 1 }),
         o({ order_type: 'buy', platinum: 6, quantity: 1 }),
       ];
-      const prices = OrderCalculator.calculatePrices(orders, { goingRate: 10 }); // floor = 1.5
+      const prices = OrderCalculator.calculatePrices(orders, { fenceOutliers: true, goingRate: 10 }); // floor = 1.5
       expect(prices.sell).toBe(8); // NOT 1
     });
 
@@ -136,9 +136,19 @@ describe('OrderCalculator', () => {
         o({ order_type: 'sell', platinum: 10, quantity: 1 }),   // median ask = 10 -> ceil 15
         o({ order_type: 'sell', platinum: 12, quantity: 1 }),
       ];
-      const prices = OrderCalculator.calculatePrices(orders); // no goingRate
+      const prices = OrderCalculator.calculatePrices(orders, { fenceOutliers: true }); // no goingRate
       expect(prices.buy).toBe(12); // 42 fenced out by the median-ask reference
       expect(prices.sell).toBe(8);
+    });
+
+    it('is opt-in: without fenceOutliers the raw best bid is kept (shared callers unchanged)', () => {
+      const orders: IOrderData[] = [
+        o({ order_type: 'buy', platinum: 42, quantity: 8286 }),
+        o({ order_type: 'buy', platinum: 18, quantity: 1 }),
+        o({ order_type: 'sell', platinum: 10, quantity: 1 }),
+      ];
+      const prices = OrderCalculator.calculatePrices(orders, { goingRate: 12 }); // no fenceOutliers
+      expect(prices.buy).toBe(42);
     });
 
     it('never zeroes out a side: a fully-baited book still returns a best bid', () => {
@@ -147,7 +157,7 @@ describe('OrderCalculator', () => {
         o({ order_type: 'buy', platinum: 80, quantity: 100 }),
         o({ order_type: 'sell', platinum: 10, quantity: 1 }),
       ];
-      const prices = OrderCalculator.calculatePrices(orders, { goingRate: 10 }); // ceil 15, all bids above
+      const prices = OrderCalculator.calculatePrices(orders, { fenceOutliers: true, goingRate: 10 }); // ceil 15, all bids above
       expect(prices.buy).toBe(90); // safety: don't hide the only bids we have
     });
   });

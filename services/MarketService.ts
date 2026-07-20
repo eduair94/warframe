@@ -649,6 +649,7 @@ export class MarketService {
           maxRank,
           subtype,
           goingRate,
+          fenceOutliers: true,
           // Ayatan sculpture filtering for filled sculptures
           maxAmberStars: item.max_amber_stars,
           maxCyanStars: item.max_cyan_stars
