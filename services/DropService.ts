@@ -437,6 +437,40 @@ export class DropService {
     return { price: 0, url_name: '', thumb: '', tradeable: false };
   }
 
+  /**
+   * WFCD's flat (non-rotational) `rewards` array is sometimes several 100% drop
+   * tables concatenated by an upstream parser bug (a `<th>` header with no "/"
+   * fails to reset the location, so unrelated event tables — e.g. the
+   * "Recall: Ten-Zero" anniversary tables under Duviri/Endless: Repeated Rewards
+   * (Hard) — are appended to the previous real node). We keep only the FIRST
+   * block: walk the array summing chance, close a block at >= 99.5 (rounding
+   * tolerance), and if more than one block exists, return block 1 only. A clean
+   * single-table array is one block and is returned whole. Exact
+   * (itemName|rarity|chance) duplicates within the kept block are removed.
+   */
+  static splitFirstDropTable(rewards: IDropReward[]): IDropReward[] {
+    const rows = rewards || [];
+    let sum = 0;
+    let cut = rows.length; // default: no split (single block)
+    for (let i = 0; i < rows.length; i++) {
+      sum += rows[i].chance || 0;
+      if (sum >= 99.5) {
+        cut = i + 1;
+        break;
+      }
+    }
+    const first = rows.slice(0, cut);
+    const seen = new Set<string>();
+    const out: IDropReward[] = [];
+    for (const r of first) {
+      const key = `${r.itemName}|${r.rarity}|${r.chance}`;
+      if (seen.has(key)) continue;
+      seen.add(key);
+      out.push({ itemName: r.itemName, rarity: r.rarity, chance: r.chance });
+    }
+    return out;
+  }
+
   /** `missionRewards.json` -> normalized planets/nodes, rotations flattened consistently. */
   static normalizeMissionRewards(raw: IRawMissionRewards): IMapPlanet[] {
     const missionRewards = raw?.missionRewards ?? {};
@@ -468,7 +502,10 @@ export class DropService {
   /** A node's `rewards` is either `{A,B,C}` (rotations) or a flat array (no rotation). */
   private static normalizeRotations(rewards: Record<string, IDropReward[]> | IDropReward[]): IMapRotation[] {
     if (Array.isArray(rewards)) {
-      return rewards.length ? [{ rotation: null, rewards: DropService.cleanRewards(rewards) }] : [];
+      if (!rewards.length) return [];
+      // Flat arrays can be mis-concatenated event tables (see splitFirstDropTable).
+      const cleaned = DropService.splitFirstDropTable(DropService.cleanRewards(rewards));
+      return cleaned.length ? [{ rotation: null, rewards: cleaned }] : [];
     }
     const out: IMapRotation[] = [];
     for (const rotation of Object.keys(rewards)) {
