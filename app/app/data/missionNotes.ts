@@ -1,15 +1,15 @@
-﻿/**
+/**
  * Baked, hand-authored "how to get here" notes for the /mission pages. WFCD gives
  * reward tables and node facts; it does NOT give unlock paths or access context,
  * which live only on the (robots-blocked) wiki. These fill that gap. English only
- * â€” page-body strings have no i18n parity gate.
+ * — page-body strings have no i18n parity gate.
  *
  * Resolution order: exact slug match, then a (planet, gameMode) pattern match, so
  * e.g. every Duviri "Hard" Undercroft tier shares the Steel Path Circuit note.
  */
 export interface MissionNote {
   category: 'node' | 'circuit' | 'onslaught' | 'index' | 'proxima'
-  /** "How to get here" prose â€” unlock path / prerequisites. */
+  /** "How to get here" prose — unlock path / prerequisites. */
   access: string
   tips?: string[]
   related?: { label: string; to: string }[]
@@ -27,7 +27,7 @@ const BY_SLUG: Record<string, MissionNote> = {
       'Genesis adapter you choose.',
     tips: [
       'Normal Circuit rewards Warframe component blueprints on a 12-week rotation.',
-      'You do not need Steel Path for normal Circuit â€” only the Duviri Paradox quest.',
+      'You do not need Steel Path for normal Circuit — only the Duviri Paradox quest.',
     ],
     related: [
       { label: 'This week’s Circuit & Incarnon rotation', to: '/circuit' },
@@ -36,7 +36,7 @@ const BY_SLUG: Record<string, MissionNote> = {
   },
 }
 
-/** (planet, gameMode) pattern notes â€” matched when no exact slug note exists. */
+/** (planet, gameMode) pattern notes — matched when no exact slug note exists. */
 const BY_PATTERN: { planet: string; gameMode: string; note: MissionNote }[] = [
   {
     planet: 'Duviri',
@@ -45,12 +45,12 @@ const BY_PATTERN: { planet: string; gameMode: string; note: MissionNote }[] = [
       category: 'circuit',
       access:
         'This is the Steel Path Circuit (the Undercroft at full Steel Path scaling: +100 enemy levels, ' +
-        '250% health/shield/armor). To access it you need the base Steel Path unlock â€” all pre-New War ' +
-        'star-chart nodes cleared, then talk to Teshin â€” PLUS The Duviri Paradox quest and the three base ' +
+        '250% health/shield/armor). To access it you need the base Steel Path unlock — all pre-New War ' +
+        'star-chart nodes cleared, then talk to Teshin — PLUS The Duviri Paradox quest and the three base ' +
         'Duviri nodes cleared in normal mode. Past Tier 10 you reach Tier 11+, and every additional 1,400 ' +
-        'Circuit progress re-rolls the "Repeated Rewards" pool â€” the Steel Path arcanes shown below.',
+        'Circuit progress re-rolls the "Repeated Rewards" pool — the Steel Path arcanes shown below.',
       tips: [
-        'Tier 9 (Hard) awards 25Ã— Steel Essence.',
+        'Tier 9 (Hard) awards 25× Steel Essence.',
         'Steel Path Circuit runs a separate 9-week Incarnon Genesis rotation (5 weapons/week).',
       ],
       related: [
