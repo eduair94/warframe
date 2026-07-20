@@ -296,24 +296,54 @@
 .v-selection-control:not(.v-selection-control--dirty) .v-selection-control__input > .v-icon {
   color: var(--ink-dim) !important;
 }
-/* Switch track/thumb */
+/* Switch — Orokin "power conduit". OFF = dormant void slot; ON = energized
+   accent conduit with a glowing energy node. Accent is driven by `--sw`
+   (defaults to Orokin gold); override per instance, e.g. style="--sw:#46c98a". */
+.v-switch {
+  --sw: var(--orokin);
+}
+/* OFF: recessed dark slot, hairline edge, subtle inner shadow */
 .v-switch .v-switch__track {
-  background: rgba(200, 168, 92, 0.22) !important;
+  background: linear-gradient(180deg, #0c0e18, #161a2c) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.6);
   opacity: 1 !important;
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
-.v-switch.v-selection-control--dirty .v-switch__track {
-  background: var(--orokin) !important;
+/* ON: accent conduit fills + outer bloom + inner glow.
+   NB: in Vuetify v4 the `--dirty` class lives on the inner `.v-selection-control`,
+   NOT on `.v-switch` — so the checked track/thumb must be matched as a descendant. */
+.v-switch .v-selection-control--dirty .v-switch__track {
+  background: linear-gradient(90deg, color-mix(in srgb, var(--sw) 55%, #0c0e18), var(--sw)) !important;
+  border-color: color-mix(in srgb, var(--sw) 65%, transparent);
+  box-shadow:
+    0 0 10px color-mix(in srgb, var(--sw) 55%, transparent),
+    inset 0 0 6px color-mix(in srgb, var(--sw) 40%, transparent);
 }
+/* Thumb: dim node OFF -> white-hot haloed node ON.
+   Only colour/shadow are transitioned here; the left/right travel is Vuetify's
+   own transform and must not be overridden or the thumb stops sliding. */
 .v-switch .v-switch__thumb {
-  background: #e9edf7 !important;
+  background: #7c8199 !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) !important;
+  transition: background 0.28s ease, box-shadow 0.28s ease !important;
 }
-.v-switch.v-selection-control--dirty .v-switch__thumb {
-  background: var(--gold-ink) !important;
+.v-switch .v-selection-control--dirty .v-switch__thumb {
+  background: #fdfefe !important;
+  box-shadow:
+    0 0 8px color-mix(in srgb, var(--sw) 80%, transparent),
+    0 0 2px #fff !important;
 }
-/* Focus/hover ripple tint */
+/* Focus/hover ripple tint — accent for switches, gold fallback elsewhere */
 .v-selection-control__input:hover::before,
 .v-selection-control__input::before {
-  background: var(--orokin) !important;
+  background: var(--sw, var(--orokin)) !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  .v-switch .v-switch__track,
+  .v-switch .v-switch__thumb {
+    transition: none !important;
+  }
 }
 
 /* -------------------------------------------------------------------------

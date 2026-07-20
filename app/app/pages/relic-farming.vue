@@ -123,7 +123,8 @@
               hide-details
               density="compact"
               inset
-              color="#4fb3bf"
+              color="#35d6d0"
+              style="--sw: #35d6d0"
               :label="t('relicFarming.toggles.dropping')"
               class="an-toggle"
               @update:model-value="onToggle('dropping_only', $event)"
@@ -133,7 +134,8 @@
               hide-details
               density="compact"
               inset
-              color="#4fb3bf"
+              color="#46c98a"
+              style="--sw: #46c98a"
               :label="t('relicFarming.toggles.hideNoDemand')"
               class="an-toggle"
               @update:model-value="onToggle('hide_no_demand', $event)"
@@ -143,7 +145,8 @@
               hide-details
               density="compact"
               inset
-              color="#d4af5a"
+              color="#46c98a"
+              style="--sw: #46c98a"
               :label="t('relicFarming.toggles.fullData')"
               class="an-toggle"
               @update:model-value="onToggle('complete_only', $event)"

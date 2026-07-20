@@ -101,7 +101,8 @@
               density="compact"
               hide-details
               inset
-              color="#4caf7d"
+              color="#46c98a"
+              style="--sw: #46c98a"
               :label="t('relicsValue.filters.completeData')"
               @update:model-value="onToggle('complete_data', $event)"
             ></v-switch>
@@ -110,7 +111,8 @@
               density="compact"
               hide-details
               inset
-              color="#4caf7d"
+              color="#46c98a"
+              style="--sw: #46c98a"
               :label="t('relicsValue.filters.onlyWins')"
               @update:model-value="onToggle('only_wins', $event)"
             ></v-switch>
@@ -119,7 +121,8 @@
               density="compact"
               hide-details
               inset
-              color="#4fb3bf"
+              color="#35d6d0"
+              style="--sw: #35d6d0"
               :label="t('relicsValue.filters.droppingOnly')"
               @update:model-value="onToggle('dropping_only', $event)"
             ></v-switch>
