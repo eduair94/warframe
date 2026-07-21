@@ -33,7 +33,7 @@ import { MissionService } from './MissionService';
 import { PriceHistoryService } from './PriceHistoryService';
 import { RelicService } from './RelicService';
 import { RivenService } from './RivenService';
-import { SetService } from './SetService';
+import { SetService, getSetFullWithRepair, isIncompleteSetRoster } from './SetService';
 import { TranslationService, TranslationMap } from './TranslationService';
 import { FoundryService } from './FoundryService';
 import { WarframeItemsResponse } from "./WarframeItems.interface";
@@ -491,9 +491,47 @@ export abstract class BaseWarframeClient {
    * Bundled payload for the set detail page: set + parts with quantities, full
    * market blocks (median / depth ladder) and each item's price history, in one
    * cached request. See SetService.getSetFullData.
+   *
+   * Wrapped in a one-shot self-heal: a set enriched before warframe.market
+   * published its `setParts` is stored with only its own roster entry, so
+   * getSetFullData throws `Not a set` even though the set is real and its parts
+   * now exist upstream. On that specific failure {@link repairSetRoster} re-reads
+   * the live v2 detail, persists the recovered roster, and the read is retried
+   * once — so the set page works on first visit without waiting for the nightly
+   * item sync (which the deploy intentionally leaves stopped).
    */
   async getSetFull(urlName: string): Promise<any> {
-    return this.setService.getSetFullData(urlName);
+    return getSetFullWithRepair(urlName, {
+      getFull: (u) => this.setService.getSetFullData(u),
+      repair: (u) => this.repairSetRoster(u),
+    });
+  }
+
+  /**
+   * Re-enriches a set doc whose stored roster is degenerate (only its own
+   * entry). Fetches the live v2 item detail — which rebuilds `items_in_set` from
+   * the set's `setParts` — and persists it, preserving the existing market block
+   * and priceUpdate (the detail fetch carries no live prices). Returns `true`
+   * only when a genuinely complete roster was recovered and written, so a set
+   * whose `setParts` warframe.market has still not published does not churn the
+   * document on every request. Any fetch/DB error degrades to `false`.
+   */
+  private async repairSetRoster(urlName: string): Promise<boolean> {
+    try {
+      const detail = await this.getSingleItemData<any>({ url_name: urlName });
+      const fresh = detail?.payload?.item;
+      if (!fresh?.id || isIncompleteSetRoster(fresh)) return false;
+
+      const existing = await this.getSingleItemDB({ url_name: urlName });
+      await this.saveItem(fresh.id, {
+        ...fresh,
+        market: existing?.market,
+        priceUpdate: existing?.priceUpdate,
+      });
+      return true;
+    } catch {
+      return false;
+    }
   }
 
   /**
