@@ -132,4 +132,11 @@ jobs:
             # a newly added entry needs one explicit start, and /foundry is empty
             # until that first run populates the warframe-foundry collection.
             pm2 start ecosystem.config.js --only warframe-sync-foundry --update-env || true
+            # Targeted set-roster heal (one-shot, autorestart:false). Fixes any
+            # set whose items_in_set roster was never populated — e.g. a Prime
+            # enriched before warframe.market published its setParts, which makes
+            # /set_full 500 "Not a set". Runs here where the proxy-capable sync
+            # client can reach warframe.market's throttled /v2/items catalogue
+            # (the API server process cannot). See sync_repair_sets.ts.
+            pm2 start ecosystem.config.js --only warframe-sync-repair-sets --update-env || true
             pm2 save || true
