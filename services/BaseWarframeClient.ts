@@ -33,7 +33,7 @@ import { MissionService } from './MissionService';
 import { PriceHistoryService } from './PriceHistoryService';
 import { RelicService } from './RelicService';
 import { RivenService } from './RivenService';
-import { SetService, getSetFullWithRepair, isIncompleteSetRoster } from './SetService';
+import { SetService, getSetFullWithRepair } from './SetService';
 import { TranslationService, TranslationMap } from './TranslationService';
 import { FoundryService } from './FoundryService';
 import { WarframeItemsResponse } from "./WarframeItems.interface";
@@ -509,29 +509,71 @@ export abstract class BaseWarframeClient {
 
   /**
    * Re-enriches a set doc whose stored roster is degenerate (only its own
-   * entry). Fetches the live v2 item detail — which rebuilds `items_in_set` from
-   * the set's `setParts` — and persists it, preserving the existing market block
-   * and priceUpdate (the detail fetch carries no live prices). Returns `true`
-   * only when a genuinely complete roster was recovered and written, so a set
-   * whose `setParts` warframe.market has still not published does not churn the
-   * document on every request. Any fetch/DB error degrades to `false`.
+   * entry) — the signature of a set enriched before warframe.market published
+   * its `setParts` (see isIncompleteSetRoster).
+   *
+   * Deliberately LIGHT so it is safe to run inside an API request: it fetches
+   * the RAW v2 detail (one small request — NOT `getSingleItemData`, whose set
+   * transform pulls the whole bulk item list and can stall for tens of seconds)
+   * for just the `setParts` ids, then rebuilds the roster from our own already-
+   * synced docs (`getItemsByIds`) — a fast local read that also yields each
+   * sibling's real `url_name`. The whole thing is capped by {@link raceTimeout}
+   * so a slow proxy degrades to a fast fail (original error), never a hang.
+   *
+   * Only the roster is rewritten; the market block and priceUpdate are left
+   * untouched. Returns `true` only when a real multi-part roster (the set plus
+   * at least one part we actually have) was recovered and written, so a set
+   * whose `setParts` are still unpublished — or whose parts are not in our
+   * catalogue yet — does not churn the document on every request.
    */
   private async repairSetRoster(urlName: string): Promise<boolean> {
     try {
-      const detail = await this.getSingleItemData<any>({ url_name: urlName });
-      const fresh = detail?.payload?.item;
-      if (!fresh?.id || isIncompleteSetRoster(fresh)) return false;
-
       const existing = await this.getSingleItemDB({ url_name: urlName });
-      await this.saveItem(fresh.id, {
-        ...fresh,
-        market: existing?.market,
-        priceUpdate: existing?.priceUpdate,
-      });
+      if (!existing?.id) return false;
+
+      // Raw v2 detail → just the sibling ids. Capped so it can never hang a
+      // request; on timeout/error `raw` is null and we bail (the nightly item
+      // sync, which can afford the bulk resolution, heals it later).
+      const raw = await this.raceTimeout(this.marketService.getRawItemDetail(urlName), 6000);
+      const setParts: string[] = Array.isArray(raw?.setParts) ? raw.setParts : [];
+      if (setParts.length <= 1) return false;
+
+      // Resolve the sibling ids against our own synced docs and rebuild a roster
+      // carrying the url_name (and tags) every set consumer reads.
+      const siblings = await this.itemService.getItemsByIds(setParts);
+      const byId = new Map<string, any>(siblings.map((s: any) => [s.id, s]));
+      const roster = setParts
+        .map((id) => byId.get(id))
+        .filter((s: any) => s && s.url_name)
+        .map((s: any) => ({
+          id: s.id,
+          url_name: s.url_name,
+          item_name: s.item_name,
+          thumb: s.thumb,
+          tags: s.tags ?? s.items_in_set?.[0]?.tags ?? [],
+        }));
+
+      // Need the set itself plus at least one real part, else nothing is fixed.
+      const partCount = roster.filter((r) => r.url_name !== urlName).length;
+      if (roster.length <= 1 || partCount === 0) return false;
+
+      await this.saveItem(existing.id, { ...existing, items_in_set: roster });
       return true;
     } catch {
       return false;
     }
+  }
+
+  /**
+   * Resolves to the promise's value, or `null` if it rejects or does not settle
+   * within `ms`. The underlying promise is left to finish in the background —
+   * the point is only to stop a slow call from blocking the caller.
+   */
+  private raceTimeout<T>(p: Promise<T>, ms: number): Promise<T | null> {
+    return Promise.race([
+      p.catch(() => null),
+      new Promise<null>((resolve) => setTimeout(() => resolve(null), ms)),
+    ]);
   }
 
   /**
