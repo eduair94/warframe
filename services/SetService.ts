@@ -400,39 +400,3 @@ export function isIncompleteSetRoster(item: {
     (!Array.isArray(item.items_in_set) || item.items_in_set.length <= 1)
   );
 }
-
-/**
- * Runs a `/set_full` read with a one-shot self-heal.
- *
- * `getFull` normally returns the set bundle. When it fails with the
- * `Not a set: <urlName>` error — the tell of a roster enriched before its
- * `setParts` existed upstream (see {@link isIncompleteSetRoster}) — `repair`
- * re-fetches the live v2 detail (which now carries the roster), persists it, and
- * the read is retried ONCE. `repair` returns `false` when the refetch is still
- * degenerate (upstream has not published `setParts` yet) or fails, in which case
- * the original error propagates unchanged. The retry is not itself wrapped, so a
- * still-broken set throws exactly once and can never loop.
- *
- * @param urlName - the set slug being read
- * @param deps.getFull - produces the bundle (throws `Not a set:` when degenerate)
- * @param deps.repair  - re-enriches the doc from the API; resolves `true` if it
- *                       recovered a real roster and persisted it
- */
-export async function getSetFullWithRepair(
-  urlName: string,
-  deps: {
-    getFull: (u: string) => Promise<any>;
-    repair: (u: string) => Promise<boolean>;
-  }
-): Promise<any> {
-  try {
-    return await deps.getFull(urlName);
-  } catch (err) {
-    if (err instanceof Error && err.message === `Not a set: ${urlName}`) {
-      if (await deps.repair(urlName)) {
-        return deps.getFull(urlName);
-      }
-    }
-    throw err;
-  }
-}

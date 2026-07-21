@@ -7,10 +7,10 @@
  * All three are exercised with stub repositories — no DB or network access.
  */
 
-import { describe, it, expect, jest } from '@jest/globals';
+import { describe, it, expect } from '@jest/globals';
 import { ItemProcessor } from './ItemProcessor';
 import { PriceHistoryService, IPricePoint } from './PriceHistoryService';
-import { SetService, isIncompleteSetRoster, getSetFullWithRepair } from './SetService';
+import { SetService, isIncompleteSetRoster } from './SetService';
 import { IMarketItem, ISetFullNode } from '../interfaces/market.interface';
 
 // ---------------------------------------------------------------------------
@@ -351,51 +351,5 @@ describe('isIncompleteSetRoster', () => {
     expect(
       isIncompleteSetRoster({ item_name: 'Secura Dual Cestra', items_in_set: [{}] })
     ).toBe(false);
-  });
-});
-
-describe('getSetFullWithRepair', () => {
-  const URL = 'styanax_prime_set';
-
-  it('returns the bundle directly when the read succeeds', async () => {
-    const getFull = jest.fn(async () => ({ ok: true }));
-    const repair = jest.fn(async () => true);
-    const res = await getSetFullWithRepair(URL, { getFull, repair });
-    expect(res).toEqual({ ok: true });
-    expect(repair).not.toHaveBeenCalled();
-  });
-
-  it('repairs then retries once on a "Not a set" error, returning the retry', async () => {
-    const getFull = jest
-      .fn<(u: string) => Promise<any>>()
-      .mockRejectedValueOnce(new Error(`Not a set: ${URL}`))
-      .mockResolvedValueOnce({ ok: true });
-    const repair = jest.fn(async () => true);
-    const res = await getSetFullWithRepair(URL, { getFull, repair });
-    expect(res).toEqual({ ok: true });
-    expect(repair).toHaveBeenCalledTimes(1);
-    expect(getFull).toHaveBeenCalledTimes(2);
-  });
-
-  it('propagates the original error and does NOT retry when repair fails', async () => {
-    const getFull = jest.fn(async () => {
-      throw new Error(`Not a set: ${URL}`);
-    });
-    const repair = jest.fn(async () => false);
-    await expect(getSetFullWithRepair(URL, { getFull, repair })).rejects.toThrow(
-      `Not a set: ${URL}`
-    );
-    expect(getFull).toHaveBeenCalledTimes(1); // no retry
-  });
-
-  it('never attempts repair for unrelated errors', async () => {
-    const getFull = jest.fn(async () => {
-      throw new Error('Set not found: nope');
-    });
-    const repair = jest.fn(async () => true);
-    await expect(getSetFullWithRepair(URL, { getFull, repair })).rejects.toThrow(
-      'Set not found: nope'
-    );
-    expect(repair).not.toHaveBeenCalled();
   });
 });
