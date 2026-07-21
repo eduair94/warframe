@@ -1,5 +1,6 @@
 import "./env";
 import { MongooseServer } from "./database";
+import { isIncompleteSetRoster } from "./services/SetService";
 import WarframeUndici from "./warframe-undici";
 
 // ANSI color codes for terminal output
@@ -60,7 +61,15 @@ function needsV2Enrichment(itemDB: any): boolean {
   
   // Item was never enriched with v2 data
   if (!itemDB.v2_enriched) return true;
-  
+
+  // Self-heal a set enriched before warframe.market published its `setParts`.
+  // Such a doc is stamped v2_enriched but stores only its own roster entry, so
+  // it would otherwise be skipped forever — leaving /set_full 500ing ("Not a
+  // set") and /set showing zero parts. Re-enriching pulls the now-published
+  // roster; harmless (idempotent) once the roster is complete. See
+  // isIncompleteSetRoster.
+  if (isIncompleteSetRoster(itemDB)) return true;
+
   return false;
 }
 

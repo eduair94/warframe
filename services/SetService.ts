@@ -371,3 +371,68 @@ export class SetService {
     };
   }
 }
+
+/**
+ * True when an item is named like a set (`item_name` contains `" Set"`) but its
+ * stored `items_in_set` roster holds at most its own entry.
+ *
+ * That is the exact signature of a set doc that was v2-enriched BEFORE
+ * warframe.market published this set's `setParts` — common in the hours/days
+ * after a Prime launch, when the set item exists but its sibling links have not
+ * propagated yet. `MarketService.transformV2ItemToV1` then stores the lone self
+ * entry (its `else` branch), stamps `v2_enriched: true`, and the doc is stuck:
+ * `getSetFullData` throws `Not a set`, `getSetData` returns zero parts, and the
+ * nightly sync used to skip it because it was "already enriched".
+ *
+ * The predicate is the negation of the set test the consumers use
+ * (`item_name.includes(' Set') && items_in_set.length > 1`, see
+ * {@link SetService.buildComparisonFromItems} and `getSetFullData`), so it flags
+ * precisely the docs those consumers reject. Both the item sync (re-enrich
+ * trigger) and the `/set_full` read path (lazy repair) use it to detect and heal.
+ */
+export function isIncompleteSetRoster(item: {
+  item_name?: string;
+  items_in_set?: unknown[];
+}): boolean {
+  return (
+    typeof item.item_name === 'string' &&
+    item.item_name.includes(' Set') &&
+    (!Array.isArray(item.items_in_set) || item.items_in_set.length <= 1)
+  );
+}
+
+/**
+ * Runs a `/set_full` read with a one-shot self-heal.
+ *
+ * `getFull` normally returns the set bundle. When it fails with the
+ * `Not a set: <urlName>` error — the tell of a roster enriched before its
+ * `setParts` existed upstream (see {@link isIncompleteSetRoster}) — `repair`
+ * re-fetches the live v2 detail (which now carries the roster), persists it, and
+ * the read is retried ONCE. `repair` returns `false` when the refetch is still
+ * degenerate (upstream has not published `setParts` yet) or fails, in which case
+ * the original error propagates unchanged. The retry is not itself wrapped, so a
+ * still-broken set throws exactly once and can never loop.
+ *
+ * @param urlName - the set slug being read
+ * @param deps.getFull - produces the bundle (throws `Not a set:` when degenerate)
+ * @param deps.repair  - re-enriches the doc from the API; resolves `true` if it
+ *                       recovered a real roster and persisted it
+ */
+export async function getSetFullWithRepair(
+  urlName: string,
+  deps: {
+    getFull: (u: string) => Promise<any>;
+    repair: (u: string) => Promise<boolean>;
+  }
+): Promise<any> {
+  try {
+    return await deps.getFull(urlName);
+  } catch (err) {
+    if (err instanceof Error && err.message === `Not a set: ${urlName}`) {
+      if (await deps.repair(urlName)) {
+        return deps.getFull(urlName);
+      }
+    }
+    throw err;
+  }
+}

@@ -7,10 +7,10 @@
  * All three are exercised with stub repositories — no DB or network access.
  */
 
-import { describe, it, expect } from '@jest/globals';
+import { describe, it, expect, jest } from '@jest/globals';
 import { ItemProcessor } from './ItemProcessor';
 import { PriceHistoryService, IPricePoint } from './PriceHistoryService';
-import { SetService } from './SetService';
+import { SetService, isIncompleteSetRoster, getSetFullWithRepair } from './SetService';
 import { IMarketItem, ISetFullNode } from '../interfaces/market.interface';
 
 // ---------------------------------------------------------------------------
@@ -310,5 +310,92 @@ describe('SetService.getSetFullData', () => {
     await expect(build({ set: lonely }).getSetFullData(SET_URL)).rejects.toThrow(
       `Not a set: ${SET_URL}`
     );
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Degenerate-roster detection + self-heal. A set enriched before warframe.market
+// published its `setParts` is stored with only its own entry — /set_full then
+// 500s ("Not a set") forever because it is already flagged v2_enriched. These
+// guard the predicate and the read-time repair-and-retry that unstick such docs.
+// ---------------------------------------------------------------------------
+
+describe('isIncompleteSetRoster', () => {
+  it('flags a set-named item whose roster holds only itself', () => {
+    expect(
+      isIncompleteSetRoster({
+        item_name: 'Styanax Prime Set',
+        items_in_set: [{ url_name: 'styanax_prime_set' }],
+      })
+    ).toBe(true);
+  });
+
+  it('flags a set-named item with a missing/empty roster', () => {
+    expect(isIncompleteSetRoster({ item_name: 'Styanax Prime Set' })).toBe(true);
+    expect(
+      isIncompleteSetRoster({ item_name: 'Styanax Prime Set', items_in_set: [] })
+    ).toBe(true);
+  });
+
+  it('does NOT flag a healthy multi-part set', () => {
+    expect(
+      isIncompleteSetRoster({
+        item_name: 'Ash Prime Set',
+        items_in_set: [{}, {}, {}, {}, {}] as any[],
+      })
+    ).toBe(false);
+  });
+
+  it('does NOT flag a standalone non-set item with a single self entry', () => {
+    // e.g. "Secura Dual Cestra" — legitimately one roster entry, not a set.
+    expect(
+      isIncompleteSetRoster({ item_name: 'Secura Dual Cestra', items_in_set: [{}] })
+    ).toBe(false);
+  });
+});
+
+describe('getSetFullWithRepair', () => {
+  const URL = 'styanax_prime_set';
+
+  it('returns the bundle directly when the read succeeds', async () => {
+    const getFull = jest.fn(async () => ({ ok: true }));
+    const repair = jest.fn(async () => true);
+    const res = await getSetFullWithRepair(URL, { getFull, repair });
+    expect(res).toEqual({ ok: true });
+    expect(repair).not.toHaveBeenCalled();
+  });
+
+  it('repairs then retries once on a "Not a set" error, returning the retry', async () => {
+    const getFull = jest
+      .fn<(u: string) => Promise<any>>()
+      .mockRejectedValueOnce(new Error(`Not a set: ${URL}`))
+      .mockResolvedValueOnce({ ok: true });
+    const repair = jest.fn(async () => true);
+    const res = await getSetFullWithRepair(URL, { getFull, repair });
+    expect(res).toEqual({ ok: true });
+    expect(repair).toHaveBeenCalledTimes(1);
+    expect(getFull).toHaveBeenCalledTimes(2);
+  });
+
+  it('propagates the original error and does NOT retry when repair fails', async () => {
+    const getFull = jest.fn(async () => {
+      throw new Error(`Not a set: ${URL}`);
+    });
+    const repair = jest.fn(async () => false);
+    await expect(getSetFullWithRepair(URL, { getFull, repair })).rejects.toThrow(
+      `Not a set: ${URL}`
+    );
+    expect(getFull).toHaveBeenCalledTimes(1); // no retry
+  });
+
+  it('never attempts repair for unrelated errors', async () => {
+    const getFull = jest.fn(async () => {
+      throw new Error('Set not found: nope');
+    });
+    const repair = jest.fn(async () => true);
+    await expect(getSetFullWithRepair(URL, { getFull, repair })).rejects.toThrow(
+      'Set not found: nope'
+    );
+    expect(repair).not.toHaveBeenCalled();
   });
 });
