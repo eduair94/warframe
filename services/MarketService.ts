@@ -134,22 +134,44 @@ export class MarketService {
    */
   async getItemDetails<T = any>(urlName: string): Promise<T> {
     if (DEBUG) console.log(`🔄 Fetching item: ${urlName}...`);
-    
+
     // Fetch from v2 API
     const v2Response = await this.httpClient.get<{ data: any }>(
       `${API_URLS.WARFRAME_MARKET_V2}/items/${urlName}`
     );
-    
+
     // Transform v2 response to v1-compatible format
     const v2Item = v2Response.data;
     const v1Item = await this.transformV2ItemToV1(v2Item);
-    
+
     // Return in v1-compatible format: { payload: { item: {...} } }
     return {
       payload: {
         item: v1Item
       }
     } as T;
+  }
+
+  /**
+   * Fetches the RAW v2 item detail with no transform and — crucially — no
+   * `setParts` id resolution.
+   *
+   * {@link getItemDetails} calls {@link transformV2ItemToV1}, which for any set
+   * resolves each sibling id against the full bulk `/v2/items` list
+   * ({@link ensureItemsListCache}). That bulk fetch is fine in the sync process
+   * but far too heavy to run inside an API request (it can stall for tens of
+   * seconds behind the market proxy). The set-roster self-heal only needs the
+   * raw `setParts` ids, which it resolves against our own database — so it uses
+   * this single, cheap request instead.
+   *
+   * @param urlName - URL-friendly item name (slug)
+   * @returns The raw v2 `data` object (with `id`, `setParts`, …) or null
+   */
+  async getRawItemDetail(urlName: string): Promise<any | null> {
+    const v2Response = await this.httpClient.get<{ data: any }>(
+      `${API_URLS.WARFRAME_MARKET_V2}/items/${urlName}`
+    );
+    return v2Response?.data ?? null;
   }
 
   /**
