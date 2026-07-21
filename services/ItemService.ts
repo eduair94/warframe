@@ -169,21 +169,6 @@ export class ItemService {
   }
 
   /**
-   * Gets multiple items by their warframe.market ids.
-   *
-   * Used by the set-roster self-heal: the v2 API references a set's siblings by
-   * id (`setParts`), and these already-synced docs carry each sibling's real
-   * `url_name` — so the roster is rebuilt from our own database instead of the
-   * heavy bulk item list.
-   *
-   * @param ids - Array of item ids
-   * @returns Promise resolving to array of items
-   */
-  async getItemsByIds(ids: string[]): Promise<IMarketItem[]> {
-    return this.db.allEntries({ id: { $in: ids } }) as Promise<IMarketItem[]>;
-  }
-
-  /**
    * Saves or updates an item in the database
    * 
    * @param id - Item unique identifier

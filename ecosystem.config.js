@@ -101,6 +101,21 @@ module.exports = {
             log_date_format: "YYYY-MM-DD HH:mm Z",
         },
         {
+            // Targeted heal for set docs whose items_in_set roster never got
+            // populated (a Prime enriched before warframe.market published its
+            // setParts — /set_full then 500s "Not a set", /set shows zero parts).
+            // sync-items already re-enriches these on its nightly run, but that
+            // is the heavy full-catalogue sync the deploy leaves stopped; this
+            // one-shot scans only the sets and fixes the degenerate ones fast, so
+            // a Prime released between nightly syncs is healed on the next deploy.
+            // Staggered after sync-foundry. See sync_repair_sets.ts.
+            name: "warframe-sync-repair-sets",
+            autorestart: false,
+            cron_restart: "30 5 * * *",
+            script: "dist/sync_repair_sets.js",
+            log_date_format: "YYYY-MM-DD HH:mm Z",
+        },
+        {
             name: "warframe-live",
             autorestart: true,
             script: "dist/live.js",

@@ -126,7 +126,7 @@ Business logic + external clients. Each `*.ts` usually has a sibling `*.test.ts`
 
 One-shot data importers run via `npm run <name>` / cron. They populate Mongo.
 
-`sync_auctions.ts` · `sync_drops.ts` · `sync_foundry.ts` · `sync_items.ts` · `sync_mod_flip.ts` · `sync_nodes.ts` · `sync_prices.ts` · `sync_rivens.ts` · `sync_translations.ts`
+`sync_auctions.ts` · `sync_drops.ts` · `sync_foundry.ts` · `sync_items.ts` · `sync_mod_flip.ts` · `sync_nodes.ts` · `sync_prices.ts` · `sync_repair_sets.ts` · `sync_rivens.ts` · `sync_translations.ts`
 
 ## i18n modules (`app/i18n/messages/`) — token traps
 
