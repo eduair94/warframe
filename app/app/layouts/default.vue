@@ -25,6 +25,24 @@
         fetchpriority="high"
         @click="scrollTop"
       />
+      <v-tooltip
+        text="Warframe Market Analytics"
+        location="bottom"
+        open-on-click
+      >
+        <template #activator="{ props }">
+          <button
+            v-bind="props"
+            type="button"
+            class="mobile-brand"
+            aria-label="Warframe Market Analytics"
+            @click="scrollTop"
+          >
+            <img src="/favicon.svg" alt="" aria-hidden="true" />
+            <span>WMA</span>
+          </button>
+        </template>
+      </v-tooltip>
       <v-spacer />
       <v-btn
         variant="text"
@@ -371,16 +389,42 @@ async function startTour() {
   max-width: 56vw !important;
   flex: 0 0 auto;
 }
+.mobile-brand { display: none; }
 @media (max-width: 600px) {
-  /* Header must never spill on mobile. Let the logo take leftover space and
-     SHRINK (flex) rather than hold a fixed width that pushes the right-side
-     actions — tour, GitHub, PWA install, language — off the bar. The language
-     button "out of the box" bug was the logo's fixed 150px eating the row. */
+  /* Keep the brand readable without letting the full-width banner crowd the
+     mobile action cluster. The compact mark spells out its meaning on focus
+     or tap through the Vuetify tooltip above. */
   .logo_image.v-img {
-    width: 120px !important;
-    max-width: 34vw !important;
-    min-width: 44px !important;
-    flex: 1 1 auto !important;
+    display: none !important;
+  }
+  .mobile-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    flex: 0 0 auto;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 4px 6px;
+    border: 0;
+    background: transparent;
+    color: #e7cf95;
+    cursor: pointer;
+  }
+  .mobile-brand img {
+    width: 30px;
+    height: 30px;
+    display: block;
+  }
+  .mobile-brand span {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.08em;
+  }
+  .mobile-brand:focus-visible {
+    outline: 2px solid #35d6d0;
+    outline-offset: 2px;
   }
   /* Tighten the action cluster so the row fits even at 320px with the
      (conditionally shown) PWA install button present. */
