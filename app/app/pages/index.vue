@@ -195,7 +195,7 @@
           <template #expanded-row="{ columns, item }">
             <tr class="rank-detail-row">
               <td :colspan="columns.length">
-                <div class="rank-detail">
+                <div class="rank-detail" :data-rank-item="item.url_name">
                   <div v-if="rankLoading[item.url_name]" class="rank-detail__state">
                     <v-progress-circular indeterminate size="22" width="2" color="primary" />
                     {{ isAyatanItem(item) ? `${t('home.ranks.pricesByStars')}…` : t('home.ranks.loading') }}
@@ -813,6 +813,14 @@ function isRankExpanded(item: any): boolean {
   return expandedRows.value.some((expandedItem) => expandedItem?.url_name === item?.url_name)
 }
 
+async function scrollToRankDetail(key: string) {
+  if (!import.meta.client || !window.matchMedia('(max-width: 599px)').matches) return
+  await nextTick()
+  const detail = [...document.querySelectorAll<HTMLElement>('[data-rank-item]')]
+    .find((element) => element.dataset.rankItem === key)
+  detail?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+}
+
 function toggleRankRow(item: any) {
   const key = item?.url_name
   if (!key) return
@@ -823,6 +831,7 @@ function toggleRankRow(item: any) {
     // values to be the original item objects rather than their item-value keys.
     expandedRows.value = [...expandedRows.value, item]
     void loadRankPrices(item)
+    void scrollToRankDetail(key)
   }
   trackAction(expanded ? 'rank_prices_collapse' : 'rank_prices_expand', {
     item_name: item.item_name,
@@ -1368,6 +1377,7 @@ onBeforeUnmount(() => {
 }
 .rank-detail {
   padding: 14px 18px 18px;
+  scroll-margin-top: 72px;
   border-top: 1px solid rgba(53, 214, 208, 0.18);
   border-bottom: 1px solid rgba(200, 168, 92, 0.2);
 }
