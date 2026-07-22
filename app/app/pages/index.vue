@@ -588,7 +588,7 @@ const includedTags = ref<string[]>([])
 const excludedTags = ref<string[]>([])
 const tagLogic = ref('AND')
 const selectedItems = ref<any[]>([])
-const expandedRows = ref<string[]>([])
+const expandedRows = ref<any[]>([])
 const rankPrices = ref<Record<string, NonNullable<OrderBook['rankPrices']>>>({})
 const rankLoading = ref<Record<string, boolean>>({})
 const rankErrors = ref<Record<string, boolean>>({})
@@ -750,16 +750,18 @@ function isRankableItem(item: any): boolean {
 }
 
 function isRankExpanded(item: any): boolean {
-  return expandedRows.value.includes(item?.url_name)
+  return expandedRows.value.some((expandedItem) => expandedItem?.url_name === item?.url_name)
 }
 
 function toggleRankRow(item: any) {
   const key = item?.url_name
   if (!key) return
   const expanded = isRankExpanded(item)
-  if (expanded) expandedRows.value = expandedRows.value.filter((value) => value !== key)
+  if (expanded) expandedRows.value = expandedRows.value.filter((expandedItem) => expandedItem?.url_name !== key)
   else {
-    expandedRows.value = [...expandedRows.value, key]
+    // The main table uses `return-object`, so Vuetify also expects expanded
+    // values to be the original item objects rather than their item-value keys.
+    expandedRows.value = [...expandedRows.value, item]
     void loadRankPrices(item)
   }
   trackAction(expanded ? 'rank_prices_collapse' : 'rank_prices_expand', {
