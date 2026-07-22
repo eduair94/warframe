@@ -23,9 +23,11 @@
         <v-data-table
           mobile-breakpoint="sm"
           show-select
+          show-expand
           return-object
           item-value="url_name"
           v-model="selectedItems"
+          v-model:expanded="expandedRows"
           :multi-sort="multiSort"
           v-model:sort-by="sortBy"
           :row-props="rowProps"
@@ -190,6 +192,66 @@
                 </div>
               </div>
             </v-theme-provider>
+          </template>
+          <template #item.data-table-expand="{ internalItem, item, isExpanded, toggleExpand }">
+            <v-btn
+              v-if="Number(item.maxRank) > 0"
+              icon
+              size="small"
+              variant="text"
+              color="primary"
+              :aria-expanded="isExpanded(internalItem)"
+              :aria-label="t(isExpanded(internalItem) ? 'home.ranks.collapse' : 'home.ranks.expand', { item: localItemName(item) })"
+              @click.stop="toggleRankRow(item, internalItem, isExpanded(internalItem), toggleExpand)"
+            >
+              <v-icon>{{ isExpanded(internalItem) ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
+            </v-btn>
+          </template>
+          <template #expanded-row="{ columns, item }">
+            <tr class="rank-detail-row">
+              <td :colspan="columns.length">
+                <div class="rank-detail">
+                  <div v-if="rankLoading[item.url_name]" class="rank-detail__state">
+                    <v-progress-circular indeterminate size="22" width="2" color="primary" />
+                    {{ t('home.ranks.loading') }}
+                  </div>
+                  <div v-else-if="rankErrors[item.url_name]" class="rank-detail__state rank-detail__state--error">
+                    {{ t('home.ranks.error') }}
+                    <v-btn size="small" variant="text" color="primary" @click="loadRankPrices(item, true)">
+                      {{ t('home.ranks.retry') }}
+                    </v-btn>
+                  </div>
+                  <v-data-table
+                    v-else-if="rankPrices[item.url_name]?.ranks?.length"
+                    class="rank-grid"
+                    density="compact"
+                    mobile-breakpoint="sm"
+                    hide-default-footer
+                    :headers="rankHeaders"
+                    :items="rankPrices[item.url_name]!.ranks"
+                    :items-per-page="-1"
+                    item-value="rank"
+                  >
+                    <template #item.rank="{ item: rank }">
+                      <span class="rank-badge">{{ rank.rank }}</span>
+                    </template>
+                    <template #item.bid="{ item: rank }">
+                      {{ rank.bid ? fixPrice(rank.bid) : '—' }}
+                    </template>
+                    <template #item.ask="{ item: rank }">
+                      {{ rank.ask ? fixPrice(rank.ask) : '—' }}
+                    </template>
+                    <template #item.avg_price="{ item: rank }">
+                      {{ rank.avg_price ? fixPrice(rank.avg_price) : '—' }}
+                    </template>
+                    <template #item.volume="{ item: rank }">
+                      {{ rank.volume || '—' }}
+                    </template>
+                  </v-data-table>
+                  <div v-else class="rank-detail__state">{{ t('home.ranks.pending') }}</div>
+                </div>
+              </td>
+            </tr>
           </template>
           <template #item.item_name="{ item, index }">
             <div class="d-flex justify-start align-center py-3">
@@ -480,6 +542,7 @@ import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useGoTo } from 'vuetify'
+import type { OrderBook } from '~/composables/useOrderBook'
 
 dayjs.extend(relativeTime)
 
@@ -526,6 +589,11 @@ const includedTags = ref<string[]>([])
 const excludedTags = ref<string[]>([])
 const tagLogic = ref('AND')
 const selectedItems = ref<any[]>([])
+const expandedRows = ref<string[]>([])
+const rankPrices = ref<Record<string, NonNullable<OrderBook['rankPrices']>>>({})
+const rankLoading = ref<Record<string, boolean>>({})
+const rankErrors = ref<Record<string, boolean>>({})
+const rankLoaded = ref<Record<string, boolean>>({})
 const compareDialog = ref(false)
 // Vuetify 3 merges sort-by + sort-desc into ONE model of { key, order } objects.
 const sortBy = ref<{ key: string; order: 'asc' | 'desc' }[]>([
@@ -608,6 +676,14 @@ const headers = computed(() => {
   return toReturn
 })
 
+const rankHeaders = computed(() => [
+  { title: t('home.ranks.rank'), key: 'rank', align: 'start' as const },
+  { title: t('home.headers.buyLive'), key: 'bid', align: 'end' as const },
+  { title: t('home.headers.sellLive'), key: 'ask', align: 'end' as const },
+  { title: t('home.headers.avgSold'), key: 'avg_price', align: 'end' as const },
+  { title: t('col_volume'), key: 'volume', align: 'end' as const },
+])
+
 watch(includedTags, () => filter())
 watch(excludedTags, () => filter())
 watch(tagLogic, () => filter())
@@ -667,6 +743,31 @@ function openDrops(item: any) {
 function openOrderBook(item: any) {
   orderBookItem.value = item
   orderBookDialog.value = true
+}
+
+async function toggleRankRow(item: any, internalItem: any, expanded: boolean, toggleExpand: (row: any) => void) {
+  if (!expanded) void loadRankPrices(item)
+  toggleExpand(internalItem)
+  trackAction(expanded ? 'rank_prices_collapse' : 'rank_prices_expand', {
+    item_name: item.item_name,
+    max_rank: item.maxRank,
+  })
+}
+
+async function loadRankPrices(item: any, force = false) {
+  const key = item?.url_name
+  if (!key || rankLoading.value[key] || (!force && rankLoaded.value[key])) return
+  rankLoading.value[key] = true
+  rankErrors.value[key] = false
+  try {
+    const book = await $fetch<OrderBook>(`${base}/orders/${encodeURIComponent(key)}`)
+    if (book.rankPrices) rankPrices.value[key] = book.rankPrices
+    rankLoaded.value[key] = true
+  } catch {
+    rankErrors.value[key] = true
+  } finally {
+    rankLoading.value[key] = false
+  }
 }
 
 function fixPrice(price: number) {
@@ -1143,6 +1244,48 @@ onBeforeUnmount(() => {
 .tag-cell {
   gap: 4px;
   padding: 4px 0;
+}
+.rank-detail-row td {
+  background: #0d0f1b !important;
+  padding: 0 !important;
+}
+.rank-detail {
+  padding: 14px 18px 18px;
+  border-top: 1px solid rgba(53, 214, 208, 0.18);
+  border-bottom: 1px solid rgba(200, 168, 92, 0.2);
+}
+.rank-detail__state {
+  min-height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: #aeb5c9;
+}
+.rank-detail__state--error { color: #e0a3a3; }
+.rank-grid {
+  background: transparent !important;
+  font-variant-numeric: tabular-nums;
+}
+.rank-grid :deep(.v-table__wrapper) { background: transparent; }
+.rank-grid :deep(th) {
+  color: #8f95ab !important;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.rank-grid :deep(td) { border-color: rgba(255, 255, 255, 0.07) !important; }
+.rank-grid :deep(tbody tr:hover td) { background: rgba(53, 214, 208, 0.035) !important; }
+.rank-badge {
+  display: inline-grid;
+  place-items: center;
+  min-width: 30px;
+  height: 24px;
+  padding: 0 7px;
+  color: #e7cf95;
+  border: 1px solid rgba(200, 168, 92, 0.38);
+  background: rgba(200, 168, 92, 0.06);
 }
 /* Screen-reader-only H1: keeps the real page heading in the DOM (SEO + a11y)
    without altering the visual layout, which leads with the data table. */

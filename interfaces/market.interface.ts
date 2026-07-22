@@ -73,6 +73,20 @@ export interface IMarketData {
   diff?: number;
   /** Most recent completed transaction data */
   last_completed?: IStatisticsDataPoint | null;
+  /** Stored price snapshot for every tradeable rank. */
+  rankPrices?: {
+    maxRank: number;
+    updatedAt: string;
+    ranks: Array<{
+      rank: number;
+      ask: number;
+      bid: number;
+      avg_price: number;
+      volume: number;
+      sellCount: number;
+      buyCount: number;
+    }>;
+  };
 }
 
 /**
@@ -232,6 +246,8 @@ export interface IProcessedItem {
   ducats?: number;
   /** Whether the item is vaulted (Vaulted investment page) */
   vaulted?: boolean;
+  /** Maximum tradeable rank; present for mods, arcanes and other ranked items. */
+  maxRank?: number;
   /** Last price update timestamp */
   priceUpdate?: Date;
 }

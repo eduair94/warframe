@@ -18,7 +18,7 @@ import { sleep } from '../Express/config';
 import { IHttpClient } from '../interfaces/http.interface';
 import { OrderCalculator, ITopOrder } from './OrderCalculator';
 import { StatisticsCalculator, IStatisticsDataPoint } from './StatisticsCalculator';
-import { buildModFlipData, IModFlipData } from './ModFlipCalculator';
+import { buildModFlipData, buildRankPriceData, IModFlipData, IRankPriceData } from './ModFlipCalculator';
 import { rarityTier, isEndoRankableMod } from './EndoCost';
 import { WarframeItemsResponse } from "./WarframeItems.interface";
 
@@ -555,6 +555,8 @@ export class MarketService {
     not_found?: boolean;
     /** Per-rank flip ladder + stat blocks — present only for rank-able mods. */
     flip?: IModFlipData;
+    /** Per-rank prices for every ranked item type (mods, arcanes, etc.). */
+    rankPrices?: IRankPriceData;
     /** Dominant order subtype (e.g. relic 'intact'), for the stored depth ladder. */
     subtype?: string;
     /** Order-book depth (price × quantity levels) for the bulk buy/sell modeler. */
@@ -613,6 +615,10 @@ export class MarketService {
       // with a known rarity tier so we don't store ladders for arcanes (ranked
       // by duplicates, not endo) or items whose fusion cost we can't compute.
       let flip: IModFlipData | undefined;
+      const rankPrices =
+        typeof maxRank === 'number' && maxRank > 0
+          ? buildRankPriceData(ordersResponse.payload.orders, rawStats48h, maxRank)
+          : undefined;
       const set0: any = (item as any).items_in_set?.[0];
       const modTags: string[] = (set0 && set0.tags) || [];
       const modRarity: string = (set0 && set0.rarity) || '';
@@ -680,6 +686,7 @@ export class MarketService {
         ...(subtype ? { subtype } : {}),
         depth,
         topOrders,
+        ...(rankPrices ? { rankPrices } : {}),
         ...(flip ? { flip } : {})
       };
     } catch (error: any) {

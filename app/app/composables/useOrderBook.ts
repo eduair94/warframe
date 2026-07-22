@@ -47,6 +47,20 @@ export interface OrderBook {
   sell: BookLevel[]
   /** Best few named orders per side (for the whisper buttons); optional/empty on old data. */
   topOrders?: { buy: TopOrder[]; sell: TopOrder[] }
+  /** Per-rank snapshot for mods, arcanes and other ranked market items. */
+  rankPrices?: {
+    maxRank: number
+    updatedAt: string
+    ranks: Array<{
+      rank: number
+      ask: number
+      bid: number
+      avg_price: number
+      volume: number
+      sellCount: number
+      buyCount: number
+    }>
+  } | null
 }
 
 export interface BulkQuote {

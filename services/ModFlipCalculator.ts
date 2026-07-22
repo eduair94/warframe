@@ -64,6 +64,13 @@ export interface IModFlipData {
   updatedAt: string;
 }
 
+/** A price snapshot for every tradeable rank of any ranked market item. */
+export interface IRankPriceData {
+  maxRank: number;
+  ranks: Array<IFlipRankRung & IFlipStat>;
+  updatedAt: string;
+}
+
 /** Actionable = visible and the seller/buyer is reachable (ingame or online). */
 function isActionable(o: IFlipOrder): boolean {
   if (o.visible === false) return false;
@@ -123,6 +130,32 @@ export function buildModFlipData(
     ranks: buildLadder(orders || [], meta.maxRank),
     unranked: { avg_price: unrankedStat.avg_price, volume: unrankedStat.volume },
     maxed: { avg_price: maxedStat.avg_price, volume: maxedStat.volume },
+    updatedAt: now,
+  };
+}
+
+/**
+ * Builds the compact snapshot used by the expandable home-table row. This is
+ * intentionally item-type agnostic: the catalogue's maxRank is the only gate,
+ * so mods, arcanes and future ranked items all use the same path.
+ */
+export function buildRankPriceData(
+  orders: IFlipOrder[],
+  stats48h: IStatisticsDataPoint[] | null | undefined,
+  maxRank: number,
+  now: string = new Date().toISOString(),
+): IRankPriceData {
+  const stats = stats48h || [];
+  return {
+    maxRank,
+    ranks: buildLadder(orders || [], maxRank).map((rung) => {
+      const rankStats = StatisticsCalculator.calculate(stats, { modRank: rung.rank });
+      return {
+        ...rung,
+        avg_price: rankStats.avg_price,
+        volume: rankStats.volume,
+      };
+    }),
     updatedAt: now,
   };
 }

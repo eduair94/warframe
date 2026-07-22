@@ -24,7 +24,7 @@ registration method (`getJsonCache` = cached, `*Auth` = Firebase-authed, `*Prote
 | `/build_relics` | GET · protected |  |
 | `/relic/:url_name` | GET |  |
 | `/relic_ev/:url_name` | GET · cached | Single relic's "open vs sell vs keep" EV row — the payload the relic detail page renders (rewards with authoritative WFCD chances, per-part vault flags, the relic's market book). Cached like the other read aggregates; keyed by url_name so a relic page and its value-board row stay in lockstep. |
-| `/orders/:url_name` | GET | Live order-book depth (price levels + quantities) for the "bulk buy/sell" modeler — fetched on demand when a details dialog opens, walked client-side. |
+| `/orders/:url_name` | GET | Stored order-book depth plus per-rank prices for ranked items. Fetched on demand by the order dialog and expandable home-table rows. |
 | `/drops/map` | GET · cached | Star Chart: planets → nodes ranked by expected plat/run (WFCD drop chances joined with live market prices). Cached like the other aggregate views. |
 | `/drops/item/:name` | GET · cached | Drop-locations dialog: where a single item drops (missions + relics). |
 | `/build_drops` | GET · protected | Refreshes the WFCD drop-data backup in Mongo (protected: triggers a real fetch). |
@@ -158,10 +158,10 @@ One-shot data importers run via `npm run <name>` / cron. They populate Mongo.
 | `app/i18n/messages/starChart.ts` | 37 KB |
 | `app/i18n/messages/timing.ts` | 37 KB |
 | `app/i18n/messages/comparison.ts` | 36 KB |
+| `app/i18n/messages/home.ts` | 36 KB |
 | `app/i18n/messages/vaultSpikes.ts` | 34 KB |
 | `app/i18n/messages/screener.ts` | 34 KB |
 | `app/i18n/messages/movers.ts` | 33 KB |
-| `app/i18n/messages/home.ts` | 31 KB |
 | `app/i18n/messages/toolDetail.ts` | 31 KB |
 
 _11 smaller modules omitted. See `app/i18n/CLAUDE.md`._

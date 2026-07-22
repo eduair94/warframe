@@ -38,7 +38,7 @@ export class ItemProcessor {
     if (!market) return "";
     if (!items_in_set || items_in_set.length === 0) return "";
 
-    const { tags } = items_in_set[0];
+    const { tags, mod_max_rank } = items_in_set[0];
 
     return {
       item_name,
@@ -61,6 +61,7 @@ export class ItemProcessor {
       // for items that haven't been enriched yet.
       ducats,
       vaulted,
+      maxRank: mod_max_rank,
       priceUpdate
     } as IProcessedItem;
   }

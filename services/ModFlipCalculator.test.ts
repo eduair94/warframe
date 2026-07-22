@@ -4,7 +4,7 @@
  */
 
 import { describe, it, expect } from '@jest/globals';
-import { buildLadder, buildModFlipData, IFlipOrder } from './ModFlipCalculator';
+import { buildLadder, buildModFlipData, buildRankPriceData, IFlipOrder } from './ModFlipCalculator';
 
 function sell(rank: number, plat: number, status = 'ingame'): IFlipOrder {
   return { order_type: 'sell', platinum: plat, mod_rank: rank, visible: true, user: { status } };
@@ -62,5 +62,26 @@ describe('ModFlipCalculator.buildModFlipData', () => {
     expect(flip.unranked).toEqual({ avg_price: 0, volume: 0 });
     expect(flip.maxed).toEqual({ avg_price: 0, volume: 0 });
     expect(flip.ranks).toHaveLength(4);
+  });
+});
+
+describe('ModFlipCalculator.buildRankPriceData', () => {
+  it('builds prices and realized stats for every rank without assuming a mod', () => {
+    const snapshot = buildRankPriceData(
+      [sell(0, 4), buy(0, 3), sell(5, 24), buy(5, 20)],
+      [
+        { datetime: '2026-07-14T00:00:00Z', volume: 8, avg_price: 4, mod_rank: 0, id: 'a' } as any,
+        { datetime: '2026-07-14T01:00:00Z', volume: 3, avg_price: 22, mod_rank: 5, id: 'b' } as any,
+      ],
+      5,
+      '2026-07-14T02:00:00Z',
+    );
+
+    expect(snapshot.maxRank).toBe(5);
+    expect(snapshot.ranks).toHaveLength(6);
+    expect(snapshot.ranks[0]).toMatchObject({ rank: 0, ask: 4, bid: 3, avg_price: 4, volume: 8 });
+    expect(snapshot.ranks[5]).toMatchObject({ rank: 5, ask: 24, bid: 20, avg_price: 22, volume: 3 });
+    expect(snapshot.ranks[2]).toMatchObject({ rank: 2, ask: 0, bid: 0, avg_price: 0, volume: 0 });
+    expect(snapshot.updatedAt).toBe('2026-07-14T02:00:00Z');
   });
 });

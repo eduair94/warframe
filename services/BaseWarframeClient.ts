@@ -566,7 +566,7 @@ export abstract class BaseWarframeClient {
   }
 
   /**
-   * Order-book depth for one item, for the "bulk buy/sell" modeler.
+   * Order-book depth and per-rank price snapshot for one item.
    *
    * Served from the DATABASE — the compact depth ladder the price-sync crawler
    * stores on `item.market.depth` (see OrderCalculator.depthLadder). The request
@@ -587,6 +587,7 @@ export abstract class BaseWarframeClient {
       buy: Array<{ platinum: number; quantity: number; ingame_name: string; status: string }>;
       sell: Array<{ platinum: number; quantity: number; ingame_name: string; status: string }>;
     };
+    rankPrices: any | null;
   }> {
     const item: any = await this.itemService.getItemByUrlName(urlName);
     const depth = item?.market?.depth;
@@ -601,6 +602,7 @@ export abstract class BaseWarframeClient {
         buy: Array.isArray(top?.buy) ? top.buy : [],
         sell: Array.isArray(top?.sell) ? top.sell : [],
       },
+      rankPrices: item?.market?.rankPrices ?? null,
     };
   }
 
