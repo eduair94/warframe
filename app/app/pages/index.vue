@@ -207,14 +207,14 @@
                     </v-btn>
                   </div>
                   <v-data-table
-                    v-else-if="!isAyatanItem(item) && rankPrices[item.url_name]?.ranks?.length"
+                    v-else-if="!isAyatanItem(item) && visiblePriceRows(rankPrices[item.url_name]?.ranks).length"
                     class="rank-grid"
                     theme="dark"
                     density="compact"
                     mobile-breakpoint="sm"
                     hide-default-footer
                     :headers="rankHeaders"
-                    :items="rankPrices[item.url_name]!.ranks"
+                    :items="visiblePriceRows(rankPrices[item.url_name]?.ranks)"
                     :items-per-page="-1"
                     item-value="rank"
                   >
@@ -235,14 +235,14 @@
                     </template>
                   </v-data-table>
                   <v-data-table
-                    v-else-if="isAyatanItem(item) && ayatanPrices[item.url_name]?.variants?.length"
+                    v-else-if="isAyatanItem(item) && visiblePriceRows(ayatanPrices[item.url_name]?.variants).length"
                     class="rank-grid"
                     theme="dark"
                     density="compact"
                     mobile-breakpoint="sm"
                     hide-default-footer
                     :headers="ayatanHeaders"
-                    :items="ayatanPrices[item.url_name]!.variants"
+                    :items="visiblePriceRows(ayatanPrices[item.url_name]?.variants)"
                     :items-per-page="-1"
                     item-value="key"
                   >
@@ -794,6 +794,10 @@ function isAyatanItem(item: any): boolean {
 
 function isRankableItem(item: any): boolean {
   return isAyatanItem(item) || Number(item?.maxRank) > 0
+}
+
+function visiblePriceRows<T extends { sellCount: number; buyCount: number }>(rows?: T[]): T[] {
+  return rows?.filter((row) => row.sellCount > 0 || row.buyCount > 0) ?? []
 }
 
 function rankToggleText(item: any): string {
