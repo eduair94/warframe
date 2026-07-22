@@ -23,7 +23,6 @@
         <v-data-table
           mobile-breakpoint="sm"
           show-select
-          show-expand
           return-object
           item-value="url_name"
           v-model="selectedItems"
@@ -193,20 +192,6 @@
               </div>
             </v-theme-provider>
           </template>
-          <template #item.data-table-expand="{ internalItem, item, isExpanded, toggleExpand }">
-            <v-btn
-              v-if="Number(item.maxRank) > 0"
-              icon
-              size="small"
-              variant="text"
-              color="primary"
-              :aria-expanded="isExpanded(internalItem)"
-              :aria-label="t(isExpanded(internalItem) ? 'home.ranks.collapse' : 'home.ranks.expand', { item: localItemName(item) })"
-              @click.stop="toggleRankRow(item, internalItem, isExpanded(internalItem), toggleExpand)"
-            >
-              <v-icon>{{ isExpanded(internalItem) ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
-            </v-btn>
-          </template>
           <template #expanded-row="{ columns, item }">
             <tr class="rank-detail-row">
               <td :colspan="columns.length">
@@ -224,6 +209,7 @@
                   <v-data-table
                     v-else-if="rankPrices[item.url_name]?.ranks?.length"
                     class="rank-grid"
+                    theme="dark"
                     density="compact"
                     mobile-breakpoint="sm"
                     hide-default-footer
@@ -265,14 +251,27 @@
                 :src="'https://warframe.market/static/assets/' + item.thumb"
               />
               <div>
-                <a
-                  class="no_link"
-                  target="_blank"
-                  :href="'https://warframe.market/items/' + item.url_name"
-                  @click="onMarketLink(item, index)"
-                >
-                  {{ localItemName(item) }}</a
-                >
+                <span class="item-name-line">
+                  <a
+                    class="no_link"
+                    target="_blank"
+                    :href="'https://warframe.market/items/' + item.url_name"
+                    @click="onMarketLink(item, index)"
+                  >{{ localItemName(item) }}</a>
+                  <v-btn
+                    v-if="isRankableItem(item)"
+                    class="rank-toggle"
+                    icon
+                    size="x-small"
+                    variant="text"
+                    color="primary"
+                    :aria-expanded="isRankExpanded(item)"
+                    :aria-label="t(isRankExpanded(item) ? 'home.ranks.collapse' : 'home.ranks.expand', { item: localItemName(item) })"
+                    @click.stop="toggleRankRow(item)"
+                  >
+                    <v-icon size="small">{{ isRankExpanded(item) ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
+                  </v-btn>
+                </span>
                 <br />
                 <v-btn
                   v-if="item.item_name.includes(' Set')"
@@ -745,9 +744,24 @@ function openOrderBook(item: any) {
   orderBookDialog.value = true
 }
 
-async function toggleRankRow(item: any, internalItem: any, expanded: boolean, toggleExpand: (row: any) => void) {
-  if (!expanded) void loadRankPrices(item)
-  toggleExpand(internalItem)
+function isRankableItem(item: any): boolean {
+  const tags = Array.isArray(item?.tags) ? item.tags : []
+  return Number(item?.maxRank) > 0 || tags.includes('mod') || tags.includes('arcane_enhancement')
+}
+
+function isRankExpanded(item: any): boolean {
+  return expandedRows.value.includes(item?.url_name)
+}
+
+function toggleRankRow(item: any) {
+  const key = item?.url_name
+  if (!key) return
+  const expanded = isRankExpanded(item)
+  if (expanded) expandedRows.value = expandedRows.value.filter((value) => value !== key)
+  else {
+    expandedRows.value = [...expandedRows.value, key]
+    void loadRankPrices(item)
+  }
   trackAction(expanded ? 'rank_prices_collapse' : 'rank_prices_expand', {
     item_name: item.item_name,
     max_rank: item.maxRank,
@@ -1245,6 +1259,12 @@ onBeforeUnmount(() => {
   gap: 4px;
   padding: 4px 0;
 }
+.item-name-line {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+.rank-toggle { flex: 0 0 auto; }
 .rank-detail-row td {
   background: #0d0f1b !important;
   padding: 0 !important;
@@ -1269,13 +1289,18 @@ onBeforeUnmount(() => {
 }
 .rank-grid :deep(.v-table__wrapper) { background: transparent; }
 .rank-grid :deep(th) {
+  background: #14162a !important;
   color: #8f95ab !important;
   font-family: 'Rajdhani', sans-serif;
   font-size: 0.68rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
-.rank-grid :deep(td) { border-color: rgba(255, 255, 255, 0.07) !important; }
+.rank-grid :deep(td) {
+  background: #0d0f1b !important;
+  color: #eef1f8 !important;
+  border-color: rgba(255, 255, 255, 0.07) !important;
+}
 .rank-grid :deep(tbody tr:hover td) { background: rgba(53, 214, 208, 0.035) !important; }
 .rank-badge {
   display: inline-grid;

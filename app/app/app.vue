@@ -16,6 +16,10 @@ import type { WarframeItem } from './stores/items'
 // server -> internal origin (no Cloudflare round-trip for the ~2MB SSR fetch),
 // client -> public apiURL. See composables/useApiBase.ts.
 const base = useApiBase()
+// Bump when the catalogue row shape changes. Cloudflare may retain the previous
+// root payload across a deploy; a schema-keyed URL prevents new UI from hydrating
+// against an old shape (the rank expander needs `maxRank`).
+const catalogueUrl = `${base}${base.includes('?') ? '&' : '?'}schema=rank-prices-v1`
 const items = useItemsStore()
 const translations = useTranslationsStore()
 const { locale } = useI18n()
@@ -122,7 +126,7 @@ const route = useRoute()
 const needsCatalogue = routeNeedsCatalogue(route.name)
 const { data } = await useAsyncData('app-items', async () => {
   if (!needsCatalogue) return null
-  const list = await $fetch<WarframeItem[]>(base, CATALOGUE_FETCH).catch(() => null)
+  const list = await $fetch<WarframeItem[]>(catalogueUrl, CATALOGUE_FETCH).catch(() => null)
   return list?.length ? packCatalogue(list) : null
 })
 const catalogue = unpackCatalogue(data.value)
@@ -157,7 +161,7 @@ let lastRefreshAt = 0
 const refreshCatalogue = (force = false) => {
   if (!force && Date.now() - lastRefreshAt < REFRESH_MIN_GAP_MS) return
   lastRefreshAt = Date.now()
-  $fetch<WarframeItem[]>(base, { ...CATALOGUE_FETCH, cache: 'no-cache' })
+  $fetch<WarframeItem[]>(catalogueUrl, { ...CATALOGUE_FETCH, cache: 'no-cache' })
     .then((list) => {
       if (list?.length) items.setItems(list)
     })
@@ -209,7 +213,7 @@ onMounted(() => {
     // Today this outage is silent — the page just looks empty. Report it so the
     // blank-render rate is visible instead of only showing up as bounces.
     trackAction('catalogue_empty')
-    $fetch<WarframeItem[]>(base, CATALOGUE_FETCH)
+    $fetch<WarframeItem[]>(catalogueUrl, CATALOGUE_FETCH)
       .then((list) => {
         if (list?.length) items.setItems(list)
       })

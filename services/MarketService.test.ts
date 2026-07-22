@@ -168,5 +168,47 @@ describe('MarketService', () => {
       expect(result.buy).toBe(0);
       expect(result.sell).toBe(0);
     });
+
+    it('keeps the headline on max rank while also storing every rank for expansion', async () => {
+      const httpClient = makeUrlRouter(() => ({
+        payload: {
+          statistics_closed: {
+            '48hours': [
+              { datetime: '2026-07-22T00:00:00Z', volume: 100, avg_price: 6, mod_rank: 0, id: 'r0' },
+              { datetime: '2026-07-22T01:00:00Z', volume: 25, avg_price: 105, mod_rank: 5, id: 'r5' }
+            ]
+          }
+        }
+      }));
+      (httpClient.get as any).mockImplementation(async (url: string) => {
+        if (url.includes('/orders/item/')) return {
+          data: [
+            { type: 'sell', platinum: 7, rank: 0, quantity: 1, user: { status: 'ingame' } },
+            { type: 'buy', platinum: 5, rank: 0, quantity: 1, user: { status: 'ingame' } },
+            { type: 'sell', platinum: 110, rank: 5, quantity: 1, user: { status: 'ingame' } },
+            { type: 'buy', platinum: 100, rank: 5, quantity: 1, user: { status: 'ingame' } }
+          ]
+        };
+        if (url.includes('/statistics')) return {
+          payload: { statistics_closed: { '48hours': [
+            { datetime: '2026-07-22T00:00:00Z', volume: 100, avg_price: 6, mod_rank: 0, id: 'r0' },
+            { datetime: '2026-07-22T01:00:00Z', volume: 25, avg_price: 105, mod_rank: 5, id: 'r5' }
+          ] } }
+        };
+        throw new Error(`Unmocked URL: ${url}`);
+      });
+      const service = new MarketService(httpClient, {
+        ordersMinDelay: 0, ordersMaxDelay: 0, statsMinDelay: 0, statsMaxDelay: 0
+      });
+
+      const result = await service.getItemPrices({
+        url_name: 'arcane_energize',
+        items_in_set: [{ mod_max_rank: 5 }]
+      });
+
+      expect(result).toMatchObject({ buy: 100, sell: 110, volume: 25, avg_price: 105 });
+      expect(result.rankPrices?.ranks[0]).toMatchObject({ rank: 0, bid: 5, ask: 7, volume: 100 });
+      expect(result.rankPrices?.ranks[5]).toMatchObject({ rank: 5, bid: 100, ask: 110, volume: 25 });
+    });
   });
 });
