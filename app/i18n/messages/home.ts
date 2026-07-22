@@ -50,6 +50,7 @@ export default {
         relicCalculator: 'Relic calculator',
       },
       ranks: {
+        pricesByRank: 'Prices by rank',
         expand: 'Show prices by rank for {item}',
         collapse: 'Hide prices by rank for {item}',
         loading: 'Loading prices by rank…',
@@ -160,6 +161,7 @@ export default {
         join: 'Unirse a la discusión',
       },
       ranks: {
+        pricesByRank: 'Precios por rango',
         expand: 'Mostrar precios por rango para {item}',
         collapse: 'Ocultar precios por rango para {item}',
         loading: 'Cargando precios por rango…',
@@ -242,6 +244,7 @@ export default {
         join: 'Participar da discussão',
       },
       ranks: {
+        pricesByRank: 'Preços por rank',
         expand: 'Mostrar preços por rank para {item}',
         collapse: 'Ocultar preços por rank para {item}',
         loading: 'Carregando preços por rank…',
@@ -324,6 +327,7 @@ export default {
         join: 'An Diskussion teilnehmen',
       },
       ranks: {
+        pricesByRank: 'Preise nach Rang',
         expand: 'Preise nach Rang für {item} anzeigen',
         collapse: 'Preise nach Rang für {item} ausblenden',
         loading: 'Preise nach Rang werden geladen…',
@@ -406,6 +410,7 @@ export default {
         join: 'Rejoindre la discussion',
       },
       ranks: {
+        pricesByRank: 'Prix par rang',
         expand: 'Afficher les prix par rang pour {item}',
         collapse: 'Masquer les prix par rang pour {item}',
         loading: 'Chargement des prix par rang…',
@@ -488,6 +493,7 @@ export default {
         join: 'Присоединиться к обсуждению',
       },
       ranks: {
+        pricesByRank: 'Цены по рангам',
         expand: 'Показать цены по рангам для {item}',
         collapse: 'Скрыть цены по рангам для {item}',
         loading: 'Загрузка цен по рангам…',
@@ -570,6 +576,7 @@ export default {
         join: '토론 참여하기',
       },
       ranks: {
+        pricesByRank: '랭크별 시세',
         expand: '{item} 랭크별 시세 보기',
         collapse: '{item} 랭크별 시세 숨기기',
         loading: '랭크별 시세 불러오는 중…',
@@ -652,6 +659,7 @@ export default {
         join: 'ディスカッションに参加',
       },
       ranks: {
+        pricesByRank: 'ランク別価格',
         expand: '{item}のランク別価格を表示',
         collapse: '{item}のランク別価格を非表示',
         loading: 'ランク別価格を読み込み中…',
@@ -734,6 +742,7 @@ export default {
         join: '加入讨论',
       },
       ranks: {
+        pricesByRank: '各等级价格',
         expand: '显示 {item} 各等级价格',
         collapse: '隐藏 {item} 各等级价格',
         loading: '正在加载各等级价格…',
@@ -816,6 +825,7 @@ export default {
         join: '加入討論',
       },
       ranks: {
+        pricesByRank: '各等級價格',
         expand: '顯示 {item} 各等級價格',
         collapse: '隱藏 {item} 各等級價格',
         loading: '正在載入各等級價格…',
@@ -898,6 +908,7 @@ export default {
         join: 'Dołącz do dyskusji',
       },
       ranks: {
+        pricesByRank: 'Ceny według rangi',
         expand: 'Pokaż ceny według rangi dla {item}',
         collapse: 'Ukryj ceny według rangi dla {item}',
         loading: 'Wczytywanie cen według rangi…',
@@ -980,6 +991,7 @@ export default {
         join: 'Partecipa alla discussione',
       },
       ranks: {
+        pricesByRank: 'Prezzi per grado',
         expand: 'Mostra prezzi per grado per {item}',
         collapse: 'Nascondi prezzi per grado per {item}',
         loading: 'Caricamento prezzi per grado…',
@@ -1062,6 +1074,7 @@ export default {
         join: 'Долучитися до обговорення',
       },
       ranks: {
+        pricesByRank: 'Ціни за рангом',
         expand: 'Показати ціни за рангом для {item}',
         collapse: 'Приховати ціни за рангом для {item}',
         loading: 'Завантаження цін за рангом…',

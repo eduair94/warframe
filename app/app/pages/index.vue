@@ -261,7 +261,6 @@
                   <v-btn
                     v-if="isRankableItem(item)"
                     class="rank-toggle"
-                    icon
                     size="x-small"
                     variant="text"
                     color="primary"
@@ -270,6 +269,7 @@
                     @click.stop="toggleRankRow(item)"
                   >
                     <v-icon size="small">{{ isRankExpanded(item) ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
+                    <span class="rank-toggle__label">{{ t('home.ranks.pricesByRank') }}</span>
                   </v-btn>
                 </span>
                 <br />
@@ -1266,7 +1266,41 @@ onBeforeUnmount(() => {
   align-items: center;
   gap: 2px;
 }
-.rank-toggle { flex: 0 0 auto; }
+.rank-toggle.v-btn {
+  flex: 0 0 auto;
+  width: 32px;
+  min-width: 32px;
+  height: 32px;
+  padding: 0;
+}
+.rank-toggle__label { display: none; }
+@media (max-width: 700px) {
+  .item-name-line {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 7px;
+  }
+  .rank-toggle.v-btn {
+    width: auto;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0 12px;
+    border: 1px solid rgba(200, 168, 92, 0.55);
+    background: rgba(200, 168, 92, 0.08);
+    color: #e7cf95 !important;
+    border-radius: 2px;
+  }
+  .rank-toggle__label {
+    display: inline;
+    margin-left: 6px;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+}
 .rank-detail-row td {
   background: #0d0f1b !important;
   padding: 0 !important;
