@@ -198,16 +198,16 @@
                 <div class="rank-detail">
                   <div v-if="rankLoading[item.url_name]" class="rank-detail__state">
                     <v-progress-circular indeterminate size="22" width="2" color="primary" />
-                    {{ t('home.ranks.loading') }}
+                    {{ isAyatanItem(item) ? `${t('home.ranks.pricesByStars')}…` : t('home.ranks.loading') }}
                   </div>
                   <div v-else-if="rankErrors[item.url_name]" class="rank-detail__state rank-detail__state--error">
-                    {{ t('home.ranks.error') }}
+                    {{ t(isAyatanItem(item) ? 'home.ranks.errorStars' : 'home.ranks.error') }}
                     <v-btn size="small" variant="text" color="primary" @click="loadRankPrices(item, true)">
                       {{ t('home.ranks.retry') }}
                     </v-btn>
                   </div>
                   <v-data-table
-                    v-else-if="rankPrices[item.url_name]?.ranks?.length"
+                    v-else-if="!isAyatanItem(item) && rankPrices[item.url_name]?.ranks?.length"
                     class="rank-grid"
                     theme="dark"
                     density="compact"
@@ -234,7 +234,40 @@
                       {{ rank.volume || '—' }}
                     </template>
                   </v-data-table>
-                  <div v-else class="rank-detail__state">{{ t('home.ranks.pending') }}</div>
+                  <v-data-table
+                    v-else-if="isAyatanItem(item) && ayatanPrices[item.url_name]?.variants?.length"
+                    class="rank-grid"
+                    theme="dark"
+                    density="compact"
+                    mobile-breakpoint="sm"
+                    hide-default-footer
+                    :headers="ayatanHeaders"
+                    :items="ayatanPrices[item.url_name]!.variants"
+                    :items-per-page="-1"
+                    item-value="key"
+                  >
+                    <template #item.amberStars="{ item: variant }">
+                      <span class="rank-badge rank-badge--amber">{{ variant.amberStars }}</span>
+                    </template>
+                    <template #item.cyanStars="{ item: variant }">
+                      <span class="rank-badge rank-badge--cyan">{{ variant.cyanStars }}</span>
+                    </template>
+                    <template #item.bid="{ item: variant }">
+                      {{ variant.bid ? fixPrice(variant.bid) : '—' }}
+                    </template>
+                    <template #item.ask="{ item: variant }">
+                      {{ variant.ask ? fixPrice(variant.ask) : '—' }}
+                    </template>
+                    <template #item.avg_price="{ item: variant }">
+                      {{ variant.avg_price ? fixPrice(variant.avg_price) : '—' }}
+                    </template>
+                    <template #item.volume="{ item: variant }">
+                      {{ variant.volume || '—' }}
+                    </template>
+                  </v-data-table>
+                  <div v-else class="rank-detail__state">
+                    {{ isAyatanItem(item) ? t('home.ranks.pricesByStars') : t('home.ranks.pending') }}
+                  </div>
                 </div>
               </td>
             </tr>
@@ -265,11 +298,11 @@
                     variant="text"
                     color="primary"
                     :aria-expanded="isRankExpanded(item)"
-                    :aria-label="t(isRankExpanded(item) ? 'home.ranks.collapse' : 'home.ranks.expand', { item: localItemName(item) })"
+                    :aria-label="rankToggleAria(item)"
                     @click.stop="toggleRankRow(item)"
                   >
                     <v-icon size="small">{{ isRankExpanded(item) ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
-                    <span class="rank-toggle__label">{{ t('home.ranks.pricesByRank') }}</span>
+                    <span class="rank-toggle__label">{{ rankToggleText(item) }}</span>
                   </v-btn>
                 </span>
                 <br />
@@ -590,6 +623,7 @@ const tagLogic = ref('AND')
 const selectedItems = ref<any[]>([])
 const expandedRows = ref<any[]>([])
 const rankPrices = ref<Record<string, NonNullable<OrderBook['rankPrices']>>>({})
+const ayatanPrices = ref<Record<string, NonNullable<OrderBook['ayatanPrices']>>>({})
 const rankLoading = ref<Record<string, boolean>>({})
 const rankErrors = ref<Record<string, boolean>>({})
 const rankLoaded = ref<Record<string, boolean>>({})
@@ -683,6 +717,15 @@ const rankHeaders = computed(() => [
   { title: t('col_volume'), key: 'volume', align: 'end' as const },
 ])
 
+const ayatanHeaders = computed(() => [
+  { title: t('home.ranks.amberStars'), key: 'amberStars', align: 'start' as const },
+  { title: t('home.ranks.cyanStars'), key: 'cyanStars', align: 'start' as const },
+  { title: t('home.headers.buyLive'), key: 'bid', align: 'end' as const },
+  { title: t('home.headers.sellLive'), key: 'ask', align: 'end' as const },
+  { title: t('home.headers.avgSold'), key: 'avg_price', align: 'end' as const },
+  { title: t('col_volume'), key: 'volume', align: 'end' as const },
+])
+
 watch(includedTags, () => filter())
 watch(excludedTags, () => filter())
 watch(tagLogic, () => filter())
@@ -744,9 +787,22 @@ function openOrderBook(item: any) {
   orderBookDialog.value = true
 }
 
-function isRankableItem(item: any): boolean {
+function isAyatanItem(item: any): boolean {
   const tags = Array.isArray(item?.tags) ? item.tags : []
-  return Number(item?.maxRank) > 0 || tags.includes('mod') || tags.includes('arcane_enhancement')
+  return tags.includes('ayatan_sculpture')
+}
+
+function isRankableItem(item: any): boolean {
+  return isAyatanItem(item) || Number(item?.maxRank) > 0
+}
+
+function rankToggleText(item: any): string {
+  return t(isAyatanItem(item) ? 'home.ranks.pricesByStars' : 'home.ranks.pricesByRank')
+}
+
+function rankToggleAria(item: any): string {
+  if (isAyatanItem(item)) return `${rankToggleText(item)}: ${localItemName(item)}`
+  return t(isRankExpanded(item) ? 'home.ranks.collapse' : 'home.ranks.expand', { item: localItemName(item) })
 }
 
 function isRankExpanded(item: any): boolean {
@@ -778,6 +834,7 @@ async function loadRankPrices(item: any, force = false) {
   try {
     const book = await $fetch<OrderBook>(`${base}/orders/${encodeURIComponent(key)}`)
     if (book.rankPrices) rankPrices.value[key] = book.rankPrices
+    if (book.ayatanPrices) ayatanPrices.value[key] = book.ayatanPrices
     rankLoaded.value[key] = true
   } catch {
     rankErrors.value[key] = true
@@ -1347,6 +1404,16 @@ onBeforeUnmount(() => {
   color: #e7cf95;
   border: 1px solid rgba(200, 168, 92, 0.38);
   background: rgba(200, 168, 92, 0.06);
+}
+.rank-badge--amber {
+  color: #f2c66d;
+  border-color: rgba(242, 198, 109, 0.5);
+  background: rgba(242, 198, 109, 0.08);
+}
+.rank-badge--cyan {
+  color: #7ce4e0;
+  border-color: rgba(53, 214, 208, 0.45);
+  background: rgba(53, 214, 208, 0.08);
 }
 /* Screen-reader-only H1: keeps the real page heading in the DOM (SEO + a11y)
    without altering the visual layout, which leads with the data table. */

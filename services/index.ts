@@ -31,6 +31,7 @@ export { ProxyManagerAdapter } from './ProxyManagerAdapter';
 
 // Calculators & Processors (Pure utilities, no dependencies)
 export { ItemProcessor } from './ItemProcessor';
+export { buildAyatanPriceData, type IAyatanPriceData, type IAyatanPriceVariant } from './AyatanPriceCalculator';
 export { OrderCalculator, type IOrderData, type IPriceCalculationOptions, type IPriceCalculationResult } from './OrderCalculator';
 export { StatisticsCalculator, type IStatisticsDataPoint, type IStatisticsOptions, type IStatisticsResult } from './StatisticsCalculator';
 

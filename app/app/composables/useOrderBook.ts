@@ -61,6 +61,23 @@ export interface OrderBook {
       buyCount: number
     }>
   } | null
+  /** Per-star snapshot for Ayatan sculptures (exact amber/cyan combinations). */
+  ayatanPrices?: {
+    maxAmberStars: number
+    maxCyanStars: number
+    updatedAt: string
+    variants: Array<{
+      key: string
+      amberStars: number
+      cyanStars: number
+      ask: number
+      bid: number
+      avg_price: number
+      volume: number
+      sellCount: number
+      buyCount: number
+    }>
+  } | null
 }
 
 export interface BulkQuote {

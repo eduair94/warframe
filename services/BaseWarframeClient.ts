@@ -588,6 +588,7 @@ export abstract class BaseWarframeClient {
       sell: Array<{ platinum: number; quantity: number; ingame_name: string; status: string }>;
     };
     rankPrices: any | null;
+    ayatanPrices: any | null;
   }> {
     const item: any = await this.itemService.getItemByUrlName(urlName);
     const depth = item?.market?.depth;
@@ -603,6 +604,7 @@ export abstract class BaseWarframeClient {
         sell: Array.isArray(top?.sell) ? top.sell : [],
       },
       rankPrices: item?.market?.rankPrices ?? null,
+      ayatanPrices: item?.market?.ayatanPrices ?? null,
     };
   }
 

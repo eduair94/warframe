@@ -87,6 +87,23 @@ export interface IMarketData {
       buyCount: number;
     }>;
   };
+  /** Stored price snapshot for every Ayatan amber/cyan star combination. */
+  ayatanPrices?: {
+    maxAmberStars: number;
+    maxCyanStars: number;
+    updatedAt: string;
+    variants: Array<{
+      key: string;
+      amberStars: number;
+      cyanStars: number;
+      ask: number;
+      bid: number;
+      avg_price: number;
+      volume: number;
+      sellCount: number;
+      buyCount: number;
+    }>;
+  };
 }
 
 /**

@@ -210,5 +210,41 @@ describe('MarketService', () => {
       expect(result.rankPrices?.ranks[0]).toMatchObject({ rank: 0, bid: 5, ask: 7, volume: 100 });
       expect(result.rankPrices?.ranks[5]).toMatchObject({ rank: 5, bid: 100, ask: 110, volume: 25 });
     });
+
+    it('keeps an Ayatan headline fully socketed and stores every star combination', async () => {
+      const httpClient = makeUrlRouter(() => ({ payload: { statistics_closed: { '48hours': [] } } }));
+      (httpClient.get as any).mockImplementation(async (url: string) => {
+        if (url.includes('/orders/item/')) return {
+          data: [
+            { type: 'sell', platinum: 5, amberStars: 0, cyanStars: 0, quantity: 1, user: { status: 'ingame' } },
+            { type: 'buy', platinum: 3, amberStars: 0, cyanStars: 0, quantity: 1, user: { status: 'ingame' } },
+            { type: 'sell', platinum: 20, amberStars: 1, cyanStars: 2, quantity: 1, user: { status: 'ingame' } },
+            { type: 'buy', platinum: 15, amberStars: 1, cyanStars: 2, quantity: 1, user: { status: 'ingame' } },
+          ]
+        };
+        if (url.includes('/statistics')) return {
+          payload: { statistics_closed: { '48hours': [
+            { datetime: '2026-07-22T00:00:00Z', volume: 100, avg_price: 5, amber_stars: 0, cyan_stars: 0 },
+            { datetime: '2026-07-22T01:00:00Z', volume: 12, avg_price: 18, amber_stars: 1, cyan_stars: 2 },
+          ] } }
+        };
+        throw new Error(`Unmocked URL: ${url}`);
+      });
+      const service = new MarketService(httpClient, {
+        ordersMinDelay: 0, ordersMaxDelay: 0, statsMinDelay: 0, statsMaxDelay: 0
+      });
+
+      const result = await service.getItemPrices({
+        url_name: 'ayatan_test_sculpture',
+        max_amber_stars: 1,
+        max_cyan_stars: 2,
+      });
+
+      expect(result).toMatchObject({ buy: 15, sell: 20, volume: 12, avg_price: 18 });
+      expect(result.ayatanPrices?.variants).toHaveLength(6);
+      expect(result.ayatanPrices?.variants[0]).toMatchObject({ key: '0:0', bid: 3, ask: 5, volume: 100 });
+      expect(result.ayatanPrices?.variants[5]).toMatchObject({ key: '1:2', bid: 15, ask: 20, volume: 12 });
+      expect(result.rankPrices).toBeUndefined();
+    });
   });
 });

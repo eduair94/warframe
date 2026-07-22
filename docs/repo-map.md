@@ -120,7 +120,7 @@ Nuxt 4 file-based routing under `app/app/pages/`. `:x?` = optional param.
 
 Business logic + external clients. Each `*.ts` usually has a sibling `*.test.ts`.
 
-`BaseWarframeClient` · `CacheService` · `CacheWarmer` · `DropService` · `EndoCost` · `FoundryService` · `HeaderService` · `HttpService` · `ItemProcessor` · `ItemService` · `MarketAnalyticsService` · `MarketService` · `MissionService` · `ModFlipCalculator` · `OrderCalculator` · `PriceHistoryService` · `ProxyManagerAdapter` · `PushAlertService` · `PushSubscriptionService` · `RelicService` · `RivenService` · `SetService` · `SocksConnector` · `StatisticsCalculator` · `TranslationService` · `UndiciHttpService` · `UserDataService` · `firebaseToken` · `index` · `missionSlug` · `pushEval` · `pushMessages` · `pushValidate` · `userMerge` · `userTypes` · `userValidate`
+`AyatanPriceCalculator` · `BaseWarframeClient` · `CacheService` · `CacheWarmer` · `DropService` · `EndoCost` · `FoundryService` · `HeaderService` · `HttpService` · `ItemProcessor` · `ItemService` · `MarketAnalyticsService` · `MarketService` · `MissionService` · `ModFlipCalculator` · `OrderCalculator` · `PriceHistoryService` · `ProxyManagerAdapter` · `PushAlertService` · `PushSubscriptionService` · `RelicService` · `RivenService` · `SetService` · `SocksConnector` · `StatisticsCalculator` · `TranslationService` · `UndiciHttpService` · `UserDataService` · `firebaseToken` · `index` · `missionSlug` · `pushEval` · `pushMessages` · `pushValidate` · `userMerge` · `userTypes` · `userValidate`
 
 ## Sync jobs (root `sync_*.ts`)
 
@@ -154,10 +154,10 @@ One-shot data importers run via `npm run <name>` / cron. They populate Mongo.
 | `app/i18n/messages/nav.ts` | 43 KB |
 | `app/i18n/messages/rivenValue.ts` | 42 KB |
 | `app/i18n/messages/vaultedWorth.ts` | 41 KB |
+| `app/i18n/messages/home.ts` | 39 KB |
 | `app/i18n/messages/volatility.ts` | 37 KB |
 | `app/i18n/messages/starChart.ts` | 37 KB |
 | `app/i18n/messages/timing.ts` | 37 KB |
-| `app/i18n/messages/home.ts` | 37 KB |
 | `app/i18n/messages/comparison.ts` | 36 KB |
 | `app/i18n/messages/vaultSpikes.ts` | 34 KB |
 | `app/i18n/messages/screener.ts` | 34 KB |

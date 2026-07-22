@@ -14,6 +14,10 @@ export interface IStatisticsDataPoint {
   volume: number;
   avg_price: number;
   mod_rank?: number;
+  /** Ayatan sculpture variant: exact number of socketed amber stars. */
+  amber_stars?: number;
+  /** Ayatan sculpture variant: exact number of socketed cyan stars. */
+  cyan_stars?: number;
   /** Item variant, e.g. relic 'intact'/'radiant'. Present on subtype-bearing items. */
   subtype?: string;
 }
@@ -36,6 +40,10 @@ export interface IStatisticsResult {
 export interface IStatisticsOptions {
   /** Filter by specific mod rank (undefined = all ranks) */
   modRank?: number;
+  /** Filter an Ayatan sculpture to one exact amber-star count. */
+  amberStars?: number;
+  /** Filter an Ayatan sculpture to one exact cyan-star count. */
+  cyanStars?: number;
   /** Filter by specific variant/subtype, e.g. 'radiant' (undefined = all variants).
    *  Ignored gracefully when no data point carries the subtype, so items whose stats
    *  aren't split by subtype degrade to the unfiltered aggregate instead of zeroing. */
@@ -63,19 +71,26 @@ export class StatisticsCalculator {
     dataPoints: IStatisticsDataPoint[],
     options: IStatisticsOptions = {}
   ): IStatisticsResult {
-    const { modRank, subtype } = options;
+    const { modRank, subtype, amberStars, cyanStars } = options;
 
     // Filter by mod rank if specified
     const rankFiltered = modRank !== undefined
       ? dataPoints.filter(point => point.mod_rank === modRank)
       : dataPoints;
 
+    // Star variants are strict. Falling back to the aggregate would repeat the
+    // same misleading volume/average on every Ayatan combination.
+    const starFiltered = rankFiltered.filter(point =>
+      (amberStars === undefined || (point.amber_stars ?? 0) === amberStars) &&
+      (cyanStars === undefined || (point.cyan_stars ?? 0) === cyanStars)
+    );
+
     // Filter by subtype if specified, but degrade gracefully: if no point carries the
     // requested subtype (stats not split by variant for this item), keep the rank-filtered
     // set rather than zeroing out the baseline.
-    let filtered = rankFiltered;
+    let filtered = starFiltered;
     if (subtype !== undefined) {
-      const subFiltered = rankFiltered.filter(point => point.subtype === subtype);
+      const subFiltered = starFiltered.filter(point => point.subtype === subtype);
       if (subFiltered.length > 0) filtered = subFiltered;
     }
 

@@ -41,3 +41,24 @@ describe('StatisticsCalculator subtype filtering', () => {
     expect(r.avg_price).toBe(50);
   });
 });
+
+describe('StatisticsCalculator Ayatan filtering', () => {
+  it('keeps only the exact amber/cyan star combination', () => {
+    const points: IStatisticsDataPoint[] = [
+      pt({ amber_stars: 0, cyan_stars: 0, volume: 100, avg_price: 5 }),
+      pt({ amber_stars: 1, cyan_stars: 2, volume: 10, avg_price: 20 }),
+      pt({ amber_stars: 1, cyan_stars: 2, volume: 20, avg_price: 30 }),
+    ];
+    const result = StatisticsCalculator.calculate(points, { amberStars: 1, cyanStars: 2 });
+    expect(result.volume).toBe(30);
+    expect(result.avg_price).toBeCloseTo(26.6667, 3);
+  });
+
+  it('does not fall back to aggregate stats when a star variant has no trades', () => {
+    const result = StatisticsCalculator.calculate(
+      [pt({ amber_stars: 0, cyan_stars: 0, volume: 100, avg_price: 5 })],
+      { amberStars: 1, cyanStars: 2 },
+    );
+    expect(result).toMatchObject({ volume: 0, avg_price: 0, last_completed: null });
+  });
+});

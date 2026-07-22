@@ -19,6 +19,7 @@ import { IHttpClient } from '../interfaces/http.interface';
 import { OrderCalculator, ITopOrder } from './OrderCalculator';
 import { StatisticsCalculator, IStatisticsDataPoint } from './StatisticsCalculator';
 import { buildModFlipData, buildRankPriceData, IModFlipData, IRankPriceData } from './ModFlipCalculator';
+import { buildAyatanPriceData, IAyatanPriceData } from './AyatanPriceCalculator';
 import { rarityTier, isEndoRankableMod } from './EndoCost';
 import { WarframeItemsResponse } from "./WarframeItems.interface";
 
@@ -557,6 +558,8 @@ export class MarketService {
     flip?: IModFlipData;
     /** Per-rank prices for every ranked item type (mods, arcanes, etc.). */
     rankPrices?: IRankPriceData;
+    /** Per-star prices for every Ayatan sculpture variant. */
+    ayatanPrices?: IAyatanPriceData;
     /** Dominant order subtype (e.g. relic 'intact'), for the stored depth ladder. */
     subtype?: string;
     /** Order-book depth (price × quantity levels) for the bulk buy/sell modeler. */
@@ -597,7 +600,12 @@ export class MarketService {
           payload: { statistics_closed: { '48hours': IStatisticsDataPoint[] } }
         }>(item.url_name);
         rawStats48h = statsResponse?.payload?.statistics_closed?.['48hours'] || [];
-        stats = StatisticsCalculator.calculate(rawStats48h, { modRank: maxRank, subtype });
+        stats = StatisticsCalculator.calculate(rawStats48h, {
+          modRank: maxRank,
+          subtype,
+          amberStars: item.max_amber_stars,
+          cyanStars: item.max_cyan_stars,
+        });
       } catch (statsError: any) {
         if (this.isRateLimitError(statsError)) {
           throw statsError;
@@ -619,6 +627,16 @@ export class MarketService {
         typeof maxRank === 'number' && maxRank > 0
           ? buildRankPriceData(ordersResponse.payload.orders, rawStats48h, maxRank)
           : undefined;
+      const hasAyatanStats =
+        typeof item.max_amber_stars === 'number' || typeof item.max_cyan_stars === 'number';
+      const ayatanPrices = hasAyatanStats
+        ? buildAyatanPriceData(
+            ordersResponse.payload.orders,
+            rawStats48h,
+            item.max_amber_stars ?? 0,
+            item.max_cyan_stars ?? 0,
+          )
+        : undefined;
       const set0: any = (item as any).items_in_set?.[0];
       const modTags: string[] = (set0 && set0.tags) || [];
       const modRarity: string = (set0 && set0.rarity) || '';
@@ -687,6 +705,7 @@ export class MarketService {
         depth,
         topOrders,
         ...(rankPrices ? { rankPrices } : {}),
+        ...(ayatanPrices ? { ayatanPrices } : {}),
         ...(flip ? { flip } : {})
       };
     } catch (error: any) {
