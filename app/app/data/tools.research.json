@@ -3542,6 +3542,88 @@
       "Real-cash payment and account-interaction risks beyond in-game consequences"
     ]
   },
+  "tenno-market": {
+    "slug": "tenno-market",
+    "oneLiner": "A free Warframe.market companion for deciding what to sell, with live prices, margins, relic values, market trends and ducat efficiency in one browser tab.",
+    "overview": "TennoMarket is a one-person side project built to replace the routine of tabbing between Warframe.market and a spreadsheet when deciding what to sell. It brings public Warframe.market prices together with WFCD drop data and WarframeStatus world-state data, then turns them into browsable item, relic, market and ducat views. Its public pages say the market data refreshes automatically every 15 minutes and the core tools do not require an account.",
+    "keyFeatures": [
+      "Relic Advisor ranks Intact relics by expected platinum value using real drop chances",
+      "Tradable-item catalogue with live buy and sell prices, margins and price history",
+      "Market overview for the most valuable and most actively traded items",
+      "Ducat efficiency comparison for deciding whether to sell or dissolve prime parts",
+      "Live Void Trader, Nightwave, Sortie and Steel Path world-state summaries",
+      "Free web access with no account required for the core tools",
+      "Optional watchlists, price alerts and an inventory vault",
+      "Discord bot commands for price, relic and Ducat lookups"
+    ],
+    "bestFor": "Players sorting a backlog of tradable items who want Warframe.market prices and spreadsheet-style sell decisions in one place.",
+    "pros": [
+      "Combines several common selling checks in one web app",
+      "Uses public Warframe.market, WFCD and WarframeStatus data",
+      "No install and no account required for the core tools",
+      "Clear focus on practical sell-versus-keep and sell-versus-ducat decisions",
+      "Includes a Discord bot for quick lookups outside the site"
+    ],
+    "cons": [
+      "A newer one-person project with limited independent community feedback so far",
+      "Market data refreshes every 15 minutes rather than reflecting every order instantly",
+      "Watchlists, alerts and the inventory vault require an account"
+    ],
+    "sentimentSummary": "TennoMarket is a newer independent project, so there is not yet enough public community feedback for a strong consensus. This listing is based on the live site and the maker's own public description; its focused workflow is promising, but traders should still confirm a final price on Warframe.market before posting an order.",
+    "safety": {
+      "rating": "safe",
+      "notes": "The core tools are browser-based, use public community data, and do not require a Warframe or Warframe.market login. An optional Tenno Market account unlocks saved features. As with any third-party market helper, verify live orders on Warframe.market before completing a trade."
+    },
+    "tier": "situational",
+    "tierReason": "A useful focused companion for sell planning and ducat decisions. It is still new, so the ranking stays conservative until there is more independent community feedback.",
+    "dataConfidence": "medium",
+    "reddit": [
+      {
+        "title": "Made a free Warframe.market tool site, would appreciate some eyes on it",
+        "url": "https://www.reddit.com/r/Warframe/comments/1v40y5x/made_a_free_warframemarket_tool_site_would/",
+        "subreddit": "Warframe",
+        "sentiment": "positive"
+      }
+    ],
+    "youtube": [],
+    "trustpilot": null,
+    "otherReviews": []
+  },
+  "tipsycontent-checklist": {
+    "slug": "tipsycontent-checklist",
+    "oneLiner": "A browser checklist for Warframe's daily, weekly, and rotating tasks, paired with clear UTC reset timers.",
+    "overview": "TipsyContent's Warframe Checklist keeps recurring progression chores in one place. It separates daily, weekly, and other rotating tasks, shows the daily and weekly reset countdowns, and covers reminders such as Forma crafting, Syndicate standing, Nightwave, both Duviri Circuits, Archon Hunts, Netracells, Baro Ki'Teer, and vendor exchanges.",
+    "keyFeatures": [
+      "Daily and weekly reset countdowns in UTC",
+      "Separate daily, weekly, and other-task columns",
+      "Check-off controls for each recurring activity",
+      "Coverage for Nightwave, Circuit, Archon Hunts, Netracells, Baro, Syndicates, and crafting",
+      "Short task descriptions that explain what each reminder is for"
+    ],
+    "bestFor": "Players who want one lightweight reminder board for Warframe's many recurring daily and weekly activities.",
+    "pros": [
+      "Works in the browser with no install",
+      "Broad coverage of recurring progression tasks",
+      "Reset timers make the cadence immediately clear",
+      "Simple checklist layout is quick to scan"
+    ],
+    "cons": [
+      "Checklist completion is manual and is not verified against the game",
+      "New or changed rotations depend on the site keeping the task list current"
+    ],
+    "sentimentSummary": "This listing is based on the live tool itself; there is not enough independent community feedback yet for a broader verdict.",
+    "safety": {
+      "rating": "safe",
+      "notes": "The checklist is a browser-based reminder tool and does not need access to the Warframe client or a Warframe account."
+    },
+    "tier": "situational",
+    "tierReason": "A useful quality-of-life tool for players juggling many recurring activities, though it is not needed if the in-game reminders already cover their routine.",
+    "dataConfidence": "medium",
+    "reddit": [],
+    "youtube": [],
+    "trustpilot": null,
+    "otherReviews": []
+  },
   "warframe-market-analytics": {
     "slug": "warframe-market-analytics",
     "oneLiner": "A free analytics layer on top of Warframe.market — live prime prices, set-vs-parts, ducat & relic value, riven pricing, flip signals and vaulted tracking, in 13 languages.",

@@ -134,7 +134,7 @@ One-shot data importers run via `npm run <name>` / cron. They populate Mongo.
 
 | Module | Size |
 | --- | --- |
-| `app/i18n/messages/communityTools.ts` | 135 KB |
+| `app/i18n/messages/communityTools.ts` | 143 KB |
 | `app/i18n/messages/account.ts` | 115 KB |
 | `app/i18n/messages/endo.ts` | 113 KB |
 | `app/i18n/messages/foundry.ts` | 91 KB |

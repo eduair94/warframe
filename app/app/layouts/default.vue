@@ -237,6 +237,7 @@ const navLinks: NavLink[] = [
   { to: '/forma-relics', key: 'formaRelics', icon: 'mdi-vector-triangle', group: 'Tools' },
   { to: '/riven-value', key: 'rivenValue', icon: 'mdi-star-four-points-outline', group: 'Tools' },
   { to: '/portfolio', key: 'portfolio', icon: 'mdi-briefcase-variant-outline', group: 'Tools' },
+  { to: '/tools', key: 'communityTools', icon: 'mdi-tools', group: 'Tools' },
   { to: '/foundry', key: 'foundry', icon: 'mdi-anvil', group: 'Account' },
   { to: '/vault', key: 'vault', icon: 'mdi-treasure-chest', group: 'Account' },
   { to: '/goals', key: 'goals', icon: 'mdi-target', group: 'Account' },
@@ -248,7 +249,6 @@ const navLinks: NavLink[] = [
   { to: '/guides/endo', key: 'endoGuide', icon: 'mdi-book-open-variant', group: 'Guides' },
   { to: '/circuit', key: 'circuit', icon: 'mdi-calendar-sync', group: 'Resources' },
   { to: '/creators', key: 'creators', icon: 'mdi-youtube', group: 'Resources' },
-  { to: '/tools', key: 'communityTools', icon: 'mdi-tools', group: 'Resources' },
 ]
 
 // Groups the nav links for the drawer, in a fixed section order

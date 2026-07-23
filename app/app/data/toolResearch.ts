@@ -111,6 +111,11 @@ export const SELF_RELATIONS: Record<string, SelfRelation> = {
     href: '/comparison',
     reason: 'Values sets and parts from live Warframe.market prices, with set-vs-parts and 48h volume.',
   },
+  'tenno-market': {
+    type: 'alternative',
+    href: '/relics-value',
+    reason: 'Also ranks relics by expected platinum and compares market value against ducats, alongside broader market tools.',
+  },
   'semlar-rivencalc': {
     type: 'alternative',
     href: '/riven-value',
