@@ -131,9 +131,26 @@
               </div>
             </v-expand-transition>
 
-            <v-chip-group v-model="flipCat" mandatory column class="an-cats" @update:model-value="onFlipCatChange">
-              <v-chip v-for="c in flipCatOptions" :key="c" :value="c" size="small" active-class="an-chip--on">{{ flipCatLabel(c) }}</v-chip>
-            </v-chip-group>
+            <div class="an-filter-facets">
+              <div class="an-filter-facet">
+                <span class="an-filter-facet__label">{{ t('endo.filters.maxRank') }}</span>
+                <v-chip-group v-model="flipCat" mandatory column class="an-cats" :aria-label="t('endo.filters.maxRank')" @update:model-value="onFlipCatChange">
+                  <v-chip v-for="c in flipCatOptions" :key="c" :value="c" size="small" active-class="an-chip--on">{{ flipCatLabel(c) }}</v-chip>
+                </v-chip-group>
+              </div>
+              <div class="an-filter-facet">
+                <span class="an-filter-facet__label">{{ t('endo.filters.modType') }}</span>
+                <v-chip-group v-model="modTypeFilter" multiple column class="an-cats" :aria-label="t('endo.filters.modType')" @update:model-value="onModTypeChange">
+                  <v-chip v-for="type in modTypeOptions" :key="type" :value="type" size="small" filter active-class="an-chip--on">{{ modTypeLabel(type) }}</v-chip>
+                </v-chip-group>
+              </div>
+              <div class="an-filter-facet">
+                <span class="an-filter-facet__label">{{ t('endo.filters.syndicate') }}</span>
+                <v-chip-group v-model="syndicateFilter" multiple column class="an-cats" :aria-label="t('endo.filters.syndicate')" @update:model-value="onSyndicateChange">
+                  <v-chip v-for="syndicate in syndicateOptions" :key="syndicate" :value="syndicate" size="small" filter active-class="an-chip--on">{{ syndicate }}</v-chip>
+                </v-chip-group>
+              </div>
+            </div>
             <div class="an-count">{{ t('endo.flip.count', { n: flipFiltered.length }, flipFiltered.length) }}<span v-if="hiddenThin && hideThin" class="an-hidden">{{ t('endo.flip.thinHidden', { n: hiddenThin }) }}</span></div>
           </section>
 
@@ -437,6 +454,7 @@ import {
   type SellBasis,
 } from '~/composables/useEndoValue'
 import { fmtPlat } from '~/composables/marketFormat'
+import { SYNDICATE_ORDER, syndicatesForMod } from '~/data/modSyndicates'
 
 dayjs.extend(relativeTime)
 
@@ -459,7 +477,18 @@ const FLIP_CAT_KEY: Record<string, string> = {
 }
 function flipCatLabel(c: string): string {
   const k = FLIP_CAT_KEY[c]
-  return k ? t('endo.flipCat.' + k) : c // Corrupted / Primed-Umbral / Aura kept as-is
+  return k ? t('endo.flipCat.' + k) : c
+}
+const MOD_TYPE_KEY: Record<string, string> = {
+  Augment: 'augment',
+  Syndicate: 'syndicate',
+  Aura: 'aura',
+  Stance: 'stance',
+  'Primed/Umbral/Archon': 'special',
+}
+function modTypeLabel(type: string): string {
+  const key = MOD_TYPE_KEY[type]
+  return key ? t('endo.modType.' + key) : type
 }
 function srcKindLabel(c: string): string {
   if (c === 'All') return t('endo.kind.all')
@@ -599,6 +628,8 @@ const minProfit = ref<number | null>(null)
 const minEff = ref<number | null>(null)
 const maxEndoFinish = ref<number | null>(null)
 const rarityFilter = ref<string[]>([])
+const modTypeFilter = ref<string[]>([])
+const syndicateFilter = ref<string[]>([])
 const partialOnly = ref(false)
 const hideThin = ref(true)
 
@@ -653,11 +684,6 @@ function sortFlip(key: string) {
 }
 
 function flipCategory(row: FlipRowEval): string {
-  const name = row.item_name || ''
-  const tags = (row.tags || []).map((x) => (x || '').toLowerCase())
-  if (/^(primed|umbral|archon)\b/i.test(name)) return 'Primed/Umbral'
-  if (tags.includes('corrupted')) return 'Corrupted'
-  if (tags.includes('aura')) return 'Aura'
   const mr = row.eval.maxRank
   if (mr >= 10) return 'Rank 10'
   if (mr >= 8) return 'Rank 8'
@@ -667,11 +693,25 @@ function flipCategory(row: FlipRowEval): string {
 const flipCatOptions = computed<string[]>(() => {
   const present = new Set<string>()
   for (const r of flipRows.value) present.add(flipCategory(r))
-  const order = ['Rank 10', 'Rank 8', 'Rank 5', 'Rank ≤3', 'Corrupted', 'Primed/Umbral', 'Aura']
+  const order = ['Rank 10', 'Rank 8', 'Rank 5', 'Rank ≤3']
   return ['All', ...order.filter((c) => present.has(c))]
 })
+const MOD_TYPE_ORDER = ['Augment', 'Syndicate', 'Aura', 'Stance', 'Primed/Umbral/Archon'] as const
+const modTypeOptions = MOD_TYPE_ORDER
+const syndicateOptions = SYNDICATE_ORDER
+function matchesModType(row: EndoFlipRow, type: string): boolean {
+  const tags = new Set((row.tags || []).map((tag) => String(tag || '').toLowerCase()))
+  if (type === 'Augment') return tags.has('augment')
+  if (type === 'Syndicate') return tags.has('syndicate')
+  if (type === 'Aura') return tags.has('aura')
+  if (type === 'Stance') return tags.has('stance')
+  if (type === 'Primed/Umbral/Archon') {
+    return tags.has('archon') || /^(primed|umbral|archon)\b/i.test(row.item_name || '')
+  }
+  return false
+}
 function resetFlipFilters() {
-  // The reset rewrites eight filter refs at once; report it as the single action
+  // The reset rewrites the filter refs at once; report it as the single action
   // it is instead of letting every field watcher emit its own filter_apply.
   suppressFilterEvents = true
   search.value = ''
@@ -681,6 +721,8 @@ function resetFlipFilters() {
   minEff.value = null
   maxEndoFinish.value = null
   rarityFilter.value = []
+  modTypeFilter.value = []
+  syndicateFilter.value = []
   partialOnly.value = false
   flipCat.value = 'All'
   trackAction('filters_reset')
@@ -694,10 +736,14 @@ const flipFiltered = computed<FlipRowEval[]>(() => {
   const q = (search.value || '').trim().toLowerCase()
   const minV = Number(minVolume.value) || 0
   const raritySet = new Set(rarityFilter.value.map((x) => x.toLowerCase()))
+  const modTypes = new Set(modTypeFilter.value)
+  const syndicates = new Set(syndicateFilter.value)
   const list = flipRows.value.filter((r) => {
     const b = r.eval.best
     if (q && !(r.item_name.toLowerCase().includes(q) || localItemName(r).toLowerCase().includes(q))) return false
     if (flipCat.value !== 'All' && flipCategory(r) !== flipCat.value) return false
+    if (modTypes.size && !Array.from(modTypes).some((type) => matchesModType(r, type))) return false
+    if (syndicates.size && !syndicatesForMod(r.item_name).some((syndicate) => syndicates.has(syndicate))) return false
     if (r.eval.maxedVolume < minV) return false
     if (hideThin.value && r.eval.maxedVolume < 1) return false
     if (maxBuyIn.value != null && b.buyIn > maxBuyIn.value) return false
@@ -937,6 +983,8 @@ const QUERY_PARAMS: Array<[string, any, any, PType]> = [
   ['maxendo', maxEndoFinish, null, 'num'],
   ['minvol', minVolume, 50, 'num'],
   ['rarity', rarityFilter, [], 'csv'],
+  ['types', modTypeFilter, [], 'csv'],
+  ['syndicates', syndicateFilter, [], 'csv'],
   ['partial', partialOnly, false, 'bool'],
   ['thin', hideThin, true, 'bool'],
   ['sq', sourceSearch, '', 'str'],
@@ -954,6 +1002,19 @@ function hydrateFromQuery() {
     if (raw == null) continue
     const v = Array.isArray(raw) ? raw[0] : raw
     if (v == null) continue
+    // Older shared links used `cat` for special mod families. Keep those
+    // bookmarks useful now that max rank and mod type are independent facets.
+    if (key === 'cat') {
+      const legacyTypes: Record<string, string> = {
+        Aura: 'Aura',
+        'Primed/Umbral': 'Primed/Umbral/Archon',
+      }
+      const migrated = legacyTypes[String(v)]
+      if (migrated) {
+        modTypeFilter.value = [migrated]
+        continue
+      }
+    }
     if (type === 'str') r.value = String(v)
     else if (type === 'bool') r.value = v === '1' || v === 'true'
     else if (type === 'num') r.value = v === '' ? null : Number(v)
@@ -1056,6 +1117,33 @@ function onRarityChange(v: any) {
   // click order would otherwise turn 15 combinations into 64 permutations.
   const picked: string[] = Array.isArray(v) ? [...v].sort() : []
   trackFilter('rarity', picked.length ? picked.join(',') : 'any')
+  armCalc()
+}
+function revealDefaultHiddenFacetRows(picked: string[]) {
+  // The default liquidity guard excludes the current augment and faction-mod
+  // catalogue. Clear only that untouched default; explicit user thresholds
+  // remain authoritative.
+  if (picked.length && minVolume.value === 50 && hideThin.value) {
+    suppressFilterEvents = true
+    minVolume.value = 0
+    hideThin.value = false
+    nextTick(() => {
+      suppressFilterEvents = false
+    })
+  }
+}
+function onModTypeChange(v: any) {
+  // One facet is OR-matched: selecting Augment + Syndicate compares the union.
+  const picked: string[] = Array.isArray(v) ? [...v].sort() : []
+  revealDefaultHiddenFacetRows(picked)
+  trackFilter('mod_type', picked.length ? picked.join(',') : 'any')
+  armCalc()
+}
+function onSyndicateChange(v: any) {
+  // Factions are also OR-matched so players can compare allied offerings.
+  const picked: string[] = Array.isArray(v) ? [...v].sort() : []
+  revealDefaultHiddenFacetRows(picked)
+  trackFilter('syndicate', picked.length ? picked.join(',') : 'any')
   armCalc()
 }
 function onFlipCatChange(v: any) {
@@ -1360,6 +1448,34 @@ onMounted(() => {
   color: #4caf7d;
   border-color: rgba(76, 175, 125, 0.6);
 }
+.an-filter-facets {
+  display: grid;
+  gap: 14px;
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+.an-filter-facet {
+  display: grid;
+  grid-template-columns: minmax(96px, 112px) minmax(0, 1fr);
+  align-items: start;
+  column-gap: 18px;
+}
+.an-filter-facet__label {
+  padding-top: 7px;
+  color: #b4b9ca;
+  font-family: var(--font-hud);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+.an-filter-facet .an-cats {
+  min-width: 0;
+  margin: 0;
+}
+.an-filter-facets + .an-count {
+  margin-top: 18px;
+}
 /* Visible keyboard focus for the interactive controls (quality floor). */
 .an-copy:focus-visible,
 .an-copybtn:focus-visible,
@@ -1524,6 +1640,20 @@ onMounted(() => {
   color: #9aa0b4;
   margin-left: 6px;
   font-size: 0.92em;
+}
+@media (max-width: 640px) {
+  .an-filter-facets {
+    gap: 16px;
+    margin-top: 18px;
+    padding-top: 16px;
+  }
+  .an-filter-facet {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 5px;
+  }
+  .an-filter-facet__label {
+    padding: 0;
+  }
 }
 .donation_icon {
   display: block;
