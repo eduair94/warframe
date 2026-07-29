@@ -32,16 +32,19 @@ export function useItemThumb() {
 
   /** Full, working thumbnail URL for an item, cross-referenced against the fresh catalog. */
   function itemThumb(opts: ThumbLookup): string {
+    // warframe.market now sends a cross-origin resource policy that blocks its
+    // item thumbnails when embedded. Prefer the stable WFCD card image for
+    // every recognized mod, not only records carrying unknown.thumb.png.
+    const modImage = opts.itemName && modImageName(opts.itemName)
+    if (modImage) return WFCD_IMAGE_BASE + encodeURIComponent(modImage)
+
     const fresh =
       (opts.urlName && store.thumbByUrlName[opts.urlName]) ||
       (opts.itemName && store.thumbByName[opts.itemName]) ||
       opts.thumb
     if (fresh && fresh !== UNKNOWN_MARKET_THUMB) return ASSET_BASE + fresh
 
-    const fallbackImage = opts.itemName && modImageName(opts.itemName)
-    return fallbackImage
-      ? WFCD_IMAGE_BASE + encodeURIComponent(fallbackImage)
-      : THUMB_PLACEHOLDER
+    return THUMB_PLACEHOLDER
   }
 
   return { itemThumb, RIVEN_TEMPLATE_IMG, THUMB_PLACEHOLDER }
