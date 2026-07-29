@@ -2,6 +2,7 @@ import {
   normalizeModName,
   syndicatesForMod,
 } from '../app/app/data/modSyndicates'
+import { modImageName } from '../app/app/data/modImages'
 
 describe('syndicate mod mapping', () => {
   it('maps a dual-syndicate Warframe augment to both offering factions', () => {
@@ -24,5 +25,9 @@ describe('syndicate mod mapping', () => {
   it('normalizes punctuation and diacritics consistently', () => {
     expect(normalizeModName('Mesa’s Waltz')).toBe('mesaswaltz')
     expect(normalizeModName('Mêsa’s Waltz')).toBe('mesaswaltz')
+  })
+
+  it('provides the WFCD image filename when the market thumbnail is unknown', () => {
+    expect(modImageName('Razor Mortar')).toBe('SentientWhirlwindAugmentCard.jpg')
   })
 })

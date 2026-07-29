@@ -179,7 +179,7 @@
                 <tr v-for="row in flipPaged" :key="row.url_name" :class="{ 'is-top': row.url_name === topFlipUrl }">
                   <td class="col-name">
                     <a class="an-name" :href="mkt(row.url_name)" target="_blank" rel="noopener" @click="trackMarket(row.item_name, 'table')">
-                      <img class="an-thumb" :src="assetUrl(row.thumb)" :alt="localItemName(row)" loading="lazy" @error="onImgError" />
+                      <img class="an-thumb" :src="itemThumb({ urlName: row.url_name, itemName: row.item_name, thumb: row.thumb })" :alt="localItemName(row)" loading="lazy" @error="onImgError" />
                       <span>
                         {{ localItemName(row) }}
                         <span v-if="row.url_name === topFlipUrl" class="an-badge">{{ t('endo.row.top') }}</span>
@@ -234,7 +234,7 @@
           <div v-else class="an-cards">
             <div v-for="row in flipPaged" :key="row.url_name" class="an-card" :class="{ 'is-top': row.url_name === topFlipUrl }">
               <a class="an-card__head" :href="mkt(row.url_name)" target="_blank" rel="noopener" @click="trackMarket(row.item_name, 'card')">
-                <img class="an-thumb" :src="assetUrl(row.thumb)" :alt="localItemName(row)" loading="lazy" @error="onImgError" />
+                <img class="an-thumb" :src="itemThumb({ urlName: row.url_name, itemName: row.item_name, thumb: row.thumb })" :alt="localItemName(row)" loading="lazy" @error="onImgError" />
                 <div class="an-card__title">
                   <div class="an-card__name">{{ localItemName(row) }}<span v-if="row.url_name === topFlipUrl" class="an-badge">{{ t('endo.row.top') }}</span></div>
                   <small class="an-sub">{{ t('endo.row.modSub', { rarity: rarityLabel(row.eval.rarity), max: row.eval.maxRank, endo: fmtEndo(row.eval.endoToMax) }) }}</small>
@@ -461,6 +461,7 @@ dayjs.extend(relativeTime)
 const apiBase = useApiBase()
 const { t, te } = useI18n()
 const { localItemName } = useLocalizedName()
+const { itemThumb, THUMB_PLACEHOLDER } = useItemThumb()
 
 // --- i18n label helpers for dynamic values whose English form is also the
 // filter/compare key. Keep the value; translate only the display. ---
@@ -1217,19 +1218,13 @@ watch(maxCost, (v) => trackNumberFilter('max_cost', v))
 function rankLabel(rank: number): string {
   return rank <= 0 ? t('endo.rank.unranked') : t('endo.rank.n', { n: rank })
 }
-function assetUrl(thumb: string): string {
-  return 'https://warframe.market/static/assets/' + (thumb || '')
-}
 function mkt(urlName: string): string {
   return itemUrl(urlName)
 }
-const placeholderImg =
-  "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44'%3E%3Crect width='44' height='44' rx='8' fill='%232a2a3d'/%3E%3Cpath d='M22 11 L31 22 L22 33 L13 22 Z' fill='none' stroke='%234fb3bf' stroke-width='2' opacity='0.75'/%3E%3C/svg%3E"
-function onImgError(e: any) {
-  const img = e.target
-  if (!img || img.dataset.fallback) return
-  img.dataset.fallback = '1'
-  img.src = placeholderImg
+function onImgError(e: Event) {
+  const img = e.target as HTMLImageElement | null
+  if (!img || img.src === THUMB_PLACEHOLDER) return
+  img.src = THUMB_PLACEHOLDER
 }
 
 function finishLoading(attempt = 0) {
@@ -1298,7 +1293,7 @@ onMounted(() => {
   .an-dir {
     justify-content: flex-start;
     gap: 8px 12px;
-    margin: 2px 0 12px;
+    margin: 2px 16px 12px;
   }
   .an-dir__toggle {
     flex: 1 1 100%;
@@ -1560,11 +1555,15 @@ onMounted(() => {
    under the "Rarity" label on mobile. Collapse it and tighten the chip gap. */
 .an-adv__chips :deep(.v-chip-group) {
   min-height: 0;
+  margin: 0;
   padding: 0;
 }
 .an-adv__chips :deep(.v-slide-group__content) {
   padding: 2px 0;
   gap: 6px;
+}
+.an-adv__chips :deep(.v-chip) {
+  margin: 0;
 }
 .an-adv__lbl {
   font-size: 0.72rem;

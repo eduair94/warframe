@@ -3,7 +3,11 @@
 // The freshly-synced catalog (Pinia items store) has the current thumb — cross
 // reference by url_name (preferred) or item_name to show a working thumbnail.
 
+import { modImageName } from '~/data/modImages'
+
 const ASSET_BASE = 'https://warframe.market/static/assets/'
+const WFCD_IMAGE_BASE = 'https://cdn.warframestat.us/img/'
+const UNKNOWN_MARKET_THUMB = 'items/unknown.thumb.png'
 
 // Generic veiled-riven card image — a stable warframe.market *build* asset (its
 // hash doesn't rotate like per-item thumbs). Riven rows are all veiled cards, so
@@ -32,7 +36,12 @@ export function useItemThumb() {
       (opts.urlName && store.thumbByUrlName[opts.urlName]) ||
       (opts.itemName && store.thumbByName[opts.itemName]) ||
       opts.thumb
-    return fresh ? ASSET_BASE + fresh : THUMB_PLACEHOLDER
+    if (fresh && fresh !== UNKNOWN_MARKET_THUMB) return ASSET_BASE + fresh
+
+    const fallbackImage = opts.itemName && modImageName(opts.itemName)
+    return fallbackImage
+      ? WFCD_IMAGE_BASE + encodeURIComponent(fallbackImage)
+      : THUMB_PLACEHOLDER
   }
 
   return { itemThumb, RIVEN_TEMPLATE_IMG, THUMB_PLACEHOLDER }
