@@ -88,6 +88,23 @@ jobs:
       && vars.DEPLOY_ENABLED == 'true'
     runs-on: ubuntu-latest
     steps:
+      # Fail fast and legibly when the box itself is gone. Without this the run
+      # dies on a bare "connect timeout" from the SSH action, which reads like a
+      # credentials problem and sends you looking in the wrong place — that is
+      # exactly what a host-level outage looks like from CI. See
+      # docs/runbook-outage.md.
+      - name: Preflight — prod host reachable
+        run: |
+          set -uo pipefail
+          HOST="${{ secrets.SSH_HOST }}"
+          PORT="${{ secrets.SSH_PORT || 22 }}"
+          if timeout 15 bash -c "cat < /dev/null > /dev/tcp/${HOST}/${PORT}" 2>/dev/null; then
+            echo "prod host reachable on ${PORT}"
+          else
+            echo "::error::Prod host is not reachable on port ${PORT}. The box is down, not the deploy. Follow docs/runbook-outage.md (check the InterServer control panel for a powered-off VM, node maintenance, or a suspended account)."
+            exit 1
+          fi
+
       - name: SSH deploy (pull -> build -> pm2 reload)
         uses: appleboy/ssh-action@v1
         with:
@@ -139,4 +156,57 @@ jobs:
             # client can reach warframe.market's throttled /v2/items catalogue
             # (the API server process cannot). See sync_repair_sets.ts.
             pm2 start ecosystem.config.js --only warframe-sync-repair-sets --update-env || true
+            # `pm2 save` writes the running process list to /root/.pm2/dump.pm2,
+            # which is what the pm2 systemd unit replays on boot. Without it a
+            # reboot brings pm2 up with NO apps. Not optional — see
+            # scripts/prod-bootstrap.sh, which arms the rest of the boot chain.
             pm2 save || true
+
+            # Smoke test from ON the box, before we call the deploy good. pm2
+            # reload returning 0 only means the process started, not that it can
+            # serve: a bad build, a missing env var or a dead mongo all produce a
+            # "successful" deploy that serves errors. /health is uncached, so a
+            # 200 here is this build answering right now.
+            echo "Smoke test: waiting for the API to answer /health"
+            for i in $(seq 1 30); do
+              code=$(curl -s -o /dev/null --max-time 10 -w '%{http_code}' "http://127.0.0.1:${API_PORT:-3529}/health" || true)
+              body=$(curl -s --max-time 10 "http://127.0.0.1:${API_PORT:-3529}/health" || true)
+              if [ "$code" = "200" ] && echo "$body" | grep -q '"ok":true'; then
+                echo "API healthy after ${i} attempt(s): $body"
+                break
+              fi
+              if [ "$i" = "30" ]; then
+                echo "API did not become healthy (last code=${code} body=${body})" >&2
+                pm2 logs warframe-server --lines 40 --nostream || true
+                exit 1
+              fi
+              sleep 5
+            done
+
+            # Same for the Nuxt frontend: a broken SSR bundle boots fine and then
+            # 500s on the first request.
+            app_code=$(curl -s -o /dev/null --max-time 25 -w '%{http_code}' "http://127.0.0.1:3312/" || true)
+            if [ "$app_code" != "200" ]; then
+              echo "Frontend returned ${app_code} after deploy" >&2
+              pm2 logs warframe-app --lines 40 --nostream || true
+              exit 1
+            fi
+            echo "Frontend healthy (200)"
+
+      # Public-edge check, run from GitHub rather than from the box: proves the
+      # tunnel and Cloudflare are actually carrying the new build to visitors.
+      # Advisory — the deploy itself already passed its on-box smoke test, and
+      # failing the run for an edge-propagation lag would be misleading. The
+      # uptime monitor is the thing that alarms on a sustained public outage.
+      - name: Public reachability check [advisory]
+        continue-on-error: true
+        run: |
+          set -uo pipefail
+          for i in 1 2 3 4 5; do
+            code=$(curl -s -o /dev/null --max-time 25 -w '%{http_code}' https://warframe.digitalshopuy.com/health || true)
+            if [ "$code" = "200" ]; then echo "public /health -> 200"; exit 0; fi
+            echo "attempt ${i}: public /health -> ${code}"
+            sleep 15
+          done
+          echo "::warning::Deploy succeeded on the box but the public endpoint is not answering — check the Cloudflare Tunnel."
+          exit 1

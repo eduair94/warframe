@@ -163,6 +163,30 @@ class Express {
   }
 
   /**
+   * UNCACHED GET, for routes whose whole point is to report live state.
+   *
+   * `getJson` looks uncached from the outside but is not: it still runs through
+   * `cache.getOrSet` AND advertises `s-maxage`/`stale-if-error` to the edge, so
+   * a health probe registered with it would keep answering "healthy" from a
+   * cached value long after the process behind it stopped answering at all.
+   * This variant skips CacheService and sends `no-store`, so a 200 here means
+   * this process, right now.
+   */
+  public getJsonLive(requestUrl: string, f: FunctionExpress): void {
+    this.app.get(
+      `${this.baseUrl}${requestUrl}`,
+      async (req: Request, res: Response) => {
+        res.set("Cache-Control", "no-store, max-age=0");
+        try {
+          res.json(await f(req, res));
+        } catch (e: any) {
+          res.status(503).json(bError(e?.message || "unhealthy"));
+        }
+      }
+    );
+  }
+
+  /**
    * Like getJson, but for mutating GET endpoints (e.g. build_relics, which
    * triggers a real DB write on every call). Adds a stricter per-IP limiter
    * and, when ADMIN_SYNC_TOKEN is set, requires it via ?token= or
