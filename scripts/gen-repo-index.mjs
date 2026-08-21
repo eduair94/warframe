@@ -44,6 +44,7 @@ function apiEndpoints() {
   const METHODS = {
     getJson: 'GET',
     getJsonCache: 'GET · cached',
+    getJsonLive: 'GET · live/uncached',
     getJsonProtected: 'GET · protected',
     getJsonAuth: 'GET · auth',
     postJson: 'POST',

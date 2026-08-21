@@ -1,0 +1,224 @@
+name: Uptime monitor
+
+# Out-of-band health check for production.
+#
+# Why this exists: on 2026-08-21 the prod VPS went offline at the host and both
+# hostnames served Cloudflare's "Error 1033 - Tunnel error" page. Nothing
+# noticed. The outage was found by a human loading the site days later, by which
+# point even the edge's stale-serve backups had expired. See
+# docs/runbook-outage.md.
+#
+# It runs on GitHub's infrastructure, NOT on the box being monitored - a monitor
+# that lives on the origin cannot report the origin being dead.
+#
+# It also deliberately distinguishes two failures that look identical from a
+# browser once the edge shield is doing its job:
+#   ORIGIN DOWN      - the box/tunnel is gone. The edge may still be serving
+#                      cached data, so visitors may see nothing wrong. Still an
+#                      incident: the data is frozen and /me (uncacheable) is
+#                      broken for every signed-in user.
+#   USER-FACING DOWN - visitors get an error page. Total outage.
+# The edge shield exists to turn the second into the first, which is exactly why
+# the second alone is not a sufficient alarm.
+
+on:
+  schedule:
+    # Every 10 minutes. GitHub delays scheduled runs under load, so treat the
+    # cadence as "roughly every 10-20 min" - still orders of magnitude better
+    # than finding out by hand days later.
+    - cron: "*/10 * * * *"
+  workflow_dispatch: {}
+
+# Never let two probes overlap; a slow run must not stack up behind the schedule.
+concurrency:
+  group: uptime
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  issues: write
+
+env:
+  API_HOST: https://warframe.digitalshopuy.com
+  APP_HOST: https://warframe-app.digitalshopuy.com
+  ISSUE_LABEL: outage
+
+jobs:
+  probe:
+    name: Probe production
+    runs-on: ubuntu-latest
+    outputs:
+      status: ${{ steps.probe.outputs.status }}
+      report: ${{ steps.probe.outputs.report }}
+    steps:
+      - name: Probe origin and edge
+        id: probe
+        shell: bash
+        run: |
+          set -uo pipefail
+
+          REASONS=""
+          ORIGIN_DOWN=0
+          USER_DOWN=0
+
+          # NOTE: this sets globals rather than echoing a result, because command
+          # substitution would run it in a subshell and silently discard the
+          # ORIGIN_DOWN / USER_DOWN flags.
+          probe_once() {
+            REASONS=""
+            ORIGIN_DOWN=0
+            USER_DOWN=0
+
+            # ORIGIN health. /health is uncached (Cache-Control: no-store) and
+            # cheap, so a 200 here means the API process AND mongo are alive right
+            # now - not that something answered five minutes ago.
+            local resp code body
+            resp=$(curl -s --max-time 25 -w $'\n%{http_code}' "$API_HOST/health" || true)
+            code=$(printf '%s' "$resp" | tail -n1)
+            body=$(printf '%s' "$resp" | sed '$d')
+            [ -z "$code" ] && code=000
+
+            if [ "$code" != "200" ]; then
+              REASONS="${REASONS}- API \`/health\` returned **${code}** (expected 200)"$'\n'
+              ORIGIN_DOWN=1
+            elif ! printf '%s' "$body" | grep -q '"ok":true'; then
+              REASONS="${REASONS}- API \`/health\` answered 200 but is not healthy: \`$(printf '%s' "$body" | head -c 300)\`"$'\n'
+              ORIGIN_DOWN=1
+            fi
+
+            # USER-FACING health for both hostnames. A 200 here can legitimately
+            # come from the edge shield while the origin is down, which is why the
+            # origin probe above is separate rather than inferred from this.
+            local host hcode edge
+            for host in "$API_HOST" "$APP_HOST"; do
+              hcode=$(curl -s -o /dev/null --max-time 25 -w '%{http_code}' "$host/" || true)
+              [ -z "$hcode" ] && hcode=000
+              edge=$(curl -sI --max-time 25 "$host/" | tr -d '\r' | awk -F': ' 'tolower($1)=="x-edge-cache"{print $2}')
+
+              if [ "$hcode" = "000" ] || [ "$hcode" -ge 500 ] 2>/dev/null; then
+                REASONS="${REASONS}- ${host} returned **${hcode}** to visitors (edge: \`${edge:-none}\`)"$'\n'
+                USER_DOWN=1
+              elif [ "$edge" = "STALE-ON-ERROR" ] || [ "$edge" = "OFFLINE" ]; then
+                REASONS="${REASONS}- ${host} is being served by the edge shield (\`${edge}\`) - the origin is not answering"$'\n'
+                ORIGIN_DOWN=1
+              fi
+            done
+          }
+
+          for i in 1 2 3; do
+            # Three attempts, 20s apart, before declaring anything down. A single
+            # failed probe is usually a transient network blip, and an alert that
+            # cries wolf gets muted - which is worse than no alert at all.
+            probe_once
+            if [ -z "$REASONS" ]; then
+              echo "attempt ${i}: all green"
+              break
+            fi
+            echo "attempt ${i} failed:"
+            printf '%s' "$REASONS"
+            if [ "$i" -lt 3 ]; then sleep 20; fi
+          done
+
+          if [ -z "$REASONS" ]; then
+            STATUS=up
+          elif [ "$USER_DOWN" = "1" ]; then
+            STATUS=down
+          else
+            STATUS=degraded
+          fi
+
+          echo "status=${STATUS}" >> "$GITHUB_OUTPUT"
+          {
+            echo "report<<PROBE_EOF"
+            if [ -n "$REASONS" ]; then printf '%s' "$REASONS"; else echo "All checks passed."; fi
+            echo "PROBE_EOF"
+          } >> "$GITHUB_OUTPUT"
+
+          {
+            echo "### Uptime: \`${STATUS}\`"
+            echo
+            if [ -n "$REASONS" ]; then printf '%s' "$REASONS"; else echo "All checks passed."; fi
+          } >> "$GITHUB_STEP_SUMMARY"
+
+  alert:
+    name: Open / update / close the outage issue
+    needs: probe
+    runs-on: ubuntu-latest
+    steps:
+      - name: Reconcile outage issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          STATUS: ${{ needs.probe.outputs.status }}
+          REPORT: ${{ needs.probe.outputs.report }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          RUNBOOK_URL: ${{ github.server_url }}/${{ github.repository }}/blob/main/docs/runbook-outage.md
+        shell: bash
+        run: |
+          set -uo pipefail
+          NOW=$(date -u '+%Y-%m-%d %H:%M UTC')
+
+          gh label create "$ISSUE_LABEL" --color B60205 \
+            --description "Production is down or degraded" 2>/dev/null || true
+
+          # Exactly one open issue per incident: a fresh one every 10 minutes
+          # would be its own denial-of-service on the notification channel.
+          EXISTING=$(gh issue list --label "$ISSUE_LABEL" --state open --limit 1 \
+            --json number --jq '.[0].number // empty')
+
+          if [ "$STATUS" = "up" ]; then
+            if [ -n "$EXISTING" ]; then
+              gh issue comment "$EXISTING" --body "Recovered - all probes green as of ${NOW}. [Run](${RUN_URL})"
+              gh issue close "$EXISTING" --reason completed
+              echo "closed #${EXISTING} (recovered)"
+            else
+              echo "up, nothing to do"
+            fi
+            exit 0
+          fi
+
+          if [ "$STATUS" = "down" ]; then
+            TITLE="Production DOWN - visitors are seeing errors"
+            LEAD="**Visitors are getting error pages.** Total outage."
+          else
+            TITLE="Production DEGRADED - origin not answering (edge is covering)"
+            LEAD="**The origin is not answering.** The edge shield is still serving cached data, so the site may look fine, but the data is frozen, every signed-in feature (\`/me\`) is broken, and the edge backup expires after 7 days."
+          fi
+
+          {
+            echo "$LEAD"
+            echo
+            echo "| | |"
+            echo "| --- | --- |"
+            echo "| Status | \`${STATUS}\` |"
+            echo "| Detected | ${NOW} |"
+            echo "| Probe run | [open](${RUN_URL}) |"
+            echo
+            echo "### Failing checks"
+            echo
+            printf '%s\n' "$REPORT"
+            echo
+            echo "### What to do"
+            echo
+            echo "Full steps: [docs/runbook-outage.md](${RUNBOOK_URL}). Short version:"
+            echo
+            echo "1. \`ssh warframe167\` - if it times out, the box itself is gone: check the host control panel (InterServer) for a powered-off VM, a node under maintenance, or a suspended account."
+            echo "2. If SSH works: \`pm2 status\` and \`systemctl status cloudflared\`, then \`bash scripts/prod-bootstrap.sh\` to re-arm boot persistence."
+            echo "3. This issue closes itself once the probes go green again."
+          } > "$RUNNER_TEMP/outage-body.md"
+
+          if [ -n "$EXISTING" ]; then
+            gh issue comment "$EXISTING" --body "Still \`${STATUS}\` at ${NOW}. [Run](${RUN_URL})"
+            echo "commented on #${EXISTING}"
+          else
+            gh issue create --title "$TITLE" --label "$ISSUE_LABEL" \
+              --body-file "$RUNNER_TEMP/outage-body.md"
+            echo "opened a new outage issue"
+          fi
+
+      # Fails the workflow run so the outage also shows up in the Actions list
+      # and in GitHub's "scheduled workflow failing" email, not only as an issue.
+      - name: Fail the run when production is not healthy
+        if: needs.probe.outputs.status != 'up'
+        run: |
+          echo "Production status: ${{ needs.probe.outputs.status }}"
+          exit 1

@@ -13,6 +13,7 @@ registration method (`getJsonCache` = cached, `*Auth` = Firebase-authed, `*Prote
 
 | Path | Verb | What |
 | --- | --- | --- |
+| `/health` | GET · live/uncached | Liveness/readiness probe for the uptime monitor (.github/workflows/uptime.yml) and the post-deploy smoke check. Deliberately CHEAP and UNCACHED: `/` returns the whole item catalogue, which is far too expensive to poll every few minutes, and any cached route keeps answering "fine" after the process behind it has stopped. Reports mongo separately from the process, because "express is up but the DB is gone" is a real and otherwise silent failure. |
 | `/` | GET · cached |  |
 | `/set/:url_name` | GET |  |
 | `/set_full/:url_name` | GET | Set DETAIL page bundle: the set, every part with its quantity_for_set, full market blocks (median / moving_avg / min-max / depth ladder) and each item's daily price series — one cached request instead of the 5-12 the page would otherwise fan out. `/set/:url_name` above is left untouched. |
