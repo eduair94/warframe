@@ -148,6 +148,10 @@ jobs:
       - name: Reconcile outage issue
         env:
           GH_TOKEN: ${{ github.token }}
+          # This job deliberately does not check the repo out (it needs nothing
+          # from it), so gh cannot infer the repo from a git remote and every
+          # call dies with "fatal: not a git repository". Name it explicitly.
+          GH_REPO: ${{ github.repository }}
           STATUS: ${{ needs.probe.outputs.status }}
           REPORT: ${{ needs.probe.outputs.report }}
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
@@ -162,8 +166,11 @@ jobs:
 
           # Exactly one open issue per incident: a fresh one every 10 minutes
           # would be its own denial-of-service on the notification channel.
+          # `shell: bash` runs with -e, so an API hiccup here would abort the
+          # whole step and lose the alert. An empty result just means "no open
+          # incident", which is the safe reading either way.
           EXISTING=$(gh issue list --label "$ISSUE_LABEL" --state open --limit 1 \
-            --json number --jq '.[0].number // empty')
+            --json number --jq '.[0].number // empty' || true)
 
           if [ "$STATUS" = "up" ]; then
             if [ -n "$EXISTING" ]; then
