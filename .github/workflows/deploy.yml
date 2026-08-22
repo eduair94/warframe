@@ -7,6 +7,10 @@ on:
   push:
     branches: [main]
   pull_request:
+  # Manual redeploy, with no code change to make. Needed during recovery: after
+  # an outage the box is usually running an older build than main, and the fix
+  # is "ship main again", not "invent a commit". See docs/runbook-outage.md.
+  workflow_dispatch: {}
 
 # Serialize per ref: main runs QUEUE (never two deploys at once); superseded PR
 # check runs cancel.
@@ -83,7 +87,7 @@ jobs:
     # SSH secrets are in place). Lets the workflow land + run CI without firing a
     # deploy that would fail for missing secrets.
     if: >-
-      github.event_name == 'push'
+      (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
       && github.ref == 'refs/heads/main'
       && vars.DEPLOY_ENABLED == 'true'
     runs-on: ubuntu-latest
