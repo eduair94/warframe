@@ -87,6 +87,27 @@ if command -v pm2 >/dev/null 2>&1; then
 
   systemctl is-enabled pm2-root >/dev/null 2>&1 && ok "pm2-root enabled at boot" \
     || { systemctl enable pm2-root >/dev/null 2>&1 && ok "pm2-root enabled" || bad "could not enable pm2-root"; }
+
+  # A SECOND pm2 unit wired to boot is not redundancy, it is a fight over the
+  # same PM2_HOME. This is what actually kept prod down on 2026-08-21: an old
+  # `pm2-debian10.service` ran `User=debian10` against `PM2_HOME=/root/.pm2`,
+  # which pm2 cannot do — it died with "Cannot read properties of undefined
+  # (reading 'uid')" five times, systemd gave up, and all 24 apps stayed dead
+  # while `pm2-root` did not exist at all. Unlink any such unit from boot
+  # (the unit file is left in place, so re-enabling it is one command).
+  for want in /etc/systemd/system/multi-user.target.wants/pm2-*.service; do
+    [ -e "$want" ] || continue
+    unit=$(basename "$want" .service)
+    [ "$unit" = "pm2-root" ] && continue
+    conflict_home=$(systemctl show "$unit" -p Environment --value 2>/dev/null | tr ' ' '\n' | sed -n 's/^PM2_HOME=//p')
+    conflict_user=$(systemctl show "$unit" -p User --value 2>/dev/null)
+    if [ "$conflict_home" = "/root/.pm2" ] && [ "$conflict_user" != "root" ]; then
+      systemctl disable "$unit" >/dev/null 2>&1 && systemctl reset-failed "$unit" >/dev/null 2>&1
+      ok "disabled conflicting boot unit ${unit} (User=${conflict_user:-?} against PM2_HOME=/root/.pm2 — this cannot work)"
+    else
+      warn "another pm2 boot unit is enabled: ${unit} (User=${conflict_user:-?}, PM2_HOME=${conflict_home:-default}) — check it is not fighting pm2-root"
+    fi
+  done
 else
   bad "pm2 missing — skipping"
 fi

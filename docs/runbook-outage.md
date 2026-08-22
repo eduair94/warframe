@@ -89,8 +89,24 @@ ssh warframe167 'pm2 restart warframe-server warframe-app'
 ```
 
 If `pm2 status` is **empty** after a reboot, pm2 came up without its saved
-process list — run `scripts/prod-bootstrap.sh` (it does `pm2 save` and installs
-the systemd unit) so the next reboot recovers itself.
+process list. **Do not run `pm2 save` in that state** — it overwrites
+`/root/.pm2/dump.pm2` with the empty list and destroys the saved definitions for
+every app on the box. Recover with:
+
+```bash
+cp /root/.pm2/dump.pm2 /root/.pm2/dump.pm2.bak-$(date +%F-%H%M)   # first
+pm2 resurrect                                                     # then
+```
+
+Then find out why it did not resurrect itself:
+
+```bash
+journalctl -u pm2-root -b --no-pager | tail -30
+ls -la /etc/systemd/system/multi-user.target.wants/ | grep pm2   # more than one?
+```
+
+Two pm2 units enabled at boot is a fight over the same `PM2_HOME`, not
+redundancy. `scripts/prod-bootstrap.sh` detects and unlinks the loser.
 
 Mongo down: `systemctl status mongod`, check disk with `df -h` (a full disk stops
 mongod and is a common silent cause).
@@ -155,3 +171,22 @@ InterServer node maintenance; the neighbouring `.10` was down with it, while
 Worker's stale backup was capped at 24h and had long expired, and it was never
 routed at the frontend hostname at all. Everything in the table above was built
 in response.
+
+**2026-08-22 — the box came back and the stack did not.** The host finished
+maintenance and the VM booted with cloudflared and mongod healthy, so the tunnel
+was up and both hostnames returned `502`: nothing was listening behind it. All
+24 pm2 apps were down.
+
+Cause: the only pm2 unit wired to boot was a 2021-vintage
+`pm2-debian10.service` with `User=debian10` but `Environment=PM2_HOME=/root/.pm2`
+— a combination pm2 cannot run. It died with `TypeError: Cannot read properties
+of undefined (reading 'uid')`, systemd retried 5 times, hit "Start request
+repeated too quickly", and gave up. `pm2-root.service` did not exist, so nothing
+else tried. The apps were never coming back without a human.
+
+Fixed by `pm2 resurrect` from the intact dump, then `scripts/prod-bootstrap.sh`
+to install `pm2-root.service`, unlink the broken unit, and raise cloudflared from
+`Restart=on-failure` to `Restart=always`. Note this second incident was invisible
+to the edge shield: the tunnel was healthy, so Cloudflare had a live origin
+returning `502` — which is exactly the case the uptime monitor's `/health` probe
+catches and a "is the site loading" check does not.
