@@ -170,6 +170,14 @@ export default defineNuxtConfig({
           [`/${c}/mission/**`, { cache: false }]
         ])
       ),
+      // `strategy: 'prefix_except_default'` means English lives at the bare `/`,
+      // so `/en/...` is not a route and dead-ended on the 404 page. Nothing we
+      // emit points there (hreflang and the sitemap both map en -> `/`), but
+      // people type it, and every other locale is reachable by its code, so the
+      // one missing prefix reads as a broken site. Fold it onto the canonical
+      // English URL instead of 404ing.
+      '/en': { redirect: { to: '/', statusCode: 301 } },
+      '/en/**': { redirect: { to: '/**', statusCode: 301 } },
       // Service worker + manifest must update promptly, not be held 60s.
       '/sw.js': { cache: false },
       '/manifest.webmanifest': { cache: false },

@@ -27,6 +27,19 @@ const COMPRESSIBLE =
 // Below ~1 KB the framing overhead cancels out the saving.
 const MIN_BYTES = 1024
 
+// Nitro's `localFetch` runs internal sub-requests back through this very same
+// pipeline, so a compressed body can end up somewhere that expects text. Nuxt's
+// error handler is the case that bit us: it renders the error page with
+// `localFetch('/__nuxt_error', { headers: { ...requestHeaders } })` — forwarding
+// the visitor's `accept-encoding: br` — and then reads the result with
+// `await res.text()`. Running that over brotli bytes decodes them as UTF-8, so
+// every non-UTF-8 sequence collapses to U+FFFD and the payload is destroyed
+// beyond recovery. The browser then rendered a screen of mojibake instead of
+// the 404 page. Islands (`/__nuxt_island/**`) are consumed the same way.
+// Internal renders are localhost-to-localhost and never touch the wire, so
+// there is nothing to save by compressing them anyway.
+const INTERNAL_RENDER = /^\/__nuxt_(?:error|island)/
+
 // Quality 5 is the usual server-side sweet spot: within a few percent of the
 // max ratio at a fraction of the CPU (max quality on a 2 MB document takes
 // hundreds of ms, which would just move the cost from network to TTFB).
@@ -37,6 +50,9 @@ export default defineNitroPlugin((nitro) => {
     const body = response?.body
     if (typeof body !== 'string' && !(body instanceof Uint8Array)) return
     if (getResponseHeader(event, 'content-encoding')) return
+
+    // See INTERNAL_RENDER above: these bodies are read back as text in-process.
+    if (INTERNAL_RENDER.test(event.path) || getRequestHeader(event, 'x-nuxt-error')) return
 
     const type = String(getResponseHeader(event, 'content-type') || '')
     if (!COMPRESSIBLE.test(type)) return
