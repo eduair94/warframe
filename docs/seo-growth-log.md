@@ -87,7 +87,15 @@ migrates registration once to `/sw-v2.js`, keeps the existing root scope and pus
 and sends `Cache-Control: no-store` for both worker paths and the web manifest. Registration is
 imported into hashed client JavaScript, avoiding another stable cached registration script.
 Focused tests generate the actual Vite registration and Workbox worker to verify these properties.
-The public response and registration must also pass after the follow-up deployment.
+The follow-up `7ce7d86` passed all blocking checks and deployed successfully in
+[run 34807390159](https://github.com/eduair94/warframe/actions/runs/34807390159).
+Two ordinary public requests to `/sw-v2.js` returned HTTP 200, `Cache-Control: no-store`
+and Cloudflare `BYPASS`; both served the 1,873-byte worker with 9 precache entries and no
+`/_nuxt` JavaScript in that list. The production build reported 58.83 KiB of precache content.
+The current hashed entry `/_nuxt/Cxyp1hyo.js` registers `/sw-v2.js` with scope `/`.
+The manifest also returned HTTP 200 with `no-store` and Cloudflare `DYNAMIC`.
+The public Spanish guide loaded correctly again after this deployment. CI reconfirmed
+548 API tests, 10 guide tests, 21 frontend tests, i18n compilation and the repo-map check.
 
 ### Next priorities
 
