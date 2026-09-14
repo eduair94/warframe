@@ -59,7 +59,7 @@ Keep raw private analytics exports under ignored `tmp/`, outside version control
 
 ### Verification and release
 
-All 548 API/technical SEO unit tests passed, as did 10 guide refresh tests, 19 frontend tests
+All 548 API/technical SEO unit tests passed, as did 10 guide refresh tests, 21 frontend tests
 (analytics, resource hints, localized rich text and generated PWA caching), the i18n compile gate and
 repo-map check. The initial production build and 12-route built SSR smoke checks passed. The latter
 confirmed 200/404/503 semantics, canonical origins, no localhost in JSON-LD and zero speculative script
@@ -67,9 +67,45 @@ prefetch tags with required preloads preserved. The final source predicates, tra
 configuration additionally passed focused checks. Full app typecheck reports project-wide errors; no diagnostic
 references the new analytics, sitemap, entity-status or resource-hint implementation. It remains
 advisory under the repo's established policy. Local diagnostic logs are ignored `*.log` files.
-Final SSR, PWA and production release outcomes are recorded after verification below.
+GA4/Search Console baseline access was attempted through Supermetrics. Both discovery calls failed
+with an invalid OAuth grant requiring reauthentication, before any property data was retrieved.
+The 7/28-day traffic baseline is unavailable, not zero. No login, permission changes or private
+analytics export occurred. Continue content/technical work while this access issue remains unresolved.
+
+Release `8dac1a7` passed CI and deployed successfully in
+[run 34806486463](https://github.com/eduair94/warframe/actions/runs/34806486463).
+Public checks of 11 routes confirmed the expected 200/404 responses, canonical/schema origins,
+localized links and zero speculative script prefetch tags. English and Spanish sitemaps each
+contained 238 valid set URLs and 54 tool URLs, with the false-positive set names absent. The
+Spanish mastery guide displayed the corrected 23-hour rule and September review date, and its
+localized link opened the working flip tool without browser console errors.
+
+Production verification caught an additional delivery issue: Cloudflare's ordinary `/sw.js`
+response still held the old September 2 worker, while an uncached request returned the deployed
+9-entry worker. Disabling Nitro caching had not set an HTTP cache-control header. A follow-up
+migrates registration once to `/sw-v2.js`, keeps the existing root scope and push integration,
+and sends `Cache-Control: no-store` for both worker paths and the web manifest. Registration is
+imported into hashed client JavaScript, avoiding another stable cached registration script.
+Focused tests generate the actual Vite registration and Workbox worker to verify these properties.
+The public response and registration must also pass after the follow-up deployment.
 
 ### Next priorities
+
+Time-sensitive editorial queue verified against official announcements on 2026-09-14:
+
+- **Plague Star is active:** update `/guides/forma` with participation requirements, contract tiers
+  and current rewards. The [2026 announcement](https://www.warframe.com/en/news/operation-plague-star-2026)
+  (September 9) lists an end date of September 23 at 10:00 ET and a built Umbra Forma offering.
+  Verify current prices and limits before including them. This deserves the next content pass.
+- **Citrine Prime is announced for September 23:** the [September 4 announcement](https://www.warframe.com/en/news/citrine-prime-access)
+  includes Steflos and Corufell Prime. Prepare relevant relic guidance, but publish actual relic IDs,
+  drop locations and probabilities only once official tables support their availability.
+- **Riven changes are announced for Iceblade of Narin:** the [September 8 Devstream 197 recap](https://www.warframe.com/en/news/devstream-197-overview)
+  discusses combining Rivens and locking stats. Revisit the guide and value estimator when release
+  notes establish the final costs/restrictions. The official PC index still showed
+  [Hotfix 43.5.4](https://www.warframe.com/en/patch-notes/pc/43-5-4) during this review.
+
+Ongoing priorities:
 
 1. Establish actual GA4/Search Console baselines if the account/property is accessible. Select search
    opportunities from impressions, intent and useful actions; do not invent keyword volumes.
@@ -86,6 +122,11 @@ Final SSR, PWA and production release outcomes are recorded after verification b
 5. Sample indexable sitemaps, canonicals, hreflang, response status and structured-data origins after
    each routing/content release. Google advises sitemaps list desired canonical URLs and use truthful
    modification dates: [sitemap guidance](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap).
+6. Make deployment atomic before increasing deployment frequency: the current SSH workflow builds
+   in the active directory, and Nitro clears `.output` before PM2 reloads the old process. Build in
+   separate release directories, switch only after validation and retain the previous release.
+   Verify old and new HTML asset requests and a failed build; the current HTTP-200 home-page check
+   alone cannot catch assets disappearing during a build.
 
 Traffic improvement has not yet been measured in this iteration. Search engines decide crawling,
 indexing and ranking; a passing technical check does not guarantee placement or a traffic increase.

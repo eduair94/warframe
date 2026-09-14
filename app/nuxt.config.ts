@@ -179,9 +179,11 @@ export default defineNuxtConfig({
       // English URL instead of 404ing.
       '/en': { redirect: { to: '/', statusCode: 301 } },
       '/en/**': { redirect: { to: '/**', statusCode: 301 } },
-      // Service worker + manifest must update promptly, not be held 60s.
-      '/sw.js': { cache: false },
-      '/manifest.webmanifest': { cache: false },
+      // Disabling Nitro's cache alone does not stop Cloudflare caching static
+      // files. Never store worker/manifest responses at the browser or edge.
+      '/sw.js': { cache: false, headers: { 'cache-control': 'no-store' } },
+      '/sw-v2.js': { cache: false, headers: { 'cache-control': 'no-store' } },
+      '/manifest.webmanifest': { cache: false, headers: { 'cache-control': 'no-store' } },
       // Static, content-addressed-in-practice assets. `/_nuxt/**` already gets an
       // immutable header from Nitro, but everything hand-placed in `public/` was
       // served with none at all, so browsers re-validated the logo, the icon
@@ -521,8 +523,16 @@ export default defineNuxtConfig({
   // NetworkFirst so last-loaded data survives offline / flaky connections.
   // The dead arc.io service worker (static/arc-sw.js) and the NekR
   // self-destroy stub (static/sw.js) are NOT ported — vite-pwa generates and
-  // registers its own sw.js.
+  // registers its own worker.
   pwa: {
+    // One-time URL migration bypasses an already cached /sw.js at the CDN.
+    // Keep this stable across future deploys; no-store now handles updates.
+    // The same root scope updates the existing registration, including push.
+    filename: 'sw-v2.js',
+    scope: '/',
+    // Nuxt imports virtual:pwa-register/vue into hashed client chunks. Avoid a
+    // stable registerSW.js whose cached body could keep selecting the old URL.
+    injectRegister: false,
     registerType: 'autoUpdate',
     manifest: {
       id: '/',
@@ -616,6 +626,7 @@ export default defineNuxtConfig({
       ]
     },
     client: {
+      registerPlugin: true,
       installPrompt: false
     },
     // Dev service worker DISABLED. @vite-pwa/nuxt's dev SW intermittently 404s on

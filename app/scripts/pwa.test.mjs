@@ -12,21 +12,64 @@ const { generateSW } = require('workbox-build')
 
 // Load just the actual Workbox config: importing Nuxt's full config would need
 // Nuxt/Vite initialization and could disturb a running build or development app.
-export async function loadWorkboxConfig() {
+async function loadConfigSection(path) {
   const source = await readFile(new URL('../nuxt.config.ts', import.meta.url), 'utf8')
   const file = ts.createSourceFile('nuxt.config.ts', source, ts.ScriptTarget.Latest, true)
   const exported = file.statements.find(ts.isExportAssignment)?.expression
   const config = exported?.arguments?.[0]
-  const property = (node, name) => node?.properties?.find((entry) => entry.name?.getText(file) === name)?.initializer
-  const workbox = property(property(config, 'pwa'), 'workbox')
-  assert.ok(workbox, 'pwa.workbox exists in nuxt.config.ts')
-  const compiled = ts.transpileModule(`exports.workbox = ${workbox.getText(file)}`, {
+  const property = (node, name) => node?.properties?.find((entry) => (entry.name?.text ?? entry.name?.getText(file)) === name)?.initializer
+  const section = path.reduce(property, config)
+  assert.ok(section, `${path.join('.')} exists in nuxt.config.ts`)
+  const compiled = ts.transpileModule(`exports.section = ${section.getText(file)}`, {
     compilerOptions: { target: ts.ScriptTarget.ES2022, module: ts.ModuleKind.CommonJS },
   }).outputText
   const context = { exports: {}, RegExp, process: { env: { API_URL: 'https://warframe.digitalshopuy.com' } } }
   runInNewContext(compiled, context)
-  return context.exports.workbox
+  return context.exports.section
 }
+
+export const loadWorkboxConfig = () => loadConfigSection(['pwa', 'workbox'])
+
+test('worker migration preserves root scope and prevents browser/CDN response caching', async () => {
+  const pwa = await loadConfigSection(['pwa'])
+  assert.equal(pwa.filename, 'sw-v2.js')
+  assert.equal(pwa.scope, '/')
+  assert.equal(pwa.manifest.scope, '/')
+  assert.equal(pwa.injectRegister, false)
+  assert.equal(pwa.client.registerPlugin, true)
+  for (const path of ['/sw.js', '/sw-v2.js', '/manifest.webmanifest']) {
+    const rule = await loadConfigSection(['nitro', 'routeRules', path])
+    assert.equal(rule.cache, false, path)
+    assert.equal(rule.headers['cache-control'], 'no-store', path)
+  }
+})
+
+test('Vite generates root-scope v2 registration in the imported client module, without registerSW.js', async () => {
+  const directory = await mkdtemp(join(tmpdir(), 'warframe-pwa-test-'))
+  try {
+    const pwa = await loadConfigSection(['pwa'])
+    const fromNuxt = createRequire(require.resolve('@vite-pwa/nuxt'))
+    const { VitePWA } = fromNuxt('vite-plugin-pwa')
+    const plugins = VitePWA(pwa)
+    const main = plugins.find((plugin) => plugin.name === 'vite-plugin-pwa')
+    await main.configResolved({
+      root: directory, base: '/', publicDir: join(directory, 'public'), command: 'build', isProduction: true,
+      build: { outDir: join(directory, 'dist'), assetsDir: '_nuxt', sourcemap: false }, plugins: [],
+    })
+    const moduleId = main.resolveId.handler('virtual:pwa-register/vue')
+    const registration = await main.load.handler(moduleId)
+    assert.match(registration, /new Workbox\("\/sw-v2\.js", \{ scope: "\/"/)
+    assert.ok(!registration.includes('"/sw.js"'))
+    const htmlPlugin = plugins.find((plugin) => plugin.name === 'vite-plugin-pwa:build')
+    const html = htmlPlugin.transformIndexHtml.handler('<html><head></head><body></body></html>')
+    assert.ok(!html.includes('registerSW.js'))
+    assert.ok(!html.includes('navigator.serviceWorker.register'))
+  } finally {
+    assert.equal(dirname(resolve(directory)), resolve(tmpdir()))
+    assert.ok(directory.includes('warframe-pwa-test-'))
+    await rm(directory, { recursive: true, force: true })
+  }
+})
 
 test('only requested same-origin hashed JS/CSS uses the bounded runtime cache', async () => {
   const config = await loadWorkboxConfig()
@@ -79,16 +122,17 @@ test('generateSW installs only icons even when route chunks and Nuxt build metad
     for (const icon of icons) await writeFile(join(publicDir, icon), 'fixture-icon')
     await writeFile(join(publicDir, '_nuxt', 'abcd1234.js'), 'const locale = "unused translation";'.repeat(10_000))
     await writeFile(join(publicDir, '_nuxt', 'builds', 'latest.json'), '{"id":"new-deployment"}')
-    const config = await loadWorkboxConfig()
+    const pwa = await loadConfigSection(['pwa'])
+    const config = pwa.workbox
     // Reproduce the integration's extra glob: the filter must still win.
     config.globPatterns.push('_nuxt/builds/**/*.json')
     const result = await generateSW({
-      ...config, globDirectory: publicDir, swDest: join(directory, 'sw.js'), sourcemap: false,
+      ...config, globDirectory: publicDir, swDest: join(directory, pwa.filename), sourcemap: false,
     })
     assert.equal(result.count, icons.length)
     assert.equal(result.size, icons.length * Buffer.byteLength('fixture-icon'))
     assert.deepEqual(result.warnings, [])
-    const worker = await readFile(join(directory, 'sw.js'), 'utf8')
+    const worker = await readFile(join(directory, pwa.filename), 'utf8')
     assert.ok(worker.includes('/push-sw.js'))
     assert.ok(worker.includes('warframe-built-assets-v1'))
     assert.ok(worker.includes('warframe-api'))
