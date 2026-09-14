@@ -54,6 +54,13 @@ npm run typecheck      # advisory
 `.github/workflows/deploy.yml`: push to `main` → gates → SSH pull+build+pm2 on prod.
 **Deploy is ARMED** — merging to `main` ships to production.
 
+**User requirement: always finish an iteration with a full production deploy.** Commit all intended
+changes, including documentation, before the final deploy. Use the complete CI/deploy workflow for
+API, frontend and live feed, wait for success, then verify public health and affected pages/assets.
+Do not leave the final commit undeployed or use `[skip ci]` to bypass this requirement. If no new
+commit is needed, use the workflow's manual dispatch on `main`. If deployment fails, resolve it and
+retry; if an external blocker prevents completion, report it explicitly without claiming success.
+
 - **BLOCKING gates** (fail = no deploy): API `test:unit`, app `i18n:check`, API `repo:index:check`.
 - **Advisory** (annotate only): lint, format:check, typecheck.
 

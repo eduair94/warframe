@@ -8,6 +8,10 @@ The existing quarterly GitHub guide refresh remains enabled; check its recent ru
 its work. Read `CLAUDE.md` and `docs/repo-map.md` before changing the app.
 
 Each run should select and finish a concrete improvement, record its evidence and verify the result.
+Always end each iteration with a full production deploy, including API, frontend and live feed,
+as explicitly requested by the user. Commit the final documentation before deploying, wait for
+the complete workflow to succeed and verify production. Do not finish with an undeployed or
+`[skip ci]` commit. Use manual workflow dispatch on `main` when a full redeploy needs no code change.
 Prioritize availability, false information and broken indexable pages first. Use official
 [Warframe patch notes](https://www.warframe.com/en/patch-notes) and
 [news](https://www.warframe.com/en/news) for changing game facts; distinguish announcements from
