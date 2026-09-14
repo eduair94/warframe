@@ -13,7 +13,7 @@
     },
     {
       "num": "3,000",
-      "label": "mastery per arma al massimo",
+      "label": "Maestria per arma a grado 30",
       "tone": "good"
     },
     {
@@ -38,7 +38,7 @@
         },
         {
           "type": "p",
-          "text": "La regola d'oro: **la mastery di ogni oggetto unico conta una sola volta.** Portare il tuo Braton al 30 fornisce la sua mastery una sola volta. Venderlo, ricostruirlo o aggiungere una Forma e livellarlo di nuovo non ti darà nulla in più. Questa singola regola modella ogni strategia di livellamento efficiente su questa pagina."
+          "text": "**La Maestria viene assegnata una sola volta per grado unico di equipaggiamento.** Ricostruire un Braton o usare Forma per ripetere gradi già maestrati non fornisce ulteriore maestria. L'equipaggiamento che può superare il grado 30 è l'eccezione a cui prestare attenzione: i suoi nuovi gradi sbloccati contano comunque. Le varianti Prime e altre varianti distinte dell'equipaggiamento hanno il proprio progresso di maestria."
         },
         {
           "type": "kv",
@@ -97,7 +97,7 @@
               ],
               [
                 "Capacità mod iniziale",
-                "L'equipaggiamento senza grado inizia con una capacità mod pari al tuo MR, con un limite massimo di 30 (raddoppiato da un Reattore/Catalizzatore)"
+                "Il tuo GM fornisce una capacità minima, limitata dal grado massimo sbloccato dell'equipaggiamento. Un Reactor o Catalyst raddoppia questa capacità."
               ]
             ],
             "note": "Limiti di reputazione più elevati velocizzano direttamente il farming di Focus, arcani e associazioni — vedi le guide su Reputazione e Focus."
@@ -161,11 +161,11 @@
         },
         {
           "type": "tip",
-          "text": "La **Star Chart stessa è un'enorme fonte di mastery gratuita.** Completare ogni nodo una volta (normale e [Steel Path](/guides/steel-path)) più tutte le giunzioni vale una grande quantità di mastery che molti giocatori trascurano. Usa la [mappa dei luoghi di rilascio](/star-chart-3d) per vedere cosa ti rimane ancora da completare."
+          "text": "I primi completamenti dei nodi della Mappa Stellare e dei Raccordi assegnano maestria, comprese le loro versioni [Percorso d'Acciaio](/guides/steel-path). Controlla il tuo Profilo in gioco per i progressi della maestria e la Navigazione per i nodi incompleti. Usa il [tracker della Fucina](/foundry) per pianificare l'equipaggiamento che devi ancora costruire e maestrare."
         },
         {
           "type": "p",
-          "text": "Poiché la mastery si ottiene una sola volta per oggetto, i veterani costruiscono armi economiche da 'mastery fodder' puramente per portarle al grado 30 e passare oltre. Ci sono centinaia di armi e dozzine di frame nel gioco — supererai il MR30 molto prima di possederli tutti."
+          "text": "**L'equipaggiamento di grado 40 richiede un passaggio in più.** Le armi Kuva, Tenet e Coda, oltre a Paracesis, sbloccano due gradi extra per Forma, fino al grado 40 dopo cinque Forma. Solo i gradi che non hai mai maestrato aggiungono punti: un'arma Coda ottiene 3.000 al grado 30 e altri 1.000 tra i gradi 31 e 40. [Digital Extremes spiega l'overleveling delle armi Coda nell'Aggiornamento 38.5](https://www.warframe.com/en/patch-notes/pc/38-5-0)."
         }
       ]
     },
@@ -204,7 +204,7 @@
         },
         {
           "type": "p",
-          "text": "Da questa tabella derivano due conclusioni pratiche. **Per livellare un'arma**, sparaci oppure sfrutta l'affinity condivisa da un compagno di squadra che pulisce la stanza mentre rimani entro 50m. **Per livellare rapidamente un Warframe**, ottieni **uccisioni con le abilità** — queste riversano il 100% di quell'affinity direttamente nel tuo frame, rispetto a solo il 25% dell'uccisione condivisa di un compagno di squadra. E **non portarti dietro armi già al massimo** durante una sessione di livellamento: l'affinity che finisce sull'equipaggiamento al massimo viene sprecata, quindi riempi quegli slot con armi senza grado che desideri livellare."
+          "text": "**Per un'unica arma**, equipaggia solo quell'arma quando la tua squadra può gestire la missione in sicurezza: riceverà l'intera quota di affinità condivisa destinata alle armi. Con due armi, quella quota viene divisa a metà; con tre, viene divisa in tre parti. Tieni un'arma di riserva potente quando devi contribuire o sopravvivere. **Per un Warframe**, usa abilità di danno quando possibile o fornisci un supporto utile alla squadra. L'equipaggiamento al massimo grado continua a prendere la sua parte e può convertire l'affinità in Focus con una Lente."
         },
         {
           "type": "warn",
@@ -214,7 +214,7 @@
     },
     {
       "id": "fast-leveling",
-      "title": "I modi più rapidi per livellare (farming di affinity)",
+      "title": "Scegli un metodo per accumulare affinità in base al tuo obiettivo",
       "blocks": [
         {
           "type": "p",
@@ -230,14 +230,14 @@
             ],
             "rows": [
               [
-                "Sanctuary Onslaught / Elite SO",
-                "XP rapida e densa",
-                "Tramite Cephalon Simaris; ESO per equipaggiamento che è già parzialmente potenziato"
+                "Massacro Santuario",
+                "Salire di livello con un nuovo Warframe",
+                "Un'opzione pratica dopo La Nuova Stranezza. Usa la modalità normale per un nuovo Warframe senza grado; controlla i requisiti d'ingresso prima di selezionare Elite."
               ],
               [
                 "Defense ad alta densità (es. Hydron su Sedna, Helene su Saturn)",
-                "Livellamento rilassato e adatto all'AFK",
-                "I preferiti storici della community — porta o unisciti a un frame nuke"
+                "Progressione costante in squadra",
+                "Rimani vicino alla squadra, difendi l'obiettivo e aiuta con uccisioni o supporto. Scegli un nodo a cui puoi contribuire in sicurezza."
               ],
               [
                 "Void Fissures",
@@ -245,26 +245,26 @@
                 "Sfrutta la doppia XP mentre apri le reliquie — vedi lo strumento Relic Farming"
               ],
               [
-                "Duviri Circuit",
-                "Livellamento + ricompense",
-                "Opzione moderna; il circuito Steel Path scala per i veterani"
+                "Massacro Santuario Elite",
+                "Armi con un Warframe pronto",
+                "Equipaggia l'arma che vuoi livellare e contribuisci alle uccisioni o al supporto della squadra. La modalità Elite richiede un grado minimo per il Warframe, quindi non è la scelta predefinita per un frame appena costruito."
               ],
               [
-                "Exterminate / Capture economici",
-                "Fodder per MR",
-                "Porta rapidamente le armi usa e getta appena costruite al 30 e riciclale"
+                "Nodi della Mappa Stellare non ancora completati",
+                "Progressione iniziale dell'account",
+                "Sali di livello con l'equipaggiamento mentre sblocchi i Raccordi e ottieni maestria dai primi completamenti. Utile prima di sbloccare zone dedicate all'affinità."
               ]
             ],
-            "note": "Il singolo 'miglior nodo' cambia con le patch di bilanciamento e gli eventi. Controlla la wiki live o un video recente per la scelta meta attuale."
+            "note": "Queste sono opzioni per diversi obiettivi, non classifiche calcolate di XP al minuto. I risultati dipendono dal tuo loadout, dalla squadra, dalla densità dei nemici e dai booster."
           }
         },
         {
           "type": "p",
-          "text": "Due moltiplicatori rendono tutto più veloce: usa un **Affinity Booster** (dal Market o dalle ricompense di Nightwave/accesso giornaliero) e pianifica il tuo farming durante un **fine settimana a doppia affinity** — questi si accumulano per un'affinity 4×. Livellare all'interno delle [Void Fissures](/relic-farming) è il massimo dell'efficienza perché fai salire di livello l'equipaggiamento *e* farmi parti prime nelle stesse sessioni; usa lo [strumento del valore delle reliquie](/relics-value) per decidere cosa vale la pena aprire."
+          "text": "Un **Booster Affinità** e un **evento affinità doppia** attivo si moltiplicano per un totale di 4× affinità. Controlla i timer degli eventi e dei booster in gioco prima di pianificare una sessione. Le [Fenditure del Void](/relic-farming) possono combinare il livellamento con i componenti Prime, ma hai comunque bisogno di un loadout utile e Reagente sufficiente; usa lo [strumento valore Relic](/relics-value) per confrontare le ricompense delle Relic."
         },
         {
           "type": "tip",
-          "text": "Porta un set completo di equipaggiamento da livellare (frame + 3 armi) in una sessione di gruppo guidata e potrai portare **quattro oggetti** dal livello 0 al 30 in una singola sessione. Assicurati solo di essere tu a rimanere fermo vicino alle uccisioni, senza inseguirle."
+          "text": "Scegli tra **un singolo oggetto velocemente** e **diversi oggetti insieme**. Un'unica arma equipaggiata riceve più affinità condivisa per uccisione rispetto a ciascuna arma in un loadout completo. Un loadout completo distribuisce quell'affinità su più oggetti. Rimani attivo, proteggi l'obiettivo e concorda l'estrazione con la squadra."
         }
       ]
     },
@@ -274,7 +274,7 @@
       "blocks": [
         {
           "type": "p",
-          "text": "Il farming efficiente della mastery è un ciclo semplice e ripetibile. L'obiettivo è utilizzare ogni oggetto unico esattamente una volta, portarlo al 30 e non voltarsi più indietro."
+          "text": "Inizia con l'equipaggiamento accessibile che non hai ancora maestrato. La maggior parte degli oggetti si completa al grado 30; controlla le eccezioni di grado 40 prima di considerare completo un oggetto."
         },
         {
           "type": "steps",
@@ -286,7 +286,7 @@
             },
             {
               "h": "Riscattalo e inseriscilo in uno slot",
-              "p": "Un oggetto nuovo è di grado 0. Inizia già con una capacità mod pari al tuo MR, quindi anche l'equipaggiamento senza grado è utilizzabile per una sessione di livellamento."
+              "p": "Riscatta l'oggetto e inserisci le mod prima di entrare in missione. Il tuo Grado Maestria gli fornisce una capacità mod minima, quindi l'equipaggiamento senza grado non deve rimanere privo di mod."
             },
             {
               "h": "Livellalo al 30 in una sola sessione",
@@ -294,11 +294,11 @@
             },
             {
               "h": "Salva la mastery, ricicla lo slot",
-              "p": "Una volta portato al massimo, la mastery è tua in modo permanente. Vendi le armi da mastery-fodder per liberare lo slot e costruire la successiva. Tieni tutto ciò che ti piace davvero."
+              "p": "La maestria rimane sul tuo account anche dopo aver venduto un equipaggiamento. Prima di vendere, controlla se l'oggetto è un ingrediente per un altro schema o qualcosa che potresti volere per una build futura. Conserva i tuoi preferiti e l'equipaggiamento difficile da rimpiazzare."
             },
             {
-              "h": "Non livellare di nuovo per la mastery",
-              "p": "L'aggiunta di una Forma ripristina un oggetto al grado 0 per gli slot polarità — ottimo per le build, ma fornisce zero mastery extra. Livella di nuovo solo l'equipaggiamento che stai personalizzando, non per il MR."
+              "h": "Controlla le eccezioni per il grado 40 prima di usare Forma",
+              "p": "Ripetere gradi già maestrati in precedenza non fornisce ulteriore maestria. Sull'equipaggiamento con overleveling, Forma sblocca nuovi gradi oltre il 30 che contano la prima volta. Pianifica le Forma per quei gradi o per le build che intendi utilizzare."
             }
           ]
         },
@@ -310,37 +310,37 @@
     },
     {
       "id": "mr-tests",
-      "title": "Test del MR e come prepararsi",
+      "title": "Tempo di ricarica dei test di Grado Maestria: fallimento vs superamento",
       "blocks": [
         {
           "type": "p",
-          "text": "Guadagnare abbastanza mastery rende *disponibile* il grado successivo, ma devi **superare un test del Mastery Rank** per riscattarlo effettivamente. Ogni grado ha il suo test unico — parkour a tempo, uccisioni stealth, hacking di console sotto pressione, eliminazione di ondate senza subire danni e così via. La difficoltà aumenta man mano che il tuo grado sale."
+          "text": "Raggiungi la maestria richiesta, quindi avvia il test di avanzamento dal tuo profilo. Leggi le regole: alcuni test limitano l'uso di armi o abilità."
         },
         {
           "type": "steps",
           "ordered": true,
           "steps": [
             {
-              "h": "Esegui prove gratuite da Cephalon Simaris",
-              "p": "Ogni Relay ospita Cephalon Simaris, che ti consente di **provare il test esatto** tutte le volte che vuoi, senza tempi di ricarica e senza penalità. Fai sempre pratica prima."
+              "h": "Verifica il requisito",
+              "p": "Il test successivo mostra la maestria necessaria per essere sbloccato. Scegli un loadout adatto alla sfida."
             },
             {
-              "h": "Affronta il vero test quando sei pronto",
-              "p": "Quando hai accumulato abbastanza mastery, appare l'avviso di passaggio di grado (nel tuo Orbiter / profilo). Tentatelo una volta che ti senti sicuro grazie alla pratica."
+              "h": "Riprova dopo un fallimento",
+              "p": "Un tentativo fallito non ha **alcun tempo di ricarica**. Modifica il tuo approccio e riprova."
             },
             {
-              "h": "Se fallisci, aspetta circa un giorno",
-              "p": "Non c'è alcuna penalità per il fallimento, oltre a un **tempo di ricarica di circa 24 ore** prima di poter tentare nuovamente il vero test. Le prove di pratica rimangono illimitate durante l'attesa."
+              "h": "Attendi dopo un successo",
+              "p": "Il superamento avvia un **tempo di ricarica di 23 ore** prima del test di avanzamento successivo."
             }
           ]
         },
         {
-          "type": "warn",
-          "text": "Quel blocco di 24 ore è l'unica nota dolente — quindi **non tentare mai un test alla cieca.** Provalo da Simaris finché non riesci a superarlo costantemente, poi affronta quello vero. Molti test diventano banali con un frame da mobilità (Volt, Titania, Wisp, Zephyr) o una buona build di movimento."
+          "type": "info",
+          "text": "[Aggiornamento 38: Warframe: 1999](https://www.warframe.com/en/patch-notes/pc/38-0-0) ha rimosso l'attesa per il test fallito il 13 dicembre 2024. Il comando di Simaris per il test è ora **Rigioca**. Le guide più vecchie che dicono di attendere un giorno dopo un fallimento descrivono le regole precedenti."
         },
         {
           "type": "tip",
-          "text": "Bloccato in un test di movimento o 'senza danni'? Porta un frame con velocità, invisibilità o immunità ai danni e spesso trasformerai un test frustrante in una formalità. Guarda un video recente specifico per il test se un particolare grado ti sta dando problemi."
+          "text": "Adatta i consigli al test specifico. Le abilità di invisibilità o mobilità aiutano solo dove il test le consente; non dare per scontato che un frame consigliato possa superare qualsiasi sfida."
         }
       ]
     },
@@ -355,16 +355,15 @@
         {
           "type": "list",
           "items": [
-            "**Livella ciò che costruisci.** Ogni frame, arma e compagno è mastery gratuita — porta ognuno al 30 una volta prima di venderlo o usare una Forma.",
+            "**Livella ciò che costruisci.** Maestra ciascun grado di equipaggiamento una sola volta. La maggior parte degli oggetti si ferma al 30; l'equipaggiamento con overleveling fornisce ulteriore maestria oltre quel livello.",
             "**Completa l'intera Star Chart, due volte.** I nodi normali, le giunzioni e i nodi [Steel Path](/guides/steel-path) sono un'enorme fonte di mastery una tantum che la maggior parte dei giocatori trascura.",
             "**Fai attenzione ai breakpoint dell'equipaggiamento.** Alcune delle armi più forti richiedono un determinato MR, quindi qualche grado in più può sbloccare una scelta meta che desideri davvero.",
             "**Dai priorità al MR se farmi reputazione.** Se sei molto attivo con Focus, arcani o associazioni, il limite giornaliero più alto fa sì che ogni grado si ripaghi rapidamente."
           ]
         },
         {
-          "type": "quote",
-          "text": "Il MR è la ricompensa per l'esplorazione dell'intero gioco, non un muro da scalare. Gioca a tutto tondo, livella ogni cosa una volta e ti ritroverai a MR20 senza aver mai dovuto 'farmare la mastery'.",
-          "cite": "Consiglio comune dei veterani di r/Warframe"
+          "type": "p",
+          "text": "Usa il GM come motivo per scoprire di più sul gioco. Mantieni un loadout da combattimento affidabile mentre costruisci e meastri nuovo equipaggiamento, in modo che il livellamento non rallenti i tuoi progressi nelle quest."
         },
         {
           "type": "p",
@@ -376,7 +375,7 @@
   "faqs": [
     {
       "q": "Come si aumenta il Mastery Rank in Warframe?",
-      "a": "Guadagna mastery portando il nuovo equipaggiamento dal livello 0 al 30 per la prima volta (le armi danno 3,000, i frame e i compagni danno 6,000) e completando i nodi e le giunzioni della Star Chart. Una volta accumulata abbastanza, supera il test del Mastery Rank di quel grado per confermarlo. Ogni oggetto unico conta una sola volta — livellare di nuovo con una Forma non fornisce mastery extra."
+      "a": "Livella i gradi di equipaggiamento che non hai ancora maestrato, completa nuovi nodi della Mappa Stellare e Raccordi, poi supera il test di avanzamento successivo. La maggior parte delle armi fornisce 3.000 maestria al grado 30; i Warframe e i compagni ne forniscono 6.000. L'equipaggiamento con overleveling può assegnare maestria aggiuntiva per i suoi nuovi gradi superiori al 30."
     },
     {
       "q": "Cosa fa effettivamente il Mastery Rank?",
@@ -388,7 +387,7 @@
     },
     {
       "q": "L'aggiunta di una Forma o il livellamento ripetuto di un'arma fornisce ulteriore mastery?",
-      "a": "No. Ogni oggetto fornisce la sua mastery una sola volta, la prima volta che raggiunge il grado 30. La Forma ripristina l'oggetto al grado 0 in modo da poter aggiungere slot polarità per una build migliore, mas non guadagni alcuna mastery aggiuntiva livellandolo di nuovo. Livella di nuovo l'equipaggiamento solo quando lo stai personalizzando, mai per il MR."
+      "a": "Ripetere gradi già maestrati non fornisce ulteriore maestria. Tuttavia, Forma sblocca gradi aggiuntivi sull'equipaggiamento con overleveling come le armi Kuva, Tenet e Coda o la Paracesis. Quei nuovi gradi assegnano maestria una sola volta: un'arma di grado 40 fornisce un totale di 4.000 anziché 3.000."
     },
     {
       "q": "Come funziona la condivisione dell'affinity in una squadra?",
@@ -396,7 +395,7 @@
     },
     {
       "q": "Cosa succede se fallisco un test del Mastery Rank?",
-      "a": "Nulla, tranne un'attesa di circa 24 ore prima di poter tentare nuovamente il vero test — non c'è perdita di XP o altre penalità. Prova prima il test esatto gratuitamente e per un numero illimitato di volte da Cephalon Simaris in qualsiasi Relay, in modo da affrontare quello vero solo quando riesci a superarlo costantemente."
+      "a": "Puoi riprovare immediatamente dopo un fallimento. Il tempo di ricarica si applica dopo il superamento: attendi 23 ore prima del successivo test di avanzamento. Digital Extremes ha modificato queste regole nell'Aggiornamento 38 il 13 dicembre 2024."
     },
     {
       "q": "Esiste un Mastery Rank massimo?",
@@ -431,20 +430,28 @@
   ],
   "sources": [
     {
-      "label": "r/Warframe — My Journey ends at MR25",
-      "href": "https://reddit.com/r/Warframe/comments/1uockj8/my_journey_ends_at_mr25/"
+      "label": "Digital Extremes — Update 38: Mastery Rank test changes",
+      "href": "https://www.warframe.com/en/patch-notes/pc/38-0-0"
     },
     {
-      "label": "r/Warframe — Mastery Rank & Helminth motivation thread",
-      "href": "https://reddit.com/r/Warframe/comments/idu92w/i_like_the_idea_that_way_people_could_become/"
+      "label": "Warframe Support — Mastery Basics",
+      "href": "https://support.warframe.com/hc/en-us/articles/218718097-Mastery-Basics"
     },
     {
-      "label": "r/Warframe — Affinity farming discussion (Gian Point)",
-      "href": "https://reddit.com/r/Warframe/comments/m4fvff/gian_point_should_become_a_graveyard/"
+      "label": "Digital Extremes — Update 38.5: Coda overleveling",
+      "href": "https://www.warframe.com/en/patch-notes/pc/38-5-0"
     },
     {
-      "label": "Official Warframe Wiki",
-      "href": "https://wiki.warframe.com/"
+      "label": "Digital Extremes — Devstream 110: Sanctuary Onslaught requirements",
+      "href": "https://www.warframe.com/en/news/devstream-110-overview"
+    },
+    {
+      "label": "Warframe Wiki — Mastery Rank",
+      "href": "https://wiki.warframe.com/w/Mastery_Rank"
+    },
+    {
+      "label": "Warframe Wiki — Affinity",
+      "href": "https://wiki.warframe.com/w/Affinity"
     }
   ],
   "related": [
@@ -485,5 +492,5 @@
       "note": "Tracker della mastery e checklist"
     }
   ],
-  "updated": "2026-07-18"
+  "updated": "2026-09-14"
 }

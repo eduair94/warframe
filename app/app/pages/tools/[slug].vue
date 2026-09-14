@@ -322,7 +322,7 @@ useSeoPage({
 
 // SoftwareApplication JSON-LD for this tool (structured data + AI-citation
 // eligibility). No price/rating claimed — we don't own third-party pricing.
-const origin = useRequestURL().origin
+const origin = useSiteConfig().url.replace(/\/+$/, '')
 useHead(() => {
   const tl = tool.value
   if (!tl) return {}

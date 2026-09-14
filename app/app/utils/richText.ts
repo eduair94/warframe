@@ -15,12 +15,26 @@ export function escapeHtml(s: string): string {
     .replace(/>/g, '&gt;')
 }
 
-export function renderRich(input: string): string {
+// Link matches below come from escapeHtml's output. Restore only those three
+// entities before resolving a route, so query separators reach localePath intact.
+function restoreEscapedText(s: string): string {
+  return s.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&')
+}
+
+function escapeHref(s: string): string {
+  return escapeHtml(s).replace(/"/g, '&quot;').replace(/'/g, '&#39;')
+}
+
+export function renderRich(input: string, resolveInternal?: (path: string) => string): string {
   let s = escapeHtml(input)
   // internal links first (start with a single slash)
-  s = s.replace(/\[([^\]]+)\]\((\/[^)]+)\)/g, (_m, label, href) => `<a class="ga-inline" href="${href}">${label}</a>`)
+  s = s.replace(/\[([^\]]+)\]\((\/(?!\/)[^)]*)\)/g, (_m, label, href) => {
+    const path = restoreEscapedText(href)
+    const resolved = resolveInternal ? resolveInternal(path) : path
+    return `<a class="ga-inline" href="${escapeHref(resolved)}">${label}</a>`
+  })
   // external links
-  s = s.replace(/\[([^\]]+)\]\((https?:\/\/[^)]+)\)/g, (_m, label, href) => `<a class="ga-inline" href="${href}" target="_blank" rel="noopener">${label}</a>`)
+  s = s.replace(/\[([^\]]+)\]\((https?:\/\/[^)]+)\)/g, (_m, label, href) => `<a class="ga-inline" href="${escapeHref(restoreEscapedText(href))}" target="_blank" rel="noopener">${label}</a>`)
   s = s.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
   s = s.replace(/`([^`]+)`/g, '<code>$1</code>')
   return s

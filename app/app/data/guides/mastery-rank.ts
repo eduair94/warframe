@@ -1,8 +1,6 @@
-// Auto-generated Warframe Knowledge Center guide content.
-// Drafted grounded in r/Warframe research (reddit API) + the subreddit wiki FAQ,
-// then adversarially fact-checked for evergreen accuracy. Embedded video ids were
-// verified live via YouTube oEmbed. Edit freely — this is the single source for
-// the /guides/mastery-rank page (rendered by <GuideArticle>).
+// Warframe mastery guide. Editorial corrections are supported by the official
+// patch notes and support references in sources below. Localized prose is updated
+// selectively through the repository translation tooling.
 import type { Guide } from './types'
 
 const guide: Guide = {
@@ -20,7 +18,7 @@ const guide: Guide = {
     },
     {
       "num": "3,000",
-      "label": "mastery per maxed weapon",
+      "label": "mastery per rank-30 weapon",
       "tone": "good"
     },
     {
@@ -45,7 +43,7 @@ const guide: Guide = {
         },
         {
           "type": "p",
-          "text": "The golden rule: **each unique item's mastery only counts once.** Ranking your Braton to 30 gives its mastery a single time. Selling it, rebuilding it, or adding Forma and re-leveling it gives you nothing extra. That single rule shapes every efficient leveling strategy on this page."
+          "text": "**Mastery is awarded once per unique equipment rank.** Rebuilding a Braton or using Forma to repeat ranks you already mastered adds no mastery. Equipment that can overlevel beyond rank 30 is the exception to watch: its newly unlocked ranks still count. Prime and other distinct equipment variants have their own mastery progress."
         },
         {
           "type": "kv",
@@ -104,7 +102,7 @@ const guide: Guide = {
               ],
               [
                 "Starting mod capacity",
-                "Unranked gear starts with mod capacity equal to your MR, capped at 30 (doubled by a Reactor/Catalyst)"
+                "Your MR provides a minimum capacity, limited by the equipment's unlocked maximum rank. A Reactor or Catalyst doubles this capacity."
               ]
             ],
             "note": "Higher standing caps directly speed up Focus, arcane and syndicate farming — see the Standing and Focus guides."
@@ -168,11 +166,11 @@ const guide: Guide = {
         },
         {
           "type": "tip",
-          "text": "The **Star Chart itself is huge free mastery.** Clearing every node once (normal and [Steel Path](/guides/steel-path)) plus all junctions is worth a big pile of mastery that many players overlook. Use the [drop-location map](/star-chart-3d) to see what you still have left to touch."
+          "text": "First clears of Star Chart nodes and Junctions award mastery, including their [Steel Path](/guides/steel-path) versions. Check your in-game Profile for mastery progress and Navigation for incomplete nodes. Use the [Foundry tracker](/foundry) to plan equipment you still need to build and master."
         },
         {
           "type": "p",
-          "text": "Because mastery is one-and-done per item, veterans build cheap 'mastery fodder' weapons purely to rank them to 30 and move on. There are hundreds of weapons and dozens of frames in the game — you'll pass MR30 long before you own them all."
+          "text": "**Rank-40 equipment needs an extra step.** Kuva, Tenet and Coda weapons, plus Paracesis, unlock two extra ranks per Forma, up to rank 40 after five Forma. Only ranks you have never mastered add points: a Coda weapon earns 3,000 at rank 30 and another 1,000 across ranks 31–40. [Digital Extremes explains Coda overleveling in Update 38.5](https://www.warframe.com/en/patch-notes/pc/38-5-0)."
         }
       ]
     },
@@ -211,7 +209,7 @@ const guide: Guide = {
         },
         {
           "type": "p",
-          "text": "Two practical takeaways fall out of that table. **To level a weapon**, either shoot with it, or ride shared affinity from a squadmate who nukes the room while you stay within 50m. **To level a Warframe fast**, get **ability kills** — they pour 100% of that affinity straight into your frame, versus only 25% from a squadmate's shared kill. And **don't haul around already-maxed weapons** on a leveling run: affinity that lands on maxed gear is wasted, so fill those slots with unranked weapons you also want to rank up."
+          "text": "**For one weapon**, equip only that weapon when your squad can safely handle the mission: it receives the full weapon portion of shared affinity. With two weapons, that portion is split in half; with three, it is split into thirds. Keep a strong backup when you need it to contribute or survive. **For a Warframe**, use damaging abilities when practical, or bring useful support to a squad. Maxed gear still takes its share and can convert affinity to Focus with a Lens."
         },
         {
           "type": "warn",
@@ -221,7 +219,7 @@ const guide: Guide = {
     },
     {
       "id": "fast-leveling",
-      "title": "Fastest ways to level (affinity farms)",
+      "title": "Choose an affinity farm for your goal",
       "blocks": [
         {
           "type": "p",
@@ -237,14 +235,14 @@ const guide: Guide = {
             ],
             "rows": [
               [
-                "Sanctuary Onslaught / Elite SO",
-                "Fast, dense XP",
-                "Via Cephalon Simaris; ESO for gear that's already partly built out"
+                "Sanctuary Onslaught",
+                "Leveling a new Warframe",
+                "A practical option after The New Strange. Use the normal mode for a new unranked Warframe; check the entry requirements before selecting Elite."
               ],
               [
                 "High-density Defense (e.g. Hydron on Sedna, Helene on Saturn)",
-                "Relaxed, AFK-friendly leveling",
-                "Long-standing community favorites — bring or join a nuker frame"
+                "Steady squad leveling",
+                "Stay near the squad, defend the objective and help with kills or support. Choose a node you can contribute to safely."
               ],
               [
                 "Void Fissures",
@@ -252,26 +250,26 @@ const guide: Guide = {
                 "Double-dip XP while cracking relics — see the Relic Farming tool"
               ],
               [
-                "Duviri Circuit",
-                "Leveling + rewards",
-                "Modern option; the Steel Path Circuit scales for veterans"
+                "Elite Sanctuary Onslaught",
+                "Weapons with a prepared Warframe",
+                "Equip the weapon you want to level and contribute to squad kills or support. Elite has a Warframe-rank entry requirement, so it is not the default choice for a newly built frame."
               ],
               [
-                "Cheap Exterminate / Capture",
-                "MR fodder",
-                "Rush freshly built throwaway weapons to 30 and recycle"
+                "Star Chart nodes you have not cleared",
+                "Early account progress",
+                "Rank equipment while opening Junctions and earning first-clear mastery. Useful before you unlock dedicated affinity farms."
               ]
             ],
-            "note": "The single 'best node' shifts with balance patches and events. Check the live wiki or a recent video for the current meta pick."
+            "note": "These are options for different goals, not measured XP-per-minute rankings. Results depend on your loadout, squad, enemy density and boosters."
           }
         },
         {
           "type": "p",
-          "text": "Two multipliers make everything faster: run an **Affinity Booster** (from the Market or Nightwave/login rewards) and time your grind to a **double-affinity weekend** — those stack for 4× affinity. Leveling inside [Void Fissures](/relic-farming) is the efficiency king because you rank gear *and* farm prime parts in the same runs; use the [relic value tool](/relics-value) to decide what's worth cracking."
+          "text": "An **Affinity Booster** and an active **double-affinity event** multiply together for 4× affinity. Check the in-game event and booster timers before planning a session. [Void Fissures](/relic-farming) can combine leveling with Prime parts, but you still need a useful loadout and enough Reactant; use the [relic value tool](/relics-value) to compare relic rewards."
         },
         {
           "type": "tip",
-          "text": "Bring a full set of leveling gear (frame + 3 weapons) into a group carry and you can take **four items** from 0 to 30 in a single session. Just make sure you're the one holding still near the kills, not chasing."
+          "text": "Choose between **one item quickly** and **several items together**. One equipped weapon receives more shared affinity per kill than each weapon in a full loadout. A full loadout distributes that affinity across more items. Stay active, protect the objective and agree on extraction with your squad."
         }
       ]
     },
@@ -281,7 +279,7 @@ const guide: Guide = {
       "blocks": [
         {
           "type": "p",
-          "text": "Efficient mastery grinding is a simple, repeatable loop. The goal is to touch every unique item exactly once, get it to 30, and never look back."
+          "text": "Start with accessible equipment you have not mastered. Most gear finishes at rank 30; check for rank-40 exceptions before calling an item complete."
         },
         {
           "type": "steps",
@@ -293,7 +291,7 @@ const guide: Guide = {
             },
             {
               "h": "Claim it and slot it",
-              "p": "A fresh item is rank 0. It already starts with mod capacity equal to your MR, so even unranked gear is usable for a leveling run."
+              "p": "Claim the item and mod it before entering a mission. Your Mastery Rank gives it a minimum mod capacity, so unranked equipment does not have to be unmodded."
             },
             {
               "h": "Level it to 30 in one sitting",
@@ -301,11 +299,11 @@ const guide: Guide = {
             },
             {
               "h": "Bank it, recycle the slot",
-              "p": "Once maxed, the mastery is yours permanently. Sell mastery-fodder weapons to free the slot and build the next one. Keep anything you actually like."
+              "p": "Mastery stays on your account after selling equipment. Before selling, check whether the item is an ingredient in another blueprint or something you want for a future build. Keep favorites and hard-to-replace gear."
             },
             {
-              "h": "Don't re-level for mastery",
-              "p": "Adding Forma resets an item to rank 0 for polarity slots — great for builds, but it gives zero extra mastery. Only re-level gear you're customizing, not for MR."
+              "h": "Check the rank-40 exception before using Forma",
+              "p": "Repeating previously mastered ranks gives no extra mastery. On overleveling equipment, Forma unlocks new ranks above 30 that do count the first time. Budget Forma for those ranks or for builds you plan to use."
             }
           ]
         },
@@ -317,37 +315,37 @@ const guide: Guide = {
     },
     {
       "id": "mr-tests",
-      "title": "MR tests & how to prep",
+      "title": "Mastery Rank test cooldown: failing vs passing",
       "blocks": [
         {
           "type": "p",
-          "text": "Earning enough mastery makes the next rank *available*, but you have to **pass a Mastery Rank test** to actually claim it. Each rank has its own unique test — timed parkour, stealth kills, hacking consoles under pressure, killing waves without taking damage, and so on. The difficulty ramps as your rank climbs."
+          "text": "Reach the required mastery, then launch the rank-up test from your profile. Read its rules: some tests restrict weapons or abilities."
         },
         {
           "type": "steps",
           "ordered": true,
           "steps": [
             {
-              "h": "Practice for free at Cephalon Simaris",
-              "p": "Every Relay has Cephalon Simaris, who lets you **rehearse the exact test** as many times as you want with no cooldown and no penalty. Always practice first."
+              "h": "Check the requirement",
+              "p": "The next test shows the mastery needed to unlock it. Choose a loadout that fits the challenge."
             },
             {
-              "h": "Take the real test when ready",
-              "p": "When you've banked enough mastery, the rank-up prompt appears (in your Orbiter / profile). Attempt it once you're comfortable from practice."
+              "h": "Retry after a failure",
+              "p": "A failed attempt has **no cooldown**. Adjust your approach and try again."
             },
             {
-              "h": "If you fail, wait about a day",
-              "p": "There's no penalty for failing beyond a roughly **24-hour cooldown** before you can attempt the real test again. Practice runs stay unlimited during the wait."
+              "h": "Wait after a success",
+              "p": "Passing starts a **23-hour cooldown** before the next rank-up test."
             }
           ]
         },
         {
-          "type": "warn",
-          "text": "That 24-hour lockout is the only sting — so **never attempt a test blind.** Rehearse it at Simaris until you can pass it consistently, then take the real one. Many tests also become trivial with a mobility frame (Volt, Titania, Wisp, Zephyr) or a good movement build."
+          "type": "info",
+          "text": "[Update 38: Warframe: 1999](https://www.warframe.com/en/patch-notes/pc/38-0-0) removed the failed-test wait on December 13, 2024. Simaris' test prompt is now **Replay**. Older guides that tell you to wait a day after failing describe the previous rules."
         },
         {
           "type": "tip",
-          "text": "Stuck on a movement or 'no-damage' test? Bring a frame with speed, invisibility, or damage immunity and it often turns a frustrating test into a formality. Check a recent test-specific video if a particular rank is giving you trouble."
+          "text": "Match advice to the exact test. Invisibility or mobility abilities only help where that test permits them; do not assume a recommended frame can bypass every challenge."
         }
       ]
     },
@@ -362,16 +360,15 @@ const guide: Guide = {
         {
           "type": "list",
           "items": [
-            "**Level what you build.** Every frame, weapon and companion is free mastery — take each to 30 once before you sell or Forma it.",
+            "**Level what you build.** Master each equipment rank once. Most items stop at 30; equipment with overleveling has additional mastery above that.",
             "**Clear the whole Star Chart, twice.** Normal nodes, junctions, and [Steel Path](/guides/steel-path) nodes are a massive, one-time mastery source most players leave on the table.",
             "**Watch for gear breakpoints.** Some of the strongest weapons carry an MR requirement, so a few extra ranks can unlock a meta pick you actually want.",
             "**Prioritize MR if you farm standing.** If you're deep into Focus, arcanes or syndicates, the higher daily cap makes every rank pay for itself fast."
           ]
         },
         {
-          "type": "quote",
-          "text": "MR is the reward for exploring the whole game, not a wall to climb. Play broadly, level everything once, and you'll wake up at MR20 without ever 'grinding mastery'.",
-          "cite": "Common r/Warframe veteran advice"
+          "type": "p",
+          "text": "Use MR as a reason to try more of the game. Keep a reliable combat loadout while you build and master new equipment, so leveling does not stall your quest progress."
         },
         {
           "type": "p",
@@ -383,7 +380,7 @@ const guide: Guide = {
   "faqs": [
     {
       "q": "How do you increase Mastery Rank in Warframe?",
-      "a": "Earn mastery by ranking new gear from 0 to 30 for the first time (weapons give 3,000, frames and companions give 6,000), and by clearing Star Chart nodes and junctions. Once you've banked enough, pass that rank's Mastery Rank test to lock it in. Each unique item only counts once — re-leveling with Forma gives no extra mastery."
+      "a": "Level equipment ranks you have not mastered, clear new Star Chart nodes and Junctions, then pass the next rank-up test. Most weapons give 3,000 mastery at rank 30; Warframes and companions give 6,000. Overleveling equipment can award additional mastery for its new ranks above 30."
     },
     {
       "q": "What does Mastery Rank actually do?",
@@ -395,7 +392,7 @@ const guide: Guide = {
     },
     {
       "q": "Does adding Forma or re-leveling a weapon give more mastery?",
-      "a": "No. Each item grants its mastery a single time, the first time it reaches rank 30. Forma resets the item to rank 0 so you can add polarity slots for a better build, but you earn zero additional mastery from re-leveling it. Only re-level gear when you're customizing it, never for MR."
+      "a": "Repeating ranks you already mastered gives no extra mastery. However, Forma unlocks additional ranks on overleveling equipment such as Kuva, Tenet and Coda weapons or Paracesis. Those new ranks award mastery once: a rank-40 weapon totals 4,000 instead of 3,000."
     },
     {
       "q": "How does affinity sharing work in a squad?",
@@ -403,7 +400,7 @@ const guide: Guide = {
     },
     {
       "q": "What happens if I fail a Mastery Rank test?",
-      "a": "Nothing except a roughly 24-hour wait before you can attempt the real test again — there's no XP loss or other penalty. Practice the exact test for free and unlimited times at Cephalon Simaris in any Relay first, so you only take the real one when you can pass it consistently."
+      "a": "You can retry immediately after failing. The cooldown applies after passing: wait 23 hours before the next rank-up test. Digital Extremes changed these rules in Update 38 on December 13, 2024."
     },
     {
       "q": "Is there a maximum Mastery Rank?",
@@ -438,20 +435,28 @@ const guide: Guide = {
   ],
   "sources": [
     {
-      "label": "r/Warframe — My Journey ends at MR25",
-      "href": "https://reddit.com/r/Warframe/comments/1uockj8/my_journey_ends_at_mr25/"
+      "label": "Digital Extremes — Update 38: Mastery Rank test changes",
+      "href": "https://www.warframe.com/en/patch-notes/pc/38-0-0"
     },
     {
-      "label": "r/Warframe — Mastery Rank & Helminth motivation thread",
-      "href": "https://reddit.com/r/Warframe/comments/idu92w/i_like_the_idea_that_way_people_could_become/"
+      "label": "Warframe Support — Mastery Basics",
+      "href": "https://support.warframe.com/hc/en-us/articles/218718097-Mastery-Basics"
     },
     {
-      "label": "r/Warframe — Affinity farming discussion (Gian Point)",
-      "href": "https://reddit.com/r/Warframe/comments/m4fvff/gian_point_should_become_a_graveyard/"
+      "label": "Digital Extremes — Update 38.5: Coda overleveling",
+      "href": "https://www.warframe.com/en/patch-notes/pc/38-5-0"
     },
     {
-      "label": "Official Warframe Wiki",
-      "href": "https://wiki.warframe.com/"
+      "label": "Digital Extremes — Devstream 110: Sanctuary Onslaught requirements",
+      "href": "https://www.warframe.com/en/news/devstream-110-overview"
+    },
+    {
+      "label": "Warframe Wiki — Mastery Rank",
+      "href": "https://wiki.warframe.com/w/Mastery_Rank"
+    },
+    {
+      "label": "Warframe Wiki — Affinity",
+      "href": "https://wiki.warframe.com/w/Affinity"
     }
   ],
   "related": [
@@ -492,7 +497,7 @@ const guide: Guide = {
       "note": "Mastery trackers & checklists"
     }
   ],
-  "updated": "2026-07-18"
+  "updated": "2026-09-14"
 }
 
 export default guide

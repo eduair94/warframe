@@ -13,7 +13,7 @@
     },
     {
       "num": "3,000",
-      "label": "mastery par weapon maxée",
+      "label": "maîtrise par arme de rang 30",
       "tone": "good"
     },
     {
@@ -38,7 +38,7 @@
         },
         {
           "type": "p",
-          "text": "La règle d'or : **la mastery de chaque item unique ne compte qu'une seule fois.** Monter votre Braton au niveau 30 ne donne sa mastery qu'une seule fois. Le vendre, le reconstruire, ou ajouter un Forma et le re-leveler ne vous rapporte rien de plus. Cette seule règle façonne chaque stratégie de leveling efficace sur cette page."
+          "text": "**La maîtrise est accordée une seule fois par rang d'équipement unique.** Reconstruire un Braton ou utiliser un Forma pour répéter des rangs déjà maîtrisés n'ajoute pas de maîtrise. L'équipement pouvant dépasser le rang 30 est l'exception à surveiller : ses nouveaux rangs débloqués comptent toujours. Le matériel Prime et les autres variantes distinctes d'équipement ont leur propre progression de maîtrise."
         },
         {
           "type": "kv",
@@ -97,7 +97,7 @@
               ],
               [
                 "Capacité de mod de départ",
-                "Le gear sans rang commence avec une capacité de mod égale à votre MR, plafonnée à 30 (doublée par un Reactor/Catalyst)"
+                "Votre RM fournit une capacité minimale, limitée par le rang maximum débloqué de l'équipement. Un Réacteur ou Catalyseur double cette capacité."
               ]
             ],
             "note": "Des limites de standing plus élevées accélèrent directement le farming de Focus, d'arcane et de syndicate — voir les guides de Standing et de Focus."
@@ -161,11 +161,11 @@
         },
         {
           "type": "tip",
-          "text": "La **Star Chart elle-même est une énorme source de mastery gratuite.** Terminer chaque node une fois (normal et [Steel Path](/guides/steel-path)) plus toutes les junctions vaut un gros tas de mastery que beaucoup de joueurs négligent. Utilisez la [carte des emplacements de drop](/star-chart-3d) pour voir ce qu'il vous reste à faire."
+          "text": "Terminer pour la première fois les nœuds de la Carte Céleste et les Jonctions donne de la maîtrise, y compris leurs versions du [Steel Path](/guides/steel-path). Consultez votre Profil en jeu pour suivre votre maîtrise et la Navigation pour les nœuds incomplets. Utilisez le [suivi de la Fonderie](/foundry) pour planifier l'équipement restant à fabriquer et maîtriser."
         },
         {
           "type": "p",
-          "text": "Parce que la mastery ne s'obtient qu'une fois par item, les vétérans fabriquent des weapons bon marché de 'mastery fodder' uniquement pour les monter au niveau 30 et passer à autre chose. Il y a des centaines de weapons et des dizaines de frames dans le jeu — vous dépasserez le MR30 bien avant de toutes les posséder."
+          "text": "**L'équipement de rang 40 nécessite une étape supplémentaire.** Les armes Kuva, Tenet et Coda, ainsi que le Paracesis, débloquent deux rangs supplémentaires par Forma, jusqu'au rang 40 après cinq Forma. Seuls les rangs jamais maîtrisés ajoutent des points : une arme Coda rapporte 3 000 au rang 30 et 1 000 de plus sur les rangs 31–40. [Digital Extremes explique le dépassement de rang des armes Coda dans la mise à jour 38.5](https://www.warframe.com/en/patch-notes/pc/38-5-0)."
         }
       ]
     },
@@ -204,7 +204,7 @@
         },
         {
           "type": "p",
-          "text": "Deux conclusions pratiques découlent de ce tableau. **Pour monter de niveau une weapon**, soit vous tirez avec, soit vous profitez de l'affinity partagée d'un coéquipier qui nuke la pièce pendant que vous restez à moins de 50 m. **Pour monter rapidement un Warframe**, faites des **kills de compétences** — ils versent 100 % de cette affinity directement dans votre frame, contre seulement 25 % pour le kill partagé d'un coéquipier. Et **ne transportez pas de weapons déjà maxées** lors d'une session de leveling : l'affinity qui va sur du gear maxé est perdue, alors remplissez ces emplacements avec des weapons sans rang que vous souhaitez également faire monter de niveau."
+          "text": "**Pour une seule arme**, équipez uniquement cette arme lorsque votre escouade peut gérer la mission en toute sécurité : elle reçoit l'intégralité de la part d'affinité partagée réservée aux armes. Avec deux armes, cette part est divisée par deux ; avec trois, par trois. Gardez une arme de secours puissante pour contribuer ou survivre si besoin. **Pour une Warframe**, utilisez des compétences offensives lorsque c'est possible, ou apportez un soutien utile à l'escouade. L'équipement au rang max prend toujours sa part et peut convertir l'affinité en Focus avec une Lentille."
         },
         {
           "type": "warn",
@@ -214,7 +214,7 @@
     },
     {
       "id": "fast-leveling",
-      "title": "Moyens les plus rapides de monter de niveau (affinity farms)",
+      "title": "Choisissez une méthode de gain d'affinité selon votre objectif",
       "blocks": [
         {
           "type": "p",
@@ -230,14 +230,14 @@
             ],
             "rows": [
               [
-                "Sanctuary Onslaught / Elite SO",
-                "XP rapide et dense",
-                "Via Cephalon Simaris ; ESO pour le gear qui est déjà partiellement optimisé"
+                "Massacre au Sanctuaire",
+                "Monter une nouvelle Warframe",
+                "Une option pratique après La Nouvelle Étrangeté. Utilisez le mode normal pour une nouvelle Warframe sans rang ; vérifiez les prérequis d'entrée avant de choisir Élite."
               ],
               [
                 "Defense à haute densité (par ex. Hydron sur Sedna, Helene sur Saturn)",
-                "Leveling détendu et adapté au mode AFK",
-                "Favoris de longue date de la communauté — apportez ou rejoignez une frame de nuke"
+                "Progression régulière en escouade",
+                "Restez près de l'escouade, défendez l'objectif et aidez à éliminer les ennemis ou à soutenir. Choisissez un nœud où vous pouvez contribuer en toute sécurité."
               ],
               [
                 "Void Fissures",
@@ -245,26 +245,26 @@
                 "Cumulez l'XP tout en ouvrant des relics — voir l'outil de Relic Farming"
               ],
               [
-                "Duviri Circuit",
-                "Leveling + récompenses",
-                "Option moderne ; le Steel Path Circuit s'adapte aux vétérans"
+                "Massacre au Sanctuaire Élite",
+                "Armes avec une Warframe préparée",
+                "Équipez l'arme à monter et contribuez aux éliminations ou au soutien de l'escouade. Le mode Élite exige un rang de Warframe minimal et n'est donc pas le choix par défaut pour une frame nouvellement fabriquée."
               ],
               [
-                "Exterminate / Capture bon marché",
-                "MR fodder",
-                "Montez rapidement des weapons jetables fraîchement fabriquées au niveau 30 et recyclez-les"
+                "Nœuds non complétés de la Carte Céleste",
+                "Progression initiale du compte",
+                "Montez votre équipement tout en débloquant les Jonctions et en gagnant la maîtrise des premières réussites. Utile avant de débloquer des zones de farm d'affinité dédiées."
               ]
             ],
-            "note": "Le 'meilleur node' unique change avec les correctifs d'équilibrage et les événements. Consultez le wiki en direct ou une vidéo récente pour connaître le choix méta actuel."
+            "note": "Ce sont des options pour différents objectifs, pas un classement mesuré d'XP par minute. Les résultats dépendent de votre équipement, de votre escouade, de la densité d'ennemis et des boosters."
           }
         },
         {
           "type": "p",
-          "text": "Deux multiplicateurs rendent tout plus rapide : utilisez un **Affinity Booster** (provenant du Market ou des récompenses de Nightwave/connexion) et planifiez votre farming lors d'un **week-end double affinity** — ceux-ci se cumulent pour une affinity x4. Le leveling au sein des [Void Fissures](/relic-farming) est le roi de l'efficacité car vous montez votre gear en rang *et* farmez des pièces prime lors des mêmes runs ; utilisez l'[outil de valeur des relics](/relics-value) pour décider de ce qui vaut la peine d'être ouvert."
+          "text": "Un **Booster d'Affinité** et un **événement double affinité** actif se multiplient pour donner 4× d'affinité. Vérifiez les compteurs d'événement et de booster en jeu avant de planifier une session. Les [Fissures du Corrompu](/relic-farming) permettent d'associer la montée en rang aux composants Prime, mais un équipement utile et suffisamment de Réactif restent nécessaires ; utilisez l'[outil de valeur des Relic](/relics-value) pour comparer les récompenses des Relic."
         },
         {
           "type": "tip",
-          "text": "Apportez un ensemble complet de gear de leveling (frame + 3 weapons) dans un carry de groupe et vous pourrez faire passer **quatre items** de 0 à 30 en une seule session. Assurez-vous simplement d'être celui qui reste immobile près des kills, sans courir après."
+          "text": "Choisissez entre **un objet rapidement** et **plusieurs objets ensemble**. Une seule arme équipée reçoit plus d'affinité partagée par élimination que chaque arme d'un équipement complet. Un équipement complet répartit cette affinité sur plus d'objets. Restez actif, protégez l'objectif et mettez-vous d'accord sur l'extraction avec votre escouade."
         }
       ]
     },
@@ -274,7 +274,7 @@
       "blocks": [
         {
           "type": "p",
-          "text": "Le farming efficace de mastery est une boucle simple et répétable. Le but est de toucher chaque item unique exactement une fois, de l'amener au niveau 30, et de ne plus jamais y revenir."
+          "text": "Commencez par l'équipement accessible que vous n'avez pas maîtrisé. La plupart du matériel s'arrête au rang 30 ; vérifiez les exceptions au rang 40 avant de considérer un objet comme terminé."
         },
         {
           "type": "steps",
@@ -286,7 +286,7 @@
             },
             {
               "h": "Récupérez-le et équipez-le",
-              "p": "Un item fraîchement fabriqué est de rang 0. Il commence déjà avec une capacité de mod égale à votre MR, de sorte que même le gear sans rang est utilisable pour une session de leveling."
+              "p": "Récupérez l'objet et moddez-le avant d'entrer en mission. Votre Rang de Maîtrise lui accorde une capacité minimale de mods, donc un équipement sans rang n'a pas besoin de rester sans mods."
             },
             {
               "h": "Montez-le au niveau 30 en une seule fois",
@@ -294,11 +294,11 @@
             },
             {
               "h": "Stockez-le, recyclez le slot",
-              "p": "Une fois maxé, la mastery est à vous de manière permanente. Vendez les weapons de mastery-fodder pour libérer le slot et fabriquer la suivante. Gardez tout ce que vous aimez vraiment."
+              "p": "La maîtrise reste sur votre compte après la vente d'un équipement. Avant de vendre, vérifiez si l'objet est un composant dans un autre schéma ou quelque chose que vous voulez conserver pour une future configuration. Conservez vos favoris et le matériel difficile à remplacer."
             },
             {
-              "h": "Ne remontez pas de niveau pour de la mastery",
-              "p": "Ajouter un Forma réinitialise un item au rang 0 pour les emplacements de polarité — idéal pour les builds, mais cela donne zéro mastery supplémentaire. Ne remontez de niveau que le gear que vous personnalisez, pas pour le MR."
+              "h": "Vérifiez l'exception du rang 40 avant d'utiliser un Forma",
+              "p": "Répéter des rangs déjà maîtrisés ne donne aucune maîtrise supplémentaire. Sur l'équipement pouvant dépasser le rang 30, le Forma débloque de nouveaux rangs au-delà de 30 qui comptent la première fois. Prévoyez vos Forma pour ces rangs ou pour les configurations que vous comptez utiliser."
             }
           ]
         },
@@ -310,37 +310,37 @@
     },
     {
       "id": "mr-tests",
-      "title": "Tests de MR & comment se préparer",
+      "title": "Délai d'attente du test de Rang de Maîtrise : échec vs réussite",
       "blocks": [
         {
           "type": "p",
-          "text": "Gagner suffisamment de mastery rend le rang suivant *disponible*, mais vous devez **réussir un test de Mastery Rank** pour l'obtenir réellement. Chaque rang a son propre test unique — parkour chronométré, kills furtifs, piratage de consoles sous pression, élimination de vagues sans subir de dégâts, etc. La difficulté augmente à mesure que votre rang s'élève."
+          "text": "Atteignez la maîtrise requise, puis lancez le test de rang depuis votre profil. Lisez bien ses règles : certains tests restreignent les armes ou les compétences."
         },
         {
           "type": "steps",
           "ordered": true,
           "steps": [
             {
-              "h": "Entraînez-vous gratuitement chez Cephalon Simaris",
-              "p": "Chaque Relay abrite Cephalon Simaris, qui vous permet de **répéter le test exact** autant de fois que vous le souhaitez, sans temps de recharge ni pénalité. Entraînez-vous toujours d'abord."
+              "h": "Vérifiez le prérequis",
+              "p": "Le test suivant indique la maîtrise nécessaire pour le débloquer. Choisissez un équipement adapté au défi."
             },
             {
-              "h": "Passez le vrai test quand vous êtes prêt",
-              "p": "Lorsque vous avez accumulé suffisamment de mastery, l'invite de montée en rang apparaît (dans votre Orbiter / profil). Tentez-le une fois que vous êtes à l'aise grâce à l'entraînement."
+              "h": "Réessayez après un échec",
+              "p": "Une tentative échouée n'a **aucun délai d'attente**. Ajustez votre approche et réessayez."
             },
             {
-              "h": "Si vous échouez, attendez environ un jour",
-              "p": "Il n'y a pas de pénalité en cas d'échec au-delà d'un **temps de recharge d'environ 24 heures** avant de pouvoir tenter à nouveau le vrai test. Les essais d'entraînement restent illimités pendant l'attente."
+              "h": "Patientez après une réussite",
+              "p": "Réussir le test déclenche un **délai de 23 heures** avant le suivant."
             }
           ]
         },
         {
-          "type": "warn",
-          "text": "Ce verrouillage de 24 heures est le seul inconvénient — alors **ne tentez jamais un test à l'aveugle.** Répétez-le chez Simaris jusqu'à ce que vous le réussissiez systématiquement, puis passez le vrai. De nombreux tests deviennent également triviaux avec une frame de mobilité (Volt, Titania, Wisp, Zephyr) ou un bon build de mouvement."
+          "type": "info",
+          "text": "La [Mise à jour 38 : Warframe : 1999](https://www.warframe.com/en/patch-notes/pc/38-0-0) a supprimé l'attente après un échec le 13 décembre 2024. L'option chez Simaris s'intitule désormais **Rejouer**. Les anciens guides qui vous disent d'attendre un jour après un échec décrivent les règles précédentes."
         },
         {
           "type": "tip",
-          "text": "Bloqué sur un test de mouvement ou 'sans dégâts' ? Apportez une frame dotée de vitesse, d'invisibilité ou d'immunité aux dégâts, et cela transforme souvent un test frustrant en formalité. Regardez une vidéo récente spécifique au test si un rang particulier vous pose problème."
+          "text": "Adaptez les conseils au test exact. Les compétences d'invisibilité ou de mobilité n'aident que si le test les autorise ; ne supposez pas qu'une frame recommandée puisse contourner tous les défis."
         }
       ]
     },
@@ -355,16 +355,15 @@
         {
           "type": "list",
           "items": [
-            "**Montez de niveau ce que vous fabriquez.** Chaque frame, weapon et compagnon est de la mastery gratuite — amenez chacun au niveau 30 une fois avant de le vendre ou d'y appliquer un Forma.",
+            "**Montez ce que vous fabriquez.** Maîtrisez chaque rang d'équipement une fois. La plupart des objets s'arrêtent au rang 30 ; l'équipement pouvant dépasser ce rang apporte de la maîtrise supplémentaire au-delà.",
             "**Terminez toute la Star Chart, deux fois.** Les nodes normaux, les junctions et les nodes de [Steel Path](/guides/steel-path) sont une source massive de mastery unique que la plupart des joueurs négligent.",
             "**Surveillez les paliers de gear.** Certaines des weapons les plus puissantes ont un prérequis de MR, donc quelques rangs supplémentaires peuvent débloquer un choix méta que vous voulez vraiment.",
             "**Priorisez le MR si vous farmez du standing.** Si vous êtes à fond dans le Focus, les arcanes ou les syndicates, la limite quotidienne plus élevée rentabilise rapidement chaque rang."
           ]
         },
         {
-          "type": "quote",
-          "text": "Le MR est la récompense pour avoir exploré l'ensemble du jeu, pas un mur à franchir. Jouez de manière diversifiée, montez tout de niveau une fois, et vous vous réveillerez au MR20 sans jamais avoir eu à 'farmer la mastery'.",
-          "cite": "Conseil classique de vétéran de r/Warframe"
+          "type": "p",
+          "text": "Utilisez le RM comme une occasion d'explorer davantage le jeu. Conservez un équipement de combat fiable pendant que vous fabriquez et maîtrisez du nouveau matériel, afin que la montée en rang ne freine pas votre progression dans les quêtes."
         },
         {
           "type": "p",
@@ -376,7 +375,7 @@
   "faqs": [
     {
       "q": "Comment augmenter son Mastery Rank dans Warframe ?",
-      "a": "Gagnez de la mastery en montant du nouveau gear du niveau 0 à 30 pour la première fois (les weapons donnent 3 000, les frames et compagnons donnent 6 000), et en terminant les nodes et junctions de la Star Chart. Une fois que vous en avez accumulé suffisamment, réussissez le test de Mastery Rank de ce rang pour le valider. Chaque item unique ne compte qu'une seule fois — remonter de niveau avec un Forma ne donne pas de mastery supplémentaire."
+      "a": "Montez les rangs d'équipement non maîtrisés, complétez de nouveaux nœuds de la Carte Céleste et des Jonctions, puis réussissez le test de rang suivant. La plupart des armes donnent 3 000 de maîtrise au rang 30 ; les Warframes et compagnons en donnent 6 000. L'équipement dépassant le rang 30 peut accorder de la maîtrise supplémentaire pour ses nouveaux rangs au-delà de 30."
     },
     {
       "q": "À quoi sert réellement le Mastery Rank ?",
@@ -388,7 +387,7 @@
     },
     {
       "q": "Est-ce qu'ajouter un Forma ou remonter de niveau une weapon donne plus de mastery ?",
-      "a": "Non. Chaque item accorde sa mastery une seule fois, la première fois qu'il atteint le rang 30. Le Forma réinitialise l'item au rang 0 afin que vous puissiez ajouter des emplacements de polarité pour un meilleur build, mais vous ne gagnez aucune mastery supplémentaire en le remontant de niveau. Ne remontez de niveau le gear que lorsque vous le personnalisez, jamais pour le MR."
+      "a": "Répéter des rangs déjà maîtrisés ne donne aucune maîtrise supplémentaire. Cependant, le Forma débloque des rangs additionnels sur l'équipement à dépassement de rang comme les armes Kuva, Tenet et Coda ou le Paracesis. Ces nouveaux rangs accordent de la maîtrise une fois : une arme de rang 40 rapporte au total 4 000 au lieu de 3 000."
     },
     {
       "q": "Comment fonctionne le partage d'affinity en escouade ?",
@@ -396,7 +395,7 @@
     },
     {
       "q": "Que se passe-t-il si j'échoue à un test de Mastery Rank ?",
-      "a": "Rien, si ce n'est une attente d'environ 24 heures avant de pouvoir tenter à nouveau le vrai test — il n'y a pas de perte d'XP ni d'autre pénalité. Entraînez-vous d'abord gratuitement et de manière illimitée sur le test exact chez Cephalon Simaris dans n'importe quel Relay, afin de ne passer le vrai que lorsque vous pouvez le réussir systématiquement."
+      "a": "Vous pouvez réessayer immédiatement après un échec. Le délai s'applique après la réussite : attendez 23 heures avant le prochain test de rang. Digital Extremes a modifié ces règles dans la mise à jour 38 le 13 décembre 2024."
     },
     {
       "q": "Y a-t-il un Mastery Rank maximum ?",
@@ -431,20 +430,28 @@
   ],
   "sources": [
     {
-      "label": "r/Warframe — My Journey ends at MR25",
-      "href": "https://reddit.com/r/Warframe/comments/1uockj8/my_journey_ends_at_mr25/"
+      "label": "Digital Extremes — Update 38: Mastery Rank test changes",
+      "href": "https://www.warframe.com/en/patch-notes/pc/38-0-0"
     },
     {
-      "label": "r/Warframe — Mastery Rank & Helminth motivation thread",
-      "href": "https://reddit.com/r/Warframe/comments/idu92w/i_like_the_idea_that_way_people_could_become/"
+      "label": "Warframe Support — Mastery Basics",
+      "href": "https://support.warframe.com/hc/en-us/articles/218718097-Mastery-Basics"
     },
     {
-      "label": "r/Warframe — Affinity farming discussion (Gian Point)",
-      "href": "https://reddit.com/r/Warframe/comments/m4fvff/gian_point_should_become_a_graveyard/"
+      "label": "Digital Extremes — Update 38.5: Coda overleveling",
+      "href": "https://www.warframe.com/en/patch-notes/pc/38-5-0"
     },
     {
-      "label": "Official Warframe Wiki",
-      "href": "https://wiki.warframe.com/"
+      "label": "Digital Extremes — Devstream 110: Sanctuary Onslaught requirements",
+      "href": "https://www.warframe.com/en/news/devstream-110-overview"
+    },
+    {
+      "label": "Warframe Wiki — Mastery Rank",
+      "href": "https://wiki.warframe.com/w/Mastery_Rank"
+    },
+    {
+      "label": "Warframe Wiki — Affinity",
+      "href": "https://wiki.warframe.com/w/Affinity"
     }
   ],
   "related": [
@@ -485,5 +492,5 @@
       "note": "Trackers de mastery & checklists"
     }
   ],
-  "updated": "2026-07-18"
+  "updated": "2026-09-14"
 }

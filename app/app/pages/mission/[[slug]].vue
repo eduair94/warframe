@@ -174,11 +174,19 @@ const { data: detail, error: detailErr } = await useAsyncData<Detail | null>(
   async () => {
     if (!slug.value) return null
     const r = await $fetch<any>(`${base}/mission/${encodeURIComponent(slug.value)}`)
-    return r && Array.isArray(r.rotations) ? (r as Detail) : null
+    const statusCode = entityPayloadStatus('mission', r)
+    if (statusCode !== 200) {
+      throw createError({ statusCode, statusMessage: statusCode === 404 ? 'Mission not found' : 'Mission data temporarily unavailable' })
+    }
+    return r as Detail
   },
   { watch: [slug] },
 )
-const detailError = computed(() => !!detailErr.value)
+if (import.meta.server && slug.value && !detail.value) {
+  const event = useRequestEvent()
+  if (event) setResponseStatus(event, detailErr.value?.statusCode === 404 ? 404 : 503)
+}
+const detailError = computed(() => !!detailErr.value && detailErr.value.statusCode !== 404)
 const displayTitle = computed(() => (detail.value ? `${detail.value.location} — ${detail.value.planet}` : ''))
 
 const note = computed(() =>

@@ -13,7 +13,7 @@
     },
     {
       "num": "3,000",
-      "label": "mastery za maksymalnie wylevelowaną broń",
+      "label": "biegłość za broń o 30. randze",
       "tone": "good"
     },
     {
@@ -38,7 +38,7 @@
         },
         {
           "type": "p",
-          "text": "Złota zasada: **mastery każdego unikalnego przedmiotu liczy się tylko raz.** Wylevelowanie Bratona do 30. poziomu daje jego mastery tylko raz. Sprzedanie go, ponowne zbudowanie lub dodanie Formy i ponowne levelowanie nie daje nic dodatkowego. Ta jedna zasada kształtuje każdą efektywną strategię levelowania na tej stronie."
+          "text": "**Biegłość jest przyznawana tylko raz za każdą unikalną rangę wyposażenia.** Ponowne zbudowanie Bratona lub użycie Formy do powtórzenia rang, które zostały już opanowane, nie dodaje biegłości. Wyjątkiem jest sprzęt, który może przekroczyć 30. rangę: jego nowo odblokowane rangi wciąż się liczą. Warianty Prime i inne unikalne wersje wyposażenia mają własny postęp biegłości."
         },
         {
           "type": "kv",
@@ -97,7 +97,7 @@
               ],
               [
                 "Początkowa pojemność modów",
-                "Gear bez rangi zaczyna z pojemnością modów równą Twojemu MR, z limitem do 30 (podwajanym przez Reactor/Catalyst)"
+                "Twój MR zapewnia minimalną pojemność, ograniczoną przez odblokowaną maksymalną rangę wyposażenia. Reaktor lub Katalizator podwaja tę pojemność."
               ]
             ],
             "note": "Wyższe limity standing bezpośrednio przyspieszają farming Focus, arcane'ów i syndykatów — zobacz poradniki dotyczące Standing i Focus."
@@ -161,11 +161,11 @@
         },
         {
           "type": "tip",
-          "text": "Sam **Star Chart to ogromne darmowe mastery.** Ukończenie każdego węzła raz (zwykłego oraz [Steel Path](/guides/steel-path)) plus wszystkich junctions daje wielką pulę mastery, którą wielu graczy przeacza. Użyj [mapy lokacji dropu](/star-chart-3d), aby zobaczyć, co jeszcze zostało Ci do zaliczenia."
+          "text": "Pierwsze ukończenia węzłów Gwiezdnej Mapy i Złączy przyznają biegłość, w tym ich wersji na [Ścieżce Stali](/guides/steel-path). Sprawdź swój profil w grze, aby zobaczyć postęp biegłości, oraz Nawigację, aby znaleźć nieukończone węzły. Użyj [śledzenia Warsztatu](/foundry), aby zaplanować sprzęt do zbudowania i wymaksowania."
         },
         {
           "type": "p",
-          "text": "Ponieważ mastery zdobywa się tylko raz na przedmiot, weterani budują tanie bronie jako „mastery fodder” wyłącznie po to, by wylevelować je do 30. poziomu i pójść dalej. W grze są setki broni i dziesiątki frame'ów — przekroczysz MR30 na długo przed tym, jak zdobędziesz je wszystkie."
+          "text": "**Sprzęt o randze 40 wymaga dodatkowego kroku.** Broń Kuva, Tenet i Coda oraz Paracesis odblokowują dwie dodatkowe rangi za każdą Formę, aż do 40. rangi po użyciu pięciu Form. Tylko nigdy wcześniej nieopanowane rangi dodają punkty: broń Coda daje 3000 punktów na 30. randze i kolejne 1000 w przedziale rang 31–40. [Digital Extremes wyjaśnia przekraczanie rang broni Coda w Aktualizacji 38.5](https://www.warframe.com/en/patch-notes/pc/38-5-0)."
         }
       ]
     },
@@ -204,7 +204,7 @@
         },
         {
           "type": "p",
-          "text": "Z tej tabeli wynikają dwa praktyczne wnioski. **Aby wylevelować broń**, albo z niej strzelaj, albo korzystaj z dzielonego affinity od sojusznika, który czyści cały pokój, podczas gdy Ty trzymasz się w odległości do 50m. **Aby szybko wylevelować Warframe'a**, zdobywaj **zabójstwa umiejętnościami** — przekazują one 100% tego affinity prosto do Twojego frame'a, w porównaniu do zaledwie 25% z dzielonego zabójstwa sojusznika. I **nie noś ze sobą maksymalnie wylevelowanych broni** podczas expienia: affinity, które trafia na wymaksowany gear, marnuje się, więc zapełnij te sloty broniami bez rangi, które również chcesz wylevelować."
+          "text": "**W przypadku jednej broni** wyposaż tylko tę broń, gdy Twoja drużyna poradzi sobie z misją: otrzyma ona całą część biegłości przydzielaną broniom z dzielonego doświadczenia. Przy dwóch broniach część ta jest dzielona na pół, a przy trzech – na trzy części. Zachowaj silną broń zapasową, gdy musisz pomagać drużynie lub przetrwać. **W przypadku Warframe** używaj umiejętności zadających obrażenia, gdy to możliwe, lub zapewnij przydatne wsparcie drużynie. Wymaksowany sprzęt nadal pobiera swoją część i może konwertować biegłość na Focus za pomocą Soczewki."
         },
         {
           "type": "warn",
@@ -214,7 +214,7 @@
     },
     {
       "id": "fast-leveling",
-      "title": "Najszybsze sposoby na levelowanie (farming affinity)",
+      "title": "Wybierz metodę zdobywania biegłości dostosowaną do celu",
       "blocks": [
         {
           "type": "p",
@@ -230,14 +230,14 @@
             ],
             "rows": [
               [
-                "Sanctuary Onslaught / Elite SO",
-                "Szybki, gęsty XP",
-                "U Cephalona Simarisa; ESO dla gearu, który jest już częściowo ulepszony"
+                "Rzeź Sanktuarium",
+                "Rozwijanie nowego Warframe",
+                "Praktyczna opcja po zadaniu Nowy Obcy. Użyj trybu zwykłego dla nowego Warframe bez rangi; sprawdź wymagania wejściowe przed wyborem wersji Elitarnej."
               ],
               [
                 "Defense o wysokiej gęstości (np. Hydron na Sednie, Helene na Saturnie)",
-                "Spokojne levelowanie, przyjazne dla AFK",
-                "Wieloletni faworyci społeczności — przynieś lub dołącz do frame'a typu nuker"
+                "Stabilne podnoszenie rangi w drużynie",
+                "Pozostań w pobliżu drużyny, broń celu i pomagaj w zabójstwach lub wsparciu. Wybierz węzeł, w którym możesz bezpiecznie pomagać."
               ],
               [
                 "Void Fissures",
@@ -245,26 +245,26 @@
                 "Podwójna korzyść z XP podczas otwierania reliktów — zobacz narzędzie Relic Farming"
               ],
               [
-                "Duviri Circuit",
-                "Levelowanie + nagrody",
-                "Nowoczesna opcja; Steel Path Circuit skaluje się dla weteranów"
+                "Elitarna Rzeź Sanktuarium",
+                "Bronie z przygotowanym Warframe",
+                "Wyposaż broń, której rangę chcesz podnieść, i pomagaj drużynie w zabójstwach lub wsparciu. Wersja Elitarna wymaga określonej rangi Warframe, więc nie jest domyślnym wyborem dla nowo zbudowanej postaci."
               ],
               [
-                "Tanie Exterminate / Capture",
-                "MR fodder",
-                "Szybko wbij 30. poziom na świeżo zbudowanych, jednorazowych broniach i je zutylizuj"
+                "Nieukończone węzły Gwiezdnej Mapy",
+                "Wczesny postęp konta",
+                "Podnoś rangę wyposażenia podczas odblokowywania Złączy i zdobywania biegłości za pierwsze ukończenia. Przydatne przed odblokowaniem dedykowanych miejsc do zdobywania biegłości."
               ]
             ],
-            "note": "Pojedynczy „najlepszy node” zmienia się wraz z patchami balansującymi i wydarzeniami. Sprawdź aktualną wiki lub najnowsze wideo, aby poznać obecny wybór meta."
+            "note": "To opcje dla różnych celów, a nie mierzony ranking punktów doświadczenia na minutę. Wyniki zależą od wyposażenia, drużyny, zagęszczenia wrogów i dopalaczy."
           }
         },
         {
           "type": "p",
-          "text": "Dwa mnożniki przyspieszają wszystko: uruchom **Affinity Booster** (z Marketu lub nagród Nightwave/logowania) i zaplanuj swój grind na **weekend z podwójnym affinity** — kumulują się one, dając 4-krotne affinity. Levelowanie wewnątrz [Void Fissures](/relic-farming) to król wydajności, ponieważ w tych samych podejściach ulepszasz gear *oraz* farmisz części prime; użyj [narzędzia wartości reliktów](/relics-value), aby decidir, co warto otwierać."
+          "text": "**Dopalacz Biegłości** i aktywny **wydarzeniowy podwójny Dopalacz** mnożą się, dając 4-krotną biegłość. Sprawdź liczniki wydarzeń i dopalaczy w grze przed zaplanowaniem sesji. [Szczeliny Pustki](/relic-farming) pozwalają połączyć zdobywanie biegłości z pozyskiwaniem części Prime, ale nadal potrzebujesz przydatnego wyposażenia i odpowiedniej ilości Reagentu; użyj [narzędzia wartości Relic](/relics-value), aby porównać nagrody z Relic."
         },
         {
           "type": "tip",
-          "text": "Zabierz pełny zestaw gearu do levelowania (frame + 3 bronie) na wspólne carry, a będziesz mógł awansować **cztery przedmioty** od 0 do 30 w jednej sesji. Upewnij się tylko, że to Ty stoisz spokojnie blisko zabójstw, a nie uganiasz się za nimi."
+          "text": "Wybierz między **szybkim rozwijaniem jednego przedmiotu** a **kilkoma przedmiotami naraz**. Jedna wyposażona broń otrzymuje więcej dzielonej biegłości za zabójstwo niż każda broń w pełnym zestawieniu. Pełne wyposażenie rozdziela tę biegłość na więcej przedmiotów. Bądź aktywny, broń celu i uzgodnij ewakuację z drużyną."
         }
       ]
     },
@@ -274,7 +274,7 @@
       "blocks": [
         {
           "type": "p",
-          "text": "Wydajny grind mastery to prosta, powtarzalna pętla. Celem jest użycie każdego unikalnego przedmiotu dokładnie raz, wbicie na nim 30. poziomu i nigdy do niego nie wracanie."
+          "text": "Zacznij od łatwo dostępnego wyposażenia, którego jeszcze nie opanowałeś. Większość sprzętu kończy rozwój na 30. randze; sprawdź wyjątki sięgające 40. rangi, zanim uznasz przedmiot za ukończony."
         },
         {
           "type": "steps",
@@ -286,7 +286,7 @@
             },
             {
               "h": "Odbierz go i umieść w slocie",
-              "p": "Świeży przedmiot ma rangę 0. Zaczyna już z pojemnością modów równą Twojemu MR, więc nawet gear bez rangi nadaje się do levelowania."
+              "p": "Odbierz przedmiot i zamontuj mody przed rozpoczęciem misji. Twój Poziom Biegłości zapewnia minimalną pojemność modów, więc sprzęt bez rangi nie musi być pozbawiony modów."
             },
             {
               "h": "Wyleveluj go do 30. poziomu za jednym posiedzeniem",
@@ -294,11 +294,11 @@
             },
             {
               "h": "Zapisz postęp, zwolnij slot",
-              "p": "Po wymaksowaniu mastery jest Twoje na stałe. Sprzedaj bronie typu mastery-fodder, aby zwolnić slot i zbudować kolejną. Zachowaj wszystko, co naprawdę Ci się podoba."
+              "p": "Biegłość pozostaje na Twoim koncie po sprzedaży wyposażenia. Przed sprzedażą sprawdź, czy przedmiot nie jest składnikiem innego schematu lub czymś, co może się przydać w przyszłości. Zachowaj ulubiony i trudny do zastąpienia sprzęt."
             },
             {
-              "h": "Nie leveluj ponownie dla mastery",
-              "p": "Dodanie Formy resetuje przedmiot do rangi 0 w celu dodania slotów polaryzacji — świetne do buildów, ale daje zero dodatkowego mastery. Leveluj ponownie tylko ten gear, który personalizujesz, a nie dla MR."
+              "h": "Sprawdź wyjątki dla 40. rangi przed użyciem Formy",
+              "p": "Powtarzanie wcześniej opanowanych rang nie daje dodatkowej biegłości. W przypadku sprzętu przekraczającego 30. rangę, Forma odblokowuje nowe rangi powyżej 30, które liczą się za pierwszym razem. Zaplanuj wydatki Formy na te rangi lub na konfiguracje, których zamierzasz używać."
             }
           ]
         },
@@ -310,37 +310,37 @@
     },
     {
       "id": "mr-tests",
-      "title": "Testy MR i jak się przygotować",
+      "title": "Czas odnowienia testu Poziomu Biegłości: porażka a zaliczenie",
       "blocks": [
         {
           "type": "p",
-          "text": "Zdobycie wystarczającej ilości mastery sprawia, że kolejna ranga staje się *dostępna*, ale musisz **zdać test Mastery Rank**, aby ją faktycznie otrzymać. Każda ranga ma swój unikalny test — parkour na czas, ciche zabójstwa, hakowanie konsol pod presją czasu, zabijanie fal wrogów bez otrzymywania obrażeń i tak dalej. Trudność rośnie wraz z Twoją rangą."
+          "text": "Osiągnij wymaganą biegłość, a następnie uruchom test awansu ze swojego profilu. Przeczytaj jego zasady: niektóre testy ograniczają użycie broni lub umiejętności."
         },
         {
           "type": "steps",
           "ordered": true,
           "steps": [
             {
-              "h": "Ćwicz za darmo u Cephalona Simarisa",
-              "p": "W każdym Relay znajduje się Cephalon Simaris, który pozwala Ci **przetrenować dokładnie ten sam test** dowolną liczbę razy, bez czasu odnowienia i bez żadnych kar. Zawsze najpierw poćwicz."
+              "h": "Sprawdź wymagania",
+              "p": "Kolejny test pokazuje biegłość wymaganą do jego odblokowania. Wybierz wyposażenie dopasowane do wyzwania."
             },
             {
-              "h": "Przystąp do właściwego testu, gdy będziesz gotowy",
-              "p": "Gdy zgromadzisz wystarczająco dużo mastery, pojawi się komunikat o awansie rangi (w Twoim Orbiterze / profilu). Podejdź do niego, gdy poczujesz się pewnie po treningu."
+              "h": "Ponów próbę po porażce",
+              "p": "Nieudana próba **nie ma czasu odnowienia**. Zmień taktykę i spróbuj ponownie."
             },
             {
-              "h": "Jeśli oblejesz, odczekaj około doby",
-              "p": "Nie ma żadnej kary za porażkę poza około **24-godzinnym czasem odnowienia**, zanim będziesz mógł ponownie spróbować podejść do właściwego testu. Próby treningowe pozostają nieograniczone podczas oczekiwania."
+              "h": "Odczekaj po zaliczeniu",
+              "p": "Zaliczenie testu rozpoczyna **23-godzinny czas odnowienia** przed następnym testem awansu."
             }
           ]
         },
         {
-          "type": "warn",
-          "text": "Ta 24-godzinna blokada to jedyna niedogodność — dlatego **nigdy nie podchodź do testu w ciemno.** Trenuj go u Simarisa, dopóki nie będziesz go zdawać za każdym razem, a dopiero potem przystąp do właściwego. Wiele testów staje się również banalnie prostych przy użyciu mobilnego frame'a (Volt, Titania, Wisp, Zephyr) lub dobrego buildu pod poruszanie się."
+          "type": "info",
+          "text": "[Aktualizacja 38: Warframe: 1999](https://www.warframe.com/en/patch-notes/pc/38-0-0) usunęła czas oczekiwania po nieudanym teście 13 grudnia 2024 roku. Opcja testu u Simarisa to teraz **Powtórz**. Starsze poradniki nakazujące odczekać dzień po porażce opisują dawne zasady."
         },
         {
           "type": "tip",
-          "text": "Utknąłeś na teście sprawnościowym lub „bez obrażeń”? Zabierz frame'a z dużą prędkością, niewidzialnością lub niewrażliwością na obrażenia, co często zamienia frustrujący test w formalność. Obejrzyj najnowsze wideo dedykowane danemu testowi, jeśli konkretna ranga sprawia Ci trudności."
+          "text": "Dopasuj porady do konkretnego testu. Umiejętności Niewidzialności lub mobilności pomagają tylko tam, gdzie test na to pozwala; nie zakładaj, że zalecana postać zignoruje każde wyzwanie."
         }
       ]
     },
@@ -355,16 +355,15 @@
         {
           "type": "list",
           "items": [
-            "**Leveluj to, co budujesz.** Każdy frame, broń i companion to darmowe mastery — wbij na każdym 30. poziom raz, zanim go sprzedasz lub użyjesz Formy.",
+            "**Rozwijaj to, co budujesz.** Osiągnij każdą rangę wyposażenia raz. Większość przedmiotów kończy rozwój na 30. randze; sprzęt z możliwością przekraczania rang daje dodatkową biegłość powyżej tego poziomu.",
             "**Ukończ cały Star Chart, dwukrotnie.** Zwykłe nodes, junctions oraz nodes na [Steel Path](/guides/steel-path) to ogromne, jednorazowe źródło mastery, które większość graczy ignoruje.",
             "**Zwracaj uwagę na progi gearu.** Niektóre z najsilniejszych broni wymagają określonej rangi MR, więc kilka dodatkowych rang może odblokować wybór meta, który naprawdę chcesz zdobyć.",
             "**Priorytetyzuj MR, jeśli farmisz standing.** Jeśli mocno angażujesz się w Focus, arcane'y lub syndykaty, wyższy dzienny limit sprawia, że każda ranga szybko się zwraca."
           ]
         },
         {
-          "type": "quote",
-          "text": "MR to nagroda za odkrywanie całej gry, a nie ściana do wspinaczki. Graj szeroko, wyleveluj wszystko raz, a obudzisz się z MR20 bez jakiegokolwiek „grindowania mastery”.",
-          "cite": "Częsta rada weteranów z r/Warframe"
+          "type": "p",
+          "text": "Potraktuj MR jako powód do poznania kolejnych elementów gry. Zachowaj niezawodne wyposażenie bojowe podczas budowania i wymaksowywania nowego sprzętu, aby podnoszenie rangi nie spowolniło Twojego postępu w zadaniach."
         },
         {
           "type": "p",
@@ -376,7 +375,7 @@
   "faqs": [
     {
       "q": "Jak zwiększyć Mastery Rank w Warframe?",
-      "a": "Zdobywaj mastery, levelując nowy gear od 0 do 30 po raz pierwszy (bronie dają 3,000, frame'y i companions dają 6,000) oraz oczyszczając nodes i junctions na Star Chart. Gdy zgromadzisz odpowiednią ilość, zdaj test Mastery Rank dla danej rangi, aby ją zatwierdzić. Każdy unikalny przedmiot liczy się tylko raz — ponowne levelowanie z użyciem Formy nie daje dodatkowego mastery."
+      "a": "Zdobywaj nieopanowane rangi wyposażenia, kończ nowe węzły Gwiezdnej Mapy oraz Złącza, a następnie zalicz kolejny test awansu. Większość broni daje 3000 biegłości na 30. randze; Warframe'y i towarzysze dają 6000. Sprzęt przekraczający 30. rangę może przyznać dodatkową biegłość za nowe rangi powyżej 30."
     },
     {
       "q": "Co właściwie daje Mastery Rank?",
@@ -388,7 +387,7 @@
     },
     {
       "q": "Czy dodanie Formy lub ponowne levelowanie broni daje więcej mastery?",
-      "a": "Nie. Każdy przedmiot przyznaje swoje mastery tylko raz, gdy po raz pierwszy osiągnie 30. poziom. Forma resetuje przedmiot do rangi 0, abyś mógł dodać sloty polaryzacji dla lepszego buildu, ale za ponowne levelowanie otrzymujesz zero dodatkowego mastery. Leveluj ponownie gear tylko wtedy, gdy go personalizujesz, nigdy dla MR."
+      "a": "Powtarzanie już opanowanych rang nie daje dodatkowej biegłości. Jednak Forma odblokowuje dodatkowe rangi w sprzęcie przekraczającym 30. rangę, takim jak broń Kuva, Tenet i Coda czy Paracesis. Te nowe rangi dają biegłość tylko raz: broń o randze 40 zapewnia łącznie 4000 punktów zamiast 3000."
     },
     {
       "q": "Jak działa dzielenie affinity w drużynie?",
@@ -396,7 +395,7 @@
     },
     {
       "q": "Co się stanie, jeśli obleję test Mastery Rank?",
-      "a": "Nic, poza koniecznością odczekania około 24 godzin przed kolejną próbą podejścia do właściwego testu — nie tracisz XP ani nie otrzymujesz żadnej innej kary. Najpierw poćwicz dokładnie ten sam test za darmo i nieograniczoną liczbę razy u Cephalona Simarisa w dowolnym Relay, aby przystąpić do prawdziwego dopiero wtedy, gdy będziesz go zaliczać bez problemu."
+      "a": "Możesz spróbować ponownie natychmiast po porażce. Czas odnowienia obowiązuje po zaliczeniu: odczekaj 23 godziny przed kolejnym testem awansu. Digital Extremes zmieniło te zasady w Aktualizacji 38 z dnia 13 grudnia 2024 roku."
     },
     {
       "q": "Czy istnieje maksymalny Mastery Rank?",
@@ -431,20 +430,28 @@
   ],
   "sources": [
     {
-      "label": "r/Warframe — My Journey ends at MR25",
-      "href": "https://reddit.com/r/Warframe/comments/1uockj8/my_journey_ends_at_mr25/"
+      "label": "Digital Extremes — Update 38: Mastery Rank test changes",
+      "href": "https://www.warframe.com/en/patch-notes/pc/38-0-0"
     },
     {
-      "label": "r/Warframe — Mastery Rank & Helminth motivation thread",
-      "href": "https://reddit.com/r/Warframe/comments/idu92w/i_like_the_idea_that_way_people_could_become/"
+      "label": "Warframe Support — Mastery Basics",
+      "href": "https://support.warframe.com/hc/en-us/articles/218718097-Mastery-Basics"
     },
     {
-      "label": "r/Warframe — Affinity farming discussion (Gian Point)",
-      "href": "https://reddit.com/r/Warframe/comments/m4fvff/gian_point_should_become_a_graveyard/"
+      "label": "Digital Extremes — Update 38.5: Coda overleveling",
+      "href": "https://www.warframe.com/en/patch-notes/pc/38-5-0"
     },
     {
-      "label": "Official Warframe Wiki",
-      "href": "https://wiki.warframe.com/"
+      "label": "Digital Extremes — Devstream 110: Sanctuary Onslaught requirements",
+      "href": "https://www.warframe.com/en/news/devstream-110-overview"
+    },
+    {
+      "label": "Warframe Wiki — Mastery Rank",
+      "href": "https://wiki.warframe.com/w/Mastery_Rank"
+    },
+    {
+      "label": "Warframe Wiki — Affinity",
+      "href": "https://wiki.warframe.com/w/Affinity"
     }
   ],
   "related": [
@@ -485,5 +492,5 @@
       "note": "Trackery mastery i listy kontrolne"
     }
   ],
-  "updated": "2026-07-18"
+  "updated": "2026-09-14"
 }

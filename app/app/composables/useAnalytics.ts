@@ -64,6 +64,7 @@ function gtag(..._args: any[]) {
  * `js` + `config` commands nuxt-gtag queues are already in front of them).
  */
 export function flushPendingEvents() {
+  if (typeof window === 'undefined') return
   const dataLayer = (window as any).dataLayer
   if (!dataLayer) return
   while (pending.length) dataLayer.push(pending.shift()!)
@@ -79,9 +80,10 @@ function sanitize(params: AnalyticsParams = {}): Record<string, string | number 
     if (count >= MAX_PARAMS) break
     const key = rawKey.slice(0, MAX_PARAM_NAME)
     if (typeof rawValue === 'number') {
-      // Keep 2 decimals: GA4 stores numbers as doubles but reports read far
-      // better without 12 decimal places of float noise.
-      out[key] = Math.round(rawValue * 100) / 100
+      // CLS needs millesimal precision; rounding 0.104 to 0.10 would hide a
+      // threshold crossing. Other event values keep the existing precision.
+      const precision = key === 'metric_value' || key === 'metric_delta' ? 1000 : 100
+      out[key] = Math.round(rawValue * precision) / precision
     } else if (typeof rawValue === 'boolean') {
       out[key] = rawValue
     } else {
@@ -97,15 +99,13 @@ function sanitize(params: AnalyticsParams = {}): Record<string, string | number 
  * has loaded the command queues in `dataLayer` and flushes on load.
  */
 export function trackEvent(name: string, params: AnalyticsParams = {}) {
-  if (!import.meta.client) return
-  if (!(window as any).dataLayer) return
+  if (typeof window === 'undefined') return
   gtag('event', name.slice(0, MAX_EVENT_NAME), sanitize(params))
 }
 
 /** Set sticky user properties (available as GA4 user-scoped dimensions). */
 export function setUserProperties(props: AnalyticsParams) {
-  if (!import.meta.client) return
-  if (!(window as any).dataLayer) return
+  if (typeof window === 'undefined') return
   gtag('set', 'user_properties', sanitize(props))
 }
 

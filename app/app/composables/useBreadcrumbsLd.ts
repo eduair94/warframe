@@ -27,7 +27,7 @@ export function useBreadcrumbsLd(): void {
   const { locale } = useI18n()
   const localePath = useLocalePath()
   const route = useRoute()
-  const origin = useRequestURL().origin
+  const origin = useSiteConfig().url.replace(/\/+$/, '')
 
   const crumbs = computed(() => {
     const base = stripLocale(route.path)

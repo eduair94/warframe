@@ -201,7 +201,7 @@ const props = defineProps<{ guide: Guide }>()
 const { t, locale } = useI18n()
 const localePath = useLocalePath()
 const route = useRoute()
-const origin = useRequestURL().origin
+const origin = useSiteConfig().url.replace(/\/+$/, '')
 
 // i18n chrome (falls back to English via the app's fallbackLocale)
 const hubLabel = computed(() => t('guidesChrome.backToHub'))
@@ -222,7 +222,7 @@ function toneClass(tone?: string) {
 }
 
 // Shared safe inline renderer (utils/richText.ts, auto-imported).
-const rich = renderRich
+const rich = (input: string) => renderRich(input, (path) => localePath(path))
 
 function prettyDate(iso: string) {
   try {
@@ -290,9 +290,9 @@ const jsonLd = computed(() => {
     // title-encoded URL — so let Google resolve the article image from og:image.
     inLanguage: locale.value,
     articleSection: props.guide.category,
-    ...(props.guide.updated
-      ? { datePublished: props.guide.updated, dateModified: props.guide.updated }
-      : {}),
+    // A content review is not the original publication date. Only publish the
+    // timestamp the guide actually records, so an edit never resets its age.
+    ...(props.guide.updated ? { dateModified: props.guide.updated } : {}),
     mainEntityOfPage: { '@type': 'WebPage', '@id': origin + route.path },
     author: {
       '@type': 'Person',

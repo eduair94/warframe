@@ -1,0 +1,91 @@
+# Void Ledger: organic growth and content maintenance
+
+## Objective and operating loop
+
+Grow useful organic traffic and repeat use by solving real Warframe questions with accurate guides
+and working market tools. A daily Codex thread review is scheduled for 10:00 America/Montevideo.
+The existing quarterly GitHub guide refresh remains enabled; check its recent runs before repeating
+its work. Read `CLAUDE.md` and `docs/repo-map.md` before changing the app.
+
+Each run should select and finish a concrete improvement, record its evidence and verify the result.
+Prioritize availability, false information and broken indexable pages first. Use official
+[Warframe patch notes](https://www.warframe.com/en/patch-notes) and
+[news](https://www.warframe.com/en/news) for changing game facts; distinguish announcements from
+released changes. Review the actual affected guidance before changing its review date.
+
+When GA4 or Search Console is accessible, compare complete 7-day and 28-day periods using organic
+sessions, clicks, impressions, CTR, landing pages, queries, country and language. Also inspect useful
+actions (`market_open`, guide-to-tool navigation, watchlists) and retention. Missing access or missing
+data is not zero traffic. Do not claim that a deployment caused growth from a short before/after window.
+Keep raw private analytics exports under ignored `tmp/`, outside version control.
+
+## 2026-09-14 — first maintenance iteration
+
+### Verified baseline and fixes
+
+- The dynamic sitemap confused `set: true` (membership in a set) with an assembled set. The live
+  catalogue contained 1,033 flagged items but only 238 assembled sets. This advertised 795 invalid set
+  URLs per locale (10,335 across 13 locales). Require names ending in ` Set` (a substring also matched
+  Motus Setup and Grineer Settlement scenes), deduplicate slugs and retain relic and mission URLs.
+- Spanish sitemap lacked 53 localized tool detail pages. Explicit dynamic tool URLs now request the
+  sitemap module's locale transformation.
+- Unknown relics/missions returned HTTP 200. Entity pages now distinguish an authoritative absence
+  (404) from a temporary data failure (503), preserving useful page error/retry states.
+- Sitemap source reads could outlive the sitemap module's five-second budget and a catalogue failure
+  removed mission discovery too. Fetch independently and concurrently, use bounded timeouts and small
+  recent URL snapshots, and return 503 on a complete cold outage.
+- Live JSON-LD included localhost identifiers on cached pages despite correct canonicals. Structured
+  data should use the configured public frontend origin, never the API or an internal render host.
+- A live guide emitted 282 speculative script prefetch links. Remove only these internal script hints
+  from SSR HTML; retain render-critical preloads/styles and hover/focus navigation prefetching.
+- The production build precached 492 files (19,837 KiB) on service-worker installation, including
+  unused route and locale chunks. Restrict install-time caching to core icons and cache requested
+  hashed assets with bounded runtime storage. Preserve API caching and push notification handling.
+  Workbox generation against the same build reduced this from 20,314,873 bytes to 61,870 bytes
+  (9 files, about 60 KiB), a 99.7% reduction in precache content. These are uncompressed file sizes,
+  not a measurement of every visitor's network transfer or loading time.
+- Analytics deferred initialization needed Nuxt context. Preserve early buffered events and replace
+  the homemade Core Web Vitals approximation with Google's
+  [measurement library](https://github.com/GoogleChrome/web-vitals), including CLS precision,
+  metric IDs/deltas and navigation attribution. This improves measurement; it is not evidence of
+  measured traffic growth. See `docs/analytics.md`.
+- The mastery guide's failed-test cooldown and rank-40 mastery advice were outdated. Review and
+  propagate the factual corrections across its localized snapshots; cite the official sources in
+  the guide itself. Guide edits must not rewrite publication dates, and internal prose links should
+  keep readers in their selected language.
+- Quarterly refresh could not parse two valid TypeScript guides, treated video provider failures as
+  missing videos and encouraged date-only updates. Parse data safely, validate all outputs before
+  writing, reject ungrounded generations, bound external calls and preserve dates on no-op edits.
+
+### Verification and release
+
+All 548 API/technical SEO unit tests passed, as did 10 guide refresh tests, 19 frontend tests
+(analytics, resource hints, localized rich text and generated PWA caching), the i18n compile gate and
+repo-map check. The initial production build and 12-route built SSR smoke checks passed. The latter
+confirmed 200/404/503 semantics, canonical origins, no localhost in JSON-LD and zero speculative script
+prefetch tags with required preloads preserved. The final source predicates, translations and PWA
+configuration additionally passed focused checks. Full app typecheck reports project-wide errors; no diagnostic
+references the new analytics, sitemap, entity-status or resource-hint implementation. It remains
+advisory under the repo's established policy. Local diagnostic logs are ignored `*.log` files.
+Final SSR, PWA and production release outcomes are recorded after verification below.
+
+### Next priorities
+
+1. Establish actual GA4/Search Console baselines if the account/property is accessible. Select search
+   opportunities from impressions, intent and useful actions; do not invent keyword volumes.
+2. Audit the remaining 24 guides against current official updates, starting with progression,
+   Duviri/Circuit rotations, resources and platinum/relic farming. Reconcile localized snapshots.
+   Known content candidates: `mods.ts` groups Slash with Toxin as bypassing shields and describes
+   Rolling Guard as resetting shield gates; `relics.ts` confuses rewards per mission/rotation and
+   relic sources with Fissure opening locations. Verify mechanics against authoritative sources
+   before correcting all language versions. `builds` and `forma` still lack translated snapshots.
+3. Add timely original guidance only when there is a clear player question and verified answer.
+   Connect guides to relevant live tools, show data age/limitations and avoid fixed live prices.
+4. Check real mobile LCP/INP/CLS after enough post-release samples. Investigate bottlenecks with
+   measurements; do not label lab or homemade metrics as CrUX field results.
+5. Sample indexable sitemaps, canonicals, hreflang, response status and structured-data origins after
+   each routing/content release. Google advises sitemaps list desired canonical URLs and use truthful
+   modification dates: [sitemap guidance](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap).
+
+Traffic improvement has not yet been measured in this iteration. Search engines decide crawling,
+indexing and ranking; a passing technical check does not guarantee placement or a traffic increase.

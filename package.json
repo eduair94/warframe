@@ -38,7 +38,9 @@
     "format": "prettier --write \"**/*.ts\"",
     "format:check": "prettier --check \"**/*.ts\"",
     "repo:index": "node scripts/gen-repo-index.mjs",
-    "repo:index:check": "node scripts/gen-repo-index.mjs --check"
+    "repo:index:check": "node scripts/gen-repo-index.mjs --check",
+    "guides:check": "node scripts/check-guides.mjs",
+    "guides:test": "node --test scripts/lib/guide-quality.test.mjs"
   },
   "keywords": [
     "warframe",

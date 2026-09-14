@@ -74,6 +74,15 @@ jobs:
         run: npm run i18n:check
         working-directory: app
 
+      - name: Guide content integrity and refresh regression checks
+        run: |
+          npm run guides:check
+          npm run guides:test
+
+      - name: Frontend analytics, guide links and cache regression checks
+        run: npm run test:frontend
+        working-directory: app
+
       # BLOCKING — docs/repo-map.md is generated from source (routes, endpoints,
       # services, i18n sizes). If a route/endpoint was added without regenerating,
       # the AI-facing map is a lie. Run `npm run repo:index` and commit the result.

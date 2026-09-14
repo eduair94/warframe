@@ -109,7 +109,7 @@ function onDetailNav(slug: string) {
 }
 
 // ItemList JSON-LD enumerating the tool directory (rich results + AI citation).
-const origin = useRequestURL().origin
+const origin = useSiteConfig().url.replace(/\/+$/, '')
 useHead({
   script: [
     {

@@ -9,7 +9,7 @@
 // of the English guide. Identifiers (slug, ids, routes, video ids, icons, numbers,
 // source labels) never touch the model, so structure can't drift.
 //
-//   node scripts/translate-guides.mjs                       # all guides × 12 locales (skip existing)
+//   node scripts/translate-guides.mjs                       # missing / outdated guides × 12 locales
 //   node scripts/translate-guides.mjs --slug credits --locales es
 //   node scripts/translate-guides.mjs --force               # re-translate everything
 //
@@ -18,6 +18,7 @@
 import { readFileSync, writeFileSync, readdirSync, mkdirSync, existsSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
+import { extractGuideJson, validateGuide, translationNeedsRefresh } from './lib/guide-quality.mjs'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const GUIDES_DIR = join(__dirname, '..', 'app', 'app', 'data', 'guides')
@@ -44,12 +45,6 @@ function listGuides() {
     .filter((f) => f.endsWith('.ts') && !NOT_GUIDES.has(f))
     .map((f) => ({ slug: f.replace(/\.ts$/, ''), path: join(GUIDES_DIR, f) }))
     .filter((g) => !ONLY_SLUG || g.slug === ONLY_SLUG)
-}
-
-function extractGuideJson(source) {
-  const m = source.match(/const guide: Guide =\s*([\s\S]*?)\n\s*export default guide/)
-  if (!m) throw new Error('cannot locate guide payload')
-  return JSON.parse(m[1].trim())
 }
 
 // Walk a guide, collecting translatable leaf strings + setters (same order).
@@ -105,7 +100,7 @@ async function translateBatch(ai, strings, langName) {
     `Input:`,
     JSON.stringify(strings),
   ].join('\n')
-  const res = await ai.models.generateContent({ model: MODEL, contents: prompt, config: { temperature: 0.3 } })
+  const res = await ai.models.generateContent({ model: MODEL, contents: prompt, config: { temperature: 0.3, httpOptions: { timeout: 180_000 } } })
   return parseArray(res.text)
 }
 
@@ -145,12 +140,17 @@ async function main() {
   const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY })
 
   const guides = listGuides()
+  if (!guides.length) throw new Error(`no guide matched slug ${ONLY_SLUG || '(all)'}`)
+  if (LOCALES.some((locale) => !LANGS[locale])) throw new Error('unsupported translation locale')
+  if (!Number.isInteger(CONCURRENCY) || CONCURRENCY < 1 || CONCURRENCY > 12) throw new Error('TRANSLATE_CONCURRENCY must be an integer from 1 to 12')
   const jobs = []
   for (const g of guides) {
     const en = extractGuideJson(readFileSync(g.path, 'utf8'))
+    const errors = validateGuide(en, g.slug)
+    if (errors.length) throw new Error(errors.join('; '))
     for (const loc of LOCALES) {
       const outPath = join(OUT_DIR, `${g.slug}.${loc}.json`)
-      if (!FORCE && existsSync(outPath)) continue
+      if (!FORCE && existsSync(outPath) && !translationNeedsRefresh(en, JSON.parse(readFileSync(outPath, 'utf8')))) continue
       jobs.push({ slug: g.slug, loc, en, outPath })
     }
   }
@@ -159,6 +159,8 @@ async function main() {
   let ok = 0, fail = 0
   const res = await pool(jobs, CONCURRENCY, async (job) => {
     const localized = await translateGuide(ai, job.en, job.loc)
+    const errors = validateGuide(localized, job.slug)
+    if (errors.length) throw new Error(errors.join('; '))
     writeFileSync(job.outPath, JSON.stringify(localized, null, 2), 'utf8')
     return { slug: job.slug, loc: job.loc }
   })

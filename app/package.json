@@ -13,6 +13,8 @@
     "start": "node .output/server/index.mjs",
     "postinstall": "nuxt prepare",
     "typecheck": "nuxi typecheck",
+    "test:analytics": "node --test scripts/analytics.test.mjs",
+    "test:frontend": "node --test scripts/analytics.test.mjs scripts/rich-text.test.mjs scripts/pwa.test.mjs",
     "lint": "eslint .",
     "lint:prettier": "prettier --check .",
     "i18n:check": "tsx scripts/i18n-check.mts",
@@ -39,7 +41,8 @@
     "vue": "^3.5.0",
     "vue-router": "^4.5.0",
     "vuetify": "^4.1.5",
-    "vuetify-nuxt-module": "1.0.0-rc.2"
+    "vuetify-nuxt-module": "1.0.0-rc.2",
+    "web-vitals": "^6.2.1"
   },
   "devDependencies": {
     "@nuxt/fonts": "^0.14.0",

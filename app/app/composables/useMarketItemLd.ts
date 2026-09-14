@@ -21,7 +21,7 @@ interface MarketItemLdInput {
 }
 
 export function useMarketItemLd(input: MarketItemLdInput): void {
-  const origin = useRequestURL().origin
+  const origin = useSiteConfig().url.replace(/\/+$/, '')
   const route = useRoute()
 
   useHead(() => {
@@ -33,7 +33,7 @@ export function useMarketItemLd(input: MarketItemLdInput): void {
       '@type': 'Product',
       name,
       description: toValue(input.description) || undefined,
-      url: origin + route.fullPath,
+      url: origin + route.path,
     }
 
     const image = toValue(input.image)

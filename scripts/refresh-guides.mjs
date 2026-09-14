@@ -3,15 +3,15 @@
 // (grounded with Google Search), on a rolling ~90-day cadence.
 //
 // Pipeline per guide (app/app/data/guides/<slug>.ts):
-//   1. Extract the `const guide: Guide = {…}` JSON payload from the .ts file.
+//   1. Parse the `const guide: Guide = {…}` data literals from the .ts file.
 //   2. Ask Gemini (with the googleSearch tool) to fact-check + refresh it as of
 //      today — same schema, same voice, only change what's actually outdated,
 //      and flag nerfs/removals. Returns the updated guide as JSON.
 //   3. HARD GATE: re-verify EVERY YouTube video id via the oEmbed endpoint and
-//      drop any that no longer resolve (dead/private/embedding-off). Never let an
+//      drop confirmed missing videos; abort on transient verification errors. Never let an
 //      unverified id reach the file — a broken embed is worse than one fewer video.
-//   4. Structurally validate the object against the Guide shape.
-//   5. Re-emit the .ts file (same header/footer) and record it as changed.
+//   4. Validate rendered block shapes, source links and non-future review dates.
+//   5. Write substantive changes only after every guide in the batch passes.
 //
 // The GitHub Action (.github/workflows/refresh-guides.yml) runs this, then only
 // commits to main (which auto-deploys) if the script SUCCEEDS and the i18n gate
@@ -28,6 +28,7 @@
 import { readFileSync, writeFileSync, readdirSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
+import { ALLOWED_BLOCK_TYPES, extractGuideJson, validateGuide, verifyVideos, preserveUnchangedReviewDate, hasSearchGrounding } from './lib/guide-quality.mjs'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const GUIDES_DIR = join(__dirname, '..', 'app', 'app', 'data', 'guides')
@@ -41,20 +42,12 @@ const WRITE = !NO_WRITE && (!DRY_RUN || process.argv.includes('--write'))
 const MODEL = process.env.GEMINI_MODEL || 'gemini-pro-latest'
 const ONLY = (process.env.GUIDE_SLUGS || '').split(',').map((s) => s.trim()).filter(Boolean)
 
-const ALLOWED_BLOCK_TYPES = new Set(['p', 'list', 'steps', 'tip', 'warn', 'info', 'table', 'video', 'links', 'kv', 'quote'])
-
 // ── file <-> object ───────────────────────────────────────────────────
 function listGuideFiles() {
   return readdirSync(GUIDES_DIR)
     .filter((f) => f.endsWith('.ts') && !NOT_GUIDES.has(f))
     .map((f) => ({ slug: f.replace(/\.ts$/, ''), path: join(GUIDES_DIR, f) }))
     .filter((g) => ONLY.length === 0 || ONLY.includes(g.slug))
-}
-
-function extractGuideJson(source) {
-  const m = source.match(/const guide: Guide =\s*([\s\S]*?)\n\s*export default guide/)
-  if (!m) throw new Error('could not locate `const guide: Guide = {…}` payload')
-  return JSON.parse(m[1].trim())
 }
 
 const FILE_HEADER = `// Auto-generated Warframe Knowledge Center guide content.
@@ -70,78 +63,6 @@ function emitGuideFile(guideObj) {
   return FILE_HEADER + JSON.stringify(guideObj, null, 2) + '\n\nexport default guide\n'
 }
 
-// ── video verification (the hard gate) ────────────────────────────────
-async function oembedOk(id) {
-  if (typeof id !== 'string' || id.length !== 11) return false
-  const url = `https://www.youtube.com/oembed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D${id}&format=json`
-  try {
-    const res = await fetch(url, { redirect: 'follow' })
-    if (!res.ok) return false
-    const json = await res.json()
-    return Boolean(json && json.title)
-  } catch {
-    return false
-  }
-}
-
-/** Verify every video id on the guide (top-level grid + inline `video` blocks);
- *  drop the ones that fail. Returns { guide, dropped: [ids] }. */
-async function verifyVideos(guideObj) {
-  const dropped = []
-  const seen = new Map()
-  const check = async (id) => {
-    if (!seen.has(id)) seen.set(id, await oembedOk(id))
-    return seen.get(id)
-  }
-
-  if (Array.isArray(guideObj.videos)) {
-    const kept = []
-    for (const v of guideObj.videos) {
-      if (await check(v.id)) kept.push(v)
-      else dropped.push(v.id)
-    }
-    guideObj.videos = kept
-  }
-
-  for (const section of guideObj.sections || []) {
-    const blocks = []
-    for (const b of section.blocks || []) {
-      if (b.type === 'video') {
-        if (await check(b.video?.id)) blocks.push(b)
-        else dropped.push(b.video?.id)
-      } else {
-        blocks.push(b)
-      }
-    }
-    section.blocks = blocks
-  }
-  return { guide: guideObj, dropped }
-}
-
-// ── structural validation ─────────────────────────────────────────────
-function validateGuide(g, slug) {
-  const errs = []
-  if (!g || typeof g !== 'object') return [`${slug}: not an object`]
-  if (g.slug !== slug) errs.push(`${slug}: slug changed to "${g.slug}"`)
-  for (const f of ['title', 'lede', 'category']) if (typeof g[f] !== 'string' || !g[f]) errs.push(`${slug}: missing ${f}`)
-  if (!Array.isArray(g.sections) || g.sections.length === 0) errs.push(`${slug}: no sections`)
-  for (const [i, s] of (g.sections || []).entries()) {
-    if (typeof s.id !== 'string' || typeof s.title !== 'string') errs.push(`${slug}: section ${i} missing id/title`)
-    if (!Array.isArray(s.blocks)) errs.push(`${slug}: section ${i} has no blocks`)
-    for (const [j, b] of (s.blocks || []).entries()) {
-      if (!ALLOWED_BLOCK_TYPES.has(b.type)) errs.push(`${slug}: section ${i} block ${j} bad type "${b.type}"`)
-      if (b.type === 'video' && (!b.video || (b.video.id || '').length !== 11)) errs.push(`${slug}: section ${i} bad video block`)
-    }
-  }
-  for (const [i, v] of (g.videos || []).entries()) {
-    if ((v.id || '').length !== 11 || !v.title || !v.channel) errs.push(`${slug}: grid video ${i} malformed`)
-  }
-  for (const [i, f] of (g.faqs || []).entries()) {
-    if (!f.q || !f.a) errs.push(`${slug}: faq ${i} malformed`)
-  }
-  return errs
-}
-
 // ── Gemini ────────────────────────────────────────────────────────────
 function buildPrompt(guideObj, today) {
   return [
@@ -154,7 +75,8 @@ function buildPrompt(guideObj, today) {
     `- Only change what is actually outdated or wrong. Preserve internal cross-links written as markdown "(/guides/...)" or "(/flip)" etc.`,
     `- Allowed block "type" values: ${[...ALLOWED_BLOCK_TYPES].join(', ')}. Block shapes: {type:"p",text}, {type:"list",items[]}, {type:"steps",steps:[{h,p}]}, {type:"tip"|"warn"|"info",text}, {type:"table",table:{columns[],rows[][],note?}}, {type:"kv",kv:[{k,v}]}, {type:"quote",text,cite?}, {type:"video",video:{id,title,channel}}, {type:"links",links:[{label,to?|href?,note?,icon?}]}.`,
     `- Videos: only include YouTube videos you are confident currently exist and are about this exact topic; prefer recent ones. Use the real 11-character id, the real title, and the real channel. Do NOT invent ids (they are re-verified and dropped if wrong).`,
-    `- Set "updated" to "${today}".`,
+    `- Cite the authoritative pages you actually checked in "sources" (prefer warframe.com patch notes and wiki.warframe.com). Never invent a source URL.`,
+    `- Keep "updated" unchanged if the content is still correct. Only set it to "${today}" when you make a substantive, source-supported correction.`,
     ``,
     `Current guide JSON:`,
     JSON.stringify(guideObj),
@@ -178,9 +100,12 @@ async function refreshWithGemini(guideObj, today) {
   const res = await ai.models.generateContent({
     model: MODEL,
     contents: buildPrompt(guideObj, today),
-    config: { tools: [{ googleSearch: {} }], temperature: 0.4 },
+    config: { tools: [{ googleSearch: {} }], temperature: 0.4, httpOptions: { timeout: 180_000 } },
   })
-  return parseModelJson(res.text)
+  if (!hasSearchGrounding(res)) throw new Error('model returned no Google Search grounding; no refresh will be written')
+  const next = parseModelJson(res.text)
+  if (!Array.isArray(next.sources) || !next.sources.some((source) => source.href)) throw new Error('refreshed guide has no source links')
+  return preserveUnchangedReviewDate(guideObj, next)
 }
 
 // ── main ──────────────────────────────────────────────────────────────
@@ -195,19 +120,25 @@ async function main() {
   const files = listGuideFiles()
   console.log(`refresh-guides: mode=${live ? 'LIVE' : 'DRY'} model=${MODEL} guides=${files.length} write=${WRITE}`)
 
+  if (!files.length) throw new Error(`no guides matched GUIDE_SLUGS=${ONLY.join(',')}`)
   const changed = []
+  const pending = []
   let failures = 0
 
   for (const { slug, path } of files) {
     try {
       const source = readFileSync(path, 'utf8')
       const current = extractGuideJson(source)
+      const currentErrors = validateGuide(current, slug, today)
+      if (currentErrors.length) throw new Error(currentErrors.join('; '))
 
       let next = current
       if (live) {
         next = await refreshWithGemini(current, today)
       }
 
+      const generatedErrors = validateGuide(next, slug, today)
+      if (generatedErrors.length) throw new Error(generatedErrors.join('; '))
       const { guide: verified, dropped } = await verifyVideos(next)
       if (dropped.length) console.log(`  ${slug}: dropped ${dropped.length} dead video id(s): ${dropped.join(', ')}`)
 
@@ -218,14 +149,16 @@ async function main() {
         continue
       }
 
-      const out = emitGuideFile(verified)
+      // Keep hand-edited formatting and dates on a no-op run. Re-emitting the
+      // header alone used to create a misleading refresh commit.
+      const out = JSON.stringify(current) === JSON.stringify(verified) ? source : emitGuideFile(verified)
       // round-trip guard: what we are about to write must re-parse cleanly
       extractGuideJson(out)
 
       if (out !== source) {
         if (WRITE) {
-          writeFileSync(path, out, 'utf8')
-          console.log(`  ${slug}: UPDATED`)
+          pending.push({ path, out })
+          console.log(`  ${slug}: staged`)
         } else {
           console.log(`  ${slug}: would update (write skipped)`)
         }
@@ -240,7 +173,15 @@ async function main() {
   }
 
   console.log(`\nrefresh-guides: ${changed.length} changed, ${failures} failure(s).`)
-  if (failures > 0) process.exit(1)
+  if (failures > 0) {
+    console.error('No guide files written: resolve the failed checks and retry.')
+    process.exitCode = 1
+    return
+  }
+  // Validate the entire batch before changing any file. A transient provider
+  // failure late in a run must not leave earlier guides partially refreshed.
+  for (const { path, out } of pending) writeFileSync(path, out, 'utf8')
+  if (pending.length) console.log(`Wrote ${pending.length} verified guide(s).`)
 }
 
 main().catch((err) => {

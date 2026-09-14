@@ -481,13 +481,21 @@ const { data: fetched, error, refresh } = await useAsyncData<SetFullPayload | nu
       `${base}/set_full/${encodeURIComponent(setSlug.value)}${suffix}`,
       bust.value ? { cache: 'no-cache' } : {},
     )
-    // The cached API wrapper answers a failed producer with a 200 { error } body
-    // rather than an HTTP error, which would slip past a plain `!payload` guard
-    // and crash the template. Only a well-formed bundle counts as data.
-    return res && res.set && Array.isArray(res.parts) ? (res as SetFullPayload) : null
+    const statusCode = entityPayloadStatus('set', res)
+    if (statusCode !== 200) {
+      throw createError({ statusCode, statusMessage: statusCode === 404 ? 'Set not found' : 'Set data temporarily unavailable' })
+    }
+    return res as SetFullPayload
   },
   { watch: [setSlug] },
 )
+
+// Unknown/part slugs are 404; outages are retryable 503 responses. Keep the
+// existing page and retry button, including last-good data on client refreshes.
+if (import.meta.server && setSlug.value && !fetched.value) {
+  const event = useRequestEvent()
+  if (event) setResponseStatus(event, error.value?.statusCode === 404 ? 404 : 503)
+}
 
 // Last successfully loaded bundle for THIS slug. A manual refresh that fails
 // (API down, endpoint not yet deployed) must not blank a page that is already

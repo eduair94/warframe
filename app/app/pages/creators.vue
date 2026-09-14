@@ -110,7 +110,7 @@ const { t } = useI18n()
 const localePath = useLocalePath()
 
 // ItemList of Person items — structured data for the creator directory.
-const origin = useRequestURL().origin
+const origin = useSiteConfig().url.replace(/\/+$/, '')
 useHead({
   script: [
     {

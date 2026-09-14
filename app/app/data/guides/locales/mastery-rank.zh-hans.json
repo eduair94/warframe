@@ -13,7 +13,7 @@
     },
     {
       "num": "3,000",
-      "label": "每个满级 weapon 的 mastery",
+      "label": "每件 30 级武器提供的段位经验",
       "tone": "good"
     },
     {
@@ -38,7 +38,7 @@
         },
         {
           "type": "p",
-          "text": "黄金法则：**每件独特 item 的 mastery 仅计算一次。** 将你的 Braton 升到 30 级只会提供一次 mastery。将其卖掉、重新制作，或者使用 Forma 并重新升级，都不会给你带来任何额外收益。这一条规则决定了本页上每一个高效升级策略。"
+          "text": "**每款独特装备的每个等级仅奖励一次段位经验。** 重新制作一把伯斯顿（Braton）或使用 Forma 重置已精通的等级不会增加段位经验。等级可突破 30 级的装备是需要注意的例外：其新解锁的等级依然算数。Prime 及其他独特装备变体拥有独立的段位经验进度。"
         },
         {
           "type": "kv",
@@ -97,7 +97,7 @@
               ],
               [
                 "初始 mod 容量",
-                "未升级的装备初始拥有的 mod 容量等于你的 MR，上限为 30（若安装了 Reactor/Catalyst 则翻倍）"
+                "你的段位（MR）提供基础 Mod 容量上限，受装备已解锁的最大等级限制。反应堆或催化剂会使此容量翻倍。"
               ]
             ],
             "note": "更高的声望上限能直接加快 Focus、arcane 和 syndicate 的 farming 速度——请参阅 Standing 和 Focus 指南。"
@@ -161,11 +161,11 @@
         },
         {
           "type": "tip",
-          "text": "**Star Chart 本身就是巨大的免费 mastery 来源。** 首次通关每个节点（普通和 [Steel Path](/guides/steel-path)）以及所有枢纽，可以获得大量被许多玩家忽略的 mastery。使用 [掉落位置地图](/star-chart-3d) 来查看你还有哪些地方没有探索。"
+          "text": "首次通关星系图节点和枢纽会奖励段位经验，包含其[钢铁之路](/guides/steel-path)版本。在游戏内个人档案中查看段位进度，在星际航行中查看未完成节点。使用[铸造厂追踪器](/foundry)来规划仍需建造和精通的装备。"
         },
         {
           "type": "p",
-          "text": "由于每件 item 的 mastery 只能获取一次，老玩家会制作便宜的“mastery 狗粮” weapons，纯粹是为了将它们升到 30 级然后处理掉。游戏中有数百种 weapons 和几十个 frames——在你拥有它们全部之前，你早就超过 MR30 了。"
+          "text": "**40 级装备需要额外步骤。** 赤毒、信条和 Coda 武器，以及破战者（Paracesis），每使用一个 Forma 可额外解锁 2 个等级，极化 5 次后最高可达 40 级。只有未曾精通过的等级才会增加经验：Coda 武器在 30 级时获得 3,000 经验，在 31–40 级间再获得 1,000 经验。[Digital Extremes 在 Update 38.5 中解释了 Coda 超级等级机制](https://www.warframe.com/en/patch-notes/pc/38-5-0)。"
         }
       ]
     },
@@ -204,7 +204,7 @@
         },
         {
           "type": "p",
-          "text": "从该表中可以得出两个实用的结论。**要升级 weapon**，要么用它射击，要么在保持在 50 米内时，蹭队友使用 nuke 技能清场时分享的 affinity。**要快速升级 Warframe**，请使用**技能击杀**——这会将 100% 的 affinity 直接灌入你的 frame 中，而队友分享的击杀只有 25%。并且**在升级时不要携带已经满级的 weapons**：分配到满级装备上的 affinity 会被浪费，因此请用你也想升级的未升级 weapons 填满这些槽位。"
+          "text": "**对于单把武器**，当小队能安全应对任务时仅装备该武器：它将获得小队共享经验中武器部分的全部份额。若携带两把武器，该份额平分为二；若三把，则平分为三。需要输出或生存时保留强力备用武器。**对于 Warframe**，在条件允许时使用伤害型技能，或为小队提供实用支援。满级装备仍会分摊经验，但可通过专精晶体（Lens）将经验转化为专精。"
         },
         {
           "type": "warn",
@@ -214,7 +214,7 @@
     },
     {
       "id": "fast-leveling",
-      "title": "最快升级方法（affinity farming）",
+      "title": "根据目标选择经验刷取方案",
       "blocks": [
         {
           "type": "p",
@@ -230,14 +230,14 @@
             ],
             "rows": [
               [
-                "Sanctuary Onslaught / Elite SO",
-                "快速、密集的 XP",
-                "通过 Cephalon Simaris；ESO 适合已经有一定配置的装备"
+                "圣殿屠杀",
+                "升级新 Warframe",
+                "完成《新的怪奇》后的实用选择。新建造的未满级 Warframe 请使用普通模式；在选择精英模式前请检查准入要求。"
               ],
               [
                 "高密度 Defense（例如 Sedna 上的 Hydron，Saturn 上的 Helene）",
-                "轻松、适合挂机的升级方式",
-                "长期以来深受社区喜爱的选择——携带或加入一个能 nuke 的 frame 队伍"
+                "稳定小队练级",
+                "保持靠近小队，防守目标并协助击杀或支援。选择能够安全发挥作用的节点。"
               ],
               [
                 "Void Fissures",
@@ -245,26 +245,26 @@
                 "在开 relics 的同时获得双重经验收益——参见 Relic Farming 工具"
               ],
               [
-                "Duviri Circuit",
-                "升级 + 奖励",
-                "现代化的选择；Steel Path Circuit 适合老玩家"
+                "精英圣殿屠杀",
+                "用准备就绪的 Warframe 练武器",
+                "装备想要升级的武器，并参与小队击杀或提供支援。精英圣殿对 Warframe 等级有门槛要求，因此不是新建战甲的首选。"
               ],
               [
-                "廉价的 Exterminate / Capture",
-                "MR 狗粮",
-                "将刚制作好的过渡 weapons 快速升到 30 级然后回收"
+                "未通关的星图节点",
+                "账号开荒阶段进度",
+                "在解锁枢纽和获取首通段位经验的同时升级装备。在解锁专门的经验刷取点前非常实用。"
               ]
             ],
-            "note": "唯一的“最佳节点”会随着平衡性补丁和活动而变化。请查看实时维基或最近的视频以获取当前的 meta 选择。"
+            "note": "这些是针对不同目标的选项，而非测算每分钟经验值的排行榜。收益取决于你的配装、小队、敌人密度和经验加成。"
           }
         },
         {
           "type": "p",
-          "text": "两个倍率加成能让一切变得更快：使用 **Affinity Booster**（来自商店或 Nightwave/每日签到奖励），并将你的肝度安排在**双倍 affinity 周末**——它们可以叠加为 4 倍 affinity。在 [Void Fissures](/relic-farming) 中升级是效率之王，因为你可以在同一次运行中升级装备*并* farm prime 部件；使用 [relic 价值工具](/relics-value) 来决定哪些 relics 值得开。"
+          "text": "**经验加成**与生效中的**双倍经验活动**叠加可获得 4 倍经验。在规划练级前请检查游戏内活动和加成倒计时。[虚空裂缝](/relic-farming)可将练级与刷 Prime 部件结合，但你仍需要实用的配装和足够的反应物；使用[Relic 价值工具](/relics-value)来对比 Relic 奖励。"
         },
         {
           "type": "tip",
-          "text": "带上一整套需要升级的装备（frame + 3 件 weapons）加入一个带飞的队伍，你就可以在单次游戏中将 **four items** 从 0 级升到 30 级。只需确保你是在击杀点附近保持不动，而不是到处乱跑。"
+          "text": "在**单件快速升级**与**多件同时升级**之间做出选择。相比全配装中的每件武器，仅装备单把武器时每次击杀可分得更多共享经验。全配装会将该经验分散到更多装备上。保持活跃、保护目标，并与小队达成撤离共识。"
         }
       ]
     },
@@ -274,7 +274,7 @@
       "blocks": [
         {
           "type": "p",
-          "text": "高效的 mastery 刷取是一个简单、可重复的循环。目标是接触每件独特的 item 刚好一次，将其升到 30 级，然后永远不再回头。"
+          "text": "从容易获取且尚未精通的装备开始。大多数装备在 30 级时完成精通；在确认装备已练满前，请检查是否存在 40 级例外。"
         },
         {
           "type": "steps",
@@ -286,7 +286,7 @@
             },
             {
               "h": "领取并装备它",
-              "p": "一件全新的 item 是 0 级。它的初始 mod 容量已经等于你的 MR，因此即使是未升级的装备也可以直接用于升级。"
+              "p": "在进入任务前领取装备并安装 Mod。你的段位会为其提供基础 Mod 容量上限，因此 0 级装备也可以安装 Mod。"
             },
             {
               "h": "一次性将其升到 30 级",
@@ -294,11 +294,11 @@
             },
             {
               "h": "保留它，或回收槽位",
-              "p": "一旦升满，mastery 就永久属于你了。卖掉作为 mastery 狗粮的 weapons 以释放槽位并制作下一个。保留任何你真正喜欢的东西。"
+              "p": "出售装备后段位经验仍会保存在你的账号中。出售前，请检查该物品是否为其他蓝图的制作材料，或未来配装所需的装备。保留喜爱和难以替代的装备。"
             },
             {
-              "h": "不要为了 mastery 重新升级",
-              "p": "使用 Forma 会将 item 重置为 0 级以添加极性槽（polarity slots）——这对于配置（builds）非常有用，但它不会提供任何额外的 mastery。只重新升级你正在自定义的装备，而不是为了 MR。"
+              "h": "极化前检查 40 级例外情况",
+              "p": "重复提升已精通的等级不会获得额外段位经验。对于可超越 30 级的装备，Forma 解锁的 30 级以上新等级在首次提升时计入经验。合理规划 Forma 预算，优先用于这些等级或计划使用的配装。"
             }
           ]
         },
@@ -310,37 +310,37 @@
     },
     {
       "id": "mr-tests",
-      "title": "MR 测试与如何准备",
+      "title": "段位考核冷却：失败与通过",
       "blocks": [
         {
           "type": "p",
-          "text": "赚取足够的 mastery 可以让下一个等级*可用*，但你必须**通过 Mastery Rank 测试**才能真正获得它。每个等级都有自己独特的测试——限时跑酷、潜行击杀、在压力下破解控制台、无伤击杀敌人波次等等。随着等级的提升，难度也会增加。"
+          "text": "达到所需的段位经验后，从个人档案启动段位考核。仔细阅读规则：部分考核会对武器或技能有所限制。"
         },
         {
           "type": "steps",
           "ordered": true,
           "steps": [
             {
-              "h": "在 Cephalon Simaris 免费练习",
-              "p": "每个 Relay 都有 Cephalon Simaris，他可以让你**模拟完全相同的测试**，次数不限，没有冷却时间，也没有惩罚。请务必先进行练习。"
+              "h": "检查考核要求",
+              "p": "下一次考核会显示解锁所需的段位经验。选择适合该挑战的配装。"
             },
             {
-              "h": "准备好后进行正式测试",
-              "p": "当你积累了足够的 mastery 时，就会出现升级提示（在你的 Orbiter / 个人资料中）。在练习熟练后尝试进行测试。"
+              "h": "失败后重试",
+              "p": "考核失败**无冷却时间**。调整应对方式后可立即重试。"
             },
             {
-              "h": "如果失败，请等待大约一天",
-              "p": "失败除了需要等待大约 **24 小时的冷却时间**才能再次尝试正式测试外，没有任何惩罚。在等待期间，练习模式依然可以无限次进行。"
+              "h": "通过后等待",
+              "p": "通过考核后将开启 **23 小时冷却时间**，之后才能进行下一次段位考核。"
             }
           ]
         },
         {
-          "type": "warn",
-          "text": "那 24 小时的锁定是唯一的惩罚——所以**绝不要盲目尝试测试。** 在 Simaris 处反复练习，直到你能稳定通过，然后再进行正式测试。许多测试在使用机动性强的 frame（Volt、Titania、Wisp、Zephyr）或优秀的移动配置（build）时也会变得非常简单。"
+          "type": "info",
+          "text": "[Update 38: Warframe: 1999](https://www.warframe.com/en/patch-notes/pc/38-0-0) 于 2024 年 12 月 13 日取消了失败考核的等待时间。Simaris 的考核提示已变更为**重试**。那些告知失败后需等待一天的旧攻略描述的是旧版规则。"
         },
         {
           "type": "tip",
-          "text": "卡在移动或“无伤”测试上了？带上一个拥有速度、隐形或伤害免疫的 frame，这通常能让令人沮丧的测试变成走过场。如果某个特定等级让你感到困扰，请查看最近针对该测试的视频。"
+          "text": "将攻略建议与具体考核相匹配。隐身或移动类技能仅在考核允许的情况下有效；切勿假设推荐的战甲能通关所有挑战。"
         }
       ]
     },
@@ -355,16 +355,15 @@
         {
           "type": "list",
           "items": [
-            "**升级你制作的每样东西。** 每个 frame、weapon 和 companion 都是免费的 mastery——在出售或使用 Forma 之前，将它们升到 30 级一次。",
+            "**建造即升级。** 装备的每个等级仅精通一次。大多数装备在 30 级封顶；拥有超级等级机制的装备在 30 级以上还会提供额外段位经验。",
             "**清理整个 Star Chart，通关两次。** 普通节点、枢纽和 [Steel Path](/guides/steel-path) 节点是巨大的、一次性的 mastery 来源，大多数玩家都忽略了它们。",
             "**注意装备的关键节点。** 一些最强的 weapons 带有 MR 要求，因此多升几级可以解锁你真正想要的 meta 选择。",
             "**如果你在 farm 声望，请优先考虑 MR。** 如果你深入研究 Focus、arcanes 或 syndicates，更高的每日上限会让每一个等级都迅速值回票价。"
           ]
         },
         {
-          "type": "quote",
-          "text": "MR 是探索整个游戏的奖励，而不是一堵需要攀爬的墙。广泛地游玩，将所有东西升级一次，你就会在不知不觉中达到 MR20，而无需刻意去“肝 mastery”。",
-          "cite": "来自 r/Warframe 老玩家的常见建议"
+          "type": "p",
+          "text": "将提升段位作为探索游戏更多内容的动力。在建造和精通新装备的同时保留一套可靠的战斗配装，以免练级耽误主线任务进度。"
         },
         {
           "type": "p",
@@ -376,7 +375,7 @@
   "faqs": [
     {
       "q": "在 Warframe 中如何提升 Mastery Rank？",
-      "a": "通过首次将新装备从 0 级升到 30 级（weapons 提供 3,000，frames 和 companions 提供 6,000），以及清理 Star Chart 节点和枢纽来获取 mastery。一旦你积累了足够的数值，通过该等级的 Mastery Rank 测试即可锁定它。每件独特的 item 仅计算一次——使用 Forma 重新升级不会提供额外的 mastery。"
+      "a": "升级未曾精通的装备等级，通关新星系图节点与枢纽，然后通过下一次段位考核。大多数武器在 30 级时提供 3,000 段位经验；Warframe 和同伴提供 6,000。拥有超级等级机制的装备在其 30 级以上的新等级中可提供额外段位经验。"
     },
     {
       "q": "What does Mastery Rank actually do?",
@@ -388,7 +387,7 @@
     },
     {
       "q": "使用 Forma 或重新升级 weapon 会提供更多 mastery 吗？",
-      "a": "不会。每件 item 仅在其首次达到 30 级时提供一次 mastery。Forma 会将 item 重置为 0 级，以便你添加极性槽（polarity slots）以获得更好的配置（build），但重新升级它不会获得任何额外的 mastery。只在自定义装备时重新升级，绝不要为了 MR 而升级。"
+      "a": "重复提升已精通的等级不会获得额外段位经验。但在赤毒、信条和 Coda 武器或破战者等可超越 30 级的装备上，Forma 能解锁额外等级。这些新等级在首次提升时会提供段位经验：40 级武器的总经验为 4,000，而非 3,000。"
     },
     {
       "q": "队伍中的 affinity 分享是如何运作的？",
@@ -396,7 +395,7 @@
     },
     {
       "q": "如果我 Mastery Rank 测试失败了会怎么样？",
-      "a": "除了需要等待大约 24 小时才能再次尝试正式测试外，什么也不会发生——没有经验值损失或其他惩罚。先在任何 Relay 的 Cephalon Simaris 处免费且无限次地练习完全相同的测试，这样你只有在能稳定通过时才进行正式测试。"
+      "a": "考核失败后可立即重试。通过后才会触发冷却时间：需等待 23 小时才能进行下一次段位考核。Digital Extremes 已在 2024 年 12 月 13 日的 Update 38 中更改了这些规则。"
     },
     {
       "q": "有最高 Mastery Rank 吗？",
@@ -431,20 +430,28 @@
   ],
   "sources": [
     {
-      "label": "r/Warframe — My Journey ends at MR25",
-      "href": "https://reddit.com/r/Warframe/comments/1uockj8/my_journey_ends_at_mr25/"
+      "label": "Digital Extremes — Update 38: Mastery Rank test changes",
+      "href": "https://www.warframe.com/en/patch-notes/pc/38-0-0"
     },
     {
-      "label": "r/Warframe — Mastery Rank & Helminth motivation thread",
-      "href": "https://reddit.com/r/Warframe/comments/idu92w/i_like_the_idea_that_way_people_could_become/"
+      "label": "Warframe Support — Mastery Basics",
+      "href": "https://support.warframe.com/hc/en-us/articles/218718097-Mastery-Basics"
     },
     {
-      "label": "r/Warframe — Affinity farming discussion (Gian Point)",
-      "href": "https://reddit.com/r/Warframe/comments/m4fvff/gian_point_should_become_a_graveyard/"
+      "label": "Digital Extremes — Update 38.5: Coda overleveling",
+      "href": "https://www.warframe.com/en/patch-notes/pc/38-5-0"
     },
     {
-      "label": "Official Warframe Wiki",
-      "href": "https://wiki.warframe.com/"
+      "label": "Digital Extremes — Devstream 110: Sanctuary Onslaught requirements",
+      "href": "https://www.warframe.com/en/news/devstream-110-overview"
+    },
+    {
+      "label": "Warframe Wiki — Mastery Rank",
+      "href": "https://wiki.warframe.com/w/Mastery_Rank"
+    },
+    {
+      "label": "Warframe Wiki — Affinity",
+      "href": "https://wiki.warframe.com/w/Affinity"
     }
   ],
   "related": [
@@ -485,5 +492,5 @@
       "note": "Mastery 追踪器与清单"
     }
   ],
-  "updated": "2026-07-18"
+  "updated": "2026-09-14"
 }

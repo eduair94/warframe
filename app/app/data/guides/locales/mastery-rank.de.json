@@ -13,7 +13,7 @@
     },
     {
       "num": "3,000",
-      "label": "Meisterschaft pro maximierter Waffe",
+      "label": "Meisterschaft pro Rang-30-Waffe",
       "tone": "good"
     },
     {
@@ -38,7 +38,7 @@
         },
         {
           "type": "p",
-          "text": "Die goldene Regel: **Die Meisterschaft jedes einzigartigen Gegenstands zählt nur einmal.** Wenn du deine Braton auf 30 bringst, erhältst du ihre Meisterschaft ein einziges Mal. Sie zu verkaufen, neu zu bauen oder ein Forma hinzuzufügen und sie erneut zu leveln, bringt dir nichts extra. Diese eine Regel prägt jede effiziente Leveling-Strategie auf dieser Seite."
+          "text": "**Meisterschaft wird einmal pro einzigartigem Ausrüstungsrang gewährt.** Ein Braton erneut zu bauen oder Forma zu nutzen, um bereits gemeisterte Ränge zu wiederholen, bringt keine Meisterschaft. Ausrüstung, die über Rang 30 hinaus gelevelt werden kann, ist die Ausnahme: Ihre neu freigeschalteten Ränge zählen weiterhin. Prime- und andere eigenständige Ausrüstungsvarianten haben ihren eigenen Meisterschaftsfortschritt."
         },
         {
           "type": "kv",
@@ -97,7 +97,7 @@
               ],
               [
                 "Start-Mod-Kapazität",
-                "Ausrüstung ohne Rang startet mit einer Mod-Kapazität in Höhe deines MR, gedeckelt auf 30 (verdoppelt durch einen Reactor/Catalyst)"
+                "Dein MR bietet eine Mindestkapazität, begrenzt durch den freigeschalteten maximalen Rang der Ausrüstung. Ein Reaktor oder Katalysator verdoppelt diese Kapazität."
               ]
             ],
             "note": "Höhere Ansehenslimits beschleunigen direkt das Farming von Focus, Arcanes und Syndikaten – siehe die Ansehen- und Focus-Guides."
@@ -161,11 +161,11 @@
         },
         {
           "type": "tip",
-          "text": "Die **Star Chart selbst ist eine riesige Quelle für kostenlose Meisterschaft.** Das einmalige Abschließen jedes Knotens (normal und [Steel Path](/guides/steel-path)) plus aller Junctions ist einen großen Haufen Meisterschaft wert, den viele Spieler übersehen. Nutze die [Drop-Standort-Karte](/star-chart-3d), um zu sehen, was dir noch fehlt."
+          "text": "Das erstmalige Abschließen von Sternenkarten-Knoten und Schienen gewährt Meisterschaft, einschließlich ihrer [Stählerner Pfad](/guides/steel-path)-Versionen. Prüfe dein In-Game-Profil auf Meisterschaftsfortschritt und die Navigation auf unvollständige Knoten. Nutze den [Schmiede-Tracker](/foundry), um Ausrüstung zu planen, die du noch bauen und meistern musst."
         },
         {
           "type": "p",
-          "text": "Da Meisterschaft pro Gegenstand eine einmalige Sache ist, bauen Veteranen billige „Meisterschaftsfutter“-Waffen nur, um sie auf 30 zu bringen und dann weiterzuziehen. Es gibt Hunderte von Waffen und Dutzende von Frames im Spiel – du wirst MR30 erreichen, lange bevor du sie alle besitzt."
+          "text": "**Rang-40-Ausrüstung erfordert einen zusätzlichen Schritt.** Kuva-, Tenet- und Coda-Waffen sowie Paracesis schalten pro Forma zwei zusätzliche Ränge frei, bis zu Rang 40 nach fünf Forma. Nur Ränge, die du noch nie gemeistert hast, bringen Punkte: Eine Coda-Waffe gewährt 3.000 auf Rang 30 und weitere 1.000 über die Ränge 31–40. [Digital Extremes erklärt das Coda-Überleveln in Update 38.5](https://www.warframe.com/en/patch-notes/pc/38-5-0)."
         }
       ]
     },
@@ -204,7 +204,7 @@
         },
         {
           "type": "p",
-          "text": "Aus dieser Tabelle ergeben sich zwei praktische Erkenntnisse. **Um eine Waffe zu leveln**, schieße entweder mit ihr oder nutze die geteilte Affinität eines Teammitglieds, das den Raum leert, während du in einem Umkreis von 50 m bleibst. **Um einen Warframe schnell zu leveln**, erziele **Fähigkeits-Kills** – diese leiten 100 % dieser Affinität direkt in deinen Frame, im Gegensatz zu nur 25 % durch den geteilten Kill eines Teammitglieds. Und **nimm keine bereits maximierten Waffen** auf einen Leveling-Run mit: Affinität, die auf maximierter Ausrüstung landet, ist verschwendet. Fülle diese Slots stattdessen mit Waffen ohne Rang, die du ebenfalls aufstufen möchtest."
+          "text": "**Für eine einzelne Waffe**: Rüste nur diese Waffe aus, wenn dein Squad die Mission sicher bewältigen kann: Sie erhält den gesamten Waffenanteil der geteilten Erfahrung. Bei zwei Waffen wird dieser Anteil halbiert, bei drei gedrittelt. Nimm eine starke Ersatzwaffe mit, wenn du zum Erfolg beitragen oder überleben musst. **Für einen Warframe**: Nutze Schadensfähigkeiten, wenn sinnvoll, oder bringe nützliche Unterstützung für das Squad mit. Ausgemaxte Ausrüstung erhält weiterhin ihren Anteil und kann Erfahrung mit einer Linse in Fokus umwandeln."
         },
         {
           "type": "warn",
@@ -214,7 +214,7 @@
     },
     {
       "id": "fast-leveling",
-      "title": "Schnellste Wege zum Leveln (Affinitäts-Farms)",
+      "title": "Wähle eine Erfahrungsfarm für dein Ziel",
       "blocks": [
         {
           "type": "p",
@@ -230,14 +230,14 @@
             ],
             "rows": [
               [
-                "Sanctuary Onslaught / Elite SO",
-                "Schnelle, dichte EP",
-                "Über Cephalon Simaris; ESO für Ausrüstung, die bereits teilweise ausgebaut ist"
+                "Heiligtum-Ansturm",
+                "Einen neuen Warframe leveln",
+                "Eine praktische Option nach Das Neue Fremde. Nutze den normalen Modus für einen neuen unrangierten Warframe; prüfe die Zugangsvoraussetzungen, bevor du Elite wählst."
               ],
               [
                 "Defense mit hoher Dichte (z. B. Hydron auf Sedna, Helene auf Saturn)",
-                "Entspanntes, AFK-freundliches Leveln",
-                "Langjährige Favoriten der Community – bring einen Nuker-Frame mit oder schließe dich einem an"
+                "Stetiges Leveln im Squad",
+                "Bleibe in der Nähe des Squads, verteidige das Ziel und hilf bei Kills oder Unterstützung. Wähle einen Knoten, zu dem du sicher beitragen kannst."
               ],
               [
                 "Void Fissures",
@@ -245,26 +245,26 @@
                 "Doppelt EP abstauben, während du Relikte öffnest – siehe das Relic Farming-Tool"
               ],
               [
-                "Duviri Circuit",
-                "Leveln + Belohnungen",
-                "Moderne Option; der Steel Path Circuit skaliert für Veteranen"
+                "Elite Heiligtum-Ansturm",
+                "Waffen mit einem vorbereiteten Warframe",
+                "Rüste die Waffe aus, die du leveln möchtest, und trage zu Squad-Kills oder Unterstützung bei. Elite setzt einen bestimmten Warframe-Rang voraus und ist daher nicht die Standardwahl für frisch gebaute Frames."
               ],
               [
-                "Günstige Exterminate / Capture",
-                "MR-Futter",
-                "Frisch gebaute Wegwerfwaffen schnell auf 30 bringen und recyceln"
+                "Noch nicht abgeschlossene Sternenkarten-Knoten",
+                "Früher Account-Fortschritt",
+                "Levele Ausrüstung, während du Schienen freischaltest und Meisterschaft für Erstabschlüsse verdienst. Nützlich, bevor du dedizierte Erfahrungsfarms freischaltest."
               ]
             ],
-            "note": "Der einzelne „beste Knoten“ verschiebt sich mit Balance-Patches und Events. Schau im Live-Wiki oder in einem aktuellen Video nach der aktuellen Meta-Auswahl."
+            "note": "Dies sind Optionen für verschiedene Ziele, keine gemessenen EP-pro-Minute-Ranglisten. Die Ergebnisse hängen von deinem Loadout, Squad, der Gegnerdichte und Boostern ab."
           }
         },
         {
           "type": "p",
-          "text": "Zwei Multiplikatoren machen alles schneller: Nutze einen **Affinitäts-Booster** (aus dem Markt oder von Nightwave-/Login-Belohnungen) und plane deinen Grind für ein **Doppel-Affinitäts-Wochenende** – diese sind für 4-fache Affinität stapelbar. Das Leveln in [Void Fissures](/relic-farming) ist der König der Effizienz, da du Ausrüstung aufstufst *und* gleichzeitig Prime-Teile farmst; nutze das [Relikt-Wert-Tool](/relics-value), um zu entscheiden, was sich zu öffnen lohnt."
+          "text": "Ein **Erfahrungs-Booster** und ein aktives **Doppel-Erfahrungsevent** multiplizieren sich auf 4-fache Erfahrung. Prüfe die In-Game-Event- und Booster-Timer vor der Planung einer Session. [Void-Risse](/relic-farming) können das Leveln mit Prime-Teilen kombinieren, aber du benötigst weiterhin ein nützliches Loadout und genug Reaktant; nutze das [Relic-Wert-Tool](/relics-value), um Relic-Belohnungen zu vergleichen."
         },
         {
           "type": "tip",
-          "text": "Bring ein komplettes Set an Level-Ausrüstung (Frame + 3 Waffen) in einen Gruppen-Carry mit, und du kannst **vier Gegenstände** in einer einzigen Sitzung von 0 auf 30 bringen. Stelle nur sicher, dass du derjenige bist, der in der Nähe der Kills stillhält, anstatt ihnen hinterherzujagen."
+          "text": "Wähle zwischen **einem Gegenstand schnell** und **mehreren Gegenständen zusammen**. Eine einzelne ausgerüstete Waffe erhält pro Kill mehr geteilte Erfahrung als jede Waffe in einem vollen Loadout. Ein volles Loadout verteilt diese Erfahrung auf mehr Gegenstände. Bleibe aktiv, schütze das Ziel und stimme die Evakuierung mit deinem Squad ab."
         }
       ]
     },
@@ -274,7 +274,7 @@
       "blocks": [
         {
           "type": "p",
-          "text": "Effizientes Meisterschafts-Grinden ist ein einfacher, wiederholbarer Loop. Das Ziel ist es, jeden einzigartigen Gegenstand genau einmal anzufassen, ihn auf 30 zu bringen und nie wieder zurückzublicken."
+          "text": "Starte mit zugänglicher Ausrüstung, die du noch nicht gemeistert hast. Die meiste Ausrüstung endet bei Rang 30; prüfe auf Rang-40-Ausnahmen, bevor du einen Gegenstand als abgeschlossen betrachtest."
         },
         {
           "type": "steps",
@@ -286,7 +286,7 @@
             },
             {
               "h": "Abholen und ausrüsten",
-              "p": "Ein frischer Gegenstand hat Rang 0. Er startet bereits mit einer Mod-Kapazität in Höhe deines MR, sodass selbst Ausrüstung ohne Rang für einen Leveling-Run nutzbar ist."
+              "p": "Hole den Gegenstand ab und modde ihn, bevor du eine Mission betrittst. Dein Meisterschaftsrang gewährt ihm eine Mindest-Mod-Kapazität, sodass unrangierte Ausrüstung nicht ungemoddet sein muss."
             },
             {
               "h": "Level es in einer einzigen Sitzung auf 30",
@@ -294,11 +294,11 @@
             },
             {
               "h": "Sichern, den Slot recyceln",
-              "p": "Sobald er maximiert ist, gehört die Meisterschaft dauerhaft dir. Verkaufe Meisterschaftsfutter-Waffen, um den Slot freizugeben, und baue die nächste. Behalte alles, was dir tatsächlich gefällt."
+              "p": "Meisterschaft bleibt auf deinem Account erhalten, nachdem du Ausrüstung verkauft hast. Prüfe vor dem Verkaufen, ob der Gegenstand eine Zutat für eine andere Blaupause ist oder etwas, das du für ein zukünftiges Build möchtest. Behalte Favoriten und schwer zu ersetzende Ausrüstung."
             },
             {
-              "h": "Nicht für Meisterschaft erneut leveln",
-              "p": "Das Hinzufügen eines Forma setzt einen Gegenstand für Polaritäts-Slots auf Rang 0 zurück – großartig für Builds, aber es gibt null zusätzliche Meisterschaft. Level Ausrüstung nur dann erneut, wenn du sie anpasst, nicht für den MR."
+              "h": "Prüfe die Rang-40-Ausnahme vor der Verwendung von Forma",
+              "p": "Das Wiederholen von bereits gemeisterten Rängen bringt keine zusätzliche Meisterschaft. Bei Ausrüstung mit Überleveln schaltet Forma neue Ränge über 30 frei, die beim ersten Mal zählen. Plane Forma für diese Ränge oder für Builds ein, die du nutzen möchtest."
             }
           ]
         },
@@ -310,37 +310,37 @@
     },
     {
       "id": "mr-tests",
-      "title": "MR-Tests & wie man sich vorbereitet",
+      "title": "Meisterschaftsrang-Test-Cooldown: Nichtbestehen vs. Bestehen",
       "blocks": [
         {
           "type": "p",
-          "text": "Das Verdienen von genügend Meisterschaft macht den nächsten Rang *verfügbar*, aber du musst einen **Meisterschaftsrang-Test bestehen**, um ihn tatsächlich zu beanspruchen. Jeder Rang hat seinen eigenen, einzigartigen Test – Parkour auf Zeit, Stealth-Kills, das Hacken von Konsolen unter Druck, das Töten von Wellen ohne Schaden zu nehmen und so weiter. Der Schwierigkeitsgrad steigt mit zunehmendem Rang."
+          "text": "Erreiche die erforderliche Meisterschaft und starte dann den Aufstiegstest aus deinem Profil. Lies die Regeln: Manche Tests schränken Waffen oder Fähigkeiten ein."
         },
         {
           "type": "steps",
           "ordered": true,
           "steps": [
             {
-              "h": "Kostenlos üben bei Cephalon Simaris",
-              "p": "In jedem Relais gibt es Cephalon Simaris, bei dem du **den exakten Test so oft wiederholen** kannst, wie du möchtest – ohne Abklingzeit und ohne Strafe. Übe immer zuerst."
+              "h": "Anforderung prüfen",
+              "p": "Der nächste Test zeigt die erforderliche Meisterschaft zum Freischalten. Wähle ein Loadout, das zur Herausforderung passt."
             },
             {
-              "h": "Mache den echten Test, wenn du bereit bist",
-              "p": "Wenn du genug Meisterschaft angesammelt hast, erscheint die Aufforderung zum Rangaufstieg (in deinem Orbiter / Profil). Versuche es, sobald du dich durch das Üben sicher fühlst."
+              "h": "Wiederholen nach Nichtbestehen",
+              "p": "Ein fehlgeschlagener Versuch hat **keinen Cooldown**. Passe deine Herangehensweise an und versuche es erneut."
             },
             {
-              "h": "Wenn du scheiterst, warte etwa einen Tag",
-              "p": "Es gibt keine Strafe für das Scheitern, abgesehen von einer etwa **24-stündigen Abklingzeit**, bevor du den echten Test erneut versuchen kannst. Übungsläufe bleiben während der Wartezeit unbegrenzt."
+              "h": "Warten nach einem Erfolg",
+              "p": "Das Bestehen startet einen **23-Stunden-Cooldown** vor dem nächsten Aufstiegstest."
             }
           ]
         },
         {
-          "type": "warn",
-          "text": "Diese 24-stündige Sperre ist der einzige Haken – **versuche also niemals einen Test blind.** Übe ihn bei Simaris, bis du ihn beständig bestehst, und mache erst dann den echten. Viele Tests werden zudem mit einem mobilen Frame (Volt, Titania, Wisp, Zephyr) oder einem guten Bewegungs-Build trivial."
+          "type": "info",
+          "text": "[Update 38: Warframe: 1999](https://www.warframe.com/en/patch-notes/pc/38-0-0) hat die Wartezeit nach fehlgeschlagenen Tests am 13. Dezember 2024 entfernt. Simaris' Test-Aufforderung lautet nun **Wiederholen**. Ältere Guides, die dir raten, nach einem Fehlschlag einen Tag zu warten, beschreiben die früheren Regeln."
         },
         {
           "type": "tip",
-          "text": "Steckst du bei einem Bewegungs- oder „Kein-Schaden“-Test fest? Bring einen Frame mit Geschwindigkeit, Unsichtbarkeit oder Schadensimmunität mit, und oft wird ein frustrierender Test zur reinen Formsache. Schau dir ein aktuelles, testspezifisches Video an, wenn dir ein bestimmter Rang Probleme bereitet."
+          "text": "Passe Ratschläge genau an den jeweiligen Test an. Unsichtbarkeits- oder Mobilitätsfähigkeiten helfen nur dort, wo der Test sie erlaubt; gehe nicht davon aus, dass ein empfohlener Frame jede Herausforderung umgehen kann."
         }
       ]
     },
@@ -355,16 +355,15 @@
         {
           "type": "list",
           "items": [
-            "**Levele, was du baust.** Jeder Frame, jede Waffe und jeder Begleiter ist kostenlose Meisterschaft – bringe jeden Gegenstand einmal auf 30, bevor du ihn verkaufst oder ein Forma benutzt.",
+            "**Levele, was du baust.** Meistere jeden Ausrüstungsrang einmal. Die meiste Ausrüstung endet bei 30; Ausrüstung mit Überleveln gewährt darüber hinaus zusätzliche Meisterschaft.",
             "**Schließe die gesamte Star Chart ab, zweimal.** Normale Knoten, Junctions und [Steel Path](/guides/steel-path)-Knoten sind eine gewaltige, einmalige Meisterschaftsquelle, die die meisten Spieler links liegen lassen.",
             "**Achte auf Ausrüstungs-Breakpoints.** Einige der stärksten Waffen haben eine MR-Anforderung, sodass ein paar zusätzliche Ränge eine Meta-Auswahl freischalten können, die du wirklich haben willst.",
             "**Priorisiere den MR, wenn du Ansehen farmst.** Wenn du tief in Focus, Arcanes oder Syndikate einsteigst, sorgt die höhere tägliche Obergrenze dafür, dass sich jeder Rang schnell bezahlt macht."
           ]
         },
         {
-          "type": "quote",
-          "text": "Der MR ist die Belohnung für das Erkunden des gesamten Spiels, keine Wand, die man erklimmen muss. Spiele vielseitig, levele alles einmal, und du wirst bei MR20 aufwachen, ohne jemals „Meisterschaft gegrindet“ zu haben.",
-          "cite": "Häufiger Rat von r/Warframe-Veteranen"
+          "type": "p",
+          "text": "Nutze MR als Anlass, mehr vom Spiel auszuprobieren. Behalte ein zuverlässiges Kampf-Loadout, während du neue Ausrüstung baust und meisterst, damit das Leveln deinen Quest-Fortschritt nicht bremst."
         },
         {
           "type": "p",
@@ -376,7 +375,7 @@
   "faqs": [
     {
       "q": "Wie erhöht man den Meisterschaftsrang in Warframe?",
-      "a": "Verdiene Meisterschaft, indem du neue Ausrüstung zum ersten Mal von 0 auf 30 levelst (Waffen geben 3.000, Frames und Begleiter geben 6.000) und indem du Star Chart-Knoten und Junctions abschließt. Sobald du genug angesammelt hast, bestehe den Meisterschaftsrang-Test dieses Rangs, um ihn freizuschalten. Jeder einzigartige Gegenstand zählt nur einmal – erneutes Leveln mit Forma gibt keine zusätzliche Meisterschaft."
+      "a": "Levele Ausrüstungsränge, die du noch nicht gemeistert hast, schließe neue Sternenkarten-Knoten und Schienen ab und bestehe den nächsten Aufstiegstest. Die meisten Waffen gewähren 3.000 Meisterschaft auf Rang 30; Warframes und Begleiter gewähren 6.000. Ausrüstung mit Überleveln kann zusätzliche Meisterschaft für ihre neuen Ränge über 30 gewähren."
     },
     {
       "q": "Was bewirkt der Meisterschaftsrang eigentlich?",
@@ -388,7 +387,7 @@
     },
     {
       "q": "Gibt das Hinzufügen von Forma oder das erneute Leveln einer Waffe mehr Meisterschaft?",
-      "a": "Nein. Jeder Gegenstand gewährt seine Meisterschaft ein einziges Mal, wenn er zum ersten Mal Rang 30 erreicht. Ein Forma setzt den Gegenstand auf Rang 0 zurück, damit du Polaritäts-Slots für einen besseren Build hinzufügen kannst, aber du verdienst durch das erneute Leveln null zusätzliche Meisterschaft. Level Ausrüstung nur dann erneut, wenn du sie anpasst, niemals für den MR."
+      "a": "Das Wiederholen von bereits gemeisterten Rängen bringt keine zusätzliche Meisterschaft. Forma schaltet jedoch zusätzliche Ränge bei Ausrüstung mit Überleveln frei, wie etwa Kuva-, Tenet- und Coda-Waffen oder Paracesis. Diese neuen Ränge gewähren einmalig Meisterschaft: Eine Rang-40-Waffe bringt insgesamt 4.000 statt 3.000."
     },
     {
       "q": "Wie funktioniert das Teilen von Affinität in einer Gruppe?",
@@ -396,7 +395,7 @@
     },
     {
       "q": "Was passiert, wenn ich einen Meisterschaftsrang-Test nicht bestehe?",
-      "a": "Nichts, außer einer etwa 24-stündigen Wartezeit, bevor du den echten Test erneut versuchen kannst – es gibt keinen EP-Verlust oder andere Strafen. Übe den exakten Test zuerst kostenlos und unbegrenzt oft bei Cephalon Simaris in einem beliebigen Relais, sodass du den echten Test erst dann machst, wenn du ihn beständig bestehen kannst."
+      "a": "Du kannst nach einem Fehlschlag sofort erneut versuchen. Der Cooldown gilt erst nach dem Bestehen: Warte 23 Stunden bis zum nächsten Aufstiegstest. Digital Extremes hat diese Regeln in Update 38 am 13. Dezember 2024 geändert."
     },
     {
       "q": "Gibt es einen maximalen Meisterschaftsrang?",
@@ -431,20 +430,28 @@
   ],
   "sources": [
     {
-      "label": "r/Warframe — My Journey ends at MR25",
-      "href": "https://reddit.com/r/Warframe/comments/1uockj8/my_journey_ends_at_mr25/"
+      "label": "Digital Extremes — Update 38: Mastery Rank test changes",
+      "href": "https://www.warframe.com/en/patch-notes/pc/38-0-0"
     },
     {
-      "label": "r/Warframe — Mastery Rank & Helminth motivation thread",
-      "href": "https://reddit.com/r/Warframe/comments/idu92w/i_like_the_idea_that_way_people_could_become/"
+      "label": "Warframe Support — Mastery Basics",
+      "href": "https://support.warframe.com/hc/en-us/articles/218718097-Mastery-Basics"
     },
     {
-      "label": "r/Warframe — Affinity farming discussion (Gian Point)",
-      "href": "https://reddit.com/r/Warframe/comments/m4fvff/gian_point_should_become_a_graveyard/"
+      "label": "Digital Extremes — Update 38.5: Coda overleveling",
+      "href": "https://www.warframe.com/en/patch-notes/pc/38-5-0"
     },
     {
-      "label": "Official Warframe Wiki",
-      "href": "https://wiki.warframe.com/"
+      "label": "Digital Extremes — Devstream 110: Sanctuary Onslaught requirements",
+      "href": "https://www.warframe.com/en/news/devstream-110-overview"
+    },
+    {
+      "label": "Warframe Wiki — Mastery Rank",
+      "href": "https://wiki.warframe.com/w/Mastery_Rank"
+    },
+    {
+      "label": "Warframe Wiki — Affinity",
+      "href": "https://wiki.warframe.com/w/Affinity"
     }
   ],
   "related": [
@@ -485,5 +492,5 @@
       "note": "Meisterschafts-Tracker & Checklisten"
     }
   ],
-  "updated": "2026-07-18"
+  "updated": "2026-09-14"
 }

@@ -27,7 +27,20 @@ the landing page is not double-counted.
 | `outbound_click` | `link_url`, `link_domain`, `link_target`, `link_text`, `page_path`, `tool` | any click on an external `<a>` (delegated, capture phase) |
 | `scroll_depth` | `percent_scrolled` (25/50/75/90), `page_path`, `tool` | per route, pages taller than 400px only |
 | `exception` | `description`, `fatal`, `page_path` | Vue errors, app errors, unhandled rejections |
-| `web_vitals` | `metric_name` (LCP/CLS/INP), `metric_value`, `metric_rating`, `page_path`, `tool` | once per page, on hide/pagehide |
+| `web_vitals` | `metric_name` (LCP/CLS/INP), `metric_value`, `metric_delta`, `metric_id`, `metric_rating`, `navigation_type`, `page_path`, `tool` | when Google's `web-vitals` library reports a metric, including visibility changes and bfcache restores |
+
+Core Web Vitals use the [official measurement library](https://github.com/GoogleChrome/web-vitals),
+loaded after hydration. Document metrics retain their navigation URL instead of being attributed to
+whichever SPA route is open when the tab is hidden. CLS uses session windows and preserves three decimal
+places, including zero; INP uses interaction measurements rather than the single longest event.
+Reports can repeat as a metric changes: group by `metric_id` and use its latest value, or sum its deltas;
+do not count each report as a separate visit. Measurements before this change used an approximation and
+should not be compared directly with the new series.
+
+Tag initialization restores Nuxt context for delayed callbacks. Events recorded before the data layer
+exists are buffered (maximum 50) and flushed after initialization. Verify this with
+`npm --prefix app run test:analytics`. Sessions closed before the deferred tag loads may still be lost;
+client analytics also depends on browser blocking and is not a complete server traffic count.
 
 `link_target` buckets the destination: `warframe_market`, `wiki`, `drop_tables`, `youtube`, `github`,
 `reddit`, `donation`, `social`, `external_tool`.
@@ -80,7 +93,8 @@ Suggested key events (conversions): `market_open`, `trade_message_copy`, `watchl
 `push_subscribe`, `pwa_accepted`, `tool_action` filtered to `donate_click`.
 
 GA4 limits enforced in `useAnalytics.ts`: event name ≤40 chars, param name ≤40, param value ≤100 chars,
-≤25 params per event; empty/NaN values are dropped, numbers rounded to 2 decimals.
+≤25 params per event; empty/NaN values are dropped, numbers rounded to 2 decimals
+(3 decimals for `metric_value` and `metric_delta`).
 
 ## Adding an event
 

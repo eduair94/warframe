@@ -28,7 +28,7 @@ export const useItemsStore = defineStore('items', {
     allRelics: (state): WarframeItem[] =>
       state.items.filter((el) => el.tags.includes('relic')),
     allSets: (state): WarframeItem[] =>
-      state.items.filter((el) => el.item_name.includes(' Set')),
+      state.items.filter((el) => el.item_name.endsWith(' Set')),
     // Cross-reference maps: the riven list and drop tables carry STALE thumb
     // hashes (warframe.market rotates them); the freshly-synced catalog has the
     // current thumb. Look items up by url_name (preferred) or item_name to show

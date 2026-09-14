@@ -326,19 +326,25 @@ useSeoPage({
 // SSR fetch of the single relic's EV row (rewards + authoritative chances +
 // market book). Server-rendered so the numbers are in the initial HTML for SEO.
 const { data: relic, error } = await useAsyncData<RelicRow | null>(
-  `relic-ev-${relicSlug.value || 'none'}`,
+  () => `relic-ev-${relicSlug.value || 'none'}`,
   async () => {
     if (!relicSlug.value) return null
     const r = await $fetch<any>(`${base}/relic_ev/${encodeURIComponent(relicSlug.value)}`)
-    // The cached API wrapper answers a failed producer with a 200 { error } body
-    // (not an HTTP error), which would slip past a plain `!relic` guard and crash
-    // the template on relic.rewards. Only a well-formed EV row (with a rewards
-    // array) counts as data; anything else becomes null → the not-found state.
-    return r && Array.isArray(r.rewards) ? (r as RelicRow) : null
+    const statusCode = entityPayloadStatus('relic', r)
+    if (statusCode !== 200) {
+      throw createError({ statusCode, statusMessage: statusCode === 404 ? 'Relic not found' : 'Relic data temporarily unavailable' })
+    }
+    return r as RelicRow
   },
   { watch: [relicSlug] },
 )
-const loadError = computed(() => !!error.value)
+// Preserve the in-page empty/error states while returning an honest HTTP status
+// to crawlers. An unavailable API must never make a real relic look deleted.
+if (import.meta.server && relicSlug.value && !relic.value) {
+  const event = useRequestEvent()
+  if (event) setResponseStatus(event, error.value?.statusCode === 404 ? 404 : 503)
+}
+const loadError = computed(() => !!error.value && error.value.statusCode !== 404)
 
 const refinement = ref('Intact')
 const refinementLabel = computed(() =>

@@ -29,10 +29,10 @@ const { trackAction, trackLocaleChange } = useAnalytics()
 
 // ---- Structured data (JSON-LD) --------------------------------------------
 // WebSite + WebApplication describing the tool, so Google / AI answer engines
-// can identify and cite it. Origin is derived per-request so it's correct in
-// dev and prod without hardcoding. `<` is escaped to keep the inline script
-// safe even though all values here are static.
-const origin = useRequestURL().origin
+// can identify and cite it. Use the same configured site origin as canonicals:
+// prerendering and cache-warming requests can otherwise publish localhost URLs.
+// `<` is escaped to keep the inline script safe.
+const origin = useSiteConfig().url.replace(/\/+$/, '')
 const ORG_ID = origin + '/#org'
 const AUTHOR = {
   '@type': 'Person',

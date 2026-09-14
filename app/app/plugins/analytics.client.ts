@@ -48,6 +48,7 @@ export default defineNuxtPlugin((nuxtApp) => {
   if (!import.meta.client) return
 
   const router = useRouter()
+  const { initialize } = useGtag()
 
   // ---- 0. lazy gtag.js boot -------------------------------------------------
   // The tag is configured `initMode: 'manual'` so nothing third-party runs while
@@ -69,11 +70,13 @@ export default defineNuxtPlugin((nuxtApp) => {
   let gtagBooted = false
   const bootGtag = () => {
     if (gtagBooted) return
-    gtagBooted = true
-    for (const type of INTERACTION_EVENTS) window.removeEventListener(type, bootGtag, true)
     try {
-      useGtag().initialize()
+      // initialize() calls useHead internally, so timer/DOM callbacks must
+      // restore the Nuxt context too, not only capture the composable early.
+      nuxtApp.runWithContext(() => initialize())
       flushPendingEvents()
+      gtagBooted = true
+      for (const type of INTERACTION_EVENTS) window.removeEventListener(type, bootGtag, true)
     } catch {
       // A blocked or failed tag must never surface to the user.
     }
@@ -192,62 +195,40 @@ export default defineNuxtPlugin((nuxtApp) => {
   })
 
   // ---- 5. web vitals --------------------------------------------------------
-  // Minimal in-house reporter (no web-vitals dependency): LCP and CLS are
-  // reported once at page hide, INP is approximated by the worst event latency.
-  // Values land in GA4 as `web_vitals` events with `metric_name`/`metric_value`,
-  // which is enough to spot a page that regresses.
-  const vitals = { lcp: 0, cls: 0, inp: 0 }
-  const observers: PerformanceObserver[] = []
-  const observe = (type: string, cb: (entries: PerformanceEntryList) => void, extra: any = {}) => {
+  // Defer Google's implementation until hydration finishes. It reads buffered
+  // entries and handles CLS session windows, INP interactions and bfcache.
+  // Document metrics belong to the landing URL, even after an SPA navigation.
+  const landingPath = router.currentRoute.value.path
+  nuxtApp.hook('app:mounted', async () => {
     try {
-      const po = new PerformanceObserver((list) => cb(list.getEntries()))
-      po.observe({ type, buffered: true, ...extra })
-      observers.push(po)
+      const { onCLS, onINP, onLCP } = await import('web-vitals')
+      const report = (metric: import('web-vitals').Metric) => {
+        const path = metric.navigationURL
+          ? new URL(metric.navigationURL, window.location.origin).pathname
+          : landingPath
+        trackEvent('web_vitals', {
+          metric_name: metric.name,
+          metric_value: metric.value,
+          metric_delta: metric.delta,
+          metric_id: metric.id,
+          metric_rating: metric.rating.replace('-', '_'),
+          navigation_type: metric.navigationType,
+          page_path: path,
+          tool: toolFromPath(path),
+          send_to: gaId
+        })
+      }
+      onCLS(report)
+      onINP(report)
+      onLCP(report)
     } catch {
-      // Unsupported entry type (Safari/Firefox for some of these) — skip it.
+      // A blocked chunk or unsupported browser must never break the page.
     }
-  }
-  observe('largest-contentful-paint', (entries) => {
-    const last = entries[entries.length - 1] as any
-    if (last) vitals.lcp = last.startTime
   })
-  observe('layout-shift', (entries) => {
-    for (const entry of entries as any[]) if (!entry.hadRecentInput) vitals.cls += entry.value
-  })
-  observe('event', (entries) => {
-    for (const entry of entries as any[]) vitals.inp = Math.max(vitals.inp, entry.duration || 0)
-  }, { durationThreshold: 40 })
-
-  let vitalsSent = false
-  const flushVitals = () => {
-    if (vitalsSent) return
-    vitalsSent = true
-    const path = router.currentRoute.value.path
-    const report = (name: string, value: number, good: number, poor: number) => {
-      if (!value) return
-      trackEvent('web_vitals', {
-        metric_name: name,
-        metric_value: Math.round(value * (name === 'CLS' ? 1000 : 1)) / (name === 'CLS' ? 1000 : 1),
-        metric_rating: value <= good ? 'good' : value <= poor ? 'needs_improvement' : 'poor',
-        page_path: path,
-        tool: toolFromPath(path)
-      })
-    }
-    report('LCP', vitals.lcp, 2500, 4000)
-    report('CLS', vitals.cls, 0.1, 0.25)
-    report('INP', vitals.inp, 200, 500)
-  }
-  // `visibilitychange` is the only reliable "page is going away" signal on
-  // mobile; `pagehide` covers bfcache/Safari.
-  const onHide = () => {
-    if (document.visibilityState === 'hidden') flushVitals()
-  }
 
   document.addEventListener('click', onClick, { capture: true, passive: true })
   window.addEventListener('scroll', onScroll, { passive: true })
   window.addEventListener('unhandledrejection', onRejection)
-  document.addEventListener('visibilitychange', onHide)
-  window.addEventListener('pagehide', flushVitals)
 
   // First view: `page:finish` does not fire for the SSR-hydrated initial route.
   nuxtApp.hook('app:mounted', () => {

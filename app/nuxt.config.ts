@@ -7,7 +7,8 @@ import toolSources from './app/data/tools.source.json'
 
 // Dynamic /tools/<slug> detail routes + the best-tools guide aren't discoverable
 // by the sitemap module (they're rendered from a data file, not static pages),
-// so feed them in explicitly. English content, so no per-locale variants needed.
+// so feed them in explicitly. Research prose and descriptions now have localized
+// versions; transform these routes just like the live entity pages.
 const TOOL_ROUTES: string[] = [
   '/tools/best',
   ...(toolSources as Array<{ slug: string }>).map((t) => `/tools/${t.slug}`),
@@ -446,7 +447,7 @@ export default defineNuxtConfig({
   // optional-catch-all routes rendered from the live catalogue — so a server
   // source (server/api/__sitemap__/urls.ts) enumerates them with i18n alternates.
   sitemap: {
-    urls: TOOL_ROUTES,
+    urls: TOOL_ROUTES.map((loc) => ({ loc, _i18nTransform: true })),
     sources: ['/api/__sitemap__/urls']
   },
 
@@ -561,11 +562,45 @@ export default defineNuxtConfig({
     },
     workbox: {
       navigateFallback: null,
-      globPatterns: ['**/*.{js,css,html,png,svg,ico,woff2}'],
+      // Precaching every route and locale downloaded ~20 MB on installation,
+      // even when the visitor only opened one guide. Keep installation small;
+      // compiled assets enter the runtime cache only when actually requested.
+      globPatterns: [
+        'favicon.{svg,ico}',
+        'favicon-{16x16,32x32}.png',
+        'apple-touch-icon.png',
+        'android-chrome-{192x192,384x384}.png',
+        'maskable-icon-512x512.png'
+      ],
+      // @vite-pwa/nuxt appends build manifests (and prerender payload patterns).
+      // They describe the running deployment and must stay network-fresh. A
+      // custom transform also avoids its default transform re-adding latest.json.
+      manifestTransforms: [async (entries) => ({
+        manifest: entries.filter(({ url }) => !/^\/?_nuxt\//.test(url) && !/(^|\/)_payload\.json$/.test(url)),
+        warnings: []
+      })],
+      cleanupOutdatedCaches: true,
       // Web Push (Spec B): pull the push/notificationclick handlers into the
       // generated SW so a single service worker does caching AND push.
       importScripts: ['/push-sw.js'],
       runtimeCaching: [
+        {
+          // Nuxt content hashes make these URLs immutable. Keep HTML, payloads,
+          // build metadata and third-party requests out of this cache.
+          urlPattern: ({ url, sameOrigin }) => sameOrigin
+            && /^\/_nuxt\/(?:[^/]+\.)?[A-Za-z0-9_-]{8,}\.(?:js|css)$/.test(url.pathname),
+          handler: 'CacheFirst',
+          method: 'GET',
+          options: {
+            cacheName: 'warframe-built-assets-v1',
+            cacheableResponse: { statuses: [200] },
+            expiration: {
+              maxEntries: 160,
+              maxAgeSeconds: 30 * 24 * 60 * 60,
+              purgeOnQuotaError: true
+            }
+          }
+        },
         {
           // Cache the API origin (build-time env, same as the old config).
           urlPattern: new RegExp(
