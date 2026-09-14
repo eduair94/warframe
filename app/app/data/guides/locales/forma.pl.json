@@ -1,0 +1,469 @@
+{
+  "slug": "forma",
+  "eyebrow": "Centrum wiedzy · Farming Form",
+  "title": "Jak farmić Formy: Relikty, wytwarzanie i Plague Star",
+  "lede": "Farm Schematy Form z reliktów, które je zawierają, wybierz odpowiednią rafinację pod kątem slotu z nagrodą i utrzymuj ciągłość pracy Odlewni. Porównaj farmienie schematów z gotowymi Formami, uwzględniając wydarzenie Plague Star ze września 2026 roku, zanim poświęcisz swój czas lub Platynę.",
+  "category": "farming",
+  "readMins": 9,
+  "updated": "2026-09-14",
+  "stats": [
+    {
+      "num": "1",
+      "label": "wybór nagrody przez każdego gracza na otwarty relikt",
+      "tone": "good"
+    },
+    {
+      "num": "2×",
+      "label": "schematy w nagrodzie Niezwykłej (Uncommon) Formy",
+      "tone": "alt"
+    },
+    {
+      "num": "23 h",
+      "label": "czas budowy standardowej Formy w Odlewni",
+      "tone": "gold"
+    },
+    {
+      "num": "3",
+      "label": "progi zleceń Plague Star do porównania"
+    }
+  ],
+  "sections": [
+    {
+      "id": "why-zero",
+      "title": "Dlaczego możesz otwierać relikty i nie dostać żadnej Formy?",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Nagroda w postaci Formy jest losowa. Kilka nieudanych otwarć może się zdarzyć nawet wtedy, gdy wybierzesz odpowiedni relikt i drużynę. Sprawdź faktyczną listę nagród: **nie każdy relikt zawiera Formę**, a schemat to nie to samo co gotowa Forma."
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Sprawdź slot i ilość.** Schematy Form pojawiają się w Pospolitych (Common) i Niezwykłych (Uncommon) slotach nagród reliktów. Niezwykłe nagrody Formy dają dwa schematy, zgodnie z [Aktualizacją 36.1](https://www.warframe.com/en/patch-notes/pc/36-1-0). Sprawdź ilość na konkretnym otwieranym relikcie.",
+            "**Dopasuj rafinację do slotu.** Nienaruszony (Intact) sprzyja Pospolitej nagrodzie; rafinacja zwiększa szansę na Niezwykłą nagrodę. Sprawdź slot nagrody przed wydaniem Śladów Pustki (Void Traces).",
+            "**Skorzystaj z drużyny, jeśli chcesz mieć większy wybór.** Uprawnieni gracze mogą wybierać spośród nagród ujawnionych przez członków drużyny. Te dodatkowe losowania pomagają tylko wtedy, gdy ktoś z drużyny otworzy relikt z nagrodą, której chcesz; publiczny dobieracz składu nie gwarantuje Formy."
+          ]
+        },
+        {
+          "type": "info",
+          "title": "Praktyczny punkt wyjścia",
+          "text": "Skorzystaj z [wyszukiwarki reliktów Formy](/forma-relics), aby znaleźć odpowiedni relikt i miejsca jego farmienia. Zachowaj relikt ze slotem Pospolitej Formy jako Nienaruszony (Intact), dołącz do szczeliny, którą możesz bez problemu ukończyć, i zacznij wytwarzanie, gdy zdobędziesz schemat."
+        }
+      ]
+    },
+    {
+      "id": "plague-star-2026",
+      "title": "Plague Star 2026: termin, wymagania i nagrody",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Zrecenzowano 14 września 2026 r.:** [Operacja: Plague Star](https://www.warframe.com/en/news/operation-plague-star-2026) jest dostępna na wszystkich platformach do **23 września 2026 r., do godziny 10:00 czasu ET (14:00 czasu UTC)**. Rozpocznij zlecenie Konzu w Cetus, aby zdobyć Standing (Reputację) Operacyjnego Zaopatrzenia."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Poziom",
+              "Wymagania",
+              "Bazowy Standing + bonus za ukończenie"
+            ],
+            "rows": [
+              [
+                "1",
+                "Brak wymagań wstępnych",
+                "1025 + 25"
+              ],
+              [
+                "2",
+                "1 Fylaksjum Eidolona (Eidolon Phylaxis) + 1 Zarażony Katalizator (Infested Catalyst)",
+                "3200 + 75"
+              ],
+              [
+                "3",
+                "Materiały eksploatacyjne poziomu 2 + uprawnienie do Steel Path",
+                "3800 + 100"
+              ]
+            ],
+            "note": "Bonus za ukończenie jest niezależny od nagrody bazowej. Wybierz poziom, który Twoja drużyna może konsekwentnie kończyć."
+          }
+        },
+        {
+          "type": "p",
+          "text": "Zapowiedziane przez Nakak nowości obejmują **gotową Umbra Formę**, trzy Sigile oraz skórkę Dwuręcznej Nikany Maligna (Two-Handed Nikana Maligna Skin). Przed rozpoczęciem grindu sprawdź jej aktualną ofertę pod kątem wariantu Formy, którego potrzebujesz, jego ceny, wymaganego rangi oraz limitu zakupu. Ogłoszenie nie określa tych szczegółów sklepu; ceny z starszych wydarzeń nie ustalają kosztów na rok 2026."
+        }
+      ]
+    },
+    {
+      "id": "relic-method",
+      "title": "Jak farmić schematy Form z reliktów",
+      "blocks": [
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "h": "Wybierz relikt i jego rafinację",
+              "p": "Najpierw sprawdź jego slot nagrody Formy. Pozostaw relikty z Pospolitym slotem jako Nienaruszone (Intact), jeśli Twoim głównym celem jest Forma. W przypadku slotu Niezwykłego (Uncommon) rozważ lepszą szansę w stosunku do Śladów Pustki (Void Traces), które mogłiesz zużyć na inną nagrodę. Relikty wycofane (Vaulted), które już masz w ekwipunku, nadal można otwierać."
+            },
+            {
+              "h": "Otwórz relikt i uzyskaj uprawnienia do nagrody",
+              "p": "Wybierz pasującą Szczelinę Pustki (Void Fissure) i wyposaż relikt. Zbierz **10 Reagujących** przed ukończeniem misji lub interwału nagrody. Przynieś własny relikt i ukończ wymagania jego otwierania, aby móc wybrać spośród nagród odsłoniętych przez drużynę."
+            },
+            {
+              "h": "Wybierz jedną nagrodę, a następnie powtórz",
+              "p": "Każdy uprawniony gracz wybiera **jedną nagrodę** spośród odsłoniętych opcji. Jeśli tą nagrodą jest zestaw dwóch schematów Formy, otrzymujesz dwa schematy. Nie otrzymujesz wszystkich czterech nagród drużyny, nawet jeśli każdy relikt odsłoni Formę."
+            },
+            {
+              "h": "Porównaj misje pod kątem ukończonych otwarć",
+              "p": "Szybka szczelina typu Przechwycenie (Capture) lub Eksterminacja (Exterminate) może sprawdzić się podczas krótkich sesji. Nieskończone szczeliny pozwalają otwierać więcej reliktów bez wracania do Orbitera; wyposaż świeży relikt dla każdego interwału. Wybierz dostępną misję, którą Twoja drużyna sprawnie czyści, zbierając jednocześnie Reagenty. Tryb nieskończony nie automatycznie oznacza szybszego działania."
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Rafinacja",
+              "Jeden Pospolity slot",
+              "Jeden Niezwykły slot",
+              "Ślady Pustki (Void Traces)"
+            ],
+            "rows": [
+              [
+                "Nienaruszony (Intact)",
+                "25.33%",
+                "11%",
+                "0"
+              ],
+              [
+                "Wyjątkowy (Exceptional)",
+                "23.33%",
+                "13%",
+                "25"
+              ],
+              [
+                "Nienaganny (Flawless)",
+                "20%",
+                "17%",
+                "50"
+              ],
+              [
+                "Promienny (Radiant)",
+                "16.67%",
+                "20%",
+                "100"
+              ]
+            ],
+            "note": "Prawdopodobieństwa per slot, a nie gwarancja drużyny. Jeśli relikt wymienia Formę w wielu slotach, weź pod uwagę każdą wymienioną nagrodę Formy oraz jej ilość."
+          }
+        },
+        {
+          "type": "p",
+          "text": "[Oficjalne tabele dropów na PC](https://www.warframe.com/droptables) zawierają poszczególne nagrody z reliktów i prawdopodobieństwa. [Wyszukiwarka reliktów Formy](/forma-relics) pomaga zlokalizować węzły farmienia; sprawdź podgląd nagród w grze przed zużyciem reliktu. Informacje o podstawach rafinacji i szczelin znajdziesz w sekcji [Relikty i Ślady Pustki](/guides/relics)."
+        }
+      ]
+    },
+    {
+      "id": "no-relics",
+      "title": "Zdobywanie Formy bez otwierania reliktów",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Porównując nagrody, oddzielaj **gotowe Formy** od **schematów Form**. Gotowa Forma jest od razu gotowa do użycia; schemat nadal wymaga zasobów i czasu w Odlewni. Sprawdź również dokładny wariant: standardowa, Omni, Umbra i Stance Forma służą do różnych celów."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Trasa",
+              "Co sprawdzić",
+              "Kiedy to pomaga"
+            ],
+            "rows": [
+              [
+                "Rynek w grze (In-game Market)",
+                "Standardowy zestaw 3 Form jest wyceniony na 35 Platyny; sprawdź ostateczną cenę przed zakupem.",
+                "Potrzebujesz gotowej Formy natychmiast i masz na to zaplanowany budżet w Platynie."
+              ],
+              [
+                "Nightwave",
+                "Sprawdź obecną ścieżkę nagród pod kątem zestawu Form i jego aktualnej rangi.",
+                "I tak wykonujesz wyzwania; ranga nagrody z poprzedniego sezonu może się różnić."
+              ],
+              [
+                "Sorties i inne pule nagród",
+                "Przeczytaj aktualną listę nagród i odróżnij losową szansę od gwarantowanej nagrody.",
+                "Zależy Ci również na innych nagrodach. Nie planuj określonej liczby rund wokół jednego szczęśliwego dropu."
+              ],
+              [
+                "Oferty wydarzeń",
+                "Przeczytaj powyższą sekcję dotyczącą Plague Star z datami, a następnie sprawdź sklep Nakak.",
+                "Możesz zdobywać Standing wydarzenia w czasie jego ograniczonej dostępności."
+              ]
+            ],
+            "note": "Zestaw z Rynku został wprowadzony w Specters of the Rail. Nagrody sezonowe i asortymenty wydarzeń wymagają sprawdzenia ich aktualnego stanu w grze."
+          }
+        },
+        {
+          "type": "tip",
+          "title": "Zaplanuj koszt przed zakupem",
+          "text": "Jeśli handlujesz w celu zdobycia Platyny, porównaj czas potrzebny na jej zarobienie z otwieraniem reliktów i czekaniem na Odlewnię. Zostaw sobie zapas na inne priorytety, takie jak sloty w ekwipunku. Nasz [poradnik dotyczący Platyny](/guides/platinum) omawia opcje handlu."
+        }
+      ]
+    },
+    {
+      "id": "bulk",
+      "title": "Jak zbudować użyteczny zapas Form",
+      "blocks": [
+        {
+          "type": "list",
+          "items": [
+            "**Utrzymuj Odlewnię w stanie aktywności, gdy potrzebujesz zapasów.** Standardowa Forma zajmuje 23 godziny. Odebranie ukończonego przedmiotu i rozpoczęcie kolejnego craftingu o zwykłej porze logowania sprawia, że codzienna dostawa staje się realna; proces ten nie uruchamia się samoczynnie.",
+            "**Zapewnij schematy i zasoby z wyprzedzeniem przed kolejną budową.** Sam duży zapas schematów nie wytworzy użytecznej Formy. Sprawdź swoje zasoby wszystkich czterech materiałów rzemieślniczych przed dłuższą sesją z reliktami.",
+            "**Najpierw ukończ jeden zaplanowany loadout.** Zaplanuj polaryzacje, których faktycznie potrzebujesz, a następnie zbuduj zapas dla kolejnego przedmiotu. Wydawanie Formy na każdy nowo zdobyty broń może pozostawić Twój główny zestaw nieukończonym.",
+            "**Porównaj gotowe nagrody z wytwarzaniem.** Wydarzenie lub zakup na Rynku mogą ominąć czas Odlewni, ale sprawdź ich aktualny koszt i warunki. Sprawdź ofertę sklepu przed obliczeniem, ile Form możesz uzyskać za swój Standing."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "build",
+      "title": "Przepis na wytwarzanie Formy i jak ją zastosować",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Każde wytworzenie standardowej Formy zużywa **jeden schemat Formy** oraz zasoby wymienione poniżej. [Dane przedmiotów programistów społeczności Warframe](https://github.com/WFCD/warframe-items/blob/master/data/json/Misc.json) rejestrują ten przepis; [Aktualizacja 27.3](https://www.warframe.com/en/patch-notes/pc/27-3-0) ustaliła 23-godzinny czas budowy."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Składnik lub koszt",
+              "Dla jednej Formy"
+            ],
+            "rows": [
+              [
+                "Kredyty",
+                "35 000"
+              ],
+              [
+                "Morfiki (Morphics)",
+                "1"
+              ],
+              [
+                "Sensory Neurowe (Neural Sensors)",
+                "1"
+              ],
+              [
+                "Neurody (Neurodes)",
+                "1"
+              ],
+              [
+                "Komórka Orokin (Orokin Cell)",
+                "1"
+              ],
+              [
+                "Czas budowy",
+                "23 godziny"
+              ]
+            ],
+            "note": "Dwa schematy Formy wymagają dwóch osobnych procesów wytwarzania i dwukrotności tych zasobów. Schemat jest zużywany podczas rzemiosła."
+          }
+        },
+        {
+          "type": "p",
+          "text": "Aby spolaryzować kwalifikujący się sprzęt, otwórz **Arsenał (Arsenal) → Ulepsz (Upgrade) → Akcje (Actions) → Spolaryzuj (Polarize)**. Ostrożnie wybierz slot i docelową polaryzację, a następnie przeanalizuj potwierdzenie. Standardowa Forma może dodać, zmienić lub usunąć polaryzację i resetuje rangę przedmiotu. Pasująca polaryzacja zmniejsza koszt normalnego Moda; sloty Aury (Aura) i Postawy (Stance) wpływają na pojemność w inny sposób."
+        },
+        {
+          "type": "warn",
+          "title": "Potwierdź polaryzację przed wydaniem Formy",
+          "text": "Zastosowanie Formy zużywa ją. Jeśli omyłkowo wybierzesz polaryzację, [FAQ dotyczące polaryzacji wsparcia Warframe](https://support.warframe.com/hc/en-us/articles/200240380-Polarization-and-Forma-FAQ) opisuje jednorazową usługę korekty na konto: zgłoś błąd natychmiast i unikaj ponownego polaryzowania tego przedmiotu w oczekiwaniu na Wsparcie. Następnie zresetuj rangę (relevel) w odpowiednich misjach; liczba potrzebnych runów zależy od Twojej konfiguracji."
+        }
+      ]
+    },
+    {
+      "id": "variants",
+      "title": "Standardowa, Omni, Umbra i Stance Forma",
+      "blocks": [
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Wariant",
+              "Główny cel",
+              "Zanim ją wydasz"
+            ],
+            "rows": [
+              [
+                "Standardowa Forma",
+                "Wybierz normalną polaryzację dla slotu na kwalifikującym się sprzęcie.",
+                "Zaplanuj Mod, który tam umieścisz, oraz inne konfiguracje, z których korzystasz."
+              ],
+              [
+                "Omni Forma",
+                "Zastosuj uniwersalną polaryzację do slotu na Mod, z wyjątkiem dopasowania polaryzacji Umbra.",
+                "Dawniej Aura Forma; Aktualizacja 38.5 rozszerzyła jej działanie poza sloty Aury."
+              ],
+              [
+                "Umbra Forma",
+                "Zastosuj polaryzację Umbra dla kompatybilnych modów Umbral lub Sacrificial.",
+                "Zachowaj ją dla buildu, który korzysta z tych Modów."
+              ],
+              [
+                "Stance Forma",
+                "Nadaj slotowi postawy (Stance) broni białej Uniwersalną Polaryzację.",
+                "Przydatne przy zamianie postaw o różnych polaryzacjach."
+              ]
+            ]
+          }
+        },
+        {
+          "type": "p",
+          "text": "[Informacje o aktualizacji Techrot Encore](https://www.warframe.com/en/patch-notes/pc/38-5-0) wyjaśniają zmianę dotyczącą Omni Formy i wymieniają schematy Omni Form w pulach nagród Temporal Archimedea. Szukając wariantu, sprawdź dokładną nazwę przedmiotu i pulę nagród."
+        }
+      ]
+    },
+    {
+      "id": "how-many",
+      "title": "Ile Form potrzebuje Twój build?",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Nie ma uniwersalnej liczby Form dla broni czy Warframe'a. Zależy to od istniejących polaryzacji sprzętu, modów i rang, których zamierzasz używać, ulepszeń pojemności oraz tego, czy potrzebujesz kilku konfiguracji. Arkaniki (Arcanes) nie zużywą pojemności na Mody."
+        },
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "h": "Zaplanuj kompletny zestaw Modów",
+              "p": "Użyj rang Modów, które chcesz osiągnąć. Sprawdź, czy Reaktor (Reactor) lub Katalizator (Catalyst) oraz wymagane odblokowania slotów są już zainstalowane; Forma ich nie zastępuje."
+            },
+            {
+              "h": "Wybierz polaryzację, która rozwiązuje rzeczywisty problem z brakiem pojemności",
+              "p": "Priorytetowo traktuj Mod o dużym koszcie, który zamierzasz zatrzymać. Przed zmianą slotu sprawdź inne konfiguracje: polaryzacja pomagająca w jednym buildzie może ograniczać inny."
+            },
+            {
+              "h": "Zastosuj, zresetuj rangę i przetestuj przed dodaniem kolejnych",
+              "p": "Zatrzymaj się, gdy build pasuje i działa zgodnie z zamierzeniami. Niektóre elementy sprzętu mają specjalny przebieg progresji rang po użyciu Formy; sprawdź zasady danego przedmiotu niezależnie od jego natychmiastowych potrzeb na pojemność Modów."
+            }
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Więcej informacji na temat szerszego planu budowy znajdziesz w poradniku [Jak zbudować Warframe lub broń](/guides/builds). W przypadku braków materiałów rzemieślniczych skorzystaj z [poradnika farmienia zasobów](/guides/resources)."
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Dlaczego otworzyłem kilka reliktów i nie dostałem żadnej Formy?",
+      "a": "Nagrody z reliktów są losowe, więc może zdarzyć się zła passa (dry streak). Sprawdź, czy Twój relikt zawiera Formę, przejrzyj jego slot nagrody i spełnij wymagania dotyczące otwierania. Drużyna zapewnia większą liczbę możliwych wyborów, ale nie gwarantuje Formy."
+    },
+    {
+      "q": "Czy powinienem uczynić relikty Formy Promiennymi (Radiant)?",
+      "a": "Najpierw sprawdź slot. Nienaruszony (Intact) sprzyja Pospolitej nagrodzie Formy; rafinacja zwiększa szansę na Niezwykłą nagrodę. Niezwykłe nagrody Formy zawierają dwa schematy. Porównaj korzyść z wymagającą się ilością Śladów Pustki (Void Traces)."
+    },
+    {
+      "q": "Czy pełna drużyna daje mi cztery Formy na rundę?",
+      "a": "Nie. Każdy uprawniony gracz wybiera jedną z odsłoniętych nagród. Nagroda w postaci dwóch schematów daje Ci dwa schematy, ale nie możesz zabrać wszystkich czterech nagród drużyny."
+    },
+    {
+      "q": "Czy mogę zdobyć gotową Formę bez czekania na Odlewnię?",
+      "a": "Tak. Rynek w grze oferuje gotowe Formy, a niektóre nagrody lub oferty wydarzeń mogą dostarczyć gotowe warianty. Przeczytaj dokładnie nazwę przedmiotu, koszt i dostępność. Przestarzała sekcja dotycząca Plague Star wyjaśnia aktualnie zapowiedzianą nagrodę z wydarzenia."
+    },
+    {
+      "q": "Jak długo trwa wytwarzanie Formy?",
+      "a": "Standardowa Forma zajmuje 23 godziny. Każde wytwarzanie zużywa jeden schemat, 35 000 Kredytów, jeden Morfik (Morphics), jeden Sensor Nerwowy (Neural Sensor), jeden Neurod (Neurodes) oraz jedną Komórkę Orokin (Orokin Cell). Odbierz ukończoną Formę przed rozpoczęciem kolejnego craftingu."
+    },
+    {
+      "q": "Czy Omni Forma to to samo co Umbra Forma?",
+      "a": "Nie. Omni Forma, wcześniej nazywana Aura Formą, zapewnia Uniwersalną Polaryzację, która wyklucza dopasowanie Umbra. Umbra Forma nakłada dedykowaną polaryzację Umbra. Wybierz wariant odpowiedni dla Modów, które faktycznie zamierzasz wyposażyć."
+    },
+    {
+      "q": "Ile Form powinienem włożyć w build?",
+      "a": "Użyj liczby potrzebnej dla wybranych przez Ciebie Modów i konfiguracji. Najpierw zaplanuj pojemność i polaryzacje, a następnie zresetuj rangę i przetestuj po każdym zastosowaniu. Nie ma stałej liczby, której potrzebuje każdy build."
+    }
+  ],
+  "related": [
+    {
+      "label": "Które relikty dają Formę?",
+      "to": "/forma-relics",
+      "note": "Znajdź nagrody w postaci Form i miejsca ich farmienia z reliktów.",
+      "icon": "cube-outline"
+    },
+    {
+      "label": "Relikty i Ślady Pustki",
+      "to": "/guides/relics",
+      "note": "Otwieranie reliktów, ich rafinacja i wybieranie nagród.",
+      "icon": "cube-scan"
+    },
+    {
+      "label": "Jak zarabiać Platynę",
+      "to": "/guides/platinum",
+      "note": "Opcje handlu przy planowaniu budżetu na gotową Formę.",
+      "icon": "currency-usd"
+    },
+    {
+      "label": "Steel Path",
+      "to": "/guides/steel-path",
+      "note": "Wymagania odblokowania i przygotowanie do trudniejszych misji.",
+      "icon": "skull-outline"
+    },
+    {
+      "label": "Jak zbudować Warframe lub broń",
+      "to": "/guides/builds",
+      "note": "Zaplanuj Mody i pojemność przed wydaniem Formy.",
+      "icon": "wrench-outline"
+    },
+    {
+      "label": "Farmienie reliktów",
+      "to": "/relic-farming",
+      "note": "Zlokalizuj relikty potrzebne do Twojej kolejnej sesji otwierania.",
+      "icon": "map-marker-outline"
+    },
+    {
+      "label": "Farmienie zasobów",
+      "to": "/guides/resources",
+      "note": "Przygotuj materiały do kolejnego rzemiosła w Odlewni.",
+      "icon": "database-outline"
+    }
+  ],
+  "sources": [
+    {
+      "label": "Warframe — Operation: Plague Star 2026 (September 9, 2026)",
+      "href": "https://www.warframe.com/en/news/operation-plague-star-2026"
+    },
+    {
+      "label": "Warframe — Official PC Drop Tables",
+      "href": "https://www.warframe.com/droptables"
+    },
+    {
+      "label": "Warframe — Relic Hunting 101",
+      "href": "https://www.warframe.com/en/news/relic-hunting-101"
+    },
+    {
+      "label": "Warframe — Update 36.1: Uncommon Forma Blueprint quantity",
+      "href": "https://www.warframe.com/en/patch-notes/pc/36-1-0"
+    },
+    {
+      "label": "Warframe — Update 27.3: Foundry crafting time",
+      "href": "https://www.warframe.com/en/patch-notes/pc/27-3-0"
+    },
+    {
+      "label": "Warframe — Update 38.5: Omni Forma changes",
+      "href": "https://www.warframe.com/en/patch-notes/pc/38-5-0"
+    },
+    {
+      "label": "Warframe — Specters of the Rail: Market Forma Bundle",
+      "href": "https://www.warframe.com/en/patch-notes/pc/18-16-0"
+    },
+    {
+      "label": "Warframe Support — Polarization and Forma FAQ",
+      "href": "https://support.warframe.com/hc/en-us/articles/200240380-Polarization-and-Forma-FAQ"
+    },
+    {
+      "label": "Warframe Community Developers — Forma item and crafting data",
+      "href": "https://github.com/WFCD/warframe-items/blob/master/data/json/Misc.json"
+    }
+  ]
+}

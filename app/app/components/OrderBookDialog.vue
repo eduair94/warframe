@@ -135,6 +135,7 @@
 </template>
 
 <script setup lang="ts">
+import { fetchMarketData } from '~/utils/market-fetch'
 /**
  * Order-book dialog opened from a home-table buy/sell price.
  *
@@ -249,7 +250,7 @@ async function load() {
   loading.value = true
   error.value = false
   try {
-    const data = await $fetch<OrderBook>(`${apiBase}/orders/${encodeURIComponent(reqUrl)}`)
+    const data = await fetchMarketData<OrderBook>(`${apiBase}/orders/${encodeURIComponent(reqUrl)}`)
     if (props.item?.url_name !== reqUrl) return // superseded — discard
     book.value = data
     bookFor = reqUrl

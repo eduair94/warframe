@@ -153,6 +153,7 @@
 </template>
 
 <script setup lang="ts">
+import { fetchMarketData } from '~/utils/market-fetch'
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useDisplay } from 'vuetify'
 
@@ -162,11 +163,11 @@ const { localItemName } = useLocalizedName()
 
 // Vaulted + live price + trend (the fusion source).
 const { data, error } = await useAsyncData('vaulted-worth-analytics', () =>
-  $fetch<any>(`${base}/market_analytics`),
+  fetchMarketData<any>(`${base}/market_analytics`),
 )
 // Relic EV — used only to derive which Primes are in Prime Resurgence (Varzia) now.
 const { data: relicData } = await useAsyncData('vaulted-worth-relics-ev', () =>
-  $fetch<any>(`${base}/relics_ev`).catch(() => null),
+  fetchMarketData<any>(`${base}/relics_ev`).catch(() => null),
 )
 
 const loadError = computed(() => !!error.value)

@@ -396,6 +396,7 @@
 </template>
 
 <script setup lang="ts">
+import { fetchMarketData } from '~/utils/market-fetch'
 import { computed, ref, watch, nextTick, onMounted, onBeforeUnmount } from 'vue'
 import { useDisplay } from 'vuetify'
 import dayjs from 'dayjs'
@@ -477,7 +478,7 @@ const { data: fetched, error, refresh } = await useAsyncData<SetFullPayload | nu
   async () => {
     if (!setSlug.value) return null
     const suffix = bust.value ? `?_ts=${bust.value}` : ''
-    const res = await $fetch<any>(
+    const res = await fetchMarketData<any>(
       `${base}/set_full/${encodeURIComponent(setSlug.value)}${suffix}`,
       bust.value ? { cache: 'no-cache' } : {},
     )

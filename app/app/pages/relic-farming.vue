@@ -301,6 +301,7 @@
 </template>
 
 <script setup lang="ts">
+import { fetchMarketData } from '~/utils/market-fetch'
 import { computed, nextTick, onMounted, onUnmounted, ref, watch } from 'vue'
 import { useDisplay } from 'vuetify'
 import { useRelicValue, type RelicRow } from '~/composables/useRelicValue'
@@ -319,7 +320,7 @@ const base = useApiBase()
 // key ('relic-farming') so the cache doesn't collide with relics-value.vue's
 // 'relics-ev' key, even though both hit the same /relics_ev endpoint.
 const { data, error } = await useAsyncData('relic-farming', () =>
-  $fetch<{ relics: RelicRow[] }>(`${base}/relics_ev`),
+  fetchMarketData<{ relics: RelicRow[] }>(`${base}/relics_ev`),
 )
 const loadError = computed(() => !!error.value)
 const relics = computed<RelicRow[]>(() => data.value?.relics ?? [])

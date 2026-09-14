@@ -334,6 +334,7 @@
 </template>
 
 <script setup lang="ts">
+import { fetchMarketData } from '~/utils/market-fetch'
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useDisplay } from 'vuetify'
 import { trueRarity, useRelicValue, type RelicRow } from '~/composables/useRelicValue'
@@ -348,7 +349,7 @@ const isMobile = computed(() => mobile.value)
 
 // SSR fetch — preserve old asyncData try/catch -> loadError intent.
 const { data, error } = await useAsyncData('relics-ev', () =>
-  $fetch<any>(`${base}/relics_ev`),
+  fetchMarketData<any>(`${base}/relics_ev`),
 )
 const relics = computed<any[]>(() => (data.value && data.value.relics) || [])
 const loadError = computed(() => !!error.value)

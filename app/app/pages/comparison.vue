@@ -254,6 +254,7 @@
 </template>
 
 <script setup lang="ts">
+import { fetchMarketData } from '~/utils/market-fetch'
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useDisplay } from 'vuetify'
 
@@ -263,7 +264,7 @@ const { localItemName } = useLocalizedName()
 const base = useApiBase()
 
 const { data, error } = await useAsyncData('sets-comparison', () =>
-  $fetch<{ sets: any[] }>(`${base}/sets_comparison`),
+  fetchMarketData<{ sets: any[] }>(`${base}/sets_comparison`),
 )
 // preserve old try/catch -> loadError intent
 const loadError = computed(() => !!error.value)

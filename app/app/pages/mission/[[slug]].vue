@@ -132,6 +132,7 @@
 </template>
 
 <script setup lang="ts">
+import { fetchMarketData } from '~/utils/market-fetch'
 import { missionNote } from '~/data/missionNotes'
 
 interface Reward { itemName: string; url_name: string; thumb: string; rarity: string; chance: number; price: number; tradeable: boolean }
@@ -155,7 +156,7 @@ const slug = computed(() => route.params.slug as string | undefined)
 // Hub list
 const { data: listData } = await useAsyncData('missions', async () => {
   if (slug.value) return { rows: [] }
-  const r = await $fetch<any>(`${base}/missions`)
+  const r = await fetchMarketData<any>(`${base}/missions`)
   return r && Array.isArray(r.rows) ? r : { rows: [] }
 })
 const rows = computed<ListRow[]>(() => listData.value?.rows ?? [])
@@ -173,7 +174,7 @@ const { data: detail, error: detailErr } = await useAsyncData<Detail | null>(
   () => `mission-${slug.value || 'none'}`,
   async () => {
     if (!slug.value) return null
-    const r = await $fetch<any>(`${base}/mission/${encodeURIComponent(slug.value)}`)
+    const r = await fetchMarketData<any>(`${base}/mission/${encodeURIComponent(slug.value)}`)
     const statusCode = entityPayloadStatus('mission', r)
     if (statusCode !== 200) {
       throw createError({ statusCode, statusMessage: statusCode === 404 ? 'Mission not found' : 'Mission data temporarily unavailable' })

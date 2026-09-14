@@ -570,6 +570,7 @@
 </template>
 
 <script setup lang="ts">
+import { fetchMarketData } from '~/utils/market-fetch'
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
@@ -762,7 +763,7 @@ async function openTransactionDetails(item: any) {
   if (!item.url_name) return
   priceHistoryLoading.value = true
   try {
-    const data: any = await $fetch(`${base}/price_history/${item.url_name}`)
+    const data: any = await fetchMarketData(`${base}/price_history/${item.url_name}`)
     priceHistoryPoints.value = data.points || []
     priceHistoryTrend.value = data.trend || null
   } catch (e) {
@@ -845,7 +846,7 @@ async function loadRankPrices(item: any, force = false) {
   rankLoading.value[key] = true
   rankErrors.value[key] = false
   try {
-    const book = await $fetch<OrderBook>(`${base}/orders/${encodeURIComponent(key)}`)
+    const book = await fetchMarketData<OrderBook>(`${base}/orders/${encodeURIComponent(key)}`)
     if (book.rankPrices) rankPrices.value[key] = book.rankPrices
     if (book.ayatanPrices) ayatanPrices.value[key] = book.ayatanPrices
     rankLoaded.value[key] = true

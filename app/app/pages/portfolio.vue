@@ -109,6 +109,7 @@
 </template>
 
 <script setup lang="ts">
+import { fetchMarketData } from '~/utils/market-fetch'
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 import {
   checkAlerts,
@@ -136,7 +137,7 @@ const base = useApiBase()
 // Long-history analytics (atl / pctFromAtl / spark) power the all-time-low alert
 // and the sheet's price context - a signal warframe.market's 90-day chart lacks.
 const { data } = await useAsyncData('portfolio-market-analytics', () =>
-  $fetch<any>(`${base}/market_analytics`).catch(() => null),
+  fetchMarketData<any>(`${base}/market_analytics`).catch(() => null),
 )
 const analytics = computed<any[]>(() => (data.value && data.value.items) || [])
 

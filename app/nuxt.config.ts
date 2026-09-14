@@ -592,8 +592,22 @@ export default defineNuxtConfig({
       cleanupOutdatedCaches: true,
       // Web Push (Spec B): pull the push/notificationclick handlers into the
       // generated SW so a single service worker does caching AND push.
-      importScripts: ['/push-sw.js'],
+      importScripts: ['/push-sw.js', '/sw-cache-migration-v2.js'],
       runtimeCaching: [
+        {
+          // Workbox serializes callbacks without closures. Embed the configured
+          // origin at build time so this first route affects only our API.
+          urlPattern: new Function('{ url, request }', `
+            const path = url.pathname.toLowerCase()
+            return url.origin === ${JSON.stringify(new URL(process.env.API_URL || 'http://localhost:3529').origin)}
+              && (request.headers.has('authorization')
+                || request.headers.has('x-admin-token')
+                || path === '/me' || path.startsWith('/me/') || path.startsWith('/build_'))
+          `) as (context: { url: URL; request: Request }) => boolean,
+          handler: 'NetworkOnly',
+          method: 'GET',
+          options: { fetchOptions: { cache: 'no-store' } }
+        },
         {
           // Nuxt content hashes make these URLs immutable. Keep HTML, payloads,
           // build metadata and third-party requests out of this cache.
@@ -619,7 +633,9 @@ export default defineNuxtConfig({
           handler: 'NetworkFirst',
           method: 'GET',
           options: {
-            cacheName: 'warframe-api',
+            cacheName: 'warframe-public-api-v2',
+            // Revalidate HTTP cache before using NetworkFirst's offline fallback.
+            fetchOptions: { cache: 'no-cache' },
             cacheableResponse: { statuses: [0, 200] }
           }
         }

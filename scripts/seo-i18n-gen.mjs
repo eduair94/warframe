@@ -152,7 +152,7 @@ async function askGemini(ai, pairs, langName) {
   const res = await ai.models.generateContent({
     model: MODEL,
     contents: prompt,
-    config: { temperature: 0.3 },
+    config: { temperature: 0.3, httpOptions: { timeout: 90_000 } },
   })
   return parseArray(res.text)
 }

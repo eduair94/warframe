@@ -26,3 +26,7 @@ Backend/build tooling. Not the `sync_*.ts` importers (those live at repo root an
 - Node scripts are `.mjs` (ESM) or `.mts`/`.ts` run via `ts-node`/`tsx`. `app/` is
   `type: module`; the repo root is CommonJS — `.mjs` is safe in both.
 - Gemini scripts need `GEMINI_API_KEY` / `@google/genai` (already a devDependency).
+- `translate-guides.mjs` defaults to one worker and spaces API requests at least 13 seconds
+  apart, including retries. `TRANSLATE_INTERVAL_MS` can increase that interval. A daily quota
+  or access error stops unstarted jobs while preserving completed snapshots; a transient 503
+  or explicit per-minute limit gets one paced retry. `guides:test` covers this request gate.

@@ -7,8 +7,8 @@ import type { PageSeo } from './seo'
 export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
   "es": {
     "/guides/forma": {
-      "title": "Farmeo de Forma en Warframe — Cómo conseguir blueprints de Forma rápido",
-      "description": "¿Abriste relics y no cayó ninguna Forma? Fármealo bien: relics Intact en escuadra pública completa, más todas las fuentes sin relics — Nightwave, Sorties, el Mercado y Plague Star. Receta de crafteo y variantes explicadas."
+      title: "Cómo farmear Forma: Reliquias, fabricación y Plague Star | Warframe",
+      description: "Farmea planos de Forma de las reliquias que los contengan, elige el refinamiento adecuado para su ranura de recompensa y mantén la Fundición en marcha."
     },
     "/guides": {
       "title": "Guías de Warframe — Farmeo, builds, platino y ayuda para novatos",
@@ -125,8 +125,8 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
   },
   "pt": {
     "/guides/forma": {
-      "title": "Farm de Forma no Warframe — Como conseguir blueprints de Forma rápido",
-      "description": "Abriu relics e não veio nenhuma Forma? Farme do jeito certo: relics Intact em esquadrão público cheio, além de todas as fontes sem relics — Nightwave, Sorties, o Mercado e a Plague Star. Receita de criação e variantes explicadas."
+      title: "Como Farmar Forma: Relics, Crafting e Plague Star | Warframe",
+      description: "Farme Forma Blueprints de relics que os contêm, escolha o refinamento certo para o slot de recompensa deles e mantenha a Foundry rodando."
     },
     "/guides": {
       "title": "Guias de Warframe — Farm, Builds, Platino e Iniciantes",
@@ -243,8 +243,8 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
   },
   "de": {
     "/guides/forma": {
-      "title": "Warframe Forma farmen — Forma-Baupläne schnell bekommen",
-      "description": "Relikte geöffnet und keine Forma bekommen? Farme richtig: Relikte Intakt in voller öffentlicher Gruppe, plus alle reliktfreien Quellen — Nightwave, Sorties, der Markt und Plague Star. Bauplan-Rezept und Varianten erklärt."
+      title: "Forma farmen: Relikte, Herstellung & Plague Star | Warframe",
+      description: "Farme Forma-Schaltpläne aus Relikten, die sie enthalten, wähle die passende Verfeinerung für deren Belohnungsplatz und halte die Schmiede am Laufen."
     },
     "/guides": {
       "title": "Warframe Guides — Farming, Builds, Platin & Einsteiger",
@@ -361,8 +361,8 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
   },
   "fr": {
     "/guides/forma": {
-      "title": "Farm de Forma sur Warframe — Obtenir des plans de Forma vite",
-      "description": "Vous avez ouvert vos reliques sans obtenir de Forma ? Farmez bien : reliques Intactes en escouade publique complète, plus toutes les sources sans relique — Nightwave, Sorties, le Marché et Plague Star. Recette de fabrication et variantes expliquées."
+      title: "Comment farmer du Forma : Reliques, Artisanat & Plague Star | Warframe",
+      description: "Farmez des Schémas de Forma dans les reliques qui en contiennent, choisissez le bon affinement pour leur emplacement de récompense et gardez la Fonderie en marche."
     },
     "/guides": {
       "title": "Guides Warframe — Farm, Builds, Platine & Débutants",
@@ -479,8 +479,8 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
   },
   "ru": {
     "/guides/forma": {
-      "title": "Фарм Форм в Warframe — как быстро получить чертежи Формы",
-      "description": "Вскрыли реликвии и не выпало Формы? Фармите правильно: реликвии в состоянии Intact в полном публичном отряде, плюс все источники без реликвий — Nightwave, Sorties, Рынок и Plague Star. Рецепт сборки и варианты разобраны."
+      title: "Как фармить Forma: реликвии, крафт и Plague Star | Warframe",
+      description: "Добывайте Forma Blueprints из реликвий, в которых они содержатся, выбирайте подходящее улучшение для слота награды и поддерживайте постоянную работу Foundry."
     },
     "/guides": {
       "title": "Гайды по Warframe — фарм, билды, платина и старт",
@@ -597,8 +597,8 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
   },
   "ko": {
     "/guides/forma": {
-      "title": "워프레임 포르마 파밍 — 포르마 청사진 빠르게 얻는 법",
-      "description": "렐릭을 다 열었는데 포르마가 안 나왔나요? 제대로 파밍하세요: 정제하지 않은(Intact) 렐릭을 4인 공개 스쿼드에서 돌리고, 렐릭 없이 얻는 모든 방법 — Nightwave, Sortie, 마켓, Plague Star까지. 제작 레시피와 변형도 설명합니다."
+      title: "Forma 파밍 방법: Relic, 제작 및 Plague Star | Warframe",
+      description: "Relic에서 Forma 청사진을 파밍하고, 보상 슬롯에 맞는 정제를 선택하며, 주조소를 계속 가동하세요."
     },
     "/guides": {
       "title": "Warframe 가이드 — 파밍, 빌드, 플래티넘 & 초보자 도움말",
@@ -715,8 +715,8 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
   },
   "ja": {
     "/guides/forma": {
-      "title": "Warframe フォーマ稼ぎ — フォーマ設計図の効率的な集め方",
-      "description": "レリックを割ってもフォーマが出ない? 正しく集めよう: 未精製(Intact)のレリックをフルパブリック分隊で回し、レリック以外の全入手先 — Nightwave、Sortie、マーケット、Plague Star まで。製作レシピと各種フォーマも解説。"
+      title: "Formaのファーム方法：レリック、製作、Plague Star | Warframe",
+      description: "Formaの設計図を含むレリックからファームし、報酬枠に適した精錬を選び、ファウンドリを稼働させましょう。"
     },
     "/guides": {
       "title": "Warframeガイド — 周回・ビルド・プラチナ・初心者向け",
@@ -833,8 +833,8 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
   },
   "zh-hans": {
     "/guides/forma": {
-      "title": "Warframe 福马农法 — 快速获取福马蓝图的方法",
-      "description": "开遗物却一个福马都没出？用对方法：遗物保持未精炼(Intact)、组满员公开小队，再加上所有非遗物来源——Nightwave、每日突击、市场和 Plague Star。附制造配方与各类福马说明。"
+      title: "如何刷取Forma：Relic、制造与Plague Star | Warframe",
+      description: "从包含Forma的Relic中刷取Forma蓝图，为奖励槽位选择合适的强化等级，并保持铸造厂持续运转。"
     },
     "/guides": {
       "title": "Warframe 攻略大全 — 刷素材、配装、白金与新手指南",
@@ -951,8 +951,8 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
   },
   "zh-hant": {
     "/guides/forma": {
-      "title": "Warframe 福馬農法 — 快速取得福馬藍圖的方法",
-      "description": "開了遺物卻一個福馬都沒出？用對方法：遺物保持未精煉(Intact)、組滿員公開小隊，再加上所有非遺物來源——Nightwave、每日突擊、市場和 Plague Star。附製造配方與各類福馬說明。"
+      title: "如何農 Forma：Relic、製造與瘟疫之星（Plague Star） | Warframe",
+      description: "從含有 Forma 藍圖的Relic中農出它們，為其獎勵欄位選擇正確的精煉，並保持鑄造廠持續運作。"
     },
     "/guides": {
       "title": "Warframe 攻略大全 — 刷素材、配裝、白金與新手教學",
@@ -1069,8 +1069,8 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
   },
   "pl": {
     "/guides/forma": {
-      "title": "Warframe farmienie Formy — jak szybko zdobyć plany Formy",
-      "description": "Otworzyłeś relikwie i nie wypadła żadna Forma? Farm rób dobrze: relikwie Intact w pełnym publicznym składzie, plus wszystkie źródła bez relikwii — Nightwave, Sortie, Rynek i Plague Star. Przepis na budowę i warianty wyjaśnione."
+      title: "Jak farmić Formy: Relikty, wytwarzanie i Plague Star | Warframe",
+      description: "Farm Schematy Form z reliktów, które je zawierają, wybierz odpowiednią rafinację pod kątem slotu z nagrodą i utrzymuj ciągłość pracy Odlewni."
     },
     "/guides": {
       "title": "Poradniki Warframe — Farmienie, Buildy, Platyna i Start",
@@ -1187,8 +1187,8 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
   },
   "it": {
     "/guides/forma": {
-      "title": "Warframe farming di Forma — Come ottenere i progetti Forma in fretta",
-      "description": "Hai aperto le reliquie e non è uscita nessuna Forma? Farmala bene: reliquie Intatte in squadra pubblica completa, più tutte le fonti senza reliquie — Nightwave, Sortie, il Mercato e Plague Star. Ricetta di costruzione e varianti spiegate."
+      title: "Come fare farm di Forma: Reliquie, Crafting e Plague Star | Warframe",
+      description: "Farma i Progetti Forma dalle reliquie che li contengono, scegli la raffinazione giusta per il loro slot di ricompensa e tieni la Fonderia in attività."
     },
     "/guides": {
       "title": "Guide Warframe — Farming, Build, Platino e Aiuto Novizi",
@@ -1305,8 +1305,8 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
   },
   "uk": {
     "/guides/forma": {
-      "title": "Фарм Форми у Warframe — як швидко отримати креслення Форми",
-      "description": "Відкрили реліквії, а Форми немає? Фармте правильно: реліквії Intact у повному публічному загоні, плюс усі джерела без реліквій — Nightwave, Sortie, Ринок і Plague Star. Рецепт створення й варіанти пояснено."
+      title: "Як фармити Forma: Реліквії, створення та Plague Star | Warframe",
+      description: "Фармуйте кресленики Forma з реліквій, які їх містять, виберіть правильне покращення для їхнього слота винагороди та не зупиняйте Кузню."
     },
     "/guides": {
       "title": "Гайди Warframe — фарм, білди, платина та поради новачкам",

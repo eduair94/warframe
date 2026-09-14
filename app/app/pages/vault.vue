@@ -378,6 +378,7 @@
 </template>
 
 <script setup lang="ts">
+import { fetchMarketData } from '~/utils/market-fetch'
 import { computed, nextTick, onMounted, onUnmounted, ref, watch } from 'vue'
 import { useDisplay } from 'vuetify'
 import {
@@ -408,7 +409,7 @@ const allItems = computed<any[]>(() => itemsStore.allItems as any[])
 // no history. Failures are non-fatal — the catalogue's own market block still
 // prices every holding (see `marketFor`).
 const { data } = await useAsyncData('vault-market-analytics', () =>
-  $fetch<any>(`${base}/market_analytics`),
+  fetchMarketData<any>(`${base}/market_analytics`),
 )
 const byUrl = computed<Record<string, any>>(() =>
   Object.fromEntries(((data.value && data.value.items) || []).map((i: any) => [i.url_name, i])),

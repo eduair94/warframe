@@ -146,6 +146,7 @@
 </template>
 
 <script setup lang="ts">
+import { fetchMarketData } from '~/utils/market-fetch'
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useDisplay } from 'vuetify'
 
@@ -155,7 +156,7 @@ const base = useApiBase()
 
 // SSR fetch — preserve old try/catch -> loadError intent
 const { data, error } = await useAsyncData('market-analytics-volatility', () =>
-  $fetch<any>(`${base}/market_analytics`),
+  fetchMarketData<any>(`${base}/market_analytics`),
 )
 const loadError = computed(() => !!error.value)
 

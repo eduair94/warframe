@@ -283,6 +283,7 @@
 </template>
 
 <script setup lang="ts">
+import { fetchMarketData } from '~/utils/market-fetch'
 import { computed, onMounted, ref, watch } from 'vue'
 import {
   RELIC_CHANCES,
@@ -329,7 +330,7 @@ const { data: relic, error } = await useAsyncData<RelicRow | null>(
   () => `relic-ev-${relicSlug.value || 'none'}`,
   async () => {
     if (!relicSlug.value) return null
-    const r = await $fetch<any>(`${base}/relic_ev/${encodeURIComponent(relicSlug.value)}`)
+    const r = await fetchMarketData<any>(`${base}/relic_ev/${encodeURIComponent(relicSlug.value)}`)
     const statusCode = entityPayloadStatus('relic', r)
     if (statusCode !== 200) {
       throw createError({ statusCode, statusMessage: statusCode === 404 ? 'Relic not found' : 'Relic data temporarily unavailable' })

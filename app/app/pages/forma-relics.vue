@@ -22,8 +22,9 @@
             <div class="an-eyebrow">Void Ledger · Forma Farming</div>
             <h1 class="an-title">Which Relics Drop <span class="accent-a">Forma</span></h1>
             <p class="an-lede">
-              Forma Blueprint is a <b>Common</b> (1×) or <b>Uncommon</b> (2×) reward across a huge share of
-              relics — never the Rare slot. Crack these <b>Intact</b> in a full public squad and Forma pours in.
+              Forma Blueprints appear as <b>Common</b> (1×) or <b>Uncommon</b> (2×) rewards in the relics below.
+              <b>Intact</b> favors Common rewards; refinement improves Uncommon odds.
+              A squad offers more possible choices, but each eligible player selects one reward.
               Showing what currently drops; flip the toggle for vaulted relics too.
             </p>
             <div class="fr-hero-cta">
@@ -201,9 +202,9 @@
         <section class="fr-note">
           <div class="an-eyebrow">How to actually farm these</div>
           <ul class="fr-note__list">
-            <li><b>Don't refine them.</b> Forma is a Common reward — going Radiant drops each Forma slot from 25.33% to 16.67% and costs 100 Void Traces. Crack them <b>Intact</b>.</li>
-            <li><b>Run a full public squad.</b> Every reward round pools all four players' relics and you each pick one — up to 4 Forma a round.</li>
-            <li><b>Use an endless fissure</b> (Survival / Defense) so everyone slots a fresh relic each rotation.</li>
+            <li><b>Check the reward slot.</b> Intact gives a Common slot a 25.33% chance. Refining to Radiant lowers that to 16.67%, but raises an Uncommon slot from 11% to 20% at a cost of 100 Void Traces.</li>
+            <li><b>A squad gives more choices.</b> Each eligible player selects one revealed reward. A two-blueprint Forma reward gives two blueprints; it does not give you every teammate's reward.</li>
+            <li><b>Choose a fissure you can finish reliably.</b> Endless missions let you equip another relic each reward interval; short Capture or Exterminate missions can also suit your session.</li>
           </ul>
           <NuxtLink :to="localePath('/guides/forma')" class="fr-cta">
             <v-icon size="16">mdi-book-open-page-variant-outline</v-icon> Read the full Forma guide

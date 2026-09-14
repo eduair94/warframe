@@ -149,6 +149,7 @@
 </template>
 
 <script setup lang="ts">
+import { fetchMarketData } from '~/utils/market-fetch'
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useDisplay } from 'vuetify'
 
@@ -156,7 +157,7 @@ const { t } = useI18n()
 const { localItemName } = useLocalizedName()
 const base = useApiBase()
 
-const { data, error } = await useAsyncData('movers-analytics', () => $fetch<any>(`${base}/market_analytics`))
+const { data, error } = await useAsyncData('movers-analytics', () => fetchMarketData<any>(`${base}/market_analytics`))
 
 const loadError = computed(() => !!error.value)
 const items = computed<any[]>(() => (data.value && data.value.items) || [])

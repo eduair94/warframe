@@ -209,6 +209,7 @@
 </template>
 
 <script setup lang="ts">
+import { fetchMarketData } from '~/utils/market-fetch'
 import { computed, nextTick, onMounted, ref, watch } from 'vue'
 import { useDisplay } from 'vuetify'
 
@@ -224,7 +225,7 @@ const { mobile } = useDisplay()
 const isMobile = computed(() => mobile.value)
 
 // ---- SSR load: riven weapons list ----
-const { data, error } = await useAsyncData('riven-weapons', () => $fetch<any>(`${base}/riven_weapons`))
+const { data, error } = await useAsyncData('riven-weapons', () => fetchMarketData<any>(`${base}/riven_weapons`))
 const weapons = computed<any[]>(() => (data.value && data.value.weapons) || [])
 const loadError = computed(() => !!error.value)
 
@@ -386,7 +387,7 @@ async function onWeaponChange(urlName: string) {
   trackSelectItem(urlName, { source: 'riven_picker' })
   loadingWeapon.value = true
   try {
-    const res = await $fetch<any>(`${base}/riven_value/${urlName}`)
+    const res = await fetchMarketData<any>(`${base}/riven_value/${urlName}`)
     weaponData.value = res || { url_name: urlName, items: [] }
   } catch (e) {
     weaponData.value = { url_name: urlName, items: [] }

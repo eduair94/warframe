@@ -1,3 +1,4 @@
+import { fetchMarketData } from '../utils/market-fetch'
 import { computed } from 'vue'
 import {
   trueRarity,
@@ -61,7 +62,7 @@ export function useFormaRelics() {
   // Shared SSR fetch — the 'forma-relics-ev' key dedupes with any sibling call
   // on the same page (distinct from relic-farming's 'relic-farming' key).
   const { data, error } = useAsyncData('forma-relics-ev', () =>
-    $fetch<{ relics: RelicRow[] }>(`${base}/relics_ev`),
+    fetchMarketData<{ relics: RelicRow[] }>(`${base}/relics_ev`),
   )
   const loadError = computed(() => !!error.value)
   const rows = computed<RelicRow[]>(() => data.value?.relics ?? [])

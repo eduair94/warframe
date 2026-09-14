@@ -431,6 +431,7 @@
 </template>
 
 <script setup lang="ts">
+import { fetchMarketData } from '~/utils/market-fetch'
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
 import { computed, nextTick, onMounted, ref, watch } from 'vue'
@@ -505,10 +506,10 @@ const isMobile = computed(() => mobile.value)
 const store = useItemsStore()
 
 const { data: flipData, error } = await useAsyncData('endo-flip', () =>
-  $fetch<{ mods: EndoFlipRow[] }>(`${apiBase}/endo_flip`),
+  fetchMarketData<{ mods: EndoFlipRow[] }>(`${apiBase}/endo_flip`),
 )
 const { data: rivenData } = await useAsyncData('endo-rivens', () =>
-  $fetch<any[]>(`${apiBase}/rivens`).catch(() => []),
+  fetchMarketData<any[]>(`${apiBase}/rivens`).catch(() => []),
 )
 const loadError = computed(() => !!error.value)
 

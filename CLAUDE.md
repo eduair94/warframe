@@ -61,7 +61,8 @@ Do not leave the final commit undeployed or use `[skip ci]` to bypass this requi
 commit is needed, use the workflow's manual dispatch on `main`. If deployment fails, resolve it and
 retry; if an external blocker prevents completion, report it explicitly without claiming success.
 
-- **BLOCKING gates** (fail = no deploy): API `test:unit`, app `i18n:check`, API `repo:index:check`.
+- **BLOCKING gates** (fail = no deploy): API `test:unit`, `guides:check`, `guides:test`,
+  `repo:index:check`; app `i18n:check` and `test:frontend`.
 - **Advisory** (annotate only): lint, format:check, typecheck.
 
 So: keep unit tests green, keep i18n messages compiling, and **rerun `npm run repo:index`

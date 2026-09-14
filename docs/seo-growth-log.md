@@ -142,3 +142,101 @@ Ongoing priorities:
 
 Traffic improvement has not yet been measured in this iteration. Search engines decide crawling,
 indexing and ranking; a passing technical check does not guarantee placement or a traffic increase.
+
+## 2026-09-14 — scheduled review at 10:00 America/Montevideo
+
+### Baseline and opportunity
+
+The API reported healthy MongoDB, and public frontend, guide pages and the live-feed handshake
+responded successfully. English and Spanish sitemaps each contained 1,414 URLs, including 238 sets
+and 54 tools. A temporary difference in mission URLs disappeared on a normal refresh. At 13:03 UTC
+the catalogue contained 3,840 items with a median update age of three minutes; the analytics
+generation timestamp was less than one minute old. No duplicate guide-refresh workflow was running.
+
+Supermetrics still rejected its OAuth grant. Read-only access through the existing Chrome session
+did work for the **Warframe Market Analytics** GA4 property. The acquisition report displayed these
+complete periods (Organic Search is the session channel):
+
+| Metric | September 7–13 | August 31–September 6 |
+| --- | ---: | ---: |
+| Organic sessions | 532 | 561 |
+| Engaged organic sessions | 298 | 400 |
+| Organic engagement rate | 56.02% | 71.3% |
+| Average engagement per organic session | 45 seconds | 46 seconds |
+| All sessions | 995 | 7,765 |
+| Direct sessions | 191 | 7,055 |
+
+Organic sessions decreased 5.17%; engaged organic sessions decreased 25.5%. The much larger total
+session decrease primarily reflects Direct traffic. Its earlier average engagement was one second,
+but this alone does not establish bots, tracking faults or another cause. The complete 28-day
+period August 17–September 13 showed 1,800 organic sessions, 65% engagement and 46 seconds average
+engagement. These periods precede today's changes and cannot measure their effect.
+Only aggregate results are recorded here; no raw analytics export was created. The current Search
+Console account's property selector had no match for Warframe or digitalshopuy, so search queries,
+impressions and indexing data remain unavailable in that account.
+
+### Changes and evidence
+
+- Reviewed the Forma guide against current official announcements, patch notes, drop tables and
+  crafting data. Removed claims that a squad gives each player four rewards, that all Forma relics
+  should be Intact, and that random rewards or leveling runs are guaranteed. Explain Common versus
+  Uncommon slots, one selected reward versus a two-blueprint reward, and standard/Omni/Umbra/Stance
+  variants. The [official Plague Star announcement](https://www.warframe.com/en/news/operation-plague-star-2026)
+  supports a concise dated event section; unspecified current shop prices/limits are not invented.
+  The linked Forma relic finder now gives the same refinement advice. Its remaining interface is
+  still shared English copy; full tool localization is separate work.
+- Localize guide-hub cards using the existing lightweight SEO metadata rather than downloading
+  every guide body. Search now includes visible translated titles/descriptions, keeps English game
+  terms discoverable and handles accents. A browser test on `/es/guides` found the Credits guide
+  for `creditos`; clearing the search restored the full list. Forma metadata follows the reviewed
+  guide rather than repeating the old universal Intact advice.
+- Public market responses expose browser `max-age=14400` despite `s-maxage=60`. The shared market
+  fetch helper revalidates browser reads while preserving internal SSR requests, retries, query
+  options and caller policies. The existing periodic catalogue poll already requested revalidation;
+  bootstrap/recovery, analytics, order books and other price readers now behave consistently.
+  Chrome confirmed real conditional requests: a second analytics read returned HTTP 304 with
+  Cloudflare HIT, avoiding another full payload transfer. The browser still sees the edge's long
+  response max-age, so the fix is the explicit request policy, not a claimed Cloudflare setting change.
+- Workbox public API caching also revalidates the HTTP cache. Private/account/admin requests bypass
+  its caches, and an activation migration deletes only the obsolete API cache that could contain
+  private responses. Current public prices, installed icons, hashed assets and push handlers remain
+  independent. Generated-worker tests verify route precedence and selective cache cleanup.
+- Translation requests now use a shared pacing gate, default concurrency of one and a bounded retry
+  for transient provider failures. Daily quota/access errors stop unstarted jobs and preserve completed
+  snapshots. The observed provider limits and temporary failures exposed this weakness during the
+  Forma refresh; fake-clock and real-SDK/fake-network tests check the behavior without consuming quota.
+  Review caught translated gameplay terms that changed the meaning of refinement or Mod drain;
+  targeted regeneration and canonical-name normalization correct those fields before publication.
+  Metadata reuses the reviewed translated title and opening sentence instead of another model call.
+
+### Validation before deployment
+
+The Forma revision now includes English and all 12 localized snapshots, each with eight sections,
+seven FAQs and the same nine source references. Offline checks confirm dates, identifiers, numeric
+tables, Markdown destinations and content structure. Independent language spot-checks reviewed the
+core gameplay claims and repaired fields; this is not a professional full translation audit.
+The complete English guide gate passes for all 25 guides; only the pre-existing `builds` translation
+gap remains in its follow-up report.
+
+Local validation passed 548 API unit tests, 32 frontend tests and 20 guide/tooling tests, plus i18n
+compilation and the generated repo-map check. Spanish guide rendering and accent-insensitive hub
+search were checked in the browser; generated Workbox tests exercise private-route precedence and
+legacy-cache cleanup. The full CI workflow will repeat its gates, compile API/frontend and reload
+the API, app and live feed. Public health, affected content and deployed assets must be verified
+after that workflow succeeds; this section records pre-deployment evidence only.
+
+### Next review
+
+Inspect the organic landing pages behind the engaged-session decline, then measure complete
+post-release periods without mixing them with this baseline. Review the event wording after
+September 23 at 14:00 UTC. `builds` still needs localized snapshots; the guide-hub chrome also has
+poor legacy translations such as Spanish farming rendered as agriculture. Continue the remaining
+guide accuracy queue, including Defense rotations and capacity advice against the cited updates.
+
+Deployment isolation remains an availability priority: `npm ci`, `dist` compilation and Nuxt
+`.output` generation all mutate directories used by running processes. A failed build cannot be
+assumed to preserve the previous service. A future change should use immutable candidate release
+directories, preserve operational working directories, verify candidate health before switching,
+retain old hashed assets and test rollback. Confirm server paths and disk headroom first. PM2 fork
+mode also means reload is not a guarantee of zero downtime. This iteration uses the existing full
+API/frontend/live deployment and requires public verification after it completes.

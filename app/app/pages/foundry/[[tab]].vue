@@ -596,6 +596,7 @@
 </template>
 
 <script setup lang="ts">
+import { fetchMarketData } from '~/utils/market-fetch'
 import { computed, nextTick, onMounted, ref, watch } from 'vue'
 import { useDisplay } from 'vuetify'
 // Explicit imports, not auto-import: `summarize` is also exported by
@@ -672,7 +673,7 @@ const { data: catalogueData, status: catalogueStatus } = await useAsyncData('fou
 )
 // Prices are a bonus layer: a failure must never take the checklist down.
 const { data: marketData } = await useAsyncData('foundry-market-analytics', () =>
-  $fetch<{ items: any[] }>(`${base}/market_analytics`).catch(() => ({ items: [] })),
+  fetchMarketData<{ items: any[] }>(`${base}/market_analytics`).catch(() => ({ items: [] })),
 )
 
 const items = computed<CatalogueItem[]>(() => catalogueData.value?.items ?? [])

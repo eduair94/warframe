@@ -274,9 +274,8 @@ export const PAGE_SEO: Record<string, PageSeo> = {
       'How Void Relics and Void Traces work in Warframe: cracking fissures, refining to Radiant, shared rewards and efficient farming for prime parts.'
   },
   '/guides/forma': {
-    title: 'Warframe Forma Farming — How to Get Forma Blueprints Fast',
-    description:
-      'Cracked relics and got zero Forma? Farm it right: Intact relics in a full public squad, plus every non-relic source — Nightwave, Sorties, the Market and Plague Star. Build recipe and variants explained.'
+    title: "How to Farm Forma: Relics, Crafting & Plague Star | Warframe",
+    description: "Farm Forma Blueprints from relics that contain them, choose the right refinement for their reward slot, and keep the Foundry running."
   },
   '/guides/resources': {
     title: 'Warframe Resource Farming — Where to Farm Everything',

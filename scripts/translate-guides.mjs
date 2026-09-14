@@ -14,11 +14,14 @@
 //   node scripts/translate-guides.mjs --force               # re-translate everything
 //
 // Env: GEMINI_API_KEY (required), GEMINI_MODEL (default gemini-flash-latest).
+// TRANSLATE_CONCURRENCY defaults to 1; TRANSLATE_INTERVAL_MS can increase the
+// shared 13-second minimum request spacing. Daily quota/auth errors stop queued jobs.
 
 import { readFileSync, writeFileSync, readdirSync, mkdirSync, existsSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 import { extractGuideJson, validateGuide, translationNeedsRefresh } from './lib/guide-quality.mjs'
+import { createTranslationRequestGate, runTranslationJobs } from './lib/translation-requests.mjs'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const GUIDES_DIR = join(__dirname, '..', 'app', 'app', 'data', 'guides')
@@ -37,7 +40,8 @@ const FORCE = argv.includes('--force')
 const ONLY_SLUG = arg('--slug')
 const ONLY_LOCALES = (arg('--locales') || '').split(',').map((s) => s.trim()).filter(Boolean)
 const MODEL = process.env.GEMINI_MODEL || 'gemini-flash-latest'
-const CONCURRENCY = Number(process.env.TRANSLATE_CONCURRENCY || 6)
+const CONCURRENCY = Number(process.env.TRANSLATE_CONCURRENCY || 1)
+const INTERVAL_MS = Number(process.env.TRANSLATE_INTERVAL_MS || 13_000)
 const LOCALES = (ONLY_LOCALES.length ? ONLY_LOCALES : Object.keys(LANGS))
 
 function listGuides() {
@@ -87,11 +91,12 @@ function parseArray(text) {
   return JSON.parse(t)
 }
 
-async function translateBatch(ai, strings, langName) {
+async function translateBatch(ai, requests, strings, langName) {
   const prompt = [
     `Translate each string in this JSON array from English to ${langName}. Context: a Warframe (video game) strategy/farming guide website.`,
     `Rules:`,
     `- Keep Warframe game proper nouns in English: Warframe/frame/weapon/item/mod/node/faction/mission names (e.g. Höllvania, Kuva, Steel Path, Prime, Orokin, Profit-Taker, The Index, Chroma, Necramech, Wukong, Secura Lecta, Eidolon, Railjack, Fortuna, Deimos).`,
+    `- In particular, preserve these exact gameplay names when present: Intact, Exceptional, Flawless, Radiant, Vaulted, Capture, Exterminate, Cetus, Plague Star, Umbra Forma, Omni Forma, Aura Forma, Stance Forma, Arcanes, Specters of the Rail. Do not invent literal translations or replace them with another game term.`,
     `- Preserve markdown links exactly as [visible text](/route): translate ONLY the visible text, keep the URL/route unchanged.`,
     `- Keep inline \`code\`, {placeholders}, numbers, and units unchanged.`,
     `- In this game "farm/farming" means grinding for loot — NOT agriculture. Translate it with the gaming sense (or keep "farming").`,
@@ -100,18 +105,27 @@ async function translateBatch(ai, strings, langName) {
     `Input:`,
     JSON.stringify(strings),
   ].join('\n')
-  const res = await ai.models.generateContent({ model: MODEL, contents: prompt, config: { temperature: 0.3, httpOptions: { timeout: 180_000 } } })
+  const res = await requests.request(() => ai.models.generateContent({
+    model: MODEL,
+    contents: prompt,
+    config: {
+      temperature: 0.3,
+      responseMimeType: 'application/json',
+      responseSchema: { type: 'ARRAY', items: { type: 'STRING' } },
+      httpOptions: { timeout: 180_000 },
+    },
+  }))
   return parseArray(res.text)
 }
 
-async function translateGuide(ai, guideObj, locale) {
+async function translateGuide(ai, requests, guideObj, locale) {
   const clone = JSON.parse(JSON.stringify(guideObj))
   const { strings, setters } = collect(clone)
   if (!strings.length) return clone
-  let out = await translateBatch(ai, strings, LANGS[locale])
+  let out = await translateBatch(ai, requests, strings, LANGS[locale])
   if (!Array.isArray(out) || out.length !== strings.length) {
     // one retry
-    out = await translateBatch(ai, strings, LANGS[locale])
+    out = await translateBatch(ai, requests, strings, LANGS[locale])
     if (!Array.isArray(out) || out.length !== strings.length) {
       throw new Error(`length mismatch (${Array.isArray(out) ? out.length : 'n/a'} vs ${strings.length})`)
     }
@@ -120,24 +134,14 @@ async function translateGuide(ai, guideObj, locale) {
   return clone
 }
 
-async function pool(items, n, fn) {
-  const results = []
-  let idx = 0
-  const workers = Array.from({ length: Math.min(n, items.length) }, async () => {
-    while (idx < items.length) {
-      const cur = idx++
-      results[cur] = await fn(items[cur], cur).catch((e) => ({ error: e?.message || String(e) }))
-    }
-  })
-  await Promise.all(workers)
-  return results
-}
-
 async function main() {
   if (!process.env.GEMINI_API_KEY) { console.error('FATAL: GEMINI_API_KEY not set'); process.exit(1) }
   if (!existsSync(OUT_DIR)) mkdirSync(OUT_DIR, { recursive: true })
   const { GoogleGenAI } = await import('@google/genai')
+  // Leave SDK retryOptions unset: its opt-in retry wrapper discards the quota
+  // response body. Our shared gate needs those details and owns paced retries.
   const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY })
+  const requests = createTranslationRequestGate({ intervalMs: INTERVAL_MS })
 
   const guides = listGuides()
   if (!guides.length) throw new Error(`no guide matched slug ${ONLY_SLUG || '(all)'}`)
@@ -154,23 +158,24 @@ async function main() {
       jobs.push({ slug: g.slug, loc, en, outPath })
     }
   }
-  console.log(`translate-guides: model=${MODEL} guides=${guides.length} locales=${LOCALES.length} jobs=${jobs.length} conc=${CONCURRENCY}`)
+  console.log(`translate-guides: model=${MODEL} guides=${guides.length} locales=${LOCALES.length} jobs=${jobs.length} conc=${CONCURRENCY} interval=${INTERVAL_MS}ms`)
 
-  let ok = 0, fail = 0
-  const res = await pool(jobs, CONCURRENCY, async (job) => {
-    const localized = await translateGuide(ai, job.en, job.loc)
+  let ok = 0, fail = 0, skipped = 0
+  const res = await runTranslationJobs(jobs, CONCURRENCY, async (job) => {
+    const localized = await translateGuide(ai, requests, job.en, job.loc)
     const errors = validateGuide(localized, job.slug)
     if (errors.length) throw new Error(errors.join('; '))
     writeFileSync(job.outPath, JSON.stringify(localized, null, 2), 'utf8')
     return { slug: job.slug, loc: job.loc }
-  })
+  }, requests)
   for (let i = 0; i < res.length; i++) {
     const r = res[i]
-    if (r && r.error) { fail++; console.error(`  ✗ ${jobs[i].slug}.${jobs[i].loc}: ${r.error}`) }
+    if (r.status === 'failed') { fail++; console.error(`  ✗ ${jobs[i].slug}.${jobs[i].loc}: ${r.error}`) }
+    else if (r.status === 'skipped') { skipped++; console.error(`  - ${jobs[i].slug}.${jobs[i].loc}: skipped (${r.error})`) }
     else { ok++; console.log(`  ✓ ${jobs[i].slug}.${jobs[i].loc}`) }
   }
-  console.log(`\ntranslate-guides: ${ok} ok, ${fail} failed.`)
-  if (fail > 0) process.exit(2)
+  console.log(`\ntranslate-guides: ${ok} ok, ${fail} failed, ${skipped} skipped.`)
+  if (fail > 0 || skipped > 0) process.exit(2)
 }
 
 main().catch((e) => { console.error('fatal', e); process.exit(1) })

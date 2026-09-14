@@ -11,6 +11,7 @@
 </template>
 
 <script setup lang="ts">
+import { fetchMarketData } from '~/utils/market-fetch'
 import type { WarframeItem } from './stores/items'
 
 // server -> internal origin (no Cloudflare round-trip for the ~2MB SSR fetch),
@@ -126,7 +127,7 @@ const route = useRoute()
 const needsCatalogue = routeNeedsCatalogue(route.name)
 const { data } = await useAsyncData('app-items', async () => {
   if (!needsCatalogue) return null
-  const list = await $fetch<WarframeItem[]>(catalogueUrl, CATALOGUE_FETCH).catch(() => null)
+  const list = await fetchMarketData<WarframeItem[]>(catalogueUrl, CATALOGUE_FETCH).catch(() => null)
   return list?.length ? packCatalogue(list) : null
 })
 const catalogue = unpackCatalogue(data.value)
@@ -161,7 +162,7 @@ let lastRefreshAt = 0
 const refreshCatalogue = (force = false) => {
   if (!force && Date.now() - lastRefreshAt < REFRESH_MIN_GAP_MS) return
   lastRefreshAt = Date.now()
-  $fetch<WarframeItem[]>(catalogueUrl, { ...CATALOGUE_FETCH, cache: 'no-cache' })
+  fetchMarketData<WarframeItem[]>(catalogueUrl, CATALOGUE_FETCH)
     .then((list) => {
       if (list?.length) items.setItems(list)
     })
@@ -213,7 +214,7 @@ onMounted(() => {
     // Today this outage is silent — the page just looks empty. Report it so the
     // blank-render rate is visible instead of only showing up as bounces.
     trackAction('catalogue_empty')
-    $fetch<WarframeItem[]>(catalogueUrl, CATALOGUE_FETCH)
+    fetchMarketData<WarframeItem[]>(catalogueUrl, CATALOGUE_FETCH)
       .then((list) => {
         if (list?.length) items.setItems(list)
       })

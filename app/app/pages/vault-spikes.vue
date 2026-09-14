@@ -153,6 +153,7 @@
 </template>
 
 <script setup lang="ts">
+import { fetchMarketData } from '~/utils/market-fetch'
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useDisplay } from 'vuetify'
 
@@ -161,7 +162,7 @@ const base = useApiBase()
 const { localItemName } = useLocalizedName()
 
 const { data, error } = await useAsyncData('vault-spikes-market-analytics', () =>
-  $fetch<any>(`${base}/market_analytics`),
+  fetchMarketData<any>(`${base}/market_analytics`),
 )
 
 const loadError = computed(() => !!error.value)

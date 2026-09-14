@@ -271,6 +271,7 @@
 </template>
 
 <script setup lang="ts">
+import { fetchMarketData } from '~/utils/market-fetch'
 import { computed, onBeforeUnmount, ref, watch } from 'vue'
 import {
   RELIC_CHANCES,
@@ -357,7 +358,7 @@ async function loadBook() {
   bookLoading.value = true
   bookError.value = false
   try {
-    book.value = await $fetch<OrderBook>(`${apiBase}/orders/${encodeURIComponent(rel.url_name)}`)
+    book.value = await fetchMarketData<OrderBook>(`${apiBase}/orders/${encodeURIComponent(rel.url_name)}`)
     bookFor = rel.url_name
   } catch {
     bookError.value = true

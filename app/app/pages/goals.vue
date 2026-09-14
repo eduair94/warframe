@@ -300,6 +300,7 @@
 </template>
 
 <script setup lang="ts">
+import { fetchMarketData } from '~/utils/market-fetch'
 import { computed, nextTick, onMounted, ref, watch } from 'vue'
 import { useDisplay } from 'vuetify'
 import { RELIC_CHANCES, trueRarity, type RelicReward, type RelicRow } from '~/composables/useRelicValue'
@@ -330,7 +331,7 @@ const setItems = computed<any[]>(() =>
 // Relic drop tables + prices, fetched ONCE for the whole page. Every goal's farm
 // plan is derived from this one payload rather than a request per goal.
 const { data: relicData, status: relicStatus } = await useAsyncData('goals-relics-ev', () =>
-  $fetch<{ relics: RelicRow[] }>(`${base}/relics_ev`),
+  fetchMarketData<{ relics: RelicRow[] }>(`${base}/relics_ev`),
 )
 const relics = computed<RelicRow[]>(() => relicData.value?.relics ?? [])
 const relicsLoading = computed(() => relicStatus.value === 'pending')
@@ -353,7 +354,7 @@ async function loadSet(urlName: string, force = false): Promise<void> {
   if (!force && setCache.value[urlName]) return
   setCache.value = { ...setCache.value, [urlName]: { loading: true, error: false, set: null, parts: [] } }
   try {
-    const res = await $fetch<any>(`${base}/set_full/${urlName}`)
+    const res = await fetchMarketData<any>(`${base}/set_full/${urlName}`)
     // The cached API wrapper answers a FAILED producer with HTTP 200 and a
     // `{ error }` body, never an error status — so `$fetch` resolves happily.
     // Without this check a failed lookup renders as a set with zero parts, i.e.

@@ -132,16 +132,15 @@ import { computed, ref, watch, nextTick, onBeforeUnmount, onMounted } from 'vue'
 import { GUIDES_INDEX, KNOWLEDGE_CATEGORIES } from '~/data/guides/registry'
 import { FAQS } from '~/data/faq'
 import { CREATORS } from '~/data/creators'
+import { resolveSeo } from '~/utils/seo'
+import { buildGuideCards, filterGuideCards } from '~/utils/guide-search'
 
-const { t } = useI18n()
+const { t, locale } = useI18n()
 const localePath = useLocalePath()
 
 const query = ref('')
-const filtered = computed(() => {
-  const q = query.value.trim().toLowerCase()
-  if (!q) return GUIDES_INDEX
-  return GUIDES_INDEX.filter((g) => (g.title + ' ' + g.blurb + ' ' + g.slug).toLowerCase().includes(q))
-})
+const cards = computed(() => buildGuideCards(GUIDES_INDEX, locale.value, resolveSeo))
+const filtered = computed(() => filterGuideCards(cards.value, query.value))
 const grouped = computed(() => {
   const g: Record<string, typeof GUIDES_INDEX> = {}
   for (const item of filtered.value) (g[item.category] ||= []).push(item)
