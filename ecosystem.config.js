@@ -34,7 +34,7 @@ module.exports = {
             env: {
                 NUXT_PUBLIC_API_URL: "https://warframe.digitalshopuy.com",
                 API_URL: "https://warframe.digitalshopuy.com",
-                SITE_URL: "https://warframe.digitalshopuy.com",
+                SITE_URL: "https://warframe-app.digitalshopuy.com",
                 PORT: "3312",
                 HOST: "0.0.0.0",
             },

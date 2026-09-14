@@ -225,6 +225,30 @@ legacy-cache cleanup. The full CI workflow will repeat its gates, compile API/fr
 the API, app and live feed. Public health, affected content and deployed assets must be verified
 after that workflow succeeds; this section records pre-deployment evidence only.
 
+### Public verification and deployment correction
+
+Commit `947dd54` passed every blocking gate and completed the full production workflow in
+[run 34851196570](https://github.com/eduair94/warframe/actions/runs/34851196570). Public Spanish
+Forma content and metadata updated correctly, and searching the guide hub for `creditos`
+returned the Credits guide. The API/Mongo health check, home asset and live handshake responded.
+EN/ES/JA/KO Forma returned the reviewed localized titles/descriptions, index/follow, self-canonicals
+and Article `dateModified: 2026-09-14`. Their 26 unique hreflang codes (language/region aliases and
+x-default) resolve consistently to the 13 expected locale URLs. Source links remain present, with
+no localhost schema origins or script-prefetch tags. The public Movers table also rendered prices
+without new browser console errors. The hydrated Forma relic finder displayed the corrected
+Common/Uncommon probabilities, one selected reward and mission-choice guidance.
+
+The ordinary public worker response revealed a build-time configuration mismatch: PM2 supplies
+the public API origin at runtime, but the frontend build had received no matching value and
+compiled both API cache rules for `localhost:3529`. Browser request revalidation works independently,
+but those worker rules did not match production API traffic. A follow-up aligns the frontend build
+with the existing PM2 public API configuration and checks the generated worker against that actual
+origin. The PM2 app's legacy `SITE_URL` is also corrected to the frontend host, matching the
+already-correct generated canonicals. Only the public API setting is imported for the worker
+build. This follow-up requires another full API/frontend/live deployment and public verification.
+The expanded frontend suite passes 34 tests, including the workflow's actual PM2-origin resolver,
+runtime override precedence, local fallback and a worker generated with the production configuration.
+
 ### Next review
 
 Inspect the organic landing pages behind the engaged-session decline, then measure complete

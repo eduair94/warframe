@@ -5,6 +5,10 @@ import {
 } from 'vuetify/locale'
 import toolSources from './app/data/tools.source.json'
 
+// The service worker is compiled, so it must use the same API value as the
+// browser runtime config. Production deploy exports this from the PM2 app env.
+const PUBLIC_API_URL = process.env.NUXT_PUBLIC_API_URL || process.env.API_URL || 'http://localhost:3529'
+
 // Dynamic /tools/<slug> detail routes + the best-tools guide aren't discoverable
 // by the sitemap module (they're rendered from a data file, not static pages),
 // so feed them in explicitly. Research prose and descriptions now have localized
@@ -93,7 +97,7 @@ export default defineNuxtConfig({
     // (API is warframe-server on 127.0.0.1:3529) and in local dev.
     apiInternal: process.env.API_INTERNAL_URL || 'http://127.0.0.1:3529',
     public: {
-      apiURL: process.env.API_URL || 'http://localhost:3529',
+      apiURL: PUBLIC_API_URL,
       // Live Socket.IO server (warframe-live process) — separate port/origin from the REST API
       liveURL: process.env.LIVE_URL || 'http://localhost:3530',
       // Firebase WEB config for the optional Tenno account layer. These values
@@ -599,7 +603,7 @@ export default defineNuxtConfig({
           // origin at build time so this first route affects only our API.
           urlPattern: new Function('{ url, request }', `
             const path = url.pathname.toLowerCase()
-            return url.origin === ${JSON.stringify(new URL(process.env.API_URL || 'http://localhost:3529').origin)}
+            return url.origin === ${JSON.stringify(new URL(PUBLIC_API_URL).origin)}
               && (request.headers.has('authorization')
                 || request.headers.has('x-admin-token')
                 || path === '/me' || path.startsWith('/me/') || path.startsWith('/build_'))
@@ -628,7 +632,7 @@ export default defineNuxtConfig({
         {
           // Cache the API origin (build-time env, same as the old config).
           urlPattern: new RegExp(
-            `^${(process.env.API_URL || 'http://localhost:3529').replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}/`
+            `^${PUBLIC_API_URL.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}/`
           ),
           handler: 'NetworkFirst',
           method: 'GET',

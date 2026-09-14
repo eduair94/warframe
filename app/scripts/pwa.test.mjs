@@ -5,6 +5,7 @@ import { tmpdir } from 'node:os'
 import { join, dirname, resolve } from 'node:path'
 import { runInNewContext } from 'node:vm'
 import { createRequire } from 'node:module'
+import { execFileSync } from 'node:child_process'
 import ts from 'typescript'
 
 const require = createRequire(import.meta.url)
@@ -12,7 +13,7 @@ const { generateSW } = require('workbox-build')
 
 // Load just the actual Workbox config: importing Nuxt's full config would need
 // Nuxt/Vite initialization and could disturb a running build or development app.
-async function loadConfigSection(path) {
+async function loadConfigSection(path, env = { API_URL: 'https://warframe.digitalshopuy.com' }) {
   const source = await readFile(new URL('../nuxt.config.ts', import.meta.url), 'utf8')
   const file = ts.createSourceFile('nuxt.config.ts', source, ts.ScriptTarget.Latest, true)
   const exported = file.statements.find(ts.isExportAssignment)?.expression
@@ -20,15 +21,55 @@ async function loadConfigSection(path) {
   const property = (node, name) => node?.properties?.find((entry) => (entry.name?.text ?? entry.name?.getText(file)) === name)?.initializer
   const section = path.reduce(property, config)
   assert.ok(section, `${path.join('.')} exists in nuxt.config.ts`)
-  const compiled = ts.transpileModule(`exports.section = ${section.getText(file)}`, {
+  const apiDeclaration = file.statements.filter(ts.isVariableStatement)
+    .flatMap((statement) => statement.declarationList.declarations)
+    .find((declaration) => declaration.name.getText(file) === 'PUBLIC_API_URL')
+  assert.ok(apiDeclaration, 'shared public API resolution exists')
+  const compiled = ts.transpileModule(`const ${apiDeclaration.getText(file)}; exports.section = ${section.getText(file)}`, {
     compilerOptions: { target: ts.ScriptTarget.ES2022, module: ts.ModuleKind.CommonJS },
   }).outputText
-  const context = { exports: {}, RegExp, URL, process: { env: { API_URL: 'https://warframe.digitalshopuy.com' } } }
+  const context = { exports: {}, RegExp, URL, process: { env } }
   runInNewContext(compiled, context)
   return context.exports.section
 }
 
 export const loadWorkboxConfig = () => loadConfigSection(['pwa', 'workbox'])
+
+async function productionBuildEnv() {
+  const workflow = await readFile(new URL('../../.github/workflows/deploy.yml', import.meta.url), 'utf8')
+  const resolver = workflow.match(/NUXT_PUBLIC_API_URL="\$\(node -e '([\s\S]*?)'\)"/)?.[1]
+  assert.ok(resolver, 'deploy derives the build API origin from PM2 before building the app')
+  assert.match(workflow, /export NUXT_PUBLIC_API_URL\s+export API_URL="\$NUXT_PUBLIC_API_URL"\s+cd app\s+npm ci\s+npm run build/)
+  const apiURL = execFileSync(process.execPath, ['-e', resolver], { cwd: new URL('../../', import.meta.url), encoding: 'utf8' })
+  return { NUXT_PUBLIC_API_URL: apiURL, API_URL: apiURL }
+}
+
+test('production build derives the same public API origin as PM2 without copying unrelated settings', async () => {
+  const env = await productionBuildEnv()
+  const pm2 = require('../../ecosystem.config.js').apps.find((app) => app.name === 'warframe-app').env
+  assert.equal(env.NUXT_PUBLIC_API_URL, new URL(pm2.NUXT_PUBLIC_API_URL || pm2.API_URL).origin)
+  assert.equal(Object.hasOwn(env, 'SITE_URL'), false)
+  assert.equal(await loadConfigSection(['runtimeConfig', 'public', 'apiURL'], env), env.NUXT_PUBLIC_API_URL)
+})
+
+test('runtime config and both worker routes share NUXT override precedence and localhost dev fallback', async () => {
+  for (const [env, expected] of [
+    [{}, 'http://localhost:3529'],
+    [{ API_URL: 'https://api.example' }, 'https://api.example'],
+    [{ API_URL: 'https://old-api.example', NUXT_PUBLIC_API_URL: 'https://runtime-api.example' }, 'https://runtime-api.example'],
+  ]) {
+    assert.equal(await loadConfigSection(['runtimeConfig', 'public', 'apiURL'], env), expected)
+    const workbox = await loadConfigSection(['pwa', 'workbox'], env)
+    const privateRoute = workbox.runtimeCaching.find((rule) => rule.handler === 'NetworkOnly')
+    const publicRoute = workbox.runtimeCaching.find((rule) => rule.options.cacheName === 'warframe-public-api-v2')
+    const request = new Request(`${expected}/me`)
+    assert.equal(privateRoute.urlPattern({ request, url: new URL(request.url) }), true)
+    assert.equal(publicRoute.urlPattern.test(`${expected}/market_analytics`), true)
+    const unrelated = new Request('https://unrelated.example/me')
+    assert.equal(privateRoute.urlPattern({ request: unrelated, url: new URL(unrelated.url) }), false)
+    assert.equal(publicRoute.urlPattern.test('https://unrelated.example/market_analytics'), false)
+  }
+})
 
 test('worker migration preserves root scope and prevents browser/CDN response caching', async () => {
   const pwa = await loadConfigSection(['pwa'])
@@ -175,7 +216,8 @@ test('generateSW installs only icons even when route chunks and Nuxt build metad
     for (const icon of icons) await writeFile(join(publicDir, icon), 'fixture-icon')
     await writeFile(join(publicDir, '_nuxt', 'abcd1234.js'), 'const locale = "unused translation";'.repeat(10_000))
     await writeFile(join(publicDir, '_nuxt', 'builds', 'latest.json'), '{"id":"new-deployment"}')
-    const pwa = await loadConfigSection(['pwa'])
+    const buildEnv = await productionBuildEnv()
+    const pwa = await loadConfigSection(['pwa'], buildEnv)
     const config = pwa.workbox
     // Reproduce the integration's extra glob: the filter must still win.
     config.globPatterns.push('_nuxt/builds/**/*.json')
@@ -206,7 +248,7 @@ test('generateSW installs only icons even when route chunks and Nuxt build metad
     })
     const define = (dependencies, factory) => factory(workbox)
     runInNewContext(worker, { define, self: { define, skipWaiting() {}, addEventListener() {} }, importScripts() {} })
-    const request = new Request('https://warframe.digitalshopuy.com/market_analytics', {
+    const request = new Request(`${buildEnv.NUXT_PUBLIC_API_URL}/market_analytics`, {
       headers: { Authorization: 'Bearer fixture' },
     })
     const privateRoute = routes.find((route) => route.method === 'GET' && (typeof route.match === 'function'
@@ -214,6 +256,9 @@ test('generateSW installs only icons even when route chunks and Nuxt build metad
       : route.match.test(request.url)))
     assert.equal(privateRoute.handler.strategy, 'NetworkOnly')
     assert.equal(privateRoute.handler.options.fetchOptions.cache, 'no-store')
+    const publicRoute = routes.find((route) => route.match instanceof RegExp || typeof route.match?.test === 'function')
+    assert.equal(publicRoute.match.test(`${buildEnv.NUXT_PUBLIC_API_URL}/market_analytics`), true)
+    assert.equal(publicRoute.handler.strategy, 'NetworkFirst')
     assert.ok(!worker.includes('process.env.API_URL'))
     assert.ok(!worker.includes('abcd1234.js'))
     assert.ok(!worker.includes('latest.json'))

@@ -125,8 +125,8 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.SSH_PORT || 22 }}
-          # Abort on the first failing command, so a failed build never reaches
-          # `pm2 reload` and prod keeps serving the previous build.
+          # Stop before PM2 reload on failure. Builds still modify the active
+          # checkout; release isolation is tracked in docs/seo-growth-log.md.
           script_stop: true
           script: |
             set -e
@@ -145,6 +145,16 @@ jobs:
             git pull --ff-only
             npm ci
             npm run build
+            # Worker routes are baked at build time, before PM2 injects its env.
+            # Derive only the API origin from the same app config used at runtime.
+            NUXT_PUBLIC_API_URL="$(node -e '
+              const env = require("./ecosystem.config.js").apps.find(app => app.name === "warframe-app")?.env || {};
+              const api = new URL(env.NUXT_PUBLIC_API_URL || env.API_URL);
+              if (!["http:", "https:"].includes(api.protocol) || api.username || api.password || api.pathname !== "/" || api.search || api.hash) throw new Error("PM2 public API must be an HTTP(S) origin");
+              process.stdout.write(api.origin);
+            ')"
+            export NUXT_PUBLIC_API_URL
+            export API_URL="$NUXT_PUBLIC_API_URL"
             cd app
             npm ci
             npm run build
