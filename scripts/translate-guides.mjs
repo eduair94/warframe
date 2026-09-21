@@ -96,6 +96,7 @@ async function translateBatch(ai, requests, strings, langName) {
   const prompt = [
     `Translate each string in this JSON array from English to ${langName}. Context: a Warframe (video game) strategy/farming guide website.`,
     `Rules:`,
+    `- Translate descriptive guide titles, eyebrows and section headings too. Only actual game proper names stay in English; a whole descriptive heading is not a proper name.`,
     `- Keep Warframe game proper nouns in English: Warframe/frame/weapon/item/mod/node/faction/mission names (e.g. Höllvania, Kuva, Steel Path, Prime, Orokin, Profit-Taker, The Index, Chroma, Necramech, Wukong, Secura Lecta, Eidolon, Railjack, Fortuna, Deimos).`,
     `- In particular, preserve these exact gameplay names when present: Intact, Exceptional, Flawless, Radiant, Vaulted, Capture, Exterminate, Cetus, Plague Star, Umbra Forma, Omni Forma, Aura Forma, Stance Forma, Arcanes, Specters of the Rail. Do not invent literal translations or replace them with another game term.`,
     `- Preserve markdown links exactly as [visible text](/route): translate ONLY the visible text, keep the URL/route unchanged.`,

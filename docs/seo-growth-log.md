@@ -359,6 +359,30 @@ workflow status and public checks are reported in the task so no trailing docume
 is left undeployed. The browser-control service timed out during preparation; server responses,
 generated content and automated UI tests remain available for verification.
 
+### Public verification and final editorial follow-up
+
+The complete deployment of `8bb5d7f` succeeded in
+[run 35626395395](https://github.com/eduair94/warframe/actions/runs/35626395395). All thirteen
+public mods pages returned HTTP 200, the reviewed descriptions, self-canonicals, 26 hreflang
+aliases, index/follow, and September 21 visible/schema review dates. API/Mongo, frontend, its
+new main JavaScript asset and live handshake were healthy. At 16:42:50 UTC, all 3,840 catalogue
+timestamps were valid; median age was 222 seconds, 3,536 items were under ten minutes old and
+none exceeded a day. Analytics were approximately 70 seconds old. Worker headers/configuration
+remained correct. These checks do not establish actual browser offline-cache behavior.
+
+All twelve unique internal destinations referenced by the guide returned HTTP 200 with correct
+self-canonicals and expected titles, including both build planners. None includes a fragment.
+The Endo/Riven tools intentionally render their H1 on the client and provide an SSR fallback
+table; assessing their search landing-page structure is a future task, not a new broken link.
+
+The public pass also exposed an English German H1 that the conservative long-prose echo guard
+does not cover. It and the German eyebrow are corrected using existing German SEO/guide wording,
+without another generated translation or a manufactured review date. A bounded audit of all twelve
+localized titles, eyebrows and 108 section headings found no other descriptive English echoes.
+The translation prompt explicitly requires descriptive
+headings to be translated as well. This follow-up includes its documentation before another full
+API/frontend/live deployment; final status and verification are reported in the task.
+
 ### Next content queue
 
 Recheck the event wording after September 23 at 14:00 UTC and verify the release against official
