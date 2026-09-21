@@ -264,3 +264,106 @@ directories, preserve operational working directories, verify candidate health b
 retain old hashed assets and test rollback. Confirm server paths and disk headroom first. PM2 fork
 mode also means reload is not a guarantee of zero downtime. This iteration uses the existing full
 API/frontend/live deployment and requires public verification after it completes.
+
+## 2026-09-21 — scheduled review
+
+### Production and measurement baseline
+
+The working tree started clean at `4dd75f5`; its complete production deployment
+[run 34852578564](https://github.com/eduair94/warframe/actions/runs/34852578564) succeeded.
+No deployment or guide-refresh workflow was running at the start of this review.
+Ordinary public requests on September 21 at 15:53–15:56 UTC confirmed:
+
+- API HTTP 200, `ok: true`, MongoDB up; frontend, its current JavaScript asset and live
+  Engine.IO handshake also responded successfully.
+- All 3,840 catalogue timestamps were valid. Median item age was 136.8 seconds, 3,564 items
+  were under ten minutes old and none exceeded one day. The 3,840-item analytics document
+  was generated at 15:52:54 UTC, less than a minute before its check.
+- The ordinary worker response uses the public API origin, includes the private-request
+  exclusion and cache migration, and returns `no-store`. This verifies served configuration;
+  it is not a new browser offline-cache behavior test.
+- English and Spanish Forma pages return localized titles/body, self-canonicals and
+  `index/follow`. Their 26 hreflang aliases map to 13 locale URLs. The English and Spanish
+  sitemaps each list 1,436 URLs and include Forma; the index has all 13 locale maps.
+
+GA4 and Search Console connector discovery both returned `oauth_token_invalid_grant`.
+Chrome was unavailable to this session; the available in-app browser redirected GA4 property
+546208759 to Google's sign-in page. Consequently the complete seven-day comparison
+(September 14–20 versus September 7–13) and 28-day comparison (August 24–September 20 versus
+July 27–August 23) could not be obtained. Traffic and organic landing-page data are unavailable,
+not zero. The September 14 figures above remain historical; no new growth or causal claim is made.
+
+### Editorial priority
+
+The next correction addresses demonstrably inaccurate mods/survivability instructions, including
+shield-gate recovery, the Decaying Dragon Key, shieldless frames, Slash versus Toxin, and Rolling
+Guard. The hypothesis is that reliable answers and consistent localized explanations better serve
+players arriving for these mechanics. Analytics access is needed to measure any retention effect.
+Changes, sources and final validation for this revision are recorded below before deployment.
+
+The public Spanish builds guide still has an English H1/body despite Spanish metadata and a
+self-canonical Spanish URL. Its missing localized snapshots remain a concrete next content task.
+
+### Changes and evidence
+
+The mods guide was fact-checked against official Update 34, 27.2, 23.10, 30.5, 36, 38.5 and
+the Support mod/Forma documentation, linked directly in the guide. The revision preserves its
+nine section anchors and nine FAQs and includes ten official sources alongside existing references.
+It corrects shield-gate scaling and partial restoration, Catalyzing Shields, the Dragon Key cap,
+Rolling Guard, Inaros, Slash versus Toxin, current Vitality/Redirection values, polarity versus
+capacity, Blast and Magnetic. Unsupported invincibility guarantees and invented Riven percentage
+gains were removed. The reviewed English date is September 21; unrelated guides retain their dates.
+
+All twelve old mods locale snapshots shared the English review date but lacked the build-planners
+section, ninth FAQ and newer related/source links. Full regeneration was required: an index-based
+translation delta would have reused mismatched fields. Review also caught complete English echoes
+from the provider for Japanese and Italian, invalid Chinese stat descriptions and a Ukrainian
+shield-gating mistranslation. These responses were repaired through the existing SDK and checked
+again before release, including independent review of the critical translated mechanics.
+The committed translator now rejects batches that overwhelmingly echo substantial English prose
+before they can overwrite an existing locale. Its regression test exercises the actual translation
+function and verifies that a previous snapshot survives rejection. This is a conservative echo
+guard, not a general language or factual-accuracy detector.
+
+Translation follow-up now compares section/FAQ structure, invariant metadata and link destinations
+as well as review dates. It ignores localized prose and harmless link reordering within the same
+text field, while retaining duplicate counts. Prose-only source changes still need an honest review
+date update. This closes the equal-date structural gap without automatically rewriting dates.
+
+Every guide now displays its existing review date as a localized day, month and year in a semantic
+time element. Explicit UTC formatting prevents negative browser time zones from showing the
+previous day or month. Focused tests cover actual UTC/Montevideo/Los Angeles processes, calendar
+boundaries, leap days, localized output and invalid-date fallbacks. The mods hub card's summary and
+reading time are aligned with the reviewed article; localized search summaries reuse reviewed copy.
+
+The official news check found no new gameplay patch since the prior iteration: the newest PC
+entry remained [43.5.4](https://www.warframe.com/en/patch-notes/pc/43-5-4). The September 16 news
+item concerned merchandise. Plague Star still ends September 23 at 14:00 UTC, and Citrine Prime
+remains announced for September 23. No unreleased mechanics or speculative relic IDs were added.
+
+### Validation and release
+
+The final local suites passed: 548 API tests, 26 guide/translation tests and 37 frontend tests
+(611 total). All i18n messages compile without duplicate keys; the repository map is current;
+the edited Vue template compiles and whitespace checks pass. The guide checker validates all
+25 guides with zero errors. Every mods locale now has nine sections, nine FAQs, fifteen sources
+and the September 21 reviewed date; the structural follow-up queue no longer includes mods.
+The remaining queue is builds (all twelve locales), archon-shards (ru), focus (zh-hans), resources
+(zh-hans), riven (pl/uk) and standing (pl). These warnings remain visible and are not hidden by
+artificial date changes.
+
+All source, locale, metadata and documentation changes belong to one release commit. Its push
+must run the full existing API/frontend/live workflow and pass public verification; this log
+records pre-deploy evidence and does not claim a deployment that has not yet completed. Final
+workflow status and public checks are reported in the task so no trailing documentation commit
+is left undeployed. The browser-control service timed out during preparation; server responses,
+generated content and automated UI tests remain available for verification.
+
+### Next content queue
+
+Recheck the event wording after September 23 at 14:00 UTC and verify the release against official
+notes before adding new item/relic information. Translate the builds guide's English-only locale
+fallbacks. Review the relics guide's source-finding versus fissure-opening advice, endless rotation
+rewards, Void Traces and Aya/Regal Aya distinctions. Address the remaining structural locale drift
+reported by the improved checker; preserve valid existing translations until their replacements
+pass factual and structural review. Restore analytics access to measure complete traffic windows.

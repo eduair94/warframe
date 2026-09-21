@@ -14,7 +14,9 @@ Backend/build tooling. Not the `sync_*.ts` importers (those live at repo root an
 - **`enrich-tools.ts`** — enriches the community-tools directory (whois/github/screenshots).
 - **`refresh-guides.mjs`** — regenerates the guides content data.
 - **`check-guides.mjs`** — offline guide shape/source/date validation (`npm run guides:check`);
-  reports the 90-day review queue without changing dates. `npm run guides:test` checks
+  reports the 90-day review queue without changing dates. Translation follow-up also detects
+  missing sections, FAQs and changed link/source/video metadata even when review dates match;
+  prose-only corrections still require an honest source review-date update. `npm run guides:test` checks
   refresh integrity (literal parsing, renderer inputs, video outages, grounding, honest dates).
 - **`lib/`**, **`.i18n-en/`** — helpers + cached English dump.
 - **`dev/`** — throwaway probes (`debug-ayatan.ts`, `test-*.ts`). **Not jest tests** (jest matches
@@ -30,3 +32,5 @@ Backend/build tooling. Not the `sync_*.ts` importers (those live at repo root an
   apart, including retries. `TRANSLATE_INTERVAL_MS` can increase that interval. A daily quota
   or access error stops unstarted jobs while preserving completed snapshots; a transient 503
   or explicit per-minute limit gets one paced retry. `guides:test` covers this request gate.
+  Batches that overwhelmingly echo English prose are rejected before replacing a locale;
+  this conservative check supplements, rather than replaces, a factual translation review.

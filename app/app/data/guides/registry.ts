@@ -38,7 +38,7 @@ export const GUIDES_INDEX: GuideMeta[] = [
   { slug: 'standing', route: '/guides/standing', title: 'Standing & Syndicates', blurb: 'Cap your daily standing across every syndicate and open-world faction.', category: 'farming', icon: 'mdi-handshake-outline', readMins: 8 },
 
   // ── Systems & Builds ────────────────────────────────────────────────
-  { slug: 'mods', route: '/guides/mods', title: 'Essential Mods & Survivability', blurb: 'How modding works, the must-have mods, and shield-gating to stop dying.', category: 'systems', icon: 'mdi-cog-outline', readMins: 11, featured: true },
+  { slug: 'mods', route: '/guides/mods', title: 'Essential Mods & Survivability', blurb: 'Choose Warframe mods, plan capacity and Forma, and build reliable defenses.', category: 'systems', icon: 'mdi-cog-outline', readMins: 12, featured: true },
   { slug: 'builds', route: '/guides/builds', title: 'Best Builds & Build Planners', blurb: 'Find, copy and pressure-test builds with Overframe & Underframe — and read them critically.', category: 'systems', icon: 'mdi-hammer-screwdriver', readMins: 12, featured: true },
   { slug: 'helminth', route: '/guides/helminth', title: 'Helminth & Subsumes', blurb: 'Unlock Helminth, subsume abilities and the best powers to graft on.', category: 'systems', icon: 'mdi-dna', readMins: 9 },
   { slug: 'arcanes', route: '/guides/arcanes', title: 'Arcanes Guide', blurb: 'What arcanes do, where they drop, and the staples worth farming.', category: 'systems', icon: 'mdi-shimmer', readMins: 8 },

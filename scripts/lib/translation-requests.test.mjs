@@ -5,6 +5,7 @@ import { runInNewContext } from 'node:vm'
 import { ApiError, GoogleGenAI } from '@google/genai'
 import ts from 'typescript'
 import { createTranslationRequestGate, runTranslationJobs, translationErrorPolicy } from './translation-requests.mjs'
+import { assertTranslationNotEcho } from './translation-echo.mjs'
 
 const apiError = (code, message, details = []) => new ApiError({
   status: code, message: JSON.stringify({ error: { code, message, details } }),
@@ -151,7 +152,7 @@ test('the actual translation function requests JSON through the shared request g
   const source = readFileSync(new URL('../translate-guides.mjs', import.meta.url), 'utf8')
   const file = ts.createSourceFile('translate-guides.mjs', source, ts.ScriptTarget.Latest, true)
   const batch = file.statements.find((node) => ts.isFunctionDeclaration(node) && node.name?.text === 'translateBatch')
-  const context = { exports: {}, MODEL: 'test-fixture-model', parseArray: JSON.parse }
+  const context = { exports: {}, MODEL: 'test-fixture-model', parseArray: JSON.parse, assertTranslationNotEcho }
   runInNewContext(`exports.translateBatch = ${batch.getText(file)}`, context)
   let request, starts = 0
   const ai = { models: { generateContent: async (options) => { request = options; return { text: '["translated fixture"]' } } } }
@@ -175,4 +176,49 @@ test('the actual translation function requests JSON through the shared request g
     const sdk = new GoogleGenAI({ apiKey: 'test-fixture-key' })
     assert.deepEqual(await context.exports.translateBatch(sdk, requests, ['Blueprint reward'], 'Japanese'), ['translated fixture'])
   } finally { globalThis.fetch = originalFetch }
+})
+
+const proseFixture = [
+  'Choose the mods that support your equipment and compare the capacity required before spending your Forma.',
+  'The recovery window gives you time to reposition, but your build still needs a reliable way to restore shields.',
+  'A matching polarity reduces the drain of a mod so that more of your planned loadout can fit into its capacity.',
+  'Read the conditions on each mod and test whether your mission provides the kills needed to sustain its bonus.',
+  'The result depends on your weapon and its other mods, so compare the complete build before buying a new item.',
+]
+
+test('translation source echo rejects predominantly unchanged long prose after whitespace normalization', () => {
+  const output = proseFixture.map((text) => `\n ${text.replaceAll(' ', '  ')} \n`)
+  output[4] = 'Compara las opciones de tu equipamiento antes de invertir recursos.'
+  assert.throws(() => assertTranslationNotEcho(proseFixture, output, 'Japanese'), /source echo.*4\/5/)
+  output[3] = 'Revisa las condiciones de cada mod antes de usarlo en una misión.'
+  assert.doesNotThrow(() => assertTranslationNotEcho(proseFixture, output, 'Spanish'))
+})
+
+test('echo guard permits translated prose, canonical names, numeric fields and an English target', () => {
+  const fixed = ['Omni Forma', 'Rolling Guard', 'Catalyzing Shields', '0.33', '1,150', 'Warframe', '/guides/mods']
+  const translated = ['Elige los mods.', 'Recupera tus escudos.', 'Comprueba la polaridad.', 'Lee las condiciones.', 'Compara tus opciones.']
+  assert.doesNotThrow(() => assertTranslationNotEcho([...proseFixture, ...fixed], [...translated, ...fixed], 'Spanish'))
+  assert.doesNotThrow(() => assertTranslationNotEcho(fixed, fixed, 'Japanese'))
+  assert.doesNotThrow(() => assertTranslationNotEcho(proseFixture.slice(0, 4), proseFixture.slice(0, 4), 'Italian'))
+  assert.doesNotThrow(() => assertTranslationNotEcho(proseFixture, proseFixture, 'English'))
+})
+
+test('actual guide translation rejects an English provider echo before a locale snapshot can be replaced', async () => {
+  const source = readFileSync(new URL('../translate-guides.mjs', import.meta.url), 'utf8')
+  const file = ts.createSourceFile('translate-guides.mjs', source, ts.ScriptTarget.Latest, true)
+  const functions = file.statements.filter((node) => ts.isFunctionDeclaration(node)
+    && ['collect', 'parseArray', 'translateBatch', 'translateGuide'].includes(node.name?.text))
+  const context = { exports: {}, MODEL: 'fixture', LANGS: { ja: 'Japanese' }, assertTranslationNotEcho }
+  runInNewContext(`${functions.map((node) => node.getText(file)).join('\n')}\nexports.translateGuide = translateGuide`, context)
+  const guide = { title: 'Mods', sections: [{ blocks: proseFixture.map((text) => ({ type: 'p', text })) }] }
+  const ai = { models: { generateContent: async ({ contents }) => ({ text: contents.split('\nInput:\n')[1] }) } }
+  const requests = { request: async (send) => send() }
+  const original = { title: '既存の翻訳' }
+  let snapshot = original
+  await assert.rejects(async () => {
+    const candidate = await context.exports.translateGuide(ai, requests, guide, 'ja')
+    snapshot = candidate
+  }, /source echo for Japanese: 5\/5/)
+  assert.equal(snapshot, original)
+  assert.equal(guide.sections[0].blocks[0].text, proseFixture[0])
 })

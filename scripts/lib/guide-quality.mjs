@@ -154,6 +154,26 @@ export function hasSearchGrounding(response) {
 
 // Locale guides are complete snapshots. An English correction cannot become
 // visible in them until they are translated again from that reviewed version.
+const guideInvariantKeys = new Set(['slug', 'id', 'type', 'category', 'num', 'tone', 'to', 'href', 'icon', 'updated'])
+
+function translationStructure(value, key = '', preserveText = false) {
+  if (typeof value === 'string') {
+    if (preserveText || guideInvariantKeys.has(key)) return value
+    // Prose is localized, but embedded link destinations must stay in sync.
+    return { text: true, links: [...value.matchAll(/\[[^\]]*\]\(([^)]+)\)/g)].map((match) => match[1]).sort() }
+  }
+  if (Array.isArray(value)) return value.map((entry) => translationStructure(entry, '', preserveText))
+  if (value && typeof value === 'object') {
+    return Object.fromEntries(Object.entries(value).sort(([a], [b]) => a.localeCompare(b))
+      .map(([name, entry]) => [name, translationStructure(entry, name,
+        preserveText || ['sources', 'videos', 'video'].includes(name))]))
+  }
+  return value
+}
+
 export function translationNeedsRefresh(current, localized) {
-  return !localized || localized.slug !== current.slug || localized.updated !== current.updated
+  if (!localized || localized.slug !== current.slug || localized.updated !== current.updated) return true
+  // Equal review dates alone missed sections, FAQs and changed destinations in
+  // older snapshots. Ignore translated prose while comparing structure/metadata.
+  return JSON.stringify(translationStructure(current)) !== JSON.stringify(translationStructure(localized))
 }

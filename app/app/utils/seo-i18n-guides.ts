@@ -84,7 +84,7 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
     },
     "/guides/mods": {
       "title": "Guía de mods en Warframe — Mods esenciales y supervivencia",
-      "description": "Cómo funciona el modding en Warframe, los mods imprescindibles y el shield-gating para dejar de morir. Entiende la capacidad de mods, las polaridades y los multiplicadores de daño."
+      "description": "Elige mods para tu Warframe, planifica la capacidad y el Forma, y construye defensas fiables. Aprende las reglas actuales del shield-gating, tipos de daño y compensaciones de supervivencia."
     },
     "/guides/helminth": {
       "title": "Guía de Helminth en Warframe — Subsumir y mejores habilidades",
@@ -202,7 +202,7 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
     },
     "/guides/mods": {
       "title": "Guia de Mods Warframe — Mods Essenciais e Sobrevivência",
-      "description": "Como funciona a modding em Warframe, os mods indispensáveis e o shield-gating para parar de morrer. Entenda capacidade de mods, polaridades e os multiplicadores de dano."
+      "description": "Escolha mods de Warframe, planeje capacidade e Forma, e construa defesas confiáveis. Aprenda as regras atuais de shield-gating, tipos de dano e concessões de sobrevivência."
     },
     "/guides/helminth": {
       "title": "Guia de Helminth Warframe — Subsume e Melhores Habilidades",
@@ -320,7 +320,7 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
     },
     "/guides/mods": {
       "title": "Warframe Mods Guide — Wichtige Mods & Überleben",
-      "description": "Wie Modding in Warframe funktioniert, die unverzichtbaren Mods und Shield-Gating, um nicht zu sterben. Verstehe Mod-Kapazität, Polaritäten und die Schadensmultiplikatoren."
+      "description": "Wähle Warframe-Mods, plane Kapazität und Forma und baue zuverlässige Verteidigungen auf. Lerne aktuelle Shield-Gating-Regeln, Schadensarten und Überlebens-Kompromisse kennen."
     },
     "/guides/helminth": {
       "title": "Warframe Helminth Guide — Subsume & beste Fähigkeiten",
@@ -438,7 +438,7 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
     },
     "/guides/mods": {
       "title": "Guide des mods Warframe — Mods essentiels & survie",
-      "description": "Comment fonctionne le modding dans Warframe, les mods indispensables et le shield-gating pour arrêter de mourir. Comprenez la capacité de mods, les polarités et les multiplicateurs de dégâts."
+      "description": "Choisissez vos mods de Warframe, planifiez votre capacité et vos Forma, et construisez des défenses fiables."
     },
     "/guides/helminth": {
       "title": "Guide Helminth Warframe — Subsumer & capacités",
@@ -556,7 +556,7 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
     },
     "/guides/mods": {
       "title": "Гайд по модам Warframe — базовые моды и выживание",
-      "description": "Как работает модификация в Warframe, обязательные моды и shield-gating против смертей. Разберитесь в ёмкости модов, полярностях и множителях урона."
+      "description": "Выбирайте моды на Warframe, планируйте вместимость и Forma и создавайте надежную защиту. Узнайте актуальные правила защиты щитами (shield-gating), типы урона и особенности выживаемости."
     },
     "/guides/helminth": {
       "title": "Гайд по Helminth Warframe — субсум и лучшие способности",
@@ -674,7 +674,7 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
     },
     "/guides/mods": {
       "title": "Warframe 모드 가이드 — 필수 모드 & 생존력",
-      "description": "Warframe 모딩 작동 방식, 필수 모드, 죽지 않기 위한 shield-gating까지. 모드 용량, 극성, 데미지 배수를 이해하세요."
+      "description": "Warframe 모드를 선택하고, 수용량과 Forma를 계획하며, 안정적인 방어력을 구축하세요. 현재 실드 게이팅 규칙, 피해 유형 및 생존력의 상충 관계에 대해 알아보세요."
     },
     "/guides/helminth": {
       "title": "Warframe Helminth 가이드 — Subsume & 최고의 능력",
@@ -792,7 +792,7 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
     },
     "/guides/mods": {
       "title": "Warframe MODガイド — 必須MODと生存性",
-      "description": "WarframeのMODの仕組み、必携MOD、死なないためのシールドゲート。MOD容量、極性、ダメージ倍率を理解しよう。"
+      "description": "Warframeのモッドを選び、容量とFormaを計画し、信頼性の高い防御力を構築します。現在のシールドゲイトのルール、ダメージタイプ、サバイバリティのトレードオフについて学びましょう。"
     },
     "/guides/helminth": {
       "title": "Warframe Helminthガイド — アビリティ移植とおすすめ能力",
@@ -910,7 +910,7 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
     },
     "/guides/mods": {
       "title": "Warframe Mod 攻略 — 必备 Mod 与生存能力",
-      "description": "Warframe 的 Mod 系统如何运作、必备 Mod 有哪些，以及用护盾门机制避免暴毙。搞懂 Mod 容量、极性与伤害倍率。"
+      "description": "选择 Warframe Mod，规划容量与 Forma，并构建可靠的防御。了解最新的护盾门槛机制、伤害类型以及生存能力的权衡。"
     },
     "/guides/helminth": {
       "title": "Warframe Helminth 攻略 — 吞噬与最佳技能",
@@ -1028,7 +1028,7 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
     },
     "/guides/mods": {
       "title": "Warframe 模組指南 — 必備模組與生存力",
-      "description": "Warframe 模組系統如何運作、必備模組，以及靠護盾閘避免暴斃。搞懂模組容量、極性與傷害倍率。"
+      "description": "選擇 Warframe 模組、規劃容量與 Forma，並建立可靠的防禦。學習當前的護盾門檻規則、傷害類型與生存能力取捨。"
     },
     "/guides/helminth": {
       "title": "Warframe Helminth 指南 — 吸收與最佳技能",
@@ -1146,7 +1146,7 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
     },
     "/guides/mods": {
       "title": "Poradnik Modów w Warframe — Kluczowe Mody i Przeżywalność",
-      "description": "Jak działa moddowanie w Warframe, które mody są obowiązkowe i jak działa shield-gating, żeby nie ginąć. Zrozum pojemność modów, polaryzacje i mnożniki obrażeń."
+      "description": "Wybieraj mody dla Warframe, planuj pojemność i Forma oraz buduj niezawodną defensywę. Poznaj aktualne zasady shield-gatingu, typy obrażeń oraz kompromisy dotyczące przeżywalności."
     },
     "/guides/helminth": {
       "title": "Poradnik Helminth w Warframe — Subsume i Zdolności",
@@ -1264,7 +1264,7 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
     },
     "/guides/mods": {
       "title": "Guida alle Mod Warframe — Mod Essenziali e Sopravvivenza",
-      "description": "Come funziona il modding in Warframe, le mod indispensabili e lo shield-gating per non morire. Capisci capacità delle mod, polarità e i moltiplicatori di danno."
+      "description": "Scegli i mod per Warframe, pianifica la capacità e i Forma e costruisci difese affidabili. Impara le regole attuali dello shield-gating, i tipi di danno e i compromessi per la sopravvivenza."
     },
     "/guides/helminth": {
       "title": "Guida al Helminth Warframe — Subsume e Migliori Abilità",
@@ -1382,7 +1382,7 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
     },
     "/guides/mods": {
       "title": "Гайд модів Warframe — ключові моди й виживання",
-      "description": "Як працює моддинг у Warframe, обов'язкові моди та shield-gating, щоб не помирати. Розберіться з ємністю модів, полярностями й множниками урону."
+      "description": "Вибирайте модифікації для Warframe, плануйте місткість і Forma та створюйте надійний захист. Дізнайтеся про сучасні правила shield-gating, типи пошкоджень і компроміси щодо виживання."
     },
     "/guides/helminth": {
       "title": "Гайд Helminth Warframe — subsume і найкращі здібності",

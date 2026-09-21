@@ -22,6 +22,7 @@ import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 import { extractGuideJson, validateGuide, translationNeedsRefresh } from './lib/guide-quality.mjs'
 import { createTranslationRequestGate, runTranslationJobs } from './lib/translation-requests.mjs'
+import { assertTranslationNotEcho } from './lib/translation-echo.mjs'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const GUIDES_DIR = join(__dirname, '..', 'app', 'app', 'data', 'guides')
@@ -115,7 +116,9 @@ async function translateBatch(ai, requests, strings, langName) {
       httpOptions: { timeout: 180_000 },
     },
   }))
-  return parseArray(res.text)
+  const translated = parseArray(res.text)
+  assertTranslationNotEcho(strings, translated, langName)
+  return translated
 }
 
 async function translateGuide(ai, requests, guideObj, locale) {

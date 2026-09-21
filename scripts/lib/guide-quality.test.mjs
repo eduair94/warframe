@@ -99,3 +99,57 @@ test('old locale snapshots enter the follow-up queue after an English correction
   assert.equal(translationNeedsRefresh(current, { ...current, title: 'Título traducido' }), false)
   assert.equal(translationNeedsRefresh(current, { ...current, slug: 'wrong-guide' }), true)
 })
+
+test('equal review dates do not hide missing sections, FAQs or changed internal destinations', () => {
+  const current = {
+    ...guide(),
+    faqs: [{ q: 'How?', a: 'Read [the guide](/guides/forma#build).' }],
+    related: [{ label: 'Forma guide', to: '/guides/forma', icon: 'book' }],
+  }
+  const localized = structuredClone(current)
+  localized.title = 'Guía de mods'
+  localized.sections[0].title = 'Introducción'
+  localized.sections[0].blocks[0].text = 'Contenido útil.'
+  localized.faqs[0] = { q: '¿Cómo?', a: 'Lee [la guía](/guides/forma#build).' }
+  localized.related[0].label = 'Guía de Forma'
+  assert.equal(translationNeedsRefresh(current, localized), false)
+  for (const mutate of [
+    (copy) => copy.sections.push({ id: 'missing', title: 'New section', blocks: [] }),
+    (copy) => copy.faqs.push({ q: 'Another question?', a: 'Another answer.' }),
+    (copy) => { copy.related[0].to = '/guides/builds' },
+    (copy) => { copy.faqs[0].a = 'Read [the guide](/guides/forma#variants).' },
+  ]) {
+    const changed = structuredClone(current)
+    mutate(changed)
+    assert.equal(translationNeedsRefresh(changed, localized), true)
+  }
+})
+
+test('translated prose can reorder links while preserving every destination and duplicate count', () => {
+  const current = guide()
+  current.sections[0].blocks[0].text = 'Read [Forma](/guides/forma) then [builds](/guides/builds).'
+  const localized = structuredClone(current)
+  localized.sections[0].blocks[0].text = 'Consulta [las builds](/guides/builds) y [Forma](/guides/forma).'
+  assert.equal(translationNeedsRefresh(current, localized), false)
+  localized.sections[0].blocks[0].text += ' [Otra vez](/guides/forma).'
+  assert.equal(translationNeedsRefresh(current, localized), true)
+})
+
+test('locale structure retains stat values, block types and source/video metadata', () => {
+  const current = {
+    ...guide(), stats: [{ num: '23 h', label: 'Build time' }],
+    videos: [{ id: 'abcdefghijk', title: 'Verified video', channel: 'Creator' }],
+  }
+  const reordered = Object.fromEntries(Object.entries(current).reverse())
+  assert.equal(translationNeedsRefresh(current, reordered), false)
+  for (const mutate of [
+    (copy) => { copy.stats[0].num = '24 h' },
+    (copy) => { copy.sections[0].blocks[0].type = 'warn' },
+    (copy) => { copy.sources[0].href = 'https://www.warframe.com/updates' },
+    (copy) => { copy.videos[0].id = 'newvideo123' },
+  ]) {
+    const changed = structuredClone(current)
+    mutate(changed)
+    assert.equal(translationNeedsRefresh(current, changed), true)
+  }
+})

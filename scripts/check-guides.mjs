@@ -32,5 +32,5 @@ for (const name of readdirSync(directory).filter((file) => file.endsWith('.ts') 
 if (!checked) { console.error(`No guides found in ${fileURLToPath(directory)}`); failures++ }
 console.log(`guides:check: ${checked} guides checked, ${failures} failure(s).`)
 if (due.length) console.warn(`Review queue (${maxAgeDays}+ days; dates unchanged): ${due.join(', ')}`)
-if (staleLocales.length) console.warn(`Translation follow-up (missing or different review dates):\n  ${staleLocales.join('\n  ')}\nRun node scripts/translate-guides.mjs --slug <slug> to update these snapshots.`)
+if (staleLocales.length) console.warn(`Translation follow-up (missing snapshot, changed review date, structure or destinations):\n  ${staleLocales.join('\n  ')}\nRun node scripts/translate-guides.mjs --slug <slug> to update these snapshots.`)
 if (failures) process.exitCode = 1

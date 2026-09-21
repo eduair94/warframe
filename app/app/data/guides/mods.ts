@@ -1,21 +1,19 @@
-// Auto-generated Warframe Knowledge Center guide content.
-// Drafted grounded in r/Warframe research (reddit API) + the subreddit wiki FAQ,
-// then adversarially fact-checked for evergreen accuracy. Embedded video ids were
-// verified live via YouTube oEmbed. Edit freely — this is the single source for
-// the /guides/mods page (rendered by <GuideArticle>).
+// Warframe Knowledge Center guide content.
+// Mechanics reviewed against official patch notes and Support on 2026-09-21.
+// This is the single source for /guides/mods (rendered by <GuideArticle>).
 import type { Guide } from './types'
 
 const guide: Guide = {
   "slug": "mods",
   "eyebrow": "Knowledge Center · Mods & Survivability",
   "title": "Essential Mods & Survivability",
-  "lede": "Your Warframe and weapons are almost naked out of the box — mods are the other 90% of your power. Master mod capacity, the damage-multiplier model, and shield-gating, and any frame can survive the Steel Path.",
+  "lede": "Choose Warframe mods, plan capacity and Forma, and build reliable defenses. Learn current shield-gating rules, damage types and survivability trade-offs.",
   "category": "systems",
   "readMins": 12,
   "stats": [
     {
       "num": "60",
-      "label": "max capacity w/ a potato",
+      "label": "rank-30 base capacity with a Reactor/Catalyst",
       "tone": "gold"
     },
     {
@@ -29,8 +27,8 @@ const guide: Guide = {
       "tone": "good"
     },
     {
-      "num": "2.25s",
-      "label": "max shield-gate i-frames",
+      "num": "2.5s",
+      "label": "standard shield-gate cap; exceptions apply",
       "tone": "gold"
     }
   ],
@@ -41,11 +39,11 @@ const guide: Guide = {
       "blocks": [
         {
           "type": "p",
-          "text": "A fresh Warframe or weapon is a shell. **Mods** are the cards you slot into it that add damage, health, abilities, crit, elements, and utility — they are where nearly all of your power comes from. Learning to mod well matters far more than which frame you own."
+          "text": "**Mods** change your equipment's damage, defenses, abilities and utility. Start with the problem your loadout needs to solve: surviving a mission, sustaining energy or defeating a particular enemy. The right combination matters more than filling every slot."
         },
         {
           "type": "p",
-          "text": "Every item has **mod slots** and a **capacity** budget. Each mod has a **drain** cost, and the total drain of your equipped mods can't exceed your capacity. Capacity equals the item's **rank**: a rank-30 Warframe or weapon has **30 capacity**. Rank a mod up (with Endo and credits) and it gets stronger — but also drains more."
+          "text": "Each equipped mod uses **drain** from the item's **capacity** budget. For ordinary rank-30 equipment, base capacity follows item rank or your Mastery Rank, whichever is higher, up to the item's cap. A Reactor/Catalyst doubles that base amount; Aura and Stance bonuses are added separately. Rank-40 equipment can exceed the usual 30/60 base capacity."
         },
         {
           "type": "kv",
@@ -56,11 +54,11 @@ const guide: Guide = {
             },
             {
               "k": "Weapon slots",
-              "v": "8 mod + 1 Exilus (Stance slot on melee)"
+              "v": "Most regular weapons: 8 standard slots; compatible equipment has Exilus and/or Stance slots"
             },
             {
-              "k": "Base max capacity",
-              "v": "30 at rank 30 (60 with a Reactor/Catalyst)"
+              "k": "Ordinary rank-30 base capacity",
+              "v": "30, or 60 with a Reactor/Catalyst; Aura/Stance bonuses are separate"
             },
             {
               "k": "Rank mods up with",
@@ -74,7 +72,7 @@ const guide: Guide = {
         },
         {
           "type": "info",
-          "text": "Don't hoard duplicate mods blindly — but **never sell your only copy** of a core mod like Serration, Vitality, or a Primed mod. When in doubt, keep one and dissolve the rest for [Endo](/guides/endo)."
+          "text": "Keep useful core mods such as Serration and Vitality. Before dissolving duplicates for [Endo](/guides/endo), check whether you need a lower-rank copy for a tight capacity budget or whether a rare duplicate has trade value."
         }
       ]
     },
@@ -88,19 +86,19 @@ const guide: Guide = {
         },
         {
           "type": "p",
-          "text": "An **Orokin Reactor** (Warframes, companions, Archwing) or **Orokin Catalyst** (weapons) — nicknamed a **'potato'** — permanently **doubles** an item's capacity from 30 to **60**. Every serious build assumes you've applied one. You get them free from Nightwave, invasions, Baro Ki'Teer, and events, or with platinum."
+          "text": "An **Orokin Reactor** upgrades equipment such as Warframes and companions; an **Orokin Catalyst** upgrades weapons. Both permanently double base mod capacity: 30 becomes **60** on ordinary rank-30 gear. Check current Nightwave offerings and reward alerts before spending Platinum, and prioritize equipment you plan to keep."
         },
         {
           "type": "p",
-          "text": "**Polarities** are the little symbols on slots (Vazarin `D`, Madurai `V`, Naramon `—`, and others). When a mod's polarity **matches** the slot, its drain is **roughly halved** — that's how endgame builds cram 10 expensive mods into 60 capacity. A **wrong**-polarity slot costs slightly *more*; an empty slot costs full drain."
+          "text": "**Polarities** are the symbols on mod slots. A matching polarity halves a mod's drain, rounded up; a mismatched polarity increases it. A slot without a polarity uses the listed drain. Plan the whole loadout before changing a slot, because a polarity that helps one configuration may restrict another."
         },
         {
           "type": "p",
-          "text": "**Forma** is a resource you build from a blueprint (Relic reward, or bought) that **adds or changes a polarity** on one slot. The catch: applying Forma **resets the item to rank 0**, so you re-level it. Veterans Forma a good weapon 3–5 times to fit a full build. Variants exist: **Aura Forma** (auto-matches any aura), **Umbral Forma** (for Umbral mods), and Stance/Exilus Forma."
+          "text": "Standard **Forma** changes a slot's polarity and resets equipment rank, so you re-level afterward. **Omni Forma**, formerly Aura Forma, provides a universal polarity except for Umbra. **Umbra Forma** applies Umbra polarity; **Stance Forma** works on melee Stance slots. An **Exilus Adapter** unlocks an Exilus slot and is a different item. See the [Forma guide](/guides/forma) before committing resources."
         },
         {
           "type": "tip",
-          "text": "The **Aura slot** (Warframes) and **Stance slot** (melee) work in *reverse* — they **add** capacity instead of draining it, and a **matching polarity doubles** that bonus. Always match your aura's polarity: a good aura like Corrosive Projection or Growing Power can hand you back double-digit capacity for free."
+          "text": "An **Aura** on a Warframe or a **Stance** on a compatible melee weapon adds capacity. Matching its polarity doubles that bonus. Choose an effect that serves the build, then compare the capacity gained before deciding whether to Forma the slot."
         },
         {
           "type": "warn",
@@ -114,19 +112,19 @@ const guide: Guide = {
       "blocks": [
         {
           "type": "p",
-          "text": "Weapon damage isn't one number you pump — it's a **product of separate buckets**. Mods within the same bucket **add** together; different buckets **multiply**. That one rule dictates every good weapon build."
+          "text": "Think of weapon damage as several interacting contributions: base damage, multishot, critical hits, elemental damage and status effects. Many bonuses of the same kind add together, while separate multipliers can strengthen each other. This is a planning aid, not a complete formula for every weapon or ability."
         },
         {
           "type": "p",
-          "text": "Roughly: `Base × Multishot × Crit × (Elements + Physical) × Faction`. Piling a second mod into a bucket you've already filled gives diminishing returns; opening a **new** bucket multiplies everything. That's why you don't stack two base-damage mods — you spread into **base damage, multishot, crit, and elements** instead."
+          "text": "Compare what the next slot adds to your existing build. If an arcane or ability already supplies substantial base damage, multishot or a suitable element may add more than another base-damage mod. Stacking base damage is still valid when it gives the better result; test with the buffs and conditions you can actually maintain."
         },
         {
           "type": "list",
           "items": [
             "**Base damage** — Serration (rifle), Hornet Strike (pistol), Pressure Point (melee). The foundation, but only one bucket.",
             "**Multishot** — Split Chamber (rifle), Barrel Diffusion (pistol). Fires extra pellets/projectiles: nearly a second damage mod on top of base.",
-            "**Critical** — crit *chance* (Point Strike) plus crit *damage* (Vital Sense) multiply together; past 100% chance you get stronger orange/red crits.",
-            "**Elements** — the big customizable bucket. Two base elements combine into a stronger one (below), and you pick elements to match what you're shooting."
+            "**Critical** — combine crit chance, such as Point Strike, with crit damage, such as Vital Sense, when the weapon supports it. Chance above 100% permits higher critical tiers.",
+            "**Elements** — choose damage types and status effects for the enemy. Combining two base elements changes their effect; it is not automatically an upgrade in every situation."
           ]
         },
         {
@@ -145,7 +143,7 @@ const guide: Guide = {
               [
                 "Toxin + Cold",
                 "Viral",
-                "Status amplifies all Health damage — the default all-purpose DPS pick"
+                "Status increases damage to Health when the target can receive it"
               ],
               [
                 "Heat + Toxin",
@@ -155,7 +153,7 @@ const guide: Guide = {
               [
                 "Cold + Electricity",
                 "Magnetic",
-                "Status amplifies Shield damage — Corpus and shielded enemies"
+                "Status increases damage to Shields and Overguard"
               ],
               [
                 "Toxin + Electricity",
@@ -170,10 +168,10 @@ const guide: Guide = {
               [
                 "Heat + Cold",
                 "Blast",
-                "Explosion + reduced enemy accuracy (defensive)"
+                "Status causes delayed detonations; stacks can produce an area explosion"
               ]
             ],
-            "note": "Since the Update 36 (Jade Shadows) damage rework, resistances and bonuses are faction-based — Grineer take extra Corrosive, Corpus take extra Magnetic, and so on — rather than tied to specific health types, but the status effects above still work as described. The current all-purpose Steel Path template is Viral + Heat (Heat also strips armor and adds a burn); Corrosive + Heat stays strong for pure-crit weapons versus Grineer. Order of the two element mods in the slots determines what pairs."
+            "note": "Update 36 moved weaknesses and resistances to faction categories and replaced Blast's accuracy penalty with detonations. Check the enemy faction in Navigation or the Codex. Element order matters, and innate weapon elements can affect combinations; inspect the final damage types in the Arsenal."
           }
         },
         {
@@ -201,18 +199,18 @@ const guide: Guide = {
             "rows": [
               [
                 "Vitality",
-                "Large Health boost (~+440% max)",
-                "Baseline survivability on almost every frame"
+                "+100% Health at max rank",
+                "For builds that rely on Health"
               ],
               [
                 "Redirection",
-                "Large Shield boost (~+440%)",
+                "+100% Shield Capacity at max rank",
                 "Feeds shield-gating — or skipped for low-shield builds"
               ],
               [
                 "Adaptation",
                 "Stacking damage resistance up to 90%",
-                "Turns squishy frames Steel-Path-viable as you take hits"
+                "Builds resistance through incoming hits; does not start at full strength"
               ],
               [
                 "Intensify",
@@ -240,7 +238,7 @@ const guide: Guide = {
                 "A bigger pool to spend abilities from"
               ]
             ],
-            "note": "Upgrade path: the Umbral set (Umbral Vitality / Intensify / Fiber) replaces the plain versions and adds a set bonus when two or three are equipped — worth the Umbral Forma on your main frames."
+            "note": "Umbral Vitality, Umbral Intensify and Umbral Fiber gain set bonuses together, but cost substantial capacity. Compare their benefit with the slots your build needs before spending Umbra Forma."
           }
         },
         {
@@ -249,7 +247,7 @@ const guide: Guide = {
         },
         {
           "type": "tip",
-          "text": "The **Exilus slot** takes utility mods that don't compete with your core build — sprint speed (Rush, Armored Agility), parkour and mobility, or enemy/loot radar. Unlock it with an **Exilus Adapter**. It's free extra value once your core build is locked in."
+          "text": "The **Exilus slot** accepts compatible utility mods such as Rush, Handspring and radar mods. Unlock it with an **Exilus Adapter**. It provides another slot, not free capacity: the installed mod still uses drain from your build's budget. Check the Exilus symbol on the mod."
         }
       ]
     },
@@ -259,7 +257,7 @@ const guide: Guide = {
       "blocks": [
         {
           "type": "p",
-          "text": "Every weapon build starts from the same skeleton: fill the four damage buckets, then flex the last slots for elements, status, or utility. Here are the workhorse mods per weapon class."
+          "text": "These are common starting options, not mandatory slots for every weapon. Match them to the weapon's stats, firing mode and the buffs available to your loadout."
         },
         {
           "type": "table",
@@ -307,25 +305,25 @@ const guide: Guide = {
         },
         {
           "type": "p",
-          "text": "**Melee plays differently.** Instead of multishot it scales off the **combo counter**: **Blood Rush** turns combo into crit chance and **Weeping Wounds** turns it into status. **Condition Overload** adds damage for every unique status effect on the target — pair it with a status weapon and it becomes one of the biggest melee multipliers in the game. Round out with **Berserker Fury** or **Primed Fury** for attack speed and **Primed Reach** for range."
+          "text": "**Melee has several build styles.** Combo-focused setups can use **Blood Rush** for critical chance and **Weeping Wounds** for status chance. **Condition Overload** rewards applying different status types to the target. Heavy-attack setups may need different choices. Compare attack speed, range and combo requirements as well as damage."
         },
         {
           "type": "info",
-          "text": "Serration maxes around **+165%** base damage and Split Chamber gives a **90%** chance for an extra projectile — but exact values shift with rank and DE tweaks, so confirm the current numbers on the [Warframe wiki](https://wiki.warframe.com/) before you Forma a slot around them. Once you hit endgame, the Galvanized versions (Galvanized Chamber, Galvanized Diffusion, and friends) become the upgrade over the plain base/multishot mods."
+          "text": "Read the mod's rank and activation conditions before comparing builds. Galvanized Chamber and Galvanized Diffusion can provide stronger multishot after their on-kill effects build up, but their peak bonus is not permanently active. Check whether your chosen mission lets you maintain it."
         }
       ]
     },
     {
       "id": "shield-gating",
-      "title": "Shield-gating: how veterans never die",
+      "title": "Shield-gating: a recovery window, not permanent protection",
       "blocks": [
         {
           "type": "p",
-          "text": "The single biggest reason players die in the [Steel Path](/guides/steel-path) isn't 'not enough health' — it's not understanding **shield-gating**. Raw effective health doesn't scale into the late game; **invulnerability windows** do."
+          "text": "**Shield-gating** can give a shield-bearing Warframe time to recover after its shields break. It is one option for [Steel Path](/guides/steel-path) survival; health, armor, abilities, movement and enemy control also matter. Build around the defenses your frame actually has."
         },
         {
           "type": "p",
-          "text": "The mechanic: as long as you have **at least 1 shield** when a lethal hit lands, your shields absorb the overkill and break, and breaking them grants a brief **invulnerability window** — the 'gate'. The length **scales with your maximum shields**: a full shield break runs from about **0.33s** on a tiny pool up to roughly **2.25s** on a big one, while re-breaking from a **partially-recharged** shield only gives a short **~0.33s** gate. During that window you can't die."
+          "text": "The standard gate scales from **0.33 to 2.5 seconds**, reaching its cap at **1,150 shields**. It depends on shields restored before the break, not maximum capacity alone. Partially restored shields use the same scaling. Special mechanics, including Hildryn's passive, can change the duration."
         },
         {
           "type": "steps",
@@ -333,30 +331,29 @@ const guide: Guide = {
           "steps": [
             {
               "h": "Keep a shield buffer",
-              "p": "You only need 1 shield point to survive a lethal hit. Frames with any shields at all can shield-gate — even Inaros-style tanks benefit from a small pool."
+              "p": "Check your frame first. Inaros has no innate shields; this setup does not apply to his normal defenses."
             },
             {
               "h": "Refresh the gate on demand",
-              "p": "The gate is useless if it only triggers once. Refill your shields to break them again: cast an ability with Brief Respite (aura) or the Augur set mods, which convert energy spent into instant shields."
+              "p": "Plan how to recover shields and sustain the required energy. Brief Respite and Augur set effects can turn energy spent on abilities into shields; inspect the actual amount restored by your build."
             },
             {
-              "h": "Go low-shield for consistent re-gating",
-              "p": "Catalyzing Shields lowers your max shields so they break and recharge almost instantly, and it guarantees a full ~1.33s gate on every full break no matter how low your shields are — overriding the usual 'low shields = short gate' rule. A Decaying Dragon Key (−shields) sets up a similar 'break fast, recharge fast' loop."
+              "h": "Understand Catalyzing Shields",
+              "p": "At max rank, Catalyzing Shields cuts maximum shields by 80%. Its gate reaches **1.33 seconds** from a fully restored pool; partial recovery gives less. A **Decaying Dragon Key caps gates at 0.33 seconds** and is not a substitute."
             },
             {
               "h": "Add a panic button",
-              "p": "Rolling Guard gives invulnerability and clears status effects on a roll (short cooldown). It resets your shield gate and saves you from status lockouts like Toxin and Slash that bypass shields."
+              "p": "At max rank, Rolling Guard grants 3 seconds of invulnerability and clears status effects when you dodge, with a 7-second cooldown. Use that interval to recover or reposition. It does not itself refill shields or reset their gate."
             }
           ]
         },
         {
           "type": "warn",
-          "text": "**Toxin damage and Slash bleed procs bypass shields entirely** (and True damage ignores shields and armor alike) — shield-gating won't stop a bleed proc ticking down your health. That's why a status-cleanse (Rolling Guard) and damage resistance (Adaptation) belong on the same build, not shield-gating alone."
+          "text": "**Toxin damage bypasses shields. Slash status damage bypasses armor, but not shields.** Do not treat them as the same threat. A status cleanse can remove an existing Toxin effect, but does not provide permanent protection from new damage."
         },
         {
-          "type": "quote",
-          "text": "You don't out-tank endgame Warframe — you become un-hittable. Shield-gate to eat the burst, Rolling Guard to reset it, Adaptation to shave the rest.",
-          "cite": "The community shield-gating consensus"
+          "type": "tip",
+          "text": "Practice recovery before a difficult mission: watch your shields, energy and cooldowns after taking a hit. If the sequence is unreliable, adjust the build or use a defensive approach that better fits the frame."
         }
       ]
     },
@@ -366,22 +363,22 @@ const guide: Guide = {
       "blocks": [
         {
           "type": "p",
-          "text": "Shield-gating is your burst-protection layer. Stack these on top and even paper-thin frames survive long Steel Path runs. Most builds run two or three of these, not all of them."
+          "text": "Choose complementary defenses instead of equipping every defensive mod. Consider how the build handles the first hit, repeated damage, status effects and recovery when energy or cooldowns are unavailable."
         },
         {
           "type": "list",
           "items": [
-            "**Adaptation** — stacks up to **90% damage reduction** per damage type as you get hit. The best single survivability mod for frames without built-in defenses.",
-            "**Rolling Guard** — invulnerability + full status cleanse on a roll, on a short cooldown. Doubles as a shield-gate reset and a get-out-of-Toxin card.",
-            "**Quick Thinking** — when health would hit 0, drains **energy** to keep you alive. A soft second health bar (pair with high energy and shield-gating).",
+            "**Adaptation** — builds resistance from incoming damage, up to **90%** for covered damage types. It needs time to build and is not an unconditional 90% reduction against every hit.",
+            "**Rolling Guard** — a brief invulnerability window and status cleanse on dodge. Plan around its cooldown; it supplies recovery time, not shield restoration.",
+            "**Quick Thinking** — uses energy to absorb otherwise lethal health damage while sufficient energy remains. Account for the energy your abilities also need.",
             "**Primed Sure Footed** — knockdown/stagger immunity (login-reward mod). Being stunlocked is a hidden killer; standing your ground lets you keep casting.",
             "**Arcanes** — [Arcanes](/guides/arcanes) like Arcane Grace, Guardian, or Aegis add health regen, armor, and shield recovery on top of mods for a big survivability spike.",
-            "**Aura + Helminth** — a defensive aura (Physique) or a subsumed defensive ability via the [Helminth](/guides/helminth) (e.g., an overguard or damage-reduction skill) can be worth more than any single mod slot."
+            "**Abilities + Helminth** — consider the frame's own defensive abilities before replacing one through [Helminth](/guides/helminth). Check the subsumed version's restrictions, duration and energy cost."
           ]
         },
         {
           "type": "info",
-          "text": "Health-tank vs shield-tank is a real choice. High-armor frames (Rhino, Inaros-style) can favor Vitality + Adaptation + arcanes; low-armor casters lean on shield-gating + Rolling Guard. Match the strategy to the frame, don't copy one build onto everything."
+          "text": "Health-based builds need a way to recover health as well as withstand damage. Shield-based builds need reliable recovery between breaks. Test the complete loop in the mission you intend to play, rather than copying a single defensive mod onto every frame."
         }
       ]
     },
@@ -391,11 +388,11 @@ const guide: Guide = {
       "blocks": [
         {
           "type": "p",
-          "text": "Mods rank up with **Endo + credits**. Endo comes from Ayatan sculptures, dissolving duplicate mods, and dedicated farms — see the [Endo farming guide](/guides/endo), and use the [Endo / Plat value tool](/endo) to check whether dissolving a mod or riven is worth it. A cheap early move: fully rank your core mods (Serration, Vitality, the four ability stats) before chasing anything exotic."
+          "text": "Mods rank up with **Endo and credits**. Compare the next rank's cost, benefit and extra drain before upgrading. The last ranks of a ten-rank mod can be expensive, so improve the core loadout gradually. See the [Endo farming guide](/guides/endo) and [Endo / Plat value tool](/endo) when budgeting upgrades or deciding what to dissolve."
         },
         {
           "type": "p",
-          "text": "**Rivens** are randomized mods with powerful (and sometimes negative) stats, tied to a specific weapon. They're an **endgame min-max layer**, not a beginner tool — a fully-modded weapon comes first, and a good Riven only adds the last 10–30%. Prices swing wildly, so price a roll before you buy or sell with the [Riven value estimator](/riven-value) and read the mechanics in the [Riven guide](/guides/riven)."
+          "text": "**Rivens** have randomized stats and weapon-specific restrictions. Their benefit depends on the weapon, roll, disposition and mod they replace. Establish a useful basic build first, then compare an actual roll with your alternatives. Consult the [Riven value estimator](/riven-value) and [Riven guide](/guides/riven) before a trade; there is no fixed damage gain or guaranteed resale price."
         },
         {
           "type": "steps",
@@ -403,7 +400,7 @@ const guide: Guide = {
           "steps": [
             {
               "h": "Potato and Forma your keepers",
-              "p": "Apply a Reactor/Catalyst, then Forma slots to match your build's polarities so everything fits into 60 capacity."
+              "p": "Plan the complete loadout, check its capacity, then add a Reactor/Catalyst or matching polarities where needed. Leave room for alternative configurations."
             },
             {
               "h": "Fill the damage buckets",
@@ -411,7 +408,7 @@ const guide: Guide = {
             },
             {
               "h": "Add a survivability layer",
-              "p": "Shield-gating setup or Adaptation + Rolling Guard before you step into Steel Path."
+              "p": "Choose defenses and a recovery method that fit your frame, then test them before a difficult Steel Path mission."
             },
             {
               "h": "Min-max last",
@@ -421,7 +418,7 @@ const guide: Guide = {
         },
         {
           "type": "tip",
-          "text": "When a build guide lists mods you don't own, slot the closest equivalent (a normal mod instead of its Primed version) and upgrade later. A 90%-complete build clears the entire star chart — you do not need every Primed and Riven to have fun."
+          "text": "When a build lists mods you do not own, try an appropriate basic version and check the resulting stats. Upgrade expensive ranks gradually; improving several essential mods can be more useful than spending all your Endo on one final rank."
         }
       ]
     },
@@ -431,18 +428,18 @@ const guide: Guide = {
       "blocks": [
         {
           "type": "p",
-          "text": "You rarely have to mod from a blank arsenal. Two free web tools cover the whole job — **[Overframe](/tools/overframe)** to browse and copy community builds, and **[Underframe](/tools/underframe)** to simulate DPS and auto-optimise a loadout. Most players start on Overframe and refine on Underframe."
+          "text": "**[Overframe](/tools/overframe)** offers community builds, while **[Underframe](/tools/underframe)** offers damage calculations and automatic build suggestions. Use them to compare options, then validate the result in-game with the enemy, buffs and conditions that matter to you."
         },
         {
           "type": "kv",
           "kv": [
             {
               "k": "Overframe (overframe.gg)",
-              "v": "The largest community build database + in-browser arsenal builder — votes, tier lists, and a Player Sync that imports the mods you own"
+              "v": "Community builds, an arsenal builder, rankings and Player Sync"
             },
             {
               "k": "Underframe (underframe.site)",
-              "v": "A deep DPS simulator vs scaled enemies, an auto-build optimiser, and Riven auto-rolling — for min-maxing the last 10%"
+              "v": "Damage and time-to-kill calculations, Auto Build and Riven comparison tools; simulations do not roll Rivens in-game"
             }
           ]
         },
@@ -459,8 +456,8 @@ const guide: Guide = {
               "p": "Count the Forma and flag every Riven, arcane, Umbral/Primed mod and Helminth subsume the build assumes. Build the version with what you own and slot equivalents for the rest."
             },
             {
-              "h": "Import your arsenal (optional)",
-              "p": "Overframe's Overwolf desktop app can Player-Sync your public profile so it greys out mods you don't have — it reads profile data, not game memory."
+              "h": "Check your available mods",
+              "p": "Compare the proposed loadout with your inventory and mod ranks. Optional import tools can help, but verify what they actually imported before relying on their output."
             },
             {
               "h": "Simulate before you Forma",
@@ -482,27 +479,27 @@ const guide: Guide = {
   "faqs": [
     {
       "q": "What are the best mods for beginners in Warframe?",
-      "a": "On weapons: Serration (rifle) / Hornet Strike (pistol) / Pressure Point (melee) for base damage, then a multishot mod (Split Chamber, Barrel Diffusion), then elements. On Warframes: Vitality for health plus the four ability-stat mods — Intensify (Strength), Streamline (Efficiency), Stretch (Range), and Continuity (Duration). Rank them fully with [Endo](/guides/endo) before chasing anything rare."
+      "a": "Start with suitable base-damage, multishot and elemental mods for your weapon. For a Warframe, choose defenses and the ability stats its kit needs: Intensify, Streamline, Stretch and Continuity are useful options, not a mandatory set. Spend [Endo](/guides/endo) across essential mods before committing everything to an expensive final rank."
     },
     {
       "q": "What does an Orokin Reactor or Catalyst (a 'potato') do?",
-      "a": "It permanently doubles an item's mod capacity from 30 to 60, which is what lets a full build actually fit. A Reactor goes on Warframes, companions, and Archwing; a Catalyst goes on weapons. You earn them free from Nightwave, invasions, and events (and occasionally from Baro Ki'Teer), or buy them with platinum — save them for gear you'll keep, not Mastery fodder."
+      "a": "It doubles base mod capacity, so ordinary rank-30 equipment goes from 30 to 60 before Aura or Stance bonuses. A Reactor upgrades equipment such as Warframes and companions; a Catalyst upgrades weapons. Higher-rank equipment can have more capacity. Prioritize gear you intend to keep."
     },
     {
       "q": "How do polarities and Forma work?",
-      "a": "A mod placed in a slot with a matching polarity symbol costs about half its normal drain, which is how endgame builds fit into 60 capacity. Forma is a resource that adds or changes a polarity on one slot, but it resets the item to rank 0 so you re-level it. Match your Aura and Stance polarities first — those slots add capacity instead of draining it, so a match is doubled free value."
+      "a": "Matching a slot polarity halves mod drain, rounded up. Standard Forma changes a polarity and resets equipment rank; it does not directly add ordinary base capacity. Aura and Stance mods add capacity instead, with a doubled bonus when matched. Plan alternate builds before choosing a permanent polarity."
     },
     {
       "q": "What is shield-gating and how do I do it?",
-      "a": "When your shields break, you get a brief invulnerability window during which you can't die. Its length scales with your maximum shields — from about 0.33 seconds on a tiny pool up to roughly 2.25 seconds on a big one — while re-breaking from partly-recharged shields gives only ~0.33s. You keep the loop going by refilling and re-breaking shields, usually via Brief Respite or Augur mods (energy spent on abilities becomes shields), plus Rolling Guard as a reset; low-shield builds add Catalyzing Shields to guarantee a full gate every time. It's the main reason experienced players survive the [Steel Path](/guides/steel-path). See a full walkthrough in the shield-gating videos below."
+      "a": "It is a brief protection window after shields break. The standard duration depends on shields recovered before that break, including partial recovery. Plan a reliable refill method and enough energy to use it. Rolling Guard provides separate invulnerability and status cleansing; it does not restore shields. See the shield-gating section for modifiers and exceptions."
     },
     {
       "q": "Why do I keep dying in Steel Path even with tons of health?",
-      "a": "Raw effective health doesn't scale into the late game — enemy damage outpaces it. You need invulnerability layers instead: shield-gating for the burst, Rolling Guard to reset it and cleanse status, and Adaptation for up to 90% damage reduction. Toxin and Slash bypass shields, so a status cleanse is essential, not optional."
+      "a": "Check what is failing: the first hit, sustained damage, a status effect, or running out of energy. Health needs recovery and suitable damage reduction; shields need a reliable refill plan. Toxin bypasses shields, while Slash status does not. Mobility, enemy control and defensive abilities can help alongside mods."
     },
     {
       "q": "How do I do more weapon damage — which mod first?",
-      "a": "Think in multiplicative buckets: base damage, multishot, crit, and elements each multiply the others, while mods in the same bucket only add. So don't stack two base-damage mods — spread into a base mod, a multishot mod, crit mods, and the right elements (Viral to boost damage to health, Heat or Corrosive for armor). Opening a new bucket beats over-filling an old one."
+      "a": "Start from the weapon's strengths and the enemy you are fighting. Compare base damage, multishot, critical stats and useful elements against the bonuses already supplied by abilities or arcanes. The next slot's benefit depends on the whole loadout; another base-damage mod is neither always right nor always wrong."
     },
     {
       "q": "How do I rank up (upgrade) my mods?",
@@ -510,11 +507,11 @@ const guide: Guide = {
     },
     {
       "q": "Are Rivens worth it for a new player?",
-      "a": "Not yet. Rivens are an endgame min-max layer that only adds roughly the last 10–30% on top of an already-complete build, and their randomized stats can be tricky. Finish a proper mod loadout first, then price rolls with the [Riven value estimator](/riven-value) and read the mechanics in the [Riven guide](/guides/riven) before spending platinum."
+      "a": "Usually, finish a functional basic loadout first. A Riven's value depends on its weapon, stats, disposition and the mod it replaces; there is no fixed percentage gain. Use the [Riven value estimator](/riven-value) as a pricing aid and read the [Riven guide](/guides/riven) before spending Platinum."
     },
     {
       "q": "Where do I find good Warframe builds instead of modding from scratch?",
-      "a": "Use a build planner. [Overframe](/tools/overframe) is the biggest community build database — search any frame or weapon, copy a highly-rated build, and even import the mods you own. [Underframe](/tools/underframe) is a DPS simulator with an auto-build optimiser for min-maxing. Read builds critically (community rankings lag reworks) and adapt them to what you own — the full workflow is in the [Best Builds & Build Planners guide](/guides/builds)."
+      "a": "Browse community builds on [Overframe](/tools/overframe) and compare damage setups with [Underframe](/tools/underframe). Read the author's assumptions, check the update date and adapt the build to your inventory. The [Best Builds & Build Planners guide](/guides/builds) explains the workflow."
     }
   ],
   "videos": [
@@ -540,6 +537,46 @@ const guide: Guide = {
     }
   ],
   "sources": [
+    {
+      "label": "Warframe — Update 34: shield gating, Catalyzing Shields and stat mods",
+      "href": "https://www.warframe.com/en/patch-notes/pc/34-0-0"
+    },
+    {
+      "label": "Warframe — Update 27.2: Slash and Toxin shield interactions",
+      "href": "https://www.warframe.com/en/patch-notes/pc/27-2-0"
+    },
+    {
+      "label": "Warframe — Update 23.10: Rolling Guard and Adaptation",
+      "href": "https://www.warframe.com/en/patch-notes/pc/23-10-0"
+    },
+    {
+      "label": "Warframe — Update 30.5: melee and Galvanized mod conditions",
+      "href": "https://www.warframe.com/en/patch-notes/pc/30-5-0"
+    },
+    {
+      "label": "Warframe — Update 36: Blast, Magnetic and faction resistances",
+      "href": "https://www.warframe.com/en/patch-notes/pc/36-0-0"
+    },
+    {
+      "label": "Warframe — Hotfix 18.13.2: Mastery Rank and starting capacity",
+      "href": "https://www.warframe.com/en/patch-notes/pc/18-13-2"
+    },
+    {
+      "label": "Warframe — Update 38.5: Omni Forma",
+      "href": "https://www.warframe.com/en/patch-notes/pc/38-5-0"
+    },
+    {
+      "label": "Warframe — Update 17: Exilus utility slots",
+      "href": "https://www.warframe.com/en/patch-notes/pc/17-0-0"
+    },
+    {
+      "label": "Warframe Support — Polarization and Forma FAQ",
+      "href": "https://support.warframe.com/hc/en-us/articles/200240380-Polarization-and-Forma-FAQ"
+    },
+    {
+      "label": "Warframe Support — Mod Guide",
+      "href": "https://support.warframe.com/hc/en-us/articles/200500194-Mod-Guide-Use-Fusion-Transmutation-Sale"
+    },
     {
       "label": "Warframe Wiki — Mods, Polarity & Forma",
       "href": "https://wiki.warframe.com/w/Mods"
@@ -605,7 +642,7 @@ const guide: Guide = {
       "note": "Price a riven before you trade"
     }
   ],
-  "updated": "2026-07-18"
+  "updated": "2026-09-21"
 }
 
 export default guide

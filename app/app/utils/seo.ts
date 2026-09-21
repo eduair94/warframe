@@ -290,7 +290,7 @@ export const PAGE_SEO: Record<string, PageSeo> = {
   '/guides/mods': {
     title: 'Warframe Mods Guide — Essential Mods & Survivability',
     description:
-      'How modding works in Warframe, the must-have mods, and shield-gating to stop dying. Understand mod capacity, polarities and the damage multipliers.'
+      "Choose Warframe mods, plan capacity and Forma, and build reliable defenses. Learn current shield-gating rules, damage types and survivability trade-offs."
   },
   '/guides/builds': {
     title: 'Best Warframe Builds & Build Planners — Overframe & Underframe',

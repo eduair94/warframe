@@ -15,7 +15,9 @@
           <div class="ga-meta">
             <NuxtLink :to="localePath('/guides')" class="ga-crumb">← {{ hubLabel }}</NuxtLink>
             <span v-if="guide.readMins" class="ga-meta__i">{{ guide.readMins }} {{ minRead }}</span>
-            <span v-if="guide.updated" class="ga-meta__i">{{ updatedLabel }} {{ prettyDate(guide.updated) }}</span>
+            <span v-if="guide.updated" class="ga-meta__i">
+              {{ updatedLabel }} <time :datetime="guide.updated">{{ formatGuideReviewDate(guide.updated, locale) }}</time>
+            </span>
           </div>
         </div>
       </header>
@@ -196,6 +198,7 @@ import { computed, nextTick, onMounted } from 'vue'
 // <nuxtlink> with no href/navigation) — the imported component does.
 import { NuxtLink } from '#components'
 import type { Guide, GuideLink } from '~/data/guides/types'
+import { formatGuideReviewDate } from '~/utils/guide-date'
 
 const props = defineProps<{ guide: Guide }>()
 const { t, locale } = useI18n()
@@ -223,12 +226,6 @@ function toneClass(tone?: string) {
 
 // Shared safe inline renderer (utils/richText.ts, auto-imported).
 const rich = (input: string) => renderRich(input, (path) => localePath(path))
-
-function prettyDate(iso: string) {
-  try {
-    return new Date(iso).toLocaleDateString(locale.value === 'en' ? 'en-US' : locale.value, { year: 'numeric', month: 'short' })
-  } catch { return iso }
-}
 
 function scrollTo(id: string) {
   const el = document.getElementById(id)
