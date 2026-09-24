@@ -7,8 +7,8 @@ import type { PageSeo } from './seo'
 export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
   "es": {
     "/guides/forma": {
-      title: "Cómo farmear Forma: Reliquias, fabricación y Plague Star | Warframe",
-      description: "Farmea planos de Forma de las reliquias que los contengan, elige el refinamiento adecuado para su ranura de recompensa y mantén la Fundición en marcha."
+      title: "Cómo farmear Forma: Reliquias, fabricación y recompensas gratuitas | Warframe",
+      description: "Farmea planos de Forma a partir de reliquias, planifica los recursos de fabricación y compara las fuentes de Forma construida."
     },
     "/guides": {
       "title": "Guías de Warframe — Farmeo, builds, platino y ayuda para novatos",
@@ -125,8 +125,8 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
   },
   "pt": {
     "/guides/forma": {
-      title: "Como Farmar Forma: Relics, Crafting e Plague Star | Warframe",
-      description: "Farme Forma Blueprints de relics que os contêm, escolha o refinamento certo para o slot de recompensa deles e mantenha a Foundry rodando."
+      title: "Como farmar Forma: Relíquias, Fabricação e Recompensas Gratuitas | Warframe",
+      description: "Farme Blueprints de Forma a partir de relíquias, planeje os recursos de fabricação e compare as fontes de Forma pronta."
     },
     "/guides": {
       "title": "Guias de Warframe — Farm, Builds, Platino e Iniciantes",
@@ -243,8 +243,8 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
   },
   "de": {
     "/guides/forma": {
-      title: "Forma farmen: Relikte, Herstellung & Plague Star | Warframe",
-      description: "Farme Forma-Schaltpläne aus Relikten, die sie enthalten, wähle die passende Verfeinerung für deren Belohnungsplatz und halte die Schmiede am Laufen."
+      title: "Forma farmen: Relikte, Herstellung & kostenlose Belohnungen | Warframe",
+      description: "Farme Forma-Blaupausen aus Relikten, plane Herstellungsressourcen und vergleiche fertige Forma-Quellen. Prüfe die datierte kostenlose Login-Belohnung und den Status des Plague Star-Events."
     },
     "/guides": {
       "title": "Warframe Guides — Farming, Builds, Platin & Einsteiger",
@@ -361,8 +361,8 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
   },
   "fr": {
     "/guides/forma": {
-      title: "Comment farmer du Forma : Reliques, Artisanat & Plague Star | Warframe",
-      description: "Farmez des Schémas de Forma dans les reliques qui en contiennent, choisissez le bon affinement pour leur emplacement de récompense et gardez la Fonderie en marche."
+      title: "Comment farmer les Forma : Reliques, fabrication et récompenses gratuites | Warframe",
+      description: "Farmez les plans de Forma grâce aux reliques, prévoyez les ressources de fabrication et comparez les sources de Forma construits."
     },
     "/guides": {
       "title": "Guides Warframe — Farm, Builds, Platine & Débutants",
@@ -479,8 +479,8 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
   },
   "ru": {
     "/guides/forma": {
-      title: "Как фармить Forma: реликвии, крафт и Plague Star | Warframe",
-      description: "Добывайте Forma Blueprints из реликвий, в которых они содержатся, выбирайте подходящее улучшение для слота награды и поддерживайте постоянную работу Foundry."
+      title: "Как фармить Forma: Реликвии, крафт и бесплатные награды | Warframe",
+      description: "Фармите чертежи Forma из реликвий, планируйте ресурсы для крафта и сравнивайте источники готовых Forma. Проверьте актуальную награду за вход по датам и статус события Plague Star."
     },
     "/guides": {
       "title": "Гайды по Warframe — фарм, билды, платина и старт",
@@ -597,8 +597,8 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
   },
   "ko": {
     "/guides/forma": {
-      title: "Forma 파밍 방법: Relic, 제작 및 Plague Star | Warframe",
-      description: "Relic에서 Forma 청사진을 파밍하고, 보상 슬롯에 맞는 정제를 선택하며, 주조소를 계속 가동하세요."
+      title: "Forma 파밍 방법: 성유물, 제작 및 무료 보상 | Warframe",
+      description: "성유물에서 Forma 청사진을 파밍하고, 제작 재료를 계획하며, 완제품 Forma 소스를 비교하세요. 기간 한정 무료 로그인 보상과 Plague Star 이벤트 상태를 확인하세요."
     },
     "/guides": {
       "title": "Warframe 가이드 — 파밍, 빌드, 플래티넘 & 초보자 도움말",
@@ -715,8 +715,8 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
   },
   "ja": {
     "/guides/forma": {
-      title: "Formaのファーム方法：レリック、製作、Plague Star | Warframe",
-      description: "Formaの設計図を含むレリックからファームし、報酬枠に適した精錬を選び、ファウンドリを稼働させましょう。"
+      title: "Formaをファームする方法：レリック、クラフト、無料報酬 | Warframe",
+      description: "レリックからFormaの設計図をファームし、クラフト素材の計画を立て、完成品のFormaの入手先を比較します。日付入りの無料ログイン報酬とPlague Starイベントのステータスを確認してください。"
     },
     "/guides": {
       "title": "Warframeガイド — 周回・ビルド・プラチナ・初心者向け",
@@ -833,8 +833,8 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
   },
   "zh-hans": {
     "/guides/forma": {
-      title: "如何刷取Forma：Relic、制造与Plague Star | Warframe",
-      description: "从包含Forma的Relic中刷取Forma蓝图，为奖励槽位选择合适的强化等级，并保持铸造厂持续运转。"
+      title: "如何刷 Forma：遗物、制作与免费奖励 | Warframe",
+      description: "从遗物中刷 Forma 蓝图，规划制作资源并对比成品 Forma 的来源。查看标明日期的免费登录奖励以及 Plague Star 活动状态。"
     },
     "/guides": {
       "title": "Warframe 攻略大全 — 刷素材、配装、白金与新手指南",
@@ -951,8 +951,8 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
   },
   "zh-hant": {
     "/guides/forma": {
-      title: "如何農 Forma：Relic、製造與瘟疫之星（Plague Star） | Warframe",
-      description: "從含有 Forma 藍圖的Relic中農出它們，為其獎勵欄位選擇正確的精煉，並保持鑄造廠持續運作。"
+      title: "如何農 Forma：聖物、製作與免費獎勵 | Warframe",
+      description: "從聖物中農 Forma 藍圖，規劃製造資源並比較已建造的 Forma 來源。檢查有日期標記的免費登入獎勵以及 Plague Star 活動狀態。"
     },
     "/guides": {
       "title": "Warframe 攻略大全 — 刷素材、配裝、白金與新手教學",
@@ -1069,8 +1069,8 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
   },
   "pl": {
     "/guides/forma": {
-      title: "Jak farmić Formy: Relikty, wytwarzanie i Plague Star | Warframe",
-      description: "Farm Schematy Form z reliktów, które je zawierają, wybierz odpowiednią rafinację pod kątem slotu z nagrodą i utrzymuj ciągłość pracy Odlewni."
+      title: "Jak farmić Forma: Relikty, Crafting i Darmowe Nagrody | Warframe",
+      description: "Farm Blueprinty Forma z reliktów, zaplanuj surowce na craft i porównaj źródła gotowych Forma. Sprawdź datowaną darmową nagrodę za logowanie oraz status eventu Plague Star."
     },
     "/guides": {
       "title": "Poradniki Warframe — Farmienie, Buildy, Platyna i Start",
@@ -1187,8 +1187,8 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
   },
   "it": {
     "/guides/forma": {
-      title: "Come fare farm di Forma: Reliquie, Crafting e Plague Star | Warframe",
-      description: "Farma i Progetti Forma dalle reliquie che li contengono, scegli la raffinazione giusta per il loro slot di ricompensa e tieni la Fonderia in attività."
+      title: "Come farmare Forma: Reliquie, Crafting e Ricompense Gratuite | Warframe",
+      description: "Farma i Blueprint di Forma dalle reliquie, pianifica le risorse di crafting e confronta le fonti di Forma assemblati."
     },
     "/guides": {
       "title": "Guide Warframe — Farming, Build, Platino e Aiuto Novizi",
@@ -1305,8 +1305,8 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
   },
   "uk": {
     "/guides/forma": {
-      title: "Як фармити Forma: Реліквії, створення та Plague Star | Warframe",
-      description: "Фармуйте кресленики Forma з реліквій, які їх містять, виберіть правильне покращення для їхнього слота винагороди та не зупиняйте Кузню."
+      title: "Як фармити Forma: Реліквії, крафт та безкоштовні нагороди | Warframe",
+      description: "Фарміть кресленики Forma з реліквій, плануйте ресурси для крафту та порівнюйте джерела готових Forma. Перевірте статус безкоштовної нагороди за вхід із вказаною датою та події Plague Star."
     },
     "/guides": {
       "title": "Гайди Warframe — фарм, білди, платина та поради новачкам",

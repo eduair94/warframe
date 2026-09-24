@@ -391,3 +391,86 @@ fallbacks. Review the relics guide's source-finding versus fissure-opening advic
 rewards, Void Traces and Aya/Regal Aya distinctions. Address the remaining structural locale drift
 reported by the improved checker; preserve valid existing translations until their replacements
 pass factual and structural review. Restore analytics access to measure complete traffic windows.
+
+## 2026-09-24 — expired event, current Forma reward and searchable landing content
+
+### Baseline and measurement
+
+Started clean and synchronized with `origin/main` at `64a2183`. Its full deployment,
+[run 35627727363](https://github.com/eduair94/warframe/actions/runs/35627727363), succeeded;
+no deployment or guide-refresh workflow was active. Ordinary public requests at 12:11–12:12 UTC
+confirmed API/Mongo, frontend, current JavaScript and live feed HTTP 200. The 3,873-item catalogue
+had valid timestamps, a median age of 223 seconds, 3,657 items under ten minutes old and none
+older than a day or dated in the future. Citrine, Steflos and Corufell Prime already appear in the
+catalogue. Analytics contained 3,873 items and were generated at 12:09:52 UTC, approximately
+75 seconds before their check. Worker configuration/headers remain correct; this is not a new
+offline browser-cache behavior test.
+
+Forma EN/ES had correct canonical/indexability/hreflang but still described Plague Star as
+available despite its September 23 deadline. The relic board's initial HTML contained its
+fallback table, but no H1 or contextual links to the guide/map. Its existing Spanish board text
+is also English, a separate localization backlog item. The sitemap index has thirteen maps;
+ordinary EN/ES rereads each contained 1,425 URLs, including both Forma routes and builds.
+Minor rotating mission differences and differing generation times do not establish a sitemap bug.
+
+Supermetrics date/source discovery returned UNAUTHORIZED and required reconnection. No account
+timezone, traffic or query data were available. Pending complete-window comparisons are September
+17–23 versus September 10–16, and August 27–September 23 versus July 30–August 26. These are
+requested periods, not measured results; unavailable is not zero and old figures are not reused.
+The browser fallback timed out before reaching Analytics. No login, paid upgrade or external
+message was attempted.
+
+### Evidence and changes
+
+[Update 44](https://www.warframe.com/en/patch-notes/pc/44-0-0) and the
+[Banshee announcement](https://www.warframe.com/en/news/get-banshee-as-a-free-login-reward-to-celebrate-her-evolution)
+confirm a single built Forma login gift. The revised guide states the exact promotional dates,
+the separate later eligibility rule, and the distinction between a built item and a blueprint.
+[Plague Star's announcement](https://www.warframe.com/en/news/operation-plague-star-2026) establishes
+its September 23 end. That section now identifies its table as historical, preserves its existing
+anchor, and makes no promise about post-event shop access or a future event date. The current
+headline, summary, statistics and FAQ direct readers toward available methods. The September 24
+review date reflects these checked substantive changes; unrelated guide dates remain unchanged.
+
+The hypothesis is that accurate availability and an immediately usable reward better serve
+Forma search visitors than expired farming instructions. Growth or retention cannot yet be
+attributed to these changes without analytics access. The generic official patch index lists
+Update 44, while its PC-specific index returned an older cached entry; individual release notes
+were checked directly before drawing conclusions about freshness.
+
+All twelve previous Forma snapshots matched the English baseline's structure/date. Translation
+therefore updates seventeen changed/new fields and preserves 147 unchanged fields per locale.
+Stable section IDs prevent the inserted reward section from shifting translations onto the wrong
+content. Existing translation functions, SDK, pacing and validation are reused; source metadata
+and destinations come from reviewed English. Generated wording still receives independent checks
+for dates, eligibility, event status and descriptive headings before publication.
+
+The Forma relic board now renders its existing heading, introduction, farming explanation and
+contextual guide/map links in the server HTML. Interactive filters and results retain their client
+boundary and fallback table. Client and server Vue compilation passed; a focused server render
+confirmed one H1, the expected locale-prefixed links, explanation and table for EN/ES routes.
+This preserves the existing layout and does not imply that the board's English UI has been localized.
+
+### Validation and release
+
+Local blocking tests passed: 548 API tests, 37 frontend tests and 26 guide regression tests
+(611 total). The i18n compilation guard and generated repository-map check also passed.
+Final guide validation checked 25 guides with zero failures. All twelve Forma snapshots are
+current and preserve exactly 147 unchanged fields while updating seventeen fields each.
+Independent review checked the gift's quantity, dates and eligibility, the ended event and
+localized headings; precise reviewed date-format equivalents were retained instead of
+replacing valid local notation with English dates. Targeted translation repairs addressed
+incorrect game terms and ambiguous singular labels. Forma's title and description now match
+the revised guide in all thirteen SEO entries. The remaining translation follow-up queue is
+unrelated to Forma and is not represented as completed. The final diff passed whitespace checks.
+All intended content, metadata, interface and documentation changes are included before the
+full API/frontend/live deployment. The final workflow result and public production checks
+are reported in the task; no documentation-only commit is left after that deployment.
+
+### Follow-up priorities
+
+Update Riven/Kuva guidance for the newly released Trait Locking rules before treating the old
+cycling cost/stat-count statements as universal; distinguish the still-unreleased Splicing feature.
+Continue the builds locale gap and board localization. Recheck the dated login offer around
+October 7 and the separate Forma eligibility deadline rather than retaining undated availability
+claims. Keep monitoring current data and use connected analytics to measure complete windows.

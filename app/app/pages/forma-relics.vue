@@ -6,37 +6,38 @@
      names localize via useLocalizedName. -->
 <template>
   <div class="an">
-    <client-only>
-      <template #fallback>
-        <SeoFallbackTable
-          caption="Which Relics Drop Forma Blueprints"
-          name-label="Relic"
-          :columns="['Forma reward', 'Intact odds', 'Status']"
-          :rows="fallbackRows"
-        />
-      </template>
-      <div class="an-console">
-        <!-- Hero -->
-        <header class="an-hero">
-          <div class="an-hero__text">
-            <div class="an-eyebrow">Void Ledger · Forma Farming</div>
-            <h1 class="an-title">Which Relics Drop <span class="accent-a">Forma</span></h1>
-            <p class="an-lede">
-              Forma Blueprints appear as <b>Common</b> (1×) or <b>Uncommon</b> (2×) rewards in the relics below.
-              <b>Intact</b> favors Common rewards; refinement improves Uncommon odds.
-              A squad offers more possible choices, but each eligible player selects one reward.
-              Showing what currently drops; flip the toggle for vaulted relics too.
-            </p>
-            <div class="fr-hero-cta">
-              <NuxtLink :to="localePath('/guides/forma')" class="fr-cta">
-                <v-icon size="16">mdi-book-open-page-variant-outline</v-icon> Full Forma farming guide
-              </NuxtLink>
-              <NuxtLink :to="localePath('/star-chart-3d?forma=1')" class="fr-cta fr-cta--map">
-                <v-icon size="16">mdi-map-marker-radius</v-icon> See Forma nodes on the star map
-              </NuxtLink>
-            </div>
+    <div class="an-console">
+      <!-- Keep the explanation and contextual links visible before the board hydrates. -->
+      <header class="an-hero">
+        <div class="an-hero__text">
+          <div class="an-eyebrow">Void Ledger · Forma Farming</div>
+          <h1 class="an-title">Which Relics Drop <span class="accent-a">Forma</span></h1>
+          <p class="an-lede">
+            Forma Blueprints appear as <b>Common</b> (1×) or <b>Uncommon</b> (2×) rewards in the relics below.
+            <b>Intact</b> favors Common rewards; refinement improves Uncommon odds.
+            A squad offers more possible choices, but each eligible player selects one reward.
+            Showing what currently drops; flip the toggle for vaulted relics too.
+          </p>
+          <div class="fr-hero-cta">
+            <NuxtLink :to="localePath('/guides/forma')" class="fr-cta">
+              <v-icon size="16">mdi-book-open-page-variant-outline</v-icon> Full Forma farming guide
+            </NuxtLink>
+            <NuxtLink :to="localePath('/star-chart-3d?forma=1')" class="fr-cta fr-cta--map">
+              <v-icon size="16">mdi-map-marker-radius</v-icon> See Forma nodes on the star map
+            </NuxtLink>
           </div>
-        </header>
+        </div>
+      </header>
+
+      <client-only>
+        <template #fallback>
+          <SeoFallbackTable
+            caption="Which Relics Drop Forma Blueprints"
+            name-label="Relic"
+            :columns="['Forma reward', 'Intact odds', 'Status']"
+            :rows="fallbackRows"
+          />
+        </template>
 
         <!-- Stats -->
         <div class="an-stats">
@@ -197,21 +198,23 @@
         <div v-if="filtered.length > perPage" class="an-pager">
           <v-pagination v-model="page" :length="pageCount" :total-visible="isMobile ? 5 : 9" color="#d4af5a" @update:model-value="onPage"></v-pagination>
         </div>
+      </client-only>
 
-        <!-- How to run them -->
-        <section class="fr-note">
-          <div class="an-eyebrow">How to actually farm these</div>
-          <ul class="fr-note__list">
-            <li><b>Check the reward slot.</b> Intact gives a Common slot a 25.33% chance. Refining to Radiant lowers that to 16.67%, but raises an Uncommon slot from 11% to 20% at a cost of 100 Void Traces.</li>
-            <li><b>A squad gives more choices.</b> Each eligible player selects one revealed reward. A two-blueprint Forma reward gives two blueprints; it does not give you every teammate's reward.</li>
-            <li><b>Choose a fissure you can finish reliably.</b> Endless missions let you equip another relic each reward interval; short Capture or Exterminate missions can also suit your session.</li>
-          </ul>
-          <NuxtLink :to="localePath('/guides/forma')" class="fr-cta">
-            <v-icon size="16">mdi-book-open-page-variant-outline</v-icon> Read the full Forma guide
-          </NuxtLink>
-        </section>
-      </div>
+      <!-- How to run them -->
+      <section class="fr-note">
+        <div class="an-eyebrow">How to actually farm these</div>
+        <ul class="fr-note__list">
+          <li><b>Check the reward slot.</b> Intact gives a Common slot a 25.33% chance. Refining to Radiant lowers that to 16.67%, but raises an Uncommon slot from 11% to 20% at a cost of 100 Void Traces.</li>
+          <li><b>A squad gives more choices.</b> Each eligible player selects one revealed reward. A two-blueprint Forma reward gives two blueprints; it does not give you every teammate's reward.</li>
+          <li><b>Choose a fissure you can finish reliably.</b> Endless missions let you equip another relic each reward interval; short Capture or Exterminate missions can also suit your session.</li>
+        </ul>
+        <NuxtLink :to="localePath('/guides/forma')" class="fr-cta">
+          <v-icon size="16">mdi-book-open-page-variant-outline</v-icon> Read the full Forma guide
+        </NuxtLink>
+      </section>
+    </div>
 
+    <client-only>
       <v-alert class="an-disclaimer" color="blue-darken-4" type="info" density="compact">
         “Currently dropping” is sourced from the live WFCD drop tables (the same data the drop-locations dialog shows),
         not the unreliable market vaulted flag. Relic contents rotate as items are vaulted and unvaulted.

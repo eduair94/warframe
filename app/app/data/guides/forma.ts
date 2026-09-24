@@ -4,17 +4,17 @@ import type { Guide } from './types'
 
 const guide: Guide = {
   slug: 'forma',
-  eyebrow: 'Knowledge Center · Forma Farming',
-  title: 'How to Farm Forma: Relics, Crafting & Plague Star',
-  lede: 'Farm Forma Blueprints from relics that contain them, choose the right refinement for their reward slot, and keep the Foundry running. Compare blueprint farming with built Forma, including the September 2026 Plague Star event, before spending your time or Platinum.',
+  eyebrow: 'Knowledge Center · Forma Sources',
+  title: 'How to Farm Forma: Relics, Crafting & Free Rewards',
+  lede: 'Farm Forma Blueprints from relics, plan crafting resources and compare built Forma sources. Check the dated free login reward and Plague Star event status.',
   category: 'farming',
   readMins: 9,
-  updated: '2026-09-14',
+  updated: '2026-09-24',
   stats: [
     { num: '1', label: 'reward selection per player per opened relic', tone: 'good' },
     { num: '2×', label: 'blueprints in an Uncommon Forma reward', tone: 'alt' },
     { num: '23 h', label: 'Foundry build time for standard Forma', tone: 'gold' },
-    { num: '3', label: 'Plague Star bounty tiers to compare' },
+    { num: '1', label: 'built Forma in the Update 44 login reward' },
   ],
   sections: [
     {
@@ -31,10 +31,19 @@ const guide: Guide = {
       ],
     },
     {
-      id: 'plague-star-2026',
-      title: 'Plague Star 2026: deadline, requirements and rewards',
+      id: 'free-forma-2026',
+      title: 'Free built Forma: the Update 44 login reward',
       blocks: [
-        { type: 'p', text: '**Reviewed September 14, 2026:** [Operation: Plague Star](https://www.warframe.com/en/news/operation-plague-star-2026) is available on all platforms until **September 23, 2026 at 10 a.m. ET (14:00 UTC)**. Start Konzu’s bounty in Cetus to earn Operational Supply Standing.' },
+        { type: 'p', text: '[Update 44](https://www.warframe.com/en/patch-notes/pc/44-0-0) offers **Banshee and one built Forma** for logging into Warframe between **September 23, 2026 at 11:30 a.m. ET and October 7, 2026 at 11:59 p.m. ET**. This is a login gift, not a repeatable Forma farm.' },
+        { type: 'p', text: 'The official notes say that, after the Banshee inbox expires, players who did not receive that inbox can still claim the Forma by logging in until **December 31, 2026**. If you already received it with Banshee, this is not an additional Forma. Check your in-game inbox and inventory.' },
+        { type: 'tip', text: 'A built Forma is ready to use. You do not need a blueprint, crafting resources or a Foundry wait for this reward. For a repeatable supply, continue with the relic and crafting methods below.' },
+      ],
+    },
+    {
+      id: 'plague-star-2026',
+      title: 'Plague Star 2026 has ended: event reference',
+      blocks: [
+        { type: 'p', text: '[Operation: Plague Star](https://www.warframe.com/en/news/operation-plague-star-2026) **ended on September 23, 2026 at 10 a.m. ET (14:00 UTC)**. Its bounty is no longer a current Forma farming route. The event details below are historical; use the login reward above or the relic and Foundry methods for your next Forma.' },
         { type: 'table', table: {
           columns: ['Tier', 'Requirements', 'Base Standing + completion bonus'],
           rows: [
@@ -42,9 +51,9 @@ const guide: Guide = {
             ['2', '1 Eidolon Phylaxis + 1 Infested Catalyst', '3200 + 75'],
             ['3', 'Tier 2 consumables + Steel Path eligibility', '3800 + 100'],
           ],
-          note: 'The completion bonus is separate from the base reward. Choose a tier your squad can complete consistently.',
+          note: 'Historical September 2026 bounty rewards. The completion bonus was separate from the base reward; these tiers are not an active farming recommendation.',
         } },
-        { type: 'p', text: 'Nakak’s announced additions include **built Umbra Forma**, three Sigils and the Two-Handed Nikana Maligna Skin. Check her current offerings for the Forma variant you need, its price, rank requirement and purchase limit before grinding. The announcement does not specify those shop details; older event prices do not establish the 2026 cost.' },
+        { type: 'p', text: 'The announcement listed **built Umbra Forma**, three Sigils and the Two-Handed Nikana Maligna Skin among Nakak’s additions. It did not establish a post-event shop window or the next event date. Do not assume the bounty or those purchases remain available after the deadline.' },
       ],
     },
     {
@@ -81,7 +90,7 @@ const guide: Guide = {
             ['In-game Market', 'The standard 3 Forma Bundle is listed at 35 Platinum; check the final price before purchase.', 'You need built Forma immediately and have budgeted the Platinum.'],
             ['Nightwave', 'Inspect the current reward track for a Forma Bundle and its actual rank.', 'You are already completing challenges; a past season’s reward rank may differ.'],
             ['Sorties and other reward pools', 'Read the current reward list and distinguish a random chance from a guaranteed reward.', 'You also want the other rewards. Do not plan a fixed number of runs around a lucky drop.'],
-            ['Event offerings', 'Read the dated Plague Star section above, then inspect Nakak’s shop.', 'You can earn event Standing during its limited availability.'],
+            ['Login rewards and events', 'Read the dated Update 44 login offer above. Plague Star ended on September 23, 2026.', 'Claim an eligible one-time gift; use relics and crafting for a repeatable supply.'],
           ],
           note: 'The Market bundle was introduced in Specters of the Rail. Seasonal rewards and event inventories need a current in-game check.',
         } },
@@ -96,7 +105,7 @@ const guide: Guide = {
           '**Keep the Foundry active when you need stock.** Standard Forma takes 23 hours. Claiming the completed item and starting the next craft at your usual login time makes a roughly daily supply practical; it does not start itself.',
           '**Keep blueprints and resources ahead of your next build.** A large blueprint inventory alone does not produce usable Forma. Check your supply of all four crafting resources before a long relic session.',
           '**Finish one planned loadout first.** Budget the polarities it actually needs, then build a reserve for the next item. Spending Forma on every newly acquired weapon can leave your main loadout unfinished.',
-          '**Compare built rewards with crafting.** An event or Market purchase can bypass Foundry time, but check its current cost and conditions. Inspect the shop before calculating how many Forma you could obtain with your Standing.',
+          '**Compare built rewards with crafting.** A login gift or Market purchase can bypass Foundry time. Check eligibility, dates and cost first; a one-time gift does not replace a sustainable blueprint and resource supply.',
         ] },
       ],
     },
@@ -155,7 +164,7 @@ const guide: Guide = {
     { q: 'Why did I open several relics and get no Forma?', a: 'Relic rewards are random, so a dry streak can happen. Check that your relic contains Forma, inspect its reward slot, and meet the opening requirements. A squad provides more possible choices but cannot guarantee Forma.' },
     { q: 'Should I make Forma relics Radiant?', a: 'Check the slot first. Intact favors a Common Forma reward; refining improves an Uncommon reward’s chance. Uncommon Forma rewards contain two blueprints. Compare the benefit with the Void Traces required.' },
     { q: 'Does a full squad give me four Forma per round?', a: 'No. Each eligible player chooses one of the revealed rewards. A two-blueprint reward gives you two blueprints, but you cannot take all four squad rewards.' },
-    { q: 'Can I get built Forma without waiting for the Foundry?', a: 'Yes. The in-game Market has built Forma, and some rewards or event offerings can provide built variants. Read the exact item name, cost and availability. The dated Plague Star section explains the currently announced event reward.' },
+    { q: 'Can I get built Forma without waiting for the Foundry?', a: 'Yes. Check the dated Update 44 login reward above for one free built Forma and its eligibility. The in-game Market also sells built Forma. Plague Star ended on September 23, 2026; its old bounty is not an active farming route.' },
     { q: 'How long does Forma take to craft?', a: 'Standard Forma takes 23 hours. Each craft consumes one blueprint, 35,000 Credits, one Morphics, one Neural Sensors, one Neurodes and one Orokin Cell. Claim the finished Forma before starting another craft.' },
     { q: 'Is Omni Forma the same as Umbra Forma?', a: 'No. Omni Forma, previously called Aura Forma, provides a Universal Polarity that excludes Umbra matching. Umbra Forma applies the dedicated Umbra polarity. Choose the variant for the Mods you actually intend to equip.' },
     { q: 'How many Forma should I put into a build?', a: 'Use the number needed for your chosen Mods and configurations. Plan capacity and polarities first, then relevel and test after each application. There is no fixed count that every build needs.' },
@@ -170,6 +179,8 @@ const guide: Guide = {
     { label: 'Resource Farming', to: '/guides/resources', note: 'Prepare the materials for your next Foundry craft.', icon: 'database-outline' },
   ],
   sources: [
+    { label: 'Warframe — Update 44: Iceblade of Narin (September 23, 2026)', href: 'https://www.warframe.com/en/patch-notes/pc/44-0-0' },
+    { label: 'Warframe — Free Banshee login reward (September 23, 2026)', href: 'https://www.warframe.com/en/news/get-banshee-as-a-free-login-reward-to-celebrate-her-evolution' },
     { label: 'Warframe — Operation: Plague Star 2026 (September 9, 2026)', href: 'https://www.warframe.com/en/news/operation-plague-star-2026' },
     { label: 'Warframe — Official PC Drop Tables', href: 'https://www.warframe.com/droptables' },
     { label: 'Warframe — Relic Hunting 101', href: 'https://www.warframe.com/en/news/relic-hunting-101' },
