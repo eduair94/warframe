@@ -56,14 +56,27 @@ ssh warframe167 'uptime'
 box can be fixed remotely, and no amount of config would have prevented it.
 Check the host:
 
-1. **InterServer control panel** (<https://my.interserver.net>) → VPS → is it
+1. **Provider status page first: <https://status.vshield.com/>.** The VDS runs on
+   vShield's network. A "Network outage — VDS USA" incident listing NY/LA nodes
+   as *Host unreachable* means the VM is fine and only its network is gone —
+   there is nothing to fix on our side (2026-09-29 incident below).
+2. **InterServer control panel** (<https://my.interserver.net>) → VPS → is it
    *powered off*, is the node under *maintenance*, is the account *suspended*?
-2. Powered off → power it on. Node under maintenance → **open a ticket and ask
+   Caveat: **"Running" only means the hypervisor process is up**, and during a
+   node network outage the panel's *Restart* never reaches the guest (the VM
+   kept 38 days of uptime through a "restart" on 2026-09-29).
+3. Powered off → power it on. Node under maintenance → **open a ticket and ask
    to be migrated to a healthy node** rather than waiting out the repair.
-3. Sanity check that it is your VM and not the whole datacentre: pick another
-   address in the same `/24` and probe it. If `167.148.41.5:22` answers and
-   yours does not, the network is fine and the VM is the problem.
-4. Both `167.148.41.10` and `.11` dark at once usually means one host node or an
+4. Sanity check from inside the datacentre: `.10` (`ssh build`, port 2223) has
+   sat on a different node in both incidents. From there, an ARP probe tells a
+   dead guest/network from a firewall:
+   ```bash
+   ssh build 'ip neigh flush 167.148.41.11; ping -c2 -W2 167.148.41.11; ip neigh show 167.148.41.11'
+   ```
+   `FAILED` / `INCOMPLETE` = nothing answering at layer 2 (VM off, hung, or its
+   node's network down). `REACHABLE` with ports closed = guest up, services or
+   firewall down → §3.
+5. Both `167.148.41.10` and `.11` dark at once usually means one host node or an
    account-level suspension — mention both IPs in the ticket.
 
 **SSH works → the tunnel is the problem:**
@@ -148,16 +161,54 @@ serves an Internet Archive snapshot if everything else fails.
 
 ### If you need to survive a dead host
 
-Not built. The shape it would take:
+A **cold standby** exists on `box147` (`147.93.146.232`, different provider),
+prepared during the 2026-09-29 outage and then stopped. Everything lives under
+`/opt/warframe-standby/` and nothing is registered with that box's pm2 while
+idle:
 
-- A warm standby origin on a different provider (`147.93.146.232` is the best
-  candidate: 94 GB RAM, ~170 GB free, mongod 8, pm2 and cloudflared already
-  installed — it needs node 24).
-- Mongo is the hard part: it is local to the prod box, so a standby starts empty
-  and must re-run `sync_items` / `sync_prices` / `sync_drops` (hours). A replica
-  set member on the standby, or a nightly `mongodump` shipped off-box, is the
-  prerequisite.
-- With that in place a failover is: point the tunnel (or DNS) at the standby.
+| Path | What |
+| --- | --- |
+| `repo/` | shallow clone of `main`, built (`dist/` + `app/.output/`) |
+| `repo/.env` | standby env — `MONGODB_URI=…127.0.0.1:27018`, `PROXY_LESS=true`, **no `REDIS_URL`** |
+| `db/` | data dir of an isolated mongod on `127.0.0.1:27018` (box147's own mongod on 27017 is someone else's, auth-protected) |
+| `ecosystem.standby.config.js` | pm2 apps named `warframe-standby-*`, Node 24 via `/root/.nvm` |
+
+Bring it up:
+
+```bash
+ssh box147
+cd /opt/warframe-standby/repo && git pull --ff-only && export PATH=/root/.nvm/versions/node/v24.21.0/bin:$PATH \
+  && npm ci && npm run build; (cd app && npm ci && npm run build)   # tsc may exit 1 on an app/ file — it still emits dist/
+cd /opt/warframe-standby && pm2 start ecosystem.standby.config.js --only warframe-standby-mongod
+pm2 start ecosystem.standby.config.js --only "warframe-standby-server,warframe-standby-app,warframe-standby-sync-items,warframe-standby-sync-drops,warframe-standby-sync-rivens,warframe-standby-sync-translations"
+# after sync-items finishes: warframe-standby-sync-prices, warframe-standby-sync-foundry
+```
+
+Gotchas learned bringing it up (build ~10 min; data refresh ~40 min items +
+~35 min prices on an empty db):
+
+- **Keep it off prod Redis.** box147 *hosts* one of prod's Redis instances; a
+  standby with an empty db writing through `CacheService` would poison the
+  shared cache for when the real origin returns.
+- **Proxyless → throttle the price sync.** The proxy pool
+  (`localhost:3030/proxy_list`) lives on the prod box. `sync_prices` defaults to
+  `CONCURRENCY=50` and 429-storms warframe.market without it; the standby
+  ecosystem pins `CONCURRENCY=3 MIN_DELAY=300 MAX_DELAY=600` (~1.9 items/s).
+- **No accounts.** Firebase config exists only in the prod `.env`, so sign-in
+  and `/me` are off on the standby; the app is local-first and degrades.
+
+**Failover** (not yet exercised): Cloudflare Zero Trust → Networks → Tunnels →
+the warframe tunnel → copy the connector token, then on box147
+`pm2 start cloudflared --name warframe-standby-tunnel -- tunnel --no-autoupdate run --token <token>`.
+A second connector on the same tunnel shares traffic with the prod connector,
+so **delete `warframe-standby-tunnel` the moment `.11` answers again** —
+otherwise visitors are split across two databases. Stand down with
+`pm2 delete` on every `warframe-standby-*` app; keep `db/` so the next bring-up
+starts warm.
+
+Still missing for a *real* failover: a replica-set member or nightly
+`mongodump` shipped off-box (accounts, portfolios and alerts exist only in the
+prod db).
 
 ---
 
@@ -190,3 +241,16 @@ to install `pm2-root.service`, unlink the broken unit, and raise cloudflared fro
 to the edge shield: the tunnel was healthy, so Cloudflare had a live origin
 returning `502` — which is exactly the case the uptime monitor's `/health` probe
 catches and a "is the site loading" check does not.
+
+**2026-09-29 — provider network outage (~2h20m).** Both hostnames served `530` /
+error 1033 from ~05:23 to 07:43 UTC. The uptime monitor opened issue #4 at 05:25
+UTC, two minutes in. Root cause: vShield "Network outage — VDSPRO & VDS USA"
+(Major, ~62 NY/LA nodes *Host unreachable* since 05:23 UTC). `.11` did not answer
+ARP even from `.10` on the same `/24`, while `.10` sat on an unaffected node. The
+InterServer panel showed the VM as *Running* throughout, and its *Restart* never
+reached the guest: `.11` came back with 38 days of uptime, cloudflared, mongod
+and all 25 pm2 apps still up, so no recovery steps were needed. A cold standby
+was built on box147 during the outage (section above) but traffic was never
+switched: no Cloudflare credentials were on hand for the tunnel token, and the
+edge Worker was still not routed (responses carried no `x-edge-cache`), so
+visitors got the raw 1033 page rather than stale data.
