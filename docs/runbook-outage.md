@@ -194,8 +194,10 @@ Gotchas learned bringing it up (build ~10 min; data refresh ~40 min items +
   (`localhost:3030/proxy_list`) lives on the prod box. `sync_prices` defaults to
   `CONCURRENCY=50` and 429-storms warframe.market without it; the standby
   ecosystem pins `CONCURRENCY=3 MIN_DELAY=300 MAX_DELAY=600` (~1.9 items/s).
-- **No accounts.** Firebase config exists only in the prod `.env`, so sign-in
-  and `/me` are off on the standby; the app is local-first and degrades.
+- **No accounts — same as prod today.** As of 2026-09-29 the prod `.env` has no
+  `FIREBASE_*` vars either, so `/me*` answers `503 {"error":"auth disabled"}`
+  on both; the app is local-first and degrades. Once Firebase is configured on
+  prod, copy the same vars into the standby `.env`.
 
 **Failover** (not yet exercised): Cloudflare Zero Trust → Networks → Tunnels →
 the warframe tunnel → copy the connector token, then on box147
