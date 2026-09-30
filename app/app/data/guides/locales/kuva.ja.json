@@ -1,8 +1,8 @@
 {
   "slug": "kuva",
   "eyebrow": "ナレッジセンター · Kuvaファーム",
-  "title": "Kuvaファームガイド",
-  "lede": "KuvaはRivenのステータスを再抽選するための赤い通貨であり、その周回には独自のメタが存在します。ここでは、信頼できるすべてのファーム方法、ブースターや適切なコンパニオンmodで獲得量を倍増させる方法、そして燃え尽きずに消費する方法を紹介します。",
+  "title": "Kuvaファームガイド：入手源、ブースター、Rivenコスト",
+  "lede": "自分が用意できるRivenの再抽選に合わせてKuvaファームの計画を立てましょう。シフォン、フラッド、サバイバル、そしてMelicaの新しい週替わり交換を比較し、どの報酬がブースターの影響を受けるかを理解し、アップデート44の任意の特性ロックに向けた予算を立てましょう。",
   "category": "farming",
   "readMins": 8,
   "stats": [
@@ -18,12 +18,12 @@
     },
     {
       "num": "3,500",
-      "label": "リロールあたりの最大Kuva",
+      "label": "ロックされた特性がない場合の最大Kuva",
       "tone": "gold"
     },
     {
-      "num": "2×",
-      "label": "Resource Booster",
+      "num": "7,000",
+      "label": "1つの特性がロックされた状態での最大Kuva",
       "tone": "good"
     }
   ],
@@ -34,11 +34,11 @@
       "blocks": [
         {
           "type": "p",
-          "text": "**Kuva**は、GrineerのKuva貯蔵庫から回収される、赤く光るリソースです。その最大の目的はただ一つ、**Riven modsの再抽選（リロール）**です。リロールを行うたびにKuvaを消費して、Rivenのステータス（バフ、デバフ、性質によるスケーリング）を再抽選します。また、いくつかの設計図（一部のWarframes、Umbra Forma、一部の武器など）の製作素材としても少量使用されますが、多くのプレイヤーがKuvaをファームする主な理由はRivensです。"
+          "text": "**Kuva**は、**Riven MOD**のランダム化されたステータスを再抽選したり、Umbra Formaを含む特定のファウンドリの設計図を作成したりするために使用されるリソースです。再抽選を行っても、武器のRivenディスポジションは変更されません。アップデート44以降、通常の2倍のKuvaコストを支払うことで、他の特性を再抽選しながら既存の特性を1つ保持できるようになりました。"
         },
         {
           "type": "p",
-          "text": "「Kuva」という言葉は、いくつかの関連のないシステムにも使われているため、ほぼすべての初心者プレイヤーが混乱します。Rivensをリロールするために周回する必要があるのは**リソース**としてのKuvaだけであり、その他は名前が共通しているだけです。"
+          "text": "いくつかのシステムでKuvaという名前が共有されています。Rivenの再抽選には、通常の赤い**Kuvaリソース**が必要です。アップデート44で導入された**エントロピックKuva（Entropic Kuva）**は、Cephalon Melicaとの交換に使用される別のリソースです。"
         },
         {
           "type": "kv",
@@ -56,18 +56,18 @@
               "v": "一部のFoundry設計図"
             },
             {
-              "k": "解放条件",
-              "v": "クエスト「The War Within」"
+              "k": "シフォンのアクセス条件",
+              "v": "「内なる紛争」クリア済み、マスタリーランク5"
             },
             {
-              "k": "購入や取引は可能？",
-              "v": "不可 — 自力でファームするしかありません"
+              "k": "トレード可能ですか？",
+              "v": "プレイヤー間のリソーストレードはありません。ベンダーでの交換が利用可能です。"
             }
           ]
         },
         {
           "type": "info",
-          "text": "**「Kuva」という名称は多用されています。** *Kuva*（リロールに使用するリソース）、*Kuva Siphon/Flood*（報酬として獲得できるミッション）、*Kuva Lich*（宿敵となる敵）、*Kuva weapons*（Lichがドロップする武器）。最初の「リソースとしてのKuva」だけがRivensを再抽選できます。混同しないよう、Lichesに関する最後のセクションを参照してください。"
+          "text": "**目的に応じたリソースを使い分けましょう。** 通常のKuvaはRivenのサイクルの支払いに使用します。Entropic KuvaはMelicaの品物の支払いに使用します。Kuva SiphonおよびFloodはミッションであり、Kuva Lichはネメシス上の敵であり、Kuvaウェポンはそれらの武器報酬です。"
         }
       ]
     },
@@ -77,7 +77,7 @@
       "blocks": [
         {
           "type": "p",
-          "text": "Kuvaファームはクエスト**The War Within**（*The Second Dream*に続く2番目のOperatorクエスト）をクリアすることで解放されます。クリアするまでは、星系マップにKuva SiphonsやFloodsは出現せず、Kuva Fortressはロックされたままで、Kuva Lichを出現させることもできません。"
+          "text": "**Kuva SiphonミッションにはThe War Withinとマスタリーランク5が必要です。** クエストをクリアするとKuva Fortressも開放されます。ベンダーやZarimanコンテンツを含む他の入手方法にはそれぞれ解放条件があり、1つのクエストをクリアしてもすべてのKuva入手先が解放されるわけではありません。"
         },
         {
           "type": "steps",
@@ -88,7 +88,7 @@
             },
             {
               "h": "The War Withinをクリアする",
-              "p": "これによりOperatorのVoidパワーが解放され（Kuva Siphonsを破壊するために文字通り必要となります）、Kuvaのエコシステム全体が有効になります。"
+              "p": "クエストをクリアしてマスタリーランク5に到達し、Kuva Siphonミッションにアクセスしましょう。オペレーターのVoidアビリティは、Siphonの目標を処理する際に重要な役割を果たします。"
             },
             {
               "h": "星系マップを確認する",
@@ -96,7 +96,7 @@
             },
             {
               "h": "Kuva Fortressを解放する",
-              "p": "FortressとそのKuva Survivalノードが、大量ファームの拠点となります。"
+              "p": "Kuva Survivalに挑戦するには、Kuva FortressのTaveuniに到達してください。Harvesterを防衛しながら生命維持装置を維持できるロードアウトを選択しましょう。"
             }
           ]
         }
@@ -108,7 +108,7 @@
       "blocks": [
         {
           "type": "p",
-          "text": "主な獲得源は3つあります。手軽にこなせる**Siphons**、報酬が2倍になる**Floods**、そして継続的に大量獲得できる**Survival**です。これらは恒常的なコンテンツであり、relicの世代交代や「最適なリソースノード」のローテーションとは異なり、アップデートごとに価値が変動することはありません。"
+          "text": "**SiphonおよびFlood**では、通常のミッション内でKuvaの目標に挑戦できます。**Kuva Survival**では、1回のセッションでHarvesterの防衛を繰り返し行うことができます。長時間のランに挑む前に、これらとすでに解放済みのベンダー交換とを比較検討してください。"
         },
         {
           "type": "table",
@@ -117,133 +117,176 @@
               "方法",
               "場所",
               "獲得量の目安",
-              "最適な用途"
+              "考慮すべき点"
             ],
             "rows": [
               [
                 "Kuva Siphon",
-                "入れ替わる星系マップのノード（TWWクリアが必要）",
+                "ローテーションする星系マップのノード; The War WithinおよびMR 5",
                 "~600 base",
-                "素早くカジュアルで、手軽な周回"
+                "Siphonの目標およびミッションの完了"
               ],
               [
                 "Kuva Flood",
-                "高レベルの入れ替わるノード（1箇所）",
+                "より高レベルのローテーションするSiphonミッション",
                 "~1,200 base",
-                "報酬2倍、敵レベルは大幅に上昇"
+                "より手強い敵が出現する、Siphonの約2倍の報酬"
               ],
               [
                 "Kuva Survival",
-                "Kuva FortressのSurvivalノード（Taveuni）",
-                "時間経過に応じて増加",
-                "継続的かつ大量のファーム"
+                "Taveuni, Kuva Fortress",
+                "完了したHarvester 1基あたり200ベース",
+                "生命維持装置を維持しながらHarvesterを防衛する"
               ],
               [
-                "日替わり Sortie",
-                "Sortieの報酬テーブル（確率）",
-                "数千",
-                "デイリーミッション消化ついでにパッシブで獲得"
+                "ベンダー交換",
+                "Cephalon Melicaを含む、解放済みのベンダー",
+                "各オファーと購入制限を確認する",
+                "Siphonを何度も行う代わりに、必要な通貨を使用する"
               ]
             ],
-            "note": "獲得量はブースター適用前の大まかな基本量です。DEが数値を調整することがあるため、最新の値はゲーム内やWikiで確認してください。"
+            "note": "SiphonおよびFloodの数量は大まかなベース報酬です。Kuvaを受け取るには、Harvesterが防衛を完了させる必要があります。ベンダーの数量および対象となるミッション報酬には、異なるブースターのルールが適用されます。"
           }
         },
         {
           "type": "p",
-          "text": "**Siphon**はミニ目標のように機能します。Kuva Siphonデバイスに到達すると、Kuvaの雲を吸い込み始めます。プレイヤーは**Operator形態になり、迫り来る雲に向かってVoid Dashingするか、Ampで撃つ**ことで、4本のKuvaの触手（braid）を破壊します。これこそが、The War Withinのクリアが必須条件である理由です。作業中は妨害のためにKuva Guardiansが出現します。4本の触手をすべて破壊するとSiphonが爆発し、まとまったKuvaを獲得できます。**Flood**も同様の流れですが、敵のレベルが大幅に高くなり、獲得量もおよそ2倍になります。マップ上のSiphonsを連続でクリアし、出現しているFloodを消化していくのが、最も効率的でカジュアルな周回ルートです。"
+          "text": "**Kuva Siphon**では、オペレーターのVoidアビリティやAmpで飛んでくるKuvaクラウドを迎撃し、4つの編組を破壊します。周囲の敵から身を守りながらミッションを完了させましょう。**Kuva Flood**では、より高レベルの敵とより多くのKuva報酬を獲得できる状態で、同じ目標を遂行します。"
         }
       ]
     },
     {
-      "id": "survival-fissure",
-      "title": "耐久メタ：Kuva Survival ＋ fissures（亀裂）",
+      "id": "melica-entropic-kuva",
+      "title": "アップデート44：Melicaの週替わりKuva交換",
       "blocks": [
         {
           "type": "p",
-          "text": "純粋な**時間あたりのKuva獲得量**においては、Kuva FortressでのKuva Survivalが最高峰です。マップ中のマーカーを追いかける代わりに、1つのSurvivalミッションに留まり、**Life Support CapsulesをKuva Harvestersに変換**します。防衛しながら変換を完了するたびにまとまったKuvaが手に入るため、長く生き残るほど多くのKuvaがたまっていきます。敵を倒し続けられるよう、広範囲殲滅が得意なframeと、安定したエネルギー供給手段を用意しましょう。"
-        },
-        {
-          "type": "p",
-          "text": "プロの選択は**一石二鳥（ダブルディップ）**です。**Void Fissure**（ボイド亀裂）が発生しているタイミングでKuva Survivalをプレイします。プラチナ価値のあるprimeパーツのためにrelicsを開封しつつ、同時にKuvaも集めることができます。1つのミッションで2つの周回を同時にこなせるため、耐久ファームを行うプレイヤーはこれを数時間に及ぶセッションで行い、莫大な報酬を獲得しています。"
-        },
-        {
-          "type": "links",
-          "links": [
-            {
-              "label": "1ランあたりどのrelicsが最も効率的か",
-              "to": "/relic-farming",
-              "icon": "diamond-stone",
-              "note": "Kuva周回の資金源となるfissure relicを選択する"
-            },
-            {
-              "label": "開封するか売却するか？Relicの価値",
-              "to": "/relics-value",
-              "icon": "cash-multiple",
-              "note": "fissureドロップの価値を把握する"
-            }
-          ]
-        },
-        {
-          "type": "warn",
-          "text": "**長時間の耐久プレイには実質的なリスクが伴います。** 野良マルチで数時間に及ぶプレイ中にホスト移行が発生すると、セッションから切断される可能性があり、Kuvaのセーブデータを復元する方法はありません。クラッシュや切断が発生した場合、最後の報酬以降に獲得したものはすべて失われます。ソロでプレイするか、安定した固定分隊を組むことでその確率を下げることができます。また、1回のノンストップマラソンにセッションすべてを賭けるよりも、こまめに報酬を確定させる方が賢明です。"
-        }
-      ]
-    },
-    {
-      "id": "boosters",
-      "title": "Kuvaを倍増させる：ブースターとコンパニオン",
-      "blocks": [
-        {
-          "type": "p",
-          "text": "Kuvaファームにおける唯一にして最も重要な教訓：**重要なのはノードではなく、倍率（マルチプライヤー）です。** 同じSiphonでも、バフの重ね掛け次第で600にも2,400以上にもなります。"
-        },
-        {
-          "type": "list",
-          "items": [
-            "**Resource Booster (2×)** — 効果時間中、SiphonやFloodからのまとまった報酬を含む、すべてのKuva獲得量を2倍にします。信頼できる基本の倍率です。",
-            "**Loyal Retriever (companion mod)** — **Update 37**以降、かつてSmeetaのCharmに備わっていたリソース倍増効果が、独立したmodになりました。**Creditおよびリソース（Kuvaを含む）の拾得時に、それぞれ一律13%の確率で獲得量を2倍にする効果**を持ちます。バフの発生を待つ必要はなく常に有効で、Smeetaに限らず、あらゆるBeastコンパニオン（Kubrow、Kavatなど）に装備できます。",
-            "**リソース2倍週末イベント** — DEが定期的に開催するイベント効果はブースターと重複するため、SiphonやFloodの獲得量を4×近くまで引き上げることができます。",
-            "**「バフ待ち」はもう不要** — SmeetaのCharmによるリソースバフが発動するまでアイテムを拾わずに放置する古いテクニックは、Update 37で廃止されました。倍増効果は拾得ごとのパッシブ判定になったため、ただ敵を倒し続けてアイテムを回収すれば問題ありません。"
-          ]
-        },
-        {
-          "type": "tip",
-          "text": "**おすすめのコンパニオン構成：** Beastコンパニオンに**Loyal Retriever**を装備することで、Kuvaにも適用される13%の確率での獲得量倍増効果を得られます。多くのプレイヤーは、Charmによるレアリソースドロップやアフィニティ3倍効果を狙って、今でも**Smeeta Kavat**を好んで同伴させますが、リソース倍増効果自体にSmeetaは必須ではなくなりました。"
-        }
-      ]
-    },
-    {
-      "id": "per-hour",
-      "title": "時間あたりのKuva獲得量：現実的な期待値",
-      "blocks": [
-        {
-          "type": "p",
-          "text": "効率は使用するframe、ブースターの有無、周回ルートによって大きく変動するため、これらは絶対的な数値ではなく、あくまで目安としてお考えください。現実的な目安は以下の通りです："
+          "text": "Zarimanミッションの**Entropic Eximus**は、別個のリソースである**Entropic Kuva**をドロップします。これを**Yuvan’s Peak**または**Chrysalith**にいる**Cephalon Melica**のところに持ち込み、**Classroom Supplies**を開きましょう。Chrysalithでは、彼女のショップへのファストトラベル機能を利用できます。"
         },
         {
           "type": "kv",
           "kv": [
             {
-              "k": "カジュアルなSiphon/Floodの連続周回（ブースターなし）",
-              "v": "~5,000–10,000 Kuva/hr"
+              "k": "1回あたりの通常のKuva",
+              "v": "10,500"
             },
             {
-              "k": "Kuva Survival ＋ Resource Booster（＋ Loyal Retriever）",
-              "v": "~15,000–25,000+ Kuva/hr"
+              "k": "購入制限",
+              "v": "週に4回"
             },
             {
-              "k": "最大コストでのRivenリロール1回",
-              "v": "3,500 Kuva"
+              "k": "すべて購入した場合の合計",
+              "v": "週あたり42,000の通常のKuva"
             },
             {
-              "k": "つまり、ブースターありのSurvivalを1時間プレイすると、およそ以下の回数分になります",
-              "v": "4–7回のリロール"
+              "k": "必要な通貨",
+              "v": "Entropic Kuva。現在の価格についてはショップをご確認ください。"
+            }
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Yuvan’s Peakへのアクセスには、**Angels of the Zariman**と**Whispers in the Walls**の両方が必要です。また、MelicaはNarinやウェポンの設計図も販売しているため、通常のKuvaを購入する前に、どれだけのEntropic Kuvaをそれらに温存するかを決定しておきましょう。"
+        },
+        {
+          "type": "info",
+          "text": "**Entropic Kuvaは、Rivenのサイクルの支払いに直接使用することはできません。** この交換によって通常のKuvaが手に入り、それをサイクルのために使用することができます。合計の42,000という数値は、ショップの通貨を所持しており、かつ週間購入回数が残っていることを前提として、10,500 × 4として算出されています。"
+        },
+        {
+          "type": "tip",
+          "text": "**Entropic Eximusの耐性に備えましょう。** 近接攻撃以外のダメージに対して強力な耐性を持つことについて、[Hotfix 44.0.1](https://www.warframe.com/en/patch-notes/pc/44-0-1)で説明されています。適切な近接武器を持ってバブルの内部で戦いましょう。バブルを破壊してもその耐性が消えるわけではありません。[Hotfix 44.0.2](https://www.warframe.com/en/patch-notes/pc/44-0-2)では、耐性が二重に適用されていた不具合と、MirageのクローンによるキルでEntropic Kuvaがドロップしない不具合が修正されました。"
+        }
+      ]
+    },
+    {
+      "id": "survival-fissure",
+      "title": "Kuva SurvivalとRequiem Fissure",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Taveuni**では、マークされた敵が**Kuva Catalyst**を所持しています。それを未使用の生命維持タワーまで持って行きHarvesterに変換してから、**1分間**防衛しましょう。防衛を完了すると、分隊に**ベースKuva 200**と少量の生命維持装置が報酬として与えられます。もしHarvesterが破壊された場合、そのHarvesterのKuva報酬とタワーを失います。"
+        },
+        {
+          "type": "p",
+          "text": "Kuva Survivalが**Requiem Fissure**としてプレイ可能な時は、**Requiem Relic**を持ち込んでHarvesterの目標と同時に開放しましょう。その報酬には、Requiem Mod、Kuva、Riven Sliver、Exilus Weapon Adapterの設計図が含まれます。これらはLith、Meso、Neo、Axiの各レリックではないため、このルートでPrimeパーツ用のそれらのレリックを開封することはできません。レリックを選択する前に、アクティブなミッションの種類を確認してください。"
+        },
+        {
+          "type": "links",
+          "links": [
+            {
+              "label": "レリックの種類を理解する",
+              "to": "/guides/relics",
+              "icon": "diamond-stone",
+              "note": "Requiem報酬とPrimeレリック報酬を区別する"
+            },
+            {
+              "label": "開封するか売却するか？Relicの価値",
+              "to": "/relics-value",
+              "icon": "cash-multiple",
+              "note": "別のファーム周回で使用するPrimeレリックを比較する"
+            }
+          ]
+        },
+        {
+          "type": "warn",
+          "text": "**ランの持続可能性を保つ。** 利用可能なタワーをすべて変換すると、生命維持装置が少なすぎてしまうことがあります。ミッションメーターを確認し、各Harvesterを守り、分隊が両方の目標を維持できなくなったときに脱出してください。セッションが長ければ長いほど時間の使い方が自動的に良くなるわけではありません。"
+        }
+      ]
+    },
+    {
+      "id": "boosters",
+      "title": "ブースターとコンパニオンMOD：それらが影響するもの",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Resource Booster**は、Siphon、Flood、および完了した生存のHarvesterからの対象となるKuva報酬を2倍にすることができます。これはすべてのKuvaの入手先が2倍になるという意味ではありません。ベンダーでの購入や固定の報酬テーブルのバンドルはリソースの拾得物ではありません。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Resource Booster (2×)** — 対象となるリソースの量が増加します。Resource Drop Chance Boosterは代わりにドロップ率に影響を与えます。SiphonやHarvesterの報酬が自動的にもう一度2倍になるわけではありません。",
+            "**Resourceful Retriever** — 最大ランク時、リソースの拾得物を2倍にするパッシブな**18%の確率**を付与します。ビーストコンパニオン向けのリソース特化型バリエーションです。",
+            "**Loyal Retriever** — 最大ランク時、リソースまたはクレジットの拾得物を2倍にするパッシブな**13%の確率**を付与します。両方のRetrieverオプションから**Venari**は除外されます。",
+            "**Update 37でSmeeta Charmが変更** — 古いリソース2倍バフが削除されました。拾得物の2倍化には関連するRetriever MODを使用し、古いCharmのリソースバフを待たないでください。"
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "**対象となる報酬で計画を立てる。** Retrieverの確率は拾得物ごとにランダムであり、すべてのミッション報酬で増加が保証されるわけではありません。乗数を適用する前に供給元を確認し、Melicaの記載されたKuvaバンドルをその記載数量で計算してください。"
+        }
+      ]
+    },
+    {
+      "id": "per-hour",
+      "title": "Kuvaの予算をリロールの制限に変える",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "獲得量はミッションの持続時間、完了した目標、ブースター、および分隊のパフォーマンスによって異なります。使う予算を確認するほうが、約束された1時間あたりのファーム効率を確認するよりも簡単です。すでに最大ベースサイクルコストに達しているRivenの場合、**35,000 Kuva**の予算で購入できるのは以下の通りです："
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "予算の例",
+              "v": "35,000 Kuva"
+            },
+            {
+              "k": "ロックされた特性なし",
+              "v": "1サイクルあたり3,500 → 10サイクル"
+            },
+            {
+              "k": "1つの特性がロックされている",
+              "v": "1サイクルあたり7,000 → 5サイクル"
+            },
+            {
+              "k": "初期のサイクル",
+              "v": "低いベースコスト。サイクルする前に表示される価格を確認してください"
             }
           ]
         },
         {
           "type": "info",
-          "text": "古いガイドで警告されていた、ランダムなSmeetaのCharmによるリソースバフ待ちに起因する時間ごとの激しい獲得量のブレはなくなりました。Loyal Retrieverの倍増効果は拾得ごとに一律13%で判定されるため、以前よりも遥かに安定したファームが可能です。現在の獲得効率は、使用するframe、周回ルート、そしてブースターや2×週末イベントが適用されているかどうかに依存します。"
+          "text": "これはファーム効率の予測ではなく算数です：35,000 ÷ 3,500 = 10であり、35,000 ÷ 7,000 = 5です。サイクルする前に終了ポイントを設定し、クラフトに必要なKuvaを確保してください。"
         }
       ]
     },
@@ -253,52 +296,58 @@
       "blocks": [
         {
           "type": "p",
-          "text": "Rivenのステータス再抽選は、mod画面から直接行えます（消費するのは**Kuvaのみ**です）。Endoとcreditsを消費するRivenのランクアップと混同しないようにしてください。Kuvaはステータスを再抽選し、[Endo](/guides/endo)はmodのレベルを上げます。リロールの価格はサイクルごとに上昇し、最終的に上限に達します："
+          "text": "Modセグメントの**Cycle Riven**を使用してKuvaでリロールします。代わりにMODのランクを上げるには[Endo](/guides/endo)とクレジットを使用します。特性がロックされていない場合、サイクリングは**900 Kuva**から始まり、**3,500 Kuva**の上限まで上昇します。1つの特性がロックされている場合、各サイクルのコストは通常の価格の2倍になります。"
         },
         {
           "type": "table",
           "table": {
             "columns": [
-              "リロール回数",
-              "必要なKuvaの目安"
+              "サイクル",
+              "ロックされた特性なし",
+              "1つの特性がロックされている"
             ],
             "rows": [
               [
                 "1回目",
-                "900"
+                "900",
+                "1,800"
               ],
               [
                 "2回目",
-                "1,000"
+                "1,000",
+                "2,000"
               ],
               [
                 "3回目",
-                "1,200"
+                "1,200",
+                "2,400"
               ],
               [
                 "4回目",
-                "1,400"
+                "1,400",
+                "2,800"
               ],
               [
-                "…",
-                "サイクルごとに上昇"
+                "後のサイクル",
+                "ベースコストが上限に向かって増加します",
+                "表示されているベースコストの2倍"
               ],
               [
-                "10回目以降",
-                "3,500（上限）"
+                "ベースコストの上限時",
+                "3,500",
+                "7,000"
               ]
             ],
-            "note": "コスト上昇の目安です。正確な中間値はWiki等で確認することをお勧めします。重要なポイント：900から始まり、3,500で頭打ちになります。"
+            "note": "コストは1サイクルあたりのKuvaです。ロックの適用や解除自体は無料です。特性がロックされた状態でサイクルを実行すると、より高いコストが請求されます。"
           }
         },
         {
-          "type": "quote",
-          "text": "一日中Kuvaをファームした結果、リロール回数が増えただけで何も得られなかった時のあの気持ち。",
-          "cite": "r/Warframe"
+          "type": "info",
+          "text": "**アップデート44でTrait Lockingが実装されました。** 既存の特性を選択して、サイクル中にそれを保持します。ロックできるのは1つだけで、ポジティブおよびネガティブ特性の現在の数は固定されたままになります。そのレイアウトを変更できるようにするにはロックを解除してください。Cyclingメニューを閉じるとロックがクリアされるため、次回もう一度選択してください。"
         },
         {
           "type": "tip",
-          "text": "リロールは**完全なRNG（ランダム）**です。良いRivenが悪いステータスに変化することもあれば、その逆もあります。始める前に目標を設定し、[Riven価値見積もりツール](/riven-value)を確認して、現在のリロール結果が追い求めている完璧なステータスよりもすでに価値があるかどうかを判断できるようにしましょう。もしRivenに救いようがない場合は、さらにKuvaを注ぎ込むよりも、[/endo](/endo)を介して分解してEndoにする方が賢明な場合が多いです。"
+          "text": "サイクル後、以前の結果を維持するか、新しい結果を受け入れるかを選択できます。古い結果を維持しても、Kuvaの返金やサイクル数の取り消しは行われません。ロックは1つの特性を維持するものであり、残りのランダムな特性を選択できるようにするものではありません。[Rivenの価値推計ツール](/riven-value)を市場の参考として使用し、結果がビルドと予算に合致した時点で停止してください。"
         },
         {
           "type": "links",
@@ -325,15 +374,15 @@
       "blocks": [
         {
           "type": "p",
-          "text": "**Kuva Lich**は宿敵となる敵のことであり、リソースではありません。The War Withinクリア後にプレイ可能なGrineerミッションにおいて、**Kuva Larvling**をマーシー・フィニッシャーで倒すことで出現させることができます。Lichは領土を支配し、撃破するとランダムなボーナス（約25–60%）が付与された**Kuva weapon**をドロップします。"
+          "text": "**Kuva Lich**は、**Kuva weapons**に関連付けられたネメシスエネミーです。Rivenのリロールに使用されるKuvaリソースは、ゲームの別の部分です。目的が武器である場合は、セッションをSiphonファームに費やすのではなく、Lichシステムに従ってください。"
         },
         {
           "type": "p",
-          "text": "Lichを倒すためにリソースとしてのKuvaを消費することはありません。正しい順番で3つの**Requiem mods**を装着した**Parazon**を使って撃退します。そして、その正しい順番を突き止めること自体がパズル要素となっています。Requiem modsは**Requiem Relics**から入手できます。この何重にも重なるRNG（relic → Requiem → 正しい配列 → 武器 → 優れたボーナス値）は、まさにRedditコミュニティでよく不満の種にされている要素です。"
+          "text": "Lichの進行には**Requiem mods**と**Parazon**を使用します。Requiem RelicsはそれらのMODを提供するため、Requiem FissuresがLichハントに適合する理由となります。武器のRivenをリロールすることは、通常のKuva備蓄を使用する別の決定です。"
         },
         {
           "type": "warn",
-          "text": "初心者向けの罠：リソースとしてのKuvaをファームしても**絶対に**Kuva weaponは手に入りませんし、Lichesを狩ってもリロール用のKuva貯蔵量は増えません。これらは名前が同じなだけで、完全に独立した周回要素です。"
+          "text": "**最初に目的を選択してください：** Kuva weaponsのハント、Requiem Relicsの開放、およびRiven用Kuvaの収集は、異なる報酬を持つ関連するアクティビティです。リソースの備蓄自体でLichの武器を購入することはできません。"
         }
       ]
     }
@@ -377,7 +426,7 @@
       "label": "Void Relicsガイド",
       "to": "/guides/relics",
       "icon": "diamond-stone",
-      "note": "Kuva Survivalのfissures（亀裂）で一石二鳥を狙う"
+      "note": "RequiemおよびPrime relicの報酬を理解する"
     },
     {
       "label": "Endo ＆ Plat価値",
@@ -389,7 +438,7 @@
       "label": "Steel Pathガイド",
       "to": "/guides/steel-path",
       "icon": "skull",
-      "note": "より過酷なKuva Survivalで、より豊かな実りを"
+      "note": "より高難易度のミッションとその報酬に備えましょう"
     },
     {
       "label": "コミュニティFAQ",
@@ -401,54 +450,82 @@
   "faqs": [
     {
       "q": "WarframeにおいてKuvaは何に使用されますか？",
-      "a": "Kuvaの主な用途はRiven modのステータス再抽選（リロール）です。リロールを行うたびにKuvaを消費して、Rivenのバフとデバフを再抽選します。また、一部の設計図（一部のWarframes、Umbra Forma、一部の武器など）の製作素材としても使用されます。platを使ってWarframesを購入、製作、またはランクアップすることとは一切関係ありません。リロールの仕組みについては、[Rivenガイド](/guides/riven)を参照してください。"
+      "a": "KuvaはRiven modのステータスのサイクリングやファウンドリの設計図のクラフトに使用されます。サイクリングを行っても武器のDispositionは変わりません。オプションの特性ロックを使用すると、サイクリングコストが2倍になる代わりに既存の特性を1つ保持できます。完全なルールについては[Rivenガイド](/guides/riven)を参照してください。"
     },
     {
       "q": "Kuvaを素早くファームする最善の方法は何ですか？",
-      "a": "手軽に素早くKuvaを集めるには、Kuva Siphonsを連続でクリアし、出現しているFloodを消化するのがおすすめです。継続的に大量獲得したい場合は、Kuva FortressでKuva Survivalを周回しましょう。どちらの方法でも、Resource Boosterを併用し、BeastコンパニオンにLoyal Retrieverを装備してKuvaの拾得時に13%の確率で獲得量を2倍にすることで、収穫を大幅に増やすことができます。また、Kuva SurvivalをVoid Fissure（ボイド亀裂）としてプレイすれば、plat用の[relics](/relic-farming)を同時に開封できます。"
+      "a": "自身の解放状況やセッションに合ったソースを選択してください。個別ミッションならSiphonやFlood、繰り返しのHarvester防衛ならTaveuni Survival、または利用可能なベンダー交換を利用します。MelicaのUpdate 44の交換では、Entropic Kuvaと引き換えに10,500の通常のKuvaを週に最大4回まで入手できます。Kuva Survival Requiem FissuresではRequiem Relicsを開封できますが、Lith、Meso、Neo、AxiレリックのようなPrimeパーツは入手できません。"
     },
     {
       "q": "RivenのリロールにはどれくらいのKuvaが必要ですか？",
-      "a": "初回のリロールには約900 Kuvaが必要で、サイクルごとに価格が上昇し、約10回のリロール以降は恒久的に約3,500 Kuvaで頭打ちになります。リロールは完全なRNG（ランダム）であるため、後悔するようなリロールにKuvaを注ぎ込む前に、[Riven価値見積もりツール](/riven-value)を確認しましょう。"
+      "a": "特性をロックしていない場合、最初のサイクリングコストは900 Kuvaで、その後のサイクリングでは3,500 Kuvaの上限まで増加します。1つの特性をロックすると、それらの価格は2倍になり、初期は1,800、上限時は7,000になります。ロックの適用や解除は無料です。サイクリング後も前の結果を維持することは可能ですが、消費されたKuvaは戻りません。"
     },
     {
       "q": "KuvaとKuva Lichの違いは何ですか？",
-      "a": "KuvaはRivensをリロールするためにファームするリソースです。Kuva Lichは、Larvlingをマーシーキルすることで出現させ、Kuva weaponを求めてハントする宿敵となる敵です。これらは「Kuva」という名称を共有していますが、完全に独立したシステムです。Lichを倒すにはRequiem modsとParazonを使用し、リソースとしてのKuvaを消費することはありません。"
+      "a": "KuvaはRivenのサイクリングやクラフトに使用されるリソースです。Kuva LichはKuva武器のためにハントされるネメシスエネミーです。Lichの進行にはRequiem modとParazonを使用します。通常のKuvaを持っているだけではそのプロセスを代替できません。"
     },
     {
       "q": "Kuva Siphonsを解放するにはどうすればよいですか？",
-      "a": "クエストThe War Withinをクリアしてください。クリア後、Origin System中の星系マップノードにKuva Siphon and Kuva Floodのマーカーが時間経過で入れ替わりながら出現するようになり、Kuva FortressとそのSurvivalノードが解放されます。また、Siphonの触手を実際に破壊するには、同クエストで解放されるOperatorのVoidアビリティが必要です。到達方法については、[Questsガイド](/guides/quests)を確認してください。"
+      "a": "「内なる紛争」をクリアし、マスタリーランク5に到達してください。その後、Kuvaサイフォンおよびフラッドミッションがスターチャートのノードでローテーションして出現します。サイフォンの目標地点でクラウドを迎撃するには、オペレーターのVoidアビリティまたはAmpを使用してください。ストーリーの進行については[クエストガイド](/guides/quests)を参照してください。"
     },
     {
       "q": "Smeeta KavatはKuvaを2倍にしますか？",
-      "a": "現在はCharmの効果では倍増しません。Update 37（2024年10月）以降、リソース倍増効果はSmeetaのCharmから除外され、独立したmodであるLoyal Retrieverへと移行しました。このmodは、Kuvaを含む各リソースの拾得時に一律13%の確率で獲得量を2倍にする効果を持ち、あらゆるBeastコンパニオン（Kubrow、Kavatなど）に装備できます。SmeetaはCharmの他のバフ目的としては依然として便利ですが、Kuvaを2倍にするためにSmeetaを特定して用意する必要はなくなりました。"
+      "a": "SmeetaのCharmは従来の古いリソース2倍バフを付与しなくなりました。Update 37により、拾得物の2倍化はVenariを除くビーストコンパニオン用のRetriever modへと移行しました。最大ランクにおいて、Resourceful Retrieverはリソース拾得時の2倍化確率を18%付与し、Loyal Retrieverはリソースまたはクレジットの拾得時に13%付与します。どちらもすべてのKuva報酬が確実に2倍になるわけではありません。"
     },
     {
       "q": "Kuvaを購入または取引することはできますか？",
-      "a": "いいえ。Kuvaは取引不可能なリソースであり、platinumで購入することもできません。自力でファームする必要があります。Kuvaを使ってリロールしたRivensを取引することは可能ですが、Kuva自体を取引することはできません。platをお求めの場合は、代わりに[Platinumガイド](/guides/platinum)を参照してください。"
+      "a": "通常のKuvaをプレイヤー間で直接トレードすることはできませんが、ゲーム内のベンダー交換を通じて入手可能です。たとえば、MelicaはEntropic Kuvaを受け取り、週の購入制限つきで通常のKuvaの束と交換してくれます。KuvaはSiphonからしか手に入らないと思い込まず、ベンダーの通貨とオファーを確認してください。"
     },
     {
       "q": "リソースブースターはKuvaに効果がありますか？",
-      "a": "はい、リソースブースターはすべてのKuva獲得量を2倍にします。さらに、リソース2倍週末イベントの効果も重複します（ブースター適用時は最大約4×）。大規模なリロール作業はブースター適用期間まで温存し、1回ごとの周回効率を最大限に高めましょう。"
+      "a": "リソースブースターは、Siphon、Flood、および完了したHarvesterの報酬など、対象となるKuvaの獲得量に影響します。すべてのソースで2倍になるわけではありません。ベンダーでの購入や固定の報酬テーブルにある束はリソース拾得物ではありません。リソースドロップ率ブースターはドロップ率を変更するものであり、すべてのKuva報酬の量を変更するものではありません。"
     }
   ],
   "sources": [
     {
-      "label": "So let me get this straight… RNG relics → Requiems → Kuva Liches → weapon rolls (r/Warframe)",
-      "href": "https://reddit.com/r/Warframe/comments/dr46xo/so_let_me_get_this_straight_we_need_to_farm_rng/"
+      "label": "Update 44: Iceblade of Narin — Melica, Entropic Kuva and Trait Locking",
+      "href": "https://www.warframe.com/en/patch-notes/pc/44-0-0"
     },
     {
-      "label": "TFW you farm Kuva all day and have nothing to show for it besides a higher roll count (r/Warframe)",
-      "href": "https://reddit.com/r/Warframe/comments/ci5f0x/tfw_you_farm_kuva_all_day_and_have_nothing_to/"
+      "label": "Warframe — Hotfix 44.0.1: Entropic Eximus resistance",
+      "href": "https://www.warframe.com/en/patch-notes/pc/44-0-1"
     },
     {
-      "label": "Kuva farming actually felt good during 2x weekend (r/Warframe)",
-      "href": "https://reddit.com/r/Warframe/comments/b5a4za/kuva_farming_actually_felt_good_during_2x_weekend/"
+      "label": "Warframe — Hotfix 44.0.2: Entropic Eximus fixes",
+      "href": "https://www.warframe.com/en/patch-notes/pc/44-0-2"
     },
     {
-      "label": "Warframe Wiki",
-      "href": "https://wiki.warframe.com/"
+      "label": "Riven Expansion — official Trait Locking workshop",
+      "href": "https://forums.warframe.com/topic/1523869-riven-expansion-trait-locking-riven-splicing/"
+    },
+    {
+      "label": "Update 37 — Retriever mods and Smeeta Charm changes",
+      "href": "https://www.warframe.com/en/patch-notes/pc/37-0-0"
+    },
+    {
+      "label": "Update 35 — Kuva Siphon access requirements",
+      "href": "https://www.warframe.com/en/patch-notes/pc/35-0-0"
+    },
+    {
+      "label": "Update 22.17.0 — Kuva Survival mechanics and booster eligibility",
+      "href": "https://www.warframe.com/en/patch-notes/pc/22-17-0"
+    },
+    {
+      "label": "Relic Hunting 101 — official Requiem Relic rewards guide",
+      "href": "https://www.warframe.com/en/news/relic-hunting-101"
+    },
+    {
+      "label": "Update 19.0.6 — cycle costs and choosing the previous result",
+      "href": "https://www.warframe.com/en/patch-notes/pc/19-0-6"
+    },
+    {
+      "label": "Update 19.4 — base Kuva cycle cost capped at 3,500",
+      "href": "https://www.warframe.com/en/patch-notes/pc/19-4-1"
+    },
+    {
+      "label": "Warframe Wiki — Kuva Siphon base reward ranges",
+      "href": "https://warframe.fandom.com/wiki/Kuva_Siphon"
     }
   ],
-  "updated": "2026-07-18"
+  "updated": "2026-09-30"
 }

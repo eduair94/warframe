@@ -1,10 +1,10 @@
 {
   "slug": "riven",
   "eyebrow": "Wissenszentrum · Riven Mods",
-  "title": "Riven Mods erklärt",
-  "lede": "Rivens sind die Spielautomaten-Mods von Warframe: waffengebunden, zufällig gerollt und in der Lage, eine vergessene Waffe in ein Monster zu verwandeln. Hier ist, wie sie funktionieren, was sie wertvoll macht und wann sie dein Kuva tatsächlich wert sind.",
+  "title": "Riven-Mods: Attributssperre, Kuva-Kosten & Handel",
+  "lede": "Erfahre, wie Riven-Mods funktionieren, bewahre eine bestehende Eigenschaft mit der Attributssperre, vergleiche die Kuva-Kosten und bewerte einen Roll vor dem Handel. Beinhaltet die Regeln aus Update 44 und den angekündigten Status von Riven-Spleißen.",
   "category": "systems",
-  "readMins": 9,
+  "readMins": 10,
   "stats": [
     {
       "num": "2–4",
@@ -22,8 +22,8 @@
       "tone": "gold"
     },
     {
-      "num": "~3,500",
-      "label": "Kuva-Limit pro Re-Roll",
+      "num": "2×",
+      "label": "Kuva-Kosten beim Cycling mit einem gesperrten Attribut",
       "tone": "gold"
     }
   ],
@@ -34,11 +34,11 @@
       "blocks": [
         {
           "type": "p",
-          "text": "Eine **Riven Mod** ist eine spezielle Mod mit **zufälligen Stats, die an eine einzige Waffe gebunden ist** (und deren Varianten). Eine Braton-Riven passt auf die Braton — und ihre Prime-, Vandal- und MK1-Versionen — aber sonst nichts; eine Kronen-Riven passt nur auf die Kronen. Wenn sich eine Riven enthüllt, rollt sie **2–4 Stats** — eine Mischung aus mächtigen Buffs und manchmal einem einzelnen Nachteil (einem *Fluch*). Keine zwei Rivens sind identisch, weshalb sie sowohl die beste Mod auf deiner Waffe als auch eine eigene, chaotische Handelswirtschaft sein können."
+          "text": "Ein **Riven-Mod** hat zufällige Werte und passt zu einer bestimmten Waffenfamilie. Beispielsweise funktioniert ein Braton-Riven auf der Braton und deren Varianten, aber nicht auf einem nicht zusammenhängenden Gewehr. Ein enthülltes Riven hat **2–3 positive Attribute**, mit oder ohne ein negatives Attribut. Vergleiche die tatsächlichen Werte auf deiner gewünschten Waffe, bevor du einen regulären Mod ersetzt."
         },
         {
           "type": "p",
-          "text": "Rivens gibt es für die Hauptwaffenfamilien — **Gewehr, Schrotflinte, Pistole, Nahkampf und Archgun** (plus Kitgun- und Zaw-Typen). Der Vorteil ist riesig: Eine gute Riven kann mehr rohe Kraft verleihen als jede einzelne normale Mod. Der Haken ist, dass alles an ihr — die Stats, ihre Werte, sogar für *welche* Waffe sie ist — reiner Zufall (RNG) ist, bis du sie enthüllst, und sie ist eine der kapazitätsintensivsten Mods im Spiel."
+          "text": "Ein Riven kann mehrere nützliche Boni in einem Mod-Steckplatz kombinieren, aber ein zufälliger Roll ist nicht automatisch eine Verbesserung. Die Waffe, die Attributskombination, das negative Attribut, der Rang und die Riven-Disposition spielen dabei eine Rolle. Die folgenden Abschnitte behandeln das gewöhnliche Cycling und die optionale Attributssperre, die in Update 44 eingeführt wurde."
         },
         {
           "type": "kv",
@@ -64,8 +64,8 @@
               "v": "Eine zufällige Mastery Rank-Anforderung (8–16) wird beim Enthüllen festgelegt"
             },
             {
-              "k": "Voraussetzung",
-              "v": "Schließe die Quest „The War Within“ ab — sie gewährt dir deine erste Riven und schaltet die Hauptquellen frei"
+              "k": "Quests-Belohnung",
+              "v": "Das Abschließen von The War Within belohnt dich mit einem Riven-Mod"
             }
           ]
         }
@@ -73,11 +73,11 @@
     },
     {
       "id": "disposition",
-      "title": "Disposition: Warum dieselbe Idee auf einer Waffe göttlich und auf einer anderen Schrott ist",
+      "title": "Riven-Disposition und Waffenvarianten",
       "blocks": [
         {
           "type": "p",
-          "text": "**Riven-Disposition** ist ein Multiplikator pro Waffe, der als **1 bis 5 Punkte** angezeigt wird. Er skaliert, wie stark die Stats einer Riven auf dieser Waffe sind. Entscheidend ist, dass die Disposition *umgekehrt proportional zur Beliebtheit* ist: Schwache, selten genutzte Waffen erhalten eine **hohe** Disposition (größere Riven-Boni), während beliebte Meta-Waffen eine **niedrige** Disposition (kleinere Boni) erhalten — und selbst verschiedene Varianten derselben Waffe können leicht unterschiedliche Dispositionen aufweisen. Es ist das Balancing-Werkzeug von DE, damit Rivens die besten Waffen nicht einfach permanent noch besser machen."
+          "text": "Die **Riven-Disposition** ist ein waffenspezifischer Multiplikator, der durch **1 bis 5 Punkte** dargestellt wird. Eine höhere Disposition ergibt größere Boni für einen äquivalenten Riven-Roll. Verschiedene Varianten derselben Waffe können unterschiedliche Multiplikatoren verwenden. Probiere das Riven daher an genau der Variante aus, die du ausrüsten möchtest. Das Cycling eines Rivens ändert die Disposition der Waffe nicht."
         },
         {
           "type": "table",
@@ -85,31 +85,31 @@
             "columns": [
               "Punkte",
               "Bedeutet in etwa",
-              "Typische Waffe"
+              "Was zu überprüfen ist"
             ],
             "rows": [
               [
                 "5 (höchste)",
-                "Stärkste Rolls (ca. ×1,5 an der Spitze)",
-                "Selten genutzte / unterdurchschnittliche Waffen"
+                "Größere Boni für einen äquivalenten Roll",
+                "Die genaue Waffenvariante und Attributskombination"
               ],
               [
                 "3 (mittlere)",
-                "Solide, mittlere Boni",
-                "Gute, aber Nicht-Meta-Optionen"
+                "Mittlerer Dispositionsbereich",
+                "Ob das Riven deinen bestehenden Build verbessert"
               ],
               [
                 "1 (niedrigste)",
-                "Schwächste Rolls (ca. ×0,5)",
-                "Sehr beliebte / Meta-Waffen"
+                "Kleinere Boni für einen äquivalenten Roll",
+                "Ob mehrere nützliche Attribute den Mod-Steckplatz rechtfertigen"
               ]
             ],
-            "note": "Die genauen Multiplikatoren sind Richtwerte und DE passt sie regelmäßig an, je nachdem, wie oft eine Waffe verwendet wird — schaue im Live-Wiki nach den aktuellen Punkten einer Waffe."
+            "note": "Punkte fassen einen Multiplikator zusammen; sie legen keinen Handelsreis fest. Konsoluztiere die aktuelle Vorschau im Spiel und die neueste offizielle Dispositionsliste."
           }
         },
         {
           "type": "info",
-          "text": "Da sich die Dispositionen verschieben, kann eine gekaufte Riven über Nacht an Wert gewinnen oder verlieren, wenn DE eine Waffe anpasst. Ein *Nerf* der Disposition einer Waffe macht ihre Rivens schwächer (und günstiger); ein *Buff* macht sie stärker (und teurer). Dies ist der Hauptgrund für die starken Preisschwankungen bei Rivens."
+          "text": "Die [Dispositionsankündigung vom September 2026](https://forums.warframe.com/topic/1523355-september-2026-riven-dispositions/) dokumentiert die neuesten Änderungen. Nachfrage, neue Waffenoptionen und individuelle Rolls beeinflussen ebenfalls Angebote. Eine Dispositionsänderung allein garantiert nicht, dass sich dein Riven für mehr oder weniger Platinum verkauft."
         }
       ]
     },
@@ -119,7 +119,7 @@
       "blocks": [
         {
           "type": "p",
-          "text": "Jede enthüllte Riven hat ein zufälliges Layout aus positiven Stats und optional einem negativen. Ein **Fluch** ist nicht automatisch schlecht — eine Riven *mit* einem Fluch erhält einen Boost auf ihre positiven Werte. Der Trick besteht darin, einen Fluch zu erhalten, der dir egal ist (wie `-zoom`, `-recoil` oder `-impact` bei einem Build, der diese ignoriert), sodass du die verstärkten Buffs kostenlos behältst."
+          "text": "Ein enthülltes Riven hat positive Attribute und kann auch ein negatives Attribut haben, oft als **Fluch** bezeichnet. Ein negatives Attribut kann die positiven Werte erhöhen, aber es kann auch den Build schädigen. Reduzierter Zoom oder reduzierter Einschlag können für einige Waffen und Verwendungszwecke akzeptabel sein; untersuche die Konsequenz, anstatt anzunehmen, dass jeder negative Wert harmlos ist."
         },
         {
           "type": "table",
@@ -133,12 +133,12 @@
               [
                 "2 Buffs",
                 "Zwei positive Stats, kein Fluch",
-                "Sicher, aber bescheiden — günstig und völlig ausreichend für Gelegenheitsspieler"
+                "Beurteile die beiden tatsächlichen Boni, nicht nur die Zeilenanzahl"
               ],
               [
                 "3 Buffs",
                 "Drei positive Stats, kein Fluch",
-                "Ein starker Allrounder ohne Nachteile"
+                "Nützlich, wenn alle drei Boni zum Build passen"
               ],
               [
                 "2 Buffs + 1 Fluch",
@@ -147,8 +147,8 @@
               ],
               [
                 "3 Buffs + 1 Fluch",
-                "Drei positive Stats plus ein Fluch; höchste Stat-Werte",
-                "Die klassische Form eines „God Rolls“"
+                "Drei Positive plus ein Negatives",
+                "Nicht automatisch besser als zwei Positive und ein harmloses Negatives"
               ]
             ]
           }
@@ -160,6 +160,10 @@
         {
           "type": "tip",
           "text": "Der erfundene Name der Riven (dieses Kauderwelsch wie `critacan`/`visitox`) ist rein kosmetisch — er wird aus den Stats generiert und beeinflusst die Stärke nicht. Beurteile eine Riven nach ihren tatsächlichen Stat-Zeilen, ihrer Disposition und der MR-Anforderung, niemals nach ihrem Namen."
+        },
+        {
+          "type": "info",
+          "text": "**Schrotgewehr-Rivens können jetzt Zoom erhalten**, gemäß [Hotfix 44.0.2](https://www.warframe.com/en/patch-notes/pc/44-0-2). Derselbe Hotfix hat ungültige doppelte Attribute und zusätzliche negative Attribute behoben, die durch einen Startfehler verursacht wurden; sein Skript zur Rückerstattung des Kuva für betroffene Rolls ist als abgeschlossen markiert. Überprüfe den aktuellen Mod und die Notizen, wenn ein älterer Screenshot oder eine ältere Attributsliste abweicht."
         }
       ]
     },
@@ -169,11 +173,11 @@
       "blocks": [
         {
           "type": "p",
-          "text": "Rivens erhält man normalerweise **verhüllt** (veiled) — du kannst die Waffe oder die Stats noch nicht sehen, sondern nur die Kategorie (Gewehr, Schrotflinte, Pistole, Nahkampf usw.). Um sie zu enthüllen, musst du eine **zufällige Herausforderung** abschließen, während du eine Waffe des passenden Typs verwendest, wie z. B. das Töten von Gegnern mit Kopfschüssen in der Luft, das Abschließen einer Mission, ohne entdeckt zu werden, oder das Töten einer Reihe von Gegnern im Rutschen. Schließe die Herausforderung ab und die Riven rollt ihre Waffe und ihre Stats aus."
+          "text": "Ein verhülltes Riven verbirgt seine Waffe und seine Werte. Enthülle seine Herausforderung, **rüste dann das herausgeforderte Riven auf einer kompatiblen Waffe aus** und befolge die genauen Bedingungen. Eine Waffe der passenden Kategorie mitzubringen, ohne dass das Riven ausgerüstet ist, reicht nicht aus. Das Abschließen der Herausforderung enthüllt seine Waffe und Attribute."
         },
         {
           "type": "p",
-          "text": "Die Hauptquellen für verhüllte Rivens sind **Sorties** — die tägliche Herausforderung aus drei Missionen, die in etwa einem Viertel der Fälle eine Riven einbringt — und der **Steel Path Circuit** in Duviri, dessen wöchentlicher Belohnungspfad eine verhüllte Riven vergeben kann. Du kannst auch **Riven Slivers** farmen (Eximus-Gegner lassen sie fallen, besonders auf dem Steel Path) und **zehn davon zu Palladino** in Iron Wake auf der Erde bringen, die sie im Rahmen eines wöchentlichen Limits in eine verhüllte Riven umwandelt. Das Abschließen der Quest **The War Within** gewährt dir ebenfalls deine allererste Riven. Beachte, dass Kuva Siphon- und Kuva Flood-Missionen dir das *Kuva* geben, das du für Re-Rolls ausgibst — sie lassen die Rivens nicht selbst fallen."
+          "text": "Zu den Quellen gehören **Sorties**, der **Steel Path Circuit**-Belohnungspfad und **Palladino** in Iron Wake, die Riven-Splitter gegen wöchentliche Riven-Angebote eintauscht. Überprüfe den aktuellen Belohnungspfad oder das Händlerangebot vor dem Farmen. **The War Within** belohnt dich ebenfalls mit einem Riven. Kuva-Siphon- und Flut-Missionen stellen die Ressource bereit, die zum Cycling verwendet wird; sie sind keine direkten Riven-Mod-Belohnungen."
         },
         {
           "type": "steps",
@@ -187,8 +191,8 @@
               "p": "Öffne die Riven in deinem Mods-Menü, um ihre Enthüllungs-Herausforderung und die erforderliche Waffenkategorie zu sehen."
             },
             {
-              "h": "Rüste den richtigen Waffentyp aus",
-              "p": "Rüste eine Waffe dieser Kategorie aus (Gewehr, Pistole, Nahkampf usw.) — die Herausforderung zählt nur, wenn der passende Typ ausgerüstet ist."
+              "h": "Rüste das herausgeforderte Riven aus",
+              "p": "Installiere das Riven auf einer kompatiblen Waffe, bringe diese Waffe in die Mission und erfülle die genauen Bedingungen der Herausforderung."
             },
             {
               "h": "Schließe die Herausforderung ab",
@@ -204,36 +208,76 @@
     },
     {
       "id": "rolling-with-kuva",
-      "title": "Rollen mit Kuva",
+      "title": "Cycling mit Kuva: Gewöhnliche Rolls und Attributssperre",
       "blocks": [
         {
           "type": "p",
-          "text": "Gefällt dir dein Roll nicht? Du kannst eine Riven **re-rollen** (zyklieren), um sie komplett neu zu würfeln — die Stats, wie viele es sind und ihre Werte ändern sich alle. Jeder Re-Roll kostet **Kuva**, und der Preis steigt mit jedem Roll auf dieser Riven: Er beginnt bei etwa 900 und klettert auf eine **Obergrenze von etwa 3.500 Kuva pro Roll**, wo er bleibt. Kuva stammt aus Kuva Siphon- und Kuva Flood-Missionen sowie dem endlosen Kuva Survival auf der Kuva Fortress."
+          "text": "Beim **Cycling** wird Kuva ausgegeben, um einen weiteren Roll für dieselbe Waffe zu generieren. Ohne ein gesperrtes Attribut können sich die Attributstypen, Werte und das Layout ändern. Die Standardkosten steigen von **900 Kuva** auf **3500 Kuva**, wenn die Anzahl der Zyklen steigt. Mit einem gesperrten Attribut werden die angezeigten Cycling-Kosten verdoppelt: **1800** für den ersten Zyklus oder **7000** beim Standardlimit. Überprüfe die Kosten vor der Bestätigung."
         },
         {
           "type": "kv",
           "kv": [
             {
-              "k": "Kosten",
-              "v": "Kuva, pro Re-Roll"
+              "k": "Gewöhnliches Cycling",
+              "v": "Kein gesperrtes Attribut: Anfangs 900 Kuva, bis zu 3500 pro Zyklus"
             },
             {
-              "k": "Anstieg",
-              "v": "~900 Kuva, ansteigend bis zu einer Obergrenze von ~3.500"
+              "k": "Cycling mit einer Sperre",
+              "v": "Das Doppelte der gewöhnlichen Kosten: Anfangs 1800, bis zu 7000 pro Zyklus"
             },
             {
-              "k": "Effekt",
-              "v": "Würfelt Stat-Anzahl, Stats und Werte neu"
+              "k": "Was bleibt",
+              "v": "Die Waffe; bei der Attributssperre bleiben auch das ausgewählte Attribut und das positiv/negative Layout erhalten"
             },
             {
-              "k": "Chancen",
-              "v": "Reines RNG — kein Pity-System, keine Möglichkeit, gezielt auf einen bestimmten Stat zu gehen"
+              "k": "Was zufällig ist",
+              "v": "Die anderen Attribute; eine Sperre wählt kein fehlendes Attribut für dich aus"
             }
           ]
         },
         {
           "type": "warn",
-          "text": "Re-rolling ist ein bodenloses Kuva-Grab. Da es reines RNG ist, kann die Jagd nach einem perfekten Roll *Millionen* an Kuva verschlingen — ein bekannter Spieler wurde dabei gefilmt, wie er eine einzige Riven tausende Male neu gerollt hat. Bevor du grindest, entscheide, was „gut genug“ ist, und höre dort auf. Oft ist es günstiger, einen soliden Roll von einem anderen Spieler zu kaufen, als selbst um einen God Roll zu spielen."
+          "text": "Setze dir ein Kuva-Budget und ein brauchbares Ziel, bevor du das Cycling durchführst. Eine Sperre schützt ein bestehendes Attribut, garantiert aber keine nützliche Kombination an anderer Stelle. Vergleiche den neuen Roll mit dem alten und überprüfe die Auswahl vor der Annahme. Der [Kuva-Farming-Leitfaden](/guides/kuva) hilft dir dabei, Quellen zu vergleichen und zu planen, wie viele Zyklen dein Budget kauft."
+        }
+      ]
+    },
+    {
+      "id": "trait-locking",
+      "title": "So sperrst du ein Riven-Attribut in Update 44",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "[Update 44](https://www.warframe.com/en/patch-notes/pc/44-0-0) hat **Trait Locking** (Attributssperre) eingeführt. Du kannst ein bestehendes Attribut behalten, während du die anderen neu ausrollst. Das Hinzufügen oder Entfernen der Sperre ist kostenlos und erfordert kein spezielles Item; das zusätzliche Kuva wird berechnet, wenn du mit aktiver Sperre ausrollst."
+        },
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "h": "Öffne den Ausroll-Bildschirm",
+              "p": "Wähle den Riven im Mod-Segment aus und entscheide dich für Riven ausrollen."
+            },
+            {
+              "h": "Wähle das bestehende Attribut",
+              "p": "Wähle Attribut sperren und danach das Attribut, das du behalten möchtest. Achte auf das Schlosssymbol und die verdoppelten Kuva-Kosten."
+            },
+            {
+              "h": "Überprüfe das Layout vor dem Ausgeben",
+              "p": "Die Anzahl der positiven und negativen Attribute bleibt während der Sperre fixiert. Ein Roll mit 3 positiven und 1 negativen Attribut bleibt in diesem Layout; entsperre es vor dem Ausrollen, wenn du ein anderes Layout möchtest."
+            },
+            {
+              "h": "Wende die Sperre in der nächsten Sitzung erneut an",
+              "p": "Das Schließen des Ausroll-Menüs entfernt die Sperre. Überprüfe und aktiviere sie jedes Mal neu, wenn du das Menü öffnest."
+            }
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "**Budget-Beispiel:** 35000 Kuva kaufen 10 gewöhnliche Rolls zu je 3500 oder 5 Rolls mit einem gesperrten Attribut zu je 7000. Das ist Kostenarithmetik, keine Vorhersage über die Anzahl nützlicher Rolls. Erwäge eine Sperre, wenn du bereits ein Attribut hast, das es wert ist, bewahrt zu werden."
+        },
+        {
+          "type": "info",
+          "title": "Riven-Spleißen ist ein separates, kommendes Feature",
+          "text": "Wie am 30. September 2026 überprüft, ist das Riven-Spleißen noch nicht verfügbar. Digital Extremes hat den 7. Oktober 2026 für Glacial Defiance angekündigt, das Update, das das Spleißen enthalten soll. Trait Locking ist bereits verfügbar. Überprüfe die Release-Notes erneut, bevor du um Riven-Splicer oder kombinierte Attribute herum planst."
         }
       ]
     },
@@ -247,7 +291,7 @@
         },
         {
           "type": "tip",
-          "text": "Hast du eine Riven, die du nie benutzen wirst? **Löse sie für Endo auf.** Die Menge skaliert damit, wie oft sie neu gerollt wurde (plus Rang und MR), sodass stark zyklierte Schrott-Rivens einen ordentlichen Batzen Endo einbringen können. Da der Markt mit mittelmäßigen Rolls überschwemmt ist, sind die meisten schlechten Rivens für dich als Endo mehr wert als ein Verkauf für 1–2 Plat — prüfe die Zahlen im [Endo- / Plat-Wert-Rechner](/endo), bevor du dich entscheidest, eine aufzulösen, zu behalten oder anzubieten."
+          "text": "Bevor du einen unerwünschten Riven auflöst, inspiziere die Endo-Rückgabe im Spiel und vergleiche aktuelle Angebote für diese Waffe und diesen Roll. Das Auflösen verbraucht den Mod. Das [Endo / Plat Wert-Tool](/endo) kann helfen, Endo-Quellen zu vergleichen, garantiert jedoch keinen Käufer oder Verkaufspreis für deinen individuellen Riven."
         }
       ]
     },
@@ -257,31 +301,31 @@
       "blocks": [
         {
           "type": "p",
-          "text": "Rivens werden von Spieler zu Spieler gehandelt, und da jede einzigartig ist, ist die Preisgestaltung eher Kunst als Wissenschaft. Ein großartiger Roll auf einer beliebten Waffe kann Hunderte von Platinum wert sein; dieselben Stats auf einer Meta-Waffe mit niedriger Disposition sind unter Umständen fast wertlos. Du kannst auch **verhüllte** Rivens handeln — günstigere, blinde Wetten, bei denen der Käufer die Enthüllung selbst durchführt. Beachte, dass für Rivens eine **höhere Credit-Handelssteuer** anfällt als für normale Mods, und dass du eine **begrenzte Anzahl an Riven-Slots** besitzt, die du mit Platinum erweitern kannst."
+          "text": "Riven-Angebote variieren je nach Waffen-Nachfrage, nützlichen Attributen, negativen Effekten und den tatsächlichen Stats. Eine niedrige Disposition allein macht einen Roll nicht wertlos, und eine hohe Disposition garantiert keine Nachfrage. Vergleiche mehrere Angebote für dieselbe Waffe und einen ähnlichen Roll; ein geforderter Preis ist kein Beweis für einen abgeschlossenen Verkauf. Prüfe die verfügbare Riven-Kapazität und die Handelskonsistenz vor dem Kauf."
         },
         {
           "type": "table",
           "table": {
             "columns": [
               "Faktor",
-              "Treibt den Preis in die Höhe, wenn…"
+              "Was zu vergleichen ist"
             ],
             "rows": [
               [
                 "Waffe",
-                "Es eine beliebte / Meta-Waffe ist, für die viele Spieler Builds erstellen"
+                "Die Nachfrage nach dieser Waffe und der Variante, die Käufer nutzen möchten"
               ],
               [
                 "Disposition",
-                "Die Waffe viele Punkte hat (4–5), sodass die Stats stärker ins Gewicht fallen"
+                "Tatsächliche Werte auf dieser Variante, nicht nur Punkte"
               ],
               [
                 "Stat-Kombination",
-                "Die Buffs zum idealen Build passen und jeder Fluch harmlos ist"
+                "Nützliche positive Attribute und der Effekt des negativen auf den angestrebten Build"
               ],
               [
                 "MR & Rolls",
-                "Niedrige MR-Anforderung, plus ein sauberer Roll, bei dem der Käufer kein Bedürfnis hat, ihn neu zu rollen"
+                "Ausrüstungsanforderung und die Kuva-Kosten für weiteres Ausrollen"
               ]
             ]
           }
@@ -331,7 +375,7 @@
         },
         {
           "type": "p",
-          "text": "Wenn du neuer bist, priorisiere zuerst deine **Basis-Mods, Schadensarten und Überlebensfähigkeit** — diese sind weitaus wichtiger als jede Riven. Wenn du dann eine möchtest, ist der Kauf eines anständigen Rolls für deine Hauptwaffe fast immer klüger, als dein Kuva für einen God Roll aufs Spiel zu setzen. Und wenn dir eine Riven in den Schoß fällt, die du nie benutzen wirst, betrachte sie als [Endo](/guides/endo) oder ein wenig Handels-Platinum und ziehe weiter."
+          "text": "Wenn du neuer bist, priorisiere **Kern-Mods, Schadensarten und Überlebensfähigkeit**. Sobald du einen funktionierenden Build hast, vergleiche einen erschwinglichen, fertigen Roll mit der Zeit und dem Kuva, die du für das eigene Ausrollen aufwenden würdest. Entscheide, ob du einen unerwünschten Riven behalten, handeln oder auflösen möchtest, nachdem du seinen Markt- und [Endo](/guides/endo)-Wert überprüft hast."
         }
       ]
     }
@@ -361,38 +405,74 @@
   "faqs": [
     {
       "q": "Wie bekomme ich Riven-Mods in Warframe?",
-      "a": "Die Hauptquellen sind Sorties (die tägliche Herausforderung aus drei Missionen, die in etwa einem Viertel der Fälle eine Riven einbringt), der Steel Path Circuit in Duviri und Riven Slivers — farme zehn davon (Eximus-Gegner lassen sie fallen, besonders auf dem Steel Path) und tausche sie bei Palladino in Iron Wake gegen eine verhüllte Riven ein. Du musst zuerst die Quest „The War Within“ abschließen, was dir auch deine allererste Riven einbringt. Kuva Siphon- und Kuva Flood-Missionen geben dir das Kuva, das zum Re-Rollen von Rivens verwendet wird, nicht die Rivens selbst."
+      "a": "Überprüfe Sortie-Belohnungen, den Belohnungspfad des Steel Path Circuit und Palladinos wöchentliche Riven-Splitter-Tauschgeschäfte in Iron Wake. Das Abschließen von The War Within belohnt dich ebenfalls mit einem Riven-Mod. Jede Quelle hat ihre eigenen Zugangs- und Belohnungsbedingungen; Siphons und Floods liefern Kuva zum Ausrollen statt Riven-Mods selbst."
     },
     {
       "q": "Wie enthülle ich eine verhüllte Riven?",
-      "a": "Öffne die verhüllte Riven in deinem Mods-Menü, um ihre Herausforderung und die erforderliche Waffenkategorie zu sehen, und schließe diese Herausforderung dann mit einer ausgerüsteten passenden Waffe ab (ein Gewehr für eine Gewehr-Riven usw.). Sobald du sie abgeschlossen hast, enthüllt die Riven ihre Waffe und ihre zufälligen Stats. Schlage den genauen Wortlaut der Herausforderung zuerst im Wiki nach — einige haben knifflige Bedingungen wie keine Schilde oder keine Alarme."
+      "a": "Enthülle die Herausforderung, rüste den herausgeforderten Riven auf einer kompatiblen Waffe aus und erfülle die genannten Bedingungen. Eine passende Waffe ohne installierten Riven reicht nicht aus. Lies alle Missions-, Ausrüstungs- oder Fehlschlagseinschränkungen vor dem Betreten der Mission."
     },
     {
       "q": "Wie rolle ich eine Riven neu und was kostet das?",
-      "a": "Du rollst eine Riven im Mods-Menü mit Kuva neu (zyklieren), was ihre Stats komplett neu würfelt. Die Kosten steigen pro Roll auf dieser Mod an, beginnend bei etwa 900 Kuva und gedeckelt bei fast 3.500. Es ist reines RNG ohne Pity-System, also setze dir ein „gut genug“-Ziel, bevor du anfängst, Kuva zu verbrennen. Farme das Kuva selbst in Kuva Siphon- und Kuva Flood-Missionen sowie auf der Kuva Fortress."
+      "a": "Wähle Riven ausrollen im Mod-Segment. Ohne Sperre beginnen die Kosten bei 900 Kuva und erreichen bei steigender Anzahl der Rolls ein Cap von 3500. Trait Locking verdoppelt die Kosten dieses Rolls auf bis zu 7000 beim Standard-Cap, während ein bestehendes Attribut sowie das positiv/negativ-Layout erhalten bleiben. Lies den [Kuva-Guide](/guides/kuva), um ein Budget zu planen."
     },
     {
       "q": "Was ist die Riven-Disposition?",
-      "a": "Die Disposition ist ein Multiplikator pro Waffe, der als 1 bis 5 Punkte angezeigt wird und skaliert, wie stark die Stats einer Riven auf dieser Waffe sind. Sie ist umgekehrt proportional zur Beliebtheit: Schwache oder selten genutzte Waffen erhalten eine hohe Disposition (stärkere Rivens), während Meta-Waffen eine niedrige Disposition erhalten. DE passt die Dispositionen regelmäßig an, weshalb die Riven-Preise steigen und fallen — schaue im Live-Wiki nach den aktuellen Punkten einer Waffe."
+      "a": "Disposition ist ein waffenspezifischer Multiplikator, der durch 1 bis 5 Punkte dargestellt wird. Er beeinflusst die Stärke der Riven-Stats und kann sich zwischen Waffenvarianten unterscheiden. Das Ausrollen ändert diesen Multiplikator nicht. Zeige die genaue Variante in einer Vorschau an und konsultiere die neueste offizielle Dispositionsankündigung."
     },
     {
       "q": "Was ist eine „God Roll“-Riven?",
-      "a": "Ein God Roll ist eine Riven, deren zufällige Stats perfekt zu deinem Build passen — normalerweise drei starke Buffs (wie Kritische Chance, Kritischer Schaden und Mehrfachschuss oder Schaden) plus ein Fluch, der dir egal ist, wie -zoom oder -recoil. Es gibt keinen universell besten Roll; die ideale Riven füllt die Lücken, die deine normalen Mods nicht abdecken können. Nutze unseren /riven-value-Schätzer, um zu ermitteln, was ein bestimmter Roll wert ist."
+      "a": "Spieler nutzen diesen Begriff für einen Roll, der besonders gut zu einer bestimmten Waffe und einem bestimmten Build passt. Es ist kein festes Rezept oder ein garantierter Handelswert. Vergleiche die nützlichen positiven Attribute, tatsächlichen Werte und den Effekt des negativen Attributs; mehr Statuszeilen allein machen keinen besseren Roll. Der [Riven-Wertestimator](/riven-value) ist ein Startpunkt zum Vergleichen von Angeboten."
     },
     {
       "q": "Lohnen sich Rivens für neue Spieler?",
-      "a": "Nicht wirklich — Rivens sind Endgame-Min-Maxing, und eine gut gemoddete Waffe räumt die Sternenkarte und den Großteil des Steel Paths auch ohne eine Riven auf. Konzentriere dich zuerst auf deine Basis-Mods, Schadensarten und Überlebensfähigkeit. Wenn du dann eine Riven möchtest, ist der Kauf eines anständigen Rolls für deine Hauptwaffe meist klüger, als Kuva für einen God Roll aufs Spiel zu setzen."
+      "a": "Erstelle zuerst ein funktionierendes Loadout mit Kern-Mods. Ein Riven ist eine optionale Möglichkeit, eine Waffe zu verbessern, die du bereits nutzt, und ein zufälliger Roll kann schlechter sein als der Mod, den er ersetzt. Setze dir ein Budget, bevor du einen kaufst oder ausrollst."
     },
     {
       "q": "Kann ich eine Riven für Endo auflösen?",
-      "a": "Ja. Ungewollte Rivens können für Endo aufgelöst werden, und die Menge skaliert damit, wie oft die Riven neu gerollt wurde (plus Rang und Mastery-Anforderung), sodass stark zyklierte Schrott-Rivens einen ordentlichen Batzen Endo einbringen. Da der Markt mit mittelmäßigen Rolls überschwemmt ist, ist eine schlechte Riven oft mehr wert als Endo denn als ein Verkauf für 1–2 Platinum — jage sie durch das /endo-Tool, bevor du dich entscheidest."
+      "a": "Ja. Überprüfe die Endo-Rückgabe im Spiel und aktuelle vergleichbare Riven-Angebote vor der Bestätigung, da das Auflösen den Mod verbraucht. Das [Endo-Wert-Tool](/endo) hilft beim Vergleichen von Quellen; es stellt keinen garantierten Verkaufspreis für deinen Roll auf."
     },
     {
       "q": "Warum schwanken die Riven-Preise so stark?",
-      "a": "Da jede Riven einzigartig ist, hängt ihr Wert von der Beliebtheit der Waffe, ihrer Disposition, der genauen Stat-Kombination und ihrer MR-Anforderung ab. Wenn DE die Disposition einer Waffe anpasst, wird jede Riven für diese Waffe sofort stärker oder schwächer, was die Preise mit sich zieht. Schätze mit /riven-value immer einen fairen Wert und überprüfe den aktuellen Markt, bevor du kaufst oder anbietest."
+      "a": "Die Preise spiegeln die Nachfrage nach Waffen, die genaue Attributkombination, Statuswerte und aktuelle Angebote wider. Neue Systeme und Waffenänderungen können beeinflussen, was Spieler wollen. Vergleiche ähnliche Rolls und betrachte den [Riven-Wertestimator](/riven-value) als Richtlinie, nicht als Beweis für einen abgeschlossenen Verkauf oder einen garantierten zukünftigen Preis."
+    },
+    {
+      "q": "Kann ich ein Riven-Attribut beim Neu-Ausrollen sperren?",
+      "a": "Ja. Mit Trait Locking kannst du ein bestehendes Attribut bewahren, aber das Ausrollen damit kostet doppelt so viel Kuva. Das positiv/negativ-Layout bleibt ebenfalls fixiert. Das Hinzufügen oder Entfernen der Sperre ist kostenlos, und das Schließen des Ausroll-Menüs entfernt sie."
+    },
+    {
+      "q": "Ist Riven-Spleißen bereits verfügbar?",
+      "a": "Wie am 30. September 2026 überprüft, steht das Spleißen mit Glacial Defiance, angekündigt für den 7. Oktober 2026, noch aus. Trait Locking ist bereits live. Überprüfe die Release-Notes bei Start des Updates, bevor du rund um Riven-Splicer oder kombinierte Attribute planst."
     }
   ],
   "sources": [
+    {
+      "label": "Warframe — Update 44: Iceblade of Narin (September 23, 2026)",
+      "href": "https://www.warframe.com/en/patch-notes/pc/44-0-0"
+    },
+    {
+      "label": "Warframe — Hotfix 44.0.2: Riven trait and cycling fixes",
+      "href": "https://www.warframe.com/en/patch-notes/pc/44-0-2"
+    },
+    {
+      "label": "Warframe — Riven Expansion developer workshop",
+      "href": "https://forums.warframe.com/topic/1523869-riven-expansion-trait-locking-riven-splicing/"
+    },
+    {
+      "label": "Warframe — September 2026 Riven Dispositions",
+      "href": "https://forums.warframe.com/topic/1523355-september-2026-riven-dispositions/"
+    },
+    {
+      "label": "Warframe — Glacial Defiance date announcement (PSA updated September 29, 2026)",
+      "href": "https://forums.warframe.com/topic/1523427-psa-glacial-defiance-release-window-outdated/"
+    },
+    {
+      "label": "Warframe — Riven cycling cost cap (Update 19.4)",
+      "href": "https://www.warframe.com/en/patch-notes/pc/19-4-1"
+    },
+    {
+      "label": "Warframe — Cycling cost and roll selection (Hotfix 19.0.6)",
+      "href": "https://www.warframe.com/en/patch-notes/pc/19-0-6"
+    },
     {
       "label": "Warframe Wiki — Riven Mods",
       "href": "https://wiki.warframe.com/w/Riven_Mods"
@@ -446,5 +526,5 @@
       "note": "Riven-Märkte, Wikis und DE-Tools"
     }
   ],
-  "updated": "2026-07-18"
+  "updated": "2026-09-30"
 }

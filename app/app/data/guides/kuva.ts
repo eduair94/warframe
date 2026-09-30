@@ -1,15 +1,14 @@
-// Auto-generated Warframe Knowledge Center guide content.
-// Drafted grounded in r/Warframe research (reddit API) + the subreddit wiki FAQ,
-// then adversarially fact-checked for evergreen accuracy. Embedded video ids were
-// verified live via YouTube oEmbed. Edit freely — this is the single source for
-// the /guides/kuva page (rendered by <GuideArticle>).
+// Warframe Knowledge Center: Kuva farming and Riven spending.
+// Substantively reviewed against official release notes on 2026-09-30.
+// See the sources list for current mechanics and the historical cost changes.
+// Single content source for /guides/kuva (rendered by <GuideArticle>).
 import type { Guide } from './types'
 
 const guide: Guide = {
   "slug": "kuva",
   "eyebrow": "Knowledge Center · Kuva Farming",
-  "title": "Kuva Farming Guide",
-  "lede": "Kuva is the red currency that reshuffles your Rivens — and the grind behind it has its own meta. Here's every reliable farm, how to multiply your yield with boosters and the right companion mod, and how to spend it without burning out.",
+  "title": "Kuva Farming Guide: Sources, Boosters & Riven Costs",
+  "lede": "Plan your Kuva farming around the Riven rolls you can afford. Compare Siphons, Floods, Survival and Melica’s new weekly exchange, understand which rewards boosters affect, and budget for Update 44’s optional Trait Locking.",
   "category": "farming",
   "readMins": 8,
   "stats": [
@@ -25,12 +24,12 @@ const guide: Guide = {
     },
     {
       "num": "3,500",
-      "label": "max Kuva per reroll",
+      "label": "max Kuva per unlocked cycle",
       "tone": "gold"
     },
     {
-      "num": "2×",
-      "label": "Resource booster",
+      "num": "7,000",
+      "label": "max Kuva with one trait locked",
       "tone": "good"
     }
   ],
@@ -41,11 +40,11 @@ const guide: Guide = {
       "blocks": [
         {
           "type": "p",
-          "text": "**Kuva** is a red, glowing resource harvested from the Grineer's Kuva reserves. Its overwhelming purpose is one thing: **rerolling Riven mods**. Every reroll spends Kuva to reshuffle a Riven's stats — the buffs, the drawback, and the disposition scaling. It's also a crafting ingredient in a scattering of blueprints (a few Warframes, Umbra Forma and some weapons ask for a little), but the vast majority of the reason anyone farms Kuva is Rivens."
+          "text": "**Kuva** is a resource used to cycle the randomized stats on **Riven mods** and craft certain Foundry blueprints, including Umbra Forma. Cycling does not change the weapon’s Riven Disposition. Since Update 44, you can preserve one existing trait while cycling the others, at double the usual Kuva cost."
         },
         {
           "type": "p",
-          "text": "The word \"Kuva\" is stamped on several unrelated systems, which trips up almost every new player. Only the **resource** is what you grind to reroll Rivens — the rest just share the branding."
+          "text": "Several systems share the Kuva name. For Riven cycling, you need the regular red **Kuva resource**. **Entropic Kuva**, introduced in Update 44, is a separate resource used for exchanges with Cephalon Melica."
         },
         {
           "type": "kv",
@@ -63,18 +62,18 @@ const guide: Guide = {
               "v": "A handful of Foundry blueprints"
             },
             {
-              "k": "Unlocked by",
-              "v": "The War Within quest"
+              "k": "Siphon access",
+              "v": "The War Within completed and Mastery Rank 5"
             },
             {
-              "k": "Can it be bought/traded?",
-              "v": "No — you farm it or you don't have it"
+              "k": "Can it be traded?",
+              "v": "No player-to-player resource trading; vendor exchanges are available"
             }
           ]
         },
         {
           "type": "info",
-          "text": "**\"Kuva\" is overloaded.** *Kuva* (the resource you reroll with) · *Kuva Siphon/Flood* (the missions that reward it) · *Kuva Lich* (an enemy nemesis) · *Kuva weapons* (what a Lich drops). Only the first one reshuffles Rivens. See the last section on Liches so you don't confuse the two."
+          "text": "**Match the resource to the goal.** Regular Kuva pays for Riven cycles. Entropic Kuva pays for Melica’s wares. Kuva Siphons and Floods are missions; Kuva Liches are nemesis enemies; Kuva weapons are their weapon rewards."
         }
       ]
     },
@@ -84,7 +83,7 @@ const guide: Guide = {
       "blocks": [
         {
           "type": "p",
-          "text": "Kuva farming is gated behind the **The War Within** quest (the second Operator quest, which follows *The Second Dream*). Before you finish it, no Kuva Siphons or Floods appear on your star chart, the Kuva Fortress stays locked, and you can't spawn a Kuva Lich."
+          "text": "**Kuva Siphon missions require The War Within and Mastery Rank 5.** The quest also opens the Kuva Fortress. Other sources, including vendors and Zariman content, have their own access requirements; completing one quest does not unlock every Kuva source."
         },
         {
           "type": "steps",
@@ -95,7 +94,7 @@ const guide: Guide = {
             },
             {
               "h": "Complete The War Within",
-              "p": "This unlocks your Operator's Void powers — you literally need them to crack Kuva Siphons — and switches on the entire Kuva ecosystem."
+              "p": "Finish the quest and reach Mastery Rank 5 to access Kuva Siphon missions. Your Operator’s Void abilities are part of handling the Siphon objective."
             },
             {
               "h": "Watch the star chart",
@@ -103,7 +102,7 @@ const guide: Guide = {
             },
             {
               "h": "Open the Kuva Fortress",
-              "p": "The Fortress and its Kuva Survival node become your home base for bulk farming."
+              "p": "Reach Taveuni on the Kuva Fortress to try Kuva Survival. Choose a loadout that can both defend Harvesters and sustain life support."
             }
           ]
         }
@@ -115,7 +114,7 @@ const guide: Guide = {
       "blocks": [
         {
           "type": "p",
-          "text": "Three sources carry the load: **Siphons** for quick hits, **Floods** for double rewards, and **Survival** for sustained bulk. They're evergreen — unlike relic eras or a rotating \"best resource node,\" these don't churn every update."
+          "text": "**Siphons and Floods** offer a Kuva objective within a regular mission. **Kuva Survival** lets you repeat Harvester defenses in one session. Compare these with vendor exchanges you have unlocked before committing to a long run."
         },
         {
           "type": "table",
@@ -124,133 +123,176 @@ const guide: Guide = {
               "Method",
               "Where",
               "Rough yield",
-              "Best for"
+              "What to consider"
             ],
             "rows": [
               [
                 "Kuva Siphon",
-                "Rotating star-chart node (needs TWW)",
+                "Rotating star-chart node; The War Within and MR 5",
                 "~600 base",
-                "Fast, casual, low-effort runs"
+                "Complete the Siphon objective and the mission"
               ],
               [
                 "Kuva Flood",
-                "One higher-level rotating node",
+                "Higher-level rotating Siphon mission",
                 "~1,200 base",
-                "Double the reward, much higher level"
+                "Roughly double the Siphon yield with tougher enemies"
               ],
               [
                 "Kuva Survival",
-                "Kuva Fortress Survival node (Taveuni)",
-                "Scales with time",
-                "Sustained, high-volume farming"
+                "Taveuni, Kuva Fortress",
+                "200 base per completed Harvester",
+                "Defend Harvesters while maintaining life support"
               ],
               [
-                "Daily Sortie",
-                "Sortie reward table (chance)",
-                "A few thousand",
-                "Passive Kuva while doing dailies"
+                "Vendor exchanges",
+                "Unlocked vendors, including Cephalon Melica",
+                "Check each offer and purchase limit",
+                "Spend the required currency instead of repeating Siphons"
               ]
             ],
-            "note": "Yields are approximate base amounts before boosters — DE tweaks numbers occasionally, so confirm current values on the live wiki."
+            "note": "Siphon and Flood amounts are approximate base yields. A Harvester must finish its defense to award Kuva. Vendor quantities and eligible mission rewards follow different booster rules."
           }
         },
         {
           "type": "p",
-          "text": "A **Siphon** works like a mini-objective: you reach the Kuva Siphon device, it starts drawing in clouds of Kuva, and you destroy its four Kuva braids by **Void Dashing through (or shooting with your Amp) the incoming clouds in Operator form** — which is exactly why The War Within is a hard requirement. Kuva Guardians spawn to interfere while you work. Destroy all four braids and the siphon bursts, banking a lump of Kuva. A **Flood** is the same drill at a much higher enemy level for roughly double the payout. Chaining Siphons (and grabbing the Flood when it's up) across the map is the most efficient *casual* loop."
+          "text": "At a **Kuva Siphon**, intercept the incoming Kuva clouds with your Operator’s Void abilities or Amp to destroy its four braids. Defend yourself from the accompanying enemies and finish the mission. A **Kuva Flood** uses the same objective with higher-level enemies and a larger Kuva reward."
         }
       ]
     },
     {
-      "id": "survival-fissure",
-      "title": "The endurance meta: Kuva Survival + fissures",
+      "id": "melica-entropic-kuva",
+      "title": "Update 44: Melica’s weekly Kuva exchange",
       "blocks": [
         {
           "type": "p",
-          "text": "For raw **Kuva-per-hour**, Kuva Survival on the Kuva Fortress is king. Instead of chasing markers across the map, you sit in one Survival mission and convert **Life Support Capsules into Kuva Harvesters** — each conversion banks a chunk of Kuva while you defend it, so the longer you last the more you pile up. Bring an AoE-clearing frame and reliable energy sustain so you never stop killing."
-        },
-        {
-          "type": "p",
-          "text": "The pro move is the **double-dip**: run Kuva Survival while it's flagged as a **Void Fissure**. You crack relics for platinum-worthy prime parts *and* pile up Kuva in the same run — two grinds, one mission. Endurance farmers stack this into multi-hour sessions for enormous hauls."
-        },
-        {
-          "type": "links",
-          "links": [
-            {
-              "label": "Which relics pay best per run",
-              "to": "/relic-farming",
-              "icon": "diamond-stone",
-              "note": "Pick the fissure relic that funds your Kuva grind"
-            },
-            {
-              "label": "Crack or sell? Relic value",
-              "to": "/relics-value",
-              "icon": "cash-multiple",
-              "note": "Know what your fissure drops are worth"
-            }
-          ]
-        },
-        {
-          "type": "warn",
-          "text": "**Very long endurance runs carry a real risk.** A host migration on a multi-hour public run can drop you from the session, and there's no save-scumming Kuva — a crash or disconnect loses any gains since the last reward. Running solo or with a stable premade squad cuts the odds, and banking rewards steadily beats betting a whole session on one uninterrupted marathon."
-        }
-      ]
-    },
-    {
-      "id": "boosters",
-      "title": "Multiply your Kuva: boosters & companions",
-      "blocks": [
-        {
-          "type": "p",
-          "text": "The single most important lesson in Kuva farming: **it's not about the node, it's about your multipliers.** The same Siphon can pay 600 or 2,400+ depending on what's stacked on it."
-        },
-        {
-          "type": "list",
-          "items": [
-            "**Resource Booster (2×)** — doubles every Kuva pickup for its duration, including the lump reward from a Siphon or Flood. The reliable baseline multiplier.",
-            "**Loyal Retriever (companion mod)** — since **Update 37** the resource-doubling that used to live on the Smeeta's Charm is its own mod. It gives a flat **13% chance to double each Credit and Resource pickup — Kuva included** — is always on with no buff to wait for, and slots on any Beast companion (Kubrow, Kavat, etc.), not just a Smeeta.",
-            "**Double-resource weekends** — DE's periodic events stack on top of a booster, pushing a Siphon or Flood toward 4×.",
-            "**No more \"waiting for the buff\"** — the old trick of hoarding pickups until a Smeeta Charm resource-proc fired is gone as of Update 37. Doubling is now a passive per-pickup roll, so just keep killing and let it ride."
-          ]
-        },
-        {
-          "type": "tip",
-          "text": "**The companion setup:** slot **Loyal Retriever** on a Beast companion for the 13% double-pickup chance that applies to Kuva. Plenty of farmers still bring a **Smeeta Kavat** on top — its Charm can roll a Rare Resource drop or tripled affinity — but the resource doubling itself no longer requires a Smeeta specifically."
-        }
-      ]
-    },
-    {
-      "id": "per-hour",
-      "title": "Kuva per hour: realistic expectations",
-      "blocks": [
-        {
-          "type": "p",
-          "text": "Rates swing hard with your frame, your booster uptime, and your route, so treat these as ballpark rather than gospel. The honest picture:"
+          "text": "**Entropic Eximus** in Zariman missions drop **Entropic Kuva**, a separate resource. Take it to **Cephalon Melica** at **Yuvan’s Peak** or the **Chrysalith** and open **Classroom Supplies**. The Chrysalith offers a Fast Travel option for her shop."
         },
         {
           "type": "kv",
           "kv": [
             {
-              "k": "Casual Siphon/Flood chaining (no boosters)",
-              "v": "~5,000–10,000 Kuva/hr"
+              "k": "Regular Kuva per purchase",
+              "v": "10,500"
             },
             {
-              "k": "Kuva Survival + resource booster (+ Loyal Retriever)",
-              "v": "~15,000–25,000+ Kuva/hr"
+              "k": "Purchase limit",
+              "v": "4 per week"
             },
             {
-              "k": "One max-cost Riven reroll",
-              "v": "3,500 Kuva"
+              "k": "Total if you buy all four",
+              "v": "42,000 regular Kuva per week"
             },
             {
-              "k": "So a boosted Survival hour buys roughly",
-              "v": "4–7 rerolls"
+              "k": "Currency to bring",
+              "v": "Entropic Kuva; check the shop for the current price"
+            }
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Yuvan’s Peak requires both **Angels of the Zariman** and **Whispers in the Walls**. Melica also sells Narin and weapon blueprints, so decide how much Entropic Kuva to reserve for those before buying regular Kuva."
+        },
+        {
+          "type": "info",
+          "text": "**Entropic Kuva does not directly pay for Riven cycles.** The exchange gives you regular Kuva, which you can then spend on cycling. The 42,000 total is calculated as 10,500 × 4, subject to having the shop currency and remaining weekly purchases."
+        },
+        {
+          "type": "tip",
+          "text": "**Prepare for Entropic Eximus resistance.** [Hotfix 44.0.1](https://www.warframe.com/en/patch-notes/pc/44-0-1) explains that they heavily resist non-melee damage. Fight inside the bubble with a suitable melee weapon; breaking the bubble does not remove that resistance. [Hotfix 44.0.2](https://www.warframe.com/en/patch-notes/pc/44-0-2) fixed resistance applying twice and missing Entropic Kuva drops from Mirage clone kills."
+        }
+      ]
+    },
+    {
+      "id": "survival-fissure",
+      "title": "Kuva Survival and Requiem Fissures",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "On **Taveuni**, marked enemies carry **Kuva Catalysts**. Bring one to an unused Life Support Tower to convert it into a Harvester, then protect it for **1 minute**. A completed defense awards **200 base Kuva** to the squad and a small amount of life support. If the Harvester is destroyed, you lose that Harvester’s Kuva reward and the tower."
+        },
+        {
+          "type": "p",
+          "text": "When Kuva Survival is available as a **Requiem Fissure**, bring **Requiem Relics** to open alongside the Harvester objectives. Their rewards include Requiem Mods, Kuva, Riven Slivers and Exilus Weapon Adapter Blueprints. These are not Lith, Meso, Neo or Axi relics, so this route does not open those relics for Prime parts. Check the active mission type before choosing your relic."
+        },
+        {
+          "type": "links",
+          "links": [
+            {
+              "label": "Understand relic types",
+              "to": "/guides/relics",
+              "icon": "diamond-stone",
+              "note": "Distinguish Requiem rewards from Prime relic rewards"
+            },
+            {
+              "label": "Crack or sell? Relic value",
+              "to": "/relics-value",
+              "icon": "cash-multiple",
+              "note": "Compare the Prime relics used in separate farming runs"
+            }
+          ]
+        },
+        {
+          "type": "warn",
+          "text": "**Keep the run sustainable.** Converting every available tower can leave too little life support. Watch the mission meter, protect each Harvester, and extract when your squad can no longer maintain both objectives. A longer session is not automatically a better use of your time."
+        }
+      ]
+    },
+    {
+      "id": "boosters",
+      "title": "Boosters and companion mods: what they affect",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "A **Resource Booster** can double eligible Kuva rewards from Siphons, Floods and completed Survival Harvesters. This does not mean every source of Kuva is doubled: vendor purchases and fixed reward-table bundles are not resource pickups."
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Resource Booster (2×)** — increases eligible resource amounts. A Resource Drop Chance Booster affects drop chances instead; it is not another automatic doubling of a Siphon or Harvester reward.",
+            "**Resourceful Retriever** — at maximum rank, gives a passive **18% chance** to double a resource pickup. It is the resource-focused variant for Beast companions.",
+            "**Loyal Retriever** — at maximum rank, gives a passive **13% chance** to double a resource or Credit pickup. Both Retriever options exclude **Venari**.",
+            "**Smeeta Charm changed in Update 37** — its old resource-doubling buff was removed. Use the relevant Retriever mod for pickup doubling; do not wait for the old Charm resource buff."
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "**Plan with eligible rewards.** Retriever chances are random per pickup, not a guaranteed increase on every mission reward. Check the source before applying a multiplier, and count Melica’s listed Kuva bundle at its stated quantity."
+        }
+      ]
+    },
+    {
+      "id": "per-hour",
+      "title": "Turn a Kuva budget into a reroll limit",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Your yield depends on mission duration, completed objectives, boosters and squad performance. A spending budget is easier to check than a promised hourly farming rate. For a Riven already at the maximum base cycle cost, a **35,000 Kuva** budget buys:"
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "Example budget",
+              "v": "35,000 Kuva"
+            },
+            {
+              "k": "No locked trait",
+              "v": "3,500 per cycle → 10 cycles"
+            },
+            {
+              "k": "One locked trait",
+              "v": "7,000 per cycle → 5 cycles"
+            },
+            {
+              "k": "Earlier cycles",
+              "v": "Lower base costs; check the price shown before cycling"
             }
           ]
         },
         {
           "type": "info",
-          "text": "The wild hour-to-hour swings older guides warn about — from waiting on a random Smeeta Charm resource proc — are gone. Loyal Retriever's doubling is a smooth 13% per pickup, so a farm is far more consistent than it used to be; your rate now tracks your frame, route and whether a booster or 2× weekend is running."
+          "text": "This is arithmetic, not a farming-rate estimate: 35,000 ÷ 3,500 = 10 and 35,000 ÷ 7,000 = 5. Set your stopping point before cycling, and reserve any Kuva you need for crafting."
         }
       ]
     },
@@ -260,52 +302,58 @@ const guide: Guide = {
       "blocks": [
         {
           "type": "p",
-          "text": "Rerolling a Riven's stats is done straight from the mod (it costs **only Kuva**). Don't confuse it with ranking the Riven up, which costs Endo + credits — Kuva reshuffles the stats, [Endo](/guides/endo) levels the mod. The reroll price climbs each cycle to a hard cap:"
+          "text": "Use **Cycle Riven** in the Mod Segment to reroll with Kuva. Ranking the mod up instead uses [Endo](/guides/endo) and Credits. Without a locked trait, cycling starts at **900 Kuva** and rises to a **3,500 Kuva** cap. With one trait locked, each cycle costs twice its normal price."
         },
         {
           "type": "table",
           "table": {
             "columns": [
-              "Reroll #",
-              "Approx. Kuva cost"
+              "Cycle",
+              "No locked trait",
+              "One locked trait"
             ],
             "rows": [
               [
                 "1st",
-                "900"
+                "900",
+                "1,800"
               ],
               [
                 "2nd",
-                "1,000"
+                "1,000",
+                "2,000"
               ],
               [
                 "3rd",
-                "1,200"
+                "1,200",
+                "2,400"
               ],
               [
                 "4th",
-                "1,400"
+                "1,400",
+                "2,800"
               ],
               [
-                "…",
-                "climbs each cycle"
+                "Later cycles",
+                "Base cost increases toward the cap",
+                "Twice the displayed base cost"
               ],
               [
-                "~10th and beyond",
-                "3,500 (cap)"
+                "At the base cost cap",
+                "3,500",
+                "7,000"
               ]
             ],
-            "note": "Approximate cost ladder — the exact middle values are best confirmed on the live wiki. Key facts: starts at 900, caps at 3,500."
+            "note": "Costs are Kuva per cycle. Applying or removing a lock itself is free; the higher cost is charged when you cycle with a trait locked."
           }
         },
         {
-          "type": "quote",
-          "text": "TFW you farm Kuva all day, and have nothing to show for it besides a higher roll count.",
-          "cite": "r/Warframe"
+          "type": "info",
+          "text": "**Trait Locking is live in Update 44.** Select an existing trait to preserve it while cycling. Only one can be locked, and the current count of positive and negative traits stays fixed. Unlock it to allow that layout to change. Closing the Cycling menu clears the lock, so select it again next time."
         },
         {
           "type": "tip",
-          "text": "Rerolls are **pure RNG** — a good Riven can roll into a bad one and back. Set a target before you start and check the [Riven value estimator](/riven-value) so you know when a roll is already worth more than the perfect roll you're chasing. If a Riven is hopeless, dissolving it for Endo via [/endo](/endo) is often smarter than pouring more Kuva in."
+          "text": "After cycling, you can keep the previous result or accept the new one. Keeping the old result does not refund the Kuva or undo the cycle count. A lock preserves one trait; it does not let you choose the remaining random traits. Use the [Riven value estimator](/riven-value) as a market reference and stop when the result meets your build and budget."
         },
         {
           "type": "links",
@@ -332,15 +380,15 @@ const guide: Guide = {
       "blocks": [
         {
           "type": "p",
-          "text": "A **Kuva Lich** is an enemy nemesis — not the resource. You create one by killing a **Kuva Larvling** with a mercy finisher in a Grineer mission (available after The War Within). The Lich claims territory and drops a **Kuva weapon** with a random bonus (roughly 25–60%) when defeated."
+          "text": "A **Kuva Lich** is a nemesis enemy associated with **Kuva weapons**. The Kuva resource used for cycling Rivens is a different part of the game. If your goal is a weapon, follow the Lich system rather than spending your session on Siphon farming."
         },
         {
           "type": "p",
-          "text": "You don't spend the Kuva *resource* to beat a Lich. You vanquish it with your **Parazon** loaded with three **Requiem mods** in the correct order — and figuring out that order is its own puzzle. Requiem mods come from **Requiem Relics**. This layered RNG (relic → Requiem → correct sequence → weapon → good roll) is exactly what the subreddit loves to complain about."
+          "text": "Lich progression uses **Requiem mods** and the **Parazon**. Requiem Relics provide those mods, which is why Requiem Fissures can fit into a Lich hunt. Rerolling a weapon’s Riven is a separate decision that uses your regular Kuva reserve."
         },
         {
           "type": "warn",
-          "text": "Beginner trap: farming Kuva the resource will **never** get you a Kuva weapon, and hunting Liches won't fill your Kuva reserves for rerolls. They're separate grinds that just share a name."
+          "text": "**Choose the goal first:** hunting a Kuva weapon, opening Requiem Relics and collecting Kuva for Rivens are related activities with different rewards. A stockpile of the resource does not itself buy a Lich’s weapon."
         }
       ]
     }
@@ -384,7 +432,7 @@ const guide: Guide = {
       "label": "Void Relics Guide",
       "to": "/guides/relics",
       "icon": "diamond-stone",
-      "note": "Double-dip Kuva Survival fissures"
+      "note": "Understand Requiem and Prime relic rewards"
     },
     {
       "label": "Endo & Plat Value",
@@ -396,7 +444,7 @@ const guide: Guide = {
       "label": "Steel Path Guide",
       "to": "/guides/steel-path",
       "icon": "skull",
-      "note": "Tougher Kuva Survival, richer runs"
+      "note": "Prepare for higher-level missions and their rewards"
     },
     {
       "label": "Community FAQ",
@@ -408,56 +456,84 @@ const guide: Guide = {
   "faqs": [
     {
       "q": "What is Kuva used for in Warframe?",
-      "a": "Kuva's main job is rerolling Riven mod stats — each reroll spends Kuva to reshuffle a Riven's buffs and drawback. It's also a crafting ingredient in a handful of blueprints (a few Warframes, Umbra Forma and some weapons). It has nothing to do with buying, crafting, or ranking up Warframes with plat. See the [Riven guide](/guides/riven) for how rerolling works."
+      "a": "Kuva is used to cycle Riven mod stats and craft some Foundry blueprints. Cycling does not change the weapon’s Disposition. Optional Trait Locking preserves one existing trait at double the cycle cost. See the [Riven guide](/guides/riven) for the full rules."
     },
     {
       "q": "What's the best way to farm Kuva fast?",
-      "a": "Chain Kuva Siphons and grab the Flood when it's up for quick, low-effort Kuva, or run Kuva Survival on the Kuva Fortress for sustained bulk. Pair either with a resource booster — and slot Loyal Retriever on a Beast companion for a 13% chance to double each Kuva pickup — to multiply the haul. Running Kuva Survival as a Void Fissure lets you crack [relics](/relic-farming) for plat at the same time."
+      "a": "Choose a source that fits your unlocks and session: Siphons or Floods for individual missions, Taveuni Survival for repeated Harvester defenses, or available vendor exchanges. Melica’s Update 44 exchange offers 10,500 regular Kuva up to four times weekly for Entropic Kuva. Kuva Survival Requiem Fissures open Requiem Relics; they do not provide Prime parts from Lith, Meso, Neo or Axi relics."
     },
     {
       "q": "How much Kuva does it cost to reroll a Riven?",
-      "a": "The first reroll costs about 900 Kuva, and the price climbs each cycle to a permanent cap of roughly 3,500 Kuva after about ten rolls. Rerolls are pure RNG, so check the [Riven value estimator](/riven-value) before you dump Kuva into a roll you might regret."
+      "a": "Without a locked trait, the first cycle costs 900 Kuva and later cycles rise to a 3,500 cap. Locking one trait doubles those prices to 1,800 initially and 7,000 at the cap. Applying or removing the lock is free. You can keep your previous result after cycling, but the Kuva remains spent."
     },
     {
       "q": "What's the difference between Kuva and a Kuva Lich?",
-      "a": "Kuva is a resource you farm to reroll Rivens. A Kuva Lich is an enemy nemesis you create by mercy-killing a Larvling and then hunt for a Kuva weapon. They share the 'Kuva' branding but are totally separate systems — you beat a Lich with Requiem mods and your Parazon, not by spending the Kuva resource."
+      "a": "Kuva is a resource used for Riven cycling and crafting. A Kuva Lich is a nemesis enemy hunted for a Kuva weapon. Lich progression uses Requiem mods and the Parazon; having regular Kuva does not replace that process."
     },
     {
       "q": "How do I unlock Kuva Siphons?",
-      "a": "Complete the The War Within quest. After that, Kuva Siphon and Kuva Flood markers rotate onto star-chart nodes across the Origin System, and the Kuva Fortress with its Survival node opens up. You'll also need your Operator's Void abilities from that quest to actually destroy the siphon's braids. Check the [Quests guide](/guides/quests) for how to reach it."
+      "a": "Complete The War Within and reach Mastery Rank 5. Kuva Siphon and Flood missions then appear on rotating star-chart nodes. Use your Operator’s Void abilities or Amp to intercept the clouds during the Siphon objective. See the [Quests guide](/guides/quests) for story progression."
     },
     {
       "q": "Does the Smeeta Kavat double Kuva?",
-      "a": "Not through its Charm anymore. As of Update 37 (October 2024) the resource-doubling was moved off the Smeeta's Charm onto a separate mod, Loyal Retriever, which gives a flat 13% chance to double each resource pickup — Kuva included — and slots on any Beast companion (Kubrow, Kavat, etc.). A Smeeta is still handy for Charm's other buffs, but you no longer need one specifically to double your Kuva."
+      "a": "Smeeta’s Charm no longer provides its old resource-doubling buff. Update 37 moved pickup doubling to Retriever mods for Beast companions, excluding Venari. At maximum rank, Resourceful Retriever gives an 18% resource-pickup doubling chance; Loyal Retriever gives 13% for resource or Credit pickups. Neither guarantees that every Kuva reward is doubled."
     },
     {
       "q": "Can you buy or trade Kuva?",
-      "a": "No. Kuva is an untradeable resource and can't be purchased with platinum — you have to farm it. You can trade the Rivens you reroll with it, but never the Kuva itself. If you're after plat, see the [Platinum guide](/guides/platinum) instead."
+      "a": "Regular Kuva cannot be traded directly between players, but it is available through in-game vendor exchanges. For example, Melica accepts Entropic Kuva for regular Kuva bundles with a weekly purchase limit. Check the vendor’s currency and offer rather than assuming Kuva only comes from Siphons."
     },
     {
       "q": "Do resource boosters work on Kuva?",
-      "a": "Yes — a resource booster doubles all Kuva gains, and double-resource weekend events stack on top (up to about 4× with a booster running). Save your big rerolling sessions for boosted periods to stretch every run further."
+      "a": "Resource Boosters affect eligible Kuva gains such as Siphon, Flood and completed Harvester rewards. They do not double every source: vendor purchases and fixed reward-table bundles are not resource pickups. A Resource Drop Chance Booster changes drop chances, not the amount of every Kuva reward."
     }
   ],
   "sources": [
     {
-      "label": "So let me get this straight… RNG relics → Requiems → Kuva Liches → weapon rolls (r/Warframe)",
-      "href": "https://reddit.com/r/Warframe/comments/dr46xo/so_let_me_get_this_straight_we_need_to_farm_rng/"
+      "label": "Update 44: Iceblade of Narin — Melica, Entropic Kuva and Trait Locking",
+      "href": "https://www.warframe.com/en/patch-notes/pc/44-0-0"
     },
     {
-      "label": "TFW you farm Kuva all day and have nothing to show for it besides a higher roll count (r/Warframe)",
-      "href": "https://reddit.com/r/Warframe/comments/ci5f0x/tfw_you_farm_kuva_all_day_and_have_nothing_to/"
+      "label": "Warframe — Hotfix 44.0.1: Entropic Eximus resistance",
+      "href": "https://www.warframe.com/en/patch-notes/pc/44-0-1"
     },
     {
-      "label": "Kuva farming actually felt good during 2x weekend (r/Warframe)",
-      "href": "https://reddit.com/r/Warframe/comments/b5a4za/kuva_farming_actually_felt_good_during_2x_weekend/"
+      "label": "Warframe — Hotfix 44.0.2: Entropic Eximus fixes",
+      "href": "https://www.warframe.com/en/patch-notes/pc/44-0-2"
     },
     {
-      "label": "Warframe Wiki",
-      "href": "https://wiki.warframe.com/"
+      "label": "Riven Expansion — official Trait Locking workshop",
+      "href": "https://forums.warframe.com/topic/1523869-riven-expansion-trait-locking-riven-splicing/"
+    },
+    {
+      "label": "Update 37 — Retriever mods and Smeeta Charm changes",
+      "href": "https://www.warframe.com/en/patch-notes/pc/37-0-0"
+    },
+    {
+      "label": "Update 35 — Kuva Siphon access requirements",
+      "href": "https://www.warframe.com/en/patch-notes/pc/35-0-0"
+    },
+    {
+      "label": "Update 22.17.0 — Kuva Survival mechanics and booster eligibility",
+      "href": "https://www.warframe.com/en/patch-notes/pc/22-17-0"
+    },
+    {
+      "label": "Relic Hunting 101 — official Requiem Relic rewards guide",
+      "href": "https://www.warframe.com/en/news/relic-hunting-101"
+    },
+    {
+      "label": "Update 19.0.6 — cycle costs and choosing the previous result",
+      "href": "https://www.warframe.com/en/patch-notes/pc/19-0-6"
+    },
+    {
+      "label": "Update 19.4 — base Kuva cycle cost capped at 3,500",
+      "href": "https://www.warframe.com/en/patch-notes/pc/19-4-1"
+    },
+    {
+      "label": "Warframe Wiki — Kuva Siphon base reward ranges",
+      "href": "https://warframe.fandom.com/wiki/Kuva_Siphon"
     }
   ],
-  "updated": "2026-07-18"
+  "updated": "2026-09-30"
 }
 
 export default guide

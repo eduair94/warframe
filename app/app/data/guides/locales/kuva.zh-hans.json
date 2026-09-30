@@ -1,8 +1,8 @@
 {
   "slug": "kuva",
   "eyebrow": "知识中心 · Kuva 刷取",
-  "title": "Kuva 刷取指南",
-  "lede": "Kuva 是用于重置 Riven 属性的红色货币——而其背后的刷取过程也有着自己的主流配置（meta）。这里有每一个可靠的刷取点、如何通过加成和正确的同伴 mod 来使你的产量翻倍，以及如何合理消耗它而不至于感到枯燥。",
+  "title": "Kuva刷取指南：来源、加成与Riven消耗",
+  "lede": "根据你能承受的Riven洗炼来规划你的Kuva刷取。对比Siphon、Flood、生存和Melica的新每周兑换，了解哪些奖励受加成影响，并为Update 44的可选词条锁定做好预算。",
   "category": "farming",
   "readMins": 8,
   "stats": [
@@ -18,12 +18,12 @@
     },
     {
       "num": "3,500",
-      "label": "单次 reroll 最大 Kuva 消耗",
+      "label": "未锁定洗炼的Kuva上限",
       "tone": "gold"
     },
     {
-      "num": "2×",
-      "label": "资源加成",
+      "num": "7,000",
+      "label": "锁定一个词条时的Kuva上限",
       "tone": "good"
     }
   ],
@@ -34,11 +34,11 @@
       "blocks": [
         {
           "type": "p",
-          "text": "**Kuva** 是一种从 Grineer 的 Kuva 储藏中收集的红色发光资源。它的核心用途只有一个：**重置 Riven mod 属性**。每次重置都会消耗 Kuva 来重新随机 Riven 的属性——包括正面属性、负面属性以及倾向性缩放。它也是少数铸造厂蓝图的制作原材料（少数 Warframe、Umbra Forma 和一些武器需要少量），但绝大多数人刷取 Kuva 的原因都是为了 Riven。"
+          "text": "**Kuva**是一种用于洗炼**Riven Mod**上随机属性以及制造某些铸造厂蓝图（包括Umbra Forma）的资源。洗炼不会改变武器的Riven Disposition。自Update 44起，你可以在洗炼时保留一个现有词条，代价是通常Kuva消耗的两倍。"
         },
         {
           "type": "p",
-          "text": "“Kuva” 这个词被用在几个不相关的系统上，这几乎让每个新玩家都感到困惑。只有**资源**本身才是你为了重置 Riven 而需要刷取的东西——其余的只是共享了这个名字。"
+          "text": "有几个系统共享Kuva这个名称。对于Riven洗炼，你需要常规的红色**Kuva资源**。**熵之Kuva**（Entropic Kuva）是在Update 44中引入的，是一种用于与Cephalon Melica兑换的独立资源。"
         },
         {
           "type": "kv",
@@ -56,18 +56,18 @@
               "v": "少数铸造厂蓝图"
             },
             {
-              "k": "解锁条件",
-              "v": "The War Within 任务"
+              "k": "Siphon获取条件",
+              "v": "已完成内战（The War Within）且精通段位达到5级"
             },
             {
-              "k": "可以购买/交易吗？",
-              "v": "不行——你只能靠刷，否则就无法获得"
+              "k": "能否交易？",
+              "v": "无玩家间资源交易；可用供应商兑换"
             }
           ]
         },
         {
           "type": "info",
-          "text": "**“Kuva” 这个词承载了太多概念。** *Kuva*（你用来重置属性的资源）· *Kuva Siphon/Flood*（奖励该资源的任务）· *Kuva Lich*（宿敌敌人）· *Kuva 武器*（Lich 掉落的武器）。只有第一个能用来重置 Riven。请参阅最后一节关于 Lich 的内容，以免混淆这两者。"
+          "text": "**将资源与目标相匹配。** 常规 Kuva 用于支付 Riven 循环。Entropic Kuva 用于支付 Melica 的商品。Kuva Siphon 和 Flood 是任务；Kuva Lich 是宿敌；Kuva 武器是其武器奖励。"
         }
       ]
     },
@@ -77,7 +77,7 @@
       "blocks": [
         {
           "type": "p",
-          "text": "Kuva 刷取被锁定在 **The War Within** 任务之后（这是继 *The Second Dream* 之后的第二个 Operator 任务）。在你完成它之前，星图上不会出现 Kuva Siphon 或 Flood，Kuva Fortress 会保持锁定状态，并且你无法生成 Kuva Lich。"
+          "text": "**Kuva Siphon 任务需要完成 The War Within 并达到 Mastery Rank 5。** 该任务还会解锁 Kuva Fortress。其他来源（包括供应商和 Zariman 内容）有其自身的访问要求；完成一个任务并不会解锁所有 Kuva 来源。"
         },
         {
           "type": "steps",
@@ -88,7 +88,7 @@
             },
             {
               "h": "完成 The War Within",
-              "p": "这将解锁你 Operator 的 Void 能力——你确实需要它们来破解 Kuva Siphon——并开启整个 Kuva 生态系统。"
+              "p": "完成任务并达到 Mastery Rank 5 即可访问 Kuva Siphon 任务。你的 Operator 的 Void 能力是处理 Siphon 目标的一部分。"
             },
             {
               "h": "留意星图",
@@ -96,7 +96,7 @@
             },
             {
               "h": "开启 Kuva Fortress",
-              "p": "该要塞及其 Kuva Survival 节点将成为你大量刷取的大本营。"
+              "p": "到达 Kuva Fortress 的 Taveuni 以尝试 Kuva Survival。选择一套既能防守 Harvester 又能维持生命支持的配装。"
             }
           ]
         }
@@ -108,7 +108,7 @@
       "blocks": [
         {
           "type": "p",
-          "text": "三个主要来源承担了重任：**Siphon** 用于快速获取，**Flood** 提供双倍奖励，而 **Survival** 用于持续大量刷取。它们是常青的——不像遗物纪元或轮换的“最佳资源节点”，这些不会随着每次更新而改变。"
+          "text": "**Siphon 和 Flood** 在常规任务中提供 Kuva 目标。**Kuva Survival** 让你在单次流程中重复防守 Harvester。在开始长时间刷取之前，将这些与你已解锁的供应商兑换进行比较。"
         },
         {
           "type": "table",
@@ -117,133 +117,176 @@
               "方法",
               "地点",
               "大致产量",
-              "最适合"
+              "注意事项"
             ],
             "rows": [
               [
                 "Kuva Siphon",
-                "轮换的星图节点（需要完成 TWW）",
+                "轮换星图节点；The War Within 和 MR 5",
                 "~600 基础",
-                "快速、休闲、低投入的刷取"
+                "完成 Siphon 目标和任务"
               ],
               [
                 "Kuva Flood",
-                "一个等级更高的轮换节点",
+                "更高级别的轮换 Siphon 任务",
                 "~1,200 基础",
-                "双倍奖励，等级高得多"
+                "难度更高的敌人可带来大约两倍的 Siphon 产量"
               ],
               [
                 "Kuva Survival",
-                "Kuva Fortress Survival 节点 (Taveuni)",
-                "随时间增加",
-                "持续、大量的刷取"
+                "Taveuni，Kuva Fortress",
+                "每个完成的 Harvester 基础奖励 200",
+                "在维持生命支持的同时防守 Harvester"
               ],
               [
-                "每日 Sortie",
-                "Sortie 奖励表（概率获得）",
-                "几千",
-                "在做日常任务时顺便获取 Kuva"
+                "供应商兑换",
+                "已解锁的供应商，包括 Cephalon Melica",
+                "检查每个报价和购买限制",
+                "消耗所需货币，无需重复刷 Siphon"
               ]
             ],
-            "note": "产量是使用加成前的近似基础数量——DE 偶尔会调整数值，因此请在维基上确认当前数值。"
+            "note": "Siphon 和 Flood 的数量为大致的基础产量。Harvester 必须完成其防守才能发放 Kuva。供应商数量和符合条件的任务奖励遵循不同的加成规则。"
           }
         },
         {
           "type": "p",
-          "text": "一个 **Siphon** 就像一个迷你任务目标：你到达 Kuva Siphon 装置，它开始吸入 Kuva 气团，你需要通过**在 Operator 形态下使用 Void Dash 穿过（或用你的 Amp 射击）飘来的气团**来摧毁它的四个 Kuva 触手——这正是为什么 The War Within 是硬性要求的原因。在你操作时，Kuva Guardians 会生成并进行干扰。摧毁所有四个触手后，虹吸器就会破裂，并为你提供一大笔 Kuva。**Flood** 的玩法完全相同，只是敌人等级要高得多，奖励也大约翻倍。在地图上连续刷 Siphon（并在 Flood 出现时顺便打掉）是最有效的*休闲*循环。"
+          "text": "在 **Kuva Siphon** 中，用你的 Operator 的 Void 能力或 Amp 拦截飞来的 Kuva 云团以摧毁其四个发辫。防守自己免受随行敌人的攻击并完成任务。**Kuva Flood** 使用相同的目标，但敌人等级更高，Kuva 奖励更丰厚。"
         }
       ]
     },
     {
-      "id": "survival-fissure",
-      "title": "无尽模式主流：Kuva Survival + 裂缝",
+      "id": "melica-entropic-kuva",
+      "title": "Update 44：Melica 的每周 Kuva 兑换",
       "blocks": [
         {
           "type": "p",
-          "text": "就纯粹的**每小时 Kuva 产量**而言，Kuva Fortress 上的 Kuva Survival 是无可争议的王者。你不需要在地图上四处寻找标记，而是待在一个 Survival 任务中，将**生命维持装置胶囊转化为 Kuva 收集器**——在防守它的同时，每次转化都会为你存入一笔 Kuva，因此你坚持得越久，积累的就越多。携带一个具有大范围伤害（AoE）清怪能力的 frame 和可靠的能量续航，这样你就能不停地击杀敌人。"
-        },
-        {
-          "type": "p",
-          "text": "高手操作是**一举两得**：在 Kuva Survival 被标记为 **Void Fissure** 时去刷它。你可以在同一次任务中既开启遗物以获取值白金的 Prime 部件，*又*积累 Kuva——一次任务，双重收益。喜欢无尽模式的玩家会将其堆叠成数小时的局，以获得海量收益。"
-        },
-        {
-          "type": "links",
-          "links": [
-            {
-              "label": "单次运行中哪些遗物收益最高",
-              "to": "/relic-farming",
-              "icon": "diamond-stone",
-              "note": "选择能为你刷取 Kuva 提供资金支持的裂缝遗物"
-            },
-            {
-              "label": "开箱还是出售？遗物价值",
-              "to": "/relics-value",
-              "icon": "cash-multiple",
-              "note": "了解你的裂缝掉落物值多少钱"
-            }
-          ]
-        },
-        {
-          "type": "warn",
-          "text": "**极长时间的无尽模式运行伴随着真正的风险。** 在长达数小时的公开局中，主机迁移可能会让你掉线，而且 Kuva 无法通过存档读档来挽回——游戏崩溃或断开连接会让你失去自上一个奖励点以来的所有收益。单人运行或与稳定的预组小队一起玩可以降低这种概率，稳步结算奖励总比把整局的命运押在一次不间断的马拉松上要好。"
-        }
-      ]
-    },
-    {
-      "id": "boosters",
-      "title": "让你的 Kuva 翻倍：加成与同伴",
-      "blocks": [
-        {
-          "type": "p",
-          "text": "Kuva 刷取中最重要的一课是：**关键不在于节点，而在于你的倍率。** 相同的 Siphon 可以给你 600 也可以给你 2,400+，这完全取决于你叠加了什么加成。"
-        },
-        {
-          "type": "list",
-          "items": [
-            "**资源数量加成（2×）**——在持续时间内使每次捡起的 Kuva 翻倍，包括来自 Siphon 或 Flood 的一次性奖励。这是最可靠的基础倍率。",
-            "**Loyal Retriever（同伴 mod）**——自**更新 37**以来，以前属于 Smeeta 的 Charm 的资源翻倍效果现在变成了独立的 mod。它提供固定的 **13% 概率使每次捡起的现金和资源（包括 Kuva）翻倍**——它始终处于激活状态，无需等待 buff 触发，并且可以装备在任何野兽同伴（Kubrow、Kavat 等）上，而不仅仅是 Smeeta。",
-            "**双倍资源周末**——DE 的定期活动可以与加成叠加，使 Siphon 或 Flood 的收益接近 4 倍。",
-            "**不再需要“等待 buff”**——自更新 37 起，以前那种囤积掉落物直到 Smeeta 的 Charm 触发资源翻倍的老套路已经不复存在。翻倍现在是每次捡起时的被动判定，所以只需继续击杀，顺其自然。"
-          ]
-        },
-        {
-          "type": "tip",
-          "text": "**同伴配置：** 在野兽同伴上装备 **Loyal Retriever**，以获得适用于 Kuva 的 13% 双倍捡起概率。许多刷图玩家仍然会额外携带一只 **Smeeta Kavat**——它的 Charm 可以触发稀有资源掉落或三倍经验——但资源翻倍本身已不再特定需要 Smeeta。"
-        }
-      ]
-    },
-    {
-      "id": "per-hour",
-      "title": "每小时 Kuva 产量：现实预期",
-      "blocks": [
-        {
-          "type": "p",
-          "text": "效率会随着你的 frame、加成持续时间以及路线而大幅波动，因此请将这些数值视为大致参考，而非绝对标准。真实情况如下："
+          "text": "Zariman 任务中的 **Entropic Eximus** 会掉落 **Entropic Kuva**，这是一种独立的资源。将其带到 **Yuvan’s Peak** 或 **Chrysalith** 的 **Cephalon Melica** 处并打开 **Classroom Supplies**。Chrysalith 为她的商店提供快速移动选项。"
         },
         {
           "type": "kv",
           "kv": [
             {
-              "k": "休闲刷 Siphon/Flood 链（无加成）",
-              "v": "~5,000–10,000 Kuva/小时"
+              "k": "每次购买的常规 Kuva",
+              "v": "10,500"
             },
             {
-              "k": "Kuva Survival + 资源数量加成（+ Loyal Retriever）",
-              "v": "~15,000–25,000+ Kuva/小时"
+              "k": "购买限制",
+              "v": "每周 4 次"
             },
             {
-              "k": "单次最高消耗的 Riven 重置",
-              "v": "3,500 Kuva"
+              "k": "如果购买全部四次的总量",
+              "v": "每周 42,000 常规 Kuva"
             },
             {
-              "k": "因此，在有加成的情况下，刷一小时 Survival 大约可以提供",
-              "v": "4–7 次重置"
+              "k": "需携带的货币",
+              "v": "Entropic Kuva；查看商店了解当前价格"
+            }
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Yuvan’s Peak 需要同时完成 **Angels of the Zariman** 和 **Whispers in the Walls**。Melica 还出售 Narin 和武器蓝图，所以在购买常规 Kuva 之前，请决定保留多少 Entropic Kuva 用于这些物品。"
+        },
+        {
+          "type": "info",
+          "text": "**Entropic Kuva 不直接用于支付 Riven 循环。** 兑换会给你常规 Kuva，然后你可以将其用于循环。42,000 的总量计算方式为 10,500 × 4，前提是拥有商店货币且有剩余的每周购买次数。"
+        },
+        {
+          "type": "tip",
+          "text": "**做好应对 Entropic Eximus 抗性的准备。** [Hotfix 44.0.1](https://www.warframe.com/en/patch-notes/pc/44-0-1) 解释说它们对非近战伤害有极高的抗性。使用合适的近战武器在泡泡内战斗；打破泡泡并不能消除该抗性。[Hotfix 44.0.2](https://www.warframe.com/en/patch-notes/pc/44-0-2) 修复了抗性应用两次以及 Mirage 分身击杀漏掉 Entropic Kuva 掉落的问题。"
+        }
+      ]
+    },
+    {
+      "id": "survival-fissure",
+      "title": "Kuva Survival 和 Requiem Fissure",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "在 **Taveuni** 上，被标记的敌人携带 **Kuva Catalyst**。将其带到一个未使用的生命支持塔以将其转换为 Harvester，然后保护它 **1 分钟**。完成防守会向小队发放 **200 基础 Kuva** 和少量的生命支持。如果 Harvester 被摧毁，你将失去该 Harvester 的 Kuva 奖励和塔。"
+        },
+        {
+          "type": "p",
+          "text": "当 Kuva Survival 作为 **Requiem Fissure** 可用时，携带 **Requiem Relic** 与 Harvester 目标一起开启。其奖励包括 Requiem Mod、Kuva、Riven Sliver 和 Exilus Weapon Adapter 蓝图。这些不是 Lith、Meso、Neo 或 Axi 遗物，因此这条路线不会为 Prime 部件开启那些遗物。在选择你的遗物之前，请检查活跃的任务类型。"
+        },
+        {
+          "type": "links",
+          "links": [
+            {
+              "label": "了解遗物类型",
+              "to": "/guides/relics",
+              "icon": "diamond-stone",
+              "note": "区分 Requiem 奖励与 Prime 遗物奖励"
+            },
+            {
+              "label": "开箱还是出售？遗物价值",
+              "to": "/relics-value",
+              "icon": "cash-multiple",
+              "note": "比较在单独的刷取流程中使用的 Prime 遗物"
+            }
+          ]
+        },
+        {
+          "type": "warn",
+          "text": "**保持持续性。** 转化每一个可用的生命维持塔可能会导致生命维持装置不足。注意任务进度条，保护每个收割机（Harvester），并在小队无法同时维持两个目标时撤离。较长的单次游戏时间并不等同于更高效的时间利用。"
+        }
+      ]
+    },
+    {
+      "id": "boosters",
+      "title": "加成道具与同伴模组：它们的作用对象",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**资源加成（Resource Booster）**可以使来自 Siphon、Flood 以及已完成的 Survival 收割机的符合条件的 Kuva 奖励翻倍。这并不意味着所有 Kuva 来源都会翻倍：商店购买和固定的奖励池组合包不属于资源拾取物。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**资源加成（Resource Booster）（2×）** — 增加符合条件的资源数量。资源掉落几率加成（Resource Drop Chance Booster）影响的是掉落几率，它并非对 Siphon 或收割机奖励的又一次自动翻倍。",
+            "**Resourceful Retriever** — 在最高等级时，提供被动的 **18% 几率**使资源拾取物翻倍。它是面向野兽同伴的资源导向型变体。",
+            "**Loyal Retriever** — 在最高等级时，提供被动的 **13% 几率**使资源或星币拾取物翻倍。以上两种 Retriever 选项均不适用于 **Venari**。",
+            "**Smeeta Charm 已在 Update 37 中更改** — 其旧的资源翻倍增益已被移除。请使用相关的 Retriever 模组来进行拾取翻倍，切勿等待旧的 Charm 资源增益。"
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "**根据符合条件的奖励进行规划。** Retriever 的几率对每个拾取物而言都是随机的，并非对每个任务奖励都进行保证式增加。在应用倍率前请检查来源，并按标明的数量计算 Melica 的 Kuva 组合包。"
+        }
+      ]
+    },
+    {
+      "id": "per-hour",
+      "title": "将 Kuva 预算转化为洗 Riven 的次数限制",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "你的产出取决于任务持续时间、完成的目标、加成道具和小队表现。制定消费预算比承诺每小时的刷取率更容易核对。对于已经达到最高基础循环费用的 Riven 来说，**35,000 Kuva** 的预算可以购买："
+        },
+        {
+          "type": "kv",
+          "kv": [
+            {
+              "k": "预算示例",
+              "v": "35,000 Kuva"
+            },
+            {
+              "k": "未锁定词条",
+              "v": "每次 3,500 → 10 次"
+            },
+            {
+              "k": "锁定一个词条",
+              "v": "每次 7,000 → 5 次"
+            },
+            {
+              "k": "较早的循环",
+              "v": "较低的基础费用；在循环前请检查显示的价格"
             }
           ]
         },
         {
           "type": "info",
-          "text": "旧指南中警告的每小时产量剧烈波动（因为要等待随机的 Smeeta Charm 资源触发）已经不复存在。Loyal Retriever 的翻倍是每次捡起时平滑的 13% 概率，因此刷取过程比以前稳定得多；你现在的效率取决于你的 frame、路线以及是否开启了加成或双倍周末。"
+          "text": "这是算术，而不是刷取率估算：35,000 ÷ 3,500 = 10，35,000 ÷ 7,000 = 5。在循环前设定好你的停止点，并保留任何制作所需的 Kuva。"
         }
       ]
     },
@@ -253,52 +296,58 @@
       "blocks": [
         {
           "type": "p",
-          "text": "重置 Riven 的属性可以直接在 mod 界面进行（**仅消耗 Kuva**）。不要将它与升级 Riven 混淆，升级需要消耗 Endo + 现金——Kuva 用于重新随机属性，而 [Endo](/guides/endo) 用于提升 mod 等级。每次重置的价格都会攀升，直到达到硬性上限："
+          "text": "在 Mod 界面中使用 **Cycle Riven** 来消耗 Kuva 洗 Riven。升级模组则会消耗 [Endo](/guides/endo) 和点数（Credit）。在没有锁定词条的情况下，循环费用从 **900 Kuva** 开始，最高上限为 **3,500 Kuva**。当锁定一个词条时，每次循环的费用是其正常价格的两倍。"
         },
         {
           "type": "table",
           "table": {
             "columns": [
-              "重置次数",
-              "约消耗 Kuva"
+              "循环",
+              "未锁定词条",
+              "锁定一个词条"
             ],
             "rows": [
               [
                 "第 1 次",
-                "900"
+                "900",
+                "1,800"
               ],
               [
                 "第 2 次",
-                "1,000"
+                "1,000",
+                "2,000"
               ],
               [
                 "第 3 次",
-                "1,200"
+                "1,200",
+                "2,400"
               ],
               [
                 "第 4 次",
-                "1,400"
+                "1,400",
+                "2,800"
               ],
               [
-                "…",
-                "每次循环递增"
+                "后面的循环",
+                "基础费用逐渐向上限增加",
+                "显示的基础费用的两倍"
               ],
               [
-                "约第 10 次及以后",
-                "3,500（上限）"
+                "达到基础费用上限",
+                "3,500",
+                "7,000"
               ]
             ],
-            "note": "近似消耗阶梯——中间的具体数值最好在维基上确认。关键事实：起步 900，上限 3,500。"
+            "note": "费用指每次循环所需的 Kuva。应用或解除锁定本身是免费的；当你带着锁定的词条进行循环时，系统会收取更高的费用。"
           }
         },
         {
-          "type": "quote",
-          "text": "当你刷了一整天 Kuva，除了更高的重置次数外一无所获时的心情。",
-          "cite": "r/Warframe"
+          "type": "info",
+          "text": "**词条锁定已在 Update 44 中上线。** 选择一个现有的词条以便在循环时保留它。只能锁定一个，并且正面和负面词条的当前数量保持不变。将其解锁以允许该布局发生更改。关闭循环菜单会清除锁定，因此下次请重新选择它。"
         },
         {
           "type": "tip",
-          "text": "重置是**纯粹的随机（RNG）**——一个属性好的 Riven 可能会被洗成差的，反之亦然。在开始之前设定一个目标，并查看 [Riven 价值估算器](/riven-value)，这样你就知道什么时候洗出的属性已经比你追求的完美属性更有价值了。如果一个 Riven 毫无希望，通过 [/endo](/endo) 将其分解为 Endo 通常比投入更多 Kuva 更聪明。"
+          "text": "循环后，你可以保留之前的结果或接受新的结果。保留旧结果并不会退还 Kuva 或撤销循环次数。锁定保留的是一个词条，它不会让你选择其余的随机词条。请将 [Riven 价值估算器](/riven-value) 作为市场参考，并在结果符合你的配装和预算时停下来。"
         },
         {
           "type": "links",
@@ -325,15 +374,15 @@
       "blocks": [
         {
           "type": "p",
-          "text": "**Kuva Lich** 是一种宿敌敌人——而不是资源。你可以通过在 Grineer 任务中（在完成 The War Within 后可用）使用慈悲斩杀击杀一名 **Kuva Larvling** 来创建一个 Lich。Lich 会占领领地，并在被击败时掉落一把带有随机加成（大约 25–60%）的 **Kuva 武器**。"
+          "text": "**Kuva Lich** 是一种与 **Kuva 武器**相关的宿敌敌人。用于洗 Riven 的 Kuva 资源是游戏中的另一个部分。如果你的目标是武器，请遵循 Lich 系统，而不是把时间花在 Siphon 刷取上。"
         },
         {
           "type": "p",
-          "text": "你不需要消耗 Kuva *资源* 来击败 Lich。你需要使用装有三个正确顺序的 **Requiem mod** 的 **Parazon** 来消灭它——而找出这个顺序本身就是一个谜题。Requiem mod 来自 **Requiem Relics**。这种层层叠加的随机性（遗物 → Requiem → 正确顺序 → 武器 → 好的加成数值）正是 Reddit 社区最喜欢抱怨的事情。"
+          "text": "Lich 的推进过程会用到 **Requiem 模组**和 **Parazon**。Requiem 秘宝（Relic）会提供这些模组，这也是为什么 Requiem 裂隙（Fissure）可以融入 Lich 讨伐中的原因。重新抽取武器的 Riven 是一个独立的决定，它消耗的是你常规的 Kuva 储备。"
         },
         {
           "type": "warn",
-          "text": "新手陷阱：刷取 Kuva 资源**永远**不会让你获得 Kuva 武器，而猎杀 Lich 也不会填满你用于重置属性的 Kuva 储备。它们是完全独立的刷取过程，只是共享了一个名字。"
+          "text": "**首先选择目标：** 狩猎 Kuva 武器、开启 Requiem 秘宝以及收集用于 Riven 的 Kuva 是相关联的活动，但奖励各不相同。该资源的库存本身并不能直接买到 Lich 的武器。"
         }
       ]
     }
@@ -377,7 +426,7 @@
       "label": "Void Relics 指南",
       "to": "/guides/relics",
       "icon": "diamond-stone",
-      "note": "一举两得：Kuva Survival 裂缝"
+      "note": "了解 Requiem 和 Prime 秘宝奖励"
     },
     {
       "label": "Endo 与白金价值",
@@ -389,7 +438,7 @@
       "label": "Steel Path 指南",
       "to": "/guides/steel-path",
       "icon": "skull",
-      "note": "难度更高的 Kuva Survival，更丰厚的收益"
+      "note": "准备迎接更高等级的任务及其奖励"
     },
     {
       "label": "社区常见问题",
@@ -401,54 +450,82 @@
   "faqs": [
     {
       "q": "在 Warframe 中 Kuva 有什么用？",
-      "a": "Kuva 的主要作用是重置 Riven mod 的属性——每次重置都会消耗 Kuva 来重新随机 Riven 的正面和负面属性。它也是少数铸造厂蓝图的制作原材料（少数 Warframe、Umbra Forma 和一些武器）。它与使用白金购买、制作或升级 Warframe 无关。有关重置如何运作，请参见 [Riven 指南](/guides/riven)。"
+      "a": "Kuva 用于重随 Riven mod 属性以及制造部分铸造厂蓝图。重随不会改变武器的倾向性。可选的词条锁定功能可以保留一条现有词条，但重随消耗会翻倍。完整规则请参考 [Riven 指南](/guides/riven)。"
     },
     {
       "q": "快速刷取 Kuva 的最佳方法是什么？",
-      "a": "连续刷 Kuva Siphon 并在 Flood 出现时顺便打掉，可以快速、低投入地获取 Kuva；或者在 Kuva Fortress 上运行 Kuva Survival 以进行持续大量刷取。将两者之一与资源数量加成搭配使用——并在野兽同伴上装备 Loyal Retriever，以获得 13% 的概率使每次捡起的 Kuva 翻倍——从而使收益倍增。在 Kuva Survival 作为 Void Fissure 出现时运行它，可以让你在刷取的同时开启 [遗物](/relic-farming) 以赚取白金。"
+      "a": "选择适合你解锁进度和游戏时间的来源：用于单次任务的 Siphons 或 Floods，用于重复 Harvester 防御的 Taveuni 生存，或是可用的商人兑换。Melica 在 Update44 中的兑换允许用 Entropic Kuva 每周兑换多达四次 10,500 常规 Kuva。Kuva 生存 Requiem 裂隙可以开启 Requiem 遗物；它们不会产出来自 Lith、Meso、Neo 或 Axi 遗物的 Prime 部件。"
     },
     {
       "q": "重置一个 Riven 需要消耗多少 Kuva？",
-      "a": "第一次重置消耗约 900 Kuva，价格在每次循环中都会攀升，在大约十次重置后达到约 3,500 Kuva 的永久上限。重置是纯粹的随机（RNG），因此在将 Kuva 投入到可能会让你后悔的属性之前，请先查看 [Riven 价值估算器](/riven-value)。"
+      "a": "在没有锁定词条的情况下，首次重随消耗 900 Kuva，后续重随最高上升至 3,500 的上限。锁定一个词条会使这些价格最初翻倍至 1,800，上限时达到 7,000。应用或移除锁定是免费的。重随後你可以保留之前的结果，但已消耗的 Kuva 不会退还。"
     },
     {
       "q": "Kuva 和 Kuva Lich 之间有什么区别？",
-      "a": "Kuva 是你为了重置 Riven 而刷取的资源。Kuva Lich 是一种宿敌敌人，你通过慈悲斩杀一名 Larvling 来创建它，然后通过猎杀它来获取 Kuva 武器。它们共享 “Kuva” 这个名字，但完全是独立的系统——你通过 Requiem mod 和你的 Parazon 来击败 Lich，而不是通过消耗 Kuva 资源。"
+      "a": "Kuva 是一种用于 Riven 重随和制造的资源。Kuva Lich 是为了获取 Kuva 武器而追捕的宿敌敌人。Lich 的推进需要使用 Requiem mod 和 Parazon；拥有常规 Kuva 并不能替代该过程。"
     },
     {
       "q": "我该如何解锁 Kuva Siphon？",
-      "a": "完成 The War Within 系列任务。之后，Kuva Siphon 和 Kuva Flood 标记会轮流出现在整个 Origin System 的星图节点上，并且带有 Survival 节点的 Kuva Fortress 也会开启。你还需要该任务中获得的 Operator 的 Void 能力来实际摧毁虹吸器的触手。有关如何到达该阶段，请查看 [任务指南](/guides/quests)。"
+      "a": "完成 The War Within 并达到段位 5。随后 Kuva Siphon 和 Flood 任务会出现在轮换的星图节点上。在 Siphon 目标期间，使用你的 Operator 的 Void 能力或 Amp 来拦截云团。剧情推进请参见[任务指南](/guides/quests)。"
     },
     {
       "q": "Smeeta Kavat 会使 Kuva 翻倍吗？",
-      "a": "不再通过它的 Charm 实现了。自更新 37（2024 年 10 月）起，资源翻倍效果已从 Smeeta 的 Charm 中移除，并转移到了一个独立的 mod——Loyal Retriever 上。该 mod 提供固定的 13% 概率使每次捡起的资源（包括 Kuva）翻倍，并且可以装备在任何野兽同伴（Kubrow、Kavat 等）上。Smeeta 对于 Charm 的其他加成仍然很有用，但你不再特定需要它来使你的 Kuva 翻倍。"
+      "a": "Smeeta 的 Charm 不再提供其旧的资源双倍增益。Update 37 将拾取物加倍移动到了野兽同伴的 Retriever Mod，Venari 除外。在最高级时，Resourceful Retriever 提供 18% 的资源拾取加倍几率；Loyal Retriever 为资源或星币拾取提供 13%。两者都不能保证每次 Kuva 奖励都翻倍。"
     },
     {
       "q": "可以购买或交易 Kuva 吗？",
-      "a": "不行。Kuva 是一种不可交易的资源，无法使用白金购买——你必须自己去刷。你可以交易用它重置过的 Riven，但绝不能交易 Kuva 本身。如果你想要赚取白金，请参阅 [白金指南](/guides/platinum)。"
+      "a": "常规 Kuva 不能在玩家之间直接交易，但它可以通过游戏内商人兑换获得。例如，Melica 接受用 Entropic Kuva 兑换常规 Kuva 礼包，并设有每周购买限制。请检查商人的货币和报价，而不要假设 Kuva 仅来自 Siphons。"
     },
     {
       "q": "资源数量加成对 Kuva 有效吗？",
-      "a": "有效——资源数量加成会使所有获得的 Kuva 翻倍，并且双倍资源周末活动还可以与其叠加（在运行加成时最高可达约 4×）。将你大规模重置属性的计划留到有加成的时期，以使每次运行的收益最大化。"
+      "a": "资源加成道具会影响符合条件的 Kuva 获取，例如 Siphon、Flood 和完成的 Harvester 奖励。它们不会使每个来源都加倍：商人购买和固定的奖励列表礼包不属于资源拾取。资源掉落几率加成道具改变的是掉落几率，而不是每个 Kuva 奖励的数量。"
     }
   ],
   "sources": [
     {
-      "label": "So let me get this straight… RNG relics → Requiems → Kuva Liches → weapon rolls (r/Warframe)",
-      "href": "https://reddit.com/r/Warframe/comments/dr46xo/so_let_me_get_this_straight_we_need_to_farm_rng/"
+      "label": "Update 44: Iceblade of Narin — Melica, Entropic Kuva and Trait Locking",
+      "href": "https://www.warframe.com/en/patch-notes/pc/44-0-0"
     },
     {
-      "label": "TFW you farm Kuva all day and have nothing to show for it besides a higher roll count (r/Warframe)",
-      "href": "https://reddit.com/r/Warframe/comments/ci5f0x/tfw_you_farm_kuva_all_day_and_have_nothing_to/"
+      "label": "Warframe — Hotfix 44.0.1: Entropic Eximus resistance",
+      "href": "https://www.warframe.com/en/patch-notes/pc/44-0-1"
     },
     {
-      "label": "Kuva farming actually felt good during 2x weekend (r/Warframe)",
-      "href": "https://reddit.com/r/Warframe/comments/b5a4za/kuva_farming_actually_felt_good_during_2x_weekend/"
+      "label": "Warframe — Hotfix 44.0.2: Entropic Eximus fixes",
+      "href": "https://www.warframe.com/en/patch-notes/pc/44-0-2"
     },
     {
-      "label": "Warframe Wiki",
-      "href": "https://wiki.warframe.com/"
+      "label": "Riven Expansion — official Trait Locking workshop",
+      "href": "https://forums.warframe.com/topic/1523869-riven-expansion-trait-locking-riven-splicing/"
+    },
+    {
+      "label": "Update 37 — Retriever mods and Smeeta Charm changes",
+      "href": "https://www.warframe.com/en/patch-notes/pc/37-0-0"
+    },
+    {
+      "label": "Update 35 — Kuva Siphon access requirements",
+      "href": "https://www.warframe.com/en/patch-notes/pc/35-0-0"
+    },
+    {
+      "label": "Update 22.17.0 — Kuva Survival mechanics and booster eligibility",
+      "href": "https://www.warframe.com/en/patch-notes/pc/22-17-0"
+    },
+    {
+      "label": "Relic Hunting 101 — official Requiem Relic rewards guide",
+      "href": "https://www.warframe.com/en/news/relic-hunting-101"
+    },
+    {
+      "label": "Update 19.0.6 — cycle costs and choosing the previous result",
+      "href": "https://www.warframe.com/en/patch-notes/pc/19-0-6"
+    },
+    {
+      "label": "Update 19.4 — base Kuva cycle cost capped at 3,500",
+      "href": "https://www.warframe.com/en/patch-notes/pc/19-4-1"
+    },
+    {
+      "label": "Warframe Wiki — Kuva Siphon base reward ranges",
+      "href": "https://warframe.fandom.com/wiki/Kuva_Siphon"
     }
   ],
-  "updated": "2026-07-18"
+  "updated": "2026-09-30"
 }

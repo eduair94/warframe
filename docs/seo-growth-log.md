@@ -474,3 +474,190 @@ cycling cost/stat-count statements as universal; distinguish the still-unrelease
 Continue the builds locale gap and board localization. Recheck the dated login offer around
 October 7 and the separate Forma eligibility deadline rather than retaining undated availability
 claims. Keep monitoring current data and use connected analytics to measure complete windows.
+
+## 2026-09-24 13:01 UTC — Riven Trait Locking and current Kuva budgeting
+
+This draft was paused before translation and deployment. Work resumed on September 30;
+the continuation below records the new source review and production baseline for release.
+
+### Baseline and opportunity
+
+The preceding Forma iteration deployed commit `586d240` successfully in
+[run 35999247193](https://github.com/eduair94/warframe/actions/runs/35999247193).
+Its public verification passed all 21 checks at 12:35 UTC, including the new frontend asset,
+all thirteen Forma guides and the newly server-rendered Forma board explanations.
+This iteration began clean and synchronized with main; no deployment or guide refresh was active.
+
+Ordinary public requests at 13:02 UTC confirmed API/Mongo, frontend, the current `BFzQWRPh.js`
+asset and live feed were healthy. The catalogue contained 3,873 valid timestamps, a median age
+of 174 seconds, 3,675 records under ten minutes old and none older than a day. Market analytics
+contained 3,873 items and were generated about eighteen seconds before the check.
+Riven and Kuva guides in English and Spanish returned 200 with self canonicals, index/follow,
+26 hreflang aliases and localized headings. Their visible and Article review dates were July 18;
+the server-rendered content did not cover Trait Locking. Eighteen related internal destinations
+were checked and returned the expected pages without observed broken links.
+
+Supermetrics was retried once and still returned UNAUTHORIZED, requiring reconnection. No
+traffic/query statistics or property timezone were available; the complete 7-day and 28-day
+comparison windows remain those recorded above. Browser authentication timeouts were not
+repeated. Unavailable analytics are not zero traffic, and this iteration claims no traffic gain.
+
+The content opportunity is a newly released mechanic that changes both the instructions and
+the resource budget for an existing search topic. The hypothesis is that current, concrete
+answers to locking and cycling-cost questions help readers act correctly and retain useful
+visitors. It is not a measured ranking, click-through or retention effect.
+
+### Source review and changes
+
+[Update 44](https://www.warframe.com/en/patch-notes/pc/44-0-0) establishes that Trait Locking
+is live, allows one existing trait to remain during cycling, doubles the Kuva charge and fixes
+the positive/negative layout while active. Closing the menu removes the lock. Its
+[developer workshop](https://forums.warframe.com/topic/1523869-riven-expansion-trait-locking-riven-splicing/)
+is supplementary; the release notes take precedence over previews. Splicing remains separately
+announced for the later Glacial Defiance release, with a dated statement rather than current
+availability or invented acquisition details.
+
+The original base cost and selection mechanics were checked against
+[Hotfix 19.0.6](https://www.warframe.com/en/patch-notes/pc/19-0-6), and the ordinary 3,500 cap
+against [Update 19.4](https://www.warframe.com/en/patch-notes/pc/19-4-1). The doubled 7,000
+cost and 35,000-Kuva budget example follow directly from those inputs; they predict spending,
+not the number of good rolls. The
+[September Disposition announcement](https://forums.warframe.com/topic/1523355-september-2026-riven-dispositions/)
+supports removing universal price predictions and the suggestion that cycling changes
+weapon Disposition. The Riven article also clarifies equipping the challenged Mod and avoids
+ranking rolls solely by the number of stat lines. Current primary sources precede older references.
+
+Kuva's related spending advice is updated alongside the Riven article to avoid contradicting
+the new feature. The registry summary no longer describes the Kuva resource as fuel for
+obtaining Kuva weapons. The substantive source review justifies updating these two guide dates;
+other guide dates remain unchanged. Source details and validation are completed before release.
+
+### Translation safeguards
+
+Before editing, all twelve Kuva snapshots matched their English baseline. Ten Riven snapshots
+also matched; Polish and Ukrainian omitted only the final sentence/link in one paragraph.
+History confirmed this was a localized omission rather than a different English structure.
+The delta process preserves fields only when stable section ID, subpath and English text match;
+the two omitted paragraphs are explicitly refreshed. It does not discard otherwise usable
+Polish or Ukrainian translations. The existing SDK and shared request pacing are reused, with
+raw responses preserved for independent review; suspicious numerical formatting is reviewed
+for exact equivalence instead of automatically regenerating valid local notation.
+
+### Release and next review
+
+All intended content, metadata and this record will be committed before the full API/frontend/live
+deployment. The task will report the final workflow and public checks without a trailing
+documentation-only commit. Recheck the Splicing release when announced, continue the builds
+translation gap and unresolved guide drift, and restore analytics access for outcome measurement.
+
+## 2026-09-30 — Riven/Kuva review resumed with current release notes
+
+### Current production and measurement baseline
+
+The work resumed on `ac98bc3`, preserving the intervening outage-runbook changes. That commit
+was deployed successfully by [run 36539300826](https://github.com/eduair94/warframe/actions/runs/36539300826)
+on September 29 at 07:56 UTC. No competing deploy or guide refresh was active at resumption.
+The September 29 provider network outage had recovered; this iteration does not switch hosts
+or claim the separate, still-unrouted edge outage Worker is protecting the public hostnames.
+
+At approximately 16:51 UTC, public API/Mongo, frontend, current `BFzQWRPh.js` asset and live
+feed were healthy. API uptime was 118,461 seconds; all three server processes were online.
+The catalogue had 3,892 valid timestamps, median age 145 seconds, 3,697 under ten minutes,
+none in the future and one older than a day. Market analytics were about thirty seconds old.
+The deployed service worker still used the public API origin and its intended cache exclusions.
+
+The exceptional record was Perrin Arm Guards, last priced September 26 at 12:36:51 UTC.
+Read-only checks at 16:55–16:57 UTC found that the upstream item, page, orders and statistics
+all returned 200: one seller offered 25 platinum but was offline, and closed-trade statistics
+were empty. Excluding offline sellers leaves no valid current price, so the importer correctly
+preserves the last valid timestamp rather than inventing freshness. The stored order book also
+retains its former 200-platinum offer and seller presence. Although the UI shows its real age,
+an explicit stale state and suppression of old presence/contact actions remain a follow-up.
+Distinguish last checked from last valid price in that work; do not substitute an offline quote
+for a currently available offer or delete a valid upstream item.
+
+Supermetrics was retried once on September 30 and returned UNAUTHORIZED. Search Console/GA4
+statistics and property timezone remain unavailable. The intended complete comparison windows
+are September 23–29 versus September 16–22 (seven days), and September 2–29 versus August 5–
+September 1 (28 days), subject to the property timezone when access is restored. These are
+measurement windows, not results; unavailable analytics do not establish zero traffic or growth.
+
+### Additional substantive source review
+
+The official patch index still listed [44.0.2](https://www.warframe.com/en/patch-notes/pc/44-0-2)
+as the latest PC hotfix during this review. The September 29 update to the
+[Glacial Defiance announcement](https://forums.warframe.com/topic/1523427-psa-glacial-defiance-release-window-outdated/)
+announces October 7, 2026. Both the Riven article and its FAQ now date that upcoming Splicing
+status explicitly. Trait Locking is already available. The article also covers shotgun Zoom
+traits and the invalid-roll fixes and completed Kuva refund script in 44.0.2.
+
+Kuva now distinguishes regular Kuva from Entropic Kuva and explains Melica's exchange:
+10,500 regular Kuva per purchase, four weekly purchases, a calculated 42,000 maximum subject
+to currency and remaining purchases. It names the shop locations and quest requirements
+without inventing an Entropic Kuva price. [44.0.1](https://www.warframe.com/en/patch-notes/pc/44-0-1)
+and 44.0.2 ground the new Entropic Eximus resistance and drop-fix advice. The guide corrects
+the old Prime-relic claim for Requiem Fissures, explains the one-minute/200-base-Kuva Harvester
+objective, separates eligible booster rewards from vendor bundles, and replaces unmeasured
+Kuva-per-hour promises with explicit cycling budgets. Companion, access and Survival details
+were also checked against official Updates 37.0, 35.0 and 22.17.
+
+These substantive reviews justify September 30 dates for these two guides only. English
+content was frozen before translation. The reviewed delta is 72 changed Riven fields with
+79 preserved fields, and 97 changed Kuva fields with 59 preserved fields per locale. The
+translation process refreshes the 169 changed fields and retains 138 fields only where the
+English text and stable structural path match. Twenty-four snapshots and the corresponding
+26 localized SEO entries are included in the release scope.
+Large initial translation requests did not all produce a usable cache. The remaining work
+uses cached batches of up to forty fields; some successful small batches still took more
+than two minutes. Two workers share the existing minimum thirteen-second start gate,
+with the existing quota/access stop rules and no model or account change. Independent review
+identified specific terminology and meaning errors for small SDK-backed repairs rather than
+regenerating valid translations or accepting numerical integrity as proof of linguistic quality.
+A Simplified Chinese batch that echoed English was rejected and retried in isolation. A
+temporary provider 503 affected the final Polish chunks; the successful chunks were retained
+and the missing portion recovered through the paced retry. Repeated open-ended precision
+requests also introduced unrelated wording errors. After all generators stopped, the remaining
+reviewer-approved substring corrections in generated fields were applied by a helper
+that asserted one exact match for each old span and recorded before/after hashes. Surrounding
+text was preserved; this final normalization did not relax the content or translation guards.
+
+### Validation and release
+
+Fresh September 30 local checks passed: 548 API tests, 37 frontend tests and 26 guide
+regression tests (611 total), plus i18n compilation and the generated repository-map check.
+At 17:00 UTC, all twelve distinct internal destinations in the final English articles returned
+200 with appropriate page titles and self canonicals, without redirects or observed soft 404s.
+That inspection also found four linked tools whose H1 was absent from initial HTML because
+of their client boundary. This iteration moves the existing localized Riven estimator heading,
+eyebrow and introduction into the server render. Its dynamic estimate card, filters, results
+and disclaimer retain client boundaries, and the existing fallback table remains available.
+No wording, translation keys, estimator calculations or styling are changed. The same rendering
+opportunity on `/endo`, `/flip` and `/relics-value` remains in the follow-up queue.
+Focused client/server compilation and an actual vue-i18n server render passed for English
+and Spanish: exactly one localized H1, introduction, eyebrow and fallback table, with the
+dynamic card and estimator excluded from server output. A normalized mounted-DOM comparison
+matched the previous page, the script and styles were unchanged, and the reused keys existed
+in all thirteen locales. The production verification covers all thirteen estimator pages.
+The 37 frontend regression tests also passed again after the page-boundary change.
+Both independent locale reviewers approved the final twenty-four files: 2,028 changed field
+pairs match their reviewed caches and frozen English, and 1,656 unchanged fields are retained.
+Final guide validation checked all 25 guides with zero failures; Riven and Kuva no longer
+appear in the translation follow-up queue. The remaining queue is builds in twelve locales,
+Archon Shards in Russian, Focus and Resources in Simplified Chinese, and Standing in Polish.
+The 26 title/description pairs now derive from the current localized guides and were reviewed
+for content and usable length; Kuva descriptions retain the concrete sources and booster advice.
+Repository-map and whitespace checks passed. The prepared public verification covers 26 guide
+pages, thirteen estimator pages and six service/data checks, reading visible server HTML rather
+than accepting embedded hydration data as page content.
+
+All intended content, rendering, metadata and documentation changes are included before the
+full API/frontend/live deployment. The task reports its observed workflow result and public
+checks, without leaving a final documentation-only commit undeployed. The absence of connected
+analytics still prevents a measured traffic or ranking claim.
+
+### Next review
+
+Recheck Splicing and the dated Forma offer on October 7. Continue the twelve-locale builds
+gap and remaining guide structure drift; restore analytics access before attributing traffic
+changes. The exceptional stale order-book presentation and separate edge outage routing
+remain concrete follow-up items, without manufacturing data freshness or recovery coverage.

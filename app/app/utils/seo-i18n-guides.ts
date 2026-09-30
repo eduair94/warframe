@@ -67,8 +67,8 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
       "description": "Cómo farmear Focus en Warframe: desbloquea al Operator, elige escuela y usa los mejores farmeos, lentes y esferas de convergencia. Sube tus escuelas de forma eficiente."
     },
     "/guides/kuva": {
-      "title": "Guía de farmeo de Kuva en Warframe — Métodos rápidos",
-      "description": "Las mejores formas de farmear Kuva en Warframe para re-rolls de rivens y armas Kuva — misiones de Survival, Siphon y Flood, boosters y tasas realistas."
+      "title": "Guía de farmeo de Kuva: Fuentes, potenciadores y costes de Riven | Warframe",
+      "description": "Compara Siphons, Floods, Supervivencia y el nuevo intercambio semanal de Melica, comprende a qué recompensas afectan los potenciadores y haz un presupuesto para el Bloqueo de Atributos opcional de la actualización 44."
     },
     "/guides/relics": {
       "title": "Guía de farmeo de Relic y Void Trace en Warframe",
@@ -95,8 +95,8 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
       "description": "Qué hacen los arcanes en Warframe, cómo subirlos de rango, dónde caen y los arcanes básicos que merece la pena farmear. Potencia tus frames, armas y operator."
     },
     "/guides/riven": {
-      "title": "Rivens de Warframe explicados — Disposition y re-rolls",
-      "description": "Todo sobre los rivens de Warframe: disposition, re-rolls con Kuva, valoración, rivens velados y por qué los rivens malos son Endo barato. Nociones básicas de trading de rivens."
+      "title": "Mods Riven: Bloqueo de atributos, costes de Kuva y comercio | Warframe",
+      "description": "Aprende cómo funcionan los Mods Riven, conserva una estadística existente con el Bloqueo de atributos, compara los costes de Kuva y evalúa una tirada antes de comerciar."
     },
     "/guides/steel-path": {
       "title": "Guía de Steel Path en Warframe — Desbloqueo y Steel Essence",
@@ -185,8 +185,8 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
       "description": "Como farmar Focus em Warframe: desbloqueie o Operator, escolha uma escola e use os melhores farms de focus, lentes e orbes de convergência. Suba suas escolas com eficiência."
     },
     "/guides/kuva": {
-      "title": "Guia de Farm de Kuva Warframe — Métodos Rápidos",
-      "description": "As melhores formas de farmar Kuva em Warframe para re-rolls de riven e armas Kuva — missões de Survival, Siphon e Flood, boosters e taxas realistas."
+      "title": "Guia de Farming de Kuva: Fontes, Boosters e Custos de Riven | Warframe",
+      "description": "Compare Siphons, Floods, Survival e a nova troca semanal da Melica, entenda quais recompensas os boosters afetam e faça o orçamento para o Trait Locking opcional da Update 44."
     },
     "/guides/relics": {
       "title": "Guia de Farm de Relic e Void Trace Warframe",
@@ -213,8 +213,8 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
       "description": "O que os arcanes fazem em Warframe, como upá-los, onde dropam e os arcanes essenciais que valem a pena farmar. Turbine seus frames, armas e operator."
     },
     "/guides/riven": {
-      "title": "Riven Mods Warframe Explicados — Disposition e Rolls",
-      "description": "Tudo sobre riven mods de Warframe: disposition, roll com Kuva, avaliação, rivens veiled e por que rivens ruins são Endo barato. O básico do trade de riven."
+      "title": "Mod Riven: Trait Locking, Custos de Kuva e Negociação | Warframe",
+      "description": "Aprenda como os Riven Mods funcionam, preserve um atributo existente com o Trait Locking, compare os custos de Kuva e avalie um roll antes de negociar."
     },
     "/guides/steel-path": {
       "title": "Guia de Steel Path Warframe — Desbloqueio e Steel Essence",
@@ -303,8 +303,8 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
       "description": "Wie du Focus in Warframe farmst: Schalte den Operator frei, wähle eine Schule und nutze die besten Focus-Farms, Linsen und Konvergenz-Kugeln. Level deine Schulen effizient."
     },
     "/guides/kuva": {
-      "title": "Warframe Kuva-Farming Guide — Schnelle Methoden",
-      "description": "Die besten Wege, Kuva in Warframe zu farmen für Riven-Neuwürfe und Kuva-Waffen — Survival-, Siphon- und Flood-Missionen, Booster und realistische Raten."
+      "title": "Kuva-Farming-Guide: Quellen, Booster & Riven-Kosten | Warframe",
+      "description": "Vergleiche Siphons, Floods, Survival und Melicas neues wöchentliches Tauschgeschäft, verstehe, welche Belohnungen von Boostern beeinflusst werden, und budgetiere für das optionale Trait Locking von Update 44."
     },
     "/guides/relics": {
       "title": "Warframe Relic & Void Trace Farming Guide",
@@ -331,8 +331,8 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
       "description": "Was Arcanes in Warframe bewirken, wie du sie levelst, wo sie droppen und die essenziellen Arcanes, die sich zu farmen lohnen. Verstärke deine Frames, Waffen und Operator."
     },
     "/guides/riven": {
-      "title": "Warframe Riven Mods erklärt — Disposition & Würfeln",
-      "description": "Alles über Warframe Riven Mods: Disposition, Würfeln mit Kuva, Bewertung, verschleierte Rivens und warum schlechte Rivens billiges Endo sind. Grundlagen des Riven-Handels."
+      "title": "Riven-Mods: Attributssperre, Kuva-Kosten & Handel | Warframe",
+      "description": "Erfahre, wie Riven-Mods funktionieren, bewahre eine bestehende Eigenschaft mit der Attributssperre, vergleiche die Kuva-Kosten und bewerte einen Roll vor dem Handel."
     },
     "/guides/steel-path": {
       "title": "Warframe Steel Path Guide — Freischalten & Essence",
@@ -421,8 +421,8 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
       "description": "Comment farmer le Focus dans Warframe : débloquez l'Operator, choisissez une école et utilisez les meilleurs farms de Focus, lentilles et orbes de convergence. Montez vos écoles efficacement."
     },
     "/guides/kuva": {
-      "title": "Guide de farm de Kuva Warframe — Méthodes rapides",
-      "description": "Les meilleures façons de farmer le Kuva dans Warframe pour re-roll vos rivens et les armes Kuva — missions Survie, Siphon et Déluge, boosters et taux réalistes."
+      "title": "Guide de farming de Kuva : Sources, Boosters & Coûts de Riven | Warframe",
+      "description": "Comparez les Siphons, les Floods, la Survie et le nouvel échange hebdomadaire de Melica, comprenez quelles récompenses sont affectées par les boosters, et budgétisez pour le verrouillage de caractéristique optionnel de la mise à jour 44."
     },
     "/guides/relics": {
       "title": "Guide de farm de Relic & Void Trace Warframe",
@@ -449,8 +449,8 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
       "description": "Ce que font les arcanes dans Warframe, comment les monter, où ils tombent et les arcanes incontournables à farmer. Boostez vos frames, armes et Operator."
     },
     "/guides/riven": {
-      "title": "Mods Riven Warframe expliqués — Disposition & re-roll",
-      "description": "Tout sur les mods Riven de Warframe : disposition, re-roll au Kuva, notation, rivens voilés et pourquoi les mauvais rivens sont de l'Endo pas cher. Les bases du trading de Riven."
+      "title": "Mods Riven : verrouillage de caractéristique, coûts de Kuva et échange | Warframe",
+      "description": "Apprenez le fonctionnement des Mods Riven, préservez une statistique existante grâce au verrouillage de caractéristique, comparez les coûts en Kuva et évaluez un jet avant de l'échanger."
     },
     "/guides/steel-path": {
       "title": "Guide Steel Path Warframe — Débloquer & Steel Essence",
@@ -539,8 +539,8 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
       "description": "Как фармить Focus в Warframe: откройте Operator, выберите школу и используйте лучшие фармы Focus, линзы и сферы конвергенции. Качайте школы эффективно."
     },
     "/guides/kuva": {
-      "title": "Гайд по фарму Kuva Warframe — быстрые методы",
-      "description": "Лучшие способы фармить Kuva в Warframe для ре-роллов Riven и оружия Kuva — миссии Survival, Siphon и Flood, бустеры и реальные показатели дропа."
+      "title": "Гайд по фарму Kuva: источники, бустеры и стоимость Riven | Warframe",
+      "description": "Сравните Сифоны (Siphons), Наводнения (Floods), выживание и новый еженедельный обмен Цефалона Мелики, разберитесь, на какие награды влияют бустеры, и заложите в бюджет затраты на опциональную блокировку свойств из Update 44."
     },
     "/guides/relics": {
       "title": "Гайд по фарму Relic и Void Trace в Warframe",
@@ -567,8 +567,8 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
       "description": "Что делают арканы в Warframe, как их прокачивать, где они падают и какие ключевые арканы стоит фармить. Усильте свои фреймы, оружие и Operator."
     },
     "/guides/riven": {
-      "title": "Моды Riven в Warframe — disposition и ре-роллы",
-      "description": "Всё о модах Riven в Warframe: disposition, ре-роллы через Kuva, оценка, скрытые Riven и почему плохие Riven — дешёвый Endo. Основы торговли Riven."
+      "title": "Riven-моды: блокировка свойств, затраты Kuva и торговля | Warframe",
+      "description": "Узнайте, как работают Riven-моды, сохраняйте одну существующую характеристику с помощью блокировки свойств, сравнивайте затраты Kuva и оценивайте ролл перед торговлей."
     },
     "/guides/steel-path": {
       "title": "Гайд по Steel Path Warframe — открытие и Steel Essence",
@@ -657,8 +657,8 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
       "description": "Warframe에서 Focus를 파밍하는 법: Operator 해금, 스쿨 선택, 최고의 Focus 파밍처·렌즈·컨버전스 오브 활용까지. 스쿨을 효율적으로 레벨링하세요."
     },
     "/guides/kuva": {
-      "title": "Warframe Kuva 파밍 가이드 — 빠른 방법",
-      "description": "Riven 리롤과 Kuva 무기를 위한 Warframe Kuva 파밍 최고의 방법 — Survival, Siphon, Flood 미션, 부스터, 현실적인 획득량까지."
+      "title": "Kuva 파밍 가이드: 출처, 부스터 및 Riven 비용 | Warframe",
+      "description": "감당할 수 있는 Riven 수치 변경에 맞춰 Kuva 파밍을 계획하세요. Siphon, Flood, 생존(Survival) 및 Melica의 새로운 주간 교환을 비교하고, 어떤 보상 부스터가 적용되는지 이해하며, Update 44의 선택적 특성 잠금에 대비해 예산을 세우세요."
     },
     "/guides/relics": {
       "title": "Warframe Relic & Void Trace 파밍 가이드",
@@ -685,8 +685,8 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
       "description": "Warframe에서 Arcane의 효과, 랭크업 방법, 드롭 위치, 파밍할 가치가 있는 핵심 Arcane까지. 프레임·무기·Operator를 강화하세요."
     },
     "/guides/riven": {
-      "title": "Warframe Riven 모드 완벽 설명 — Disposition & 리롤",
-      "description": "Warframe Riven 모드의 모든 것: disposition, Kuva 리롤, 등급, veiled Riven, 나쁜 Riven이 값싼 Endo인 이유까지. Riven 거래 기초."
+      "title": "Riven Mod: 특성 고정, Kuva 비용 및 거래 | Warframe",
+      "description": "Riven Mod의 작동 방식, 특성 고정으로 기존 수치 하나 유지, Kuva 비용 비교 및 거래 전 롤 평가 방법을 알아보세요. Update 44 규칙 및 발표된 Riven Splicing 상태가 포함되어 있습니다."
     },
     "/guides/steel-path": {
       "title": "Warframe Steel Path 가이드 — 해금 & Steel Essence",
@@ -775,8 +775,8 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
       "description": "Warframeでフォーカスを周回する方法：Operatorの解放、学派選び、最適なフォーカス周回・レンズ・コンバージェンス。学派を効率的にレベル上げ。"
     },
     "/guides/kuva": {
-      "title": "Warframe Kuva周回ガイド — 高速な方法",
-      "description": "WarframeでKuvaを周回する最適な方法。Rivenの振り直しやKuva武器向け — 耐久・Siphon・Floodミッション、ブースター、現実的な効率。"
+      "title": "Kuvaファームガイド：入手源、ブースター、Rivenコスト | Warframe",
+      "description": "自分が用意できるRivenの再抽選に合わせてKuvaファームの計画を立てましょう。シフォン、フラッド、サバイバル、そしてMelicaの新しい週替わり交換を比較し、どの報酬がブースターの影響を受けるかを理解し、アップデート44の任意の特性ロックに向けた予算を立てましょう。"
     },
     "/guides/relics": {
       "title": "Warframe Relic・Void Trace周回ガイド",
@@ -803,8 +803,8 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
       "description": "Warframeでアルケインの効果、ランクの上げ方、ドロップ場所、周回する価値のある定番アルケイン。フレーム・武器・Operatorを強化しよう。"
     },
     "/guides/riven": {
-      "title": "Warframe Riven MOD解説 — ディスポジションと振り直し",
-      "description": "Warframe Riven MODの全て：ディスポジション、Kuvaでの振り直し、評価、Veiled Riven、なぜ弱いRivenが安いEndoになるのか。Rivenトレードの基本。"
+      "title": "Riven Mod: 特性ロック、Kuvaコスト & トレード | Warframe",
+      "description": "Riven Modの仕組み、特性ロックによる既存ステータスの保持、Kuvaコストの比較、そしてトレード前のロール評価について解説します。Update 44のルールおよび、アナウンスされたRivenスプライシングの状況を含みます。"
     },
     "/guides/steel-path": {
       "title": "Warframe Steel Pathガイド — 解放とSteel Essence",
@@ -893,8 +893,8 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
       "description": "如何在 Warframe 中farm Focus：解锁 Operator、选择流派并使用最佳 focus farm点、透镜与聚焦球。高效提升你的流派等级。"
     },
     "/guides/kuva": {
-      "title": "Warframe Kuva farm 攻略 — 快速方法",
-      "description": "在 Warframe 中farm Kuva 的最佳方法，用于 Riven 洗词条和 Kuva 武器——生存、Siphon 与 Flood 任务、加成与真实产出率。"
+      "title": "Kuva刷取指南：来源、加成与Riven消耗 | Warframe",
+      "description": "根据你能承受的Riven洗炼来规划你的Kuva刷取。对比Siphon、Flood、生存和Melica的新每周兑换，了解哪些奖励受加成影响，并为Update 44的可选词条锁定做好预算。"
     },
     "/guides/relics": {
       "title": "Warframe Relic 与 Void Trace farm 攻略",
@@ -921,8 +921,8 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
       "description": "Arcane 在 Warframe 中有什么用、如何升级、在哪掉落，以及值得farm的核心 Arcane。强化你的战甲、武器与 Operator。"
     },
     "/guides/riven": {
-      "title": "Warframe Riven Mod 详解 — 倾向与洗词条",
-      "description": "关于 Warframe Riven Mod 的一切：倾向、用 Kuva 洗词条、评级、蒙面 Riven，以及为什么废 Riven 是廉价 Endo。Riven 交易入门。"
+      "title": "Riven Mods：词条锁定、Kuva 消耗与交易 | Warframe",
+      "description": "了解 Riven Mods 的工作原理，使用词条锁定保留一个现有属性，对比 Kuva 消耗并在交易前评估 Roll 值。包含 Update 44 规则以及 Riven Splicing 的已公布状态。"
     },
     "/guides/steel-path": {
       "title": "Warframe Steel Path 攻略 — 解锁与 Steel Essence",
@@ -1011,8 +1011,8 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
       "description": "如何在 Warframe 刷 Focus：解鎖 Operator、選擇流派並善用最佳 Focus 農場、透鏡與匯聚球。高效升級你的流派。"
     },
     "/guides/kuva": {
-      "title": "Warframe Kuva 農場指南 — 快速方法",
-      "description": "在 Warframe 刷 Kuva 的最佳方式，用於 Riven 洗詞條與 Kuva 武器 — 生存、Siphon 與 Flood 任務、加成與實際產出率。"
+      "title": "Kuva 資源取得指南：來源、加成與 Riven 消耗 | Warframe",
+      "description": "根據你負擔得起的 Riven 洗鍊來規劃你的 Kuva 資源取得。比較 Siphon、Flood、生存（Survival）以及 Cephalon Melica 全新每週兌換，了解哪些獎勵會受到加成道具影響，並為 Update 44 的選配詞條鎖定做好預算。"
     },
     "/guides/relics": {
       "title": "Warframe Relic 與 Void Trace 農場指南",
@@ -1039,8 +1039,8 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
       "description": "Arcane 在 Warframe 有什麼用、如何升級、掉在哪裡，以及值得刷的核心 Arcane。強化你的戰甲、武器與 Operator。"
     },
     "/guides/riven": {
-      "title": "Warframe Riven 模組全解 — 傾向與洗詞條",
-      "description": "關於 Warframe Riven 模組的一切：傾向、用 Kuva 洗詞條、評級、封印 Riven，以及為何爛 Riven 是廉價 Endo。Riven 交易入門。"
+      "title": "Riven Mods：詞條鎖定、Kuva 消耗與交易 | Warframe",
+      "description": "了解 Riven Mods 的運作方式、透過詞條鎖定保留一個現有屬性、比較 Kuva 消耗並在交易前評估洗屬。包含 Update 44 的規則以及 Riven Splicing 的公告狀態。"
     },
     "/guides/steel-path": {
       "title": "Warframe Steel Path 指南 — 解鎖與 Steel Essence",
@@ -1129,8 +1129,8 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
       "description": "Jak farmić Focus w Warframe: odblokuj Operatora, wybierz szkołę i korzystaj z najlepszych farm focus, soczewek i kul convergence. Rozwijaj szkoły efektywnie."
     },
     "/guides/kuva": {
-      "title": "Poradnik Farmienia Kuva w Warframe — Szybkie Metody",
-      "description": "Najlepsze sposoby na farmienie Kuva w Warframe pod re-rolle rivenów i bronie Kuva — misje Survival, Siphon i Flood, boostery i realne wskaźniki."
+      "title": "Poradnik farmingu Kuva: Źródła, boostery i koszty Riven | Warframe",
+      "description": "Porównaj misje Siphons, Floods, Survival oraz nową cotygodniową wymianę Meliki, dowiedz się, na które nagrody wpływają boostery, i zaplanuj budżet na opcjonalne blokowanie cech z Aktualizacji 44."
     },
     "/guides/relics": {
       "title": "Poradnik Farmienia Relic i Void Trace w Warframe",
@@ -1157,8 +1157,8 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
       "description": "Co robią arcane w Warframe, jak je levelować, gdzie wypadają i które podstawowe arcane warto farmić. Wzmocnij warframe'y, bronie i Operatora."
     },
     "/guides/riven": {
-      "title": "Mody Riven w Warframe — Disposition i Rerolowanie",
-      "description": "Wszystko o modach Riven w Warframe: disposition, rerolowanie przez Kuva, ocenianie, zawoalowane riveny i dlaczego słabe riveny to tani Endo. Podstawy handlu rivenami."
+      "title": "Mody Riven: Blokowanie atrybutów, koszty Kuva i handel | Warframe",
+      "description": "Dowiedz się, jak działają Mody Riven, zachowaj jeden istniejący stat dzięki blokowaniu atrybutów, porównaj koszty Kuva i oceń losowanie przed handlem."
     },
     "/guides/steel-path": {
       "title": "Poradnik Steel Path w Warframe — Steel Essence",
@@ -1247,8 +1247,8 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
       "description": "Come farmare Focus in Warframe: sblocca l'Operator, scegli una scuola e usa i migliori farm di Focus, lenti e sfere di convergenza. Livella le tue scuole in modo efficiente."
     },
     "/guides/kuva": {
-      "title": "Guida al Farming di Kuva Warframe — Metodi Veloci",
-      "description": "I modi migliori per farmare Kuva in Warframe per ri-tirare le Riven e le armi Kuva — missioni Sopravvivenza, Siphon e Flood, booster e rate realistici."
+      "title": "Guida al Farming di Kuva: Fonti, Booster e Costi Riven | Warframe",
+      "description": "Confronta Siphons, Floods, Survival e il nuovo scambio settimanale di Melica, comprendi quali ricompense i booster influenzano e pianifica il budget per il Trait Locking opzionale dell'Update 44."
     },
     "/guides/relics": {
       "title": "Guida al Farming di Relic e Void Trace Warframe",
@@ -1275,8 +1275,8 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
       "description": "Cosa fanno gli arcani in Warframe, come livellarli, dove droppano e gli arcani fondamentali da farmare. Potenzia frame, armi e Operator."
     },
     "/guides/riven": {
-      "title": "Mod Riven Warframe Spiegate — Disposizione e Roll",
-      "description": "Tutto sulle mod Riven di Warframe: disposizione, roll con la Kuva, valutazione, Riven velate e perché le Riven scarse sono Endo a poco prezzo. Basi del trading di Riven."
+      "title": "Mod Riven: Blocco delle statistiche, costi di Kuva e scambi | Warframe",
+      "description": "Scopri come funzionano i Mod Riven, preserva una statistica esistente con il blocco delle statistiche, confronta i costi di Kuva e valuta un roll prima di scambiare."
     },
     "/guides/steel-path": {
       "title": "Guida allo Steel Path Warframe — Sblocco e Steel Essence",
@@ -1365,8 +1365,8 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
       "description": "Як фармити Focus у Warframe: розблокуйте Operator, оберіть школу й використовуйте найкращі фарми фокусу, лінзи та кулі конвергенції. Ефективно качайте школи."
     },
     "/guides/kuva": {
-      "title": "Гайд фарму Kuva у Warframe — швидкі методи",
-      "description": "Найкращі способи фармити Kuva у Warframe для рероллів Riven і зброї Kuva — місії Survival, Siphon і Flood, бустери та реалістичні показники."
+      "title": "Посібник із фарму Kuva: джерела, прискорювачі та вартість Riven | Warframe",
+      "description": "Порівняйте Siphons, Floods, Survival та новий щотижневий обмін Меліки, зрозумійте, на які нагороди впливають прискорювачі, та розрахуйте бюджет для додаткового блокування властивостей в Update 44."
     },
     "/guides/relics": {
       "title": "Гайд фарму Relic і Void Trace у Warframe",
@@ -1393,8 +1393,8 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
       "description": "Що роблять arcanes у Warframe, як їх прокачувати, звідки вони падають і які основні арканки варто фармити. Підсильте фрейми, зброю та Operator."
     },
     "/guides/riven": {
-      "title": "Riven-моди Warframe — disposition і реролл",
-      "description": "Усе про Riven-моди Warframe: disposition, реролл через Kuva, грейдинг, veiled Riven і чому погані Riven — це дешеве Endo. Основи трейду Riven."
+      "title": "Riven-моди: Блокування властивостей, витрати Kuva та торгівля | Warframe",
+      "description": "Дізнайтеся, як працюють Riven-моди, зберігайте один наявний стат за допомогою блокування властивостей, порівнюйте витрати Kuva та оцінюйте рол перед торгівлею."
     },
     "/guides/steel-path": {
       "title": "Гайд Steel Path Warframe — розблокування й Steel Essence",

@@ -1,17 +1,13 @@
-// Auto-generated Warframe Knowledge Center guide content.
-// Drafted grounded in r/Warframe research (reddit API) + the subreddit wiki FAQ,
-// then adversarially fact-checked for evergreen accuracy. Embedded video ids were
-// verified live via YouTube oEmbed. Edit freely — this is the single source for
-// the /guides/riven page (rendered by <GuideArticle>).
+// Riven guide content; gameplay changes are reviewed against the primary sources below.
 import type { Guide } from './types'
 
 const guide: Guide = {
   "slug": "riven",
   "eyebrow": "Knowledge Center · Riven Mods",
-  "title": "Riven Mods Explained",
-  "lede": "Rivens are Warframe's slot-machine mods: weapon-locked, randomly rolled, and capable of turning a forgotten gun into a monster. Here's how they work, what makes one valuable, and when they're actually worth your Kuva.",
+  "title": "Riven Mods: Trait Locking, Kuva Costs & Trading",
+  "lede": "Learn how Riven Mods work, preserve one existing stat with Trait Locking, compare Kuva costs and assess a roll before trading. Includes the Update 44 rules and the announced status of Riven Splicing.",
   "category": "systems",
-  "readMins": 9,
+  "readMins": 10,
   "stats": [
     {
       "num": "2–4",
@@ -29,8 +25,8 @@ const guide: Guide = {
       "tone": "gold"
     },
     {
-      "num": "~3,500",
-      "label": "Kuva per re-roll cap",
+      "num": "2×",
+      "label": "Kuva cost when cycling with a locked trait",
       "tone": "gold"
     }
   ],
@@ -41,11 +37,11 @@ const guide: Guide = {
       "blocks": [
         {
           "type": "p",
-          "text": "A **Riven Mod** is a special mod with **randomized stats that is locked to one weapon** (and that weapon's variants). A Braton riven fits the Braton — and its Prime, Vandal and MK1 versions — but nothing else; a Kronen riven only fits Kronen. When a riven reveals itself it rolls **2–4 stats** — a mix of powerful buffs and, sometimes, a single downside (a *curse*). No two rivens are identical, which is exactly why they can be both the best mod on your gun and a chaotic trading economy of their own."
+          "text": "A **Riven Mod** has randomized stats and fits a specific weapon family. For example, a Braton Riven works on the Braton and its variants, but not on an unrelated rifle. An unveiled Riven has **2–3 positive traits**, with or without one negative trait. Compare the actual numbers on your intended weapon before replacing a regular Mod."
         },
         {
           "type": "p",
-          "text": "Rivens exist for the main weapon families — **rifle, shotgun, pistol, melee, and archgun** (plus kitgun and zaw types). The upside is huge: a good riven can add more raw power than any single normal mod. The catch is that everything about it — the stats, their values, even *which* weapon it's for — is RNG until you unveil it, and it's one of the most capacity-hungry mods in the game."
+          "text": "A Riven can combine several useful bonuses in one Mod slot, but a random roll is not automatically an upgrade. The weapon, stat combination, negative trait, rank and weapon Disposition all matter. The sections below cover ordinary cycling and the optional Trait Locking introduced in Update 44."
         },
         {
           "type": "kv",
@@ -71,8 +67,8 @@ const guide: Guide = {
               "v": "A random Mastery Rank requirement (8–16) is set when unveiled"
             },
             {
-              "k": "Prerequisite",
-              "v": "Finish The War Within quest — it grants your first riven and unlocks the main sources"
+              "k": "Quest reward",
+              "v": "Completing The War Within rewards a Riven Mod"
             }
           ]
         }
@@ -80,11 +76,11 @@ const guide: Guide = {
     },
     {
       "id": "disposition",
-      "title": "Disposition: why the same idea is godly on one gun and junk on another",
+      "title": "Riven Disposition and weapon variants",
       "blocks": [
         {
           "type": "p",
-          "text": "**Riven Disposition** is a per-weapon multiplier shown as **1 to 5 dots**. It scales how strong a riven's stats are on that weapon. Crucially, disposition is *inverse to popularity*: weak, rarely-used weapons get **high** disposition (bigger riven bonuses), while popular meta weapons get **low** disposition (smaller bonuses) — and even different variants of the same weapon can carry slightly different dispositions. It's DE's balancing lever so rivens can't just make the best guns permanently better."
+          "text": "**Riven Disposition** is a weapon-specific multiplier represented by **1 to 5 dots**. Higher Disposition gives larger bonuses for an equivalent Riven roll. Different variants of the same weapon can use different multipliers, so preview the Riven on the exact variant you intend to equip. Cycling a Riven does not reroll the weapon’s Disposition."
         },
         {
           "type": "table",
@@ -92,31 +88,31 @@ const guide: Guide = {
             "columns": [
               "Dots",
               "Roughly means",
-              "Typical weapon"
+              "What to check"
             ],
             "rows": [
               [
                 "5 (highest)",
-                "Strongest rolls (around ×1.5 at the top)",
-                "Rarely-used / underpowered weapons"
+                "Larger bonuses for an equivalent roll",
+                "The exact weapon variant and stat combination"
               ],
               [
                 "3 (middle)",
-                "Solid, mid-range bonuses",
-                "Decent but non-meta picks"
+                "Intermediate Disposition band",
+                "Whether the Riven improves your existing build"
               ],
               [
                 "1 (lowest)",
-                "Weakest rolls (around ×0.5)",
-                "Very popular / meta weapons"
+                "Smaller bonuses for an equivalent roll",
+                "Whether several useful traits justify the Mod slot"
               ]
             ],
-            "note": "Exact multipliers are approximate and DE re-tunes them periodically based on how much each weapon is used — always check the live wiki for a weapon's current dots."
+            "note": "Dots summarize a multiplier; they do not establish a trading price. Consult the current in-game preview and the latest official Disposition list."
           }
         },
         {
           "type": "info",
-          "text": "Because dispositions shift, a riven you buy can gain or lose value overnight when DE adjusts a weapon. A weapon that gets a disposition *nerf* makes its rivens weaker (and cheaper); a *buff* makes them stronger (and pricier). This is the single biggest reason riven prices swing."
+          "text": "The [September 2026 Disposition announcement](https://forums.warframe.com/topic/1523355-september-2026-riven-dispositions/) documents the latest changes. Demand, new weapon options and individual rolls also affect listings. A Disposition change alone does not guarantee that your Riven will sell for more or less Platinum."
         }
       ]
     },
@@ -126,7 +122,7 @@ const guide: Guide = {
       "blocks": [
         {
           "type": "p",
-          "text": "Every revealed riven has a randomized layout of positive stats and, optionally, one negative. A **curse** isn't automatically bad — a riven *with* a curse gets a boost to its positive values. The trick is landing a curse you don't care about (like `-zoom`, `-recoil`, or `-impact` on a build that ignores those) so you keep the boosted buffs for free."
+          "text": "An unveiled Riven has positive traits and may also have a negative trait, often called a **curse**. A negative can increase the positive values, but it may also damage the build. Reduced zoom or reduced Impact can be acceptable for some weapons and uses; inspect the consequence rather than assuming any negative is harmless."
         },
         {
           "type": "table",
@@ -140,12 +136,12 @@ const guide: Guide = {
               [
                 "2 buffs",
                 "Two positives, no curse",
-                "Safe but modest — cheap and fine for casual play"
+                "Judge the two actual bonuses, not just the line count"
               ],
               [
                 "3 buffs",
                 "Three positives, no curse",
-                "A strong, no-downside all-rounder"
+                "Useful when all three bonuses fit the build"
               ],
               [
                 "2 buffs + 1 curse",
@@ -154,8 +150,8 @@ const guide: Guide = {
               ],
               [
                 "3 buffs + 1 curse",
-                "Three positives plus a curse; highest stat values",
-                "The classic 'god roll' shape"
+                "Three positives plus one negative",
+                "Not automatically better than two positives and a harmless negative"
               ]
             ]
           }
@@ -167,6 +163,10 @@ const guide: Guide = {
         {
           "type": "tip",
           "text": "The riven's made-up name (that `critacan`/`visitox` gibberish) is purely cosmetic — it's generated from the stats and doesn't affect power. Judge a riven by its actual stat lines, disposition, and MR requirement, never by its name."
+        },
+        {
+          "type": "info",
+          "text": "**Shotgun Rivens can now roll Zoom**, following [Hotfix 44.0.2](https://www.warframe.com/en/patch-notes/pc/44-0-2). The same hotfix repaired invalid duplicate traits and extra negatives caused by a launch bug; its affected-roll Kuva refund script is marked complete. Check the current Mod and notes when an older screenshot or trait list disagrees."
         }
       ]
     },
@@ -176,11 +176,11 @@ const guide: Guide = {
       "blocks": [
         {
           "type": "p",
-          "text": "Rivens usually arrive **veiled** — you can't see the weapon or stats yet, only the category (Rifle, Shotgun, Pistol, Melee, etc.). To reveal it you complete a **randomized challenge** while using a weapon of the matching type, such as killing enemies with headshots mid-air, finishing a mission without being detected, or killing a string of enemies while sliding. Finish the challenge and the riven rolls its weapon and stats."
+          "text": "A veiled Riven conceals its weapon and stats. Reveal its challenge, then **equip the challenged Riven on a compatible weapon** and follow the exact conditions. Bringing a weapon of the matching category without the Riven equipped is not enough. Completing the challenge unveils its weapon and traits."
         },
         {
           "type": "p",
-          "text": "The main sources of veiled rivens are **Sorties** — the daily three-mission challenge, which rewards a riven roughly a quarter of the time — and the **Steel Path Circuit** in Duviri, whose weekly reward path can hand out a veiled riven. You can also farm **Riven Slivers** (Eximus enemies drop them, especially on the Steel Path) and take **ten to Palladino** in Iron Wake on Earth, who transmutes them into a veiled riven on a weekly limit. Completing **The War Within** quest also grants your very first riven. Note that Kuva Siphon and Kuva Flood missions give you the *Kuva* you'll spend re-rolling — they don't drop the rivens themselves."
+          "text": "Sources include **Sorties**, the **Steel Path Circuit** reward path and **Palladino** in Iron Wake, who exchanges Riven Slivers for weekly Riven offers. Check the current reward path or vendor offer before farming. **The War Within** also rewards a Riven. Kuva Siphon and Flood missions provide the resource used for cycling; they are not direct Riven Mod rewards."
         },
         {
           "type": "steps",
@@ -194,8 +194,8 @@ const guide: Guide = {
               "p": "Open the riven in your Mods menu to see its unveil challenge and which weapon category it requires."
             },
             {
-              "h": "Equip the right weapon type",
-              "p": "Bring a weapon of that category (rifle, pistol, melee, etc.) — the challenge only counts with the matching type equipped."
+              "h": "Equip the challenged Riven",
+              "p": "Install the Riven on a compatible weapon, bring that weapon into the mission, and satisfy the challenge’s exact conditions."
             },
             {
               "h": "Complete the challenge",
@@ -211,36 +211,76 @@ const guide: Guide = {
     },
     {
       "id": "rolling-with-kuva",
-      "title": "Rolling with Kuva",
+      "title": "Cycling with Kuva: ordinary rolls and Trait Locking",
       "blocks": [
         {
           "type": "p",
-          "text": "Don't like your roll? You can **re-roll** (cycle) a riven to completely re-randomize it — the stats, how many there are, and their values all change. Each re-roll costs **Kuva**, and the price ramps up with every roll on that riven: it starts around 900 and climbs to a **cap of about 3,500 Kuva per roll**, where it stays. Kuva comes from Kuva Siphon and Kuva Flood missions and the endless Kuva Survival on the Kuva Fortress."
+          "text": "**Cycling** spends Kuva to generate another roll for the same weapon. Without a locked trait, the stat types, values and layout can change. The standard cost rises from **900 Kuva** to **3500 Kuva** as its cycle count rises. With one trait locked, the displayed cycling cost is doubled: **1800** for the first cycle or **7000** at the standard cap. Check the cost before confirming."
         },
         {
           "type": "kv",
           "kv": [
             {
-              "k": "Cost",
-              "v": "Kuva, per re-roll"
+              "k": "Ordinary cycling",
+              "v": "No locked trait: 900 Kuva initially, up to 3500 per cycle"
             },
             {
-              "k": "Ramp",
-              "v": "~900 Kuva, climbing to a ~3,500 cap"
+              "k": "Cycling with a lock",
+              "v": "Double the ordinary cost: 1800 initially, up to 7000 per cycle"
             },
             {
-              "k": "Effect",
-              "v": "Re-randomizes stat count, stats, and values"
+              "k": "What stays",
+              "v": "The weapon; with Trait Locking, the selected trait and positive/negative layout also stay"
             },
             {
-              "k": "Odds",
-              "v": "Pure RNG — no pity system, no way to target a specific stat"
+              "k": "What is random",
+              "v": "The other traits; a lock does not select a missing stat for you"
             }
           ]
         },
         {
           "type": "warn",
-          "text": "Re-rolling is a bottomless Kuva sink. Because it's pure RNG, chasing a perfect roll can eat *millions* of Kuva — one well-known player was filmed re-rolling a single riven thousands of times. Before you grind, decide what \"good enough\" looks like and stop there. Often it's cheaper to buy a solid roll from another player than to gamble for a god roll yourself."
+          "text": "Set a Kuva budget and a usable target before cycling. A lock protects one existing trait but does not guarantee a useful combination elsewhere. Compare the new roll with the old one and check the selection before accepting. The [Kuva farming guide](/guides/kuva) helps compare sources and plan how many cycles your budget buys."
+        }
+      ]
+    },
+    {
+      "id": "trait-locking",
+      "title": "How to lock a Riven trait in Update 44",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "[Update 44](https://www.warframe.com/en/patch-notes/pc/44-0-0) introduced **Trait Locking**. You can retain one existing trait while cycling the others. Adding or removing the lock is free and needs no special item; the extra Kuva is charged when you cycle with that lock active."
+        },
+        {
+          "type": "steps",
+          "steps": [
+            {
+              "h": "Open the cycling screen",
+              "p": "Select the Riven in the Mod Segment and choose Cycle Riven."
+            },
+            {
+              "h": "Choose the existing trait",
+              "p": "Select Lock Trait, then the trait you want to preserve. Check the lock icon and the doubled Kuva cost."
+            },
+            {
+              "h": "Check the layout before spending",
+              "p": "The number of positive and negative traits stays fixed while locked. A roll with 3 positives and 1 negative remains in that layout; unlock it before cycling if you want a different layout."
+            },
+            {
+              "h": "Reapply the lock next session",
+              "p": "Closing the cycling menu removes the lock. Check and reapply it each time you reopen the menu."
+            }
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "**Budget example:** 35000 Kuva buys 10 ordinary cycles at 3500 each, or 5 cycles with a locked trait at 7000 each. This is cost arithmetic, not a prediction of the number of useful rolls. Consider a lock when you already have a trait worth preserving."
+        },
+        {
+          "type": "info",
+          "title": "Riven Splicing is a separate, upcoming feature",
+          "text": "As checked on September 30, 2026, **Riven Splicing is still upcoming**. Digital Extremes announced **October 7, 2026** for Glacial Defiance, the release that is due to include Splicing. Trait Locking is already available. Recheck the launch notes before planning around Riven Splicers or combined traits."
         }
       ]
     },
@@ -254,7 +294,7 @@ const guide: Guide = {
         },
         {
           "type": "tip",
-          "text": "Got a riven you'll never use? **Dissolve it for Endo.** The amount scales with how many times it's been re-rolled (plus its rank and MR), so heavily-cycled junk rivens can be a tidy Endo lump. Because the market is flooded with mediocre rolls, most bad rivens are worth more to you as Endo than as a 1–2 plat sale — run the numbers on the [Endo / Plat value tool](/endo) before you decide to dissolve, keep, or list one."
+          "text": "Before dissolving an unwanted Riven, inspect its in-game Endo return and compare current listings for that weapon and roll. Dissolving consumes the Mod. The [Endo / Plat value tool](/endo) can help compare Endo sources, but it cannot guarantee a buyer or a sale price for your individual Riven."
         }
       ]
     },
@@ -264,31 +304,31 @@ const guide: Guide = {
       "blocks": [
         {
           "type": "p",
-          "text": "Rivens are traded player-to-player, and because every one is unique, pricing is more art than science. A great roll on a beloved weapon can be worth hundreds of platinum; the same stats on a low-disposition meta gun might be near-worthless. You can also trade **veiled** rivens — cheaper, blind gambles where the buyer completes the unveil themselves. Note that rivens carry a **heavier credit trade tax** than normal mods, and you hold a **capped number of riven slots** that you can expand with platinum."
+          "text": "Riven listings vary with weapon demand, useful traits, negative effects and the actual stat values. Low Disposition alone does not make a roll worthless, and high Disposition does not guarantee demand. Compare several listings for the same weapon and a similar roll; an asking price is not proof of a completed sale. Check available Riven capacity and the trade confirmation before buying."
         },
         {
           "type": "table",
           "table": {
             "columns": [
               "Factor",
-              "Pushes the price UP when…"
+              "What to compare"
             ],
             "rows": [
               [
                 "Weapon",
-                "It's a popular / meta weapon that many players build for"
+                "Demand for that weapon and the variant buyers intend to use"
               ],
               [
                 "Disposition",
-                "The weapon has high dots (4–5), so stats hit harder"
+                "Actual values on that variant, not dots alone"
               ],
               [
                 "Stat combo",
-                "The buffs match the ideal build and any curse is harmless"
+                "Useful positives and the effect of the negative on the intended build"
               ],
               [
                 "MR & rolls",
-                "Low MR requirement, plus a clean roll a buyer won't feel the need to re-roll"
+                "Equip requirement and the Kuva cost of further cycling"
               ]
             ]
           }
@@ -338,52 +378,104 @@ const guide: Guide = {
         },
         {
           "type": "p",
-          "text": "If you're newer, prioritize your **core mods, damage types, and survivability** first — those matter far more than any riven. When you do want one, buying a decent roll for a weapon you main is almost always smarter than gambling your Kuva for a god roll. And if a riven falls in your lap that you'll never use, treat it as [Endo](/guides/endo) or a bit of trade platinum and move on."
+          "text": "If you are newer, prioritize **core Mods, damage types and survivability**. Once you have a working build, compare an affordable ready-made roll with the time and Kuva you would spend cycling your own. Decide whether to keep, trade or dissolve an unwanted Riven after checking its market and [Endo](/guides/endo) value."
         }
       ]
     }
   ],
   "videos": [
-    { "id": "mDWzPgDUH1k", "title": "What you MUST KNOW about RIVENS in Warframe 2026!", "channel": "MHBlacky" },
-    { "id": "t66oSX1BkLc", "title": "How to Get Riven Mods and What They Do | Beginner's Guide", "channel": "Tipsy" },
-    { "id": "CwcTyXalWrs", "title": "Rings Of Riven Hell | Warframe Riven Mod & Platinum Farming", "channel": "turbomonk" },
-    { "id": "U9-2UbALrQw", "title": "ULTIMATE Riven Mod Guide!", "channel": "Jacsonitos" }
+    {
+      "id": "mDWzPgDUH1k",
+      "title": "What you MUST KNOW about RIVENS in Warframe 2026!",
+      "channel": "MHBlacky"
+    },
+    {
+      "id": "t66oSX1BkLc",
+      "title": "How to Get Riven Mods and What They Do | Beginner's Guide",
+      "channel": "Tipsy"
+    },
+    {
+      "id": "CwcTyXalWrs",
+      "title": "Rings Of Riven Hell | Warframe Riven Mod & Platinum Farming",
+      "channel": "turbomonk"
+    },
+    {
+      "id": "U9-2UbALrQw",
+      "title": "ULTIMATE Riven Mod Guide!",
+      "channel": "Jacsonitos"
+    }
   ],
   "faqs": [
     {
       "q": "How do I get riven mods in Warframe?",
-      "a": "The main sources are Sorties (the daily three-mission challenge, which rewards a riven about a quarter of the time), the Steel Path Circuit in Duviri, and Riven Slivers — farm ten (Eximus enemies drop them, especially on the Steel Path) and trade them to Palladino in Iron Wake for a veiled riven. You must finish The War Within quest first, and completing it also gives you your very first riven. Kuva Siphon and Kuva Flood missions give you the Kuva used to re-roll rivens, not the rivens themselves."
+      "a": "Check Sortie rewards, the Steel Path Circuit reward path and Palladino’s weekly Riven Sliver exchanges in Iron Wake. Completing The War Within also rewards a Riven Mod. Each source has its own access and reward conditions; Siphons and Floods provide Kuva for cycling rather than Riven Mods themselves."
     },
     {
       "q": "How do I unveil a veiled riven?",
-      "a": "Open the veiled riven in your Mods menu to see its challenge and required weapon category, then complete that challenge with a matching weapon equipped (a rifle for a rifle riven, and so on). Once you finish it, the riven reveals its weapon and random stats. Look the exact challenge wording up on the wiki first — some have tricky conditions like no shields or no alarms."
+      "a": "Reveal the challenge, equip the challenged Riven on a compatible weapon, and complete the stated conditions. A matching weapon without that Riven installed is not enough. Read any mission, equipment or failure restrictions before entering the mission."
     },
     {
       "q": "How do I re-roll a riven and what does it cost?",
-      "a": "You re-roll (cycle) a riven from the Mods menu using Kuva, which completely re-randomizes its stats. The cost ramps up per roll on that mod, starting around 900 Kuva and capping near 3,500. It's pure RNG with no pity system, so set a 'good enough' target before you start burning Kuva. Farm the Kuva itself from Kuva Siphon and Kuva Flood missions and the Kuva Fortress."
+      "a": "Choose Cycle Riven in the Mod Segment. Without a lock, the cost begins at 900 Kuva and reaches a cap of 3500 as its cycle count rises. Trait Locking doubles that cycle’s cost, up to 7000 at the standard cap, while preserving one existing trait and the positive/negative layout. Read the [Kuva guide](/guides/kuva) to plan a budget."
     },
     {
       "q": "What is riven disposition?",
-      "a": "Disposition is a per-weapon multiplier shown as 1 to 5 dots that scales how strong a riven's stats are on that weapon. It's inverse to popularity: weak or rarely-used weapons get high disposition (stronger rivens), while meta weapons get low disposition. DE re-tunes dispositions periodically, which is why riven prices rise and fall — check the live wiki for a weapon's current dots."
+      "a": "Disposition is a weapon-specific multiplier represented by 1 to 5 dots. It affects the strength of Riven stats and can differ between weapon variants. Cycling does not change that multiplier. Preview the exact variant and consult the latest official Disposition announcement."
     },
     {
       "q": "What is a 'god roll' riven?",
-      "a": "A god roll is a riven whose randomized stats line up perfectly with your build — usually three strong buffs (like crit chance, crit damage, and multishot or damage) plus a curse you don't care about, such as -zoom or -recoil. There's no universal best roll; the ideal riven fills the gaps your normal mods can't. Use our /riven-value estimator to gauge what a specific roll is worth."
+      "a": "Players use this term for a roll that fits a particular weapon and build especially well. It is not a fixed recipe or a guaranteed trading value. Compare the useful positives, actual values and effect of the negative; more stat lines alone do not make a better roll. The [Riven value estimator](/riven-value) is a starting point for comparing listings."
     },
     {
       "q": "Are rivens worth it for new players?",
-      "a": "Not really — rivens are endgame min-maxing, and a well-modded weapon clears the star chart and most of the Steel Path without one. Focus on your core mods, damage types, and survivability first. When you do want a riven, buying a decent roll for a weapon you main is usually smarter than gambling Kuva for a god roll."
+      "a": "Build a working loadout with core Mods first. A Riven is an optional way to improve a weapon you already use, and a random roll may be worse than the Mod it replaces. Set a budget before buying or cycling one."
     },
     {
       "q": "Can I dissolve a riven for Endo?",
-      "a": "Yes. Unwanted rivens can be dissolved for Endo, and the amount scales with how many times the riven has been re-rolled (plus its rank and mastery requirement), so heavily-cycled junk rivens give a decent Endo lump. Since the market is flooded with mediocre rolls, a bad riven is often worth more as Endo than as a 1–2 platinum sale — run it through the /endo tool before deciding."
+      "a": "Yes. Check the in-game Endo return and current comparable Riven listings before confirming, because dissolving consumes the Mod. The [Endo value tool](/endo) helps compare sources; it does not establish a guaranteed sale price for your roll."
     },
     {
       "q": "Why do riven prices swing so much?",
-      "a": "Because each riven is unique, its value depends on the weapon's popularity, its disposition, the exact stat combo, and its MR requirement. When DE adjusts a weapon's disposition, every riven for that gun instantly gets stronger or weaker, moving prices with it. Always estimate a fair number with /riven-value and check the current market before buying or listing."
+      "a": "Prices reflect weapon demand, the exact trait combination, stat values and current listings. New systems and weapon changes can affect what players want. Compare similar rolls and treat the [Riven value estimator](/riven-value) as guidance, not proof of a completed sale or a guaranteed future price."
+    },
+    {
+      "q": "Can I lock a Riven stat while rerolling?",
+      "a": "Yes. Trait Locking lets you preserve one existing trait, but cycling with it costs twice as much Kuva. The positive/negative layout also stays fixed. Adding or removing the lock is free, and closing the cycling menu removes it."
+    },
+    {
+      "q": "Is Riven Splicing available yet?",
+      "a": "As checked on September 30, 2026, Splicing is still upcoming with Glacial Defiance, announced for October 7, 2026. Trait Locking is already live. Check the release notes when the update launches before planning around Riven Splicers or combined traits."
     }
   ],
   "sources": [
+    {
+      "label": "Warframe — Update 44: Iceblade of Narin (September 23, 2026)",
+      "href": "https://www.warframe.com/en/patch-notes/pc/44-0-0"
+    },
+    {
+      "label": "Warframe — Hotfix 44.0.2: Riven trait and cycling fixes",
+      "href": "https://www.warframe.com/en/patch-notes/pc/44-0-2"
+    },
+    {
+      "label": "Warframe — Riven Expansion developer workshop",
+      "href": "https://forums.warframe.com/topic/1523869-riven-expansion-trait-locking-riven-splicing/"
+    },
+    {
+      "label": "Warframe — September 2026 Riven Dispositions",
+      "href": "https://forums.warframe.com/topic/1523355-september-2026-riven-dispositions/"
+    },
+    {
+      "label": "Warframe — Glacial Defiance date announcement (PSA updated September 29, 2026)",
+      "href": "https://forums.warframe.com/topic/1523427-psa-glacial-defiance-release-window-outdated/"
+    },
+    {
+      "label": "Warframe — Riven cycling cost cap (Update 19.4)",
+      "href": "https://www.warframe.com/en/patch-notes/pc/19-4-1"
+    },
+    {
+      "label": "Warframe — Cycling cost and roll selection (Hotfix 19.0.6)",
+      "href": "https://www.warframe.com/en/patch-notes/pc/19-0-6"
+    },
     {
       "label": "Warframe Wiki — Riven Mods",
       "href": "https://wiki.warframe.com/w/Riven_Mods"
@@ -437,7 +529,7 @@ const guide: Guide = {
       "note": "Riven markets, wikis and DE tools"
     }
   ],
-  "updated": "2026-07-18"
+  "updated": "2026-09-30"
 }
 
 export default guide

@@ -264,9 +264,9 @@ export const PAGE_SEO: Record<string, PageSeo> = {
       'How to farm Focus in Warframe: unlock the Operator, pick a school and use the best focus farms, lenses and convergence orbs. Level your schools efficiently.'
   },
   '/guides/kuva': {
-    title: 'Warframe Kuva Farming Guide — Fast Methods',
+    title: "Kuva Farming Guide: Sources, Boosters & Riven Costs | Warframe",
     description:
-      'The best ways to farm Kuva in Warframe for riven re-rolls and Kuva weapons — Survival, Siphon and Flood missions, boosters and realistic rates.'
+      "Compare Siphons, Floods, Survival and Melica’s new weekly exchange, understand which rewards boosters affect, and budget for Update 44’s optional Trait Locking."
   },
   '/guides/relics': {
     title: 'Warframe Relic & Void Trace Farming Guide',
@@ -308,9 +308,9 @@ export const PAGE_SEO: Record<string, PageSeo> = {
       'What arcanes do in Warframe, how to rank them, where they drop, and the staple arcanes worth farming. Boost your frames, weapons and operator.'
   },
   '/guides/riven': {
-    title: 'Warframe Riven Mods Explained — Disposition & Rolling',
+    title: "Riven Mods: Trait Locking, Kuva Costs & Trading | Warframe",
     description:
-      'Everything about Warframe riven mods: disposition, rolling with Kuva, grading, veiled rivens and why bad rivens are cheap Endo. Riven trading basics.'
+      "Learn how Riven Mods work, preserve one existing stat with Trait Locking, compare Kuva costs and assess a roll before trading. Includes the Update 44 rules and the announced status of Riven Splicing."
   },
   '/guides/steel-path': {
     title: 'Warframe Steel Path Guide — Unlock & Steel Essence',

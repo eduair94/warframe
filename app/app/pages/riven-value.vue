@@ -1,31 +1,34 @@
 <template>
   <div class="an">
-    <client-only>
-      <template #fallback>
-        <SeoFallbackTable
-          :caption="t('rivenValue.eyebrow')"
-          name-label="Weapon"
-          :columns="[t('rivenValue.meta.disposition'), t('rivenValue.meta.auctions'), t('rivenValue.table.buyout')]"
-          :rows="fallbackRows"
-        />
-      </template>
-      <div class="an-console">
-        <header class="an-hero">
-          <div class="an-hero__text">
-            <div class="an-eyebrow">{{ t('rivenValue.eyebrow') }}</div>
-            <i18n-t keypath="rivenValue.hero.title" tag="h1" class="an-title">
-              <template #myRoll><span class="accent-a">{{ t('rivenValue.hero.titleMyRoll') }}</span></template>
-              <template #worth><span class="accent-b">{{ t('rivenValue.hero.titleWorth') }}</span></template>
-            </i18n-t>
-            <p class="an-lede">{{ t('rivenValue.hero.lede') }}</p>
-          </div>
+    <div class="an-console">
+      <header class="an-hero">
+        <div class="an-hero__text">
+          <div class="an-eyebrow">{{ t('rivenValue.eyebrow') }}</div>
+          <i18n-t keypath="rivenValue.hero.title" tag="h1" class="an-title">
+            <template #myRoll><span class="accent-a">{{ t('rivenValue.hero.titleMyRoll') }}</span></template>
+            <template #worth><span class="accent-b">{{ t('rivenValue.hero.titleWorth') }}</span></template>
+          </i18n-t>
+          <p class="an-lede">{{ t('rivenValue.hero.lede') }}</p>
+        </div>
+        <client-only>
           <div v-if="estimate.count" class="an-hero__deal">
             <div class="an-hero__deal-label">{{ t('rivenValue.hero.dealLabel') }}</div>
             <div class="an-hero__deal-plat">{{ fmtPlat(estimate.median) }}<span>p</span></div>
             <div class="an-hero__deal-name">{{ t('rivenValue.hero.range', { low: fmtPlat(estimate.p25), high: fmtPlat(estimate.p75) }) }}</div>
             <div class="an-hero__deal-sub">{{ t('rivenValue.hero.comparables', { n: estimate.count }, estimate.count) }}{{ estimate.approx ? t('rivenValue.hero.approxSuffix') : '' }}</div>
           </div>
-        </header>
+        </client-only>
+      </header>
+
+      <client-only>
+        <template #fallback>
+          <SeoFallbackTable
+            :caption="t('rivenValue.eyebrow')"
+            name-label="Weapon"
+            :columns="[t('rivenValue.meta.disposition'), t('rivenValue.meta.auctions'), t('rivenValue.table.buyout')]"
+            :rows="fallbackRows"
+          />
+        </template>
 
         <section class="an-filters">
           <div class="an-filters__row">
@@ -196,8 +199,10 @@
             <v-pagination v-model="page" :length="pageCount" :total-visible="isMobile ? 5 : 9" color="#d4af5a"></v-pagination>
           </div>
         </template>
-      </div>
+      </client-only>
+    </div>
 
+    <client-only>
       <v-alert class="an-disclaimer bg-blue-darken-4" type="info" density="compact">
         <i18n-t keypath="rivenValue.disclaimer.text" tag="span">
           <template #within><em>{{ t('rivenValue.disclaimer.within') }}</em></template>
