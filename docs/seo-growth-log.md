@@ -655,9 +655,44 @@ full API/frontend/live deployment. The task reports its observed workflow result
 checks, without leaving a final documentation-only commit undeployed. The absence of connected
 analytics still prevents a measured traffic or ranking claim.
 
+The first full release, commit `d1cd993`, completed successfully in
+[workflow 36755064198](https://github.com/eduair94/warframe/actions/runs/36755064198).
+All 26 guide pages and six service/data checks passed at the public edge. The initial
+45-check pass nevertheless found a real pre-existing rendering failure: only four of thirteen
+Riven estimator pages contained weapon rows. French HTML captured a `429 Too Many Requests`
+from the internal `/riven_weapons` fetch; the nine affected locale pages had empty
+fallback tables despite valid headings and metadata. Concurrent localized SSR reads, plus
+eight cache-warmer reads every 45 seconds, shared the API's 60-request loopback bucket.
+The frontend's stale-while-revalidate cache could then retain the incomplete HTML. Slowing
+the verification would hide the concurrency defect, so this iteration continues with a
+targeted fix and a second full release before the final public verification.
+
+The correction separates direct local GET reads from the public quota without increasing
+the public limit. Eligibility requires the actual socket peer to be an exact loopback address,
+a literal loopback Host with the expected port, no proxy/Cloudflare headers (including empty
+ones), and no `/me` or `/build_*` route. POST and HEAD remain limited. Only the general
+limiter receives this exception; authentication and sync limiters remain independent.
+This deliberately does not use `req.ip` or `req.hostname`. Cloudflared also connects locally,
+so checking the socket alone would incorrectly exempt public requests. The Host and header
+checks reject that traffic; see the [Cloudflare header reference](https://developers.cloudflare.com/fundamentals/reference/http-headers/).
+The existing broad `trust proxy` setting and its effect on client-supplied forwarding chains
+remain a separate hardening task, not a security property claimed by this fix.
+The focused suite passed all 89 cases, including real requests through the production
+Express wrapper: over 60 internal reads remain available, the 61st public read still gets
+429, empty/spoofed proxy headers do not activate the exception, and writes, account reads,
+admin tokens and the independent sync/user limits remain enforced. A separate reviewer
+also checked encoded and normalized route variants against the protected handlers.
+The production TypeScript build and repository-map check passed.
+The complete API suite then passed 637 tests across 46 suites. Together with the unchanged
+37 frontend and 26 guide regression checks from this iteration, that is 700 distinct tests.
+All correction code, regression tests and this deployment evidence are committed before
+the second full API/frontend/live release. Final public verification uses the original
+45 checks and concurrency of three, retaining the first failed pass as diagnostic evidence.
+
 ### Next review
 
 Recheck Splicing and the dated Forma offer on October 7. Continue the twelve-locale builds
 gap and remaining guide structure drift; restore analytics access before attributing traffic
 changes. The exceptional stale order-book presentation and separate edge outage routing
-remain concrete follow-up items, without manufacturing data freshness or recovery coverage.
+remain concrete follow-up items, along with validating the proxy trust chain, without
+manufacturing data freshness or recovery coverage.

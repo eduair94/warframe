@@ -14,6 +14,7 @@ import {
 } from "./Express.interface";
 import { cache } from "../services/CacheService";
 import { firebaseAuth } from "../services/firebaseToken";
+import { isDirectInternalRead } from "./internalReads";
 
 // Default edge/L2 TTL for cached GET routes. The heavy aggregates cost ~20s of
 // CPU to recompute, so a longer fresh window means far fewer recomputes on a
@@ -52,8 +53,9 @@ class Express {
     this.app.set("trust proxy", true);
     this.app.use(bodyParser.urlencoded({ extended: false }));
     // Built-in throttling to prevent API abuse (README "API Optimization").
-    // Applies to every route on this instance; build_relics gets its own
-    // stricter limiter on top of this in getJsonProtected below.
+    // Direct local reads serve every SSR visitor and the cache warmer; they
+    // must not consume a shared public-IP quota. Proxied traffic still counts,
+    // and account/build routes retain this and their own stricter limiters.
     this.app.use(
       rateLimit({
         windowMs: INBOUND_RATE_LIMIT.WINDOW_MS,
@@ -61,6 +63,7 @@ class Express {
         standardHeaders: true,
         legacyHeaders: false,
         message: { error: "Too many requests, please try again later." },
+        skip: isDirectInternalRead,
       })
     );
     this.start();
