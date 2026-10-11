@@ -40,6 +40,7 @@ ssh warframe167 'pm2 status; systemctl is-active cloudflared mongod'
 | `200` + `x-edge-cache: STALE-ON-ERROR` | origin down, visitors served stale | §2 |
 | `200` + `{"ok":false,"mongo":"down"}` | API up, mongo down | §3 |
 | `200` + `{"ok":true}` but a page is broken | app bug, not infra | normal debugging |
+| Site up, but prices "updated N days ago" | warframe.market refusing us | §4 |
 
 **`x-edge-cache` is also how you tell whether the Worker is deployed at all.**
 If the header is missing entirely, the Worker is not routed at that hostname —
@@ -125,6 +126,29 @@ Mongo down: `systemctl status mongod`, check disk with `df -h` (a full disk stop
 mongod and is a common silent cause).
 
 ---
+
+## 4. Site is up, prices are frozen
+
+The site serves the last stored prices, so a dead upstream looks like "updated
+N days ago", not an error.
+
+```bash
+ssh warframe167 'mongo --quiet warframe --eval "db.getCollection(\"warframe-items\").find().sort({priceUpdate:-1}).limit(1).forEach(d=>print(d.priceUpdate))"'
+ssh warframe167 'pm2 logs warframe-sync-prices --lines 30 --nostream'
+ssh warframe167 'curl -s -o /dev/null -w "%{http_code} cf=%header{cf-mitigated}
+" -H "User-Agent: Mozilla/5.0" https://api.warframe.market/v2/orders/item/ash_prime_set'
+```
+
+- `403 cf=challenge` → Cloudflare is challenging this IP. warframe.market allows
+  **3 requests/second per client** and escalates excess to challenges and
+  blocks. Every process paces itself (`services/WfmRateLimiter.ts`, budgets in
+  `ecosystem.config.js`) and pauses 15 min on a challenge, so the syncs resume
+  on their own once the block lifts. Look for a process exceeding its budget
+  before anything else. Do **not** re-enable proxy rotation or raise
+  `CONCURRENCY` to push through: that is how the block happened.
+- `403` with body `Deprecated` → a retired v1 endpoint. Move that call to v2.
+- Log line `⛔ warframe.market Cloudflare challenge … pausing all requests until …`
+  = the breaker is open; nothing to do but wait (or fix the traffic source).
 
 ## What now protects this, and what each layer does not do
 
@@ -256,3 +280,21 @@ was built on box147 during the outage (section above) but traffic was never
 switched: no Cloudflare credentials were on hand for the tunnel token, and the
 edge Worker was still not routed (responses carried no `x-edge-cache`), so
 visitors got the raw 1033 page rather than stale data.
+
+**2026-10-02 → 2026-10-11 — prices frozen, warframe.market blocked us.** The
+site stayed up, but no price was updated after 2026-10-02 18:13 UTC; noticed
+9 days later. Two causes. (1) Our own traffic: `sync-prices` ran 50 parallel
+requests rotated over ~3,500 ProxyScrape IPs with 5 retries each, `warframe-live`
+polled ~50 req/s (150 items every 3 s, 10 retries), `sync-auctions` retried
+too. warframe.market documents 3 req/s; Cloudflare started answering the prod IP
+and the whole proxy pool with managed challenges (`cf-mitigated: challenge`),
+while untouched IPs (`.10`, box147) still got 200. Our client labelled every
+403 "Cloudflare block" and kept retrying, which kept the block fresh (25k pm2
+restarts of sync-prices). (2) The v1 `/items/{slug}/statistics` endpoint now
+answers third-party clients with `403 Deprecated`; v2 has no replacement.
+Fix: stopped the three processes, then shipped a per-process limiter + breaker
+for every warframe.market call (axios and undici), no retries on a challenge or
+a plain 403, proxyless pacing budgets in `ecosystem.config.js`, price-sync
+concurrency 50 → 4, and v1 statistics off by default (`WFM_V1_STATS`), carrying
+each item's last stored volume/avg_price forward without using that stale
+average to fence live prices.

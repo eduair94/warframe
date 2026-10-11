@@ -16,8 +16,11 @@ const colors = {
   dim: '\x1b[2m',
 };
 
-// Performance configuration
-const CONCURRENCY_LIMIT = parseInt(process.env.CONCURRENCY || '50', 10);
+// Performance configuration. Throughput is capped by the warframe.market
+// limiter (WFM_MAX_RPS, see services/WfmRateLimiter.ts), not by concurrency:
+// a few workers keep that budget busy. Was 50, which with proxy rotation and
+// retries is what got the prod IP and proxy pool Cloudflare-blocked (2026-10-02).
+const CONCURRENCY_LIMIT = parseInt(process.env.CONCURRENCY || '4', 10);
 const MIN_DELAY = parseInt(process.env.MIN_DELAY || '100', 10);
 const MAX_DELAY = parseInt(process.env.MAX_DELAY || '300', 10);
 
@@ -33,7 +36,8 @@ let activityInterval: NodeJS.Timeout;
 function startActivityMonitor() {
   activityInterval = setInterval(() => {
     const timeSinceActivity = Math.floor((Date.now() - lastActivityTime) / 1000);
-    if (timeSinceActivity > 5) {
+    // Every 30s, not every second: a Cloudflare pause holds requests for 15 min.
+    if (timeSinceActivity > 5 && timeSinceActivity % 30 === 0) {
       process.stdout.write(`\r${colors.yellow}⏳ Waiting for API response... (${timeSinceActivity}s)${colors.reset}   `);
     }
   }, 1000);
@@ -63,7 +67,8 @@ async function main() {
       maxDelay: MAX_DELAY,
       maxRetries: 5,  // Fewer retries for speed
       priceConfig: {
-        // Minimal delays - the HTTP client handles rate limiting via retries
+        // No extra per-call delays - the HTTP client paces every
+        // warframe.market request through the shared limiter
         ordersMinDelay: 0,
         ordersMaxDelay: 0,
         statsMinDelay: 0,

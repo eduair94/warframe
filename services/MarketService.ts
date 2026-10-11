@@ -45,6 +45,13 @@ export type PriceCalculationConfig = {
   statsMinDelay?: number;
   /** Maximum delay before fetching stats (default: 1000) */
   statsMaxDelay?: number;
+  /**
+   * Call the v1 `/items/{slug}/statistics` endpoint. Since 2026-10 warframe.market
+   * answers third-party clients with `403 Deprecated` and v2 has no replacement,
+   * so this is off unless WFM_V1_STATS=true; prices then come from v2 orders and
+   * the item's last stored volume / avg_price are carried forward.
+   */
+  fetchStatistics?: boolean;
 };
 
 /**
@@ -57,7 +64,8 @@ const DEFAULT_PRICE_CONFIG: Required<PriceCalculationConfig> = {
   ordersMaxDelay: 2000,
   // Was 300ms - below the documented "minimum 500ms between requests" anti-bot floor.
   statsMinDelay: 500,
-  statsMaxDelay: 1000
+  statsMaxDelay: 1000,
+  fetchStatistics: process.env.WFM_V1_STATS === 'true'
 };
 
 /**
@@ -543,6 +551,8 @@ export class MarketService {
       max_amber_stars?: number;
       /** Ayatan: max cyan stars for filled sculpture */
       max_cyan_stars?: number;
+      /** Last stored market data, carried forward when statistics are not fetched. */
+      market?: { volume?: number; avg_price?: number; last_completed?: any };
     },
     retryAttempt: number = 0
   ): Promise<{
@@ -595,7 +605,18 @@ export class MarketService {
       // fetches (the array already carries both the rank-0 and max-rank series).
       let rawStats48h: IStatisticsDataPoint[] = [];
       let stats: { volume: number; avg_price: number; last_completed: any };
-      try {
+      // True when `stats` is the item's last stored snapshot rather than a fresh
+      // 48h aggregate: still worth showing, but too old to fence live prices with.
+      let statsCarried = false;
+      if (!this.priceConfig.fetchStatistics) {
+        const prev = item.market;
+        stats = {
+          volume: prev?.volume ?? 0,
+          avg_price: prev?.avg_price ?? 0,
+          last_completed: prev?.last_completed ?? null,
+        };
+        statsCarried = true;
+      } else try {
         const statsResponse = await this.getItemStatistics<{
           payload: { statistics_closed: { '48hours': IStatisticsDataPoint[] } }
         }>(item.url_name);
@@ -664,7 +685,9 @@ export class MarketService {
       // sculpture that really trades ~10p must not set `buy`). Falls back to the
       // order-book median inside OrderCalculator when volume is too low to have an
       // average. Computed here (not before the stats fetch) so it is available.
-      const goingRate = stats.avg_price;
+      // A carried-forward average can be weeks old; fencing against it would cut
+      // real price moves, so it falls back to the live order-book median (0).
+      const goingRate = statsCarried ? 0 : stats.avg_price;
 
       // Calculate the headline buy/sell prices, now credibility-fenced.
       const prices = OrderCalculator.calculatePrices(

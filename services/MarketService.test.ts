@@ -135,7 +135,8 @@ describe('MarketService', () => {
         ordersMinDelay: 0,
         ordersMaxDelay: 0,
         statsMinDelay: 0,
-        statsMaxDelay: 0
+        statsMaxDelay: 0,
+        fetchStatistics: true
       });
 
       const result = await service.getItemPrices({ url_name: 'ash_prime_blueprint' });
@@ -161,7 +162,7 @@ describe('MarketService', () => {
         addRandomDelay: jest.fn(async () => {}) as any
       };
       const service = new MarketService(httpClient, {
-        ordersMinDelay: 0, ordersMaxDelay: 0, statsMinDelay: 0, statsMaxDelay: 0
+        ordersMinDelay: 0, ordersMaxDelay: 0, statsMinDelay: 0, statsMaxDelay: 0, fetchStatistics: true
       });
 
       const result = await service.getItemPrices({ url_name: 'ash_prime_blueprint' });
@@ -198,7 +199,7 @@ describe('MarketService', () => {
         throw new Error(`Unmocked URL: ${url}`);
       });
       const service = new MarketService(httpClient, {
-        ordersMinDelay: 0, ordersMaxDelay: 0, statsMinDelay: 0, statsMaxDelay: 0
+        ordersMinDelay: 0, ordersMaxDelay: 0, statsMinDelay: 0, statsMaxDelay: 0, fetchStatistics: true
       });
 
       const result = await service.getItemPrices({
@@ -231,7 +232,7 @@ describe('MarketService', () => {
         throw new Error(`Unmocked URL: ${url}`);
       });
       const service = new MarketService(httpClient, {
-        ordersMinDelay: 0, ordersMaxDelay: 0, statsMinDelay: 0, statsMaxDelay: 0
+        ordersMinDelay: 0, ordersMaxDelay: 0, statsMinDelay: 0, statsMaxDelay: 0, fetchStatistics: true
       });
 
       const result = await service.getItemPrices({
@@ -245,6 +246,82 @@ describe('MarketService', () => {
       expect(result.ayatanPrices?.variants[0]).toMatchObject({ key: '0:0', bid: 3, ask: 5, volume: 100 });
       expect(result.ayatanPrices?.variants[5]).toMatchObject({ key: '1:2', bid: 15, ask: 20, volume: 12 });
       expect(result.rankPrices).toBeUndefined();
+    });
+  });
+
+  describe('getItemPrices - v1 statistics retired (default)', () => {
+    const ORDERS = {
+      data: [
+        { type: 'sell', platinum: 40, quantity: 1, user: { status: 'ingame', ingameName: 'a' } },
+        { type: 'sell', platinum: 42, quantity: 1, user: { status: 'ingame', ingameName: 'b' } },
+        { type: 'buy', platinum: 35, quantity: 1, user: { status: 'ingame', ingameName: 'c' } }
+      ]
+    };
+
+    function ordersOnlyClient(): IHttpClient {
+      return {
+        get: jest.fn(async (url: string) => {
+          if (url.includes('/orders/item/')) return ORDERS;
+          throw new Error(`Unexpected request: ${url}`);
+        }) as any,
+        post: jest.fn() as any,
+        addRandomDelay: jest.fn(async () => {}) as any
+      };
+    }
+
+    it('never calls the deprecated v1 /statistics endpoint', async () => {
+      const httpClient = ordersOnlyClient();
+      const service = new MarketService(httpClient);
+
+      await service.getItemPrices({ url_name: 'ash_prime_set' });
+
+      const urls = (httpClient.get as any).mock.calls.map(([u]: [string]) => u);
+      expect(urls.some((u: string) => u.includes('/statistics'))).toBe(false);
+      expect(urls).toHaveLength(1);
+    });
+
+    it('carries the stored volume / avg_price / last_completed forward instead of zeroing them', async () => {
+      const service = new MarketService(ordersOnlyClient());
+      const lastCompleted = { datetime: '2026-10-02T17:00:00Z', avg_price: 41 };
+
+      const result = await service.getItemPrices({
+        url_name: 'ash_prime_set',
+        market: { volume: 73, avg_price: 41, last_completed: lastCompleted }
+      } as any);
+
+      expect(result).toMatchObject({ buy: 35, sell: 40, volume: 73, avg_price: 41 });
+      expect(result.last_completed).toEqual(lastCompleted);
+    });
+
+    it('falls back to zero stats for an item with no stored market data', async () => {
+      const service = new MarketService(ordersOnlyClient());
+
+      const result = await service.getItemPrices({ url_name: 'ash_prime_set' });
+
+      expect(result).toMatchObject({ buy: 35, sell: 40, volume: 0, avg_price: 0 });
+      expect(result.last_completed).toBeNull();
+    });
+
+    it('does not fence live prices against a stale stored average', async () => {
+      // The market moved from ~10p to ~40p since stats froze. Against a stale
+      // going rate of 10 the bait ceiling (10 × 1.5 = 15) would drop the real 35p
+      // bid and leave the 12p one as the headline.
+      const httpClient = ordersOnlyClient();
+      (httpClient.get as any).mockImplementation(async () => ({
+        data: [
+          ...ORDERS.data,
+          { type: 'buy', platinum: 12, quantity: 1, user: { status: 'ingame', ingameName: 'd' } }
+        ]
+      }));
+      const service = new MarketService(httpClient);
+
+      const result = await service.getItemPrices({
+        url_name: 'ash_prime_set',
+        market: { volume: 50, avg_price: 10, last_completed: null }
+      } as any);
+
+      expect(result.sell).toBe(40);
+      expect(result.buy).toBe(35);
     });
   });
 });

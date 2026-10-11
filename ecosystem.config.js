@@ -1,8 +1,19 @@
+// warframe.market allows 3 requests/second per client (WFM v2 docs) and
+// escalates excess to Cloudflare challenges/blocks - which froze prices from
+// 2026-10-02 to 2026-10-11. Every process paces its warframe.market calls
+// through services/WfmRateLimiter.ts at WFM_MAX_RPS; the budgets below keep the
+// processes sharing this IP under 3 RPS together (prices 1.2 + live 0.5 +
+// auctions 0.3 + server 0.5 = 2.5, plus 0.5 for whichever nightly one-shot is
+// running). PROXY_LESS: no proxy rotation for warframe.market - rotating
+// thousands of IPs around a per-client limit is what got the pool blocked.
+const WFM = (rps) => ({ WFM_MAX_RPS: String(rps), PROXY_LESS: "true" });
+
 module.exports = {
     apps: [{
             name: "warframe-sync-prices",
             autorestart: true,
             script: "dist/sync_prices.js",
+            env: WFM(1.2),
             log_date_format: "YYYY-MM-DD HH:mm Z",
         },
         {
@@ -10,12 +21,14 @@ module.exports = {
             autorestart: false,
             cron_restart: "0 0 * * *",
             script: "dist/sync_items.js",
+            env: WFM(0.5),
             log_date_format: "YYYY-MM-DD HH:mm Z",
         },
         {
             name: "warframe-server",
             autorestart: true,
             script: "dist/server.js",
+            env: WFM(0.5),
             log_date_format: "YYYY-MM-DD HH:mm Z",
         },
         {
@@ -44,6 +57,7 @@ module.exports = {
             name: "warframe-sync-auctions",
             autorestart: true,
             script: "dist/sync_auctions.js",
+            env: WFM(0.3),
             log_date_format: "YYYY-MM-DD HH:mm Z",
         },
         {
@@ -56,6 +70,7 @@ module.exports = {
             autorestart: false,
             cron_restart: "0 0 * * 0",
             script: "dist/sync_rivens.js",
+            env: WFM(0.5),
             log_date_format: "YYYY-MM-DD HH:mm Z",
         },
         {
@@ -71,6 +86,7 @@ module.exports = {
             autorestart: false,
             cron_restart: "0 3 * * *",
             script: "dist/sync_drops.js",
+            env: WFM(0.5),
             log_date_format: "YYYY-MM-DD HH:mm Z",
         },
         {
@@ -85,6 +101,7 @@ module.exports = {
             autorestart: false,
             cron_restart: "0 4 * * *",
             script: "dist/sync_translations.js",
+            env: WFM(0.5),
             log_date_format: "YYYY-MM-DD HH:mm Z",
         },
         {
@@ -98,6 +115,7 @@ module.exports = {
             autorestart: false,
             cron_restart: "0 5 * * *",
             script: "dist/sync_foundry.js",
+            env: WFM(0.5),
             log_date_format: "YYYY-MM-DD HH:mm Z",
         },
         {
@@ -113,12 +131,14 @@ module.exports = {
             autorestart: false,
             cron_restart: "30 5 * * *",
             script: "dist/sync_repair_sets.js",
+            env: WFM(0.5),
             log_date_format: "YYYY-MM-DD HH:mm Z",
         },
         {
             name: "warframe-live",
             autorestart: true,
             script: "dist/live.js",
+            env: { ...WFM(0.5), LIVE_POLL_CONCURRENCY: "2" },
             log_date_format: "YYYY-MM-DD HH:mm Z",
         },
     ],

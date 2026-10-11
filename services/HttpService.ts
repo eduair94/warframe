@@ -17,6 +17,13 @@ import { IHttpClient, IHttpRequestOptions, IHttpServiceConfig, IProxyManager } f
 import { HeaderService } from './HeaderService';
 import { sleep } from '../Express/config';
 import { AntiDetection, ProxyRotation } from '../anti-detection';
+import {
+  WfmRateLimiter,
+  isCloudflareChallenge,
+  isWfmUrl,
+  parseRetryAfterMs,
+  wfmRateLimiter,
+} from './WfmRateLimiter';
 
 // Debug mode - set DEBUG=true or DEBUG=warframe:* for verbose logging
 import { DEBUG } from '../debug';
@@ -66,6 +73,9 @@ export class HttpService implements IHttpClient {
   /** Proxy manager for rotation */
   private readonly proxyManager: IProxyManager | null;
 
+  /** Pacing/breaker for api.warframe.market */
+  private readonly wfmLimiter: WfmRateLimiter;
+
   /**
    * Creates a new HttpService instance
    * 
@@ -74,17 +84,61 @@ export class HttpService implements IHttpClient {
    */
   constructor(
     proxyManager: IProxyManager | null = null,
-    config: IHttpServiceConfig = {}
+    config: IHttpServiceConfig & { wfmLimiter?: WfmRateLimiter } = {}
   ) {
+    const { wfmLimiter, ...httpConfig } = config;
     this.proxyManager = proxyManager;
-    this.config = { ...DEFAULT_CONFIG, ...config };
+    this.config = { ...DEFAULT_CONFIG, ...httpConfig };
+    this.wfmLimiter = wfmLimiter ?? wfmRateLimiter;
     this.headerService = new HeaderService();
 
     // Create axios instance
     this.axiosInstance = this.createAxiosInstance();
 
+    // Pace warframe.market + react to its blocks. Registered before axios-retry
+    // so the request hook also runs on every retry and the response hook sees
+    // the refusal before the retry decision.
+    this.configureWfmProtection();
+
     // Configure retry behavior
     this.configureRetry();
+  }
+
+  /**
+   * Routes every warframe.market request (retries included) through the
+   * process-wide limiter, opens its breaker on a Cloudflare challenge and
+   * honours 429 Retry-After. See WfmRateLimiter for why.
+   *
+   * @private
+   */
+  private configureWfmProtection(): void {
+    this.axiosInstance.interceptors.request.use(async (requestConfig) => {
+      if (isWfmUrl(this.axiosInstance.getUri(requestConfig))) await this.wfmLimiter.acquire();
+      return requestConfig;
+    });
+    this.axiosInstance.interceptors.response.use(undefined, (error: AxiosError) => {
+      const res = error.response;
+      if (res && error.config && isWfmUrl(this.axiosInstance.getUri(error.config))) {
+        const body = typeof res.data === 'string' ? res.data : undefined;
+        if (isCloudflareChallenge(res.status, res.headers as Record<string, unknown>, body)) {
+          this.wfmLimiter.tripBlocked();
+        } else if (res.status === 429) {
+          this.wfmLimiter.pauseFor(parseRetryAfterMs(res.headers['retry-after']) ?? 5000);
+        }
+      }
+      return Promise.reject(error);
+    });
+  }
+
+  /**
+   * True for a warframe.market 403: either a Cloudflare challenge or an API
+   * refusal (v1 `Deprecated`). Neither may be retried - retrying a challenge is
+   * what escalated rate limiting into the 2026-10-02 block.
+   *
+   * @private
+   */
+  private isFinalWfmRefusal(error: AxiosError): boolean {
+    return error.response?.status === 403 && !!error.config && isWfmUrl(this.axiosInstance.getUri(error.config));
   }
 
   /**
@@ -140,6 +194,7 @@ export class HttpService implements IHttpClient {
       },
 
       retryCondition: (error) => {
+        if (this.isFinalWfmRefusal(error)) return false;
         // Retry on network errors and specific status codes
         const status = error.response?.status;
         return (

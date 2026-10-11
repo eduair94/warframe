@@ -26,6 +26,14 @@ import { IHttpClient, IHttpRequestOptions } from '../interfaces/http.interface';
 import { HeaderService } from './HeaderService';
 import { ProxyManagerAdapter } from './ProxyManagerAdapter';
 import { createSocksConnector } from './SocksConnector';
+import {
+  WfmNonRetryableError,
+  WfmRateLimiter,
+  isCloudflareChallenge,
+  isWfmUrl,
+  parseRetryAfterMs,
+  wfmRateLimiter,
+} from './WfmRateLimiter';
 
 // Debug mode - set DEBUG=true or DEBUG=warframe:* for verbose logging
 import { DEBUG } from '../debug';
@@ -44,6 +52,8 @@ export interface IUndiciHttpServiceConfig {
   useProxies?: boolean;
   /** Keep-alive timeout in ms (default: 10000) */
   keepAliveTimeout?: number;
+  /** Pacing/breaker for api.warframe.market (default: the process-wide limiter) */
+  wfmLimiter?: WfmRateLimiter;
 }
 
 /**
@@ -54,7 +64,8 @@ const DEFAULT_CONFIG: Required<IUndiciHttpServiceConfig> = {
   minDelay: 500,
   maxDelay: 2000,
   useProxies: true,
-  keepAliveTimeout: 10000
+  keepAliveTimeout: 10000,
+  wfmLimiter: wfmRateLimiter
 };
 
 /** How many requests between periodic proxy-stats log lines (D11, DEBUG-gated) */
@@ -340,9 +351,15 @@ export class UndiciHttpService implements IHttpClient {
     // so any other call site (e.g. getAllItems) got no delay at all.
     await this.addRandomDelay();
 
+    const wfm = isWfmUrl(url);
+
     for (let attempt = 1; attempt <= maxRetries; attempt++) {
       let proxy: string | null = null;
       try {
+        // Every attempt (retries included) takes a warframe.market slot, so no
+        // amount of concurrency or retrying can exceed the process's RPS budget.
+        if (wfm) await this.config.wfmLimiter.acquire();
+
         proxy = this.getUsableProxy();
         const dispatcher = this.createDispatcher(proxy);
         const headers = this.getRequestHeaders(options.headers);
@@ -364,9 +381,13 @@ export class UndiciHttpService implements IHttpClient {
           console.log(`Response status: ${response.statusCode}`);
         }
 
+        if (wfm && (response.statusCode === 403 || response.statusCode === 429)) {
+          this.handleWfmRefusal(response, await response.body.text().catch(() => ''), proxy);
+        }
+
         // Handle retryable status codes
         if (response.statusCode === 403 || response.statusCode === 429 || response.statusCode >= 500) {
-          const statusName = response.statusCode === 403 ? 'Cloudflare block'
+          const statusName = response.statusCode === 403 ? 'Forbidden'
             : response.statusCode === 429 ? 'Rate limit'
             : 'Server error';
 
@@ -421,6 +442,7 @@ export class UndiciHttpService implements IHttpClient {
         return data;
 
       } catch (error) {
+        if ((error as any)?.nonRetryable) throw error;
         lastError = error as Error;
         if (DEBUG) {
           console.log(`❌ Attempt ${attempt} failed:`, (error as Error).message);
@@ -441,6 +463,34 @@ export class UndiciHttpService implements IHttpClient {
   }
 
   /**
+   * Classifies a 403/429 from warframe.market. A Cloudflare challenge opens the
+   * breaker and is never retried: retrying (or rotating proxies) is what turned
+   * rate limiting into the 2026-10-02 block. A plain 403 is an API refusal
+   * (the v1 endpoints answer `Deprecated`), also final. A 429 pauses the
+   * limiter for Retry-After and falls through to the normal backoff/retry.
+   *
+   * @private
+   */
+  private handleWfmRefusal(
+    response: { statusCode: number; headers: Record<string, unknown> },
+    body: string,
+    proxy: string | null
+  ): void {
+    const { statusCode, headers } = response;
+    if (isCloudflareChallenge(statusCode, headers, body)) {
+      if (proxy) this.recordProxyFailure(proxy);
+      this.config.wfmLimiter.tripBlocked();
+      const until = new Date(this.config.wfmLimiter.blockedUntilMs()).toISOString();
+      console.log(`⛔ warframe.market Cloudflare challenge (${statusCode}) - pausing all requests until ${until}`);
+      throw new WfmNonRetryableError(`Cloudflare challenge from warframe.market (${statusCode})`, statusCode);
+    }
+    if (statusCode === 403) {
+      throw new WfmNonRetryableError(`HTTP 403 from warframe.market: ${body.slice(0, 80).trim()}`, 403);
+    }
+    this.config.wfmLimiter.pauseFor(parseRetryAfterMs(headers['retry-after']) ?? 5000);
+  }
+
+  /**
    * Performs a POST request with retry logic
    *
    * @template T - Expected response type
@@ -454,10 +504,12 @@ export class UndiciHttpService implements IHttpClient {
     let lastError: Error | null = null;
 
     await this.addRandomDelay();
+    const wfm = isWfmUrl(url);
 
     for (let attempt = 1; attempt <= maxRetries; attempt++) {
       let proxy: string | null = null;
       try {
+        if (wfm) await this.config.wfmLimiter.acquire();
         proxy = this.getUsableProxy();
         const dispatcher = this.createDispatcher(proxy);
         const headers = this.getRequestHeaders({
@@ -472,6 +524,10 @@ export class UndiciHttpService implements IHttpClient {
           headers,
           body: JSON.stringify(data)
         });
+
+        if (wfm && (response.statusCode === 403 || response.statusCode === 429)) {
+          this.handleWfmRefusal(response, await response.body.text().catch(() => ''), proxy);
+        }
 
         if (response.statusCode === 403 || response.statusCode === 429 || response.statusCode >= 500) {
           if (proxy) this.recordProxyFailure(proxy);
@@ -500,6 +556,7 @@ export class UndiciHttpService implements IHttpClient {
         return JSON.parse(responseText);
 
       } catch (error) {
+        if ((error as any)?.nonRetryable) throw error;
         lastError = error as Error;
         if (attempt < maxRetries) {
           const base = Math.min(1000 * attempt, 5000);
