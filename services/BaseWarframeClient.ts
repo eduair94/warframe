@@ -363,6 +363,11 @@ export abstract class BaseWarframeClient {
     return this.itemService.getItemsByUpdateDate();
   }
 
+  /** Newest stored price update (see ItemService.getNewestPriceUpdate). */
+  async getNewestPriceUpdate(): Promise<Date | null> {
+    return this.itemService.getNewestPriceUpdate();
+  }
+
   // =====================================
   // Price History Operations (Shared Implementation)
   // =====================================

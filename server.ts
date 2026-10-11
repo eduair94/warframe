@@ -12,17 +12,22 @@ import { firebaseAuth } from "./services/firebaseToken";
 import { UserDataService } from "./services/UserDataService";
 import { isSection } from "./services/userValidate";
 import type { AuthedRequest } from "./Express/Express.interface";
+import { createPriceFreshness } from './services/PriceFreshness';
 
 async function main() {
     await MongooseServer.startConnectionPromise();
     console.log("Start express");
     const m = new Warframe();
+    // Newest-price age for /health, queried at most once a minute.
+    const priceFreshness = createPriceFreshness(() => m.getNewestPriceUpdate());
     // Liveness/readiness probe for the uptime monitor (.github/workflows/uptime.yml)
     // and the post-deploy smoke check. Deliberately CHEAP and UNCACHED: `/` returns
     // the whole item catalogue, which is far too expensive to poll every few
     // minutes, and any cached route keeps answering "fine" after the process
     // behind it has stopped. Reports mongo separately from the process, because
     // "express is up but the DB is gone" is a real and otherwise silent failure.
+    // prices_updated_at / prices_age_s let the monitor alert on frozen prices
+    // separately; `ok` stays mongo-only (see services/PriceFreshness.ts).
     server.getJsonLive('health', async (): Promise<any> => {
         const mongoUp = mongoose.connection?.readyState === 1;
         return {
@@ -30,6 +35,7 @@ async function main() {
             mongo: mongoUp ? "up" : "down",
             uptime_s: Math.round(process.uptime()),
             ts: new Date().toISOString(),
+            ...(mongoUp ? await priceFreshness() : { prices_updated_at: null, prices_age_s: null }),
         };
     });
     server.getJsonCache('/', async (req: Request): Promise<any> => {

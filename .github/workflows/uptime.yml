@@ -50,6 +50,7 @@ jobs:
     outputs:
       status: ${{ steps.probe.outputs.status }}
       report: ${{ steps.probe.outputs.report }}
+      prices_age_s: ${{ steps.probe.outputs.prices_age_s }}
     steps:
       - name: Probe origin and edge
         id: probe
@@ -60,6 +61,7 @@ jobs:
           REASONS=""
           ORIGIN_DOWN=0
           USER_DOWN=0
+          PRICES_AGE=""
 
           # NOTE: this sets globals rather than echoing a result, because command
           # substitution would run it in a subshell and silently discard the
@@ -77,6 +79,10 @@ jobs:
             code=$(printf '%s' "$resp" | tail -n1)
             body=$(printf '%s' "$resp" | sed '$d')
             [ -z "$code" ] && code=000
+
+            # Age of the newest stored price (seconds). Judged by the freshness
+            # job below, not here: frozen prices are not an outage.
+            PRICES_AGE=$(printf '%s' "$body" | grep -oE '"prices_age_s":[0-9]+' | cut -d: -f2 || true)
 
             if [ "$code" != "200" ]; then
               REASONS="${REASONS}- API \`/health\` returned **${code}** (expected 200)"$'\n'
@@ -128,6 +134,7 @@ jobs:
           fi
 
           echo "status=${STATUS}" >> "$GITHUB_OUTPUT"
+          echo "prices_age_s=${PRICES_AGE}" >> "$GITHUB_OUTPUT"
           {
             echo "report<<PROBE_EOF"
             if [ -n "$REASONS" ]; then printf '%s' "$REASONS"; else echo "All checks passed."; fi
@@ -228,4 +235,69 @@ jobs:
         if: needs.probe.outputs.status != 'up'
         run: |
           echo "Production status: ${{ needs.probe.outputs.status }}"
+          exit 1
+
+  # Prices frozen while the site is up: 2026-10-02 -> 2026-10-11 nobody noticed
+  # for 9 days because every check above stayed green. A full price pass takes
+  # ~1h, so 3h without any update means the sync is stuck or blocked. Skipped
+  # when /health gave no age (the outage job already covers a dead origin).
+  freshness:
+    name: Open / close the stale-prices issue
+    needs: probe
+    if: needs.probe.outputs.prices_age_s != ''
+    runs-on: ubuntu-latest
+    steps:
+      - name: Reconcile stale-prices issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          AGE: ${{ needs.probe.outputs.prices_age_s }}
+          STALE_AFTER_S: "10800"
+          LABEL: stale-prices
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          RUNBOOK_URL: ${{ github.server_url }}/${{ github.repository }}/blob/main/docs/runbook-outage.md
+        shell: bash
+        run: |
+          set -uo pipefail
+          NOW=$(date -u '+%Y-%m-%d %H:%M UTC')
+          gh label create "$LABEL" --color D93F0B \
+            --description "Prices are not updating (warframe.market sync)" 2>/dev/null || true
+          EXISTING=$(gh issue list --label "$LABEL" --state open --limit 1 \
+            --json number --jq '.[0].number // empty' || true)
+
+          if [ "$AGE" -le "$STALE_AFTER_S" ]; then
+            if [ -n "$EXISTING" ]; then
+              gh issue comment "$EXISTING" --body "Prices updating again (newest is ${AGE}s old) as of ${NOW}. [Run](${RUN_URL})"
+              gh issue close "$EXISTING" --reason completed
+            fi
+            echo "prices fresh (${AGE}s)"
+            exit 0
+          fi
+
+          # One issue per incident and no repeat comments while it stays stale.
+          HOURS=$((AGE / 3600))
+          if [ -z "$EXISTING" ]; then
+            {
+              echo "**Prices have not updated for ~${HOURS}h.** The site is up, but every price it shows is frozen."
+              echo
+              echo "| | |"
+              echo "| --- | --- |"
+              echo "| Newest price update | ${AGE}s ago |"
+              echo "| Detected | ${NOW} |"
+              echo "| Probe run | [open](${RUN_URL}) |"
+              echo
+              echo "### What to do"
+              echo
+              echo "See section 4 of [docs/runbook-outage.md](${RUNBOOK_URL}). Short version:"
+              echo
+              echo "1. \`ssh build 'pm2 ls | grep offbox; pm2 logs warframe-offbox-sync-prices --lines 30 --nostream'\` - the price sync runs on the sync host."
+              echo "2. \`warframe.market Cloudflare challenge ... pausing\` in the log = that IP is being challenged; check nothing exceeds its WFM_MAX_RPS budget. Do not add proxies or raise concurrency."
+              echo "3. \`warframe-offbox-tunnel\` errored = the sync cannot reach the prod database."
+              echo "4. This issue closes itself once prices update again."
+            } > "$RUNNER_TEMP/stale-body.md"
+            gh issue create --title "Prices STALE - no price update for ${HOURS}h" --label "$LABEL" \
+              --body-file "$RUNNER_TEMP/stale-body.md"
+          else
+            echo "still stale (${AGE}s), issue #${EXISTING} already open"
+          fi
           exit 1

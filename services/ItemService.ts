@@ -127,6 +127,19 @@ export class ItemService {
   }
 
   /**
+   * Newest `priceUpdate` across all items (null when nothing was ever priced).
+   * Backs the /health freshness field (services/PriceFreshness.ts).
+   */
+  async getNewestPriceUpdate(): Promise<Date | null> {
+    const doc: any = await this.db
+      .getModel()
+      .findOne({ priceUpdate: { $ne: null } }, { priceUpdate: 1 })
+      .sort({ priceUpdate: -1 })
+      .lean();
+    return doc?.priceUpdate ? new Date(doc.priceUpdate) : null;
+  }
+
+  /**
    * Gets a single item by URL name
    * 
    * @param urlName - URL-friendly item name

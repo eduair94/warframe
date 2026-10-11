@@ -48,6 +48,14 @@ class Proxies {
       this.proxies = "proxies/usa_proxies.txt";
       this.banned_proxies = "proxies/usa_banned.txt";
     }
+    // Proxyless processes (every warframe.market caller since 2026-10, see
+    // ecosystem.config.js) never use the pool: don't fetch it at startup or
+    // refresh it every PROXYSCRAPE_DC_TTL_MS just to discard it.
+    if (process.env.PROXY_LESS === "true") {
+      this.proxieList = [];
+      this.bProxyList = [];
+      return;
+    }
     // Populate the proxy list for both regions - previously this only ran
     // for the non-USA branch, leaving usa_proxies.txt permanently empty
     // whenever PROXY_TYPE_REGION=usa.
