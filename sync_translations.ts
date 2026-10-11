@@ -3,6 +3,7 @@ import { MongooseServer } from "./database";
 import WarframeUndici from "./warframe-undici";
 import { TRANSLATION_LANGS, TRANSLATION_SCOPES } from "./constants";
 import type { TranslationMap } from "./services/TranslationService";
+import { parkIfWfmSyncOffHost } from "./services/WfmSyncGuard";
 
 /**
  * Translation collector.
@@ -63,6 +64,8 @@ function buildMap(data: any[], lang: string, nameField: string): TranslationMap 
 }
 
 async function main() {
+  // Runs on the sync host instead when WFM_SYNC_ENABLED=false (see ecosystem.sync.config.js).
+  if (parkIfWfmSyncOffHost("sync-translations", { longRunning: false })) return;
   log('🌐', 'Starting Translation Sync...', colors.bright);
   log('⚙️', `Scopes=${TRANSLATION_SCOPES.length}, Langs=${TRANSLATION_LANGS.length}, BatchDelay=${BATCH_DELAY}ms`, colors.dim);
 

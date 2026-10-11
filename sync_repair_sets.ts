@@ -2,6 +2,7 @@ import "./env";
 import { MongooseServer } from "./database";
 import { isIncompleteSetRoster } from "./services/SetService";
 import WarframeUndici from "./warframe-undici";
+import { parkIfWfmSyncOffHost } from "./services/WfmSyncGuard";
 
 /**
  * @fileoverview Targeted repair for set docs with a degenerate `items_in_set`
@@ -43,6 +44,8 @@ function log(icon: string, message: string, color: string = colors.reset): void 
 }
 
 async function main(): Promise<void> {
+  // Runs on the sync host instead when WFM_SYNC_ENABLED=false (see ecosystem.sync.config.js).
+  if (parkIfWfmSyncOffHost("sync-repair-sets", { longRunning: false })) return;
   log('🩹', 'Starting Set Roster Repair...', colors.blue);
 
   try {

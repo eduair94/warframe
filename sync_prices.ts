@@ -2,6 +2,7 @@ import "./env";
 import { MongooseServer } from "./database";
 import { Item } from "./interface";
 import WarframeUndici from "./warframe-undici";
+import { parkIfWfmSyncOffHost } from "./services/WfmSyncGuard";
 
 // ANSI color codes for terminal output
 const colors = {
@@ -52,6 +53,8 @@ function updateActivity() {
 }
 
 async function main() {
+  // Runs on the sync host instead when WFM_SYNC_ENABLED=false (see ecosystem.sync.config.js).
+  if (parkIfWfmSyncOffHost("sync-prices", { longRunning: true })) return;
   log('🚀', 'Starting Price Sync Process...', colors.bright);
   log('⚙️', `Config: Concurrency=${CONCURRENCY_LIMIT}, Delay=${MIN_DELAY}-${MAX_DELAY}ms`, colors.dim);
   

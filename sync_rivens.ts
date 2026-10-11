@@ -1,6 +1,7 @@
 import "./env";
 import { MongooseServer } from "./database";
 import WarframeUndici from "./warframe-undici";
+import { parkIfWfmSyncOffHost } from "./services/WfmSyncGuard";
 
 // ANSI color codes for terminal output
 const colors = {
@@ -42,6 +43,8 @@ function stopActivityMonitor() {
 }
 
 async function main() {
+  // Runs on the sync host instead when WFM_SYNC_ENABLED=false (see ecosystem.sync.config.js).
+  if (parkIfWfmSyncOffHost("sync-rivens", { longRunning: false })) return;
   log('🚀', 'Starting Rivens Sync Process...', colors.bright);
   log('⚙️', `Config: Delay=${MIN_DELAY}-${MAX_DELAY}ms`, colors.dim);
   

@@ -150,6 +150,29 @@ ssh warframe167 'curl -s -o /dev/null -w "%{http_code} cf=%header{cf-mitigated}
 - Log line `⛔ warframe.market Cloudflare challenge … pausing all requests until …`
   = the breaker is open; nothing to do but wait (or fix the traffic source).
 
+### The sync host (`.10`)
+
+Since 2026-10-11 the syncs that call warframe.market (prices, auctions, items,
+rivens, translations, repair-sets) run on `.10` (`ssh build`, root, port 2223)
+from `/opt/warframe-sync`, under `ecosystem.sync.config.js` (pm2 names
+`warframe-offbox-*`), at the same per-IP budget. They write to the prod
+database through `warframe-offbox-tunnel`: autossh with the dedicated key
+`/root/.ssh/warframe_db_tunnel`, authorized in debian10's `authorized_keys` on
+`.11` as `restrict,port-forwarding,permitopen="127.0.0.1:27017",command="/bin/false"`
+(no shell, Mongo only). The API host parks its copies with
+`WFM_SYNC_ENABLED=false` in its `.env`; drops, foundry and live stay there.
+
+```bash
+ssh build 'pm2 ls | grep offbox; pm2 logs warframe-offbox-sync-prices --lines 20 --nostream'
+# update after a deploy that touches sync code:
+ssh build 'cd /opt/warframe-sync && git pull --ff-only && export PATH=$(dirname $(. ~/.nvm/nvm.sh && nvm which 24)):$PATH && npm ci && npm run build; pm2 restart ecosystem.sync.config.js --update-env'
+```
+
+To move the syncs back to `.11` (block lifted): `ssh build 'pm2 delete
+ecosystem.sync.config.js && pm2 save'`, remove `WFM_SYNC_ENABLED=false` from
+`.11`'s `.env`, then `pm2 restart` the six syncs there. Never run both copies:
+two price syncs would double the request rate.
+
 ## What now protects this, and what each layer does not do
 
 | Layer | Covers | Does **not** cover |

@@ -2,6 +2,7 @@ import "./env";
 import { MongooseServer } from "./database";
 import { isIncompleteSetRoster } from "./services/SetService";
 import WarframeUndici from "./warframe-undici";
+import { parkIfWfmSyncOffHost } from "./services/WfmSyncGuard";
 
 // ANSI color codes for terminal output
 const colors = {
@@ -74,6 +75,8 @@ function needsV2Enrichment(itemDB: any): boolean {
 }
 
 async function main() {
+  // Runs on the sync host instead when WFM_SYNC_ENABLED=false (see ecosystem.sync.config.js).
+  if (parkIfWfmSyncOffHost("sync-items", { longRunning: false })) return;
   log('🚀', 'Starting Items Sync Process...', colors.bright);
   log('⚙️', `Config: Concurrency=${CONCURRENCY_LIMIT}, Delay=${MIN_DELAY}-${MAX_DELAY}ms, BatchDelay=${BATCH_DELAY}ms`, colors.dim);
   if (FORCE_V2_ENRICHMENT) {
