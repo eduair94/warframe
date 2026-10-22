@@ -8,7 +8,7 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
   "es": {
     "/guides/forma": {
       title: "Cómo farmear Forma: Reliquias, fabricación y recompensas gratuitas | Warframe",
-      description: "Farmea planos de Forma a partir de reliquias, planifica los recursos de fabricación y compara las fuentes de Forma construida."
+      description: "El regalo de Banshee ha finalizado, pero las cuentas elegibles aún pueden reclamar su recompensa única de Forma hasta el 31 de diciembre de 2026."
     },
     "/guides": {
       "title": "Guías de Warframe — Farmeo, builds, platino y ayuda para novatos",
@@ -68,7 +68,7 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
     },
     "/guides/kuva": {
       "title": "Guía de farmeo de Kuva: Fuentes, potenciadores y costes de Riven | Warframe",
-      "description": "Compara Siphons, Floods, Supervivencia y el nuevo intercambio semanal de Melica, comprende a qué recompensas afectan los potenciadores y haz un presupuesto para el Bloqueo de Atributos opcional de la actualización 44."
+      "description": "Compara las recompensas de misión y las ofertas de vendedores de la Update 44.1, consulta los límites de compra semanales y distingue los costes del Trait Locking ordinario de los atributos empalmados protegidos."
     },
     "/guides/relics": {
       "title": "Guía de farmeo de Relic y Void Trace en Warframe",
@@ -95,8 +95,8 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
       "description": "Qué hacen los arcanes en Warframe, cómo subirlos de rango, dónde caen y los arcanes básicos que merece la pena farmear. Potencia tus frames, armas y operator."
     },
     "/guides/riven": {
-      "title": "Mods Riven: Bloqueo de atributos, costes de Kuva y comercio | Warframe",
-      "description": "Aprende cómo funcionan los Mods Riven, conserva una estadística existente con el Bloqueo de atributos, compara los costes de Kuva y evalúa una tirada antes de comerciar."
+      "title": "Mods Riven: Splicing, Trait Locking y costes de Kuva | Warframe",
+      "description": "Aprende cómo funcionan juntos Riven Splicing y Trait Locking, dónde conseguir Riven Splicers y cómo presupuestar tu Kuva antes de ciclar o comerciar."
     },
     "/guides/steel-path": {
       "title": "Guía de Steel Path en Warframe — Desbloqueo y Steel Essence",
@@ -126,7 +126,7 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
   "pt": {
     "/guides/forma": {
       title: "Como farmar Forma: Relíquias, Fabricação e Recompensas Gratuitas | Warframe",
-      description: "Farme Blueprints de Forma a partir de relíquias, planeje os recursos de fabricação e compare as fontes de Forma pronta."
+      description: "A distribuição de Banshee terminou, mas as contas qualificadas ainda podem reivindicar sua recompensa única de Forma até 31 de dezembro de 2026."
     },
     "/guides": {
       "title": "Guias de Warframe — Farm, Builds, Platino e Iniciantes",
@@ -186,7 +186,7 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
     },
     "/guides/kuva": {
       "title": "Guia de Farming de Kuva: Fontes, Boosters e Custos de Riven | Warframe",
-      "description": "Compare Siphons, Floods, Survival e a nova troca semanal da Melica, entenda quais recompensas os boosters afetam e faça o orçamento para o Trait Locking opcional da Update 44."
+      "description": "Compare as recompensas de missões e as ofertas de vendedores do Update 44.1, verifique os limites de compra semanais e distinga os custos do Trait Locking comum daqueles com atributos combinados protegidos."
     },
     "/guides/relics": {
       "title": "Guia de Farm de Relic e Void Trace Warframe",
@@ -213,8 +213,8 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
       "description": "O que os arcanes fazem em Warframe, como upá-los, onde dropam e os arcanes essenciais que valem a pena farmar. Turbine seus frames, armas e operator."
     },
     "/guides/riven": {
-      "title": "Mod Riven: Trait Locking, Custos de Kuva e Negociação | Warframe",
-      "description": "Aprenda como os Riven Mods funcionam, preserve um atributo existente com o Trait Locking, compare os custos de Kuva e avalie um roll antes de negociar."
+      "title": "Mods Riven: Splicing, Trait Locking e Custos de Kuva | Warframe",
+      "description": "Aprenda como o Riven Splicing e o Trait Locking funcionam juntos, onde obter Riven Splicers e como planejar seus gastos de Kuva antes de ciclar ou negociar."
     },
     "/guides/steel-path": {
       "title": "Guia de Steel Path Warframe — Desbloqueio e Steel Essence",
@@ -244,7 +244,7 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
   "de": {
     "/guides/forma": {
       title: "Forma farmen: Relikte, Herstellung & kostenlose Belohnungen | Warframe",
-      description: "Farme Forma-Blaupausen aus Relikten, plane Herstellungsressourcen und vergleiche fertige Forma-Quellen. Prüfe die datierte kostenlose Login-Belohnung und den Status des Plague Star-Events."
+      description: "Das Banshee-Giveaway ist beendet, aber berechtigte Accounts können ihr einmaliges Forma noch bis zum 31. Dezember 2026 beanspruchen."
     },
     "/guides": {
       "title": "Warframe Guides — Farming, Builds, Platin & Einsteiger",
@@ -304,7 +304,7 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
     },
     "/guides/kuva": {
       "title": "Kuva-Farming-Guide: Quellen, Booster & Riven-Kosten | Warframe",
-      "description": "Vergleiche Siphons, Floods, Survival und Melicas neues wöchentliches Tauschgeschäft, verstehe, welche Belohnungen von Boostern beeinflusst werden, und budgetiere für das optionale Trait Locking von Update 44."
+      "description": "Vergleiche Missionsbelohnungen mit den Händlerangeboten aus Update 44.1, achte auf wöchentliche Kauflimits und unterscheide die Kosten für gewöhnliches Trait Locking von geschützten gespliceten Traits."
     },
     "/guides/relics": {
       "title": "Warframe Relic & Void Trace Farming Guide",
@@ -331,8 +331,8 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
       "description": "Was Arcanes in Warframe bewirken, wie du sie levelst, wo sie droppen und die essenziellen Arcanes, die sich zu farmen lohnen. Verstärke deine Frames, Waffen und Operator."
     },
     "/guides/riven": {
-      "title": "Riven-Mods: Attributssperre, Kuva-Kosten & Handel | Warframe",
-      "description": "Erfahre, wie Riven-Mods funktionieren, bewahre eine bestehende Eigenschaft mit der Attributssperre, vergleiche die Kuva-Kosten und bewerte einen Roll vor dem Handel."
+      "title": "Riven-Mods: Splicing, Trait Locking & Kuva-Kosten | Warframe",
+      "description": "Erfahre, wie Riven Splicing und Trait Locking zusammenspielen, wo du Riven Splicer erhältst und wie du dein Kuva vor dem Cycling oder Handeln kalkulierst."
     },
     "/guides/steel-path": {
       "title": "Warframe Steel Path Guide — Freischalten & Essence",
@@ -362,7 +362,7 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
   "fr": {
     "/guides/forma": {
       title: "Comment farmer les Forma : Reliques, fabrication et récompenses gratuites | Warframe",
-      description: "Farmez les plans de Forma grâce aux reliques, prévoyez les ressources de fabrication et comparez les sources de Forma construits."
+      description: "La distribution de Banshee est terminée, mais les comptes éligibles peuvent encore récupérer son Forma unique jusqu'au 31 décembre 2026."
     },
     "/guides": {
       "title": "Guides Warframe — Farm, Builds, Platine & Débutants",
@@ -422,7 +422,7 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
     },
     "/guides/kuva": {
       "title": "Guide de farming de Kuva : Sources, Boosters & Coûts de Riven | Warframe",
-      "description": "Comparez les Siphons, les Floods, la Survie et le nouvel échange hebdomadaire de Melica, comprenez quelles récompenses sont affectées par les boosters, et budgétisez pour le verrouillage de caractéristique optionnel de la mise à jour 44."
+      "description": "Comparez les récompenses de mission et les offres des marchands de l'Update 44.1, vérifiez les limites d'achat hebdomadaires et distinguez les coûts du Trait Locking ordinaire de ceux des traits fusionnés protégés."
     },
     "/guides/relics": {
       "title": "Guide de farm de Relic & Void Trace Warframe",
@@ -449,8 +449,8 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
       "description": "Ce que font les arcanes dans Warframe, comment les monter, où ils tombent et les arcanes incontournables à farmer. Boostez vos frames, armes et Operator."
     },
     "/guides/riven": {
-      "title": "Mods Riven : verrouillage de caractéristique, coûts de Kuva et échange | Warframe",
-      "description": "Apprenez le fonctionnement des Mods Riven, préservez une statistique existante grâce au verrouillage de caractéristique, comparez les coûts en Kuva et évaluez un jet avant de l'échanger."
+      "title": "Mods Riven : Splicing, Trait Locking et coûts en Kuva | Warframe",
+      "description": "Découvrez comment le Riven Splicing et le Trait Locking fonctionnent ensemble, où obtenir des Riven Splicers et comment budgétiser votre Kuva avant de recycler ou d'échanger."
     },
     "/guides/steel-path": {
       "title": "Guide Steel Path Warframe — Débloquer & Steel Essence",
@@ -480,7 +480,7 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
   "ru": {
     "/guides/forma": {
       title: "Как фармить Forma: Реликвии, крафт и бесплатные награды | Warframe",
-      description: "Фармите чертежи Forma из реликвий, планируйте ресурсы для крафта и сравнивайте источники готовых Forma. Проверьте актуальную награду за вход по датам и статус события Plague Star."
+      description: "Раздача Banshee завершилась, но подходящие аккаунты всё ещё могут забрать полагающуюся разовую Forma до 31 декабря 2026 года."
     },
     "/guides": {
       "title": "Гайды по Warframe — фарм, билды, платина и старт",
@@ -540,7 +540,7 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
     },
     "/guides/kuva": {
       "title": "Гайд по фарму Kuva: источники, бустеры и стоимость Riven | Warframe",
-      "description": "Сравните Сифоны (Siphons), Наводнения (Floods), выживание и новый еженедельный обмен Цефалона Мелики, разберитесь, на какие награды влияют бустеры, и заложите в бюджет затраты на опциональную блокировку свойств из Update 44."
+      "description": "Сравнивайте награды за миссии и предложения торговцев в Update 44.1, проверяйте еженедельные лимиты покупок и учитывайте разницу между затратами на обычный Trait Locking и защищенные объединенные характеристики."
     },
     "/guides/relics": {
       "title": "Гайд по фарму Relic и Void Trace в Warframe",
@@ -567,8 +567,8 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
       "description": "Что делают арканы в Warframe, как их прокачивать, где они падают и какие ключевые арканы стоит фармить. Усильте свои фреймы, оружие и Operator."
     },
     "/guides/riven": {
-      "title": "Riven-моды: блокировка свойств, затраты Kuva и торговля | Warframe",
-      "description": "Узнайте, как работают Riven-моды, сохраняйте одну существующую характеристику с помощью блокировки свойств, сравнивайте затраты Kuva и оценивайте ролл перед торговлей."
+      "title": "Riven-моды: Splicing, Trait Locking и затраты Kuva | Warframe",
+      "description": "Узнайте, как Riven Splicing и Trait Locking работают вместе, где получить Riven Splicers и как рассчитать Kuva перед циклированием или торговлей."
     },
     "/guides/steel-path": {
       "title": "Гайд по Steel Path Warframe — открытие и Steel Essence",
@@ -598,7 +598,7 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
   "ko": {
     "/guides/forma": {
       title: "Forma 파밍 방법: 성유물, 제작 및 무료 보상 | Warframe",
-      description: "성유물에서 Forma 청사진을 파밍하고, 제작 재료를 계획하며, 완제품 Forma 소스를 비교하세요. 기간 한정 무료 로그인 보상과 Plague Star 이벤트 상태를 확인하세요."
+      description: "유물에서 Forma 설계도를 파밍하고, 제작 리소스를 계획하고, 제작된 Forma 소스를 비교하세요. Banshee 경품 행사는 종료되었지만 자격을 갖춘 계정은 2026년 12월 31일까지 일회성 Forma를 계속 요청할 수 있습니다."
     },
     "/guides": {
       "title": "Warframe 가이드 — 파밍, 빌드, 플래티넘 & 초보자 도움말",
@@ -658,7 +658,7 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
     },
     "/guides/kuva": {
       "title": "Kuva 파밍 가이드: 출처, 부스터 및 Riven 비용 | Warframe",
-      "description": "감당할 수 있는 Riven 수치 변경에 맞춰 Kuva 파밍을 계획하세요. Siphon, Flood, 생존(Survival) 및 Melica의 새로운 주간 교환을 비교하고, 어떤 보상 부스터가 적용되는지 이해하며, Update 44의 선택적 특성 잠금에 대비해 예산을 세우세요."
+      "description": "감당할 수 있는 Riven 롤을 중심으로 Kuva 파밍을 계획하세요. 임무 보상과 업데이트 44.1 상인 교환을 비교하고, 주간 구매 한도를 확인하고, 일반 Trait Locking 비용과 보호된 접합 특성을 구별하세요."
     },
     "/guides/relics": {
       "title": "Warframe Relic & Void Trace 파밍 가이드",
@@ -685,8 +685,8 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
       "description": "Warframe에서 Arcane의 효과, 랭크업 방법, 드롭 위치, 파밍할 가치가 있는 핵심 Arcane까지. 프레임·무기·Operator를 강화하세요."
     },
     "/guides/riven": {
-      "title": "Riven Mod: 특성 고정, Kuva 비용 및 거래 | Warframe",
-      "description": "Riven Mod의 작동 방식, 특성 고정으로 기존 수치 하나 유지, Kuva 비용 비교 및 거래 전 롤 평가 방법을 알아보세요. Update 44 규칙 및 발표된 Riven Splicing 상태가 포함되어 있습니다."
+      "title": "Riven 모드: 접합, Trait Locking 및 Kuva 비용 | Warframe",
+      "description": "Riven Splicing과 Trait Locking이 함께 작동하는 방법, Riven Splicers를 어디서 구할 수 있는지, 재설정이나 거래 전에 Kuva의 예산을 책정하는 방법을 알아보세요. 출시된 업데이트 44.1 규칙과 두 종류의 보호 특성 간의 차이점이 포함됩니다."
     },
     "/guides/steel-path": {
       "title": "Warframe Steel Path 가이드 — 해금 & Steel Essence",
@@ -716,7 +716,7 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
   "ja": {
     "/guides/forma": {
       title: "Formaをファームする方法：レリック、クラフト、無料報酬 | Warframe",
-      description: "レリックからFormaの設計図をファームし、クラフト素材の計画を立て、完成品のFormaの入手先を比較します。日付入りの無料ログイン報酬とPlague Starイベントのステータスを確認してください。"
+      description: "レリックから Forma 設計図を集め、クラフト リソースを計画し、完成品 Forma の入手先を比較します。 Banshee の特典は終了しましたが、資格のあるアカウントは、2026 年 12 月 31 日まで 1 回限りの Formaを請求できます。"
     },
     "/guides": {
       "title": "Warframeガイド — 周回・ビルド・プラチナ・初心者向け",
@@ -776,7 +776,7 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
     },
     "/guides/kuva": {
       "title": "Kuvaファームガイド：入手源、ブースター、Rivenコスト | Warframe",
-      "description": "自分が用意できるRivenの再抽選に合わせてKuvaファームの計画を立てましょう。シフォン、フラッド、サバイバル、そしてMelicaの新しい週替わり交換を比較し、どの報酬がブースターの影響を受けるかを理解し、アップデート44の任意の特性ロックに向けた予算を立てましょう。"
+      "description": "余裕のある Riven ロールを中心に Kuva 集めを計画してください。ミッションの報酬とアップデート 44.1 ベンダーのオファーを比較し、毎週の購入制限を確認し、通常の Trait Locking コストと保護されたスプライスされた特性を区別します。"
     },
     "/guides/relics": {
       "title": "Warframe Relic・Void Trace周回ガイド",
@@ -803,8 +803,8 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
       "description": "Warframeでアルケインの効果、ランクの上げ方、ドロップ場所、周回する価値のある定番アルケイン。フレーム・武器・Operatorを強化しよう。"
     },
     "/guides/riven": {
-      "title": "Riven Mod: 特性ロック、Kuvaコスト & トレード | Warframe",
-      "description": "Riven Modの仕組み、特性ロックによる既存ステータスの保持、Kuvaコストの比較、そしてトレード前のロール評価について解説します。Update 44のルールおよび、アナウンスされたRivenスプライシングの状況を含みます。"
+      "title": "Riven Mods: スプライシング、Trait Locking および Kuva のコスト | Warframe",
+      "description": "Riven Splicing と Trait Locking がどのように連携するか、Riven Splicers をどこで入手できるか、再抽選やトレードの前に Kuva の予算を立てる方法を学びましょう。実装済みのアップデート 44.1 ルールと 2 種類の保護された特性の違いが含まれます。"
     },
     "/guides/steel-path": {
       "title": "Warframe Steel Pathガイド — 解放とSteel Essence",
@@ -834,7 +834,7 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
   "zh-hans": {
     "/guides/forma": {
       title: "如何刷 Forma：遗物、制作与免费奖励 | Warframe",
-      description: "从遗物中刷 Forma 蓝图，规划制作资源并对比成品 Forma 的来源。查看标明日期的免费登录奖励以及 Plague Star 活动状态。"
+      description: "从虚空遗物中获取 Forma 蓝图，规划制作资源并比较成品 Forma 来源。 Banshee 赠品活动已结束，但符合条件的帐户仍可在 2026 年 12 月 31 日 之前领取一次性 Forma。"
     },
     "/guides": {
       "title": "Warframe 攻略大全 — 刷素材、配装、白金与新手指南",
@@ -894,7 +894,7 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
     },
     "/guides/kuva": {
       "title": "Kuva刷取指南：来源、加成与Riven消耗 | Warframe",
-      "description": "根据你能承受的Riven洗炼来规划你的Kuva刷取。对比Siphon、Flood、生存和Melica的新每周兑换，了解哪些奖励受加成影响，并为Update 44的可选词条锁定做好预算。"
+      "description": "围绕您能负担得起的 Riven 重洗次数来计划您的 Kuva 刷取。比较任务奖励和更新 44.1 商人兑换项目，检查每周购买限额，并将普通 Trait Locking 成本与受保护的拼接特征区分开来。"
     },
     "/guides/relics": {
       "title": "Warframe Relic 与 Void Trace farm 攻略",
@@ -921,8 +921,8 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
       "description": "Arcane 在 Warframe 中有什么用、如何升级、在哪掉落，以及值得farm的核心 Arcane。强化你的战甲、武器与 Operator。"
     },
     "/guides/riven": {
-      "title": "Riven Mods：词条锁定、Kuva 消耗与交易 | Warframe",
-      "description": "了解 Riven Mods 的工作原理，使用词条锁定保留一个现有属性，对比 Kuva 消耗并在交易前评估 Roll 值。包含 Update 44 规则以及 Riven Splicing 的已公布状态。"
+      "title": "Riven Mod：拼接、Trait Locking 和 Kuva 成本 | Warframe",
+      "description": "了解 Riven Splicing 和 Trait Locking 如何协同工作、从哪里获取 Riven Splicers 以及如何在重洗或交易之前规划 Kuva 预算。包括已上线的更新 44.1 规则以及两种受保护特征之间的差异。"
     },
     "/guides/steel-path": {
       "title": "Warframe Steel Path 攻略 — 解锁与 Steel Essence",
@@ -952,7 +952,7 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
   "zh-hant": {
     "/guides/forma": {
       title: "如何農 Forma：聖物、製作與免費獎勵 | Warframe",
-      description: "從聖物中農 Forma 藍圖，規劃製造資源並比較已建造的 Forma 來源。檢查有日期標記的免費登入獎勵以及 Plague Star 活動狀態。"
+      description: "從虛空遺物中獲取 Forma 藍圖，規劃製作資源並比較成品 Forma 來源。 Banshee 贈品活動已結束，但符合資格的帳戶仍可在 2026 年 12 月 31 日 之前領取一次性 Forma。"
     },
     "/guides": {
       "title": "Warframe 攻略大全 — 刷素材、配裝、白金與新手教學",
@@ -1012,7 +1012,7 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
     },
     "/guides/kuva": {
       "title": "Kuva 資源取得指南：來源、加成與 Riven 消耗 | Warframe",
-      "description": "根據你負擔得起的 Riven 洗鍊來規劃你的 Kuva 資源取得。比較 Siphon、Flood、生存（Survival）以及 Cephalon Melica 全新每週兌換，了解哪些獎勵會受到加成道具影響，並為 Update 44 的選配詞條鎖定做好預算。"
+      "description": "圍繞您能負擔的 Riven 重洗次數來計劃您的 Kuva 刷取。比較任務獎勵和更新 44.1 商人兌換項目，檢查每週購買限額，並將普通 Trait Locking 成本與受保護的拼接特徵區分開來。"
     },
     "/guides/relics": {
       "title": "Warframe Relic 與 Void Trace 農場指南",
@@ -1039,8 +1039,8 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
       "description": "Arcane 在 Warframe 有什麼用、如何升級、掉在哪裡，以及值得刷的核心 Arcane。強化你的戰甲、武器與 Operator。"
     },
     "/guides/riven": {
-      "title": "Riven Mods：詞條鎖定、Kuva 消耗與交易 | Warframe",
-      "description": "了解 Riven Mods 的運作方式、透過詞條鎖定保留一個現有屬性、比較 Kuva 消耗並在交易前評估洗屬。包含 Update 44 的規則以及 Riven Splicing 的公告狀態。"
+      "title": "Riven Mod：拼接、Trait Locking 和 Kuva 成本 | Warframe",
+      "description": "了解 Riven Splicing 和 Trait Locking 如何協同工作、從哪裡獲取 Riven Splicers 以及如何在重洗或交易之前規劃 Kuva 預算。包括已上線的更新 44.1 規則以及兩種受保護特徵之間的差異。"
     },
     "/guides/steel-path": {
       "title": "Warframe Steel Path 指南 — 解鎖與 Steel Essence",
@@ -1070,7 +1070,7 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
   "pl": {
     "/guides/forma": {
       title: "Jak farmić Forma: Relikty, Crafting i Darmowe Nagrody | Warframe",
-      description: "Farm Blueprinty Forma z reliktów, zaplanuj surowce na craft i porównaj źródła gotowych Forma. Sprawdź datowaną darmową nagrodę za logowanie oraz status eventu Plague Star."
+      description: "Rozdanie Banshee dobiegło końca, ale kwalifikujące się konta mogą nadal odebrać jednorazową nagrodę w postaci Formy do 31 grudnia, 2026."
     },
     "/guides": {
       "title": "Poradniki Warframe — Farmienie, Buildy, Platyna i Start",
@@ -1130,7 +1130,7 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
     },
     "/guides/kuva": {
       "title": "Poradnik farmingu Kuva: Źródła, boostery i koszty Riven | Warframe",
-      "description": "Porównaj misje Siphons, Floods, Survival oraz nową cotygodniową wymianę Meliki, dowiedz się, na które nagrody wpływają boostery, i zaplanuj budżet na opcjonalne blokowanie cech z Aktualizacji 44."
+      "description": "Porównaj nagrody za misje i oferty dostawców Aktualizacji 44.1, sprawdź tygodniowe limity zakupów i odróżnij zwykłe koszty Trait Locking od chronionych cech łączonych."
     },
     "/guides/relics": {
       "title": "Poradnik Farmienia Relic i Void Trace w Warframe",
@@ -1157,8 +1157,8 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
       "description": "Co robią arcane w Warframe, jak je levelować, gdzie wypadają i które podstawowe arcane warto farmić. Wzmocnij warframe'y, bronie i Operatora."
     },
     "/guides/riven": {
-      "title": "Mody Riven: Blokowanie atrybutów, koszty Kuva i handel | Warframe",
-      "description": "Dowiedz się, jak działają Mody Riven, zachowaj jeden istniejący stat dzięki blokowaniu atrybutów, porównaj koszty Kuva i oceń losowanie przed handlem."
+      "title": "Mody Riven: łączenie, Trait Locking i koszty Kuva | Warframe",
+      "description": "Dowiedz się, jak współpracują ze sobą Riven Splicing i Trait Locking, gdzie zdobyć Riven Splicers i jak zaplanować budżet Kuva przed ponownym losowaniem statystyk lub handlem."
     },
     "/guides/steel-path": {
       "title": "Poradnik Steel Path w Warframe — Steel Essence",
@@ -1188,7 +1188,7 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
   "it": {
     "/guides/forma": {
       title: "Come farmare Forma: Reliquie, Crafting e Ricompense Gratuite | Warframe",
-      description: "Farma i Blueprint di Forma dalle reliquie, pianifica le risorse di crafting e confronta le fonti di Forma assemblati."
+      description: "Il giveaway di Banshee è terminato, ma gli account idonei possono ancora richiedere la ricompensa di un Forma ottenibile una sola volta fino al giorno 31 dicembre 2026."
     },
     "/guides": {
       "title": "Guide Warframe — Farming, Build, Platino e Aiuto Novizi",
@@ -1248,7 +1248,7 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
     },
     "/guides/kuva": {
       "title": "Guida al Farming di Kuva: Fonti, Booster e Costi Riven | Warframe",
-      "description": "Confronta Siphons, Floods, Survival e il nuovo scambio settimanale di Melica, comprendi quali ricompense i booster influenzano e pianifica il budget per il Trait Locking opzionale dell'Update 44."
+      "description": "Confronta i premi della missione e le offerte dei venditori dell'aggiornamento 44.1, controlla i limiti di acquisto settimanali e distingui i costi ordinari di Trait Locking dai tratti di giunzione protetti."
     },
     "/guides/relics": {
       "title": "Guida al Farming di Relic e Void Trace Warframe",
@@ -1275,8 +1275,8 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
       "description": "Cosa fanno gli arcani in Warframe, come livellarli, dove droppano e gli arcani fondamentali da farmare. Potenzia frame, armi e Operator."
     },
     "/guides/riven": {
-      "title": "Mod Riven: Blocco delle statistiche, costi di Kuva e scambi | Warframe",
-      "description": "Scopri come funzionano i Mod Riven, preserva una statistica esistente con il blocco delle statistiche, confronta i costi di Kuva e valuta un roll prima di scambiare."
+      "title": "Mod Riven: giunzione, Trait Locking e costi Kuva | Warframe",
+      "description": "Scopri come Riven Splicing e Trait Locking funzionano insieme, dove trovare Riven Splicers e come preventivare Kuva prima di rilanciare le statistiche o fare trading."
     },
     "/guides/steel-path": {
       "title": "Guida allo Steel Path Warframe — Sblocco e Steel Essence",
@@ -1306,7 +1306,7 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
   "uk": {
     "/guides/forma": {
       title: "Як фармити Forma: Реліквії, крафт та безкоштовні нагороди | Warframe",
-      description: "Фарміть кресленики Forma з реліквій, плануйте ресурси для крафту та порівнюйте джерела готових Forma. Перевірте статус безкоштовної нагороди за вхід із вказаною датою та події Plague Star."
+      description: "Роздача Banshee закінчилася, але придатні облікові записи все ще можуть отримати одноразову нагороду Forma до 31 грудня 2026."
     },
     "/guides": {
       "title": "Гайди Warframe — фарм, білди, платина та поради новачкам",
@@ -1366,7 +1366,7 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
     },
     "/guides/kuva": {
       "title": "Посібник із фарму Kuva: джерела, прискорювачі та вартість Riven | Warframe",
-      "description": "Порівняйте Siphons, Floods, Survival та новий щотижневий обмін Меліки, зрозумійте, на які нагороди впливають прискорювачі, та розрахуйте бюджет для додаткового блокування властивостей в Update 44."
+      "description": "Порівняйте винагороди за місії та пропозиції постачальників Оновлення 44.1, перевірте щотижневі ліміти покупок і розрізняйте звичайні витрати Trait Locking від захищених сполучених ознак."
     },
     "/guides/relics": {
       "title": "Гайд фарму Relic і Void Trace у Warframe",
@@ -1393,8 +1393,8 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
       "description": "Що роблять arcanes у Warframe, як їх прокачувати, звідки вони падають і які основні арканки варто фармити. Підсильте фрейми, зброю та Operator."
     },
     "/guides/riven": {
-      "title": "Riven-моди: Блокування властивостей, витрати Kuva та торгівля | Warframe",
-      "description": "Дізнайтеся, як працюють Riven-моди, зберігайте один наявний стат за допомогою блокування властивостей, порівнюйте витрати Kuva та оцінюйте рол перед торгівлею."
+      "title": "Моди Riven: зрощення, Trait Locking і витрати Kuva | Warframe",
+      "description": "Дізнайтеся, як Riven Splicing і Trait Locking працюють разом, де взяти Riven Splicers і як скласти бюджет Kuva перед повторним випадковим вибором характеристик або торгівлею."
     },
     "/guides/steel-path": {
       "title": "Гайд Steel Path Warframe — розблокування й Steel Essence",

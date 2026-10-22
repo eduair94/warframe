@@ -1,5 +1,5 @@
 // Warframe Knowledge Center: Kuva farming and Riven spending.
-// Substantively reviewed against official release notes on 2026-09-30.
+// Substantively reviewed against official release notes on 2026-10-22.
 // See the sources list for current mechanics and the historical cost changes.
 // Single content source for /guides/kuva (rendered by <GuideArticle>).
 import type { Guide } from './types'
@@ -8,7 +8,7 @@ const guide: Guide = {
   "slug": "kuva",
   "eyebrow": "Knowledge Center · Kuva Farming",
   "title": "Kuva Farming Guide: Sources, Boosters & Riven Costs",
-  "lede": "Plan your Kuva farming around the Riven rolls you can afford. Compare Siphons, Floods, Survival and Melica’s new weekly exchange, understand which rewards boosters affect, and budget for Update 44’s optional Trait Locking.",
+  "lede": "Plan your Kuva farming around the Riven rolls you can afford. Compare mission rewards and Update 44.1 vendor offers, check weekly purchase limits, and distinguish ordinary Trait Locking costs from protected spliced traits.",
   "category": "farming",
   "readMins": 8,
   "stats": [
@@ -24,12 +24,12 @@ const guide: Guide = {
     },
     {
       "num": "3,500",
-      "label": "max Kuva per unlocked cycle",
+      "label": "max Kuva without ordinary Trait Locking",
       "tone": "gold"
     },
     {
       "num": "7,000",
-      "label": "max Kuva with one trait locked",
+      "label": "max Kuva with ordinary Trait Locking",
       "tone": "good"
     }
   ],
@@ -40,7 +40,7 @@ const guide: Guide = {
       "blocks": [
         {
           "type": "p",
-          "text": "**Kuva** is a resource used to cycle the randomized stats on **Riven mods** and craft certain Foundry blueprints, including Umbra Forma. Cycling does not change the weapon’s Riven Disposition. Since Update 44, you can preserve one existing trait while cycling the others, at double the usual Kuva cost."
+          "text": "**Kuva** is a resource used to cycle the randomized stats on **Riven mods** and craft certain Foundry blueprints, including Umbra Forma. Cycling does not change the weapon’s Riven Disposition. Ordinary Trait Locking preserves one existing trait at double the usual cycling cost. A protected spliced trait alone has no Kuva surcharge."
         },
         {
           "type": "p",
@@ -204,6 +204,34 @@ const guide: Guide = {
       ]
     },
     {
+      "id": "vendor-exchanges",
+      "title": "Update 44.1: compare Kuva vendor offers",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "[Update 44.1](https://www.warframe.com/en/patch-notes/pc/44-1-0) improved several Kuva exchanges. Check the vendors you have unlocked and the currencies already in your inventory before choosing another mission farm. These offers give regular Kuva; Melica’s Entropic Kuva exchange remains a separate option."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": ["Vendor offer", "Cost per purchase", "Regular Kuva", "Weekly purchase limit"],
+            "rows": [
+              ["Acrithis’ Wares", "10 Pathos Clamps", "10,000", "Not specified in the update; check the shop"],
+              ["Acrithis: Exchange Scuttler Husks", "25 Scuttler Husks", "14,000", "3"],
+              ["Flare’s Memorabilia", "100 Heartstrings", "14,000", "3"],
+              ["Nightcap’s Wares", "75 Fergolyte", "14,000", "3"],
+              ["Hunhow’s Keepsakes", "35 Emerald Talents AND 35 Crimson Talents", "17,000", "3"]
+            ],
+            "note": "Quantities and stated limits follow Update 44.1. The Pathos Clamp offer has no purchase limit stated in those notes; that is not confirmation of unlimited purchases. Vendor bundles are not doubled by Resource Boosters."
+          }
+        },
+        {
+          "type": "tip",
+          "text": "**Compare the currency cost, not just the bundle size.** Three 14,000-Kuva purchases give 42,000 Kuva: enough for 12 cycles at the 3,500 base cap, or 6 with ordinary Trait Locking at 7,000. Reserve currencies needed for other rewards first. A larger Kuva bundle is not automatically faster to earn."
+        }
+      ]
+    },
+    {
       "id": "survival-fissure",
       "title": "Kuva Survival and Requiem Fissures",
       "blocks": [
@@ -277,11 +305,11 @@ const guide: Guide = {
               "v": "35,000 Kuva"
             },
             {
-              "k": "No locked trait",
+              "k": "Without ordinary Trait Locking",
               "v": "3,500 per cycle → 10 cycles"
             },
             {
-              "k": "One locked trait",
+              "k": "With ordinary Trait Locking",
               "v": "7,000 per cycle → 5 cycles"
             },
             {
@@ -292,7 +320,7 @@ const guide: Guide = {
         },
         {
           "type": "info",
-          "text": "This is arithmetic, not a farming-rate estimate: 35,000 ÷ 3,500 = 10 and 35,000 ÷ 7,000 = 5. Set your stopping point before cycling, and reserve any Kuva you need for crafting."
+          "text": "This is arithmetic, not a farming-rate estimate: 35,000 ÷ 3,500 = 10 and 35,000 ÷ 7,000 = 5. A protected spliced trait alone uses the normal price; adding ordinary Trait Locking doubles it. Set your stopping point before cycling, and reserve any Kuva you need for crafting."
         }
       ]
     },
@@ -302,15 +330,15 @@ const guide: Guide = {
       "blocks": [
         {
           "type": "p",
-          "text": "Use **Cycle Riven** in the Mod Segment to reroll with Kuva. Ranking the mod up instead uses [Endo](/guides/endo) and Credits. Without a locked trait, cycling starts at **900 Kuva** and rises to a **3,500 Kuva** cap. With one trait locked, each cycle costs twice its normal price."
+          "text": "Use **Cycle Riven** in the Mod Segment to reroll with Kuva. Ranking the mod up instead uses [Endo](/guides/endo) and Credits. Without ordinary Trait Locking, cycling starts at **900 Kuva** and rises to a **3,500 Kuva** cap, including when a spliced trait is protected. Ordinary Trait Locking doubles the displayed base price."
         },
         {
           "type": "table",
           "table": {
             "columns": [
               "Cycle",
-              "No locked trait",
-              "One locked trait"
+              "Without ordinary Trait Locking",
+              "With ordinary Trait Locking"
             ],
             "rows": [
               [
@@ -344,12 +372,12 @@ const guide: Guide = {
                 "7,000"
               ]
             ],
-            "note": "Costs are Kuva per cycle. Applying or removing a lock itself is free; the higher cost is charged when you cycle with a trait locked."
+            "note": "Costs are Kuva per cycle. Applying or removing ordinary Trait Locking is free; cycling with it doubles the price. A protected spliced trait alone does not double the cost."
           }
         },
         {
           "type": "info",
-          "text": "**Trait Locking is live in Update 44.** Select an existing trait to preserve it while cycling. Only one can be locked, and the current count of positive and negative traits stays fixed. Unlock it to allow that layout to change. Closing the Cycling menu clears the lock, so select it again next time."
+          "text": "**Two protections, different costs.** Ordinary Trait Locking preserves one existing trait and is cleared when you close the Cycling menu. Riven Splicing protects a spliced trait separately without a surcharge; both can be used together. Either system fixes the positive/negative layout. Clear the ordinary lock and remove any spliced trait by unlocking and cycling it off before trying for a different layout. See the [Riven guide](/guides/riven) for the full process."
         },
         {
           "type": "tip",
@@ -456,15 +484,15 @@ const guide: Guide = {
   "faqs": [
     {
       "q": "What is Kuva used for in Warframe?",
-      "a": "Kuva is used to cycle Riven mod stats and craft some Foundry blueprints. Cycling does not change the weapon’s Disposition. Optional Trait Locking preserves one existing trait at double the cycle cost. See the [Riven guide](/guides/riven) for the full rules."
+      "a": "Kuva is used to cycle Riven mod stats and craft some Foundry blueprints. Cycling does not change the weapon’s Disposition. Ordinary Trait Locking doubles the cycle cost; a protected spliced trait alone does not. See the [Riven guide](/guides/riven) for the full rules."
     },
     {
       "q": "What's the best way to farm Kuva fast?",
-      "a": "Choose a source that fits your unlocks and session: Siphons or Floods for individual missions, Taveuni Survival for repeated Harvester defenses, or available vendor exchanges. Melica’s Update 44 exchange offers 10,500 regular Kuva up to four times weekly for Entropic Kuva. Kuva Survival Requiem Fissures open Requiem Relics; they do not provide Prime parts from Lith, Meso, Neo or Axi relics."
+      "a": "Choose a source that fits your unlocks and session: Siphons or Floods for individual missions, Taveuni Survival for repeated Harvester defenses, or available vendor exchanges. Compare Melica’s 10,500-Kuva exchange with Update 44.1 offers from Acrithis, Flare, Nightcap and Hunhow. Check the currency cost and remaining purchases; there is no single fastest option for every account."
     },
     {
       "q": "How much Kuva does it cost to reroll a Riven?",
-      "a": "Without a locked trait, the first cycle costs 900 Kuva and later cycles rise to a 3,500 cap. Locking one trait doubles those prices to 1,800 initially and 7,000 at the cap. Applying or removing the lock is free. You can keep your previous result after cycling, but the Kuva remains spent."
+      "a": "Without ordinary Trait Locking, the first cycle costs 900 Kuva and later cycles rise to a 3,500 cap. A protected spliced trait alone keeps those prices. Ordinary Trait Locking doubles them to 1,800 initially and 7,000 at the cap. Applying or removing that lock is free. You can keep your previous result after cycling, but the Kuva remains spent."
     },
     {
       "q": "What's the difference between Kuva and a Kuva Lich?",
@@ -480,7 +508,7 @@ const guide: Guide = {
     },
     {
       "q": "Can you buy or trade Kuva?",
-      "a": "Regular Kuva cannot be traded directly between players, but it is available through in-game vendor exchanges. For example, Melica accepts Entropic Kuva for regular Kuva bundles with a weekly purchase limit. Check the vendor’s currency and offer rather than assuming Kuva only comes from Siphons."
+      "a": "Regular Kuva cannot be traded directly between players, but vendors exchange other currencies for it. Melica accepts Entropic Kuva; Update 44.1 also improved offers from Acrithis, Flare, Nightcap and Hunhow. The vendor comparison above lists quantities, currencies and stated weekly limits."
     },
     {
       "q": "Do resource boosters work on Kuva?",
@@ -488,6 +516,14 @@ const guide: Guide = {
     }
   ],
   "sources": [
+    {
+      "label": "Update 44.1: The Icebind — Kuva vendor offers and Riven Splicing",
+      "href": "https://www.warframe.com/en/patch-notes/pc/44-1-0"
+    },
+    {
+      "label": "Warframe — Hotfix 44.1.1: corrected Spliced Riven cycling cost",
+      "href": "https://www.warframe.com/en/patch-notes/pc/44-1-1"
+    },
     {
       "label": "Update 44: Iceblade of Narin — Melica, Entropic Kuva and Trait Locking",
       "href": "https://www.warframe.com/en/patch-notes/pc/44-0-0"
@@ -533,7 +569,7 @@ const guide: Guide = {
       "href": "https://warframe.fandom.com/wiki/Kuva_Siphon"
     }
   ],
-  "updated": "2026-09-30"
+  "updated": "2026-10-22"
 }
 
 export default guide

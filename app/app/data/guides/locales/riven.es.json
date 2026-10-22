@@ -1,8 +1,8 @@
 {
   "slug": "riven",
   "eyebrow": "Centro de Conocimiento · Riven Mods",
-  "title": "Mods Riven: Bloqueo de atributos, costes de Kuva y comercio",
-  "lede": "Aprende cómo funcionan los Mods Riven, conserva una estadística existente con el Bloqueo de atributos, compara los costes de Kuva y evalúa una tirada antes de comerciar. Incluye las reglas de la Actualización 44 y el estado anunciado de Riven Splicing.",
+  "title": "Mods Riven: Splicing, Trait Locking y costes de Kuva",
+  "lede": "Aprende cómo funcionan juntos Riven Splicing y Trait Locking, dónde conseguir Riven Splicers y cómo presupuestar tu Kuva antes de ciclar o comerciar. Incluye las reglas vigentes de la Update 44.1 y la diferencia entre los dos tipos de atributos protegidos.",
   "category": "systems",
   "readMins": 10,
   "stats": [
@@ -23,7 +23,7 @@
     },
     {
       "num": "2×",
-      "label": "Coste de Kuva al hacer ciclo con un atributo bloqueado",
+      "label": "Coste de Kuva con Trait Locking ordinario",
       "tone": "gold"
     }
   ],
@@ -38,7 +38,7 @@
         },
         {
           "type": "p",
-          "text": "Un Riven puede combinar varias bonificaciones útiles en una ranura de Mod, pero una tirada aleatoria no es automáticamente una mejora. El arma, la combinación de estadísticas, el atributo negativo, el rango y la Disposición de las armas importan. Las secciones siguientes cubren el ciclo ordinario y el Bloqueo de atributos opcional introducido en la Actualización 44."
+          "text": "Un Riven puede combinar varias bonificaciones útiles en una sola ranura de Mod, pero una tirada aleatoria no es automáticamente una mejora. El arma, la combinación de estadísticas, el atributo negativo, el rango y la Disposición del arma importan. Las siguientes secciones cubren el ciclado, el Trait Locking ordinario y el sistema independiente de Riven Splicing."
         },
         {
           "type": "kv",
@@ -109,7 +109,7 @@
         },
         {
           "type": "info",
-          "text": "El [anuncio de Disposición de septiembre de 2026](https://forums.warframe.com/topic/1523355-september-2026-riven-dispositions/) documenta los últimos cambios. La demanda, las nuevas opciones de armas y las tiradas individuales también afectan a los listados. Un cambio de Disposición por sí solo no garantiza que tu Riven se venda por más o menos Platino."
+          "text": "El [anuncio de Disposición de septiembre de 2026](https://forums.warframe.com/topic/1523355-september-2026-riven-dispositions/) registra los cambios de ese mes. La demanda, las nuevas opciones de armas y las tiradas individuales también afectan a las publicaciones. Un cambio de Disposición por sí solo no garantiza que tu Riven se venda por más o menos Platinum."
         }
       ]
     },
@@ -212,26 +212,26 @@
       "blocks": [
         {
           "type": "p",
-          "text": "**Hacer ciclos** gasta Kuva para generar otra tirada para la misma arma. Sin un atributo bloqueado, los tipos de estadísticas, los valores y la disposición pueden cambiar. El coste estándar sube de **900 Kuva** a **3500 Kuva** a medida que aumenta su recuento de ciclos. Con un atributo bloqueado, el coste de ciclo mostrado se duplica: **1800** para el primer ciclo o **7000** en el límite estándar. Comprueba el coste antes de confirmar."
+          "text": "**Ciclar** gasta Kuva para generar otra tirada para la misma arma. Sin Trait Locking ordinario o un atributo empalmado protegido, los tipos de estadísticas, los valores y la distribución pueden cambiar. El coste estándar aumenta de **900 de Kuva** a **3500 de Kuva** a medida que aumenta su recuento de ciclos. El Trait Locking ordinario duplica ese coste a **1800** inicialmente o a **7000** en el límite. Un atributo empalmado protegido por sí solo no aumenta el coste. Revisa la vista previa antes de confirmar."
         },
         {
           "type": "kv",
           "kv": [
             {
               "k": "Ciclo ordinario",
-              "v": "Sin atributo bloqueado: 900 Kuva inicialmente, hasta 3500 por ciclo"
+              "v": "Sin Trait Locking ordinario: 900 de Kuva inicialmente, hasta 3500 por ciclo"
             },
             {
-              "k": "Ciclo con bloqueo",
+              "k": "Ciclar con Trait Locking ordinario",
               "v": "Duplica el coste ordinario: 1800 inicialmente, hasta 7000 por ciclo"
             },
             {
               "k": "Lo que permanece",
-              "v": "El arma; con el Bloqueo de atributos, el atributo seleccionado y la disposición positiva/negativa también permanecen"
+              "v": "El arma; el Trait Locking ordinario o un atributo empalmado protegido también preserva ese atributo y la distribución de positivos/negativos"
             },
             {
               "k": "Lo que es aleatorio",
-              "v": "Los otros atributos; un bloqueo no selecciona una estadística faltante por ti"
+              "v": "Los atributos no protegidos; ciclar no selecciona una estadística faltante por ti"
             }
           ]
         },
@@ -243,11 +243,11 @@
     },
     {
       "id": "trait-locking",
-      "title": "Cómo bloquear un atributo Riven en la Actualización 44",
+      "title": "Trait Locking y Riven Splicing: cómo funcionan juntos",
       "blocks": [
         {
           "type": "p",
-          "text": "[Update 44](https://www.warframe.com/en/patch-notes/pc/44-0-0) introdujo el **Bloqueo de Atributos**. Puedes conservar un atributo existente mientras cicles los demás. Añadir o quitar el bloqueo es gratis y no requiere ningún objeto especial; el Kuva adicional se cobra cuando cicles con ese bloqueo activo."
+          "text": "La [Update 44](https://www.warframe.com/en/patch-notes/pc/44-0-0) introdujo el **Trait Locking**. Este bloqueo ordinario conserva un atributo existente al ciclar y puede usarse junto con un atributo empalmado protegido. Añadir o quitar el bloqueo ordinario es gratis y no requiere ningún objeto especial; el Kuva adicional se cobra cuando ciclas con él activo."
         },
         {
           "type": "steps",
@@ -262,22 +262,30 @@
             },
             {
               "h": "Comprueba la disposición antes de gastar",
-              "p": "El número de rasgos positivos y negativos permanece fijo mientras está bloqueado. Una tirada con 3 positivos y 1 negativo se mantiene en esa distribución; desbloquéalo antes de hacer ciclos si quieres una distribución diferente."
+              "p": "El número de atributos positivos y negativos se mantiene fijo con el Trait Locking ordinario o un atributo empalmado. Para cambiar la distribución, desactiva el bloqueo ordinario y, si está presente, desbloquea el atributo empalmado para que pueda eliminarse al ciclar. La restricción de distribución del atributo empalmado termina una vez que se elimina dicho atributo."
             },
             {
               "h": "Vuelve a aplicar el bloqueo en la siguiente sesión",
-              "p": "Cerrar el menú de ciclos elimina el bloqueo. Comprueba y vuelve a aplicarlo cada vez que vuelvas a abrir el menú."
+              "p": "Cerrar el menú de ciclado elimina la selección de Trait Locking ordinario. Compruébalo y vuelve a aplicarlo en la siguiente sesión; el atributo empalmado protegido se conserva."
             }
           ]
         },
         {
           "type": "tip",
-          "text": "**Ejemplo de presupuesto:** 35000 Kuva compran 10 ciclos ordinarios a 3500 cada uno, o 5 ciclos con un atributo bloqueado a 7000 cada uno. Esto es aritmética de costes, no una predicción del número de tiradas útiles. Considera un bloqueo cuando ya tengas un atributo que valga la pena conservar."
+          "text": "**Ejemplo de presupuesto:** 35000 de Kuva compran 10 ciclos a 3500 cada uno sin Trait Locking ordinario, o 5 ciclos a 7000 con él. Un atributo empalmado protegido por sí solo mantiene el primer precio. Esto es aritmética de costes, no una predicción de tiradas útiles. Considera el bloqueo ordinario cuando valga la pena preservar otro atributo existente."
         },
         {
           "type": "info",
-          "title": "La fusión de Rivens es una función separada que llegará próximamente",
-          "text": "Tal como se comprobó el 30 de septiembre de 2026, **la fusión de Rivens sigue pendiente de lanzamiento**. Digital Extremes anunció el **7 de octubre de 2026** para Glacial Defiance, la actualización que incluirá la fusión. El Bloqueo de Atributos ya está disponible. Revisa las notas de lanzamiento antes de planificar en torno a los fusionadores de Rivens o atributos combinados."
+          "title": "Riven Splicing está disponible",
+          "text": "**Riven Splicing se lanzó el 7 de octubre de 2026.** En el menú de Splicing, usa un Riven Splicer para combinar dos atributos compatibles en un atributo empalmado elegido y un reemplazo aleatorio. La distribución de positivos/negativos permanece fija hasta que se elimine el atributo empalmado. Revisa la vista previa del resultado antes de confirmar. El atributo empalmado permanece protegido sin recargo de Kuva; el Trait Locking ordinario puede proteger un atributo adicional al doble del coste de ciclado normal."
+        },
+        {
+          "type": "p",
+          "text": "**Dónde conseguir un Riven Splicer:** [The Icebind](https://www.warframe.com/en/patch-notes/pc/44-1-0), anunciado previamente como Glacial Defiance, garantiza uno al completarlo con éxito. El acceso requiere **Angels of the Zariman**, **Whispers in the Walls** y desbloquear **Elite Temporal Archimedea o Elite Deep Archimedea**. No se requiere completar ese modo Elite. Esta es una actividad exigente para seis jugadores, así que prepara un escuadrón y un equipamiento adecuados."
+        },
+        {
+          "type": "tip",
+          "text": "**Los informes iniciales de lanzamiento describen un error solucionado.** El [Hotfix 44.1.1](https://www.warframe.com/en/patch-notes/pc/44-1-1) corrigió que los atributos empalmados duplicaran por error los costes de Kuva y que el daño a puntos débiles no se aplicara. El [reembolso de Kuva a los jugadores afectados](https://forums.warframe.com/topic/1527399-psa-spliced-riven-kuva-cost-doubling-resolved-script-complete/) finalizó el 9 de octubre. El [Hotfix 44.1.2](https://www.warframe.com/en/patch-notes/pc/44-1-2) añadió un acceso directo a Splicing desde la pantalla de ciclado."
         }
       ]
     },
@@ -413,7 +421,7 @@
     },
     {
       "q": "¿Cómo re-rolleo un riven y cuánto cuesta?",
-      "a": "Elige Cycle Riven en el Segmento de Mods. Sin un bloqueo, el coste comienza en 900 Kuva y alcanza un límite de 3500 a medida que aumenta su recuento de ciclos. El Bloqueo de Atributos duplica el coste de ese ciclo, hasta 7000 en el límite estándar, al tiempo que conserva un atributo existente y la disposición positiva/negativa. Lee la [guía de Kuva](/guides/kuva) para planificar un presupuesto."
+      "a": "Elige Ciclar Riven en el Mod Segment. Sin Trait Locking ordinario, el coste comienza en 900 de Kuva y alcanza un límite de 3500 a medida que aumenta su recuento de ciclos. El Trait Locking ordinario duplica ese coste, hasta 7000. Un atributo empalmado protegido por sí solo no añade recargo. Lee la [guía de Kuva](/guides/kuva) para planificar un presupuesto."
     },
     {
       "q": "¿Qué es la disposición de riven?",
@@ -437,11 +445,11 @@
     },
     {
       "q": "¿Puedo bloquear una estadística de Agrietado (Riven) al hacer ciclos?",
-      "a": "Sí. El Bloqueo de Atributos te permite conservar un atributo existente, pero ciclar con él cuesta el doble de Kuva. La disposición positiva/negativa también se mantiene fija. Añadir o quitar el bloqueo es gratis, y cerrar el menú de ciclos lo elimina."
+      "a": "Sí. El Trait Locking ordinario conserva un atributo existente por el doble del coste de ciclado habitual, y cerrar el menú borra esa selección. Un atributo empalmado permanece protegido por separado sin recargo, por lo que ambos sistemas pueden conservar dos atributos juntos. Cualquiera de las dos protecciones también fija la distribución de positivos/negativos."
     },
     {
       "q": "¿Ya está disponible la fusión de Rivens?",
-      "a": "Tal como se comprobó el 30 de septiembre de 2026, la fusión sigue pendiente de lanzamiento con Glacial Defiance, anunciado para el 7 de octubre de 2026. El Bloqueo de Atributos ya está activo. Revisa las notas de lanzamiento cuando se lance la actualización antes de planificar en torno a los fusionadores de Rivens o atributos combinados."
+      "a": "Sí. Riven Splicing se lanzó con The Icebind el 7 de octubre de 2026. Completa The Icebind para obtener un Riven Splicer, luego inspecciona las combinaciones de atributos compatibles en el menú de Splicing. El atributo empalmado elegido reemplaza dos atributos compatibles junto con un reemplazo aleatorio; la distribución de positivos/negativos permanece fija hasta que se elimine el atributo empalmado."
     }
   ],
   "sources": [
@@ -462,8 +470,20 @@
       "href": "https://forums.warframe.com/topic/1523355-september-2026-riven-dispositions/"
     },
     {
-      "label": "Warframe — Glacial Defiance date announcement (PSA updated September 29, 2026)",
-      "href": "https://forums.warframe.com/topic/1523427-psa-glacial-defiance-release-window-outdated/"
+      "label": "Warframe — Update 44.1: The Icebind and Riven Splicing (October 7, 2026)",
+      "href": "https://www.warframe.com/en/patch-notes/pc/44-1-0"
+    },
+    {
+      "label": "Warframe — Hotfix 44.1.1: Splicing cost and damage fixes",
+      "href": "https://www.warframe.com/en/patch-notes/pc/44-1-1"
+    },
+    {
+      "label": "Warframe — Spliced Riven Kuva refund completed October 9, 2026",
+      "href": "https://forums.warframe.com/topic/1527399-psa-spliced-riven-kuva-cost-doubling-resolved-script-complete/"
+    },
+    {
+      "label": "Warframe — Hotfix 44.1.2: Splicing menu shortcut",
+      "href": "https://www.warframe.com/en/patch-notes/pc/44-1-2"
     },
     {
       "label": "Warframe — Riven cycling cost cap (Update 19.4)",
@@ -526,5 +546,5 @@
       "note": "Mercados de rivens, wikis y herramientas de DE"
     }
   ],
-  "updated": "2026-09-30"
+  "updated": "2026-10-22"
 }

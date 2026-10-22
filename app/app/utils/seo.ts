@@ -266,7 +266,7 @@ export const PAGE_SEO: Record<string, PageSeo> = {
   '/guides/kuva': {
     title: "Kuva Farming Guide: Sources, Boosters & Riven Costs | Warframe",
     description:
-      "Compare Siphons, Floods, Survival and Melica’s new weekly exchange, understand which rewards boosters affect, and budget for Update 44’s optional Trait Locking."
+      "Compare mission rewards and Update 44.1 vendor offers, check weekly purchase limits, and distinguish ordinary Trait Locking costs from protected spliced traits."
   },
   '/guides/relics': {
     title: 'Warframe Relic & Void Trace Farming Guide',
@@ -275,7 +275,7 @@ export const PAGE_SEO: Record<string, PageSeo> = {
   },
   '/guides/forma': {
     title: "How to Farm Forma: Relics, Crafting & Free Rewards | Warframe",
-    description: "Farm Forma Blueprints from relics, plan crafting resources and compare built Forma sources. Check the dated free login reward and Plague Star event status."
+    description: "Farm Forma Blueprints from relics, plan crafting resources and compare built Forma sources. The Banshee giveaway has ended, but eligible accounts can still claim its one-time Forma until December 31, 2026."
   },
   '/guides/resources': {
     title: 'Warframe Resource Farming — Where to Farm Everything',
@@ -308,9 +308,9 @@ export const PAGE_SEO: Record<string, PageSeo> = {
       'What arcanes do in Warframe, how to rank them, where they drop, and the staple arcanes worth farming. Boost your frames, weapons and operator.'
   },
   '/guides/riven': {
-    title: "Riven Mods: Trait Locking, Kuva Costs & Trading | Warframe",
+    title: "Riven Mods: Splicing, Trait Locking & Kuva Costs | Warframe",
     description:
-      "Learn how Riven Mods work, preserve one existing stat with Trait Locking, compare Kuva costs and assess a roll before trading. Includes the Update 44 rules and the announced status of Riven Splicing."
+      "Learn how Riven Splicing and Trait Locking work together, where to get Riven Splicers and how to budget Kuva before cycling or trading."
   },
   '/guides/steel-path': {
     title: 'Warframe Steel Path Guide — Unlock & Steel Essence',

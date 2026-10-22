@@ -2,7 +2,7 @@
   "slug": "kuva",
   "eyebrow": "Centro de conocimiento · Farmeo de Kuva",
   "title": "Guía de farmeo de Kuva: Fuentes, potenciadores y costes de Riven",
-  "lede": "Planifica tu farmeo de Kuva en torno a las tiradas de Riven que puedas permitirte. Compara Siphons, Floods, Supervivencia y el nuevo intercambio semanal de Melica, comprende a qué recompensas afectan los potenciadores y haz un presupuesto para el Bloqueo de Atributos opcional de la actualización 44.",
+  "lede": "Planifica tu farmeo de Kuva en torno a las tiradas de Riven que puedas permitirte. Compara las recompensas de misión y las ofertas de vendedores de la Update 44.1, consulta los límites de compra semanales y distingue los costes del Trait Locking ordinario de los atributos empalmados protegidos.",
   "category": "farming",
   "readMins": 8,
   "stats": [
@@ -18,12 +18,12 @@
     },
     {
       "num": "3,500",
-      "label": "máximo de Kuva por ciclo sin bloqueo",
+      "label": "Kuva máx. sin Trait Locking ordinario",
       "tone": "gold"
     },
     {
       "num": "7,000",
-      "label": "máximo de Kuva con un atributo bloqueado",
+      "label": "Kuva máx. con Trait Locking ordinario",
       "tone": "good"
     }
   ],
@@ -34,7 +34,7 @@
       "blocks": [
         {
           "type": "p",
-          "text": "**Kuva** es un recurso utilizado para ciclar las estadísticas aleatorias en **mods Riven** y fabricar ciertos planos de la Fundición, incluyendo Umbra Forma. Ciclar no cambia la Disposición Riven del arma. Desde la actualización 44, puedes conservar un atributo existente mientras cicleas los demás, al doble del coste habitual de Kuva."
+          "text": "El **Kuva** es un recurso utilizado para ciclar las estadísticas aleatorias de los **mods Riven** y fabricar objetos a partir de ciertos planos de la Fundición, incluyendo Umbra Forma. Ciclar no cambia la Riven Disposition del arma. El Trait Locking ordinario conserva un atributo existente al doble del coste habitual de ciclado. Un atributo empalmado protegido por sí solo no tiene recargo de Kuva."
         },
         {
           "type": "p",
@@ -198,6 +198,64 @@
       ]
     },
     {
+      "id": "vendor-exchanges",
+      "title": "Update 44.1: compara las ofertas de vendedores de Kuva",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "La [Update 44.1](https://www.warframe.com/en/patch-notes/pc/44-1-0) mejoró varios intercambios de Kuva. Consulta los vendedores que hayas desbloqueado y las monedas que ya tengas en tu inventario antes de elegir otra misión de farmeo. Estas ofertas otorgan Kuva regular; el intercambio de Entropic Kuva de Melica sigue siendo una opción independiente."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Oferta de vendedor",
+              "Coste por compra",
+              "Kuva regular",
+              "Límite de compra semanal"
+            ],
+            "rows": [
+              [
+                "Mercancías de Acrithis",
+                "10 Pathos Clamps",
+                "10,000",
+                "No especificado en la actualización; consulta la tienda"
+              ],
+              [
+                "Acrithis: intercambiar Scuttler Husks",
+                "25 Scuttler Husks",
+                "14,000",
+                "3"
+              ],
+              [
+                "Memorabilia de Flare",
+                "100 Heartstrings",
+                "14,000",
+                "3"
+              ],
+              [
+                "Mercancías de Nightcap",
+                "75 Fergolyte",
+                "14,000",
+                "3"
+              ],
+              [
+                "Recuerdos de Hunhow",
+                "35 Emerald Talents Y 35 Crimson Talents",
+                "17,000",
+                "3"
+              ]
+            ],
+            "note": "Las cantidades y los límites indicados siguen la Update 44.1. La oferta de Pathos Clamp no tiene límite de compra indicado en esas notas; eso no es una confirmación de compras ilimitadas. Los paquetes de los vendedores no se duplican con Resource Boosters."
+          }
+        },
+        {
+          "type": "tip",
+          "text": "**Compara el coste de la moneda, no solo el tamaño del paquete.** Tres compras de 14,000 de Kuva otorgan 42,000 de Kuva: suficiente para 12 ciclos con el límite base de 3,500, o 6 con el Trait Locking ordinario a 7,000. Reserva primero las monedas necesarias para otras recompensas. Un paquete de Kuva más grande no se obtiene automáticamente más rápido."
+        }
+      ]
+    },
+    {
       "id": "survival-fissure",
       "title": "Supervivencia Kuva y Fisuras de Requiem",
       "blocks": [
@@ -271,11 +329,11 @@
               "v": "35,000 Kuva"
             },
             {
-              "k": "Sin característica bloqueada",
+              "k": "Sin Trait Locking ordinario",
               "v": "3,500 por ciclo → 10 ciclos"
             },
             {
-              "k": "Una característica bloqueada",
+              "k": "Con Trait Locking ordinario",
               "v": "7,000 por ciclo → 5 ciclos"
             },
             {
@@ -286,7 +344,7 @@
         },
         {
           "type": "info",
-          "text": "Esto es aritmética, no una estimación de la tasa de farmeo: 35,000 ÷ 3,500 = 10 y 35,000 ÷ 7,000 = 5. Establece tu punto de parada antes de hacer ciclos, y reserva cualquier Kuva que necesites para fabricación."
+          "text": "Esto es aritmética, no una estimación de tasa de farming: 35,000 ÷ 3,500 = 10 y 35,000 ÷ 7,000 = 5. Un atributo empalmado protegido por sí solo utiliza el precio normal; añadir Trait Locking ordinario lo duplica. Establece tu punto límite antes de ciclar y reserva cualquier cantidad de Kuva que necesites para fabricar."
         }
       ]
     },
@@ -296,15 +354,15 @@
       "blocks": [
         {
           "type": "p",
-          "text": "Usa **Ciclar Riven** en el Segmento de mods para cambiar tiradas con Kuva. Subir de rango el mod en su lugar usa [Endo](/guides/endo) y Créditos. Sin una característica bloqueada, los ciclos empiezan en **900 Kuva** y suben hasta un límite de **3,500 Kuva**. Con una característica bloqueada, cada ciclo cuesta el doble de su precio normal."
+          "text": "Usa **Cycle Riven** en el Mod Segment para cambiar las estadísticas con Kuva. En cambio, subir el mod de rango utiliza [Endo](/guides/endo) y Créditos. Sin Trait Locking ordinario, el ciclado comienza en **900 de Kuva** y aumenta hasta un límite de **3,500 de Kuva**, incluso cuando un atributo empalmado está protegido. El Trait Locking ordinario duplica el precio base mostrado."
         },
         {
           "type": "table",
           "table": {
             "columns": [
               "Ciclo",
-              "Sin característica bloqueada",
-              "Una característica bloqueada"
+              "Sin Trait Locking ordinario",
+              "Con Trait Locking ordinario"
             ],
             "rows": [
               [
@@ -338,12 +396,12 @@
                 "7,000"
               ]
             ],
-            "note": "Los costes son de Kuva por ciclo. Aplicar o quitar un bloqueo es gratis; el coste superior se cobra cuando haces un ciclo con una característica bloqueada."
+            "note": "Los costes son en Kuva por ciclo. Aplicar o quitar el Trait Locking ordinario es gratis; ciclar con él duplica el precio. Un atributo empalmado protegido por sí solo no duplica el coste."
           }
         },
         {
           "type": "info",
-          "text": "**El bloqueo de características está disponible en la Actualización 44.** Selecciona una característica existente para preservarla mientras haces ciclos. Solo se puede bloquear una, y el recuento actual de características positivas y negativas se mantiene fijo. Desbloquéala para permitir que esa configuración cambie. Cerrar el menú de ciclos borra el bloqueo, así que selecciónalo de nuevo la próxima vez."
+          "text": "**Dos protecciones, diferentes costes.** El Trait Locking ordinario conserva un rasgo existente y se elimina al cerrar el menú de ciclado. Riven Splicing protege un atributo empalmado por separado sin un recargo adicional; ambos pueden usarse juntos. Cualquiera de los dos sistemas fija la distribución de positivos/negativos. Quita el bloqueo ordinario y elimina cualquier atributo empalmado desbloqueándolo y ciclando para descartarlo antes de intentar obtener una distribución diferente. Consulta la [guía de Riven](/guides/riven) para ver el proceso completo."
         },
         {
           "type": "tip",
@@ -450,15 +508,15 @@
   "faqs": [
     {
       "q": "¿Para qué se usa el Kuva en Warframe?",
-      "a": "El Kuva se usa para reciclar las estadísticas de los mods Riven y fabricar algunos planos de la Fundición. El reciclado no cambia la Disposición del arma. El bloqueo de atributos opcional preserva un atributo existente al doble del costo de reciclaje. Consulta la [Guía de Riven](/guides/riven) para ver las reglas completas."
+      "a": "El Kuva se utiliza para ciclar las estadísticas de los mods Riven y fabricar objetos a partir de algunos planos de la Fundición. Ciclar no cambia la Disposición del arma. El Trait Locking ordinario duplica el coste de ciclado; un atributo empalmado protegido por sí solo no lo hace. Consulta la [guía de Riven](/guides/riven) para conocer todas las reglas."
     },
     {
       "q": "¿Cuál es la mejor manera de farmear Kuva rápido?",
-      "a": "Elige una fuente que se ajuste a tus desbloqueos y sesión: Siphons o Floods para misiones individuales, Supervivencia Taveuni para defensas de Harvester repetidas, o los intercambios de vendedores disponibles. El intercambio de la Actualización 44 de Melica ofrece 10,500 de Kuva normal hasta cuatro veces por semana a cambio de Entropic Kuva. Las Fisuras de Requiem de Supervivencia de Kuva abren Reliquias Requiem; no otorgan partes Prime de reliquias Lith, Meso, Neo o Axi."
+      "a": "Elige una fuente que se adapte a tus desbloqueos y a tu sesión: Siphons o Floods para misiones individuales, supervivencia en Taveuni para defensas repetidas de Harvester, o los intercambios disponibles de los vendedores. Compara el intercambio de 10,500 de Kuva de Melica con las ofertas de la Update 44.1 de Acrithis, Flare, Nightcap y Hunhow. Comprueba el coste de la moneda y las compras restantes; no existe una única opción más rápida para todas las cuentas."
     },
     {
       "q": "¿Cuánto Kuva cuesta hacer reroll a un Riven?",
-      "a": "Sin un atributo bloqueado, el primer ciclo cuesta 900 de Kuva y los ciclos posteriores aumentan hasta un límite de 3,500. Bloquear un atributo duplica esos precios a 1,800 inicialmente y 7,000 en el límite. Aplicar o quitar el bloqueo es gratis. Puedes conservar tu resultado anterior después de reciclar, pero el Kuva gastado no se recupera."
+      "a": "Sin Trait Locking ordinario, el primer ciclo cuesta 900 de Kuva y los ciclos posteriores aumentan hasta un límite de 3,500. Un atributo empalmado protegido por sí solo mantiene esos precios. El Trait Locking ordinario los duplica a 1,800 inicialmente y a 7,000 en el límite máximo. Aplicar o quitar ese bloqueo es gratis. Puedes conservar tu resultado anterior tras ciclar, pero el Kuva seguirá gastado."
     },
     {
       "q": "¿Cuál es la diferencia entre el Kuva y un Kuva Lich?",
@@ -474,7 +532,7 @@
     },
     {
       "q": "¿Se puede comprar o comerciar Kuva?",
-      "a": "El Kuva normal no se puede comerciar directamente entre jugadores, pero está disponible a través de intercambios con vendedores en el juego. Por ejemplo, Melica acepta Entropic Kuva por lotes de Kuva normal con un límite de compra semanal. Revisa la moneda y la oferta del vendedor en lugar de asumir que el Kuva solo proviene de Siphons."
+      "a": "El Kuva normal no se puede comerciar directamente entre jugadores, pero los vendedores lo intercambian por otras monedas. Melica acepta Entropic Kuva; la Update 44.1 también mejoró las ofertas de Acrithis, Flare, Nightcap y Hunhow. La comparación de vendedores anterior enumera las cantidades, las monedas y los límites semanales indicados."
     },
     {
       "q": "¿Funcionan los potenciadores de recursos con el Kuva?",
@@ -482,6 +540,14 @@
     }
   ],
   "sources": [
+    {
+      "label": "Update 44.1: The Icebind — Kuva vendor offers and Riven Splicing",
+      "href": "https://www.warframe.com/en/patch-notes/pc/44-1-0"
+    },
+    {
+      "label": "Warframe — Hotfix 44.1.1: corrected Spliced Riven cycling cost",
+      "href": "https://www.warframe.com/en/patch-notes/pc/44-1-1"
+    },
     {
       "label": "Update 44: Iceblade of Narin — Melica, Entropic Kuva and Trait Locking",
       "href": "https://www.warframe.com/en/patch-notes/pc/44-0-0"
@@ -527,5 +593,5 @@
       "href": "https://warframe.fandom.com/wiki/Kuva_Siphon"
     }
   ],
-  "updated": "2026-09-30"
+  "updated": "2026-10-22"
 }

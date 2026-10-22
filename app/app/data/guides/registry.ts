@@ -31,9 +31,9 @@ export const GUIDES_INDEX: GuideMeta[] = [
   { slug: 'credits', route: '/guides/credits', title: 'Credit Farming', blurb: 'The best 2026 credit farms — Höllvania safes, the Index, Profit-Taker — plus what got nerfed.', category: 'farming', icon: 'mdi-circle-multiple-outline', readMins: 13 },
   { slug: 'endo', route: '/guides/endo', title: 'Endo Farming', blurb: 'Every un-nerfed way to farm Endo in 2026 — Arbitrations, Ayatan sculptures, 1999 & Sedna, plus the free Endo hiding in your mods.', category: 'farming', icon: 'mdi-hexagon-multiple-outline', readMins: 11 },
   { slug: 'focus', route: '/guides/focus', title: 'Focus Farming', blurb: 'Unlock the Operator, pick a school and farm Focus efficiently.', category: 'farming', icon: 'mdi-eye-outline', readMins: 8 },
-  { slug: 'kuva', route: '/guides/kuva', title: 'Kuva Farming', blurb: 'Compare Kuva sources, distinguish Entropic Kuva and budget Riven cycles with or without Trait Locking.', category: 'farming', icon: 'mdi-water-outline', readMins: 8 },
+  { slug: 'kuva', route: '/guides/kuva', title: 'Kuva Farming', blurb: 'Compare mission rewards and Update 44.1 vendor offers, then budget ordinary Trait Locking and spliced Riven cycles.', category: 'farming', icon: 'mdi-water-outline', readMins: 8 },
   { slug: 'relics', route: '/guides/relics', title: 'Relics & Void Traces', blurb: 'Crack relics, refine with traces, and run efficient fissure squads.', category: 'farming', icon: 'mdi-diamond-stone', readMins: 9 },
-  { slug: 'forma', route: '/guides/forma', title: 'Forma Farming', blurb: 'Compare relics, crafting and the free built Forma login reward; Plague Star 2026 has ended.', category: 'farming', icon: 'mdi-vector-triangle', readMins: 9 },
+  { slug: 'forma', route: '/guides/forma', title: 'Forma Farming', blurb: 'Compare relics and crafting, and check eligibility for the remaining free Forma claim through December 31, 2026.', category: 'farming', icon: 'mdi-vector-triangle', readMins: 9 },
   { slug: 'resources', route: '/guides/resources', title: 'Resource Farming Reference', blurb: 'Where to farm Orokin Cells, Neurodes, Argon, Tellurium, Nitain and more.', category: 'farming', icon: 'mdi-cube-scan', readMins: 9 },
   { slug: 'standing', route: '/guides/standing', title: 'Standing & Syndicates', blurb: 'Cap your daily standing across every syndicate and open-world faction.', category: 'farming', icon: 'mdi-handshake-outline', readMins: 8 },
 
@@ -42,7 +42,7 @@ export const GUIDES_INDEX: GuideMeta[] = [
   { slug: 'builds', route: '/guides/builds', title: 'Best Builds & Build Planners', blurb: 'Find, copy and pressure-test builds with Overframe & Underframe — and read them critically.', category: 'systems', icon: 'mdi-hammer-screwdriver', readMins: 12, featured: true },
   { slug: 'helminth', route: '/guides/helminth', title: 'Helminth & Subsumes', blurb: 'Unlock Helminth, subsume abilities and the best powers to graft on.', category: 'systems', icon: 'mdi-dna', readMins: 9 },
   { slug: 'arcanes', route: '/guides/arcanes', title: 'Arcanes Guide', blurb: 'What arcanes do, where they drop, and the staples worth farming.', category: 'systems', icon: 'mdi-shimmer', readMins: 8 },
-  { slug: 'riven', route: '/guides/riven', title: 'Riven Mods Explained', blurb: 'Understand Trait Locking, compare Kuva cycling costs and assess rolls before trading.', category: 'systems', icon: 'mdi-star-four-points-outline', readMins: 10 },
+  { slug: 'riven', route: '/guides/riven', title: 'Riven Mods Explained', blurb: 'Use Riven Splicing and Trait Locking together, compare Kuva cycling costs and assess rolls before trading.', category: 'systems', icon: 'mdi-star-four-points-outline', readMins: 10 },
 
   // ── Endgame ─────────────────────────────────────────────────────────
   { slug: 'steel-path', route: '/guides/steel-path', title: 'Steel Path & Steel Essence', blurb: 'Unlock the hard mode, survive it, and farm Steel Essence for the good stuff.', category: 'endgame', icon: 'mdi-fire', readMins: 9 },

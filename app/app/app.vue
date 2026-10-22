@@ -1,5 +1,6 @@
 <template>
   <NuxtLayout>
+    <MarketFreshnessNotice v-if="showMarketFreshness" />
     <NuxtPage />
   </NuxtLayout>
   <!-- Global route-loading overlay (#spinner-wrapper). Shown on navigation by
@@ -125,6 +126,8 @@ useHead({
 const CATALOGUE_FETCH = { retry: 2, retryDelay: 400, timeout: 25000 } as const
 const route = useRoute()
 const needsCatalogue = routeNeedsCatalogue(route.name)
+// Re-evaluate on navigation even when a previous market page filled the store.
+const showMarketFreshness = computed(() => routeNeedsCatalogue(route.name))
 const { data } = await useAsyncData('app-items', async () => {
   if (!needsCatalogue) return null
   const list = await fetchMarketData<WarframeItem[]>(catalogueUrl, CATALOGUE_FETCH).catch(() => null)

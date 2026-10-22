@@ -1,8 +1,8 @@
 {
   "slug": "riven",
   "eyebrow": "Wissenszentrum · Riven Mods",
-  "title": "Riven-Mods: Attributssperre, Kuva-Kosten & Handel",
-  "lede": "Erfahre, wie Riven-Mods funktionieren, bewahre eine bestehende Eigenschaft mit der Attributssperre, vergleiche die Kuva-Kosten und bewerte einen Roll vor dem Handel. Beinhaltet die Regeln aus Update 44 und den angekündigten Status von Riven-Spleißen.",
+  "title": "Riven-Mods: Splicing, Trait Locking & Kuva-Kosten",
+  "lede": "Erfahre, wie Riven Splicing und Trait Locking zusammenspielen, wo du Riven Splicer erhältst und wie du dein Kuva vor dem Cycling oder Handeln kalkulierst. Enthält die aktuellen Regeln aus Update 44.1 sowie den Unterschied zwischen den beiden Arten geschützter Traits.",
   "category": "systems",
   "readMins": 10,
   "stats": [
@@ -23,7 +23,7 @@
     },
     {
       "num": "2×",
-      "label": "Kuva-Kosten beim Cycling mit einem gesperrten Attribut",
+      "label": "Kuva-Kosten mit gewöhnlichem Trait Locking",
       "tone": "gold"
     }
   ],
@@ -38,7 +38,7 @@
         },
         {
           "type": "p",
-          "text": "Ein Riven kann mehrere nützliche Boni in einem Mod-Steckplatz kombinieren, aber ein zufälliger Roll ist nicht automatisch eine Verbesserung. Die Waffe, die Attributskombination, das negative Attribut, der Rang und die Riven-Disposition spielen dabei eine Rolle. Die folgenden Abschnitte behandeln das gewöhnliche Cycling und die optionale Attributssperre, die in Update 44 eingeführt wurde."
+          "text": "Eine Riven kann mehrere nützliche Boni in einem Mod-Slot vereinen, doch ein zufälliger Roll ist nicht automatisch ein Upgrade. Die Waffe, die Wertekombination, der negative Trait, der Rang und die Waffen-Disposition spielen alle eine Rolle. Die folgenden Abschnitte behandeln das Cycling, das gewöhnliche Trait Locking und das separate Riven-Splicing-System."
         },
         {
           "type": "kv",
@@ -109,7 +109,7 @@
         },
         {
           "type": "info",
-          "text": "Die [Dispositionsankündigung vom September 2026](https://forums.warframe.com/topic/1523355-september-2026-riven-dispositions/) dokumentiert die neuesten Änderungen. Nachfrage, neue Waffenoptionen und individuelle Rolls beeinflussen ebenfalls Angebote. Eine Dispositionsänderung allein garantiert nicht, dass sich dein Riven für mehr oder weniger Platinum verkauft."
+          "text": "Die [Disposition-Ankündigung vom September 2026](https://forums.warframe.com/topic/1523355-september-2026-riven-dispositions/) hält die Änderungen dieses Monats fest. Nachfrage, neue Waffenoptionen und individuelle Rolls beeinflussen die Angebote ebenfalls. Eine Dispositionsänderung allein garantiert nicht, dass sich deine Riven für mehr oder weniger Platinum verkaufen lässt."
         }
       ]
     },
@@ -212,26 +212,26 @@
       "blocks": [
         {
           "type": "p",
-          "text": "Beim **Cycling** wird Kuva ausgegeben, um einen weiteren Roll für dieselbe Waffe zu generieren. Ohne ein gesperrtes Attribut können sich die Attributstypen, Werte und das Layout ändern. Die Standardkosten steigen von **900 Kuva** auf **3500 Kuva**, wenn die Anzahl der Zyklen steigt. Mit einem gesperrten Attribut werden die angezeigten Cycling-Kosten verdoppelt: **1800** für den ersten Zyklus oder **7000** beim Standardlimit. Überprüfe die Kosten vor der Bestätigung."
+          "text": "**Cycling** verbraucht Kuva, um einen neuen Roll für dieselbe Waffe zu erzeugen. Ohne gewöhnliches Trait Locking oder einen geschützten gespliceten Trait können sich Wertearten, Beträge und das Layout ändern. Die Standardkosten steigen mit zunehmender Anzahl an Cycles von **900 Kuva** auf bis zu **3500 Kuva**. Gewöhnliches Trait Locking verdoppelt diese Kosten auf anfangs **1800** bzw. **7000** an der Obergrenze. Ein geschützter gespliceter Trait allein erhöht die Kosten nicht. Prüfe die Vorschau vor dem Bestätigen."
         },
         {
           "type": "kv",
           "kv": [
             {
               "k": "Gewöhnliches Cycling",
-              "v": "Kein gesperrtes Attribut: Anfangs 900 Kuva, bis zu 3500 pro Zyklus"
+              "v": "Ohne gewöhnliches Trait Locking: anfänglich 900 Kuva, bis zu 3500 pro Cycle"
             },
             {
-              "k": "Cycling mit einer Sperre",
+              "k": "Cycling mit gewöhnlichem Trait Locking",
               "v": "Das Doppelte der gewöhnlichen Kosten: Anfangs 1800, bis zu 7000 pro Zyklus"
             },
             {
               "k": "Was bleibt",
-              "v": "Die Waffe; bei der Attributssperre bleiben auch das ausgewählte Attribut und das positiv/negative Layout erhalten"
+              "v": "Die Waffe; gewöhnliches Trait Locking oder ein geschützter gespliceter Trait bewahrt zudem diesen Trait und das Positiv-/Negativ-Layout"
             },
             {
               "k": "Was zufällig ist",
-              "v": "Die anderen Attribute; eine Sperre wählt kein fehlendes Attribut für dich aus"
+              "v": "Die ungeschützten Traits; Cycling wählt keinen fehlenden Wert für dich aus"
             }
           ]
         },
@@ -243,11 +243,11 @@
     },
     {
       "id": "trait-locking",
-      "title": "So sperrst du ein Riven-Attribut in Update 44",
+      "title": "Trait Locking und Riven Splicing: Wie sie zusammenspielen",
       "blocks": [
         {
           "type": "p",
-          "text": "[Update 44](https://www.warframe.com/en/patch-notes/pc/44-0-0) hat **Trait Locking** (Attributssperre) eingeführt. Du kannst ein bestehendes Attribut behalten, während du die anderen neu ausrollst. Das Hinzufügen oder Entfernen der Sperre ist kostenlos und erfordert kein spezielles Item; das zusätzliche Kuva wird berechnet, wenn du mit aktiver Sperre ausrollst."
+          "text": "[Update 44](https://www.warframe.com/en/patch-notes/pc/44-0-0) hat **Trait Locking** eingeführt. Diese gewöhnliche Sperre behält einen bestehenden Trait beim Cycling bei und kann zusammen mit einem geschützten gespliceten Trait genutzt werden. Das Hinzufügen oder Entfernen der gewöhnlichen Sperre ist kostenlos und erfordert keinen besonderen Gegenstand; das zusätzliche Kuva wird erst fällig, wenn du mit aktiver Sperre cyclest."
         },
         {
           "type": "steps",
@@ -262,22 +262,30 @@
             },
             {
               "h": "Überprüfe das Layout vor dem Ausgeben",
-              "p": "Die Anzahl der positiven und negativen Attribute bleibt während der Sperre fixiert. Ein Roll mit 3 positiven und 1 negativen Attribut bleibt in diesem Layout; entsperre es vor dem Ausrollen, wenn du ein anderes Layout möchtest."
+              "p": "Die Anzahl der positiven und negativen Traits bleibt bei gewöhnlichem Trait Locking oder einem gespliceten Trait fest vorgegeben. Um das Layout zu ändern, hebe die gewöhnliche Sperre auf und entsperre gegebenenfalls den gespliceten Trait, damit er weggecyclet werden kann. Die Layout-Einschränkung des gespliceten Traits endet, sobald dieser Trait entfernt wurde."
             },
             {
               "h": "Wende die Sperre in der nächsten Sitzung erneut an",
-              "p": "Das Schließen des Ausroll-Menüs entfernt die Sperre. Überprüfe und aktiviere sie jedes Mal neu, wenn du das Menü öffnest."
+              "p": "Das Schließen des Cycling-Menüs setzt die gewählte gewöhnliche Trait-Locking-Auswahl zurück. Überprüfe und aktiviere sie bei der nächsten Sitzung erneut; der geschützte gesplicete Trait bleibt erhalten."
             }
           ]
         },
         {
           "type": "tip",
-          "text": "**Budget-Beispiel:** 35000 Kuva kaufen 10 gewöhnliche Rolls zu je 3500 oder 5 Rolls mit einem gesperrten Attribut zu je 7000. Das ist Kostenarithmetik, keine Vorhersage über die Anzahl nützlicher Rolls. Erwäge eine Sperre, wenn du bereits ein Attribut hast, das es wert ist, bewahrt zu werden."
+          "text": "**Rechenbeispiel:** 35000 Kuva reichen für 10 Cycles zu je 3500 ohne gewöhnliches Trait Locking oder für 5 Cycles zu je 7000 mit aktivem Locking. Ein geschützter gespliceter Trait allein behält den ursprünglichen Preis bei. Dies ist eine reine Kostenrechnung, keine Vorhersage nützlicher Rolls. Ziehe die gewöhnliche Sperre in Betracht, wenn ein weiterer bestehender Trait erhaltenswert ist."
         },
         {
           "type": "info",
-          "title": "Riven-Spleißen ist ein separates, kommendes Feature",
-          "text": "Wie am 30. September 2026 überprüft, ist das Riven-Spleißen noch nicht verfügbar. Digital Extremes hat den 7. Oktober 2026 für Glacial Defiance angekündigt, das Update, das das Spleißen enthalten soll. Trait Locking ist bereits verfügbar. Überprüfe die Release-Notes erneut, bevor du um Riven-Splicer oder kombinierte Attribute herum planst."
+          "title": "Riven Splicing ist verfügbar",
+          "text": "**Riven Splicing erschien am 7. Oktober 2026.** Verwende im Splicing-Menü einen Riven Splicer, um zwei kompatible Traits zu einem ausgewählten gespliceten Trait und einem zufälligen Ersatz zu kombinieren. Das Positiv-/Negativ-Layout bleibt unverändert, bis der gesplicete Trait entfernt wird. Sieh dir das Ergebnis in der Vorschau an, bevor du bestätigst. Der gesplicete Trait bleibt ohne Kuva-Aufpreis geschützt; gewöhnliches Trait Locking kann einen zusätzlichen Trait zu den doppelten normalen Cycling-Kosten schützen."
+        },
+        {
+          "type": "p",
+          "text": "**Wo man einen Riven Splicer bekommt:** [The Icebind](https://www.warframe.com/en/patch-notes/pc/44-1-0), zuvor als Glacial Defiance angekündigt, garantiert einen bei erfolgreichem Abschluss. Der Zugang erfordert **Angels of the Zariman**, **Whispers in the Walls** und das Freischalten von **Elite Temporal Archimedea oder Elite Deep Archimedea**. Der Abschluss dieses Elite-Modus ist nicht erforderlich. Dies ist eine anspruchsvolle Aktivität für sechs Spieler; bereite also ein passendes Squad und Loadout vor."
+        },
+        {
+          "type": "tip",
+          "text": "**Frühe Berichte zum Start beschreiben einen behobenen Bug.** [Hotfix 44.1.1](https://www.warframe.com/en/patch-notes/pc/44-1-1) korrigierte fälschlicherweise verdoppelte Kuva-Kosten bei gespliceten Traits sowie nicht wirksamen Weak Point Damage. Die [Kuva-Rückerstattung für betroffene Spieler](https://forums.warframe.com/topic/1527399-psa-spliced-riven-kuva-cost-doubling-resolved-script-complete/) wurde am 9. Oktober abgeschlossen. [Hotfix 44.1.2](https://www.warframe.com/en/patch-notes/pc/44-1-2) fügte eine Splicing-Verknüpfung im Cycling-Bildschirm hinzu."
         }
       ]
     },
@@ -413,7 +421,7 @@
     },
     {
       "q": "Wie rolle ich eine Riven neu und was kostet das?",
-      "a": "Wähle Riven ausrollen im Mod-Segment. Ohne Sperre beginnen die Kosten bei 900 Kuva und erreichen bei steigender Anzahl der Rolls ein Cap von 3500. Trait Locking verdoppelt die Kosten dieses Rolls auf bis zu 7000 beim Standard-Cap, während ein bestehendes Attribut sowie das positiv/negativ-Layout erhalten bleiben. Lies den [Kuva-Guide](/guides/kuva), um ein Budget zu planen."
+      "a": "Wähle 'Cycle Riven' im Mod-Segment. Ohne gewöhnliches Trait Locking beginnen die Kosten bei 900 Kuva und erreichen mit steigender Anzahl an Cycles ein Limit von 3500. Gewöhnliches Trait Locking verdoppelt diese Kosten auf bis zu 7000. Ein geschützter gespliceter Trait allein verursacht keinen Aufpreis. Lies den [Kuva-Guide](/guides/kuva), um dein Budget zu planen."
     },
     {
       "q": "Was ist die Riven-Disposition?",
@@ -437,11 +445,11 @@
     },
     {
       "q": "Kann ich ein Riven-Attribut beim Neu-Ausrollen sperren?",
-      "a": "Ja. Mit Trait Locking kannst du ein bestehendes Attribut bewahren, aber das Ausrollen damit kostet doppelt so viel Kuva. Das positiv/negativ-Layout bleibt ebenfalls fixiert. Das Hinzufügen oder Entfernen der Sperre ist kostenlos, und das Schließen des Ausroll-Menüs entfernt sie."
+      "a": "Ja. Gewöhnliches Trait Locking bewahrt einen bestehenden Trait zu den doppelten üblichen Cycling-Kosten, und das Schließen des Menüs setzt diese Auswahl zurück. Ein gespliceter Trait bleibt separat ohne Aufpreis geschützt, sodass beide Systeme zusammen zwei Traits bewahren können. Jede der beiden Schutzfunktionen legt zudem das Positiv-/Negativ-Layout fest."
     },
     {
       "q": "Ist Riven-Spleißen bereits verfügbar?",
-      "a": "Wie am 30. September 2026 überprüft, steht das Spleißen mit Glacial Defiance, angekündigt für den 7. Oktober 2026, noch aus. Trait Locking ist bereits live. Überprüfe die Release-Notes bei Start des Updates, bevor du rund um Riven-Splicer oder kombinierte Attribute planst."
+      "a": "Ja. Riven Splicing startete mit The Icebind am 7. Oktober 2026. Schließe The Icebind ab, um einen Riven Splicer zu erhalten, und überprüfe anschließend kompatible Trait-Kombinationen im Splicing-Menü. Der gewählte gesplicete Trait ersetzt zwei kompatible Traits zusammen mit einem zufälligen Ersatz; das Positiv-/Negativ-Layout bleibt unverändert, bis der gesplicete Trait entfernt wird."
     }
   ],
   "sources": [
@@ -462,8 +470,20 @@
       "href": "https://forums.warframe.com/topic/1523355-september-2026-riven-dispositions/"
     },
     {
-      "label": "Warframe — Glacial Defiance date announcement (PSA updated September 29, 2026)",
-      "href": "https://forums.warframe.com/topic/1523427-psa-glacial-defiance-release-window-outdated/"
+      "label": "Warframe — Update 44.1: The Icebind and Riven Splicing (October 7, 2026)",
+      "href": "https://www.warframe.com/en/patch-notes/pc/44-1-0"
+    },
+    {
+      "label": "Warframe — Hotfix 44.1.1: Splicing cost and damage fixes",
+      "href": "https://www.warframe.com/en/patch-notes/pc/44-1-1"
+    },
+    {
+      "label": "Warframe — Spliced Riven Kuva refund completed October 9, 2026",
+      "href": "https://forums.warframe.com/topic/1527399-psa-spliced-riven-kuva-cost-doubling-resolved-script-complete/"
+    },
+    {
+      "label": "Warframe — Hotfix 44.1.2: Splicing menu shortcut",
+      "href": "https://www.warframe.com/en/patch-notes/pc/44-1-2"
     },
     {
       "label": "Warframe — Riven cycling cost cap (Update 19.4)",
@@ -526,5 +546,5 @@
       "note": "Riven-Märkte, Wikis und DE-Tools"
     }
   ],
-  "updated": "2026-09-30"
+  "updated": "2026-10-22"
 }

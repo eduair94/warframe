@@ -1,8 +1,8 @@
 {
   "slug": "riven",
   "eyebrow": "Centro Conoscenza · Mod Riven",
-  "title": "Mod Riven: Blocco delle statistiche, costi di Kuva e scambi",
-  "lede": "Scopri come funzionano i Mod Riven, preserva una statistica esistente con il blocco delle statistiche, confronta i costi di Kuva e valuta un roll prima di scambiare. Include le regole dell'Aggiornamento 44 e lo stato annunciato del Riven Splicing.",
+  "title": "Mod Riven: giunzione, Trait Locking e costi Kuva",
+  "lede": "Scopri come Riven Splicing e Trait Locking funzionano insieme, dove trovare Riven Splicers e come preventivare Kuva prima di rilanciare le statistiche o fare trading. Include le regole dell'aggiornamento 44.1 attualmente in vigore e la differenza tra i due tipi di tratti protetti.",
   "category": "systems",
   "readMins": 10,
   "stats": [
@@ -23,7 +23,7 @@
     },
     {
       "num": "2×",
-      "label": "Costo di Kuva quando si esegue il ciclo con una statistica bloccata",
+      "label": "Costo Kuva con Trait Locking ordinario",
       "tone": "gold"
     }
   ],
@@ -38,7 +38,7 @@
         },
         {
           "type": "p",
-          "text": "Un Riven può combinare diversi bonus utili in un unico slot Mod, ma un roll casuale non è automaticamente un potenziamento. L'arma, la combinazione di statistiche, la statistica negativa, il grado e la Disposizione dell'arma contano tutti. Le sezioni seguenti coprono il ciclo ordinario e il blocco delle statistiche opzionale introdotto nell'Aggiornamento 44."
+          "text": "Un Riven può combinare diversi bonus utili in uno slot Mod, ma un tiro casuale non è automaticamente un miglioramento. L'arma, la combinazione di statistiche, il tratto negativo, il grado e la disposizione dell'arma sono tutti importanti. Le sezioni seguenti riguardano il rilancio delle statistiche, il sistema Trait Locking ordinario e il sistema Riven Splicing separato."
         },
         {
           "type": "kv",
@@ -109,7 +109,7 @@
         },
         {
           "type": "info",
-          "text": "L'[annuncio della Disposizione di settembre 2026](https://forums.warframe.com/topic/1523355-september-2026-riven-dispositions/) documenta le ultime modifiche. Anche la domanda, le nuove opzioni di armi e i roll individuali influenzano le inserzioni. Un cambiamento della Disposizione da solo non garantisce che il tuo Riven si venda per più o meno Platino."
+          "text": "L'[annuncio delle disposizioni di settembre 2026](https://forums.warframe.com/topic/1523355-september-2026-riven-dispositions/) registra le modifiche di quel mese. Anche la richiesta, le nuove opzioni delle armi e i tiri individuali influenzano gli elenchi. Una modifica della Disposizione da sola non garantisce che il tuo Riven verrà venduto a più o meno Platino."
         }
       ]
     },
@@ -212,26 +212,26 @@
       "blocks": [
         {
           "type": "p",
-          "text": "Il **ciclo** spende Kuva per generare un altro roll per la stessa arma. Senza una statistica bloccata, i tipi di statistiche, i valori e la disposizione possono cambiare. Il costo standard sale da **900 Kuva** a **3500 Kuva** man mano che il conteggio dei cicli aumenta. Con una statistica bloccata, il costo di ciclo visualizzato viene raddoppiato: **1800** per il primo ciclo o **7000** al limite standard. Controlla il costo prima di confermare."
+          "text": "**Rilancio delle statistiche** spende Kuva per generare un altro tiro per la stessa arma. Senza un normale Trait Locking o un tratto di giunzione protetto, i tipi di statistiche, i valori e il layout possono cambiare. Il costo standard aumenta da **900 Kuva** a **3500 Kuva** all'aumentare del conteggio dei cicli. Il Trait Locking ordinario raddoppia il costo iniziale a **1800** o al limite massimo a **7000**. Un tratto di giunzione protetto da solo non aumenta il costo. Controlla l'anteprima prima di confermare."
         },
         {
           "type": "kv",
           "kv": [
             {
               "k": "Ciclo ordinario",
-              "v": "Nessuna statistica bloccata: 900 Kuva iniziali, fino a 3500 per ciclo"
+              "v": "Senza Trait Locking ordinario: inizialmente 900 Kuva, fino a 3500 per ciclo"
             },
             {
-              "k": "Ciclo con un blocco",
+              "k": "Rilanciare le statistiche con il normale Trait Locking",
               "v": "Il doppio del costo ordinario: 1800 iniziali, fino a 7000 per ciclo"
             },
             {
               "k": "Cosa rimane",
-              "v": "L'arma; con il blocco delle statistiche, rimangono anche la statistica selezionata e la disposizione positiva/negativa"
+              "v": "L'arma; anche il normale Trait Locking o un tratto di giunzione protetto preserva quel tratto e il layout positivo/negativo"
             },
             {
               "k": "Cosa è casuale",
-              "v": "Le altre statistiche; un blocco non seleziona una statistica mancante per te"
+              "v": "I tratti non protetti; il rilancio delle statistiche non seleziona una statistica mancante per te"
             }
           ]
         },
@@ -243,11 +243,11 @@
     },
     {
       "id": "trait-locking",
-      "title": "Come bloccare una statistica Riven nell'Aggiornamento 44",
+      "title": "Trait Locking e Riven Splicing: come funzionano insieme",
       "blocks": [
         {
           "type": "p",
-          "text": "[Update 44](https://www.warframe.com/en/patch-notes/pc/44-0-0) ha introdotto il **Trait Locking**. Puoi mantenere un tratto esistente mentre cicli gli altri. Aggiungere o rimuovere il blocco è gratuito e non richiede oggetti speciali; il Kuva extra viene addebitato quando cicli con quel blocco attivo."
+          "text": "[Aggiornamento 44](https://www.warframe.com/en/patch-notes/pc/44-0-0) ha introdotto **Trait Locking**. Questo blocco ordinario conserva un tratto esistente durante il ciclo e può essere utilizzato insieme a un tratto unito protetto. L'aggiunta o la rimozione del blocco ordinario è gratuita e non richiede alcun elemento speciale; il Kuva extra viene addebitato quando rilanci le statistiche con il blocco attivo."
         },
         {
           "type": "steps",
@@ -262,22 +262,30 @@
             },
             {
               "h": "Controlla la disposizione prima di spendere",
-              "p": "Il numero di tratti positivi e negativi rimane fisso mentre è bloccato. Una combinazione con 3 positivi e 1 negativo rimane in quella disposizione; sbloccala prima di ciclare se desideri una disposizione diversa."
+              "p": "Il numero di tratti positivi e negativi rimane fisso con il normale Trait Locking o un tratto unito. Per modificare il layout, rimuovi il blocco ordinario e, se presente, sblocca il tratto unito in modo che possa essere rimosso con un nuovo rilancio. La restrizione del layout del tratto unito termina una volta che quel tratto viene rimosso."
             },
             {
               "h": "Riattiva il blocco nella sessione successiva",
-              "p": "La chiusura del menu dei cicli rimuove il blocco. Controllalo e riapplicalo ogni volta che riapri il menu."
+              "p": "La chiusura del menu di rilancio cancella la selezione ordinaria Trait Locking. Controllalo e riapplicalo alla sessione successiva; il tratto di giunzione protetto rimane."
             }
           ]
         },
         {
           "type": "tip",
-          "text": "**Esempio di budget:** 35000 Kuva comprano 10 cicli normali a 3500 l'uno, oppure 5 cicli con un tratto bloccato a 7000 l'uno. Questa è aritmetica dei costi, non una previsione del numero di tiri utili. Considera un blocco quando hai già un tratto che vale la pena preservare."
+          "text": "**Esempio di budget:** 35000 Kuva acquista 10 cicli a 3500 ciascuno senza l'ordinario Trait Locking, oppure 5 cicli a 7000 con esso. Un tratto di giunzione protetto, da solo, mantiene il primo prezzo. Questa è l'aritmetica dei costi, non una previsione dei tiri utili. Considera il lucchetto ordinario quando vale la pena preservare un altro tratto esistente."
         },
         {
           "type": "info",
-          "title": "Il Riven Splicing è una funzionalità separata in arrivo",
-          "text": "Come verificato il 30 settembre 2026, il **Riven Splicing deve ancora arrivare**. Digital Extremes ha annunciato il **7 ottobre 2026** per Glacial Defiance, l'aggiornamento che dovrebbe includere lo Splicing. Il Trait Locking è già disponibile. Ricontrolla le note di rilascio prima di pianificare in base ai Riven Splicer o ai tratti combinati."
+          "title": "Riven Splicing è disponibile",
+          "text": "**Riven Splicing è stato lanciato il 7 ​​ottobre 2026.** Nel menu di giunzione, usa un Riven Splicer per combinare due tratti compatibili in un tratto di giunzione scelto e in una sostituzione casuale. Il layout positivo/negativo rimane fisso finché il tratto unito non viene rimosso. Visualizza l'anteprima del risultato prima di confermare. Il tratto unito rimane protetto senza un supplemento di Kuva; il Trait Locking ordinario può proteggere un tratto aggiuntivo al doppio del normale costo di ciclo."
+        },
+        {
+          "type": "p",
+          "text": "**Dove trovare un Riven Splicer:** [The Icebind](https://www.warframe.com/en/patch-notes/pc/44-1-0), precedentemente annunciato come Glacial Defiance, ne garantisce uno in caso di completamento con successo. L'accesso richiede il completamento di **Angels of the Zariman**, **Whispers in the Walls** e lo sblocco **Elite Temporal Archimedea o Elite Deep Archimedea**. Non è necessario completare la modalità Elite. Questa è un'attività impegnativa per sei giocatori, quindi prepara una squadra e un equipaggiamento adatti."
+        },
+        {
+          "type": "tip",
+          "text": "**I primi rapporti sul lancio descrivono un bug risolto.** [L'hotfix 44.1.1](https://www.warframe.com/en/patch-notes/pc/44-1-1) ha corretto l'errato raddoppio dei costi di Kuva causato dai tratti uniti e il mancato funzionamento di Weak Point Damage. Il [rimborso Kuva ai giocatori interessati](https://forums.warframe.com/topic/1527399-psa-spliced-riven-kuva-cost-doubling-resolved-script-complete/) è terminato il 9 ottobre. [L'hotfix 44.1.2](https://www.warframe.com/en/patch-notes/pc/44-1-2) ha aggiunto un collegamento di giunzione dalla schermata Ciclo."
         }
       ]
     },
@@ -413,7 +421,7 @@
     },
     {
       "q": "Come faccio a fare il re-roll di un riven e quanto costa?",
-      "a": "Scegli Cycle Riven nel Segmento Mod. Senza un blocco, il costo parte da 900 Kuva e raggiunge un limite di 3500 man mano che il conteggio dei cicli aumenta. Il Trait Locking raddoppia il costo di quel ciclo, fino a 7000 al limite standard, preservando un tratto esistente e la disposizione positiva/negativa. Leggi la [guida al Kuva](/guides/kuva) per pianificare un budget."
+      "a": "Scegli Ciclo Riven nel segmento Mod. Senza l'ordinario Trait Locking, il costo inizia da 900 Kuva e raggiunge il limite di 3500 man mano che il conteggio dei cicli aumenta. Il Trait Locking ordinario raddoppia quel costo, fino a 7000. Un tratto di giunzione protetto da solo non aggiunge alcun sovrapprezzo. Leggi la [guida su Kuva](/guides/kuva) per pianificare un budget."
     },
     {
       "q": "Cos'è la disposizione del riven?",
@@ -437,11 +445,11 @@
     },
     {
       "q": "Posso bloccare una statistica Riven mentre ricalcolo?",
-      "a": "Sì. Il Trait Locking ti consente di preservare un tratto esistente, ma ciclare con esso costa il doppio del Kuva. Anche la disposizione positiva/negativa rimane fissa. Aggiungere o rimuovere il blocco è gratuito e la chiusura del menu di ciclo lo rimuove."
+      "a": "SÌ. L'ordinario Trait Locking preserva un tratto esistente al doppio del normale costo di rilancio delle statistiche e la chiusura del menu cancella quella selezione. Un tratto unito rimane protetto separatamente senza sovrapprezzo, quindi entrambi i sistemi possono preservare due tratti insieme. Entrambe le protezioni fissano anche il layout positivo/negativo."
     },
     {
       "q": "Il Riven Splicing è già disponibile?",
-      "a": "Come verificato il 30 settembre 2026, lo Splicing è ancora in arrivo con Glacial Defiance, annunciato per il 7 ottobre 2026. Il Trait Locking è già attivo. Controlla le note di rilascio quando l'aggiornamento viene lanciato prima di pianificare in base ai Riven Splicer o ai tratti combinati."
+      "a": "SÌ. Riven Splicing è stato lanciato con The Icebind il 7 ottobre 2026. Completa The Icebind per guadagnare un Riven Splicer, quindi controlla le combinazioni di tratti compatibili nel menu di giunzione. Il tratto unito scelto sostituisce due tratti compatibili insieme a una sostituzione casuale; il layout positivo/negativo rimane fisso finché il tratto unito non viene rimosso."
     }
   ],
   "sources": [
@@ -462,8 +470,20 @@
       "href": "https://forums.warframe.com/topic/1523355-september-2026-riven-dispositions/"
     },
     {
-      "label": "Warframe — Glacial Defiance date announcement (PSA updated September 29, 2026)",
-      "href": "https://forums.warframe.com/topic/1523427-psa-glacial-defiance-release-window-outdated/"
+      "label": "Warframe — Update 44.1: The Icebind and Riven Splicing (October 7, 2026)",
+      "href": "https://www.warframe.com/en/patch-notes/pc/44-1-0"
+    },
+    {
+      "label": "Warframe — Hotfix 44.1.1: Splicing cost and damage fixes",
+      "href": "https://www.warframe.com/en/patch-notes/pc/44-1-1"
+    },
+    {
+      "label": "Warframe — Spliced Riven Kuva refund completed October 9, 2026",
+      "href": "https://forums.warframe.com/topic/1527399-psa-spliced-riven-kuva-cost-doubling-resolved-script-complete/"
+    },
+    {
+      "label": "Warframe — Hotfix 44.1.2: Splicing menu shortcut",
+      "href": "https://www.warframe.com/en/patch-notes/pc/44-1-2"
     },
     {
       "label": "Warframe — Riven cycling cost cap (Update 19.4)",
@@ -526,5 +546,5 @@
       "note": "Mercati dei riven, wiki e strumenti di DE"
     }
   ],
-  "updated": "2026-09-30"
+  "updated": "2026-10-22"
 }

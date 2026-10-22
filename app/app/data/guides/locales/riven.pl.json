@@ -1,8 +1,8 @@
 {
   "slug": "riven",
   "eyebrow": "Centrum Wiedzy · Mody Riven",
-  "title": "Mody Riven: Blokowanie atrybutów, koszty Kuva i handel",
-  "lede": "Dowiedz się, jak działają Mody Riven, zachowaj jeden istniejący stat dzięki blokowaniu atrybutów, porównaj koszty Kuva i oceń losowanie przed handlem. Zawiera zasady z aktualizacji 44 oraz ogłoszony status funkcji Riven Splicing.",
+  "title": "Mody Riven: łączenie, Trait Locking i koszty Kuva",
+  "lede": "Dowiedz się, jak współpracują ze sobą Riven Splicing i Trait Locking, gdzie zdobyć Riven Splicers i jak zaplanować budżet Kuva przed ponownym losowaniem statystyk lub handlem. Zawiera obowiązujące zasady aktualizacji 44.1 i różnicę między dwoma rodzajami chronionych cech.",
   "category": "systems",
   "readMins": 10,
   "stats": [
@@ -23,7 +23,7 @@
     },
     {
       "num": "2×",
-      "label": "Koszt Kuva przy losowaniu z zablokowanym atrybutem",
+      "label": "Koszt Kuva w przypadku zwykłego Trait Locking",
       "tone": "gold"
     }
   ],
@@ -38,7 +38,7 @@
         },
         {
           "type": "p",
-          "text": "Riven może łączyć kilka przydatnych bonusów w jednym slocie Moda, ale losowy roll nie jest automatycznie ulepszeniem. Znaczenie ma broń, kombinacja statystyk, negatywna cecha, ranga i dyspozycja broni. Poniższe sekcje omawiają zwykłe cyklowanie oraz opcjonalną blokadę cech wprowadzoną w Aktualizacji 44."
+          "text": "Riven może łączyć kilka przydatnych bonusów w jednym gnieździe Modów, ale losowy rzut nie jest automatycznie ulepszeniem. Broń, kombinacja statystyk, negatywna cecha, ranga i dyspozycja broni – wszystko ma znaczenie. Poniższe sekcje dotyczą ponownego losowania statystyk, zwykłego systemu Trait Locking i oddzielnego systemu Riven Splicing."
         },
         {
           "type": "kv",
@@ -109,7 +109,7 @@
         },
         {
           "type": "info",
-          "text": "[Ogłoszenie dyspozycji z września 2026 r.](https://forums.warframe.com/topic/1523355-september-2026-riven-dispositions/) dokumentuje najnowsze zmiany. Popyt, nowe opcje broni i poszczególne losowania również wpływają na oferty. Sama zmiana dyspozycji nie gwarantuje, że twój Riven sprzeda się za więcej lub mniej Platyny."
+          "text": "[Ogłoszenie o dyspozycji z września 2026](https://forums.warframe.com/topic/1523355-september-2026-riven-dispositions/) zawiera informacje o zmianach w danym miesiącu. Popyt, nowe opcje broni i poszczególne kombinacje statystyk również wpływają na aukcje. Sama zmiana dyspozycji nie gwarantuje, że Twój Riven będzie sprzedawany za większą lub mniejszą ilość platyny."
         }
       ]
     },
@@ -212,26 +212,26 @@
       "blocks": [
         {
           "type": "p",
-          "text": "**Losowanie** zużywa Kuva, aby wygenerować kolejne losowanie dla tej samej broni. Bez zablokowanego atrybutu typy statystyk, wartości i układ mogą ulec zmianie. Standardowy koszt rośnie z **900 Kuva** do **3500 Kuva** wraz ze wzrostem liczby losowań. Z jednym zablokowanym atrybutem wyświetlany koszt losowania jest podwojony: **1800** dla pierwszego losowania lub **7000** przy standardowym limicie. Sprawdź koszt przed potwierdzeniem."
+          "text": "**Ponowne losowanie statystyk** zużywa Kuva, aby wygenerować kolejny rzut na tę samą broń. Bez zwykłego Trait Locking lub chronionej cechy łączonej typy statystyk, wartości i układ mogą się zmieniać. Koszt standardowy wzrasta z **900 Kuva** do **3500 Kuva** wraz ze wzrostem liczby cykli. Zwykły Trait Locking podwaja ten koszt do **1800** początkowo lub **7000** przy maksymalnym koszcie cyklu. Sama chroniona cecha splicingu nie zwiększa kosztów. Przed potwierdzeniem sprawdź podgląd."
         },
         {
           "type": "kv",
           "kv": [
             {
               "k": "Zwykłe losowanie",
-              "v": "Brak zablokowanego atrybutu: początkowo 900 Kuva, do 3500 na losowanie"
+              "v": "Bez zwykłego Trait Locking: początkowo 900 Kuva, do 3500 na cykl"
             },
             {
-              "k": "Losowanie z blokadą",
+              "k": "Ponowne losowanie z użyciem zwykłego Trait Locking",
               "v": "Dwukrotność zwykłego kosztu: początkowo 1800, do 7000 na losowanie"
             },
             {
               "k": "Co pozostaje bez zmian",
-              "v": "Broń; w przypadku blokowania atrybutów, wybrany atrybut oraz układ pozytywny/negatywny również pozostają"
+              "v": "Broń; zwykłe Trait Locking lub chroniona cecha splicowana również zachowuje tę cechę i układ dodatni/negatywny"
             },
             {
               "k": "Co jest losowe",
-              "v": "Pozostałe atrybuty; blokada nie wybiera brakującego statu za ciebie"
+              "v": "Cechy niechronione; ponowne losowanie statystyk nie wybiera za Ciebie brakującej statystyki"
             }
           ]
         },
@@ -243,11 +243,11 @@
     },
     {
       "id": "trait-locking",
-      "title": "Jak zablokować atrybut Rivena w aktualizacji 44",
+      "title": "Trait Locking i Riven Splicing: jak ze sobą współpracują",
       "blocks": [
         {
           "type": "p",
-          "text": "[Update 44](https://www.warframe.com/en/patch-notes/pc/44-0-0) wprowadził **blokowanie cech** (Trait Locking). Możesz zachować jedną istniejącą cechę podczas losowania pozostałych. Dodanie lub usunięcie blokady jest darmowe i nie wymaga specjalnego przedmiotu; dodatkowy Kuva jest pobierany, gdy wykonujesz losowanie z aktywną blokadą."
+          "text": "[Aktualizacja 44](https://www.warframe.com/en/patch-notes/pc/44-0-0) wprowadziła **Trait Locking**. Ta zwykła blokada zachowuje jedną istniejącą cechę podczas ponownego losowania statystyk i może być używana wraz z chronioną cechą łączoną. Dodanie lub usunięcie zwykłej blokady jest bezpłatne i nie wymaga specjalnego elementu; dodatkowa opłata Kuva jest naliczana, gdy ponownie losujesz statystyki z aktywną blokadą."
         },
         {
           "type": "steps",
@@ -262,22 +262,30 @@
             },
             {
               "h": "Sprawdź układ przed wydaniem waluty",
-              "p": "Liczba pozytywnych i negatywnych cech pozostaje stała podczas blokady. Wynik losowania z 3 cechami pozytywnymi i 1 negatywną pozostaje w tym układzie; odblokuj go przed ponownym losowaniem, jeśli chcesz uzyskać inny układ."
+              "p": "Liczba cech pozytywnych i negatywnych pozostaje stała w przypadku zwykłego Trait Locking lub cechy łączonej. Aby zmienić układ, usuń zwykłą blokadę i, jeśli jest obecna, odblokuj cechę splotu, aby można było ją usunąć przez ponowne losowanie. Ograniczenie układu cechy splicowanej kończy się wraz z usunięciem tej cechy."
             },
             {
               "h": "Ponownie nałóż blokadę w następnej sesji",
-              "p": "Zamknięcie menu losowania powoduje usunięcie blokady. Sprawdzaj i nakładaj ją ponownie za każdym razem, gdy ponownie otwierasz menu."
+              "p": "Zamknięcie menu cyklicznego usuwa zwykły wybór Trait Locking. Sprawdź i zastosuj ponownie podczas następnej sesji; chroniona cecha splicingu pozostaje."
             }
           ]
         },
         {
           "type": "tip",
-          "text": "**Przykład budżetowy:** 35000 Kuva pozwala na 10 zwykłych losowań po 3500 każde lub na 5 losowań z zablokowaną cechą po 7000 każde. Jest to arytmetyka kosztów, a nie przewidywanie liczby użytecznych rezultatów. Rozważ użycie blokady, gdy masz już cechę wartą zachowania."
+          "text": "**Przykład budżetu:** 35000 Kuva kupuje 10 cykli po 3500 każdy bez zwykłego Trait Locking lub 5 cykli po 7000 z jego użyciem. Sama chroniona cecha splotu utrzymuje pierwszą cenę. Jest to arytmetyka kosztów, a nie przewidywanie użytecznych rzutów. Rozważ zwykłą blokadę, gdy warto zachować inną istniejącą cechę."
         },
         {
           "type": "info",
-          "title": "Łączenie Riven (Riven Splicing) to osobna, nadchodząca funkcja",
-          "text": "Według stanu na 30 września 2026 r. **funkcja Riven Splicing nadal nie została wydana**. Studio Digital Extremes ogłosiło datę **7 października 2026 r.** dla aktualizacji Glacial Defiance, która ma zawierać łączenie. Blokowanie cech jest już dostępne. Przed zaplanowaniem działań wokół Riven Splicers lub połączonych cech należy ponownie sprawdzić informacje o aktualizacji."
+          "title": "Riven Splicing jest dostępny",
+          "text": "**Riven Splicing został udostępniony 7 października 2026.** W menu Splicing użyj Riven Splicer, aby połączyć dwie kompatybilne cechy w wybraną cechę połączoną i jedną losową zamianę. Układ dodatni/ujemny pozostaje niezmienny do czasu usunięcia cechy splicingu. Wyświetl podgląd wyniku przed potwierdzeniem. Cecha splicingu pozostaje chroniona bez dodatkowej opłaty w Kuva; zwykły Trait Locking może chronić jedną dodatkową cechę za podwójną cenę normalnego cyklu."
+        },
+        {
+          "type": "p",
+          "text": "**Gdzie zdobyć Riven Splicer:** [The Icebind](https://www.warframe.com/en/patch-notes/pc/44-1-0), wcześniej ogłaszane jako Glacial Defiance, gwarantuje jeden egzemplarz po pomyślnym ukończeniu. Dostęp wymaga ukończenia **Angels of the Zariman**, **Whispers in the Walls** i odblokowania **Elite Temporal Archimedea lub Elite Deep Archimedea**. Ukończenie tego trybu Elite nie jest wymagane. Jest to wymagająca aktywność dla sześciu graczy, dlatego przygotuj odpowiedni skład i wyposażenie."
+        },
+        {
+          "type": "tip",
+          "text": "**Raporty dotyczące wczesnego uruchomienia opisują rozwiązany błąd.** [Poprawka 44.1.1](https://www.warframe.com/en/patch-notes/pc/44-1-1) poprawiła łączone cechy, które błędnie podwajały koszty Kuva oraz brak działania Weak Point Damage. [Zwrot Kuva dla poszkodowanych graczy](https://forums.warframe.com/topic/1527399-psa-spliced-riven-kuva-cost-doubling-resolved-script-complete/) zakończył się 9 października. [Poprawka 44.1.2](https://www.warframe.com/en/patch-notes/pc/44-1-2) dodała skrót do łączenia z ekranu ponownego losowania statystyk."
         }
       ]
     },
@@ -413,7 +421,7 @@
     },
     {
       "q": "Jak zrobić re-roll Rivena i ile to kosztuje?",
-      "a": "Wybierz opcję losowania Riven w segmencie modów. Bez blokady koszt zaczyna się od 900 Kuva i osiąga limit 3500 wraz ze wzrostem liczby losowań. Blokada cechy podwaja koszt tego losowania, osiągając do 7000 przy standardowym limicie, zachowując jednocześnie jedną istniejącą cechę oraz układ pozytywnych i negatywnych cech. Przeczytaj [poradnik Kuva](/guides/kuva), aby zaplanować budżet."
+      "a": "Wybierz Cykl Riven w segmencie Mod. Bez zwykłego Trait Locking koszt zaczyna się od 900 Kuva i osiąga górną granicę wynoszącą 3500 w miarę wzrostu liczby cykli. Zwykły Trait Locking podwaja ten koszt, aż do 7000. Sama chroniona cecha łączenia nie powoduje dodatkowych opłat. Przeczytaj [przewodnik po Kuva](/guides/kuva) dotyczący planowania budżetu."
     },
     {
       "q": "Co to jest dyspozycja Riven?",
@@ -437,11 +445,11 @@
     },
     {
       "q": "Czy mogę zablokować statystykę Riven podczas ponownego losowania?",
-      "a": "Tak. Blokowanie cech pozwala zachować jedną istniejącą cechę, ale losowanie z nią kosztuje dwa razy więcej Kuva. Układ cech pozytywnych i negatywnych również pozostaje bez zmian. Dodanie lub usunięcie blokady jest darmowe, a zamknięcie menu losowania ją usuwa."
+      "a": "Tak. Zwykły Trait Locking zachowuje jedną istniejącą cechę przy dwukrotności zwykłego kosztu ponownego losowania statystyk, a zamknięcie menu usuwa ten wybór. Połączona cecha pozostaje chroniona osobno bez dodatkowych opłat, więc oba systemy mogą zachować dwie cechy razem. Każde zabezpieczenie utrzymuje również stały układ dodatni/ujemny."
     },
     {
       "q": "Czy funkcja Riven Splicing jest już dostępna?",
-      "a": "Według stanu na 30 września 2026 r. funkcja łączenia nadal nadchodzi wraz z aktualizacją Glacial Defiance zapowiedzianą na 7 października 2026 r. Blokowanie cech jest już aktywne. Sprawdź informacje o aktualizacji w momencie jej wydania przed zaplanowaniem działań wokół Riven Splicers lub połączonych cech."
+      "a": "Tak. Funkcja Riven Splicing została uruchomiona wraz z trybem The Icebind 7 października 2026. Ukończ The Icebind, aby zdobyć Riven Splicer, a następnie sprawdź zgodne kombinacje cech w menu Łączenie. Wybrana połączona cecha zastępuje dwie kompatybilne cechy wraz z losową zamianą; układ dodatni/ujemny pozostaje niezmienny do czasu usunięcia cechy splicingu."
     }
   ],
   "sources": [
@@ -462,8 +470,20 @@
       "href": "https://forums.warframe.com/topic/1523355-september-2026-riven-dispositions/"
     },
     {
-      "label": "Warframe — Glacial Defiance date announcement (PSA updated September 29, 2026)",
-      "href": "https://forums.warframe.com/topic/1523427-psa-glacial-defiance-release-window-outdated/"
+      "label": "Warframe — Update 44.1: The Icebind and Riven Splicing (October 7, 2026)",
+      "href": "https://www.warframe.com/en/patch-notes/pc/44-1-0"
+    },
+    {
+      "label": "Warframe — Hotfix 44.1.1: Splicing cost and damage fixes",
+      "href": "https://www.warframe.com/en/patch-notes/pc/44-1-1"
+    },
+    {
+      "label": "Warframe — Spliced Riven Kuva refund completed October 9, 2026",
+      "href": "https://forums.warframe.com/topic/1527399-psa-spliced-riven-kuva-cost-doubling-resolved-script-complete/"
+    },
+    {
+      "label": "Warframe — Hotfix 44.1.2: Splicing menu shortcut",
+      "href": "https://www.warframe.com/en/patch-notes/pc/44-1-2"
     },
     {
       "label": "Warframe — Riven cycling cost cap (Update 19.4)",
@@ -526,5 +546,5 @@
       "note": "Rynki Rivenów, wiki i narzędzia DE"
     }
   ],
-  "updated": "2026-09-30"
+  "updated": "2026-10-22"
 }

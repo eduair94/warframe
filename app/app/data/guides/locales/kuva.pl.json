@@ -2,7 +2,7 @@
   "slug": "kuva",
   "eyebrow": "Centrum Wiedzy · Farming Kuva",
   "title": "Poradnik farmingu Kuva: Źródła, boostery i koszty Riven",
-  "lede": "Zaplanuj farming Kuva pod kątem losowań Riven, na które możesz sobie pozwolić. Porównaj misje Siphons, Floods, Survival oraz nową cotygodniową wymianę Meliki, dowiedz się, na które nagrody wpływają boostery, i zaplanuj budżet na opcjonalne blokowanie cech z Aktualizacji 44.",
+  "lede": "Zaplanuj swoje zdobywanie Kuva w oparciu o ponowne losowania Riven, na które Cię stać. Porównaj nagrody za misje i oferty dostawców Aktualizacji 44.1, sprawdź tygodniowe limity zakupów i odróżnij zwykłe koszty Trait Locking od chronionych cech łączonych.",
   "category": "farming",
   "readMins": 8,
   "stats": [
@@ -18,12 +18,12 @@
     },
     {
       "num": "3,500",
-      "label": "maksymalna ilość Kuva na odblokowane losowanie",
+      "label": "max Kuva bez zwykłego Trait Locking",
       "tone": "gold"
     },
     {
       "num": "7,000",
-      "label": "maksymalna ilość Kuva z jedną zablokowaną cechą",
+      "label": "max Kuva ze zwykłym Trait Locking",
       "tone": "good"
     }
   ],
@@ -34,7 +34,7 @@
       "blocks": [
         {
           "type": "p",
-          "text": "**Kuva** to zasób używany do losowania zrandomizowanych statystyk na **modach Riven** oraz wytwarzania niektórych schematów w odlewni (Foundry), w tym Umbra Forma. Losowanie nie zmienia dyspozycji Riven dla broni. Od Aktualizacji 44 możesz zachować jedną istniejącą cechę podczas losowania pozostałych, kosztem dwukrotności zwykłej ilości Kuva."
+          "text": "**Kuva** to zasób używany do cyklicznego przełączania losowych statystyk **Riven modów** i wytwarzania przedmiotów z wybranych schematów w Foundry, w tym Umbra Forma. Ponowne losowanie statystyk nie zmienia dyspozycji Riven danej broni. Zwykły Trait Locking zachowuje jedną istniejącą cechę za podwójną cenę. Sama chroniona cecha splicowana nie podlega dodatkowej opłacie w Kuva."
         },
         {
           "type": "p",
@@ -198,6 +198,64 @@
       ]
     },
     {
+      "id": "vendor-exchanges",
+      "title": "Aktualizacja 44.1: porównaj oferty dostawców Kuva",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "[Aktualizacja 44.1](https://www.warframe.com/en/patch-notes/pc/44-1-0) poprawiła kilka ofert wymiany Kuva. Zanim wybierzesz inną misję do zdobywania zasobów, sprawdź odblokowanych dostawców i waluty znajdujące się już w Twoim ekwipunku. Oferty te zapewniają regularne Kuva; Wymiana Entropic Kuva u postaci Melica pozostaje odrębną opcją."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Oferta dostawcy",
+              "Koszt zakupu",
+              "Zwykłe Kuva",
+              "Tygodniowy limit zakupów"
+            ],
+            "rows": [
+              [
+                "Towary Acrithis",
+                "10 Pathos Clamps",
+                "10,000",
+                "Nie określono w aktualizacji; sprawdź sklep"
+              ],
+              [
+                "Acrithis: Wymiana Scuttler Husks",
+                "25 Scuttler Husks",
+                "14,000",
+                "3"
+              ],
+              [
+                "Pamiątki po Flare",
+                "100 Heartstrings",
+                "14,000",
+                "3"
+              ],
+              [
+                "Towary Nightcap",
+                "75 Fergolyte",
+                "14,000",
+                "3"
+              ],
+              [
+                "Pamiątki Hunhow",
+                "35 Emerald Talents I 35 Crimson Talents",
+                "17,000",
+                "3"
+              ]
+            ],
+            "note": "Ilości i podane limity są zgodne z aktualizacją 44.1. Oferta Pathos Clamp nie ma limitu zakupów określonego w tych uwagach; nie jest to potwierdzenie nieograniczonej liczby zakupów. Pakiety dostawców nie są podwajane przez Resource Booster."
+          }
+        },
+        {
+          "type": "tip",
+          "text": "**Porównaj koszt waluty, a nie tylko wielkość pakietu.** Trzy zakupy 14,000-Kuva dają 42,000 Kuva: wystarczają na 12 cykli przy podstawowym limicie 3,500 lub 6 przy zwykłym Trait Locking przy 7,000. Najpierw zarezerwuj waluty potrzebne do innych nagród. Większy pakiet Kuva nie oznacza automatycznie szybszego zdobycia."
+        }
+      ]
+    },
+    {
       "id": "survival-fissure",
       "title": "Kuva Survival i Requiem Fissures",
       "blocks": [
@@ -271,11 +329,11 @@
               "v": "35 000 Kuva"
             },
             {
-              "k": "Brak zablokowanej cechy",
+              "k": "Bez zwykłego Trait Locking",
               "v": "3 500 na cykl → 10 cykli"
             },
             {
-              "k": "Jedna zablokowana cecha",
+              "k": "Ze zwykłym Trait Locking",
               "v": "7 000 na cykl → 5 cykli"
             },
             {
@@ -286,7 +344,7 @@
         },
         {
           "type": "info",
-          "text": "To jest arytmetyka, a nie szacunek stawki farmingu: 35 000 ÷ 3 500 = 10 oraz 35 000 ÷ 7 000 = 5. Ustal punkt zatrzymania przed rozpoczęciem losowań i zachowaj wszelkie Kuva, których potrzebujesz do wytwarzania."
+          "text": "To jest arytmetyka, a nie szacunkowe tempo zdobywania zasobów: 35,000 ÷ 3,500 = 10 i 35,000 ÷ 7,000 = 5. Sama chroniona cecha łączenia wykorzystuje normalną cenę; dodanie zwykłego Trait Locking podwaja to. Ustaw miejsce zatrzymania przed ponownym losowaniem i zarezerwuj Kuva potrzebne do tworzenia."
         }
       ]
     },
@@ -296,15 +354,15 @@
       "blocks": [
         {
           "type": "p",
-          "text": "Użyj opcji **Cycle Riven** w segmencie modów, aby przelosować moda za pomocą Kuva. Awansowanie modu na wyższą rangę zużywa natomiast [Endo](/guides/endo) oraz Credity. Bez zablokowanej cechy losowanie zaczyna się od **900 Kuva** i rośnie do limitu **3 500 Kuva**. Z jedną zablokowaną cechą każdy cykl kosztuje dwa razy więcej niż jego normalna cena."
+          "text": "Użyj **Cykl Riven** w segmencie modów, aby ponownie wylosować statystyki za Kuva. Zamiast tego podnoszenie rangi moda wymaga [Endo](/guides/endo) i Kredytów. Bez zwykłego Trait Locking cykl zaczyna się od **900 Kuva** i wzrasta do limitu **3,500 Kuva**, także wtedy, gdy chroniona jest cecha splotu. Zwykły Trait Locking podwaja wyświetlaną cenę bazową."
         },
         {
           "type": "table",
           "table": {
             "columns": [
               "Cykl",
-              "Brak zablokowanej cechy",
-              "Jedna zablokowana cecha"
+              "Bez zwykłego Trait Locking",
+              "Ze zwykłym Trait Locking"
             ],
             "rows": [
               [
@@ -338,12 +396,12 @@
                 "7 000"
               ]
             ],
-            "note": "Koszty są wyrażone w Kuva na cykl. Nałożenie lub zdjęcie blokady jest bezpłatne; wyższy koszt naliczany jest w momencie wykonania cyklu z zablokowaną cechą."
+            "note": "Koszty wynoszą Kuva za cykl. Zakładanie lub usuwanie zwykłego Trait Locking jest bezpłatne; ponowne losowanie z tą blokadą podwaja cenę. Sama chroniona cecha splicingu nie podwaja kosztów."
           }
         },
         {
           "type": "info",
-          "text": "**Blokowanie cech (Trait Locking) jest już dostępne w Update 44.** Wybierz istniejącą cechę, aby zachować ją podczas losowania. Tylko jedna cecha może być zablokowana, a aktualna liczba cech pozytywnych i negatywnych pozostaje niezmieniona. Odblokuj ją, aby umożliwić zmianę tego układu. Zamknięcie menu losowania kasuje blokadę, więc wybierz ją ponownie następnym razem."
+          "text": "**Dwa zabezpieczenia, różne koszty.** Zwykłe Trait Locking zachowuje jedną istniejącą cechę i jest usuwane po zamknięciu menu ponownego losowania. Riven Splicing chroni połączoną cechę osobno, bez dodatkowej opłaty; oba mogą być używane razem. Każdy system utrzymuje stały układ cech dodatnich i ujemnych. Usuń zwykłą blokadę i usuń wszelkie połączone cechy, odblokowując je i usuwając przez ponowne losowanie przed wypróbowaniem innego układu. Pełny proces znajdziesz w [przewodniku po Riven](/guides/riven)."
         },
         {
           "type": "tip",
@@ -450,15 +508,15 @@
   "faqs": [
     {
       "q": "Do czego służy Kuva w Warframe?",
-      "a": "Kuva służy do losowania statystyk modów Riven oraz wytwarzania niektórych schematów w Warsztacie. Losowanie nie zmienia Dyspozycji broni. Opcjonalna blokada cechy zachowuje jedną istniejącą cechę za dwukrotny koszt losowania. Pełne zasady znajdziesz w [poradniku Riven](/guides/riven)."
+      "a": "Kuva służy do przełączania statystyk modów Riven i wytwarzania przedmiotów z wybranych schematów w Foundry. Ponowne losowanie statystyk nie zmienia dyspozycji broni. Zwykły Trait Locking podwaja koszt cyklu; sama chroniona cecha splicingu nie. Pełne zasady znajdziesz w [przewodniku po Riven](/guides/riven)."
     },
     {
       "q": "Jaki jest najlepszy sposób na szybkie farmowanie Kuva?",
-      "a": "Wybierz źródło dopasowane do swoich odblokowań i sesji: Syfony lub Powodzie dla pojedynczych misji, Przetrwanie Taveuni dla powtarzanych obron Żniwiarza lub dostępne wymiany u handlarzy. Wymiana w Aktualizacji 44 Meliki oferuje 10 500 zwykłej Kuvy do czterech razy w tygodniu w zamian za Entropijną Kuvę. Szczeliny Requiem Przetrwania Kuva otwierają Relikty Requiem; nie zapewniają one części Prime z reliktów Lith, Meso, Neo ani Axi."
+      "a": "Wybierz źródło, które pasuje do Twoich odblokowań i sesji: Syfony lub Powodzie dla poszczególnych misji, Taveuni Survival dla powtarzającej się obrony Żniwiarzy lub dostępne wymiany dostawców. Porównaj ofertę wymiany na 10,500 Kuva u postaci Melica z ofertami aktualizacji 44.1 u Acrithis, Flare, Nightcap i Hunhow. Sprawdź koszt waluty i pozostałe zakupy; nie ma jednej najszybszej opcji dla każdego konta."
     },
     {
       "q": "Ile Kuva kosztuje reroll moda Riven?",
-      "a": "Bez zablokowanej cechy pierwsze losowanie kosztuje 900 Kuva, a kolejne rosną do limitu 3 500. Zablokowanie jednej cechy podwaja te ceny do 1 800 na początku i 7 000 przy limicie. Nałożenie lub zdjęcie blokady jest darmowe. Po losowaniu możesz zachować swój poprzedni wynik, ale Kuva pozostaje zużyta."
+      "a": "Bez zwykłego Trait Locking pierwszy cykl kosztuje 900 Kuva, a późniejsze cykle wzrastają do limitu 3,500. Sama chroniona cecha łączenia utrzymuje te ceny. Zwykłe Trait Locking podwaja je do 1,800 na początku i 7,000 przy maksymalnym koszcie. Założenie lub zdjęcie tej blokady jest bezpłatne. Możesz zachować poprzedni wynik po ponownym losowaniu, ale Kuva pozostanie wydane."
     },
     {
       "q": "Jaka jest różnica między Kuva a Kuva Lich?",
@@ -474,7 +532,7 @@
     },
     {
       "q": "Czy można kupić lub wymienić Kuva?",
-      "a": "Zwykła Kuva nie może być wymieniana bezpośrednio między graczami, ale jest dostępna poprzez wymiany u handlarzy w grze. Na przykład Melika akceptuje Entropijną Kuvę w zamian za pakiety zwykłej Kuvy z tygodniowym limitem zakupów. Sprawdź walutę i ofertę handlarza zamiast zakładać, że Kuva pochodzi wyłącznie z Syfonów."
+      "a": "Zwykłym Kuva nie można handlować bezpośrednio między graczami, ale sprzedawcy wymieniają za niego inne waluty. Melica akceptuje Entropic Kuva; Aktualizacja 44.1 poprawiła także oferty z Acrithis, Flare, Nightcap i Hunhow. Powyższe porównanie dostawców zawiera ilości, waluty i podane limity tygodniowe."
     },
     {
       "q": "Czy Resource Boostery działają na Kuva?",
@@ -482,6 +540,14 @@
     }
   ],
   "sources": [
+    {
+      "label": "Update 44.1: The Icebind — Kuva vendor offers and Riven Splicing",
+      "href": "https://www.warframe.com/en/patch-notes/pc/44-1-0"
+    },
+    {
+      "label": "Warframe — Hotfix 44.1.1: corrected Spliced Riven cycling cost",
+      "href": "https://www.warframe.com/en/patch-notes/pc/44-1-1"
+    },
     {
       "label": "Update 44: Iceblade of Narin — Melica, Entropic Kuva and Trait Locking",
       "href": "https://www.warframe.com/en/patch-notes/pc/44-0-0"
@@ -527,5 +593,5 @@
       "href": "https://warframe.fandom.com/wiki/Kuva_Siphon"
     }
   ],
-  "updated": "2026-09-30"
+  "updated": "2026-10-22"
 }

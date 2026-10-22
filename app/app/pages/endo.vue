@@ -1,33 +1,25 @@
 <template>
   <div class="an">
-    <client-only>
-      <template #fallback>
-        <SeoFallbackTable
-          :caption="t('endo.eyebrow')"
-          :name-label="fallbackNameLabel"
-          :columns="fallbackColumns"
-          :rows="fallbackRows"
-        />
-      </template>
-      <div class="an-console">
-        <!-- Hero -->
-        <header class="an-hero">
-          <div class="an-hero__text">
-            <div class="an-eyebrow">{{ t('endo.eyebrow') }}</div>
-            <i18n-t v-if="direction === 'flip'" keypath="endo.hero.titleFlip" tag="h1" class="an-title">
-              <template #endo><span class="accent-b">{{ t('endo.hero.endoWord') }}</span></template>
-              <template #platinum><span class="accent-a">{{ t('endo.hero.platinumWord') }}</span></template>
-            </i18n-t>
-            <i18n-t v-else keypath="endo.hero.titleSources" tag="h1" class="an-title">
-              <template #endo><span class="accent-a">{{ t('endo.hero.endoWord') }}</span></template>
-              <template #platinum><span class="accent-b">{{ t('endo.hero.platinumWord') }}</span></template>
-            </i18n-t>
-            <i18n-t v-if="direction === 'flip'" keypath="endo.hero.ledeFlip" tag="p" class="an-lede">
-              <template #partlyRanked><em>{{ t('endo.hero.ledePartlyRanked') }}</em></template>
-              <template #wellTraded><b>{{ t('endo.hero.ledeWellTraded') }}</b></template>
-            </i18n-t>
-            <p v-else class="an-lede">{{ t('endo.hero.ledeSources') }}</p>
-          </div>
+    <div class="an-console">
+      <!-- Hero -->
+      <header class="an-hero">
+        <div class="an-hero__text">
+          <div class="an-eyebrow">{{ t('endo.eyebrow') }}</div>
+          <i18n-t v-if="direction === 'flip'" keypath="endo.hero.titleFlip" tag="h1" class="an-title">
+            <template #endo><span class="accent-b">{{ t('endo.hero.endoWord') }}</span></template>
+            <template #platinum><span class="accent-a">{{ t('endo.hero.platinumWord') }}</span></template>
+          </i18n-t>
+          <i18n-t v-else keypath="endo.hero.titleSources" tag="h1" class="an-title">
+            <template #endo><span class="accent-a">{{ t('endo.hero.endoWord') }}</span></template>
+            <template #platinum><span class="accent-b">{{ t('endo.hero.platinumWord') }}</span></template>
+          </i18n-t>
+          <i18n-t v-if="direction === 'flip'" keypath="endo.hero.ledeFlip" tag="p" class="an-lede">
+            <template #partlyRanked><em>{{ t('endo.hero.ledePartlyRanked') }}</em></template>
+            <template #wellTraded><b>{{ t('endo.hero.ledeWellTraded') }}</b></template>
+          </i18n-t>
+          <p v-else class="an-lede">{{ t('endo.hero.ledeSources') }}</p>
+        </div>
+        <client-only>
           <div v-if="direction === 'flip' && topFlip" class="an-hero__deal">
             <div class="an-hero__deal-label">{{ t('endo.hero.flipDealLabel') }}</div>
             <div class="an-hero__deal-plat">{{ fmtNum(topFlip.eval.best.platPer1kEndo) }}<span>p/1k</span></div>
@@ -42,7 +34,18 @@
             <a class="an-hero__deal-name" :href="topSource.link" target="_blank" rel="noopener" @click="trackSourceOpen(topSource, 'hero')">{{ topSource.name }} →</a>
             <div class="an-hero__deal-sub">{{ t('endo.hero.srcDealSub', { endo: fmtEndo(topSource.endo), plat: fmtPlat(topSource.plat) }) }}</div>
           </div>
-        </header>
+        </client-only>
+      </header>
+
+      <client-only>
+        <template #fallback>
+          <SeoFallbackTable
+            :caption="t('endo.eyebrow')"
+            :name-label="fallbackNameLabel"
+            :columns="fallbackColumns"
+            :rows="fallbackRows"
+          />
+        </template>
 
         <!-- Direction toggle + freshness -->
         <div class="an-dir">
@@ -387,8 +390,10 @@
             <v-pagination v-model="page" :length="sourcePageCount" :total-visible="isMobile ? 5 : 9" color="#d4af5a" @update:model-value="onPageChange"></v-pagination>
           </div>
         </template>
-      </div>
+      </client-only>
+    </div>
 
+    <client-only>
       <v-alert class="an-disclaimer" color="blue-darken-4" type="info" density="compact">
         <template v-if="direction === 'flip'">
           <i18n-t keypath="endo.disclaimer.flip" tag="span">

@@ -696,3 +696,114 @@ gap and remaining guide structure drift; restore analytics access before attribu
 changes. The exceptional stale order-book presentation and separate edge outage routing
 remain concrete follow-up items, along with validating the proxy trust chain, without
 manufacturing data freshness or recovery coverage.
+
+## 2026-10-22 — released Splicing, Kuva vendors and honest market freshness
+
+The interrupted October 21 review resumed on October 22 against production/main commit
+`77ccb83`, whose full deployment succeeded in
+[run 38171193350](https://github.com/eduair94/warframe/actions/runs/38171193350).
+The daily maintenance schedule remains active; no duplicate schedule or quarterly refresh
+was launched. The October 1 automated guide refresh failed safely with missing grounding
+and provider timeouts, leaving all 25 guides unchanged. Its evidence requirements stay intact.
+
+### Source review and useful content
+
+The official PC index still lists Update 44.1.2 + 2.1 (October 15) as the latest release at
+this review. Three guides received substantive October 22 reviews against
+[Update 44.1](https://www.warframe.com/en/patch-notes/pc/44-1-0),
+[44.1.1](https://www.warframe.com/en/patch-notes/pc/44-1-1),
+[44.1.2](https://www.warframe.com/en/patch-notes/pc/44-1-2), the
+[Riven expansion explanation](https://forums.warframe.com/topic/1523869-riven-expansion-trait-locking-riven-splicing/),
+the [completed Kuva refund](https://forums.warframe.com/topic/1527399-psa-spliced-riven-kuva-cost-doubling-resolved-script-complete/)
+and [Update 44.0](https://www.warframe.com/en/patch-notes/pc/44-0-0).
+
+- Riven Splicing is now described as released. The guide distinguishes protection of a
+  spliced trait without a Kuva surcharge from an additional ordinary Trait Lock that
+  doubles cycling cost, explains layout restrictions and removal, and gives The Icebind's
+  eligibility requirements. It identifies the corrected cycling-cost bug and completed
+  refund without suggesting the historical bug is a current mechanic.
+- Kuva now compares the actual 44.1 vendor bundles and their stated purchase limits.
+  Hunhow requires both Emerald and Crimson Talents; an unstated Acrithis limit is not
+  presented as unlimited. Vendor purchases do not receive Resource Booster multiplication.
+  A practical calculation connects three 14,000-Kuva bundles to twelve ordinary capped-cost
+  cycles or six cycles with ordinary Trait Locking, without inventing farming rates.
+- Forma marks the Banshee giveaway as ended and retains the separate December 31, 2026
+  deadline for eligible accounts' one-time built Forma. Previous Banshee recipients are
+  not promised another reward. The expired Plague Star event remains dated reference material.
+
+The growth hypothesis is that accurate answers to current player questions and clear links
+to relevant tools improve useful search visits and return use. It is not a measured traffic
+result. Publication dates and unrelated guide review dates are preserved.
+
+English was frozen before localization: 22 changed Riven fields, 44 Kuva fields and seven
+Forma fields per locale. The 36 localized snapshots refresh 876 fields and preserve 5,136
+unchanged fields by matching both the stable structural path and exact previous English.
+Complete cached translations were retained through provider failures. Repeated temporary
+Gemini errors were followed by an explicit daily quota response; further model requests
+stopped. The repository's existing `tr-file.mjs --engine free` backend completed only the
+missing content and the four notice messages, with destinations, game names and numeric
+values protected. Detected full or partial English fallbacks received isolated repairs.
+Independent review corrected literal gameplay mistranslations and checked every changed
+field against the frozen source. Exact substring corrections are bounded to one match and
+record before/after hashes; numeric format exceptions require an exact reviewed field pair.
+The metadata entries derive from each current localized guide, rather than keeping old
+announcements in search descriptions.
+
+### Market data and rendering
+
+The service baseline passed 24 of 25 checks: frontend/API/Mongo/live availability, canonical
+and structured-data origins, sitemaps, robots, linked routes and current service-worker
+configuration were healthy. Price freshness failed independently. At approximately
+13:02–13:04 UTC on October 22, all 3,892 catalogue records were over a day old; the newest
+recorded price was `2026-10-18T03:04:14.479Z`, approximately 106 hours old. A recently
+generated analytics response does not make its underlying prices current.
+
+Read-only checks found the separate sync processes and Mongo tunnel working, but
+warframe.market returned a 403 Cloudflare challenge. The existing price circuit breaker
+pauses between probes, and [monitor issue #6](https://github.com/eduair94/warframe/issues/6)
+already tracks this failure. No proxy/account rotation, forced retry or cooldown reset was
+used. Provider access remains an external blocker; the release does not claim to repair it.
+
+A shared market notice uses the existing catalogue's recorded price timestamps. It warns
+when even the newest valid price is older than three hours, rejects future dates and shows
+a separate unknown-date message when freshness cannot be determined. Empty catalogues
+do not create an unsupported warning. The recorded date is displayed explicitly in UTC.
+The SSR clock is serialized for hydration, a minute timer updates elapsed age and is cleaned
+up on unmount, and reactive route gating removes the notice from guide pages even if the
+store retains market data. No additional catalogue requests or polling were introduced.
+
+The existing localized titles, eyebrows and introductions of `/endo`, `/flip` and
+`/relics-value` now render in initial server HTML. Dynamic controls and results retain their
+client behavior and existing fallback tables. Actual Vue SSR checks passed 52 locale/mode
+combinations; eight mounted comparisons covered English/Spanish and empty market data.
+The notice's focused checks cover hydration, changing catalogue data, timer cleanup and
+156 route combinations across thirteen locales. Unknown dates do not assert a known age.
+
+### Validation and remaining measurement access
+
+The root unit suite passed 679 tests in 52 suites, guide regression checks passed 26 tests,
+frontend regression checks passed 37 tests, and the backend production TypeScript build
+passed: 742 distinct automated tests. The notice's nine logic cases are included in that
+total. Existing advisory lint/typecheck debt is not described as a passing project-wide gate.
+Final offline checks passed all 25 guide validations, the 13-locale i18n compile gate and
+the generated repository-map check. Both locale reviewers verified the written snapshots
+against the approved cache hashes: all 876 changed fields match and 5,136 unchanged fields
+remain intact. All 39 guide title/description pairs were reviewed; a German ordinal-date
+sentence split was corrected so the Forma deadline retains December 2026. Public release
+verification covers 39 guide pages and 39 tool pages in addition to service/data checks.
+
+The next review should prioritize restoring authorized upstream price access, the existing
+twenty-guide 90-day review queue and the remaining translation gaps (builds in twelve
+locales, Archon Shards in Russian, Focus/Resources in Simplified Chinese and Standing in
+Polish). Those dates and gaps remain visible rather than being reset by this release.
+
+Supermetrics discovery still returned UNAUTHORIZED during the October 21 attempt; GA4 and
+Search Console require reauthentication before property data can be read. No analytics
+were retrieved, and missing access is not zero traffic. Once access is restored, compare
+complete October 15–21 versus October 8–14 and September 24–October 21 versus
+August 27–September 23 windows, adjusting to the property's actual timezone. Do not infer
+ranking or traffic gains from a successful deployment.
+
+All intended code, content, localization, metadata and documentation changes are committed
+before the complete API/frontend/live workflow. The task's release report records the final
+workflow and public verification rather than leaving a documentation-only commit undeployed.

@@ -2,7 +2,7 @@
   "slug": "kuva",
   "eyebrow": "지식 센터 · Kuva 파밍",
   "title": "Kuva 파밍 가이드: 출처, 부스터 및 Riven 비용",
-  "lede": "감당할 수 있는 Riven 수치 변경에 맞춰 Kuva 파밍을 계획하세요. Siphon, Flood, 생존(Survival) 및 Melica의 새로운 주간 교환을 비교하고, 어떤 보상 부스터가 적용되는지 이해하며, Update 44의 선택적 특성 잠금에 대비해 예산을 세우세요.",
+  "lede": "감당할 수 있는 Riven 롤을 중심으로 Kuva 파밍을 계획하세요. 임무 보상과 업데이트 44.1 상인 교환을 비교하고, 주간 구매 한도를 확인하고, 일반 Trait Locking 비용과 보호된 접합 특성을 구별하세요.",
   "category": "farming",
   "readMins": 8,
   "stats": [
@@ -18,12 +18,12 @@
     },
     {
       "num": "3,500",
-      "label": "잠금된 특성이 없는 상태에서의 변경당 최대 Kuva",
+      "label": "일반 Trait Locking 없이 최대 Kuva",
       "tone": "gold"
     },
     {
       "num": "7,000",
-      "label": "특성 1개 잠금 시 최대 Kuva",
+      "label": "일반 Trait Locking의 최대 Kuva",
       "tone": "good"
     }
   ],
@@ -34,7 +34,7 @@
       "blocks": [
         {
           "type": "p",
-          "text": "**Kuva**는 **Riven 모드**의 무작위 능력치를 변경하고 Umbra Forma를 포함한 특정 주조소(Foundry) 청사진을 제작하는 데 사용되는 자원입니다. 수치 변경은 무기의 Riven Disposition을 변경하지 않습니다. Update 44 이후부터는 일반적인 Kuva 비용의 두 배로 다른 특성들을 돌리는 동안 기존 특성 하나를 보존할 수 있습니다."
+          "text": "**Kuva**는 **Riven 모드**의 무작위 능력치를 재설정하고 Umbra Forma를 포함한 특정 Foundry 설계도의 아이템을 제작하는 데 사용되는 리소스입니다. 재설정은 무기의 Riven 기질을 변경하지 않습니다. 일반 Trait Locking는 일반 재설정 비용의 두 배로 기존 특성 하나를 유지합니다. 보호된 접합 특성만으로는 Kuva 추가 요금이 없습니다."
         },
         {
           "type": "p",
@@ -198,6 +198,64 @@
       ]
     },
     {
+      "id": "vendor-exchanges",
+      "title": "업데이트 44.1: Kuva 상인 교환 비교",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "[업데이트 44.1](https://www.warframe.com/en/patch-notes/pc/44-1-0)은 여러 Kuva 교환을 개선했습니다. 다른 파밍 임무를 선택하기 전에 해금한 상인와 이미 인벤토리에 있는 통화를 확인하세요. 이 교환은 일반 Kuva를 제공합니다. Melica의 Entropic Kuva 교환은 별도의 옵션으로 유지됩니다."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "상인 교환",
+              "구매당 비용",
+              "일반 Kuva",
+              "주간 구매 한도"
+            ],
+            "rows": [
+              [
+                "Acrithis의 상품",
+                "10 Pathos Clamps",
+                "10,000",
+                "업데이트에 지정되지 않았습니다. 가게를 확인하세요"
+              ],
+              [
+                "Acrithis: Scuttler Husks 교환",
+                "25 Scuttler Husks",
+                "14,000",
+                "3"
+              ],
+              [
+                "Flare의 기념품",
+                "100 Heartstrings",
+                "14,000",
+                "3"
+              ],
+              [
+                "Nightcap의 상품",
+                "75 Fergolyte",
+                "14,000",
+                "3"
+              ],
+              [
+                "Hunhow의 기념품",
+                "35 Emerald Talents 및 35 Crimson Talents",
+                "17,000",
+                "3"
+              ]
+            ],
+            "note": "수량 및 명시된 한도는 업데이트 44.1을 따릅니다. Pathos Clamp 제안에는 해당 메모에 명시된 구매 제한이 없습니다. 무제한 구매가 확인된 것은 아닙니다. 상인 묶음 보상은 Resource Booster로 두 배가 되지 않습니다."
+          }
+        },
+        {
+          "type": "tip",
+          "text": "**번들 크기뿐만 아니라 통화 비용을 비교하십시오.** 3개의 14,000-Kuva 구매는 42,000 Kuva를 제공합니다. 기본 상한인 3,500에서는 재설정 12회, 일반 Trait Locking을 사용한 7,000에서는 6회에 충분합니다. 다른 보상에 필요한 통화를 먼저 예약하세요. 더 큰 Kuva 번들이 자동으로 더 빨리 획득되는 것은 아닙니다."
+        }
+      ]
+    },
+    {
       "id": "survival-fissure",
       "title": "Kuva Survival과 Requiem Fissure",
       "blocks": [
@@ -271,11 +329,11 @@
               "v": "35,000 Kuva"
             },
             {
-              "k": "잠긴 특성 없음",
+              "k": "일반 Trait Locking 없이",
               "v": "사이클당 3,500 → 10회"
             },
             {
-              "k": "하나의 특성 잠금",
+              "k": "일반 Trait Locking 사용",
               "v": "사이클당 7,000 → 5회"
             },
             {
@@ -286,7 +344,7 @@
         },
         {
           "type": "info",
-          "text": "이것은 파밍 효율 추정치가 아니라 산술 계산입니다: 35,000 ÷ 3,500 = 10 이며 35,000 ÷ 7,000 = 5 입니다. 사이클을 돌리기 전에 중단점을 설정하고 제작에 필요한 Kuva를 따로 비축해 두세요."
+          "text": "이는 파밍 속도 추정치가 아닌 산술적 계산입니다. 35,000 ÷ 3,500 = 10 및 35,000 ÷ 7,000 = 5. 보호된 접합 특성만 있을 때는 일반 비용이 적용됩니다. 일반 Trait Locking을 추가하면 두 배가 됩니다. 재설정하기 전에 중단 기준을 설정하고 제작에 필요한 Kuva을 예약하세요."
         }
       ]
     },
@@ -296,15 +354,15 @@
       "blocks": [
         {
           "type": "p",
-          "text": "Mod Segment에서 **Cycle Riven**을 사용하여 Kuva로 리롤하세요. 모드를 랭크업하는 데는 대신 [Endo](/guides/endo)와 Credit이 사용됩니다. 잠긴 특성이 없는 경우, 사이클 비용은 **900 Kuva**에서 시작하여 **3,500 Kuva** 상한선까지 상승합니다. 하나의 특성이 잠겨 있는 경우, 각 사이클 비용은 일반 가격의 두 배가 됩니다."
+          "text": "Mod Segment에서 **Cycle Riven**을 사용하여 Kuva로 다시 롤링하세요. 대신 모드의 랭크를 높이려면 [Endo](/guides/endo) 및 크레딧을 사용합니다. 일반적인 Trait Locking이 없으면 재설정은 **900 Kuva**에서 시작하여 접합된 특성이 보호되는 경우를 포함하여 **3,500 Kuva** 한도까지 올라갑니다. 일반 Trait Locking은 표시된 기본 가격의 두 배입니다."
         },
         {
           "type": "table",
           "table": {
             "columns": [
               "사이클",
-              "잠긴 특성 없음",
-              "하나의 특성 잠금"
+              "일반 Trait Locking 없이",
+              "일반 Trait Locking 사용"
             ],
             "rows": [
               [
@@ -338,12 +396,12 @@
                 "7,000"
               ]
             ],
-            "note": "비용은 사이클당 Kuva 기준입니다. 잠금을 적용하거나 해제하는 것 자체는 무료이며, 특성이 잠긴 상태로 사이클을 돌릴 때 더 높은 비용이 청구됩니다."
+            "note": "비용은 재설정당 Kuva입니다. 일반 Trait Locking을(를) 적용하거나 제거하는 것은 무료입니다. 잠금을 유지한 채 재설정하면 가격이 두 배가됩니다. 보호된 접합 특성만으로는 비용이 두 배가 되지 않습니다."
           }
         },
         {
           "type": "info",
-          "text": "**Trait Locking 기능이 Update 44에 도입되었습니다.** 기존 특성을 선택하여 사이클을 돌리는 동안 유지할 수 있습니다. 잠금은 하나만 가능하며, 긍정 및 부정 특성의 현재 개수는 고정된 상태로 유지됩니다. 해당 배치를 변경하려면 잠금을 해제하세요. 사이클링 메뉴를 닫으면 잠금이 해제되므로 다음 번에 다시 선택하세요."
+          "text": "**두 가지 보호, 서로 다른 비용.** 일반 Trait Locking은 하나의 기존 특성을 유지하며 재설정 메뉴를 닫으면 지워집니다. Riven Splicing는 추가 비용 없이 결합된 특성을 별도로 보호합니다. 둘 다 함께 사용할 수 있습니다. 두 시스템 모두 포지티브/네거티브 레이아웃을 고정합니다. 다른 레이아웃을 시도하기 전에 일반 잠금을 해제하고, 접합된 특성이 있다면 해당 특성의 잠금을 푼 뒤 재설정하여 제거하세요. 전체 과정은 [Riven 가이드](/guides/riven)를 참조하세요."
         },
         {
           "type": "tip",
@@ -450,15 +508,15 @@
   "faqs": [
     {
       "q": "Warframe에서 Kuva는 어디에 사용되나요?",
-      "a": "Kuva는 Riven 모드의 수치를 돌리거나 일부 Foundry 제작법에 사용되는 자원입니다. 수치를 돌려도 무기의 Disposition은 변경되지 않습니다. 옵션 특성 고정은 기존 특성 하나를 유지하는 대신 사이클 비용이 두 배가 됩니다. 전체 규칙은 [Riven 가이드](/guides/riven)를 참조하세요."
+      "a": "Kuva는 Riven 모드 능력치를 재설정하고 일부 Foundry 설계도의 아이템을 만드는 데 사용됩니다. 재설정은 무기의 Riven 기질을 변경하지 않습니다. 일반 Trait Locking는 재설정 비용을 두 배로 늘립니다. 보호된 접합 특성만으로는 그렇지 않습니다. 전체 규칙은 [Riven 가이드](/guides/riven)를 참조하세요."
     },
     {
       "q": "Kuva를 빠르게 파밍하는 가장 좋은 방법은 무엇인가요?",
-      "a": "해금 상태와 플레이 세션에 맞는 파밍처를 선택하세요. 개별 미션의 경우 Siphon 또는 Flood, 반복적인 Harvester 방어의 경우 Taveuni Survival, 또는 이용 가능한 상점 교환을 활용할 수 있습니다. Melica의 Update 44 교환을 통해 Entropic Kuva로 10,500개의 일반 Kuva를 주 4회까지 교환할 수 있습니다. Kuva Survival Requiem Fissures는 Requiem Relic을 개방하며, Lith, Meso, Neo 또는 Axi Relic에서 나오는 Prime 부품은 제공하지 않습니다."
+      "a": "잠금 해제 및 세션에 맞는 소스를 선택하십시오. 개별 임무를 위한 Kuva Siphon 또는 Kuva Flood, 반복적인 Harvester 방어를 위한 Taveuni Survival 또는 사용 가능한 상인 교환 등이 있습니다. Melica의 10,500-Kuva 교환을 Acrithis, Flare, Nightcap 및 Hunhow의 업데이트 44.1 제안과 비교하세요. 통화 비용과 남은 구매 횟수을 확인하세요. 모든 계정에 대해 가장 빠른 단일 옵션은 없습니다."
     },
     {
       "q": "Riven을 리롤하는 데 Kuva가 얼마나 드나요?",
-      "a": "특성을 고정하지 않은 경우, 첫 번째 수치 변경에는 900 Kuva가 소모되며 이후 3,500 Kuva 상한까지 증가합니다. 하나의 특성을 고정하면 이 가격이 두 배로 늘어나 초기 1,800 Kuva, 상한 시 7,000 Kuva가 됩니다. 고정 설정이나 해제는 무료입니다. 수치를 돌린 후 이전 결과를 유지할 수는 있지만, 소모된 Kuva는 반환되지 않습니다."
+      "a": "일반 Trait Locking가 없으면 첫 재설정 비용은 900 Kuva이고 이후 재설정의 비용은 3,500 한도까지 올라갑니다. 보호된 접합 특성만으로도 해당 가격을 유지합니다. 일반 Trait Locking는 처음에는 1,800로 두 배, 최대값에서는 7,000로 두 배입니다. 해당 잠금을 적용하거나 제거하는 것은 무료입니다. 재설정 후 이전 결과를 유지할 수 있지만 Kuva은(는) 지출된 상태로 유지됩니다."
     },
     {
       "q": "Kuva와 Kuva Lich의 차이점은 무엇인가요?",
@@ -474,7 +532,7 @@
     },
     {
       "q": "Kuva를 구매하거나 거래할 수 있나요?",
-      "a": "일반 Kuva는 플레이어 간 직접 거래가 불가능하지만, 게임 내 상점 교환을 통해 획득할 수 있습니다. 예를 들어, Melica는 Entropic Kuva를 받아 주간 구매 제한이 있는 일반 Kuva 묶음으로 교환해 줍니다. Kuva가 Siphon에서만 나온다고 단정하지 말고 상점의 화폐와 제안 품목을 확인하세요."
+      "a": "일반 Kuva은(는) 플레이어 간에 직접 거래할 수 없지만 상인은 이를 위해 다른 통화를 교환합니다. Melica는 Entropic Kuva를 받습니다. 업데이트 44.1은 또한 Acrithis, Flare, Nightcap 및 Hunhow의 제안을 개선했습니다. 위의 상인 비교에는 수량, 통화 및 명시된 주간 한도가 나열되어 있습니다."
     },
     {
       "q": "Resource Booster가 Kuva에도 적용되나요?",
@@ -482,6 +540,14 @@
     }
   ],
   "sources": [
+    {
+      "label": "Update 44.1: The Icebind — Kuva vendor offers and Riven Splicing",
+      "href": "https://www.warframe.com/en/patch-notes/pc/44-1-0"
+    },
+    {
+      "label": "Warframe — Hotfix 44.1.1: corrected Spliced Riven cycling cost",
+      "href": "https://www.warframe.com/en/patch-notes/pc/44-1-1"
+    },
     {
       "label": "Update 44: Iceblade of Narin — Melica, Entropic Kuva and Trait Locking",
       "href": "https://www.warframe.com/en/patch-notes/pc/44-0-0"
@@ -527,5 +593,5 @@
       "href": "https://warframe.fandom.com/wiki/Kuva_Siphon"
     }
   ],
-  "updated": "2026-09-30"
+  "updated": "2026-10-22"
 }

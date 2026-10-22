@@ -1,27 +1,19 @@
 <template>
   <div class="an">
-    <client-only>
-      <template #fallback>
-        <SeoFallbackTable
-          :caption="t('flip.hero.eyebrow')"
-          :name-label="t('flip.table.item')"
-          :columns="[t('flip.table.buyBid'), t('flip.table.sellAsk'), t('flip.table.realMargin'), t('flip.table.confidence')]"
-          :rows="fallbackRows"
-        />
-      </template>
-      <div class="an-console">
-        <header class="an-hero">
-          <div class="an-hero__text">
-            <div class="an-eyebrow">{{ t('flip.hero.eyebrow') }}</div>
-            <i18n-t keypath="flip.hero.title" tag="h1" class="an-title">
-              <template #low><span class="accent-a">{{ t('flip.hero.titleLow') }}</span></template>
-              <template #clears><span class="accent-b">{{ t('flip.hero.titleClears') }}</span></template>
-            </i18n-t>
-            <i18n-t keypath="flip.hero.lede" tag="p" class="an-lede">
-              <template #realisticMargin><strong>{{ t('flip.hero.ledeRealisticMargin') }}</strong></template>
-              <template #fillConfidence><strong>{{ t('flip.hero.ledeFillConfidence') }}</strong></template>
-            </i18n-t>
-          </div>
+    <div class="an-console">
+      <header class="an-hero">
+        <div class="an-hero__text">
+          <div class="an-eyebrow">{{ t('flip.hero.eyebrow') }}</div>
+          <i18n-t keypath="flip.hero.title" tag="h1" class="an-title">
+            <template #low><span class="accent-a">{{ t('flip.hero.titleLow') }}</span></template>
+            <template #clears><span class="accent-b">{{ t('flip.hero.titleClears') }}</span></template>
+          </i18n-t>
+          <i18n-t keypath="flip.hero.lede" tag="p" class="an-lede">
+            <template #realisticMargin><strong>{{ t('flip.hero.ledeRealisticMargin') }}</strong></template>
+            <template #fillConfidence><strong>{{ t('flip.hero.ledeFillConfidence') }}</strong></template>
+          </i18n-t>
+        </div>
+        <client-only>
           <div v-if="topDeal" class="an-hero__deal">
             <div class="an-hero__deal-label">{{ t('flip.hero.bestFlip') }}</div>
             <div class="an-hero__deal-plat">+{{ fmtPlat(topDeal.s.realMargin) }}<span>p</span></div>
@@ -32,7 +24,18 @@
               {{ t('flip.hero.dealSub', { tier: topDeal.s.tier.label, conf: topDeal.s.confidence, vol: fmtPlat(topDeal.s.vol) }) }}
             </div>
           </div>
-        </header>
+        </client-only>
+      </header>
+
+      <client-only>
+        <template #fallback>
+          <SeoFallbackTable
+            :caption="t('flip.hero.eyebrow')"
+            :name-label="t('flip.table.item')"
+            :columns="[t('flip.table.buyBid'), t('flip.table.sellAsk'), t('flip.table.realMargin'), t('flip.table.confidence')]"
+            :rows="fallbackRows"
+          />
+        </template>
 
         <div class="an-stats">
           <div class="an-stat">
@@ -169,8 +172,10 @@
         <div v-if="filtered.length > perPage" class="an-pager">
           <v-pagination v-model="page" :length="pageCount" :total-visible="isMobile ? 5 : 9" color="#d4af5a" @update:model-value="onPageChange"></v-pagination>
         </div>
-      </div>
+      </client-only>
+    </div>
 
+    <client-only>
       <v-alert class="an-disclaimer bg-blue-darken-4" type="info" density="compact">
         <i18n-t keypath="flip.disclaimer.body" tag="span">
           <template #realMargin><strong>{{ t('flip.disclaimer.realMargin') }}</strong></template>

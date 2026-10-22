@@ -1,8 +1,8 @@
 {
   "slug": "riven",
   "eyebrow": "Centre de connaissances · Riven Mods",
-  "title": "Mods Riven : verrouillage de caractéristique, coûts de Kuva et échange",
-  "lede": "Apprenez le fonctionnement des Mods Riven, préservez une statistique existante grâce au verrouillage de caractéristique, comparez les coûts en Kuva et évaluez un jet avant de l'échanger. Inclut les règles de la mise à jour 44 et le statut annoncé du Riven Splicing.",
+  "title": "Mods Riven : Splicing, Trait Locking et coûts en Kuva",
+  "lede": "Découvrez comment le Riven Splicing et le Trait Locking fonctionnent ensemble, où obtenir des Riven Splicers et comment budgétiser votre Kuva avant de recycler ou d'échanger. Comprend les règles actuelles de l'Update 44.1 et la différence entre les deux types de traits protégés.",
   "category": "systems",
   "readMins": 10,
   "stats": [
@@ -23,7 +23,7 @@
     },
     {
       "num": "2×",
-      "label": "Coût en Kuva lors du cycle avec une caractéristique verrouillée",
+      "label": "Coût en Kuva avec le Trait Locking ordinaire",
       "tone": "gold"
     }
   ],
@@ -38,7 +38,7 @@
         },
         {
           "type": "p",
-          "text": "Un Riven peut combiner plusieurs caractéristiques utiles dans un emplacement de Mod, mais un jet aléatoire n'est pas automatiquement une amélioration. L'arme, la combinaison de statistiques, le malus, le rang et la Disposition de l'arme ont tous de l'importance. Les sections ci-dessous couvrent le cycle ordinaire et le verrouillage de caractéristique optionnel introduit dans la mise à jour 44."
+          "text": "Un Riven peut combiner plusieurs bonus utiles dans un seul emplacement de Mod, mais un tirage aléatoire ne constitue pas automatiquement une amélioration. L'arme, la combinaison de statistiques, le trait négatif, le rang et la Disposition de l'arme ont tous leur importance. Les sections ci-dessous couvrent le recyclage, le Trait Locking ordinaire et le système distinct de Riven Splicing."
         },
         {
           "type": "kv",
@@ -109,7 +109,7 @@
         },
         {
           "type": "info",
-          "text": "L'[annonce de la Disposition de septembre 2026](https://forums.warframe.com/topic/1523355-september-2026-riven-dispositions/) documente les derniers changements. La demande, les nouvelles options d'armes et les jets individuels affectent également les listes. Un changement de Disposition ne garantit pas à lui seul que votre Riven se vendra pour plus ou moins de Platinum."
+          "text": "L'[annonce des Dispositions de septembre 2026](https://forums.warframe.com/topic/1523355-september-2026-riven-dispositions/) répertorie les changements de ce mois-là. La demande, les nouvelles options d'armes et les tirages individuels influent également sur les offres. Un simple changement de Disposition ne garantit pas que votre Riven se vendra pour plus ou moins de Platinum."
         }
       ]
     },
@@ -212,26 +212,26 @@
       "blocks": [
         {
           "type": "p",
-          "text": "**Faire un cycle** dépense du Kuva pour générer un autre jet pour la même arme. Sans caractéristique verrouillée, les types de statistiques, les valeurs et la disposition peuvent changer. Le coût standard passe de **900 Kuva** à **3500 Kuva** à mesure que son nombre de cycles augmente. Avec une caractéristique verrouillée, le coût de cycle affiché est doublé : **1800** pour le premier cycle ou **7000** au plafond standard. Vérifiez le coût avant de confirmer."
+          "text": "Le **recyclage** consomme du Kuva pour générer un autre tirage pour la même arme. Sans Trait Locking ordinaire ou trait fusionné protégé, les types de statistiques, leurs valeurs et leur configuration peuvent changer. Le coût standard passe de **900 Kuva** à **3500 Kuva** à mesure que le nombre de cycles augmente. Le Trait Locking ordinaire double ce coût à **1800** au départ ou **7000** au plafond. Un trait fusionné protégé seul n'augmente pas le coût. Vérifiez l'aperçu avant de confirmer."
         },
         {
           "type": "kv",
           "kv": [
             {
               "k": "Cycle ordinaire",
-              "v": "Aucune caractéristique verrouillée : 900 Kuva au départ, jusqu'à 3500 par cycle"
+              "v": "Sans Trait Locking ordinaire : 900 Kuva au départ, jusqu'à 3500 par cycle"
             },
             {
-              "k": "Cycle avec un verrou",
+              "k": "Recycler avec le Trait Locking ordinaire",
               "v": "Double le coût ordinaire : 1800 au départ, jusqu'à 7000 par cycle"
             },
             {
               "k": "Ce qui reste",
-              "v": "L'arme ; avec le verrouillage de caractéristique, la caractéristique sélectionnée et la disposition positif/négatif restent également"
+              "v": "L'arme ; le Trait Locking ordinaire ou un trait fusionné protégé conserve également ce trait ainsi que la répartition positif/négatif"
             },
             {
               "k": "Ce qui est aléatoire",
-              "v": "Les autres caractéristiques ; un verrou ne sélectionne pas une statistique manquante pour vous"
+              "v": "Les traits non protégés ; le recyclage ne sélectionne pas de statistique manquante à votre place"
             }
           ]
         },
@@ -243,11 +243,11 @@
     },
     {
       "id": "trait-locking",
-      "title": "Comment verrouiller une caractéristique de Riven dans la mise à jour 44",
+      "title": "Trait Locking et Riven Splicing : fonctionnement combiné",
       "blocks": [
         {
           "type": "p",
-          "text": "[Update 44](https://www.warframe.com/en/patch-notes/pc/44-0-0) a introduit le **Verrouillage de trait**. Vous pouvez conserver un trait existant tout en modifiant les autres. L'ajout ou le retrait du verrou est gratuit et ne nécessite aucun objet spécial ; le Kuva supplémentaire est prélevé lorsque vous effectuez un cycle avec ce verrou actif."
+          "text": "L'[Update 44](https://www.warframe.com/en/patch-notes/pc/44-0-0) a introduit le **Trait Locking**. Ce verrouillage ordinaire conserve un trait existant lors du recyclage et peut être utilisé conjointement avec un trait fusionné protégé. L'ajout ou le retrait du verrou ordinaire est gratuit et ne nécessite aucun objet spécial ; le Kuva supplémentaire n'est prélevé que lorsque vous recyclez avec le verrou actif."
         },
         {
           "type": "steps",
@@ -262,22 +262,30 @@
             },
             {
               "h": "Vérifier la disposition avant de dépenser",
-              "p": "Le nombre de traits positifs et négatifs reste fixe pendant le verrouillage. Un jet avec 3 positifs et 1 négatif conserve cette disposition ; déverrouillez-le avant de faire un cycle si vous souhaitez une disposition différente."
+              "p": "Le nombre de traits positifs et négatifs reste fixe avec le Trait Locking ordinaire ou un trait fusionné. Pour modifier la configuration, retirez le verrou ordinaire et, s'il est présent, déverrouillez le trait fusionné afin qu'il puisse être remplacé lors du recyclage. La restriction de configuration liée au trait fusionné prend fin dès que ce dernier est retiré."
             },
             {
               "h": "Réappliquer le verrou à la session suivante",
-              "p": "Fermer le menu de cycle supprime le verrou. Vérifiez-le et réappliquez-le chaque rouverture du menu."
+              "p": "Fermer le menu de recyclage réinitialise la sélection du Trait Locking ordinaire. Vérifiez-la et réappliquez-la lors de la session suivante ; le trait fusionné protégé reste quant à lui conservé."
             }
           ]
         },
         {
           "type": "tip",
-          "text": "**Exemple de budget :** 35000 Kuva achètent 10 cycles ordinaires à 3500 chacun, ou 5 cycles avec un trait verrouillé à 7000 chacun. Il s'agit d'une arithmétique de coûts, et non d'une prédiction du nombre de jets utiles. Envisagez un verrou lorsque vous possédez déjà un trait digne d'être préservé."
+          "text": "**Exemple de budget :** 35000 Kuva permettent d'effectuer 10 cycles à 3500 chacun sans Trait Locking ordinaire, ou 5 cycles à 7000 avec celui-ci. Un trait fusionné protégé seul conserve le premier tarif. Il s'agit d'un calcul de coût, non d'une prédiction de tirages utiles. Envisagez le verrou ordinaire lorsqu'un autre trait existant mérite d'être conservé."
         },
         {
           "type": "info",
-          "title": "Le Riven Splicing est une fonctionnalité distincte à venir",
-          "text": "Au 30 septembre 2026, **le Riven Splicing est toujours à venir**. Digital Extremes a annoncé le **7 octobre 2026** pour Glacial Defiance, la mise à jour qui doit inclure le Splicing. Le Verrouillage de trait est déjà disponible. Revérifiez les notes de mise à jour avant de planifier autour des Riven Splicers ou des traits combinés."
+          "title": "Le Riven Splicing est disponible",
+          "text": "**Le Riven Splicing a été lancé le 7 octobre 2026.** Dans le menu de Splicing, utilisez un Riven Splicer pour combiner deux traits compatibles en un trait fusionné choisi et un remplacement aléatoire. La répartition positif/négatif reste fixe jusqu'à ce que le trait fusionné soit retiré. Prévisualisez le résultat avant de confirmer. Le trait fusionné reste protégé sans surcoût en Kuva ; le Trait Locking ordinaire peut protéger un trait supplémentaire pour le double du coût normal de recyclage."
+        },
+        {
+          "type": "p",
+          "text": "**Où obtenir un Riven Splicer :** [The Icebind](https://www.warframe.com/en/patch-notes/pc/44-1-0), précédemment annoncé sous le nom de Glacial Defiance, en garantit un en cas de réussite. L'accès requiert **Angels of the Zariman**, **Whispers in the Walls**, et le déverrouillage de l'**Elite Temporal Archimedea ou Elite Deep Archimedea**. Terminer ce mode Elite n'est pas requis. Il s'agit d'une activité exigeante à six joueurs, préparez donc une escouade et un équipement adaptés."
+        },
+        {
+          "type": "tip",
+          "text": "**Les premiers rapports après le lancement mentionnent un bug résolu.** Le [Hotfix 44.1.1](https://www.warframe.com/en/patch-notes/pc/44-1-1) a corrigé les traits fusionnés qui doublaient à tort les coûts en Kuva ainsi que les Dégâts aux points faibles qui ne s'appliquaient pas. Le [remboursement de Kuva pour les joueurs affectés](https://forums.warframe.com/topic/1527399-psa-spliced-riven-kuva-cost-doubling-resolved-script-complete/) s'est achevé le 9 octobre. Le [Hotfix 44.1.2](https://www.warframe.com/en/patch-notes/pc/44-1-2) a ajouté un raccourci de Splicing depuis l'écran de recyclage."
         }
       ]
     },
@@ -413,7 +421,7 @@
     },
     {
       "q": "Comment re-roller un Riven et combien cela coûte-t-il ?",
-      "a": "Choisissez Cycle Riven dans le Segment de Mods. Sans verrou, le coût commence à 900 Kuva et atteint un plafond de 3500 à mesure que son nombre de cycles augmente. Le verrouillage de caractéristique double le coût de ce cycle, jusqu'à 7000 au plafond standard, tout en préservant une caractéristique existante et la disposition positif/négatif. Lisez le [guide du Kuva](/guides/kuva) pour planifier un budget."
+      "a": "Choisissez Recycler Riven dans le Segment des Mods. Sans Trait Locking ordinaire, le coût débute à 900 Kuva et atteint un plafond de 3500 à mesure que le nombre de cycles augmente. Le Trait Locking ordinaire double ce coût, jusqu'à 7000. Un trait fusionné protégé seul n'ajoute aucun surcoût. Consultez le [guide du Kuva](/guides/kuva) pour planifier votre budget."
     },
     {
       "q": "Qu'est-ce que la disposition de Riven ?",
@@ -437,11 +445,11 @@
     },
     {
       "q": "Puis-je verrouiller une stat de Riven lors du reroll ?",
-      "a": "Oui. Le Verrouillage de trait vous permet de conserver un trait existant, mais faire des cycles avec coûte deux fois plus de Kuva. La disposition positif/négatif reste également fixe. L'ajout ou le retrait du verrou est gratuit, et la fermeture du menu de cycle le supprime."
+      "a": "Oui. Le Trait Locking ordinaire conserve un trait existant pour le double du coût habituel de recyclage, et fermer le menu annule cette sélection. Un trait fusionné reste protégé séparément sans surcoût, ce qui permet aux deux systèmes de préserver deux traits simultanément. L'une ou l'autre de ces protections verrouille également la répartition positif/négatif."
     },
     {
       "q": "Le Riven Splicing est-il déjà disponible ?",
-      "a": "Au 30 septembre 2026, le Splicing est toujours à venir avec Glacial Defiance, annoncé pour le 7 octobre 2026. Le Verrouillage de trait est déjà en ligne. Consultez les notes de version lors du lancement de la mise à jour avant de planifier autour des Riven Splicers ou des traits combinés."
+      "a": "Oui. Le Riven Splicing a été lancé avec The Icebind le 7 octobre 2026. Terminez The Icebind pour obtenir un Riven Splicer, puis examinez les combinaisons de traits compatibles dans le menu de Splicing. Le trait fusionné choisi remplace deux traits compatibles aux côtés d'un remplacement aléatoire ; la répartition positif/négatif reste fixe jusqu'à ce que le trait fusionné soit retiré."
     }
   ],
   "sources": [
@@ -462,8 +470,20 @@
       "href": "https://forums.warframe.com/topic/1523355-september-2026-riven-dispositions/"
     },
     {
-      "label": "Warframe — Glacial Defiance date announcement (PSA updated September 29, 2026)",
-      "href": "https://forums.warframe.com/topic/1523427-psa-glacial-defiance-release-window-outdated/"
+      "label": "Warframe — Update 44.1: The Icebind and Riven Splicing (October 7, 2026)",
+      "href": "https://www.warframe.com/en/patch-notes/pc/44-1-0"
+    },
+    {
+      "label": "Warframe — Hotfix 44.1.1: Splicing cost and damage fixes",
+      "href": "https://www.warframe.com/en/patch-notes/pc/44-1-1"
+    },
+    {
+      "label": "Warframe — Spliced Riven Kuva refund completed October 9, 2026",
+      "href": "https://forums.warframe.com/topic/1527399-psa-spliced-riven-kuva-cost-doubling-resolved-script-complete/"
+    },
+    {
+      "label": "Warframe — Hotfix 44.1.2: Splicing menu shortcut",
+      "href": "https://www.warframe.com/en/patch-notes/pc/44-1-2"
     },
     {
       "label": "Warframe — Riven cycling cost cap (Update 19.4)",
@@ -526,5 +546,5 @@
       "note": "Marchés de Rivens, wikis et outils de DE"
     }
   ],
-  "updated": "2026-09-30"
+  "updated": "2026-10-22"
 }

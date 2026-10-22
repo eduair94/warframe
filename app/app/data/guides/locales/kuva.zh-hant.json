@@ -2,7 +2,7 @@
   "slug": "kuva",
   "eyebrow": "知識中心 · Kuva 刷取",
   "title": "Kuva 資源取得指南：來源、加成與 Riven 消耗",
-  "lede": "根據你負擔得起的 Riven 洗鍊來規劃你的 Kuva 資源取得。比較 Siphon、Flood、生存（Survival）以及 Cephalon Melica 全新每週兌換，了解哪些獎勵會受到加成道具影響，並為 Update 44 的選配詞條鎖定做好預算。",
+  "lede": "圍繞您能負擔的 Riven 重洗次數來計劃您的 Kuva 刷取。比較任務獎勵和更新 44.1 商人兌換項目，檢查每週購買限額，並將普通 Trait Locking 成本與受保護的拼接特徵區分開來。",
   "category": "farming",
   "readMins": 8,
   "stats": [
@@ -18,12 +18,12 @@
     },
     {
       "num": "3,500",
-      "label": "無鎖定詞條時的每次最高 Kuva 消耗",
+      "label": "最大 Kuva，無普通 Trait Locking",
       "tone": "gold"
     },
     {
       "num": "7,000",
-      "label": "鎖定一個詞條時的最高 Kuva 消耗",
+      "label": "使用普通 Trait Locking 時的 Kuva 費用上限",
       "tone": "good"
     }
   ],
@@ -34,7 +34,7 @@
       "blocks": [
         {
           "type": "p",
-          "text": "**Kuva** 是一種用於洗 **Riven MOD** 隨機數值以及製作某些鑄造廠（Foundry）藍圖（包含 Umbra Forma）的資源。洗 Riven 不會改變武器的 Riven Disposition。自 Update 44 起，你可以在洗 Riven 時保留一個現有的詞條，代價是消耗平常兩倍的 Kuva。"
+          "text": "**Kuva** 是一種資源，用於重洗 **Riven mods** 上的隨機屬性，並按某些 Foundry 藍圖製作物品，包括 Umbra Forma。重洗不會改變武器的 Riven 傾向性。普通的Trait Locking以通常重洗費用的兩倍保留了一種現有特徵。僅受保護的剪接性狀沒有 Kuva 附加費。"
         },
         {
           "type": "p",
@@ -198,6 +198,64 @@
       ]
     },
     {
+      "id": "vendor-exchanges",
+      "title": "更新 44.1：比較商人的 Kuva 兌換項目",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "[更新44.1](https://www.warframe.com/en/patch-notes/pc/44-1-0)改進了多個Kuva交換。在選擇另一個刷取任務之前，請檢查您已解鎖的商人以及庫存中已有的貨幣。這些兌換提供的是普通 Kuva； Melica 的 Entropic Kuva 交換仍然是一個單獨的選項。"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "商人兌換項目",
+              "每次購買成本",
+              "常規Kuva",
+              "每週購買限額"
+            ],
+            "rows": [
+              [
+                "Acrithis的商品",
+                "10 Pathos Clamps",
+                "10,000",
+                "更新中未指定；檢查商店"
+              ],
+              [
+                "Acrithis：交換Scuttler Husks",
+                "25 Scuttler Husks",
+                "14,000",
+                "3"
+              ],
+              [
+                "Flare的紀念品",
+                "100 Heartstrings",
+                "14,000",
+                "3"
+              ],
+              [
+                "Nightcap的商品",
+                "75 Fergolyte",
+                "14,000",
+                "3"
+              ],
+              [
+                "Hunhow的紀念品",
+                "35 Emerald Talents 和 35 Crimson Talents",
+                "17,000",
+                "3"
+              ]
+            ],
+            "note": "數量和規定的限制遵循更新 44.1。 這些說明沒有註明 Pathos Clamp 兌換的購買上限；這不是無限制購買的確認。商人出售的資源包不會因 Resource Booster 而翻倍。"
+          }
+        },
+        {
+          "type": "tip",
+          "text": "**比較貨幣成本，而不僅僅是資源包大小。** 購買 3 次 14,000-Kuva 即可得到 42,000 Kuva：在基本費用上限 3,500 時足以重洗 12 次，或在使用普通 Trait Locking、每次費用為 7,000 時重洗 6 次。先儲備其他獎勵所需的貨幣。Kuva 資源包更大，並不意味著獲取速度更快。"
+        }
+      ]
+    },
+    {
       "id": "survival-fissure",
       "title": "Kuva Survival 與 Requiem Fissures",
       "blocks": [
@@ -271,11 +329,11 @@
               "v": "35,000 Kuva"
             },
             {
-              "k": "未鎖定詞條",
+              "k": "沒有普通的Trait Locking",
               "v": "每個循環 3,500 → 10 次循環"
             },
             {
-              "k": "鎖定一個詞條",
+              "k": "啟用普通 Trait Locking",
               "v": "每個循環 7,000 → 5 次循環"
             },
             {
@@ -286,7 +344,7 @@
         },
         {
           "type": "info",
-          "text": "這是算術，而不是農怪效率估算：35,000 ÷ 3,500 = 10 且 35,000 ÷ 7,000 = 5。在循環前設定好你的停損點，並保留製作所需的任何 Kuva。"
+          "text": "這是算術值，而不是刷取速度的估計值：35,000 ÷ 3,500 = 10 和 35,000 ÷ 7,000 = 5。受保護的剪接性狀單獨使用正常價格；添加普通的 Trait Locking 使其翻倍。在重洗前設定停止標準，並預留您製作物品所需的任何Kuva。"
         }
       ]
     },
@@ -296,15 +354,15 @@
       "blocks": [
         {
           "type": "p",
-          "text": "在 Mod 介面中使用 **Cycle Riven** 來使用 Kuva 進行重洗。提升 Mod 等級則是使用 [Endo](/guides/endo) 和 Credits。在沒有鎖定詞條的情況下，循環從 **900 Kuva** 開始，最高可達 **3,500 Kuva** 的上限。若鎖定了一個詞條，每個循環的成本是正常價格的兩倍。"
+          "text": "在 Mod 段中使用 **Cycle Riven** 以使用 Kuva 重洗。相反，提升 Mod 等級要使用 [Endo](/guides/endo) 和 Credits。如果沒有普通的 Trait Locking，則重洗費用會從 **900 Kuva** 開始，並上升到 **3,500 Kuva** 上限，包括當剪接性狀受到保護時。普通的Trait Locking是顯示底價的兩倍。"
         },
         {
           "type": "table",
           "table": {
             "columns": [
               "循環",
-              "未鎖定詞條",
-              "鎖定一個詞條"
+              "沒有普通的Trait Locking",
+              "啟用普通 Trait Locking"
             ],
             "rows": [
               [
@@ -338,12 +396,12 @@
                 "7,000"
               ]
             ],
-            "note": "成本為每次循環所需的 Kuva。套用或解除鎖定本身是免費的；當你在鎖定詞條的情況下進行循環時，將會收取較高的成本。"
+            "note": "費用單位為每次重洗消耗的 Kuva。應用或刪除普通的Trait Locking是免費的；啟用該鎖重洗時費用會翻倍。僅受保護的剪接性狀並不會使成本增加一倍。"
           }
         },
         {
           "type": "info",
-          "text": "**Trait Locking 已在 Update 44 中推出。** 選擇一個現有的詞條以在循環時保留它。只能鎖定一個，且正負詞條的目前數量將保持固定。解鎖它以允許該配置進行更改。關閉循環選單會清除鎖定，因此下次請重新選擇。"
+          "text": "**兩種保護，不同的成本。** 普通 Trait Locking 保留一項現有特徵，並在您關閉「重洗」選單時清除。 Riven Splicing 單獨保護剪接性狀，無需額外付費；兩者可以一起使用。任一系統都固定正/負佈局。在嘗試不同的佈局之前，先清除普通鎖，再將拼接屬性解鎖並透過重洗移除。有關完整過程，請參閱[Riven指南](/guides/riven)。"
         },
         {
           "type": "tip",
@@ -450,15 +508,15 @@
   "faqs": [
     {
       "q": "在 Warframe 中 Kuva 有什麼用途？",
-      "a": "Kuva 可用於洗鍊 Riven mod 數值以及製造部分鑄造廠藍圖。洗鍊不會改變武器的傾向值（Disposition）。選用的特性鎖定功能可以保留一項現有特性，但會使洗煉費用加倍。完整規則請參閱[Riven 指南](/guides/riven)。"
+      "a": "Kuva 用於重洗 Riven mod 的屬性，並按一些 Foundry 藍圖製作物品。重洗不會改變武器的 Riven 傾向性。普通 Trait Locking 會將重洗費用翻倍；單獨的受保護剪接性狀則不然。有關完整規則，請參閱[Riven指南](/guides/riven)。"
     },
     {
       "q": "快速刷取 Kuva 的最佳方法是什麼？",
-      "a": "選擇適合你的解鎖進度與遊玩時段的來源：用於單場任務的 Siphons 或 Floods，用於重複 Harvester 防禦的 Taveuni Survival，或是可用的商人兌換。Melica 的 Update 44 兌換提供每次固定 10,500 一般 Kuva，每週最多可兌換四次，需使用 Entropic Kuva。Kuva Survival Requiem Fissures 會開啟 Requiem Relics；它們不會提供來自 Lith、Meso、Neo 或 Axi 聖物（relics）的Prime部件。"
+      "a": "選擇適合您的已解鎖內容和本次遊玩安排的來源：用於單一任務的Kuva Siphon 或 Kuva Flood，用於重複Harvester 防守的Taveuni Survival，或可用的商人兌換。將Melica的10,500-Kuva交換與來自Acrithis、Flare、Nightcap和Hunhow的更新44.1優惠進行比較。查看貨幣成本和剩餘購買量；沒有適合每個帳戶的單一最快選項。"
     },
     {
       "q": "重置一個 Riven 需要消耗多少 Kuva？",
-      "a": "在沒有鎖定特性的情況下，第一次洗煉花費900 Kuva，後續洗煉費用會上升至3,500的上限。鎖定一個特性會將這些價格加倍，初始為1,800，上限則為7,000。套用或移除鎖定皆為免費。洗煉後你可以保留上一次的結果，但花費的Kuva不會退還。"
+      "a": "如果沒有普通的 Trait Locking，首次重洗的費用為 900 Kuva，隨後的重洗費用將上升到 3,500 上限。僅受保護的剪接特徵就可以維持這些價格。普通的 Trait Locking 將其加倍，最初為 1,800，上限為 7,000。應用或刪除該鎖是免費的。重洗後您可以保留之前的結果，但此次消耗的 Kuva 不會返還。"
     },
     {
       "q": "Kuva 和 Kuva Lich 有什麼區別？",
@@ -474,7 +532,7 @@
     },
     {
       "q": "可以購買或交易 Kuva 嗎？",
-      "a": "一般Kuva無法直接在玩家之間交易，但可以透過遊戲內的商人兌換取得。例如，Melica接受以Entropic Kuva兌換一般Kuva組合包，設有每週購買限制。請確認商人的貨幣與品項，切勿假設Kuva僅來自Siphons。"
+      "a": "普通的Kuva不能在玩家之間直接交易，但商人可以用其他貨幣交換。 Melica 接受Entropic Kuva；更新 44.1 也改進了 Acrithis、Flare、Nightcap 和 Hunhow 的兌換項目。上面的商人比較列出了數量、貨幣和規定的每週限制。"
     },
     {
       "q": "Resource Booster 對 Kuva 有效嗎？",
@@ -482,6 +540,14 @@
     }
   ],
   "sources": [
+    {
+      "label": "Update 44.1: The Icebind — Kuva vendor offers and Riven Splicing",
+      "href": "https://www.warframe.com/en/patch-notes/pc/44-1-0"
+    },
+    {
+      "label": "Warframe — Hotfix 44.1.1: corrected Spliced Riven cycling cost",
+      "href": "https://www.warframe.com/en/patch-notes/pc/44-1-1"
+    },
     {
       "label": "Update 44: Iceblade of Narin — Melica, Entropic Kuva and Trait Locking",
       "href": "https://www.warframe.com/en/patch-notes/pc/44-0-0"
@@ -527,5 +593,5 @@
       "href": "https://warframe.fandom.com/wiki/Kuva_Siphon"
     }
   ],
-  "updated": "2026-09-30"
+  "updated": "2026-10-22"
 }

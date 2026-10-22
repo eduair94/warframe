@@ -1,8 +1,8 @@
 {
   "slug": "riven",
   "eyebrow": "지식 센터 · Riven Mods",
-  "title": "Riven Mod: 특성 고정, Kuva 비용 및 거래",
-  "lede": "Riven Mod의 작동 방식, 특성 고정으로 기존 수치 하나 유지, Kuva 비용 비교 및 거래 전 롤 평가 방법을 알아보세요. Update 44 규칙 및 발표된 Riven Splicing 상태가 포함되어 있습니다.",
+  "title": "Riven 모드: 접합, Trait Locking 및 Kuva 비용",
+  "lede": "Riven Splicing과 Trait Locking이 함께 작동하는 방법, Riven Splicers를 어디서 구할 수 있는지, 재설정이나 거래 전에 Kuva의 예산을 책정하는 방법을 알아보세요. 출시된 업데이트 44.1 규칙과 두 종류의 보호 특성 간의 차이점이 포함됩니다.",
   "category": "systems",
   "readMins": 10,
   "stats": [
@@ -23,7 +23,7 @@
     },
     {
       "num": "2×",
-      "label": "특성이 고정된 상태로 사이클링할 때의 Kuva 비용",
+      "label": "일반 Trait Locking의 Kuva 비용",
       "tone": "gold"
     }
   ],
@@ -38,7 +38,7 @@
         },
         {
           "type": "p",
-          "text": "Riven은 하나의 Mod 슬롯에 여러 유용한 보너스를 결합할 수 있지만, 무작위 롤이 자동으로 상향을 의미하지는 않습니다. 무기, 수치 조합, 부정적 특성, 랭크 및 무기 Disposition 모두 중요합니다. 아래 섹션에서는 일반적인 사이클링과 Update 44에서 도입된 선택적 특성 고정을 다룹니다."
+          "text": "Riven은 하나의 Mod 슬롯에 여러 가지 유용한 보너스를 결합할 수 있지만 무작위 굴림이 자동으로 업그레이드되는 것은 아닙니다. 무기, 능력치 조합, 부정적인 특성, 랭크 및 무기 기질이 모두 중요합니다. 아래 섹션에서는 재설정, 일반 Trait Locking 및 별도의 Riven Splicing 시스템을 다룹니다."
         },
         {
           "type": "kv",
@@ -109,7 +109,7 @@
         },
         {
           "type": "info",
-          "text": "[2026년 9월 Disposition 발표](https://forums.warframe.com/topic/1523355-september-2026-riven-dispositions/)에서 최신 변경 사항을 확인할 수 있습니다. 수요, 새로운 무기 옵션 및 개별 롤도 목록에 영향을 미칩니다. Disposition 변경만으로는 Riven이 더 높거나 낮은 플래티넘에 판매될 것이라고 보장할 수 없습니다."
+          "text": "[2026년 9월 기질 변경 공지](https://forums.warframe.com/topic/1523355-september-2026-riven-dispositions/)에는 해당 달의 변경 사항이 기록되어 있습니다. 수요, 새로운 무기 옵션 및 개별 롤도 목록에 영향을 미칩니다. 기질 변경만으로는 귀하의 Riven이 더 높거나 낮은 플래티넘 가격에 판매된다는 것을 보장하지 않습니다."
         }
       ]
     },
@@ -212,26 +212,26 @@
       "blocks": [
         {
           "type": "p",
-          "text": "**사이클링**은 Kuva를 소모하여 동일한 무기에 대한 다른 롤을 생성합니다. 특성을 고정하지 않으면 수치 타입, 값, 레이아웃이 변경될 수 있습니다. 사이클 횟수가 증가함에 따라 기본 비용은 **900 Kuva**에서 **3500 Kuva**로 증가합니다. 하나의 특성이 고정된 경우 표시되는 사이클링 비용은 두 배가 됩니다. 첫 번째 사이클은 **1800 Kuva**, 표준 상한선에서는 **7000 Kuva**입니다. 확인하기 전에 비용을 확인하세요."
+          "text": "**재설정**은 동일한 무기에 대해 새로운 결과를 생성하기 위해 Kuva을 소비합니다. 일반 Trait Locking 또는 보호된 접합 특성이 없으면 능력치 종류, 값 및 레이아웃이 변경될 수 있습니다. 재설정 횟수가 증가함에 따라 표준 비용은 **900 Kuva**에서 **3500 Kuva**로 증가합니다. 일반 Trait Locking은 비용을 처음에는 **1800** 또는 상한선에서는 **7000**으로 두 배로 늘립니다. 보호된 접합 특성만으로는 비용이 증가하지 않습니다. 확인하기 전에 미리보기를 확인하세요."
         },
         {
           "type": "kv",
           "kv": [
             {
               "k": "일반 사이클링",
-              "v": "고정된 특성 없음: 초기 900 Kuva, 사이클당 최대 3500 Kuva"
+              "v": "일반 Trait Locking 없이: 처음에는 900 Kuva, 재설정당 최대 3500"
             },
             {
-              "k": "고정 기능이 있는 사이클링",
+              "k": "일반 Trait Locking을 사용한 재설정",
               "v": "일반 비용의 두 배: 초기 1800 Kuva, 사이클당 최대 7000 Kuva"
             },
             {
               "k": "유지되는 것",
-              "v": "무기; 특성 고정 시 선택한 특성 및 긍정적/부정적 레이아웃도 유지됨"
+              "v": "무기; 일반 Trait Locking 또는 보호된 접합 특성도 해당 특성과 포지티브/네거티브 레이아웃을 유지합니다."
             },
             {
               "k": "무작위인 것",
-              "v": "다른 특성들; 고정 기능은 누락된 수치를 대신 선택해주지 않음"
+              "v": "보호되지 않은 특성; 재설정은 없는 능력치를 선택하지 않습니다."
             }
           ]
         },
@@ -243,11 +243,11 @@
     },
     {
       "id": "trait-locking",
-      "title": "Update 44에서 Riven 특성을 고정하는 방법",
+      "title": "Trait Locking 및 Riven Splicing: 함께 작동하는 방식",
       "blocks": [
         {
           "type": "p",
-          "text": "[Update 44](https://www.warframe.com/en/patch-notes/pc/44-0-0)에서 **특성 잠금(Trait Locking)** 기능이 도입되었습니다. 다른 특성들을 돌리는 동안 기존 특성 하나를 유지할 수 있습니다. 잠금 추가나 해제는 무료이며 특별한 아이템이 필요하지 않습니다. 해당 잠금을 활성화한 채로 수치를 돌릴 때 추가 Kuva가 소모됩니다."
+          "text": "[업데이트 44](https://www.warframe.com/en/patch-notes/pc/44-0-0)에 **Trait Locking**이 도입되었습니다. 이 일반 잠금는 재설정하는 동안 하나의 기존 특성을 유지하며 보호된 접합 특성과 함께 사용할 수 있습니다. 일반 잠금 장치를 추가하거나 제거하는 것은 무료이며 특별한 아이템이 필요하지 않습니다. 잠금을 활성화한 상태로 재설정할 때 추가 Kuva가 소모됩니다."
         },
         {
           "type": "steps",
@@ -262,22 +262,30 @@
             },
             {
               "h": "소모 전에 배치 확인",
-              "p": "잠금 상태에서는 긍정 및 부정 특성의 개수가 고정됩니다. 긍정 3개와 부정 1개가 있는 롤은 해당 배치를 유지하므로, 다른 배치를 원할 경우 돌리기 전에 잠금을 해제하세요."
+              "p": "긍정적인 특성과 부정적인 특성의 수는 일반 Trait Locking 또는 결합된 특성으로 고정되어 있습니다. 레이아웃을 변경하려면 일반 잠금을 지우고, 있는 경우 연결 특성을 잠금 해제한 뒤 재설정으로 제거할 수 있도록 하세요. 해당 특성이 제거되면 결합된 특성의 레이아웃 제한이 종료됩니다."
             },
             {
               "h": "다음 세션에 잠금 재적용",
-              "p": "수치 변경 메뉴를 닫으면 잠금이 해제됩니다. 메뉴를 다시 열 때마다 확인하고 다시 적용하세요."
+              "p": "재설정 메뉴를 닫으면 일반 Trait Locking 선택이 지워집니다. 다음 세션에서 확인하고 다시 적용하세요. 보호된 접합 특성은 그대로 유지됩니다."
             }
           ]
         },
         {
           "type": "tip",
-          "text": "**예산 예시:** 35000 Kuva로는 3500씩 일반 수치 변경을 10번 하거나, 잠금 특성을 유지한 채 7000씩 5번 수치 변경을 할 수 있습니다. 이는 비용 산술일 뿐 유용한 롤의 개수를 예측하는 것이 아닙니다. 이미 유지할 가치가 있는 특성이 있을 때 잠금을 고려하세요."
+          "text": "**예산 예:** 35000 Kuva는 일반 Trait Locking 없이 3500씩 재설정 10회, 또는 이를 사용하여 7000씩 재설정 5회에 쓸 수 있습니다. 보호된 접합 특성만으로도 첫 번째 가격이 유지됩니다. 이는 유용한 롤에 대한 예측이 아니라 비용 산술입니다. 또 다른 기존 특성을 보존할 가치가 있는 경우 일반 잠금을 고려하세요."
         },
         {
           "type": "info",
-          "title": "Riven 접합(Riven Splicing)은 별도의 출시 예정 기능입니다",
-          "text": "2026년 9월 30일 확인 기준으로, **Riven 접합은 아직 출시 전**입니다. Digital Extremes는 접합이 포함될 예정인 빙하의 반항(Glacial Defiance) 업데이트를 **2026년 10월 7일**로 공지했습니다. 특성 잠금은 이미 이용 가능합니다. Riven 접합기나 조합된 특성을 염두에 두고 계획을 세우기 전에 출시 노트를 다시 확인하세요."
+          "title": "Riven Splicing을 사용할 수 있습니다",
+          "text": "**Riven Splicing은 2026년 10월 7일에 출시되었습니다.** Splicing 메뉴에서 Riven Splicer를 사용하여 두 개의 호환 특성을 선택한 접합 특성과 하나의 무작위 교체로 결합합니다. 포지티브/네거티브 레이아웃은 접합된 특성이 제거될 때까지 고정된 상태로 유지됩니다. 확인하기 전에 결과를 미리 보세요. 접합된 특성은 Kuva 추가 요금 없이 보호된 상태로 유지됩니다. 일반 Trait Locking는 일반 재설정 비용의 두 배로 하나의 추가 특성을 보호할 수 있습니다."
+        },
+        {
+          "type": "p",
+          "text": "**Riven Splicer을(를) 얻을 수 있는 곳:** 이전에 Glacial Defiance로 발표된 [The Icebind](https://www.warframe.com/en/patch-notes/pc/44-1-0)는 성공적으로 완료하면 Riven Splicer 하나를 확정으로 지급합니다. 액세스하려면 **Angels of the Zariman**, **Whispers in the Walls** 및 **Elite Temporal Archimedea 또는 Elite Deep Archimedea** 잠금 해제가 필요합니다. 해당 엘리트 모드를 완료할 필요는 없습니다. 이는 난도가 높은 6인 활동이므로 적합한 분대와 로드아웃을 준비하세요."
+        },
+        {
+          "type": "tip",
+          "text": "**초기 출시 보고서에는 해결된 버그가 설명되어 있습니다.** [핫픽스 44.1.1](https://www.warframe.com/en/patch-notes/pc/44-1-1)는 접합 특성이 Kuva 비용을 잘못 두 배로 늘리고 Weak Point Damage이 적용되지 않는 문제를 수정했습니다. [영향을 받은 플레이어 Kuva 환불](https://forums.warframe.com/topic/1527399-psa-spliced-riven-kuva-cost-doubling-resolved-script-complete/)은 10월 9일에 완료되었습니다. [핫픽스 44.1.2](https://www.warframe.com/en/patch-notes/pc/44-1-2)는 재설정 화면에서 접합 바로가기를 추가했습니다."
         }
       ]
     },
@@ -413,7 +421,7 @@
     },
     {
       "q": "Riven 리롤은 어떻게 하며 비용은 얼마나 드나요?",
-      "a": "오비터 모드 콘솔에서 Riven 돌리기를 선택하세요. 잠금이 없는 경우 비용은 900 Kuva에서 시작하여 횟수가 증가함에 따라 최대 3500까지 올라갑니다. 특성 잠금은 기존 특성 하나와 긍정/부정 배치를 유지하면서 해당 수치 변경 비용을 표준 상한선인 7000까지 두 배로 늘립니다. 예산을 계획하려면 [Kuva 가이드](/guides/kuva)를 읽어보세요."
+      "a": "Mod Segment에서 Cycle Riven을 선택하세요. 일반 Trait Locking이 없으면 비용은 900 Kuva에서 시작하여 재설정 횟수가 증가함에 따라 3500의 한도에 도달합니다. 일반 Trait Locking는 비용을 두 배로 늘려 최대 7000까지 증가시킵니다. 보호된 접합 특성만으로는 추가 요금이 추가되지 않습니다. 예산을 계획하려면 [Kuva 가이드](/guides/kuva)를 읽어보세요."
     },
     {
       "q": "Riven 기질이란 무엇인가요?",
@@ -437,11 +445,11 @@
     },
     {
       "q": "수치를 다시 돌릴 때 Riven 능력치를 잠글 수 있나요?",
-      "a": "네. 특성 잠금을 사용하면 기존 특성 하나를 유지할 수 있지만, 이를 활성화하고 돌리면 Kuva가 두 배로 소모됩니다. 긍정/부정 배치도 고정됩니다. 잠금 추가나 해제는 무료이며 수치 변경 메뉴를 닫으면 해제됩니다."
+      "a": "예. 일반 Trait Locking은 일반적인 재설정 비용의 두 배로 하나의 기존 특성을 유지하고 메뉴를 닫으면 해당 선택이 지워집니다. 결합된 특성은 추가 비용 없이 별도로 보호되므로 두 시스템 모두 두 가지 특성을 함께 보존할 수 있습니다. 어느 보호든 포지티브/네거티브 레이아웃을 고정합니다."
     },
     {
       "q": "Riven 접합을 이제 이용할 수 있나요?",
-      "a": "2026년 9월 30일 확인 기준으로, 접합은 2026년 10월 7일로 공지된 빙하의 반항과 함께 여전히 출시 예정입니다. 특성 잠금은 이미 라이브 서버에 적용되어 있습니다. Riven 접합기나 조합된 특성을 염두에 두고 계획을 세우기 전에 업데이트가 출시될 때 릴리즈 노트를 확인하세요."
+      "a": "예. Riven Splicing은(는) 2026년 10월 7일에 The Icebind과 함께 출시되었습니다. The Icebind를 완료하여 Riven Splicer를 획득한 다음 Splicing 메뉴에서 호환 가능한 특성 조합을 검사하세요. 선택한 접합 특성은 무작위 대체 특성과 함께 두 개의 호환 특성을 대체합니다. 결합된 특성이 제거될 때까지 포지티브/네거티브 레이아웃은 고정된 상태로 유지됩니다."
     }
   ],
   "sources": [
@@ -462,8 +470,20 @@
       "href": "https://forums.warframe.com/topic/1523355-september-2026-riven-dispositions/"
     },
     {
-      "label": "Warframe — Glacial Defiance date announcement (PSA updated September 29, 2026)",
-      "href": "https://forums.warframe.com/topic/1523427-psa-glacial-defiance-release-window-outdated/"
+      "label": "Warframe — Update 44.1: The Icebind and Riven Splicing (October 7, 2026)",
+      "href": "https://www.warframe.com/en/patch-notes/pc/44-1-0"
+    },
+    {
+      "label": "Warframe — Hotfix 44.1.1: Splicing cost and damage fixes",
+      "href": "https://www.warframe.com/en/patch-notes/pc/44-1-1"
+    },
+    {
+      "label": "Warframe — Spliced Riven Kuva refund completed October 9, 2026",
+      "href": "https://forums.warframe.com/topic/1527399-psa-spliced-riven-kuva-cost-doubling-resolved-script-complete/"
+    },
+    {
+      "label": "Warframe — Hotfix 44.1.2: Splicing menu shortcut",
+      "href": "https://www.warframe.com/en/patch-notes/pc/44-1-2"
     },
     {
       "label": "Warframe — Riven cycling cost cap (Update 19.4)",
@@ -526,5 +546,5 @@
       "note": "Riven 마켓, 위키 및 DE 도구"
     }
   ],
-  "updated": "2026-09-30"
+  "updated": "2026-10-22"
 }

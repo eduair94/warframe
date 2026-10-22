@@ -4,8 +4,8 @@ import type { Guide } from './types'
 const guide: Guide = {
   "slug": "riven",
   "eyebrow": "Knowledge Center · Riven Mods",
-  "title": "Riven Mods: Trait Locking, Kuva Costs & Trading",
-  "lede": "Learn how Riven Mods work, preserve one existing stat with Trait Locking, compare Kuva costs and assess a roll before trading. Includes the Update 44 rules and the announced status of Riven Splicing.",
+  "title": "Riven Mods: Splicing, Trait Locking & Kuva Costs",
+  "lede": "Learn how Riven Splicing and Trait Locking work together, where to get Riven Splicers and how to budget Kuva before cycling or trading. Includes the live Update 44.1 rules and the difference between the two kinds of protected traits.",
   "category": "systems",
   "readMins": 10,
   "stats": [
@@ -26,7 +26,7 @@ const guide: Guide = {
     },
     {
       "num": "2×",
-      "label": "Kuva cost when cycling with a locked trait",
+      "label": "Kuva cost with ordinary Trait Locking",
       "tone": "gold"
     }
   ],
@@ -41,7 +41,7 @@ const guide: Guide = {
         },
         {
           "type": "p",
-          "text": "A Riven can combine several useful bonuses in one Mod slot, but a random roll is not automatically an upgrade. The weapon, stat combination, negative trait, rank and weapon Disposition all matter. The sections below cover ordinary cycling and the optional Trait Locking introduced in Update 44."
+          "text": "A Riven can combine several useful bonuses in one Mod slot, but a random roll is not automatically an upgrade. The weapon, stat combination, negative trait, rank and weapon Disposition all matter. The sections below cover cycling, ordinary Trait Locking and the separate Riven Splicing system."
         },
         {
           "type": "kv",
@@ -112,7 +112,7 @@ const guide: Guide = {
         },
         {
           "type": "info",
-          "text": "The [September 2026 Disposition announcement](https://forums.warframe.com/topic/1523355-september-2026-riven-dispositions/) documents the latest changes. Demand, new weapon options and individual rolls also affect listings. A Disposition change alone does not guarantee that your Riven will sell for more or less Platinum."
+          "text": "The [September 2026 Disposition announcement](https://forums.warframe.com/topic/1523355-september-2026-riven-dispositions/) records that month’s changes. Demand, new weapon options and individual rolls also affect listings. A Disposition change alone does not guarantee that your Riven will sell for more or less Platinum."
         }
       ]
     },
@@ -215,26 +215,26 @@ const guide: Guide = {
       "blocks": [
         {
           "type": "p",
-          "text": "**Cycling** spends Kuva to generate another roll for the same weapon. Without a locked trait, the stat types, values and layout can change. The standard cost rises from **900 Kuva** to **3500 Kuva** as its cycle count rises. With one trait locked, the displayed cycling cost is doubled: **1800** for the first cycle or **7000** at the standard cap. Check the cost before confirming."
+          "text": "**Cycling** spends Kuva to generate another roll for the same weapon. Without ordinary Trait Locking or a protected spliced trait, the stat types, values and layout can change. The standard cost rises from **900 Kuva** to **3500 Kuva** as its cycle count rises. Ordinary Trait Locking doubles that cost to **1800** initially or **7000** at the cap. A protected spliced trait alone does not increase the cost. Check the preview before confirming."
         },
         {
           "type": "kv",
           "kv": [
             {
               "k": "Ordinary cycling",
-              "v": "No locked trait: 900 Kuva initially, up to 3500 per cycle"
+              "v": "Without ordinary Trait Locking: 900 Kuva initially, up to 3500 per cycle"
             },
             {
-              "k": "Cycling with a lock",
+              "k": "Cycling with ordinary Trait Locking",
               "v": "Double the ordinary cost: 1800 initially, up to 7000 per cycle"
             },
             {
               "k": "What stays",
-              "v": "The weapon; with Trait Locking, the selected trait and positive/negative layout also stay"
+              "v": "The weapon; ordinary Trait Locking or a protected spliced trait also preserves that trait and the positive/negative layout"
             },
             {
               "k": "What is random",
-              "v": "The other traits; a lock does not select a missing stat for you"
+              "v": "The unprotected traits; cycling does not select a missing stat for you"
             }
           ]
         },
@@ -246,11 +246,11 @@ const guide: Guide = {
     },
     {
       "id": "trait-locking",
-      "title": "How to lock a Riven trait in Update 44",
+      "title": "Trait Locking and Riven Splicing: how they work together",
       "blocks": [
         {
           "type": "p",
-          "text": "[Update 44](https://www.warframe.com/en/patch-notes/pc/44-0-0) introduced **Trait Locking**. You can retain one existing trait while cycling the others. Adding or removing the lock is free and needs no special item; the extra Kuva is charged when you cycle with that lock active."
+          "text": "[Update 44](https://www.warframe.com/en/patch-notes/pc/44-0-0) introduced **Trait Locking**. This ordinary lock retains one existing trait while cycling and can be used alongside a protected spliced trait. Adding or removing the ordinary lock is free and needs no special item; the extra Kuva is charged when you cycle with it active."
         },
         {
           "type": "steps",
@@ -265,22 +265,30 @@ const guide: Guide = {
             },
             {
               "h": "Check the layout before spending",
-              "p": "The number of positive and negative traits stays fixed while locked. A roll with 3 positives and 1 negative remains in that layout; unlock it before cycling if you want a different layout."
+              "p": "The number of positive and negative traits stays fixed with ordinary Trait Locking or a spliced trait. To change the layout, clear the ordinary lock and, if present, unlock the spliced trait so it can be cycled off. The spliced trait’s layout restriction ends once that trait is removed."
             },
             {
               "h": "Reapply the lock next session",
-              "p": "Closing the cycling menu removes the lock. Check and reapply it each time you reopen the menu."
+              "p": "Closing the cycling menu clears the ordinary Trait Locking selection. Check and reapply it next session; the protected spliced trait remains."
             }
           ]
         },
         {
           "type": "tip",
-          "text": "**Budget example:** 35000 Kuva buys 10 ordinary cycles at 3500 each, or 5 cycles with a locked trait at 7000 each. This is cost arithmetic, not a prediction of the number of useful rolls. Consider a lock when you already have a trait worth preserving."
+          "text": "**Budget example:** 35000 Kuva buys 10 cycles at 3500 each without ordinary Trait Locking, or 5 cycles at 7000 with it. A protected spliced trait alone keeps the first price. This is cost arithmetic, not a prediction of useful rolls. Consider the ordinary lock when another existing trait is worth preserving."
         },
         {
           "type": "info",
-          "title": "Riven Splicing is a separate, upcoming feature",
-          "text": "As checked on September 30, 2026, **Riven Splicing is still upcoming**. Digital Extremes announced **October 7, 2026** for Glacial Defiance, the release that is due to include Splicing. Trait Locking is already available. Recheck the launch notes before planning around Riven Splicers or combined traits."
+          "title": "Riven Splicing is available",
+          "text": "**Riven Splicing launched on October 7, 2026.** In the Splicing menu, use a Riven Splicer to combine two compatible traits into a chosen spliced trait and one random replacement. The positive/negative layout stays fixed until the spliced trait is removed. Preview the result before confirming. The spliced trait remains protected without a Kuva surcharge; ordinary Trait Locking can protect one additional trait at double the normal cycling cost."
+        },
+        {
+          "type": "p",
+          "text": "**Where to get a Riven Splicer:** [The Icebind](https://www.warframe.com/en/patch-notes/pc/44-1-0), previously announced as Glacial Defiance, guarantees one on successful completion. Access requires **Angels of the Zariman**, **Whispers in the Walls**, and unlocking **Elite Temporal Archimedea or Elite Deep Archimedea**. Completing that Elite mode is not required. This is a demanding six-player activity, so prepare a suitable squad and loadout."
+        },
+        {
+          "type": "tip",
+          "text": "**Early launch reports describe a resolved bug.** [Hotfix 44.1.1](https://www.warframe.com/en/patch-notes/pc/44-1-1) corrected spliced traits wrongly doubling Kuva costs and Weak Point Damage not applying. The [affected-player Kuva refund](https://forums.warframe.com/topic/1527399-psa-spliced-riven-kuva-cost-doubling-resolved-script-complete/) finished on October 9. [Hotfix 44.1.2](https://www.warframe.com/en/patch-notes/pc/44-1-2) added a Splicing shortcut from the Cycling screen."
         }
       ]
     },
@@ -416,7 +424,7 @@ const guide: Guide = {
     },
     {
       "q": "How do I re-roll a riven and what does it cost?",
-      "a": "Choose Cycle Riven in the Mod Segment. Without a lock, the cost begins at 900 Kuva and reaches a cap of 3500 as its cycle count rises. Trait Locking doubles that cycle’s cost, up to 7000 at the standard cap, while preserving one existing trait and the positive/negative layout. Read the [Kuva guide](/guides/kuva) to plan a budget."
+      "a": "Choose Cycle Riven in the Mod Segment. Without ordinary Trait Locking, the cost begins at 900 Kuva and reaches a cap of 3500 as its cycle count rises. Ordinary Trait Locking doubles that cost, up to 7000. A protected spliced trait alone adds no surcharge. Read the [Kuva guide](/guides/kuva) to plan a budget."
     },
     {
       "q": "What is riven disposition?",
@@ -440,11 +448,11 @@ const guide: Guide = {
     },
     {
       "q": "Can I lock a Riven stat while rerolling?",
-      "a": "Yes. Trait Locking lets you preserve one existing trait, but cycling with it costs twice as much Kuva. The positive/negative layout also stays fixed. Adding or removing the lock is free, and closing the cycling menu removes it."
+      "a": "Yes. Ordinary Trait Locking preserves one existing trait at twice the usual cycling cost, and closing the menu clears that selection. A spliced trait stays protected separately without a surcharge, so both systems can preserve two traits together. Either protection also fixes the positive/negative layout."
     },
     {
       "q": "Is Riven Splicing available yet?",
-      "a": "As checked on September 30, 2026, Splicing is still upcoming with Glacial Defiance, announced for October 7, 2026. Trait Locking is already live. Check the release notes when the update launches before planning around Riven Splicers or combined traits."
+      "a": "Yes. Riven Splicing launched with The Icebind on October 7, 2026. Complete The Icebind to earn a Riven Splicer, then inspect compatible trait combinations in the Splicing menu. The chosen spliced trait replaces two compatible traits alongside a random replacement; the positive/negative layout stays fixed until the spliced trait is removed."
     }
   ],
   "sources": [
@@ -465,8 +473,20 @@ const guide: Guide = {
       "href": "https://forums.warframe.com/topic/1523355-september-2026-riven-dispositions/"
     },
     {
-      "label": "Warframe — Glacial Defiance date announcement (PSA updated September 29, 2026)",
-      "href": "https://forums.warframe.com/topic/1523427-psa-glacial-defiance-release-window-outdated/"
+      "label": "Warframe — Update 44.1: The Icebind and Riven Splicing (October 7, 2026)",
+      "href": "https://www.warframe.com/en/patch-notes/pc/44-1-0"
+    },
+    {
+      "label": "Warframe — Hotfix 44.1.1: Splicing cost and damage fixes",
+      "href": "https://www.warframe.com/en/patch-notes/pc/44-1-1"
+    },
+    {
+      "label": "Warframe — Spliced Riven Kuva refund completed October 9, 2026",
+      "href": "https://forums.warframe.com/topic/1527399-psa-spliced-riven-kuva-cost-doubling-resolved-script-complete/"
+    },
+    {
+      "label": "Warframe — Hotfix 44.1.2: Splicing menu shortcut",
+      "href": "https://www.warframe.com/en/patch-notes/pc/44-1-2"
     },
     {
       "label": "Warframe — Riven cycling cost cap (Update 19.4)",
@@ -529,7 +549,7 @@ const guide: Guide = {
       "note": "Riven markets, wikis and DE tools"
     }
   ],
-  "updated": "2026-09-30"
+  "updated": "2026-10-22"
 }
 
 export default guide

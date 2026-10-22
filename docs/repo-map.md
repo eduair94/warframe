@@ -131,7 +131,7 @@ One-shot data importers run via `npm run <name>` / cron. They populate Mongo.
 
 ## i18n modules (`app/i18n/messages/`) — token traps
 
-40 locale modules. **Large ones — read narrowly (offset/limit or grep a key), never whole:**
+41 locale modules. **Large ones — read narrowly (offset/limit or grep a key), never whole:**
 
 | Module | Size |
 | --- | --- |
@@ -165,4 +165,4 @@ One-shot data importers run via `npm run <name>` / cron. They populate Mongo.
 | `app/i18n/messages/movers.ts` | 33 KB |
 | `app/i18n/messages/toolDetail.ts` | 31 KB |
 
-_11 smaller modules omitted. See `app/i18n/CLAUDE.md`._
+_12 smaller modules omitted. See `app/i18n/CLAUDE.md`._

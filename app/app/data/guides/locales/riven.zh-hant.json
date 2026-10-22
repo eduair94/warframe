@@ -1,8 +1,8 @@
 {
   "slug": "riven",
   "eyebrow": "知識中心 · Riven Mods",
-  "title": "Riven Mods：詞條鎖定、Kuva 消耗與交易",
-  "lede": "了解 Riven Mods 的運作方式、透過詞條鎖定保留一個現有屬性、比較 Kuva 消耗並在交易前評估洗屬。包含 Update 44 的規則以及 Riven Splicing 的公告狀態。",
+  "title": "Riven Mod：拼接、Trait Locking 和 Kuva 成本",
+  "lede": "了解 Riven Splicing 和 Trait Locking 如何協同工作、從哪裡獲取 Riven Splicers 以及如何在重洗或交易之前規劃 Kuva 預算。包括已上線的更新 44.1 規則以及兩種受保護特徵之間的差異。",
   "category": "systems",
   "readMins": 10,
   "stats": [
@@ -23,7 +23,7 @@
     },
     {
       "num": "2×",
-      "label": "鎖定詞條進行洗屬時的 Kuva 消耗",
+      "label": "使用普通 Trait Locking 時的 Kuva 費用",
       "tone": "gold"
     }
   ],
@@ -38,7 +38,7 @@
         },
         {
           "type": "p",
-          "text": "一個 Riven 可以在一個 Mod 格中結合多個實用的加成，但隨機洗屬並不會自動成為升級。武器、屬性組合、負面詞條、等級和武器 Disposition 都至關重要。以下章節涵蓋一般洗屬以及 Update 44 所引入的選配詞條鎖定功能。"
+          "text": "Riven 可以在一個 Mod 插槽中結合多種有用的獎勵，但隨機重洗並不一定帶來提升。武器、屬性組合、負面特徵、等級和武器的 Riven 傾向性都很重要。以下部分介紹重洗、普通 Trait Locking 和單獨的 Riven Splicing 系統。"
         },
         {
           "type": "kv",
@@ -109,7 +109,7 @@
         },
         {
           "type": "info",
-          "text": "[2026年9月 Disposition 公告](https://forums.warframe.com/topic/1523355-september-2026-riven-dispositions/)記錄了最新的變更。需求、新的武器選項以及個別洗屬也會影響刊登價格。單純的 Disposition 變更並不保證你的 Riven 會以更高或更低的 Platinum 售出。"
+          "text": "[2026年9月傾向性調整公告](https://forums.warframe.com/topic/1523355-september-2026-riven-dispositions/)記錄了當月的變更。需求、新武器選項和具體詞條組合也會影響清單。單獨的傾向性調整並不能保證您的 Riven 的白金售價會更高或更低。"
         }
       ]
     },
@@ -212,26 +212,26 @@
       "blocks": [
         {
           "type": "p",
-          "text": "**洗屬**會消耗 Kuva 來為同一把武器產生另一個洗屬。在沒有鎖定詞條的情況下，屬性類型、數值和佈局可能會改變。標準消耗隨著洗屬次數增加，從 **900 Kuva** 上升至 **3500 Kuva**。在鎖定一個詞條的情況下，顯示的洗屬消耗會加倍：第一次洗屬為 **1800**，或在標準上限時為 **7000**。確認前請先檢查消耗。"
+          "text": "**重洗**花費 Kuva 來為相同武器產生新的隨機詞條組合。如果沒有普通的 Trait Locking 或受保護的拼接特徵，屬性種類、值和佈局可能會變更。隨著重洗次數的增加，標準成本從 **900 Kuva** 上升到 **3500 Kuva**。普通的 Trait Locking 最初費用會增加一倍，達到 **1800** 或上限時 **7000**。單獨受保護的剪接性狀不會增加成本。確認前請檢查預覽。"
         },
         {
           "type": "kv",
           "kv": [
             {
               "k": "一般洗屬",
-              "v": "無鎖定詞條：最初 900 Kuva，每次洗屬最高 3500"
+              "v": "沒有普通的 Trait Locking：原為 900 Kuva，每次重洗最多 3500"
             },
             {
-              "k": "帶有鎖定的洗屬",
+              "k": "使用普通 Trait Locking 重洗",
               "v": "一般消耗加倍：最初 1800，每次洗屬最高 7000"
             },
             {
               "k": "保持不變的部分",
-              "v": "武器；透過詞條鎖定，選定的詞條以及正面/負面佈局也會保持不變"
+              "v": "武器；普通的 Trait Locking 或受保護的拼接特徵也保留該特徵和正/負佈局"
             },
             {
               "k": "隨機的部分",
-              "v": "其他詞條；鎖定不會為你選擇缺少的屬性"
+              "v": "未受保護的性狀；重洗不能讓您指定缺少的屬性"
             }
           ]
         },
@@ -243,11 +243,11 @@
     },
     {
       "id": "trait-locking",
-      "title": "如何在 Update 44 中鎖定 Riven 詞條",
+      "title": "Trait Locking 和 Riven Splicing：它們如何協同工作",
       "blocks": [
         {
           "type": "p",
-          "text": "[Update 44](https://www.warframe.com/en/patch-notes/pc/44-0-0) 引入了**詞條鎖定（Trait Locking）**。你在洗 Riven 時可以保留其中一個現有的詞條。新增或解除鎖定是免費的，不需要特殊道具；當你啟用鎖定進行洗 Riven 時，會消耗雙倍的 Kuva。"
+          "text": "[更新 44](https://www.warframe.com/en/patch-notes/pc/44-0-0) 引入了**Trait Locking**。這種普通的鎖在重洗時保留了一種現有的特徵，並且可以與受保護的拼接特徵一起使用。添加或拆卸普通鎖是免費的，不需要特殊物品；當您在其處於啟用狀態下重洗時，將收取額外的 Kuva 費用。"
         },
         {
           "type": "steps",
@@ -262,22 +262,30 @@
             },
             {
               "h": "花費前確認版面配置",
-              "p": "鎖定時，正向與負向詞條的數量會保持固定。擁有 3 個正向和 1 個負向的洗鍊會維持該版面配置；如果你想要不同的配置，請在洗 Riven 前解鎖。"
+              "p": "對於普通的 Trait Locking 或拼接特徵，正面和負面特徵的數量保持固定。若要變更佈局，請清除普通鎖，如果存在，請解鎖拼接特徵，以便透過重洗將其移除。一旦刪除該特徵，拼接特徵的佈局限制就會結束。"
             },
             {
               "h": "在下次操作時重新套用鎖定",
-              "p": "關閉洗 Riven 選單會移除鎖定。每次重新開啟選單時，請檢查並重新套用它。"
+              "p": "關閉重洗選單會清除普通的 Trait Locking 選擇。下一次檢查並重新應用；受保護的剪接特徵仍然存在。"
             }
           ]
         },
         {
           "type": "tip",
-          "text": "**預算範例：** 35000 Kuva 可以洗 10 次普通 Riven（每次 3500），或是帶有鎖定詞條洗 5 次（每次 7000）。這是成本算術，並非預測有多少次有用的洗鍊。當你已經擁有一個值得保留的詞條時，再考慮鎖定。"
+          "text": "**預算範例：** 35000 Kuva 在不使用普通 Trait Locking 時可按每次 3500 重洗 10 次，使用時則可按每次 7000 重洗 5 次。僅保護拼接屬性時仍使用前一種費用。這是成本算術，而不是有用詞條組合的預測。當另一個現有特徵值得保留時，請考慮使用普通鎖。"
         },
         {
           "type": "info",
-          "title": "Riven 拼接（Riven Splicing）是另一個即將推出的獨立功能",
-          "text": "經 2026 年 9 月 30 日確認，**Riven 拼接仍然即將推出**。Digital Extremes 已宣佈預定於 **2026 年 10 月 7 日**推出的「Glacial Defiance」將包含拼接功能。詞條鎖定已經上線。在圍繞 Riven 拼接器或組合詞條進行規劃之前，請重新檢查更新日誌。"
+          "title": "Riven Splicing可用",
+          "text": "**Riven Splicing 於 2026 年 10 月 7 日 推出。** 在「拼接」選單中，使用 Riven Splicer 將兩個相容性狀組合成選定的拼接性狀和一個隨機替換性狀。正/負佈局保持固定，直到拼接特徵被移除。確認前預覽結果。剪接性狀仍然受到保護，無需支付 Kuva 附加費；普通的Trait Locking可以以正常重洗費用的兩倍來保護一項額外的性狀。"
+        },
+        {
+          "type": "p",
+          "text": "**從哪裡獲得 Riven Splicer：** [The Icebind](https://www.warframe.com/en/patch-notes/pc/44-1-0)，之前宣佈為 Glacial Defiance，保證成功完成後獲得一個。參與前需完成 **Angels of the Zariman**、**Whispers in the Walls**，並解鎖 **Elite Temporal Archimedea 或 Elite Deep Archimedea**。不需要完成精英模式。這是一項要求很高的六人活動，因此請準備合適的小隊和裝備。"
+        },
+        {
+          "type": "tip",
+          "text": "**早期發布報告描述了已解決的錯誤。** [修補程式 44.1.1](https://www.warframe.com/en/patch-notes/pc/44-1-1) 修復了拼接屬性錯誤導致 Kuva 費用加倍，以及 Weak Point Damage 未生效的問題。 [受影響的玩家Kuva退款](https://forums.warframe.com/topic/1527399-psa-spliced-riven-kuva-cost-doubling-resolved-script-complete/)已於 10 月 9 日完成。 [修補程式 44.1.2](https://www.warframe.com/en/patch-notes/pc/44-1-2) 新增了重洗介面中的拼接捷徑。"
         }
       ]
     },
@@ -413,7 +421,7 @@
     },
     {
       "q": "我該如何重刷 Riven？消耗是什麼？",
-      "a": "在 MOD 介面中選擇「洗 Riven」。在沒有鎖定的情況下，費用從 900 Kuva 開始，隨著洗 Riven 次數增加，最高上限可達 3500。詞條鎖定會使該次的費用加倍，在標準上限下最高可達 7000，同時保留一個現有的詞條以及正向／負向版面配置。閱讀 [Kuva 指南](/guides/kuva) 來規劃預算。"
+      "a": "在 Mod 段中選擇 Cycle Riven。如果沒有普通的 Trait Locking，成本將從 900 Kuva 開始，並隨著重洗次數的增加達到上限 3500。普通的 Trait Locking 費用會增加一倍，最高可達 7000。僅受保護的剪接性狀不會增加額外費用。請閱讀[Kuva指南](/guides/kuva)來規劃預算。"
     },
     {
       "q": "什麼是 Riven 傾向性（Disposition）？",
@@ -437,11 +445,11 @@
     },
     {
       "q": "我可以在重洗時鎖定 Riven 數值嗎？",
-      "a": "可以。詞條鎖定讓你可以保留一個現有的詞條，但帶有鎖定的洗 Riven 消耗的 Kuva 會加倍。正向／負向版面配置也會保持固定。新增或解除鎖定是免費的，關閉洗 Riven 選單會將其移除。"
+      "a": "是的。普通的 Trait Locking 會以兩倍於通常重洗費用的價格保留一項現有特徵，關閉選單會清除該選擇。剪接性狀單獨受到保護，無需額外付費，因此兩個系統配合使用時可以同時保留兩個屬性。任一保護也可固定正/負佈局。"
     },
     {
       "q": "Riven 拼接推出了嗎？",
-      "a": "經 2026 年 9 月 30 日確認，拼接功能仍將隨著 Glacial Defiance 一同推出，已宣佈於 2026 年 10 月 7 日上線。詞條鎖定已經上線。在更新推出時，請先檢查更新日誌，再圍繞 Riven 拼接器或組合詞條進行規劃。"
+      "a": "是的。 Riven Splicing 於 2026 年 10 月 7 日 與 The Icebind 一起推出。完成 The Icebind 即可獲得 Riven Splicer，然後在「拼接」選單中檢查相容的特徵組合。選定的拼接屬性與一個隨機替換屬性共同取代原來的兩個相容屬性；正/負佈局保持固定，直到拼接特徵被移除。"
     }
   ],
   "sources": [
@@ -462,8 +470,20 @@
       "href": "https://forums.warframe.com/topic/1523355-september-2026-riven-dispositions/"
     },
     {
-      "label": "Warframe — Glacial Defiance date announcement (PSA updated September 29, 2026)",
-      "href": "https://forums.warframe.com/topic/1523427-psa-glacial-defiance-release-window-outdated/"
+      "label": "Warframe — Update 44.1: The Icebind and Riven Splicing (October 7, 2026)",
+      "href": "https://www.warframe.com/en/patch-notes/pc/44-1-0"
+    },
+    {
+      "label": "Warframe — Hotfix 44.1.1: Splicing cost and damage fixes",
+      "href": "https://www.warframe.com/en/patch-notes/pc/44-1-1"
+    },
+    {
+      "label": "Warframe — Spliced Riven Kuva refund completed October 9, 2026",
+      "href": "https://forums.warframe.com/topic/1527399-psa-spliced-riven-kuva-cost-doubling-resolved-script-complete/"
+    },
+    {
+      "label": "Warframe — Hotfix 44.1.2: Splicing menu shortcut",
+      "href": "https://www.warframe.com/en/patch-notes/pc/44-1-2"
     },
     {
       "label": "Warframe — Riven cycling cost cap (Update 19.4)",
@@ -526,5 +546,5 @@
       "note": "Riven 市場、wiki 和 DE 工具"
     }
   ],
-  "updated": "2026-09-30"
+  "updated": "2026-10-22"
 }
