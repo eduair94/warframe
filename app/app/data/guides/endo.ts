@@ -1,23 +1,19 @@
 // Warframe Knowledge Center guide content — /guides/endo.
-// Drafted grounded in r/Warframe research (reddit API) + the Warframe wiki, then
-// adversarially fact-checked for mid-2026 accuracy (nerf-checked against patch
-// notes; 42/44 researched methods survived verification). Embedded video ids were
-// verified live via YouTube oEmbed. This replaces the old bespoke "buy Endo cheap
-// with plat" landing page — that buy-with-plat route now lives on the /endo tool,
-// linked from `related` below. Rendered by <GuideArticle>; edit freely.
+// Reward tables and mechanics reviewed against the linked sources on 2026-10-23.
+// Rendered by <GuideArticle>; the comparison tool lives at /endo.
 import type { Guide } from './types'
 
 const guide: Guide = {
   "slug": "endo",
   "eyebrow": "Knowledge Center · Endo",
   "title": "Endo Farming Guide",
-  "lede": "Endo is the untradeable currency you spend (alongside credits) to rank up mods, and a maxed Primed mod eats ~140k of it — so you will always be short. This is the honest mid-2026 version: every current, un-nerfed way to actually earn Endo — the veteran Arbitration engine, the Ayatan sculpture route, the uncapped 1999/Höllvania and Sedna arena farms, and the \"free Endo you forgot about\" sitting in your mod collection.",
+  "lede": "Compare Endo farms for your progression: weekly Ayatan hunts, duplicate mods, bounties, Arbitrations and the Sedna arena. A rank-10 Primed mod costs 40,920 Endo from unranked. Learn which rewards are random, which boosters help, and when buying a filled sculpture is worth considering.",
   "category": "farming",
   "readMins": 11,
   "stats": [
     {
       "num": "1,500",
-      "label": "Endo per Arbitration Rotation C",
+      "label": "Endo when Arbitration Rotation C rolls Endo",
       "tone": "gold"
     },
     {
@@ -26,13 +22,13 @@ const guide: Guide = {
       "tone": "good"
     },
     {
-      "num": "~140k",
-      "label": "Endo to max one Primed mod",
+      "num": "40,920",
+      "label": "Endo to max a rank-10 Primed mod from unranked",
       "tone": "alt"
     },
     {
-      "num": "0",
-      "label": "boosters that increase Endo"
+      "num": "2×",
+      "label": "enemy Endo drop chance with a Mod Drop Chance Booster"
     }
   ],
   "sections": [
@@ -42,23 +38,23 @@ const guide: Guide = {
       "blocks": [
         {
           "type": "p",
-          "text": "Endo is \"concentrated energy used to Fuse and upgrade Mods.\" You spend Endo plus [credits](/guides/credits) to raise a mod's rank; each rank increases the effect and the drain. It is **untradeable** — you cannot sell it for credits or buy it from another player — so every point is farmed. See the [modding guide](/guides/mods) for how ranking actually consumes it."
+          "text": "Endo is the currency used to upgrade mods through Fusion. You spend Endo plus [credits](/guides/credits) to raise a mod’s rank. Endo itself is **untradeable** between players, but tradeable Ayatan Sculptures and mods can be converted into it. See the [modding guide](/guides/mods) for how ranking works."
         },
         {
           "type": "list",
           "ordered": false,
           "items": [
             "**Endo orbs** — blue-and-gold pickups enemies and containers drop in three sizes: 15 (small), 50 (medium), 80 (large).",
-            "**Flat mission/rotation rewards** — star-chart rotations pay ~50 up to ~4,200 Endo at high tiers; Granum Void pays 200 / 400 / 600 (Standard / Extended / Nightmare).",
-            "**Arbitrations** — 900 / 1,200 / 1,500 Endo per qualifying rotation, the backbone veteran farm.",
+            "**Mission and bounty rewards** — some reward tables include Endo bundles. The listed quantity is what you receive if that reward is selected, not a guaranteed payout on every run.",
+            "**Arbitrations** — reward tables offer 900 / 1,200 / 1,500 Endo in rotations A / B / C, alongside sculptures and other rewards.",
             "**Ayatan Sculptures** — socket them with Ayatan Stars and dissolve at Maroo for 1,425–3,450 Endo each.",
             "**Conversion** — dissolve duplicate mods, scrap Railjack wreckage, or dump a heavily-rerolled [Riven](/guides/riven) for a one-off lump."
           ]
         },
         {
           "type": "warn",
-          "title": "No booster touches Endo",
-          "text": "There is NO Endo Booster. Resource Boosters, Drop Chance Boosters, the Steel Path Drop Chance Booster and Drop Chance Blessing all do NOTHING for Endo — it isn't a boostable resource, and boosters never apply to end-of-mission rewards. The ONE exception that helps: in-mission Endo pickups count as MOD drops, so a Mod Drop Chance Booster doubles the Endo you sweep off the floor (see the Sedna arena farm)."
+          "title": "Mod Drop Chance helps enemy drops, not reward tables",
+          "text": "A **Mod Drop Chance Booster doubles the chance that enemies drop Endo**; it does not double the value of each pickup. Resource Boosters, Resource Drop Chance Boosters and resource drop blessings do not boost Endo. The Steel Path’s mod-drop-chance bonus also helps eligible enemy drops. None of these bonuses increase Endo awarded by a mission or bounty reward table, or the value of a dissolved mod or sculpture."
         }
       ]
     },
@@ -68,7 +64,7 @@ const guide: Guide = {
       "blocks": [
         {
           "type": "p",
-          "text": "There is no single \"best\" — it depends on your account stage and how sweaty you want to be. The highest ceiling is still the Sedna arena with a boosted premade, but Arbitrations and 1999 bounties are what the community actually recommends for solo and casual play in 2026."
+          "text": "Start with the farms your account can complete reliably. Maroo and duplicate mods are accessible supplements; bounties work well when you also need their other rewards. Arbitrations suit longer sessions, while a coordinated Vodyanoi squad can focus on enemy Endo drops. Compare your own completed runs, including loading and extraction time, before choosing a farm."
         },
         {
           "type": "table",
@@ -82,32 +78,32 @@ const guide: Guide = {
             "rows": [
               [
                 "Arbitrations (Survival/Defense)",
-                "Rotating hourly node (unlock: full Star Chart)",
-                "900 / 1,200 / 1,500 per A/B/C rotation → ~5,000–10,000/hr + sculptures",
+                "Hourly alert; complete the Eris Junction Focus Lens task on Pluto",
+                "900 / 1,200 / 1,500 Endo if the A / B / C Endo reward rolls; sculptures are separate outcomes",
                 "Veterans, solo-friendly"
               ],
               [
                 "Vodyanoi — Rathuum arena (Steel Path)",
                 "Sedna › Vodyanoi",
-                "~400–1,000 solo per ~3-min run; ~1,000 Endo/min with a full loot squad + Mod Drop Booster",
-                "Sweaty premade, highest ceiling"
+                "Enemy drops; results depend on kill speed, loot abilities and Mod Drop Chance bonuses",
+                "Coordinated squads with suitable builds"
               ],
               [
                 "1999 / Höllvania bounties",
                 "Höllvania Central Mall (after The Hex)",
-                "3,300 or 4,200 Endo rolls (~14–16% each); realistic avg ~1,000–1,500 per ~3–4 min bounty. Uncapped",
-                "Mid/late, fastest no-cap"
+                "Level 95–100 bounty: 3,300 Endo at 13.73% or 4,200 at 15.69%; other tiers differ",
+                "Repeatable bounties after The Hex"
               ],
               [
-                "Deimos / Cambion Drift T5 bounties",
+                "Deimos / Cambion Drift bounties",
                 "Cambion Drift (L40–60)",
-                "~1,000 Endo on stage 1 (~45%); ~8,000–15,000/hr resetting early stages",
+                "1,000 Endo at 45.45% on stage 1; 28.57% on stages 2–3; 22.22% on stage 4",
                 "Pre-Arbitration / pre-Steel-Path"
               ],
               [
                 "Zariman bounties (T4/5 Exterminate)",
                 "The Chrysalith",
-                "~730 Endo avg per bounty (EV of the Endo slot) + minor floor drops",
+                "Level 90–95 and 110–115: 3,000 Endo at 11.36% or 4,000 at 9.74%",
                 "By-product of Zariman gear runs"
               ],
               [
@@ -119,13 +115,13 @@ const guide: Guide = {
               [
                 "Railjack wreckage scrap",
                 "Dry Dock › Configure",
-                "~225 Endo per MK III part; big stockpiles = tens of thousands at once",
-                "Needs a built Railjack"
+                "225 Endo per unwanted MK III wreckage part; check the scrap preview",
+                "Players collecting Railjack wreckage"
               ],
               [
                 "Archon Hunt (weekly)",
-                "Teshin's Steel Path console",
-                "8,000 Endo at ~12.1%, one roll/week (not guaranteed)",
+                "Navigation › Archon Hunt (after Veilbreaker)",
+                "8,000 Endo is one possible weekly completion reward; it is not guaranteed",
                 "Weekly bonus, run it for the Shard"
               ],
               [
@@ -135,18 +131,18 @@ const guide: Guide = {
                 "Any MR, cleanup not a farm"
               ]
             ],
-            "note": "Yields are mid-2026 and reflect real drop-table chances, not best-case ceilings. Sedna's headline numbers require a coordinated squad; solo output sits at the low band."
+            "note": "Reward quantities and chances were checked against the official PC drop tables on October 23, 2026. These are per reward roll, not measured hourly farming rates. Sculpture values assume all required stars are installed."
           }
         },
         {
           "type": "info",
-          "title": "The Sedna arena isn't nerfed — it's just niche now",
-          "text": "Vodyanoi is still mathematically the best Endo/minute in the game. But since Arbitrations arrived and DE flooded recent reward tables (Narmer through 1999) with Endo, most players treat the arena as effectively obsolete for casual use — it only pays off for a dedicated, boosted premade. The meta loot squad is ONE Nekros (Desecrate) + ONE Khora (Pilfering Strangledome, which also groups) + a grouping/DPS frame (Nidus Larva or Vauban Vortex), on Steel Path, with a Mod Drop Chance Booster. Multiple Nekros do NOT stack Desecrate on the same corpse — only one pilfering effect applies per body."
+          "title": "Build a loot squad for Vodyanoi",
+          "text": "Vodyanoi on Sedna is an enemy-drop farm. A squad can combine Nekros’s Desecrate with Khora’s Pilfering Strangledome, plus grouping and damage support. They act at different loot stages; multiple Nekros cannot repeatedly Desecrate the same corpse. A Mod Drop Chance Booster and the Steel Path’s mod-drop bonus help this route, but a slower clear can offset the benefit. Agree on roles before joining a dedicated squad; no fixed Endo-per-minute rate is guaranteed."
         },
         {
           "type": "tip",
-          "title": "Run bounties on Normal, not Steel Path",
-          "text": "1999, Zariman and Sanctum bounties give the SAME Endo on Normal and Steel Path, so run Normal for speed — SP only adds Steel Essence. Steel Path only helps the kill-based Sedna arena, where its +100% mod-drop-chance bonus doubles the floor Endo and stacks multiplicatively with a Mod Drop Chance Booster."
+          "title": "Compare Normal and Steel Path bounty completion time",
+          "text": "Steel Path’s drop bonuses do not multiply a bounty’s listed Endo reward. Check the active bounty’s reward pool and choose the difficulty you can complete efficiently; extra standing, currencies or Steel Essence may matter for your other goals. For enemy-drop farms such as Vodyanoi, the mod-drop bonus is relevant, so compare clear speed as well as difficulty."
         },
         {
           "type": "video",
@@ -171,11 +167,11 @@ const guide: Guide = {
           "steps": [
             {
               "h": "Collect sculptures",
-              "p": "Each eligible mission has a flat ~1/7 (~14%) chance to hide one sculpture in the tileset. They also drop from Arbitrations, Sorties/Archon Hunts, Simaris and containers. Anasa (the top sculpture) comes from Sorties (28% on the final mission) and Archon Hunts — NOT the weekly hunt."
+              "p": "Look for sculptures hidden in eligible missions, collect them from reward tables such as Arbitrations and Sorties, or buy specific sculptures from their vendors. Anasa is a possible Sortie reward (28%) and Archon Hunt reward; Maroo’s weekly hunt does not award it. Stars found in containers are separate pickups."
             },
             {
               "h": "Do Maroo's weekly Ayatan Treasure Hunt",
-              "p": "Maroo's Bazaar › Ayatan Treasure Hunt, once per week (resets Monday 00:00 UTC). It's a timed parkour room — Titania or Xaku make it trivial — awarding one rotating sculpture on a fixed 6-week cycle: Sah → Ayr → Orta → Vaya → Piv → Valana. It NEVER gives Anasa."
+              "p": "After Stolen Dreams, speak to Maroo at her Bazaar on Mars for a weekly Ayatan Treasure Hunt. Complete the timed treasure room and extract with the sculpture. The reward is one of six sculptures: Sah, Ayr, Orta, Vaya, Piv or Valana; it does not include Anasa. The weekly reset is Monday at 00:00 UTC."
             },
             {
               "h": "Socket before you dissolve",
@@ -210,70 +206,70 @@ const guide: Guide = {
                 "4C + 1A",
                 "450",
                 "3,000",
-                "Vendor (Necraloid); best single-Amber value"
+                "Loid’s Necraloid offerings"
               ],
               [
                 "Orta",
                 "3C + 1A",
                 "650",
                 "2,700",
-                "Weekly cycle (week 3)"
+                "Maroo’s weekly hunt and mission rewards"
               ],
               [
                 "Zambuka",
                 "2C + 1A",
                 "450",
                 "2,600",
-                "Vitus Essence store; best Endo-per-Amber (~1,075)"
+                "Arbitration Honors; bought with Vitus Essence"
               ],
               [
                 "Hemakara",
                 "2C + 1A",
                 "450",
                 "2,600",
-                "—"
+                "Past Operation: Orphix Venom and Nightwave rewards"
               ],
               [
                 "Chattraka",
                 "2C + 1A",
                 "450",
                 "2,600",
-                "Nightwave/vendor"
+                "Nightcap, Rank 3: Seeker; one purchase per week"
               ],
               [
                 "Vaya",
                 "2C + 1A",
                 "400",
                 "1,800",
-                "Weekly cycle (week 4)"
+                "Maroo’s weekly hunt and hidden mission sculptures"
               ],
               [
                 "Piv",
                 "2C + 1A",
                 "375",
                 "1,725",
-                "Weekly cycle (week 5)"
+                "Maroo’s weekly hunt and hidden mission sculptures"
               ],
               [
                 "Valana",
                 "2C + 1A",
                 "325",
                 "1,575",
-                "Weekly cycle (week 6)"
+                "Maroo’s weekly hunt and hidden mission sculptures"
               ],
               [
                 "Sah",
                 "2C + 1A",
                 "300",
                 "1,500",
-                "Weekly cycle (week 1)"
+                "Maroo’s weekly hunt and hidden mission sculptures"
               ],
               [
                 "Ayr",
                 "3C + 0A",
                 "325",
                 "1,425",
-                "Weekly cycle (week 2); no Amber needed"
+                "Maroo’s weekly hunt; no Amber needed"
               ]
             ],
             "note": "Loose star dissolve values: Cyan Star = 50 Endo, Amber Star = 100 Endo. Socketing beats dissolving loose — e.g. a socketed Anasa is 3,450 vs ~2,300 for the empty Anasa plus its 4 stars dissolved separately."
@@ -281,8 +277,8 @@ const guide: Guide = {
         },
         {
           "type": "warn",
-          "title": "Amber Stars are the bottleneck — and stars aren't vacuumed",
-          "text": "Cyan Stars are effectively unlimited (~2 per mission from containers/lockers and Kuaka on the Plains). Amber is the gate. Farm it from Deimos / Cambion Drift bounties (~45–56% on early stages), or MANUFACTURE it: the reusable Ayatan Amber Star blueprint from the Arbitration (Arbiters of Hexis) store costs 10 Vitus Essence, then each craft turns 2 Cyan + 1 Vitus + 100,000 credits into 1 Amber. When Amber-starved, spend it on Zambuka/Orta first and fully socket cyan-only Ayr. Note: sculptures AND stars must be picked up by hand — Vacuum/Fetch does not grab them; use a Loot Radar mod or Golden Instinct to spot them."
+          "title": "Check your star supply before filling sculptures",
+          "text": "Both Cyan and Amber Stars can come from containers and lockers; neither is guaranteed per mission. Cambion Drift bounties offer Amber Stars in selected reward pools. The reusable Amber Star blueprint costs 10 Vitus Essence at Arbitration Honors; each craft uses 2 Cyan Stars, 1 Vitus Essence and 100,000 credits. Compare that cost with farming more stars. Ayr needs only Cyan Stars. Sculptures and stars require manual pickup: Vacuum and Fetch do not collect them. Loot Radar helps you find them."
         },
         {
           "type": "video",
@@ -300,51 +296,51 @@ const guide: Guide = {
       "blocks": [
         {
           "type": "p",
-          "text": "Arbitrations (\"Elite Alerts\") are the #1 sustained Endo farm in 2026. One node is active at a time, rotating hourly, and unlocks once you've completed the Eris Junction on Pluto (Focus-Lens access) — the old \"clear every node\" requirement is gone. Each qualifying rotation drops a flat Endo lump plus one guaranteed Vitus Essence, and off-rolls hand out Ayatan Sculptures you dissolve for even more."
+          "text": "Arbitrations are hourly rotating endless alerts. Unlock them through the **Equip a Focus Lens** task in the Eris Junction on Pluto; clearing every Star Chart node is no longer required. Each completed reward rotation grants 1 Vitus Essence plus a roll on the reward table. That roll may be Endo, a sculpture, a mod or another listed reward — Endo is not guaranteed."
         },
         {
           "type": "kv",
           "kv": [
             {
               "k": "Rotation A",
-              "v": "900 Endo @ ~44%"
+              "v": "900 Endo at 44%"
             },
             {
               "k": "Rotation B",
-              "v": "1,200 Endo @ ~44.5%"
+              "v": "1,200 Endo at 44.5%"
             },
             {
               "k": "Rotation C",
-              "v": "1,500 Endo @ ~35% (buffed from 33% in a 2026 update)"
+              "v": "1,500 Endo at 35%"
             },
             {
               "k": "Rotation pattern",
-              "v": "AABBCC… then C repeats forever — sit on C for the 1,500 tier"
+              "v": "AABBCCCC… in most modes; Disruption uses its own round-and-conduit reward tiers"
             },
             {
-              "k": "Realistic output",
-              "v": "~5,000–10,000 Endo/hr, higher once you socket & sell the sculptures"
+              "k": "What determines your return",
+              "v": "Rotation completion time, random reward rolls, survival and stars available for sculptures"
             }
           ]
         },
         {
           "type": "p",
-          "text": "This was rebalanced, not nerfed. The \"Arbitrations Revisited\" pass lowered Endo's share of the pool but switched to AABBCC and doubled reward frequency (a roll every 5 Defense waves instead of 10), so hourly Endo held or improved. A 2026 tweak even raised Rotation C's chance and Vitus x3 odds."
+          "text": "The official drop tables list the chances above. Update 41.1 raised Rotation C’s 1,500-Endo reward chance from 33% to 35% and its 3-Vitus-Essence bundle from 7% to 10%. These are alternative reward-table outcomes; the bundle is separate from the Vitus Essence granted for completing a rotation."
         },
         {
           "type": "steps",
           "steps": [
             {
               "h": "Pick the active node and mode",
-              "p": "Survival is the community \"kill and chill\" favorite (most continuous spawns and floor Endo); Defense is a close, more predictable second (a guaranteed roll every 5 waves); Disruption front-loads high rotations fastest for active players — one roll per conduit defended, up to 4 per round."
+              "p": "Choose a mode your loadout can sustain. Survival rewards arrive every 5 minutes and Defense rewards every 5 waves. Disruption gives one reward per completed round; the round and number of conduits defended determine the reward tier, not one reward per conduit."
             },
             {
               "h": "Bring a tanky, self-sufficient loadout",
-              "p": "Arbitration Shield Drones make a nearby enemy damage-immune until the drone dies, and there is no free self-revive — you collect 5 Resurgence Tokens to revive, each stacking a health/shield/energy debuff."
+              "p": "Destroy Arbitration Shield Drones to remove their protection from nearby enemies. Ordinary self-revives are disabled. Surviving squadmates can collect 5 Resurgence Tokens and bring them to a fallen ally’s revive tower; carrying tokens reduces health and shields and drains energy. Avoid relying on a revive in solo play."
             },
             {
               "h": "Stay through multiple rotations",
-              "p": "Push past wave 20 / the AABB block to loop endless Rotation C = repeating 1,500-Endo table rolls. Let your pet vacuum floor Endo and stars between rounds."
+              "p": "In Survival and Defense, the first four rewards follow AABB; later rewards use Rotation C. That means a chance at 1,500 Endo, not a guaranteed payout. Collect loose Endo between rounds and manually pick up any Ayatan Stars you find."
             },
             {
               "h": "Cash out",
@@ -354,8 +350,8 @@ const guide: Guide = {
         },
         {
           "type": "info",
-          "title": "Drones don't drop Endo",
-          "text": "Shield Drones only have a 6% chance to drop 1 Vitus Essence (despawns after 5 min) — not Endo. Loose Endo comes from normal enemy drops plus the flat rotation table. Boosters do nothing for that table Endo."
+          "title": "Drone drops and rotation rewards are separate",
+          "text": "Arbitration Shield Drones can drop both Endo and Vitus Essence from separate drop tables. These enemy drops are separate from the rewards granted for completing a rotation. A booster that affects a drone’s drops still does not increase the Endo amount in the rotation reward table."
         },
         {
           "type": "video",
@@ -379,23 +375,23 @@ const guide: Guide = {
           "type": "list",
           "ordered": false,
           "items": [
-            "**Dissolving duplicate mods** — Orbiter › Mods segment. Unranked values are fixed by rarity: Common 5, Uncommon 10, Rare 15, Legendary ~20. The \"Quick Select\" bulk tool (bottom-right, added in Update 38.5) mass-selects unranked mods by rarity with a keep-N field, auto-skips ranked/Legendary/Riven mods, and confirms by typing \"Fusion.\"",
-            "**Daily Sortie** — ~4,000 Endo, but only a ~12% roll on the reward table (roughly one payout every ~8 days, not daily).",
-            "**Weekly Archon Hunt** — 8,000 Endo at ~12.1%; you run it for the guaranteed Archon Shard.",
+            "**Dissolving duplicate mods** — use the Orbiter’s Mods segment. Unranked Common / Uncommon / Rare mods return 5 / 10 / 15 Endo. Quick Select lets you retain extra copies and skip chosen mods; it excludes ranked, Legendary and Riven mods. Review the selection and the displayed Endo total before confirming.",
+            "**Daily Sortie** — 4,000 Endo has a 12% reward chance. It is a possible daily reward, not guaranteed income.",
+            "**Weekly Archon Hunt** — 8,000 Endo is one possible completion reward alongside the guaranteed Archon Shard.",
             "**Teshin's Steel Path Honors** — a 30,000-Endo bundle for 150 Steel Essence, but it's a rotating slot that surfaces only ~1 week in 8.",
             "**Palladino** — 10 Riven Slivers → 6,000 Endo, once per week.",
-            "**Granum Void** — 200 / 400 / 600 Endo by tier."
+            "**Granum Void** — Rotation B can award 200 / 400 / 600 Endo in Standard / Extended / Nightmare, each at 33.33%."
           ]
         },
         {
           "type": "warn",
-          "title": "Never sell mods for credits, and never dissolve the wrong things",
-          "text": "Selling mods for CREDITS pays trash — always dissolve for Endo, and farm [credits](/guides/credits) separately (one Index run ≈ 250k). Dissolving a RANKED mod refunds only 75% of the Endo you invested — a net loss — so never rank a mod up just to dissolve it. And never dissolve a tradeable/valuable mod or a [Riven](/guides/riven): a Riven is worth far more as platinum, and even as Endo only pays big if you've already sunk many Kuva rerolls into it (+200 Endo per reroll)."
+          "title": "Review valuable mods before dissolving",
+          "text": "Dissolve surplus mods when Endo is your goal, and use dedicated [credit farms](/guides/credits) for the other half of the Fusion cost. Ranking a mod solely to dissolve it loses Endo: the refund is only part of the Fusion investment. Keep useful copies and check trade value before destroying a rare mod or [Riven](/guides/riven). A rerolled Riven can have a substantial dissolve value, but its build or sale value may be higher."
         },
         {
           "type": "tip",
-          "title": "The mod-dissolve yield is overstated everywhere",
-          "text": "You'll see \"100k–200k from one cleanup\" — that's inflated 5–15x. A hoarder with thousands of dupes reported only ~10–14k Endo from a full purge. Treat dissolving as free cleanup worth a few thousand Endo, not a headline farm."
+          "title": "Use the dissolve preview, not a promised cleanup total",
+          "text": "Your return depends on the number, rarity and ranks of the mods selected. There is no fixed cleanup payout. Keep the copies you need, inspect valuable duplicates separately, and use the confirmation screen’s total to decide whether the cleanup covers your next upgrade."
         }
       ]
     },
@@ -405,39 +401,39 @@ const guide: Guide = {
       "blocks": [
         {
           "type": "p",
-          "text": "Endo only leaves your pool one way: ranking up mods. Every rank costs Endo + credits and raises both the mod's effect and its drain. The costs scale brutally at the top end, which is why Endo always feels scarce."
+          "text": "Fusion is the main use for Endo. Each additional rank costs more Endo and credits, so check the remaining cost before committing. A useful mod at a partial rank can fit your current budget while you build up the rest of your loadout."
         },
         {
           "type": "kv",
           "kv": [
             {
               "k": "Rank-10 Primed mod",
-              "v": "~140,000 Endo total (top ranks cost 40k+ each)"
+              "v": "40,920 Endo from rank 0 to 10; the final rank alone costs 20,480"
             },
             {
-              "k": "Full Primed / Archon / Galvanized collection",
-              "v": "hundreds of thousands to over a million Endo"
+              "k": "Rank-10 Primed mod credit cost",
+              "v": "1,976,436 credits from rank 0 to 10"
             },
             {
               "k": "Maxed rank-10 rare",
-              "v": "~30,690 Endo to build (dissolves back for ~23k)"
+              "v": "30,690 Endo from rank 0 to 10; rarity and maximum rank both matter"
             }
           ]
         },
         {
           "type": "tip",
           "title": "Sometimes a Legendary Core beats farming",
-          "text": "A tradeable Legendary Core instantly maxes ANY mod and costs ~60–80 platinum. For a single Primed mod that's often cheaper than farming 40k+ Endo AND the ~2M+ credits the top ranks demand. Buy the Core, save the grind for the rest of your collection."
+          "text": "A Legendary Core maxes one eligible mod without charging its remaining Endo and Fusion credit costs. Using it on an unranked rank-10 Primed mod saves 40,920 Endo and 1,976,436 credits. Check current offers before buying one: the receiving player also pays a 1,000,000-credit trading tax. A partly ranked mod saves less, and there is no fixed Platinum price."
         },
         {
           "type": "info",
           "title": "Ayatan-to-mod is the cleanest conversion",
-          "text": "Because Endo is untradeable, socketed Ayatan Sculptures are effectively a way to bank future mod ranks — hoard sculptures and stars freely (they don't use inventory capacity), then dissolve a stack when you need to max something. There's no practical Endo storage cap."
+          "text": "Ayatan Sculptures let you hold a future Endo supply without dissolving them immediately. Keep the sculpture and stars until you need the Endo, then socket and convert them at Maroo. A fully socketed Anasa yields 3,450 Endo; buying one trades Platinum for that future conversion, not for a directly tradeable Endo balance."
         },
         {
           "type": "info",
           "title": "Prefer to buy your way past the grind?",
-          "text": "You can't buy Endo directly, but you can turn platinum into it cheaply: a heavily-rerolled junk [Riven](/guides/riven) dissolves into thousands of Endo for pocket-change plat, and filled Ayatan sculptures sell on the market. The [Endo Exchange tool](/endo) ranks both routes live by Endo-per-platinum so you can see the cheapest option right now — the flip side of this farming guide."
+          "text": "You cannot trade Endo itself with another player. You can buy a filled Ayatan Sculpture or a mod, then dissolve it. Compare the quoted price with its exact Endo value, including socket state or Riven rank and rerolls. The [Endo Exchange tool](/endo) compares tracked offers by Endo per Platinum; check the data’s age and confirm the item and price with the seller before trading."
         }
       ]
     }
@@ -445,19 +441,19 @@ const guide: Guide = {
   "faqs": [
     {
       "q": "What is the fastest Endo farm in 2026?",
-      "a": "For raw speed with a coordinated premade, the Steel Path Sedna Rathuum arena (Vodyanoi) with a Nekros + Pilfer-Khora + grouping frame and a Mod Drop Chance Booster hits roughly 1,000 Endo/minute — the highest sustained rate. For uncapped solo speed, high-tier 1999/Höllvania bounties (3,300–4,200 Endo rolls, no daily cap) are the community favorite. It's not nerfed, just niche: most casual players use Arbitrations or 1999 instead because the arena is sweaty and needs a premade."
+      "a": "There is no universal fastest farm. Coordinated Vodyanoi squads use loot abilities and Mod Drop Chance bonuses to focus on enemy drops. Solo players can compare Arbitrations with bounties they clear quickly. Use several completed runs, including loading and extraction, to measure your own return; reward-table Endo is random."
     },
     {
       "q": "What's the best repeatable Endo farm for veterans?",
-      "a": "Arbitrations. Each qualifying rotation drops 900/1,200/1,500 Endo (Rot A/B/C), and endless modes let you loop Rotation C for the 1,500 tier indefinitely — roughly 5,000–10,000 Endo/hour, plus Ayatan sculpture off-rolls you dissolve for thousands more, plus guaranteed Vitus Essence. Unlocks after the Eris Junction on Pluto."
+      "a": "Arbitrations are a repeatable option: A / B / C can award 900 / 1,200 / 1,500 Endo at 44% / 44.5% / 35%. Other rolls can award sculptures or other items, so not every rotation gives Endo. Most modes follow AABBCCCC…; Disruption uses its own reward tiers. Access comes from the Equip a Focus Lens task in the Eris Junction on Pluto."
     },
     {
       "q": "Best option if I'm solo or don't want a premade?",
-      "a": "Arbitrations (Endo + sculptures every rotation), high-tier 1999/Zariman/Sanctum bounties (fast exterminates, up to 3,300–4,200 Endo per reward roll), or Railjack (crate Endo plus scrapping wreckage for ~225 each). All are soloable or pug-friendly."
+      "a": "Choose a bounty or Arbitration mode your loadout completes reliably. High-tier Höllvania bounties can award 3,300 or 4,200 Endo; high-tier Zariman and Sanctum bounties offer 3,000 or 4,000. These are random reward rolls. Unwanted Railjack wreckage and weekly Ayatan hunts are useful supplements."
     },
     {
       "q": "What's the best pre-Steel-Path / early Endo farm?",
-      "a": "Deimos/Cambion Drift Tier-5 (L40–60) bounties — run the first ~3 stages for the ~1,000-Endo bundles, then reset. Add 1999 bounties if unlocked and Railjack scrapping, and backfill with dissolving duplicate mods and Maroo's free weekly Ayatan hunt. Arbitrations require the full Star Chart, so they come slightly later."
+      "a": "Start with surplus mods and Maroo’s weekly Ayatan hunt after Stolen Dreams. If your build can handle level 40–60 Cambion Drift bounties, their first stage has a 45.45% chance at 1,000 Endo. Arbitrations become available through the Eris Junction Focus Lens task on Pluto; they do not require the full Star Chart."
     },
     {
       "q": "How do Ayatan Sculptures work?",
@@ -465,31 +461,31 @@ const guide: Guide = {
     },
     {
       "q": "Should I dissolve Ayatan Stars or socket them?",
-      "a": "Socket them. A loose Cyan Star dissolves for only 50 Endo and Amber for 100, but socketing applies the sculpture's multiplier — each Cyan star is worth roughly 350–450 Endo of added dissolve value inside a sculpture. Always fill the sockets before taking it to Maroo."
+      "a": "Usually socket them first. Loose Cyan and Amber Stars yield 50 and 100 Endo respectively, while filling a sculpture increases its conversion value. The gain depends on the sculpture and sockets already filled, not a fixed amount per star. If one color is scarce, compare the preview before allocating your stars."
     },
     {
       "q": "Does Maroo's weekly Ayatan Treasure Hunt give an Anasa?",
-      "a": "No. The weekly hunt only gives one of six rotating lesser sculptures on a fixed 6-week cycle (Sah, Ayr, Orta, Vaya, Piv, Valana), topping out at Orta (2,700 socketed). Anasa — the 3,450-Endo flagship — comes from Sorties (28% on the final mission) and Archon Hunts. Still do the weekly every week; it's a few minutes of parkour for a free sculpture."
+      "a": "No. Maroo’s weekly hunt awards Sah, Ayr, Orta, Vaya, Piv or Valana. Fully socketed, these yield 1,425–2,700 Endo. Anasa yields 3,450 Endo when filled and is a possible Sortie reward (28%) or Archon Hunt reward. Complete the weekly treasure room and extract to keep its sculpture."
     },
     {
-      "q": "Does a Resource or Drop Chance Booster increase Endo?",
-      "a": "No. There is no Endo Booster, and Resource, Drop Chance, Steel Path Drop Chance and Drop Chance Blessing all have zero effect on Endo — it isn't a boostable resource, and boosters never touch end-of-mission rewards. The one exception: in-mission Endo pickups count as MOD drops, so a Mod Drop Chance Booster doubles the Endo you sweep off the floor, which is why the Sedna arena meta stacks it with Steel Path."
+      "q": "Which boosters increase Endo?",
+      "a": "A Mod Drop Chance Booster doubles the chance that enemies drop Endo, not the amount in each pickup. The Steel Path’s mod-drop-chance bonus also helps eligible enemy drops. Resource Boosters, Resource Drop Chance Boosters and resource drop blessings do not boost Endo. None of these increases mission or bounty reward-table Endo, or mod and sculpture dissolve values."
     },
     {
       "q": "Do I run bounties on Steel Path for more Endo?",
-      "a": "No. 1999, Zariman and Sanctum bounties give the SAME Endo on Normal and Steel Path, so run Normal for speed — SP only adds Steel Essence. The Sedna Rathuum arena is the one farm that specifically wants Steel Path, because its bonus doubles enemy Endo drops."
+      "a": "Steel Path’s drop bonuses do not multiply the Endo shown in a bounty reward table. Compare the active reward pool and your completion time. Steel Path may still be useful for other rewards, and its mod-drop bonus helps enemy-drop farms such as Vodyanoi."
     },
     {
       "q": "How much Endo do I get from dissolving mods?",
-      "a": "Unranked junk mods give tiny fixed amounts — Common 5, Uncommon 10, Rare 15 Endo. It scales with rank because dissolving refunds ~75% of the Endo invested, so a maxed rare or Primed dupe returns hundreds to thousands. The confirm screen shows the exact number. Treat it as free cleanup worth a few thousand Endo, not a farm — and never dissolve tradeable dupes (sell those for platinum) or a Riven."
+      "a": "Unranked Common / Uncommon / Rare mods yield 5 / 10 / 15 Endo. Ranked mods return part of the Endo invested, so ranking a mod just to dissolve it loses Endo. The confirmation screen shows the exact return. Keep useful copies and compare trade value before dissolving valuable duplicates or a Riven."
     },
     {
       "q": "Why do I have tons of Cyan Stars but never enough Amber?",
-      "a": "That's by design. Cyan Stars are common (containers, lockers, Kuaka on the Plains); Amber is the bottleneck that limits how many sculptures you can fully socket. Farm Amber from Deimos/Cambion Drift bounties, or manufacture it with the reusable Amber Star blueprint from the Arbitration store (10 Vitus Essence, then 2 Cyan + 1 Vitus + 100k credits each). When Amber-starved, put it into Zambuka/Orta and fully socket cyan-only Ayr."
+      "a": "Both colors are random container or locker drops, and sculpture sockets consume them in different proportions. Cambion Drift bounties can award Amber Stars. Arbitration Honors sells a reusable Amber Star blueprint for 10 Vitus Essence; each craft costs 2 Cyan Stars, 1 Vitus Essence and 100,000 credits. Ayr needs only Cyan Stars. Compare your supplies and the conversion preview before crafting or socketing."
     },
     {
       "q": "Can I trade or buy Endo?",
-      "a": "No — Endo itself is untradeable and can't be sold for credits or bought from other players. It must be earned or converted. But you can spend platinum to get it cheaply: buy a heavily-rerolled junk Riven or a filled Ayatan sculpture and dissolve it. The [Endo Exchange](/endo) ranks those buy routes live by Endo-per-plat."
+      "a": "Endo itself cannot be traded between players. You can buy an Ayatan Sculpture or a mod from another player and dissolve it for Endo. Compare current offers, the exact item’s dissolve value and any credit tax before trading. The [Endo Exchange](/endo) compares these indirect routes; a listed offer is not a guaranteed transaction."
     }
   ],
   "videos": [
@@ -526,6 +522,42 @@ const guide: Guide = {
   ],
   "sources": [
     {
+      "label": "Digital Extremes — Official PC drop tables",
+      "href": "https://www.warframe.com/droptables"
+    },
+    {
+      "label": "Update 35.5 — Mod Drop Chance Booster description",
+      "href": "https://www.warframe.com/en/patch-notes/pc/35-5-0"
+    },
+    {
+      "label": "Update 39 — Eris Junction and Arbitration access",
+      "href": "https://www.warframe.com/en/patch-notes/pc/39-0-0"
+    },
+    {
+      "label": "Update 41.1 — Arbitration Rotation C changes",
+      "href": "https://www.warframe.com/en/patch-notes/pc/41-1-0"
+    },
+    {
+      "label": "Arbitrations Revisited — reward cadence",
+      "href": "https://www.warframe.com/en/patch-notes/pc/25-7-6"
+    },
+    {
+      "label": "Update 40 — Nightcap and Ayatan Chattraka",
+      "href": "https://www.warframe.com/en/patch-notes/pc/40-0-0"
+    },
+    {
+      "label": "Warframe — Intro to Archon Hunts",
+      "href": "https://www.warframe.com/en/news/intro-to-archon-hunts"
+    },
+    {
+      "label": "WARFRAME Wiki — Fusion costs",
+      "href": "https://wiki.warframe.com/w/Fusion"
+    },
+    {
+      "label": "WARFRAME Wiki — Legendary Core",
+      "href": "https://wiki.warframe.com/w/Legendary_Core"
+    },
+    {
       "label": "WARFRAME Wiki — Endo",
       "href": "https://wiki.warframe.com/w/Endo"
     },
@@ -551,7 +583,7 @@ const guide: Guide = {
       "label": "Endo Exchange (buy with Platinum)",
       "to": "/endo",
       "icon": "swap-horizontal",
-      "note": "Skip the grind — the cheapest Endo-per-plat from rerolled Rivens & Ayatans, ranked live"
+      "note": "Compare tracked Ayatan and Riven offers by Endo per Platinum"
     },
     {
       "label": "Modding Guide",
@@ -563,7 +595,7 @@ const guide: Guide = {
       "label": "Riven Mods Explained",
       "to": "/guides/riven",
       "icon": "star-four-points-outline",
-      "note": "A junk Riven dissolves into a big Endo lump"
+      "note": "Compare a Riven’s use, trade and dissolve value"
     },
     {
       "label": "Credit Farming",
@@ -575,16 +607,16 @@ const guide: Guide = {
       "label": "Steel Path Guide",
       "to": "/guides/steel-path",
       "icon": "fire",
-      "note": "Doubles floor Endo in the Sedna Rathuum arena"
+      "note": "How mod-drop bonuses help enemy-based Endo farms"
     },
     {
       "label": "Archon Shards",
       "to": "/guides/archon-shards",
       "icon": "cards-diamond-outline",
-      "note": "The weekly hunt that also pays 8,000 Endo"
+      "note": "The weekly hunt with a chance at an 8,000-Endo reward"
     }
   ],
-  "updated": "2026-07-18"
+  "updated": "2026-10-23"
 }
 
 export default guide

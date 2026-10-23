@@ -1,13 +1,14 @@
 <template>
   <aside
-    v-if="freshness.status === 'stale' || freshness.status === 'unknown'"
+    v-if="freshness.status !== 'empty' && freshness.status !== 'fresh'"
     class="market-freshness"
     role="status"
     aria-atomic="true"
     aria-labelledby="market-freshness-title"
   >
-    <strong id="market-freshness-title" class="market-freshness__title">{{ t('marketFreshness.title') }}</strong>
+    <strong id="market-freshness-title" class="market-freshness__title">{{ t(freshness.status === 'mixed' ? 'marketFreshness.partialTitle' : 'marketFreshness.title') }}</strong>
     <p v-if="freshness.status === 'stale'">{{ t('marketFreshness.body') }}</p>
+    <p v-else-if="freshness.status === 'mixed'">{{ t('marketFreshness.coverage', freshness.counts) }}</p>
     <i18n-t v-if="freshness.latestUpdate" keypath="marketFreshness.latest" tag="p" class="market-freshness__date">
       <template #time>
         <time :datetime="freshness.latestUpdate">{{ marketTimestampUtc(freshness.latestUpdate) }}</time>

@@ -201,7 +201,7 @@ export const PAGE_SEO: Record<string, PageSeo> = {
   '/guides/endo': {
     title: 'Endo Farming Guide — Warframe',
     description:
-      'A complete guide to farming Endo efficiently in Warframe, plus how to value Ayatan sculptures and mods against platinum.'
+      'Compare Endo farms, Arbitration rewards, Ayatan values and Mod Drop Chance Boosters. Plan the 40,920 Endo needed to max a rank-10 Primed mod.'
   },
   '/guides': {
     title: 'Warframe Guides — Farming, Builds, Platinum & Beginner Help',

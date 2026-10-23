@@ -112,7 +112,7 @@ export const PAGE_SEO_I18N: Record<string, Record<string, PageSeo>> = {
     '/guides/endo': {
       title: 'Guía de farmeo de Endo — Warframe',
       description:
-        'Guía completa para farmear Endo de forma eficiente en Warframe, además de cómo valorar esculturas Ayatan y mods frente al platino.'
+        "Compara métodos para conseguir Endo, recompensas de Arbitrajes, valores de Ayatan y potenciadores de probabilidad de obtención de mods. Planifica los 40,920 Endo necesarios para llevar un mod Primed al rango 10."
     }
   },
   pt: {
@@ -219,7 +219,7 @@ export const PAGE_SEO_I18N: Record<string, Record<string, PageSeo>> = {
     '/guides/endo': {
       title: 'Guia de farm de Endo — Warframe',
       description:
-        'Um guia completo para farmar Endo com eficiência no Warframe, além de como avaliar esculturas Ayatan e mods em relação à platina.'
+        "Compare métodos para obter Endo, recompensas de Arbitragem, valores Ayatan e boosters de chance de obtenção de mods. Planeje os 40.920 Endo necessários para levar um mod Primed ao nível 10."
     }
   },
   de: {
@@ -326,7 +326,7 @@ export const PAGE_SEO_I18N: Record<string, Record<string, PageSeo>> = {
     '/guides/endo': {
       title: 'Endo-Farm-Guide — Warframe',
       description:
-        'Ein kompletter Guide zum effizienten Endo-Farmen in Warframe, plus wie du Ayatan-Skulpturen und Mods gegen Platin bewertest.'
+        "Vergleiche Methoden zum Endo-Farmen, Belohnungen aus Arbitrationen, Ayatan-Werte und Mod-Drop-Chance-Booster. Plane die 40.920 Endo ein, die du zum Aufwerten eines Primed-Mods auf Rang 10 benötigst."
     }
   },
   fr: {
@@ -433,7 +433,7 @@ export const PAGE_SEO_I18N: Record<string, Record<string, PageSeo>> = {
     '/guides/endo': {
       title: "Guide de farm d'Endo — Warframe",
       description:
-        "Un guide complet pour farmer l'Endo efficacement dans Warframe, et pour évaluer les sculptures Ayatan et les mods face à la platine."
+        "Comparez les méthodes pour obtenir de l'Endo, les récompenses d'Arbitrage, les valeurs Ayatan et les boosters de chance de butin de mods. Prévoyez les 40 920 Endo nécessaires pour monter un mod Primed au rang 10."
     }
   },
   ru: {
@@ -540,7 +540,7 @@ export const PAGE_SEO_I18N: Record<string, Record<string, PageSeo>> = {
     '/guides/endo': {
       title: 'Гайд по фарму Endo — Warframe',
       description:
-        'Полный гайд по эффективному фарму Endo в Warframe, а также как оценивать скульптуры Ayatan и моды относительно платины.'
+        "Сравните способы фарма Endo, награды Арбитража, ценность Аятан и усилители шанса выпадения модов. Запланируйте 40 920 Endo для улучшения мода Primed до 10-го ранга."
     }
   },
   ko: {
@@ -647,7 +647,7 @@ export const PAGE_SEO_I18N: Record<string, Record<string, PageSeo>> = {
     '/guides/endo': {
       title: 'Endo 파밍 가이드 — Warframe',
       description:
-        'Warframe에서 Endo를 효율적으로 파밍하는 완벽 가이드와 Ayatan 조각상·모드를 플래티넘과 비교해 평가하는 법.'
+        "Endo 파밍 방법, 중재 보상, Ayatan의 Endo 가치 및 모드 드롭 확률 부스터를 비교하세요. Primed 모드를 최대 랭크 10까지 강화하는 데 필요한 40,920 Endo를 준비할 계획을 세워보세요."
     }
   },
   ja: {
@@ -754,7 +754,7 @@ export const PAGE_SEO_I18N: Record<string, Record<string, PageSeo>> = {
     '/guides/endo': {
       title: 'Endo周回ガイド — Warframe',
       description:
-        'WarframeでEndoを効率的に周回する完全ガイドと、Ayatan彫像やMODをプラチナと比較して評価する方法。'
+        "Endo の入手方法、仲裁報酬、Ayatan の Endo 換算値、MODドロップ確率ブースターを比較。Primed MOD を最大ランク10にするために必要な 40,920 Endo の準備に役立てましょう。"
     }
   },
   'zh-hans': {
@@ -861,7 +861,7 @@ export const PAGE_SEO_I18N: Record<string, Record<string, PageSeo>> = {
     '/guides/endo': {
       title: 'Endo 刷取指南 — Warframe',
       description:
-        '在 Warframe 中高效刷取 Endo 的完整指南，以及如何用白金衡量 Ayatan 雕像与 MOD 的价值。'
+        "比较 Endo 获取方法、仲裁奖励、Ayatan 的 Endo 价值和 Mod 掉落几率加成。规划将 Primed 模组升至满级（10级）所需的 40,920 Endo。"
     }
   },
   'zh-hant': {
@@ -968,7 +968,7 @@ export const PAGE_SEO_I18N: Record<string, Record<string, PageSeo>> = {
     '/guides/endo': {
       title: 'Endo 刷取指南 — Warframe',
       description:
-        '在 Warframe 中高效刷取 Endo 的完整指南，以及如何用白金衡量 Ayatan 雕像與 MOD 的價值。'
+        "比較 Endo 取得方法、仲裁獎勵、Ayatan 的 Endo 價值和 Mod 掉落機率加成。規劃將 Primed 模組升至滿級（10級）所需的 40,920 Endo。"
     }
   },
   pl: {
@@ -1075,7 +1075,7 @@ export const PAGE_SEO_I18N: Record<string, Record<string, PageSeo>> = {
     '/guides/endo': {
       title: 'Poradnik farmienia Endo — Warframe',
       description:
-        'Kompletny poradnik do wydajnego farmienia Endo w Warframe oraz jak wyceniać rzeźby Ayatan i mody względem platyny.'
+        "Porównaj sposoby zdobywania Endo, nagrody Arbitrażu, wartości Ayatan i wzmacniacze szansy na wypadnięcie modów. Zaplanuj 40 920 Endo na ulepszenie moda Primed do rangi 10."
     }
   },
   it: {
@@ -1182,7 +1182,7 @@ export const PAGE_SEO_I18N: Record<string, Record<string, PageSeo>> = {
     '/guides/endo': {
       title: "Guida al farming di Endo — Warframe",
       description:
-        "Una guida completa per farmare Endo in modo efficiente in Warframe, e per valutare sculture Ayatan e mod rispetto al platino."
+        "Confronta i metodi per ottenere Endo, le ricompense degli Arbitrati, i valori Ayatan e i booster della probabilità di rilascio dei mod. Pianifica i 40.920 Endo necessari per portare un mod Primed al rango 10."
     }
   },
   uk: {
@@ -1289,7 +1289,7 @@ export const PAGE_SEO_I18N: Record<string, Record<string, PageSeo>> = {
     '/guides/endo': {
       title: 'Гайд із фарму Endo — Warframe',
       description:
-        'Повний гайд з ефективного фарму Endo у Warframe, а також як оцінювати скульптури Ayatan і моди відносно платини.'
+        "Порівняйте способи здобуття Endo, нагороди Арбітражу, цінність Ayatan і підсилювачі шансу випадіння модів. Заплануйте 40 920 Endo для покращення мода Primed до 10-го рангу."
     }
   }
 }

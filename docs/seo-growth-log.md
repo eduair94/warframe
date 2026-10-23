@@ -892,3 +892,85 @@ and untranslated content gaps remain visible. Historical research articles for e
 Riven tools also need a separate source review following the Disposition change; the
 updated directory guidance asks readers to confirm 44.1.3 support before using their
 range estimates and does not claim those external tools have already updated.
+
+## October 23, 2026 — Endo accuracy and catalogue coverage
+
+The daily follow-up starts from the successful full deployment
+[39902201087](https://github.com/eduair94/warframe/actions/runs/39902201087),
+commit `7167704e5f76276204c6ad2b4e71ad85fea8ba7b`. At 13:03 UTC all three
+application processes were online. Of 3,892 catalogue prices, 3,761 were updated
+within three hours, 131 were older and 67 were over a day old. The newest record
+was about 49 seconds old. Endo's English and Spanish pages each rendered 40 real
+item rows. Recovery is substantially broader than the preceding release, but
+recent activity alone does not establish that every price is current.
+
+### Endo guide review
+
+The guide now states the 40,920-Endo cost of taking a standard rank-10 Primed mod
+from unranked to maximum, replacing the incorrect approximately 140,000 figure.
+It distinguishes a Mod Drop Chance Booster's effect on enemy drop probability
+from pickup amounts, reward tables and sculpture conversion values. Arbitration
+Endo rewards are random alternatives, rather than guaranteed on every rotation;
+access comes from the Eris Junction Focus Lens task. Disruption grants a reward
+per completed round, not per defended conduit. Arbitration Shield Drones can
+drop Endo and Vitus Essence from separate tables.
+
+Sources include the [official PC drop tables](https://www.warframe.com/droptables),
+dated October 22 when downloaded, and official Updates
+[35.5](https://www.warframe.com/en/patch-notes/pc/35-5-0),
+[39](https://www.warframe.com/en/patch-notes/pc/39-0-0),
+[41.1](https://www.warframe.com/en/patch-notes/pc/41-1-0) and
+[40](https://www.warframe.com/en/patch-notes/pc/40-0-0).
+Fusion costs and sculpture socket values were cross-checked with the linked
+Warframe Wiki tables. Unsupported hourly rates, universal fastest-farm claims,
+fixed Maroo week assignments and cheap-trade promises are removed. The guide
+compares accessible farms, explains reward probabilities and directs readers to
+check current offers and exact conversion previews. Archon Hunt access and
+sculpture vendor descriptions are corrected. Hotfix 44.1.3 remains the latest
+official patch found during this review.
+
+The substantive review updates Endo's review date to October 23. All 87 changed
+display fields are localized in twelve snapshots: 1,044 refreshed strings, with
+1,608 unchanged strings and publication metadata preserved. Post-generation
+semantic review applies 803 exact corrections and records 212 exact numeric-format
+equivalences. It checks probabilities, conditions, drop mechanics, costs, names
+and links rather than relying only on automatic shape checks. The English
+directory summary and all 13 search
+descriptions use the corrected scope and costs. No new pages are created solely
+to target keyword variations.
+
+### Honest partial coverage
+
+The market notice now counts fresh, stale and unknown timestamps in the existing
+catalogue pass. Mixed coverage displays all three counts instead of disappearing
+as soon as one recent item exists. Three hours exactly is fresh; older records
+are stale; invalid or future dates are unknown. An empty catalogue and a fully
+fresh catalogue remain silent. All-stale and all-unknown states retain their
+existing messages. This uses the existing payload and serialized SSR clock,
+with no extra requests or polling. All 13 locales have reviewed copy.
+
+### Validation and next measurement
+
+The backend suite passes 706 tests in 55 suites, the frontend suite passes 37
+tests and guide refresh regression checks pass 26 tests: 769 automated tests.
+The production backend build and locale message compilation pass. All 25 guide
+validations and the generated repository-map check pass; Endo has no translation
+follow-up warnings. The freshness
+component also passes actual client/server compilation, all 13 localized SSR
+renders, clock consistency, reactive catalogue updates, timer cleanup and 156
+route-gating checks. Existing advisory lint/typecheck debt remains separate
+from these passing checks.
+
+All intended content, translations, code and documentation are committed before
+the complete API/frontend/live deployment. Public verification after deployment
+checks the released revision, processes, health, assets/live service, all 13 Endo
+guide pages and representative Endo tool pages. Coverage counts are compared
+with each page's own SSR payload rather than a different API snapshot.
+
+One Supermetrics discovery attempt again returned UNAUTHORIZED. GA4 and Search
+Console require reauthentication; no traffic values or ranking gains are inferred.
+Once accessible, compare complete October 16–22 versus October 9–15 and
+September 25–October 22 versus August 28–September 24 in the property timezone.
+The remaining overdue guides, translation gaps and external Riven-tool research
+remain on the review queue; unrelated review dates are preserved. The existing
+daily 10:00 Montevideo maintenance automation remains active.
