@@ -6,15 +6,15 @@ const guide: Guide = {
   slug: 'forma',
   eyebrow: 'Knowledge Center · Forma Sources',
   title: 'How to Farm Forma: Relics, Crafting & Free Rewards',
-  lede: 'Farm Forma Blueprints from relics, plan crafting resources and compare built Forma sources. The Banshee giveaway has ended, but eligible accounts can still claim its one-time Forma until December 31, 2026.',
+  lede: 'Farm Forma Blueprints from relics, plan crafting resources and compare built Forma sources. Hotfix 44.1.3 offers all players a login gift of 2 built Forma and 100,000 Kuva through December 31, 2026.',
   category: 'farming',
   readMins: 9,
-  updated: '2026-10-22',
+  updated: '2026-10-23',
   stats: [
     { num: '1', label: 'reward selection per player per opened relic', tone: 'good' },
     { num: '2×', label: 'blueprints in an Uncommon Forma reward', tone: 'alt' },
     { num: '23 h', label: 'Foundry build time for standard Forma', tone: 'gold' },
-    { num: '1', label: 'built Forma for eligible unclaimed Update 44 rewards' },
+    { num: '2', label: 'built Forma in the Hotfix 44.1.3 login gift' },
   ],
   sections: [
     {
@@ -31,11 +31,19 @@ const guide: Guide = {
       ],
     },
     {
+      id: 'arsenal-retuning',
+      title: 'Hotfix 44.1.3: two free built Forma',
+      blocks: [
+        { type: 'p', text: '**Log in after Hotfix 44.1.3 to receive 2 built Forma and 100,000 Kuva.** The [Arsenal Retuning inbox](https://www.warframe.com/en/patch-notes/pc/44-1-3) is available to all players until **December 31, 2026 at 11:59 p.m. ET**. Check your inbox after logging in; this is a one-time reward.' },
+        { type: 'info', text: 'This gift is separate from the earlier Banshee login reward below. Receiving Banshee does not exclude you from the Hotfix 44.1.3 gift. The released patch notes specify **2 built Forma**, superseding the earlier developer workshop announcement of one.' },
+      ],
+    },
+    {
       id: 'free-forma-2026',
-      title: 'Free built Forma: claim deadline and eligibility',
+      title: 'Earlier Banshee reward: remaining Forma eligibility',
       blocks: [
         { type: 'p', text: 'The **free Banshee giveaway ended on October 7, 2026 at 11:59 p.m. ET**. Its original [Update 44](https://www.warframe.com/en/patch-notes/pc/44-0-0) login window began on September 23 at 11:30 a.m. ET and included one built Forma. That Banshee window is closed; the remaining Forma claim has a later deadline.' },
-        { type: 'p', text: '**You can still claim the one built Forma until December 31, 2026 if you did not receive the Banshee inbox.** Log into Warframe and check your inbox and inventory. The official Update 44 notes explicitly retain this Forma-only claim after Banshee expires. If you already received the reward with Banshee, you do not get a second Forma.' },
+        { type: 'p', text: '**You can still claim the one built Forma until December 31, 2026 if you did not receive the Banshee inbox.** Log into Warframe and check your inbox and inventory. The official Update 44 notes explicitly retain this Forma-only claim after Banshee expires. This earlier reward cannot be claimed twice; the separate Hotfix 44.1.3 gift remains available to all players.' },
         { type: 'tip', text: 'A built Forma is ready to use. You do not need a blueprint, crafting resources or a Foundry wait for this reward. For a repeatable supply, continue with the relic and crafting methods below.' },
       ],
     },
@@ -90,7 +98,7 @@ const guide: Guide = {
             ['In-game Market', 'The standard 3 Forma Bundle is listed at 35 Platinum; check the final price before purchase.', 'You need built Forma immediately and have budgeted the Platinum.'],
             ['Nightwave', 'Inspect the current reward track for a Forma Bundle and its actual rank.', 'You are already completing challenges; a past season’s reward rank may differ.'],
             ['Sorties and other reward pools', 'Read the current reward list and distinguish a random chance from a guaranteed reward.', 'You also want the other rewards. Do not plan a fixed number of runs around a lucky drop.'],
-            ['Login rewards and events', 'Eligible unclaimed Update 44 Forma remains available until December 31, 2026. The Banshee giveaway and Plague Star have ended.', 'Claim an eligible one-time gift; use relics and crafting for a repeatable supply.'],
+            ['Login rewards and events', 'The Hotfix 44.1.3 login gift contains 2 built Forma and 100,000 Kuva through December 31, 2026 at 11:59 p.m. ET. The earlier unclaimed Banshee Forma reward has separate eligibility.', 'Claim an eligible one-time gift; use relics and crafting for a repeatable supply.'],
           ],
           note: 'The Market bundle was introduced in Specters of the Rail. Seasonal rewards and event inventories need a current in-game check.',
         } },
@@ -164,7 +172,7 @@ const guide: Guide = {
     { q: 'Why did I open several relics and get no Forma?', a: 'Relic rewards are random, so a dry streak can happen. Check that your relic contains Forma, inspect its reward slot, and meet the opening requirements. A squad provides more possible choices but cannot guarantee Forma.' },
     { q: 'Should I make Forma relics Radiant?', a: 'Check the slot first. Intact favors a Common Forma reward; refining improves an Uncommon reward’s chance. Uncommon Forma rewards contain two blueprints. Compare the benefit with the Void Traces required.' },
     { q: 'Does a full squad give me four Forma per round?', a: 'No. Each eligible player chooses one of the revealed rewards. A two-blueprint reward gives you two blueprints, but you cannot take all four squad rewards.' },
-    { q: 'Can I get built Forma without waiting for the Foundry?', a: 'Yes. If you did not receive the Update 44 Banshee inbox, you can still log in to claim its one built Forma until December 31, 2026. The Banshee giveaway itself has ended, and previous recipients do not get another Forma. The in-game Market also sells built Forma. Plague Star ended on September 23, 2026; its old bounty is not an active farming route.' },
+    { q: 'Can I get built Forma without waiting for the Foundry?', a: 'Yes. Log in after Hotfix 44.1.3 for 2 built Forma and 100,000 Kuva before December 31, 2026 at 11:59 p.m. ET. All players qualify, including those who received Banshee. Separately, players who did not receive the Update 44 Banshee inbox can still claim its one Forma until December 31, 2026; that earlier reward cannot be claimed twice. The in-game Market also sells built Forma. Plague Star has ended.' },
     { q: 'How long does Forma take to craft?', a: 'Standard Forma takes 23 hours. Each craft consumes one blueprint, 35,000 Credits, one Morphics, one Neural Sensors, one Neurodes and one Orokin Cell. Claim the finished Forma before starting another craft.' },
     { q: 'Is Omni Forma the same as Umbra Forma?', a: 'No. Omni Forma, previously called Aura Forma, provides a Universal Polarity that excludes Umbra matching. Umbra Forma applies the dedicated Umbra polarity. Choose the variant for the Mods you actually intend to equip.' },
     { q: 'How many Forma should I put into a build?', a: 'Use the number needed for your chosen Mods and configurations. Plan capacity and polarities first, then relevel and test after each application. There is no fixed count that every build needs.' },
@@ -179,6 +187,7 @@ const guide: Guide = {
     { label: 'Resource Farming', to: '/guides/resources', note: 'Prepare the materials for your next Foundry craft.', icon: 'database-outline' },
   ],
   sources: [
+    { label: 'Warframe — Hotfix 44.1.3: Arsenal Retuning login gift (October 22, 2026)', href: 'https://www.warframe.com/en/patch-notes/pc/44-1-3' },
     { label: 'Warframe — Update 44: Iceblade of Narin (September 23, 2026)', href: 'https://www.warframe.com/en/patch-notes/pc/44-0-0' },
     { label: 'Warframe — Free Banshee login reward (September 23, 2026)', href: 'https://www.warframe.com/en/news/get-banshee-as-a-free-login-reward-to-celebrate-her-evolution' },
     { label: 'Warframe — Operation: Plague Star 2026 (September 9, 2026)', href: 'https://www.warframe.com/en/news/operation-plague-star-2026' },

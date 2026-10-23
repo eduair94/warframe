@@ -28,6 +28,59 @@ function makeHttpClient(getImpl: any) {
 }
 
 describe('RivenService', () => {
+  describe('shared Riven stat multiplier after Hotfix 44.1.3', () => {
+    it('normalizes outdated upstream weapon metadata when importing without changing weapon identities', async () => {
+      const weapons = [
+        { id: 'a', slug: 'acceltra', group: 'primary', rivenType: 'rifle', disposition: 0.65, reqMasteryRank: 8, i18n: { en: { name: 'Acceltra', icon: 'a.png', thumb: 'a-small.png' } } },
+        { id: 'b', slug: 'flux_rifle', group: 'primary', rivenType: 'rifle', disposition: 1.55, reqMasteryRank: 6, i18n: { en: { name: 'Flux Rifle', icon: 'b.png', thumb: 'b-small.png' } } },
+      ];
+      const service = new RivenService(makeHttpClient(async () => ({ data: weapons })), {} as any);
+      const result = await service.fetchAllRivenItems();
+      expect(result.map(({ id, url_name, item_name, disposition }) => ({ id, url_name, item_name, disposition }))).toEqual([
+        { id: 'a', url_name: 'acceltra', item_name: 'Acceltra', disposition: 1.2 },
+        { id: 'b', url_name: 'flux_rifle', item_name: 'Flux Rifle', disposition: 1.2 },
+      ]);
+      expect(weapons.map(weapon => weapon.disposition)).toEqual([0.65, 1.55]);
+    });
+
+    it('serves the common multiplier for old and missing stored values while retaining counts and buyout prices', async () => {
+      const records = [
+        Object.freeze({ ...makeRiven({ url_name: 'acceltra', disposition: 0.65 }), auctionCount: 164, minBuyout: 75 }),
+        Object.freeze({ ...makeRiven({ url_name: 'flux_rifle', disposition: 1.55 }), auctionCount: 7, minBuyout: 40 }),
+        Object.freeze({ ...makeRiven({ url_name: 'unknown_multiplier' }), auctionCount: 3, minBuyout: 110 }),
+      ];
+      const repository = { aggregate: jest.fn(async () => records) } as any;
+      const service = new RivenService(makeHttpClient(async () => { throw new Error('No upstream read expected'); }), repository);
+      const result = await service.getWeaponsList();
+      expect(result.map(({ url_name, disposition, auctionCount, minBuyout }) => ({ url_name, disposition, auctionCount, minBuyout }))).toEqual([
+        { url_name: 'acceltra', disposition: 1.2, auctionCount: 164, minBuyout: 75 },
+        { url_name: 'flux_rifle', disposition: 1.2, auctionCount: 7, minBuyout: 40 },
+        { url_name: 'unknown_multiplier', disposition: 1.2, auctionCount: 3, minBuyout: 110 },
+      ]);
+      expect(records[0].disposition).toBe(0.65);
+    });
+
+    it('corrects detail metadata without rescaling stored auction stats, prices or Endo values', async () => {
+      const auctions = [{ id: 'listing', buyout_price: 125, starting_price: 100, endo: 12440, endoPerPlat: 99.52,
+        item: { weapon_url_name: 'acceltra', attributes: [{ url_name: 'critical_chance', value: 175, positive: true }], mod_rank: 8, re_rolls: 50, mastery_level: 8 } }];
+      const originalAuctions = structuredClone(auctions);
+      const record = Object.freeze({ ...makeRiven({ url_name: 'acceltra', disposition: 0.65 }), items: auctions });
+      const repository = { findEntry: jest.fn(async () => record) } as any;
+      const service = new RivenService(makeHttpClient(async () => { throw new Error('No upstream read expected'); }), repository);
+      const result = await service.getWeaponAuctions('acceltra');
+      expect(repository.findEntry).toHaveBeenCalledWith({ url_name: 'acceltra' });
+      expect(result?.disposition).toBe(1.2);
+      expect(result?.items).toBe(auctions);
+      expect(result?.items).toEqual(originalAuctions);
+      expect(record.disposition).toBe(0.65);
+    });
+
+    it('does not manufacture a weapon when the requested detail record is absent', async () => {
+      const service = new RivenService(makeHttpClient(async () => ({})), { findEntry: jest.fn(async () => null) } as any);
+      expect(await service.getWeaponAuctions('missing')).toBeNull();
+    });
+  });
+
   describe('syncSingleRiven', () => {
     beforeEach(() => {
       jest.useFakeTimers();

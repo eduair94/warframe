@@ -206,7 +206,7 @@
       <v-alert class="an-disclaimer bg-blue-darken-4" type="info" density="compact">
         <i18n-t keypath="rivenValue.disclaimer.text" tag="span">
           <template #within><em>{{ t('rivenValue.disclaimer.within') }}</em></template>
-          <template #disp>{{ dispLabel }}</template>
+          <template #disp>1.2×</template>
         </i18n-t>
       </v-alert>
     </client-only>
@@ -272,7 +272,7 @@ const weaponOptions = computed<any[]>(() =>
     .filter((w) => (w.auctionCount || 0) > 0)
     .map((w) => ({
       url_name: w.url_name,
-      label: `${localName('riven-weapons', w.url_name, w.item_name)} — ${w.auctionCount} live${w.disposition ? ' · disp ' + w.disposition.toFixed(2) : ''}`,
+      label: `${localName('riven-weapons', w.url_name, w.item_name)} — ${w.auctionCount} live`,
     })),
 )
 // SSR-only crawlable snapshot for <SeoFallbackTable> (see that component for
@@ -370,12 +370,6 @@ const pagedAuctions = computed<any[]>(() => {
   const start = (page.value - 1) * perPage
   return gradedAuctions.value.slice(start, start + perPage)
 })
-const dispLabel = computed<string>(() =>
-  weaponData.value && weaponData.value.disposition
-    ? weaponData.value.disposition.toFixed(2) + '×'
-    : t('rivenValue.disclaimer.shownAbove'),
-)
-
 // reset to page 1 when the graded list changes (old watch)
 watch(gradedAuctions, () => {
   page.value = 1

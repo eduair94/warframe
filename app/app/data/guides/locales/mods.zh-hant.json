@@ -387,7 +387,7 @@
         },
         {
           "type": "p",
-          "text": "**Rivens** 具有隨機數值與武器專屬的限制。它們的效益取決於武器、洗出的數值、傾向性（disposition）以及它們取代的模組。首先建立一個有用的基礎配置，然後將實際洗出的數值與你的替代方案進行比較。在交易前請參閱 [Riven 價值估算器](/riven-value)與 [Riven 指南](/guides/riven)；沒有固定的傷害增幅或保證的轉售價格。"
+          "text": "**Rivens** 具有隨機統計數據和特定於武器的限制。他們的優勢取決於他們所取代的武器、隨機屬性、等級和模組。 [修補程式 44.1.3](https://www.warframe.com/en/patch-notes/pc/44-1-3) 已停用傾向性：每個 Riven 現在都使用相同的統計範圍乘數，相當於舊的 1.2 傾向性。首先建立一個有用的基本配裝，然後將實際屬性組合與您的替代方案進行比較。交易前查閱[Riven價值估算器](/riven-value)和[Riven指南](/guides/riven)；沒有固定的損害報酬或保證的轉售價格。"
         },
         {
           "type": "steps",
@@ -502,7 +502,7 @@
     },
     {
       "q": "對於新手來說，Riven 值得入手嗎？",
-      "a": "通常先完成功能性的基礎配置再說。Riven 的價值取決於其武器、數值、傾向性以及它取代的模組；沒有固定的百分比增幅。在花費白金之前，請使用 [Riven 價值估算器](/riven-value)作為定價輔助並閱讀 [Riven 指南](/guides/riven)。"
+      "a": "通常，首先完成功能性基本配裝。 Riven 的價值取決於其武器、統計數據、等級以及它所取代的模組；沒有固定的百分比增益。傾向性已在修補程式 44.1.3 中停用。使用[Riven價值估算器](/riven-value)作為定價輔助工具，比較目前清單並在消費白金之前閱讀[Riven指南](/guides/riven)。"
     },
     {
       "q": "在哪裡可以找到好的 Warframe 配置，而不是從頭開始配置？",
@@ -532,6 +532,10 @@
     }
   ],
   "sources": [
+    {
+      "label": "Warframe — Hotfix 44.1.3: Riven Disposition retirement (October 22, 2026)",
+      "href": "https://www.warframe.com/en/patch-notes/pc/44-1-3"
+    },
     {
       "label": "Warframe — Update 34: shield gating, Catalyzing Shields and stat mods",
       "href": "https://www.warframe.com/en/patch-notes/pc/34-0-0"
@@ -604,7 +608,7 @@
       "label": "Riven 模組指南",
       "to": "/guides/riven",
       "icon": "diamond-stone",
-      "note": "洗出數值、傾向性與何時該費心"
+      "note": "重洗、拼接以及何時值得投入"
     },
     {
       "label": "Steel Path 指南",
@@ -637,5 +641,5 @@
       "note": "在交易前為 rven 定價"
     }
   ],
-  "updated": "2026-09-21"
+  "updated": "2026-10-23"
 }

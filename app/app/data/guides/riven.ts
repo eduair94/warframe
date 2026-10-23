@@ -5,7 +5,7 @@ const guide: Guide = {
   "slug": "riven",
   "eyebrow": "Knowledge Center · Riven Mods",
   "title": "Riven Mods: Splicing, Trait Locking & Kuva Costs",
-  "lede": "Learn how Riven Splicing and Trait Locking work together, where to get Riven Splicers and how to budget Kuva before cycling or trading. Includes the live Update 44.1 rules and the difference between the two kinds of protected traits.",
+  "lede": "Learn how Riven Splicing and Trait Locking work together, where to get Riven Splicers and how to budget Kuva before cycling or trading. Hotfix 44.1.3 retired weapon-specific Disposition and capped Ammo Efficiency at 75%.",
   "category": "systems",
   "readMins": 10,
   "stats": [
@@ -15,8 +15,8 @@ const guide: Guide = {
       "tone": "good"
     },
     {
-      "num": "1–5",
-      "label": "disposition dots",
+      "num": "1.2",
+      "label": "shared stat multiplier after Disposition retirement",
       "tone": "alt"
     },
     {
@@ -41,7 +41,7 @@ const guide: Guide = {
         },
         {
           "type": "p",
-          "text": "A Riven can combine several useful bonuses in one Mod slot, but a random roll is not automatically an upgrade. The weapon, stat combination, negative trait, rank and weapon Disposition all matter. The sections below cover cycling, ordinary Trait Locking and the separate Riven Splicing system."
+          "text": "A Riven can combine several useful bonuses in one Mod slot, but a random roll is not automatically an upgrade. The weapon, stat combination, negative trait, rank and actual values all matter. The sections below cover cycling, ordinary Trait Locking and the separate Riven Splicing system."
         },
         {
           "type": "kv",
@@ -76,43 +76,43 @@ const guide: Guide = {
     },
     {
       "id": "disposition",
-      "title": "Riven Disposition and weapon variants",
+      "title": "Riven stats after Disposition retirement",
       "blocks": [
         {
           "type": "p",
-          "text": "**Riven Disposition** is a weapon-specific multiplier represented by **1 to 5 dots**. Higher Disposition gives larger bonuses for an equivalent Riven roll. Different variants of the same weapon can use different multipliers, so preview the Riven on the exact variant you intend to equip. Cycling a Riven does not reroll the weapon’s Disposition."
+          "text": "**Hotfix 44.1.3 removed Riven Dispositions on October 22, 2026.** All Rivens now use the same multiplier for their possible stat ranges, equivalent to **1.2 Disposition** in the old system. Weapon variants no longer have different Disposition multipliers. Traits, roll values, rank and the positive/negative layout still matter; a shared multiplier does not make every Riven roll identical."
         },
         {
           "type": "table",
           "table": {
             "columns": [
-              "Dots",
-              "Roughly means",
+              "Rule",
+              "Current behavior",
               "What to check"
             ],
             "rows": [
               [
-                "5 (highest)",
-                "Larger bonuses for an equivalent roll",
-                "The exact weapon variant and stat combination"
+                "Stat multiplier",
+                "Equivalent to old 1.2 Disposition for every Riven",
+                "Actual values, rank and trait layout"
               ],
               [
-                "3 (middle)",
-                "Intermediate Disposition band",
+                "Weapon variants",
+                "No separate Disposition multipliers",
                 "Whether the Riven improves your existing build"
               ],
               [
-                "1 (lowest)",
-                "Smaller bonuses for an equivalent roll",
-                "Whether several useful traits justify the Mod slot"
+                "Ammo Efficiency",
+                "75% cap across combined sources",
+                "Whether a named Infinite Ammo effect is active"
               ]
             ],
-            "note": "Dots summarize a multiplier; they do not establish a trading price. Consult the current in-game preview and the latest official Disposition list."
+            "note": "Old Disposition dots and variant comparisons describe the retired system. Check the current in-game values before buying, selling or changing a build."
           }
         },
         {
           "type": "info",
-          "text": "The [September 2026 Disposition announcement](https://forums.warframe.com/topic/1523355-september-2026-riven-dispositions/) records that month’s changes. Demand, new weapon options and individual rolls also affect listings. A Disposition change alone does not guarantee that your Riven will sell for more or less Platinum."
+          "text": "[Hotfix 44.1.3](https://www.warframe.com/en/patch-notes/pc/44-1-3) also caps **Ammo Efficiency at 75%**, including combined sources and equipment such as Amps and Necramechs. Explicit **Infinite Ammo** effects remain a separate mechanic. Do not buy an Ammo Efficiency Riven expecting stacked efficiency to provide permanent infinite ammo."
         }
       ]
     },
@@ -162,7 +162,7 @@ const guide: Guide = {
         },
         {
           "type": "tip",
-          "text": "The riven's made-up name (that `critacan`/`visitox` gibberish) is purely cosmetic — it's generated from the stats and doesn't affect power. Judge a riven by its actual stat lines, disposition, and MR requirement, never by its name."
+          "text": "The riven's made-up name (that `critacan`/`visitox` gibberish) is purely cosmetic — it's generated from the stats and doesn't affect power. Judge a riven by its actual stat lines, rank and MR requirement, never by its name."
         },
         {
           "type": "info",
@@ -289,6 +289,10 @@ const guide: Guide = {
         {
           "type": "tip",
           "text": "**Early launch reports describe a resolved bug.** [Hotfix 44.1.1](https://www.warframe.com/en/patch-notes/pc/44-1-1) corrected spliced traits wrongly doubling Kuva costs and Weak Point Damage not applying. The [affected-player Kuva refund](https://forums.warframe.com/topic/1527399-psa-spliced-riven-kuva-cost-doubling-resolved-script-complete/) finished on October 9. [Hotfix 44.1.2](https://www.warframe.com/en/patch-notes/pc/44-1-2) added a Splicing shortcut from the Cycling screen."
+        },
+        {
+          "type": "info",
+          "text": "**Early Splicer user compensation:** players who installed a Riven Splicer in a Riven Mod before [Hotfix 44.1.3](https://www.warframe.com/en/patch-notes/pc/44-1-3) qualify for a separate inbox with **1 Riven Splicer and 100,000 Kuva**. The patch notes specify delivery by script; check your inbox rather than assuming an immediate refund. This is separate from the login gift available to all players."
         }
       ]
     },
@@ -312,7 +316,7 @@ const guide: Guide = {
       "blocks": [
         {
           "type": "p",
-          "text": "Riven listings vary with weapon demand, useful traits, negative effects and the actual stat values. Low Disposition alone does not make a roll worthless, and high Disposition does not guarantee demand. Compare several listings for the same weapon and a similar roll; an asking price is not proof of a completed sale. Check available Riven capacity and the trade confirmation before buying."
+          "text": "Riven listings vary with weapon demand, useful traits, negative effects and the actual stat values. Hotfix 44.1.3 restored Riven trading after the temporary pause and removed Disposition as a comparison factor. Compare current listings for the same weapon and a similar roll; older screenshots and prices may reflect the retired multipliers. An asking price is not proof of a completed sale. Check available Riven capacity and the trade confirmation before buying."
         },
         {
           "type": "table",
@@ -327,8 +331,8 @@ const guide: Guide = {
                 "Demand for that weapon and the variant buyers intend to use"
               ],
               [
-                "Disposition",
-                "Actual values on that variant, not dots alone"
+                "Stat values",
+                "Current values after Hotfix 44.1.3, not old Disposition dots"
               ],
               [
                 "Stat combo",
@@ -428,7 +432,7 @@ const guide: Guide = {
     },
     {
       "q": "What is riven disposition?",
-      "a": "Disposition is a weapon-specific multiplier represented by 1 to 5 dots. It affects the strength of Riven stats and can differ between weapon variants. Cycling does not change that multiplier. Preview the exact variant and consult the latest official Disposition announcement."
+      "a": "Disposition was a weapon-specific multiplier represented by 1 to 5 dots. Hotfix 44.1.3 removed it on October 22, 2026: all Rivens now use a shared multiplier equivalent to the old 1.2 Disposition. Stats still vary with traits, rolls, rank and layout, but weapon variants no longer have different Disposition multipliers."
     },
     {
       "q": "What is a 'god roll' riven?",
@@ -456,6 +460,10 @@ const guide: Guide = {
     }
   ],
   "sources": [
+    {
+      "label": "Warframe — Hotfix 44.1.3: Disposition retirement, Ammo Efficiency and login rewards (October 22, 2026)",
+      "href": "https://www.warframe.com/en/patch-notes/pc/44-1-3"
+    },
     {
       "label": "Warframe — Update 44: Iceblade of Narin (September 23, 2026)",
       "href": "https://www.warframe.com/en/patch-notes/pc/44-0-0"
@@ -549,7 +557,7 @@ const guide: Guide = {
       "note": "Riven markets, wikis and DE tools"
     }
   ],
-  "updated": "2026-10-22"
+  "updated": "2026-10-23"
 }
 
 export default guide

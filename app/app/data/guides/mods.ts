@@ -392,7 +392,7 @@ const guide: Guide = {
         },
         {
           "type": "p",
-          "text": "**Rivens** have randomized stats and weapon-specific restrictions. Their benefit depends on the weapon, roll, disposition and mod they replace. Establish a useful basic build first, then compare an actual roll with your alternatives. Consult the [Riven value estimator](/riven-value) and [Riven guide](/guides/riven) before a trade; there is no fixed damage gain or guaranteed resale price."
+          "text": "**Rivens** have randomized stats and weapon-specific restrictions. Their benefit depends on the weapon, roll, rank and mod they replace. [Hotfix 44.1.3](https://www.warframe.com/en/patch-notes/pc/44-1-3) retired Disposition: every Riven now uses the same stat-range multiplier, equivalent to the old 1.2 Disposition. Establish a useful basic build first, then compare an actual roll with your alternatives. Consult the [Riven value estimator](/riven-value) and [Riven guide](/guides/riven) before a trade; there is no fixed damage gain or guaranteed resale price."
         },
         {
           "type": "steps",
@@ -507,7 +507,7 @@ const guide: Guide = {
     },
     {
       "q": "Are Rivens worth it for a new player?",
-      "a": "Usually, finish a functional basic loadout first. A Riven's value depends on its weapon, stats, disposition and the mod it replaces; there is no fixed percentage gain. Use the [Riven value estimator](/riven-value) as a pricing aid and read the [Riven guide](/guides/riven) before spending Platinum."
+      "a": "Usually, finish a functional basic loadout first. A Riven's value depends on its weapon, stats, rank and the mod it replaces; there is no fixed percentage gain. Disposition was retired in Hotfix 44.1.3. Use the [Riven value estimator](/riven-value) as a pricing aid, compare current listings and read the [Riven guide](/guides/riven) before spending Platinum."
     },
     {
       "q": "Where do I find good Warframe builds instead of modding from scratch?",
@@ -537,6 +537,10 @@ const guide: Guide = {
     }
   ],
   "sources": [
+    {
+      "label": "Warframe — Hotfix 44.1.3: Riven Disposition retirement (October 22, 2026)",
+      "href": "https://www.warframe.com/en/patch-notes/pc/44-1-3"
+    },
     {
       "label": "Warframe — Update 34: shield gating, Catalyzing Shields and stat mods",
       "href": "https://www.warframe.com/en/patch-notes/pc/34-0-0"
@@ -609,7 +613,7 @@ const guide: Guide = {
       "label": "Riven Mods Guide",
       "to": "/guides/riven",
       "icon": "diamond-stone",
-      "note": "Rolls, dispositions & when to bother"
+      "note": "Rolls, Splicing & when to bother"
     },
     {
       "label": "Steel Path Guide",
@@ -642,7 +646,7 @@ const guide: Guide = {
       "note": "Price a riven before you trade"
     }
   ],
-  "updated": "2026-09-21"
+  "updated": "2026-10-23"
 }
 
 export default guide

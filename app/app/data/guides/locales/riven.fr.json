@@ -2,7 +2,7 @@
   "slug": "riven",
   "eyebrow": "Centre de connaissances · Riven Mods",
   "title": "Mods Riven : Splicing, Trait Locking et coûts en Kuva",
-  "lede": "Découvrez comment le Riven Splicing et le Trait Locking fonctionnent ensemble, où obtenir des Riven Splicers et comment budgétiser votre Kuva avant de recycler ou d'échanger. Comprend les règles actuelles de l'Update 44.1 et la différence entre les deux types de traits protégés.",
+  "lede": "Découvrez comment Riven Splicing et Trait Locking travaillent ensemble, où trouver Riven Splicers et comment budgétiser Kuva avant de cycler un Riven ou d'échanger. Le correctif 44.1.3 a supprimé la disposition spécifique aux armes et a plafonné l'efficacité des munitions à 75 %.",
   "category": "systems",
   "readMins": 10,
   "stats": [
@@ -12,8 +12,8 @@
       "tone": "good"
     },
     {
-      "num": "1–5",
-      "label": "points de disposition",
+      "num": "1.2",
+      "label": "multiplicateur de statistiques partagé après le retrait de la disposition",
       "tone": "alt"
     },
     {
@@ -38,7 +38,7 @@
         },
         {
           "type": "p",
-          "text": "Un Riven peut combiner plusieurs bonus utiles dans un seul emplacement de Mod, mais un tirage aléatoire ne constitue pas automatiquement une amélioration. L'arme, la combinaison de statistiques, le trait négatif, le rang et la Disposition de l'arme ont tous leur importance. Les sections ci-dessous couvrent le recyclage, le Trait Locking ordinaire et le système distinct de Riven Splicing."
+          "text": "Un Riven peut combiner plusieurs bonus utiles dans un seul emplacement de module, mais un lancer aléatoire n'est pas automatiquement une mise à niveau. L’arme, la combinaison de statistiques, le trait négatif, le rang et les valeurs réelles comptent tous. Les sections ci-dessous couvrent le cyclage, le système Trait Locking ordinaire et le système Riven Splicing séparé."
         },
         {
           "type": "kv",
@@ -73,43 +73,43 @@
     },
     {
       "id": "disposition",
-      "title": "Disposition du Riven et variantes d'armes",
+      "title": "Statistiques Riven après le retrait de Disposition",
       "blocks": [
         {
           "type": "p",
-          "text": "La **Disposition du Riven** est un multiplicateur spécifique à l'arme représenté par **1 à 5 points**. Une disposition plus élevée offre de plus grands bonus pour un jet de Riven équivalent. Différentes variantes de la même arme peuvent utiliser des multiplicateurs différents, prévisualisez donc le Riven sur la variante exacte que vous comptez équiper. Faire un cycle sur un Riven ne réinitialise pas la Disposition de l'arme."
+          "text": "**Le correctif 44.1.3 a supprimé les dispositions Riven le 22 octobre 2026.** Tous les Riven utilisent désormais le même multiplicateur pour leurs plages de statistiques possibles, équivalent à **1.2 disposition** dans l'ancien système. Les variantes d'armes n'ont plus de multiplicateurs de disposition différents. Les traits, les valeurs des jets, le rang et la disposition positive/négative comptent toujours ; un multiplicateur partagé ne rend pas tous les lancers de Riven identiques."
         },
         {
           "type": "table",
           "table": {
             "columns": [
-              "Points",
-              "Signifie environ",
+              "Règle",
+              "Comportement actuel",
               "Quoi vérifier"
             ],
             "rows": [
               [
-                "5 (le plus élevé)",
-                "Des bonus plus importants pour un jet équivalent",
-                "La variante d'arme exacte et la combinaison de statistiques"
+                "Multiplicateur de statistiques",
+                "Équivalent à l'ancienne 1.2 Disposition pour chaque Riven",
+                "Valeurs réelles, rang et disposition des traits"
               ],
               [
-                "3 (moyen)",
-                "Palier de Disposition intermédiaire",
+                "Variantes d'armes",
+                "Pas de multiplicateurs de disposition distincts",
                 "Si le Riven améliore votre configuration existante"
               ],
               [
-                "1 (le plus bas)",
-                "Des bonus plus petits pour un jet équivalent",
-                "Si plusieurs bonus utiles justifient l'emplacement du Mod"
+                "Efficacité des munitions",
+                "Plafond de 75 % sur les sources combinées",
+                "Si un effet nommé Infinite Ammo est actif"
               ]
             ],
-            "note": "Les points résument un multiplicateur ; ils n'établissent pas un prix d'échange. Consultez l'aperçu actuel en jeu et la dernière liste officielle de Disposition."
+            "note": "Les anciens points de disposition et les comparaisons de variantes décrivent le système retiré. Vérifiez les valeurs actuelles du jeu avant d'acheter, de vendre ou de modifier une configuration."
           }
         },
         {
           "type": "info",
-          "text": "L'[annonce des Dispositions de septembre 2026](https://forums.warframe.com/topic/1523355-september-2026-riven-dispositions/) répertorie les changements de ce mois-là. La demande, les nouvelles options d'armes et les tirages individuels influent également sur les offres. Un simple changement de Disposition ne garantit pas que votre Riven se vendra pour plus ou moins de Platinum."
+          "text": "[Le correctif 44.1.3](https://www.warframe.com/en/patch-notes/pc/44-1-3) limite également l'**efficacité des munitions à 75 %**, y compris les sources et équipements combinés tels que les amplis et les Necramechs. Les effets explicites **Infinite Ammo** restent un mécanisme distinct. N'achetez pas un Riven avec efficacité des munitions en espérant que l'efficacité empilée fournira des munitions infinies permanentes."
         }
       ]
     },
@@ -159,7 +159,7 @@
         },
         {
           "type": "tip",
-          "text": "Le nom inventé du Riven (ce charabia de `critacan`/`visitox`) est purement cosmétique — il est généré à partir des statistiques et n'affecte pas la puissance. Jugez un Riven par ses lignes de statistiques réelles, sa disposition et son MR requis, jamais par son nom."
+          "text": "Le nom inventé du Riven (ce charabia `critacan`/`visitox`) est purement cosmétique : il est généré à partir des statistiques et n'affecte pas la puissance. Jugez un Riven par ses lignes de statistiques réelles, son rang et ses exigences en matière de MR, jamais par son nom."
         },
         {
           "type": "info",
@@ -286,6 +286,10 @@
         {
           "type": "tip",
           "text": "**Les premiers rapports après le lancement mentionnent un bug résolu.** Le [Hotfix 44.1.1](https://www.warframe.com/en/patch-notes/pc/44-1-1) a corrigé les traits fusionnés qui doublaient à tort les coûts en Kuva ainsi que les Dégâts aux points faibles qui ne s'appliquaient pas. Le [remboursement de Kuva pour les joueurs affectés](https://forums.warframe.com/topic/1527399-psa-spliced-riven-kuva-cost-doubling-resolved-script-complete/) s'est achevé le 9 octobre. Le [Hotfix 44.1.2](https://www.warframe.com/en/patch-notes/pc/44-1-2) a ajouté un raccourci de Splicing depuis l'écran de recyclage."
+        },
+        {
+          "type": "info",
+          "text": "**Compensation des premiers utilisateurs de Splicers :** les joueurs qui ont installé un Riven Splicer dans un mod Riven avant le [Hotfix 44.1.3](https://www.warframe.com/en/patch-notes/pc/44-1-3) se qualifient pour un message séparé avec **1 Riven Splicer et 100,000 Kuva**. Les notes de patch précisent la livraison par script ; vérifiez votre boîte de réception plutôt que d'assumer un remboursement immédiat. Ceci est distinct du cadeau de connexion disponible pour tous les joueurs."
         }
       ]
     },
@@ -309,7 +313,7 @@
       "blocks": [
         {
           "type": "p",
-          "text": "Les annonces de Riven varient selon la demande des armes, les traits utiles, les effets négatifs et les valeurs réelles des stats. Une faible Disposition à elle seule ne rend pas un jet sans valeur, et une forte Disposition ne garantit pas la demande. Comparez plusieurs annonces pour la même arme et un jet similaire ; un prix demandé n'est pas la preuve d'une vente conclue. Vérifiez la capacité de Riven disponible et la confirmation d'échange avant d'acheter."
+          "text": "Les listes Riven varient en fonction de la demande d'armes, des caractéristiques utiles, des effets négatifs et des valeurs réelles des statistiques. Le correctif 44.1.3 a restauré le trading de Riven après la pause temporaire et a supprimé la disposition comme facteur de comparaison. Comparez les annonces actuelles pour la même arme et un jet similaire ; les captures d'écran et les prix plus anciens peuvent refléter les multiplicateurs retirés. Un prix demandé ne constitue pas la preuve d’une vente réalisée. Vérifiez la capacité Riven disponible et la confirmation d'échange avant d'acheter."
         },
         {
           "type": "table",
@@ -324,8 +328,8 @@
                 "La demande pour cette arme et la variante que les acheteurs prévoient d'utiliser"
               ],
               [
-                "Disposition",
-                "Les valeurs réelles sur cette variante, et non les points seuls"
+                "Valeurs statistiques",
+                "Valeurs actuelles après le correctif 44.1.3, pas les anciens points de disposition"
               ],
               [
                 "Combo de statistiques",
@@ -425,7 +429,7 @@
     },
     {
       "q": "Qu'est-ce que la disposition de Riven ?",
-      "a": "La Disposition est un multiplicateur spécifique à l'arme représenté par 1 à 5 points. Elle affecte la force des stats de Riven et peut différer entre les variantes d'armes. Les cycles ne modifient pas ce multiplicateur. Prévisualisez la variante exacte et consultez la dernière annonce officielle de Disposition."
+      "a": "La disposition était un multiplicateur spécifique à l'arme représenté par 1 à 5 points. Le correctif 44.1.3 l'a supprimé le 22 octobre 2026 : tous les Riven utilisent désormais un multiplicateur partagé équivalent à l'ancienne disposition 1.2. Les statistiques varient toujours en fonction des traits, des jets, du rang et de la disposition, mais les variantes d'armes n'ont plus de multiplicateurs de disposition différents."
     },
     {
       "q": "Qu'est-ce qu'un Riven 'god roll' ?",
@@ -453,6 +457,10 @@
     }
   ],
   "sources": [
+    {
+      "label": "Warframe — Hotfix 44.1.3: Disposition retirement, Ammo Efficiency and login rewards (October 22, 2026)",
+      "href": "https://www.warframe.com/en/patch-notes/pc/44-1-3"
+    },
     {
       "label": "Warframe — Update 44: Iceblade of Narin (September 23, 2026)",
       "href": "https://www.warframe.com/en/patch-notes/pc/44-0-0"
@@ -546,5 +554,5 @@
       "note": "Marchés de Rivens, wikis et outils de DE"
     }
   ],
-  "updated": "2026-10-22"
+  "updated": "2026-10-23"
 }

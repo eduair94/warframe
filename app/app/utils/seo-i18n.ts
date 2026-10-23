@@ -62,7 +62,7 @@ export const PAGE_SEO_I18N: Record<string, Record<string, PageSeo>> = {
     '/riven-value': {
       title: 'Estimador de valor de Riven — Precios de Riven en Warframe',
       description:
-        'Estima cuánto vale un mod Riven de Warframe en platino según la disposición del arma y la tirada. Valora tus Riven antes de comerciar o pujar.'
+        "Estime los precios de Riven en Warframe a partir de listados almacenados para la misma arma y estadísticas seleccionadas. Compare los precios solicitados y las calificaciones de estadísticas relativas antes de negociar."
     },
     '/screener': {
       title: 'Screener de mercado — Filtra precios prime de Warframe',
@@ -169,7 +169,7 @@ export const PAGE_SEO_I18N: Record<string, Record<string, PageSeo>> = {
     '/riven-value': {
       title: 'Estimador de valor de Riven — Preços de Riven no Warframe',
       description:
-        'Estime quanto vale um mod Riven do Warframe em platina pela disposição da arma e pelo roll. Avalie seus Riven antes de negociar ou dar lance.'
+        "Estime os preços de Riven em Warframe a partir de listagens armazenadas para a mesma arma e estatísticas selecionadas. Compare os preços pedidos e as avaliações relativas dos atributos antes de negociar."
     },
     '/screener': {
       title: 'Screener de mercado — Filtre preços prime do Warframe',
@@ -276,7 +276,7 @@ export const PAGE_SEO_I18N: Record<string, Record<string, PageSeo>> = {
     '/riven-value': {
       title: 'Riven-Wert-Schätzer — Warframe-Riven-Preise',
       description:
-        'Schätze, was ein Warframe-Riven-Mod in Platin wert ist, nach Waffen-Disposition und Roll. Bewerte deine Riven, bevor du handelst oder bietest.'
+        "Schätzen Sie Warframe Riven-Preise aus gespeicherten Angeboten für dieselbe Waffe und ausgewählte Werte. Vergleichen Sie vor dem Handel die Angebotspreise und die relativen Wertebewertungen."
     },
     '/screener': {
       title: 'Markt-Screener — Warframe-Prime-Preise filtern',
@@ -383,7 +383,7 @@ export const PAGE_SEO_I18N: Record<string, Record<string, PageSeo>> = {
     '/riven-value': {
       title: "Estimateur de valeur Riven — Prix des Riven Warframe",
       description:
-        "Estimez la valeur en platine d'un mod Riven Warframe selon la disposition de l'arme et le roll. Évaluez vos Riven avant de trader ou d'enchérir."
+        "Estimez les prix des Rivens dans Warframe à partir des annonces enregistrées pour la même arme et les mêmes statistiques sélectionnées. Comparez les prix demandés et les évaluations relatives des statistiques avant de négocier."
     },
     '/screener': {
       title: "Screener de marché — Filtrez les prix prime Warframe",
@@ -490,7 +490,7 @@ export const PAGE_SEO_I18N: Record<string, Record<string, PageSeo>> = {
     '/riven-value': {
       title: 'Оценщик стоимости Riven — цены на Riven в Warframe',
       description:
-        'Оцените, сколько стоит мод Riven в Warframe в платине по диспозиции оружия и роллу. Оцените свои Riven перед торговлей или ставкой.'
+        "Оцените цены Riven в Warframe на основе сохранённых объявлений для того же оружия и выбранных характеристик. Прежде чем торговать, сравните запрашиваемые цены и относительные оценки характеристик."
     },
     '/screener': {
       title: 'Скринер рынка — фильтр цен prime в Warframe',
@@ -597,7 +597,7 @@ export const PAGE_SEO_I18N: Record<string, Record<string, PageSeo>> = {
     '/riven-value': {
       title: 'Riven 가치 추정기 — Warframe Riven 시세',
       description:
-        '무기 디스포지션과 롤에 따라 Warframe Riven 모드의 플래티넘 가치를 추정하세요. 거래하거나 입찰하기 전에 Riven 가격을 매기세요.'
+        "같은 무기와 선택한 능력치에 대한 저장된 판매 목록을 바탕으로 Warframe Riven 가격을 추정합니다. 거래하기 전에 판매 희망가와 상대적인 능력치 등급을 비교하세요."
     },
     '/screener': {
       title: '마켓 스크리너 — Warframe Prime 시세 필터',
@@ -704,7 +704,7 @@ export const PAGE_SEO_I18N: Record<string, Record<string, PageSeo>> = {
     '/riven-value': {
       title: 'Riven価値推定 — WarframeのRiven価格',
       description:
-        '武器のディスポジションとロールから、WarframeのRiven MODのプラチナ価値を推定。取引や入札の前にRivenを値付けしよう。'
+        "同じ武器と選択したステータスの保存済みリストを基に、Warframe の Riven 価格を推定します。取引前に提示価格とステータスの相対評価を比較してください。"
     },
     '/screener': {
       title: 'マーケットスクリーナー — Warframe Prime価格を絞り込み',
@@ -811,7 +811,7 @@ export const PAGE_SEO_I18N: Record<string, Record<string, PageSeo>> = {
     '/riven-value': {
       title: 'Riven 价值估算 — Warframe Riven 价格',
       description:
-        '根据武器倾向与词条，估算 Warframe Riven MOD 的白金价值。交易或竞价前先给你的 Riven 定价。'
+        "根据相同武器和所选属性的已保存挂单估算 Warframe Riven 价格。交易前比较要价和属性的相对评级。"
     },
     '/screener': {
       title: '市场筛选器 — 筛选 Warframe Prime 价格',
@@ -918,7 +918,7 @@ export const PAGE_SEO_I18N: Record<string, Record<string, PageSeo>> = {
     '/riven-value': {
       title: 'Riven 價值估算 — Warframe Riven 價格',
       description:
-        '根據武器傾向與詞條，估算 Warframe Riven MOD 的白金價值。交易或競標前先為你的 Riven 定價。'
+        "根據相同武器和所選屬性的已儲存掛單估算 Warframe Riven 價格。交易前比較要價和屬性的相對評級。"
     },
     '/screener': {
       title: '市場篩選器 — 篩選 Warframe Prime 價格',
@@ -1025,7 +1025,7 @@ export const PAGE_SEO_I18N: Record<string, Record<string, PageSeo>> = {
     '/riven-value': {
       title: 'Kalkulator wartości Riven — Ceny Riven w Warframe',
       description:
-        'Oszacuj, ile wart jest mod Riven w Warframe w platynie według dyspozycji broni i rzutu. Wyceń swoje Riven przed handlem lub licytacją.'
+        "Oszacuj ceny Rivenów w Warframe na podstawie przechowywanych ofert dla tej samej broni i wybranych statystyk. Przed przystąpieniem do handlu porównaj ceny wywoławcze i względne oceny statystyk."
     },
     '/screener': {
       title: 'Skaner rynku — Filtruj ceny prime w Warframe',
@@ -1132,7 +1132,7 @@ export const PAGE_SEO_I18N: Record<string, Record<string, PageSeo>> = {
     '/riven-value': {
       title: "Stima valore Riven — Prezzi dei Riven in Warframe",
       description:
-        "Stima quanto vale un mod Riven di Warframe in platino in base alla disposizione dell'arma e al roll. Valuta i tuoi Riven prima di scambiare o fare offerte."
+        "Stima i prezzi di Warframe Riven dagli elenchi memorizzati per la stessa arma e le statistiche selezionate. Confronta i prezzi richiesti e le valutazioni relative delle statistiche prima di fare trading."
     },
     '/screener': {
       title: "Screener di mercato — Filtra i prezzi prime di Warframe",
@@ -1239,7 +1239,7 @@ export const PAGE_SEO_I18N: Record<string, Record<string, PageSeo>> = {
     '/riven-value': {
       title: 'Оцінювач вартості Riven — ціни на Riven у Warframe',
       description:
-        'Оцініть, скільки коштує мод Riven у Warframe в платині за диспозицією зброї та роллом. Оцініть свої Riven перед торгівлею чи ставкою.'
+        "Оцініть ціни Riven у Warframe за збереженими оголошеннями для тієї самої зброї та вибраних характеристик. Порівняйте запитувані ціни й відносні оцінки характеристик перед торгівлею."
     },
     '/screener': {
       title: 'Скринер ринку — фільтр цін prime у Warframe',

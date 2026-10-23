@@ -1,5 +1,5 @@
 // Warframe Knowledge Center: Kuva farming and Riven spending.
-// Substantively reviewed against official release notes on 2026-10-22.
+// Substantively reviewed against official release notes on 2026-10-23.
 // See the sources list for current mechanics and the historical cost changes.
 // Single content source for /guides/kuva (rendered by <GuideArticle>).
 import type { Guide } from './types'
@@ -8,7 +8,7 @@ const guide: Guide = {
   "slug": "kuva",
   "eyebrow": "Knowledge Center · Kuva Farming",
   "title": "Kuva Farming Guide: Sources, Boosters & Riven Costs",
-  "lede": "Plan your Kuva farming around the Riven rolls you can afford. Compare mission rewards and Update 44.1 vendor offers, check weekly purchase limits, and distinguish ordinary Trait Locking costs from protected spliced traits.",
+  "lede": "Plan your Kuva farming around the Riven rolls you can afford. Claim the one-time 100,000 Kuva login gift, compare vendor offers and mission rewards, and budget ordinary Trait Locking separately from protected spliced traits.",
   "category": "farming",
   "readMins": 8,
   "stats": [
@@ -40,7 +40,7 @@ const guide: Guide = {
       "blocks": [
         {
           "type": "p",
-          "text": "**Kuva** is a resource used to cycle the randomized stats on **Riven mods** and craft certain Foundry blueprints, including Umbra Forma. Cycling does not change the weapon’s Riven Disposition. Ordinary Trait Locking preserves one existing trait at double the usual cycling cost. A protected spliced trait alone has no Kuva surcharge."
+          "text": "**Kuva** is a resource used to cycle the randomized stats on **Riven mods** and craft items from certain Foundry blueprints, including Umbra Forma. Ordinary Trait Locking preserves one existing trait at double the usual cycling cost. A protected spliced trait alone has no Kuva surcharge."
         },
         {
           "type": "p",
@@ -74,6 +74,20 @@ const guide: Guide = {
         {
           "type": "info",
           "text": "**Match the resource to the goal.** Regular Kuva pays for Riven cycles. Entropic Kuva pays for Melica’s wares. Kuva Siphons and Floods are missions; Kuva Liches are nemesis enemies; Kuva weapons are their weapon rewards."
+        }
+      ]
+    },
+    {
+      "id": "arsenal-retuning",
+      "title": "Hotfix 44.1.3: claim the 100,000 Kuva login gift",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Log in after Hotfix 44.1.3 to receive 2 built Forma and 100,000 Kuva.** The [Arsenal Retuning inbox](https://www.warframe.com/en/patch-notes/pc/44-1-3) is available to all players until **December 31, 2026 at 11:59 p.m. ET**. Check your inbox after logging in; this is a one-time reward."
+        },
+        {
+          "type": "info",
+          "text": "Players who installed a Riven Splicer in a Riven Mod before Hotfix 44.1.3 also qualify for a **separate 1 Riven Splicer and 100,000 Kuva inbox**. The patch notes specify a delivery script for that compensation. Owning an unused Splicer is not the stated eligibility condition. Use the [Riven guide](/guides/riven) to check the current Splicing rules before spending."
         }
       ]
     },
@@ -484,7 +498,7 @@ const guide: Guide = {
   "faqs": [
     {
       "q": "What is Kuva used for in Warframe?",
-      "a": "Kuva is used to cycle Riven mod stats and craft some Foundry blueprints. Cycling does not change the weapon’s Disposition. Ordinary Trait Locking doubles the cycle cost; a protected spliced trait alone does not. See the [Riven guide](/guides/riven) for the full rules."
+      "a": "Kuva is used to cycle Riven mod stats and craft items from some Foundry blueprints. Ordinary Trait Locking doubles the cycle cost; a protected spliced trait alone does not. See the [Riven guide](/guides/riven) for the full rules."
     },
     {
       "q": "What's the best way to farm Kuva fast?",
@@ -516,6 +530,10 @@ const guide: Guide = {
     }
   ],
   "sources": [
+    {
+      "label": "Warframe — Hotfix 44.1.3: Arsenal Retuning login reward and Splicer compensation (October 22, 2026)",
+      "href": "https://www.warframe.com/en/patch-notes/pc/44-1-3"
+    },
     {
       "label": "Update 44.1: The Icebind — Kuva vendor offers and Riven Splicing",
       "href": "https://www.warframe.com/en/patch-notes/pc/44-1-0"
@@ -569,7 +587,7 @@ const guide: Guide = {
       "href": "https://warframe.fandom.com/wiki/Kuva_Siphon"
     }
   ],
-  "updated": "2026-10-22"
+  "updated": "2026-10-23"
 }
 
 export default guide

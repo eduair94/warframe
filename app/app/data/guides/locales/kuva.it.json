@@ -2,7 +2,7 @@
   "slug": "kuva",
   "eyebrow": "Centro Informazioni · Farming di Kuva",
   "title": "Guida al Farming di Kuva: Fonti, Booster e Costi Riven",
-  "lede": "Pianifica la tua raccolta di Kuva in base ai rilanci dei Riven che ti puoi permettere. Confronta i premi della missione e le offerte dei venditori dell'aggiornamento 44.1, controlla i limiti di acquisto settimanali e distingui i costi ordinari di Trait Locking dai tratti di giunzione protetti.",
+  "lede": "Pianifica la tua raccolta di Kuva in base ai tiri di Riven che ti puoi permettere. Richiedi il regalo di accesso 100,000 Kuva una tantum, confronta le offerte dei venditori e i premi della missione e pianifica i costi del Trait Locking ordinario separatamente dai tratti di giunzione protetti.",
   "category": "farming",
   "readMins": 8,
   "stats": [
@@ -34,7 +34,7 @@
       "blocks": [
         {
           "type": "p",
-          "text": "**Kuva** è una risorsa utilizzata per rilanciare le statistiche casuali su **Riven mod** e creare oggetti a partire da determinati progetti della Fonderia, tra cui Umbra Forma. Il rilancio delle statistiche non cambia la Disposizione Riven dell'arma. Il Trait Locking ordinario preserva un tratto esistente al doppio del normale costo di rilancio. Un tratto unito protetto da solo non ha alcun supplemento di Kuva."
+          "text": "**Kuva** è una risorsa utilizzata per scorrere le statistiche casuali su **mod Riven** e creare oggetti da determinati progetti della Fonderia, tra cui Umbra Forma. L'ordinario Trait Locking preserva un tratto esistente al doppio del normale costo di rilancio. Un tratto unito protetto da solo non ha alcun supplemento Kuva."
         },
         {
           "type": "p",
@@ -68,6 +68,20 @@
         {
           "type": "info",
           "text": "**Associa la risorsa all'obiettivo.** Il Kuva normale serve per pagare i cicli dei Riven. Il Kuva Entropico serve per la merce di Melica. I Siphon e i Flood di Kuva sono missioni; i Lich di Kuva sono nemici nemesi; le armi Kuva sono le loro ricompense in armi."
+        }
+      ]
+    },
+    {
+      "id": "arsenal-retuning",
+      "title": "Hotfix 44.1.3: richiedi il regalo di accesso 100,000 Kuva",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**Accedi dopo l'hotfix 44.1.3 per ricevere 2 Forma già costruiti e 100,000 Kuva.** Il [messaggio Arsenal Retuning](https://www.warframe.com/en/patch-notes/pc/44-1-3) è disponibile per tutti i giocatori fino al **31 dicembre 2026 alle 11:59 p.m. ET**. Controlla la tua casella di posta dopo aver effettuato l'accesso; questa è una ricompensa una tantum."
+        },
+        {
+          "type": "info",
+          "text": "I giocatori che hanno installato un Riven Splicer in un Mod Riven prima dell'hotfix 44.1.3 si qualificano anche per un **messaggio separato con 1 Riven Splicer e 100,000 Kuva**. Le note sulla patch specificano uno script di consegna per tale compenso. Possedere uno Splicer inutilizzato non è una condizione di ammissibilità dichiarata. Utilizza la [guida sui Riven](/guides/riven) per verificare le attuali regole di giunzione prima di spendere."
         }
       ]
     },
@@ -508,7 +522,7 @@
   "faqs": [
     {
       "q": "A cosa serve la Kuva in Warframe?",
-      "a": "Kuva viene utilizzato per rilanciare le statistiche mod di Riven e creare oggetti a partire da alcuni progetti della Fonderia. Il rilancio delle statistiche non cambia la Disposizione dell’arma. Il Trait Locking ordinario raddoppia il costo del ciclo; un tratto di giunzione protetto da solo non lo fa. Consulta la [guida sui Riven](/guides/riven) per le regole complete."
+      "a": "Kuva viene utilizzato per rilanciare le statistiche dei mod Riven e creare oggetti da alcuni progetti della Fonderia. Il Trait Locking ordinario raddoppia il costo del ciclo; un tratto di giunzione protetto da solo non lo fa. Consulta la [guida sui Riven](/guides/riven) per le regole complete."
     },
     {
       "q": "Qual è il modo migliore per farmare Kuva velocemente?",
@@ -540,6 +554,10 @@
     }
   ],
   "sources": [
+    {
+      "label": "Warframe — Hotfix 44.1.3: Arsenal Retuning login reward and Splicer compensation (October 22, 2026)",
+      "href": "https://www.warframe.com/en/patch-notes/pc/44-1-3"
+    },
     {
       "label": "Update 44.1: The Icebind — Kuva vendor offers and Riven Splicing",
       "href": "https://www.warframe.com/en/patch-notes/pc/44-1-0"
@@ -593,5 +611,5 @@
       "href": "https://warframe.fandom.com/wiki/Kuva_Siphon"
     }
   ],
-  "updated": "2026-10-22"
+  "updated": "2026-10-23"
 }

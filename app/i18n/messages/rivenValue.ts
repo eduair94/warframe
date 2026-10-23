@@ -23,7 +23,7 @@ export default {
         chooseWeapon: 'Choose a weapon',
       },
       meta: {
-        disposition: 'Disposition',
+        disposition: "Shared stat multiplier",
         auctions: 'Auctions',
       },
       states: {
@@ -65,7 +65,7 @@ export default {
         sub: '{rolls} rolls · MR{mr} · {status}',
       },
       disclaimer: {
-        text: "Estimates come from stored direct-sale auctions (rolled rivens, 50+ re-rolls). The grade is each roll's positive-stat percentile {within} (A = top of the field) — a relative read, not an absolute god-roll score, since base stat ranges aren't modelled. Higher disposition ({disp}) means bigger stat numbers overall.",
+        text: "Estimates use stored direct-sale listings for Rivens with at least 50 cycles. The grade compares positive stats {within}; it is not an absolute roll-quality score. Hotfix 44.1.3 removed weapon-specific Dispositions: all Rivens now share the former {disp} multiplier. Stored listings may predate that change. Check current in-game stats and seller prices before trading.",
         within: "within this weapon's current listings",
         shownAbove: 'shown above',
       },
@@ -88,7 +88,7 @@ export default {
         chooseWeapon: 'Elige un arma',
       },
       meta: {
-        disposition: 'Disposición',
+        disposition: "Multiplicador de estadísticas compartido",
         auctions: 'Subastas',
       },
       states: {
@@ -130,7 +130,7 @@ export default {
         sub: '{rolls} tiradas · MR{mr} · {status}',
       },
       disclaimer: {
-        text: 'Las estimaciones provienen de subastas de venta directa guardadas (rivens ya tirados, más de 50 re-tiradas). La nota es el percentil de estadísticas positivas de cada tirada {within} (A = lo mejor del conjunto) — una lectura relativa, no una puntuación absoluta de god roll, ya que no se modelan los rangos de estadísticas base. Una disposición más alta ({disp}) implica números de estadísticas más grandes en general.',
+        text: "Las estimaciones utilizan listados almacenados de venta directa de Rivens con al menos 50 ciclos. La calificación compara estadísticas positivas {within}; no es una puntuación absoluta de calidad de la tirada. El Hotfix 44.1.3 eliminó las disposiciones específicas de armas: todos los Rivens ahora comparten el antiguo multiplicador {disp}. Los listados almacenados pueden ser anteriores a ese cambio. Verifique las estadísticas actuales del juego y los precios de vendedor antes de realizar transacciones.",
         within: 'dentro de los listados actuales de esta arma',
         shownAbove: 'mostrada arriba',
       },
@@ -153,7 +153,7 @@ export default {
         chooseWeapon: 'Escolha uma arma',
       },
       meta: {
-        disposition: 'Disposição',
+        disposition: "Multiplicador de estatísticas compartilhado",
         auctions: 'Leilões',
       },
       states: {
@@ -195,7 +195,7 @@ export default {
         sub: '{rolls} rolagens · MR{mr} · {status}',
       },
       disclaimer: {
-        text: 'As estimativas vêm de leilões de venda direta armazenados (rivens já tirados, mais de 50 re-rolagens). A nota é o percentil de atributos positivos de cada rolagem {within} (A = o topo do conjunto) — uma leitura relativa, não uma pontuação absoluta de god roll, já que as faixas de atributos base não são modeladas. Uma disposição mais alta ({disp}) significa números de atributos maiores no geral.',
+        text: "As estimativas usam listagens de venda direta armazenadas para Rivens com pelo menos 50 ciclos. A nota compara estatísticas positivas {within}; não é uma pontuação absoluta de qualidade da rolagem. O Hotfix 44.1.3 removeu disposições específicas de armas: todos os Rivens agora compartilham o antigo multiplicador {disp}. As listagens armazenadas podem ser anteriores a essa mudança. Verifique as estatísticas atuais do jogo e os preços do vendedor antes de negociar.",
         within: 'dentro das listagens atuais desta arma',
         shownAbove: 'mostrada acima',
       },
@@ -218,7 +218,7 @@ export default {
         chooseWeapon: 'Wähle eine Waffe',
       },
       meta: {
-        disposition: 'Disposition',
+        disposition: "Gemeinsamer Wertemultiplikator",
         auctions: 'Auktionen',
       },
       states: {
@@ -260,7 +260,7 @@ export default {
         sub: '{rolls} Würfe · MR{mr} · {status}',
       },
       disclaimer: {
-        text: 'Die Schätzungen stammen aus gespeicherten Direktverkaufs-Auktionen (gewürfelte Rivens, mehr als 50 Neuwürfe). Die Note ist das Perzentil der positiven Werte jedes Wurfs {within} (A = Spitze des Feldes) — eine relative Einordnung, keine absolute God-Roll-Wertung, da die Basis-Wertebereiche nicht modelliert werden. Eine höhere Disposition ({disp}) bedeutet insgesamt größere Wertzahlen.',
+        text: "Schätzungen basieren auf gespeicherten Direktverkaufsangeboten für Rivens mit mindestens 50 Zyklen. Die Note vergleicht positive Werte {within}; es handelt sich nicht um eine absolute Bewertung der Wurfqualität. Mit Hotfix 44.1.3 wurden waffenspezifische Dispositionen entfernt: Alle Rivens teilen sich jetzt den früheren {disp}-Multiplikator. Gespeicherte Angebote können aus der Zeit vor dieser Änderung stammen. Überprüfen Sie vor dem Handel die aktuellen Werte im Spiel und Verkäuferpreise.",
         within: 'innerhalb der aktuellen Angebote dieser Waffe',
         shownAbove: 'oben gezeigt',
       },
@@ -283,7 +283,7 @@ export default {
         chooseWeapon: 'Choisissez une arme',
       },
       meta: {
-        disposition: 'Disposition',
+        disposition: "Multiplicateur de statistiques partagé",
         auctions: 'Enchères',
       },
       states: {
@@ -325,7 +325,7 @@ export default {
         sub: '{rolls} tirages · MR{mr} · {status}',
       },
       disclaimer: {
-        text: "Les estimations proviennent d'enchères de vente directe enregistrées (rivens déjà tirés, plus de 50 re-tirages). La note est le centile des stats positives de chaque tirage {within} (A = le sommet du champ) — une lecture relative, pas un score absolu de god roll, car les plages de stats de base ne sont pas modélisées. Une disposition plus élevée ({disp}) implique des chiffres de stats plus grands dans l'ensemble.",
+        text: "Les estimations utilisent des annonces de vente directe enregistrées pour des Rivens avec au moins 50 cycles. La note compare les statistiques positives {within} ; il ne s’agit pas d’un score absolu de qualité du tirage. Le correctif 44.1.3 a supprimé les dispositions spécifiques aux armes : tous les Rivens partagent désormais l'ancien multiplicateur {disp}. Les annonces stockées peuvent être antérieures à ce changement. Vérifiez les statistiques actuelles du jeu et les prix des vendeurs avant de négocier.",
         within: 'parmi les annonces actuelles de cette arme',
         shownAbove: 'affichée ci-dessus',
       },
@@ -348,7 +348,7 @@ export default {
         chooseWeapon: 'Выберите оружие',
       },
       meta: {
-        disposition: 'Диспозиция',
+        disposition: "Общий множитель характеристик",
         auctions: 'Аукционы',
       },
       states: {
@@ -390,7 +390,7 @@ export default {
         sub: '{rolls} роллов · MR{mr} · {status}',
       },
       disclaimer: {
-        text: 'Оценки основаны на сохранённых аукционах прямой продажи (роллнутые Riven, более 50 рероллов). Оценка — это процентиль положительных статов каждого ролла {within} (A = вершина поля) — относительная оценка, а не абсолютный god-roll-балл, так как диапазоны базовых статов не моделируются. Более высокая диспозиция ({disp}) означает в целом более крупные значения статов.',
+        text: "Оценки основаны на сохранённых объявлениях о прямой продаже Riven с не менее чем 50 рероллами. Оценка сравнивает положительные характеристики {within}; это не абсолютный показатель качества реролла. В исправлении 44.1.3 удалены диспозиции для конкретного оружия: все Riven теперь имеют прежний множитель {disp}. Сохранённые объявления могут относиться к периоду до этого изменения. Перед торговлей проверьте текущую характеристики в игре и цены продавцов.",
         within: 'среди текущих объявлений этого оружия',
         shownAbove: 'показана выше',
       },
@@ -413,7 +413,7 @@ export default {
         chooseWeapon: '무기 선택',
       },
       meta: {
-        disposition: '디스포지션',
+        disposition: "공통 능력치 배율",
         auctions: '경매',
       },
       states: {
@@ -455,7 +455,7 @@ export default {
         sub: '{rolls}회 리롤 · MR{mr} · {status}',
       },
       disclaimer: {
-        text: '추정치는 저장된 직거래 경매(굴린 riven, 리롤 50회 이상)에서 나옵니다. 등급은 각 롤의 긍정 스탯 백분위입니다 {within} (A = 최상위) — 기본 스탯 범위는 반영하지 않으므로 절대적인 god roll 점수가 아니라 상대적인 지표입니다. 디스포지션이 높을수록({disp}) 전반적으로 스탯 수치가 커집니다.',
+        text: "추정치는 최소 50회 재설정한 Riven의 저장된 직접 판매 목록을 사용합니다. 등급은 {within} 플러스 능력치를 비교하며, 재설정 결과의 절대적인 품질 점수는 아닙니다. 핫픽스 44.1.3에서는 무기별 Riven 성향이 제거되어 이제 모든 Riven이 이전의 {disp} 배율을 공유합니다. 저장된 목록은 해당 변경 이전의 정보일 수 있습니다. 거래하기 전에 현재 게임 내 능력치와 판매자 가격을 확인하세요.",
         within: '이 무기의 현재 매물 내에서',
         shownAbove: '위에 표시됨',
       },
@@ -478,7 +478,7 @@ export default {
         chooseWeapon: '武器を選択',
       },
       meta: {
-        disposition: 'ディスポジション',
+        disposition: "共通ステータス倍率",
         auctions: 'オークション',
       },
       states: {
@@ -520,7 +520,7 @@ export default {
         sub: '{rolls} 回リロール · MR{mr} · {status}',
       },
       disclaimer: {
-        text: '推定値は保存済みの直接販売オークション（引き直した riven、リロール50回以上）に基づきます。評価は各ロールのプラスステータスのパーセンタイルです {within}（A = 全体の最上位）— 基礎ステータスの範囲はモデル化していないため、絶対的な god roll スコアではなく相対的な指標です。ディスポジションが高いほど（{disp}）全体的にステータスの数値が大きくなります。',
+        text: "推定には、再抽選を 50 回以上行った Riven の保存済み直接販売リストを使用します。評価は {within} プラスステータスを比較するもので、ロールの品質を絶対的に示す点数ではありません。ホットフィックス 44.1.3 で武器ごとの Riven 性質が廃止され、すべての Riven が従来の {disp} 倍率を共有するようになりました。保存されたリストは、この変更以前のものである可能性があります。取引前に、現在のゲーム内ステータスと販売者の提示価格を確認してください。",
         within: 'この武器の現在のリスト内で',
         shownAbove: '上に表示',
       },
@@ -543,7 +543,7 @@ export default {
         chooseWeapon: '选择武器',
       },
       meta: {
-        disposition: '倾向',
+        disposition: "共用属性倍率",
         auctions: '拍卖',
       },
       states: {
@@ -585,7 +585,7 @@ export default {
         sub: '{rolls} 次洗卡 · MR{mr} · {status}',
       },
       disclaimer: {
-        text: '估算来自已存储的直售拍卖（已洗过的 riven，50 次以上重洗）。评级是每次 roll 的正面属性百分位 {within}（A = 全场最高）— 这是相对读数，而非绝对的 god roll 评分，因为基础属性范围未纳入模型。倾向越高（{disp}），整体属性数值越大。',
+        text: "估算使用已保存的直接出售挂单，其中的 Riven 至少重洗过 50 次。评级会{within}比较正面属性，并不是属性组合品质的绝对评分。热修复 44.1.3 已移除各武器独有的 Riven 倾向：所有 Riven 现在统一使用原来的 {disp} 倍率。保存的挂单可能来自这次改动之前。交易前请核对当前游戏内属性和卖家报价。",
         within: '在这把武器当前的挂单范围内',
         shownAbove: '如上所示',
       },
@@ -608,7 +608,7 @@ export default {
         chooseWeapon: '選擇武器',
       },
       meta: {
-        disposition: '傾向',
+        disposition: "共用屬性倍率",
         auctions: '拍賣',
       },
       states: {
@@ -650,7 +650,7 @@ export default {
         sub: '{rolls} 次洗卡 · MR{mr} · {status}',
       },
       disclaimer: {
-        text: '估算來自已儲存的直售拍賣（已洗過的 riven，50 次以上重洗）。評級是每次 roll 的正面屬性百分位 {within}（A = 全場最高）— 這是相對讀數，而非絕對的 god roll 評分，因為基礎屬性範圍未納入模型。傾向越高（{disp}），整體屬性數值越大。',
+        text: "估算使用已儲存的直接出售掛單，其中的 Riven 至少重洗過 50 次。評級會{within}比較正面屬性，並不是屬性組合品質的絕對評分。熱修 44.1.3 已移除各武器獨有的 Riven 傾向：所有 Riven 現在統一使用原來的 {disp} 倍率。儲存的掛單可能來自這次改動之前。交易前請核對目前遊戲內屬性和賣家報價。",
         within: '在這把武器目前的掛單範圍內',
         shownAbove: '如上所示',
       },
@@ -673,7 +673,7 @@ export default {
         chooseWeapon: 'Wybierz broń',
       },
       meta: {
-        disposition: 'Dyspozycja',
+        disposition: "Wspólny mnożnik statystyk",
         auctions: 'Aukcje',
       },
       states: {
@@ -715,7 +715,7 @@ export default {
         sub: '{rolls} rolli · MR{mr} · {status}',
       },
       disclaimer: {
-        text: 'Szacunki pochodzą z zapisanych aukcji sprzedaży bezpośredniej (rollowane riveny, ponad 50 rerollów). Ocena to percentyl pozytywnych statystyk każdego rolla {within} (A = szczyt stawki) — odczyt względny, a nie bezwzględny wynik god rolla, ponieważ zakresy bazowych statystyk nie są modelowane. Wyższa dyspozycja ({disp}) oznacza ogólnie większe wartości statystyk.',
+        text: "Szacunki opierają się na przechowywanych ofertach sprzedaży bezpośredniej dla Rivenów z co najmniej 50 cyklami. Ocena porównuje pozytywne statystyki {within}; nie jest to absolutny wynik jakości wylosowanych statystyk. Poprawka 44.1.3 usunęła dyspozycje specyficzne dla broni: wszystkie Riveny mają teraz wspólny dawny mnożnik {disp}. Przechowywane informacje mogą być starsze niż ta zmiana. Przed dokonaniem transakcji sprawdź aktualne statystyki w grze i ceny sprzedawców.",
         within: 'wśród aktualnych ofert tej broni',
         shownAbove: 'pokazana powyżej',
       },
@@ -738,7 +738,7 @@ export default {
         chooseWeapon: "Scegli un'arma",
       },
       meta: {
-        disposition: 'Disposizione',
+        disposition: "Moltiplicatore di statistiche condiviso",
         auctions: 'Aste',
       },
       states: {
@@ -780,7 +780,7 @@ export default {
         sub: '{rolls} tirate · MR{mr} · {status}',
       },
       disclaimer: {
-        text: 'Le stime provengono da aste di vendita diretta salvate (riven già tirati, più di 50 re-tirate). Il voto è il percentile delle statistiche positive di ogni tirata {within} (A = il vertice del campo) — una lettura relativa, non un punteggio assoluto di god roll, poiché gli intervalli delle statistiche base non sono modellati. Una disposizione più alta ({disp}) implica numeri di statistiche più grandi in generale.',
+        text: "Le stime utilizzano elenchi di vendita diretta archiviati per Riven con almeno 50 cicli. Il voto confronta le statistiche positive {within}; non è un punteggio assoluto di qualità del tiro. L'hotfix 44.1.3 ha rimosso le disposizioni specifiche dell'arma: tutti i Riven ora condividono il precedente moltiplicatore {disp}. Gli elenchi memorizzati potrebbero essere antecedenti a tale modifica. Controlla le statistiche attuali del gioco e i prezzi del venditore prima di fare trading.",
         within: "tra gli annunci attuali di quest'arma",
         shownAbove: 'mostrato sopra',
       },
@@ -803,7 +803,7 @@ export default {
         chooseWeapon: 'Оберіть зброю',
       },
       meta: {
-        disposition: 'Диспозиція',
+        disposition: "Спільний множник характеристик",
         auctions: 'Аукціони',
       },
       states: {
@@ -845,7 +845,7 @@ export default {
         sub: '{rolls} ролів · MR{mr} · {status}',
       },
       disclaimer: {
-        text: 'Оцінки базуються на збережених аукціонах прямого продажу (роллнуті Riven, понад 50 реролів). Оцінка — це процентиль позитивних статів кожного ролла {within} (A = вершина поля) — відносна оцінка, а не абсолютний god-roll-бал, оскільки діапазони базових статів не моделюються. Вища диспозиція ({disp}) означає загалом більші значення статів.',
+        text: "Оцінки використовують збережені оголошення про прямий продаж Riven із принаймні 50 повторними генераціями характеристик. Оцінка порівнює позитивні показники {within}; це не абсолютний показник якості згенерованих характеристик. Виправлення 44.1.3 прибрало залежні від зброї диспозиції Riven: тепер усі Riven мають колишній множник {disp}. Збережені оголошення можуть походити з періоду до цієї зміни. Перш ніж торгувати, перевірте поточні характеристики в грі та ціни продавця.",
         within: 'серед поточних оголошень цієї зброї',
         shownAbove: 'показано вище',
       },

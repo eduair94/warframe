@@ -2,7 +2,7 @@
   "slug": "kuva",
   "eyebrow": "知识中心 · Kuva 刷取",
   "title": "Kuva刷取指南：来源、加成与Riven消耗",
-  "lede": "围绕您能负担得起的 Riven 重洗次数来计划您的 Kuva 刷取。比较任务奖励和更新 44.1 商人兑换项目，检查每周购买限额，并将普通 Trait Locking 成本与受保护的拼接特征区分开来。",
+  "lede": "围绕您能负担得起的 Riven 重洗次数来计划您的 Kuva 获取。领取一次性 100,000 Kuva 登录礼物，比较供应商报价和任务奖励，并将普通 Trait Locking 与受保护的拼接特征分开进行预算。",
   "category": "farming",
   "readMins": 8,
   "stats": [
@@ -34,7 +34,7 @@
       "blocks": [
         {
           "type": "p",
-          "text": "**Kuva** 是一种资源，用于重洗 **Riven mods** 上的随机属性，并按某些 Foundry 蓝图制作物品，包括 Umbra Forma。重洗不会改变武器的 Riven 倾向性。普通的Trait Locking以通常重洗费用的两倍保留了一种现有特征。仅受保护的剪接性状没有 Kuva 附加费。"
+          "text": "**Kuva** 是一种资源，用于循环 **Riven mods** 上的随机统计数据以及来自某些 Foundry 蓝图（包括 Umbra Forma）的工艺物品。普通的Trait Locking以普通循环成本的两倍保留了一种现有特征。仅受保护的剪接性状没有 Kuva 附加费。"
         },
         {
           "type": "p",
@@ -68,6 +68,20 @@
         {
           "type": "info",
           "text": "**将资源与目标相匹配。** 常规 Kuva 用于支付 Riven 循环。Entropic Kuva 用于支付 Melica 的商品。Kuva Siphon 和 Flood 是任务；Kuva Lich 是宿敌；Kuva 武器是其武器奖励。"
+        }
+      ]
+    },
+    {
+      "id": "arsenal-retuning",
+      "title": "修补程序 44.1.3：领取 100,000 Kuva 登录礼物",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**在 Hotfix 44.1.3 后登录即可获得 2 个成品 Forma 和 100,000 Kuva。** [军械库调整收件箱](https://www.warframe.com/en/patch-notes/pc/44-1-3) 可供所有玩家使用，直至 **2026 年 12 月 31 日晚上 11:59（美国东部时间）**。登录后检查您的收件箱；这是一次性奖励。"
+        },
+        {
+          "type": "info",
+          "text": "在修补程序 44.1.3 之前在 Riven Mod 中安装了 Riven Splicer 的玩家也有资格获得 **单独的 1 Riven Splicer 和 100,000 Kuva 收件箱**。补丁说明指定了该补偿的交付脚本。拥有未使用的Riven Splicer并不是规定的资格条件。支出前请使用[Riven指南](/guides/riven)检查当前的拼接规则。"
         }
       ]
     },
@@ -508,7 +522,7 @@
   "faqs": [
     {
       "q": "在 Warframe 中 Kuva 有什么用？",
-      "a": "Kuva 用于重洗 Riven mod 的属性，并按一些 Foundry 蓝图制作物品。重洗不会改变武器的 Riven 倾向性。普通 Trait Locking 会将重洗费用翻倍；单独的受保护剪接性状则不然。有关完整规则，请参阅[Riven指南](/guides/riven)。"
+      "a": "Kuva 用于循环 Riven mod 统计数据并根据某些 Foundry 蓝图制作物品。普通Trait Locking循环成本增加一倍；单独的受保护剪接性状则不然。有关完整规则，请参阅[Riven指南](/guides/riven)。"
     },
     {
       "q": "快速刷取 Kuva 的最佳方法是什么？",
@@ -540,6 +554,10 @@
     }
   ],
   "sources": [
+    {
+      "label": "Warframe — Hotfix 44.1.3: Arsenal Retuning login reward and Splicer compensation (October 22, 2026)",
+      "href": "https://www.warframe.com/en/patch-notes/pc/44-1-3"
+    },
     {
       "label": "Update 44.1: The Icebind — Kuva vendor offers and Riven Splicing",
       "href": "https://www.warframe.com/en/patch-notes/pc/44-1-0"
@@ -593,5 +611,5 @@
       "href": "https://warframe.fandom.com/wiki/Kuva_Siphon"
     }
   ],
-  "updated": "2026-10-22"
+  "updated": "2026-10-23"
 }

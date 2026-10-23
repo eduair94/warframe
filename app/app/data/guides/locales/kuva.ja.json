@@ -2,7 +2,7 @@
   "slug": "kuva",
   "eyebrow": "ナレッジセンター · Kuvaファーム",
   "title": "Kuvaファームガイド：入手源、ブースター、Rivenコスト",
-  "lede": "余裕のある Riven ロールを中心に Kuva 集めを計画してください。ミッションの報酬とアップデート 44.1 ベンダーのオファーを比較し、毎週の購入制限を確認し、通常の Trait Locking コストと保護されたスプライスされた特性を区別します。",
+  "lede": "余裕のある Riven ロールを中心に Kuva 集めを計画してください。 1 回限りの 100,000 Kuva ログイン ギフトを請求し、ベンダーのオファーとミッション報酬を比較し、保護されたスプライスされた特性とは別に通常の Trait Locking を予算化します。",
   "category": "farming",
   "readMins": 8,
   "stats": [
@@ -34,7 +34,7 @@
       "blocks": [
         {
           "type": "p",
-          "text": "**Kuva** は、**Riven MOD** のランダムな能力値を再抽選し、Umbra Forma を含む特定の Foundry 設計図からアイテムを製作するために使用されるリソースです。再抽選は武器のRiven性質を変更しません。通常の Trait Locking は、通常の再抽選コストの 2 倍で 1 つの既存の特性を保持します。保護されたスプライスされた特性だけでは、Kuva の追加料金はかかりません。"
+          "text": "**Kuva** は、**Riven MOD** のランダム化された統計を循環させ、Umbra Forma を含む特定の Foundry ブループリントからアイテムを作成するために使用されるリソースです。通常の Trait Locking は、通常の再ロールコストの 2 倍で 1 つの既存の特性を保持します。保護されたスプライスされた特性単独には、Kuva の追加料金はかかりません。"
         },
         {
           "type": "p",
@@ -68,6 +68,20 @@
         {
           "type": "info",
           "text": "**目的に応じたリソースを使い分けましょう。** 通常のKuvaはRivenのサイクルの支払いに使用します。Entropic KuvaはMelicaの品物の支払いに使用します。Kuva SiphonおよびFloodはミッションであり、Kuva Lichはネメシス上の敵であり、Kuvaウェポンはそれらの武器報酬です。"
+        }
+      ]
+    },
+    {
+      "id": "arsenal-retuning",
+      "title": "ホットフィックス 44.1.3: 100,000 Kuva ログインギフトを受け取りましょう",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "**ホットフィックス 44.1.3 の後にログインすると、2 つの製作済み Forma と 100,000 Kuva を受け取ります。** [Arsenal Retuningの受信メッセージ](https://www.warframe.com/en/patch-notes/pc/44-1-3) は、**2026年12月31日午後11時59分（米国東部時間）まで、すべてのプレイヤーが利用できます**。ログイン後、受信箱を確認してください。これは一度限りの報酬です。"
+        },
+        {
+          "type": "info",
+          "text": "ホットフィックス 44.1.3 より前に Riven Mod に Riven Splicer をインストールしたプレイヤーも、**個別の 1 Riven Splicer および 100,000 Kuva 受信箱**を受け取る資格があります。パッチノートでは、その補償の配信スクリプトを指定しています。未使用のスプライサーを所有することは、記載されている資格条件ではありません。支出の前に、[Rivenガイド](/guides/riven)を使用して現在のスプライシング ルールを確認してください。"
         }
       ]
     },
@@ -508,7 +522,7 @@
   "faqs": [
     {
       "q": "WarframeにおいてKuvaは何に使用されますか？",
-      "a": "Kuva は、Riven の MOD の能力値を再抽選し、一部の Foundry 設計図からアイテムを製作するために使用されます。再抽選しても武器の性質は変わりません。通常の Trait Locking は再抽選コストを 2 倍にします。保護されたスプライスされた特性だけではそうではありません。完全なルールについては、[Rivenガイド](/guides/riven)を参照してください。"
+      "a": "Kuva は、Riven の MOD 統計を循環させ、いくつかの Foundry ブループリントからアイテムを作成するために使用されます。通常の Trait Locking はサイクルコストを 2 倍にします。保護されたスプライスされた特性だけではそうではありません。完全なルールについては、[Rivenガイド](/guides/riven)を参照してください。"
     },
     {
       "q": "Kuvaを素早くファームする最善の方法は何ですか？",
@@ -540,6 +554,10 @@
     }
   ],
   "sources": [
+    {
+      "label": "Warframe — Hotfix 44.1.3: Arsenal Retuning login reward and Splicer compensation (October 22, 2026)",
+      "href": "https://www.warframe.com/en/patch-notes/pc/44-1-3"
+    },
     {
       "label": "Update 44.1: The Icebind — Kuva vendor offers and Riven Splicing",
       "href": "https://www.warframe.com/en/patch-notes/pc/44-1-0"
@@ -593,5 +611,5 @@
       "href": "https://warframe.fandom.com/wiki/Kuva_Siphon"
     }
   ],
-  "updated": "2026-10-22"
+  "updated": "2026-10-23"
 }

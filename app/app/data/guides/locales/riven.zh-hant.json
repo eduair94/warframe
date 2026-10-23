@@ -2,7 +2,7 @@
   "slug": "riven",
   "eyebrow": "知識中心 · Riven Mods",
   "title": "Riven Mod：拼接、Trait Locking 和 Kuva 成本",
-  "lede": "了解 Riven Splicing 和 Trait Locking 如何協同工作、從哪裡獲取 Riven Splicers 以及如何在重洗或交易之前規劃 Kuva 預算。包括已上線的更新 44.1 規則以及兩種受保護特徵之間的差異。",
+  "lede": "了解 Riven Splicing 和 Trait Locking 如何協同工作、從哪裡獲取 Riven Splicers 以及如何在重洗屬性或交易之前規劃 Kuva 預算。修補程式 44.1.3 退役了特定於武器的傾向性，並將彈藥效率上限限制為 75%。",
   "category": "systems",
   "readMins": 10,
   "stats": [
@@ -12,8 +12,8 @@
       "tone": "good"
     },
     {
-      "num": "1–5",
-      "label": "傾向性點數",
+      "num": "1.2",
+      "label": "傾向性退役後的共享屬性乘數",
       "tone": "alt"
     },
     {
@@ -38,7 +38,7 @@
         },
         {
           "type": "p",
-          "text": "Riven 可以在一個 Mod 插槽中結合多種有用的獎勵，但隨機重洗並不一定帶來提升。武器、屬性組合、負面特徵、等級和武器的 Riven 傾向性都很重要。以下部分介紹重洗、普通 Trait Locking 和單獨的 Riven Splicing 系統。"
+          "text": "Riven 可以在一個 Mod 插槽中結合多種有用的加成，但隨機重洗並不會自動升級。武器、屬性組合、負面特徵、等級和實際值都很重要。以下部分介紹重洗、普通 Trait Locking 和單獨的 Riven Splicing 系統。"
         },
         {
           "type": "kv",
@@ -73,43 +73,43 @@
     },
     {
       "id": "disposition",
-      "title": "Riven Disposition 與武器變體",
+      "title": "傾向性停用後的 Riven 屬性",
       "blocks": [
         {
           "type": "p",
-          "text": "**Riven Disposition** 是一個武器專屬的倍率，以 **1 到 5 個圓點**表示。較高的 Disposition 針對同等 Riven 洗屬會給予較大的加成。同一把武器的不同變體可能會使用不同的倍率，因此請在預計裝備的確切變體上預覽 Riven。洗屬 Riven 不會重新隨機抽選武器的 Disposition。"
+          "text": "**修補程式 44.1.3 於 2026年10月22日 刪除了 Riven 傾向性。** 現在，所有 Riven 都對其可能的屬性範圍使用相同的乘數，相當於舊系統中的 **1.2 傾向性**。武器變體不再具有不同的傾向性乘數。特質、隨機屬性數值、等級和正/負佈局仍然很重要；共享乘數不會使每次 Riven 重洗結果都相同。"
         },
         {
           "type": "table",
           "table": {
             "columns": [
-              "點數",
-              "大致代表",
+              "規則",
+              "目前的行為",
               "檢查項目"
             ],
             "rows": [
               [
-                "5（最高）",
-                "同等洗屬可獲得較大加成",
-                "確切的武器變體與屬性組合"
+                "屬性乘數",
+                "相當於每個 Riven 的舊 1.2 傾向性",
+                "實際值、等級和特質佈局"
               ],
               [
-                "3（中等）",
-                "中等 Disposition 區間",
+                "武器變體",
+                "沒有單獨的傾向性乘數",
                 "Riven 是否能改善你現有的配置"
               ],
               [
-                "1（最低）",
-                "同等洗屬可獲得較小加成",
-                "多個實用詞條是否能正當化該 Mod 格"
+                "彈藥效率",
+                "合併來源的 75% 上限",
+                "名為「無限彈藥」的效果是否處於活動狀態"
               ]
             ],
-            "note": "圓點總結了倍率；它們並未建立交易價格。請參考當前的遊戲內預覽以及最新的官方 Disposition 名單。"
+            "note": "舊的傾向性點和變體比較描述了退役的系統。在購買、出售或更改配裝之前檢查當前的遊戲內數值。"
           }
         },
         {
           "type": "info",
-          "text": "[2026年9月傾向性調整公告](https://forums.warframe.com/topic/1523355-september-2026-riven-dispositions/)記錄了當月的變更。需求、新武器選項和具體詞條組合也會影響清單。單獨的傾向性調整並不能保證您的 Riven 的白金售價會更高或更低。"
+          "text": "[修補程式 44.1.3](https://www.warframe.com/en/patch-notes/pc/44-1-3) 也將**彈藥效率限制為 75%**，包括組合源和設備，例如Amps和歿世機甲。明確的**無限彈藥**效果仍然是一個單獨的機制。不要購買彈藥效率 Riven，期望堆疊效率能夠提供永久的無限彈藥。"
         }
       ]
     },
@@ -159,7 +159,7 @@
         },
         {
           "type": "tip",
-          "text": "Riven 隨機生成的名稱（例如 `critacan`/`visitox` 這類亂碼）純粹是裝飾性的 — 它是根據屬性生成的，不影響威力。請根據 Riven 的實際屬性、傾向性（disposition）和 MR 需求來判斷其價值，絕不要看名稱。"
+          "text": "裂罅的虛構名稱（`critacan`/`visitox` 胡言亂語）純粹是裝飾性的 — 它是根據統計數據產生的，不會影響威力。判斷裂罅的依據是它的實際屬性條目、等級和 MR 要求，而不是它的名字。"
         },
         {
           "type": "info",
@@ -286,6 +286,10 @@
         {
           "type": "tip",
           "text": "**早期發布報告描述了已解決的錯誤。** [修補程式 44.1.1](https://www.warframe.com/en/patch-notes/pc/44-1-1) 修復了拼接屬性錯誤導致 Kuva 費用加倍，以及 Weak Point Damage 未生效的問題。 [受影響的玩家Kuva退款](https://forums.warframe.com/topic/1527399-psa-spliced-riven-kuva-cost-doubling-resolved-script-complete/)已於 10 月 9 日完成。 [修補程式 44.1.2](https://www.warframe.com/en/patch-notes/pc/44-1-2) 新增了重洗介面中的拼接捷徑。"
+        },
+        {
+          "type": "info",
+          "text": "**早期 Splicer 使用者補償：** 在 [修補程式 44.1.3](https://www.warframe.com/en/patch-notes/pc/44-1-3) 之前在 Riven Mod 中安裝 Riven Splicer 的玩家有資格獲得包含 **1 Riven Splicer 和 100,000 Kuva** 的單獨收件匣。補丁說明指定透過腳本交付；檢查您的收件匣，而不是假設立即退款。這與所有玩家可獲得的登入禮物是分開的。"
         }
       ]
     },
@@ -309,7 +313,7 @@
       "blocks": [
         {
           "type": "p",
-          "text": "Riven 行情會根據武器需求、實用詞條、負面效果以及實際數值而有所不同。單憑低 Disposition 並不能使洗鍊變得毫無價值，而高 Disposition 也無法保證需求。請比較同一武器和相似洗鍊的多個刊登資訊；開價並不等於完成交易的證明。購買前請檢查可用的 Riven 容量與交易確認。"
+          "text": "Riven 清單因武器需求、有用特性、負面影響和實際屬性值而異。修補程式 44.1.3 在暫時暫停後恢復了 Riven 交易，並刪除了傾向性作為比較因素。比較相同武器和相似屬性組合的當前列表；舊的螢幕截圖和價格可能反映了已退役的乘數。要價並不能證明銷售已完成。購買前請檢查可用的 Riven 容量和交易確認。"
         },
         {
           "type": "table",
@@ -324,8 +328,8 @@
                 "該武器的需求以及買家打算使用的版本"
               ],
               [
-                "傾向性",
-                "該版本的實際數值，而不僅僅是圓點"
+                "屬性值",
+                "修補程式 44.1.3 後的目前值，而不是舊的傾向性點"
               ],
               [
                 "屬性組合",
@@ -425,7 +429,7 @@
     },
     {
       "q": "什麼是 Riven 傾向性（Disposition）？",
-      "a": "Disposition 是由 1 到 5 個圓點表示的武器專屬倍率。它會影響 Riven 數值的強度，並且在不同的武器版本之間可能有所不同。洗 Riven 不會改變該倍率。請預覽確切的版本並查閱最新的官方 Disposition 公告。"
+      "a": "傾向性是特定於武器的乘數，由 1 到 5 個點表示。修補程式 44.1.3 於 2026年10月22日 刪除了它：所有 Riven 現在都使用與舊的 1.2 傾向性等效的共享乘數。屬性數值仍然隨特徵、隨機屬性、等級和佈局而變化，但武器變體不再具有不同的傾向性乘數。"
     },
     {
       "q": "什麼是「神卡（god roll）」Riven？",
@@ -453,6 +457,10 @@
     }
   ],
   "sources": [
+    {
+      "label": "Warframe — Hotfix 44.1.3: Disposition retirement, Ammo Efficiency and login rewards (October 22, 2026)",
+      "href": "https://www.warframe.com/en/patch-notes/pc/44-1-3"
+    },
     {
       "label": "Warframe — Update 44: Iceblade of Narin (September 23, 2026)",
       "href": "https://www.warframe.com/en/patch-notes/pc/44-0-0"
@@ -546,5 +554,5 @@
       "note": "Riven 市場、wiki 和 DE 工具"
     }
   ],
-  "updated": "2026-10-22"
+  "updated": "2026-10-23"
 }

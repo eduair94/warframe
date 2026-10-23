@@ -126,7 +126,7 @@ export const PAGE_SEO: Record<string, PageSeo> = {
   '/riven-value': {
     title: 'Riven Value Estimator — Warframe Riven Prices',
     description:
-      'Estimate what a Warframe riven mod is worth in platinum by weapon disposition and roll. Price your rivens before you trade or bid.'
+      "Estimate Warframe Riven prices from stored listings for the same weapon and selected stats. Compare asking prices and relative stat grades before trading."
   },
   '/screener': {
     title: 'Market Screener — Filter Warframe Prime Prices',
@@ -266,7 +266,7 @@ export const PAGE_SEO: Record<string, PageSeo> = {
   '/guides/kuva': {
     title: "Kuva Farming Guide: Sources, Boosters & Riven Costs | Warframe",
     description:
-      "Compare mission rewards and Update 44.1 vendor offers, check weekly purchase limits, and distinguish ordinary Trait Locking costs from protected spliced traits."
+      "Claim the 100,000 Kuva login gift through December 31, 2026, compare farming sources and vendor offers, and plan your Riven cycling costs."
   },
   '/guides/relics': {
     title: 'Warframe Relic & Void Trace Farming Guide',
@@ -275,7 +275,7 @@ export const PAGE_SEO: Record<string, PageSeo> = {
   },
   '/guides/forma': {
     title: "How to Farm Forma: Relics, Crafting & Free Rewards | Warframe",
-    description: "Farm Forma Blueprints from relics, plan crafting resources and compare built Forma sources. The Banshee giveaway has ended, but eligible accounts can still claim its one-time Forma until December 31, 2026."
+    description: "Claim 2 free built Forma in the Hotfix 44.1.3 login gift through December 31, 2026. Compare relic rewards, crafting and the separate earlier Banshee reward."
   },
   '/guides/resources': {
     title: 'Warframe Resource Farming — Where to Farm Everything',
@@ -310,7 +310,7 @@ export const PAGE_SEO: Record<string, PageSeo> = {
   '/guides/riven': {
     title: "Riven Mods: Splicing, Trait Locking & Kuva Costs | Warframe",
     description:
-      "Learn how Riven Splicing and Trait Locking work together, where to get Riven Splicers and how to budget Kuva before cycling or trading."
+      "Learn Riven Splicing, Trait Locking and Kuva costs after Hotfix 44.1.3 retired Disposition. Check the shared stat multiplier and 75% Ammo Efficiency cap."
   },
   '/guides/steel-path': {
     title: 'Warframe Steel Path Guide — Unlock & Steel Essence',

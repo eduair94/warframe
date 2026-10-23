@@ -2,7 +2,7 @@
   "slug": "riven",
   "eyebrow": "Centrum Wiedzy · Mody Riven",
   "title": "Mody Riven: łączenie, Trait Locking i koszty Kuva",
-  "lede": "Dowiedz się, jak współpracują ze sobą Riven Splicing i Trait Locking, gdzie zdobyć Riven Splicers i jak zaplanować budżet Kuva przed ponownym losowaniem statystyk lub handlem. Zawiera obowiązujące zasady aktualizacji 44.1 i różnicę między dwoma rodzajami chronionych cech.",
+  "lede": "Dowiedz się, jak współpracują ze sobą Riven Splicing i Trait Locking, gdzie zdobyć Riven Splicers i jak zaplanować budżet Kuva przed ponownym losowaniem statystyk lub handlem. Poprawka 44.1.3 wycofała dyspozycję specyficzną dla broni i ograniczyła wydajność amunicji do 75%.",
   "category": "systems",
   "readMins": 10,
   "stats": [
@@ -12,8 +12,8 @@
       "tone": "good"
     },
     {
-      "num": "1–5",
-      "label": "kropki dyspozycji",
+      "num": "1.2",
+      "label": "wspólny mnożnik statystyk po wycofaniu dyspozycji",
       "tone": "alt"
     },
     {
@@ -38,7 +38,7 @@
         },
         {
           "type": "p",
-          "text": "Riven może łączyć kilka przydatnych bonusów w jednym gnieździe Modów, ale losowy rzut nie jest automatycznie ulepszeniem. Broń, kombinacja statystyk, negatywna cecha, ranga i dyspozycja broni – wszystko ma znaczenie. Poniższe sekcje dotyczą ponownego losowania statystyk, zwykłego systemu Trait Locking i oddzielnego systemu Riven Splicing."
+          "text": "Riven może łączyć kilka przydatnych bonusów w jednym gnieździe Modów, ale losowy rzut nie jest automatycznie ulepszeniem. Broń, kombinacja statystyk, negatywna cecha, ranga i rzeczywiste wartości mają znaczenie. Poniższe sekcje dotyczą ponownego losowania statystyk, zwykłego systemu Trait Locking i oddzielnego systemu Riven Splicing."
         },
         {
           "type": "kv",
@@ -73,43 +73,43 @@
     },
     {
       "id": "disposition",
-      "title": "Dyspozycja Riven i warianty broni",
+      "title": "Statystyki Riven po wycofaniu dyspozycji",
       "blocks": [
         {
           "type": "p",
-          "text": "**Dyspozycja Riven** to specyficzny dla broni mnożnik reprezentowany przez **1 do 5 kropek**. Wyższa dyspozycja daje większe bonusy dla równoważnego losowania Rivena. Różne warianty tej samej broni mogą używać innych mnożników, więc wyświetl podgląd Rivena na konkretnym wariancie, który zamierzasz założyć. Losowanie Rivena nie losuje ponownie dyspozycji broni."
+          "text": "**Poprawka 44.1.3 usunęła dyspozycje Riven 22 października 2026.** Wszystkie Riven używają teraz tego samego mnożnika dla możliwych zakresów statystyk, co odpowiada **1.2 Dyspozycji** w starym systemie. Warianty broni nie mają już różnych mnożników dyspozycji. Cechy, wartości rzutów, ranga i układ pozytywny/negatywny nadal mają znaczenie; wspólny mnożnik nie sprawia, że ​​każdy rzut Riven jest identyczny."
         },
         {
           "type": "table",
           "table": {
             "columns": [
-              "Kropki",
-              "W przybliżeniu oznacza",
+              "Reguła",
+              "Aktualne zachowanie",
               "Co sprawdzić"
             ],
             "rows": [
               [
-                "5 (najwyższa)",
-                "Większe bonusy dla równoważnego losowania",
-                "Dokładny wariant broni i kombinacja statystyk"
+                "Mnożnik statystyk",
+                "Odpowiednik starej dyspozycji 1.2 dla każdego Riven",
+                "Rzeczywiste wartości, ranga i układ cech"
               ],
               [
-                "3 (średnia)",
-                "Średni zakres dyspozycji",
+                "Warianty broni",
+                "Brak oddzielnych mnożników dyspozycji",
                 "Czy Riven ulepsza twój obecny build"
               ],
               [
-                "1 (najniższa)",
-                "Mniejsze bonusy dla równoważnego losowania",
-                "Czy kilka przydatnych atrybutów uzasadnia gniazdo Modu"
+                "Wydajność amunicji",
+                "75% limitu z połączonych źródeł",
+                "Czy nazwany efekt Nieskończonej Amunicji jest aktywny"
               ]
             ],
-            "note": "Kropki podsumowują mnożnik; nie ustalają ceny handlowej. Sprawdź aktualny podgląd w grze oraz najnowszą oficjalną listę dyspozycji."
+            "note": "Kropki starej dyspozycji i porównania wariantów opisują wycofany system. Przed zakupem, sprzedażą lub zmianą konfiguracji sprawdź aktualne wartości w grze."
           }
         },
         {
           "type": "info",
-          "text": "[Ogłoszenie o dyspozycji z września 2026](https://forums.warframe.com/topic/1523355-september-2026-riven-dispositions/) zawiera informacje o zmianach w danym miesiącu. Popyt, nowe opcje broni i poszczególne kombinacje statystyk również wpływają na aukcje. Sama zmiana dyspozycji nie gwarantuje, że Twój Riven będzie sprzedawany za większą lub mniejszą ilość platyny."
+          "text": "[Poprawka 44.1.3](https://www.warframe.com/en/patch-notes/pc/44-1-3) ogranicza również **Wydajność amunicji do 75%**, włączając połączone źródła i wyposażenie, takie jak Ampery i Nekramechy. Wyraźne efekty **Nieskończonej Amunicji** pozostają odrębną mechaniką. Nie kupuj Riven z wydajnością amunicji, oczekując, że kumulowana wydajność zapewni stałą, nieskończoną amunicję."
         }
       ]
     },
@@ -159,7 +159,7 @@
         },
         {
           "type": "tip",
-          "text": "Wymyślona nazwa Rivena (ten bełkot typu `critacan`/`visitox`) jest czysto kosmetyczna — jest generowana na podstawie statystyk i nie wpływa na moc. Oceniaj Rivena po jego rzeczywistych statystykach, dyspozycji i wymaganiach MR, nigdy po nazwie."
+          "text": "Wymyślona nazwa Riven (ten bełkot `critacan`/`visitox`) jest czysto kosmetyczna — jest generowana na podstawie statystyk i nie wpływa na moc. Oceniaj Riven po jego rzeczywistych statystykach, randze i wymaganiach dotyczących MR, a nie po nazwie."
         },
         {
           "type": "info",
@@ -286,6 +286,10 @@
         {
           "type": "tip",
           "text": "**Raporty dotyczące wczesnego uruchomienia opisują rozwiązany błąd.** [Poprawka 44.1.1](https://www.warframe.com/en/patch-notes/pc/44-1-1) poprawiła łączone cechy, które błędnie podwajały koszty Kuva oraz brak działania Weak Point Damage. [Zwrot Kuva dla poszkodowanych graczy](https://forums.warframe.com/topic/1527399-psa-spliced-riven-kuva-cost-doubling-resolved-script-complete/) zakończył się 9 października. [Poprawka 44.1.2](https://www.warframe.com/en/patch-notes/pc/44-1-2) dodała skrót do łączenia z ekranu ponownego losowania statystyk."
+        },
+        {
+          "type": "info",
+          "text": "**Rekompensata dla pierwszych użytkowników Splicerów:** gracze, którzy zainstalowali Riven Splicer w modzie Riven przed [Poprawką 44.1.3](https://www.warframe.com/en/patch-notes/pc/44-1-3) kwalifikują się do osobnej wiadomości z **1 Riven Splicer i 100,000 Kuva**. Informacje o łatce określają dostarczanie za pomocą skryptu; zamiast zakładać natychmiastowy zwrot pieniędzy, sprawdź swoją skrzynkę odbiorczą. To coś odrębnego od prezentu za logowanie dostępnego dla wszystkich graczy."
         }
       ]
     },
@@ -309,7 +313,7 @@
       "blocks": [
         {
           "type": "p",
-          "text": "Oferty Riven różnią się w zależności od zapotrzebowania na broń, użytecznych cech, efektów negatywnych oraz rzeczywistych wartości statystyk. Sama niska dyspozycja (Disposition) nie sprawia, że wynik losowania jest bezwartościowy, a wysoka dyspozycja nie gwarantuje popytu. Porównaj kilka ofert dla tej samej broni i podobnego wyniku; cena wywoławcza nie jest dowodem sfinalizowanej sprzedaży. Przed zakupem sprawdź dostępną pojemność Riven oraz potwierdzenie handlu."
+          "text": "Listy Riven różnią się w zależności od zapotrzebowania na broń, przydatnych cech, negatywnych efektów i rzeczywistych wartości statystyk. Poprawka 44.1.3 przywróciła handel Riven po tymczasowej przerwie i usunęła dyspozycję jako czynnik porównawczy. Porównaj aktualne zestawienia tej samej broni i podobnego rzutu; starsze zrzuty ekranu i ceny mogą odzwierciedlać wycofane mnożniki. Cena wywoławcza nie jest dowodem sfinalizowania sprzedaży. Przed zakupem sprawdź dostępną pojemność Riven i potwierdzenie transakcji."
         },
         {
           "type": "table",
@@ -324,8 +328,8 @@
                 "Zapotrzebowanie na daną broń i wariant, którego zamierzają używać kupujący"
               ],
               [
-                "Dyspozycja",
-                "Rzeczywiste wartości dla tego wariantu, a nie same kropki"
+                "Wartości statystyczne",
+                "Bieżące wartości po poprawce 44.1.3, a nie stare kropki dyspozycji"
               ],
               [
                 "Kombinacja statystyk",
@@ -425,7 +429,7 @@
     },
     {
       "q": "Co to jest dyspozycja Riven?",
-      "a": "Dyspozycja (Disposition) to specyficzny dla broni mnożnik reprezentowany przez 1 do 5 kropek. Wpływa on na siłę statystyk Riven i może się różnić pomiędzy wariantami broni. Losowanie nie zmienia tego mnożnika. Podejrzyj dokładnie wariant i zapoznaj się z najnowszym oficjalnym ogłoszeniem dotyczącym dyspozycji."
+      "a": "Dyspozycja była mnożnikiem charakterystycznym dla broni, reprezentowanym przez kropki od 1 do 5. Poprawka 44.1.3 usunęła ją 22 października 2026: wszystkie Riven używają teraz wspólnego mnożnika odpowiadającego starej dyspozycji 1.2. Statystyki nadal różnią się w zależności od cech, rzutów, rangi i układu, ale warianty broni nie mają już różnych mnożników Dyspozycji."
     },
     {
       "q": "Co to jest Riven „god roll”?",
@@ -453,6 +457,10 @@
     }
   ],
   "sources": [
+    {
+      "label": "Warframe — Hotfix 44.1.3: Disposition retirement, Ammo Efficiency and login rewards (October 22, 2026)",
+      "href": "https://www.warframe.com/en/patch-notes/pc/44-1-3"
+    },
     {
       "label": "Warframe — Update 44: Iceblade of Narin (September 23, 2026)",
       "href": "https://www.warframe.com/en/patch-notes/pc/44-0-0"
@@ -546,5 +554,5 @@
       "note": "Rynki Rivenów, wiki i narzędzia DE"
     }
   ],
-  "updated": "2026-10-22"
+  "updated": "2026-10-23"
 }

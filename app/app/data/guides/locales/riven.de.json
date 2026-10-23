@@ -2,7 +2,7 @@
   "slug": "riven",
   "eyebrow": "Wissenszentrum · Riven Mods",
   "title": "Riven-Mods: Splicing, Trait Locking & Kuva-Kosten",
-  "lede": "Erfahre, wie Riven Splicing und Trait Locking zusammenspielen, wo du Riven Splicer erhältst und wie du dein Kuva vor dem Cycling oder Handeln kalkulierst. Enthält die aktuellen Regeln aus Update 44.1 sowie den Unterschied zwischen den beiden Arten geschützter Traits.",
+  "lede": "Erfahren Sie, wie Riven Splicing und Trait Locking zusammenarbeiten, wo Sie Riven Splicers erhalten und wie Sie Kuva budgetieren, bevor Sie mit dem Neuauswürfeln oder Handeln beginnen. Hotfix 44.1.3 hat die waffenspezifische Disposition außer Kraft gesetzt und die Munitionseffizienz auf 75 % begrenzt.",
   "category": "systems",
   "readMins": 10,
   "stats": [
@@ -12,8 +12,8 @@
       "tone": "good"
     },
     {
-      "num": "1–5",
-      "label": "Disposition-Punkte",
+      "num": "1.2",
+      "label": "Gemeinsamer Statistikmultiplikator nach der Dispositionsauflösung",
       "tone": "alt"
     },
     {
@@ -38,7 +38,7 @@
         },
         {
           "type": "p",
-          "text": "Eine Riven kann mehrere nützliche Boni in einem Mod-Slot vereinen, doch ein zufälliger Roll ist nicht automatisch ein Upgrade. Die Waffe, die Wertekombination, der negative Trait, der Rang und die Waffen-Disposition spielen alle eine Rolle. Die folgenden Abschnitte behandeln das Cycling, das gewöhnliche Trait Locking und das separate Riven-Splicing-System."
+          "text": "Ein Riven kann mehrere nützliche Boni in einem Mod-Slot kombinieren, aber ein zufälliger Wurf ist nicht automatisch ein Upgrade. Die Waffe, die Wertekombination, die negative Eigenschaft, der Rang und die tatsächlichen Werte sind alle wichtig. Die folgenden Abschnitte behandeln das Neuauswürfeln, das normale Trait Locking-System und das separate Riven Splicing-System."
         },
         {
           "type": "kv",
@@ -73,43 +73,43 @@
     },
     {
       "id": "disposition",
-      "title": "Riven-Disposition und Waffenvarianten",
+      "title": "Riven Statistiken nach Disposition-Ausmusterung",
       "blocks": [
         {
           "type": "p",
-          "text": "Die **Riven-Disposition** ist ein waffenspezifischer Multiplikator, der durch **1 bis 5 Punkte** dargestellt wird. Eine höhere Disposition ergibt größere Boni für einen äquivalenten Riven-Roll. Verschiedene Varianten derselben Waffe können unterschiedliche Multiplikatoren verwenden. Probiere das Riven daher an genau der Variante aus, die du ausrüsten möchtest. Das Cycling eines Rivens ändert die Disposition der Waffe nicht."
+          "text": "**Hotfix 44.1.3 entfernte Riven Dispositionen am 22. Oktober 2026.** Alle Rivens verwenden jetzt denselben Multiplikator für ihre möglichen Statistikbereiche, was der **1.2 Disposition** im alten System entspricht. Waffenvarianten haben keine unterschiedlichen Dispositionsmultiplikatoren mehr. Eigenschaften, Wurfwerte, Rang und das Positiv-/Negativ-Layout sind immer noch wichtig; Ein gemeinsamer Multiplikator macht nicht jeden Riven-Wurf identisch."
         },
         {
           "type": "table",
           "table": {
             "columns": [
-              "Punkte",
-              "Bedeutet in etwa",
+              "Regel",
+              "Aktuelles Verhalten",
               "Was zu überprüfen ist"
             ],
             "rows": [
               [
-                "5 (höchste)",
-                "Größere Boni für einen äquivalenten Roll",
-                "Die genaue Waffenvariante und Attributskombination"
+                "Stat-Multiplikator",
+                "Entspricht der alten 1.2-Disposition für alle Riven",
+                "Tatsächliche Werte, Rang und Merkmalslayout"
               ],
               [
-                "3 (mittlere)",
-                "Mittlerer Dispositionsbereich",
+                "Waffenvarianten",
+                "Keine separaten Dispositionsmultiplikatoren",
                 "Ob das Riven deinen bestehenden Build verbessert"
               ],
               [
-                "1 (niedrigste)",
-                "Kleinere Boni für einen äquivalenten Roll",
-                "Ob mehrere nützliche Attribute den Mod-Steckplatz rechtfertigen"
+                "Munitionseffizienz",
+                "75 % Obergrenze für alle kombinierten Quellen",
+                "Ob ein benannter Infinite Ammo-Effekt aktiv ist"
               ]
             ],
-            "note": "Punkte fassen einen Multiplikator zusammen; sie legen keinen Handelsreis fest. Konsoluztiere die aktuelle Vorschau im Spiel und die neueste offizielle Dispositionsliste."
+            "note": "Alte Dispositionspunkte und Variantenvergleiche beschreiben das ausgemusterte System. Überprüfen Sie die aktuellen Werte im Spiel, bevor Sie kaufen, verkaufen oder einen Build ändern."
           }
         },
         {
           "type": "info",
-          "text": "Die [Disposition-Ankündigung vom September 2026](https://forums.warframe.com/topic/1523355-september-2026-riven-dispositions/) hält die Änderungen dieses Monats fest. Nachfrage, neue Waffenoptionen und individuelle Rolls beeinflussen die Angebote ebenfalls. Eine Dispositionsänderung allein garantiert nicht, dass sich deine Riven für mehr oder weniger Platinum verkaufen lässt."
+          "text": "[Hotfix 44.1.3](https://www.warframe.com/en/patch-notes/pc/44-1-3) begrenzt außerdem die **Munitionseffizienz auf 75%**, einschließlich kombinierter Quellen und Ausrüstung wie Verstärker und Necramechs. Explizite **Unendliche Munition**-Effekte bleiben eine separate Mechanik. Kaufen Sie keinen Riven mit Munitionseffizienz in der Erwartung, dass die gestapelte Effizienz dauerhaft unendlich viel Munition liefert."
         }
       ]
     },
@@ -159,7 +159,7 @@
         },
         {
           "type": "tip",
-          "text": "Der erfundene Name der Riven (dieses Kauderwelsch wie `critacan`/`visitox`) ist rein kosmetisch — er wird aus den Stats generiert und beeinflusst die Stärke nicht. Beurteile eine Riven nach ihren tatsächlichen Stat-Zeilen, ihrer Disposition und der MR-Anforderung, niemals nach ihrem Namen."
+          "text": "Der erfundene Name des Riven (dieses `critacan`/`visitox`-Kauderwelsch) ist rein kosmetischer Natur – er wird aus den Statistiken generiert und hat keinen Einfluss auf die Kraft. Beurteilen Sie einen Riven nach seinen tatsächlichen Werten, seinem Rang und seinen MR-Anforderungen, niemals nach seinem Namen."
         },
         {
           "type": "info",
@@ -286,6 +286,10 @@
         {
           "type": "tip",
           "text": "**Frühe Berichte zum Start beschreiben einen behobenen Bug.** [Hotfix 44.1.1](https://www.warframe.com/en/patch-notes/pc/44-1-1) korrigierte fälschlicherweise verdoppelte Kuva-Kosten bei gespliceten Traits sowie nicht wirksamen Weak Point Damage. Die [Kuva-Rückerstattung für betroffene Spieler](https://forums.warframe.com/topic/1527399-psa-spliced-riven-kuva-cost-doubling-resolved-script-complete/) wurde am 9. Oktober abgeschlossen. [Hotfix 44.1.2](https://www.warframe.com/en/patch-notes/pc/44-1-2) fügte eine Splicing-Verknüpfung im Cycling-Bildschirm hinzu."
+        },
+        {
+          "type": "info",
+          "text": "**Entschädigung für frühe Splicer-Nutzer:** Spieler, die vor [Hotfix 44.1.3](https://www.warframe.com/en/patch-notes/pc/44-1-3) einen Riven Splicer in einem Riven-Mod installiert haben, qualifizieren sich für eine separate Nachricht mit **1 Riven Splicer und 100,000 Kuva**. Die Patchnotizen spezifizieren die Bereitstellung per Skript; Überprüfen Sie Ihren Posteingang, anstatt von einer sofortigen Rückerstattung auszugehen. Dies ist unabhängig vom Login-Geschenk, das allen Spielern zur Verfügung steht."
         }
       ]
     },
@@ -309,7 +313,7 @@
       "blocks": [
         {
           "type": "p",
-          "text": "Riven-Angebote variieren je nach Waffen-Nachfrage, nützlichen Attributen, negativen Effekten und den tatsächlichen Stats. Eine niedrige Disposition allein macht einen Roll nicht wertlos, und eine hohe Disposition garantiert keine Nachfrage. Vergleiche mehrere Angebote für dieselbe Waffe und einen ähnlichen Roll; ein geforderter Preis ist kein Beweis für einen abgeschlossenen Verkauf. Prüfe die verfügbare Riven-Kapazität und die Handelskonsistenz vor dem Kauf."
+          "text": "Riven-Auflistungen variieren je nach Waffenbedarf, nützlichen Eigenschaften, negativen Effekten und den tatsächlichen Statistikwerten. Hotfix 44.1.3 stellte den Riven-Handel nach der vorübergehenden Pause wieder her und entfernte die Disposition als Vergleichsfaktor. Vergleichen Sie aktuelle Angebote für dieselbe Waffe und eine ähnliche Werteverteilung. Ältere Screenshots und Preise spiegeln möglicherweise die eingestellten Multiplikatoren wider. Ein Angebotspreis ist kein Beweis für einen abgeschlossenen Verkauf. Überprüfen Sie vor dem Kauf die verfügbare Riven-Kapazität und die Handelsbestätigung."
         },
         {
           "type": "table",
@@ -324,8 +328,8 @@
                 "Die Nachfrage nach dieser Waffe und der Variante, die Käufer nutzen möchten"
               ],
               [
-                "Disposition",
-                "Tatsächliche Werte auf dieser Variante, nicht nur Punkte"
+                "Statistische Werte",
+                "Aktuelle Werte nach Hotfix 44.1.3, nicht die alten Dispositionspunkte"
               ],
               [
                 "Stat-Kombination",
@@ -425,7 +429,7 @@
     },
     {
       "q": "Was ist die Riven-Disposition?",
-      "a": "Disposition ist ein waffenspezifischer Multiplikator, der durch 1 bis 5 Punkte dargestellt wird. Er beeinflusst die Stärke der Riven-Stats und kann sich zwischen Waffenvarianten unterscheiden. Das Ausrollen ändert diesen Multiplikator nicht. Zeige die genaue Variante in einer Vorschau an und konsultiere die neueste offizielle Dispositionsankündigung."
+      "a": "Die Disposition war ein waffenspezifischer Multiplikator, der durch 1 bis 5 Punkte dargestellt wurde. Hotfix 44.1.3 hat es am 22. Oktober 2026 entfernt: Alle Rivens verwenden jetzt einen gemeinsamen Multiplikator, der der alten 1.2-Disposition entspricht. Die Statistiken variieren immer noch je nach Eigenschaften, Würfen, Rang und Layout, aber Waffenvarianten haben keine unterschiedlichen Dispositionsmultiplikatoren mehr."
     },
     {
       "q": "Was ist eine „God Roll“-Riven?",
@@ -453,6 +457,10 @@
     }
   ],
   "sources": [
+    {
+      "label": "Warframe — Hotfix 44.1.3: Disposition retirement, Ammo Efficiency and login rewards (October 22, 2026)",
+      "href": "https://www.warframe.com/en/patch-notes/pc/44-1-3"
+    },
     {
       "label": "Warframe — Update 44: Iceblade of Narin (September 23, 2026)",
       "href": "https://www.warframe.com/en/patch-notes/pc/44-0-0"
@@ -546,5 +554,5 @@
       "note": "Riven-Märkte, Wikis und DE-Tools"
     }
   ],
-  "updated": "2026-10-22"
+  "updated": "2026-10-23"
 }

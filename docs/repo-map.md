@@ -152,8 +152,8 @@ One-shot data importers run via `npm run <name>` / cron. They populate Mongo.
 | `app/i18n/messages/relicLedger.ts` | 47 KB |
 | `app/i18n/messages/portfolio.ts` | 47 KB |
 | `app/i18n/messages/relicFarming.ts` | 47 KB |
+| `app/i18n/messages/rivenValue.ts` | 44 KB |
 | `app/i18n/messages/nav.ts` | 43 KB |
-| `app/i18n/messages/rivenValue.ts` | 42 KB |
 | `app/i18n/messages/vaultedWorth.ts` | 41 KB |
 | `app/i18n/messages/home.ts` | 39 KB |
 | `app/i18n/messages/volatility.ts` | 37 KB |

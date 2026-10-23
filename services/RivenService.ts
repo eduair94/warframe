@@ -19,6 +19,12 @@ import { sleep } from '../Express/config';
 // Debug mode - set DEBUG=true or DEBUG=warframe:* for verbose logging
 import { DEBUG } from '../debug';
 
+// Hotfix 44.1.3 removed weapon-specific Dispositions. Keep the legacy API field
+// compatible while reporting the shared stat-range multiplier, even when the
+// upstream catalogue or a stored weapon record still carries its old value.
+// https://www.warframe.com/en/patch-notes/pc/44-1-3
+const RIVEN_STAT_MULTIPLIER = 1.2;
+
 /**
  * Represents a Riven item from the API
  */
@@ -32,9 +38,8 @@ export interface IRivenItem {
   mastery_level?: number;
   icon?: string;
   /**
-   * Riven disposition (~0.5–1.55): the multiplier DE applies to a weapon's
-   * riven stat ranges. The v2 weapons API returns it; it is required to grade a
-   * roll against its achievable range (god-roll grader) and to flag nerf risk.
+   * Legacy API field for the shared 1.2 stat-range multiplier since 44.1.3.
+   * This metadata is not a price multiplier or an absolute roll grade.
    */
   disposition?: number;
 }
@@ -207,10 +212,7 @@ export class RivenService {
       mastery_level: weapon.reqMasteryRank,
       icon: enData?.icon ?? '',
       thumb: enData?.thumb ?? '',
-      // Persist disposition so the god-roll grader / nerf-risk tracker can score
-      // a roll against its weapon's achievable range (v1 /riven/items never
-      // exposed this - it only arrived with the v2 /riven/weapons endpoint).
-      disposition: weapon.disposition
+      disposition: RIVEN_STAT_MULTIPLIER
     };
   }
 
@@ -419,7 +421,7 @@ export class RivenService {
   }
 
   /**
-   * Lightweight list of every riven weapon we track, with its disposition and a
+   * Lightweight list of every riven weapon we track, with its stat multiplier and a
    * count of currently-stored auctions - used to populate the weapon picker on
    * the riven fair-value page. Projects OUT the heavy `items` (auction) array so
    * the payload stays small.
@@ -458,7 +460,7 @@ export class RivenService {
       item_name: r.item_name,
       group: r.group,
       riven_type: r.riven_type,
-      disposition: r.disposition,
+      disposition: RIVEN_STAT_MULTIPLIER,
       thumb: r.thumb,
       icon: r.icon,
       auctionCount: r.auctionCount || 0,
@@ -467,7 +469,7 @@ export class RivenService {
   }
 
   /**
-   * Full stored auction corpus for a single weapon, plus its meta (disposition,
+   * Full stored auction corpus for a single weapon, plus its meta (stat multiplier,
    * group). Powers the fair-value estimator and god-roll grader, which run the
    * similarity/percentile maths client-side over the returned auctions.
    */
@@ -488,7 +490,7 @@ export class RivenService {
       item_name: doc.item_name,
       group: doc.group,
       riven_type: doc.riven_type,
-      disposition: doc.disposition,
+      disposition: RIVEN_STAT_MULTIPLIER,
       thumb: doc.thumb,
       icon: doc.icon,
       items: Array.isArray(doc.items) ? doc.items : []

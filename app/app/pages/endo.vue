@@ -39,7 +39,15 @@
 
       <client-only>
         <template #fallback>
+          <p v-if="direction === 'flip' && loadError" class="an-empty" role="alert">{{ t('endo.flip.loadError') }}</p>
+          <p v-else-if="direction === 'flip' ? !flipRows.length : !sourceRows.length" class="an-empty">
+            {{ t(direction === 'flip' ? 'endo.flip.emptyNoData' : 'endo.sources.emptyNoData') }}
+          </p>
+          <p v-else-if="!fallbackRows.length" class="an-empty">
+            {{ t(direction === 'flip' ? 'endo.flip.emptyNoMatch' : 'endo.sources.emptyNoMatch') }}
+          </p>
           <SeoFallbackTable
+            v-else
             :caption="t('endo.eyebrow')"
             :name-label="fallbackNameLabel"
             :columns="fallbackColumns"
@@ -57,7 +65,7 @@
             <span v-if="updatedLabel" class="an-fresh" :title="t('endo.dir.freshTitle')">
               <v-icon size="14">mdi-clock-outline</v-icon> {{ t('endo.dir.updated', { time: updatedLabel }) }}
             </span>
-            <NuxtLink to="/guides/endo" class="endo-guide-link">{{ t('endo.dir.guide') }} →</NuxtLink>
+            <NuxtLink :to="localePath('/guides/endo')" class="endo-guide-link">{{ t('endo.dir.guide') }} →</NuxtLink>
           </div>
         </div>
 
@@ -466,6 +474,7 @@ dayjs.extend(relativeTime)
 
 const apiBase = useApiBase()
 const { t, te } = useI18n()
+const localePath = useLocalePath()
 const { localItemName } = useLocalizedName()
 const { itemThumb, THUMB_PLACEHOLDER } = useItemThumb()
 

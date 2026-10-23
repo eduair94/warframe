@@ -807,3 +807,88 @@ ranking or traffic gains from a successful deployment.
 All intended code, content, localization, metadata and documentation changes are committed
 before the complete API/frontend/live workflow. The task's release report records the final
 workflow and public verification rather than leaving a documentation-only commit undeployed.
+
+## October 23, 2026 — Hotfix 44.1.3 and Endo follow-up
+
+The October 22 release completed its full API/frontend/live deployment in
+[run 39789962475](https://github.com/eduair94/warframe/actions/runs/39789962475)
+at `6bd835421417c1303babecb6eab268fdfde230b2`. All 39 localized guide pages passed
+public checks. Endo's initial HTML exposed an existing edge case: valid liquidity filters
+could leave a bare empty table. A Spanish browser check also found that its guide link
+opened the English route. This iteration makes loading errors, no data and no matching
+filters explicit in all 13 locales, and preserves the selected language on that link.
+It retains the existing filters and calculations. Actual Vue rendering passed 104
+locale/state scenarios plus 13 localized guide destinations.
+
+### New official information
+
+[Hotfix 44.1.3](https://www.warframe.com/en/patch-notes/pc/44-1-3), released October 22
+after the previous review, removes weapon-specific Riven Dispositions. Every Riven now
+uses the stat-range multiplier equivalent to the former 1.2. It also restores Riven
+trading and caps combined Ammo Efficiency at 75%, with explicit Infinite Ammo effects
+remaining separate. Riven and Mods explanations now reflect those rules; comparison
+advice points to current in-game values and current asking prices.
+
+Kuva and Forma explain the all-player login inbox of two built Forma and 100,000 Kuva,
+available through December 31, 2026 at 11:59 p.m. ET. The separate compensation for
+players who installed a Splicer before the hotfix is distinguished from that gift;
+delivery by script is not presented as already completed. The earlier Banshee reward
+retains its own eligibility. The released patch's two Forma supersede the earlier
+workshop's one-Forma announcement.
+
+Four English guides received substantive reviews dated October 23. Localization uses
+41 changed fields per language: 492 refreshed fields across 48 snapshots, with 8,028
+unchanged fields and publication dates preserved. Game names, numeric values, links,
+eligibility conditions and deadlines received explicit translation review. Targeted
+provider repairs and 633 exact reviewed corrections address mistranslated mechanics,
+gift conditions and timezones; 24 exact numeric-format equivalents are recorded
+separately. Search descriptions and the guide directory are updated
+with the same facts. No new filler pages or unsupported traffic claims are introduced.
+
+### Riven metadata and data recovery
+
+The public Riven weapon feed still carried 389 obsolete multipliers among 420 weapons.
+The importer, weapon list and detail response now expose the common 1.2 value while
+retaining the legacy field name for compatibility. Regression checks ensure that stored
+auction attributes, asking prices and Endo values are not rescaled. The UI calls this
+a shared stat multiplier and explains that saved listings can predate the change.
+The estimator's price and grade calculations remain based on the stored listings.
+
+The user's subsequent fixes to fixed proxy egress and nested CDN reads are preserved.
+At this iteration's baseline, the successful full deployment
+[39898267223](https://github.com/eduair94/warframe/actions/runs/39898267223) served
+`78204679ed5c271261fcb49c104de41ef00eecd4`; all three application processes were online.
+New prices had resumed: the newest record was about 44 seconds old, 874 of 3,892
+catalogue prices were under three hours old, and 3,018 remained over a day old.
+Endo again had a real row meeting its default liquidity filters. These are recovery
+measurements, not proof of fully current catalogue coverage. The October 22 complete
+upstream freeze is historical, not the current diagnosis.
+
+The existing notice detects an old newest timestamp. It does not measure full coverage:
+one fresh record can hide it while many other prices remain old. A subsequent improvement
+should show fresh/stale/unknown counts from the same catalogue without new polling.
+Post-deploy checks continue to report coverage independently and distinguish actual
+table rows from localized empty/error messages.
+
+### Release verification and follow-up
+
+The local backend suite passed 702 tests in 55 suites, the frontend suite passed
+37 tests and guide regression checks passed 26 tests. The backend production build
+and 13-locale message compilation passed. All 25 guide validations and the generated
+repository-map check passed; the four changed guides have no translation follow-up
+warnings. The new Riven metadata cases are included
+in those backend totals. Another 26 actual localized disclaimer renders verify the
+shared multiplier with no weapon selected and with obsolete selected metadata.
+Existing advisory lint/typecheck debt is not described as a clean project-wide gate.
+
+All intended documentation is included before the full deployment; the completion
+report records the final workflow and fresh public service/page checks. The active daily
+10:00 Montevideo maintenance heartbeat already requires this full deployment process.
+GA4/Search Console access has not been restored or measured in this iteration, so no
+traffic or ranking improvement is claimed. Once available, compare complete October
+16–22 versus October 9–15 and September 25–October 22 versus August 28–September 24,
+adjusting to the property's actual timezone. The existing overdue guide review queue
+and untranslated content gaps remain visible. Historical research articles for external
+Riven tools also need a separate source review following the Disposition change; the
+updated directory guidance asks readers to confirm 44.1.3 support before using their
+range estimates and does not claim those external tools have already updated.
