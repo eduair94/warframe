@@ -49,7 +49,10 @@ function makeCaches() {
  * Evaluate worker.js with injected globals and hand back its default export.
  * `export default X` becomes `return X` so the module body works as a function.
  */
-function loadWorker(fetchImpl: (req: Request) => Promise<Response>, cachesImpl: AnyRecord) {
+function loadWorker(
+  fetchImpl: (req: Request, options?: RequestInit) => Promise<Response>,
+  cachesImpl: AnyRecord,
+) {
   const body = WORKER_SRC.replace(/export default/, "return");
   // eslint-disable-next-line no-new-func
   const factory = new Function("fetch", "caches", "Response", "Headers", "Request", "URL", body);
@@ -124,6 +127,52 @@ describe("edge worker — caching a healthy origin", () => {
     expect(originCalls).toBe(1);
     expect(res.headers.get("x-edge-cache")).toBe("HIT");
     expect(await res.text()).toBe(GOOD_BODY);
+  });
+});
+
+describe("edge worker — origin requests bypass the nested CDN cache", () => {
+  it("bypasses CDN caching for misses, private reads and writes", async () => {
+    const { caches } = makeCaches();
+    const fetchOrigin = jest.fn(async (_request: Request, _options?: RequestInit) => okResponse());
+    const worker = loadWorker(fetchOrigin, caches);
+    const requests = [
+      jsonReq(),
+      jsonReq("https://warframe.digitalshopuy.com/me"),
+      jsonReq("https://warframe.digitalshopuy.com/build_drops"),
+      new Request("https://warframe.digitalshopuy.com/items", {
+        headers: { Authorization: "Bearer token" },
+      }),
+      new Request("https://warframe.digitalshopuy.com/push/subscribe", { method: "POST" }),
+    ];
+
+    for (const request of requests) {
+      const { ctx, settle } = makeCtx();
+      await worker.fetch(request, {}, ctx);
+      await settle();
+    }
+
+    expect(fetchOrigin).toHaveBeenCalledTimes(requests.length);
+    requests.forEach((request, index) => {
+      expect(fetchOrigin).toHaveBeenNthCalledWith(index + 1, request, { cache: "no-store" });
+    });
+  });
+
+  it("also bypasses CDN caching when a Worker cache failure triggers fail-open", async () => {
+    const fetchOrigin = jest.fn(async (_request: Request, _options?: RequestInit) => okResponse());
+    const worker = loadWorker(fetchOrigin, {
+      default: {
+        match: async () => {
+          throw new Error("Cache API unavailable");
+        },
+      },
+    });
+    const request = jsonReq();
+    const { ctx } = makeCtx();
+
+    const response = await worker.fetch(request, {}, ctx);
+
+    expect(fetchOrigin).toHaveBeenCalledWith(request, { cache: "no-store" });
+    expect(await response.text()).toBe(GOOD_BODY);
   });
 });
 

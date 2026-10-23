@@ -43,6 +43,11 @@ const BACKUP_TTL = 604800; // 7 days
 // 522 timeout, 523 origin unreachable, 530 = tunnel error 1033).
 const isUnhealthy = (status) => status >= 500;
 
+// This Worker owns caching through caches.default. A second CDN cache on the
+// origin subrequest can return stale data even when our explicit cache misses.
+// Bypass it on every path, including private requests and fail-open recovery.
+const fetchOrigin = (request) => fetch(request, { cache: "no-store" });
+
 /**
  * Rebuild a Response with MUTABLE headers. Headers taken straight from a fetch()
  * response are immutable — calling .set() on them throws and CF returns a 1101.
@@ -166,7 +171,7 @@ async function handle(request, ctx) {
     !url.pathname.startsWith("/build_") &&
     !isPrivatePath &&
     !request.headers.has("Authorization");
-  if (!cacheable) return fetch(request);
+  if (!cacheable) return fetchOrigin(request);
 
   const cache = caches.default;
   const cacheKey = new Request(url.toString(), { method: "GET" });
@@ -188,7 +193,7 @@ async function handle(request, ctx) {
   // 2) Miss — go to origin.
   let originResp;
   try {
-    originResp = await fetch(request);
+    originResp = await fetchOrigin(request);
   } catch (err) {
     // Origin unreachable (timeout / tunnel down) — serve backup if we have one,
     // otherwise the branded offline page. Never rethrow: rethrowing here lands
@@ -260,7 +265,7 @@ export default {
     } catch (err) {
       // FAIL OPEN: never let a Worker bug become a 500 — return origin directly.
       try {
-        return await fetch(request);
+        return await fetchOrigin(request);
       } catch (_) {
         return offlineResponse(request);
       }

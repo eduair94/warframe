@@ -269,6 +269,12 @@ recovers. This also applies to backups written before the header fix. Verify
 both outage paths without interrupting production:
 `npm test -- --runInBand cloudflare/worker.test.ts`.
 
+Every origin subrequest uses `fetch(request, { cache: "no-store" })`, including
+private requests and fail-open recovery. This bypasses a second CDN cache while
+the Worker retains its own explicit fresh/backup cache. It prevents an old
+dashboard Cache Rule from feeding stale data back into a Worker cache miss;
+recovery no longer depends on editing that rule or purging the entire zone.
+
 Also turn on **Caching → Configuration → Always Online**, a free second net that
 serves an Internet Archive snapshot if everything else fails.
 
