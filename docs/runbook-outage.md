@@ -217,6 +217,10 @@ by egress. Do not treat a new orders timestamp as proof statistics refreshed.
 After deploying, update/build the sync host too with the command above. Verify
 both transports through the tunnel, then confirm advancing stored timestamps:
 
+The production TypeScript build excludes test files and fixtures. The sync
+host only needs root dependencies; frontend-only Vue test imports must not
+force installing or building Nuxt there. Jest still uses the base tsconfig.
+
 ```bash
 ssh build 'curl --socks5-hostname 127.0.0.1:27028 -s -o /dev/null -w "%{http_code}\n" https://api.warframe.market/v2/orders/item/ash_prime_set'
 ssh build 'pm2 logs warframe-offbox-sync-prices --lines 12 --nostream'

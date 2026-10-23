@@ -4,5 +4,16 @@
     "sourceMap": true,
     "inlineSources": true,
     "sourceRoot": "/"
-  }
+  },
+  "exclude": [
+    "node_modules",
+    "**/node_modules",
+    "leak-bot",
+    "dist",
+    "app",
+    "app_nuxt2_archive",
+    "**/*.test.ts",
+    "**/*.spec.ts",
+    "test-helpers"
+  ]
 }
