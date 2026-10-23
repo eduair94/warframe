@@ -195,7 +195,11 @@ async function handle(request, ctx) {
     // the visitor on Cloudflare's raw error interstitial, which is exactly the
     // failure mode this Worker exists to prevent.
     const stale = await cache.match(backupKey);
-    if (stale) return withHeaders(stale, { "x-edge-cache": "STALE-ON-ERROR" });
+    if (stale) {
+      // The backup's seven-day TTL is for the Worker's cache only. Do not let
+      // browsers or another shared cache pin an outage response after recovery.
+      return withHeaders(stale, { "x-edge-cache": "STALE-ON-ERROR", "Cache-Control": "no-store" });
+    }
     return offlineResponse(request);
   }
 
@@ -204,7 +208,9 @@ async function handle(request, ctx) {
     // Handing Cloudflare's own 530/1033 body to the visitor is never the best
     // available answer, so it is not one of the options here.
     const stale = await cache.match(backupKey);
-    if (stale) return withHeaders(stale, { "x-edge-cache": "STALE-ON-ERROR" });
+    if (stale) {
+      return withHeaders(stale, { "x-edge-cache": "STALE-ON-ERROR", "Cache-Control": "no-store" });
+    }
     return offlineResponse(request);
   }
 
@@ -248,7 +254,7 @@ async function handle(request, ctx) {
 }
 
 export default {
-  async fetch(request, ctx) {
+  async fetch(request, _env, ctx) {
     try {
       return await handle(request, ctx);
     } catch (err) {

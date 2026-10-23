@@ -94,12 +94,12 @@ class Proxies {
   }
   getProxyAgent(proxy?: string): ProxyAgent | SocksProxyAgent {
     if (!proxy) proxy = this.getProxy();
-    console.log("proxy", proxy);
     if (this.proxyType === "socks5") {
-      console.log("SocksProxyAgent");
       return new SocksProxyAgent(proxy);
     } else {
-      return new ProxyAgent(proxy as any);
+      // proxy-agent v6 takes options, not a URL string. A string silently made
+      // it consult process proxy env vars and often connect directly instead.
+      return new ProxyAgent({ getProxyForUrl: () => proxy });
     }
   }
   getProxy() {

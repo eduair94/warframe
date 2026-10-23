@@ -2,14 +2,18 @@
 // escalates excess to Cloudflare challenges/blocks - which froze prices from
 // 2026-10-02 to 2026-10-11. Every process paces its warframe.market calls
 // through services/WfmRateLimiter.ts at WFM_MAX_RPS; the budgets below keep the
-// processes sharing this IP under 3 RPS together (prices 1.2 + live 0.5 +
-// auctions 0.3 + server 0.5 = 2.5, plus 0.5 for whichever nightly one-shot is
-// running). PROXY_LESS: no proxy rotation for warframe.market - rotating
-// thousands of IPs around a per-client limit is what got the pool blocked.
-const WFM = (rps) => ({ WFM_MAX_RPS: String(rps), PROXY_LESS: "true" });
+// processes sharing the fixed egress under 3 RPS together: prices 1.2 + live
+// 0.5 + auctions 0.3 + server 0.3 + all four WFM one-shots at 0.15 = 2.9.
+// Only one host runs the syncs (WFM_SYNC_ENABLED). PROXY_LESS disables the
+// rotating pool; WFM_PROXY_URL can select a fixed egress without bypassing pacing.
+const egress = require("./ecosystem.egress.config.js");
+const WFM = (rps) => ({
+    WFM_MAX_RPS: String(rps), PROXY_LESS: "true",
+    WFM_PROXY_URL: process.env.WFM_PROXY_URL || "",
+});
 
 module.exports = {
-    apps: [{
+    apps: [...egress.apps, {
             name: "warframe-sync-prices",
             autorestart: true,
             script: "dist/sync_prices.js",
@@ -21,14 +25,14 @@ module.exports = {
             autorestart: false,
             cron_restart: "0 0 * * *",
             script: "dist/sync_items.js",
-            env: WFM(0.5),
+            env: WFM(0.15),
             log_date_format: "YYYY-MM-DD HH:mm Z",
         },
         {
             name: "warframe-server",
             autorestart: true,
             script: "dist/server.js",
-            env: WFM(0.5),
+            env: WFM(0.3),
             log_date_format: "YYYY-MM-DD HH:mm Z",
         },
         {
@@ -70,7 +74,7 @@ module.exports = {
             autorestart: false,
             cron_restart: "0 0 * * 0",
             script: "dist/sync_rivens.js",
-            env: WFM(0.5),
+            env: WFM(0.15),
             log_date_format: "YYYY-MM-DD HH:mm Z",
         },
         {
@@ -101,7 +105,7 @@ module.exports = {
             autorestart: false,
             cron_restart: "0 4 * * *",
             script: "dist/sync_translations.js",
-            env: WFM(0.5),
+            env: WFM(0.15),
             log_date_format: "YYYY-MM-DD HH:mm Z",
         },
         {
@@ -131,7 +135,7 @@ module.exports = {
             autorestart: false,
             cron_restart: "30 5 * * *",
             script: "dist/sync_repair_sets.js",
-            env: WFM(0.5),
+            env: WFM(0.15),
             log_date_format: "YYYY-MM-DD HH:mm Z",
         },
         {

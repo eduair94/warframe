@@ -46,10 +46,10 @@ export type PriceCalculationConfig = {
   /** Maximum delay before fetching stats (default: 1000) */
   statsMaxDelay?: number;
   /**
-   * Call the v1 `/items/{slug}/statistics` endpoint. Since 2026-10 warframe.market
-   * answers third-party clients with `403 Deprecated` and v2 has no replacement,
-   * so this is off unless WFM_V1_STATS=true; prices then come from v2 orders and
-   * the item's last stored volume / avg_price are carried forward.
+   * Call the v1 `/items/{slug}/statistics` endpoint. Some egress IPs receive
+   * `403 Deprecated`, while the verified fixed proxy returns current data.
+   * Enable WFM_V1_STATS=true after checking the chosen egress; otherwise prices
+   * come from v2 orders and the stored volume / avg_price are carried forward.
    */
   fetchStatistics?: boolean;
 };

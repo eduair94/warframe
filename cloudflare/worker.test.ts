@@ -16,6 +16,7 @@
  * The Worker is an ES module written for the Workers runtime, so it is loaded
  * here by evaluating its source with the runtime globals injected, rather than
  * imported (ts-jest emits CommonJS, which cannot `import` an ESM file).
+ * Calls use the actual module signature: fetch(request, env, executionContext).
  */
 
 import * as fs from "fs";
@@ -89,7 +90,7 @@ describe("edge worker — caching a healthy origin", () => {
     const worker = loadWorker(async () => okResponse(), caches);
     const { ctx, settle } = makeCtx();
 
-    const res = await worker.fetch(jsonReq(), ctx);
+    const res = await worker.fetch(jsonReq(), {}, ctx);
     await settle();
 
     expect(res.status).toBe(200);
@@ -114,11 +115,11 @@ describe("edge worker — caching a healthy origin", () => {
     }, caches);
 
     const first = makeCtx();
-    await worker.fetch(jsonReq(), first.ctx);
+    await worker.fetch(jsonReq(), {}, first.ctx);
     await first.settle();
 
     const second = makeCtx();
-    const res = await worker.fetch(jsonReq(), second.ctx);
+    const res = await worker.fetch(jsonReq(), {}, second.ctx);
 
     expect(originCalls).toBe(1);
     expect(res.headers.get("x-edge-cache")).toBe("HIT");
@@ -132,21 +133,27 @@ describe("edge worker — origin outage", () => {
     const { caches, store } = makeCaches();
     const worker = loadWorker(async () => okResponse(), caches);
     const { ctx, settle } = makeCtx();
-    await worker.fetch(new Request(url), ctx);
+    await worker.fetch(new Request(url), {}, ctx);
     await settle();
     store.delete(url); // edge TTL elapsed; the 7-day backup survives
     return { caches, store };
   }
 
   it("serves the backup when the origin returns Cloudflare 530 (tunnel down)", async () => {
-    const { caches } = await primeThenExpireFresh("https://warframe.digitalshopuy.com/items");
+    const { caches, store } = await primeThenExpireFresh("https://warframe.digitalshopuy.com/items");
     const worker = loadWorker(async () => tunnelDownResponse(), caches);
     const { ctx } = makeCtx();
 
-    const res = await worker.fetch(jsonReq(), ctx);
+    const res = await worker.fetch(jsonReq(), {}, ctx);
 
     expect(res.status).toBe(200);
     expect(res.headers.get("x-edge-cache")).toBe("STALE-ON-ERROR");
+    // A backup's seven-day retention belongs to the Worker only. Visitors must
+    // retry the edge after recovery, including backups made before this fix.
+    expect(res.headers.get("Cache-Control")).toBe("no-store");
+    expect(
+      store.get("https://warframe.digitalshopuy.com/items?__edge_backup=1")!.headers.get("Cache-Control"),
+    ).toBe("public, max-age=604800");
     expect(await res.text()).toBe(GOOD_BODY);
   });
 
@@ -157,9 +164,10 @@ describe("edge worker — origin outage", () => {
     }, caches);
     const { ctx } = makeCtx();
 
-    const res = await worker.fetch(jsonReq(), ctx);
+    const res = await worker.fetch(jsonReq(), {}, ctx);
 
     expect(res.headers.get("x-edge-cache")).toBe("STALE-ON-ERROR");
+    expect(res.headers.get("Cache-Control")).toBe("no-store");
     expect(await res.text()).toBe(GOOD_BODY);
   });
 
@@ -168,7 +176,7 @@ describe("edge worker — origin outage", () => {
     const worker = loadWorker(async () => tunnelDownResponse(), caches);
     const { ctx } = makeCtx();
 
-    const res = await worker.fetch(htmlReq(), ctx);
+    const res = await worker.fetch(htmlReq(), {}, ctx);
     const body = await res.text();
 
     expect(res.status).toBe(503);
@@ -185,7 +193,7 @@ describe("edge worker — origin outage", () => {
     const worker = loadWorker(async () => tunnelDownResponse(), caches);
     const { ctx } = makeCtx();
 
-    const res = await worker.fetch(jsonReq(), ctx);
+    const res = await worker.fetch(jsonReq(), {}, ctx);
 
     expect(res.status).toBe(503);
     expect(res.headers.get("Content-Type")).toContain("application/json");
@@ -197,7 +205,7 @@ describe("edge worker — origin outage", () => {
     const worker = loadWorker(async () => tunnelDownResponse(), caches);
     const { ctx, settle } = makeCtx();
 
-    await worker.fetch(jsonReq(), ctx);
+    await worker.fetch(jsonReq(), {}, ctx);
     await settle();
 
     expect(store.size).toBe(0);
@@ -217,7 +225,7 @@ describe("edge worker — per-user responses must never be cached", () => {
     );
     const { ctx, settle } = makeCtx();
 
-    const res = await worker.fetch(jsonReq("https://warframe.digitalshopuy.com/me"), ctx);
+    const res = await worker.fetch(jsonReq("https://warframe.digitalshopuy.com/me"), {}, ctx);
     await settle();
 
     expect(res.status).toBe(200);
@@ -233,7 +241,7 @@ describe("edge worker — per-user responses must never be cached", () => {
     );
     const { ctx, settle } = makeCtx();
 
-    const res = await worker.fetch(jsonReq(), ctx);
+    const res = await worker.fetch(jsonReq(), {}, ctx);
     await settle();
 
     expect(res.headers.get("x-edge-cache")).toBe("BYPASS");
@@ -252,7 +260,7 @@ describe("edge worker — per-user responses must never be cached", () => {
     );
     const { ctx, settle } = makeCtx();
 
-    const res = await worker.fetch(htmlReq(), ctx);
+    const res = await worker.fetch(htmlReq(), {}, ctx);
     await settle();
 
     expect(res.headers.get("x-edge-cache")).toBe("BYPASS");
@@ -267,7 +275,7 @@ describe("edge worker — per-user responses must never be cached", () => {
     const req = new Request("https://warframe.digitalshopuy.com/items", {
       headers: { Authorization: "Bearer token" },
     });
-    await worker.fetch(req, ctx);
+    await worker.fetch(req, {}, ctx);
     await settle();
 
     expect(store.size).toBe(0);
@@ -280,7 +288,7 @@ describe("edge worker — backup retention", () => {
     const worker = loadWorker(async () => okResponse(), caches);
     const { ctx, settle } = makeCtx();
 
-    await worker.fetch(jsonReq(), ctx);
+    await worker.fetch(jsonReq(), {}, ctx);
     await settle();
 
     const fresh = store.get("https://warframe.digitalshopuy.com/items")!;

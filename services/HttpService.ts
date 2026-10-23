@@ -17,6 +17,8 @@ import { IHttpClient, IHttpRequestOptions, IHttpServiceConfig, IProxyManager } f
 import { HeaderService } from './HeaderService';
 import { sleep } from '../Express/config';
 import { AntiDetection, ProxyRotation } from '../anti-detection';
+import { ProxyAgent } from 'proxy-agent';
+import { proxyLabel, readWfmProxyUrl } from './WfmProxy';
 import {
   WfmRateLimiter,
   isCloudflareChallenge,
@@ -76,6 +78,11 @@ export class HttpService implements IHttpClient {
   /** Pacing/breaker for api.warframe.market */
   private readonly wfmLimiter: WfmRateLimiter;
 
+  private readonly wfmProxyUrl = readWfmProxyUrl();
+  private readonly wfmProxyAgent = this.wfmProxyUrl
+    ? new ProxyAgent({ getProxyForUrl: () => this.wfmProxyUrl! })
+    : null;
+
   /**
    * Creates a new HttpService instance
    * 
@@ -113,7 +120,16 @@ export class HttpService implements IHttpClient {
    */
   private configureWfmProtection(): void {
     this.axiosInstance.interceptors.request.use(async (requestConfig) => {
-      if (isWfmUrl(this.axiosInstance.getUri(requestConfig))) await this.wfmLimiter.acquire();
+      if (isWfmUrl(this.axiosInstance.getUri(requestConfig))) {
+        await this.wfmLimiter.acquire();
+        // Explicit WFM egress takes precedence over PROXY_LESS/pool settings.
+        // A failed tunnel must fail the request, never fall back to the blocked host.
+        if (this.wfmProxyAgent) {
+          requestConfig.httpAgent = this.wfmProxyAgent;
+          requestConfig.httpsAgent = this.wfmProxyAgent;
+          requestConfig.proxy = false;
+        }
+      }
       return requestConfig;
     });
     this.axiosInstance.interceptors.response.use(undefined, (error: AxiosError) => {
@@ -170,7 +186,7 @@ export class HttpService implements IHttpClient {
         axiosConfig.timeout = 10000; // Shorter timeout for proxied requests
       }
 
-      if (DEBUG) console.log('HttpService initialized with proxy:', proxy);
+      if (DEBUG) console.log('HttpService initialized with proxy:', proxyLabel(proxy));
     }
 
     return axios.create(axiosConfig);
@@ -239,6 +255,7 @@ export class HttpService implements IHttpClient {
    * @private
    */
   private rotateProxyOnError(requestConfig: any, status: number): void {
+    if (this.wfmProxyUrl && isWfmUrl(this.axiosInstance.getUri(requestConfig))) return;
     if (!this.proxyManager) return;
 
     // Record failure for current proxy
@@ -257,7 +274,7 @@ export class HttpService implements IHttpClient {
       attempts++;
     }
 
-    if (DEBUG) console.log('↻ Rotating proxy to:', newProxy);
+    if (DEBUG) console.log('↻ Rotating proxy to:', proxyLabel(newProxy));
 
     // Update request config with new proxy
     const proxyAgent = this.proxyManager.getProxyAgent(newProxy);

@@ -2,7 +2,7 @@
  * @fileoverview UndiciHttpService behaviour against warframe.market blocks
  */
 
-import { describe, it, expect, jest, beforeEach } from '@jest/globals';
+import { describe, it, expect, jest, beforeEach, afterEach } from '@jest/globals';
 
 const requestMock = jest.fn<(...args: any[]) => Promise<any>>();
 jest.mock('undici', () => {
@@ -36,7 +36,15 @@ function makeService(limiter: WfmRateLimiter) {
 const WFM = 'https://api.warframe.market/v2/orders/item/ash_prime_set';
 
 describe('UndiciHttpService - warframe.market protection', () => {
-  beforeEach(() => requestMock.mockReset());
+  const originalProxy = process.env.WFM_PROXY_URL;
+  beforeEach(() => {
+    requestMock.mockReset();
+    delete process.env.WFM_PROXY_URL;
+  });
+  afterEach(() => {
+    if (originalProxy === undefined) delete process.env.WFM_PROXY_URL;
+    else process.env.WFM_PROXY_URL = originalProxy;
+  });
 
   it('stops after one request on a Cloudflare challenge and opens the breaker', async () => {
     const limiter = new WfmRateLimiter({ maxRps: 100, cooldownMs: 60_000 });
@@ -79,5 +87,36 @@ describe('UndiciHttpService - warframe.market protection', () => {
 
     await makeService(limiter).get('https://raw.githubusercontent.com/WFCD/warframe-drop-data/master/data/info.json');
     expect(acquire).not.toHaveBeenCalled();
+  });
+
+  it('uses the fixed SOCKS egress despite disabled pool proxies, only for WFM', async () => {
+    process.env.WFM_PROXY_URL = 'socks5://127.0.0.1:27028';
+    const limiter = new WfmRateLimiter({ maxRps: 100, cooldownMs: 60_000 });
+    const service = makeService(limiter);
+    const dispatcher = jest.spyOn(service as any, 'createDispatcher');
+    const pool = jest.spyOn(service.getProxyManager(), 'getProxy');
+    requestMock.mockResolvedValue(response(200, '{"data":[]}'));
+
+    await service.get(WFM);
+    expect(dispatcher).toHaveBeenLastCalledWith('socks5h://127.0.0.1:27028');
+    expect(pool).not.toHaveBeenCalled();
+
+    await service.get('https://raw.githubusercontent.com/WFCD/warframe-drop-data/master/data/info.json');
+    expect(dispatcher).toHaveBeenLastCalledWith(null);
+  });
+
+  it('does not bypass or rotate a failed fixed proxy and retains the challenge breaker', async () => {
+    process.env.WFM_PROXY_URL = 'socks5://127.0.0.1:27028';
+    const limiter = new WfmRateLimiter({ maxRps: 100, cooldownMs: 60_000 });
+    const service = makeService(limiter);
+    const pool = jest.spyOn(service.getProxyManager(), 'getProxy');
+    const ban = jest.spyOn(service.getProxyManager(), 'banProxy');
+    requestMock.mockResolvedValue(response(403, '<title>Just a moment</title>', { 'cf-mitigated': 'challenge' }));
+
+    await expect(service.post(WFM, {})).rejects.toThrow(/Cloudflare challenge/);
+    expect(requestMock).toHaveBeenCalledTimes(1);
+    expect(pool).not.toHaveBeenCalled();
+    expect(ban).not.toHaveBeenCalled();
+    expect(limiter.isBlocked()).toBe(true);
   });
 });

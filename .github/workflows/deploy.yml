@@ -159,6 +159,11 @@ jobs:
             npm ci
             npm run build
             cd ..
+            # Register the optional fixed WFM egress before restarting clients.
+            # reload alone does not register a newly added PM2 application.
+            if node -e 'process.exit(require("./ecosystem.egress.config.js").apps.length ? 0 : 1)'; then
+              pm2 start ecosystem.egress.config.js --update-env
+            fi
             pm2 reload ecosystem.config.js --update-env
             # `pm2 reload` only touches already-running apps, so a NEWLY added
             # ecosystem entry (e.g. warframe-sync-translations) is never picked

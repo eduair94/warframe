@@ -145,10 +145,12 @@ ssh warframe167 'curl -s -o /dev/null -w "%{http_code} cf=%header{cf-mitigated}
   `ecosystem.config.js`) and pauses 15 min on a challenge, so the syncs resume
   on their own once the block lifts. Look for a process exceeding its budget
   before anything else. Do **not** re-enable proxy rotation or raise
-  `CONCURRENCY` to push through: that is how the block happened.
+  `CONCURRENCY` to push through. A verified fixed egress is supported with
+  `WFM_PROXY_URL`, retaining the same request budgets and breaker (see below).
 - `403` with body `Deprecated` → a retired v1 endpoint. Move that call to v2.
 - Log line `⛔ warframe.market Cloudflare challenge … pausing all requests until …`
-  = the breaker is open; nothing to do but wait (or fix the traffic source).
+  = the breaker is open; fix the traffic source or the configured egress. A
+  process that is online but repeatedly challenged is not a successful sync.
 
 ### The sync host (`.10`)
 
@@ -165,13 +167,65 @@ database through `warframe-offbox-tunnel`: autossh with the dedicated key
 ```bash
 ssh build 'pm2 ls | grep offbox; pm2 logs warframe-offbox-sync-prices --lines 20 --nostream'
 # update after a deploy that touches sync code:
-ssh build 'cd /opt/warframe-sync && git pull --ff-only && export PATH=$(dirname $(. ~/.nvm/nvm.sh && nvm which 24)):$PATH && npm ci && npm run build; pm2 restart ecosystem.sync.config.js --update-env'
+ssh build 'cd /opt/warframe-sync && git pull --ff-only && export PATH=$(dirname $(. ~/.nvm/nvm.sh && nvm which 24)):$PATH && npm ci && npm run build && pm2 startOrRestart ecosystem.sync.config.js --update-env && pm2 save'
 ```
 
 To move the syncs back to `.11` (block lifted): `ssh build 'pm2 delete
 ecosystem.sync.config.js && pm2 save'`, remove `WFM_SYNC_ENABLED=false` from
 `.11`'s `.env`, then `pm2 restart` the six syncs there. Never run both copies:
 two price syncs would double the request rate.
+
+### Fixed egress recovery (2026-10-23)
+
+The sync host also started receiving Cloudflare challenges on October 18.
+Both direct IPs and sampled authenticated pool proxies failed. The database
+tunnel and processes stayed healthy, but no price updates were saved for five
+days. The owned `box83` host could still fetch both v2 orders and v1 statistics.
+
+The API and sync hosts now use a dedicated, loopback-only SOCKS tunnel to
+`box83` (`83.147.54.179`). `ecosystem.egress.config.js` registers
+`warframe-egress-proxy`; SSH keepalives and PM2 restart it after a disconnect.
+Each host has its own `/root/.ssh/warframe_wfm_egress` key. On the egress host,
+each public key is authorized with:
+
+```
+restrict,port-forwarding,permitopen="api.warframe.market:443",command="/bin/false" <public-key>
+```
+
+Set in each caller host's private `.env`:
+
+```dotenv
+WFM_PROXY_URL=socks5h://127.0.0.1:27028
+WFM_EGRESS_SSH_TARGET=root@83.147.54.179
+WFM_EGRESS_SSH_KEY=/root/.ssh/warframe_wfm_egress
+WFM_EGRESS_PORT=27028
+WFM_V1_STATS=true
+```
+
+`socks5://` is also accepted and normalized to remote DNS, preserving the SSH
+hostname restriction. Only `api.warframe.market` uses this fixed proxy. WFCD
+and GitHub requests retain their existing transport. A failed tunnel never
+falls back to the blocked direct IP. Keep the rotating pool disabled.
+
+The two hosts share one upstream budget: prices 1.2 RPS, auctions 0.3, live
+0.5, API 0.3, and four WFM one-shots at 0.15 each, totaling at most 2.9 RPS.
+The API host's WFM syncs must remain parked. Rates include retries and statistics.
+`WFM_V1_STATS=true` restores real 48-hour volume and averages; only enable it
+after a successful JSON response from that endpoint, since access may differ
+by egress. Do not treat a new orders timestamp as proof statistics refreshed.
+
+After deploying, update/build the sync host too with the command above. Verify
+both transports through the tunnel, then confirm advancing stored timestamps:
+
+```bash
+ssh build 'curl --socks5-hostname 127.0.0.1:27028 -s -o /dev/null -w "%{http_code}\n" https://api.warframe.market/v2/orders/item/ash_prime_set'
+ssh build 'pm2 logs warframe-offbox-sync-prices --lines 12 --nostream'
+curl -s https://warframe.digitalshopuy.com/health
+```
+
+Inspect several catalogue rows and their `market.last_completed` too. The
+sync processes oldest prices first, so a five-day backlog needs a full sweep;
+`/health` reports the newest update, not coverage of the whole catalogue.
 
 ## What now protects this, and what each layer does not do
 
@@ -198,10 +252,18 @@ The Worker is **not** deployed by CI. After editing `cloudflare/worker.js`:
    missing has no protection at all:
    - `warframe.digitalshopuy.com/*`
    - `warframe-app.digitalshopuy.com/*`
-3. Verify: `curl -sI https://warframe.digitalshopuy.com/health | grep -i x-edge-cache`
-   must return a value. No header = not routed.
+3. Verify with a GET (HEAD requests bypass the Worker):
+   `curl -sD - -o /dev/null https://warframe.digitalshopuy.com/health | grep -i x-edge-cache`
+   must return `BYPASS` because health is uncached. No header = not routed.
 4. Do **not** also run the dashboard Cache Rule from `cloudflare-cache.md` on the
    same paths — one or the other.
+
+The Worker retains outage backups for seven days, but responses served from a
+backup (`x-edge-cache: STALE-ON-ERROR`) send `Cache-Control: no-store`. The long
+retention applies only inside the Worker; browsers must retry when the origin
+recovers. This also applies to backups written before the header fix. Verify
+both outage paths without interrupting production:
+`npm test -- --runInBand cloudflare/worker.test.ts`.
 
 Also turn on **Caching → Configuration → Always Online**, a free second net that
 serves an Internet Archive snapshot if everything else fails.

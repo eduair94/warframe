@@ -26,6 +26,7 @@ import { IHttpClient, IHttpRequestOptions } from '../interfaces/http.interface';
 import { HeaderService } from './HeaderService';
 import { ProxyManagerAdapter } from './ProxyManagerAdapter';
 import { createSocksConnector } from './SocksConnector';
+import { proxyLabel, readWfmProxyUrl } from './WfmProxy';
 import {
   WfmNonRetryableError,
   WfmRateLimiter,
@@ -85,6 +86,9 @@ export class UndiciHttpService implements IHttpClient {
 
   /** Proxy manager for rotation */
   private readonly proxyManager: ProxyManagerAdapter;
+
+  /** Fixed, explicitly configured WFM egress; never rotated or silently bypassed. */
+  private readonly wfmProxyUrl = readWfmProxyUrl();
 
   /** Requests handled so far, for periodic stats logging (D11) */
   private requestCount = 0;
@@ -153,10 +157,11 @@ export class UndiciHttpService implements IHttpClient {
    * @private
    */
   private recordProxyFailure(proxy: string): void {
+    if (proxy === this.wfmProxyUrl) return;
     ProxyRotation.recordProxyPerformance(proxy, false);
     if (ProxyRotation.shouldAvoidProxy(proxy)) {
       this.proxyManager.banProxy(proxy);
-      if (DEBUG) console.log(`🚫 Proxy banned after repeated failures: ${proxy}`);
+      if (DEBUG) console.log(`🚫 Proxy banned after repeated failures: ${proxyLabel(proxy)}`);
     }
   }
 
@@ -169,9 +174,9 @@ export class UndiciHttpService implements IHttpClient {
    */
   private maybeLogStats(proxy: string | null): void {
     this.requestCount++;
-    if (!DEBUG || !proxy || this.requestCount % STATS_LOG_INTERVAL !== 0) return;
+    if (!DEBUG || !proxy || proxy === this.wfmProxyUrl || this.requestCount % STATS_LOG_INTERVAL !== 0) return;
     const stats = ProxyRotation.getProxyStats(proxy);
-    console.log(`📊 Proxy stats @request ${this.requestCount} [${proxy}]: ${stats.success} ok / ${stats.failures} failed`);
+    console.log(`📊 Proxy stats @request ${this.requestCount} [${proxyLabel(proxy)}]: ${stats.success} ok / ${stats.failures} failed`);
   }
 
   /**
@@ -188,8 +193,8 @@ export class UndiciHttpService implements IHttpClient {
   private createDispatcher(proxy: string | null): Dispatcher {
     const tlsOptions = AntiDetection.getTLSOptions();
 
-    if (proxy && this.config.useProxies) {
-      if (proxy.startsWith('socks5://') || proxy.startsWith('socks4://')) {
+    if (proxy) {
+      if (proxy.startsWith('socks5://') || proxy.startsWith('socks5h://') || proxy.startsWith('socks4://')) {
         return new Agent({
           connect: createSocksConnector(proxy, tlsOptions),
           keepAliveTimeout: this.config.keepAliveTimeout,
@@ -360,15 +365,13 @@ export class UndiciHttpService implements IHttpClient {
         // amount of concurrency or retrying can exceed the process's RPS budget.
         if (wfm) await this.config.wfmLimiter.acquire();
 
-        proxy = this.getUsableProxy();
+        proxy = (wfm && this.wfmProxyUrl) || this.getUsableProxy();
         const dispatcher = this.createDispatcher(proxy);
         const headers = this.getRequestHeaders(options.headers);
         this.maybeLogStats(proxy);
 
         if (DEBUG) {
-          const proxyInfo = proxy
-            ? proxy.includes('@') ? proxy.split('@')[1] : proxy
-            : 'direct (proxyless)';
+          const proxyInfo = proxyLabel(proxy);
           console.log(`Attempt ${attempt} using: ${proxyInfo}`);
         }
 
@@ -432,7 +435,7 @@ export class UndiciHttpService implements IHttpClient {
         }
 
         // Mark proxy as successful
-        if (proxy) {
+        if (proxy && proxy !== this.wfmProxyUrl) {
           ProxyRotation.recordProxyPerformance(proxy, true);
         }
 
@@ -510,7 +513,7 @@ export class UndiciHttpService implements IHttpClient {
       let proxy: string | null = null;
       try {
         if (wfm) await this.config.wfmLimiter.acquire();
-        proxy = this.getUsableProxy();
+        proxy = (wfm && this.wfmProxyUrl) || this.getUsableProxy();
         const dispatcher = this.createDispatcher(proxy);
         const headers = this.getRequestHeaders({
           'Content-Type': 'application/json',
@@ -543,7 +546,7 @@ export class UndiciHttpService implements IHttpClient {
           throw new Error(`HTTP ${response.statusCode}`);
         }
 
-        if (proxy) {
+        if (proxy && proxy !== this.wfmProxyUrl) {
           ProxyRotation.recordProxyPerformance(proxy, true);
         }
 
