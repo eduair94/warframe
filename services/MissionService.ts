@@ -166,9 +166,27 @@ export class MissionService {
     return m;
   }
 
-  /** A page is indexable when it has real node metadata OR valuable rewards. */
-  private static isIndexable(meta: INodeMeta | undefined, bestValue: number): boolean {
-    return !!meta || bestValue >= 1;
+  /**
+   * Node facts or a usable comparison of reward outcomes makes a page useful.
+   * Two distinct rewards is a content safeguard, not a price threshold: untradeable
+   * blueprints and Endo still answer farming questions when market prices are zero.
+   */
+  private static isIndexable(meta: INodeMeta | undefined, rotations: IEnrichedRotation[]): boolean {
+    if (meta) return true;
+    if (!Array.isArray(rotations)) return false;
+    const names = new Set<string>();
+    for (const rotation of rotations) {
+      if (!Array.isArray(rotation?.rewards)) continue;
+      for (const reward of rotation.rewards) {
+        if (typeof reward?.itemName !== 'string' || !Number.isFinite(reward.chance)
+          || reward.chance <= 0 || reward.chance > 100) continue;
+        const name = reward.itemName.normalize('NFKC').trim().replace(/\s+/g, ' ').toLowerCase();
+        if (!/\p{L}/u.test(name) || /[<>]/.test(name)) continue;
+        names.add(name);
+        if (names.size >= 2) return true;
+      }
+    }
+    return false;
   }
 
   static buildMissionList(planets: IEnrichedPlanet[], nodes: INodeMeta[]): IMissionListRow[] {
@@ -188,7 +206,7 @@ export class MissionService {
           minLevel: meta?.minLevel ?? null,
           maxLevel: meta?.maxLevel ?? null,
           bestValue: node.value,
-          indexable: MissionService.isIndexable(meta, node.value),
+          indexable: MissionService.isIndexable(meta, node.rotations),
         });
       }
     }
@@ -224,7 +242,7 @@ export class MissionService {
             : null,
           rotations: node.rotations,
           bestValue: node.value,
-          indexable: MissionService.isIndexable(meta, node.value),
+          indexable: MissionService.isIndexable(meta, node.rotations),
         };
       }
     }

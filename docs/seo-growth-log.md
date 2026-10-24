@@ -974,3 +974,102 @@ September 25–October 22 versus August 28–September 24 in the property timezo
 The remaining overdue guides, translation gaps and external Riven-tool research
 remain on the review queue; unrelated review dates are preserved. The existing
 daily 10:00 Montevideo maintenance automation remains active.
+
+## October 24, 2026 — Stable mission indexation and current Riven tools
+
+The iteration starts from the successful full deployment
+[39962615356](https://github.com/eduair94/warframe/actions/runs/39962615356),
+commit `a6cdf3e77b5c583c2e03cfd5c4e8f0ff54e660dc`. At approximately 21:29 UTC,
+all three application processes and ten public health/asset/SEO checks passed.
+The catalogue had 3,772 of 3,892 prices within three hours (96.9%), 120 older
+and 18 over one day, with no invalid timestamps. Endo had 52 mods meeting its
+default filters and 40 real SSR rows in both English and Spanish. Availability
+and recent activity do not establish that every catalogue price is current.
+
+### Mission pages should not disappear when prices move
+
+The baseline English and Spanish sitemaps disagreed on four mission URLs.
+Falling Glory returned HTTP 200 with `noindex` despite publishing 19 rewards
+across three rotations: its best reward value was approximately 0.6003 platinum,
+below the previous one-platinum indexation threshold. Saya's Visions had also
+disappeared from a sitemap snapshot while its current page was indexable.
+This coupled discovery of useful farming information to changing market prices.
+
+Mission list and detail responses now use the same stable content rule: node
+metadata, or at least two distinct named rewards with finite probabilities above
+zero and at most 100 percent. Blank, malformed and duplicate-only tables do not
+qualify. Normalization prevents repeated casing, spacing or full-width text from
+counting as different outcomes. Non-tradeable blueprints, Credits and Endo can
+still answer farming questions. This minimum is our content safeguard, not a
+Google ranking requirement. Existing curated-note exceptions remain intact.
+
+On the saved 435-mission snapshot, the rule changes API eligibility from 295 to
+432: 137 existing pages become eligible and none lose eligibility. No routes or
+filler pages are added. List and detail decisions agree for all 435 missions at
+prices of 30, 0.6 and zero platinum (1,305 comparisons); prices, rewards and slugs
+are preserved. The three excluded tables each contain only one distinct valid
+reward. Search-engine crawling, actual index inclusion and traffic gains remain
+unmeasured. Public verification checks sitemap/page agreement after the existing
+API caches refresh; no cache namespace or broad invalidation is introduced.
+
+### Riven tool descriptions and search metadata
+
+The [official patch index](https://www.warframe.com/en/patch-notes) still lists
+[Hotfix 44.1.3](https://www.warframe.com/en/patch-notes/pc/44-1-3) as the latest
+patch, and the [news index](https://www.warframe.com/en/news) has no newer lead
+article than October 19. Eleven obsolete weapon-Disposition statements in the
+Semlar Riven Calculator, Samodeus and Frame Hub research records are corrected.
+Two absolute security guarantees in Semlar's record are replaced with bounded
+observations about its public browser access. This is a targeted correction;
+unrelated guide review dates and historical source statements are preserved.
+
+[Semlar's calculator](https://semlar.com/rivencalc) still displays a Dispositions
+section, and [Samodeus's developer listing](https://top.gg/bot/333058936859000832)
+does not establish support for the new rules. Their compatibility remains
+unverified; neither is declared incompatible solely for lacking evidence.
+Frame Hub now redirects to [Voidforge](https://void-forge.org/), whose
+[Riven Grader](https://void-forge.org/riven-calculator) explicitly describes
+standardized 1.2x ranges. The text attributes this statement to the tool without
+claiming an independent calculation test. The directory updates the brand and
+destination while preserving `/tools/frame-hub`; old-domain facts and the
+historical screenshot are removed so they are not attributed to the new site.
+
+The thirteen changed English fields and six source labels/snippets are translated
+through the repository's translation tool and reviewed across all twelve other
+languages: 228 generated strings reviewed, thirteen exact semantic repairs,
+and numeric fidelity checked, including localized decimal separators. Only the
+selected fields and new source entries are replaced; other
+research records, tiers and metadata are preserved. Tool-page search titles now
+use the existing localized overview label, and descriptions use the localized
+summary without the appended English boilerplate. SoftwareApplication markup
+no longer identifies Void Ledger as publisher of third-party tools; the explicit
+self-listing retains its publisher identity.
+
+### Endo language and verification
+
+The Spanish browser baseline visibly said “precios actualizados 7 minutes ago”.
+Endo now formats relative update times in all thirteen languages using native
+Intl formatting. It reuses the existing serialized market clock and minute
+timer, responds to language/feed changes, and rejects invalid, impossible,
+timezone-free or future timestamps. No requests, timers or language bundles
+are added. SSR and hydration share the same clock, and concurrent requests do
+not mutate a global date-library locale.
+
+All blocking local checks pass: 716 backend tests in 55 suites, 42 frontend
+tests and 26 guide regressions, totaling 784. The backend production build,
+locale-message compiler, 25 guide validations and repository-map check pass.
+Focused checks also cover actual Endo bindings, all thirteen language outputs,
+clock/timer lifecycle, and client/server compilation of the affected Vue pages.
+Existing advisory lint/typecheck debt is not represented as a clean project-wide
+gate. All intended code, translations and documentation are committed before
+the final complete API/frontend/live workflow. The completion report and
+automation memory record its outcome and public release evidence.
+
+One Supermetrics discovery attempt again returned UNAUTHORIZED. GA4/Search
+Console are unavailable, not zero. Once access is restored, compare complete
+October 17–23 versus October 10–16, and September 26–October 23 versus August
+29–September 25, using the property's timezone. The daily automation remains
+active. Remaining leads include overdue guides and translation gaps, outdated
+Duviri mission-note requirements, missing node facts in the sampled mission
+responses, and historical tool-research community references that require a
+separate relevance review. None of their review dates was advanced here.

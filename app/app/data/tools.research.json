@@ -841,11 +841,11 @@
   },
   "semlar-rivencalc": {
     "slug": "semlar-rivencalc",
-    "oneLiner": "A free web calculator that shows the possible stat ranges (buffs and curses) for any Warframe riven mod based on weapon type, disposition, and rank.",
-    "overview": "Semlar's Riven Calculator (semlar.com/rivencalc) is a browser-based tool for Warframe players that computes the min/max stat ranges a riven mod can roll. Every riven stat has a hidden random multiplier of roughly 0.9x to 1.1x (+/-10%), and the calculator translates that variance plus the weapon's disposition, buff/curse count, and mod rank into concrete numbers. It is part of Semlar's broader suite of riven utilities, which also includes a Riven Price Guide, Riven Finder, and Riven Comparator, tools that are effectively a community standard for riven trading and valuation.",
+    "oneLiner": "A free browser calculator for exploring Riven stat ranges, with rank and buff/curse controls. Verify current-game compatibility before using its estimates.",
+    "overview": "Semlar's Riven Calculator provides stat-range controls for a weapon, mod rank, and the number of positive and negative attributes. It sits alongside Semlar's price-history and roll-comparison tools. Hotfix 44.1.3 removed weapon-specific Dispositions: all Rivens now use the shared multiplier equivalent to the former 1.2. The calculator page still displays a Dispositions section, and its support for the new rules has not been verified here. Compare its output with current in-game values before spending Kuva or trading.",
     "keyFeatures": [
       "Calculates possible stat ranges (min/max) for a given riven based on the +/-10% roll variance",
-      "Accounts for weapon disposition, which scales riven power per weapon",
+      "A legacy Dispositions section remains visible; check the tool's ranges against current in-game values",
       "Supports selecting number of buffs (2 or 3) and presence of a curse",
       "Filters by mod rank (Rank 0 through Rank 8) to show how stats scale when leveled",
       "Covers different weapon/riven types (rifle, pistol, melee, etc.) with their base stat values",
@@ -856,7 +856,7 @@
     "sentimentSummary": "Semlar's tools are long-established and widely referenced within the Warframe riven-trading community, frequently cited on the Warframe forums and wiki as a go-to resource for riven stat ranges. Direct, quotable community threads were not retrievable during this research (Reddit was inaccessible to the search agent), so sentiment is inferred from the tool's persistent presence in forum/wiki discussion rather than captured verbatim. No notable criticism of the calculator's accuracy surfaced; the main community nuance discussed is the exact +/-10% roll model it uses.",
     "safety": {
       "rating": "safe",
-      "notes": "Entirely web-based, read-only calculator. No game-memory reading, no overlay, no account login, and no real-money trading. It only performs math on values the user inputs, so it carries no Warframe ToS or account-security risk."
+      "notes": "The public calculator can be opened without a Warframe login and works through browser inputs. This review does not establish a security audit or guarantee the accuracy of its results."
     },
     "tier": "recommended",
     "tierReason": "Semlar's riven tools are a de facto standard in the Warframe riven-trading niche and are broadly used and referenced, but the rivencalc page specifically is a focused utility (stat ranges) rather than a must-have-for-everyone tool, which keeps it at recommended rather than essential.",
@@ -864,15 +864,15 @@
     "pros": [
       "Free and instant, no signup",
       "Directly answers the key riven question: what is the best/worst this stat can roll?",
-      "Handles disposition, rank, buff/curse count in one place",
+      "Keeps rank and positive/negative attribute controls together",
       "Backed by a well-known, long-running Warframe tool suite",
-      "No safety or ToS risk"
+      "Public calculator access does not require a Warframe login"
     ],
     "cons": [
       "Niche purpose, only useful to players who trade or optimize rivens",
       "Interface is utilitarian and can be unintuitive for newcomers",
       "Relies on the community-modeled +/-10% roll formula, which some players debate",
-      "Accuracy depends on Semlar keeping disposition/base-stat data current with game updates"
+      "Compatibility with Hotfix 44.1.3 has not been verified; older weapon-specific ranges may mislead trading or reroll decisions"
     ],
     "youtube": [],
     "otherReviews": [
@@ -881,6 +881,16 @@
         "url": "https://forums.warframe.com/topic/1363335-riven-stat-range-alternatives-and-about-semlar/",
         "snippet": "Community thread discussing riven stat ranges and Semlar's calculator, including the +/-10% roll model the tool uses.",
         "rating": null
+      },
+      {
+        "source": "Digital Extremes — Hotfix 44.1.3",
+        "url": "https://www.warframe.com/en/patch-notes/pc/44-1-3",
+        "snippet": "Official patch notes: weapon-specific Dispositions were removed; all Rivens now use a shared 1.2 multiplier."
+      },
+      {
+        "source": "Semlar — Riven Calculator",
+        "url": "https://semlar.com/rivencalc",
+        "snippet": "The calculator exposes buff, curse and rank controls and still displays a Dispositions section. This page does not establish support for Hotfix 44.1.3."
       }
     ],
     "trustpilot": null,
@@ -2463,11 +2473,11 @@
   "samodeus": {
     "slug": "samodeus",
     "oneLiner": "A Warframe Discord bot that grades riven mods from screenshots via OCR and calculates weapon DPS.",
-    "overview": "Samodeus (also listed as TheroxBot), by developer Theroxenes, is a Warframe companion Discord bot built with discord.py. Its headline feature is OCR-based riven mod analysis: users upload an in-game screenshot and the bot reads the stats and grades each one by variance from the stat average. It also does weapon DPS calculations for custom builds, shows riven dispositions, and provides configurable newsfeeds for Warframe updates and forum posts. The bot uses a customizable \"$\" prefix and is listed on top.gg with roughly 7,500 servers.",
+    "overview": "Samodeus, also listed as TheroxBot, is a Discord bot by Theroxenes. Its developer listing describes OCR-based Riven grading from screenshots, weapon DPS calculations, and configurable Warframe newsfeeds. Hotfix 44.1.3 removed weapon-specific Dispositions and set all Riven stat ranges to the shared multiplier equivalent to the former 1.2. The bot's compatibility with that change has not been verified here. Check its grades against current in-game values before making a trade.",
     "keyFeatures": [
       "OCR riven mod analysis from screenshots, grading each stat by variance from average",
       "Weapon DPS calculations for custom builds ($dps)",
-      "Riven disposition lookup ($dispo, $numericdispo)",
+      "Legacy Disposition commands are not evidence that Riven grading supports the current game rules",
       "Configurable Warframe newsfeeds/updates ($set_feed, $last)",
       "Auction and endo/market helper commands ($auction, $endo)",
       "In-game text translation and multilingual support ($translate, $lang, $localize)",
@@ -2503,11 +2513,16 @@
         "url": "https://alternative.me/discord/bots/samodeus-theroxbot/commands",
         "rating": null,
         "snippet": "Lists command set (auction, dispo, dps, endo, g, randomriven, scale, translate, feeds, utility) and references a support server at discord.gg/9xyAMRq."
+      },
+      {
+        "source": "Digital Extremes — Hotfix 44.1.3",
+        "url": "https://www.warframe.com/en/patch-notes/pc/44-1-3",
+        "snippet": "Official patch notes: weapon-specific Dispositions were removed; all Rivens now use a shared 1.2 multiplier."
       }
     ],
     "pros": [
       "Automates riven grading via OCR so players don't have to eyeball stat quality",
-      "Bundles multiple Warframe utilities (DPS, disposition, endo, auctions, translation) in one bot",
+      "Combines screenshot-based Riven grading, DPS calculations, and Warframe newsfeeds in Discord",
       "Customizable per server (prefix, toggleable commands, multilingual)",
       "Meaningful install base (~7,500 servers) indicating real use",
       "Read-only and credential-free, so low account risk"
@@ -2560,11 +2575,11 @@
   "frame-hub": {
     "slug": "frame-hub",
     "oneLiner": "A full-featured, community-driven Warframe build planner with real-time stat and damage calculations across frames, weapons, companions, and more.",
-    "overview": "Frame Hub (frame-hub.com) is a web-based Warframe build planner that lets players mod and optimize warframes, weapons, companions, Archguns, Archwings, Necramechs, and Railjacks with real-time stat calculations, Archon Shard slots, arcanes, and a full mod/arcane codex using in-game card artwork. It includes a damage simulator that models level scaling, armor, and elemental combos, a riven generator/grader with disposition-adjusted ranges, side-by-side build and loadout comparison, and a community section for browsing, upvoting, filtering, and loading shared builds. It offers player sync that pulls active Arsenal data from Warframe, and accounts (sign-in) for saving and sharing loadouts. Per the site, it is maintained by a solo developer in their spare time, with a Discord community and optional donation support.",
+    "overview": "Frame Hub now redirects to Voidforge, a browser-based Warframe build planner. It offers weapon and Warframe builders, a damage simulator, a mod and arcane codex, community builds, and a Riven Grader. Hotfix 44.1.3 removed weapon-specific Dispositions and set all Riven stat ranges to the shared multiplier equivalent to the former 1.2. Voidforge's Riven Grader explicitly describes standardized 1.2x ranges. That statement supports its intended use of the new multiplier; this review has not independently tested its calculations. Compare results with current in-game values.",
     "keyFeatures": [
       "Warframe/weapon/companion/Archgun/Archwing/Necramech/Railjack builders with real-time stats",
       "Damage simulator with enemy level scaling, armor, and elemental combos",
-      "Riven mod generator and grader with disposition-adjusted stat ranges",
+      "Riven Grader that states it uses standardized 1.2x stat ranges",
       "Archon Shard slotting and ability/survivability stat readouts",
       "Full mod, arcane, and shard codex using in-game card artwork",
       "Community builds: browse, filter, upvote, and load shared loadouts",
@@ -2581,12 +2596,23 @@
     "tierReason": "It is a genuinely full-featured build planner (arguably broader in scope than many competitors, covering Railjack, Necramech, and rivens), but external adoption and community footprint could not be verified and appear small relative to established tools like Overframe. Useful as an alternative or for its niche builders, hence situational rather than recommended/essential.",
     "dataConfidence": "low",
     "youtube": [],
-    "otherReviews": [],
+    "otherReviews": [
+      {
+        "source": "Digital Extremes — Hotfix 44.1.3",
+        "url": "https://www.warframe.com/en/patch-notes/pc/44-1-3",
+        "snippet": "Official patch notes: weapon-specific Dispositions were removed; all Rivens now use a shared 1.2 multiplier."
+      },
+      {
+        "source": "Voidforge — Riven Grader",
+        "url": "https://void-forge.org/riven-calculator",
+        "snippet": "The current grader describes standardized 1.2x ranges. Its calculations were not independently tested in this review."
+      }
+    ],
     "trustpilot": null,
     "pros": [
       "Broad coverage: frames, weapons, companions, Archgun, Archwing, Necramech, and Railjack in one planner",
       "Real-time damage/stat calculations with enemy armor and level scaling",
-      "Built-in riven generator and grader with disposition-adjusted ranges",
+      "Riven grading is available alongside the build-planning tools",
       "Community build sharing with filtering and upvotes",
       "Player/Arsenal sync from Warframe and side-by-side comparisons",
       "Free to use, actively maintained, with a Discord community"

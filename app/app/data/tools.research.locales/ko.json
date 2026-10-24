@@ -841,11 +841,11 @@
   },
   "semlar-rivencalc": {
     "slug": "semlar-rivencalc",
-    "oneLiner": "무기 유형, 기질(disposition), 랭크를 기반으로 모든 Warframe Riven 모드의 가능한 스탯 범위(버프 및 디버프)를 보여주는 무료 웹 계산기.",
-    "overview": "Semlar의 Riven Calculator (semlar.com/rivencalc)는 Riven 모드가 가질 수 있는 최소/최대 스탯 범위를 계산해 주는 Warframe 플레이어용 브라우저 기반 도구입니다. 모든 Riven 스탯에는 약 0.9배에서 1.1배(+/-10%)의 숨겨진 무작위 승수가 존재하며, 이 계산기는 해당 편차와 무기의 기질, 버프/디버프 개수, 모드 랭크를 구체적인 수치로 변환해 줍니다. 이는 Riven Price Guide, Riven Finder, Riven Comparator를 포함하는 Semlar의 광범위한 Riven 유틸리티 제품군의 일부로, 이 도구들은 사실상 Riven 거래 및 가치 평가의 커뮤니티 표준으로 자리 잡고 있습니다.",
+    "oneLiner": "랭크 및 버프/저주 옵션 조절을 통해 리벤 스탯 범위를 확인할 수 있는 무료 웹 계산기입니다. 추정치를 활용하기 전에 최신 게임 버전 호환 여부를 확인하세요.",
+    "overview": "Semlar의 Riven Calculator는 무기, 모드 랭크, 긍정 및 부정 옵션 개수에 따른 스탯 범위 조절 기능을 제공하며 Semlar의 시세 내역 및 리롤 비교 도구와 함께 구성되어 있습니다. 핫픽스 44.1.3에서 무기별 기질이 삭제되어 모든 리벤에 기존 1.2에 해당하는 단일 배율이 적용됩니다. 본 계산기 페이지에는 여전히 기질 섹션이 표시되며, 신규 규칙의 적용 여부는 여기서 검증되지 않았습니다. 쿠바를 사용하거나 거래하기 전에 계산기 결과를 현재 인게임 수치와 대조해 보세요.",
     "keyFeatures": [
       "+/-10%의 수치 편차를 기반으로 주어진 Riven의 가능한 스탯 범위(최소/최대)를 계산함",
-      "무기별로 Riven의 위력을 조절하는 무기 기질을 반영함",
+      "구버전 기질 항목이 계속 표시되므로 도구의 범위를 현재 인게임 수치와 대조해 보세요",
       "버프 개수(2개 또는 3개) 및 디버프 존재 여부 선택 지원",
       "모드 랭크(랭크 0부터 랭크 8까지) 필터를 통해 레벨업 시 스탯이 어떻게 변화하는지 보여줌",
       "다양한 무기/Riven 유형(소총, 권총, 근접 무기 등)과 해당 기본 스탯 값을 포함함",
@@ -856,7 +856,7 @@
     "sentimentSummary": "Semlar의 툴은 Warframe riven 거래 커뮤니티 내에서 오랫동안 자리 잡고 널리 참조되어 왔으며, Warframe 포럼과 wiki에서 riven 능력치 범위의 필수 리소스로 자주 인용됩니다. 이번 조사 동안 직접 인용할 수 있는 커뮤니티 스레드는 검색할 수 없었지만(검색 에이전트가 Reddit에 접속할 수 없었음), 여론은 그대로 캡처하기보다는 포럼/wiki 토론에서 이 툴이 지속적으로 언급되는 것을 통해 유추되었습니다. 계산기의 정확성에 대한 눈에 띄는 비판은 제기되지 않았으며, 커뮤니티에서 논의되는 주요 뉘앙스는 계산기가 사용하는 정확한 +/-10% roll 모델입니다.",
     "safety": {
       "rating": "safe",
-      "notes": "완전히 웹 기반의 읽기 전용 계산기입니다. 게임 메모리 읽기, 오버레이, 계정 로그인, 현금 거래(RMT)가 없습니다. 사용자가 입력한 값에 대해서만 수학적 계산을 수행하므로 Warframe ToS나 계정 보안 위험이 없습니다."
+      "notes": "Warframe 로그인 없이 누구나 열어 브라우저에서 입력해 사용할 수 있는 공개 계산기입니다. 본 리뷰는 보안 감사를 수행한 것이 아니며 결과의 정확성을 보증하지 않습니다."
     },
     "tier": "recommended",
     "tierReason": "Semlar의 riven 툴은 Warframe riven 거래 분야에서 사실상의 표준(de facto standard)이며 널리 사용 및 참조되고 있지만, 특히 rivencalc 페이지는 모든 사람에게 필수적인 툴이라기보다는 특정 목적에 맞춘 유틸리티(능력치 범위)에 가깝기 때문에 '필수'가 아닌 '추천' 등급으로 유지됩니다.",
@@ -864,15 +864,15 @@
     "pros": [
       "무료 및 즉시 이용 가능, 가입 불필요",
       "핵심 riven 질문에 직접 답해줍니다: 이 능력치가 가질 수 있는 최선/최악의 수치는 무엇인가?",
-      "기질(disposition), 랭크, 버프/디버프(curse) 개수를 한 곳에서 처리합니다.",
+      "랭크 및 긍정/부정 옵션 조절 기능을 함께 제공",
       "잘 알려지고 오랫동안 운영된 Warframe 툴 세트의 지원을 받음",
-      "안전 및 ToS 위험 없음"
+      "Warframe 로그인 없이 공개 계산기 이용 가능"
     ],
     "cons": [
       "틈새 목적, rivens를 거래하거나 최적화하는 플레이어에게만 유용함",
       "인터페이스가 실용주의적이며 초보자에게는 직관적이지 않을 수 있음",
       "일부 플레이어들 사이에서 논란이 있는 커뮤니티 모델링 +/-10% roll 공식에 의존함",
-      "정확성은 Semlar가 게임 업데이트에 맞춰 기질(disposition)/기본 능력치 데이터를 최신 상태로 유지하는지에 달려 있음"
+      "핫픽스 44.1.3 호환성이 검증되지 않았으며 이전 무기별 범위로 인해 거래나 리롤 판단에 착오가 생길 수 있습니다"
     ],
     "youtube": [],
     "otherReviews": [
@@ -881,6 +881,16 @@
         "url": "https://forums.warframe.com/topic/1363335-riven-stat-range-alternatives-and-about-semlar/",
         "snippet": "Community thread discussing riven stat ranges and Semlar's calculator, including the +/-10% roll model the tool uses.",
         "rating": null
+      },
+      {
+        "source": "Digital Extremes — 핫픽스 44.1.3",
+        "url": "https://www.warframe.com/en/patch-notes/pc/44-1-3",
+        "snippet": "공식 패치 노트: 무기별 기질 삭제, 이제 모든 리벤에 단일 1.2 배율 적용."
+      },
+      {
+        "source": "Semlar — Riven Calculator",
+        "url": "https://semlar.com/rivencalc",
+        "snippet": "계산기에서 버프, 저주, 랭크 조절을 제공하며 기질 섹션도 계속 표시됩니다. 본 페이지는 핫픽스 44.1.3 지원 여부를 확인하지 않습니다."
       }
     ],
     "trustpilot": null,
@@ -2463,11 +2473,11 @@
   "samodeus": {
     "slug": "samodeus",
     "oneLiner": "스크린샷에서 OCR을 통해 riven 모드 등급을 판정하고 무기 DPS를 계산하는 Warframe Discord 봇입니다.",
-    "overview": "개발자 Theroxenes가 제작한 Samodeus(TheroxBot으로도 등록됨)는 discord.py로 구축된 Warframe 동반 Discord 봇입니다. 주요 기능은 OCR 기반의 riven 모드 분석입니다. 사용자가 게임 내 스크린샷을 업로드하면 봇이 능력치를 읽고 능력치 평균과의 편차에 따라 각 모드의 등급을 판정합니다. 또한 커스텀 빌드에 대한 무기 DPS 계산을 수행하고, riven 성향을 보여주며, Warframe 업데이트 및 포럼 게시물에 대해 설정 가능한 뉴스피드를 제공합니다. 이 봇은 맞춤 설정 가능한 \"$\" 접두사를 사용하며, top.gg에 약 7,500개의 서버가 있는 것으로 등록되어 있습니다.",
+    "overview": "TheroxBot으로도 등록된 Samodeus는 Theroxenes가 개발한 Discord 봇입니다. 개발자 안내에 따르면 스크린샷 기반 OCR 리벤 등급 평가, 무기 DPS 계산, 사용자 설정 가능한 Warframe 뉴스피드를 제공합니다. 핫픽스 44.1.3에서 무기별 기질이 제거되고 모든 리벤 스탯 범위가 기존 1.2에 해당하는 단일 배율로 통일되었습니다. 해당 변경 사항에 대한 봇의 호환성은 여기서 검증되지 않았습니다. 거래 전에 평가 등급을 현재 인게임 수치와 대조해 보세요.",
     "keyFeatures": [
       "스크린샷을 통한 OCR riven 모드 분석, 평균과의 편차에 따라 각 능력치 등급 판정",
       "커스텀 빌드를 위한 무기 DPS 계산 ($dps)",
-      "riven 성향 조회 ($dispo, $numericdispo)",
+      "구버전 기질 명령어가 남아 있다고 해서 리벤 등급 평가가 현재 게임 규칙을 지원한다는 근거는 되지 않습니다",
       "설정 가능한 Warframe 뉴스피드/업데이트 ($set_feed, $last)",
       "경매 및 endo/마켓 도우미 명령어 ($auction, $endo)",
       "게임 내 텍스트 번역 및 다국어 지원 ($translate, $lang, $localize)",
@@ -2503,11 +2513,16 @@
         "url": "https://alternative.me/discord/bots/samodeus-theroxbot/commands",
         "rating": null,
         "snippet": "Lists command set (auction, dispo, dps, endo, g, randomriven, scale, translate, feeds, utility) and references a support server at discord.gg/9xyAMRq."
+      },
+      {
+        "source": "Digital Extremes — 핫픽스 44.1.3",
+        "url": "https://www.warframe.com/en/patch-notes/pc/44-1-3",
+        "snippet": "공식 패치 노트: 무기별 기질 삭제, 이제 모든 리벤에 단일 1.2 배율 적용."
       }
     ],
     "pros": [
       "OCR을 통해 riven 등급 판정을 자동화하여 플레이어가 능력치 품질을 직접 눈으로 가늠할 필요가 없음",
-      "여러 Warframe 유틸리티(DPS, 성향, endo, 경매, 번역)를 하나의 봇에 통합 제공",
+      "스크린샷 기반 리벤 등급 평가, DPS 계산, Warframe 뉴스피드를 Discord에서 종합 제공",
       "서버별 맞춤 설정 가능(접두사, 토글 가능한 명령어, 다국어 지원)",
       "실제 사용을 나타내는 의미 있는 설치 기반(~7,500개 서버)",
       "읽기 전용 및 자격 증명이 필요 없어 계정 위험이 낮음"
@@ -2560,11 +2575,11 @@
   "frame-hub": {
     "slug": "frame-hub",
     "oneLiner": "프레임, 무기, 동반자 등 전반에 걸쳐 실시간 능력치 및 피해량 계산 기능을 갖춘 기능이 풍부한 커뮤니티 주도형 Warframe 빌드 플래너입니다.",
-    "overview": "Frame Hub(frame-hub.com)는 플레이어가 게임 내 카드 아트를 사용하여 실시간 능력치 계산, Archon Shard 슬롯, arcanes, 전체 mod/arcane 코덱스와 함께 warframes, 무기, 동반자, Archguns, Archwings, Necramechs, Railjacks를 모딩하고 최적화할 수 있는 웹 기반 Warframe 빌드 플래너입니다. 레벨 스케일링, 방어력, 속성 조합을 모델링하는 피해 시뮬레이터, 성향에 맞게 조정된 범위를 제공하는 riven 생성기/등급 판정기, 빌드 및 로드아웃의 나란히 비교 기능, 공유 빌드를 탐색, 추천, 필터링 및 로드할 수 있는 커뮤니티 섹션이 포함되어 있습니다. Warframe에서 활성화된 Arsenal 데이터를 가져오는 플레이어 동기화 기능과 로드아웃을 저장하고 공유할 수 있는 계정(로그인) 기능을 제공합니다. 사이트에 따르면, 이 사이트는 1인 개발자가 여가 시간에 유지 관리하고 있으며, Discord 커뮤니티와 선택적 후원을 지원합니다.",
+    "overview": "Frame Hub는 이제 브라우저 기반 Warframe 빌드 플래너인 Voidforge로 이동합니다. 무기 및 Warframe 빌더, 데미지 시뮬레이터, 모드 및 아케인 코덱스, 커뮤니티 빌드, Riven Grader를 제공합니다. 핫픽스 44.1.3에서 무기별 기질이 삭제되고 모든 리벤 스탯 범위가 기존 1.2에 해당하는 단일 배율로 통일되었습니다. Voidforge의 Riven Grader에는 표준화된 1.2배율 범위를 사용한다고 명시되어 있습니다. 이 안내는 새 배율의 의도된 적용을 뒷받침하지만, 본 리뷰에서 계산 방식을 독자적으로 검증하지는 않았습니다. 결과를 현재 인게임 수치와 대조해 보세요.",
     "keyFeatures": [
       "실시간 능력치를 제공하는 Warframe/무기/동반자/Archgun/Archwing/Necmech/Railjack 빌더",
       "적 레벨 스케일링, 방어력, 속성 조합이 포함된 데미지 시뮬레이터",
-      "기질이 조정된 스탯 범위를 제공하는 Riven 모드 생성기 및 등급 측정기",
+      "표준화된 1.2배율 스탯 범위 사용을 명시한 Riven Grader",
       "Archon Shard 장착 및 어빌리티/생존력 스탯 표시",
       "게임 내 카드 아트를 사용하는 전체 mod, arcane, shard 코덱스",
       "커뮤니티 빌드: 공유된 로드아웃 탐색, 필터링, 추천(upvote) 및 불러오기",
@@ -2581,12 +2596,23 @@
     "tierReason": "진정으로 모든 기능을 갖춘 빌드 플래너이며(Railjack, Necramech, Riven까지 포함하여 많은 경쟁 도구보다 범위가 더 넓다고 볼 수 있음), 외부 도입 및 커뮤니티 발자취는 확인되지 않았으며 Overframe과 같이 자리를 잡은 도구들에 비해 규모가 작아 보입니다. 대안으로 사용하거나 틈새 빌더용으로 유용하므로, 추천/필수라기보다는 상황에 따라 선택할 수 있는 도구입니다.",
     "dataConfidence": "low",
     "youtube": [],
-    "otherReviews": [],
+    "otherReviews": [
+      {
+        "source": "Digital Extremes — 핫픽스 44.1.3",
+        "url": "https://www.warframe.com/en/patch-notes/pc/44-1-3",
+        "snippet": "공식 패치 노트: 무기별 기질 삭제, 이제 모든 리벤에 단일 1.2 배율 적용."
+      },
+      {
+        "source": "Voidforge — Riven Grader",
+        "url": "https://void-forge.org/riven-calculator",
+        "snippet": "현재 등급 평가기에는 표준화된 1.2배율 범위가 명시되어 있습니다. 본 리뷰에서 해당 계산 방식을 독자적으로 검증하지는 않았습니다."
+      }
+    ],
     "trustpilot": null,
     "pros": [
       "광범위한 지원 범위: 하나의 플래너에 frames, weapons, companions, Archgun, Archwing, Necramech, Railjack 포함",
       "적 방어력 및 레벨 스케일링이 적용된 실시간 데미지/스탯 계산",
-      "기질이 조정된 범위를 제공하는 내장형 Riven 생성기 및 등급 측정기",
+      "빌드 계획 도구와 함께 리벤 등급 평가 기능 제공",
       "필터링 및 추천(upvote) 기능이 있는 커뮤니티 빌드 공유",
       "Warframe으로부터의 플레이어/Arsenal 동기화 및 병렬 비교",
       "무료로 사용 가능, 활발히 관리됨, Discord 커뮤니티 보유"

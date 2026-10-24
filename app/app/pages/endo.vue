@@ -445,8 +445,7 @@
 
 <script setup lang="ts">
 import { fetchMarketData } from '~/utils/market-fetch'
-import dayjs from 'dayjs'
-import relativeTime from 'dayjs/plugin/relativeTime'
+import { formatRelativeTime, parseRecordedTimestamp } from '~/utils/relative-time'
 import { computed, nextTick, onMounted, ref, watch } from 'vue'
 import { useDisplay } from 'vuetify'
 import { useItemsStore } from '~/stores/items'
@@ -470,10 +469,10 @@ import {
 import { fmtPlat } from '~/composables/marketFormat'
 import { SYNDICATE_ORDER, syndicatesForMod } from '~/data/modSyndicates'
 
-dayjs.extend(relativeTime)
-
 const apiBase = useApiBase()
-const { t, te } = useI18n()
+const { t, te, locale } = useI18n()
+// The app's MarketFreshnessNotice owns this serialized clock and its minute timer.
+const marketClock = useState<number>('market-freshness-clock', () => Date.now())
 const localePath = useLocalePath()
 const { localItemName } = useLocalizedName()
 const { itemThumb, THUMB_PLACEHOLDER } = useItemThumb()
@@ -806,12 +805,12 @@ const flipStats = computed(() => {
 
 // Freshness: newest order-book snapshot across all mods.
 const updatedLabel = computed<string>(() => {
-  let newest = 0
+  let newest: number | null = null
   for (const r of flipData.value?.mods ?? []) {
-    const t = Date.parse(r.flip?.updatedAt || '')
-    if (!isNaN(t) && t > newest) newest = t
+    const timestamp = parseRecordedTimestamp(r.flip?.updatedAt, marketClock.value)
+    if (timestamp !== null && (newest === null || timestamp > newest)) newest = timestamp
   }
-  return newest ? dayjs(newest).fromNow() : ''
+  return newest === null ? '' : formatRelativeTime(newest, marketClock.value, locale.value)
 })
 
 // ---- Direction B: endo sources ----

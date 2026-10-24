@@ -195,7 +195,7 @@ const note = computed(() =>
 )
 const wikiHref = computed(() => (detail.value?.node ? nodeWikiUrl(detail.value.node.wikiLink) : ''))
 
-// A page is noindex when it has no node facts AND no curated note AND no value.
+// Thin pages need node facts, a useful reward table, or a curated note to be indexed.
 const shouldIndex = computed(
   () => !slug.value || !!(detail.value && (detail.value.indexable || note.value)),
 )

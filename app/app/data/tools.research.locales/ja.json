@@ -841,11 +841,11 @@
   },
   "semlar-rivencalc": {
     "slug": "semlar-rivencalc",
-    "oneLiner": "武器タイプ、性質、ランクに基づいて、任意のWarframeのRiven MODの想定されるステータス範囲（バフとネガティブ効果）を表示する無料のウェブ計算ツール。",
-    "overview": "Semlar's Riven Calculator (semlar.com/rivencalc) は、Warframeプレイヤー向けのブラウザベースのツールで、Riven MODに付与され得るステータスの最小値/最大値の範囲を計算します。すべてのRivenステータスには約0.9倍から1.1倍（+/-10%）の隠されたランダムな乗数が存在し、この計算ツールはその変動幅に加えて、武器の性質、バフ/ネガティブ効果の数、MODのランクを具体的な数値に変換します。これは、Riven Price Guide、Riven Finder、Riven Comparatorなども含むSemlarの幅広いRivenユーティリティスイートの一部であり、これらのツールはRivenの取引や価値評価において事実上のコミュニティ標準となっています。",
+    "oneLiner": "Rivenステータス範囲を確認できる無料ブラウザ計算ツール。ランクやプラス・マイナス効果の調整に対応。試算を利用する前に現行ゲームとの互換性を確認してください。",
+    "overview": "SemlarのRiven Calculatorは、武器、MODランク、ポジティブ・ネガティブ属性数に応じたステータス範囲の設定機能を提供します。Semlarの価格履歴やロール比較ツールとともに公開されています。Hotfix 44.1.3により武器ごとの性質は廃止され、すべてのRivenは旧1.2相当の共通倍率を使用する仕様になりました。計算機ページには現在も性質セクションが表示されており、新仕様への対応は本レビューでは未検証です。Kuvaの消費やトレードを行う前に、ゲーム内の現在値と比較してください。",
     "keyFeatures": [
       "+/-10%のロール変動幅に基づいて、指定されたRivenの想定されるステータス範囲（最小値/最大値）を計算",
-      "武器ごとにRivenの威力をスケールさせる武器の性質を考慮",
+      "旧仕様の性質セクションが残存しています。ツールの算出数値を現行のゲーム内数値と照合してください",
       "バフの数（2または3）とネガティブ効果の有無の選択に対応",
       "MODランク（ランク0からランク8）でフィルターし、レベルアップ時にステータスがどのようにスケールするかを表示",
       "さまざまな武器/Rivenタイプ（ライフル、ピストル、近接など）とその基本ステータス値を網羅",
@@ -856,7 +856,7 @@
     "sentimentSummary": "Semlar のツールは、Warframe の riven-trading コミュニティ内で古くから確立されており、広く参照されています。Warframe のフォーラムや wiki では、riven のステータス範囲を調べるための定番リソースとして頻繁に引用されています。今回の調査では、直接引用可能なコミュニティのスレッドを取得できませんでしたが（検索エージェントが Reddit にアクセスできなかったため）、評価はフォーラムや wiki の議論におけるこのツールの継続的な存在感から推測したものであり、逐語的に記録したものではありません。計算機の正確性に対する目立った批判は表面化しておらず、コミュニティで議論されている主なニュアンスは、ツールが使用している正確な +/-10% roll モデルについてです。",
     "safety": {
       "rating": "safe",
-      "notes": "完全にウェブベースの閲覧専用計算機。ゲームメモリの読み取り、オーバーレイ、アカウントログイン、リアルマネートレード（RMT）は一切ありません。ユーザーが入力した数値の計算のみを行うため、Warframe の ToS（利用規約）違反やアカウントセキュリティのリスクはありません。"
+      "notes": "この公開計算ツールはWarframeログイン不要で利用でき、ブラウザ上で動作します。本レビューはセキュリティ監査を行ったものではなく、結果の正確性も保証していません。"
     },
     "tier": "recommended",
     "tierReason": "Semlar の riven ツールは、Warframe の riven-trading 分野における事実上の標準（デファクトスタンダード）であり、広く使用・参照されています。しかし、特に rivencalc ページは全員にとって必須のツールというよりは、特定の目的（ステータス範囲）に特化したユーティリティであるため、「必須（essential）」ではなく「推奨（recommended）」にとどめています。",
@@ -864,15 +864,15 @@
     "pros": [
       "無料で即座に利用可能、登録不要",
       "「このステータスが roll され得る最良/最悪の値は何か？」という、riven に関する重要な疑問に直接答えます。",
-      "disposition（性質）、rank、buff/curse の数を1箇所で処理できます。",
+      "ランクおよびポジティブ／ネガティブ属性の調整機能を統合",
       "知名度が高く、長年運営されている Warframe ツールスイートによってサポートされています。",
-      "安全性や ToS（利用規約）上のリスクはありません。"
+      "公開計算ツールの利用にWarframeログインは不要です"
     ],
     "cons": [
       "ニッチな目的であり、rivens の取引や最適化を行うプレイヤーにのみ有用です。",
       "インターフェースは実用本位であり、初心者には直感的でない場合があります。",
       "コミュニティによってモデル化された +/-10% roll 公式に依存しており、一部のプレイヤーの間で議論があります。",
-      "正確性は、Semlar がゲームのアップデートに合わせて disposition や base-stat（基礎ステータス）のデータを最新に保ち続けるかどうかに依存します。"
+      "Hotfix 44.1.3との互換性は未検証です。旧来の武器個別範囲により、トレードやリロールの判断を誤る恐れがあります"
     ],
     "youtube": [],
     "otherReviews": [
@@ -881,6 +881,16 @@
         "url": "https://forums.warframe.com/topic/1363335-riven-stat-range-alternatives-and-about-semlar/",
         "snippet": "Community thread discussing riven stat ranges and Semlar's calculator, including the +/-10% roll model the tool uses.",
         "rating": null
+      },
+      {
+        "source": "Digital Extremes — Hotfix 44.1.3",
+        "url": "https://www.warframe.com/en/patch-notes/pc/44-1-3",
+        "snippet": "公式パッチノート：武器固有の性質は廃止され、すべてのRivenが共通の1.2倍率を使用するようになりました。"
+      },
+      {
+        "source": "Semlar — Riven Calculator",
+        "url": "https://semlar.com/rivencalc",
+        "snippet": "この計算機はプラス・マイナス効果やランクの設定を備え、性質セクションも引き続き表示されています。このページからHotfix 44.1.3への対応は確認できません。"
       }
     ],
     "trustpilot": null,
@@ -2463,11 +2473,11 @@
   "samodeus": {
     "slug": "samodeus",
     "oneLiner": "スクリーンショットからOCRを介してRiven Modを評価し、武器のDPSを計算するWarframeのDiscord Bot。",
-    "overview": "開発者TheroxenesによるSamodeus（TheroxBotとしても掲載）は、discord.pyで構築されたWarframeのコンパニオンDiscord Botです。その目玉機能はOCRベースのRiven Mod分析です。ユーザーがゲーム内のスクリーンショットをアップロードすると、Botがステータスを読み取り、ステータスの平均値からの乖離度によってそれぞれを評価します。また、カスタムビルドの武器DPS計算、Riven性質（disposition）の表示、Warframeのアップデートやフォーラム投稿のカスタマイズ可能なニュースフィードの提供も行います。このBotはカスタマイズ可能な「$」プレフィックスを使用し、top.ggに掲載されており、約7,500のサーバーに導入されています。",
+    "overview": "TheroxBotとしても知られるSamodeusは、Theroxenes氏によるDiscordボットです。開発者情報によると、スクリーンショットのOCRによるRiven評価、武器DPS計算、設定可能なWarframeニュースフィードに対応しています。Hotfix 44.1.3により武器固有の性質は廃止され、全Rivenステータス範囲は旧1.2相当の共通倍率に統一されました。この仕様変更へのボットの対応は未検証です。トレードを行う前に、評価結果を現行のゲーム内数値と照合してください。",
     "keyFeatures": [
       "スクリーンショットからのOCRによるRiven Mod分析、平均値からの乖離度による各ステータスの評価",
       "カスタムビルドの武器DPS計算（$dps）",
-      "Riven性質（disposition）の検索（$dispo, $numericdispo）",
+      "旧仕様の性質コマンドが存在しても、Riven評価が現行ゲームルールに対応している根拠にはなりません",
       "設定可能なWarframeのニュースフィード/アップデート（$set_feed, $last）",
       "オークションおよびEndo/マーケットのヘルパーコマンド（$auction, $endo）",
       "ゲーム内テキストの翻訳と多言語サポート（$translate, $lang, $localize）",
@@ -2503,11 +2513,16 @@
         "url": "https://alternative.me/discord/bots/samodeus-theroxbot/commands",
         "rating": null,
         "snippet": "Lists command set (auction, dispo, dps, endo, g, randomriven, scale, translate, feeds, utility) and references a support server at discord.gg/9xyAMRq."
+      },
+      {
+        "source": "Digital Extremes — Hotfix 44.1.3",
+        "url": "https://www.warframe.com/en/patch-notes/pc/44-1-3",
+        "snippet": "公式パッチノート：武器固有の性質は廃止され、すべてのRivenが共通の1.2倍率を使用するようになりました。"
       }
     ],
     "pros": [
       "OCRを介してRivenの評価を自動化するため、プレイヤーがステータスの品質を目視で確認する必要がない",
-      "複数のWarframeユーティリティ（DPS、性質、Endo、オークション、翻訳）を1つのBotに統合",
+      "スクリーンショットによるRiven評価、DPS計算、Warframeニュース配信をDiscord上で統合",
       "サーバーごとにカスタマイズ可能（プレフィックス、切り替え可能なコマンド、多言語対応）",
       "実際の利用を示す、意味のあるインストールベース（約7,500サーバー）",
       "読み取り専用で資格情報が不要なため、アカウントリスクが低い"
@@ -2560,11 +2575,11 @@
   "frame-hub": {
     "slug": "frame-hub",
     "oneLiner": "フレーム、武器、コンパニオンなどのリアルタイムなステータスおよびダメージ計算を備えた、フル機能でコミュニティ主導のWarframeビルドプランナー。",
-    "overview": "Frame Hub（frame-hub.com）は、ゲーム内のカードアートワークを使用して、リアルタイムのステータス計算、Archon Shardスロット、Arcane、および完全なMod/ArcaneのCodexを備え、プレイヤーがWarframe、武器、コンパニオン、Archgun、Archwing、Necramech、Railjackをカスタマイズおよび最適化できるWebベースのWarframeビルドプランナーです。レベルスケーリング、装甲、属性コンボをモデル化するダメージシミュレーター、性質（disposition）調整された範囲を持つRivenジェネレーター/評価ツール、ビルドとロードアウトの並行比較、および共有ビルドの閲覧、高評価、フィルタリング、読み込みを行うためのコミュニティセクションが含まれています。WarframeからアクティブなArsenalデータを取得するプレイヤー同期や、ロードアウトを保存して共有するためのアカウント（サインイン）機能を提供しています。サイトによると、これは個人の開発者が余暇にメンテナンスしており、Discordコミュニティと任意での寄付によるサポートがあります。",
+    "overview": "Frame Hubは現在、ブラウザベースのWarframeビルドプランナーであるVoidforgeへリダイレクトされます。武器・Warframeビルダー、ダメージシミュレーター、MOD・アルケイン一覧、コミュニティビルド、Riven Graderなどを提供しています。Hotfix 44.1.3により武器固有の性質は廃止され、全Rivenステータス範囲は旧1.2相当の共通倍率に統一されました。VoidforgeのRiven Graderには標準化された1.2倍の範囲を使用している旨が明記されています。この記述は新倍率への対応意図を示していますが、本レビューでは計算精度を独自検証していません。結果は現行のゲーム内数値と比較してください。",
     "keyFeatures": [
       "リアルタイムステータスを備えたWarframe/武器/コンパニオン/Archgun/Archwing/Necramech/Railjackのビルダー",
       "敵レベルのスケーリング、装甲、属性コンボに対応したダメージシミュレーター",
-      "性質（disposition）調整済みのステータス範囲に対応した Riven mod ジェネレーターおよび評価ツール",
+      "標準化された1.2倍のステータス範囲を使用すると明記されたRiven Grader",
       "Archon Shard のスロット装着とアビリティ/生存性ステータスの表示",
       "ゲーム内のカードアートワークを使用した、すべての mod、arcane、shard のコーデックス",
       "コミュニティビルド：共有されたロードアウトの閲覧、フィルター、高評価、読み込み",
@@ -2581,12 +2596,23 @@
     "tierReason": "本当にフル機能のビルドプランナーであり（Railjack、Necramech、riven をカバーしており、多くの競合ツールよりも範囲が広いと言えます）、外部での普及やコミュニティの足跡は確認できず、Overframe のような確立されたツールと比較すると小規模であるように見えます。代替手段として、あるいはニッチなビルド作成機能として有用であるため、必須/推奨というよりは状況に応じて役立つツールです。",
     "dataConfidence": "low",
     "youtube": [],
-    "otherReviews": [],
+    "otherReviews": [
+      {
+        "source": "Digital Extremes — Hotfix 44.1.3",
+        "url": "https://www.warframe.com/en/patch-notes/pc/44-1-3",
+        "snippet": "公式パッチノート：武器固有の性質は廃止され、すべてのRivenが共通の1.2倍率を使用するようになりました。"
+      },
+      {
+        "source": "Voidforge — Riven Grader",
+        "url": "https://void-forge.org/riven-calculator",
+        "snippet": "現在の評価ツールには標準化された1.2倍の範囲が記載されています。本レビューでは計算精度の独自検証は行っていません。"
+      }
+    ],
     "trustpilot": null,
     "pros": [
       "幅広いカバー範囲：frame、weapon、companion、Archgun、Archwing、Necramech、Railjack を1つのプランナーに統合",
       "敵の装甲とレベルスケーリングを考慮した、リアルタイムのダメージ/ステータス計算",
-      "性質（disposition）調整済みの範囲に対応した、内蔵の riven ジェネレーターおよびグレーダー",
+      "ビルド計画ツールと併せてRiven評価機能を利用可能",
       "フィルター機能と高評価機能を備えたコミュニティビルド共有",
       "Warframe からの Player/Arsenal 同期と並列比較",
       "無料で使用可能、活発にメンテナンス中、Discord コミュニティあり"

@@ -841,11 +841,11 @@
   },
   "semlar-rivencalc": {
     "slug": "semlar-rivencalc",
-    "oneLiner": "Uma calculadora web gratuita que mostra as possíveis faixas de atributos (bônus e malefícios) para qualquer mod riven de Warframe com base no tipo de arma, disposição e rank.",
-    "overview": "A Semlar's Riven Calculator (semlar.com/rivencalc) é uma ferramenta baseada no navegador para jogadores de Warframe que calcula as faixas mínimas/máximas de atributos que um mod riven pode obter. Cada atributo de riven possui um multiplicador aleatório oculto de aproximadamente 0,9x a 1,1x (+/-10%), e a calculadora traduz essa variação, além da disposição da arma, contagem de bônus/malefícios e rank do mod, em números concretos. Faz parte do conjunto mais amplo de utilitários de riven do Semlar, que também inclui um Riven Price Guide, Riven Finder e Riven Comparator, ferramentas que são efetivamente um padrão da comunidade para negociação e avaliação de rivens.",
+    "oneLiner": "Uma calculadora gratuita de navegador para explorar variações de atributos de Riven, com controles de rank e bônus/maldição. Verifique a compatibilidade com o jogo atual antes de usar suas estimativas.",
+    "overview": "A calculadora de Riven do Semlar oferece controles de variação de atributos por arma, rank do mod e quantidade de atributos positivos e negativos. Ela funciona junto com as ferramentas de histórico de preços e comparação de rolagens do Semlar. O Hotfix 44.1.3 removeu as Disposições específicas por arma: agora todos os Rivens usam o multiplicador compartilhado equivalente ao antigo 1.2. A página da calculadora ainda exibe uma seção de Disposições, e seu suporte às novas regras não foi verificado aqui. Compare os resultados com os valores atuais do jogo antes de gastar Kuva ou negociar.",
     "keyFeatures": [
       "Calcula as faixas de atributos possíveis (mín/máx) para um determinado riven com base na variação de rolagem de +/-10%",
-      "Considera a disposição da arma, que dimensiona o poder do riven por arma",
+      "Uma seção legada de Disposições continua visível; compare as variações da ferramenta com os valores atuais do jogo",
       "Suporta a seleção do número de bônus (2 ou 3) e a presença de um malefício",
       "Filtra por rank do mod (Rank 0 a Rank 8) para mostrar como os atributos escalam ao subir de nível",
       "Abrange diferentes tipos de armas/riven (rifle, pistola, corpo a corpo, etc.) com seus valores de atributos base",
@@ -856,7 +856,7 @@
     "sentimentSummary": "As ferramentas do Semlar são consolidadas há muito tempo e amplamente referenciadas na comunidade de trocas de riven do Warframe, frequentemente citadas nos fóruns e na wiki do Warframe como um recurso de referência para intervalos de atributos de riven. Tópicos diretos e citáveis da comunidade não puderam ser recuperados durante esta pesquisa (o Reddit estava inacessível para o agente de busca), portanto, o sentimento é inferido a partir da presença persistente da ferramenta nas discussões de fóruns/wiki, em vez de capturado literalmente. Nenhuma crítica notável sobre a precisão da calculadora surgiu; a principal nuance discutida pela comunidade é o modelo exato de roll de +/-10% que ela usa.",
     "safety": {
       "rating": "safe",
-      "notes": "Calculadora totalmente baseada na web, apenas para leitura. Sem leitura de memória do jogo, sem overlay, sem login de conta e sem comércio com dinheiro real (RMT). Ela apenas realiza cálculos matemáticos nos valores que o usuário insere, portanto, não traz riscos aos ToS do Warframe ou à segurança da conta."
+      "notes": "A calculadora pública pode ser acessada sem login do Warframe e funciona via navegador. Esta análise não constitui uma auditoria de segurança nem garante a precisão dos resultados."
     },
     "tier": "recommended",
     "tierReason": "As ferramentas de riven do Semlar são um padrão de fato no nicho de trocas de riven do Warframe e são amplamente utilizadas e referenciadas, mas a página rivencalc especificamente é um utilitário focado (intervalos de atributos) em vez de uma ferramenta indispensável para todos, o que a mantém como recomendada em vez de essencial.",
@@ -864,15 +864,15 @@
     "pros": [
       "Gratuito e instantâneo, sem necessidade de cadastro",
       "Responde diretamente à pergunta fundamental sobre riven: qual é o melhor/pior roll que este atributo pode ter?",
-      "Lida com disposição, rank e contagem de buff/curse em um só lugar",
+      "Mantém os controles de rank e de atributos positivos/negativos juntos",
       "Apoiado por uma suíte de ferramentas do Warframe conhecida e de longa data",
-      "Sem riscos de segurança ou de violação dos ToS"
+      "O acesso à calculadora pública não exige login do Warframe"
     ],
     "cons": [
       "Objetivo de nicho, útil apenas para jogadores que negociam ou otimizam rivens",
       "A interface é utilitária e pode ser pouco intuitiva para iniciantes",
       "Depende da fórmula de roll de +/-10% modelada pela comunidade, a qual alguns jogadores debatem",
-      "A precisão depende de o Semlar manter os dados de disposição/atributos base atualizados com as atualizações do jogo"
+      "A compatibilidade com o Hotfix 44.1.3 não foi verificada; variações antigas específicas por arma podem induzir ao erro em negociações ou rolagens"
     ],
     "youtube": [],
     "otherReviews": [
@@ -881,6 +881,16 @@
         "url": "https://forums.warframe.com/topic/1363335-riven-stat-range-alternatives-and-about-semlar/",
         "snippet": "Community thread discussing riven stat ranges and Semlar's calculator, including the +/-10% roll model the tool uses.",
         "rating": null
+      },
+      {
+        "source": "Digital Extremes — Hotfix 44.1.3",
+        "url": "https://www.warframe.com/en/patch-notes/pc/44-1-3",
+        "snippet": "Notas oficiais da atualização: as Disposições específicas por arma foram removidas; todos os Rivens agora usam o multiplicador compartilhado de 1.2."
+      },
+      {
+        "source": "Semlar — Calculadora de Riven",
+        "url": "https://semlar.com/rivencalc",
+        "snippet": "A calculadora traz controles de bônus, maldição e rank, e ainda exibe uma seção de Disposições. Esta página não comprova compatibilidade com o Hotfix 44.1.3."
       }
     ],
     "trustpilot": null,
@@ -2463,11 +2473,11 @@
   "samodeus": {
     "slug": "samodeus",
     "oneLiner": "Um bot de Discord de Warframe que avalia riven mods a partir de capturas de tela via OCR e calcula o DPS de armas.",
-    "overview": "Samodeus (também listado como TheroxBot), do desenvolvedor Theroxenes, é um bot companheiro de Discord de Warframe desenvolvido com discord.py. Seu principal recurso é a análise de riven mods baseada em OCR: os usuários enviam uma captura de tela do jogo e o bot lê os atributos e avalia cada um pela variação em relação à média dos atributos. Ele também faz cálculos de DPS de armas para builds personalizadas, mostra disposições de rivens e fornece feeds de notícias configuráveis para atualizações e postagens no fórum do Warframe. O bot usa um prefixo \"$\" personalizável e está listado no top.gg com cerca de 7.500 servidores.",
+    "overview": "Samodeus, também listado como TheroxBot, é um bot de Discord criado por Theroxenes. A descrição do desenvolvedor inclui avaliação de Rivens por OCR a partir de capturas de tela, cálculos de DPS de armas e feeds de notícias configuráveis do Warframe. O Hotfix 44.1.3 removeu as Disposições específicas por arma e padronizou todas as variações de atributos de Riven no multiplicador compartilhado equivalente ao antigo 1.2. A compatibilidade do bot com essa mudança não foi verificada aqui. Confira as avaliações com os valores atuais do jogo antes de realizar uma troca.",
     "keyFeatures": [
       "Análise de riven mods por OCR a partir de capturas de tela, avaliando cada atributo pela variação em relação à média",
       "Cálculos de DPS de armas para builds personalizadas ($dps)",
-      "Consulta de disposição de rivens ($dispo, $numericdispo)",
+      "Comandos legados de Disposição não comprovam que a avaliação de Riven suporta as regras atuais do jogo",
       "Feeds de notícias/atualizações configuráveis do Warframe ($set_feed, $last)",
       "Comandos auxiliares de leilão e endo/mercado ($auction, $endo)",
       "Tradução de texto do jogo e suporte multilíngue ($translate, $lang, $localize)",
@@ -2503,11 +2513,16 @@
         "url": "https://alternative.me/discord/bots/samodeus-theroxbot/commands",
         "rating": null,
         "snippet": "Lists command set (auction, dispo, dps, endo, g, randomriven, scale, translate, feeds, utility) and references a support server at discord.gg/9xyAMRq."
+      },
+      {
+        "source": "Digital Extremes — Hotfix 44.1.3",
+        "url": "https://www.warframe.com/en/patch-notes/pc/44-1-3",
+        "snippet": "Notas oficiais da atualização: as Disposições específicas por arma foram removidas; todos os Rivens agora usam o multiplicador compartilhado de 1.2."
       }
     ],
     "pros": [
       "Automatiza a avaliação de rivens via OCR para que os jogadores não precisem estimar a qualidade dos atributos visualmente",
-      "Reúne vários utilitários de Warframe (DPS, disposição, endo, leilões, tradução) em um único bot",
+      "Combina avaliação de Riven por captura de tela, cálculos de DPS e feeds de notícias do Warframe no Discord",
       "Personalizável por servidor (prefixo, comandos alternáveis, multilíngue)",
       "Base de instalação significativa (~7.500 servidores) indicando uso real",
       "Somente leitura e sem necessidade de credenciais, portanto baixo risco para a conta"
@@ -2560,11 +2575,11 @@
   "frame-hub": {
     "slug": "frame-hub",
     "oneLiner": "Um planejador de builds de Warframe completo e voltado para a comunidade, com cálculos de atributos e danos em tempo real para frames, armas, companheiros e muito mais.",
-    "overview": "Frame Hub (frame-hub.com) é um planejador de builds de Warframe baseado na web que permite aos jogadores equipar mods e otimizar warframes, armas, companheiros, Archguns, Archwings, Necramechs e Railjacks com cálculos de atributos em tempo real, espaços para Archon Shards, arcanos e um codex completo de mods/arcanos usando a arte das cartas do jogo. Ele inclui um simulador de dano que modela escalonamento de nível, armadura e combos elementais, um gerador/avaliador de rivens com intervalos ajustados pela disposição, comparação lado a lado de builds e loadouts, e uma seção da comunidade para navegar, votar positivamente, filtrar e carregar builds compartilhadas. Ele oferece sincronização de jogador que extrai dados ativos do Arsenal do Warframe, e contas (login) para salvar e compartilhar loadouts. De acordo com o site, ele é mantido por um desenvolvedor solo em seu tempo livre, com uma comunidade no Discord e suporte opcional a doações.",
+    "overview": "O Frame Hub agora redireciona para o Voidforge, um planejador de builds de Warframe baseado em navegador. Ele oferece configuradores de builds para armas e Warframes, um simulador de dano, códex de mods e arcanos, builds da comunidade e um Riven Grader. O Hotfix 44.1.3 removeu as Disposições específicas por arma e padronizou todas as variações de atributos de Riven no multiplicador compartilhado equivalente ao antigo 1.2. O Riven Grader do Voidforge afirma explicitamente usar variações padronizadas de 1.2x. Essa declaração sustenta a intenção de usar o novo multiplicador; esta análise não testou os cálculos de forma independente. Compare os resultados com os valores atuais do jogo.",
     "keyFeatures": [
       "Construtores de Warframe/armas/companheiros/Archgun/Archwing/Necramech/Railjack com atributos em tempo real",
       "Simulador de dano com escalonamento de nível de inimigo, armadura e combos elementais",
-      "Gerador e avaliador de Riven mod com intervalos de atributos ajustados pela disposição",
+      "Riven Grader que afirma usar variações de atributos padronizadas em 1.2x",
       "Encaixe de Archon Shard e exibição de atributos de habilidade/sobrevivência",
       "Codex completo de mods, arcanos e shards usando a arte das cartas do jogo",
       "Builds da comunidade: navegue, filtre, vote a favor e carregue loadouts compartilhados",
@@ -2581,12 +2596,23 @@
     "tierReason": "É um planejador de build genuinamente completo (indiscutivelmente mais amplo em escopo do que muitos concorrentes, cobrindo Railjack, Necramech e rivens), mas a adoção externa e a presença na comunidade não puderam ser verificadas e parecem pequenas em relação a ferramentas estabelecidas como o Overframe. Útil como uma alternativa ou por seus construtores de nicho, sendo, portanto, situacional em vez de recomendado/essencial.",
     "dataConfidence": "low",
     "youtube": [],
-    "otherReviews": [],
+    "otherReviews": [
+      {
+        "source": "Digital Extremes — Hotfix 44.1.3",
+        "url": "https://www.warframe.com/en/patch-notes/pc/44-1-3",
+        "snippet": "Notas oficiais da atualização: as Disposições específicas por arma foram removidas; todos os Rivens agora usam o multiplicador compartilhado de 1.2."
+      },
+      {
+        "source": "Voidforge — Riven Grader",
+        "url": "https://void-forge.org/riven-calculator",
+        "snippet": "O avaliador atual descreve variações padronizadas de 1.2x. Seus cálculos não foram testados de forma independente nesta análise."
+      }
+    ],
     "trustpilot": null,
     "pros": [
       "Ampla cobertura: frames, armas, companheiros, Archgun, Archwing, Necramech e Railjack em um único planejador",
       "Cálculos de dano/atributos em tempo real com armadura do inimigo e escalonamento de nível",
-      "Gerador e avaliador de Riven integrado com intervalos ajustados pela disposição",
+      "A avaliação de Riven está disponível junto com as ferramentas de planejamento de builds",
       "Compartilhamento de builds da comunidade com filtragem e votos a favor",
       "Sincronização de jogador/Arsenal do Warframe e comparações lado a lado",
       "Gratuito para usar, ativamente mantido, com uma comunidade no Discord"

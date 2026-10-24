@@ -841,11 +841,11 @@
   },
   "semlar-rivencalc": {
     "slug": "semlar-rivencalc",
-    "oneLiner": "一款免費的網頁計算機，可根據武器類型、傾向和等級，顯示任何 Warframe Riven 模組可能出現的屬性範圍（正面屬性與負面屬性）。",
-    "overview": "Semlar 的 Riven Calculator (semlar.com/rivencalc) 是一款專為 Warframe 玩家設計的網頁瀏覽器工具，用於計算 Riven 模組可能洗出的最大/最小屬性範圍。每個 Riven 屬性都有一個大約 0.9x 到 1.1x (+/-10%) 的隱藏隨機倍率，該計算機將這種偏差加上武器的傾向、正面/負面屬性數量以及模組等級轉化為具體數值。它是 Semlar 更廣泛的 Riven 工具套件的一部分，該套件還包括 Riven Price Guide、Riven Finder 和 Riven Comparator，這些工具實際上已成為 Riven 交易和估價的社群標準。",
+    "oneLiner": "一款免費的瀏覽器計算機，可用於探索裂罅數值範圍，並具備等級與正面/負面詞條控制項。採用其估算值前，請先確認與當前遊戲版本的相容性。",
+    "overview": "Semlar 的裂罅計算機提供武器、MOD 等級以及正面與負面屬性數量的數值範圍設定。它與 Semlar 的歷史價格與洗卡比對工具並列。Hotfix 44.1.3 移除了特定武器的傾向：所有裂罅現在均採用相當於先前 1.2 的統一倍率。計算機頁面仍顯示傾向區塊，在此尚未驗證其對新規則的支援度。在消耗赤毒或進行交易前，請將其計算結果與遊戲內現行數值進行比對。",
     "keyFeatures": [
       "根據 +/-10% 的數值偏差，計算給定 Riven 的可能屬性範圍（最大/最小）",
-      "考慮到武器傾向，這會按武器縮放 Riven 的強度",
+      "舊版傾向區塊仍可見；請將此工具的數值範圍與遊戲內現行數值進行比對",
       "支援選擇正面屬性數量（2 或 3）以及是否存在負面屬性",
       "按模組等級（等級 0 到等級 8）進行篩選，以顯示升級時屬性如何按比例縮放",
       "涵蓋不同的武器/Riven 類型（步槍、手槍、近戰等）及其基礎屬性值",
@@ -856,7 +856,7 @@
     "sentimentSummary": "Semlar 的工具在 Warframe Riven 交易社群中歷史悠久且被廣泛引用，經常在 Warframe 論壇和 wiki 上被提及，作為查詢 Riven 屬性範圍的首選資源。在本次研究期間無法檢索到直接、可引用的社群討論串（搜尋代理無法存取 Reddit），因此其社群評價是從該工具在論壇/wiki 討論中的持續存在推導而來，而非逐字記錄。目前未出現對該計算器準確性的顯著批評；社群討論的主要細節在於其所使用的精確 +/-10% 數值模型。",
     "safety": {
       "rating": "safe",
-      "notes": "完全基於網頁的唯讀計算器。不讀取遊戲記憶體、無覆蓋畫面（overlay）、無需帳號登入，且無真錢交易（RMT）。它僅對使用者輸入的數值進行數學計算，因此不帶來任何 Warframe ToS（服務條款）或帳號安全風險。"
+      "notes": "無需登入 Warframe 即可開啟此公開計算機並透過瀏覽器輸入操作。本評測不構成安全性審查，亦不保證其結果的準確性。"
     },
     "tier": "recommended",
     "tierReason": "Semlar 的 Riven 工具是 Warframe Riven 交易領域中事實上的標準，並被廣泛使用和引用，但 rivencalc 頁面具體而言是一個專注於特定功能（屬性範圍）的工具，而非每個人都必備的工具，因此將其歸類為「推薦」而非「必備」。",
@@ -864,15 +864,15 @@
     "pros": [
       "免費且即時，無需註冊",
       "直接回答了 Riven 的關鍵問題：這個屬性洗出來的最好/最壞數值是多少？",
-      "在同一個地方處理傾向性（disposition）、等級（rank）以及正面/負面屬性（buff/curse）數量",
+      "整合等級與正面/負面屬性控制項",
       "由知名且長期運作的 Warframe 工具套件支援",
-      "無安全或 ToS 風險"
+      "無需登入 Warframe 即可使用公開計算機"
     ],
     "cons": [
       "用途較為小眾，僅對進行交易或優化 Rivens 的玩家有用",
       "介面偏向實用主義，對新手來說可能不夠直覺",
       "依賴社群模擬的 +/-10% 數值公式，部分玩家對此存有爭議",
-      "準確性取決於 Semlar 是否能隨著遊戲更新同步保持傾向性（disposition）和基礎屬性資料的最新狀態"
+      "尚未驗證與 Hotfix 44.1.3 的相容性；舊版的特定武器範圍可能會誤導交易或洗卡決策"
     ],
     "youtube": [],
     "otherReviews": [
@@ -881,6 +881,16 @@
         "url": "https://forums.warframe.com/topic/1363335-riven-stat-range-alternatives-and-about-semlar/",
         "snippet": "Community thread discussing riven stat ranges and Semlar's calculator, including the +/-10% roll model the tool uses.",
         "rating": null
+      },
+      {
+        "source": "Digital Extremes — Hotfix 44.1.3",
+        "url": "https://www.warframe.com/en/patch-notes/pc/44-1-3",
+        "snippet": "官方更新日誌：已移除特定武器傾向；所有裂罅現在均採用統一的 1.2 倍率。"
+      },
+      {
+        "source": "Semlar — 裂罅計算機",
+        "url": "https://semlar.com/rivencalc",
+        "snippet": "此計算機提供正面、負面詞條與等級控制項，且仍顯示傾向區塊。本頁面無法證實其已支援 Hotfix 44.1.3。"
       }
     ],
     "trustpilot": null,
@@ -2463,11 +2473,11 @@
   "samodeus": {
     "slug": "samodeus",
     "oneLiner": "一款 Warframe Discord 機器人，能透過 OCR 從螢幕截圖中評估 Riven Mod 等級並計算武器 DPS。",
-    "overview": "Samodeus（亦列為 TheroxBot）由開發者 Theroxenes 製作，是一款使用 discord.py 構建的 Warframe 輔助 Discord 機器人。其主打功能是基於 OCR 的 Riven Mod 分析：使用者上傳遊戲內截圖，機器人便會讀取屬性，並根據與平均屬性的偏差來為每個屬性評級。它還能為自訂配置進行武器 DPS 計算、顯示 Riven 傾向性（dispositions），並提供可自訂的 Warframe 更新與論壇貼文新聞推送。該機器人使用可自訂的 \"$\" 前綴，並在 top.gg 上列出，擁有大約 7,500 個伺服器。",
+    "overview": "Samodeus（亦稱為 TheroxBot）是由 Theroxenes 開發的 Discord 機器人。其開發者說明中提及基於截圖 OCR 的裂罅評級、武器 DPS 計算與可自訂的 Warframe 新聞推播。Hotfix 44.1.3 移除了特定武器的傾向，並將所有裂罅數值範圍設為相當於先前 1.2 的統一倍率。在此尚未驗證該機器人對此變更的相容性。進行交易前，請先將其評級與遊戲內現行數值進行比對。",
     "keyFeatures": [
       "透過螢幕截圖進行 OCR Riven Mod 分析，根據與平均值的偏差為每個屬性評級",
       "自訂配置的武器 DPS 計算（$dps）",
-      "Riven 傾向性查詢（$dispo, $numericdispo）",
+      "舊版傾向指令無法證明裂罅評級支援當前遊戲規則",
       "可自訂的 Warframe 新聞推送/更新（$set_feed, $last）",
       "拍賣與 Endo/市場輔助指令（$auction, $endo）",
       "遊戲內文本翻譯與多語言支援（$translate, $lang, $localize）",
@@ -2503,11 +2513,16 @@
         "url": "https://alternative.me/discord/bots/samodeus-theroxbot/commands",
         "rating": null,
         "snippet": "Lists command set (auction, dispo, dps, endo, g, randomriven, scale, translate, feeds, utility) and references a support server at discord.gg/9xyAMRq."
+      },
+      {
+        "source": "Digital Extremes — Hotfix 44.1.3",
+        "url": "https://www.warframe.com/en/patch-notes/pc/44-1-3",
+        "snippet": "官方更新日誌：已移除特定武器傾向；所有裂罅現在均採用統一的 1.2 倍率。"
       }
     ],
     "pros": [
       "透過 OCR 自動進行 Riven 評級，玩家無需用肉眼估算屬性好壞",
-      "將多個 Warframe 實用工具（DPS、傾向性、Endo、拍賣、翻譯）整合在一個機器人中",
+      "在 Discord 中結合截圖裂罅評級、DPS 計算與 Warframe 新聞推播",
       "每個伺服器皆可自訂（前綴、可切換的指令、多語言）",
       "具備一定規模的安裝量（約 7,500 個伺服器），顯示其實際被使用",
       "唯讀且無需憑證，因此帳號風險極低"
@@ -2560,11 +2575,11 @@
   "frame-hub": {
     "slug": "frame-hub",
     "oneLiner": "一款功能齊全、社群驅動的 Warframe 配置規劃工具，可針對戰甲、武器、同伴等進行即時屬性與傷害計算。",
-    "overview": "Frame Hub (frame-hub.com) 是一款網頁版的 Warframe 配置規劃工具，讓玩家能使用遊戲內的卡牌插圖，搭配即時屬性計算、Archon Shard 插槽、賦能以及完整的振幅晶體/賦能法典，來配置與優化戰甲、武器、同伴、Archgun、Archwing、Necramech 和 Railjack。它包含一個可模擬等級縮放、護甲和元素組合的傷害模擬器，一個具有傾向性調整範圍的 Riven 產生器/評級器，並排的配置與裝備對比，以及一個用於瀏覽、投票、篩選和載入共享配置的社群區塊。它提供玩家同步功能，可從 Warframe 提取當前的 Arsenal 數據，並提供帳號（登入）功能以儲存和分享裝備配置。根據該網站，它是由一名獨立開發者在業餘時間維護，並設有 Discord 社群和自由贊助支持。",
+    "overview": "Frame Hub 現已重新導向至 Voidforge，這是一款基於瀏覽器的 Warframe 配裝規劃工具。它提供武器與 Warframe 配裝器、傷害模擬器、MOD 與賦能資料庫、社群配裝以及裂罅評級器。Hotfix 44.1.3 移除了特定武器的傾向，並將所有裂罅數值範圍設為相當於先前 1.2 的統一倍率。Voidforge 的裂罅評級器明確標註採用標準化 1.2 倍範圍。該聲明表明其旨在採用新倍率；本評測尚未獨立測試其計算。請將結果與遊戲內現行數值進行比對。",
     "keyFeatures": [
       "具有即時屬性的 Warframe/武器/同伴/Archgun/Archwing/Necramech/Railjack 配置模擬器",
       "具有敵人等級縮放、護甲和元素組合的傷害模擬器",
-      "具有依傾向調整之屬性範圍的 Riven mod 產生器與評分器",
+      "標明採用標準化 1.2 倍數值範圍的裂罅評級器",
       "Archon Shard 鑲嵌與技能/生存能力屬性讀數",
       "使用遊戲內卡牌美術圖的完整 Mod、Arcane 和 Shard 典籍",
       "社群配裝：瀏覽、篩選、點讚並載入分享的配置",
@@ -2581,12 +2596,23 @@
     "tierReason": "這是一個功能真正齊全的配裝規劃器（其範圍可以說比許多競爭對手更廣，涵蓋了 Railjack、Necramech 和 Riven），但外部採用率和社群足跡無法被證實，且相對於 Overframe 等知名工具而言顯得較小。適合作為替代方案或用於其小眾的配裝器，因此屬於視情況而定，而非推薦/必備工具。",
     "dataConfidence": "low",
     "youtube": [],
-    "otherReviews": [],
+    "otherReviews": [
+      {
+        "source": "Digital Extremes — Hotfix 44.1.3",
+        "url": "https://www.warframe.com/en/patch-notes/pc/44-1-3",
+        "snippet": "官方更新日誌：已移除特定武器傾向；所有裂罅現在均採用統一的 1.2 倍率。"
+      },
+      {
+        "source": "Voidforge — 裂罅評級器",
+        "url": "https://void-forge.org/riven-calculator",
+        "snippet": "當前評級器標明採用標準化 1.2 倍範圍。本評測尚未對其計算進行獨立測試。"
+      }
+    ],
     "trustpilot": null,
     "pros": [
       "廣泛的涵蓋範圍：在一個規劃器中整合了戰甲、武器、同伴、Archgun、Archwing、Necramech 和 Railjack",
       "結合敵人護甲和等級縮放的即時傷害/屬性計算",
-      "內建具有依傾向調整之範圍的 Riven 產生器與評分器",
+      "裂罅評級功能與配裝規劃工具一併提供",
       "具有篩選和點讚功能的社群配裝分享",
       "來自 Warframe 的玩家/Arsenal 同步以及並排對比",
       "免費使用、積極維護，並擁有 Discord 社群"

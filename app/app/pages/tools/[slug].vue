@@ -314,9 +314,8 @@ function rel(iso: string) { return dayjs(iso).fromNow() }
 // Per-page SEO override (layout owns canonical/hreflang). Bakes the tool name +
 // one-liner into title/description + the OG card.
 useSeoPage({
-  title: () => `${tool.value?.name} — Review, Guide & Community Feedback (Warframe)`,
-  description: () =>
-    `${research.value?.oneLiner || desc.value} What it does, key features, Reddit and YouTube feedback, safety and whether it's worth using for Warframe.`,
+  title: () => `${tool.value?.name} — ${t('toolDetail.sections.overview')} | Warframe`,
+  description: () => research.value?.oneLiner || desc.value,
   ogType: 'article',
 })
 
@@ -335,7 +334,7 @@ useHead(() => {
     operatingSystem: (tl.platforms || []).join(', ') || 'Web',
     description: research.value?.oneLiner || desc.value,
     sameAs: [tl.url, tl.github ? 'https://github.com/' + tl.github : null].filter(Boolean),
-    publisher: { '@id': origin + '/#org' },
+    ...(tl.self ? { publisher: { '@id': origin + '/#org' } } : {}),
   }
   return {
     script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(node).replace(/</g, '\\u003c') }],
