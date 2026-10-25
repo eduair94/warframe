@@ -1073,3 +1073,49 @@ active. Remaining leads include overdue guides and translation gaps, outdated
 Duviri mission-note requirements, missing node facts in the sampled mission
 responses, and historical tool-research community references that require a
 separate relevance review. None of their review dates was advanced here.
+
+## October 25, 2026 — Price transport recovery and Duviri review
+
+The initial production revision is `6baa4fb7b4ee050b189cc86371f46bd0f6b77d24`,
+with API, frontend and live feed online and no duplicate deployment running.
+Only 149 of 3,892 catalogue prices are within three hours (3.8%); the median
+age is approximately six hours. Recent individual updates do not establish
+healthy bulk coverage. English and Spanish Endo still render 40 real rows,
+with 53 mods meeting the default filters. Nine of ten general checks pass;
+catalogue freshness is the failing check.
+
+The bulk synchronization host's fixed egress session has exhausted its 1,024
+file descriptors, including 1,016 sockets in FIN_WAIT2. Its price loop records
+zero successful updates and hundreds of skipped items. A targeted restart of
+the existing egress tunnel at 13:04:51 UTC restores the transport without
+changing request limits, credentials, security settings or process topology.
+By 13:11:46, the same price loop has saved 240 updates and the session uses 21
+descriptors with no FIN_WAIT2 sockets. This demonstrates resumed processing,
+not full catalogue freshness or proof that every historical price is current.
+
+Code inspection also finds an unclosed per-attempt Undici dispatcher and error
+paths with unread response bodies. GET and POST now destroy their owned
+dispatcher in a finally block, including successful parsing, parse failures,
+connection failures, refusals and retries. Destroying incomplete streams avoids
+waiting indefinitely for an error body. Fixed egress selection, rate limiting,
+backoff and refusal handling are preserved. Six new tests include real local
+connections and an unfinished error response, plus retry and refusal cases.
+The focused suite passes 14 tests; the complete backend suite passes 722 tests
+in 55 suites and the production build passes. Frontend tests pass 42 cases;
+guide regressions pass 26, locale compilation and repository-map checks pass.
+Existing advisory lint/type debt is separate from these blocking checks.
+
+The transport repair is released first while the source-reviewed Duviri
+translations are prepared. Its exact committed revision is also installed on
+the existing synchronization host, using Node 24 and restarting only the two
+existing continuous price/auction jobs. The final content release follows the
+same complete API/frontend/live workflow; no final commit is left undeployed.
+Public verification and exact release proofs are retained in `tmp/oct25-*` and
+the maintenance memory after the workflows complete.
+
+A separate investigation finds no stored node-metadata document and no scheduled
+`sync_nodes` entry; the absence of mission facts is not a diagnosed join bug.
+That bootstrap gap remains a next-iteration priority. One analytics discovery
+returns UNAUTHORIZED: GA4/Search Console are unavailable, not zero traffic.
+Once accessible, compare complete October 18–24 against October 11–17 and
+September 27–October 24 against August 30–September 26, in the property timezone.

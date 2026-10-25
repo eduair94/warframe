@@ -3,6 +3,9 @@
  */
 
 import { describe, it, expect, jest, beforeEach, afterEach } from '@jest/globals';
+import { createServer } from 'node:http';
+import { AddressInfo } from 'node:net';
+import { Agent } from 'undici';
 
 const requestMock = jest.fn<(...args: any[]) => Promise<any>>();
 jest.mock('undici', () => {
@@ -118,5 +121,85 @@ describe('UndiciHttpService - warframe.market protection', () => {
     expect(pool).not.toHaveBeenCalled();
     expect(ban).not.toHaveBeenCalled();
     expect(limiter.isBlocked()).toBe(true);
+  });
+});
+
+describe('UndiciHttpService request resource ownership', () => {
+  const actualRequest = (jest.requireActual('undici') as typeof import('undici')).request;
+
+  beforeEach(() => requestMock.mockReset());
+  afterEach(() => jest.restoreAllMocks());
+
+  it.each(['get', 'post'] as const)('%s releases sockets after success, parsing failure and an unread error body', async (method) => {
+    const sockets = new Set<import('node:net').Socket>();
+    const server = createServer((req, res) => {
+      if (req.url === '/ok') res.end('{"ok":true}');
+      else if (req.url === '/invalid') res.end('invalid-json');
+      else {
+        // A body with no end exposes leaks that keep-alive timeouts cannot fix.
+        res.writeHead(404, { 'content-type': 'text/plain' });
+        res.write('missing');
+      }
+    });
+    server.on('connection', socket => {
+      sockets.add(socket);
+      socket.once('close', () => sockets.delete(socket));
+    });
+    await new Promise<void>(resolve => server.listen(0, '127.0.0.1', resolve));
+    requestMock.mockImplementation(actualRequest as any);
+    const service = makeService(new WfmRateLimiter({ maxRps: 100, cooldownMs: 60_000 }));
+    const origin = `http://127.0.0.1:${(server.address() as AddressInfo).port}`;
+    const run = (path: string) => method === 'get'
+      ? service.get(origin + path, { maxRetries: 1 })
+      : service.post(origin + path, {}, { maxRetries: 1 });
+    try {
+      await expect(run('/ok')).resolves.toEqual({ ok: true });
+      await expect(run('/invalid')).rejects.toThrow(/JSON/);
+      await expect(run('/missing')).rejects.toThrow('HTTP 404');
+      for (let i = 0; i < 50 && sockets.size; i++) await new Promise(resolve => setTimeout(resolve, 10));
+      expect(sockets.size).toBe(0);
+    } finally {
+      for (const socket of sockets) socket.destroy();
+      await new Promise<void>(resolve => server.close(() => resolve()));
+    }
+  });
+
+  it.each(['get', 'post'] as const)('%s disposes each failed attempt before creating the retry dispatcher', async (method) => {
+    const service = makeService(new WfmRateLimiter({ maxRps: 100, cooldownMs: 60_000 }));
+    const agents: Agent[] = [];
+    jest.spyOn(service as any, 'createDispatcher').mockImplementation(() => {
+      expect(agents.every(agent => agent.destroyed)).toBe(true);
+      const agent = new Agent();
+      agents.push(agent);
+      return agent;
+    });
+    requestMock
+      .mockResolvedValueOnce(response(500, 'upstream error'))
+      .mockResolvedValueOnce(response(200, '{"ok":true}'));
+    const result = method === 'get'
+      ? await service.get('http://example.test', { maxRetries: 2 })
+      : await service.post('http://example.test', {}, { maxRetries: 2 });
+    expect(result).toEqual({ ok: true });
+    expect(agents).toHaveLength(2);
+    expect(agents.every(agent => agent.destroyed)).toBe(true);
+  });
+
+  it.each(['get', 'post'] as const)('%s destroys the dispatcher after connection failure or a non-retryable refusal', async (method) => {
+    const service = makeService(new WfmRateLimiter({ maxRps: 100, cooldownMs: 60_000 }));
+    const agents: Agent[] = [];
+    jest.spyOn(service as any, 'createDispatcher').mockImplementation(() => {
+      const agent = new Agent();
+      agents.push(agent);
+      return agent;
+    });
+    const run = () => method === 'get'
+      ? service.get(WFM, { maxRetries: 1 })
+      : service.post(WFM, {}, { maxRetries: 1 });
+    requestMock.mockRejectedValueOnce(new Error('Socket closed'));
+    await expect(run()).rejects.toThrow('Socket closed');
+    requestMock.mockResolvedValueOnce(response(403, 'Deprecated'));
+    await expect(run()).rejects.toThrow('Deprecated');
+    expect(agents).toHaveLength(2);
+    expect(agents.every(agent => agent.destroyed)).toBe(true);
   });
 });

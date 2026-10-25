@@ -360,13 +360,14 @@ export class UndiciHttpService implements IHttpClient {
 
     for (let attempt = 1; attempt <= maxRetries; attempt++) {
       let proxy: string | null = null;
+      let dispatcher: Dispatcher | undefined;
       try {
         // Every attempt (retries included) takes a warframe.market slot, so no
         // amount of concurrency or retrying can exceed the process's RPS budget.
         if (wfm) await this.config.wfmLimiter.acquire();
 
         proxy = (wfm && this.wfmProxyUrl) || this.getUsableProxy();
-        const dispatcher = this.createDispatcher(proxy);
+        dispatcher = this.createDispatcher(proxy);
         const headers = this.getRequestHeaders(options.headers);
         this.maybeLogStats(proxy);
 
@@ -459,6 +460,11 @@ export class UndiciHttpService implements IHttpClient {
           }
           await sleep(delay);
         }
+      } finally {
+        // Each attempt owns its Agent. Error/refusal paths may leave an unread
+        // response body: close() would wait for it, keeping the proxy channel
+        // alive indefinitely. Destroy also releases those incomplete streams.
+        await dispatcher?.destroy().catch(() => {});
       }
     }
 
@@ -511,10 +517,11 @@ export class UndiciHttpService implements IHttpClient {
 
     for (let attempt = 1; attempt <= maxRetries; attempt++) {
       let proxy: string | null = null;
+      let dispatcher: Dispatcher | undefined;
       try {
         if (wfm) await this.config.wfmLimiter.acquire();
         proxy = (wfm && this.wfmProxyUrl) || this.getUsableProxy();
-        const dispatcher = this.createDispatcher(proxy);
+        dispatcher = this.createDispatcher(proxy);
         const headers = this.getRequestHeaders({
           'Content-Type': 'application/json',
           ...options.headers
@@ -565,6 +572,8 @@ export class UndiciHttpService implements IHttpClient {
           const base = Math.min(1000 * attempt, 5000);
           await sleep(base / 2 + Math.random() * (base / 2));
         }
+      } finally {
+        await dispatcher?.destroy().catch(() => {});
       }
     }
 
