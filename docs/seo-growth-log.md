@@ -1119,3 +1119,94 @@ That bootstrap gap remains a next-iteration priority. One analytics discovery
 returns UNAUTHORIZED: GA4/Search Console are unavailable, not zero traffic.
 Once accessible, compare complete October 18–24 against October 11–17 and
 September 27–October 24 against August 30–September 26, in the property timezone.
+
+### Duviri: current access, useful reward choices and search copy
+
+The official patch and news indexes still lead with Hotfix 44.1.3 and the
+October 19 PMCFQ streamer schedule. The existing Duviri guide, reviewed in July,
+repeatedly promises immediate access without Star Chart progress. Its Spanish
+page and search description reproduce that error. Other statements confuse the
+weekly Warframe reward choice with playable equipment, promise repeated Steel
+Essence earnings, treat each Kullervo/Orowyrm fight as a separate Bane reward,
+and describe every Decree as having no downside.
+
+The revised guide answers concrete planning questions: complete the Uranus
+Junction and quest; choose a weekly reward before the Circuit run; distinguish
+borrowed equipment from earned blueprints; obtain normal blueprints at tiers
+2/5/8/10; choose Steel Path rewards in order for tiers 5/10; and recognize the
+25 Steel Essence reward at tier 9. It explains the additional normal Circuit
+and Lone Story completions for Duviri Steel Path, the separate Zariman
+requirement for installing adapters, Spiteful Decree penalties and useful
+Opportunity milestones. Lone Story is included and later Isleweaver access is
+distinguished from the guide's original-mode scope. Unsupported time promises
+and hostile squad assumptions are replaced with practical goal/extraction advice.
+
+Kullervo's Bane requires both Kullervo and the Orowyrm in the same session.
+The guide retains and specifies the final recipe's 10 Pathos Clamps after
+checking current WFCD item/resource identifiers. It does not invent an exact
+Bane purchase price from an unverified source. Existing video availability,
+titles and channels pass all four oEmbed checks; a new adjacent note explains
+that older visual walkthroughs can differ from the current reviewed rules.
+That check does not claim a complete factual review of every video.
+
+Primary evidence includes the [current quest guide](https://www.warframe.com/en/guides/quests/the-duviri-paradox),
+[quest-access change](https://www.warframe.com/en/patch-notes/pc/36-0-8),
+[current base Steel Path scope](https://www.warframe.com/en/patch-notes/pc/38-5-3),
+[Duviri completion tracking](https://www.warframe.com/en/patch-notes/pc/33-5-6),
+[Circuit reward definitions](https://www.warframe.com/en/patch-notes/pc/33-0-0),
+[Kullervo and Spiteful Decrees](https://www.warframe.com/en/patch-notes/pc/33-5-0),
+[alternative Circuit rewards](https://www.warframe.com/en/patch-notes/pc/34-0-0),
+[Isleweaver](https://www.warframe.com/en/patch-notes/pc/39-0-0) and current
+[WFCD crafting data](https://raw.githubusercontent.com/WFCD/warframe-items/master/data/json/Warframes.json).
+Historical launch statements are superseded by the later access updates.
+
+The central search description removes the immediate-access claim, the directory
+summary and reading time agree with the guide, and contextual links now lead
+directly to the existing Circuit tracker. No new keyword-variant pages are added.
+Five Duviri mission-note replacements correct their access/reward descriptions
+and the obsolete Steel Path Armor multiplier, preserving their existing
+English-only design. All 16 Duviri rows select the right note, while all 419
+other mission rows retain their previous notes.
+
+The separate node-metadata feasibility check finds that blindly scheduling the
+existing importer would expose incorrect facts: eight Archwing rows use the
+wrong Steel Path level increment, Circuit is labelled Free Roam, and Vesper
+Relay conflicts with Follie's Hunt drop content. Eleven newer joined nodes lack
+some facts. Source compatibility and safe joins must be addressed before that
+bootstrap; the importer was not run against production.
+
+The English guide and all twelve localized snapshots now share the October 25
+source review. Only the 60 changed display fields per locale are replaced;
+63 unchanged translations are preserved. Including each localized search
+description, all 732 generated strings receive semantic review, with 304
+corrections for meaning, grammar and formatting. This catches a rank-6/rank-4
+mix-up, extraction instructions, reward-choice confusion and literal translations
+of game mechanics. Five locales use the existing Gemini translator; after its
+Korean request fails with a transient fetch error, the project's built-in free
+backend generates the remaining seven with protected names, numbers and URLs.
+One English echo is regenerated. French "Modes" is an explicitly checked shared
+word, not untranslated prose. All final quantities, links and balanced bold
+markers pass; the twelve descriptions are at most 160 characters. Snapshot
+deep-equality checks preserve unrelated copy and synchronize sources, dates,
+videos and destinations. No other guide receives a new review date.
+
+The urgent full deployment
+[40196572721](https://github.com/eduair94/warframe/actions/runs/40196572721)
+successfully releases `ff942ed20cd551511e4764e57601620f81042053` at 13:19 UTC.
+Its public verification finds API, frontend and live online at that exact SHA.
+By 13:38 UTC, 1,202 of 3,892 prices are within three hours (30.9%), up from
+149 at baseline. Both egress sessions use twelve file descriptors; the restarted
+price loop records 759 successful updates and no errors. The median remains
+about six hours and the freshness threshold still fails: recovery is ongoing.
+
+Validation for the iteration passes 722 backend, 42 frontend and 26 guide
+regressions (790 tests), backend compilation and the locale/repository checks.
+The final content snapshots pass the guide validator and locale compilation
+again. Eighteen other guides remain in the overdue review queue; follow-up
+translation gaps remain documented rather than silently assigned fresh dates.
+The final commit includes this record before the complete production workflow.
+After release, the prepared checks compare all thirteen public guide pages with
+their frozen reviewed snapshots, verify mission notes and public health, and
+exercise Spanish guide-to-Circuit navigation on mobile and desktop. Exact final
+release and recovery measurements will be retained in ignored evidence and the
+maintenance memory; this paragraph does not pre-claim those post-deploy results.

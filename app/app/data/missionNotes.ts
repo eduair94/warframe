@@ -1,7 +1,7 @@
 /**
  * Baked, hand-authored "how to get here" notes for the /mission pages. WFCD gives
- * reward tables and node facts; it does NOT give unlock paths or access context,
- * which live only on the (robots-blocked) wiki. These fill that gap. English only
+ * reward tables and node facts; official guides and update notes supply the
+ * unlock paths and access context. These fill that gap. English only
  * — page-body strings have no i18n parity gate.
  *
  * Resolution order: exact slug match, then a (planet, gameMode) pattern match, so
@@ -16,18 +16,20 @@ export interface MissionNote {
 }
 
 /** Exact-slug notes (highest priority). */
+// Duviri access and reward paths reviewed 2026-10-25 against:
+// https://www.warframe.com/en/guides/quests/the-duviri-paradox
+// https://www.warframe.com/en/patch-notes/pc/33-0-0
 const BY_SLUG: Record<string, MissionNote> = {
   'duviri-the-circuit': {
     category: 'circuit',
     access:
-      'The Circuit is an endless, Warframe-only mode inside Duviri’s Undercroft, reached from the ' +
-      'Duviri landscape via Undercroft Portals. It unlocks after completing The Duviri Paradox quest. ' +
-      'You pick from 3 offered Warframes and battle an endless chain of Undercroft missions; a weekly ' +
-      'Tier ladder (resets Monday 00:00 UTC) pays Warframe parts and, at Tiers 5 and 10, an Incarnon ' +
-      'Genesis adapter you choose.',
+      'Select The Circuit from Duviri in Navigation after completing The Duviri Paradox quest, ' +
+      'unlocked through the Uranus Junction on Saturn. Choose your weekly reward path before ' +
+      'entering, then select equipment in Teshin’s Cave. The normal Circuit offers a Warframe ' +
+      'blueprint track; Steel Path has a separate Incarnon Genesis reward track.',
     tips: [
-      'Normal Circuit rewards Warframe component blueprints on a 12-week rotation.',
-      'You do not need Steel Path for normal Circuit — only the Duviri Paradox quest.',
+      'Choose one of the three weekly Warframes before starting the normal reward track. This choice is separate from the equipment offered for your run.',
+      'Normal Circuit does not require Steel Path. Consult the rotation page below before confirming your weekly reward choice.',
     ],
     related: [
       { label: 'This week’s Circuit & Incarnon rotation', to: '/circuit' },
@@ -37,6 +39,10 @@ const BY_SLUG: Record<string, MissionNote> = {
 }
 
 /** (planet, gameMode) pattern notes — matched when no exact slug note exists. */
+// Duviri Steel Path: official completion PSA, current base unlock and Armor changes:
+// https://forums.warframe.com/topic/1360110-unlocking-duviri-steel-path-post-hotfix/
+// https://www.warframe.com/en/patch-notes/pc/38-5-3
+// https://www.warframe.com/en/patch-notes/pc/36-0-0
 const BY_PATTERN: { planet: string; gameMode: string; note: MissionNote }[] = [
   {
     planet: 'Duviri',
@@ -44,14 +50,15 @@ const BY_PATTERN: { planet: string; gameMode: string; note: MissionNote }[] = [
     note: {
       category: 'circuit',
       access:
-        'This is the Steel Path Circuit (the Undercroft at full Steel Path scaling: +100 enemy levels, ' +
-        '250% health/shield/armor). To access it you need the base Steel Path unlock — all pre-New War ' +
-        'star-chart nodes cleared, then talk to Teshin — PLUS The Duviri Paradox quest and the three base ' +
-        'Duviri nodes cleared in normal mode. Past Tier 10 you reach Tier 11+, and every additional 1,400 ' +
-        'Circuit progress re-rolls the "Repeated Rewards" pool — the Steel Path arcanes shown below.',
+        'This reward tier belongs to the Steel Path Circuit. Unlock the base Steel Path through the ' +
+        'required pre-New War Star Chart missions and Teshin in a Relay. Then complete The Duviri ' +
+        'Paradox, extract after at least one normal Circuit stage, and defeat the Orowyrm and extract ' +
+        'from normal Lone Story. The quest records the Duviri Experience node as complete. Circuit ' +
+        'enemies use Steel Path level, health and shield modifiers; Steel Path no longer adds an Armor ' +
+        'multiplier. Past Tier 10, further progress draws from the repeated reward pool.',
       tips: [
-        'Tier 9 (Hard) awards 25× Steel Essence.',
-        'Steel Path Circuit runs a separate 9-week Incarnon Genesis rotation (5 weapons/week).',
+        'Tier 9 awards 25 Steel Essence; Circuit stages do not each award Steel Essence, and Acolytes do not spawn here.',
+        'Select two Incarnon Genesis adapters from the five offered that week. The first choice is earned at Tier 5 and the second at Tier 10.',
       ],
       related: [
         { label: 'This week’s Circuit & Incarnon rotation', to: '/circuit' },
@@ -66,9 +73,10 @@ const BY_PATTERN: { planet: string; gameMode: string; note: MissionNote }[] = [
     note: {
       category: 'circuit',
       access:
-        'A normal-mode Duviri Undercroft tier, reached via The Circuit after completing The Duviri ' +
-        'Paradox quest. The "Repeated Rewards" (normal) pool is near-worthless (Credits / Endo); the ' +
-        'valuable Circuit farm is the Steel Path (Hard) tiers.',
+        'This is a normal Circuit reward tier. Complete The Duviri Paradox quest, then select The ' +
+        'Circuit from Duviri in Navigation. Its main weekly track offers your chosen Warframe’s ' +
+        'blueprints. Beyond Tier 10, repeated rewards are Credits or Endo; compare that extra ' +
+        'progress with other farms once you have reached your weekly goal.',
       related: [
         { label: 'This week’s Circuit & Incarnon rotation', to: '/circuit' },
         { label: 'Duviri guide', to: '/guides/duviri' },

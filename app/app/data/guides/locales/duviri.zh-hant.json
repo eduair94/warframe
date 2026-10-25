@@ -2,13 +2,13 @@
   "slug": "duviri",
   "eyebrow": "知識中心 · Duviri",
   "title": "The Duviri Paradox 指南",
-  "lede": "Duviri 是 Warframe 的 roguelike 樂園 — 一個你在段位 Mastery Rank 0 即可進入、變化莫測的 Orokin 夢境，也是一個每週為新手玩家提供免費 frame、為老玩家提供 Incarnon 轉接器的機制。",
+  "lede": "Duviri 將 Drifter 探索與 Circuit 的每週獎勵軌道結合。完成 Uranus Junction 以解鎖任務，然後在 Warframe 藍圖、Kullervo 刷取和 Steel Path Incarnon 適配器之間進行選擇。",
   "category": "endgame",
   "readMins": 10,
   "stats": [
     {
-      "num": "0",
-      "label": "進入前置條件",
+      "num": "1",
+      "label": "Uranus Junction解鎖任務",
       "tone": "good"
     },
     {
@@ -17,12 +17,12 @@
       "tone": "alt"
     },
     {
-      "num": "2",
-      "label": "模式：Experience 與 Circuit"
+      "num": "3",
+      "label": "原始模式； Isleweaver 是單獨的"
     },
     {
-      "num": "Weekly",
-      "label": "frame 與 Incarnon 獎勵",
+      "num": "2",
+      "label": "單獨的每週 Circuit 獎勵路線",
       "tone": "gold"
     }
   ],
@@ -33,26 +33,26 @@
       "blocks": [
         {
           "type": "p",
-          "text": "Duviri 是一個破碎的 Orokin 夢境，由一位暴怒的孩童國王 **Dominus Thrax** 統治，並被鎖在名為 **Spiral** 的無盡情緒時間循環中。你不是以 Warframe 的身份探索這裡，而是以 **Drifter** — 你的 Operator 飽經風霜的人類版本。於 2023 年推出的 Duviri 在一個關鍵方面與遊戲中的其他幾乎所有內容都不同：它**完全沒有前置條件**。全新的帳號在接觸星圖之前就可以遊玩它，並且一到達就會贈送你 weapons 和 Warframes。"
+          "text": "Duviri 是一個由 **Dominus Thrax** 所統治的破碎夢境，其中每個 **Spiral** 都會改變景觀的情緒。任務引入了**Drifter**，而Undercroft戰鬥則使用Warframes。它不再是新帳戶的替代起始路徑：完成 **Saturn 上的 Uranus Junction**，然後從您的 Codex 開始 **The Duviri Paradox**。"
         },
         {
           "type": "kv",
           "kv": [
             {
               "k": "你扮演的角色為",
-              "v": "The Drifter（開放世界）· Warframes（Undercroft 與 Circuit）"
+              "v": "Drifter 在 Experience/Lone Story 景觀中； Undercroft、Circuit 和 Isleweaver 中的 Warframes"
             },
             {
               "k": "前置條件",
-              "v": "無 — 在 Mastery Rank 0 即可開始"
+              "v": "Saturn 上的 Uranus Junction，然後 The Duviri Paradox 任務"
             },
             {
               "k": "引導 NPC",
               "v": "Teshin，位於 Teshin's Cave"
             },
             {
-              "k": "兩種模式",
-              "v": "The Duviri Experience + The Circuit"
+              "k": "模式",
+              "v": "The Duviri Experience·The Lone Story·The Circuit； The Hex之後的Isleweaver"
             },
             {
               "k": "核心循環",
@@ -73,26 +73,26 @@
       "blocks": [
         {
           "type": "p",
-          "text": "完成一次性的 **Duviri Paradox** 系列任務以解鎖可重複遊玩的內容。從那時起，你可以打開 **Navigation** 並選擇 Duviri，或者進入 **Teshin's Cave** 來選擇你想遊玩的模式 — 廣闊的 Experience，或是專注戰鬥的 Circuit。"
+          "text": "完成 **Duviri Paradox** 任務後，在 **Navigation** 中選擇 Duviri，選擇一種模式，並在 **Teshin’s Cave** 中準備好供您選擇的裝備。本指南重點在於 Experience、Lone Story 和 Circuit。 **Isleweaver**，在 **The Hex** 之後解鎖，是一個由 Warframe 領導的獨立冒險，有 Oraxia 獎勵。"
         },
         {
           "type": "steps",
           "steps": [
             {
               "h": "開始系列任務",
-              "p": "The Duviri Paradox 立即開放 — 1 級的帳號無需任何星圖進度即可開始。"
+              "p": "在 Saturn 上完成 Uranus Junction，然後在 Codex 中選擇 The Duviri Paradox。在修補程式 36.0.8 之前解鎖任務的帳戶保留存取權限。"
             },
             {
               "h": "完成系列任務",
-              "p": "完成它將永久解鎖可重複遊玩的 Duviri Experience 和 Circuit。"
+              "p": "完成它即可解鎖 Duviri Experience、Lone Story 和普通的 Circuit。"
             },
             {
-              "h": "在 Teshin's Cave 選擇你的模式",
-              "p": "選擇開放世界的 Experience 以進行探索、了解背景故事和獲取 Kullervo，或選擇 Circuit 以快速刷取 frame 和 Incarnon。"
+              "h": "選擇一種模式，然後在洞穴中做好準備",
+              "p": "探索或刷取 Kullervo 請選擇 Experience，只完成主要目標請選擇 Lone Story，獲取每週獎勵請選擇 Circuit。"
             },
             {
-              "h": "無需攜帶任何裝備",
-              "p": "Duviri 在你到達時會提供輪替的配裝，因此你自己的軍械庫是可選的 — 這對全新玩家非常友好。"
+              "h": "檢查供您選擇的裝備",
+              "p": "在進入傳送門之前檢查可用的 Warframes 和武器。借用的裝備有預設模組；已擁有的裝備可以使用您儲存的配置。"
             }
           ]
         },
@@ -108,7 +108,7 @@
               [
                 "你扮演的角色",
                 "開放世界中的 Drifter + Undercroft 中的 Warframe",
-                "僅限 Warframes，在 Undercroft 中"
+                "Undercroft 中的 Warframe 戰鬥"
               ],
               [
                 "結構",
@@ -117,8 +117,8 @@
               ],
               [
                 "主要獎勵",
-                "Pathos Clamps 與 Kullervo's Bane（Orowyrm）、Intrinsics、故事與背景故事",
-                "每週 Warframe 部件 · Steel Path：Incarnon 轉接器"
+                "來自 Orowyrm 的 Pathos Clamps; Kullervo’s Bane 僅在兩次 Boss 戰之後； Intrinsics",
+                "普通：Warframe 藍圖 · Steel Path：Incarnon Genesis 轉接器"
               ],
               [
                 "最適合",
@@ -126,7 +126,7 @@
                 "高效刷取 frames 與 Incarnon Genesis"
               ]
             ],
-            "note": "兩種模式共享相同的 roguelike Decree 系統 — 區別在於其外在的包裝形式。"
+            "note": "The Lone Story 遵循 Experience 的主要目標，但沒有可選活動。如上所述，Isleweaver 是單獨的後續解鎖。"
           }
         }
       ]
@@ -137,7 +137,7 @@
       "blocks": [
         {
           "type": "p",
-          "text": "Experience 是開放景觀的 roguelike。你以 Drifter 的身份進行探索，召喚你的 **Kaithe** — 一匹你可以騎乘並在隨後飛行的幽靈馬 — 並在完成**支線目標**以獲取 **Decrees** 和獎勵的同時，體驗當前情緒的**故事階段**。世界會定期將你拉入 **Undercroft**，這是一個受虛空污染的競技場，戰鬥會切換為 Warframe。它會逐步引導你與 Duviri 的巨龍 **Orowyrm** 進行戰鬥。想要更快、僅限故事的流程嗎？選擇 **The Lone Story** — 它會跳過支線內容並直接前往 Orowyrm。"
+          "text": "Experience 結合了 Drifter 探索、可選活動和以 **Orowyrm** 結尾的 Spiral 故事。使用您的飛行 **Kaithe** 旅行、收集 Decrees，然後切換到 Warframe 進行 Undercroft 階段。當您想要實現主要目標而不需要可選探索時，請選擇 **The Lone Story**。"
         },
         {
           "type": "list",
@@ -145,13 +145,13 @@
             "騎乘或駕駛 **Kaithe** 快速穿越變化莫測的地形",
             "清除**故事階段**和**支線目標**以賺取 **Decrees** 和戰利品",
             "進入 **Undercroft** 任務，並以輪替的 Warframe 進行戰鬥",
-            "擊敗 **Orowyrm** 以賺取 **Pathos Clamps** 和 **Kullervo's Bane**",
-            "在 **Kullervo's Hold** 與 Kullervo Boss 戰鬥以獲得更多 **Kullervo's Bane**，然後向 Duviri 商人 **Acrithis**（位於 Dormizone）購買 Kullervo 和裝備"
+            "擊敗 **Orowyrm**，得到 **Pathos Clamps**",
+            "要獲得 **Kullervo’s Bane**，須在**同一次任務中擊敗 Kullervo 和 Orowyrm**；所得貨幣可在 **Acrithis** 處使用。"
           ]
         },
         {
           "type": "tip",
-          "text": "擊敗 Orowyrm 會掉落 **Pathos Clamps** — 可在 **Acrithis** 處將其花費在 Orokin Reactors、Catalysts、Adapters、Forma 和 Duviri 外觀上。**Kullervo** 本人（被廣泛評為遊戲中最強大的近戰型 frames 之一）是使用 **Kullervo's Bane**（掉落自 Orowyrm 以及位於 **Kullervo's Hold** 的 Kullervo Boss）從 Acrithis 處購買藍圖，然後使用 Pathos Clamps 製作。這裡沒有隨機掉落機率的刷取，因此許多玩家遊玩 Duviri 純粹是為了解鎖他。"
+          "text": "**Kullervo’s Hold** 在 **Anger、Sorrow 和 Fear** 期間出現。在Experience中，如果不是主要目標，請與那裡的**The Warden**交談以開始戰鬥。在同一次任務中擊敗 Kullervo 和 Orowyrm，即可在普通難度中獲得 **4–6 Kullervo’s Bane** 或在 Steel Path 難度中獲得 **6–8**。從 **Acrithis** 購買他的藍圖，建造組件，並為最終的 Warframe 配方保留 **10 Pathos Clamps**。"
         }
       ]
     },
@@ -161,34 +161,34 @@
       "blocks": [
         {
           "type": "p",
-          "text": "Decrees 是你在單次遊玩期間收集的臨時 Buff。它們可以**堆疊** — 收集足夠的數量，借來的初始 weapon 就會變成能夠撕碎終局遊戲敵人的猛獸。但要注意：**它們會在該次遊玩結束的瞬間重置**。沒有任何東西可以繼承，因此完全沒有囤積的理由 — 每次遊戲提供時就拿一個。"
+          "text": "Decrees 是目前運行的臨時升級；相容的效果可以疊加，但當你離開時它們會重置。選擇支持您實際選出的裝備的獎勵。您的永久 Intrinsic 等級是一個單獨的系統，並且在運作之間保持不變。"
         },
         {
           "type": "list",
           "items": [
             "在開放世界中完成**故事階段**和**支線目標**",
-            "清除 **Undercroft** 階段並達到獎勵門檻",
+            "清除 **Undercroft** 階段",
             "完成 Circuit 中的關卡（你在關卡之間選擇一個 Decree）",
-            "擊敗特定的敵人和中 Boss"
+            "收集 Circuit 階段或後續階段的所有 **三個 Decree 片段**"
           ]
         },
         {
           "type": "tip",
-          "text": "追求協同效應，而不僅僅是純粹的數值。堆疊 **擊殺回復** + **基礎/百分比傷害** + **保證觸發異常狀態或暴擊** 幾乎可以讓任何 weapon 融化 Steel Path。因為 Decrees 會在遊玩結束時消失，所以請務必拿取一個 — 沒有任何壞處。"
+          "text": "選擇有用的協同作用，但要了解每一個缺點。 **Spiteful Decrees** 以懲罰換取好處，這樣他們就可以削弱不合適的構建。 **Opportunity 排名 6** 每次訪問最多可解鎖三次 Decree 重選；將重選機會留到目前選項無法幫助本次任務時使用。"
         }
       ]
     },
     {
       "id": "the-circuit",
-      "title": "The Circuit：每週免費 Warframes",
+      "title": "The Circuit：每週 Warframe 藍圖",
       "blocks": [
         {
           "type": "p",
-          "text": "The Circuit 是 Duviri 濃縮後的純粹戰鬥 — 一個 **Undercroft** 任務的 roguelike 天梯。在開始時，你從該週的輪替池中**挑選三個 Warframes 中的一個**以及一組 weapon。你不需要擁有其中的任何一個；它們在到達時就已預先配置好。清除一個關卡，選擇一個 **Decree**，然後進入下一個，變得越來越強。"
+          "text": "The Circuit 是 **Undercroft** 階段的無限序列。您的可玩裝備來自目前的隨機 **Teshin’s Cave** 裝備選項，透過 Opportunity 可以解鎖更多選擇。該裝備選擇與您選擇賺取的每週 Warframe 是分開的。使用 [Circuit 追蹤器](/circuit) 規劃您的獎勵目標。"
         },
         {
           "type": "p",
-          "text": "回報：每週 Circuit 都會輪替一組 **Warframe 部件藍圖**。清除足夠的關卡，你就可以選擇你想要的 frame 部件；收集整套即可免費製作該 frame。更深層的獎勵階級還會提供 **Riven Slivers**（十個可以組合成一個完整的 Riven）、**Endo** 和其他資源。這是新手玩家在不花費 platinum 的情況下擴展角色陣容的最佳方式之一 — 使用 [強度排行榜](/guides/tier-list) 來決定哪一週值得刷取。"
+          "text": "在每週第一次正常運行 Circuit 之前，選擇 **三項 Warframes** 之一作為您的獎勵目標；確認會鎖定本週的選擇。其 **Neuroptics、Chassis、Systems 和主藍圖**到達 **2、5、8 和 10** 層。您仍然提供製作資源和Credits。其他層包括模組、Arcanes、Endo 和資源。"
         },
         {
           "type": "info",
@@ -202,15 +202,15 @@
       "blocks": [
         {
           "type": "p",
-          "text": "將 Circuit 切換至 **Steel Path** — 你必須先 [解鎖 Steel Path](/guides/steel-path) — 獎勵輪替就會變為終局遊戲的獎品：**Incarnon Genesis adapters**。這些可以將 Braton、Lato、Skana 和 Bo 等舊的初始 weapons 轉換為極其強大的 **Incarnon** 形態，從而能應對遊戲中最艱難的內容。"
+          "text": "先完成 New War 之前所需的星圖任務，並在中繼站與 Teshin 交談，解鎖 [Steel Path](/guides/steel-path)。要進入 **Duviri Steel Path**，還須完成 **The Duviri Paradox**，通關至少**一個普通 Circuit 階段並撤離**，以及在**普通 Lone Story 中擊敗 Orowyrm 並撤離**。系列任務會記錄 Duviri Experience 節點已完成；另外兩項也必須有完成記錄。"
         },
         {
           "type": "p",
-          "text": "每週都會列出不同的一組轉接器，你可以透過清除 SP Circuit 關卡來贏得你的選擇 — 這也會降下大量的 **Steel Essence**。這種每週的節奏是老玩家保持長期遊玩 Duviri 習慣的 *關鍵* 原因：這對你的 weapon 軍械庫來說是一個可靠且永久的戰力提升，一次獲得一到兩個轉接器。"
+          "text": "在開始每週 Steel Path 軌道之前選擇兩項獎勵：您的第一個選擇是 **等級 5**，第二個選擇是 **等級 10**。適配器池包含五個選項。在 **Opportunity 等級 9** 時，Veiled Riven 或 **20,000 Kuva** 可以取代適配器選擇。 **第 9 級獎勵 25 Steel Essence**；個別回合則不然。確認前請檢查 [Circuit 追蹤器](/circuit)。"
         },
         {
           "type": "warn",
-          "text": "Steel Path Circuit 的敵人等級提升非常快。帶上真正的配置並依賴你的 Decrees。如果生存能力是你遇到的瓶頸，我們的 [mod 指南](/guides/mods) 涵蓋了護盾閘門（shield-gating）和坦克玩法，這樣你就不會在關卡中途死亡並拋下隊友。"
+          "text": "在進入 Steel Path 之前檢查提供的設備並選擇可用的配置。圍繞該配裝建立 Decree 協同效應，並在小隊需要停止時使用階段間撤離選擇。我們的[模組指南](/guides/mods) 解釋了生存和模組優先順序。"
         }
       ]
     },
@@ -220,7 +220,7 @@
       "blocks": [
         {
           "type": "p",
-          "text": "Duviri 有其專屬的 **Drifter Intrinsics** 等級 — 純粹透過遊玩 Duviri 來升級的四個技能樹（與你的 **Railjack Intrinsics** 是分開的）。提升它們的等級可以解鎖便利功能和戰力，使未來的每一次遊玩都更加順暢 — 更快的 Kaithe、更廣泛的挑選池（包含更多 Warframe、weapon 和 Decree 選擇）、更好的 Undercroft 選項，以及在開始遊玩前預覽你挑選的配裝的能力。"
+          "text": "**Drifter Intrinsics** 是透過 Duviri 獲得的永久升級，與航道星艦 Intrinsics 不同。在Teshin’s Cave中花費積分來改善戰鬥、旅行、裝備選擇或生存。對於計劃運行，**Opportunity 等級 4** 新增了 Warframe 選項並解鎖洞穴設備的導航預覽。"
         },
         {
           "type": "table",
@@ -232,22 +232,22 @@
             "rows": [
               [
                 "戰鬥",
-                "Drifter 的近戰和遠程傷害，以及在 Undercroft 中的 weapon 操控性"
+                "Drifter戰鬥加成、能力提升和Transference Surge"
               ],
               [
                 "騎乘",
-                "Kaithe 的速度、飛行和騎馬戰鬥"
+                "Kaithe 能力、旅行便利性和騎乘移動性"
               ],
               [
                 "機遇",
-                "更多的 Warframe、weapon 和 Decree 選擇、配裝預覽以及世界獎勵"
+                "裝備和 Decree 選擇、重選、洞穴預覽和供應商選項"
               ],
               [
                 "耐力",
-                "Drifter 的生存能力和在 Undercroft 中的持久力"
+                "生存加成、治療、額外復活和免受致命傷害"
               ]
             ],
-            "note": "每個等級的確切加成會隨時間變化 — 請查看即時維基以獲取當前的技能樹。"
+            "note": "根據您需要解決的問題選擇您的下一個等級：有限的設備選擇、旅行、傷害輸出或生存。在花費積分之前請先閱讀遊戲內的福利。"
           }
         }
       ]
@@ -259,14 +259,14 @@
         {
           "type": "list",
           "items": [
-            "**全新玩家：** 來自 Circuit 的免費 Warframes、無星圖限制、在刷取 frames 之前嘗試它們的溫和方式，以及大量的劇情故事。",
-            "**老玩家：** 來自 Steel Path Circuit 的每週 Incarnon Genesis 轉接器、Kullervo、Riven Slivers，以及穩定的 Steel Essence 來源。",
-            "**所有人：** 一個獨立的 roguelike，你可以投入 20-40 分鐘，並獲得明確且有意義的每週獎勵。"
+            "**發展你的武器庫：** 到達 Uranus Junction 並完成任務後，使用普通的 Circuit 嘗試不熟悉的戰甲，並在不花費白金的情況下朝著 Warframe 藍圖努力。",
+            "**老玩家：** Incarnon Genesis 適配器、Kullervo 和每週 Steel Path 獎勵軌道，包括其第 9 級 Steel Essence 獎勵。",
+            "**每個人：** 進入前選擇一個特定目標：首領貨幣、Intrinsic 進度或下一個 Circuit 獎勵等級。"
           ]
         },
         {
           "type": "p",
-          "text": "如果 Duviri 是你的入門途徑，請將其與 [新手玩家指南](/guides/new-player) 和 [進度指南](/guides/progression) 結合使用。如果你是為了終局遊戲的戰利品而來，請將其與 [Steel Path](/guides/steel-path)、[Rivens](/guides/riven) 和 [Archon Shards](/guides/archon-shards) 聯繫起來 — 並使用 [Riven 價值估算器](/riven-value) 來為你洗出的任何 Riven 估價。"
+          "text": "使用[進度指南](/guides/progression)將Duviri放入您的任務路徑中，使用[Circuit追蹤器](/circuit)選擇每週獎勵，並使用[模組指南](/guides/mods)準備自有裝備。如果您選擇 Riven 獎勵，[Riven 指南](/guides/riven) 會說明下一步要做什麼。"
         }
       ]
     },
@@ -276,20 +276,25 @@
       "blocks": [
         {
           "type": "p",
-          "text": "Duviri 的公開配對節奏很快，而預期不一致經常在 r/Warframe 上引發關於「Duviri 特權」的爭論。多一點自覺能讓每個人都開心。"
+          "text": "在小隊離開Teshin’s Cave之前就目標達成一致。探索、Kullervo 戰鬥和快速目標運行需要不同的時間。"
         },
         {
           "type": "list",
           "items": [
             "學會駕駛和飛行 **Kaithe** 前往目標 — 不要拖延整個小隊的進度",
-            "在每次提示時拿取一個 **Decree**；一個弱小、沒有 Buff 的隊友會拖慢所有人的速度",
-            "在 Circuit 中，避免在關卡中途退出 — 離開可能會拋下你的隊友",
+            "選擇有用的 **Decrees**，確認前檢查 Spiteful Decree 的負面效果。",
+            "使用 Circuit 的階段間撤離選擇並告訴隊友您計劃何時離開",
             "每個人都選擇他們**自己**的獎勵 — 不要要求別人趕往你剛好想要的階級"
           ]
         },
         {
           "type": "warn",
-          "text": "剛接觸 Duviri？在熟悉循環之前，請**單人或與朋友**一起遊玩。公開小隊期望每個人都能盡自己的一份力量並跟上節奏 — 盲目加入公開房正是那些禮儀討論串所抱怨的。"
+          "text": "如果您想要時間學習、探索或測試不熟悉的裝備，單人遊戲或具有相同目標的小組會有所幫助。在公共小隊中，如果需要時間配置裝備或理解目標，請告訴隊友。"
+        },
+        {
+          "type": "info",
+          "title": "影片背景",
+          "text": "下面的影片是補充性的視覺演練，可能反映了早期的更新。當訪問要求和獎勵規則不同時，請使用上面審查的內容。"
         }
       ]
     }
@@ -297,31 +302,31 @@
   "faqs": [
     {
       "q": "新手玩家可以在 Warframe 中遊玩 Duviri 嗎？",
-      "a": "是的 — Duviri 是少數沒有前置條件的內容。你可以在 Mastery Rank 0 且未接觸星圖之前開始 The Duviri Paradox 系列任務，並且它在到達時會贈送你 weapons 和 Warframes，因此你不需要自己的裝備。請參閱我們的 [新手玩家指南](/guides/new-player) 以了解它在你早期進度中的位置。"
+      "a": "是的，完成 **Saturn 上的 Uranus Junction** 並完成 **The Duviri Paradox** 後。新帳戶無法再立即使用 Duviri。即使軍火庫很小，借用設備也能幫助您參與。我們的[進度指南](/guides/progression) 可協助您將其與其他目標放在一起。"
     },
     {
       "q": "你在 Duviri 中會使用自己的 Warframe 嗎？",
-      "a": "在開放世界的 Experience 中，你扮演的是 **Drifter**（人類），而不是 Warframe。Undercroft 中的戰鬥部分以及整個 Circuit 會讓你使用 Warframes — 無論你是否擁有它們，都會提供預先配置好的輪替選擇。你不能攜帶任意擁有的配裝；挑選總是來自該輪替池。但是，你已經擁有的任何 Warframes 和 weapons 在你挑選它們時都會保留其自身的 mods、Rivens、Helminth 技能和 Archon Shards，並且提升 **Opportunity** Intrinsic 的等級可以擴大池子，並讓你能夠在開始遊玩前預覽你的選項。"
+      "a": "在 Experience 和 Lone Story 中，地景使用 **Drifter**，而 Undercroft 階段和 Circuit 使用 Warframes。從 **Teshin’s Cave** 中提供的裝備中進行選擇：借用的裝備具有預設模組，自有的裝備可以使用您儲存的配置。 **Opportunity 等級 4** 可解鎖導航預覽。 **Isleweaver** 也在景觀上使用所提供的 Warframe。"
     },
     {
       "q": "我該如何從 Circuit 獲得每週的 Warframe？",
-      "a": "遊玩普通 Circuit 並清除關卡；在設定的里程碑處，你將從該週輪替的 Warframe 部件藍圖池中進行選擇。收集所有部件（本週或在未來的輪替中）即可免費製作該 frame。使用我們的 [強度排行榜](/guides/tier-list) 來優先決定哪一週值得刷取。"
+      "a": "開始普通 Circuit 前，**從每週三個選項中選擇一個 Warframe**。其藍圖可在 **2、5、8 和 10** 層解鎖；製作仍需要資源和Credits。您的每週獎勵目標與您玩的Warframe是分開的。使用 [Circuit 追蹤器](/circuit) 進行規劃。"
     },
     {
       "q": "我該如何解鎖 Steel Path Circuit 以獲取 Incarnon 轉接器？",
-      "a": "你必須先透過完成普通星圖上的每個節點來解鎖 [Steel Path](/guides/steel-path)。然後將 Circuit 切換至 Steel Path — 其每週輪替會獎勵 **Incarnon Genesis adapters** 以及 Steel Essence，每週提供不同的轉接器組合。"
+      "a": "使用 Teshin 解鎖基礎 Steel Path，然後完成 The Duviri Paradox，在至少一個正常的 Circuit 階段後撤離，然後擊敗 Orowyrm 並從正常的 Lone Story 中撤離。您無需完成整個正常的 Circuit 獎勵軌道。基礎解鎖不包括修補程式 38.5.3 下的 Zariman、Albrecht's Laboratories 和 Höllvania 任務；在 Cavalero 處安裝轉接器則另需完成 Angels of the Zariman。"
     },
     {
       "q": "Decrees 會在不同的 Duviri 遊玩次數之間繼承嗎？",
-      "a": "不會。Decrees 是 roguelike Buff，僅在當前遊玩期間持續，並在結束的瞬間重置。抓住每一次機會拿取一個，追求堆疊協同效應（例如擊殺回復加上傷害提升），並在它持續時享受戰力幻想。"
+      "a": "不會。Decrees 會在每次任務之間重置，Intrinsics 則會保留。請選擇適合裝備的升級，並在選擇前閱讀 **Spiteful Decree** 的負面效果。"
     },
     {
       "q": "我該如何在 Warframe 中獲得 Kullervo？",
-      "a": "Kullervo 是在 Duviri 中刷取的。他的藍圖是使用 **Kullervo's Bane** 從 Duviri 商人 **Acrithis**（位於 Dormizone）處購買的，Kullervo's Bane 掉落自擊敗 Spiral 結束時的 **Orowyrm** 以及位於 **Kullervo's Hold** 的 Kullervo Boss 戰。然後你使用 **Pathos Clamps**（同樣由 Orowyrm 掉落）製作他。這裡沒有隨機掉落機率的刷取 — 這是一種貨幣購買。"
+      "a": "在 **Anger、Sorrow 或 Fear** 期間，在 **Kullervo’s Hold** 與 Kullervo 戰鬥，並在同一次任務中擊敗 **Orowyrm**。使用獲得的 **Kullervo’s Bane** 在 **Acrithis** 處購買 Kullervo 的藍圖，然後製作組件和最終的 Warframe。最終配方還需要 **10 Pathos Clamps**。"
     },
     {
       "q": "一次 Duviri 遊玩需要多長時間？",
-      "a": "一次完整的 Duviri Experience 大約需要 20-40 分鐘。一次 Circuit 遊玩是開放式的 — 你會一直清除關卡，直到你選擇撤離或全軍覆沒。對於純粹的獎勵刷取，Circuit 允許你在領取了你實際想要的階級後停止。"
+      "a": "沒有固定的持續時間：探索、目標、裝備和小隊節奏都很重要。 The Lone Story 將本次任務限制在其主要目標上； Circuit 允許您選擇階段之間的撤離。圍繞您的下一個獎勵等級進行規劃，而不是假設整個每週的路線適合短暫的訪問。"
     }
   ],
   "videos": [
@@ -348,20 +353,44 @@
   ],
   "sources": [
     {
-      "label": "r/Warframe — Calling out Duviri entitlement",
-      "href": "https://reddit.com/r/Warframe/comments/1r4dfbj/calling_out_duviri_entitlement/"
+      "label": "Digital Extremes — The Duviri Paradox quest guide",
+      "href": "https://www.warframe.com/en/guides/quests/the-duviri-paradox"
     },
     {
-      "label": "r/Warframe — Understanding the gameplay loop of different frames (Duviri/Circuit)",
-      "href": "https://reddit.com/r/Warframe/comments/1hz547w/understanding_the_gameplay_loop_of_different/"
+      "label": "Digital Extremes — Hotfix 36.0.8: Uranus Junction access",
+      "href": "https://www.warframe.com/en/patch-notes/pc/36-0-8"
     },
     {
-      "label": "r/Warframe — An Updated Beginner's Guide to Steel Path",
-      "href": "https://reddit.com/r/Warframe/comments/1ib1amq/an_updated_beginners_guide_to_steel_path_early/"
+      "label": "Digital Extremes — Hotfix 38.5.3: Steel Path requirements",
+      "href": "https://www.warframe.com/en/patch-notes/pc/38-5-3"
     },
     {
-      "label": "Warframe Wiki",
-      "href": "https://wiki.warframe.com/"
+      "label": "Digital Extremes — Hotfix 33.5.6: Duviri completion tracking",
+      "href": "https://www.warframe.com/en/patch-notes/pc/33-5-6"
+    },
+    {
+      "label": "Digital Extremes — Update 33: Circuit rewards and Intrinsics",
+      "href": "https://www.warframe.com/en/patch-notes/pc/33-0-0"
+    },
+    {
+      "label": "Digital Extremes — Update 33.5: Kullervo and Spiteful Decrees",
+      "href": "https://www.warframe.com/en/patch-notes/pc/33-5-0"
+    },
+    {
+      "label": "Digital Extremes — Update 34: Circuit reward alternatives",
+      "href": "https://www.warframe.com/en/patch-notes/pc/34-0-0"
+    },
+    {
+      "label": "Digital Extremes — Update 39: Isleweaver",
+      "href": "https://www.warframe.com/en/patch-notes/pc/39-0-0"
+    },
+    {
+      "label": "WFCD — current Warframe crafting data",
+      "href": "https://raw.githubusercontent.com/WFCD/warframe-items/master/data/json/Warframes.json"
+    },
+    {
+      "label": "WFCD — current resource identifiers",
+      "href": "https://raw.githubusercontent.com/WFCD/warframe-items/master/data/json/Resources.json"
     }
   ],
   "related": [
@@ -381,7 +410,7 @@
       "label": "Riven Mods 指南",
       "to": "/guides/riven",
       "icon": "cards-playing-outline",
-      "note": "兌換你的 Circuit Riven Slivers"
+      "note": "了解 Steel Path 提供的 Riven 獎勵"
     },
     {
       "label": "新手玩家指南",
@@ -396,11 +425,11 @@
       "note": "Duviri 循環追蹤器及更多"
     },
     {
-      "label": "Riven 價值估算器",
-      "to": "/riven-value",
-      "icon": "chart-line",
-      "note": "為你洗出的 Riven 估價"
+      "label": "每週 Circuit 跟踪",
+      "to": "/circuit",
+      "icon": "calendar-sync",
+      "note": "比較本週的Warframe和因卡農選擇"
     }
   ],
-  "updated": "2026-07-18"
+  "updated": "2026-10-25"
 }

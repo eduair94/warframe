@@ -48,7 +48,7 @@ export const GUIDES_INDEX: GuideMeta[] = [
   { slug: 'steel-path', route: '/guides/steel-path', title: 'Steel Path & Steel Essence', blurb: 'Unlock the hard mode, survive it, and farm Steel Essence for the good stuff.', category: 'endgame', icon: 'mdi-fire', readMins: 9 },
   { slug: 'eidolon', route: '/guides/eidolon', title: 'Eidolon Hunting', blurb: 'Amps, the meta comp and how to go from solo Teralyst to full Tridolon.', category: 'endgame', icon: 'mdi-weather-night', readMins: 10 },
   { slug: 'railjack', route: '/guides/railjack', title: 'Railjack Guide', blurb: 'Get your ship, level Intrinsics and turn space combat into a farm.', category: 'endgame', icon: 'mdi-rocket-launch-outline', readMins: 9 },
-  { slug: 'duviri', route: '/guides/duviri', title: 'The Duviri Paradox', blurb: 'The roguelike Circuit, Decrees and weekly frame/incarnon rewards.', category: 'endgame', icon: 'mdi-horse-variant', readMins: 8 },
+  { slug: 'duviri', route: '/guides/duviri', title: 'The Duviri Paradox', blurb: 'Duviri quest access, weekly Circuit choices, Kullervo and Steel Path rewards.', category: 'endgame', icon: 'mdi-horse-variant', readMins: 10 },
   { slug: 'archon-shards', route: '/guides/archon-shards', title: 'Archon Shards', blurb: 'Permanent stat boosts, the weekly Archon Hunt and how to prioritize.', category: 'endgame', icon: 'mdi-cards-diamond-outline', readMins: 7 },
 
   // ── Reference ───────────────────────────────────────────────────────

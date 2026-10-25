@@ -112,7 +112,7 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
     },
     "/guides/duviri": {
       "title": "Guía de Duviri Paradox en Warframe — Circuit y Decrees",
-      "description": "Cómo funciona la Duviri Paradox en Warframe: el Circuit roguelike, los Decrees y las recompensas semanales de Warframe e Incarnon. Jugable desde el principio."
+      "description": "Guía de Duviri: requisitos de acceso, recompensas semanales del Circuito, farmeo de Kullervo y adaptadores Génesis Incarnon del Camino de Acero."
     },
     "/guides/archon-shards": {
       "title": "Guía de Archon Shards en Warframe — Farmeo y mejores stats",
@@ -230,7 +230,7 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
     },
     "/guides/duviri": {
       "title": "Guia do Duviri Paradox Warframe — Circuit e Decrees",
-      "description": "Como funciona o Duviri Paradox em Warframe: o Circuit roguelike, os Decrees e as recompensas semanais de Warframe e Incarnon. Jogável desde o início."
+      "description": "Guia de Duviri: requisitos de acesso, recompensas semanais do Circuito, como obter Kullervo e adaptadores Incarnon no Percurso de Aço."
     },
     "/guides/archon-shards": {
       "title": "Guia de Archon Shards Warframe — Farm e Melhores Stats",
@@ -348,7 +348,7 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
     },
     "/guides/duviri": {
       "title": "Warframe Duviri Paradox Guide — Circuit & Decrees",
-      "description": "Wie das Duviri Paradox in Warframe funktioniert: der Roguelike Circuit, Decrees und die wöchentlichen Warframe- und Incarnon-Belohnungen. Von Anfang an spielbar."
+      "description": "Duviri-Guide: Zugang, wöchentliche Rundkurs-Belohnungen, Kullervo farmen und Incarnon-Adapter im Stählernen Pfad."
     },
     "/guides/archon-shards": {
       "title": "Warframe Archon Shards Guide — Farming & beste Werte",
@@ -466,7 +466,7 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
     },
     "/guides/duviri": {
       "title": "Guide Duviri Paradox Warframe — Circuit & Decrees",
-      "description": "Comment fonctionne le Duviri Paradox dans Warframe : le Circuit roguelike, les Decrees et les récompenses Warframe et Incarnon hebdomadaires. Jouable dès le tout début."
+      "description": "Guide de Duviri : accès, récompenses hebdomadaires du Circuit, farm de Kullervo et adaptateurs Incarnon sur la Route de l’Acier."
     },
     "/guides/archon-shards": {
       "title": "Guide Archon Shards Warframe — Farm & meilleures stats",
@@ -584,7 +584,7 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
     },
     "/guides/duviri": {
       "title": "Гайд по Duviri Paradox — Circuit и Decrees",
-      "description": "Как работает Duviri Paradox в Warframe: рогалик Circuit, Decrees и еженедельные награды Warframe и Incarnon. Доступно с самого старта игры."
+      "description": "Гайд по Дувири: условия доступа, еженедельные награды Цепи, фарм Куллерво и адаптеры Инкарнон на Стальном Пути."
     },
     "/guides/archon-shards": {
       "title": "Гайд по Archon Shards — фарм и лучшие статы",
@@ -702,7 +702,7 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
     },
     "/guides/duviri": {
       "title": "Warframe Duviri Paradox 가이드 — Circuit & Decrees",
-      "description": "Warframe에서 Duviri Paradox 작동 방식: 로그라이크 Circuit, Decrees, 주간 Warframe 및 Incarnon 보상까지. 게임 시작부터 플레이 가능."
+      "description": "Duviri 해금 조건, Circuit 주간 보상, Kullervo 파밍과 Steel Path Incarnon 어댑터 준비 방법을 확인하세요."
     },
     "/guides/archon-shards": {
       "title": "Warframe Archon Shards 가이드 — 파밍 & 최고의 스탯",
@@ -820,7 +820,7 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
     },
     "/guides/duviri": {
       "title": "Warframe Duviri Paradoxガイド — CircuitとDecrees",
-      "description": "WarframeのDuviri Paradoxの仕組み：ローグライクのCircuit、Decrees、週替わりのWarframe・Incarnon報酬。ゲーム開始直後からプレイ可能。"
+      "description": "Duviriの解放条件、Circuitの週間報酬、Kullervoの入手方法とSteel Path Incarnonアダプターの準備を確認。"
     },
     "/guides/archon-shards": {
       "title": "Warframe Archon Shardsガイド — 周回とおすすめステータス",
@@ -938,7 +938,7 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
     },
     "/guides/duviri": {
       "title": "Warframe Duviri Paradox 攻略 — Circuit 与 Decrees",
-      "description": "Duviri Paradox 在 Warframe 中如何运作：roguelike 的 Circuit、Decrees，以及每周的 Warframe 与 Incarnon 奖励。从一开始就能玩。"
+      "description": "了解 Duviri 解锁条件、Circuit 每周奖励、Kullervo 刷取方式，以及 Steel Path Incarnon 适配器的准备要求。"
     },
     "/guides/archon-shards": {
       "title": "Warframe Archon Shards 攻略 — farm与最佳属性",
@@ -1056,7 +1056,7 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
     },
     "/guides/duviri": {
       "title": "Warframe Duviri Paradox 指南 — Circuit 與 Decrees",
-      "description": "Warframe 中 Duviri Paradox 如何運作：Rogue-like 的 Circuit、Decrees，以及每週的 Warframe 與 Incarnon 獎勵。從一開始就能玩。"
+      "description": "了解 Duviri 解鎖條件、Circuit 每週獎勵、Kullervo 刷取方式，以及 Steel Path Incarnon 轉接器的準備要求。"
     },
     "/guides/archon-shards": {
       "title": "Warframe Archon Shards 指南 — 農法與最佳屬性",
@@ -1174,7 +1174,7 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
     },
     "/guides/duviri": {
       "title": "Poradnik Duviri Paradox w Warframe — Circuit i Decrees",
-      "description": "Jak działa Duviri Paradox w Warframe: roguelike'owy Circuit, Decrees oraz cotygodniowe nagrody Warframe i Incarnon. Grywalne od samego początku."
+      "description": "Poradnik Duviri: wymagania dostępu, nagrody Circuit, zdobywanie Kullervo i adaptery Incarnon w Steel Path. Zaplanuj swój cotygodniowy cel."
     },
     "/guides/archon-shards": {
       "title": "Poradnik Archon Shards w Warframe — Farma i Staty",
@@ -1292,7 +1292,7 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
     },
     "/guides/duviri": {
       "title": "Guida al Duviri Paradox Warframe — Circuit e Decrees",
-      "description": "Come funziona il Duviri Paradox in Warframe: il Circuit roguelike, i Decrees e le ricompense settimanali di Warframe e Incarnon. Giocabile fin dall'inizio."
+      "description": "Guida Duviri: requisiti di accesso, ricompense Circuit, come ottenere Kullervo e adattatori Incarnon in Steel Path. Pianifica i tuoi obiettivi settimanali."
     },
     "/guides/archon-shards": {
       "title": "Guida agli Archon Shards Warframe — Farming e Migliori Stat",
@@ -1410,7 +1410,7 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
     },
     "/guides/duviri": {
       "title": "Гайд Duviri Paradox Warframe — Circuit і Decrees",
-      "description": "Як працює Duviri Paradox у Warframe: рогалик Circuit, Decrees і щотижневі нагороди Warframe та Incarnon. Доступно від самого старту."
+      "description": "Посібник Duviri: умови доступу, щотижневі нагороди Circuit, здобуття Kullervo й адаптери Incarnon у Steel Path."
     },
     "/guides/archon-shards": {
       "title": "Гайд Archon Shards Warframe — фарм і найкращі стати",

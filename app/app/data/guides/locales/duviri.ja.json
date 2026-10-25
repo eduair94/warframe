@@ -2,13 +2,13 @@
   "slug": "duviri",
   "eyebrow": "ナレッジセンター · Duviri",
   "title": "The Duviri Paradox ガイド",
-  "lede": "DuviriはWarframeのローグライクな遊び場です。Mastery Rank 0から入ることができる、変化し続けるOrokinの夢幻の世界であり、新規プレイヤーには無料のframeを、ベテランにはIncarnon adaptersを毎週提供するシステムでもあります。",
+  "lede": "Duviri は、Drifter の探検と Circuit の毎週の報酬トラックを組み合わせます。 Uranus Junction を完了してクエストのロックを解除し、Warframe の設計図、Kullervo のファーミング、および Steel Path のインカノン アダプターから選択します。",
   "category": "endgame",
   "readMins": 10,
   "stats": [
     {
-      "num": "0",
-      "label": "進入条件",
+      "num": "1",
+      "label": "Uranus Junction でクエストのロックが解除されます",
       "tone": "good"
     },
     {
@@ -17,12 +17,12 @@
       "tone": "alt"
     },
     {
-      "num": "2",
-      "label": "モード：Experience ＆ Circuit"
+      "num": "3",
+      "label": "オリジナルモード。 Isleweaverは別です"
     },
     {
-      "num": "Weekly",
-      "label": "frame ＆ Incarnon 報酬",
+      "num": "2",
+      "label": "毎週の個別の Circuit 報酬トラック",
       "tone": "gold"
     }
   ],
@@ -33,26 +33,26 @@
       "blocks": [
         {
           "type": "p",
-          "text": "Duviriは、怒り狂う子供の王**Dominus Thrax**に支配され、**Spiral**と呼ばれる終わりのない感情のタイムループに閉じ込められた、断片化されたOrokinの夢幻の世界です。プレイヤーはWarframeとしてではなく、Operatorが年老いた人間の姿である**Drifter**としてここを探索します。2023年に登場したDuviriは、ある決定的な点でゲーム内の他のほぼすべての要素と異なります。それは**前提条件が一切ない**ということです。作成したばかりのアカウントでも、星系マップ（star chart）に触れる前にプレイでき、到着時にweaponやWarframeが手に入ります。"
+          "text": "Duviri は **Dominus Thrax** によって支配される断片的な夢の風景であり、**Spiral** ごとに風景の雰囲気が変わります。このクエストでは **Drifter** が導入されますが、Undercroft の戦闘では Warframes が使用されます。これは、新しいアカウントの代替開始パスではなくなりました。**Saturn の Uranus Junction** を完了してから、コーデックスから **The Duviri Paradox** を開始してください。"
         },
         {
           "type": "kv",
           "kv": [
             {
               "k": "プレイキャラクター",
-              "v": "Drifter（オープンワールド）· Warframe（Undercroft ＆ Circuit）"
+              "v": "Experience/Lone Story 風景の Drifter。 Undercroft、Circuit、および Isleweaver の Warframes"
             },
             {
               "k": "前提条件",
-              "v": "なし — Mastery Rank 0 から開始可能"
+              "v": "SaturnのUranus Junction、その後The Duviri Paradoxのクエスト"
             },
             {
               "k": "ガイドNPC",
               "v": "Teshin（Teshin's Cave）"
             },
             {
-              "k": "2つのモード",
-              "v": "The Duviri Experience ＋ The Circuit"
+              "k": "モード",
+              "v": "The Duviri Experience · The Lone Story · The Circuit; The Hex の後の Isleweaver"
             },
             {
               "k": "基本ループ",
@@ -73,26 +73,26 @@
       "blocks": [
         {
           "type": "p",
-          "text": "1回限りのクエスト**Duviri Paradox**をクリアして、繰り返しプレイ可能なコンテンツをアンロックしましょう。それ以降は、**Navigation**を開いてDuviriを選択するか、**Teshin's Cave**に入ってプレイしたいモード（広大なExperience、または戦闘に特化したCircuit）を選択します。"
+          "text": "**Duviri Paradox** クエストの後、**ナビゲーション**で Duviri を選択し、モードを選択して、**Teshin’s Cave** で提供された装備を準備します。このガイドでは、Experience、Lone Story、および Circuit に焦点を当てます。 **Isleweaver** は **The Hex** 後にロック解除され、Oraxia の報酬が得られる別の Warframe 主導の冒険です。"
         },
         {
           "type": "steps",
           "steps": [
             {
               "h": "クエストの開始",
-              "p": "The Duviri Paradoxはすぐにプレイ可能です。レベル1のアカウントでも、星系マップを進めることなく開始できます。"
+              "p": "Saturn で Uranus Junction を完了し、コーデックスで The Duviri Paradox を選択します。ホットフィックス 36.0.8 が適用される前にクエストのロックを解除したアカウントはアクセスを保持しました。"
             },
             {
               "h": "クエストの完了",
-              "p": "クリアすると、繰り返しプレイ可能なDuviri ExperienceとCircuitが恒久的にアンロックされます。"
+              "p": "それを完了すると、Duviri Experience、Lone Story、通常の Circuit のロックが解除されます。"
             },
             {
-              "h": "Teshin's Caveでモードを選択",
-              "p": "探索、ストーリー、Kullervoを目的とするならオープンワールドのExperienceを、効率的なframeやIncarnonのfarming（周回）を目的とするならCircuitを選択してください。"
+              "h": "モードを選択し、洞窟で準備をします",
+              "p": "探索や Kullervo の入手には Experience、主要目標だけを進めるなら Lone Story、週間報酬を目指すなら Circuit を選びます。"
             },
             {
-              "h": "手ぶらで参加",
-              "p": "Duviriでは到着時にランダムにローテーションするロードアウトが提供されるため、自身のアーセナルは不要です。新規プレイヤーに最適です。"
+              "h": "提供されている機器を確認する",
+              "p": "ポータルに入る前に、利用可能な Warframes と武器を調べてください。借りた装備にはデフォルトの MOD が含まれています。所有する装備は、保存された構成を使用できます。"
             }
           ]
         },
@@ -108,7 +108,7 @@
               [
                 "操作キャラクター",
                 "オープンワールドではDrifter ＋ UndercroftではWarframe",
-                "Undercroft内でのWarframeのみ"
+                "UndercroftでのWarframe戦闘"
               ],
               [
                 "構成",
@@ -117,8 +117,8 @@
               ],
               [
                 "主な報酬",
-                "Pathos Clamps ＆ Kullervo's Bane（Orowyrm）、Intrinsics、ストーリー＆設定",
-                "週替わりのWarframeパーツ · Steel Path：Incarnon adapters"
+                "Orowyrm からの Pathos Clamps。 Kullervo’s Bane 両方のボスとの戦いの後のみ。 Intrinsics",
+                "通常: Warframe ブループリント · Steel Path: Incarnon Genesis アダプター"
               ],
               [
                 "最適な用途",
@@ -126,7 +126,7 @@
                 "効率的なframeおよびIncarnon Genesisのfarming（周回）"
               ]
             ],
-            "note": "どちらのモードも同じローグライクなDecreeシステムを共有していますが、その周りを取り囲むゲームプレイの形式が異なります。"
+            "note": "The Lone Story は、オプションのアクティビティを除いて、Experience の主な目的に従います。 Isleweaver は、上で説明した、後で行う別のロック解除です。"
           }
         }
       ]
@@ -137,7 +137,7 @@
       "blocks": [
         {
           "type": "p",
-          "text": "Experienceは、オープンワールド形式のローグライクです。Drifterとして探索し、騎乗（後に飛行も可能）できる霊的な馬**Kaithe**を召喚し、その時の感情の**ストーリーステージ**を進めながら、**Decrees**や報酬を得るために**サイドミッション**をこなします。定期的に、Voidに侵食されたアリーナである**Undercroft**へと引き込まれ、そこでの戦闘はWarframeに切り替わります。最終的にはDuviriのドラゴンである**Orowyrm**との戦いへと向かいます。ストーリーのみを素早く進めたい場合は、**The Lone Story**を選択してください。サイドコンテンツをスキップして直接Orowyrm戦へ向かうことができます。"
+          "text": "Experience は、Drifter の探索、オプションのアクティビティ、**Orowyrm** で終わる Spiral のストーリーを組み合わせたものです。飛行 **Kaithe** を使用して移動し、Decrees を収集し、Warframe に切り替えて Undercroft ステージを進みます。オプションの探索を行わずに主な目的を達成したい場合は、**The Lone Story** を選択してください。"
         },
         {
           "type": "list",
@@ -145,13 +145,13 @@
             "変化し続ける世界を素早く移動するために、**Kaithe**に騎乗または飛行する",
             "**ストーリーステージ**や**サイドミッション**をクリアして、**Decrees**や戦利品を獲得する",
             "**Undercroft**ミッションに入り、ローテーションで選ばれたWarframeとして戦う",
-            "**Orowyrm**を倒して**Pathos Clamps**と**Kullervo's Bane**を獲得する",
-            "**Kullervo's Hold**でボスKullervoと戦ってさらに**Kullervo's Bane**を集め、DormizoneにいるDuviriの商人**Acrithis**からKullervoや装備を購入する"
+            "**Orowyrm** を倒して **Pathos Clamps** を獲得する",
+            "**Kullervo’s Bane** を得るには、**同じセッションで Kullervo と Orowyrm を倒します**。得た通貨は **Acrithis** との交換に使います。"
           ]
         },
         {
           "type": "tip",
-          "text": "Orowyrmを倒すと**Pathos Clamps**がドロップします。これを**Acrithis**のところで使い、Orokin Reactors、Catalysts、Adapters、Forma、そしてDuviriのコスメティクスを購入できます。**Kullervo**自体（ゲーム内で最も強力な近接特化frameの1つと広く評価されています）は、Orowyrmや**Kullervo's Hold**のボスKullervoからドロップする**Kullervo's Bane**を使ってAcrithisから設計図を購入し、Pathos Clampsを使って製作します。確率によるランダムドロップの周回（grind）がないため、多くのプレイヤーは彼をアンロックするためだけにDuviriを周回しています。"
+          "text": "**Kullervo’s Hold** は **Anger、Sorrow、Fear** 中に表示されます。それが主な目的でない場合は、Experience で **The Warden** に話しかけて戦闘を開始してください。そのセッションで Kullervo と Orowyrm を倒すと、ノーマルでは **4-6 Kullervo’s Bane**、Steel Path では **6-8** を獲得できます。 **Acrithis** から設計図を購入し、コンポーネントを構築し、最終的な Warframe レシピ用に **10 Pathos Clamps** を取っておきます。"
         }
       ]
     },
@@ -161,34 +161,34 @@
       "blocks": [
         {
           "type": "p",
-          "text": "Decreesは、ランの最中に集める一時的なバフです。これらは**スタック**します。十分に集めれば、借り物の初期武器であってもエンドゲームの敵を切り刻むモンスターへと変貌します。注意点として、**これらはランが終了した瞬間にリセットされます**。次回への持ち越しはないため、温存する理由は一切ありません。ゲームから提示されるたびに必ず選択しましょう。"
+          "text": "Decrees は、現在の実行のための一時的なアップグレードです。互換性のある効果はスタックできますが、離れるとリセットされます。実際にドラフトした装備をサポートするボーナスを選択してください。永続的な Intrinsic ランクは別のシステムであり、実行間で保持されます。"
         },
         {
           "type": "list",
           "items": [
             "オープンワールドでの**ストーリーステージ**や**サイドミッション**の完了",
-            "**Undercroft**ステージのクリアと報酬しきい値への到達",
+            "**Undercroft** ステージをクリア",
             "Circuitでのラウンド完了（ラウンド間にDecreeを1つ選択）",
-            "特定の敵やミニボスの撃破"
+            "Circuit ステージまたはその後のステージで **3 つの Decree フラグメント**をすべて収集する"
           ]
         },
         {
           "type": "tip",
-          "text": "単なる数値だけでなく、シナジーを追い求めましょう。**キル時回復** ＋ **固定値/割合ダメージ** ＋ **確定ステータス異常またはクリティカル**をスタックさせることで、ほぼすべての武器でSteel Pathの敵を溶かすことができます。Decreesはランの終了時に消滅するため、デメリットはありません。常に獲得しておきましょう。"
+          "text": "有益な相乗効果を選択しますが、欠点もすべて読んでください。 **Spiteful Decrees** ペナルティを利益と交換することで、不適切なビルドを弱めることができます。 **Opportunity ランク 6** では、訪問ごとに最大 3 回の Decree のリロールがロック解除されます。あなたの走りに役立たない選択をしないように、そのチャンスを取っておきなさい。"
         }
       ]
     },
     {
       "id": "the-circuit",
-      "title": "The Circuit：毎週無料のWarframe",
+      "title": "The Circuit: 毎週の Warframe ブループリント",
       "blocks": [
         {
           "type": "p",
-          "text": "Circuitは、Duviriを純粋な戦闘へと凝縮したものです。**Undercroft**ミッションが連なるローグライクなラダー（階層）です。開始時に、その週のローテーションプールから**3つのWarframeのうち1つ**と武器セットをドラフトします。これらを所有している必要はありません。ビルド済みの状態で提供されます。ラウンドをクリアし、**Decree**を選択して次のラウンドへ進むことで、着実に強くなっていきます。"
+          "text": "The Circuit は、**Undercroft** ステージの無限のシーケンスです。プレイアブル機器は現在のランダム化された **Teshin’s Cave** から提供されており、Opportunity を通じてより多くの選択肢がロック解除されます。この装備の選択は、毎週獲得するために選択した Warframe とは別のものです。 [Circuit トラッカー](/circuit) を使用して、報酬目標を計画してください。"
         },
         {
           "type": "p",
-          "text": "見返りとして、Circuitでは毎週異なる**Warframeのコンポーネント設計図**のセットがローテーションします。十分なラウンド数をクリアすれば、欲しいframeパーツを選択できます。セットを集めることで、そのframeを無料で製作できます。さらに深い報酬ティアでは、**Riven Slivers**（10個集めるとRiven1枚に合成可能）、**Endo**、その他の素材も手に入ります。これは新規プレイヤーがプラチナを使わずに所有フレームを増やすための最良の方法の1つです。[ティアリスト](/guides/tier-list)を活用して、どの週を周回（grind）すべきか判断しましょう。"
+          "text": "毎週最初の通常の Circuit 実行の前に、**3 つの Warframes** から 1 つを報酬ターゲットとして選択します。確認するとその週の選択がロックされます。その **Neuroptics、Chassis、Systems およびメイン ブループリント**は、層 **2、5、8、および 10** に到着します。あなたは引き続き製作リソースと Credits を供給します。他の階層には、MOD、Arcanes、Endo、リソースが含まれます。"
         },
         {
           "type": "info",
@@ -202,15 +202,15 @@
       "blocks": [
         {
           "type": "p",
-          "text": "Circuitを**Steel Path**に切り替えると（事前に[Steel Pathをアンロック](/guides/steel-path)しておく必要があります）、報酬のローテーションがエンドゲームの目玉である**Incarnon Genesis adapters**に変化します。これらはBraton、Lato、Skana、Boといった古い初期武器を、ゲーム内の最難関コンテンツでも通用する非常に強力な**Incarnon**形態へと変換します。"
+          "text": "まず、必要なNew War 以前の星図ミッションとリレーのTeshinを通じて[Steel Path](/guides/steel-path)のロックを解除します。 **Duviri Steel Path** については、**The Duviri Paradox** も完了し、**通常の Circuit ステージを少なくとも 1 つ完了して脱出**し、通常の Lone Story で **Orowyrm を倒して脱出**します。クエストは、Duviri Experience ノードの完了を記録します。他の 2 つのクリア記録も同様に登録する必要があります。"
         },
         {
           "type": "p",
-          "text": "毎週異なるアダプターのセットがリストアップされ、SP Circuitのラウンドをクリアすることで選択したアダプターを獲得できます。また、副産物として**Steel Essence**も大量に手に入ります。この週替わりのサイクルこそが、ベテランプレイヤーがDuviriを習慣的にプレイし続ける最大の理由です。一度に1〜2個のアダプターを獲得し、武器アーセナルを着実かつ永続的に強化していくことができます。"
+          "text": "毎週の Steel Path トラックを開始する前に 2 つの報酬を選択してください。最初の選択肢は **ティア 5** で、2 番目の選択肢は **ティア 10** です。アダプター プールには 5 つのオプションが含まれています。 **Opportunity ランク 9** では、アダプターの選択肢を Veiled Riven または **20,000 Kuva** に置き換えることができます。 **ティア 9 の賞は 25 Steel Essence**;個々のラウンドではそうではありません。確認する前に [Circuit トラッカー](/circuit) を確認してください。"
         },
         {
           "type": "warn",
-          "text": "Steel Path Circuitの敵は急激に強化されます。本格的なビルドを持ち込み、Decreesの力を借りましょう。生存能力がボトルネックになっている場合は、当サイトの[MODガイド](/guides/mods)でシールドゲートやタンクビルドについて解説しています。ラウンド途中で倒れて分隊を置き去りにするのを防ぎましょう。"
+          "text": "Steel Path に入る前に、提供されている機器を確認し、使用可能な構成を選択してください。そのロードアウトを中心に Decree の相乗効果を構築し、分隊を停止する必要がある場合はステージ間の脱出の選択肢を使用します。私たちの [MOD ガイド](/guides/mods) では、生存と MOD の優先順位について説明しています。"
         }
       ]
     },
@@ -220,7 +220,7 @@
       "blocks": [
         {
           "type": "p",
-          "text": "Duviriでは独自の**Drifter Intrinsics**のレベルを上げることができます。これはDuviriをプレイすることでのみランクアップできる4つのツリーです（**Railjack Intrinsics**とは別のプールです）。これらをランクアップすると、今後のすべてのランが快適になるQoL（利便性）やパワーがアンロックされます。これには、Kaitheの高速化、Warframe・武器・Decreeの選択肢が増えるドラフトプールの拡張、Undercroftでのオプションの改善、ラン開始前にドラフトされたロードアウトをプレビューする機能などが含まれます。"
+          "text": "**Drifter Intrinsics** はレールジャック Intrinsics とは別に、Duviri を通じて獲得できる永久アップグレードです。 Teshin’s Cave でポイントを消費して、戦闘、移動、装備のオプション、または生存を向上させます。実行を計画するには、**Opportunity ランク 4** に Warframe オプションが追加され、洞窟の装備のナビゲーション プレビューのロックが解除されます。"
         },
         {
           "type": "table",
@@ -232,22 +232,22 @@
             "rows": [
               [
                 "Combat",
-                "Drifterの近接・遠距離ダメージ、およびUndercroftでの武器の操作性"
+                "Drifter 戦闘ボーナス、能力向上、および Transference Surge"
               ],
               [
                 "Riding",
-                "Kaitheの速度、飛行、および騎乗戦闘"
+                "Kaithe の能力、旅行の利便性、および機動性"
               ],
               [
                 "Opportunity",
-                "Warframe、武器、Decreeの選択肢増加、ロードアウトのプレビュー、およびワールド報酬の向上"
+                "装備とDecreeの選択肢、再ロール、Caveプレビューとベンダーオプション"
               ],
               [
                 "Endurance",
-                "Drifterの生存能力およびUndercroftでの耐久力"
+                "生存ボーナス、治癒、追加の復活、致命的なダメージからの保護"
               ]
             ],
-            "note": "ランクごとの正確なパークは変更される可能性があるため、現在のツリーについては最新のWikiを確認してください。"
+            "note": "装備の選択肢が限られていること、移動距離、ダメージ、生存など、解決する必要がある問題に応じて次のランクを選択してください。ポイントを消費する前にゲーム内の特典をお読みください。"
           }
         }
       ]
@@ -259,14 +259,14 @@
         {
           "type": "list",
           "items": [
-            "**新規プレイヤー：** Circuitから無料のWarframeを獲得可能、星系マップによる制限なし、farming（周回）する前にframeをお試しプレイできる手軽さ、そして膨大なストーリー。",
-            "**ベテラン：** Steel Path Circuitからの週替わりIncarnon Genesis adapters、Kullervo、Riven Slivers、そして安定したSteel Essenceの供給源。",
-            "**すべてのプレイヤー：** 20〜40分で気軽にプレイでき、明確で価値のある週替わり報酬が得られる、独立したローグライクコンテンツ。"
+            "**アーセナルの充実:** Uranus Junction に到達してクエストを完了したら、通常の Circuit を使用して不慣れなフレームに挑戦し、プラチナを消費せずに Warframe の青写真を目指して作業します。",
+            "**ベテラン:** Incarnon Genesis アダプター、Kullervo、およびその階層 9 Steel Essence 報酬を含む毎週の Steel Path 報酬トラック。",
+            "**全員:** 参加する前に特定の目標を選択してください: ボス通貨、Intrinsic の進行、または次の Circuit 報酬層。"
           ]
         },
         {
           "type": "p",
-          "text": "Duviriがゲームへの入り口となる場合は、[新規プレイヤーガイド](/guides/new-player)や[進行状況ガイド](/guides/progression)と合わせてご覧ください。エンドゲームの戦利品が目的の場合は、[Steel Path](/guides/steel-path)、[Rivens](/guides/riven)、[Archon Shards](/guides/archon-shards)と結びつけて進めましょう。また、サイクル（ロール）したRivenの価格査定には[Riven価値見積もりツール](/riven-value)をご利用ください。"
+          "text": "[進行ガイド](/guides/progression) を使用してクエスト パスに Duviri を配置し、[Circuit トラッカー](/circuit) を使用して毎週の報酬を選択し、[改造ガイド](/guides/mods) を使用して所有する装備を準備します。 Riven 報酬を選択した場合、[Riven ガイド](/guides/riven) で次に何をすべきか説明されています。"
         }
       ]
     },
@@ -276,20 +276,25 @@
       "blocks": [
         {
           "type": "p",
-          "text": "Duviri'sの公開マッチメイキングは進行が早く、期待値の不一致がr/Warframeで繰り返される「Duviriの権利主張」に関する議論を引き起こしています。少しの配慮で、全員が快適にプレイできます。"
+          "text": "チームが Teshin’s Cave を離れる前に目標に同意してください。探索、Kullervo の戦い、および迅速な目的の実行には、異なる時間が必要です。"
         },
         {
           "type": "list",
           "items": [
             "目的地の移動のために**Kaithe**の操作と飛行に慣れておきましょう。分隊全体の進行を遅らせないようにしてください。",
-            "プロンプトが表示されるたびに**Decree**を獲得しましょう。バフのない弱い分隊員がいると、全体のペースが落ちてしまいます。",
-            "Circuitでは、ラウンド途中での離脱を避けましょう。途中で抜けると、残されたチームメイトが窮地に陥る可能性があります。",
+            "有用な **Decrees** を選び、確定する前に Spiteful Decree の不利益を確認してください。",
+            "Circuit のステージ間の脱出の選択肢を使用して、いつ出発するかをチームメイトに伝えます",
             "報酬はプレイヤー**それぞれ**が選択するものです。自分が欲しいティアを他人に急かすようなことはやめましょう。"
           ]
         },
         {
           "type": "warn",
-          "text": "Duviriが初めてですか？ ループの流れを理解するまでは、**ソロまたはフレンドと**プレイしましょう。公開分隊（野良）では、全員がそれぞれの役割を果たし、ペースを合わせることが期待されます。何も知らずに野良に飛び込むことこそが、マナーに関するスレッドで不満を言われている原因そのものです。"
+          "text": "不慣れなギアを学習、探索、テストする時間が欲しい場合は、ソロプレイまたは同じ目標を持つグループが役に立ちます。パブリックスクワッドでは、装備を設定したり、目的を理解したりする時間が必要なときは伝えてください。"
+        },
+        {
+          "type": "info",
+          "title": "ビデオのコンテキスト",
+          "text": "以下のビデオは補足的な視覚的なウォークスルーであり、以前の更新が反映されている可能性があります。上記で確認したアクセス要件と報酬ルールが異なる場合は、それらを使用してください。"
         }
       ]
     }
@@ -297,31 +302,31 @@
   "faqs": [
     {
       "q": "新規プレイヤーでもWarframeでDuviriをプレイできますか？",
-      "a": "はい。Duviriは前提条件が一切ない珍しいコンテンツです。星系マップを進める前に、Mastery Rank 0からクエスト「The Duviri Paradox」を開始できます。到着時に武器やWarframeが提供されるため、自身の装備は不要です。序盤の進行における位置づけについては、当サイトの[新規プレイヤーガイド](/guides/new-player)をご覧ください。"
+      "a": "はい、**Saturn の Uranus Junction** を完了し、**The Duviri Paradox** を完了した後です。 Duviri は、新しいアカウントではすぐには使用できなくなります。レンタル用具を利用すると、武器が少ない場合でも参加できます。私たちの [進歩ガイド](/guides/progression) は、他の目標と並行して進めるのに役立ちます。"
     },
     {
       "q": "Duviriでは自分のWarframeを使用しますか？",
-      "a": "オープンワールドのExperienceでは、Warframeではなく**Drifter**（人間）としてプレイします。Undercroftでの戦闘セクション、およびCircuitの全編では、Warframeを操作します。これらは所有の有無にかかわらず、ビルド済みの状態でローテーションから選択されます。自身が所有する任意のロードアウトを自由に持ち込むことはできず、常にそのローテーションプールからドラフトすることになります。ただし、すでに所有しているWarframeや武器をドラフトした場合は、自身のMOD、Rivens、Helminthアビリティ、Archon Shardsが適用されます。また、**Opportunity**のIntrinsicランクを上げることで、プールが広がり、ランの開始前に選択肢をプレビューできるようになります。"
+      "a": "Experience と Lone Story では、ランドスケープは **Drifter** を使用し、Undercroft ステージと Circuit は Warframes を使用します。 **Teshin’s Cave** で提供される装備から選択します。借用した装備にはデフォルトの MOD があり、所有する装備には保存された構成を使用できます。 **Opportunity ランク 4** はナビゲーション プレビューのロックを解除します。 **Isleweaver** は、提供された Warframe を風景でも使用します。"
     },
     {
       "q": "Circuitから週替わりのWarframeを入手するにはどうすればよいですか？",
-      "a": "通常のCircuitをプレイしてラウンドをクリアします。設定されたマイルストーンに達すると、その週のローテーションプールからWarframeのパーツ設計図を選択できます。すべてのパーツを集めることで（今週、または将来のローテーションで）、そのframeを無料で製作できます。どの週を優先して周回（grind）すべきかは、当サイトの[ティアリスト](/guides/tier-list)を参考にしてください。"
+      "a": "通常の Circuit を開始する前に、**毎週の 3 つの選択肢から 1 つの Warframe を選択してください**。その設計図は、ティア **2、5、8、10** でロック解除されます。製作には依然としてリソースとCreditsが必要です。毎週の報酬目標は、プレイする Warframe とは別のものです。 [Circuit トラッカー](/circuit) を使用して計画を立てます。"
     },
     {
       "q": "Incarnon adapters用のSteel Path Circuitをアンロックするにはどうすればよいですか？",
-      "a": "まず、通常の星系マップのすべてのノードをクリアして[Steel Pathをアンロック](/guides/steel-path)する必要があります。その後、CircuitをSteel Pathに切り替えます。週替わりのローテーション報酬として、**Incarnon Genesis adapters**とSteel Essenceが手に入り、毎週異なるアダプターセットが提供されます。"
+      "a": "Teshin でベース Steel Path のロックを解除し、次に The Duviri Paradox を完了し、少なくとも 1 つの通常の Circuit ステージ後に脱出し、Orowyrm を倒して通常の Lone Story から脱出します。通常の Circuit 報酬トラックをすべて完了する必要はありません。基本ロック解除には、ホットフィックス 38.5.3 に基づく Zariman、Albrecht's Laboratories、および Höllvania ミッションが含まれません。 Cavalero を使用してアダプターをインストールするには、Angels of the Zariman が別途必要です。"
     },
     {
       "q": "Duviriのランの間でDecreesは引き継がれますか？",
-      "a": "いいえ。Decreesはローグライクなバフであり、現在のランの間だけ有効で、終了した瞬間にリセットされます。機会があるたびに獲得し、キル時回復とダメージブーストといったスタックによるシナジーを追求して、そのラン限りの圧倒的なパワーを楽しみましょう。"
+      "a": "いいえ。Decrees は実行の間にリセットされます。 Intrinsics が持続します。お使いの機器に合ったアップグレードを選択し、選択する前に **Spiteful Decree** のペナルティを読んでください。"
     },
     {
       "q": "WarframeでKullervoを入手するにはどうすればよいですか？",
-      "a": "KullervoはDuviriでfarm（周回）できます。彼の設計図は、Spiralの最後に出現する**Orowyrm**の撃破や、**Kullervo's Hold**でのKullervoボス戦からドロップする**Kullervo's Bane**を使用して、DormizoneにいるDuviriの商人**Acrithis**から購入できます。その後、**Pathos Clamps**（これもOrowyrmからドロップ）を使用して製作します。確率によるランダムドロップの周回（grind）はなく、通貨による購入となります。"
+      "a": "**Anger、Sorrow、または Fear** の間に **Kullervo’s Hold** で Kullervo と戦い、**同じセッションで Orowyrm を倒します**。得た **Kullervo’s Bane** を **Acrithis** で Kullervo の設計図と交換し、コンポーネントと最終的な Warframe を製作します。最終レシピには **10 Pathos Clamps** も必要です。"
     },
     {
       "q": "Duviriの1回のランにはどのくらいの時間がかかりますか？",
-      "a": "Duviri Experienceを丸ごとプレイすると、およそ20〜40分かかります。Circuitのランはエンドレス（制限なし）であり、脱出を選択するか全滅するまでラウンドをクリアし続けます。純粋な報酬のfarming（周回）目的であれば、実際に欲しいティアを獲得した時点で終了することができます。"
+      "a": "固定された期間はありません。探索、目標、装備、分隊のペースがすべて重要です。 The Lone Story は実行を主な目的に限定します。 Circuit を使用すると、ステージ間の脱出を選択できます。毎週のトラック全体が 1 回の短い訪問に収まると仮定するのではなく、次の報酬レベルを考慮して計画を立ててください。"
     }
   ],
   "videos": [
@@ -348,20 +353,44 @@
   ],
   "sources": [
     {
-      "label": "r/Warframe — Calling out Duviri entitlement",
-      "href": "https://reddit.com/r/Warframe/comments/1r4dfbj/calling_out_duviri_entitlement/"
+      "label": "Digital Extremes — The Duviri Paradox quest guide",
+      "href": "https://www.warframe.com/en/guides/quests/the-duviri-paradox"
     },
     {
-      "label": "r/Warframe — Understanding the gameplay loop of different frames (Duviri/Circuit)",
-      "href": "https://reddit.com/r/Warframe/comments/1hz547w/understanding_the_gameplay_loop_of_different/"
+      "label": "Digital Extremes — Hotfix 36.0.8: Uranus Junction access",
+      "href": "https://www.warframe.com/en/patch-notes/pc/36-0-8"
     },
     {
-      "label": "r/Warframe — An Updated Beginner's Guide to Steel Path",
-      "href": "https://reddit.com/r/Warframe/comments/1ib1amq/an_updated_beginners_guide_to_steel_path_early/"
+      "label": "Digital Extremes — Hotfix 38.5.3: Steel Path requirements",
+      "href": "https://www.warframe.com/en/patch-notes/pc/38-5-3"
     },
     {
-      "label": "Warframe Wiki",
-      "href": "https://wiki.warframe.com/"
+      "label": "Digital Extremes — Hotfix 33.5.6: Duviri completion tracking",
+      "href": "https://www.warframe.com/en/patch-notes/pc/33-5-6"
+    },
+    {
+      "label": "Digital Extremes — Update 33: Circuit rewards and Intrinsics",
+      "href": "https://www.warframe.com/en/patch-notes/pc/33-0-0"
+    },
+    {
+      "label": "Digital Extremes — Update 33.5: Kullervo and Spiteful Decrees",
+      "href": "https://www.warframe.com/en/patch-notes/pc/33-5-0"
+    },
+    {
+      "label": "Digital Extremes — Update 34: Circuit reward alternatives",
+      "href": "https://www.warframe.com/en/patch-notes/pc/34-0-0"
+    },
+    {
+      "label": "Digital Extremes — Update 39: Isleweaver",
+      "href": "https://www.warframe.com/en/patch-notes/pc/39-0-0"
+    },
+    {
+      "label": "WFCD — current Warframe crafting data",
+      "href": "https://raw.githubusercontent.com/WFCD/warframe-items/master/data/json/Warframes.json"
+    },
+    {
+      "label": "WFCD — current resource identifiers",
+      "href": "https://raw.githubusercontent.com/WFCD/warframe-items/master/data/json/Resources.json"
     }
   ],
   "related": [
@@ -381,7 +410,7 @@
       "label": "Riven MODガイド",
       "to": "/guides/riven",
       "icon": "cards-playing-outline",
-      "note": "Circuitで獲得したRiven Sliversを交換する"
+      "note": "Steel Path で利用できる Riven の特典を理解する"
     },
     {
       "label": "新規プレイヤーガイド",
@@ -396,11 +425,11 @@
       "note": "Duviriサイクルチェッカーなど"
     },
     {
-      "label": "Riven価値見積もりツール",
-      "to": "/riven-value",
-      "icon": "chart-line",
-      "note": "サイクル（ロール）したRivenの価格を査定する"
+      "label": "毎週の Circuit トラッカー",
+      "to": "/circuit",
+      "icon": "calendar-sync",
+      "note": "今週の Warframe とインカノンの選択肢を比較してください"
     }
   ],
-  "updated": "2026-07-18"
+  "updated": "2026-10-25"
 }

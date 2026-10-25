@@ -330,7 +330,7 @@ export const PAGE_SEO: Record<string, PageSeo> = {
   '/guides/duviri': {
     title: 'Warframe Duviri Paradox Guide — Circuit & Decrees',
     description:
-      'How the Duviri Paradox works in Warframe: the roguelike Circuit, Decrees, and the weekly Warframe and Incarnon rewards. Playable from the very start.'
+      'Unlock Duviri, choose Circuit rewards, farm Kullervo and prepare for Steel Path Incarnon adapters. Learn quest requirements, Decrees and weekly reward choices.'
   },
   '/guides/archon-shards': {
     title: 'Warframe Archon Shards Guide — Farming & Best Stats',
