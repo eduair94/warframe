@@ -82,6 +82,61 @@ describe('WfmRateLimiter', () => {
     expect(c.now() - before).toBeGreaterThanOrEqual(5_000);
   });
 
+  it('rateLimited() slows every later request and backs off further on each 429', async () => {
+    const c = fakeClock();
+    const limiter = new WfmRateLimiter({ maxRps: 1, cooldownMs: 15 * 60_000, now: c.now, sleep: c.sleep });
+    await limiter.acquire();
+
+    let t0 = c.now();
+    limiter.rateLimited(null);
+    await limiter.acquire();
+    const firstPause = c.now() - t0;
+    expect(firstPause).toBeGreaterThanOrEqual(30_000);
+    expect(limiter.isBlocked()).toBe(false);
+
+    // The process keeps running at half its budget, not just after one pause.
+    t0 = c.now();
+    await limiter.acquire();
+    expect(c.now() - t0).toBe(2_000);
+
+    t0 = c.now();
+    limiter.rateLimited(null);
+    await limiter.acquire();
+    expect(c.now() - t0).toBeGreaterThanOrEqual(2 * firstPause);
+  });
+
+  it('caps the 429 back-off at the block cooldown but honours a longer Retry-After', async () => {
+    const c = fakeClock();
+    const limiter = new WfmRateLimiter({ maxRps: 1, cooldownMs: 15 * 60_000, now: c.now, sleep: c.sleep });
+    for (let i = 0; i < 20; i++) limiter.rateLimited(null);
+    let t0 = c.now();
+    await limiter.acquire();
+    expect(c.now() - t0).toBeLessThanOrEqual(15 * 60_000);
+
+    const fresh = new WfmRateLimiter({ maxRps: 1, cooldownMs: 15 * 60_000, now: c.now, sleep: c.sleep });
+    t0 = c.now();
+    fresh.rateLimited(120_000);
+    await fresh.acquire();
+    expect(c.now() - t0).toBeGreaterThanOrEqual(120_000);
+  });
+
+  it('succeeded() gradually restores the configured rate after a 429', async () => {
+    const c = fakeClock();
+    const limiter = new WfmRateLimiter({ maxRps: 1, cooldownMs: 15 * 60_000, now: c.now, sleep: c.sleep });
+    limiter.rateLimited(null);
+    limiter.succeeded();
+    await limiter.acquire();
+    let t0 = c.now();
+    await limiter.acquire();
+    expect(c.now() - t0).toBeGreaterThan(1_000);
+
+    for (let i = 0; i < 300; i++) limiter.succeeded();
+    await limiter.acquire();
+    t0 = c.now();
+    await limiter.acquire();
+    expect(c.now() - t0).toBe(1_000);
+  });
+
   it('clamps nonsense rates to a safe floor instead of dividing by zero', async () => {
     const c = fakeClock();
     const limiter = new WfmRateLimiter({ maxRps: 0, cooldownMs: 60_000, now: c.now, sleep: c.sleep });

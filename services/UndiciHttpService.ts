@@ -420,6 +420,8 @@ export class UndiciHttpService implements IHttpClient {
           throw new Error(`HTTP ${response.statusCode}`);
         }
 
+        if (wfm) this.config.wfmLimiter.succeeded();
+
         // Decompress and parse response
         const contentEncoding = response.headers['content-encoding'] as string | undefined;
         const responseText = await this.decompressResponse(
@@ -475,8 +477,8 @@ export class UndiciHttpService implements IHttpClient {
    * Classifies a 403/429 from warframe.market. A Cloudflare challenge opens the
    * breaker and is never retried: retrying (or rotating proxies) is what turned
    * rate limiting into the 2026-10-02 block. A plain 403 is an API refusal
-   * (the v1 endpoints answer `Deprecated`), also final. A 429 pauses the
-   * limiter for Retry-After and falls through to the normal backoff/retry.
+   * (the v1 endpoints answer `Deprecated`), also final. A 429 slows the whole
+   * process (WfmRateLimiter.rateLimited) before the normal retry.
    *
    * @private
    */
@@ -496,7 +498,7 @@ export class UndiciHttpService implements IHttpClient {
     if (statusCode === 403) {
       throw new WfmNonRetryableError(`HTTP 403 from warframe.market: ${body.slice(0, 80).trim()}`, 403);
     }
-    this.config.wfmLimiter.pauseFor(parseRetryAfterMs(headers['retry-after']) ?? 5000);
+    this.config.wfmLimiter.rateLimited(parseRetryAfterMs(headers['retry-after']));
   }
 
   /**
@@ -553,6 +555,7 @@ export class UndiciHttpService implements IHttpClient {
           throw new Error(`HTTP ${response.statusCode}`);
         }
 
+        if (wfm) this.config.wfmLimiter.succeeded();
         if (proxy && proxy !== this.wfmProxyUrl) {
           ProxyRotation.recordProxyPerformance(proxy, true);
         }

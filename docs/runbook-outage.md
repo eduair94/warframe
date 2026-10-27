@@ -207,8 +207,8 @@ hostname restriction. Only `api.warframe.market` uses this fixed proxy. WFCD
 and GitHub requests retain their existing transport. A failed tunnel never
 falls back to the blocked direct IP. Keep the rotating pool disabled.
 
-The two hosts share one upstream budget: prices 1.2 RPS, auctions 0.3, live
-0.5, API 0.3, and four WFM one-shots at 0.15 each, totaling at most 2.9 RPS.
+The two hosts share one upstream budget: prices 1.2 RPS, auctions 0.1, live
+0.5, API 0.3, and four WFM one-shots at 0.15 each, totaling at most 2.7 RPS.
 The API host's WFM syncs must remain parked. Rates include retries and statistics.
 `WFM_V1_STATS=true` restores real 48-hour volume and averages; only enable it
 after a successful JSON response from that endpoint, since access may differ
@@ -230,6 +230,30 @@ curl -s https://warframe.digitalshopuy.com/health
 Inspect several catalogue rows and their `market.last_completed` too. The
 sync processes oldest prices first, so a five-day backlog needs a full sweep;
 `/health` reports the newest update, not coverage of the whole catalogue.
+
+### Egress challenged too (2026-10-25) — the 429s were the warning
+
+Prices stopped at 2026-10-25 16:37 UTC: Cloudflare challenged `box83`, two
+days after the cutover. Both earlier blocks had the same precursor. The
+auctions sync's v1 `/auctions/search` answered **~1,000 429s per day** at its
+0.3 RPS budget (Oct 14–18 on `.10`, Oct 23–25 through `box83`). Prices
+rarely got one. Each 429 cost a 5 s pause and was retried up to 25 times
+(5 client attempts × 5 `syncSingleRiven` attempts). After a few days of that,
+Cloudflare escalated to a challenge for the whole IP, and every caller on it
+stopped, prices included.
+
+Now a 429 halves the caller's rate and pauses it 30 s, doubling per further
+429 (`WfmRateLimiter.rateLimited`); successes slowly restore it. Auctions run
+at 0.1 RPS. Count 429s before trusting a new egress:
+
+```bash
+ssh build 'grep -c " 429 " /root/.pm2/logs/warframe-offbox-sync-*-out.log'
+```
+
+A steady stream of 429s means a block is coming; a handful per day is fine.
+Moving the syncs to yet another IP while they still draw 429s just loses that
+IP too. When every egress is challenged, the breakers probe once per 15
+minutes and resume on their own once warframe.market lifts the challenge.
 
 ## What now protects this, and what each layer does not do
 

@@ -23,6 +23,18 @@ describe('production WFM request budgets', () => {
     expect(callers.every((app: any) => app.env.PROXY_LESS === 'true')).toBe(true);
   });
 
+  it('keeps the riven auctions search at or below 0.1 RPS on both hosts', () => {
+    // v1 /auctions/search answered ~1,000 429s a day at 0.3 RPS; Cloudflare then
+    // challenged the sync host (2026-10-18) and the fixed egress (2026-10-25).
+    delete process.env.WFM_EGRESS_SSH_TARGET;
+    const apps = [
+      ...require('./ecosystem.config.js').apps,
+      ...require('./ecosystem.sync.config.js').apps,
+    ].filter((app: any) => /sync-auctions$/.test(app.name));
+    expect(apps).toHaveLength(2);
+    expect(apps.every((app: any) => Number(app.env.WFM_MAX_RPS) <= 0.1)).toBe(true);
+  });
+
   it('registers only a loopback SOCKS listener with reconnect supervision', () => {
     process.env.WFM_EGRESS_SSH_TARGET = 'sync@example.test';
     process.env.WFM_EGRESS_SSH_KEY = '/keys/egress';

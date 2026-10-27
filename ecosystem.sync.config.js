@@ -61,7 +61,7 @@ module.exports = {
       restart_delay: 5000,
     },
     app("sync-prices", "dist/sync_prices.js", 1.2, { autorestart: true, restart_delay: 10000 }),
-    app("sync-auctions", "dist/sync_auctions.js", 0.3, { autorestart: true, restart_delay: 10000 }),
+    app("sync-auctions", "dist/sync_auctions.js", 0.1, { autorestart: true, restart_delay: 10000 }),
     app("sync-items", "dist/sync_items.js", 0.15, { autorestart: false, cron_restart: "0 0 * * *" }),
     app("sync-rivens", "dist/sync_rivens.js", 0.15, { autorestart: false, cron_restart: "0 0 * * 0" }),
     app("sync-translations", "dist/sync_translations.js", 0.15, { autorestart: false, cron_restart: "0 4 * * *" }),

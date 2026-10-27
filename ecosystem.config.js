@@ -3,7 +3,9 @@
 // 2026-10-02 to 2026-10-11. Every process paces its warframe.market calls
 // through services/WfmRateLimiter.ts at WFM_MAX_RPS; the budgets below keep the
 // processes sharing the fixed egress under 3 RPS together: prices 1.2 + live
-// 0.5 + auctions 0.3 + server 0.3 + all four WFM one-shots at 0.15 = 2.9.
+// 0.5 + auctions 0.1 + server 0.3 + all four WFM one-shots at 0.15 = 2.7.
+// auctions/search 429s far below 3 RPS (~1,000/day at 0.3), so it stays at 0.1;
+// any 429 also halves the caller's rate (WfmRateLimiter.rateLimited).
 // Only one host runs the syncs (WFM_SYNC_ENABLED). PROXY_LESS disables the
 // rotating pool; WFM_PROXY_URL can select a fixed egress without bypassing pacing.
 const egress = require("./ecosystem.egress.config.js");
@@ -61,7 +63,7 @@ module.exports = {
             name: "warframe-sync-auctions",
             autorestart: true,
             script: "dist/sync_auctions.js",
-            env: WFM(0.3),
+            env: WFM(0.1),
             log_date_format: "YYYY-MM-DD HH:mm Z",
         },
         {

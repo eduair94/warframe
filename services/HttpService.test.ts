@@ -66,6 +66,21 @@ describe('HttpService - warframe.market protection', () => {
     expect(acquire).toHaveBeenCalledTimes(1);
   });
 
+  it('reports a 429 to the limiter so the whole process slows down, and each success', async () => {
+    const limiter = new WfmRateLimiter({ maxRps: 100, cooldownMs: 60_000 });
+    const rateLimited = jest.spyOn(limiter, 'rateLimited').mockImplementation(() => {});
+    const succeeded = jest.spyOn(limiter, 'succeeded');
+    const service = makeService(limiter);
+    withAdapter(service, [
+      { status: 429, data: '', headers: { 'retry-after': '7' } },
+      { status: 200, data: { data: [] } },
+    ]);
+
+    await expect(service.get(WFM)).resolves.toEqual({ data: [] });
+    expect(rateLimited).toHaveBeenCalledWith(7_000);
+    expect(succeeded).toHaveBeenCalledTimes(1);
+  });
+
   it('pins WFM requests to the configured SOCKS proxy while leaving other hosts direct', async () => {
     process.env.WFM_PROXY_URL = 'socks5://127.0.0.1:27028';
     const limiter = new WfmRateLimiter({ maxRps: 100, cooldownMs: 60_000 });

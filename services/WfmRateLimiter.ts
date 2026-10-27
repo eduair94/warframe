@@ -18,10 +18,16 @@
  *   open `acquire()` waits (it does not throw), so a long-running sync goes
  *   quiet and sends at most one probe per cooldown instead of crash-looping
  *   under pm2 and re-triggering the block.
- * - `pauseFor()` honours a 429's Retry-After without opening the breaker.
+ * - `rateLimited()` reacts to a 429: it halves this process's rate and pauses
+ *   it (30 s, doubling per 429, capped at the cooldown). `succeeded()` slowly
+ *   gives the rate back. A 429 used to cost a 5 s pause and an immediate
+ *   retry, so the auctions sync absorbed ~1,000 429s a day until Cloudflare
+ *   challenged the sync host (2026-10-18) and the fixed egress (2026-10-25).
  *
  * The per-process budgets are set in ecosystem.config.js so the processes
- * sharing the prod IP stay under the documented 3 RPS together.
+ * sharing the prod IP stay under the documented 3 RPS together. They are
+ * independent limiters, so only the 429 back-off keeps them under the
+ * server's real per-endpoint limits.
  */
 
 export interface WfmRateLimiterOptions {
@@ -35,6 +41,12 @@ export interface WfmRateLimiterOptions {
 
 /** Lowest rate accepted, so a bad env value cannot divide by zero or stall forever. */
 const MIN_RPS = 0.05;
+/** Slowest a run of 429s can push a process: 1/32 of its budget. */
+const MAX_PENALTY = 32;
+/** Pause after the first 429; doubles with each further 429. */
+const RATE_LIMIT_PAUSE_MS = 30_000;
+/** Each success removes 2% of the slowdown (~35 successes per halving). */
+const PENALTY_DECAY = 0.98;
 
 export class WfmRateLimiter {
   private readonly intervalMs: number;
@@ -45,6 +57,8 @@ export class WfmRateLimiter {
   private nextSlot = 0;
   /** Breaker: no request may start before this time. */
   private blockedUntil = 0;
+  /** Interval multiplier raised by 429s and decayed by successes. */
+  private penalty = 1;
 
   constructor(opts: WfmRateLimiterOptions) {
     const rps = Number.isFinite(opts.maxRps) && opts.maxRps > MIN_RPS ? opts.maxRps : MIN_RPS;
@@ -64,7 +78,7 @@ export class WfmRateLimiter {
       }
       // Reserve the slot synchronously so concurrent callers queue behind it.
       const slot = Math.max(now, this.nextSlot);
-      this.nextSlot = slot + this.intervalMs;
+      this.nextSlot = slot + this.intervalMs * this.penalty;
       if (slot > now) await this.sleep(slot - now);
       // A block tripped while we waited invalidates the slot: wait it out.
       if (this.blockedUntil > this.now()) continue;
@@ -77,9 +91,21 @@ export class WfmRateLimiter {
     this.blockedUntil = Math.max(this.blockedUntil, this.now() + this.cooldownMs);
   }
 
-  /** Delays every request by at least `ms` (429 Retry-After) without opening the breaker. */
+  /** Delays every request by at least `ms` without opening the breaker. */
   pauseFor(ms: number): void {
     this.nextSlot = Math.max(this.nextSlot, this.now() + Math.max(0, ms));
+  }
+
+  /** A 429: halve this process's rate and pause it (Retry-After when longer). */
+  rateLimited(retryAfterMs: number | null): void {
+    this.penalty = Math.min(this.penalty * 2, MAX_PENALTY);
+    const backoff = Math.min((RATE_LIMIT_PAUSE_MS * this.penalty) / 2, Math.max(this.cooldownMs, RATE_LIMIT_PAUSE_MS));
+    this.pauseFor(Math.max(retryAfterMs ?? 0, backoff));
+  }
+
+  /** A successful warframe.market response: give back part of any 429 slowdown. */
+  succeeded(): void {
+    this.penalty = Math.max(1, this.penalty * PENALTY_DECAY);
   }
 
   isBlocked(): boolean {

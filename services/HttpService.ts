@@ -114,7 +114,7 @@ export class HttpService implements IHttpClient {
   /**
    * Routes every warframe.market request (retries included) through the
    * process-wide limiter, opens its breaker on a Cloudflare challenge and
-   * honours 429 Retry-After. See WfmRateLimiter for why.
+   * slows the process on a 429. See WfmRateLimiter for why.
    *
    * @private
    */
@@ -132,14 +132,17 @@ export class HttpService implements IHttpClient {
       }
       return requestConfig;
     });
-    this.axiosInstance.interceptors.response.use(undefined, (error: AxiosError) => {
+    this.axiosInstance.interceptors.response.use((response) => {
+      if (isWfmUrl(this.axiosInstance.getUri(response.config))) this.wfmLimiter.succeeded();
+      return response;
+    }, (error: AxiosError) => {
       const res = error.response;
       if (res && error.config && isWfmUrl(this.axiosInstance.getUri(error.config))) {
         const body = typeof res.data === 'string' ? res.data : undefined;
         if (isCloudflareChallenge(res.status, res.headers as Record<string, unknown>, body)) {
           this.wfmLimiter.tripBlocked();
         } else if (res.status === 429) {
-          this.wfmLimiter.pauseFor(parseRetryAfterMs(res.headers['retry-after']) ?? 5000);
+          this.wfmLimiter.rateLimited(parseRetryAfterMs(res.headers['retry-after']));
         }
       }
       return Promise.reject(error);

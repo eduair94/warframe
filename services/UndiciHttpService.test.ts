@@ -83,6 +83,20 @@ describe('UndiciHttpService - warframe.market protection', () => {
     expect(acquire).toHaveBeenCalledTimes(2);
   });
 
+  it('reports a 429 to the limiter so the whole process slows down, and each success', async () => {
+    const limiter = new WfmRateLimiter({ maxRps: 100, cooldownMs: 60_000 });
+    const rateLimited = jest.spyOn(limiter, 'rateLimited').mockImplementation(() => {});
+    const succeeded = jest.spyOn(limiter, 'succeeded');
+    requestMock
+      .mockResolvedValueOnce(response(429, '', { 'retry-after': '7' }))
+      .mockResolvedValueOnce(response(200, '{"data":[]}', { 'content-type': 'application/json' }));
+
+    await expect(makeService(limiter).get(WFM)).resolves.toEqual({ data: [] });
+    expect(rateLimited).toHaveBeenCalledTimes(1);
+    expect(rateLimited).toHaveBeenCalledWith(7_000);
+    expect(succeeded).toHaveBeenCalledTimes(1);
+  });
+
   it('does not pace non-warframe.market hosts', async () => {
     const limiter = new WfmRateLimiter({ maxRps: 100, cooldownMs: 60_000 });
     const acquire = jest.spyOn(limiter, 'acquire');
