@@ -255,6 +255,29 @@ Moving the syncs to yet another IP while they still draw 429s just loses that
 IP too. When every egress is challenged, the breakers probe once per 15
 minutes and resume on their own once warframe.market lifts the challenge.
 
+### Egress moved to box147 (2026-10-27)
+
+With the 429 back-off deployed and `box83` still challenged, both hosts'
+egress moved to `box147` (147.93.146.232, also the cold standby). Its root
+`authorized_keys` holds the two egress public keys (`warframe-wfm-egress-sync`
+from `.10`, `warframe-wfm-egress-api` from `.11`) with the same
+`restrict,port-forwarding,permitopen="api.warframe.market:443",command="/bin/false"`
+prefix, so they can reach nothing else. Both hosts' `.env` now read
+`WFM_EGRESS_SSH_TARGET=root@147.93.146.232`; v1 statistics answer JSON there.
+
+To change the egress host, edit `.env`, then recreate the tunnel. A plain
+`pm2 restart` keeps the old SSH arguments:
+
+```bash
+# .10 (root)
+ssh build 'cd /opt/warframe-sync && set -a && . ./.env && set +a && pm2 delete warframe-egress-proxy && pm2 start ecosystem.sync.config.js --only warframe-egress-proxy && pm2 save'
+# .11 (debian10)
+ssh wpsocket 'cd /home/debian10/warframe && sudo pm2 delete warframe-egress-proxy && sudo pm2 start ecosystem.config.js --only warframe-egress-proxy && sudo pm2 save'
+```
+
+Restart the long-running syncs afterwards so their breakers do not wait out
+the remaining cooldown.
+
 ## What now protects this, and what each layer does not do
 
 | Layer | Covers | Does **not** cover |
