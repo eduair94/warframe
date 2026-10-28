@@ -29,7 +29,7 @@
 </template>
 
 <script setup lang="ts">
-const { locale, locales, t } = useI18n()
+const { locale, locales, t, loadLocaleMessages } = useI18n()
 const switchLocalePath = useSwitchLocalePath()
 const { trackAction } = useAnalytics()
 
@@ -76,7 +76,7 @@ const ariaText = computed(() =>
   t('localeSuggest.aria', {}, { locale: target.value || 'en' }),
 )
 
-onMounted(() => {
+onMounted(async () => {
   // Already decided (switched or dismissed) — never ask again.
   if (pref.value) return
   const navs =
@@ -86,6 +86,13 @@ onMounted(() => {
   const detected = mapNavToLocale(navs)
   if (!detected || detected === locale.value) return
   const lo = locales.value.find((l: any) => l.code === detected)
+  // Locales load lazily, and production has no fallback: before this load the
+  // banner showed raw keys ("localeSuggest.prompt"). Stay quiet if it fails.
+  try {
+    await loadLocaleMessages(detected)
+  } catch {
+    return
+  }
   target.value = detected
   targetName.value = (lo as any)?.name || detected
   show.value = true
