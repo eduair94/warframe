@@ -3,10 +3,13 @@ import * as http from 'http';
 import { Server, Socket } from 'socket.io';
 import WebSocket from 'ws';
 import { HttpsProxyAgent } from 'https-proxy-agent';
+import { SocksProxyAgent } from 'socks-proxy-agent';
 import { MongooseServer } from './database';
 import WarframeUndici from './warframe-undici';
 import { ItemService } from './services/ItemService';
 import { PriceHistoryService } from './services/PriceHistoryService';
+import { readWfmProxyUrl } from './services/WfmProxy';
+import { wfmRateLimiter } from './services/WfmRateLimiter';
 import { readLiveConfig } from './services/live/LiveConfig';
 import { LiveStore } from './services/live/LiveStore';
 import { FairValueService } from './services/live/FairValueService';
@@ -19,10 +22,9 @@ import {
   subscribeNewOrdersMsg,
   WFM_SOCKET_URL,
   WFM_SUBPROTOCOL,
+  WFM_SOCKET_USER_AGENT,
+  wfmSocketReconnectDelayMs,
 } from './services/live/WfmNewOrders';
-
-const BROWSER_UA =
-  'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36';
 
 async function main() {
   const cfg = readLiveConfig(process.env);
@@ -81,12 +83,16 @@ async function main() {
   });
 
   // --- wf.market live socket: global new-orders firehose -> market pulse ---
-  // Cloudflare-gated, so route the handshake through the same proxy pool the REST
-  // poller uses (a direct connect gets 403). One persistent connection, auto-reconnect.
+  // One persistent connection through the same fixed egress as every other
+  // warframe.market call (WFM_PROXY_URL). Failed or short-lived connections back
+  // off exponentially and wait out an open REST breaker: a fixed 4 s retry used
+  // to hammer the socket from the challenged API host all day.
   const itemById = new Map<string, { url_name?: string; item_name?: string; thumb?: string }>();
   const newOrders = new WfmNewOrders({ resolveItem: (id) => itemById.get(id) || null });
   let wfmUp = false;
   let wfmReconnecting = false;
+  let wfmFailures = 0;
+  let wfmOpenedAt = 0;
 
   async function loadItemIndex(): Promise<void> {
     try {
@@ -105,23 +111,35 @@ async function main() {
   function scheduleWfmReconnect(): void {
     if (wfmReconnecting) return;
     wfmReconnecting = true;
-    setTimeout(() => { wfmReconnecting = false; connectWfmSocket(); }, 4000);
+    // A connection that stayed up for a minute was healthy; a shorter one is a failure.
+    if (wfmOpenedAt && Date.now() - wfmOpenedAt >= 60_000) wfmFailures = 0;
+    wfmOpenedAt = 0;
+    const delay = Math.max(wfmSocketReconnectDelayMs(wfmFailures++), wfmRateLimiter.blockedUntilMs() - Date.now());
+    console.warn(`[live] wfm socket down - reconnecting in ${Math.round(delay / 1000)}s`);
+    setTimeout(() => { wfmReconnecting = false; connectWfmSocket(); }, delay);
   }
   async function connectWfmSocket(): Promise<void> {
     if (cfg.feedMode === 'off' || !cfg.newOrders) return;
-    let proxy: string | null = null;
-    try { proxy = await (wf as any).getHttpService().getProxyManager().getProxy(); } catch {}
-    const opts: any = { origin: 'https://warframe.market', headers: { 'User-Agent': BROWSER_UA } };
-    if (proxy) opts.agent = new HttpsProxyAgent(String(proxy));
+    let proxy = readWfmProxyUrl();
+    if (!proxy) {
+      try { proxy = await (wf as any).getHttpService().getProxyManager().getProxy(); } catch {}
+    }
+    const opts: WebSocket.ClientOptions = { headers: { 'User-Agent': WFM_SOCKET_USER_AGENT } };
+    if (proxy) opts.agent = proxy.startsWith('socks') ? new SocksProxyAgent(proxy) : new HttpsProxyAgent(String(proxy));
     const ws = new WebSocket(WFM_SOCKET_URL, [WFM_SUBPROTOCOL], opts);
     ws.on('open', () => {
       wfmUp = true;
+      wfmOpenedAt = Date.now();
       ws.send(subscribeNewOrdersMsg(cfg.platform));
       console.log('[live] wfm socket open (newOrders)');
     });
     ws.on('message', (d: WebSocket.RawData) => { newOrders.ingest(d.toString()); });
     ws.on('close', () => { wfmUp = false; scheduleWfmReconnect(); });
-    ws.on('error', () => { wfmUp = false; try { ws.terminate(); } catch {} });
+    ws.on('error', (e: Error) => {
+      wfmUp = false;
+      console.warn('[live] wfm socket error:', e.message);
+      try { ws.terminate(); } catch {}
+    });
   }
 
   io.on('connection', (socket: Socket) => {

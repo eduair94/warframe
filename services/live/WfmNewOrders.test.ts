@@ -1,4 +1,4 @@
-import { WfmNewOrders, subscribeNewOrdersMsg } from './WfmNewOrders';
+import { WfmNewOrders, subscribeNewOrdersMsg, wfmSocketReconnectDelayMs } from './WfmNewOrders';
 
 const items: Record<string, { url_name: string; item_name: string; thumb: string }> = {
   id1: { url_name: 'octavia_prime_set', item_name: 'Octavia Prime Set', thumb: 't1.png' },
@@ -20,6 +20,15 @@ describe('subscribeNewOrdersMsg', () => {
       payload: { platform: 'pc', crossplay: true },
       id: 'live',
     });
+  });
+});
+
+describe('wfmSocketReconnectDelayMs', () => {
+  it('backs off from 4 s, doubling per consecutive failure, capped at 15 minutes', () => {
+    // A refused handshake used to retry every 4 s forever (~21,600 a day from a
+    // Cloudflare-challenged IP).
+    expect([0, 1, 2, 3].map(wfmSocketReconnectDelayMs)).toEqual([4_000, 8_000, 16_000, 32_000]);
+    expect(wfmSocketReconnectDelayMs(50)).toBe(15 * 60_000);
   });
 });
 

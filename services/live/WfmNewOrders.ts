@@ -4,12 +4,27 @@
  * live orders/min rate, and a rolling ticker of the newest published orders.
  *
  * This module is the PURE state machine (ingest raw messages -> pulse); the actual
- * WebSocket connection (proxy-routed to pass Cloudflare) is wired in live.ts and
+ * WebSocket connection (through the fixed WFM egress, WFM_PROXY_URL) is wired in live.ts and
  * feeds messages here via ingest(). That keeps this unit-testable with no IO.
  */
 
 export const WFM_SOCKET_URL = 'wss://ws.warframe.market/socket';
 export const WFM_SUBPROTOCOL = 'wfm';
+/** Cloudflare challenges a socket handshake with no User-Agent (ws sends none by default). */
+export const WFM_SOCKET_USER_AGENT = 'warframe-analytics/1.0 (+https://warframe-app.digitalshopuy.com)';
+
+const RECONNECT_BASE_MS = 4_000;
+const RECONNECT_MAX_MS = 15 * 60_000;
+
+/**
+ * Delay before reconnecting after `failures` consecutive failed or short-lived
+ * connections: 4 s, doubling, capped at 15 minutes (the REST breaker's
+ * cooldown). A fixed 4 s retry made ~21,600 handshakes a day while Cloudflare
+ * refused the API host.
+ */
+export function wfmSocketReconnectDelayMs(failures: number): number {
+  return Math.min(RECONNECT_BASE_MS * 2 ** Math.max(0, failures), RECONNECT_MAX_MS);
+}
 
 /** The subscribe command the site sends to open the global new-orders feed. */
 export function subscribeNewOrdersMsg(platform: string): string {

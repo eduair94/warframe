@@ -262,8 +262,18 @@ egress moved to `box147` (147.93.146.232, also the cold standby). Its root
 `authorized_keys` holds the two egress public keys (`warframe-wfm-egress-sync`
 from `.10`, `warframe-wfm-egress-api` from `.11`) with the same
 `restrict,port-forwarding,permitopen="api.warframe.market:443",command="/bin/false"`
-prefix, so they can reach nothing else. Both hosts' `.env` now read
-`WFM_EGRESS_SSH_TARGET=root@147.93.146.232`; v1 statistics answer JSON there.
+prefix, so they can reach nothing else. The API key also carries
+`permitopen="ws.warframe.market:443"` for the live feed's new-orders socket.
+Both hosts' `.env` now read `WFM_EGRESS_SSH_TARGET=root@147.93.146.232`; v1
+statistics answer JSON there.
+
+The live socket used to connect directly from `.11` through the (disabled)
+proxy pool. It retried every 4 s with no logging, so while `.11` was
+challenged it made ~21,600 refused handshakes a day. It now uses
+`WFM_PROXY_URL`, sends an identifying User-Agent (Cloudflare challenges an
+empty one), backs off from 4 s up to 15 minutes, and logs each failure:
+`pm2 logs warframe-live | grep "wfm socket"`. `/health` on the live host
+reports `wfmSocket`.
 
 To change the egress host, edit `.env`, then recreate the tunnel. A plain
 `pm2 restart` keeps the old SSH arguments:
