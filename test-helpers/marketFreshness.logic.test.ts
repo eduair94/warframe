@@ -63,10 +63,24 @@ describe('catalogue price freshness', () => {
     }
   })
 
-  it('clears the warning only once every item has a recent recorded price', () => {
+  it('clears the warning once nearly every item has a recent recorded price', () => {
     expect(catalogueFreshness([priceAt(4 * 60 * 60_000), priceAt(5 * 60 * 60_000)], now).status).toBe('stale')
     expect(catalogueFreshness([priceAt(60_000), priceAt(5 * 60 * 60_000)], now).status).toBe('mixed')
     expect(catalogueFreshness([priceAt(60_000), priceAt(2 * 60_000)], now).status).toBe('fresh')
+  })
+
+  it('tolerates the items with no live orders, which keep their last recorded price', () => {
+    // A healthy sync leaves ~4% of the catalogue old: the price sync skips
+    // markets with no in-game orders instead of overwriting them with zeros.
+    const rows = (fresh: number, old: number, missing = 0) => [
+      ...Array.from({ length: fresh }, () => priceAt(60_000)),
+      ...Array.from({ length: old }, () => priceAt(12 * 24 * 60 * 60_000)),
+      ...Array.from({ length: missing }, () => ({})),
+    ]
+    expect(catalogueFreshness(rows(96, 4), now)).toMatchObject({ status: 'fresh', counts: { fresh: 96, stale: 4, unknown: 0 } })
+    expect(catalogueFreshness(rows(90, 6, 4), now).status).toBe('fresh')
+    expect(catalogueFreshness(rows(89, 11), now).status).toBe('mixed')
+    expect(catalogueFreshness(rows(89, 6, 5), now).status).toBe('mixed')
   })
 
   it('reads only recorded priceUpdate fields and does not mutate catalogue objects', () => {

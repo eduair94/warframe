@@ -1,4 +1,11 @@
 export const MARKET_STALE_AFTER_MS = 3 * 60 * 60 * 1000
+/**
+ * Share of the catalogue that may lack a recent price while it still counts as
+ * fresh. The price sync skips markets with no in-game orders (~4% of items)
+ * instead of overwriting their last price with zeros, so they never become
+ * recent. Requiring every item made the warning permanent on a healthy site.
+ */
+export const MARKET_STALE_SHARE_TOLERANCE = 0.1
 
 export interface CatalogueFreshness {
   status: 'empty' | 'unknown' | 'fresh' | 'stale' | 'mixed'
@@ -35,7 +42,7 @@ export function catalogueFreshness(
   }
 
   return {
-    status: counts.fresh === catalogue.length ? 'fresh'
+    status: catalogue.length - counts.fresh <= catalogue.length * MARKET_STALE_SHARE_TOLERANCE ? 'fresh'
       : counts.stale === catalogue.length ? 'stale'
         : counts.unknown === catalogue.length ? 'unknown' : 'mixed',
     latestUpdate: latest === -Infinity ? null : new Date(latest).toISOString(),
