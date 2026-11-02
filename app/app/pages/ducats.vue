@@ -191,10 +191,11 @@ function fmtPlat(n: number): string {
 function isDucatPart(item: any): boolean {
   // WFM also publishes the summed Ducat value of a set. A set listing cannot
   // be exchanged at a kiosk; compare individual parts at their own ask price.
+  // Some legacy part records inherited their set's tags, so identify assembled
+  // sets by the canonical slug instead of excluding every item tagged "set".
   return Boolean(item
     && typeof item.url_name === 'string'
     && !item.url_name.endsWith('_set')
-    && !item.tags?.includes('set')
     && Number.isSafeInteger(item.ducats) && item.ducats > 0
     && Number.isFinite(item.market?.sell) && item.market.sell > 0)
 }

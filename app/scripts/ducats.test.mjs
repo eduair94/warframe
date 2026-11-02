@@ -40,11 +40,17 @@ test('Ducat comparison keeps the current Blade value and excludes its assembled 
   assert.equal(eligible([blade])[0].ducats / blade.market.sell, 2.6)
 })
 
-test('legacy set rows are excluded even when their tags come from a sibling part', () => {
+test('legacy parts remain exchangeable despite inherited set tags while canonical sets stay excluded', () => {
+  const parts = [
+    { url_name: 'tigris_prime_receiver', tags: ['primary', 'prime', 'weapon', 'set'], ducats: 45, market: { sell: 10 } },
+    { url_name: 'helios_prime_carapace', tags: ['prime', 'sentinel', 'set'], ducats: 15, market: { sell: 10 } },
+    { url_name: 'equinox_prime_blueprint', tags: ['set', 'prime', 'warframe'], ducats: 45, market: { sell: 10 } },
+  ]
   assert.deepEqual(eligible([
+    ...parts,
     { url_name: 'nami_skyla_prime_set', tags: ['component', 'prime'], ducats: 235, market: { sell: 94 } },
-    { url_name: 'unexpected_bundle', tags: ['set'], ducats: 235, market: { sell: 94 } },
-  ]), [])
+    { url_name: 'tigris_prime_set', tags: ['primary', 'prime', 'weapon', 'set'], ducats: 205, market: { sell: 94 } },
+  ]), parts)
 })
 
 test('missing, invalid and nonpositive exchange values or asks cannot become offers', () => {

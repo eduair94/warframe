@@ -1313,6 +1313,28 @@ The final guide validator, locale compiler and generated repository-map check
 also pass. Seventeen other guides remain in the review queue; existing unrelated
 translation follow-ups retain their original dates.
 
+The first full release `1e480121fac5e77ca66089b7f6dddb996622883b`
+([workflow 41395728158](https://github.com/eduair94/warframe/actions/runs/41395728158))
+passes at 05:52:20 UTC. All thirteen public guide snapshots and their metadata
+match the reviewed sources. Endo's browser check confirms the current-ask default,
+missing-bid exclusion and explicit historical-average option. The sync checkout
+advances to the same SHA without changing four worker/tunnel PIDs or six critical
+compiled transport modules. The guarded Ducat refresh changes 699 values: all
+match their expected results and none of nine protected metadata fields changes.
+Coverage rises from 58 to 757 positive values; Nami Blade is 65 and its set is 235.
+One concurrent price-loop update is observed; the refresh writes no price fields.
+
+Production verification then detects a filter regression: 157 individual parts
+carry inherited `set` tags (and even `set: true`), including Tigris Prime Receiver,
+Helios Prime Carapace and Equinox Prime Blueprint. Treating those tags as assembled
+sets hides valid offers. The follow-up identifies assembled sets by their canonical
+`_set` slug, retaining those individual parts. Actual catalogue fixtures extend
+the regression coverage. On the captured catalogue the corrected filter yields
+593 eligible offers: 594 individual parts, less one without a positive ask.
+All 163 assembled sets stay excluded; nine focused frontend regressions pass.
+This correction receives a second complete deployment; the metadata refresh is
+already applied and must not be repeated.
+
 All intended code and documentation are committed before the final full
 API/frontend/live workflow. Final gates, release proof, the Ducat refresh and
 public/browser results are retained in ignored `tmp/nov02-*` evidence and
