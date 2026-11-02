@@ -40,7 +40,7 @@ export default {
         buy: "Vaulted, climbing and still below its 30-day high — a fair entry.",
         watch: "Vaulted but flat or thin — no clear signal yet; keep an eye on it.",
         wait: "At its 30-day ceiling or falling — wait for a dip before buying.",
-        resurgence: "In Prime Resurgence now — buy it from Varzia with Aya instead of paying plat.",
+        resurgence: "Potential Prime Resurgence option — check Varzia's current relic offerings. Aya purchases relics; opening them does not guarantee the part.",
       },
       categories: {
         All: "All",
@@ -66,7 +66,7 @@ export default {
       },
       loadError: "Couldn’t load analytics. The market service may be waking up — try a refresh.",
       empty: "Nothing matches this filter. Switch the verdict to “All” to see every vaulted prime.",
-      disclaimer: "Verdicts are a heuristic from our own daily price history (average trade price, falling back to the sell order): trend, 30-day price position and trade volume, plus Prime Resurgence availability derived from currently-tradable relics. Not financial advice — prices move. “Varzia” means the prime is buyable with Aya from Prime Resurgence right now.",
+      disclaimer: "Verdicts summarize our daily market history: average trade price (or the available sell quote), trend, 30-day range and volume. They are comparison signals, not guaranteed returns. The Varzia flag is inferred from related relic data; confirm the current in-game offerings before spending Aya or platinum.",
     },
     nav: {
       items: {
@@ -112,7 +112,7 @@ export default {
         buy: "Vedado, subiendo y aún por debajo de su máximo de 30 días — una entrada razonable.",
         watch: "Vedado pero plano o con poco volumen — sin señal clara todavía; mantenlo vigilado.",
         wait: "En su techo de 30 días o cayendo — espera a una bajada antes de comprar.",
-        resurgence: "Ahora en Prime Resurgence — cómpralo a Varzia con Aya en vez de pagar plat.",
+        resurgence: "Posible opción de Prime Resurgence: consulta las reliquias que ofrece Varzia actualmente. Aya permite comprar reliquias; abrirlas no garantiza obtener la pieza.",
       },
       categories: {
         All: "Todos",
@@ -138,7 +138,7 @@ export default {
       },
       loadError: "No se pudo cargar la analítica. Puede que el servicio de mercado esté despertando — prueba a recargar.",
       empty: "Nada coincide con este filtro. Cambia el veredicto a «Todos» para ver todos los primes vedados.",
-      disclaimer: "Los veredictos son una heurística de nuestro propio historial diario de precios (precio medio de intercambio, o la orden de venta como respaldo): tendencia, posición del precio a 30 días y volumen de intercambio, más la disponibilidad en Prime Resurgence derivada de las reliquias intercambiables actualmente. No es asesoramiento financiero — los precios se mueven. «Varzia» significa que el prime se puede comprar con Aya en Prime Resurgence ahora mismo.",
+      disclaimer: "Las valoraciones resumen nuestro historial diario del mercado: precio medio de intercambio (o el precio de venta disponible), tendencia, rango de precios de 30 días y volumen. Sirven para comparar, sin garantizar ganancias. El indicador de Varzia se deduce de los datos de las reliquias relacionadas; confirma las ofertas actuales dentro del juego antes de gastar Aya o platino.",
     },
     nav: {
       items: {
@@ -184,7 +184,7 @@ export default {
         buy: "Vedado, subindo e ainda abaixo da máxima de 30 dias — uma entrada justa.",
         watch: "Vedado, mas estável ou com pouco volume — ainda sem sinal claro; fique de olho.",
         wait: "No teto de 30 dias ou em queda — espere uma baixa antes de comprar.",
-        resurgence: "No Prime Resurgence agora — compre da Varzia com Aya em vez de pagar plat.",
+        resurgence: "Possível opção de Prime Resurgence — confira as relíquias que Varzia oferece atualmente. Aya permite comprar relíquias; abri-las não garante obter a peça.",
       },
       categories: {
         All: "Todos",
@@ -210,7 +210,7 @@ export default {
       },
       loadError: "Não foi possível carregar as análises. O serviço de mercado pode estar iniciando — tente atualizar.",
       empty: "Nada corresponde a este filtro. Mude o veredito para “Todos” para ver todos os primes vedados.",
-      disclaimer: "Os vereditos são uma heurística baseada no nosso próprio histórico diário de preços (preço médio de troca, recorrendo à ordem de venda): tendência, posição do preço em 30 dias e volume de negociação, além da disponibilidade no Prime Resurgence derivada das relíquias atualmente negociáveis. Não é aconselhamento financeiro — os preços mudam. “Varzia” significa que o prime pode ser comprado com Aya no Prime Resurgence agora mesmo.",
+      disclaimer: "As avaliações resumem nosso histórico diário de mercado: preço médio de negociação (ou o preço de venda disponível), tendência, faixa de preços de 30 dias e volume. Servem para comparar, sem garantir ganhos. O indicador de Varzia é deduzido dos dados das relíquias relacionadas; confirme as ofertas atuais dentro do jogo antes de gastar Aya ou platina.",
     },
     nav: {
       items: {
@@ -256,7 +256,7 @@ export default {
         buy: "Gevaultet, steigend und noch unter seinem 30-Tage-Hoch — ein fairer Einstieg.",
         watch: "Gevaultet, aber flach oder dünn — noch kein klares Signal; behalte ihn im Auge.",
         wait: "An seiner 30-Tage-Obergrenze oder fallend — warte auf einen Rücksetzer vor dem Kauf.",
-        resurgence: "Jetzt in Prime Resurgence — kaufe ihn bei Varzia mit Aya, statt mit Plat zu bezahlen.",
+        resurgence: "Mögliche Option über Prime Resurgence — prüfe, welche Relikte Varzia aktuell anbietet. Mit Aya kaufst du Relikte; beim Öffnen ist das gewünschte Teil nicht garantiert.",
       },
       categories: {
         All: "Alle",
@@ -282,7 +282,7 @@ export default {
       },
       loadError: "Analytik konnte nicht geladen werden. Der Marktdienst wacht vielleicht gerade auf — versuche eine Aktualisierung.",
       empty: "Nichts passt zu diesem Filter. Stelle das Urteil auf „Alle“, um jeden gevaulteten Prime zu sehen.",
-      disclaimer: "Urteile sind eine Heuristik aus unserem eigenen täglichen Preisverlauf (durchschnittlicher Handelspreis, ersatzweise die Verkaufsorder): Trend, 30-Tage-Preisposition und Handelsvolumen, plus Prime-Resurgence-Verfügbarkeit abgeleitet aus aktuell handelbaren Relikten. Keine Finanzberatung — Preise bewegen sich. „Varzia“ bedeutet, dass der Prime gerade mit Aya aus Prime Resurgence kaufbar ist.",
+      disclaimer: "Die Bewertungen fassen unsere tägliche Markthistorie zusammen: durchschnittlicher Handelspreis (oder der verfügbare Angebotspreis eines Verkäufers), Trend, 30-Tage-Preisspanne und Volumen. Sie dienen dem Vergleich und garantieren keine Gewinne. Die Varzia-Markierung wird aus Daten zu zugehörigen Relikten abgeleitet; prüfe das aktuelle Angebot im Spiel, bevor du Aya oder Platin ausgibst.",
     },
     nav: {
       items: {
@@ -328,7 +328,7 @@ export default {
         buy: "Vaulted, en hausse et encore sous son plus haut sur 30 jours — un point d'entrée correct.",
         watch: "Vaulted mais stable ou peu échangé — pas de signal clair pour l'instant ; garde un œil dessus.",
         wait: "À son plafond sur 30 jours ou en baisse — attends une chute avant d'acheter.",
-        resurgence: "En Prime Resurgence en ce moment — achète-le chez Varzia avec de l'Aya plutôt que de payer en plat.",
+        resurgence: "Option potentielle via Prime Resurgence : consultez les reliques actuellement proposées par Varzia. Aya permet d’acheter des reliques ; leur ouverture ne garantit pas la pièce.",
       },
       categories: {
         All: "Tous",
@@ -354,7 +354,7 @@ export default {
       },
       loadError: "Impossible de charger les analyses. Le service de marché se réveille peut-être — essaie de rafraîchir.",
       empty: "Rien ne correspond à ce filtre. Passe le verdict sur « Tous » pour voir tous les primes vaulted.",
-      disclaimer: "Les verdicts sont une heuristique issue de notre propre historique de prix quotidien (prix d'échange moyen, à défaut l'ordre de vente) : tendance, position du prix sur 30 jours et volume d'échange, plus la disponibilité en Prime Resurgence déduite des reliques actuellement échangeables. Ce n'est pas un conseil financier — les prix bougent. « Varzia » signifie que le prime est achetable avec de l'Aya via Prime Resurgence en ce moment.",
+      disclaimer: "Les évaluations résument notre historique quotidien du marché : prix moyen des échanges (ou prix demandé dans l'offre de vente disponible), tendance, fourchette de prix sur 30 jours et volume. Ce sont des indicateurs de comparaison, sans garantie de gains. Le marqueur Varzia est déduit des données des reliques associées ; vérifiez les offres actuelles en jeu avant de dépenser de l’Aya ou du Platinum.",
     },
     nav: {
       items: {
@@ -400,7 +400,7 @@ export default {
         buy: "В Vaulted, растёт в цене и всё ещё ниже 30-дневного максимума — честная точка входа.",
         watch: "В Vaulted, но без движения или мало предложений — чёткого сигнала пока нет; держите на контроле.",
         wait: "На 30-дневном потолке или падает — дождитесь просадки перед покупкой.",
-        resurgence: "Сейчас в Prime Resurgence — купите у Varzia за Aya вместо того, чтобы платить платину.",
+        resurgence: "Возможный вариант через Prime Resurgence — проверьте, какие реликвии сейчас предлагает Varzia. За Aya покупают реликвии; их открытие не гарантирует получение нужной детали.",
       },
       categories: {
         All: "Все",
@@ -426,7 +426,7 @@ export default {
       },
       loadError: "Не удалось загрузить аналитику. Рыночный сервис, возможно, ещё запускается — попробуйте обновить.",
       empty: "По этому фильтру ничего не найдено. Переключите вердикт на «Все», чтобы увидеть все Vaulted prime.",
-      disclaimer: "Вердикты — это эвристика на основе нашей собственной ежедневной истории цен (средняя цена сделки, при её отсутствии — цена ордера на продажу): тренд, положение цены за 30 дней и объём торгов, плюс доступность в Prime Resurgence, выведенная из реликвий, которые торгуются в данный момент. Это не финансовый совет — цены меняются. «Varzia» означает, что prime прямо сейчас можно купить за Aya в Prime Resurgence.",
+      disclaimer: "Оценки обобщают нашу ежедневную историю рынка: среднюю цену сделок (или доступную цену предложения продавца), тренд, диапазон цен за 30 дней и объём. Это ориентиры для сравнения, а не гарантия прибыли. Отметка Varzia выводится из данных связанных реликвий; проверьте текущие предложения в игре, прежде чем тратить Aya или платину.",
     },
     nav: {
       items: {
@@ -472,7 +472,7 @@ export default {
         buy: "Vaulted 상태이며 상승 중이고 아직 30일 최고가 아래 — 합리적인 진입 시점입니다.",
         watch: "Vaulted 상태이지만 가격이 정체되었거나 거래가 적음 — 아직 뚜렷한 신호가 없으니 지켜보세요.",
         wait: "30일 최고가에 도달했거나 하락 중 — 가격이 떨어질 때까지 기다렸다가 구매하세요.",
-        resurgence: "지금 Prime Resurgence 진행 중 — 플래티넘을 내는 대신 Aya로 Varzia에게서 구매하세요.",
+        resurgence: "Prime Resurgence를 통한 획득 가능성 — Varzia가 현재 제공하는 성유물을 확인하세요. Aya로 구매하는 것은 성유물이며, 개봉해도 해당 부품을 반드시 얻는 것은 아닙니다.",
       },
       categories: {
         All: "전체",
@@ -498,7 +498,7 @@ export default {
       },
       loadError: "분석 데이터를 불러오지 못했습니다. 마켓 서비스가 다시 시작되는 중일 수 있습니다 — 새로고침해 보세요.",
       empty: "이 필터에 맞는 항목이 없습니다. 판정을 “전체”로 바꾸면 모든 봉인된 Prime을 볼 수 있습니다.",
-      disclaimer: "판정은 자체 일일 가격 내역(평균 거래가, 없을 경우 판매 주문가 사용)을 바탕으로 한 추정치입니다. 추세, 30일 가격 위치, 거래량, 그리고 현재 거래 가능한 렐릭에서 산출한 Prime Resurgence 이용 가능 여부를 반영합니다. 투자 조언이 아닙니다 — 가격은 변동합니다. “Varzia”는 해당 Prime을 지금 Prime Resurgence에서 Aya로 구매할 수 있다는 뜻입니다.",
+      disclaimer: "평가는 일별 시장 기록을 요약합니다. 평균 거래 가격(또는 확인 가능한 판매 호가), 추세, 30일 가격 범위와 거래량을 반영합니다. 비교를 위한 지표이며 수익을 보장하지 않습니다. Varzia 표시는 관련 성유물 데이터를 바탕으로 추정한 것이므로, Aya나 플래티넘을 쓰기 전에 게임 내 현재 판매 품목을 확인하세요.",
     },
     nav: {
       items: {
@@ -544,7 +544,7 @@ export default {
         buy: "Vaulted で価格上昇中、しかも30日高値より下 — 妥当な買い時。",
         watch: "Vaulted だが横ばいか取引薄 — まだ明確なシグナルなし。要チェック。",
         wait: "30日高値圏か下落中 — 下がるのを待ってから買おう。",
-        resurgence: "現在 Prime Resurgence 対象 — プラチナを払わず Aya で Varzia から入手しよう。",
+        resurgence: "Prime Resurgenceで入手できる可能性があります。Varziaが現在販売しているレリックを確認してください。Ayaで買えるのはレリックであり、開封しても目的のパーツが必ず手に入るわけではありません。",
       },
       categories: {
         All: "すべて",
@@ -570,7 +570,7 @@ export default {
       },
       loadError: "分析データを読み込めませんでした。マーケットサービスが起動中かもしれません — 更新してみてください。",
       empty: "このフィルターに一致する項目はありません。判定を「すべて」に切り替えると、すべての Vaulted Prime を表示できます。",
-      disclaimer: "判定は当サイト独自の日次価格履歴（平均取引価格、なければ売り注文で代替）に基づくヒューリスティックです。トレンド、30日の価格位置、取引量、さらに現在取引可能なレリックから導いた Prime Resurgence の入手可否を組み合わせています。投資助言ではありません — 価格は変動します。「Varzia」は、その Prime が今 Prime Resurgence で Aya を使って入手できることを意味します。",
+      disclaimer: "評価は日々の市場履歴をまとめたもので、平均取引価格（または確認できる売り手の提示価格）、傾向、30日間の価格帯、取引量に基づきます。比較のための目安であり、利益を保証するものではありません。Varziaの表示は関連レリックのデータから推定しているため、Ayaやプラチナを使う前にゲーム内の現在の販売品を確認してください。",
     },
     nav: {
       items: {
@@ -616,7 +616,7 @@ export default {
         buy: "已 Vaulted、正在上涨，且仍低于其 30 天高点——是个合理的入手点。",
         watch: "已 Vaulted，但走势平稳或成交稀薄——尚无明确信号，先盯着它。",
         wait: "处于 30 天上限或正在下跌——等回落再买。",
-        resurgence: "现正处于 Prime Resurgence——用 Aya 从 Varzia 那里买，别花白金。",
+        resurgence: "可能通过 Prime Resurgence 获取——请查看 Varzia 当前出售的遗物。Aya 购买的是遗物；开启遗物并不保证获得该部件。",
       },
       categories: {
         All: "全部",
@@ -642,7 +642,7 @@ export default {
       },
       loadError: "无法加载分析数据。市场服务可能正在启动——请刷新重试。",
       empty: "没有符合此筛选条件的物品。将判断切换为“全部”即可查看所有 Vaulted Prime。",
-      disclaimer: "判断基于我们自己的每日价格历史（平均成交价，缺失时回退到卖单价）：走势、30 天价格位置和成交量，外加由当前可交易遗物推算出的 Prime Resurgence 供应情况。这不是投资建议——价格会波动。“Varzia”表示该 Prime 现在可用 Aya 从 Prime Resurgence 购买。",
+      disclaimer: "评估汇总了我们的每日市场历史：平均成交价（或可用的卖方报价）、趋势、30 日价格区间和交易量。这些是供比较的信号，并不保证收益。Varzia 标记根据相关遗物数据推断得出；花费 Aya 或白金前，请确认游戏内当前出售的商品。",
     },
     nav: {
       items: {
@@ -688,7 +688,7 @@ export default {
         buy: "已 Vaulted、正在上漲，且仍低於 30 天高點——合理的入手時機。",
         watch: "已 Vaulted 但走勢持平或量少——目前無明確訊號；持續留意。",
         wait: "處於 30 天上限或正在下跌——等回落再買入。",
-        resurgence: "目前在 Prime Resurgence 中——用 Aya 向 Varzia 購買，別花白金。",
+        resurgence: "可能透過 Prime Resurgence 獲取——請查看 Varzia 當前出售的遺物。Aya 購買的是遺物；開啟遺物並不保證獲得該部件。",
       },
       categories: {
         All: "全部",
@@ -714,7 +714,7 @@ export default {
       },
       loadError: "無法載入分析數據。市場服務可能正在啟動——請試著重新整理。",
       empty: "沒有符合此篩選的項目。將判定切換為「全部」以檢視所有 Vaulted Prime。",
-      disclaimer: "判定為我們自有每日價格歷史（平均成交價，缺值時退回賣單價）的啟發式結果：走勢、30 天價格位置與成交量，加上由當前可交易遺物推導的 Prime Resurgence 上架狀態。並非投資建議——價格會波動。「Varzia」代表該 Prime 現在可透過 Prime Resurgence 用 Aya 購得。",
+      disclaimer: "評估彙整了我們的每日市場歷史：平均成交價（或可取得的賣方報價）、趨勢、30 日價格區間和交易量。這些是供比較的訊號，並不保證收益。Varzia 標記根據相關遺物資料推斷得出；花費 Aya 或白金前，請確認遊戲內當前出售的商品。",
     },
     nav: {
       items: {
@@ -760,7 +760,7 @@ export default {
         buy: "Vaulted, rośnie i wciąż poniżej swojego maksimum z 30 dni — uczciwe wejście.",
         watch: "Vaulted, ale płaski lub o niskim wolumenie — brak wyraźnego sygnału; miej go na oku.",
         wait: "Przy swoim pułapie z 30 dni lub spada — poczekaj na spadek przed zakupem.",
-        resurgence: "Teraz w Prime Resurgence — kup go u Varzii za Aya zamiast płacić plat.",
+        resurgence: "Możliwa opcja w Prime Resurgence — sprawdź, jakie relikty oferuje obecnie Varzia. Za Aya kupujesz relikty; ich otwarcie nie gwarantuje zdobycia części.",
       },
       categories: {
         All: "Wszystkie",
@@ -786,7 +786,7 @@ export default {
       },
       loadError: "Nie udało się wczytać analityki. Usługa rynku może się właśnie budzić — spróbuj odświeżyć.",
       empty: "Nic nie pasuje do tego filtra. Przełącz werdykt na „Wszystkie”, aby zobaczyć każdy vaulted prime.",
-      disclaimer: "Werdykty to heurystyka z naszej własnej dziennej historii cen (średnia cena transakcji, z rezerwowym zleceniem sprzedaży): trend, pozycja ceny z 30 dni i wolumen transakcji, plus dostępność w Prime Resurgence wyliczona z aktualnie wymienialnych relikwii. To nie porada finansowa — ceny się zmieniają. „Varzia” oznacza, że prime można teraz kupić za Aya w Prime Resurgence.",
+      disclaimer: "Oceny podsumowują naszą codzienną historię rynku: średnią cenę transakcji (lub dostępną cenę z oferty sprzedaży), trend, 30-dniowy zakres cen i wolumen. Są wskazówkami do porównań, a nie gwarancją zysku. Oznaczenie Varzia wynika z danych powiązanych reliktów; przed wydaniem Aya lub platyny sprawdź aktualną ofertę w grze.",
     },
     nav: {
       items: {
@@ -832,7 +832,7 @@ export default {
         buy: "Vaulted, in salita e ancora sotto il suo massimo a 30 giorni — un buon momento per entrare.",
         watch: "Vaulted ma stabile o poco scambiato — nessun segnale chiaro per ora; tienilo d'occhio.",
         wait: "Al suo massimo a 30 giorni o in calo — aspetta un ribasso prima di comprare.",
-        resurgence: "Ora in Prime Resurgence — compralo da Varzia con Aya invece di pagare in plat.",
+        resurgence: "Possibile opzione tramite Prime Resurgence: controlla le reliquie attualmente offerte da Varzia. Con Aya acquisti reliquie; aprirle non garantisce il componente.",
       },
       categories: {
         All: "Tutti",
@@ -858,7 +858,7 @@ export default {
       },
       loadError: "Impossibile caricare le analisi. Il servizio di mercato potrebbe essere in fase di avvio — prova ad aggiornare.",
       empty: "Nessun risultato per questo filtro. Imposta il verdetto su “Tutti” per vedere tutti i Prime Vaulted.",
-      disclaimer: "I verdetti sono un'euristica basata sul nostro storico giornaliero dei prezzi (prezzo medio di scambio, con ripiego sull'ordine di vendita): trend, posizione del prezzo a 30 giorni e volume di scambi, oltre alla disponibilità in Prime Resurgence derivata dalle reliquie attualmente scambiabili. Non è un consiglio finanziario — i prezzi cambiano. “Varzia” significa che il Prime è acquistabile con Aya da Prime Resurgence in questo momento.",
+      disclaimer: "Le valutazioni riassumono la nostra cronologia giornaliera del mercato: prezzo medio degli scambi (o prezzo dell'offerta di vendita disponibile), tendenza, fascia di prezzo su 30 giorni e volume. Sono indicatori per il confronto, senza garanzia di guadagni. L'indicatore Varzia è dedotto dai dati delle reliquie associate; verifica le offerte attuali nel gioco prima di spendere Aya o platino.",
     },
     nav: {
       items: {
@@ -904,7 +904,7 @@ export default {
         buy: "У Vaulted, зростає і все ще нижче свого 30-денного максимуму — справедливий момент для входу.",
         watch: "У Vaulted, але без руху чи з малим обсягом — чіткого сигналу поки немає; тримайте на оці.",
         wait: "На 30-денній стелі або падає — зачекайте на просідання, перш ніж купувати.",
-        resurgence: "Зараз у Prime Resurgence — купіть це у Varzia за Aya замість того, щоб платити платину.",
+        resurgence: "Можливий варіант через Prime Resurgence — перевірте, які реліквії зараз пропонує Varzia. За Aya купують реліквії; їх відкриття не гарантує отримання потрібної деталі.",
       },
       categories: {
         All: "Усі",
@@ -930,7 +930,7 @@ export default {
       },
       loadError: "Не вдалося завантажити аналітику. Сервіс ринку, можливо, ще прокидається — спробуйте оновити.",
       empty: "Нічого не відповідає цьому фільтру. Перемкніть вердикт на «Усі», щоб побачити всі Vaulted Prime.",
-      disclaimer: "Вердикти — це евристика на основі нашої власної щоденної історії цін (середня ціна угоди, з відкатом до ордера на продаж): тренд, позиція ціни за 30 днів та обсяг торгів, а також доступність у Prime Resurgence, визначена за реліквіями, які можна торгувати зараз. Це не фінансова порада — ціни змінюються. «Varzia» означає, що Prime можна купити за Aya у Prime Resurgence прямо зараз.",
+      disclaimer: "Оцінки узагальнюють нашу щоденну історію ринку: середню ціну угод (або доступну ціну пропозиції продавця), тенденцію, діапазон цін за 30 днів і обсяг. Це орієнтири для порівняння, а не гарантія прибутку. Позначка Varzia визначається за даними пов’язаних реліквій; перевірте поточні пропозиції в грі, перш ніж витрачати Aya або платину.",
     },
     nav: {
       items: {

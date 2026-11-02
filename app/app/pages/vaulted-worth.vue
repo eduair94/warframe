@@ -2,8 +2,8 @@
      prime's live plat + 7/30d trend + 30-day price position with Prime
      Resurgence (Varzia) availability into a BUY / WATCH / WAIT / RESURGENCE
      verdict. Resurgence is derived client-side: relics flagged `resurgence`
-     from /relics_ev name which Primes are buyable from Varzia right now, so we
-     tell buyers to spend Aya instead of plat. Modeled on vault-spikes.vue. -->
+     from /relics_ev identify related Primes whose current relic offerings should
+     be checked in game. Aya buys relics, not completed gear. Modeled on vault-spikes.vue. -->
 <template>
   <div class="an">
     <div class="an-console">
@@ -193,8 +193,8 @@ const placeholderImg =
 const verdictFilters = ['buy', 'resurgence', 'watch', 'wait', 'all'] as const
 
 // ── Prime Resurgence derivation ──────────────────────────────────────────
-// A relic flagged `resurgence` is bought from Varzia with Aya, so every Prime
-// part inside it is currently obtainable without trading. Collect the parent
+// Relics flagged `resurgence` provide a signal to check Varzia's offerings.
+// This does not establish that every component is currently available. Collect the parent
 // Prime name ("Ash Prime Chassis Blueprint" → "Ash Prime") of every reward in a
 // resurgence relic; a market item is "in resurgence" if its parent Prime is in
 // that set (covers both the set and its individual parts).
@@ -297,7 +297,7 @@ function fmtSignedPct(n: number): string {
 }
 
 // ── Verdict ──────────────────────────────────────────────────────────────
-// resurgence → get it from Varzia (skip plat); wait → at its ceiling or falling;
+// resurgence → check the related relic offerings; wait → at its ceiling or falling;
 // buy → climbing, liquid, still below the 30d high; watch → flat / thin.
 function verdictOf(r: any): string {
   if (isResurgence(r)) return 'resurgence'

@@ -1445,3 +1445,24 @@ recorded before reporting success; ignored `tmp/nov02pm-*` artifacts preserve
 this cycle separately from the morning release. Deployment outcomes will also
 be retained in maintenance memory without leaving a later documentation commit
 undeployed.
+
+The first complete release, `25f87e3a638a13451b3c1f37ba6f1ada168b8215`, passes
+[workflow 41454874086](https://github.com/eduair94/warframe/actions/runs/41454874086)
+with gates at 13:42:38 UTC and deployment at 13:46:19 UTC. Browser inspection
+also exposes two existing contradictions in the vaulted-worth tooltip and
+methodology notice: both still describe Aya as purchasing a completed Prime.
+The follow-up corrects those two strings in all thirteen locales. They explain
+that the Varzia signal is inferred from related relic data, current offerings
+must be checked in game, and opening a relic does not guarantee a specific part.
+Adjacent code comments are corrected; verdict calculations are unchanged.
+
+The additional localization batch stops immediately on a provider HTTP 429.
+Five successful drafts are preserved (Spanish/Portuguese and the German tooltip),
+and nineteen remaining fields are completed locally from the frozen English
+and previously reviewed locale vocabulary. This is a documented exception,
+not a successful provider translation or an attempt to bypass the refusal.
+All twenty-four translations pass independent review, with eight corrections.
+The locale compiler, eight tool-template regressions and repository-map check
+pass again after the follow-up; every other message value is preserved.
+The final follow-up includes this documentation before another complete deploy;
+its outcome and public verification remain in ignored evidence and memory.
