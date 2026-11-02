@@ -10,7 +10,7 @@ export default {
       hero: {
         title: 'Vaulted primes that are {climbing} again.',
         titleClimbing: 'climbing',
-        lede: "Vaulted prime items can't drop anymore, so scarcity slowly pushes their plat price up. This feed ranks every vaulted item by how fast it's rising, built from our own daily price history — warframe.market only gives you a static vaulted flag and a per-item 90-day chart. Catch the sell window before the spike fades.",
+        lede: "Track price changes for vaulted Prime items using our daily market history. Compare recent movement with current listings and Prime Resurgence availability. Existing relics can still supply Prime parts, and vaulted status does not guarantee rising prices.",
         dealLabel: 'Hottest vault spike · {window}',
         dealSub: '{price}p · vol {vol}',
       },
@@ -67,7 +67,7 @@ export default {
       hero: {
         title: 'Primes vedados que vuelven a {climbing}.',
         titleClimbing: 'subir',
-        lede: 'Los objetos prime vedados ya no dropean, así que la escasez empuja lentamente su precio en plat hacia arriba. Este feed clasifica cada objeto vedado según qué tan rápido está subiendo, construido a partir de nuestro propio historial diario de precios — warframe.market solo te da una marca estática de vedado y un gráfico de 90 días por objeto. Aprovecha la ventana de venta antes de que el pico se desvanezca.',
+        lede: "Sigue los cambios de precio de los objetos Prime en la bóveda con nuestro historial diario del mercado. Compara los movimientos recientes con los anuncios actuales y la disponibilidad en Prime Resurgence. Las reliquias existentes pueden seguir proporcionando piezas Prime, y estar en la bóveda no garantiza que los precios suban.",
         dealLabel: 'Mayor pico de la bóveda · {window}',
         dealSub: '{price}p · vol {vol}',
       },
@@ -124,7 +124,7 @@ export default {
       hero: {
         title: 'Primes vedados que voltam a {climbing}.',
         titleClimbing: 'subir',
-        lede: 'Os itens prime vedados não dropam mais, então a escassez empurra lentamente o preço em plat para cima. Este feed classifica cada item vedado pela rapidez com que está subindo, construído a partir do nosso próprio histórico diário de preços — o warframe.market só te dá uma marca estática de vedado e um gráfico de 90 dias por item. Aproveite a janela de venda antes que o pico desapareça.',
+        lede: "Acompanhe as mudanças de preço dos itens Prime no Cofre usando nosso histórico diário de mercado. Compare os movimentos recentes com os anúncios atuais e a disponibilidade na Prime Resurgence. As relíquias existentes ainda podem fornecer peças Prime, e estar no Cofre não garante que os preços subam.",
         dealLabel: 'Maior pico do cofre · {window}',
         dealSub: '{price}p · vol {vol}',
       },
@@ -181,7 +181,7 @@ export default {
       hero: {
         title: 'Gevaultete Primes, die wieder {climbing}.',
         titleClimbing: 'steigen',
-        lede: 'Gevaultete Prime-Objekte droppen nicht mehr, daher treibt die Knappheit ihren Platin-Preis langsam nach oben. Dieser Feed sortiert jedes gevaultete Objekt danach, wie schnell es steigt, erstellt aus unserem eigenen täglichen Preisverlauf — warframe.market gibt dir nur eine statische Vault-Markierung und ein 90-Tage-Diagramm pro Objekt. Nutze das Verkaufsfenster, bevor der Anstieg verebbt.',
+        lede: "Verfolge Preisänderungen von Prime-Gegenständen im Vault anhand unserer täglichen Markthistorie. Vergleiche die jüngste Entwicklung mit aktuellen Verkaufsangeboten und der Verfügbarkeit in Prime Resurgence. Vorhandene Relikte können weiterhin Prime-Teile liefern; der Vault-Status garantiert keine steigenden Preise.",
         dealLabel: 'Größter Vault-Anstieg · {window}',
         dealSub: '{price}p · vol {vol}',
       },
@@ -238,7 +238,7 @@ export default {
       hero: {
         title: 'Les Primes vaultés qui {climbing} à nouveau.',
         titleClimbing: 'remontent',
-        lede: "Les objets Prime vaultés ne droppent plus, alors la rareté fait lentement grimper leur prix en platine. Ce fil classe chaque objet vaulté selon la vitesse à laquelle il monte, construit à partir de notre propre historique de prix quotidien — warframe.market ne te donne qu'un indicateur statique de vault et un graphique de 90 jours par objet. Saisis la fenêtre de vente avant que le pic ne s'estompe.",
+        lede: "Suivez l'évolution des prix des objets Prime du Vault grâce à notre historique quotidien du marché. Comparez les mouvements récents aux annonces actuelles et à la disponibilité dans Prime Resurgence. Les reliques existantes peuvent toujours fournir des pièces Prime, et le statut Vault ne garantit pas une hausse des prix.",
         dealLabel: 'Plus gros pic du Vault · {window}',
         dealSub: '{price}p · vol {vol}',
       },
@@ -295,7 +295,7 @@ export default {
       hero: {
         title: 'Primes из хранилища, которые снова {climbing}.',
         titleClimbing: 'растут',
-        lede: 'Prime-предметы из хранилища больше не выпадают, поэтому дефицит медленно поднимает их цену в платине. Эта лента ранжирует каждый предмет из хранилища по скорости роста, построена на основе нашей собственной ежедневной истории цен — warframe.market даёт только статичную метку хранилища и график за 90 дней по каждому предмету. Поймай окно для продажи, пока скачок не угас.',
+        lede: "Отслеживайте изменения цен на предметы Prime из Хранилища по нашей ежедневной истории рынка. Сравнивайте недавнюю динамику с текущими объявлениями и доступностью в Prime Resurgence. Из уже имеющихся реликвий по-прежнему можно получать детали Prime, а нахождение в Хранилище не гарантирует роста цен.",
         dealLabel: 'Крупнейший скачок хранилища · {window}',
         dealSub: '{price}p · vol {vol}',
       },
@@ -352,7 +352,7 @@ export default {
       hero: {
         title: '다시 {climbing} 볼트된 Prime.',
         titleClimbing: '오르는',
-        lede: '볼트된 Prime 아이템은 더 이상 드롭되지 않기 때문에, 희소성이 플래티넘 가격을 서서히 끌어올립니다. 이 피드는 우리 자체 일일 가격 기록을 바탕으로 모든 볼트된 아이템을 상승 속도 순으로 정렬합니다 — warframe.market은 정적인 볼트 표시와 아이템별 90일 차트만 제공합니다. 급등이 사라지기 전에 판매 타이밍을 잡으세요.',
+        lede: "일별 시장 기록으로 프라임 볼트에 들어간 아이템의 가격 변화를 추적하세요. 최근 동향을 현재 판매 목록 및 프라임 리서전스에서의 획득 가능 여부와 비교하세요. 기존 성유물에서도 여전히 프라임 부품을 얻을 수 있으며, 프라임 볼트에 들어갔다고 가격 상승이 보장되지는 않습니다.",
         dealLabel: '최대 볼트 급등 · {window}',
         dealSub: '{price}p · vol {vol}',
       },
@@ -409,7 +409,7 @@ export default {
       hero: {
         title: '再び{climbing}ヴォルト入りPrime。',
         titleClimbing: '上昇する',
-        lede: 'ヴォルト入りのPrimeアイテムはもうドロップしないため、希少性がプラチナ価格を徐々に押し上げます。このフィードは、独自の日次価格履歴をもとに、すべてのヴォルト入りアイテムを上昇の速さ順にランク付けします — warframe.market は静的なヴォルト表示とアイテムごとの90日チャートしか提供しません。急騰が収まる前に売り時をつかみましょう。',
+        lede: "日々の市場履歴を使い、Prime Vault入りしたアイテムの価格変動を追跡できます。最近の値動きと現在の出品、Prime Resurgenceでの入手可否を比較しましょう。既存のレリックからもPrimeパーツは入手できるため、Vault入りしているだけで値上がりが保証されるわけではありません。",
         dealLabel: '最大のヴォルト急騰 · {window}',
         dealSub: '{price}p · vol {vol}',
       },
@@ -466,7 +466,7 @@ export default {
       hero: {
         title: '重新{climbing}的绝版 Prime。',
         titleClimbing: '上涨',
-        lede: '绝版 Prime 物品不再掉落，因此稀缺性会慢慢推高它们的白金价格。此榜单根据我们自己的每日价格历史，按上涨速度对每件绝版物品进行排名 — warframe.market 只提供静态的绝版标记和每件物品的 90 天图表。在飙升消退前抓住卖出时机。',
+        lede: "利用每日市场历史记录追踪已入库Prime物品的价格变化。将近期走势与当前挂单及Prime Resurgence的供应情况进行比较。现有遗物仍可产出Prime部件，入库并不保证价格上涨。",
         dealLabel: '最大绝版飙升 · {window}',
         dealSub: '{price}p · vol {vol}',
       },
@@ -523,7 +523,7 @@ export default {
       hero: {
         title: '重新{climbing}的絕版 Prime。',
         titleClimbing: '上漲',
-        lede: '絕版 Prime 物品不再掉落，因此稀缺性會慢慢推高它們的白金價格。此榜單根據我們自己的每日價格歷史，按上漲速度為每件絕版物品排名 — warframe.market 只提供靜態的絕版標記和每件物品的 90 天圖表。在飆升消退前抓住賣出時機。',
+        lede: "利用每日市場歷史紀錄追蹤已入庫 Prime 物品的價格變化。將近期走勢與當前掛單及 Prime Resurgence 的供應情況進行比較。現有遺物仍可產出 Prime 部件，入庫並不保證價格上漲。",
         dealLabel: '最大絕版飆升 · {window}',
         dealSub: '{price}p · vol {vol}',
       },
@@ -580,7 +580,7 @@ export default {
       hero: {
         title: 'Prime ze skarbca, które znowu {climbing}.',
         titleClimbing: 'rosną',
-        lede: 'Przedmioty Prime ze skarbca już nie wypadają, więc niedobór powoli podnosi ich cenę w platynie. Ten kanał sortuje każdy przedmiot ze skarbca według tego, jak szybko rośnie, na podstawie naszej własnej dziennej historii cen — warframe.market daje tylko statyczną flagę skarbca i 90-dniowy wykres dla każdego przedmiotu. Złap okno sprzedaży, zanim skok wygaśnie.',
+        lede: "Śledź zmiany cen przedmiotów Prime ze Skarbca na podstawie naszej codziennej historii rynku. Porównaj ostatnie zmiany z aktualnymi ogłoszeniami i dostępnością w Prime Resurgence. Posiadane relikty nadal mogą dostarczać części Prime, a umieszczenie przedmiotu w Skarbcu nie gwarantuje wzrostu cen.",
         dealLabel: 'Największy skok skarbca · {window}',
         dealSub: '{price}p · vol {vol}',
       },
@@ -637,7 +637,7 @@ export default {
       hero: {
         title: 'Prime nel caveau che {climbing} di nuovo.',
         titleClimbing: 'risalgono',
-        lede: 'Gli oggetti Prime nel caveau non droppano più, quindi la scarsità spinge lentamente in alto il loro prezzo in platino. Questo feed classifica ogni oggetto nel caveau in base alla velocità con cui sale, costruito dal nostro storico giornaliero dei prezzi — warframe.market ti dà solo un indicatore statico del caveau e un grafico di 90 giorni per oggetto. Cogli la finestra di vendita prima che il picco svanisca.',
+        lede: "Segui le variazioni di prezzo degli oggetti Prime nel Vault con il nostro storico giornaliero del mercato. Confronta i movimenti recenti con gli annunci attuali e la disponibilità in Prime Resurgence. Le reliquie esistenti possono ancora fornire parti Prime, e lo stato Vault non garantisce un aumento dei prezzi.",
         dealLabel: 'Picco maggiore del caveau · {window}',
         dealSub: '{price}p · vol {vol}',
       },
@@ -694,7 +694,7 @@ export default {
       hero: {
         title: 'Prime зі сховища, що знову {climbing}.',
         titleClimbing: 'зростають',
-        lede: 'Prime-предмети зі сховища більше не випадають, тож дефіцит повільно піднімає їхню ціну в платині. Ця стрічка ранжує кожен предмет зі сховища за швидкістю зростання, побудована на основі нашої власної щоденної історії цін — warframe.market дає лише статичну позначку сховища та 90-денний графік для кожного предмета. Спіймай вікно для продажу, поки стрибок не згас.',
+        lede: "Відстежуйте зміни цін на предмети Prime зі Сховища за нашою щоденною історією ринку. Порівнюйте нещодавню динаміку з поточними оголошеннями та доступністю в Prime Resurgence. З наявних реліквій і далі можна отримувати деталі Prime, а перебування у Сховищі не гарантує зростання цін.",
         dealLabel: 'Найбільший стрибок сховища · {window}',
         dealSub: '{price}p · vol {vol}',
       },

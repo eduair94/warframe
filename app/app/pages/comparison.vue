@@ -1,29 +1,16 @@
 <template>
   <div class="an">
-    <client-only>
-      <template #fallback>
-        <SeoFallbackTable
-          :caption="t('comparison.eyebrow')"
-          :name-label="t('comparison.table.set')"
-          :columns="[
-            t('comparison.table.costToAcquire') + ' – ' + t('comparison.table.set'),
-            t('comparison.table.costToAcquire') + ' – ' + t('comparison.table.parts'),
-            t('comparison.table.resaleValue') + ' – ' + t('comparison.table.parts'),
-            t('comparison.table.vol'),
-          ]"
-          :rows="fallbackRows"
-        />
-      </template>
-      <div class="an-console">
-        <header class="an-hero">
-          <div class="an-hero__text">
-            <div class="an-eyebrow">{{ t('comparison.eyebrow') }}</div>
-            <i18n-t keypath="comparison.hero.title" tag="h1" class="an-title">
-              <template #set><span class="accent-a">{{ t('comparison.hero.titleSet') }}</span></template>
-              <template #parts><span class="accent-b">{{ t('comparison.hero.titleParts') }}</span></template>
-            </i18n-t>
-            <p class="an-lede">{{ t('comparison.hero.lede') }}</p>
-          </div>
+    <div class="an-console">
+      <header class="an-hero">
+        <div class="an-hero__text">
+          <div class="an-eyebrow">{{ t('comparison.eyebrow') }}</div>
+          <i18n-t keypath="comparison.hero.title" tag="h1" class="an-title">
+            <template #set><span class="accent-a">{{ t('comparison.hero.titleSet') }}</span></template>
+            <template #parts><span class="accent-b">{{ t('comparison.hero.titleParts') }}</span></template>
+          </i18n-t>
+          <p class="an-lede">{{ t('comparison.hero.lede') }}</p>
+        </div>
+        <client-only>
           <div v-if="topDeal" class="an-hero__deal">
             <div class="an-hero__deal-label">{{ t('comparison.hero.dealLabel') }}</div>
             <div class="an-hero__deal-plat">{{ fmtPlat(topDeal.acquire.save) }}<span>p</span></div>
@@ -34,7 +21,23 @@
               {{ t('comparison.hero.dealSub', { pct: fmtPct(topDeal.acquire.savePct) }) }}
             </div>
           </div>
-        </header>
+        </client-only>
+      </header>
+
+      <client-only>
+        <template #fallback>
+          <SeoFallbackTable
+            :caption="t('comparison.eyebrow')"
+            :name-label="t('comparison.table.set')"
+            :columns="[
+              t('comparison.table.costToAcquire') + ' – ' + t('comparison.table.set'),
+              t('comparison.table.costToAcquire') + ' – ' + t('comparison.table.parts'),
+              t('comparison.table.resaleValue') + ' – ' + t('comparison.table.parts'),
+              t('comparison.table.vol'),
+            ]"
+            :rows="fallbackRows"
+          />
+        </template>
 
         <div class="an-stats">
           <div class="an-stat">
@@ -244,7 +247,10 @@
         <div v-if="filtered.length > perPage" class="an-pager">
           <v-pagination v-model="page" :length="pageCount" :total-visible="mobile ? 5 : 9" color="#c8a85c" @update:model-value="onPageChange"></v-pagination>
         </div>
-      </div>
+      </client-only>
+    </div>
+
+    <client-only>
 
       <v-alert class="an-disclaimer bg-blue-darken-4" type="info" density="compact">
         {{ t('comparison.disclaimer') }}

@@ -6,24 +6,16 @@
      tell buyers to spend Aya instead of plat. Modeled on vault-spikes.vue. -->
 <template>
   <div class="an">
-    <client-only>
-      <template #fallback>
-        <SeoFallbackTable
-          :caption="t('vaultedWorth.hero.title', { worth: t('vaultedWorth.hero.titleWorth') })"
-          :name-label="t('vaultedWorth.table.item')"
-          :columns="[t('vaultedWorth.table.verdict'), t('vaultedWorth.table.price'), '7d', '30d']"
-          :rows="fallbackRows"
-        />
-      </template>
-      <div class="an-console">
-        <header class="an-hero">
-          <div class="an-hero__text">
-            <div class="an-eyebrow">{{ t('vaultedWorth.eyebrow') }}</div>
-            <i18n-t keypath="vaultedWorth.hero.title" tag="h1" class="an-title">
-              <template #worth><span class="accent-b">{{ t('vaultedWorth.hero.titleWorth') }}</span></template>
-            </i18n-t>
-            <p class="an-lede">{{ t('vaultedWorth.hero.lede') }}</p>
-          </div>
+    <div class="an-console">
+      <header class="an-hero">
+        <div class="an-hero__text">
+          <div class="an-eyebrow">{{ t('vaultedWorth.eyebrow') }}</div>
+          <i18n-t keypath="vaultedWorth.hero.title" tag="h1" class="an-title">
+            <template #worth><span class="accent-b">{{ t('vaultedWorth.hero.titleWorth') }}</span></template>
+          </i18n-t>
+          <p class="an-lede">{{ t('vaultedWorth.hero.lede') }}</p>
+        </div>
+        <client-only>
           <div v-if="topBuy" class="an-hero__deal">
             <div class="an-hero__deal-label">{{ t('vaultedWorth.hero.pickLabel') }}</div>
             <div class="an-hero__deal-plat is-up">{{ fmtPlat(priceOf(topBuy)) }}p</div>
@@ -32,7 +24,18 @@
             </a>
             <div class="an-hero__deal-sub">{{ t('vaultedWorth.hero.pickSub', { d7: fmtSignedPct(topBuy.change7d), d30: fmtSignedPct(topBuy.change30d) }) }}</div>
           </div>
-        </header>
+        </client-only>
+      </header>
+
+      <client-only>
+        <template #fallback>
+          <SeoFallbackTable
+            :caption="t('vaultedWorth.hero.title', { worth: t('vaultedWorth.hero.titleWorth') })"
+            :name-label="t('vaultedWorth.table.item')"
+            :columns="[t('vaultedWorth.table.verdict'), t('vaultedWorth.table.price'), '7d', '30d']"
+            :rows="fallbackRows"
+          />
+        </template>
 
         <div class="an-stats">
           <div class="an-stat">
@@ -143,7 +146,10 @@
         <div v-if="filtered.length > perPage" class="an-pager">
           <v-pagination v-model="page" :length="pageCount" :total-visible="isMobile ? 5 : 9" color="#d4af5a" @update:model-value="onPageChange"></v-pagination>
         </div>
-      </div>
+      </client-only>
+    </div>
+
+    <client-only>
 
       <v-alert class="an-disclaimer bg-blue-darken-4" type="info" density="compact">
         {{ t('vaultedWorth.disclaimer') }}

@@ -1,23 +1,15 @@
 <template>
   <div class="an">
-    <client-only>
-      <template #fallback>
-        <SeoFallbackTable
-          :caption="t('vaultSpikes.hero.title', { climbing: t('vaultSpikes.hero.titleClimbing') })"
-          :name-label="t('vaultSpikes.table.item')"
-          :columns="[t('vaultSpikes.table.price'), '7d', '30d', t('vaultSpikes.table.vol')]"
-          :rows="fallbackRows"
-        />
-      </template>
-      <div class="an-console">
-        <header class="an-hero">
-          <div class="an-hero__text">
-            <div class="an-eyebrow">{{ t('vaultSpikes.eyebrow') }}</div>
-            <i18n-t keypath="vaultSpikes.hero.title" tag="h1" class="an-title">
-              <template #climbing><span class="accent-b">{{ t('vaultSpikes.hero.titleClimbing') }}</span></template>
-            </i18n-t>
-            <p class="an-lede">{{ t('vaultSpikes.hero.lede') }}</p>
-          </div>
+    <div class="an-console">
+      <header class="an-hero">
+        <div class="an-hero__text">
+          <div class="an-eyebrow">{{ t('vaultSpikes.eyebrow') }}</div>
+          <i18n-t keypath="vaultSpikes.hero.title" tag="h1" class="an-title">
+            <template #climbing><span class="accent-b">{{ t('vaultSpikes.hero.titleClimbing') }}</span></template>
+          </i18n-t>
+          <p class="an-lede">{{ t('vaultSpikes.hero.lede') }}</p>
+        </div>
+        <client-only>
           <div v-if="topDeal" class="an-hero__deal">
             <div class="an-hero__deal-label">{{ t('vaultSpikes.hero.dealLabel', { window: timeframeLabel }) }}</div>
             <div class="an-hero__deal-plat" :class="topDeal[changeKey] > 0 ? 'is-up' : 'is-down'">
@@ -28,7 +20,18 @@
             </a>
             <div class="an-hero__deal-sub">{{ t('vaultSpikes.hero.dealSub', { price: fmtPlat(priceOf(topDeal)), vol: fmtPlat(topDeal.volume) }) }}</div>
           </div>
-        </header>
+        </client-only>
+      </header>
+
+      <client-only>
+        <template #fallback>
+          <SeoFallbackTable
+            :caption="t('vaultSpikes.hero.title', { climbing: t('vaultSpikes.hero.titleClimbing') })"
+            :name-label="t('vaultSpikes.table.item')"
+            :columns="[t('vaultSpikes.table.price'), '7d', '30d', t('vaultSpikes.table.vol')]"
+            :rows="fallbackRows"
+          />
+        </template>
 
         <div class="an-stats">
           <div class="an-stat">
@@ -143,7 +146,10 @@
         <div v-if="filtered.length > perPage" class="an-pager">
           <v-pagination v-model="page" :length="pageCount" :total-visible="isMobile ? 5 : 9" color="#d4af5a" @update:model-value="onPageChange"></v-pagination>
         </div>
-      </div>
+      </client-only>
+    </div>
+
+    <client-only>
 
       <v-alert class="an-disclaimer bg-blue-darken-4" type="info" density="compact">
         {{ t('vaultSpikes.disclaimer') }}

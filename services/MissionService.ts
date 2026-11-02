@@ -78,6 +78,24 @@ const WIKI_NODE_COLLISIONS = new Set<string>([
   'War', 'Titania', 'Caliban', 'Lex', 'Isos', 'Oro',
 ]);
 
+/** Verified differences between WFCD drop-table labels and solNodes labels. */
+const MISSION_TYPE_ALIASES = new Map<string, string>([
+  ['dark sector defection', 'defection'],
+  ['dark sector defense', 'defense'],
+  ['dark sector disruption', 'disruption'],
+  ['dark sector excavation', 'excavation'],
+  ['dark sector survival', 'survival'],
+  ['mirror defense', 'defense'],
+  ['orokin sabotage', 'sabotage'],
+  ['extermination', 'exterminate'],
+  ['sabotage (archwing)', 'sabotage'],
+  ['rush (archwing)', 'rush'],
+  ['interception (archwing)', 'interception'],
+  ['pursuit (archwing)', 'pursuit'],
+  ['mobile defense (archwing)', 'mobile defense'],
+  ['extermination (archwing)', 'exterminate'],
+]);
+
 export class MissionService {
   /** Browser-like headers so raw.githubusercontent.com/warframestat.us serve us the JSON. */
   private static readonly FETCH_HEADERS = {
@@ -154,9 +172,10 @@ export class MissionService {
     return out;
   }
 
-  /** Steel Path is the same node at +100 enemy levels (no SP node data exists). */
-  static deriveSteelPath(min: number, max: number): { minLevel: number; maxLevel: number } {
-    return { minLevel: (min || 0) + 100, maxLevel: (max || 0) + 100 };
+  /** Archwing uses +50 levels (Update 28.1.0); ordinary star-chart missions use +100. */
+  static deriveSteelPath(min: number, max: number, missionType = ''): { minLevel: number; maxLevel: number } {
+    const increase = /\(archwing\)$/i.test(missionType.trim()) ? 50 : 100;
+    return { minLevel: (min || 0) + increase, maxLevel: (max || 0) + increase };
   }
 
   /** slug -> INodeMeta index for O(1) joins. */
@@ -164,6 +183,19 @@ export class MissionService {
     const m = new Map<string, INodeMeta>();
     for (const n of nodes || []) m.set(n.slug, n);
     return m;
+  }
+
+  /** Canonical labels are only for comparison; payloads retain the source wording. */
+  private static canonicalMissionType(type: string): string {
+    const label = type.trim().replace(/\s+/g, ' ').toLowerCase();
+    return MISSION_TYPE_ALIASES.get(label) ?? label;
+  }
+
+  /** A location slug alone does not establish that two sources describe the same activity. */
+  private static compatibleNode(meta: INodeMeta | undefined, gameMode: string): INodeMeta | undefined {
+    if (!meta || typeof meta.missionType !== 'string' || typeof gameMode !== 'string') return undefined;
+    const mode = MissionService.canonicalMissionType(gameMode);
+    return mode && mode === MissionService.canonicalMissionType(meta.missionType) ? meta : undefined;
   }
 
   /**
@@ -195,7 +227,7 @@ export class MissionService {
     for (const planet of planets || []) {
       for (const node of planet.nodes) {
         const slug = missionSlug(planet.planet, node.location);
-        const meta = idx.get(slug);
+        const meta = MissionService.compatibleNode(idx.get(slug), node.gameMode);
         rows.push({
           slug,
           planet: planet.planet,
@@ -223,7 +255,7 @@ export class MissionService {
     for (const planet of planets || []) {
       for (const node of planet.nodes) {
         if (missionSlug(planet.planet, node.location) !== slug) continue;
-        const meta = idx.get(slug);
+        const meta = MissionService.compatibleNode(idx.get(slug), node.gameMode);
         return {
           slug,
           planet: planet.planet,
@@ -236,7 +268,7 @@ export class MissionService {
                 missionType: meta.missionType,
                 minLevel: meta.minLevel,
                 maxLevel: meta.maxLevel,
-                steelPath: MissionService.deriveSteelPath(meta.minLevel, meta.maxLevel),
+                steelPath: MissionService.deriveSteelPath(meta.minLevel, meta.maxLevel, meta.missionType),
                 wikiLink: meta.wikiLink,
               }
             : null,

@@ -8,7 +8,7 @@ export default {
       hero: {
         title: "Vaulted primes — {worth} right now?",
         titleWorth: "worth buying",
-        lede: "Every vaulted prime you can no longer farm, with a live-plat buy/skip verdict. We fuse the current price, its 7- and 30-day trend and where it sits in its own 30-day range — and flag anything in Prime Resurgence, because buying that from Varzia with Aya beats paying plat. The wiki lists what’s vaulted; it never tells you whether to buy.",
+        lede: "Compare vaulted Prime prices, 7- and 30-day trends and each item's position in its 30-day price range. Use the buy/skip signals as context, then check current listings and Varzia's available relics. Aya buys relics, not completed Primes; the best route depends on availability, drop chances and your time.",
         pickLabel: "Best buy right now",
         pickSub: "7d {d7} · 30d {d30}",
       },
@@ -80,7 +80,7 @@ export default {
       hero: {
         title: "Primes vedados — ¿{worth} ahora mismo?",
         titleWorth: "merece la pena comprar",
-        lede: "Cada prime vedado que ya no puedes farmear, con un veredicto de compra/descarte en plat en vivo. Combinamos el precio actual, su tendencia a 7 y 30 días y dónde se sitúa dentro de su propio rango de 30 días — y marcamos todo lo que esté en Prime Resurgence, porque comprarlo a Varzia con Aya sale mejor que pagar plat. La wiki te dice qué está vedado; nunca te dice si comprarlo.",
+        lede: "Compara los precios de los objetos Prime en la bóveda, las tendencias de 7 y 30 días y la posición de cada objeto dentro de su rango de precios de 30 días. Usa las señales de comprar o descartar como orientación y comprueba los anuncios actuales y las reliquias disponibles de Varzia. Aya permite comprar reliquias, no Primes completos; la mejor opción depende de la disponibilidad, las probabilidades de obtener las piezas y tu tiempo.",
         pickLabel: "Mejor compra ahora mismo",
         pickSub: "7d {d7} · 30d {d30}",
       },
@@ -152,7 +152,7 @@ export default {
       hero: {
         title: "Primes vedados — {worth} agora mesmo?",
         titleWorth: "vale a pena comprar",
-        lede: "Todo prime vedado que você não pode mais farmar, com um veredito de comprar/pular em plat ao vivo. Combinamos o preço atual, sua tendência de 7 e 30 dias e onde ele está dentro da própria faixa de 30 dias — e sinalizamos tudo que está no Prime Resurgence, porque comprar da Varzia com Aya é melhor do que pagar plat. A wiki lista o que está vedado; ela nunca diz se você deve comprar.",
+        lede: "Compare os preços dos itens Prime no Cofre, as tendências de 7 e 30 dias e a posição de cada item na sua faixa de preços de 30 dias. Use os sinais de comprar ou dispensar como referência e confira os anúncios atuais e as relíquias disponíveis de Varzia. Aya compra relíquias, não Primes completos; a melhor opção depende da disponibilidade, das chances de obter as peças e do seu tempo.",
         pickLabel: "Melhor compra agora",
         pickSub: "7d {d7} · 30d {d30}",
       },
@@ -224,7 +224,7 @@ export default {
       hero: {
         title: "Gevaultete Primes — jetzt {worth}?",
         titleWorth: "kaufenswert",
-        lede: "Jeder gevaultete Prime, den du nicht mehr farmen kannst, mit einem Live-Plat-Kaufen/Überspringen-Urteil. Wir kombinieren den aktuellen Preis, seinen 7- und 30-Tage-Trend und wo er in seiner eigenen 30-Tage-Spanne liegt — und markieren alles, was in Prime Resurgence ist, denn das bei Varzia mit Aya zu kaufen schlägt das Bezahlen mit Plat. Das Wiki listet, was gevaultet ist; es sagt dir nie, ob du kaufen sollst.",
+        lede: "Vergleiche Preise von Prime-Gegenständen im Vault, Trends über 7 und 30 Tage und die Position jedes Gegenstands innerhalb seiner Preisspanne der letzten 30 Tage. Nutze die Kauf- oder Verzichtssignale zur Orientierung und prüfe aktuelle Verkaufsangebote sowie Varzias verfügbare Relikte. Mit Aya kaufst du Relikte, keine fertigen Primes; der beste Weg hängt von Verfügbarkeit, Drop-Chancen und deiner Zeit ab.",
         pickLabel: "Bester Kauf jetzt",
         pickSub: "7T {d7} · 30T {d30}",
       },
@@ -296,7 +296,7 @@ export default {
       hero: {
         title: "Primes vaulted — {worth} en ce moment ?",
         titleWorth: "à acheter",
-        lede: "Chaque prime vaulted que tu ne peux plus farmer, avec un verdict acheter/passer en plat en direct. On combine le prix actuel, sa tendance sur 7 et 30 jours et sa position dans sa propre fourchette sur 30 jours — et on signale tout ce qui est en Prime Resurgence, car l'acheter chez Varzia avec de l'Aya vaut mieux que payer en plat. Le wiki liste ce qui est vaulted ; il ne te dit jamais s'il faut l'acheter.",
+        lede: "Comparez les prix des objets Prime du Vault, les tendances sur 7 et 30 jours et la position de chaque objet dans sa fourchette de prix sur 30 jours. Utilisez les signaux d'achat ou d'abstention comme repères, puis vérifiez les annonces actuelles et les reliques disponibles chez Varzia. Aya permet d'acheter des reliques, pas des Primes déjà fabriqués ; le meilleur choix dépend de la disponibilité, des probabilités d'obtention et de votre temps.",
         pickLabel: "Meilleur achat maintenant",
         pickSub: "7j {d7} · 30j {d30}",
       },
@@ -368,7 +368,7 @@ export default {
       hero: {
         title: "Vaulted Prime — {worth} прямо сейчас?",
         titleWorth: "стоит покупать",
-        lede: "Каждый Vaulted prime, который уже нельзя выфармить, с живым платиновым вердиктом купить/пропустить. Мы объединяем текущую цену, её тренд за 7 и 30 дней и то, где она находится в собственном 30-дневном диапазоне — и отмечаем всё, что доступно в Prime Resurgence, ведь купить это у Varzia за Aya выгоднее, чем платить платину. Вики показывает, что находится в Vaulted; но никогда не подскажет, стоит ли покупать.",
+        lede: "Сравните цены на Prime из Хранилища, тенденции за 7 и 30 дней и положение каждого предмета в его 30-дневном диапазоне цен. Используйте сигналы покупки или пропуска как ориентир, затем проверьте текущие объявления и доступные реликвии Варзии. За Айю покупают реликвии, а не готовые Prime; лучший способ зависит от доступности, шансов выпадения и вашего времени.",
         pickLabel: "Лучшая покупка прямо сейчас",
         pickSub: "7д {d7} · 30д {d30}",
       },
@@ -440,7 +440,7 @@ export default {
       hero: {
         title: "봉인된 Prime — 지금 {worth}?",
         titleWorth: "살 만한가",
-        lede: "더 이상 파밍할 수 없는 모든 봉인된 Prime을 실시간 플래티넘 기반 구매/스킵 판정과 함께 보여줍니다. 현재 가격, 7일·30일 추세, 자체 30일 가격 범위 내 위치를 종합하고 — Prime Resurgence에 포함된 항목은 따로 표시합니다. Aya로 Varzia에게서 사는 편이 플래티넘을 내는 것보다 낫기 때문입니다. 위키는 무엇이 Vaulted인지 알려주지만, 살지 말지는 절대 알려주지 않습니다.",
+        lede: "프라임 볼트에 들어간 아이템의 가격, 7일 및 30일 추세, 각 아이템의 30일 가격 범위 내 위치를 비교하세요. 구매 또는 보류 신호를 참고한 뒤 현재 판매 목록과 바르지아가 제공하는 성유물을 확인하세요. 아야로 구매하는 것은 완성된 프라임이 아니라 성유물입니다. 가장 좋은 방법은 획득 가능 여부, 드롭 확률, 자신이 들일 시간에 따라 달라집니다.",
         pickLabel: "지금 가장 살 만한 Prime",
         pickSub: "7일 {d7} · 30일 {d30}",
       },
@@ -512,7 +512,7 @@ export default {
       hero: {
         title: "Vaulted Prime — 今 {worth}？",
         titleWorth: "買う価値あり",
-        lede: "もうファームできなくなった Vaulted Prime を、リアルタイムのプラチナ価格で「買う/見送る」の判定つきで一覧化。現在価格、7日・30日のトレンド、そして直近30日レンジ内での位置を統合し、さらに Prime Resurgence 対象のものにはフラグを付けます。Aya を使って Varzia から入手する方がプラチナを払うよりお得だからです。wiki は何が Vaulted かは載せていますが、買うべきかどうかは教えてくれません。",
+        lede: "Prime Vault入りしたアイテムの価格、7日・30日の傾向、直近30日の価格帯における現在の位置を比較できます。購入するか見送るかの目安を参考にし、現在の出品とVarziaから入手できるレリックも確認しましょう。Ayaで買えるのは完成品のPrimeではなくレリックです。最適な入手方法は、入手可否、ドロップ確率、使える時間によって変わります。",
         pickLabel: "今いちばんの買い",
         pickSub: "7日 {d7} · 30日 {d30}",
       },
@@ -584,7 +584,7 @@ export default {
       hero: {
         title: "Vaulted 的 Prime——现在{worth}吗？",
         titleWorth: "值得买",
-        lede: "每一件你已经无法再刷的 Vaulted Prime，都附带一份基于实时白金的买入/跳过判断。我们把当前价格、它的 7 天和 30 天走势，以及它在自己 30 天区间中的位置融合起来——并标记出所有处于 Prime Resurgence 的物品，因为用 Aya 从 Varzia 那里买，比花白金更划算。wiki 只列出哪些被 Vaulted，却从不告诉你该不该买。",
+        lede: "比较已入库Prime的价格、7日和30日趋势，以及各物品在其30日价格区间中的位置。将购买或跳过的信号作为参考，再检查当前挂单和Varzia可提供的遗物。Aya购买的是遗物，而不是成品Prime；最佳获取方式取决于供应情况、掉落概率和你的时间。",
         pickLabel: "现在最佳买入",
         pickSub: "7天 {d7} · 30天 {d30}",
       },
@@ -656,7 +656,7 @@ export default {
       hero: {
         title: "Vaulted 的 Prime——現在{worth}嗎？",
         titleWorth: "值得入手",
-        lede: "所有你已無法再刷取的 Vaulted Prime，附上即時白金買入／略過判定。我們綜合當前價格、7 天與 30 天走勢，以及它在自身 30 天區間中的位置——並會標記任何進入 Prime Resurgence 的物品，因為用 Aya 向 Varzia 購買比花白金更划算。維基只列出哪些已 Vaulted，卻從不告訴你該不該買。",
+        lede: "比較已入庫 Prime 的價格、7 日和 30 日趨勢，以及各物品在其 30 日價格區間中的位置。將購買或略過的訊號作為參考，再檢查當前掛單和 Varzia 可提供的遺物。Aya 購買的是遺物，而不是成品 Prime；最佳獲取方式取決於供應情況、掉落機率和你的時間。",
         pickLabel: "現在最佳買入",
         pickSub: "7天 {d7} · 30天 {d30}",
       },
@@ -728,7 +728,7 @@ export default {
       hero: {
         title: "Vaulted primy — {worth} teraz?",
         titleWorth: "warto kupić",
-        lede: "Każdy vaulted prime, którego nie możesz już farmić, z aktualnym werdyktem kup/pomiń w plat. Łączymy bieżącą cenę, jej trend z 7 i 30 dni oraz jej pozycję we własnym zakresie z 30 dni — i oznaczamy wszystko, co jest w Prime Resurgence, bo kupno tego u Varzii za Aya bije płacenie plat. Wiki pokazuje, co jest vaulted; nigdy nie mówi, czy warto kupować.",
+        lede: "Porównaj ceny Prime ze Skarbca, trendy z 7 i 30 dni oraz pozycję każdego przedmiotu w jego 30-dniowym przedziale cenowym. Traktuj sygnały kupna lub pominięcia jako wskazówki, a następnie sprawdź aktualne ogłoszenia i relikty dostępne u Varzii. Za Aya kupisz relikty, a nie gotowe Prime; najlepszy sposób zależy od dostępności, szans na zdobycie części i twojego czasu.",
         pickLabel: "Najlepszy zakup teraz",
         pickSub: "7d {d7} · 30d {d30}",
       },
@@ -800,7 +800,7 @@ export default {
       hero: {
         title: "Prime Vaulted — {worth} adesso?",
         titleWorth: "da comprare",
-        lede: "Ogni Prime Vaulted che non puoi più farmare, con un verdetto compra/salta in plat aggiornato in tempo reale. Uniamo il prezzo attuale, il suo trend a 7 e 30 giorni e la sua posizione nel range degli ultimi 30 giorni — e segnaliamo tutto ciò che è in Prime Resurgence, perché comprarlo da Varzia con Aya conviene più che pagare in plat. La wiki elenca cosa è Vaulted; non ti dice mai se conviene comprarlo.",
+        lede: "Confronta i prezzi degli oggetti Prime nel Vault, le tendenze a 7 e 30 giorni e la posizione di ciascun oggetto nella sua fascia di prezzo di 30 giorni. Usa i segnali di acquisto o rinuncia come riferimento, poi controlla gli annunci attuali e le reliquie disponibili di Varzia. Aya permette di acquistare reliquie, non Prime già completi; la scelta migliore dipende dalla disponibilità, dalle probabilità di ottenere le parti e dal tempo a disposizione.",
         pickLabel: "Miglior acquisto adesso",
         pickSub: "7g {d7} · 30g {d30}",
       },
@@ -872,7 +872,7 @@ export default {
       hero: {
         title: "Vaulted Prime — {worth} прямо зараз?",
         titleWorth: "варто купувати",
-        lede: "Кожен Vaulted Prime, який ви вже не можете фармити, з живим вердиктом купувати/пропустити у платині. Ми поєднуємо поточну ціну, її тренд за 7 і 30 днів та те, де вона стоїть у власному 30-денному діапазоні — і позначаємо все, що є в Prime Resurgence, адже купити це у Varzia за Aya вигідніше, ніж платити платину. Вікі показує, що потрапило в Vaulted; але ніколи не підказує, чи варто купувати.",
+        lede: "Порівняйте ціни на Prime зі Сховища, тенденції за 7 і 30 днів та положення кожного предмета в його 30-денному діапазоні цін. Використовуйте сигнали купівлі чи пропуску як орієнтир, потім перевірте поточні оголошення та доступні реліквії Varzia. За Aya купують реліквії, а не готові Prime; найкращий шлях залежить від доступності, шансів випадіння та вашого часу.",
         pickLabel: "Найкраща покупка зараз",
         pickSub: "7д {d7} · 30д {d30}",
       },

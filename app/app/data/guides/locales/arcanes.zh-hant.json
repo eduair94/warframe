@@ -8,7 +8,7 @@
   "stats": [
     {
       "num": "21",
-      "label": "滿級一個 Arcane (Rank 5) 所需的數量",
+      "label": "將最高等級為 5 的 Arcane 升滿所需的數量",
       "tone": "gold"
     },
     {
@@ -18,7 +18,7 @@
     },
     {
       "num": "6",
-      "label": "等級階段，R0 至 R5",
+      "label": "最高等級為 5 的 Arcane 的等級階段，從 R0 到 R5",
       "tone": "alt"
     },
     {
@@ -87,7 +87,7 @@
         },
         {
           "type": "p",
-          "text": "Warframe 插槽預設即可使用。**武器** Arcane 插槽必須先使用 **Arcane Adapter** 解鎖——每種武器類型一個（Primary、Secondary 和 Melee 各有專用適配器）。獲取來源是 Teshin 的 **Steel Path Honors**，可在任何中繼站使用 Steel Essence 購買；您也可以在 Duviri 的 **Acrithis** 處使用 Pathos Clamps 兌換，或者直接在遊戲內商店（Market）使用 Platinum 購買。"
+          "text": "Warframe 的 Arcane 槽位可以直接使用。**主武器、副武器與近戰武器**的 Arcane 槽位則需要在每件武器上安裝對應的 **Arcane Adapter**。Teshin 的 **Steel Path Honors** 可用 Steel Essence 兌換主武器和副武器轉接器；**Acrithis** 也可能提供這兩類轉接器，用 Pathos Clamps 兌換。近戰武器需要先安裝 **Whispers in the Walls** 任務提供的 Melee Upgrade Segment，再透過 Cavia 聲望、Netracell 獎勵或遊戲內商店取得轉接器。這三類轉接器都可用白金購買，但購買近戰轉接器需要完成該任務。"
         },
         {
           "type": "warn",
@@ -97,11 +97,11 @@
     },
     {
       "id": "ranking",
-      "title": "升級與滿級：「21 規則」",
+      "title": "升級與滿級：先檢查等級上限",
       "blocks": [
         {
           "type": "p",
-          "text": "Arcanes 的等級從 **Rank 0 到 Rank 5**，您需要透過堆疊**同款 Arcane 的重複複本**來升級它們——而不是使用 Endo 或 Kuva。每個 Arcane 都遵循相同的遞增規律：每提升一級，所需的複本數量都會比上一級多一些。"
+          "text": "升級 Arcane 需要**相同 Arcane 的重複副本**，而不是 Endo 或 Kuva。許多 Arcane 最高可達**等級 5**，但部分系列的上限更低。下表展示升至等級 5 的過程；購買全套所需數量前，請檢查該 Arcane 的最高等級。"
         },
         {
           "type": "table",
@@ -143,7 +143,7 @@
                 "21"
               ]
             ],
-            "note": "將一個 Arcane 完全升滿至 Rank 5 需要 21 個該 Arcane 的複本。"
+            "note": "此表適用於最高等級為 5 的 Arcane，共需 21 份。等級上限較低的 Arcane 會更早完成升級。"
           }
         },
         {
@@ -152,7 +152,7 @@
         },
         {
           "type": "p",
-          "text": "由於 21 個複本是一段漫長的過程，請優先考慮您在主力 Frames 上實際使用的一兩個 Arcanes，而不是試圖一次性將所有東西都升滿。將您的整個收藏全部升滿是個極大的成就——r/Warframe 上的貼文 [「終於把所有 Arcanes 升滿了（100% 自行 farming）」](https://reddit.com/r/Warframe/comments/1iz2rw4/as_of_today_i_have_finally_maxed_all_arcanes_100/) 需要極大的毅力。"
+          "text": "為等級 5 的 Arcane 收集 21 份需要時間，因此應優先升級主力 Warframe 上實際使用的一兩個 Arcane，而不是同時把所有 Arcane 升滿。將整個收藏都升至滿級是一項值得自豪的成就——r/Warframe 貼文[「終於將所有 Arcane 升滿（100% 自行刷取）」](https://reddit.com/r/Warframe/comments/1iz2rw4/as_of_today_i_have_finally_maxed_all_arcanes_100/)背後就有大量的投入。"
         }
       ]
     },
@@ -180,13 +180,13 @@
               ],
               [
                 "Acrithis — Duviri",
-                "直接購買許多相同的 Frame Arcanes，無需看 RNG",
-                "Pathos Clamps（來自 Orowyrm）"
+                "輪換出售的 Duviri Arcane，包括 Arcane Reaper 和 Arcane Intention",
+                "Pathos Clamps；購買 Arcane 需要 Opportunity Intrinsic 達到等級 9"
               ],
               [
-                "Vox Solaris / Little Duck — Fortuna",
-                "Operator（Magus 系列）與 Amp（Virtuos 系列）Arcanes",
-                "Vox Solaris 聲望"
+                "The Quills — Cetus / Vox Solaris — Fortuna",
+                "分別提供不同的 Operator（Magus）和 Amp（Virtuos）Arcane 選擇",
+                "對應集團的聲望"
               ],
               [
                 "The Holdfasts — Zariman",
@@ -219,7 +219,7 @@
                 "Platinum (warframe.market)"
               ]
             ],
-            "note": "Duviri 的 Acrithis 是獨行玩家的救星：她出售許多需要 Pathos Clamps 的 Eidolon Arcanes，因此單人玩家可以完全跳過 4 人 Tridolon 的主流玩法。"
+            "note": "Acrithis 輪換出售的 Duviri Arcane 與 Eidolon Arcane 是不同的選擇。完成 Whispers in the Walls 後，可在 Sanctum Anatomica 透過 Arcane Dissolution 用 Vosfor 兌換 Eidolon Arcane Collection 禮包。禮包獎勵隨機，並不保證獲得某個指定的 Arcane。"
           }
         },
         {
@@ -266,9 +266,9 @@
                 "隨著您累積擊殺數而提升技能強度——一個一勞永逸的施法者 Buff"
               ],
               [
-                "異常狀態與續航（Zariman）",
+                "技能持續時間與治療（Zariman）",
                 "Molt Efficiency、Molt Reconstruct",
-                "Molt Efficiency 可縮短受到的異常狀態持續時間；Molt Reconstruct 可將施放技能消耗的能量轉化為對您和盟友的治療"
+                "Molt Efficiency 會在護盾生效期間逐步增加技能持續時間；Molt Reconstruct 將施放技能消耗的能量轉化為對自己及經驗共享範圍內隊友的治療"
               ],
               [
                 "武器傷害",
@@ -278,7 +278,7 @@
               [
                 "爆頭回報",
                 "Primary / Secondary Deadhead",
-                "爆頭擊殺可獲得額外傷害和裝填速度獎勵"
+                "爆頭擊殺可疊加額外傷害；滿級 Deadhead 還會提高爆頭傷害倍率並降低武器後座力"
               ],
               [
                 "Operator / Amp",
@@ -300,7 +300,7 @@
       "blocks": [
         {
           "type": "p",
-          "text": "由於升滿需要 21 個複本，您會抽到大量不需要的**重複複本**——而且大多數 Warframe Arcanes 都是可交易的。Farming 一個您已經升滿的來源是遊戲中最穩定的 Platinum 收入來源之一，像 Energize 和 Grace 這樣熱門的 Arcanes 具有極高的價值。"
+          "text": "常用的 Arcane 達到最高等級後，你會獲得大量不再需要的**重複副本**，而大多數 Warframe 用 Arcane 都可交易。繼續刷取那些已升滿 Arcane 的來源，是遊戲中相對穩定的白金獲取方式之一；Energize 和 Grace 等熱門 Arcane 仍有可觀價值。"
         },
         {
           "type": "list",
@@ -329,15 +329,15 @@
             },
             {
               "h": "先獲取能量 + 生存能力",
-              "p": "您的首要目標是 Energize / Grace / Guardian 類型。在市場上買一兩個便宜的複本，或者去 farming Eidolons——或者跳過 RNG，在 Duviri 的 Acrithis 處使用 Pathos Clamps 購買。即使是未升級的複本也能立即提供幫助。"
+              "p": "根據配裝需求，比較 Energize、Grace 和 Guardian 等補充能量或提高生存能力的選擇。你可以刷取對應的 Eidolon 來源、比較玩家間的交易價格，或在完成 Whispers in the Walls 後獲取 Eidolon Arcane Collection 的隨機獎勵。Acrithis 出售的是另一組 Duviri Arcane。即使只有一份未升級的 Arcane，也可以裝備。"
             },
             {
               "h": "解鎖您的武器 Arcane 插槽",
-              "p": "積攢 Steel Path Honors 以兌換 Arcane Adapters（Primary、Secondary 和 Melee 武器各需一個），然後在您的主力槍械上裝備像 Merciless 系列這樣透過擊殺疊加傷害的 Arcanes。"
+              "p": "在 Teshin 處用 Steel Essence 兌換主武器和副武器的 Arcane Adapter，再裝備 Merciless 等適合槍械的 Arcane。近戰 Arcane Adapter 則需要在完成 Whispers in the Walls 後，透過 Cavia 聲望、Netracell 獎勵或商店獲取；請先安裝任務提供的 Melee Upgrade Segment。"
             },
             {
               "h": "致力於升滿您的主力 Arcanes",
-              "p": "挑選一兩個您最常使用的 Arcanes，並朝著 21 個複本的目標進行 farming。即使未滿級，在升級的過程中依然能發揮作用，因此這絕不是浪費進度。"
+              "p": "選擇最常用的一兩個 Arcane，逐步升至各自的最高等級。購買重複副本前先檢查等級上限；等級 5 的 Arcane 共需 21 份。收集過程中，較低等級也能發揮作用。"
             },
             {
               "h": "利用重複複本來支持您的 farming",
@@ -356,7 +356,7 @@
           "items": [
             "**將 Arcanes 與 Mods 混淆。** Arcanes 裝備在 Arcanes 分頁中，不消耗容量，並在滿足觸發條件時發動——它們不會取代您的 Mod 配置，而是額外的加成。",
             "**認為必須達到 Rank 5 才能開始使用。** 單個複本就已經可以發揮作用。先裝備它，並隨著獲得重複複本而逐步升級。",
-            "**忽略了 Duviri。** Acrithis 出售許多需要 Pathos Clamps 的 Eidolon Arcanes——這是單人、低壓力替代 Tridolon 狩獵的選擇。",
+            "**混淆 Duviri 與 Eidolon 的獎勵。** Opportunity Intrinsic 達到等級 9 後，Acrithis 會輪換出售 Duviri Arcane。刷取 Pathos Clamps 前，請確認目標 Arcane 的具體來源。",
             "**賣光所有單個複本。** 每種可交易的 Arcane 至少保留一個；僅出售超出您目標等級的多餘複本。",
             "**忘記武器適配器。** 在您使用相應的 Arcane Adapter 解鎖插槽之前，武器 Arcanes 是不起作用的。"
           ]
@@ -371,11 +371,11 @@
   "faqs": [
     {
       "q": "在 Warframe 中，升滿一個 Arcane 需要多少個 Arcanes？",
-      "a": "21 個相同 Arcane 的複本可將其完全升滿至 Rank 5。每個階段的成本遞增——裝備需要 1 個，然後是 +2、+3、+4、+5、+6，累計總數為 21 個。不過，您不必將其升滿才能使用；單個複本在 Rank 0 即可發揮作用。"
+      "a": "最高等級為 5 的 Arcane 共需 21 份：初始 1 份，之後各等級依次再需 2、3、4、5 和 6 份。部分 Arcane 系列的最高等級較低，因此購買 21 份前應檢查具體的 Arcane。只有一份時，也能在等級 0 裝備。"
     },
     {
       "q": "最適合優先 farming 的第一個 Arcane 是什麼？",
-      "a": "從能量和生存必備的 Arcanes 開始——Arcane Energize、Arcane Grace 和 Arcane Guardian。它們幾乎能提升遊戲中每個 Frame 的體驗。您可以在夜晚的 Plains of Eidolon 透過 farming Eidolons 來獲取它們，或者在 Duviri 的 Acrithis 處使用 Pathos Clamps 購買以跳過 RNG。請參閱 [Eidolon 指南](/guides/eidolon)。"
+      "a": "根據配裝需求，比較 Arcane Energize、Arcane Grace 和 Arcane Guardian 等補充能量或提高生存能力的選擇。對應的 Eidolon 來源和玩家交易都是獲取途徑；完成 Whispers in the Walls 後，Eidolon Arcane Collection 也提供隨機獎勵。Acrithis 的 Duviri 商品選擇與它們不同。參閱 [Eidolon 指南](/guides/eidolon)。"
     },
     {
       "q": "卸下 Arcanes 時會被消耗掉嗎？",
@@ -387,11 +387,11 @@
     },
     {
       "q": "如何解鎖武器上的 Arcane 插槽？",
-      "a": "每把武器都需要專屬的 Arcane Adapter——即 Primary、Secondary 或 Melee Arcane Adapter——來啟用其單個 Arcane 插槽。您主要可以從 Teshin 的 Steel Path Honors（使用 Steel Essence）獲取適配器，也可以在 Duviri 的 Acrithis 處使用 Pathos Clamps 購買，或直接在遊戲內商店（Market）購買。相比之下，Warframe Arcane 插槽預設即可使用——不需要適配器。"
+      "a": "在每件要強化的武器上安裝對應的主武器、副武器或近戰 Arcane Adapter。Teshin 提供主武器和副武器轉接器，用 Steel Essence 兌換；Acrithis 也可能提供這兩類轉接器，用 Pathos Clamps 兌換。近戰武器需要 Whispers in the Walls 提供的 Melee Upgrade Segment，轉接器則透過 Cavia 聲望、Netracell 獎勵或商店獲取。這三類轉接器都可用白金購買，但購買近戰轉接器需要完成該任務。Warframe 的 Arcane 槽位無需轉接器。"
     },
     {
       "q": "Operator 和 Amp Arcanes 來自哪裡？",
-      "a": "Operator Arcanes（Magus 系列）和 Amp Arcanes（Virtuos 系列）可使用 Vox Solaris 聲望向 Fortuna 的 Little Duck 購買。您主要透過提交來自 Orb Vallis 的 Toroids 和多餘的鍍金 Amps 來賺取該聲望，而買齊整個陣容是一項繁重的聲望 farming——因此請做好相應的計劃。"
+      "a": "Cetus 的 Quills 與 Fortuna 的 Little Duck 所提供的 Vox Solaris 商品中，Magus 和 Virtuos Arcane 的選擇各不相同；請使用對應商人要求的聲望。Zariman 的 Cavalero 也出售較新的 Operator 和 Amp Arcane。決定刷取哪一方的聲望前，請先檢查目標 Arcane 的具體來源。"
     },
     {
       "q": "Arcanes 對新玩家來說值得嗎？",
@@ -436,6 +436,46 @@
     {
       "label": "Official Warframe Wiki",
       "href": "https://wiki.warframe.com/"
+    },
+    {
+      "label": "Update 27.2: Warframe and Operator rank-cap changes",
+      "href": "https://www.warframe.com/en/patch-notes/pc/27-2-0"
+    },
+    {
+      "label": "Update 30.5: gun Arcane Adapters and Deadhead",
+      "href": "https://www.warframe.com/en/patch-notes/pc/30-5-0"
+    },
+    {
+      "label": "Update 33: Acrithis offerings",
+      "href": "https://www.warframe.com/en/patch-notes/pc/33-0-0"
+    },
+    {
+      "label": "Update 33.5: adapter access and additional Duviri arcanes",
+      "href": "https://www.warframe.com/en/patch-notes/pc/33-5-0"
+    },
+    {
+      "label": "Update 35: Melee Upgrade Segment, adapters and Arcane Dissolution",
+      "href": "https://www.warframe.com/en/patch-notes/pc/35-0-0"
+    },
+    {
+      "label": "Update 24.6: Quills arcane offerings",
+      "href": "https://www.warframe.com/en/patch-notes/pc/24-6-0"
+    },
+    {
+      "label": "Update 24.2: Little Duck arcane offerings",
+      "href": "https://www.warframe.com/en/patch-notes/pc/24-2-0"
+    },
+    {
+      "label": "Update 31.5: Molt Efficiency and Zariman arcanes",
+      "href": "https://www.warframe.com/en/patch-notes/pc/31-5-0"
+    },
+    {
+      "label": "Update 31.6: Molt Reconstruct and Cavalero offerings",
+      "href": "https://www.warframe.com/en/patch-notes/pc/31-6-0"
+    },
+    {
+      "label": "Hotfix 22.13.2: Eidolon arcane rewards",
+      "href": "https://www.warframe.com/en/patch-notes/pc/22-13-2"
     }
   ],
   "related": [

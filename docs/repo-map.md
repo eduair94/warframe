@@ -160,8 +160,8 @@ One-shot data importers run via `npm run <name>` / cron. They populate Mongo.
 | `app/i18n/messages/starChart.ts` | 37 KB |
 | `app/i18n/messages/timing.ts` | 37 KB |
 | `app/i18n/messages/comparison.ts` | 36 KB |
-| `app/i18n/messages/vaultSpikes.ts` | 34 KB |
 | `app/i18n/messages/screener.ts` | 34 KB |
+| `app/i18n/messages/vaultSpikes.ts` | 33 KB |
 | `app/i18n/messages/movers.ts` | 33 KB |
 | `app/i18n/messages/toolDetail.ts` | 31 KB |
 

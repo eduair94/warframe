@@ -3,6 +3,8 @@
 // then adversarially fact-checked for evergreen accuracy. Embedded video ids were
 // verified live via YouTube oEmbed. Edit freely — this is the single source for
 // the /guides/arcanes page (rendered by <GuideArticle>).
+// Targeted official-source corrections on 2026-11-02 cover adapters, rank caps,
+// vendors and selected effects; the full-guide review date remains unchanged.
 import type { Guide } from './types'
 
 const guide: Guide = {
@@ -15,7 +17,7 @@ const guide: Guide = {
   "stats": [
     {
       "num": "21",
-      "label": "copies to max an arcane (Rank 5)",
+      "label": "copies for an arcane that reaches Rank 5",
       "tone": "gold"
     },
     {
@@ -25,7 +27,7 @@ const guide: Guide = {
     },
     {
       "num": "6",
-      "label": "rank tiers, R0 to R5",
+      "label": "ranks for Rank 5 arcanes, R0 to R5",
       "tone": "alt"
     },
     {
@@ -94,7 +96,7 @@ const guide: Guide = {
         },
         {
           "type": "p",
-          "text": "Warframe slots are ready to use out of the box. **Weapon** arcane slots must be unlocked first with an **Arcane Adapter** — one per weapon type (Primary, Secondary, and Melee each take their own). The earned source is Teshin's **Steel Path Honors**, bought with Steel Essence in any relay; you can also grab adapters from **Acrithis** in Duviri for Pathos Clamps, or buy them outright from the in-game Market for platinum."
+          "text": "Warframe slots are ready to use out of the box. For **Primary, Secondary and Melee** arcane slots, install the matching **Arcane Adapter** on each weapon. Teshin's **Steel Path Honors** sells Primary and Secondary adapters for Steel Essence; **Acrithis** can offer those two types for Pathos Clamps. For Melee, install the Melee Upgrade Segment from **Whispers in the Walls**, then obtain adapters through Cavia standing, Netracell rewards or the in-game Market. All three adapter types can be purchased for platinum; the Melee purchase requires that quest."
         },
         {
           "type": "warn",
@@ -104,11 +106,11 @@ const guide: Guide = {
     },
     {
       "id": "ranking",
-      "title": "Ranking & maxing: the \"21 rule\"",
+      "title": "Ranking & maxing: check the rank cap",
       "blocks": [
         {
           "type": "p",
-          "text": "Arcanes rank from **Rank 0 to Rank 5**, and you rank them up by stacking **duplicate copies of the same arcane** — not with Endo or Kuva. Every arcane follows the same ramp: each higher rank costs a few more copies than the last."
+          "text": "Rank up arcanes with **duplicate copies of the same arcane**, not Endo or Kuva. Many arcanes reach **Rank 5**, while some families stop earlier. The table below shows the Rank 5 progression; check the individual arcane's maximum rank before buying a full set."
         },
         {
           "type": "table",
@@ -150,7 +152,7 @@ const guide: Guide = {
                 "21"
               ]
             ],
-            "note": "Fully maxing one arcane to Rank 5 costs 21 copies of that exact arcane."
+            "note": "This table applies to arcanes that reach Rank 5: 21 copies in total. An arcane with a lower rank cap stops earlier."
           }
         },
         {
@@ -159,7 +161,7 @@ const guide: Guide = {
         },
         {
           "type": "p",
-          "text": "Because 21 copies is a long haul, prioritize the one or two arcanes you actually run on your main frames rather than trying to max everything at once. Maxing your entire collection is a genuine flex — the r/Warframe post [\"finally maxed all Arcanes (100% self farmed)\"](https://reddit.com/r/Warframe/comments/1iz2rw4/as_of_today_i_have_finally_maxed_all_arcanes_100/) took serious dedication."
+          "text": "For a Rank 5 arcane, 21 copies is a long haul, so prioritize the one or two arcanes you actually run on your main frames rather than trying to max everything at once. Maxing your entire collection is a genuine flex — the r/Warframe post [\"finally maxed all Arcanes (100% self farmed)\"](https://reddit.com/r/Warframe/comments/1iz2rw4/as_of_today_i_have_finally_maxed_all_arcanes_100/) took serious dedication."
         }
       ]
     },
@@ -187,13 +189,13 @@ const guide: Guide = {
               ],
               [
                 "Acrithis — Duviri",
-                "Buy many of those same frame arcanes directly, no RNG",
-                "Pathos Clamps (from the Orowyrm)"
+                "Rotating Duviri arcanes, including Arcane Reaper and Arcane Intention",
+                "Pathos Clamps; Opportunity Intrinsic Rank 9 required for arcane purchases"
               ],
               [
-                "Vox Solaris / Little Duck — Fortuna",
-                "Operator (Magus) and Amp (Virtuos) arcanes",
-                "Vox Solaris standing"
+                "The Quills — Cetus / Vox Solaris — Fortuna",
+                "Different selections of Operator (Magus) and Amp (Virtuos) arcanes",
+                "Standing with the corresponding syndicate"
               ],
               [
                 "The Holdfasts — Zariman",
@@ -226,7 +228,7 @@ const guide: Guide = {
                 "Platinum (warframe.market)"
               ]
             ],
-            "note": "Duviri's Acrithis is the great equalizer: she sells many Eidolon arcanes for Pathos Clamps, so solo players can skip the 4-player Tridolon meta entirely."
+            "note": "Acrithis's rotating Duviri selection is separate from Eidolon arcanes. After Whispers in the Walls, Arcane Dissolution in the Sanctum Anatomica offers randomized Eidolon Arcane Collection packs for Vosfor; a pack does not guarantee a specific arcane."
           }
         },
         {
@@ -273,9 +275,9 @@ const guide: Guide = {
                 "Ramps ability strength as you rack up kills — a set-and-forget caster buff"
               ],
               [
-                "Status & sustain (Zariman)",
+                "Ability duration & healing (Zariman)",
                 "Molt Efficiency, Molt Reconstruct",
-                "Molt Efficiency cuts incoming status duration; Molt Reconstruct converts energy spent on abilities into healing for you and allies"
+                "Molt Efficiency builds Ability Duration while shields are active; Molt Reconstruct converts energy spent on ability casts into healing for you and allies within Affinity Range"
               ],
               [
                 "Weapon damage",
@@ -285,7 +287,7 @@ const guide: Guide = {
               [
                 "Headshot payoff",
                 "Primary / Secondary Deadhead",
-                "Reward headshot kills with bonus damage and reloads"
+                "Headshot kills stack bonus damage; max-rank Deadhead also increases the headshot multiplier and reduces weapon recoil"
               ],
               [
                 "Operator / Amp",
@@ -307,7 +309,7 @@ const guide: Guide = {
       "blocks": [
         {
           "type": "p",
-          "text": "Because maxing takes 21 copies, you'll pull tons of **duplicates** you don't need — and most Warframe arcanes are tradeable. Farming a source you've already maxed is one of the steadier platinum incomes in the game, with popular arcanes like Energize and Grace holding real value."
+          "text": "After reaching the maximum rank of an arcane you use, you'll pull tons of **duplicates** you don't need — and most Warframe arcanes are tradeable. Farming a source you've already maxed is one of the steadier platinum incomes in the game, with popular arcanes like Energize and Grace holding real value."
         },
         {
           "type": "list",
@@ -336,15 +338,15 @@ const guide: Guide = {
             },
             {
               "h": "Grab energy + survivability first",
-              "p": "Your first targets are the Energize / Grace / Guardian archetypes. Buy a cheap copy or two on the market, or farm Eidolons — or skip the RNG and buy them from Acrithis in Duviri with Pathos Clamps. Even unranked copies help immediately."
+              "p": "Compare energy and survivability options such as Energize, Grace and Guardian with your build. Farm their Eidolon sources, compare player trade prices, or use the randomized Eidolon Arcane Collection after Whispers in the Walls. Acrithis sells a different Duviri selection. A single unranked copy can already be equipped."
             },
             {
               "h": "Unlock your weapon arcane slots",
-              "p": "Bank Steel Path Honors for Arcane Adapters (one per Primary, Secondary, and Melee weapon), then slot kill-stacking damage arcanes like the Merciless line on your workhorse guns."
+              "p": "Use Steel Essence at Teshin for Primary and Secondary Arcane Adapters, then equip suitable gun arcanes such as Merciless. Melee Arcane Adapters instead come from Cavia standing, Netracell rewards or the Market after Whispers in the Walls; install the quest's Melee Upgrade Segment first."
             },
             {
               "h": "Commit to maxing your mains",
-              "p": "Pick the one or two arcanes you run most and grind toward 21 copies. Partial ranks still pay off the whole way up, so it's never wasted progress."
+              "p": "Pick the one or two arcanes you run most and work toward their maximum rank. Check each rank cap before buying duplicates; a Rank 5 arcane needs 21 copies in total. Lower ranks can still be useful while you collect them."
             },
             {
               "h": "Fund the grind with duplicates",
@@ -363,7 +365,7 @@ const guide: Guide = {
           "items": [
             "**Confusing arcanes with mods.** Arcanes go in the Arcanes tab, cost no capacity, and fire on triggers — they don't replace your mod loadout, they add to it.",
             "**Thinking you need Rank 5 to start.** One copy already works. Slot it and rank up as duplicates roll in.",
-            "**Overlooking Duviri.** Acrithis sells many Eidolon arcanes for Pathos Clamps — a solo, low-stress alternative to Tridolon hunting.",
+            "**Confusing Duviri and Eidolon rewards.** Acrithis sells a rotating Duviri arcane selection after Opportunity Intrinsic Rank 9. Check the exact arcane source before farming Pathos Clamps.",
             "**Selling singles.** Keep at least one of every tradeable arcane; sell only the surplus beyond your target rank.",
             "**Forgetting weapon adapters.** Weapon arcanes do nothing until you unlock the slot with the matching Arcane Adapter."
           ]
@@ -378,11 +380,11 @@ const guide: Guide = {
   "faqs": [
     {
       "q": "How many arcanes do you need to max an arcane in Warframe?",
-      "a": "21 copies of the same arcane fully maxes it to Rank 5. The cost ramps each tier — 1 to equip, then +2, +3, +4, +5, +6 for a cumulative total of 21. You don't have to max it to use it, though; a single copy works at Rank 0."
+      "a": "An arcane that reaches Rank 5 needs 21 copies in total: 1 initially, then 2, 3, 4, 5 and 6 more for successive ranks. Some arcane families have lower maximum ranks, so check the individual arcane before buying 21 copies. A single copy can already be equipped at Rank 0."
     },
     {
       "q": "What's the best first arcane to farm?",
-      "a": "Start with the energy and survivability staples — Arcane Energize, Arcane Grace, and Arcane Guardian. They improve nearly every frame in the game. You can farm them from Eidolons at night on the Plains of Eidolon, or buy them from Acrithis in Duviri for Pathos Clamps to skip the RNG. See the [Eidolon guide](/guides/eidolon)."
+      "a": "Compare energy and survivability options such as Arcane Energize, Arcane Grace and Arcane Guardian with what your build needs. Their Eidolon sources and player trading are options; after Whispers in the Walls, the Eidolon Arcane Collection offers randomized rewards. Acrithis's Duviri selection is different. See the [Eidolon guide](/guides/eidolon)."
     },
     {
       "q": "Do arcanes get used up when you unequip them?",
@@ -394,11 +396,11 @@ const guide: Guide = {
     },
     {
       "q": "How do you unlock arcane slots on weapons?",
-      "a": "Each weapon needs its own Arcane Adapter — a Primary, Secondary, or Melee Arcane Adapter — to enable its single arcane slot. You earn adapters mainly from Teshin's Steel Path Honors (for Steel Essence), and you can also buy them from Acrithis in Duviri for Pathos Clamps or from the in-game Market. Warframe arcane slots, by contrast, are available by default — no adapter required."
+      "a": "Install the matching Primary, Secondary or Melee Arcane Adapter on each weapon you want to upgrade. Teshin sells Primary and Secondary adapters for Steel Essence; Acrithis can offer those two types for Pathos Clamps. Melee requires the Melee Upgrade Segment from Whispers in the Walls, with adapters from Cavia standing, Netracell rewards or the Market. Platinum purchases are available for these three types; the Melee purchase is quest-gated. Warframe arcane slots need no adapter."
     },
     {
       "q": "Where do Operator and Amp arcanes come from?",
-      "a": "Operator arcanes (the Magus line) and Amp arcanes (the Virtuos line) are bought with Vox Solaris standing from Little Duck in Fortuna. You earn that standing mainly by turning in Toroids and spare gilded Amps from the Orb Vallis, and buying the whole lineup is a hefty standing grind — so plan accordingly."
+      "a": "Magus and Virtuos arcanes have different selections at the Quills in Cetus and Little Duck's Vox Solaris offerings in Fortuna; use the standing required by the relevant vendor. Cavalero in the Zariman also offers newer Operator and Amp arcanes. Check the source of the specific arcane you want before choosing a standing farm."
     },
     {
       "q": "Are arcanes worth it for new players?",
@@ -443,6 +445,46 @@ const guide: Guide = {
     {
       "label": "Official Warframe Wiki",
       "href": "https://wiki.warframe.com/"
+    },
+    {
+      "label": "Update 27.2: Warframe and Operator rank-cap changes",
+      "href": "https://www.warframe.com/en/patch-notes/pc/27-2-0"
+    },
+    {
+      "label": "Update 30.5: gun Arcane Adapters and Deadhead",
+      "href": "https://www.warframe.com/en/patch-notes/pc/30-5-0"
+    },
+    {
+      "label": "Update 33: Acrithis offerings",
+      "href": "https://www.warframe.com/en/patch-notes/pc/33-0-0"
+    },
+    {
+      "label": "Update 33.5: adapter access and additional Duviri arcanes",
+      "href": "https://www.warframe.com/en/patch-notes/pc/33-5-0"
+    },
+    {
+      "label": "Update 35: Melee Upgrade Segment, adapters and Arcane Dissolution",
+      "href": "https://www.warframe.com/en/patch-notes/pc/35-0-0"
+    },
+    {
+      "label": "Update 24.6: Quills arcane offerings",
+      "href": "https://www.warframe.com/en/patch-notes/pc/24-6-0"
+    },
+    {
+      "label": "Update 24.2: Little Duck arcane offerings",
+      "href": "https://www.warframe.com/en/patch-notes/pc/24-2-0"
+    },
+    {
+      "label": "Update 31.5: Molt Efficiency and Zariman arcanes",
+      "href": "https://www.warframe.com/en/patch-notes/pc/31-5-0"
+    },
+    {
+      "label": "Update 31.6: Molt Reconstruct and Cavalero offerings",
+      "href": "https://www.warframe.com/en/patch-notes/pc/31-6-0"
+    },
+    {
+      "label": "Hotfix 22.13.2: Eidolon arcane rewards",
+      "href": "https://www.warframe.com/en/patch-notes/pc/22-13-2"
     }
   ],
   "related": [

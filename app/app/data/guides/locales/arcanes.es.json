@@ -8,7 +8,7 @@
   "stats": [
     {
       "num": "21",
-      "label": "copias para maximizar un arcano (Rango 5)",
+      "label": "copias para un arcano que alcanza el rango 5",
       "tone": "gold"
     },
     {
@@ -18,7 +18,7 @@
     },
     {
       "num": "6",
-      "label": "niveles de rango, R0 a R5",
+      "label": "rangos de los arcanos que alcanzan el rango 5, de R0 a R5",
       "tone": "alt"
     },
     {
@@ -87,7 +87,7 @@
         },
         {
           "type": "p",
-          "text": "Las ranuras de Warframe están listas para usarse desde el principio. Las ranuras de arcanos de **armas** deben desbloquearse primero con un **Arcane Adapter**, uno por tipo de arma (Primary, Secondary y Melee requieren el suyo propio). La fuente para obtenerlos son los **Steel Path Honors** de Teshin, que se compran con Steel Essence en cualquier repetidor; también puedes conseguir adaptadores de **Acrithis** en Duviri a cambio de Pathos Clamps, o comprarlos directamente en el Market del juego con platinum."
+          "text": "Las ranuras de los Warframes están listas para usar desde el principio. Para las ranuras de arcanos de **armas primarias, secundarias y cuerpo a cuerpo**, instala el **adaptador de arcanos** correspondiente en cada arma. Los **Steel Path Honors** de Teshin ofrecen adaptadores para armas primarias y secundarias a cambio de Steel Essence; **Acrithis** puede ofrecer esos dos tipos a cambio de Pathos Clamps. Para las armas cuerpo a cuerpo, instala el Melee Upgrade Segment de **Whispers in the Walls** y consigue adaptadores con reputación de Cavia, como recompensas de Netracells o en el Mercado del juego. Los tres tipos de adaptadores se pueden comprar con platino; la compra del adaptador cuerpo a cuerpo requiere completar esa aventura."
         },
         {
           "type": "warn",
@@ -97,11 +97,11 @@
     },
     {
       "id": "ranking",
-      "title": "Subir de rango y maximizar: la \"regla del 21\"",
+      "title": "Subir al rango máximo: comprueba el límite de rango",
       "blocks": [
         {
           "type": "p",
-          "text": "Los arcanos suben de **Rango 0 a Rango 5**, y los subes de rango acumulando **copias duplicadas del mismo arcano**, no con Endo o Kuva. Cada arcano sigue la misma progresión: cada rango superior cuesta unas pocas copias más que el anterior."
+          "text": "Sube de rango los arcanos con **copias duplicadas del mismo arcano**, no con Endo ni Kuva. Muchos arcanos alcanzan el **rango 5**, mientras que algunas familias tienen un límite inferior. La siguiente tabla muestra la progresión hasta el rango 5; comprueba el rango máximo de cada arcano antes de comprar todas las copias necesarias."
         },
         {
           "type": "table",
@@ -143,7 +143,7 @@
                 "21"
               ]
             ],
-            "note": "Maximizar por completo un arcano al Rango 5 cuesta 21 copias de ese mismo arcano."
+            "note": "Esta tabla aplica para arcanos que alcanzan el Rango 5: 21 copias en total. Un arcano con un límite de rango inferior se detiene antes."
           }
         },
         {
@@ -152,7 +152,7 @@
         },
         {
           "type": "p",
-          "text": "Dado que 21 copias es un camino largo, prioriza uno o dos arcanos que realmente uses en tus frames principales en lugar de intentar maximizar todo a la vez. Maximizar toda tu colección es presumir de verdad: la publicación de r/Warframe [\"finalmente maximicé todos los arcanos (100% farmeados por mí mismo)\"](https://reddit.com/r/Warframe/comments/1iz2rw4/as_of_today_i_have_finally_maxed_all_arcanes_100/) requirió una dedicación seria."
+          "text": "Conseguir 21 copias para un arcano de rango 5 lleva tiempo, así que prioriza uno o dos arcanos que realmente uses en tus Warframes principales en lugar de intentar mejorarlos todos al máximo a la vez. Llevar toda tu colección al máximo es una auténtica hazaña: la publicación de r/Warframe [\"por fin mejoré todos los arcanos al máximo (100% conseguidos por mi cuenta)\"](https://reddit.com/r/Warframe/comments/1iz2rw4/as_of_today_i_have_finally_maxed_all_arcanes_100/) requirió una gran dedicación."
         }
       ]
     },
@@ -180,13 +180,13 @@
               ],
               [
                 "Acrithis — Duviri",
-                "Compra muchos de esos mismos arcanos de frame directamente, sin RNG",
-                "Pathos Clamps (del Orowyrm)"
+                "Selección rotativa de arcanos de Duviri, incluidos Arcane Reaper y Arcane Intention",
+                "Pathos Clamps; se requiere el rango 9 del intrínseco Opportunity para comprar arcanos"
               ],
               [
-                "Vox Solaris / Little Duck — Fortuna",
-                "Arcanos de Operator (Magus) y Amp (Virtuos)",
-                "Reputación de Vox Solaris"
+                "The Quills — Cetus / Vox Solaris — Fortuna",
+                "Selecciones distintas de arcanos de Operador (Magus) y de Amp (Virtuos)",
+                "Reputación del sindicato correspondiente"
               ],
               [
                 "The Holdfasts — Zariman",
@@ -219,7 +219,7 @@
                 "Platinum (warframe.market)"
               ]
             ],
-            "note": "Acrithis de Duviri es la gran niveladora: vende muchos arcanos de Eidolon a cambio de Pathos Clamps, por lo que los jugadores en solitario pueden saltarse por completo el meta de Tridolon de 4 jugadores."
+            "note": "La selección rotativa de arcanos de Duviri de Acrithis es distinta de la de los Eidolon. Después de Whispers in the Walls, Arcane Dissolution en el Sanctum Anatomica ofrece paquetes Eidolon Arcane Collection con recompensas aleatorias a cambio de Vosfor; un paquete no garantiza un arcano concreto."
           }
         },
         {
@@ -266,9 +266,9 @@
                 "Aumenta la fuerza de habilidad a medida que acumulas bajas: una mejora pasiva ideal para lanzadores de habilidades"
               ],
               [
-                "Estado y sustento (Zariman)",
+                "Duración de la habilidad y curación (Zariman)",
                 "Molt Efficiency, Molt Reconstruct",
-                "Molt Efficiency reduce la duración del estado recibido; Molt Reconstruct convierte la energía gastada en habilidades en curación para ti y tus aliados"
+                "Molt Efficiency aumenta la duración de la habilidad mientras los escudos están activos; Molt Reconstruct convierte la energía gastada en lanzamientos de habilidades en curación para ti y tus aliados dentro del rango de afinidad"
               ],
               [
                 "Daño de armas",
@@ -278,7 +278,7 @@
               [
                 "Recompensa por tiro a la cabeza",
                 "Primary / Secondary Deadhead",
-                "Recompensa las bajas por tiro a la cabeza con daño adicional y velocidad de recarga"
+                "Las bajas por disparos a la cabeza acumulan daño adicional; en su rango máximo, Deadhead también aumenta el multiplicador de disparos a la cabeza y reduce el retroceso del arma"
               ],
               [
                 "Operator / Amp",
@@ -300,7 +300,7 @@
       "blocks": [
         {
           "type": "p",
-          "text": "Dado que maximizarlos requiere 21 copias, obtendrás toneladas de **duplicados** que no necesitas, y la mayoría de los arcanos de Warframe son comerciables. Farmear una fuente que ya has maximizado es uno de los ingresos de platinum más estables del juego, con arcanos populares como Energize y Grace manteniendo un valor real."
+          "text": "Tras alcanzar el rango máximo de un arcano que uses, conseguirás muchos **duplicados** que no necesitas, y la mayoría de los arcanos de Warframe se pueden intercambiar. Seguir farmeando una fuente cuyos arcanos ya tienes al máximo es una de las formas más constantes de obtener platino en el juego; arcanos populares como Energize y Grace conservan un valor considerable."
         },
         {
           "type": "list",
@@ -329,15 +329,15 @@
             },
             {
               "h": "Consigue energía y supervivencia primero",
-              "p": "Tus primeros objetivos son los arquetipos Energize / Grace / Guardian. Compra una o dos copias baratas en el mercado, o farmea Eidolons, o sáltate el RNG y cómpraselos a Acrithis en Duviri con Pathos Clamps. Incluso las copias sin rango ayudan de inmediato."
+              "p": "Compara opciones de energía y supervivencia como Energize, Grace y Guardian con las necesidades de tu configuración. Consíguelos en sus fuentes de Eidolon, compara los precios de intercambio entre jugadores o recurre a las recompensas aleatorias de Eidolon Arcane Collection después de Whispers in the Walls. Acrithis vende una selección distinta de Duviri. Puedes equipar una sola copia sin subir de rango."
             },
             {
               "h": "Desbloquea las ranuras de arcanos de tus armas",
-              "p": "Acumula Steel Path Honors para obtener Arcane Adapters (uno por arma Primary, Secondary y Melee), luego equipa arcanos de daño que se acumulan al matar, como la línea Merciless, en tus armas principales."
+              "p": "Intercambia Steel Essence con Teshin por adaptadores de arcanos para armas primarias y secundarias, y equipa arcanos adecuados para tus armas, como Merciless. Los adaptadores de arcanos cuerpo a cuerpo se consiguen con reputación de Cavia, como recompensas de Netracells o en el Mercado después de Whispers in the Walls; instala primero el Melee Upgrade Segment que entrega la aventura."
             },
             {
               "h": "Comprométete a maximizar tus principales",
-              "p": "Elige uno o dos arcanos que uses más y farmea hasta conseguir 21 copias. Los rangos parciales siguen dando frutos en todo el camino, por lo que nunca es progreso perdido."
+              "p": "Elige uno o dos arcanos que uses con más frecuencia y avanza hacia su rango máximo. Comprueba el límite de cada uno antes de comprar duplicados; un arcano de rango 5 necesita 21 copias en total. Los rangos inferiores también pueden ser útiles mientras reúnes las copias."
             },
             {
               "h": "Financia el farmeo con duplicados",
@@ -356,7 +356,7 @@
           "items": [
             "**Confundir arcanos con mods.** Los arcanos van en la pestaña Arcanes, no cuestan capacidad y se activan mediante activadores; no reemplazan tu configuración de mods, se suman a ella.",
             "**Pensar que necesitas el Rango 5 para empezar.** Una sola copia ya funciona. Equípala y súbela de rango a medida que consigas duplicados.",
-            "**Pasar por alto Duviri.** Acrithis vende muchos arcanos de Eidolon a cambio de Pathos Clamps, una alternativa en solitario y de bajo estrés a la caza de Tridolon.",
+            "**Confundir las recompensas de Duviri y de Eidolon.** Acrithis vende una selección rotativa de arcanos de Duviri al alcanzar el rango 9 del intrínseco Opportunity. Comprueba la fuente exacta del arcano antes de recolectar Pathos Clamps.",
             "**Vender los individuales.** Conserva al menos uno de cada arcano comerciable; vende solo el excedente que supere tu rango objetivo.",
             "**Olvidar los adaptadores de armas.** Los arcanos de armas no hacen nada hasta que desbloqueas la ranura con el Arcane Adapter correspondiente."
           ]
@@ -371,11 +371,11 @@
   "faqs": [
     {
       "q": "¿Cuántos arcanos necesitas para maximizar un arcano en Warframe?",
-      "a": "21 copias del mismo arcano lo maximizan por completo al Rango 5. El costo aumenta en cada nivel: 1 para equipar, luego +2, +3, +4, +5, +6 para un total acumulado de 21. Sin embargo, no tienes que maximizarlo para usarlo; una sola copia funciona en el Rango 0."
+      "a": "Un arcano que alcanza el rango 5 necesita 21 copias en total: 1 inicialmente, luego 2, 3, 4, 5 y 6 más para los rangos sucesivos. Algunas familias arcanas tienen rangos máximos más bajos, así que revisa los arcanos individuales antes de comprar 21 copias. Ya se puede equipar una sola copia en el rango 0."
     },
     {
       "q": "¿Cuál es el mejor primer arcano para farmear?",
-      "a": "Comienza con los elementos básicos de energía y supervivencia: Arcane Energize, Arcane Grace y Arcane Guardian. Mejoran casi todos los frames del juego. Puedes farmearlos de los Eidolons por la noche en las Plains of Eidolon, o comprárselos a Acrithis en Duviri a cambio de Pathos Clamps para saltarte el RNG. Consulta la [guía de Eidolon](/guides/eidolon)."
+      "a": "Compara opciones de energía y supervivencia como Arcane Energize, Arcane Grace y Arcane Guardian con las necesidades de tu configuración. Puedes recurrir a sus fuentes de Eidolon y al intercambio entre jugadores; después de Whispers in the Walls, Eidolon Arcane Collection ofrece recompensas aleatorias. La selección de Duviri de Acrithis es distinta. Consulta la [guía de Eidolon](/guides/eidolon)."
     },
     {
       "q": "¿Se consumen los arcanos al desequiparlos?",
@@ -387,11 +387,11 @@
     },
     {
       "q": "¿Cómo se desbloquean las ranuras de arcanos en las armas?",
-      "a": "Cada arma necesita su propio Arcane Adapter (un Primary, Secondary o Melee Arcane Adapter) para habilitar su única ranura de arcano. Obtienes adaptadores principalmente de los Steel Path Honors de Teshin (a cambio de Steel Essence), y también puedes comprarlos de Acrithis en Duviri por Pathos Clamps o en el Market del juego. Las ranuras de arcanos de Warframe, por el contrario, están disponibles por defecto, no se requiere adaptador."
+      "a": "Instala el adaptador de arcanos para armas primarias, secundarias o cuerpo a cuerpo que corresponda en cada arma que quieras mejorar. Teshin vende adaptadores primarios y secundarios a cambio de Steel Essence; Acrithis puede ofrecer esos dos tipos por Pathos Clamps. Las armas cuerpo a cuerpo requieren el Melee Upgrade Segment de Whispers in the Walls, y sus adaptadores se consiguen con reputación de Cavia, como recompensas de Netracells o en el Mercado. Los tres tipos se pueden comprar con platino; comprar el adaptador cuerpo a cuerpo requiere completar esa aventura. Las ranuras de arcanos de los Warframes no necesitan adaptador."
     },
     {
       "q": "¿De dónde vienen los arcanos de Operator y Amp?",
-      "a": "Los arcanos de Operator (la línea Magus) y los arcanos de Amp (la línea Virtuos) se compran con reputación de Vox Solaris a Little Duck en Fortuna. Obtienes esa reputación principalmente entregando Toroids y Amps dorados de repuesto de Orb Vallis, y comprar toda la línea es un farmeo de reputación considerable, así que planifícalo en consecuencia."
+      "a": "Los arcanos Magus y Virtuos tienen selecciones distintas en The Quills, en Cetus, y en las ofrendas de Vox Solaris de Little Duck, en Fortuna; utiliza la reputación que pida el vendedor correspondiente. Cavalero, en el Zariman, también ofrece arcanos más recientes para Operador y Amp. Comprueba la fuente del arcano concreto que buscas antes de elegir dónde conseguir reputación."
     },
     {
       "q": "¿Valen la pena los arcanos para los jugadores nuevos?",
@@ -436,6 +436,46 @@
     {
       "label": "Official Warframe Wiki",
       "href": "https://wiki.warframe.com/"
+    },
+    {
+      "label": "Update 27.2: Warframe and Operator rank-cap changes",
+      "href": "https://www.warframe.com/en/patch-notes/pc/27-2-0"
+    },
+    {
+      "label": "Update 30.5: gun Arcane Adapters and Deadhead",
+      "href": "https://www.warframe.com/en/patch-notes/pc/30-5-0"
+    },
+    {
+      "label": "Update 33: Acrithis offerings",
+      "href": "https://www.warframe.com/en/patch-notes/pc/33-0-0"
+    },
+    {
+      "label": "Update 33.5: adapter access and additional Duviri arcanes",
+      "href": "https://www.warframe.com/en/patch-notes/pc/33-5-0"
+    },
+    {
+      "label": "Update 35: Melee Upgrade Segment, adapters and Arcane Dissolution",
+      "href": "https://www.warframe.com/en/patch-notes/pc/35-0-0"
+    },
+    {
+      "label": "Update 24.6: Quills arcane offerings",
+      "href": "https://www.warframe.com/en/patch-notes/pc/24-6-0"
+    },
+    {
+      "label": "Update 24.2: Little Duck arcane offerings",
+      "href": "https://www.warframe.com/en/patch-notes/pc/24-2-0"
+    },
+    {
+      "label": "Update 31.5: Molt Efficiency and Zariman arcanes",
+      "href": "https://www.warframe.com/en/patch-notes/pc/31-5-0"
+    },
+    {
+      "label": "Update 31.6: Molt Reconstruct and Cavalero offerings",
+      "href": "https://www.warframe.com/en/patch-notes/pc/31-6-0"
+    },
+    {
+      "label": "Hotfix 22.13.2: Eidolon arcane rewards",
+      "href": "https://www.warframe.com/en/patch-notes/pc/22-13-2"
     }
   ],
   "related": [

@@ -1,24 +1,16 @@
 <template>
   <div class="an">
-    <client-only>
-      <template #fallback>
-        <SeoFallbackTable
-          :caption="t('timing.eyebrow')"
-          :name-label="t('timing.table.item')"
-          :columns="[t('timing.table.price'), t('timing.table.vsLow'), t('timing.table.signal')]"
-          :rows="fallbackRows"
-        />
-      </template>
-      <div class="an-console">
-        <header class="an-hero">
-          <div class="an-hero__text">
-            <div class="an-eyebrow">{{ t('timing.eyebrow') }}</div>
-            <i18n-t keypath="timing.hero.title" tag="h1" class="an-title">
-              <template #low><span class="accent-a">{{ t('timing.hero.low') }}</span></template>
-              <template #high><span class="accent-b">{{ t('timing.hero.high') }}</span></template>
-            </i18n-t>
-            <p class="an-lede">{{ t('timing.hero.lede') }}</p>
-          </div>
+    <div class="an-console">
+      <header class="an-hero">
+        <div class="an-hero__text">
+          <div class="an-eyebrow">{{ t('timing.eyebrow') }}</div>
+          <i18n-t keypath="timing.hero.title" tag="h1" class="an-title">
+            <template #low><span class="accent-a">{{ t('timing.hero.low') }}</span></template>
+            <template #high><span class="accent-b">{{ t('timing.hero.high') }}</span></template>
+          </i18n-t>
+          <p class="an-lede">{{ t('timing.hero.lede') }}</p>
+        </div>
+        <client-only>
           <div v-if="topDeal" class="an-hero__deal">
             <div class="an-hero__deal-label">{{ t('timing.hero.dealLabel') }}</div>
             <div class="an-hero__deal-plat">{{ fmtPlat(priceOf(topDeal)) }}<span>p</span></div>
@@ -27,7 +19,18 @@
             </a>
             <div class="an-hero__deal-sub">+{{ topDeal.pctFromAtl.toFixed(0) }}% {{ t('timing.hero.dealSub', { days: topDeal.dataDays }) }}</div>
           </div>
-        </header>
+        </client-only>
+      </header>
+
+      <client-only>
+        <template #fallback>
+          <SeoFallbackTable
+            :caption="t('timing.eyebrow')"
+            :name-label="t('timing.table.item')"
+            :columns="[t('timing.table.price'), t('timing.table.vsLow'), t('timing.table.signal')]"
+            :rows="fallbackRows"
+          />
+        </template>
 
         <div class="an-stats">
           <div class="an-stat">
@@ -146,7 +149,10 @@
         <div v-if="filtered.length > perPage" class="an-pager">
           <v-pagination v-model="page" :length="pageCount" :total-visible="isMobile ? 5 : 9" color="#d4af5a" @update:model-value="onPageChange"></v-pagination>
         </div>
-      </div>
+      </client-only>
+    </div>
+
+    <client-only>
 
       <v-alert class="an-disclaimer" type="info" color="blue-darken-4" density="compact">
         {{ t('timing.disclaimer') }}

@@ -1339,3 +1339,109 @@ All intended code and documentation are committed before the final full
 API/frontend/live workflow. Final gates, release proof, the Ducat refresh and
 public/browser results are retained in ignored `tmp/nov02-*` evidence and
 maintenance memory. This entry does not pre-claim post-deployment results.
+
+## 2026-11-02 afternoon — crawlable tool introductions and factual corrections
+
+The read-only 13:04 UTC baseline is healthy: ten public checks pass, the live
+socket is connected, and API/sync checkouts match `df2b90f953e6f49629875de676ef7869ba1b53e4`.
+Of 3,893 catalogue entries, 3,745 (96.2%) have a usable price less than three
+hours old. Fourteen are over a day old. All fourteen were attempted during the
+12:35 UTC loop and skipped by the existing all-zero quote guard. Three bounded
+source checks confirm absent or offline-only orders. These timestamps describe
+the last usable quote, not the last fetch attempt; there is no evidence here
+of a stopped worker. Quote-attempt provenance remains a separate follow-up.
+The morning Ducat refresh remains applied and is not repeated.
+
+Analytics discovery returns unauthorized. GA4/Search Console traffic and
+conversion comparisons remain unavailable, rather than zero. The acquisition
+hypothesis is that clear, accurate introductions in server-rendered HTML make
+these useful tools easier to understand and index. No traffic uplift is claimed.
+
+### Eight tool pages available before JavaScript
+
+All sixteen public baseline snapshots (English and Spanish for eight tools)
+have real tables, correct canonicals and language alternates, but no H1 or
+introduction. The comparison, screener, movers, volatility, timing, vault-spikes,
+vaulted and vaulted-worth pages now render their existing localized heading and
+introduction on the server. Dynamic hero offers, filters and tables preserve
+their client behavior and existing fallback data. Independent template review
+confirms the client hierarchy and bindings are preserved. Eight regressions
+render the actual templates in English and Spanish with populated and empty
+data, checking one localized H1 before the real table and client boundaries.
+
+The three vaulted introductions are also corrected. Owned relics can still be
+opened, Prime Resurgence can return selected relics, and vaulted status does not
+guarantee higher prices. Aya purchases relics rather than completed Prime gear;
+availability, drop chances and player time matter when comparing routes. These
+claims are grounded in the [Prime Resurgence page](https://www.warframe.com/en/prime-resurgence),
+the [official FAQ](https://forums.warframe.com/topic/1285421-prime-resurgence-dev-workshop-faq/)
+and [Update 44](https://forums.warframe.com/topic/1523956-update-44-iceblade-of-narin/).
+
+### Targeted Arcanes corrections
+
+Twenty-five fields are corrected against ten primary Digital Extremes sources.
+Primary/Secondary adapters are distinguished from Melee adapters and the
+Whispers in the Walls segment requirement. The 21-copy progression applies to
+arcanes reaching Rank 5, rather than every arcane family. Acrithis's rotating
+Duviri selection and Opportunity Rank 9 requirement replace false claims that
+she directly sells Eidolon staples. The guide distinguishes the Quills, Vox
+Solaris and Cavalero, and corrects Molt Efficiency and Deadhead effects.
+Randomized Arcane Dissolution packs are not described as guaranteed purchases.
+An independent pass verifies every replacement against its cited official source.
+
+This is a partial factual correction: other recommendations, market claims and
+the full video content have not received a complete review. The full-guide
+review date stays July 18, 2026, and its overdue notice remains honest. Ten
+official source links are added consistently to all localized snapshots.
+Each locale preserves 143 unrelated guide fields and updates only the 25
+reviewed fields, plus the three tool introductions. All 336 localized strings
+receive independent semantic review, with 287 corrections to the drafts.
+Numbers, Markdown destinations, emphasis and snapshot integrity pass; canonical
+vendor/place names in one table cell deliberately remain unchanged.
+
+The repository translator's Gemini request times out after 30 seconds with no
+quota/access response. Its existing free engine then supplies 320 successful
+drafts, using sequential requests spaced at least two seconds apart. Two
+Traditional Chinese requests return HTTP 500, including one paced retry, and
+requests stop. As a documented exception to the normal generator-only process,
+the final sixteen Traditional Chinese fields are adapted locally from reviewed
+Simplified Chinese and English, then independently reviewed. They are not
+reported as provider-generated. Two Polish/Japanese fields rejected for damaged
+name placeholders are recovered from saved provider responses and corrected.
+No access/rate refusal, alternate account or proxy workaround is involved.
+
+### Mission metadata safeguards
+
+List and detail builders now require compatible mission types before joining
+node facts by location. Explicit verified aliases retain Dark Sector, Mirror
+Defense, Orokin Sabotage and Archwing matches. Conflicting, missing or malformed
+types no longer attach unrelated levels or factions. Archwing Steel Path ranges
+use the [official +50 modifier](https://www.warframe.com/en/patch-notes/pc/28-1-0);
+other supported star-chart missions retain +100. Twenty-four new regressions
+cover real source pairs, conflicts, malformed types, list/detail parity and
+preserved reward-based indexability.
+
+Production currently has no stored node-metadata document. These guards do not
+claim newly visible public node facts. A source dry run preserves 180 compatible
+joins while rejecting two actual conflicts and eleven missing modes. A further
+source-identity mismatch requires an importer repair before activation. No
+node import, metadata write or new importer schedule is performed this cycle.
+
+The latest visible official patch remains 44.1.4.1 (October 28); Tau is announced
+for December. No newer announcement since the morning check warrants a news
+page. The daily maintenance schedule remains active.
+
+Local regression validation passes 764 backend tests, 59 frontend tests and
+26 guide tests (849 total). Backend production compilation also passes. The
+final locale compiler, snapshot integrity check and repository-map validation
+pass after applying the reviewed translations. The eight actual-template SSR
+tests also pass again with the final introductions. All 25 guides validate;
+the seventeen overdue reviews and unrelated translation follow-ups retain
+their existing dates and remain visible in the maintenance queue.
+
+All intended changes and this record precede the final complete API/frontend/
+live deployment. Local gates and final public/browser release evidence are
+recorded before reporting success; ignored `tmp/nov02pm-*` artifacts preserve
+this cycle separately from the morning release. Deployment outcomes will also
+be retained in maintenance memory without leaving a later documentation commit
+undeployed.

@@ -1,30 +1,33 @@
 <template>
   <div class="an">
-    <client-only>
-      <template #fallback>
-        <SeoFallbackTable
-          :caption="t('vaultedPage.hero.title', { vault: t('vaultedPage.hero.titleVault') })"
-          :name-label="t('vaultedPage.table.item')"
-          :columns="[t('vaultedPage.table.ask'), t('vaultedPage.table.bid'), t('vaultedPage.table.spread'), t('vaultedPage.table.vol')]"
-          :rows="fallbackRows"
-        />
-      </template>
-      <div class="an-console">
-        <header class="an-hero">
-          <div class="an-hero__text">
-            <div class="an-eyebrow">{{ t('vaultedPage.eyebrow') }}</div>
-            <i18n-t keypath="vaultedPage.hero.title" tag="h1" class="an-title">
-              <template #vault><span class="accent-b">{{ t('vaultedPage.hero.titleVault') }}</span></template>
-            </i18n-t>
-            <p class="an-lede">{{ t('vaultedPage.hero.lede') }}</p>
-          </div>
+    <div class="an-console">
+      <header class="an-hero">
+        <div class="an-hero__text">
+          <div class="an-eyebrow">{{ t('vaultedPage.eyebrow') }}</div>
+          <i18n-t keypath="vaultedPage.hero.title" tag="h1" class="an-title">
+            <template #vault><span class="accent-b">{{ t('vaultedPage.hero.titleVault') }}</span></template>
+          </i18n-t>
+          <p class="an-lede">{{ t('vaultedPage.hero.lede') }}</p>
+        </div>
+        <client-only>
           <div v-if="topDeal" class="an-hero__deal">
             <div class="an-hero__deal-label">{{ t('vaultedPage.hero.dealLabel') }}</div>
             <div class="an-hero__deal-plat">{{ fmtPlat(topDeal.market.sell) }}<span>p</span></div>
             <a class="an-hero__deal-name" :href="mkt(topDeal.url_name)" target="_blank" rel="noopener" @click="onMarketOpen(topDeal, 'hero')">{{ localItemName(topDeal) }} →</a>
             <div class="an-hero__deal-sub">{{ t('vaultedPage.hero.dealSub', { vol: fmtPlat(topDeal.market.volume) }) }}</div>
           </div>
-        </header>
+        </client-only>
+      </header>
+
+      <client-only>
+        <template #fallback>
+          <SeoFallbackTable
+            :caption="t('vaultedPage.hero.title', { vault: t('vaultedPage.hero.titleVault') })"
+            :name-label="t('vaultedPage.table.item')"
+            :columns="[t('vaultedPage.table.ask'), t('vaultedPage.table.bid'), t('vaultedPage.table.spread'), t('vaultedPage.table.vol')]"
+            :rows="fallbackRows"
+          />
+        </template>
 
         <div class="an-stats">
           <div class="an-stat"><div class="an-stat__num">{{ stats.total }}</div><div class="an-stat__lbl">{{ t('vaultedPage.stats.total') }}</div></div>
@@ -113,7 +116,10 @@
         <div v-if="filtered.length > perPage" class="an-pager">
           <v-pagination v-model="page" :length="pageCount" :total-visible="isMobile ? 5 : 9" color="#d4af5a" @update:model-value="onPageChange"></v-pagination>
         </div>
-      </div>
+      </client-only>
+    </div>
+
+    <client-only>
 
       <v-alert class="an-disclaimer bg-blue-darken-4" type="info" density="compact">
         {{ t('vaultedPage.disclaimer') }}

@@ -10,7 +10,7 @@ export default {
       hero: {
         title: 'Locked in the {vault}.',
         titleVault: 'Vault',
-        lede: "Vaulted prime gear can't be farmed from relics anymore — supply only shrinks, so prices tend to climb. Here's every vaulted item on the market, ranked by what it's worth today.",
+        lede: "Compare current market prices for vaulted Prime gear. Relics you already own can still be opened, and selected relics return through Prime Resurgence. Check current listings and Varzia's available offerings before deciding what to farm or trade.",
         dealLabel: 'Priciest vaulted',
         dealSub: 'vol {vol}',
       },
@@ -68,7 +68,7 @@ export default {
       hero: {
         title: 'Bloqueado en la {vault}.',
         titleVault: 'Bóveda',
-        lede: 'El equipo Prime vedado ya no se puede farmear de reliquias — la oferta solo se reduce, así que los precios tienden a subir. Aquí está cada objeto vedado del mercado, ordenado por lo que vale hoy.',
+        lede: "Compara los precios actuales del mercado para el equipo Prime en la bóveda. Las reliquias que ya tienes se pueden seguir abriendo, y algunas reliquias regresan mediante Prime Resurgence. Consulta los anuncios actuales y las ofertas disponibles de Varzia antes de decidir qué conseguir o intercambiar.",
         dealLabel: 'Vedado más caro',
         dealSub: 'vol {vol}',
       },
@@ -126,7 +126,7 @@ export default {
       hero: {
         title: 'Trancado no {vault}.',
         titleVault: 'Cofre',
-        lede: 'O equipamento Prime vedado não pode mais ser farmado de relíquias — a oferta só diminui, então os preços tendem a subir. Aqui está cada item vedado do mercado, ordenado pelo que vale hoje.',
+        lede: "Compare os preços atuais de mercado dos equipamentos Prime no Cofre. As relíquias que você já possui ainda podem ser abertas, e algumas relíquias retornam pela Prime Resurgence. Confira os anúncios atuais e as ofertas disponíveis de Varzia antes de decidir o que farmar ou negociar.",
         dealLabel: 'Vedado mais caro',
         dealSub: 'vol {vol}',
       },
@@ -184,7 +184,7 @@ export default {
       hero: {
         title: 'Im {vault} eingeschlossen.',
         titleVault: 'Tresor',
-        lede: 'Archivierte Prime-Ausrüstung kann nicht mehr aus Relikten gefarmt werden — der Nachschub schrumpft nur noch, daher steigen die Preise meist. Hier ist jeder archivierte Gegenstand auf dem Markt, sortiert nach seinem heutigen Wert.',
+        lede: "Vergleiche aktuelle Marktpreise für Prime-Ausrüstung im Vault. Relikte, die du bereits besitzt, lassen sich weiterhin öffnen, und ausgewählte Relikte kehren über Prime Resurgence zurück. Prüfe aktuelle Verkaufsangebote und Varzias verfügbares Sortiment, bevor du entscheidest, was du farmen oder handeln möchtest.",
         dealLabel: 'Teuerster archivierter Gegenstand',
         dealSub: 'vol {vol}',
       },
@@ -242,7 +242,7 @@ export default {
       hero: {
         title: 'Enfermé dans le {vault}.',
         titleVault: 'Coffre',
-        lede: "L'équipement Prime archivé ne peut plus être farmé dans les reliques — l'offre ne fait que diminuer, donc les prix ont tendance à monter. Voici chaque objet archivé du marché, classé selon sa valeur actuelle.",
+        lede: "Comparez les prix actuels du marché pour les équipements Prime du Vault. Les reliques que vous possédez déjà peuvent toujours être ouvertes, et certaines reviennent via Prime Resurgence. Consultez les annonces actuelles et les offres disponibles de Varzia avant de décider quoi farmer ou échanger.",
         dealLabel: 'Archivé le plus cher',
         dealSub: 'vol {vol}',
       },
@@ -300,7 +300,7 @@ export default {
       hero: {
         title: 'Заперто в {vault}.',
         titleVault: 'Хранилище',
-        lede: 'Архивное снаряжение Prime больше нельзя выбить из реликвий — предложение только сокращается, поэтому цены обычно растут. Здесь каждый архивный предмет на рынке, отсортированный по сегодняшней стоимости.',
+        lede: "Сравните текущие рыночные цены на снаряжение Prime из Хранилища. Уже имеющиеся у вас реликвии по-прежнему можно открывать, а некоторые реликвии возвращаются через Prime Resurgence. Перед выбором предметов для фарма или торговли проверьте текущие объявления игроков и доступные предложения Варзии.",
         dealLabel: 'Самый дорогой архивный',
         dealSub: 'vol {vol}',
       },
@@ -358,7 +358,7 @@ export default {
       hero: {
         title: '{vault}에 봉인됨.',
         titleVault: '볼트',
-        lede: '볼트에 들어간 Prime 장비는 더 이상 유물에서 파밍할 수 없습니다 — 공급은 줄어들기만 하므로 가격은 오르는 경향이 있습니다. 오늘 가치 기준으로 정렬한 시장의 모든 볼트 아이템입니다.',
+        lede: "프라임 볼트로 이동한 프라임 장비의 현재 시장 가격을 비교하세요. 이미 보유한 성유물은 계속 열 수 있으며, 일부 성유물은 프라임 리서전스를 통해 돌아옵니다. 무엇을 파밍하거나 거래할지 결정하기 전에 현재 판매 목록과 바르지아의 이용 가능한 상품을 확인하세요.",
         dealLabel: '가장 비싼 볼트',
         dealSub: 'vol {vol}',
       },
@@ -416,7 +416,7 @@ export default {
       hero: {
         title: '{vault}に封印。',
         titleVault: 'ボールト',
-        lede: '封印されたPrime装備はもうレリックから入手できません — 供給は減る一方なので、価格は上がりやすくなります。市場にある封印アイテムを、現在の価値順に並べました。',
+        lede: "Prime Vault入りした装備の現在の市場価格を比較できます。すでに所持しているレリックは引き続き開封でき、一部のレリックはPrime Resurgenceで復刻します。何を集めるか、何をトレードするかを決める前に、現在の出品とVarziaの販売品を確認しましょう。",
         dealLabel: '最も高価な封印品',
         dealSub: 'vol {vol}',
       },
@@ -474,7 +474,7 @@ export default {
       hero: {
         title: '封锁在{vault}中。',
         titleVault: '宝库',
-        lede: '绝版的 Prime 装备无法再从遗物中刷取 — 供应只会减少，因此价格往往会上涨。这里是市场上所有绝版物品，按今日价值排序。',
+        lede: "比较已入库Prime装备的当前市场价格。你持有的遗物仍可开启，部分遗物也会通过Prime Resurgence回归。决定刷取或交易什么之前，请查看当前挂单和Varzia现有的商品。",
         dealLabel: '最贵绝版',
         dealSub: 'vol {vol}',
       },
@@ -532,7 +532,7 @@ export default {
       hero: {
         title: '封鎖在{vault}中。',
         titleVault: '寶庫',
-        lede: '絕版的 Prime 裝備無法再從遺物中刷取 — 供應只會減少，因此價格往往會上漲。這裡是市場上所有絕版物品，依今日價值排序。',
+        lede: "比較已入庫 Prime 裝備的當前市場價格。你持有的遺物仍可開啟，部分遺物也會透過 Prime Resurgence 回歸。決定刷取或交易什麼之前，請查看當前掛單和 Varzia 現有的商品。",
         dealLabel: '最貴絕版',
         dealSub: 'vol {vol}',
       },
@@ -590,7 +590,7 @@ export default {
       hero: {
         title: 'Zamknięte w {vault}.',
         titleVault: 'Skarbcu',
-        lede: 'Zarchiwizowanego sprzętu Prime nie da się już farmić z reliktów — podaż tylko maleje, więc ceny zwykle rosną. Oto każdy zarchiwizowany przedmiot na rynku, uszeregowany według dzisiejszej wartości.',
+        lede: "Porównaj aktualne ceny rynkowe wyposażenia Prime znajdującego się w Skarbcu. Nadal można otwierać posiadane relikty, a wybrane relikty wracają w ramach Prime Resurgence. Sprawdź aktualne ogłoszenia i dostępne oferty Varzii, zanim zdecydujesz, co farmić lub czym handlować.",
         dealLabel: 'Najdroższy zarchiwizowany',
         dealSub: 'vol {vol}',
       },
@@ -648,7 +648,7 @@ export default {
       hero: {
         title: 'Chiuso nella {vault}.',
         titleVault: 'Cassaforte',
-        lede: "L'equipaggiamento Prime archiviato non può più essere farmato dalle reliquie — l'offerta può solo diminuire, quindi i prezzi tendono a salire. Ecco ogni oggetto archiviato sul mercato, ordinato in base al suo valore odierno.",
+        lede: "Confronta i prezzi di mercato attuali dell'equipaggiamento Prime nel Vault. Puoi ancora aprire le reliquie che già possiedi, e alcune reliquie ritornano tramite Prime Resurgence. Controlla gli annunci attuali e le offerte disponibili di Varzia prima di decidere cosa farmare o scambiare.",
         dealLabel: 'Archiviato più caro',
         dealSub: 'vol {vol}',
       },
@@ -706,7 +706,7 @@ export default {
       hero: {
         title: 'Замкнено у {vault}.',
         titleVault: 'Сховищі',
-        lede: 'Архівне спорядження Prime більше не можна вибити з реліквій — пропозиція лише скорочується, тож ціни зазвичай зростають. Ось кожен архівний предмет на ринку, відсортований за сьогоднішньою вартістю.',
+        lede: "Порівняйте поточні ринкові ціни на спорядження Prime зі Сховища. Наявні у вас реліквії й далі можна відкривати, а деякі реліквії повертаються через Prime Resurgence. Перш ніж обирати предмети для фарму чи торгівлі, перевірте поточні оголошення гравців і доступні пропозиції Varzia.",
         dealLabel: 'Найдорожчий архівний',
         dealSub: 'vol {vol}',
       },

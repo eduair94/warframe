@@ -1,24 +1,16 @@
 <template>
   <div class="an">
-    <client-only>
-      <template #fallback>
-        <SeoFallbackTable
-          :caption="t('screener.eyebrow')"
-          :name-label="t('screener.table.item')"
-          :columns="[t('screener.table.sell'), t('screener.table.discount'), t('screener.table.vol')]"
-          :rows="fallbackRows"
-        />
-      </template>
-      <div class="an-console">
-        <header class="an-hero">
-          <div class="an-hero__text">
-            <div class="an-eyebrow">{{ t('screener.eyebrow') }}</div>
-            <i18n-t keypath="screener.hero.title" tag="h1" class="an-title">
-              <template #whole><span class="accent-a">{{ t('screener.hero.titleWhole') }}</span></template>
-              <template #atOnce><span class="accent-b">{{ t('screener.hero.titleAtOnce') }}</span></template>
-            </i18n-t>
-            <p class="an-lede">{{ t('screener.hero.lede') }}</p>
-          </div>
+    <div class="an-console">
+      <header class="an-hero">
+        <div class="an-hero__text">
+          <div class="an-eyebrow">{{ t('screener.eyebrow') }}</div>
+          <i18n-t keypath="screener.hero.title" tag="h1" class="an-title">
+            <template #whole><span class="accent-a">{{ t('screener.hero.titleWhole') }}</span></template>
+            <template #atOnce><span class="accent-b">{{ t('screener.hero.titleAtOnce') }}</span></template>
+          </i18n-t>
+          <p class="an-lede">{{ t('screener.hero.lede') }}</p>
+        </div>
+        <client-only>
           <div v-if="topDeal" class="an-hero__deal">
             <div class="an-hero__deal-label">{{ t('screener.hero.dealLabel') }}</div>
             <div class="an-hero__deal-plat">{{ fmtPct(topDeal.discount) }}<span>{{ t('screener.hero.off') }}</span></div>
@@ -27,7 +19,18 @@
             </a>
             <div class="an-hero__deal-sub">{{ t('screener.hero.dealSub', { sell: fmtPlat(topDeal.market.sell), avg: fmtPlat(topDeal.market.avg_price) }) }}</div>
           </div>
-        </header>
+        </client-only>
+      </header>
+
+      <client-only>
+        <template #fallback>
+          <SeoFallbackTable
+            :caption="t('screener.eyebrow')"
+            :name-label="t('screener.table.item')"
+            :columns="[t('screener.table.sell'), t('screener.table.discount'), t('screener.table.vol')]"
+            :rows="fallbackRows"
+          />
+        </template>
 
         <div class="an-stats">
           <div class="an-stat">
@@ -132,7 +135,10 @@
         <div v-if="filtered.length > perPage" class="an-pager">
           <v-pagination v-model="page" :length="pageCount" :total-visible="mobile ? 5 : 9" color="#d4af5a" @update:model-value="onPageChange"></v-pagination>
         </div>
-      </div>
+      </client-only>
+    </div>
+
+    <client-only>
 
       <v-alert class="an-disclaimer bg-blue-darken-4" type="info" density="compact">
         {{ t('screener.disclaimer') }}
