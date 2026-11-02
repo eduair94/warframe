@@ -3,6 +3,7 @@ import { MongooseServer } from "./database";
 import { isIncompleteSetRoster } from "./services/SetService";
 import WarframeUndici from "./warframe-undici";
 import { parkIfWfmSyncOffHost } from "./services/WfmSyncGuard";
+import { getDucatMetadataWrite } from "./services/DucatMetadata";
 
 // ANSI color codes for terminal output
 const colors = {
@@ -117,6 +118,7 @@ async function main() {
     let idx = 0;
     let newItems = 0;
     let updatedItems = 0;
+    let ducatUpdates = 0;
     let skippedItems = 0;
     let errorCount = 0;
     
@@ -162,6 +164,15 @@ async function main() {
             });
             return { status: 'updated' };
           } else {
+            // Already-enriched items still have mutable exchange values. Use
+            // the bulk response already fetched above, with no per-item HTTP
+            // requests and no write-back of concurrently changing prices.
+            const metadata = getDucatMetadataWrite(itemDB, item);
+            if (metadata) {
+              const result = await m.db.getModel()
+                .updateOne(metadata.filter, metadata.update, metadata.options).exec();
+              return { status: result.matchedCount > 0 ? 'ducats' : 'skipped' };
+            }
             return { status: 'skipped' };
           }
         } catch (error: any) {
@@ -175,6 +186,7 @@ async function main() {
         idx++;
         if (result.status === 'new') newItems++;
         else if (result.status === 'updated') updatedItems++;
+        else if (result.status === 'ducats') ducatUpdates++;
         else if (result.status === 'skipped') skippedItems++;
         else if (result.status === 'error') errorCount++;
       }
@@ -202,6 +214,7 @@ async function main() {
     log('📊', `Total items checked: ${idx}`, colors.cyan);
     log('➕', `New items added: ${newItems}`, colors.green);
     log('🔄', `Updated with v2 data: ${updatedItems}`, colors.yellow);
+    log('💱', `Ducat values refreshed: ${ducatUpdates}`, colors.yellow);
     log('⏭️', `Already up-to-date: ${skippedItems}`, colors.dim);
     log('❌', `Errors: ${errorCount}`, colors.red);
     log('⏱️', `Total time: ${totalTime}s`, colors.magenta);

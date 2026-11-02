@@ -1210,3 +1210,110 @@ their frozen reviewed snapshots, verify mission notes and public health, and
 exercise Spanish guide-to-Circuit navigation on mobile and desktop. Exact final
 release and recovery measurements will be retained in ignored evidence and the
 maintenance memory; this paragraph does not pre-claim those post-deploy results.
+
+## 2026-11-02 — Endo estimates, current Ducats and Steel Path
+
+Starting production revision `9f574fb` preserves the October 27–28 egress,
+socket and locale/freshness-banner changes. Public baseline checks pass 10/10:
+3,672 of 3,893 prices (94.3%) are under three hours old, 221 are older and twelve
+exceed a day; median age is 51.4 minutes. The live socket is connected and the
+bounded sync log has no 429/403 errors. Historical statistics can still be older.
+
+The hypothesis is that reliable calculations and current answers improve the
+usefulness of existing search landing pages. No traffic effect is claimed.
+One Supermetrics discovery returns UNAUTHORIZED, so Search Console and GA4 need
+reauthentication. Once available, compare complete October 26–November 1 against
+October 19–25, and October 5–November 1 against September 7–October 4, using the
+property timezone.
+
+### Endo and Ducat calculations
+
+The default Endo table used historical maximum-rank averages. Observed Ammo Drum
+data has a 99,999p average, 6p current lowest ask and 2p buy-in, producing a
+99,997p default margin. The default now uses the current ask, estimating 4p on
+that same snapshot. Explicit average and instant-sale modes remain available.
+Each mode requires its own positive, finite quote; missing quotes no longer
+silently substitute another model. Localized help explains listing versus sale
+uncertainty, buy-order execution and historical outliers. This does not identify
+the cause of the extreme upstream average or guarantee execution at an ask.
+
+[Hotfix 44.1.4](https://www.warframe.com/en/patch-notes/pc/44-1-4)
+reduced Nami Skyla Prime Blade from 100 to 65 Ducats. Its nested stored value is
+still 100 and the top-level field is missing. Only 58 stored items have that
+field; the current bulk catalogue supplies 757 positive values, comprising 594
+individual parts and 163 assembled sets. Previously enriched items were skipped
+indefinitely. The importer now refreshes Ducats from its existing bulk response,
+validates exact identity and updates that field alone with compare-and-set and
+no upsert. Absent or malformed source values preserve stored data; explicit zero
+is valid. No per-item request is added. The calculator excludes assembled sets
+and requires positive valid exchange values and market prices.
+
+The Ducat page's existing heading and introduction now render in the initial
+server response, ahead of the real fallback table. Previously the entire hero
+was client-only, leaving the initial HTML without an H1. Interactive controls
+retain their client rendering. The regression renders the actual templates
+with English and Spanish messages and checks the heading and data rows.
+
+A bounded production refresh is prepared for after deployment: committed helper,
+exact revision checks, guarded writes, saved restore plan and verification of
+unchanged metadata. It does not write prices, rosters or timestamps. The actual
+public coverage and refreshed values will be checked after release.
+
+### Steel Path content and search intent
+
+The revised guide uses 17 Digital Extremes sources. The
+[current base unlock](https://www.warframe.com/en/patch-notes/pc/38-5-3)
+excludes Zariman, Albrecht's Laboratories and Höllvania. Corrections cover
+standard +150% health/shields, the removed armor multiplier, separate Archwing
+and Railjack modifiers, six daily Incursions and their access conditions,
+Acolyte pickups versus fixed rewards, Retriever mods, current shield gating,
+Overguard, Toxin/Slash and Operator recovery. Circuit Incarnon adapters are
+distinct from Teshin purchases. The
+[Railjack revision](https://www.warframe.com/en/patch-notes/pc/43-0-6)
+awards two Essence on mission completion, replacing its initial Eximus drops.
+Unsupported fastest-farm and build guarantees are removed.
+
+Central search copy, the directory summary and contextual Circuit links agree
+with the revised content. All four existing videos pass oEmbed availability,
+title and channel checks; an adjacent note warns of superseded walkthrough
+rules. This is not a factual review of the videos. Only Steel Path receives the
+November 2 source-review date. Twelve localized snapshots and search descriptions
+are updated from the English source while unrelated translations are preserved.
+The Endo help is localized alongside them; meaning, numbers, links, placeholders
+and snapshot consistency are checked before release.
+
+The initial Gemini call failed with a transport error. The built-in free
+translator completed eleven locales and part of Ukrainian, then returned a rate
+refusal. Requests were stopped; a cooldown check still returned 429. As an
+explicit exception to the normal generator-only workflow, 34 remaining or
+partially translated Ukrainian strings are completed locally against the reviewed
+English and existing Ukrainian copy, with a separate independent review. They
+are not represented as successful provider translations. All locales receive
+semantic review, including the default Endo model and search descriptions;
+English fallback prose is not accepted as completed localization.
+
+The integrated review covers 1,044 localized strings, with 812 semantic
+corrections to provider output or incomplete Ukrainian text. Each locale updates
+85 guide fields while preserving 68 unrelated fields, plus its search description
+and Endo explanation. All twelve descriptions stay within 160 characters;
+links, placeholders, numerical values and formatting pass integrity checks.
+The independent Ukrainian pass adds four clarifications to unlock scope and
+thousands formatting, with no outstanding factual blocker.
+
+The latest official patch is 44.1.4.1 (October 28); Tau is announced for December,
+not already released. These checks do not justify filler pages or unrelated
+review-date changes. Node-metadata work remains deferred: unchanged sources have
+two incompatible joins, eleven incomplete entries and eight Archwing level
+adjustments requiring a separate repair.
+
+Local validation passes 740 backend, 51 frontend and 26 guide tests (817 total),
+including the actual Endo query/model selection, guarded metadata writes and
+English/Spanish Ducat server rendering. Backend production compilation passes.
+The final guide validator, locale compiler and generated repository-map check
+also pass. Seventeen other guides remain in the review queue; existing unrelated
+translation follow-ups retain their original dates.
+
+All intended code and documentation are committed before the final full
+API/frontend/live workflow. Final gates, release proof, the Ducat refresh and
+public/browser results are retained in ignored `tmp/nov02-*` evidence and
+maintenance memory. This entry does not pre-claim post-deployment results.

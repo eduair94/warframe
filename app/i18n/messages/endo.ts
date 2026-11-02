@@ -189,7 +189,7 @@ export default {
         n: 'Rank {n}',
       },
       disclaimer: {
-        flip: 'Plat / 1k endo = {formula}. By default it shows well-traded mods (≥50 maxed sales in 48h), valued at the {avg} price and bought in via a competitive buy order — the most reliable read. Heads-up: the copy-whisper buys instantly at the seller\'s ask, which can sit above that buy-order price — the row shows "buy now" and warns when buying instantly would be a loss. Turn Via buy order off (Filters & settings) to price every flip at the instant ask, so the buy-in and the whisper match. Switch the pricing model or lower the volume filter there too for current-ask, instant, or thinner mods. Warframe takes no platinum trade tax; your cost is endo + credits.',
+        flip: "Plat / 1k endo = {formula}. By default, the table requires at least 50 maxed sales in 48h and values resale at the current lowest maxed asking price. A listing is not a guaranteed sale. Via buy order models a competitive bid that may not fill; the copy-whisper instead pays the seller’s ask, and the row warns if buying now would lose platinum. Turn Via buy order off to use that instant buy-in. Filters & settings also offers the {avg} and instant-sale models; a missing quote for the selected model excludes the flip. Historical averages can contain outliers. Costs include endo and credits.",
         formula: '(maxed sell − buy-in) ÷ endo to finish × 1000',
         avg: '48h average',
         sources:
@@ -384,7 +384,7 @@ export default {
         n: 'Rango {n}',
       },
       disclaimer: {
-        flip: 'Plat / 1k endo = {formula}. Por defecto muestra mods muy comerciados (≥50 ventas al máximo en 48h), valorados al precio {avg} y comprados mediante una orden de compra competitiva — la lectura más fiable. Aviso: el susurro de copia compra al instante al pedido del vendedor, que puede estar por encima de ese precio de orden de compra — la fila muestra «ahora» y avisa cuando comprar al instante sería una pérdida. Desactiva Mediante orden de compra (Filtros y ajustes) para valorar cada reventa al pedido instantáneo, así la entrada y el susurro coinciden. Cambia también ahí el modelo de precios o baja el filtro de volumen para pedido actual, instantáneo o mods más finos. Warframe no cobra impuesto por comerciar platino; tu costo es endo + créditos.',
+        flip: "Plat / 1k endo = {formula}. Por defecto, la tabla exige al menos 50 ventas de mods al rango máximo en 48h y valora la reventa al precio pedido actual más bajo para ese rango. Un anuncio no garantiza una venta. Mediante orden de compra modela una puja competitiva que puede no completarse; el susurro copiado usa el precio pedido por el vendedor, y la fila avisa si comprar ahora supondría perder platino. Desactiva Mediante orden de compra para usar ese costo de compra inmediata. Filtros y ajustes también ofrece los modelos {avg} y de venta instantánea; si falta una cotización para el modelo elegido, se excluye esa reventa. Los promedios históricos pueden contener valores atípicos. Los costos incluyen endo y créditos.",
         formula: '(venta al máximo − entrada) ÷ endo para terminar × 1000',
         avg: 'promedio de 48h',
         sources:
@@ -579,7 +579,7 @@ export default {
         n: 'Rank {n}',
       },
       disclaimer: {
-        flip: 'Plat / 1k endo = {formula}. Por padrão mostra mods bem negociados (≥50 vendas no máximo em 48h), avaliados pelo preço {avg} e comprados via ordem de compra competitiva — a leitura mais confiável. Atenção: o sussurro de cópia compra na hora pela oferta do vendedor, que pode estar acima desse preço de ordem de compra — a linha mostra «agora» e avisa quando comprar na hora seria uma perda. Desligue Via ordem de compra (Filtros e ajustes) para avaliar cada revenda pela oferta instantânea, então a entrada e o sussurro coincidem. Troque também ali o modelo de preços ou reduza o filtro de volume para oferta atual, instantâneo ou mods mais finos. Warframe não cobra imposto por negociar platina; seu custo é endo + créditos.',
+        flip: "Plat / 1k endo = {formula}. Por padrão, a tabela exige pelo menos 50 vendas de mods no nível máximo em 48h e calcula a revenda pela menor oferta atual de venda nesse nível. Um anúncio não garante uma venda. Via ordem de compra modela um lance competitivo que pode não ser atendido; o sussurro copiado usa o preço pedido pelo vendedor, e a linha avisa se comprar agora causaria perda de platina. Desative Via ordem de compra para usar esse custo de compra imediata. Filtros e ajustes também oferece os modelos {avg} e de venda instantânea; se faltar uma cotação para o modelo escolhido, a revenda é excluída. As médias históricas podem conter valores discrepantes. Os custos incluem endo e créditos.",
         formula: '(venda no máximo − entrada) ÷ endo para terminar × 1000',
         avg: 'média de 48h',
         sources:
@@ -774,7 +774,7 @@ export default {
         n: 'Rang {n}',
       },
       disclaimer: {
-        flip: 'Plat / 1k Endo = {formula}. Standardmäßig werden gut gehandelte Mods angezeigt (≥50 gemaxte Verkäufe in 48h), bewertet zum {avg}-Preis und über eine konkurrenzfähige Kauforder gekauft — die zuverlässigste Einschätzung. Achtung: Der Kopier-Flüstertext kauft sofort zum Angebot des Verkäufers, das über diesem Kauforder-Preis liegen kann — die Zeile zeigt „jetzt“ und warnt, wenn der Sofortkauf ein Verlust wäre. Schalte Über Kauforder aus (Filter & Einstellungen), um jeden Flip zum Sofort-Angebot zu bewerten, sodass Einstieg und Flüstertext übereinstimmen. Ändere dort auch das Preismodell oder senke den Volumenfilter für aktuelles Angebot, sofort oder dünner gehandelte Mods. Warframe erhebt keine Platin-Handelssteuer; deine Kosten sind Endo + Credits.',
+        flip: "Plat / 1k endo = {formula}. Standardmäßig verlangt die Tabelle mindestens 50 Verkäufe von Mods auf Maximalrang in 48h. Für den Wiederverkauf verwendet sie den aktuell niedrigsten Angebotspreis auf diesem Rang. Ein Inserat garantiert keinen Verkauf. Über Kauforder modelliert ein wettbewerbsfähiges Kaufgebot, das möglicherweise nicht erfüllt wird. Die kopierte Flüsternachricht verwendet hingegen den Preis des Verkäufers; die Zeile warnt, wenn ein Sofortkauf Platinverlust bedeuten würde. Deaktivieren Sie Über Kauforder, um diesen Sofortkaufpreis anzusetzen. Filter & Einstellungen bietet auch die Modelle {avg} und Sofortverkauf. Fehlt ein Kurs für das gewählte Modell, wird der Flip ausgeschlossen. Historische Durchschnittswerte können Ausreißer enthalten. Die Kosten umfassen Endo und Credits.",
         formula: '(gemaxter Verkauf − Einstieg) ÷ Endo zum Abschließen × 1000',
         avg: '48h-Durchschnitt',
         sources:
@@ -969,7 +969,7 @@ export default {
         n: 'Rang {n}',
       },
       disclaimer: {
-        flip: "Plat / 1k endo = {formula}. Par défaut, affiche les mods bien échangés (≥50 ventes maximisées en 48h), évalués au prix {avg} et achetés via un ordre d'achat compétitif — la lecture la plus fiable. Attention : le chuchotement de copie achète instantanément à l'offre du vendeur, qui peut être au-dessus de ce prix d'ordre d'achat — la ligne affiche « maintenant » et avertit quand un achat instantané serait une perte. Désactivez Via ordre d'achat (Filtres et réglages) pour évaluer chaque revente à l'offre instantanée, afin que l'entrée et le chuchotement correspondent. Changez-y aussi le modèle de prix ou baissez le filtre de volume pour l'offre actuelle, l'instantané ou les mods moins échangés. Warframe ne prélève aucune taxe sur les échanges de platine ; votre coût est endo + crédits.",
+        flip: "Plat / 1k endo = {formula}. Par défaut, le tableau exige au moins 50 ventes de mods au rang maximal en 48h et estime leur revente au prix demandé actuel le plus bas pour ce rang. Une annonce ne garantit pas une vente. Via ordre d'achat modélise une offre d'achat compétitive qui peut rester sans réponse ; le message privé copié utilise le prix demandé par le vendeur, et la ligne signale si acheter maintenant ferait perdre du platine. Désactivez Via ordre d'achat pour utiliser ce coût d'achat immédiat. Filtres et réglages propose aussi les modèles {avg} et de vente instantanée ; sans cotation pour le modèle choisi, la revente est exclue. Les moyennes historiques peuvent contenir des valeurs aberrantes. Les coûts comprennent l'endo et les crédits.",
         formula: '(vente maximisée − entrée) ÷ endo pour terminer × 1000',
         avg: 'moyenne 48h',
         sources:
@@ -1164,7 +1164,7 @@ export default {
         n: 'Ранг {n}',
       },
       disclaimer: {
-        flip: 'Плат / 1k endo = {formula}. По умолчанию показываются ходовые моды (≥50 продаж прокачанных за 48ч), оценённые по цене {avg} и купленные через конкурентный ордер на покупку — самая надёжная оценка. Внимание: шёпот-копия покупает мгновенно по предложению продавца, которое может быть выше цены ордера на покупку — в строке показано «сейчас» и есть предупреждение, когда мгновенная покупка будет убытком. Отключите Через ордер на покупку (Фильтры и настройки), чтобы оценивать каждую перепродажу по мгновенному предложению, тогда вход и шёпот совпадут. Там же смените модель цены или снизьте фильтр объёма для текущего предложения, мгновенной покупки или менее ходовых модов. Warframe не берёт налог на торговлю платиной; ваша стоимость — endo + кредиты.',
+        flip: "Платина / 1 тыс. Endo = {formula}. По умолчанию таблица требует не менее 50 продаж модов максимального ранга за 48 ч и оценивает перепродажу по текущей минимальной цене продавца для максимального ранга. Объявление не гарантирует продажу. Режим покупки через ордер моделирует конкурентную заявку, которая может не исполниться; скопированный шёпот предлагает продавцу его цену, а строка предупреждает, если немедленная покупка принесёт убыток в платине. Отключите покупку через ордер, чтобы использовать эту цену немедленной покупки. В фильтрах и настройках также доступны модели {avg} и мгновенной продажи; без котировки из выбранного источника сделка исключается. Исторические средние могут содержать выбросы. Затраты включают Endo и кредиты.",
         formula: '(продажа прокачанным − вход) ÷ endo для завершения × 1000',
         avg: 'среднее за 48ч',
         sources:
@@ -1359,7 +1359,7 @@ export default {
         n: '랭크 {n}',
       },
       disclaimer: {
-        flip: '플랫 / 1k endo = {formula}. 기본적으로 잘 거래되는 모드(48시간 내 최대 랭크 판매 50건 이상)를 {avg} 가격으로 평가하고 경쟁적인 구매 주문으로 산 것으로 표시합니다 — 가장 신뢰할 수 있는 기준입니다. 주의: 복사 귓속말은 판매자의 매도호가로 즉시 구매하는데, 이는 구매 주문 가격보다 높을 수 있습니다 — 행에 "지금"이 표시되고 즉시 구매가 손해일 때 경고합니다. 구매 주문으로를 끄면(필터 및 설정) 모든 되팔기를 즉시 매도호가로 평가해 진입가와 귓속말이 일치합니다. 거기서 가격 모델을 바꾸거나 거래량 필터를 낮춰 현재 매도호가, 즉시, 더 얇게 거래되는 모드도 볼 수 있습니다. Warframe은 플래티넘 거래세를 받지 않습니다; 비용은 endo + 크레딧입니다.',
+        flip: "플래티넘 / Endo 1k = {formula}. 기본 표는 48시간 동안 최대 랭크 모드 판매가 최소 50건인 항목을 표시하고, 현재 최대 랭크 최저 판매 호가로 재판매 가치를 계산합니다. 호가는 실제 판매를 보장하지 않습니다. 구매 주문 사용 모드는 체결되지 않을 수도 있는 경쟁력 있는 매수 호가를 가정합니다. 반면 복사한 귓속말은 판매자의 호가로 즉시 구매하므로, 그 가격에서 손해가 나면 행에 경고가 표시됩니다. 구매 주문 사용을 끄면 즉시 구매 가격으로 계산합니다. 필터 및 설정에서 {avg} 또는 즉시 판매 모델도 선택할 수 있으며, 선택한 모델의 시세가 없으면 해당 재판매 항목은 제외됩니다. 과거 평균에는 이상값이 포함될 수 있습니다. 비용에는 Endo와 크레딧이 포함됩니다.",
         formula: '(최대 랭크 판매가 − 진입가) ÷ 완성 endo × 1000',
         avg: '48시간 평균',
         sources:
@@ -1554,7 +1554,7 @@ export default {
         n: 'ランク {n}',
       },
       disclaimer: {
-        flip: 'プラチナ / 1k endo = {formula}。デフォルトではよく取引される MOD（48時間で最大ランク販売 50 件以上）を表示し、{avg} 価格で評価し、競争力のある買い注文で購入したものとします — 最も信頼できる読み方です。注意：コピーウィスパーは売り手の売り注文で即時に購入し、それは買い注文価格より高いことがあります — 行に「今すぐ」と表示され、即時購入が損失になるときは警告します。買い注文で をオフにすると（フィルターと設定）、各転売を即時の売り注文で評価し、仕入れとウィスパーが一致します。そこで価格モデルを変えたり、取引量フィルターを下げて現在の売り注文、即時、薄めの MOD も表示できます。Warframe はプラチナ取引に税を取りません。コストは endo + クレジットです。',
+        flip: "プラチナ / Endo 1k = {formula}。標準設定では、48時間の最大ランク品の販売数が50件以上のMODを表示し、現在の最大ランク品の最安売り注文で再販価値を見積もります。出品価格で売れる保証はありません。「買い注文を利用」は、約定しない可能性もある競争力のある買値を想定します。コピーしたウィスパーで即購入する場合は売り手の提示額を払い、損失になる場合は行に警告が出ます。「買い注文を利用」をオフにすると、その即購入価格で計算します。「フィルターと設定」では{avg}と即売却のモデルも選べます。選択したモデルの価格がなければ、その転売候補は除外されます。過去の平均には外れ値が含まれることがあります。費用にはEndoとクレジットが含まれます。",
         formula: '(最大ランク売値 − 仕入れ) ÷ 仕上げ endo × 1000',
         avg: '48時間平均',
         sources:
@@ -1749,7 +1749,7 @@ export default {
         n: '等级 {n}',
       },
       disclaimer: {
-        flip: '白金 / 1k endo = {formula}。默认显示交易活跃的 MOD（48 小时内满级成交 ≥50 笔），按 {avg} 价格估值并通过有竞争力的买单买入 — 最可靠的参考。注意：复制密语会按卖家卖价即时购买，这可能高于买单价格 — 该行会显示“现在”，并在即时购买会亏损时发出提醒。关闭 通过买单（筛选与设置），即可按即时卖价为每笔倒卖估值，使买入价与密语一致。也可在那里切换定价模型或降低成交量筛选，以查看当前卖价、即时或成交更稀薄的 MOD。Warframe 不收取白金交易税；你的成本是 endo + 现金。',
+        flip: "白金 / Endo 1k = {formula}。默认显示 48 小时内满级成交量至少 50 件的模组，并按当前满级最低卖价估算转售价值。挂单不保证成交。「通过买单」模拟有竞争力但未必能成交的买价；复制的交易私信则按卖家的要价即时购买，如果这样购买会亏损白金，表格会提示。关闭「通过买单」即可按即时买入价计算。「筛选与设置」还提供 {avg} 和即时卖出模型；若所选模型缺少报价，该转售机会将被排除。历史均价可能含有异常值。成本包括 Endo 和现金。",
         formula: '(满级卖价 − 买入价) ÷ 满级所需 endo × 1000',
         avg: '48 小时均价',
         sources:
@@ -1944,7 +1944,7 @@ export default {
         n: '等級 {n}',
       },
       disclaimer: {
-        flip: '白金 / 1k endo = {formula}。預設顯示交易活躍的 MOD（48 小時內滿級成交 ≥50 筆），按 {avg} 價格估值並透過有競爭力的買單買入 — 最可靠的參考。注意：複製密語會按賣家賣價即時購買，這可能高於買單價格 — 該列會顯示「現在」，並在即時購買會虧損時發出提醒。關閉 透過買單（篩選與設定），即可按即時賣價為每筆倒賣估值，使買入價與密語一致。也可在那裡切換定價模型或降低成交量篩選，以查看目前賣價、即時或成交更稀薄的 MOD。Warframe 不收取白金交易稅；你的成本是 endo + 現金。',
+        flip: "白金 / Endo 1k = {formula}。預設顯示 48 小時內滿級成交量至少 50 件的模組，並按目前滿級最低賣價估算轉售價值。掛單不保證成交。「透過買單」模擬有競爭力但未必能成交的買價；複製的交易私訊則按賣家的要價即時購買，如果這樣購買會虧損白金，表格會提示。關閉「透過買單」即可按即時買入價計算。「篩選與設定」還提供 {avg} 和即時賣出模型；若所選模型缺少報價，該轉售機會將被排除。歷史均價可能含有異常值。成本包括 Endo 和現金。",
         formula: '(滿級賣價 − 買入價) ÷ 滿級所需 endo × 1000',
         avg: '48 小時均價',
         sources:
@@ -2139,7 +2139,7 @@ export default {
         n: 'Ranga {n}',
       },
       disclaimer: {
-        flip: 'Plat / 1k endo = {formula}. Domyślnie pokazuje dobrze handlowane mody (≥50 sprzedaży zmaksowanych w 48h), wycenione po cenie {avg} i kupione przez konkurencyjne zlecenie kupna — najbardziej wiarygodny odczyt. Uwaga: szept kopiowania kupuje natychmiast po ofercie sprzedawcy, która może być powyżej ceny zlecenia kupna — wiersz pokazuje „teraz” i ostrzega, gdy natychmiastowy zakup byłby stratą. Wyłącz Przez zlecenie kupna (Filtry i ustawienia), aby wyceniać każdą odsprzedaż po ofercie natychmiastowej, tak by wejście i szept się zgadzały. Zmień tam też model cenowy lub obniż filtr wolumenu dla aktualnej oferty, natychmiastowego zakupu lub rzadziej handlowanych modów. Warframe nie pobiera podatku od handlu platyną; twój koszt to endo + kredyty.',
+        flip: "Plat / 1k endo = {formula}. Domyślnie tabela wymaga co najmniej 50 sprzedaży modów na maksymalnej randze w ciągu 48h. Odsprzedaż wycenia według najniższej bieżącej oferty sprzedaży takiego moda. Oferta nie gwarantuje transakcji. Tryb zlecenia kupna zakłada konkurencyjną cenę, po której zlecenie może nie zostać zrealizowane; skopiowana wiadomość do sprzedawcy dotyczy natomiast jego ceny. Wiersz ostrzega, jeśli natychmiastowy zakup oznacza stratę platyny. Wyłącz zlecenie kupna, aby użyć kosztu natychmiastowego zakupu. Filtry i ustawienia udostępniają też modele {avg} oraz sprzedaży natychmiastowej. Brak ceny dla wybranego modelu wyklucza transakcję. Średnie historyczne mogą zawierać wartości odstające. Koszty obejmują Endo i kredyty.",
         formula: '(sprzedaż zmaksowanego − wejście) ÷ endo na dokończenie × 1000',
         avg: 'średnia 48h',
         sources:
@@ -2334,7 +2334,7 @@ export default {
         n: 'Rango {n}',
       },
       disclaimer: {
-        flip: "Plat / 1k endo = {formula}. Per impostazione predefinita mostra mod molto scambiati (≥50 vendite al massimo in 48h), valutati al prezzo {avg} e comprati tramite un ordine d'acquisto competitivo — la lettura più affidabile. Attenzione: il sussurro di copia compra all'istante alla richiesta del venditore, che può stare sopra quel prezzo dell'ordine d'acquisto — la riga mostra «ora» e avvisa quando comprare all'istante sarebbe una perdita. Disattiva Tramite ordine d'acquisto (Filtri e impostazioni) per valutare ogni rivendita alla richiesta istantanea, così ingresso e sussurro coincidono. Cambia lì anche il modello di prezzo o abbassa il filtro del volume per la richiesta attuale, l'istantaneo o i mod meno scambiati. Warframe non applica alcuna tassa sugli scambi di platino; il tuo costo è endo + crediti.",
+        flip: "Plat / 1k endo = {formula}. Per impostazione predefinita, la tabella richiede almeno 50 vendite di mod al rango massimo in 48h e stima la rivendita usando il prezzo richiesto più basso attualmente disponibile per quel rango. Un'inserzione non garantisce una vendita. Il modello con ordine di acquisto usa un'offerta competitiva che potrebbe non essere eseguita; il messaggio copiato al venditore usa invece il suo prezzo richiesto. La riga avverte se l'acquisto immediato comporterebbe una perdita di platino. Disattiva l'ordine di acquisto per usare il costo d'acquisto immediato. Filtri e impostazioni offrono anche i modelli {avg} e vendita immediata; una quotazione mancante per il modello scelto esclude l'operazione. Le medie storiche possono contenere valori anomali. I costi includono Endo e crediti.",
         formula: '(vendita al massimo − ingresso) ÷ endo per finire × 1000',
         avg: 'media 48h',
         sources:
@@ -2529,7 +2529,7 @@ export default {
         n: 'Ранг {n}',
       },
       disclaimer: {
-        flip: "Плат / 1k endo = {formula}. За замовчуванням показуються ходові моди (≥50 продажів прокачаних за 48г), оцінені за ціною {avg} і куплені через конкурентний ордер на купівлю — найнадійніша оцінка. Увага: шепіт-копія купує миттєво за пропозицією продавця, яка може бути вищою за ціну ордера на купівлю — у рядку показано «зараз» і є попередження, коли миттєва купівля буде збитком. Вимкніть Через ордер на купівлю (Фільтри та налаштування), щоб оцінювати кожен перепродаж за миттєвою пропозицією, тоді вхід і шепіт збіжаться. Там само змініть модель ціни або знизьте фільтр об'єму для поточної пропозиції, миттєвої купівлі чи менш ходових модів. Warframe не бере податку на торгівлю платиною; ваша вартість — endo + кредити.",
+        flip: "Платина / 1 тис. Endo = {formula}. За замовчуванням таблиця вимагає щонайменше 50 продажів модів максимального рангу за 48 год і оцінює перепродаж за поточною найнижчою ціною продавця для максимального рангу. Оголошення не гарантує продаж. Купівля через ордер моделює конкурентну заявку, яка може не виконатися; скопійований шепіт пропонує продавцю його ціну, а рядок попереджає, якщо негайна купівля призведе до збитку в платині. Вимкніть купівлю через ордер, щоб використовувати цю ціну негайної купівлі. У фільтрах і налаштуваннях також доступні моделі {avg} та миттєвого продажу; без котирування з вибраного джерела угода виключається. Історичні середні можуть містити викиди. Витрати включають Endo та кредити.",
         formula: '(продаж прокачаним − вхід) ÷ endo для завершення × 1000',
         avg: 'середнє за 48г',
         sources:

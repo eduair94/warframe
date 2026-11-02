@@ -2,28 +2,28 @@
   "slug": "steel-path",
   "eyebrow": "Wissenszentrum · Steel Path",
   "title": "Steel Path & Steel Essence",
-  "lede": "Der Steel Path ist Warframes New Game Plus: Die gesamte Sternenkarte wird mit +100 Gegner-Leveln und weitaus zäheren Gegnern erneut gespielt, was Steel Essence einbringt, die du für Umbra Forma, Kuva, Rivens und Incarnon-Waffen ausgeben kannst. Hier erfährst du, wie du ihn freischaltest, überlebst und farmst, ohne Runs zu verschwenden.",
+  "lede": "Der Steel Path spielt die Sternenkarte von Warframe mit härteren Feinden und Belohnungen wie Steel Essence und Waffen-Arkanen ab. Erfahren Sie, welche Missionen Sie abschließen müssen, um es freizuschalten, wie Sie Ihre ersten Läufe überleben und wo Essence, Teshins Shop und Circuit-Belohnungen zusammenpassen.",
   "category": "endgame",
   "readMins": 9,
   "stats": [
     {
       "num": "+100",
-      "label": "hinzugefügte Gegner-Level",
+      "label": "Levels auf Standardmissionen",
       "tone": "gold"
     },
     {
-      "num": "+250%",
-      "label": "Gegner-Gesundheit & Schilde",
+      "num": "+150%",
+      "label": "Gesundheit und Schilde in Standardmissionen",
       "tone": "alt"
     },
     {
       "num": "Free",
-      "label": "zum Freischalten — schließe einfach die Sternenkarte ab",
+      "label": "Entsperren nach erforderlichen Knoten",
       "tone": "good"
     },
     {
-      "num": "150",
-      "label": "Essence für eine Umbra Forma Blaupause",
+      "num": "6",
+      "label": "tägliche Incursions",
       "tone": "gold"
     }
   ],
@@ -34,7 +34,7 @@
       "blocks": [
         {
           "type": "p",
-          "text": "Der **Steel Path** ist Warframes Hard-Mode — ein New Game Plus-Schalter, der die *gesamte* Sternenkarte mit viel stärkeren Gegnern neu auflegt. Jeder Node, den du bereits auf der normalen Karte abgeschlossen hast, ist immer noch da, aber die Gegner erscheinen mit **+100 Leveln** und einem massiven Boost auf Gesundheit, Schilde und Rüstung, sodass ein verschlafener Start-Node zu einer echten Bedrohung wird. Im Gegenzug regnet es in Missionen **Steel Essence** und Bonusressourcen, und das Abschließen von Planeten schaltet einzigartige Belohnungen von Teshin frei."
+          "text": "Der **Steel Path** ist eine optionale schwierigere Version der Sternenkarte mit einer eigenen Fortschrittsanzeige. Standardmissionen fügen Feinden mit Levelskalierung **100 Gegnerstufen** und **150 % Gesundheit und Schilde** hinzu. Es wird kein Rüstungsmultiplikator mehr hinzugefügt. Archwing und Railjack verwenden unterschiedliche Modifikatoren. Überprüfen Sie daher den Missionstyp, bevor Sie den Schwierigkeitsgrad vergleichen."
         },
         {
           "type": "p",
@@ -45,7 +45,7 @@
           "kv": [
             {
               "k": "Wird freigeschaltet bei",
-              "v": "Vollständiges Abschließen der normalen Sternenkarte (jeder Node + Junction)"
+              "v": "Erforderliche normale Missionsknoten und Verbindungen auf der Sternenkarte vor Der Neue Krieg"
             },
             {
               "k": "Aktiviert durch",
@@ -57,18 +57,18 @@
             },
             {
               "k": "Schwierigkeitsgrad",
-              "v": "+100 Gegner-Level, zähere Eximus, echte Überlebensfähigkeit erforderlich"
+              "v": "+100 Level in Standardmissionen; separate Archwing- und Railjack-Regeln"
             },
             {
               "k": "Belohnungs-Highlights",
-              "v": "Umbra Forma, Incarnon-Adapter, Kuva, Riven-Splitter, Arkanas"
+              "v": "Steel Essence, Waffen-Arkanen, Regionstrophäen und Circuit-Belohnungspfade"
             }
           ]
         },
         {
           "type": "info",
           "title": "New Game Plus, keine neue Sternenkarte",
-          "text": "Du schaltest keine neuen Missionen frei — du spielst dieselben Nodes auf einem viel höheren Schwierigkeitsgrad mit einem separaten Fortschrittspfad erneut. Das Layout, die Gegner und die Kachelsets sind identisch; nur die Zahlen und die Beutetabelle ändern sich."
+          "text": "Der normale Abschluss und der Abschluss des Steel Path-Knotens werden separat verfolgt. Gewöhnliche Missionen verwenden ihre Standorte und Ziele wieder, aber schwierigere Varianten können Bedrohungen wie Acolytes hinzufügen. Duviri und Railjack verfügen über zusätzliche Zugangsregeln und Belohnungssysteme; Es handelt sich nicht um identische Kopien von Standard-Sternenkartenmissionen."
         }
       ]
     },
@@ -81,16 +81,16 @@
           "ordered": true,
           "steps": [
             {
-              "h": "Schließe die gesamte normale Sternenkarte ab",
-              "p": "Du musst jeden Missions-Node auf jedem Planeten abschließen, einschließlich aller Junctions, die sie verbinden. Wenn auch nur ein einziger Node irgendwo unvollständig ist, wird Teshin den Steel Path nicht anbieten. Nutze die Planetenansicht der Sternenkarte, um nach Nodes zu suchen, die nicht aufleuchten."
+              "h": "Schließen Sie die erforderlichen normalen Sternenkartenknoten ab",
+              "p": "Schließen Sie die erforderlichen normalen Missionsknoten und Verbindungen auf der Sternenkarte vor Der Neue Krieg ab. Seit Hotfix 38.5.3 sind **Zariman Ten Zero, Albrecht's Laboratories und Höllvania nicht erforderlich**, um den Steel Path grundsätzlich freizuschalten. Erledigen Sie die noch offenen erforderlichen Knoten, bevor Sie Teshin besuchen. Neuere Regionen haben weiterhin eigene Questvoraussetzungen."
             },
             {
               "h": "Besuche Teshin in einem Relay",
-              "p": "Sobald die Karte vollständig ist, erscheint Teshin in jedem beliebigen Relay (er ist der Conclave-Meister). Sprich mit ihm und er wird dir anbieten, den Steel Path kostenlos freizuschalten — ohne Kosten, ohne andere Hürden als die Sternenkarten-Anforderung."
+              "p": "Wenn die erforderlichen Knoten abgeschlossen sind, besuchen Sie Teshin in einem beliebigen Relay und wählen Sie den Dialog Steel Path. Das Freischalten des Modus kostet weder Steel Essence noch Platin."
             },
             {
               "h": "Lege den Schalter auf der Sternenkarte um",
-              "p": "Öffne nach dem Freischalten deine Sternenkarte und benutze den Steel Path-Schalter (oben auf dem Navigationsbildschirm), um einen beliebigen Planeten zwischen Normal und Steel Path umzuschalten. Du kannst nach Belieben hin- und herwechseln."
+              "p": "Öffnen Sie die Navigation und verwenden Sie den Schalter Steel Path, um zwischen Normal und Steel Path zu wechseln. Sie können jederzeit zum Normalmodus zurückkehren. Das Freischalten des schwierigeren Modus ersetzt nicht Ihre ursprüngliche Sternenkarte."
             },
             {
               "h": "Grinde die Planeten für Teshins Honors",
@@ -101,12 +101,12 @@
         {
           "type": "tip",
           "title": "Probleme mit einer Steel Path Junction?",
-          "text": "Junctions existieren auch im Steel Path und können im Schwierigkeitsgrad stark ansteigen. Ein tankiger Frame mit starker Crowd Control oder Self-Sustain (Grendel, Rhino, Nidus, Inaros, Frost) macht sie zum Kinderspiel — bringe speziell für den Junction-Kampf einen solchen mit, wenn ein empfindlicherer Frame ständig stirbt."
+          "text": "Steel Path Junction Spectres sind stärker, aber Sie müssen ihre normalen Junction-Aufgaben nicht wiederholen. Bringen Sie einen Verteidigungsaufbau mit, den Sie verstehen, testen Sie seine Energie- und Wiederherstellungswerkzeuge und passen Sie Ihr Schadenssetup an, wenn der Spectre Ihre Angriffe überlebt."
         },
         {
           "type": "warn",
-          "title": "Teshin wird dich weiterhin daran erinnern",
-          "text": "Nachdem du die Sternenkarte abgeschlossen hast, kontaktiert dich Teshin auf den Ladebildschirmen, um dich in Richtung Steel Path-Freischaltung zu stupsen. Das Freischalten zwingt dich nicht, ihn zu spielen — du kannst ihn freischalten und einfach nie aktivieren. Es gibt keine Strafe dafür, ihn zu ignorieren, bis deine Builds bereit sind."
+          "title": "Die Basis-Freischaltungen Steel Path und Duviri sind getrennt",
+          "text": "Die Basisfreischaltung öffnet nicht automatisch jede schwierigere Aktivität. Der [Duviri Leitfaden](/guides/duviri) erläutert die zusätzlichen Abschlussanforderungen und der [Circuit Tracker](/circuit) zeigt die aktuellen wöchentlichen Auswahlmöglichkeiten. Sie können weiterhin normale Missionen verwenden, während Sie Ihre Builds vorbereiten."
         }
       ]
     },
@@ -116,7 +116,7 @@
       "blocks": [
         {
           "type": "p",
-          "text": "Der Steel Path fügt nicht so sehr neue Mechaniken hinzu, sondern multipliziert vielmehr die alten. Derselbe Grineer-Lancer, den du auf der normalen Karte mit einem Schuss erledigt hast, hat jetzt eine Wand aus Rüstung und genug Gesundheit, um ein ganzes Magazin einer nicht optimierten Waffe zu überleben. Zwei Dinge machen den Großteil der Bedrohung aus: die rohe Zähigkeit der Gegner und verstärkte **Eximus**-Einheiten."
+          "text": "Höhere Level und mehr Gesundheit und Schilde machen einen schwachen Schadensaufbau deutlicher. Rüstung reduziert immer noch den Schaden an gepanzerten Feinden, ihre Skalierung ist jedoch begrenzt und eine teilweise Entfernung ist sinnvoll. Eximus fügen eine separate **Overguard**-Ebene hinzu. Bereiten Sie also sowohl eine Möglichkeit vor, zu überleben, als auch eine Möglichkeit, diese Ebene zu beschädigen."
         },
         {
           "type": "table",
@@ -128,15 +128,15 @@
             "rows": [
               [
                 "Gegner-Level",
-                "+100 zusätzlich zum normalen Level des Nodes (ein niedriger Node landet etwa bei Level 100–130)"
+                "+100 in Standardmissionen; +50 in Archwing und Railjack"
               ],
               [
                 "Gesundheit & Schilde",
-                "Beide steigen um etwa +250 %, und die Rüstung skaliert stark mit den +100 Leveln — gepanzerte Grineer werden zur größten Schadensbarriere"
+                "Standardmissionen: +150 % Gesundheit und Schilde (2.5-faches der stufenskalierten Werte). Archwing erhält diesen zusätzlichen Haltbarkeitsmultiplikator nicht."
               ],
               [
                 "Schild-Umgehung",
-                "Da auch die Schilde verstärkt sind, setzen Corpus-Kämpfe auf Schild-Abbau und Toxin-/Schnitt-Statuseffekte, die direkt durch Schilde gehen"
+                "Toxin umgeht gewöhnliche Schilde; Der Status Slash beschädigt Schilde, anstatt sie zu umgehen. Keiner der beiden Effekte umgeht aktives Overguard."
               ],
               [
                 "Eximus-Einheiten",
@@ -147,13 +147,13 @@
                 "Steel Essence-Drops, reichere Ressourcen-Ausbeute und Teshin Honors pro Planet"
               ]
             ],
-            "note": "Die genauen Multiplikatoren werden im Laufe der Zeit angepasst — schaue im Live-Wiki nach den aktuellen Zahlen."
+            "note": "Steel Path fügt keine Rüstung mehr hinzu. Die gegnerische Rüstung ist auf 2700 (90 % Schadensreduzierung) begrenzt. Eine Reduzierung der Rüstung kann immer noch hilfreich sein. Bei Railjack fehlt außerdem der übliche Mod-Drop-Bonus des Steel Path."
           }
         },
         {
           "type": "info",
           "title": "Overguard bricht die alte CC-Meta",
-          "text": "Seit dem Eximus-Rework erzeugen Eximus-Einheiten Overguard, was sie immun gegen Crowd Control (Betäubungen, Festhalten, Ragdolls) macht, bis du dich durchgebissen hast. Frames, die sich rein darauf verlassen haben, Gegner bewegungsunfähig zu machen, benötigen jetzt Schaden oder Rüstungsabbau zur Unterstützung — reine CC allein wird dich nicht durch den Steel Path bringen."
+          "text": "Aktives Overguard schützt Eximus vor den meisten Crowd-Control-Effekten. Brechen Sie es mit Schaden, bevor Sie sich auf Betäubungen oder Griffe verlassen. Der Status Magnetic kann den Schaden auf Overguard erhöhen; Die Rüstungsentfernung hilft gegen die darunter liegende Rüstung, entfernt aber nicht die Overguard-Schicht."
         }
       ]
     },
@@ -163,24 +163,24 @@
       "blocks": [
         {
           "type": "p",
-          "text": "**Steel Essence** ist der eigentliche Sinn dieses Modus. Es ist eine Spezialwährung, die nur im Steel Path droppt und nur in Teshins Shop ausgegeben werden kann. Sie effizient zu farmen bedeutet weniger, generische Drop-Mods zu stapeln, sondern vielmehr, die richtigen Quellen zu nutzen — und die spezifischen Multiplikatoren zu kombinieren, die tatsächlich darauf wirken."
+          "text": "**Steel Essence** ist die Währung für Steel Path Honors von Teshin. Einige Quellen verleihen es bei Abschluss der Mission; Acolytes lassen sie als Beute zum Aufsammeln fallen. Diese Unterscheidung ist wichtig, da Pickup-Multiplikatoren die festen Missionsbelohnungen nicht erhöhen."
         },
         {
           "type": "p",
-          "text": "Es gibt drei verlässliche Quellen:"
+          "text": "Beginnen Sie mit diesen Quellen:"
         },
         {
           "type": "list",
           "items": [
-            "**Acolytes** — die zurückkehrenden Acolyte-Attentäter spawnen regelmäßig in Steel Path-Missionen und jeder lässt bei seinem Tod eine Menge Steel Essence fallen (plus eine Chance auf ihre Acolyte-Mods). Lange Endlos-Runs = mehr Acolyte-Spawns.",
-            "**Eximus-Einheiten** — jeder Eximus, den du tötest, hat eine Chance, Steel Essence fallenzulassen, weshalb Eximus-reiche Endlos-Missionen der klassische Farm sind.",
-            "**Tägliche Inkursionen** — eine Handvoll spezieller Steel Path-Missionen sind jeden Tag auf der Sternenkarte markiert (derzeit sechs), von denen jede eine feste Menge Steel Essence vergibt. Sie werden täglich zurückgesetzt und sind das verlässlichste Einkommen mit geringem Aufwand."
+            "**Acolytes** — besiegen Sie diese Minibosse in geeigneten Steel Path-Missionen für **2 Steel Essence** vor Aufsammelboni sowie eine Waffen-Arkane. Bleiben Sie aktiv und sammeln Sie die Beute zügig ein; die alten Acolyte-Event-Mods gehören nicht zu dieser Belohnung.",
+            "**Steel Path Void Fissures** – das Öffnen eines Relikts bringt **1 zusätzliche Steel Essence**. Bei berechtigten Missionen kann dies mit Acolyte-Beute einhergehen, während Sie Prime-Belohnungen verdienen.",
+            "**Tägliche Incursions** – **6** werden jeden Tag ausgewählt und vergeben bei Abschluss jeweils **5 Steel Essence**. Fünf verwenden die frühere Sternenkarte; Der sechste befindet sich auf Zariman oder Albrecht's Laboratories und erfordert Zugriff auf diese Region."
           ]
         },
         {
           "type": "tip",
           "title": "Vervielfache deine Beute",
-          "text": "Der Charm-Buff eines **Smeeta Kavats** kann aufgesammelte Steel Essence verdoppeln, und **Nekros Desecrate** kann zusätzliche Essence aus Gegnerleichen herausholen. Die Kombination aus Smeeta + einem Desecrate-Nekros in einer Eximus-reichen Endlos-Mission ist das Rückgrat jedes Essence-Farm-Loadouts."
+          "text": "Ein Ressourcenbooster erhöht die Menge an Steel Essence aus geeigneten Beutequellen. Bestiengefährten können **Resourceful Retriever** ausrüsten, um die Chance zu haben, die Ressourcen zu verdoppeln. **Smeeta Charm verdoppelt sie nicht mehr**. Diese Effekte vervielfachen nicht die feste Belohnung eines Incursion. Sammle Essenz ein, bevor sie verschwindet, anstatt auf einen Haustier-Buff zu warten."
         }
       ]
     },
@@ -190,7 +190,7 @@
       "blocks": [
         {
           "type": "p",
-          "text": "Gib Steel Essence in Teshins **Steel Path Honors**-Shop aus (erreichbar über ihn in einem Relay oder über den Steel Path-Bildschirm der Sternenkarte). Er bietet eine Mischung aus einem permanenten Katalog und einem **wöchentlich rotierenden** Angebot — in dieser Rotation befinden sich die Incarnon-Adapter, also schaue jede Woche vorbei."
+          "text": "Besuchen Sie Teshins **Steel Path Honors** in einem Relay, um Steel Essence auszugeben. Seine regulären Angebote und wöchentlich wechselnden Artikel sind getrennt. Überprüfen Sie den aktuellen Lagerbestand, bevor Sie für eine bestimmte Prämie sparen. **Incarnon Genesis Adapter stammen von Steel Path Circuit, nicht von diesem Shop**."
         },
         {
           "type": "table",
@@ -201,36 +201,36 @@
             ],
             "rows": [
               [
-                "Umbra Forma Blaupause (150 Essence)",
-                "Eine der wenigen verlässlichen Methoden, um Umbra Forma zu farmen — benötigt, um vollständige Umbral-Mod-Sets auszurüsten. Das wichtigste langfristige Ziel."
+                "Umbra Forma-Blaupause (wechselndes Angebot)",
+                "Fügt eine Umbra-Polarität für Builds hinzu, die Umbral-Mods verwenden. Verfügbar, wenn sie im wechselnden Angebot an der Reihe ist."
               ],
               [
-                "Incarnon Genesis-Adapter (wöchentliche Rotation)",
-                "Verwandle klassische Waffen (Braton, Lato, Paris, Kunai und Co.) in Incarnon-Kraftpakete, die bis ins Endgame skalieren."
+                "Riven Mods (rotierender Bestand)",
+                "Der rotierende Gegenstand kann ein Riven-Mod sein. Prüfen Sie vor dem Kauf, welche Waffenkategorie angeboten wird."
               ],
               [
                 "Kuva",
                 "Kaufe Kuva-Pakete, um Riven-Rerolls zu finanzieren, ohne Kuva-Überleben grinden zu müssen — lässt sich gut mit dem Kuva-Guide kombinieren."
               ],
               [
-                "Riven-Splitter",
-                "Kombiniere zehn Splitter zu einem Riven des Waffentyps deiner Wahl — ein stetiger Weg zu Rivens ohne reines Glück."
+                "Veiled Riven Cipher",
+                "Schließt eine Veiled Riven-Herausforderung ab. Es ermöglicht Ihnen nicht, die Waffe auszuwählen und garantiert keine wertvollen Statistiken."
               ],
               [
-                "Arkana-Adapter",
-                "Rüste Waffen-Arkanas auf Primär-, Sekundär- und Nahkampfwaffen aus für eine weitere Machtstufe."
+                "Primäre und sekundäre Arkane-Adapter",
+                "Schalten Sie den Arcane-Slot auf einer kompatiblen Primär- oder Sekundärwaffe frei. Melee Arcane Adapters verwenden separate Quellen nach Whispers in the Walls."
               ],
               [
                 "Prestige-Kosmetika",
-                "Emotes, Rüstungen, Siegel und Captura-Szenen, um zu zeigen, dass du die Steel Path-Meilen hinter dich gebracht hast."
+                "Dekorationen, Rüstungen und andere Kosmetika bieten optionale Ziele nach Ihren praktischen Upgrades."
               ]
             ],
-            "note": "Die genauen Essence-Preise und die wöchentliche Incarnon-Gruppe ändern sich — überprüfe dies im Live-Shop, bevor du dich festlegst."
+            "note": "Bestätigen Sie aktuelle Preise, wöchentliche Lagerbestände und Kauflimits im Spiel. Die Incarnon-Auswahl im Circuit folgen einem anderen Belohnungspfad."
           }
         },
         {
           "type": "p",
-          "text": "Zwei davon lassen sich direkt in andere Systeme integrieren: Die Riven-Splitter füttern [Rivens](/guides/riven) (bestimme ihren Preis zuerst mit dem [Riven-Wert-Schätzer](/riven-value)), und das Kuva füttert [Riven-Rerolls und Lich-Waffen](/guides/kuva). Die Umbra Forma selbst ist ein direkter Essence-Kauf bei Teshin — es gibt keine kostenlose für das Abschließen der Karte, also plane deine Essence entsprechend ein."
+          "text": "Kuva wird für das [Neuwürfeln von Rivens](/guides/riven) verwendet. Vergleichen Sie einen Roll mit dem [Riven-Wertschätzer](/riven-value), bevor Sie weiter investieren. Für Incarnon Genesis-Adapter nutzen Sie den [Circuit-Tracker](/circuit) und den [Duviri-Leitfaden](/guides/duviri): Ihre gewählten Adapter erhalten Sie auf den Stufen 5 und 10 und installieren sie anschließend bei Cavalero mit den erforderlichen Ressourcen."
         }
       ]
     },
@@ -240,7 +240,7 @@
       "blocks": [
         {
           "type": "p",
-          "text": "Der schnellste Weg zu einem vollen Teshin-Einkaufswagen kombiniert garantiertes tägliches Einkommen mit einem farmbaren Endlos-Run:"
+          "text": "Wählen Sie einen Lauf entsprechend der Belohnung, die Sie benötigen, und der Zeit, die Sie haben. Diese praktische Reihenfolge hält garantierte Belohnungen sichtbar, ohne eine universelle schnellste Farm zu versprechen:"
         },
         {
           "type": "steps",
@@ -248,30 +248,30 @@
           "steps": [
             {
               "h": "Erledige zuerst die täglichen Inkursionen",
-              "p": "Sie bieten schnelle, feste Belohnungen und werden jeden Tag zurückgesetzt — schließe alle Inkursionen des Tages vor allem anderen ab, um das effizienteste Essence-pro-Minute-Einkommen zu erzielen."
+              "p": "Überprüfen Sie die Incursions des Tages und wählen Sie Missionen aus, die Ihr Build zuverlässig abschließen kann. Jede gibt einmal 5 ​​Essenz; Wenn Sie eine schwierige Mission langsamer beenden, kann dies den Vorteil einer festen Belohnung zunichte machen."
             },
             {
-              "h": "Campiere in einer Eximus-reichen Endlos-Mission",
-              "p": "Überlebens-, Verteidigungs- oder Abfang-Nodes mit dichten Spawns halten den Fluss von Acolytes und Eximus aufrecht. Suche nach einem Run, bei dem sich die Gegner an einer Stelle sammeln, damit deine Beutemultiplikatoren alles treffen."
+              "h": "Kombinieren Sie Belohnungen in einer teilnahmeberechtigten Endlosmission",
+              "p": "Eine endlose Steel Path-Mission kann zu wiederholten Acolyte-Begegnungen führen. Wenn ein passender Void Fissure aktiv ist, bringen Sie Relikte für seine zusätzlichen Essenz- und Prime-Belohnungen mit. Töten Sie weiterhin Feinde, behalten Sie das Ziel bei und begeben Sie sich zur Extraktion, wenn Ihr Schaden oder Ihre Verteidigung nicht mehr zuverlässig ist."
             },
             {
-              "h": "Bringe das Multiplikator-Loadout mit",
-              "p": "Ein **Smeeta Kavat** (Charm verdoppelt die Beute) plus ein **Desecrate-Nekros** (holt zusätzliche Essence aus Leichen) bilden den Kern. Eine Khora, ein Hydroid oder ein anderer Beute-/CC-Frame, der Gegner zusammentreibt, bringt noch mehr Wert — dasselbe Loadout ist auch der beste Endo-Farm des Spiels."
+              "h": "Gebaut für zuverlässige Tötungen und Überleben",
+              "p": "Wählen Sie Ausrüstung, mit der Sie das Missionsziel erfüllen und Acolytes zuverlässig besiegen können. Ein Bestiengefährte mit Resourceful Retriever bietet eine Chance auf zusätzliche Ressourcen beim Aufsammeln. Orientieren Sie sich nicht an veralteten Tipps zum Farmen von Essenz mit Eximus oder Smeeta Charm."
             },
             {
               "h": "Nutze einen Ressourcen-Booster, falls du einen hast",
-              "p": "Booster und ein Kavat für Ressourcen-Dropchance erhöhen die *andere* Beute (Endo, Mods, Materialien), die du neben der Essence einsaugst, was lange Runs doppelt lohnenswert macht."
+              "p": "Ein Ressourcen-Booster kann die von Acolytes aufgesammelte Essenzmenge erhöhen. Ein Ressourcen-Drop-Chance-Booster erhöht jedoch nicht die Menge eines garantierten Drops. Feste Incursion-Belohnungen und andere Abschlussbelohnungen behalten ihre angegebenen Mengen."
             }
           ]
         },
         {
           "type": "tip",
-          "title": "Der genaue 'beste Node' ändert sich ständig",
-          "text": "DE passt die Spawn-Raten an und balanciert Nodes regelmäßig neu aus, sodass sich der absolut beste Ort zum Essence-Farmen von Patch zu Patch ändert. Lerne das Rezept — Eximus-Dichte + Smeeta + Desecrate + ein Beute-/CC-Frame — und schaue dir ein aktuelles Video oder das Live-Wiki für den derzeit besten Node an, anstatt dich auf die genaue Karte eines alten Guides zu verlassen."
+          "title": "Halten Sie Missionsvarianten getrennt",
+          "text": "Steel Path Railjack vergibt seit Hotfix 43.0.6 **2 Steel Essence pro abgeschlossener Mission**; seine Eximus lassen keine Essenz mehr fallen. Steel Path Circuit vergibt **25 auf Stufe 9** des wöchentlichen Belohnungspfads, nicht nach jeder Runde. Beide verwenden nicht den üblichen Acolyte-Zyklus aus Endlosmissionen."
         },
         {
           "type": "p",
-          "text": "Da Steel Path-Gegner so viel Beute fallen lassen, dient er der Community auch als erste Anlaufstelle für den **Endo**- und Mod-Farm. Siehe den [Endo-Farm-Guide](/guides/endo) und das [Endo/Platin-Wert-Tool](/endo), um das Beste aus allem herauszuholen, was der Nekros einsaugt."
+          "text": "Wenn Ihr Hauptziel Endo ist, vergleichen Sie spezielle Methoden im [Endo Farming-Leitfaden](/guides/endo). Ein Steel Essence-Lauf und eine Endo-Farm optimieren verschiedene Drops; Das [Endo/Plat-Wertrechner](/endo) hilft dabei, geeignete Marktangebote zu vergleichen, anstatt eine In-Mission-Rate zu versprechen."
         }
       ]
     },
@@ -281,27 +281,27 @@
       "blocks": [
         {
           "type": "p",
-          "text": "Der Hauptgrund, warum Spieler am Steel Path scheitern, ist das sofortige Sterben. Bei +100 Leveln schmilzt ein ungemoddeter Frame dahin. Die Lösung ist nicht immer mehr Gesundheit — es ist die richtige defensive *Mechanik*. Baue auf eine dieser Mechaniken und fast jeder Frame kann überleben:"
+          "text": "Wenn Sie schnell sterben, prüfen Sie, wie Ihre Verteidigungsinstrumente zusammenarbeiten. Mehr Gesundheit allein löst das Problem möglicherweise nicht. Wählen Sie eine Verteidigungsmechanik, die zu Ihrem Warframe passt, und testen Sie dann, wie Sie sich erholen, wenn sie fehlschlägt:"
         },
         {
           "type": "list",
           "items": [
-            "**Shield Gating** — wenn deine Schilde auf Null sinken, erhältst du ein kurzes Unverwundbarkeitsfenster (etwas mehr als eine Sekunde bei vollen Schilden). Lade auch nur einen einzigen Schild wieder aufladen — über 'Kurze Atempause'/Augur-Mods beim Aktivieren von Fähigkeiten oder Tricks mit dem 'Verfallenden Drachen-Schlüssel' —, um es erneut auszulösen. Dies ist der große Ausgleich, der es *jedem* Frame ermöglicht, den Steel Path zu tanken. Siehe den [Guide für Mods & Überlebensfähigkeit](/guides/mods).",
-            "**Adaptation** — stapelt Schadensresistenz bis zu einer enormen Obergrenze, wenn du Treffer einsteckst, wodurch zerbrechliche Frames innerhalb weniger Sekunden robust werden.",
+            "**Schild-Gating** – bei abgeschirmten Warframes skaliert die Unverwundbarkeit nach einem Schildbruch mit den vor diesem Bruch wiederhergestellten Schilden, normalerweise von 0.33 bis 2.5 Sekunden. Brief Respite- oder Augur-Mods können dabei helfen, Schilde durch verbrauchte Energie wieder aufzufüllen. Decaying Dragon Key begrenzt diese Unverwundbarkeit auf 0.33 Sekunden; Es ist nicht die alte Abkürzung. Siehe den [Mods & Überlebensleitfaden](/guides/mods).",
+            "**Adaptation** – baut Widerstand gegen Schadensarten auf, wenn Sie Treffer einstecken. Es braucht Zeit, um sich aufzubauen, also kombinieren Sie es mit ausreichender Überlebensfähigkeit, um den ersten Angriffen standzuhalten.",
             "**Rolling Guard** — weiche aus für ein kurzes Fenster der Unverwundbarkeit *und* eine vollständige Bereinigung von Statuseffekten; dein Panikknopf, wenn Schilde und Gating versagen.",
-            "**Rüstungsabbau** — Korrosions-Statuseffekte oder Fähigkeiten (Pillage, Terrify, Tharros Strike, Fire Blast und viele Helminth-Subsumes) entfernen die Rüstung der Grineer, und rüstungslose Gegner sterben durch normale Waffen. Oft wertvoller als roher Schaden.",
-            "**Tank-Frames & Arkanas** — Inaros, Nidus, Valkyr, Kullervo und ähnliche stapeln Gesundheit/Rüstung; Arcane Guardian und Arcane Grace bieten zusätzlich ein Sicherheitsnetz.",
-            "**Dein Operator** — Der Void-Modus setzt dein Shield Gating zurück, und Magus Elevate/Repair heilen deinen Frame, wenn du zurückwechselst. Ein einfacher Verstärker fügt auch der Overguard von Eximus erheblichen Schaden zu."
+            "**Rüstungsreduzierung** – Fähigkeiten oder der Corrosive-Status können den Schutz gepanzerter Feinde verringern. Gewöhnliche Corrosive-Stapel entfernen die Rüstung nicht vollständig und Viral erhöht den Schaden an der Gesundheit, anstatt die Rüstung zu entfernen. Planen Sie zusätzlich eine Möglichkeit ein, Overguard zu zerstören.",
+            "**Verteidigungsfähigkeiten und Arkana** – nutzen Sie den Schutz, den Ihr Warframe tatsächlich bietet: Schadensreduzierung, Heilung, Schilde oder Overguard. Passen Sie Ihre Mods und Arkanen an diese Verteidigung an, anstatt davon auszugehen, dass die Kombination von Gesundheit und Rüstung jede Ebene schützt.",
+            "**Ihr Operator** – Wiederherstellung hängt von Ihren freigeschalteten Tools ab. Magus Elevate kann deinen Warframe heilen, wenn du dorthin zurückkehrst; Magus Repair heilt in der Nähe befindliche Warframes, während du in Void Mode bleibst. Der Eintritt in den Operator-Modus ist an sich kein Shield-Gate-Reset."
           ]
         },
         {
           "type": "warn",
           "title": "Respektiere die Overguard von Eximus",
-          "text": "Eximus-Einheiten sind das Tödlichste in einem Steel Path-Raum und ihre Overguard ignoriert Crowd Control. Erwarte nicht, dass dich eine CC-Fähigkeit vor einem Eximus rettet — priorisiere es, sie zu töten oder ihre Rüstung abzubauen, und halte dein Shield Gating / Rolling Guard für ihren Stoßschaden bereit."
+          "text": "Verlassen Sie sich nicht allein auf eine Betäubung oder eine Rüstungsreduzierung, um einen Eximus mit Overguard zu stoppen. Konzentrieren Sie den Schaden auf seine Overguard, weichen Sie seinen Angriffen aus und halten Sie eine Verteidigungsfähigkeit oder Rolling Guard für gefährliche Momente bereit."
         },
         {
           "type": "p",
-          "text": "Das [Helminth-System](/guides/helminth) ist hier dein Werkzeugkasten für das Überleben — das Subsumieren von Rüstungsabbau, einem Überschild oder einem defensiven Buff auf deinen Lieblings-Frame schließt fast jede Lücke. Kombiniere es mit den richtigen [Arkanas](/guides/arcanes) und du bist bereit für den Steel Path."
+          "text": "Das [Helminth-System](/guides/helminth) kann einem Build eine kompatible Verteidigungs- oder Rüstungsreduzierungsfähigkeit hinzufügen. Wählen Sie es entsprechend Ihrer verfügbaren Energie- und Fähigkeitsstatistiken aus und testen Sie es dann zusammen mit Ihren [Arkanen](/guides/arcanes), bevor Sie sich auf einen langen Durchlauf festlegen."
         }
       ]
     },
@@ -310,13 +310,13 @@
       "title": "Bin ich bereit? Wann man anfangen sollte",
       "blocks": [
         {
-          "type": "quote",
-          "text": "Ich glaube nicht, dass ich bereit bin, soll ich einfach meine Konsole ausschalten?",
-          "cite": "r/Warframe, über das Freischalten des Steel Path"
+          "type": "info",
+          "title": "Testen Sie zunächst eine kurze Mission",
+          "text": "Nutzen Sie Ihren ersten Lauf, um den Engpass zu finden: am Leben bleiben, Energie zurückgewinnen, vorrangige Feinde töten oder das Ziel schützen. Verbessern Sie diesen Teil des Builds, bevor Sie den Lauf verlängern."
         },
         {
           "type": "p",
-          "text": "Du bist bereiter, als du denkst — aber nur, wenn du deine Ausrüstung optimiert hast. Die Hürde ist nicht der Meisterschaftsrang oder die Spielstunden; es geht darum, ob du **eine Überlebensmechanik** und **eine Waffe (oder einen Frame) hast, die gepanzerte Gegner tatsächlich tötet**. Ein einziger gut gemoddeter Frame mit Shield Gating oder Adaptation, plus eine gute Primär-/Nahkampfwaffe, schließt die überwiegende Mehrheit des Steel Path ab."
+          "text": "Die Freischaltung ist lediglich die Zugangsvoraussetzung. Ein praktischer Ausgangspunkt ist ein zuverlässiger Verteidigungsplan und eine Waffen- oder Fähigkeitskonfiguration, die vorrangige Feinde tötet. Testen Sie beides in einer kurzen Mission; Ein bestimmter Mastery Rank, Frame oder eine bestimmte Anzahl von Forma garantiert nicht, dass der Build funktioniert."
         },
         {
           "type": "p",
@@ -326,19 +326,19 @@
           "type": "list",
           "items": [
             "Hast du Shield Gating, Adaptation oder einen echten Tank-Frame eingerichtet? (Wenn nicht, baue das zuerst auf.)",
-            "Kann deine Hauptwaffe Rüstung abbauen oder umgehen (Korrosion/Virus, schwerer Schnitt, hoher kritischer Schaden)?",
-            "Hast du eine verlässliche Option für Rüstungsabbau oder CC für Eximus-reiche Räume?",
-            "Hast du deinem Frame einen Reaktor und ein paar Forma spendiert? Builds mit zu wenigen Forma sind die übliche Ursache fürs Sterben."
+            "Können Sie einen gepanzerten Feind und einen Eximus mit Overguard besiegen, ohne Ihre Munition oder Energie zu erschöpfen?",
+            "Haben Sie einen Wiederherstellungsplan, wenn Ihre Hauptverteidigungsfähigkeit nicht verfügbar ist?",
+            "Unterstützen Ihre ausgerüsteten Mod-Ränge, Kapazitäten und Polaritäten den beabsichtigten Build? Fügen Sie einen Reactor oder Forma hinzu, wo der Build Kapazität benötigt."
           ]
         },
         {
           "type": "tip",
           "title": "Lass es ruhig angehen — fange nicht auf Steel Path Sedna an",
-          "text": "Beginne auf den frühesten Planeten (Erde, Venus), wo die +100 immer noch auf einem überschaubaren Niveau liegen, und schließe die Planeten in etwa der Reihenfolge der Sternenkarte ab. Bringe einen Freund oder ein öffentliches Squad für deine ersten Runs mit — der Modus ist in einer Gruppe weitaus sanfter als solo."
+          "text": "Beginnen Sie mit einer vertrauten frühen Planetenmission und einem klaren Extraktionspunkt. Ein Freund oder ein öffentlicher Trupp kann Ihnen helfen, den Ablauf zu erlernen, aber bringen Sie Ihre eigenen Wiederherstellungswerkzeuge mit und achten Sie auf das Missionsziel."
         },
         {
           "type": "p",
-          "text": "Du bist dir nicht sicher, in welchen Frame du Forma für das Endgame investieren sollst? Die [Warframe-Tier-List](/guides/tier-list) kennzeichnet die Frames, die sich im Steel Path am besten schlagen, und [Archon-Scherben](/guides/archon-shards) sind der nächste Machtschritt, sobald deine Steel Path-Builds laufen."
+          "text": "Verwenden Sie die [Warframe Rangliste](/guides/tier-list) als Ausgangspunkt für die Auswahl eines Spielstils und überprüfen Sie dann die tatsächlichen Build-Anforderungen. [Archon Shards](/guides/archon-shards) können einen Build später verfeinern; Sie sind für die Basis-Steel Path-Freischaltung nicht erforderlich."
         }
       ]
     },
@@ -348,22 +348,27 @@
       "blocks": [
         {
           "type": "p",
-          "text": "Abgesehen von der Herausforderung ist der Steel Path einer der lohnendsten Kreisläufe im Spiel. In einer einzigen Farming-Session sammelst du Steel Essence (für Umbra Forma, Incarnon-Adapter, Kuva, Rivens und Arkanas), einen Berg an Endo und Mods sowie Bonusressourcen in jeder Mission — alles auf einmal."
+          "text": "Steel Path kann mehrere Ziele kombinieren: Steel Essence für Teshin, Waffen-Arkanes von Acolytes, Prime-Belohnungen aus Rissen und separate wöchentliche Circuit-Auswahlmöglichkeiten. Wählen Sie die Aktivität aus, die der gewünschten Belohnung entspricht, anstatt zu erwarten, dass jede Mission alle Belohnungen vergibt."
         },
         {
           "type": "list",
           "items": [
-            "**Umbra Forma** — eine der wenigen Möglichkeiten, das stärkste Forma des Spiels für vollständige Umbral-Builds zu farmen.",
-            "**Incarnon-Waffen** — die wöchentlichen Incarnon Genesis-Adapter verwandeln klassische Waffen in endgame-taugliche Monster.",
-            "**Kuva & Riven-Splitter** — stetiges Einkommen für das Rollen von [Rivens](/guides/riven), ohne Kuva-Überleben grinden zu müssen, bewertet mit dem [Riven-Wert-Tool](/riven-value).",
-            "**Bester Endo- & Ressourcen-Farm** — dasselbe Nekros/Smeeta-Loadout, das Essence farmt, ist auch der beste [Endo-Farm](/guides/endo) der Community.",
+            "**Umbra Forma** – eine rotierende Teshin-Belohnung für Builds, die von Umbra-Polaritäten profitieren.",
+            "**Incarnon Genesis-Adapter** – wählen Sie wöchentliche Belohnungen in Steel Path Circuit aus und installieren Sie sie dann über Cavalero auf kompatiblen Waffen.",
+            "**Kuva und Riven Belohnungen** – Teshin bietet Kuva und rotierende Riven Mods. Verwenden Sie den [Riven Leitfaden](/guides/riven) und das [Riven Werttool](/riven-value), um zu entscheiden, wie viel Sie in einen Roll investieren möchten.",
+            "**Gezieltes Farming** – vergleichen Sie den [Endo-Leitfaden](/guides/endo), bevor Sie eine dedizierte Endo-Farm auswählen; Seine Anforderungen unterscheiden sich von denen eines Essence-Laufs.",
             "**Eine echte Obergrenze für den Schwierigkeitsgrad** — der Ort, an dem fertig optimierte Frames und Waffen endlich auf die Probe gestellt werden."
           ]
         },
         {
           "type": "info",
           "title": "Wie es weitergeht",
-          "text": "Sobald sich der Steel Path komfortabel anfühlt, sind die natürlichen nächsten Schritte Eidolon-Jagden, Archon-Jagden (für Archon-Scherben) und Netracell-/Endgame-Farms. Durchsuche das [Community-Tools-Verzeichnis](/tools) nach Wikis, Build-Planern und Drop-Trackern, um jeden Run zu planen."
+          "text": "Wählen Sie Ihre nächste Aktivität anhand ihrer eigenen Belohnungen und Voraussetzungen: [Duviri und der Circuit](/guides/duviri), [Archon Hunts](/guides/archon-shards) oder andere Farmen im [Community-Tools-Verzeichnis](/tools). Der Abschluss von Steel Path ist keine allgemeine Voraussetzung für diese Aktivitäten."
+        },
+        {
+          "type": "info",
+          "title": "Verwenden Sie neben dem aktuellen Leitfaden auch Videos",
+          "text": "Die folgenden exemplarischen Vorgehensweisen zeigen möglicherweise ältere Freischaltanforderungen, Lagerbestände oder Farming-Methoden. Benutzen Sie die obenstehende schriftliche Anleitung für aktuelle Steel Essence-Quellen, Retriever-Mods und Circuit-Belohnungen."
         }
       ]
     }
@@ -371,35 +376,35 @@
   "faqs": [
     {
       "q": "Wie schalte ich den Steel Path in Warframe frei?",
-      "a": "Schließe die gesamte normale Sternenkarte ab — jeden Missions-Node auf jedem Planeten plus alle Junctions — und sprich dann mit Teshin in einem beliebigen Relay. Er schaltet den Steel Path kostenlos frei, woraufhin ein Schalter auf deiner Sternenkarte erscheint, um jeden Planeten zwischen Normal und Steel Path umzuschalten."
+      "a": "Vervollständigen Sie die erforderlichen normalen Knoten und Knotenpunkte auf der Sternenkarte aus der Zeit vor dem Neuen Krieg und sprechen Sie dann mit Teshin in einem beliebigen Relais. Zariman Ten Zero, Albrecht's Laboratories und Höllvania sind von der Basisfreischaltung ausgeschlossen. Verwenden Sie den Navigationsschalter, um „Normal“ oder „Steel Path“ auszuwählen. Neuere Aktivitäten haben separate Zugriffsregeln."
     },
     {
       "q": "Welches Level haben Steel Path-Gegner?",
-      "a": "Gegner erhalten +100 Level zusätzlich zum normalen Level eines Nodes, plus einen großen Boost auf die Zähigkeit (Gesundheit und Schilde werden häufig mit etwa +250 % angegeben, und die Rüstung skaliert stark mit dem höheren Level). Ein niedriger Start-Node landet etwa im Bereich von 100–130, sodass selbst 'einfache' Missionen hart treffen, bis dein Build bereit ist."
+      "a": "Standard-Steel Path-Missionen fügen 100 Feindstufen und 150 % Gesundheit und Schilde hinzu, was das 2.5-fache der stufenskalierten Gesundheit und Schilde ergibt. Archwing und Railjack fügen stattdessen 50 Gegnerstufen hinzu. Steel Path fügt keinen Rüstungsmultiplikator mehr hinzu; Die gegnerische Panzerung ist auf 2700 begrenzt."
     },
     {
       "q": "Wofür wird Steel Essence verwendet?",
-      "a": "Steel Essence wird in Teshins Steel Path Honors-Shop für Umbra Forma-Blaupausen (150 Essence), wöchentliche Incarnon Genesis-Adapter, Kuva, Riven-Splitter, Waffen-Arkana-Adapter und Kosmetika ausgegeben. Sie droppt nur im Steel Path und kann nur bei Teshin ausgegeben werden."
+      "a": "Geben Sie sie bei Teshins Steel Path Honors für reguläre Angebote und einen wöchentlich wechselnden Gegenstand aus. Dazu gehören Kuva, primäre und sekundäre Arkane-Adapter, Kosmetik sowie Belohnungen wie Umbra Forma-Blaupausen oder Riven-Mods. Incarnon Genesis-Adapter werden im Circuit verdient und nicht dort gegen Essenz gekauft."
     },
     {
       "q": "Was ist der beste Weg, um Steel Essence zu farmen?",
-      "a": "Erledige alle täglichen Inkursionen für ein garantiertes Einkommen, und campiere dann in einer Eximus-reichen Endlos-Mission mit einem Smeeta Kavat (Charm verdoppelt die Beute) und einem Desecrate-Nekros (holt zusätzliche Essence aus Leichen). Der genaue beste Node verschiebt sich mit Balance-Patches, also schaue dir ein aktuelles Video für die aktuelle Meta an — das Rezept für das Loadout bleibt gleich."
+      "a": "Beginnen Sie mit täglich verfügbaren Incursions für jeweils 5 Essence. Wählen Sie für längere Sitzungen eine berechtigte Mission mit Acolytes; Ein Steel Path Spalt kann pro geöffnetem Relikt 1 Essenz hinzufügen. Ressourcen-Booster und Retriever-Mods können bei berechtigten Abholungen helfen. Ratschläge, die darauf basieren, Ressourcen durch Smeeta Charm zu verdoppeln oder Essenz von gewöhnlichen Eximus zu erhalten, sind veraltet."
     },
     {
       "q": "Wie verhindere ich One-Shots im Steel Path?",
-      "a": "Baue auf eine Überlebensmechanik: Shield Gating (einen Schild wieder aufladen, um das Unverwundbarkeitsfenster erneut auszulösen), die Mod Adaptation, Rolling Guard oder einen echten Tank-Frame. Füge Rüstungsabbau hinzu, damit Waffen gepanzerte Gegner tatsächlich töten, und respektiere die Overguard von Eximus, die Crowd Control ignoriert. Siehe den [Guide für Mods & Überlebensfähigkeit](/guides/mods)."
+      "a": "Stimmen Sie den Build auf die tatsächlichen Abwehrmöglichkeiten Ihres Warframes und eine zuverlässige Erholung ab. Schild-Gating benötigt ausreichend wiederhergestellte Schilde; ein einzelner aufgefüllter Punkt gewährt nicht die maximale Dauer. Adaptation, Rolling Guard oder defensive Fähigkeiten können den Build unterstützen. Zerstören Sie das Overguard der Eximus mit Schaden, bevor Sie sich auf Massenkontrolle verlassen. Siehe den [Mods- und Überlebensleitfaden](/guides/mods)."
     },
     {
       "q": "Muss ich den Steel Path spielen, um in Warframe voranzukommen?",
-      "a": "Nein — es ist völlig optionaler Endgame-Content und nichts in der Hauptstory erfordert ihn. Teshin wird dich drängen, ihn zu starten, nachdem du die Sternenkarte abgeschlossen hast, aber du kannst ihn getrost ignorieren, bis deine Builds bereit sind. Betrachte ihn als einen Grund, weiterzuspielen, nicht als eine Wand."
+      "a": "Steel Path ist ein optionaler schwierigerer Modus. Das Freischalten ersetzt keine normalen Missionen und Sie können warten, bis Sie mit Ihren Builds vertraut sind. Bestimmte Belohnungen wie Circuit Incarnon Genesis-Adapter erfordern ihre entsprechende Steel Path-Aktivität."
     },
     {
       "q": "Kann ich Incarnon-Waffen aus dem Steel Path bekommen?",
-      "a": "Ja. Teshins Shop verkauft Incarnon Genesis-Adapter für Steel Essence in einer wöchentlichen Rotation. Diese verwandeln klassische Waffen wie Braton, Lato und Paris in Incarnon-Kraftpakete, die bis ins Endgame skalieren, also überprüfe jede Woche das rotierende Angebot."
+      "a": "Ja: Steel Path Circuit bietet Incarnon Genesis Adapter auf seinem wöchentlichen Belohnungspfad an. Ihr erster ausgewählter Adapter wird auf Stufe 5 und Ihr zweiter auf Stufe 10 verdient. Installieren Sie sie über Cavalero mit den erforderlichen Ressourcen. Teshin verkauft diese Adapter nicht für Steel Essence; Überprüfen Sie den [Circuit Tracker](/circuit)."
     },
     {
       "q": "Ist der Steel Path gut zum Farmen von Endo?",
-      "a": "Er ist einer der besten im Spiel. Dasselbe Nekros + Smeeta + Beute-Frame-Loadout, das für Steel Essence verwendet wird, saugt auch Mods und Ayatan-Sterne für enorme Endo-Erträge ein. Siehe den [Endo-Farm-Guide](/guides/endo) und das [Endo-Wert-Tool](/endo), um das Beste daraus zu machen."
+      "a": "Einige dedizierte Feind-Drop-Farmen profitieren von Steel Path-Boni, aber ein Essence-Lauf ist nicht automatisch der beste Endo-Lauf. Vergleichen Sie den Missionszugang, die Truppanforderungen und den zu vervielfachenden Drop im [Endo-Farming-Leitfaden](/guides/endo). Verwenden Sie das [Endo-Wertrechner](/endo) für geeignete Marktvergleiche."
     }
   ],
   "videos": [
@@ -426,29 +431,89 @@
   ],
   "sources": [
     {
-      "label": "The Steel Path — Official Wiki",
-      "href": "https://wiki.warframe.com/w/The_Steel_Path",
+      "label": "Hotfix 38.5.3 — Steel Path access",
+      "href": "https://www.warframe.com/en/patch-notes/pc/38-5-3",
       "icon": "book-open-page-variant"
     },
     {
-      "label": "Steel Essence — Official Wiki",
-      "href": "https://wiki.warframe.com/w/Steel_Essence",
+      "label": "Update 28.1 — baseline Steel Path modifiers",
+      "href": "https://www.warframe.com/en/patch-notes/pc/28-1-0",
       "icon": "book-open-page-variant"
     },
     {
-      "label": "r/Warframe: 'I don't think I'm ready, do I just shut off my console?'",
-      "href": "https://reddit.com/r/Warframe/comments/1mtzhmg/i_dont_think_im_ready_do_i_just_shut_off_my/",
-      "icon": "reddit"
+      "label": "Update 36 — armor and Magnetic rework",
+      "href": "https://www.warframe.com/en/patch-notes/pc/36-0-0",
+      "icon": "book-open-page-variant"
     },
     {
-      "label": "r/Warframe: struggling with Steel Path junctions — just take Grendel",
-      "href": "https://reddit.com/r/Warframe/comments/olzrye/if_youre_struggling_to_do_steel_path_junctions/",
-      "icon": "reddit"
+      "label": "Update 29.5 — Acolytes and Incursions",
+      "href": "https://forums.warframe.com/topic/1236257-update-295-deimos-arcana/",
+      "icon": "book-open-page-variant"
     },
     {
-      "label": "r/Warframe: the best Endo farm (Steel Path Nekros/Khora/Nidus)",
-      "href": "https://reddit.com/r/Warframe/comments/q0k50m/surprised_at_how_so_many_people_dont_know_about/",
-      "icon": "reddit"
+      "label": "Update 30.5 — Acolyte Arcanes and Incursion rewards",
+      "href": "https://www.warframe.com/en/patch-notes/pc/30-5-0",
+      "icon": "book-open-page-variant"
+    },
+    {
+      "label": "Update 35.5 — sixth daily Incursion",
+      "href": "https://www.warframe.com/en/patch-notes/pc/35-5-0",
+      "icon": "book-open-page-variant"
+    },
+    {
+      "label": "Update 37 — Retriever and Charm changes",
+      "href": "https://www.warframe.com/en/patch-notes/pc/37-0-0",
+      "icon": "book-open-page-variant"
+    },
+    {
+      "label": "Update 34 — shield-gating rework",
+      "href": "https://www.warframe.com/en/patch-notes/pc/34-0-0",
+      "icon": "book-open-page-variant"
+    },
+    {
+      "label": "Update 27.2 — Toxin, Slash and Corrosive",
+      "href": "https://www.warframe.com/en/patch-notes/pc/27-2-0",
+      "icon": "book-open-page-variant"
+    },
+    {
+      "label": "Update 31.5 — Eximus Overguard",
+      "href": "https://www.warframe.com/en/patch-notes/pc/31-5-0",
+      "icon": "book-open-page-variant"
+    },
+    {
+      "label": "Update 33 — Circuit reward tracks",
+      "href": "https://www.warframe.com/en/patch-notes/pc/33-0-0",
+      "icon": "book-open-page-variant"
+    },
+    {
+      "label": "Update 43 — Steel Path Railjack",
+      "href": "https://www.warframe.com/en/patch-notes/pc/43-0-0",
+      "icon": "book-open-page-variant"
+    },
+    {
+      "label": "Hotfix 43.0.6 — Railjack Essence revision",
+      "href": "https://www.warframe.com/en/patch-notes/pc/43-0-6",
+      "icon": "book-open-page-variant"
+    },
+    {
+      "label": "Update 32 — Steel Path fissure rewards",
+      "href": "https://www.warframe.com/en/patch-notes/pc/32-0-0",
+      "icon": "book-open-page-variant"
+    },
+    {
+      "label": "Update 31.6 — Operator Arcane triggers",
+      "href": "https://www.warframe.com/en/patch-notes/pc/31-6-0",
+      "icon": "book-open-page-variant"
+    },
+    {
+      "label": "Update 35 — Melee Arcane Adapters",
+      "href": "https://www.warframe.com/en/patch-notes/pc/35-0-0",
+      "icon": "book-open-page-variant"
+    },
+    {
+      "label": "Update 23.10 — Adaptation and Rolling Guard",
+      "href": "https://www.warframe.com/en/patch-notes/pc/23-10-0",
+      "icon": "book-open-page-variant"
     }
   ],
   "related": [
@@ -474,13 +539,13 @@
       "label": "Riven-Wert-Schätzer",
       "to": "/riven-value",
       "icon": "diamond-stone",
-      "note": "Splitter in Rivens bewerten"
+      "note": "Vergleichen Sie Riven Würfe, bevor Sie investieren"
     },
     {
       "label": "Endo-Farming",
       "to": "/guides/endo",
       "icon": "hexagon-outline",
-      "note": "Steel Path ist ein erstklassiger Endo-Farm"
+      "note": "Vergleichen Sie dedizierte Endo-Methoden"
     },
     {
       "label": "Warframe-Tier-List",
@@ -489,5 +554,5 @@
       "note": "Frames, die sich im Steel Path behaupten"
     }
   ],
-  "updated": "2026-07-18"
+  "updated": "2026-11-02"
 }

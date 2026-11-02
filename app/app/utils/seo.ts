@@ -315,7 +315,7 @@ export const PAGE_SEO: Record<string, PageSeo> = {
   '/guides/steel-path': {
     title: 'Warframe Steel Path Guide — Unlock & Steel Essence',
     description:
-      'How to unlock the Steel Path in Warframe, survive it, and farm Steel Essence for incarnon adapters, arcanes, kuva and more. The hard-mode rewards guide.'
+      'Unlock Warframe Steel Path, farm Steel Essence from Incursions and Acolytes, and compare Teshin rewards with Circuit Incarnon adapters. Current survival tips.'
   },
   '/guides/eidolon': {
     title: 'Warframe Eidolon Hunting Guide — Tridolon Basics',

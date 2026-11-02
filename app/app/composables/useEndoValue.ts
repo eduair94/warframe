@@ -169,10 +169,9 @@ export interface FlipEval {
   rarity: string
   maxRank: number
   /**
-   * Realizable maxed sell = the CURRENT lowest maxed sell order (what you'd list
-   * at, competing with other sellers). Falls back to the 48h average only when
-   * no maxed sell order exists. NOT the 48h average by default — on thin mods
-   * the average is one stale trade and wildly overstates the sell price.
+   * Estimated maxed resale from the selected pricing source; default is the
+   * current lowest maxed ask (a listing price, not a guaranteed sale). Zero
+   * means that source has no valid quote. Never substitutes another source.
    */
   maxedSell: number
   /** Current lowest maxed sell order (list price). */
@@ -239,20 +238,23 @@ export function evalFlip(row: EndoFlipRow, opts: FlipOpts = {}): FlipEval {
   const rungs = Array.isArray(flip.ranks) ? flip.ranks : []
   const byRank = (r: number) => rungs.find((x) => x.rank === r)
 
+  const price = (value: unknown): number => {
+    if (typeof value !== 'number' && typeof value !== 'string') return 0
+    const amount = Number(value)
+    return Number.isFinite(amount) && amount > 0 ? amount : 0
+  }
   const maxRung = byRank(maxRank)
-  const maxedAsk = Number(maxRung?.ask) || 0
-  const maxedBid = Number(maxRung?.bid) || 0
-  const maxedAvg = Number(flip.maxed?.avg_price) || 0
+  const maxedAsk = price(maxRung?.ask)
+  const maxedBid = price(maxRung?.bid)
+  const maxedAvg = price(flip.maxed?.avg_price)
   const maxedVolume = Number(flip.maxed?.volume) || 0
-  // What you RECEIVE selling maxed. DEFAULT ('ask') = the current lowest maxed
-  // sell order from an online player — the real, present price, so a single
-  // stale/fake 48h trade can't mislead. 'instant' = dump to the top buy order;
-  // 'avg' = opt in to the 48h traded average. Each falls back sensibly.
-  const listSell = maxedAsk > 0 ? maxedAsk : maxedAvg
+  // Estimate resale from exactly the selected source. An absent ask must not
+  // silently use a historical average; an absent bid cannot model an instant
+  // sale. Zero leaves the row without a profitable flip until that quote exists.
   let maxedSell: number
-  if (opts.sellBasis === 'avg') maxedSell = maxedAvg > 0 ? maxedAvg : listSell
-  else if (opts.sellBasis === 'instant') maxedSell = maxedBid > 0 ? maxedBid : listSell
-  else maxedSell = listSell
+  if (opts.sellBasis === 'avg') maxedSell = maxedAvg
+  else if (opts.sellBasis === 'instant') maxedSell = maxedBid
+  else maxedSell = maxedAsk
 
   const unrankedRung = byRank(0)
   const unrankedAsk = Number(unrankedRung?.ask) || 0

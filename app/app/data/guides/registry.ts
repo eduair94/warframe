@@ -45,7 +45,7 @@ export const GUIDES_INDEX: GuideMeta[] = [
   { slug: 'riven', route: '/guides/riven', title: 'Riven Mods Explained', blurb: 'Use Riven Splicing and Trait Locking together, compare Kuva cycling costs and assess rolls before trading.', category: 'systems', icon: 'mdi-star-four-points-outline', readMins: 10 },
 
   // ── Endgame ─────────────────────────────────────────────────────────
-  { slug: 'steel-path', route: '/guides/steel-path', title: 'Steel Path & Steel Essence', blurb: 'Unlock the hard mode, survive it, and farm Steel Essence for the good stuff.', category: 'endgame', icon: 'mdi-fire', readMins: 9 },
+  { slug: 'steel-path', route: '/guides/steel-path', title: 'Steel Path & Steel Essence', blurb: 'Check unlock requirements, daily Incursions, Acolytes, Teshin rewards and Circuit Incarnon adapters.', category: 'endgame', icon: 'mdi-fire', readMins: 9 },
   { slug: 'eidolon', route: '/guides/eidolon', title: 'Eidolon Hunting', blurb: 'Amps, the meta comp and how to go from solo Teralyst to full Tridolon.', category: 'endgame', icon: 'mdi-weather-night', readMins: 10 },
   { slug: 'railjack', route: '/guides/railjack', title: 'Railjack Guide', blurb: 'Get your ship, level Intrinsics and turn space combat into a farm.', category: 'endgame', icon: 'mdi-rocket-launch-outline', readMins: 9 },
   { slug: 'duviri', route: '/guides/duviri', title: 'The Duviri Paradox', blurb: 'Duviri quest access, weekly Circuit choices, Kullervo and Steel Path rewards.', category: 'endgame', icon: 'mdi-horse-variant', readMins: 10 },

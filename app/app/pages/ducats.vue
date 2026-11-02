@@ -1,32 +1,34 @@
 <template>
   <div class="an">
-    <client-only>
-      <template #fallback>
-        <SeoFallbackTable
-          :caption="t('ducatsPage.eyebrow')"
-          :name-label="t('ducatsPage.table.primePart')"
-          :columns="[t('ducatsPage.table.platAsk'), t('ducatsPage.table.ducats'), t('ducatsPage.table.ducatsPerPlat'), t('ducatsPage.table.vol')]"
-          :rows="fallbackRows"
-        />
-      </template>
-      <div class="an-console">
-        <header class="an-hero">
-          <div class="an-hero__text">
-            <div class="an-eyebrow">{{ t('ducatsPage.eyebrow') }}</div>
-            <i18n-t keypath="ducatsPage.hero.title" tag="h1" class="an-title">
-              <template #ducats><span class="accent-b">{{ t('ducatsPage.hero.titleDucats') }}</span></template>
-              <template #platinum><span class="accent-a">{{ t('ducatsPage.hero.titlePlatinum') }}</span></template>
-            </i18n-t>
-            <p class="an-lede">{{ t('ducatsPage.hero.lede') }}</p>
-          </div>
+    <div class="an-console">
+      <header class="an-hero">
+        <div class="an-hero__text">
+          <div class="an-eyebrow">{{ t('ducatsPage.eyebrow') }}</div>
+          <i18n-t keypath="ducatsPage.hero.title" tag="h1" class="an-title">
+            <template #ducats><span class="accent-b">{{ t('ducatsPage.hero.titleDucats') }}</span></template>
+            <template #platinum><span class="accent-a">{{ t('ducatsPage.hero.titlePlatinum') }}</span></template>
+          </i18n-t>
+          <p class="an-lede">{{ t('ducatsPage.hero.lede') }}</p>
+        </div>
+        <client-only>
           <div v-if="topDeal" class="an-hero__deal">
             <div class="an-hero__deal-label">{{ t('ducatsPage.hero.dealLabel') }}</div>
             <div class="an-hero__deal-plat">{{ eff(topDeal).toFixed(1) }}<span>d/p</span></div>
             <a class="an-hero__deal-name" :href="mkt(topDeal.url_name)" target="_blank" rel="noopener" @click="onMarketOpen(topDeal, 'hero')">{{ localItemName(topDeal) }} →</a>
             <div class="an-hero__deal-sub">{{ t('ducatsPage.hero.dealSub', { ducats: topDeal.ducats, sell: fmtPlat(topDeal.market.sell) }) }}</div>
           </div>
-        </header>
+        </client-only>
+      </header>
 
+      <client-only>
+        <template #fallback>
+          <SeoFallbackTable
+            :caption="t('ducatsPage.eyebrow')"
+            :name-label="t('ducatsPage.table.primePart')"
+            :columns="[t('ducatsPage.table.platAsk'), t('ducatsPage.table.ducats'), t('ducatsPage.table.ducatsPerPlat'), t('ducatsPage.table.vol')]"
+            :rows="fallbackRows"
+          />
+        </template>
         <div class="an-stats">
           <div class="an-stat"><div class="an-stat__num">{{ stats.total }}</div><div class="an-stat__lbl">{{ t('ducatsPage.stats.primeParts') }}</div></div>
           <div class="an-stat"><div class="an-stat__num is-good">{{ stats.best.toFixed(1) }}</div><div class="an-stat__lbl">{{ t('ducatsPage.stats.bestPerPlat') }}</div></div>
@@ -114,8 +116,10 @@
         <div v-if="filtered.length > perPage" class="an-pager">
           <v-pagination v-model="page" :length="pageCount" :total-visible="isMobile ? 5 : 9" color="#d4af5a" @update:model-value="onPageChange"></v-pagination>
         </div>
-      </div>
+      </client-only>
+    </div>
 
+    <client-only>
       <v-alert class="an-disclaimer bg-blue-darken-4" type="info" density="compact">
         {{ t('ducatsPage.disclaimer') }}
       </v-alert>
@@ -184,9 +188,17 @@ function fmtPlat(n: number): string {
   return Math.round(Number(n) || 0).toLocaleString('en-US')
 }
 
-const ducatItems = computed<any[]>(() =>
-  (allItems.value as any[]).filter((i) => i && i.ducats > 0 && i.market && i.market.sell > 0),
-)
+function isDucatPart(item: any): boolean {
+  // WFM also publishes the summed Ducat value of a set. A set listing cannot
+  // be exchanged at a kiosk; compare individual parts at their own ask price.
+  return Boolean(item
+    && typeof item.url_name === 'string'
+    && !item.url_name.endsWith('_set')
+    && !item.tags?.includes('set')
+    && Number.isSafeInteger(item.ducats) && item.ducats > 0
+    && Number.isFinite(item.market?.sell) && item.market.sell > 0)
+}
+const ducatItems = computed<any[]>(() => (allItems.value as any[]).filter(isDucatPart))
 
 const categoryOptions = computed<string[]>(() => {
   const present = new Set<string>()
@@ -215,7 +227,7 @@ const filtered = computed<any[]>(() => {
 })
 
 // SSR-only crawlable snapshot for <SeoFallbackTable> (see that component for
-// why): top 150 of the same filtered+sorted list the live table renders
+// why): top 40 of the same filtered+sorted list the live table renders
 // (default sort: ducat efficiency, descending).
 const fallbackRows = computed(() =>
   filtered.value.slice(0, 40).map((row) => ({

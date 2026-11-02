@@ -100,7 +100,7 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
     },
     "/guides/steel-path": {
       "title": "Guía de Steel Path en Warframe — Desbloqueo y Steel Essence",
-      "description": "Cómo desbloquear el Steel Path en Warframe, sobrevivir a él y farmear Steel Essence para adaptadores Incarnon, arcanes, Kuva y más. La guía de recompensas del modo difícil."
+      "description": "Guía de Steel Path: requisitos, Steel Essence de Incursions y Acolytes, recompensas de Teshin y adaptadores Incarnon de Circuit."
     },
     "/guides/eidolon": {
       "title": "Guía de caza de Eidolon en Warframe — Bases del Tridolon",
@@ -218,7 +218,7 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
     },
     "/guides/steel-path": {
       "title": "Guia de Steel Path Warframe — Desbloqueio e Steel Essence",
-      "description": "Como desbloquear o Steel Path em Warframe, sobreviver a ele e farmar Steel Essence para adaptadores incarnon, arcanes, kuva e mais. O guia de recompensas do hard mode."
+      "description": "Guia de Steel Path: requisitos, Steel Essence de Incursions e Acolytes, recompensas de Teshin e adaptadores Incarnon do Circuit."
     },
     "/guides/eidolon": {
       "title": "Guia de Caça a Eidolon Warframe — Básico do Tridolon",
@@ -336,7 +336,7 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
     },
     "/guides/steel-path": {
       "title": "Warframe Steel Path Guide — Freischalten & Essence",
-      "description": "Wie du den Steel Path in Warframe freischaltest, ihn überlebst und Steel Essence für Incarnon-Adapter, Arcanes, Kuva und mehr farmst. Der Guide zu den Hard-Mode-Belohnungen."
+      "description": "Steel Path: Freischaltung, Steel Essence aus Incursions und Acolytes, Teshins Belohnungen und Incarnon-Adapter im Circuit."
     },
     "/guides/eidolon": {
       "title": "Warframe Eidolon-Jagd Guide — Tridolon-Grundlagen",
@@ -454,7 +454,7 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
     },
     "/guides/steel-path": {
       "title": "Guide Steel Path Warframe — Débloquer & Steel Essence",
-      "description": "Comment débloquer le Steel Path dans Warframe, y survivre et farmer la Steel Essence pour les adaptateurs Incarnon, arcanes, Kuva et plus. Le guide des récompenses du mode difficile."
+      "description": "Guide Steel Path : accès, Steel Essence des Incursions et Acolytes, récompenses de Teshin et adaptateurs Incarnon du Circuit."
     },
     "/guides/eidolon": {
       "title": "Guide de chasse aux Eidolon Warframe — Bases Tridolon",
@@ -572,7 +572,7 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
     },
     "/guides/steel-path": {
       "title": "Гайд по Steel Path Warframe — открытие и Steel Essence",
-      "description": "Как открыть Steel Path в Warframe, выжить в нём и фармить Steel Essence для адаптеров Incarnon, арканов, Kuva и другого. Гайд по наградам хардмода."
+      "description": "Steel Path в Warframe: условия доступа, Steel Essence с Incursions и Acolytes, награды Teshin, адаптеры Circuit Incarnon и советы по выживанию."
     },
     "/guides/eidolon": {
       "title": "Гайд по охоте на Eidolon — основы Tridolon",
@@ -690,7 +690,7 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
     },
     "/guides/steel-path": {
       "title": "Warframe Steel Path 가이드 — 해금 & Steel Essence",
-      "description": "Warframe에서 Steel Path 해금 방법, 생존법, Incarnon 어댑터·Arcane·Kuva 등을 위한 Steel Essence 파밍까지. 하드모드 보상 가이드."
+      "description": "Warframe Steel Path 해금 조건과 생존 팁을 확인하세요. Incursions·Acolytes에서 Steel Essence를 모으고 Teshin 보상과 Circuit Incarnon 어댑터를 비교하세요."
     },
     "/guides/eidolon": {
       "title": "Warframe Eidolon 사냥 가이드 — Tridolon 기초",
@@ -808,7 +808,7 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
     },
     "/guides/steel-path": {
       "title": "Warframe Steel Pathガイド — 解放とSteel Essence",
-      "description": "WarframeでSteel Pathを解放し、生き延び、Incarnonアダプター・アルケイン・Kuvaなどのために Steel Essenceを周回する方法。ハードモード報酬ガイド。"
+      "description": "WarframeのSteel Path解放条件と生存のコツを解説。Incursions・AcolytesでSteel Essenceを集め、Teshinの報酬とCircuitのIncarnonアダプターを比較しましょう。"
     },
     "/guides/eidolon": {
       "title": "Warframe Eidolon狩りガイド — Tridolonの基本",
@@ -926,7 +926,7 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
     },
     "/guides/steel-path": {
       "title": "Warframe Steel Path 攻略 — 解锁与 Steel Essence",
-      "description": "如何在 Warframe 中解锁 Steel Path、在其中生存，并farm Steel Essence 换取 Incarnon 适配器、Arcane、Kuva 等。困难模式奖励攻略。"
+      "description": "了解 Warframe Steel Path 解锁条件与生存技巧，从 Incursions 和 Acolytes 获取 Steel Essence，并比较 Teshin 奖励与 Circuit Incarnon 适配器。"
     },
     "/guides/eidolon": {
       "title": "Warframe Eidolon 狩猎攻略 — Tridolon 入门",
@@ -1044,7 +1044,7 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
     },
     "/guides/steel-path": {
       "title": "Warframe Steel Path 指南 — 解鎖與 Steel Essence",
-      "description": "如何在 Warframe 解鎖 Steel Path、如何存活，以及刷 Steel Essence 換 Incarnon 轉接器、Arcane、Kuva 等等。硬核模式獎勵指南。"
+      "description": "了解 Warframe Steel Path 解鎖條件與生存技巧，從 Incursions 和 Acolytes 取得 Steel Essence，並比較 Teshin 獎勵與 Circuit Incarnon 適配器。"
     },
     "/guides/eidolon": {
       "title": "Warframe Eidolon 狩獵指南 — Tridolon 入門",
@@ -1162,7 +1162,7 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
     },
     "/guides/steel-path": {
       "title": "Poradnik Steel Path w Warframe — Steel Essence",
-      "description": "Jak odblokować Steel Path w Warframe, jak przetrwać i farmić Steel Essence na adaptery Incarnon, arcane, Kuva i więcej. Poradnik po nagrody z trybu hardcore."
+      "description": "Warframe Steel Path: wymagania dostępu, Steel Essence z Incursions i Akolitów, nagrody Teshina, adaptery Circuit i aktualne zasady przetrwania."
     },
     "/guides/eidolon": {
       "title": "Poradnik Polowań na Eidolon w Warframe — Tridolon",
@@ -1280,7 +1280,7 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
     },
     "/guides/steel-path": {
       "title": "Guida allo Steel Path Warframe — Sblocco e Steel Essence",
-      "description": "Come sbloccare lo Steel Path in Warframe, sopravvivere e farmare Steel Essence per adattatori Incarnon, arcani, Kuva e altro. La guida alle ricompense della modalità difficile."
+      "description": "Warframe Steel Path: requisiti, Steel Essence da Incursioni e Accoliti, ricompense di Teshin, adattatori del Circuito e consigli di sopravvivenza."
     },
     "/guides/eidolon": {
       "title": "Guida alla Caccia agli Eidolon Warframe — Basi del Tridolon",
@@ -1398,7 +1398,7 @@ export const PAGE_SEO_I18N_GUIDES: Record<string, Record<string, PageSeo>> = {
     },
     "/guides/steel-path": {
       "title": "Гайд Steel Path Warframe — розблокування й Steel Essence",
-      "description": "Як розблокувати Steel Path у Warframe, вижити в ньому та фармити Steel Essence для Incarnon-адаптерів, arcanes, kuva та іншого. Гайд по нагородах хардмоду."
+      "description": "Steel Path у Warframe: умови доступу, Steel Essence з Incursions і Acolytes, нагороди Teshin, адаптери Circuit Incarnon і поради з виживання."
     },
     "/guides/eidolon": {
       "title": "Гайд полювання на Eidolon у Warframe — основи Tridolon",

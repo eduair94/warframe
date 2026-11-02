@@ -635,7 +635,7 @@ const flipSortBy = ref('eff')
 const flipSortDir = ref<Dir>('desc')
 const showAdv = ref(false)
 // pricing model
-const sellBasis = ref<SellBasis>('avg')
+const sellBasis = ref<SellBasis>('ask')
 const buyViaBid = ref(true)
 // advanced filters
 const maxBuyIn = ref<number | null>(null)
@@ -990,7 +990,7 @@ const QUERY_PARAMS: Array<[string, any, any, PType]> = [
   ['sort', flipSortBy, 'eff', 'str'],
   ['sdir', flipSortDir, 'desc', 'str'],
   ['cat', flipCat, 'All', 'str'],
-  ['sell', sellBasis, 'avg', 'str'],
+  ['sell', sellBasis, 'ask', 'str'],
   ['bid', buyViaBid, true, 'bool'],
   ['maxbuy', maxBuyIn, null, 'num'],
   ['minp', minProfit, null, 'num'],
