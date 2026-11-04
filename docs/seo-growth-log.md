@@ -1466,3 +1466,106 @@ The locale compiler, eight tool-template regressions and repository-map check
 pass again after the follow-up; every other message value is preserved.
 The final follow-up includes this documentation before another complete deploy;
 its outcome and public verification remain in ignored evidence and memory.
+
+## 2026-11-03–04 — Honest set comparisons and upstream freshness incident
+
+This iteration resumes the unfinished November 3 change before starting another
+release. The last deployed revision remains `3e3d665` until the complete workflow
+for this batch succeeds. No duplicate deployment or metadata refresh is started.
+
+### Comparison accuracy and useful search content
+
+The public comparison previously treated absent component quotes as zero:
+Amesha, Elytron and Riot-848 could show a 100% saving, while Rauta's partial
+component total produced an unsupported recommendation. The backend now checks
+the assembled set and every required component separately for the acquisition
+(ask) and resale (bid) sides. Missing or invalid quotes and invalid quantities
+produce unavailable totals and differences. Known prices and searchable rows
+remain visible. Finite legacy subtotals are retained for compatibility, while
+the authoritative comparison fields are nullable and include directional
+coverage counts. Fully priced comparisons and genuine zero differences retain
+their meaning. Overflow cannot produce Infinity/NaN in the API response.
+
+The page excludes incomplete comparisons from highlighted savings, opportunity
+filters and acquisition statistics; unknown values sort after valid negative
+differences. Desktop, mobile and the crawlable server table display localized
+unavailable labels rather than free components. Old cached API responses without
+directional coverage fail closed until refreshed. Analytics navigation verdicts
+also distinguish unavailable from an even comparison. A new server-rendered
+methodology paragraph explains these rules in all thirteen locales. This adds
+useful context to an existing tool rather than creating a thin search page.
+
+Three new English strings receive 36 generated translations through the existing
+`tr-file.mjs` workflow. Gemini's first request times out after 30 seconds without
+an access/quota response; the existing free engine then completes 36/36 drafts
+with sequential requests spaced by two seconds. No refusal is bypassed. An
+independent semantic review corrects 31 drafts, including mistranslations of
+market quotes as textual quotations and of a set as the game. Five drafts are
+preserved. All previous message values remain unchanged. The locale compiler
+passes, and no guide review dates are advanced.
+
+### Availability, source access and measurement limits
+
+The November 3 baseline passes 10/10 public checks: 3,832 of 3,893 price records
+(98.4%) are under three hours old, nine exceed a day, and the live socket is
+connected. Those observations are historical, not today's health result.
+
+At 13:02 UTC on November 4, public endpoints still answer HTTP 200 but the
+freshness check fails: none of 3,893 quotes is under three hours old, the newest
+is approximately 10 hours 40 minutes old, the median is 745.5 minutes, and thirteen
+exceed a day. The live socket is disconnected with zero orders per minute.
+Existing logs show genuine upstream Cloudflare HTTP 403 challenges on price,
+auction and live REST reads, plus rejected WebSocket handshakes. Fixed egress
+listeners are present, configuration files are unchanged since October 27, and
+critical compiled transport hashes still match the successful November 2 build.
+The existing fifteen-minute cooldowns remain active. This is an upstream access
+restriction, not evidence that missing quotes should be replaced by zero.
+
+Diagnosis is bounded and read-only: no extra Warframe Market probes, proxy
+changes, alternate access path, metadata import or worker restart is used to
+evade the refusal. The normal complete release remains required, but workflow
+success alone will not be reported as recovery of upstream data or the feed.
+Postdeploy freshness and socket status must be reported separately. Raw account
+data and credentials are not included in the public evidence.
+
+GA4/Search Console discovery returns unauthorized once per review and stops.
+Traffic is unavailable, not zero; complete seven- and twenty-eight-day windows
+cannot be compared. Neither traffic uplift nor field Core Web Vitals improvement
+is claimed. The bounded November 3 SEO sample finds no urgent robots/canonical
+blocker; English and Spanish sitemaps each contain 1,583 URLs including 432
+missions. These timings and responses are not a field performance benchmark.
+
+### Official sources and next content priorities
+
+The November 4 checks of the [official news index](https://www.warframe.com/en/news)
+and [patch index](https://www.warframe.com/en/patch-notes) find no newer released
+patch than [44.1.4.1, October 28](https://www.warframe.com/en/patch-notes/pc/44-1-4).
+The [November 2 Devstream 198 recap](https://www.warframe.com/en/news/devstream-198-overview)
+describes Tau and future Prime availability; these announcements are not treated
+as already playable mechanics. No filler news page or date-only refresh is made.
+
+Next content corrections remain Railjack's Rising Tide prerequisite, reactor/
+Plexus distinction and Update 43/43.0.6 additions. Primary references are the
+[Second Dream guide](https://www.warframe.com/en/guides/quests/the-second-dream),
+[Railjack 29.10.0 release notes](https://forums.warframe.com/topic/1253565-update-29100-corpus-proxima-the-new-railjack/),
+[Update 43](https://www.warframe.com/en/patch-notes/pc/43-0-0) and
+[Hotfix 43.0.6](https://www.warframe.com/en/patch-notes/pc/43-0-6).
+The `/vaulted-worth` search description also needs to qualify its inferred
+Resurgence flag. Seventeen overdue guide reviews stay visible; these outstanding
+items are not represented as completed by the comparator change.
+
+Local blocking checks pass: 801 backend tests, 72 frontend tests and 26 guide
+tests (899 total), plus guide validation, locale compilation and the current
+repository map. Validation evidence is recorded in ignored `tmp/nov04-*` files. It includes
+direction-specific backend regressions, actual-page server/desktop/mobile
+rendering in English and Spanish, old-cache handling, the full frontend suite,
+guide validation and regression tests, locale compilation and the repository
+map check. Independent frontend review finds no high-confidence regression and
+passes 42 adversarial cases. Browser checks after deployment remain necessary:
+template stubs do not prove hydration or responsive layout.
+
+All intended code and this record precede the final complete API/frontend/live
+deployment. The workflow outcome, exact deployed SHA, public page/assets checks,
+browser results and unresolved upstream health status will be stored in ignored
+release evidence and automation memory, without leaving a later documentation
+commit undeployed.

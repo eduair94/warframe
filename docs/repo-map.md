@@ -155,11 +155,11 @@ One-shot data importers run via `npm run <name>` / cron. They populate Mongo.
 | `app/i18n/messages/rivenValue.ts` | 44 KB |
 | `app/i18n/messages/nav.ts` | 43 KB |
 | `app/i18n/messages/vaultedWorth.ts` | 42 KB |
+| `app/i18n/messages/comparison.ts` | 41 KB |
 | `app/i18n/messages/home.ts` | 39 KB |
 | `app/i18n/messages/volatility.ts` | 37 KB |
 | `app/i18n/messages/starChart.ts` | 37 KB |
 | `app/i18n/messages/timing.ts` | 37 KB |
-| `app/i18n/messages/comparison.ts` | 36 KB |
 | `app/i18n/messages/screener.ts` | 34 KB |
 | `app/i18n/messages/vaultSpikes.ts` | 33 KB |
 | `app/i18n/messages/movers.ts` | 33 KB |

@@ -23,6 +23,41 @@ import { RelicService } from './RelicService';
 /** How many daily points the set detail page charts per item. */
 const SET_HISTORY_POINTS = 30;
 
+/** A missing or malformed order is not a zero-price offer. */
+function positiveQuote(value: unknown): number | null {
+  return typeof value === 'number' && Number.isFinite(value) && value > 0 ? value : null;
+}
+
+interface PartQuoteSubtotal {
+  subtotal: number;
+  missingParts: number;
+  overflow: boolean;
+}
+
+function addPartQuote(total: PartQuoteSubtotal, quote: number | null, quantity: number | null): void {
+  if (quote === null || quantity === null) {
+    total.missingParts++;
+    return;
+  }
+  const next = total.subtotal + quote * quantity;
+  if (!Number.isFinite(next)) {
+    // Preserve a finite legacy subtotal, but never compare an unrepresentable total.
+    total.overflow = true;
+    return;
+  }
+  total.subtotal = next;
+}
+
+function completePartsTotal(total: PartQuoteSubtotal): number | null {
+  return total.missingParts === 0 && !total.overflow ? total.subtotal : null;
+}
+
+function differencePercent(difference: number | null, base: number | null): number | null {
+  if (difference === null || base === null) return null;
+  const percent = (difference / base) * 100;
+  return Number.isFinite(percent) ? percent : null;
+}
+
 /**
  * Service for handling set calculations and comparisons
  * 
@@ -235,9 +270,9 @@ export class SetService {
    * N+1 queries that per-set lookups would incur.
    *
    * A set is any item whose `item_name` contains `" Set"` and that has more than
-   * one entry in `items_in_set`. Parts without a market price are counted in
-   * `missingParts` and excluded from the totals (so the comparison is a lower
-   * bound on part totals when `missingParts > 0`).
+   * one entry in `items_in_set`. Legacy prices remain finite subtotals. Each
+   * comparison separately requires valid quotes for the set and every part on
+   * its own side of the market; missing quotes never imply free components.
    *
    * @param items - All raw market items from the database
    * @returns One comparison row per qualifying set
@@ -251,7 +286,7 @@ export class SetService {
     const rows: ISetComparisonRow[] = [];
 
     for (const setItem of items) {
-      if (!setItem || !setItem.item_name || !setItem.market) continue;
+      if (!setItem || !setItem.item_name) continue;
       if (!setItem.item_name.includes(' Set')) continue;
       if (!setItem.items_in_set || setItem.items_in_set.length <= 1) continue;
 
@@ -261,32 +296,35 @@ export class SetService {
       );
       if (partRefs.length === 0) continue;
 
-      let partsSell = 0; // acquire total (Σ part.sell × qty)
-      let partsBuy = 0; // resale total (Σ part.buy × qty)
+      const askTotal: PartQuoteSubtotal = { subtotal: 0, missingParts: 0, overflow: false };
+      const bidTotal: PartQuoteSubtotal = { subtotal: 0, missingParts: 0, overflow: false };
       let missingParts = 0;
       let pricedParts = 0;
 
       for (const ref of partRefs) {
         const part = byUrl.get(ref.url_name);
-        const quantity = ref.quantity_for_set ?? 1;
-        const sell = part?.market?.sell ?? 0;
-        const buy = part?.market?.buy ?? 0;
+        const rawQuantity = ref.quantity_for_set === undefined ? 1 : ref.quantity_for_set;
+        const quantity = typeof rawQuantity === 'number' && Number.isInteger(rawQuantity) && rawQuantity > 0
+          ? rawQuantity
+          : null;
+        const sell = positiveQuote(part?.market?.sell);
+        const buy = positiveQuote(part?.market?.buy);
 
-        if (!part || !part.market || (!sell && !buy)) {
-          missingParts++;
-          continue;
-        }
+        // Legacy coverage counts whether either order side is quoted. The
+        // directional counts below also require a valid component quantity.
+        if (sell === null && buy === null) missingParts++;
+        else pricedParts++;
 
-        partsSell += sell * quantity;
-        partsBuy += buy * quantity;
-        pricedParts++;
+        addPartQuote(askTotal, sell, quantity);
+        addPartQuote(bidTotal, buy, quantity);
       }
 
-      const setSell = setItem.market.sell ?? 0;
-      const setBuy = setItem.market.buy ?? 0;
-
-      const acquireSave = setSell - partsSell; // >0 => parts cheaper to buy
-      const resaleExtra = partsBuy - setBuy; // >0 => parts resell for more
+      const setSell = positiveQuote(setItem.market?.sell);
+      const setBuy = positiveQuote(setItem.market?.buy);
+      const partsCost = completePartsTotal(askTotal);
+      const partsValue = completePartsTotal(bidTotal);
+      const acquireSave = setSell !== null && partsCost !== null ? setSell - partsCost : null;
+      const resaleExtra = setBuy !== null && partsValue !== null ? partsValue - setBuy : null;
 
       rows.push({
         item_name: setItem.item_name,
@@ -297,25 +335,27 @@ export class SetService {
         pricedParts,
         missingParts,
         set: {
-          buy: setBuy,
-          sell: setSell,
-          volume: setItem.market.volume ?? 0,
+          buy: setBuy ?? 0,
+          sell: setSell ?? 0,
+          volume: positiveQuote(setItem.market?.volume) ?? 0,
         },
         byParts: {
-          buy: partsBuy,
-          sell: partsSell,
+          buy: bidTotal.subtotal,
+          sell: askTotal.subtotal,
         },
         acquire: {
+          missingParts: askTotal.missingParts,
           setCost: setSell,
-          partsCost: partsSell,
+          partsCost,
           save: acquireSave,
-          savePct: setSell > 0 ? (acquireSave / setSell) * 100 : 0,
+          savePct: differencePercent(acquireSave, setSell),
         },
         resale: {
+          missingParts: bidTotal.missingParts,
           setValue: setBuy,
-          partsValue: partsBuy,
+          partsValue,
           extra: resaleExtra,
-          extraPct: setBuy > 0 ? (resaleExtra / setBuy) * 100 : 0,
+          extraPct: differencePercent(resaleExtra, setBuy),
         },
       });
     }

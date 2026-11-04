@@ -73,6 +73,9 @@ export default {
       },
       disclaimer:
         "Prices are lowest sell orders (cost to buy) and highest buy orders (resale), pulled from Warframe Market. Trading tax and set bonuses aren't included.",
+      unavailable: "Unavailable",
+      incomplete: "Not enough prices",
+      pricingNote: "Savings and resale differences require a quote for the set and every required part. Missing quotes appear as unavailable, never as free parts. Buy and resale quotes are checked separately.",
     },
   },
   es: {
@@ -145,6 +148,9 @@ export default {
       },
       disclaimer:
         'Los precios son las órdenes de venta más bajas (costo de compra) y las órdenes de compra más altas (reventa), tomadas de Warframe Market. El impuesto de comercio y los bonos de set no están incluidos.',
+      unavailable: "No disponible",
+      incomplete: "Faltan precios",
+      pricingNote: "Para calcular el ahorro y las diferencias de reventa se necesita una cotización del set y de cada pieza requerida. Los precios que faltan aparecen como no disponibles; las piezas nunca se consideran gratuitas. Las cotizaciones para compra y reventa se comprueban por separado.",
     },
   },
   pt: {
@@ -217,6 +223,9 @@ export default {
       },
       disclaimer:
         'Os preços são as menores ordens de venda (custo de compra) e as maiores ordens de compra (revenda), obtidos do Warframe Market. A taxa de comércio e os bônus de set não estão incluídos.',
+      unavailable: "Indisponível",
+      incomplete: "Faltam preços",
+      pricingNote: "Para calcular a economia e as diferenças na revenda, é necessário ter preços de oferta para o conjunto e cada peça necessária. Os preços ausentes aparecem como indisponíveis; as peças nunca são consideradas gratuitas. Os preços para compra e revenda são verificados separadamente.",
     },
   },
   de: {
@@ -289,6 +298,9 @@ export default {
       },
       disclaimer:
         'Die Preise sind die niedrigsten Verkaufsangebote (Kaufkosten) und die höchsten Kaufangebote (Wiederverkauf), abgerufen von Warframe Market. Handelssteuer und Set-Boni sind nicht enthalten.',
+      unavailable: "Nicht verfügbar",
+      incomplete: "Preise fehlen",
+      pricingNote: "Zur Berechnung der Ersparnis und der Wiederverkaufsdifferenz müssen Angebotspreise für das Set und jedes benötigte Teil vorliegen. Fehlende Preise werden als nicht verfügbar angezeigt; die Teile gelten niemals als kostenlos. Preise für Kauf und Wiederverkauf werden getrennt geprüft.",
     },
   },
   fr: {
@@ -361,6 +373,9 @@ export default {
       },
       disclaimer:
         'Les prix sont les ordres de vente les plus bas (coût d’achat) et les ordres d’achat les plus élevés (revente), issus de Warframe Market. La taxe de commerce et les bonus de set ne sont pas inclus.',
+      unavailable: "Indisponible",
+      incomplete: "Prix manquants",
+      pricingNote: "Le calcul des économies et des écarts à la revente nécessite un prix proposé pour le set et chacune des pièces requises. Les prix manquants sont indiqués comme indisponibles ; les pièces ne sont jamais considérées comme gratuites. Les prix utilisés pour l’achat et la revente sont vérifiés séparément.",
     },
   },
   ru: {
@@ -433,6 +448,9 @@ export default {
       },
       disclaimer:
         'Цены — это самые низкие ордера на продажу (стоимость покупки) и самые высокие ордера на покупку (перепродажа), взятые с Warframe Market. Торговый налог и бонусы сета не учитываются.',
+      unavailable: "Недоступно",
+      incomplete: "Не все цены доступны",
+      pricingNote: "Для расчёта экономии и разницы при перепродаже нужны цены предложений для комплекта и каждой необходимой детали. При отсутствии цены отображается «Недоступно»; такие детали никогда не считаются бесплатными. Цены для покупки и перепродажи проверяются отдельно.",
     },
   },
   ko: {
@@ -505,6 +523,9 @@ export default {
       },
       disclaimer:
         '가격은 최저 판매 주문(구매 비용)과 최고 구매 주문(재판매)이며, Warframe Market에서 가져옵니다. 거래세와 세트 보너스는 포함되지 않습니다.',
+      unavailable: "가격 정보 없음",
+      incomplete: "가격 정보 부족",
+      pricingNote: "절약액과 재판매 차액을 계산하려면 세트와 필요한 모든 부품의 시장 호가가 있어야 합니다. 호가가 없는 항목은 “가격 정보 없음”으로 표시하며, 부품을 무료로 계산하지 않습니다. 구매와 재판매에 사용할 호가는 각각 확인합니다.",
     },
   },
   ja: {
@@ -577,6 +598,9 @@ export default {
       },
       disclaimer:
         '価格は最安の売り注文（購入コスト）と最高の買い注文（再販）で、Warframe Market から取得しています。取引税とセットボーナスは含まれていません。',
+      unavailable: "価格データなし",
+      incomplete: "価格情報が不足",
+      pricingNote: "節約額と再販売時の差額を計算するには、セットと必要なすべてのパーツについて、市場で提示されている価格が必要です。価格がない項目は「価格データなし」と表示し、パーツを無料として扱うことはありません。購入用と再販売用の価格は別々に確認します。",
     },
   },
   'zh-hans': {
@@ -649,6 +673,9 @@ export default {
       },
       disclaimer:
         '价格取自 Warframe Market 的最低出售订单（购买成本）和最高收购订单（转售）。不含交易税和套装加成。',
+      unavailable: "暂无报价",
+      incomplete: "报价不全",
+      pricingNote: "计算节省金额和转售差额，需要套装及每个所需部件的市场报价。缺失报价的项目会显示为“暂无报价”，绝不会把部件视为免费。购买和转售所需的报价分别检查。",
     },
   },
   'zh-hant': {
@@ -721,6 +748,9 @@ export default {
       },
       disclaimer:
         '價格取自 Warframe Market 的最低出售訂單（購買成本）和最高收購訂單（轉售）。不含交易稅和套裝加成。',
+      unavailable: "暫無報價",
+      incomplete: "報價不全",
+      pricingNote: "計算節省金額和轉售差額，需要套裝及每個所需部件的市場報價。缺少報價的項目會顯示為「暫無報價」，絕不會把部件視為免費。購買和轉售所需的報價分別檢查。",
     },
   },
   pl: {
@@ -793,6 +823,9 @@ export default {
       },
       disclaimer:
         'Ceny to najniższe zlecenia sprzedaży (koszt zakupu) i najwyższe zlecenia kupna (odsprzedaż), pobrane z Warframe Market. Podatek handlowy i bonusy zestawu nie są uwzględnione.',
+      unavailable: "Niedostępne",
+      incomplete: "Brakuje cen",
+      pricingNote: "Do obliczenia oszczędności i różnic przy odsprzedaży potrzebne są ceny z ofert dla zestawu i każdej wymaganej części. Brakujące ceny są oznaczane jako niedostępne; części nigdy nie są traktowane jako darmowe. Ceny dla zakupu i odsprzedaży są sprawdzane osobno.",
     },
   },
   it: {
@@ -865,6 +898,9 @@ export default {
       },
       disclaimer:
         'I prezzi sono gli ordini di vendita più bassi (costo di acquisto) e gli ordini di acquisto più alti (rivendita), presi da Warframe Market. La tassa di scambio e i bonus del set non sono inclusi.',
+      unavailable: "Non disponibile",
+      incomplete: "Mancano prezzi",
+      pricingNote: "Per calcolare il risparmio e le differenze di rivendita servono i prezzi delle offerte per il set e per ogni componente necessario. I prezzi mancanti sono indicati come non disponibili e i componenti non vengono mai considerati gratuiti. I prezzi per l’acquisto e la rivendita vengono verificati separatamente.",
     },
   },
   uk: {
@@ -937,6 +973,9 @@ export default {
       },
       disclaimer:
         'Ціни — це найнижчі ордери на продаж (вартість покупки) і найвищі ордери на купівлю (перепродаж), узяті з Warframe Market. Торговельний податок і бонуси сета не враховані.',
+      unavailable: "Недоступно",
+      incomplete: "Бракує цін",
+      pricingNote: "Для розрахунку економії та різниці під час перепродажу потрібні ціни пропозицій для комплекту й кожної необхідної деталі. Відсутні ціни позначаються як недоступні; деталі ніколи не вважаються безкоштовними. Ціни для купівлі та перепродажу перевіряються окремо.",
     },
   },
 }

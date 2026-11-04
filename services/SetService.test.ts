@@ -28,8 +28,22 @@ function part(
   } as IMarketItem;
 }
 
+function sampleSet(
+  refs: Array<{ url_name: string; quantity_for_set?: unknown }> = [
+    { url_name: 'part_a' }, { url_name: 'part_b' },
+  ],
+  market: Record<string, unknown> = { sell: 100, buy: 80, volume: 25 },
+): IMarketItem {
+  return {
+    ...part('sample_set', 100, 80),
+    item_name: 'Sample Set',
+    market,
+    items_in_set: [{ url_name: 'sample_set', tags: ['primary'] }, ...refs],
+  } as unknown as IMarketItem;
+}
+
 describe('SetService.buildComparisonFromItems', () => {
-  it('sums parts by quantity, computes savings, and flags missing parts', () => {
+  it('retains partial legacy subtotals but never compares them when a part document is missing', () => {
     const latronSet: IMarketItem = {
       id: 'latron_prime_set',
       url_name: 'latron_prime_set',
@@ -69,17 +83,13 @@ describe('SetService.buildComparisonFromItems', () => {
     expect(row.byParts.sell).toBe(12 * 2 + 11 + 8); // 43
     expect(row.byParts.buy).toBe(10 * 2 + 9 + 6); // 35
 
-    // acquire: buy assembled set (45) vs buy the parts (43) -> parts save 2
-    expect(row.acquire.setCost).toBe(45);
-    expect(row.acquire.partsCost).toBe(43);
-    expect(row.acquire.save).toBe(2);
-    expect(row.acquire.savePct).toBeCloseTo((2 / 45) * 100, 5);
-
-    // resale: sell assembled set (40) vs sell the parts (35) -> parts worth 5 less
-    expect(row.resale.setValue).toBe(40);
-    expect(row.resale.partsValue).toBe(35);
-    expect(row.resale.extra).toBe(-5);
-    expect(row.resale.extraPct).toBeCloseTo((-5 / 40) * 100, 5);
+    // The absent stock has an unknown cost/value, not a free price.
+    expect(row.acquire).toEqual({
+      missingParts: 1, setCost: 45, partsCost: null, save: null, savePct: null,
+    });
+    expect(row.resale).toEqual({
+      missingParts: 1, setValue: 40, partsValue: null, extra: null, extraPct: null,
+    });
   });
 
   it('produces one row per qualifying set and handles set-cheaper cases', () => {
@@ -113,9 +123,12 @@ describe('SetService.buildComparisonFromItems', () => {
     expect(rows[0].acquire.save).toBe(-3);
     // parts resale 55 equals set resale 55 -> no difference
     expect(rows[0].resale.extra).toBe(0);
+    expect(rows[0].resale.extraPct).toBe(0);
+    expect(rows[0].acquire.missingParts).toBe(0);
+    expect(rows[0].resale.missingParts).toBe(0);
   });
 
-  it('excludes non-sets, single-part sets, and items without market data', () => {
+  it('excludes non-sets and sets without component references', () => {
     const items: IMarketItem[] = [
       // plain item (no " Set" in name)
       part('latron_prime_barrel', 12, 10),
@@ -128,19 +141,168 @@ describe('SetService.buildComparisonFromItems', () => {
         market: { buy: 1, sell: 2, volume: 0 },
         items_in_set: [{ url_name: 'fake_set', tags: ['x'] } as any],
       } as IMarketItem,
-      // a Set with no market data
-      {
-        id: 'no_market_set',
-        url_name: 'no_market_set',
-        item_name: 'No Market Set',
-        thumb: 'y.png',
-        items_in_set: [
-          { url_name: 'no_market_set', tags: ['x'] } as any,
-          { url_name: 'some_part', quantity_for_set: 1 } as any,
-        ],
-      } as IMarketItem,
     ];
 
     expect(service.buildComparisonFromItems(items)).toHaveLength(0);
+  });
+
+  it('preserves complete arithmetic, repeated quantities, absent quantity defaults and fractional quotes', () => {
+    const set = sampleSet([
+      { url_name: 'part_a', quantity_for_set: 2 },
+      { url_name: 'part_b' },
+    ]);
+    const [row] = service.buildComparisonFromItems([set, part('part_a', 20.5, 12), part('part_b', 9, 16)]);
+
+    expect(row.byParts).toEqual({ sell: 50, buy: 40 });
+    expect(row.acquire).toEqual({ missingParts: 0, setCost: 100, partsCost: 50, save: 50, savePct: 50 });
+    expect(row.resale).toEqual({ missingParts: 0, setValue: 80, partsValue: 40, extra: -40, extraPct: -50 });
+    expect(row.pricedParts).toBe(2);
+    expect(row.missingParts).toBe(0);
+  });
+
+  it('keeps acquisition comparable when every ask exists but a bid is missing', () => {
+    const [row] = service.buildComparisonFromItems([
+      sampleSet(), part('part_a', 30, 0), part('part_b', 20, 10),
+    ]);
+    expect(row.byParts).toEqual({ sell: 50, buy: 10 });
+    expect(row.acquire).toEqual({ missingParts: 0, setCost: 100, partsCost: 50, save: 50, savePct: 50 });
+    expect(row.resale).toEqual({ missingParts: 1, setValue: 80, partsValue: null, extra: null, extraPct: null });
+    expect(row.pricedParts).toBe(2);
+    expect(row.missingParts).toBe(0);
+  });
+
+  it('keeps resale comparable when every bid exists but an ask is missing', () => {
+    const [row] = service.buildComparisonFromItems([
+      sampleSet(), part('part_a', 0, 50), part('part_b', 20, 50),
+    ]);
+    expect(row.byParts).toEqual({ sell: 20, buy: 100 });
+    expect(row.acquire).toEqual({ missingParts: 1, setCost: 100, partsCost: null, save: null, savePct: null });
+    expect(row.resale).toEqual({ missingParts: 0, setValue: 80, partsValue: 100, extra: 20, extraPct: 25 });
+    expect(row.pricedParts).toBe(2);
+    expect(row.missingParts).toBe(0);
+  });
+
+  it('does not confuse any-direction coverage with complete coverage on either side', () => {
+    const [row] = service.buildComparisonFromItems([
+      sampleSet(), part('part_a', 30, 0), part('part_b', 0, 40),
+    ]);
+    expect(row.pricedParts).toBe(2);
+    expect(row.missingParts).toBe(0);
+    expect(row.byParts).toEqual({ sell: 30, buy: 40 });
+    expect(row.acquire).toEqual({ missingParts: 1, setCost: 100, partsCost: null, save: null, savePct: null });
+    expect(row.resale).toEqual({ missingParts: 1, setValue: 80, partsValue: null, extra: null, extraPct: null });
+  });
+
+  it('does not advertise a 100% saving when no component has a market quote', () => {
+    const unpricedPart = part('part_b', 0, 0);
+    delete unpricedPart.market;
+    const [row] = service.buildComparisonFromItems([sampleSet(), part('part_a', 0, 0), unpricedPart]);
+    expect(row.pricedParts).toBe(0);
+    expect(row.missingParts).toBe(2);
+    expect(row.byParts).toEqual({ sell: 0, buy: 0 });
+    expect(row.acquire).toEqual({ missingParts: 2, setCost: 100, partsCost: null, save: null, savePct: null });
+    expect(row.resale).toEqual({ missingParts: 2, setValue: 80, partsValue: null, extra: null, extraPct: null });
+  });
+
+  it.each([undefined, null, 0, -5, NaN, Infinity, -Infinity, '12', true, {}, []])(
+    'rejects malformed or absent component quotes: %p',
+    (quote) => {
+      const [row] = service.buildComparisonFromItems([
+        sampleSet(), part('part_a', quote as number, quote as number), part('part_b', 20, 10),
+      ]);
+      expect(row.byParts).toEqual({ sell: 20, buy: 10 });
+      expect(row.pricedParts).toBe(1);
+      expect(row.missingParts).toBe(1);
+      expect(row.acquire).toEqual({ missingParts: 1, setCost: 100, partsCost: null, save: null, savePct: null });
+      expect(row.resale).toEqual({ missingParts: 1, setValue: 80, partsValue: null, extra: null, extraPct: null });
+    },
+  );
+
+  it.each([null, 0, -1, 0.5, NaN, Infinity, -Infinity, '2', true])(
+    'requires a positive integer quantity and does not silently default %p to one',
+    (quantity) => {
+      const [row] = service.buildComparisonFromItems([
+        sampleSet([{ url_name: 'part_a', quantity_for_set: quantity }, { url_name: 'part_b' }]),
+        part('part_a', 30, 20), part('part_b', 20, 10),
+      ]);
+      expect(row.byParts).toEqual({ sell: 20, buy: 10 });
+      expect(row.pricedParts).toBe(2); // Legacy quote availability is independent of quantity.
+      expect(row.missingParts).toBe(0);
+      expect(row.acquire).toEqual({ missingParts: 1, setCost: 100, partsCost: null, save: null, savePct: null });
+      expect(row.resale).toEqual({ missingParts: 1, setValue: 80, partsValue: null, extra: null, extraPct: null });
+    },
+  );
+
+  it('preserves known component costs and resale when the set ask is missing', () => {
+    const [row] = service.buildComparisonFromItems([
+      sampleSet(undefined, { sell: 0, buy: 80 }), part('part_a', 30, 50), part('part_b', 20, 50),
+    ]);
+    expect(row.set.sell).toBe(0);
+    expect(row.acquire).toEqual({ missingParts: 0, setCost: null, partsCost: 50, save: null, savePct: null });
+    expect(row.resale).toEqual({ missingParts: 0, setValue: 80, partsValue: 100, extra: 20, extraPct: 25 });
+  });
+
+  it('preserves known component values and acquisition when the set bid is missing', () => {
+    const [row] = service.buildComparisonFromItems([
+      sampleSet(undefined, { sell: 100 }), part('part_a', 30, 50), part('part_b', 20, 50),
+    ]);
+    expect(row.set.buy).toBe(0);
+    expect(row.acquire).toEqual({ missingParts: 0, setCost: 100, partsCost: 50, save: 50, savePct: 50 });
+    expect(row.resale).toEqual({ missingParts: 0, setValue: null, partsValue: 100, extra: null, extraPct: null });
+  });
+
+  it('retains a set with no market block without discarding its known component totals', () => {
+    const set = sampleSet();
+    delete set.market;
+    const [row] = service.buildComparisonFromItems([set, part('part_a', 30, 50), part('part_b', 20, 50)]);
+    expect(row.set).toEqual({ sell: 0, buy: 0, volume: 0 });
+    expect(row.acquire).toEqual({ missingParts: 0, setCost: null, partsCost: 50, save: null, savePct: null });
+    expect(row.resale).toEqual({ missingParts: 0, setValue: null, partsValue: 100, extra: null, extraPct: null });
+  });
+
+  it.each([NaN, Infinity, -Infinity, -1, '50', true])('sanitizes invalid set quotes: %p', (quote) => {
+    const [row] = service.buildComparisonFromItems([
+      sampleSet(undefined, { sell: quote, buy: quote, volume: quote }),
+      part('part_a', 30, 50), part('part_b', 20, 50),
+    ]);
+    expect(row.set).toEqual({ sell: 0, buy: 0, volume: 0 });
+    expect(row.acquire).toEqual({ missingParts: 0, setCost: null, partsCost: 50, save: null, savePct: null });
+    expect(row.resale).toEqual({ missingParts: 0, setValue: null, partsValue: 100, extra: null, extraPct: null });
+  });
+
+  it('marks a quantity multiplication overflow unavailable without corrupting the other side', () => {
+    const [row] = service.buildComparisonFromItems([
+      sampleSet([{ url_name: 'part_a', quantity_for_set: 2 }, { url_name: 'part_b' }]),
+      part('part_a', Number.MAX_VALUE, 20), part('part_b', 10, 40),
+    ]);
+    expect(row.byParts).toEqual({ sell: 10, buy: 80 });
+    expect(row.acquire).toEqual({ missingParts: 0, setCost: 100, partsCost: null, save: null, savePct: null });
+    expect(row.resale).toEqual({ missingParts: 0, setValue: 80, partsValue: 80, extra: 0, extraPct: 0 });
+  });
+
+  it('marks an overflowing sum unavailable while retaining finite legacy subtotals', () => {
+    const [row] = service.buildComparisonFromItems([
+      sampleSet(), part('part_a', Number.MAX_VALUE, Number.MAX_VALUE), part('part_b', Number.MAX_VALUE, Number.MAX_VALUE),
+    ]);
+    expect(row.byParts).toEqual({ sell: Number.MAX_VALUE, buy: Number.MAX_VALUE });
+    expect(row.acquire.partsCost).toBeNull();
+    expect(row.acquire.save).toBeNull();
+    expect(row.acquire.savePct).toBeNull();
+    expect(row.resale.partsValue).toBeNull();
+    expect(row.resale.extra).toBeNull();
+    expect(row.resale.extraPct).toBeNull();
+  });
+
+  it('returns null for an unrepresentable percentage but retains finite known totals and differences', () => {
+    const [row] = service.buildComparisonFromItems([
+      sampleSet([{ url_name: 'part_a' }], { sell: Number.MIN_VALUE, buy: Number.MIN_VALUE }),
+      part('part_a', Number.MAX_VALUE, Number.MAX_VALUE),
+    ]);
+    expect(row.acquire.partsCost).toBe(Number.MAX_VALUE);
+    expect(row.acquire.save).toBe(-Number.MAX_VALUE);
+    expect(row.acquire.savePct).toBeNull();
+    expect(row.resale.partsValue).toBe(Number.MAX_VALUE);
+    expect(row.resale.extra).toBe(Number.MAX_VALUE);
+    expect(row.resale.extraPct).toBeNull();
   });
 });

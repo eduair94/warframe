@@ -24,6 +24,8 @@
         </client-only>
       </header>
 
+      <p class="text-body-2 mb-4">{{ t('comparison.pricingNote') }}</p>
+
       <client-only>
         <template #fallback>
           <SeoFallbackTable
@@ -174,17 +176,17 @@
                     </span>
                   </NuxtLink>
                 </td>
-                <td class="grp-a an-num">{{ fmtPlat(row.acquire.setCost) }}p</td>
-                <td class="grp-a an-num an-strong">{{ fmtPlat(row.acquire.partsCost) }}p</td>
+                <td class="grp-a an-num">{{ fmtQuote(row.acquire.setCost) }}</td>
+                <td class="grp-a an-num an-strong">{{ fmtQuote(row.acquire.partsCost) }}</td>
                 <td class="grp-a">
                   <span class="pill" :class="verdict(row).cls">
                     {{ verdict(row).label }}
                     <b v-if="verdict(row).amount">{{ verdict(row).amount }}</b>
                   </span>
                 </td>
-                <td class="grp-b an-num">{{ fmtPlat(row.resale.setValue) }}p</td>
-                <td class="grp-b an-num">{{ fmtPlat(row.resale.partsValue) }}p</td>
-                <td class="grp-b an-num" :class="deltaCls(row.resale.extra)">{{ signed(row.resale.extra) }}p</td>
+                <td class="grp-b an-num">{{ fmtQuote(row.resale.setValue) }}</td>
+                <td class="grp-b an-num">{{ fmtQuote(row.resale.partsValue) }}</td>
+                <td class="grp-b an-num" :class="deltaCls(row.resale.extra)">{{ fmtDifference(row.resale.extra) }}</td>
                 <td class="an-num">{{ fmtPlat(row.set.volume) }}</td>
                 <td>
                   <v-btn icon size="small" color="#35d6d0" :to="'/set/' + row.url_name" :aria-label="t('comparison.row.viewAria', { name: localItemName(row) })" @click="onSetNav(row, 'row')">
@@ -229,15 +231,15 @@
             <div class="an-card__blocks">
               <div class="an-block">
                 <div class="an-block__lbl">{{ t('comparison.table.costToAcquire') }}</div>
-                <div class="an-block__row"><span>{{ t('comparison.table.set') }}</span><b>{{ fmtPlat(row.acquire.setCost) }}p</b></div>
-                <div class="an-block__row"><span>{{ t('comparison.table.parts') }}</span><b>{{ fmtPlat(row.acquire.partsCost) }}p</b></div>
+                <div class="an-block__row"><span>{{ t('comparison.table.set') }}</span><b>{{ fmtQuote(row.acquire.setCost) }}</b></div>
+                <div class="an-block__row"><span>{{ t('comparison.table.parts') }}</span><b>{{ fmtQuote(row.acquire.partsCost) }}</b></div>
               </div>
               <div class="an-block">
                 <div class="an-block__lbl">{{ t('comparison.table.resaleValue') }}</div>
-                <div class="an-block__row"><span>{{ t('comparison.table.set') }}</span><b>{{ fmtPlat(row.resale.setValue) }}p</b></div>
+                <div class="an-block__row"><span>{{ t('comparison.table.set') }}</span><b>{{ fmtQuote(row.resale.setValue) }}</b></div>
                 <div class="an-block__row">
                   <span>{{ t('comparison.table.parts') }}</span>
-                  <b :class="deltaCls(row.resale.extra)">{{ fmtPlat(row.resale.partsValue) }}p ({{ signed(row.resale.extra) }})</b>
+                  <b :class="deltaCls(row.resale.extra)">{{ fmtQuote(row.resale.partsValue) }}<template v-if="row.resale.extra !== null"> ({{ signed(row.resale.extra) }})</template></b>
                 </div>
               </div>
             </div>
@@ -261,6 +263,7 @@
 
 <script setup lang="ts">
 import { fetchMarketData } from '~/utils/market-fetch'
+import { normalizeComparisonRow, compareKnownDescending, comparisonVerdictKey, comparisonStats } from '~/utils/comparison-pricing'
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useDisplay } from 'vuetify'
 
@@ -274,7 +277,7 @@ const { data, error } = await useAsyncData('sets-comparison', () =>
 )
 // preserve old try/catch -> loadError intent
 const loadError = computed(() => !!error.value)
-const sets = computed<any[]>(() => data.value?.sets || [])
+const sets = computed<any[]>(() => (data.value?.sets || []).map(normalizeComparisonRow))
 
 const { mobile } = useDisplay()
 
@@ -321,7 +324,14 @@ function categoryOf(tags: string[] = []): string {
 function fmtPlat(n: number): string {
   return Math.round(Number(n) || 0).toLocaleString('en-US')
 }
-function fmtPct(n: number): string {
+function fmtQuote(n: number | null): string {
+  return n === null ? t('comparison.unavailable') : fmtPlat(n) + 'p'
+}
+function fmtDifference(n: number | null): string {
+  return n === null ? t('comparison.unavailable') : signed(n) + 'p'
+}
+function fmtPct(n: number | null): string {
+  if (n === null) return '—'
   const v = Number(n) || 0
   return `${v > 0 ? '+' : ''}${v.toFixed(0)}%`
 }
@@ -329,12 +339,16 @@ function signed(n: number): string {
   const v = Math.round(Number(n) || 0)
   return `${v > 0 ? '+' : ''}${v.toLocaleString('en-US')}`
 }
-function deltaCls(n: number): string {
+function deltaCls(n: number | null): string {
+  if (n === null) return 'flat'
   if (n > 0.5) return 'up'
   if (n < -0.5) return 'down'
   return 'flat'
 }
 function verdict(row: any): { label: string; amount: string; cls: string } {
+  if (comparisonVerdictKey(row) === 'unavailable') {
+    return { label: t('comparison.incomplete'), amount: '', cls: 'pill--even' }
+  }
   const save = row.acquire.save
   if (save > 0.5) {
     return {
@@ -367,15 +381,15 @@ const filtered = computed<any[]>(() => {
     if (q && !(r.item_name.toLowerCase().includes(q) || localItemName(r).toLowerCase().includes(q))) return false
     if (category.value !== 'All' && categoryOf(r.tags) !== category.value) return false
     if ((r.set.volume || 0) < minV) return false
-    if (onlyPartsCheaper.value && r.acquire.save <= 0) return false
-    if (onlyResellHigher.value && r.resale.extra <= 0) return false
+    if (onlyPartsCheaper.value && (r.acquire.save === null || r.acquire.save <= 0)) return false
+    if (onlyResellHigher.value && (r.resale.extra === null || r.resale.extra <= 0)) return false
     return true
   })
   const dir = (a: number, b: number) => b - a
   const sorters: Record<string, (a: any, b: any) => number> = {
-    dealPct: (a, b) => dir(a.acquire.savePct, b.acquire.savePct),
-    dealPlat: (a, b) => dir(a.acquire.save, b.acquire.save),
-    resale: (a, b) => dir(a.resale.extra, b.resale.extra),
+    dealPct: (a, b) => compareKnownDescending(a.acquire.savePct, b.acquire.savePct),
+    dealPlat: (a, b) => compareKnownDescending(a.acquire.save, b.acquire.save),
+    resale: (a, b) => compareKnownDescending(a.resale.extra, b.resale.extra),
     volume: (a, b) => dir(a.set.volume || 0, b.set.volume || 0),
     name: (a, b) => a.item_name.localeCompare(b.item_name),
   }
@@ -383,7 +397,7 @@ const filtered = computed<any[]>(() => {
 })
 
 // SSR-only crawlable snapshot for <SeoFallbackTable> (see that component for
-// why): top 150 of the same filtered+sorted list the live table renders, so
+// why): top 40 of the same filtered+sorted list the live table renders, so
 // the fallback matches whatever default state (all sets, sorted by best
 // parts-deal %) the page opens on server-side.
 const fallbackRows = computed(() =>
@@ -392,9 +406,9 @@ const fallbackRows = computed(() =>
     href: '/set/' + row.url_name,
     name: localItemName(row).replace(' Set', ''),
     cells: [
-      fmtPlat(row.acquire.setCost) + 'p',
-      fmtPlat(row.acquire.partsCost) + 'p',
-      fmtPlat(row.resale.partsValue) + 'p',
+      fmtQuote(row.acquire.setCost),
+      fmtQuote(row.acquire.partsCost),
+      fmtQuote(row.resale.partsValue),
       fmtPlat(row.set.volume),
     ],
   })),
@@ -409,26 +423,18 @@ const paged = computed<any[]>(() => {
 const topDeal = computed<any>(() => {
   let best: any = null
   for (const r of sets.value) {
-    if (r.acquire.save > 0 && (!best || r.acquire.save > best.acquire.save)) best = r
+    if (r.acquire.save !== null && r.acquire.save > 0 && (!best || r.acquire.save > best.acquire.save)) best = r
   }
   return best
 })
 const topDealUrl = computed<string>(() => {
   let best: any = null
   for (const r of filtered.value) {
-    if (r.acquire.save > 0 && (!best || r.acquire.savePct > best.acquire.savePct)) best = r
+    if (r.acquire.save !== null && r.acquire.save > 0 && (!best || r.acquire.savePct > best.acquire.savePct)) best = r
   }
   return best ? best.url_name : ''
 })
-const stats = computed<any>(() => {
-  const list = sets.value
-  const partsCheaper = list.filter((r) => r.acquire.save > 0)
-  const setCheaper = list.filter((r) => r.acquire.save < 0)
-  const avgSavePct = partsCheaper.length
-    ? partsCheaper.reduce((s, r) => s + r.acquire.savePct, 0) / partsCheaper.length
-    : 0
-  return { total: list.length, partsCheaper: partsCheaper.length, setCheaper: setCheaper.length, avgSavePct }
-})
+const stats = computed(() => comparisonStats(sets.value))
 
 watch(filtered, () => {
   page.value = 1
@@ -477,10 +483,7 @@ function onPageChange(value: any) {
 // The rendered verdict label is localized, so the analytics dimension uses a
 // stable key derived from the same threshold `verdict()` uses.
 function verdictKey(row: any): string {
-  const save = Number(row?.acquire?.save) || 0
-  if (save > 0.5) return 'buy_parts'
-  if (save < -0.5) return 'buy_set'
-  return 'even'
+  return comparisonVerdictKey(row)
 }
 // /set is an internal route, so the global outbound-click listener never sees
 // these — this is the only signal that the ledger sent someone to a set page.

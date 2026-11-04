@@ -66,7 +66,9 @@ for (const [page, namespace, slots] of pages) {
       const tree = parseHtml(html)
       const expectedSlots = Object.fromEntries(Object.entries(slots).map(([slot, key]) => [slot, i18n.global.t(`${namespace}.hero.${key}`)]))
       assert.deepEqual(elements(tree, 'h1').map(text), [i18n.global.t(`${namespace}.hero.title`, expectedSlots)])
-      assert.deepEqual(elements(tree, 'p').map(text), [messages[locale][namespace].hero.lede])
+      const paragraphs = [messages[locale][namespace].hero.lede]
+      if (page === 'comparison') paragraphs.push(messages[locale][namespace].pricingNote)
+      assert.deepEqual(elements(tree, 'p').map(text), paragraphs)
       assert.ok(html.indexOf('<h1') < html.indexOf('<table'), `${locale}: heading must precede data`)
       assert.equal(elements(elements(tree, 'tbody')[0], 'tr').length, rows.length)
       assert.equal(html.includes('bronco_prime_barrel'), hasData)

@@ -407,34 +407,38 @@ export interface ISetComparisonRow {
   tags: string[];
   /** Number of distinct parts the set is composed of */
   partsCount: number;
-  /** Parts that had usable market prices */
+  /** Legacy count: parts with a valid quote on either market side */
   pricedParts: number;
-  /** Parts with no market price (comparison is a lower bound when > 0) */
+  /** Legacy count: parts without a valid quote on either market side */
   missingParts: number;
-  /** The assembled-set market data */
+  /** Legacy market prices: invalid or missing quotes are represented as zero */
   set: { buy: number; sell: number; volume: number };
-  /** Summed part prices (buy = resale total, sell = acquire total) */
+  /** Legacy finite subtotals; incomplete coverage must not be used for comparisons */
   byParts: { buy: number; sell: number };
   /** Buyer's view: cost to acquire the set vs the parts */
   acquire: {
-    /** Cost to buy the assembled set (set.sell) */
-    setCost: number;
-    /** Cost to buy every part (Σ part.sell × quantity) */
-    partsCost: number;
-    /** setCost - partsCost; positive => buying by parts is cheaper */
-    save: number;
-    /** save as a percentage of setCost */
-    savePct: number;
+    /** Required part references without a positive finite ask or valid quantity */
+    missingParts: number;
+    /** Cost to buy the assembled set; null without a valid ask */
+    setCost: number | null;
+    /** Cost to buy every part; null if coverage is incomplete or the sum overflows */
+    partsCost: number | null;
+    /** setCost - partsCost, only when both are known; positive => parts are cheaper */
+    save: number | null;
+    /** save / setCost × 100; null when unavailable or unrepresentable */
+    savePct: number | null;
   };
   /** Seller's view: resale value of the set vs the parts */
   resale: {
-    /** Resale value of the assembled set (set.buy) */
-    setValue: number;
-    /** Resale value of every part (Σ part.buy × quantity) */
-    partsValue: number;
-    /** partsValue - setValue; positive => selling by parts yields more */
-    extra: number;
-    /** extra as a percentage of setValue */
-    extraPct: number;
+    /** Required part references without a positive finite bid or valid quantity */
+    missingParts: number;
+    /** Resale value of the assembled set; null without a valid bid */
+    setValue: number | null;
+    /** Resale value of every part; null if coverage is incomplete or the sum overflows */
+    partsValue: number | null;
+    /** partsValue - setValue, only when both are known; positive => parts yield more */
+    extra: number | null;
+    /** extra / setValue × 100; null when unavailable or unrepresentable */
+    extraPct: number | null;
   };
 }
