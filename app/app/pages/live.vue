@@ -104,7 +104,7 @@
             </v-btn-toggle>
           </div>
           <div class="an-count">
-            {{ t('live.count.line', { shown: paged.length, total: filtered.length }, filtered.length) }}
+            {{ t('live.count.line', { shown: liveCount, total: filtered.length }, filtered.length) }}
             <span v-if="mode !== 'all'" class="mode-hint">{{ t('live.count.sortedBy', { what: modeHintWhat }) }}</span>
           </div>
         </section>

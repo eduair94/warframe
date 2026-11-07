@@ -1758,3 +1758,19 @@ deployment. Exact release SHA, workflow outcome, sync alignment, public live
 pages/assets, Socket.IO source-status and browser availability will be recorded
 in ignored `tmp/nov07pm-*` evidence and automation memory. A successful deployment
 does not imply that upstream access or price freshness recovered.
+
+The first complete deployment of this iteration (`095860a`, workflow
+42375997753) succeeded at 13:19:58 UTC. Public checks passed in thirteen languages,
+with 1,950 server-rendered rows and correct source-down status. The working
+browser then exposed one remaining counter: its “Streaming N of M” caption used
+visible rows rather than active observations. The caption now uses the same
+fresh-book count as the streaming statistic. New regressions reproduce the
+failure in all thirteen languages and cover inactive, partially fresh, expired
+and recovered books. The final frontend suite passes 125 tests, bringing the
+unchanged backend, frontend and guide total to 1,000. Browser interaction checks
+pass in English desktop and Spanish at 390px: hydration completes, filters work,
+the spinner disappears, the old-price warning remains and no horizontal document
+overflow or console warnings/errors are observed. Screenshot capture is unavailable,
+so these DOM and interaction checks are not a visual pixel review.
+This follow-up is committed before a second full deployment;
+the final revision and its evidence supersede the first release for this iteration.

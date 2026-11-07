@@ -334,11 +334,49 @@ function renderTemplate(source, filename) {
   return context.exports.ssrRender
 }
 const headerRender = renderTemplate(`<div>${header.loc.source}${pulse.loc.source}</div>`, 'live-header.vue')
+const count = elements(tree, 'div').find(node => hasClass(node, 'an-count'))
+assert.ok(count, 'actual live count exists')
+const countRender = renderTemplate(count.loc.source, 'live-count.vue')
 const pageRender = renderTemplate(page.template.content, 'live.vue')
 const fallback = parse(await readFile(new URL('../app/components/SeoFallbackTable.vue', import.meta.url), 'utf8')).descriptor.template
 const fallbackRender = renderTemplate(fallback.content, 'SeoFallbackTable.vue')
 
 for (const locale of Object.keys(messages)) {
+  test(`${locale}: actual Streaming count reports fresh books rather than visible cached rows`, async () => {
+    const i18n = createI18n({ legacy: false, locale, messages })
+    for (const [total, urls] of [[5, ['a', 'old']], [1, ['a']], [0, []]]) {
+      const f = setupFeed()
+      f.ensureLiveConnected()
+      f.receive('connect')
+      const b = setupBooks(f, urls)
+      if (urls.length) b.onUpdate(book('a', 199_000))
+      if (urls.includes('old')) b.onUpdate(book('old', 1000))
+      async function check(shown) {
+        const warnings = []
+        const app = vue.createSSRApp({ ssrRender: countRender, setup: () => ({
+          t: i18n.global.t, liveCount: b.liveCount,
+          paged: urls.map(url_name => ({ url_name })),
+          filtered: Array.from({ length: total }, (_, i) => ({ url_name: `item-${i}` })), mode: 'all',
+        }) })
+        app.use(i18n)
+        app.config.warnHandler = warning => warnings.push(warning)
+        const html = await renderer.renderToString(app)
+        const normalized = value => value.trim().replace(/\s+/g, ' ')
+        assert.equal(normalized(text(parseHtml(html))), normalized(i18n.global.t('live.count.line', { shown, total }, total)))
+        assert.deepEqual(warnings, [])
+      }
+      await check(0)
+      f.receive('source-status', { books: true, orders: false })
+      await check(urls.length ? 1 : 0)
+      b.now.value = 400_000
+      await check(0)
+      if (urls.length) b.onUpdate(book('a', 400_000))
+      await check(urls.length ? 1 : 0)
+      f.receive('disconnect')
+      await check(0)
+    }
+  })
+
   test(`${locale}: actual header and pulse render confirmed source availability`, async () => {
     const f = setupFeed()
     f.ensureLiveConnected()
