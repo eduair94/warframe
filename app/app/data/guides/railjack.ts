@@ -1,17 +1,14 @@
-// Auto-generated Warframe Knowledge Center guide content.
-// Drafted grounded in r/Warframe research (reddit API) + the subreddit wiki FAQ,
-// then adversarially fact-checked for evergreen accuracy. Embedded video ids were
-// verified live via YouTube oEmbed. Edit freely — this is the single source for
-// the /guides/railjack page (rendered by <GuideArticle>).
+// Railjack mechanics reviewed against Digital Extremes sources on 2026-11-05.
+// English source for /guides/railjack; localized snapshots preserve this structure.
 import type { Guide } from './types'
 
 const guide: Guide = {
   "slug": "railjack",
   "eyebrow": "Knowledge Center · Railjack",
   "title": "Railjack Guide",
-  "lede": "Railjack is Warframe's capital-ship sandbox: pilot a warship through open space, board enemy vessels mid-fight, and command a crew that can be entirely AI. Here's how to unlock it, rank your Intrinsics, and run it solo without being the host everyone dreads.",
+  "lede": "Build your Railjack through Rising Tide, choose useful Intrinsics, recruit AI crew and prepare your ship for solo missions. This guide also covers Void Storms, Uranus Proxima and Steel Path rewards.",
   "category": "endgame",
-  "readMins": 11,
+  "readMins": 10,
   "stats": [
     {
       "num": "5",
@@ -30,7 +27,7 @@ const guide: Guide = {
     },
     {
       "num": "2",
-      "label": "Proxima factions (Grineer + Corpus)"
+      "label": "Steel Essence per completed Steel Path Railjack mission"
     }
   ],
   "sections": [
@@ -40,11 +37,11 @@ const guide: Guide = {
       "blocks": [
         {
           "type": "p",
-          "text": "Railjack is Warframe's **space-combat game mode**, built around a large warship — *your* Railjack — that you and up to three squadmates crew together. You fly it through the **Proxima** regions (open zones of space that orbit familiar planets), shredding enemy fighter swarms, deleting heavily-armored **crewships**, and boarding enemy capital ships and bases to finish objectives on foot."
+          "text": "Railjack combines **space combat** with missions aboard enemy ships and bases. Up to four players can share the work: piloting, firing turrets, managing repairs and completing on-foot objectives."
         },
         {
           "type": "p",
-          "text": "The magic is the seamless transitions: one moment you're in the pilot seat weaving through flak, the next you've launched out of an **Archwing slingshot** into an enemy crewship to blow its reactor from the inside, then you're back aboard patching a hull breach with your `Omni` tool. It debuted in the **Empyrean** update and was heavily streamlined in a later Corpus rework, which added the **Command** Intrinsic and the personal **Plexus** mod board — the two systems that make modern solo Railjack genuinely comfortable."
+          "text": "In ordinary Proxima missions, you can move between the ship, Archwing and on-foot objectives. Railjack launched with **Empyrean**; the later Corpus rework introduced **Command** crew and the personal **Plexus**. The Uranus missions described below have their own restrictions."
         },
         {
           "type": "kv",
@@ -63,11 +60,11 @@ const guide: Guide = {
             },
             {
               "k": "Regions",
-              "v": "Grineer Proxima and Corpus Proxima (culminating in the Veil)"
+              "v": "Grineer and Corpus Proxima missions, plus the later Uranus Proxima missions"
             },
             {
               "k": "Prerequisite",
-              "v": "Complete The War Within, then the Rising Tide quest"
+              "v": "Complete The Second Dream, then build your ship through Rising Tide"
             }
           ]
         }
@@ -79,7 +76,7 @@ const guide: Guide = {
       "blocks": [
         {
           "type": "p",
-          "text": "Railjack sat in a rough spot for years, but the rework turned it into a real reward engine. It's not just a novelty flight sim — several progression systems route straight through it."
+          "text": "Choose a Railjack mission for a specific goal: story progress, equipment, relic opening or a later challenge. Different mission types offer different rewards."
         },
         {
           "type": "table",
@@ -91,19 +88,19 @@ const guide: Guide = {
             "rows": [
               [
                 "Affinity / leveling",
-                "Missions pour shared affinity across your whole loadout, so it's a solid way to rank weapons and frames while doing something other than Hydron."
+                "Earn Affinity through combat and objectives to progress your Intrinsics while playing."
               ],
               [
                 "Resources",
-                "Titanium, Asterite, and Grineer/Corpus Proxima drops feed Railjack upgrades and a surprising number of later Foundry recipes."
+                "Collect resources and equipment wreckage for Railjack repairs and upgrades."
               ],
               [
                 "Sisters of Parvos",
-                "The Corpus lich hunt is Railjack-gated — you confront and board the Sister's capital ship to finish her. See the Kuva & Liches guide."
+                "The final confrontation with a Sister takes place in Railjack after the Requiem sequence. See the Kuva & Liches guide."
               ],
               [
                 "Void Storms",
-                "The Railjack flavor of Void Fissures: crack relics and bank extra Void Traces while you fly. Free prime parts on top of the mission."
+                "Open an equipped relic by collecting enough Reactant and completing the mission. Relic rewards are separate from the Void Storm mission reward."
               ],
               [
                 "Quests & story",
@@ -111,15 +108,15 @@ const guide: Guide = {
               ],
               [
                 "Mastery & variety",
-                "Intrinsics, components, and a combat sandbox that plays like nothing else in the game."
+                "Rank the Plexus for Mastery and develop your Railjack skills through Intrinsics."
               ]
             ],
-            "note": "Void Storm rewards stack with the mission's own loot — check the crack-or-sell math on your drops before you dissolve them."
+            "note": "Compare relic values before opening them, and check any earned Prime parts before trading them or exchanging them for Ducats."
           }
         },
         {
           "type": "p",
-          "text": "Two of those are worth planning around: **Void Storms** turn Railjack into a relic farm — run the numbers on your haul with [Relic value: crack or sell](/relics-value) and [which relics pay best per run](/relic-farming). And once you're cracking primes, [the ducat value tool](/ducats) and [set-vs-parts calculator](/comparison) tell you what to keep for Baro and what to flip."
+          "text": "For **Void Storms**, compare an unopened relic with its possible rewards using [Relic value: crack or sell](/relics-value) and [relic value per opening](/relic-farming). After opening it, use [the ducat value tool](/ducats) and [the set-vs-parts calculator](/comparison) to compare your options. Prices are estimates, not guaranteed sale proceeds."
         }
       ]
     },
@@ -129,27 +126,27 @@ const guide: Guide = {
       "blocks": [
         {
           "type": "p",
-          "text": "There are two ways into the mode. You can **crew on someone else's ship** immediately — just join a public Railjack squad, and you'll earn Intrinsics and rewards without owning anything. But to build *your own* Railjack, you run the **Rising Tide** quest."
+          "text": "After completing **The Archwing**, you can join another player’s Railjack crew without owning a ship. To build your own Railjack, follow **Rising Tide** after **The Second Dream**."
         },
         {
           "type": "steps",
           "ordered": true,
           "steps": [
             {
-              "h": "Finish The War Within",
-              "p": "Rising Tide is gated behind the cinematic quest The War Within (which follows The Second Dream in the story). If you're not there yet, push through the main story quests first — see the Quests guide for the order."
+              "h": "Finish The Second Dream",
+              "p": "Rising Tide becomes available after The Second Dream. Craft the Railjack Cephalon blueprint delivered to your Inbox, then follow the quest to a Dry Dock."
             },
             {
               "h": "Get access to a Dry Dock",
-              "p": "Rising Tide is built at a Dry Dock. You can't build the ship from your orbiter — but a Dry Dock isn't clan-only: build one in a Clan Dojo, or use the public Dry Dock found in several of the larger Relays (such as Saturn and Pluto)."
+              "p": "Use a Clan Dojo Dry Dock or a public one at Kronia Relay on Saturn or Orcus Relay on Pluto. You do not need a clan to build your Railjack."
             },
             {
-              "h": "Gather and build the six wreckage components",
-              "p": "The quest sends you around the star chart to gather resources, then build the ship's six salvaged sections one at a time at the Dry Dock."
+              "h": "Recover and repair the ship sections",
+              "p": "Defend the scanning beacons, deal with interference, and return each recovered section to the Dry Dock. Deposit the resources Cephalon Cy requests to repair it."
             },
             {
-              "h": "Wait out the build timers",
-              "p": "Each component and the final assembly carry real-time Foundry-style timers that add up to multiple days. Start the builds as early as you can and let them cook while you play other content."
+              "h": "Complete the repairs and power the ship",
+              "p": "Rising Tide now uses short repair timers instead of the old multi-day wait. After assembly, follow Cy’s final mission to Lua and install the power source."
             },
             {
               "h": "Launch from the Dry Dock",
@@ -159,11 +156,11 @@ const guide: Guide = {
         },
         {
           "type": "warn",
-          "text": "**No clan? You still have options.** Several of the larger **Relays** (Saturn and Pluto among them) have a public **Dry Dock** you can use with no clan at all. Prefer your own? Founding a one-person clan is free from any Relay's clan console — build the Dry Dock in your dojo (that also unlocks the clan-only Sigma component research), or borrow a friend's / alliance dojo. Don't let \"I'm not in a clan\" stop you."
+          "text": "**No clan required.** The public Dry Docks at Saturn’s Kronia Relay and Pluto’s Orcus Relay provide an alternative to a Clan Dojo. Use whichever you can access."
         },
         {
           "type": "info",
-          "text": "New to the mode and unsure it's for you? Several **story missions and public squads hand you a pre-built loaner Railjack**, so you can try flying and gunning before you ever finish Rising Tide. It's a great way to decide whether to invest the build time."
+          "text": "**Trying Railjack before building it:** join another player’s crew after The Archwing. The special ships used in Uranus Proxima are a later option unlocked through Jade Shadows: Constellations."
         }
       ]
     },
@@ -173,7 +170,7 @@ const guide: Guide = {
       "blocks": [
         {
           "type": "p",
-          "text": "**Intrinsics** are Railjack's personal skill trees — five schools, each ranked **1 to 10**. You earn Intrinsic points automatically from mission affinity, then spend them where you want. Higher ranks are transformative, not incremental: they unlock new maneuvers, faster repairs, and — critically — your AI crew."
+          "text": "**Intrinsics** are five personal Railjack skill schools with **10 ranks** each. Earn points from mission Affinity, then spend them to unlock movement, combat, repair and crew abilities."
         },
         {
           "type": "table",
@@ -186,8 +183,8 @@ const guide: Guide = {
             "rows": [
               [
                 "Tactical",
-                "The tactical map, teleporting to crew/objectives, and Omni recall back to the ship",
-                "Snap instantly back to the pilot seat or to a hull breach instead of running the length of the ship"
+                "Tactical map, fast travel aboard the ship, and Omni recall",
+                "Tactical 3 unlocks onboard fast travel; Tactical 4 lets the Omni recall you from outside"
               ],
               [
                 "Piloting",
@@ -196,25 +193,25 @@ const guide: Guide = {
               ],
               [
                 "Gunnery",
-                "Turret handling — heat management, aim zoom, an aim-snap onto the lead indicator, and the Archwing slingshot",
-                "Kill fighters faster, land Forward Artillery shots on crewships, and slingshot aboard them to board"
+                "Turret targeting, heat management and the Archwing Slingshot",
+                "Improve turret handling and unlock the Slingshot at Gunnery 3 for missions that allow Archwing"
               ],
               [
                 "Engineering",
-                "Ship hull health, faster Omni repairs, forge output, and hazard suppression",
+                "Omni repairs, hazard suppression, and Forge supplies",
                 "Survive fires and breaches when nobody's babysitting the hull"
               ],
               [
                 "Command",
                 "Hire and direct up to 3 AI crew, plus the On Call Crew summon",
-                "The single most important school for solo play — your crew flies and fights for you"
+                "Useful early for solo play: recruit crew to share ship duties"
               ]
             ]
           }
         },
         {
           "type": "tip",
-          "text": "**Solo leveling order:** push **Command** early for crew, then a few ranks of **Gunnery** and **Piloting** to make the ship feel good, and **Engineering** for survivability. Tactical's Omni recall is a huge quality-of-life pickup once you're boarding regularly. You don't need everything at 10 to be effective — the first few ranks of each carry the most weight."
+          "text": "**Suggested solo priorities:** start with **Command** for crew, then pick **Gunnery**, **Piloting** and **Engineering** perks that address the problems you encounter. **Tactical 4** is useful when you regularly leave the ship. This is a starting plan, not a required leveling order."
         }
       ]
     },
@@ -224,7 +221,7 @@ const guide: Guide = {
       "blocks": [
         {
           "type": "p",
-          "text": "If you take one thing from this page: **rank Command and hire AI crew.** A well-built crew turns a four-person ship into a one-person ship. They pilot, they gun, they repair breaches and fires, and they defend against boarders — all while you focus on whatever you enjoy."
+          "text": "AI crew can pilot, use turrets, repair the ship and fight boarders. Assign roles for the mission, equip suitable weapons and monitor their condition while you handle the remaining objectives."
         },
         {
           "type": "steps",
@@ -232,25 +229,29 @@ const guide: Guide = {
           "steps": [
             {
               "h": "Unlock crew slots with Command",
-              "p": "The first rank of Command lets you hire and field a crew member, with more slots and better competence as you climb — the second slot opens a couple of ranks in and the third a couple after that, up to three active AI crew."
+              "p": "Command ranks 1, 3 and 5 unlock your first, second and third active crew slots. AI crew fills places not occupied by other players."
             },
             {
               "h": "Recruit from Ticker in Fortuna",
-              "p": "Ticker (down in Fortuna, on Venus) sells rotating crew members for resources and Solaris debt-bonds. Each recruit has competency points spread across combat, gunnery, piloting, engineering, repair, and endurance."
+              "p": "Visit Ticker in Fortuna and check the current recruitment offers. Recruits have five competencies: Piloting, Gunnery, Repair, Combat and Endurance."
             },
             {
               "h": "Assign roles that fit their stats",
-              "p": "Every crew member takes a role — Pilot, Gunner, Defender, or Engineer. Match the role to their high stats: a Gunner wants Gunnery + Combat, an Engineer wants Repair + Endurance."
+              "p": "Choose Pilot, Gunner, Defender or Engineer. Prioritize Gunnery for turret duty, Repair for engineering, and Combat for fighting boarders; Endurance helps a crewmate survive."
             },
             {
               "h": "Build the classic solo trio",
-              "p": "Two Gunners to shred the fighter swarm and one Engineer to keep the ship alive is the reliable default. Swap one Gunner for a Pilot if you'd rather leave the seat and board."
+              "p": "For a starting solo setup, try two Gunners and one Engineer while you pilot. Reassign a role through the Tactical Menu when you need someone else at the helm."
             }
           ]
         },
         {
           "type": "tip",
-          "text": "An upper rank of Command unlocks the **On Call Crew** gear item, which lets you summon one of your crew into *regular* (non-Railjack) missions as a temporary ally. A strong reason to keep ranking Command even after your ship runs itself."
+          "text": "**Command 9** unlocks On Call Crew for temporary support in eligible non-Railjack missions. **Command 10** unlocks Elite Crew recruitment."
+        },
+        {
+          "type": "info",
+          "text": "After unlocking Pontis Tower, its secret vendor offers **Vena**, **Ryoku**, **Latrox Une** and **Jarka Lar** for your personal crew. Check the Talent currency required by each offer. Recruiting them requires **Command 10**."
         }
       ]
     },
@@ -260,21 +261,21 @@ const guide: Guide = {
       "blocks": [
         {
           "type": "p",
-          "text": "Your ship's power comes from two places: the **components** bolted onto the hull (Reactor, Shield, Engines, and armaments) and the **Plexus** — your personal mod board that you carry onto *any* Railjack, including loaners. Components come from three houses — **Zetki** (highest raw stats, but with drawbacks like turret overheat), **Vidar** (balanced, strong bonus perks), and **Lavan** (durable, great handling) — in ascending **MK I–III** tiers."
+          "text": "Separate ship equipment from your **Plexus**. The ship has a Shield Array, Engines, Plating, a Reactor and armaments; the Plexus is your personal mod setup for ordinary Railjack missions. Compare each component’s stats and traits instead of assuming one manufacturer is best at everything."
         },
         {
           "type": "list",
           "items": [
-            "**Reactor first.** It sets your Plexus capacity — how many and how strong your mods can be — and scales your Battle abilities. A high-capacity reactor is the single biggest upgrade you can chase.",
-            "**Turrets (armaments) next.** Grab MK III guns from a house you like; Zetki hits hardest but overheats, while Vidar and Lavan trade some damage for handling and uptime.",
-            "**Forward Artillery is your crewship deleter.** The nose cannon (`Tunguska`) one-shots crewships that would otherwise take forever to chew down — slot the **Forward Artillery** mod so it keeps one-shotting the tankier crewships in the Veil.",
-            "**Plexus loadout.** Max turret damage (e.g. Hyperstrike), add a survivability mod for hull health, and slot one **Battle ability that clears fighter swarms** — the crowd-clumping Tether and the homing-missile Seeker Volley are the long-standing favorites.",
-            "**Engines and Shields are lower priority.** Handling and shield recharge are nice, but they come after a solid reactor, guns, and Forward Artillery."
+            "**Reactor:** choose Battle ability Strength, Range or Duration bonuses for the abilities you use. The ship’s Reactor does not set Plexus mod capacity.",
+            "**Armaments:** compare damage, heat and handling, then work toward suitable MK III equipment. Test the guns before committing resources to upgrades.",
+            "**Forward Artillery:** use the Tunguska cannon against crewships. Keep Dome Charges available and adjust your damage setup if a target survives; a single-shot kill is not guaranteed.",
+            "**Plating and Plexus:** Plating supplies hull health and armor. Use your Plexus for compatible Integrated, Battle and Tactical mods; choose abilities you can use reliably.",
+            "**Shields and Engines:** review their stats and unique traits alongside the rest of the ship. Update 43 changed several component traits, so old house rankings may no longer fit your build."
           ]
         },
         {
           "type": "warn",
-          "text": "**Don't be the host everyone dreads.** The most common complaint about pub Railjack is people who never built or modded their ship, then host on high-level nodes. If you're going to host, spend an hour on your Plexus and Forward Artillery first — a modded ship is night and day, and your squad will notice."
+          "text": "**Before hosting a harder node,** check your components, Plexus, crew roles and Forge supplies. Try the setup on a normal mission before taking it into Steel Path."
         }
       ]
     },
@@ -284,7 +285,7 @@ const guide: Guide = {
       "blocks": [
         {
           "type": "p",
-          "text": "With a crew aboard and Forward Artillery ready, a solo Railjack mission has a clean rhythm. The loop is: thin the swarm, delete the crewships, do the objective, extract."
+          "text": "For a typical Skirmish, deal with fighters and crewships, complete the marked objectives and keep the Railjack operational. Other mission types have different requirements, so follow the current objective list."
         },
         {
           "type": "steps",
@@ -292,29 +293,29 @@ const guide: Guide = {
           "steps": [
             {
               "h": "Let the swarm come to your turrets",
-              "p": "Fighters cluster when they chase you. Let your Gunners and turrets work, and drop a Battle ability like Tether to bunch and delete a pack at once."
+              "p": "Use your turrets and chosen Battle abilities to control nearby fighters. Keep moving when needed and check that your Gunners are assigned to their intended roles."
             },
             {
-              "h": "Delete crewships with Forward Artillery",
-              "p": "Line up the nose cannon and one-shot each crewship. Alternatively, board it via Archwing or the slingshot and blow its reactor from inside — either removes the biggest threat to your hull."
+              "h": "Deal with crewships",
+              "p": "Use Forward Artillery and keep Dome Charges available. Where Archwing boarding is allowed, entering a crewship and sabotaging its reactor is another option. Do not assume every artillery shot will destroy its target."
             },
             {
               "h": "Board the objective on foot",
-              "p": "Most missions require you to enter an enemy capital ship or base — destroy radiators, hack a console, or defend a point. This is normal Warframe combat; bring a frame and weapons you trust."
+              "p": "Follow the marked objectives, which may take you into a capital ship or base. Bring a Warframe and weapons suited to the listed mission type, rather than preparing only for ship combat."
             },
             {
               "h": "Patch and recall as needed",
-              "p": "If the ship takes a breach or fire while you're away, your Engineer usually handles it — but Tactical's Omni recall snaps you home instantly if things get spicy."
+              "p": "Watch the ship’s condition even with an Engineer assigned. Tactical 4 unlocks Omni recall from outside the ship; allow time for the return rather than treating it as instant."
             },
             {
               "h": "Finish and extract",
-              "p": "Once the objective completes, mop up any stragglers and leave. Void Storm runs also crack your equipped relic here — pick your reward before you go."
+              "p": "Complete the required objectives and confirm the mission rewards before starting another run. In a Void Storm, your relic reward requires an equipped relic and enough Reactant."
             }
           ]
         },
         {
           "type": "warn",
-          "text": "**Forward Artillery is clunky solo — by design.** The pilot can't fire the nose cannon; you have to leave the seat, and the ship stops maneuvering while you aim it. This is the number-one thing veterans wish new solo pilots knew. **Assign a crew member as Pilot** so the ship keeps dodging while you fire, or clear the immediate area first so you're not sitting still under flak."
+          "text": "**Forward Artillery uses a separate station from the helm.** You can operate it solo by leaving the pilot seat. Choose a safe moment, or reassign a crew member to Pilot; crew movement is not a guarantee of safety or a clear shot."
         }
       ]
     },
@@ -324,11 +325,11 @@ const guide: Guide = {
       "blocks": [
         {
           "type": "p",
-          "text": "Once your ship runs itself, Railjack becomes a tool rather than a chore. Use **Void Storms** as a relic farm and price your haul with [crack-or-sell](/relics-value) and [relic farming per run](/relic-farming). Hunt **Sisters of Parvos** through the [Kuva & Liches guide](/guides/kuva). And when you want to see exactly where a Proxima drop or resource comes from, the [3D star chart drop map](/star-chart-3d) plots it for you."
+          "text": "Use **Void Storms** to open relics, then compare values with [crack-or-sell](/relics-value) and [relic value per opening](/relic-farming). Follow the [Kuva & Liches guide](/guides/kuva) for adversary finales, or explore the rewards covered by the [3D star chart drop map](/star-chart-3d)."
         },
         {
           "type": "p",
-          "text": "For the rest of the endgame web — [Steel Path](/guides/steel-path), [Duviri](/guides/duviri) (which has its own Intrinsics to compare), [Arcanes](/guides/arcanes), and [Archon Shards](/guides/archon-shards) — the sibling guides pick up where this one leaves off. And if you'd rather watch a build come together, the [creators directory](/creators) and the videos below are the best next click."
+          "text": "Continue with [Steel Path](/guides/steel-path), [Duviri](/guides/duviri), [Arcanes](/guides/arcanes) or [Archon Shards](/guides/archon-shards). The [creators directory](/creators) and videos below offer demonstrations, but older videos may show obsolete Avionics, construction timers or pre-Update 43 rules; use the current mechanics in this guide when they differ."
         },
         {
           "type": "links",
@@ -349,7 +350,7 @@ const guide: Guide = {
               "label": "3D drop-location map",
               "href": "/star-chart-3d",
               "icon": "map-marker-path",
-              "note": "Find any Proxima drop"
+              "note": "Explore mapped Proxima rewards"
             },
             {
               "label": "Community tools directory",
@@ -358,6 +359,14 @@ const guide: Guide = {
               "note": "Wiki, Overframe & more"
             }
           ]
+        },
+        {
+          "type": "info",
+          "text": "**Uranus Proxima:** complete **Jade Shadows: Constellations** to unlock **Scoria’s Angel**, **The Kuva Wytch** and **Pontis Tower**. Squads use Vena or Ryoku’s equipped ships. To use your own ship, set matchmaking to **Solo** before entering Pontis Tower, choose your personal Railjack at the dock console, then begin the mission aboard it. Starting directly from Navigation still selects the special ship. **Archwing is disabled** in these two missions."
+        },
+        {
+          "type": "info",
+          "text": "**Steel Path Railjack:** unlock the base Steel Path and complete a Railjack node on normal difficulty to access its Steel Path version. Enemies gain **50 levels**; the usual Steel Path Mod Drop Chance bonus does not apply. Completed missions award **2 Steel Essence**, replacing the original Eximus drops. Completing the required Railjack Steel Path nodes also awards a trophy and **50 Steel Essence**; Free Flight, adversary finales and the two Uranus missions are excluded from that trophy requirement."
         }
       ]
     }
@@ -365,35 +374,35 @@ const guide: Guide = {
   "faqs": [
     {
       "q": "How do I unlock Railjack in Warframe?",
-      "a": "Build your own by completing the **Rising Tide** quest, which requires you to have finished **The War Within** (the cinematic quest after The Second Dream) and to have access to a **Dry Dock**. Dry Docks aren't clan-only — several of the larger **Relays** (such as Saturn and Pluto) have a public one, or you can found a free solo clan and build your own. If you'd rather not build a ship at all, join a public Railjack squad and crew on someone else's ship immediately — you'll still earn Intrinsics and rewards."
+      "a": "Complete **The Second Dream**, craft the Railjack Cephalon from your Inbox blueprint, and follow **Rising Tide** at a **Dry Dock**. Public Dry Docks are available at Kronia Relay on Saturn and Orcus Relay on Pluto. You can also join another player’s crew after completing **The Archwing**, without owning a Railjack."
     },
     {
       "q": "Can you play Railjack solo?",
-      "a": "Yes, and it's genuinely comfortable once you rank the **Command** Intrinsic and hire AI crew. Three competent crew members will pilot, gun, and repair the ship for you while you focus on flying or boarding. It's the difference between Railjack feeling like a four-person job and a one-person job."
+      "a": "Yes. **Command** unlocks up to three AI crew slots, letting crew share piloting, gunnery, repairs and defense. Assign their roles and handle the remaining objectives yourself; a crew does not make every mission automatic."
     },
     {
       "q": "Do I need a clan to get a Railjack?",
-      "a": "Not necessarily. You build and service the Railjack at a **Dry Dock**, and while you can't do it from your orbiter, Dry Docks aren't clan-only: several of the larger **Relays** (such as Saturn and Pluto) have a public Dry Dock any solo player can use. If you'd rather have your own, founding a one-person clan is free from any Relay's clan console and lets you build a Dry Dock in your dojo — which also unlocks the clan-only Sigma component research."
+      "a": "No. Use the public **Dry Dock** at Kronia Relay on Saturn or Orcus Relay on Pluto to build and configure your Railjack. A Clan Dojo Dry Dock is another option."
     },
     {
       "q": "Which Railjack Intrinsic should I level first?",
-      "a": "**Command**, for AI crew — it does the most to make the mode playable solo. After that, a few ranks of **Gunnery** and **Piloting** to make the ship feel responsive, and **Engineering** for survivability. You don't need any school maxed to 10 to be effective; the early ranks carry the most value."
+      "a": "For a solo starting plan, prioritize **Command** to recruit crew. Then choose **Gunnery**, **Piloting** and **Engineering** perks to address your needs. **Tactical 4** unlocks Omni recall. There is no single required leveling order."
     },
     {
       "q": "How do you get AI crew members in Railjack?",
-      "a": "Rank the **Command** Intrinsic to unlock crew slots, then recruit crew from **Ticker** in Fortuna (on Venus) using resources and Solaris debt-bonds. Assign each one a role — Pilot, Gunner, Defender, or Engineer — that matches their competency stats. A common solo setup is two Gunners and one Engineer."
+      "a": "Unlock crew slots at **Command 1, 3 and 5**, then visit **Ticker** in Fortuna to recruit. Assign Pilot, Gunner, Defender or Engineer roles to suit their competencies. For solo play, two Gunners and one Engineer is one starting option while you pilot."
     },
     {
       "q": "How do you kill crewships in Railjack?",
-      "a": "Use **Forward Artillery** — the ship's nose cannon (Tunguska), which one-shots crewships; slot the **Forward Artillery** mod to keep punching through the tankier crewships in the Veil. Alternatively, board the crewship via Archwing or the slingshot and destroy its reactor from the inside. Note that the pilot can't fire the artillery solo, so assign a crew member as Pilot or park the ship to aim."
+      "a": "Use the **Forward Artillery** station and its Dome Charges, or board and sabotage the reactor where Archwing access is allowed. You can fire artillery solo after leaving the helm. Damage and the target’s defenses matter, so do not rely on a universal one-shot kill."
     },
     {
       "q": "Is Railjack worth doing?",
-      "a": "For most players, yes. It's a strong affinity and resource source, it's the **only** way to hunt Sisters of Parvos, and its **Void Storm** missions crack relics for extra prime parts and Void Traces. Several quests also require it. Once your ship and crew are built, it becomes a fast, mostly automated way to farm."
+      "a": "It is useful for story progression, ship upgrades, **Void Storm** relic opening and adversary finales. Later, **Uranus Proxima** adds its own missions and rewards, while completed **Steel Path Railjack** missions award **2 Steel Essence**. Choose the activity that matches what you need."
     },
     {
       "q": "What are the best Railjack components to use?",
-      "a": "Aim for **MK III** components and prioritize a **high-capacity Reactor**, since it determines how strong your Plexus mods can be. For turrets, **Zetki** hits hardest (but overheats), while **Vidar** and **Lavan** trade damage for handling and durability — pick to taste. Exact meta rolls shift with patches, so check a recent build video or the [wiki](https://wiki.warframe.com/) before grinding for a specific god-roll."
+      "a": "Compare **MK III** components by their actual stats and traits. A **Reactor** boosts Battle ability stats; it does not increase Plexus capacity. **Plating** supplies hull health and armor. Update 43 changed several component traits, so check the current values instead of relying on an old manufacturer ranking."
     }
   ],
   "videos": [
@@ -420,20 +429,52 @@ const guide: Guide = {
   ],
   "sources": [
     {
-      "label": "Current state of Railjack: fast guide (r/Warframe)",
-      "href": "https://reddit.com/r/Warframe/comments/ea2af8/current_state_of_railjack_fast_guide_for_people/"
+      "label": "The Second Dream — official quest guide",
+      "href": "https://www.warframe.com/en/guides/quests/the-second-dream"
     },
     {
-      "label": "9 Days: Railjack — the Journey, the Meta, a FAQ (r/Warframe)",
-      "href": "https://reddit.com/r/Warframe/comments/eed3eu/9_days_railjack_the_journey_the_meta_a_faq/"
+      "label": "Rising Tide — official quest guide",
+      "href": "https://www.warframe.com/en/guides/quests/rising-tide"
     },
     {
-      "label": "Watch a guide before you host your Railjack (r/Warframe)",
-      "href": "https://reddit.com/r/Warframe/comments/1u94eva/i_dont_usually_like_to_flame_people_in_warframe/"
+      "label": "Update 29.10: Corpus Proxima & The New Railjack",
+      "href": "https://forums.warframe.com/topic/1253565-update-29100-corpus-proxima-the-new-railjack/"
     },
     {
-      "label": "Warframe Wiki",
-      "href": "https://wiki.warframe.com/"
+      "label": "Update 30.9: Rising Tide crafting-time reduction",
+      "href": "https://www.warframe.com/en/patch-notes/pc/30-9-0"
+    },
+    {
+      "label": "Warframe: Empyrean — joining a crew",
+      "href": "https://www.warframe.com/en/news/warframe-empyrean-2"
+    },
+    {
+      "label": "Update 30: Call of the Tempestarii and Void Storms",
+      "href": "https://www.warframe.com/en/patch-notes/pc/30-0-0"
+    },
+    {
+      "label": "Update 30.5: Sisters of Parvos and Elite Crew",
+      "href": "https://www.warframe.com/en/patch-notes/pc/30-5-0"
+    },
+    {
+      "label": "Update 43: Jade Shadows: Constellations",
+      "href": "https://www.warframe.com/en/patch-notes/pc/43-0-0"
+    },
+    {
+      "label": "Hotfix 43.0.6: Steel Path Railjack rewards",
+      "href": "https://www.warframe.com/en/patch-notes/pc/43-0-6"
+    },
+    {
+      "label": "Railjack — official support guide",
+      "href": "https://support.warframe.com/hc/en-us/articles/38820115630093-Railjack"
+    },
+    {
+      "label": "Hotfix 30.9.4: Rising Tide timer correction",
+      "href": "https://www.warframe.com/en/patch-notes/pc/30-9-4"
+    },
+    {
+      "label": "Update44: Iceblade of Narin — Railjack fixes",
+      "href": "https://www.warframe.com/en/patch-notes/pc/44-0-0"
     }
   ],
   "related": [
@@ -441,7 +482,7 @@ const guide: Guide = {
       "label": "Kuva & Liches",
       "to": "/guides/kuva",
       "icon": "skull",
-      "note": "Sisters of Parvos are hunted through Railjack"
+      "note": "Finish adversary hunts through Railjack"
     },
     {
       "label": "Relics & Void Fissures",
@@ -453,7 +494,7 @@ const guide: Guide = {
       "label": "Steel Path",
       "to": "/guides/steel-path",
       "icon": "chevron-triple-up",
-      "note": "The other endgame grind"
+      "note": "Railjack also has Steel Path missions"
     },
     {
       "label": "Duviri",
@@ -474,7 +515,7 @@ const guide: Guide = {
       "note": "Wiki, Overframe & DE tools"
     }
   ],
-  "updated": "2026-07-18"
+  "updated": "2026-11-05"
 }
 
 export default guide

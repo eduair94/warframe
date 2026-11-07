@@ -2,9 +2,9 @@
   "slug": "railjack",
   "eyebrow": "知识中心 · Railjack",
   "title": "Railjack 指南",
-  "lede": "Railjack 是 Warframe 的主力舰沙盒：在开放太空中驾驶战舰，在战斗中登入敌舰，并指挥完全由 AI 组成的船员。以下是如何解锁它、升级你的 Intrinsics，以及如何在不成为人人害怕的主机的情况下单人游玩。",
+  "lede": "通过 Rising Tide 建造 Railjack，选择实用的 Intrinsics，招募 AI 船员，并为单人任务准备飞船。本指南也介绍 Void Storms、Uranus Proxima 和 Steel Path 奖励。",
   "category": "endgame",
-  "readMins": 11,
+  "readMins": 10,
   "stats": [
     {
       "num": "5",
@@ -23,7 +23,7 @@
     },
     {
       "num": "2",
-      "label": "Proxima 阵营 (Grineer + Corpus)"
+      "label": "每次完成 Steel Path Railjack 任务获得的 Steel Essence"
     }
   ],
   "sections": [
@@ -33,11 +33,11 @@
       "blocks": [
         {
           "type": "p",
-          "text": "Railjack 是 Warframe 的**太空战斗游戏模式**，围绕着一艘大型战舰——*你的* Railjack——展开，你和最多三名队友可以共同驾驶它。你将驾驶它穿梭于 **Proxima** 区域（环绕熟悉行星的开放太空区域），撕碎敌方战机群，消灭重装甲的 **crewships**，并登入敌方主力舰和基地以徒步完成任务目标。"
+          "text": "Railjack 将**太空战斗**与敌舰、基地内的任务结合起来。最多四名玩家可以分担驾驶、炮塔射击、维修和徒步任务目标。"
         },
         {
           "type": "p",
-          "text": "其魅力在于无缝切换：前一秒你还在驾驶座上穿梭于防空炮火中，下一秒你就通过 **Archwing slingshot** 弹射到敌方 crewship 中，从内部炸毁其 Reactor，然后你又回到了自己的船上，用你的 `Omni` 工具修补船体破损。它在 **Empyrean** 更新中首次亮相，并在后来的 Corpus 重做中进行了大幅精简，新增了 **Command** Intrinsic 和个人 **Plexus** 配卡槽——这两个系统让现代单人 Railjack 变得真正舒适。"
+          "text": "在常规 Proxima 任务中，你可以在飞船、Archwing 和徒步目标之间切换。Railjack 随 **Empyrean** 推出；后来的 Corpus 重做加入了 **Command** 船员和个人 **Plexus**。下文介绍的 Uranus 任务另有限制。"
         },
         {
           "type": "kv",
@@ -56,11 +56,11 @@
             },
             {
               "k": "区域",
-              "v": "Grineer Proxima 和 Corpus Proxima（最终到达 Veil）"
+              "v": "Grineer 和 Corpus 的 Proxima 任务，以及后期解锁的 Uranus Proxima 任务"
             },
             {
               "k": "前置条件",
-              "v": "完成 The War Within，然后完成 Rising Tide 任务"
+              "v": "完成 The Second Dream，再通过 Rising Tide 建造自己的飞船"
             }
           ]
         }
@@ -72,7 +72,7 @@
       "blocks": [
         {
           "type": "p",
-          "text": "Railjack 曾多年处于尴尬境地，但重做将其变成了一个真正的奖励引擎。它不仅仅是一个新奇的飞行模拟游戏——好几个进度系统都直接与它挂钩。"
+          "text": "根据具体目标选择 Railjack 任务：推进剧情、获取装备、开启遗物或迎接后期挑战。不同任务类型提供不同奖励。"
         },
         {
           "type": "table",
@@ -84,19 +84,19 @@
             "rows": [
               [
                 "经验值 / 升级",
-                "任务会为你的整个装备槽分摊共享经验值，因此在做 Hydron 以外的事情时，这是升级 weapons 和 frames 的可靠方法。"
+                "通过战斗和完成目标获取经验，在游玩过程中提升 Intrinsics。"
               ],
               [
                 "资源",
-                "Titanium、Asterite 以及 Grineer/Corpus Proxima 的掉落物可用于 Railjack 升级以及惊人数量的后期 Foundry 蓝图制作。"
+                "收集资源和装备残骸，用于修复和升级 Railjack。"
               ],
               [
                 "Sisters of Parvos",
-                "Corpus lich 猎杀受 Railjack 限制——你需要面对并登入 Sister 的主力舰来解决她。请参阅 Kuva & Liches 指南。"
+                "完成安魂序列后，与帕尔沃斯姐妹的最终对决将在 Railjack 任务中进行。详见《赤毒与玄骸指南》。"
               ],
               [
                 "Void Storms",
-                "Railjack 版本的 Void Fissures：在飞行时开启 relics 并赚取额外的 Void Traces。在任务奖励之外还能免费获得 prime 部件。"
+                "收集足够的反应物并完成任务，即可开启所装备的遗物。遗物奖励与 Void Storm 任务奖励分开结算。"
               ],
               [
                 "系列任务与故事",
@@ -104,15 +104,15 @@
               ],
               [
                 "段位经验与多样性",
-                "Intrinsics、组件，以及一个玩法独一无二的战斗沙盒。"
+                "提升 Plexus 等级以获得段位经验，并通过 Intrinsics 培养 Railjack 技能。"
               ]
             ],
-            "note": "Void Storm 的奖励与任务自身的掉落物叠加——在分解掉落物之前，先算算它们是开启还是出售更划算。"
+            "note": "开启遗物前先比较价值；获得 Prime 部件后，也先评估再交易或兑换杜卡德金币。"
           }
         },
         {
           "type": "p",
-          "text": "其中两项值得提前规划：**Void Storms** 将 Railjack 变成了 relic 刷取点——使用 [Relic 价值：开启还是出售](/relics-value) 和 [单次运行收益最高的 relic](/relic-farming) 来计算你的收获。一旦你开始开启 primes，[ducat 价值工具](/ducats) 和 [成套 vs 单件计算器](/comparison) 会告诉你哪些该留给 Baro，哪些该出手。"
+          "text": "进行 **Void Storms** 时，可使用[遗物价值：开启还是出售](/relics-value)和[每次开启的遗物价值](/relic-farming)，比较未开启遗物与其可能奖励的价值。开启后，使用[杜卡德价值工具](/ducats)和[套装与散件计算器](/comparison)比较选项。价格只是估算，并不保证实际出售所得。"
         }
       ]
     },
@@ -122,27 +122,27 @@
       "blocks": [
         {
           "type": "p",
-          "text": "进入该模式有两种方法。你可以立即**在别人的船上当船员**——只需加入公开的 Railjack 小队，无需拥有任何东西即可赚取 Intrinsics 和奖励。但要建造*你自己的* Railjack，你需要运行 **Rising Tide** 任务。"
+          "text": "完成 **The Archwing** 后，即使没有自己的飞船，也能加入其他玩家的 Railjack 船员队伍。要建造自己的 Railjack，请在完成 **The Second Dream** 后推进 **Rising Tide**。"
         },
         {
           "type": "steps",
           "ordered": true,
           "steps": [
             {
-              "h": "完成 The War Within",
-              "p": "Rising Tide 锁在电影级系列任务 The War Within（剧情上紧接 The Second Dream）之后。如果你还没到那里，请先推进主线剧情任务——请参阅系列任务指南以了解顺序。"
+              "h": "完成 The Second Dream",
+              "p": "完成 The Second Dream 后即可开启 Rising Tide。使用收件箱中的蓝图制作 Railjack 中枢，再按任务指引前往干船坞。"
             },
             {
               "h": "获得 Dry Dock 的使用权",
-              "p": "Rising Tide 是在 Dry Dock 建造的。你无法在你的 orbiter 中建造这艘船——但 Dry Dock 并非氏族专属：在 Clan Dojo 中建造一个，或者使用在几个较大 Relays（例如 Saturn 和 Pluto）中找到的公共 Dry Dock。"
+              "p": "可以使用氏族道场的干船坞，或土星 Kronia 中继站、冥王星 Orcus 中继站的公共干船坞。建造 Railjack 不需要加入氏族。"
             },
             {
-              "h": "收集并建造六个残骸组件",
-              "p": "该任务会让你在星图中收集资源，然后在 Dry Dock 逐个建造战舰的六个回收部分。"
+              "h": "回收并修复飞船各部分",
+              "p": "守住扫描信标、处理干扰，并将回收的各部分送回干船坞。提交中枢 Cy 要求的资源即可进行修复。"
             },
             {
-              "h": "等待建造计时器结束",
-              "p": "每个组件和最终组装都有类似于 Foundry 的实时计时器，累计需要数天时间。尽早开始建造，并在游玩其他内容时让它们慢慢制作。"
+              "h": "完成修复并为飞船供能",
+              "p": "Rising Tide 的修复等待时间已大幅缩短，不再像过去那样需要数天。组装完成后，按 Cy 的指引前往 Lua 完成最后的任务，并装上能源装置。"
             },
             {
               "h": "从 Dry Dock 起航",
@@ -152,11 +152,11 @@
         },
         {
           "type": "warn",
-          "text": "**没有氏族？你仍然有选择。** 几个较大的 **Relays**（其中包括 Saturn 和 Pluto）拥有公共 **Dry Dock**，你完全可以在没有氏族的情况下使用。想要拥有自己的氏族？在任何 Relay 的氏族控制台都可以免费创建单人氏族——在你的 dojo 中建造 Dry Dock（这也会解锁氏族专属的 Sigma 组件研究），或者借用朋友/联盟的 dojo。不要让“我不在氏族中”阻止你。"
+          "text": "**不需要氏族。**除了氏族道场，你也可以使用土星 Kronia 中继站或冥王星 Orcus 中继站的公共干船坞。选择你能进入的地点即可。"
         },
         {
           "type": "info",
-          "text": "刚接触这个模式，不确定它是否适合你？一些**故事任务和公开小队会为你提供一艘预建的租借 Railjack**，这样你就可以在完成 Rising Tide 之前尝试驾驶和射击。这是决定是否投入时间建造的好方法。"
+          "text": "**先体验再建造 Railjack：**完成 The Archwing 后即可加入其他玩家的船员队伍。Uranus Proxima 的特殊飞船属于后期内容，需要通过 Jade Shadows: Constellations 解锁。"
         }
       ]
     },
@@ -166,7 +166,7 @@
       "blocks": [
         {
           "type": "p",
-          "text": "**Intrinsics** 是 Railjack 的个人技能树——五个学派，每个学派的等级为 **1 到 10**。你从任务经验值中自动获得 Intrinsic 点数，然后将其花在你想去的地方。更高的等级是颠覆性的，而不是渐进式的：它们可以解锁新的机动动作、更快的修复，以及——至关重要的——你的 AI 船员。"
+          "text": "**Intrinsics** 是 Railjack 的五个个人技能分支，每个分支有 **10 级**。通过任务经验获取点数，再用于解锁移动、战斗、修复和船员能力。"
         },
         {
           "type": "table",
@@ -179,8 +179,8 @@
             "rows": [
               [
                 "Tactical",
-                "战术地图、传送到船员/目标，以及使用 Omni 传送回船",
-                "立即瞬间传送回驾驶座或船体破损处，而不用跑遍整艘船"
+                "战术地图、舰内快速移动，以及 Omni 召回",
+                "Tactical 3 解锁舰内快速移动；Tactical 4 允许你在舰外使用 Omni 返回飞船"
               ],
               [
                 "Piloting",
@@ -189,25 +189,25 @@
               ],
               [
                 "Gunnery",
-                "炮塔操作——热量管理、瞄准缩放、自动锁定前置引导指示器，以及 Archwing slingshot",
-                "更快地击杀战机，将 Forward Artillery 命中 crewships，并通过弹射器登入它们"
+                "炮塔瞄准、热量管理与 Archwing 弹射器",
+                "改善炮塔操控；Gunnery 3 解锁弹射器，可用于允许 Archwing 的任务"
               ],
               [
                 "Engineering",
-                "战舰船体生命值、更快的 Omni 修复、锻造厂产出和灾害抑制",
+                "Omni 修复、险情处理，以及锻造舱补给",
                 "在没人照看船体时，在火灾和破损中幸存下来"
               ],
               [
                 "Command",
                 "雇用并指挥最多 3 名 AI 船员，以及召唤 On Call Crew",
-                "单人游玩中唯一最重要的学派——你的船员会为你驾驶和战斗"
+                "单人前期很实用：招募船员分担舰上工作"
               ]
             ]
           }
         },
         {
           "type": "tip",
-          "text": "**单人升级顺序：** 尽早提升 **Command** 以获得船员，然后提升几级 **Gunnery** 和 **Piloting** 以让战舰手感更好，以及提升 **Engineering** 以提高生存能力。一旦你经常登入敌舰，Tactical 的 Omni 传送将是一个极大地提升生活质量的选择。你不需要把所有东西都升到 10 级才能发挥作用——每个学派的前几级分量最重。"
+          "text": "**单人升级建议：**先提升 **Command** 招募船员，再根据遇到的问题选择 **Gunnery**、**Piloting** 和 **Engineering** 的能力。经常离舰时，**Tactical 4** 很实用。这只是入门思路，并非必须遵循的升级顺序。"
         }
       ]
     },
@@ -217,7 +217,7 @@
       "blocks": [
         {
           "type": "p",
-          "text": "如果你从这个页面中只记住一件事：**升级 Command 并雇用 AI 船员。** 配合默契的船员可以将一艘需要四人操作的战舰变成一人战舰。他们负责驾驶、开炮、修复破损和火灾，并防御登入的敌人——而你只需专注于你喜欢的任何事情。"
+          "text": "AI 船员可以驾驶、操作炮塔、修复飞船并对抗登舰敌人。根据任务分配岗位、装备合适的武器，并在自己处理其他目标时关注船员状况。"
         },
         {
           "type": "steps",
@@ -225,25 +225,29 @@
           "steps": [
             {
               "h": "通过 Command 解锁船员槽位",
-              "p": "Command 的第一级允许你雇用并部署一名船员，随着等级的提升，你将获得更多槽位和更好的能力——第二个槽位在几级后开启，第三个槽位在此之后几级开启，最多可拥有三名活跃的 AI 船员。"
+              "p": "Command 达到 1、3、5 级时，分别解锁第一个、第二个和第三个出战船员槽位。AI 船员会填补未被其他玩家占用的位置。"
             },
             {
               "h": "从 Fortuna 的 Ticker 处招募",
-              "p": "Ticker（位于 Venus 的 Fortuna 下方）出售轮换的船员，需要使用资源和 Solaris 债务债券购买。每个新兵的能力点数分布在战斗、炮击、驾驶、工程、修复和耐力上。"
+              "p": "前往福尔图娜拜访 Ticker，查看当前可招募的船员。船员有五项能力：Piloting（驾驶）、Gunnery（炮术）、Repair（修复）、Combat（战斗）和 Endurance（耐久）。"
             },
             {
               "h": "分配符合其属性的角色",
-              "p": "每个船员都扮演一个角色——Pilot、Gunner、Defender 或 Engineer。将角色与他们的高属性相匹配：Gunner 需要 Gunnery + Combat，Engineer 需要 Repair + Endurance。"
+              "p": "可分配驾驶员、炮手、防御员或工程师岗位。炮塔岗位优先看 Gunnery，工程岗位看 Repair，迎击登舰敌人看 Combat；Endurance 有助于提高船员的生存能力。"
             },
             {
               "h": "组建经典的单人三人组",
-              "p": "两名 Gunners 负责撕碎战机群，一名 Engineer 负责维持战舰存活，这是可靠的默认配置。如果你宁愿离开座位去登入敌舰，可以将一名 Gunner 换成 Pilot。"
+              "p": "单人入门时，可以尝试自己驾驶、配两名炮手和一名工程师。需要其他人掌舵时，通过战术菜单重新分配岗位。"
             }
           ]
         },
         {
           "type": "tip",
-          "text": "Command 的高级别会解锁 **On Call Crew** 携带道具，这允许你将其中一名船员召唤到*常规*（非 Railjack）任务中作为临时盟友。这是即使在你的战舰能够自主运转后，也要继续升级 Command 的强大理由。"
+          "text": "**Command 9** 解锁待命船员，可在符合条件的非 Railjack 任务中提供临时支援。**Command 10** 解锁精英船员招募。"
+        },
+        {
+          "type": "info",
+          "text": "解锁 Pontis Tower 后，可以通过其中的秘密商人招募 **Vena**、**Ryoku**、**Latrox Une** 和 **Jarka Lar** 加入自己的船员队伍。请确认每项招募所需的 Talent 类型。招募他们需要 **Command 10**。"
         }
       ]
     },
@@ -253,21 +257,21 @@
       "blocks": [
         {
           "type": "p",
-          "text": "你的战舰实力来自两个地方：安装在船体上的**组件**（Reactor、Shield、Engines 和武器）以及 **Plexus**——你携带到*任何* Railjack（包括租借的战舰）上的个人配卡板。组件来自三个学派——**Zetki**（原始属性最高，但有炮塔过热等缺点）、**Vidar**（平衡、强大的加成属性）和 **Lavan**（耐用、极佳的操控性）——等级按 **MK I–III** 递增。"
+          "text": "请区分舰载装备与个人 **Plexus** 配装。飞船装有护盾阵列、引擎、装甲板、反应堆和武器；Plexus 则是你在常规 Railjack 任务中使用的个人 MOD 配装。比较各部件的属性与特性，不要认为某个厂商在所有方面都最好。"
         },
         {
           "type": "list",
           "items": [
-            "**Reactor 优先。** 它决定了你的 Plexus 容量——你可以装备多少以及多强的 mods——并按比例提升你的战斗技能。高容量的 Reactor 是你可以追求的唯一最大升级。",
-            "**接下来是炮塔（武器）。** 从你喜欢的学派中获取 MK III 枪炮；Zetki 伤害最高但容易过热，而 Vidar 和 Lavan 则牺牲了一些伤害来换取操控性和持续输出时间。",
-            "**Forward Artillery 是你的 crewship 斩杀器。** 舰首炮（`Tunguska`）可以一击摧毁那些原本需要花很长时间才能啃下来的 crewships——装备 **Forward Artillery** mod，这样它就能继续一击摧毁 Veil 中更肉的 crewships。",
-            "**Plexus 配置。** 最大化炮塔伤害（例如 Hyperstrike），添加一个用于船体生命值的生存能力 mod，并装备一个**用于清除战机群的战斗技能**——用于聚集敌人的 Tether 和寻导弹 Seeker Volley 是长期以来的首选。",
-            "**Engines 和 Shields 的优先级较低。** 操控性和护盾充能固然不错，但它们排在可靠的 Reactor、枪炮和 Forward Artillery 之后。"
+            "**反应堆：**根据所用战斗技能，选择强度、范围或持续时间加成。舰载反应堆不决定 Plexus 的 MOD 容量。",
+            "**武器：**比较伤害、热量和操控手感，再逐步获取合适的 MK III 装备。投入资源升级前，先试用武器。",
+            "**前方重炮：**使用 Tunguska 炮攻击运兵船。备好穹顶炮弹；若目标存活，就调整伤害配装，不能保证每次都一炮击毁。",
+            "**装甲板与 Plexus：**装甲板提供船体生命值和护甲。Plexus 用于安装兼容的综合、战斗和战术 MOD；选择自己能稳定运用的技能。",
+            "**护盾与引擎：**将其属性和独特特性与其他舰载装备一起评估。更新 43 调整了多个部件的特性，旧的厂商排名可能已不适合你的配装。"
           ]
         },
         {
           "type": "warn",
-          "text": "**不要成为人人害怕的主机。** 关于公开 Railjack 最常见的抱怨是，有些人从未建造或配置过他们的战舰，却在高等级节点上主持游戏。如果你打算当主机，先花一个小时在你的 Plexus 和 Forward Artillery 上——配置过的战舰与未配置的战舰有着天壤之别，你的小队会注意到的。"
+          "text": "**担任较难节点的主机前，**检查部件、Plexus、船员岗位和锻造舱补给。先在普通任务中测试，再进入 Steel Path。"
         }
       ]
     },
@@ -277,7 +281,7 @@
       "blocks": [
         {
           "type": "p",
-          "text": "有了船员在船且 Forward Artillery 准备就绪，单人 Railjack 任务就有了清晰的节奏。循环是：削减战机群、消灭 crewships、完成目标、撤离。"
+          "text": "在典型的遭遇战中，你需要处理战机和运兵船、完成标记目标，并保持 Railjack 正常运作。其他任务类型要求不同，请按当前目标列表行动。"
         },
         {
           "type": "steps",
@@ -285,29 +289,29 @@
           "steps": [
             {
               "h": "让战机群靠近你的炮塔",
-              "p": "战机在追逐你时会聚集在一起。让你的 Gunners 和炮塔发挥作用，并使用像 Tether 这样的战斗技能来一次性聚集并消灭一群敌人。"
+              "p": "使用炮塔和所选战斗技能控制附近的战机。必要时保持移动，并确认炮手已被分配到预定岗位。"
             },
             {
-              "h": "使用 Forward Artillery 消灭 crewships",
-              "p": "对准舰首炮，一击摧毁每艘 crewship。或者，通过 Archwing 或弹射器登入它，并从内部炸毁其 Reactor——无论哪种方式都能消除对你船体的最大威胁。"
+              "h": "处理运兵船",
+              "p": "使用前方重炮，并备好穹顶炮弹。在允许 Archwing 登舰的任务中，也可以进入运兵船破坏其反应堆。不要假定每次炮击都能摧毁目标。"
             },
             {
               "h": "徒步登入目标",
-              "p": "大多数任务需要你进入敌方主力舰或基地——摧毁散热器、黑入控制台或防守一个点。这是正常的 Warframe 战斗；带上你信任的 frame 和武器。"
+              "p": "按标记目标行动，任务可能要求你进入主力舰或基地。携带适合所列任务类型的 Warframe 和武器，不要只为舰艇战斗做准备。"
             },
             {
               "h": "根据需要进行修补和传送",
-              "p": "如果你离开时战舰发生破损或火灾，你的 Engineer 通常会处理——但如果情况变得棘手，Tactical 的 Omni 传送会让你瞬间回到船上。"
+              "p": "即使安排了工程师，也要关注飞船状况。Tactical 4 解锁舰外 Omni 召回；返回需要时间，不要把它当成瞬间传送。"
             },
             {
               "h": "完成并撤离",
-              "p": "一旦目标完成，清理所有掉队者并离开。Void Storm 任务也会在这里开启你装备的 relic——在离开前选择你的奖励。"
+              "p": "完成所有必需目标，并在开始下一轮前确认任务奖励。在 Void Storm 中，获得遗物奖励需要装备遗物并收集足够的反应物。"
             }
           ]
         },
         {
           "type": "warn",
-          "text": "**Forward Artillery 在单人游玩时很笨重——这是设计使然。** Pilot 无法发射舰首炮；你必须离开座位，而且在你瞄准时战舰会停止机动。这是老玩家最希望新单人 Pilot 知道的第一件事。**指派一名船员作为 Pilot**，以便战舰在你开火时继续闪避，或者先清理附近区域，这样你就不会在防空炮火下静止不动。"
+          "text": "**前方重炮的操作台与驾驶席分开。**单人玩家离开驾驶席后也能操作它。选择安全的时机，或将一名船员改派为驾驶员；船员驾驶并不能保证安全或良好的射击角度。"
         }
       ]
     },
@@ -317,11 +321,11 @@
       "blocks": [
         {
           "type": "p",
-          "text": "一旦你的战舰能够自主运转，Railjack 就会变成一个工具，而不是一项苦差事。使用 **Void Storms** 作为 relic 刷取点，并使用 [开启还是出售](/relics-value) 和 [单次运行 relic 刷取](/relic-farming) 来评估你的收获。通过 [Kuva & Liches 指南](/guides/kuva) 猎杀 **Sisters of Parvos**。当你想要确切了解 Proxima 掉落物或资源的来源时，[3D 星图掉落图](/star-chart-3d) 会为你绘制出来。"
+          "text": "通过 **Void Storms** 开启遗物，再用[开启还是出售](/relics-value)和[每次开启的遗物价值](/relic-farming)比较价值。宿敌最终对决可参考[赤毒与玄骸指南](/guides/kuva)，也可在[3D 星图掉落地图](/star-chart-3d)中查找已收录的奖励。"
         },
         {
           "type": "p",
-          "text": "对于终局游戏网络的其余部分——[Steel Path](/guides/steel-path)、[Duviri](/guides/duviri)（它有自己的 Intrinsics 系统可供对比）、[Arcanes](/guides/arcanes) 和 [Archon Shards](/guides/archon-shards)——兄弟指南将在本篇结束的地方继续。如果你更想看配装是如何组合在一起的，[创作者名录](/creators) 和下面的视频是最佳的下一步点击选择。"
+          "text": "接着可阅读 [Steel Path](/guides/steel-path)、[Duviri](/guides/duviri)、[赋能](/guides/arcanes)或[执刑官源力石](/guides/archon-shards)指南。[创作者目录](/creators)和下方视频提供演示，但旧视频可能仍使用已淘汰的航电系统、旧建造计时或更新 43 之前的规则；如有差异，请以本指南中的当前机制为准。"
         },
         {
           "type": "links",
@@ -342,7 +346,7 @@
               "label": "3D 掉落位置地图",
               "href": "/star-chart-3d",
               "icon": "map-marker-path",
-              "note": "寻找任何 Proxima 掉落物"
+              "note": "查看地图已收录的 Proxima 奖励"
             },
             {
               "label": "社区工具名录",
@@ -351,6 +355,14 @@
               "note": "Wiki、Overframe 及更多"
             }
           ]
+        },
+        {
+          "type": "info",
+          "text": "**Uranus Proxima：**完成 **Jade Shadows: Constellations**，即可解锁 **Scoria’s Angel**、**The Kuva Wytch** 和 **Pontis Tower**。组队时使用 Vena 或 Ryoku 配置好的飞船。若想使用自己的飞船，须在进入 Pontis Tower 前将匹配模式设为**单人**，在船坞控制台选择个人 Railjack，再登舰开始任务。直接从导航界面开始，仍会使用特殊飞船。这两个任务中**无法使用 Archwing**。"
+        },
+        {
+          "type": "info",
+          "text": "**Steel Path Railjack：**先解锁基础 Steel Path，再以普通难度完成某个 Railjack 节点，即可进入该节点的 Steel Path 版本。敌人等级提高 **50 级**，但不享有通常的 Steel Path MOD 掉落几率加成。完成任务奖励 **2 个 Steel Essence**，取代原先的卓越者掉落。完成指定的 Railjack Steel Path 节点还可获得奖杯和 **50 个 Steel Essence**；自由飞行、宿敌最终对决及两个 Uranus 任务不计入该奖杯要求。"
         }
       ]
     }
@@ -358,35 +370,35 @@
   "faqs": [
     {
       "q": "如何在 Warframe 中解锁 Railjack？",
-      "a": "通过完成 **Rising Tide** 任务来建造你自己的战舰，这需要你完成 **The War Within**（紧接 The Second Dream 之后的电影级任务）并获得 **Dry Dock** 的使用权。Dry Docks 并非氏族专属——几个较大的 **Relays**（例如 Saturn 和 Pluto）拥有公共的 Dry Dock，或者你可以创建一个免费的单人氏族并建造自己的 Dry Dock。如果你根本不想建造战舰，请立即加入公开的 Railjack 小队并在别人的船上当船员——你仍然可以赚取 Intrinsics 和奖励。"
+      "a": "完成 **The Second Dream**，使用收件箱中的蓝图制作 Railjack 中枢，再到**干船坞**推进 **Rising Tide**。土星 Kronia 中继站和冥王星 Orcus 中继站设有公共干船坞。完成 **The Archwing** 后，即使没有自己的 Railjack，也能加入其他玩家的船员队伍。"
     },
     {
       "q": "你能单人游玩 Railjack 吗？",
-      "a": "可以，一旦你升级了 **Command** Intrinsic 并雇用了 AI 船员，它就会变得真正舒适。三名能力出众的船员将为你驾驶、开炮和修复战舰，而你只需专注于飞行或登入敌舰。这就是让 Railjack 感觉像是一个四人工作还是单人工作的区别。"
+      "a": "可以。**Command** 最多解锁三个 AI 船员槽位，让船员分担驾驶、炮术、修复和防御工作。分配好岗位后，其他目标仍需自己处理；有船员并不意味着每个任务都能自动完成。"
     },
     {
       "q": "我需要氏族才能获得 Railjack 吗？",
-      "a": "不一定。你在 **Dry Dock** 建造和维护 Railjack，虽然你无法在你的 orbiter 中进行，但 Dry Docks 并非氏族专属：几个较大的 **Relays**（例如 Saturn 和 Pluto）拥有任何单人玩家都可以使用的公共 Dry Dock。如果你想拥有自己的 Dry Dock，在任何 Relay 的氏族控制台都可以免费创建单人氏族，并允许你在 dojo 中建造 Dry Dock——这也会解锁氏族专属的 Sigma 组件研究。"
+      "a": "不需要。你可以使用土星 Kronia 中继站或冥王星 Orcus 中继站的公共**干船坞**建造和配置 Railjack。氏族道场的干船坞也是一种选择。"
     },
     {
       "q": "我应该先升级哪个 Railjack Intrinsic？",
-      "a": "**Command**，为了 AI 船员——它对使该模式可单人游玩起到了最大的作用。在此之后，提升几级 **Gunnery** 和 **Piloting** 以使战舰感觉更灵敏，以及提升 **Engineering** 以提高生存能力。你不需要将任何学派升满到 10 级才能发挥作用；早期等级的价值最高。"
+      "a": "单人入门可优先提升 **Command** 来招募船员，再按需要选择 **Gunnery**、**Piloting** 和 **Engineering** 能力。**Tactical 4** 解锁 Omni 召回。没有唯一必须遵循的升级顺序。"
     },
     {
       "q": "在 Railjack 中如何获得 AI 船员？",
-      "a": "升级 **Command** Intrinsic 以解锁船员槽位，然后使用资源 and Solaris 债务债券从 Fortuna（位于 Venus）的 **Ticker** 处招募船员。为每个人分配一个与其能力属性相匹配的角色——Pilot、Gunner、Defender 或 Engineer。常见的单人配置是两名 Gunners 和一名 Engineer。"
+      "a": "在 **Command 1、3、5 级**解锁船员槽位后，前往福尔图娜找 **Ticker** 招募。根据船员能力，分配驾驶员、炮手、防御员或工程师岗位。单人时可以先尝试自己驾驶，搭配两名炮手和一名工程师。"
     },
     {
       "q": "在 Railjack 中如何消灭 crewships？",
-      "a": "使用 **Forward Artillery**——战舰的舰首炮（Tunguska），它可以一击摧毁 crewships；装备 **Forward Artillery** mod 以继续穿透 Veil 中更肉的 crewships。或者，通过 Archwing 或弹射器登入 crewship 并从内部摧毁其 Reactor。请注意，单人游玩时 Pilot 无法发射重炮，因此请指派一名船员作为 Pilot，或者停下战舰进行瞄准。"
+      "a": "使用**前方重炮**操作台和穹顶炮弹；在允许 Archwing 的任务中，也可以登舰破坏反应堆。单人时离开驾驶席后即可操作重炮。伤害和目标防御都会影响结果，不能指望所有目标都一炮击毁。"
     },
     {
       "q": "Railjack 值得做吗？",
-      "a": "对大多数玩家来说，是的。它是一个强大的经验值和资源来源，是猎杀 **Sisters of Parvos** 的**唯一**方法，其 **Void Storm** 任务可以开启 relics 以获得额外的 prime 部件和 Void Traces。一些系列任务也需要它。一旦你的战舰和船员建造完毕，它就会变成一种快速、大部分自动化的 farm 方式。"
+      "a": "Railjack 可用于推进剧情、升级飞船、在 **Void Storm** 中开启遗物，以及完成宿敌最终对决。后期的 **Uranus Proxima** 还提供专属任务与奖励；每次完成 **Steel Path Railjack** 任务可获得 **2 个 Steel Essence**。按自己的需求选择活动。"
     },
     {
       "q": "使用哪些 Railjack 组件最好？",
-      "a": "瞄准 **MK III** 组件并优先考虑**高容量的 Reactor**，因为它决定了你的 Plexus mods 可以有多强。对于炮塔，**Zetki** 伤害最高（但会过热），而 **Vidar** 和 **Lavan** 则牺牲了伤害来换取操控性和耐用性——根据个人喜好选择。确切的主流属性会随着补丁而变化，因此在为特定的神级属性进行刷取之前，请先查看最近的配装视频或 [wiki](https://wiki.warframe.com/)。"
+      "a": "按实际属性和特性比较 **MK III** 部件。**反应堆**提升战斗技能属性，不增加 Plexus 容量。**装甲板**提供船体生命值和护甲。更新 43 调整了多个部件的特性，因此应查看当前数值，不要只依赖旧的厂商排名。"
     }
   ],
   "videos": [
@@ -413,20 +425,52 @@
   ],
   "sources": [
     {
-      "label": "Current state of Railjack: fast guide (r/Warframe)",
-      "href": "https://reddit.com/r/Warframe/comments/ea2af8/current_state_of_railjack_fast_guide_for_people/"
+      "label": "The Second Dream — official quest guide",
+      "href": "https://www.warframe.com/en/guides/quests/the-second-dream"
     },
     {
-      "label": "9 Days: Railjack — the Journey, the Meta, a FAQ (r/Warframe)",
-      "href": "https://reddit.com/r/Warframe/comments/eed3eu/9_days_railjack_the_journey_the_meta_a_faq/"
+      "label": "Rising Tide — official quest guide",
+      "href": "https://www.warframe.com/en/guides/quests/rising-tide"
     },
     {
-      "label": "Watch a guide before you host your Railjack (r/Warframe)",
-      "href": "https://reddit.com/r/Warframe/comments/1u94eva/i_dont_usually_like_to_flame_people_in_warframe/"
+      "label": "Update 29.10: Corpus Proxima & The New Railjack",
+      "href": "https://forums.warframe.com/topic/1253565-update-29100-corpus-proxima-the-new-railjack/"
     },
     {
-      "label": "Warframe Wiki",
-      "href": "https://wiki.warframe.com/"
+      "label": "Update 30.9: Rising Tide crafting-time reduction",
+      "href": "https://www.warframe.com/en/patch-notes/pc/30-9-0"
+    },
+    {
+      "label": "Warframe: Empyrean — joining a crew",
+      "href": "https://www.warframe.com/en/news/warframe-empyrean-2"
+    },
+    {
+      "label": "Update 30: Call of the Tempestarii and Void Storms",
+      "href": "https://www.warframe.com/en/patch-notes/pc/30-0-0"
+    },
+    {
+      "label": "Update 30.5: Sisters of Parvos and Elite Crew",
+      "href": "https://www.warframe.com/en/patch-notes/pc/30-5-0"
+    },
+    {
+      "label": "Update 43: Jade Shadows: Constellations",
+      "href": "https://www.warframe.com/en/patch-notes/pc/43-0-0"
+    },
+    {
+      "label": "Hotfix 43.0.6: Steel Path Railjack rewards",
+      "href": "https://www.warframe.com/en/patch-notes/pc/43-0-6"
+    },
+    {
+      "label": "Railjack — official support guide",
+      "href": "https://support.warframe.com/hc/en-us/articles/38820115630093-Railjack"
+    },
+    {
+      "label": "Hotfix 30.9.4: Rising Tide timer correction",
+      "href": "https://www.warframe.com/en/patch-notes/pc/30-9-4"
+    },
+    {
+      "label": "Update44: Iceblade of Narin — Railjack fixes",
+      "href": "https://www.warframe.com/en/patch-notes/pc/44-0-0"
     }
   ],
   "related": [
@@ -434,7 +478,7 @@
       "label": "Kuva & Liches",
       "to": "/guides/kuva",
       "icon": "skull",
-      "note": "Sisters of Parvos 是通过 Railjack 猎杀的"
+      "note": "通过 Railjack 完成宿敌狩猎的最终对决"
     },
     {
       "label": "Relics & Void Fissures",
@@ -446,7 +490,7 @@
       "label": "Steel Path",
       "to": "/guides/steel-path",
       "icon": "chevron-triple-up",
-      "note": "另一个终局游戏刷取内容"
+      "note": "Railjack 也有 Steel Path 任务"
     },
     {
       "label": "Duviri",
@@ -467,5 +511,5 @@
       "note": "Wiki、Overframe 和 DE 工具"
     }
   ],
-  "updated": "2026-07-18"
+  "updated": "2026-11-05"
 }

@@ -1569,3 +1569,110 @@ deployment. The workflow outcome, exact deployed SHA, public page/assets checks,
 browser results and unresolved upstream health status will be stored in ignored
 release evidence and automation memory, without leaving a later documentation
 commit undeployed.
+
+## November 5–7, 2026 — Railjack source review and accurate Prime Vault metadata
+
+This iteration began November 5 and resumed November 7 before committing or
+deploying. The previous production revision remained `a1c6839`; no duplicate
+deployment or schedule was started. The existing daily 10:00 Montevideo heartbeat
+remains active. The hypothesis is that reliable answers to Railjack unlock,
+crew, equipment and reward questions, connected to relevant calculators, improve
+search usefulness and retention. Traffic uplift has not been measured.
+
+### Content and search changes
+
+The complete English Railjack guide was read against thirteen primary references.
+Sixty-six existing prose fields were corrected and three current-mechanics blocks
+added. The guide now distinguishes The Second Dream/Rising Tide ownership from
+The Archwing access to other players' crews; removes obsolete multi-day repair
+timers; separates Reactor ability bonuses, Plating health/armor and Plexus mods;
+corrects crew competencies and Command thresholds; and removes guaranteed
+one-shot kills or automated-farming promises. Uranus Proxima instructions explain
+Solo selection before entering Pontis Tower and the Archwing restriction. Steel
+Path guidance includes +50 enemy levels, two Steel Essence per completion, the
+separate fifty-Essence completion reward and its node exclusions. Recruitment
+copy tells readers to check the Talent currency required by each offer rather
+than assuming the currencies are interchangeable.
+
+The guide retains its eight section anchors, eight FAQs and four creator videos.
+All four video oEmbed endpoints were available on November 5; their contents were
+not fully watched, and an adjacent note explains that old videos can show obsolete
+mechanics. Twelve primary source links replace the old Reddit/general-wiki
+footer. The complete text review date is November 5, preserved through the
+November 7 release; unrelated guide dates are unchanged. Reading time is ten
+minutes in both the article and registry. Existing internal tools and guide
+destinations remain intact, with more precise link descriptions and price
+estimates explicitly separated from guaranteed sale proceeds.
+
+The 69 changed/additional fields are synchronized in all twelve translated
+snapshots: 828 localized fields, with 78 other translatable fields preserved in
+each language. Independent reviews cover every translated field. A first
+translation-provider request for the separate metadata change returned HTTP429
+and stopped immediately: no retries or provider switching. This iteration uses
+a bounded local editorial exception to the repository's generator workflow,
+with transparent provenance, independent semantic review and structural
+validation. No successful provider translations are claimed, and generated
+`app/i18n/locales/*.json` files were not edited manually.
+
+The centralized `/vaulted-worth` search metadata now offers prices and buying
+signals, calls the Prime Resurgence indication inferred, and directs readers to
+check Varzia's current relic offerings. All thirteen title/description pairs,
+including the English fallback overlay, are consistent. The actual SEO resolver
+passes all locale/prefix/trailing-slash checks; other routes' metadata is
+unchanged. Descriptions range from 72 to 159 characters. No new thin pages,
+unverified news summaries or new rich-result promises were added.
+
+Primary references include the official
+[Second Dream](https://www.warframe.com/en/guides/quests/the-second-dream) and
+[Rising Tide](https://www.warframe.com/en/guides/quests/rising-tide) quest guides,
+[Railjack support article](https://support.warframe.com/hc/en-us/articles/38820115630093-Railjack),
+[29.10 Railjack retrofit](https://forums.warframe.com/topic/1253565-update-29100-corpus-proxima-the-new-railjack/),
+[30.9 timers](https://www.warframe.com/en/patch-notes/pc/30-9-0),
+[30.9.4 timer correction](https://www.warframe.com/en/patch-notes/pc/30-9-4),
+[Update 43](https://www.warframe.com/en/patch-notes/pc/43-0-0), and
+[43.0.6 Steel Essence correction](https://www.warframe.com/en/patch-notes/pc/43-0-6).
+The ignored source-review manifest records the remaining sources and claim paths.
+On November 7 the official news and patch indexes still list 44.1.4.1 (October 28)
+as the latest patch and November 2 as the newest news. No newer Railjack mechanic
+was found. Tau remains a future December release; no future content was presented
+as already available. Sixteen other guides remain in the overdue review queue,
+and unrelated translation follow-ups remain visible in the existing validator.
+
+### Availability, freshness and measurement limits
+
+At 05:45 UTC November 7, the bounded public checks return HTTP200 in all ten
+requests and MongoDB is available. The content-freshness gate fails: all 3,893
+stored price records exceed a day, the newest is approximately 75.4 hours old,
+and the median is 77.1 hours. The latest recorded quote remains November 4 at
+02:21:35 UTC. The live socket is disconnected with zero orders per minute.
+Existing logs show ongoing upstream HTTP403 refusals for prices, auctions and
+live transport. No additional Warframe Market request, alternate egress,
+credential change or access bypass was attempted. Four offbox worker PIDs
+remain unchanged. A successful code deployment will not be reported as source
+recovery without separate evidence.
+
+Endo still has 46 eligible ask-based opportunities and forty visible server rows
+in each sampled English/Spanish page. Ducat invariants remain 594 eligible parts,
+757 positive values, Nami Skyla Blade65/set235, without repeating the previous
+metadata refresh. These numerical checks do not certify price freshness.
+GA4/Search Console discovery returned unauthorized once on November 7 and
+stopped. Traffic data are unavailable, not zero; no seven-/twenty-eight-day
+comparison or field Core Web Vitals improvement is claimed.
+
+### Validation and release
+
+The unchanged backend passed 801 tests and its production TypeScript build during
+the November 5 preparation. After all translated snapshots were integrated, 72 frontend and 26 guide tests
+passed, along with locale compilation, all 25 guide integrity checks and the
+repository-map gate: 899 passing tests across the unchanged backend and final
+frontend/guide suites. Production checks
+will verify the 13 Railjack pages and 13 vaulted-worth metadata pages, visible
+content rather than payload-only strings, canonical/hreflang/indexability,
+Article/FAQ agreement, internal links and sampled JS/CSS, plus browser behavior.
+
+All intended source and this record are committed before the complete
+API/frontend/live deployment. The final workflow outcome, exact API/sync revision,
+public/browser evidence and upstream freshness are recorded in ignored release
+files and automation memory. No later tracked documentation edit is left
+undeployed. Remaining priorities include the other overdue guides, importer
+identity validation and upstream access recovery through supported access.

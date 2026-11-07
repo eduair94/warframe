@@ -179,9 +179,9 @@ export const PAGE_SEO: Record<string, PageSeo> = {
       "Every vaulted Warframe prime you can no longer farm, ranked by price trend. Watch what's appreciating in platinum and sell smart."
   },
   '/vaulted-worth': {
-    title: 'Vaulted Warframe Primes Worth Buying — Plat Verdicts',
+    title: "Vaulted Warframe Prime Prices & Buying Signals",
     description:
-      'Should you buy that vaulted prime now? Live platinum price, 30-day trend and Prime Resurgence status fused into a buy, wait or skip verdict for every vaulted Warframe prime.'
+      "Compare vaulted Warframe Prime prices and 30-day trends. Prime Resurgence signals are inferred; check Varzia’s current relic offers before buying."
   },
   '/volatility': {
     title: 'Price Volatility — Most Volatile Warframe Items',
