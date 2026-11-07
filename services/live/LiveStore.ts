@@ -12,6 +12,7 @@ const ORDER_CAP = 8;
  */
 export class LiveStore {
   private readonly books = new Map<string, Map<string, NormalizedOrder>>();
+  private readonly updatedAt = new Map<string, number>();
   // Per-item max rank (arcanes/mods/rivens). Set from the fair-value item metadata so
   // the book prices at the top rank instead of mixing rank-0 lowballs into "best".
   private readonly ranks = new Map<string, number | undefined>();
@@ -19,7 +20,7 @@ export class LiveStore {
   // book prices the FILLED sculpture instead of mixing empty (cheap) and filled orders.
   private readonly stars = new Map<string, { amber?: number; cyan?: number }>();
 
-  constructor(private readonly platform: string) {}
+  constructor(private readonly platform: string, private readonly now: () => number = Date.now) {}
 
   /** Set the rank the book should price at for a ranked item (undefined = no rank filter). */
   setRank(url_name: string, maxRank: number | undefined): void {
@@ -39,6 +40,7 @@ export class LiveStore {
     const m = new Map<string, NormalizedOrder>();
     for (const o of s.orders) m.set(o.id, o);
     this.books.set(s.url_name, m);
+    this.updatedAt.set(s.url_name, this.now());
     return this.compute(s.url_name);
   }
 
@@ -54,6 +56,7 @@ export class LiveStore {
       }
     }
     this.books.set(d.url_name, m);
+    this.updatedAt.set(d.url_name, this.now());
     return this.compute(d.url_name);
   }
 
@@ -61,7 +64,10 @@ export class LiveStore {
     return this.books.has(url_name) ? this.compute(url_name) : null;
   }
   has(url_name: string): boolean { return this.books.has(url_name); }
-  drop(url_name: string): void { this.books.delete(url_name); }
+  drop(url_name: string): void {
+    this.books.delete(url_name);
+    this.updatedAt.delete(url_name);
+  }
   size(): number { return this.books.size; }
 
   private compute(url_name: string): LiveBook {
@@ -145,7 +151,8 @@ export class LiveStore {
       sellAvg: prices.sellAvg,
       onlineBuyCount: onlineOf('buy'),
       onlineSellCount: onlineOf('sell'),
-      updatedAt: Date.now(),
+      // Reading or repricing a retained book is not a new upstream observation.
+      updatedAt: this.updatedAt.get(url_name) ?? 0,
       sellOrders: sideRows('sell'),
       buyOrders: sideRows('buy'),
     };

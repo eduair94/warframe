@@ -1676,3 +1676,85 @@ public/browser evidence and upstream freshness are recorded in ignored release
 files and automation memory. No later tracked documentation edit is left
 undeployed. Remaining priorities include the other overdue guides, importer
 identity validation and upstream access recovery through supported access.
+
+## November 7, 2026, daily review — truthful live status and crawlable market heading
+
+The 13:00 UTC heartbeat starts after the earlier Railjack release completed at
+05:56 UTC. Local, origin, API and sync are all on `ce49797`, with no active or
+queued deployment. This is a new bounded iteration, not a duplicate release.
+The hypothesis is that accurate observation times and understandable source
+availability improve trust and retention, while an initial HTML heading makes
+the live page's purpose accessible to readers and crawlers without JavaScript.
+No traffic increase or ranking change has been measured.
+
+### Findings and corrections
+
+The availability baseline passes all ten HTTP checks and MongoDB is up, but all
+3,893 prices exceed one day; median age is approximately 84.4 hours. The latest
+quote remains November 4 at 02:21:35 UTC. Existing logs still show upstream 403
+refusals and the new-orders socket is disconnected. No additional upstream
+probe, egress change, credential change or access workaround was attempted.
+The four offbox process IDs and six transport-related compiled hashes match the
+previous release. Endo and Ducat regression checks still pass with retained prices.
+
+The live service nevertheless reported `feedUp=true` with zero books and no
+observed update. Both its gateway and poller initialized optimistically; a
+pending sweep could wait through source cooldowns for hours before publishing a
+failure. They now begin unconfirmed, publish the first resolved fetch result,
+and treat an empty subscription set as unavailable. A successful empty order
+book is still a valid observation. Source availability also expires after three
+minutes without a received snapshot or delta, even if a request remains pending.
+This limit affects status and signals, not polling cadence or retry behavior.
+
+Reading a stored book previously assigned it a new `updatedAt`, so reconnecting
+or reopening an item could display old prices as updated now. The store now
+records time only when receiving a snapshot or delta. Reads and rank/star
+metadata recomputation preserve it; Mongo write-through uses that same observed
+time. The global pulse likewise records received data rather than its two-second
+broadcast time. Online-trader reports have a separate timestamp: a new order
+cannot refresh old trader counts, and unknown counts are not shown as zero.
+
+The browser receives independent book and order-source status. Its own Socket.IO
+connection alone no longer turns the indicator green. Disconnects and reconnects
+require source confirmation again, and a reopened upstream socket must receive
+new data before old pulse values can appear. Trading badges, advice and active
+counts require a confirmed source and an individual book observation no older
+than three minutes. Stored prices and their real age remain available for
+inspection. The existing localized connecting label is reused in all languages;
+no translation-provider request or generated-locale edit was required.
+
+The live page's single localized H1 and introduction now render outside
+`ClientOnly`, before its existing server-rendered catalogue table. Canonicals,
+hreflang, metadata and route paths remain unchanged. The global stale-price
+notice remains visible. Correction to earlier operational notes: `liveItems`
+counts requested/hot subscriptions, not retained order books; `bookCount` is the
+book count. Neither count proves that the source is available.
+
+### Sources, validation and release
+
+The [official news index](https://www.warframe.com/en/news) and
+[patch index](https://www.warframe.com/en/patch-notes) show no newer development
+than the earlier review: latest visible news November 2 and latest patch
+[44.1.4.1, October 28](https://www.warframe.com/en/patch-notes/pc/44-1-4).
+No guide review date was changed. A future relic-guide correction should
+distinguish Common from Uncommon Forma rewards, as documented in
+[Update 36.1](https://www.warframe.com/en/patch-notes/pc/36-1-0); the other sixteen
+overdue guide reviews remain queued. GA4/Search Console discovery already
+returned unauthorized earlier today and was not retried without an access
+change. Seven-/twenty-eight-day traffic comparisons and field CWV are unavailable.
+
+Local checks pass: 849 backend tests, 112 frontend tests and 26 guide tests
+(987 total), API production build, locale compilation, guide integrity and
+repository-map validation. New regressions exercise pending requests, initial
+unknown state, quiet but valid feeds, invalid source messages, independent
+online-report age, reconnection, future timestamps, the exact three-minute
+boundary, per-item expiry and recovery. Actual frontend source is exercised in
+all thirteen languages, including one server-rendered H1 before catalogue rows.
+Independent source/state-machine reviews pass; mocks and server rendering do
+not replace a real browser check.
+
+All intended source and this entry precede the final complete API/frontend/live
+deployment. Exact release SHA, workflow outcome, sync alignment, public live
+pages/assets, Socket.IO source-status and browser availability will be recorded
+in ignored `tmp/nov07pm-*` evidence and automation memory. A successful deployment
+does not imply that upstream access or price freshness recovered.

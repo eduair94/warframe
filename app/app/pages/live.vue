@@ -1,21 +1,12 @@
 <template>
   <div class="an">
-    <client-only>
-      <template #fallback>
-        <SeoFallbackTable
-          :caption="t('live.eyebrow')"
-          :name-label="t('live.table.item')"
-          :columns="[t('live.table.bestBuy'), t('live.table.bestSell'), t('live.table.fair'), t('live.table.vol')]"
-          :rows="fallbackRows"
-        />
-      </template>
-      <div class="an-console">
+    <div class="an-console">
         <header class="an-hero">
           <div class="an-hero__text">
             <div class="an-eyebrow">
               {{ t('live.eyebrow') }}
-              <span class="live-dot" :class="{ 'is-on': connected }" />
-              <span class="live-state">{{ connected ? t('live.status.live') : t('live.status.connecting') }}</span>
+              <span class="live-dot" :class="{ 'is-on': feedUp }" />
+              <span class="live-state" role="status">{{ feedUp ? t('live.status.live') : t('live.status.connecting') }}</span>
             </div>
             <i18n-t keypath="live.hero.title" tag="h1" class="an-title">
               <template #signals><span class="accent-a">{{ t('live.hero.titleSignals') }}</span></template>
@@ -24,12 +15,24 @@
           </div>
         </header>
 
+      <client-only>
+        <template #fallback>
+          <SeoFallbackTable
+            :caption="t('live.eyebrow')"
+            :name-label="t('live.table.item')"
+            :columns="[t('live.table.bestBuy'), t('live.table.bestSell'), t('live.table.fair'), t('live.table.vol')]"
+            :rows="fallbackRows"
+          />
+        </template>
+
         <div v-if="pulse" class="live-pulse">
           <div class="live-pulse__stats">
-            <span class="live-pulse__stat"><strong>{{ fmtVol(pulse.online.connections) }}</strong> {{ t('live.pulse.tradersOnline') }}</span>
-            <span class="live-pulse__sep">·</span>
-            <span class="live-pulse__stat"><strong>{{ fmtVol(pulse.online.authorizedUsers) }}</strong> {{ t('live.pulse.signedIn') }}</span>
-            <span class="live-pulse__sep">·</span>
+            <template v-if="pulseOnline">
+              <span class="live-pulse__stat"><strong>{{ fmtVol(pulseOnline.connections) }}</strong> {{ t('live.pulse.tradersOnline') }}</span>
+              <span class="live-pulse__sep">·</span>
+              <span class="live-pulse__stat"><strong>{{ fmtVol(pulseOnline.authorizedUsers) }}</strong> {{ t('live.pulse.signedIn') }}</span>
+              <span class="live-pulse__sep">·</span>
+            </template>
             <span class="live-pulse__stat"><strong>{{ pulse.ordersPerMin }}</strong> {{ t('live.pulse.ordersPerMin') }}</span>
             <span class="live-pulse__label">{{ t('live.pulse.latest') }}</span>
           </div>
@@ -155,7 +158,7 @@
                   <span v-if="isThin(row)" class="thin-flag" :title="t('live.thinTitle')">⚠</span>
                 </td>
                 <td class="an-num">{{ plat(row, 'flip') }}</td>
-                <td><MarketVerdictBadge :verdict="live[row.url_name]?.verdict ?? null" /></td>
+                <td><MarketVerdictBadge :verdict="currentLiveUpdate(row.url_name)?.verdict ?? null" /></td>
                 <td class="an-num an-ago">{{ agoOf(row.url_name) }}</td>
               </tr>
             </tbody>
@@ -184,7 +187,7 @@
                 </a>
                 <span class="an-ago">{{ agoOf(row.url_name) }}</span>
               </div>
-              <MarketVerdictBadge :verdict="live[row.url_name]?.verdict ?? null" compact />
+              <MarketVerdictBadge :verdict="currentLiveUpdate(row.url_name)?.verdict ?? null" compact />
             </div>
             <div class="an-card__blocks">
               <div class="an-block">
@@ -214,7 +217,6 @@
             @update:model-value="onPageChange"
           />
         </div>
-      </div>
 
       <v-alert class="an-disclaimer bg-blue-darken-4" type="info" density="compact">
         {{ t('live.disclaimer') }}
@@ -235,13 +237,13 @@
                 >warframe.market ↗</a
               >
             </div>
-            <MarketVerdictBadge :verdict="detail.verdict" />
+            <MarketVerdictBadge :verdict="currentLiveUpdate(detailRow.url_name)?.verdict ?? null" />
             <v-btn icon="mdi-close" size="small" variant="text" @click="showDetail = false" />
           </div>
 
           <div class="ob-advice">
-            <div class="ob-advice__row"><span class="ob-advice__lbl buy">{{ t('live.ob.buying') }}</span>{{ buyAdvice(detail) }}</div>
-            <div class="ob-advice__row"><span class="ob-advice__lbl sell">{{ t('live.ob.selling') }}</span>{{ sellAdvice(detail) }}</div>
+            <div v-if="currentLiveUpdate(detailRow.url_name)" class="ob-advice__row"><span class="ob-advice__lbl buy">{{ t('live.ob.buying') }}</span>{{ buyAdvice(detail) }}</div>
+            <div v-if="currentLiveUpdate(detailRow.url_name)" class="ob-advice__row"><span class="ob-advice__lbl sell">{{ t('live.ob.selling') }}</span>{{ sellAdvice(detail) }}</div>
             <div class="ob-advice__meta">
               {{ t('live.ob.meta', { fv: Math.round(detail.verdict.fv), spread: Math.max(0, detail.book.bestSell - detail.book.bestBuy), vol: detail.verdict.volume }) }}<span
                 v-if="detail.verdict.thin"
@@ -310,7 +312,8 @@
           <div class="ob-foot">{{ t('live.ob.foot') }}</div>
         </div>
       </v-dialog>
-    </client-only>
+      </client-only>
+    </div>
   </div>
 </template>
 
@@ -326,7 +329,7 @@ const allItems = computed<any[]>(() => store.allItems)
 
 const { mobile } = useDisplay()
 const isMobile = computed(() => mobile.value)
-const { connected, pulse } = useLiveFeed()
+const { connected, feedUp, pulse } = useLiveFeed()
 const { itemThumb } = useItemThumb()
 const { localItemName } = useLocalizedName()
 const { trackSearch, trackFilter, trackSort, trackAction, trackDialog, trackMarketOpen, trackTradeCopy } =
@@ -512,13 +515,31 @@ function syncSubscriptions(rows: any[]) {
   }
 }
 
+// A retained book remains readable, but cannot keep an active trading signal.
+// Keep the three-minute observation window aligned with LiveGateway.
+const LIVE_BOOK_STALE_AFTER_MS = 3 * 60_000
+function currentLiveUpdate(url: string): LiveUpdate | null {
+  const update = live.value[url]
+  if (!feedUp.value || !update) return null
+  const at = update.book.updatedAt
+  return Number.isFinite(at) && at > 0
+    && now.value >= at && now.value - at <= LIVE_BOOK_STALE_AFTER_MS ? update : null
+}
+const pulseOnline = computed(() => {
+  const report = pulse.value
+  if (!report) return null
+  const at = report.onlineUpdatedAt
+  return Number.isFinite(at) && at > 0
+    && now.value >= at && now.value - at <= LIVE_BOOK_STALE_AFTER_MS ? report.online : null
+})
+
 const buyCount = computed(
-  () => paged.value.filter((r) => live.value[r.url_name]?.verdict.verdict === 'buy').length,
+  () => paged.value.filter((r) => currentLiveUpdate(r.url_name)?.verdict.verdict === 'buy').length,
 )
 const sellCount = computed(
-  () => paged.value.filter((r) => live.value[r.url_name]?.verdict.verdict === 'sell').length,
+  () => paged.value.filter((r) => currentLiveUpdate(r.url_name)?.verdict.verdict === 'sell').length,
 )
-const liveCount = computed(() => paged.value.filter((r) => live.value[r.url_name]).length)
+const liveCount = computed(() => paged.value.filter((r) => currentLiveUpdate(r.url_name)).length)
 
 function thumbOf(row: any): string {
   return itemThumb({ urlName: row.url_name, itemName: row.item_name, thumb: row.thumb })

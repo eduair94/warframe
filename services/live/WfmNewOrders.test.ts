@@ -33,10 +33,123 @@ describe('wfmSocketReconnectDelayMs', () => {
 });
 
 describe('WfmNewOrders', () => {
+  it('has no source timestamp until valid data arrives, even across repeated reads', () => {
+    let t = 1000;
+    const w = make(() => t);
+    expect(w.getPulse().updatedAt).toBe(0);
+    expect(w.getPulse().onlineUpdatedAt).toBe(0);
+    t = 60_000;
+    expect(w.getPulse().updatedAt).toBe(0);
+    expect(w.getPulse().onlineUpdatedAt).toBe(0);
+  });
+
   it('tracks the online report', () => {
     const w = make(() => 1000);
     w.ingest(onlineMsg(52000, 27000));
     expect(w.getPulse().online).toEqual({ connections: 52000, authorizedUsers: 27000 });
+    expect(w.getPulse().updatedAt).toBe(1000);
+    expect(w.getPulse().onlineUpdatedAt).toBe(1000);
+  });
+
+  it('does not certify the initial zero online counts when the first message is an order', () => {
+    let t = 1000;
+    const w = make(() => t);
+    w.ingest(orderMsg({ itemId: 'id1', type: 'sell', platinum: 10 }));
+    const pulse = w.getPulse();
+    expect(pulse.updatedAt).toBe(1000);
+    expect(pulse.onlineUpdatedAt).toBe(0);
+    expect(pulse.online).toEqual({ connections: 0, authorizedUsers: 0 });
+    t = 10_000;
+    expect(w.getPulse().onlineUpdatedAt).toBe(0);
+  });
+
+  it('does not rejuvenate the online report with later orders or pulse reads', () => {
+    let t = 1000;
+    const w = make(() => t);
+    w.ingest(onlineMsg(12, 8));
+    t = 2000;
+    w.ingest(orderMsg({ itemId: 'unknown', type: 'sell', platinum: 10 }));
+    expect(w.getPulse()).toMatchObject({ updatedAt: 2000, onlineUpdatedAt: 1000, online: { connections: 12, authorizedUsers: 8 } });
+    t = 300_000;
+    expect(w.getPulse()).toMatchObject({ updatedAt: 2000, onlineUpdatedAt: 1000 });
+    w.ingest(onlineMsg(20, 15));
+    expect(w.getPulse()).toMatchObject({ updatedAt: 300_000, onlineUpdatedAt: 300_000, online: { connections: 20, authorizedUsers: 15 } });
+  });
+
+  it('captures the online report arrival time once for both freshness fields', () => {
+    const now = jest.fn().mockReturnValueOnce(1000).mockReturnValue(2000);
+    const w = make(now);
+    w.ingest(onlineMsg(12, 8));
+    expect(now).toHaveBeenCalledTimes(1);
+    expect(w.getPulse()).toMatchObject({ updatedAt: 1000, onlineUpdatedAt: 1000 });
+  });
+
+  it('preserves the source timestamp when the pulse is read later', () => {
+    let t = 1000;
+    const w = make(() => t);
+    w.ingest(onlineMsg(52000, 27000));
+    t = 2000;
+    w.ingest(orderMsg({ itemId: 'id1', type: 'sell', platinum: 10, createdAt: '2026-07-14T23:00:00Z' }));
+    expect(w.getPulse().updatedAt).toBe(2000);
+    t = 70_000;
+    const pulse = w.getPulse();
+    expect(pulse.updatedAt).toBe(2000);
+    expect(pulse.onlineUpdatedAt).toBe(1000);
+    expect(pulse.ordersPerMin).toBe(0);
+    expect(pulse.recent).toHaveLength(1);
+    expect(pulse.online.connections).toBe(52000);
+  });
+
+  it('accepts a valid zero-count online report as newly observed source data', () => {
+    const w = make(() => 1000);
+    w.ingest(onlineMsg(0, 0));
+    expect(w.getPulse().updatedAt).toBe(1000);
+    expect(w.getPulse().online).toEqual({ connections: 0, authorizedUsers: 0 });
+  });
+
+  it('accepts numeric source strings while rejecting empty coercions', () => {
+    const w = make(() => 1000);
+    w.ingest(JSON.stringify({ route: '@wfm|event/reports/online', payload: { connections: '12', authorizedUsers: '8' } }));
+    w.ingest(orderMsg({ itemId: 'id1', type: 'buy', platinum: '20', quantity: '2' }));
+    const pulse = w.getPulse();
+    expect(pulse.online).toEqual({ connections: 12, authorizedUsers: 8 });
+    expect(pulse.recent[0]).toMatchObject({ platinum: 20, quantity: 2 });
+    expect(pulse.updatedAt).toBe(1000);
+  });
+
+  it.each([
+    ['invalid JSON', 'not json'],
+    ['null frame', 'null'],
+    ['array frame', '[]'],
+    ['zero frame', '0'],
+    ['acknowledgement', JSON.stringify({ route: '@wfm|cmd/subscribe/newOrders', payload: { success: true } })],
+    ['missing online counters', JSON.stringify({ route: '@wfm|event/reports/online', payload: {} })],
+    ['null online payload', JSON.stringify({ route: '@wfm|event/reports/online', payload: null })],
+    ['array online payload', JSON.stringify({ route: '@wfm|event/reports/online', payload: [] })],
+    ['zero online payload', JSON.stringify({ route: '@wfm|event/reports/online', payload: 0 })],
+    ['negative online counter', onlineMsg(-1, 2)],
+    ['null online counter', JSON.stringify({ route: '@wfm|event/reports/online', payload: { connections: null, authorizedUsers: 2 } })],
+    ['blank online counter', JSON.stringify({ route: '@wfm|event/reports/online', payload: { connections: ' ', authorizedUsers: 2 } })],
+    ['nonfinite online counter', JSON.stringify({ route: '@wfm|event/reports/online', payload: { connections: 'Infinity', authorizedUsers: 2 } })],
+    ['NaN online counter', JSON.stringify({ route: '@wfm|event/reports/online', payload: { connections: 'NaN', authorizedUsers: 2 } })],
+    ['null order payload', orderMsg(null)],
+    ['array order payload', orderMsg([])],
+    ['invalid order type', orderMsg({ itemId: 'id1', type: 'other', platinum: 10 })],
+    ['missing item identity', orderMsg({ type: 'sell', platinum: 10 })],
+    ['blank item identity', orderMsg({ itemId: ' ', type: 'sell', platinum: 10 })],
+    ['missing order price', orderMsg({ itemId: 'id1', type: 'sell' })],
+    ['nonfinite order price', orderMsg({ itemId: 'id1', type: 'sell', platinum: 'Infinity' })],
+    ['zero order price', orderMsg({ itemId: 'id1', type: 'sell', platinum: 0 })],
+    ['boolean order price', orderMsg({ itemId: 'id1', type: 'sell', platinum: true })],
+    ['zero order quantity', orderMsg({ itemId: 'id1', type: 'sell', platinum: 10, quantity: 0 })],
+  ])('does not refresh data or freshness for %s', (_name, frame) => {
+    let t = 1000;
+    const w = make(() => t);
+    w.ingest(onlineMsg(12, 8));
+    const before = w.getPulse();
+    t = 2000;
+    expect(() => w.ingest(frame)).not.toThrow();
+    expect(w.getPulse()).toEqual(before);
   });
 
   it('adds resolvable orders to the ticker, newest first, capped', () => {
@@ -54,14 +167,18 @@ describe('WfmNewOrders', () => {
   });
 
   it('counts unresolved orders toward orders/min but keeps them out of the ticker', () => {
-    let t = 0;
+    let t = 1000;
     const w = make(() => t);
     w.ingest(orderMsg({ itemId: 'unknown', type: 'sell', platinum: 10, createdAt: '2026-07-14T23:00:00Z' }));
+    expect(w.getPulse().updatedAt).toBe(1000);
+    expect(w.getPulse().recent).toHaveLength(0);
+    t = 2000;
     w.ingest(orderMsg({ itemId: 'id1', type: 'buy', platinum: 20, createdAt: '2026-07-14T23:00:00Z' }));
     const pulse = w.getPulse();
     expect(pulse.ordersPerMin).toBe(2); // both counted
     expect(pulse.recent).toHaveLength(1); // only the resolvable one shown
     expect(pulse.recent[0].url_name).toBe('octavia_prime_set');
+    expect(pulse.updatedAt).toBe(2000);
   });
 
   it('orders/min is a 60s sliding window', () => {

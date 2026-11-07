@@ -2,13 +2,15 @@
 // Pages subscribe by url_name and receive { book, verdict } pushes. Auto-imported.
 // SSR-safe: every entry short-circuits off-browser so useAsyncData/SSR never opens a socket.
 import { io, type Socket } from 'socket.io-client'
-import type { LiveUpdate, MarketPulse } from '~/utils/liveTypes'
+import type { LiveUpdate, MarketPulse, LiveSourceStatus } from '~/utils/liveTypes'
 
 type Cb = (u: LiveUpdate) => void
 
 let socket: Socket | null = null
 const listeners = new Map<string, Set<Cb>>()
 const connected = ref(false)
+const sourceStatus = ref<LiveSourceStatus | null>(null)
+const feedUp = computed(() => connected.value && sourceStatus.value?.books === true)
 // Global market pulse (online traders, orders/min, latest listings) broadcast to
 // every client by the server — one shared ref, no per-item subscription needed.
 const pulse = ref<MarketPulse | null>(null)
@@ -34,19 +36,28 @@ function ensureSocket(): Socket | null {
   })
   socket.on('connect', () => {
     connected.value = true
+    sourceStatus.value = null
+    pulse.value = null
     // Re-subscribe every active room on (re)connect. This is also how the FIRST
     // subscribe reaches the server when it was issued before the socket connected.
     listeners.forEach((_set, url) => socket!.emit('subscribe', { url_name: url }))
   })
   socket.on('disconnect', () => {
     connected.value = false
+    sourceStatus.value = null
+    pulse.value = null
   })
   socket.on('update', (u: LiveUpdate) => {
     const set = listeners.get(u.url_name)
     if (set) set.forEach((cb) => cb(u))
   })
+  socket.on('source-status', (status: LiveSourceStatus) => {
+    sourceStatus.value = { books: status?.books === true, orders: status?.orders === true }
+    if (!sourceStatus.value.orders) pulse.value = null
+  })
   socket.on('pulse', (p: MarketPulse) => {
-    pulse.value = p
+    pulse.value = connected.value && sourceStatus.value?.orders === true
+      && Number.isFinite(p?.updatedAt) && p.updatedAt > 0 ? p : null
   })
   return socket
 }
@@ -84,7 +95,7 @@ export function subscribeLive(urlName: string, cb: Cb): () => void {
 }
 
 export function useLiveFeed() {
-  return { connected, pulse, subscribe: subscribeLive }
+  return { connected, feedUp, pulse, subscribe: subscribeLive }
 }
 
 // Component helper: track one item's latest LiveUpdate, auto (un)subscribing with the

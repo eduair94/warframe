@@ -23,7 +23,7 @@ export class HotPoller extends EventEmitter implements WfmFeed {
   private live: string[] = [];
   private timer: any = null;
   private running = false;
-  private lastUp = true;
+  private lastUp: boolean | null = null;
   private readonly concurrency: number;
   private readonly d: Required<Pick<HotPollerDeps, 'setTimer' | 'clearTimer' | 'now'>> & HotPollerDeps;
 
@@ -61,8 +61,11 @@ export class HotPoller extends EventEmitter implements WfmFeed {
 
   private async tick(): Promise<void> {
     const urls = this.live.slice();
+    if (urls.length === 0) {
+      this.reportStatus(false, 'no live items');
+      return;
+    }
     let anyOk = false;
-    let anyFail = false;
     let idx = 0;
     const worker = async (): Promise<void> => {
       while (idx < urls.length) {
@@ -72,18 +75,23 @@ export class HotPoller extends EventEmitter implements WfmFeed {
           const orders = mapV1OrdersToNormalized(raw);
           this.emit('snapshot', { url_name: url, orders });
           anyOk = true;
+          // A slow or cooling-down request must not hide a confirmed result
+          // until the entire sweep finishes. One success makes this sweep up.
+          this.reportStatus(true, 'recovered');
         } catch (e: any) {
-          anyFail = true;
+          if (!anyOk) this.reportStatus(false, 'fetch failing');
           // one failed item shouldn't stop the rest; proxy layer already retried
         }
       }
     };
     const workers = Math.max(1, Math.min(this.concurrency, urls.length || 1));
     await Promise.all(Array.from({ length: workers }, () => worker()));
-    const up = anyOk || (!anyFail && urls.length === 0);
+  }
+
+  private reportStatus(up: boolean, detail: string): void {
     if (up !== this.lastUp) {
       this.lastUp = up;
-      const status: FeedStatus = { source: 'poller', up, detail: up ? 'recovered' : 'fetch failing' };
+      const status: FeedStatus = { source: 'poller', up, detail };
       this.emit('status', status);
     }
   }

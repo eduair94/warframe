@@ -5,6 +5,8 @@ import { computeVerdict, VerdictOpts } from './VerdictEngine';
 import { WfmFeed, FeedSnapshot, FeedDelta, FeedStatus } from './WfmFeed';
 import { LiveUpdate, LiveBook } from './LiveTypes';
 
+export const LIVE_SOURCE_STALE_AFTER_MS = 180_000;
+
 export interface LiveHealth {
   feedUp: boolean;
   feedSource: 'poller' | 'socket';
@@ -21,6 +23,8 @@ export interface LiveGatewayDeps {
   config: VerdictOpts;
   broadcast(url: string, u: LiveUpdate): void;
   writeThrough(url: string, book: LiveBook): void;
+  onStatus?(status: FeedStatus): void;
+  now?(): number;
 }
 
 /**
@@ -30,7 +34,7 @@ export interface LiveGatewayDeps {
  */
 export class LiveGateway {
   private health_: LiveHealth = {
-    feedUp: true, feedSource: 'poller', liveItems: 0, bookCount: 0, lastUpdateAt: 0,
+    feedUp: false, feedSource: 'poller', liveItems: 0, bookCount: 0, lastUpdateAt: 0,
   };
 
   constructor(private readonly d: LiveGatewayDeps) {
@@ -39,6 +43,7 @@ export class LiveGateway {
     d.feed.on('status', (st: FeedStatus) => {
       this.health_.feedUp = st.up;
       this.health_.feedSource = st.source;
+      this.d.onStatus?.({ ...st, up: this.health().feedUp });
     });
   }
 
@@ -97,7 +102,14 @@ export class LiveGateway {
     this.d.feed.setLiveSet(live);
   }
 
-  health(): LiveHealth { return { ...this.health_ }; }
+  health(): LiveHealth {
+    const age = (this.d.now?.() ?? Date.now()) - this.health_.lastUpdateAt;
+    return {
+      ...this.health_,
+      feedUp: this.health_.feedUp && this.health_.lastUpdateAt > 0 &&
+        age >= 0 && age <= LIVE_SOURCE_STALE_AFTER_MS,
+    };
+  }
 
   async start(): Promise<void> {
     this.syncLiveSet();

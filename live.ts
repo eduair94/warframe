@@ -15,7 +15,7 @@ import { LiveStore } from './services/live/LiveStore';
 import { FairValueService } from './services/live/FairValueService';
 import { SubscriptionManager } from './services/live/SubscriptionManager';
 import { HotPoller } from './services/live/HotPoller';
-import { LiveGateway } from './services/live/LiveGateway';
+import { LiveGateway, LIVE_SOURCE_STALE_AFTER_MS } from './services/live/LiveGateway';
 import { LiveUpdate, LiveBook } from './services/live/LiveTypes';
 import {
   WfmNewOrders,
@@ -80,6 +80,7 @@ async function main() {
     },
     broadcast: (url: string, u: LiveUpdate) => io.to(`item:${url}`).emit('update', u),
     writeThrough: (url: string, book: LiveBook) => writeThrough(itemService, url, book).catch(() => {}),
+    onStatus: () => publishSourceStatus(),
   });
 
   // --- wf.market live socket: global new-orders firehose -> market pulse ---
@@ -93,6 +94,24 @@ async function main() {
   let wfmReconnecting = false;
   let wfmFailures = 0;
   let wfmOpenedAt = 0;
+  let lastSourceStatus = '';
+
+  function sourceStatus(): { books: boolean; orders: boolean } {
+    const lastMessage = newOrders.getPulse().updatedAt;
+    return {
+      books: gateway.health().feedUp,
+      // A reopened socket must receive new data before replaying its old pulse.
+      orders: wfmUp && lastMessage > 0 && lastMessage >= wfmOpenedAt
+        && Date.now() >= lastMessage && Date.now() - lastMessage <= LIVE_SOURCE_STALE_AFTER_MS,
+    };
+  }
+  function publishSourceStatus(): void {
+    const status = sourceStatus();
+    const key = JSON.stringify(status);
+    if (key === lastSourceStatus) return;
+    lastSourceStatus = key;
+    io.emit('source-status', status);
+  }
 
   async function loadItemIndex(): Promise<void> {
     try {
@@ -130,19 +149,25 @@ async function main() {
     ws.on('open', () => {
       wfmUp = true;
       wfmOpenedAt = Date.now();
+      publishSourceStatus();
       ws.send(subscribeNewOrdersMsg(cfg.platform));
       console.log('[live] wfm socket open (newOrders)');
     });
-    ws.on('message', (d: WebSocket.RawData) => { newOrders.ingest(d.toString()); });
-    ws.on('close', () => { wfmUp = false; scheduleWfmReconnect(); });
+    ws.on('message', (d: WebSocket.RawData) => {
+      newOrders.ingest(d.toString());
+      publishSourceStatus();
+    });
+    ws.on('close', () => { wfmUp = false; publishSourceStatus(); scheduleWfmReconnect(); });
     ws.on('error', (e: Error) => {
       wfmUp = false;
+      publishSourceStatus();
       console.warn('[live] wfm socket error:', e.message);
       try { ws.terminate(); } catch {}
     });
   }
 
   io.on('connection', (socket: Socket) => {
+    socket.emit('source-status', sourceStatus());
     if (cfg.newOrders) socket.emit('pulse', newOrders.getPulse());
     socket.on('subscribe', (msg: { url_name?: string }) => {
       const url = (msg && msg.url_name || '').toString();
@@ -169,8 +194,10 @@ async function main() {
       res.setHeader('content-type', 'application/json');
       res.end(JSON.stringify({
         ...gateway.health(),
+        sources: sourceStatus(),
         wfmSocket: wfmUp,
         online: pulse.online,
+        onlineUpdatedAt: pulse.onlineUpdatedAt,
         ordersPerMin: pulse.ordersPerMin,
       }));
       return;
@@ -194,8 +221,12 @@ async function main() {
   if (cfg.newOrders && cfg.feedMode !== 'off') {
     await loadItemIndex();
     connectWfmSocket();
-    setInterval(() => io.emit('pulse', newOrders.getPulse()), 2000);
   }
+
+  setInterval(() => {
+    publishSourceStatus();
+    if (cfg.newOrders && cfg.feedMode !== 'off') io.emit('pulse', newOrders.getPulse());
+  }, 2000);
 
   if (cfg.feedMode !== 'off') await gateway.start();
 }
@@ -216,7 +247,7 @@ async function writeThrough(itemService: ItemService, url: string, book: LiveBoo
       buyAvg: Math.round(book.buyAvg),
       sellAvg: Math.round(book.sellAvg),
     },
-    priceUpdate: new Date(),
+    priceUpdate: new Date(book.updatedAt),
   } as any);
 }
 

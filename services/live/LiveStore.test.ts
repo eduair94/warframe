@@ -7,6 +7,41 @@ const ord = (p: Partial<NormalizedOrder> & { id: string }): NormalizedOrder => (
 });
 
 describe('LiveStore', () => {
+  it('keeps the received timestamp across reads and metadata repricing', () => {
+    let now = 1_000;
+    const s = new LiveStore('pc', () => now);
+    s.applySnapshot({ url_name: 'x', orders: [
+      ord({ id: '1', platinum: 10, mod_rank: 0 }),
+      ord({ id: '2', platinum: 20, mod_rank: 5 }),
+    ] });
+    now += 60 * 60_000;
+    expect(s.getBook('x')?.updatedAt).toBe(1_000);
+    s.setRank('x', 5);
+    expect(s.getBook('x')).toMatchObject({ bestSell: 20, updatedAt: 1_000 });
+    s.setStars('x', undefined, undefined);
+    expect(s.getBook('x')?.updatedAt).toBe(1_000);
+  });
+
+  it('timestamps snapshots and deltas per item, including a confirmed empty book', () => {
+    let now = 1_000;
+    const s = new LiveStore('pc', () => now);
+    s.applySnapshot({ url_name: 'x', orders: [ord({ id: '1' })] });
+    now = 2_000;
+    s.applySnapshot({ url_name: 'y', orders: [] });
+    expect(s.getBook('x')?.updatedAt).toBe(1_000);
+    expect(s.getBook('y')?.updatedAt).toBe(2_000);
+    now = 3_000;
+    expect(s.applyDelta({ url_name: 'x', removeIds: ['1'] }))
+      .toMatchObject({ updatedAt: 3_000, bestSell: 0 });
+    now = 4_000;
+    expect(s.getBook('x')?.updatedAt).toBe(3_000);
+    expect(s.getBook('y')?.updatedAt).toBe(2_000);
+    s.drop('x');
+    expect(s.getBook('x')).toBeNull();
+    now = 5_000;
+    expect(s.applySnapshot({ url_name: 'x', orders: [] }).updatedAt).toBe(5_000);
+  });
+
   it('computes best online buy/sell from a snapshot (ingame preferred)', () => {
     const s = new LiveStore('pc');
     const book = s.applySnapshot({ url_name: 'x', orders: [

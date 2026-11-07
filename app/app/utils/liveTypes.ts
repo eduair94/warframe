@@ -20,7 +20,7 @@ export interface LiveBook {
   sellAvg: number
   onlineBuyCount: number
   onlineSellCount: number
-  updatedAt: number // epoch ms
+  updatedAt: number // epoch ms of the last received snapshot/delta, never a read
   sellOrders: OrderRow[] // top online sellers, cheapest first (what you'd buy from)
   buyOrders: OrderRow[] // top online buyers, highest first (what you'd sell to)
 }
@@ -64,7 +64,14 @@ export interface RecentOrder {
 // Global 'pulse' broadcast: online traders, live orders/min, latest listings.
 export interface MarketPulse {
   online: { connections: number; authorizedUsers: number }
+  onlineUpdatedAt: number // last online report, independent from incoming orders
   ordersPerMin: number
   recent: RecentOrder[]
-  updatedAt: number
+  updatedAt: number // last received upstream data; zero until the first message
+}
+
+// Independent upstream sources, distinct from the browser's Socket.IO connection.
+export interface LiveSourceStatus {
+  books: boolean
+  orders: boolean
 }

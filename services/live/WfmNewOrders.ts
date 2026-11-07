@@ -55,9 +55,16 @@ export interface OnlineReport {
 
 export interface MarketPulse {
   online: OnlineReport;
+  onlineUpdatedAt: number; // last valid online report received; 0 before any report
   ordersPerMin: number;
   recent: RecentOrder[]; // newest first, capped
-  updatedAt: number;
+  updatedAt: number; // last valid source data received, epoch ms; 0 before any data
+}
+
+/** Accept numeric source fields without treating null, booleans or blanks as zero. */
+function sourceNumber(value: unknown): number {
+  if (typeof value !== 'number' && (typeof value !== 'string' || !value.trim())) return NaN;
+  return Number(value);
 }
 
 export interface WfmNewOrdersOpts {
@@ -69,8 +76,10 @@ export interface WfmNewOrdersOpts {
 
 export class WfmNewOrders {
   private online: OnlineReport = { connections: 0, authorizedUsers: 0 };
+  private onlineUpdatedAt = 0;
   private recent: RecentOrder[] = [];
   private stamps: number[] = []; // arrival times (ms) of every order, for orders/min
+  private updatedAt = 0;
   private readonly resolveItem: WfmNewOrdersOpts['resolveItem'];
   private readonly cap: number;
   private readonly now: () => number;
@@ -87,10 +96,17 @@ export class WfmNewOrders {
     try { m = JSON.parse(raw); } catch { return null; }
     const route = m && m.route;
     if (route === '@wfm|event/reports/online' && m.payload) {
+      const connections = sourceNumber(m.payload.connections);
+      const authorizedUsers = sourceNumber(m.payload.authorizedUsers);
+      if (!Number.isFinite(connections) || connections < 0 ||
+          !Number.isFinite(authorizedUsers) || authorizedUsers < 0) return route;
       this.online = {
-        connections: Number(m.payload.connections) || 0,
-        authorizedUsers: Number(m.payload.authorizedUsers) || 0,
+        connections,
+        authorizedUsers,
       };
+      const receivedAt = this.now();
+      this.updatedAt = receivedAt;
+      this.onlineUpdatedAt = receivedAt;
     } else if (route === '@wfm|event/subscriptions/newOrder' && m.payload) {
       this.addOrder(m.payload);
     }
@@ -99,19 +115,26 @@ export class WfmNewOrders {
 
   private addOrder(p: any): void {
     if (!p || (p.type !== 'buy' && p.type !== 'sell')) return;
+    const platinum = sourceNumber(p.platinum);
+    const quantity = p.quantity === undefined ? 1 : sourceNumber(p.quantity);
+    if (typeof p.itemId !== 'string' || !p.itemId.trim() ||
+        !Number.isFinite(platinum) || platinum <= 0 ||
+        !Number.isFinite(quantity) || quantity <= 0) return;
+    const receivedAt = this.now();
+    this.updatedAt = receivedAt;
     // Count every order toward the activity rate, even ones we can't name.
-    this.stamps.push(this.now());
+    this.stamps.push(receivedAt);
     const item = p.itemId ? this.resolveItem(String(p.itemId)) : null;
     if (!item || !item.url_name) return; // ticker only shows items we can name
-    const at = Date.parse(p.createdAt) || this.now();
+    const at = Date.parse(p.createdAt) || receivedAt;
     this.recent.unshift({
       itemId: String(p.itemId || ''),
       url_name: item.url_name,
       item_name: item.item_name || item.url_name,
       thumb: item.thumb || '',
       type: p.type,
-      platinum: Number(p.platinum) || 0,
-      quantity: Number(p.quantity) || 1,
+      platinum,
+      quantity,
       rank: typeof p.rank === 'number' ? p.rank : undefined,
       platform: String((p.user && p.user.platform) || p.platform || 'pc'),
       at,
@@ -124,9 +147,10 @@ export class WfmNewOrders {
     this.stamps = this.stamps.filter((t) => t >= cut);
     return {
       online: this.online,
+      onlineUpdatedAt: this.onlineUpdatedAt,
       ordersPerMin: this.stamps.length,
       recent: this.recent.slice(),
-      updatedAt: this.now(),
+      updatedAt: this.updatedAt,
     };
   }
 }
