@@ -104,13 +104,10 @@
             <div v-if="b.title" class="ga-links__title">{{ b.title }}</div>
             <div class="ga-linkgrid">
               <component
-                :is="l.to ? NuxtLink : 'a'"
+                :is="isInternalLink(l) ? NuxtLink : 'a'"
                 v-for="(l, i) in b.links"
                 :key="i"
-                :to="l.to ? localePath(l.to) : undefined"
-                :href="l.href || undefined"
-                :target="l.href ? '_blank' : undefined"
-                :rel="l.href ? 'noopener' : undefined"
+                v-bind="cardLinkProps(l)"
                 class="ga-linkcard"
                 @click="onLinkClick(l, 'inline')"
               >
@@ -158,13 +155,10 @@
         <h2 class="ga-section__title">{{ relatedLabel }}</h2>
         <div class="ga-linkgrid">
           <component
-            :is="l.to ? NuxtLink : 'a'"
+            :is="isInternalLink(l) ? NuxtLink : 'a'"
             v-for="(l, i) in guide.related"
             :key="i"
-            :to="l.to ? localePath(l.to) : undefined"
-            :href="l.href || undefined"
-            :target="l.href ? '_blank' : undefined"
-            :rel="l.href ? 'noopener' : undefined"
+            v-bind="cardLinkProps(l)"
             class="ga-linkcard"
             @click="onLinkClick(l, 'related')"
           >
@@ -227,6 +221,19 @@ function toneClass(tone?: string) {
 // Shared safe inline renderer (utils/richText.ts, auto-imported).
 const rich = (input: string) => renderRich(input, (path) => localePath(path))
 
+// Some guide snapshots store internal card destinations in href rather than to.
+// Classify the destination itself, as the inline rich-text renderer does.
+function isInternalLink(link: GuideLink): boolean {
+  return /^\/(?!\/)/.test(link.to || link.href || '')
+}
+
+function cardLinkProps(link: GuideLink) {
+  const destination = link.to || link.href
+  if (isInternalLink(link)) return { to: localePath(destination!) }
+  const newTab = destination && !destination.startsWith('#')
+  return { href: destination, target: newTab ? '_blank' : undefined, rel: newTab ? 'noopener' : undefined }
+}
+
 function scrollTo(id: string) {
   const el = document.getElementById(id)
   if (el) {
@@ -256,7 +263,7 @@ function onFaqToggle(e: Event, index: number) {
  *  external ones but knows neither the guide nor the internal destinations. */
 function onLinkClick(l: GuideLink, placement: 'inline' | 'related') {
   trackContent('guide_link_click', l.label, {
-    internal: !!l.to,
+    internal: isInternalLink(l),
     guide_slug: props.guide.slug,
     placement,
   })

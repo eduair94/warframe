@@ -1774,3 +1774,101 @@ overflow or console warnings/errors are observed. Screenshot capture is unavaila
 so these DOM and interaction checks are not a visual pixel review.
 This follow-up is committed before a second full deployment;
 the final revision and its evidence supersede the first release for this iteration.
+
+## November 8, 2026 — relic decisions and language-preserving guide cards
+
+This daily iteration starts from `d2bf4e9`, aligned across local, origin, API and
+sync, with no active deployment. The hypothesis is that accurate answers to relic
+questions and links that preserve the reader's language improve usefulness and
+retention. No traffic or ranking increase is claimed. Supermetrics discovery and
+its reconnect-help request both require reauthentication; no GA4/Search Console
+rows or complete seven-/twenty-eight-day comparisons were available.
+
+### Content and navigation
+
+The relic guide was reviewed throughout against eleven primary references, with
+its review date advanced to November 8 only after the English review. It now
+distinguishes the single blueprint in a Common Forma slot from the two blueprints
+in an Uncommon slot. Refinement helps the latter slot and reduces the former's
+probability; Radiant is not a universal Forma recommendation. The existing
+refinement table and the four-player Radiant calculation remain, including the
+roughly 66% chance that the target rare reward does not appear in one round.
+
+Other corrections cover one relic per endless reward round, Omnia and Railjack
+eligibility, personal Reactant in ordinary fissures versus shared pickups in
+Void Storms, and earning base Void Traces at ten Reactant without a relic.
+Prime relics are explicitly scoped to Lith/Meso/Neo/Axi; Requiem Eterna has
+separate rules. Aya buys Varzia's offered relics, while Regal Aya buys eligible
+Prime gear directly. Varzia's current stock must be checked in game. Refinement,
+market estimates and vault status no longer imply guaranteed profits, available
+buyers or a universally fastest mission. Forma blueprints are distinguished
+from tradable or Ducat-eligible Prime items.
+
+All nine section anchors, eight FAQs and four videos are retained. Video
+availability/title/channel checks passed, but the full videos were not reviewed;
+an adjacent note explains the limits of older demonstrations. FAQ text and
+existing structured answers come from the same content snapshot. Central SEO
+titles/descriptions remain relevant and unchanged; no new rich-result claim is
+made. Fifteen other overdue guide reviews remain queued.
+
+Guide cards previously chose their link component by whether a snapshot used
+`to` or `href`. Railjack's four internal `href` cards therefore lost the active
+language and opened a new tab. The shared renderer now classifies the actual
+destination for both inline and related cards. Root-relative destinations use
+the localized router; external URLs and fragment anchors retain their behavior.
+Click analytics uses the same classification. This repairs 52 Railjack cards
+across thirteen languages and protects the shared component's other guide uses.
+
+The standard guide translation command made one request and stopped on
+`CONSUMER_SUSPENDED`/403; eleven queued locales were skipped and no snapshots
+were written by that provider. There were no retries, credential changes or
+alternate-provider requests. The existing localized guide snapshots were then
+updated through a bounded local editorial exception, preserving unchanged
+translations and the source's identifiers, numerical mechanics and destinations.
+This exception applies to the reviewed guide snapshots, not generated UI locale
+files. Local provenance and review evidence are retained separately from the
+failed provider log; these are not represented as provider-generated results.
+
+### Evidence and release
+
+Primary references include the [official drop tables](https://www.warframe.com/droptables),
+[Update 36.1 Forma quantities](https://www.warframe.com/en/patch-notes/pc/36-1-0),
+[Specters of the Rail Hotfix 13](https://www.warframe.com/en/patch-notes/pc/18-16-13),
+[Update 19 endless relic selection](https://www.warframe.com/en/patch-notes/pc/19-0-0),
+[Update 30 Void Storms](https://www.warframe.com/en/patch-notes/pc/30-0-0),
+[Update 35.5 Omnia](https://www.warframe.com/en/patch-notes/pc/35-5-0),
+[Update 42 Requiem Eterna](https://www.warframe.com/en/patch-notes/pc/42-0-0),
+and the [Prime Resurgence FAQ](https://support.warframe.com/hc/en-us/articles/4413725645453-Prime-Resurgence-FAQ).
+The article lists all eleven sources. The official news and patch indexes have
+no newer entry than November 2 news and October 28 patch 44.1.4.1.
+
+Availability passes ten HTTP checks and MongoDB is up. Freshness is still a
+separate failure: all 3,893 quotes exceed one day, with a baseline median age of
+108.44 hours and the latest quote at November 4, 02:21:35 UTC. Existing logs show
+upstream 403 responses; no new upstream probes or access workaround were used.
+Live sources correctly remain unconfirmed, with zero observed books/orders.
+Endo, Ducats and the 242-row set comparison pass their regression checks using
+retained quotes. Process changes that occurred before this iteration are noted
+in the baseline; today's four offbox PIDs and six transport hashes are the
+preservation reference, rather than assuming yesterday's PIDs remain current.
+
+Local checks pass: 849 backend tests, 128 frontend tests and 26 guide tests
+(1,003 total), the production API build, locale compilation, all 25 guide
+integrity checks and the repository-map gate. The final localized delta contains
+83 changed text leaves per non-English locale (996 total); unchanged text leaves
+are preserved exactly. Thirty-two incidental table-label rewrites were restored
+to their previous translations before final validation. Structural values,
+destinations, sources and numeric tokens match the reviewed English source.
+Independent review covered the central-European/Slavic delta; a separate review
+sampled the key mechanics in the Latin and East Asian snapshots. Local validation
+and final release evidence are recorded under `tmp/nov08-*`.
+The regression suite exercises both real card grids and router links across all
+thirteen locales, including external URLs, fragments, query strings and click
+classification. Release checks require the exact final SHA and a successful
+full workflow before fetching the thirteen relic pages and thirteen Railjack
+pages, their visible text, sources, Article/FAQ data, canonical/hreflang and
+sampled assets. Browser interaction checks are separate from HTTP/SSR evidence.
+All intended source, snapshots and this record are committed before the final
+API/frontend/live deploy. Final outcome, sync alignment, browser results and
+source freshness are saved to ignored evidence and automation memory, leaving
+no later tracked documentation change undeployed.

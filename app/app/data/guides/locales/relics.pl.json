@@ -2,17 +2,17 @@
   "slug": "relics",
   "eyebrow": "Centrum Wiedzy · Relics & Void Traces",
   "title": "Poradnik do Relics & Void Traces",
-  "lede": "Void Relics to jednoręki bandyta w Warframe na sprzęt Prime — a gdy zrozumiesz ulepszanie, Void Traces i wspólne nagrody, szanse przechylą się zdecydowanie na Twoją korzyść. Oto jak efektywnie otwierać relics i zamieniać łup w platinum.",
+  "lede": "Dowiedz się, jak otwierać relikty Prime, wybierać poziom ulepszenia, zbierać Void Traces i dzielić się nagrodami. Zanim wydasz ślady, sprawdź różnicę między pospolitymi a niepospolitymi nagrodami Forma, a następnie porównaj części Prime według szacowanej wartości rynkowej i wartości w dukatach.",
   "category": "farming",
   "readMins": 9,
   "stats": [
     {
       "num": "4",
-      "label": "ery relics · Lith→Axi"
+      "label": "ery reliktów Prime · Lith→Axi"
     },
     {
       "num": "6",
-      "label": "nagrody na relic",
+      "label": "możliwe nagrody z reliktu Prime",
       "tone": "alt"
     },
     {
@@ -22,7 +22,7 @@
     },
     {
       "num": "6–30",
-      "label": "Void Traces za otwarcie"
+      "label": "bazowe ślady przy 10 Reactant"
     }
   ],
   "sections": [
@@ -32,50 +32,50 @@
       "blocks": [
         {
           "type": "p",
-          "text": "**Void Relic** to zapieczętowany pojemnik ze **sprzętem Prime** — częściami do Warframe, częściami broni i schematami Forma. Nie możesz go po prostu otworzyć w swoim warsztacie (Foundry); musisz zabrać go na specjalną misję zwaną **Void Fissure** i tam go „otworzyć”. Każdy relic należy do jednej z czterech **er** (eras), a era mówi ci tylko, *jaka pula części Prime* znajduje się w środku i *mniej więcej gdzie dropi* — nie mówi nic o tym, jak dobry jest łup."
+          "text": "Ten poradnik dotyczy reliktów **Lith, Meso, Neo i Axi**, których nagrodami mogą być schematy Prime, komponenty Prime i schematy Formy. Otwieraj je w pasującej **Void Fissure**, w **Omnia Fissure** albo podczas **Void Storm** na Railjacku. Dokładny kod reliktu określa pulę nagród; sama era nie mówi nic o wartości rynkowej nagrody. **Requiem Eterna** działa na innych zasadach: zawiera osiem modów Requiem i nie można go ulepszać za Void Traces."
         },
         {
           "type": "p",
-          "text": "Relics można również **handlować** (są tradeable), co jest głównym powodem, dla którego farming Prime zamienia się w platinum: otwierasz relics dla części, sprzedajesz zapasowe innym graczom i kupujesz od kogoś innego dokładnie ten relic, którego ci brakuje. Zobacz [poradnik do Platinum](/guides/platinum), aby poznać pełną pętlę ekonomii."
+          "text": "Reliktami można **handlować**. Możesz otworzyć relikt, aby otrzymać nagrodę, albo wymienić posiadany relikt z innym graczem. Zbywalne schematy i komponenty Prime można też sprzedawać osobno, jeśli znajdziesz kupca i uzgodnicie cenę. Podstawy handlu opisuje [poradnik o platynie](/guides/platinum)."
         },
         {
           "type": "table",
           "table": {
             "columns": [
               "Era",
-              "Tier",
-              "Gdzie zazwyczaj dropi"
+              "Przykładowe źródło",
+              "Co sprawdzić"
             ],
             "rows": [
               [
                 "Lith",
-                "Początkowy",
-                "Wczesne nodes w Origin System i zlecenia niskiego poziomu"
+                "Hepit, Void — Pojmanie",
+                "Sprawdź, czy dokładnie ten relikt znajduje się w aktualnej tabeli nagród."
               ],
               [
                 "Meso",
-                "Średni",
-                "Misje ze środka star-chart i zlecenia"
+                "Ukko, Void — Pojmanie",
+                "Tabela tej misji zawiera również relikty Neo i Aya."
               ],
               [
                 "Neo",
-                "Wysoki",
-                "Późniejsze planety, rotacje endless, zlecenia wyższego poziomu"
+                "Ukko, Void — Pojmanie",
+                "Wybieraj według konkretnej potrzebnej nagrody, nie tylko ery."
               ],
               [
                 "Axi",
-                "Endgame",
-                "Późna star-chart, długie rotacje endless, Steel Path, zlecenia wysokiego poziomu"
+                "Apollo, Lua — Zakłócenia",
+                "Sprawdź rotację nagród i jej aktualną pulę reliktów."
               ]
             ],
-            "note": "Miejsca dropu zmieniają się wraz z aktualizacjami. Aby znaleźć aktualnie najlepszy node dla konkretnego relic, sprawdź listę Void Fissure w grze lub tabele dropu na wiki."
+            "note": "To przykłady, a nie pełny ranking. Wyszukaj dokładny kod reliktu w oficjalnych tabelach nagród i sprawdź informacje o jego źródłach w grze. Lista Void Fissures pokazuje, gdzie otwierać relikty; nie jest listą miejsc, w których można zdobyć dany relikt."
           }
         },
         {
           "type": "kv",
           "kv": [
             {
-              "k": "Ery relics",
+              "k": "Ery reliktów Prime",
               "v": "Lith, Meso, Neo, Axi"
             },
             {
@@ -84,7 +84,7 @@
             },
             {
               "k": "Reactant wymagany do otwarcia",
-              "v": "10 na gracza, na relic"
+              "v": "10 na twoim liczniku w każdej rundzie nagród"
             },
             {
               "k": "Waluta do ulepszania",
@@ -92,7 +92,7 @@
             },
             {
               "k": "Gdzie je otwierasz",
-              "v": "Tylko misje Void Fissure"
+              "v": "Void Fissures, Omnia Fissures i Void Storms na Railjacku"
             }
           ]
         }
@@ -104,19 +104,19 @@
       "blocks": [
         {
           "type": "p",
-          "text": "Każdy relic zawiera dokładnie **sześć możliwych nagród**, podzielonych na trzy stopnie rzadkości:"
+          "text": "Każdy relikt Lith, Meso, Neo lub Axi oferuje **sześć możliwych nagród** podzielonych na trzy poziomy rzadkości. Przy otwarciu wybierasz jedną nagrodę:"
         },
         {
           "type": "list",
           "items": [
-            "**3 Common** nagrody (brązowe) — zazwyczaj tanie części i schematy Forma",
-            "**2 Uncommon** nagrody (srebrne) — części o średniej wartości",
-            "**1 Rare** nagroda (złota) — pożądana część i powód, dla którego ulepszasz relic"
+            "**3 pospolite (Common)** nagrody (brązowe) — przedmioty Prime lub pojedynczy schemat Formy, zależnie od reliktu",
+            "**2 niepospolite (Uncommon)** nagrody (srebrne) — przedmioty Prime lub dwa schematy Formy, zależnie od reliktu",
+            "**1 rzadka (Rare)** nagroda (złota) — jej rzadkość nie gwarantuje wysokiej ceny w handlu"
           ]
         },
         {
           "type": "info",
-          "text": "Ulepszanie (refinement) nigdy nie zmienia tego, *które* sześć części znajduje się w środku relic — zmienia jedynie **szanse** na trafienie rare w stosunku do common. Relic, który nie zawiera pożądanej części, nigdy jej nie dropnie, bez względu na to, jak bardzo go ulepszysz. Zawsze sprawdzaj zawartość relic przed zainwestowaniem traces."
+          "text": "Ulepszanie zmienia **prawdopodobieństwa**, nie pulę nagród: zwiększa szanse na nagrody niepospolite i rzadkie, a zmniejsza na pospolite. Jeśli relikt nie zawiera szukanego przedmiotu, ulepszenie go nie doda. Przed wydaniem śladów sprawdź zarówno nagrodę, jak i jej poziom rzadkości."
         }
       ]
     },
@@ -129,25 +129,25 @@
           "steps": [
             {
               "h": "Wyposaż jeden relic",
-              "p": "Otwórz zakładkę Void Fissures na star-chart i wybierz misję, której era odpowiada posiadanemu przez Ciebie relic. Przed uruchomieniem wybierz relic i jego poziom ulepszenia. Na jedną misję możesz zabrać tylko jeden relic."
+              "p": "Wybierz szczelinę przyjmującą relikty danej ery lub Omnia Fissure dla dowolnego reliktu Lith, Meso, Neo bądź Axi. Przed startem wybierz relikt i poziom ulepszenia. Wyposażasz jeden relikt na każdą rundę nagród; niekończące się szczeliny pozwalają wybrać kolejny między rundami."
             },
             {
               "h": "Znajdź przeciwników Corrupted",
-              "p": "Po wejściu do środka, szczelina skazi (corrupts) pobliskich wrogów — zaczną świecić energią Void. Ci przeciwnicy Corrupted to jedyne źródło, z którego dropi Reactant."
+              "p": "Pozwól szczelinie skazić przeciwników, a następnie pokonuj tych Skażonych, aby zdobywać Reactant. W Void Storms szukaj Skażonych w obszarach pokonywanych pieszo, takich jak grupy abordażowe, Crewships i miejsca realizacji celów misji."
             },
             {
               "h": "Zbierz 10 Reactant",
-              "p": "Każdy członek drużyny musi osobiście zebrać 10 Reactant przed zakończeniem misji (lub rotacji). Obserwuj licznik na swoim HUD; podnoszone Reactant są widoczne dla wszystkich, ale każdy zbiera swoje własne 10."
+              "p": "W zwykłych Void Fissures każdy gracz zbiera własny Reactant. W Void Storms na Railjacku zebrany Reactant jest współdzielony przez drużynę. W obu przypadkach upewnij się, że licznik na twoim HUD osiągnie **10/10** przed ewakuacją lub końcem rundy nagród."
             },
             {
               "h": "Otwórz i wybierz nagrodę",
-              "p": "Gdy misja się skończy — lub na koniec każdej rotacji w misji typu endless — zobaczysz do czterech nagród: swoją oraz swoich towarzyszy z drużyny. Wybierz jedną najlepszą, którą chcesz zatrzymać."
+              "p": "Po naładowaniu wyposażonego reliktu ukończ misję lub rundę nagród w misji bez końca. Możesz wybrać jedną z nagród graczy, którzy również otworzyli relikt, wliczając własną — łącznie do czterech możliwości. Kilku graczy może wybrać tę samą nagrodę."
             }
           ]
         },
         {
           "type": "warn",
-          "text": "Nie biegnij do ewakuacji (extraction), zanim nie zbierzesz wszystkich 10 Reactant. Jeśli Twój relic nie zostanie naładowany przed zakończeniem misji, pozostanie zapieczętowany i nic nie otrzymasz — *co prawda* zachowasz relic (nienaładowany relic nie jest zużywany), ale cały bieg jest zmarnowany, więc zawsze dokończ ładowanie przed ewakuacją."
+          "text": "Przed ewakuacją lub kolejną rundą nagród sprawdź liczniki Reactant wszystkich graczy. Jeśli nie naładujesz reliktu, nie możesz wybrać nagrody z reliktu w tej rundzie. Nieotwarty relikt zostaje u ciebie; nie tracisz przez to innych zdobytych nagród misji."
         }
       ]
     },
@@ -157,7 +157,7 @@
       "blocks": [
         {
           "type": "p",
-          "text": "Nowy relic ma status **Intact** i daje tylko **2%** szansy na rare. Wydanie **Void Traces** na jego ulepszenie zwiększa szanse na rare (oraz uncommon) w trzech krokach, osiągając maksimum na poziomie **Radiant**, gdzie szansa na rare wynosi **10%** — to 5-krotna poprawa. To najważniejszy czynnik, na który masz wpływ."
+          "text": "Nieulepszony relikt ma poziom **Intact** i **2%** szansy na rzadką nagrodę. Ulepszanie zwiększa prawdopodobieństwa nagród rzadkich i niepospolitych; przy **Radiant** szansa na rzadką nagrodę wynosi **10%**. Niektóre aktywności przyznają już ulepszone relikty, więc przed wydaniem śladów sprawdź obecny poziom reliktu."
         },
         {
           "type": "table",
@@ -204,7 +204,7 @@
         },
         {
           "type": "p",
-          "text": "**Czy powinieneś ulepszać wszystko do Radiant?** Nie. Radiant kosztuje aż 100 traces, więc zachowaj to dla relics, których część *rare* jest naprawdę wartościowa lub której potrzebujesz. Jeśli tylko otwierasz relics, aby nakarmić maszynę [Ducat](/ducats) lub polujesz na część common, używaj ich jako **Intact** — otworzysz znacznie więcej relics przy tym samym budżecie traces. Użyj [narzędzia wartości crack-or-sell](/relics-value) to see whether a relic is worth refining or worth more sold whole."
+          "text": "**Dobieraj ulepszenie do celu.** Intact daje największą szansę na konkretną pospolitą nagrodę, w tym **pojedynczy schemat Formy**. Niepospolita Forma to **dwa schematy**: szansa rośnie z **11% przy Intact** do **20% przy Radiant**, a ulepszenie z Intact kosztuje **100 Void Traces**. Dla rzadkich nagród Radiant zwiększa szansę z 2% do 10%. Porównaj dodatkową szansę z zapasem śladów i liczbą posiadanych reliktów. [Narzędzie „otworzyć czy sprzedać”](/relics-value) podaje szacunki oparte na rynku, a nie gwarantowany przychód ze sprzedaży."
         }
       ]
     },
@@ -214,19 +214,19 @@
       "blocks": [
         {
           "type": "p",
-          "text": "Void Traces pochodzą **prawie wyłącznie** z otwierania relics na szczelinach (fissures) — istnieje kilka niszowych źródeł (Granum Void, niektóre skrytki w Isolation Vault), ale z praktycznego punktu widzenia traces i relics to ten sam farm. Każdy otwarty relic daje małą, losową ilość traces (bazowo **6–30**), a — co warto wiedzieć — **Resource Booster podwaja** tę ilość. Zatem „farming traces” i „farming relics” to dosłownie ta sama aktywność."
+          "text": "Zebranie **10 Reactant** w szczelinie przyznaje bazowo **6–30 Void Traces**, nawet jeśli nie zabierzesz **żadnego reliktu**. Wyprawa wyłącznie po ślady nie zużywa więc reliktu, ale też nie pozwala wybrać nagrody z reliktu. Zabranie reliktu pozwala zdobyć ślady i nagrodę z reliktu w tej samej rundzie."
         },
         {
           "type": "list",
           "items": [
-            "Otwieraj śmieciowe relics (junk relics), których nigdy byś nie sprzedał — każde otwarcie nadal daje traces, a do tego zazwyczaj schemat Forma (Forma BP) lub część na ducat-fodder.",
-            "Twój limit przechowywania traces jest **ograniczony, a limit ten skaluje się z Mastery Rank** — wynosi 100 dla zupełnie nowego gracza i rośnie o +50 na rangę, osiągając tysiące na wysokim MR. Wszystko, co zdobędziesz, gdy osiągniesz swój osobisty limit, zostanie utracone, więc wydawaj je, zanim się przepełnisz.",
-            "Rób szybkie fissures (patrz następna sekcja), aby otwierać relics jeden po drugim, zamiast czekać na wolnych misjach."
+            "Zabierz relikt, który chcesz otworzyć, jeśli zależy ci również na nagrodzie Prime lub Formie. Nie wybieraj reliktu, jeśli twoim jedynym celem jest zbieranie śladów.",
+            "Limit przechowywania Void Traces wynosi **100 + 50 × ranga mistrzostwa**. Przed zbieraniem sprawdź wolne miejsce, aby móc wykorzystać ślady, zamiast tracić je po osiągnięciu limitu.",
+            "Wybierz dostępną szczelinę, którą potrafisz niezawodnie ukończyć, i kontroluj licznik Reactant przed końcem każdej rundy."
           ]
         },
         {
           "type": "tip",
-          "text": "Nie ma dedykowanego „trace node”. Najszybsze gromadzenie traces pochodzi z robienia jedna po drugiej szybkich misji Capture lub bogatych w nagrody szczelin Disruption z użyciem relics, które i tak zamierzałeś otworzyć."
+          "text": "Na krótką sesję wybierz szczelinę z pojedynczym zakończeniem, aby skończyć po jednej nagrodzie. Przy wielokrotnym otwieraniu niekończąca się szczelina pozwala wybierać nowy relikt co rundę. Porównaj własny czas ukończenia, zbierania Reactant i ładowania, zamiast zakładać, że jedna misja jest zawsze najszybsza."
         }
       ]
     },
@@ -236,30 +236,30 @@
       "blocks": [
         {
           "type": "p",
-          "text": "Oto mechanika, która zmienia wszystko: w pełnej drużynie (squad) **wszyscy czterej gracze widzą wszystkie cztery losowania** na ekranie nagród i każdy z was zatrzymuje *jedno* z nich. Twój własny relic wylosował common? Jeśli relic kolegi z drużyny wylosował rare, możesz zamiast tego wziąć rare. To podstawa **Radiant share** — standardowego sposobu społeczności na farming drogich części rare."
+          "text": "Gdy wszyscy czterej gracze otworzą relikt, każdy może wybrać **jedną z czterech ujawnionych nagród**. Wszyscy mogą wybrać ten sam przedmiot, nie odbierając go pozostałym. **Radiant share**, czyli radshare, to umowa drużyny, aby zabrać ten sam relikt ulepszony do Radiant i zwiększyć liczbę losowań konkretnej rzadkiej nagrody."
         },
         {
           "type": "info",
-          "text": "Cztery relics Radiant *tego samego typu* losują rare niezależnie, każdy z szansą 10%. Szansa, że rare pojawi się przynajmniej raz dla całej drużyny do wyboru, wynosi 1 − 0,9⁴ ≈ **34%** — w porównaniu do 10% przy grze solo. Rozegraj kilka rund radshare z rzędu, a części rare przestaną wydawać się rzadkie."
+          "text": "Przy czterech niezależnych losowaniach z szansą **10%** na tę samą rzadką nagrodę prawdopodobieństwo, że pojawi się choć raz, wynosi **1 − 0.9⁴ ≈ 34%**. Oznacza to również, że w około **66%** takich rund się nie pojawi. Obliczenie zakłada, że wszyscy czterej gracze pomyślnie otworzą uzgodniony relikt Radiant; nie gwarantuje sukcesu w żadnym pojedynczym podejściu."
         },
         {
           "type": "steps",
           "steps": [
             {
               "h": "Najpierw ulepsz do Radiant",
-              "p": "Każdy musi dołączyć z dokładnie tym samym relic ulepszonym do Radiant (100 traces). Zgodnie z przyjętym zwyczajem, posiadanie relic Intact lub niewłaściwego relic skutkuje wyrzuceniem z grupy radshare."
+              "p": "Uzgodnijcie dokładny kod reliktu i poziom ulepszenia. Każdy gracz zabiera ten relikt na poziomie Radiant; ulepszenie z Intact kosztuje 100 Void Traces. Przed startem sprawdźcie relikty wyposażone przez drużynę."
             },
             {
               "h": "Znajdź grupę na czacie Recruiting",
-              "p": "Otwórz czat Recruiting / zakładkę rekrutacji i wyszukaj kod relic, np. „Axi A15 Rad” lub „Meso G1 RadShare”. „H” zazwyczaj oznacza, że ktoś hostuje/szuka."
+              "p": "Na czacie rekrutacyjnym szukaj lub zamieść ogłoszenie z pełnym kodem reliktu oraz „Rad” albo „RadShare”. Potwierdźcie cel i planowaną liczbę rund."
             },
             {
-              "h": "Rozegraj szybką szczelinę Capture",
-              "p": "Radshares prawie zawsze korzystają z najszybszej dostępnej szczeliny (fissure), aby każdy mógł otworzyć relic, zgarnąć rare i zresetować misję na kolejną rundę."
+              "h": "Wybierzcie odpowiednią szczelinę",
+              "p": "Wybierzcie dostępną misję, która przyjmuje ten relikt i pasuje drużynie. Zrealizujcie cel, dbając o to, by każdy gracz naładował swój relikt."
             },
             {
-              "h": "Wybierz rare, gdy się pojawi",
-              "p": "Na ekranie nagród, jeśli którykolwiek z czterech relics wylosował rare, wszyscy go wybierają. Powtórz i jedź dalej."
+              "h": "Wybierz potrzebną nagrodę",
+              "p": "Jeśli pojawi się szukany przedmiot, każdy gracz może go wybrać. W przeciwnym razie wybierzcie spośród dostępnych nagród i uzgodnijcie, czy kontynuować z kolejnym reliktem."
             }
           ]
         }
@@ -267,11 +267,11 @@
     },
     {
       "id": "fissure-efficiency",
-      "title": "Który typ fissure jest najbardziej efektywny",
+      "title": "Dobierz szczelinę do swojej sesji",
       "blocks": [
         {
           "type": "p",
-          "text": "Wszystkie fissures otwierają relics w ten sam sposób, ale różnią się diametralnie tym, *jak szybko* przechodzisz przez kolejne relics. Dopasuj typ misji do swojego celu:"
+          "text": "Wybór misji wpływa na cele, czas oczekiwania i dodatkowe nagrody. To praktyczne możliwości, a nie stały ranking szybkości:"
         },
         {
           "type": "table",
@@ -279,36 +279,36 @@
             "columns": [
               "Typ fissure",
               "Tempo",
-              "Najlepsze do"
+              "Przydatne, gdy"
             ],
             "rows": [
               [
                 "Capture",
-                "Najszybsze „raz i gotowe”",
-                "Masowe otwieranie, farming traces, radshares"
+                "Jedna runda nagród",
+                "Chcesz krótkiego celu misji, a potem czasu na zebranie reszty Reactant."
               ],
               [
                 "Exterminate / Sabotage",
-                "Szybkie",
-                "Szybkie pojedyncze otwarcia, gdy nie ma dostępnego Capture"
+                "Jedna runda nagród",
+                "Wolisz dostępny cel misji lub na liście nie ma odpowiedniej szczeliny Pojmania."
               ],
               [
                 "Survival / Defense / Interception",
                 "Endless",
-                "Jeden relic na rotację, bez ponownego wczytywania, stabilny dopływ traces"
+                "Chcesz kilku rund nagród bez wracania na Orbiter."
               ],
               [
                 "Disruption",
-                "Endless, bogate w nagrody",
-                "Szybkie rundy = wiele otwartych relics + traces za jednym posiedzeniem"
+                "Bez końca",
+                "Drużyna sprawnie broni przekaźników i zbiera Reactant w każdej rundzie."
               ]
             ],
-            "note": "W szczelinach typu endless otwierasz jeden relic na rotację i możesz zmienić go na nowy między rotacjami — bez konieczności powrotu na statek."
+            "note": "Niekończące się szczeliny pozwalają otworzyć jeden relikt w każdej rundzie, w której spełnisz warunki nagrody, i wybrać nowy między rundami. Nadal potrzebujesz 10 Reactant w każdej rundzie. Omnia zmienia dozwolone ery reliktów, a nie wymóg ich naładowania."
           }
         },
         {
           "type": "p",
-          "text": "**Złota zasada:** używaj **Capture**, gdy chcesz szybko otworzyć dużą stertę różnych relics lub rozegrać radshare, a typu **endless** (Survival lub Disruption), gdy chcesz usiąść i pofarmić traces lub otworzyć wiele relics bez ekranów ładowania. Nie masz pewności, które relics są w ogóle warte Twojego czasu? [Relic farming](/relic-farming) klasyfikuje, które relics dają najwięcej platinum na bieg."
+          "text": "**Planuj według swojego celu:** porównaj krótki cel misji z sesją bez końca, uwzględniając ładowanie i to, czy każdy zbierze 10 Reactant. Void Storms dają też nagrody Railjack; zobacz [poradnik Railjack](/guides/railjack). [Farming reliktów](/relic-farming) porównuje szacowane wartości nagród na otwarcie, nie gwarantowaną platynę na podejście lub minutę."
         }
       ]
     },
@@ -318,15 +318,15 @@
       "blocks": [
         {
           "type": "p",
-          "text": "Digital Extremes okresowo przenosi starsze wersje Prime do skarbca (**vaults**) — ich relics przestają dropić z aktualnych tabel dropu, aby zrobić miejsce na nowe. Relics, które masz już w ekwipunku, nadal działają bezterminowo, a wycofane relics pozostają **zbywalne** (tradeable), więc zawsze możesz kupić dokładnie ten, którego potrzebujesz, od innego gracza. Śledź, co wchodzi i wychodzi ze skarbca za pomocą [Vaulted Prime tracker](/vaulted)."
+          "text": "Gdy Prime trafia do **skarbca**, powiązane z nim relikty znikają ze zwykłych źródeł pozyskiwania. Posiadane relikty nadal można otwierać i wymieniać; inny gracz może mieć potrzebny relikt lub komponent Prime. [Tracker Prime w skarbcu](/vaulted) pomaga przeglądać dane o statusie, ale nadal trzeba sprawdzić dostępność u sprzedających i aktualną ofertę w grze."
         },
         {
           "type": "info",
-          "text": "**Prime Resurgence** przywraca wycofane relics w rotacji: odwiedź Varzię w **Maroo's Bazaar** i kupuj unvaulted relics za pomocą **Aya** (zdobywanej za darmo na mapie gwiezdnej, często dropiącej zamiast relics) lub premium **Regal Aya**. It's the safety net if a Prime you want is currently vaulted."
+          "text": "**Prime Resurgence** zmienia ofertę Varzii. Odwiedź ją w **Maroo’s Bazaar na Marsie** lub użyj **Visit Varzia** w segmencie reliktów na Orbiterze. Za **Aya** kupujesz relikty z jej aktualnego asortymentu; nadal musisz je otworzyć, aby mieć szansę na część. **Regal Aya** to odrębna waluta premium służąca do bezpośredniego zakupu sprzętu i akcesoriów Prime. Przed wydaniem waluty sprawdź aktualny asortyment Varzii w grze: oznaczenie Resurgence na stronie jest wnioskiem z danych o reliktach, nie potwierdzonym stanem sklepu."
         },
         {
           "type": "warn",
-          "text": "Gdy Prime trafia do skarbca (gets vaulted), popyt na jego części często gwałtownie rośnie, ponieważ kończą się zapasy. Jeśli masz zapasowe części, [Vaulted Primes spiking now](/vault-spikes) pokazuje, które z nich drożeją, dzięki czemu możesz je sprzedać w trakcie wzrostu cen."
+          "text": "Przeniesienie do skarbca nie gwarantuje wzrostu ceny: posiadane relikty i istniejące części pozostają w obiegu. Porównaj zapisane zmiany w [trendach cen Prime ze skarbca](/vault-spikes), a przed decyzją o handlu sprawdź wiek notowań i rzeczywiste oferty."
         }
       ]
     },
@@ -336,14 +336,14 @@
       "blocks": [
         {
           "type": "p",
-          "text": "Otwarty relic daje Ci część Prime (lub schemat Forma). Z każdą wyciągniętą częścią możesz zrobić trzy rzeczy:"
+          "text": "Nagrodą z reliktu Prime może być schemat lub komponent Prime albo jeden bądź dwa schematy Formy. Te przedmioty mają różne zastosowania. Dla odpowiednich przedmiotów Prime rozważ:"
         },
         {
           "type": "list",
           "items": [
-            "**Zbuduj ją** — stwórz Prime Warframe lub broń dla siebie.",
-            "**Sprzedaj za platinum** — wymieniaj duplikaty i niechciane części z innymi graczami.",
-            "**Zamień na Ducats** — oddaj części, których nikt nie kupuje, do kiosku Ducat na dowolnym przekaźniku (relay), a następnie wydaj Ducats na rotacyjny asortyment u Baro Ki'Teer."
+            "**Wytworzenie** — zachowaj wymagane schematy i komponenty, aby zbudować przedmiot Prime. Gotowymi Warframe’ami i bronią Prime nie można handlować.",
+            "**Sprzedaż za platynę** — zaoferuj innemu graczowi zbywalny schemat lub komponent Prime. Cena w ogłoszeniu nie gwarantuje sprzedaży.",
+            "**Wymianę na dukaty** — przed potwierdzeniem sprawdź w kiosku dukatów na Przekaźniku, które przedmioty Prime są przyjmowane i ile są warte. Dukaty wydajesz na ofertę Baro Ki’Teera."
           ]
         },
         {
@@ -353,31 +353,35 @@
               "label": "Wartość relic: crack or sell",
               "to": "/relics-value",
               "icon": "scale-balance",
-              "note": "Oczekiwane platinum na relic"
+              "note": "Szacowana wartość nagrody na relikt"
             },
             {
               "label": "Kalkulator: zestaw vs części",
               "to": "/comparison",
               "icon": "calculator-variant",
-              "note": "Wycena pełnego zestawu vs sprzedaż części"
+              "note": "Porównaj oferty cenowe zestawów i komponentów"
             },
             {
               "label": "Flip finder",
               "to": "/flip",
               "icon": "swap-horizontal",
-              "note": "Aktualne spready kupna/sprzedaży części"
+              "note": "Porównaj zapisane oferty kupna i sprzedaży"
             },
             {
               "label": "Ducat Value Finder",
               "to": "/ducats",
               "icon": "cash-multiple",
-              "note": "Najlepsze części do oddania Baro"
+              "note": "Porównaj wartości przedmiotów Prime w dukatach"
             }
           ]
         },
         {
           "type": "tip",
-          "text": "Schematy Forma są jednymi z najczęstszych nagród z relics, więc regularne robienie szczelin (fissures) służy jednocześnie jako darmowe źródło Forma, które zużyjesz na polaryzację swoich buildów — rzadko kiedy będziesz musiał je kupować."
+          "text": "**Schematy Formy nie są zbywalnymi częściami Prime i nie można ich wymienić na dukaty.** Wytwórz je w Odlewni, jeśli potrzebujesz Formy. Przed wyborem poziomu ulepszenia sprawdź, czy relikt oferuje jeden schemat jako nagrodę pospolitą, czy dwa jako niepospolitą."
+        },
+        {
+          "type": "info",
+          "text": "Poniższe filmy twórców to opcjonalne demonstracje. Sprawdzono ich dostępność, tytuły i kanały, ale nie przejrzano całej zawartości. Starsze filmy mogą pokazywać nieaktualne ilości Formy, czasy misji lub porady dotyczące zbierania zasobów; w razie różnic kieruj się aktualnymi mechanikami i oficjalnymi źródłami z tego poradnika."
         }
       ]
     }
@@ -385,35 +389,35 @@
   "faqs": [
     {
       "q": "Jak otworzyć Void Relic?",
-      "a": "Nie możesz otwierać relics z poziomu ekwipunku — musisz uruchomić misję Void Fissure. Wyposaż jeden relic przed startem, zabijaj świecących przeciwników Corrupted, aby zebrać 10 Reactant, a Twój relic otworzy się na końcu misji (lub na koniec każdej rotacji w trybie endless). Na ekranie nagród wybierasz jedną nagrodę z maksymalnie czterech."
+      "a": "Wyposaż relikt w szczelinie przyjmującej jego erę, w Omnia Fissure albo w odpowiednim Void Storm na Railjacku. Osiągnij 10 Reactant na HUD i ukończ misję lub rundę nagród w misji bez końca. W zwykłych szczelinach każdy zbiera Reactant osobno; w Void Storms zbiory są wspólne. Otwarcie własnego reliktu pozwala wybrać jedną z dostępnych nagród z reliktów drużyny, maksymalnie spośród czterech."
     },
     {
       "q": "Co właściwie daje ulepszenie relic do poziomu Radiant?",
-      "a": "Ulepszanie (refining) zużywa Void Traces, aby zwiększyć szanse na nagrody rare i uncommon. Relic o statusie Intact daje 2% szansy na rare; relic Radiant zwiększa ją do 10%. Nigdy nie zmienia to, które sześć części znajduje się w środku — jedynie szanse między nimi. Sprawdź [crack or sell](/relics-value) aby zobaczyć, czy ulepszanie danego relic jest opłacalne."
+      "a": "W reliktach Lith, Meso, Neo i Axi ulepszanie zwiększa szanse na nagrody niepospolite i rzadkie, a zmniejsza na pospolite, nie zmieniając sześciu możliwych nagród. Szansa na rzadką nagrodę rośnie z 2% przy Intact do 10% przy Radiant. Sprawdź poziom rzadkości celu i zapas śladów; [otworzyć czy sprzedać](/relics-value) podaje szacunki do porównania. Requiem Eterna nie można ulepszać."
     },
     {
-      "q": "Jak szybko farmić Void Traces?",
-      "a": "Traces pochodzą prawie wyłącznie z otwierania relics na szczelinach (fissures) — każde otwarcie daje bazowo 6–30, a Resource Booster podwaja tę ilość. Najszybszą metodą jest robienie jedna po drugiej szybkich szczelin Capture lub bogatych w nagrody szczelin Disruption z użyciem relics, które i tak zamierzałeś otworzyć. Twój limit przechowywania skaluje się z Mastery Rank (100 na samym początku, rośnie o +50 na rangę), więc wydawaj je, zanim osiągniesz limit i się przepełnisz."
+      "q": "Jak zbierać Void Traces bez zużywania reliktu?",
+      "a": "Możesz wejść do szczeliny bez reliktu i zebrać 10 Reactant, aby otrzymać bazowo 6–30 Void Traces. Nie możesz wybrać nagrody z reliktu, jeśli go nie wyposażysz i nie otworzysz. Wybierz misję, którą potrafisz niezawodnie ukończyć; niekończące się szczeliny umożliwiają kolejne rundy nagród. Limit przechowywania wynosi 100 + 50 × ranga mistrzostwa, więc sprawdź wolne miejsce przed zbieraniem."
     },
     {
       "q": "Co to jest Radiant share (radshare)?",
-      "a": "To pełna drużyna (squad), w której wszyscy czterej gracze przynoszą ten sam relic ulepszony do poziomu Radiant. Ponieważ każdy może wybrać spośród wszystkich czterech losowań na ekranie nagród, cztery niezależne losowania rare z szansą 10% dają drużynie około 34% szansy na to, że rare pojawi się w każdym biegu — znacznie lepiej niż 10% solo. Szukaj grup na czacie Recruiting, wpisując kod relic oraz „Rad” lub „RadShare”."
+      "a": "Radshare to umowa drużyny, że wszyscy czterej gracze zabiorą ten sam relikt na poziomie Radiant. Jeśli wszyscy go otworzą, cztery niezależne losowania z szansą 10% dają około 34% szansy, że ta sama rzadka nagroda pojawi się przynajmniej raz. Każdy może ją wybrać, jeśli się pojawi; nadal istnieje około 66% szansy, że nie pojawi się w tej rundzie. Szukaj na czacie rekrutacyjnym kodu reliktu wraz z „Rad” lub „RadShare”."
     },
     {
       "q": "Czy powinienem ulepszać każdy relic do Radiant?",
-      "a": "Nie. Radiant kosztuje aż 100 traces, więc rezerwuj go dla relics, których część rare jest wartościowa lub której naprawdę potrzebujesz. Do farmowania części common, Forma lub ducat fodder, używaj relics jako Intact, dzięki czemu otworzysz ich znacznie więcej przy tym samym budżecie traces. [Narzędzie wartości relic](/relics-value) pomoże Ci podjąć decyzję dla każdego relic."
+      "a": "Nie. Intact daje najwyższą szansę na konkretną pospolitą nagrodę, w tym pospolitą Formę, która daje jeden schemat. Niepospolita Forma daje dwa schematy, a ulepszanie zwiększa jej szansę z 11% przy Intact do 20% przy Radiant. Radiant kosztuje 100 Void Traces przy ulepszaniu z Intact, więc wybieraj według poziomu rzadkości celu i zapasu śladów. [Narzędzie wartości reliktów](/relics-value) podaje szacunki do porównania."
     },
     {
       "q": "Gdzie dropią Void Relics?",
-      "a": "Relics dropią na całej mapie gwiezdnej — z nagród za misje, rotacji misji endless oraz zleceń (bounties) w otwartych światach. Relics typu Lith pochodzą z początkowych nodes, a Neo/Axi z późniejszej, trudniejszej zawartości i dłuższych misji endless. To, który konkretnie node jest najlepszy, zmienia się wraz z aktualizacjami, więc sprawdź tabele dropu w grze lub na wiki, aby znaleźć aktualne miejsce."
+      "a": "Relikty pochodzą z konkretnych nagród misji, rotacji, zleceń i pakietów reliktów. Na przykład Hepit w Void ma relikty Lith, Ukko ma Meso i Neo, a Apollo na Lua oferuje Axi w późniejszych tabelach nagród. Wyszukaj dokładny relikt w oficjalnych tabelach nagród i sprawdź odpowiednią rotację. Lista szczelin pokazuje, gdzie otworzyć relikt, nie gdzie go zdobyć."
     },
     {
       "q": "Czy nadal mogę zdobyć części Prime po tym, jak dany Prime trafi do skarbca (is vaulted)?",
-      "a": "Tak. Wszystkie relics, które masz już w ekwipunku, nadal działają bezterminowo, a wycofane (vaulted) relics pozostają zbywalne (tradeable), więc możesz kupić dokładnie ten relic od innego gracza. Możesz również zdobyć unvaulted relics poprzez Prime Resurgence u Varzii w Maroo's Bazaar przy użyciu Aya. Śledź dostępność za pomocą [Vaulted Prime tracker](/vaulted)."
+      "a": "Tak. Posiadane relikty nadal można otwierać i wymieniać, a gracze mogą sprzedawać potrzebne schematy lub komponenty Prime. Gdy Varzia oferuje odpowiedni relikt w Prime Resurgence, możesz kupić go za Aya i otworzyć, aby mieć szansę na część. Za Regal Aya kupuje się natomiast odpowiedni sprzęt Prime bezpośrednio. Sprawdź jej aktualną ofertę w grze; [tracker Prime w skarbcu](/vaulted) jest źródłem informacji, nie gwarancją obecnego asortymentu."
     },
     {
       "q": "Który typ misji fissure jest najlepszy do otwierania relics?",
-      "a": "Capture to najszybsza misja typu „raz i gotowe”, idealna do masowego otwierania, farmowania traces i radshares. Typy endless, takie jak Survival i Disruption, pozwalają otwierać relic na rotację bez ekranów ładowania, co jest lepsze przy długich sesjach grindu. Dopasuj typ misji w zależności od tego, czy zależy Ci na szybkości, czy na ilości."
+      "a": "Nie ma jednej zawsze najszybszej opcji. Pojmanie może pasować do krótkiej sesji, a niekończące się szczeliny pozwalają otwierać kolejny relikt co rundę bez powrotu na Orbiter. Wybieraj według tempa realizacji celów przez drużynę, zbierania Reactant i czasu ładowania. Void Storms na Railjacku są kolejną opcją, jeśli zależy ci też na ich nagrodach misji."
     }
   ],
   "videos": [
@@ -440,24 +444,48 @@
   ],
   "sources": [
     {
-      "label": "r/Warframe — If you want to farm relics, here is where to do it",
-      "href": "https://reddit.com/r/Warframe/comments/7poeao/if_you_want_to_farm_relics_here_is_where_to_do_it/"
+      "label": "Digital Extremes — official PC drop tables",
+      "href": "https://www.warframe.com/droptables"
     },
     {
-      "label": "r/Warframe — RNG relics, rewards & the grind (discussion)",
-      "href": "https://reddit.com/r/Warframe/comments/dr46xo/so_let_me_get_this_straight_we_need_to_farm_rng/"
+      "label": "Update 36.1 — two Forma blueprints in Uncommon relic rewards",
+      "href": "https://www.warframe.com/en/patch-notes/pc/36-1-0"
     },
     {
-      "label": "r/Warframe — Platinum farms ranked",
-      "href": "https://reddit.com/r/Warframe/comments/1f77ohc/platinum_farms_ranked_by_how_insane_the_people/"
+      "label": "Specters of the Rail: Hotfix 13 — traces without a relic and storage cap",
+      "href": "https://www.warframe.com/en/patch-notes/pc/18-16-13"
     },
     {
-      "label": "Warframe Wiki — Void Relic",
-      "href": "https://wiki.warframe.com/w/Void_Relic"
+      "label": "Specters of the Rail — relics and refinement costs",
+      "href": "https://forums.warframe.com/topic/687452-xb1-specters-of-the-rail/"
     },
     {
-      "label": "Warframe Wiki — Void Traces",
-      "href": "https://wiki.warframe.com/w/Void_Traces"
+      "label": "Update 19 — a new relic for each endless reward interval",
+      "href": "https://www.warframe.com/en/patch-notes/pc/19-0-0"
+    },
+    {
+      "label": "Update 30 — Void Storms and shared Reactant",
+      "href": "https://www.warframe.com/en/patch-notes/pc/30-0-0"
+    },
+    {
+      "label": "Update 35.5 — Omnia Fissures accept all four Prime relic eras",
+      "href": "https://www.warframe.com/en/patch-notes/pc/35-5-0"
+    },
+    {
+      "label": "Update 42 — Requiem Eterna has separate reward rules",
+      "href": "https://www.warframe.com/en/patch-notes/pc/42-0-0"
+    },
+    {
+      "label": "Digital Extremes — Relic Hunting 101",
+      "href": "https://www.warframe.com/en/news/guia-de-caca-as-reliquias"
+    },
+    {
+      "label": "Warframe Support — Prime Resurgence FAQ",
+      "href": "https://support.warframe.com/hc/en-us/articles/4413725645453-Prime-Resurgence-FAQ"
+    },
+    {
+      "label": "Warframe Support — Trading FAQ",
+      "href": "https://support.warframe.com/hc/en-us/articles/37999066923533-Trading-FAQ-Safe-Trading-Tips"
     }
   ],
   "related": [
@@ -471,25 +499,25 @@
       "label": "Relic Farming",
       "to": "/relic-farming",
       "icon": "pickaxe",
-      "note": "Które relics dają najlepszy zysk na bieg"
+      "note": "Porównaj szacowane wartości nagród"
     },
     {
       "label": "Wartość relic: crack or sell",
       "to": "/relics-value",
       "icon": "scale-balance",
-      "note": "Oczekiwane plat na relic"
+      "note": "Szacowana wartość nagrody na relikt"
     },
     {
       "label": "Ducat Value Finder",
       "to": "/ducats",
       "icon": "diamond-stone",
-      "note": "Najlepsze części dla Baro"
+      "note": "Porównaj wartości przedmiotów Prime w dukatach"
     },
     {
       "label": "Vaulted Prime Tracker",
       "to": "/vaulted",
       "icon": "lock",
-      "note": "Co wchodzi, a co wychodzi ze skarbca"
+      "note": "Przeglądaj zapisany status skarbca"
     },
     {
       "label": "Pełne FAQ",
@@ -498,5 +526,5 @@
       "note": "Odpowiedzi na więcej pytań graczy"
     }
   ],
-  "updated": "2026-07-18"
+  "updated": "2026-11-08"
 }

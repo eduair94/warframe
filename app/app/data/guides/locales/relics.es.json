@@ -2,17 +2,17 @@
   "slug": "relics",
   "eyebrow": "Centro de conocimiento · Relics & Void Traces",
   "title": "Guía de Relics & Void Traces",
-  "lede": "Las Void Relics son la máquina tragamonedas de Warframe para obtener Prime gear — y una vez que entiendes el refinamiento, los Void Traces y las recompensas compartidas, las probabilidades se inclinan drásticamente a tu favor. Aquí te mostramos cómo abrir relics de manera eficiente y convertir el botín en platino.",
+  "lede": "Aprende a abrir reliquias Prime, elegir un nivel de refinamiento, reunir vestigios del Vacío y compartir recompensas. Comprueba la diferencia entre las recompensas de Forma comunes y poco comunes antes de gastar vestigios y compara después tus piezas Prime con las estimaciones de mercado y de ducados.",
   "category": "farming",
   "readMins": 9,
   "stats": [
     {
       "num": "4",
-      "label": "eras de relics · Lith→Axi"
+      "label": "eras de reliquias Prime · Lith→Axi"
     },
     {
       "num": "6",
-      "label": "recompensas por relic",
+      "label": "posibles recompensas de una reliquia Prime",
       "tone": "alt"
     },
     {
@@ -22,7 +22,7 @@
     },
     {
       "num": "6–30",
-      "label": "Void Traces por apertura"
+      "label": "vestigios base al reunir 10 reactantes"
     }
   ],
   "sections": [
@@ -32,50 +32,50 @@
       "blocks": [
         {
           "type": "p",
-          "text": "Una **Void Relic** es un contenedor sellado de **Prime gear** — componentes de Warframe, componentes de armas y planos de Forma. No puedes simplemente abrir una en tu Foundry; tienes que llevarla a una misión especial llamada **Void Fissure** y \"abrirla\" allí. Cada relic pertenece a una de cuatro **eras**, y la era solo te dice *qué conjunto de componentes Prime* puede contener la relic y *aproximadamente dónde cae* — no dice nada sobre qué tan bueno es el botín."
+          "text": "Esta guía trata las reliquias **Lith, Meso, Neo y Axi**, cuyas recompensas incluyen planos Prime, componentes Prime y planos de Forma. Ábrelas en una **fisura del Vacío** compatible, una **fisura Omnia** o una **tormenta del Vacío** de Railjack. El código exacto de la reliquia determina sus posibles recompensas; la era por sí sola no indica el valor de mercado de una recompensa. **Requiem Eterna** sigue reglas distintas: contiene ocho mods Réquiem y no se puede refinar con vestigios del Vacío."
         },
         {
           "type": "p",
-          "text": "Las relics también se pueden **comerciar**, que es la razón por la cual un farmeo de Prime se convierte en platino: abres relics para obtener componentes, vendes los repuestos a otros jugadores y le compras a alguien más la relic exacta que te falta. Consulta la [guía de Platino](/guides/platinum) para ver el ciclo económico completo."
+          "text": "Las reliquias son **intercambiables**. Puedes abrirlas para obtener recompensas o intercambiar una que poseas con otro jugador. Los planos y componentes Prime intercambiables también se pueden vender por separado, siempre que encuentres comprador y acordéis un precio. Consulta la [guía de platino](/guides/platinum) para conocer los fundamentos del comercio."
         },
         {
           "type": "table",
           "table": {
             "columns": [
               "Era",
-              "Tier",
-              "Dónde suele caer"
+              "Ejemplo de origen",
+              "Qué comprobar"
             ],
             "rows": [
               [
                 "Lith",
-                "Inicial",
-                "Nodos iniciales del Origin System y contratos de bajo nivel"
+                "Hepit, Vacío — Captura",
+                "Comprueba que la reliquia exacta figure en la tabla de recompensas actual."
               ],
               [
                 "Meso",
-                "Medio",
-                "Misiones del star-chart medio y contratos"
+                "Ukko, Vacío — Captura",
+                "Esta misión también incluye reliquias Neo y Aya en su tabla."
               ],
               [
                 "Neo",
-                "Alto",
-                "Planetas más avanzados, rotaciones infinitas, contratos de mayor nivel"
+                "Ukko, Vacío — Captura",
+                "Elige según la recompensa exacta que necesites, no solo por la era."
               ],
               [
                 "Axi",
-                "Endgame",
-                "Star chart avanzado, rotaciones infinitas largas, Steel Path, contratos de alto nivel"
+                "Apollo, Lua — Interrupción",
+                "Comprueba la rotación de recompensas y las reliquias que ofrece actualmente."
               ]
             ],
-            "note": "Las fuentes de obtención cambian con las actualizaciones. Para encontrar el mejor nodo actual para una relic específica, consulta la lista de Void Fissure en el juego o las tablas de hallazgos en la wiki."
+            "note": "Son ejemplos, no una clasificación exhaustiva. Busca el código exacto de la reliquia en las tablas oficiales de recompensas y comprueba en el juego dónde se obtiene. La lista de fisuras del Vacío indica dónde abrir reliquias; no indica dónde conseguir esa reliquia."
           }
         },
         {
           "type": "kv",
           "kv": [
             {
-              "k": "Eras de relics",
+              "k": "Eras de reliquias Prime",
               "v": "Lith, Meso, Neo, Axi"
             },
             {
@@ -84,7 +84,7 @@
             },
             {
               "k": "Reactant para abrir",
-              "v": "10 por jugador, por relic"
+              "v": "10 en tu contador por cada ronda de recompensas"
             },
             {
               "k": "Divisa de refinamiento",
@@ -92,7 +92,7 @@
             },
             {
               "k": "Dónde las abres",
-              "v": "Solo misiones de Void Fissure"
+              "v": "Fisuras del Vacío, fisuras Omnia y tormentas del Vacío de Railjack"
             }
           ]
         }
@@ -104,19 +104,19 @@
       "blocks": [
         {
           "type": "p",
-          "text": "Cada relic contiene exactamente **seis recompensas posibles**, divididas en tres rarezas:"
+          "text": "Cada reliquia Lith, Meso, Neo o Axi ofrece **seis recompensas posibles**, repartidas entre tres rarezas. Eliges una recompensa al abrirla:"
         },
         {
           "type": "list",
           "items": [
-            "**3 comunes** (bronce) — por lo general, componentes baratos y planos de Forma",
-            "**2 poco comunes** (plata) — componentes de valor medio",
-            "**1 rara** (oro) — el componente más codiciado, y la razón por la que refinas"
+            "**3 Comunes** (bronce) — objetos Prime o un plano de Forma, según la reliquia",
+            "**2 Poco comunes** (plata) — objetos Prime o dos planos de Forma, según la reliquia",
+            "**1 Rara** (oro) — su rareza no garantiza un precio de intercambio elevado"
           ]
         },
         {
           "type": "info",
-          "text": "El refinamiento nunca cambia *qué* seis componentes están dentro de una relic — solo cambia las **probabilidades** de obtener la recompensa rara frente a una común. Una relic que no contiene el componente que deseas nunca te lo dará, sin importar cuánto la refines. Siempre verifica el contenido de una relic antes de invertir traces."
+          "text": "El refinamiento cambia las **probabilidades**, no las recompensas posibles: aumentan las probabilidades de las poco comunes y raras y disminuyen las de las comunes. Si una reliquia no contiene lo que buscas, refinarla no puede añadirlo. Comprueba tanto la recompensa como su categoría de rareza antes de gastar vestigios."
         }
       ]
     },
@@ -129,25 +129,25 @@
           "steps": [
             {
               "h": "Equipa una relic",
-              "p": "Abre la pestaña de Void Fissures en el star chart y elige una misión cuya era coincida con una relic que poseas. Antes de comenzar, selecciona la relic y su nivel de refinamiento. Solo puedes llevar una relic por misión."
+              "p": "Elige una fisura que admita la era de tu reliquia o una fisura Omnia para cualquier reliquia Lith, Meso, Neo o Axi. Selecciona la reliquia y su refinamiento antes de iniciar la misión. Equipas una reliquia por ronda de recompensas; las fisuras sin fin permiten elegir otra entre rondas."
             },
             {
               "h": "Encuentra a los enemigos Corrupted",
-              "p": "Una vez dentro, la fisura corrompe a los enemigos cercanos — brillan con energía del Void. Estos enemigos Corrupted son los únicos que sueltan Reactant."
+              "p": "Deja que la fisura corrompa a los enemigos y derrota a esos enemigos Corruptos para obtener reactante. En las tormentas del Vacío, busca enemigos Corruptos en zonas que se recorren a pie, como los grupos de abordaje, las naves tripuladas y los objetivos de misión."
             },
             {
               "h": "Recolecta 10 de Reactant",
-              "p": "Cada miembro del escuadrón debe recoger personalmente 10 de Reactant antes de que termine la misión (or rotación). Vigila el contador en tu HUD; la aparición de Reactant se comparte visualmente, pero cada uno debe recolectar sus propios 10."
+              "p": "En las fisuras del Vacío normales, cada jugador recoge su propio reactante. En las tormentas del Vacío de Railjack, el reactante recogido se comparte con el escuadrón. En ambos casos, comprueba que tu HUD marque **10/10** antes de extraer o de que termine la ronda de recompensas."
             },
             {
               "h": "Abre y elige tu recompensa",
-              "p": "Cuando termine la misión — o al final de cada rotación en una misión infinita — verás hasta cuatro recompensas: la tuya más las de tus compañeros de escuadrón. Elige la mejor para conservarla."
+              "p": "Completa la misión o la ronda de recompensas sin fin después de cargar la reliquia equipada. Puedes elegir una de las recompensas de los compañeros que también abrieron una reliquia, incluida la tuya: hasta cuatro opciones. Varios jugadores pueden elegir la misma recompensa."
             }
           ]
         },
         {
           "type": "warn",
-          "text": "No corras a la extracción antes de haber recolectado los 10 de Reactant. Si tu relic no está cargada cuando termina la misión, permanecerá sellada y no otorgará nada — *sí* conservarás la relic (una relic sin cargar no se consume), pero habrás desperdiciado toda la partida, así que siempre termina de cargarla antes de extraer."
+          "text": "Comprueba el contador de reactante de todos antes de extraer o de la siguiente ronda de recompensas. Si no has cargado una reliquia, no podrás elegir una recompensa de reliquia en esa ronda. Conservas la reliquia sin abrir; esto no elimina las demás recompensas obtenidas en la misión."
         }
       ]
     },
@@ -157,7 +157,7 @@
       "blocks": [
         {
           "type": "p",
-          "text": "Una relic nueva está **Intact** y ofrece solo un **2%** de probabilidad para la recompensa rara. Gastar **Void Traces** para refinarla aumenta las probabilidades de obtener la recompensa rara (y poco común) en tres pasos, alcanzando un máximo en **Radiant**, donde la rara llega al **10%** — una mejora de 5 veces. Esta es la herramienta más importante bajo tu control."
+          "text": "Una reliquia sin refinar está en estado **Intact**, con una probabilidad del **2%** de obtener su recompensa rara. El refinamiento aumenta las probabilidades de recompensas raras y poco comunes; **Radiant** ofrece un **10%** para la rara. Algunas actividades entregan reliquias ya refinadas, así que comprueba su estado actual antes de gastar vestigios."
         },
         {
           "type": "table",
@@ -204,7 +204,7 @@
         },
         {
           "type": "p",
-          "text": "**¿Deberías mejorar todo a Radiant?** No. Radiant cuesta 100 traces completos, así que resérvalo para relics cuyo componente *raro* sea realmente valioso o uno que necesites. Si solo estás abriendo relics para alimentar la máquina de [Ducat](/ducats) o buscando un componente común, úsalas en **Intact** — abrirás muchas más relics con tu presupuesto de traces. Utiliza la [herramienta de valor de abrir o vender](/relics-value) para ver si vale la pena refinar una relic o si vale más vendida entera."
+          "text": "**Elige el refinamiento según lo que busques.** Intact maximiza la probabilidad de una recompensa común concreta, incluido **un solo plano de Forma**. Las recompensas de Forma poco comunes contienen **dos planos**: su probabilidad aumenta del **11% en Intact** al **20% en Radiant**, con un coste de **100 vestigios del Vacío** desde Intact. Para las recompensas raras, Radiant aumenta la probabilidad del 2% al 10%. Sopesa esa mejora frente a tus vestigios disponibles y la cantidad de reliquias que posees. La [herramienta de valor para abrir o vender](/relics-value) ofrece estimaciones basadas en el mercado, no ingresos de venta garantizados."
         }
       ]
     },
@@ -214,19 +214,19 @@
       "blocks": [
         {
           "type": "p",
-          "text": "Los Void Traces provienen **casi en su totalidad** de abrir relics en fissures — existen algunas fuentes muy específicas (el Granum Void, algunos alijos de Isolation Vault), pero para fines prácticos, los traces y las relics son el mismo farmeo. Cada relic que abres otorga una pequeña cantidad aleatoria de traces (una base de **6–30**), y — vale la pena saberlo — un **Resource Booster duplica** esa cantidad. Así que \"farmear traces\" y \"farmear relics\" son literalmente la misma actividad."
+          "text": "Al reunir **10 reactantes** en una fisura, recibes **6–30 vestigios del Vacío base**, aunque no hayas llevado **ninguna reliquia**. Una partida dedicada a reunir vestigios no consume una reliquia, pero tampoco permite elegir una recompensa de reliquia. Llevar una reliquia permite obtener vestigios y una recompensa de reliquia en la misma ronda."
         },
         {
           "type": "list",
           "items": [
-            "Abre relics basura que nunca venderías — cada apertura sigue otorgando traces, y por lo general un plano de Forma o un componente para convertir en ducats.",
-            "Tu almacenamiento de traces tiene un **límite, y este límite escala con el Mastery Rank** — 100 para un jugador nuevo, aumentando +50 por rango hasta llegar a miles en MR alto. Todo lo que ganes mientras estés en tu límite personal se perderá, así que gástalos antes de que se desborden.",
-            "Completa fissures rápidas (consulta la siguiente sección) para abrir relics una tras otra en lugar de esperar en misiones lentas."
+            "Lleva una reliquia que quieras abrir si también deseas una recompensa Prime o de Forma. No selecciones ninguna si tu único objetivo es reunir vestigios.",
+            "Tu límite de almacenamiento de vestigios del Vacío es **100 + 50 × rango de maestría**. Comprueba el espacio disponible antes de reunirlos para poder utilizarlos en lugar de perder ganancias por alcanzar el límite.",
+            "Elige una fisura disponible que puedas completar con confianza y vigila el contador de reactante antes de terminar cada ronda."
           ]
         },
         {
           "type": "tip",
-          "text": "No existe un \"nodo de traces\" dedicado. La acumulación más rápida de traces proviene de encadenar misiones rápidas de Capture o fissures de Disruption ricas en recompensas con relics que de todos modos ibas a abrir."
+          "text": "Para una sesión corta, una fisura que no sea sin fin permite terminar tras una recompensa. Para abrir varias reliquias, una fisura sin fin permite seleccionar una nueva en cada ronda. Compara tus tiempos de misión, recogida de reactante y carga en lugar de suponer que una misión siempre es la más rápida."
         }
       ]
     },
@@ -236,30 +236,30 @@
       "blocks": [
         {
           "type": "p",
-          "text": "Aquí está la mecánica que lo cambia todo: en un escuadrón completo, **los cuatro jugadores ven los cuatro resultados** en la pantalla de recompensas, y cada uno de ustedes conserva *uno* de ellos. ¿Tu propia relic dio un común? Si la relic de un compañero de escuadrón dio el raro, puedes elegir el raro en su lugar. Esa es la base del **Radiant share** — la forma estándar de la comunidad para farmear componentes raros y costosos."
+          "text": "Cuando los cuatro jugadores abren una reliquia, cada uno puede elegir **una de las cuatro recompensas reveladas**. Todos pueden elegir el mismo objeto sin quitárselo a nadie. Un **Radiant share**, o radshare, es un acuerdo del escuadrón para llevar la misma reliquia refinada a Radiant y aumentar el número de intentos de obtener una recompensa rara concreta."
         },
         {
           "type": "info",
-          "text": "Cuatro relics Radiant del *mismo tipo* tiran cada una por el raro de forma independiente al 10%. La probabilidad de que el raro aparezca al menos una vez para que todo el escuadrón lo recoja es de 1 − 0.9⁴ ≈ **34%** — en comparación con el 10% al jugar en solitario. Juega unas cuantas rondas seguidas de radshare y los raros dejarán de sentirse raros."
+          "text": "Con cuatro intentos independientes del **10%** para la misma recompensa rara, la probabilidad de que aparezca al menos una vez es **1 − 0.9⁴ ≈ 34%**. Esto también significa que alrededor del **66%** de esas rondas no la mostrarán. El cálculo supone que los cuatro jugadores abren correctamente la reliquia Radiant acordada; no garantiza el resultado de ninguna partida."
         },
         {
           "type": "steps",
           "steps": [
             {
               "h": "Refina a Radiant primero",
-              "p": "Todos deben llegar con la misma relic exacta refinada a Radiant (100 traces). Por convención, llevar una relic Intact o la relic incorrecta hará que te expulsen del grupo de radshare."
+              "p": "Acordad el código exacto de la reliquia y el refinamiento. Cada jugador lleva esa reliquia en Radiant; refinarla desde Intact cuesta 100 vestigios del Vacío. Comprobad las reliquias equipadas por el escuadrón antes de empezar."
             },
             {
               "h": "Encuentra un grupo en Recruiting",
-              "p": "Abre el chat de Recruiting / la pestaña de Reclutamiento y busca el código de la relic, por ejemplo, \"Axi A15 Rad\" o \"Meso G1 RadShare\". \"H\" generalmente significa que alguien está organizando/buscando."
+              "p": "En el chat de Reclutamiento, busca o anuncia el código completo de la reliquia junto con \"Rad\" o \"RadShare\". Confirma qué recompensa se busca y cuántas rondas planea jugar el grupo."
             },
             {
-              "h": "Completa una fissure rápida de Capture",
-              "p": "Los radshares casi siempre utilizan la fissure más rápida disponible para que todos puedan abrir, recoger el raro y reiniciar para otra ronda."
+              "h": "Elige una fisura adecuada",
+              "p": "Elige una misión disponible que admita la reliquia y se adapte al escuadrón. Completa el objetivo asegurándote de que todos los jugadores carguen su reliquia."
             },
             {
-              "h": "Toma el raro cuando aparezca",
-              "p": "En la pantalla de recompensas, si alguno de los cuatro obtuvo el raro, todos lo eligen. Repite el proceso."
+              "h": "Elige la recompensa que necesites",
+              "p": "Si aparece la recompensa buscada, cada jugador puede seleccionarla. Si no, elige entre las recompensas disponibles y acordad si continuar con otra reliquia."
             }
           ]
         }
@@ -267,11 +267,11 @@
     },
     {
       "id": "fissure-efficiency",
-      "title": "Qué tipo de fissure es más eficiente",
+      "title": "Elige una fisura para tu sesión",
       "blocks": [
         {
           "type": "p",
-          "text": "Todas las fissures abren relics de la misma manera, pero difieren enormemente en *qué tan rápido* rotas las relics. Adapta el tipo de misión a tu objetivo:"
+          "text": "La misión elegida cambia los objetivos, el tiempo de espera y las recompensas secundarias. Estas son opciones prácticas, no una clasificación fija por velocidad:"
         },
         {
           "type": "table",
@@ -279,36 +279,36 @@
             "columns": [
               "Tipo de fissure",
               "Ritmo",
-              "Ideal para"
+              "Útil cuando"
             ],
             "rows": [
               [
                 "Capture",
-                "La más rápida de una sola pasada",
-                "Apertura masiva, farmeo de traces, radshares"
+                "Una ronda de recompensas",
+                "Quieres un objetivo corto y después tiempo para terminar de recoger reactante."
               ],
               [
                 "Exterminate / Sabotage",
-                "Rápido",
-                "Aperturas individuales rápidas cuando no hay Capture disponible"
+                "Una ronda de recompensas",
+                "Prefieres el objetivo disponible o no hay una fisura de Captura adecuada."
               ],
               [
                 "Survival / Defense / Interception",
                 "Infinita",
-                "Una relic por rotación, sin recargas, obtención constante de traces"
+                "Quieres varias rondas de recompensas sin volver al Orbitador."
               ],
               [
                 "Disruption",
-                "Infinita, rica en recompensas",
-                "Rondas rápidas = muchas aperturas + traces por sesión"
+                "Sin fin",
+                "Tu escuadrón se siente cómodo defendiendo conductos y recogiendo reactante en cada ronda."
               ]
             ],
-            "note": "En las fissures infinitas abres una relic por rotación y puedes cambiar a una nueva relic entre rotaciones, sin tener que regresar a tu nave."
+            "note": "Las fisuras sin fin permiten abrir una reliquia por ronda de recompensas válida y elegir otra entre rondas. Sigues necesitando 10 reactantes en cada ronda. Omnia cambia las eras de reliquias admitidas, no la obligación de cargar una reliquia."
           }
         },
         {
           "type": "p",
-          "text": "**Regla general:** usa **Capture** cuando quieras abrir un gran montón de relics diferentes rápidamente o hacer un radshare, y usa un tipo **infinito** (Survival o Disruption) cuando quieras sentarte a farmear traces o abrir muchas relics sin pantallas de carga. ¿No estás seguro de qué relics valen la pena? [Farmeo de relics](/relic-farming) clasifica qué relics otorgan más platino por partida."
+          "text": "**Planifica según tu objetivo:** compara una misión de objetivo rápido con una sesión sin fin, incluyendo los tiempos de carga y si todos llegan a 10 reactantes. Las tormentas del Vacío también ofrecen recompensas de Railjack; consulta la [guía de Railjack](/guides/railjack). [Farmeo de reliquias](/relic-farming) compara valores estimados de recompensas por apertura, no platino garantizado por partida o por minuto."
         }
       ]
     },
@@ -318,15 +318,15 @@
       "blocks": [
         {
           "type": "p",
-          "text": "Digital Extremes envía periódicamente al **vault** a los Primes más antiguos — sus relics dejan de aparecer en las tablas de hallazgos activas para dar espacio a las nuevas. Las relics que ya tienes en tu inventario siguen funcionando para siempre, y las relics en el vault siguen siendo **comerciables**, por lo que siempre puedes comprarle a otro jugador la relic exacta que necesitas. Sigue la pista de lo que entra y sale con el [rastreador de Vaulted Prime](/vaulted)."
+          "text": "Cuando un Prime entra en el **vault**, sus reliquias asociadas dejan de obtenerse por las vías habituales. Las reliquias que ya posees siguen siendo utilizables e intercambiables; otro jugador puede tener la reliquia o el componente Prime que necesitas. El [rastreador de Prime del vault](/vaulted) permite explorar los datos de estado, pero todavía debes comprobar la disponibilidad de vendedores y las ofertas actuales del juego."
         },
         {
           "type": "info",
-          "text": "**Prime Resurgence** trae de vuelta las relics del vault en una rotación: visita a Varzia en el **Maroo's Bazaar** y compra relics fuera del vault con **Aya** (que se obtiene gratis en todo el star chart, a menudo cayendo en lugar de relics) o con **Regal Aya** premium. Es la red de seguridad si un Prime que deseas se encuentra actualmente en el vault."
+          "text": "**Resurgimiento Prime** rota las ofertas de Varzia. Visítala en el **Bazar de Maroo, en Marte**, o utiliza **Visitar a Varzia** desde el segmento de reliquias del Orbitador. **Aya** compra las reliquias de su selección actual; aún debes abrirlas para tener una oportunidad de obtener la pieza. **Aya Regia** es una moneda prémium distinta para comprar directamente equipo Prime y accesorios. Confirma la selección actual de Varzia en el juego antes de gastar: una etiqueta de Resurgimiento en un sitio es una inferencia a partir de datos de reliquias, no un inventario de tienda verificado."
         },
         {
           "type": "warn",
-          "text": "Cuando un Prime entra al vault, la demanda de sus componentes suele dispararse porque la oferta se agota. Si tienes repuestos guardados, [Vaulted Primes subiendo ahora](/vault-spikes) muestra cuáles están subiendo de precio para que puedas vender durante el auge."
+          "text": "Entrar en el vault no garantiza una subida de precio: las reliquias que ya se poseen y las piezas existentes siguen circulando. Usa las [tendencias de precios de Prime del vault](/vault-spikes) para comparar cambios registrados y comprueba después la antigüedad de las cotizaciones y las ofertas reales antes de decidir qué intercambiar."
         }
       ]
     },
@@ -336,14 +336,14 @@
       "blocks": [
         {
           "type": "p",
-          "text": "Una relic abierta te otorga un componente Prime (o un plano de Forma). Tienes tres opciones con cualquier componente que obtengas:"
+          "text": "Una recompensa de reliquia Prime puede ser un plano o componente Prime, o uno o dos planos de Forma. Estos objetos tienen usos distintos. Para los objetos Prime que cumplan los requisitos, considera:"
         },
         {
           "type": "list",
           "items": [
-            "**Construirlo** — ensambla el Warframe o arma Prime para ti.",
-            "**Venderlo por platino** — comercia duplicados y componentes no deseados con otros jugadores.",
-            "**Convertirlo en Ducats** — entrega los componentes que nadie compra en el quiosco de Ducat en cualquier repetidor, luego gasta los Ducats en el inventario rotativo de Baro Ki'Teer."
+            "**Fabricarlo** — conserva los planos y componentes necesarios para crear el objeto Prime. Los Warframes y las armas Prime ya fabricados no se pueden intercambiar.",
+            "**Intercambiarlo por platino** — ofrece un plano o componente Prime intercambiable a otro jugador. Un precio anunciado no garantiza una venta.",
+            "**Canjearlo por ducados** — comprueba en el quiosco de ducados de un Repetidor qué objetos Prime se aceptan y sus valores antes de confirmar. Los ducados se gastan en las ofertas de Baro Ki’Teer."
           ]
         },
         {
@@ -353,31 +353,35 @@
               "label": "Valor de relic: abrir o vender",
               "to": "/relics-value",
               "icon": "scale-balance",
-              "note": "Platino esperado por relic"
+              "note": "Valor estimado de recompensas por reliquia"
             },
             {
               "label": "Calculadora de set vs. componentes",
               "to": "/comparison",
               "icon": "calculator-variant",
-              "note": "Compara el precio de un set completo frente a vender componentes individuales"
+              "note": "Compara cotizaciones de conjuntos y componentes"
             },
             {
               "label": "Buscador de reventas",
               "to": "/flip",
               "icon": "swap-horizontal",
-              "note": "Margen de compra/venta en vivo de componentes"
+              "note": "Compara cotizaciones de compra y venta registradas"
             },
             {
               "label": "Buscador de valor de Ducat",
               "to": "/ducats",
               "icon": "cash-multiple",
-              "note": "Mejores componentes para entregar a Baro"
+              "note": "Compara valores en ducados de objetos Prime"
             }
           ]
         },
         {
           "type": "tip",
-          "text": "Los planos de Forma son una de las recompensas más comunes de las relics, por lo que completar fissures constantemente funciona como una fuente gratuita de la Forma que consumirás al polarizar configuraciones — rara vez necesitarás comprarlas."
+          "text": "**Los planos de Forma no son piezas Prime intercambiables y no se pueden canjear por ducados.** Fabrícalos en la Fundición si necesitas Forma. Comprueba si la reliquia ofrece un plano en una categoría común o dos en una poco común antes de elegir el nivel de refinamiento."
+        },
+        {
+          "type": "info",
+          "text": "Los vídeos de creadores que aparecen abajo son demostraciones opcionales. Se comprobaron su disponibilidad, títulos y canales, pero no se revisó su contenido completo. Los vídeos antiguos pueden mostrar cantidades de Forma, tiempos de misión o consejos de farmeo desactualizados; cuando difieran, utiliza las mecánicas actuales y las referencias oficiales de esta guía."
         }
       ]
     }
@@ -385,35 +389,35 @@
   "faqs": [
     {
       "q": "¿Cómo abro una Void Relic?",
-      "a": "No puedes abrir relics desde tu inventario — tienes que completar una misión de Void Fissure. Equipa una relic antes de comenzar, mata a los enemigos Corrupted brillantes para recolectar 10 de Reactant, y tu relic se abrirá al final de la misión (o en cada rotación en misiones infinitas). En la pantalla de recompensas, eliges una recompensa de hasta cuatro opciones."
+      "a": "Equipa una reliquia en una fisura que admita su era, una fisura Omnia o una tormenta del Vacío de Railjack compatible. Alcanza 10 reactantes en el HUD y completa la misión o la ronda de recompensas sin fin. En las fisuras normales, cada jugador recoge su propio reactante; en las tormentas del Vacío, se comparte lo recogido. Abrir tu reliquia permite elegir una de las recompensas disponibles de las reliquias del escuadrón, hasta cuatro."
     },
     {
       "q": "¿Qué hace realmente refinar una relic a Radiant?",
-      "a": "El refinamiento consume Void Traces para mejorar las probabilidades de obtener las recompensas raras y poco comunes. Una relic Intact le da a la rara un 2% de probabilidad; una relic Radiant la eleva al 10%. Nunca cambia qué seis componentes están dentro — solo las probabilidades entre ellos. Consulta [abrir o vender](/relics-value) para ver si vale la pena refinar una relic determinada."
+      "a": "Para las reliquias Lith, Meso, Neo y Axi, el refinamiento aumenta las probabilidades de recompensas poco comunes y raras y reduce las de las comunes sin cambiar las seis recompensas posibles. La probabilidad de la rara aumenta del 2% en Intact al 10% en Radiant. Comprueba la categoría buscada y tus vestigios disponibles; [abrir o vender](/relics-value) ofrece estimaciones para comparar. Requiem Eterna no se puede refinar."
     },
     {
-      "q": "¿Cómo puedo farmear Void Traces rápido?",
-      "a": "Los traces provienen casi en su totalidad de abrir relics en fissures — cada apertura otorga una base de 6–30, y un Resource Booster duplica eso. El método más rápido es encadenar fissures rápidas de Capture o fissures de Disruption ricas en recompensas con relics que de todos modos ibas a abrir. Tu límite de almacenamiento escala con el Mastery Rank (100 al principio, aumentando +50 por rango), así que gástalos antes de alcanzar tu límite y desbordarte."
+      "q": "¿Cómo reúno vestigios del Vacío sin usar una reliquia?",
+      "a": "Puedes entrar en una fisura sin reliquia y reunir 10 reactantes para obtener 6–30 vestigios del Vacío base. No podrás elegir una recompensa de reliquia si no equipas y abres una. Elige una misión que puedas completar con confianza; las fisuras sin fin permiten varias rondas de recompensas. Tu límite de almacenamiento es 100 + 50 × rango de maestría, así que comprueba el espacio antes de reunir vestigios."
     },
     {
       "q": "¿Qué es un Radiant share (radshare)?",
-      "a": "Es un escuadrón completo donde los cuatro jugadores llevan la misma relic refinada a Radiant. Debido a que todos pueden elegir entre los cuatro resultados en la pantalla de recompensas, cuatro tiradas independientes del 10% para el raro le dan al escuadrón aproximadamente un 34% de probabilidad de que aparezca el raro en cada partida — mucho mejor que el 10% en solitario. Encuentra grupos en el chat de Recruiting buscando el código de la relic más \"Rad\" o \"RadShare\"."
+      "a": "Un radshare es un acuerdo del escuadrón para que los cuatro jugadores lleven la misma reliquia en Radiant. Si todos la abren, cuatro intentos independientes del 10% ofrecen alrededor de un 34% de probabilidad de revelar la misma recompensa rara al menos una vez. Todos pueden elegirla si aparece; sigue habiendo cerca de un 66% de probabilidad de que no aparezca en esa ronda. Busca en el chat de Reclutamiento el código de la reliquia junto con \"Rad\" o \"RadShare\"."
     },
     {
       "q": "¿Debería refinar cada relic a Radiant?",
-      "a": "No. Radiant cuesta 100 traces completos, así que resérvalo para relics cuyo componente raro sea valioso o uno que realmente necesites. Para farmear comunes, Forma o chatarra para ducats, usa las relics en Intact para abrir muchas más con tu presupuesto de traces. La [herramienta de valor de relic](/relics-value) te ayuda a decidir para cada relic."
+      "a": "No. Intact ofrece la mayor probabilidad de una recompensa común concreta, incluida la Forma de categoría común, que entrega un plano. La Forma poco común entrega dos planos, y el refinamiento aumenta su probabilidad del 11% en Intact al 20% en Radiant. Radiant cuesta 100 vestigios del Vacío desde Intact, así que elige según la categoría buscada y tus vestigios disponibles. La [herramienta de valor de reliquias](/relics-value) ofrece estimaciones para comparar."
     },
     {
       "q": "¿Dónde caen las Void Relics?",
-      "a": "Las relics caen en todo el star chart — desde recompensas de misiones, rotaciones de misiones infinitas y contratos de mundo abierto. Las relics Lith provienen de nodos iniciales, y las Neo/Axi de contenido posterior más difícil y partidas infinitas más largas. Qué nodo específico es el mejor cambia con las actualizaciones, así que consulta las tablas de hallazgos del juego o la wiki para conocer la ubicación actual."
+      "a": "Las reliquias se obtienen mediante recompensas de misiones concretas, rotaciones, contratos y paquetes de reliquias. Por ejemplo, Hepit en el Vacío tiene reliquias Lith, Ukko tiene Meso y Neo, y Apollo en Lua tiene recompensas Axi en sus tablas posteriores. Busca la reliquia exacta en las tablas oficiales de recompensas y comprueba la rotación correspondiente. La lista de fisuras indica dónde abrir una reliquia, no dónde obtenerla."
     },
     {
       "q": "¿Puedo seguir obteniendo componentes Prime después de que un Prime entre al vault?",
-      "a": "Sí. Cualquier relic que ya esté en tu inventario seguirá funcionando para siempre, y las relics en el vault siguen siendo comerciables, por lo que puedes comprarle la relic exacta a otro jugador. También puedes obtener relics fuera del vault a través de Prime Resurgence con Varzia en el Maroo's Bazaar usando Aya. Sigue la disponibilidad con el [rastreador de Vaulted Prime](/vaulted)."
+      "a": "Sí. Las reliquias que ya posees siguen siendo utilizables e intercambiables, y otros jugadores pueden vender los planos o componentes Prime que necesitas. Cuando Varzia ofrece una reliquia adecuada en Resurgimiento Prime, puedes comprarla con Aya y abrirla para tener una oportunidad de obtener la pieza. En cambio, Aya Regia compra directamente el equipo Prime disponible para esa moneda. Comprueba su selección actual en el juego; el [rastreador de Prime del vault](/vaulted) sirve de referencia, no garantiza las existencias actuales."
     },
     {
       "q": "¿Qué tipo de misión de fissure es mejor para abrir relics?",
-      "a": "Capture es la más rápida de una sola pasada, ideal para aperturas masivas, farmeo de traces y radshares. Los tipos infinitos como Survival y Disruption te permiten abrir una relic por rotación sin pantallas de carga, lo cual es mejor para sesiones largas de farmeo. Adapta el tipo según si buscas velocidad o volumen."
+      "a": "No existe una opción que sea siempre la más rápida. Captura puede adaptarse a una sesión corta, mientras que las fisuras sin fin permiten abrir otra reliquia cada ronda sin volver al Orbitador. Elige según la velocidad de tu escuadrón para completar objetivos, reunir reactante y cargar misiones. Las tormentas del Vacío de Railjack son otra opción cuando también quieres sus recompensas de misión."
     }
   ],
   "videos": [
@@ -440,24 +444,48 @@
   ],
   "sources": [
     {
-      "label": "r/Warframe — If you want to farm relics, here is where to do it",
-      "href": "https://reddit.com/r/Warframe/comments/7poeao/if_you_want_to_farm_relics_here_is_where_to_do_it/"
+      "label": "Digital Extremes — official PC drop tables",
+      "href": "https://www.warframe.com/droptables"
     },
     {
-      "label": "r/Warframe — RNG relics, rewards & the grind (discussion)",
-      "href": "https://reddit.com/r/Warframe/comments/dr46xo/so_let_me_get_this_straight_we_need_to_farm_rng/"
+      "label": "Update 36.1 — two Forma blueprints in Uncommon relic rewards",
+      "href": "https://www.warframe.com/en/patch-notes/pc/36-1-0"
     },
     {
-      "label": "r/Warframe — Platinum farms ranked",
-      "href": "https://reddit.com/r/Warframe/comments/1f77ohc/platinum_farms_ranked_by_how_insane_the_people/"
+      "label": "Specters of the Rail: Hotfix 13 — traces without a relic and storage cap",
+      "href": "https://www.warframe.com/en/patch-notes/pc/18-16-13"
     },
     {
-      "label": "Warframe Wiki — Void Relic",
-      "href": "https://wiki.warframe.com/w/Void_Relic"
+      "label": "Specters of the Rail — relics and refinement costs",
+      "href": "https://forums.warframe.com/topic/687452-xb1-specters-of-the-rail/"
     },
     {
-      "label": "Warframe Wiki — Void Traces",
-      "href": "https://wiki.warframe.com/w/Void_Traces"
+      "label": "Update 19 — a new relic for each endless reward interval",
+      "href": "https://www.warframe.com/en/patch-notes/pc/19-0-0"
+    },
+    {
+      "label": "Update 30 — Void Storms and shared Reactant",
+      "href": "https://www.warframe.com/en/patch-notes/pc/30-0-0"
+    },
+    {
+      "label": "Update 35.5 — Omnia Fissures accept all four Prime relic eras",
+      "href": "https://www.warframe.com/en/patch-notes/pc/35-5-0"
+    },
+    {
+      "label": "Update 42 — Requiem Eterna has separate reward rules",
+      "href": "https://www.warframe.com/en/patch-notes/pc/42-0-0"
+    },
+    {
+      "label": "Digital Extremes — Relic Hunting 101",
+      "href": "https://www.warframe.com/en/news/guia-de-caca-as-reliquias"
+    },
+    {
+      "label": "Warframe Support — Prime Resurgence FAQ",
+      "href": "https://support.warframe.com/hc/en-us/articles/4413725645453-Prime-Resurgence-FAQ"
+    },
+    {
+      "label": "Warframe Support — Trading FAQ",
+      "href": "https://support.warframe.com/hc/en-us/articles/37999066923533-Trading-FAQ-Safe-Trading-Tips"
     }
   ],
   "related": [
@@ -471,25 +499,25 @@
       "label": "Farmeo de relics",
       "to": "/relic-farming",
       "icon": "pickaxe",
-      "note": "Qué relics rinden más por partida"
+      "note": "Compara valores estimados de recompensas"
     },
     {
       "label": "Valor de relic: abrir o vender",
       "to": "/relics-value",
       "icon": "scale-balance",
-      "note": "Platino esperado por relic"
+      "note": "Valor estimado de recompensas por reliquia"
     },
     {
       "label": "Buscador de valor de Ducat",
       "to": "/ducats",
       "icon": "diamond-stone",
-      "note": "Mejores componentes para Baro"
+      "note": "Compara valores en ducados de objetos Prime"
     },
     {
       "label": "Rastreador de Vaulted Prime",
       "to": "/vaulted",
       "icon": "lock",
-      "note": "Qué está dentro y fuera del vault"
+      "note": "Explora el estado registrado del vault"
     },
     {
       "label": "Preguntas frecuentes completas",
@@ -498,5 +526,5 @@
       "note": "Más respuestas a preguntas de los jugadores"
     }
   ],
-  "updated": "2026-07-18"
+  "updated": "2026-11-08"
 }

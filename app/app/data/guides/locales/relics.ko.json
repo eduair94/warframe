@@ -2,17 +2,17 @@
   "slug": "relics",
   "eyebrow": "지식 센터 · Relics & Void Traces",
   "title": "Relics & Void Traces 가이드",
-  "lede": "Void Relics은 Prime 장비를 얻기 위한 Warframe의 슬롯머신입니다. 정제, Void Traces, 보상 공유 시스템을 이해하고 나면 확률은 여러분에게 훨씬 유리해집니다. 여기 효율적으로 Relic을 개봉하고 획득한 전리품을 platinum으로 전환하는 방법을 소개합니다.",
+  "lede": "Prime Relic 개봉 방법, 정제 단계 선택, Void Traces 수집, 보상 공유를 알아봅니다. Void Traces를 쓰기 전에 Common과 Uncommon Forma 보상의 차이를 확인하고, 얻은 Prime 부품을 시장 가격 및 Ducat 추정치와 비교해 보세요.",
   "category": "farming",
   "readMins": 9,
   "stats": [
     {
       "num": "4",
-      "label": "Relic era · Lith→Axi"
+      "label": "Prime Relic 시대 · Lith→Axi"
     },
     {
       "num": "6",
-      "label": "Relic당 보상",
+      "label": "Prime Relic 보상 후보",
       "tone": "alt"
     },
     {
@@ -22,7 +22,7 @@
     },
     {
       "num": "6–30",
-      "label": "개봉당 획득하는 Void Traces"
+      "label": "Reactant 10개에서 얻는 기본 Traces"
     }
   ],
   "sections": [
@@ -32,50 +32,50 @@
       "blocks": [
         {
           "type": "p",
-          "text": "**Void Relic**은 **Prime 장비**(Warframe 부품, 무기 부품, Forma 설계도)가 봉인된 컨테이너입니다. Foundry에서 그냥 열 수는 없으며, **Void Fissure**라는 특별한 미션에 가져가서 그곳에서 \"개봉\"해야 합니다. 모든 Relic은 네 가지 **era** 중 하나에 속하며, 이 era는 단지 해당 Relic이 *어떤 Prime 부품 풀*을 포함하고 있는지와 *대략 어디서 드롭되는지*만 알려줄 뿐, 전리품의 가치와는 아무런 상관이 없습니다."
+          "text": "이 가이드는 **Lith, Meso, Neo, Axi** Relic을 다룹니다. 보상에는 Prime 설계도, Prime 부품, Forma 설계도가 포함됩니다. 해당 시대의 **Void Fissure**, **Omnia Fissure**, 또는 Railjack **Void Storm**에서 개봉할 수 있습니다. 보상 목록은 Relic의 정확한 코드로 결정되며, 시대만으로 보상의 시장 가치를 알 수는 없습니다. **Requiem Eterna**는 별도 규칙을 따릅니다. 여덟 가지 Requiem Mod가 보상 목록에 있으며 Void Traces로 정제할 수 없습니다."
         },
         {
           "type": "p",
-          "text": "Relic은 또한 **거래 가능**합니다. 이것이 바로 Prime 파밍이 platinum이 되는 핵심 이유입니다. Relic을 개봉해 부품을 얻고, 남는 부품을 다른 플레이어에게 판매한 뒤, 자신에게 없는 특정 Relic을 다른 사람에게서 구매할 수 있습니다. 전체적인 경제 순환 구조는 [Platinum 가이드](/guides/platinum)를 참조하세요."
+          "text": "Relic은 **거래할 수 있습니다**. 개봉해 보상을 얻거나 보유한 Relic을 다른 플레이어와 거래할 수 있습니다. 거래 가능한 Prime 설계도와 부품도 개별적으로 팔 수 있지만, 구매자를 찾고 가격에 합의해야 합니다. 거래의 기본은 [Platinum 가이드](/guides/platinum)를 참고하세요."
         },
         {
           "type": "table",
           "table": {
             "columns": [
               "Era",
-              "티어",
-              "주요 드롭 위치"
+              "획득처 예시",
+              "확인할 사항"
             ],
             "rows": [
               [
                 "Lith",
-                "입문",
-                "초기 Origin System 노드 및 저티어 의뢰"
+                "Hepit, Void — Capture",
+                "원하는 Relic이 현재 보상 목록에 있는지 확인하세요."
               ],
               [
                 "Meso",
-                "중반",
-                "중반 star chart 미션 및 의뢰"
+                "Ukko, Void — Capture",
+                "이 미션의 보상 목록에는 Neo Relic과 Aya도 있습니다."
               ],
               [
                 "Neo",
-                "후반",
-                "후반 행성, 무한(endless) 로테이션, 고티어 의뢰"
+                "Ukko, Void — Capture",
+                "시대만 보지 말고 필요한 정확한 보상을 기준으로 선택하세요."
               ],
               [
                 "Axi",
-                "엔드게임",
-                "후반 star chart, 장기 무한(endless) 로테이션, Steel Path, 고티어 의뢰"
+                "Apollo, Lua — Disruption",
+                "보상 로테이션과 현재 해당 로테이션에서 나오는 Relic을 확인하세요."
               ]
             ],
-            "note": "드롭 처는 업데이트에 따라 변경됩니다. 특정 Relic을 얻기 위한 현재 가장 좋은 노드를 찾으려면 게임 내 Void Fissure 목록이나 위키의 드롭 테이블을 확인하세요."
+            "note": "이것은 예시이며 모든 획득처의 순위를 매긴 목록이 아닙니다. 공식 드롭 테이블에서 정확한 Relic 코드를 검색하고 게임 내 획득처 정보도 확인하세요. Void Fissure 목록은 Relic을 개봉하는 장소를 보여 주며, 해당 Relic이 드롭되는 장소를 보여 주는 목록은 아닙니다."
           }
         },
         {
           "type": "kv",
           "kv": [
             {
-              "k": "Relic era",
+              "k": "Prime Relic 시대",
               "v": "Lith, Meso, Neo, Axi"
             },
             {
@@ -84,7 +84,7 @@
             },
             {
               "k": "개봉에 필요한 Reactant",
-              "v": "플레이어당, Relic당 10개"
+              "v": "보상 라운드마다 내 카운터 10 달성"
             },
             {
               "k": "정제 재화",
@@ -92,7 +92,7 @@
             },
             {
               "k": "개봉 위치",
-              "v": "Void Fissure 미션 전용"
+              "v": "Void Fissure, Omnia Fissure, Railjack Void Storm"
             }
           ]
         }
@@ -104,19 +104,19 @@
       "blocks": [
         {
           "type": "p",
-          "text": "모든 Relic은 정확히 **6개의 가능한 보상**을 담고 있으며, 세 가지 등급으로 나뉩니다:"
+          "text": "각 Lith, Meso, Neo, Axi Relic에는 세 희귀도로 나뉜 **여섯 가지 보상 후보**가 있습니다. 개봉할 때는 보상 하나를 선택합니다."
         },
         {
           "type": "list",
           "items": [
-            "**3개의 Common** 보상 (동) — 보통 저렴한 부품 및 Forma 설계도",
-            "**2개의 Uncommon** 보상 (은) — 중간 가치의 부품",
-            "**1개의 Rare** 보상 (금) — 모두가 탐내는 부품이자 정제를 하는 이유"
+            "**Common 보상 3개**(동색) — Relic에 따라 Prime 아이템 또는 Forma 설계도 한 장",
+            "**Uncommon 보상 2개**(은색) — Relic에 따라 Prime 아이템 또는 Forma 설계도 두 장",
+            "**Rare 보상 1개**(금색) — 희귀도가 높다고 높은 거래 가격이 보장되지는 않습니다"
           ]
         },
         {
           "type": "info",
-          "text": "정제는 Relic 내부에 있는 6개의 부품 자체를 변경하지 않으며, 단지 Rare 대 Common이 나올 **확률**만 조정합니다. 원하는 부품이 들어있지 않은 Relic은 아무리 정제해도 해당 부품을 드롭하지 않습니다. Traces를 투자하기 전에 항상 Relic의 내용물을 확인하세요."
+          "text": "정제는 보상 목록이 아닌 **확률**을 바꿉니다. Uncommon과 Rare 확률은 올라가고 Common 확률은 내려갑니다. 원하는 아이템이 들어 있지 않은 Relic을 정제해도 그 아이템이 추가되지는 않습니다. Void Traces를 쓰기 전에 보상과 해당 희귀도 슬롯을 확인하세요."
         }
       ]
     },
@@ -129,25 +129,25 @@
           "steps": [
             {
               "h": "Relic 1개 장착",
-              "p": "star chart에서 Void Fissures 탭을 열고 자신이 보유한 Relic과 era가 일치하는 미션을 선택합니다. 미션을 시작하기 전에 Relic과 정제 등급을 선택하세요. 미션당 하나의 Relic만 가져갈 수 있습니다."
+              "p": "Relic의 시대에 맞는 균열을 고르거나, Lith, Meso, Neo, Axi를 모두 사용할 수 있는 Omnia Fissure를 선택하세요. 출발 전에 Relic과 정제 단계를 고릅니다. 보상 라운드마다 Relic 하나를 장착하며, 끝없는 균열에서는 라운드 사이에 다음 Relic을 선택할 수 있습니다."
             },
             {
               "h": "Corrupted 적 찾기",
-              "p": "미션에 진입하면 균열이 주변 적들을 타락시킵니다. 이들은 Void 에너지로 빛나게 됩니다. 이 Corrupted 적들만이 Reactant를 드롭하는 유일한 대상입니다."
+              "p": "균열이 적을 Corrupted로 바꾸게 한 뒤, 해당 적을 처치해 Reactant를 모으세요. Void Storm에서는 침입 부대, Crewship 내부, 미션 목표 구역처럼 도보로 전투하는 곳에서 Corrupted 적을 찾으세요."
             },
             {
               "h": "Reactant 10개 수집",
-              "p": "모든 분대원은 미션(또는 로테이션)이 끝나기 전에 개인적으로 Reactant 10개를 획득해야 합니다. HUD의 카운터를 확인하세요. Reactant 드롭은 시각적으로 공유되지만, 수집은 각자 10개를 채워야 합니다."
+              "p": "일반 Void Fissure에서는 각 플레이어가 자신의 Reactant를 직접 줍습니다. Railjack Void Storm에서는 Reactant 획득이 분대 전체에 공유됩니다. 어느 쪽이든 탈출하거나 보상 라운드가 끝나기 전에 자신의 HUD가 **10/10**에 도달했는지 확인하세요."
             },
             {
               "h": "개봉 및 보상 선택",
-              "p": "미션이 끝나거나 무한(endless) 미션의 각 로테이션이 끝날 때, 본인과 분대원들의 보상을 포함해 최대 4개의 보상이 표시됩니다. 그중 가장 좋은 보상 하나를 선택해 획득하세요."
+              "p": "장착한 Relic을 충전한 뒤 미션이나 끝없는 미션의 보상 라운드를 완료하세요. 자신을 포함해 Relic을 개봉한 분대원의 보상 중 하나를 선택할 수 있으며, 후보는 최대 네 개입니다. 여러 플레이어가 같은 보상을 골라도 됩니다."
             }
           ]
         },
         {
           "type": "warn",
-          "text": "Reactant 10개를 모두 모으기 전에 탈출구로 전력 질주하지 마세요. 미션이 끝날 때 Relic이 충전되지 않은 상태라면 봉인된 채로 유지되며 아무런 보상도 주어지지 않습니다. Relic 자체는 유지되지만(충전되지 않은 Relic은 소모되지 않음), 판 전체를 낭비하게 되므로 탈출하기 전에 항상 충전을 완료하세요."
+          "text": "탈출하거나 다음 보상 라운드로 넘어가기 전에 모든 분대원의 Reactant 카운터를 확인하세요. Relic을 충전하지 못했다면 그 라운드의 Relic 보상을 선택할 수 없습니다. 개봉하지 않은 Relic은 보존되며, 미션에서 얻은 다른 보상까지 없어지는 것은 아닙니다."
         }
       ]
     },
@@ -157,7 +157,7 @@
       "blocks": [
         {
           "type": "p",
-          "text": "새로 얻은 Relic은 **Intact** 상태이며 Rare 확률이 **2%**에 불과합니다. **Void Traces**를 소모해 정제하면 Rare(및 Uncommon) 확률이 3단계에 걸쳐 상승하며, 최대 등급인 **Radiant**에서는 Rare 확률이 **10%**(5배 증가)에 도달합니다. 이것이 플레이어가 제어할 수 있는 가장 중요한 요소입니다."
+          "text": "정제하지 않은 Relic은 **Intact**이며 Rare 보상 확률은 **2%**입니다. 정제하면 Rare와 Uncommon 확률이 올라가고, **Radiant**의 Rare 확률은 **10%**입니다. 일부 활동에서는 이미 정제된 Relic을 보상으로 주므로, Void Traces를 쓰기 전에 현재 상태를 확인하세요."
         },
         {
           "type": "table",
@@ -204,7 +204,7 @@
         },
         {
           "type": "p",
-          "text": "**모든 것을 Radiant로 만들어야 할까요?** 아닙니다. Radiant 정제에는 무려 100 Traces가 소모되므로, *Rare* 부품이 실제로 가치 있거나 자신에게 필요한 Relic에만 아껴두세요. 단지 [Ducat](/ducats) 자판기에 넣을 제물을 얻기 위해 Relic을 개봉하거나 Common 부품을 노리는 것이라면 **Intact** 상태로 실행하세요. 제한된 Trace 예산 내에서 훨씬 더 많은 Relic을 개봉할 수 있습니다. [개봉 또는 판매 가치 도구](/relics-value)를 사용해 Relic을 정제할 가치가 있는지, 아니면 통째로 파는 것이 더 가치 있는지 확인해 보세요."
+          "text": "**목표 보상에 맞춰 정제를 선택하세요.** **Forma 설계도 한 장**을 포함해 특정 Common 보상을 노린다면 Intact의 확률이 가장 높습니다. Uncommon Forma 보상은 **설계도 두 장**이며, 확률은 **Intact 11%**에서 **Radiant 20%**로 올라갑니다. Intact에서 정제하는 비용은 **100 Void Traces**입니다. Rare 보상의 확률은 Radiant에서 2%에서 10%로 올라갑니다. 늘어나는 확률과 보유한 Void Traces 및 Relic 수를 함께 고려하세요. [개봉 또는 판매 비교 도구](/relics-value)는 시장 데이터에 따른 추정치를 제공하며, 실제 판매 수익을 보장하지 않습니다."
         }
       ]
     },
@@ -214,19 +214,19 @@
       "blocks": [
         {
           "type": "p",
-          "text": "Void Traces는 **거의 전적으로** Fissure에서 Relic을 개봉하여 획득합니다. 일부 틈새 획득처(Granum Void, 일부 Isolation Vault 격리 저장고)가 존재하지만, 실질적인 목적으로는 Traces와 Relic 파밍은 동일합니다. 개봉하는 모든 Relic은 소량의 무작위 Traces(기본 **6~30개**)를 지급하며, 알아두면 좋은 점은 **Resource Booster가 이 수량을 두 배로 늘려줍니다**. 따라서 \"Traces 파밍\"과 \"Relic 파밍\"은 말 그대로 동일한 활동입니다."
+          "text": "균열에서 **Reactant 10개**를 모으면 **Relic을 가져오지 않아도** 기본 **6–30 Void Traces**를 받습니다. 따라서 Void Traces만 모으는 플레이에서는 Relic을 소모하지 않지만, Relic 보상을 선택할 수도 없습니다. Relic을 가져오면 같은 라운드에서 Void Traces와 Relic 보상을 함께 얻을 수 있습니다."
         },
         {
           "type": "list",
           "items": [
-            "절대 팔지 않을 잡템 Relic을 개봉하세요. 개봉할 때마다 여전히 Traces를 지급하며, 보통 추가로 Forma 설계도나 Ducat용 부품을 얻을 수 있습니다.",
-            "Traces 보관함은 **한도가 정해져 있으며, 이 한도는 Mastery Rank에 비례하여 증가**합니다. 신규 플레이어는 100개에서 시작하여 랭크당 +50개씩 증가해 높은 MR에서는 수천 개에 달합니다. 개인 한도에 도달한 상태에서 획득하는 모든 Traces는 소실되므로, 넘치기 전에 소모하세요.",
-            "느린 미션에서 기다리는 대신 Relic을 연달아 개봉할 수 있도록 빠른 Fissure 미션(다음 섹션 참조)을 실행하세요."
+            "Prime 또는 Forma 보상도 원한다면 개봉할 Relic을 사용하세요. Void Traces 수집만이 목적이라면 Relic 없음으로 선택할 수 있습니다.",
+            "Void Traces 보유 한도는 **100 + 50 × Mastery Rank**입니다. 수집하기 전에 남은 공간을 확인하고, 한도를 넘겨 잃기 전에 사용하세요.",
+            "현재 열려 있는 균열 중 안정적으로 완료할 수 있는 미션을 고르고, 매 라운드를 마치기 전에 Reactant 카운터를 확인하세요."
           ]
         },
         {
           "type": "tip",
-          "text": "전용 \"Traces 노드\"는 존재하지 않습니다. 가장 빠르게 Traces를 모으는 방법은 어차피 개봉하려던 Relic을 가지고 빠른 Capture 미션이나 보상이 풍부한 Disruption Fissure 미션을 연이어 도는 것입니다."
+          "text": "짧게 플레이하려면 끝없는 미션이 아닌 균열에서 보상 한 번을 받은 뒤 마칠 수 있습니다. 반복 개봉하려면 끝없는 균열에서 라운드마다 새 Relic을 선택할 수 있습니다. 특정 미션이 언제나 가장 빠르다고 가정하지 말고 자신의 완료 시간, Reactant 수집, 로딩 시간을 비교하세요."
         }
       ]
     },
@@ -236,30 +236,30 @@
       "blocks": [
         {
           "type": "p",
-          "text": "모든 것을 바꾸는 메커니즘이 여기 있습니다. 풀 스쿼드에서는 보상 화면에서 **네 명의 플레이어 모두가 네 개의 주사위 결과를 모두 볼 수 있으며**, 각자 그중 *하나*를 선택해 가질 수 있습니다. 본인의 Relic에서 Common이 나왔나요? 분대원의 Relic에서 Rare가 나왔다면 대신 그 Rare를 선택할 수 있습니다. 이것이 바로 비싼 Rare 부품을 파밍하는 커뮤니티의 표준 방식인 **Radiant share**의 기초입니다."
+          "text": "네 명 모두 Relic을 개봉하면 각 플레이어는 **공개된 네 보상 중 하나**를 선택할 수 있습니다. 모두 같은 아이템을 골라도 다른 사람의 보상을 빼앗지 않습니다. **Radiant share**, 줄여서 radshare는 특정 Rare 보상을 얻기 위한 추첨 횟수를 늘리도록 같은 Relic을 Radiant로 가져오기로 하는 분대의 약속입니다."
         },
         {
           "type": "info",
-          "text": "*동일한 종류*의 Radiant Relic 4개는 각각 독립적으로 10%의 확률로 Rare를 굴립니다. 분대 전체에서 Rare가 최소 한 번이라도 등장하여 획득할 수 있는 확률은 1 − 0.9⁴ ≈ **34%**로, 솔로 플레이 시의 10%와 대조됩니다. Radshare를 연달아 몇 라운드 돌고 나면 Rare가 더 이상 희귀하게 느껴지지 않을 것입니다."
+          "text": "같은 Rare 보상에 대해 독립적인 **10%** 추첨을 네 번 하면 한 번 이상 등장할 확률은 **1 − 0.9⁴ ≈ 34%**입니다. 반대로 약 **66%**의 라운드에서는 해당 보상이 나오지 않습니다. 이 계산은 네 명 모두 약속한 Radiant Relic을 성공적으로 개봉했다고 가정하며, 특정 플레이에서의 획득을 보장하지 않습니다."
         },
         {
           "type": "steps",
           "steps": [
             {
               "h": "먼저 Radiant로 정제하기",
-              "p": "모든 인원이 Radiant(100 Traces)로 정제된 완전히 동일한 Relic을 지참해야 합니다. 관례상 Intact Relic이나 잘못된 Relic을 가져오면 radshare 그룹에서 추방당합니다."
+              "p": "정확한 Relic 코드와 정제 단계를 맞추세요. 각자 해당 Relic을 Radiant로 가져오며, Intact에서 정제할 경우 100 Void Traces가 필요합니다. 시작 전에 분대가 장착한 Relic을 확인하세요."
             },
             {
               "h": "모집(Recruiting) 채널에서 그룹 찾기",
-              "p": "모집(Recruiting) 채팅 / 모집 탭을 열고 Relic 코드를 검색하세요. 예: \"Axi A15 Rad\" 또는 \"Meso G1 RadShare\". \"H\"는 보통 누군가 호스팅 중이거나 사람을 구하고 있음을 의미합니다."
+              "p": "모집 채팅에서 Relic의 전체 코드와 \"Rad\" 또는 \"RadShare\"를 함께 검색하거나 모집 글을 올리세요. 목표 보상과 계획한 플레이 횟수를 확인하세요."
             },
             {
-              "h": "빠른 Capture Fissure 실행",
-              "p": "Radshare는 거의 항상 가장 빠르게 완료할 수 있는 Fissure를 이용하므로, 모두가 신속하게 개봉하고 Rare를 획득한 뒤 다음 라운드를 위해 재설정할 수 있습니다."
+              "h": "적합한 균열 선택",
+              "p": "해당 Relic을 사용할 수 있고 분대에 맞는 현재 미션을 고르세요. 모든 플레이어가 Relic을 충전할 수 있도록 하면서 목표를 완료하세요."
             },
             {
-              "h": "Rare가 등장하면 선택하기",
-              "p": "보상 화면에서 4명 중 한 명이라도 Rare를 굴렸다면 모두가 그것을 선택합니다. 이를 계속 반복하세요."
+              "h": "필요한 보상 선택",
+              "p": "목표 보상이 나오면 각 플레이어가 선택할 수 있습니다. 나오지 않았다면 주어진 보상 중 하나를 고르고, 다른 Relic으로 계속할지 합의하세요."
             }
           ]
         }
@@ -267,11 +267,11 @@
     },
     {
       "id": "fissure-efficiency",
-      "title": "어떤 Fissure 유형이 가장 효율적인가",
+      "title": "플레이 계획에 맞는 균열 선택",
       "blocks": [
         {
           "type": "p",
-          "text": "모든 Fissure는 동일한 방식으로 Relic을 개봉하지만, Relic을 순환시키는 *속도*에서는 큰 차이가 납니다. 목표에 맞는 미션 유형을 선택하세요:"
+          "text": "미션마다 목표, 대기 시간, 추가 보상이 다릅니다. 아래는 실용적인 선택 기준이며 고정된 속도 순위가 아닙니다."
         },
         {
           "type": "table",
@@ -279,36 +279,36 @@
             "columns": [
               "Fissure 유형",
               "속도",
-              "추천 대상"
+              "적합한 상황"
             ],
             "rows": [
               [
                 "Capture",
-                "가장 빠른 단판 완료",
-                "대량 개봉, Traces 파밍, radshare"
+                "보상 라운드 한 번",
+                "짧은 목표를 끝낸 뒤 남은 Reactant를 모을 시간을 확보하려는 경우."
               ],
               [
                 "Exterminate / Sabotage",
-                "빠름",
-                "Capture 미션이 없을 때 빠른 단판 개봉"
+                "보상 라운드 한 번",
+                "현재 미션 목표가 더 마음에 들거나 적합한 Capture 균열이 없는 경우."
               ],
               [
                 "Survival / Defense / Interception",
                 "무한(Endless)",
-                "로테이션당 Relic 1개, 재로딩 없음, 꾸준한 Traces 획득"
+                "Orbiter로 돌아가지 않고 여러 보상 라운드를 진행하려는 경우."
               ],
               [
                 "Disruption",
-                "무한(Endless), 풍부한 보상",
-                "빠른 라운드 = 한 번에 많은 개봉 + Traces 획득"
+                "끝없는 미션",
+                "분대가 도관 방어와 매 라운드 Reactant 수집에 익숙한 경우."
               ]
             ],
-            "note": "무한(endless) Fissure에서는 로테이션당 하나의 Relic을 개봉하며, 함선으로 돌아갈 필요 없이 로테이션 사이에 새 Relic으로 교체할 수 있습니다."
+            "note": "끝없는 균열에서는 조건을 충족한 보상 라운드마다 Relic 하나를 개봉하고, 라운드 사이에 새 Relic을 선택할 수 있습니다. 매 라운드 Reactant 10개가 필요합니다. Omnia는 사용 가능한 Relic 시대를 바꿀 뿐, 충전이 필요하다는 조건은 바꾸지 않습니다."
           }
         },
         {
           "type": "p",
-          "text": "**기본 원칙:** 다양한 종류의 Relic을 대량으로 빠르게 개봉하거나 radshare를 진행하고 싶을 때는 **Capture**를 사용하고, 로딩 화면 없이 진득하게 앉아 Traces를 파밍하거나 많은 Relic을 개봉하고 싶을 때는 **무한(endless)** 유형(**Survival** 또는 **Disruption**)을 사용하세요. 어떤 Relic이 시간 투자 가치가 있는지 잘 모르겠다면? [Relic 파밍](/relic-farming)에서 판당 가장 많은 platinum을 벌어다 주는 Relic 순위를 확인해 보세요."
+          "text": "**목표에 맞춰 계획하세요.** 짧은 목표의 미션과 끝없는 미션을 비교하되, 로딩 시간과 모두 Reactant 10개를 모을 수 있는지도 고려하세요. Void Storm에서는 Railjack 보상도 얻을 수 있습니다. [Railjack 가이드](/guides/railjack)를 참고하세요. [Relic farming](/relic-farming)은 개봉 한 번당 추정 보상 가치를 비교하며, 한 판이나 분당 얻는 platinum을 보장하지 않습니다."
         }
       ]
     },
@@ -318,15 +318,15 @@
       "blocks": [
         {
           "type": "p",
-          "text": "Digital Extremes는 주기적으로 오래된 Prime들을 **단종(vault)**시킵니다. 새로운 장비를 위한 공간을 마련하기 위해 해당 Relic들이 현재 드롭 테이블에서 더 이상 나오지 않게 됩니다. 이미 인벤토리에 있는 Relic은 영구적으로 계속 사용할 수 있으며, 단종된 Relic은 **거래 가능** 상태로 유지되므로 언제든지 다른 플레이어에게서 필요한 Relic을 구매할 수 있습니다. [Vaulted Prime 추적기](/vaulted)를 통해 어떤 장비가 단종되었거나 복각되었는지 확인해 보세요."
+          "text": "Prime이 **Vaulted** 상태가 되면 관련 Relic이 일반 획득처에서 제외됩니다. 이미 보유한 Relic은 계속 사용하거나 거래할 수 있으며, 다른 플레이어가 필요한 Relic이나 Prime 부품을 갖고 있을 수도 있습니다. [Vaulted Prime 추적기](/vaulted)는 상태 데이터를 살펴보는 데 도움이 되지만, 판매자 유무와 현재 게임 내 판매 목록은 별도로 확인해야 합니다."
         },
         {
           "type": "info",
-          "text": "**Prime Resurgence**는 단종된 Relic들을 로테이션으로 다시 가져옵니다. **Maroo's Bazaar**에 있는 Varzia를 방문하여 **Aya**(star chart 전역에서 무료로 획득 가능하며, 종종 Relic 대신 드롭됨) 또는 프리미엄 **Regal Aya**로 단종 해제된 Relic을 구매하세요. 원하는 Prime이 현재 단종 상태일 때 유용한 안전장치입니다."
+          "text": "**Prime Resurgence**에서는 Varzia의 판매 목록이 순환합니다. **Mars의 Maroo’s Bazaar**에서 만나거나 Orbiter의 Relic Segment에서 **Visit Varzia**를 선택하세요. **Aya**로는 현재 목록에 있는 Relic을 살 수 있으며, 부품을 얻을 기회를 가지려면 여전히 개봉해야 합니다. **Regal Aya**는 Prime 장비와 액세서리를 직접 구매하는 별도의 유료 통화입니다. 사용하기 전에 현재 게임 내 판매 목록을 확인하세요. 사이트의 Resurgence 표시는 Relic 데이터로 추론한 것이며, 검증된 상점 재고가 아닙니다."
         },
         {
           "type": "warn",
-          "text": "Prime이 단종되면 공급이 끊기기 때문에 해당 부품에 대한 수요가 급증하는 경우가 많습니다. 남는 부품이 있다면, [현재 급등 중인 Vaulted Prime](/vault-spikes)에서 어떤 부품의 가격이 오르고 있는지 확인하고 급등세에 맞춰 판매해 보세요."
+          "text": "Vaulted 상태가 된다고 가격 상승이 보장되지는 않습니다. 이미 보유한 Relic과 기존 부품은 계속 유통됩니다. [Vaulted Prime 가격 추이](/vault-spikes)로 기록된 변화를 비교하고, 거래를 결정하기 전에 가격 데이터가 기록된 시점과 실제 매수·매도 제안을 확인하세요."
         }
       ]
     },
@@ -336,14 +336,14 @@
       "blocks": [
         {
           "type": "p",
-          "text": "개봉된 Relic은 Prime 부품(또는 Forma 설계도)을 제공합니다. 획득한 부품으로 다음 세 가지 행동을 취할 수 있습니다:"
+          "text": "Prime Relic 보상은 Prime 설계도나 부품, 또는 Forma 설계도 한 장이나 두 장일 수 있습니다. 각각 용도가 다릅니다. 해당하는 Prime 아이템에는 다음 선택지가 있습니다."
         },
         {
           "type": "list",
           "items": [
-            "**제작하기** — 자신을 위해 Prime Warframe이나 무기를 조립합니다.",
-            "**platinum으로 판매하기** — 중복되거나 원치 않는 부품을 다른 플레이어와 거래합니다.",
-            "**Ducat으로 전환하기** — 아무도 사지 않는 부품을 릴레이에 있는 Ducat 키오스크에 처분한 뒤, 그 Ducat으로 Baro Ki'Teer가 판매하는 로테이션 상품을 구매합니다."
+            "**제작하기** — Prime 아이템 제작에 필요한 설계도와 부품을 보관하세요. 제작이 끝난 Prime Warframe과 무기는 거래할 수 없습니다.",
+            "**platinum으로 거래하기** — 거래 가능한 Prime 설계도나 부품을 다른 플레이어에게 제안하세요. 등록된 가격이 판매를 보장하지는 않습니다.",
+            "**Ducat으로 교환하기** — Relay의 Ducat 키오스크에서 교환 가능한 Prime 아이템과 가치를 확인한 뒤 확정하세요. Ducat은 Baro Ki’Teer의 판매품에 사용합니다."
           ]
         },
         {
@@ -353,31 +353,35 @@
               "label": "Relic 가치: 개봉 또는 판매",
               "to": "/relics-value",
               "icon": "scale-balance",
-              "note": "Relic당 예상 platinum"
+              "note": "Relic 하나당 추정 보상 가치"
             },
             {
               "label": "세트 vs 부품 계산기",
               "to": "/comparison",
               "icon": "calculator-variant",
-              "note": "풀 세트 가격 vs 부품 개별 판매 비교"
+              "note": "세트와 부품의 제시 가격 비교"
             },
             {
               "label": "차익 거래 탐색기",
               "to": "/flip",
               "icon": "swap-horizontal",
-              "note": "부품의 실시간 매수/매도 호가 차이(Spread)"
+              "note": "기록된 매수·매도 제시 가격 비교"
             },
             {
               "label": "Ducat 가치 탐색기",
               "to": "/ducats",
               "icon": "cash-multiple",
-              "note": "Baro에게 바칠 가장 좋은 부품"
+              "note": "Prime 아이템의 Ducat 가치 비교"
             }
           ]
         },
         {
           "type": "tip",
-          "text": "Forma 설계도는 가장 흔한 Relic 보상 중 하나이므로, 꾸준히 Fissure를 도는 것은 빌드를 극성화하는 데 소모될 Forma를 무료로 수급하는 훌륭한 방법이 됩니다. 따라서 Forma를 구매해야 할 일은 거의 없습니다."
+          "text": "**Forma 설계도는 거래 가능한 Prime 부품이 아니며, Ducat으로 교환할 수 없습니다.** Forma가 필요하면 Foundry에서 제작하세요. 정제 단계를 고르기 전에 Relic의 Forma 보상이 Common 슬롯의 한 장인지 Uncommon 슬롯의 두 장인지 확인하세요."
+        },
+        {
+          "text": "아래 크리에이터 영상은 필요할 때 참고하는 시연 자료입니다. 공개 상태, 제목, 채널은 확인했지만 영상 전체 내용은 검토하지 않았습니다. 오래된 영상에는 이전 Forma 수량, 미션 시간, 파밍 조언이 나올 수 있습니다. 내용이 다르면 이 가이드의 현행 규칙과 공식 자료를 참고하세요.",
+          "type": "info"
         }
       ]
     }
@@ -385,35 +389,35 @@
   "faqs": [
     {
       "q": "Void Relic은 어떻게 개봉하나요?",
-      "a": "인벤토리에서는 Relic을 개봉할 수 없으며, Void Fissure 미션을 진행해야 합니다. 시작하기 전에 Relic을 1개 장착하고, 빛나는 Corrupted 적들을 처치하여 Reactant 10개를 수집하면 미션이 끝날 때(또는 무한 미션의 각 로테이션 종료 시) Relic이 개봉됩니다. 보상 화면에서 최대 4개의 보상 중 하나를 선택할 수 있습니다."
+      "a": "Relic 시대에 맞는 균열, Omnia Fissure 또는 적합한 Railjack Void Storm에 Relic을 장착하고 입장하세요. HUD에서 Reactant 10개를 채운 뒤 미션이나 끝없는 미션의 보상 라운드를 완료하세요. 일반 균열에서는 각자 Reactant를 줍고 Void Storm에서는 획득을 공유합니다. 자신의 Relic을 개봉하면 분대의 Relic 보상 중 최대 네 후보에서 하나를 선택할 수 있습니다."
     },
     {
       "q": "Relic을 Radiant로 정제하면 실제로 어떤 효과가 있나요?",
-      "a": "정제는 Void Traces를 소모하여 Rare 및 Uncommon 보상의 획득 확률을 높여줍니다. Intact Relic은 Rare 확률이 2%이지만, Radiant Relic은 이를 10%로 올려줍니다. 내부에 들어있는 6개의 부품 자체는 절대 변경되지 않으며, 오직 확률만 조정됩니다. 특정 Relic을 정제할 가치가 있는지 확인하려면 [개봉 또는 판매](/relics-value)를 확인해 보세요."
+      "a": "Lith, Meso, Neo, Axi Relic을 정제하면 여섯 보상 후보는 그대로 유지되고, Uncommon과 Rare 확률은 올라가며 Common 확률은 내려갑니다. Rare 확률은 Intact의 2%에서 Radiant의 10%로 올라갑니다. 목표 슬롯과 Void Traces 예산을 확인하세요. [개봉 또는 판매 비교](/relics-value)는 비교용 추정치를 제공합니다. Requiem Eterna는 정제할 수 없습니다."
     },
     {
-      "q": "Void Traces를 빠르게 파밍하려면 어떻게 해야 하나요?",
-      "a": "Traces는 거의 전적으로 Fissure에서 Relic을 개봉하여 획득합니다. 개봉할 때마다 기본 6~30개를 지급하며, Resource Booster가 이를 두 배로 늘려줍니다. 가장 빠른 방법은 어차피 개봉하려던 Relic을 가지고 빠른 Capture Fissure나 보상이 풍부한 Disruption Fissure를 연이어 도는 것입니다. 보관 한도는 Mastery Rank에 비례하여 증가하므로(시작 시 100개, 랭크당 +50개씩 증가), 한도에 도달해 넘치기 전에 소모하세요."
+      "q": "Relic을 쓰지 않고 Void Traces를 모으려면?",
+      "a": "Relic 없이 균열에 들어가 Reactant 10개를 채우면 기본 6–30 Void Traces를 얻습니다. Relic을 장착하고 개봉하지 않으면 Relic 보상을 선택할 수 없습니다. 안정적으로 완료할 수 있는 미션을 고르세요. 끝없는 균열은 보상 라운드를 반복할 수 있습니다. 보유 한도는 100 + 50 × Mastery Rank이므로 수집 전에 남은 공간을 확인하세요."
     },
     {
       "q": "Radiant 공유(radshare)란 무엇인가요?",
-      "a": "분대원 4명 모두가 Radiant로 정제된 동일한 Relic을 지참하는 풀 스쿼드 방식입니다. 보상 화면에서 모두가 4개의 결과 중 하나를 선택할 수 있기 때문에, 각각 독립적인 10%의 Rare 확률 4개가 모여 매 판마다 분대에 Rare가 등장할 확률이 약 34%가 됩니다. 이는 솔로 플레이 시의 10%보다 훨씬 유리합니다. 모집(Recruiting) 채팅에서 Relic 코드 뒤에 \"Rad\" 또는 \"RadShare\"를 검색하여 그룹을 찾아보세요."
+      "a": "radshare는 네 명 모두 같은 Relic을 Radiant로 가져오기로 하는 분대의 약속입니다. 모두 개봉하면 독립적인 10% 추첨 네 번으로 같은 Rare 보상이 한 번 이상 나올 확률이 약 34%가 됩니다. 나오면 모두 그 보상을 선택할 수 있지만, 해당 라운드에서 나오지 않을 확률도 약 66%입니다. 모집 채팅에서 Relic 코드와 \"Rad\" 또는 \"RadShare\"를 검색하세요."
     },
     {
       "q": "모든 Relic을 Radiant로 정제해야 하나요?",
-      "a": "아닙니다. Radiant 정제에는 무려 100 Traces가 소모되므로, Rare 부품이 가치 있거나 실제로 필요한 Relic에만 아껴두세요. Common 부품, Forma, 또는 Ducat용 제물을 파밍할 때는 Relic을 Intact 상태로 실행하여 제한된 Trace 예산 내에서 훨씬 더 많은 Relic을 개봉하세요. [Relic 가치 도구](/relics-value)를 사용하면 Relic별로 결정하는 데 도움이 됩니다."
+      "a": "아니요. 특정 Common 보상의 확률은 Intact에서 가장 높으며, Common 슬롯 Forma는 설계도 한 장을 줍니다. Uncommon Forma는 두 장을 주고, 정제하면 확률이 Intact의 11%에서 Radiant의 20%로 올라갑니다. Intact에서 Radiant로 정제하는 비용은 100 Void Traces이므로 목표 슬롯과 보유량에 따라 선택하세요. [Relic 가치 도구](/relics-value)는 비교용 추정치를 제공합니다."
     },
     {
       "q": "Void Relic은 어디서 드롭되나요?",
-      "a": "Relic은 star chart 전역의 미션 보상, 무한(endless) 미션 로테이션, 오픈 월드 의뢰에서 드롭됩니다. Lith Relic은 초반 노드에서 나오고, Neo/Axi는 후반의 더 어려운 콘텐츠 및 장기 무한 미션에서 나옵니다. 구체적으로 어떤 노드가 가장 좋은지는 업데이트에 따라 변경되므로, 현재 위치는 게임 내 드롭 테이블이나 위키를 확인하세요."
+      "a": "Relic은 특정 미션 보상, 로테이션, 의뢰, Relic Pack에서 나옵니다. 예를 들어 Void의 Hepit에는 Lith, Ukko에는 Meso와 Neo가 있고, Lua의 Apollo에는 뒤쪽 보상 테이블에 Axi가 있습니다. 공식 드롭 테이블에서 정확한 Relic을 찾아 해당 로테이션을 확인하세요. 균열 목록은 Relic을 개봉하는 장소를 보여 주며 획득처를 보여 주는 목록은 아닙니다."
     },
     {
       "q": "Prime이 단종(vaulted)된 후에도 Prime 부품을 얻을 수 있나요?",
-      "a": "네, 이미 인벤토리에 있는 Relic은 영구적으로 계속 사용할 수 있으며, 단종된 Relic은 거래 가능 상태로 유지되므로 다른 플레이어에게서 해당 Relic을 구매할 수 있습니다. 또한 Prime Resurgence를 통해 Maroo's Bazaar에 있는 Varzia에게서 Aya를 사용해 단종 해제된 Relic을 획득할 수도 있습니다. [Vaulted Prime 추적기](/vaulted)를 통해 획득 가능 여부를 확인해 보세요."
+      "a": "네. 보유한 Relic은 계속 사용하거나 거래할 수 있고, 필요한 Prime 설계도나 부품을 파는 플레이어가 있을 수도 있습니다. Prime Resurgence에서 Varzia가 알맞은 Relic을 판매한다면 Aya로 구매한 뒤 개봉하여 부품을 노릴 수 있습니다. Regal Aya는 해당 Prime 장비를 직접 구매하는 통화입니다. 현재 게임 내 판매 목록을 확인하세요. [Vaulted Prime 추적기](/vaulted)는 참고용이며 현재 재고를 보장하지 않습니다."
     },
     {
       "q": "Relic을 개봉하기에 가장 좋은 Fissure 미션 유형은 무엇인가요?",
-      "a": "Capture는 가장 빠르게 단판으로 끝낼 수 있어 대량 개봉, Traces 파밍, radshare에 이상적입니다. Survival 및 Disruption 같은 무한(Endless) 유형은 로딩 화면 없이 로테이션당 하나의 Relic을 개봉할 수 있어 장시간 파밍 세션에 더 적합합니다. 속도를 원하는지 아니면 양을 원하는지에 따라 유형을 선택하세요."
+      "a": "모든 상황에서 가장 빠른 선택은 없습니다. Capture는 짧은 플레이에 적합할 수 있고, 끝없는 균열에서는 Orbiter로 돌아가지 않고 매 라운드 다음 Relic을 개봉할 수 있습니다. 분대의 목표 완료 속도, Reactant 수집, 로딩 시간을 고려하세요. 미션 자체의 보상도 원한다면 Railjack Void Storm도 선택지가 됩니다."
     }
   ],
   "videos": [
@@ -440,24 +444,48 @@
   ],
   "sources": [
     {
-      "label": "r/Warframe — If you want to farm relics, here is where to do it",
-      "href": "https://reddit.com/r/Warframe/comments/7poeao/if_you_want_to_farm_relics_here_is_where_to_do_it/"
+      "label": "Digital Extremes — official PC drop tables",
+      "href": "https://www.warframe.com/droptables"
     },
     {
-      "label": "r/Warframe — RNG relics, rewards & the grind (discussion)",
-      "href": "https://reddit.com/r/Warframe/comments/dr46xo/so_let_me_get_this_straight_we_need_to_farm_rng/"
+      "label": "Update 36.1 — two Forma blueprints in Uncommon relic rewards",
+      "href": "https://www.warframe.com/en/patch-notes/pc/36-1-0"
     },
     {
-      "label": "r/Warframe — Platinum farms ranked",
-      "href": "https://reddit.com/r/Warframe/comments/1f77ohc/platinum_farms_ranked_by_how_insane_the_people/"
+      "label": "Specters of the Rail: Hotfix 13 — traces without a relic and storage cap",
+      "href": "https://www.warframe.com/en/patch-notes/pc/18-16-13"
     },
     {
-      "label": "Warframe Wiki — Void Relic",
-      "href": "https://wiki.warframe.com/w/Void_Relic"
+      "label": "Specters of the Rail — relics and refinement costs",
+      "href": "https://forums.warframe.com/topic/687452-xb1-specters-of-the-rail/"
     },
     {
-      "label": "Warframe Wiki — Void Traces",
-      "href": "https://wiki.warframe.com/w/Void_Traces"
+      "label": "Update 19 — a new relic for each endless reward interval",
+      "href": "https://www.warframe.com/en/patch-notes/pc/19-0-0"
+    },
+    {
+      "label": "Update 30 — Void Storms and shared Reactant",
+      "href": "https://www.warframe.com/en/patch-notes/pc/30-0-0"
+    },
+    {
+      "label": "Update 35.5 — Omnia Fissures accept all four Prime relic eras",
+      "href": "https://www.warframe.com/en/patch-notes/pc/35-5-0"
+    },
+    {
+      "label": "Update 42 — Requiem Eterna has separate reward rules",
+      "href": "https://www.warframe.com/en/patch-notes/pc/42-0-0"
+    },
+    {
+      "label": "Digital Extremes — Relic Hunting 101",
+      "href": "https://www.warframe.com/en/news/guia-de-caca-as-reliquias"
+    },
+    {
+      "label": "Warframe Support — Prime Resurgence FAQ",
+      "href": "https://support.warframe.com/hc/en-us/articles/4413725645453-Prime-Resurgence-FAQ"
+    },
+    {
+      "label": "Warframe Support — Trading FAQ",
+      "href": "https://support.warframe.com/hc/en-us/articles/37999066923533-Trading-FAQ-Safe-Trading-Tips"
     }
   ],
   "related": [
@@ -471,25 +499,25 @@
       "label": "Relic 파밍",
       "to": "/relic-farming",
       "icon": "pickaxe",
-      "note": "판당 수익이 가장 좋은 Relic"
+      "note": "추정 보상 가치 비교"
     },
     {
       "label": "Relic 가치: 개봉 또는 판매",
       "to": "/relics-value",
       "icon": "scale-balance",
-      "note": "Relic당 예상 plat"
+      "note": "Relic 하나당 추정 보상 가치"
     },
     {
       "label": "Ducat 가치 탐색기",
       "to": "/ducats",
       "icon": "diamond-stone",
-      "note": "Baro에게 바칠 가장 좋은 부품"
+      "note": "Prime 아이템의 Ducat 가치 비교"
     },
     {
       "label": "Vaulted Prime 추적기",
       "to": "/vaulted",
       "icon": "lock",
-      "note": "단종 및 단종 해제 현황"
+      "note": "기록된 Vault 상태 살펴보기"
     },
     {
       "label": "전체 FAQ",
@@ -498,5 +526,5 @@
       "note": "더 많은 플레이어 질문과 답변"
     }
   ],
-  "updated": "2026-07-18"
+  "updated": "2026-11-08"
 }
