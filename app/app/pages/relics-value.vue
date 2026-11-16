@@ -15,7 +15,7 @@
           <div v-if="topDeal" class="an-hero__deal">
             <div class="an-hero__deal-label">{{ t('relicsValue.hero.dealLabel') }}</div>
             <div class="an-hero__deal-plat">{{ fmtPlat(ev(topDeal)) }}<span>p</span></div>
-            <nuxt-link class="an-hero__deal-name" :to="'/relic/' + topDeal.url_name">
+            <nuxt-link class="an-hero__deal-name" :to="localePath('/relic/' + topDeal.url_name)">
               {{ localName('items', topDeal.url_name, topDeal.relicName) }} →
             </nuxt-link>
             <div class="an-hero__deal-sub">{{ t('relicsValue.hero.dealSub', { refinement: refinementLabel.toLowerCase() }) }}</div>
@@ -238,7 +238,7 @@
                 <td class="an-actions">
                   <nuxt-link
                     class="an-iconbtn an-iconbtn--go"
-                    :to="'/relic/' + row.url_name"
+                    :to="localePath('/relic/' + row.url_name)"
                     :title="t('relicsValue.table.view', { name: localName('items', row.url_name, row.relicName) })"
                     :aria-label="t('relicsValue.table.view', { name: localName('items', row.url_name, row.relicName) })"
                   >
@@ -306,7 +306,7 @@
                 </div>
               </div>
             </div>
-            <nuxt-link class="an-card__full" :to="'/relic/' + row.url_name" @click.stop>
+            <nuxt-link class="an-card__full" :to="localePath('/relic/' + row.url_name)" @click.stop>
               {{ t('relicsValue.card.fullPage') }} →
             </nuxt-link>
           </div>
@@ -345,6 +345,7 @@ import { useDisplay } from 'vuetify'
 import { trueRarity, useRelicValue, type RelicRow } from '~/composables/useRelicValue'
 
 const { t } = useI18n()
+const localePath = useLocalePath()
 const { localName, localItemName } = useLocalizedName()
 const { trackAction, trackDialog, trackFilter, trackSearch, trackSort } = useAnalytics()
 const base = useApiBase()
@@ -570,7 +571,7 @@ function ariaSort(key: SortKey): 'ascending' | 'descending' | 'none' {
 const fallbackRows = computed(() =>
   filtered.value.slice(0, 40).map((row) => ({
     key: row.url_name,
-    href: '/relic/' + row.url_name,
+    href: localePath('/relic/' + row.url_name),
     name: localName('items', row.url_name, row.relicName),
     cells: [fmtPlat(evRaw(row)) + 'p', fmtPlat(ev(row)) + 'p', fmtPlat(relicSellNow(row)) + 'p', fmtPlat(row.relic.volume)],
   })),

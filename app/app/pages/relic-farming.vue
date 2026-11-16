@@ -1,37 +1,39 @@
 <template>
   <div class="an">
-    <client-only>
-      <template #fallback>
-        <SeoFallbackTable
-          :caption="t('relicFarming.eyebrow')"
-          :name-label="t('relicFarming.table.relic')"
-          :columns="[t('relicFarming.table.platHr'), t('relicFarming.table.ev', { refinement: refinementLabel }), t('relicFarming.table.demand'), t('relicFarming.table.vol')]"
-          :rows="fallbackRows"
-        />
-      </template>
-      <div class="an-console">
-        <!-- Hero -->
-        <header class="an-hero">
-          <div class="an-hero__text">
-            <div class="an-eyebrow">{{ t('relicFarming.eyebrow') }}</div>
-            <i18n-t keypath="relicFarming.hero.title" tag="h1" class="an-title">
-              <template #farm><span class="accent-b">{{ t('relicFarming.hero.titleFarm') }}</span></template>
-              <template #platHour><span class="accent-a">{{ t('relicFarming.hero.titlePlatHour') }}</span></template>
-            </i18n-t>
-            <p class="an-lede">
-              {{ t('relicFarming.hero.lede', { refinement: refinementLabel.toLowerCase() }) }}
-            </p>
-          </div>
+    <div class="an-console">
+      <!-- Hero -->
+      <header class="an-hero">
+        <div class="an-hero__text">
+          <div class="an-eyebrow">{{ t('relicFarming.eyebrow') }}</div>
+          <i18n-t keypath="relicFarming.hero.title" tag="h1" class="an-title">
+            <template #farm><span class="accent-b">{{ t('relicFarming.hero.titleFarm') }}</span></template>
+            <template #platHour><span class="accent-a">{{ t('relicFarming.hero.titlePlatHour') }}</span></template>
+          </i18n-t>
+          <p class="an-lede">
+            {{ t('relicFarming.hero.lede', { refinement: refinementLabel.toLowerCase() }) }}
+          </p>
+        </div>
+        <client-only>
           <div v-if="topDeal" class="an-hero__deal">
             <div class="an-hero__deal-label">{{ t('relicFarming.hero.dealLabel') }}</div>
             <div class="an-hero__deal-plat">{{ fmtPlat(platPerHour(topDeal)) }}<span>p/hr</span></div>
-            <nuxt-link class="an-hero__deal-name" :to="'/relic/' + topDeal.url_name">
+            <nuxt-link class="an-hero__deal-name" :to="localePath('/relic/' + topDeal.url_name)">
               {{ localName('items', topDeal.url_name, topDeal.relicName) }} →
             </nuxt-link>
             <div class="an-hero__deal-sub">{{ t('relicFarming.hero.dealSub', { refinement: refinementLabel.toLowerCase() }) }}</div>
           </div>
-        </header>
+        </client-only>
+      </header>
 
+      <client-only>
+        <template #fallback>
+          <SeoFallbackTable
+            :caption="t('relicFarming.eyebrow')"
+            :name-label="t('relicFarming.table.relic')"
+            :columns="[t('relicFarming.table.platHr'), t('relicFarming.table.ev', { refinement: refinementLabel }), t('relicFarming.table.demand'), t('relicFarming.table.vol')]"
+            :rows="fallbackRows"
+          />
+        </template>
         <!-- Stats -->
         <div class="an-stats">
           <div class="an-stat">
@@ -190,7 +192,7 @@
               >
                 <td class="col-name">
                   <div class="an-namewrap">
-                    <nuxt-link class="an-name" :to="'/relic/' + row.url_name">
+                    <nuxt-link class="an-name" :to="localePath('/relic/' + row.url_name)">
                       <img class="an-thumb" :src="relicThumb(row)" :alt="localName('items', row.url_name, row.relicName)" loading="lazy" @error="onImgError" />
                       <span>
                         {{ localName('items', row.url_name, row.relicName) }}
@@ -234,7 +236,7 @@
             :key="row.url_name"
             class="an-card"
             :class="{ 'is-top': row.url_name === topDealUrl }"
-            :to="'/relic/' + row.url_name"
+            :to="localePath('/relic/' + row.url_name)"
           >
             <div class="an-card__head">
               <img class="an-thumb" :src="relicThumb(row)" :alt="localName('items', row.url_name, row.relicName)" loading="lazy" @error="onImgError" />
@@ -286,8 +288,10 @@
         <div v-if="filtered.length > perPage" class="an-pager">
           <v-pagination v-model="page" :length="pageCount" :total-visible="isMobile ? 5 : 9" color="#d4af5a" @update:model-value="onPage"></v-pagination>
         </div>
-      </div>
+      </client-only>
+    </div>
 
+    <client-only>
       <v-alert class="an-disclaimer" color="blue-darken-4" type="info" density="compact">
         <i18n-t keypath="relicFarming.disclaimer.text" tag="span">
           <template #realizable><b>{{ t('relicFarming.disclaimer.realizable') }}</b></template>
@@ -307,6 +311,7 @@ import { useDisplay } from 'vuetify'
 import { useRelicValue, type RelicRow } from '~/composables/useRelicValue'
 
 const { t } = useI18n()
+const localePath = useLocalePath()
 const { trackAction, trackDialog, trackFilter, trackSearch, trackSort } = useAnalytics()
 const { localItemName, localName } = useLocalizedName()
 
@@ -498,7 +503,7 @@ const filtered = computed<any[]>(() => {
 const fallbackRows = computed(() =>
   filtered.value.slice(0, 150).map((row) => ({
     key: row.url_name,
-    href: '/relic/' + row.url_name,
+    href: localePath('/relic/' + row.url_name),
     name: row.relicName,
     cells: [
       fmtPlat(platPerHour(row)) + 'p/hr',

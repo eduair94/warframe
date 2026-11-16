@@ -24,7 +24,11 @@
     <tbody>
       <tr v-for="row in rows" :key="row.key">
         <td>
-          <a :href="row.href" target="_blank" rel="noopener">{{ row.name }}</a>
+          <a
+            :href="row.href"
+            :target="opensNewTab(row.href) ? '_blank' : undefined"
+            :rel="opensNewTab(row.href) ? 'noopener' : undefined"
+          >{{ row.name }}</a>
         </td>
         <td v-for="(cell, i) in row.cells" :key="i">{{ cell }}</td>
       </tr>
@@ -33,6 +37,12 @@
 </template>
 
 <script setup lang="ts">
+// Keep internal navigation consistent before and after client hydration.
+// External market destinations retain their separate tab and opener protection.
+function opensNewTab(href: string): boolean {
+  return /^(?:https?:)?\/\//i.test(href)
+}
+
 defineProps<{
   caption: string
   nameLabel: string

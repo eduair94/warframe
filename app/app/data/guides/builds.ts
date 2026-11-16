@@ -1,10 +1,10 @@
 // Warframe Knowledge Center — "Best Builds & Build Planners" guide.
 // Companion to /guides/mods: mods.ts teaches the mechanics, this teaches HOW to
 // find, copy, theorycraft and vet a finished build using the community planners
-// (Overframe + Underframe). Rendered by the shared <GuideArticle>. Tool feature
-// claims mirror data/tools.research.json + i18n/messages/communityTools.ts so the
-// guide and the /tools directory never disagree. Evergreen-leaning on purpose —
-// specific meta mods shift, but the WORKFLOW of using a planner does not.
+// (Overframe + Underframe). Rendered by the shared <GuideArticle>. Tool features
+// are checked against the planners' public pages. Evergreen-leaning on purpose —
+// specific meta mods shift, so current mechanics and model limits are explicit.
+// English text reviewed 2026-11-16; video availability checked, not watched.
 import type { Guide } from './types'
 
 const guide: Guide = {
@@ -16,9 +16,7 @@ const guide: Guide = {
   readMins: 12,
   stats: [
     { num: '2', label: 'featured build planners', tone: 'gold' },
-    { num: '8', label: 'mod slots to fill', tone: 'alt' },
-    { num: '3–5', label: 'Forma on an endgame build', tone: 'good' },
-    { num: 'Free', label: 'to plan on both tools', tone: 'gold' },
+    { num: '8', label: "standard Warframe Mod slots", tone: 'alt' },
   ],
   sections: [
     {
@@ -31,7 +29,7 @@ const guide: Guide = {
         },
         {
           type: 'p',
-          text: "That's also why copying a build blindly backfires. A top-voted build might assume a **Riven**, three **arcanes**, a **Helminth** subsume and five **Forma** you don't have yet. Read it as a *destination*, adapt it to what you own today, and Forma toward it over time. This guide is about doing that quickly and safely with the two build tools the community actually uses.",
+          text: "That's also why copying a build blindly backfires. A shared build might assume a **Riven**, specific **arcanes**, a **Helminth** subsume and several **Forma** you don't have yet. Read it as a *destination*, adapt it to what you own today, and Forma toward it over time. The planners below can help you compare those choices before investing.",
         },
         {
           type: 'info',
@@ -41,50 +39,50 @@ const guide: Guide = {
     },
     {
       id: 'build-skeleton',
-      title: 'The universal build skeleton (before you open any tool)',
+      title: "A build checklist (before you open any tool)",
       blocks: [
         {
           type: 'p',
-          text: "Almost every good build is a variation on the same skeleton. Learn it once and you can read — and sanity-check — any build a tool hands you.",
+          text: "Start with the equipment’s strengths and the mission you want to complete. These checks help you read a shared build; they are not mandatory Mod combinations.",
         },
         {
           type: 'table',
           table: {
-            columns: ['Item', 'Non-negotiable core', 'Flex slots'],
+            columns: ['Item', "What to check first", "Options to evaluate"],
             rows: [
-              ['Warframe', 'Vitality/shield-gating survivability + your **two priority ability stats** (of Strength / Duration / Range / Efficiency)', 'Adaptation, Rolling Guard, an Exilus utility mod, an Aura, a Helminth subsume'],
-              ['Guns', 'Base damage → multishot → crit chance + crit damage', 'Two elements tuned to the faction, status/dual-stat mods, Galvanized mods, a Riven'],
-              ['Melee', 'Base damage (Pressure Point) → crit (Blood Rush) → Condition Overload', 'Weeping Wounds, attack speed, Primed Reach, a Stance, an element'],
+              ['Warframe', "Choose survivability that fits the Warframe, then prioritize the ability stats its kit needs.", 'Adaptation, Rolling Guard, an Exilus utility mod, an Aura, a Helminth subsume'],
+              ['Guns', "Check damage, multishot, crit and status against the weapon’s stats and firing mode.", 'Two elements tuned to the faction, status/dual-stat mods, Galvanized mods, a Riven'],
+              ['Melee', "Check attack speed, range, crit and status for the attacks you plan to use.", 'Weeping Wounds, attack speed, Primed Reach, a Stance, an element'],
             ],
-            note: 'The rule underneath it all: mods in the same damage bucket ADD, different buckets MULTIPLY — so you spread across base/multishot/crit/elements instead of stacking one. Full breakdown lives in the [Mods guide](/guides/mods).',
+            note: "Check which bonuses affect the same stat and which require a trigger. Compare the complete setup, including abilities and Arcanes, rather than treating every listed bonus as an independent multiplier. The [Mods guide](/guides/mods) covers the underlying systems.",
           },
         },
         {
           type: 'p',
-          text: "A build tool's job is to help you fill the **flex slots** intelligently — pick the elements for tonight's mission, decide crit vs status, and see the DPS math without doing it by hand. It does **not** replace knowing the skeleton; it's a faster way to finish it.",
+          text: "A build tool helps you compare Mod choices and check capacity. Use it to explore elements, crit, status and utility, then test the result in the mission you intend to play.",
         },
       ],
     },
     {
       id: 'the-two-planners',
-      title: 'The two build planners worth using: Overframe & Underframe',
+      title: "Two build planners: Overframe & Underframe",
       blocks: [
         {
           type: 'p',
-          text: "You do not need to buildcraft from a blank arsenal. Two free web tools cover the whole workflow: **[Overframe](/tools/overframe)** to *browse and copy* what the community already made, and **[Underframe](/tools/underframe)** to *simulate and optimise* when you want to min-max. They complement each other — most players use Overframe to start and Underframe to refine.",
+          text: "You do not need to buildcraft from a blank arsenal. **[Overframe](/tools/overframe)** helps you *browse and copy* community builds, while **[Underframe](/tools/underframe)** adds *simulation and optimisation*. One useful workflow is to find a reference, adapt it, then compare the result before spending resources.",
         },
         {
           type: 'table',
           table: {
             columns: ['', 'Overframe (overframe.gg)', 'Underframe (underframe.site)'],
             rows: [
-              ['What it is', 'The largest community build **database** + in-browser arsenal builder', 'A deep DPS **simulator** + auto-build optimiser'],
-              ['Best for', 'Finding a ready-made build for any frame/weapon/companion fast', 'Theorycrafting, comparing weapons, squeezing out the last 10%'],
-              ['Killer feature', 'Community builds with votes, tier lists, and Player Sync (imports your arsenal)', 'Combat sim vs scaled target dummies + an ML auto-build that mods for you'],
+              ['What it is', "Community build **database** + in-browser arsenal builder", 'A deep DPS **simulator** + auto-build optimiser'],
+              ['Best for', "Finding a community reference build for your item", "Theorycrafting and comparing modeled performance"],
+              ['Killer feature', "Community builds, tier lists and optional Player Sync build imports", "Configurable target simulation + Auto Build settings"],
               ['Also has', 'Item/mod reference, build guides, optional Overwolf overlay app', 'Riven creation & auto-roll, AoE layout editor, buff-partner linking, share links'],
-              ['Watch out for', 'Vote-aggregated rankings lag behind reworks — read builds critically', 'Sim numbers are a model, not the live game; small community, verify claims'],
+              ['Watch out for', 'Vote-aggregated rankings lag behind reworks — read builds critically', "Sim results depend on assumptions; confirm them in-game"],
             ],
-            note: 'Both are browser-based, free, need no game login, and read no game memory — they are safe by DE\'s standards (see the write-ups on [Overframe](/tools/overframe) and [Underframe](/tools/underframe) in the tool directory).',
+            note: "You can plan builds in a browser. Optional desktop companion apps are a separate choice: [DE’s third-party-software policy](https://forums.warframe.com/topic/1383123-third-party-software-usage/) also applies to Overwolf and associated apps, and does not guarantee risk-free use.",
           },
         },
       ],
@@ -110,22 +108,22 @@ const guide: Guide = {
               p: "Sort or filter by recent, not just all-time score. Then scan the build for things you may not own yet: a **Riven**, **arcanes**, a **Helminth** subsume, **Umbral/Primed** mods, and the **Forma count**. Those are the cost of the build, not free.",
             },
             {
-              h: 'Import your arsenal with Player Sync (optional)',
-              p: "Overframe\'s optional Overwolf desktop app can auto-import your real arsenal via your public Warframe profile, so the builder greys out mods you don\'t own. It reads profile data, not game memory — it\'s the DE-sanctioned overlay route, not an injector.",
+              h: "Check Player Sync before importing (optional)",
+              p: "Player Sync currently uses the Overframe app on Overwolf while you play, signed in to your Overframe account. It imports loadouts with their equipped Mods; verify them against your Arsenal. Looking up other players by name is no longer available. You can plan manually in the browser without syncing; do not assume a loadout import includes your complete inventory or detects every missing Mod.",
             },
             {
               h: 'Adapt, don\'t copy blindly',
-              p: "Swap any mod you don\'t have for the closest equivalent (a normal mod for its Primed version, a spare element for the exact meta one). A 90%-complete version of a great build still clears the star chart — fill the gaps as you farm.",
+              p: "Use an available alternative, such as a normal Mod in place of its Primed version, then recheck capacity and the role of that slot. A missing Mod may break an interaction the build depends on, so test each substitution rather than assuming a percentage-complete build will clear every mission.",
             },
             {
-              h: 'Copy the polarities, then Forma toward it',
-              p: "Note the build\'s polarities and Forma your keeper item to match, so the full loadout fits into 60 capacity. Do this last — Forma resets the item to rank 0. See the Forma section of the [Mods guide](/guides/mods).",
+              h: "Check capacity before choosing polarities",
+              p: "Check the item’s actual capacity in the Arsenal, including its rank, Reactor/Catalyst and applicable Aura or Stance. Forma only the slots needed for your planned Mods, and check your other configurations first. Forma resets rank; the [Forma guide](/guides/forma) explains crafting and polarity planning.",
             },
           ],
         },
         {
           type: 'warn',
-          text: "Overframe\'s community **tier lists** and some top builds are ranked by **votes accumulated over years**, so a frame or weapon that was strong long ago keeps a high score while a recent rework lags behind what it actually does today. Treat the ranking as a rough starting point, not gospel — the [Tier List guide](/guides/tier-list) explains exactly how this vote-lag distorts the list.",
+          text: "Community votes show popularity, not whether a build still works after the latest patch. An older high-scoring build can miss a rework or balance change. Check the author’s date, requirements and explanation, and use the [Tier List guide](/guides/tier-list) for more on interpreting rankings.",
         },
       ],
     },
@@ -135,21 +133,21 @@ const guide: Guide = {
       blocks: [
         {
           type: 'p',
-          text: "Underframe is the theorycrafting bench. Where Overframe shows you *a* build, Underframe lets you **prove which build is actually better** by simulating damage against a customisable enemy — then it can even mod the weapon for you.",
+          text: "Underframe lets you **compare modeled performance** against a configurable target. Keep the target and buffs the same when comparing two builds; confirm the result in actual missions.",
         },
         {
           type: 'list',
           items: [
-            "**DPS combat simulation** — fire your build at a target dummy with adjustable faction, level scaling, armour, headshots and status, and read the real time-to-kill instead of a raw stat sheet. This is how you settle 'is this weapon actually good on Steel Path?'.",
-            "**Auto-build optimiser** — hand it a weapon and it searches mod combinations for the highest score, with toggles to weight what you care about (crit vs status, sustained vs burst). A fast way to get a strong baseline you then hand-tune.",
-            "**Riven tooling** — create and auto-roll Riven stats to see whether a Riven is worth chasing for a given weapon before you spend Kuva. Pair it with our [Riven Value estimator](/riven-value) for the trade side.",
+            "**DPS combat simulation** — configure the target, level, defenses and headshot assumptions, then compare estimated DPS and time-to-kill. These are model outputs, not measured mission results.",
+            "**Auto-build optimiser** — set the objective, allowed Mods and Forma budget before generating a candidate. Check its assumptions and test it in-game.",
+            "**Riven tooling** — model candidate stats before spending Kuva. Check current in-game values because planner controls can lag patches. Our [Riven Value estimator](/riven-value) offers a separate market estimate.",
             "**Buff-partner linking & AoE editor** — model a squad buff (a linked Warframe\'s ability) applying to your weapon, or lay out area-of-effect coverage for explosive weapons.",
             "**Share & import** — export any build as a snapshot link to send to a friend or import one they send you.",
           ],
         },
         {
           type: 'info',
-          text: "Underframe is deliberately deeper than a plain build sharer, which makes it best for **min-maxers** comparing options. It has a small community and little public review footprint, so treat a surprising sim result as a hypothesis to confirm in-game or against the [wiki](https://wiki.warframe.com/), not a final verdict — a simulator is a model of the game, not the game.",
+          text: "Treat a surprising simulation result as a hypothesis to confirm in-game or against current patch notes and the [wiki](https://wiki.warframe.com/). A simulator is a model of the game, not the game.",
         },
       ],
     },
@@ -169,8 +167,8 @@ const guide: Guide = {
             { h: '2 · Find a reference on Overframe', p: "Grab a recent, well-explained build for your item as the template. Note its mods, arcanes, Helminth and Forma count." },
             { h: '3 · Sanity-check against your inventory', p: "Cross out what you don\'t own and slot equivalents. If the build leans on a Riven or arcanes you lack, build the version without them first." },
             { h: '4 · Simulate or optimise on Underframe', p: "Drop your adapted build into Underframe, sim it against the enemy you\'ll actually fight, and let the auto-build suggest tweaks. Compare two weapons here before committing Forma to one." },
-            { h: '5 · Cross-check a recent source', p: "Confirm anything surprising against a current creator video or the [wiki](https://wiki.warframe.com/) — the game gets balance passes, and tools lag patches. See vetted creators on our [Creators page](/creators)." },
-            { h: '6 · Potato, Forma and go', p: "Apply a Reactor/Catalyst, Forma the polarities to fit, re-level, and take it out. Forma is always the last step because it resets rank." },
+            { h: '5 · Cross-check a recent source', p: "Confirm surprising mechanics against [official patch notes](https://www.warframe.com/en/patch-notes), then compare the setup in-game. Community guides and the [wiki](https://wiki.warframe.com/) can help explain interactions, but check their dates too. Our [Creators page](/creators) lists video sources." },
+            { h: '6 · Potato, Forma and go', p: "Install the capacity upgrades you need, then add only the polarities required for the planned setup. Re-level and test after Forma; stop when the build fits and performs as intended." },
           ],
         },
         {
@@ -190,7 +188,7 @@ const guide: Guide = {
         {
           type: 'list',
           items: [
-            "**Stale date.** A build from several major updates ago may pre-date a rework, a mod nerf/buff, or the current damage model. Prefer recent builds; verify old ones.",
+            "**Stale mechanics.** Check the current patch, not only the posting date. [Hotfix 44.1.3](https://www.warframe.com/en/patch-notes/pc/44-1-3) removed weapon-specific Riven Dispositions and capped Ammo Efficiency at 75%; effects explicitly granting Infinite Ammo are separate. Retest builds that depend on the old rules.",
             "**Hidden requirements.** Count the **Forma**, and flag every **Riven, arcane, Umbral/Primed mod and Helminth subsume**. That's the true cost — a '5 Forma + Riven' build isn\'t a beginner build.",
             "**Vote-farmed ranking.** A high score can mean 'popular for years', not 'best now'. This is the classic [Overframe tier-list](/guides/tier-list) trap.",
             "**Meme / one-shot builds.** Some top builds are showcase gimmicks (huge single-target burst, zero survivability) that fall apart in a real endless run. Match the build to how you actually play.",
@@ -211,20 +209,25 @@ const guide: Guide = {
       blocks: [
         {
           type: 'p',
-          text: "Planners are the fastest route, but they aren\'t the only good source. Round out your buildcrafting with:",
+          text: "Planners are one way to find a starting point. You can also compare explanations from:",
         },
         {
           type: 'links',
           links: [
-            { label: 'The full tool directory', to: '/tools', icon: 'toolbox', note: 'Overframe, Underframe, the wiki, market & riven tools — all vetted' },
-            { label: 'WARFRAME Wiki', href: 'https://wiki.warframe.com/', icon: 'book-open-page-variant-outline', note: 'Exact mod values, build math and mechanics — the source of truth' },
+            { label: 'The full tool directory', to: '/tools', icon: 'toolbox', note: "Compare build planners, reference sites and market tools" },
+            { label: 'WARFRAME Wiki', href: 'https://wiki.warframe.com/', icon: 'book-open-page-variant-outline', note: "Community reference for Mod values and mechanics; check current patch notes" },
             { label: 'Creators worth following', to: '/creators', icon: 'youtube', note: 'Buildcrafters and tier-list makers who explain the why' },
-            { label: 'r/Warframe', href: 'https://reddit.com/r/Warframe/', icon: 'reddit', note: 'Ask for a build, get current community consensus' },
+            { label: 'r/Warframe', href: 'https://reddit.com/r/Warframe/', icon: 'reddit', note: "Discuss a specific build and compare the reasoning in replies" },
           ],
         },
         {
           type: 'info',
           text: "Buildcrafting also depends on the systems that feed it: [Helminth](/guides/helminth) subsumes, [Arcanes](/guides/arcanes), [Rivens](/guides/riven) and [Archon Shards](/guides/archon-shards) are the flex layers that separate a good build from a great one. Learn the mods first — then the tools make the rest fast.",
+        },
+        {
+          type: 'info',
+          title: 'About the video below',
+          text: 'The 2025 video is a general modding reference and predates later balance changes. Check current patch notes before copying its values or loadouts; the written guide covers the changes noted above.',
         },
       ],
     },
@@ -236,23 +239,23 @@ const guide: Guide = {
     },
     {
       q: 'What is Overframe and is it reliable?',
-      a: "Overframe (overframe.gg) is the largest community build database — you can search any frame, weapon or companion, browse community builds with votes, and use its in-browser arsenal builder. It's a great starting point, but its tier lists and some rankings are vote-aggregated over years, so recently reworked gear can be ranked below what it actually does today. Use it as a rough guide and cross-check dates and requirements. See the [tier list guide](/guides/tier-list) for the full caveat.",
+      a: "Overframe is a community build database and browser planner. It can provide a starting point, but votes do not verify that a build matches the current patch or your inventory. Check its date, requirements and explanation, then test the adapted setup. See the [tier list guide](/guides/tier-list) for more on interpreting rankings.",
     },
     {
       q: 'Overframe vs Underframe — which should I use?',
-      a: "Use both for different jobs. Overframe is a build database — best for quickly finding and copying a community build. Underframe (underframe.site) is a DPS simulator with an auto-build optimiser and Riven tooling — best for theorycrafting, comparing two weapons, and min-maxing the last 10%. The common workflow is: find a template on Overframe, then simulate and refine it on Underframe.",
+      a: "Use Overframe to find a community reference and Underframe to compare modeled options. You can use either independently. A useful workflow is to adapt a build to your inventory, compare it under consistent assumptions, then test it in-game.",
     },
     {
       q: 'How do I import my own arsenal into a build planner?',
-      a: "Overframe's optional Overwolf desktop app has a Player Sync feature that auto-imports your arsenal from your public Warframe profile, so the builder can grey out mods you don't own. It reads public profile data through DE's sanctioned overlay framework, not game memory, so it doesn't put your account at risk the way injection cheats would. Underframe lets you build and import/export via share links rather than syncing your account.",
+      a: "Overframe’s [Player Sync](https://overframe.gg/players/) currently requires its Overwolf app running while you play, signed in to your Overframe account. It syncs loadouts and their equipped Mods; verify the result in your Arsenal. You can plan manually in the browser without installing the companion app. [DE’s third-party-software policy](https://forums.warframe.com/topic/1383123-third-party-software-usage/) applies to Overwolf and associated apps, and does not guarantee risk-free use.",
     },
     {
       q: 'Do I need Forma, Rivens and arcanes to use these builds?',
-      a: "Not to start. Most top builds assume several Forma plus Rivens, arcanes, Umbral/Primed mods and a Helminth subsume — that's the finished destination, not the entry price. Build the version with what you own, swap in equivalents for anything missing, and a 90%-complete build still clears the entire star chart. Forma and Rivens are the last min-max layer, not the first step.",
+      a: "You can plan with the Mods you already own. Rivens, Arcanes and Helminth may be part of a particular build, but are not universal entry requirements. The Forma count depends on capacity, Mod ranks, existing polarities and the configurations you want to keep. Test substitutions; a missing interaction can matter more than how many slots are filled.",
     },
     {
       q: 'Can I trust an auto-build optimiser?',
-      a: "Underframe's auto-build gives you a strong, math-backed baseline fast, which is genuinely useful. But it optimises for a score in a simulation, so it can over-value stats that matter less in live play (or ignore quality-of-life and survivability). Use its output as a starting draft, then hand-tune for how you actually play and confirm anything surprising in-game or on the [wiki](https://wiki.warframe.com/).",
+      a: "Use an optimiser’s result as a candidate, not a guarantee. Its score depends on the target, buffs, allowed Mods and objective you selected. Compare those assumptions with your mission, check current mechanics, and test handling, survivability and performance in-game.",
     },
   ],
   videos: [
@@ -261,17 +264,23 @@ const guide: Guide = {
   sources: [
     { label: 'Overframe — community builds & arsenal builder', href: 'https://overframe.gg/' },
     { label: 'Underframe — DPS simulator & auto-build', href: 'https://www.underframe.site/' },
-    { label: 'Warframe Wiki — Mods, Damage & Forma', href: 'https://wiki.warframe.com/w/Mods' },
+    { label: 'Overframe — Player Sync', href: 'https://overframe.gg/players/' },
+    { label: 'Digital Extremes — third-party software policy', href: 'https://forums.warframe.com/topic/1383123-third-party-software-usage/' },
+    { label: 'Digital Extremes — Mod capacity and polarization', href: 'https://www.warframe.com/en/news/guia-de-mods' },
+    { label: 'Update 38.5 — capacity and Omni Forma changes', href: 'https://www.warframe.com/en/patch-notes/pc/38-5-0' },
+    { label: 'Hotfix 44.1.3 — Riven and Ammo Efficiency changes', href: 'https://www.warframe.com/en/patch-notes/pc/44-1-3' },
+    { label: 'Warframe Support — Polarization and Forma FAQ', href: 'https://support.warframe.com/hc/en-us/articles/200240380-Polarization-and-Forma-FAQ' },
+    { label: 'Community reference — Warframe Wiki Mods', href: 'https://wiki.warframe.com/w/Mods' },
   ],
   related: [
     { label: 'Essential Mods & Survivability', to: '/guides/mods', icon: 'cog-outline', note: 'The mechanics every build is built on' },
     { label: 'Tier List — How to Read It', to: '/guides/tier-list', icon: 'format-list-numbered', note: "Why Overframe's rankings lag reworks" },
     { label: 'Helminth & Subsumes', to: '/guides/helminth', icon: 'dna', note: 'The flex ability layer on top of mods' },
     { label: 'Arcanes Guide', to: '/guides/arcanes', icon: 'shimmer', note: 'The survivability/damage layer above mods' },
-    { label: 'Tool Vault', to: '/tools', icon: 'toolbox', note: 'Overframe, Underframe & every vetted tool' },
-    { label: 'Riven Value Estimator', to: '/riven-value', icon: 'cash', note: 'Price a Riven before you build around it' },
+    { label: 'Tool Vault', to: '/tools', icon: 'toolbox', note: "Compare Overframe, Underframe and other community tools" },
+    { label: 'Riven Value Estimator', to: '/riven-value', icon: 'cash', note: "Compare a market estimate before investing in a Riven" },
   ],
-  updated: '2026-07-18',
+  updated: '2026-11-16',
 }
 
 export default guide

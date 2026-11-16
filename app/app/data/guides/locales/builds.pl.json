@@ -1,0 +1,422 @@
+{
+  "slug": "builds",
+  "eyebrow": "Centrum wiedzy · Systemy i konfiguracje",
+  "title": "Najlepsze konfiguracje i narzędzia do ich planowania",
+  "lede": "„Najlepsza konfiguracja” nie jest tajną listą — to zestaw, który pozwala wykonać zadanie z modami, które naprawdę posiadasz. Naucz się czytać, kopiować i sprawdzać konfiguracje przy pomocy społecznościowych planerów Overframe i Underframe, zamiast zgadywać.",
+  "category": "systems",
+  "readMins": 12,
+  "stats": [
+    {
+      "num": "2",
+      "label": "polecane planery konfiguracji",
+      "tone": "gold"
+    },
+    {
+      "num": "8",
+      "label": "standardowe gniazda modów Warframe'a",
+      "tone": "alt"
+    }
+  ],
+  "sections": [
+    {
+      "id": "what-best-means",
+      "title": "Nie ma jednej „najlepszej konfiguracji” — jest właściwa do danego zadania",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Nowi gracze szukają *tej jednej* najlepszej konfiguracji Warframe'a, jakby szukali kodu ułatwiającego grę. Taka nie istnieje. Konfiguracja jest **najlepsza względem celu**: zestaw do Przetrwania na Stalowej Ścieżce, zadawania obrażeń Eidolonom, szybkiego farmienia i skradania się w Szpiegostwie może wyglądać zupełnie inaczej dla *tego samego* Warframe'a. Najpierw zdecyduj, co chcesz robić, a potem znajdź odpowiedni zestaw."
+        },
+        {
+          "type": "p",
+          "text": "Dlatego ślepe kopiowanie często zawodzi. Udostępniona konfiguracja może zakładać **Riven**, określone **Arkana**, zdolność przeniesioną przez **Helmintha** i kilka **Form**, których jeszcze nie masz. Traktuj ją jako *cel*, dostosuj do obecnego ekwipunku i stopniowo zbliżaj się do niej, używając Form. Poniższe planery pomogą porównać te wybory przed inwestycją."
+        },
+        {
+          "type": "info",
+          "text": "To praktyczna część [poradnika podstawowych modów](/guides/mods). Jeśli pojemność modów, polaryzacje, Formy lub kategorie obrażeń nadal są niejasne, przeczytaj go najpierw — dalszy tekst zakłada znajomość działania Serration, „ziemniaka” i zgodnej polaryzacji."
+        }
+      ]
+    },
+    {
+      "id": "build-skeleton",
+      "title": "Lista kontrolna konfiguracji przed otwarciem narzędzia",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Zacznij od mocnych stron wyposażenia i misji, którą chcesz ukończyć. Te wskazówki pomagają odczytać cudzą konfigurację; nie są obowiązkowymi zestawami modów."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "Wyposażenie",
+              "Co sprawdzić najpierw",
+              "Opcje do rozważenia"
+            ],
+            "rows": [
+              [
+                "Warframe",
+                "Dobierz sposób przetrwania do Warframe'a, a następnie skup się na statystykach zdolności potrzebnych jego zestawowi umiejętności.",
+                "Adaptation, Rolling Guard, użytkowy mod Exilus, Aura, zdolność Helmintha"
+              ],
+              [
+                "Broń palna",
+                "Sprawdź obrażenia, wielostrzał, trafienia krytyczne i status względem statystyk broni oraz trybu strzelania.",
+                "Dwa żywioły dobrane do frakcji, mody statusowe/dwustatystykowe, mody Galvanized, Riven"
+              ],
+              [
+                "Broń biała",
+                "Sprawdź szybkość ataku, zasięg, trafienia krytyczne i status dla ataków, których zamierzasz używać.",
+                "Weeping Wounds, szybkość ataku, Primed Reach, Postawa, żywioł"
+              ]
+            ],
+            "note": "Sprawdź, które premie wpływają na tę samą statystykę, a które wymagają aktywacji. Porównuj cały zestaw wraz ze zdolnościami i Arkanami, zamiast traktować każdą premię jako niezależny mnożnik. [Poradnik modów](/guides/mods) wyjaśnia podstawowe systemy."
+          }
+        },
+        {
+          "type": "p",
+          "text": "Planer pomaga porównywać mody i sprawdzać pojemność. Wykorzystaj go do analizy żywiołów, trafień krytycznych, statusu i użyteczności, a następnie przetestuj wynik w docelowej misji."
+        }
+      ]
+    },
+    {
+      "id": "the-two-planners",
+      "title": "Dwa planery: Overframe i Underframe",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Nie musisz zaczynać od pustego arsenału. **[Overframe](/tools/overframe)** pomaga *przeglądać i kopiować* konfiguracje społeczności, a **[Underframe](/tools/underframe)** dodaje *symulację i optymalizację*. Przydatny schemat to znalezienie wzoru, dostosowanie go i porównanie wyniku przed wydaniem zasobów."
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "",
+              "Overframe (overframe.gg)",
+              "Underframe (underframe.site)"
+            ],
+            "rows": [
+              [
+                "Czym jest",
+                "Społecznościowa **baza konfiguracji** i kreator arsenału w przeglądarce",
+                "Rozbudowany **symulator** DPS i automatyczny optymalizator konfiguracji"
+              ],
+              [
+                "Najlepsze zastosowanie",
+                "Znalezienie społecznościowego wzoru dla twojego wyposażenia",
+                "Planowanie teoretyczne i porównywanie modelowanej wydajności"
+              ],
+              [
+                "Najważniejsza funkcja",
+                "Konfiguracje społeczności, rankingi i opcjonalny import przez Player Sync",
+                "Konfigurowalna symulacja celu i ustawienia Auto Build"
+              ],
+              [
+                "Dodatkowe funkcje",
+                "Baza wyposażenia i modów, poradniki konfiguracji, opcjonalna nakładka Overwolf",
+                "Tworzenie Rivenów i automatyczne losowanie, edytor układu AoE, powiązania partnerów wzmacniających, linki udostępniania"
+              ],
+              [
+                "Na co uważać",
+                "Rankingi oparte na głosach pozostają w tyle za przeróbkami — czytaj konfiguracje krytycznie",
+                "Wyniki symulacji zależą od założeń; potwierdź je w grze"
+              ]
+            ],
+            "note": "Konfiguracje można planować w przeglądarce. Opcjonalne aplikacje towarzyszące na komputer są osobnym wyborem: [zasady DE dotyczące oprogramowania zewnętrznego](https://forums.warframe.com/topic/1383123-third-party-software-usage/) obejmują także Overwolf i powiązane aplikacje i nie gwarantują używania bez ryzyka."
+          }
+        }
+      ]
+    },
+    {
+      "id": "using-overframe",
+      "title": "Jak dobrze korzystać z Overframe",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Overframe dostarcza **punktu wyjścia**. Wyszukaj Warframe'a lub broń, przejrzyj cudze zestawy i skopiuj ten, który pasuje do twojego celu oraz ekwipunku. Kluczowe jest oddzielenie dobrych konfiguracji od przestarzałych."
+        },
+        {
+          "type": "steps",
+          "ordered": true,
+          "steps": [
+            {
+              "h": "Wyszukaj wyposażenie i przeczytaj najwyżej oceniane konfiguracje",
+              "p": "Wpisz nazwę Warframe'a, broni głównej, bocznej, białej lub towarzysza. Otwórz kilka najwyżej ocenianych konfiguracji i przeczytaj uwagi autora — dobry zestaw wyjaśnia, *do czego* służy (Stalowa Ścieżka, Eidolony, farmienie) i czego wymaga."
+            },
+            {
+              "h": "Sprawdź datę i wymagania, zanim zaufasz głosom",
+              "p": "Sortuj lub filtruj według aktualności, nie tylko łącznej oceny. Następnie sprawdź elementy, których możesz nie mieć: **Riven**, **Arkana**, zdolność **Helmintha**, mody **Umbral/Primed** i **liczbę Form**. To koszty konfiguracji, a nie darmowe dodatki."
+            },
+            {
+              "h": "Sprawdź Player Sync przed importem (opcjonalnie)",
+              "p": "Player Sync obecnie korzysta z aplikacji Overframe na Overwolf, działającej podczas gry po zalogowaniu na konto Overframe. Importuje zestawy wyposażenia wraz z założonymi modami; porównaj je ze swoim Arsenałem. Wyszukiwanie innych graczy po nazwie nie jest już dostępne. Możesz planować ręcznie w przeglądarce bez synchronizacji; nie zakładaj, że import zestawu obejmuje cały ekwipunek lub wykrywa każdy brakujący mod."
+            },
+            {
+              "h": "Dostosuj zamiast kopiować bezmyślnie",
+              "p": "Użyj dostępnego zamiennika, np. zwykłego moda zamiast wersji Primed, a potem ponownie sprawdź pojemność i rolę tego gniazda. Brakujący mod może przerwać zależność, na której opiera się konfiguracja. Testuj każdy zamiennik, zamiast zakładać, że zestaw ukończony w określonym procencie poradzi sobie z każdą misją."
+            },
+            {
+              "h": "Sprawdź pojemność przed wyborem polaryzacji",
+              "p": "Sprawdź rzeczywistą pojemność wyposażenia w Arsenale, uwzględniając rangę, Reaktor/Katalizator i odpowiednią Aurę lub Postawę. Użyj Form tylko w gniazdach potrzebnych planowanym modom i wcześniej sprawdź inne konfiguracje. Forma resetuje rangę; [poradnik Form](/guides/forma) wyjaśnia wytwarzanie i planowanie polaryzacji."
+            }
+          ]
+        },
+        {
+          "type": "warn",
+          "text": "Głosy społeczności pokazują popularność, a nie działanie konfiguracji po najnowszej aktualizacji. Starszy, wysoko oceniany zestaw może pomijać przeróbkę lub zmianę balansu. Sprawdź datę, wymagania i wyjaśnienie autora; [poradnik rankingów](/guides/tier-list) pomaga interpretować oceny."
+        }
+      ]
+    },
+    {
+      "id": "using-underframe",
+      "title": "Jak dobrze korzystać z Underframe",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Underframe pozwala **porównywać modelowaną wydajność** przeciw konfigurowalnemu celowi. Porównując dwa zestawy, zachowaj ten sam cel i wzmocnienia; potwierdź wynik w prawdziwych misjach."
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Symulacja walki DPS** — ustaw cel, poziom, obronę i założenia dotyczące strzałów w głowę, a potem porównaj szacowane DPS i czas zabicia. To wyniki modelu, nie pomiary z misji.",
+            "**Automatyczny optymalizator** — przed wygenerowaniem propozycji ustal cel, dozwolone mody i budżet Form. Sprawdź założenia i przetestuj zestaw w grze.",
+            "**Narzędzia Riven** — modeluj możliwe statystyki przed wydaniem Kuvy. Sprawdź aktualne wartości w grze, ponieważ ustawienia planera mogą nie nadążać za aktualizacjami. Nasz [estymator wartości Rivenów](/riven-value) zapewnia osobne oszacowanie rynkowe.",
+            "**Powiązania partnerów wzmacniających i edytor AoE** — modeluj premię drużyny (zdolność powiązanego Warframe'a) działającą na broń lub zaplanuj pokrycie obszaru przez broń wybuchową.",
+            "**Udostępnianie i import** — wyeksportuj konfigurację jako link do jej zapisanej wersji dla znajomego lub zaimportuj otrzymany link."
+          ]
+        },
+        {
+          "type": "info",
+          "text": "Traktuj zaskakujący wynik symulacji jako hipotezę do sprawdzenia w grze albo w aktualnych opisach zmian i na [wiki](https://wiki.warframe.com/). Symulator jest modelem gry, a nie samą grą."
+        }
+      ]
+    },
+    {
+      "id": "repeatable-workflow",
+      "title": "Powtarzalny sposób tworzenia dowolnej konfiguracji",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Połączenie obu narzędzi daje uporządkowany schemat przekształcania dowolnego Warframe'a lub broni w gotową konfigurację do misji:"
+        },
+        {
+          "type": "steps",
+          "ordered": true,
+          "steps": [
+            {
+              "h": "1 · Określ cel",
+              "p": "Nazwij aktywność: Przetrwanie na Stalowej Ścieżce, obrażenia seriami przeciw Eidolonom, szybkie farmienie, konkretny boss. Cel określa równowagę przeżywalności i obrażeń oraz potrzebne żywioły."
+            },
+            {
+              "h": "2 · Znajdź wzór na Overframe",
+              "p": "Wybierz aktualną, dobrze opisaną konfigurację swojego wyposażenia jako wzór. Zanotuj mody, Arkana, Helmintha i liczbę Form."
+            },
+            {
+              "h": "3 · Porównaj z ekwipunkiem",
+              "p": "Skreśl brakujące elementy i zastosuj zamienniki. Jeśli konfiguracja opiera się na Rivenie lub Arkanach, których nie masz, najpierw zbuduj wersję bez nich."
+            },
+            {
+              "h": "4 · Symuluj lub optymalizuj na Underframe",
+              "p": "Wprowadź dostosowany zestaw do Underframe, symuluj walkę z docelowym przeciwnikiem i pozwól Auto Build zaproponować poprawki. Porównaj tutaj dwie bronie, zanim zainwestujesz Formy w jedną z nich."
+            },
+            {
+              "h": "5 · Sprawdź aktualne źródło",
+              "p": "Potwierdź zaskakujące mechaniki w [oficjalnych opisach aktualizacji](https://www.warframe.com/en/patch-notes), a następnie porównaj zestaw w grze. Poradniki społeczności i [wiki](https://wiki.warframe.com/) pomagają wyjaśnić zależności, ale sprawdzaj również ich daty. Nasza [strona twórców](/creators) zawiera źródła wideo."
+            },
+            {
+              "h": "6 · Ziemniak, Forma i w drogę",
+              "p": "Zainstaluj potrzebne ulepszenia pojemności, a następnie dodaj tylko polaryzacje wymagane przez planowany zestaw. Po użyciu Formy ponownie zdobądź poziomy i przetestuj wyposażenie; zakończ, gdy konfiguracja mieści się i działa zgodnie z założeniami."
+            }
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "Nie inwestuj Form ani ziemniaków w sprzęt, który rozwijasz tylko dla Mistrzostwa i potem sprzedasz. Pełny schemat stosuj tylko do **wyposażenia na stałe**: głównych Warframe'ów i broni, które naprawdę zabierzesz na [Stalową Ścieżkę](/guides/steel-path)."
+        }
+      ]
+    },
+    {
+      "id": "reading-builds-critically",
+      "title": "Sygnały ostrzegawcze: krytyczne czytanie cudzych konfiguracji",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Każde narzędzie pozwalające obcym publikować konfiguracje pokaże też słabe propozycje. Przejdź tę listę, zanim wydasz Formy na skopiowany zestaw."
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Przestarzałe mechaniki.** Sprawdź aktualny patch, nie tylko datę publikacji. [Hotfix 44.1.3](https://www.warframe.com/en/patch-notes/pc/44-1-3) usunął Dyspozycje Riven przypisane do broni i ograniczył wydajność amunicji do 75%; efekty wprost zapewniające nieskończoną amunicję są odrębną kategorią. Przetestuj ponownie zestawy oparte na starych zasadach.",
+            "**Ukryte wymagania.** Policz **Formy** i zaznacz każdy **Riven, Arkanum, mod Umbral/Primed i zdolność Helmintha**. To prawdziwy koszt — konfiguracja „5 Form + Riven” nie jest dla początkujących.",
+            "**Ranking napędzany głosami.** Wysoka ocena może oznaczać „popularne od lat”, a nie „najlepsze obecnie”. To klasyczna pułapka [rankingów Overframe](/guides/tier-list).",
+            "**Konfiguracje memiczne lub na jeden strzał.** Niektóre wysoko oceniane zestawy to pokazowe sztuczki (ogromne obrażenia pojedynczego celu, brak przeżywalności), które zawodzą w prawdziwej misji nieskończonej. Dopasuj zestaw do swojej gry.",
+            "**Niewłaściwy cel.** Wspaniały zestaw na Eidolony nie pasuje do Przetrwania na Stalowej Ścieżce. Porównaj deklarowany cel autora ze swoim.",
+            "**Niedostępny sprzęt na początek.** Jeśli pierwszy krok brzmi „zdobądź idealnego Rivena”, jest to cel maksymalnej optymalizacji na koniec gry, a nie plan na wieczór. Zbuduj podstawową wersję i wykorzystaj narzędzia [Endo](/guides/endo) oraz [wartości Rivenów](/riven-value), aby wybrać opłacalne cele."
+          ]
+        },
+        {
+          "type": "quote",
+          "text": "Udostępniona konfiguracja jest cudzą odpowiedzią na pytanie, którego być może nie zadajesz. Najpierw przeczytaj pytanie, a potem skorzystaj z odpowiedzi.",
+          "cite": "Sposób myślenia przy tworzeniu konfiguracji"
+        }
+      ]
+    },
+    {
+      "id": "where-else",
+      "title": "Inne źródła konfiguracji",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Planery są jednym ze sposobów znalezienia punktu wyjścia. Możesz też porównać wyjaśnienia z tych źródeł:"
+        },
+        {
+          "type": "links",
+          "links": [
+            {
+              "label": "Pełny katalog narzędzi",
+              "to": "/tools",
+              "icon": "toolbox",
+              "note": "Porównaj planery, strony referencyjne i narzędzia rynkowe"
+            },
+            {
+              "label": "WARFRAME Wiki",
+              "href": "https://wiki.warframe.com/",
+              "icon": "book-open-page-variant-outline",
+              "note": "Społecznościowe źródło wartości modów i mechanik; sprawdzaj aktualne opisy zmian"
+            },
+            {
+              "label": "Twórcy, których warto śledzić",
+              "to": "/creators",
+              "icon": "youtube",
+              "note": "Autorzy konfiguracji i rankingów, którzy wyjaśniają swoje wybory"
+            },
+            {
+              "label": "r/Warframe",
+              "href": "https://reddit.com/r/Warframe/",
+              "icon": "reddit",
+              "note": "Omów konkretną konfigurację i porównaj argumenty w odpowiedziach"
+            }
+          ]
+        },
+        {
+          "type": "info",
+          "text": "Tworzenie konfiguracji zależy też od systemów uzupełniających: zdolności [Helmintha](/guides/helminth), [Arkana](/guides/arcanes), [Riveny](/guides/riven) i [Odłamki Archona](/guides/archon-shards) to elastyczne warstwy odróżniające dobry zestaw od świetnego. Najpierw poznaj mody — potem narzędzia przyspieszą resztę."
+        },
+        {
+          "type": "info",
+          "title": "O filmie poniżej",
+          "text": "Film z 2025 to ogólne wprowadzenie do modowania, powstałe przed późniejszymi zmianami balansu. Sprawdź aktualne opisy zmian przed kopiowaniem jego wartości lub wyposażenia; pisemny poradnik obejmuje zmiany wymienione wyżej."
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Jaka konfiguracja jest najlepsza w Warframe?",
+      "a": "Nie istnieje jeden uniwersalnie najlepszy zestaw — wszystko zależy od aktywności. Konfiguracja do Przetrwania na Stalowej Ścieżce, obrażeń przeciw Eidolonom i szybkiego farmienia może wyglądać zupełnie inaczej dla tego samego Warframe'a. Najpierw określ cel, znajdź pasujący wzór (np. na [Overframe](/tools/overframe)) i dostosuj go do posiadanych modów. Mechaniki każdej konfiguracji opisuje [poradnik modów](/guides/mods)."
+    },
+    {
+      "q": "Czym jest Overframe i czy jest wiarygodny?",
+      "a": "Overframe to społecznościowa baza konfiguracji i planer w przeglądarce. Zapewnia punkt wyjścia, ale głosy nie potwierdzają zgodności zestawu z aktualnym patchem ani twoim ekwipunkiem. Sprawdź datę, wymagania i opis, a potem przetestuj dostosowany zestaw. [Poradnik rankingów](/guides/tier-list) pomaga interpretować oceny."
+    },
+    {
+      "q": "Overframe czy Underframe — którego używać?",
+      "a": "Overframe pomaga znaleźć wzór społeczności, a Underframe porównać modelowane opcje. Możesz używać ich niezależnie. Przydatny schemat to dostosowanie zestawu do ekwipunku, porównanie przy tych samych założeniach i przetestowanie w grze."
+    },
+    {
+      "q": "Jak zaimportować własny arsenał do planera?",
+      "a": "[Player Sync](https://overframe.gg/players/) Overframe obecnie wymaga jego aplikacji Overwolf działającej podczas gry po zalogowaniu na konto Overframe. Synchronizuje zestawy i założone mody; sprawdź wynik w swoim Arsenale. Możesz planować ręcznie w przeglądarce bez instalowania aplikacji towarzyszącej. [Zasady DE dotyczące oprogramowania zewnętrznego](https://forums.warframe.com/topic/1383123-third-party-software-usage/) obejmują Overwolf i powiązane aplikacje i nie gwarantują korzystania bez ryzyka."
+    },
+    {
+      "q": "Czy do tych konfiguracji potrzebuję Form, Rivenów i Arkanów?",
+      "a": "Możesz planować z modami, które już masz. Riveny, Arkana i Helminth bywają częścią konkretnej konfiguracji, ale nie są powszechnym warunkiem wejścia. Liczba Form zależy od pojemności, rang modów, istniejących polaryzacji i konfiguracji, które chcesz zachować. Testuj zamienniki; brak ważnego współdziałania może znaczyć więcej niż liczba zapełnionych gniazd."
+    },
+    {
+      "q": "Czy mogę ufać automatycznemu optymalizatorowi?",
+      "a": "Traktuj wynik optymalizacji jako propozycję, nie gwarancję. Ocena zależy od wybranego celu, wzmocnień, dozwolonych modów i kryterium optymalizacji. Porównaj założenia z misją, sprawdź aktualne mechaniki i przetestuj obsługę, przeżywalność oraz skuteczność w grze."
+    }
+  ],
+  "videos": [
+    {
+      "id": "ct2pfAonGXY",
+      "title": "Complete Warframe Modding Guide 2025: Everything You Need to Know!",
+      "channel": "Zefā"
+    }
+  ],
+  "sources": [
+    {
+      "label": "Overframe — community builds & arsenal builder",
+      "href": "https://overframe.gg/"
+    },
+    {
+      "label": "Underframe — DPS simulator & auto-build",
+      "href": "https://www.underframe.site/"
+    },
+    {
+      "label": "Overframe — Player Sync",
+      "href": "https://overframe.gg/players/"
+    },
+    {
+      "label": "Digital Extremes — third-party software policy",
+      "href": "https://forums.warframe.com/topic/1383123-third-party-software-usage/"
+    },
+    {
+      "label": "Digital Extremes — Mod capacity and polarization",
+      "href": "https://www.warframe.com/en/news/guia-de-mods"
+    },
+    {
+      "label": "Update 38.5 — capacity and Omni Forma changes",
+      "href": "https://www.warframe.com/en/patch-notes/pc/38-5-0"
+    },
+    {
+      "label": "Hotfix 44.1.3 — Riven and Ammo Efficiency changes",
+      "href": "https://www.warframe.com/en/patch-notes/pc/44-1-3"
+    },
+    {
+      "label": "Warframe Support — Polarization and Forma FAQ",
+      "href": "https://support.warframe.com/hc/en-us/articles/200240380-Polarization-and-Forma-FAQ"
+    },
+    {
+      "label": "Community reference — Warframe Wiki Mods",
+      "href": "https://wiki.warframe.com/w/Mods"
+    }
+  ],
+  "related": [
+    {
+      "label": "Podstawowe mody i przeżywalność",
+      "to": "/guides/mods",
+      "icon": "cog-outline",
+      "note": "Mechaniki stanowiące podstawę każdej konfiguracji"
+    },
+    {
+      "label": "Rankingi — jak je czytać",
+      "to": "/guides/tier-list",
+      "icon": "format-list-numbered",
+      "note": "Dlaczego rankingi Overframe nie nadążają za przeróbkami"
+    },
+    {
+      "label": "Helminth i przenoszone zdolności",
+      "to": "/guides/helminth",
+      "icon": "dna",
+      "note": "Elastyczna warstwa zdolności uzupełniająca mody"
+    },
+    {
+      "label": "Poradnik Arkanów",
+      "to": "/guides/arcanes",
+      "icon": "shimmer",
+      "note": "Dodatkowa warstwa przeżywalności i obrażeń ponad modami"
+    },
+    {
+      "label": "Skarbiec narzędzi",
+      "to": "/tools",
+      "icon": "toolbox",
+      "note": "Porównaj Overframe, Underframe i inne narzędzia społeczności"
+    },
+    {
+      "label": "Estymator wartości Rivenów",
+      "to": "/riven-value",
+      "icon": "cash",
+      "note": "Porównaj oszacowanie rynku przed inwestycją w Rivena"
+    }
+  ],
+  "updated": "2026-11-16"
+}

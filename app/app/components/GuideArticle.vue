@@ -93,7 +93,7 @@
                 </tr>
               </tbody>
             </table>
-            <p v-if="b.table.note" class="ga-note">{{ b.table.note }}</p>
+            <p v-if="b.table.note" class="ga-note" v-html="rich(b.table.note)" />
           </div>
 
           <div v-else-if="b.type === 'video'" class="ga-video">

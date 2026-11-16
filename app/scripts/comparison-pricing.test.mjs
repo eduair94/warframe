@@ -10,6 +10,7 @@ import { createI18n } from 'vue-i18n'
 import ts from 'typescript'
 import messages from '../i18n/messages/comparison.ts'
 import * as pricing from '../app/utils/comparison-pricing.ts'
+import { loadSsrComponent } from './helpers/ssr-component.mjs'
 
 const compile = source => ts.transpileModule(source, {
   compilerOptions: { target: ts.ScriptTarget.ES2022, module: ts.ModuleKind.CommonJS },
@@ -140,7 +141,7 @@ function render(source,filename) {
   return context.exports.ssrRender
 }
 const ssrRender=render(page.template.content,'comparison.vue')
-const fallback=parse(await readFile(new URL('../app/components/SeoFallbackTable.vue',import.meta.url),'utf8')).descriptor.template
+const fallbackTable=await loadSsrComponent(new URL('../app/components/SeoFallbackTable.vue',import.meta.url))
 const text=node=>node.type===2?node.content:(node.children??[]).map(text).join('')
 const elements=(node,tag)=>[...(node.type===1&&node.tag===tag?[node]:[]),...(node.children??[]).flatMap(child=>elements(child,tag))]
 
@@ -151,7 +152,7 @@ for(const locale of ['en','es']) for(const mode of ['server','desktop','mobile']
       mobile:mode==='mobile',loadError:false,onSetNav:()=>{},onImgError:()=>{},onSortChange:()=>{},onCategoryChange:()=>{},onFilterToggle:()=>{},onPageChange:()=>{} })})
     app.use(i18n)
     app.component('ClientOnly',{setup:(_, {slots})=>()=>mode==='server'?slots.fallback?.()??vue.h('span'):slots.default?.()})
-    app.component('SeoFallbackTable',{props:['caption','nameLabel','columns','rows'],ssrRender:render(fallback.content,'SeoFallbackTable.vue')})
+    app.component('SeoFallbackTable',fallbackTable)
     app.component('NuxtLink',{props:['to'],setup:(props,{slots})=>()=>vue.h('a',{href:props.to},slots.default?.())})
     for(const tag of new Set([...page.template.content.matchAll(/<(v-[a-z-]+)/g)].map(m=>m[1]))) app.component(tag,{setup:(_, {slots})=>()=>vue.h('div',slots.default?.())})
     const warnings=[];app.config.warnHandler=message=>warnings.push(message)

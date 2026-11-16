@@ -313,7 +313,7 @@ const filtered = computed<FormaRelic[]>(() => {
 const fallbackRows = computed(() =>
   filtered.value.slice(0, 40).map((f) => ({
     key: f.row.url_name,
-    href: '/relic/' + f.row.url_name,
+    href: localePath('/relic/' + f.row.url_name),
     name: f.row.relicName,
     cells: [`${f.count}× Forma`, `${fmtPct(f.intactChance)}%`, statusLabel(f.status)],
   })),

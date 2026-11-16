@@ -10,6 +10,7 @@ import { createMemoryHistory, createRouter, RouterLink } from 'vue-router'
 import ts from 'typescript'
 import { renderRich } from '../app/utils/richText.ts'
 import railjack from '../app/data/guides/railjack.ts'
+import builds from '../app/data/guides/builds.ts'
 
 test('guide body links use the active locale and preserve fragments', () => {
   const seen = []
@@ -178,4 +179,55 @@ test('guide click analytics classify internal href cards using the same destinat
   assert.deepEqual(cards.events.map(args => args[2].internal), [true, true, false])
   assert.deepEqual(cards.events.map(args => args[2].placement), ['inline', 'related', 'inline'])
   assert.ok(cards.events.every(args => args[2].guide_slug === 'railjack'))
+})
+
+test('actual guide table notes render localized links and safe rich text during SSR', async () => {
+  const note = elements(parseHtml(component.descriptor.template.content), 'p').find(node =>
+    attr(node, 'class') === 'ga-note' && node.loc.source.includes('b.table.note'))
+  assert.ok(note, 'actual table-note template')
+  const richDeclaration = script.statements.find(node => ts.isVariableStatement(node)
+    && node.declarationList.declarations.some(declaration => declaration.name.getText(script) === 'rich'))
+  assert.ok(richDeclaration, 'actual rich helper')
+  const compiled = compileTemplate({ source: note.loc.source, filename: 'GuideArticle.vue', id: 'guide-table-note', ssr: true, ssrCssVars: [] })
+  assert.deepEqual(compiled.errors, [])
+  const context = { exports: {}, require: name => {
+    assert.ok(['vue', 'vue/server-renderer'].includes(name))
+    return name === 'vue' ? vue : renderer
+  } }
+  runInNewContext(compile(compiled.code), context)
+  const notes = builds.sections.flatMap(section => section.blocks.filter(block => block.type === 'table').map(block => block.table.note))
+  assert.equal(notes.length, 2, 'real Builds notes')
+  const fixture = '**Check** [Internal](/guides/mods?mode=all&sort=name#capacity) [Source](https://example.test/?q=" onclick="bad) <script>bad()</script>'
+  for (const locale of locales) {
+    const helpers = { exports: {}, renderRich, localePath: path => locale === 'en' ? path : `/${locale}${path}` }
+    runInNewContext(compile(richDeclaration.getText(script) + '\nexports.rich = rich;'), helpers)
+    const renderNote = async value => {
+      const app = vue.createSSRApp({ ssrRender: context.exports.ssrRender, setup: () => ({ b: { table: { note: value } }, rich: helpers.exports.rich }) })
+      const warnings = []
+      app.config.warnHandler = warning => warnings.push(warning)
+      const html = await renderer.renderToString(app)
+      assert.deepEqual(warnings, [])
+      return { html, tree: parseHtml(html) }
+    }
+    for (const value of notes) {
+      const { tree } = await renderNote(value)
+      const anchors = elements(tree, 'a')
+      assert.equal(anchors.length, 1, 'actual note link renders as an anchor')
+      const destination = value.match(/\]\(([^)]+)\)/)[1]
+      const internal = destination.startsWith('/')
+      assert.equal(attr(anchors[0], 'href'), internal && locale !== 'en' ? `/${locale}${destination}` : destination)
+      assert.equal(attr(anchors[0], 'target'), internal ? undefined : '_blank')
+      assert.equal(attr(anchors[0], 'rel'), internal ? undefined : 'noopener')
+      assert.ok(!text(tree).includes(']('), 'no literal Markdown remains')
+    }
+    const { html, tree } = await renderNote(fixture)
+    const anchors = elements(tree, 'a')
+    assert.equal(anchors.length, 2)
+    assert.equal(attr(anchors[0], 'href'), `${locale === 'en' ? '' : '/' + locale}/guides/mods?mode=all&sort=name#capacity`)
+    assert.equal(attr(anchors[1], 'href'), 'https://example.test/?q=" onclick="bad')
+    assert.equal(attr(anchors[1], 'onclick'), undefined)
+    assert.equal(elements(tree, 'script').length, 0)
+    assert.equal(elements(tree, 'strong').length, 1)
+    assert.match(html, /&lt;script&gt;bad\(\)&lt;\/script&gt;/)
+  }
 })

@@ -1,0 +1,422 @@
+{
+  "slug": "builds",
+  "eyebrow": "知识中心 · 系统与配装",
+  "title": "最佳配装与配装规划工具",
+  "lede": "“最佳配装”不是一份秘密清单，而是能用你实际拥有的MOD完成目标内容的装备组合。学会使用社区规划工具Overframe和Underframe阅读、借鉴并检验配装，而不是凭感觉猜测。",
+  "category": "systems",
+  "readMins": 12,
+  "stats": [
+    {
+      "num": "2",
+      "label": "本篇介绍的配装工具",
+      "tone": "gold"
+    },
+    {
+      "num": "8",
+      "label": "战甲的普通MOD槽位",
+      "tone": "alt"
+    }
+  ],
+  "sections": [
+    {
+      "id": "what-best-means",
+      "title": "不存在唯一的“最佳配装”，只有适合目标的配装",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "新玩家常像找秘籍一样寻找战甲的*最强配装*，但这种万能答案并不存在。配装是否最佳，**取决于目标**。*同一*战甲的钢铁之路生存、夜灵输出、高速刷取和间谍潜行配装可能截然不同。先确定要做什么，再找适合该目标的配置。"
+        },
+        {
+          "type": "p",
+          "text": "这也是盲目照抄容易出问题的原因。分享的配装可能默认你拥有某张**裂罅MOD**、特定**赋能**、**Helminth**移植技能，以及多枚**Forma**。把它当作*最终目标*，按现有装备调整，再逐步投入Forma。下方工具能帮助你在投入资源前比较这些选择。"
+        },
+        {
+          "type": "info",
+          "text": "本篇是[必备MOD指南](/guides/mods)的实践部分。如果你还不清楚MOD容量、极性、Forma或伤害计算分类，请先阅读那篇指南。以下内容默认你了解Serration、俗称“土豆”的容量强化道具，以及极性匹配的作用。"
+        }
+      ]
+    },
+    {
+      "id": "build-skeleton",
+      "title": "配装检查清单：打开工具之前",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "先考虑装备的优势和想完成的任务。这些检查项目能帮助你理解分享的配装，并非强制要求的MOD组合。"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "装备",
+              "首先检查",
+              "可评估的选项"
+            ],
+            "rows": [
+              [
+                "战甲",
+                "选择适合该战甲的生存手段，再优先提升其技能组需要的属性。",
+                "Adaptation、Rolling Guard、Exilus功能MOD、光环、Helminth移植技能"
+              ],
+              [
+                "枪械",
+                "结合武器属性和射击模式，检查伤害、多重射击、暴击和触发。",
+                "针对敌方派系的两种元素、触发或双属性MOD、Galvanized MOD、裂罅MOD"
+              ],
+              [
+                "近战武器",
+                "针对计划使用的攻击，检查攻速、范围、暴击和触发。",
+                "Weeping Wounds、攻速、Primed Reach、架式、元素"
+              ]
+            ],
+            "note": "检查哪些加成作用于同一属性，哪些需要触发条件。把技能和赋能也纳入完整配置比较，不要把每项加成都当成独立乘区。[MOD指南](/guides/mods)介绍了基础系统。"
+          }
+        },
+        {
+          "type": "p",
+          "text": "配装工具可以比较MOD选择并检查容量。用它探索元素、暴击、触发和实用功能，然后在实际准备游玩的任务中测试结果。"
+        }
+      ]
+    },
+    {
+      "id": "the-two-planners",
+      "title": "两款配装工具：Overframe与Underframe",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "不必从空白军械库开始设计一切。**[Overframe](/tools/overframe)**便于*浏览和借鉴*社区配装，**[Underframe](/tools/underframe)**则提供*模拟与优化*。一种实用流程是先找到参考、按自身情况调整，再在消耗资源前比较结果。"
+        },
+        {
+          "type": "table",
+          "table": {
+            "columns": [
+              "",
+              "Overframe (overframe.gg)",
+              "Underframe (underframe.site)"
+            ],
+            "rows": [
+              [
+                "工具类型",
+                "社区配装**数据库**＋浏览器内军械库配装工具",
+                "详细DPS**模拟器**＋自动配装优化器"
+              ],
+              [
+                "适合用途",
+                "为自己的装备寻找社区参考配装",
+                "理论配装与模型性能比较"
+              ],
+              [
+                "主要功能",
+                "社区配装、强度榜，以及可选的Player Sync配装导入",
+                "可配置目标的模拟＋Auto Build设置"
+              ],
+              [
+                "其他功能",
+                "物品与MOD资料、配装指南、可选的Overwolf悬浮应用",
+                "裂罅创建与自动洗练模拟、范围布局编辑器、增益伙伴关联、分享链接"
+              ],
+              [
+                "注意事项",
+                "投票汇总排名对重做的反映会滞后，需认真审视配装",
+                "模拟结果取决于假设条件，需在游戏中确认"
+              ]
+            ],
+            "note": "你可以直接在浏览器中规划配装。是否使用可选的桌面辅助应用，是另一项选择。[DE的第三方软件政策](https://forums.warframe.com/topic/1383123-third-party-software-usage/)同样适用于Overwolf及其相关应用，并不保证使用时毫无风险。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "using-overframe",
+      "title": "如何用好Overframe",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Overframe适合寻找**起点**。搜索战甲或武器，浏览其他玩家的配装，借鉴符合目标和现有装备的方案。关键是分辨有用的参考与过时的配置。"
+        },
+        {
+          "type": "steps",
+          "ordered": true,
+          "steps": [
+            {
+              "h": "搜索装备，再阅读高评价配装",
+              "p": "输入战甲、主武器、副武器、近战武器或同伴名称。打开几份高评价配装，阅读作者说明。好的配装会解释*用途*，例如钢铁之路、夜灵或刷取，以及所需条件。"
+            },
+            {
+              "h": "相信投票之前，先检查日期和要求",
+              "p": "除了历史总分，也按近期内容排序或筛选。检查你可能尚未拥有的**裂罅MOD**、**赋能**、**Helminth**移植技能、**Umbral/Primed** MOD，以及**Forma数量**。这些都是配装成本，不是免费的附赠品。"
+            },
+            {
+              "h": "导入前检查Player Sync：可选步骤",
+              "p": "目前Player Sync需要你登录Overframe账号，并在游玩时运行Overwolf上的Overframe应用。它会导入包含已装备MOD的配置，请与游戏内军械库核对。通过名称查找其他玩家的功能已停止提供。你也可以不进行同步，直接在浏览器中手动规划；不要假设导入配置会包含全部库存，或识别每一张缺失的MOD。"
+            },
+            {
+              "h": "按自身情况调整，不要盲目照抄",
+              "p": "使用已有的替代品，例如以普通版代替Primed版MOD，再检查容量和该槽位的作用。缺少某张MOD可能破坏配装依赖的联动。请逐项测试替换，不要认为完成到某个比例就能通过所有任务。"
+            },
+            {
+              "h": "选择极性之前先检查容量",
+              "p": "在军械库查看实际容量，包括等级、反应堆或催化剂，以及适用的光环或架式。先检查其他配置，再仅为计划中的MOD所需槽位使用Forma。Forma会重置等级；[Forma指南](/guides/forma)介绍了制作和极性规划。"
+            }
+          ]
+        },
+        {
+          "type": "warn",
+          "text": "社区投票体现人气，不能证明配装在最新补丁后依然有效。旧的高分配装可能没有反映重做或平衡调整。检查作者日期、要求和说明；[强度榜指南](/guides/tier-list)提供了更多解读排名的方法。"
+        }
+      ]
+    },
+    {
+      "id": "using-underframe",
+      "title": "如何用好Underframe",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Underframe能针对可设置的目标**比较模型中的性能**。比较两套配装时，保持目标和增益一致，并在实际任务中验证结果。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**DPS战斗模拟**——设置目标、等级、防御和爆头假设，再比较估算DPS与击杀时间。这些是模型输出，不是任务中的实测结果。",
+            "**自动配装优化**——生成候选方案前，先设置目标、允许使用的MOD和Forma预算。检查其前提，并在游戏中测试。",
+            "**裂罅工具**——花费赤毒前，先模拟候选属性。工具可能未及时跟进补丁，因此请检查当前游戏内数值。我们的[裂罅价值估算器](/riven-value)另行提供市场估价。",
+            "**增益伙伴关联与范围编辑器**——模拟关联战甲的技能为武器提供的队伍增益，或规划爆炸武器的效果覆盖范围。",
+            "**分享与导入**——将配装导出为快照链接发给朋友，或导入朋友分享的配装。"
+          ]
+        },
+        {
+          "type": "info",
+          "text": "把出乎意料的模拟结果当作待验证的假设，在游戏中或结合当前补丁说明与[Wiki](https://wiki.warframe.com/)确认。模拟器是游戏的模型，不是游戏本身。"
+        }
+      ]
+    },
+    {
+      "id": "repeatable-workflow",
+      "title": "适用于各种装备的可重复配装流程",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "结合这两款工具，可以建立一套稳定流程，把战甲或武器逐步完善成适合任务的配装："
+        },
+        {
+          "type": "steps",
+          "ordered": true,
+          "steps": [
+            {
+              "h": "1 · 确定目标",
+              "p": "明确活动：钢铁之路生存、夜灵爆发、快速刷取或某个首领。目标决定生存与伤害的取舍，以及需要的元素。"
+            },
+            {
+              "h": "2 · 在Overframe寻找参考",
+              "p": "为装备选择近期且说明充分的配装作为模板。记下MOD、赋能、Helminth和Forma数量。"
+            },
+            {
+              "h": "3 · 对照自己的库存",
+              "p": "划掉尚未拥有的内容，装入替代品。如果配装依赖缺少的裂罅或赋能，先制作不使用它们的版本。"
+            },
+            {
+              "h": "4 · 在Underframe模拟或优化",
+              "p": "将调整后的配装输入Underframe，针对实际将面对的敌人模拟，再参考自动配装的修改建议。在为其中一把武器投入Forma前，可以先在这里比较两把武器。"
+            },
+            {
+              "h": "5 · 与近期资料交叉核对",
+              "p": "对意外的机制，先查阅[官方补丁说明](https://www.warframe.com/en/patch-notes)，再在游戏中比较配置。社区指南和[Wiki](https://wiki.warframe.com/)有助于解释联动，但也要检查日期。我们的[创作者页面](/creators)列出了视频资料来源。"
+            },
+            {
+              "h": "6 · 强化容量、使用Forma，然后出发",
+              "p": "安装所需的容量强化，再仅添加计划配置需要的极性。使用Forma后重新升级并测试；当配装装得下且表现符合预期时，就停止追加投入。"
+            }
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "不要为只用于获取段位经验、之后就出售的装备投入Forma或容量强化。这套完整流程应留给**长期保留的装备**，例如主力战甲和实际会带进[钢铁之路](/guides/steel-path)的武器。"
+        }
+      ]
+    },
+    {
+      "id": "reading-builds-critically",
+      "title": "警示信号：如何审慎阅读分享的配装",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "任何允许陌生人发布配装的工具，都可能出现不合适的方案。把Forma投入照抄的配置之前，请检查以下项目。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**过时机制。** 不仅要看发布日期，也要核对当前补丁。[Hotfix 44.1.3](https://www.warframe.com/en/patch-notes/pc/44-1-3)移除了武器独有的裂罅倾向，并将弹药效率上限设为75%；明确提供无限弹药的效果另行处理。依赖旧规则的配装需要重新测试。",
+            "**隐藏要求。** 统计**Forma**，标记每一项**裂罅、赋能、Umbral/Primed MOD和Helminth移植技能**。这才是实际成本。“5 Forma＋裂罅”的配装并不适合初学者。",
+            "**投票累积的排名。** 高分可能只代表“多年受欢迎”，而不是“现在最好”。这是[Overframe强度榜](/guides/tier-list)的典型陷阱。",
+            "**娱乐或秒杀配装。** 某些高排名方案只是展示技巧，例如牺牲生存换取极高单体爆发，在真正的无尽任务里容易崩溃。选择符合实际玩法的配置。",
+            "**目标不符。** 优秀的夜灵配装也未必适合钢铁之路生存。重新对照作者标明的用途和自己的目标。",
+            "**从难以拥有的装备开始。** 如果第一步就是“获得极品裂罅”，那是后期极限优化目标，而不是今晚的计划。先构建基础版本，再用[Endo](/guides/endo)和[裂罅价值](/riven-value)工具判断哪些目标值得追求。"
+          ]
+        },
+        {
+          "type": "quote",
+          "text": "分享的配装，是别人对某个问题的回答，而你未必在问同一个问题。先读懂问题，再借鉴答案。",
+          "cite": "配装设计的思路"
+        }
+      ]
+    },
+    {
+      "id": "where-else",
+      "title": "其他配装来源",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "规划工具只是寻找起点的一种途径。你也可以比较以下来源的解释："
+        },
+        {
+          "type": "links",
+          "links": [
+            {
+              "label": "完整工具目录",
+              "to": "/tools",
+              "icon": "toolbox",
+              "note": "比较配装工具、资料网站和市场工具"
+            },
+            {
+              "label": "WARFRAME Wiki",
+              "href": "https://wiki.warframe.com/",
+              "icon": "book-open-page-variant-outline",
+              "note": "社区整理的MOD数值与机制资料；也请检查当前补丁说明"
+            },
+            {
+              "label": "值得参考的创作者",
+              "to": "/creators",
+              "icon": "youtube",
+              "note": "会解释原因的配装作者和强度榜作者"
+            },
+            {
+              "label": "r/Warframe",
+              "href": "https://reddit.com/r/Warframe/",
+              "icon": "reddit",
+              "note": "讨论具体配装，并比较回复中的理由"
+            }
+          ]
+        },
+        {
+          "type": "info",
+          "text": "配装还依赖支撑它的系统：[Helminth](/guides/helminth)移植、[赋能](/guides/arcanes)、[裂罅](/guides/riven)和[执刑官源力石](/guides/archon-shards)，都是把优秀配装进一步完善的灵活调整层。先学会MOD，工具就能帮助你更快处理其余部分。"
+        },
+        {
+          "type": "info",
+          "title": "关于下方视频",
+          "text": "这段2025年的视频是通用配装参考，早于后续平衡调整。照抄其数值或配置前，请检查当前补丁说明；本篇文字指南已介绍上述变化。"
+        }
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Warframe中什么配装最好？",
+      "a": "没有通用的最佳配装，答案取决于活动。同一战甲的钢铁之路生存、夜灵输出和快速刷取配装可能完全不同。先确定目标，再寻找适合的方案，例如在[Overframe](/tools/overframe)找到起点，并按现有MOD调整。各种配装的基础机制见[MOD指南](/guides/mods)。"
+    },
+    {
+      "q": "Overframe是什么，可靠吗？",
+      "a": "Overframe是社区配装数据库和浏览器规划工具。它能提供起点，但投票不能证实配装适合当前补丁或你的库存。检查日期、要求和说明，再测试调整后的配置。[强度榜指南](/guides/tier-list)进一步解释了如何阅读排名。"
+    },
+    {
+      "q": "Overframe与Underframe，我该用哪个？",
+      "a": "用Overframe寻找社区参考，用Underframe比较模型中的选项。两者也都可以单独使用。实用流程是按库存调整、在一致条件下比较，再到游戏中测试。"
+    },
+    {
+      "q": "如何把自己的军械库导入配装工具？",
+      "a": "目前Overframe的[Player Sync](https://overframe.gg/players/)要求你登录Overframe账号，并在游玩时运行其Overwolf应用。它会同步配置及其中装备的MOD，请到军械库验证结果。不安装辅助应用，也能在浏览器中手动规划。[DE的第三方软件政策](https://forums.warframe.com/topic/1383123-third-party-software-usage/)适用于Overwolf及相关应用，并不保证零风险使用。"
+    },
+    {
+      "q": "使用这些配装一定需要Forma、裂罅和赋能吗？",
+      "a": "你可以用现有MOD规划。裂罅、赋能和Helminth可能是某套配装的一部分，但并非所有配装的入门要求。Forma数量取决于容量、MOD等级、现有极性和想保留的配置。请测试替代方案；失去某种联动，有时比填满多少槽位更重要。"
+    },
+    {
+      "q": "自动配装优化器值得信任吗？",
+      "a": "把结果当作候选，而不是保证。评分取决于所选目标、增益、允许使用的MOD和优化目的。将这些假设与实际任务比较，检查当前机制，并在游戏中测试手感、生存能力和性能。"
+    }
+  ],
+  "videos": [
+    {
+      "id": "ct2pfAonGXY",
+      "title": "Complete Warframe Modding Guide 2025: Everything You Need to Know!",
+      "channel": "Zefā"
+    }
+  ],
+  "sources": [
+    {
+      "label": "Overframe — community builds & arsenal builder",
+      "href": "https://overframe.gg/"
+    },
+    {
+      "label": "Underframe — DPS simulator & auto-build",
+      "href": "https://www.underframe.site/"
+    },
+    {
+      "label": "Overframe — Player Sync",
+      "href": "https://overframe.gg/players/"
+    },
+    {
+      "label": "Digital Extremes — third-party software policy",
+      "href": "https://forums.warframe.com/topic/1383123-third-party-software-usage/"
+    },
+    {
+      "label": "Digital Extremes — Mod capacity and polarization",
+      "href": "https://www.warframe.com/en/news/guia-de-mods"
+    },
+    {
+      "label": "Update 38.5 — capacity and Omni Forma changes",
+      "href": "https://www.warframe.com/en/patch-notes/pc/38-5-0"
+    },
+    {
+      "label": "Hotfix 44.1.3 — Riven and Ammo Efficiency changes",
+      "href": "https://www.warframe.com/en/patch-notes/pc/44-1-3"
+    },
+    {
+      "label": "Warframe Support — Polarization and Forma FAQ",
+      "href": "https://support.warframe.com/hc/en-us/articles/200240380-Polarization-and-Forma-FAQ"
+    },
+    {
+      "label": "Community reference — Warframe Wiki Mods",
+      "href": "https://wiki.warframe.com/w/Mods"
+    }
+  ],
+  "related": [
+    {
+      "label": "必备MOD与生存能力",
+      "to": "/guides/mods",
+      "icon": "cog-outline",
+      "note": "每套配装所依赖的基础机制"
+    },
+    {
+      "label": "强度榜：如何解读",
+      "to": "/guides/tier-list",
+      "icon": "format-list-numbered",
+      "note": "为什么Overframe排名对重做的反映会滞后"
+    },
+    {
+      "label": "Helminth与技能移植",
+      "to": "/guides/helminth",
+      "icon": "dna",
+      "note": "MOD之外的灵活技能调整层"
+    },
+    {
+      "label": "赋能指南",
+      "to": "/guides/arcanes",
+      "icon": "shimmer",
+      "note": "MOD之外的生存与伤害提升层"
+    },
+    {
+      "label": "工具库",
+      "to": "/tools",
+      "icon": "toolbox",
+      "note": "比较Overframe、Underframe和其他社区工具"
+    },
+    {
+      "label": "裂罅价值估算器",
+      "to": "/riven-value",
+      "icon": "cash",
+      "note": "投入裂罅之前先比较市场估价"
+    }
+  ],
+  "updated": "2026-11-16"
+}

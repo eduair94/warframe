@@ -8,6 +8,7 @@ import * as vue from 'vue'
 import * as serverRenderer from 'vue/server-renderer'
 import { createI18n, useI18n } from 'vue-i18n'
 import ts from 'typescript'
+import { loadSsrComponent } from './helpers/ssr-component.mjs'
 
 const pages = [
   ['comparison', 'comparison', { set: 'titleSet', parts: 'titleParts' }],
@@ -37,8 +38,7 @@ function elements(node, tag) {
   return [...(node.type === 1 && node.tag === tag ? [node] : []), ...(node.children ?? []).flatMap(child => elements(child, tag))]
 }
 const text = node => node.type === 2 ? node.content : (node.children ?? []).map(text).join('')
-const fallback = parse(await readFile(new URL('../app/components/SeoFallbackTable.vue', import.meta.url), 'utf8')).descriptor.template
-const fallbackTable = { props: ['caption', 'nameLabel', 'columns', 'rows'], ssrRender: renderTemplate(fallback.content, 'SeoFallbackTable.vue') }
+const fallbackTable = await loadSsrComponent(new URL('../app/components/SeoFallbackTable.vue', import.meta.url))
 
 for (const [page, namespace, slots] of pages) {
   test(`${page}: localized heading and introduction precede real rows even without client JavaScript`, async () => {

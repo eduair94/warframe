@@ -1872,3 +1872,102 @@ All intended source, snapshots and this record are committed before the final
 API/frontend/live deploy. Final outcome, sync alignment, browser results and
 source freshness are saved to ignored evidence and automation memory, leaving
 no later tracked documentation change undeployed.
+
+## November 16, 2026 — build planning and localized relic navigation
+
+This completes the unfinished November 9 iteration. The last completed release
+was November 8, `a33b18e`, still aligned across local, origin, API and sync at
+today's baseline. No intervening release is claimed. The daily 10:00 Montevideo
+heartbeat remains active. The hypothesis is that complete localized guidance,
+useful server-rendered introductions and language-preserving navigation improve
+discovery and retention. No measured traffic or ranking increase is claimed.
+
+### Content and navigation
+
+The Builds guide was reviewed throughout and dated November 16 after checking
+current primary sources. Its eight sections and six FAQs now explain a practical
+Mod checklist, variable capacity and Forma requirements, and how to compare
+simulation assumptions before testing a loadout in actual missions. Removed
+claims include a universal Forma target, guaranteed mission completion from a
+partially copied build, and guarantees about third-party app safety.
+
+[Overframe Player Sync](https://overframe.gg/players/) currently requires its
+Overwolf companion while playing and signed in, imports equipped loadouts, and
+no longer supports looking up other players by name. Manual browser planning
+remains possible. The guide distinguishes these features from importing every
+owned item. It links the [Digital Extremes policy](https://forums.warframe.com/topic/1383123-third-party-software-usage/)
+without claiming that Overwolf or associated apps are guaranteed risk-free.
+[Hotfix 44.1.3](https://www.warframe.com/en/patch-notes/pc/44-1-3) removed
+weapon-specific Riven Dispositions and capped Ammo Efficiency at 75%; explicitly
+granted Infinite Ammo remains distinct. The article lists nine references.
+The retained 2025 video's availability, title and channel were checked, but the
+full video was not watched; adjacent text explains its age and limitations.
+
+All twelve non-English Builds snapshots were missing, causing those localized
+routes to fall back to English. This release supplies complete translations of
+128 text fields per locale, preserving section IDs, routes, numeric facts,
+sources and video metadata. The standard Gemini command was attempted once with
+the configured credentials. It produced only startup output and no snapshots
+for approximately four minutes, then that specific process was stopped. Today's
+run did not return an access-error response; prior 403s are not presented as a
+new result, and the command output does not establish an HTTP request count.
+There was no credential change or alternate-provider request. The missing guide
+snapshots were authored through the bounded local editorial exception used in
+previous iterations, with separate provenance and review. Generated UI locale
+files were not edited. Locale review and integrity results are retained under
+`tmp/nov16-builds-*`.
+
+Nine destination bindings across the relic value, relic farming and Forma
+boards now use the active locale, covering hero, desktop, mobile and server
+fallback links. The shared fallback table keeps internal links in the current
+tab and retains separate protected tabs for external market URLs. Relic farming
+now emits its localized H1 and introduction before the fallback rows in the
+initial HTML, while its interactive controls remain client-rendered.
+Guide table notes now use the existing escaped rich-text renderer, so their
+Markdown links are usable and internal destinations preserve language. This
+fix also applies to other guides using table notes.
+
+### Evidence and release
+
+The official news index's newest entry is the November 13 merchandise sale;
+the patch index remains at October 28 version 44.1.4.1. Upcoming December Tau
+content is not presented as released. A targeted recheck confirmed the Forma
+guide's time-sensitive rewards and event status; its October 23 review date
+was preserved because this was not another complete review.
+
+Today's availability baseline passes ten HTTP checks with MongoDB up. All
+3,893 quotes remain older than one day: median age 300.42 hours, latest quote
+November 4 at 02:21:35 UTC. Existing logs contain upstream 403 responses; no
+new upstream probes or access workarounds were used. Live sources remain
+unconfirmed with zero observed books. Endo, Ducats and the 242-row comparison
+checks pass against retained data. The API and frontend had already restarted
+November 14; today's proxy PID is 2652075. These are pre-release facts, not
+effects of this deployment. Today's four offbox PIDs and six transport hashes
+are the preservation baseline. The November 2 Ducat refresh is not repeated.
+
+Supermetrics discovery and reconnect help both require reauthentication. Zero
+GA4/Search Console data queries completed; seven-/twenty-eight-day comparisons
+and traffic attribution remain unavailable. Missing access is not zero traffic.
+
+Local gates pass 849 backend, 185 frontend and 26 guide tests (1,060 total), the
+API production build, locale compilation, guide integrity and repository map.
+New regressions use the installed Nuxt locale resolver and real Vue SSR to
+check destination bindings and the initial farming header in all thirteen
+languages. The table-note regression checks real Builds notes, localized
+query/fragment destinations, external-link protection and HTML escaping.
+
+All source, snapshots and this record are committed before the full
+API/frontend/live workflow. Release verification requires that exact SHA and a
+successful complete deployment before checking 39 tool pages, 13 Builds pages,
+13 sampled relic destinations and hashed assets. It checks initial visible
+content, localized links, Article/FAQ data, self-canonicals, hreflang and
+indexability. Forma tool chrome still contains existing English text; this is
+not described as a full translation of those tool interfaces. Hydration,
+desktop/mobile interactions and layout are checked separately in the browser.
+Final workflow, production, sync and browser results go to ignored evidence
+and automation memory, avoiding an undeployed documentation-only follow-up.
+
+Next candidates include the Overframe directory entry's older safety/Player
+Sync claims, five boards with unlocalized `/set` fallback links, remaining
+overdue guides, absolute live-tool metadata and importer identity validation.
+Supported recovery of upstream price access remains the operational priority.

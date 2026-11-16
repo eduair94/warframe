@@ -9,6 +9,7 @@ import * as renderer from 'vue/server-renderer'
 import { createI18n, useI18n } from 'vue-i18n'
 import ts from 'typescript'
 import messages from '../i18n/messages/live.ts'
+import { loadSsrComponent } from './helpers/ssr-component.mjs'
 
 const compile = source => ts.transpileModule(source, {
   compilerOptions: { target: ts.ScriptTarget.ES2022, module: ts.ModuleKind.CommonJS },
@@ -338,8 +339,7 @@ const count = elements(tree, 'div').find(node => hasClass(node, 'an-count'))
 assert.ok(count, 'actual live count exists')
 const countRender = renderTemplate(count.loc.source, 'live-count.vue')
 const pageRender = renderTemplate(page.template.content, 'live.vue')
-const fallback = parse(await readFile(new URL('../app/components/SeoFallbackTable.vue', import.meta.url), 'utf8')).descriptor.template
-const fallbackRender = renderTemplate(fallback.content, 'SeoFallbackTable.vue')
+const fallbackTable = await loadSsrComponent(new URL('../app/components/SeoFallbackTable.vue', import.meta.url))
 
 for (const locale of Object.keys(messages)) {
   test(`${locale}: actual Streaming count reports fresh books rather than visible cached rows`, async () => {
@@ -441,7 +441,7 @@ for (const locale of Object.keys(messages)) {
     // Match Nuxt's server boundary explicitly. Rendering the default slot or
     // allowing attributes to fall through would make this an invalid SSR test.
     app.component('ClientOnly', { inheritAttrs: false, setup: (_, { slots }) => () => slots.fallback?.() ?? vue.h('span') })
-    app.component('SeoFallbackTable', { props: ['caption', 'nameLabel', 'columns', 'rows'], ssrRender: fallbackRender })
+    app.component('SeoFallbackTable', fallbackTable)
     const interactive = new Set([...page.template.content.matchAll(/<(v-[a-z-]+)/g)].map(match => match[1]))
     interactive.add('MarketVerdictBadge')
     for (const tag of interactive) app.component(tag, { setup: () => () => { throw new Error(`${tag} escaped ClientOnly`) } })

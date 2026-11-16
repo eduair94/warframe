@@ -9,6 +9,7 @@ import { computed, ref } from 'vue'
 import { createI18n, useI18n } from 'vue-i18n'
 import ts from 'typescript'
 import messages from '../i18n/messages/ducatsPage.ts'
+import { loadSsrComponent } from './helpers/ssr-component.mjs'
 
 // Execute the actual page's eligibility binding, so SSR rows and interactive
 // filters cannot silently drift from the rule exercised by these fixtures.
@@ -77,11 +78,7 @@ function ssrRender(template, filename) {
 }
 
 const renderPage = ssrRender(descriptor.template.content, 'ducats.vue')
-const fallbackTemplate = parse(await readFile(new URL('../app/components/SeoFallbackTable.vue', import.meta.url), 'utf8')).descriptor.template.content
-const fallbackTable = {
-  props: ['caption', 'nameLabel', 'columns', 'rows'],
-  ssrRender: ssrRender(fallbackTemplate, 'SeoFallbackTable.vue'),
-}
+const fallbackTable = await loadSsrComponent(new URL('../app/components/SeoFallbackTable.vue', import.meta.url))
 
 test('SSR includes one localized heading and lede before the real fallback table while controls stay client-only', async () => {
   for (const locale of ['en', 'es']) {
