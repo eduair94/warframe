@@ -7,63 +7,13 @@ import { parse as parseHtml } from '@vue/compiler-dom'
 import * as vue from 'vue'
 import * as renderer from 'vue/server-renderer'
 import * as routerApi from 'vue-router'
-import * as ufo from 'ufo'
-import * as shared from '@intlify/shared'
 import { createI18n, useI18n } from 'vue-i18n'
-import ts from 'typescript'
 import farmingMessages from '../i18n/messages/relicFarming.ts'
+import { compile, declarations, locales, createLocalizedRouting } from './helpers/locale-routing.mjs'
 
 const read = path => readFile(new URL(path, import.meta.url), 'utf8')
-const compile = source => ts.transpileModule(source, {
-  compilerOptions: { target: ts.ScriptTarget.ES2022, module: ts.ModuleKind.CommonJS },
-}).outputText
-function declarations(source, names) {
-  const ast = ts.createSourceFile('test-source.ts', source, ts.ScriptTarget.Latest, true)
-  return names.map(name => {
-    const node = ast.statements.find(node => ts.isFunctionDeclaration(node)
-      ? node.name?.text === name
-      : ts.isVariableStatement(node) && node.declarationList.declarations.some(d => d.name.getText(ast) === name))
-    assert.ok(node, `actual declaration ${name}`)
-    return node.getText(ast)
-  }).join('\n')
-}
-const config = await read('../nuxt.config.ts')
-const configContext = { exports: {} }
-runInNewContext(compile(declarations(config, ['LOCALES']) + '\nexports.locales = LOCALES;'), configContext)
-const locales = Array.from(configContext.exports.locales, locale => locale.code)
-assert.equal(locales.length, 13)
-assert.match(config, /strategy:\s*'prefix_except_default'/)
-assert.match(config, /defaultLocale:\s*'en'/)
-
-// Run the installed Nuxt i18n path resolver, rather than a prefix stub. The
-// selected declarations avoid its Nuxt-only imports while retaining its actual
-// path/query/hash normalization and named-route resolution through Vue Router.
-const runtime = '../node_modules/@nuxtjs/i18n/dist/runtime/'
-const i18nCode = [
-  declarations(await read(runtime + 'routing/routing.js'), ['localePath', 'getRouteBaseName', 'normalizeRawLocation', 'isRouteLocationPathRaw', 'resolveRouteObject', 'resolveRoute', 'resolve']),
-  declarations(await read(runtime + 'routing/utils.js'), ['getRouteName', 'getLocaleRouteName']),
-  declarations(await read(runtime + 'utils.js'), ['prefixable']),
-  declarations(await read(runtime + 'compatibility.js'), ['isI18nInstance', 'getI18nTarget']),
-  'exports.resolveLocalePath = localePath;',
-].join('\n')
-const i18nContext = { exports: {}, ...ufo, ...shared, unref: vue.unref, isNavigationFailure: routerApi.isNavigationFailure }
-runInNewContext(compile(i18nCode), i18nContext)
 const routePaths = ['/relics-value', '/relic-farming', '/forma-relics', '/relic/:relic?', '/guides/forma', '/star-chart-3d']
-async function routing(locale) {
-  const router = routerApi.createRouter({ history: routerApi.createMemoryHistory(), routes: locales.flatMap(code => routePaths.map((path, i) => ({
-    name: `page-${i}___${code}`,
-    path: (code === 'en' ? '' : `/${code}`) + path,
-    component: { render: () => null },
-  }))) })
-  const localeRef = vue.ref(locale)
-  const common = { router, i18n: { locale: localeRef }, runtimeConfig: { public: { i18n: {
-    defaultLocale: 'en', strategy: 'prefix_except_default', differentDomains: false,
-    routesNameSeparator: '___', defaultLocaleRouteNameSuffix: 'default', trailingSlash: false,
-  } } } }
-  await router.push((locale === 'en' ? '' : `/${locale}`) + '/relics-value')
-  const localePath = path => i18nContext.exports.resolveLocalePath(common, path)
-  return { router, localePath, localeRef }
-}
+const routing = locale => createLocalizedRouting(locale, routePaths)
 
 const filenames = ['relics-value.vue', 'relic-farming.vue', 'forma-relics.vue', 'relic/[[relic]].vue']
 const pages = new Map(await Promise.all(filenames.map(async filename => {

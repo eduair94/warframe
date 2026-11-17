@@ -24,7 +24,7 @@ for (const statement of script.statements) {
   }
   else if (ts.isFunctionDeclaration(statement) && statement.name) declarations.set(statement.name.text, statement.getText(script))
 }
-const names = ['sets','search','minVolume','category','sortKey','onlyPartsCheaper','onlyResellHigher','page','perPage',
+const names = ['localePath','sets','search','minVolume','category','sortKey','onlyPartsCheaper','onlyResellHigher','page','perPage',
   'categoryOf','fmtPlat','fmtQuote','fmtDifference','fmtPct','signed','deltaCls','verdict','verdictKey',
   'sortOptions','categoryOptions','filtered','fallbackRows','pageCount','paged','topDeal','topDealUrl','stats','assetUrl']
 const code = compile(names.map(name => {
@@ -45,7 +45,8 @@ function fixture(slug, {setAsk=100, partsAsk=70, setBid=60, partsBid=80, askMiss
 function setup(rows, locale='en') {
   const i18n = createI18n({legacy:false,locale,messages})
   const context = {exports:{},...pricing,ref:vue.ref,computed:vue.computed,data:vue.ref({sets:rows}),
-    localItemName: row => row.item_name, t:i18n.global.t}
+    localItemName: row => row.item_name, t:i18n.global.t,
+    useLocalePath: () => destination => locale === 'en' ? destination : `/${locale}${destination}`}
   runInNewContext(code,context)
   return { bindings: context.exports.setup, i18n }
 }

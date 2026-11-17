@@ -132,7 +132,7 @@ useHead({
 })
 
 // Card blurb: localized per-tool desc when present, else the tool's research
-// one-liner (English) — covers tools without a communityTools.desc key (e.g. our
+// one-liner in the active locale — covers tools without a communityTools.desc key (e.g. our
 // own self-listing).
 function cardDesc(tool: { slug: string }): string {
   const key = 'communityTools.desc.' + tool.slug

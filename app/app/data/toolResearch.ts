@@ -3,8 +3,8 @@ import research from './tools.research.json'
 // Per-tool deep-research data (Reddit / YouTube / Trustpilot / community feedback),
 // gathered from real external sources and baked at build time (see
 // scripts/enrich-tools flow / the research workflow). Keyed by tool slug.
-// English content — sourced from English-language communities; the page CHROME
-// localizes via the `toolDetail.*` i18n namespace, research prose stays English.
+// English source content. useLocalizedResearch loads editorial snapshots from
+// tools.research.locales; page chrome uses the `toolDetail.*` i18n namespace.
 
 export type Tier = 'essential' | 'recommended' | 'situational' | 'niche' | 'avoid'
 export type Sentiment = 'positive' | 'mixed' | 'negative'

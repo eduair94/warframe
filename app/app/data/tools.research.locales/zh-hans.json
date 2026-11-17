@@ -238,39 +238,39 @@
   },
   "overframe": {
     "slug": "overframe",
-    "oneLiner": "一个大型社区驱动的 Warframe 配装数据库和配装模拟器，玩家可以在这里分享、投票和浏览每个战甲、武器和同伴的配装。",
-    "overview": "Overframe (overframe.gg) 是一个基于网页的 Warframe 配装平台，由 M.O.B.A. Network AB（MagicFind/MOBA 游戏网络的一部分）运营。它允许玩家使用先进的 mod/配装编辑器来创建、分享和浏览社区配装，并将赞同/反对票汇总为战甲、武器和同伴的强度排行（tier lists）和“热门配装”排名。该网站宣传其拥有庞大的内容库（达到数百万已提交配装和数千万投票的量级）。此外，还通过 Overwolf 分发了一个配套的桌面应用程序（一个基于 Electron 的覆盖层，具有配装编辑和游戏内军械库 Player Sync 功能）。",
+    "oneLiner": "Warframe 社区配装与浏览器振幅晶体规划工具，可选择通过 Overwolf 配套应用导入配置。",
+    "overview": "Overframe 是由 M.O.B.A. Network AB 运营的社区配装数据库与浏览器规划工具，涵盖战甲、武器和同伴。你可以浏览参考配装、阅读作者说明，再根据自己拥有的振幅晶体和目标任务进行调整。其强度榜由社区投票产生；排名靠前并不代表配装经过当前补丁的验证。可选的 Player Sync 功能需要登录 Overframe 账号，并在游戏期间运行 Overwolf 上的 Overframe 应用，以导入配置及其中已装备的振幅晶体。",
     "keyFeatures": [
-      "基于浏览器的先进战甲、武器和同伴配装/mod 编辑器",
-      "社区提交的配装，带有赞同/反对票排名",
-      "自动生成的强度排行和“最佳配装”排名",
-      "配装指南和装备/mod 参考数据",
-      "在庞大的配装库中进行搜索和浏览",
-      "可选的 Overwolf 桌面应用，具有游戏内覆盖层和 Player Sync 功能（自动导入您的军械库）",
-      "免费使用（含广告支持）"
+      "适用于战甲、武器和同伴的浏览器配装编辑器",
+      "附有作者说明和投票功能的社区配装",
+      "由社区投票产生的装备强度榜",
+      "配装指南与装备资料页面",
+      "按装备搜索并比较社区配置",
+      "可选的 Player Sync 功能通过 Overwolf 配套应用导入配置及已装备的振幅晶体；需要登录并在游戏期间运行应用",
+      "桌面配套应用的商店页面标注为免费且含广告"
     ],
-    "bestFor": "适合想要快速获取任何战甲或武器的入门配装，并喜欢浏览各种社区变体配装的玩家，而非寻求保证最优主流（meta）配装的专家。",
-    "sentimentSummary": "Overframe 作为配装参考广为人知且被大量使用，但社区对它的评价褒贬不一。支持者看重其庞大的配装库、简便的配装模拟器和强度排行，认为这是快速获取可用配装的捷径。批评者则反复警告称，基于投票的排名会导致低质量、过时或娱乐性的配装名列前茅，热门创作者可能会抬高自己配装的排名，且配装应被视为灵感来源而非金科玉律。一句常见的评语是“作为起点很不错，但不要盲目照抄”。",
+    "bestFor": "希望寻找参考配装，并根据自身库存和目标任务进行调整的玩家。浏览器规划功能可独立于配套应用使用。",
+    "sentimentSummary": "所链接的讨论既有对详细配装说明的赞扬，也有对强度排名和过时配置的批评。这些是个人观点，其中一些发表时间较早，并非具有代表性的调查或当前性能测试。照搬配装前，请查看其日期、前提条件和所需装备。",
     "safety": {
-      "rating": "safe",
-      "notes": "核心产品是一个可读写的网站，无需访问游戏内存，浏览也无需账号凭证。可选的配套程序运行在 Overwolf 上，这是一个经 DE 批准的覆盖层框架，不会读取 Warframe 的游戏内存（与基于注入的作弊软件不同）；其 Player Sync 功能通过 Warframe 的公开个人资料数据导入您的军械库，而不是读取内存。无 RMT。实际的主要风险是配装质量，而非账号安全。桌面应用包含广告支持。"
+      "rating": "caution",
+      "notes": "浏览内容或在浏览器中手动规划配装无需安装配套应用。Player Sync 需要 Overwolf 应用和 Overframe 登录，且已不再支持按名称查询其他玩家。Digital Extremes 的第三方软件政策同样适用于 Overwolf 及相关应用，并不保证使用时没有风险。"
     },
     "tier": "recommended",
-    "tierReason": "作为最庞大且最受认可的 Warframe 配装资源之一，它拥有广泛的用户群和功能强大的免费配装模拟器，但因配装质量参差不齐且社区对其排名的信任度一般，故将其归为“推荐”而非“必不可少”。",
+    "tierReason": "推荐将其用作参考配装来源和浏览器规划工具。请核对每套配装的要求及当前游戏机制；此编辑推荐并不代表认可所有投稿配装，也不构成对可选应用的保证。",
     "dataConfidence": "medium",
     "pros": [
-      "拥有几乎所有物品的海量社区配装库",
-      "免费、功能强大的网页配装编辑器，无需登录即可浏览",
-      "强度排行和排名为新手/回归玩家提供了快速指引",
-      "可选的 Overwolf 应用可同步您实际的游戏内军械库",
-      "历史悠久、知名度高，并有专业游戏网络支持的网站"
+      "涵盖战甲、武器和同伴的社区配装",
+      "可公开浏览配装并在浏览器中手动规划",
+      "作者说明有助于比较选择与使用要求",
+      "可选的 Player Sync 功能导入配置及其中已装备的振幅晶体",
+      "装备页面、社区配装与强度榜集中在同一处"
     ],
     "cons": [
-      "基于投票的排名往往会导致非最优、过时或娱乐性的配装名列前茅",
-      "热门创作者的配装无论质量如何，排名都可能被高估",
-      "配装更新频繁滞后于平衡性调整/版本更新",
-      "需要个人判断；社区不鼓励盲目照抄热门配装",
-      "含有广告支持（尤其是桌面应用）"
+      "受欢迎程度不能证明配装适合当前补丁或你的任务",
+      "照搬前需确认 Forma、振幅晶体、赋能等前提条件",
+      "旧配装可能需要在重做或平衡更新后进行调整",
+      "Player Sync 说明的是配置与已装备振幅晶体的导入，并非完整库存导入或缺失振幅晶体检查",
+      "可选的桌面配套应用含广告，并受 DE 第三方软件政策约束"
     ],
     "youtube": [
       {
@@ -288,21 +288,33 @@
     ],
     "otherReviews": [
       {
-        "source": "Warframe Forums (General Discussion thread: \"why is overframe bad\")",
+        "source": "Warframe Forums（General Discussion 讨论帖：“why is overframe bad”）",
         "url": "https://forums.warframe.com/topic/1420231-why-is-overframe-bad/",
-        "snippet": "Community discussion thread specifically debating criticisms of Overframe's build quality and ranking reliability.",
+        "snippet": "2024 年关于配装质量与排名可靠性的社区讨论。个别观点可能针对较早的游戏版本。",
         "rating": null
       },
       {
-        "source": "Overwolf App Store (Overframe desktop app)",
+        "source": "Overwolf App Store（Overframe 桌面应用）",
         "url": "https://www.overwolf.com/app/overframe",
-        "snippet": "Official Overframe companion app listing shows ~47.8K downloads; Electron-based, free/ad-supported, with build editor and Player Sync. No star rating displayed.",
+        "snippet": "发布者提供的桌面配套应用商店介绍：免费、含广告，并提供配装编辑和 Player Sync。",
         "rating": null
       },
       {
         "source": "LevelUpTalk",
         "url": "https://leveluptalk.com/news/overframe-builds-opinions-analysis/",
-        "snippet": "Analysis piece noting a polarized view: builds can be bad but also fun, upvote/downvote curation helps surface strong builds, but outdated builds and the need for personal tweaks are recurring drawbacks.",
+        "snippet": "2025 年 4 月 25 日发表的评论文章，基于其他资料讨论社区对 Overframe 配装的看法，并非对当前游戏机制的测试。",
+        "rating": null
+      },
+      {
+        "source": "Overframe — 当前 Player Sync 使用说明",
+        "url": "https://overframe.gg/players/",
+        "snippet": "需要在游戏期间运行 Overwolf 配套应用并登录 Overframe，可导入配置及其中已装备的振幅晶体。按名称查询其他玩家的功能已不再提供。",
+        "rating": null
+      },
+      {
+        "source": "Digital Extremes — 第三方软件政策",
+        "url": "https://forums.warframe.com/topic/1383123-third-party-software-usage/",
+        "snippet": "官方政策同样涵盖 Overwolf 及相关应用，并不保证使用时没有风险。",
         "rating": null
       }
     ],
@@ -312,35 +324,30 @@
         "title": "I see why people hate overframe now, why the hell do I need 2M forma for one build?!",
         "url": "https://www.reddit.com/r/Warframe/comments/1sh7pml/i_see_why_people_hate_overframe_now_why_the_hell/",
         "subreddit": "Warframe",
-        "snippet": "4642 upvotes · 230 comments",
         "sentiment": "mixed"
       },
       {
         "title": "One of many reasons why the Overframe tier list is not to be trusted.",
         "url": "https://www.reddit.com/r/Warframe/comments/1qotd7o/one_of_many_reasons_why_the_overframe_tier_list/",
         "subreddit": "Warframe",
-        "snippet": "4481 upvotes · 652 comments — According to Overframe, Ember is one tier higher than Valkyr. Anyone who has ever played Valkyr knows that this is false in every conceivable way. Val…",
         "sentiment": "mixed"
       },
       {
         "title": "Thankyou, Ninjase, whoever you are.",
         "url": "https://www.reddit.com/r/Warframe/comments/1rdfzsg/thankyou_ninjase_whoever_you_are/",
         "subreddit": "Warframe",
-        "snippet": "2833 upvotes · 338 comments — Honestly reaped like a hundred of this guys builds on overframe, at this point he feels like this communities LetMeSoloHer, I'm mulching the content t…",
-        "sentiment": "mixed"
+        "sentiment": "positive"
       },
       {
         "title": "No one told me Caliban was THIS good",
         "url": "https://www.reddit.com/r/Warframe/comments/1qmhyab/no_one_told_me_caliban_was_this_good/",
         "subreddit": "Warframe",
-        "snippet": "846 upvotes · 425 comments — Hey everyone! I've recently jumped back into Warframe, been almost exclusively playing Gauss (speed and ramming into walls seem to tickle my brain) an…",
         "sentiment": "negative"
       },
       {
         "title": "Just a small reminder: overframe.gg Tier Lists are permanently outdated",
         "url": "https://www.reddit.com/r/Warframe/comments/15f523s/just_a_small_reminder_overframegg_tier_lists_are/",
         "subreddit": "Warframe",
-        "snippet": "755 upvotes · 195 comments — Just a small annoyance that I want to point out: Due to never resetting their votes, their tier lists, especially the Frame tier list, are completely …",
         "sentiment": "mixed"
       }
     ]

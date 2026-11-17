@@ -46,7 +46,6 @@ export default {
       desc: {
         'warframe-market': "The dominant player-to-player marketplace for prime parts, sets, mods, rivens, arcanes and relics, with live buy/sell orders, price stats, and a Riven/Lich auction house.",
         'warframe-wiki': "Digital Extremes' officially designated player-maintained encyclopedia — the definitive reference for item/weapon/mod stats, drop locations, mechanics, build math, and lore.",
-        overframe: "The largest community hub for creating, browsing, and voting on warframe/weapon/companion builds, with an in-browser arsenal builder, live stat/DPS math, and community tier lists.",
         'warframestat-api': "The free, open-source WFCD REST API that parses DE's raw worldState into clean JSON — fissures, sorties, invasions, Nightwave, Baro, cycles — plus static item/weapon/mod/drop data.",
         wfinfo: "Open-source desktop companion that OCR-reads the fissure reward screen and overlays each part's platinum/ducat value, sold volume, and vaulted status from warframe.market data.",
         'warframe-hub': "Community dashboard showing live timers at a glance — fissures, sorties, invasions, Nightwave, Baro, and cycle timers — plus riven data and an item codex.",
@@ -157,7 +156,6 @@ export default {
       desc: {
         'warframe-market': "The dominant player-to-player marketplace for prime parts, sets, mods, rivens, arcanes and relics, with live buy/sell orders, price stats, and a Riven/Lich auction house.",
         'warframe-wiki': "Digital Extremes' officially designated player-maintained encyclopedia — the definitive reference for item/weapon/mod stats, drop locations, mechanics, build math, and lore.",
-        overframe: "The largest community hub for creating, browsing, and voting on warframe/weapon/companion builds, with an in-browser arsenal builder, live stat/DPS math, and community tier lists.",
         'warframestat-api': "The free, open-source WFCD REST API that parses DE's raw worldState into clean JSON — fissures, sorties, invasions, Nightwave, Baro, cycles — plus static item/weapon/mod/drop data.",
         wfinfo: "Open-source desktop companion that OCR-reads the fissure reward screen and overlays each part's platinum/ducat value, sold volume, and vaulted status from warframe.market data.",
         'warframe-hub': "Community dashboard showing live timers at a glance — fissures, sorties, invasions, Nightwave, Baro, and cycle timers — plus riven data and an item codex.",
@@ -262,7 +260,6 @@ export default {
       desc: {
         'warframe-market': "The dominant player-to-player marketplace for prime parts, sets, mods, rivens, arcanes and relics, with live buy/sell orders, price stats, and a Riven/Lich auction house.",
         'warframe-wiki': "Digital Extremes' officially designated player-maintained encyclopedia — the definitive reference for item/weapon/mod stats, drop locations, mechanics, build math, and lore.",
-        overframe: "The largest community hub for creating, browsing, and voting on warframe/weapon/companion builds, with an in-browser arsenal builder, live stat/DPS math, and community tier lists.",
         'warframestat-api': "The free, open-source WFCD REST API that parses DE's raw worldState into clean JSON — fissures, sorties, invasions, Nightwave, Baro, cycles — plus static item/weapon/mod/drop data.",
         wfinfo: "Open-source desktop companion that OCR-reads the fissure reward screen and overlays each part's platinum/ducat value, sold volume, and vaulted status from warframe.market data.",
         'warframe-hub': "Community dashboard showing live timers at a glance — fissures, sorties, invasions, Nightwave, Baro, and cycle timers — plus riven data and an item codex.",
@@ -367,7 +364,6 @@ export default {
       desc: {
         'warframe-market': "The dominant player-to-player marketplace for prime parts, sets, mods, rivens, arcanes and relics, with live buy/sell orders, price stats, and a Riven/Lich auction house.",
         'warframe-wiki': "Digital Extremes' officially designated player-maintained encyclopedia — the definitive reference for item/weapon/mod stats, drop locations, mechanics, build math, and lore.",
-        overframe: "The largest community hub for creating, browsing, and voting on warframe/weapon/companion builds, with an in-browser arsenal builder, live stat/DPS math, and community tier lists.",
         'warframestat-api': "The free, open-source WFCD REST API that parses DE's raw worldState into clean JSON — fissures, sorties, invasions, Nightwave, Baro, cycles — plus static item/weapon/mod/drop data.",
         wfinfo: "Open-source desktop companion that OCR-reads the fissure reward screen and overlays each part's platinum/ducat value, sold volume, and vaulted status from warframe.market data.",
         'warframe-hub': "Community dashboard showing live timers at a glance — fissures, sorties, invasions, Nightwave, Baro, and cycle timers — plus riven data and an item codex.",
@@ -472,7 +468,6 @@ export default {
       desc: {
         'warframe-market': "The dominant player-to-player marketplace for prime parts, sets, mods, rivens, arcanes and relics, with live buy/sell orders, price stats, and a Riven/Lich auction house.",
         'warframe-wiki': "Digital Extremes' officially designated player-maintained encyclopedia — the definitive reference for item/weapon/mod stats, drop locations, mechanics, build math, and lore.",
-        overframe: "The largest community hub for creating, browsing, and voting on warframe/weapon/companion builds, with an in-browser arsenal builder, live stat/DPS math, and community tier lists.",
         'warframestat-api': "The free, open-source WFCD REST API that parses DE's raw worldState into clean JSON — fissures, sorties, invasions, Nightwave, Baro, cycles — plus static item/weapon/mod/drop data.",
         wfinfo: "Open-source desktop companion that OCR-reads the fissure reward screen and overlays each part's platinum/ducat value, sold volume, and vaulted status from warframe.market data.",
         'warframe-hub': "Community dashboard showing live timers at a glance — fissures, sorties, invasions, Nightwave, Baro, and cycle timers — plus riven data and an item codex.",
@@ -577,7 +572,6 @@ export default {
       desc: {
         'warframe-market': "The dominant player-to-player marketplace for prime parts, sets, mods, rivens, arcanes and relics, with live buy/sell orders, price stats, and a Riven/Lich auction house.",
         'warframe-wiki': "Digital Extremes' officially designated player-maintained encyclopedia — the definitive reference for item/weapon/mod stats, drop locations, mechanics, build math, and lore.",
-        overframe: "The largest community hub for creating, browsing, and voting on warframe/weapon/companion builds, with an in-browser arsenal builder, live stat/DPS math, and community tier lists.",
         'warframestat-api': "The free, open-source WFCD REST API that parses DE's raw worldState into clean JSON — fissures, sorties, invasions, Nightwave, Baro, cycles — plus static item/weapon/mod/drop data.",
         wfinfo: "Open-source desktop companion that OCR-reads the fissure reward screen and overlays each part's platinum/ducat value, sold volume, and vaulted status from warframe.market data.",
         'warframe-hub': "Community dashboard showing live timers at a glance — fissures, sorties, invasions, Nightwave, Baro, and cycle timers — plus riven data and an item codex.",
@@ -682,7 +676,6 @@ export default {
       desc: {
         'warframe-market': "The dominant player-to-player marketplace for prime parts, sets, mods, rivens, arcanes and relics, with live buy/sell orders, price stats, and a Riven/Lich auction house.",
         'warframe-wiki': "Digital Extremes' officially designated player-maintained encyclopedia — the definitive reference for item/weapon/mod stats, drop locations, mechanics, build math, and lore.",
-        overframe: "The largest community hub for creating, browsing, and voting on warframe/weapon/companion builds, with an in-browser arsenal builder, live stat/DPS math, and community tier lists.",
         'warframestat-api': "The free, open-source WFCD REST API that parses DE's raw worldState into clean JSON — fissures, sorties, invasions, Nightwave, Baro, cycles — plus static item/weapon/mod/drop data.",
         wfinfo: "Open-source desktop companion that OCR-reads the fissure reward screen and overlays each part's platinum/ducat value, sold volume, and vaulted status from warframe.market data.",
         'warframe-hub': "Community dashboard showing live timers at a glance — fissures, sorties, invasions, Nightwave, Baro, and cycle timers — plus riven data and an item codex.",
@@ -787,7 +780,6 @@ export default {
       desc: {
         'warframe-market': "The dominant player-to-player marketplace for prime parts, sets, mods, rivens, arcanes and relics, with live buy/sell orders, price stats, and a Riven/Lich auction house.",
         'warframe-wiki': "Digital Extremes' officially designated player-maintained encyclopedia — the definitive reference for item/weapon/mod stats, drop locations, mechanics, build math, and lore.",
-        overframe: "The largest community hub for creating, browsing, and voting on warframe/weapon/companion builds, with an in-browser arsenal builder, live stat/DPS math, and community tier lists.",
         'warframestat-api': "The free, open-source WFCD REST API that parses DE's raw worldState into clean JSON — fissures, sorties, invasions, Nightwave, Baro, cycles — plus static item/weapon/mod/drop data.",
         wfinfo: "Open-source desktop companion that OCR-reads the fissure reward screen and overlays each part's platinum/ducat value, sold volume, and vaulted status from warframe.market data.",
         'warframe-hub': "Community dashboard showing live timers at a glance — fissures, sorties, invasions, Nightwave, Baro, and cycle timers — plus riven data and an item codex.",
@@ -892,7 +884,6 @@ export default {
       desc: {
         'warframe-market': "The dominant player-to-player marketplace for prime parts, sets, mods, rivens, arcanes and relics, with live buy/sell orders, price stats, and a Riven/Lich auction house.",
         'warframe-wiki': "Digital Extremes' officially designated player-maintained encyclopedia — the definitive reference for item/weapon/mod stats, drop locations, mechanics, build math, and lore.",
-        overframe: "The largest community hub for creating, browsing, and voting on warframe/weapon/companion builds, with an in-browser arsenal builder, live stat/DPS math, and community tier lists.",
         'warframestat-api': "The free, open-source WFCD REST API that parses DE's raw worldState into clean JSON — fissures, sorties, invasions, Nightwave, Baro, cycles — plus static item/weapon/mod/drop data.",
         wfinfo: "Open-source desktop companion that OCR-reads the fissure reward screen and overlays each part's platinum/ducat value, sold volume, and vaulted status from warframe.market data.",
         'warframe-hub': "Community dashboard showing live timers at a glance — fissures, sorties, invasions, Nightwave, Baro, and cycle timers — plus riven data and an item codex.",
@@ -997,7 +988,6 @@ export default {
       desc: {
         'warframe-market': "The dominant player-to-player marketplace for prime parts, sets, mods, rivens, arcanes and relics, with live buy/sell orders, price stats, and a Riven/Lich auction house.",
         'warframe-wiki': "Digital Extremes' officially designated player-maintained encyclopedia — the definitive reference for item/weapon/mod stats, drop locations, mechanics, build math, and lore.",
-        overframe: "The largest community hub for creating, browsing, and voting on warframe/weapon/companion builds, with an in-browser arsenal builder, live stat/DPS math, and community tier lists.",
         'warframestat-api': "The free, open-source WFCD REST API that parses DE's raw worldState into clean JSON — fissures, sorties, invasions, Nightwave, Baro, cycles — plus static item/weapon/mod/drop data.",
         wfinfo: "Open-source desktop companion that OCR-reads the fissure reward screen and overlays each part's platinum/ducat value, sold volume, and vaulted status from warframe.market data.",
         'warframe-hub': "Community dashboard showing live timers at a glance — fissures, sorties, invasions, Nightwave, Baro, and cycle timers — plus riven data and an item codex.",
@@ -1102,7 +1092,6 @@ export default {
       desc: {
         'warframe-market': "The dominant player-to-player marketplace for prime parts, sets, mods, rivens, arcanes and relics, with live buy/sell orders, price stats, and a Riven/Lich auction house.",
         'warframe-wiki': "Digital Extremes' officially designated player-maintained encyclopedia — the definitive reference for item/weapon/mod stats, drop locations, mechanics, build math, and lore.",
-        overframe: "The largest community hub for creating, browsing, and voting on warframe/weapon/companion builds, with an in-browser arsenal builder, live stat/DPS math, and community tier lists.",
         'warframestat-api': "The free, open-source WFCD REST API that parses DE's raw worldState into clean JSON — fissures, sorties, invasions, Nightwave, Baro, cycles — plus static item/weapon/mod/drop data.",
         wfinfo: "Open-source desktop companion that OCR-reads the fissure reward screen and overlays each part's platinum/ducat value, sold volume, and vaulted status from warframe.market data.",
         'warframe-hub': "Community dashboard showing live timers at a glance — fissures, sorties, invasions, Nightwave, Baro, and cycle timers — plus riven data and an item codex.",
@@ -1207,7 +1196,6 @@ export default {
       desc: {
         'warframe-market': "The dominant player-to-player marketplace for prime parts, sets, mods, rivens, arcanes and relics, with live buy/sell orders, price stats, and a Riven/Lich auction house.",
         'warframe-wiki': "Digital Extremes' officially designated player-maintained encyclopedia — the definitive reference for item/weapon/mod stats, drop locations, mechanics, build math, and lore.",
-        overframe: "The largest community hub for creating, browsing, and voting on warframe/weapon/companion builds, with an in-browser arsenal builder, live stat/DPS math, and community tier lists.",
         'warframestat-api': "The free, open-source WFCD REST API that parses DE's raw worldState into clean JSON — fissures, sorties, invasions, Nightwave, Baro, cycles — plus static item/weapon/mod/drop data.",
         wfinfo: "Open-source desktop companion that OCR-reads the fissure reward screen and overlays each part's platinum/ducat value, sold volume, and vaulted status from warframe.market data.",
         'warframe-hub': "Community dashboard showing live timers at a glance — fissures, sorties, invasions, Nightwave, Baro, and cycle timers — plus riven data and an item codex.",
@@ -1312,7 +1300,6 @@ export default {
       desc: {
         'warframe-market': "The dominant player-to-player marketplace for prime parts, sets, mods, rivens, arcanes and relics, with live buy/sell orders, price stats, and a Riven/Lich auction house.",
         'warframe-wiki': "Digital Extremes' officially designated player-maintained encyclopedia — the definitive reference for item/weapon/mod stats, drop locations, mechanics, build math, and lore.",
-        overframe: "The largest community hub for creating, browsing, and voting on warframe/weapon/companion builds, with an in-browser arsenal builder, live stat/DPS math, and community tier lists.",
         'warframestat-api': "The free, open-source WFCD REST API that parses DE's raw worldState into clean JSON — fissures, sorties, invasions, Nightwave, Baro, cycles — plus static item/weapon/mod/drop data.",
         wfinfo: "Open-source desktop companion that OCR-reads the fissure reward screen and overlays each part's platinum/ducat value, sold volume, and vaulted status from warframe.market data.",
         'warframe-hub': "Community dashboard showing live timers at a glance — fissures, sorties, invasions, Nightwave, Baro, and cycle timers — plus riven data and an item codex.",

@@ -14,7 +14,7 @@
           <div v-if="topDeal" class="an-hero__deal">
             <div class="an-hero__deal-label">{{ t('comparison.hero.dealLabel') }}</div>
             <div class="an-hero__deal-plat">{{ fmtPlat(topDeal.acquire.save) }}<span>p</span></div>
-            <NuxtLink class="an-hero__deal-name" :to="'/set/' + topDeal.url_name" @click="onSetNav(topDeal, 'hero')">
+            <NuxtLink class="an-hero__deal-name" :to="localePath('/set/' + topDeal.url_name)" @click="onSetNav(topDeal, 'hero')">
               {{ localItemName(topDeal).replace(' Set', '') }} →
             </NuxtLink>
             <div class="an-hero__deal-sub">
@@ -164,7 +164,7 @@
                 :class="{ 'is-top': row.url_name === topDealUrl }"
               >
                 <td class="col-name">
-                  <NuxtLink class="an-name" :to="'/set/' + row.url_name" @click="onSetNav(row, 'row')">
+                  <NuxtLink class="an-name" :to="localePath('/set/' + row.url_name)" @click="onSetNav(row, 'row')">
                     <img class="an-thumb" :src="assetUrl(row.thumb)" :alt="localItemName(row)" loading="lazy" @error="onImgError" />
                     <span>
                       {{ localItemName(row).replace(' Set', '') }}
@@ -189,7 +189,7 @@
                 <td class="grp-b an-num" :class="deltaCls(row.resale.extra)">{{ fmtDifference(row.resale.extra) }}</td>
                 <td class="an-num">{{ fmtPlat(row.set.volume) }}</td>
                 <td>
-                  <v-btn icon size="small" color="#35d6d0" :to="'/set/' + row.url_name" :aria-label="t('comparison.row.viewAria', { name: localItemName(row) })" @click="onSetNav(row, 'row')">
+                  <v-btn icon size="small" color="#35d6d0" :to="localePath('/set/' + row.url_name)" :aria-label="t('comparison.row.viewAria', { name: localItemName(row) })" @click="onSetNav(row, 'row')">
                     <v-icon>mdi-arrow-right-circle</v-icon>
                   </v-btn>
                 </td>
@@ -204,7 +204,7 @@
             :key="row.url_name"
             class="an-card"
             :class="{ 'is-top': row.url_name === topDealUrl }"
-            :to="'/set/' + row.url_name"
+            :to="localePath('/set/' + row.url_name)"
             @click="onSetNav(row, 'mobile_card')"
           >
             <div class="an-card__head">
@@ -268,6 +268,7 @@ import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useDisplay } from 'vuetify'
 
 const { t } = useI18n()
+const localePath = useLocalePath()
 const { trackSearch, trackFilter, trackSort, trackAction } = useAnalytics()
 const { localItemName } = useLocalizedName()
 const base = useApiBase()
@@ -403,7 +404,7 @@ const filtered = computed<any[]>(() => {
 const fallbackRows = computed(() =>
   filtered.value.slice(0, 40).map((row) => ({
     key: row.url_name,
-    href: '/set/' + row.url_name,
+    href: localePath('/set/' + row.url_name),
     name: localItemName(row).replace(' Set', ''),
     cells: [
       fmtQuote(row.acquire.setCost),

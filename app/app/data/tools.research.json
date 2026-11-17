@@ -238,39 +238,39 @@
   },
   "overframe": {
     "slug": "overframe",
-    "oneLiner": "A large community-driven Warframe build database and builder where players share, vote on, and browse loadouts for every frame, weapon, and companion.",
-    "overview": "Overframe (overframe.gg) is a web-based Warframe build platform operated by M.O.B.A. Network AB (part of the MagicFind/MOBA gaming network). It lets players use an advanced mod/build editor to create, share, and browse community loadouts, and it aggregates upvotes/downvotes into tier lists and \"top build\" rankings for warframes, weapons, and companions. The site advertises a very large content base (on the order of millions of submitted builds and tens of millions of votes). A companion desktop app is also distributed via Overwolf (an Electron-based overlay with build editing and in-game Player Sync of your arsenal).",
+    "oneLiner": "Community Warframe builds and a browser Mod planner, with optional loadout imports through the Overwolf companion.",
+    "overview": "Overframe is a community build database and browser planner for Warframes, weapons and companions, operated by M.O.B.A. Network AB. Browse a reference build, read its explanation and adapt it to your own Mods and mission. Community voting powers its tier lists; a high rank does not verify a build against the current patch. Optional Player Sync uses the Overframe app on Overwolf while you play, signed in to an Overframe account, to import loadouts and their equipped Mods.",
     "keyFeatures": [
-      "Advanced browser-based build/mod editor for warframes, weapons, and companions",
-      "Community-submitted builds with upvote/downvote ranking",
-      "Auto-generated tier lists and 'best builds' rankings",
-      "Build guides and equipment/mod reference data",
-      "Search and browse across a very large build library",
-      "Optional Overwolf desktop app with in-game overlay and Player Sync (auto-imports your arsenal)",
-      "Free to use (ad-supported)"
+      "Browser build editor for Warframes, weapons and companions",
+      "Community builds with author explanations and voting",
+      "Community-voted equipment tier lists",
+      "Build guides and equipment reference pages",
+      "Search by equipment to compare community setups",
+      "Optional Player Sync imports equipped loadouts through the Overwolf companion; sign-in and running the app while playing are required",
+      "The desktop companion is listed as free and ad-supported"
     ],
-    "bestFor": "Players who want a quick starting-point build for any frame or weapon and like browsing many community variations, rather than experts seeking guaranteed-optimal meta builds.",
-    "sentimentSummary": "Overframe is widely known and heavily used as a build reference, but community sentiment is genuinely mixed. Fans value the huge library, easy builder, and tier lists as a fast way to get a workable loadout. Critics repeatedly warn that vote-based ranking surfaces low-quality, outdated, or gimmicky builds, that popular creators can inflate their own builds' rankings, and that builds should be treated as inspiration rather than gospel. A common refrain is 'good as a starting point, don't copy blindly.'",
+    "bestFor": "Players looking for a reference build they can adapt to their inventory and intended mission, with browser planning available independently of the companion app.",
+    "sentimentSummary": "The linked discussions include praise for detailed build explanations and criticism of tier rankings and outdated setups. These are individual, sometimes older opinions, not a representative survey or a current performance test. Read each build’s date, assumptions and required equipment before copying it.",
     "safety": {
-      "rating": "safe",
-      "notes": "The core product is a read/write website with no game-memory access and no account credentials required to browse. The optional companion runs on Overwolf, a DE-sanctioned overlay framework that does not read Warframe's game memory (unlike injection-based cheats); its Player Sync imports your arsenal via Warframe's public profile data, not memory reads. No RMT. Main practical risk is build quality, not account safety. The desktop app is ad-supported."
+      "rating": "caution",
+      "notes": "Browsing and manual browser planning do not require installing the companion. Player Sync requires the Overwolf app and an Overframe sign-in; it no longer supports looking up other players by name. Digital Extremes’ third-party-software policy also applies to Overwolf and associated apps and does not guarantee risk-free use."
     },
     "tier": "recommended",
-    "tierReason": "One of the largest and most recognized Warframe build resources with broad adoption and a capable free builder, but placed at 'recommended' rather than 'essential' because build quality is inconsistent and community trust in its rankings is only moderate.",
+    "tierReason": "Recommended as a source of reference builds and a browser planning tool. Check each build's requirements and current mechanics; this editorial recommendation is not an endorsement of every submitted build or a guarantee about the optional app.",
     "dataConfidence": "medium",
     "pros": [
-      "Massive library of community builds for nearly every item",
-      "Free, capable web build editor with no login required to browse",
-      "Tier lists and rankings give fast direction for new/returning players",
-      "Optional Overwolf app syncs your actual in-game arsenal",
-      "Long-established, well-known site backed by a professional gaming network"
+      "Community builds across Warframes, weapons and companions",
+      "Public build browsing and manual browser planning",
+      "Author explanations help compare choices and requirements",
+      "Optional Player Sync imports loadouts with their equipped Mods",
+      "Equipment pages, community builds and tier lists in one place"
     ],
     "cons": [
-      "Vote-based ranking often surfaces suboptimal, outdated, or gimmick builds",
-      "Popular creators' builds can be over-ranked regardless of quality",
-      "Builds frequently lag behind balance changes/updates",
-      "Requires personal judgment; copying top builds blindly is discouraged by the community",
-      "Ad-supported (desktop app in particular)"
+      "Popularity does not prove that a build fits the current patch or your mission",
+      "Check Forma, Mods, Arcanes and other prerequisites before copying",
+      "Older builds may need changes after a rework or balance update",
+      "Player Sync describes loadout and equipped-Mod imports, not a full inventory or missing-Mod check",
+      "The optional desktop companion contains ads and is subject to DE's third-party-software policy"
     ],
     "youtube": [
       {
@@ -290,19 +290,31 @@
       {
         "source": "Warframe Forums (General Discussion thread: \"why is overframe bad\")",
         "url": "https://forums.warframe.com/topic/1420231-why-is-overframe-bad/",
-        "snippet": "Community discussion thread specifically debating criticisms of Overframe's build quality and ranking reliability.",
+        "snippet": "A 2024 community discussion about build quality and ranking reliability. Individual opinions may refer to older versions of the game.",
         "rating": null
       },
       {
         "source": "Overwolf App Store (Overframe desktop app)",
         "url": "https://www.overwolf.com/app/overframe",
-        "snippet": "Official Overframe companion app listing shows ~47.8K downloads; Electron-based, free/ad-supported, with build editor and Player Sync. No star rating displayed.",
+        "snippet": "Publisher listing for the desktop companion: free, contains ads, and offers build editing and Player Sync.",
         "rating": null
       },
       {
         "source": "LevelUpTalk",
         "url": "https://leveluptalk.com/news/overframe-builds-opinions-analysis/",
-        "snippet": "Analysis piece noting a polarized view: builds can be bad but also fun, upvote/downvote curation helps surface strong builds, but outdated builds and the need for personal tweaks are recurring drawbacks.",
+        "snippet": "Secondary commentary published on April 25, 2025 about community opinions on Overframe builds; not a current mechanics test.",
+        "rating": null
+      },
+      {
+        "source": "Overframe — current Player Sync instructions",
+        "url": "https://overframe.gg/players/",
+        "snippet": "Requires the Overwolf companion during play and an Overframe sign-in; imports loadouts and their equipped Mods. Other-player name lookup is no longer available.",
+        "rating": null
+      },
+      {
+        "source": "Digital Extremes — third-party software policy",
+        "url": "https://forums.warframe.com/topic/1383123-third-party-software-usage/",
+        "snippet": "Official policy also covers Overwolf and associated apps. It does not provide a risk-free-use guarantee.",
         "rating": null
       }
     ],
@@ -312,35 +324,30 @@
         "title": "I see why people hate overframe now, why the hell do I need 2M forma for one build?!",
         "url": "https://www.reddit.com/r/Warframe/comments/1sh7pml/i_see_why_people_hate_overframe_now_why_the_hell/",
         "subreddit": "Warframe",
-        "snippet": "4642 upvotes · 230 comments",
         "sentiment": "mixed"
       },
       {
         "title": "One of many reasons why the Overframe tier list is not to be trusted.",
         "url": "https://www.reddit.com/r/Warframe/comments/1qotd7o/one_of_many_reasons_why_the_overframe_tier_list/",
         "subreddit": "Warframe",
-        "snippet": "4481 upvotes · 652 comments — According to Overframe, Ember is one tier higher than Valkyr. Anyone who has ever played Valkyr knows that this is false in every conceivable way. Val…",
         "sentiment": "mixed"
       },
       {
         "title": "Thankyou, Ninjase, whoever you are.",
         "url": "https://www.reddit.com/r/Warframe/comments/1rdfzsg/thankyou_ninjase_whoever_you_are/",
         "subreddit": "Warframe",
-        "snippet": "2833 upvotes · 338 comments — Honestly reaped like a hundred of this guys builds on overframe, at this point he feels like this communities LetMeSoloHer, I'm mulching the content t…",
-        "sentiment": "mixed"
+        "sentiment": "positive"
       },
       {
         "title": "No one told me Caliban was THIS good",
         "url": "https://www.reddit.com/r/Warframe/comments/1qmhyab/no_one_told_me_caliban_was_this_good/",
         "subreddit": "Warframe",
-        "snippet": "846 upvotes · 425 comments — Hey everyone! I've recently jumped back into Warframe, been almost exclusively playing Gauss (speed and ramming into walls seem to tickle my brain) an…",
         "sentiment": "negative"
       },
       {
         "title": "Just a small reminder: overframe.gg Tier Lists are permanently outdated",
         "url": "https://www.reddit.com/r/Warframe/comments/15f523s/just_a_small_reminder_overframegg_tier_lists_are/",
         "subreddit": "Warframe",
-        "snippet": "755 upvotes · 195 comments — Just a small annoyance that I want to point out: Due to never resetting their votes, their tier lists, especially the Frame tier list, are completely …",
         "sentiment": "mixed"
       }
     ]

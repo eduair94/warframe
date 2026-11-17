@@ -134,6 +134,7 @@ import { useDisplay } from 'vuetify'
 import { useItemsStore } from '~/stores/items'
 
 const { t } = useI18n()
+const localePath = useLocalePath()
 const { localItemName } = useLocalizedName()
 const itemsStore = useItemsStore()
 const allItems = computed(() => itemsStore.allItems)
@@ -194,7 +195,8 @@ const filtered = computed<any[]>(() => {
 const fallbackRows = computed(() =>
   filtered.value.slice(0, 150).map((row) => ({
     key: row.url_name,
-    href: row.set ? '/set/' + row.url_name : mkt(row.url_name),
+    // The catalogue's set flag also marks components; only assembled sets have this suffix.
+    href: row.url_name.endsWith('_set') ? localePath('/set/' + row.url_name) : mkt(row.url_name),
     name: row.item_name,
     cells: [
       `${fmtPlat(row.market.sell)}p`,

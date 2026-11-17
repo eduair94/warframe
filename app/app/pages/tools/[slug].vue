@@ -149,7 +149,7 @@
                 <div class="td-link__body">
                   <a :href="o.url" target="_blank" rel="noopener nofollow">{{ o.source }}</a>
                   <span v-if="o.rating" class="td-link__meta">{{ o.rating }}</span>
-                  <p v-if="o.snippet" class="td-link__snip">“{{ o.snippet }}”</p>
+                  <p v-if="o.snippet" class="td-link__snip">{{ o.snippet }}</p>
                 </div>
               </li>
             </ul>
@@ -282,7 +282,7 @@ const selfRel = computed(() =>
   tool.value && tool.value.slug !== SELF_SLUG ? selfRelation(tool.value.slug) : undefined,
 )
 
-// Localized per-tool blurb with an English research fallback (covers tools with
+// Localized per-tool blurb with a localized research fallback (covers tools with
 // no communityTools.desc key, e.g. our own self-listing).
 function toolDesc(s: string): string {
   const key = 'communityTools.desc.' + s

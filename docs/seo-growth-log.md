@@ -1971,3 +1971,111 @@ Next candidates include the Overframe directory entry's older safety/Player
 Sync claims, five boards with unlocalized `/set` fallback links, remaining
 overdue guides, absolute live-tool metadata and importer identity validation.
 Supported recovery of upstream price access remains the operational priority.
+
+## 2026-11-17 — Localized set navigation and sourced Overframe review
+
+### User value and implementation
+
+The hypothesis for this iteration is that accurate tool guidance and usable
+localized destinations improve search visitors' ability to complete their task.
+Traffic impact cannot yet be measured: Supermetrics source discovery returned
+UNAUTHORIZED, and no GA4 or Search Console data queries completed. Missing
+access is not zero traffic, and no ranking or traffic gain is claimed.
+
+Nine internal destination bindings across comparison, vault spikes, vaulted
+worth, volatility and vaulted now preserve the active locale. This covers five
+server fallback tables and comparison's hero, desktop row, button and mobile
+card. Four mixed tables now distinguish assembled sets by the canonical `_set`
+slug suffix. The catalogue's `set: true` also marks 810 components, so using that
+flag sent parts to a set-detail route. Today's 242 assembled slugs and 242 names
+ending in ` Set` match exactly. Components keep their external market links.
+Calculations and catalogue identifiers are unchanged.
+
+The complete Overframe directory entry was checked against the product's
+[browser builder](https://overframe.gg/build/new/warframes/),
+[community tier list](https://overframe.gg/tier-list/warframes/),
+[Player Sync instructions](https://overframe.gg/players/),
+[publisher app listing](https://www.overwolf.com/app/overframe) and
+[Digital Extremes policy](https://forums.warframe.com/topic/1383123-third-party-software-usage/).
+It now explains that Player Sync requires the Overwolf companion while playing
+and an Overframe account sign-in, imports loadouts and their equipped Mods, and
+no longer supports looking up other players by name. Browser planning remains
+independent. Full-inventory and missing-Mod checks are not claimed. Unsupported
+claims about sanctioned software, memory access and risk-free account use were
+removed; the shared web/app entry uses a qualified caution label.
+
+The copy also drops unverified adoption totals, ranking-algorithm claims and
+community-wide judgments. Linked discussions are individual and sometimes older
+opinions; popularity is not a current-patch performance test. Five Reddit links
+and three video links were checked for availability and identity, but the full
+videos were not watched. Stale Reddit counters and excerpts were removed, and
+the explicitly appreciative Ninjase thread has a positive label. Two primary
+references were added. Editorial source summaries no longer display quotation
+marks that implied verbatim quotations.
+
+All thirteen Overframe entries contain 33 reviewed editorial fields; each of the
+twelve non-English snapshots translates 32 fields and preserves the proper name
+LevelUpTalk. Structural validation preserves IDs, enums, URLs, video/Reddit
+titles and ratings. All other research entries remain identical. Thirteen
+obsolete, duplicated English UI descriptions were removed, allowing existing
+directory and related-card fallbacks to use the localized research one-liner.
+No generated UI locale file was hand-edited. The repository map was regenerated
+for the changed source-module size. No unrelated review dates were changed.
+
+One standard Gemini translation process was attempted for Spanish only, writing
+to ignored temporary output. It reached the 90-second deadline with no output
+or locale file and was terminated. No access-error response was observed and
+the process output does not establish an HTTP request count. No retry,
+credential change or alternate-provider call followed. The bounded editorial
+content exception used in prior iterations supplied the twelve snapshots, with
+cross-review of requirements, negation and source fidelity. Provenance and
+validation are recorded under `tmp/nov17-overframe-*`.
+
+### Current evidence and release requirements
+
+The official news index now includes the November 16
+[Warframe Black Friday sale](https://www.warframe.com/en/news/warframe-black-friday-sale-2026)
+and [TennoGen sale](https://www.warframe.com/en/news/tennogen-sale-2026).
+Availability and sale windows differ by platform; these are not blanket
+Platinum discounts. The patch index still ends at October 28 version 44.1.4.1,
+and December Tau content remains upcoming. These announcements do not establish
+a new Overframe or Builds mechanic; no unrelated promotional page was added.
+
+Today's baseline passes ten public HTTP checks with MongoDB up. All 3,893
+quotes remain older than one day: median age 324.44 hours, latest quote November
+4 at 02:21:35 UTC. Existing logs show upstream 403 responses. No new upstream
+probe, identity change, alternate egress or timestamp refresh was used. Live
+books, source timestamps and socket connection remain absent; configured set
+items do not prove live data. Endo's 46 eligible asks, the 757 items with positive
+Ducat values and 594 eligible parts, and comparison's 242 rows remain internally
+consistent against retained data. Nami Skyla Prime Blade retains 65 Ducats and
+its set's parts total 235 Ducats. Availability and freshness are reported separately.
+
+Local/origin/API/sync started clean at `6615455`; no deployment was already
+running. The API had restarted at 08:32 UTC before this iteration. The four
+offbox process IDs and six transport hashes are today's preservation baseline.
+The November 2 Ducat refresh is not repeated. Sync after release uses a clean
+fast-forward and production build without dependency installation or restarts.
+
+Local blocking checks pass: 849 API tests, 225 frontend tests and 26 guide tests
+(1,100 total), API production build, i18n compilation, guide integrity and
+repository-map consistency. Forty new navigation regressions use real Vue SSR,
+Vue Router and the installed Nuxt locale resolver across thirteen languages.
+They reproduce 25 locale failures before the fix and 13 classification failures
+with the real Nami Skyla Prime Blade fixture. They cover query/fragment
+preservation, reactive locale changes and external destinations as well.
+
+All intended source, snapshots and documentation are committed before the full
+API/frontend/live workflow. Verification is gated on that exact SHA and a
+successful complete deployment: 65 board pages, 13 Overframe detail pages,
+English/Spanish directory and best-tool pages, and 13 sampled set destinations.
+Checks include visible source content, localized links, valid destinations,
+SoftwareApplication data, canonical URLs, hreflang, indexability and hashed
+assets. Desktop/mobile interactions and hydration are checked separately in the
+browser. Final results are retained in ignored `tmp/nov17-*` evidence and the
+existing daily automation memory, avoiding an undeployed documentation follow-up.
+
+Next candidates: remaining overdue guides, homepage set-link localization,
+absolute live-tool metadata, importer identity validation and supported recovery
+of upstream price access. Analytics reauthentication remains necessary for
+query-led prioritization and measured traffic comparisons.

@@ -164,6 +164,7 @@ import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useDisplay } from 'vuetify'
 
 const { t } = useI18n()
+const localePath = useLocalePath()
 const base = useApiBase()
 const { localItemName } = useLocalizedName()
 
@@ -301,7 +302,7 @@ const fallbackRows = computed(() =>
     .slice(0, 40)
     .map((row) => ({
     key: row.url_name,
-    href: row.item_name && row.item_name.includes(' Set') ? '/set/' + row.url_name : mkt(row.url_name),
+    href: row.url_name.endsWith('_set') ? localePath('/set/' + row.url_name) : mkt(row.url_name),
     name: row.item_name,
     cells: [`${fmtPlat(priceOf(row))}p`, fmtSignedPct(row.change7d), fmtSignedPct(row.change30d), fmtPlat(row.volume)],
   })),
