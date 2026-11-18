@@ -311,7 +311,7 @@
                   size="small"
                   color="primary"
                   class="mt-1"
-                  :to="'/set/' + item.url_name"
+                  :to="localePath('/set/' + item.url_name)"
                   @click="trackAction('set_page_nav', { item_name: item.item_name })"
                   >{{ t('nav.items.setVsParts') }}</v-btn
                 >
@@ -320,7 +320,7 @@
                   size="small"
                   color="primary"
                   class="mt-1"
-                  :to="'/relic/' + item.url_name"
+                  :to="localePath('/relic/' + item.url_name)"
                   @click="trackAction('relic_page_nav', { item_name: item.item_name })"
                   >{{ t('home.row.relicCalculator') }}</v-btn
                 >
@@ -594,7 +594,7 @@ const redditThreadUrl =
   'https://www.reddit.com/r/Warframe/comments/1uuu7gj/built_a_free_opensource_market_analytics_tool_to/'
 
 // SSR-only crawlable snapshot for <SeoFallbackTable> (see that component for
-// why): top 150 by 48h volume — same default ordering the live table opens
+// why): top 40 by 48h volume — same default ordering the live table opens
 // on — capped so the fallback stays a small fraction of page weight.
 const fallbackRows = computed(() =>
   [...allItems.value]
@@ -603,7 +603,7 @@ const fallbackRows = computed(() =>
     .map((item) => ({
       key: item.url_name,
       href: 'https://warframe.market/items/' + item.url_name,
-      name: item.item_name,
+      name: localItemName(item),
       cells: [fixPrice(item.market?.buy), fixPrice(item.market?.sell), item.market?.volume || 0],
     })),
 )

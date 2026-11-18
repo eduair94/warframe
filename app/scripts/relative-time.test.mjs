@@ -76,6 +76,7 @@ async function setupCode(path, names, hooks = []) {
 }
 
 const endoCode = await setupCode('../app/pages/endo.vue', ['marketClock', 'updatedLabel'])
+const setCode = await setupCode('../app/pages/set/[[set]].vue', ['marketClock', 'updatedLabel'])
 const noticeCode = await setupCode('../app/components/MarketFreshnessNotice.vue', ['clock', 'timer'], ['onMounted', 'onBeforeUnmount'])
 
 function endoSetup(state, locale, flipData, actualNow = now) {
@@ -92,6 +93,29 @@ function endoSetup(state, locale, flipData, actualNow = now) {
 }
 
 function mod(updatedAt) { return { flip: { updatedAt } } }
+
+test('set freshness reacts to language and shared clock and rejects missing, invalid or future source dates', async () => {
+  const state = new Map()
+  const locale = ref('es')
+  const payload = ref({ meta: { newestPriceUpdate: '2026-10-24T20:58:00Z' } })
+  const endo = endoSetup(state, locale, ref({ mods: [] }))
+  const context = { ...endo.context, exports: {}, payload }
+  runInNewContext(setCode, context)
+  const page = context.exports.bindings
+  assert.equal(page.marketClock, endo.marketClock)
+  const render = () => renderToString(createSSRApp({ render: () => h('span', page.updatedLabel.value) }))
+  assert.equal(await render(), '<span>hace 2 minutos</span>')
+  locale.value = 'ja'
+  assert.equal(await render(), '<span>2 分前</span>')
+  page.marketClock.value += 60_000
+  assert.equal(await render(), '<span>3 分前</span>')
+  for (const value of [undefined, 'invalid', '2026-02-30T00:00:00Z', '2026-10-25T00:00:00Z']) {
+    payload.value = { meta: { newestPriceUpdate: value } }
+    assert.equal(page.updatedLabel.value, '')
+  }
+  payload.value = null
+  assert.equal(page.updatedLabel.value, '')
+})
 
 test('actual Endo label chooses the newest valid past row and reacts to locale, clock and feed changes', () => {
   const locale = ref('es')

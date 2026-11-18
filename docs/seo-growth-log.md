@@ -2079,3 +2079,48 @@ Next candidates: remaining overdue guides, homepage set-link localization,
 absolute live-tool metadata, importer identity validation and supported recovery
 of upstream price access. Analytics reauthentication remains necessary for
 query-led prioritization and measured traffic comparisons.
+
+## 2026-11-18 — preserve homepage language and localize set freshness
+
+Homepage set and relic buttons previously discarded the active locale. Both
+now resolve through Nuxt's locale router. The initial server-rendered market
+table also uses the existing localized item-name resolver, retaining canonical
+market identifiers and external destinations. This aligns crawlable content
+with the interactive table and keeps visitors in their selected language.
+
+Set details now format recorded quote age in the active language, reject
+invalid or future timestamps, and share the existing serialized market clock.
+The redundant 30-second page timer and global Day.js relative-time extension
+are removed. The shared notice remains present on set routes and advances its
+clock every minute; no extra polling or fabricated freshness is introduced.
+
+Fifteen added regressions exercise actual page bindings and Vue SSR: both
+homepage destinations in all thirteen locales through the real Nuxt resolver
+and Vue Router, component exclusion, reactive fallback names, and set date
+validation, locale changes and shared-clock updates. Frontend checks pass
+240 tests; guide checks pass 26 tests. Translation compilation, guide integrity,
+repository-map consistency and API production compilation pass. All 849 API
+unit tests pass, bringing the total to 1,115. Deployment reruns the blocking gates.
+
+Read-only checks at 21:19 UTC returned ten HTTP 200 responses and Mongo up.
+All 3,893 retained quotes remain older than one day; the newest source record
+is November 4 at 02:21:35 UTC. Live books remain zero and the upstream socket
+is disconnected. Availability does not imply fresh market data. The four
+offbox worker PIDs and six transport build hashes are preserved; no upstream
+probe, identity change, importer restart or metadata-only refresh is attempted.
+
+The official [news index](https://www.warframe.com/en/news) still leads with
+November 16 Black Friday and TennoGen sales. The [patch index](https://www.warframe.com/en/patch-notes)
+still lists 44.1.4.1. No unrelated review dates or promotional pages are changed.
+Analytics discovery returned UNAUTHORIZED, so there are no new traffic figures
+or claims of measured growth. The existing daily 10:00 Montevideo schedule
+remains active. GitHub's initial connection error recovered on normal retry.
+
+All source and this entry are included before the complete API/frontend/live
+deployment. Final verification requires the exact workflow SHA, public health
+and hashed assets, all thirteen homepages and thirteen set pages, plus a browser
+navigation check. The sync checkout advances by fast-forward and build without
+dependency installation or worker restarts. Final evidence stays in ignored
+`tmp/nov18-*` files and automation memory, avoiding an undeployed documentation
+follow-up. Remaining priorities include supported upstream price recovery,
+overdue guide reviews and analytics reauthentication for query-led work.

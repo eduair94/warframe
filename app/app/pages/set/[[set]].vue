@@ -397,10 +397,9 @@
 
 <script setup lang="ts">
 import { fetchMarketData } from '~/utils/market-fetch'
-import { computed, ref, watch, nextTick, onMounted, onBeforeUnmount } from 'vue'
+import { computed, ref, watch, nextTick, onMounted } from 'vue'
 import { useDisplay } from 'vuetify'
-import dayjs from 'dayjs'
-import relativeTime from 'dayjs/plugin/relativeTime'
+import { formatRelativeTime, parseRecordedTimestamp } from '~/utils/relative-time'
 import { fmtPlat } from '~/composables/marketFormat'
 import {
   priceSet,
@@ -414,12 +413,10 @@ import {
 } from '~/composables/useSetPricing'
 import SetItemDetail from '~/components/SetItemDetail.vue'
 
-dayjs.extend(relativeTime)
-
 const base = useApiBase() as string
 const route = useRoute()
 const router = useRouter()
-const { t } = useI18n()
+const { t, locale } = useI18n()
 const localePath = useLocalePath()
 const { localItemName, localName } = useLocalizedName()
 const { itemThumb, THUMB_PLACEHOLDER } = useItemThumb()
@@ -652,24 +649,12 @@ function toggle(urlName: string) {
 const refreshing = ref(false)
 /** Set when a manual refresh failed while good data is still on screen. */
 const refreshError = ref(false)
-// The label is derived from a ticking clock so "4m ago" keeps counting up
-// without a refetch.
-const now = ref(Date.now())
-let clock: ReturnType<typeof setInterval> | null = null
-onMounted(() => {
-  clock = setInterval(() => (now.value = Date.now()), 30_000)
-})
-onBeforeUnmount(() => {
-  if (clock) clearInterval(clock)
-})
+// The shared notice owns the timer and serializes this clock for hydration.
+const marketClock = useState<number>('market-freshness-clock', () => Date.now())
 
 const updatedLabel = computed(() => {
-  const stamp = payload.value?.meta.newestPriceUpdate
-  if (!stamp) return ''
-  const d = dayjs(stamp)
-  // Touch `now` so the relative label re-renders on each tick.
-  void now.value
-  return d.isValid() ? d.fromNow() : ''
+  const stamp = parseRecordedTimestamp(payload.value?.meta?.newestPriceUpdate, marketClock.value)
+  return stamp === null ? '' : formatRelativeTime(stamp, marketClock.value, locale.value)
 })
 
 /** Minimum gap between manual refreshes — the data behind them syncs in batches. */
