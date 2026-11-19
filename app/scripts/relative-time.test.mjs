@@ -6,9 +6,34 @@ import { parse } from '@vue/compiler-sfc'
 import { computed, createSSRApp, h, ref } from 'vue'
 import { renderToString } from 'vue/server-renderer'
 import ts from 'typescript'
+import { compile, declarations, locales } from './helpers/locale-routing.mjs'
 import { formatRelativeTime, parseRecordedTimestamp } from '../app/utils/relative-time.ts'
 
 const now = Date.parse('2026-10-24T21:00:00.000Z')
+
+test('homepage quote ages use the shared clock and active locale without inventing missing dates', async () => {
+  const source = parse(await readFile(new URL('../app/pages/index.vue', import.meta.url), 'utf8')).descriptor.scriptSetup.content
+  const clock = ref(now)
+  const locale = ref('es')
+  const context = { exports: {}, locale, formatRelativeTime, parseRecordedTimestamp,
+    useState: (key) => { assert.equal(key, 'market-freshness-clock'); return clock },
+  }
+  runInNewContext(compile(declarations(source, ['marketClock', 'fixDate']) + '\nexports.fixDate = fixDate;'), context)
+  const label = computed(() => context.exports.fixDate('2026-10-24T20:58:00Z'))
+  const render = () => renderToString(createSSRApp({ render: () => h('td', label.value) }))
+  assert.equal(await render(), '<td>hace 2 minutos</td>')
+  for (const language of locales) {
+    locale.value = language
+    assert.equal(label.value, formatRelativeTime(now - 120_000, now, language), language)
+  }
+  locale.value = 'es'
+  clock.value += 60_000
+  assert.equal(await render(), '<td>hace 3 minutos</td>')
+  for (const date of [undefined, null, '', 0, 'invalid', '2026-02-30T00:00:00Z', '2026-10-24T20:58:00', '2026-10-25T00:00:00Z']) {
+    assert.equal(context.exports.fixDate(date), '—', String(date))
+  }
+  assert.equal(context.exports.fixDate('2026-10-24T17:58:00-03:00'), 'hace 3 minutos')
+})
 
 test('relative update labels use all 13 site languages without leaking a previous locale', () => {
   const expected = {

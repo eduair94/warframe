@@ -2124,3 +2124,47 @@ dependency installation or worker restarts. Final evidence stays in ignored
 `tmp/nov18-*` files and automation memory, avoiding an undeployed documentation
 follow-up. Remaining priorities include supported upstream price recovery,
 overdue guide reviews and analytics reauthentication for query-led work.
+
+## 2026-11-19 — truthful, localized homepage quote ages
+
+The homepage still formatted quote ages through global Day.js state, so the
+Spanish table displayed English ages. More seriously, an undefined source date
+could be interpreted as the current time. The row formatter now validates the
+recorded timestamp, uses the selected locale and reads the same serialized
+market clock as the freshness notice, Endo and set details. Missing, malformed,
+timezone-less, impossible or future dates display an em dash. Real ages advance
+with the existing minute clock without new timers or requests. Canonical item
+identifiers, prices and original source timestamps are preserved.
+
+The added regression executes the actual homepage declarations with Vue
+reactivity and SSR, checks all thirteen languages, a locale switch, a clock
+tick, timezone equivalence and invalid date cases. The existing independent
+formatter tests cover language-specific output and elapsed-time boundaries.
+All blocking checks pass: 849 API, 241 frontend and 26 guide tests (1,116 total),
+i18n compilation, guide integrity and repository-map consistency. The API build
+also passes; the full workflow reruns the gates. No new keys or routes are added.
+
+Baseline: ten public HTTP checks returned 200 and Mongo is up. All 3,893 retained
+quotes remain over a day old; the newest record is still November 4 at
+02:21:35 UTC. Upstream availability has not recovered. The existing stale-data
+notice remains visible. Analytics discovery again returned UNAUTHORIZED, so
+no traffic comparison or measured growth claim is available.
+
+The [official news index](https://www.warframe.com/en/news) still leads with
+November 16 Black Friday and TennoGen sales; the [patch index](https://www.warframe.com/en/patch-notes)
+still lists hotfix 44.1.4.1. This review does not justify changing unrelated
+guide dates or adding another promotional page. This iteration improves the
+accuracy and language consistency of existing content rather than claiming
+new source data or a measured ranking gain.
+
+Local and remote checkouts started clean on `c57d9ab`; the previous full
+deployment succeeded and no other deployment was running. All source and this
+entry precede the final API/frontend/live deployment. Verification will check
+the exact release SHA, public health/assets, thirteen homepages and thirteen
+set pages, and the hydrated homepage age in the browser. Sync advances through
+fast-forward and build, preserving four worker PIDs and six transport hashes.
+No importer restart, direct upstream probe, alternate identity/egress or
+metadata-only freshness rewrite is attempted. Results stay in ignored
+`tmp/nov19-*` evidence and daily automation memory. Existing daily scheduling
+is retained; supported price recovery, overdue guides and analytics access
+remain priorities.

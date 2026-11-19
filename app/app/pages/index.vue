@@ -571,16 +571,15 @@
 
 <script setup lang="ts">
 import { fetchMarketData } from '~/utils/market-fetch'
-import dayjs from 'dayjs'
-import relativeTime from 'dayjs/plugin/relativeTime'
+import { formatRelativeTime, parseRecordedTimestamp } from '~/utils/relative-time'
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useGoTo } from 'vuetify'
 import type { OrderBook } from '~/composables/useOrderBook'
 
-dayjs.extend(relativeTime)
 
 const base = useApiBase()
-const { t } = useI18n()
+const { t, locale } = useI18n()
+const marketClock = useState<number>('market-freshness-clock', () => Date.now())
 const localePath = useLocalePath()
 const { localItemName } = useLocalizedName()
 const goTo = useGoTo()
@@ -870,8 +869,9 @@ function formatTag(tag: string) {
     .join(' ')
 }
 
-function fixDate(date: any) {
-  return dayjs(date).fromNow()
+function fixDate(date: unknown) {
+  const timestamp = parseRecordedTimestamp(date, marketClock.value)
+  return timestamp === null ? '—' : formatRelativeTime(timestamp, marketClock.value, locale.value)
 }
 
 function addTagToFilter(tag: string) {
