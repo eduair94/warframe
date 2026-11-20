@@ -1,7 +1,35 @@
-export const MARKET_STALE_AFTER_MS = 3 * 60 * 60 * 1000
+const MINUTE = 60 * 1000
+const HOUR = 60 * MINUTE
+
 /**
- * Share of the catalogue that may lack a recent price while it still counts as
- * fresh. The price sync skips markets with no in-game orders (~4% of items)
+ * How often the incremental price sync re-prices an item, by how busy its
+ * market is. Mirrors the DEFAULT policy in services/PriceRefreshScheduler.ts
+ * (keep the two in step): traded items every 2 h, priced ones every 6 h,
+ * empty markets daily, and anything with a fresh order within minutes.
+ */
+export const MARKET_REFRESH_POLICY = Object.freeze({
+  liquidVolume: 20,
+  liquidMaxAgeMs: 2 * HOUR,
+  activeMaxAgeMs: 6 * HOUR,
+  idleMaxAgeMs: 24 * HOUR,
+})
+
+/**
+ * An item is overdue once it is twice its target age. The sync always serves
+ * the most overdue item first, so a busy queue runs somewhat behind target
+ * without anything being wrong.
+ */
+export const MARKET_OVERDUE_FACTOR = 2
+
+/**
+ * A healthy sync records a new price every few seconds. When even the newest
+ * recorded price is this old, the sync itself has stopped.
+ */
+export const MARKET_SYNC_STALL_MS = HOUR
+
+/**
+ * Share of the catalogue that may be overdue while it still counts as fresh.
+ * The price sync skips markets with no in-game orders (~2-4% of items)
  * instead of overwriting their last price with zeros, so they never become
  * recent. Requiring every item made the warning permanent on a healthy site.
  */
@@ -13,9 +41,18 @@ export interface CatalogueFreshness {
   counts: { fresh: number; stale: number; unknown: number }
 }
 
+/** The age at which the sync is due to re-price an item with this market. */
+export function marketRefreshTargetMs(market: unknown): number {
+  const m = (market && typeof market === 'object' ? market : {}) as Record<string, unknown>
+  const volume = Number(m.volume) || 0
+  if (volume >= MARKET_REFRESH_POLICY.liquidVolume) return MARKET_REFRESH_POLICY.liquidMaxAgeMs
+  if (volume > 0 || (Number(m.sell) || 0) > 0 || (Number(m.buy) || 0) > 0) return MARKET_REFRESH_POLICY.activeMaxAgeMs
+  return MARKET_REFRESH_POLICY.idleMaxAgeMs
+}
+
 /** Use recorded price timestamps, never the time the catalogue was downloaded. */
 export function catalogueFreshness(
-  catalogue: readonly { priceUpdate?: unknown; [key: string]: unknown }[],
+  catalogue: readonly { priceUpdate?: unknown; market?: unknown; [key: string]: unknown }[],
   nowMs: number,
 ): CatalogueFreshness {
   const counts = { fresh: 0, stale: 0, unknown: 0 }
@@ -36,14 +73,15 @@ export function catalogueFreshness(
       counts.unknown++
       continue
     }
-    if (nowMs - timestamp > MARKET_STALE_AFTER_MS) counts.stale++
+    if (nowMs - timestamp > marketRefreshTargetMs(item?.market) * MARKET_OVERDUE_FACTOR) counts.stale++
     else counts.fresh++
     if (timestamp > latest) latest = timestamp
   }
 
+  const stalled = latest !== -Infinity && nowMs - latest > MARKET_SYNC_STALL_MS
   return {
-    status: catalogue.length - counts.fresh <= catalogue.length * MARKET_STALE_SHARE_TOLERANCE ? 'fresh'
-      : counts.stale === catalogue.length ? 'stale'
+    status: stalled || counts.stale === catalogue.length ? 'stale'
+      : catalogue.length - counts.fresh <= catalogue.length * MARKET_STALE_SHARE_TOLERANCE ? 'fresh'
         : counts.unknown === catalogue.length ? 'unknown' : 'mixed',
     latestUpdate: latest === -Infinity ? null : new Date(latest).toISOString(),
     counts,

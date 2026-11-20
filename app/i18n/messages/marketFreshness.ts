@@ -4,7 +4,7 @@ export default {
     marketFreshness: {
       title: "Market prices may be outdated",
       partialTitle: "Some market prices may be outdated",
-      coverage: "Check current listings before trading. Catalogue updates: {fresh} in the last 3 hours, {stale} older than 3 hours, {unknown} without a valid date.",
+      coverageTiered: "Check current listings before trading. Catalogue updates: {fresh} on schedule (traded items every 2–6 hours, empty markets daily), {stale} overdue, {unknown} without a valid date.",
       body: "Check current listings before trading. These prices have not been refreshed recently.",
       latest: "Most recent recorded price: {time}",
       unknown: "The last price update is unavailable.",
@@ -17,7 +17,7 @@ export default {
       latest: "Precio registrado más reciente: {time}",
       unknown: "La última actualización de precios no está disponible.",
       partialTitle: "Algunos precios de mercado pueden estar desactualizados",
-      coverage: "Consulte los listados actuales antes de negociar. Actualizaciones del catálogo: {fresh} en las últimas 3 horas, {stale} hace más de 3 horas, {unknown} sin una fecha válida.",
+      coverageTiered: "Revisa los listados actuales antes de comerciar. Actualizaciones del catálogo: {fresh} a tiempo (items negociados cada 2–6 horas, mercados vacíos diariamente), {stale} atrasados, {unknown} sin una fecha válida.",
     },
   },
   pt: {
@@ -27,7 +27,7 @@ export default {
       latest: "Preço registrado mais recente: {time}",
       unknown: "A última atualização de preço não está disponível.",
       partialTitle: "Alguns preços de mercado podem estar desatualizados",
-      coverage: "Verifique as listagens atuais antes de negociar. Atualizações do catálogo: {fresh} nas últimas 3 horas, {stale} há mais de 3 horas, {unknown} sem uma data válida.",
+      coverageTiered: "Verifique as listagens atuais antes de negociar. Atualizações do catálogo: {fresh} no prazo (itens negociados a cada 2 a 6 horas, mercados vazios diariamente), {stale} em atraso, {unknown} sem uma data válida.",
     },
   },
   de: {
@@ -37,7 +37,7 @@ export default {
       latest: "Zuletzt aufgezeichneter Preis: {time}",
       unknown: "Die letzte Preisaktualisierung ist nicht verfügbar.",
       partialTitle: "Einige Marktpreise sind möglicherweise veraltet",
-      coverage: "Überprüfen Sie vor dem Handel die aktuellen Angebote. Katalogaktualisierungen: {fresh} vor höchstens 3 Stunden, {stale} vor mehr als 3 Stunden, {unknown} ohne gültiges Datum.",
+      coverageTiered: "Aktuelle Angebote vor dem Handel prüfen. Katalog-Updates: {fresh} planmäßig (gehandelte Gegenstände alle 2–6 Stunden, leere Märkte täglich), {stale} überfällig, {unknown} ohne gültiges Datum.",
     },
   },
   fr: {
@@ -47,7 +47,7 @@ export default {
       latest: "Prix ​​enregistré le plus récemment : {time}",
       unknown: "La dernière mise à jour des prix n'est pas disponible.",
       partialTitle: "Certains prix du marché peuvent être obsolètes",
-      coverage: "Vérifiez les annonces actuelles avant de négocier. Mises à jour du catalogue : {fresh} datant de 3 heures ou moins, {stale} datant de plus de 3 heures, {unknown} sans date valide.",
+      coverageTiered: "Consultez les annonces actuelles avant d'échanger. Mises à jour du catalogue : {fresh} à l'heure (objets échangés toutes les 2-6 heures, marchés vides quotidiennement), {stale} en retard, {unknown} sans date valide.",
     },
   },
   ru: {
@@ -57,7 +57,7 @@ export default {
       latest: "Самая последняя зарегистрированная цена: {time}",
       unknown: "Последнее обновление цен недоступно.",
       partialTitle: "Некоторые рыночные цены могут быть устаревшими.",
-      coverage: "Проверьте текущие листинги перед торговлей. Обновления каталога: {fresh} за последние 3 часа, {stale} более 3 часов назад, {unknown} без корректной даты.",
+      coverageTiered: "Проверяйте текущие предложения перед сделкой. Обновления каталога: {fresh} по графику (торгуемые предметы каждые 2–6 часов, пустые рынки ежедневно), {stale} просрочено, {unknown} без действительной даты.",
     },
   },
   ko: {
@@ -67,7 +67,7 @@ export default {
       latest: "가장 최근에 기록된 가격: {time}",
       unknown: "마지막 가격 업데이트를 이용할 수 없습니다.",
       partialTitle: "일부 시장 가격은 오래되었을 수 있습니다.",
-      coverage: "거래하기 전에 현재 목록을 확인하세요. 카탈로그 업데이트: 3시간 이내 {fresh}개, 3시간 초과 {stale}개, 유효한 날짜 없음 {unknown}개.",
+      coverageTiered: "거래 전 현재 매물을 확인하세요. 카탈로그 업데이트: {fresh} 예정대로 진행 중(거래 아이템은 2~6시간마다, 비어 있는 시장은 매일), {stale} 지연됨, {unknown} 유효한 날짜 없음.",
     },
   },
   ja: {
@@ -77,7 +77,7 @@ export default {
       latest: "最新の記録価格: {time}",
       unknown: "最新の価格更新は利用できません。",
       partialTitle: "一部の市場価格が古い可能性があります",
-      coverage: "取引前に現在のリストを確認してください。カタログの更新状況: 3時間以内に更新 {fresh}件、更新から3時間超 {stale}件、有効な日時なし {unknown}件。",
+      coverageTiered: "取引前に現在の出品状況を確認してください。カタログの更新状況: {fresh}は予定通り（取引されたアイテムは2–6時間ごと、過疎市場は毎日）、{stale}は期限超過、{unknown}は有効な日付なし。",
     },
   },
   'zh-hans': {
@@ -87,7 +87,7 @@ export default {
       latest: "最近记录的价格：{time}",
       unknown: "最新价格更新不可用。",
       partialTitle: "部分市场价格可能已过时",
-      coverage: "交易前检查当前列表。目录更新：{fresh} 3 小时内、{stale} 超过 3 小时、{unknown} 没有有效日期。",
+      coverageTiered: "交易前请检查当前挂单。目录更新：{fresh} 按计划进行（已交易物品每 2–6 小时，空市场每天），{stale} 已逾期，{unknown} 缺少有效日期。",
     },
   },
   'zh-hant': {
@@ -97,7 +97,7 @@ export default {
       latest: "最近記錄的價格：{time}",
       unknown: "最新價格更新不可用。",
       partialTitle: "部分市場價格可能已過時",
-      coverage: "交易前檢查當前清單。目錄更新：{fresh} 3 小時內、{stale} 超過 3 小時、{unknown} 沒有有效日期。",
+      coverageTiered: "交易前請檢查目前刊登。目錄更新：{fresh} 按時（交易物品每 2–6 小時，空市場每日），{stale} 過期，{unknown} 無有效日期。",
     },
   },
   pl: {
@@ -107,7 +107,7 @@ export default {
       latest: "Ostatnia zarejestrowana cena: {time}",
       unknown: "Ostatnia aktualizacja cen jest niedostępna.",
       partialTitle: "Niektóre ceny rynkowe mogą być nieaktualne",
-      coverage: "Przed przystąpieniem do handlu sprawdź aktualne oferty. Aktualizacje katalogu: {fresh} w ostatnich 3 godzinach, {stale} ponad 3 godziny temu, {unknown} bez prawidłowej daty.",
+      coverageTiered: "Sprawdź aktualne oferty przed handlem. Aktualizacje katalogu: {fresh} zgodnie z planem (przedmioty z handlu co 2–6 godzin, puste rynki codziennie), {stale} opóźnione, {unknown} bez ważnej daty.",
     },
   },
   it: {
@@ -117,7 +117,7 @@ export default {
       latest: "Prezzo registrato più recente: {time}",
       unknown: "L'ultimo aggiornamento dei prezzi non è disponibile.",
       partialTitle: "Alcuni prezzi di mercato potrebbero essere obsoleti",
-      coverage: "Controlla le inserzioni attuali prima di fare trading. Aggiornamenti del catalogo: {fresh} nelle ultime 3 ore, {stale} oltre 3 ore fa, {unknown} senza una data valida.",
+      coverageTiered: "Controlla le inserzioni correnti prima di scambiare. Aggiornamenti catalogo: {fresh} puntuali (oggetti scambiati ogni 2-6 ore, mercati vuoti giornalmente), {stale} in ritardo, {unknown} senza data valida.",
     },
   },
   uk: {
@@ -127,7 +127,7 @@ export default {
       latest: "Остання зареєстрована ціна: {time}",
       unknown: "Останнє оновлення ціни недоступне.",
       partialTitle: "Деякі ринкові ціни можуть бути застарілими",
-      coverage: "Перевірте поточні списки перед торгівлею. Оновлення каталогу: {fresh} за останні 3 години, {stale} понад 3 години тому, {unknown} без коректної дати.",
+      coverageTiered: "Перевірте поточні пропозиції перед торгівлею. Оновлення каталогу: {fresh} вчасно (торговані предмети кожні 2–6 годин, порожні ринки щодня), {stale} затримуються, {unknown} без актуальної дати.",
     },
   },
 }

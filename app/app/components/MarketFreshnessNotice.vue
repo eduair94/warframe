@@ -8,7 +8,7 @@
   >
     <strong id="market-freshness-title" class="market-freshness__title">{{ t(freshness.status === 'mixed' ? 'marketFreshness.partialTitle' : 'marketFreshness.title') }}</strong>
     <p v-if="freshness.status === 'stale'">{{ t('marketFreshness.body') }}</p>
-    <p v-else-if="freshness.status === 'mixed'">{{ t('marketFreshness.coverage', freshness.counts) }}</p>
+    <p v-else-if="freshness.status === 'mixed'">{{ t('marketFreshness.coverageTiered', freshness.counts) }}</p>
     <i18n-t v-if="freshness.latestUpdate" keypath="marketFreshness.latest" tag="p" class="market-freshness__date">
       <template #time>
         <time :datetime="freshness.latestUpdate">{{ marketTimestampUtc(freshness.latestUpdate) }}</time>

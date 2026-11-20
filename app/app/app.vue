@@ -152,14 +152,27 @@ if (catalogue.length) {
 if (needsCatalogue) await translations.ensureScope('items', locale.value)
 
 // ---- Near-realtime catalogue refresh ---------------------------------------
-// The crawler re-prices the full catalogue roughly every 2 minutes, so poll on
-// that cadence and refetch immediately when the tab regains focus — otherwise a
-// kept-open tab shows prices as old as its last visit. `cache: 'no-cache'`
-// bypasses the browser's HTTP cache and revalidates against the Cloudflare
-// edge (the browser otherwise pins the JSON for hours when CF inflates
-// max-age), while the edge cache keeps each poll cheap.
+// The incremental price sync re-prices a few items every few seconds (busy
+// markets first), so the catalogue changes continuously: poll every 2 minutes
+// and refetch immediately when the tab regains focus — otherwise a kept-open
+// tab shows prices as old as its last visit. `cache: 'no-cache'` bypasses the
+// browser's HTTP cache and revalidates against the Cloudflare edge (the
+// browser otherwise pins the JSON for hours when CF inflates max-age), while
+// the edge cache keeps each poll cheap.
 const REFRESH_INTERVAL_MS = 120_000
 const REFRESH_MIN_GAP_MS = 30_000
+// A cached page render can be older than the poll interval (SWR serves the
+// stale copy while it re-renders). When the newest price it carries is older
+// than this, refresh at mount instead of showing old prices for 2 minutes.
+const MOUNT_REFRESH_AFTER_MS = 5 * 60_000
+const newestPriceAt = (list: readonly WarframeItem[]): number => {
+  let newest = -Infinity
+  for (const item of list) {
+    const at = Date.parse(String(item?.priceUpdate ?? ''))
+    if (at > newest) newest = at
+  }
+  return newest
+}
 let refreshTimer: ReturnType<typeof setInterval> | undefined
 let lastRefreshAt = 0
 const refreshCatalogue = (force = false) => {
@@ -222,6 +235,8 @@ onMounted(() => {
         if (list?.length) items.setItems(list)
       })
       .catch(() => {})
+  } else if (needsCatalogue && Date.now() - newestPriceAt(items.allItems) > MOUNT_REFRESH_AFTER_MS) {
+    refreshCatalogue(true)
   }
   refreshTimer = setInterval(() => {
     if (!document.hidden) refreshCatalogue()
