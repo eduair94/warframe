@@ -75,14 +75,27 @@ export default defineNuxtConfig({
   },
 
   experimental: {
+    // Keep each page's payload INLINE in its own HTML. With extraction on,
+    // every SWR-cached route (`/**`) pointed its HTML at a separately cached
+    // `_payload.json`, and Nuxt's runtime payload cache keeps only the NEWEST
+    // render's payload. Serving a stale HTML entry while the background
+    // re-render refreshed the payload therefore hydrated old markup with newer
+    // data: measured 2026-11-20, HTML and payload were up to 14 minutes apart
+    // and 17 market pages logged "Hydration completed but contains
+    // mismatches" (freshness notice counts, fallback tables, empty states).
+    // Inline, the cached HTML carries the exact data it was rendered from.
+    // Bytes are a wash (the catalogue was downloaded either way, as a second
+    // request), it stops prefetch from re-downloading the ~250 KB catalogue per
+    // link, and it drops two of the three Redis copies each cached page used to
+    // need (HTML + `_payload.json` route + payload cache) on a shared, full
+    // Redis. `/set`, `/relic` and `/mission` already rendered this way.
+    payloadExtraction: false,
     defaults: {
       nuxtLink: {
-        // Prefetch on hover/focus instead of on visibility. With payload
-        // extraction on, an in-viewport <NuxtLink> pulls that route's
-        // `_payload.json` too — and this app's payload is the item catalogue, so
-        // the 30-entry nav drawer alone queued ~250 KB per visible link during
-        // the initial load. Waiting for intent keeps navigation feeling instant
-        // without spending the bandwidth on routes nobody opens.
+        // Prefetch on hover/focus instead of on visibility, so the 30-entry
+        // nav drawer does not queue every route's JS chunks during the initial
+        // load. Waiting for intent keeps navigation feeling instant without
+        // spending bandwidth on routes nobody opens.
         prefetchOn: { visibility: false, interaction: true }
       }
     }

@@ -11,6 +11,7 @@
 // leave Nitro's default memory cache in place — SWR still works, just in-process.
 import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
+import { defineDriver } from 'unstorage'
 import redisDriver from 'unstorage/drivers/redis'
 
 function loadRedisUrl(): string | undefined {
@@ -28,29 +29,56 @@ function loadRedisUrl(): string | undefined {
   return undefined
 }
 
+// Nuxt stores every cached route's payload under `cache:nuxt:payload` so that
+// a later `/route/_payload.json` request can be answered from it — and it does
+// so even with `experimental.payloadExtraction: false` (the flag only moves the
+// payload inline; the runtime write is keyed on "some route rule caches").
+// Payloads are inline here, so the client never requests `_payload.json` and
+// those ~1.5 MB entries were dead weight: on 2026-11-20 55 of them held 82 MB
+// of the shared 192 MB Redis and pushed the API's own cache out (LRU). Writes
+// to this mount are dropped; a stray `_payload.json` request just renders.
+const discardDriver = defineDriver(() => ({
+  name: 'discard',
+  hasItem: () => false,
+  getItem: () => null,
+  setItem: () => {},
+  removeItem: () => {},
+  getKeys: () => [],
+  clear: () => {},
+}))
+
 export default defineNitroPlugin(() => {
   const url = loadRedisUrl()
   if (!url) {
     console.warn('[swr-redis] no REDIS_URL — SWR cache stays in-process memory')
-    return
+  } else {
+    // Namespace by build id so a deploy starts a FRESH cache: HTML rendered by an
+    // old build references old hashed /_nuxt chunks (purged on rebuild), and
+    // serving that after a deploy would 404 those chunks. A per-build base means
+    // the new build never reads the old build's cached pages; old keys expire by TTL.
+    const buildId = (useRuntimeConfig().app as any)?.buildId || 'dev'
+    try {
+      useStorage().mount(
+        'cache',
+        redisDriver({
+          url,
+          base: `nuxt:swr:${buildId}:`,
+          // TTL bounds Redis memory — entries auto-expire well before they matter.
+          ttl: Number(process.env.SWR_REDIS_TTL || 3600),
+        })
+      )
+      console.log(`[swr-redis] SWR route cache -> Redis (base nuxt:swr:${buildId})`)
+    } catch (e: any) {
+      console.warn('[swr-redis] mount failed, staying on memory cache:', e?.message)
+    }
   }
-  // Namespace by build id so a deploy starts a FRESH cache: HTML rendered by an
-  // old build references old hashed /_nuxt chunks (purged on rebuild), and
-  // serving that after a deploy would 404 those chunks. A per-build base means
-  // the new build never reads the old build's cached pages; old keys expire by TTL.
-  const buildId = (useRuntimeConfig().app as any)?.buildId || 'dev'
-  try {
-    useStorage().mount(
-      'cache',
-      redisDriver({
-        url,
-        base: `nuxt:swr:${buildId}:`,
-        // TTL bounds Redis memory — entries auto-expire well before they matter.
-        ttl: Number(process.env.SWR_REDIS_TTL || 3600),
-      })
-    )
-    console.log(`[swr-redis] SWR route cache -> Redis (base nuxt:swr:${buildId})`)
-  } catch (e: any) {
-    console.warn('[swr-redis] mount failed, staying on memory cache:', e?.message)
+  // Mounted after `cache` (and also without Redis, where the same copies would
+  // sit in process memory): the longer mount point wins for these keys.
+  // `nuxt dev` already mounts this exact base on disk (devStorage) and a second
+  // mount throws "already mounted" — which 500s every request — so leave an
+  // existing mount alone.
+  const storage = useStorage()
+  if (storage.getMount('cache:nuxt:payload').base !== 'cache:nuxt:payload:') {
+    storage.mount('cache:nuxt:payload', discardDriver(undefined))
   }
 })
