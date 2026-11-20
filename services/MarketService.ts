@@ -395,6 +395,24 @@ export class MarketService {
    * 
    * @param urlName - URL-friendly item name
    */
+  /**
+   * Newest visible orders across ALL items: `/v2/orders/recent` returns up to
+   * 500 orders from online users created in the last 4 h and is refreshed
+   * upstream once a minute. One call tells the price sync which items changed
+   * (services/PriceRefreshScheduler.ts) instead of re-downloading every order
+   * book. Malformed rows are dropped.
+   */
+  async getRecentOrders(): Promise<Array<{ itemId: string; createdAt?: string; updatedAt?: string }>> {
+    const response = await this.httpClient.get<{ data?: unknown }>(
+      `${API_URLS.WARFRAME_MARKET_V2}/orders/recent`
+    );
+    const rows = Array.isArray(response?.data) ? response.data : [];
+    return rows.filter(
+      (o: any): o is { itemId: string; createdAt?: string; updatedAt?: string } =>
+        !!o && typeof o.itemId === 'string' && o.itemId.length > 0
+    );
+  }
+
   async getItemOrders<T = any>(urlName: string): Promise<T> {
     if (DEBUG) console.log(`🔄 Fetching orders (v2) for: ${urlName}...`);
     
@@ -564,6 +582,10 @@ export class MarketService {
     avg_price: number;
     last_completed: any;
     not_found?: boolean;
+    /** True when the fetch failed (block, network, 5xx): an empty result, not an empty market. */
+    failed?: boolean;
+    /** Why it failed (truncated), when `failed`. */
+    error?: string;
     /** Per-rank flip ladder + stat blocks — present only for rank-able mods. */
     flip?: IModFlipData;
     /** Per-rank prices for every ranked item type (mods, arcanes, etc.). */
@@ -800,6 +822,10 @@ export class MarketService {
     avg_price: number;
     last_completed: any;
     not_found?: boolean;
+    /** True when the fetch failed (block, network, 5xx): an empty result, not an empty market. */
+    failed?: boolean;
+    /** Why it failed (truncated), when `failed`. */
+    error?: string;
   }> {
     const status = error?.response?.status || (error?.message?.includes('429') ? 429 : 0);
 
@@ -809,7 +835,7 @@ export class MarketService {
     if (this.isRateLimitError(error)) {
       if (retryAttempt >= PRICE_ERROR_MAX_RETRIES) {
         console.error(`✗ Rate limit persisted for ${item.url_name} after ${PRICE_ERROR_MAX_RETRIES} retries, skipping.`);
-        return this.createEmptyPriceResult(false);
+        return this.createEmptyPriceResult(false, error);
       }
       // Exponential backoff with jitter, capped.
       const backoff = Math.min(2000 * Math.pow(2, retryAttempt), 30000);
@@ -827,13 +853,13 @@ export class MarketService {
 
     // Log other errors (keep this one as it's important)
     console.error(`✗ Error fetching prices for ${item.url_name}:`, error.message);
-    return this.createEmptyPriceResult(false);
+    return this.createEmptyPriceResult(false, error);
   }
 
   /**
    * Creates an empty price result for error cases
    */
-  private createEmptyPriceResult(notFound: boolean): {
+  private createEmptyPriceResult(notFound: boolean, failure?: unknown): {
     buy: number;
     sell: number;
     buyAvg: number;
@@ -842,6 +868,10 @@ export class MarketService {
     avg_price: number;
     last_completed: any;
     not_found?: boolean;
+    /** True when the fetch failed (block, network, 5xx): an empty result, not an empty market. */
+    failed?: boolean;
+    /** Why it failed (truncated), when `failed`. */
+    error?: string;
   } {
     return {
       buy: 0,
@@ -851,7 +881,12 @@ export class MarketService {
       volume: 0,
       avg_price: 0,
       last_completed: null,
-      not_found: notFound
+      not_found: notFound,
+      // A failed fetch must not pass for an empty market: the price sync
+      // would treat the item as refreshed and leave it stale.
+      ...(failure !== undefined
+        ? { failed: true, error: String((failure as any)?.message ?? failure).slice(0, 200) }
+        : {})
     };
   }
 

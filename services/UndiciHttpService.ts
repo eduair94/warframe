@@ -7,8 +7,9 @@
  * This service provides a robust HTTP client with:
  * - Native HTTP/2 support via undici
  * - Automatic retry with exponential backoff
- * - Proxy rotation support
- * - Anti-detection headers
+ * - Proxy rotation support (never for warframe.market)
+ * - Browser-like headers for other hosts; warframe.market only ever gets the
+ *   project's honest identity (services/WfmIdentity.ts)
  * - Compression handling (gzip, deflate, brotli)
  *
  * @example
@@ -26,6 +27,7 @@ import { IHttpClient, IHttpRequestOptions } from '../interfaces/http.interface';
 import { HeaderService } from './HeaderService';
 import { ProxyManagerAdapter } from './ProxyManagerAdapter';
 import { createSocksConnector } from './SocksConnector';
+import { wfmRequestHeaders } from './WfmIdentity';
 import { proxyLabel, readWfmProxyUrl } from './WfmProxy';
 import {
   WfmNonRetryableError,
@@ -73,6 +75,27 @@ const DEFAULT_CONFIG: Required<IUndiciHttpServiceConfig> = {
 const STATS_LOG_INTERVAL = 50;
 
 /**
+ * TLS for warframe.market: Node's defaults plus HTTP/2 via ALPN. From a
+ * datacenter egress (gsearch, 2026-11-20) api.warframe.market answers HTTP/2
+ * and leaves HTTP/1.1 requests hanging after the TLS handshake (no first byte
+ * in 45 s); other API users reported the same. undici speaks HTTP/2 whenever
+ * the socket negotiates `h2`, including through the custom SOCKS connector.
+ */
+export const WFM_TLS_OPTIONS: Readonly<{ ALPNProtocols: string[] }> = Object.freeze({
+  ALPNProtocols: ['h2', 'http/1.1'],
+});
+
+/**
+ * Inactivity limit for one warframe.market request (undici's default is 5 min).
+ * A slow-walked egress can take ~60 s to answer; past this the attempt fails and
+ * the caller (e.g. the price scheduler) retries later instead of holding a worker.
+ */
+export function wfmRequestTimeoutMs(env: NodeJS.ProcessEnv = process.env): number {
+  const ms = Number(env.WFM_REQUEST_TIMEOUT_MS);
+  return Number.isFinite(ms) && ms >= 5_000 ? ms : 90_000;
+}
+
+/**
  * HTTP Service using undici for high-performance requests
  *
  * @implements {IHttpClient}
@@ -89,6 +112,9 @@ export class UndiciHttpService implements IHttpClient {
 
   /** Fixed, explicitly configured WFM egress; never rotated or silently bypassed. */
   private readonly wfmProxyUrl = readWfmProxyUrl();
+
+  /** Per-request inactivity limit for warframe.market (see wfmRequestTimeoutMs). */
+  private readonly wfmTimeoutMs = wfmRequestTimeoutMs();
 
   /** Requests handled so far, for periodic stats logging (D11) */
   private requestCount = 0;
@@ -182,21 +208,25 @@ export class UndiciHttpService implements IHttpClient {
   /**
    * Creates a dispatcher for the request: a SOCKS5-aware Agent when the
    * proxy is socks5://, a ProxyAgent for http(s):// proxies, or a plain
-   * Agent for the direct/proxyless path. Every branch applies rotated TLS
-   * options (D9) - previously getTLSOptions() was defined but never called
-   * from any dispatcher, so no request actually varied its TLS fingerprint.
+   * Agent for the direct/proxyless path. Non-warframe.market requests get
+   * rotated TLS options (D9). warframe.market requests use Node's default TLS
+   * (its rules block clients that make their traffic hard to classify, see
+   * services/WfmIdentity.ts) and offer HTTP/2 (WFM_TLS_OPTIONS).
    *
    * @param proxy - Proxy URL string, or null for a direct connection
+   * @param wfm - True for a warframe.market API request
    * @returns undici Dispatcher
    * @private
    */
-  private createDispatcher(proxy: string | null): Dispatcher {
-    const tlsOptions = AntiDetection.getTLSOptions();
+  private createDispatcher(proxy: string | null, wfm = false): Dispatcher {
+    const tlsOptions: Record<string, unknown> = wfm ? { ...WFM_TLS_OPTIONS } : AntiDetection.getTLSOptions();
 
     if (proxy) {
       if (proxy.startsWith('socks5://') || proxy.startsWith('socks5h://') || proxy.startsWith('socks4://')) {
         return new Agent({
+          // The custom connector does its own TLS: ALPN comes from tlsOptions.
           connect: createSocksConnector(proxy, tlsOptions),
+          allowH2: wfm,
           keepAliveTimeout: this.config.keepAliveTimeout,
           keepAliveMaxTimeout: this.config.keepAliveTimeout
         });
@@ -208,26 +238,31 @@ export class UndiciHttpService implements IHttpClient {
         // requestTls is the connector undici's ProxyAgent uses for the final
         // TLS handshake to the origin through the tunnel (see undici's
         // proxy-agent.js kConnectEndpoint) - the generic `connect` option is
-        // not read by ProxyAgent at all, so this must be requestTls.
-        requestTls: tlsOptions as any
+        // not read by ProxyAgent at all, so this must be requestTls. undici's
+        // buildConnector sets ALPN from `allowH2`, overriding ALPNProtocols.
+        requestTls: (wfm ? { allowH2: true } : tlsOptions) as any
       });
     }
 
     return new Agent({
-      connect: tlsOptions,
+      connect: wfm ? {} : tlsOptions,
+      allowH2: wfm,
       keepAliveTimeout: this.config.keepAliveTimeout,
       keepAliveMaxTimeout: this.config.keepAliveTimeout
     });
   }
 
   /**
-   * Generates request headers combining browser simulation and anti-detection
+   * Generates request headers. warframe.market gets only the project's honest
+   * identity (services/WfmIdentity.ts); other hosts keep the browser-like set.
    *
    * @param customHeaders - Optional custom headers to merge
+   * @param wfm - True for a warframe.market API request
    * @returns Complete headers object
    * @private
    */
-  private getRequestHeaders(customHeaders?: Record<string, string>): Record<string, string> {
+  private getRequestHeaders(customHeaders?: Record<string, string>, wfm = false): Record<string, string> {
+    if (wfm) return wfmRequestHeaders(customHeaders);
     const browserHeaders = this.headerService.generateHeaders();
     const antiDetectionHeaders = AntiDetection.getBrowserHeaders();
 
@@ -350,13 +385,15 @@ export class UndiciHttpService implements IHttpClient {
     const maxRetries = options.maxRetries ?? this.config.maxRetries;
     let lastError: Error | null = null;
 
+    const wfm = isWfmUrl(url);
+
     // Paced once per logical request (not per retry - retries use their own
     // error-driven backoff below). Previously only MarketService/RivenService
     // added this at the orchestration layer for orders/stats/weapon pacing,
     // so any other call site (e.g. getAllItems) got no delay at all.
-    await this.addRandomDelay();
-
-    const wfm = isWfmUrl(url);
+    // warframe.market is paced by its limiter instead; a "human" jitter only
+    // made an honest client look like one pretending to be a person.
+    if (!wfm) await this.addRandomDelay();
 
     for (let attempt = 1; attempt <= maxRetries; attempt++) {
       let proxy: string | null = null;
@@ -367,8 +404,8 @@ export class UndiciHttpService implements IHttpClient {
         if (wfm) await this.config.wfmLimiter.acquire();
 
         proxy = (wfm && this.wfmProxyUrl) || this.getUsableProxy();
-        dispatcher = this.createDispatcher(proxy);
-        const headers = this.getRequestHeaders(options.headers);
+        dispatcher = this.createDispatcher(proxy, wfm);
+        const headers = this.getRequestHeaders(options.headers, wfm);
         this.maybeLogStats(proxy);
 
         if (DEBUG) {
@@ -378,7 +415,8 @@ export class UndiciHttpService implements IHttpClient {
 
         const response = await request(url, {
           dispatcher,
-          headers
+          headers,
+          ...(wfm ? { headersTimeout: this.wfmTimeoutMs, bodyTimeout: this.wfmTimeoutMs } : {})
         });
 
         if (DEBUG) {
@@ -403,7 +441,7 @@ export class UndiciHttpService implements IHttpClient {
           // Reset session on block/rotation (D10) - previously only wired on
           // the axios path, so undici (the client every sync script uses)
           // kept reusing the same session id/counter after a block.
-          AntiDetection.resetSession();
+          if (!wfm) AntiDetection.resetSession();
 
           if (attempt < maxRetries) {
             const delay = this.getRetryDelay(attempt, response.statusCode);
@@ -514,8 +552,8 @@ export class UndiciHttpService implements IHttpClient {
     const maxRetries = options.maxRetries ?? this.config.maxRetries;
     let lastError: Error | null = null;
 
-    await this.addRandomDelay();
     const wfm = isWfmUrl(url);
+    if (!wfm) await this.addRandomDelay();
 
     for (let attempt = 1; attempt <= maxRetries; attempt++) {
       let proxy: string | null = null;
@@ -523,18 +561,19 @@ export class UndiciHttpService implements IHttpClient {
       try {
         if (wfm) await this.config.wfmLimiter.acquire();
         proxy = (wfm && this.wfmProxyUrl) || this.getUsableProxy();
-        dispatcher = this.createDispatcher(proxy);
+        dispatcher = this.createDispatcher(proxy, wfm);
         const headers = this.getRequestHeaders({
           'Content-Type': 'application/json',
           ...options.headers
-        });
+        }, wfm);
         this.maybeLogStats(proxy);
 
         const response = await request(url, {
           method: 'POST',
           dispatcher,
           headers,
-          body: JSON.stringify(data)
+          body: JSON.stringify(data),
+          ...(wfm ? { headersTimeout: this.wfmTimeoutMs, bodyTimeout: this.wfmTimeoutMs } : {})
         });
 
         if (wfm && (response.statusCode === 403 || response.statusCode === 429)) {
@@ -543,7 +582,7 @@ export class UndiciHttpService implements IHttpClient {
 
         if (response.statusCode === 403 || response.statusCode === 429 || response.statusCode >= 500) {
           if (proxy) this.recordProxyFailure(proxy);
-          AntiDetection.resetSession();
+          if (!wfm) AntiDetection.resetSession();
           if (attempt < maxRetries) {
             await sleep(this.getRetryDelay(attempt, response.statusCode));
             continue;

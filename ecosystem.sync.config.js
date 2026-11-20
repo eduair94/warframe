@@ -2,8 +2,8 @@
 //
 // Since 2026-10-02 Cloudflare challenges the API host's IP (167.148.41.11) on
 // api.warframe.market. The syncs that call warframe.market run here instead,
-// paced under the documented 3 requests/second together with the API/live
-// callers sharing WFM_PROXY_URL's fixed egress, and write to the prod
+// paced well under the documented 3 requests/second (about 1 RPS together with the API/live
+// callers sharing WFM_PROXY_URL's fixed egress, see ecosystem.config.js), and write to the prod
 // database through an SSH tunnel (warframe-offbox-tunnel). The API host parks
 // its own copies with WFM_SYNC_ENABLED=false in its .env (services/WfmSyncGuard.ts).
 // drops/foundry/live stay on the API host: drops and foundry read WFCD/GitHub,
@@ -60,11 +60,11 @@ module.exports = {
       autorestart: true,
       restart_delay: 5000,
     },
-    app("sync-prices", "dist/sync_prices.js", 1.2, { autorestart: true, restart_delay: 10000 }),
+    app("sync-prices", "dist/sync_prices.js", 0.6, { autorestart: true, restart_delay: 10000 }),
     app("sync-auctions", "dist/sync_auctions.js", 0.1, { autorestart: true, restart_delay: 10000 }),
     app("sync-items", "dist/sync_items.js", 0.15, { autorestart: false, cron_restart: "0 0 * * *" }),
-    app("sync-rivens", "dist/sync_rivens.js", 0.15, { autorestart: false, cron_restart: "0 0 * * 0" }),
-    app("sync-translations", "dist/sync_translations.js", 0.15, { autorestart: false, cron_restart: "0 4 * * *" }),
-    app("sync-repair-sets", "dist/sync_repair_sets.js", 0.15, { autorestart: false, cron_restart: "30 5 * * *" }),
+    app("sync-rivens", "dist/sync_rivens.js", 0.1, { autorestart: false, cron_restart: "0 0 * * 0" }),
+    app("sync-translations", "dist/sync_translations.js", 0.1, { autorestart: false, cron_restart: "0 4 * * *" }),
+    app("sync-repair-sets", "dist/sync_repair_sets.js", 0.1, { autorestart: false, cron_restart: "30 5 * * *" }),
   ],
 };

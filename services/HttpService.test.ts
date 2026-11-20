@@ -120,6 +120,35 @@ describe('HttpService - warframe.market protection', () => {
     }
   });
 
+  it('sends warframe.market only the honest identity on every attempt, other hosts keep theirs', async () => {
+    const limiter = new WfmRateLimiter({ maxRps: 100, cooldownMs: 60_000 });
+    const service = makeService(limiter);
+    const seen: Array<Record<string, unknown>> = [];
+    let calls = 0;
+    service.getAxiosInstance().defaults.adapter = async (config: any) => {
+      seen.push(typeof config.headers?.toJSON === 'function' ? config.headers.toJSON() : config.headers);
+      calls++;
+      const response = { status: calls === 1 ? 500 : 200, statusText: '', data: { data: [] }, headers: {}, config, request: {} };
+      if (calls === 1) throw new AxiosError('Request failed with status code 500', undefined, config, {}, response as any);
+      return response as any;
+    };
+
+    await service.get(WFM, { headers: { Language: 'de' } });
+    await service.get('https://raw.githubusercontent.com/WFCD/warframe-drop-data/master/data/info.json');
+
+    expect(seen).toHaveLength(3);
+    for (const headers of seen.slice(0, 2)) {
+      const names = Object.keys(headers).map((n) => n.toLowerCase());
+      expect(String(headers['User-Agent'])).toMatch(/^WarframeMarketAnalytics\//);
+      expect(headers.Language).toBe('de');
+      for (const forbidden of ['origin', 'referer', 'sec-ch-ua', 'sec-fetch-mode', 'x-requested-with', 'x-session-id']) {
+        expect(names).not.toContain(forbidden);
+      }
+    }
+    const other = Object.fromEntries(Object.entries(seen[2]!).map(([k, v]) => [k.toLowerCase(), v]));
+    expect(String(other['user-agent'])).not.toMatch(/^WarframeMarketAnalytics\//);
+  });
+
   it('keeps the fixed proxy and original breaker on a Cloudflare refusal', async () => {
     process.env.WFM_PROXY_URL = 'socks5://127.0.0.1:27028';
     const limiter = new WfmRateLimiter({ maxRps: 100, cooldownMs: 60_000 });

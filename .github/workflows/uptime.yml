@@ -51,6 +51,7 @@ jobs:
       status: ${{ steps.probe.outputs.status }}
       report: ${{ steps.probe.outputs.report }}
       prices_age_s: ${{ steps.probe.outputs.prices_age_s }}
+      sync_report: ${{ steps.probe.outputs.sync_report }}
     steps:
       - name: Probe origin and edge
         id: probe
@@ -62,6 +63,7 @@ jobs:
           ORIGIN_DOWN=0
           USER_DOWN=0
           PRICES_AGE=""
+          SYNC_REPORT=""
 
           # NOTE: this sets globals rather than echoing a result, because command
           # substitution would run it in a subshell and silently discard the
@@ -83,6 +85,12 @@ jobs:
             # Age of the newest stored price (seconds). Judged by the freshness
             # job below, not here: frozen prices are not an outage.
             PRICES_AGE=$(printf '%s' "$body" | grep -oE '"prices_age_s":[0-9]+' | cut -d: -f2 || true)
+            # Why prices stop (services/SyncStatus.ts): the price sync runs on
+            # another host and reports its state, egress and last error here.
+            SYNC_REPORT=$(printf '%s' "$body" | jq -r '
+              .prices_sync // empty
+              | "state=\(.state) | host=\(.host // "-") | egress=\(.egress // "-") | heartbeat=\(.heartbeat_age_s // "-")s ago | blocked_until=\(.blocked_until // "-") | last_saved=\(.last_saved_at // "-") | due=\(.due // "-") | last_error=\((.last_error // "-") | gsub("[\r\n]+"; " "))"
+            ' 2>/dev/null | tr -d '`' | tr '\n' ' ' || true)
 
             if [ "$code" != "200" ]; then
               REASONS="${REASONS}- API \`/health\` returned **${code}** (expected 200)"$'\n'
@@ -135,6 +143,7 @@ jobs:
 
           echo "status=${STATUS}" >> "$GITHUB_OUTPUT"
           echo "prices_age_s=${PRICES_AGE}" >> "$GITHUB_OUTPUT"
+          echo "sync_report=${SYNC_REPORT}" >> "$GITHUB_OUTPUT"
           {
             echo "report<<PROBE_EOF"
             if [ -n "$REASONS" ]; then printf '%s' "$REASONS"; else echo "All checks passed."; fi
@@ -238,9 +247,10 @@ jobs:
           exit 1
 
   # Prices frozen while the site is up: 2026-10-02 -> 2026-10-11 nobody noticed
-  # for 9 days because every check above stayed green. A full price pass takes
-  # ~1h, so 3h without any update means the sync is stuck or blocked. Skipped
-  # when /health gave no age (the outage job already covers a dead origin).
+  # for 9 days because every check above stayed green. The incremental sync
+  # saves something every few minutes, so 3h without any update means it is
+  # stuck or blocked; /health's prices_sync says which. Skipped when /health
+  # gave no age (the outage job already covers a dead origin).
   freshness:
     name: Open / close the stale-prices issue
     needs: probe
@@ -252,7 +262,12 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
           AGE: ${{ needs.probe.outputs.prices_age_s }}
+          SYNC_REPORT: ${{ needs.probe.outputs.sync_report }}
+          OWNER: ${{ github.repository_owner }}
           STALE_AFTER_S: "10800"
+          # 2026-11-04 -> 11-20 the issue sat open, unread, for 16 days. While
+          # prices stay stale, the owner is mentioned again once a day.
+          REMIND_EVERY_S: "86400"
           LABEL: stale-prices
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
           RUNBOOK_URL: ${{ github.server_url }}/${{ github.repository }}/blob/main/docs/runbook-outage.md
@@ -274,30 +289,49 @@ jobs:
             exit 0
           fi
 
-          # One issue per incident and no repeat comments while it stays stale.
+          # One issue per incident; while it stays stale, one reminder a day.
           HOURS=$((AGE / 3600))
+          DIAG="${SYNC_REPORT:-no prices_sync report in /health}"
+          case "$DIAG" in
+            *state=blocked*) HINT="warframe.market's Cloudflare is challenging the sync's egress IP. Check the traffic first (budgets, 429s, client identity); see runbook section 4.";;
+            *state=stalled*) HINT="The sync stopped reporting: the process is dead or hung, or its database tunnel is down.";;
+            *state=unknown*) HINT="The price sync has never reported a status (not deployed on the sync host, or cannot reach the database).";;
+            *) HINT="The sync is running but saves nothing; read its log.";;
+          esac
           if [ -z "$EXISTING" ]; then
             {
-              echo "**Prices have not updated for ~${HOURS}h.** The site is up, but every price it shows is frozen."
+              echo "@${OWNER} **Prices have not updated for ~${HOURS}h.** The site is up, but every price it shows is frozen."
               echo
               echo "| | |"
               echo "| --- | --- |"
               echo "| Newest price update | ${AGE}s ago |"
+              echo "| Price sync | \`${DIAG}\` |"
               echo "| Detected | ${NOW} |"
               echo "| Probe run | [open](${RUN_URL}) |"
+              echo
+              echo "**Likely cause:** ${HINT}"
               echo
               echo "### What to do"
               echo
               echo "See section 4 of [docs/runbook-outage.md](${RUNBOOK_URL}). Short version:"
               echo
               echo "1. \`ssh build 'pm2 ls | grep offbox; pm2 logs warframe-offbox-sync-prices --lines 30 --nostream'\` - the price sync runs on the sync host."
-              echo "2. \`warframe.market Cloudflare challenge ... pausing\` in the log = that IP is being challenged; check nothing exceeds its WFM_MAX_RPS budget. Do not add proxies or raise concurrency."
+              echo "2. \`warframe.market Cloudflare challenge ... paused\` in the log = that IP is being challenged. warframe.market blocks clients that impersonate browsers, mirror data or exceed budgets: check the traffic, never add rotating proxies or raise concurrency."
               echo "3. \`warframe-offbox-tunnel\` errored = the sync cannot reach the prod database."
-              echo "4. This issue closes itself once prices update again."
+              echo "4. This issue closes itself once prices update again; until then it pings again every 24h."
             } > "$RUNNER_TEMP/stale-body.md"
             gh issue create --title "Prices STALE - no price update for ${HOURS}h" --label "$LABEL" \
               --body-file "$RUNNER_TEMP/stale-body.md"
           else
-            echo "still stale (${AGE}s), issue #${EXISTING} already open"
+            # Newest activity on the issue (comment or creation); remind when older than a day.
+            LAST=$(gh issue view "$EXISTING" --json createdAt,comments \
+              --jq '([.createdAt] + [.comments[].createdAt]) | max' || true)
+            LAST_S=$(date -u -d "${LAST:-1970-01-01T00:00:00Z}" +%s 2>/dev/null || echo 0)
+            if [ $(( $(date -u +%s) - LAST_S )) -ge "$REMIND_EVERY_S" ]; then
+              gh issue comment "$EXISTING" --body "@${OWNER} Prices still frozen: newest update is ~${HOURS}h old as of ${NOW}. Price sync: \`${DIAG}\`. ${HINT} [Run](${RUN_URL})" \
+                && echo "reminded on #${EXISTING}"
+            else
+              echo "still stale (${AGE}s), issue #${EXISTING} already open, reminded within 24h"
+            fi
           fi
           exit 1

@@ -8,10 +8,15 @@
  * feeds messages here via ingest(). That keeps this unit-testable with no IO.
  */
 
+import { wfmUserAgent } from '../WfmIdentity';
+
 export const WFM_SOCKET_URL = 'wss://ws.warframe.market/socket';
 export const WFM_SUBPROTOCOL = 'wfm';
-/** Cloudflare challenges a socket handshake with no User-Agent (ws sends none by default). */
-export const WFM_SOCKET_USER_AGENT = 'warframe-analytics/1.0 (+https://warframe-app.digitalshopuy.com)';
+/**
+ * Cloudflare challenges a socket handshake with no User-Agent (ws sends none by
+ * default). Same dedicated identity as every REST call (services/WfmIdentity.ts).
+ */
+export const WFM_SOCKET_USER_AGENT = wfmUserAgent();
 
 const RECONNECT_BASE_MS = 4_000;
 const RECONNECT_MAX_MS = 15 * 60_000;

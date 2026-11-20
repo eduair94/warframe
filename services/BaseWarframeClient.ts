@@ -256,8 +256,19 @@ export abstract class BaseWarframeClient {
     avg_price: number;
     last_completed: any;
     not_found?: boolean;
+    /** The fetch failed (block, network, 5xx) - not an empty market. */
+    failed?: boolean;
+    error?: string;
   }> {
     return this.marketService.getItemPrices(item);
+  }
+
+  /**
+   * Newest visible orders across all items (`/v2/orders/recent`); drives the
+   * incremental price sync (services/PriceRefreshScheduler.ts).
+   */
+  async getRecentOrders(): Promise<Array<{ itemId: string; createdAt?: string; updatedAt?: string }>> {
+    return this.marketService.getRecentOrders();
   }
 
   /**

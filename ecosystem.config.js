@@ -1,13 +1,18 @@
-// warframe.market allows 3 requests/second per client (WFM v2 docs) and
-// escalates excess to Cloudflare challenges/blocks - which froze prices from
-// 2026-10-02 to 2026-10-11. Every process paces its warframe.market calls
-// through services/WfmRateLimiter.ts at WFM_MAX_RPS; the budgets below keep the
-// processes sharing the fixed egress under 3 RPS together: prices 1.2 + live
-// 0.5 + auctions 0.1 + server 0.3 + all four WFM one-shots at 0.15 = 2.7.
-// auctions/search 429s far below 3 RPS (~1,000/day at 0.3), so it stays at 0.1;
-// any 429 also halves the caller's rate (WfmRateLimiter.rateLimited).
+// warframe.market allows 3 requests/second per client (WFM v2 docs) and its
+// third-party rules (https://docs.warframe.market/docs/rules/overview/) ask
+// clients to identify themselves, minimize calls and prefer incremental
+// updates; it restricts data mirrors and browser impersonation. Every egress IP
+// that carried our old traffic (a full-catalogue mirror at ~2.7 RPS with spoofed
+// browser headers) was Cloudflare-challenged for weeks: prices froze
+// 2026-10-02..10-11, 10-18..10-23, 10-25..10-27 and 11-04..11-20.
+// Every process paces its warframe.market calls through
+// services/WfmRateLimiter.ts at WFM_MAX_RPS and identifies itself honestly
+// (services/WfmIdentity.ts). Continuous budget across both hosts' shared
+// egress: prices 0.6 (incremental, sync host) + auctions 0.1 + live 0.25 +
+// server 0.1 ~= 1 RPS; the nightly one-shots add 0.1-0.15 each.
+// auctions/search is a contract endpoint (~10-20 req/min upstream), so 0.1.
 // Only one host runs the syncs (WFM_SYNC_ENABLED). PROXY_LESS disables the
-// rotating pool; WFM_PROXY_URL can select a fixed egress without bypassing pacing.
+// rotating pool for good; WFM_PROXY_URL selects the one fixed egress.
 const egress = require("./ecosystem.egress.config.js");
 const WFM = (rps) => ({
     WFM_MAX_RPS: String(rps), PROXY_LESS: "true",
@@ -19,7 +24,7 @@ module.exports = {
             name: "warframe-sync-prices",
             autorestart: true,
             script: "dist/sync_prices.js",
-            env: WFM(1.2),
+            env: WFM(0.6),
             log_date_format: "YYYY-MM-DD HH:mm Z",
         },
         {
@@ -34,7 +39,7 @@ module.exports = {
             name: "warframe-server",
             autorestart: true,
             script: "dist/server.js",
-            env: WFM(0.3),
+            env: WFM(0.1),
             log_date_format: "YYYY-MM-DD HH:mm Z",
         },
         {
@@ -76,7 +81,7 @@ module.exports = {
             autorestart: false,
             cron_restart: "0 0 * * 0",
             script: "dist/sync_rivens.js",
-            env: WFM(0.15),
+            env: WFM(0.1),
             log_date_format: "YYYY-MM-DD HH:mm Z",
         },
         {
@@ -92,7 +97,7 @@ module.exports = {
             autorestart: false,
             cron_restart: "0 3 * * *",
             script: "dist/sync_drops.js",
-            env: WFM(0.5),
+            env: WFM(0.1),
             log_date_format: "YYYY-MM-DD HH:mm Z",
         },
         {
@@ -107,7 +112,7 @@ module.exports = {
             autorestart: false,
             cron_restart: "0 4 * * *",
             script: "dist/sync_translations.js",
-            env: WFM(0.15),
+            env: WFM(0.1),
             log_date_format: "YYYY-MM-DD HH:mm Z",
         },
         {
@@ -121,7 +126,7 @@ module.exports = {
             autorestart: false,
             cron_restart: "0 5 * * *",
             script: "dist/sync_foundry.js",
-            env: WFM(0.5),
+            env: WFM(0.1),
             log_date_format: "YYYY-MM-DD HH:mm Z",
         },
         {
@@ -137,14 +142,14 @@ module.exports = {
             autorestart: false,
             cron_restart: "30 5 * * *",
             script: "dist/sync_repair_sets.js",
-            env: WFM(0.15),
+            env: WFM(0.1),
             log_date_format: "YYYY-MM-DD HH:mm Z",
         },
         {
             name: "warframe-live",
             autorestart: true,
             script: "dist/live.js",
-            env: { ...WFM(0.5), LIVE_POLL_CONCURRENCY: "2" },
+            env: { ...WFM(0.25), LIVE_POLL_CONCURRENCY: "2" },
             log_date_format: "YYYY-MM-DD HH:mm Z",
         },
     ],

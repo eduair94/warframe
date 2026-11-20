@@ -325,3 +325,58 @@ describe('MarketService', () => {
     });
   });
 });
+
+describe('MarketService.getRecentOrders', () => {
+  it('reads the v2 recent-orders feed and drops malformed rows', async () => {
+    const httpClient = makeHttpClient({
+      '/v2/orders/recent': {
+        data: [
+          { id: 'o1', itemId: 'item-a', createdAt: '2026-11-20T05:06:40Z', updatedAt: '2026-11-20T05:06:40Z' },
+          { id: 'o2', itemId: '' },
+          null,
+          { id: 'o3' },
+          { id: 'o4', itemId: 'item-b', createdAt: '2026-11-20T05:05:00Z' },
+        ],
+      },
+    });
+    const service = new MarketService(httpClient);
+
+    const orders = await service.getRecentOrders();
+    expect(orders.map((o) => o.itemId)).toEqual(['item-a', 'item-b']);
+    expect((httpClient.get as any).mock.calls[0][0]).toBe('https://api.warframe.market/v2/orders/recent');
+  });
+
+  it('returns an empty list when the feed has no data array', async () => {
+    const service = new MarketService(makeHttpClient({ '/v2/orders/recent': { data: null, error: null } }));
+    await expect(service.getRecentOrders()).resolves.toEqual([]);
+  });
+});
+
+describe('MarketService.getItemPrices - failed fetch vs empty market', () => {
+  function failingClient(message: string): IHttpClient {
+    return {
+      get: jest.fn(async () => { throw new Error(message); }) as any,
+      post: jest.fn() as any,
+      addRandomDelay: jest.fn(async () => {}) as any,
+    };
+  }
+
+  it('flags a blocked or failed fetch so the sync retries it instead of calling it fresh', async () => {
+    const errSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
+    try {
+      const service = new MarketService(failingClient('Cloudflare challenge from warframe.market (403)'));
+      const result = await service.getItemPrices({ url_name: 'ash_prime_set' });
+      expect(result).toMatchObject({ buy: 0, sell: 0, not_found: false, failed: true });
+      expect(result.error).toMatch(/Cloudflare challenge/);
+    } finally {
+      errSpy.mockRestore();
+    }
+  });
+
+  it('reports a 404 as not found, not as a failure', async () => {
+    const service = new MarketService(failingClient('HTTP 404'));
+    const result = await service.getItemPrices({ url_name: 'gone_item' });
+    expect(result.not_found).toBe(true);
+    expect(result.failed).toBeUndefined();
+  });
+});

@@ -13,7 +13,18 @@ jest.mock('undici', () => {
   return { ...actual, request: (...args: any[]) => requestMock(...args) };
 });
 
-import { UndiciHttpService } from './UndiciHttpService';
+const mockSocksCalls: Array<[string, Record<string, unknown>]> = [];
+jest.mock('./SocksConnector', () => {
+  const actual = jest.requireActual('./SocksConnector') as typeof import('./SocksConnector');
+  return {
+    createSocksConnector: (proxy: string, tls: Record<string, unknown> = {}) => {
+      mockSocksCalls.push([proxy, tls]);
+      return actual.createSocksConnector(proxy, tls);
+    },
+  };
+});
+
+import { UndiciHttpService, wfmRequestTimeoutMs } from './UndiciHttpService';
 import { WfmRateLimiter } from './WfmRateLimiter';
 
 function response(statusCode: number, body: string, headers: Record<string, string> = {}) {
@@ -115,11 +126,75 @@ describe('UndiciHttpService - warframe.market protection', () => {
     requestMock.mockResolvedValue(response(200, '{"data":[]}'));
 
     await service.get(WFM);
-    expect(dispatcher).toHaveBeenLastCalledWith('socks5h://127.0.0.1:27028');
+    expect(dispatcher).toHaveBeenLastCalledWith('socks5h://127.0.0.1:27028', true);
     expect(pool).not.toHaveBeenCalled();
 
     await service.get('https://raw.githubusercontent.com/WFCD/warframe-drop-data/master/data/info.json');
-    expect(dispatcher).toHaveBeenLastCalledWith(null);
+    expect(dispatcher).toHaveBeenLastCalledWith(null, false);
+  });
+
+  it.each(['get', 'post'] as const)('%s sends warframe.market only the honest identity, never browser headers', async (method) => {
+    const limiter = new WfmRateLimiter({ maxRps: 100, cooldownMs: 60_000 });
+    const service = makeService(limiter);
+    requestMock.mockResolvedValue(response(200, '{"data":[]}'));
+
+    if (method === 'get') await service.get(WFM, { headers: { Language: 'ko', Origin: 'https://warframe.market' } });
+    else await service.post(WFM, {}, { headers: { Language: 'ko' } });
+
+    const headers = requestMock.mock.calls[0]![1].headers as Record<string, string>;
+    const names = Object.keys(headers).map((n) => n.toLowerCase());
+    expect(headers['User-Agent']).toMatch(/^WarframeMarketAnalytics\/\S+ \(\+https:\/\/warframe-app\.digitalshopuy\.com; /);
+    expect(headers.Language).toBe('ko');
+    for (const forbidden of ['origin', 'referer', 'sec-ch-ua', 'sec-fetch-mode', 'x-requested-with', 'x-session-id', 'cache-control']) {
+      expect(names).not.toContain(forbidden);
+    }
+    expect(names.filter((n) => n === 'user-agent')).toHaveLength(1);
+  });
+
+  it('keeps the browser-like headers for other hosts', async () => {
+    const service = makeService(new WfmRateLimiter({ maxRps: 100, cooldownMs: 60_000 }));
+    requestMock.mockResolvedValue(response(200, '{"ok":true}'));
+
+    await service.get('https://raw.githubusercontent.com/WFCD/warframe-drop-data/master/data/info.json');
+    const headers = requestMock.mock.calls[0]![1].headers as Record<string, string>;
+    expect(headers['user-agent']).toBeDefined();
+    expect(headers['user-agent']).not.toMatch(/^WarframeMarketAnalytics\//);
+  });
+
+  it('offers HTTP/2 to warframe.market through the SOCKS egress (HTTP/1.1 stalls from datacenter IPs)', async () => {
+    process.env.WFM_PROXY_URL = 'socks5://127.0.0.1:27028';
+    mockSocksCalls.length = 0;
+    const service = makeService(new WfmRateLimiter({ maxRps: 100, cooldownMs: 60_000 }));
+    requestMock.mockResolvedValue(response(200, '{"data":[]}'));
+
+    await service.get(WFM);
+    expect(mockSocksCalls).toHaveLength(1);
+    expect(mockSocksCalls[0]![0]).toBe('socks5h://127.0.0.1:27028');
+    expect(mockSocksCalls[0]![1]).toEqual({ ALPNProtocols: ['h2', 'http/1.1'] });
+  });
+
+  it.each(['get', 'post'] as const)('%s bounds each warframe.market request with an inactivity timeout', async (method) => {
+    const service = makeService(new WfmRateLimiter({ maxRps: 100, cooldownMs: 60_000 }));
+    requestMock.mockResolvedValue(response(200, '{"data":[]}'));
+    const other = 'https://raw.githubusercontent.com/WFCD/warframe-drop-data/master/data/info.json';
+
+    if (method === 'get') { await service.get(WFM); await service.get(other); }
+    else { await service.post(WFM, {}); await service.post(other, {}); }
+    expect(requestMock.mock.calls[0]![1]).toMatchObject({ headersTimeout: 90_000, bodyTimeout: 90_000 });
+    expect(requestMock.mock.calls[1]![1].bodyTimeout).toBeUndefined();
+  });
+
+  it('does not rotate the TLS fingerprint for warframe.market', async () => {
+    const { AntiDetection } = await import('../anti-detection');
+    const tls = jest.spyOn(AntiDetection, 'getTLSOptions');
+    const service = makeService(new WfmRateLimiter({ maxRps: 100, cooldownMs: 60_000 }));
+    requestMock.mockResolvedValue(response(200, '{"data":[]}'));
+
+    await service.get(WFM);
+    expect(tls).not.toHaveBeenCalled();
+    await service.get('https://raw.githubusercontent.com/WFCD/warframe-drop-data/master/data/info.json');
+    expect(tls).toHaveBeenCalledTimes(1);
+    tls.mockRestore();
   });
 
   it('does not bypass or rotate a failed fixed proxy and retains the challenge breaker', async () => {
@@ -215,5 +290,14 @@ describe('UndiciHttpService request resource ownership', () => {
     await expect(run()).rejects.toThrow('Deprecated');
     expect(agents).toHaveLength(2);
     expect(agents.every(agent => agent.destroyed)).toBe(true);
+  });
+});
+
+describe('wfmRequestTimeoutMs', () => {
+  it('defaults to 90 s, accepts an override and floors nonsense', () => {
+    expect(wfmRequestTimeoutMs({})).toBe(90_000);
+    expect(wfmRequestTimeoutMs({ WFM_REQUEST_TIMEOUT_MS: '120000' })).toBe(120_000);
+    expect(wfmRequestTimeoutMs({ WFM_REQUEST_TIMEOUT_MS: '10' })).toBe(90_000);
+    expect(wfmRequestTimeoutMs({ WFM_REQUEST_TIMEOUT_MS: 'x' })).toBe(90_000);
   });
 });

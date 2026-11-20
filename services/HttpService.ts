@@ -11,13 +11,14 @@
  * - Rate limiting respect
  */
 
-import axios, { AxiosInstance, AxiosError, CreateAxiosDefaults } from 'axios';
+import axios, { AxiosHeaders, AxiosInstance, AxiosError, CreateAxiosDefaults } from 'axios';
 import axiosRetry from 'axios-retry';
 import { IHttpClient, IHttpRequestOptions, IHttpServiceConfig, IProxyManager } from '../interfaces/http.interface';
 import { HeaderService } from './HeaderService';
 import { sleep } from '../Express/config';
 import { AntiDetection, ProxyRotation } from '../anti-detection';
 import { ProxyAgent } from 'proxy-agent';
+import { wfmRequestHeaders } from './WfmIdentity';
 import { proxyLabel, readWfmProxyUrl } from './WfmProxy';
 import {
   WfmRateLimiter,
@@ -121,6 +122,13 @@ export class HttpService implements IHttpClient {
   private configureWfmProtection(): void {
     this.axiosInstance.interceptors.request.use(async (requestConfig) => {
       if (isWfmUrl(this.axiosInstance.getUri(requestConfig))) {
+        // Runs on every attempt, retries included, after axios merged the
+        // instance defaults: whatever browser-like headers those or a retry
+        // hook added, warframe.market only sees the honest identity.
+        const current = requestConfig.headers && typeof (requestConfig.headers as any).toJSON === 'function'
+          ? (requestConfig.headers as any).toJSON()
+          : (requestConfig.headers ?? {});
+        requestConfig.headers = new AxiosHeaders(wfmRequestHeaders(current));
         await this.wfmLimiter.acquire();
         // Explicit WFM egress takes precedence over PROXY_LESS/pool settings.
         // A failed tunnel must fail the request, never fall back to the blocked host.
@@ -258,7 +266,9 @@ export class HttpService implements IHttpClient {
    * @private
    */
   private rotateProxyOnError(requestConfig: any, status: number): void {
-    if (this.wfmProxyUrl && isWfmUrl(this.axiosInstance.getUri(requestConfig))) return;
+    // Never rotate for warframe.market: its rules block traffic that is made
+    // hard to classify, and rotation is what got the whole pool blocked.
+    if (isWfmUrl(this.axiosInstance.getUri(requestConfig))) return;
     if (!this.proxyManager) return;
 
     // Record failure for current proxy

@@ -136,17 +136,27 @@ N days ago", not an error.
 ssh warframe167 'mongo --quiet warframe --eval "db.getCollection(\"warframe-items\").find().sort({priceUpdate:-1}).limit(1).forEach(d=>print(d.priceUpdate))"'
 ssh warframe167 'pm2 logs warframe-sync-prices --lines 30 --nostream'
 ssh warframe167 'curl -s -o /dev/null -w "%{http_code} cf=%header{cf-mitigated}
-" -H "User-Agent: Mozilla/5.0" https://api.warframe.market/v2/orders/item/ash_prime_set'
+" -H "User-Agent: WarframeMarketAnalytics/2.0.0 (+https://warframe-app.digitalshopuy.com; https://github.com/eduair94/warframe)" https://api.warframe.market/v2/orders/item/ash_prime_set'
+curl -s https://warframe.digitalshopuy.com/health   # prices_sync.state says why
 ```
 
+`/health` → `prices_sync` (written by the sync about once a minute, see
+`services/SyncStatus.ts`): `blocked` = Cloudflare challenge on the egress,
+`stalled` = no heartbeat for 10 min (process dead or DB tunnel down),
+`unknown` = never reported, `syncing`/`idle` = healthy.
+
 - `403 cf=challenge` → Cloudflare is challenging this IP. warframe.market allows
-  **3 requests/second per client** and escalates excess to challenges and
-  blocks. Every process paces itself (`services/WfmRateLimiter.ts`, budgets in
-  `ecosystem.config.js`) and pauses 15 min on a challenge, so the syncs resume
-  on their own once the block lifts. Look for a process exceeding its budget
-  before anything else. Do **not** re-enable proxy rotation or raise
-  `CONCURRENCY` to push through. A verified fixed egress is supported with
-  `WFM_PROXY_URL`, retaining the same request budgets and breaker (see below).
+  **3 requests/second per client** and its
+  [rules](https://docs.warframe.market/docs/rules/overview/) say it blocks
+  clients that impersonate browsers, hide their identity, act as data mirrors
+  or waste requests. Every process paces itself (`services/WfmRateLimiter.ts`,
+  budgets in `ecosystem.config.js`), identifies itself
+  (`services/WfmIdentity.ts`) and pauses 15 min on a challenge. Look at the
+  traffic before anything else: request rate, 429 count, headers. Do **not**
+  re-enable proxy rotation, add browser headers or raise `CONCURRENCY`. A fixed
+  egress is supported with `WFM_PROXY_URL`, with the same budgets and breaker
+  (see below). The challenges seen so far never lifted on their own, even after
+  weeks.
 - `403` with body `Deprecated` → a retired v1 endpoint. Move that call to v2.
 - Log line `⛔ warframe.market Cloudflare challenge … pausing all requests until …`
   = the breaker is open; fix the traffic source or the configured egress. A
@@ -248,6 +258,8 @@ at 0.1 RPS. Count 429s before trusting a new egress:
 
 ```bash
 ssh build 'grep -c " 429 " /root/.pm2/logs/warframe-offbox-sync-*-out.log'
+# per-minute summary of the incremental price sync (saved/failed/queue/blocked)
+ssh build 'pm2 logs warframe-offbox-sync-prices --lines 20 --nostream | grep "last min"'
 ```
 
 A steady stream of 429s means a block is coming; a handful per day is fine.
@@ -287,6 +299,66 @@ ssh wpsocket 'cd /home/debian10/warframe && sudo pm2 delete warframe-egress-prox
 
 Restart the long-running syncs afterwards so their breakers do not wait out
 the remaining cooldown.
+
+### Root cause found, egress moved to gsearch (2026-11-20)
+
+Prices froze again on 2026-11-04 02:21 UTC: Cloudflare challenged `box147`
+(first seen by `warframe-live` at 01:36 UTC). Nobody acted on the open
+`stale-prices` issue for 16 days. On 2026-11-20 every IP we had used (.10,
+.11, box83, box147) was still challenged, for honest and browser-like
+requests alike. Each new egress lasted less: box83 two days, box147 eight.
+
+The cause was our client, not the IPs. warframe.market's third-party rules
+(https://docs.warframe.market/docs/rules/overview/) say: *"Applications that
+hide their identity, impersonate browsers, or intentionally make traffic
+difficult to classify may be blocked"*, and *"We may restrict applications that
+are primarily website clones, data mirrors"*, and they ask for incremental
+updates. We sent randomized Chrome user-agents per request, `sec-ch-ua`,
+`sec-fetch-*`, a forged `Origin`/`Referer: https://warframe.market`,
+`x-requested-with`, a fake session id and shuffled TLS ciphers, and we
+re-downloaded the whole catalogue (~3,900 items × orders + statistics) around
+the clock at ~2.1–2.7 RPS. (The v1 statistics endpoint never needed the forged
+referer: it answers `200` to an honest client.)
+
+Fixed in code (v2.0.0 of the client):
+
+- **Honest identity** on every warframe.market request: REST through undici
+  and axios, plus the live WebSocket. One dedicated User-Agent, nothing
+  browser-like, Node's default TLS, no "human" jitter. Callers can only add
+  `Language`/`Platform`/`Crossplay`/`Content-Type`/`Authorization`
+  (`services/WfmIdentity.ts`).
+- **Incremental price sync** (`sync_prices.ts` +
+  `services/PriceRefreshScheduler.ts`): one `/v2/orders/recent` call a minute
+  marks items with new orders; the scheduler refreshes new items first, then
+  items with fresh orders (at most every 15 min), then liquid ≤2 h, active ≤6 h
+  and empty ≤24 h. When nothing is due it sends nothing. The process runs 6 h,
+  then pm2 restarts it.
+- **Lower budgets**: prices 0.6, live 0.25, server 0.1, auctions 0.1,
+  one-shots 0.1–0.15, so about 1 RPS continuous across both hosts.
+- **A failed fetch is not an empty market.** A challenged or failed request
+  used to come back as all-zero prices and be logged as "Skipped (invalid
+  data)". Now it is `failed` and retried after a back-off.
+- **Diagnosis + nagging**: the sync's heartbeat feeds `/health.prices_sync`.
+  The uptime monitor quotes it in the `stale-prices` issue, mentions the repo
+  owner, and mentions them again every 24 h while prices stay stale.
+
+Egress: the API and sync hosts now tunnel through **gsearch**
+(`104.234.204.107`, sshd on **2223**, chosen by the user). Its root
+`authorized_keys` holds both egress keys with the same `restrict,...`
+prefixes as box147. Each `.env` sets:
+
+```dotenv
+WFM_EGRESS_SSH_TARGET=root@104.234.204.107
+WFM_EGRESS_SSH_PORT=2223
+```
+
+Recreate the tunnel as above (`pm2 delete warframe-egress-proxy` + `start
+--only`). Only move to another IP **after** the traffic itself is fixed. The
+user's rotating proxy pools (ProxyScrape, InstantProxies) must never carry
+warframe.market traffic. One dedicated static IP is acceptable as a manual
+standby egress. For questions or an unblock request, use warframe.market's
+Discord (linked from the rules page), and say who we are (the User-Agent
+names the site and the repo).
 
 ## What now protects this, and what each layer does not do
 
@@ -450,3 +522,19 @@ a plain 403, proxyless pacing budgets in `ecosystem.config.js`, price-sync
 concurrency 50 → 4, and v1 statistics off by default (`WFM_V1_STATS`), carrying
 each item's last stored volume/avg_price forward without using that stale
 average to fence live prices.
+
+**2026-11-04 → 2026-11-20 — prices frozen 16 days; root cause was our client.**
+Cloudflare challenged the box147 egress at 01:36 UTC on 11-04 (prices stopped
+02:21 UTC). The `stale-prices` issue opened 3 h later and sat unread. On 11-20
+all four IPs we had ever used were still challenged, so the blocks do not lift
+by themselves. warframe.market's published rules explained why: they block
+clients that impersonate browsers or hide their identity, and restrict data
+mirrors. Our client did both (randomized Chrome headers, forged
+`Origin`/`Referer`, TLS cipher shuffling, a full-catalogue re-download at
+~2.1–2.7 RPS around the clock). Fix: honest User-Agent everywhere
+(`services/WfmIdentity.ts`), incremental price sync driven by
+`/v2/orders/recent` (`services/PriceRefreshScheduler.ts`), ~1 RPS total budget,
+failed fetches no longer logged as empty markets, a `/health.prices_sync`
+heartbeat, daily owner mentions on the stale issue, and the egress moved to
+gsearch (104.234.204.107:2223). See "Root cause found, egress moved to
+gsearch" above.

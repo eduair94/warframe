@@ -13,6 +13,7 @@ import { UserDataService } from "./services/UserDataService";
 import { isSection } from "./services/userValidate";
 import type { AuthedRequest } from "./Express/Express.interface";
 import { createPriceFreshness } from './services/PriceFreshness';
+import { PRICES_SYNC_ID, SYNC_STATUS_COLLECTION, createSyncStatusReader } from './services/SyncStatus';
 
 async function main() {
     await MongooseServer.startConnectionPromise();
@@ -20,6 +21,12 @@ async function main() {
     const m = new Warframe();
     // Newest-price age for /health, queried at most once a minute.
     const priceFreshness = createPriceFreshness(() => m.getNewestPriceUpdate());
+    // The price sync runs on another host; its heartbeat says WHY prices stop
+    // (warframe.market challenge on the egress, dead process, DB tunnel down).
+    const pricesSync = createSyncStatusReader(async () => {
+        const db = mongoose.connection?.db;
+        return db ? (await db.collection<{ _id: string }>(SYNC_STATUS_COLLECTION).findOne({ _id: PRICES_SYNC_ID })) as any : null;
+    });
     // Liveness/readiness probe for the uptime monitor (.github/workflows/uptime.yml)
     // and the post-deploy smoke check. Deliberately CHEAP and UNCACHED: `/` returns
     // the whole item catalogue, which is far too expensive to poll every few
@@ -36,6 +43,7 @@ async function main() {
             uptime_s: Math.round(process.uptime()),
             ts: new Date().toISOString(),
             ...(mongoUp ? await priceFreshness() : { prices_updated_at: null, prices_age_s: null }),
+            prices_sync: mongoUp ? await pricesSync() : null,
         };
     });
     server.getJsonCache('/', async (req: Request): Promise<any> => {

@@ -1,205 +1,258 @@
+/**
+ * Incremental warframe.market price sync (long-running; pm2 restarts it).
+ *
+ * Until 2026-11 this re-downloaded every item's order book in a loop, oldest
+ * first, around the clock, while impersonating browsers. warframe.market's rules
+ * ask for the opposite (https://docs.warframe.market/docs/rules/overview/):
+ * identify yourself, minimize calls, prefer incremental updates. Every egress IP
+ * that carried the old traffic was challenged by Cloudflare and stayed
+ * challenged for weeks; prices froze from 2026-11-04 to 2026-11-20.
+ *
+ * Now:
+ *  - one `/v2/orders/recent` call a minute says which items just got orders;
+ *  - services/PriceRefreshScheduler.ts picks what to refresh: never-priced
+ *    items, items with fresh orders (at most every 15 min), then each tier by
+ *    age (liquid 2 h, active 6 h, empty 24 h). Nothing due = no requests;
+ *  - the request rate is capped by WFM_MAX_RPS (services/WfmRateLimiter.ts),
+ *    and every request carries the honest identity (services/WfmIdentity.ts);
+ *  - a heartbeat in `warframe-sync-status` lets /health say why prices stop.
+ */
 import "./env";
+import os from "os";
+import mongoose from "mongoose";
 import { MongooseServer } from "./database";
-import { Item } from "./interface";
 import WarframeUndici from "./warframe-undici";
 import { parkIfWfmSyncOffHost } from "./services/WfmSyncGuard";
+import { PriceRefreshScheduler, RefreshOutcome, readPriceRefreshPolicy } from "./services/PriceRefreshScheduler";
+import { wfmRateLimiter } from "./services/WfmRateLimiter";
+import { proxyLabel, readWfmProxyUrl } from "./services/WfmProxy";
+import { WFM_CLIENT_VERSION } from "./services/WfmIdentity";
+import { PRICES_SYNC_ID, SYNC_STATUS_COLLECTION, SyncStatusReport } from "./services/SyncStatus";
 
-// ANSI color codes for terminal output
-const colors = {
-  reset: '\x1b[0m',
-  bright: '\x1b[1m',
-  green: '\x1b[32m',
-  yellow: '\x1b[33m',
-  blue: '\x1b[34m',
-  red: '\x1b[31m',
-  cyan: '\x1b[36m',
-  magenta: '\x1b[35m',
-  dim: '\x1b[2m',
+const int = (value: string | undefined, fallback: number, min: number): number => {
+  const n = parseInt(value || "", 10);
+  return Number.isFinite(n) ? Math.max(min, n) : fallback;
 };
 
-// Performance configuration. Throughput is capped by the warframe.market
-// limiter (WFM_MAX_RPS, see services/WfmRateLimiter.ts), not by concurrency:
-// a few workers keep that budget busy. Was 50, which with proxy rotation and
-// retries is what got the prod IP and proxy pool Cloudflare-blocked (2026-10-02).
-const CONCURRENCY_LIMIT = parseInt(process.env.CONCURRENCY || '4', 10);
-const MIN_DELAY = parseInt(process.env.MIN_DELAY || '100', 10);
-const MAX_DELAY = parseInt(process.env.MAX_DELAY || '300', 10);
+// Throughput is capped by the limiter (WFM_MAX_RPS), not by concurrency: a few
+// workers keep that budget busy. Was 50 with proxy rotation until 2026-10-02.
+const CONCURRENCY = int(process.env.CONCURRENCY, 4, 1);
+/** `/v2/orders/recent` is refreshed upstream once a minute; polling faster gains nothing. */
+const FEED_INTERVAL_MS = int(process.env.PRICE_FEED_INTERVAL_S, 60, 60) * 1000;
+const RELOAD_INTERVAL_MS = int(process.env.PRICE_CATALOGUE_RELOAD_MIN, 30, 5) * 60_000;
+const STATUS_INTERVAL_MS = 60_000;
+const IDLE_POLL_MS = 5_000;
+/** Exit cleanly after this long; pm2 starts a fresh process. */
+const MAX_RUN_MS = int(process.env.PRICE_SYNC_MAX_RUN_MIN, 360, 10) * 60_000;
+/** Consecutive database failures before exiting so pm2 restarts the process (e.g. tunnel down). */
+const MAX_DB_ERRORS = 20;
 
-function log(icon: string, message: string, color: string = colors.reset) {
-  const timestamp = new Date().toISOString().replace('T', ' ').split('.')[0];
-  console.log(`${colors.cyan}[${timestamp}]${colors.reset} ${icon} ${color}${message}${colors.reset}`);
+const stamp = () => new Date().toISOString().replace("T", " ").split(".")[0];
+const log = (icon: string, message: string) => console.log(`[${stamp()}] ${icon} ${message}`);
+
+let running = true;
+const wakers = new Set<() => void>();
+/** Sleep that ends early on shutdown. */
+function nap(ms: number): Promise<void> {
+  return new Promise((resolve) => {
+    const done = () => { clearTimeout(timer); wakers.delete(done); resolve(); };
+    const timer = setTimeout(done, ms);
+    wakers.add(done);
+  });
+}
+function stop(reason: string) {
+  if (!running) return;
+  running = false;
+  log("🛑", `Stopping: ${reason}`);
+  for (const wake of [...wakers]) wake();
 }
 
-// Live status indicator
-let lastActivityTime = Date.now();
-let activityInterval: NodeJS.Timeout;
-
-function startActivityMonitor() {
-  activityInterval = setInterval(() => {
-    const timeSinceActivity = Math.floor((Date.now() - lastActivityTime) / 1000);
-    // Every 30s, not every second: a Cloudflare pause holds requests for 15 min.
-    if (timeSinceActivity > 5 && timeSinceActivity % 30 === 0) {
-      process.stdout.write(`\r${colors.yellow}⏳ Waiting for API response... (${timeSinceActivity}s)${colors.reset}   `);
-    }
-  }, 1000);
-}
-
-function stopActivityMonitor() {
-  if (activityInterval) clearInterval(activityInterval);
-}
-
-function updateActivity() {
-  lastActivityTime = Date.now();
+/** Never overwrite good data with an empty answer. */
+function isValidMarket(market: any): boolean {
+  if (!market || market.not_found || market.failed) return false;
+  return !(market.buy === 0 && market.sell === 0 && market.volume === 0 && market.avg_price === 0);
 }
 
 async function main() {
   // Runs on the sync host instead when WFM_SYNC_ENABLED=false (see ecosystem.sync.config.js).
   if (parkIfWfmSyncOffHost("sync-prices", { longRunning: true })) return;
-  log('🚀', 'Starting Price Sync Process...', colors.bright);
-  log('⚙️', `Config: Concurrency=${CONCURRENCY_LIMIT}, Delay=${MIN_DELAY}-${MAX_DELAY}ms`, colors.dim);
-  
-  try {
-    log('🔌', 'Connecting to MongoDB...', colors.blue);
-    await MongooseServer.startConnectionPromise();
-    log('✅', 'MongoDB connected successfully', colors.green);
-    
-    // Create client with optimized settings for bulk sync
-    // Reduced delays significantly for faster processing
-    const m = new WarframeUndici({
-      minDelay: MIN_DELAY,
-      maxDelay: MAX_DELAY,
-      maxRetries: 5,  // Fewer retries for speed
-      priceConfig: {
-        // No extra per-call delays - the HTTP client paces every
-        // warframe.market request through the shared limiter
-        ordersMinDelay: 0,
-        ordersMaxDelay: 0,
-        statsMinDelay: 0,
-        statsMaxDelay: 0
-      }
-    });
-    const startTime = Date.now();
-    
-    let idx = 0;
-    let successCount = 0;
-    let errorCount = 0;
-    let removedCount = 0;
-    let skippedCount = 0;
-    let inFlightCount = 0;
-    const concurrencyLimit = CONCURRENCY_LIMIT;
-    
-    // Validate market data before saving - never save all-zero data
-    function isValidMarket(market: any): boolean {
-      if (!market) return false;
-      if (market.not_found) return false;
-      // If all values are 0, something went wrong - don't overwrite good data with zeros
-      if (market.buy === 0 && market.sell === 0 && market.volume === 0 && market.avg_price === 0) {
-        return false;
-      }
-      return true;
+
+  const policy = readPriceRefreshPolicy();
+  const budgetRps = parseFloat(process.env.WFM_MAX_RPS || "0.5");
+  log("🚀", `Incremental price sync v${WFM_CLIENT_VERSION} | budget ${budgetRps} req/s | ${CONCURRENCY} workers | ` +
+    `liquid ${policy.liquidMaxAgeMs / 60_000}m, active ${policy.activeMaxAgeMs / 60_000}m, ` +
+    `idle ${policy.idleMaxAgeMs / 60_000}m, hot every ${policy.hotMinIntervalMs / 60_000}m`);
+
+  await MongooseServer.startConnectionPromise();
+  log("✅", "MongoDB connected");
+
+  const m = new WarframeUndici({
+    minDelay: 0,
+    maxDelay: 0,
+    maxRetries: 5,
+    // Pacing happens per request in the HTTP client's limiter.
+    priceConfig: { ordersMinDelay: 0, ordersMaxDelay: 0, statsMinDelay: 0, statsMaxDelay: 0 },
+  });
+
+  const scheduler = new PriceRefreshScheduler<any>(policy);
+  scheduler.load(await m.getItemsDatabaseDate());
+  log("📦", `Catalogue loaded: ${scheduler.snapshot().total} items`);
+
+  const startedAt = new Date();
+  const totals = { saved: 0, skipped: 0, failed: 0, removed: 0 };
+  let window = { saved: 0, skipped: 0, failed: 0, removed: 0, feedNew: 0 };
+  let lastSavedAt: Date | null = null;
+  let lastError: string | null = null;
+  let lastErrorAt: Date | null = null;
+  let dbErrors = 0;
+  let logged = 0;
+
+  const noteError = (message: string) => {
+    lastError = message.slice(0, 200);
+    lastErrorAt = new Date();
+  };
+
+  const writeStatus = async () => {
+    const snap = scheduler.snapshot();
+    const blocked = wfmRateLimiter.blockedUntilMs();
+    const report: SyncStatusReport = {
+      host: os.hostname(),
+      egress: proxyLabel(readWfmProxyUrl()),
+      pid: process.pid,
+      clientVersion: WFM_CLIENT_VERSION,
+      budgetRps,
+      startedAt,
+      heartbeatAt: new Date(),
+      lastSavedAt,
+      ...totals,
+      blockedUntil: blocked ? new Date(blocked) : null,
+      lastError,
+      lastErrorAt,
+      queue: {
+        total: snap.total, due: snap.due, hot: snap.hot, never: snap.never,
+        oldestAgeS: snap.oldestAgeMs === null ? null : Math.round(snap.oldestAgeMs / 1000),
+      },
+    };
+    await mongoose.connection.db!
+      .collection<{ _id: string }>(SYNC_STATUS_COLLECTION)
+      .updateOne({ _id: PRICES_SYNC_ID }, { $set: report }, { upsert: true });
+    return { snap, blocked };
+  };
+
+  async function refresh(item: any): Promise<{ outcome: RefreshOutcome; updated?: any }> {
+    const t0 = Date.now();
+    const market: any = await m.getWarframeItemOrders(item);
+    if (!market || market.failed) {
+      noteError(`${item.url_name}: ${market?.error || "no result"}`);
+      return { outcome: "failed" };
     }
-    
-    async function processEntry(item: Item) {
-      inFlightCount++;
-      const itemStart = Date.now();
-      
+    if (market.not_found) {
+      await m.removeItemDB(item.id);
+      log("🗑️", `Removed (not on warframe.market): ${item.url_name}`);
+      return { outcome: "removed" };
+    }
+    if (!isValidMarket(market)) return { outcome: "skipped" };
+    const priceUpdate = new Date();
+    await m.saveItem(item.id, { market, priceUpdate });
+    // One history point per item per day; never fails the sync.
+    m.recordPriceHistoryPoint(item.url_name, {
+      buy: market.buy, sell: market.sell, avg_price: market.avg_price, volume: market.volume,
+    }).catch(() => {});
+    lastSavedAt = priceUpdate;
+    if (logged < 5) {
+      logged++;
+      log("✓", `${item.url_name} saved (${Date.now() - t0}ms)`);
+    }
+    return { outcome: "saved", updated: { ...item, market, priceUpdate } };
+  }
+
+  async function worker() {
+    while (running) {
+      const item = scheduler.next();
+      if (!item) {
+        await nap(IDLE_POLL_MS);
+        continue;
+      }
+      const started = Date.now();
+      let result: { outcome: RefreshOutcome; updated?: any } = { outcome: "failed" };
       try {
-        updateActivity();
-        const market = await m.getWarframeItemOrders(item);
-        updateActivity();
-        
-        const duration = Date.now() - itemStart;
-        
-        if (market) {
-          if (market.not_found) {
-            log('🗑️', `Removed: ${item.url_name} (${duration}ms)`, colors.yellow);
-            await m.removeItemDB(item.id);
-            removedCount++;
-          } else if (!isValidMarket(market)) {
-            // Skip saving invalid/zero market data
-            log('⚠️', `Skipped (invalid data): ${item.url_name} (${duration}ms)`, colors.yellow);
-            skippedCount++;
-          } else {
-            await m.saveItem(item.id, { market, priceUpdate: new Date() });
-            // Best-effort: one history point per item per day (README Roadmap
-            // "Historical price charts" / "Market trend analysis"). Never lets
-            // a history-write failure fail the price sync itself.
-            m.recordPriceHistoryPoint(item.url_name, {
-              buy: market.buy,
-              sell: market.sell,
-              avg_price: market.avg_price,
-              volume: market.volume,
-            }).catch(() => {});
-            successCount++;
-            // Show individual item completion for first few items
-            if (idx < 5) {
-              log('✓', `${item.url_name} synced (${duration}ms)`, colors.dim);
-            }
-          }
+        result = await refresh(item);
+        dbErrors = 0;
+      } catch (error: any) {
+        // HTTP failures come back as `failed` results; a throw here is the database.
+        noteError(`${item.url_name}: ${error?.message || error}`);
+        log("❌", `Error: ${item.url_name} - ${error?.message || error}`);
+        if (++dbErrors >= MAX_DB_ERRORS) stop(`${dbErrors} consecutive database errors`);
+      }
+      scheduler.complete(item.url_name, result.outcome, started, result.updated);
+      totals[result.outcome]++;
+      window[result.outcome]++;
+    }
+  }
+
+  async function feedLoop() {
+    while (running) {
+      try {
+        const orders = await m.getRecentOrders();
+        for (const order of orders) {
+          const at = Date.parse(order.updatedAt || order.createdAt || "");
+          if (scheduler.noteActivity(order.itemId, at)) window.feedNew++;
         }
       } catch (error: any) {
-        log('❌', `Error: ${item.url_name} - ${error.message}`, colors.red);
-        errorCount++;
-      } finally {
-        inFlightCount--;
+        noteError(`recent feed: ${error?.message || error}`);
+      }
+      await nap(FEED_INTERVAL_MS);
+    }
+  }
+
+  async function reloadLoop() {
+    while (running) {
+      await nap(RELOAD_INTERVAL_MS);
+      if (!running) break;
+      try {
+        scheduler.load(await m.getItemsDatabaseDate());
+      } catch (error: any) {
+        noteError(`catalogue reload: ${error?.message || error}`);
       }
     }
-    
-    log('📦', 'Fetching items from database...', colors.blue);
-    const items = await m.getItemsDatabaseDate();
-    log('📊', `Found ${items.length} items to sync`, colors.magenta);
-    
-    log('⚡', `Processing with concurrency limit: ${concurrencyLimit}`, colors.blue);
-    log('⏳', 'Starting first batch...', colors.yellow);
-    
-    startActivityMonitor();
-    
-    // Process in batches
-    let batchNum = 0;
-    const totalBatches = Math.ceil(items.length / concurrencyLimit);
-    
-    for (let i = 0; i < items.length; i += concurrencyLimit) {
-      batchNum++;
-      const batchStart = Date.now();
-      const chunk = items.slice(i, i + concurrencyLimit);
-      
-      // Clear activity line and show batch start
-      process.stdout.write('\r' + ' '.repeat(60) + '\r');
-      log('🔄', `Batch ${batchNum}/${totalBatches} - Processing ${chunk.length} items...`, colors.blue);
-      
-      await Promise.all(chunk.map((item: Item) => processEntry(item)));
-      
-      idx += chunk.length;
-      const batchDuration = ((Date.now() - batchStart) / 1000).toFixed(1);
-      const progress = ((idx / items.length) * 100).toFixed(1);
-      const elapsed = ((Date.now() - startTime) / 1000).toFixed(0);
-      const rate = (idx / (Date.now() - startTime) * 1000).toFixed(1);
-      const eta = idx > 0 ? Math.round((items.length - idx) / (idx / (Date.now() - startTime) * 1000)) : 0;
-      
-      log('📈', `Progress: ${idx}/${items.length} (${progress}%) | ✅ ${successCount} | ⚠️ ${skippedCount} | ❌ ${errorCount} | 🗑️ ${removedCount} | ⏱️ ${elapsed}s | ${rate}/s | ETA: ${eta}s`, colors.cyan);
-    }
-    
-    stopActivityMonitor();
-    
-    const totalTime = ((Date.now() - startTime) / 1000).toFixed(2);
-    console.log('\n' + '='.repeat(60));
-    log('🎉', 'PRICE SYNC COMPLETE!', colors.bright + colors.green);
-    console.log('='.repeat(60));
-    log('📊', `Total items processed: ${idx}`, colors.cyan);
-    log('✅', `Successfully updated: ${successCount}`, colors.green);
-    log('⚠️', `Skipped (invalid data): ${skippedCount}`, colors.yellow);
-    log('🗑️', `Removed (not found): ${removedCount}`, colors.yellow);
-    log('❌', `Errors: ${errorCount}`, colors.red);
-    log('⏱️', `Total time: ${totalTime}s`, colors.magenta);
-    console.log('='.repeat(60) + '\n');
-    
-    process.exit(0);
-  } catch (error: any) {
-    stopActivityMonitor();
-    log('💥', `Fatal error: ${error.message}`, colors.red);
-    console.error(error);
-    process.exit(1);
   }
+
+  async function statusLoop() {
+    while (running) {
+      try {
+        const { snap, blocked } = await writeStatus();
+        const oldest = snap.oldestAgeMs === null ? "-" : `${(snap.oldestAgeMs / 3_600_000).toFixed(1)}h`;
+        log("📈", `last min: saved ${window.saved}, skipped ${window.skipped}, failed ${window.failed}, ` +
+          `removed ${window.removed}, feed news ${window.feedNew} | queue: due ${snap.due}, hot ${snap.hot}, ` +
+          `new ${snap.never}, oldest ${oldest}` +
+          (blocked ? ` | ⛔ warframe.market challenge, paused until ${new Date(blocked).toISOString()}` : ""));
+      } catch (error: any) {
+        log("⚠️", `Status write failed: ${error?.message || error}`);
+      }
+      window = { saved: 0, skipped: 0, failed: 0, removed: 0, feedNew: 0 };
+      await nap(STATUS_INTERVAL_MS);
+    }
+  }
+
+  process.once("SIGINT", () => stop("SIGINT"));
+  process.once("SIGTERM", () => stop("SIGTERM"));
+  const deadline = setTimeout(() => stop(`planned restart after ${MAX_RUN_MS / 60_000} min`), MAX_RUN_MS);
+
+  await Promise.all([
+    feedLoop(),
+    reloadLoop(),
+    statusLoop(),
+    ...Array.from({ length: CONCURRENCY }, () => worker()),
+  ]);
+  clearTimeout(deadline);
+
+  await writeStatus().catch(() => {});
+  log("🏁", `Done: saved ${totals.saved}, skipped ${totals.skipped}, failed ${totals.failed}, removed ${totals.removed}`);
+  process.exit(dbErrors >= MAX_DB_ERRORS ? 1 : 0);
 }
 
-main();
+main().catch((error) => {
+  log("💥", `Fatal error: ${error?.message || error}`);
+  console.error(error);
+  process.exit(1);
+});

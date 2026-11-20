@@ -128,11 +128,12 @@ Because this tool is built for the community, here's the full, honest picture of
 - Your **portfolio, alerts, and settings live in your own browser** (`localStorage`) — they're never uploaded to a server, and they don't sync across devices for exactly that reason.
 - Price alerts fire as **local browser notifications** while a tab is open. There's no push server watching your account.
 
-### The "anti-detection" / proxy system, explained honestly
-The backend includes optional proxy rotation and request throttling (`anti-detection.ts`, [`ANTI_DETECTION_README.md`](ANTI_DETECTION_README.md)). To be transparent about what that is and isn't:
-- Its **only** purpose is to keep our **own** scheduled syncs from being rate-limited (HTTP 403) by the upstream CDN while reading **public** endpoints. It reads the same data any visitor to Warframe.market can see.
-- It is **not** used to attack, spam, log into, or overload Warframe.market, and it does **not** touch the game client. It runs on a conservative interval with caching so we hit the upstream API as little as possible.
-- Proxies are **entirely optional** — set `PROXY_LESS=true` and the app runs direct. No proxy lists or keys ship in this repo.
+### How we use the Warframe.market API
+We follow [Warframe.market's rules for third-party tools](https://docs.warframe.market/docs/rules/overview/):
+- **We identify ourselves.** Every request to Warframe.market, REST and WebSocket, sends one dedicated User-Agent: `WarframeMarketAnalytics/<version> (+https://warframe-app.digitalshopuy.com; https://github.com/eduair94/warframe)` ([`services/WfmIdentity.ts`](services/WfmIdentity.ts)). We do not imitate a browser, forge `Origin`/`Referer`, rotate proxies, or vary TLS fingerprints toward Warframe.market. Older versions of this project did, and every server that sent that traffic was blocked.
+- **Incremental, not a mirror.** The price sync reads the `/v2/orders/recent` feed once a minute and only refreshes items that changed or are due: liquid items every ~2 h, quiet ones every 6–24 h ([`services/PriceRefreshScheduler.ts`](services/PriceRefreshScheduler.ts)). Results are cached, so one upstream call serves every visitor.
+- **Well under the limit.** All processes together stay around 1 request/second, far below the documented 3 req/s ([`services/WfmRateLimiter.ts`](services/WfmRateLimiter.ts)). A 429 slows the client down, and a Cloudflare challenge pauses it for 15 minutes. Neither is retried around.
+- It reads only **public** data that any visitor can see, never logs into accounts, and never touches the game client. The proxy-rotation code in `anti-detection.ts` is legacy, applies only to other hosts, and is off in production (`PROXY_LESS=true`).
 
 ### Not affiliated
 - This is a **community fan project.** It is **not** affiliated with, endorsed by, or operated by **Digital Extremes** (Warframe) or **Warframe.market**. All game content and trademarks belong to Digital Extremes.
@@ -392,7 +393,7 @@ npx kill-port 3529        # or change API_PORT / FRONTEND_PORT in .env
 <details>
 <summary><strong>403 / rate-limit errors during sync</strong></summary>
 
-The upstream CDN is throttling. Either add proxy credentials, or slow your sync frequency. `PROXY_LESS=true` runs direct; heavy syncing without proxies may get rate-limited — that's expected, just back off.
+Warframe.market's Cloudflare is throttling or challenging your IP. Lower `WFM_MAX_RPS` and wait: the client already backs off on 429s and pauses 15 minutes on a challenge. Do **not** add rotating proxies or browser-like headers. Warframe.market's rules say clients that hide their identity may be blocked, and that is how this project's own servers got blocked in 2026. If you run your own copy, set `WFM_USER_AGENT` to identify it.
 </details>
 
 <details>
