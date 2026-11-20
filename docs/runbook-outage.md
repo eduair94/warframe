@@ -353,7 +353,52 @@ WFM_EGRESS_SSH_PORT=2223
 ```
 
 Recreate the tunnel as above (`pm2 delete warframe-egress-proxy` + `start
---only`). Only move to another IP **after** the traffic itself is fixed. The
+--only`). Only move to another IP **after** the traffic itself is fixed.
+
+gsearch works, but warframe.market answers it slowly: 40–100 s per request,
+sometimes a 502, against under 2 s from a residential IP. It also challenges
+any non-honest User-Agent from that IP. That is about 3 items a minute.
+
+### Temporary PC egress (2026-11-20, the owner's choice)
+
+To get full speed while a clean server is found, the sync host prefers a
+reverse tunnel from the owner's PC (`OMEN-17-EDUARDO`, residential IP) and
+falls back to gsearch when the PC is off or asleep:
+
+```
+sync processes ──socks5h──▶ 127.0.0.1:27030  warframe-egress-failover (services/SocksFailover.ts)
+                              ├─ 1st: 127.0.0.1:27040  reverse dynamic tunnel from the PC (scripts/pc-egress/)
+                              └─ 2nd: 127.0.0.1:27028  warframe-egress-proxy → gsearch
+```
+
+- **PC side**: `%LOCALAPPDATA%\warframe-egress\pc-egress-tunnel.ps1` loops
+  `ssh -N -R 127.0.0.1:27040 root@167.148.41.10 -p 2223` with
+  `PermitRemoteOpen=api.warframe.market:443 ws.warframe.market:443`, so the PC
+  serves SOCKS only to warframe.market: no LAN, no other site. It is started
+  hidden at logon by `start-hidden.vbs` in the Startup folder and logs to
+  `%LOCALAPPDATA%\warframe-egress\tunnel.log`. Key: `~/.ssh/warframe_pc_egress`,
+  authorized on `.10` root as
+  `restrict,port-forwarding,permitlisten="127.0.0.1:27040",permitopen="127.0.0.1:9",command="/bin/false"`.
+  Before each reconnect it runs `/usr/local/sbin/warframe-pc-egress-free` on
+  `.10` (via the `build` alias), which kills a stale sshd listener left behind
+  after the PC slept (`.10`'s sshd has `ClientAliveInterval 0`).
+- **Sync host**: `.env` sets `WFM_EGRESS_FAILOVER_UPSTREAMS=pc=127.0.0.1:27040,gsearch=127.0.0.1:27028`
+  and `WFM_PROXY_URL=socks5h://127.0.0.1:27030`. `warframe-egress-failover`
+  picks per connection the first upstream that answers the SOCKS greeting
+  within 4 s; a silent one is skipped for 60 s. It never reacts to
+  warframe.market's answers: a challenge still opens the breaker.
+  `pm2 logs warframe-egress-failover` shows each switch (`using pc` /
+  `using gsearch`).
+- **The API host (`.11`, live feed) stays on gsearch**, which limits how much
+  of the owner's IP is exposed.
+- **To retire it** (e.g. a clean server is ready): delete the Startup entry and
+  `%LOCALAPPDATA%\warframe-egress`, remove the `warframe-pc-egress` line from
+  `.10`'s `/root/.ssh/authorized_keys`, unset `WFM_EGRESS_FAILOVER_UPSTREAMS`,
+  point `WFM_PROXY_URL` back at `socks5h://127.0.0.1:27028`, then
+  `pm2 delete warframe-egress-failover` and restart the syncs.
+- The owner accepted the risk: if warframe.market flags this IP, the owner's
+  own browsing of warframe.market gets challenged too. The traffic is the
+  same honest, budgeted client, about 0.7 RPS at most. The
 user's rotating proxy pools (ProxyScrape, InstantProxies) must never carry
 warframe.market traffic. One dedicated static IP is acceptable as a manual
 standby egress. For questions or an unblock request, use warframe.market's

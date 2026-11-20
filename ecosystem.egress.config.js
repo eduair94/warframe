@@ -15,8 +15,25 @@ if (target && (!key || !validPort(port) || (sshPort && !validPort(sshPort)))) {
   throw new Error("WFM egress requires WFM_EGRESS_SSH_KEY, a valid WFM_EGRESS_PORT and, if set, a valid WFM_EGRESS_SSH_PORT");
 }
 
+// Optional SOCKS failover front (dist/egress_failover.js, services/SocksFailover.ts):
+// set WFM_EGRESS_FAILOVER_UPSTREAMS (e.g. "pc=127.0.0.1:27040,gsearch=127.0.0.1:27028")
+// and point WFM_PROXY_URL at WFM_EGRESS_FAILOVER_LISTEN (default 127.0.0.1:27030).
+const failoverUpstreams = process.env.WFM_EGRESS_FAILOVER_UPSTREAMS || "";
+const failoverApps = failoverUpstreams ? [{
+  name: "warframe-egress-failover",
+  script: "dist/egress_failover.js",
+  interpreter: process.env.WFM_SYNC_NODE || "node",
+  env: {
+    WFM_EGRESS_FAILOVER_UPSTREAMS: failoverUpstreams,
+    WFM_EGRESS_FAILOVER_LISTEN: process.env.WFM_EGRESS_FAILOVER_LISTEN || "127.0.0.1:27030",
+  },
+  autorestart: true,
+  restart_delay: 2000,
+  log_date_format: "YYYY-MM-DD HH:mm Z",
+}] : [];
+
 module.exports = {
-  apps: target ? [{
+  apps: [...failoverApps, ...(target ? [{
     name: "warframe-egress-proxy",
     script: "ssh",
     interpreter: "none",
@@ -32,5 +49,5 @@ module.exports = {
     autorestart: true,
     restart_delay: 5000,
     log_date_format: "YYYY-MM-DD HH:mm Z",
-  }] : [],
+  }] : [])],
 };

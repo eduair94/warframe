@@ -18,6 +18,9 @@ Backend/build tooling. Not the `sync_*.ts` importers (those live at repo root an
   missing sections, FAQs and changed link/source/video metadata even when review dates match;
   prose-only corrections still require an honest source review-date update. `npm run guides:test` checks
   refresh integrity (literal parsing, renderer inputs, video outages, grounding, honest dates).
+- **`pc-egress/`** — temporary warframe.market egress through the owner's PC: reverse dynamic
+  SSH tunnel loop (`pc-egress-tunnel.ps1`, started hidden by `start-hidden.vbs` from the Startup
+  folder) + the sync-host helper that frees a stale listener. Runbook §4 "Temporary PC egress".
 - **`lib/`**, **`.i18n-en/`** — helpers + cached English dump.
 - **`dev/`** — throwaway probes (`debug-ayatan.ts`, `test-*.ts`). **Not jest tests** (jest matches
   `*.test.ts`); manual `ts-node` runs. Safe to ignore unless reproducing a scrape/proxy issue.
