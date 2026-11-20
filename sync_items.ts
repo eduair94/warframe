@@ -37,6 +37,9 @@ let lastActivityTime = Date.now();
 let activityInterval: NodeJS.Timeout;
 
 function startActivityMonitor() {
+  // A `\r` spinner only makes sense on a terminal; under pm2 every tick is a
+  // separate log line.
+  if (!process.stdout.isTTY) return;
   activityInterval = setInterval(() => {
     const timeSinceActivity = Math.floor((Date.now() - lastActivityTime) / 1000);
     if (timeSinceActivity > 5) {

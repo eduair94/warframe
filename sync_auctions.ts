@@ -30,6 +30,10 @@ let lastActivityTime = Date.now();
 let activityInterval: NodeJS.Timeout;
 
 function startActivityMonitor() {
+  // A `\r` spinner only makes sense on a terminal. Under pm2 every tick became
+  // its own log line (one per second for the whole ~1 h sweep), and since
+  // nothing here refreshes lastActivityTime it only ever counted the uptime.
+  if (!process.stdout.isTTY) return;
   activityInterval = setInterval(() => {
     const timeSinceActivity = Math.floor((Date.now() - lastActivityTime) / 1000);
     if (timeSinceActivity > 5) {
