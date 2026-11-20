@@ -2,7 +2,7 @@
  * pm2 entry (sync host): local SOCKS5 front that fails over between the
  * warframe.market egresses (services/SocksFailover.ts).
  *
- *   WFM_EGRESS_FAILOVER_UPSTREAMS  "pc=127.0.0.1:27040,gsearch=127.0.0.1:27028" (tried in order)
+ *   WFM_EGRESS_FAILOVER_UPSTREAMS  "omen15=127.0.0.1:27041,gsearch=127.0.0.1:27028" (tried in order)
  *   WFM_EGRESS_FAILOVER_LISTEN     "127.0.0.1:27030" (default)
  *   WFM_PROXY_URL                  "socks5h://127.0.0.1:27030" so every WFM caller uses it
  *

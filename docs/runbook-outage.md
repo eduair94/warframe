@@ -359,36 +359,50 @@ gsearch works, but warframe.market answers it slowly: 40–100 s per request,
 sometimes a 502, against under 2 s from a residential IP. It also challenges
 any non-honest User-Agent from that IP. That is about 3 items a minute.
 
-### Temporary PC egress (2026-11-20, the owner's choice)
+### Home PC egress (2026-11-20, the owner's choice)
 
 To get full speed while a clean server is found, the sync host prefers a
-reverse tunnel from the owner's PC (`OMEN-17-EDUARDO`, residential IP) and
-falls back to gsearch when the PC is off or asleep:
+reverse tunnel from the owner's always-on home PC (`DESKTOP-JOBR7GS`, the
+"OMEN 15"; residential IP) and falls back to gsearch when that PC is off.
+It first ran on the owner's laptop (`OMEN-17-EDUARDO`, port 27040); that was
+retired the same day: process stopped, Startup entry, files and key removed,
+key line deleted from `.10`. Both machines share the home connection, so
+warframe.market saw no change of IP.
 
 ```
 sync processes ──socks5h──▶ 127.0.0.1:27030  warframe-egress-failover (services/SocksFailover.ts)
-                              ├─ 1st: 127.0.0.1:27040  reverse dynamic tunnel from the PC (scripts/pc-egress/)
+                              ├─ 1st: 127.0.0.1:27041  reverse dynamic tunnel from the OMEN 15 (scripts/pc-egress/)
                               └─ 2nd: 127.0.0.1:27028  warframe-egress-proxy → gsearch
 ```
 
-- **PC side**: `%LOCALAPPDATA%\warframe-egress\pc-egress-tunnel.ps1` loops
-  `ssh -N -R 127.0.0.1:27040 root@167.148.41.10 -p 2223` with
+- **PC side** (`ssh omen15`, user `tuvie`, PowerShell; `omen15-ts` over
+  Tailscale): `%LOCALAPPDATA%\warframe-egress\pc-egress-tunnel.ps1` loops
+  `ssh -N -R 127.0.0.1:27041 root@167.148.41.10 -p 2223` with
   `PermitRemoteOpen=api.warframe.market:443 ws.warframe.market:443`, so the PC
-  serves SOCKS only to warframe.market: no LAN, no other site. It is started
-  hidden at logon by `start-hidden.vbs` in the Startup folder and logs to
-  `%LOCALAPPDATA%\warframe-egress\tunnel.log`. Key: `~/.ssh/warframe_pc_egress`,
-  authorized on `.10` root as
-  `restrict,port-forwarding,permitlisten="127.0.0.1:27040",permitopen="127.0.0.1:9",command="/bin/false"`.
-  Before each reconnect it runs `/usr/local/sbin/warframe-pc-egress-free` on
-  `.10` (via the `build` alias), which kills a stale sshd listener left behind
-  after the PC slept (`.10`'s sshd has `ClientAliveInterval 0`).
-- **Sync host**: `.env` sets `WFM_EGRESS_FAILOVER_UPSTREAMS=pc=127.0.0.1:27040,gsearch=127.0.0.1:27028`
+  serves SOCKS only to warframe.market: no LAN, no other site (verified:
+  `curl --socks5-hostname 127.0.0.1:27041 https://example.com` fails). The
+  scheduled task `WarframeEgressTunnel` (`install-task.ps1`: at startup, S4U,
+  so no logon or stored password is needed; restarts every minute if it dies)
+  runs it in session 0 and it logs to `tunnel.log` beside the script. Its
+  `known_hosts` there was seeded from `.10`'s real host key, so it uses
+  `StrictHostKeyChecking=yes`.
+- **Key**: `~/.ssh/warframe_egress` on the PC (generated there; the private
+  key never left it), authorized on `.10` root as
+  `restrict,port-forwarding,permitlisten="127.0.0.1:27041",permitopen="127.0.0.1:9",command="/usr/local/sbin/warframe-pc-egress-free 27041"`.
+  The tunnel session (`-N`) runs no command; connecting WITHOUT `-N` runs only
+  the forced command, which kills a stale sshd listener on 27041 left behind
+  after a dropped connection (`.10`'s sshd has `ClientAliveInterval 0`). The
+  loop does that before each reconnect. The key opens no shell, so the PC holds
+  no root access to `.10`.
+- **Sync host**: `.env` sets `WFM_EGRESS_FAILOVER_UPSTREAMS=omen15=127.0.0.1:27041,gsearch=127.0.0.1:27028`
   and `WFM_PROXY_URL=socks5h://127.0.0.1:27030`. `warframe-egress-failover`
   picks per connection the first upstream that answers the SOCKS greeting
   within 4 s; a silent one is skipped for 60 s. It never reacts to
   warframe.market's answers: a challenge still opens the breaker.
-  `pm2 logs warframe-egress-failover` shows each switch (`using pc` /
-  `using gsearch`).
+  `pm2 logs warframe-egress-failover` shows each switch (`using omen15` /
+  `using gsearch`). After changing the upstreams:
+  `set -a; . ./.env; set +a; pm2 startOrRestart ecosystem.egress.config.js --only warframe-egress-failover --update-env`
+  and check `/proc/$(pm2 pid warframe-egress-failover)/environ`.
 - **The API host (`.11`, live feed) stays on gsearch**, which limits how much
   of the owner's IP is exposed.
 - **Statistics**: `.10` runs `WFM_V1_STATS=true`. v1 statistics answer
@@ -397,8 +411,10 @@ sync processes ──socks5h──▶ 127.0.0.1:27030  warframe-egress-failover 
   volume/avg_price instead of writing zeros (`MarketService.getItemPrices`).
   So a fallback to gsearch costs speed, not data. Statistics double the
   requests per item: ~18 items/min at the 0.6 RPS budget.
-- **To retire it** (e.g. a clean server is ready): delete the Startup entry and
-  `%LOCALAPPDATA%\warframe-egress`, remove the `warframe-pc-egress` line from
+- **To retire it** (e.g. a clean server is ready): on the PC
+  `Unregister-ScheduledTask -TaskName WarframeEgressTunnel -Confirm:$false`
+  (then stop the running `powershell`/`ssh` children) and delete
+  `%LOCALAPPDATA%\warframe-egress`, remove the `warframe-omen15-egress` line from
   `.10`'s `/root/.ssh/authorized_keys`, unset `WFM_EGRESS_FAILOVER_UPSTREAMS`,
   point `WFM_PROXY_URL` back at `socks5h://127.0.0.1:27028`, then
   `pm2 delete warframe-egress-failover` and restart the syncs.
@@ -589,3 +605,17 @@ failed fetches no longer logged as empty markets, a `/health.prices_sync`
 heartbeat, daily owner mentions on the stale issue, and the egress moved to
 gsearch (104.234.204.107:2223). See "Root cause found, egress moved to
 gsearch" above.
+
+**2026-11-20 (afternoon) — follow-ups once prices moved again.** The nightly
+`sync-items` had failed at 05:00 UTC on the old challenged egress (rerun by hand
+through the home PC: catalogue complete, 3893 items). Continuous price updates
+exposed two frontend faults that frozen prices had hidden: the freshness notice
+judged every item by one 3 h threshold, so with the incremental sync it read
+"Some market prices may be outdated" permanently (now per-tier, see
+`app/app/utils/market-freshness.ts`); and SWR-cached HTML hydrated against a
+separately cached, newer `_payload.json`, so 17 market pages logged hydration
+mismatches (payloads are now inline: `experimental.payloadExtraction: false`,
+and the dead `cache:nuxt:payload` copies, 82 MB of the shared 192 MB Redis, are
+discarded). The home egress moved from the owner's laptop to the always-on
+OMEN 15 ("Home PC egress" above). Web Push alerts were switched on (VAPID keys
+in the API host's `.env`).

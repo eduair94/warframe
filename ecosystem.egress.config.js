@@ -16,7 +16,7 @@ if (target && (!key || !validPort(port) || (sshPort && !validPort(sshPort)))) {
 }
 
 // Optional SOCKS failover front (dist/egress_failover.js, services/SocksFailover.ts):
-// set WFM_EGRESS_FAILOVER_UPSTREAMS (e.g. "pc=127.0.0.1:27040,gsearch=127.0.0.1:27028")
+// set WFM_EGRESS_FAILOVER_UPSTREAMS (e.g. "omen15=127.0.0.1:27041,gsearch=127.0.0.1:27028")
 // and point WFM_PROXY_URL at WFM_EGRESS_FAILOVER_LISTEN (default 127.0.0.1:27030).
 const failoverUpstreams = process.env.WFM_EGRESS_FAILOVER_UPSTREAMS || "";
 const failoverApps = failoverUpstreams ? [{
