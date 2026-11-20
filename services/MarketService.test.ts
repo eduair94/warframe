@@ -152,6 +152,24 @@ describe('MarketService', () => {
       expect(result.not_found).toBeUndefined();
     });
 
+    it('carries the stored volume and average forward when statistics fail, instead of zeroing them', async () => {
+      const httpClient = makeUrlRouter(() => {
+        throw new Error('headers timeout');
+      });
+      const service = new MarketService(httpClient, {
+        ordersMinDelay: 0, ordersMaxDelay: 0, statsMinDelay: 0, statsMaxDelay: 0, fetchStatistics: true
+      });
+
+      const result = await service.getItemPrices({
+        url_name: 'ash_prime_blueprint',
+        market: { volume: 120, avg_price: 11, last_completed: { avg_price: 11 } },
+      });
+      expect(result.sell).toBeGreaterThan(0);
+      expect(result.volume).toBe(120);
+      expect(result.avg_price).toBe(11);
+      expect(result.last_completed).toEqual({ avg_price: 11 });
+    });
+
     it('returns all-zero (not partial) when the primary orders fetch itself fails', async () => {
       const httpClient: IHttpClient = {
         get: jest.fn(async (url: string) => {

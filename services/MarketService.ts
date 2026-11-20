@@ -28,6 +28,8 @@ import { DEBUG } from '../debug';
 
 /** Max backoff retries for a rate-limited price fetch before giving up on an item */
 const PRICE_ERROR_MAX_RETRIES = 6;
+/** Inactivity limit for one v1 statistics request (see getItemStatistics). */
+const STATISTICS_TIMEOUT_MS = 20_000;
 
 /**
  * Configuration for price calculation
@@ -506,8 +508,11 @@ export class MarketService {
    * @param urlName - URL-friendly item name
    */
   async getItemStatistics<T = any>(urlName: string): Promise<T> {
+    // Secondary data from a deprecated endpoint that stalls from some egress
+    // IPs: fail fast and once, and let getItemPrices carry the stored values.
     return this.httpClient.get<T>(
-      `${API_URLS.WARFRAME_MARKET}/items/${urlName}/statistics`
+      `${API_URLS.WARFRAME_MARKET}/items/${urlName}/statistics`,
+      { timeout: STATISTICS_TIMEOUT_MS, maxRetries: 1 }
     );
   }
 
@@ -656,8 +661,18 @@ export class MarketService {
         if (DEBUG) {
           console.log(`⚠ Statistics unavailable for ${item.url_name}, using order prices only:`, statsError.message);
         }
+        // Keep the last stored aggregate instead of zeroing it: v1 statistics
+        // are deprecated and stall from some egress IPs (gsearch, 2026-11-20),
+        // and a timeout must not wipe an item's volume - the price scheduler's
+        // liquidity tiers and every volume-weighted view read it.
+        const prev = item.market;
         rawStats48h = [];
-        stats = { volume: 0, avg_price: 0, last_completed: null };
+        stats = {
+          volume: prev?.volume ?? 0,
+          avg_price: prev?.avg_price ?? 0,
+          last_completed: prev?.last_completed ?? null,
+        };
+        statsCarried = true;
       }
 
       // Mod-flip data (Endo Exchange): for a rank-able mod, extract the full

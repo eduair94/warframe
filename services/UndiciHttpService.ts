@@ -416,7 +416,7 @@ export class UndiciHttpService implements IHttpClient {
         const response = await request(url, {
           dispatcher,
           headers,
-          ...(wfm ? { headersTimeout: this.wfmTimeoutMs, bodyTimeout: this.wfmTimeoutMs } : {})
+          ...(wfm ? { headersTimeout: options.timeout ?? this.wfmTimeoutMs, bodyTimeout: options.timeout ?? this.wfmTimeoutMs } : {})
         });
 
         if (DEBUG) {
@@ -573,7 +573,7 @@ export class UndiciHttpService implements IHttpClient {
           dispatcher,
           headers,
           body: JSON.stringify(data),
-          ...(wfm ? { headersTimeout: this.wfmTimeoutMs, bodyTimeout: this.wfmTimeoutMs } : {})
+          ...(wfm ? { headersTimeout: options.timeout ?? this.wfmTimeoutMs, bodyTimeout: options.timeout ?? this.wfmTimeoutMs } : {})
         });
 
         if (wfm && (response.statusCode === 403 || response.statusCode === 429)) {

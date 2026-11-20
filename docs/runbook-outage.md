@@ -391,6 +391,12 @@ sync processes ──socks5h──▶ 127.0.0.1:27030  warframe-egress-failover 
   `using gsearch`).
 - **The API host (`.11`, live feed) stays on gsearch**, which limits how much
   of the owner's IP is exposed.
+- **Statistics**: `.10` runs `WFM_V1_STATS=true`. v1 statistics answer
+  through the PC but hang through gsearch. Each statistics call now times out
+  after 20 s with no retry, and a failure keeps the item's stored
+  volume/avg_price instead of writing zeros (`MarketService.getItemPrices`).
+  So a fallback to gsearch costs speed, not data. Statistics double the
+  requests per item: ~18 items/min at the 0.6 RPS budget.
 - **To retire it** (e.g. a clean server is ready): delete the Startup entry and
   `%LOCALAPPDATA%\warframe-egress`, remove the `warframe-pc-egress` line from
   `.10`'s `/root/.ssh/authorized_keys`, unset `WFM_EGRESS_FAILOVER_UPSTREAMS`,

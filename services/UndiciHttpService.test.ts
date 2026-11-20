@@ -184,6 +184,13 @@ describe('UndiciHttpService - warframe.market protection', () => {
     expect(requestMock.mock.calls[1]![1].bodyTimeout).toBeUndefined();
   });
 
+  it('lets a caller shorten the warframe.market timeout for one request', async () => {
+    const service = makeService(new WfmRateLimiter({ maxRps: 100, cooldownMs: 60_000 }));
+    requestMock.mockResolvedValue(response(200, '{"data":[]}'));
+    await service.get(WFM, { timeout: 20_000 });
+    expect(requestMock.mock.calls[0]![1]).toMatchObject({ headersTimeout: 20_000, bodyTimeout: 20_000 });
+  });
+
   it('does not rotate the TLS fingerprint for warframe.market', async () => {
     const { AntiDetection } = await import('../anti-detection');
     const tls = jest.spyOn(AntiDetection, 'getTLSOptions');
