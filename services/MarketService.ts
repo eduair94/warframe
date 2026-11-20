@@ -404,13 +404,13 @@ export class MarketService {
    * (services/PriceRefreshScheduler.ts) instead of re-downloading every order
    * book. Malformed rows are dropped.
    */
-  async getRecentOrders(): Promise<Array<{ itemId: string; createdAt?: string; updatedAt?: string }>> {
+  async getRecentOrders(): Promise<Array<{ itemId: string; createdAt?: string; updatedAt?: string; type?: string; platinum?: number; rank?: number }>> {
     const response = await this.httpClient.get<{ data?: unknown }>(
       `${API_URLS.WARFRAME_MARKET_V2}/orders/recent`
     );
     const rows = Array.isArray(response?.data) ? response.data : [];
     return rows.filter(
-      (o: any): o is { itemId: string; createdAt?: string; updatedAt?: string } =>
+      (o: any): o is { itemId: string; createdAt?: string; updatedAt?: string; type?: string; platinum?: number; rank?: number } =>
         !!o && typeof o.itemId === 'string' && o.itemId.length > 0
     );
   }

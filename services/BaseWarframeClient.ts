@@ -267,7 +267,7 @@ export abstract class BaseWarframeClient {
    * Newest visible orders across all items (`/v2/orders/recent`); drives the
    * incremental price sync (services/PriceRefreshScheduler.ts).
    */
-  async getRecentOrders(): Promise<Array<{ itemId: string; createdAt?: string; updatedAt?: string }>> {
+  async getRecentOrders(): Promise<Array<{ itemId: string; createdAt?: string; updatedAt?: string; type?: string; platinum?: number; rank?: number }>> {
     return this.marketService.getRecentOrders();
   }
 

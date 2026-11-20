@@ -196,7 +196,8 @@ async function main() {
         const orders = await m.getRecentOrders();
         for (const order of orders) {
           const at = Date.parse(order.updatedAt || order.createdAt || "");
-          if (scheduler.noteActivity(order.itemId, at)) window.feedNew++;
+          // Only an order that can move the stored price makes the item hot.
+          if (scheduler.noteActivity(order.itemId, at, order)) window.feedNew++;
         }
       } catch (error: any) {
         noteError(`recent feed: ${error?.message || error}`);

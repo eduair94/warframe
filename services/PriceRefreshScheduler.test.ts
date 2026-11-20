@@ -7,6 +7,7 @@ import {
   DEFAULT_PRICE_REFRESH_POLICY,
   PriceRefreshScheduler,
   RefreshItem,
+  movesStoredPrice,
   readPriceRefreshPolicy,
 } from './PriceRefreshScheduler';
 
@@ -90,6 +91,58 @@ describe('PriceRefreshScheduler', () => {
     expect(s.next()).toBeNull();
     c.advance(MIN); // exactly hotMinInterval after the previous fetch started
     expect(s.next()?.url_name).toBe('busy');
+  });
+
+  it('only lets an order that can move the stored price make an item hot', () => {
+    const c = clock();
+    const s = new PriceRefreshScheduler(DEFAULT_PRICE_REFRESH_POLICY, c.now);
+    s.load([item('busy', 20 * MIN, liquid)]); // stored best ask 50, best bid 40
+    // Listed behind the best orders: the stored price cannot change.
+    expect(s.noteActivity('id_busy', T0 - 3 * MIN, { type: 'sell', platinum: 55 })).toBe(false);
+    expect(s.noteActivity('id_busy', T0 - 2 * MIN, { type: 'buy', platinum: 40 })).toBe(false);
+    expect(s.tierOf('busy')).toBe('liquid');
+    expect(s.next()).toBeNull();
+    // A cheaper ask is news.
+    expect(s.noteActivity('id_busy', T0 - MIN, { type: 'sell', platinum: 45 })).toBe(true);
+    expect(s.tierOf('busy')).toBe('hot');
+    expect(s.next()?.url_name).toBe('busy');
+  });
+
+  it('compares the new order with the price the last refresh stored', () => {
+    const c = clock();
+    const s = new PriceRefreshScheduler(DEFAULT_PRICE_REFRESH_POLICY, c.now);
+    s.load([item('busy', 20 * MIN, liquid)]);
+    s.noteActivity('id_busy', T0 - MIN, { type: 'buy', platinum: 44 });
+    const picked = s.next()!;
+    s.complete(picked.url_name, 'saved', c.now(), { ...picked, market: { ...liquid, buy: 44 } });
+    c.advance(20 * MIN);
+    expect(s.noteActivity('id_busy', c.now(), { type: 'buy', platinum: 44 })).toBe(false);
+    expect(s.noteActivity('id_busy', c.now() + 1, { type: 'buy', platinum: 46 })).toBe(true);
+  });
+
+  it('decides which feed orders can move a stored price', () => {
+    const plain = item('plain', MIN, liquid);
+    expect(movesStoredPrice(plain, { type: 'sell', platinum: 49 })).toBe(true);
+    expect(movesStoredPrice(plain, { type: 'sell', platinum: 50 })).toBe(false);
+    expect(movesStoredPrice(plain, { type: 'buy', platinum: 41 })).toBe(true);
+    expect(movesStoredPrice(plain, { type: 'buy', platinum: 40 })).toBe(false);
+    // No stored side yet: any order on it sets one.
+    expect(movesStoredPrice(item('empty', MIN, idle), { type: 'sell', platinum: 500 })).toBe(true);
+    expect(movesStoredPrice(item('empty', MIN, idle), { type: 'buy', platinum: 1 })).toBe(true);
+    // Undecidable orders still count, so a real change is never missed.
+    expect(movesStoredPrice(plain, { type: 'sell' })).toBe(true);
+    expect(movesStoredPrice(plain, { type: 'sell', platinum: 0 })).toBe(true);
+    expect(movesStoredPrice(plain, { platinum: 60 })).toBe(true);
+  });
+
+  it('ignores mod orders at a rank other than the stored max-rank book', () => {
+    const mod = { ...item('serration', MIN, { sell: 30, buy: 20, volume: 300 }), items_in_set: [{ mod_max_rank: 10 }] };
+    expect(movesStoredPrice(mod, { type: 'sell', platinum: 5, rank: 0 })).toBe(false);
+    expect(movesStoredPrice(mod, { type: 'buy', platinum: 40, rank: 3 })).toBe(false);
+    expect(movesStoredPrice(mod, { type: 'sell', platinum: 25, rank: 10 })).toBe(true);
+    // Unranked items (or orders without a rank) are compared directly.
+    expect(movesStoredPrice(mod, { type: 'sell', platinum: 25 })).toBe(true);
+    expect(movesStoredPrice(item('relic', MIN, liquid), { type: 'sell', platinum: 45, rank: 0 })).toBe(true);
   });
 
   it('ignores feed orders for items outside the catalogue', () => {

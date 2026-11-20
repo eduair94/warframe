@@ -16,7 +16,8 @@
  * Priority (highest first):
  *  - new     never priced: fetch as soon as possible
  *  - hot     warframe.market's `/v2/orders/recent` feed showed an order newer
- *            than our last fetch: refresh, at most once per `hotMinIntervalMs`
+ *            than our last fetch that can move the stored price (see
+ *            movesStoredPrice): refresh, at most once per `hotMinIntervalMs`
  *  - liquid  traded a lot (48h volume >= `liquidVolume`): at most `liquidMaxAgeMs` old
  *  - active  has a price or some volume: at most `activeMaxAgeMs` old
  *  - idle    empty market: at most `idleMaxAgeMs` old
@@ -36,6 +37,38 @@ export interface RefreshItem {
   url_name: string;
   priceUpdate?: Date | string | number | null;
   market?: { sell?: number; buy?: number; volume?: number } | null;
+  /** Ranked items (mods): the stored sell/buy describe max-rank orders only. */
+  items_in_set?: Array<{ mod_max_rank?: number }> | null;
+}
+
+/** What the scheduler reads from an order in the recent feed. */
+export interface FeedOrder {
+  type?: string;
+  platinum?: number;
+  rank?: number;
+}
+
+/**
+ * Whether a new order can move an item's stored headline price: a sell listed
+ * below our best ask, or a buy above our best bid. Ranked items store the
+ * max-rank book, so an order at another rank cannot move it. Anything we
+ * cannot judge counts as relevant: a spare refresh beats a missed price.
+ *
+ * Measured 2026-11-20: of 401 feed orders only 73 could move a stored price
+ * (119 were other ranks of a mod, the rest priced behind the best order). Marking
+ * all of them hot kept ~1000 items "hot" at a 15-minute target, which crowded
+ * every other tier out of an 18-items-a-minute budget.
+ */
+export function movesStoredPrice(item: RefreshItem, order: FeedOrder): boolean {
+  const price = Number(order?.platinum);
+  if (!Number.isFinite(price) || price <= 0) return true;
+  const maxRank = Number(item.items_in_set?.[0]?.mod_max_rank);
+  if (typeof order.rank === 'number' && maxRank > 0 && order.rank !== maxRank) return false;
+  const sell = Number(item.market?.sell) || 0;
+  const buy = Number(item.market?.buy) || 0;
+  if (order.type === 'sell') return !(sell > 0) || price < sell;
+  if (order.type === 'buy') return !(buy > 0) || price > buy;
+  return true;
 }
 
 export interface PriceRefreshPolicy {
@@ -146,11 +179,16 @@ export class PriceRefreshScheduler<T extends RefreshItem = RefreshItem> {
     }
   }
 
-  /** Records an order seen in the recent feed. Returns true when it is news for that item. */
-  noteActivity(itemId: string, atMs: number): boolean {
+  /**
+   * Records an order seen in the recent feed. Returns true when it is news for
+   * that item. With the order's details, only an order that can move the
+   * stored price counts (see movesStoredPrice).
+   */
+  noteActivity(itemId: string, atMs: number, order?: FeedOrder): boolean {
     const urlName = this.byId.get(itemId);
     const entry = urlName ? this.entries.get(urlName) : undefined;
     if (!entry || !Number.isFinite(atMs) || atMs <= entry.activityAt) return false;
+    if (order && !movesStoredPrice(entry.item, order)) return false;
     entry.activityAt = atMs;
     return atMs > entry.refreshedAt;
   }
