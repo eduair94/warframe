@@ -110,6 +110,9 @@ function friendlyError(e: any): string {
     return 'expired-link'
   }
   if (code.includes('network')) return 'network'
+  // Spark plan: 5 email sign-in links a day for the whole project.
+  if (code.includes('quota-exceeded')) return 'email-quota'
+  if (code.includes('too-many-requests')) return 'too-many'
   return 'error'
 }
 

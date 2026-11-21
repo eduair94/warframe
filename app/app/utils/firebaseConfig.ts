@@ -28,13 +28,16 @@ export interface FirebaseWebConfig {
 }
 
 /** Compile-time defaults; override per-deployment with NUXT_PUBLIC_FIREBASE_*. */
+// Project wf-market-analytics (Spark plan, no billing account: it cannot
+// incur charges). The key is restricted to the Auth APIs and this site's
+// origins in the Google Cloud console. See docs/firebase-setup.md.
 export const FIREBASE_DEFAULTS: FirebaseWebConfig = {
-  apiKey: '',
-  authDomain: '',
-  projectId: '',
-  appId: '',
-  messagingSenderId: '',
-  storageBucket: '',
+  apiKey: 'AIzaSyCLgve5xdWSavekx5QF-gmOrjdFvbdeJGQ',
+  authDomain: 'wf-market-analytics.firebaseapp.com',
+  projectId: 'wf-market-analytics',
+  appId: '1:1015959223793:web:bd6d206494f411afe5d850',
+  messagingSenderId: '1015959223793',
+  storageBucket: 'wf-market-analytics.firebasestorage.app',
 }
 
 /** A config is usable only when Firebase's three required fields are present. */

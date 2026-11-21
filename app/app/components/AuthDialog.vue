@@ -107,7 +107,7 @@ const sent = ref(false)
 const errorText = computed(() => {
   if (!auth.error || auth.error === 'cancelled') return ''
   // Known codes get real copy; anything else falls back to the generic line.
-  const known = ['invalid-email', 'unauthorized-domain', 'expired-link', 'network']
+  const known = ['invalid-email', 'unauthorized-domain', 'expired-link', 'network', 'email-quota', 'too-many']
   return known.includes(auth.error)
     ? t(`auth.errors.${auth.error}`)
     : t('auth.errors.generic')

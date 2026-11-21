@@ -406,7 +406,7 @@ const providerLabel = computed(() => {
 
 // Same friendly-copy mapping AuthDialog uses, so a magic link that fails here
 // reads exactly like a sign-in that fails there.
-const KNOWN_ERRORS = ['invalid-email', 'unauthorized-domain', 'expired-link', 'network']
+const KNOWN_ERRORS = ['invalid-email', 'unauthorized-domain', 'expired-link', 'network', 'email-quota', 'too-many']
 const authErrorText = computed(() => {
   if (!auth.error || auth.error === 'cancelled') return ''
   return KNOWN_ERRORS.includes(auth.error) ? t(`auth.errors.${auth.error}`) : t('auth.errors.generic')
