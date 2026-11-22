@@ -153,6 +153,7 @@ import { useDisplay } from 'vuetify'
 import { useItemsStore } from '~/stores/items'
 
 const { t } = useI18n()
+const localePath = useLocalePath()
 const { localItemName } = useLocalizedName()
 const store = useItemsStore()
 const allItems = computed<any[]>(() => store.allItems)
@@ -276,11 +277,11 @@ const filtered = computed<any[]>(() => {
 })
 
 // SSR-only crawlable snapshot for <SeoFallbackTable> (see that component for
-// why): top 150 of the already-filtered/sorted screener (discount desc by default).
+// why): top 40 of the already-filtered/sorted screener (discount desc by default).
 const fallbackRows = computed(() =>
   filtered.value.slice(0, 40).map((row) => ({
     key: row.url_name,
-    href: mkt(row.url_name),
+    href: row.url_name.endsWith('_set') ? localePath('/set/' + row.url_name) : mkt(row.url_name),
     name: localItemName(row),
     cells: [fmtPlat(row.market.sell) + 'p', fmtSignedPct(row.discount), fmtPlat(row.market.volume)],
   })),

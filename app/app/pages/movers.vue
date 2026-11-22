@@ -160,6 +160,7 @@ import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useDisplay } from 'vuetify'
 
 const { t } = useI18n()
+const localePath = useLocalePath()
 const { localItemName } = useLocalizedName()
 const base = useApiBase()
 
@@ -281,7 +282,7 @@ const filtered = computed<any[]>(() => {
   return list
 })
 
-// SSR-only crawlable snapshot for <SeoFallbackTable>: top 150 items by 48h
+// SSR-only crawlable snapshot for <SeoFallbackTable>: top 40 items by 48h
 // volume — not `filtered`, since the default gainers/{7d,24h} board can be
 // legitimately empty (the active timeframe field is null for every item
 // until enough daily history accumulates); volume is the one metric this
@@ -294,8 +295,8 @@ const fallbackRows = computed(() =>
     .slice(0, 40)
     .map((row) => ({
       key: row.url_name,
-      href: mkt(row.url_name),
-      name: row.item_name,
+      href: row.url_name.endsWith('_set') ? localePath('/set/' + row.url_name) : mkt(row.url_name),
+      name: localItemName(row),
       cells: [fmtPlat(priceOf(row)) + 'p', fmtSignedPct(row[changeKey.value]), fmtPlat(row.volume)],
     })),
 )

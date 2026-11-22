@@ -2168,3 +2168,47 @@ metadata-only freshness rewrite is attempted. Results stay in ignored
 `tmp/nov19-*` evidence and daily automation memory. Existing daily scheduling
 is retained; supported price recovery, overdue guides and analytics access
 remain priorities.
+
+## 2026-11-22 — extend crawlable set discovery across market boards
+
+The server-rendered tables on Flip Finder, Top Movers and Screener now link
+assembled sets to the corresponding localized set analysis. Components retain
+their external market destinations: the `_set` suffix is used because the
+catalogue's `set` flag also marks parts. This extends the existing internal-link
+pattern to three more discovery pages in all thirteen languages. Movers also
+uses the existing localized item-name resolver in its initial table, matching
+the interactive display. Prices, filtering and interactive market links are
+unchanged; the initial table remains capped at forty rows.
+
+The actual Vue SSR and Nuxt-router regression suite now covers eight fallback
+builders, including these three, in thirteen locales. It verifies internal
+same-tab set destinations, external part links, stable identifiers, empty data
+and locale changes. All blocking checks and the API build pass: 907 API tests,
+241 frontend tests and 26 guide tests (1,174 total), plus i18n compilation,
+guide integrity and repository-map consistency.
+Final verification covers 39 public board pages, their canonical/hreflang and
+indexability, actual table links, sampled set destinations and public assets.
+
+Today's baseline reflects substantial intervening work already deployed by
+other sessions: local/API `b7c83b5`, sync `d9d6e90`, all tracked checkouts clean.
+Recent importer, egress/failover, inline-payload and Firebase/account changes
+are preserved. The prior complete workflow succeeded; no duplicate deployment
+was active. The old November 19 freshness blocker is no longer current:
+the newest quote is November 22 at 16:30:00 UTC, with 1,012 of 3,893 quotes
+under an hour old and 2,257 under three hours. Thirty remain older than a day.
+All ten public baseline checks pass, including Mongo and catalogue freshness.
+This recovery predates this iteration and is not attributed to its SEO changes.
+
+Analytics discovery still requires reauthentication; no 7/28-day traffic
+comparison or growth attribution is possible. The [official news index](https://www.warframe.com/en/news)
+still leads with November 16 Black Friday/TennoGen announcements, and the
+[patch index](https://www.warframe.com/en/patch-notes) lists 44.1.4.1. No filler
+pages or unrelated review-date changes are warranted by those checks.
+
+All source and documentation precede the full API/frontend/live workflow.
+Post-deploy verification is gated on its exact successful SHA. The sync checkout
+advances by fast-forward and build without installing dependencies or restarting
+its workers; today's process IDs and transport hashes form the preservation
+baseline. Evidence is retained in ignored `tmp/nov22-*` files and automation
+memory. Existing daily scheduling is retained. Next priorities: overdue guide
+reviews, remaining SEO copy overclaims and analytics reauthentication.

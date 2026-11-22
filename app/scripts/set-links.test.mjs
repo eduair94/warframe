@@ -11,7 +11,8 @@ import { compile, declarations, locales, createLocalizedRouting } from './helper
 import { loadSsrComponent } from './helpers/ssr-component.mjs'
 
 const names = ['comparison', 'vault-spikes', 'vaulted-worth', 'volatility', 'vaulted']
-const pages = new Map(await Promise.all(names.map(async name => {
+const fallbackNames = [...names, 'flip', 'movers', 'screener']
+const pages = new Map(await Promise.all(fallbackNames.map(async name => {
   const parsed = parse(await readFile(new URL(`../app/pages/${name}.vue`, import.meta.url), 'utf8'))
   assert.deepEqual(parsed.errors, [])
   return [name, parsed.descriptor]
@@ -25,7 +26,7 @@ const elements = (node, tag) => [
 ]
 const attr = (node, name) => node.props.find(prop => prop.type === 6 && prop.name === name)?.value?.content
 const set = { url_name: 'nami_skyla_prime_set', item_name: 'Nami Skyla Prime Set', set: { volume: 3 }, vaulted: true,
-  price: 235, volume: 3, _verdict: 'buy', change7d: null, change30d: null, volatility: null, trend: null,
+  s: { bid: 220, ask: 235, realMargin: 15, confidence: 80 }, discount: 10, price: 235, volume: 3, _verdict: 'buy', change7d: null, change30d: null, volatility: null, trend: null,
   acquire: { setCost: 235, partsCost: 200 }, resale: { partsValue: 220 }, market: { sell: 235, buy: 220, diff: 15, volume: 3 } }
 // The catalogue marks both assembled sets and their components as set:true.
 // Nami Skyla Prime Blade must remain a market destination, not a /set route.
@@ -35,7 +36,7 @@ function scopeFor(name, localePath) {
   const rows = name === 'comparison' ? [set] : [set, part]
   const scope = { exports: {}, computed: vue.computed, useLocalePath: () => localePath,
     filtered: vue.ref(rows), items: vue.ref(rows), decorated: vue.ref(rows),
-    fmtPlat: String, fmtQuote: String, fmtSignedPct: String, fmtVol: String, trendArrow: String,
+    changeKey: vue.ref('change7d'), fmtSignedPlat: String, fmtPlat: String, fmtQuote: String, fmtSignedPct: String, fmtVol: String, trendArrow: String,
     priceOf: row => row.price, num: (value, fallback = 0) => value ?? fallback, VERDICT_RANK: { buy: 3 },
     localItemName: row => row.item_name, t: key => key,
   }
@@ -52,7 +53,7 @@ function scopeFor(name, localePath) {
 
 // Compile each actual navigation element's opening tag. The body is irrelevant
 // to navigation; keeping directives, bindings and loops exercises all destinations.
-const linkRenderers = new Map(Array.from(pages, ([name, descriptor]) => {
+const linkRenderers = new Map(Array.from([...pages].filter(([name]) => names.includes(name)), ([name, descriptor]) => {
   const tree = parseHtml(descriptor.template.content)
   const links = [...elements(tree, 'NuxtLink'), ...elements(tree, 'a'), ...elements(tree, 'v-btn')]
     .filter(node => node.props.some(prop => prop.type === 7 && prop.name === 'bind' && ['to', 'href'].includes(prop.arg?.content)))
@@ -84,9 +85,9 @@ async function renderLinks(name, scope, router) {
 }
 
 for (const locale of locales) {
-  test(`${locale}: all five set-board fallback builders render localized internal links and preserve external part destinations`, async () => {
+  test(`${locale}: all eight set-board fallback builders render localized internal links and preserve external part destinations`, async () => {
     const { localePath } = await createLocalizedRouting(locale, routes)
-    for (const name of names) {
+    for (const name of fallbackNames) {
       const scope = scopeFor(name, localePath)
       const rows = scope.fallbackRows.value
       const app = vue.createSSRApp(fallback, { caption: 'Sets', nameLabel: 'Item', columns: [], rows })
@@ -136,7 +137,7 @@ for (const locale of locales) {
 
 test('set fallback links react to locale changes and the real resolver preserves query/fragment and already-localized routes', async () => {
   const { router, localePath, localeRef } = await createLocalizedRouting('es', routes)
-  const scopes = names.map(name => scopeFor(name, localePath))
+  const scopes = fallbackNames.map(name => scopeFor(name, localePath))
   for (const locale of locales) {
     localeRef.value = locale
     for (const scope of scopes) assert.equal(scope.fallbackRows.value[0].href, prefixed(locale, '/set/' + set.url_name))

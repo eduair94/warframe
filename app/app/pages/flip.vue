@@ -196,6 +196,7 @@ import { useItemsStore } from '~/stores/items'
 import { scoreFlip } from '~/composables/useFlipScore'
 
 const { t } = useI18n()
+const localePath = useLocalePath()
 const { trackSearch, trackFilter, trackSort, trackAction, trackDialog, trackMarketOpen } = useAnalytics()
 const { localItemName } = useLocalizedName()
 const itemsStore = useItemsStore()
@@ -305,12 +306,12 @@ const filtered = computed<any[]>(() => {
 })
 
 // SSR-only crawlable snapshot for <SeoFallbackTable> (see that component for
-// why): top 150 of the same filtered+sorted list the live table renders
+// why): top 40 of the same filtered+sorted list the live table renders
 // (default sort: opportunity score, descending).
 const fallbackRows = computed(() =>
   filtered.value.slice(0, 40).map((row) => ({
     key: row.url_name,
-    href: mkt(row.url_name),
+    href: row.url_name.endsWith('_set') ? localePath('/set/' + row.url_name) : mkt(row.url_name),
     name: localItemName(row),
     cells: [
       fmtPlat(row.s.bid) + 'p',
