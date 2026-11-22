@@ -128,6 +128,30 @@ site will see (the paid tier starts at phone auth / multi-factor / Identity Plat
 features, none of which are used). No Firestore, Storage or Functions are used —
 all user data lives in the project's own MongoDB.
 
+## Current deployment (switched on 2026-11-21)
+
+- Project **`wf-market-analytics`** (number 1015959223793), web app
+  `1:1015959223793:web:bd6d206494f411afe5d850`, config baked into
+  `app/app/utils/firebaseConfig.ts`; the API `.env` on `.11` has
+  `FIREBASE_PROJECT_ID=wf-market-analytics`.
+- **Spark plan with NO billing account linked** (`gcloud billing projects describe
+  wf-market-analytics` → `billingEnabled: False`), so it cannot be charged: past a free
+  quota a call fails, it is never billed. Keep it that way: do not link billing, do not
+  "upgrade to Firebase Authentication with Identity Platform" (auth subtype must stay
+  `FIREBASE_AUTH`). Programmatic `identityPlatform:initializeAuth` needs Blaze, which
+  is why Authentication was started with the console's "Get started" button.
+- Spark allows **5 email sign-in links per day for the whole project** (verification
+  emails 1000/day). Google sign-in has no such cap, so it is the main path; a quota
+  error tells the user to use Google or try tomorrow (`auth.errors['email-quota']`).
+- The browser key ("Browser key (auto created by Firebase)") is restricted to
+  `identitytoolkit.googleapis.com` + `securetoken.googleapis.com` and to the referrers
+  `https://warframe-app.digitalshopuy.com/*`, `https://wf-market-analytics.firebaseapp.com/*`,
+  `https://wf-market-analytics.web.app/*`, `http://localhost:3312/*`, `http://127.0.0.1:3312/*`.
+  A new origin must be added there AND to Authentication → Settings → Authorized domains.
+- Providers: Google, and Email/Password with email link (`passwordRequired: false`).
+  Authorized domains: `localhost`, the two Firebase hosting domains, and
+  `warframe-app.digitalshopuy.com`.
+
 ## Turning it back off
 
 Remove `FIREBASE_PROJECT_ID` from the API `.env` and reload. The API immediately rejects
