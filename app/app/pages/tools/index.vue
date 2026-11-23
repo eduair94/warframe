@@ -59,7 +59,7 @@
                   <template v-if="tool.domain.ageYears != null"> · {{ tool.domain.ageYears }}y</template>
                 </span>
                 <span v-if="tool.repo" class="ct-meta__i" :class="{ 'is-stale': isStale(tool.repo.lastCommit) }">
-                  ★ {{ tool.repo.stars }} · {{ rel(tool.repo.lastCommit) }}
+                  ★ {{ tool.repo.stars }} · <time :datetime="tool.repo.lastCommit">{{ repoDate(tool.repo.lastCommit) }}</time>
                   <template v-if="tool.repo.archived"> · archived</template>
                 </span>
                 <span v-if="tool.openSource" class="ct-meta__i is-alt">{{ t('communityTools.card.openSource') }}</span>
@@ -84,7 +84,7 @@
 <script setup lang="ts">
 import { computed, nextTick, onMounted } from 'vue'
 import dayjs from 'dayjs'
-import relativeTime from 'dayjs/plugin/relativeTime'
+import { formatRepositoryDate } from '~/utils/guide-date'
 import { TOOLS, TOOL_SECTIONS, toolsByCategory } from '~/data/tools'
 import { RESEARCH } from '~/data/toolResearch'
 
@@ -92,8 +92,7 @@ import { RESEARCH } from '~/data/toolResearch'
 const localizedResearch = await useLocalizedResearch(RESEARCH)
 const getResearch = (slug: string) => localizedResearch[slug]
 
-dayjs.extend(relativeTime)
-const { t, te } = useI18n()
+const { t, te, locale } = useI18n()
 const localePath = useLocalePath()
 const { trackAction, trackContent } = useAnalytics()
 
@@ -146,7 +145,7 @@ const sections = computed(() =>
 )
 
 function yearOf(iso: string) { return new Date(iso).getUTCFullYear() }
-function rel(iso: string) { return dayjs(iso).fromNow() }
+function repoDate(iso: string) { return formatRepositoryDate(iso, locale.value) }
 function isStale(iso: string) { return dayjs().diff(dayjs(iso), 'month') >= 12 }
 
 function finishLoading(attempt = 0) {

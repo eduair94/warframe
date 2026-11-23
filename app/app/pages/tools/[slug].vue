@@ -190,7 +190,7 @@
               <div><dt>{{ t('toolDetail.facts.platforms') }}</dt><dd>{{ tool.platforms.map((p) => t('communityTools.platform.' + p)).join(', ') }}</dd></div>
               <div v-if="tool.openSource"><dt>{{ t('toolDetail.facts.source') }}</dt><dd>{{ t('communityTools.card.openSource') }}</dd></div>
               <div v-if="tool.domain?.created"><dt>{{ t('toolDetail.facts.established') }}</dt><dd>{{ yearOf(tool.domain.created) }}<template v-if="tool.domain.ageYears != null"> ({{ tool.domain.ageYears }}y)</template></dd></div>
-              <div v-if="tool.repo"><dt>GitHub</dt><dd>★ {{ tool.repo.stars }} · {{ rel(tool.repo.lastCommit) }}<template v-if="tool.repo.archived"> · archived</template></dd></div>
+              <div v-if="tool.repo"><dt>GitHub</dt><dd>★ {{ tool.repo.stars }} · <time :datetime="tool.repo.lastCommit">{{ repoDate(tool.repo.lastCommit) }}</time><template v-if="tool.repo.archived"> · archived</template></dd></div>
               <div v-if="research?.dataConfidence"><dt>{{ t('toolDetail.facts.confidence') }}</dt><dd>{{ t('toolDetail.confidence.' + research.dataConfidence) }}</dd></div>
             </dl>
           </div>
@@ -215,8 +215,7 @@
 
 <script setup lang="ts">
 import { computed, nextTick, onMounted } from 'vue'
-import dayjs from 'dayjs'
-import relativeTime from 'dayjs/plugin/relativeTime'
+import { formatRepositoryDate } from '~/utils/guide-date'
 import { TOOLS } from '~/data/tools'
 import { RESEARCH, SELF_SLUG, selfRelation } from '~/data/toolResearch'
 
@@ -224,8 +223,7 @@ import { RESEARCH, SELF_SLUG, selfRelation } from '~/data/toolResearch'
 const localizedResearch = await useLocalizedResearch(RESEARCH)
 const getResearch = (slug: string) => localizedResearch[slug]
 
-dayjs.extend(relativeTime)
-const { t, te } = useI18n()
+const { t, te, locale } = useI18n()
 const localePath = useLocalePath()
 const route = useRoute()
 const { trackAction, trackContent } = useAnalytics()
@@ -309,7 +307,7 @@ function onDetailNav(s: string) {
 }
 
 function yearOf(iso: string) { return new Date(iso).getUTCFullYear() }
-function rel(iso: string) { return dayjs(iso).fromNow() }
+function repoDate(iso: string) { return formatRepositoryDate(iso, locale.value) }
 
 // Per-page SEO override (layout owns canonical/hreflang). Bakes the tool name +
 // one-liner into title/description + the OG card.

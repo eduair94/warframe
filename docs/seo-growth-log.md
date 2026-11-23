@@ -2212,3 +2212,50 @@ its workers; today's process IDs and transport hashes form the preservation
 baseline. Evidence is retained in ignored `tmp/nov22-*` files and automation
 memory. Existing daily scheduling is retained. Next priorities: overdue guide
 reviews, remaining SEO copy overclaims and analytics reauthentication.
+
+## 2026-11-23 — verify repository activity and expose exact localized dates
+
+Reviewed all seven GitHub-backed tools using GitHub's repository endpoint and
+the latest commit on each default branch (14 successful read-only requests).
+Updated only repository stars, lastCommit, archive state and open issue counts
+in the shared enrichment snapshot. Domain checks, screenshots, availability and
+editorial review dates were not rechecked and keep their original timestamps.
+This is a bounded repository review, not a claim that every tool feature was tested.
+
+Primary sources: [WFInfo](https://github.com/WFCD/WFInfo),
+[drop data](https://github.com/WFCD/warframe-drop-data),
+[items](https://github.com/WFCD/warframe-items),
+[worldstate parser](https://github.com/WFCD/warframe-worldstate-parser),
+[Public Export Plus](https://github.com/calamity-inc/warframe-public-export-plus),
+[Market Overlay](https://github.com/JonathanSourdough/Warframe-Market-Overlay),
+and [WarBot](https://github.com/PYROP3/WarBot). Exact commit URLs and before/after
+fields are retained in `tmp/nov23-repository-review.json`. The parser and Public
+Export Plus have November 21 commits, items November 14, and drop data October 24.
+Market Overlay's actual latest commit is June 8, 2020, correcting the stored
+December 2022 date; repository push time is not substituted for commit time.
+
+Directory cards and detail pages now display complete localized UTC dates in
+semantic time elements, preserving the original timestamp in datetime. This
+replaces English relative ages and prevents timezone shifts or changing age
+text during hydration. Invalid timestamps display a dash. Removed unused
+relative-time plugin registration; existing stale classification remains.
+The shared calendar-date regression covers offsets, impossible dates and
+localized output; existing guide timezone checks still pass.
+
+Blocking checks pass: 907 API + 242 frontend + 26 guide tests (1,175 total),
+i18n compilation, guide integrity and repo-map consistency; API build passes.
+Source, repository data and this entry precede the full API/frontend/live deploy.
+Exact-SHA verification will inspect the directory and all seven affected detail
+pages in thirteen languages (104 pages), recorded timestamps, localized dates,
+canonical/hreflang/indexability and public health/assets. Final evidence stays
+in ignored `tmp/nov23-*` files and automation memory, with no undeployed follow-up.
+
+Baseline started clean at `ab3edb4` with the previous full workflow successful.
+All ten public checks pass. Latest price at 13:02 UTC is from today; 2,135 of
+3,893 quotes are under three hours, with 56 over a day. Analytics discovery is
+still UNAUTHORIZED, so no measured traffic comparison is available. Official
+[news](https://www.warframe.com/en/news) still leads with November 16 sales and
+[patch notes](https://www.warframe.com/en/patch-notes) list 44.1.4.1; no unrelated
+guide dates are changed. Preserve current sync/egress behavior and workers.
+Daily automation remains active. Next: overdue editorial guides, remaining SEO
+copy overclaims and analytics reauthentication.

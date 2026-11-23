@@ -1,7 +1,17 @@
 import assert from 'node:assert/strict'
 import { spawnSync } from 'node:child_process'
 import { test } from 'node:test'
-import { formatGuideReviewDate } from '../app/utils/guide-date.ts'
+import { formatGuideReviewDate, formatRepositoryDate } from '../app/utils/guide-date.ts'
+
+test('repository dates expose a stable localized calendar date and reject malformed records', () => {
+  assert.equal(formatRepositoryDate('2026-11-22T00:30:00Z', 'en'), 'Nov 22, 2026')
+  assert.equal(formatRepositoryDate('2026-11-21T21:30:00-03:00', 'en'), 'Nov 22, 2026')
+  assert.match(formatRepositoryDate('2026-11-22T00:30:00Z', 'es'), /^22 .+ 2026$/)
+  assert.equal(formatRepositoryDate('2026-11-22T00:30:00Z', 'ja'), '2026年11月22日')
+  for (const value of [undefined, '', 'invalid', '2026-02-30T00:00:00Z', '2026-11-22T00:30:00']) {
+    assert.equal(formatRepositoryDate(value, 'es'), '—')
+  }
+})
 
 test('review dates keep the same day across UTC and negative browser/server timezones', () => {
   const helperUrl = new URL('../app/utils/guide-date.ts', import.meta.url).href
