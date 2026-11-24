@@ -2259,3 +2259,37 @@ still UNAUTHORIZED, so no measured traffic comparison is available. Official
 guide dates are changed. Preserve current sync/egress behavior and workers.
 Daily automation remains active. Next: overdue editorial guides, remaining SEO
 copy overclaims and analytics reauthentication.
+
+## 2026-11-24 — Searchable community tools directory
+
+Added client-side search across tool names, slugs, localized descriptions,
+categories and platforms, retaining English research vocabulary as a fallback.
+Search ignores accents and case, matches all entered terms, removes empty
+categories and announces the result count. Clearing restores the full catalogue.
+Category jump links expose the directory structure with matching result counts.
+Existing translations supply all labels in thirteen languages. Keyboard focus,
+44px controls and wrapping category links support accessible responsive use.
+
+The initial server response still contains every card, detail link and complete
+ItemList schema; search creates no indexable query URLs. Canonical URLs and
+hreflang remain unchanged. This improves discovery within the site; it is not
+evidence of increased organic traffic. Analytics discovery remains UNAUTHORIZED.
+
+Blocking checks: 907 API, 245 frontend and 26 guide tests (1,178 total), guide
+integrity, i18n compilation and repo-map consistency. The three new tests execute
+the page's actual reactive search declarations, covering accents, combined terms,
+English fallback, non-Latin queries, locale changes, empty results and clearing.
+API build and the full API/frontend/live workflow are required before completion.
+Postdeploy verification covers all thirteen directory SSR responses, catalogue
+and schema counts, category targets, canonical/hreflang, public health and browser
+interaction. Final exact-SHA evidence remains in ignored tmp/nov24-* files and
+existing automation memory; all tracked source and this entry precede deployment.
+
+Baseline is clean release d98c730; all ten public checks pass. Latest quote at
+13:02 UTC is from today, with healthy API connectivity. Official
+[news](https://www.warframe.com/en/news) adds November 23's Game Awards nomination;
+[patch notes](https://www.warframe.com/en/patch-notes) still list 44.1.4.1.
+No mechanics or editorial review dates are changed without a content review.
+The existing daily automation remains active. Preserve sync/egress configuration
+and current workers during the release. Next: overdue editorial guides, remaining
+SEO copy overclaims and analytics reauthentication.

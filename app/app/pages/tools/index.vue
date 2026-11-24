@@ -28,7 +28,16 @@
         </div>
       </div>
 
-      <section v-for="sec in sections" :key="sec.key" class="ct-section">
+      <div class="ct-search">
+        <label for="tool-search">{{ t('home.filters.search') }}</label>
+        <input id="tool-search" v-model="search" type="search" :placeholder="t('home.filters.search')" />
+        <span role="status" aria-live="polite">{{ resultCount }} {{ t('communityTools.stats.tools') }}</span>
+      </div>
+      <nav class="ct-category-nav" :aria-label="t('communityTools.hero.title')">
+        <a v-for="sec in sections" :key="sec.key" :href="'#tools-' + sec.key">{{ t('communityTools.sections.' + sec.key) }} <span>({{ sec.tools.length }})</span></a>
+      </nav>
+
+      <section v-for="sec in sections" :id="'tools-' + sec.key" :key="sec.key" class="ct-section">
         <!-- h2 (was a styled <div>): the section heading between the page h1 and
              the h3 card titles. Without it the cards' h3 skipped a level. -->
         <h2 class="ct-section__title">{{ t('communityTools.sections.' + sec.key) }}</h2>
@@ -82,7 +91,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, nextTick, onMounted } from 'vue'
+import { computed, nextTick, onMounted, ref } from 'vue'
 import dayjs from 'dayjs'
 import { formatRepositoryDate } from '~/utils/guide-date'
 import { TOOLS, TOOL_SECTIONS, toolsByCategory } from '~/data/tools'
@@ -140,9 +149,22 @@ function cardDesc(tool: { slug: string }): string {
 
 const openSourceCount = computed(() => TOOLS.filter((x) => x.openSource).length)
 const verifiedCount = computed(() => TOOLS.filter((x) => x.verified).length)
+const search = ref('')
+function normalizeSearch(value: string): string {
+  return value.normalize('NFD').replace(/\p{M}/gu, '').toLowerCase()
+}
+const searchIndex = computed(() => new Map(TOOLS.map((tool) => [tool.slug, normalizeSearch([
+  tool.name, tool.slug, tool.category, t('communityTools.sections.' + tool.category),
+  cardDesc(tool), RESEARCH[tool.slug]?.oneLiner || '',
+  ...tool.platforms, ...tool.platforms.map((platform) => t('communityTools.platform.' + platform)),
+].join(' '))])))
+const searchTerms = computed(() => normalizeSearch(search.value).trim().split(/\s+/).filter(Boolean))
 const sections = computed(() =>
-  TOOL_SECTIONS.map((s) => ({ key: s.key, tools: toolsByCategory(s.key) })).filter((s) => s.tools.length),
+  TOOL_SECTIONS.map((s) => ({ key: s.key, tools: toolsByCategory(s.key).filter((tool) =>
+    searchTerms.value.every((term) => searchIndex.value.get(tool.slug)?.includes(term)),
+  ) })).filter((s) => s.tools.length),
 )
+const resultCount = computed(() => sections.value.reduce((count, section) => count + section.tools.length, 0))
 
 function yearOf(iso: string) { return new Date(iso).getUTCFullYear() }
 function repoDate(iso: string) { return formatRepositoryDate(iso, locale.value) }
@@ -159,6 +181,16 @@ onMounted(() => finishLoading())
 </script>
 
 <style scoped>
+.ct-search { display: grid; gap: 8px; padding: 20px 30px 12px; }
+.ct-search label { color: var(--gold-ink); font-family: var(--font-hud); }
+.ct-search input { width: 100%; min-height: 44px; padding: 10px 14px; border: 1px solid var(--orokin-line); border-radius: 4px; background: rgba(0, 0, 0, 0.25); color: var(--ink); font: inherit; }
+.ct-search input:focus-visible, .ct-category-nav a:focus-visible { outline: 2px solid var(--energy); outline-offset: 3px; }
+.ct-search [role="status"] { color: var(--ink-dim); font-size: 0.85rem; }
+.ct-category-nav { display: flex; flex-wrap: wrap; gap: 8px; padding: 0 30px 20px; }
+.ct-category-nav a { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 8px 12px; border: 1px solid var(--orokin-line); border-radius: 4px; color: var(--gold-ink); text-decoration: none; }
+.ct-category-nav a:hover { background: rgba(200, 168, 92, 0.12); }
+.ct-section { scroll-margin-top: 100px; }
+@media (max-width: 600px) { .ct-search, .ct-category-nav { padding-left: 16px; padding-right: 16px; } }
 .ct-section { padding: 8px 30px 24px; border-top: 1px solid rgba(255, 255, 255, 0.05); }
 .ct-section__title { font-family: var(--font-display); font-size: 1.3rem; color: var(--gold-ink); margin: 22px 0 14px; }
 .ct-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
