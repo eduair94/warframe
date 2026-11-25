@@ -70,6 +70,8 @@ export interface GuideFaq {
 }
 
 export interface Guide {
+  /** Runtime language of the selected content, including an English fallback. */
+  contentLanguage?: string
   /** URL slug — the page lives at /guides/<slug>. */
   slug: string
   eyebrow: string

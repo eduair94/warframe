@@ -14,7 +14,7 @@
     "postinstall": "nuxt prepare",
     "typecheck": "nuxi typecheck",
     "test:analytics": "node --test scripts/analytics.test.mjs",
-    "test:frontend": "node --test scripts/analytics.test.mjs scripts/rich-text.test.mjs scripts/pwa.test.mjs scripts/guide-search.test.mjs scripts/market-fetch.test.mjs scripts/guide-date.test.mjs scripts/relative-time.test.mjs scripts/endo-pricing.test.mjs scripts/ducats.test.mjs scripts/tool-headers.test.mjs scripts/comparison-pricing.test.mjs scripts/live-freshness.test.mjs scripts/relic-links.test.mjs scripts/seo-fallback-links.test.mjs scripts/set-links.test.mjs scripts/home-links.test.mjs scripts/tool-search.test.mjs",
+    "test:frontend": "node --test scripts/analytics.test.mjs scripts/rich-text.test.mjs scripts/pwa.test.mjs scripts/guide-search.test.mjs scripts/market-fetch.test.mjs scripts/guide-date.test.mjs scripts/relative-time.test.mjs scripts/endo-pricing.test.mjs scripts/ducats.test.mjs scripts/tool-headers.test.mjs scripts/comparison-pricing.test.mjs scripts/live-freshness.test.mjs scripts/relic-links.test.mjs scripts/seo-fallback-links.test.mjs scripts/set-links.test.mjs scripts/home-links.test.mjs scripts/tool-search.test.mjs scripts/guide-translation.test.mjs",
     "lint": "eslint .",
     "lint:prettier": "prettier --check .",
     "i18n:check": "tsx scripts/i18n-check.mts",

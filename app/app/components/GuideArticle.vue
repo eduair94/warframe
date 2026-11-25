@@ -5,7 +5,7 @@
      directly in Google and assistants. -->
 <template>
   <div class="an ga">
-    <article class="an-console">
+    <article class="an-console" :lang="guide.contentLanguage || locale">
       <!-- ── Hero ─────────────────────────────────────────────────────── -->
       <header class="an-hero ga-hero">
         <div class="an-hero__text">
@@ -292,7 +292,7 @@ const jsonLd = computed(() => {
     // card, one per locale) is the canonical image signal. Hardcoding the v6
     // dynamic OG URL (/_og/d/<encoded>.png) here would drift from the real,
     // title-encoded URL — so let Google resolve the article image from og:image.
-    inLanguage: locale.value,
+    inLanguage: props.guide.contentLanguage || locale.value,
     articleSection: props.guide.category,
     // A content review is not the original publication date. Only publish the
     // timestamp the guide actually records, so an edit never resets its age.

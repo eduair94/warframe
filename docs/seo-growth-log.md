@@ -2293,3 +2293,47 @@ No mechanics or editorial review dates are changed without a content review.
 The existing daily automation remains active. Preserve sync/egress configuration
 and current workers during the release. Next: overdue editorial guides, remaining
 SEO copy overclaims and analytics reauthentication.
+
+## 2026-11-25 — Reject incompatible translated guide snapshots at runtime
+
+Investigated the four outstanding translation warnings. The Simplified Chinese
+Focus table and Polish Standing guide contain shifted text: advice appears in
+the wrong cell, table note or section heading. Russian Archon Shards and Chinese
+Resources add link destinations absent from the base snapshot. Equal review dates
+had allowed these structurally incompatible snapshots to render in production.
+
+The runtime now shares the offline editorial gate's source-structure comparison.
+A mismatched slug/date, section/block shape, destination, source or video metadata
+selects the canonical English fallback; compatible translated prose remains intact.
+This is a conservative structural safeguard, not a semantic fact checker. All 300
+stored snapshots were exercised through the actual loader: 296 retain translations,
+and the four outstanding snapshots use English until regeneration is available.
+Article lang and Article JSON-LD inLanguage reflect the selected content, including
+fallbacks on localized routes. URLs, canonical/hreflang and recorded review dates
+are preserved. Localized chrome/SEO metadata remain on those routes; the four
+English article fallbacks are a temporary quality limitation, not completed translations.
+
+Attempted the existing paced Gemini translator for exactly the four stale jobs.
+The first request returned 403 ACCESS_DENIED; three remaining jobs were skipped.
+No locale files were overwritten and no hand translations or fabricated review
+dates were introduced. Source evidence: tmp/nov25-translations.log and the bounded
+structural comparison in tmp/nov25-translation-diff.mjs. Regenerate the four snapshots
+once model access is restored, then update the explicit snapshot regression fixture.
+
+Validation: 907 API + 250 frontend + 26 guide tests (1,183 total); i18n compilation,
+guide integrity, repo-map consistency and API build. New tests exercise actual
+loader fallbacks, all 300 stored translations, chunk failures, and actual Article
+JSON-LD language/date behavior. Postdeploy checks will cover the four guides in
+all 13 languages (52 pages), headings, selected content language, Article schema,
+canonical/hreflang/indexability, original dates and public health. All tracked
+code and this entry precede the full API/frontend/live workflow; final exact-SHA
+evidence stays in ignored tmp/nov25-* and existing automation memory.
+
+Baseline clean at f260158; ten public checks pass. At 13:02 UTC, 2,270 of 3,893 price
+quotes are under 3h, 44 over a day; newest quote is today. Analytics discovery still
+requires reauthentication, so no traffic measurement is available. Official
+[news](https://www.warframe.com/en/news) still leads with November 23 Game Awards voting;
+[patch notes](https://www.warframe.com/en/patch-notes) still list 44.1.4.1.
+No game mechanics were reviewed or changed today. Daily automation remains active.
+Next: restore translator access and regenerate the four pending snapshots; review
+old English gameplay guidance and remaining SEO claims with primary sources.
