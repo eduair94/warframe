@@ -62,11 +62,7 @@
               <div v-if="tool.caveat === 'rmt'" class="ct-warn ct-warn--rmt">⚠ {{ t('communityTools.caveat.rmt') }}</div>
               <div v-else-if="tool.caveat === 'partial'" class="ct-warn ct-warn--partial">{{ t('communityTools.caveat.partial') }}</div>
 
-              <div class="ct-meta">
-                <span v-if="tool.domain?.created" class="ct-meta__i">
-                  {{ t('communityTools.card.established', { year: yearOf(tool.domain.created) }) }}
-                  <template v-if="tool.domain.ageYears != null"> · {{ tool.domain.ageYears }}y</template>
-                </span>
+              <div v-if="tool.repo || tool.openSource" class="ct-meta">
                 <span v-if="tool.repo" class="ct-meta__i" :class="{ 'is-stale': isStale(tool.repo.lastCommit) }">
                   ★ {{ tool.repo.stars }} · <time :datetime="tool.repo.lastCommit">{{ repoDate(tool.repo.lastCommit) }}</time>
                   <template v-if="tool.repo.archived"> · archived</template>
@@ -166,7 +162,6 @@ const sections = computed(() =>
 )
 const resultCount = computed(() => sections.value.reduce((count, section) => count + section.tools.length, 0))
 
-function yearOf(iso: string) { return new Date(iso).getUTCFullYear() }
 function repoDate(iso: string) { return formatRepositoryDate(iso, locale.value) }
 function isStale(iso: string) { return dayjs().diff(dayjs(iso), 'month') >= 12 }
 

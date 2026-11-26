@@ -49,6 +49,7 @@ export interface ToolMeta {
   verified: boolean
   httpStatus?: number
   screenshot?: string
+  /** WHOIS registration metadata, not the tool's launch date. ageYears is a snapshot, not a live age. */
   domain?: { created: string | null; ageYears: number | null; registrar: string | null; expires: string | null }
   repo?: { stars: number; lastCommit: string; archived: boolean; openIssues: number }
   enrichedAt?: string

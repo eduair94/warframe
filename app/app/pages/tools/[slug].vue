@@ -189,7 +189,6 @@
               <div><dt>{{ t('toolDetail.facts.category') }}</dt><dd>{{ t('communityTools.sections.' + tool.category) }}</dd></div>
               <div><dt>{{ t('toolDetail.facts.platforms') }}</dt><dd>{{ tool.platforms.map((p) => t('communityTools.platform.' + p)).join(', ') }}</dd></div>
               <div v-if="tool.openSource"><dt>{{ t('toolDetail.facts.source') }}</dt><dd>{{ t('communityTools.card.openSource') }}</dd></div>
-              <div v-if="tool.domain?.created"><dt>{{ t('toolDetail.facts.established') }}</dt><dd>{{ yearOf(tool.domain.created) }}<template v-if="tool.domain.ageYears != null"> ({{ tool.domain.ageYears }}y)</template></dd></div>
               <div v-if="tool.repo"><dt>GitHub</dt><dd>★ {{ tool.repo.stars }} · <time :datetime="tool.repo.lastCommit">{{ repoDate(tool.repo.lastCommit) }}</time><template v-if="tool.repo.archived"> · archived</template></dd></div>
               <div v-if="research?.dataConfidence"><dt>{{ t('toolDetail.facts.confidence') }}</dt><dd>{{ t('toolDetail.confidence.' + research.dataConfidence) }}</dd></div>
             </dl>
@@ -306,7 +305,6 @@ function onDetailNav(s: string) {
   trackContent('tool_detail_nav', s, { source: 'related' })
 }
 
-function yearOf(iso: string) { return new Date(iso).getUTCFullYear() }
 function repoDate(iso: string) { return formatRepositoryDate(iso, locale.value) }
 
 // Per-page SEO override (layout owns canonical/hreflang). Bakes the tool name +

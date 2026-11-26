@@ -2337,3 +2337,43 @@ requires reauthentication, so no traffic measurement is available. Official
 No game mechanics were reviewed or changed today. Daily automation remains active.
 Next: restore translator access and regenerate the four pending snapshots; review
 old English gameplay guidance and remaining SEO claims with primary sources.
+
+## 2026-11-26 — Remove unsupported tool establishment dates
+
+The tool directory and detail sidebar were labeling WHOIS domain registration
+as the tool's establishment date, then appending ageYears frozen at enrichment.
+This affects 37 entries: the Fandom-hosted Warframe wiki was shown as established
+in 1996, and Warframe Reliquary in 2005. Those timestamps describe their hosting
+domains and do not establish when either Warframe resource launched. The official
+[Open Beta announcement](https://www.warframe.com/en/news/welcome-warframe-open-beta)
+provides historical context; it does not validate any third-party tool launch date.
+
+Removed these inferred dates and frozen year ages from directory cards and detail
+facts across all locales. No replacement launch date is invented. Retained WHOIS
+snapshots for provenance and documented their limits on the data type. Repository
+commit dates, stars, features, links, categories and directory search are unchanged.
+Evidence identifying all 37 affected entries and original timestamps is retained
+in tmp/nov26-domain-evidence.json. Existing localization keys remain available;
+no generated translations or review/enrichment timestamps were changed.
+
+Validation uses the existing blocking suites (907 API, 250 frontend, 26 guide;
+1,183 tests), i18n/guide/repo-map checks and API build. This small rendering removal
+needs no new implementation-mirroring unit test. Public verification after the
+full API/frontend/live deploy will cover 86 pages: all 13 directories, all 37
+English affected details, and Fandom/Reliquary/WFInfo details in the other 12
+locales. Check removed date/age claims, retained repository timestamps, catalogue
+count, search, canonical/hreflang/indexability and single H1. All tracked changes
+and this entry precede deployment; final evidence remains in ignored tmp/nov26-*
+and the existing automation memory.
+
+Baseline clean at 8212e4b; all ten public checks pass. Latest quote at 13:02 UTC
+is from today; 2,267 of 3,893 quotes are under three hours and 77 exceed a day.
+This distribution is observational and is not attributed to the rendering change.
+Analytics discovery still returns UNAUTHORIZED. Retried the four pending guide
+translations once through the existing paced script: first job ACCESS_DENIED,
+remaining three skipped; zero locale files written. English safeguards remain.
+Official [news](https://www.warframe.com/en/news) still leads with November 23
+Game Awards voting; [patch notes](https://www.warframe.com/en/patch-notes) list
+44.1.4.1. No mechanics or unrelated review dates were changed. Daily automation
+continues. Next: restore analytics/translator access, review old gameplay guidance,
+and replace remaining unsupported live-verification claims with dated evidence.
