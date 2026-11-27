@@ -8,7 +8,7 @@ import ts from 'typescript'
 
 // Compile both halves of a real SFC. Template-only stubs miss setup helpers and
 // props bindings, so they cannot faithfully exercise components used during SSR.
-export async function loadSsrComponent(url) {
+export async function loadSsrComponent(url, globals = {}) {
   const filename = url.pathname.split('/').at(-1)
   const parsed = parse(await readFile(url, 'utf8'), { filename })
   assert.deepEqual(parsed.errors, [])
@@ -19,7 +19,7 @@ export async function loadSsrComponent(url) {
   })
   assert.deepEqual(template.errors, [])
   const execute = source => {
-    const context = { exports: {}, require: name => {
+    const context = { ...globals, exports: {}, require: name => {
       assert.ok(['vue', 'vue/server-renderer'].includes(name), `Unsupported SFC import: ${name}`)
       return name === 'vue' ? vue : renderer
     } }

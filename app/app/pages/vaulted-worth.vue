@@ -27,6 +27,8 @@
         </client-only>
       </header>
 
+      <PrimeResurgenceLinks />
+
       <client-only>
         <template #fallback>
           <SeoFallbackTable

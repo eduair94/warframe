@@ -2377,3 +2377,43 @@ Game Awards voting; [patch notes](https://www.warframe.com/en/patch-notes) list
 44.1.4.1. No mechanics or unrelated review dates were changed. Daily automation
 continues. Next: restore analytics/translator access, review old gameplay guidance,
 and replace remaining unsupported live-verification claims with dated evidence.
+
+## 2026-11-27 — Connect vaulted comparisons to official Prime Resurgence offers
+
+Official news now links to the Prime Resurgence rotation featuring Sevagoth Prime
+and Hydroid Prime. Verified the current
+[official Prime Resurgence page](https://www.warframe.com/en/shop/prime/resurgence),
+which explains the distinction between Regal Aya purchases and earning Aya for
+relics. Our Varzia verdict is inferred from related relic metadata and is not a
+verified inventory feed; users needed an explicit path to the primary source.
+
+Added a shared server-rendered reference block to /vaulted and /vaulted-worth.
+It links to the official offers, localized /relics prices and the localized relic
+guide's #vaulting section, which explains Aya, Regal Aya and availability limits.
+The existing translated caution states that Aya buys relics and does not guarantee
+the part. Reused existing translations in all 13 languages; proper game/brand names
+remain unchanged. The block does not hardcode a current rotation, end date, price
+or inferred shop stock. Existing prices, verdicts, fallback tables and timestamps
+are preserved. Wrapping 44px links and visible keyboard focus support mobile use.
+
+Validation: 907 API + 250 frontend + 26 guide tests (1,183 total), i18n compilation,
+guide integrity, repo-map consistency and API build. Extended the existing actual
+SSR header tests to load the new component and assert both localized internal
+links, including empty-data fallback rendering; the full frontend rerun passes.
+Postdeploy checks cover 52
+public pages: both changed pages and both internal destinations in 13 languages;
+verify SSR links, locale prefixes, fragment target, canonical/hreflang/indexability,
+H1 and fallback market tables. Browser verification will inspect mobile layout
+and follow the guide link. All tracked source/docs precede the complete
+API/frontend/live deploy; final evidence stays in ignored tmp/nov27-* and
+existing automation memory. No new route or translation module is introduced.
+
+Baseline clean at 329d3b9; ten public checks pass. At 13:03 UTC, 2,282 of 3,893 quotes
+are under 3h, 82 exceed a day; newest quote is today. These observations do not
+establish an effect on traffic or prices. Analytics remains UNAUTHORIZED. The
+paced translator again returns ACCESS_DENIED on its first job, skipping the
+remaining three without changing locale files; four guide fallbacks remain.
+[News](https://www.warframe.com/en/news) lists the November 26 Resurgence change;
+[patch notes](https://www.warframe.com/en/patch-notes) still list 44.1.4.1.
+Daily automation remains active. Next: unsupported live-verification claims,
+old gameplay reviews and restoring analytics/translator access.
