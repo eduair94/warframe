@@ -4,7 +4,7 @@
     <p>{{ t('vaultedWorth.reason.resurgence') }}</p>
     <div class="pr-links__actions">
       <a href="https://www.warframe.com/en/shop/prime/resurgence" target="_blank" rel="noopener">Warframe.com · Prime Resurgence ↗</a>
-      <NuxtLink :to="localePath('/relics')">{{ t('nav.items.relicPrices') }} →</NuxtLink>
+      <NuxtLink :to="localePath('/relic')">{{ t('nav.items.relicPrices') }} →</NuxtLink>
       <NuxtLink :to="localePath('/guides/relics') + '#vaulting'">{{ t('nav.sections.guides') }} · Prime Resurgence →</NuxtLink>
     </div>
   </section>

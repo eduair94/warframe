@@ -1640,7 +1640,7 @@ and unrelated translation follow-ups remain visible in the existing validator.
 
 ### Availability, freshness and measurement limits
 
-At 05:45 UTC November 7, the bounded public checks return HTTP200 in all ten
+At 05:45 UTC November 7, the bounded public checks return HTTP 200 in all ten
 requests and MongoDB is available. The content-freshness gate fails: all 3,893
 stored price records exceed a day, the newest is approximately 75.4 hours old,
 and the median is 77.1 hours. The latest recorded quote remains November 4 at
@@ -2388,7 +2388,7 @@ relics. Our Varzia verdict is inferred from related relic metadata and is not a
 verified inventory feed; users needed an explicit path to the primary source.
 
 Added a shared server-rendered reference block to /vaulted and /vaulted-worth.
-It links to the official offers, localized /relics prices and the localized relic
+It links to the official offers, localized /relic prices and the localized relic
 guide's #vaulting section, which explains Aya, Regal Aya and availability limits.
 The existing translated caution states that Aya buys relics and does not guarantee
 the part. Reused existing translations in all 13 languages; proper game/brand names
@@ -2417,3 +2417,10 @@ remaining three without changing locale files; four guide fallbacks remain.
 [patch notes](https://www.warframe.com/en/patch-notes) still list 44.1.4.1.
 Daily automation remains active. Next: unsupported live-verification claims,
 old gameplay reviews and restoring analytics/translator access.
+
+Release correction: the first public verification caught a 404 at /relics, an
+API endpoint mistakenly used as a frontend route. Corrected the CTA to /relic,
+confirmed HTTP200, and made the SSR regression derive its expected destination
+from the actual navigation configuration. Repeated the complete deploy for the
+corrected commit. Initial release evidence remains under tmp/nov27-*; final
+verification and workflow evidence use tmp/nov27fix-*.

@@ -41,6 +41,9 @@ function elements(node, tag) {
 }
 const text = node => node.type === 2 ? node.content : (node.children ?? []).map(text).join('')
 const fallbackTable = await loadSsrComponent(new URL('../app/components/SeoFallbackTable.vue', import.meta.url))
+const layout = await readFile(new URL('../app/layouts/default.vue', import.meta.url), 'utf8')
+const relicPricesRoute = layout.match(/to:\s*'([^']+)',\s*key:\s*'relicPrices'/)?.[1]
+assert.ok(relicPricesRoute, 'Resolve the actual relic catalogue route from navigation')
 
 for (const [page, namespace, slots] of pages) {
   test(`${page}: localized heading and introduction precede real rows even without client JavaScript`, async () => {
@@ -87,7 +90,7 @@ for (const [page, namespace, slots] of pages) {
         assert.ok(panel, 'Reference links must render even without market data or client JavaScript')
         assert.deepEqual(elements(panel, 'a').map(node => node.props.find(prop => prop.name === 'href')?.value?.content), [
           'https://www.warframe.com/en/shop/prime/resurgence',
-          (locale === 'en' ? '' : '/' + locale) + '/relics',
+          (locale === 'en' ? '' : '/' + locale) + relicPricesRoute,
           (locale === 'en' ? '' : '/' + locale) + '/guides/relics#vaulting',
         ])
       }
