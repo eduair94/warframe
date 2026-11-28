@@ -31,6 +31,7 @@
 
       <client-only>
         <template #fallback>
+          <p v-if="!fallbackRows.length" class="an-empty">{{ t('vaultedWorth.empty') }}</p>
           <SeoFallbackTable
             :caption="t('vaultedWorth.hero.title', { worth: t('vaultedWorth.hero.titleWorth') })"
             :name-label="t('vaultedWorth.table.item')"
@@ -162,6 +163,7 @@
 
 <script setup lang="ts">
 import { fetchMarketData } from '~/utils/market-fetch'
+import { isVaultedPrime } from '~/utils/vaulted-prime'
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useDisplay } from 'vuetify'
 
@@ -322,7 +324,7 @@ const VERDICT_RANK: Record<string, number> = { buy: 4, resurgence: 3, watch: 2, 
 
 const categoryOptions = computed<string[]>(() => {
   const present = new Set<string>()
-  for (const r of items.value) if (r.vaulted) present.add(categoryOf(r.tags))
+  for (const r of decorated.value) present.add(categoryOf(r.tags))
   const order = ['Warframe', 'Primary', 'Secondary', 'Melee', 'Sentinel', 'Companion', 'Arcane', 'Other']
   return ['All', ...order.filter((c) => present.has(c))]
 })
@@ -330,7 +332,7 @@ const categoryOptions = computed<string[]>(() => {
 // Vaulted items decorated with their verdict.
 const decorated = computed<any[]>(() =>
   items.value
-    .filter((r) => r.vaulted && r.market !== null && priceOf(r) > 0)
+    .filter((r) => isVaultedPrime(r) && r.market !== null && priceOf(r) > 0)
     .map((r) => ({ ...r, _verdict: verdictOf(r) })),
 )
 

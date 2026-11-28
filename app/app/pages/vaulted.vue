@@ -23,6 +23,7 @@
 
       <client-only>
         <template #fallback>
+          <p v-if="!fallbackRows.length" class="an-empty">{{ t('vaultedPage.empty') }}</p>
           <SeoFallbackTable
             :caption="t('vaultedPage.hero.title', { vault: t('vaultedPage.hero.titleVault') })"
             :name-label="t('vaultedPage.table.item')"
@@ -134,6 +135,7 @@
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useDisplay } from 'vuetify'
 import { useItemsStore } from '~/stores/items'
+import { isVaultedPrime } from '~/utils/vaulted-prime'
 
 const { t } = useI18n()
 const localePath = useLocalePath()
@@ -161,7 +163,7 @@ const sortOptions = computed(() => [
 ])
 
 const vaultedItems = computed<any[]>(() =>
-  (allItems.value as any[]).filter((i) => i && i.vaulted === true && i.market && i.market.sell > 0)
+  (allItems.value as any[]).filter((i) => isVaultedPrime(i) && i.market && i.market.sell > 0)
 )
 
 const categoryOptions = computed<string[]>(() => {

@@ -23,6 +23,14 @@ actions (`market_open`, guide-to-tool navigation, watchlists) and retention. Mis
 data is not zero traffic. Do not claim that a deployment caused growth from a short before/after window.
 Keep raw private analytics exports under ignored `tmp/`, outside version control.
 
+## 2026-11-28 — reject relics in vaulted Prime recommendations
+
+- Public catalogue and analytics evidence: all 694 records marked vaulted were relics; none of the 821 names containing Prime had confirmed vault status. The previous predicate therefore recommended relics on pages promising Prime equipment. This is a source coverage gap, not evidence that no Primes are vaulted.
+- Added one shared eligibility rule requiring explicit vaulted status and the canonical standalone word Prime. Both pages now apply it to their hero, counts, categories and crawlable tables; unconfirmed records and Primed mods are excluded. Existing localized empty states also render in SSR, and the official Resurgence/reference links remain available.
+- Three regression tests execute the actual page pipelines with mixed equipment/relic data and verify reactive empty results. Included in the frontend blocking suite. Production verification must cover both routes in all 13 locales after the full deployment; evidence is kept under ignored `tmp/nov28-*`.
+- Official news reviewed: November 27 announces Kullervo Prime Access for December 9, alongside TennoCon ticket and Game Awards announcements. These are future announcements, not currently released availability. The patch index still lists Hotfix 44.1.4.1. Sources: https://www.warframe.com/en/news and https://www.warframe.com/en/patch-notes. No guide review dates or item availability were changed based on announcements.
+- All ten initial public health checks passed. GA4/Search Console discovery still requires reauthentication; no traffic-growth claim is made. Follow-up priority: restore independently verified Prime vault-status coverage upstream, without inferring equipment availability from a single relic's status.
+
 ## 2026-09-14 — first maintenance iteration
 
 ### Verified baseline and fixes

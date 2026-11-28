@@ -86,6 +86,7 @@ for (const [page, namespace, slots] of pages) {
       if (page === 'comparison') paragraphs.push(messages[locale][namespace].pricingNote)
       if (hasResurgenceLinks) {
         paragraphs.push(messages[locale].vaultedWorth.reason.resurgence)
+        if (!hasData) paragraphs.push(messages[locale][namespace].empty)
         const panel = elements(tree, 'section').find(node => node.props.some(prop => prop.name === 'aria-labelledby' && prop.value?.content === 'prime-resurgence-title'))
         assert.ok(panel, 'Reference links must render even without market data or client JavaScript')
         assert.deepEqual(elements(panel, 'a').map(node => node.props.find(prop => prop.name === 'href')?.value?.content), [
